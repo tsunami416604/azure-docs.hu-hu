@@ -1,6 +1,6 @@
 ---
-title: Connect to an Azure Cosmos account with Azure Private Link
-description: Learn how to securely access the Azure Cosmos account from a VM by creating a Private Endpoint.
+title: Csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
+description: Megtudhatja, hogyan érheti el biztonságosan az Azure Cosmos-fiókot egy virtuális gépről egy privát végpont létrehozásával.
 author: asudbring
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -13,129 +13,129 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229420"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Connect privately to an Azure Cosmos account using Azure Private Link
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 
-Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
+Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
 
-In this article, you will learn how to create a VM on an Azure virtual network and an Azure Cosmos account with a Private Endpoint using the Azure portal. Then, you can securely access the Azure Cosmos account from the VM.
+Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-beli virtuális hálózaton és egy privát végponttal rendelkező Azure Cosmos-fiókon a Azure Portal használatával. Ezután biztonságosan hozzáférhet az Azure Cosmos-fiókhoz a virtuális gépről.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Sign in to the [Azure portal.](https://portal.azure.com)
+Jelentkezzen be a [Azure Portalba.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-### <a name="create-the-virtual-network"></a>Create the virtual network
+### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-In this section, you will create a virtual network and the subnet to host the VM that is used to access your Private Link resource (an Azure Cosmos account in this example).
+Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amely a privát kapcsolati erőforráshoz (ebben a példában egy Azure Cosmos-fiók) való hozzáféréshez használt virtuális GÉPET üzemelteti.
 
-1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
 
-1. In **Create virtual network**, enter or select this information:
+1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Enter *MyVirtualNetwork*. |
-    | Címtér | Enter *10.1.0.0/16*. |
-    | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
-    | Földrajzi egység | Select **WestCentralUS**.|
-    | Subnet - Name | Enter *mySubnet*. |
-    | Alhálózat – címtartomány | Enter *10.1.0.0/24*. |
+    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
+    | Előfizetést | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
+    | Hely | Válassza a **WestCentralUS**lehetőséget.|
+    | Alhálózat – név | Adja meg a *mySubnet*. |
+    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
     |||
 
-1. Leave the rest as default and select **Create**.
+1. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **számítási** > **virtuális gép**lehetőséget.
 
-1. In **Create a virtual machine - Basics**, enter or select this information:
+1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
-    | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Select **myResourceGroup**. You created this in the previous section.  |
-    | **INSTANCE DETAILS** |  |
-    | Virtuális gép neve | Enter *myVm*. |
-    | Region (Régió) | Select **WestCentralUS**. |
-    | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Lemezkép | Select **Windows Server 2019 Datacenter**. |
-    | Méret | Leave the default **Standard DS1 v2**. |
-    | **ADMINISTRATOR ACCOUNT** |  |
-    | Felhasználónév | Enter a username of your choice. |
-    | Jelszó | Enter a password of your choice. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Confirm Password | Reenter the password. |
-    | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Leave the default **None**. |
-    | **SAVE MONEY** |  |
-    | Already have a Windows license? | Leave the default **No**. |
+    | **PROJEKT RÉSZLETEI** | |
+    | Előfizetést | Válassza ki előfizetését. |
+    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
+    | **PÉLDÁNY RÉSZLETEI** |  |
+    | Virtuális gép neve | Adja meg a *myVm*. |
+    | Régió | Válassza a **WestCentralUS**lehetőséget. |
+    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
+    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
+    | **RENDSZERGAZDAI FIÓK** |  |
+    | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
+    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Jelszó megerősítése | Írja be újra a jelszót. |
+    | **BEJÖVŐ PORTOK SZABÁLYAI** |  |
+    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket. |
+    | **PÉNZ MEGTAKARÍTÁSA** |  |
+    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
     |||
 
-1. Select **Next: Disks**.
+1. Válassza a **Tovább: lemezek**lehetőséget.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
 
-1. In **Create a virtual machine - Networking**, select this information:
+1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Virtuális hálózat | Leave the default **MyVirtualNetwork**.  |
-    | Címtér | Leave the default **10.1.0.0/24**.|
-    | Alhálózat | Leave the default **mySubnet (10.1.0.0/24)** .|
-    | Nyilvános IP-cím | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.|
+    | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
+    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
+    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
+    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
+    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
+    | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
     ||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. You're taken to the **Review + create** page where Azure validates your configuration.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
 
 ## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos-fiók létrehozása
 
-Create an [Azure Cosmos SQL API account](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). For simplicity, you can create the Azure Cosmos account in the same region as the other resources (that is "WestCentralUS").
+Hozzon létre egy [Azure Cosmos SQL API-fiókot](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). Az egyszerűség kedvéért létrehozhat egy Azure Cosmos-fiókot ugyanabban a régióban, mint a többi erőforrást (ez a "WestCentralUS").
 
-## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Create a Private Endpoint for your Azure Cosmos account
+## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Hozzon létre egy privát végpontot az Azure Cosmos-fiókhoz
 
-Create a Private Link for your Azure Cosmos account as described in the [Create a Private Link using the Azure portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) section of the linked article.
+Hozzon létre egy privát hivatkozást az Azure Cosmos-fiókhoz a csatolt cikk Azure Portal szakaszának használatával, a [privát hivatkozás létrehozása](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) című témakörben leírtak szerint.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Connect to the VM *myVm* from the internet as follows:
+Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
-1. In the portal's search bar, enter *myVm*.
+1. A portál keresési sávján adja meg a *myVm*.
 
-1. Kattintson a **Csatlakozás** gombra. After selecting the **Connect** button, **Connect to virtual machine** opens.
+1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
+1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
-1. Open the downloaded *.rdp* file.
+1. Nyissa meg a letöltött *. rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
+        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** kell kiválasztania > **eltérő fiókot használjon**.
 
 1. Kattintson az **OK** gombra.
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. If you receive a certificate warning, select **Yes** or **Continue**.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
-1. Once the VM desktop appears, minimize it to go back to your local desktop.  
+1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
 
-## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Access the Azure Cosmos account privately from the VM
+## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Hozzáférés az Azure Cosmos-fiókhoz a virtuális gépről
 
-In this section, you will connect privately to the Azure Cosmos account using the Private Endpoint. 
+Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Azure Cosmos-fiókhoz. 
 
 > [!IMPORTANT]
-> The DNS configuration for the Azure Cosmos account needs a manual modification on the hosts file to include the FQDN of the specific account. In production scenarios you will configure the DNS server to use the private IP addresses. However for the demo purpose, you can use administrator permissions on the VM and modify the `c:\Windows\System32\Drivers\etc\hosts` file (on Windows) or `/etc/hosts` file (on Linux) to include the IP address and DNS mapping.
+> Az Azure Cosmos-fiók DNS-konfigurációjában manuálisan kell módosítani a gazdagépek fájlját, hogy az tartalmazza az adott fiók teljes tartománynevét. Éles környezetben a DNS-kiszolgálót a magánhálózati IP-címek használatára fogja konfigurálni. A bemutató céljához azonban rendszergazdai jogosultságokat is használhat a virtuális gépen, és módosíthatja a `c:\Windows\System32\Drivers\etc\hosts` fájlt (Windows rendszeren) vagy `/etc/hosts` fájlt (Linuxon), hogy tartalmazza az IP-címet és a DNS-hozzárendelést.
 
-1. To include the IP address and DNS mapping, sign into your Virtual machine *myVM*, open the `c:\Windows\System32\Drivers\etc\hosts` file and include the DNS information from previous step in the following format:
+1. Az IP-cím és a DNS-hozzárendelés hozzáadásához jelentkezzen be a virtuális gép *myVM*, nyissa meg a `c:\Windows\System32\Drivers\etc\hosts` fájlt, és adja meg a DNS-adatokat az előző lépésből a következő formátumban:
 
-   [Private IP Address] [Account endpoint].documents.azure.com
+   [Magánhálózati IP-cím] [Fiók végpontja]. Documents. Azure. com
 
    **Példa**
 
@@ -144,40 +144,40 @@ In this section, you will connect privately to the Azure Cosmos account using th
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. In the Remote Desktop of *myVM*, install [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1. A *myVM*távoli asztal telepítse a [Microsoft Azure Storage Explorert](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
 
-1. Select **Cosmos DB Accounts (Preview)** with the right-click.
+1. Kattintson a jobb gombbal a **Cosmos db fiókok (előzetes verzió)** elemre.
 
-1. Select **Connect to Cosmos DB**.
+1. Válassza **a kapcsolódás Cosmos db**lehetőséget.
 
 1. Válassza ki az **API** lehetőséget.
 
-1. Enter the connection string by pasting the information previously copied.
+1. A korábban másolt adatok beillesztésével adja meg a kapcsolatok karakterláncát.
 
 1. Kattintson a **Tovább** gombra.
 
 1. Kattintson a **Csatlakozás** gombra.
 
-1. Browse the Azure Cosmos databases and containers from *mycosmosaccount*.
+1. Tallózással keresse meg az Azure Cosmos-adatbázisokat és-tárolókat a *mycosmosaccount*.
 
-1. (Optionally) add new items to *mycosmosaccount*.
+1. (Opcionálisan) új elemeket adhat hozzá a *mycosmosaccount*.
 
-1. Close the remote desktop connection to *myVM*.
+1. A távoli asztali kapcsolat bezárásával *myVM*.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you're done using the Private Endpoint, Azure Cosmos account and the VM, delete the resource group and all of the resources it contains: 
+Ha elkészült a privát végponttal, az Azure Cosmos-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
+1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza ki a *myResourceGroup* a keresési eredmények közül.
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. Adja meg a *myResourceGroup* az **erőforráscsoport nevének** beírásához, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you created a VM on a virtual network, an Azure Cosmos account and a Private Endpoint. You connected to the VM from the internet and securely communicated to the Azure Cosmos account using Private Link.
+Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Cosmos-fiókon és egy privát végponton. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál az Azure Cosmos-fiókkal a privát hivatkozás használatával.
 
-* To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+* További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
 
-* To learn more about limitation of Private Endpoint when using with Azure Cosmos DB, see [Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) article.
+* Ha többet szeretne megtudni a privát végpontok Azure Cosmos DB használatával való használatának korlátozásáról, tekintse meg [Az Azure Private-hivatkozás Azure Cosmos db](../cosmos-db/how-to-configure-private-endpoints.md) című cikket.

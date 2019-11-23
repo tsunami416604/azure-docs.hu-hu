@@ -1528,6 +1528,6 @@ A [0.2.0 verziója](https://pypi.org/project/azureml-dataprep/0.2.0/) a követke
 Azure Machine Learning új, frissített kiadása: További információ erről a kiadásról: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el az [Azure Machine Learning](../service/overview-what-is-azure-ml.md) áttekintését.

@@ -28,16 +28,16 @@ Miután importálta az összetett erőforrásokat az Automation-fiókjába, hasz
 
 A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárendeléséhez létre kell hoznia azt. Ez az **állapot-konfiguráció (DSC)** lapon található összeállítási **konfiguráció** használatával végezhető el, a **konfigurációk** vagy a **lefordított konfigurációk** lapjain.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon válassza az **állapot konfigurálása (DSC)** lehetőséget a **konfiguráció kezelése**területen.
 1. Az **állapot-konfiguráció (DSC)** lapon kattintson a **konfigurációk** vagy a **lefordított konfigurációk** fülre, majd kattintson a **konfiguráció összeállítása** lehetőségre a lap tetején található menüben.
 1. Az **alapvető** beállítások lépésben adja meg az új konfiguráció nevét (kötelező), majd kattintson bárhová az új konfigurációba felvenni kívánt összetett erőforrások sorában, majd kattintson a **tovább** gombra, vagy kattintson a **forráskód** lépésre. A következő lépésekben a **PSExecutionPolicy** és a **RenameAndDomainJoin** összetett erőforrásokat választottuk.
-   @no__t – az összeállítás konfigurációs oldalának 0Screenshot (a @ no__t-1) alapvető lépései
+   ![képernyőkép az összeállítási konfigurációs oldal alapismeretek lépéséről](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. A **forráskód** lépés azt mutatja be, hogy a kiválasztott összetett erőforrások hogyan állíthatók össze. Láthatja az összes paraméter egyesítését, valamint azt, hogy a rendszer hogyan adja át őket az összetett erőforrásnak. Ha elkészült az új forráskód megtekintésével, kattintson a **tovább** gombra, vagy kattintson a **Parameters (paraméterek** ) lépésre.
-   @no__t – az összeállítás konfigurációs oldalának 0Screenshot (@ no__t-1)
+   ![képernyőkép az összeállítási konfigurációs oldal forráskód lépéséről](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
 1. A **Parameters (paraméterek** ) lépésben az egyes összetett erőforrások számára elérhető paraméter látható. Ha egy paraméternek van leírása, akkor a paraméter mező mellett jelenik meg. Ha a mező egy **PSCredential** típusú paraméter, a configure (legördülő lista) beállítás megjeleníti a **hitelesítő adatok** listáját az aktuális Automation-fiókban. A **+ a hitelesítő adatok hozzáadása** lehetőség is elérhető. Ha minden szükséges paramétert megadtak, kattintson a **Mentés és fordítás**elemre.
-   @no__t – az összeállítás konfigurációs oldalának 0Screenshot (no__t-1)
+   ![képernyőkép a levélírás konfigurációs oldal paraméterek lépéséről](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 Az új konfiguráció mentése után a rendszer elküldi a fordítást. A fordítási feladatok állapota megtekinthető úgy, mint bármely importált konfiguráció. További információ: [fordítási feladatok megtekintése](automation-dsc-getting-started.md#viewing-a-compilation-job).
 

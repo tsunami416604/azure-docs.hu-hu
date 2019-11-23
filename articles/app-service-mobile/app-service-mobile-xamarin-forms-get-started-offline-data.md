@@ -27,7 +27,7 @@ ms.locfileid: "72388424"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag a Xamarin. Forms Azure Mobile Apps offline szinkronizálási funkcióját mutatja be. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a mobil alkalmazásokkal is használhassák az adatmegjelenítést, hozzáadást vagy módosítást, még akkor is, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli szolgáltatással.
@@ -37,7 +37,7 @@ Ez az oktatóanyag a Xamarin. Forms gyors üzembe helyezési megoldásán alapul
 Az offline szinkronizálási szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Offline adatszinkronizálás az Azure Mobile Appsban][2]című témakört.
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Offline szinkronizálási funkciók engedélyezése a gyors üzembe helyezési megoldásban
-Az offline szinkronizálási kódot a projekt tartalmazza előfeldolgozó irányelvek C# használatával. Ha a **kapcsolat nélküli @ no__t-1SYNC @ no__t-2ENABLED** szimbólum van definiálva, a rendszer ezeket a programkód-útvonalakat tartalmazza a buildben. Windows-alkalmazások esetén az SQLite platformot is telepítenie kell.
+Az offline szinkronizálási kódot a projekt tartalmazza előfeldolgozó irányelvek C# használatával. Ha az **OFFLINE\_szinkronizálási\_engedélyezve** szimbólum van megadva, a rendszer ezeket a programkód-útvonalakat tartalmazza a buildben. Windows-alkalmazások esetén az SQLite platformot is telepítenie kell.
 
 1. A Visual Studióban kattintson a jobb gombbal a megoldásra > **NuGet-csomagok kezelése**a megoldáshoz..., majd keresse meg és telepítse a **Microsoft. Azure. Mobile. Client. SQLiteStore** NuGet-csomagot a megoldás összes projektje számára.
 2. A Megoldáskezelőban nyissa meg a TodoItemManager.cs fájlt a projektből a **Portable** (név) nevű fájlból, amely a következő előfeldolgozói direktíva:
@@ -50,12 +50,12 @@ Az offline szinkronizálási kódot a projekt tartalmazza előfeldolgozó irány
    * **Univerzális Windows-platform** [Az SQLite telepítése univerzális univerzális Windows-rendszerre][5].
 
      Bár a gyors útmutató nem tartalmaz univerzális Windows-projektet, az univerzális Windows-platformot a Xamarin-űrlapok támogatják.
-4. Választható Minden Windows-alkalmazás projektben kattintson a jobb gombbal a **hivatkozásokra** > **hivatkozás hozzáadása...** elemre, majd bontsa ki a **Windows** mappa > **bővítmények**csomópontot.
+4. Választható Minden Windows-alkalmazás projektben kattintson a jobb gombbal a **hivatkozások** > **hivatkozás hozzáadása...** elemre, bontsa ki a **Windows** mappa > **bővítmények**csomópontot.
     Engedélyezze a megfelelő **SQLite** -t a Windows SDK-hoz, valamint a **Visual C++ 2013 Runtime for Windows** SDK-t.
     Az SQLite SDK-nevek kis mértékben eltérőek az egyes Windows platformokon.
 
 ## <a name="review-the-client-sync-code"></a>Az ügyfél-szinkronizálási kód áttekintése
-Íme egy rövid áttekintés arról, hogy mi szerepel az oktatóanyag kódjában a `#if OFFLINE_SYNC_ENABLED` direktívában. Az offline szinkronizálási funkció a TodoItemManager.cs Project-fájlban található a hordozható osztály könyvtára projektben. A szolgáltatás fogalmi áttekintését lásd: [Offline adatszinkronizálás az Azure Mobile Appsban][2].
+Íme egy rövid áttekintés arról, hogy mi szerepel az oktatóanyag kódjában az `#if OFFLINE_SYNC_ENABLED`-irányelvekben. Az offline szinkronizálási funkció a TodoItemManager.cs Project-fájlban található a hordozható osztály könyvtára projektben. A szolgáltatás fogalmi áttekintését lásd: [Offline adatszinkronizálás az Azure Mobile Appsban][2].
 
 * A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót. A helyi áruház adatbázisát a **TodoItemManager** osztály konstruktora inicializálja a következő kód használatával:
 
@@ -149,7 +149,7 @@ Ebben a szakaszban módosítsa az ügyfél-projektet úgy, hogy egy offline forg
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Az ügyfélalkalmazás frissítése a mobil háttér újrakapcsolódásához
 Ebben a szakaszban újra csatlakozik az alkalmazáshoz a mobil háttérrendszer számára, amely szimulálja az alkalmazást egy online állapotba. A frissítési kézmozdulat végrehajtásakor az adatok szinkronizálva vannak a mobil háttérrel.
 
-1. Nyissa meg újra a Constants.cs. Javítsa ki a `applicationURL` értéket, hogy a megfelelő URL-címre mutasson.
+1. Nyissa meg újra a Constants.cs. Javítsa ki a `applicationURL`, hogy a megfelelő URL-címre mutasson.
 2. Hozza létre újra és futtassa az ügyfélalkalmazás alkalmazást. Az alkalmazás az indítás után megpróbál szinkronizálni a Mobile apps-háttérrel. Ellenőrizze, hogy a hibakeresési konzolon nincsenek-e naplózva kivételek.
 3. Választható A frissített adatok megtekintése SQL Server Object Explorer vagy egy REST-eszköz, például a Hegedűs vagy a [Poster][6]használatával. Figyelje meg, hogy az adatokat a háttér-adatbázis és a helyi tároló között szinkronizálták.
 

@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-A felhasználói felület szülőjének beállítása, az alapértelmezett szolgáltató felülbírálása, az ügyfél nevének és verziószámának megadása (telemetria esetén) további*paraméterekkel* rendelkezik, adjon meg egy átirányítási URI-t, adja meg a használni kívánt http-gyárat (például a proxyk kezelésére, adja meg a következőt: telemetria és naplózás). Ez a következő bekezdések témája.
+A felhasználói felület szülőjének beállítása, az alapértelmezett szolgáltató felülbírálása, az ügyfél nevének és verziószámának megadása (telemetria esetén) további*paraméterekkel* rendelkezik, adjon meg egy átirányítási URI-t, adja meg a használni kívánt http-gyárat (például a proxyk kezeléséhez, adja meg a telemetria és a naplózást). Ez a következő bekezdések témája.
 
 ##### <a name="specifying-the-parent-uiwindowactivity"></a>A szülő felhasználói felület/ablak/tevékenység meghatározása
 
@@ -216,7 +216,7 @@ Az objektum ablakának beállításához tegye a következőket:
 1) A `AppDelegate.cs`ban állítsa be a `App.RootViewController` egy új `UIViewController()`. Ez gondoskodik arról, hogy `UIViewController` a közvetítő meghívásával. Ha nincs megfelelően beállítva, akkor a következő hibaüzenet jelenhet meg: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 2) A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)` és adja át a hivatkozást a használni kívánt objektum-ablakra.
 
-**Például:**
+**Példa:**
 
 Az `App.cs` szkriptben:
 ```CSharp

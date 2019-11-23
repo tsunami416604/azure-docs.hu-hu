@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával'
+title: 'Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával'
 titleSuffix: Azure Cognitive Services
 description: Az anomáliák Kiderítő API-val és a Azure Databricks az adataiban észlelt rendellenességek figyelésére használható.
 titlesuffix: Azure Cognitive Services
@@ -18,7 +18,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/03/2019
 ms.locfileid: "71837778"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
 A [Azure Databricks](https://azure.microsoft.com/services/databricks/) egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Azure Cognitive Services részét képező rendellenesség-Kiderítő API lehetővé teszi az idősoros adatai figyelését. Ez az oktatóanyag egy közel valós idejű adatstreamen futtatja a anomáliák észlelését Azure Databricks használatával. A Twitter-adatbevitelt az Azure Event Hubs használatával végezheti el, és importálhatja őket a Azure Databricks a Spark Event Hubs-összekötő használatával. Ezt követően az API használatával észlelheti az adatfolyamban lévő adatvesztést. 
 
@@ -75,7 +75,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | Válassza ki az **USA 2. keleti** régióját vagy egy másik elérhető régiót. Tekintse meg a [régiók számára elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/) elérhetőségét.        |
+    |**Hely**     | Válassza ki az **USA 2. keleti** régióját vagy egy másik elérhető régiót. Tekintse meg a [régiók számára elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/) elérhetőségét.        |
     |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza a **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Kattintson a **Létrehozás** gombra.
@@ -98,7 +98,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
 
    * Adjon egy nevet a fürtnek.
    * Ehhez a cikkhez hozzon létre egy **5,2** futtatókörnyezettel rendelkező fürtöt. Ne válassza a **5,3** futtatókörnyezetet.
-   * Győződjön meg arról, hogy a **megszakítás \_ @ no__t-2 perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
+   * Győződjön meg arról, hogy a **megszakítás \_\_ perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
 
      Válassza a **Fürt létrehozása** lehetőséget. 
 4. A fürt létrehozása több percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
@@ -153,23 +153,23 @@ A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni s
 
 Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API](../overview.md) -k használatával futtathatja a anomáliák észlelését egy közel valós idejű tweetek streamen. Az API-k használata előtt létre kell hoznia egy rendellenesség-Kiderítő erőforrást az Azure-ban, és be kell szereznie egy hozzáférési kulcsot az anomália detektor API-k használatához
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
-3. Az Azure Marketplace területen válassza az **AI + Machine Learning** >  az**összes** > **Cognitive Services-more** > **anomália detektor**elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
+3. Az Azure Marketplace területen válassza az **AI + Machine Learning** > az **összes** > **Cognitive Services – több** > **anomália-érzékelőt**. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
 
     ![Anomália-Kiderítő erőforrás]létrehozása(../media/tutorials/databricks-cognitive-services-anomaly-detector.png "anomália-detektor erőforrás")
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
-    |Value |Leírás  |
+    |Érték |Leírás  |
     |---------|---------|
     |Name (Név)     | Az anomália-detektor erőforrásának neve.        |
-    |Subscription     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
-    |Location     | Egy Azure-beli hely.        |
+    |Előfizetést     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
+    |Hely     | Egy Azure-beli hely.        |
     |Tarifacsomag     | A szolgáltatás díjszabási szintje. További információ az anomália-detektor díjszabásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Resource group     | Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.        |
+    |Erőforráscsoport     | Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.        |
 
 
      Kattintson a **Létrehozás** gombra.
@@ -682,9 +682,9 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Datab
 
 ![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte az **\_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor a **megszakítás után \_\_ perc inaktivitás után** jelölőnégyzet be van jelölve. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hívhatja meg a rendellenesség-Kiderítő API-t, és hogyan jeleníthet meg rendellenességeket Power BI 
 

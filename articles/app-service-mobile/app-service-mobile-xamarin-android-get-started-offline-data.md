@@ -28,7 +28,7 @@ ms.locfileid: "72388505"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -44,7 +44,7 @@ Az offline szinkronizálási szolgáltatással kapcsolatos további tudnivalók�
 Az Azure Mobile App offline funkciói lehetővé teszik a helyi adatbázissal való interakciót, ha offline környezetben van. Ha ezeket a funkciókat az alkalmazásban szeretné használni, a [SyncContext] egy helyi tárolóba kell inicializálnia. Ezután a [IMobileServiceSyncTable](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mobileservices.sync.imobileservicesynctable?view=azure-dotnet) felületen keresztül hivatkozhat a táblára. Az SQLite a helyi tárolóként van használatban az eszközön.
 
 1. A Visual Studióban nyissa meg a NuGet csomagkezelő eszközt a projektben, amelyet a [Xamarin Android-alkalmazás létrehozása] oktatóanyagban végzett.  Keresse meg és telepítse a **Microsoft. Azure. Mobile. Client. SQLiteStore** NuGet csomagot.
-2. Nyissa meg a ToDoActivity.cs fájlt, és a `#define OFFLINE_SYNC_ENABLED` definíciójának megjegyzését.
+2. Nyissa meg a ToDoActivity.cs fájlt, és tegye meg a `#define OFFLINE_SYNC_ENABLED` definíciójának megjegyzését.
 3. A Visual Studióban nyomja le az **F5** billentyűt az újraépítéshez és az ügyfélalkalmazás futtatásához. Az alkalmazás ugyanúgy működik, mint az offline szinkronizálás engedélyezése előtt. A helyi adatbázis azonban már fel van töltve olyan adatokkal, amelyek offline környezetben használhatók.
 
 ## <a name="update-sync"></a>Az alkalmazás frissítése a háttérből való leválasztáshoz
@@ -60,26 +60,26 @@ Ebben a szakaszban megszakítja a kapcsolatát a Mobile apps-háttérrel az offl
 3. Adja meg az új elemeket, és figyelje meg, hogy a leküldés meghiúsul a [CancelledByNetworkError] állapottal, valahányszor a **Mentés**gombra kattint. Az új teendők azonban a helyi tárolóban léteznek, amíg a Mobile apps-háttérbe nem tudnak leküldeni őket.  Éles alkalmazásban, ha letiltja ezeket a kivételeket, az ügyfélalkalmazás úgy viselkedik, mintha továbbra is csatlakoztatva legyen a Mobile apps-háttérhöz.
 4. Az alkalmazás bezárásával ellenőrizze, hogy a létrehozott új elemek megmaradnak-e a helyi tárolóban.
 5. Választható A Visual Studióban nyissa meg a **Server Explorert**. Navigáljon az adatbázishoz az **Azure**->**SQL-adatbázisokban**. Kattintson a jobb gombbal az adatbázisra, és válassza **a Megnyitás a SQL Server Object Explorerban**lehetőséget. Most megkeresheti az SQL Database-táblázatot és annak tartalmát. Győződjön meg arról, hogy a háttér-adatbázisban lévő összes érték nem módosult.
-6. Választható Használjon REST-eszközt, például a hegedűst vagy a Poster-t a mobil háttér lekérdezéséhez, `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` formátumú GET lekérdezés használatával.
+6. Választható Használjon REST-eszközt, mint például a Hegedűs vagy a Poster a mobil háttér lekérdezéséhez a GET lekérdezés használatával `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
 ## <a name="update-online-app"></a>Az alkalmazás frissítése a Mobile apps-háttér újrakapcsolódásához
 
-Ebben a szakaszban újra csatlakozik az alkalmazáshoz a Mobile apps-háttérrel. Az alkalmazás első futtatásakor a `OnCreate` eseménykezelő meghívja a `OnRefreshItemsSelected` értéket. Ezzel a módszerrel a `SyncAsync` meghívásával szinkronizálhatja a helyi tárolót a háttér-adatbázissal.
+Ebben a szakaszban újra csatlakozik az alkalmazáshoz a Mobile apps-háttérrel. Az alkalmazás első futtatásakor a `OnCreate` eseménykezelő meghívja a `OnRefreshItemsSelected`. Ez a metódus meghívja a `SyncAsync`t, hogy szinkronizálja a helyi tárolót a háttér-adatbázissal.
 
 1. Nyissa meg a ToDoActivity.cs a megosztott projektben, és állítsa be a **applicationURL** tulajdonság változását.
-2. Az alkalmazás újraépítéséhez és futtatásához nyomja le az **F5** billentyűt. Az alkalmazás a `OnRefreshItemsSelected` metódus végrehajtásakor leküldéses és lekéréses műveletekkel szinkronizálja a helyi módosításokat az Azure Mobile apps-háttérrel.
+2. Az alkalmazás újraépítéséhez és futtatásához nyomja le az **F5** billentyűt. Az alkalmazás a `OnRefreshItemsSelected` metódus végrehajtásakor leküldéses és lekéréses műveletekkel szinkronizálja a helyi módosításokat az Azure Mobile App backend használatával.
 3. Választható A frissített adatok megtekintése SQL Server Object Explorer vagy REST-eszköz, például a Hegedűs használatával. Figyelje meg, hogy az adatokat szinkronizálták az Azure Mobile App backend-adatbázisa és a helyi tároló között.
 4. Az alkalmazásban kattintson a jelölőnégyzetre néhány elem mellett, hogy elvégezze azokat a helyi tárolóban.
 
-   @no__t – 0 meghívja a `SyncAsync` értéket, hogy szinkronizálja az egyes befejezett elemeket a Mobile apps-háttérrel. @no__t a 0 leküldéses és lekéréses hívásokat hív meg. Amikor lekéri a **lekérést egy olyan táblára, amelyen az ügyfél módosításokat hajtott végre, a leküldéses szolgáltatás mindig automatikusan lefut**. Ez biztosítja, hogy a helyi tárolóban lévő összes tábla és a kapcsolatok konzisztensek maradjanak. Ez a viselkedés nem várt leküldést eredményezhet. További információ erről a viselkedésről: [Offline adatszinkronizálás az Azure Mobile Appsban].
+   `CheckItem` meghívja a `SyncAsync`, hogy szinkronizálja az egyes befejezett elemeket a Mobile apps-háttérrel. a `SyncAsync` leküldéses és lekéréses hívásokat kezdeményez. Amikor lekéri a **lekérést egy olyan táblára, amelyen az ügyfél módosításokat hajtott végre, a leküldéses szolgáltatás mindig automatikusan lefut**. Ez biztosítja, hogy a helyi tárolóban lévő összes tábla és a kapcsolatok konzisztensek maradjanak. Ez a viselkedés nem várt leküldést eredményezhet. További információ erről a viselkedésről: [Offline adatszinkronizálás az Azure Mobile Appsban].
 
 ## <a name="review-the-client-sync-code"></a>Az ügyfél-szinkronizálási kód áttekintése
 
 A [Xamarin Android-alkalmazás létrehozása] letöltött Xamarin-ügyfél-projekt már tartalmaz olyan kódot, amely támogatja az offline szinkronizálást egy helyi SQLite-adatbázis használatával. Íme egy rövid áttekintés arról, hogy mi szerepel az oktatóanyag kódjában. A szolgáltatás fogalmi áttekintését lásd: [Offline adatszinkronizálás az Azure Mobile Appsban].
 
-* A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót. A helyi áruház adatbázisa inicializálva van, ha a `ToDoActivity.OnCreate()` végrehajtja a `ToDoActivity.InitLocalStoreAsync()` értéket. Ez a módszer egy helyi SQLite-adatbázist hoz létre az Azure Mobile Apps Client SDK által biztosított `MobileServiceSQLiteStore` osztály használatával.
+* A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót. A helyi áruház adatbázisa inicializálva lesz, amikor a `ToDoActivity.OnCreate()` végrehajtja `ToDoActivity.InitLocalStoreAsync()`. Ez a módszer egy helyi SQLite-adatbázist hoz létre az Azure Mobile Apps Client SDK által biztosított `MobileServiceSQLiteStore` osztály használatával.
 
-    A `DefineTable` metódus létrehoz egy táblát a helyi tárolóban, amely megfelel a megadott típus mezőinek, `ToDoItem` Ebben az esetben. A típusnak nem kell tartalmaznia a távoli adatbázisban lévő összes oszlopot. Az oszlopok csak egy részhalmazát lehet tárolni.
+    A `DefineTable` metódus létrehoz egy táblát a helyi tárolóban, amely megfelel a megadott típus mezőinek, `ToDoItem` ebben az esetben. A típusnak nem kell tartalmaznia a távoli adatbázisban lévő összes oszlopot. Az oszlopok csak egy részhalmazát lehet tárolni.
 
         // ToDoActivity.cs
         private async Task InitLocalStoreAsync()
@@ -101,13 +101,13 @@ A [Xamarin Android-alkalmazás létrehozása] letöltött Xamarin-ügyfél-proje
             // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
-* A `toDoTable` `ToDoActivity` tagja `IMobileServiceSyncTable` típusú, `IMobileServiceTable` helyett. A IMobileServiceSyncTable az összes létrehozási, olvasási, frissítési és törlési (szifilisz) tábla műveletet a helyi tároló adatbázisára irányítja.
+* A `ToDoActivity` `toDoTable` tagjának `IMobileServiceSyncTable` típusa `IMobileServiceTable`helyett. A IMobileServiceSyncTable az összes létrehozási, olvasási, frissítési és törlési (szifilisz) tábla műveletet a helyi tároló adatbázisára irányítja.
 
-    Az `IMobileServiceSyncContext.PushAsync()` meghívásával döntheti el, hogy a módosítások az Azure Mobile apps-háttérre kerülnek-e. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és a változtatások megadásával, amelyet az ügyfélalkalmazás a `PushAsync` hívásakor módosított.
+    Ha úgy dönt, hogy a módosításokat az Azure Mobile apps-háttérbe küldi, a `IMobileServiceSyncContext.PushAsync()`meghívásával. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és kitolásával, amelyet az ügyfélalkalmazás a `PushAsync` hívásakor módosít.
 
-    A megadott kód `ToDoActivity.SyncAsync()` értéket hív meg a todoitem-lista frissítésekor vagy egy todoitem hozzáadásakor vagy befejezésekor. A kód minden helyi módosítás után szinkronizál.
+    A megadott kód meghívja `ToDoActivity.SyncAsync()` szinkronizálni a todoitem-lista frissítésekor, vagy egy todoitem hozzáadása vagy befejezése után. A kód minden helyi módosítás után szinkronizál.
 
-    A megadott kódban a távoli `TodoItem` tábla összes rekordja le van kérdezve, de a rekordokat a lekérdezés azonosítójának és lekérdezésének a `PushAsync` értékre való átadásával is lehet szűrni. További információ: *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Appsban].
+    A megadott kódban a távoli `TodoItem` tábla összes rekordja le van kérdezve, de a rekordokat a lekérdezés azonosítójának és lekérdezésének átadásával is szűrheti `PushAsync`. További információ: *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Appsban].
 
         // ToDoActivity.cs
         private async Task SyncAsync()

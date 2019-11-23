@@ -67,7 +67,7 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
    docker build . -t tomcattest
    ```
 
-   Ez a parancs létrehozza az új rendszerképet a Docker, a (-t címkézés) `tomcattest` rendszerképben szereplő utasítások alapján. A tárolók rendszerképének létrehozásához először le kell töltenie az alapképet a Docker hub-ból, és hozzá kell adni az alkalmazást. 
+   Ez a parancs létrehozza az új rendszerképet a Docker, a (-t címkézés) `tomcattest`rendszerképben szereplő utasítások alapján. A tárolók rendszerképének létrehozásához először le kell töltenie az alapképet a Docker hub-ból, és hozzá kell adni az alkalmazást. 
 
    Miután az összeállító parancs lefutott, futtassa a `docker images` parancsot az új rendszerkép információinak megtekintéséhez:
 
@@ -84,7 +84,7 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * @no__t – 0 a tárolót nevezi el, így az azonosító helyett egy rövid nevet használva hivatkozhat rá.
+   * `--name` a tároló nevét, így az azonosító helyett egy rövid nevet használva hivatkozhat rá.
    * `-p` a tároló és a gazda operációs rendszer közötti port-hozzárendelést adja meg. 
 
    > [!Note]
@@ -110,7 +110,7 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>A Tomcat-rendszerkép leküldése a tároló-beállításjegyzékbe
 Most, hogy ellenőrizte, hogy a Tomcat-rendszerkép egy tárolóban fut a fejlesztői számítógépen, leküldheti azt egy tároló-beállításjegyzékben lévő adattárba. Ez a cikk a rendszerkép tárolására Azure Container Registry használ, de a lépések némelyikének módosításával bármely kiválasztott tároló-beállításjegyzéket használhat. Ebben a cikkben a rendszer feltételezi, hogy a beállításjegyzék neve *myregistry* , és a teljes beállításjegyzék neve myregistry.azurecr.IO. Módosítsa ezeket megfelelően a forgatókönyvhöz. 
 
-1. A `docker login` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
+1. `docker login` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
    Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
@@ -191,7 +191,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Az előző parancsban cserélje le a `your-certificate.pem` értéket az ügyféltanúsítvány-fájl nevére. A fejlesztési és tesztelési környezetekben a fürt tanúsítványát gyakran használják ügyféltanúsítványt. Ha a tanúsítvány nem önaláírt, hagyja ki a `-no-verify` paramétert. 
+     Az előző parancsban cserélje le az `your-certificate.pem` az ügyféltanúsítvány-fájl nevére. A fejlesztési és tesztelési környezetekben a fürt tanúsítványát gyakran használják ügyféltanúsítványt. Ha a tanúsítvány nem önaláírt, hagyja ki a `-no-verify` paramétert. 
        
      A fürtözött tanúsítványok általában. pfx-fájlként vannak letöltve. Ha még nem rendelkezik a tanúsítvány PEM formátumban való használatával, a következő parancs futtatásával hozhat létre egy. pfx-fájlból származó. PEM-fájlt:
 
@@ -199,7 +199,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     Ha a. pfx fájl jelszava nem védett, az utolsó paraméterhez használja a `-passin pass:` értéket.
+     Ha a. pfx fájl jelszava nem védett, használja a `-passin pass:` az utolsó paraméterhez.
 
 
 13. Futtassa a sablonban megadott telepítési parancsfájlt az alkalmazás fürtön való üzembe helyezéséhez. A szkript átmásolja az alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és létrehozza az alkalmazás egy példányát.
@@ -210,8 +210,8 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
 
    A telepítési parancsfájl futtatása után nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer:
     
-   * Helyi fürtön használja a `http://localhost:19080/Explorer` (a *localhost* értéket a virtuális gép magánhálózati IP-címével, ha a csavargót Mac OS X rendszeren használja).
-   * Biztonságos Azure-fürtön használja a következőt: `https://PublicIPorFQDN:19080/Explorer`. 
+   * Helyi fürtön használja a `http://localhost:19080/Explorer` (a *localhost* a virtuális gép magánhálózati IP-címével, ha a Mac OS X-ben a Csavargót használja).
+   * Biztonságos Azure-fürtön használja a `https://PublicIPorFQDN:19080/Explorer`. 
     
    Bontsa ki az **alkalmazások** csomópontot, és figyelje meg, hogy most már van egy bejegyzés az alkalmazás típusához, a **ServiceFabricTomcatType**és egy másikhoz az adott típus első példányához. Az alkalmazás teljes körű üzembe helyezése eltarthat néhány percig, tehát türelmesnek kell lennie.
 

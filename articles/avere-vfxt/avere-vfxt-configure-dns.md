@@ -41,7 +41,8 @@ Az optimális teljesítmény érdekében konfigurálja úgy a DNS-kiszolgálót,
 
 A bal oldalon megjelenik egy fürt VServer, és az IP-címek a központban és a jobb oldalon jelennek meg. Konfigurálja az egyes ügyfél-hozzáférési pontokat egy rekordokkal és mutatókkal az ábrán látható módon.
 
-@no__t 0Avere-fürt ciklikus multiplexelés DNS-diagramja @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![avere-fürt ciklikus multiplexelés DNS-diagramja](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Minden ügyfél felé irányuló IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatára. (Ebben a diagramban az ügyfél IP-címeinek neve vs1-Client-IP-*, az éles környezetben azonban érdemes lehet valami tömörebb, például az ügyfél * esetében használni.)
 
@@ -73,11 +74,11 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Fürt DNS-beállításai
 
-Válassza ki azt a DNS-kiszolgálót, amelyet a vFXT-fürt használ a **fürt** > **felügyeleti hálózati** beállítások lapján. Az oldalon található beállítások a következők:
+Válassza ki azt a DNS-kiszolgálót, amelyet a vFXT-fürt a **fürt** > **felügyeleti hálózati** beállítások lapján használ. Az oldalon található beállítások a következők:
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév
-* DNS-keresési tartományok
+* DNS search domains
 
 A lap használatával kapcsolatos további részletekért olvassa el a [DNS-beállításokat](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) a avere-fürt konfigurációs útmutatójában.
 

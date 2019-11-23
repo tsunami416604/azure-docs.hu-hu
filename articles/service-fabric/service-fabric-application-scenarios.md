@@ -68,9 +68,9 @@ Az állapot-nyilvántartó szolgáltatások leegyszerűsítik az alkalmazások k
 
 Az alábbi ábrák az állapot nélküli alkalmazások megtervezése és az egyik állapot közötti különbséget szemléltetik. A [Reliable Services](service-fabric-reliable-services-introduction.md) és [Reliable Actors](service-fabric-reliable-actors-introduction.md) programozási modellek előnyeit kihasználva az állapot-nyilvántartó szolgáltatások csökkentik az alkalmazások összetettségét a nagy átviteli sebesség és az alacsony késés elérése mellett.
 
-Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazást használja: ![Application, amely állapot nélküli szolgáltatásokat használ @ no__t-1
+Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazást használja: ![állapot nélküli szolgáltatásokat használó alkalmazás][Image1]
 
-Az alábbi példa olyan állapot-nyilvántartó szolgáltatásokat használó alkalmazást használ: ![Application, amely állapot-nyilvántartó szolgáltatásokat használ @ no__t-1
+Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![állapot-nyilvántartó szolgáltatásokat használó alkalmazás][Image2]
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -79,7 +79,7 @@ Az oktatóanyag elvégzése előfeltétele az Android-alkalmazásokhoz tartozó 
 
 1. A bal oldali ablaktábla **Beállítások** területén válassza a **Google (GCM/FCM)** lehetőséget. 
 2. Adja meg a korábban mentett FCM-projekthez tartozó **kiszolgálói kulcsot** . 
-3. Az eszköztáron válassza a **Mentés**lehetőséget. 
+3. Válassza az eszköztár **mentése**. 
 
     ![Azure Notification hub – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 4. A Azure Portal üzenet jelenik meg a riasztásokban, hogy a központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva. 
@@ -146,7 +146,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
 
 ### <a name="update-the-androidmanifestxml-file"></a>A AndroidManifest. xml fájl frissítése
 
-1. Az FCM regisztrációs jogkivonat kézhezvétele után az Azure Notification Hubs-ban való [regisztrálásra](notification-hubs-push-notification-registration-management.md)használható. Ezt a regisztrációt a háttérben `IntentService` nevű `RegistrationIntentService` használatával támogathatja. Ez a szolgáltatás az FCM regisztrációs tokent is frissíti. Létrehoz egy `FirebaseService` nevű osztályt is `FirebaseMessagingService` alosztályként, és felülbírálja a `onMessageReceived` metódust az értesítések fogadásához és kezeléséhez. 
+1. Az FCM regisztrációs jogkivonat kézhezvétele után az Azure Notification Hubs-ban való [regisztrálásra](notification-hubs-push-notification-registration-management.md)használható. Ezt a regisztrációt a háttérben a `RegistrationIntentService`nevű `IntentService` használatával támogathatja. Ez a szolgáltatás az FCM regisztrációs tokent is frissíti. Létrehoz egy `FirebaseService` nevű osztályt is `FirebaseMessagingService` alosztályként, és felülbírálja a `onMessageReceived` metódust az értesítések fogadásához és kezeléséhez. 
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül.
 
@@ -177,8 +177,8 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
 
     Győződjön meg arról, hogy frissítette ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
 
-   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. A kapcsolati karakterlánc másolásához kattintson a [Azure Portalra]a központ **hozzáférési szabályzatok** elemére.
-   * **HubName**: használja az [Azure Portalra]hub lapján megjelenő hub nevét.
+   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. A kapcsolati karakterlánc másolásához kattintson a [Azure Portal]a központ **hozzáférési szabályzatok** elemére.
+   * **HubName**: használja az [Azure Portal]hub lapján megjelenő hub nevét.
 
      `NotificationSettings` kód:
 
@@ -294,7 +294,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-3. A `MainActivity` osztályban adja hozzá a következő `import` utasítást az osztály deklarációja fölé.
+3. A `MainActivity` osztályban adja hozzá a következő `import` utasításokat az osztály deklarációja felett.
 
     ```java
     import com.google.android.gms.common.ConnectionResult;
@@ -341,7 +341,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-6. A `MainActivity` osztályban adja hozzá a következő kódot, amely ellenőrzi a Google Play-szolgáltatásokat, mielőtt meghívja a `IntentService`-et az FCM regisztrációs jogkivonat beszerzéséhez és a hub-beli regisztrációhoz:
+6. A `MainActivity` osztályban adja hozzá az alábbi kódot, amely a Google Play-szolgáltatásokat ellenőrzi, mielőtt meghívja a `IntentService` az FCM regisztrációs jogkivonat beszerzéséhez és a hub-beli regisztrációhoz:
 
     ```java
     public void registerWithNotificationHubs()
@@ -354,7 +354,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-7. Az `MainActivity` osztály `OnCreate` metódusában adja hozzá a következő kódot a regisztrációs folyamat elindításához a tevékenység létrehozásakor:
+7. A `MainActivity` osztály `OnCreate` metódusában adja hozzá a következő kódot a regisztrációs folyamat elindításához a tevékenység létrehozásakor:
 
     ```java
     @Override
@@ -368,7 +368,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-8. Az alkalmazás állapotának és a jelentés állapotának az alkalmazásban való ellenőrzéséhez adja hozzá ezeket a további metódusokat a `MainActivity` értékhez:
+8. Az alkalmazás állapotának és a jelentés állapotának az alkalmazásban való ellenőrzéséhez adja hozzá ezeket a további metódusokat a `MainActivity`hoz:
 
     ```java
     @Override
@@ -407,7 +407,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res** > **elrendezésben** > **activity_main. XML** elrendezésben adja hozzá a következő azonosítót a vezérlőhöz.
+9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res** > **elrendezésében** > **activity_main. XML** elrendezésben adja hozzá a következő azonosítót a vezérlőhöz.
 
     ```java
     android:id="@+id/text_hello"
@@ -435,9 +435,9 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     import androidx.core.app.NotificationCompat;
     ```
 
-12. Adja hozzá a következő kódot a `FirebaseService` osztályhoz, ami `FirebaseMessagingService` alosztálya.
+12. Adja hozzá a következő kódot a `FirebaseService` osztályhoz, ami `FirebaseMessagingService`alosztálya.
 
-    Ez a kód felülbírálja a `onMessageReceived` metódust és a fogadott értesítéseket. a leküldéses értesítést is elküldi az Android Notification Managernek az `sendNotification()` metódus használatával. Hívja meg a `sendNotification()` metódust, ha az alkalmazás nem fut, és értesítést kap.
+    Ez a kód felülbírálja a `onMessageReceived` metódust és a beérkező jelentések értesítéseit. a leküldéses értesítést is elküldi az Android Notification Managernek az `sendNotification()` metódus használatával. Hívja meg a `sendNotification()` metódust, ha az alkalmazás nem fut, és értesítést kap.
 
     ```java
     public class FirebaseService extends FirebaseMessagingService
@@ -522,7 +522,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-13. Android Studio a menüsávon válassza a **Build** > **Újraépítés projekt** lehetőséget, hogy a kódban ne legyen hiba. Ha hibaüzenet jelenik meg a `ic_launcher` ikonnal kapcsolatban, távolítsa el a következő utasítást a AndroidManifest. XML fájlból: 
+13. Android Studio a menüsávon válassza a **létrehozás** > **Újraépítés projekt** lehetőséget, hogy a kódban ne legyen hiba. Ha hibaüzenetet kap a `ic_launcher` ikonról, távolítsa el a következő utasítást a AndroidManifest. XML fájlból: 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -540,7 +540,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
 
 ## <a name="test-send-notification-from-the-notification-hub"></a>Értesítések küldésének tesztelése az értesítési központból
 
-Leküldéses értesítéseket a [Azure Portalra] küldhet a következő lépések végrehajtásával:
+Leküldéses értesítéseket a [Azure Portal] küldhet a következő lépések végrehajtásával:
 
 1. A Azure Portal a központ értesítési központ lapján válassza a **küldési teszt** lehetőséget a **Hibaelhárítás** szakaszban.
 3. A **Platformok** beállításnál válassza az **Android** lehetőséget.
@@ -556,9 +556,9 @@ Leküldéses értesítéseket a [Azure Portalra] küldhet a következő lépése
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>A Mobile App futtatása az emulátoron
-Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győződjön meg arról, hogy az Emulator-rendszerkép támogatja az alkalmazáshoz választott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, akkor előfordulhat, hogy a **szolgáltatás @ no__t-1NOT @ no__t-2AVAILABLE** kivételt kapja.
+Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győződjön meg arról, hogy az Emulator-rendszerkép támogatja az alkalmazáshoz választott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, előfordulhat, hogy a **szolgáltatás\_nem\_elérhető** kivétel.
 
-Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **beállítások** > **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek a **hitelesítés @ no__t-1FAILED** kivételt okozhatják.
+Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **beállítások** > **fiókok**területen. Ellenkező esetben előfordulhat, hogy az FCM-sel való regisztrációra tett kísérletek a **hitelesítési\_sikertelen** kivételt eredményeznek.
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
@@ -573,4 +573,4 @@ Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta a
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

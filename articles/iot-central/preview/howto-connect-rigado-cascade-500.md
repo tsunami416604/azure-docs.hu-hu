@@ -68,6 +68,6 @@ Ez a frissítés alkalmazza a IoT Central kapcsolat részleteit a lépcsőzetes 
 
 Most már készen áll a C500-eszköz használatára a IoT Central alkalmazásban!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan csatlakoztatható a Rigado Cascade 500 az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [hozhat létre egy beépített elemzési alkalmazást](../retail/tutorial-in-store-analytics-create-app-pnp.md) a teljes körű megoldás létrehozásához. 

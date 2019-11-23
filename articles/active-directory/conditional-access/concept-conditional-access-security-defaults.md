@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory security defaults
-description: Security default policies that help protect organizations from common attacks
+title: Azure Active Directory biztonsági alapértelmezett beállítások
+description: Biztonsági alapértelmezett házirendek, amelyek segítenek a szervezetek számára a gyakori támadások elleni védelemben
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,116 +18,116 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74208396"
 ---
-# <a name="what-are-security-defaults"></a>What are security defaults?
+# <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
-Managing security can be difficult when common identity-related attacks are becoming more and more popular. These attacks include password spray, replay, and phishing.
+A biztonság kezelése nehéz lehet, ha a közös identitással kapcsolatos támadások egyre népszerűbbek. A támadások közé tartozik a jelszó-és a visszajátszás, valamint az adathalászat.
 
-Security defaults in Azure Active Directory (Azure AD) make it easier to be secure and help protect your organization. Security defaults contain preconfigured security settings for common attacks. 
+A Azure Active Directory (Azure AD) biztonsági alapértékei megkönnyítik a biztonságos biztonságot, és segítenek a szervezet védelmében. A biztonsági alapértékek előre konfigurált biztonsági beállításokat tartalmaznak a gyakori támadásokhoz. 
 
-Microsoft is making security defaults available to everyone. The goal is to ensure that all organizations have a basic level of security enabled at no extra cost. You turn on security defaults in the Azure portal.
+A Microsoft mindenki számára elérhetővé teszi a biztonsági beállításokat. A cél annak biztosítása, hogy az összes szervezet külön díj nélkül engedélyezze az alapszintű biztonsági szintet. A biztonsági alapértelmezéseket be kell kapcsolni a Azure Portal.
 
-![Screenshot of the Azure portal with the toggle to enable security defaults](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
+![Képernyőkép a Azure Portalról a biztonsági Alapértelmezések engedélyezésére szolgáló váltógomb használatával](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
  
-The following security configurations will be turned on in your tenant. 
+A következő biztonsági konfigurációk lesznek bekapcsolva a bérlőben. 
 
-## <a name="unified-multi-factor-authentication-registration"></a>Unified Multi-Factor Authentication registration
+## <a name="unified-multi-factor-authentication-registration"></a>Egységesített Multi-Factor Authentication regisztráció
 
-All users in your tenant must register for multi-factor authentication (MFA) in the form of the Azure Multi-Factor Authentication service. Users have 14 days to register for Multi-Factor Authentication by using the Microsoft Authenticator app. After the 14 days have passed, the user won't be able to sign in until Multi-Factor Authentication registration is finished.
+A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítést (MFA) az Azure Multi-Factor Authentication szolgáltatás formájában. A felhasználók 14 napon belül regisztrálhatnak Multi-Factor Authenticationre a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg Multi-Factor Authentication regisztráció be nem fejeződik.
 
-We understand that some users might be out of office or won't sign in during the 14 days immediately after enabling security defaults. To ensure that every user has ample time to register for Multi-Factor Authentication, the 14-day period is unique for each user. A user's 14-day period begins after their first successful interactive sign-in after you enable security defaults.
+Tisztában vagyunk azzal, hogy előfordulhat, hogy egyes felhasználók házon kívül vannak, vagy nem jelentkeznek be a biztonsági beállítások engedélyezése után 14 napon belül. Annak biztosítása érdekében, hogy minden felhasználó számára elegendő idő legyen a Multi-Factor Authentication regisztrálására, a 14 napos időszak minden felhasználó esetében egyedi. A felhasználók 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik, miután engedélyezte a biztonsági beállításokat.
 
-## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication enforcement
+## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication kényszerítés
 
-### <a name="protecting-administrators"></a>Protecting administrators
+### <a name="protecting-administrators"></a>A rendszergazdák védelme
 
-Users with access to privileged accounts have increased access to your environment. Due to the power these accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification for sign-in. In Azure AD, you can get a stronger account verification by requiring Multi-Factor Authentication.
+A Kiemelt fiókokhoz hozzáféréssel rendelkező felhasználók nagyobb hozzáférést biztosítanak a környezethez. Ezeknek a fiókoknak a kihasználása miatt speciális gondossággal kell kezelnie őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere a fiók-ellenőrzés erősebb formájának megkövetelése a bejelentkezéshez. Az Azure AD-ben a Multi-Factor Authentication megkövetelésével erősebb fiókokat lehet ellenőrizni.
 
-After registration with Multi-Factor Authentication is finished, the following nine Azure AD administrator roles will be required to perform additional authentication every time they sign in:
+A Multi-Factor Authentication való regisztráció után a következő kilenc Azure AD-rendszergazdai szerepkör szükséges további hitelesítés végrehajtásához minden alkalommal, amikor bejelentkeznek:
 
 - Globális rendszergazda
 - SharePoint-rendszergazda
-- Exchange administrator
-- Conditional Access administrator
+- Exchange-rendszergazda
+- Feltételes hozzáférésű rendszergazda
 - Biztonsági rendszergazda
-- Helpdesk administrator or password administrator
+- Segélyszolgálat rendszergazdája vagy jelszavas rendszergazdája
 - Számlázási rendszergazda
-- User administrator
-- Authentication administrator
+- Felhasználói rendszergazda
+- Hitelesítés rendszergazdája
 
-### <a name="protecting-all-users"></a>Protecting all users
+### <a name="protecting-all-users"></a>Az összes felhasználó védelme
 
-We tend to think that administrator accounts are the only accounts that need extra layers of authentication. Administrators have broad access to sensitive information and can make changes to subscription-wide settings. But attackers tend to target end users. 
+Általában úgy gondoljuk, hogy a rendszergazdai fiókok az egyetlen olyan fiókok, amelyeknek további hitelesítési rétegre van szükségük. A rendszergazdák széles körű hozzáféréssel rendelkeznek a bizalmas adatokhoz, és módosíthatják az előfizetési szintű beállításokat. A támadók azonban általában a végfelhasználók számára célozzák meg. 
 
-After these attackers gain access, they can request access to privileged information on behalf of the original account holder. They can even download the entire directory to perform a phishing attack on your whole organization. 
+Miután ezek a támadók hozzáférnek, az eredeti fiók tulajdonosának nevében kérhetnek hozzáférést az emelt szintű információhoz. Akár le is tölthetik a teljes könyvtárat, hogy elvégezzenek egy adathalászat elleni támadást a teljes szervezetben. 
 
-One common method to improve protection for all users is to require a stronger form of account verification, such as Multi-Factor Authentication, for everyone. After users finish Multi-Factor Authentication registration, they'll be prompted for additional authentication whenever necessary.
+Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók befejezték Multi-Factor Authentication regisztrációt, a rendszer szükség esetén további hitelesítést kér.
 
-### <a name="blocking-legacy-authentication"></a>Blocking legacy authentication
+### <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
 
-To give your users easy access to your cloud apps, Azure AD supports a variety of authentication protocols, including legacy authentication. *Legacy authentication* is a term that refers to an authentication request made by:
+Ahhoz, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazásokhoz, az Azure AD számos hitelesítési protokollt támogat, beleértve az örökölt hitelesítést is. Az *örökölt hitelesítés* olyan kifejezés, amely a által végzett hitelesítési kérelemre hivatkozik:
 
-- Older Office clients that don't use modern authentication (for example, an Office 2010 client).
-- Any client that uses older mail protocols such as IMAP, SMTP, or POP3.
+- Régebbi Office-ügyfelek, amelyek nem használnak modern hitelesítést (például Office 2010-ügyfél).
+- Minden olyan ügyfél, amely régebbi levelezési protokollokat használ, mint például az IMAP, az SMTP vagy a POP3.
 
-Today, the majority of compromising sign-in attempts come from legacy authentication. Legacy authentication does not support Multi-Factor Authentication. Even if you have a Multi-Factor Authentication policy enabled on your directory, an attacker can authenticate by using an older protocol and bypass Multi-Factor Authentication. 
+Napjainkban a kiegyezéses bejelentkezési kísérletek többsége örökölt hitelesítésből származik. Az örökölt hitelesítés nem támogatja a Multi-Factor Authentication. Ha a címtárban engedélyezve van a Multi-Factor Authentication szabályzat, a támadó egy régebbi protokoll használatával is hitelesítheti magát, és megkerülheti a Multi-Factor Authentication. 
 
-After security defaults are enabled in your tenant, all authentication requests made by an older protocol will be blocked. Security defaults don't block Exchange ActiveSync.
+Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi protokoll által végrehajtott összes hitelesítési kérelem le lesz tiltva. A biztonsági alapértelmezett beállítások nem gátolják meg az Exchange ActiveSync szolgáltatást.
 
-### <a name="protecting-privileged-actions"></a>Protecting privileged actions
+### <a name="protecting-privileged-actions"></a>A Kiemelt műveletek védelme
 
-Organizations use a variety of Azure services managed through the Azure Resource Manager API, including:
+A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző Azure-szolgáltatásokat használják, beleértve a következőket:
 
 - Azure Portal 
 - Azure PowerShell 
-- Azure parancssori felület (CLI)
+- Azure CLI
 
-Using Azure Resource Manager to manage your services is a highly privileged action. Azure Resource Manager can alter tenant-wide configurations, such as service settings and subscription billing. Single-factor authentication is vulnerable to a variety of attacks like phishing and password spray. 
+A Azure Resource Manager használata a szolgáltatások kezeléséhez magas jogosultsági szintű művelet. Azure Resource Manager megváltoztathatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását. Az egytényezős hitelesítés számos különböző támadáshoz, például az adathalászathoz és a jelszó-permetezéshez van kitéve. 
 
-It's important to verify the identity of users who want to access Azure Resource Manager and update configurations. You verify their identity by requiring additional authentication before you allow access.
+Fontos ellenőrizni azon felhasználók identitását, akik szeretnének hozzáférni Azure Resource Manager és frissíteni a konfigurációkat. A hozzáférés engedélyezése előtt ellenőrizze az identitását további hitelesítés megkövetelésével.
 
-After you enable security defaults in your tenant, any user who's accessing the Azure portal, Azure PowerShell, or the Azure CLI will need to complete additional authentication. This policy applies to all users who are accessing Azure Resource Manager, whether they're an administrator or a user. 
+Miután engedélyezte a biztonsági alapértelmezett beállításokat a bérlőben, a Azure Portalt, Azure PowerShellt vagy az Azure CLI-t elérő bármely felhasználónak további hitelesítést kell végeznie. Ez a szabályzat minden olyan felhasználóra vonatkozik, aki Azure Resource Managerhoz fér hozzá, függetlenül attól, hogy rendszergazda vagy felhasználó. 
 
-If the user isn't registered for Multi-Factor Authentication, the user will be required to register by using the Microsoft Authenticator app in order to proceed. No 14-day Multi-Factor Authentication registration period will be provided.
+Ha a felhasználó nincs regisztrálva a Multi-Factor Authenticationhoz, a folytatáshoz a Microsoft Authenticator alkalmazás használatával kell regisztrálnia a felhasználót. A rendszer nem biztosít 14 napos Multi-Factor Authentication regisztrációs időszakot.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-The following additional considerations are related to deployment of security defaults for your tenant.
+A következő további szempontok a bérlő biztonsági alapértékeinek üzembe helyezésével kapcsolatosak.
 
-### <a name="older-protocols"></a>Older protocols
+### <a name="older-protocols"></a>Régebbi protokollok
 
-Mail clients use older authentication protocols (like IMAP, SMTP, and POP3) to make authentication requests. These protocols don't support Multi-Factor Authentication. Most of the account compromises that Microsoft sees are from attacks against older protocols that are trying to bypass Multi-Factor Authentication. 
+A levelezési ügyfelek a régebbi hitelesítési protokollokat (például az IMAP, az SMTP és a POP3) használják a hitelesítési kérések elvégzéséhez. Ezek a protokollok nem támogatják a Multi-Factor Authentication. A fiók többsége megsérti a Microsoftot, hogy olyan régebbi protokollokkal szembeni támadásokkal szemben, amelyek a Multi-Factor Authentication megkerülésére próbálnak kerülni. 
 
-To ensure that Multi-Factor Authentication is required for signing in to an administrative account and that attackers can't bypass it, security defaults block all authentication requests made to administrator accounts from older protocols.
+Annak biztosítása érdekében, hogy Multi-Factor Authentication szükséges a rendszergazdai fiókba való bejelentkezéshez, és hogy a támadók ne tudják megkerülni azt, a biztonsági alapértékek blokkolják a rendszergazdai fiókokra vonatkozó összes hitelesítési kérelmet a régebbi protokollok közül.
 
 > [!WARNING]
-> Before you enable this setting, make sure your administrators aren't using older authentication protocols. For more information, see [How to move away from legacy authentication](concept-conditional-access-block-legacy-authentication.md).
+> A beállítás engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-conditional-access-block-legacy-authentication.md).
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
-You can use Conditional Access to configure policies that provide the same behavior enabled by security defaults. If you're using Conditional Access and have Conditional Access policies enabled in your environment, security defaults won't be available to you. If you have a license that provides Conditional Access but don't have any Conditional Access policies enabled in your environment, you are welcome to use security defaults until you enable Conditional Access policies.
+A feltételes hozzáférés használatával olyan házirendeket konfigurálhat, amelyek a biztonsági Alapértelmezések által engedélyezett viselkedést biztosítják. Ha feltételes hozzáférést használ, és a környezetében engedélyezve vannak feltételes hozzáférési szabályzatok, a biztonsági beállítások nem lesznek elérhetők az Ön számára. Ha olyan licenccel rendelkezik, amely feltételes hozzáférést biztosít, de nem rendelkezik a környezetben engedélyezett feltételes hozzáférési szabályzatokkal, akkor a feltételes hozzáférési szabályzatok engedélyezése előtt üdvözli a biztonsági beállítások használatát.
 
-![Warning message that you can have security defaults or Conditional Access not both](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
+![Figyelmeztető üzenet arról, hogy a biztonsági alapértelmezett beállítások vagy a feltételes hozzáférés nem mindkét esetben](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
 
-Here are step-by-step guides on how you can use Conditional Access to configure equivalent policies:
+Az alábbi lépések részletesen ismertetik, hogyan használható a feltételes hozzáférés az egyenértékű szabályzatok konfigurálásához:
 
-- [Require MFA for administrators](howto-conditional-access-policy-admin-mfa.md)
-- [Require MFA for Azure management](howto-conditional-access-policy-azure-management.md)
-- [Block legacy authentication](howto-conditional-access-policy-block-legacy.md)
-- [Require MFA for all users](howto-conditional-access-policy-all-users-mfa.md)
-- [Require Azure MFA registration](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Requires Azure AD Identity Protection
+- [MFA megkövetelése rendszergazdák számára](howto-conditional-access-policy-admin-mfa.md)
+- [MFA megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)
+- [Örökölt hitelesítés tiltása](howto-conditional-access-policy-block-legacy.md)
+- [MFA megkövetelése minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)
+- [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – Azure ad Identity Protection szükséges
 
-## <a name="enabling-security-defaults"></a>Enabling security defaults
+## <a name="enabling-security-defaults"></a>Biztonsági alapértékek engedélyezése
 
-To enable security defaults in your directory:
+A biztonsági alapértelmezett beállítások engedélyezése a címtárban:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as a security administrator, Conditional Access administrator, or global administrator.
-1. Browse to **Azure Active Directory** > **Properties**.
-1. Select **Manage security defaults**.
-1. Set the **Enable security defaults** toggle to **Yes**.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
+1. Tallózással keresse meg **Azure Active Directory** > **tulajdonságokat**.
+1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
+1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen**értékre.
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Common Conditional Access policies](concept-conditional-access-policy-common.md)
+[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
 
-[What is Conditional Access?](overview.md)
+[Mi a feltételes hozzáférés?](overview.md)

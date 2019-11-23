@@ -48,7 +48,7 @@ A legtöbb esetben az Azure DevOps felépítési feladatai a biztonsági eszköz
 
 Észrevehető különbségek:
 
-- Az eszközök az ügynök $ (Build. SourcesDirectory) vagy a (z)% BUILD_SOURCESDIRECTORY% forrás mappájából futnak. Példa a C:\agent @ no__t-0work\1\s.
+- Az eszközök az ügynök $ (Build. SourcesDirectory) vagy a (z)% BUILD_SOURCESDIRECTORY% forrás mappájából futnak. Példa a C:\agent\_work\1\s.
 - Az argumentumok elérési útjai a korábban felsorolt forrás könyvtár gyökeréhez képest relatívak lehetnek. Az elérési utak is lehetnek abszolútak. Az abszolút elérési utakat az Azure DevOps Build változók használatával vagy egy helyszíni ügynök futtatásával, a helyi erőforrások ismert telepítési helyeivel érheti el.
 - Az eszközök automatikusan biztosítják a kimeneti fájl elérési útját vagy mappáját. Ha kimeneti helyet ad meg egy felépítési feladathoz, a rendszer lecseréli a helyet a naplófájlok jól ismert helyének elérési útjára a Build-ügynökön.
 - Néhány további parancssori argumentum módosul bizonyos eszközök esetében. Az egyik példa a grafikus felhasználói felület indítását biztosító beállítások hozzáadása vagy eltávolítása.
@@ -63,7 +63,7 @@ A felépítési feladatok szűrnek néhány felhasználói adatot. Erre a kérd�
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Hol jönnek létre a mentett eszközök által létrehozott kimeneti fájlok? 
 
-A Build-feladatok automatikusan hozzáadjanak a kimeneti elérési utakat ehhez a jól ismert helyhez a Build ügynökön: $ (Agent. BuildDirectory) \_sdt \ naplók. Mivel ezen a helyen szabványosítjuk az adatokat, a Code-Analysis naplókat előállító vagy használó csapatok hozzáférhetnek a kimenethez.
+A Build-feladatok automatikusan hozzáadjanak a kimeneti elérési utakat ehhez a jól ismert helyhez a Build-ügynökön: $ (Agent. BuildDirectory)\_sdt\logs. Mivel ezen a helyen szabványosítjuk az adatokat, a Code-Analysis naplókat előállító vagy használó csapatok hozzáférhetnek a kimenethez.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Várólistára helyezhetek egy buildet a feladatok futtatásához egy üzemeltetett Build-ügynökön? 
 
@@ -123,11 +123,11 @@ A CredScan kimeneti fájljából származó titkos kód kivonatának kulcsát az
 
 A fájl kifejezés lehet fájlnév. Egy teljes fájl elérési útjának vagy fájlnevének basename része is lehet. Helyettesítő karakterek nem használhatók.
 
-Az alábbi példák bemutatják, hogyan lehet letiltani a következő fájlt: \<InputPath > \src\JS\lib\angular.js
+Az alábbi példák bemutatják, hogyan lehet letiltani a fájlt \<InputPath > \src\JS\lib\angular.js
 
 Példák az érvényes letiltási szabályokra:
 
-- \<InputPath > \src\JS\lib\angular.js – a megadott elérési úton letiltja a fájlt
+- \<InputPath > \src\JS\lib\angular.js – letiltja a fájlt a megadott elérési úton
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
@@ -170,17 +170,17 @@ A hitelesítő adatok képolvasó a buildsearchers. xml fájlban általában def
 
 A tartalmi kereső a következőképpen van definiálva:
 
-- **Név**: A hitelesítő adatok Lapolvasójának kimeneti fájljaiban használandó leíró kereső neve. Javasoljuk, hogy a keresőmotor neveként a teve-Case elnevezési konvenciót használja.
-- **RuleId**: A kereső stabil átlátszatlan azonosítója:
+- **Name (név**): a hitelesítőadat-olvasó kimeneti fájljaiban használni kívánt leíró kereső neve. Javasoljuk, hogy a keresőmotor neveként a teve-Case elnevezési konvenciót használja.
+- **RuleId**: a kereső stabil átlátszatlan azonosítója:
     - A hitelesítő adatok képolvasó alapértelmezett keresője egy **RuleId** , például a CSCAN0010, a CSCAN0020 vagy a CSCAN0030 értékhez van rendelve. Az utolsó számjegy a keresési csoportok lehetséges egyesítésére és a reguláris kifejezések (regex) használatával való felosztására van fenntartva.
-    - A testreszabott kereső **RuleId** értékének saját névtérrel kell rendelkeznie. Ilyenek például a következők: CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 és CSCAN-\<Namespace @ no__t-50030.
+    - A testreszabott kereső **RuleId** értékének saját névtérrel kell rendelkeznie. Ilyenek például a következők: CSCAN-\<névtér\>0010, CSCAN-\<névtér\>0020 és CSCAN-\<névtér\>0030.
     - A teljes kereső neve egy **RuleId** érték és egy kereső neve kombinációja. Ilyenek például a CSCAN0010. KeyStoreFiles és CSCAN0020. Base64EncodedCertificate.
-- **ResourceMatchPattern**: A keresővel való kereséshez szükséges fájlkiterjesztések regexje.
-- **ContentSearchPatterns**: A megfelelő regex-utasításokat tartalmazó karakterláncok tömbje. Ha nincs megadva keresési minta, a rendszer az **ResourceMatchPattern** értékkel egyező összes fájlt visszaadja.
-- **ContentSearchFilters**: Olyan karakterláncok tömbje, amelyekben a keresőmotor-specifikus hamis pozitív értékek szűrésére szolgáló regex-utasítások szerepelnek.
-- **MatchDetails**: Egy leíró üzenet, enyhítő utasítások vagy mindkettő, amelyet a kereső minden egyeztetéséhez fel kell venni.
-- **Javaslat**: A javaslatok – mező tartalmának egyezése az előgyors jelentés formátumának használatával.
-- **Súlyosság**: Egy egész szám, amely a probléma súlyossági szintjét tükrözi. A legmagasabb súlyossági szint értéke 1.
+- **ResourceMatchPattern**: fájlkiterjesztések a keresővel való kereséshez.
+- **ContentSearchPatterns**: karakterláncok tömbje, amely a megfelelő regex-utasításokat tartalmazza. Ha nincs megadva keresési minta, a rendszer az **ResourceMatchPattern** értékkel egyező összes fájlt visszaadja.
+- **ContentSearchFilters**: a keresőmotor-specifikus hamis pozitív értékek szűrésére szolgáló regex-utasításokat tartalmazó karakterláncok tömbje.
+- **MatchDetails**: leíró üzenet, enyhítő utasítások vagy mindkettő, amelyet hozzá kell adni a kereső minden egyeztetéséhez.
+- **Javaslat**: a javaslatok mezőinek tartalma az előgyors jelentési formátum használatával.
+- **Súlyosság**: egész szám, amely egy probléma súlyossági szintjét tükrözi. A legmagasabb súlyossági szint értéke 1.
 
   ![A hitelesítő adatok képolvasó-telepítőjét ábrázoló XML](./media/security-tools/6-credscan-customsearchers.png)
 
@@ -192,7 +192,7 @@ A tartalmi kereső a következőképpen van definiálva:
 
 A teljes hibaüzenet:
 
-Hiba A projekt a Microsoft. NETCore. app *x. x. x*verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y.* y verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
+"Hiba: a projekt a Microsoft. NETCore. app *x. x. x*verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y. y* verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
 
 Mivel a (z) a (z) a gyűjtemény részeként futtatott a a-elemzők, a kiépíthető állapotban kell lennie a forrás fájának.
 
@@ -202,13 +202,13 @@ Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lép�
 
 A teljes hibaüzenet:
 
-"a CSC. exe fájl kilépett a következő hibakóddal: 1 – az Analyzer *AAAA* -példánya nem hozható létre a C: \\*BBBB*. dll fájlból: Nem tölthető be a következő fájl vagy szerelvény: "Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = semleges, PublicKeyToken = 31bf3856ad364e35" vagy annak valamelyik függősége. A rendszer nem találja a megadott fájlt."
+"a CSC. exe kilépett az 1. hibakóddal – az Analyzer *AAAA* -példánya nem hozható létre a C:\\*BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A rendszer nem találja a megadott fájlt."
 
 Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A **CSC. exe** verziójának futtatásához a 2,6-es vagy újabb verziójú verziószámot kell jelenteni.
 
 Előfordulhat, hogy egy. csproj-fájl felülbírálja a Build Machine Visual Studio telepítését a Microsoft.Net. Compilers csomagból való hivatkozással. Ha nem kívánja használni a fordító egy adott verzióját, távolítsa el a Microsoft.Net. Compilers mutató hivatkozásait. Ellenkező esetben győződjön meg arról, hogy a hivatkozott csomag verziószáma 2,6 vagy újabb.
 
-Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Úgy tűnhet, mint a **/errorlog: f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>A C# fordító verziója nem elég közelmúltbeli
 
@@ -218,13 +218,13 @@ A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a következőt: 
 
 A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló Azure-beli az MSBuild-Build feladatból. Ha az analizátor feladat közvetlenül az MSBuild feladat után fut, a napló még nem lesz elérhető. Helyezzen el más feladatokat az MSBuild-feladat és a a a a a a a a a a a a a a ( További feladatok például a BinSkim és a kártevők elleni képolvasó.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
 
-  - Bevezetési Az első lépésekhez forduljon a technikai menedzserekhez.
+  - Előkészítés: forduljon a technikai menedzserekhez a kezdéshez.
   
-  - Támogatja Küldjön e-mailt a csapatnak a [Microsoft biztonsági kódok elemzésének támogatásához](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+  - Támogatás: küldjön e-mailt a csapatnak a [Microsoft biztonsági kódok elemzésének támogatásához](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
 
   >[!NOTE] 
   >Előfordulhat, hogy nem rendelkezik fizetős támogatási kapcsolattal a Microsofttal. Vagy rendelkezhet olyan támogatási ajánlattal, amely megakadályozza a szolgáltatások megvásárlását a Phoenix-katalógusból. Ha ezek a feltételek teljesülnek, tekintse meg a [támogatási szolgáltatások kezdőlapját](https://www.microsoft.com/enterprise/services/support) .

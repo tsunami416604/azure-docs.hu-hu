@@ -141,7 +141,7 @@ Vegye figyelembe, hogy a rögzítés nem használja fel a kimenő forgalomra von
 
 Létrehozhat Azure Event Grid-előfizetés az Event Hubs-névtér forrásként. A következő oktatóanyag bemutatja, hogyan hozhat létre egy Event Grid-előfizetést egy eseményközpontba forrásként és fogadóként egy Azure Functions-alkalmazás: [folyamat és a egy SQL Data Warehouse használatával az Event Grid és az Azure FunctionsrögzítettazEventHubs-adatokáttelepítése](store-captured-data-data-warehouse.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-bA az adatok a legegyszerűbb módja az Event Hubs Capture. Használja az Azure Data Lake, az Azure Data Factory és az Azure HDInsight, a kötegelt feldolgozás hajthat végre, és más elemzési ismerős eszközök és platformok szabadon használatával, bármilyen méretben van szüksége.
 

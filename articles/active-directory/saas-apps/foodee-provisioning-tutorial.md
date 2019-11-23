@@ -100,7 +100,7 @@ Ebben a szakaszban az Azure AD-kiépítési szolgáltatást úgy konfigurálja, 
 
 Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a következő módon:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**@no__t – 2**minden alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -118,7 +118,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
 1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
 
-   a. A **bérlői URL-cím** mezőben adja meg a korábban lekért **https: \//concierge. Food. ee/scim/v2** értéket.
+   a. A **bérlői URL-cím** mezőbe írja be a korábban lekért **https:\//concierge.Food.ee/scim/v2** értéket.
 
    b. A **titkos jogkivonat** mezőben adja meg a korábban lekért **API-jogkivonat** értékét.
    

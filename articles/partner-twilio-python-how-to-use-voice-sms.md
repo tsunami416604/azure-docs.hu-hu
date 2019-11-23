@@ -40,21 +40,21 @@ A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az al
 A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
 ### <a id="Verbs"></a>Twilio-műveletek
-Az API a Twilio-műveletek használatát teszi lehetővé; például a **&lt;Say @ no__t-2** művelet arra utasítja a Twilio-t, hogy hallhatóan üzenetet továbbítson egy híváson.
+Az API a Twilio-műveletek használatát teszi lehetővé; Tegyük fel például, hogy a **&lt;&gt;** a művelet arra utasítja a Twilio, hogy hallhatóan üzenettel kézbesítse a hívást.
 
 A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a többi műveletet és képességeket a [Twilio Markup Language dokumentációján][twiml]keresztül.
 
-* **&lt;Dial @ no__t-2**: a hívót csatlakoztatja egy másik telefonhoz.
-* **&lt;Gather @ no__t-2**: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti.
-* **&lt;Hangup @ no__t-2**: hívás vége.
-* **&lt;Pause @ no__t-2**: csendes várakozás a megadott számú másodpercre.
-* **&lt;Play @ no__t-2**: hangfájl lejátszása.
-* **&lt;Queue @ no__t-2**: adja hozzá a-t a hívók várólistához.
-* **&lt;Record @ no__t-2**: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
-* **&lt;Redirect @ no__t-2**: egy hívás vagy SMS vezérlését egy másik URL-címen keresztül továbbítja a TwiML.
-* **&lt;Reject @ no__t-2**: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
-* **&lt;Say @ no__t-2**: szöveget alakít át a híváson végrehajtott szövegről beszédre.
-* **&lt;Sms @ no__t-2**: SMS-üzenet küldése.
+* **&lt;Dial&gt;** : a hívót csatlakoztatja egy másik telefonhoz.
+* **&lt;összegyűjtése&gt;** : a telefon billentyűzetén megadott numerikus számjegyeket gyűjti.
+* **&lt;vonalbontás&gt;** : egy hívást ér véget.
+* **&lt;szüneteltetése&gt;** : csendes várakozás a megadott számú másodpercre.
+* **&lt;Play&gt;** : egy hangfájl lejátszása.
+* **&lt;üzenetsor&gt;** : adja hozzá a-t a hívók várólistához.
+* **&lt;record&gt;** : a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* **&lt;átirányítási&gt;** : a hívások vagy SMS-ek vezérlését egy másik URL-címen keresztül továbbítja a TwiML.
+* **&lt;elutasító&gt;** : elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
+* **&lt;tegyük** fel, hogy&gt;: átalakítja a szöveget a híváson végzett beszédre.
+* **SMS-&gt;&lt;** : SMS-üzenet küldése.
 
 ### <a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
@@ -78,7 +78,7 @@ Amikor regisztrál egy Twilio-fiókra, megkapja a fiók biztonsági azonosítój
 ## <a id="create_app"></a>Python-alkalmazás létrehozása
 A Twilio szolgáltatást használó és az Azure-ban futó Python-alkalmazások nem különböznek a Twilio szolgáltatást használó más Python-alkalmazástól. Habár a Twilio-szolgáltatások REST-alapúak, és a Python számos módon hívhatók meg, ez a cikk a Twilio-szolgáltatások a [githubról a Pythonhoz készült Twilio-kódtár][twilio_python]használatával történő használatát ismerteti. További információ a Pythonhoz készült Twilio-függvénytár használatáról: [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
-Első lépésként [új Azure Linux VM-t] [azure_vm_setup] hozzon létre egy gazdagépként az új Python-webalkalmazáshoz. A virtuális gép futása után közzé kell tennie az alkalmazást egy nyilvános porton az alább leírtak szerint.
+Először is, [új Azure Linux virtuális gép beállítása] [azure_vm_setup], hogy az új Python-webalkalmazás gazdagépként működjön. A virtuális gép futása után közzé kell tennie az alkalmazást egy nyilvános porton az alább leírtak szerint.
 
 ### <a name="add-an-incoming-rule"></a>Bejövő szabály hozzáadása
   1. Nyissa meg a [hálózati biztonsági csoport] [azure_nsg] lapot.
@@ -90,7 +90,7 @@ Első lépésként [új Azure Linux VM-t] [azure_vm_setup] hozzon létre egy gaz
   2. Válassza ki azt a nyilvános IP-címet, amely megfelel a virtuális gépnek.
   3. Állítsa be a **DNS-név címkéjét** a **konfiguráció** szakaszban. Ebben a példában a következőhöz hasonlóan fog kinézni: *a-domain-Label*. CentralUS.cloudapp.Azure.com
 
-Ha SSH-kapcsolaton keresztül tud csatlakozni a virtuális géphez, telepítheti az Ön által választott webes keretrendszert (a két legismertebb Pythonban a [lombikot](http://flask.pocoo.org/) és a [Django](https://www.djangoproject.com)is). Ezek közül bármelyiket telepítheti a `pip install` parancs futtatásával.
+Ha SSH-kapcsolaton keresztül tud csatlakozni a virtuális géphez, telepítheti az Ön által választott webes keretrendszert (a két legismertebb Pythonban a [lombikot](http://flask.pocoo.org/) és a [Django](https://www.djangoproject.com)is). Ezek közül bármelyiket telepítheti egyszerűen a `pip install` parancs futtatásával.
 
 Ne feledje, hogy a virtuális gépet úgy konfiguráltuk, hogy csak a 80-es porton engedélyezze a forgalmat. Ügyeljen arra, hogy az alkalmazást a port használatára konfigurálja.
 
@@ -103,18 +103,18 @@ Az alkalmazás két módon konfigurálható a Pythonhoz készült Twilio-függv�
 
     -VAGY-
 
-* Töltse le a Pythonhoz készült Twilio könyvtárat a GitHubról ([https://github.com/twilio/twilio-python][twilio_python]), és telepítse a következőhöz hasonló módon:
+* Töltse le a Pythonhoz készült Twilio-kódtárat a GitHubról ([https://github.com/twilio/twilio-python][twilio_python]), és telepítse a következőhöz hasonló módon:
 
         $ python setup.py install
 
-Miután telepítette a Pythonhoz készült Twilio-kódtárat, `import` a Python-fájlokban:
+Miután telepítette a Pythonhoz készült Twilio-kódtárat, `import`hatja a Python-fájlokban:
 
         import twilio
 
 További információ: [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 
 ## <a id="howto_make_call"></a>Útmutató: kimenő hívás létrehozása
-A következő ábrán látható, hogyan lehet kimenő hívást kezdeményezni. Ez a kód egy Twilio által biztosított helyet is használ a Twilio Markup Language (TwiML) válaszának visszaadásához. Helyettesítse be az értékeket a **from_number** és a **to_number** , és ellenőrizze, hogy a kód futtatása előtt ellenőrizte-e a Twilio-fiók **from_number** -telefonszámát.
+A következő ábrán látható, hogyan lehet kimenő hívást kezdeményezni. Ez a kód egy Twilio által biztosított helyet is használ a Twilio Markup Language (TwiML) válaszának visszaadásához. Helyettesítse be az értékeket a **from_number** és **to_number** a telefonszámokat, és ellenőrizze, hogy a kód futtatása előtt ellenőrizte-e a Twilio-fiók **from_number** telefonszámát.
 
     from urllib.parse import urlencode
 
@@ -150,7 +150,7 @@ A következő ábrán látható, hogyan lehet kimenő hívást kezdeményezni. E
 Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét, hogy megadja a TwiML választ; További információkért lásd: [TwiML-válaszok megadása a saját webhelyéről](#howto_provide_twiml_responses).
 
 ## <a id="howto_send_sms"></a>Útmutató: SMS-üzenet küldése
-A következő bemutatja, hogyan küldhet SMS-üzenetet a `TwilioRestClient` osztály használatával. A **from_number** az SMS-üzenetek küldéséhez a Twilio által biztosított próbaverziók számát adja meg. A kód futtatása előtt ellenőrizni kell a Twilio-fiók **to_number** számát.
+A következő bemutatja, hogyan küldhet SMS-üzenetet a `TwilioRestClient` osztály használatával. Az SMS-üzenetek küldéséhez a Twilio által megadott **from_number** számot kell megadnia a próbaverziós fiókok számára. A kód futtatása előtt a **to_number** számot ellenőrizni kell a Twilio-fiókhoz.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -172,7 +172,7 @@ A következő bemutatja, hogyan küldhet SMS-üzenetet a `TwilioRestClient` oszt
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>Útmutató: TwiML-válaszok megadása saját webhelyről
-Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy olyan URL-címre küldi a kérést, amely egy TwiML-válasz visszaadására vár. A fenti példa a Twilio által megadott URL-címet használja [https://twimlets.com/message][twimlet_message_url]. (Míg a TwiML a Twilio általi használatra készült, megtekintheti a böngészőben. Ha például a [https://twimlets.com/message][twimlet_message_url] elemre kattint, üres `<Response>` elemet kell látnia. egy másik példaként kattintson a [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] elemre egy `<Response>` elem megjelenítéséhez, amely egy `<Say>` elemet tartalmaz.)
+Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy olyan URL-címre küldi a kérést, amely egy TwiML-válasz visszaadására vár. A fenti példa a Twilio által megadott URL-címet használja [https://twimlets.com/message][twimlet_message_url]. (Míg a TwiML a Twilio általi használatra készült, megtekintheti a böngészőben. Kattintson például a [https://twimlets.com/message][twimlet_message_url] elemre egy üres `<Response>` elem megjelenítéséhez; egy másik példaként a [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] gombra kattintva megtekintheti a `<Say>` elemet tartalmazó `<Response>` elemet.)
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját helyet, amely visszaadja a HTTP-válaszokat. A helyet bármilyen nyelven létrehozhatja, amely az XML-válaszokat adja vissza; Ez a témakör azt feltételezi, hogy a Python használatával hozza létre a TwiML.
 
@@ -203,7 +203,7 @@ Ahogy a fenti példában is látható, a TwiML válasz egyszerűen egy XML-dokum
 
 További információ a TwiML: [https://www.twilio.com/docs/api/twiml][twiml_reference].
 
-Miután a Python-alkalmazás beállította a TwiML-válaszokat, használja az alkalmazás URL-címét a `client.calls.create` metódusnak átadott URL-címként. Ha például egy **MyTwiML** nevű webalkalmazást telepít egy Azure-beli üzemeltetett szolgáltatásra, az URL-címet webhookként használhatja az alábbi példában látható módon:
+Ha már beállította a Python-alkalmazást a TwiML-válaszok biztosításához, használja az alkalmazás URL-címét a `client.calls.create` metódusnak átadott URL-címként. Ha például egy **MyTwiML** nevű webalkalmazást telepít egy Azure-beli üzemeltetett szolgáltatásra, az URL-címet webhookként használhatja az alábbi példában látható módon:
 
     from twilio.rest import TwilioRestClient
 

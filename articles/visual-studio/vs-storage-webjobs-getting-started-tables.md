@@ -31,7 +31,7 @@ Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű struktu
 A kódrészletek némelyike a manuálisan létrehozott függvények **táblázatban** szereplő attribútumot jeleníti meg, azaz nem az egyik trigger attribútum használatával.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entitások hozzáadása táblához
-Ha entitásokat szeretne felvenni egy táblába, használja a **Table** attribútumot egy **ICollector @ no__t-2t >** vagy **IAsyncCollector @ no__t-4T >** paraméterrel, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
+Entitások táblához való hozzáadásához használja a **Table** attribútumot egy **ICollector\<t >** vagy a **IAsyncCollector\<t >** paramétert, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
 
 A következő mintakód hozzáadja a **személy** entitásokat egy *bejövő*elemek nevű táblához.
 
@@ -80,7 +80,7 @@ A függvény befejeződése után a **Meghívási részletek** lap az írt sorok
 ![A bejövő forgalom funkció befejeződött](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Több entitás beolvasása egy táblából
-Egy tábla olvasásához használja a **Table** attribútumot egy **IQueryable @ no__t-2t >** paraméterrel, ahol a **t** típus a **TableEntity** -ből származik, vagy **ITableEntity**valósít meg.
+Egy tábla olvasásához használja a **Table** attribútumot egy olyan **IQueryable\<t >** paraméterrel, amelyben a t típus **a TableEntity** -ből származik, vagy megvalósítja a **ITableEntity**- **t** .
 
 A következő mintakód beolvassa és naplózza az összes sort a **bejövő** forgalom táblából:
 

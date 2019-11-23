@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Elium konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+title: 'Oktatóanyag: a Elium konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Elium.
 services: active-directory
 documentationcenter: ''
@@ -22,7 +22,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2019
 ms.locfileid: "71709535"
 ---
-# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: Elium konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Elium konfigurálása
 
 Ez az oktatóanyag bemutatja, hogyan konfigurálhatja a Elium és a Azure Active Directory (Azure AD) a felhasználók vagy csoportok automatikus kiépítésére és kiépítésére a Elium.
 
@@ -104,7 +104,7 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
     ![Alkalmazások listája a vállalati alkalmazások panelen](common/all-applications.png)
 
-1. Válassza ki a kiépítés lapot.
+1. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap a vállalati alkalmazások panelen](common/provisioning.png)
 
@@ -112,13 +112,13 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
     ![Automatikus beállítás a kiépítési mód esetében](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok** szakaszban írja be a következőt: **\<tenantURL @ no__t-3/scim/v2** a **bérlői URL-cím** mezőben. (A **tenantURL** a Elium felügyeleti konzolról korábban beolvasott érték.) Írja be a Elium **titkos jogkivonat** értékét is a **titkos jogkivonat** mezőbe. Végül kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Elium. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Elium-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+1. A **rendszergazdai hitelesítő adatok** szakaszban írja be **\<tenantURL\>/scim/v2** a **bérlői URL-cím** mezőbe. (A **tenantURL** a Elium felügyeleti konzolról korábban beolvasott érték.) Írja be a Elium **titkos jogkivonat** értékét is a **titkos jogkivonat** mezőbe. Végül kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Elium. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Elium-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![A bérlői URL-cím és a titkos jogkivonat mezői a rendszergazdai hitelesítő adatokban](common/provisioning-testconnection-tenanturltoken.png)
 
 1. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, aki megkapja a kiépítési hibákra vonatkozó értesítéseket. Ezután jelölje be az **e-mailes értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 1. Kattintson a **Save** (Mentés) gombra.
 
@@ -153,6 +153,6 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../manage-apps/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

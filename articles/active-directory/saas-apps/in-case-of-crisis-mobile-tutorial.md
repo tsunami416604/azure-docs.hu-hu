@@ -83,29 +83,29 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció**@no__t – 1section az alkalmazás előre konfigurálva van a **identitásszolgáltató** initiated módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **save** button gombra kattintva.
+1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **mentés** gombra kattintva.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
 
 1. Navigáljon a **kezelés** szakaszra a lap bal oldalán, kattintson a **Tulajdonságok fülre** , majd másolja a **felhasználói hozzáférési URL-címet** , és mentse a számítógépre.
 
     ![Egyszeri bejelentkezési tulajdonságok](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egyszeri bejelentkezést, ha a válság-Mobile esetében hozzáférést biztosít.
 
@@ -113,7 +113,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egys
 1. Az alkalmazások listában válassza a **válság esetén – mobil**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -125,15 +125,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egys
 
 ## <a name="configure-in-case-of-crisis---mobile-sso"></a>Konfigurálás válság esetén – mobil egyszeri bejelentkezés
 
-Ha az egyszeri bejelentkezést **válságos mobil** oldalon szeretné konfigurálni, a letöltött **tanúsítványt (RAW)** és a **felhasználói hozzáférési URL-címet** a Azure Portalról kell elküldeni a [válságkezelési ügyfélszolgálati csapat](https://www.rockdovesolutions.com/features/enterprise-ready)számára. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést **válságos mobil** oldalon szeretné konfigurálni, a letöltött **tanúsítványt (RAW)** és a **felhasználói hozzáférési URL-címet** a Azure Portalról kell elküldeni a [válságkezelési ügyfélszolgálati csapat](https://www.rockdovesolutions.com/features/enterprise-ready)számára. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>Létrehozás válság esetén – mobil tesztelési felhasználó
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Crisis-Mobile esetében. Együttműködés a [válságkezelési támogatással foglalkozó csapatnál](https://www.rockdovesolutions.com/features/enterprise-ready) , ha a rendszer válság esetén a mobil platformot adja hozzá a felhasználókhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Crisis-Mobile esetében. Együttműködés a [válságkezelési támogatással foglalkozó csapatnál](https://www.rockdovesolutions.com/features/enterprise-ready) , ha a rendszer válság esetén a mobil platformot adja hozzá a felhasználókhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Crisis-Mobile csempére kattint, automatikusan be kell jelentkeznie arra az esetre, amikor az egyszeri bejelentkezést beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

@@ -27,7 +27,7 @@ Az U-SQL egy olyan nyelv, amely a deklaratív SQL C# -t rendkívül nagy mérté
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt átugorja a dokumentumban található U-SQL-mintákat, olvassa el és fejezze be [Tutorial: U-SQL-szkriptek fejlesztése a Visual Studio @ no__t-0 Data Lake eszközeivel. Ez az oktatóanyag ismerteti az U-SQL Azure Data Lake Tools for Visual Studio használatával történő használatának mechanikaát.
+Mielőtt átugorja a dokumentumban található U-SQL-mintákat, olvassa el és fejezze be a következő [oktatóanyagot: u-SQL-szkriptek fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md). Ez az oktatóanyag ismerteti az U-SQL Azure Data Lake Tools for Visual Studio használatával történő használatának mechanikaát.
 
 ## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
 
@@ -50,24 +50,24 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Ez a parancsfájl nem rendelkezik átalakítási lépésekkel. Beolvassa a `SearchLog.tsv` nevű forrásfájlt, schematizes, és visszaírja a sorhalmazt egy SearchLog-first-u-sql. csv nevű fájlba.
+Ez a parancsfájl nem rendelkezik átalakítási lépésekkel. Beolvassa a `SearchLog.tsv`nevű forrásfájlt, schematizes, és visszaírja a sorhalmazt egy SearchLog-first-u-sql. csv nevű fájlba.
 
-Figyelje meg a `Duration` mezőben szereplő adattípus melletti kérdőjelet. Ez azt jelenti, hogy a `Duration` mező lehet null értékű.
+Figyelje meg a `Duration` mező adattípusa melletti kérdőjelet. Ez azt jelenti, hogy a `Duration` mező értéke lehet null.
 
-### <a name="key-concepts"></a>Fő fogalmak
-* **Sorhalmaz változói**: A sorhalmazt előállító összes lekérdezési kifejezés hozzárendelhető egy változóhoz. A U-SQL a T-SQL változó elnevezési mintát (például `@searchlog`) követi a parancsfájlban.
-* A kinyerési kulcsszó beolvassa az adatokat egy fájlból, és az olvasáskor meghatározza a sémát. a `Extractors.Tsv` egy beépített U-SQL-kivonó a tabulátorral tagolt fájlok számára. Egyéni kiállítók fejlesztése is megtehető.
-* A **kimenet** egy sorhalmazból egy fájlba írja az adatokat. a `Outputters.Csv()` egy beépített U-SQL-leválasztó, vesszővel tagolt értékű fájl létrehozásához. Egyéni előállítók is fejleszthetők.
+### <a name="key-concepts"></a>Alapfogalmak
+* **Sorhalmaz változói**: a sorhalmazt előállító összes lekérdezési kifejezés hozzárendelhető egy változóhoz. Az U-SQL a T-SQL változó elnevezési mintát (például`@searchlog`) követi a parancsfájlban.
+* A **kinyerési** kulcsszó beolvassa az adatokat egy fájlból, és az olvasáskor meghatározza a sémát. a `Extractors.Tsv` egy beépített U-SQL-kivonó a tabulátorral tagolt fájlok számára. Egyéni kiállítók fejlesztése is megtehető.
+* A **kimenet** egy sorhalmazból egy fájlba írja az adatokat. a `Outputters.Csv()` egy beépített U-SQL-alapú, vesszővel tagolt értékű fájl létrehozásához. Egyéni előállítók is fejleszthetők.
 
 ### <a name="file-paths"></a>Fájlelérési utak
 
 A kinyerési és a kimeneti utasítások fájlelérési utakat használnak. A fájlelérési utak értéke lehet abszolút vagy relatív:
 
-A fájl abszolút elérési útja a `mystore` nevű Data Lake Store fájlra hivatkozik:
+A fájl abszolút elérési útja a `mystore`nevű Data Lake Store fájlra hivatkozik:
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-A következő elérési út a `"/"` karakterrel kezdődik. Az alapértelmezett Data Lake Store fiókban található fájlra hivatkozik:
+A következő elérési út a `"/"`ával kezdődik. Az alapértelmezett Data Lake Store fiókban található fájlra hivatkozik:
 
     /output/SearchLog-first-u-sql.csv
 
@@ -224,6 +224,6 @@ A U-SQL HAVING záradék használatával korlátozhatja a kimenetet olyan csopor
 
 A speciális összesítési forgatókönyvek esetében tekintse meg a U-SQL-dokumentációt az [aggregált, analitikus és hivatkozási függvények](/u-sql/built-in-functions) esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-szkriptek fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)

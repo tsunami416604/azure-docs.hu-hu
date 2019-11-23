@@ -27,7 +27,7 @@ ms.locfileid: "72388720"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a felügyelt ügyféloldali kódtár használatával a Windows-és Xamarin-alkalmazások Azure App Service Mobile Apps. Ha még nem Mobile Apps, érdemes megfontolnia az [Azure Mobile apps][1] gyors üzembe helyezési oktatóanyagának elvégzését. Ebben az útmutatóban az ügyféloldali felügyelt SDK-ra fogunk összpontosítani. A Mobile Apps kiszolgálóoldali SDK-k további megismeréséhez tekintse meg a [.NET Server SDK][2] vagy a [Node. js Server SDK][3]dokumentációját.
@@ -42,13 +42,13 @@ A .NET platform a következő platformokat támogatja:
 * Xamarin Android-kiadások a 19 – 24. API-hoz (KitKat – nugát)
 * Xamarin iOS-kiadások az iOS 8,0-es és újabb verzióihoz
 * Univerzális Windows-platform
-* Windows Phone-telefon 8,1
+* Windows Phone 8.1
 * Windows Phone-telefon 8,0 Silverlight-alkalmazások kivételével
 
 A "kiszolgálói folyamat" hitelesítés webnézetet használ a bemutatott felhasználói felületen.  Ha az eszköz nem tud Webnézeti felhasználói felületet bemutatni, akkor más hitelesítési módszerekre is szükség van.  Ez az SDK ezért nem alkalmas a Watch-Type vagy a hasonló módon korlátozott eszközökre.
 
 ## <a name="setup"></a>Telepítés és előfeltételek
-Feltételezzük, hogy már létrehozta és közzétette a Mobile App backend-projektet, amely legalább egy táblázatot tartalmaz.  A témakörben használt kódban a tábla neve `TodoItem`, amely a következő oszlopokkal rendelkezik: `Id`, `Text` és `Complete`. Ez a tábla ugyanaz a tábla, amely az [Azure Mobile apps][1]gyors üzembe helyezésének befejezése után jön létre.
+Feltételezzük, hogy már létrehozta és közzétette a Mobile App backend-projektet, amely legalább egy táblázatot tartalmaz.  A témakörben használt kódban a tábla neve `TodoItem`, és a következő oszlopokkal rendelkezik: `Id`, `Text`és `Complete`. Ez a tábla ugyanaz a tábla, amely az [Azure Mobile apps][1]gyors üzembe helyezésének befejezése után jön létre.
 
 A megfelelő begépelt ügyféloldali típus C# a következő osztály:
 
@@ -67,13 +67,13 @@ public class TodoItem
 
 A [JsonPropertyAttribute][6] a *PropertyName* leképezésének definiálására szolgál az ügyfél és a tábla mezője között.
 
-Ha meg szeretné tudni, hogyan hozhat létre táblákat a Mobile Apps-háttérben, tekintse meg a [.NET Server SDK témakört][7] vagy a [Node. js Server SDK témakört][8]. Ha a rövid útmutató segítségével hozta létre a Azure Portal Mobile apps-hátteret, akkor a [Azure Portalra] **egyszerű táblák** beállítását is használhatja.
+Ha meg szeretné tudni, hogyan hozhat létre táblákat a Mobile Apps-háttérben, tekintse meg a [.NET Server SDK témakört][7] vagy a [Node. js Server SDK témakört][8]. Ha a rövid útmutató segítségével hozta létre a Azure Portal Mobile apps-hátteret, akkor a [Azure Portal] **egyszerű táblák** beállítását is használhatja.
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Útmutató: a felügyelt ügyféloldali SDK-csomag telepítése
 A következő módszerek egyikével telepítheti a felügyelt ügyféloldali SDK-csomagot a [NuGet][9]Mobile apps:
 
 * **Visual Studio** Kattintson a jobb gombbal a projektre, kattintson a **NuGet-csomagok kezelése**elemre, keresse meg a `Microsoft.Azure.Mobile.Client` csomagot, majd kattintson a **telepítés**gombra.
-* **Xamarin Studio** Kattintson a jobb gombbal a projektre, kattintson a **hozzáadás** @no__t – 2 **NuGet csomagok hozzáadása**lehetőségre, keresse meg a `Microsoft.Azure.Mobile.Client` csomagot, majd kattintson a **csomag hozzáadása**lehetőségre.
+* **Xamarin Studio** Kattintson a jobb gombbal a projektre, kattintson a **hozzáadás** > **NuGet-csomagok hozzáadása**elemre, keresse meg a `Microsoft.Azure.Mobile.Client` csomagot, majd kattintson a **csomag hozzáadása**lehetőségre.
 
 A fő tevékenység fájljában ne felejtse el hozzáadni a következő **using** utasítást:
 
@@ -82,7 +82,7 @@ using Microsoft.WindowsAzure.MobileServices;
 ```
 
 > [!NOTE]
-> Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az SDK `Xamarin.Android.Support.CustomTabs` függőséget tartalmaz az Android platformhoz, így ha a projekt újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül a szükséges verzióval kell telepítenie a csomagot.
+> Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az SDK `Xamarin.Android.Support.CustomTabs` függőséget biztosít az Android platformhoz, így ha a projekt újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül a szükséges verzióval kell telepítenie a csomagot.
 
 ### <a name="symbolsource"></a>Útmutató: hibakeresési szimbólumok használata a Visual Studióban
 A Microsoft. Azure. Mobile névtér szimbólumai a [SymbolSource][10]webhelyen érhetők el.  Tekintse át a [SymbolSource utasításokat][11] a SymbolSource a Visual Studióval való integrálásához.
@@ -94,7 +94,7 @@ A következő kód létrehozza a [MobileServiceClient][12] objektumot, amely a M
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Az előző kódban cserélje le a `MOBILE_APP_URL` értéket a Mobile apps-háttér URL-címére, amely a [Azure Portalra]a Mobile apps-háttér paneljén található. A MobileServiceClient objektumnak egypéldányos kell lennie.
+Az előző kódban cserélje le a `MOBILE_APP_URL` a Mobile apps-háttér URL-címére, amely a [Azure Portal]a Mobile apps-háttér paneljén található. A MobileServiceClient objektumnak egypéldányos kell lennie.
 
 ## <a name="work-with-tables"></a>Táblázatok használata
 A következő szakasz részletesen ismerteti a rekordok keresését és beolvasását, valamint a táblázaton belüli adatok módosítását.  A következő témákat tárgyalja:
@@ -115,7 +115,7 @@ A következő szakasz részletesen ismerteti a rekordok keresését és beolvas�
 * [Az Oldalméret módosítása](#pagesize)
 
 ### <a name="instantiating"></a>Útmutató: table-hivatkozás létrehozása
-Az összes olyan kód, amely egy háttér-táblában lévő adatokhoz fér hozzá vagy módosít, a `MobileServiceTable` objektum függvényeit hívja meg. Szerezzen be egy hivatkozást a táblára a [GetTable] metódus meghívásával a következőképpen:
+Az összes olyan kód, amely egy háttér-táblában lévő adatokhoz fér hozzá vagy módosít egy `MobileServiceTable` objektumban található függvényeket. Szerezzen be egy hivatkozást a táblára a [GetTable] metódus meghívásával a következőképpen:
 
 ```csharp
 IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
@@ -143,7 +143,7 @@ Ez a szakasz azt ismerteti, hogyan lehet lekérdezéseket kibocsátani a Mobile 
 > A kiszolgáló által vezérelt oldal mérete kényszerítve van, hogy a rendszer ne adja vissza az összes sort.  A lapozás megtartja a nagyméretű adathalmazok alapértelmezett kéréseit, amelyek negatív hatással vannak a szolgáltatásra.  Ha több mint 50 sort szeretne visszaadni, használja a `Skip` és a `Take` metódust a következő témakörben ismertetett módon: az [adatküldés a lapokon](#paging).
 
 ### <a name="filtering"></a>Útmutató: a visszaadott adatértékek szűrése
-A következő kód bemutatja, hogyan szűrheti az adatszűrést egy `Where` záradékkal egy lekérdezésben. Visszaadja a `todoTable` összes olyan elemét, amelynek `Complete` tulajdonsága `false` értékkel egyenlő. A [Ahol] függvény egy sor szűrési predikátumot alkalmaz a lekérdezésre a táblán.
+A következő kód bemutatja, hogyan szűrheti az adatszűrést egy lekérdezés `Where` záradékával. Visszaadja a `todoTable` összes olyan elemét, amelynek `Complete` tulajdonsága egyenlő `false`. A [Ahol] függvény egy sor szűrési predikátumot alkalmaz a lekérdezésre a táblán.
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -193,7 +193,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-A két módszer egyenértékű, és szinonimaként is használható.  A korábbi lehetőség @ no__t-0of több predikátum összefűzése egy lekérdezés @ no__t-1is tömörítve és ajánlott.
+A két módszer egyenértékű, és szinonimaként is használható.  A korábbi lehetőség&mdash;több predikátum összefűzése egy lekérdezésben&mdash;a tömörítés és a javasolt.
 
 A `Where` záradék a OData részhalmazra lefordított műveleteket támogatja. A műveletek a következők:
 
@@ -208,7 +208,7 @@ A `Where` záradék a OData részhalmazra lefordított műveleteket támogatja. 
 A Server SDK által támogatott szempontokat figyelembe véve megtekintheti az [OData v3 – dokumentáció].
 
 ### <a name="sorting"></a>Útmutató: a visszaadott adathalmazok rendezése
-Az alábbi kód azt szemlélteti, hogyan rendezheti az adatrendezést a lekérdezésben lévő [OrderBy] vagy [OrderByDescending] függvénnyel. @No__t-0 értékből származó elemeket ad vissza a `Text` mező alapján növekvő sorrendbe rendezve.
+Az alábbi kód azt szemlélteti, hogyan rendezheti az adatrendezést a lekérdezésben lévő [OrderBy] vagy [OrderByDescending] függvénnyel. A `todoTable` a `Text` mező alapján növekvő sorrendbe rendezi az elemeket.
 
 ```csharp
 // Sort items in ascending order by Text field
@@ -223,7 +223,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>Útmutató: a lapokon tárolt adatvisszaadás
-Alapértelmezés szerint a háttérrendszer csak az első 50 sort adja vissza. Megnövelheti a visszaadott sorok számát a [Eltarthat] metódus meghívásával. A [Kihagyása] metódussal együtt használja a `Take` függvényt, hogy a lekérdezés által visszaadott teljes adatkészlet adott "oldalát" kérje. A következő lekérdezés a végrehajtáskor a tábla első három elemét adja vissza.
+Alapértelmezés szerint a háttérrendszer csak az első 50 sort adja vissza. Megnövelheti a visszaadott sorok számát a [Eltarthat] metódus meghívásával. A [Skip] metódussal együtt használja a `Take`t a lekérdezés által visszaadott teljes adatkészlet adott "oldalának kéréséhez. A következő lekérdezés a végrehajtáskor a tábla első három elemét adja vissza.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -306,7 +306,7 @@ Minden ügyfél-típusnak tartalmaznia kell egy **azonosító**nevű tagot, amel
 await todoTable.InsertAsync(todoItem);
 ```
 
-Ha egy Beszúrás során a `todoItem` egyedi egyéni azonosító értékét nem tartalmazza, akkor a kiszolgáló GUID azonosítót hoz létre.
+Ha egy Beszúrás során a `todoItem` nem tartalmazza egyedi egyéni azonosító értékét, a kiszolgáló GUID azonosítót hoz létre.
 A generált azonosító lekéréséhez vizsgálja meg az objektumot a hívás visszaküldése után.
 
 A nem típusos adatmennyiségek beszúrásához használhatja a Json.NET előnyeit:
@@ -335,7 +335,7 @@ Mobile Apps támogatja a tábla **azonosító** oszlopának egyedi egyéni karak
 * A rekordok könnyebben egyesíthetők különböző táblákból vagy adatbázisokból.
 * Az azonosító értékek jobban integrálhatók az alkalmazás logikájának használatával.
 
-Ha egy karakterlánc-azonosító érték nincs beszúrt rekordra beállítva, a mobil alkalmazás háttere egyedi értéket hoz létre az AZONOSÍTÓhoz. A [GUID. NewGuid] metódus használatával a saját azonosító értékeit is létrehozhatja az ügyfélen vagy a háttérben.
+Ha egy karakterlánc-azonosító érték nincs beszúrt rekordra beállítva, a mobil alkalmazás háttere egyedi értéket hoz létre az AZONOSÍTÓhoz. A [Guid.NewGuid] metódus használatával a saját azonosító értékeit is létrehozhatja az ügyfélen vagy a háttérben.
 
 ```csharp
 JObject jo = new JObject();
@@ -359,10 +359,10 @@ jo.Add("Complete", false);
 var inserted = await table.UpdateAsync(jo);
 ```
 
-Frissítés készítésekor meg kell adni egy `id` mezőt. A háttérrendszer a `id` mezőt használja a frissítendő sor azonosításához. A `id` mező a `InsertAsync` hívás eredménye alapján szerezhető be. Ha a `id` érték megadása nélkül próbál frissíteni egy adott tételt, `ArgumentException` értéket ad meg.
+Frissítés készítésekor meg kell adni egy `id` mezőt. A háttérrendszer a `id` mezőt használja a frissítendő sor azonosítására. A `id` mező a `InsertAsync` hívás eredménye alapján szerezhető be. Egy `ArgumentException` akkor jön létre, ha a `id` érték megadása nélkül próbál frissíteni egy adott tételt.
 
 ### <a name="deleting"></a>Útmutató: az adattörlés egy Mobile apps-háttérbeli háttérben
-A következő kód bemutatja, hogyan használható a [DeleteAsync] metódus egy meglévő példány törléséhez. A példányt a (z) `todoItem` mezőben beállított `id` mező azonosítja.
+A következő kód bemutatja, hogyan használható a [DeleteAsync] metódus egy meglévő példány törléséhez. A példányt a `todoItem`beállított `id` mező azonosítja.
 
 ```csharp
 await todoTable.DeleteAsync(todoItem);
@@ -376,14 +376,14 @@ jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 await table.DeleteAsync(jo);
 ```
 
-Törlési kérelem esetén meg kell adni egy azonosítót. A szolgáltatás nem továbbítja a többi tulajdonságot, vagy figyelmen kívül hagyja a szolgáltatást. A `DeleteAsync` hívás eredménye általában `null`. Az átadandó azonosító a `InsertAsync` hívás eredménye alapján szerezhető be. Ha a `id` mező megadása nélkül próbálkozik az elemek törlésével, egy `MobileServiceInvalidOperationException` kerül.
+Törlési kérelem esetén meg kell adni egy azonosítót. A szolgáltatás nem továbbítja a többi tulajdonságot, vagy figyelmen kívül hagyja a szolgáltatást. Egy `DeleteAsync` hívás eredménye általában `null`. Az átadni kívánt azonosító a `InsertAsync` hívás eredményében szerezhető be. Egy `MobileServiceInvalidOperationException` akkor kerül kiválasztásra, ha a `id` mező megadása nélkül próbál törölni egy elemeket.
 
 ### <a name="optimisticconcurrency"></a>Útmutató: optimista Egyidejűség használata az ütközés feloldásához
 Két vagy több ügyfél egyszerre is írhat módosításokat ugyanarra az objektumra. Ütközések észlelése nélkül az utolsó írás felülírja a korábbi frissítéseket. Az **optimista egyidejűségi vezérlés** feltételezi, hogy minden tranzakció véglegesíthető, ezért nem használ erőforrás-zárolást.  A tranzakció véglegesítése előtt az optimista Egyidejűség-vezérlés ellenőrzi, hogy egyetlen másik tranzakció sem módosította-e az adatfeldolgozást. Ha az adatgyűjtés módosult, a véglegesítési tranzakció vissza lesz állítva.
 
-Mobile Apps támogatja az optimista Egyidejűség-vezérlést az egyes elemek változásainak nyomon követésével, a `version` rendszertulajdonság oszlop használatával, amely a Mobile apps-háttérbeli egyes táblákhoz van definiálva. Minden alkalommal, amikor egy rekord frissül, Mobile Apps beállítja az adott rekordhoz tartozó `version` tulajdonságot egy új értékre. Az egyes frissítési kérelmek során a kérésben szereplő rekord `version` tulajdonsága a kiszolgálón lévő rekordhoz képest ugyanahhoz a tulajdonsághoz lesz hasonlítva. Ha a kérelemmel átadott verzió nem felel meg a háttérnek, akkor az ügyféloldali kódtár `MobileServicePreconditionFailedException<T>` kivételt vált ki. A kivételben szereplő típus a rekord kiszolgáló verzióját tartalmazó háttérbeli rekord. Az alkalmazás ezt az információt felhasználva eldöntheti, hogy a frissítési kérést újra végrehajtja-e a megfelelő `version` értékkel a háttérből a módosítások elvégzéséhez.
+Mobile Apps támogatja az optimista Egyidejűség-vezérlést az egyes elemek változásainak nyomon követésével a Mobile apps-háttér minden egyes táblájához megadott `version` rendszertulajdonság oszlop használatával. Minden alkalommal, amikor egy rekord frissül, Mobile Apps beállítja a rekord `version` tulajdonságát egy új értékre. Az egyes frissítési kérelmek során a kérésben szereplő rekord `version` tulajdonsága a kiszolgálón lévő rekordhoz képest ugyanahhoz a tulajdonsághoz lesz hasonlítva. Ha a kérelemmel átadott verzió nem felel meg a háttérnek, akkor az ügyféloldali kódtár `MobileServicePreconditionFailedException<T>` kivételt vált ki. A kivételben szereplő típus a rekord kiszolgáló verzióját tartalmazó háttérbeli rekord. Az alkalmazás ezt az információt felhasználva eldöntheti, hogy a frissítési kérést újra végrehajtja-e a megfelelő `version` értékkel a háttérből a módosítások elvégzéséhez.
 
-Adjon meg egy oszlopot a Table osztályban a `version` rendszer tulajdonsághoz az optimista Egyidejűség engedélyezéséhez. Példa:
+Adjon meg egy oszlopot a Table osztályban a `version` rendszer tulajdonsághoz az optimista Egyidejűség engedélyezéséhez. Például:
 
 ```csharp
 public class TodoItem
@@ -402,14 +402,14 @@ public class TodoItem
 }
 ```
 
-A nem típusos táblákat használó alkalmazások esetében az optimista párhuzamosságot az alábbi módon állíthatja be a táblázat `SystemProperties`. `Version` jelzőjét.
+A nem típusos táblákat használó alkalmazások esetében az optimista párhuzamosságot az alábbi módon állíthatja be a táblázat `SystemProperties` `Version` jelzőjét.
 
 ```csharp
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Az optimista Egyidejűség engedélyezése mellett a [UpdateAsync]meghívásakor a kódban a `MobileServicePreconditionFailedException<T>` kivételt is meg kell fognia.  Oldja fel az ütközést úgy, hogy a megfelelő @no__t – 0 értéket alkalmazza a frissített rekordra, és a megoldott rekorddal hívja meg a [UpdateAsync] . A következő kód bemutatja, hogyan oldható fel az írási ütközés az észlelést követően:
+Az optimista Egyidejűség engedélyezése mellett a [UpdateAsync]meghívásakor is meg kell fognia a kódban `MobileServicePreconditionFailedException<T>` kivételt.  Oldja fel az ütközést úgy, hogy a megfelelő `version` alkalmazza a frissített rekordra, és a megoldott rekorddal hívja meg a [UpdateAsync] . A következő kód bemutatja, hogyan oldható fel az írási ütközés az észlelést követően:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -486,7 +486,7 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-A felügyelt futtatókörnyezet egyes vezérlői támogatják a [ISupportIncrementalLoading]nevű felületet. Ez az interfész lehetővé teszi, hogy a vezérlőelemek további adatkérést kérjenek a felhasználó görgetésekor. Az univerzális Windows-alkalmazások számára a [MobileServiceIncrementalLoadingCollection]-on keresztül beépített támogatás érhető el ehhez az interfészhez, amely automatikusan kezeli a hívásokat a vezérlőktől. A Windows-alkalmazásokban a következő módon használhatja a `MobileServiceIncrementalLoadingCollection` értéket:
+A felügyelt futtatókörnyezet egyes vezérlői támogatják a [ISupportIncrementalLoading]nevű felületet. Ez az interfész lehetővé teszi, hogy a vezérlőelemek további adatkérést kérjenek a felhasználó görgetésekor. Az univerzális Windows-alkalmazások számára a [MobileServiceIncrementalLoadingCollection]-on keresztül beépített támogatás érhető el ehhez az interfészhez, amely automatikusan kezeli a hívásokat a vezérlőktől. A Windows-alkalmazásokban a következőképpen használhatja a `MobileServiceIncrementalLoadingCollection`:
 
 ```csharp
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
@@ -496,19 +496,19 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Ha az új gyűjteményt Windows Phone-telefon 8 és a "Silverlight" alkalmazásban szeretné használni, használja a `ToCollection` kiterjesztési metódusokat `IMobileServiceTableQuery<T>` és `IMobileServiceTable<T>` esetében. Az betöltéshez hívja meg a `LoadMoreItemsAsync()` értéket.
+Ha az új gyűjteményt Windows Phone-telefon 8 és a "Silverlight" alkalmazásban szeretné használni, használja a `ToCollection` bővítmény metódusait `IMobileServiceTableQuery<T>` és `IMobileServiceTable<T>`. Az betöltéshez hívja meg a `LoadMoreItemsAsync()`.
 
 ```csharp
 MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 await items.LoadMoreItemsAsync();
 ```
 
-Ha a `ToCollectionAsync` vagy `ToCollection` hívásával létrehozott gyűjteményt használja, egy olyan gyűjteményt kap, amely felhasználói felületi vezérlőkhöz köthető.  Ez a gyűjtemény lapozófájl-kompatibilis.  Mivel a gyűjtemény adatok betöltése a hálózatról történik, a betöltés néha sikertelen lesz. Az ilyen hibák kezeléséhez bírálja felül a `OnException` metódust `MobileServiceIncrementalLoadingCollection` értékre a `LoadMoreItemsAsync` hívásokból eredő kivételek kezeléséhez.
+Ha `ToCollectionAsync` vagy `ToCollection`hívásával létrehozott gyűjteményt használ, egy olyan gyűjteményt kap, amely felhasználói felületi vezérlőkhöz köthető.  Ez a gyűjtemény lapozófájl-kompatibilis.  Mivel a gyűjtemény adatok betöltése a hálózatról történik, a betöltés néha sikertelen lesz. Az ilyen hibák kezeléséhez bírálja felül a `MobileServiceIncrementalLoadingCollection` `OnException` metódusát, hogy kezelni tudja a `LoadMoreItemsAsync`hívásainak miatti kivételeket.
 
 Vegye figyelembe, hogy a tábla sok mezőből áll, de csak néhányat szeretne megjeleníteni a vezérlőelemben. A felhasználói felületen megjelenítendő egyes oszlopok kiválasztásához használhatja az előző, "[adott oszlopok kiválasztása](#selecting)" című szakaszban található útmutatást.
 
 ### <a name="pagesize"></a>Oldalméret módosítása
-Az Azure Mobile Apps alapértelmezés szerint legfeljebb 50 elemet ad vissza kérelemként.  A lapozófájl méretét úgy módosíthatja, hogy az ügyfélen és a kiszolgálón is megnöveli az oldalméret maximális méretét.  A kért oldalméret növeléséhez `PullOptions` értéket kell megadnia `PullAsync()` használata esetén:
+Az Azure Mobile Apps alapértelmezés szerint legfeljebb 50 elemet ad vissza kérelemként.  A lapozófájl méretét úgy módosíthatja, hogy az ügyfélen és a kiszolgálón is megnöveli az oldalméret maximális méretét.  A kért oldalméret növeléséhez a `PullAsync()`használatakor `PullOptions`t kell megadnia:
 
 ```csharp
 PullOptions pullOptions = new PullOptions
@@ -517,7 +517,7 @@ PullOptions pullOptions = new PullOptions
     };
 ```
 
-Feltételezve, hogy a kiszolgálón a `PageSize` egyenlő vagy nagyobb, mint 100, a kérelem legfeljebb 100 elemet ad vissza.
+Feltételezve, hogy a-kiszolgálón a `PageSize` egyenlő vagy nagyobb, mint 100, a kérelem legfeljebb 100 elemet ad vissza.
 
 ## <a name="#offlinesync"></a>Kapcsolat nélküli táblák használata
 Az offline táblák helyi SQLite-tárolót használnak az adatkapcsolat nélküli használatra.  Az összes tábla-művelet a távoli kiszolgáló tárolója helyett a helyi SQLite-tárolón történik.  Offline tábla létrehozásához először készítse elő a projektet:
@@ -528,7 +528,7 @@ Az offline táblák helyi SQLite-tárolót használnak az adatkapcsolat nélkül
    * **Windows 8,1 futtatókörnyezet:** Telepítse [a Windows 8,1 rendszerhez készült SQLite][3]-t.
    * **Windows Phone-telefon 8,1:** [Az SQLite telepítése Windows Phone-telefon 8,1][4]-re.
    * **Univerzális Windows-platform** [Az SQLite telepítése az univerzális Windows rendszerre][5].
-3. (Nem kötelező). Windows-eszközök esetén kattintson a **hivatkozások**@no__t-**1 hivatkozás hozzáadása...** elemre, bontsa ki a **Windows** mappa > **bővítmények**csomópontot, majd engedélyezze a megfelelő **SQLite for Windows** SDK-t a **Visual C++ 2013 futtatókörnyezettel együtt. Windows SDK esetén** .
+3. (Nem kötelező). Windows-eszközök esetén kattintson a **hivatkozások** > **hivatkozás hozzáadása...** elemre, bontsa ki a **Windows** mappa > **bővítmények**csomópontot, majd engedélyezze a megfelelő **SQLite for Windows** SDK-t, valamint a **Visual C++ 2013 Runtime for Windows** SDK-t.
     Az SQLite SDK-nevek kis mértékben eltérőek az egyes Windows platformokon.
 
 A tábla hivatkozásának létrehozása előtt elő kell készíteni a helyi tárolót:
@@ -603,11 +603,11 @@ public async Task SyncAsync()
 }
 ```
 
-Ha a `PullAsync` első argumentuma null értékű, a növekményes szinkronizálás nincs használatban.  Minden szinkronizálási művelet lekérdezi az összes rekordot.
+Ha a `PullAsync` első argumentuma null értékű, akkor a növekményes szinkronizálás nincs használatban.  Minden szinkronizálási művelet lekérdezi az összes rekordot.
 
-Az SDK implicit `PushAsync()` műveletet hajt végre a rekordok húzása előtt.
+Az SDK implicit `PushAsync()` hajt végre a rekordok húzása előtt.
 
-Az ütközések feldolgozása `PullAsync()` metódussal történik.  Az ütközéseket ugyanúgy kezelheti, mint az online táblákat.  Az ütközés akkor jön létre, ha a `PullAsync()` hívása az INSERT, az Update vagy a DELETE helyett történik. Ha több ütközés történik, azok egyetlen MobileServicePushFailedException vannak becsomagolva.  Az egyes hibák kezelése külön történik.
+Az ütközések kezelését `PullAsync()` metódussal történik.  Az ütközéseket ugyanúgy kezelheti, mint az online táblákat.  Az ütközés akkor jön létre, ha a `PullAsync()` hívása az INSERT, a Update vagy a DELETE helyett történik. Ha több ütközés történik, azok egyetlen MobileServicePushFailedException vannak becsomagolva.  Az egyes hibák kezelése külön történik.
 
 ## <a name="#customapi"></a>Egyéni API használata
 Az egyéni API-k olyan egyéni végpontok definiálását teszik lehetővé, amelyek olyan kiszolgáló-funkciókat tesznek elérhetővé, amelyek nem képezhetők be a beszúrási, frissítési, törlési és olvasási műveletekhez. Egyéni API-k használatával nagyobb mértékben szabályozhatja az üzenetkezelést, többek között a HTTP-üzenetek fejlécének olvasását és beállítását, valamint a JSON formátumon kívüli üzenettörzs definiálását is.
@@ -621,10 +621,10 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 Ez az űrlap egy begépelt metódus hívása, amely megköveteli, hogy a **MarkAllResult** visszatérési típusa meg legyen adva. A beírt és a nem típusos metódusok egyaránt támogatottak.
 
 A InvokeApiAsync () metódus "/API/" paraméterként megadott a hívni kívánt API-ra, kivéve, ha az API egy "/" karakterrel kezdődik.
-Példa:
+Például:
 
-* @no__t – 0 hívás/api/completeAll a háttéren
-* @no__t – 0 hívás/.auth/Me a háttéren
+* `InvokeApiAsync("completeAll",...)` hívások/api/completeAll a háttéren
+* `InvokeApiAsync("/.auth/me",...)` hívások/.auth/Me a háttéren
 
 A InvokeApiAsync segítségével bármilyen WebAPI hívhat meg, beleértve azokat a webapi-kat is, amelyek nincsenek definiálva az Azure Mobile Apps-ban.  A InvokeApiAsync () használatakor a rendszer elküldi a megfelelő fejléceket (beleértve a hitelesítési fejléceket is) a kérelemmel együtt.
 
@@ -636,7 +636,7 @@ Két hitelesítési folyamat támogatott: az *ügyfél által felügyelt* és a 
 > [!NOTE]
 > Javasoljuk, hogy használjon egy ügyfél által felügyelt folyamatot az éles alkalmazásokban.
 
-A hitelesítés beállításához regisztrálnia kell az alkalmazást egy vagy több identitás-szolgáltatóval.  Az identitás-szolgáltató létrehoz egy ügyfél-azonosítót és egy ügyfél-titkot az alkalmazáshoz.  A rendszer ezeket az értékeket a háttérbe állítja be a Azure App Service hitelesítés/engedélyezés engedélyezéséhez.  További információért kövesse az oktatóanyagban a [hitelesítés hozzáadása az alkalmazáshoz]című témakör részletes utasításait.
+A hitelesítés beállításához regisztrálnia kell az alkalmazást egy vagy több identitás-szolgáltatóval.  Az identitás-szolgáltató létrehoz egy ügyfél-azonosítót és egy ügyfél-titkot az alkalmazáshoz.  A rendszer ezeket az értékeket a háttérbe állítja be a Azure App Service hitelesítés/engedélyezés engedélyezéséhez.  További információkért kövesse a részletes utasításokat az oktatóanyag [Hitelesítés hozzáadása az alkalmazáshoz].
 
 A szakasz a következő témaköröket tartalmazza:
 
@@ -656,13 +656,13 @@ Példák a következő ügyféloldali hitelesítési mintákhoz:
 A Active Directory-hitelesítési tár (ADAL) használatával kezdeményezheti a felhasználói hitelesítést az ügyféltől Azure Active Directory hitelesítéssel.
 
 1. A HRE-bejelentkezéshez a [App Service konfigurálása Active Directory bejelentkezéshez] oktatóanyagban című témakörben található. Győződjön meg arról, hogy a natív ügyfélalkalmazás regisztrálásának nem kötelező lépéseit kell végrehajtania.
-2. A Visual Studióban vagy a Xamarin Studióban nyissa meg a projektet, és vegyen fel egy hivatkozást a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet-csomagra. Kereséskor adja meg a kiadás előtti verziókat.
+2. A Visual Studióban vagy a Xamarin Studióban nyissa meg a projektet, és adjon hozzá egy hivatkozást a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet csomaghoz. Kereséskor adja meg a kiadás előtti verziókat.
 3. Adja hozzá a következő kódot az alkalmazáshoz a használt platform alapján. Minden esetben végezze el a következő cseréket:
 
-   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com értékűnek kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
+   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.comnak kell lennie. Ez az érték a [Azure Portal]Azure Active Directory tartomány lapjáról másolható.
    * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
    * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
-   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a következőhöz hasonlónak kell lennie: *https://contoso.azurewebsites.net/.auth/login/done* .
+   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/donehoz* hasonlónak kell lennie.
 
      Az egyes platformokhoz szükséges kód a következő:
 
@@ -870,7 +870,7 @@ client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-A Xamarin-alkalmazások a [Xamarin. auth] API-kat használják a hitelesítő adatok biztonságos tárolására egy **fiók** objektumban. Az API-k használatával kapcsolatos példát a [ContosoMoments Photo Sharing minta](https://github.com/azure-appservice-samples/ContosoMoments) [AuthStore.cs] -kódjában talál.
+A Xamarin-alkalmazások a [Xamarin.Auth] API-kat használják a hitelesítő adatok biztonságos tárolására egy **fiók** objektumban. Az API-k használatával kapcsolatos példát a [ContosoMoments Photo Sharing minta](https://github.com/azure-appservice-samples/ContosoMoments) [AuthStore.cs] -kódjában talál.
 
 Ha ügyfél által felügyelt hitelesítést használ, akkor a szolgáltatótól kapott hozzáférési tokent (például Facebook vagy Twitter) is gyorsítótárazhatja. Ezt a jogkivonatot úgy lehet megadni, hogy új hitelesítési tokent igényeljen a háttérből, a következőképpen:
 
@@ -904,21 +904,21 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Ha a WNS-ra kattint, be kell [szereznie egy Microsoft Store csomag SID](#package-sid)-t.  A Windows-alkalmazásokkal kapcsolatos további információkért, beleértve a sablonok regisztrációjának regisztrálását is, lásd: [leküldéses értesítések hozzáadása az alkalmazáshoz].
+Ha a WNS-ra kattint, be kell [szereznie egy Microsoft Store csomag SID](#package-sid)-t.  További információ a Windows-alkalmazásokra, hogyan kell regisztrálni a sablon regisztrációhoz, beleértve: [Leküldéses értesítések hozzáadása az alkalmazáshoz].
 
 A címkék az ügyféltől való kérelmezése nem támogatott.  A címkézési kérelmeket a rendszer csendben elveti a regisztrációból.
-Ha címkével szeretné regisztrálni az eszközt, hozzon létre egy egyéni API-t, amely a Notification Hubs API-t használja a regisztráció elvégzéséhez az Ön nevében.  A `RegisterNativeAsync()` metódus helyett hívja meg az egyéni API-t.
+Ha címkével szeretné regisztrálni az eszközt, hozzon létre egy egyéni API-t, amely a Notification Hubs API-t használja a regisztráció elvégzéséhez az Ön nevében.  Az `RegisterNativeAsync()` metódus helyett hívja meg az egyéni API-t.
 
 ### <a name="package-sid"></a>Útmutató: Microsoft Store csomag biztonsági azonosítójának beszerzése
 A leküldéses értesítések Microsoft Store alkalmazásokban való engedélyezéséhez csomag biztonsági azonosítója szükséges.  A csomag biztonsági azonosítójának fogadásához regisztrálja az alkalmazást a Microsoft Store.
 
 Az érték beszerzése:
 
-1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a Microsoft Store alkalmazás-projektre, majd kattintson az **áruház** > **alkalmazás hozzárendelése az áruházhoz...** elemre.
+1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a Microsoft Store alkalmazás-projektre, majd kattintson az **áruházban** > **az alkalmazás hozzárendelése az áruházhoz..** . elemre.
 2. A varázslóban kattintson a **tovább**gombra, jelentkezzen be a Microsoft-fiókba, írja be az alkalmazás nevét a **foglaláshoz**, és kattintson a **tartalék**elemre.
 3. Az alkalmazás regisztrációjának sikeres létrehozása után válassza ki az alkalmazás nevét, kattintson a **tovább**, majd a **hozzárendelés**elemre.
 4. Jelentkezzen be a [Windows fejlesztői központ] a Microsoft-fiókjával. A **saját alkalmazások**alatt kattintson a létrehozott alkalmazás-regisztrációra.
-5. Kattintson az **app management** > **alkalmazás identitása**elemre, majd görgessen lefelé a **csomag biztonsági azonosítójának**megkereséséhez.
+5. Kattintson az **alkalmazás-kezelés** > **alkalmazás identitása**elemre, majd görgessen le a **csomag biztonsági azonosítójának**megkereséséhez.
 
 A csomag biztonsági azonosítójának számos használata URI-ként van kezelve, ebben az esetben az *MS-app://* értéket kell használnia a sémaként. Jegyezze fel a csomag SID-verzióját, amelyet az érték előtagként való összefűzésével hozott létre.
 
@@ -935,7 +935,7 @@ JObject templates = myTemplates();
 MobileService.GetPush().RegisterAsync(channel.Uri, templates);
 ```
 
-A sablonoknak `JObject` típusúnak kell lennie, és a következő JSON-formátumban több sablont is tartalmazhat:
+A sablonoknak `JObject` típusúnak kell lenniük, és több sablont is tartalmazhatnak a következő JSON formátumban:
 
 ```csharp
 public JObject myTemplates()
@@ -972,7 +972,7 @@ Az alábbi regisztrált sablonokat használó értesítések küldéséhez tekin
 
 ## <a name="misc"></a>Egyéb témakörök
 ### <a name="errors"></a>Útmutató: hibák kezelése
-Ha hiba lép fel a háttérben, az ügyfél SDK `MobileServiceInvalidOperationException` értéket vált ki.  Az alábbi példa bemutatja, hogyan kezelheti a háttér által visszaadott kivételt:
+Ha hiba lép fel a háttérben, az ügyfél-SDK egy `MobileServiceInvalidOperationException`t hoz létre.  Az alábbi példa bemutatja, hogyan kezelheti a háttér által visszaadott kivételt:
 
 ```csharp
 private async void InsertTodoItem(TodoItem todoItem)
@@ -1069,13 +1069,13 @@ public class MyHandler : DelegatingHandler
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [Eltarthat]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Kiválasztás]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Kihagyása]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Ahol]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
+[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows fejlesztői központ]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
@@ -1089,6 +1089,6 @@ public class MyHandler : DelegatingHandler
 [OData v3 – dokumentáció]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
 [Json.NET]: https://www.newtonsoft.com/json
-[Xamarin. auth]: https://components.xamarin.com/view/xamarin.auth/
+[Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

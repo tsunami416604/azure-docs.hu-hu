@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan találhatja meg a híreket, videókat és egyéb ele
 
 Például a keresési feltételek alapján megtalálhatja a híreket, és Twitter-hírcsatornában teheti közzé ezeket az elemeket tweetként.
 
-Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps és a](../logic-apps/logic-apps-overview.md) [Quickstart: Hozza létre az első logikai alkalmazását: @ no__t-0.
+Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget.
 Az összekötő-specifikus technikai információk az Bing Search- [összekötő referenciájában](https://docs.microsoft.com/connectors/bingsearch/)olvashatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -45,7 +45,7 @@ Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logi
 
 2. A keresőmezőbe írja be szűrőként a "Bing Search" kifejezést. Az eseményindítók listából válassza ki a kívánt eseményindítót.
 
-   Ez a példa a következő triggert használja: **Bing Search – új hírekre vonatkozó cikk**
+   Ez a példa a következő triggert használja: **Bing Search-on New News cikk**
 
    ![Bing Search trigger keresése](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -54,16 +54,16 @@ Ha már létezik a kapcsolatai, adja meg a szükséges információkat az trigge
 
    Ebben a példában megadhatja, hogy a rendszer hogyan adja vissza a megfelelő híreket a Bing Search.
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | Search Query | Igen | <*search-words*> | Adja meg a használni kívánt keresési kulcsszavakat. |
-   | Market | Igen | <*területi beállítás*@no__t – 2 | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Market | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
    | Safe Search | Igen | <*search-level*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Count | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Offset | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Darabszám | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
-   Példa:
+   Például:
 
    ![Trigger beállítása](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -81,7 +81,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. A Azure Portal vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben. Ez a példa a Azure Portal használja.
 
-2. Az trigger vagy a művelet alatt válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+2. Az aktiválás vagy művelet alatt válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
 
    Ez a példa a következő triggert használja:
 
@@ -105,13 +105,13 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    Ebben a példában adja meg az trigger eredményeinek egy részhalmazának visszaküldési feltételeit.
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | Search Query | Igen | <*search-expression*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
-   | Market | Igen | <*területi beállítás*@no__t – 2 | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Market | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
    | Safe Search | Igen | <*search-level*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Count | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Offset | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Darabszám | Nem | <*results-count*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*skip-value*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Tegyük fel például, hogy azokat az eredményeket szeretné használni, amelyek kategóriájának neve tartalmazza a "Tech" szót.
@@ -128,7 +128,7 @@ A műveletek listából válassza ki a kívánt műveletet.
       ![Válasszon függvényt](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. A mezőlista listából válassza ki a **kategóriát**, amely egy paraméterre konvertál. 
-   Adjon hozzá egy vesszőt az első paraméter után, és a vessző után adja hozzá ezt a szót: `'tech'` 
+   Adjon hozzá egy vesszőt az első paraméter után, és a vessző után adja hozzá a következő szót: `'tech'` 
 
       ![Válasszon ki egy mezőt](./media/connectors-create-api-bing-search/expression-select-field.png)
 
@@ -152,14 +152,14 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 1. Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a következő adatokat:
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | Kapcsolat neve | Igen | < @no__t – 2.*kapcsolatok* | A kapcsolódáshoz létrehozandó név |
+   | Kapcsolat neve | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | API-verzió | Igen | <*API-version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
-   | API-kulcs | Igen | <*API-key*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | API-kulcs | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Példa:
+   Például:
 
    ![Kapcsolat létrehozása](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
@@ -169,6 +169,6 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/bingsearch/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

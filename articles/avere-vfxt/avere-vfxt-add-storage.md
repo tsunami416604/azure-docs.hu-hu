@@ -47,9 +47,9 @@ A következő lépések egy NAS Core Filer-t vesznek fel:
 
 1. A avere vezérlőpultján kattintson a felül található **Beállítások** fülre.
 
-1. Kattintson a **Core filer** >  a bal oldalon található**alapszintű filers kezelése** elemre.
+1. Kattintson a **Core filer** > a bal oldalon található **Core filers kezelése** lehetőségre.
 
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
    ![Képernyőkép az új alapszintű Filer hozzáadása oldalról, amely kurzort mutat a létrehozás gombon](media/avere-vfxt-add-core-filer-start.png)
 
@@ -98,7 +98,7 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
 
    Használhatja a Azure Portal, vagy kattintson az alábbi "üzembe helyezés az Azure-ban" gombra.
 
-   [@no__t – 1button létrehozása](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
+   [![gombra a Storage-fiók létrehozásához](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. A fiók létrehozása után keresse meg a Storage-fiók lapot.
 
@@ -112,25 +112,25 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
 
    ![Azure Portal grafikus felhasználói felület a kulcs másolásához](media/avere-vfxt-copy-storage-key.png) 
 
-1. Nyissa meg a fürt avere Vezérlőpultját. Kattintson a **Beállítások**elemre, majd nyissa meg a **fürt**@no__t – 2**Felhőbeli hitelesítő adatokat** a bal oldali navigációs ablaktáblán. A Felhőbeli hitelesítő adatok lapon kattintson a **hitelesítő adatok hozzáadása**lehetőségre.
+1. Nyissa meg a fürt avere Vezérlőpultját. Kattintson a **Beállítások**elemre, majd nyissa meg a **fürt** > a **Felhőbeli hitelesítő adatok** a bal oldali navigációs ablaktáblán. A Felhőbeli hitelesítő adatok lapon kattintson a **hitelesítő adatok hozzáadása**lehetőségre.
 
    ![Kattintson a hitelesítő adatok hozzáadása gombra a Felhőbeli hitelesítő adatok konfigurálása lapon](media/avere-vfxt-new-credential-button.png)
 
 1. Adja meg a következő információkat a Cloud Core Filer hitelesítő adatainak létrehozásához: 
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    | --- | --- |
    | Hitelesítő adat neve | bármilyen leíró név |
    | Szolgáltatás típusa | (Azure Storage-hozzáférési kulcs kiválasztása) |
    | Bérlő | tárfiók neve |
-   | Előfizetés | subscription ID |
+   | Előfizetést | subscription ID |
    | Tároló-hozzáférési kulcs | Azure Storage-fiók kulcsa (az előző lépésben másolva) | 
 
-   Kattintson a **Submit (Küldés**) gombra.
+   Kattintson a **Submit** (Küldés) gombra.
 
    ![A Felhőbeli hitelesítő adatok űrlapja befejeződött a avere Vezérlőpultján](media/avere-vfxt-new-credential-submit.png)
 
-1. Ezután hozza létre a Core Filer-t. A avere Vezérlőpultjának bal oldalán kattintson a **Core filer** >   a**Core filers kezelése**elemre. 
+1. Ezután hozza létre a Core Filer-t. A avere Vezérlőpultjának bal oldalán kattintson az **alapvető filer** >  a **Core filers kezelése**elemre. 
 
 1. Kattintson a **Létrehozás** gombra a **Core filers beállítások kezelése** lapon.
 
@@ -144,7 +144,7 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
    * A **gyűjtő tartalmának** **üresre** állítása
    * **Tanúsítvány ellenőrzésének** módosítása **Letiltva**
    * A **tömörítési mód** módosítása a **none** értékre  
-   * Kattintson a **Tovább** gombra.
+   * Kattintson a **Tovább**gombra.
    * A negyedik lapon adja meg a tároló nevét a **gyűjtő neve** mezőben *storage_account_name*/*container_name*.
    * Szükség esetén a **titkosítás típusát** állítsa **nincs**értékre.  Az Azure Storage alapértelmezés szerint titkosítva van.
    * Kattintson a **Filer hozzáadása**elemre.
@@ -159,7 +159,7 @@ Ezután [létre kell hoznia egy csomópontot](#create-a-junction).
 
 A Junction az ügyfelek számára létrehozott elérési út. Az ügyfelek csatlakoztatják az elérési utat, és megérkeznek a kiválasztott célhelyre.
 
-Létrehozhat például `/avere/files` értéket a NetApp Core Filer `/vol0/data` exportálás és a `/project/resources` alkönyvtár leképezéséhez.
+Létrehozhat például `/avere/files` a NetApp Core Filer `/vol0/data` exportáláshoz és a `/project/resources` alkönyvtárhoz való leképezéshez.
 
 A csatlakozási pontokról további információt a [avere-fürt konfigurációs útmutatójának névtér szakaszában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)talál.
 
@@ -169,7 +169,7 @@ Kövesse az alábbi lépéseket a avere Vezérlőpult-beállítások felületén
 * Adja meg a névtér elérési útját a (z)/(továbbítás perjel) kezdetével, például ``/avere/data``.
 * Válassza ki az alapvető Filer-t.
 * Válassza ki az alapszintű Filer-exportálást.
-* Kattintson a **Tovább** gombra.
+* Kattintson a **Tovább**gombra.
 
   ![Képernyőkép az "új elágazás hozzáadása" oldalról a Junction, a Core Filer és az export mezőkkel kiegészítve](media/avere-vfxt-add-junction.png)
 

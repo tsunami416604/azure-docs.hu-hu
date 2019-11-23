@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Android Studio @no__t – 0. További információ a Android Studio telepítéséről: [Android – telepítés](https://developer.android.com/studio/install).
+* Android Studio https://developer.android.com/studio/ról. További információ a Android Studio telepítéséről: [Android – telepítés](https://developer.android.com/studio/install).
 
 * Az Android SDK 27 ezt a cikket használja a mintában.
 
@@ -81,13 +81,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. Android Studio nyissa meg a *gradle. properties* karakterláncot a minta projekthez, és cserélje le a **Device_Connection_String** helyőrzőt a korábban megjegyzett eszköz-csatlakoztatási sztringre.
+2. A Android Studioban nyissa meg a *gradle. properties* karakterláncot, és cserélje le a **Device_Connection_String** helyőrzőt a korábban jegyzett eszköz-összekapcsolási sztringre.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio kattintson a **fájl** > **szinkronizálási projekt Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
+3. Android Studio kattintson a **fájl** > **szinkronizálás projekt Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
 
    > [!NOTE]
    > Ha a projekt szinkronizálása sikertelen, a következő okok egyike lehet:
@@ -95,11 +95,11 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
    > * A projektben hivatkozott Android Gradle beépülő modul és Gradle verziója elavult a Android Studio verziójára vonatkozóan. Kövesse [ezeket az utasításokat](https://developer.android.com/studio/releases/gradle-plugin) , és telepítse a beépülő modul és a Gradle megfelelő verzióit a telepítéshez.
    > * Az Android SDK licencszerződése nincs aláírva. A létrehozási kimenetben szereplő utasítások alapján írja alá a licencszerződést, és töltse le az SDK-t.
 
-4. A Build befejeződése után kattintson a **futtatás** > **Futtatás "alkalmazás"** elemre. Beállíthatja, hogy az alkalmazás fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
+4. A Build befejezése után kattintson a **Futtatás** gombra > **futtassa az "app"** parancsot. Beállíthatja, hogy az alkalmazás fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
 
 5. Az alkalmazás betöltése után kattintson a **Start** gombra, hogy elindítsa a telemetria küldését a IoT hubba:
 
-    ![Jelentkezés](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Alkalmazás](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról

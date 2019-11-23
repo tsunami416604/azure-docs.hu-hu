@@ -1,7 +1,7 @@
 ---
-title: High availability ports overview in Azure
+title: Magas rendelkezésre állású portok áttekintő lapján az Azure-ban
 titleSuffix: Azure Load Balancer
-description: Learn about high availability ports load balancing on an internal load balancer.
+description: Tudnivalók a magas rendelkezésre állású portok terheléselosztási egy belső terheléselosztón.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -20,88 +20,88 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215076"
 ---
-# <a name="high-availability-ports-overview"></a>High availability ports overview
+# <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintő lapján
 
-Azure Standard Load Balancer helps you load-balance TCP and UDP flows on all ports simultaneously when you're using an internal load balancer. 
+Az Azure Standard Load Balancer segítségével összes porton a TCP és UDP-folyamatok terheléselosztás egyszerre egy belső load balancer használatakor. 
 
-A high availability (HA) ports load-balancing rule is a variant of a load-balancing rule, configured on an internal Standard Load Balancer. You can simplify the use of a load balancer by providing a single rule to load-balance all TCP and UDP flows that arrive on all ports of an internal Standard Load Balancer. The load-balancing decision is made per flow. This action is based on the following five-tuple connection: source IP address, source port, destination IP address, destination port, and protocol
+A magas rendelkezésre állású (HA) portok terheléselosztási szabálya egy belső standard Load Balancer konfigurált terheléselosztási szabály egy változata. Terheléselosztás egyetlen szabállyal egy belső Standard Load Balancer-az összes porton érkező összes TCP és UDP-folyamatok biztosításával egyszerűsítheti a terheléselosztó használatát. A terheléselosztás döntési folyamat kiszolgálónként történik. Ez a művelet a következő öt rekordos kapcsolaton alapul: forrás IP-címe, forrásport, cél IP-címe, célport és protokoll
 
-The HA ports load-balancing rules help you with critical scenarios, such as high availability and scale for network virtual appliances (NVAs) inside virtual networks. The feature can also help when a large number of ports must be load-balanced. 
+A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció segíthet is, ha nagy számú portok kell lennie, elosztott terhelésű. 
 
-The HA ports load-balancing rules is configured when you set the front-end and back-end ports to **0** and the protocol to **All**. The internal load balancer resource then balances all TCP and UDP flows, regardless of port number
+Ha az előtér-portok terheléselosztási szabályait úgy konfigurálja, hogy az előtérbeli és a háttérbeli portok **0-ra** és az **összes**protokollra legyenek beállítva. A belső terheléselosztó erőforrás ezután kiegyenlíti az összes TCP-és UDP-folyamatot, a portszámtól függetlenül.
 
-## <a name="why-use-ha-ports"></a>Why use HA ports?
+## <a name="why-use-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok miért érdemes használni?
 
-### <a name="nva"></a>Network virtual appliances
+### <a name="nva"></a>Hálózati virtuális berendezések
 
-You can use NVAs to help secure your Azure workload from multiple types of security threats. When you use NVAs in these scenarios, they must be reliable and highly available, and they must scale out for demand.
+Használhatja az nva-k védelme érdekében az Azure számítási feladatban a biztonsági fenyegetések többféle típusával szemben. Ezekben az esetekben az nva-k használatakor, megbízható és magas rendelkezésre állású kell lenniük, és azok kell horizontális felskálázása az igény szerinti.
 
-You can achieve these goals simply by adding NVA instances to the back-end pool of your internal load balancer and configuring an HA ports load-balancer rule.
+Ezen célok érhet el egyszerűen NVA-példányok hozzáadásával a belső terheléselosztó háttérbeli készletéhez, és konfigurálása egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályt.
 
-For NVA HA scenarios, HA ports offer the following advantages:
-- Provide fast failover to healthy instances, with per-instance health probes
-- Ensure higher performance with scale-out to *n*-active instances
-- Provide *n*-active and active-passive scenarios
-- Eliminate the need for complex solutions, such as Apache ZooKeeper nodes for monitoring appliances
+Az NVA magas rendelkezésre ÁLLÁS forgatókönyvek magas rendelkezésre ÁLLÁSÚ portok a következő előnyöket nyújtják:
+- Adja meg a megfelelő példányokhoz hasonlóan a gyors feladatátvétel az állapot-mintavételei példányonként
+- A horizontális felskálázás a magasabb teljesítmény biztosítása érdekében *n*– aktív példány
+- Adja meg *n*– aktív és aktív-passzív forgatókönyvek
+- Szükségtelenné teszi összetett megoldások, például az Apache ZooKeeper-csomópont monitorozáshoz készülékek
 
-The following diagram presents a hub-and-spoke virtual network deployment. The spokes force-tunnel their traffic to the hub virtual network and through the NVA, before leaving the trusted space. The NVAs are behind an internal Standard Load Balancer with an HA ports configuration. All traffic can be processed and forwarded accordingly. When configured as show in the following diagram, an HA Ports load-balancing rule additionally provides flow symmetry for ingress and egress traffic.
+Az alábbi ábrán egy Központ-küllő virtuális hálózat üzembe helyezési mutat be. A küllők kényszerített bújtatás forgalmukat a központi virtuális hálózaton, és az nva-n, mielőtt a megbízható területet. Az nva-k, amelyek egy magas rendelkezésre ÁLLÁSÚ portok konfigurációval egy belső Standard terheléselosztó mögött találhatók. Minden forgalmat is feldolgozott és továbbított ennek megfelelően. Ha a következő ábrán látható módon van konfigurálva, akkor egy HA-portok terheléselosztási szabálya emellett a bejövő és a kimenő forgalomhoz is biztosít flow-szimmetriát.
 
 <a node="diagram"></a>
-![Diagram of hub-and-spoke virtual network, with NVAs deployed in HA mode](./media/load-balancer-ha-ports-overview/nvaha.png)
+![a sugaras virtuális hálózat NVA, HA az üzembe helyezési módban van](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
-> If you are using NVAs, confirm with their providers how to best use HA ports and to learn which scenarios are supported.
+> Ha nva-kat használ, erősítse meg a szolgáltatók leginkább a magas rendelkezésre ÁLLÁSÚ portok használatára, és ismerje meg, hogy mely forgatókönyvek támogatottak.
 
-### <a name="load-balancing-large-numbers-of-ports"></a>Load-balancing large numbers of ports
+### <a name="load-balancing-large-numbers-of-ports"></a>Terheléselosztás – nagy számú portok
 
-You can also use HA ports for applications that require load balancing of large numbers of ports. You can simplify these scenarios by using an internal [Standard Load Balancer](load-balancer-standard-overview.md) with HA ports. A single load-balancing rule replaces multiple individual load-balancing rules, one for each port.
+Magas rendelkezésre ÁLLÁSÚ portok nagy számú portok terheléselosztást igénylő alkalmazásokhoz is használható. Egy belső használatával egyszerűsítheti a forgatókönyvekben [Standard Load Balancer](load-balancer-standard-overview.md) a magas rendelkezésre ÁLLÁSÚ portok. Egyetlen terheléselosztási szabály több egyéni terheléselosztási szabályok, minden egyes porthoz egy váltja fel.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-The HA ports feature is available in all the global Azure regions.
+Minden a globális Azure-régióban a magas rendelkezésre ÁLLÁSÚ portok funkció érhető el.
 
-## <a name="supported-configurations"></a>Supported configurations
+## <a name="supported-configurations"></a>Támogatott konfigurációk
 
-### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>A single, non-floating IP (non-Direct Server Return) HA-ports configuration on an internal Standard Load Balancer
+### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egy önálló, nem fix (nem - közvetlen kiszolgálói válasz) IP-portok konfigurálása belső Standard Load Balancer
 
-This configuration is a basic HA ports configuration. You can configure an HA ports load-balancing rule on a single front-end IP address by doing the following:
-1. While configuring Standard Load Balancer, select the **HA ports** check box in the Load Balancer rule configuration.
-2. For **Floating IP**, select **Disabled**.
+Ez a konfiguráció az alapkonfiguráció magas rendelkezésre ÁLLÁSÚ portok. Beállíthatja, hogy egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályának egyetlen előtér-IP-címet az alábbiak szerint:
+1. Válassza ki a Standard Load Balancer konfigurálása, miközben a **magas rendelkezésre ÁLLÁSÚ portok** jelölőnégyzet be a terheléselosztó-konfiguráció.
+2. A **nem fix IP-** válassza **letiltott**.
 
-This configuration does not allow any other load-balancing rule configuration on the current load balancer resource. It also allows no other internal load balancer resource configuration for the given set of back-end instances.
+Ez a konfiguráció nem engedélyezése semmilyen más terheléselosztási szabály konfigurálását a jelenlegi terheléselosztó-erőforráshoz. Azt is lehetővé teszi, hogy nincs más belső terheléselosztó erőforrás konfigurációját a háttér-példányok adott halmazát.
 
-However, you can configure a public Standard Load Balancer for the back-end instances in addition to this HA ports rule.
+Azonban konfigurálhatja úgy a magas rendelkezésre ÁLLÁSÚ portok szabály mellett a háttér-példányok nyilvános Standard Load Balancer.
 
-### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>A single, floating IP (Direct Server Return) HA-ports configuration on an internal Standard Load Balancer
+### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egy egyetlen, nem fix (közvetlen kiszolgálói válasz) IP-portok konfigurálása belső Standard Load Balancer
 
-You can similarly configure your load balancer to use a load-balancing rule with **HA Port** with a single front end by setting the **Floating IP** to **Enabled**. 
+Ehhez hasonlóan beállíthatja a terheléselosztó egy terheléselosztási szabályt az használandó **magas rendelkezésre ÁLLÁS Port** egyetlen előtér beállításával a **nem fix IP-** való **engedélyezve**. 
 
-By using this configuration, you can add more floating IP load-balancing rules and/or a public load balancer. However, you cannot use a non-floating IP, HA-ports load-balancing configuration on top of this configuration.
+Ez a konfiguráció használatával adhat hozzá további nem fix IP-terheléselosztási szabályok és/vagy egy nyilvános terheléselosztó. Nem használhatja azonban a nem fix IP portok terheléselosztási konfigurációs felül ezt a konfigurációt.
 
-### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Multiple HA-ports configurations on an internal Standard Load Balancer
+### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>A belső Standard Load Balancer több portok – konfiguráció
 
-If your scenario requires that you configure more than one HA port front end for the same back-end pool, you can do the following: 
-- Configure more than one front-end private IP address for a single internal Standard Load Balancer resource.
-- Configure multiple load-balancing rules, where each rule has a single unique front-end IP address selected.
-- Select the **HA ports** option, and then set **Floating IP** to **Enabled** for all the load-balancing rules.
+Ha, hogy konfigurálja-e egynél több magas rendelkezésre ÁLLÁSÚ port kezelőfelület ugyanazt a háttér-készletet, a következőket teheti: 
+- Egynél több előtér-privát IP-cím konfigurálása egy adott belső Standard Load Balancer-erőforrás.
+- Több terheléselosztási szabályt, ahol minden egyes szabály egy egyedi előtér-IP-címmel rendelkezik kiválasztott konfigurálása.
+- Válassza ki a **magas rendelkezésre ÁLLÁSÚ portok** lehetőséget, majd állítsa **nem fix IP-** való **engedélyezve** a terheléselosztási szabályokhoz.
 
-### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>An internal load balancer with HA ports and a public load balancer on the same back-end instance
+### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>A magas rendelkezésre ÁLLÁSÚ portok és a egy nyilvános terheléselosztó a háttér-példányt a belső terheléselosztó
 
-You can configure *one* public Standard Load Balancer resource for the back-end resources, along with a single internal Standard Load Balancer with HA ports.
+Konfigurálható *egy* nyilvános Standard Load Balancer-erőforrás a háttér-erőforrásokhoz, és a egy belső Standard Load Balancer magas rendelkezésre ÁLLÁSÚ portok.
 
 >[!NOTE]
->This capability is currently available via Azure Resource Manager templates, but it is not available via the Azure portal.
+>Ez a funkció jelenleg elérhető az Azure Resource Manager-sablonok, de az Azure Portalon nem érhető el.
 
 ## <a name="limitations"></a>Korlátozások
 
-- HA ports load-balancing rules are available only for internal Standard Load Balancer.
-- The combining of an HA ports load-balancing rule and a non-HA ports load-balancing rule is not supported.
-- Existing IP fragments will be forwarded by HA Ports load-balancing rules to same destination as first packet.  IP fragmenting a UDP or TCP packet is not supported.
-- The HA ports load-balancing rules are not available for IPv6.
-- Flow symmetry (primarily for NVA scenarios) is supported with backend instance and a single NIC (and single IP configuration) only when used as shown in the diagram above and using HA Ports load-balancing rules. It is not provided in any other scenario. This means that two or more Load Balancer resources and their respective rules make independent decisions and are never coordinated. See the description and diagram for [network virtual appliances](#nva). When you are using multiple NICs or sandwiching the NVA between a public and internal Load Balancer, flow symmetry is not available.  You may be able to work around this by source NAT'ing the ingress flow to the IP of the appliance to allow replies to arrive on the same NVA.  However, we strongly recommend using a single NIC and using the reference architecture shown in the diagram above.
+- HA a portok terheléselosztási szabályai csak belső standard Load Balancer esetén érhetők el.
+- A csoportba foglalása az egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály és a egy nem magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály nem támogatott.
+- A meglévő IP-töredékeket a HEKTÁRos portok terheléselosztási szabályai továbbítják az első csomaggal megegyező célra.  Az UDP-vagy TCP-csomagok IP-darabolása nem támogatott.
+- Az IF ports terheléselosztási szabályai nem érhetők el az IPv6-hoz.
+- A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a leírást és a diagram [hálózati virtuális berendezések](#nva). Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Configure HA ports on an internal Standard Load Balancer](load-balancer-configure-ha-ports.md)
-- [Learn about Standard Load Balancer](load-balancer-standard-overview.md)
+- [Magas rendelkezésre ÁLLÁSÚ portok konfigurálása belső Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- [Ismerje meg a Standard Load Balancer](load-balancer-standard-overview.md)

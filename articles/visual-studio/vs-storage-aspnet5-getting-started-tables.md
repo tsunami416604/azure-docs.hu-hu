@@ -36,7 +36,7 @@ Egyes Azure Storage API-k aszinkron módon működnek, és a cikkben szereplő k
 
 ASP.NET Core projektek tábláihoz való hozzáféréshez az alábbi elemeket is fel kell vennie az C# Azure Table Storage-hoz hozzáférő forrásfájlokba.
 
-1. Adja hozzá a szükséges `using` utasítást:
+1. Adja hozzá a szükséges `using` utasításokat:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage;
@@ -52,14 +52,14 @@ ASP.NET Core projektek tábláihoz való hozzáféréshez az alábbi elemeket is
                 "<name>", "<account-key>"), true);
     ```
 
-1. @No__t-0 objektum beszerzése a Storage-fiókban lévő Table objektumokra való hivatkozáshoz:
+1. `CloudTableClient` objektum lekérése a Storage-fiókban lévő Table objektumokra való hivatkozáshoz:
 
     ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. @No__t-0 hivatkozási objektum lekérése egy adott táblára és entitásokra:
+1. Egy `CloudTable` hivatkozási objektum beszerzése egy adott táblára és entitásokra való hivatkozáshoz:
 
     ```csharp
     // Get a reference to a table named "peopleTable"
@@ -68,7 +68,7 @@ ASP.NET Core projektek tábláihoz való hozzáféréshez az alábbi elemeket is
 
 ## <a name="create-a-table-in-code"></a>Tábla létrehozása kódban
 
-Az Azure-tábla létrehozásához hozzon létre egy aszinkron metódust, és a benne található `CreateIfNotExistsAsync()` függvényt:
+Az Azure-tábla létrehozásához hozzon létre egy aszinkron metódust, és a benne lévő `CreateIfNotExistsAsync()`hívja meg a következőt:
 
 ```csharp
 async void CreatePeopleTableAsync()
@@ -80,7 +80,7 @@ async void CreatePeopleTableAsync()
     
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Az entitások táblához való hozzáadásához létre kell hoznia egy olyan osztályt, amely meghatározza az entitás tulajdonságait. A következő kód egy `CustomerEntity` nevű Entity osztályt határoz meg, amely az ügyfél első nevét használja a sor kulcsaként és a Vezetéknévként a partíciós kulcsként.
+Az entitások táblához való hozzáadásához létre kell hoznia egy olyan osztályt, amely meghatározza az entitás tulajdonságait. A következő kód egy `CustomerEntity` nevű Entity osztályt határoz meg, amely az ügyfél utónevét és vezetéknevét használja a partíciós kulcsként.
 
 ```csharp
 public class CustomerEntity : TableEntity
@@ -99,7 +99,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Az entitásokat tartalmazó Table műveletek a [kódban a hozzáférési táblákban](#access-tables-in-code)korábban létrehozott `CloudTable` objektumot használják. A `TableOperation` objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy `CloudTable` objektumot és egy `CustomerEntity` objektumot. A művelet előkészítéséhez létrejön egy `TableOperation`, amely beszúrja az ügyfél entitást a táblába. Végül a műveletet a `CloudTable.ExecuteAsync` hívásával hajtja végre.
+Az entitásokat tartalmazó táblázatos műveletek a [kódban a hozzáférési táblákban](#access-tables-in-code)korábban létrehozott `CloudTable` objektumot használják. A `TableOperation` objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan lehet létrehozni egy `CloudTable` objektumot és egy `CustomerEntity` objektumot. A művelet előkészítéséhez létrejön egy `TableOperation`, amely beszúrja az ügyfél entitást a táblába. Végül a `CloudTable.ExecuteAsync`meghívásával végrehajtja a műveletet.
 
 ```csharp
 // Create a new customer entity.
@@ -116,7 +116,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
 
-Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy `TableBatchOperation` objektumhoz az `Insert` metódus használatával, majd elindítja a műveletet a `CloudTable.ExecuteBatchAsync` hívásával.
+Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy `TableBatchOperation` objektumhoz a `Insert` metódus használatával, majd elindítja a műveletet a `CloudTable.ExecuteBatchAsync`meghívásával.
 
 ```csharp
 // Create the batch operation.
@@ -165,7 +165,7 @@ do
 
 ## <a name="get-a-single-entity"></a>Egyetlen entitás beolvasása
 
-Megírhat egy lekérdezést, amely egyetlen, adott entitást kap. A következő kód egy `TableOperation` objektumot használ a "ben Smith" nevű ügyfél megadásához. A metódus csak egyetlen entitást ad vissza, nem egy gyűjteményt, és a visszaadott érték @no__t – 0 egy `CustomerEntity` objektum. A partíciók és a sorok kulcsának a lekérdezésben való megadásával a leggyorsabb módszer egyetlen entitás beolvasása a `Table` szolgáltatásból.
+Megírhat egy lekérdezést, amely egyetlen, adott entitást kap. A következő kód egy `TableOperation` objektumot használ a "ben Smith" nevű ügyfél megadásához. A metódus csak egyetlen entitást ad vissza, nem egy gyűjteményt, és a visszaadott érték `TableResult.Result` egy `CustomerEntity` objektum. A partíciók és a sorok kulcsának a lekérdezésben való megadásával a leggyorsabb módszer egyetlen entitás beolvasására a `Table` szolgáltatásból.
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.

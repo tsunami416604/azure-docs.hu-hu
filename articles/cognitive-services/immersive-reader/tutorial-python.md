@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A lebilincselő olvasó elindítása a Python használatával'
+title: 'Oktatóanyag: a lebilincselő olvasó elindítása a Python használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy olyan Python-alkalmazást fog létrehozni, amely elindítja a magával ragadó olvasót.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71326445"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: A részletes olvasó elindítása a Python Sample Project használatával
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Python-webalkalmazást, amely elindítja a magával ragadó olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Python-webalkalmazást, amely elindítja a magával ragadó olvasót. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Python-Webalkalmazás létrehozása a pip, a lombik, a Jinja és a virtualenv használatával egy minta projekt segítségével
@@ -92,7 +92,7 @@ Válassza az "egyéni telepítés" lehetőséget, és állítsa be a telepítés
 
 ![Python Windows telepítési párbeszédpanel 3. lépés](./media/pythoninstallthree.jpg)
 
-A Python telepítésének befejezése után nyisson meg egy parancssort, és @no__t – 0 értéket a Python-szkriptek mappájába.
+A Python telepítésének befejezése után nyisson meg egy parancssort, és `cd` a Python-parancsfájlok mappába.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -140,7 +140,7 @@ Virtuális környezet létrehozása
 mkvirtualenv advanced-python
 ```
 
-@no__t a-0 értéket a minta projekt gyökérmappa mappájába.
+`cd` a minta projekt gyökérmappa mappájába.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
@@ -158,7 +158,7 @@ Aktiválja a virtuális környezetet.
 activate
 ```
 
-A projektnek most aktívnak kell lennie, és a parancssorban `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` lesz látható.
+A projektnek most aktívnak kell lennie, és a parancssorban hasonló `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` fog megjelenni.
 
 A környezet inaktiválása.
 
@@ -168,7 +168,7 @@ deactivate
 
 A `(advanced-python)` előtagot most el kell tűnni, mert a környezet már inaktiválva van.
 
-Ha újra szeretné aktiválni a környezetet, futtassa `workon advanced-python` értéket a minta projekt gyökérmappa mappájából.
+A környezet újraaktiválásához futtassa `workon advanced-python` alkalmazást a Project root mappából.
 
 ```cmd
 workon advanced-python
@@ -176,17 +176,17 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
 
-Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` értéket a Project root mappájából.
+Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` a Project root mappájából.
 
 ```cmd
 flask run
 ```
 
-Nyissa meg a böngészőt _http://localhost:5000_ , és navigáljon a gombra.
+Nyissa meg a böngészőt, és navigáljon _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Python-Webalkalmazás létrehozása az OSX-ben
 
-Python-Webalkalmazás létrehozása `flask` használatával az OSX-ben.
+Python-Webalkalmazás létrehozása az OSX-`flask` használatával.
 
 Telepítse a [Git](https://git-scm.com/) szoftvert.
 
@@ -198,9 +198,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Telepítse a [Pythont](https://www.python.org/downloads/).
 
-A Python gyökérkönyvtárának (például `Python37-32`) most az Applications mappában kell lennie.
+A Python gyökérkönyvtárának (például `Python37-32` kell lennie az Applications (alkalmazások) mappában.
 
-A Python telepítésének befejeződése után nyissa meg a Terminal és a `cd` parancsot a Python-parancsfájlok mappába.
+A Python telepítésének befejeződése után nyissa meg a Terminal és a `cd` a Python-parancsfájlok mappába.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -224,9 +224,9 @@ sudo nano /etc/paths
 
 - Ha a rendszer kéri, adja meg a jelszavát.
 - Adja hozzá a pip-telepítés elérési útját az ELÉRÉSIÚT-változóhoz.
-- Nyissa meg a fájl alját, és adja meg a lista utolsó elemeként hozzáadni kívánt elérési utat, például `PATH=$PATH:/usr/local/bin`.
+- Nyissa meg a fájl alját, és adja meg a lista utolsó elemeként hozzáadni kívánt elérési utat (például `PATH=$PATH:/usr/local/bin`.
 - Nyomja meg a Control-x gombot a kilépéshez.
-- A módosított puffer mentéséhez írja be a `Y` értéket.
+- Adja meg `Y` a módosított puffer mentéséhez.
 - Ennyi az egész! A teszteléshez az új terminál ablakban írja be a következőt: `echo $PATH`.
 
 A lombik telepítése.
@@ -271,7 +271,7 @@ Válasszon egy mappát, ahol meg szeretné tartani a virtuális környezeteket, 
 mkdir ~/.virtualenvs
 ```
 
-@no__t – 0 értéket a részletes olvasó SDK Python minta alkalmazás mappájához.
+`cd` a részletes olvasó SDK Python minta alkalmazás mappájába.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -295,7 +295,7 @@ Aktiválja a virtuális környezetet.
 activate
 ```
 
-A projektnek most aktívnak kell lennie, és a parancssorban `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` lesz látható.
+A projektnek most aktívnak kell lennie, és a parancssorban hasonló `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` fog megjelenni.
 
 A környezet inaktiválása.
 
@@ -305,7 +305,7 @@ deactivate
 
 A `(advanced-python)` előtagot most el kell tűnni, mert a környezet már inaktiválva van.
 
-Ha újra szeretné aktiválni a környezetet, futtassa `workon advanced-python` értéket a minta projekt gyökérmappa mappájából.
+A környezet újraaktiválásához futtassa `workon advanced-python` alkalmazást a Project root mappából.
 
 ```bash
 workon advanced-python
@@ -313,15 +313,15 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
 
-Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` értéket a Project root mappájából.
+Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` a Project root mappájából.
 
 ```bash
 flask run
 ```
 
-Nyissa meg a böngészőt _http://localhost:5000_ , és navigáljon a gombra.
+Nyissa meg a böngészőt, és navigáljon _http://localhost:5000_ .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)

@@ -49,7 +49,7 @@ A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létre
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget.
+1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 
 1. A keresőmezőbe írja be a **DevOps projects**kifejezést, majd kattintson a **Hozzáadás**gombra.
 
@@ -142,13 +142,13 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A tárház már tartalmazza a **SampleFunctionApp** nevű kódot a létrehozási folyamat során kiválasztott alkalmazás nyelve alapján. Nyissa meg az **Application/SampleFunctionApp/Function1. cs** fájlt.
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **31. számú sor** módosítását. Frissítheti például a **Hello is. Üdvözli a Azure Functions a DevOps Projects @ no__t-0 használatával
+1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **31. számú sor** módosítását. Frissítheti például a Hello-re **! Üdvözli a Azure Functions a DevOps Projects használatával**
 
 1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**
 
 1. Nyissa meg az **Application/SampleFunctionApp. test/Function1TestRunner. cs** fájlt. 
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **21. számú sor**módosítását. Frissítheti például a **Hello is. Üdvözöljük a Azure Functions Azure DevOps Projects @ no__t-0 használatával.
+1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **21. számú sor**módosítását. Frissítheti például a Hello-re **! Üdvözli a Azure Functions a Azure DevOps Projects használatával**.
 
      Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Projects irányítópulton vagy a böngészőben az Azure DevOps-szervezettel.
 
@@ -156,7 +156,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

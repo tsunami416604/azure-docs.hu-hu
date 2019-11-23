@@ -53,7 +53,7 @@ A minta konfigurációs XML-fájl nem fog megjelenni:
 - Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **Számítógép konfigurációja @ no__t-1Policies @ no__t-2Administrative templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing beállításokban található.**
+>A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **Számítógép konfigurációja\\szabályzatok\\Felügyeleti sablonok\\Microsoft Office 2016 (gép)\\licencelési beállítások** között található.
 
 Az Office-telepítő eszköz tartalmazza a Setup. exe fájlt. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
 
@@ -130,11 +130,11 @@ A OneDrive telepítése általában felhasználónként történik. Ebben a kör
 
 A következőképpen telepítheti a OneDrive-t gépi módban:
 
-1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy [\\ @ no__t-1unc] (file://unc) helye nem megfelelő.
+1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy [\\\\UNC] (file://unc) helye nem megfelelő.
 
 2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Ha az Office-t a OneDrive-mel telepítette, **\<EXCLUDEAPP azonosító = "OneDrive"/\>** kihagyva, távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból a következő parancs futtatásával:
+3. Ha az Office-t az OneDrive-mel telepítette **\<EXCLUDEAPP id = "OneDrive"/\>** kihagyva, a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
@@ -174,6 +174,6 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
 
 A Windows rendszerű virtuális asztal nem támogatja a Skype vállalati és munkacsoportok használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy hozzáadta az Office-t a lemezképhez, továbbra is testreszabhatja a fő VHD-lemezképet. Lásd: [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).

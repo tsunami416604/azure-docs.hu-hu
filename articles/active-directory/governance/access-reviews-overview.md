@@ -1,5 +1,5 @@
 ---
-title: Mik azok a hozzáférési felülvizsgálatok? – Azure Active Directory | Microsoft Docs
+title: Mik azok a hozzáférési felülvizsgálatok? – Az azure Active Directory |} A Microsoft Docs
 description: A Azure Active Directory hozzáférési felülvizsgálatok segítségével szabályozhatja a csoporttagság és az alkalmazások elérését, hogy megfeleljen a szervezet irányítási, kockázatkezelési és megfelelőségi kezdeményezéseinek.
 services: active-directory
 documentationcenter: ''
@@ -44,7 +44,7 @@ Az Azure AD lehetővé teszi, hogy a szervezeten belül és a külső szervezete
 
 - **Túl sok felhasználó van a Kiemelt szerepkörökben:** Érdemes megfigyelni, hogy hány felhasználó rendelkezik rendszergazdai hozzáféréssel, hány globális rendszergazda, és ha vannak olyan meghívott vendégek vagy partnerek, akik nem lettek eltávolítva a felügyeleti feladatok elvégzése után. A szerepkör-hozzárendelési felhasználókat újra hitelesítheti az [Azure ad-szerepkörökben](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , például a globális rendszergazdák vagy az [Azure-erőforrások szerepkörei](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , például a felhasználói hozzáférés RENDSZERGAZDÁJA a [Azure ad Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) felületén.
 - **Ha az automatizálás nem valósítható meg:** Létrehozhat szabályokat a dinamikus tagsághoz a biztonsági csoportokban vagy az Office 365-csoportokban, de mi a teendő, ha a HR-információ nem az Azure AD-ban van, vagy ha a felhasználóknak továbbra is hozzáférésre van szükségük a csoport elhagyása után? Ezután létrehozhat egy felülvizsgálatot az adott csoporton annak biztosítása érdekében, hogy a hozzáférést igénylő felhasználók továbbra is hozzáférhessenek.
-- Egy **csoport új célra való használata esetén:** Ha olyan csoporttal rendelkezik, amely szinkronizálva lesz az Azure AD-vel, vagy ha azt tervezi, hogy az Salesforce mindenki számára engedélyezi az értékesítési csoport csoport tagjai számára, érdemes megkérnie a csoport tulajdonosát, hogy tekintse át a csoport tagságát, mielőtt a csoportot más kockázati csoporthoz használják. tartalomegyezés.
+- Egy **csoport új célra való használata esetén:** Ha olyan csoporttal rendelkezik, amely szinkronizálva lesz az Azure AD-vel, vagy ha azt tervezi, hogy engedélyezi az alkalmazás Salesforce a mindenki számára az értékesítési csoport csoportban, akkor érdemes megkérnie a csoport tulajdonosát, hogy tekintse át a csoport tagságát, mielőtt a csoportot más kockázati tartalomban használják.
 - **Üzleti szempontból kritikus fontosságú adathozzáférés:** bizonyos erőforrások esetében előfordulhat, hogy meg kell kérnie az azon kívüli személyeket, hogy rendszeresen kijelentkezzenek, és indokolják, hogy miért van hozzáférésük a naplózáshoz.
 - **A szabályzatok kivételi listájának fenntartása:** Az ideális világban minden felhasználó a hozzáférési házirendeket követve gondoskodik a szervezet erőforrásaihoz való hozzáférésről. Bizonyos esetekben azonban előfordulhat, hogy kivételeket kell elvégeznie. Rendszergazdaként kezelheti ezt a feladatot, elkerülheti a házirend-kivételek felügyeletét, és biztosíthatja a könyvvizsgálók számára, hogy a kivételeket rendszeresen felülvizsgálják.
 - **Kérje meg a csoport tulajdonosait, hogy erősítse meg, hogy továbbra is szükségük van a csoportok** tagjaira: Előfordulhat, hogy az alkalmazotti hozzáférés automatizálható néhány helyszíni IAM-val, de nem meghívott vendégként. Ha egy csoport hozzáférést biztosít a vendégek számára az üzleti szempontból kényes tartalmakhoz, akkor a tulajdonos feladata annak megerősítése, hogy a vendégek még mindig jogos üzleti igényekkel rendelkeznek.
@@ -97,7 +97,7 @@ Ha készen áll a hozzáférési felülvizsgálatok üzembe helyezésére a szer
 
 ### <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
 
-Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie. Példák:
+Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie. Példák erre vonatkozóan:
 
 - Hozzáférési felülvizsgálatot létrehozó rendszergazdák
 - Hozzáférési felülvizsgálatot végző tulajdonosok csoportosítása
@@ -113,7 +113,7 @@ Megkérheti a vendég felhasználókat, hogy vizsgálják felül a saját hozzá
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban, 500 felhasználóval. A 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 1 licenc a rendszergazda + 3 licenchez minden csoport tulajdonosának felülvizsgáló való használata esetén. | 4 |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban, 500 felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 500-licencekhez az egyes felhasználókhoz, mint önellenőrzéses. | 501 |
 | A rendszergazda 5 felhasználót és 25 vendég felhasználót hoz létre a B csoport hozzáférési felülvizsgálatával. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 5 licenchez minden felhasználóhoz, mint önellenőrzési.<br/>(a vendég felhasználói a szükséges 1:5-os arányban szerepelnek) | 6 |
-| A rendszergazda a C csoport hozzáférési felülvizsgálatát 5 felhasználóval és 108 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 5 licenc minden felhasználóhoz, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára.<br/>1 + 5 = 6 licenc, amely 5 @ no__t-06 = 30 vendég felhasználóra vonatkozik. A fennmaradó (108-5 @ no__t-06) = 78 vendég felhasználó, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
+| A rendszergazda a C csoport hozzáférési felülvizsgálatát 5 felhasználóval és 108 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 5 licenc minden felhasználóhoz, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára.<br/>1 + 5 = 6 licenc, amely 5\*6 = 30 vendég felhasználóra vonatkozik. A fennmaradó (108-5\*6) = 78 vendég felhasználó, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
 
 További információ a licencek felhasználási módjaihoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 

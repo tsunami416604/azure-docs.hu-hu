@@ -41,11 +41,11 @@ A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc74924
 A nagy mennyiségű ServiceRemoting-szolgáltatással vagy partícióval rendelkező fürtök nagy számú teljesítményszámláló-példánnyal rendelkeznek. A teljesítményszámláló-példányok nevei segíthetnek azonosítani a teljesítményszámláló-példányhoz társított adott partíciót és szolgáltatási módszert (ha van ilyen).
 
 #### <a name="service-fabric-service-category"></a>Service Fabric szolgáltatáskategória
-A (z) @no__t – 0 kategória esetében a számláló példányainak nevei a következők:
+A (z) `Service Fabric Service`kategóriához a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója GUID, a karakterlánc-ábrázolás pedig az [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal jön létre a "D" formátum megadásával.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, amely a karakterlánc-ábrázolást a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal hozza létre a "D" formátum megadásával.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -55,10 +55,10 @@ A következőkben egy példa látható egy számláló példányának nevére a 
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-Az előző példában a `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterláncos ábrázolása, `635650083799324046` a replika/InstanceId karakterlánc-ábrázolása, a `5008379932` pedig a futásidejű belső használatra létrehozott 64 bites azonosító.
+Az előző példában `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterlánc-ábrázolása, `635650083799324046` a replika/InstanceId karakterlánc-ábrázolása, a `5008379932` pedig a futtatókörnyezet belső használatra létrehozott 64 bites azonosító.
 
 #### <a name="service-fabric-service-method-category"></a>Service Fabric szolgáltatási módszer kategóriája
-A (z) @no__t – 0 kategória esetében a számláló példányainak nevei a következők:
+A (z) `Service Fabric Service Method`kategóriához a számláló példányainak neve a következő formátumú:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -66,7 +66,7 @@ A *MethodName* annak a szolgáltatási módszernek a neve, amelyhez a teljesítm
 
 A *ServiceRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója GUID, a karakterlánc-ábrázolás pedig az [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal jön létre a "D" formátum megadásával.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, amely a karakterlánc-ábrázolást a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal hozza létre a "D" formátum megadásával.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -76,7 +76,7 @@ A következőkben egy példa látható egy számláló példányának nevére a 
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-Az előző példában `ivoicemailboxservice.leavemessageasync` a metódus neve, `2` a futtatókörnyezet belső használatára generált 32 bites azonosító, `89383d32-e57e-4a9b-a6ad-57c6792aa521` a Service Fabric partíció-azonosító karakterlánc-ábrázolása, `635650083804480486` az Service Fabric replika karakterlánc-ábrázolása/ A példány azonosítója és a `5008380` a futtatókörnyezet belső használatára generált 64 bites azonosító.
+Az előző példában `ivoicemailboxservice.leavemessageasync` a metódus neve, `2` a futtatókörnyezet belső használatára generált 32 bites azonosító, `89383d32-e57e-4a9b-a6ad-57c6792aa521` a Service Fabric partíció AZONOSÍTÓjának karakterláncos ábrázolása,`635650083804480486` az Service Fabric replika/példány AZONOSÍTÓjának karakterláncos ábrázolása, és `5008380` a futtatókörnyezet belső használatára generált 64 bites azonosító.
 
 ## <a name="list-of-performance-counters"></a>Teljesítményszámlálók listája
 ### <a name="service-method-performance-counters"></a>Szolgáltatási módszer teljesítményszámlálói

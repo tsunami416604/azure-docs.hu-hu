@@ -112,7 +112,7 @@ Application Gateway a következő konfigurációt fogja alkalmazni:
 
 - Háttér-készlet:
   - A háttér-címkészlet egyetlen IP-címmel rendelkezik, és a `kubectl get pods -o wide`
-![backend_pool-ben korábban megfigyelt Pod IP-címével fog egyezni](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
+![backend_pool által korábban megfigyelt Pod IP-címével fog megjelenni](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
 
 
 Végül a `cURL` parancsot [Cloud Shellon](https://shell.azure.com/) belülről is használhatja az újonnan telepített alkalmazáshoz való http-kapcsolat létesítéséhez:

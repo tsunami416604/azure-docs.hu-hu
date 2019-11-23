@@ -39,7 +39,7 @@ Az Azure Adatkezelő két lehetőséget kínál az adatokhoz való csatlakozásr
 
 1. Nyissa meg a **Microsoft Excelt**.
 
-1. Az **adatok** lapon válassza az **adatok** > beolvasása**más forrásokból** > **üres lekérdezés**lehetőséget.
+1. Az **adatok** lapon válassza az **adatok beolvasása** **más forrásokból** >  > **üres lekérdezés**lehetőséget.
 
     ![Adatkérés és üres lekérdezés kiválasztása](media/excel-blank-query/get-data-blank-query.png)
 
@@ -55,7 +55,7 @@ Az Azure Adatkezelő két lehetőséget kínál az adatokhoz való csatlakozásr
 
     ![Hitelesítő adatok szerkesztése](media/excel-blank-query/edit-credentials.png)
 
-1. Válassza **a** **szervezeti fiók** lehetőséget, és jelentkezzen be. Fejezze be a bejelentkezési folyamatot, majd válassza a **kapcsolat**lehetőséget.
+1. Válassza a **szervezeti fiók** lehetőséget, és **Jelentkezzen**be. Fejezze be a bejelentkezési folyamatot, majd válassza a **kapcsolat**lehetőséget.
 
     ![Bejelentkezés befejezése](media/excel-blank-query/complete-sign-in.png)
 

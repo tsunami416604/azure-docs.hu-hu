@@ -37,7 +37,7 @@ A következő táblázatban az egyes sorok a teljes verzió két változatával 
 |--|
 |`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Volt **az az ember, aki eltartotta a feleségét egy kalapban és más** , az idén amerikai klinikai mesében?|
 |`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>**Félig aludt a béka pizsamában,** amelyet egy amerikai idén írt?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>@No__t 0The a citromos torta adott szomorúsága: A regény @ no__t-0 írt egy Amerikai Egyesült Államok ebben az évben?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>**A Lemon Cake különleges szomorúsága volt:** az idén egy Amerikai Egyesült Államok által írt regény?|
 |`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>Volt **egy Wocket a zsebemben!** írta egy Amerikai Egyesült államokbeli év?|
 ||
 
@@ -106,6 +106,6 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 
 * * * 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az [oktatóanyagban](luis-tutorial-pattern-any.md)használja a **mintát. bármely** entitást, amellyel kinyerheti az adatok hosszúságú kimondott szöveg, ahol a hosszúságú kimondott szöveg megfelelően formázottak, és az adatok végének könnyen összetéveszthető a kimaradás többi szavával.

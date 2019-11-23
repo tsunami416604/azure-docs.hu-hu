@@ -23,12 +23,12 @@ A cikkben ismertetett lépések végrehajtásához Azure Database for MySQL- [ki
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 Konfigurálja a MySQL lassú lekérdezési napló elérését. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza ki az Azure Database for MySQL-kiszolgálóhoz.
 
 3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. 
-   @no__t – 0Screenshot-beállítások (@ no__t-1)
+   a kiszolgálói naplók beállításainak ![képernyőképe](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
 4. A kiszolgáló paramétereinek megtekintéséhez **kattintson ide a naplók engedélyezéséhez és a naplózási paraméterek konfigurálásához**.
 
@@ -62,7 +62,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
-1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**@no__t – 2**diagnosztikai beállítások hozzáadása**elemet.
+1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások** > **diagnosztikai beállítások hozzáadása**elemet.
 
    ![A diagnosztikai beállítások beállításainak képernyőképe](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
 
@@ -71,14 +71,14 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 1. Itt adhatja meg, hogy mely adatnyelők küldje el a lassú lekérdezési naplókat (Storage-fiók, Event hub vagy Log Analytics munkaterület).
 
 1. Válassza a **MySqlSlowLogs** lehetőséget a napló típusaként.
-@no__t – a diagnosztikai beállítások konfigurációs beállításainak 0Screenshot @ no__t-1
+a diagnosztikai beállítások konfigurációs beállításainak ![képernyőképe](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
 
 1. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés**lehetőséget.
-@no__t – a diagnosztikai beállítások konfigurációs beállításainak 0Screenshot, a Kiemelt beállítások mentése @ no__t-1
+![képernyőkép a diagnosztikai beállítások konfigurációs beállításairól, a kijelöltek mentése](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
 
 1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A lassú lekérdezési naplók programozott módon történő letöltésének megismeréséhez lásd: [a lassú lekérdezési naplók elérése a CLI-ben](howto-configure-server-logs-in-cli.md) .
 - További információ a Azure Database for MySQL [lassú lekérdezési naplóiról](concepts-server-logs.md) .
 - A paraméter-definíciókkal és a MySQL-naplózással kapcsolatos további információkért tekintse meg a MySQL dokumentációját a [naplókon](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).

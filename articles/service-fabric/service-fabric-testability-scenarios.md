@@ -49,11 +49,11 @@ Vegyünk például egy olyan tesztet, amely egy órára van beállítva, és leg
 Az aktuális formában a Chaos-tesztben a hiba-előállítási motor csak a biztonságos hibákat okozta. Ez azt jelenti, hogy a külső hibák hiányában a kvórum vagy az adatvesztés soha nem fog történni.
 
 ### <a name="important-configuration-options"></a>Fontos konfigurációs beállítások
-* **TimeToRun**: A sikeres befejezést megelőzően a teszt futtatásának teljes ideje. A teszt egy érvényesítési hiba helyett korábban is befejeződik.
-* **MaxClusterStabilizationTimeout**: Az a maximális időtartam, ameddig a fürt Kifogástalan állapotba kerül, mielőtt a teszt sikertelen lesz. A végrehajtott ellenőrzések azt jelzik, hogy a fürt állapota OK-e, a szolgáltatás állapota OK, a megcélzott másodpéldány-készlet mérete a szolgáltatás partíciója számára elérhető, és nem léteznek beépített replikák.
-* **Timestamputcinticks**: Az egyes iterációk által kiváltott egyidejű hibák maximális száma. Minél nagyobb a szám, annál agresszívebb a teszt, így összetettebb feladatátvételeket és áttűnési kombinációkat eredményez. A teszt garantálja, hogy a külső hibák hiányában nem lesz kvórum vagy adatvesztés, függetlenül attól, hogy milyen magas a konfiguráció.
-* **EnableMoveReplicaFaults**: Engedélyezheti vagy letilthatja azokat a hibákat, amelyek az elsődleges vagy másodlagos replikák áthelyezését okozzák. Ezek a hibák alapértelmezés szerint le vannak tiltva.
-* **WaitTimeBetweenIterations**: Az iterációk közötti várakozási idő, azaz a hibák kerekítése és a megfelelő érvényesítés.
+* **TimeToRun**: a tesztelés befejezésének teljes ideje, mielőtt a művelet sikeres lesz. A teszt egy érvényesítési hiba helyett korábban is befejeződik.
+* **MaxClusterStabilizationTimeout**: maximális időtartam, ameddig a fürt Kifogástalan állapotba kerül, mielőtt a teszt sikertelen lesz. A végrehajtott ellenőrzések azt jelzik, hogy a fürt állapota OK-e, a szolgáltatás állapota OK, a megcélzott másodpéldány-készlet mérete a szolgáltatás partíciója számára elérhető, és nem léteznek beépített replikák.
+* **Timestamputcinticks**: az egyes iterációk által kiváltott egyidejű hibák maximális száma. Minél nagyobb a szám, annál agresszívebb a teszt, így összetettebb feladatátvételeket és áttűnési kombinációkat eredményez. A teszt garantálja, hogy a külső hibák hiányában nem lesz kvórum vagy adatvesztés, függetlenül attól, hogy milyen magas a konfiguráció.
+* **EnableMoveReplicaFaults**: engedélyezheti vagy letilthatja azokat a hibákat, amelyek az elsődleges vagy másodlagos replikák áthelyezését okozzák. Ezek a hibák alapértelmezés szerint le vannak tiltva.
+* **WaitTimeBetweenIterations**: az iterációk közötti várakozási idő, azaz a hibák kerekítése és a megfelelő érvényesítés.
 
 ### <a name="how-to-run-the-chaos-test"></a>A Chaos-teszt futtatása
 C#-minta
@@ -133,7 +133,7 @@ class Test
 
 PowerShell
 
-A Service Fabric PowerShell-modul két módszert tartalmaz a Chaos-forgatókönyvek megkezdésére. @no__t – 0 ügyfél-alapú, és ha az ügyfélszámítógép leállítása a teszt során félúton történik, további hibák nem lesznek bevezetve. Azt is megteheti, hogy a teszt futtatása a gép leállításakor is megmarad. a `Start-ServiceFabricChaos` állapot-nyilvántartó és megbízható rendszerszolgáltatást használ FaultAnalysisService néven, így a hibák addig maradnak érvényben, amíg a TimeToRun be nem fejeződik. a `Stop-ServiceFabricChaos` használható a forgatókönyv manuális leállítására, és a `Get-ServiceFabricChaosReport` egy jelentés beszerzésére szolgál. További információkért tekintse meg az [Azure Service Fabric PowerShell-referenciát](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) , és [a Service Fabric-fürtökben lévő szabályozott káoszt](service-fabric-controlled-chaos.md).
+A Service Fabric PowerShell-modul két módszert tartalmaz a Chaos-forgatókönyvek megkezdésére. az `Invoke-ServiceFabricChaosTestScenario` ügyfél-alapú, és ha az ügyfélszámítógép leállítása a teszt során félúton történik, a rendszer nem vezet be további hibákat. Azt is megteheti, hogy a teszt futtatása a gép leállításakor is megmarad. `Start-ServiceFabricChaos` egy FaultAnalysisService nevű állapot-nyilvántartó és megbízható rendszerszolgáltatást használ, biztosítva, hogy a hibák továbbra is érvényben maradjanak, amíg a TimeToRun be nem fejeződik. a `Stop-ServiceFabricChaos` a forgatókönyv manuális leállítására használható, és `Get-ServiceFabricChaosReport` egy jelentést fog beolvasni. További információkért tekintse meg az [Azure Service Fabric PowerShell-referenciát](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) , és [a Service Fabric-fürtökben lévő szabályozott káoszt](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"
@@ -162,10 +162,10 @@ A feladatátvételi teszt forgatókönyv az a káosz-tesztelési forgatókönyv 
 A feladatátvételi teszt egy kiválasztott hibát okoz, majd az érvényesítést futtatja a szolgáltatásban a stabilitásának biztosítása érdekében. A feladatátvételi teszt egyszerre csak egy hibát okoz, a káosz tesztben esetlegesen több hibát is kihasználva. Ha a szolgáltatás partíciója nem stabilizálódik a beállított időkorláton belül az egyes hibák után, a teszt sikertelen lesz. A teszt csak biztonságos hibákat okoz. Ez azt jelenti, hogy a külső meghibásodások hiányában a kvórum vagy az adatvesztés nem fog történni.
 
 ### <a name="important-configuration-options"></a>Fontos konfigurációs beállítások
-* **PartitionSelector**: Az a kiválasztó objektum, amely a célként szükséges partíciót határozza meg.
-* **TimeToRun**: A tesztelés befejezésének teljes ideje a teszt futtatása előtt.
-* **MaxServiceStabilizationTimeout**: Az a maximális időtartam, ameddig a fürt Kifogástalan állapotba kerül, mielőtt a teszt sikertelen lesz. A végrehajtott ellenőrzések az, hogy a szolgáltatás állapota rendben van-e, a rendszer az összes partícióhoz a cél másodpéldány-készlet méretét adja meg, és nem létezik inbuild replika.
-* **WaitTimeBetweenFaults**: Az egyes hibák és az érvényesítési ciklusok közötti várakozási idő.
+* **PartitionSelector**: választó objektum, amely meghatározza a megcélozni kívánt partíciót.
+* **TimeToRun**: a tesztelés befejezésének teljes ideje.
+* **MaxServiceStabilizationTimeout**: maximális időtartam, ameddig a fürt Kifogástalan állapotba kerül, mielőtt a teszt sikertelen lesz. A végrehajtott ellenőrzések az, hogy a szolgáltatás állapota rendben van-e, a rendszer az összes partícióhoz a cél másodpéldány-készlet méretét adja meg, és nem létezik inbuild replika.
+* **WaitTimeBetweenFaults**: ennyi idő szükséges a hibák és az érvényesítési ciklusok közötti várakozáshoz.
 
 ### <a name="how-to-run-the-failover-test"></a>A feladatátvételi teszt futtatása
 **C#**

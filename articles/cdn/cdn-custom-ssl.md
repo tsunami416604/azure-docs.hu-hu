@@ -36,7 +36,7 @@ Az egyéni HTTPS szolgáltatás legfőbb jellemzői a következők:
 
 - Teljes körű tanúsítványkezelés érhető el: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével. A tanúsítványok üzembe helyezése és megújítása automatikusan megtörténik a lejárat előtt, így nem kell attól tartani, hogy a szolgáltatás megszakad egy lejárt tanúsítvány miatt.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > - HTTPS-protokoll engedélyezése az egyéni tartományon
 > - CDN által kezelt tanúsítvány használata 
@@ -176,7 +176,7 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a CDN-végpont gazdaneve:
 
-| Név            | Type (Típus)  | Value (Díj)                 |
+| Name (Név)            | Típus  | Érték                 |
 |-----------------|-------|-----------------------|
 | < a www. contoso. com > | CNAME | contoso.azureedge.net |
 
@@ -192,7 +192,7 @@ Az automatikus érvényesítés általában néhány órát vesz igénybe. Ha ne
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Az egyéni tartomány nincs leképezve a CDN-végpontra
 
 >[!NOTE]
->Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge. &lt;custom tartomány hostname @ no__t-1-> CNAME-> &lt;custom tartomány hostname&gt;.ak-acme-challenge.azureedge.net"
+>Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge.&lt;egyéni tartomány hostname&gt;-> CNAME-> &lt;egyéni tartomány hostname&gt;. ak-acme-challenge.azureedge.net "
 
 Ha a CNAME rekord bejegyzése tartalmazza a cdnverify altartományt, kövesse az ebben a lépésben szereplő további utasításokat.
 

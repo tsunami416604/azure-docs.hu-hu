@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Digitális tinta felismerése a kézírás-felismerővel REST API és Java'
+title: 'Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával'
 titleSuffix: Azure Cognitive Services
 description: A tinta-felismerő API használatával megkezdheti a digitális tollvonások felismerését.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/07/2019
 ms.locfileid: "71996849"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerővel REST API és Java
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával
 
 Ezzel a rövid útmutatóval megkezdheti a tinta-felismerő API használatát a digitális tollvonásokon. Ez a Java-alkalmazás egy olyan API-kérést küld, amely JSON formátumú szabadkézi adatokat tartalmaz, és lekéri a választ.
 
@@ -31,7 +31,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Java @ no__t-1 Development Kit (JDK) 7-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verziója.
+- A [Java&trade; Development Kit (JDK) 7-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verziója.
 
 - A kódtárak importálása a Maven adattárból
     - [JSON a Java-](https://mvnrepository.com/artifact/org.json/json) csomagban
@@ -55,17 +55,17 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Hozzon létre egy `sendRequest()` nevű új függvényt, amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
+1. Hozzon létre egy új, `sendRequest()` nevű függvényt, amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
 
-2. Hozzon létre egy `CloseableHttpClient` objektumot, amely küldhet kérelmeket az API-nak. Küldje el a kérelmet egy `HttpPut` kérési objektumnak a végpont és a kézírás-felismerő URL-címének kombinálásával.
+2. Hozzon létre egy `CloseableHttpClient` objektumot, amely küldhet kérelmeket az API-nak. Küldje el a kérést egy `HttpPut` kérelem objektumnak a végpont és a kézírás-felismerő URL-cím kombinálásával.
 
-3. Használja a kérelem `setHeader()` függvényét az `Content-Type` fejléc `application/json` értékre való beállításához, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+3. A kérelem `setHeader()` függvényével állítsa be a `Content-Type` fejlécet `application/json`re, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
-4. Az elküldeni kívánt adathoz használja a kérelem `setEntity()` függvényét.   
+4. A kérelem `setEntity()` függvényét használja az elküldeni kívánt adathoz.   
 
 5. A kérelem elküldéséhez használja az ügyfél `execute()` függvényét, és mentse egy `CloseableHttpResponse` objektumba. 
 
-6. Hozzon létre egy `HttpEntity` objektumot a válasz tartalmának tárolására. Szerezze be a tartalmat a `getEntity()` értékkel. Ha a válasz nem üres, küldje vissza.
+6. Hozzon létre egy `HttpEntity` objektumot a válasz tartalmának tárolására. A tartalom lekérése `getEntity()`sal. Ha a válasz nem üres, küldje vissza.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
@@ -88,7 +88,7 @@ Hozzon létre egy `recognizeInk()` nevű metódust a szabadkézi körvonal adata
 
 Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-választ is megtalálja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [REST API – referencia](https://go.microsoft.com/fwlink/?linkid=2089907)

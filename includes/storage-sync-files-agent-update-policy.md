@@ -14,8 +14,8 @@ ms.locfileid: "72391668"
 Az Azure File Sync-ügynök rendszeres időközönként frissül új funkciók hozzáadásával és a problémák megoldásával. Javasoljuk, hogy konfigurálja Microsoft Update a Azure File Sync-ügynök frissítéseinek elérhetővé tételéhez.
 
 #### <a name="major-vs-minor-agent-versions"></a>Fő vagy másodlagos ügynök verziói
-* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \*2. \*. \* @ no__t-3
-* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \* @ no__t-1.3. \* @ no__t-3
+* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \*2.\*.\*\*
+* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \*\*. 3.\*\*
 
 #### <a name="upgrade-paths"></a>Frissítési útvonalak
 A Azure File Sync ügynök frissítéseinek telepítése négy jóváhagyott és tesztelt módon történik. 
@@ -43,7 +43,7 @@ cd 'C:\Program Files\Azure\StorageSyncAgent'
 Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
-A `Get-StorageSyncAgentAutoUpdatePolicy` futtatásával ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.
+`Get-StorageSyncAgentAutoUpdatePolicy` futtatásával ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.
 
 Ha módosítani szeretné a jelenlegi házirend-beállítást a késleltetett frissítés nyomon követésére, a következőt használhatja:
 ```powershell
@@ -61,7 +61,7 @@ A Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan bemutatja 
 - A fő ügynök verziói a kezdeti kiadás dátumától számítva legalább hat hónapig támogatottak.
 - Garantáljuk, hogy a főbb ügynökök verzióinak támogatása között legalább három hónapig átfedésben van. 
 - A figyelmeztetéseket a rendszer a hamarosan lejárt ügynökkel rendelkező regisztrált kiszolgálók számára adja ki, legalább három hónappal a lejárat előtt. Megtekintheti, hogy egy regisztrált kiszolgáló az ügynök egy régebbi verzióját használja-e a Storage Sync szolgáltatás regisztrált kiszolgálók szakasza alatt.
-- A másodlagos ügynök verziójának élettartama a társított főverzióhoz van kötve. Ha például az ügynök 3,0-es verziójának kiadása megtörténik, az ügynök 2. \* értékre lesz állítva.
+- A másodlagos ügynök verziójának élettartama a társított főverzióhoz van kötve. Ha például az ügynök 3,0-es verziója megjelent, az ügynök 2. verzió.\* a rendszer minden beállítás után lejár.
 
 > [!Note]
 > A lejárati figyelmeztetést tartalmazó ügynök verziójának telepítése figyelmeztetést jelenít meg, de sikeres lesz. A lejárt ügynök verziójának telepítésére vagy kapcsolódására tett kísérlet nem támogatott, és le lesz tiltva.

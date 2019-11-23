@@ -486,6 +486,6 @@ API-Válasz:
 A/SceneFile API-hoz intézett post hívása egy SAS-feltöltési URL-címet ad vissza, amellyel feltöltheti a CSV-vagy TIFF-fájlt az Azure Blob Storage ügyfél/könyvtár használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

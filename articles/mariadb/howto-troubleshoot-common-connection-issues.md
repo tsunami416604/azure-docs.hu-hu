@@ -45,9 +45,9 @@ A Azure Database for MariaDBhoz való kapcsolódási problémák általában a k
 
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Tűzfal-konfiguráció: A Azure Database for MariaDB-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
-* Hálózati újrakonfigurálás az ügyféloldali oldalon: Új IP-cím vagy proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: Előfordulhat például, hogy hibás típusú kapcsolatok paraméterei vannak, például a kiszolgáló neve a 1servername, vagy egy hiányzó *@no__t* utótag a felhasználónévben.
+* Tűzfal-konfiguráció: a Azure Database for MariaDB-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
+* Hálózati újrakonfigurálás az ügyféloldali oldalon: új IP-cím vagy proxykiszolgáló lett hozzáadva.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a kapcsolatok karakterláncában vagy egy hiányzó *\@servername* -utótag a felhasználónévben.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
@@ -56,6 +56,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz,
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MariaDBhoz való kapcsolódásának módját](howto-connection-string.md).
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MariaDB.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MariaDB átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

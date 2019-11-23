@@ -46,7 +46,7 @@ Az egyszerű karbantartás és a kód kezelése érdekében a rendszer csak a r�
 
 ![Beágyazott U-SQL-parancsfájl szerkesztése a SSIS-feladatban](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Kapcsolódó cikk: [Paraméter átadása tárolt eljárásokra](#scenario-6-pass-parameters-to-u-sql-script)
+Kapcsolódó cikk: paraméter átadása [tárolt eljárásokhoz](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>2\. forgatókönyv – U-SQL-fájlok használata Azure Data Lake Store
 
@@ -65,7 +65,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 1. Állítsa be a **műveletet** a **CopyFromADLS**értékre.
 2. **AzureDataLakeConnection**beállítása, további információ a [Azure Data Lake Store-Csatlakozáskezelőről](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
 3. **AzureDataLakeDirectory**beállítása. Mutasson arra a mappára, amely a U-SQL-parancsfájlokat tárolja. Relatív elérési út használata a Azure Data Lake Store fiók gyökérkönyvtárához képest.
-4. Állítsa a célhelyet olyan mappára, amely gyorsítótárazza a letöltött U-SQL-parancsfájlokat. Ez a mappa elérési útja a U-SQL-feladatok beküldéséhez használt foreach loop-tárolóban lesz használatban. 
+4. Állítsa a **célhelyet** olyan mappára, amely gyorsítótárazza a letöltött U-SQL-parancsfájlokat. Ez a mappa elérési útja a U-SQL-feladatok beküldéséhez használt foreach loop-tárolóban lesz használatban. 
 
 ![Azure Data Lake Store fájlrendszer feladat konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
@@ -77,11 +77,11 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 2. A **mappa** beállítása a **számbavételi konfigurációs** csoportba a letöltött U-SQL-parancsfájlokat tartalmazó ideiglenes mappába.
 
-3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** területen `*.usql` értékre, hogy a hurok tárolója csak a `.usql` végződésű fájlokat kapja meg.
+3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** alatt úgy, hogy `*.usql`, hogy a hurok tárolója csak a `.usql`végződésű fájlokat kapja meg.
 
     ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a `User::FileName` nevű változót definiáljuk. Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
+4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a `User::FileName`nevű változót definiáljuk. Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
 
     ![A foreach hurok tárolójának konfigurálása a fájl nevének beolvasásához](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
     
     A kapcsolatfájl létrehozása:
 
-   1. **@No__t 1New-kapcsolatok kiválasztása... >** a FileConnection-beállításban.
+   1. **\<új kapcsolatok kiválasztása... >** a FileConnection-beállításban.
    2. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
 
        ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 
-   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált változóra, például: `@[User::FileName]`.
+   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált változóra, például `@[User::FileName]`.
 
        ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -111,7 +111,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 5. **Kifejezések** használata a U-SQL-feladatok nevének dinamikus beállításához:
 
     1. A **kifejezések** lapon adjon hozzá egy új Expression kulcs-érték párokat a **JobName**.
-    2. Adja meg a JobName értékét a foreach loop-tárolóban definiált változóhoz, például: `@[User::FileName]`.
+    2. Adja meg a JobName értékét a foreach loop-tárolóban definiált változóhoz, például `@[User::FileName]`.
     
         ![SSIS kifejezés konfigurálása U-SQL-feladatokhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 
@@ -119,7 +119,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 A U-SQL-fájlokat az Azure Blob Storage Azure **blob letöltési feladatával** használhatja az Azure Feature packben. Ez a megközelítés lehetővé teszi a parancsfájlok használatát a felhőben.
 
-A lépések hasonlóak a [Scenario 2 esetében: A U-SQL-fájlok használata a Azure Data Lake Store @ no__t-0 fájlban. Módosítsa a Azure Data Lake Store fájlrendszer feladatot az Azure Blob letöltési feladatra. [További információ az Azure Blob letöltési feladatáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+A lépések a 2. [forgatókönyvhöz hasonlóak: a U-SQL-fájlok használata a Azure Data Lake Storeban](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Módosítsa a Azure Data Lake Store fájlrendszer feladatot az Azure Blob letöltési feladatra. [További információ az Azure Blob letöltési feladatáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 A vezérlési folyamat az alábbihoz hasonló.
 
@@ -166,7 +166,7 @@ Bizonyos esetekben érdemes lehet dinamikusan beállítani az U-SQL változó é
 
 [További információ a U-SQL-szkript paramétereinek megadásáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SSIS-csomagok futtatása az Azure-ban](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Azure Feature Pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

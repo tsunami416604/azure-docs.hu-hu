@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés az TOPdesk-Public használatával történő
 
     a. Kattintson a **metaadatfájl feltöltése**.
     
-    ![Metaadatfájl feltöltése](common/upload-metadata.png)
+    ![Metaadat-fájl feltöltése](common/upload-metadata.png)
 
     b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
@@ -259,7 +259,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a TOPdesk-Nyilvánosba, 
 
 1. Jelentkezzen be a **TOPdesk-nyilvános** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **TOPdesk \> új \> támogatási fájl @no__t – 3 személy**lehetőségre.
+2. A felső menüben kattintson a **TOPdesk \> új \> támogatási fájlok \> személy**elemre.
    
     ![Személy](./media/topdesk-public-tutorial/ic790628.png "személye")
 

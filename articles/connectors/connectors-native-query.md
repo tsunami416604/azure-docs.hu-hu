@@ -50,12 +50,12 @@ A következőképpen adhat hozzá egy logikai alkalmazásban:
     A művelet egy új tömböt fog kiadni, amely csak a szűrési követelményeknek megfelelő eredményeket tartalmaz.
 6. Kattintson a menteni kívánt eszköztár bal felső sarkára, és a logikai alkalmazás is mentés és közzététel (aktiválás).
 
-@no__t – 0 Ha HTTP-végpontot hív meg, és JSON-választ kap, akkor a _JSON elemzése művelettel_ elemezheti a JSON-választ. Ennek a lépésnek a megkezdése nélkül a _tömb szűrése_ csak a törzset fogja látni, és nem ÉRTI a JSON-adattartalom szerkezetét.
+\* ha HTTP-végpontot hív meg, és JSON-választ kap, használja a _JSON_ elemzése műveletet a JSON-válasz elemzéséhez. Ennek a lépésnek a megkezdése nélkül a _tömb szűrése_ csak a törzset fogja látni, és nem ÉRTI a JSON-adattartalom szerkezetét.
 
 ## <a name="query-action"></a>Lekérdezési művelet
 Az összekötő által támogatott művelet részleteit itt találja. Az összekötőnek van egy lehetséges művelete.
 
-| Action | Leírás |
+| Műveletek | Leírás |
 | --- | --- |
 | Tömb szűrése |Kiértékel egy feltételt egy tömb minden eleméhez, és visszaadja az eredményeket |
 
@@ -66,7 +66,7 @@ A lekérdezési művelethez egyetlen lehetséges művelet tartozik. A következ�
 A következő beviteli mezők szerepelnek a művelethez, ami egy HTTP kimenő kérelmet tesz elérhetővé.
 A * azt jelenti, hogy a mező kitöltése kötelező.
 
-| Display name | Tulajdonság neve | Leírás |
+| Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | A |from |A szűrni kívánt tömb |
 | Feltétel |ahol |Az egyes elemek kiértékelésének feltétele |
@@ -76,10 +76,10 @@ A * azt jelenti, hogy a mező kitöltése kötelező.
 ### <a name="output-details"></a>Kimenet részletei
 A HTTP-válasz kimeneti adatai a következők:
 
-| Tulajdonság neve | Adattípus | Leírás |
+| Tulajdonság neve | Data type | Leírás |
 | --- | --- | --- |
-| Szűrt tömb |array |Egy tömb, amely minden szűrt eredményhez tartalmaz egy objektumot. |
+| Szűrt tömb |tömb |Egy tömb, amely minden szűrt eredményhez tartalmaz egy objektumot. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most próbálja ki a platformot, és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az API-k [listájának](apis-list.md)megtekintésével megtekintheti a logikai alkalmazásokban elérhető többi összekötőt.
 

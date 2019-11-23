@@ -30,9 +30,9 @@ Ez a cikk azt ismerteti, hogyan lehet kijelölni egy lapelrendezést a Azure AD 
 > [!NOTE]
 > Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, tekintse [meg a JavaScript-és lapelrendezés-verziókat a Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="replace-datauri-values"></a>DataUri értékek cseréje
+## <a name="replace-datauri-values"></a>DataUri értékek lecserélése
 
-Az egyéni szabályzatokban lehetnek olyan [ContentDefinitions](contentdefinitions.md) , amelyek meghatározzák a felhasználói úton használt HTML-sablonokat. A **ContentDefinition** olyan **DataUri** tartalmaz, amely a Azure ad B2C által biztosított oldal elemeire hivatkozik. A **tartalomdefinícióban** az Ön által megadott HTML-és CSS-tartalom relatív elérési útja.
+A egyéni szabályzatait, szükség lehet [ContentDefinitions](contentdefinitions.md) , hogy a használt a felhasználói interakciósorozatban szereplő HTML-sablonok meghatározása. A **ContentDefinition** tartalmaz egy **DataUri** hivatkozik, amely az Azure AD B2C által biztosított elemei. A **LoadUri** a HTML és CSS tartalmat, Ön által megadott relatív elérési útját.
 
 ```XML
 <ContentDefinition Id="api.idpselections">
@@ -46,7 +46,7 @@ Az egyéni szabályzatokban lehetnek olyan [ContentDefinitions](contentdefinitio
 </ContentDefinition>
 ```
 
-Az oldalelrendezés kiválasztásához módosítsa a [ContentDefinitions](contentdefinitions.md) lévő **DataUri** értékeket a szabályzatokban. Ha a régi **DataUri** értékeket az új értékekre vált, kiválaszt egy megváltoztathatatlan csomagot. A csomag használatának előnye, hogy tudni fogja, hogy nem változik, és váratlan viselkedést okoz a lapon.
+Az oldalelrendezés kiválasztásához módosítsa a [ContentDefinitions](contentdefinitions.md) lévő **DataUri** értékeket a szabályzatokban. A régi váltásával **DataUri** értékek új értékeivel, nem módosítható csomagot választjuk. Ez a csomag használatára előnye, hogy tudni fogja, nem módosíthatja és nem várt viselkedést okozhat az oldalon.
 
 Az **DataUri** beállításához használja a következő táblázatot a kívánt értékek megkereséséhez.
 
@@ -74,7 +74,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
   - Most hozzáadhatja a `data-preload="true"` attribútumot a HTML-címkékben a CSS és a JavaScript betöltési sorrendjének szabályozásához. A forgatókönyvek a következők:
       - Használja ezt a CSS-hivatkozást a CSS-fájlnak a HTML-sel való betöltéséhez, hogy ne legyen "villódzásmentes" a fájlok betöltése között
       - Ez az attribútum lehetővé teszi a parancsfájl-címkék beolvasásának és végrehajtásának sorrendjét a lap betöltése előtt.
-  - Az e-mail-mező mostantól @no__t – 0 és a mobil billentyűzetek biztosítják a megfelelő javaslatokat
+  - Az e-mail-mező mostantól `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat
   - A Chrome fordításának támogatása
 - Egységes és önállóan érvényesített oldal
   - A Felhasználónév/e-mail és jelszó mezők mostantól a Form HTML-elemet használják.  Ez mostantól lehetővé teszi az Edge és az IE számára az adatok megfelelő mentését
@@ -107,4 +107,4 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](active-directory-b2c-ui-customization-custom.md).
+További információ az alkalmazások felhasználói felületének testreszabását [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).

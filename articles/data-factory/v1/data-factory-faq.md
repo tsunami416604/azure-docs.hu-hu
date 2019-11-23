@@ -38,22 +38,22 @@ A Azure Data Factory díjszabását a [Data Factory díjszabását ismertető ol
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Hogyan első lépések a Azure Data Factory?
 * A Azure Data Factory áttekintését lásd: [a Azure Data Factory bemutatása](data-factory-introduction.md).
 * Az adatok másolási tevékenységgel történő **másolásával/áthelyezésével** kapcsolatos oktatóanyagért lásd: [adatok másolása az Azure Blob Storageból a Azure SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Útmutató az adatátalakításhoz a HDInsight-struktúra tevékenység használatával. Lásd: az [adatfeldolgozás a kaptár-szkript futtatásával a Hadoop](data-factory-build-your-first-pipeline.md) -fürtön
+* Útmutató az **adatátalakításhoz** a HDInsight-struktúra tevékenység használatával. Lásd: az [adatfeldolgozás a kaptár-szkript futtatásával a Hadoop-fürtön](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Mi a Data Factory régió elérhetősége?
 Data Factory az **USA nyugati** régiójában és **Észak-Európában**érhető el. Az adatfeldolgozók által használt számítási és tárolási szolgáltatások más régiókban is lehetnek. Lásd: [támogatott régiók](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Milyen korlátozások vonatkoznak az adat-előállítók/folyamatok/tevékenységek/adatkészletek számára?
-Lásd: az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és](../../azure-subscription-service-limits.md#data-factory-limits) megkötései című cikk **Azure Data Factory korlátozások** szakasza.
+Lásd: az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-subscription-service-limits.md#data-factory-limits) című cikk **Azure Data Factory korlátozások** szakasza.
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Mi a szerzői/fejlesztői élmény a Azure Data Factory szolgáltatással?
 A következő eszközök/SDK-k egyikével hozhat létre vagy hozhat létre adatelőállítókat:
 
 * **Visual Studio** A Visual Studióval létrehozhat egy Azure-beli adatgyárat. A részletekért lásd: [az első adatfolyamat létrehozása a Visual Studióval](data-factory-build-your-first-pipeline-using-vs.md) .
 * **Azure PowerShell** Lásd: [Azure Data Factory létrehozása és figyelése a Azure PowerShell használatával](data-factory-build-your-first-pipeline-using-powershell.md) egy oktatóanyaghoz/bemutatóhoz, amely egy adatelőállítót hoz létre a PowerShell használatával. Data Factory-parancsmagok átfogó dokumentációját a [Data Factory parancsmag hivatkozási][adf-powershell-reference] tartalma az MSDN Library-ben című témakörben találja.
-* **.Net-osztály könyvtára** Data Factory .NET SDK-val programozott módon hozhat létre adatgyárat. A .net SDK használatával megtekintheti az adatelőállítók létrehozásával [, figyelésével és kezelésével](data-factory-create-data-factories-programmatically.md) kapcsolatos tudnivalókat. Tekintse meg a Data Factory .NET SDK átfogó dokumentációját [Data Factory a Class Library][msdn-class-library-reference] -referenciát.
+* **.Net-osztály könyvtára** Data Factory .NET SDK-val programozott módon hozhat létre adatgyárat. A .net SDK használatával megtekintheti az adatelőállítók létrehozásával [, figyelésével és kezelésével](data-factory-create-data-factories-programmatically.md) kapcsolatos tudnivalókat. Tekintse meg a Data Factory .NET SDK átfogó dokumentációját [Data Factory a Class Library-referenciát][msdn-class-library-reference] .
 * **REST API** A Azure Data Factory szolgáltatás által elérhetővé tett REST API is használhatja az adatüzemek létrehozásához és üzembe helyezéséhez. Az Data Factory REST API átfogó dokumentációját [Data Factory REST API referenciával][msdn-rest-api-reference] foglalkozó témakörben talál.
-* **Azure Resource Manager sablon** Lásd [az oktatóanyagot: Hozza létre az első Azure-beli adat-](data-factory-build-your-first-pipeline-using-arm.md) előállítóját a Azure Resource Manager sablonnal.
+* **Azure Resource Manager sablon** Lásd [: oktatóanyag: az első Azure-beli adat-előállító létrehozása Azure Resource Manager sablon](data-factory-build-your-first-pipeline-using-arm.md) részletes ismertetése alapján.
 
 ### <a name="can-i-rename-a-data-factory"></a>Átnevezhetem egy adatgyárat?
 Nem. A többi Azure-erőforráshoz hasonlóan az Azure-beli adatelőállítók neve nem módosítható.
@@ -66,16 +66,16 @@ Igen. A következő ábrán látható módon használja a " **Move** " gombot a 
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Mik a Data Factory által támogatott számítási környezetek?
 A következő táblázat felsorolja a Data Factory által támogatott számítási környezeteket és a rajtuk futó tevékenységeket.
 
-| Számítási környezet | activities |
+| Számítási környezet | tevékenységek |
 | --- | --- |
 | [Igény szerinti HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [kaptár](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning tevékenységek: Kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
 | [Az Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hogyan hasonlítható össze Azure Data Factory a SQL Server Integration Servicesval (SSIS)? 
-Lásd: [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatása az egyik MVP (a legértékesebb szakemberek): Reza rad. Előfordulhat, hogy a Data Factory közelmúltbeli módosításai nem szerepelnek a dia-pakliban. Folyamatosan bővítjük a Azure Data Factory további képességeit. Folyamatosan bővítjük a Azure Data Factory további képességeit. Ezeket a frissítéseket a Microsoft adatintegrációs technológiáinak az év későbbi részében való összehasonlításával fogjuk egyesíteni.   
+Tekintse meg a [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatót az egyik MVP (legértékesebb szakemberektől): Reza rad. Előfordulhat, hogy a Data Factory közelmúltbeli módosításai nem szerepelnek a dia-pakliban. Folyamatosan bővítjük a Azure Data Factory további képességeit. Folyamatosan bővítjük a Azure Data Factory további képességeit. Ezeket a frissítéseket a Microsoft adatintegrációs technológiáinak az év későbbi részében való összehasonlításával fogjuk egyesíteni.   
 
 ## <a name="activities---faq"></a>Tevékenységek – gyakori kérdések
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Milyen típusú tevékenységeket használhat a Data Factory folyamatokban?
@@ -153,7 +153,7 @@ Ha van egy másik adat-előállítója egy olyan folyamattal, amely a dataset4-t
 Ha a külső tulajdonság megfelelően van beállítva, ellenőrizze, hogy a bemeneti adatok szerepelnek-e a bemeneti adatkészlet definíciójában megadott helyen.
 
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>Hogyan futtathat egy szeletet az éjféltől eltérő időpontban, amikor a szeletet naponta állítják elő?
-Az **eltolás** tulajdonsággal adhatja meg, hogy milyen időpontra kívánja készíteni a szeletet. Ennek a tulajdonságnak a részleteit az adatkészletek [rendelkezésre állása](data-factory-create-datasets.md#dataset-availability) című szakaszban találja. Íme egy gyors példa:
+Az **eltolás** tulajdonsággal adhatja meg, hogy milyen időpontra kívánja készíteni a szeletet. Ennek a tulajdonságnak a részleteit az [adatkészletek rendelkezésre állása](data-factory-create-datasets.md#dataset-availability) című szakaszban találja. Íme egy gyors példa:
 
 ```json
 "availability":
@@ -169,7 +169,7 @@ A napi szeletek az alapértelmezett éjfél helyett **6 órakor** kezdődnek.
 A szeleteket a következő módszerek egyikével futtathatja újra:
 
 * Egy tevékenység ablakának vagy szeletének újrafuttatásához használja az alkalmazás figyelése és kezelése lehetőséget. További útmutatásért lásd: a [kijelölt tevékenység ablakának újrafuttatása](data-factory-monitor-manage-app.md#perform-batch-actions) .   
-* Kattintson a **Run (Futtatás** ) elemre az adatszelet panelének parancssáv paneljén a Azure Portal.
+* Kattintson a **Run (Futtatás** ) elemre az **adatszelet** panelének parancssáv paneljén a Azure Portal.
 * Futtassa a **set-AzDataFactorySliceStatus** parancsmagot az állapot beállítással, hogy a szeletre **várjon** .   
 
     ```powershell
@@ -182,10 +182,10 @@ A figyelés & az alkalmazás kezelése ablakban megtudhatja, hogy mennyi időt v
 
 A Azure Portal a következőket is elvégezheti:  
 
-1. Az adat-előállító paneljén kattintson az adatkészletek csempére.
-2. Kattintson az adatkészletek panelen található adott adatkészletre.
+1. Az adat-előállító paneljén **kattintson az** **adatkészletek** csempére.
+2. Kattintson az **adatkészletek** panelen található adott adatkészletre.
 3. Válassza ki azt a szeletet, amelyet a **tábla** panel **legutóbbi szeletek** listájából szeretne felkeresni.
-4. Kattintson az adatszelet panel **tevékenység** -futtatások listájában a tevékenység futtatása elemre.
+4. Kattintson az **ADATszelet** panel **tevékenység** -futtatások listájában a tevékenység futtatása elemre.
 5. Kattintson a **Tulajdonságok** csempére a **tevékenység futtatása részletek** panelen.
 6. Az **időtartam** mezőt egy értékkel kell látnia. Ez az érték a szelet feldolgozásához szükséges idő.   
 

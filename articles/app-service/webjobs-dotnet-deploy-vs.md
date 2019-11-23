@@ -66,7 +66,7 @@ A Visual Studióval megváltoztathatja a Webjobs, hogy folyamatosan fusson, amik
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Webjobs-feladatok .NET-keretrendszerbeli konzol alkalmazásaiként  
 
-Ha a Visual Studio üzembe helyez egy webjobs-kompatibilis .NET-keretrendszerbeli alkalmazás-projektet, a futtatókörnyezet fájljait a webalkalmazás megfelelő mappájába másolja (*App_Data/Jobs/folyamatos* a folyamatos webjobs-feladatok és *App_Data/feladatok/aktiválás* esetén) ütemezett vagy igény szerinti webjobs-feladatok).
+Ha a Visual Studio üzembe helyez egy webjobs-kompatibilis .NET-keretrendszerbeli alkalmazás-projektet, a futásidejű fájlokat másolja a webalkalmazás megfelelő mappájába (*App_Data/Jobs/Continuous* a folyamatos webjobs-feladatok számára, és *App_Data/Jobs/Triggered* az ütemezett vagy igény szerinti webjobs-feladatok esetében).
 
 Egy webjobs-kompatibilis projekthez a következő elemek vannak hozzáadva:
 
@@ -101,7 +101,7 @@ Erre két lehetősége van:
 
 #### <a id="convertlink"></a>Automatikus webjobs-telepítés engedélyezése webes projekttel
 
-1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson a  > **meglévő projekt hozzáadása Azure webjobs**elemre.
+1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson > **meglévő projekt hozzáadása Azure webjobs**elemre.
    
     ![Meglévő projekt Azure Webjobs](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -137,13 +137,13 @@ Erre két lehetősége van:
 > 
 
 #### <a id="createnolink"></a>A webjobs új-Project sablonjának használata egy független Webjobs
-1. Kattintson a **fájl**@no__t – 1**új projekt**elemre, majd az **új projekt** párbeszédpanelen kattintson a **Cloud** > **Azure webjobs (.NET-keretrendszer)** elemre.
+1. Kattintson a **fájl** > **új projekt**elemre, majd az **új projekt** párbeszédpanelen kattintson a **Cloud** > **Azure webjobs (.NET-keretrendszer)** elemre.
    
     ![Új projekt párbeszédpanel, amely a Webjobs-sablont mutatja](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Kövesse a korábban bemutatott utasításokat, hogy [a konzol alkalmazás-projekthez egy független webjobs-projektet lehessen készíteni](#convertnolink).
 
 #### <a id="createlink"></a>A webjobs új-Project sablonjának használata webes projekthez kapcsolódó Webjobs
-1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson a @no__t – 2**új Azure Webjobs-projekt** **hozzáadása**lehetőségre.
+1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson az **új Azure webjobs-projekt** > **hozzáadása** elemre.
    
     ![Új Azure Webjobs projekt menü bejegyzés](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -164,8 +164,8 @@ A párbeszédpanel mezői a Azure Portal **Webjobs hozzáadása** párbeszédpan
 > 
 > 
 
-### <a id="publishsettings"></a>webjobs-publish-Settings. JSON
-Ha a webjobs-telepítéshez konfigurál egy konzolszoftver-alkalmazást, a Visual Studio telepíti a [Microsoft. Web. Webjobss. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomagot, és az ütemezési információkat a projekt *webjobs-publish-Settings. JSON fájljában tárolja.* A Webjobs-projekt tulajdonságok mappája. Íme egy példa erre a fájlra:
+### <a id="publishsettings"></a>webjob-publish-settings.json
+Ha a webjobs-telepítéshez konfigurál egy konzol alkalmazást, a Visual Studio telepíti a [Microsoft. Web. Webjobss. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomagot, és az ütemezési információkat egy *webjobs-publish-Settings. JSON* fájlban tárolja a webjobs projekt projekt *tulajdonságai* mappájából. Íme egy példa erre a fájlra:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -177,9 +177,9 @@ Ha a webjobs-telepítéshez konfigurál egy konzolszoftver-alkalmazást, a Visua
           "runMode": "Continuous"
         }
 
-Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A sémafájl tárolása [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) helyen történik, és itt tekinthető meg.  
+Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) tárolódik, és ott is megtekinthető.  
 
-### <a id="webjobslist"></a>webjobs-lista. JSON
+### <a id="webjobslist"></a>webjobs-list.json
 Amikor webjobs-t használó projektet kapcsol össze egy webes projekthez, a Visual Studio a webes projekt *Tulajdonságok* mappájában tárolja a webjobs-projekt nevét egy *webjobs-list. JSON* fájlban. A lista több webjobs-projektet is tartalmazhat, ahogy az alábbi példában is látható:
 
         {
@@ -194,10 +194,10 @@ Amikor webjobs-t használó projektet kapcsol össze egy webes projekthez, a Vis
           ]
         }
 
-Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A sémafájl tárolása [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) helyen történik, és itt tekinthető meg.
+Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) tárolódik, és ott is megtekinthető.
 
 ### <a id="deploy"></a>Webjobs-projekt üzembe helyezése
-Egy webjobs-projekt, amely webes projekthez van csatolva, automatikusan települ a webes projekttel. További információ a webes projekt központi telepítéséről: **útmutatók** >  az**alkalmazás telepítése** a bal oldali navigációs sávon.
+Egy webjobs-projekt, amely webes projekthez van csatolva, automatikusan települ a webes projekttel. További információ a webes projekt központi telepítéséről: **útmutatók** > az **alkalmazás központi telepítése** a bal oldali navigációs sávon.
 
 Webjobs-projekt saját maga általi üzembe helyezéséhez kattintson a jobb gombbal a projektre **megoldáskezelő** , majd kattintson a **Közzététel Azure-webjobs...** lehetőségre. 
 
@@ -215,7 +215,7 @@ A webjobs egy *Settings. job* fájlt használ a webjobs futtatásának megállap
 }
 ```
 
-Ennek a fájlnak a webjobs-mappa gyökerében kell lennie, a Webjobs parancsfájljában, például `wwwroot\app_data\jobs\triggered\{job name}` vagy `wwwroot\app_data\jobs\continuous\{job name}`. Ha a Visual studióból telepít egy Webjobs, akkor a `settings.job` fájl tulajdonságait **másolja másolatként, ha újabb**. 
+Ennek a fájlnak a webjobs-mappa gyökerében kell lennie, és a Webjobs parancsfájljában kell lennie, például `wwwroot\app_data\jobs\triggered\{job name}` vagy `wwwroot\app_data\jobs\continuous\{job name}`. Ha a Visual studióból helyez üzembe egy Webjobs, akkor a `settings.job` fájl tulajdonságait **másolja másolásként, ha újabb**. 
 
 Amikor [webjobs hoz létre a Azure Portal](webjobs-create.md), a Settings. job fájl jön létre az Ön számára.
 
@@ -233,10 +233,10 @@ A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Mind | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Összes | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A felskálázáskor csak egyetlen példányon futtassa a webjobs-feladatokat. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egypéldányos beállítással. |
 | `schedule` | Kiváltott | Futtassa a Webjobs egy CRON-alapú ütemterven. További információért lásd az [időzítő trigger-referenciát ismertető cikket](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Mind | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Következő lépések
 

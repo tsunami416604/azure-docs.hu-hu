@@ -22,6 +22,6 @@ Miután létrehozta az erőforrást, a végpont és a kulcs beszerzéséhez nyis
 
 Hozzon létre két [környezeti változót](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource):
 
-* @no__t – 0 – az erőforrás végpontja. A következőképpen fog kinézni: <br> `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `INK_RECOGNITION_SUBSCRIPTION_KEY` – az erőforrás végpontja. A következőképpen fog kinézni: <br> `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-* @no__t – 0 – a kérések hitelesítéséhez szükséges előfizetési kulcs.   
+* `INK_RECOGNITION_ENDPOINT` – a kérések hitelesítéséhez szükséges előfizetési kulcs.   

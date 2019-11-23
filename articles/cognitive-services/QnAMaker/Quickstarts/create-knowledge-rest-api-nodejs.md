@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: QnA Maker REST API-kkal a Node. js-hez'
+title: 'Rövid útmutató: QnA Maker REST API-kkal a Node. js-hez'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedjen meg a Node. js-hez készült QnA Maker REST API-kkal. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
 ms.locfileid: "71803520"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k a Node. js-hez
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rövid útmutató: QnA Maker REST API-k a Node. js-hez
 
 Ismerkedjen meg a Node. js-hez készült QnA Maker REST API-kkal. Az alábbi lépéseket követve próbálja ki az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. 
 
@@ -30,7 +30,7 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 * Tudásbázis letöltése
 * Művelet állapotának beolvasása
 
-[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)@no__t – 1[Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node. js-mintákhoz](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -46,7 +46,7 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. 
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `QNAMAKER_AUTHORING_ENDPOINT`(z) és nevű `QNAMAKER_RESOURCE_KEY` erőforráshoz. Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az erőforráshoz, `QNAMAKER_RESOURCE_KEY` és `QNAMAKER_AUTHORING_ENDPOINT`névvel. Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -62,7 +62,7 @@ Futtassa a `npm init -y` parancsot egy csomópont `package.json` fájl létrehoz
 npm init -y
 ```
 
-Adja hozzá a `reqeuestretry` és a `request` NPM-csomagokat:
+Adja hozzá a `reqeuestretry` és `request` NPM-csomagokat:
 
 ```console
 npm install requestretry request --save
@@ -83,7 +83,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 
 
-Hozzon létre egy `rest-apis.js` nevű fájlt, és adja hozzá a következő _szükséges_ UTASÍTÁST a HTTP-kérések létrehozásához. 
+Hozzon létre egy `rest-apis.js` nevű fájlt, és adja hozzá _a következő utasítást_ a HTTP-kérések elvégzéséhez. 
 
 ```javascript
 const request = require("requestretry");
@@ -148,7 +148,7 @@ A [REST API használatával figyelheti a műveleteket a Tudásbázisban](https:/
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `node rest-apis.js` a paranccsal az alkalmazás könyvtárából.
+Futtassa az alkalmazást `node rest-apis.js` paranccsal az alkalmazás könyvtárából.
 
 ```console
 node rest-apis.js
@@ -161,10 +161,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: KB létrehozása és válasza](../tutorials/create-publish-query-in-portal.md)
+>[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)

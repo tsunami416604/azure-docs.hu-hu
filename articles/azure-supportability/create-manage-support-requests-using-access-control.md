@@ -79,7 +79,7 @@ A partnernek, Joe-nak hozzáférést kíván adni, és támogatási jegyet hozha
 
 3. A szerepkör nevének kiválasztása után kattintson a "felhasználók hozzáadása" lehetőségre, és adja meg a Joe e-mail hitelesítő adatait. Kattintson a Kiválasztás gombra.
 
-    ![Felhasználók hozzáadása](./media/create-manage-support-requests-using-access-control/add-users.png)
+    ![Felhasználók felvétele](./media/create-manage-support-requests-using-access-control/add-users.png)
 
 4. A folytatáshoz kattintson az OK gombra.
 
@@ -95,7 +95,7 @@ A partnernek, Joe-nak hozzáférést kíván adni, és támogatási jegyet hozha
 
     ![Új támogatási kérelem](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. A "minden támogatási kérelem" gombra kattintva megtekintheti az előfizetéshez létrehozott támogatási kérelmek listáját ![Case részletek nézet @ no__t-1
+8. A "minden támogatási kérelem" gombra kattintva megtekintheti az előfizetéshez létrehozott támogatási kérelmek listáját ![a Case details nézetet](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Támogatási kérelem hozzáférésének eltávolítása a Azure Portal
 

@@ -34,7 +34,7 @@ Nem törölhet olyan Recovery Services-tárolót, amelynek függőségei, péld�
   
 A tár törléséhez válassza ki a beállításnak megfelelő forgatókönyvet, és kövesse az ajánlott lépéseket:
 
-Forgatókönyv | A tár törléséhez szükséges függőségek eltávolításának lépései |
+Alkalmazási helyzet | A tár törléséhez szükséges függőségek eltávolításának lépései |
 -- | --
 A Azure Backup-ügynökkel védett helyszíni fájlokat és mappákat használok, az Azure-ba történő biztonsági mentéssel | Hajtsa végre a [biztonsági másolati elemek törlése a Mars felügyeleti konzolról](#delete-backup-items-from-the-mars-management-console) című témakör lépéseit.
 MABS (Microsoft Azure Backup Server) vagy DPM (System Center Data Protection Manager) használatával védett helyszíni gépeket használok az Azure-ba | Hajtsa végre a [biztonsági másolati elemek törlése a MABS felügyeleti konzolról](#delete-backup-items-from-the-mabs-management-console) című témakör lépéseit.

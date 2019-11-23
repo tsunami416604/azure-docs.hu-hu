@@ -90,8 +90,8 @@ Ehhez kis csípésre van szükség az Ön részéről. Ez azonban nem nehéz, é
 
 - Telepítse a szükséges modult a munkaállomáson, a következőképpen:
   - [Windows Management Framework, V5](https://aka.ms/wmf5latest) telepítése (Windows 10 rendszerhez nem szükséges)
-  - @no__t – 0 < – a modult a PowerShell-galériaból fogja felfogni.
-- Másolja a Module mappát `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME`-ból egy ideiglenes mappába.
+  - `Install-Module –Name MODULE-NAME` < – a modult a PowerShell-galéria
+- A modul mappájának másolása `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME`ból egy ideiglenes mappába
 - Minták és dokumentáció törlése a fő mappából
 - Zip a fő mappa, a ZIP-fájl elnevezése pontosan ugyanaz, mint a mappa 
 - Helyezze a ZIP-fájlt egy elérhető HTTP-helyre, például egy Azure Storage-fiók blob Storage-fiókjába.
@@ -109,7 +109,7 @@ A példában szereplő példa a cChoco és a xNetworking vonatkozó lépéseket 
 
 A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden további importálási/fordítási beállítása pontosan ugyanaz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után hajtja végre – beleértve a csomag új verzióját is. A konfigurációs fájl és a PowerShell:
 
-ISVBoxConfig. ps1:
+ISVBoxConfig.ps1:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -154,7 +154,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript. ps1:
+New-ConfigurationScript.ps1:
 
 ```powershell
 Import-AzureRmAutomationDscConfiguration `

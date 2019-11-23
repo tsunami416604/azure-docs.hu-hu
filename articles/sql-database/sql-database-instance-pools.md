@@ -148,7 +148,7 @@ Ha a [fejlesztési és tesztelési juttatásra jogosult előfizetésekhez](https
 
 A példányok készletének díjszabásával kapcsolatos részletes információkért tekintse meg a [felügyelt példány díjszabása lap](https://azure.microsoft.com/pricing/details/sql-database/managed/) *példány-készletek* szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A példányok készletének megkezdéséhez tekintse meg a [SQL Database példány-készletek útmutatója](sql-database-instance-pools-how-to.md)című témakört.
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](sql-database-managed-instance-get-started.md).

@@ -22,18 +22,18 @@ A Azure Database for MySQL a napló a felhasználók számára érhető el. A na
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
-Alapértelmezés szerint a napló le van tiltva. A beállítás engedélyezéséhez állítsa a `audit_log_enabled` értéket a következőre:.
+Alapértelmezés szerint a napló le van tiltva. Az engedélyezéshez állítsa be `audit_log_enabled` a következőre:.
 
 Az egyéb paraméterek a következők:
 
-- `audit_log_events`: a naplózandó események szabályozása. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
-- `audit_log_include_users`: a naplózáshoz a MySQL-felhasználók tartoznak. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ez magasabb prioritással rendelkezik `audit_log_exclude_users` felett. A paraméter maximális hossza 512 karakter.
+- `audit_log_events`: a naplózni kívánt eseményeket vezérli. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
+- `audit_log_include_users`: a MySQL-felhasználók bekerülnek a naplózásba. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users`. A paraméter maximális hossza 512 karakter.
 > [!Note]
-> a `audit_log_include_users` magasabb prioritással rendelkezik a `audit_log_exclude_users` esetében, például ha a audit_log_include_users = `demouser` és a audit_log_exclude_users = `demouser`, akkor a naplózza a naplókat, mert a `audit_log_include_users` magasabb prioritással rendelkezik.
-- `audit_log_exclude_users`: a naplózásból kizárandó MySQL-felhasználók. A paraméter maximális hossza 512 karakter.
+> `audit_log_include_users` magasabb prioritással rendelkezik `audit_log_exclude_users` például ha audit_log_include_users = `demouser` és audit_log_exclude_users = `demouser`, a naplózza a naplókat, mert a `audit_log_include_users` magasabb prioritással rendelkezik.
+- `audit_log_exclude_users`: a MySQL-felhasználókat ki kell zárni a naplózásból. A paraméter maximális hossza 512 karakter.
 
 > [!Note]
-> @No__t – 0 esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+> `sql_text`esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Esemény** | **Leírás** |
 |---|---|
@@ -44,7 +44,7 @@ Az egyéb paraméterek a következők:
 | `DDL` | Lekérdezések, például "DROP DATABASE" |
 | `DCL` | Lekérdezések, például "engedély megadása" |
 | `ADMIN` | Lekérdezések, például "állapot megjelenítése" |
-| `GENERAL` | Mind a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a ADMIN |
+| `GENERAL` | Összes DML_SELECT, DML_NONSELECT, DML, DDL, DCL és ADMIN |
 | `TABLE_ACCESS` | – Csak MySQL 5,7 esetén érhető el <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
@@ -62,10 +62,10 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
@@ -81,7 +81,7 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 | `db_s` | A következőhöz kapcsolódó adatbázis neve |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 
@@ -90,10 +90,10 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
@@ -103,7 +103,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5,6 esetén érhető el) |
 | `event_time` | Lekérdezés kezdési időpontja (UTC) időbélyegzővel |
-| `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. a `0` nem jelent hibát. |
+| `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. `0` nem jelent hibát |
 | `thread_id_d` | A lekérdezést futtató szál azonosítója |
 | `host_s` | Üres |
 | `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
@@ -118,10 +118,10 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
@@ -129,7 +129,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` vagy `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`vagy `DELETE` |
 | `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
 | `db_s` | Az elért adatbázis neve |
 | `table_s` | Az elért tábla neve |

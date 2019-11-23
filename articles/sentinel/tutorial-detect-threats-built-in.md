@@ -21,7 +21,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72024458"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: Fenyegetések észlelése
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: fenyegetések észlelése – beépített
 
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "72024458"
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) To az Azure sentinelhez, értesítést szeretne kapni, ha valami gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
+Miután [az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez csatlakoztatta, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
 
 Ez az oktatóanyag segítséget nyújt a fenyegetések észleléséhez az Azure Sentinel használatával:
 
@@ -46,7 +46,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 A következő sablon típusok érhetők el:
 
 - **Microsoft Security** – a Microsoft biztonsági sablonjai valós időben hoznak létre automatikusan Azure Sentinel-incidenseket a más Microsoft biztonsági megoldásokban létrehozott riasztásokból. A Microsoft biztonsági szabályai sablonként használhatók a hasonló logikával rendelkező új szabályok létrehozásához. További információ a biztonsági szabályokról: [incidensek automatikus létrehozása a Microsoft biztonsági értesítéseiből](create-incidents-from-alerts.md).
-- **Fúzió –** fúziós technológián alapuló, fejlett, többszintű támadás észlelése az Azure sentinelben skálázható gépi tanulási algoritmusokat használ, amelyek számos kevésbé magas szintű riasztást és eseményt kezelhetnek több termékben események. A Fusion alapértelmezés szerint engedélyezve van. Mivel a logika rejtett, nem használhatja ezt sablonként egynél több szabály létrehozásához.
+- **Fúzió –** fúziós technológián alapuló, fejlett, többszintű támadás észlelése az Azure sentinelben skálázható gépi tanulási algoritmusokat használ, amelyek számos kis hűségű riasztást és eseményt kezelhetnek több termékre, és így magas szintű és gyakorlati incidenseket jelenthetnek. A Fusion alapértelmezés szerint engedélyezve van. Mivel a logika rejtett, nem használhatja ezt sablonként egynél több szabály létrehozásához.
 - **Machine learning – viselkedés-elemzés** – ezek a sablonok a saját Microsoft Machine learning-algoritmusokon alapulnak, így nem láthatók a működésük és a futtatásaik belső logikája. Mivel a logika rejtett, nem használhatja ezt sablonként egynél több szabály létrehozásához.
 -   **Ütemezett** – az ütemezett elemzési szabályok a Microsoft biztonsági szakértői által írt ütemezett lekérdezések. Láthatja a lekérdezési logikát, és módosíthatja azt. Az ütemezett szabályokat sablonként használva új szabályokat hozhat létre hasonló logikával.
 
@@ -58,11 +58,11 @@ A következő sablon típusok érhetők el:
  
 1. Ekkor megnyílik a szabály létrehozása varázsló a kiválasztott sablon alapján. Az összes adat kitöltése, valamint az **ütemezett szabályok** vagy a **Microsoft biztonsági szabályok**esetében testreszabhatja a logikát, hogy jobban megfeleljen a szervezetének, vagy további szabályokat hozzon létre a beépített sablon alapján. A szabály létrehozása varázsló lépéseit követve és a sablon alapján létrehozott szabály létrehozása után az új szabály megjelenik az **aktív szabályok** lapon.
 
-További információt a varázsló mezőiről a következő témakörben talál: [Tutorial: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez @ no__t-0.
+A varázsló mezőivel kapcsolatos további információkért lásd [: oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez](tutorial-detect-threats-custom.md).
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával. 
 
 Ha szeretné megtudni, hogyan automatizálhatja a fenyegetésekre adott válaszokat, [állítson be automatizált fenyegetési válaszokat az Azure sentinelben](tutorial-respond-threats-playbook.md).

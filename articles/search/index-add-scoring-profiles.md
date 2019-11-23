@@ -275,7 +275,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  A következő táblázat több példát is tartalmaz.  
 
-|Időtartam|boostingDuration|  
+|Duration|boostingDuration|  
 |--------------|----------------------|  
 |1 nap|"P1D"|  
 |2 nap és 12 óra|"P2DT12H"|  

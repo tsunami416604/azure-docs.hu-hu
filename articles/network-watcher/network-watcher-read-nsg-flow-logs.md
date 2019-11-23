@@ -33,7 +33,7 @@ A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](https://do
 
 A következő esetben egy Storage-fiókban tárolt folyamat naplója van. Megtudhatja, hogyan olvashatja el a legújabb eseményeket a NSG flow naplóiban. Ebben a cikkben a PowerShellt használja, azonban a cikkben tárgyalt fogalmak nem korlátozódnak a programozási nyelvre, és alkalmazhatók az Azure Storage API-k által támogatott összes nyelvre.
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 Mielőtt elkezdené, a fiókjában egy vagy több hálózati biztonsági csoporton engedélyezni kell a hálózati biztonsági csoport folyamatának naplózását. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg a következő cikket: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md).
 
@@ -98,7 +98,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-A `$blockList` változó a blobban lévő blokkok listáját adja vissza. Mindegyik blokk blob legalább két blokkot tartalmaz.  Az első blokk hossza @no__t – 0 bájt, ez a blokk a JSON-napló nyitó zárójeleit tartalmazza. A másik blokk a záró zárójel, amelynek hossza @no__t – 0 bájt.  Ahogy az alábbi példában is látható, a naplóban hét bejegyzés található, amelyek mindegyike külön bejegyzés. A napló összes új bejegyzése közvetlenül a végső blokk előtt lesz hozzáadva a végponthoz.
+A `$blockList` változó a blobban lévő blokkok listáját adja vissza. Mindegyik blokk blob legalább két blokkot tartalmaz.  Az első blokk hossza `12` bájt, ez a blokk a JSON-napló nyitó zárójeleit tartalmazza. A másik blokk a záró zárójel, amelynek hossza `2` bájt.  Ahogy az alábbi példában is látható, a naplóban hét bejegyzés található, amelyek mindegyike külön bejegyzés. A napló összes új bejegyzése közvetlenül a végső blokk előtt lesz hozzáadva a végponthoz.
 
 ```
 Name                                         Length Committed
@@ -116,7 +116,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>A blokk blobjának beolvasása
 
-Ezután olvassa el az `$blocklist` változót az adatlekérdezéshez. Ebben a példában a Blocklist áttekintjük az egyes blokkokból származó bájtokat, és egy tömbben mesélik el őket. Az [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metódus használatával kérheti le az adatgyűjtést.
+Ezután olvassa el a `$blocklist` változót az adatlekérdezéshez. Ebben a példában a Blocklist áttekintjük az egyes blokkokból származó bájtokat, és egy tömbben mesélik el őket. Az [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metódus használatával kérheti le az adatgyűjtést.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -160,7 +160,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Most a `$valuearray` tömb tartalmazza az egyes blokkok sztring értékét. A bejegyzés ellenőrzéséhez szerezze be a tömb utolsó értékét a `$valuearray[$valuearray.Length-2]` futtatásával. Nem szeretné, hogy az utolsó érték, mert ez a záró zárójel.
+Most a `$valuearray` tömb tartalmazza az egyes blokkok sztring értékét. A bejegyzés ellenőrzéséhez szerezze be a tömb utolsó értékét a `$valuearray[$valuearray.Length-2]`futtatásával. Nem szeretné, hogy az utolsó érték, mert ez a záró zárójel.
 
 Az érték eredményei az alábbi példában láthatók:
 

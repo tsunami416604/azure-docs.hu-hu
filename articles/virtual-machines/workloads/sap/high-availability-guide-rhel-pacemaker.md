@@ -108,9 +108,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
    > [!IMPORTANT]
    > A következő Azure kerítés-ügynök (vagy újabb verziók) használatát javasoljuk az ügyfelek számára a gyorsabb feladatátvételi idő kihasználása érdekében, ha egy erőforrás leáll, vagy ha a fürtcsomópontok nem tudnak kommunikálni egymással:  
-   > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _ 6.8  
-   > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
-   > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
+   > RHEL 7,6: kerítés-ügynökök-4.2.1-11. el7_6.8  
+   > RHEL 7,5: kerítés-ügynökök-4.0.11-86. el7_5.8  
+   > RHEL 7,4: kerítés-ügynökök-4.0.11-66. el7_4.12  
    > További információkért tekintse meg a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gépeket, ha a virtuális gép leáll, vagy a kerítés sikertelen/időtúllépést](https://access.redhat.com/solutions/3408711)okoz.
 
    Keresse meg az Azure kerítés ügynökének verzióját. Ha szükséges, frissítse a fent megadott vagy újabb verzióra.
@@ -206,7 +206,7 @@ A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű sz
 1. Kattintson az alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
-2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+2. Válassza az alkalmazás típusa "web" lehetőséget, írja be a bejelentkezési URL-címet (például http:\//localhost), és kattintson a Hozzáadás gombra.  
    A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
@@ -265,7 +265,7 @@ sudo pcs property set stonith-timeout=900
 A kerítés eszköz konfigurálásához használja a következő parancsot.
 
 > [!NOTE]
-> A "pcmk_host_map" beállítás csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem azonosak. Tekintse meg az parancs félkövér szakaszát.
+> A (z) "pcmk_host_map" kapcsoló csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem egyeznek. Tekintse meg az parancs félkövér szakaszát.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 
@@ -274,7 +274,7 @@ A kerítés eszköz konfigurálásához használja a következő parancsot.
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

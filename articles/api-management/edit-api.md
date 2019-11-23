@@ -61,7 +61,7 @@ A háttérrendszer API-ját frissítheti az Azure Portalról. Ehhez tegye a köv
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [APIM-szabályzatminták](policy-samples.md)

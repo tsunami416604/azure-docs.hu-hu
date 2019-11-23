@@ -130,16 +130,16 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     Alapértelmezés szerint a Azure File Sync kizárja a következő fájlokat:
   * Desktop. ini
   * Thumbs. db
-  * ehthumbs. db
+  * ehthumbs.db
   * ~$\*.\*
-  * \*. laccdb
+  * \*.laccdb
   * \*. tmp
   * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     Alapértelmezés szerint a következő mappák is ki vannak zárva:
 
   * \System-kötet adatai
-  * \$újrahasznosítása. BIN
+  * \$RECYCLE.BIN
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -252,7 +252,7 @@ az **Azure ExpressRoute-t kell használnia a Azure Fileshoz való kapcsolódásh
 
     A fájlmegosztást az SMB protokoll használatával csatlakoztathatja, ha a 445-as (TCP kimenő) port meg van nyitva, és az ügyfél támogatja az SMB 3,0 protokollt (például ha Windows 10 vagy Windows Server 2016 rendszert használ). Ha a szervezet házirendje vagy az INTERNETSZOLGÁLTATÓja blokkolja a 445-as portot, a Azure File Sync használatával férhet hozzá az Azure-fájlmegosztás eléréséhez.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **hogyan az Azure-fájlmegosztás biztonsági mentését?**  
     A véletlen törlések elleni védelemhez használhat rendszeres [megosztási pillanatképeket](storage-snapshots-files.md) . Használhatja a AzCopy, a Robocopy vagy egy külső gyártótól származó biztonsági mentési eszközt is, amely képes biztonsági másolatot készíteni egy csatlakoztatott fájlmegosztásról. A Azure Backup Azure Files biztonsági mentését kínálja. További információ az [Azure-fájlmegosztás Azure Backup általi biztonsági mentéséről](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -384,7 +384,7 @@ beállíthat **beágyazott megosztásokat? Más szóval egy megosztás alatt tal
 **hogyan az Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Az Azure File Sync hibaelhárítása](storage-sync-files-troubleshoot.md)

@@ -22,7 +22,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -94,7 +94,7 @@ cd initial/spring-todo-app
 cp set-env-variables-template.sh .scripts/set-env-variables.sh
 ```
  
-Szerkessze `.scripts/set-env-variables.sh` a kedvenc szerkesztőben, és adja meg Azure Cosmos DB-kapcsolatok adatait. A App Service Linux-konfiguráció esetében használja ugyanazt a régiót, mint a korábban (`your-resource-group-region`) és az erőforráscsoport (`your-azure-group-name`), amelyet a rendszer a Cosmos DB-adatbázis létrehozásakor használ. Olyan WEBAPP_NAME válasszon, amely egyedi, mert nem tudja duplikálni bármely webalkalmazás nevét bármely Azure-telepítésben.
+Szerkessze `.scripts/set-env-variables.sh` a kedvenc szerkesztőben, és adja meg Azure Cosmos DB-kapcsolatok adatait. A App Service Linux-konfiguráció esetében használja ugyanazt a régiót, mint a korábban (`your-resource-group-region`) és az erőforráscsoport (`your-azure-group-name`), amelyet a rendszer a Cosmos DB-adatbázis létrehozásakor használ. Olyan WEBAPP_NAME válasszon, amely egyedi, mert nem tudja duplikálni a webalkalmazások nevét bármely Azure-telepítésben.
 
 ```bash
 export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
@@ -146,7 +146,7 @@ A minta futtatásához használja a Mavent.
 mvn package spring-boot:run
 ```
 
-A kimenetnek az alábbihoz hasonlóan kell kinéznie.
+A kimenet a következőhöz hasonlóan kell kinéznie.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run
@@ -307,7 +307,7 @@ az group delete --name <your-azure-group-name>
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Java-fejlesztőknek](/java/azure/)
 a [Spring boot](https://spring.io/projects/spring-boot), [a Spring Cosmos db, a](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable) [Azure Cosmos db](/azure/cosmos-db/sql-api-introduction) és a [app Service Linux](app-service-linux-intro.md).

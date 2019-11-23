@@ -27,10 +27,10 @@ ms.locfileid: "72388848"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag a Cordova Azure Mobile Apps offline szinkronizálási funkcióját mutatja be. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálnak, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja.  Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli szolgáltatással.
+Ez az oktatóanyag a Cordova Azure Mobile Apps offline szinkronizálási funkcióját mutatja be. Az offline szinkronizálás lehetővé teszi a végfelhasználók számára, hogy az adat&mdash;megtekintsék, felveszik vagy módosítsák a mobileszköz-&mdash;, még akkor is, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja.  Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli szolgáltatással.
 
 Ez az oktatóanyag az [Apache Cordova – gyors üzembe helyezés]során létrehozott Mobile apps Cordova rövid útmutató megoldásán alapul. Ebben az oktatóanyagban frissíti a gyors üzembe helyezési megoldást az Azure Mobile Apps offline szolgáltatásainak hozzáadásához.  Kiemeljük az alkalmazás offline-specifikus kódját is.
 
@@ -74,7 +74,7 @@ Az offline szinkronizálási kódot hozzá kell adni az alkalmazáshoz. Az offli
 
     Az előző kód kiegészítései inicializálják a helyi tárolót, és meghatározhatnak egy helyi táblát, amely megfelel az Azure háttérbeli oszlop értékeinek. (A kódban nem kell szerepelnie az összes oszlop értékének.)  A `version` mezőt a mobil háttér tartja karban, és az ütközés feloldására szolgál.
 
-    A **getSyncContext**meghívásával a szinkronizálási környezetre mutató hivatkozás fog megjelenni. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és a változtatások megadásával, amelyet az ügyfélalkalmazás a `.push()` hívásakor módosított.
+    A **getSyncContext**meghívásával a szinkronizálási környezetre mutató hivatkozás fog megjelenni. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és kitolásával, amelyet az ügyfélalkalmazás a `.push()` hívásakor módosít.
 
 3. Frissítse az alkalmazás URL-címét a Mobile App Application URL-címére.
 

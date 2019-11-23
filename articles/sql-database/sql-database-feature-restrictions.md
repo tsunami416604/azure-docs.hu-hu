@@ -32,7 +32,7 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 A következő funkciók korlátozhatók:
 
-| Szolgáltatás          | Leírás |
+| Funkció          | Leírás |
 |------------------|-------------|
 | N'ErrorMessages' | Ha korlátozva van, a rendszer a hibaüzenetben lévő összes felhasználói adattal maszkot fog tartalmazni. Lásd a [hibaüzenetek szolgáltatás korlátozását](#error-messages-feature-restriction) |
 | N'Waitfor'       | Ha korlátozott, a parancs késedelem nélkül vissza fog térni. Lásd: [waitfor szolgáltatás korlátozása](#waitfor-feature-restriction) |

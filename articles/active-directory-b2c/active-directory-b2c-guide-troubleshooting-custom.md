@@ -29,7 +29,7 @@ Az egyéni házirendek beállításának leggyakoribb hibája az XML-fájl helyt
 
 A kedvenc szerkesztők közül kettő a [Visual Studio Code](https://code.visualstudio.com/) és a [Notepad + +](https://notepad-plus-plus.org/).
 
-Az XML-séma ellenőrzése a hibákat az XML-fájl feltöltése előtt azonosítja. Az [alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)gyökérkönyvtárában szerezze be az XML Schema Definition file *trustframeworkpolicy_ 0.3.0.0. xsd*fájlt. Ha szeretné megtudni, hogyan használhatja az XSD-sémafájl érvényesítését a szerkesztőben, keresse meg az *XML-eszközöket* és az *XML-érvényesítést* , vagy a szerkesztő dokumentációjában hasonló módon.
+Az XML-séma ellenőrzése a hibákat az XML-fájl feltöltése előtt azonosítja. Az [alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)gyökérkönyvtárában szerezze be a *TrustFrameworkPolicy_0.3.0.0. xsd*XML Schema Definition fájlt. Ha szeretné megtudni, hogyan használhatja az XSD-sémafájl érvényesítését a szerkesztőben, keresse meg az *XML-eszközöket* és az *XML-érvényesítést* , vagy a szerkesztő dokumentációjában hasonló módon.
 
 Hasznos lehet az XML-szabályok áttekintése. Azure AD B2C elutasítja az észlelt XML-formázási hibákat. Előfordulhat, hogy a helytelenül formázott XML-üzenetek félrevezető hibaüzeneteket okozhatnak.
 
@@ -52,29 +52,29 @@ Gyakori érvényesítési hibák a következők:
 
 > Hiba kódrészlet: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* Győződjön meg arról, hogy a `<TrustFrameworkPolicy\>` és a `<BasePolicy\>` elemek TenantId értéke megfelel a célként megadott Azure AD B2C bérlőnek.
+* Győződjön meg arról, hogy a `<TrustFrameworkPolicy\>` és `<BasePolicy\>` elemek TenantId értéke megfelel a célként megadott Azure AD B2C bérlőnek.
 
 ## <a name="troubleshoot-the-runtime"></a>A futtatókörnyezet hibáinak megoldása
 
-* A **Futtatás most** és a `https://jwt.ms` paranccsal tesztelheti a szabályzatokat a webes vagy a mobil alkalmazástól függetlenül. Ez a webhely úgy viselkedik, mint egy függő entitás alkalmazása. Megjeleníti a Azure AD B2C szabályzat által generált JSON webes jogkivonat (JWT) tartalmát.
+* A **Futtatás most** és a `https://jwt.ms` használatával tesztelheti a házirendeket a webes vagy a mobil alkalmazástól függetlenül. Ez a webhely úgy viselkedik, mint egy függő entitás alkalmazása. Megjeleníti a Azure AD B2C szabályzat által generált JSON webes jogkivonat (JWT) tartalmát.
 
-    Olyan tesztelési alkalmazás létrehozása, amely átirányítható `https://jwt.ms` azonosítóra a jogkivonat-ellenőrzéshez:
+    Olyan tesztelési alkalmazás létrehozása, amely átirányítható `https://jwt.ms` a jogkivonat-ellenőrzéshez:
 
     [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
-* Az ügyféloldali böngésző és a Azure AD B2C közötti üzenetek cseréjének nyomon követéséhez használja [](https://www.telerik.com/fiddler)a hegedűst. Ezzel a megoldással megtekintheti, hogy a felhasználói utazás miért sikertelen a folyamat lépésein.
+* Az ügyféloldali böngésző és a Azure AD B2C közötti üzenetek cseréjének nyomon követéséhez használja a [hegedűst](https://www.telerik.com/fiddler). Ezzel a megoldással megtekintheti, hogy a felhasználói utazás miért sikertelen a folyamat lépésein.
 
-* **Fejlesztési módban**a [Application Insights](active-directory-b2c-troubleshoot-custom.md) segítségével nyomon követheti az Identity Experience Framework felhasználói utazásának tevékenységeit. **Fejlesztési módban**megfigyelheti a jogcímek cseréjét az identitási élmény keretrendszere és a technikai profilok, például az Identitáskezelő, az API-alapú szolgáltatások, a Azure ad B2C címtár és egyéb szolgáltatások, például az Azure Multi-Factor Authentication.
+* **Fejlesztési módban**a [Application Insights](active-directory-b2c-troubleshoot-custom.md) segítségével nyomon követheti az Identity Experience Framework felhasználói utazásának tevékenységeit. **Fejlesztési módban**megfigyelheti a jogcímek cseréjét az identitási élmény keretrendszere és a technikai profilok által meghatározott különböző jogcím-szolgáltatók között, például az Identitáskezelés, az API-alapú szolgáltatások, a Azure ad B2C felhasználói könyvtár és más szolgáltatások, például az Azure multi-Factor Authentication.
 
 ## <a name="recommended-practices"></a>Ajánlott eljárások
 
-@no__t – a forgatókönyvek több verzióját is 0Keep. Csoportosítsa őket egy projektben az alkalmazással. ** Az alap, a bővítmények és a függő entitások fájljai közvetlenül függenek egymástól. Mentse őket csoportként. Az új funkciók a szabályzatokhoz való hozzáadásakor külön működő verziókat tartanak fenn. A saját fájlrendszerében lévő munkaverziókat az alkalmazás kódjával együtt kell használni. Előfordulhat, hogy alkalmazásai számos különböző függő entitásra vonatkozó házirendet hívhatnak a bérlőben. Előfordulhat, hogy a Azure AD B2C szabályzatok által várt jogcímektől függenek.
+**A forgatókönyvek több verzióját is megtarthatja. Csoportosítsa őket egy projektben az alkalmazással.** Az alap, a bővítmények és a függő entitások fájljai közvetlenül függenek egymástól. Mentse őket csoportként. Az új funkciók a szabályzatokhoz való hozzáadásakor külön működő verziókat tartanak fenn. A saját fájlrendszerében lévő munkaverziókat az alkalmazás kódjával együtt kell használni. Előfordulhat, hogy alkalmazásai számos különböző függő entitásra vonatkozó házirendet hívhatnak a bérlőben. Előfordulhat, hogy a Azure AD B2C szabályzatok által várt jogcímektől függenek.
 
 **Műszaki profilok fejlesztése és tesztelése ismert felhasználói útvonalakkal.** A műszaki profilok beállításához a kipróbált Starter Pack-szabályzatokat használhatja. Ezeket külön tesztelje, mielőtt beépíti őket a saját felhasználói útjába.
 
 **Kipróbált technikai profilokkal fejlesztheti és tesztelheti a felhasználói utazásokat.** A felhasználói útvonalak előkészítési lépéseinek növekményes módosítása. Fokozatosan hozza létre a kívánt forgatókönyveket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le az [Active-Directory-B2C-Custom-Policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) . zip archívumot a githubon. Az adattár klónozása is megtehető:
 

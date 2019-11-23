@@ -20,18 +20,18 @@ ms.locfileid: "72177087"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Connected Services használata a Visual Studióban a Computer Vision API-hoz való csatlakozáshoz
 
-Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a Visual Studio Connected Service funkciója a Cognitive Services Computer Vision API-hoz. A funkció a Visual Studio 2017 15.7 és későbbi változatokban is elérhető, ha a Cognitive Services bővítmény telepítve van.
+Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a Visual Studio Connected Service funkciója a Cognitive Services Computer Vision API-hoz. Ez a funkció a Visual Studio 2017 15.7-es vagy újabb verzióiban érhető el, ha a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2017 15,7-es vagy újabb verziója telepítve van a **webes fejlesztési** számítási feladattal. [Töltse le most](https://visualstudio.microsoft.com/downloads/).
+- A Visual Studio 2017 15,7-es vagy újabb verziója telepítve van a **webes fejlesztési** számítási feladattal. [Ezt innen töltheti le](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-cognitive-services-computer-vision-api"></a>A Cognitive Services Computer Vision API támogatásának hozzáadása a projekthez
 
-1. Hozzon létre egy új ASP.NET Core web projektet. Használja az Üres projekt sablont. 
+1. Hozzon létre egy új ASP.NET Core-webprojektet. Használja az Üres projekt sablont. 
 
 1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
@@ -42,7 +42,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 
    ![Csatlakoztatott szolgáltatások menü: képek elemzése... körvonalas](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
-   Ha már bejelentkezett a Visual Studióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával.
+   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában.
 
    ![Az előfizetések legördülő listájának kiemelése Computer Vision API ablak](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
@@ -50,10 +50,10 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 
    ![A csatlakoztatott szolgáltatás részleteinek szerkesztése](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
 
-   A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
+   A tarifacsomagok részleteiért kövesse a hivatkozást.
 
-1. Válassza a Hozzáadás gombot a csatlakoztatott szolgáltatás támogatás hozzáadásához.
-   A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Computer Vision API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimeneti ablak a projektben történt események naplóját mutatja. Az alábbihoz hasonlót kell látnia:
+1. Válassza az Add (Hozzáadás) gombot a csatlakoztatott szolgáltatás támogatásának hozzáadásához.
+   A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Computer Vision API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimeneti ablak a projektben történt események naplóját mutatja. Az alábbihoz hasonló kimenet jelenik meg:
 
    ```output
    [4/26/2018 5:15:31.664 PM] Adding Computer Vision API to the project.
@@ -69,7 +69,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
  
 ## <a name="use-the-computer-vision-api-to-detect-attributes-of-an-image"></a>A Computer Vision API használata egy kép attribútumainak észleléséhez
 
-1. Adja hozzá a következő using utasításokat a Startup.cs fájlba.
+1. Adja hozzá a következő „using” utasításokat a Startup.cs fájlhoz.
  
    ```csharp
    using System.IO;
@@ -90,7 +90,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
       }
    ```
 
-1. A projekt wwwroot mappában készítsen egy képek mappát, és adjon egy képfájlt a wwwroot mappába. Példaként használhat egy képet erről a [Computer Vision API-oldalról](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kattintson a jobb gombbal az egyik rendszerképre, mentse a helyi merevlemezre, majd Megoldáskezelő kattintson a jobb gombbal a lemezképek mappára, és válassza a @no__t **hozzáadása**-1**meglévő elem elemet** a projekthez való hozzáadáshoz. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben: 
+1. A projekt wwwroot mappájában hozzon létre egy képek mappát, és adjon egy képfájlt a wwwroot mappához. Példaként használhat egy képet erről a [Computer Vision API-oldalról](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kattintson a jobb gombbal az egyik képre, mentse a helyi merevlemezre, majd Megoldáskezelő kattintson a jobb gombbal a lemezképek mappára, és válassza a > **meglévő elem** **hozzáadása** lehetőséget a projekthez való hozzáadáshoz. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben: 
   
    ![Képernyőkép a megoldás tallózó nézetéről a kiválasztott képfájlból](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
@@ -164,7 +164,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 
     A kód létrehoz egy HTTP-kérelmet az URI-val és a bináris tartalomként szereplő képpel a Computer Vision REST API felé irányuló híváshoz.
 
-1. Adja hozzá a GetImageAsByteArray és JsonPrettyPrint segédfüggvényeket.
+1. Adja hozzá a GetImageAsByteArray és a JsonPrettyPrint segítő függvényt.
 
    ```csharp
     /// <summary>
@@ -252,7 +252,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Cognitive szolgáltatást és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Cognitive Services-szolgáltatást és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
 
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben a rövid útmutatóban használt erőforráscsoport, jelölje ki.
 2. Válassza az **Erőforráscsoport törlése** elemet.

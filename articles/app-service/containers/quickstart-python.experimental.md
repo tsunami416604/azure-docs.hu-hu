@@ -124,7 +124,7 @@ A Python-mintakód App Service Linux rendszeren fut, beépített képpel.
 
 ## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
-A Cloud Shell írja be a `code application.py` értéket a Cloud Shell-szerkesztő megnyitásához.
+A Cloud Shell írja be a `code application.py`t a Cloud Shell-szerkesztő megnyitásához.
 
 ![Application.py kód](media/quickstart-python/code-applicationpy.png)
 
@@ -136,7 +136,7 @@ return "Hello Azure!"
 
 Mentse a módosításokat, és zárja be a szerkesztőt. A mentéshez a `^S`, a kilépéshez a `^Q` parancsot használja.
 
-Most újra üzembe helyezzük az alkalmazást. Helyettesítse be a `<app_name>` értéket az alkalmazásával.
+Most újra üzembe helyezzük az alkalmazást. `<app_name>` helyettesítése az alkalmazással.
 
 ```bash
 az webapp up -n <app_name>
@@ -162,13 +162,13 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python-alkalmazás a PostgreSQL @ no__t-0 használatával
+> [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Üzembe helyezés Private Container adattárból @ no__t-0
+> [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)

@@ -1,5 +1,5 @@
 ---
-title: A projekthez vezető feladatok a csoportos adatelemzési folyamat során
+title: A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 description: Egy projekt feladatainak részletes bemutatása egy csoportos adatelemzési folyamat munkacsoportján
 author: marktab
 manager: cgronlun
@@ -48,7 +48,7 @@ Ez az oktatóanyag feltételezi, hogy a csoportvezető és a [Team](team-lead-ta
 A Tárházak klónozásához és a tartalom módosításához a helyi gépen vagy Data Science Virtual Machineon (DSVM), illetve az Azure file Storage beállításával és a DSVM való csatlakoztatásával a következőkre is szüksége lesz:
 
 - Azure-előfizetés.
-- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
 - Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
@@ -57,7 +57,7 @@ A Tárházak klónozásához és a tartalom módosításához a helyi gépen vag
 
 Projekt Tárház létrehozása a csapat **MyTeam** -projektben:
 
-1. Nyissa meg a csapat projekt- **Összefoglalás** lapját a következő helyen: *https: \/ @ no__t-3 @ no__t-4server name >/\<organization név >/\<team Name >* , például **https: \//dev. Azure. com/DataScienceUnit/MyTeam**, és a bal oldali navigációs sávon válassza a **repók** lehetőséget. 
+1. Nyissa meg a csapat projekt- **Összefoglalás** lapját a *https:\//\<kiszolgálónév >/\<szervezet neve >/\<csapat neve >* , például **https:\//dev.Azure.com/DataScienceUnit/MyTeam**, és válassza a bal oldali navigációs listából a **Repos** elemet. 
    
 1. Válassza ki az adattár nevét az oldal tetején, majd válassza az **új tárház** lehetőséget a legördülő menüből.
    
@@ -83,7 +83,7 @@ A Project-tárház feltöltése a Team template-tárház tartalmával:
    
    ![Importálás kiválasztása](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https: \/ @ no__t-2 @ no__t-3server neve >/\<organization neve >/\<team name >/_git/\<team sablon adattárának neve >* . Például: **https: \//dev. Azure. com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https:\//\<kiszolgáló neve >/\<szervezet neve >/\<csapat neve >/_git/\<Team template adattár neve >* . Például: **https:\//dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Válassza az **Importálás**lehetőséget. A Team template-tárház tartalmát a rendszer importálja a projekt adattárba. 
    
@@ -95,6 +95,6 @@ Ha testre kell szabnia a projekt-tárház tartalmát, hogy az megfeleljen a proj
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
-- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
-- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
+- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
+- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
 - [Adatelemzési csapat Egyéni közreműködő feladatai](project-ic-tasks.md)

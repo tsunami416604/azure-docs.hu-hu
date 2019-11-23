@@ -23,7 +23,7 @@ ms.locfileid: "71802317"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
-A Microsoft azt javasolja, hogy szerepköralapú hozzáférés-vezérléssel (RBAC) kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus telepítési modellt használja, akkor a klasszikus előfizetés-rendszergazdai szerepkört kell használnia: Szolgáltatás-rendszergazda és társ-rendszergazda. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/resource-manager-deployment-model.md).
+A Microsoft azt javasolja, hogy szerepköralapú hozzáférés-vezérléssel (RBAC) kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
 
@@ -38,13 +38,13 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
     A társ-rendszergazdák csak az előfizetés hatókörében rendelhetők hozzá.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** .
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
 1. Kattintson a **klasszikus rendszergazdák** fülre.
 
     ![A klasszikus rendszergazdákat megnyitó képernyőkép](./media/classic-administrators/classic-administrators.png)
 
-1. Kattintson a **hozzáadás**@no__t – 1 Hozzáadás a**társ-rendszergazda** hozzáadása elemre a közös rendszergazdák hozzáadása panel megnyitásához.
+1. Kattintson a **hozzáadás** > a **társ-rendszergazda hozzáadása** elemre a közös rendszergazdák hozzáadása panel megnyitásához.
 
     Ha a társ-rendszergazda hozzáadása lehetőség le van tiltva, akkor nem rendelkezik a megfelelő engedélyekkel.
 
@@ -73,7 +73,7 @@ Vegye figyelembe, hogy az [Azure-erőforrások beépített szerepkörei](../role
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** .
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
 1. Kattintson a **klasszikus rendszergazdák** fülre.
 
@@ -136,7 +136,7 @@ Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet. A sz
 | Microsoft-fiók | Igen | Nem | Nem |
 | Azure AD-fiók | Igen | Igen | Nem |
 
-Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. A abby@contoso.com például megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com értékre, de a szolgáltatás-rendszergazda nem módosítható a john@notcontoso.com értékre, kivéve, ha a john@notcontoso.com tartalmaz jelenlétet a contoso.com könyvtárban.
+Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. A abby@contoso.com például megváltoztathatja a szolgáltatás-rendszergazdát, hogy bob@contoso.com, de nem tudja módosítani a szolgáltatás rendszergazdáját, hogy john@notcontoso.com, kivéve, ha az john@notcontoso.com jelenléte szerepel a contoso.com könyvtárban.
 
 A Microsoft-fiókokkal és az Azure AD-fiókokkal kapcsolatos további információkért lásd: [Mi az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -146,7 +146,7 @@ A fiók rendszergazdája az a felhasználó, aki először regisztrált az Azure
 
 A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
@@ -156,7 +156,7 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
     ![A fiók rendszergazdáját ábrázoló képernyőfelvétel](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A különböző Azure-beli szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)

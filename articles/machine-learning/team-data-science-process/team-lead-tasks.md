@@ -77,7 +77,7 @@ Az ebben az oktatóanyagban szereplő adattárakhoz és könyvtárakhoz megadott
 - Egy kis adattudományi csoport, amely nem rendelkezik több adatelemzési csapattal. 
 - Egy nagyobb adatelemzési csoport több adatelemző csapattal, amelyek ennek ellenére szeretnének optimalizálni a csapaton belüli együttműködést olyan tevékenységekkel, mint a csoport szintű Sprint-tervezés. 
 
-Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott adattárakat olyan nevekkel kell létrehozni, mint  *\<a csapatnév > a Template* és  *\<a csapatnév > Utilities*. Például: *TeamATemplate* és *TeamAUtilities*. 
+Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapatnak kell létrehoznia a neveket, például *\<csapatnév > sablont* és *\<csapatnév > segédprogramokat*. Például: *TeamATemplate* és *TeamAUtilities*. 
 
 A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy mely sablon és segédprogramok tárházat állítanak be a beállításhoz és a klónozáshoz. A projekt-érdeklődőknek követniük kell az [adatelemzési csapat projekt-vezető feladatait](project-lead-tasks.md) a projekt-Tárházak létrehozásához, akár külön projektek, akár egyetlen projekt keretében. 
 
@@ -85,7 +85,7 @@ A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy me
 
 Különálló projekt létrehozása a csapat számára:
 
-1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https:\//\<kiszolgáló neve >/\<szervezet neve >* , és válassza az **új projekt**lehetőséget. 
+1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját az URL *https:\//\<kiszolgáló neve >/\<szervezet neve >* , és válassza az **új projekt**lehetőséget. 
    
    ![Új projekt kiválasztása](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ Különálló projekt létrehozása a csapat számára:
    
    ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Megnyílik a Team Project **Összefoglaló** lapja, amelyen az oldal URL-címe *https:\/\</\<kiszolgálónév\<>/szervezet neve >/csapat neve >* .
+Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https:\//\<kiszolgáló neve >/\<szervezet neve >/\<csapat neve >* .
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>A MyTeam alapértelmezett tárházának átnevezése a TeamUtilities
 
@@ -140,7 +140,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
    ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ @ no__t-2 @ no__t-3server név >/\<organization neve >/_git/\<repository name >* . Például: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https:\//\<kiszolgáló neve >/\<szervezet neve >/_git/\<adattár neve >* . Például: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Válassza az **Importálás**lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
@@ -199,7 +199,7 @@ Tárak klónozása:
    
 1. Váltson a létrehozott könyvtárba.
    
-1. A git bashben futtassa a parancsot `git clone <clone URL>`, ahol \<a klónozási URL-cím > a **klón** párbeszédpanelről másolt URL-cím.
+1. A git Bashben futtassa az `git clone <clone URL>`parancsot, ahol \<klónozási URL-cím > a **klón** párbeszédpanelen másolt URL-cím.
    
    Ha például a következő parancsok egyikét használja a **TeamUtilities** -tárház klónozásához a helyi számítógép *MyTeam* könyvtárába. 
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a `git commit` *User. e-mailben.* Futtassa az alábbi két parancsot:
+> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa az alábbi két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -324,7 +324,7 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
    
 1. Győződjön meg arról, hogy az új meghajtó és a tároló sikeresen csatlakoztatva van a gépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

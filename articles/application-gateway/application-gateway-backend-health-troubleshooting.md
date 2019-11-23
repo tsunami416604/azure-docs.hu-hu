@@ -36,7 +36,7 @@ Az alábbi módszerek bármelyikével lekért állapot a következők egyike leh
 
 Ha a kiszolgáló háttér-állapotának állapota Kifogástalan, az azt jelenti, hogy Application Gateway továbbítja a kéréseket a kiszolgálónak. Ha azonban egy háttér-készlet összes kiszolgálójának háttér-állapota nem kifogástalan vagy ismeretlen, akkor problémák léphetnek fel, amikor megpróbál hozzáférni az alkalmazásokhoz. Ez a cikk az egyes megjelenített hibák tüneteit, okát és megoldásait ismerteti.
 
-<a name="backend-health-status-unhealthy"></a>Háttér állapotának állapota: Nem kifogástalan
+<a name="backend-health-status-unhealthy"></a>Háttér állapotának állapota: sérült
 -------------------------------
 
 Ha a háttér állapot állapota nem megfelelő, a portál nézet a következő képernyőképre fog hasonlítani:
@@ -81,15 +81,15 @@ Miután a háttérbeli készlet összes kiszolgálójára vonatkozóan egy nem k
 A **részletek** oszlopban megjelenő üzenet részletesebb információkat nyújt a problémáról, és ezek alapján megkezdheti a probléma elhárítását.
 
 > [!NOTE]
-> Az alapértelmezett mintavételi kérelem a \<protocol @ no__t-1://127.0.0.1: \<port @ no__t-3/. formátumban lesz elküldve. Például @no__t – 0 a http-mintavételhez a 80-as porton. Csak a 200 és 399 közötti HTTP-állapotkódok kifogástalannak tekintendők. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és egy másik állapotkódot ismer fel Kifogástalan állapotba, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
+> Az alapértelmezett mintavételi kérelmet a rendszer \<protokoll\>://127.0.0.1:\<port\>/) formátumban küldi el. Például http://127.0.0.1:80 a http-mintavételhez a 80-as porton. Csak a 200 és 399 közötti HTTP-állapotkódok kifogástalannak tekintendők. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és egy másik állapotkódot ismer fel Kifogástalan állapotba, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
 
 <a name="error-messages"></a>Hibaüzenetek
 ------------------------
 #### <a name="backend-server-timeout"></a>Háttér-kiszolgáló időtúllépése
 
-**Üzenetet** A háttér által az Application Gateway @ no__t – 0s Health mintavételre való reagáláshoz szükséges idő meghaladja a mintavételi beállítás időtúllépési küszöbértékét.
+**Üzenet:** A háttér által az Application Gateway\'s Health mintavételre való reagáláshoz szükséges idő meghaladja a mintavételi beállítás időtúllépési küszöbértékét.
 
-**Okozhat** Miután Application Gateway elküld egy HTTP (S) mintavételi kérelmet a háttér-kiszolgálónak, megvárja a háttér-kiszolgáló válaszát egy konfigurált időszakra. Ha a háttérrendszer-kiszolgáló nem válaszol a beállított időtartamon belül (az időtúllépési érték), akkor azt a rendszer nem megfelelőként jelöli meg, amíg újra nem válaszol a beállított időtúllépési időszakon belül.
+**OK:** Miután Application Gateway elküld egy HTTP (S) mintavételi kérelmet a háttér-kiszolgálónak, megvárja a háttér-kiszolgáló válaszát egy konfigurált időszakra. Ha a háttérrendszer-kiszolgáló nem válaszol a beállított időtartamon belül (az időtúllépési érték), akkor azt a rendszer nem megfelelőként jelöli meg, amíg újra nem válaszol a beállított időtúllépési időszakon belül.
 
 **Megoldás:** Győződjön meg arról, hogy a háttér-kiszolgáló vagy az alkalmazás miért nem válaszol a beállított időkorláton belül, és tekintse meg az alkalmazás függőségeit is. Például megtudhatja, hogy az adatbázis rendelkezik-e olyan problémával, amely a válasz késleltetését kiváltó lehet. Ha ismeri az alkalmazás viselkedését, és csak az időtúllépési érték után válaszol, növelje az időtúllépési értéket az egyéni mintavételi beállítások alapján. Az időtúllépési érték módosításához egyéni mintavétel szükséges. Az egyéni mintavétel konfigurálásával kapcsolatos információkért [tekintse meg a dokumentációs oldalt](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
 
@@ -105,9 +105,9 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 #### <a name="dns-resolution-error"></a>DNS-feloldási hiba
 
-**Üzenetet** A Application Gateway nem tudott mintavételt létrehozni ehhez a háttérhöz. Ez általában akkor fordul elő, ha a háttér teljes tartományneve nem lett megfelelően megadva. 
+**Üzenet:** A Application Gateway nem tudott mintavételt létrehozni ehhez a háttérhöz. Ez általában akkor fordul elő, ha a háttérrendszer teljes tartományneve nem lett megfelelően megadva. 
 
-**Okozhat** Ha a háttér-készlet IP-cím/FQDN vagy App Service típusú, Application Gateway a tartománynévrendszer (DNS) (egyéni vagy Azure alapértelmezett) által megadott teljes tartománynév IP-címére lesz feloldva, és megpróbál csatlakozni a kiszolgálóhoz a HTTP-beállításokban említett TCP-porton. Ha azonban ez az üzenet jelenik meg, azt javasolja, hogy Application Gateway nem tudta sikeresen feloldani a megadott teljes tartománynév IP-címét.
+**OK:** Ha a háttér-készlet IP-cím/FQDN vagy App Service típusú, Application Gateway a tartománynévrendszer (DNS) (egyéni vagy Azure alapértelmezett) által megadott teljes tartománynév IP-címére lesz feloldva, és megpróbál csatlakozni a kiszolgálóhoz a HTTP-beállításokban említett TCP-porton. Ha azonban ez az üzenet jelenik meg, azt javasolja, hogy Application Gateway nem tudta sikeresen feloldani a megadott teljes tartománynév IP-címét.
 
 **Megoldás:**
 
@@ -123,11 +123,11 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 #### <a name="tcp-connect-error"></a>TCP-csatlakozási hiba
 
-**Üzenetet** Application Gateway nem tudott csatlakozni a háttérhez.
+**Üzenet:** Application Gateway nem tudott csatlakozni a háttérhez.
 Győződjön meg arról, hogy a háttér válaszol a mintavételhez használt porton.
 Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-címét és portját.
 
-**Okozhat** A DNS-feloldási fázis után Application Gateway megpróbál csatlakozni a háttér-kiszolgálóhoz a HTTP-beállításokban konfigurált TCP-porton. Ha Application Gateway nem tud TCP-munkamenetet létesíteni a megadott porton, akkor a mintavétel nem megfelelőként van megjelölve az üzenettel.
+**OK:** A DNS-feloldási fázis után Application Gateway megpróbál csatlakozni a háttér-kiszolgálóhoz a HTTP-beállításokban konfigurált TCP-porton. Ha Application Gateway nem tud TCP-munkamenetet létesíteni a megadott porton, akkor a mintavétel nem megfelelőként van megjelölve az üzenettel.
 
 **Megoldás:** Ha ezt a hibaüzenetet kapja, kövesse az alábbi lépéseket:
 
@@ -155,9 +155,9 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
     ```
 1.  Ha nem talál problémát a NSG vagy a UDR kapcsolatban, ellenőrizze a háttér-kiszolgálót az alkalmazásokkal kapcsolatos problémákról, amelyek megakadályozzák, hogy az ügyfelek TCP-munkamenetet hozzanak létre a konfigurált portokon. Néhány dolog, amit érdemes ellenőriznie:
 
-    a.  Nyisson meg egy parancssort (Win + R-\> cmd), írja be a `netstat` értéket, majd kattintson az ENTER gombra.
+    a.  Nyisson meg egy parancssort (Win + R-\> cmd), írja be a `netstat`, majd kattintson az ENTER gombra.
 
-    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Példa:
+    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Például:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -168,20 +168,20 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 #### <a name="http-status-code-mismatch"></a>HTTP-állapotkód eltérése
 
-**Üzenetet** A háttérbeli @ no__t-0s HTTP-válasz állapotkód nem felelt meg a mintavételi beállításnak. Várt: {HTTPStatusCode0} érkezett: {HTTPStatusCode1}.
+**Üzenet:** A háttérbeli\'s HTTP-válasz állapotkód nem felelt meg a mintavételi beállításnak. Várt: {HTTPStatusCode0} érkezett: {HTTPStatusCode1}.
 
-**Okozhat** Miután létrejött a TCP-kapcsolat, és az SSL-kézfogás elkészült (ha engedélyezve van az SSL), Application Gateway a mintavételt HTTP GET kérelemként küldi el a háttér-kiszolgálónak. A korábban leírtaknak megfelelően az alapértelmezett mintavétel a következő lesz: \<protocol @ no__t-1://127.0.0.1: \<port @ no__t-3 399 200/ Ha a kiszolgáló más állapotkódot ad vissza, az üzenet nem megfelelőként lesz megjelölve.
+**OK:** Miután létrejött a TCP-kapcsolat, és az SSL-kézfogás elkészült (ha engedélyezve van az SSL), Application Gateway a mintavételt HTTP GET kérelemként küldi el a háttér-kiszolgálónak. A fentiekben leírtak szerint az alapértelmezett mintavétel a következő: \<Protocol\>://127.0.0.1:\<port\>/, és az a Rage 200-ben a 399-as kifogástalan állapotú válasz-állapotkódot veszi figyelembe. Ha a kiszolgáló más állapotkódot ad vissza, az üzenet nem megfelelőként lesz megjelölve.
 
 **Megoldás:** A háttér-kiszolgáló válaszának kódjától függően a következő lépéseket hajthatja végre. Néhány gyakori állapotkód itt látható:
 
 | **Hiba** | **Műveletek** |
 | --- | --- |
-| Nem megfelelő az állapot kódja: Fogadott 401 | Győződjön meg arról, hogy a háttér-kiszolgáló hitelesítést igényel. Application Gateway mintavételek nem tudnak átadni hitelesítő adatokat a hitelesítéshez ezen a ponton. Engedélyezze a \"HTTP 401 @ no__t-1 módszert a mintavételi állapotkód egyeztetése vagy a mintavétel egy olyan elérési útra, ahol a kiszolgáló nem igényel hitelesítést. | |
-| Nem megfelelő az állapot kódja: Fogadott 403 | Hozzáférés megtiltva. Győződjön meg arról, hogy az elérési úthoz való hozzáférés engedélyezett-e a háttér-kiszolgálón. | |
-| Nem megfelelő az állapot kódja: Fogadott 404 | A lap nem található. Győződjön meg arról, hogy az állomásnév elérési útja elérhető-e a háttér-kiszolgálón. Módosítsa az állomásnév vagy az elérési út paramétert egy elérhető értékre. | |
-| Nem megfelelő az állapot kódja: Fogadott 405 | A Application Gateway mintavételi kérelmei a HTTP GET metódust használják. Győződjön meg arról, hogy a kiszolgáló engedélyezi ezt a metódust. | |
-| Nem megfelelő az állapot kódja: Fogadott 500 | Belső kiszolgálóhiba. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
-| Nem megfelelő az állapot kódja: Fogadott 503 | A szolgáltatás nem érhető el. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
+| Nem egyező mintavételi állapotkód: fogadott 401 | Győződjön meg arról, hogy a háttér-kiszolgáló hitelesítést igényel. Application Gateway mintavételek nem tudnak átadni hitelesítő adatokat a hitelesítéshez ezen a ponton. Engedélyezze \"HTTP 401\" egy mintavételi állapotkódot, vagy a mintavételt olyan elérési útra, ahol a kiszolgáló nem igényel hitelesítést. | |
+| Nem egyező mintavételi állapotkód: fogadott 403 | Hozzáférés megtiltva. Győződjön meg arról, hogy az elérési úthoz való hozzáférés engedélyezett-e a háttér-kiszolgálón. | |
+| Nem egyező mintavételi állapotkód: fogadott 404 | A lap nem található. Győződjön meg arról, hogy az állomásnév elérési útja elérhető-e a háttér-kiszolgálón. Módosítsa az állomásnév vagy az elérési út paramétert egy elérhető értékre. | |
+| Nem egyező mintavételi állapotkód: fogadott 405 | A Application Gateway mintavételi kérelmei a HTTP GET metódust használják. Győződjön meg arról, hogy a kiszolgáló engedélyezi ezt a metódust. | |
+| Nem egyező mintavételi állapotkód: fogadott 500 | Belső kiszolgálóhiba. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
+| Nem egyező mintavételi állapotkód: fogadott 503 | A szolgáltatás nem érhető el. Győződjön meg arról, hogy a backend-kiszolgáló állapota és a szolgáltatások futnak-e. | |
 
 Vagy ha úgy gondolja, hogy a válasz legitim, és azt szeretné, hogy a Application Gateway a többi állapotkódot is Kifogástalan állapotba fogadja, létrehozhat egy egyéni mintavételt. Ez a megközelítés olyan helyzetekben hasznos, amikor a háttérbeli webhelynek hitelesítést kell használnia. Mivel a mintavételi kérelmek nem rendelkeznek felhasználói hitelesítő adatokkal, sikertelenek lesznek, és a háttér-kiszolgáló HTTP 401 állapotkódot ad vissza.
 
@@ -189,9 +189,9 @@ Egyéni mintavétel létrehozásához kövesse [az alábbi lépéseket](https://
 
 #### <a name="http-response-body-mismatch"></a>HTTP-válasz törzsének eltérése
 
-**Üzenetet** A háttérbeli @ no__t-0s HTTP-válasz törzse nem felelt meg a mintavételi beállításnak. A kapott válasz törzse nem tartalmaz {string}.
+**Üzenet:** A háttér\'s HTTP-válasz törzse nem felelt meg a mintavételi beállításnak. A kapott válasz törzse nem tartalmaz {string}.
 
-**Okozhat** Egyéni mintavétel létrehozásakor lehetősége van a háttér-kiszolgáló megfelelő állapotának megjelölésére a válasz törzsében szereplő karakterláncok egyeztetésével. Beállíthatja például, hogy Application Gateway fogadja el a "jogosulatlan" karakterláncot az egyeztetéshez. Ha a háttér-kiszolgáló válasza a mintavételi kérelemhez nem **engedélyezett**karakterláncot tartalmaz, akkor kifogástalanként lesz megjelölve. Ellenkező esetben ez az üzenet nem megfelelőként lesz megjelölve.
+**OK:** Egyéni mintavétel létrehozásakor lehetősége van a háttér-kiszolgáló megfelelő állapotának megjelölésére a válasz törzsében szereplő karakterláncok egyeztetésével. Beállíthatja például, hogy Application Gateway fogadja el a "jogosulatlan" karakterláncot az egyeztetéshez. Ha a háttér-kiszolgáló válasza a mintavételi kérelemhez nem **engedélyezett**karakterláncot tartalmaz, akkor kifogástalanként lesz megjelölve. Ellenkező esetben ez az üzenet nem megfelelőként lesz megjelölve.
 
 **Megoldás:** A probléma megoldásához kövesse az alábbi lépéseket:
 
@@ -205,9 +205,9 @@ További információ a [Application Gateway mintavétel egyeztetéséről](http
 
 #### <a name="backend-server-certificate-invalid-ca"></a>A háttér-kiszolgáló tanúsítványa érvénytelen CA
 
-**Üzenetet** A háttérrendszer által használt kiszolgálói tanúsítványt nem a jól ismert hitelesítésszolgáltató (CA) írta alá. Az Application Gateway a háttér-engedélyezési lista a háttér által használt kiszolgálótanúsítvány főtanúsítványának feltöltésével engedélyezhető.
+**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítványt nem a jól ismert hitelesítésszolgáltató (CA) írta alá. Az Application Gateway a háttér-engedélyezési lista a háttér által használt kiszolgálótanúsítvány főtanúsítványának feltöltésével engedélyezhető.
 
-**Okozhat** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
+**OK:** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
 Ahhoz, hogy egy SSL-tanúsítvány megbízható legyen, a háttér-kiszolgáló tanúsítványát olyan HITELESÍTÉSSZOLGÁLTATÓnak kell kiállítania, amely a Application Gateway megbízható tárolójában található. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki (például önaláírt tanúsítvány használata esetén), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát Application Gateway.
 
 **Megoldás:** Kövesse az alábbi lépéseket a megbízható főtanúsítvány Application Gateway való exportálásához és feltöltéséhez. (Ezek a lépések a Windows-ügyfelekre vonatkoznak.)
@@ -216,9 +216,9 @@ Ahhoz, hogy egy SSL-tanúsítvány megbízható legyen, a háttér-kiszolgáló 
 
 1.  Válassza a Win + R lehetőséget, vagy kattintson a jobb gombbal a **Start** gombra, majd válassza a **Futtatás**lehetőséget.
 
-1.  Írja be a `certmgr.msc` értéket, és válassza az ENTER billentyűt. A Tanúsítványkezelőt a **Start** menüben is megkeresheti.
+1.  Adja meg `certmgr.msc` és válassza az ENTER billentyűt. A Tanúsítványkezelőt a **Start** menüben is megkeresheti.
 
-1.  Keresse meg a tanúsítványt, jellemzően `\Certificates - Current User\\Personal\\Certificates\`, majd nyissa meg.
+1.  Keresse meg a tanúsítványt, általában a `\Certificates - Current User\\Personal\\Certificates\`ban, majd nyissa meg.
 
 1.  Válassza ki a főtanúsítványt, majd válassza a **Tanúsítvány megtekintése**lehetőséget.
 
@@ -238,9 +238,9 @@ További információ a megbízható főtanúsítványok kibontásáról és fel
 
 #### <a name="trusted-root-certificate-mismatch"></a>Nem megfelelő a megbízható főtanúsítvány
 
-**Üzenetet** A háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványa nem felel meg az Application Gateway számára hozzáadott megbízható főtanúsítványnak. Győződjön meg arról, hogy a megfelelő főtanúsítványt adja hozzá a háttér-engedélyezési listához
+**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványa nem felel meg az Application Gateway számára hozzáadott megbízható főtanúsítványnak. Győződjön meg arról, hogy a megfelelő főtanúsítványt adja hozzá a háttér-engedélyezési listához
 
-**Okozhat** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
+**OK:** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
 Ahhoz, hogy egy SSL-tanúsítvány megbízható legyen, a háttér-kiszolgáló tanúsítványát olyan CA-nak kell kiállítania, amely a Application Gateway megbízható tárolójában szerepel. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki (például önaláírt tanúsítványt használt), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát Application Gateway.
 
 A Application Gateway HTTP-beállításokba feltöltött tanúsítványnak meg kell egyeznie a háttér-kiszolgáló tanúsítványának főtanúsítványával.
@@ -253,7 +253,7 @@ További információ a megbízható főtanúsítványok kibontásáról és fel
 > [!NOTE]
 > Ez a hiba akkor is megjelenhet, ha a háttér-kiszolgáló nem cseréli ki a tanúsítvány teljes láncát, beleértve a > köztes (ha alkalmazható), a TLS-kézfogás során > levélben szereplő gyökeret. Annak ellenőrzéséhez, hogy az OpenSSL-parancsokat bármely ügyfélről felhasználhatja, és a Application Gateway mintavétel konfigurált beállításaival csatlakozhat a háttér-kiszolgálóhoz.
 
-Példa:
+Például:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -278,9 +278,9 @@ Ha a kimenet nem jeleníti meg a visszaadott tanúsítvány teljes láncát, a t
 
 #### <a name="backend-certificate-invalid-common-name-cn"></a>A háttér-tanúsítvány érvénytelen köznapi neve (CN)
 
-**Üzenetet** A háttérbeli tanúsítvány köznapi neve (CN) nem egyezik meg a mintavétel állomásneve.
+**Üzenet:** A háttérbeli tanúsítvány köznapi neve (CN) nem egyezik meg a mintavétel állomásneve.
 
-**Okozhat** Application Gateway ellenőrzi, hogy a háttérbeli HTTP-beállításokban megadott állomásnév megegyezik-e a háttér-kiszolgáló SSL-tanúsítványa által megjelenített CN-névvel. Ez a Standard_v2 és a WAF_v2 SKU viselkedése. A standard és a WAF SKU Kiszolgálónév jelzése (SNI) a háttérbeli készlet címe teljes tartományneveként van beállítva.
+**OK:** Application Gateway ellenőrzi, hogy a háttérbeli HTTP-beállításokban megadott állomásnév megegyezik-e a háttér-kiszolgáló SSL-tanúsítványa által megjelenített CN-névvel. Ez Standard_v2 és WAF_v2 SKU viselkedése. A standard és a WAF SKU Kiszolgálónév jelzése (SNI) a háttérbeli készlet címe teljes tartományneveként van beállítva.
 
 Ha a v2 SKU-ban alapértelmezett mintavétel van (az egyéni mintavétel nincs konfigurálva és társítva), a SNI a HTTP-beállításokban említett állomásnév alapján lesz beállítva. Ha a HTTP-beállításokban az "állomásnév kiválasztása a háttérbeli címről" szó szerepel, a háttér-címkészlet érvényes teljes tartománynevet tartalmaz, ez a beállítás lesz alkalmazva.
 
@@ -302,7 +302,7 @@ Windows esetén:
 
 1.  Adja meg a **certmgr. msc parancsot** , majd kattintson az ENTER gombra. A Tanúsítványkezelőt a **Start** menüben is megkeresheti.
 
-1.  Keresse meg a tanúsítványt (általában `\Certificates - Current User\\Personal\\Certificates`), majd nyissa meg a tanúsítványt.
+1.  Keresse meg a tanúsítványt (általában `\Certificates - Current User\\Personal\\Certificates`), és nyissa meg a tanúsítványt.
 
 1.  A **részletek** lapon keresse meg a tanúsítvány **tárgyát**.
 
@@ -319,9 +319,9 @@ Linux rendszerhez OpenSSL használatával:
 
 #### <a name="backend-certificate-is-invalid"></a>A háttér-tanúsítvány érvénytelen
 
-**Üzenetet** A háttér-tanúsítvány érvénytelen. Az aktuális dátum nem @no__t a @ no__t-1 és a (z) \"Valid és a (z) @ no__t-3 dátumtartomány között a tanúsítványon.
+**Üzenet:** A háttér-tanúsítvány érvénytelen. Az aktuális dátum nem a \"érvényes\" és \"érvényes a tanúsítvány\" dátumtartományt.
 
-**Okozhat** Minden tanúsítványhoz tartozik egy érvényességi tartomány, és a HTTPS-kapcsolat nem lesz biztonságos, kivéve, ha a kiszolgáló SSL-tanúsítványa érvényes. Az aktuális adatoknak **érvényes** és **érvényes** tartományon belül kell lenniük. Ha nem, akkor a tanúsítvány érvénytelennek minősül, és egy biztonsági problémát hoz létre, amelyben Application Gateway megjelöli a háttér-kiszolgálót sérültként.
+**OK:** Minden tanúsítványhoz tartozik egy érvényességi tartomány, és a HTTPS-kapcsolat nem lesz biztonságos, kivéve, ha a kiszolgáló SSL-tanúsítványa érvényes. Az aktuális adatoknak **érvényes** és **érvényes** tartományon belül kell lenniük. Ha nem, akkor a tanúsítvány érvénytelennek minősül, és egy biztonsági problémát hoz létre, amelyben Application Gateway megjelöli a háttér-kiszolgálót sérültként.
 
 **Megoldás:** Ha az SSL-tanúsítvány lejárt, újítsa meg a tanúsítványt a szállítóval, és frissítse a kiszolgáló beállításait az új tanúsítvánnyal. Ha ez egy önaláírt tanúsítvány, érvényes tanúsítványt kell előállítania, és fel kell töltenie a főtanúsítványt a Application Gateway HTTP-beállításokba. Ehhez kövesse az alábbi lépéseket:
 
@@ -333,9 +333,9 @@ Linux rendszerhez OpenSSL használatával:
 
 #### <a name="certificate-verification-failed"></a>A tanúsítvány ellenőrzése nem sikerült
 
-**Üzenetet** Nem lehetett ellenőrizni a háttér-tanúsítvány érvényességét. Az ok megállapításához tekintse meg az SSL-diagnosztika megnyitása a következő hibakóddal társított üzenethez: {errorCode}
+**Üzenet:** Nem lehetett ellenőrizni a háttér-tanúsítvány érvényességét. Az ok megállapításához tekintse meg az SSL-diagnosztika megnyitása a következő hibakóddal társított üzenethez: {errorCode}
 
-**Okozhat** Ez a hiba akkor fordul elő, ha Application Gateway nem tudja ellenőrizni a tanúsítvány érvényességét.
+**OK:** Ez a hiba akkor fordul elő, ha Application Gateway nem tudja ellenőrizni a tanúsítvány érvényességét.
 
 **Megoldás:** A probléma megoldásához ellenőrizze, hogy a kiszolgálón a tanúsítvány megfelelően lett-e létrehozva. Például az [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) használatával ellenőrizheti a tanúsítványt és annak tulajdonságait, majd megpróbálhatja újból feltölteni a tanúsítványt a Application Gateway http-beállításokba.
 
@@ -391,7 +391,7 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan**-e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
 
-<a name="next-steps"></a>További lépések
+<a name="next-steps"></a>Következő lépések
 ----------
 
 További információ a [Application Gateway diagnosztika és naplózás](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).

@@ -90,6 +90,6 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
 2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices. AdomdClient** > **Tulajdonságok** > **részletek**elemre.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Kapcsolódjon az Excel](analysis-services-connect-excel.md)    
 [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)

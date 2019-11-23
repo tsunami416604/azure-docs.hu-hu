@@ -27,7 +27,7 @@ ms.locfileid: "72388756"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag az iOS rendszerhez készült Azure App Service Mobile Apps szolgáltatásával folytatott offline szinkronizálást ismerteti. A kapcsolat nélküli szinkronizálással a végfelhasználók akkor is kezelhetik a mobil alkalmazásokat, ha nem rendelkeznek hálózati kapcsolattal. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli háttérrel.
@@ -43,7 +43,7 @@ A Mobile Apps offline adatszinkronizálási funkciója segítségével a végfel
 
 A **QSTodoService. m** (Objective-C) vagy a **ToDoTableViewController. Swift** (Swift) esetében figyelje meg, hogy a **syncTable** tag típusa **MSSyncTable**. Az offline szinkronizálás a **MSTable**helyett ezt a szinkronizálási tábla felületet használja. Egy szinkronizálási tábla használatakor az összes művelet a helyi tárolóra kerül, és a rendszer csak a távoli háttérrel szinkronizálja az explicit leküldéses és lekéréses műveletekkel.
 
- Egy szinkronizálási táblára mutató hivatkozáshoz használja a **syncTableWithName** metódust `MSClient` értékre. Az offline szinkronizálási funkciók eltávolításához használja helyette a **tableWithName** .
+ Egy szinkronizálási táblára mutató hivatkozás beszerzéséhez használja a **syncTableWithName** metódust `MSClient`on. Az offline szinkronizálási funkciók eltávolításához használja helyette a **tableWithName** .
 
 A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót. A megfelelő kód a következő:
 
@@ -61,11 +61,11 @@ A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót.
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   Ez a metódus helyi tárolót hoz létre a `MSCoreDataStore` illesztőfelület használatával, amelyet a Mobile Apps SDK biztosít. Másik lehetőségként a `MSSyncContextDataSource` protokoll megvalósításával más helyi tárolót is megadhat. A **MSSyncContext** első paramétere is az ütköző kezelő megadására szolgál. Mivel a `nil` értéket adta meg, a rendszer lekéri az alapértelmezett ütköző kezelőt, amely bármilyen ütközés esetén sikertelen lesz.
+   Ez a metódus helyi tárolót hoz létre a `MSCoreDataStore` felületen, amelyet a Mobile Apps SDK biztosít. Másik lehetőségként a `MSSyncContextDataSource` protokoll megvalósításával más helyi tárolót is megadhat. A **MSSyncContext** első paramétere is az ütköző kezelő megadására szolgál. Mivel átadta `nil`t, az alapértelmezett ütköző kezelőt fogjuk lekérni, amely bármilyen ütközés esetén meghiúsul.
 
 Most végezzük el a tényleges szinkronizálási műveletet, és az adatok lekérése a távoli háttérből:
 
-* **Objective-C**. @no__t – 0 – először leküldi az új módosításokat, majd meghívja a **pullData** -t, hogy lekérje az adatok távoli háttérből való lekérését. A **pullData** metódus pedig új, a lekérdezésnek megfelelő adatértékeket kap:
+* **Objective-C**. `syncData` először leküldi az új módosításokat, majd meghívja a **pullData** -t az adatok távoli háttérből való lekéréséhez. A **pullData** metódus pedig új, a lekérdezésnek megfelelő adatértékeket kap:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -128,13 +128,13 @@ Most végezzük el a tényleges szinkronizálási műveletet, és az adatok lek�
    }
    ```
 
-A Objective-C verzióban `syncData` esetében először a **pushWithCompletion** hívja meg a szinkronizálási kontextusban. Ez a módszer `MSSyncContext` (és nem maga a szinkronizálási tábla) tagja, mert az összes táblában leküldi a módosításokat. A kiszolgálónak csak olyan rekordokat kell elküldeni, amelyek valamilyen módon helyileg (CUD-műveleteken keresztül) vannak módosítva. Ezután meghívja a segítő **pullData** , amely a **MSSyncTable. pullWithQuery** hívásával kéri le a távoli adatlekérdezéseket, és a helyi adatbázisban tárolja azt.
+A Objective-C verzióban `syncData`a **pushWithCompletion** a szinkronizálási kontextusban hívja meg. Ez a metódus `MSSyncContext` (és nem maga a szinkronizálási tábla) tagja, mert az összes táblában leküldi a módosításokat. A kiszolgálónak csak olyan rekordokat kell elküldeni, amelyek valamilyen módon helyileg (CUD-műveleteken keresztül) vannak módosítva. Ezután meghívja a segítő **pullData** , amely a **MSSyncTable. pullWithQuery** hívásával kéri le a távoli adatlekérdezéseket, és a helyi adatbázisban tárolja azt.
 
 A Swift verzióban, mivel a leküldéses művelet nem volt feltétlenül szükséges, a **pushWithCompletion**nem hívható meg. Ha a leküldéses műveletet végző tábla szinkronizálási kontextusában függőben lévő módosítások vannak, a lekéréses művelet mindig leküldéses műveletet hajt végre. Ha azonban egynél több szinkronizálási táblázattal rendelkezik, a lehető legjobb megoldás a leküldéses utasítás meghívása, hogy minden a kapcsolódó táblák között konzisztens legyen.
 
 A Objective-C és a Swift verzióban egyaránt használhatja a **pullWithQuery** metódust a lekérdezni kívánt rekordok szűrésére szolgáló lekérdezés megadásához. Ebben a példában a lekérdezés a távoli `TodoItem` tábla összes rekordját lekérdezi.
 
-A **pullWithQuery** második paramétere a *növekményes szinkronizáláshoz*használt lekérdezési azonosító. A növekményes szinkronizálás csak azokat a rekordokat kérdezi le, amelyek a legutóbbi szinkronizálás óta módosultak, a rekord `UpdatedAt` időbélyegző használatával (a helyi tárolóban `updatedAt` néven). A lekérdezés AZONOSÍTÓjának olyan leíró sztringnek kell lennie, amely egyedi az alkalmazás minden logikai lekérdezéséhez. Ha ki szeretné kapcsolni a növekményes szinkronizálást, adja át a `nil` értéket a lekérdezési AZONOSÍTÓként. Ez a megközelítés potenciálisan nem hatékony lehet, mert az összes rekordot lekéri minden lekérési művelethez.
+A **pullWithQuery** második paramétere a *növekményes szinkronizáláshoz*használt lekérdezési azonosító. A növekményes szinkronizálás csak a legutóbbi szinkronizálás óta módosított rekordokat kérdezi le a rekord `UpdatedAt` időbélyegző használatával (a helyi tárolóban `updatedAt` néven). A lekérdezés AZONOSÍTÓjának olyan leíró sztringnek kell lennie, amely egyedi az alkalmazás minden logikai lekérdezéséhez. Ha ki szeretné kapcsolni a növekményes szinkronizálást, adja át `nil`ként a lekérdezés AZONOSÍTÓját. Ez a megközelítés potenciálisan nem hatékony lehet, mert az összes rekordot lekéri minden lekérési művelethez.
 
 A Objective-C alkalmazás szinkronizálja az adatok módosításakor vagy hozzáadásakor, amikor egy felhasználó végrehajtja a frissítési kézmozdulatot, és elindul.
 
@@ -146,9 +146,9 @@ Mivel az alkalmazás szinkronizálja az adatmódosítást (Objective-C), vagy am
 Ha az alapadatok offline tárolóját használja, meg kell határoznia az adatmodellben meghatározott táblákat és mezőket. A mintául szolgáló alkalmazás már tartalmaz egy megfelelő formátumú adatmodellt. Ebben a szakaszban bemutatjuk, hogyan használják a táblázatokat.
 
 Nyissa meg a **QSDataModel. xcdatamodeld**. Négy tábla van definiálva – három, amelyet az SDK használ, és amelyek a tennivalók számára is használatosak:
-  * MS_TableOperations: a-kiszolgálóval szinkronizálni kívánt elemek nyomon követése.
+  * MS_TableOperations: a-kiszolgálóval szinkronizálandó elemek nyomon követése.
   * MS_TableOperationErrors: nyomon követi az offline szinkronizálás során felmerülő hibákat.
-  * MS_TableConfig: az összes lekéréses művelet utolsó szinkronizálási műveletének utolsó frissítési idejét követi nyomon.
+  * MS_TableConfig: nyomon követi az összes lekéréses művelet utolsó szinkronizálási műveletének utolsó frissítésének időpontját.
   * TodoItem: a tennivaló elemeket tárolja. A rendszeroszlopok **createdAt**, **updatedAt**és **verziószáma** opcionális rendszertulajdonság.
 
 > [!NOTE]
@@ -164,48 +164,48 @@ Ha az offline szinkronizálás funkciót használja, adja meg a három rendszert
 
 ![MS_TableOperations táblázat attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
-| id | Egész szám 64 |
+| id | Integer 64 |
 | elemazonosító | Sztring |
-| properties | Bináris adatértékek |
-| Tábla | Sztring |
-| tableKind | 16. egész szám |
+| properties | Binary Data |
+| table | Sztring |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
 
  ![MS_TableOperationErrors táblázat attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
 | id |Sztring |
-| operationId |Egész szám 64 |
-| properties |Bináris adatértékek |
-| tableKind |16. egész szám |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
 | id |Sztring |
 | kulcs |Sztring |
-| keyType |Egész szám 64 |
-| Tábla |Sztring |
+| keyType |Integer 64 |
+| table |Sztring |
 | érték |Sztring |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Type (Típus) | Megjegyzés |
+| Attribútum | Típus | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, megjelölve kötelező |Elsődleges kulcs a távoli tárolóban |
 | teljes | Logikai | Teendő mező |
 | szöveg |Sztring |Teendő mező |
-| CreatedAt | Dátum | választható A **createdAt** System tulajdonságának leképezése |
+| createdAt | Dátum | választható A **createdAt** System tulajdonságának leképezése |
 | updatedAt | Dátum | választható A **updatedAt** System tulajdonságának leképezése |
 | version | Sztring | választható Ütközések észlelésére használatos, leképezve a verzióra |
 
@@ -214,7 +214,7 @@ Ebben a szakaszban úgy módosítja az alkalmazást, hogy az ne legyen szinkroni
 
 **Objective-C**:
 
-1. A **QSTodoListViewController. m**-ben módosítsa a **viewDidLoad** metódust, hogy eltávolítsa a metódus végén található `[self refresh]`-es hívást. A rendszer most nem szinkronizálja az adatkiszolgálót az alkalmazás indításakor. Ehelyett szinkronizálva van a helyi tároló tartalmával.
+1. A **QSTodoListViewController. m**-ben módosítsa a **viewDidLoad** metódust a metódus végén lévő `[self refresh]` hívásának eltávolításához. A rendszer most nem szinkronizálja az adatkiszolgálót az alkalmazás indításakor. Ehelyett szinkronizálva van a helyi tároló tartalmával.
 2. A **QSTodoService. m**-ben módosítsa `addItem` definícióját úgy, hogy az az elem beszúrása után ne legyen szinkronban. Távolítsa el a `self syncData` blokkot, és cserélje le a következőre:
 
    ```objc
@@ -222,7 +222,7 @@ Ebben a szakaszban úgy módosítja az alkalmazást, hogy az ne legyen szinkroni
        dispatch_async(dispatch_get_main_queue(), completion);
    }
    ```
-3. Módosítsa `completeItem` definícióját, ahogy azt korábban említettük. Távolítsa el a `self syncData` blokkot, és cserélje le a következőre:
+3. Módosítsa `completeItem` definícióját a korábban említettek szerint. Távolítsa el a `self syncData` blokkját, és cserélje le a következőre:
    ```objc
    if (completion != nil) {
        dispatch_async(dispatch_get_main_queue(), completion);
@@ -231,7 +231,7 @@ Ebben a szakaszban úgy módosítja az alkalmazást, hogy az ne legyen szinkroni
 
 **Swift**:
 
-@No__t – 0, a **ToDoTableViewController. Swift**esetében tegye megjegyzésbe az itt látható két sort, hogy leállítsa a szinkronizálást az alkalmazás indításakor. Az írás időpontjában a Swift Todo alkalmazás nem frissíti a szolgáltatást, amikor valaki hozzáadja vagy befejezi az adott elemeket. A szolgáltatás csak az alkalmazás indításakor frissül.
+`viewDidLoad`, a **ToDoTableViewController. Swift**-ben, az itt látható két sor megjegyzésével megszüntetheti a szinkronizálást az alkalmazás indításakor. Az írás időpontjában a Swift Todo alkalmazás nem frissíti a szolgáltatást, amikor valaki hozzáadja vagy befejezi az adott elemeket. A szolgáltatás csak az alkalmazás indításakor frissül.
 
    ```swift
   self.refreshControl?.beginRefreshing()
@@ -266,8 +266,8 @@ Megjelenik egy folyamatjelző.
 
 7. Tekintse meg ismét a **TodoItem** -adatbázisokat. Ekkor meg kell jelennie az új és a módosított teendő elemek megjelenítésének.
 
-## <a name="summary"></a>Összefoglalás
-Az offline szinkronizálási funkció támogatásához a `MSSyncTable` felületet használtuk, és a `MSClient.syncContext` inicializálása helyi tárolóval. Ebben az esetben a helyi tároló egy alapszintű adatalapú adatbázis volt.
+## <a name="summary"></a>Összegzés
+Az offline szinkronizálási funkció támogatásához a `MSSyncTable` felületet használtuk, és a `MSClient.syncContext` helyi tárolóval inicializálva. Ebben az esetben a helyi tároló egy alapszintű adatalapú adatbázis volt.
 
 Ha alapszintű adattárat használ, több táblát kell megadnia a [megfelelő rendszer-tulajdonságokkal](#review-core-data).
 
@@ -277,7 +277,7 @@ Amikor szinkronizálta a helyi tárolót a-kiszolgálóval, a **MSSyncTable. pul
 
 ## <a name="additional-resources"></a>További források
 * [Offline adatszinkronizálás a Mobile Appsban]
-* [Cloud Cover: offline szinkronizálás az Azure-ban Mobile Services] @no__t – a 1a-videó a Mobile Services, de Mobile apps offline szinkronizálás hasonló módon működik. \)
+* [Cloud Cover: offline szinkronizálás az Azure-ban Mobile Services] \(a videó körülbelül Mobile Services, de Mobile apps offline szinkronizálás hasonló módon működik.\)
 
 <!-- URLs. -->
 

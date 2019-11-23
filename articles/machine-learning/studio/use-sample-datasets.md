@@ -358,28 +358,28 @@ Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a 
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 Az adatkészlet ügyféladatokat tartalmaz, és jelzi a közvetlen levelezési kampányra adott válaszokat. Minden sor az ügyfelet jelöli. Az adatkészlet kilenc funkciót tartalmaz a felhasználói demográfiai adatokkal és a múltbeli viselkedéssel kapcsolatban, valamint három címke oszlopot (látogatás, átalakítás és költés).  A Visit egy bináris oszlop, amely azt jelzi, hogy az ügyfél a marketing kampány után látogatta meg. Az átalakítás azt jelzi, hogy egy ügyfél vásárolt valamit. A költés a felhasznált mennyiség.  Az adathalmazt a Kevin Hillstrom tette elérhetővé a MineThatData E-Mail elemzés és az adatbányászati kihívás számára.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 A RCV1-v2 Reuters Hírek adatkészletében található tesztelési példák funkciói. Az adatkészlet 781K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 A betanítási példák funkciói a RCV1-v2 Reuters Hírek adatkészletében. Az adatkészlet 23K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
 Adatkészlet a KDD Cup 1999 Knowledge Discovery és az adatbányászati eszközök versenyéről (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>).
 <p></p>
@@ -388,14 +388,14 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témák. qrels. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletében. Egy újságcikk több témakörhöz is hozzárendelhető. Az egyes sorok formátuma a következő: "&lt;témakör neve&gt; &lt;dokumentum azonosítója&gt; 1". Az adatkészlet 2,6 M témakör-hozzárendeléseket tartalmaz. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
 Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlet (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, ka (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>fájlon.
 <p></p>
@@ -405,7 +405,7 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 
 </table>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Példa a kísérletek Kickstart-re](sample-experiments.md)

@@ -36,7 +36,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. A menüsávban navigáljon  > **kiterjesztések** **megtekintéséhez**.
+2. A menüsávban navigáljon > - **bővítmények** **megtekintéséhez** .
 
 3. A keresőmezőbe írja be a **Spark & kaptár**kifejezést.
 
@@ -50,7 +50,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 Az alábbi lépéseket követve nyisson meg egy munkahelyi mappát, és hozzon létre egy fájlt a Visual Studio Code-ban:
 
-1. A menüsávban navigáljon a **fájl** > **mappa megnyitása..** .  > **C:\HD\HDexample**, majd kattintson a **mappa kiválasztása** gombra. A mappa a bal oldali **Explorer** nézetben jelenik meg.
+1. A menüsávban navigáljon a **fájl** > **mappa megnyitása...**  > **C:\HD\HDexample**, majd kattintson a **mappa kiválasztása** gombra. A mappa a bal oldali **Explorer** nézetben jelenik meg.
 
 2. A **Explorer** nézetben válassza ki a **HDexample** mappát, majd válassza az **új fájl** ikont a munkahelyi mappa mellett:
 
@@ -62,7 +62,7 @@ Az alábbi lépéseket követve nyisson meg egy munkahelyi mappát, és hozzon l
 
 A nemzeti Felhőbeli felhasználók számára az alábbi lépéseket követve állítsa be először az Azure-környezetet, majd az **Azure: bejelentkezés** parancs használatával jelentkezzen be az Azure-ba:
 
-1. Navigáljon a **fájl** > **Beállítások @no__t-** 3**Beállítások**elemre.
+1. Navigáljon a **fájl** > **Beállítások** > **Beállítások**elemre.
 2. Keressen rá a következő sztringre: **Azure: felhő**.
 3. Válassza ki a nemzeti felhőt a listából:
 
@@ -72,7 +72,7 @@ A nemzeti Felhőbeli felhasználók számára az alábbi lépéseket követve á
 
 Mielőtt parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-ból, csatlakoznia kell az Azure-fiókjához, vagy hozzá kell kötnie egy fürtöt (az Apache Ambari username és Password hitelesítő adatokkal vagy egy tartományhoz csatlakoztatott fiókkal). Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. A menüsávban navigáljon  > **parancs-paletta** **megjelenítéséhez**..., majd írja be az **Azure: bejelentkezés**elemet:
+1. A menüsávban navigáljon > a **parancs palettájának** **megjelenítéséhez** ..., majd írja be az **Azure: bejelentkezés**:
 
     ![A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -82,9 +82,9 @@ Mielőtt parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-ból, 
 
 ### <a name="link-azure-hdinsight"></a>Hivatkozás: Azure HDInsight
 
-Egy [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználónév használatával összekapcsolhat egy normál fürtöt, vagy egy tartományi felhasználónévvel (például: `user1@contoso.com`) összekapcsolhatja a vállalati biztonsági csomagok biztonságos Hadoop-fürtjét is.
+Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználónév használatával összekapcsolhatja a normál fürtöt, vagy egy tartományi felhasználónévvel (például `user1@contoso.com`) összekapcsolhatja a vállalati biztonsági csomag biztonságos Hadoop-fürtjét is.
 
-1. A menüsávban navigáljon a  >  parancs-**paletta** **megtekintéséhez**..., majd írja be a **Spark/kaptár: fürt csatolása**lehetőséget.
+1. A menüsávban navigáljon > a **parancs palettájának** **megtekintéséhez** ..., majd írja be a **Spark/kaptár: fürt csatolása**lehetőséget.
 
    ![A Command paletta link cluster parancsa](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -107,21 +107,21 @@ Egy [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználón�
 
 ### <a name="link-generic-livy-endpoint"></a>Hivatkozás: általános Livy végpont
 
-1. A menüsávban navigáljon a  >  parancs-**paletta** **megtekintéséhez**..., majd írja be a **Spark/kaptár: fürt csatolása**lehetőséget.
+1. A menüsávban navigáljon > a **parancs palettájának** **megtekintéséhez** ..., majd írja be a **Spark/kaptár: fürt csatolása**lehetőséget.
 
 2. Válassza a csatolt fürt típusa **általános Livy végpont**elemet.
 
-3. Adja meg az általános Livy-végpontot. Például: http @ no__t-0//10.172.41.42:18080.
+3. Adja meg az általános Livy-végpontot. Például: http\://10.172.41.42:18080.
 
 4. Válassza az **Alap** vagy a **none**engedélyezési típust.  Ha az **alapszintű**lehetőséget választja:  
-    @no__t – 0a. Adja meg a Ambari felhasználónevét; az alapértelmezett érték a **rendszergazda**.  
-    @no__t – 0b. Adja meg a Ambari jelszavát.
+    &emsp;a. Adja meg a Ambari felhasználónevét; az alapértelmezett érték a **rendszergazda**.  
+    &emsp;b. Adja meg a Ambari jelszavát.
 
 5. Tekintse át az ellenőrzés **kimeneti** nézetét.
 
 ## <a name="list-clusters"></a>Fürtök listázása
 
-1. A menüsávban navigáljon a  >  parancs-**paletta** **megjelenítéséhez**..., majd írja be a **Spark/kaptár: cluster listázása**elemet.
+1. A menüsávban navigáljon > a **parancs paletta...** elemre, és írja **be a** **Spark/Kas: cluster listázása**elemet.
 
 2. Válassza ki a kívánt előfizetést.
 
@@ -284,19 +284,19 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a. vscode mappa automa
 
     | név | leírás | type |
     | :- | :- | :- |
-    | Fájl | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
+    | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
     | proxyUser | A felhasználó megszemélyesítése a feladatok futtatásakor | Sztring |
     | className | Java/Spark fő osztály alkalmazása | Sztring |
     | args | Az alkalmazás parancssori argumentumai | Karakterláncok listája |
-    | üvegek | A munkamenetben használandó tégelyek | Karakterláncok listája | 
+    | jars | A munkamenetben használandó tégelyek | Karakterláncok listája | 
     | pyFiles | A munkamenetben használni kívánt Python-fájlok | Karakterláncok listája |
-    | fájlokat | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
+    | files | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Sztring |
-    | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
+    | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | Int |
     | executorMemory | A felhasználható memória mennyisége/végrehajtó folyamat | Sztring |
-    | executorCores | Az egyes végrehajtók számára használandó magok száma | int |
-    | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | int |
-    | Archívum | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
+    | executorCores | Az egyes végrehajtók számára használandó magok száma | Int |
+    | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | Int |
+    | archives | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
     | üzenetsor | A beküldeni kívánt FONÁL-várólista neve| Sztring |
     | név | A munkamenet neve | Sztring |
     | conf | Spark-konfiguráció tulajdonságai | Kulcs leképezése = val |
@@ -305,10 +305,10 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a. vscode mappa automa
 
     | név | leírás | type |
     | :- | :- | :- |
-    | id | Munkamenet-azonosító | int |
+    | id | Munkamenet-azonosító | Int |
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
-    | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
-    | napló | Naplózási sorok | Karakterláncok listája |
+    | appInfo | Részletes alkalmazásadatok | Kulcs leképezése = val |
+    | log | Naplózási sorok | Karakterláncok listája |
     | state |Köteg állapota | Sztring |
 
     > [!NOTE]
@@ -385,11 +385,11 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
 
   > [!NOTE]
   >
-  >A következő paranccsal ellenőrizhető a csatolt fürt: `Spark / Hive: List Cluster`.
+  >A csatolt fürt a `Spark / Hive: List Cluster` használatával ellenőrizhető:
   >
   >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 
@@ -407,7 +407,7 @@ Ha Data Lake Storage Gen2 használatával küld el egy feladatot egy HDInsight-f
 
 ## <a name="unlink-cluster"></a>Fürt leválasztása
 
-1. A menüsávban nyissa **meg az @no__t-** 1 parancs-**palettát**, majd írja be a **Spark/kaptár: fürt leválasztása**elemet.  
+1. A menüsávban nyissa **meg > a** parancs- **palettát**, majd írja be a **Spark/kaptár: fürt leválasztása**elemet.  
 
 2. Válassza ki a leválasztani kívánt fürtöt.  
 
@@ -415,7 +415,7 @@ Ha Data Lake Storage Gen2 használatával küld el egy feladatot egy HDInsight-f
 
 ## <a name="sign-out"></a>Kijelentkezés  
 
-A menüsávban lépjen **a @no__t-** 1**parancsra**, majd írja be az **Azure: kijelentkezés**lehetőséget.
+A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

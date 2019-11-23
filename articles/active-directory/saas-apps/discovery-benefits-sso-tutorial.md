@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció**@no__t – 1section az alkalmazás előre konfigurálva van a **identitásszolgáltató** initiated módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **save** button gombra kattintva.
+1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **mentés** gombra kattintva.
 
 1. A felderítési előnyök SSO-alkalmazása egy adott formátumban elvárja az SAML-állításokat, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
@@ -99,9 +99,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. Az **átalakítás** szövegmezőbe írja be a sorban látható **ToUppercase ()** .
 
-    d. Az **1. paraméter** szövegmezőbe írja be a következőt: `<Name Identifier value>`.
+    d. Az **1. paraméter** szövegmezőbe írja be a (z) `<Name Identifier value>`paramétert.
 
-    e. Kattintson a **Hozzáadás** parancsra.
+    e. Kattintson az **Hozzáadás** parancsra.
 
     > [!NOTE]
     > A felderítési előnyök egyszeri bejelentkezéséhez egy rögzített karakterlánc-értéket kell átadni az **egyedi felhasználói azonosító (Name ID)** mezőben az integráció működésének megkezdéséhez. Az Azure AD jelenleg nem támogatja ezt a funkciót, így például a **ToUpper** vagy a NameID **ToLower** -transzformációk segítségével rögzített karakterlánc-értékeket állíthat be a képernyőképen látható módon.
@@ -112,25 +112,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
 1. A **felderítési előnyök beállítása SSO** szakaszban a követelmények alapján másolja ki a megfelelő URL-címeket.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a felderítési előnyökhöz az egyszeri bejelentkezéshez.
 
@@ -138,7 +138,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **felderítési előnyök egyszeri bejelentkezés**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -150,15 +150,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-discovery-benefits-sso-sso"></a>A felderítési előnyök konfigurálása SSO SSO
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **felderítési előnyök egyszeri bejelentkezéses** oldalán, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [felderítési előnyökre az egyszeri bejelentkezést támogató csoport](mailto:Jsimpson@DiscoveryBenefits.com) Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha be szeretné állítani az egyszeri bejelentkezést a **felderítési előnyök egyszeri bejelentkezéses** oldalán, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [felderítési előnyökre az egyszeri bejelentkezést támogató csoport](mailto:Jsimpson@DiscoveryBenefits.com) Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-discovery-benefits-sso-test-user"></a>Felderítési előnyök létrehozása SSO-teszt felhasználó
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a felderítési előnyök SSO-ban. A felderítési előnyökkel rendelkező [egyszeri bejelentkezéses támogatási csapattal](mailto:Jsimpson@DiscoveryBenefits.com) felveheti a felhasználókat a felderítési előnyök SSO-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a felderítési előnyök SSO-ban. A felderítési előnyökkel rendelkező [egyszeri bejelentkezéses támogatási csapattal](mailto:Jsimpson@DiscoveryBenefits.com) felveheti a felhasználókat a felderítési előnyök SSO-platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a felderítési előnyök SSO csempére kattint, automatikusan be kell jelentkeznie arra a felderítési Előnyökbe, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

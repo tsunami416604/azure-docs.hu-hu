@@ -27,10 +27,10 @@ Az alábbi táblázat a zökkenőmentes felhasználói élményhez ajánlott min
 
 |Számítási feladat        |Mintaalkalmazások                                                                                           |Ajánlott sávszélesség|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Adott feladattal foglalkozó dolgozó     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1.5 @ no__t – 0Mbps        |
-|Office Worker   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3 @ no__t – 0Mbps          |
-|Knowledge Worker|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5 @ no__t – 0Mbps          |
-|Munkavégző    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/CAM, illusztráció/közzététel|15 @ no__t – 0Mbps         |
+|Adott feladattal foglalkozó dolgozó     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5&nbsp;Mbps        |
+|Office Worker   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3&nbsp;Mbps          |
+|Knowledge Worker|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5&nbsp;Mbps          |
+|Munkavégző    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/CAM, illusztráció/közzététel|15&nbsp;Mbps         |
 
 >[!NOTE]
 >Ezek a javaslatok attól függetlenül érvényesek, hogy hány felhasználó van a munkamenetben.

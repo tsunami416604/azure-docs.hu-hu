@@ -38,7 +38,7 @@ Ez a forgatókönyv a következőket teszi:
 * Hozzon létre két alhálózatot, amelyek neve **appgwsubnet** és **appsubnet**.
 * Hozzon létre egy kisméretű Application Gateway-t, amely támogatja az SSL protokoll verzióit és a titkosítási csomagokat korlátozó, végpontok közötti SSL-titkosítást.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -119,7 +119,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 
 Az Application Gateway létrehozása előtt minden konfigurációs elem be van állítva. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
-1. Hozzon létre egy Application Gateway IP-konfigurációt. Ezzel a beállítással konfigurálható, hogy az Application Gateway mely alhálózatokat használja. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
+1. Hozzon létre egy Application Gateway IP-konfigurációt. Ezzel a beállítással konfigurálható, hogy az Application Gateway mely alhálózatokat használja. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány elfoglal egy IP-címet.
 
    ```powershell
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
@@ -167,7 +167,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    > [!NOTE]
    > Az alapértelmezett mintavétel lekéri a nyilvános kulcsot az *alapértelmezett* SSL-kötésből a háttér IP-címére, és összehasonlítja az itt megadott nyilvános kulcs értékével kapott nyilvános kulcs értékét. 
    > 
-   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson el https://127.0.0.1/ -ra a háttér-kiszolgálókon annak megerősítéséhez, hogy az *alapértelmezett* SSL-kötés melyik tanúsítványt használja. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a https://127.0.0.1/ értékre a háttér-kiszolgálókon, be kell állítania egy alapértelmezett SSL-kötést. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
+   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, keresse fel https://127.0.0.1/ a háttér-kiszolgálókon annak megerősítéséhez, hogy az *alapértelmezett* SSL-kötés melyik tanúsítványt használja. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a háttér-kiszolgálókon való https://127.0.0.1/re, akkor a rájuk vonatkozó alapértelmezett SSL-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek a következők: **standard @ no__t-1Small**, **standard @ no__t-3Medium**és **standard @ no__t-5Large**.  A kapacitáshoz az elérhető értékek **1** – **10**.
+10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard\_kicsi**, **standard\_Medium**és **standard\_Large**.  A kapacitáshoz az elérhető értékek **1** – **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
     - **TLSV1_1**
     - **TLSV1_2**
     
-    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2** , és engedélyezi a **TLS @ no__t-2ECDHE @ no__t-3ECDSA @ no__t-4WITH @ no__t-5AES @ no__t-6128 @ no__t-7GCM @ no__t-8SHA256**, **TLS @ no__t-10ECDHE @ no__t-11ECDSA @ no__t-12WITH @ No __t-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**és **TLS @ NO__T-18RSA @ NO__T-19WITH @ NO__T-20AES @ no__t-21128 @ NO__T-22GCM @ NO__T-23SHA256** only.
+    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2re** , és engedélyezi a **TLS\_ECDHE\_ECDSA\_\_aes\_128\_GCM\_SHA256**, **tls\_ECDHE\_ECDSA\_\_AES\_256\_GCM\_SHA384**, valamint **tls\_RSA\_\_AES\_128\_GCM\_** sha256.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +310,7 @@ Az előző lépések során elvégezte a teljes körű SSL-alapú alkalmazások 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Adjon meg egy SSL-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS @ no__t-3ECDHE @ no__t-4ECDSA @ no__t-5WITH @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ no__t-9SHA256**, **TLS @ no__t-11ECDHE @ no__t-12ECDSA @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**és **TLS @ NO__T-19RSA @ NO__T-20WITH @ NO__T-21AES @ no__t-22128 @ NO__T-23GCM @ no__t-** 24SHA256 az egyetlen lehetőség.
+2. Adjon meg egy SSL-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS\_ECDHE\_ECDSA\_\_AES\_128\_GCM**\_sha256, **TLS\_ECDHE\_ECDSA\_\_AES\_256\_** GCM\_SHA384, és **TLS\_RSA\_\_AES\_128\_GCM\_** sha256 az egyetlen lehetőség.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

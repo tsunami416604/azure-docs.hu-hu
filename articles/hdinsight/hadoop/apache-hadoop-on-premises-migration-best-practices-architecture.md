@@ -120,7 +120,7 @@ Néhány HDInsight Hive-metaadattár ajánlott eljárás a következő:
 - Érdemes lehet a Ranger RBAC használni a kaptár-táblákon és a naplózáson.
 - Vegye fontolóra a CosmosDB használatát a MongoDB vagy a Cassandra helyett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

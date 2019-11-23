@@ -71,7 +71,7 @@ A terheléselosztó lehetővé teszi, hogy a virtuálisgép-példányokhoz SSH (
 
 Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési csoport erőforrásának létrehozásához:
 
-1. **Megoldáskezelőban**kattintson a jobb gombbal a projektre, és válassza a  >  **telepítése**–**új**lehetőséget.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a > **új** **telepítése** lehetőséget.
 
     ![A projekt üzembe helyezése](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -91,7 +91,7 @@ Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési 
 
 ## A virtuálisgép-méretezési csoport megismerése<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Az új virtuálisgép-méretezési **csoport megtekintéséhez válassza a**@no__t – 1**Cloud Explorer** lehetőséget. Ha szükséges, használja az **összes frissítése**parancsot.
+Válassza a **megtekintés** > a **Cloud Explorer** lehetőséget az új virtuálisgép-méretezési csoport megtekintéséhez. Ha szükséges, használja az **összes frissítése**parancsot.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 
@@ -99,6 +99,6 @@ A **Cloud Explorer** lehetővé teszi az Azure-erőforrások kezelését a Visua
 
  A portál lehetővé teszi az Azure-infrastruktúra webböngészővel való felügyeletének legmegfelelőbb módját. Azure Erőforrás-kezelő egyszerű módszert kínál az Azure-erőforrások feltárására és hibakeresésére. Azure Erőforrás-kezelő a példány nézetét, valamint a megtekintett erőforrásokhoz tartozó PowerShell-parancsokat is megjeleníti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután sikeresen üzembe helyezte Virtual Machine Scale Sets a Visual studión keresztül, a projekt tovább szabható az alkalmazás követelményeinek megfelelően. Például úgy konfigurálhatja az autoskálázást, hogy hozzáad egy **bepillantást** az erőforráshoz. Hozzáadhat infrastruktúrát a sablonhoz, például az önálló virtuális gépekhez, vagy telepíthet alkalmazásokat az egyéni szkriptek bővítmény használatával. A jó példaként szolgáló sablonok az Azure rövid útmutató [sablonok](https://github.com/Azure/azure-quickstart-templates) GitHub-tárházában találhatók. Keressen a `vmss` kifejezésre.

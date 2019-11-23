@@ -26,11 +26,11 @@ A Azure Portal segítségével nyisson meg egy támogatási jegyet a Microsoft �
    ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-blank.png)
 
 1. Töltse ki a kérelem űrlapját.  
-    1. Az **alapvető beállítások** lapon válassza ki a ``Technical`` **típusú problémát** . 
+    1. Az **alapvető beállítások** lapon válassza ki a **probléma típusát** ``Technical``. 
     1. Válassza ki előfizetését. 
     1. A **szolgáltatás**alatt válassza az **Azure FXT Edge Filer**elemet. Előfordulhat, hogy a **minden szolgáltatás** szűrő vezérlőelemre kell kattintania a kereséshez. 
     1. Adjon meg egy **összegzést** , és válassza ki a **probléma típusát**. 
-    @no__t – üres támogatási kérelem 0Screenshot: @ no__t-1 
+    az üres támogatási kérelem űrlapjának ![képernyőképe](media/fxt-support-populated.png) 
     1. A folytatáshoz kattintson a **tovább** gombra. 
 1. A **részletek** lapon adja meg a problémával kapcsolatos további információkat és az Önnel való kapcsolatfelvétel módját. Feltölthet egy, a problémához kapcsolódó fájlt is. 
 1. A **felülvizsgálat és létrehozás**lapon ellenőrizze az információkat, majd kattintson a **Létrehozás** gombra a kérelem elküldéséhez.

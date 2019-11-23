@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67179522"
 ---
-| Resource | Korlát |
+| Erőforrás | Korlát |
 | --- | --- |
 | Méretezési egységek maximális száma | 10 régiónként<sup>1</sup> |
 | Gyorsítótár mérete | 5 GB/egység<sup>2</sup> |
@@ -37,8 +37,8 @@ ms.locfileid: "67179522"
 <sup>1</sup> A skálázási korlátok az árképzési szinttől függenek. A díjszabási szintek és a méretezési korlátok megtekintéséhez lásd: [API Management díjszabása](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>2</sup> Egységenkénti gyorsítótár mérete az árképzési szinttől függ. A díjszabási szintek és a méretezési korlátok megtekintéséhez lásd: [API Management díjszabása](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup> A kapcsolatok készletezése és újbóli felhasználása, kivéve, ha a háttér explicit módon lezárta.<br/>
-<sup>4</sup> Ez a korlát az alapszintű, a standard és a prémium szint egységenként van. A fejlesztői szintet 1 024-re korlátozzák. Ez a korlát nem vonatkozik a felhasználás szintjére.<br/> 
-<sup>5</sup> Ez a korlát az alapszintű, a standard és a prémium szintekre vonatkozik. A felhasználási szinten a szabályzat dokumentumának mérete legfeljebb 4 KB lehet.<br/>
+<sup>4</sup> Ez a korlát az alapszintű, a standard és a prémium szint egységenként van. A fejlesztői szintet 1 024-re korlátozzák. Ez a korlát nem vonatkozik a felhasználás szintjére.<br/><sup>5</sup> 
+ez a korlát az alapszintű, a standard és a prémium szintekre vonatkozik. A felhasználási szinten a szabályzat dokumentumának mérete legfeljebb 4 KB lehet.<br/>
 <sup>6</sup> Ez az erőforrás csak a prémium szintű csomagban érhető el.<br/>
 <sup>7</sup> Ez az erőforrás csak a felhasználási szintet érinti.<br/>
 

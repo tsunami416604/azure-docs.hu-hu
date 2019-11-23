@@ -35,7 +35,7 @@ A "felnőtt" besorolás több különböző kategóriába esik:
 
 ## <a name="use-the-api"></a>Az API használata
 
-A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. Ha `Adult` értéket ad hozzá a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza: @ no__t-2 @ no__t-3, `isRacyContent`, és `isGoryContent` @ no__t-6in JSON-válasza. A metódus a @ no__t-0 @ no__t-1, `racyScore` és `goreScore` @ no__t-4which megfelelő tulajdonságokat is visszaadja.
+A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. Ha `Adult` értéket ad hozzá a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza&mdash;`isAdultContent`, `isRacyContent`és `isGoryContent`&mdash;a JSON-válaszában. A metódus a megfelelő tulajdonságokat&mdash;`adultScore`, `racyScore`és `goreScore`&mdash;is visszaadja, amely a nulla és az egyik kategóriába tartozó megbízhatósági pontszámokat jelöli.
 
-- [Rövid útmutató: Rendszerkép elemzése (.NET SDK) ](./quickstarts-sdk/csharp-analyze-sdk.md)
-- [Rövid útmutató: Rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+- [Gyors útmutató: rendszerkép elemzése (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

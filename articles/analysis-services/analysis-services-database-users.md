@@ -27,7 +27,7 @@ A szerepkör engedélyei a következők:
 
 Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
-A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsággal, amely a `True` értékre van beállítva. Ha e-mail-cím alapján ad meg egy csoportot, `obj:groupid@tenantid` értéket kell használnia.
+A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsággal, amely `True`re van beállítva. Ha e-mail-cím alapján ad meg egy csoportot, használja a `obj:groupid@tenantid`.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Szerepkörök és felhasználók hozzáadása vagy kezelése a Visual Studióban  
@@ -44,7 +44,7 @@ A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**NEz egy**|A tagok nem módosíthatják a modell sémáját, és nem tudnak adatlekérdezést végrehajtani.|  
+    |**Nincsenek**|A tagok nem módosíthatják a modell sémáját, és nem tudnak adatlekérdezést végrehajtani.|  
     |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
     |**Olvasás és feldolgozás**|A tagok adatlekérdezéseket végezhetnek (a sor szintű szűrők alapján), és futtathatják a folyamatokat, és az összes műveletet feldolgozzák, de nem módosíthatják a modell sémáját.|  
     |**Folyamat**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
@@ -125,7 +125,7 @@ A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-s
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Meghívás – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
 
 ## <a name="row-filters"></a>Sorok szűrői  
 
@@ -137,11 +137,11 @@ A sorok szűrői csak olvasási és olvasási és feldolgozási engedélyekkel r
   
 A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha egy táblának több kapcsolata van, a szűrők az aktív kapcsolat biztonságát alkalmazzák. A sorok szűrői a kapcsolódó táblákhoz definiált más sorokkal vannak összemetszve, például:  
   
-|Table|DAX-kifejezés|  
+|Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
-|Region (Régió)|= Régió [ország] = "USA"|  
+|Régió|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [név] = "kerékpárok"|  
-|Tranzakciók|= Tranzakciók [év] = 2016|  
+|Tranzakciók|=Transactions[Year]=2016|  
   
  A háló hatására a tagok lekérhetik az adatsorokat, ahol az ügyfél az USA-ban található, a termék kategóriája kerékpárok, az év pedig 2016. A felhasználók nem tudják lekérdezni az Egyesült Államokon kívüli tranzakciókat, a nem kerékpárokat vagy a 2016-es tranzakciókat, kivéve, ha azok egy másik szerepkör tagja, amely ezeket az engedélyeket megadja.
   

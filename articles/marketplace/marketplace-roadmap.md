@@ -43,6 +43,6 @@ Ha egy képesség élő, el lesz távolítva az ütemtervből. A piactérhez hoz
 ) / a [meglévő ajánlat frissítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [ajánlati elemzés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
 * [A piactér támogatásának beszerzése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) oldalára.

@@ -46,9 +46,9 @@ A Azure Database for MySQLhoz való kapcsolódási problémák általában a kö
 
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Kiszolgáló tűzfalának konfigurációja: Győződjön meg arról, hogy a Azure Database for MySQL kiszolgálói tűzfal úgy van konfigurálva, hogy engedélyezze az ügyfélről érkező kapcsolatokat, beleértve a proxykiszolgálót és az átjárókat is.
-* Az ügyfél tűzfalának konfigurációja: Az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások neveit, például a MySQL-t egyes tűzfalakon.
-* Felhasználói hiba: Lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy egy hiányzó *@no__t 1servername* utótaggal a felhasználónévben.
+* Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for MySQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
+* Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások neveit, például a MySQL-t egyes tűzfalakon.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) és a (z) felhasználónévben a (z) *\@kiszolgálónévben* .
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
@@ -57,6 +57,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, �
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MySQLhoz való kapcsolódásának módját](howto-connection-string.md).
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MySQL.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MySQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

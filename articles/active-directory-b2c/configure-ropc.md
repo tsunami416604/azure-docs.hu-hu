@@ -25,14 +25,14 @@ Az erőforrás-tulajdonosi jelszó hitelesítő adatai (ROPC) a OAuth standard h
 
 Azure Active Directory B2C (Azure AD B2C) esetén a következő lehetőségek támogatottak:
 
-- **Natív ügyfél**: Felhasználói interakció a hitelesítés során akkor történik meg, amikor a kód egy felhasználói oldali eszközön fut. Az eszköz lehet egy natív operációs rendszer, például Android és iOS rendszerű mobil alkalmazás.
-- **Nyilvános ügyfél folyamata**: Az API-hívásban csak az alkalmazás által összegyűjtött felhasználói hitelesítő adatok küldhetők. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
-- **Új jogcímek hozzáadása**: Az azonosító jogkivonat tartalma új jogcímek hozzáadásához módosítható.
+- **Natív ügyfél**: a hitelesítés során felhasználói interakció történik, ha a kód egy felhasználói oldali eszközön fut. Az eszköz lehet egy natív operációs rendszer, például Android és iOS rendszerű mobil alkalmazás.
+- **Nyilvános ügyféloldali folyamat**: a rendszer csak az alkalmazás által összegyűjtött felhasználói hitelesítő adatokat TOVÁBBÍTJA az API-hívásban. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
+- **Új jogcímek hozzáadása**: az azonosító jogkivonat tartalma módosítható új jogcímek hozzáadásához.
 
 A következő folyamatok nem támogatottak:
 
-- **Kiszolgálók közötti**: Az Identity Protection rendszernek a kapcsolat részeként a hívótól (a natív ügyféltől) gyűjtött megbízható IP-címet kell tartalmaznia. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túllépi a sikertelen hitelesítések dinamikus küszöbértékét, az Identity Protection rendszer azonosíthatja az ismétlődő IP-címet támadóként.
-- **Bizalmas ügyfél folyamata**: A rendszer érvényesíti az alkalmazás ügyfél-AZONOSÍTÓját, de az alkalmazás titkos kulcsa nincs érvényesítve.
+- **Kiszolgálók közötti**kapcsolat: az Identity Protection rendszernek megbízható IP-címet kell begyűjtenie a hívótól (a natív ügyféltől) a beavatkozás részeként. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túllépi a sikertelen hitelesítések dinamikus küszöbértékét, az Identity Protection rendszer azonosíthatja az ismétlődő IP-címet támadóként.
+- **Bizalmas ügyféloldali folyamat**: az alkalmazás ügyfél-azonosítója érvényesítve van, de az alkalmazás titkos kulcsa nincs érvényesítve.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás-tulajdonos felhasználói folyamat létrehozása
 
@@ -58,22 +58,22 @@ A következő folyamatok nem támogatottak:
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a felhasználói folyamat hibakeresésére szolgáló választ. A következő táblázatban szereplő információk alapján állítson össze egy hívást a post kérelem törzse:
-- Cserélje le *@no__t -1yourtenant. onmicrosoft. com >* a B2C-bérlő nevére.
+- Cserélje le *\<yourtenant. onmicrosoft. com >* a B2C-bérlő nevére.
 - Cserélje le a *\<B2C_1A_ROPC_Auth >* az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 - Cserélje le a *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* a regisztrációhoz tartozó alkalmazás-azonosítóra.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Paraméter | Érték |
 | --- | ----- |
-| username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| felhasználónév | leadiocl@outlook.com |
+| jelszó | Passxword1 |
+| grant_type | jelszó |
 | scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
-A *Client_id* az az érték, amelyet korábban az alkalmazás-azonosítóként észlelt. A *Offline_access* nem kötelező, ha frissítési tokent szeretne kapni. A használt felhasználónévnek és jelszónak a Azure AD B2C bérlő egy meglévő felhasználójának hitelesítő adatainak kell lennie.
+*Client_id* az az érték, amelyet korábban alkalmazás-azonosítóként észlelt. A *Offline_access* megadása nem kötelező, ha frissítési tokent szeretne kapni. A használt felhasználónévnek és jelszónak a Azure AD B2C bérlő egy meglévő felhasználójának hitelesítő adatainak kell lennie.
 
 A tényleges POST-kérelem a következőhöz hasonlóan néz ki:
 
@@ -104,7 +104,7 @@ Az alábbi táblázatban szereplő információk alapján készítse el a kéré
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Paraméter | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -112,7 +112,7 @@ Az alábbi táblázatban szereplő információk alapján készítse el a kéré
 | resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-A *Client_id* és az *erőforrás* az alkalmazás-azonosítóként korábban megjegyzett értékek. A *Refresh_token* a korábban említett hitelesítési hívásban kapott jogkivonat.
+A *Client_id* és az *erőforrás* az alkalmazás-azonosítóként korábban megjegyzett értékek. *Refresh_token* a korábban megemlített hitelesítési hívásban kapott jogkivonat.
 
 A sikeres válasz a következő példához hasonlít:
 
@@ -132,7 +132,7 @@ A sikeres válasz a következő példához hasonlít:
 }
 ```
 > [!NOTE]
-> A felhasználók Graph API használatával történő létrehozásakor az alkalmazásnak az "OpenID", a "offline_access" és a "profil" engedélyekkel kell rendelkeznie a Microsoft Graph.
+> Ha Graph APIon keresztül hoz létre felhasználókat, az alkalmazásnak az "OpenID", a "offline_access" és a "profil" engedélyekkel kell rendelkeznie a Microsoft Graph.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementálja az előnyben részesített natív SDK-val, vagy használja az App-Autht
 

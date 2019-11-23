@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés | Microsoft Docs'
+title: 'Azure AD Connect: zökkenőmentes egyszeri bejelentkezés | Microsoft Docs'
 description: Ez a témakör a Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezését ismerteti, valamint azt, hogy a vállalati hálózaton belül hogyan biztosíthat valódi egyszeri bejelentkezést a vállalati asztali felhasználók számára.
 services: active-directory
 keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
@@ -51,10 +51,10 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 ## <a name="feature-highlights"></a>A funkciók Kiemelt jellemzői
 
-- A bejelentkezési Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév (`userPrincipalName`) vagy egy másik, a Azure AD Connectban konfigurált attribútum (`Alternate ID`). Mindkét használati eset működik, mivel a zökkenőmentes egyszeri bejelentkezés a Kerberos-jegy `securityIdentifier` jogcímét használja a megfelelő felhasználói objektum kereséséhez az Azure AD-ben.
+- A bejelentkezési Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév (`userPrincipalName`) vagy a Azure AD Connect (`Alternate ID`) szolgáltatásban konfigurált másik attribútum. Mindkét használati eset működik, mivel a zökkenőmentes egyszeri bejelentkezés a Kerberos-jegyben lévő `securityIdentifier` jogcímet használja a megfelelő felhasználói objektum kereséséhez az Azure AD-ben.
 - A zökkenőmentes SSO egy opportunista funkció. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény visszatér a szokásos viselkedésére – azaz a felhasználónak meg kell adnia a jelszavát a bejelentkezési oldalon.
-- Ha egy alkalmazás (például `https://myapps.microsoft.com/contoso.com`) egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paramétert továbbít a bérlő azonosítására, vagy `login_hint` paramétert – a felhasználó azonosítására az Azure AD bejelentkezési kérelmében, a felhasználók automatikusan bejelentkeznek anélkül felhasználónevek és jelszavak beírása.
-- A felhasználók akkor is csendes bejelentkezési élményt kapnak, ha egy alkalmazás (például `https://contoso.sharepoint.com`) olyan bejelentkezési kéréseket küld az Azure AD-végpontoknak, amelyek bérlőként vannak beállítva – azaz `https://login.microsoftonline.com/contoso.com/<..>` vagy @no__t – 2 – Az Azure AD közös végpontja helyett – azaz `https://login.microsoftonline.com/common/<...>`.
+- Ha egy alkalmazás (például `https://myapps.microsoft.com/contoso.com`) továbbítja a `domain_hint` (OpenID Connect) vagy a `whr` (SAML) paramétert a bérlő azonosítására, vagy `login_hint` paraméter – a felhasználó azonosítására az Azure AD bejelentkezési kérelmében, a felhasználók automatikusan bejelentkeznek anélkül, hogy felhasználóneveket vagy jelszavakat kellene beírniuk.
+- A felhasználók akkor is csendes bejelentkezési élményt kapnak, ha egy alkalmazás (például `https://contoso.sharepoint.com`) olyan bejelentkezési kéréseket küld az Azure AD-végpontoknak, amelyek bérlőként vannak beállítva – azaz `https://login.microsoftonline.com/contoso.com/<..>` vagy `https://login.microsoftonline.com/<tenant_ID>/<..>` – az Azure AD közös végpontja helyett – azaz `https://login.microsoftonline.com/common/<...>`.
 - A kijelentkezés támogatott. Így a felhasználók kiválaszthatnak egy másik Azure AD-fiókot a szolgáltatásba való bejelentkezéshez ahelyett, hogy automatikusan be kellene jelentkezniük a zökkenőmentes egyszeri bejelentkezés automatikus használatával.
 - Az Office 365 Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamattal támogatottak a 16.0.8730. xxxx és újabb verziók használatával. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Azure AD Connect használatával engedélyezhető.
@@ -63,24 +63,24 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen @ no__t – 0|Igen|Igen|Igen @ no__t-0 @ no__t-1 @ no__t-2|–
-|Windows 8.1|Igen @ no__t – 0|–|Igen|Igen @ no__t-0 @ no__t-1 @ no__t-2|–
-|Windows 8|Igen @ no__t – 0|–|Igen|Igen @ no__t-0 @ no__t-1 @ no__t-2|–
-|Windows 7|Igen @ no__t – 0|–|Igen|Igen @ no__t-0 @ no__t-1 @ no__t-2|–
-|Windows Server 2012 R2 vagy újabb|Igen @ no__t-0 @ no__t-1|–|Igen|Igen @ no__t-0 @ no__t-1 @ no__t-2|–
-|Mac OS X|–|–|Igen @ no__t-0 @ no__t-1 @ no__t-2|Igen @ no__t-0 @ no__t-1 @ no__t-2|Igen @ no__t-0 @ no__t-1 @ no__t-2
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
+|Windows 8.1|Igen\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows 8|Igen\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows 7|Igen\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows Server 2012 R2 vagy újabb|Igen\*\*|N/A|Igen|Igen\*\*\*|N/A
+|Mac OS X|N/A|N/A|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
-@no__t – 0Requires Internet Explorer 10-es vagy újabb verziói
+\*az Internet Explorer 10-es vagy újabb verzióját igényli
 
-\* @ no__t – az Internet Explorer 10-es vagy újabb verzióinak 1Requires. Fokozottan védett üzemmód letiltása
+\*\*az Internet Explorer 10-es vagy újabb verzióját igényli. Fokozottan védett üzemmód letiltása
 
-\* @ no__t-1 @ no__t-2Requires [további konfiguráció](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*\*[további konfigurálást](how-to-connect-sso-quick-start.md#browser-considerations) igényel
 
 >[!NOTE]
 >A Windows 10 esetében ajánlott az Azure [ad JOIN](../active-directory-azureadjoin-overview.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
 - [**Üzembe helyezési terv**](https://aka.ms/deploymentplans/sso) – lépésenkénti üzembe helyezési terv.

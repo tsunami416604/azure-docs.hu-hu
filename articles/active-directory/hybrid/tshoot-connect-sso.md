@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Connect: Zökkenőmentes egyszeri bejelentkezés – problémamegoldás | Microsoft Docs'
+title: 'Azure Active Directory Connect: zökkenőmentes egyszeri bejelentkezés – problémamegoldás | Microsoft Docs'
 description: Ez a témakör azt ismerteti, hogyan lehet elhárítani Azure Active Directory zökkenőmentes egyszeri bejelentkezést
 services: active-directory
 author: billmath
@@ -35,26 +35,26 @@ Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmente
 - A zökkenőmentes egyszeri bejelentkezés nem működik az iOS és az Android rendszerű böngészőkben.
 - Ha egy felhasználó túl sok csoporthoz tartozik a Active Directoryban, a felhasználó Kerberos-jegye valószínűleg túl nagy lesz a feldolgozáshoz, és ez a zökkenőmentes egyszeri bejelentkezést eredményezi. Az Azure AD HTTPS-kérések legfeljebb 50 KB méretű fejléceket tartalmazhatnak. A Kerberos-jegyeknek kisebbnek kell lenniük, mint amennyit az Azure AD-összetevők (általában 2-5 KB), például a cookie-k befogadására korlátoznak. Javasoljuk, hogy csökkentse a felhasználók csoporttagságait, és próbálkozzon újra.
 - Ha 30 vagy több Active Directory erdőt szinkronizál, a zökkenőmentes SSO-t nem engedélyezheti Azure AD Connecton keresztül. Megkerülő megoldásként [manuálisan engedélyezheti](#manual-reset-of-the-feature) a szolgáltatást a bérlőn.
-- Az Azure AD szolgáltatás URL-címének (@no__t – 0 a megbízható helyek zónájába való hozzáadása a helyi intranet zóna helyett *blokkolja a felhasználókat a bejelentkezéshez*.
-- A zökkenőmentes egyszeri bejelentkezés támogatja a Kerberos AES256_HMAC_SHA1, AES128_HMAC_SHA1 és RC4_HMAC_MD5 titkosítási típusait. Azt javasoljuk, hogy a AzureADSSOAcc $ fiók titkosítási típusa AES256_HMAC_SHA1 értékre legyen beállítva, vagy az egyik AES-típus vagy a RC4 a további biztonsághoz. A titkosítási típust a Active Directory lévő fiók msDS-Supportedencryptiontypes attribútuma alapján attribútuma tárolja.  Ha a AzureADSSOAcc $ fiók titkosítási típusa RC4_HMAC_MD5 értékre van állítva, és módosítani szeretné az AES-titkosítási típusok egyikére, ügyeljen arra, hogy először a AzureADSSOAcc $ fiók Kerberos-visszafejtési kulcsát használja, ahogy azt a GYIK-dokumentum ismerteti. [ ](how-to-connect-sso-faq.md)a vonatkozó kérdésben egyébként a zökkenőmentes egyszeri bejelentkezés nem fog történni.
+- Az Azure AD szolgáltatás URL-címének (https://autologon.microsoftazuread-sso.com) a megbízható helyek zónájához való hozzáadása a helyi intranet zóna helyett *blokkolja a felhasználókat a bejelentkezéshez*.
+- A zökkenőmentes egyszeri bejelentkezés támogatja a Kerberos AES256_HMAC_SHA1, AES128_HMAC_SHA1 és RC4_HMAC_MD5 titkosítási típusait. Azt javasoljuk, hogy a AzureADSSOAcc $ fiók titkosítási típusa legyen AES256_HMAC_SHA1, vagy a további biztonság érdekében adja meg az egyik AES-típust a vs. RC4-nek. A titkosítási típust a Active Directory lévő fiók msDS-Supportedencryptiontypes attribútuma alapján attribútuma tárolja.  Ha a AzureADSSOAcc $ fiók titkosítási típusa RC4_HMAC_MD5 értékre van állítva, és módosítani szeretné az AES-titkosítási típusok egyikére, akkor ügyeljen arra, hogy az adott kérdésben a [GYIK-dokumentumban](how-to-connect-sso-faq.md) leírtak szerint először átadja a AzureADSSOAcc $ fiók Kerberos-visszafejtési kulcsát, ellenkező esetben a zökkenőmentes egyszeri bejelentkezés nem fog történni.
 
 ## <a name="check-status-of-feature"></a>Szolgáltatás állapotának ellenõrzése
 
 Győződjön meg arról, hogy a zökkenőmentes egyszeri bejelentkezés funkció továbbra is **engedélyezve** van a bérlőn. Az állapot ellenőrzéséhez nyissa meg a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/) **Azure ad Connect** ablaktábláját.
 
-![Azure Active Directory felügyeleti központ: Azure AD Connect ablaktábla](./media/tshoot-connect-sso/sso10.png)
+![Azure Active Directory felügyeleti központ: Azure AD Connect panel](./media/tshoot-connect-sso/sso10.png)
 
 Kattintson a végig lehetőségre a zökkenőmentes egyszeri bejelentkezéshez engedélyezett összes AD-erdő megjelenítéséhez.
 
-![Azure Active Directory felügyeleti központ: Zökkenőmentes SSO-ablaktábla](./media/tshoot-connect-sso/sso13.png)
+![Azure Active Directory felügyeleti központ: zökkenőmentes SSO-ablaktábla](./media/tshoot-connect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Bejelentkezési hibák okai a Azure Active Directory felügyeleti központban (prémium szintű licencre van szükség)
 
 Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejelentkezési tevékenységről szóló jelentést](../reports-monitoring/concept-sign-ins.md) is megtekintheti a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/).
 
-![Azure Active Directory felügyeleti központ: Bejelentkezések jelentés](./media/tshoot-connect-sso/sso9.png)
+![Azure Active Directory felügyeleti központ: bejelentkezési jelentés](./media/tshoot-connect-sso/sso9.png)
 
-Tallózással keresse meg **Azure Active Directory** > **bejelentkezést** a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/), majd válasszon egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és a megoldásnak az alábbi táblázat használatával:
+Keresse meg **Azure Active Directory** > a **bejelentkezéseket** a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/), majd válasszon ki egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és a megoldásnak az alábbi táblázat használatával:
 
 |Bejelentkezési hibakód|Bejelentkezési hiba oka|Megoldás:
 | --- | --- | ---
@@ -75,16 +75,16 @@ A következő ellenőrzőlista segítségével elháríthatja a zökkenőmentes 
 
 - Győződjön meg arról, hogy a zökkenőmentes egyszeri bejelentkezés funkció engedélyezve van Azure AD Connectban. Ha nem tudja engedélyezni a szolgáltatást (például egy letiltott port miatt), győződjön meg arról, hogy az összes [előfeltétel](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) teljesül.
 - Ha engedélyezte az [Azure ad-csatlakozást](../active-directory-azureadjoin-overview.md) és a zökkenőmentes egyszeri bejelentkezést a bérlőn, győződjön meg arról, hogy a probléma nem az Azure ad JOIN szolgáltatással érhető el. Az Azure AD JOIN szolgáltatásból származó egyszeri bejelentkezés elsőbbséget élvez a zökkenőmentes SSO esetén, ha az eszköz regisztrálva van az Azure AD-ben és a tartományhoz csatlakoztatva. Az Azure AD-csatlakozáshoz tartozó egyszeri bejelentkezéssel a felhasználó egy bejelentkezési csempét lát, amely a "Connected to Windows".
-- Győződjön meg arról, hogy az Azure AD URL-címe (@no__t – 0 a felhasználó intranetes zóna-beállításainak részét képezi.
+- Győződjön meg arról, hogy az Azure AD URL-címe (https://autologon.microsoftazuread-sso.com) a felhasználó intranetes zóna-beállításainak részét képezi.
 - Győződjön meg arról, hogy a vállalati eszköz csatlakozik a Active Directory tartományhoz. Az eszköznek _nem_ kell az [Azure ad](../active-directory-azureadjoin-overview.md) -hez CSATLAKOZNIA a zökkenőmentes egyszeri bejelentkezés működéséhez.
 - Győződjön meg arról, hogy a felhasználó Active Directory tartományi fiókkal van bejelentkezve az eszközre.
 - Győződjön meg arról, hogy a felhasználói fiók olyan Active Directory erdőben van, ahol be van állítva a zökkenőmentes egyszeri bejelentkezés.
 - Győződjön meg arról, hogy az eszköz a vállalati hálózathoz csatlakozik.
 - Győződjön meg arról, hogy az eszköz ideje szinkronizálva van a Active Directory és a tartományvezérlők időpontjával, valamint arról, hogy egymástól öt percen belül vannak.
-- Győződjön meg arról, hogy a `AZUREADSSOACC` számítógépfiók megtalálható és engedélyezve van minden olyan AD-erdőben, amelyet engedélyezni szeretne a zökkenőmentes egyszeri bejelentkezéshez. Ha a számítógépfiók törölve lett vagy hiányzik, a [PowerShell-parancsmagok](#manual-reset-of-the-feature) használatával újra létrehozhatja őket.
+- Győződjön meg arról, hogy a `AZUREADSSOACC` számítógépfiók megtalálható és engedélyezve van minden olyan AD-erdőben, amelynél engedélyezve van a zökkenőmentes egyszeri bejelentkezés. Ha a számítógépfiók törölve lett vagy hiányzik, a [PowerShell-parancsmagok](#manual-reset-of-the-feature) használatával újra létrehozhatja őket.
 - A meglévő Kerberos-jegyek listázása az eszközön a `klist` parancs parancssorból való használatával. Győződjön meg arról, hogy a `AZUREADSSOACC` számítógépfiók számára kiállított jegyek jelen vannak. A felhasználók Kerberos-jegyei általában 10 órán át érvényesek. Előfordulhat, hogy különböző beállítások vannak a Active Directory.
 - Ha letiltotta és újraengedélyezte a zökkenőmentes egyszeri bejelentkezést a bérlőn, akkor a felhasználók nem kapják meg az egyszeri bejelentkezést, amíg a gyorsítótárazott Kerberos-jegyek lejártak.
-- A `klist purge` paranccsal törölheti a meglévő Kerberos-jegyeket az eszközről, majd próbálkozzon újra.
+- A `klist purge` parancs használatával törölje a meglévő Kerberos-jegyeket az eszközről, majd próbálkozzon újra.
 - Annak megállapításához, hogy van-e JavaScripttel kapcsolatos probléma, tekintse át a böngésző konzoljának naplóit ( **fejlesztői eszközök**).
 - Tekintse át a [tartományvezérlő naplófájljait](#domain-controller-logs).
 
@@ -104,20 +104,20 @@ Ha engedélyezi a sikeres naplózást a tartományvezérlőn, akkor minden alkal
 
 Ha a hibaelhárítás nem segített, manuálisan állíthatja vissza a szolgáltatást a bérlőn. Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen Azure AD Connect futtat.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1\. lépés: A zökkenőmentes egyszeri bejelentkezés PowerShell-moduljának importálása
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1\. lépés: a zökkenőmentes egyszeri bejelentkezés PowerShell-moduljának importálása
 
 1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
 2. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
 3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2\. lépés: Azon Active Directory erdők listájának beolvasása, amelyeken engedélyezve van a zökkenőmentes egyszeri bejelentkezés
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2\. lépés: azon Active Directory erdők listájának beolvasása, amelyeken engedélyezve van a zökkenőmentes egyszeri bejelentkezés
 
-1. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a `New-AzureADSSOAuthenticationContext` értéket. Ha a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatait.
-2. Hívja meg a `Get-AzureADSSOStatus` értéket. Ez a parancs a Active Directory erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
+1. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a `New-AzureADSSOAuthenticationContext`. Ha a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatait.
+2. Hívja meg `Get-AzureADSSOStatus`. Ez a parancs a Active Directory erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3\. lépés: Tiltsa le a zökkenőmentes egyszeri bejelentkezést minden olyan Active Directory erdőben, amelyen a szolgáltatást beállította
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3\. lépés: a zökkenőmentes SSO letiltása minden Active Directory erdőben, amelyen a szolgáltatást beállította
 
-1. Hívja meg a `$creds = Get-Credential` értéket. Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
+1. Hívja meg `$creds = Get-Credential`. Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
 
    > [!NOTE]
    >A tartományi rendszergazdai hitelesítő adatok felhasználónevet a SAM-fiók nevének formátumában kell megadni (contoso\johndoe vagy contoso. com\johndoe). A Felhasználónév tartomány részeként a tartományi rendszergazda tartományvezérlőjét kell megkeresni a DNS használatával.
@@ -125,12 +125,12 @@ Ha a hibaelhárítás nem segített, manuálisan állíthatja vissza a szolgált
    >[!NOTE]
    >A használt tartományi rendszergazdai fiók nem lehet a Protected Users csoport tagja. Ha igen, a művelet sikertelen lesz.
 
-2. Hívja meg a `Disable-AzureADSSOForest -OnPremCredentials $creds` értéket. Ez a parancs eltávolítja a `AZUREADSSOACC` számítógépfiókot a helyszíni tartományvezérlőről ehhez az adott Active Directory erdőhöz.
+2. Hívja meg `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ez a parancs eltávolítja a `AZUREADSSOACC` számítógépfiókot a helyszíni tartományvezérlőről ehhez az adott Active Directory erdőhöz.
 3. Ismételje meg az előző lépéseket minden olyan Active Directory erdőben, amelyben a szolgáltatást beállította.
 
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4\. lépés: Zökkenőmentes egyszeri bejelentkezés engedélyezése minden Active Directory erdőben
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4\. lépés: a zökkenőmentes SSO engedélyezése minden Active Directory erdőben
 
-1. Hívja meg a `Enable-AzureADSSOForest` értéket. Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
+1. Hívja meg `Enable-AzureADSSOForest`. Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
 
    > [!NOTE]
    >A tartományi rendszergazdai hitelesítő adatok felhasználónevet a SAM-fiók nevének formátumában kell megadni (contoso\johndoe vagy contoso. com\johndoe). A Felhasználónév tartomány részeként a tartományi rendszergazda tartományvezérlőjét kell megkeresni a DNS használatával.
@@ -140,6 +140,6 @@ Ha a hibaelhárítás nem segített, manuálisan állíthatja vissza a szolgált
 
 2. Ismételje meg az előző lépést minden olyan Active Directory erdőben, amelyben be szeretné állítani a szolgáltatást.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>5\. lépés. A szolgáltatás engedélyezése a bérlőn
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>5\. lépés A szolgáltatás engedélyezése a bérlőn
 
-Ha be szeretné kapcsolni a szolgáltatást a bérlőn, hívja meg a `Enable-AzureADSSO -Enable $true` értéket.
+Ha be szeretné kapcsolni a szolgáltatást a bérlőn, hívja meg `Enable-AzureADSSO -Enable $true`.

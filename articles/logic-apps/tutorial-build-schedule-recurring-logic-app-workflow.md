@@ -18,11 +18,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72034661"
 ---
-# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: Automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
+# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy [logikai alkalmazást](../logic-apps/logic-apps-overview.md) , és hogyan automatizálhat egy ütemezett, ismétlődő munkafolyamatot. Ez a példa a logikai alkalmazást minden hétköznap reggel futtatja, és ellenőrzi az utazási időt, beleértve a forgalmat, két hely között. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Üres logikai alkalmazás létrehozása.
@@ -60,14 +60,14 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Name** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
+   | **Name (Név)** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | LA-TravelTime-RG | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md)neve. Ez a példa a "LA-TravelTime-RG" protokollt használja. |
-   | **Location** | USA nyugati régiója | A logikai alkalmazás adatainak tárolására szolgáló AA-régió. Ez a példa a "West US"-t használja. |
+   | **Hely** | USA nyugati régiója | A logikai alkalmazás adatainak tárolására szolgáló AA-régió. Ez a példa a "West US"-t használja. |
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések**@no__t – 1**Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza az **értesítések** > a telepített logikai alkalmazás **erőforrásának keresése** lehetőséget.
 
    ![Ugrás az új Logic app-erőforrásra](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -93,7 +93,7 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    ![Az ismétlődési eseményindító intervallumának és gyakoriságának módosítása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
    | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
@@ -142,7 +142,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![A Bing Maps API-hoz való kapcsolódás létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
    | **API-kulcs** | Igen | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -152,7 +152,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
 1. A műveleten belül nyissa meg az **új paraméter hozzáadása listát**, és válassza ki ezeket a tulajdonságokat a művelethez való hozzáadáshoz.
 
-   * **Optimize**
+   * **Optimalizálás**
    * **Távolság mértékegysége**
    * **Közlekedési mód**
 
@@ -162,11 +162,11 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![Az "útvonal lekérése" művelet részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **1. útvonalpont** | Igen | <*kiindulási-hely*> | Az útvonal kiindulópontja |
    | **2. útvonalpont** | Igen | <*érkezési-hely*> | Az útvonal célállomása |
-   | **Optimize** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
+   | **Optimalizálás** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
    | **Távolság mértékegysége** | Nem | <*igény-szerint*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
    | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
    ||||
@@ -193,10 +193,10 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
 1. Adja meg a változó részleteit az itt leírt módon:
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Name** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
-   | **Típus** | Igen | Integer | A változó adattípusa |
+   | **Name (Név)** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
+   | **Típus** | Igen | Egész szám | A változó adattípusa |
    | **Érték** | Nem| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
    ||||
 
@@ -358,13 +358,13 @@ Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alka
 
 1. Az Azure főmenüjében lépjen az **Erőforráscsoportok** elemre, és válassza ki a logikai alkalmazás erőforráscsoportját.
 
-1. Az erőforráscsoport menüben válassza az **áttekintés** > **erőforráscsoport törlése**elemet. 
+1. Az erőforráscsoport menüben válassza az **áttekintés** > az **erőforráscsoport törlése**elemet. 
 
    ![„Áttekintés” > „Erőforráscsoport törlése”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
 1. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy logikai alkalmazást, amely ellenőrzi a forgalmat a megadott ütemezés alapján (hétköznap reggelente), és végrehajt egy adott műveletet (e-mailt küld), amikor az utazási idő meghaladja a megadott határértéket. Most megismerheti, hogyan hozhat létre egy olyan logikai alkalmazást az Azure- és Microsoft-szolgáltatások, valamint más SaaS-alkalmazások integrálásával, amely levelezési listára vonatkozó kérelmeket küld el jóváhagyásra.
 

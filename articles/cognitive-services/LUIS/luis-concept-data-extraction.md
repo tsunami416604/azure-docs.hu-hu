@@ -38,7 +38,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * * 
 
-A `appID` a LUIS-alkalmazás **Beállítások** lapján, valamint a Luis-alkalmazás szerkesztésekor az URL-cím részeként (`/apps/` után) érhető el. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Habár a LUIS megismerése közben ingyenes authoring/Starter-kulcsot is használhat, fontos, hogy módosítsa a végpont kulcsát egy olyan kulcsra, amely támogatja a [várt Luis-használatot](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
+A `appID` a LUIS-alkalmazás **Beállítások** lapján, valamint a Luis-alkalmazás szerkesztésekor a (`/apps/`után) URL-cím részeként érhető el. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Habár a LUIS megismerése közben ingyenes authoring/Starter-kulcsot is használhat, fontos, hogy módosítsa a végpont kulcsát egy olyan kulcsra, amely támogatja a [várt Luis-használatot](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
 
 A **HTTPS válaszokat** tartalmazza az összes, vagy az aktuális közzétett modell alapján a leképezés és entitás adatait, LUIS megadhatja, hogy az átmeneti és éles végpontot. A végpont URL-cím található a [LUIS](luis-reference-regions.md) webhelyén, a a **kezelés** részben, a a **kulcsokat és a végpontok** lap.
 
@@ -82,7 +82,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 |Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|
-|Szándék|Karakterlánc|topScoringIntent.intent|"GetStoreInfo"|
+|Szándék|Sztring|topScoringIntent.intent|"GetStoreInfo"|
 
 Ha a Csevegőrobot vagy a LUIS-Calling alkalmazás egynél több leképezési pontszámon alapuló döntést tesz, adja vissza az összes cél pontszámát.
 
@@ -144,8 +144,8 @@ A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
 |Objektum|Adattípus|Az adatok helye|Érték|Pontszám|
 |--|--|--|--|:--|
-|Szándék|Karakterlánc|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
-|Szándék|Karakterlánc|[1]. szándék .intent|"Nincs"|0.0168218873|
+|Szándék|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
+|Szándék|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
 
 Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi, hogy a tartományhoz, mint például `Utilties` vagy `Communication` valamint célja:
 
@@ -205,9 +205,9 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 |Domain|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|--|
-|Közművek|Szándék|Karakterlánc|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
-|Kommunikáció|Szándék|Karakterlánc|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
-||Szándék|Karakterlánc|[a(z) 2]. szándék .intent|"Nincs"|
+|Közművek|Szándék|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
+|Kommunikáció|Szándék|Sztring|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
+||Szándék|Sztring|[a(z) 2]. szándék .intent|"Nincs"|
 
 
 ## <a name="data-from-entities"></a>Entitások adatainak
@@ -357,7 +357,7 @@ Az [entitások listája](reference-entity-list.md) a kapcsolódó szavak rögzí
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A querystring paraméter nélkül, `verbose=true`:
+A querystring paraméter nélkül `verbose=true`:
 
 ```json
 "entities": {
@@ -566,7 +566,7 @@ Szerepkörök az entitások környezetfüggő különbségek.
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Az entitás neve @no__t – 0, két szerepkörrel, `Origin` és `Destination`.
+Az entitás neve `Location`, és két szerepkör, `Origin` és `Destination`.
 
 ```JSON
 "entities": [
@@ -601,9 +601,9 @@ Az entitás neve @no__t – 0, két szerepkörrel, `Origin` és `Destination`.
 
 A v3-as verzióban a **szerepkör neve** az objektum elsődleges neve. 
 
-Az entitás neve @no__t – 0, két szerepkörrel, `Origin` és `Destination`.
+Az entitás neve `Location`, és két szerepkör, `Origin` és `Destination`.
 
-A querystring paraméter nélkül, `verbose=true`:
+A querystring paraméter nélkül `verbose=true`:
 
 ```json
 "entities": {
@@ -756,7 +756,7 @@ A kulcsfontosságú kifejezések kinyerése entitás kulcskifejezéseket adja vi
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-A querystring paraméter nélkül, `verbose=true`:
+A querystring paraméter nélkül `verbose=true`:
 
 ```json
 "entities": {
@@ -958,7 +958,7 @@ A LUIS-végpont ugyanazokat az adategységeket képes felderíteni, mint a kül�
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-@No__t-0 nélkül querystring paraméterként.
+`verbose=true` nélkül querystring paraméterként.
 
 ```json
 "entities": {
@@ -995,7 +995,7 @@ A LUIS-végpont ugyanazokat az adategységeket képes felderíteni, mint a kül�
 }
 ```
 
-@No__t-0 querystring paraméterrel.
+`verbose=true` querystring paraméterként.
 
 
 ```json
@@ -1183,7 +1183,7 @@ A lekérdezés `when is the best time to go to red rock?`, és az alkalmazás m�
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A lekérdezési karakterláncban @no__t – 0 nélkül:
+A lekérdezési karakterláncban `verbose=true` nélkül:
 
 ```JSON
 {
@@ -1213,7 +1213,7 @@ A lekérdezési karakterláncban @no__t – 0 nélkül:
 ```
 
 
-A lekérdezési karakterláncban a `verbose=true` értékkel:
+`verbose=true` a lekérdezési karakterláncban:
 
 ```JSON
 {
@@ -1274,6 +1274,6 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.

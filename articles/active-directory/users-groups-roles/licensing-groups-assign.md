@@ -33,7 +33,7 @@ Ebben a példában a bérlő egy **HR részleg**nevű biztonsági csoportot tart
 >
 > A csoport licencének hozzárendelésekor a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen is vannak felhasználók, javasoljuk, hogy mindig a felhasználói létrehozási folyamat részeként adja meg a használat helyét az Azure AD-ben (például HRE-kapcsolat konfigurálásakor), amely biztosítja a licenc-hozzárendelés eredményét, és a felhasználók nem kapják meg olyan helyen lévő szolgáltatások, amelyek nem engedélyezettek.
 
-## <a name="step-1-assign-the-required-licenses"></a>1\. lépés: A szükséges licencek kiosztása
+## <a name="step-1-assign-the-required-licenses"></a>1\. lépés: a szükséges licencek kiosztása
 
 1. Jelentkezzen be az [**Azure ad felügyeleti központba**](https://aad.portal.azure.com) egy licenc-rendszergazdai fiókkal. A licencek kezeléséhez a fióknak licenc-rendszergazdának, felhasználói rendszergazdának vagy globális rendszergazdának kell lennie.
 
@@ -57,9 +57,9 @@ Ebben a példában a bérlő egy **HR részleg**nevű biztonsági csoportot tart
 
 Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes meglévő tagját. Ez a folyamat hosszabb időt is igénybe vehet, és a csoport méretétől függően változhat. A következő lépés azt ismerteti, hogyan ellenőrizheti, hogy a folyamat befejeződött-e, és hogy van-e szükség további beavatkozásra a problémák megoldásához.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2\. lépés: Ellenőrizze, hogy befejeződött-e a kezdeti hozzárendelés
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2\. lépés: annak ellenőrzése, hogy befejeződött-e a kezdeti hozzárendelés
 
-1. Lépjen **Azure Active Directory** > **csoportra**. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
+1. Válassza **Azure Active Directory** > **csoportok**lehetőséget. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 
 1. A csoport lapon válassza a **licencek**lehetőséget. Ezzel gyorsan megerősítheti, hogy a licencek teljes körűen vannak-e hozzárendelve a felhasználókhoz, és hogy vannak-e hibák, amelyekre szüksége van. A következő információ áll rendelkezésre:
 
@@ -71,15 +71,15 @@ Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes m
 
    ![licencelési hibák és a licenc állapota](./media/licensing-groups-assign/assignment-errors.png)
 
-1. A licencek feldolgozásával kapcsolatos részletesebb információkat a **Azure Active Directory** > **felhasználók és csoportok** > *csoport neve* > **naplóban**talál. Győződjön meg a következő tevékenységekről:
+1. A licencek feldolgozásával kapcsolatos részletesebb információkat a **Azure Active Directory** > **felhasználók és csoportok** > *csoport neve* > **naplók**szakaszban talál. Győződjön meg a következő tevékenységekről:
 
-   - Tevékenység: @no__t – 0. Ez akkor kerül naplózásra, amikor a rendszer felveszi a licenc-hozzárendelés változását a csoportba, és elindítja az összes felhasználói tagra való alkalmazását. Az elvégzett módosítással kapcsolatos információkat tartalmaz.
+   - Tevékenység: `Start applying group based license to users`. Ez akkor kerül naplózásra, amikor a rendszer felveszi a licenc-hozzárendelés változását a csoportba, és elindítja az összes felhasználói tagra való alkalmazását. Az elvégzett módosítással kapcsolatos információkat tartalmaz.
 
-   - Tevékenység: @no__t – 0. Ez akkor kerül naplózásra, amikor a rendszer befejezi a csoport összes felhasználójának feldolgozását. Összefoglalja, hogy hány felhasználót sikerült feldolgozni, és hány felhasználót nem sikerült hozzárendelni a csoportos licencekhez.
+   - Tevékenység: `Finish applying group based license to users`. Ez akkor kerül naplózásra, amikor a rendszer befejezi a csoport összes felhasználójának feldolgozását. Összefoglalja, hogy hány felhasználót sikerült feldolgozni, és hány felhasználót nem sikerült hozzárendelni a csoportos licencekhez.
 
    [Ebből a szakaszból](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) megtudhatja, hogyan használhatók a naplók a csoport alapú licencelés által végzett módosítások elemzéséhez.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3\. lépés: Licencelési problémák keresése és feloldása
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3\. lépés: a licencelési problémák keresése és a megoldás feloldása
 
 1. Lépjen **Azure Active Directory** > **csoportok**elemre, és keresse meg azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 1. A csoport lapon válassza a **licencek**lehetőséget. A lap tetején látható értesítés azt mutatja, hogy a licencek 10 felhasználóhoz nem rendelhetők hozzá. Nyissa meg a csoportot a licencelési hiba állapotában lévő összes felhasználó listájának megtekintéséhez.
@@ -93,7 +93,7 @@ Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes m
 
 1. Az ütközés megoldásához távolítsa el a felhasználót a **kioszk felhasználók** csoportjából. Miután az Azure AD feldolgozza a változást, a **HR-részleg** licenceit helyesen rendeli hozzá a rendszer.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a licenc-hozzárendelés csoportokkal való beállításáról, tekintse meg a következő cikkeket:
 

@@ -97,7 +97,7 @@ Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arró
 > [!NOTE]
 > A kinyert entitások egyediségének biztosításához `AzureSearch_DocumentKey` által használt megközelítés változhat, ezért nem szabad az alkalmazás igényeinek megfelelő értéket használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az Azure [blob Storage indexelését az azure Cognitive Search](search-howto-index-json-blobs.md) . A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
 

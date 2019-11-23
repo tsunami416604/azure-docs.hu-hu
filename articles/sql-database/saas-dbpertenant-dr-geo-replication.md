@@ -91,8 +91,8 @@ Később, egy külön visszaléptetési lépésben a helyreállítási régióba
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás rendeltetésszerű kifogástalan állapotát.
 1. A böngészőben nyissa meg a Wingtip tickets Events hub (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net-replace &lt;User&gt; az üzembe helyezés felhasználói értékével).
     * Görgessen a lap aljára, és figyelje meg a katalógus kiszolgálójának nevét és helyét a láblécben. A hely az a régió, amelyben üzembe helyezte az alkalmazást.
-    *Tipp: vigye az egérmutatót a hely fölé a kijelző nagyításához.* 
-    ![Events hub kifogástalan állapota az eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet.* 
+    ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kattintson a contoso Concert Hall-bérlőre, és nyissa meg az esemény lapját.
     * Figyelje meg a bérlői kiszolgáló nevét a láblécben. A hely ugyanaz lesz, mint a Catalog kiszolgáló helye.
@@ -300,7 +300,7 @@ Az alkalmazás úgy van kialakítva, hogy mindig a bérlői adatbázissal azonos
 
 Előfordulhat, hogy a bérlői adatbázisok a helyreállítási és az eredeti régiókban is elterjedhetnek. Az alkalmazás minden adatbázisnál megkeresi a régiót, amelyben az adatbázis található, a DNS-címkeresés a bérlői kiszolgáló nevében. SQL Database a kiszolgálónév egy alias. Az alias-kiszolgáló neve tartalmazza a régió nevét. Ha az alkalmazás nem ugyanabban a régióban található, mint az adatbázis, a rendszer az adatbázis-kiszolgálóval megegyező régióban lévő példányra irányítja át.  Az alkalmazás és az adatbázis közötti késleltetést az adott régióban lévő példányra irányítja át. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

@@ -19,9 +19,9 @@ ms.locfileid: "72177824"
 ---
 # <a name="what-is-custom-vision"></a>Mi a Custom Vision?
 
-A Custom Vision egy olyan kognitív szolgáltatás, amely lehetővé teszi saját rendszerkép-besorolások összeállítását, üzembe helyezését és fejlesztését. A képosztályozó egy olyan AI-szolgáltatás, amely a vizualizáció tulajdonságai alapján a képekre vonatkozó címkéket ( _osztályokat_jelképező) alkalmaz. A [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) szolgáltatástól eltérően Custom Vision lehetővé teszi az alkalmazandó címkék meghatározását.
+A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó egy olyan AI-szolgáltatás, amely a vizualizáció tulajdonságai alapján a képekre vonatkozó címkéket ( _osztályokat_jelképező) alkalmaz. A [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) szolgáltatástól eltérően Custom Vision lehetővé teszi az alkalmazandó címkék meghatározását.
 
-## <a name="what-it-does"></a>Funkció
+## <a name="what-it-does"></a>Művelet
 
 A Custom Vision szolgáltatás gépi tanulási algoritmust használ a címkék képekre való alkalmazásához. Ön, a fejlesztőnek be kell küldenie a szolgáltatásban szereplő rendszerképek csoportjait, és nem kell megadnia a szóban forgó jellemzőket. A képeket saját maga címkézheti a beküldéskor. Ezt követően az algoritmus ezeket az adatokhoz rendeli, és kiszámítja a saját pontosságát az azonos lemezképeken végzett teszteléssel. Az algoritmus betanítása után tesztelheti, Újrataníthatja és végül felhasználhatja az új rendszerképek besorolását az alkalmazás igényeinek megfelelően. A modellt exportálhatja offline használatra is.
 
@@ -31,9 +31,9 @@ A Custom Vision funkciói két szolgáltatásra oszlanak. A **képbesorolás** e
 
 ### <a name="optimization"></a>Optimalizálás
 
-A Custom Vision szolgáltatás úgy van optimalizálva, hogy gyorsan felismerje a képek közötti jelentős különbségeket, így a modell prototípusát kis mennyiségű adattal is elindíthatja. a címkével ellátott 50-lemezképek általában jól indulnak. A szolgáltatás azonban nem optimális megoldás a képek enyhe különbségének észlelésére (például kisebb repedések vagy horpadások észlelése minőségbiztosítási forgatókönyvekben).
+A Custom Vision a képek közti nagyobb különbségek gyors felismerésére lett optimalizálva, ezért kis adatmennyiséggel is elkezdheti a modell prototípuskészítését. a címkével ellátott 50-lemezképek általában jól indulnak. A szolgáltatás azonban nem optimális megoldás a képek enyhe különbségének észlelésére (például kisebb repedések vagy horpadások észlelése minőségbiztosítási forgatókönyvekben).
 
-Emellett számos olyan Custom Vision-algoritmus közül választhat, amelyek bizonyos tárgyi anyagokhoz, például a no__t-0for, a tereptárgyak vagy a kereskedelmi elemekhez optimalizált rendszerképekre vannak optimalizálva. További információt az [osztályozó](getting-started-build-a-classifier.md) útmutatójának összeállítása című témakörben talál.
+Emellett számos olyan Custom Vision-algoritmus közül választhat, amelyek bizonyos tulajdonosi anyagokkal, például tereptárgyak vagy kereskedelmi elemek&mdash;ra vannak optimalizálva. További információt az [osztályozó](getting-started-build-a-classifier.md) útmutatójának összeállítása című témakörben talál.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 

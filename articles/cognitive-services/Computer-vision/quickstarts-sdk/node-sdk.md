@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Node. js-hez készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
+title: 'Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
 description: Ismerkedés a Computer Vision ügyféloldali kódtár a Node. js-hez...
 services: cognitive-services
 author: PatrickFarley
@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2019
 ms.locfileid: "71981831"
 ---
-# <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Gyors útmutató: A Node. js-hez készült ügyféloldali kódtár Computer Vision
+# <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár Computer Vision
 
 Ismerkedés a Node. js-hez készült Computer Vision ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. 
 
@@ -25,7 +25,7 @@ A Node. js-hez készült Computer Vision ügyféloldali kódtár a következőh�
 * [Kép elemzése](#analyze-an-image)
 * [Nyomtatott és kézzel írt szöveg olvasása](#read-printed-and-handwritten-text)
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)@no__t – 1[könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [csomag (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [minta](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [csomag (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
+A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
  
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -51,7 +51,7 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json` fájllal. 
+A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json`-fájllal. 
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és a `azure-cognitiveservices-computervision` NPM csomagokat:
+Telepítse a `ms-rest-azure` és `azure-cognitiveservices-computervision` NPM csomagokat:
 
 ```console
 npm install azure-cognitiveservices-computervision ms-rest-azure
@@ -73,7 +73,7 @@ Hozzon létre egy új fájlt, az *index. js*fájlt, és nyissa meg egy szövegsz
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Ezután Definiáljon egy függvényt @no__t – 0, és deklaráljon egy aszinkron sorozatot az elsődleges függvény és a visszahívási függvénnyel. Adja hozzá a rövid útmutató kódját az elsődleges függvényhez, és hívja meg `computerVision` értéket a parancsfájl alján.
+Ezután Definiáljon egy függvényt `computerVision` és deklaráljon egy aszinkron sorozatot az elsődleges függvény és a visszahívási függvénnyel. Adja hozzá a gyors üzembe helyezési kódot az elsődleges függvényhez, és hívja meg `computerVision` a szkript alján.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
@@ -189,7 +189,7 @@ A következő kód az észlelt színattribútumokat nyomtatja ki a képen, péld
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors)]
 
-Adja meg a segítő függvényt @no__t – 0, hogy kinyomtassa a színsémának a konzolra vonatkozó részleteit.
+Adja meg a segítő függvényt `printColorScheme` a színséma adatainak a konzolra való kinyomtatásához.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors_print)]
 
@@ -205,13 +205,13 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks)]
 
-Adja meg `formatRectDomain` segítő függvényt az észlelt tereptárgyak hely adatainak elemzéséhez.
+Adja meg a segítő függvényt `formatRectDomain` az észlelt tereptárgyak helyének adatainak elemzéséhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks_rect)]
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a no__t-0whether kép típusával kapcsolatos információkat jeleníti meg. Ez a ClipArt vagy a vonal rajzolása.
+A következő kód a képtípussal kapcsolatos információkat jeleníti meg&mdash;legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
@@ -242,13 +242,13 @@ Adja meg a `recognizeText` függvényt. Ez meghívja a **recognizeText** metódu
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Ezután adja meg a segítő függvényt @no__t – 0, amely egy felismerési művelet eredményét kiírja a konzolra.
+Ezután adja meg a segítő függvényt `printRecText`, amely egy felismerési művelet eredményét kiírja a-konzolra.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a `node` paranccsal a gyors üzembe helyezési fájlban.
+Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `node` paranccsal.
 
 ```console
 node index.js
@@ -261,7 +261,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (node. js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)

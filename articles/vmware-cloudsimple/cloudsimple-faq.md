@@ -33,7 +33,7 @@ A CloudSimple az USA keleti régiójában, az USA nyugati régiójában és a Ny
 
 **Hogyan engedélyezni a CloudSimple-előfizetést?**
 
-A CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a Microsoft-fiók képviselőjével [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) címen. Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
+A CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) Microsoft-fiók képviselőjével. Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
 
 **Hogyan hozzáférni a CloudSimple-portálhoz?**
 
@@ -50,7 +50,7 @@ A CloudSimple egy ütemezett karbantartási időszak előtt több nappal biztos�
 * **CloudSimple-infrastruktúra**.  A CloudSimple-infrastruktúra kiválóan elérhető.  Az ilyen típusú karbantartási időszak során a redundáns összetevők egyszerre frissülnek, hogy elkerülje a szolgáltatás megszakadását. Ön gondoskodik a saját felhőalapú vCenter, az összes virtuális géphez, a saját Felhőbeli internetkapcsolatról, valamint a helyszíni vagy az Azure-hoz való csatlakozásról.
 * **CloudSimple-portál**. Az ilyen típusú karbantartási időszak során előfordulhat, hogy a CloudSimple-portál néhány funkciója le van tiltva vagy nem érhető el.  A karbantartási időközt megelőzően az értesítés a szolgáltatásra vonatkozó korlátozásokkal kapcsolatos részleteket tartalmaz, miközben karbantartás zajlik.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 **Milyen csatlakozási lehetőségek vannak a CloudSimple-régió hálózatához?**
 
@@ -68,7 +68,7 @@ A privát felhő részleteit a CloudSimple-portálon tekintheti meg. A privát f
 
 Az Azure ExpressRoute áramkör nagy sebességű, kis késleltetésű és biztonságos kapcsolat.  A CloudSimple egy régiónként dedikált ExpressRoute-áramkört biztosít az ügyfelek számára.  Ezen áramkör használatával biztonságos kapcsolatot létesíthet a helyszínen vagy az Azure-előfizetésében.
 
-@no__t 0What a CloudSimple-hez való kapcsolódáshoz szükséges hálózati költségek?  A kimenő forgalomra vonatkozó díjak a CloudSimple és az Azure között, illetve a régiók között is érvényesek? **
+**Milyen hálózati költségekkel csatlakozhat a CloudSimple?  A kimenő forgalomra vonatkozó díjak a CloudSimple és az Azure, illetve az egyes régiók között is érvényesek?**
 
 A hálózati kimenő forgalomért nem számítunk fel CloudSimple díjat.  Az Azure standard díjszabása a virtuális hálózatról vagy a helyszíni ExpressRoute áramkörről érkező kimenő forgalomra vonatkozik.
 
@@ -100,21 +100,21 @@ A CloudSimple a következő biztonsági funkciókat biztosítja a saját felhőa
 * **Hálózati biztonság**. Szabályozhatja a hálózati forgalom áramlását a saját felhő és az Internet, a saját felhő és a helyszíni környezet, illetve a saját felhő alhálózatai között alkalmazott tűzfalszabályok használatával.
 * **Biztonságos, magánhálózati kapcsolatok**. Biztonságos, magánhálózati kapcsolat áll fenn a helyszíni hálózat és az Azure-előfizetés között.
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Számítás
 
 **Milyen típusú gazdagépek érhetők el?**
 
 A CloudSimple a következő gazdagép-típusokat kínálja:
 
-* **CS28 csomópont:** CPU: 2x 2,2 GHz, összesen 28 mag, 48 HT.  RAM: 256 GB.  Storage: 1600 GB NVMe cache, 5760 GB adat (all-Flash). Hálózati 4x25Gbe hálózati adapter
-* **CS36 csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB adat (all-Flash).  Hálózati 4x25Gbe hálózati adapter
-* **CS36m csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 576 GB.  Storage: 3200 GB NVMe cache 13360 GB adat (all-Flash).  Hálózati 4x25Gbe hálózati adapter
+* **CS28 csomópont:** CPU: 2x 2,2 GHz, összesen 28 mag, 48 HT.  RAM: 256 GB.  Tárterület: 1600 GB NVMe cache, 5760 GB adat (all-Flash). Hálózat: 4x25Gbe hálózati adapter
+* **CS36 csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB adat (teljes Flash).  Hálózat: 4x25Gbe hálózati adapter
+* **CS36m csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 576 GB.  Storage: 3200 GB NVMe cache 13360 GB adat (teljes Flash).  Hálózat: 4x25Gbe hálózati adapter
 
 **Hogyan történik a hardveres hibák kezelése?**
 
 A CloudSimple platform és a szolgáltatási operatív csapatok folyamatosan figyelik az összes CloudSimple-infrastruktúrát.  Ha hardverhiba észlelhető, egy új csomópont kerül a saját felhőbe, és a rendszer eltávolítja a meghibásodott csomópontot.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 **Milyen típusú tárterület támogatott a privát felhőben?**
 

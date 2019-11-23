@@ -33,7 +33,7 @@ ms.locfileid: "71947903"
 Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe helyezésével és hibakeresésével egy helyi számítógép-fejlesztési fürtben. A Visual Studio 2019 vagy a 2015 képes telepíteni az alkalmazást a helyi fürtre, és automatikusan összekapcsolja a hibakeresőt az alkalmazás összes példányával. A hibakeresőhöz a Visual studiót rendszergazdaként kell futtatni.
 
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
-2. Nyomja le az **F5** billentyűt, vagy kattintson a **hibakeresés**@no__t – 2**Indítás indítása**lehetőségre.
+2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés gombra** > **hibakeresés indítása**
    
     ![Alkalmazás hibakeresésének megkezdése][startdebugging]
 3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
@@ -143,7 +143,7 @@ A nyomkövetéseket közvetlenül egy távoli fürtcsomóponton is képes továb
    
     ![Távoli folyamatos átvitel nyomkövetésének letiltása][disablestreamingtraces]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric szolgáltatás tesztelése](service-fabric-testability-overview.md).
 * [Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).
 

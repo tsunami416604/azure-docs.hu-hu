@@ -72,6 +72,6 @@ A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált
    ![Első javítás és Megjegyzés válasza](./media/first-comment-reply.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](./cpp-publish-offer.md).

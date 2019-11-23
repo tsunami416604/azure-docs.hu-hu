@@ -120,15 +120,15 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
 
 A következő elemek előtaggal vannak ellátva a **[a]** típussal – az összes csomópontra érvényes, **[1]** – csak az 1 **.,** **[2]** csomópontra vonatkozik – csak a 3. csomópontra alkalmazható.
 
-1. **[A]** telepítési állomásnév feloldása
+1. **[A]**  Állomásnév-feloldás beállítása
 
-   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>
@@ -348,7 +348,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo gluster volume start <b>NW2</b>-aers
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-rhel.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

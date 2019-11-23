@@ -26,7 +26,7 @@ ms.locfileid: "72255173"
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Továbbá az App Service beépített támogatást nyújt az [Eltérő eredetű erőforrások megosztásához (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) a RESTful API-k esetében. Ez az oktatóanyag bemutatja, hogyan telepíthető ASP.NET Core API-alkalmazás az App Service-ben CORS-támogatással. Az alkalmazást parancssori eszközökkel állíthatja be, és a Git használatával helyezheti üzembe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * App Service-erőforrások létrehozása az Azure CLI-vel
@@ -90,7 +90,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -158,7 +158,7 @@ A helyi terminálablakban futtassa ismét a mintaalkalmazást.
 dotnet run
 ```
 
-Lépjen a `http://localhost:5000` helyen lévő böngészőalkalmazáshoz. Nyissa meg a fejlesztői eszközök ablakot a böngészőben (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 a Chrome for Windows), és vizsgálja meg a **konzol** lapot. Ekkor a következő hibaüzenet jelenik meg: `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Lépjen a `http://localhost:5000` helyen lévő böngészőalkalmazáshoz. Nyissa meg a fejlesztői eszközök ablakot a böngészőben (`Ctrl`+`Shift`+`i` Chrome for Windows), és vizsgálja meg a **konzol** lapot. Ekkor megjelenik a hibaüzenet, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![CORS-hiba a böngészőügyfélben](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 Több ügyfél URL-címét is beállíthatja a `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) tulajdonságban. Az összes URL-címet is engedélyezheti a `"['*']"` érték megadásával.
 
 > [!NOTE]
-> Ha az alkalmazásnak olyan hitelesítő adatokat kell megadnia, mint például a cookie-k vagy a hitelesítési tokenek, a böngészőnek szüksége lehet a `ACCESS-CONTROL-ALLOW-CREDENTIALS` fejlécre a válaszon. Ha App Service szeretné engedélyezni ezt, a CORS-konfigurációban állítsa be a `properties.cors.supportCredentials` értéket `true` értékre. Ez nem engedélyezhető, ha a `allowedOrigins` `'*'`.
+> Ha az alkalmazásnak olyan hitelesítő adatokat kell megadnia, mint például a cookie-k vagy a hitelesítési tokenek, a böngészőnek szüksége lehet a válasz `ACCESS-CONTROL-ALLOW-CREDENTIALS` fejlécére. Ha App Service szeretné engedélyezni ezt a lehetőséget, állítsa be a `properties.cors.supportCredentials`t a CORS-konfigurációban `true`re. Ez nem engedélyezhető, ha a `allowedOrigins` `'*'`t tartalmaz.
 
 ### <a name="test-cors-again"></a>A CORS újbóli tesztelése
 

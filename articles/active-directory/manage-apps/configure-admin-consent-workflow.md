@@ -127,7 +127,7 @@ Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhet
 |Rendszergazdai jóváhagyást kérő véleményezők jóváhagyása       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            |Jelenleg nem található a rendszergazdai jogosultsággal rendelkező felhasználói környezet vagy alkalmazás-azonosító.           |
 |Rendszergazdai beleegyező kérést elutasító felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            | Jelenleg nem találja a rendszergazdai jóváhagyásra vonatkozó kérést elutasító színész felhasználói környezetét.          |
 
-## <a name="faq"></a>Gyakori kérdések 
+## <a name="faq"></a>GYIK 
 
 **Bekapcsoltam ezt a munkafolyamatot, de a funkciók kipróbálásakor miért nem látom az új "jóváhagyás szükséges" kérést, amely lehetővé teszi a hozzáférést?**
 

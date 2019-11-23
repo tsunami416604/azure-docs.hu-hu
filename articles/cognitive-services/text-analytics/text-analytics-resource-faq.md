@@ -47,11 +47,11 @@ A kimenet általában a mondatok és a mondat objektumaiból áll. A kimenet fon
 
 A modellek és algoritmusok fejlesztése akkor jelent meg, ha a módosítás jelentős, vagy ha a frissítés kisebb, akkor a szolgáltatás csendesen slipstreamed. Az idő múlásával előfordulhat, hogy ugyanaz a szöveges bevitel egy másik hangulati pontszám vagy a kulcs kifejezésének kimenetét eredményezi. Ez a felügyelt gépi tanulási erőforrások Felhőbeli használatának normális és szándékos következménye.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [UserVoice webhelyén](https://cognitive.uservoice.com/forums/555922-text-analytics)kérjen vagy szavazzon.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

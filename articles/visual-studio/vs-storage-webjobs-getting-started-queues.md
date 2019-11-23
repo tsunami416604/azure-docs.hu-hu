@@ -24,7 +24,7 @@ ms.locfileid: "72298752"
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk azt ismerteti, hogyan kezdheti el az Azure üzenetsor-tárolás használatát egy Visual Studio Azure Webjobs-projektben, miután létrehozta vagy hivatkozott egy Azure Storage-fiókot a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával. Amikor egy Webjobs-projekthez hozzáadja a Storage-fiókot a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával, a megfelelő Azure Storage NuGet-csomagok települnek, a megfelelő .net-hivatkozások hozzáadódnak a projekthez, és a kapcsolati karakterláncok a következőhöz: a Storage-fiók az app. config fájlban frissül.  
+Ez a cikk azt ismerteti, hogyan kezdheti el az Azure üzenetsor-tárolás használatát egy Visual Studio Azure Webjobs-projektben, miután létrehozta vagy hivatkozott egy Azure Storage-fiókot a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával. Amikor egy Webjobs-projekthez hozzáadja a Storage-fiókot a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanelének használatával, a megfelelő Azure Storage NuGet-csomagok települnek, a megfelelő .net-referenciák hozzáadódnak a projekthez, és a Storage-fiókhoz tartozó kapcsolati karakterláncok frissülnek az app. config fájlban.  
 
 Ez a cikk C# a Azure WebJobs SDK 1. x verziójának Azure üzenetsor-tárolási szolgáltatással való használatát bemutató kódrészleteket tartalmaz.
 
@@ -89,9 +89,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>A QueueTrigger attribútum típusa
 A **QueueTrigger** a következő típusokkal végezhető el:
 
-* **karakterlánc**
+* **string**
 * Egy olyan POCO típus, amely JSON-ként van szerializálva
-* **bájt []**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Lekérdezési algoritmus
@@ -191,7 +191,7 @@ További információkért lásd: [webjobs-leállítási](http://blog.amitapple.
 Új üzenetsor-üzenetet létrehozó függvény írásához használja az **üzenetsor** attribútumot. A **QueueTrigger**hasonlóan karakterláncként adja át a várólista nevét, vagy beállíthatja [a várólista nevét dinamikusan](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Karakterlánc-Várólista üzenetei
-A következő nem aszinkron kód minta egy új üzenetsor-üzenetet hoz létre a "outputqueue" nevű várólistában ugyanazzal a tartalommal, mint a "inputqueue" nevű várólistában kapott üzenetsor-üzenet. (Aszinkron függvények esetén használja a **IAsyncCollector @ no__t-1T >** a jelen szakasz későbbi részében látható módon.)
+A következő nem aszinkron kód minta egy új üzenetsor-üzenetet hoz létre a "outputqueue" nevű várólistában ugyanazzal a tartalommal, mint a "inputqueue" nevű várólistában kapott üzenetsor-üzenet. (Az aszinkron függvények a szakasz későbbi részében látható **IAsyncCollector\<t >** használják.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 Az SDK automatikusan a JSON-ra szerializálja az objektumot. A várólista-üzenet mindig létrejön, még akkor is, ha az objektum null értékű.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Több üzenet vagy aszinkron függvények létrehozása
-Több üzenet létrehozásához írja be a következő példában látható módon a kimeneti várólista **ICollector: @ no__t-1T >** vagy **IAsyncCollector @ no__t-3T >** .
+Több üzenet létrehozásához adja meg a kimeneti várólista **ICollector\<t >** vagy a **IAsyncCollector\<t >** , ahogy az alábbi példában is látható.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -545,7 +545,7 @@ A webjobs SDK irányítópultján a konzol kimenetének legutóbbi 100 sora jele
 
 ![Kimenet váltása](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-Folyamatos Webjobs az alkalmazások naplói a/Data/Jobs/Continuous/ *{webjobname}* /job_log.txt jelennek meg a webalkalmazás fájlrendszerében.
+Folyamatos Webjobs az alkalmazások naplói a/Data/Jobs/Continuous/ *{webjobname}* /job_log. txt fájlban jelennek meg a webalkalmazás fájlrendszerében.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

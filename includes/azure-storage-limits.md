@@ -17,7 +17,7 @@ ms.locfileid: "72023066"
 ---
 Az alábbi táblázat az Azure általános célú v1, v2 és blob Storage-fiókok alapértelmezett korlátait ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldött kérelmekből származó összes értékre vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott válaszok összes adatértékére vonatkozik.
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | A Storage-fiókok régiónként/előfizetések száma, beleértve a standard és a prémium szintű fiókokat is | 250 |
 | Storage-fiók maximális kapacitása | 2 PiB az Egyesült ÁLLAMOKban és Európában, valamint 500 TiB az összes többi régióban (beleértve az Egyesült Királyságot)<sup>1</sup>|
@@ -41,5 +41,5 @@ Az alábbi táblázat az Azure általános célú v1, v2 és blob Storage-fióko
 
 Ha az alkalmazás igényei meghaladják egy adott Storage-fiók skálázhatósági céljait, az alkalmazást több Storage-fiók használatára is felépítheti. Ezután particionálhatja az adatobjektumokat a Storage-fiókok között. A mennyiségi díjszabással kapcsolatos információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Az összes Storage-fiók egy egyszerű hálózati topológián fut, és támogatja a jelen cikkben ismertetett skálázhatósági és teljesítményi célokat, függetlenül attól, hogy mikor hozták létre. További információ az Azure Storage lapos hálózati architektúrával és a méretezhetőséggel kapcsolatban: [Microsoft Azure Storage: Magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia-ellenőrzéssel @ no__t-0.
+Az összes Storage-fiók egy egyszerű hálózati topológián fut, és támogatja a jelen cikkben ismertetett skálázhatósági és teljesítményi célokat, függetlenül attól, hogy mikor hozták létre. Az Azure Storage lapos hálózati architektúrával és a méretezhetőséggel kapcsolatos további információkért lásd [: Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)-használattal.
 

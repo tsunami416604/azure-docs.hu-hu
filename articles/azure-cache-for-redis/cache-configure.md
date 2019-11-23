@@ -508,6 +508,6 @@ A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés**gombr
 
 További információ az erőforrások egyik erőforráscsoporthoz egy másikra való áthelyezéséről, illetve az egyik előfizetésről a másikra: [erőforrások áthelyezése új erőforrás-csoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-faq.md#how-can-i-run-redis-commands)
 

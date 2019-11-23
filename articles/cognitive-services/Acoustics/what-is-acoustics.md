@@ -31,17 +31,17 @@ A Project akusztika kulcsfontosságú újítása a valós hanghullám-alapú aku
 ![Animáció, amely egy jeleneten keresztüli hullámos propagálás vízszintes 2D szeletét ábrázolja](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Videós bemutató a GDC 2019 (~ 30 perc)
-[@no__t – 1Project akusztikai videó](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kattintson ide a videó lejátszásához")
+[![Project akusztikai videó](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kattintson ide a videó lejátszásához")
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 A [Project akusztikai egység integrációja](unity-integration.md) a drag-and-drop, és tartalmaz egy Unity audio Engine beépülő modult. Fokozza az egység hangforrásának vezérlőit úgy, hogy egy Project C# akusztikai vezérlőt csatlakoztat egy adott hangobjektumhoz.
 
 A [Project akusztikai Unreal Integration](unreal-integration.md) az Unreal-hez készült szerkesztő és game plugins, valamint egy Wwise keverő beépülő modult tartalmaz. Az egyéni hangösszetevő kibővíti az Wwise funkcióit az Unreal-en belül az élő akusztikai kialakítási vezérlőkkel. A tervezési vezérlők a keverő beépülő modul Wwise is elérhetők.
 
 ## <a name="workflow"></a>Munkafolyamat
 * **Előre sütjük:** Kezdje a sütni beállításával, és válassza ki, hogy mely geometria reagál az akusztikara, például a könnyű tengelyek figyelmen kívül hagyásával. Ezután szerkessze az automatikus anyag-hozzárendeléseket, és válassza a navigációs területek lehetőséget a figyelő mintavételezéséhez. A reverb/Portal/Room zónákhoz nem tartozik kézi jelölés.
-* **Sütni** Egy elemzési lépés helyileg fut, amely a voxelization és más geometriai elemzéseket végez a jeleneten a fenti beállítások alapján. Az eredmények a szerkesztőben láthatók a jelenet telepítőjének ellenőrzéséhez. A sütni-beküldéskor a rendszer az Voxel adatokat az Azure-ba küldi, és egy akusztikai játékbeli eszközt kap vissza.
-* **Runtime** Töltse be az eszközt a szintjébe, és készen áll arra, hogy meghallgassa az akusztikai szintet. Megtervezheti az akusztikai működést a szerkesztőben, és részletesen használhatja a forráskódot. A vezérlőelemek a szint parancsfájljaiból is futtathatók.
+* **Sütni:** Egy elemzési lépés helyileg fut, amely a voxelization és más geometriai elemzéseket végez a jeleneten a fenti beállítások alapján. Az eredmények a szerkesztőben láthatók a jelenet telepítőjének ellenőrzéséhez. A sütni-beküldéskor a rendszer az Voxel adatokat az Azure-ba küldi, és egy akusztikai játékbeli eszközt kap vissza.
+* **Futtatókörnyezet:** Töltse be az eszközt a szintjébe, és készen áll arra, hogy meghallgassa az akusztikai szintet. Megtervezheti az akusztikai működést a szerkesztőben, és részletesen használhatja a forráskódot. A vezérlőelemek a szint parancsfájljaiból is futtathatók.
 
 ## <a name="runtime-platforms"></a>Futtatókörnyezeti platformok
 A Project akusztikai futtatókörnyezet beépülő modulja jelenleg a következő platformokon telepíthető:
@@ -63,7 +63,7 @@ A Project akusztikai szerkesztő beépülő modulja a következő platformokon �
 ## <a name="contact-us"></a>Kapcsolat
 * [A Project akusztikai vitafórum és a jelentések kiadása](https://github.com/microsoft/ProjectAcoustics/issues)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Próbálja ki a [projekt akusztikai útmutatóját az Unity](unity-quickstart.md) vagy az [Unreal](unreal-quickstart.md) számára
 * Ismerje meg a [Project Acoustics hangkialakítási filozófiáját](design-process.md)
 
