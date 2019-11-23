@@ -29,14 +29,14 @@ Az alábbi ábra egy olyan fürtöt mutat be, amely két csomópontos típust ta
 ![Két csomóponttal rendelkező fürt][NodeTypes]
 
 ## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Virtuálisgép-méretezési csoport példányainak leképezése csomópontokra
-Ahogy az előző ábrán is látható, a méretezési csoport példányai a 0. példányon kezdődnek, majd 1 értékkel növekednek. A számozás a csomópontok neveiben jelenik meg. Például a Node BackEnd_0 a háttérbeli méretezési csoport 0. példánya. Ennek az adott méretezési csoportnak öt példánya van, amelyek neve BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 és BackEnd_4.
+Ahogy az előző ábrán is látható, a méretezési csoport példányai a 0. példányon kezdődnek, majd 1 értékkel növekednek. A számozás a csomópontok neveiben jelenik meg. A Node BackEnd_0 például a háttér-méretezési csoport 0. példánya. Ez az adott méretezési csoport öt példányban, BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 és BackEnd_4 névvel rendelkezik.
 
-Méretezési csoport skálázásakor létrejön egy új példány. Az új méretezési csoport példányának neve általában a méretezési csoport neve és a következő példány száma. A példánkban ez a BackEnd_5.
+Méretezési csoport skálázásakor létrejön egy új példány. Az új méretezési csoport példányának neve általában a méretezési csoport neve és a következő példány száma. A példánkban BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési készlet terheléselosztása a csomópontok típusaihoz és a méretezési csoportokhoz
-Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB-&lt;node Type Name @ no__t-2**. Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
+Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB-&lt;Node Type name&gt;** . Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
 
-![Segédanyagok és eszközök][Resources]
+![Erőforrások][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Virtuálisgép-bővítmény Service Fabric
 Service Fabric a virtuálisgép-bővítmény az Azure-beli Virtual Machines rendszerindítására Service Fabric és a csomópontok biztonságának konfigurálására szolgál.
@@ -79,14 +79,14 @@ A tulajdonságok leírása a következő:
 | --- | --- | --- | --- |
 | név | sztring | --- | kiterjesztés egyedi neve |
 | type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | --- | Meghatározza, hogy az operációs rendszer Service Fabric |
-| autoUpgradeMinorVersion | igaz vagy hamis | --- | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
-| Publisher | Microsoft. Azure. ServiceFabric | --- | a Service Fabric-kiterjedési közzétevő neve |
+| autoUpgradeMinorVersion | true vagy false | --- | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
+| publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric-kiterjedési közzétevő neve |
 | clusterEndpont | sztring | --- | URI: PORT – felügyeleti végpont |
 | nodeTypeRef | sztring | --- | nodeType neve |
-| durabilityLevel | bronz, ezüst, arany, platina | --- | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
-| enableParallelJobs | igaz vagy hamis | --- | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
+| durabilityLevel | bronze, silver, gold, platinum | --- | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
+| enableParallelJobs | true vagy false | --- | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
 | nicPrefixOverride | sztring | --- | Alhálózat-előtag, például "10.0.0.0/24" |
-| commonNames | karakterlánc [] | --- | Telepített fürtözött tanúsítványok köznapi nevei |
+| commonNames | string[] | --- | Telepített fürtözött tanúsítványok köznapi nevei |
 | x509StoreName | sztring | --- | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
 | typeHandlerVersion | 1.1 | --- | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
 | dataPath | sztring | --- | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja. 

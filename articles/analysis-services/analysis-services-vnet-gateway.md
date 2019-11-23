@@ -35,7 +35,7 @@ Azure SQL Database felügyelt példány adatforrásai saját IP-címmel futnak a
     ![Mindig az átjáró tulajdonság használata](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)   
 Helyszíni [adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)   
 [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   

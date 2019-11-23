@@ -108,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)   

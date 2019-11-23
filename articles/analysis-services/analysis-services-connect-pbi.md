@@ -46,7 +46,7 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 1. Hozzon létre egy Power BI Desktop fájlt, amely élő kapcsolatban áll a modellel a-kiszolgálón.
 2. [Power bi](https://powerbi.microsoft.com)kattintson az adat > **fájlok** **lekérése** elemre, majd keresse meg és válassza ki a. pbix fájlt.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Kapcsolódás Azure Analysis Services](analysis-services-connect.md)   
 [Ügyfélkódtárak](analysis-services-data-providers.md)
 

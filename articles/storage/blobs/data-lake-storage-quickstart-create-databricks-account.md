@@ -33,12 +33,12 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  : heavy_check_mark: az [alkalmazás szerepkörhöz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szükséges lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -121,7 +121,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
     > [!NOTE]
     > Ez a kódrészlet közvetlenül hozzáfér a Data Lake Gen2-végponthoz a OAuth használatával, de más módokon is csatlakozhat a Databricks-munkaterülethez a Data Lake Storage Gen2-fiókhoz. Például csatlakoztathatja a tárolót a OAuth használatával, vagy közvetlen hozzáférést használhat megosztott kulccsal. <br>A módszerek példáinak megtekintéséhez tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket a Azure Databricks webhelyén.
 
-5. A kód blokkban cserélje le a `storage-account-name`, `appID`, `password` és `tenant-id` helyőrző értékeket a kód blokkba az egyszerű szolgáltatásnév létrehozásakor összegyűjtött értékekkel. Állítsa be a `container-name` helyőrző értékét a tárolóhoz adni kívánt névre.
+5. A kód blokkban cserélje le a kód `storage-account-name`, `appID`, `password`és `tenant-id` helyőrző értékét az egyszerű szolgáltatás létrehozásakor összegyűjtött értékekre. Állítsa be a `container-name` helyőrző értékét a tárolóhoz adni kívánt névre.
 
     > [!NOTE]
     > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
@@ -190,7 +190,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
     - Az **Értékek** mezőben adja meg a **level** értéket.
     - Az **Összesítés** mezőben adja meg a **COUNT** értéket.
 
-6. Kattintson az **Apply** (Alkalmaz) gombra.
+6. Kattintson az **Alkalmaz** gombra.
 
 7. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 
@@ -202,7 +202,7 @@ Ha elkészült ezzel a cikkel, leállíthatja a fürtöt. Az Azure Databricks-mu
 
 ![Databricks-fürt leállítása](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor a **megszakítást választotta \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor a **megszakítás után \_\_ perc inaktivitás után** jelölőnégyzet be van jelölve. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>Következő lépések
 

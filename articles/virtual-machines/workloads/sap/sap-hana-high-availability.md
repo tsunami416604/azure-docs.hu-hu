@@ -83,7 +83,7 @@ A magas rendelkezésre állás eléréséhez SAP HANA két virtuális gépre van
 
 ![SAP HANA magas rendelkezésre állás áttekintése](./media/sap-hana-high-availability/ha-suse-hana.png)
 
-SAP HANA a rendszerreplikáció beállítása dedikált virtuális állomásnevet és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A terheléselosztó konfigurációját a következő lista tartalmazza:
+SAP HANA System Replication setup uses a dedicated virtual hostname and virtual IP addresses. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A terheléselosztó konfigurációját a következő lista tartalmazza:
 
 * Előtér-konfiguráció: IP-10.0.0.13 a hn1-db-hez
 * Háttérbeli konfiguráció: a HANA rendszer-replikáció részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
@@ -233,7 +233,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
    A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az 2388694-es [SAP-megjegyzésben][2388694].
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 > Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
@@ -584,7 +584,7 @@ Ez a szakasz azt ismerteti, hogyan lehet tesztelni a telepítőt. Minden teszt f
 
 ### <a name="test-the-migration"></a>Az áttelepítés tesztelése
 
-Mielőtt elkezdené a tesztet, győződjön meg arról, hogy a pacemaker nem rendelkezik sikertelen művelettel (crm_mon-r-n keresztül), nincsenek váratlan helyekre vonatkozó korlátozások (például egy áttelepítési teszt maradékai), és hogy a HANA szinkronizált állapotban van, például a SAPHanaSR-showAttr:
+A teszt elkezdése előtt győződjön meg arról, hogy a pacemaker nem rendelkezik sikertelen művelettel (crm_mon-r-n keresztül), nincsenek váratlan helyekre vonatkozó korlátozások (például egy áttelepítési teszt maradékai), és hogy a HANA szinkronizált állapotú, például SAPHanaSR-showAttr:
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
 
@@ -605,7 +605,7 @@ A SAP HANA fő csomópontját a következő parancs végrehajtásával telepíth
 
 Ha `AUTOMATED_REGISTER="false"`állítja be, akkor a parancsok ezen sorozatának át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
 
-Az áttelepítés befejezése után a crm_mon-r kimenet így néz ki
+Az áttelepítés elvégzése után a crm_mon-r kimenet így néz ki
 
 <pre><code>Online: [ hn1-db-0 hn1-db-1 ]
 
@@ -647,7 +647,7 @@ A másodlagos csomópont erőforrásának állapotát is meg kell tisztítani:
 <pre><code>hn1-db-0:~ # crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
-A HANA-erőforrás állapotának figyelése a crm_mon-r használatával. Miután a HANA elindult a hn1-db-0-on, a kimenetnek a következőhöz hasonlóan kell kinéznie:
+A HANA-erőforrás állapotának figyelése crm_mon-r használatával. Miután a HANA elindult a hn1-db-0-on, a kimenetnek a következőhöz hasonlóan kell kinéznie:
 
 <pre><code>Online: [ hn1-db-0 hn1-db-1 ]
 
@@ -735,7 +735,7 @@ A használati esettől függően futtasson minden olyan tesztelési esetet, amel
 
 Az alábbi tesztek a SAP HANA SR teljesítményre optimalizált forgatókönyvének tesztelési leírását ismertetik SUSE Linux Enterprise Server SAP-alkalmazások 12 SP1 útmutatójában. Naprakész verzió esetén mindig olvassa el az útmutatót is. Mindig ellenőrizze, hogy a HANA szinkronban van-e a teszt megkezdése előtt, és ellenőrizze, hogy helyes-e a pacemaker konfigurációja.
 
-A következő tesztelési leírásokban feltételezzük, hogy a PREFER_SITE_TAKEOVER = "true" és a AUTOMATED_REGISTER = "false".
+A következő tesztekben feltételezzük, hogy PREFER_SITE_TAKEOVER = "true" és AUTOMATED_REGISTER = "false".
 Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, és az előző tesztek kilépési állapotától függenek.
 
 1. 1\. TESZT: AZ ELSŐDLEGES ADATBÁZIS LEÁLLÍTÁSA AZ 1. CSOMÓPONTON
@@ -1125,7 +1125,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

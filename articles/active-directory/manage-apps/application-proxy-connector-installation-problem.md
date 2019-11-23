@@ -48,7 +48,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 2.  Ha a portok bármelyike nem sikeres, ellenőrizze, hogy a tűzfal vagy a háttér-proxy hozzáfér-e a szükséges tartományokhoz és portokhoz. lásd: a helyszíni [környezet előkészítése](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Nyisson meg egy böngészőt (külön lapon), és lépjen a következő weblapra: <https://login.microsoftonline.com>, győződjön meg róla, hogy be tud jelentkezni az oldalra.
+3.  Nyisson meg egy böngészőt (külön lapon), és lépjen a következő weblapra: <https://login.microsoftonline.com>, és ellenőrizze, hogy be tud-e jelentkezni az adott oldalra.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>A számítógép-és háttér-összetevők támogatásának ellenőrzése az alkalmazásproxy megbízhatósági tanúsítványában
 
@@ -71,9 +71,9 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 **A hitelesítő adatok helyességének ellenőrzése:**
 
-Kapcsolódjon <https://login.microsoftonline.com> értékhez, és használja ugyanazokat a hitelesítő adatokat. Győződjön meg arról, hogy a bejelentkezés sikeres. A felhasználói szerepkört úgy tekintheti meg, hogy **Azure Active Directory** - @ no__t-2 **felhasználót és csoportot** - @ No__t-5 **minden felhasználó számára**. 
+Kapcsolódjon <https://login.microsoftonline.com>hoz, és használja ugyanazokat a hitelesítő adatokat. Győződjön meg arról, hogy a bejelentkezés sikeres. A felhasználói szerepkört úgy tekintheti meg, hogy **Azure Active Directory** -&gt; **felhasználókat és csoportokat** -&gt; **minden felhasználó számára**. 
 
 Válassza ki a felhasználói fiókot, majd a "címtárbeli szerepkör" lehetőséget az eredményül kapott menüben. Győződjön meg arról, hogy a kiválasztott szerepkör az "Application Administrator". Ha nem fér hozzá a fenti lépésekhez tartozó lapokhoz, nem rendelkezik a szükséges szerepkörrel.
 
 ## <a name="next-steps"></a>Következő lépések
-[Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
+[Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)

@@ -28,7 +28,7 @@ ms.locfileid: "72388518"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -86,7 +86,7 @@ Az FCM-mel konfigurált háttér-beállításokkal összetevőket és kódokat a
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>A Firebase példány-azonosító szolgáltatás implementálása
 
-1. Adjon hozzá egy új osztályt az `FirebaseRegistrationService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
+1. Adjon hozzá egy új osztályt a `FirebaseRegistrationService`nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using System.Threading.Tasks;
@@ -123,13 +123,13 @@ Az FCM-mel konfigurált háttér-beállításokkal összetevőket és kódokat a
     }
     ```
 
-    A `FirebaseRegistrationService` osztály feladata olyan biztonsági jogkivonatok létrehozása, amelyek engedélyezik az alkalmazás számára az FCM elérését. A `OnTokenRefresh` metódus akkor kerül meghívásra, ha az alkalmazás egy regisztrációs jogkivonatot kap az FCM-ből. A metódus lekérdezi a tokent a `FirebaseInstanceId.Instance.Token` tulajdonságból, amelyet az FCM aszinkron módon frissít. A `OnTokenRefresh` metódus ritkán van meghívva, mert a token csak akkor frissül, amikor az alkalmazás telepítve van vagy el lett távolítva, amikor a felhasználó törli az alkalmazási adatmennyiséget, amikor az alkalmazás törli a példány AZONOSÍTÓját, vagy ha a jogkivonat biztonsága megtörtént veszélybe. Emellett az FCM instance ID szolgáltatás azt is kéri, hogy az alkalmazás rendszeres időközönként frissíti a tokent, általában 6 havonta.
+    A `FirebaseRegistrationService` osztály feladata olyan biztonsági jogkivonatok létrehozása, amelyek engedélyezik az alkalmazás számára az FCM elérését. A `OnTokenRefresh` metódus akkor kerül meghívásra, ha az alkalmazás egy regisztrációs jogkivonatot kap az FCM-ből. A metódus lekéri a jogkivonatot a `FirebaseInstanceId.Instance.Token` tulajdonságból, amelyet az FCM aszinkron módon frissít. A `OnTokenRefresh` metódus ritkán van meghívva, mert a token csak akkor frissül, ha az alkalmazás telepítve van vagy el lett távolítva, amikor a felhasználó törli az alkalmazásadatok számát, amikor az alkalmazás törli a példány AZONOSÍTÓját, vagy ha a token biztonsága sérült. Emellett az FCM instance ID szolgáltatás azt is kéri, hogy az alkalmazás rendszeres időközönként frissíti a tokent, általában 6 havonta.
 
     A `OnTokenRefresh` metódus a `SendRegistrationTokenToAzureNotificationHub` metódust is meghívja, amely a felhasználó regisztrációs jogkivonatának az Azure Notification hub szolgáltatással való hozzárendelésére szolgál.
 
 #### <a name="registering-with-the-azure-notification-hub"></a>Regisztrálás az Azure Notification hub-ban
 
-1. Adjon hozzá egy új osztályt az `AzureNotificationHubService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
+1. Adjon hozzá egy új osztályt a `AzureNotificationHubService`nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using System;
@@ -168,11 +168,11 @@ Az FCM-mel konfigurált háttér-beállításokkal összetevőket és kódokat a
     }
     ```
 
-    A `RegisterAsync` metódus egy egyszerű értesítési üzenetet hoz létre JSON-ként, és regisztrálja az értesítési központból a Firebase regisztrációs jogkivonat használatával kapott sablon-értesítéseket. Ez biztosítja, hogy az Azure Notification hub által küldött értesítések a regisztrációs jogkivonat által jelzett eszközt célozzák meg.
+    A `RegisterAsync` metódus egy egyszerű értesítési üzenetet hoz létre JSON-ként, és regisztrálja az értesítési központban található sablon-értesítések fogadását a Firebase regisztrációs jogkivonat használatával. Ez biztosítja, hogy az Azure Notification hub által küldött értesítések a regisztrációs jogkivonat által jelzett eszközt célozzák meg.
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>Leküldéses értesítés tartalmának megjelenítése
 
-1. Adjon hozzá egy új osztályt az `FirebaseNotificationService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
+1. Adjon hozzá egy új osztályt a `FirebaseNotificationService`nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using Android.App;
@@ -234,7 +234,7 @@ Most már készen áll az Android-eszközön vagy az emulátoron futó alkalmaz�
 Az első két lépés csak akkor szükséges, ha egy emulátoron végez tesztelést.
 
 1. Győződjön meg arról, hogy a Google Play-szolgáltatásokkal konfigurált eszközön vagy emulátoron helyezi üzembe vagy végzi a hibakeresést. Ezt ellenőrizheti, ha ellenőrzi, hogy a **Play** -alkalmazások telepítve vannak-e az eszközön vagy az emulátoron.
-2. Vegyen fel egy Google-fiókot az Android-eszközre, ehhez kattintson az **alkalmazások** > **Beállítások** > **fiók hozzáadása**lehetőségre. Ezután kövesse az utasításokat, és adjon hozzá egy meglévő Google-fiókot az eszközhöz, vagy hozzon létre egy újat.
+2. Vegyen fel egy Google-fiókot az Android-eszközre az **alkalmazások** > **Beállítások** > **fiók hozzáadása**lehetőségre kattintva. Ezután kövesse az utasításokat, és adjon hozzá egy meglévő Google-fiókot az eszközhöz, vagy hozzon létre egy újat.
 3. A Visual Studióban vagy a Xamarin Studióban kattintson a jobb gombbal a **droid** projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
 4. Kattintson a **Futtatás** gombra a projekt felépítéséhez és az alkalmazás elindításához az Android-eszközön vagy az emulátoron.
 5. Az alkalmazásban írjon be egy feladatot, majd kattintson a plusz ( **+** ) ikonra.
@@ -358,7 +358,7 @@ Ez a szakasz a Xamarin. Forms WinApp és a WinPhone81 projektek Windows-eszköz�
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    Cserélje le a `<your_TodoItemManager_portable_class_namespace>` értéket az `TodoItemManager` osztályt tartalmazó hordozható projekt névterére.
+    Cserélje le a `<your_TodoItemManager_portable_class_namespace>`t a `TodoItemManager` osztályt tartalmazó hordozható projekt névterére.
 
 2. A App.xaml.cs-ben adja hozzá a következő **initnotificationsasync metódusdefiníciót** metódust:
 
@@ -388,7 +388,7 @@ Ez a szakasz a Xamarin. Forms WinApp és a WinPhone81 projektek Windows-eszköz�
 
     Ez a metódus lekéri a leküldéses értesítési csatornát, és regisztrálja a sablont, hogy fogadja a sablonra vonatkozó értesítéseket az értesítési központban. A rendszer a *messageParam* támogató sablont küldi el az ügyfélnek.
 
-3. A App.xaml.cs-ben frissítse a **OnLaunched** eseménykezelő metódus definícióját az `async` módosító hozzáadásával. Ezután adja hozzá a következő kódrészletet a metódus végén:
+3. A App.xaml.cs-ben frissítse a **OnLaunched** eseménykezelő metódus definícióját a `async`-módosító hozzáadásával. Ezután adja hozzá a következő kódrészletet a metódus végén:
 
     ```csharp
     await InitNotificationsAsync();
@@ -419,9 +419,9 @@ További információ a leküldéses értesítésekről:
 A következő oktatóanyagok egyikét is folytathatja:
 
 * [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+  Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
 * [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. Az offline szinkronizálással a felhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálhatnak, ha nincs hálózati kapcsolat.
+  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálással a felhasználók a Mobile apps szolgáltatással kezelhetik az adat&mdash;t&mdash;megtekinteni, hozzáadni vagy módosítani, még akkor is, ha nincs hálózati kapcsolat.
 
 <!-- Images. -->
 

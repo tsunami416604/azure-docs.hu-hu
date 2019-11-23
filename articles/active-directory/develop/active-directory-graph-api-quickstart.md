@@ -37,9 +37,9 @@ Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsola
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Graph API URL-cím létrehozása
 
-A Graph API a címtáradatok és objektumok (más szóval, erőforrások vagy entitások) eléréséhez, amelyeken a SZIFILISZi műveleteket végre szeretné hajtani, az URL-címeket az Open OData (nyílt adatértékek) protokoll alapján használhatja. A Graph API használt URL-címek négy fő részből állnak: a szolgáltatás gyökeréből, a bérlői azonosítóból, az erőforrás elérési útjából és a lekérdezési karakterlánc beállításaiból: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Végezze el a következő URL-cím példáját: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
+A Graph API a címtáradatok és objektumok (más szóval, erőforrások vagy entitások) eléréséhez, amelyeken a SZIFILISZi műveleteket végre szeretné hajtani, az URL-címeket az Open OData (nyílt adatértékek) protokoll alapján használhatja. A Graph APIben használt URL-címek négy fő részből állnak: a szolgáltatás gyökerétől, a bérlői azonosítótól, az erőforrás elérési útjától és a lekérdezési karakterlánctól: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Végezze el a következő URL-cím példáját: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
-* **Szolgáltatás gyökerének**: az Azure ad Graph APIban a szolgáltatás gyökerének mindig https://graph.windows.net.
+* **Szolgáltatás gyökerének**használata: az Azure ad Graph APIban a szolgáltatás gyökerét mindig https://graph.windows.net.
 * **Bérlő azonosítója**: Ez a szakasz ellenőrizhető (regisztrált) tartománynév lehet az előző példában contoso.com. A bérlői objektum azonosítója vagy a "myorganization" vagy a "Me" alias is lehet. További információ: [entitások és műveletek kezelése az Azure ad-ban Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
 * **Erőforrás elérési útja**: az URL-cím ezen szakasza azonosítja azt az erőforrást, amelyet a (felhasználók, csoportok, egy adott felhasználó vagy egy adott csoport stb.) használatával szeretne használni. A fenti példában ez a legfelső szintű "csoportok", amely az erőforrás-készletet kezeli. Egy adott entitást (például "Users/{objectId}" vagy "Users/userPrincipalName") is megadhat.
 * **Lekérdezési paraméterek**: a kérdőjel (?) elválasztja a lekérdezési paraméterek szakasz erőforrás-elérésiút szakaszát. Az Azure AD Graph API összes kéréséhez az "API-version" lekérdezési paraméter szükséges. Az Azure AD Graph API a következő OData-lekérdezési lehetőségeket is támogatja: **$Filter**, **$OrderBy**, **$Expand**, **$Top**és **$Format**. A következő lekérdezési lehetőségek jelenleg nem támogatottak: **$Count**, **$inlinecount**és **$skip**. További információ: [támogatott lekérdezések, szűrők és lapozási beállítások az Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
@@ -58,25 +58,25 @@ Az [Azure ad Graph API gyakori lekérdezések](https://msdn.microsoft.com/Librar
 
 A `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` például a címtár contoso.com tartozó vállalati adatokat adja vissza.
 
-Vagy `https://graph.windows.net/contoso.com/users?api-version=1.6` a címtár contoso.com lévő összes felhasználói objektumot listázza.
+Vagy `https://graph.windows.net/contoso.com/users?api-version=1.6` listázza az összes felhasználói objektumot a címtár contoso.com.
 
 ## <a name="using-the-azure-ad-graph-explorer"></a>Az Azure AD Graph Explorer használata
 Az Azure ad Graph Explorerrel használhatja az Azure AD Graph API a címtáradatok lekérdezéséhez az alkalmazás létrehozásakor.
 
-Az alábbi képernyőképen a kimenet látható, ha az Azure AD Graph Explorerrel navigál, jelentkezzen be, és írja be `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` értéket a bejelentkezett felhasználó címtárában lévő összes felhasználó megjelenítéséhez:
+Az alábbi képernyőképen a kimenet látható, ha az Azure AD Graph Explorerrel navigál, jelentkezzen be, és írja be `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` a bejelentkezett felhasználó címtárában lévő összes felhasználó megjelenítéséhez:
 
 ![Példa kimenet az Azure AD Graph API Explorerben](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**Töltse be az Azure ad Graph Explorert**: az eszköz betöltéséhez navigáljon a [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)elemre. Kattintson a **Bejelentkezés** elemre, és jelentkezzen be az Azure ad-fiókja hitelesítő adataival az Azure ad Graph Explorer a bérlőn való futtatásához. Ha az Azure AD Graph Explorert a saját bérlőn futtatja, akkor Ön vagy a rendszergazdának kell beleegyeznie a bejelentkezés során. Ha rendelkezik Office 365-előfizetéssel, automatikusan rendelkezik egy Azure AD-Bérlővel. Az Office 365-be való bejelentkezéshez használt hitelesítő adatok valójában az Azure AD-fiókokat használják, és ezeket a hitelesítő adatokat az Azure AD Graph Explorerrel is használhatja.
+**Töltse be az Azure ad Graph Explorert**: az eszköz betöltéséhez navigáljon [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Kattintson a **Bejelentkezés** elemre, és jelentkezzen be az Azure ad-fiókja hitelesítő adataival az Azure ad Graph Explorer a bérlőn való futtatásához. Ha az Azure AD Graph Explorert a saját bérlőn futtatja, akkor Ön vagy a rendszergazdának kell beleegyeznie a bejelentkezés során. Ha rendelkezik Office 365-előfizetéssel, automatikusan rendelkezik egy Azure AD-Bérlővel. Az Office 365-be való bejelentkezéshez használt hitelesítő adatok valójában az Azure AD-fiókokat használják, és ezeket a hitelesítő adatokat az Azure AD Graph Explorerrel is használhatja.
 
-**Lekérdezés futtatása**: lekérdezés futtatásához írja be a lekérdezést a kérelem szövegmezőbe, majd kattintson az **ENTER** ( **Letöltés** ) gombra. Az eredmények a válasz mezőben jelennek meg. Például `https://graph.windows.net/myorganization/groups?api-version=1.6` a bejelentkezett felhasználó címtárában lévő összes csoport objektumot listázza.
+**Lekérdezés futtatása**: lekérdezés futtatásához írja be a lekérdezést a kérelem szövegmezőbe, majd kattintson az **ENTER** ( **Letöltés** ) gombra. Az eredmények a válasz mezőben jelennek meg. A `https://graph.windows.net/myorganization/groups?api-version=1.6` például a bejelentkezett felhasználó címtárában lévő összes csoport objektumot listázza.
 
 Vegye figyelembe az Azure AD Graph Explorer következő funkcióit és korlátozásait:
 
 * Automatikus kiegészítési képesség az erőforrás-készleteken. A funkció megjelenítéséhez kattintson a kérelem szövegmezőre (ahol megjelenik a vállalati URL-cím). Kiválaszthat egy erőforrás-készletet a legördülő listából.
 * Kérelmek előzményei.
-* A "Me" és a "myorganization" címzési aliasokat támogatja. Használhatja például a `https://graph.windows.net/me?api-version=1.6` értéket a bejelentkezett felhasználó felhasználói objektumának visszaküldéséhez, vagy `https://graph.windows.net/myorganization/users?api-version=1.6` a bejelentkezett felhasználó címtárában lévő összes felhasználó visszaküldéséhez.
-* A `POST`, `GET`, `PATCH` és `DELETE` használatával teljes körű szifilisz-műveleteket támogat a saját címtárában.
+* A "Me" és a "myorganization" címzési aliasokat támogatja. A `https://graph.windows.net/me?api-version=1.6` segítségével például visszaküldheti a bejelentkezett felhasználó vagy `https://graph.windows.net/myorganization/users?api-version=1.6` felhasználói objektumát a bejelentkezett felhasználó címtárában lévő összes felhasználó visszaküldéséhez.
+* A `POST`, `GET`, `PATCH` és `DELETE`használatával támogatja a saját címtárban végzett teljes szifilisz-műveleteket.
 * A válasz fejlécei szakasz. Ez a szakasz a lekérdezések futtatásakor felmerülő problémák elhárításához használható.
 * Egy JSON-megjelenítő a válaszhoz a kibontási és összecsukási képességekkel.
 * Nem támogatott a miniatűr fényképek megjelenítésének vagy feltöltésének támogatása.
@@ -93,7 +93,7 @@ Az alábbi példában a Hegedűs web Debugger használatával hozzon létre egy 
 
 1. Nyissa meg a Hegedűs webes hibakeresőjét, és váltson a **zeneszerző** lapra.
 2. Mivel új biztonsági csoportot szeretne létrehozni, válassza a **Közzététel** http-metódusként lehetőséget a legördülő menüből. További információ a csoport objektumainak műveleteiről és engedélyeiről: [csoport](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) az [Azure ad Graph REST API referenciájában](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-3. A **post**elem melletti mezőben írja be a következő kérelem URL-címét: `https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`.
+3. A **post**következő mezőjébe írja be a következő kérelem URL-címét: `https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`.
    
    > [!NOTE]
    > A (z) {mytenantdomain} nevet a saját Azure AD-címtárának tartománynevével kell helyettesíteni.
@@ -107,7 +107,7 @@ Az alábbi példában a Hegedűs web Debugger használatával hozzon létre egy 
    ```
    
    > [!NOTE]
-   > Az Azure AD-címtár hozzáférési jogkivonatával helyettesítse be a &lt;your hozzáférési tokent @ no__t-1.
+   > Az Azure AD-címtár hozzáférési jogkivonatával helyettesítse be &lt;a hozzáférési token&gt;.
 
 5. A **kérelem törzse** mezőben írja be a következő JSON-t:
    

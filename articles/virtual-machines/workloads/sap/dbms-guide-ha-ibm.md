@@ -201,7 +201,7 @@ Az elsődleges IBM DB2 LUW adatbázis-példány beállítása:
 
 Ha a készenléti adatbázis-kiszolgálót az SAP homogén rendszermásolási eljárással szeretné beállítani, hajtsa végre a következő lépéseket:
 
-1. Válassza ki a **rendszermásolási** lehetőséget > **Target Systems** > **elosztott** > **adatbázis-példány**.
+1. Válassza a **rendszermásolási** lehetőség > a **célként megadott rendszerek** > **elosztott** > **adatbázis-példány**elemet.
 1. Másolási módszerként válassza a **homogén rendszer** lehetőséget, hogy a biztonsági mentés használatával visszaállítsa a biztonsági mentést a készenléti kiszolgáló példányán.
 1. Amikor eléri a kilépési lépést az adatbázis homogén rendszermásolásra való visszaállításához, lépjen ki a telepítőből. Állítsa vissza az adatbázist az elsődleges gazdagép biztonsági másolatából. Az összes további telepítési fázis már végre lett hajtva az elsődleges adatbázis-kiszolgálón.
 1. HADR beállítása az IBM DB2-hez.
@@ -483,7 +483,7 @@ A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-a
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID >/Global/DB6/db2cli.ini
+/sapmnt/\<SID>/global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -516,7 +516,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást állítson be, amelyben a naplók mindkét csomópontról íródnak. Az NFS-megosztásnak nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információ eléréséhez lásd:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][nfs-ha] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
@@ -527,10 +527,10 @@ Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításo
 
 Ez a szakasz azt ismerteti, hogyan tesztelheti a DB2 HADR-telepítőjét. *Minden teszt azt feltételezi, hogy felhasználói gyökérként van bejelentkezve* , és az IBM DB2 Primary a *azibmdb01* virtuális gépen fut.
 
-Az összes tesztelési eset kezdeti állapotát itt találja: (crm_mon-r vagy CRM status)
+Az összes tesztelési eset kezdeti állapotát itt találja: (crm_mon-r vagy CRM-állapot)
 
 - a **CRM-állapot** a pacemaker állapotának pillanatképe a végrehajtási időpontban 
-- a **crm_mon-r** a pacemaker állapotának folyamatos kimenete
+- **crm_mon – r** a szívritmus-állapot folyamatos kimenete
 
 <pre><code>2 nodes configured
 5 resources configured

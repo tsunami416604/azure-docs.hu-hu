@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrációja a hevederrel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hevederrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a hám között.
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72026957"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integrációja a hevederrel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hevederrel
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a hevedert Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a hevedert, a következőket teheti:
 
@@ -82,7 +82,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -141,11 +141,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani a hevedert, nyisson meg egy új böngészőablakot, és jelentkezzen be a vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Az oldal jobb felső részén kattintson a **folyamatos biztonsági**@no__t – 1**hozzáférés-vezérlés**@no__t – 3**hitelesítési beállítások**elemre.
+4. Az oldal jobb felső részén kattintson a **folyamatos biztonsági** > **hozzáférés-kezelés** > **hitelesítési beállítások**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure01.png)
 
-5. Az **SSO-szolgáltatók** szakaszban kattintson a **+ egyszeri bejelentkezéses szolgáltatók** > **SAML**elemre.
+5. Az **SSO-szolgáltatók** szakaszban kattintson az **egyszeri bejelentkezéses szolgáltatók** > **SAML**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +169,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ki
 
 1. Jelentkezzen be a kihasználni rendszergazdaként.
 
-1. Az oldal jobb felső részén kattintson a **folyamatos biztonság**@no__t – 1**hozzáférés-vezérlés**@no__t – 3**felhasználó**lehetőségre.
+1. Az oldal jobb felső részén kattintson a **folyamatos biztonsági** > **hozzáférés-kezelés** > a **felhasználók**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure04.png)
 
@@ -181,7 +181,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ki
 
     ![A hám konfigurálása](./media/harness-tutorial/configure06.png)
 
-    a. Az **e-mail-cím (ek)** szövegmezőbe írja be a felhasználó e-mail címét, például `B.simon@contoso.com`.
+    a. Az **e-mail-cím (ek)** szövegmezőbe írja be a felhasználó (például `B.simon@contoso.com`) e-mail-címét.
 
     b. Válassza ki a **felhasználói csoportokat**.
 

@@ -89,7 +89,7 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 > [!IMPORTANT]
 > Az SAP ASCS/ERS és a Red Hat Linux rendszerű, az Azure-beli virtuális gépeken futó vendég operációs rendszerek többszörös SID-fürtszolgáltatása **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben.
 
-### <a name="ascs"></a>Egy SCS
+### <a name="ascs"></a>(A)SCS
 
 * Előtér-konfiguráció
   * IP-10.0.0.7
@@ -262,17 +262,17 @@ Kövesse a [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](high-
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
+A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
-1. **[A]** telepítési állomásnév feloldása
+1. **[A]**  Állomásnév-feloldás beállítása
 
-   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
 
    <pre><code># IP addresses of the GlusterFS nodes
    <b>10.0.0.40 glust-0</b>
@@ -637,13 +637,13 @@ Az ordító lépések azt feltételezik, hogy az alkalmazáskiszolgáló a ASCS/
 
 1. Állomásnév feloldásának beállítása
 
-   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
 
    <pre><code># IP addresses of the GlusterFS nodes
    <b>10.0.0.40 glust-0</b>

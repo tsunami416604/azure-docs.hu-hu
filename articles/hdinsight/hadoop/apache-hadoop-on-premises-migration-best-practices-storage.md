@@ -23,11 +23,11 @@ Ez a cikk az Azure HDInsight Systems adattárolási szolgáltatásával kapcsola
 
 A helyszíni Apache Hadoop fájlrendszer (HDFS) címtár-struktúrája újra létrehozható az Azure Storage-ban vagy Azure Data Lake Storageban. Ezután biztonságosan törölheti a számításhoz használt HDInsight-fürtöket a felhasználói adatvesztés nélkül. Mindkét szolgáltatás a HDInsight-fürt alapértelmezett fájlrendszerének és egy további fájlrendszerének is használható. A HDInsight-fürtnek és a Storage-fióknak ugyanabban a régióban kell lennie.
 
-### <a name="azure-storage"></a>Azure Storage-tárterület
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 A HDInsight-fürtök az Azure Storage-ban lévő BLOB-tárolót az alapértelmezett fájlrendszerként vagy egy további fájlrendszerként is használhatják. A standard szintű Storage-fiók támogatott a HDInsight-fürtökkel való használathoz. A Premier szintű csomag nem támogatott. Az alapértelmezett Blob-tároló a fürtre jellemző információkat, például a feladatelőzményeket és a naplókat tárolja. Egy blob-tároló megosztása, mivel a több fürt alapértelmezett fájlrendszere nem támogatott.
 
-A létrehozási folyamatban és a hozzájuk tartozó kulcsokban definiált Storage-fiókok tárolása a fürtcsomópontokon `%HADOOP_HOME%/conf/core-site.xml`. A HDFS konfigurációjában a Ambari felhasználói felületén a "Custom Core site" szakaszban is elérhetők. Alapértelmezés szerint a Storage-fiók kulcsa titkosítva van, és a rendszer egy egyéni visszafejtési parancsfájlt használ a kulcsok visszafejtéséhez, mielőtt a rendszer átadja a Hadoop démonoknak. A feladatok, például a kaptár, a MapReduce, a Hadoop streaming és a Pig, elvégezhetik a Storage-fiókok és-metaadatok leírását.
+A létrehozási folyamatban és a hozzájuk tartozó kulcsokban definiált tárolási fiókok a fürtcsomópontok `%HADOOP_HOME%/conf/core-site.xml` tárolódnak. A HDFS konfigurációjában a Ambari felhasználói felületén a "Custom Core site" szakaszban is elérhetők. Alapértelmezés szerint a Storage-fiók kulcsa titkosítva van, és a rendszer egy egyéni visszafejtési parancsfájlt használ a kulcsok visszafejtéséhez, mielőtt a rendszer átadja a Hadoop démonoknak. A feladatok, például a kaptár, a MapReduce, a Hadoop streaming és a Pig, elvégezhetik a Storage-fiókok és-metaadatok leírását.
 
 Az Azure Storage lehet földrajzilag replikálható. Bár a Geo-replikáció földrajzi helyreállítást és adatredundanciát biztosít, a földrajzilag replikált helyre történő feladatátvétel jelentős hatással van a teljesítményre, és további költségekkel járhat. A javaslat célja, hogy a Geo-replikációt okosan válassza, és csak akkor, ha az adatértékek további költségeket érnek el.
 
@@ -96,7 +96,7 @@ A 2. generációs ADLS az [Azure Blob Storage](../../storage/blobs/storage-blob
 
 A Data Lake Storage Gen2 alapvető funkciója a blob Storage szolgáltatáshoz  [hierarchikus névtér](../../storage/data-lake-storage/namespace.md) hozzáadása, amely objektumokat és fájlokat szervez a könyvtárak hierarchiájában az elvégezhető adathozzáféréshez. A hierarchikus struktúra lehetővé teszi olyan műveletek használatát, mint például a címtár átnevezése vagy törlése, hogy az egyetlen atomi metaadat-művelet legyen a címtárban, nem pedig az összes olyan objektum enumerálása és feldolgozása, amelyik a címtár nevének előtagját használja.
 
-A múltban a felhőalapú elemzések a teljesítmény, a felügyelet és a biztonság területén is veszélyeztethetik a biztonságot. A Azure Data Lake Storage-(ADLS-) Gen2 legfontosabb funkciói a következők:
+Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítmény, a felügyelet és biztonság területéhez. A Azure Data Lake Storage-(ADLS-) Gen2 legfontosabb funkciói a következők:
 
 - **Hadoop-kompatibilis hozzáférés**: a Azure Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint a [HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](../../storage/data-lake-storage/abfs-driver.md) az [Azure HDInsight](../index.yml)-ban található összes Apache Hadoop környezetben elérhető. Ez az illesztőprogram lehetővé teszi a Data Lake Storage Gen2ban tárolt adatelérést.
 
@@ -163,11 +163,11 @@ A HDInsight alapértelmezés szerint teljes hozzáféréssel rendelkezik a fürt
     |storage_container_name|A Storage-fiók azon tárolója, amelyhez korlátozni kívánja a hozzáférést.|
     |example_file_path|A tárolóba feltöltött fájl elérési útja.|
 
-2. A SASToken.py-fájl a `ContainerPermissions.READ + ContainerPermissions.LIST` engedélyekkel rendelkezik, és a használati eset alapján módosítható.
+2. A SASToken.py-fájl a `ContainerPermissions.READ + ContainerPermissions.LIST` engedélyeket tartalmazza, és a használati eset alapján módosítható.
 
-3. Futtassa a szkriptet a következőképpen: `python SASToken.py`
+3. Futtassa a szkriptet a következő módon: `python SASToken.py`
 
-4. Az alábbi szöveghez hasonló SAS-jogkivonatot jeleníti meg a parancsfájl befejeződése után: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Az alábbi szöveghez hasonló SAS-tokent jeleníti meg a parancsfájl befejeződése után: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. A megosztott hozzáférési aláírással rendelkező tárolóhoz való hozzáférés korlátozásához vegyen fel egy egyéni bejegyzést a fürt alapszintű konfigurációjában a Ambari HDFS-konfigurációk speciális egyéni mag-hely hozzáadása tulajdonság alatt.
 
@@ -183,9 +183,9 @@ A HDInsight alapértelmezés szerint teljes hozzáféréssel rendelkezik a fürt
 
 A SAS-jogkivonatok Azure-ban való használatával kapcsolatban három fontos dolgot kell figyelembe venni:
 
-1. Ha a SAS-jogkivonatok "READ + LIST" engedélyekkel jönnek létre, a blob-tárolóhoz hozzáféréssel rendelkező felhasználók nem tudják "írni és törölni" az adatbevitelt. Azok a felhasználók, akik az adott SAS-tokenhez hozzáférnek a blob-tárolóhoz, és megpróbálnak írási vagy törlési műveletet végrehajtani, a `"This request is not authorized to perform this operation"` üzenetet kapják meg.
+1. Ha a SAS-jogkivonatok "READ + LIST" engedélyekkel jönnek létre, a blob-tárolóhoz hozzáféréssel rendelkező felhasználók nem tudják "írni és törölni" az adatbevitelt. Azok a felhasználók, akik az adott SAS-tokenhez hozzáférnek a blob-tárolóhoz, és megpróbálnak írási vagy törlési műveletet kapni, a következő üzenet jelenik meg: `"This request is not authorized to perform this operation"`.
 
-2. Ha a SAS-tokenek `READ + LIST + WRITE` engedélyekkel jönnek létre (csak a `DELETE` korlátozásához), akkor a (z) `hadoop fs -put` parancshoz először írjon egy `\_COPYING\_` fájlt, majd próbálja meg átnevezni a fájlt. Ez a HDFS művelet leképezi a WASB `copy+delete`. Mivel a `DELETE` engedély nem lett megadva, a "put" művelet sikertelen lesz. A `\_COPYING\_` művelet egy Hadoop-szolgáltatás, amely egy Egyidejűség-vezérlés biztosítására szolgál. Jelenleg nincs lehetőség arra, hogy csak a "Törlés" műveletet kelljen korlátozni anélkül, hogy az "írás" műveletet is befolyásolná.
+2. Ha a SAS-jogkivonatok `READ + LIST + WRITE` engedélyekkel jönnek létre (csak `DELETE` korlátozásához), akkor például `hadoop fs -put` először egy `\_COPYING\_` fájlba írni, majd próbálja meg átnevezni a fájlt. Ez a HDFS művelet leképezi a WASB `copy+delete`. Mivel a `DELETE` engedély nem lett megadva, a "put" művelet sikertelen lesz. A `\_COPYING\_` művelet egy Hadoop-szolgáltatás, amely egy Egyidejűség-vezérlés biztosítására szolgál. Jelenleg nincs lehetőség arra, hogy csak a "Törlés" műveletet kelljen korlátozni anélkül, hogy az "írás" műveletet is befolyásolná.
 
 3. Sajnos a Hadoop hitelesítőadat-szolgáltató és a visszafejtési kulcs szolgáltatója (ShellDecryptionKeyProvider) jelenleg nem működik együtt az SAS-jogkivonatokkal, így a láthatósága jelenleg nem védhető.
 
@@ -221,7 +221,7 @@ A következő módokon adhat hozzá további Storage-fiókot:
 További információkért tekintse át a következő cikkeket:
 - [További Storage-fiókok hozzáadása a HDInsight-hez](../hdinsight-hadoop-add-storage.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

@@ -62,11 +62,11 @@ Ez a cikk bemutatja, hogyan állíthatja be a Z fejlesztési és tesztelési kö
 
 3. Szerezze be a virtuális gép **Áttekintés** paneljén látható SSH hitelesítő adatokat a **kapcsolat** gomb használatával. Válassza az **SSH** fület, és másolja az SSH-bejelentkezési parancsot a vágólapra.
 
-4. Jelentkezzen be egy [bash-rendszerhéjba](/azure/cloud-shell/quickstart) a helyi számítógépről, és illessze be a parancsot. Ez lesz az **SSH @ no__t-1User ID @ no__t-2 @ no__t-3 @ no__t-4IP címe @ no__t-5**. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
+4. Jelentkezzen be egy [bash-rendszerhéjba](/azure/cloud-shell/quickstart) a helyi számítógépről, és illessze be a parancsot. Ez az **ssh\<felhasználói azonosító\>\@\<IP-cím\>** formájában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>A telepítési fájl másolása a kiszolgálóra
 
-A webkiszolgáló telepítési fájlja a következő: **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Ez az IBM által biztosított adathordozó részét képezi. Ezt a fájlt fel kell töltenie Ubuntu rendszerű virtuális gépre.
+A webkiszolgáló telepítési fájlja **ZDT\_telepítse a\_EE\_v 12.0.0.1. tgz**fájlt. Ez az IBM által biztosított adathordozó részét képezi. Ezt a fájlt fel kell töltenie Ubuntu rendszerű virtuális gépre.
 
 1. A parancssorban adja meg a következő parancsot, hogy minden naprakész legyen az újonnan létrehozott rendszerképben:
 
@@ -91,7 +91,7 @@ A webkiszolgáló telepítési fájlja a következő: **ZDT @ no__t-1Install @ n
 
 ## <a name="install-the-enterprise-edition"></a>Az Enterprise Edition telepítése
 
-1. Nyissa meg a ZDT könyvtárat, és bontsa ki a ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz fájlt a következő parancsok használatával:
+1. Nyissa meg a ZDT könyvtárat, és bontsa ki a ZDT\_telepítse\_EE\_V 12.0.0.1. tgz fájlt a következő parancsokkal:
 
     ```
     cd ZDT
@@ -136,6 +136,6 @@ Ne feledje, hogy a webkiszolgáló indításakor a rendszer a telepítési folya
 
 3. Illessze be az URL-címet egy webböngészőbe, és nyissa meg a felügyeleti összetevőt a & T-telepítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM & T v1-ben](./demo.md)

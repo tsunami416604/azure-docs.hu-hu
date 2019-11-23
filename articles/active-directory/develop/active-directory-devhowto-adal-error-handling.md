@@ -61,8 +61,8 @@ Alapvetően a AcquireTokenSilent két előfordulása van:
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentAsync(...)
-- acquireTokenSilentSync(...) 
+- acquireTokenSilentAsync(…)
+- acquireTokenSilentSync(…) 
 - [elavult] acquireTokenSilent (...)
 - [elavult] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +105,7 @@ catch (AdalException e) {
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentSync(...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync(...)
 - [elavult] acquireTokenSilent (...)
 
@@ -141,7 +141,7 @@ public void onError(Exception e) {
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- acquireTokenSilentWithResource(...)
+- acquireTokenSilentWithResource(…)
 
 A kód a következőképpen valósítható meg:
 
@@ -347,7 +347,7 @@ Ha olyan .NET-webalkalmazást hoz létre, amely egy adott erőforráshoz tartoz�
 
 A következő útmutató példákat mutat be a ADAL metódusokkal együtt: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 A kód a következőképpen valósítható meg:
 
@@ -503,7 +503,7 @@ Az adott ADAL kapcsolatos hibák feltárásához az [Azure-ActiveDirectory-Libra
 
 #### <a name="operating-system-errors"></a>Operációs rendszer hibái
 
-Az Android operációs rendszer hibái a ADAL hitelesítési kivétel keresztül érhetők el, és a "SERVER_INVALID_REQUEST" néven azonosíthatók, és a hibák leírásával további részletességgel is rendelkezhetnek. 
+Az androidos operációsrendszer-hibák a ADAL hitelesítési kivétel keresztül érhetők el, és a "SERVER_INVALID_REQUEST" azonosíthatók, és a hibák leírásával további részletességgel is rendelkezhetnek. 
 
 A gyakori hibák teljes listáját, valamint azt, hogy milyen lépéseket kell elvégeznie az alkalmazás vagy a végfelhasználók számára, tekintse meg a [ADAL Android wikit](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
@@ -586,7 +586,7 @@ window.Logging = {
 
 A következő megjegyzések szakasz segítségével visszajelzést adhat, és segítheti a tartalom pontosítását és kialakítását.
 
-[@no__t – a "Bejelentkezés Microsoft-fiókkal" gomb 1Shows][AAD-Sign-In]][AAD-Sign-In]
+[![a "Bejelentkezés Microsoft-fiókkal" gomb megjelenítése][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

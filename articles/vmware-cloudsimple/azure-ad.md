@@ -103,6 +103,6 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 > [!CAUTION]
 > Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Private Cloud Permission modelről](learn-private-cloud-permissions.md)

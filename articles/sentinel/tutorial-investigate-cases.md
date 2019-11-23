@@ -21,7 +21,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72024608"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: Incidensek vizsgálata az Azure Sentineltel
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
 
 > [!IMPORTANT]
 > A vizsgálati gráf jelenleg nyilvános előzetes verzióban érhető el.
@@ -70,11 +70,11 @@ A vizsgálati gráf lehetővé teszi, hogy az elemzők a megfelelő kérdéseket
   
 A vizsgálati gráf a következőket biztosítja:
 
-- **Vizualizációs környezet a nyers adatokból**: Az élő, vizuális gráf megjeleníti a nyers adatokból automatikusan kinyert entitás-kapcsolatokat. Ez lehetővé teszi a különböző adatforrások közötti kapcsolatok egyszerű megtekintését.
+- **Vizualizációs környezet a nyers adatokból**: az élő, a vizualizációs gráf a nyers adatokból automatikusan kinyert entitás-kapcsolatokat jeleníti meg. Ez lehetővé teszi a különböző adatforrások közötti kapcsolatok egyszerű megtekintését.
 
-- **Teljes vizsgálat hatókörének felderítése**: Kiterjesztheti a vizsgálat hatókörét a beépített felderítési lekérdezésekkel, hogy felhasználhassa a szabálysértés teljes körét.
+- **Teljes vizsgálat hatókörének felderítése**: a vizsgálat hatókörének kibontása beépített feltárási lekérdezésekkel a szabálysértés teljes hatókörének felépítéséhez.
 
-- **Beépített vizsgálat lépései**: Az előre meghatározott feltárási lehetőségek használatával győződjön meg arról, hogy a megfelelő kérdéseket kéri fel a fenyegetés szem előtt.
+- **Beépített vizsgálat lépései**: az előre meghatározott feltárási lehetőségekkel győződjön meg arról, hogy a megfelelő kérdéseket a fenyegetés szemében kéri.
 
 A vizsgálati gráf használata:
 
@@ -97,7 +97,7 @@ A vizsgálati gráf használata:
 
     ![Kapcsolódó riasztások megtekintése](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek a következő események kiválasztásával: **@ no__t-1**.
+1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek az **események\>** kiválasztásával történő megnyitására szolgáló lehetőséget.
 
 1. Az incidens megismerése érdekében a gráf párhuzamos idővonalat biztosít.
 
@@ -109,7 +109,7 @@ A vizsgálati gráf használata:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan kezdheti el az incidensek vizsgálatát az Azure Sentinel használatával. Folytassa az Oktatóanyaggal, hogy [miként reagálhat a fenyegetésekre automatizált forgatókönyvek használatával](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Válaszoljon a fenyegetésekre](tutorial-respond-threats-playbook.md) , hogy automatizálja a fenyegetésekre adott válaszokat.

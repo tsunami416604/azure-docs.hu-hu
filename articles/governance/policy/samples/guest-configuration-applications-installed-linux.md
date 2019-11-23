@@ -238,7 +238,7 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 | [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Egy kezdeményezés eltávolítása. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Eltávolít egy definíciót. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a további [Azure Policy mintákat](index.md).
 - További információ a [Azure Policy vendég konfigurációról](../concepts/guest-configuration.md).

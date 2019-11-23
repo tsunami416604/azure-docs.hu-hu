@@ -35,7 +35,8 @@ Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a t�
 <br>
 <center>
 
-![Moby as Container Runtime @ no__t-1 @ no__t-2
+![a Moby as Container Runtime](./media/support/only-moby-for-production.png)
+</center>
 
 ## <a name="operating-systems"></a>Operációs rendszerek
 Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; Ezek a rendszerek azonban nem egyformán támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
@@ -51,7 +52,8 @@ A gazda operációs rendszer családjának mindig egyeznie kell a modul tároló
 <br>
 <center>
 
-@no__t 0Host operációs rendszer megfelel a vendég operációs rendszer @ no__t-1 @ no__t-2
+![gazdagép operációs rendszere megfelel a vendég operációs rendszer](./media/support/edge-on-device.png)
+</center>
 
 ### <a name="tier-1"></a>1\. szint
 
@@ -101,7 +103,8 @@ A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Ed
 <br>
 <center>
 
-@no__t 0Azure-IoT Edge egy virtuális gépen @ no__t-1 @ no__t-2
+![Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm.png)
+</center>
 
 ## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelmények
 A Azure IoT Edge nagyszerűen fut az eszközökön, mint a Pi3 a kiszolgálói minőségű hardverek számára. Ha kiválasztja a megfelelő hardvert a forgatókönyvhöz, a futtatni kívánt munkaterheléstől függ. Az eszköz végső döntése bonyolult lehet; a hagyományos laptopokon és asztali számítógépeken azonban könnyedén elindíthatja a prototípust.

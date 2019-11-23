@@ -34,7 +34,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToObject` a különböző típusok között. 
+  Az alábbi példa bemutatja, hogyan viselkedik a `StringToObject` különböző típusokban. 
   
  Az alábbi példák érvényes bemenettel rendelkeznek.
 
@@ -56,7 +56,7 @@ SELECT
 ```
 
  A következő példák érvénytelen bemenettel rendelkeznek.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. Az objektumon belüli karakterláncokat "{\\" Escape-karakterrel kell megszöknie @ no__t-1 ": \\" Str @ no__t-3 "}" vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" értékűnek kell lennie.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. Az objektumon belüli karakterláncokat "{\\" a\\":\\" Str\\"}" vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" karakterrel kell rendelkeznie.
 
 A környező tulajdonságok neveinek egyetlen idézőjele nem érvényes JSON.
 
@@ -104,7 +104,7 @@ SELECT
 [{}]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

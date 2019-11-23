@@ -30,7 +30,7 @@ A Key Vault létrehozásához és konfigurálásához Azure Disk Encryption a k�
 Ezeket a lépéseket az alábbi rövid útmutatók szemléltetik:
 
 - [Linux rendszerű virtuális gép létrehozása és titkosítása az Azure CLI-vel](disk-encryption-cli-quickstart.md)
-- [Linux rendszerű virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-cli-quickstart.md)
+- [Linux rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-cli-quickstart.md)
 
 Ha szeretné, létrehozhat vagy importálhat egy kulcs-titkosítási kulcsot (KEK) is.
 
@@ -41,7 +41,7 @@ Ha szeretné, létrehozhat vagy importálhat egy kulcs-titkosítási kulcsot (KE
 
 A cikkben ismertetett lépések az [Azure CLI](/cli/azure/)-vel, az Azure PowerShell az [module](/powershell/azure/overview)vagy a [Azure Portal](https://portal.azure.com)használatával végezhetők el. 
 
-Amíg a portál elérhető a böngészőben, az Azure CLI és a Azure PowerShell helyi telepítést igényel; Lásd: @no__t – 0Azure lemez titkosítása Linux rendszeren: A részletekért telepítse a @ no__t-0 eszközöket.
+Amíg a portál elérhető a böngészőben, az Azure CLI és a Azure PowerShell helyi telepítést igényel; További részletekért lásd [: Azure Disk Encryption for Linux (eszközök telepítése](disk-encryption-linux.md#install-tools-and-connect-to-azure) ).
 
 ### <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
 
@@ -117,19 +117,19 @@ Ha a Key vaultot nem engedélyezte a lemez titkosításához, üzembe helyezés�
 
 Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) lemez titkosítása a key vault engedélyezése. 
 
- - **Key Vault engedélyezése a lemezes titkosításhoz:** Engedélyezve van a-Disk-Encryption szükséges. 
+ - **A Key Vault engedélyezése lemeztitkosítás:** engedélyezve a lemez titkosításra szükség. 
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **Key Vault telepítésének engedélyezése, ha szükséges:** Engedélyezi a Microsoft. számítási erőforrás-szolgáltató számára, hogy a kulcstartóból beolvassa a titkos kulcsokat, amikor ez a kulcstartó az erőforrás-létrehozásban hivatkozik, például virtuális gép létrehozásakor.
+ - **A Key Vault engedélyezése a központi telepítéshez, szükség esetén:** lehetővé teszi, hogy a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **Szükség esetén Key Vault engedélyezése a sablonok telepítéséhez:** Annak engedélyezése, hogy a Resource Manager beolvassa a titkos kulcsokat a tárból.
+ - **A Key Vault engedélyezése a sablon üzembe helyezéshez, szükség esetén:** Resource Manager lehetővé teszi a titkos kódok lekérése a tárolóból.
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```
@@ -137,19 +137,19 @@ Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) lemez ti
 ###  <a name="azure-powershell"></a>Azure PowerShell
  A Key Vault PowerShell-parancsmagjának [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) használatával engedélyezheti a lemez titkosítását.
 
-  - **Key Vault engedélyezése a lemezes titkosításhoz:** Az Azure Disk Encryption EnabledForDiskEncryption szükséges.
+  - **A Key Vault engedélyezése lemeztitkosítás:** EnabledForDiskEncryption szükség az Azure Disk encryption.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDiskEncryption
      ```
 
-  - **Key Vault telepítésének engedélyezése, ha szükséges:** Engedélyezi a Microsoft. számítási erőforrás-szolgáltató számára, hogy a kulcstartóból beolvassa a titkos kulcsokat, amikor ez a kulcstartó az erőforrás-létrehozásban hivatkozik, például virtuális gép létrehozásakor.
+  - **A Key Vault engedélyezése a központi telepítéshez, szükség esetén:** lehetővé teszi, hogy a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDeployment
      ```
 
-  - **Szükség esetén Key Vault engedélyezése a sablonok telepítéséhez:** Lehetővé teszi a Azure Resource Manager számára, hogy a kulcstartóból beolvassa a titkos kulcsokat, ha a kulcstároló a sablon központi telepítésében van hivatkozva.
+  - **A Key Vault engedélyezése a sablon üzembe helyezéshez, szükség esetén:** Azure Resource Manager lehetővé teszi, hogy a titkos kódok lekéréséhez a kulcstartóban, ha a kulcstartó hivatkozik egy sablon telepítése.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
@@ -218,7 +218,7 @@ $KEK = Get-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "myKEK"
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -KeyEncryptionKeyVaultId $KeyVault.ResourceId -KeyEncryptionKeyUrl $KEK.Id -SkipVmBackup -VolumeType All
  ```
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

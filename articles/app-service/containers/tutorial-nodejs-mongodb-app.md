@@ -32,7 +32,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adatbázis létrehozása Azure Cosmos DB API-MongoDB
@@ -188,7 +188,7 @@ Másolja a `primaryMasterKey` értékét. A következő lépés során szükség
 
 A helyi MEAN.js-adattár _config/env/_ mappájában hozzon létre egy _local-production.js_ nevű fájlt. A _.gitignore_ a fájlnak az adattáron kívül való tartására lett konfigurálva.
 
-Másolja az alábbi kódot a fájlba. Ügyeljen arra, hogy a két *\<cosmosdb-name >* helyőrzőt cserélje le a Cosmos db-adatbázis nevére, és cserélje le az *\<primary-master-Key >* helyőrzőt az előző lépésben másolt kulccsal.
+Másolja az alábbi kódot a fájlba. Ügyeljen arra, hogy cserélje le a két *\<cosmosdb >* helyőrzőt a Cosmos db-adatbázis nevére, és cserélje le az *\<Primary-master-Key >* helyőrzőt az előző lépésben másolt kulccsal.
 
 ```javascript
 module.exports = {
@@ -259,13 +259,13 @@ Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _co
 
 Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben.
 
-Az alábbi példa egy `MONGODB_URI` alkalmazás beállítását konfigurálja az Azure-alkalmazásban. Cserélje le a *\<app-name >* , a *\<cosmosdb-Name >* és a *\<primary-Master-Key >* helyőrzőket.
+Az alábbi példa egy `MONGODB_URI` alkalmazás beállítását konfigurálja az Azure-alkalmazásban. Cserélje le a *\<app-name >* , *\<cosmosdb >* , és *\<elsődleges-főkulcs >* helyőrzőket.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-A Node. js kódban a `process.env.MONGODB_URI` [értékkel fér hozzá az alkalmazáshoz](configure-language-nodejs.md#access-environment-variables) , ugyanúgy, mint bármely környezeti változóhoz.
+A Node. js kódban ehhez az [alkalmazás-beállításhoz](configure-language-nodejs.md#access-environment-variables) `process.env.MONGODB_URI`, ugyanúgy, mint bármely környezeti változóhoz.
 
 A helyi MEAN.js-adattárban nyissa meg a _config/env/production.js_ fájlt (ne a _config/env/local-production.js_ fájlt), amely az éles környezetre vonatkozó konfigurációval rendelkezik. Az alapértelmezett MEAN.js-alkalmazás már a létrehozott `MONGODB_URI` környezeti változó használatára lett konfigurálva.
 
@@ -300,10 +300,10 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
-Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](https://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez:
+Azt tapasztalhatja, hogy az üzembehelyezési folyamat az [ után kezdi meg a ](https://gulpjs.com/)Gulp`npm install` futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez:
 
 - _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
-- _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot.
+- _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `gulp prod` és a `npm install` után futtatja a `bower install` parancsot.
 
 Ezzel a módszerrel adhat hozzá további lépéseket a Git-alapú üzemelő példányhoz. Ha bármikor újraindítja az Azure-alkalmazást, App Service nem futtatja újra ezeket az automatizálási feladatokat. További információ: a [morog/Bower/Nyelő futtatása](configure-language-nodejs.md#run-gruntbowergulp).
 
@@ -333,7 +333,7 @@ Ebben a lépésben módosítja az `article` adatmodellt, és közzéteszi a mód
 
 A helyi MEAN.js-adattárban nyissa meg a _modules/articles/server/models/article.server.model.js_ fájlt.
 
-Az `ArticleSchema` sémában adjon hozzá egy `comment` nevű `String` típust. Amikor elkészült, a séma kódjának így kell kinéznie:
+Az `ArticleSchema` sémában adjon hozzá egy `String` nevű `comment` típust. Amikor elkészült, a séma kódjának így kell kinéznie:
 
 ```javascript
 let ArticleSchema = new Schema({
@@ -445,7 +445,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, navigáljon az Azure-alkalmazáshoz, és próbálja ki az új funkciókat.
+A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és próbálja ki az új funkciókat.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -471,7 +471,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 
@@ -486,7 +486,7 @@ Az alábbiak elvégzését ismerte meg:
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás @ no__t-0
+> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
 
 Vagy tekintse meg a többi erőforrást:
 

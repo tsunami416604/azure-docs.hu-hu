@@ -30,7 +30,7 @@ A lekérdezési készletekben lévő lekérdezések replikáinak számától fü
 
 Horizontális felskálázás esetén akár öt percet is igénybe vehet, amíg az új lekérdezési replikák Növekményesen fel lesznek véve a lekérdezési készletbe. Ha az összes új lekérdezési replikát felhasználják, az új ügyfélkapcsolatok terheléselosztása a lekérdezési készlet erőforrásai között történik. A meglévő ügyfélkapcsolatok nem változnak attól az erőforrástól, amelyhez jelenleg csatlakoznak. A (z) skálázásakor a lekérdezési készlet erőforrásaiból eltávolított meglévő ügyfélkapcsolatok le lesznek szakítva. Az ügyfelek újra csatlakozhatnak egy hátralévő lekérdezési készlet erőforráshoz.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 A skálázás első beállításakor a *rendszer automatikusan* szinkronizálja az elsődleges kiszolgálón a modell adatbázisait új replikákkal egy új lekérdezési készletben. Az automatikus szinkronizálás csak egyszer fordul elő. Az automatikus szinkronizálás során az elsődleges kiszolgáló adatfájljait (a blob Storage-ban tárolt adatok titkosítása) egy második helyre másolják, amely a blob Storage-ban is titkosítva van. A lekérdezési készletben lévő replikák Ezután *hidratálva* lesznek a második készletből származó adatokkal. 
 

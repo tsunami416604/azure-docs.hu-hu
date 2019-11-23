@@ -38,20 +38,20 @@ A Prometheus-metrikák aktív kaparása a következő két szempont egyikével v
 
 URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
 
-|Hatókör | Jelmagyarázat | Data type | Érték | Leírás |
+|Hatókör | Paraméter | Data type | Érték | Leírás |
 |------|-----|-----------|-------|-------------|
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
-| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
-| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Logikai | igaz vagy hamis | Ha a `true` értékre van állítva a teljes fürtre kiterjedő beállításokban, Azure Monitor a containers Agent számára a Kubernetes-hüvelyt a teljes fürtön a következő Prometheus-megjegyzések esetében fogja lekaparni:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Logikai | igaz vagy hamis | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` értéket `true` értékre kell beállítani. |
-| | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a következőre: `https`. | 
+| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Logikai | true vagy false | Ha a `true`re van beállítva a teljes fürtre vonatkozó beállításokban, Azure Monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön a következő Prometheus-megjegyzésekhez fogja lekaparni:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logikai | true vagy false | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` `true`re kell beállítani. |
+| | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa `https`ra. | 
 | | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja nem `/metrics`, akkor ezt a jegyzetet adja meg. |
 | | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a kaparni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
 | | `monitor_kubernetes_pods_namespaces` | Sztring | Vesszővel tagolt tömb | A Kubernetes hüvelyek mérőszámait tartalmazó névterek engedélyezési listája.<br> Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
-| Csomópont-vagy fürt szintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett értéke egy perc (60 másodperc). A (z *) [prometheus_data_collection_settings. node]* és/vagy *[prometheus_data_collection_settings. cluster]* gyűjteményt a következő időegységekhez módosíthatja: s, m, h. |
-| Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés (`fieldpass`) és a tiltás (`fielddrop`) listaelem beállításával megadhat bizonyos mérőszámokat, amelyeket össze kell gyűjteni, vagy nem a végpontból. Először be kell állítania az engedélyezési listát. |
+| Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| Csomópont-vagy fürt szintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett értéke egy perc (60 másodperc). A (z) *[prometheus_data_collection_settings. node]* és/vagy *[prometheus_data_collection_settings. cluster]* gyűjteményt a következő időegységekhez módosíthatja: s, m, h. |
+| Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés (`fieldpass`) és a letiltási (`fielddrop`) lista beállításával megadhat bizonyos mérőszámokat, amelyeket nem a végpontból lehet gyűjteni. Először be kell állítania az engedélyezési listát. |
 
 A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 
@@ -100,7 +100,7 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
         ```
 
         >[!NOTE]
-        >$NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
+        >$NODE _IP a tárolók paraméterének egy konkrét Azure Monitor, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
 
     - A Prometheus-metrikák kaparása egy Pod-Megjegyzés megadásával konfigurálható a következő lépések végrehajtásával:
 
@@ -129,13 +129,13 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
     
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
-    A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezését követően megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
+    A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezésekor megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
 Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`.
 
-A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezését követően megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezésekor megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése 
 
@@ -201,6 +201,6 @@ A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
 Az adatfelhasználás és az elemzési költségek figyelésével kapcsolatos további információk a [használat és a költségek kezelése Azure monitor naplók használatával](../platform/manage-cost-storage.md)című témakörben találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az stdout, a stderr és a környezeti változók ügynök-gyűjtési beállításainak konfigurálásáról a tároló munkaterhelései [között.](container-insights-agent-config.md) 

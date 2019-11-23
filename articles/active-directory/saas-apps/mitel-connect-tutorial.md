@@ -56,11 +56,11 @@ A Mitel az Azure AD-be való csatlakozásának konfigurálásához hozzá kell a
 
 1. Az **[Azure Portal](https://portal.azure.com)** bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
 2. Kattintson a **vállalati alkalmazások** elemre, majd **a minden alkalmazás**lehetőségre.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Kattintson az **új alkalmazás**lehetőségre.
 
@@ -70,17 +70,17 @@ A Mitel az Azure AD-be való csatlakozásának konfigurálásához hozzá kell a
 
      ![Mitel-kapcsolat az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a MiCloud-kapcsolaton keresztül egy **Britta Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a MiCloud-csatlakozásban.
 
 Az Azure AD egyszeri bejelentkezés MiCloud-kapcsolaton keresztüli konfigurálásához és teszteléséhez a következő lépéseket kell elvégeznie:
 
 1. **[Konfigurálja az MiCloud-hez való kapcsolódást az egyszeri bejelentkezéshez az Azure ad-vel](#configure-micloud-connect-for-sso-with-azure-ad)** – lehetővé teszi, hogy a felhasználók ezt a funkciót használják, és az egyszeri bejelentkezés beállításait az alkalmazás oldalán konfigurálja.
-2. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-3. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 4. **[Hozzon létre egy Mitel MiCloud kapcsolódási teszt felhasználóval](#create-a-mitel-micloud-connect-test-user)** , hogy a felhasználó Azure ad-képviseletéhez kapcsolódó MiCloud-csatlakozási fiókhoz tartozó Britta Simon partnere legyen.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>MiCloud-kapcsolat konfigurálása egyszeri bejelentkezéshez az Azure AD-vel
 
@@ -110,18 +110,18 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
     Megjelenik az egyszeri bejelentkezési beállítások összekapcsolása párbeszédpanel.
     
 3. Jelölje be az **egyszeri bejelentkezés engedélyezése** jelölőnégyzetet.
-    ![rendszerkép](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. A Azure Portal kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** szakaszban.
-    ![rendszerkép](common/edit-urls.png)
+    ![image](common/edit-urls.png)
 
     Megjelenik az alapszintű SAML-konfiguráció párbeszédpanel.
 
 5.  Másolja az URL-címet a Mitel-fiók portál Mitel-azonosító **(Entity ID)** mezőjéből, és illessze be a Azure Portal **azonosító (entitás azonosítója)** mezőjébe.
 
 6. Másolja az URL-címet a válasz URL-címéből **(az állítási fogyasztói szolgáltatás URL-címe)** a Mitel-fiók portálon, és illessze be a **Válasz URL-címébe (a felhasználói szolgáltatás URL-címe)** mezőben a Azure Portal.  
-   ![rendszerkép](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
+   ![image](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
@@ -133,27 +133,27 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 8. Kattintson a **Save (Mentés** ) gombra a Azure Portal **alapszintű SAML-konfiguráció** párbeszédpanelén.
 
 9. A Azure Portal **SAML-alapú bejelentkezési** lapjának **SAML-aláíró tanúsítvány** szakaszában kattintson a **tanúsítvány (Base64)** melletti **Letöltés** elemre az **aláíró tanúsítvány** letöltéséhez és a számítógépbe való mentéséhez.
-    ![rendszerkép](./media/mitel-connect-tutorial/Azure_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. Nyissa meg az aláíró tanúsítványfájl egy szövegszerkesztőben, másolja a fájlban található összes adatfájlt, majd illessze be az adattípust a Mitel-fiók portál **aláíró tanúsítvány** mezőjébe. 
-    ![rendszerkép](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. A Azure Portal **SAML-alapú bejelentkezési** lapján a **Mitel-kapcsolat beállítása** szakaszban tegye a következőket:
 
     a. Másolja az URL-címet a **bejelentkezési URL** -cím mezőbe, és illessze be a **bejelentkezési URL** mezőbe a Mitel-fiók portálon.
 
     b. Másolja az URL-címet az **Azure ad-azonosító** mezőjéből, és illessze be a Mitel-fiók-portál **entitás-azonosító** mezőjébe.
-    ![rendszerkép](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. Kattintson a **Save (Mentés** ) gombra az **egyszeri bejelentkezési beállítások összekapcsolása** párbeszédpanel Mitel-fiók portálján.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
 1. A Azure Portal a bal oldali ablaktáblán kattintson az **Azure Active Directory**elemre, majd a **felhasználók**lehetőségre, végül pedig a **minden felhasználó**elemre.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
 2. Kattintson a képernyő tetején található **új felhasználó** lehetőségre.
 
@@ -165,14 +165,14 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     a. A **név** mezőbe írja be a következőt: **BrittaSimon**.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: brittasimon @\<yourcompanydomain\>.\<bővítmény\>.  
+    b. A **Felhasználónév** mezőbe írja be a következőt: brittasimon@\<yourcompanydomain\>.\<bővítmény\>.  
 Például: BrittaSimon@contoso.com.
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Mitel kapcsolódáshoz.
 
@@ -184,9 +184,9 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Az Mitel kapcsolódási hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**elemre.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 4. Kattintson a **felhasználó hozzáadása**elemre, majd a **hozzárendelés hozzáadása** párbeszédpanelen a **felhasználók és csoportok** elemre.
 
@@ -224,7 +224,7 @@ Ha a hozzáférési panelen a Mitel-csatlakozás csempére kattint, a rendszer a
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

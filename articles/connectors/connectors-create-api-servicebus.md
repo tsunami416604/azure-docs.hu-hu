@@ -48,7 +48,7 @@ Olyan eseményindítókat is használhat, amelyek Service Bus válaszokat kapnak
 
 Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus névtér eléréséhez szükséges engedélyekkel.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
@@ -63,7 +63,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath`  parameter a kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath` paraméterhez tartozó kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger hozzáadása
 

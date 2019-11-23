@@ -23,7 +23,7 @@ ms.locfileid: "72792913"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Miben különbözik az Azure Cognitive Search a teljes szöveges kereséstől az adatbázis-kezelő szolgáltatásban?
 
-Az Azure Cognitive Search több adatforrást, [nyelvi elemzést is támogat számos nyelvhez](https://docs.microsoft.com/rest/api/searchservice/language-support), [az egyéni elemzésekhez érdekes és szokatlan adatbevitelt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), keresési rangsor-vezérlést a [pontozási profilokon](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)keresztül, valamint felhasználói élményt funkciók, mint például a typeahead, a találatok kiemelése és a csiszolatlan navigálás. Emellett más funkciókat is tartalmaz, például a szinonimákat és a részletes lekérdezési szintaxist, de ezek általában nem különböztetik meg a funkciókat.
+Az Azure Cognitive Search több adatforrást, [nyelvi elemzést is támogat számos nyelvhez](https://docs.microsoft.com/rest/api/searchservice/language-support), [az egyéni elemzésekhez érdekes és szokatlan adatbevitelt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), keresési rangsor-vezérlést [pontozási profilokon](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)keresztül, valamint felhasználói élményt biztosító funkciókkal, például typeahead, találatok kiemelésével és sokoldalú navigálással. Emellett más funkciókat is tartalmaz, például a szinonimákat és a részletes lekérdezési szintaxist, de ezek általában nem különböztetik meg a funkciókat.
 
 ### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Mi a különbség az Azure Cognitive Search és a Elasticsearch között?
 
@@ -103,7 +103,7 @@ A legtöbb ügyfél dedikált mezőket választ egy gyűjteményben, amikor kül
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a szolgáltatást a [felhasználói hangposta](https://feedback.azure.com/forums/263029-azure-search)webhelyén.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [StackOverflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search](search-lucene-query-architecture.md)  

@@ -30,7 +30,7 @@ A GTNexus SSO-rendszerek az Azure AD-vel való integrálásával a következő e
 
 * Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a GTNexus SSO-rendszerrel.
 * Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a GTNexus SSO-rendszerbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
@@ -54,15 +54,15 @@ A GTNexus SSO-rendszer Azure AD-ba való integrálásának konfigurálásához h
 
 **A GTNexus SSO-rendszer a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
 2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
@@ -70,19 +70,19 @@ A GTNexus SSO-rendszer Azure AD-ba való integrálásának konfigurálásához h
 
      ![A GTNexus SSO-rendszere az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést az GTNexus SSO-rendszerrel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti GTNexus SSO-rendszer szükséges.
 
 Az Azure AD egyszeri bejelentkezés GTNexus egyszeri bejelentkezéses rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[GTNEXUS egyszeri bejelentkezéses rendszer egyszeri bejelentkezésének konfigurálása](#configure-gtnexus-sso-system-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Hozzon létre GTNEXUS SSO Rendszerteszt felhasználót](#create-gtnexus-sso-system-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-Britta összekapcsolt, a GTNexus SSO rendszerében.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -98,17 +98,17 @@ Az Azure AD egyszeri bejelentkezés GTNexus SSO-rendszerrel való konfigurálás
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **metaadat-fájl feltöltése**elemre.
+    a. Kattintson a **metaadatfájl feltöltése**.
 
     ![image](common/upload-metadata.png)
 
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
     ![image](common/browse-upload-metadata.png)
 
@@ -121,25 +121,25 @@ Az Azure AD egyszeri bejelentkezés GTNexus SSO-rendszerrel való konfigurálás
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
 ### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO-rendszer egyszeri bejelentkezésének konfigurálása
 
-Ha egyszeri bejelentkezést szeretne beállítani a **GTNEXUS SSO-rendszer** oldalon, el kell küldenie az **összevonási metaadatok XML-** FÁJLját a [GTNexus SSO rendszertámogatási csapatának](mailto:support@gtnexus.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha egyszeri bejelentkezést szeretne beállítani a **GTNEXUS SSO-rendszer** oldalon, el kell küldenie az **összevonási metaadatok XML-** FÁJLját a [GTNexus SSO rendszertámogatási csapatának](mailto:support@gtnexus.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
@@ -150,9 +150,9 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a GTNexus SSO rendszerhez.
 
@@ -166,13 +166,13 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
 6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
@@ -180,17 +180,17 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-gtnexus-sso-system-test-user"></a>GTNexus SSO Rendszerteszt felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a GTNexus SSO-rendszeren. Együttműködik a [GTNEXUS SSO rendszertámogatási csapatával](mailto:support@gtnexus.com) a felhasználók a GTNexus SSO rendszerplatformon való hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a GTNexus SSO-rendszeren. Együttműködik a [GTNEXUS SSO rendszertámogatási csapatával](mailto:support@gtnexus.com) a felhasználók a GTNexus SSO rendszerplatformon való hozzáadásához. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a GTNexus SSO-rendszer csempére kattint, automatikusan be kell jelentkeznie a GTNexus SSO-rendszerbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

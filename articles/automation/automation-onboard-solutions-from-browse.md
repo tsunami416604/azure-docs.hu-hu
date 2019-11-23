@@ -99,7 +99,7 @@ Ha a Update Management megoldást használta, érdemes lehet eltávolítani a k�
 
 * Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési központi telepítésnek.
 
-* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
 
@@ -109,11 +109,11 @@ Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltá
 
 Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Több gép bevezetéséhez előfordulhat, hogy a **nem engedélyezhető**gépek. Különböző okok miatt előfordulhat, hogy egyes gépek nem engedélyezettek. Az alábbi részekben láthatók a **nem engedélyezhető** állapotra vonatkozó lehetséges okok a beléptetési kísérlet során.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>A virtuális gép jelentései egy másik munkaterületre mutatnak: "\<workspaceName @ no__t-1".  Konfiguráció módosítása az engedélyezéshez
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>A virtuális gép jelentései egy másik munkaterületre mutatnak: "\<workspaceName\>".  Konfiguráció módosítása az engedélyezéshez
 
 **OK**: Ez a hiba azt mutatja, hogy a virtuális gép, amelyhez jelentést szeretne készíteni egy másik munkaterületre.
 
@@ -151,7 +151,7 @@ Több gép bevezetéséhez előfordulhat, hogy a **nem engedélyezhető**gépek.
 
 Virtuális gép eltávolítása Update Managementról:
 
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates` mentett keresésből. A mentett keresések a munkaterület **általános** területén találhatók.
+* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfigurációs `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
 * Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Következő lépések

@@ -25,9 +25,9 @@ ms.locfileid: "72300531"
 
 Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
 
-## <a name="before-you-begin"></a>Előzetes teendők 
+## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)@no__t – 1  
+[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
 Az alhálózatot delegálni kell Azure NetApp Files.  
 [Alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)
 
@@ -40,12 +40,12 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 * A megfelelő portokat meg kell nyitni a megfelelő Windows Active Directory (AD) kiszolgálón.  
     A szükséges portok a következők: 
 
-    |     Szolgáltatás           |     Port     |     Protocol (Protokoll)     |
+    |     Szolgáltatás           |     Port     |     Protokoll     |
     |-----------------------|--------------|------------------|
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    –       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -86,9 +86,9 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
     * **Elsődleges DNS**  
         Ez az a DNS, amely szükséges a Active Directory tartományhoz való csatlakozáshoz és az SMB-hitelesítési műveletekhez. 
-    * **Másodlagos DNS**-@no__t – 1  
+    * **Másodlagos DNS-**    
         Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
-    * **Tartományi**  
+    * **Tartomány**  
         Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
         Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.
@@ -100,7 +100,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     * **Szervezeti egység elérési útja**  
         Ez a szervezeti egység (OU) LDAP-elérési útja, ahol a rendszer az SMB-kiszolgáló számítógép-fiókjait hozza létre. Ez a szervezeti egység = második szint, OU = első szint. 
 
-        Ha a Azure NetApp Filest használja Azure Active Directory Domain Services, akkor a szervezeti egység elérési útja `OU=AADDC Computers`, ha a NetApp-fiókhoz Active Directory konfigurál.
+        Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési útja `OU=AADDC Computers` a NetApp-fiókhoz tartozó Active Directory konfigurálásakor.
         
     * Hitelesítő adatok, beleértve a **felhasználónevet** és a **jelszót** is
 

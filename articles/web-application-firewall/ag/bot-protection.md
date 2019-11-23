@@ -36,6 +36,6 @@ Hozzon létre egy alapszintű WAF szabályzatot a Application Gateway számára 
 > [!div class="mx-imgBorder"]
 > ![bot Protection](../media/bot-protection/bot-protection.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályokkal kapcsolatos további információkért lásd: [webalkalmazási tűzfal v2 egyéni szabályai az Azure Application Gateway](custom-waf-rules-overview.md).

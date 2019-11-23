@@ -60,7 +60,7 @@ Az alapértelmezett konfiguráció módosításához használhat egy [konfigurá
 
 Adjon hozzá egy TransportSettings szakaszt a Settings. xml fájlban.
 
-Alapértelmezés szerint a színész kódja a "&lt;ActorName @ no__t-1TransportSettings" SectionName keresi a következőt:. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
+Alapértelmezés szerint a Actor Code a "&lt;ActorName&gt;TransportSettings" SectionName keresi. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Alapértelmezés szerint a színész kódja a "&lt;ActorName @ no__t-1TransportS
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>FabricTransport-beállítások konfigurálása a színészi ügyfél szerelvényéhez
 
-Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy "&lt;Client exe Name&gt;.settings.xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
+Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy "&lt;Client exe Name&gt;. Settings. xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

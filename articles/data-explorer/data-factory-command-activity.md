@@ -29,7 +29,7 @@ A [Azure Data Factory](/azure/data-factory/) (ADF) egy felhőalapú adatintegrá
 ## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
 
 1. Válassza ki a **szerzői** ceruza eszközt. 
-1. Hozzon létre egy új folyamatot **+** kiválasztásával, majd válassza a **folyamat** lehetőséget a legördülő menüből.
+1. Hozzon létre egy új folyamatot a **+** kiválasztásával, majd válassza a **folyamat** lehetőséget a legördülő menüből.
 
    ![új folyamat létrehozása](media/data-factory-command-activity/create-pipeline.png)
 
@@ -85,13 +85,13 @@ A [keresési tevékenység](/azure/data-factory/control-flow-lookup-activity) b�
     * Válassza a **kapcsolat tesztelése** lehetőséget a létrehozott társított szolgáltatás kapcsolatának teszteléséhez. Ha csatlakozni tud a telepítőhöz, akkor a zöld pipa- **kapcsolat sikeresen** megjelenik.
     * Válassza a **Befejezés** lehetőséget a társított szolgáltatás létrehozásának befejezéséhez.
 
-1. Miután beállított egy társított szolgáltatást, a **AzureDataExplorerTable** > **kapcsolatban**adja hozzá a **Táblanév** nevet. Válassza az **előnézeti**adatforrások lehetőséget, hogy meggyőződjön arról, hogy az adott adatmegjelenítés megfelelően jelenik meg.
+1. Miután beállított egy társított szolgáltatást, a **AzureDataExplorerTable** > **kapcsolat**területen adja hozzá a **Táblanév** nevet. Válassza az **előnézeti**adatforrások lehetőséget, hogy meggyőződjön arról, hogy az adott adatmegjelenítés megfelelően jelenik meg.
 
    Az adatkészlet most már készen áll, és továbbra is szerkesztheti a folyamatát.
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Lekérdezés hozzáadása a keresési tevékenységhez
 
-1. A **folyamat-4-docs** > **beállításban** adjon hozzá egy lekérdezést a **lekérdezés** szövegmezőben, például:
+1. A (z) **-4 – docs** > **beállításaiban** adjon hozzá egy lekérdezést a **lekérdezés** szövegmezőben, például:
 
     ```kusto
     ClusterQueries
@@ -116,7 +116,7 @@ A [for-each](/azure/data-factory/control-flow-for-each-activity) tevékenység h
 1.  Válassza ki a ForEach tevékenységet a vásznon. Az alábbi **Beállítások** lapon:
     * A keresési eredmények szekvenciális feldolgozásához jelölje be a **szekvenciális** jelölőnégyzetet, vagy hagyja, hogy a rendszer törölje a jelet a párhuzamos feldolgozás létrehozásához.
     * Adja meg a **kötegek darabszámát**.
-    * Az **elemek**területen adja meg a következő kimeneti értékre mutató hivatkozást: *@activity ("Lookup1"). output. Value*
+    * Az **elemek**területen adja meg a következő kimeneti értékre mutató hivatkozást: *@activity("Lookup1"). output. Value*
 
        ![ForEach tevékenység beállításai](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -146,7 +146,7 @@ A [for-each](/azure/data-factory/control-flow-for-each-activity) tevékenység h
     A **parancs** arra utasítja az Azure Adatkezelőot, hogy tömörített formátumban exportálja egy adott lekérdezés eredményét egy blob-tárolóba. Aszinkron módon fut (az aszinkron módosító használatával).
     A lekérdezés a keresési tevékenység eredményének egyes sorainak adatbázis oszlopát kezeli. A **parancs időtúllépése** változatlan marad.
 
-    ![parancs tevékenység](media/data-factory-command-activity/command.png)   
+    ![Parancs tevékenység](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
     > A parancs tevékenységének korlátai a következők:
@@ -170,7 +170,7 @@ A parancs tevékenység kimenetének szerkezete alább látható. Ezt a kimenete
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Nem aszinkron vezérlési parancs visszaadott értéke
 
-A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonló a keresési tevékenység eredményének struktúrájához. A `count` mező a visszaadott rekordok számát jelzi. A rögzített tömb mező @no__t – 0 a rekordok listáját tartalmazza. 
+A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonló a keresési tevékenység eredményének struktúrájához. A `count` mező a visszaadott rekordok számát jelzi. A rögzített tömb mező `value` a rekordok listáját tartalmazza. 
 
 ```json
 { 
@@ -192,7 +192,7 @@ A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonl
  
 ### <a name="returned-value-of-an-async-control-command"></a>Aszinkron vezérlő parancs visszaadott értéke
 
-Egy aszinkron vezérlési parancsban a tevékenység lekérdezi az operatív táblázatot a jelenetek mögött, amíg az aszinkron művelet be nem fejeződik, vagy időtúllépés történik. Ezért a visszaadott érték az adott **OperationId** tulajdonsághoz `.show operations OperationId` eredményét fogja tartalmazni. Ellenőrizze az **állapot** és **állapot** tulajdonságok értékeit a művelet sikeres befejezésének ellenőrzéséhez.
+Egy aszinkron vezérlési parancsban a tevékenység lekérdezi az operatív táblázatot a jelenetek mögött, amíg az aszinkron művelet be nem fejeződik, vagy időtúllépés történik. Ezért a visszaadott érték a megadott **OperationId** tulajdonság `.show operations OperationId` eredményét fogja tartalmazni. Ellenőrizze az **állapot** és **állapot** tulajdonságok értékeit a művelet sikeres befejezésének ellenőrzéséhez.
 
 ```json
 { 

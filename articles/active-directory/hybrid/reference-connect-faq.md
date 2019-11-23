@@ -119,7 +119,7 @@ A következő egy tájékoztató dokumentum, amely bemutatja a mérnöki, támog
 **K: engedélyezhető Azure AD Connect az Azure AD Connector-fiók létrehozása munkacsoportos gépen?**
 Nem.  Ahhoz, hogy az Azure AD Connect automatikusan létre lehessen hozni az Azure AD Connector-fiókot, a gépnek tartományhoz kell tartoznia.  
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 **K: van egy tűzfallal, hálózati eszközzel vagy mással, amely korlátozza, hogy a kapcsolatok mikor maradhatnak nyitva a hálózaton. Mire használható az ügyféloldali időtúllépési küszöbérték a Azure AD Connect használatakor?**  
 Minden hálózati szoftver, fizikai eszköz vagy bármi más, ami korlátozza a kapcsolatok nyitva maradható maximális időtartamát, legalább öt percet (300 másodperc) kell használnia ahhoz, hogy a kiszolgáló, amelyen a Azure AD Connect-ügyfél telepítve van és Azure Active Directory. Ez a javaslat a korábban megjelent Microsoft identitásszinkronizálás-eszközökre is vonatkozik.
 

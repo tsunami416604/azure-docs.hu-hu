@@ -20,7 +20,7 @@ Az Azure VM Image Builder (Azure Image Builder) segítségével elkezdheti a Win
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Előzetes verziók
+## <a name="preview-features"></a>Előzetes verziójú funkciók
 
 Az előzetes verzióban ezek a funkciók támogatottak:
 
@@ -33,13 +33,13 @@ Az előzetes verzióban ezek a funkciók támogatottak:
 - Lemezképek létrehozása VHD formátumban.
  
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Regions
 Az Azure rendszerkép-szerkesztő szolgáltatás elérhető lesz az előzetes verzióban ezekben a régiókban. A képeket ezen régiókon kívül is el lehet osztani.
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 ## <a name="os-support"></a>Operációs rendszer támogatása
 A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatni:
@@ -72,9 +72,9 @@ Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgált
 ![Az Azure rendszerkép-készítő folyamatának elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub-tárházban](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)több példa is van.
-1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
-1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (D1v2), a hálózatot, a nyilvános IP-címet és a tárolót a IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > erőforráscsoporthoz.
-1. A rendszerkép-létrehozás részeként a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > erőforráscsoporthoz, amelyet a folyamathoz hoztak létre.
+1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_\<DestinationResourceGroup > _\<TemplateName >. 
+1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (D1v2), a hálózatot, a nyilvános IP-címet és a tárolót a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoportot.
+1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoporthoz, amelyet a folyamathoz hoztak létre.
 
 
 ## <a name="permissions"></a>Engedélyek

@@ -36,7 +36,7 @@ Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, a
 
 Az alább olvasható elméleti szintű munkafolyamat gyakorlatilag a Batch szolgáltatást párhuzamos számítási feladatok feldolgozására használó összes alkalmazásra és szolgáltatásra érvényes:
 
-1. Töltse fel azokat az adatfájlokat, amelyeket fel szeretne dolgozni egy [Azure Storage][azure_storage] -fiókba. A Batch beépített támogatást biztosít az Azure Blob-tárhelyekhez, így a tevékenységek futtatásakor a rendszer le tudja tölteni a fájlokat a [számítási csomópontokra](#compute-node).
+1. Töltse fel azokat az **adatfájlokat** , amelyeket fel szeretne dolgozni egy [Azure Storage][azure_storage] -fiókba. A Batch beépített támogatást biztosít az Azure Blob-tárhelyekhez, így a tevékenységek futtatásakor a rendszer le tudja tölteni a fájlokat a [számítási csomópontokra](#compute-node).
 2. Töltse fel az **alkalmazásfájlokat**, amelyeket a tevékenységek futtatni fognak. Ezek lehetnek bináris fájlok vagy parancsfájlok, illetve ezek függőségei, futtatásukat a feladatokban lévő tevékenységek végzik. A tevékenységek képesek letölteni ezeket a fájlokat az Ön tárfiókjából, de az alkalmazások felügyeletére és üzembe helyezésére a Batch [alkalmazáscsomagok](#application-packages) funkcióját is használhatja.
 3. Hozza létre a számítási csomópontok [készletét](#pool). A készlet létrehozásakor meg kell adnia a készletbe tartozó számítási csomópontok számát, méretét, valamint a használt operációs rendszer típusát. Amikor a rendszer lefuttatja a feladatokat, végrehajtásuk céljából hozzájuk rendeli a készlet egyik csomópontját.
 4. Hozzon létre egy [feladatot](#job). A feladatok tevékenységek gyűjteményeit kezelik. Az egyes feladatokat konkrét készlethez kell rendelni; itt fognak lefutni a feladathoz tartozó tevékenységek.
@@ -89,13 +89,13 @@ A Batch az alábbi Azure Storage-fiókokat támogatja:
 
 További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../storage/common/storage-account-overview.md).
 
-A Batch-fiókhoz a Batch-fiók létrehozásakor vagy később is társíthat tárfiókot. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre vonatkozó követelményeket. A GPv2 és a Blob-tárfiók például magasabb [kapacitási és méretezhetőségi korlátokat](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) támogat a GPv1-hez képest. (Ha növelni szeretné a tárolási kapacitást, lépjen kapcsolatba az Azure ügyfélszolgálatával.) Ezek a fiókok növelhetik azon Batch-megoldások teljesítményét, amelyek a tárfiókba író vagy abból olvasó, nagy mennyiségű párhuzamos feladatot tartalmaznak.
+A Batch-fiókhoz a Batch-fiók létrehozásakor vagy később is társíthat tárfiókot. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre vonatkozó követelményeket. A GPv2 és a Blob-tárfiók például magasabb [kapacitási és méretezhetőségi korlátokat](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) támogat a GPv1-hez képest. (Forduljon az Azure támogatási szolgálatához, hogy növelje a tárolási korlátot.) Ezek a Fiókbeállítások javíthatják azon batch-megoldások teljesítményét, amelyek nagy mennyiségű párhuzamos feladatot tartalmaznak a Storage-fiókba való beolvasás vagy a szolgáltatásba való írás során.
 
 ## <a name="compute-node"></a>Számítási csomópont
 
 A számítási csomópontok olyan Azure-alapú virtuális gépek vagy Cloud Service-virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. A Windows-vagy Linux-csomópontok készleteit az Azure Cloud Services, az [azure Virtual Machines piactérről][vm_marketplace]származó rendszerképek vagy az előkészített Egyéni rendszerképek segítségével hozhatja létre. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
 
-A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képesek futtatni, amelyet a csomópont operációsrendszer-környezete támogat. Végrehajtható fájlok vagy parancsfájlok \*:. exe \*,. cmd \*,. bat és PowerShell-parancsfájlok Windows rendszerhez – és bináris fájlok, rendszerhéj és Python-parancsfájlok Linux rendszerhez.
+A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képesek futtatni, amelyet a csomópont operációsrendszer-környezete támogat. Végrehajtható fájlok vagy parancsfájlok: \*. exe, \*. cmd, \*. bat és PowerShell-parancsfájlok Windowshoz – és bináris fájlok, rendszerhéj és Python-parancsfájlok Linux rendszerhez.
 
 A Batch szolgáltatásban működő számítási csomópontok emellett a következőket is tartalmazzák:
 
@@ -189,7 +189,7 @@ Dinamikus számítási feladatokhoz írhat és alkalmazhat egy automatikus [ská
 
 A [csomópontonkénti maximális tevékenység](batch-parallel-node-tasks.md) konfigurációs lehetőség határozza meg a készleten belüli egyes számítási csomópontokon egyidejűleg futtatható tevékenységek maximális számát.
 
-Az alapértelmezett konfiguráció meghatározza, hogy egyszerre egy tevékenység fut egy csomóponton, de bizonyos esetekben előnyös lehet, ha kettő vagy több feladat is végrehajtható egyszerre egy csomóponton. Nézze meg a [csomópontokon végzett egyidejű tevékenységekről szóló cikkben](batch-parallel-node-tasks.md) szereplő [mintaforgatókönyvet](batch-parallel-node-tasks.md#example-scenario), ha kíváncsi rá, hogy milyen esetekben lehet hasznos, ha több tevékenység fut az egyes csomópontokon.
+Az alapértelmezett konfiguráció meghatározza, hogy egyszerre egy tevékenység fut egy csomóponton, de bizonyos esetekben előnyös lehet, ha kettő vagy több feladat is végrehajtható egyszerre egy csomóponton. Nézze meg a [csomópontokon végzett egyidejű tevékenységekről szóló cikkben](batch-parallel-node-tasks.md#example-scenario) szereplő [mintaforgatókönyvet](batch-parallel-node-tasks.md), ha kíváncsi rá, hogy milyen esetekben lehet hasznos, ha több tevékenység fut az egyes csomópontokon.
 
 Megadhat egy *kitöltési típust*is, amely meghatározza, hogy a Batch egyenletesen osztja-e el a tevékenységeket a készlet összes csomópontján, vagy az egyes csomópontokat a maximális számú tevékenységgel, mielőtt hozzárendeli a tevékenységeket egy másik csomóponthoz.
 
@@ -305,7 +305,7 @@ Amikor meglévő készlethez ad indítási tevékenységet, vagy ilyen készleth
 >
 >
 
-### <a name="job-manager-task"></a>Feladatkezelői tevékenység
+### <a name="job-manager-task"></a>Feladatkezelő tevékenység
 
 A feladatok végrehajtásának szabályozása és/vagy figyelése általában egy **feladatkezelői tevékenység** segítségével történik, például ez végzi a feladatokhoz tartozó tevékenységek létrehozását és beküldését, a további futtatandó tevékenységek meghatározását, illetve ez határozza meg, hogy mikor fejeződött be a művelet. A feladatkezelői tevékenység azonban más célokra is használható, hiszen ez is egy teljes értékű tevékenység, amely a feladathoz szükséges bármilyen művelet elvégzésére alkalmas. A feladatkezelői tevékenység például letöltheti a paraméterként meghatározott fájlt, elemezheti a fájl tartalmát, és további tevékenységeket küldhet el a tartalom alapján.
 
@@ -322,8 +322,8 @@ A rendszer minden más feladat előtt indítja el a feladatkezelői tevékenysé
 
 A Batch a feladatok előtt elvégzendő beállításokhoz feladat-előkészítési tevékenységeket biztosít. A feladatkiadási tevékenységek ezzel szemben a feladat elvégzése utáni karbantartási vagy takarítási műveletekhez használhatók.
 
-* **Feladat-előkészítési feladat**: A feladat-előkészítési tevékenység minden olyan számítási csomóponton fut, amely a feladatok futtatására van ütemezve, a többi feladat végrehajtása előtt. A feladat-előkészítési tevékenység használható például az összes tevékenységre jellemző, de a feladat esetében egyedi adatok másolására.
-* **Feladat kiadási feladata**: Egy feladat befejezése után egy feladat kiadására szolgáló tevékenység fut a készlet minden olyan csomópontján, amely legalább egy feladatot végrehajt. A feladatkiadási tevékenységgel törölheti a feladat-előkészítési tevékenység által másolt adatokat, vagy például tömörítheti, majd feltöltheti a diagnosztikai naplóadatokat.
+* **Feladat-előkészítési tevékenység**: a feladat-előkészítési tevékenységek a tevékenységek futtatására ütemezett összes számítási csomóponton, minden más tevékenység végrehajtása előtt lefutnak. A feladat-előkészítési tevékenység használható például az összes tevékenységre jellemző, de a feladat esetében egyedi adatok másolására.
+* **Feladatkiadási tevékenység**: amikor egy feladat befejeződött, a feladatkiadási tevékenység a készlet minden csomópontján lefut, amely legalább egy tevékenységet elvégzett. A feladatkiadási tevékenységgel törölheti a feladat-előkészítési tevékenység által másolt adatokat, vagy például tömörítheti, majd feltöltheti a diagnosztikai naplóadatokat.
 
 Mind a feladat-előkészítési, mind a feladatkiadási tevékenységeknél megadhat egy parancssort, amelyet futtatni szeretne a tevékenység meghívásakor. Ezek segítségével számos különböző funkciót érhet el, például fájlokat tölthet le, emelt jogosultsági szintű futtatást végezhet, egyéni környezeti változókat adhat meg, illetve beállíthatja a maximális végrehajtási időt, az újrapróbálások számát, illetve a fájlmegőrzési időt.
 
@@ -349,11 +349,11 @@ A szolgáltatással kapcsolatos további részletekért tekintse meg [Azure batc
 
 ## <a name="environment-settings-for-tasks"></a>Környezeti beállítások tevékenységekhez
 
-A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás által definiált környezeti[][msdn_env_vars]változókat és a feladatokhoz definiálható egyéni környezeti változókat is. A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
+A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás[által definiált][msdn_env_vars]környezeti változókat és a feladatokhoz definiálható egyéni környezeti változókat is. A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
 
 Az egyéni környezeti változókat a tevékenységek és a feladatok szintjén is megadhatja: ehhez töltse ki a kívánt elemek *környezeti beállítások* tulajdonságait. Tekintse meg például a [feladat hozzáadása egy feladathoz][rest_add_task] (batch REST API) vagy a [CloudTask. EnvironmentSettings][net_cloudtask_env] és a [CloudJob. CommonEnvironmentSettings][net_job_env] tulajdonságot a Batch .net-ben.
 
-Az ügyfélalkalmazás vagy szolgáltatás beszerezhet egy feladat környezeti változóit, a szolgáltatás által definiált és az egyéni szolgáltatásokat a feladat-végrehajtással [kapcsolatos információk lekérése][rest_get_task_info] (batch REST) vagy a [CloudTask. EnvironmentSettings][net_cloudtask_env] tulajdonság elérésével. Batch .NET). A számítási csomóponton végrehajtott folyamatok például a közismert `%VARIABLE_NAME%` (Windows) vagy a `$VARIABLE_NAME` (Linux) szintaxis segítségével képesek elérni ezeket és más környezeti változókat a csomóponton.
+Az ügyfélalkalmazás vagy szolgáltatás a tevékenység környezeti változóit, a szolgáltatás által definiált és az egyéni szolgáltatásokat is beszerezheti a feladat-végrehajtással [kapcsolatos információk lekérése][rest_get_task_info] (batch REST) vagy a [CloudTask. EnvironmentSettings][net_cloudtask_env] tulajdonság (Batch .net) elérésével. A számítási csomóponton végrehajtott folyamatok például a közismert `%VARIABLE_NAME%` (Windows) vagy a `$VARIABLE_NAME` (Linux) szintaxis segítségével képesek elérni ezeket és más környezeti változókat a csomóponton.
 
 A szolgáltatás által definiált környezeti változók teljes listája megtalálható a [számítási csomópont környezeti változói][msdn_env_vars]között.
 
@@ -367,23 +367,23 @@ A gyökérkönyvtár a következő könyvtárstruktúrát tartalmazza:
 
 ![Számítási csomópont könyvtárstruktúrája][1]
 
-* **alkalmazások**: A számítási csomóponton telepített alkalmazáscsomag részleteiről tartalmaz információkat. A tevékenységek az `AZ_BATCH_APP_PACKAGE` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
+* **alkalmazások**: a számítási csomóponton telepített alkalmazáscsomag részleteiről tartalmaz információkat. A tevékenységek az `AZ_BATCH_APP_PACKAGE` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
 
-* **fsmounts**: A könyvtár minden olyan fájlrendszert tartalmaz, amely egy számítási csomópontra van csatlakoztatva. A tevékenységek az `AZ_BATCH_NODE_MOUNTS_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat. További információ: [virtuális fájlrendszer csatlakoztatása batch-készlethez](virtual-file-mount.md).
+* **fsmounts**: a könyvtár minden olyan fájlrendszert tartalmaz, amely egy számítási csomópontra van csatlakoztatva. A tevékenységek az `AZ_BATCH_NODE_MOUNTS_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat. További információ: [virtuális fájlrendszer csatlakoztatása batch-készlethez](virtual-file-mount.md).
 
-* **megosztott**: Ez a könyvtár olvasási/írási hozzáférést biztosít a csomóponton futó *összes* feladathoz. Ebben a könyvtárban a csomóponton futó összes tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_SHARED_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
+* **shared**: ez a könyvtár olvasási/írási hozzáférést nyújt a csomóponton futó *összes* tevékenység számára. Ebben a könyvtárban a csomóponton futó összes tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_SHARED_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
 
-* **Indítás**: Ezt a könyvtárat egy indítási tevékenység használja munkakönyvtárként. Az indítási tevékenység által a csomópontra letöltött összes fájlt ez a könyvtár tárolja. Ebben a könyvtárban az indítási tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_STARTUP_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
+* **startup**: az indítási tevékenység ezt a könyvtárat használja munkakönyvtárként. Az indítási tevékenység által a csomópontra letöltött összes fájlt ez a könyvtár tárolja. Ebben a könyvtárban az indítási tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_STARTUP_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
 
-* **felejtő**: Ez a könyvtár belső célokra szolgál. Nem garantálható, hogy a címtárban lévő fájlok vagy maga a címtár a jövőben is létezni fog.
+* **változékony**: Ez a könyvtár belső célokra szolgál. Nem garantálható, hogy a címtárban lévő fájlok vagy maga a címtár a jövőben is létezni fog.
 
 * **workitems**: Ez a könyvtár tartalmazza a feladatok könyvtárait és azok feladatait a számítási csomóponton.
 
-* **Feladatok**: A **workitems** könyvtárában létrejön egy könyvtár a csomóponton futó minden egyes feladathoz. A `AZ_BATCH_TASK_DIR` környezeti változóra hivatkozva érhető el.
+* **Feladatok**: a **workitems** könyvtárán belül létrejön egy könyvtár a csomóponton futó minden egyes feladathoz. A `AZ_BATCH_TASK_DIR` környezeti változóra való hivatkozással érhető el.
 
     A Batch szolgáltatás minden tevékenységkönyvtárban létrehoz egy munkakönyvtárat (`wd`), amelynek egyedi elérési útját a(z) `AZ_BATCH_TASK_WORKING_DIR` környezeti változó határozza meg. Ez a könyvtár olvasási/írási hozzáférést nyújt a tevékenységhez. A tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni ebben a könyvtárban. A rendszer a tevékenységhez beállított *RetentionTime* korlátozás értékének megfelelően őrzi meg a könyvtárat.
 
-    `stdout.txt`és `stderr.txt`: Ezeket a fájlokat a feladat mappájában a feladat végrehajtása során írja a rendszer.
+    `stdout.txt` és `stderr.txt`: a rendszer ezeket a fájlokat írja a tevékenységmappába a tevékenység futtatásakor.
 
 > [!IMPORTANT]
 > Amikor eltávolít egy csomópontot a készletből, a csomóponton tárolt *összes* fájlt is eltávolítja.
@@ -519,13 +519,13 @@ Ha korlátoznia kell vagy le kell tiltania a számítási csomópontok RDP- vagy
 
 Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalmazás vagy szolgáltatás megvizsgálhatja a meghiúsult tevékenységek metaadatait a rosszul működő csomópontok azonosítása érdekében. A készletek minden csomópontja egyedi azonosítót kap, és a tevékenységet futtató csomópont szerepel a tevékenység metaadataiban. Ha sikerült azonosítani a problematikus csomópontot, számos különböző műveletet elvégezhet vele:
 
-* **Indítsa újra a csomópontot** ([Rest][rest_reboot] | [.net][net_reboot])
+* **A csomópont újraindítása** ([Rest][rest_reboot] | [.net][net_reboot])
 
     A csomópont újraindítása néha segít a rejtett problémák, például az elakadt vagy összeomlott folyamatok megoldásában. Ha a készlet indítási tevékenységet használ, vagy a feladat feladat-előkészítési feladatot használ, azokat a rendszer a csomópont újraindításakor hajtja végre.
-* **A csomópont rendszerképének** alaphelyzetbe állítása ([Rest][rest_reimage]@no__t – 2[.net][net_reimage])
+* **A csomópont rendszerképének** alaphelyzetbe állítása ([Rest][rest_reimage] | [.net][net_reimage])
 
     Ez újratelepíti az operációs rendszert a csomóponton. A csomópontok újraindításához hasonlóan újrafuttatja az indítási tevékenységeket és a feladat-előkészítési tevékenységeket a csomópont rendszerképének alaphelyzetbe állítása után.
-* **Távolítsa el a csomópontot a készletből** ([Rest][rest_remove] | [.net][net_remove])
+* **A csomópont eltávolítása a készletből** ([Rest][rest_remove] | [.net][net_remove])
 
     Néha teljesen el kell távolítani a csomópontot a készletből.
 * **Feladatütemezés letiltása a csomóponton** ([Rest][rest_offline] | [.net][net_offline])
@@ -533,11 +533,11 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
     Ez tulajdonképpen offline állapotba helyezi a csomópontot, így ahhoz nem rendel további tevékenységeket, de engedélyezi, hogy a csomópont továbbra is fusson a készletben. Ez lehetővé teszi, hogy tovább vizsgálja a hibák okait a meghiúsult tevékenység adatainak elvesztése nélkül, és anélkül, hogy a csomópont további tevékenységhibákat okozna. Letilthatja például a tevékenységütemezést a csomóponton, majd [távolról bejelentkezhet](#connecting-to-compute-nodes) a csomópont eseménynaplóinak megvizsgálása vagy egyéb hibaelhárítás elvégzése érdekében. A vizsgálat befejezése után visszaállíthatja a csomópontot online állapotba a feladatütemezés engedélyezésével ([REST][rest_online] | [.net][net_online]), vagy elvégezheti a korábban tárgyalt egyéb műveletek egyikét.
 
 > [!IMPORTANT]
-> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letiltja a Feladatütemezőt egy csomóponton a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket annak megadásához, hogy a **futó feladatok** le legyenek-e **állítva** . ütemezés más csomópontokon, vagy a művelet végrehajtása előtt engedélyezze a futó feladatok befejezését (**TaskCompletion**).
+> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letilt egy csomóponton a Feladatütemezőt a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket, amellyel megadhatja, hogy a futó feladatok le legyenek-e **állítva** , **újra kell-** e őket ütemezni más csomópontokra, vagy engedélyezni kell a futó feladatok végrehajtását a művelet végrehajtása előtt (**TaskCompletion**).
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.

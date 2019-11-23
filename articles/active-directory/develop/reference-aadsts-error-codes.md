@@ -29,20 +29,20 @@ ms.locfileid: "70193170"
 Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS) által visszaadott AADSTS hibakódok információit keresi? Olvassa el ezt a dokumentumot a AADSTS hibák leírásának, javításának és egyes javasolt megkerülő megoldásoknak a megkereséséhez.
 
 > [!NOTE]
-> Ezek az információk előzetesek, és változhatnak. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és](active-directory-develop-help-support.md) támogatási lehetőségeit, amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.
+> Ezek az információk előzetesek, és változhatnak. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](active-directory-develop-help-support.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.
 >
 > Ez a dokumentáció a fejlesztői és a rendszergazdai útmutatóhoz készült, de az ügyfél soha nem használhatja. A hibakódok bármikor megváltozhatnak, hogy részletesebb hibaüzeneteket szolgáltasson, amelyek célja, hogy az alkalmazás kiépítése során segítsenek a fejlesztőnek. A szöveg-vagy hibakódokat használó alkalmazások az idő múlásával lesznek megszakítva.
 
 ## <a name="lookup-current-error-code-information"></a>Aktuális hibakód információinak keresése
-A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg az [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) oldalt a AADSTS-hibák leírásának, javításának és néhány javasolt megkerülő megoldás megkereséséhez.  
+A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg a [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) oldalt a AADSTS-hibák leírásának, javításának és néhány javasolt megkerülő megoldás megkereséséhez.  
 
-Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16000" hibakódot kapta, keressen rá a "16000" kifejezésre [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) .  Közvetlenül egy adott hibához is kapcsolódhat, ha hozzáadja a hibakódot az URL-címhez: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
+Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16000" hibakódot kapta, akkor keressen rá [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) a "16000" kifejezésre.  Közvetlenül egy adott hibához is kapcsolódhat, ha a hibakódot hozzáadja a következő URL-címhez: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-hibakódok
 
 | Hiba | Leírás |
 |---|---|
-| AADSTS16000 | SelectUserAccount – ez az Azure AD által kiváltott megszakítás, ami olyan felhasználói felületet eredményez, amely lehetővé teszi a felhasználó számára, hogy több érvényes SSO-munkamenet közül válasszon. Ez a hiba meglehetősen gyakori, és ha `prompt=none` meg van adva, visszatérhet az alkalmazáshoz. |
+| AADSTS16000 | SelectUserAccount – ez az Azure AD által kiváltott megszakítás, ami olyan felhasználói felületet eredményez, amely lehetővé teszi a felhasználó számára, hogy több érvényes SSO-munkamenet közül válasszon. Ez a hiba meglehetősen gyakori, és a `prompt=none` megadása esetén visszatérhet az alkalmazáshoz. |
 | AADSTS16001 | UserAccountSelectionInvalid – ez a hiba akkor jelenik meg, ha a felhasználó egy olyan csempére kattint, amelyet a munkamenetben a logika elutasította. Ha aktiválódik, ez a hiba lehetővé teszi a felhasználó számára a helyreállítást a csempék/munkamenetek frissített listájából, vagy egy másik fiók kiválasztásával. Ez a hiba a kód hibája vagy a versenyhelyzet miatt fordulhat elő. |
 | AADSTS16002 | AppSessionSelectionInvalid – az alkalmazás által megadott SID-követelmény nem teljesült.  |
 | AADSTS16003 | SsoUserAccountNotFoundInResourceTenant – azt jelzi, hogy a felhasználó nem lett explicit módon hozzáadva a bérlőhöz. |
@@ -155,7 +155,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS70003 | UnsupportedGrantType – az alkalmazás nem támogatott engedélyezési típust adott vissza. |
 | AADSTS70004 | InvalidRedirectUri – az alkalmazás érvénytelen átirányítási URI-t adott vissza. Az ügyfél által megadott átirányítási cím nem egyezik meg egyik konfigurált címmel sem, illetve az OIDC jóváhagyási listán szereplő címekkel sem. |
 | AADSTS70005 | UnsupportedResponseType – az alkalmazás a következő okok miatt nem támogatott választ adott vissza:<ul><li>a "token" típusú válasz nem engedélyezett az alkalmazáshoz</li><li>Az id_token típusú válaszhoz az OpenID hatókör szükséges – a kódolt wctx nem támogatott OAuth paraméterértéket tartalmaz</li></ul> |
-| AADSTS70007 | UnsupportedResponseMode – az alkalmazás a jogkivonat kérésekor nem támogatott értéket `response_mode` adott vissza.  |
+| AADSTS70007 | UnsupportedResponseMode – az alkalmazás a token kérésekor `response_mode` nem támogatott értéket adott vissza.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – a frissítési token inaktivitás miatt lejárt. A tokent XXX-ben adták ki, és bizonyos ideig inaktív volt. |
 | AADSTS70011 | InvalidScope – az alkalmazás által igényelt hatókör érvénytelen. |
 | AADSTS70012 | MsaServerError – kiszolgálóhiba történt egy MSA (fogyasztói) felhasználó hitelesítése közben. Próbálja meg újra. Ha továbbra is sikertelen, [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
@@ -207,7 +207,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS90043 | NationalCloudAuthCodeRedirection – a szolgáltatás le van tiltva. |
 | AADSTS90051 | InvalidNationalCloudId – a nemzeti felhő azonosítója érvénytelen Felhőbeli azonosítót tartalmaz. |
 | AADSTS90055 | TenantThrottlingError – túl sok bejövő kérelem van. Ez a kivétel a letiltott bérlők esetében fordul elő. |
-| AADSTS90056 | BadResourceRequest – egy hozzáférési jogkivonat kódjának beváltásához az alkalmazásnak post-kérést kell küldenie `/token` a végpontnak. Ezt megelőzően meg kell adnia egy engedélyezési kódot, és elküldeni a post kérelemben a `/token` végpontnak. Tekintse át ezt a cikket az OAuth 2,0 engedélyezési kód folyamatának áttekintéséhez: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). Irányítsa a felhasználót a `/authorize` végpontra, amely egy authorization_code ad vissza. A kérelemnek `/token` a végponthoz való elküldésével a felhasználó megkapja a hozzáférési jogkivonatot. Jelentkezzen be a Azure Portalba, és ellenőrizze **Alkalmazásregisztrációk > végpontokat** , és győződjön meg arról, hogy a két végpont megfelelően lett konfigurálva. |
+| AADSTS90056 | BadResourceRequest – a hozzáférési token kódjának beváltásához az alkalmazásnak POST-kérést kell küldenie az `/token`-végpontnak. Ezt megelőzően meg kell adnia egy engedélyezési kódot, és el kell küldenie a POST kérelemben a `/token` végpontnak. Tekintse át ezt a cikket a OAuth 2,0-es engedélyezési kód folyamatának áttekintéséhez: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). Irányítsa a felhasználót a `/authorize` végpontra, amely egy authorization_code ad vissza. A `/token`-végpontra irányuló kérelem elküldésekor a felhasználó megkapja a hozzáférési jogkivonatot. Jelentkezzen be a Azure Portalba, és ellenőrizze **Alkalmazásregisztrációk > végpontokat** , és győződjön meg arról, hogy a két végpont megfelelően lett konfigurálva. |
 | AADSTS90072 | PassThroughUserMfaError – az a külső fiók, amelyre a felhasználó bejelentkezik, nem létezik azon a bérlőn, amelyre bejelentkezett. így a felhasználó nem tudja kielégíteni a bérlő MFA-követelményeit. Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, és jelentkezzen be egy másik Azure AD-felhasználói fiókkal. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid – hiba történt, amikor a szolgáltatás megkísérelte feldolgozni a WS-Federation üzenetet. Az üzenet érvénytelen. |
 | AADSTS90082 | OrgIdWsFederationNotSupported – a kérelemhez megadott hitelesítési házirend jelenleg nem támogatott. |
@@ -221,8 +221,8 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS90093 | GraphUserUnauthorized – a kérelemhez tiltott hibakódtal visszaadott gráf. |
 | AADSTS90094 | AdminConsentRequired – rendszergazdai engedély szükséges. |
 | AADSTS90100 | InvalidRequestParameter – a paraméter üres vagy érvénytelen. |
-| AADSTS901002 | AADSTS901002: Az "erőforrás" kérelem paramétere nem támogatott. |
-| AADSTS90101 | InvalidEmailAddress – a megadott érték nem érvényes e-mail-cím. Az e-mail-címnek formátumúnak `someone@example.com`kell lennie. |
+| AADSTS901002 | AADSTS901002: a "Resource" kérési paraméter nem támogatott. |
+| AADSTS90101 | InvalidEmailAddress – a megadott érték nem érvényes e-mail-cím. Az e-mail-címnek `someone@example.com`formátumúnak kell lennie. |
 | AADSTS90102 | InvalidUriParameter – az értéknek érvényes abszolút URI-nak kell lennie. |
 | AADSTS90107 | InvalidXml – a kérelem érvénytelen. Győződjön meg arról, hogy az adatai nem rendelkeznek érvénytelen karakterekkel.|
 | AADSTS90114 | InvalidExpiryDate – a tömeges jogkivonat lejárati időbélyegzője lejárt jogkivonat kiosztását eredményezi. |
@@ -231,10 +231,10 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS90120 | InvalidDeviceFlowRequest – a kérést már jóváhagyták vagy elutasították. |
 | AADSTS90121 | InvalidEmptyRequest – érvénytelen üres kérelem.|
 | AADSTS90123 | IdentityProviderAccessDenied – a jogkivonat nem állítható ki, mert az Identity vagy a jogcím-kiállítási szolgáltató megtagadta a kérést. |
-| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported – az erőforrás nem támogatott a `/common` (z) vagy `/consumers` végpontokon keresztül. Ehelyett használja `/organizations` a vagy a bérlő-specifikus végpontot. |
+| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported – az erőforrás nem támogatott a `/common` vagy `/consumers` végpontokon. Ehelyett használja a `/organizations` vagy a bérlő-specifikus végpontot. |
 | AADSTS90125 | DebugModeEnrollTenantNotFound – a felhasználó nincs a rendszeren. Győződjön meg arról, hogy helyesen adta meg a felhasználónevet. |
 | AADSTS90126 | DebugModeEnrollTenantNotInferred – a felhasználó típusa nem támogatott ezen a végponton. A rendszer nem következtetheti ki a felhasználó bérlőjét a felhasználónévből. |
-| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported – az alkalmazás nem támogatott a `/common` vagy `/consumers` végpontokon. Ehelyett használja `/organizations` a vagy a bérlő-specifikus végpontot. |
+| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported – az alkalmazás nem támogatott a `/common` vagy `/consumers` végpontokon. Ehelyett használja a `/organizations` vagy a bérlő-specifikus végpontot. |
 | AADSTS120000 | PasswordChangeIncorrectCurrentPassword |
 | AADSTS120002 | PasswordChangeInvalidNewPasswordWeak |
 | AADSTS120003 | PasswordChangeInvalidNewPasswordContainsMemberName |
@@ -263,7 +263,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS220501 | InvalidCrlDownload |
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource – az erőforrás nincs konfigurálva csak eszköz-tokenek fogadására. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – a felhasználónak nincs engedélye az eszközök regisztrálására az Azure AD-ben. |
-| AADSTS240002 | RequiredClaimIsMissing – a id_token nem használható `urn:ietf:params:oauth:grant-type:jwt-bearer` támogatásként.|
+| AADSTS240002 | RequiredClaimIsMissing – a id_token nem használható `urn:ietf:params:oauth:grant-type:jwt-bearer`-támogatásként.|
 | AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – a bérlői rendszergazda olyan biztonsági szabályzatot állított be, amely blokkolja ezt a kérelmet. Ellenőrizze a bérlő szintjén definiált biztonsági házirendeket annak megállapításához, hogy a kérés megfelel-e a szabályzat követelményeinek. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – az alkalmazás nem található a címtárban/bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Előfordulhat, hogy helytelenül konfigurálta az alkalmazás azonosító értékét, vagy nem a megfelelő bérlőnek küldi el a hitelesítési kérést. |
 | AADSTS700020 | InteractionRequired – a hozzáférési engedélyhez interakció szükséges. |
@@ -273,6 +273,6 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS1000002 | BindCompleteInterruptError – a kötés sikeresen befejeződött, de a felhasználót tájékoztatni kell. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled – az alkalmazás le van tiltva. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és](active-directory-develop-help-support.md) támogatási lehetőségeit, amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.
+* Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](active-directory-develop-help-support.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.

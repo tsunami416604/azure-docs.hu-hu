@@ -36,11 +36,11 @@ A címkék által támogatott erőforrások közé tartoznak a következők:
 
 Címkéket is alkalmazhat, ha [létrehoz egy labort](devtest-lab-create-lab.md) , majd később felügyeli őket a Címkék panelen a konfiguráció és beállítások területen.
 
-Minden címke **neve**/**érték** párokból áll. Létrehozhat például egy *costcenter* nevű címkét, amelynek értéke *34543*. Egy címke, például ez segíthet a szervezete adott területére számlázandó laboratóriumi erőforrások későbbi azonosításában. Itt választhatja ki azokat a neveket és értékeket, amelyek alapján az előfizetését rendszerezni szeretné.
+Minden címke **neve**/**érték** párokból tevődik fel. Létrehozhat például egy *costcenter* nevű címkét, amelynek értéke *34543*. Egy címke, például ez segíthet a szervezete adott területére számlázandó laboratóriumi erőforrások későbbi azonosításában. Itt választhatja ki azokat a neveket és értékeket, amelyek alapján az előfizetését rendszerezni szeretné.
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>A címkék egy meglévő laborban való kezelésének lépései
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás**területen.
 1. A Labs listából válassza ki azt a labort, amelyben címkéket szeretne felvenni vagy kezelni.
 1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok**lehetőséget.
@@ -48,7 +48,7 @@ Minden címke **neve**/**érték** párokból áll. Létrehozhat például egy *
     ![Konfigurálás és házirendek gomb](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
 1. A **kezelés**alatt a bal oldalon válassza a **címkék**lehetőséget.
-1. Ha új címkét szeretne létrehozni ehhez a laborhoz, adjon meg **egy @no__t-** 1**érték** párokat, és kattintson a **Mentés**gombra. Kiválaszthat egy meglévő címkét is a listából a címkéhez társított erőforrások megtekintéséhez vagy kezeléséhez.
+1. Ha új címkét szeretne létrehozni ehhez a laborhoz, adja meg a **név**/**érték** párt, és válassza a **Mentés**lehetőséget. Kiválaszthat egy meglévő címkét is a listából a címkéhez társított erőforrások megtekintéséhez vagy kezeléséhez.
 
     ![Címkék kezelése](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 

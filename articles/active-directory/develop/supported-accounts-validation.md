@@ -28,7 +28,7 @@ A lehetőségek a következők:
 - *AzureADMultipleOrgs*: bármely szervezeti címtár fiókjai (több-bérlős)
 - *AzureADandPersonalMicrosoftAccount*: fiókok bármely szervezeti címtárban (több-bérlős) és személyes Microsoft-fiókokban (például Skype, Xbox és Outlook.com)
 
-A regisztrált alkalmazások esetében a támogatott fióktípus értékét az alkalmazás **hitelesítés** szakaszában találja. Azt is megteheti, hogy a `signInAudience` tulajdonság alatt található a **jegyzékfájlban**.
+A regisztrált alkalmazások esetében a támogatott fióktípus értékét az alkalmazás **hitelesítés** szakaszában találja. A **jegyzékfájl**`signInAudience` tulajdonsága alatt is megtalálhatja.
 
 Az ehhez a tulajdonsághoz kiválasztott érték hatással van az alkalmazás egyéb tulajdonságaira. Ennek eredményeképpen, ha módosítja ezt a tulajdonságot, akkor előfordulhat, hogy először módosítania kell a többi tulajdonságot.
 
@@ -44,7 +44,7 @@ Tekintse meg a következő táblázatot a különböző támogatott fióktípus 
 | Az API által definiált hatókörök (`oauth2Permissions`) | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán |  A hatókör nevének maximális hossza 40 karakter <br><br> Legfeljebb 100 hatókör definiálva | 
 | Felhatalmazott ügyfélalkalmazások (`preautorizedApplications`) | Nincs korlát * | Nincs korlát * | Maximális 500 összesen <br><br> Legfeljebb 100 ügyfél-alkalmazás definiálva <br><br> Ügyfél által definiált maximális 30 hatókör | 
 | appRoles | Támogatott <br> Nincs korlát * | Támogatott <br> Nincs korlát * | Nem támogatott | 
-| Kijelentkezési URL-cím | @no__t – 0 engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | @no__t – 0 engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | <br><br> @no__t – 0 engedélyezett, http://localhost sikertelen a MSA <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> HTTP-séma használata nem engedélyezett <br><br> A helyettesítő karakterek használata nem támogatott | 
+| Kijelentkezési URL | http://localhost engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | http://localhost engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | <br><br> https://localhost engedélyezett, http://localhost sikertelen a MSA <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> HTTP-séma használata nem engedélyezett <br><br> A helyettesítő karakterek használata nem támogatott | 
 
 \* Az alkalmazás-objektum összes gyűjteményi tulajdonságában a 1000-es elemek globális korlátja
 

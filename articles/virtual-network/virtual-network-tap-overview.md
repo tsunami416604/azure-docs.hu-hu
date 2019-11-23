@@ -49,7 +49,7 @@ Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé tes
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [NetScout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [RSA NetWitness® platform](https://www.rsa.com/azure)
+- [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS. A virtuális hálózatban üzembe helyezett virtuális gépekhez csatlakoztatott [hálózati adapterekre](virtual-network-network-interface.md) koppinthat. A cél egy virtuális hálózati IP-cím ugyanabban a virtuális hálózatban, mint a figyelt hálózati adapter vagy egy [társ virtuális](virtual-network-peering-overview.md) hálózat. A virtuális hálózatra KOPPINTó gyűjtő megoldás a magas rendelkezésre állás érdekében üzembe helyezhető egy [Azure belső terheléselosztó](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) mögött. Az egyes megoldások üzembe helyezési lehetőségeinek kiértékeléséhez tekintse meg a [partneri megoldások](#virtual-network-tap-partner-solutions)című témakört.
@@ -58,16 +58,16 @@ Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy megerősítő e-mailt, amelyet az előzetes verzióban regisztrált, és egy vagy több, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzemi modellel és egy partneri megoldással létrehozott virtuális géppel rendelkezik a következő összesítéséhez: KOPPINTson az azonos Azure-régióban található forgalom lehetőségre. Ha nem rendelkezik partneri megoldással a virtuális hálózaton, tekintse meg a következő témakörben található [partneri megoldásokat](#virtual-network-tap-partner-solutions) :. Ugyanazt a virtuális hálózati KOPPINTÁS erőforrást használhatja az azonos vagy különböző előfizetésekben található több hálózati adapterről érkező forgalom összesítésére. Ha a figyelt hálózati adapterek különböző előfizetésekben találhatók, az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani. Emellett a figyelt hálózati adapterek és a TAP-forgalom összesítéséhez használt cél végpont is lehet ugyanabban a régióban lévő, egymástól független virtuális hálózatokban. Ha ezt a telepítési modellt használja, ellenőrizze, hogy a virtuális [hálózat](virtual-network-peering-overview.md) társítása engedélyezve van-e a virtuális hálózati koppintás konfigurálása előtt.
+A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy megerősítő e-mailt, amelyet Ön az előzetes verzióban regisztrált, és egy vagy több, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzemi modellel és egy partneri megoldással létrehozott virtuális géppel rendelkezik, amely az ugyanazon az Azure-régióban található TAP-forgalmat összesíti. Ha nem rendelkezik partneri megoldással a virtuális hálózaton, tekintse meg a következő témakörben található [partneri megoldásokat](#virtual-network-tap-partner-solutions) :. Ugyanazt a virtuális hálózati KOPPINTÁS erőforrást használhatja az azonos vagy különböző előfizetésekben található több hálózati adapterről érkező forgalom összesítésére. Ha a figyelt hálózati adapterek különböző előfizetésekben találhatók, az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani. Emellett a figyelt hálózati adapterek és a TAP-forgalom összesítéséhez használt cél végpont is lehet ugyanabban a régióban lévő, egymástól független virtuális hálózatokban. Ha ezt a telepítési modellt használja, ellenőrizze, hogy a virtuális [hálózat](virtual-network-peering-overview.md) társítása engedélyezve van-e a virtuális hálózati koppintás konfigurálása előtt.
 
 ## <a name="permissions"></a>Engedélyek
 
 A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek | Név |
+| Műveletek | Name (Név) |
 |---|---|
-| Microsoft. Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
-| Microsoft. Network/networkInterfaces/READ | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
+| Microsoft.Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
+| Microsoft.Network/networkInterfaces/read | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
 | Microsoft. Network/tapConfigurations/* | A TAP-konfiguráció hálózati adapteren való létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 
 ## <a name="next-steps"></a>Következő lépések

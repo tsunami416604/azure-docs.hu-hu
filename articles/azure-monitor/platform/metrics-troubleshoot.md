@@ -29,7 +29,7 @@ Az **Erőforrás kiválasztása** elemre kattintott, de nem látja az erőforrá
 
 1. Győződjön meg arról, hogy a megfelelő erőforráscsoport van kiválasztva.
     > [!WARNING]
-    > A legjobb teljesítmény érdekében a metrikák Explorer első megnyitásakor az **erőforráscsoport** legördülő menüjében nincsenek előre kiválasztott erőforráscsoportok. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
+    > A legjobb teljesítmény érdekében a metrikaböngésző első megnyitásakor az **Erőforráscsoport** legördülő menüben nincs előre kijelölt erőforráscsoport. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
 
 ## <a name="chart-shows-no-data"></a>A diagram nem jelenít meg adattípust
 
@@ -80,22 +80,22 @@ Ez a probléma akkor fordulhat elő, amikor az irányítópult olyan metrikával
 ## <a name="chart-shows-dashed-line"></a>A diagram szaggatott vonalat mutat
 
 Az Azure-metrikák diagramjai szaggatott vonal stílusát használják annak jelzésére, hogy a hiányzó érték (más néven "Null érték") két ismert időszelet adatpontja között van. Ha például az időválasztóban az "1 perc" idő részletességét adta meg, de a mérőszámot 07:26, 07:27, 07:29 vagy 07:30 értéken jelentették (jegyezze fel a második és harmadik adatpontok közötti percenkénti eltérést), akkor egy szaggatott vonal kapcsolódik az 07:27-hoz és az 07:29-hoz, és egy folytonos vonal kapcsolódik az összes többi adatpont. A szaggatott vonal nullára csökken, ha a metrika a **darabszámot** és a **Sum** összesítést használja. Az **AVG**, **min** vagy **Max** összesítések esetében a szaggatott vonal két legközelebbi ismert adatpontot kapcsol össze. Ha pedig az adatok a diagram jobb vagy bal szélén hiányoznak, akkor rendszer meghosszabbítja a szaggatott vonalat a hiányzó adatpont irányába.
-  @no__t 0metric-rendszerkép @ no__t-1
+  ![metrikai rendszerkép](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Megoldás:** Ez a viselkedés a tervezés szerint történik. Ez a hiányzó adatpontok azonosításához hasznos. A vonalas diagram kiváló választás a nagy sűrűségű mérőszámok trendjeinek megjelenítéséhez, de nehéz lehet értelmezni a ritka értékekkel rendelkező metrikákat, különösen akkor, ha fontosak az időgabona-vel kapcsolatos kapcsolódó értékek. A szaggatott vonal megkönnyíti az ilyen diagramok leolvasását, ha azonban a diagram még mindig nem egyértelmű, érdemes lehet más diagramtípussal megtekinteni a metrikákat. Például az azonos metrikához tartozó elszórt diagram világosan mutatja, hogy az egyes időkeretek csak akkor jelennek meg, ha van érték, és az adatpontot teljesen kihagyja, ha az érték hiányzik: ![metric rendszerkép @ no__t-1
+**Megoldás:** Ez a viselkedés a tervezés szerint történik. Ez a hiányzó adatpontok azonosításához hasznos. A vonalas diagram kiváló választás a nagy sűrűségű mérőszámok trendjeinek megjelenítéséhez, de nehéz lehet értelmezni a ritka értékekkel rendelkező metrikákat, különösen akkor, ha fontosak az időgabona-vel kapcsolatos kapcsolódó értékek. A szaggatott vonal megkönnyíti az ilyen diagramok leolvasását, ha azonban a diagram még mindig nem egyértelmű, érdemes lehet más diagramtípussal megtekinteni a metrikákat. Az egyazon mérőszámhoz tartozó elszórt diagram például világosan mutatja, hogy az egyes időkeretek csak akkor jelennek meg, ha van érték, és az adatpontot teljesen kihagyja, ha hiányzik az érték: ![metrikai képet](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
    > Ha továbbra is vonaldiagramot szeretne használni a metrikához, akkor mozgassa az egérmutatót a diagram fölé, így az egérmutató helyén lévő adatpont kiemelése révén könnyebben felmérheti az időrészletességet.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>A diagram az értékek váratlan csökkenését mutatja.
 
-Sok esetben a metrikaértékek észlelt csökkenése a diagramon látható adatokkal kapcsolatos félreértésből ered. Az összegek vagy a számok csökkenése félrevezető lehet, ha a diagramon a legfrissebb percek láthatók, mert az Azure még nem kapta meg vagy nem dolgozta fel a legutóbbi metrikaadatpontokat. A szolgáltatástól függően a metrikák feldolgozásának késése néhány perces lehet. Az 1 vagy 5 perces részletességgel rendelkező legutóbbi időtartományt bemutató diagramok esetében az elmúlt néhány percben az érték egy cseppe lesz észrevehető: ![metric kép @ no__t-1
+Sok esetben a metrikaértékek észlelt csökkenése a diagramon látható adatokkal kapcsolatos félreértésből ered. Az összegek vagy a számok csökkenése félrevezető lehet, ha a diagramon a legfrissebb percek láthatók, mert az Azure még nem kapta meg vagy nem dolgozta fel a legutóbbi metrikaadatpontokat. A szolgáltatástól függően a metrikák feldolgozásának késése néhány perces lehet. A legutóbbi időtartományt egy 1 vagy 5 perces részletességgel ábrázoló diagramok esetében az elmúlt néhány percben az érték egy cseppe lesz észrevehető: ![metrikai kép](./media/metrics-troubleshoot/drop-in-values.png)
 
 **Megoldás:** Ez a viselkedés a tervezés szerint történik. Úgy gondoljuk, hogy az adatok lehető legkorábban történő megjelenítése akkor is előnyös, ha az adatok *részlegesek* vagy *nem teljesek*. Ennek köszönhetően hamarabb juthat fontos következtetésekre, és azonnal megkezdheti a vizsgálatot. Egy, a hibák számát megjelenítő metrika esetén például az X részleges érték elárulja, hogy egy adott percben legalább X hiba fordult elő. Azonnal megkezdheti a probléma vizsgálatát, és nem kell megvárnia, hogy pontosan hány hiba történt ebben a percben, ami talán nem is olyan fontos. A diagram a teljes adatkészlet fogadásakor frissül, de ekkor új nem teljes adatpontokat is jeleníthet meg a még frissebb percekből.
 
 ## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>A vendég operációs rendszer névtere és mérőszámai nem választhatók ki
 
-A virtuális gépek és a virtuálisgép-méretezési csoportok két kategóriába sorolhatók: az Azure üzemeltetési környezete által összegyűjtött **virtuálisgép-gazdagép** -metrikák, valamint a figyelési ügynök által gyűjtött **vendég operációs rendszer (klasszikus)** mérőszámok. [ ](agents-overview.md)fut a virtuális gépeken. A figyelőügynök az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) engedélyezésével telepíthető.
+A virtuális gépek és a virtuálisgép-méretezési csoportok két kategóriába sorolhatók: az Azure üzemeltetési környezete által összegyűjtött **virtuálisgép-gazdagép** -metrikák, valamint a virtuális gépeken futó [figyelési ügynök](agents-overview.md) által gyűjtött **vendég operációs rendszer (klasszikus)** mérőszámok. A figyelőügynök az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) engedélyezésével telepíthető.
 
 Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az Azure-tárfiók tartalmazza, amelyet az erőforrás **Diagnosztikai beállítások** lapján választhat ki. Ha a vendég operációs rendszer metrikáit nem gyűjti a rendszer, vagy a metrikaböngésző nem tudja elérni őket, akkor csak a **Virtuálisgép-gazda** metrika névterét látja:
 
@@ -109,7 +109,7 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
 
 1. Győződjön meg arról, hogy a **Microsoft. inbetekintés** erőforrás-szolgáltató [regisztrálva van az előfizetéséhez](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
-1. Győződjön meg arról, hogy a Storage-fiók nem védi a tűzfalat. A Azure Portalnak hozzá kell férnie a Storage-fiókhoz a metrikák adatok lekéréséhez és a diagramok ábrázolásához.
+1. Győződjön meg arról, hogy a tárfiókot nem védi a tűzfal. Az Azure Portalnak hozzá kell férnie a tárfiókhoz, hogy lekérhesse a metrikai adatokat és összeállíthassa a diagramokat.
 
 1. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ellenőrizze, hogy a metrikák a tárfiókba kerülnek-e. Ha a metrikák gyűjtése nem történik meg, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatóját](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 

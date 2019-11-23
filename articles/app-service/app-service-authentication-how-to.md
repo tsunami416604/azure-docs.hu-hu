@@ -42,7 +42,7 @@ Először a Azure Portal **hitelesítés/engedélyezés** lapján konfigurálja 
 
 **Ha a kérelem nem hitelesítve van**, válassza a **Névtelen kérelmek engedélyezése (nincs művelet)** lehetőséget.
 
-A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz (`/.auth/login/<provider>`). Példa:
+A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz (`/.auth/login/<provider>`). Például:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -64,7 +64,7 @@ Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-c
 
 Az ügyfél által irányított bejelentkezés során az alkalmazás manuálisan bejelentkezik a felhasználónak a szolgáltatóba, majd elküldi a hitelesítési jogkivonatot az ellenőrzéshez App Service (lásd: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow)). Ez az érvényesítés önmagában nem biztosít hozzáférést a kívánt alkalmazás-erőforrásokhoz, de sikeres ellenőrzés esetén egy munkamenet-tokent ad meg, amely az alkalmazás erőforrásainak elérésére használható. 
 
-A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben, miután lekérte a hitelesítési tokent a szolgáltatótól, az érvényesítéshez tegye közzé `/.auth/login/<provider>` a tokent. Példa: 
+A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben, miután lekérte a hitelesítési tokent a szolgáltatótól, az érvényesítéshez tegye közzé `/.auth/login/<provider>` a tokent. Például: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -95,7 +95,7 @@ Ha a szolgáltatói jogkivonatot a rendszer sikeresen érvényesíti, az API a v
 }
 ```
 
-Ha már rendelkezik ezzel a munkamenet-jogkivonattal, a védett alkalmazás-erőforrások eléréséhez adja hozzá a `X-ZUMO-AUTH` fejlécet a HTTP-kérésekhez. Példa: 
+Ha már rendelkezik ezzel a munkamenet-jogkivonattal, a védett alkalmazás-erőforrások eléréséhez adja hozzá a `X-ZUMO-AUTH` fejlécet a HTTP-kérésekhez. Például: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -116,7 +116,7 @@ A felhasználók egy `GET` kérelem küldésével indíthatják el a kijelentkez
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Alapértelmezés szerint a sikeres kijelentkezés a `/.auth/logout/done`URL-címre irányítja át az ügyfelet. Az `post_logout_redirect_uri` lekérdezési paraméter hozzáadásával módosíthatja a kijelentkezés utáni átirányítás lapot. Példa:
+Alapértelmezés szerint a sikeres kijelentkezés a `/.auth/logout/done`URL-címre irányítja át az ügyfelet. Az `post_logout_redirect_uri` lekérdezési paraméter hozzáadásával módosíthatja a kijelentkezés utáni átirányítás lapot. Például:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -185,7 +185,7 @@ Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#e
 - **Microsoft-fiók**: a [Microsoft-fiók hitelesítési beállításainak konfigurálásakor](configure-authentication-provider-microsoft.md)válassza ki a `wl.offline_access` hatókört.
 - **Azure Active Directory**: a [https://resources.azure.com](https://resources.azure.com)hajtsa végre a következő lépéseket:
     1. Az oldal tetején válassza az **írás/írás**lehetőséget.
-    2. A bal oldali böngészőben navigáljon az **előfizetések** >  **_\<előfizetés\_név_**  > **resourceGroups** >  **_\<erőforrás\_csoport\_neve >_**  >  **a szolgáltatók** > a **Microsoft. Web** > **webhelyeket** >  **_\<app\_Name >_**  > **config** > **authsettings elemre**. 
+    2. A bal oldali böngészőben navigáljon az **előfizetések** >  **_\<előfizetés\_név_**  > **resourceGroups** >  **_\<erőforrás\_csoport\_neve >_**  > **szolgáltatók** > **Microsoft. Web** > **Sites** > \<\_ **_neve >_**  > **config** > **authsettings elemre**. 
     3. Kattintson a **Szerkesztés** gombra.
     4. Módosítsa a következő tulajdonságot. Cserélje le _\<app\_id >t_ az elérni kívánt szolgáltatás Azure Active Directory alkalmazás-azonosítójával.
 
@@ -232,7 +232,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Az Azure AD lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat azonban, hogy a felhasználóknak azonnal fel kell gyorsítania a saját márkás Azure AD bejelentkezési oldalát (például `contoso.com`). Ha a bejelentkezési fiókok tartománynevét szeretné javasolni, kövesse az alábbi lépéseket.
 
-[https://resources.azure.com ban ](https://resources.azure.com)navigáljon az **előfizetések** >  **_\< előfizetés\_ neve_**  > **resourceGroups** >  **_\< erőforrás\_ csoport\_ neve >_**  >  **a szolgáltatók** >  a **Microsoft. Web** > **webhelyeket** >  **_\< app\_ Name >_**  > **config** > **authsettings elemre**. 
+A [https://resources.azure.com](https://resources.azure.com)-ben navigáljon az **előfizetések** >  **_\<előfizetés\_neve_**  > **resourceGroups** >  **_\<erőforrás\_csoport\_neve >_**  > **szolgáltatók** > **Microsoft. Web** > **Sites** > \<\_ **_neve >_**  > **config** > **authsettings elemre**. 
 
 Kattintson a **Szerkesztés**gombra, módosítsa a következő tulajdonságot, majd kattintson a **put**elemre. Ne felejtse el lecserélni _\<tartomány\_nevét_ a kívánt tartományra >.
 
@@ -278,7 +278,7 @@ Bármely Windows-alkalmazás esetében megadhatja az IIS-webkiszolgáló engedé
 
 ### <a name="identity-provider-level"></a>Identitás-szolgáltató szintje
 
-Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Példa:
+Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Például:
 
 - [Azure app Service](configure-authentication-provider-aad.md)esetében a [vállalati szintű hozzáférés](../active-directory/manage-apps/what-is-access-management.md) közvetlenül az Azure ad-ben is kezelhető. Útmutatásért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - A [Google](configure-authentication-provider-google.md)-ban a [szervezethez](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) tartozó Google API-projektek konfigurálhatók úgy, hogy csak a szervezet felhasználói számára engedélyezzenek hozzáférést (lásd: a [Google **OAuth 2,0** -támogatás beállítása oldal](https://support.google.com/cloud/answer/6158849?hl=en)).

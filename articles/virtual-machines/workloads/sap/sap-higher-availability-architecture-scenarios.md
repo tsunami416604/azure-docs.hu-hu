@@ -216,7 +216,7 @@ ms.locfileid: "70078043"
 Ha úgy dönt, hogy nem használ olyan funkciókat, mint például a Windows Server feladatátvételi fürtszolgáltatás (WSFC) vagy a pacemaker a Linux rendszeren (jelenleg csak SUSE Linux Enterprise Server [SLES] 12-es és újabb verziók esetén támogatott), az Azure-beli virtuális gépek újraindítása is megtörténik. Az SAP-rendszereket az Azure fizikai kiszolgálói infrastruktúra és a teljes mögöttes Azure platform tervezett és nem tervezett leállásával védi.
 
 > [!NOTE]
-> Az Azure-beli virtuális gép újraindítása elsősorban a virtuális gépek és az alkalmazások védelmét védi. Bár a virtuális gépek újraindítása nem biztosít magas rendelkezésre állást az SAP-alkalmazásokhoz, az infrastruktúra bizonyos szintjének rendelkezésre állását biztosítja. Az SAP-rendszerek "magasabb rendelkezésre állását" is biztosítja. A virtuális gépek tervezett vagy nem tervezett leállása utáni újraindításához szükséges idő nem biztosít SLA-t, ami lehetővé teszi, hogy ez a módszer magas rendelkezésre állást biztosítson az SAP-rendszerek kritikus összetevői számára. A kritikus összetevőkre példa lehet egy ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer.
+> *Az Azure* -beli virtuális gép újraindítása elsősorban a virtuális gépek és az alkalmazások védelmét védi. Bár a virtuális gépek újraindítása nem biztosít magas rendelkezésre állást az SAP-alkalmazásokhoz, az infrastruktúra bizonyos szintjének rendelkezésre állását biztosítja. Az SAP-rendszerek "magasabb rendelkezésre állását" is biztosítja. A virtuális gépek tervezett vagy nem tervezett leállása utáni újraindításához szükséges idő nem biztosít SLA-t, ami lehetővé teszi, hogy ez a módszer magas rendelkezésre állást biztosítson az SAP-rendszerek kritikus összetevői számára. A kritikus összetevőkre példa lehet egy ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer.
 >
 >
 
@@ -280,6 +280,6 @@ Feltételezve, hogy egy virtuális gépen egy SAP Application Server-példány t
   * [Az SAP elindítása vagy leállítása a UNIX-kiszolgáló indításával/leállításával együtt](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [Az SAP NetWeaver felügyeleti ügynökök elindítása és leállítása](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes SAP NetWeaver alkalmazással kapcsolatos magas rendelkezésre állással kapcsolatos információkért lásd: [SAP-alkalmazások magas rendelkezésre állása az Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

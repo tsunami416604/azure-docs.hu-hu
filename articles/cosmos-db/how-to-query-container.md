@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy tárolót (gyűjtemény, g
 
 ## <a name="in-partition-query"></a>Partíción belüli lekérdezés
 
-Ha tárolóból kérdez le adatait, ha a lekérdezéshez meg van adva egy partíciós kulcs szűrő, Azure Cosmos DB automatikusan kezeli a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő partíciókhoz irányítja a lekérdezést. Például a következő lekérdezés a `DeviceId` partícióra van irányítva, amely a partíciós kulcs értékének `XMS-0001`megfelelő összes dokumentumot tartalmazza.
+Ha tárolóból kérdez le adatait, ha a lekérdezéshez meg van adva egy partíciós kulcs szűrő, Azure Cosmos DB automatikusan kezeli a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő partíciókhoz irányítja a lekérdezést. Például a következő lekérdezés a `DeviceId` partícióra van irányítva, amely a partíciós kulcs értékének megfelelő összes dokumentumot tartalmazza `XMS-0001`.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,7 +30,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
 
-A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson`DeviceId`(), és az összes partícióra partíciókulcsra, ahol a partíció indexén fut. A partíciók közötti lekérdezés futtatásához állítsa `EnableCrossPartitionQuery` az igaz értéket ( `x-ms-documentdb-query-enablecrosspartition`vagy  a REST API).
+A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson (`DeviceId`), és az összes partícióra partíciókulcsra, ahol a partíció indexén fut. A partíciók közötti lekérdezés futtatásához állítsa a `EnableCrossPartitionQuery` igaz értékre (vagy `x-ms-documentdb-query-enablecrosspartition` a REST API).
 
 A EnableCrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha igaz értékre van állítva, és ha a lekérdezés nem rendelkezik partíciós kulccsal, Azure Cosmos DB a partíciók közötti lekérdezést. A ventilátort úgy teheti meg, hogy egyéni lekérdezéseket bocsát ki az összes partícióra. A lekérdezés eredményeinek olvasásához az ügyfélalkalmazások a FeedResponse származó eredményeket használják, és a Continuationtoken argumentumot használja tulajdonságot kell megkeresni. Az összes eredmény beolvasásához tartsa ismétlődően az értékeket, amíg a Continuationtoken argumentumot használja null nem lesz. 
 
@@ -59,13 +59,13 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **Maxanalyticsunits**: Beállítja a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát. Ha a tulajdonságot-1 értékre állítja, az SDK kezeli a párhuzamosság mértékét. Ha a `MaxDegreeOfParallelism` nincs megadva, vagy 0 értékre van állítva, amely az alapértelmezett érték, a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
+- A **MaxDegreeOfParallelism**: beállítja a tároló partícióihoz egyszerre létrehozott hálózati kapcsolatok maximális számát. Ha a tulajdonságot-1 értékre állítja, az SDK kezeli a párhuzamosság mértékét. Ha a `MaxDegreeOfParallelism` nincs megadva, vagy 0 értékre van állítva, amely az alapértelmezett érték, akkor a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
 
-- **MaxBufferedItemCount**: Kereskedik a lekérdezés késése és az ügyféloldali memória kihasználtsága között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
+- **MaxBufferedItemCount**: kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
 
 A gyűjtemény azonos állapotában a párhuzamos lekérdezés a soros végrehajtással megegyező sorrendben adja vissza az eredményeket. Ha több partíciós lekérdezést is végrehajt, amely tartalmazza a rendezési operátorokat (ORDER BY, TOP), akkor a Azure Cosmos DB SDK párhuzamosan kiadja a lekérdezést a partíciók között. A részben rendezett eredményeket egyesíti az ügyfél oldalán, hogy globálisan rendezett eredményeket hozzon létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A particionálással kapcsolatos tudnivalókat az alábbi cikkekben találja Azure Cosmos DB:
 

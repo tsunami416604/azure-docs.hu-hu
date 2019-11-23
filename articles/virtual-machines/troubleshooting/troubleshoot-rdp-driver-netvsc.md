@@ -54,7 +54,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 2. Töltse le a megfelelő frissítést egy olyan új vagy meglévő adatlemezre, amely ugyanahhoz a régióhoz tartozó működő virtuális géphez van csatolva:
 
-   - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 vagy újabb frissítés
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítés
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítés
 
 3. Válassza le a segédprogram lemezét a működő virtuális gépről, majd csatolja a hibás virtuális géphez.
@@ -79,7 +79,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 5. A mentési virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe).
 
-6. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **Load kaptár** lehetőséget a menüből.
+6. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **betöltési struktúra** lehetőséget a menüből.
 
 7. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
@@ -97,7 +97,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 12. Töltse le a megfelelő frissítést:
 
-    - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 vagy újabb frissítés
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítés
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítés
 
 13. Csatlakoztassa a rendszerlemezt adatlemezként egy olyan mentési virtuális gépen, amelyen le tudja tölteni a frissítést.
@@ -116,6 +116,6 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 16. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha továbbra is segítségre van szüksége, [forduljon az Azure támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , hogy gyorsan feloldja a problémát.

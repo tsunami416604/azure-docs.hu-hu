@@ -262,7 +262,7 @@ Ebben a példában a másolás során a Data Factory a fogadó Azure SQL Databas
 ## <a name="incremental-copy"></a>A növekményes másolási
 A Data Factory lehetővé teszi a különbözeti adatok növekményes másolását egy forrás adattárból egy fogadó adattárba. További részletek: [oktatóanyag: adatok növekményes másolása](tutorial-incremental-copy-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő útmutatóink, oktatóanyagaink és példáink segítségével:
 
 - [Adatok másolása az egyik helyről egy másik helyre ugyanazon Azure Blob Storage-fiókban](quickstart-create-data-factory-dot-net.md)

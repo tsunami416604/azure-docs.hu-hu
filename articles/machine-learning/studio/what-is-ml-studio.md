@@ -109,7 +109,7 @@ Ha segítségre van lehetősége az elérhető gépi tanulási algoritmusok nagy
 ## <a name="deploying-a-predictive-analytics-web-service"></a>A prediktív elemzési webszolgáltatások telepítése
 Miután a prediktív elemzési modell elkészült, üzembe helyezheti webszolgáltatásként közvetlenül Machine Learning Studio (klasszikus) webhelyről. További információ erről a folyamatról: [Azure Machine learning webszolgáltatások üzembe helyezése](deploy-a-machine-learning-web-service.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A prediktív elemzés és a gépi tanulás alapjaival megismerheti a [lépésenkénti](create-experiment.md) útmutatót, valamint [a minták kialakítását](sample-experiments.md).
 
 <!-- Module References -->

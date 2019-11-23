@@ -25,7 +25,7 @@ ms.locfileid: "72388921"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ez az útmutató bemutatja, hogyan használhatók a Mobile Apps androidos ügyfél-SDK a gyakori forgatókönyvek megvalósításához, például:
 
@@ -101,7 +101,7 @@ Az Azure Mobile Apps négy funkciót biztosít a Mobile-alkalmazáshoz:
 * Hitelesítés Azure App Service hitelesítéssel és engedélyezéssel.
 * Leküldéses értesítés regisztrációja Notification Hubs.
 
-Mindegyik függvényhez először létre kell hoznia egy `MobileServiceClient` objektumot.  Csak egy `MobileServiceClient` objektumot kell létrehozni a mobil ügyfelén belül (azaz egy egyedi mintázatnak kell lennie).  @No__t-0 objektum létrehozása:
+Mindegyik függvényhez először létre kell hoznia egy `MobileServiceClient` objektumot.  Csak egy `MobileServiceClient` objektumot kell létrehoznia a mobil ügyfelén belül (azaz egy egyedi mintázatnak kell lennie).  `MobileServiceClient` objektum létrehozása:
 
 ```java
 MobileServiceClient mClient = new MobileServiceClient(
@@ -109,11 +109,11 @@ MobileServiceClient mClient = new MobileServiceClient(
     this);                  // Your application Context
 ```
 
-A `<MobileAppUrl>` karakterlánc vagy URL-objektum, amely a mobil háttérre mutat.  Ha Azure App Servicet használ a mobil háttérrendszer üzemeltetéséhez, akkor győződjön meg arról, hogy az URL Secure `https://` verzióját használja.
+A `<MobileAppUrl>` egy karakterlánc vagy egy URL-objektum, amely a mobil háttérre mutat.  Ha Azure App Servicet használ a mobil háttérrendszer üzemeltetéséhez, akkor győződjön meg arról, hogy az URL biztonságos `https://` verzióját használja.
 
-Az ügyfélnek szüksége van a tevékenység vagy a környezet elérésére is – a példában a `this` paramétert.  A MobileServiceClient-konstrukciónak a `AndroidManifest.xml` fájlban hivatkozott tevékenység `onCreate()` metódusán belül kell történnie.
+Az ügyfélnek szüksége van a tevékenységhez vagy a környezethez – a példában a `this` paramétert is használhatja.  A MobileServiceClient-konstrukciónak a `AndroidManifest.xml` fájlban hivatkozott tevékenység `onCreate()` metódusán belül kell történnie.
 
-Ajánlott eljárásként az absztrakt kiszolgáló kommunikációját a saját (egyedi minta) osztályba kell bevezetni.  Ebben az esetben át kell adnia a tevékenységet a konstruktoron belül a szolgáltatás megfelelő konfigurálásához.  Példa:
+Ajánlott eljárásként az absztrakt kiszolgáló kommunikációját a saját (egyedi minta) osztályba kell bevezetni.  Ebben az esetben át kell adnia a tevékenységet a konstruktoron belül a szolgáltatás megfelelő konfigurálásához.  Például:
 
 ```java
 package com.example.appname.services;
@@ -155,7 +155,7 @@ public class AzureServiceAdapter {
 }
 ```
 
-Most meghívhatja a `AzureServiceAdapter.Initialize(this);` értéket a fő tevékenység `onCreate()` metódusának használatával.  Az ügyfélhez való hozzáférést igénylő bármely más módszer `AzureServiceAdapter.getInstance();` használatával szerzi be a szolgáltatási adapterre mutató hivatkozást.
+Most meghívhatja a `AzureServiceAdapter.Initialize(this);`t a fő tevékenység `onCreate()` metódusában.  Az ügyfélhez való hozzáférést igénylő bármely más módszer `AzureServiceAdapter.getInstance();` a szolgáltatási adapterre mutató hivatkozás beszerzéséhez.
 
 ## <a name="data-operations"></a>Adatműveletek
 
@@ -207,12 +207,12 @@ A Mobile Apps-háttérbeli további táblázatok létrehozásáról további inf
 Az Azure Mobile Apps háttérbeli táblázat öt speciális mezőt határoz meg, amelyek közül négy az ügyfelek számára érhető el:
 
 * `String id`: a rekord globálisan egyedi azonosítója.  Ajánlott eljárásként az azonosítót egy [UUID][17] -objektum karakterlánc-ábrázolása alapján végezze el.
-* `DateTimeOffset updatedAt`: az utolsó frissítés dátuma/időpontja.  A updatedAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
+* `DateTimeOffset updatedAt`: az utolsó frissítés dátuma és időpontja.  A updatedAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
 * `DateTimeOffset createdAt`: az objektum létrehozásának dátuma és időpontja.  A createdAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
-* @no__t – 0: általában karakterláncként van megjelölve, a-kiszolgáló is beállítja a verziót.
-* @no__t – 0: azt jelzi, hogy a rekord törölve lett, de még nem történt meg.  Ne használja a `deleted` tulajdonságot az osztályban.
+* `byte[] version`: általában karakterláncként van megjelölve, a-kiszolgáló is beállítja a verziót.
+* `boolean deleted`: azt jelzi, hogy a rekordot törölték, de még nem törölte.  Ne használja a `deleted` tulajdonságként az osztályban.
 
-Az `id` mező kötelező.  A `updatedAt` mező és a `version` mező a kapcsolat nélküli szinkronizáláshoz használatos (növekményes szinkronizáláshoz és ütközés feloldásához).  A `createdAt` mező egy hivatkozási mező, amelyet az ügyfél nem használ.  A nevek "over-the-wire" névvel rendelkeznek a tulajdonságok között, és nem állíthatók be.  Azonban létrehozhat egy leképezést az objektum és az "over-the-wire" nevek között a [gson][3] könyvtár használatával.  Példa:
+Az `id` mező kötelező.  Az offline szinkronizáláshoz a `updatedAt` mező és a `version` mező használatos (növekményes szinkronizáláshoz és ütközés feloldásához).  A `createdAt` mező egy hivatkozási mező, amelyet az ügyfél nem használ.  A nevek "over-the-wire" névvel rendelkeznek a tulajdonságok között, és nem állíthatók be.  Azonban létrehozhat egy leképezést az objektum és az "over-the-wire" nevek között a [gson][3] könyvtár használatával.  Például:
 
 ```java
 package com.example.zumoappname;
@@ -297,10 +297,10 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 Először szerezzen be egy tábla-referenciát.  Ezután hajtson végre egy lekérdezést a tábla hivatkozásán.  A lekérdezés a következőket ötvözi:
 
-* @No__t-0 [Filter záradék](#filtering).
+* Egy `.where()` [Filter záradék](#filtering).
 * Egy `.orderBy()` [rendezési záradék](#sorting).
-* @No__t-0 [mező kiválasztási záradéka](#selection).
-* A [lapozható eredmények](#paging)`.skip()` és `.top()`.
+* `.select()` [mező kiválasztási záradéka](#selection).
+* Egy `.skip()` és `.top()` a [lapozható eredményekhez](#paging).
 
 A záradékokat az előző sorrendben kell megjeleníteni.
 
@@ -315,7 +315,7 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-Az előző példa az összes eredményt adja vissza (a kiszolgáló által beállított maximális oldalméret alapján).  A `.execute()` metódus végrehajtja a lekérdezést a háttérön.  A lekérdezés egy [OData v3][19] -lekérdezésre lett konvertálva, mielőtt a Mobile apps háttérbe bekerül.  A beérkezéskor a Mobile Apps háttérrendszer a lekérdezést egy SQL-utasításba konvertálja, mielőtt végrehajtja azt a SQL Azure példányon.  Mivel a hálózati tevékenység hosszabb időt vesz igénybe, a `.execute()` metódus egy [`ListenableFuture<E>`][18]értéket ad vissza.
+Az előző példa az összes eredményt adja vissza (a kiszolgáló által beállított maximális oldalméret alapján).  A `.execute()` metódus végrehajtja a lekérdezést a háttérön.  A lekérdezés egy [OData v3][19] -lekérdezésre lett konvertálva, mielőtt a Mobile apps háttérbe bekerül.  A beérkezéskor a Mobile Apps háttérrendszer a lekérdezést egy SQL-utasításba konvertálja, mielőtt végrehajtja azt a SQL Azure példányon.  Mivel a hálózati tevékenység hosszabb időt vesz igénybe, a `.execute()` metódus egy [`ListenableFuture<E>`][18]ad vissza.
 
 ### <a name="filtering"></a>Visszaadott adatértékek szűrése
 
@@ -343,7 +343,7 @@ List<ToDoItem> results = MToDoTable
     .get();
 ```
 
-A következő metódusok támogatják az összetett szűrőket a karakterlánc mezőin: **startsWith**, **endsWith**, **Összefűzés**, **alstring**, **indexOf**, **replace**, **toLower**, **toUpper**, **Trim**és **Length** . Az alábbi példa olyan táblázatos sorok szűrését tartalmazza, amelyekben a *text* oszlop a "PRI0" karakterlánccal kezdődik.
+A következő metódusok támogatják az összetett szűrőket a karakterlánc mezőin: **startsWith**, **endsWith**, **Összefűzés**, **alstring**, **indexOf**, **replace**, **toLower**, **toUpper**, **Trim**és **Length**. Az alábbi példa olyan táblázatos sorok szűrését tartalmazza, amelyekben a *text* oszlop a "PRI0" karakterlánccal kezdődik.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -461,7 +461,7 @@ A metódust használó összes rekordra vonatkozó kérelem legalább két kére
 
 ### <a name="chaining"></a>Útmutató: lekérdezési módszerek összefűzése
 
-A háttérbeli táblázatok lekérdezésében használt módszerek összefűzése is lehetséges. A láncolási lekérdezési módszerek lehetővé teszik a rendezett és lapozható szűrt sorok adott oszlopainak kiválasztását. Létrehozhat összetett logikai szűrőket.  Minden lekérdezési metódus egy lekérdezési objektumot ad vissza. A metódusok sorozatának befejezéséhez és a lekérdezés tényleges futtatásához hívja meg a **végrehajtás** metódust. Példa:
+A háttérbeli táblázatok lekérdezésében használt módszerek összefűzése is lehetséges. A láncolási lekérdezési módszerek lehetővé teszik a rendezett és lapozható szűrt sorok adott oszlopainak kiválasztását. Létrehozhat összetett logikai szűrőket.  Minden lekérdezési metódus egy lekérdezési objektumot ad vissza. A metódusok sorozatának befejezéséhez és a lekérdezés tényleges futtatásához hívja meg a **végrehajtás** metódust. Például:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -492,7 +492,7 @@ Az adatkötés három összetevőt foglal magában:
 * A képernyő elrendezése
 * Az adapter, amely összeköti a kettőt.
 
-A mintakód esetében a Mobile Apps SQL Azure Table **ToDoItem** származó adatok egy tömbbe kerülnek vissza. Ez a tevékenység az adatalkalmazások közös mintája.  Az adatbázis-lekérdezések gyakran olyan sorok gyűjteményét adják vissza, amelyeket az ügyfél egy listában vagy tömbben kap. Ebben a példában a tömb az adatforrás.  A kód egy olyan képernyő-elrendezést határoz meg, amely az eszközön megjelenő adatnézetet határozza meg.  A kettő egy adapterrel van kötve, amely ebben a kódban a **ArrayAdapter @ no__t-1ToDoItem @ no__t-2** osztály kiterjesztése.
+A mintakód esetében a Mobile Apps SQL Azure Table **ToDoItem** származó adatok egy tömbbe kerülnek vissza. Ez a tevékenység az adatalkalmazások közös mintája.  Az adatbázis-lekérdezések gyakran olyan sorok gyűjteményét adják vissza, amelyeket az ügyfél egy listában vagy tömbben kap. Ebben a példában a tömb az adatforrás.  A kód egy olyan képernyő-elrendezést határoz meg, amely az eszközön megjelenő adatnézetet határozza meg.  A kettő egy adapterrel együtt van kötve, amely ebben a kódban a **ArrayAdapter&lt;ToDoItem&gt;** osztály kiterjesztését képezi.
 
 #### <a name="layout"></a>Az elrendezés megadása
 
@@ -524,14 +524,14 @@ Az előző kódban a *listaelem* attribútum a listában szereplő egyes sorok e
 ```
 
 #### <a name="adapter"></a>Az adapter megadása
-Mivel a nézet adatforrása a **ToDoItem**tömbje, az adapter alosztálya egy **ArrayAdapter @ no__t-2ToDoItem @ no__t-3** osztály. Ez az alosztály minden **ToDoItem** létrehoz egy nézetet a **row_list_to_do** elrendezés használatával.  A kódban a következő osztályt adjuk meg, amely a **ArrayAdapter @ no__t-1e @ no__t-2** osztály kiterjesztése:
+Mivel a Nézetünk adatforrása a **ToDoItem**tömbje, az adapter alosztálya egy **ArrayAdapter&lt;ToDoItem&gt;** osztályban. Ez az alosztály minden **ToDoItem** létrehoz egy nézetet a **row_list_to_do** elrendezés használatával.  A kódban a következő osztályt adjuk meg, amely a **ArrayAdapter&lt;E&gt;** osztály kiterjesztését adja meg:
 
 ```java
 public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Felülbírálja az adapterek **getView** metódusát. Példa:
+Felülbírálja az adapterek **getView** metódusát. Például:
 
 ```java
     @Override
@@ -634,7 +634,7 @@ ToDoItem entity = mToDoTable
     .get();
 ```
 
-A visszaadott entitás megegyezik a háttér-táblába beszúrt adatokkal, beleértve az azonosítót és az egyéb értékeket (például a `createdAt`, `updatedAt` és `version` mezőt) a háttérre állítva.
+A visszaadott entitás megegyezik a háttér-táblába beszúrt adatokkal, beleértve az azonosítót és az egyéb értékeket (például `createdAt`, `updatedAt`és `version` mezőket) a háttérre állítva.
 
 Mobile Apps táblákhoz egy **azonosító**nevű elsődleges kulcs oszlop szükséges. Az oszlopnak karakterláncnak kell lennie. Az ID oszlop alapértelmezett értéke egy GUID.  Más egyedi értékeket is megadhat, például e-mail-címeket vagy felhasználóneveket. Ha egy beszúrt rekordhoz nincs megadva karakterlánc-azonosító érték, a háttér új GUID azonosítót hoz létre.
 
@@ -832,7 +832,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 
 ### <a name="obtain-a-reference-to-the-offline-cache-table"></a>A kapcsolat nélküli gyorsítótár táblára mutató hivatkozás beszerzése
 
-Online tábla esetén `.getTable()` értéket kell használnia.  Offline tábla esetén használja a következőt: `.getSyncTable()`:
+Online tábla esetén `.getTable()`t használ.  Offline tábla esetén használja a `.getSyncTable()`:
 
 ```java
 MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
@@ -863,17 +863,17 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 }
 ```
 
-Ha a lekérdezés neve a `.pull(query, queryname)` metódushoz van megadva, akkor a növekményes szinkronizálás csak az utolsó sikeres lekérés óta létrehozott vagy módosított rekordok visszaadására szolgál.
+Ha a lekérdezés neve a `.pull(query, queryname)` metódushoz van megadva, a növekményes szinkronizálás csak az utolsó sikeres lekérés óta létrehozott vagy módosított rekordok visszaadására szolgál.
 
 ### <a name="handle-conflicts-during-offline-synchronization"></a>Ütközések kezelése az offline szinkronizálás során
 
-Ha ütközés lép fel egy @no__t 0 művelet során, a rendszer egy `MobileServiceConflictException`-et fog dobni.   A kiszolgáló által kiállított elem be van ágyazva a kivételbe, és a kivételnél `.getItem()` alapján kérhető le.  Állítsa be a leküldést úgy, hogy a következő elemeket hívja meg a MobileServiceSyncContext objektumon:
+Ha ütközés történik egy `.push()` művelet során, a rendszer egy `MobileServiceConflictException`t fog dobni.   A kiszolgáló által kiállított elem be van ágyazva a kivételbe, és a kivétel `.getItem()` lekérhető.  Állítsa be a leküldést úgy, hogy a következő elemeket hívja meg a MobileServiceSyncContext objektumon:
 
 *  `.cancelAndDiscardItem()`
 *  `.cancelAndUpdateItem()`
 *  `.updateOperationAndItem()`
 
-Ha az összes ütközés meg van jelölve, az összes ütközés feloldásához hívja meg a `.push()` értéket.
+Ha az összes ütközés meg van jelölve, hívja meg `.push()` újra az összes ütközés feloldásához.
 
 ## <a name="custom-api"></a>Egyéni API meghívása
 
@@ -955,9 +955,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-A fő tevékenységben definiált `GOOGLE_LOGIN_REQUEST_CODE` a `login()` metódushoz és a `onActivityResult()` metódushoz használatos.  Bármelyik egyedi számot kiválaszthatja, ha ugyanazt a számot használja a `login()` metódusban és a `onActivityResult()` metódusban.  Ha az ügyfél kódját egy szolgáltatási adapterbe (a korábban látható módon) absztraktként választotta, akkor a megfelelő metódusokat kell meghívnia a szolgáltatás adapterén.
+A fő tevékenységben definiált `GOOGLE_LOGIN_REQUEST_CODE` a `login()` metódushoz és a `onActivityResult()` metódushoz használatos.  Bármelyik egyedi számot kiválaszthatja, ha ugyanazt a számot használja a `login()` metódusban és a `onActivityResult()` metódusban is.  Ha az ügyfél kódját egy szolgáltatási adapterbe (a korábban látható módon) absztraktként választotta, akkor a megfelelő metódusokat kell meghívnia a szolgáltatás adapterén.
 
-A customtabs-projekthez is konfigurálnia kell a projektet.  Először meg kell adni egy átirányítási URL-címet.  Adja hozzá a következő kódrészletet a `AndroidManifest.xml` értékhez:
+A customtabs-projekthez is konfigurálnia kell a projektet.  Először meg kell adni egy átirányítási URL-címet.  Adja hozzá a következő kódrészletet a `AndroidManifest.xml`hoz:
 
 ```xml
 <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -987,7 +987,7 @@ android {
 }
 ```
 
-Végül adja hozzá a `com.android.support:customtabs:28.0.0` értéket az `build.gradle` fájl függőségek listájához:
+Végül adja hozzá `com.android.support:customtabs:28.0.0` a függőségek listájához a `build.gradle` fájlban:
 
 ```gradle
 dependencies {
@@ -1004,7 +1004,7 @@ dependencies {
 Szerezze be a bejelentkezett felhasználó AZONOSÍTÓját egy **MobileServiceUser** a **getUserId** metódus használatával. A következő témakörből megtudhatja, hogyan használhatja a határidőket az aszinkron bejelentkezési API-k meghívására: [Ismerkedés a hitelesítéssel].
 
 > [!WARNING]
-> Az említett URL-séma megkülönbözteti a kis-és nagybetűket.  Győződjön meg arról, hogy `{url_scheme_of_you_app}` egyeztetési eset összes előfordulása.
+> Az említett URL-séma megkülönbözteti a kis-és nagybetűket.  Győződjön meg arról, hogy `{url_scheme_of_you_app}` minden előfordulása esetén.
 
 ### <a name="caching"></a>Gyorsítótár-hitelesítési tokenek
 
@@ -1018,7 +1018,7 @@ Azure App Service hitelesítés és engedélyezés által visszaadott token egy 
 
 Azt is megteheti, hogy a szolgáltatót a frissítési tokenek használatára is regisztrálja.  A frissítési jogkivonat nem mindig érhető el.  További konfigurálásra van szükség:
 
-* **Azure Active Directory**esetében konfigurálja a Azure Active Directory alkalmazáshoz tartozó ügyfél-titkos kulcsot.  Azure Active Directory hitelesítés konfigurálásakor a Azure App Service-ügyfél titkos kulcsát kell megadnia.  @No__t-0 hívásakor a `response_type=code id_token` paramétert paraméterként adja át:
+* **Azure Active Directory**esetében konfigurálja a Azure Active Directory alkalmazáshoz tartozó ügyfél-titkos kulcsot.  Azure Active Directory hitelesítés konfigurálásakor a Azure App Service-ügyfél titkos kulcsát kell megadnia.  `.login()`hívásakor a `response_type=code id_token` paraméterként adja át a következőket:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1030,7 +1030,7 @@ Azt is megteheti, hogy a szolgáltatót a frissítési tokenek használatára is
         parameters);
     ```
 
-* A **Google**esetében adja át a `access_type=offline` paramétert:
+* A **Google**esetében adja át a `access_type=offline` paraméterként:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1044,7 +1044,7 @@ Azt is megteheti, hogy a szolgáltatót a frissítési tokenek használatára is
 
 * **Microsoft-fiók**esetén válassza ki a `wl.offline_access` hatókört.
 
-A tokenek frissítéséhez hívja meg a `.refreshUser()`:
+Jogkivonat frissítéséhez hívja meg `.refreshUser()`:
 
 ```java
 MobileServiceUser user = mClient
@@ -1060,7 +1060,7 @@ Az ügyfél-flow hitelesítéssel történő bejelentkezés általános folyamat
 
 * Konfigurálja Azure App Service hitelesítést és az engedélyezést úgy, mint a kiszolgálói folyamat hitelesítését.
 * A hitelesítési szolgáltatói SDK integrálása a hitelesítéshez hozzáférési jogkivonat létrehozásához.
-* Hívja meg a `.login()` metódust az alábbiak szerint (`result` a következőnek kell lennie: `AuthenticationResult`):
+* A következő módon hívja meg a `.login()` metódust (`result` `AuthenticationResult`nak kell lennie):
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1080,11 +1080,11 @@ Az ügyfél-flow hitelesítéssel történő bejelentkezés általános folyamat
 
 A következő szakaszban tekintse meg a kód teljes példáját.
 
-Cserélje le a `onSuccess()` metódust minden olyan kódra, amelyet sikeres bejelentkezéskor szeretne használni.  A `{provider}` karakterlánc érvényes szolgáltató: **HRE** (Azure Active Directory), **Facebook**, **Google**, **MicrosoftAccount**vagy **Twitter**.  Ha implementálta az egyéni hitelesítést, akkor használhatja az egyéni hitelesítési szolgáltató címkét is.
+Cserélje le a `onSuccess()` metódust a sikeres bejelentkezéshez használni kívánt kóddal.  A `{provider}` karakterlánc érvényes szolgáltató: **HRE** (Azure Active Directory), **Facebook**, **Google**, **MicrosoftAccount**vagy **Twitter**.  Ha implementálta az egyéni hitelesítést, akkor használhatja az egyéni hitelesítési szolgáltató címkét is.
 
 ### <a name="adal"></a>Felhasználók hitelesítése a Active Directory-hitelesítési tár (ADAL)
 
-A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat a Azure Active Directory használatával lehet az alkalmazásba írni. Az ügyfél-adatfolyamok bejelentkezésének használata gyakran előnyösebb a `loginAsync()` módszerek használatára, mivel ez egy több natív UX-élményt nyújt, és lehetővé teszi a további testreszabást.
+A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat a Azure Active Directory használatával lehet az alkalmazásba írni. Az ügyfél-flow bejelentkezés használata gyakran előnyösebb a `loginAsync()` metódusok használatakor, mivel ez egy natív UX-élményt nyújt, és lehetővé teszi a további testreszabást.
 
 1. A HRE-bejelentkezéshez a [app Service konfigurálása Active Directory bejelentkezési][22] oktatóanyagban című témakörben található. Győződjön meg arról, hogy a natív ügyfélalkalmazás regisztrálásának nem kötelező lépéseit kell végrehajtania.
 2. Telepítse a ADAL a Build. gradle fájl módosításával, hogy az tartalmazza a következő definíciókat:
@@ -1114,10 +1114,10 @@ A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat
 
 3. Adja hozzá a következő kódot az alkalmazáshoz, és végezze el a következő cseréket:
 
-    * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com értékűnek kell lennie.
+    * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.comnak kell lennie.
     * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
     * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
-    * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a következőhöz hasonlónak kell lennie: *https://contoso.azurewebsites.net/.auth/login/done* .
+    * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/donehoz* hasonlónak kell lennie.
 
 ```java
 private AuthenticationContext mContext;
@@ -1211,7 +1211,7 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 
 ### <a name="implement-a-progress-filter"></a>Állapotjelző szűrő megvalósítása
 
-Az összes kérelem elfogásának megvalósításához egy `ServiceFilter` implementációt alkalmazhat.  Például a következő frissítés egy előre létrehozott folyamatjelző sávot:
+Egy `ServiceFilter`megvalósításával minden kérelem elfogását megvalósíthatja.  Például a következő frissítés egy előre létrehozott folyamatjelző sávot:
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1256,7 +1256,7 @@ mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter(
 
 ### <a name="customize-request-headers"></a>Kérések fejlécének testreszabása
 
-Használja a következő `ServiceFilter` értéket, és csatolja a szűrőt ugyanúgy, mint a `ProgressFilter`:
+Használja az alábbi `ServiceFilter`, és csatolja a szűrőt ugyanúgy, mint a `ProgressFilter`:
 
 ```java
 private class CustomHeaderFilter implements ServiceFilter {
@@ -1281,7 +1281,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Automatikus szerializálás konfigurálása
 
-Megadhat egy átalakítási stratégiát, amely minden oszlopra érvényes a [gson][3] API használatával. Az Android-ügyfél könyvtára a háttérben [gson][3] használ a Java-objektumok JSON-adatként való szerializálásához, mielőtt az adatküldés Azure app Service.  A következő kód a **setFieldNamingStrategy ()** metódust használja a stratégia beállításához. Ez a példa törli a kezdeti karaktert ("m"), majd a következő karakternél az összes mezőnév esetében a következő karaktert. Például a "mId" a "id" értékre vált.  Hozzon létre egy átalakítási stratégiát, amely csökkenti a legtöbb mezőre vonatkozó `SerializedName()` jegyzetek szükségességét.
+Megadhat egy átalakítási stratégiát, amely minden oszlopra érvényes a [gson][3] API használatával. Az Android-ügyfél könyvtára a háttérben [gson][3] használ a Java-objektumok JSON-adatként való szerializálásához, mielőtt az adatküldés Azure app Service.  A következő kód a **setFieldNamingStrategy ()** metódust használja a stratégia beállításához. Ez a példa törli a kezdeti karaktert ("m"), majd a következő karakternél az összes mezőnév esetében a következő karaktert. Például a "mId" a "id" értékre vált.  Hozzon létre egy átalakítási stratégiát, amely csökkenti a legtöbb mezőre `SerializedName()` jegyzetek szükségességét.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

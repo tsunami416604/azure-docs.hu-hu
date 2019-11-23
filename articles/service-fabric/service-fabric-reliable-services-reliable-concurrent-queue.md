@@ -62,7 +62,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 Íme néhány kódrészlet a EnqueueAsync használatához, amelyet a várt kimenetek követnek.
 
-- @no__t – 1.0Case: Egyetlen sorba helyezni feladat @ no__t-0
+- *1. eset: egyetlen sorba helyezni feladat*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -81,7 +81,7 @@ Tegyük fel, hogy a feladat sikeresen befejeződött, és nem volt egyidejű tra
 > 20, 10
 
 
-- @no__t – 0Case 2: Párhuzamos sorba helyezni feladat @ no__t-0
+- *2. eset: párhuzamos sorba helyezni feladat*
 
 ```
 // Parallel Task 1
@@ -110,7 +110,7 @@ Tegyük fel, hogy a feladatok sikeresen befejeződtek, és a feladatok párhuzam
 Íme néhány kódrészlet a TryDequeueAsync használatához, amelyet a várt kimenetek követnek. Tegyük fel, hogy a várólista már fel van töltve az üzenetsor következő elemeivel:
 > 10, 20, 30, 40, 50, 60
 
-- @no__t – 1.0Case: Egyetlen deüzenetsor-feladat @ no__t-0
+- *1. eset: egyetlen várólista-feladat*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -125,7 +125,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Tegyük fel, hogy a feladat sikeresen befejeződött, és nem volt egyidejű tranzakció, amely módosítja a várólistát. Mivel a várólista elemeinek sorrendjét nem lehet megtenni, az elemek közül bármelyik közül hármat el lehet végezni, bármilyen sorrendben. A várólista megpróbálja megtartani az elemeket az eredeti (várólistán lévő) sorrendben, de az egyidejű műveletek vagy hibák miatt kénytelen lehet átrendezni őket.  
 
-- @no__t – 0Case 2: Párhuzamos deüzenetsor-feladat @ no__t-0
+- *2. eset: párhuzamos várólista-feladat*
 
 ```
 // Parallel Task 1
@@ -153,7 +153,7 @@ Tegyük fel, hogy a feladatok sikeresen befejeződtek, és a feladatok párhuzam
 
 Ugyanez az tétel *nem* jelenik meg mindkét listán. Ezért ha a dequeue1 *10*, *30*, akkor a dequeue2 *20*, *40*.
 
-- @no__t – 0Case 3: A várólista-sorrend és a tranzakció megszakítása @ no__t-0
+- *3. eset: rendezés a tranzakció megszakításával*
 
 Ha egy tranzakciót az in-Flight dequeuing szolgáltatással szakít meg, a rendszer visszaállítja az elemeket a várólista élén. Az elemek a várólista élén történő visszahelyezésének sorrendje nem garantált. Nézzük meg a következő kódot:
 
@@ -275,7 +275,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Legjobb teljesítményű Drain
-Az adatstruktúra egyidejű jellegéből adódóan nem garantálható a várólista kiürítése.  Előfordulhat, hogy még akkor is előfordulhat, ha a várólistán nincs felhasználói művelet, mert a TryDequeueAsync egy adott hívása nem ad vissza olyan tételt, amely korábban várólistán lévő és véglegesítve lett.  A várólistán lévő elem garantált, hogy *végül* láthatóvá válik a sorból, azonban sávon kívüli kommunikációs mechanizmus nélkül, egy független fogyasztó nem tudja, hogy a várólista állandó állapotba került, még akkor is, ha az összes termelő le van állítva, és nem az új sorba helyezni műveletek engedélyezettek. Így a kiürítési művelet az alábbiakban ismertetett legjobb erőfeszítést mutatja.
+Az adatstruktúra egyidejű jellegéből adódóan nem garantálható a várólista kiürítése.  Előfordulhat, hogy még akkor is előfordulhat, ha a várólistán nincs felhasználói művelet, mert a TryDequeueAsync egy adott hívása nem ad vissza olyan tételt, amely korábban várólistán lévő és véglegesítve lett.  A várólistán lévő elem garantált, hogy *végül* láthatóvá válik a deüzenetsor számára, de sávon kívüli kommunikációs mechanizmus nélkül, egy független fogyasztó nem tudja, hogy a várólista állandó állapotba került, még akkor is, ha minden termelő le lett állítva, és nem engedélyezett új sorba helyezni művelet. Így a kiürítési művelet az alábbiakban ismertetett legjobb erőfeszítést mutatja.
 
 A felhasználónak le kell állítania az összes további gyártó és fogyasztó feladatát, és várnia kell, amíg a folyamatban lévő tranzakciók véglegesítve vagy megszakítva lettek, mielőtt a rendszer kiüríti a várólistát.  Ha a felhasználó ismeri a várólistában lévő elemek várt számát, beállíthat egy értesítést, amely azt jelzi, hogy az összes elem el lett-e küldve.
 

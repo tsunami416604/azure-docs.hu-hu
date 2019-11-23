@@ -137,7 +137,7 @@ Cserélje le a zárójelben lévő értékeket a szervezete és a bérlője szem
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A bérlő létrehozása után létre kell hoznia egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzá kell rendelnie egy szerepkört a Windows rendszerű virtuális asztalon belül. Az egyszerű szolgáltatásnév lehetővé teszi a Windows rendszerű virtuális asztali Azure Marketplace-ajánlat sikeres üzembe helyezését egy gazda készlet létrehozásához. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 

@@ -22,7 +22,7 @@ Az alkalmazások magasabb szintű rendelkezésre állásának biztosítása érd
 
 Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt, és hogyan oszthatja szét a csomópont-összetevőket a rendelkezésre állási zónák között.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
@@ -37,9 +37,9 @@ Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozható
 * Kelet-Japán
 * Észak-Európa
 * Délkelet-Ázsia
-* Egyesült Királyság déli régiója
+* Az Egyesült Királyság déli régiója
 * Nyugat-Európa
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 
 A következő korlátozások érvényesek az AK-fürtök rendelkezésre állási zónák használatával történő létrehozásakor:
 
@@ -122,7 +122,7 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Ha további csomópontokat ad hozzá egy ügynök-készlethez, az Azure platform automatikusan elosztja a mögöttes virtuális gépeket a megadott rendelkezésre állási zónák között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
 

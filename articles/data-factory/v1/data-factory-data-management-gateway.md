@@ -79,7 +79,7 @@ Itt látható az adatátjáróval való másolás lépéseinek áttekintése és
 * Ha a gazdaszámítógép hibernált állapotba kerül, az átjáró nem válaszol az adatkérelmekre. Ezért konfigurálja a megfelelő **energiasémát** a számítógépen az átjáró telepítése előtt. Ha a gép hibernált állapotra van állítva, az átjáró telepítése üzenetet kér.
 * Az adatkezelési átjáró sikeres telepítéséhez és konfigurálásához rendszergazdának kell lennie a gépen. További felhasználókat adhat hozzá az **adatkezelési átjáró felhasználói** helyi Windows-csoportjához. Ennek a csoportnak a tagjai a **adatkezelés gateway Configuration Manager** eszköz használatával konfigurálhatják az átjárót.
 
-Ha a másolási tevékenység futása egy adott gyakoriságon történik, az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Az erőforrás-használat az áthelyezett adatok mennyiségétől függ. Ha több másolási feladat van folyamatban, az erőforrás-használat a csúcs idején jelenik meg.
+Ha a másolási tevékenység futása egy adott gyakoriságon történik, az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Erőforrás-használat is nagyban függ az áthelyezett adatok mennyisége. Ha több másolási feladat van folyamatban, az erőforrás-használat a csúcs idején jelenik meg.
 
 ### <a name="installation-options"></a>Telepítési beállítások
 Az adatkezelési átjárót a következő módokon lehet telepíteni:
@@ -98,7 +98,7 @@ Az adatkezelési átjárót a következő módokon lehet telepíteni:
 4. Az **üdvözlőlapon** válassza ki a kívánt **nyelvet** , majd kattintson a **tovább**gombra.
 5. **Fogadja el** a végfelhasználói licencszerződést, és kattintson a **tovább**gombra.
 6. Válassza ki az átjáró telepítéséhez szükséges **mappát** , majd kattintson a **tovább**gombra.
-7. A **telepítésre kész** lapon kattintson a **telepítés**gombra.
+7. Az a **készen áll a telepítésre** kattintson **telepítése**.
 8. A telepítés befejezéséhez kattintson a **Befejezés** gombra.
 9. Szerezze be a kulcsot a Azure Portal. A Részletes utasításokért tekintse meg a következő szakaszt.
 10. A számítógépen futó **adatkezelés gateway Configuration Manager** átjárójának **regisztrálása** lapon végezze el a következő lépéseket:
@@ -144,8 +144,8 @@ A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat
 | Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
-| *. core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|
-| *. frontend.clouddatahub.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
+| *.core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|
+| *.frontend.clouddatahub.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
 | *.servicebus.windows.net |9350-9354, 5671 |Opcionális Service Bus Relay a másolási varázsló által használt TCP protokollon keresztül |
 
 A Windows tűzfal szintjén ezek a kimenő portok általában engedélyezve vannak. Ha nem, a tartományokat és a portokat a megfelelő módon konfigurálhatja az átjárót használó gépen.
@@ -366,10 +366,10 @@ Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlo
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
 Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
-Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
+status | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
 Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.
-CPU-kihasználtság | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
+Processzorkihasználtság | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
 Hálózatkezelés (be/ki) | Átjáró-csomópontok hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
 Egyidejű feladatok (futó/korlát) | Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti speciális forgatókönyvekben, ahol a CPU/memória/hálózat nincs használatban, a tevékenységek azonban időtúllépést okozhatnak. Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve).
 Szerepkör | A több csomópontos átjárók és a feldolgozók két típusú szerepkört használnak. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál.
@@ -379,7 +379,7 @@ Ezen a lapon néhány olyan beállítás látható, amely több értelmet mutat,
 ### <a name="gateway-status"></a>Átjáró állapota
 Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartalmazza:
 
-Állapot  | Megjegyzések/forgatókönyvek
+status  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
 Offline | A csomópont offline állapotban van.
@@ -389,7 +389,7 @@ Inaktív | A csomópont más többségi csomópontok konfigurációjától elté
 
 A következő táblázat a **logikai átjáró**lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ.
 
-Állapot | Megjegyzések
+status | Megjegyzések
 :----- | :-------
 Regisztráció szükséges | Ehhez a logikai átjáróhoz még nincs regisztrálva csomópont
 Online | Az átjáró-csomópontok online állapotban vannak
@@ -543,5 +543,5 @@ Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -Resourc
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez.

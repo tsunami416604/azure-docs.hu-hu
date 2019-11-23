@@ -37,7 +37,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz ezekre az elemekre:
 
 - Egy [Azure Container Registry (ACR) beállításjegyzék][acr-quickstart], az ACR bejelentkezési kiszolgáló neve, valamint az [ACR-beállításjegyzékkel való HITELESÍTÉSre][acr-authentication] konfigurált AK-fürt
 
-- Az Azure CLI 2.0.46 vagy újabb verziója telepítve és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+- Az Azure CLI 2.0.46 vagy újabb verziója telepítve és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 - A [Docker telepítve van][docker-install] a fejlesztői rendszeren
 
@@ -52,7 +52,7 @@ Ebben a cikkben egy minta Azure vote-alkalmazást használunk, amely egy vagy t�
 > [!NOTE]
 > A minta Azure vote-alkalmazás egy Linux-Pod-t használ, amely egy Linux-csomóponton fut. A cikkben leírt folyamat a Windows Server-csomóponton ütemezett Windows Server Pod-ra is működik.
 
-A következő GitHub-tárházat a minta alkalmazáshoz – [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Ahhoz, hogy elágaztassa a példatárt a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a jobb felső sarokban.
+A következő GitHub-tárházat a minta alkalmazás- [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Ahhoz, hogy elágaztassa a példatárt a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a jobb felső sarokban.
 
 Az elágazás klónozása a fejlesztői rendszeren. Győződjön meg arról, hogy a tárház klónozásakor a elágazás URL-címét használja:
 
@@ -66,7 +66,7 @@ Váltson a klónozott elágazás könyvtárára:
 cd azure-voting-app-redis
 ```
 
-A minta alkalmazáshoz szükséges tároló-lemezképek létrehozásához használja a *Docker-levélírás. YAML* fájlt `docker-compose` értékkel:
+A minta alkalmazáshoz szükséges tároló-lemezképek létrehozásához használja a *Docker-levélírás. YAML* fájlt `docker-compose`:
 
 ```console
 docker-compose up -d
@@ -89,13 +89,13 @@ Az *Azure-vote-elülső* tároló rendszerképének az ACR-be való leküldésé
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-A [Docker tag][docker-tag] paranccsal címkézze fel a rendszerképet az ACR bejelentkezési kiszolgálójának nevével és `v1` verziószámával. Adja meg saját `<acrLoginServer>` nevet az előző lépésben:
+A [Docker tag][docker-tag] paranccsal címkézheti a rendszerképet az ACR bejelentkezési kiszolgálójának nevével és a `v1`verziószámával. Adja meg az előző lépésben kapott saját `<acrLoginServer>` nevét:
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Végül küldje le az *Azure-vote-elülső* rendszerképet az ACR-beállításjegyzékbe. Újra cserélje le a `<acrLoginServer>` értéket a saját ACR-beállításjegyzék bejelentkezési kiszolgálójának nevére, például `myacrregistry.azurecr.io`:
+Végül küldje le az *Azure-vote-elülső* rendszerképet az ACR-beállításjegyzékbe. Újra cserélje le a `<acrLoginServer>`t a saját ACR-beállításjegyzék bejelentkezési kiszolgálójának nevére, például `myacrregistry.azurecr.io`:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -138,7 +138,7 @@ A Jenkins a cikkben való használatának gyors üzembe helyezéséhez a követk
 > [!WARNING]
 > Ez a példa a bemutató céljára szolgál, amellyel gyorsan kiépíthető egy Azure-beli virtuális gépen futó Jenkins-környezet. Az Azure Custom script bővítmény használatával konfigurálja a virtuális gépet, majd megjeleníti a szükséges hitelesítő adatokat. A *~/.Kube/config* a Jenkins virtuális gépre másolódik.
 
-Futtassa a következő parancsokat a szkript letöltéséhez és futtatásához. Tekintse át az összes parancsfájl tartalmát a futtatása előtt – [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh).
+Futtassa a következő parancsokat a szkript letöltéséhez és futtatásához. Az [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh)futtatása előtt tekintse át a parancsfájlok tartalmát.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
@@ -159,14 +159,14 @@ Nyisson meg egy webböngészőt a megjelenő URL-címen, és adja meg a feloldá
 - Hozza létre az első rendszergazdai felhasználót. Adjon meg egy felhasználónevet, például az *azureuser*nevet, majd adja meg a saját biztonságos jelszavát. Végül gépelje be teljes nevét és e-mail-címét.
 - Válassza a **Save and Finish** (Mentés és befejezés) elemet
 - Amint Jenkins készen áll, kattintson a **Start using Jenkins** (Jenkins használatának megkezdése) elemre
-    - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. A szolgáltatás újraindításához az SSH-t a Jenkins-példány nyilvános IP-címére, és írja be a következőt: `sudo service jenkins restart`. A szolgáltatás újraindítása után frissítse a webböngészőt.
+    - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. A szolgáltatás újraindításához írja be az SSH-t a Jenkins-példány nyilvános IP-címére, és írja be a következőt: `sudo service jenkins restart`. A szolgáltatás újraindítása után frissítse a webböngészőt.
 - Jelentkezzen be a Jenkins-be a telepítési folyamat során létrehozott felhasználónévvel és jelszóval.
 
 ## <a name="create-a-jenkins-environment-variable"></a>Jenkins környezeti változó létrehozása
 
 A Jenkins környezeti változó az ACR bejelentkezési kiszolgáló nevének tárolására szolgál. Ez a változó a Jenkins-Build feladataiban hivatkozik. A környezeti változó létrehozásához hajtsa végre a következő lépéseket:
 
-- A Jenkins-portál bal oldalán válassza a **Jenkins kezelése** > **rendszer konfigurálása** lehetőséget.
+- A Jenkins-portál bal oldali részén válassza a **Jenkins kezelése** > a **rendszer konfigurálása** lehetőséget.
 - A **globális tulajdonságok**területen válassza a **környezeti változók**elemet. Adjon hozzá egy `ACR_LOGINSERVER` nevű változót és az ACR bejelentkezési kiszolgáló értékét.
 
     ![Jenkins környezeti változók](media/aks-jenkins/env-variables.png)
@@ -211,7 +211,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 
 Az Azure-ban létrehozott szerepkör-hozzárendeléssel mostantól egy Jenkins hitelesítőadat-objektumában tárolja az ACR hitelesítő adatait. Ezek a hitelesítő adatok a Jenkins-felépítési feladatban vannak hivatkozva.
 
-A Jenkins-portál bal oldalán kattintson a **hitelesítő adatok**elemre  > **Jenkins** > **globális hitelesítő adatok (korlátlan)**  > **hitelesítő adatok hozzáadása**
+A Jenkins-portál bal oldalán kattintson a **hitelesítő adatok** > **Jenkins** > **globális hitelesítő adatok (korlátlan)**  > a **hitelesítő adatok hozzáadása** elemre.
 
 Győződjön meg arról, hogy a hitelesítő adat a **username jelszóval** , és adja meg a következő elemeket:
 
@@ -230,13 +230,13 @@ Kattintson **az OK** gombra, és térjen vissza a Jenkins-portálra.
 A Jenkins-portál kezdőlapján válassza az **új elem** lehetőséget a bal oldali oldalon:
 
 1. Adja meg az *Azure-vote* nevet a feladattípusként. Válassza a **Freestyle projekt**elemet, majd kattintson **az OK gombra** .
-1. Az **általános** szakaszban válassza a **GitHub-projekt** elemet, és adja meg az elágazó tárház URL-címét (például *https: \//GitHub. com/\<your-GitHub-Account @ no__t-5/Azure-szavazás-app-Redis*
-1. A **forráskód-kezelés** szakaszban válassza a **git**lehetőséget, írja be az elágazó tárházat *. git* URL-cím, például *https: \//GitHub. com/\<your-GitHub-Account @ no__t-6/Azure-voting-app-Redis. git*
+1. Az **általános** szakaszban válassza a **GitHub-projekt** elemet, és adja meg az elágazó tárház URL-címét (például *https:\//GitHub.com/\<saját-GitHub-fiók\>/Azure-voting-app-Redis*
+1. A **forráskód-kezelés** szakaszban válassza a **git**lehetőséget, adja meg az elágazó tárházat *. git* URL-címét, például *https:\//github.com/\<saját-GitHub-fiók\>/Azure-voting-app-Redis.git*
 
 1. Az **Eseményindítók létrehozása** szakaszban válassza ki a **GitHub Hook-eseményindítót a gitscm Polling lekérdezéshez**
 1. A **létrehozási környezet**területen válassza a **titkos szövegek vagy fájlok használata** lehetőséget.
-1. A **kötések**területen válassza a **Hozzáadás**@no__t – 2**Felhasználónév és jelszó (elválasztva) lehetőséget.**
-   - Adja meg `ACR_ID` értéket a **Felhasználónév változóhoz**, és `ACR_PASSWORD` értéket a **jelszó változóhoz** .
+1. A **kötések**területen válassza a **Hozzáadás** > **Felhasználónév és jelszó (elválasztva) lehetőséget.**
+   - Adja meg `ACR_ID` a **Felhasználónév változóhoz**, és `ACR_PASSWORD` a **jelszó változóhoz**
 
      ![Jenkins-kötések](media/aks-jenkins/bindings.png)
 
@@ -280,7 +280,7 @@ A sikeres manuális Build befejezésével mostantól integrálhatja a GitHubot a
 
 1. Tallózással keresse meg az elágazó GitHub-tárházat egy böngészőben.
 1. Válassza a **Beállítások**, majd a bal oldali **webhookok** lehetőséget.
-1. Válassza a **webhook hozzáadását**. A *hasznos adatok URL-címéhez*írja be a következőt: `http://<publicIp:8080>/github-webhook/`, ahol a `<publicIp>` a Jenkins-kiszolgáló IP-címe. Ügyeljen arra, hogy tartalmazza a záró/. Hagyja meg a többi alapértelmezett értéket a tartalomtípusnál, és aktiválja a *leküldéses* eseményeket.
+1. Válassza a **webhook hozzáadását**. A *hasznos adatok URL-címe*mezőbe írja be a következőt: `http://<publicIp:8080>/github-webhook/`, ahol a `<publicIp>` a Jenkins-kiszolgáló IP-címe. Ügyeljen arra, hogy tartalmazza a záró/. Hagyja meg a többi alapértelmezett értéket a tartalomtípusnál, és aktiválja a *leküldéses* eseményeket.
 1. Válassza a **webhook hozzáadása**elemet.
 
     ![GitHub-webhook létrehozása a Jenkinshez](media/aks-jenkins/webhook.png)

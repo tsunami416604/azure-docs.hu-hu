@@ -179,7 +179,7 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 + [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) a további manipulációhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Knowledge Store az Azure Storage-fiókokhoz való hozzáférésre alkalmas bármely ügyfélalkalmazás által a készségkészlet tervezésekor hasznosnak tartja a dúsított dokumentumok megőrzését, illetve az új struktúrák és tartalmak felhasználását.
 

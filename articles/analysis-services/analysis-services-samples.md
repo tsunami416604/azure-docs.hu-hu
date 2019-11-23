@@ -41,7 +41,7 @@ Ha Azure Portal Analysis Services-kiszolgálóval rendelkezik, gyorsan és könn
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adventure Works-oktatóanyag](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Helyszíni Azure-adatátjáró](analysis-services-gateway.md)  

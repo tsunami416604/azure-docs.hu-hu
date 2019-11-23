@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan hívhatja meg a Computer Vision APIt a REST API hasz
 - Támogatott bemeneti metódusok: egy nyers bináris képfájl egy alkalmazás/oktett-stream vagy egy képurl-cím formájában
 - Támogatott képfájlformátumok: JPEG, PNG, GIF és BMP
 - Képfájl mérete: 4 MB vagy kevesebb
-- Képdimenziók: 50 @no__t – 0 50 képpont vagy nagyobb
+- Képdimenziók: 50 &times; 50 képpont vagy nagyobb
   
 A cikkben szereplő példák a következő funkciókat mutatják be:
 
@@ -177,7 +177,7 @@ Például:
 }
 ```
 
-Mező | Type (Típus) | Tartalom
+Mező | Típus | Tartalom
 ------|------|------|
 Címkék  | `object` | A címkék egy tömb legfelső szintű objektuma.
 tags[].Name | `string`  | A címkét a címkék besorolása alapján.
@@ -237,16 +237,16 @@ A 2. lehetőséget (bővített elemzés) használó, tartományhoz tartozó mode
 }
 ```
 
-A Categories (kategóriák) mező az eredeti besorolásban szereplő [86-kategóriák](../Category-Taxonomy.md) közül egy vagy több listáját tartalmazza. Azok a kategóriák, amelyek aláhúzással egyeznek meg a kategóriával és a gyermekeivel (például "people_" vagy "people_group", a hírességek modell esetében).
+A Categories (kategóriák) mező az eredeti besorolásban szereplő [86-kategóriák](../Category-Taxonomy.md) közül egy vagy több listáját tartalmazza. Azok a kategóriák, amelyek aláhúzással egyeznek meg a kategóriával és a gyermekeivel (például "people_" vagy "people_group", a hírességek modelljéhez).
 
-Mező   | Type (Típus)  | Tartalom
+Mező   | Típus  | Tartalom
 ------|------|------|
 kategóriák | `object`   | A legfelső szintű objektum.
 categories[].name    | `string` | A név a 86 kategóriás besorolási listáról.
 categories[].score  | `number`  | A megbízhatósági pontszám 0 és 1 között van.
 categories[].detail  | `object?`      | Választható A részletező objektum.
 
-Ha több kategória is egyezik (például az 86 kategóriás osztályozó egy pontszámot ad vissza a "people_" és a "people_young" típushoz, ha a Model = hírességek), akkor a részletek a legáltalánosabb szintű egyezéshez ("people_", ebben a példában) vannak csatolva.
+Ha több kategória is egyezik (például az 86 kategóriás osztályozó egy pontszámot ad vissza a "people_" és a "people_young" kifejezéshez, ha a Model = hírességek), akkor a részletek a legáltalánosabb szintű egyezéshez ("people_", ebben a példában) vannak csatolva.
 
 ## <a name="error-responses"></a>Hibaüzenetek
 

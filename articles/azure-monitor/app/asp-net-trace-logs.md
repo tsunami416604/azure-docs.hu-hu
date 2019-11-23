@@ -53,20 +53,20 @@ Ezt a módszert akkor használja, ha a projekt típusát nem támogatja a Applic
 3. Keressen rá a "Application Insights" kifejezésre.
 4. Válasszon egyet az alábbi csomagok közül:
 
-   - ILogger: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - NLog: [Microsoft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Log4Net: [Microsoft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - System. Diagnostics: [Microsoft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Microsoft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) 
-[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
-[ ![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - ILogger: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - NLog: [Microsoft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Log4Net: [Microsoft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - System. Diagnostics: [Microsoft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Microsoft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 A NuGet csomag telepíti a szükséges szerelvényeket, és módosítja a web. config vagy az app. config fájlt, ha az alkalmazható.
 
@@ -128,21 +128,21 @@ Windows esemény-nyomkövetés (ETW) eseményeket úgy is konfigurálhatja, hogy
 
 Az egyes forrásokhoz a következő paramétereket állíthatja be:
  * A **ProviderName** a gyűjteni kívánt ETW-szolgáltató neve.
- * A **ProviderGuid** meghatározza a gyűjteni kívánt ETW-szolgáltató GUID azonosítóját. @No__t_0 helyett használhatja.
+ * A **ProviderGuid** meghatározza a gyűjteni kívánt ETW-szolgáltató GUID azonosítóját. `ProviderName`helyett használhatja.
  * A **szint** beállítja a begyűjteni kívánt naplózási szintet. Ez lehet *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
  * **Kulcsszavak** (nem kötelező) a kulcsszó-kombinációk egész értékének megadására használható.
 
 ## <a name="use-the-trace-api-directly"></a>A nyomkövetési API közvetlen használata
 Közvetlenül is meghívhatja a Application Insights nyomkövetési API-t. A naplózási adapterek ezt az API-t használják.
 
-Példa:
+Például:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.
 
-Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Példa:
+Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Például:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -184,7 +184,7 @@ Például a következőket teheti:
 >Ha az alkalmazás sok adatmennyiséget küld, és a ASP.NET 2.0.0-beta3 vagy újabb verziójához készült Application Insights SDK-t használja, akkor az *adaptív mintavételi* funkció működhet, és csak a telemetria egy részét küldheti el. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 >
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="how-do-i-do-this-for-java"></a>Hogyan ezt a javát?
 Használja a [Java log-adaptereket](../../azure-monitor/app/java-trace-logs.md).
 
@@ -195,7 +195,7 @@ Használja a [Java log-adaptereket](../../azure-monitor/app/java-trace-logs.md).
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>A konfigurációs eszközben nincs naplózási adapter beállítás
 * Először telepítse a naplózási keretrendszert.
 * Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web. config fájlban*van konfigurálva](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
-* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban lépjen az **eszközök** > **bővítmények és frissítések**menüpontra, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
+* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök** > **bővítmények és frissítések**lehetőséget, majd nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
 
 ### <a name="emptykey"></a>A "rendszerállapot-kulcs nem lehet üres" hibaüzenet jelenik meg
 Valószínűleg telepítette a naplózási adapter Nuget-csomagját Application Insights telepítése nélkül. Megoldáskezelő kattintson a jobb gombbal a *ApplicationInsights. config fájlra*, és válassza a **frissítés Application Insights**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be az Azure-ba, és hozzon létre egy Application Insights-erőforrást, vagy egy meglévőt újra. Ezt a problémát ki kell javítani.

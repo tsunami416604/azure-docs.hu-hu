@@ -40,14 +40,14 @@ A **riasztás részletei** panelen látható, hogy mikor történt a riasztás, 
  
 A következő táblázat a megfelelő adattípusokhoz rendeli a szolgáltatási típusokat:
 
-| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Rendeltetés | Adattípus létrehozva  |
+| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Cél | Adattípus létrehozva  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (szinkronizálás) | Azure AD Connect Health Sync Insights szolgáltatás | HRE-kapcsolatra vonatkozó információk gyűjtése (összekötők, szinkronizálási szabályok stb.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService – összekötők <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+| Azure AD Connect (Sync) | Azure AD Connect Health Sync Insights szolgáltatás | HRE-kapcsolatra vonatkozó információk gyűjtése (összekötők, szinkronizálási szabályok stb.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService – összekötők <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync Monitoring szolgáltatás | HRE-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | Teljesítményszámláló |
 | AD DS | Azure AD Connect Health AD DS Insights szolgáltatás | Szintetikus tesztek végrehajtása, topológiai információk gyűjtése, replikációs metaadatok |  -Add-TopologyInfo-JSON <br /> -Common-TestData-JSON (létrehozza a teszt eredményeit)   | 
 |  | Azure AD Connect Health AD DS Monitoring szolgáltatás | A Hozzáadás-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések és-fájlok gyűjtése | – Teljesítményszámláló  <br /> -Common-TestData-JSON (feltölti a teszt eredményeit)  |
 | AD FS | Azure AD Connect Health AD FS Diagnostics szolgáltatás | Szintetikus tesztek végrehajtása | TestResult (a tesztek eredményeinek létrehozása) | 
-| | Azure AD Connect Health AD FS Insights szolgáltatás  | ADFS használati metrikáinak összegyűjtése | ADFS – UsageMetrics |
+| | Azure AD Connect Health AD FS Insights szolgáltatás  | ADFS használati metrikáinak összegyűjtése | Adfs-UsageMetrics |
 | | Azure AD Connect Health AD FS Monitoring szolgáltatás | ADFS-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | TestResult (a tesztek eredményeinek feltöltése) |
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések 
@@ -59,7 +59,7 @@ A probléma diagnosztizálásához szükséges lépések alább láthatók. Az e
 
 * Győződjön meg arról, hogy az ügynökök legújabb verziói vannak telepítve. [Kiadási előzmények](reference-connect-health-version-history.md)megtekintése. 
 * Győződjön meg arról, hogy a Azure AD Connect Health Agent Services **fut** a gépen. A AD FShoz tartozó kapcsolati állapotnak például három szolgáltatással kell rendelkeznie.
-  ![Verify Azure AD Connect Health @ no__t-1
+  ![Azure AD Connect Health ellenőrzése](./media/how-to-connect-health-agent-install/install5.png)
 
 * Győződjön meg arról, hogy átugorja és megfelel a [követelmények szakasznak](how-to-connect-health-agent-install.md#requirements).
 * A kapcsolódási problémák felderítéséhez használja a [test connectivity Tool eszközt](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) .

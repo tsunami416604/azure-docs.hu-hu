@@ -308,19 +308,19 @@ ms.locfileid: "70101330"
 
 
 
-Ebben a dokumentumban több különböző területre is kiterjed, amelyeket figyelembe kell venni az SAP bevezetésének az Azure IaaS történő telepítésekor. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -munkaterheléshez és egyéb útmutatók az Azure-beli SAP-munkaterheléshez című dokumentumban ismertetett szempontokat. [](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) 
+Ebben a dokumentumban több különböző területre is kiterjed, amelyeket figyelembe kell venni az SAP bevezetésének az Azure IaaS történő telepítésekor. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](dbms_guide_general.md) és egyéb útmutatók az Azure-beli [SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)című dokumentumban ismertetett szempontokat. 
 
 ## <a name="specifics-to-sap-ase-on-windows"></a>A Windowson futó SAP-központhoz kapcsolódó részletek
 A Microsoft Azure-től kezdve a meglévő SAP-elősegítő alkalmazásai áttelepíthetők az Azure-Virtual Machinesba. Az Azure-beli virtuális gépeken futó SAP-bevezetéssel csökkentheti a vállalati szélességű alkalmazások üzembe helyezésének, kezelésének és karbantartásának teljes tulajdonlási költségeit azáltal, hogy egyszerűen áttelepíti ezeket az alkalmazásokat a Microsoft Azure. Az Azure-beli virtuális gépeken futó SAP bevezetéssel a rendszergazdák és a fejlesztők továbbra is használhatják a helyszínen elérhető fejlesztési és felügyeleti eszközöket.
 
-Az Azure Virtual Machines SLA-kat itt találja:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Az Azure Virtual Machines SLA-kat itt találja: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
 A Microsoft Azure számos különböző virtuálisgép-típust kínál, amelyek lehetővé teszik a legkisebb SAP-rendszerek és-tájak használatát a nagy SAP-rendszerek és tájak több ezer felhasználóval való futtatásával. A különböző SAP-tanúsítvánnyal rendelkező virtuális gépek SAP-méretezési SAP-száma az [1928533]-as SAP-megjegyzésben található.
 
 Az Azure Storage, az SAP virtuális gépek vagy az SAP-figyelés használatára vonatkozó nyilatkozatok és javaslatok az [azure Virtual Machines adatbázis-kezelő rendszerekben történő üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) az SAP bevezetésére is vonatkoznak.
 
 ### <a name="sap-ase-version-support"></a>SAP benyújtó verziójának támogatása
-Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezető kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető <https://support.sap.com/swdc>el a következő címen:.
+Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezetési kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető el a következő helyen: <https://support.sap.com/swdc>.
 
 Ne töltsön le frissítéseket az SAP bevezető kiszolgáló, illetve a JDBC-és ODBC-illesztőprogramok számára közvetlenül a Sybase-webhelyekről. A helyszíni és az Virtual Machines Azure-beli SAP-termékekkel használható javításokkal kapcsolatos részletes információkat a következő SAP-megjegyzésekben talál:
 
@@ -331,9 +331,9 @@ Az SAP-t használó SAP Business Suite futtatásával kapcsolatos általános in
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP-vel kapcsolatos konfigurációs irányelvek SAP-hez kapcsolódó SAP-alapú Azure-beli virtuális gépeken való telepítéséhez
 #### <a name="structure-of-the-sap-ase-deployment"></a>Az SAP bevezetési környezet szerkezete
-Az SAP-bevezetési végrehajtható fájlnak a virtuális gép operációsrendszer-lemezének rendszermeghajtóján kell lennie\), vagy telepítve kell lennie (c meghajtó:. Általában a legtöbb SAP beszállítói rendszer és eszköz adatbázisa nem tapasztal nagy terhelést. Ezért a rendszer és az eszközök adatbázisai (Master, Model, saptools, sybmgmtdb, sybsystemdb) továbbra is megmaradhatnak a C:\ meghajtó. 
+Az SAP-bevezetési végrehajtható fájlok a virtuális gép operációsrendszer-lemezének rendszermeghajtóján (c:\)) találhatók vagy telepíthetők. Általában a legtöbb SAP beszállítói rendszer és eszköz adatbázisa nem tapasztal nagy terhelést. Ezért a rendszer és az eszközök adatbázisai (Master, Model, saptools, sybmgmtdb, sybsystemdb) továbbra is megmaradhatnak a C:\ meghajtó. 
 
-Kivétel lehet az ideiglenes adatbázis, amely bizonyos SAP ERP-ben és az összes BW-munkaterhelésnél nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényli. A virtuális gép operációsrendszer-lemeze által nem biztosított kötetek vagy IOPS (C meghajtó:\).
+Kivétel lehet az ideiglenes adatbázis, amely bizonyos SAP ERP-ben és az összes BW-munkaterhelésnél nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényli. A virtuális gép operációsrendszer-lemeze által nem biztosítható kötetek vagy IOPS (C meghajtó:\).
 
 A telepítéshez használt SAPInst/SWPM-verziótól függ, hogy az SAP-beli betekintő példány konfigurációja így néz ki:
 
@@ -384,7 +384,7 @@ a tranzakciós DBACockpit létrehozott hivatkozások a következőhöz hasonlóa
 > 
 > 
 
-Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg a teljes állomásnév a profil paramétereinek alapján, valamint az ICM/host_name_full megadása explicit módon, ha szükséges.
+Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg a teljes állomásnév a profil paramétereinek alapján, valamint az icm/host_name_full paraméter megadása explicit módon, ha szükséges.
 
 Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy domainlabel. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
@@ -394,7 +394,7 @@ Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti ka
 
 A DNS-névvel kapcsolatos további részletek [itt][virtual-machines-azurerm-versus-azuresm]találhatók.
 
-Ha az ICM/host_name_full SAP-profil paraméterét az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
+Ha az ICM/host_name_full SAP-profil paramétert az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -448,7 +448,7 @@ Ha szeretné megnövelni, hogy hány célpontot kell írnia, a rendszer két leh
 * A biztonsági mentési cél kötetének több csatlakoztatott lemezre történő csíkozása a IOPS átviteli sebességének növeléséhez a csíkozott köteten
 * A memóriakép konfigurációjának létrehozása az SAP-alapú bekapcsolási szinten, amely több célhelyet használ a memóriakép írásához
 
-A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás sp_config_dump kapcsolatos dokumentációt, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
+A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban](dbms_guide_general.md)található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás dokumentációját sp_config_dump, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Vész-helyreállítás Azure-beli virtuális gépekkel
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Adatreplikáció az SAP Sybase replikációs kiszolgálójával
@@ -461,9 +461,9 @@ Az SAP-beli HADR nem igényel Azure belső Load Balancer, és nincs függősége
 ## <a name="specifics-to-sap-ase-on-linux"></a>A Linuxon futó SAP-központhoz kapcsolódó részletek
 A Microsoft Azuretól kezdve könnyedén áttelepítheti a meglévő SAP-előállítók alkalmazásait az Azure Virtual Machinesba. A virtuális gépeken futó SAP-bevezetéssel csökkentheti a vállalati szélességű alkalmazások üzembe helyezésének, kezelésének és karbantartásának teljes tulajdonlási költségeit azáltal, hogy egyszerűen áttelepíti ezeket az alkalmazásokat a Microsoft Azure. Az Azure-beli virtuális gépeken futó SAP bevezetéssel a rendszergazdák és a fejlesztők továbbra is használhatják a helyszínen elérhető fejlesztési és felügyeleti eszközöket.
 
-Az Azure-beli virtuális gépek üzembe helyezéséhez fontos, hogy megismerje a hivatalos SLA-kat, amelyek itt találhatók:<https://azure.microsoft.com/support/legal/sla>
+Az Azure-beli virtuális gépek üzembe helyezéséhez fontos, hogy megismerje a hivatalos SLA-kat, amelyek itt találhatók: <https://azure.microsoft.com/support/legal/sla>
 
-Az SAP-méretezési információk és az SAP-tanúsítvánnyal rendelkező virtuális gépek listája a [1928533]-es SAP-megjegyzésben található. Az Azure Virtual Machines szolgáltatáshoz elérhető további SAP-méretezési dokumentumok itt <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> és itt találhatók<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Az SAP-méretezési információk és az SAP-tanúsítvánnyal rendelkező virtuális gépek listája a [1928533]-es SAP-megjegyzésben található. Az Azure Virtual Machines szolgáltatásra vonatkozó további SAP-méretezési dokumentumok itt találhatók <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> és itt is <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 Az Azure Storage, az SAP virtuális gépek üzembe helyezése és az SAP-figyelés használatára vonatkozó utasítások és javaslatok az SAP bevezetésének az SAP-alkalmazásokkal együtt történő üzembe helyezéséhez a jelen dokumentum első négy fejezetében leírtak szerint.
 
@@ -473,7 +473,7 @@ A következő két SAP-Megjegyzés általános információt tartalmaz a Linuxon
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>SAP benyújtó verziójának támogatása
-Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezető kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető <https://support.sap.com/swdc>el a következő címen:.
+Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezetési kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető el a következő helyen: <https://support.sap.com/swdc>.
 
 A helyszíni telepítésekhez hasonlóan az SAP bevezetési kiszolgáló frissítései nem tölthetők le, vagy közvetlenül a Sybase-webhelyekről származó JDBC-és ODBC-illesztőprogramok esetén. Az SAP Business Suite-termékekkel a helyszínen és az Virtual Machines Azure-ban használható javításokkal kapcsolatos részletes információkért lásd a következő SAP-megjegyzéseket:
 
@@ -537,7 +537,7 @@ a tranzakció DBACockpit létrehozott hivatkozások a következőhöz hasonlóan
 > 
 > 
 
-Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg az ICM a teljes állomásnevet a profil paramétereinek függvényében, és az ICM/host_name_full explicit módon adja meg, ha szükséges.
+Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg az ICM a teljes állomásnevet a profil paramétereinek függvényében, és az icm/host_name_full explicit módon adja meg, ha szükséges.
 
 Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy domainlabel. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
@@ -547,7 +547,7 @@ Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti ka
 
 A DNS-névvel kapcsolatos további részletek [itt][virtual-machines-azurerm-versus-azuresm]találhatók.
 
-Ha az ICM/host_name_full SAP-profil paraméterét az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
+Ha az ICM/host_name_full SAP-profil paramétert az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -601,7 +601,7 @@ Ha szeretné megnövelni, hogy hány célpontot kell írnia, a rendszer két leh
 * A biztonsági mentési cél kötetének több csatlakoztatott lemezre történő csíkozása a IOPS átviteli sebességének növeléséhez a csíkozott köteten
 * A memóriakép konfigurációjának létrehozása az SAP-alapú bekapcsolási szinten, amely több célhelyet használ a memóriakép írásához
 
-A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás sp_config_dump kapcsolatos dokumentációt, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
+A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban](dbms_guide_general.md)található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás dokumentációját sp_config_dump, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Vész-helyreállítás Azure-beli virtuális gépekkel
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Adatreplikáció az SAP Sybase replikációs kiszolgálójával

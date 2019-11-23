@@ -99,10 +99,10 @@ Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket 
 
 | Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
-| `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   Automatikus      |
+| `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
 | `CommitMode`     | Felsorolás  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
-| `MaxParallelism` | int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
-| `RetryCount`     | int   | Azt jelzi, hogy a művelet hány alkalommal próbálkozzon újra a hiba után.      |     0    |
+| `MaxParallelism` | Int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
+| `RetryCount`     | Int   | Azt jelzi, hogy a művelet hány alkalommal próbálkozzon újra a hiba után.      |     0    |
 | `Objects`        | Tömb | A feldolgozandó objektumok tömbje. Minden objektum tartalmazza a "Table" kifejezést a teljes tábla vagy a "tábla" és a "partíció" feldolgozásakor a partíció feldolgozása során. Ha nincs megadva objektum, a teljes modell frissül. |   A teljes modell feldolgozása      |
 
 A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméretű adatkészletek kezdeti terhelését hajtja végre, amelyek órákat is igénybe vehetnek. Ha a frissítési művelet sikertelen volt egy vagy több köteg sikeres véglegesítése után, a sikeresen véglegesített kötegek véglegesítése továbbra is megmarad (a kötegek sikeres véglegesítése nem történik meg).
@@ -110,7 +110,7 @@ A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméret
 > [!NOTE]
 > Az írás időpontjában a köteg mérete a MaxParallelism érték, de ez az érték változhat.
 
-## <a name="get-refreshesrefreshid"></a>/Refreshes/beolvasása\<refreshId >
+## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
 A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban **van, a rendszer az** állapotot adja vissza.
 
@@ -136,7 +136,7 @@ A frissítési művelet állapotának megtekintéséhez használja a GET művele
 }
 ```
 
-## <a name="get-refreshes"></a>/Refreshes beolvasása
+## <a name="get-refreshes"></a>GET /refreshes
 
 A modell korábbi frissítési műveleteinek listájának lekéréséhez használja a GET műveletet a/refreshes gyűjteményben. Íme egy példa a válasz törzsére. 
 
@@ -164,7 +164,7 @@ A modell korábbi frissítési műveleteinek listájának lekéréséhez haszná
 
 A folyamatban lévő frissítési művelet megszakításához használja a frissítési AZONOSÍTÓban a DELETE műveletet.
 
-## <a name="post-sync"></a>/Sync közzététele
+## <a name="post-sync"></a>POST /sync
 
 A frissítési műveletek végrehajtásakor szükség lehet az új adatok szinkronizálására a lekérdezési felskálázáshoz szükséges replikákkal. Egy modell szinkronizálási műveletének végrehajtásához használja a POST műveletet a/Sync függvényben. A válaszban található Location fejléc tartalmazza a szinkronizálási művelet AZONOSÍTÓját.
 
@@ -211,7 +211,7 @@ Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek 
 3.  Futtassa a mintát.
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Minták](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

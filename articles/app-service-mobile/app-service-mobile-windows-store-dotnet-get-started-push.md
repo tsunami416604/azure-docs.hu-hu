@@ -28,7 +28,7 @@ ms.locfileid: "72388631"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -44,7 +44,7 @@ Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja,
 
 Be kell küldenie az alkalmazást a Microsoft Storeba, majd konfigurálnia kell a kiszolgálói projektet, hogy integrálható legyen a [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) szolgáltatással a leküldéses küldéshez.
 
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a UWP alkalmazás-projektre, majd kattintson az **áruház** > **alkalmazás hozzárendelése az áruházhoz..** . elemre.
+1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a UWP alkalmazás-projektre, majd kattintson az **áruház** > az áruházbeli **alkalmazás hozzárendelése..** . elemre.
 
     ![Alkalmazás hozzárendelése Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -66,7 +66,7 @@ Be kell küldenie az alkalmazást a Microsoft Storeba, majd konfigurálnia kell 
 
 ## <a id="update-service"></a>A kiszolgáló frissítése leküldéses értesítések küldéséhez
 
-Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus @ no__t-0either [.net backend](#dotnet) vagy [Node. js-háttérnek](#nodejs).
+Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus&mdash;vagy a [.net-háttér](#dotnet) vagy a [Node. js-háttérnek](#nodejs).
 
 ### <a name="dotnet"></a>.NET-háttérbeli projekt
 
@@ -172,7 +172,7 @@ Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus @ 
 ## <a id="update-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
 Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekhez az indításkor. Ha már engedélyezte a hitelesítést, győződjön meg arról, hogy a felhasználó bejelentkezik, mielőtt megpróbál regisztrálni a leküldéses értesítésekre.
 
-1. Nyissa meg a **app.XAML.cs** projektfájlt, és adja hozzá a következő `using` utasítást:
+1. Nyissa meg a **app.XAML.cs** projektfájlt, és adja hozzá a következő `using` utasításokat:
 
     ```csharp
     using System.Threading.Tasks;

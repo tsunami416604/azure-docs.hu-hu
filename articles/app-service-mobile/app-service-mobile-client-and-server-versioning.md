@@ -25,7 +25,7 @@ ms.locfileid: "72388888"
 > [!NOTE]
 > A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
 >
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Az Azure Mobile Services legújabb verziója a Azure App Service **Mobile apps** szolgáltatása.
 
@@ -35,18 +35,18 @@ Ezt a *Mobile apps* ügyfél-SDK-t kell használnia egy *Mobile apps* Server SDK
 Megjegyzés: Ha ez a dokumentum egy *Mobile Services* háttérre hivatkozik, nem feltétlenül szükséges Mobile Services. Mostantól lehetőség van arra, hogy a Mobile Service-t a kód módosítása nélkül App Service futtasson, de a szolgáltatás továbbra is *Mobile Services* SDK-verziót használ.
 
 ## <a name="header-specification"></a>Fejléc-specifikáció
-A (@no__t – 0. kulcs a HTTP-fejlécben vagy a lekérdezési sztringben adható meg. Az érték az **x. y. z**formátumú Version karakterlánc.
+A kulcs `ZUMO-API-VERSION` a HTTP-fejlécben vagy a lekérdezési karakterláncban adható meg. Az érték az **x. y. z**formátumú Version karakterlánc.
 
-Példa:
+Például:
 
-Beolvasás @no__t – 0
+https://service.azurewebsites.net/tables/TodoItem beolvasása
 
 FEJLÉCEK: ZUMO-API-VERSION: 2.0.0
 
-POST @no__t – 0
+POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 ## <a name="opting-out-of-version-checking"></a>A verziók ellenőrzésének megtagadása
-A verzió-ellenőrzés letiltásához állítsa az **igaz** értéket a **MS_SkipVersionCheck**beállításnál. Adja meg ezt a web. config fájlban, vagy a Azure Portal alkalmazás beállításai szakaszában.
+A verziószám-ellenőrzés letiltásához állítsa a **true** értéket az Alkalmazásbeállítások **MS_SkipVersionCheck**. Adja meg ezt a web. config fájlban, vagy a Azure Portal alkalmazás beállításai szakaszában.
 
 > [!NOTE]
 > Mobile Services és Mobile Apps között számos viselkedési változás van, különösen az offline szinkronizálás, a hitelesítés és a leküldéses értesítések területein. A teljes tesztelést követően csak a verziók ellenőrzését kell letiltani annak biztosításához, hogy ezek a viselkedési változások ne megtörjék az alkalmazás funkcióit.
@@ -66,16 +66,16 @@ A verzió ellenőrzése a következő kiszolgálói SDK-verziókba tartozik:
 
 | Kiszolgálói platform | SDK | Elfogadott verzió fejléce |
 | --- | --- | --- |
-| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure-Mobile-alkalmazások)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Mobile Apps háttérrendszer működése
 | ZUMO-API-VERSION | MS_SkipVersionCheck értéke | Válasz |
 | --- | --- | --- |
-| x. y. z vagy Null |True (Igaz) |200 – OK |
+| x. y. z vagy Null |True (Igaz) |200 - OK |
 | Null |Hamis/nincs megadva |400 – Hibás kérés |
 | 1. x. y |Hamis/nincs megadva |400 – Hibás kérés |
-| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 – OK |
+| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 - OK |
 | 3.0.0-3. x. y |Hamis/nincs megadva |400 – Hibás kérés |
 
 [Mobile Services clients]: #MobileServicesClients

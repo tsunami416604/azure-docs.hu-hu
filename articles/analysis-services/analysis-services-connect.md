@@ -18,7 +18,7 @@ ms.locfileid: "73147311"
 
 Ez a cikk a kiszolgálókhoz való csatlakozást ismerteti adatmodellezési és-kezelési alkalmazások, például a SQL Server Management Studio (SSMS) vagy a Visual Studio Analysis Services-projektekkel, valamint a Microsoft Excelben, például a Microsoft Excel alkalmazással Power BI Asztali vagy egyéni alkalmazások. A Azure Analysis Serviceshoz való csatlakozás HTTPS protokollt használ.
 
-## <a name="client-libraries"></a>Klienskódtárak
+## <a name="client-libraries"></a>Ügyfélkódtárak
 
 [A legújabb ügyféloldali kódtárak beszerzése](analysis-services-data-providers.md)
 
@@ -77,6 +77,6 @@ Az Excel régebbi verzióival a felhasználók Office-adatkapcsolati (. odc) fá
 ## <a name="next-steps"></a>Következő lépések
 
 [Kapcsolódjon az Excel](analysis-services-connect-excel.md)    
-[Kapcsolódjon a Power BI](analysis-services-connect-pbi.md)   
+[Kapcsolódjon Power BI](analysis-services-connect-pbi.md)   
 [A kiszolgáló kezelése](analysis-services-manage.md)   
 

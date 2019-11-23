@@ -77,7 +77,7 @@ A DDoS Protection házirend például megadja, hogy a védelem milyen adatforgal
 
 A Azure DDoS Protection alapszintű szolgáltatás az Azure platform infrastruktúrájának és védelmének védelmét célozza. A szolgáltatás csökkenti a forgalmat, ha az nagyobb mértékben befolyásolja a több ügyfelet több-bérlős környezetben is. Nem biztosít riasztást vagy ügyfél által testreszabott szabályzatot.
 
-### <a name="ddos-protection-standard"></a>DDoS Protection standard
+### <a name="ddos-protection-standard"></a>DDoS Protection Standard
 
 A standard szintű védelem továbbfejlesztett DDoS-elhárítási funkciókat biztosít. A rendszer automatikusan hangolja az adott Azure-erőforrások védelmére egy virtuális hálózaton. A védelem egyszerűen engedélyezhető bármely új vagy meglévő virtuális hálózaton, és nem igényel alkalmazás-vagy erőforrás-módosítást. Az alapszintű szolgáltatás számos előnnyel jár, beleértve a naplózást, a riasztásokat és a telemetria is. A következő részekben a Azure DDoS Protection standard szolgáltatás fő funkcióit vázoljuk.
 
@@ -97,7 +97,7 @@ DDoS Protection a standard szintű telemetria a DDoS-támadás idejére [Azure M
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-mérséklési szabályzatok
 
-A Azure Portal válassza a **figyelés**  > **metrikák**lehetőséget. A **metrikák** ablaktáblán válassza ki az erőforráscsoportot, válasszon ki egy **nyilvános IP-cím**típusú erőforrás-típust, és válassza ki az Azure nyilvános IP-címét. A DDoS-metrikák az **elérhető metrikák** ablaktáblán láthatók.
+A Azure Portal válassza a **figyelés** > **metrikák**lehetőséget. A **metrikák** ablaktáblán válassza ki az erőforráscsoportot, válasszon ki egy **nyilvános IP-cím**típusú erőforrás-típust, és válassza ki az Azure nyilvános IP-címét. A DDoS-metrikák az **elérhető metrikák** ablaktáblán láthatók.
 
 DDoS Protection a standard három, a védett erőforrás minden nyilvános IP-címéhez (TCP SYN, TCP és UDP) tartozó, a DDoS-t engedélyező virtuális hálózatban található, három alapszintű kockázatcsökkentő szabályzatot alkalmaz. A szabályzat küszöbértékeit úgy tekintheti meg, ha kiválasztja a metrika **bejövő csomagjait a DDoS-mérséklés elindításához**.
 
@@ -235,7 +235,7 @@ Ebben az architektúrában a DDoS Protection standard engedélyezve van a virtu�
 
 #### <a name="paas-web-application"></a>PaaS webalkalmazás
 
-Ez a hivatkozási architektúra egy Azure App Service alkalmazás egyetlen régióban történő futtatását mutatja be. Ez az architektúra bevált eljárásokat mutat be [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  and [Azure SQL Databaset](https://azure.microsoft.com/documentation/services/sql-database/)használó webalkalmazásokhoz.
+Ez a hivatkozási architektúra egy Azure App Service alkalmazás egyetlen régióban történő futtatását mutatja be. Ez az architektúra bevált eljárásokat mutat be [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) t és [Azure SQL Databaset](https://azure.microsoft.com/documentation/services/sql-database/)használó webalkalmazásokhoz.
 A készenléti régió feladatátvételi forgatókönyvekhez van beállítva.
 
 ![A Pásti-webalkalmazások hivatkozási architektúrájának ábrája](./media/ddos-best-practices/image11.png)

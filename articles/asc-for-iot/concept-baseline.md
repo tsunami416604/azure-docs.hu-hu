@@ -26,7 +26,7 @@ ms.locfileid: "72176615"
 
 Ez a cikk a IoT alapkonfigurációjának Azure Security Center ismerteti, és összefoglalja az alapkonfiguráció egyéni ellenőrzésének összes társított tulajdonságát.
 
-## <a name="baseline"></a>Alapterv
+## <a name="baseline"></a>Alapkonfiguráció
 
 Az alapkonfiguráció minden eszköz esetében szabványos viselkedést hoz létre, és megkönnyíti a szokatlan viselkedést vagy a várt normáktól való eltérést.  
 
@@ -64,11 +64,11 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|
-|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |@no__t – 0 az XML-konfigurációs fájlból. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
+|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |az XML-konfigurációs fájl `sha256sum`. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
 
 További alapkonfigurációk áttekintéséhez tekintse meg az [Egyéni Alapterv – 1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) . és az [Egyéni alapterv – 2. példát](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 

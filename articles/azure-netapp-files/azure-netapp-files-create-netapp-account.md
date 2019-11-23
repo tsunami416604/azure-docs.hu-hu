@@ -48,7 +48,7 @@ A NetApp erőforrás-szolgáltató használatához regisztrálnia kell az előfi
      Válasszon ki egyet a meglévő előfizetések közül.
    * **Erőforráscsoport**   
      Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-   * **Location**  
+   * **Hely**  
      Válassza ki azt az Azure-régiót, ahol a fiókot és annak alárendelt erőforrásait létre szeretné hozni.  
 
      ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
@@ -62,7 +62,7 @@ A NetApp erőforrás-szolgáltató használatához regisztrálnia kell az előfi
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 

@@ -47,13 +47,13 @@ A akusztikai eszközkészlet sütni részében a .NET 4 szükséges. *x* parancs
 ![A Unity Player Settings panel a .NET 4,5 kiválasztott](media/net45.png)
 
 ## <a name="set-up-audio-dsp"></a>Audio DSP beállítása
-A Project Acoustics olyan audio Runtime DSP-t tartalmaz, amely integrálható az Unity audio Engine spatializer-keretrendszerbe. Magában foglalja a HRTF-alapú és a pásztázási spatialization is. Ha engedélyezni szeretné a Project akusztikai DSP **-t, lépjen az @no__t-** 1**projekt beállításai** > **hangra** , és nyissa meg az Unity hangbeállításokat. Válassza a **Project akusztika** lehetőséget a projekthez tartozó **Spatializer beépülő modulként** . Győződjön meg arról, hogy a **DSP-puffer mérete** a *legjobb teljesítmény*értékre van beállítva.
+A Project Acoustics olyan audio Runtime DSP-t tartalmaz, amely integrálható az Unity audio Engine spatializer-keretrendszerbe. Magában foglalja a HRTF-alapú és a pásztázási spatialization is. Ha engedélyezni szeretné a Project akusztikai DSP-t, lépjen az > - **projekt beállításainak** **szerkesztése** > **hang** elemre az egységességi hangbeállítások megnyitásához. Válassza a **Project akusztika** lehetőséget a projekthez tartozó **Spatializer beépülő modulként** . Győződjön meg arról, hogy a **DSP-puffer mérete** a *legjobb teljesítmény*értékre van beállítva.
 
 ![Az Unity Project Settings menü](media/project-settings.png)  
 
 ![A Unity Spatializer beállítások panel a Project Acoustics Spatializer kijelölve](media/choose-spatializer.png)
 
-Ezután nyissa meg az hangkeverőt (**ablak** > **keverő**). Győződjön meg arról, hogy van legalább egy keverője egy csoporttal. Ha még nem rendelkezik ilyennel, válassza a **+** gombot a **keverők**jobb oldalán. Kattintson a jobb gombbal a csatorna szalag aljára a hatások szakaszban, és adja hozzá a **Microsoft akusztikai keverő** effektust. Egyszerre csak egy Project akusztikai keverő támogatott.
+Ezután nyissa meg az **Hangkeverőt**(**Windows** > keverő). Győződjön meg arról, hogy van legalább egy keverője egy csoporttal. Ha még nem rendelkezik ilyennel, a **keverők**jobb oldalán kattintson a **+** gombra. Kattintson a jobb gombbal a csatorna szalag aljára a hatások szakaszban, és adja hozzá a **Microsoft akusztikai keverő** effektust. Egyszerre csak egy Project akusztikai keverő támogatott.
 
 ![A Project akusztikai keverőjét tároló Unity audio mixer](media/audio-mixer.png)
 
@@ -63,7 +63,7 @@ Hangforrás létrehozása: jelölje be a **Spatialize** jelölőnégyzetet a Aud
 ![Az Unity audio forrás panel](media/audio-source.png)
 
 ## <a name="enable-acoustic-design"></a>Akusztikus kialakítás engedélyezése
-Csatolja a *AcousticsAdjust* szkriptet a jelenetben lévő hangforráshoz, hogy engedélyezze a további forrás-tervezési paramétereket: válassza az **összetevő hozzáadása** elemet, és válassza a **parancsfájlok** > **akusztikai beállítások**lehetőséget.
+Csatolja a *AcousticsAdjust* -szkriptet egy hangforráshoz a jelenetben a további forrás-tervezési paraméterek engedélyezéséhez: válassza az **összetevő hozzáadása** elemet, és válassza a **parancsfájlok** > **akusztikai beállítások**lehetőséget.
 
 ![Az Unity AcousticsAdjust-szkript](media/acoustics-adjust.png)
 

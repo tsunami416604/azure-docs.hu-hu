@@ -69,7 +69,7 @@ Először meg kell határoznia a hozzáférés-vezérlés (IAM) panel megnyitás
 
 1. Kattintson az adott erőforrásra.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** .
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
     Az alábbi példa az előfizetés hozzáférés-vezérlés (IAM) paneljét mutatja be. Ha itt bármilyen hozzáférés-vezérlési változást hajt végre, azok a teljes előfizetésre érvényesek lesznek.
 
@@ -111,7 +111,7 @@ Az alábbi lépéseket követve megtekintheti egy adott hatókörhöz tartozó e
 
     ![Hozzáférés-kiválasztási lista kijelölése](./media/role-assignments-portal/check-access-select.png)
 
-1. Kattintson a rendszerbiztonsági tag elemre a Hozzárendelések panel megnyitásához.
+1. Kattintson a rendszerbiztonsági tag elemre a **hozzárendelések** panel megnyitásához.
 
     ![hozzárendelések ablaktábla](./media/role-assignments-portal/check-access-assignments.png)
 
@@ -137,7 +137,7 @@ A RBAC-ben a hozzáférés biztosításához hozzá kell rendelnie egy szerepkö
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
+1. Kattintson a **hozzáadás** > **szerepkör-hozzárendelés hozzáadása** elemre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
@@ -157,7 +157,7 @@ A RBAC-ben a hozzáférés biztosításához hozzá kell rendelnie egy szerepkö
 
 Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, rendelje hozzá őket a [tulajdonosi](built-in-roles.md#owner) szerepkörhöz az előfizetés hatókörében. A Tulajdonos szerepkör teljes hozzáférést biztosít a felhasználónak az előfizetés összes erőforrásához, beleértve a hozzáférés mások számára való delegálásának jogát is. Ez ugyanúgy történik, mint bármely más szerepkör-hozzárendelés esetében.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** , majd azelőfizetések elemre.
+1. A Azure Portal kattintson a **minden szolgáltatás** , majd az **előfizetések**elemre.
 
 1. Kattintson arra az előfizetésre, amelynél a hozzáférést biztosítani kívánja.
 
@@ -165,7 +165,7 @@ Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, re
 
 1. Kattintson a **Szerepkör-hozzárendelések** lapra az előfizetés szerepkör-hozzárendeléseinek megtekintéséhez.
 
-1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
+1. Kattintson a **hozzáadás** > **szerepkör-hozzárendelés hozzáadása** elemre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
@@ -203,9 +203,9 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal @ no__t-0 használatával
-* [Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell @ no__t-0 használatával
+* [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával](quickstart-assign-role-user-portal.md)
+* [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
 * [Azure-erőforrások RBAC kapcsolatos hibák](troubleshooting.md)
-* [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/overview.md)
+* [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/overview.md)

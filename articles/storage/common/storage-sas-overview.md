@@ -42,7 +42,7 @@ Az Azure Storage három különböző típusú közös hozzáférési aláírás
 A közös hozzáférésű aláírás két űrlap egyikét veheti igénybe:
 
 - **Ad hoc sas:** Ha ad hoc SAS-t hoz létre, a kezdési idő, a lejárati idő és az SAS-engedélyek mind meg vannak adva az SAS URI-ban (vagy hallgatólagosan, ha a kezdési idő nincs megadva). Bármilyen típusú SAS lehet ad hoc SAS.
-- **A tárolt hozzáférési házirenddel rendelkező Service sas:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Amikor egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, az SAS örökli a @ no__t-0the kezdési idejét, lejárati idejét és az engedélyek @ no__t-1defined a tárolt hozzáférési házirendhez.
+- **A tárolt hozzáférési házirenddel rendelkező Service sas:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Ha egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, az SAS örökli a megkötéseket a tárolt hozzáférési szabályzathoz megadott kezdési idő, lejárati idő és engedélyek&mdash;&mdash;.
 
 > [!NOTE]
 > A felhasználói delegálási SAS vagy a fiók SAS-nak ad hoc SAS-nek kell lennie. A tárolt hozzáférési szabályzatok nem támogatottak a felhasználói delegálási SAS vagy a fiók SAS számára.

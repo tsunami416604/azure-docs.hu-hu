@@ -57,7 +57,7 @@ A [Azure SQL Database funkció-összehasonlításban](sql-database-features.md)
 - Funkciók: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Hardver: a hardverrel kapcsolatos kiszolgáló beállításaival kapcsolatos szintaxis: például memória, munkavégző szálak, CPU-affinitás, nyomkövetési jelzők. Használja helyette a szolgáltatási szintek és a számítási méretek használatát.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` és négy részből álló nevek
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`és négy részből álló nevek
 - .NET-keretrendszer: CLR-integráció SQL Server
 - Szemantikus keresés
 - Kiszolgáló hitelesítő adatai: használja helyette az [adatbázis-hatókörű hitelesítő adatokat](https://msdn.microsoft.com/library/mt270260.aspx) .
@@ -86,6 +86,6 @@ A Transact-SQL-hivatkozás a jelen SQL Server 2008-es verzióra vonatkozó cikke
 
 Bizonyos esetekben a cikk általános tárgya felhasználható egy termékben, de a termékek között kisebb különbségek vannak. A különbségeket a cikk középpontjában kell megadni, ha szükséges. Bizonyos esetekben a cikk általános tárgya felhasználható egy termékben, de a termékek között kisebb különbségek vannak. A különbségeket a cikk középpontjában kell megadni, ha szükséges. Az TRIGGER létrehozása című cikk például SQL Databaseban érhető el. A kiszolgálói szintű eseményindítók esetében azonban a **minden kiszolgáló** beállítás azt jelzi, hogy a kiszolgálói szintű eseményindítók nem használhatók SQL Databaseban. Használjon inkább adatbázis-szintű eseményindítókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Database által támogatott és nem támogatott szolgáltatások listáját lásd: [Azure SQL Database szolgáltatások összehasonlítása](sql-database-features.md). Az ezen az oldalon található lista kiegészíti az irányelvek és szolgáltatások című cikket, és a Transact-SQL-utasításokra koncentrál.

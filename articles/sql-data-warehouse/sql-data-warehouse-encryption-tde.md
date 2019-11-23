@@ -23,7 +23,7 @@ ms.locfileid: "73685783"
 > * [Biztonsági áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
-> * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+> * [Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
@@ -53,13 +53,13 @@ SQL Data Warehouse TDE letiltásához kövesse az alábbi lépéseket:
 ## <a name="encryption-dmvs"></a>Titkosítási DMV
 A titkosítást a következő DMV lehet megerősíteni:
 
-* [sys. Databases]
-* [sys. DM _pdw_nodes_database_encryption_keys]
+* [sys.databases]
+* [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys. Databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys. DM _pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

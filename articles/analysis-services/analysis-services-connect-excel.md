@@ -18,7 +18,7 @@ ms.locfileid: "73573153"
 
 Miután létrehozott egy kiszolgálót, és egy táblázatos modellt helyezett üzembe, az ügyfelek csatlakozhatnak, és megkezdhetik az adatfelfedezést. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A bejelentkezett fióknak a modell adatbázis-szerepköréhez kell tartoznia legalább olvasási engedéllyel. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md). 
 
@@ -40,7 +40,7 @@ Az Excel-kiszolgálókhoz való kapcsolódás az Excel 2016-es és újabb verzi�
     ![Kapcsolat az Excelből Select Model](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Ügyféloldali kódtárak](analysis-services-data-providers.md)   
 [A kiszolgáló kezelése](analysis-services-manage.md)     

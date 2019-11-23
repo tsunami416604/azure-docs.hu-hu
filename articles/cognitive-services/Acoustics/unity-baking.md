@@ -162,7 +162,7 @@ A felhőben lévő számítási fürtön a Azure Batch szolgáltatás használat
 3. Az Azure-fiók létrehozása után adja meg az Azure-beli hitelesítő adatait ezekben a mezőkben. További információ: [create a Azure batch Account](create-azure-account.md).
 4. A Docker-rendszerkép címkéje mező az akusztikai eszközkészlethez.
 5. Megnyitja a Azure Portal az előfizetések kezeléséhez, a használat figyeléséhez és a számlázási adatok megtekintéséhez.
-6. Meghatározza a számításhoz használandó Azure Batch számítási csomópont típusát. Az Azure-adatközpont helyének támogatnia kell a csomópont típusát. Ha nem biztos a dolgában, hagyja a **Standard_F8s_v2**.
+6. Meghatározza a számításhoz használandó Azure Batch számítási csomópont típusát. Az Azure-adatközpont helyének támogatnia kell a csomópont típusát. Ha nem biztos a dolgában, hagyja **Standard_F8s_v2**.
 7. A számításhoz használandó csomópontok száma. Ez a szám a Bake-időt befolyásolja. Ezt a Azure Batch Core foglalás korlátozza. Az alapértelmezett foglalás csak két 8 magos csomópontot vagy 1 16-Core csomópontot engedélyez, de kibontható. További információ az alapszintű foglalási megkötésekről: [Azure batch fiók létrehozása](create-azure-account.md).
 8. Jelölje be ezt a jelölőnégyzetet, ha a számítási készletet [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)használatára szeretné konfigurálni. Az alacsony prioritású számítási csomópontok jóval alacsonyabb költségeket jelentenek. Előfordulhat azonban, hogy nem mindig lesznek elérhetők, vagy bármikor előzik.
 9. A jelenet mintavételi **száma a mintavételek lapon számítva** . A mintavételek száma határozza meg a felhőben futtatandó szimulációk számát. A mintavételnél több csomópontot nem adhat meg.
@@ -205,7 +205,7 @@ A biztonság érdekében az Azure-beli hitelesítő adatok tárolása a helyi g�
 
 Ha szeretné megbecsülni, hogy a sütni Milyen költségekkel jár, kezdje a **becsült számítási költségek** értékével, amely egy időtartam. Szorozza meg ezt az értéket a helyi pénznemben megadott, a kiválasztott virtuálisgép- **csomópont** óradíja alapján. Vegye figyelembe, hogy az eredmény nem tartalmazhatja a csomópontok üzembe helyezéséhez és futtatásához szükséges csomóponti időt.
 
-Tegyük fel például, hogy kijelöli a **Standard_F8s_v2** a csomópont-típushoz, amelynek díja $0.40/HR. Ha a **becsült számítási költségek** 3 óra és 57 perc, a feladatok futtatásának becsült díja a következő: $0,40 * ~ 4 óra = ~ $1,60. A tényleges költségeket valószínűleg egy kicsit magasabbra kell állítani, mert a csomópontok megkezdésének ideje hosszabb időt vesz igénybe.
+Tegyük fel például, hogy kijelöli a csomópont típusát **Standard_F8s_v2** , amelynek a díja $0.40/HR. Ha a **becsült számítási költségek** 3 óra és 57 perc, a feladatok futtatásának becsült díja a következő: $0,40 * ~ 4 óra = ~ $1,60. A tényleges költségeket valószínűleg egy kicsit magasabbra kell állítani, mert a csomópontok megkezdésének ideje hosszabb időt vesz igénybe.
 
 Az óránkénti csomópontok költségének megkeresése [Azure batch díjszabással](https://azure.microsoft.com/pricing/details/virtual-machines/linux). (Válassza ki a **számításhoz optimalizált** vagy **nagy teljesítményű számítást** kategóriaként.)
 
@@ -224,9 +224,9 @@ Például a tesztelés egy 8 magos gépen, Intel Xeon E5-1660 @ 3 GHz és 32 GB 
 Telepítse és konfigurálja a Docker-t azon a számítógépen, amely feldolgozza a szimulációt:
 1. Telepítse a [Docker Desktopot](https://www.docker.com/products/docker-desktop).
 2. Nyissa meg a Docker-beállításokat, lépjen a **speciális**elemre, és konfigurálja az erőforrásokat legalább 8 GB RAM-ra. Minél több CPU-t tud lefoglalni a Docker számára, annál gyorsabban fog megjelenni a sütni.  
-@no__t – 0Sample Docker-beállítások @ no__t-1
+![minta Docker-beállítások](media/docker-settings.png)
 1. Nyissa meg a **megosztott meghajtókat**, és kapcsolja be a megosztást a feldolgozásra használt meghajtón.  
-![Docker megosztott meghajtó beállításai @ no__t-1
+![Docker megosztott meghajtó lehetőségei](media/docker-shared-drives.png)
 
 ### <a name="run-the-local-bake"></a>A helyi sütni futtatása
 1. Válassza a **helyi sütés előkészítése** gombot a **sütni** lapon. Ezután válassza ki a mappa helyét a bemeneti fájlok és a végrehajtási parancsfájlok mentéséhez. Ezután bármilyen gépen futtathatja a sütni-t, ha megfelel a minimális hardverkövetelmények követelményeinek, és telepíti a Docker-t úgy, hogy az adott gépre másolja a mappát.
@@ -238,14 +238,14 @@ Telepítse és konfigurálja a Docker-t azon a számítógépen, amely feldolgoz
 A következő négy adatfájl jön létre a sütni folyamat során. Az egyik tartalmazza a szimuláció eredményeit, és a címmel ellátott hajókat. A többiek az Unity Editor kapcsolódó adatait tárolják.
 
 Szimulációs eredmény:
-* *Eszközök/AcousticsData/akusztika @ no__t-1 [SceneName]. ACE. Bytes*: Ez a fájl a futásidejű keresési tábla. A szimuláció eredményeit és a voxelized akusztikai jelenet elemeit tartalmazza. A fájl neve és **helye a mintavételek lapon** módosítható.
+* *Eszközök/AcousticsData/akusztika\_[SceneName]. ACE. Bytes*: Ez a fájl a futásidejű keresési tábla. A szimuláció eredményeit és a voxelized akusztikai jelenet elemeit tartalmazza. A fájl neve és **helye a mintavételek lapon** módosítható.
 
    *Ügyeljen arra, hogy ne törölje a szimulációs eredményhalmaz fájlját. Nem lehet helyreállítani, kivéve a jelenet kisütését.*
 
 Szerkesztői adatfájlok:
-* *Eszközök/szerkesztő/[SceneName] \_AcousticsParameters. Asset*: Ez a fájl az akusztikai kezelőfelület mezőiben megadott adatok tárolására szolgál. A fájl neve és helye nem módosítható.
+* *Eszközök/szerkesztő/[SceneName]\_AcousticsParameters. Asset*: Ez a fájl az akusztikai felhasználói felület mezőiben megadott adatok tárolására szolgál. A fájl neve és helye nem módosítható.
 * *Assets/AcousticsData/Editor/Acoustics_ [SceneName]. Vox*: Ez a fájl tárolja a voxelized akusztikai geometriáját és a kiszámított anyag-tulajdonságokat, Amikor kiválasztja a számítás **gombot a mintavételek lapon.** A fájl neve és **helye a mintavételek lapon** módosítható.
-* *Eszközök/AcousticsData/szerkesztő/akusztika @ no__t-1 [SceneName] @no__t -2config. XML*: Ez a fájl a **számítás**lehetőség kiválasztásakor kiszámított szimulációs paramétereket tárolja. A fájl neve és **helye a mintavételek lapon** módosítható.
+* *Assets/AcousticsData/Editor/akusztika\_[SceneName]\_config. XML*: Ez a fájl a **számítás**lehetőség kiválasztásakor kiszámított szimulációs paramétereket tárolja. A fájl neve és **helye a mintavételek lapon** módosítható.
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Az akusztikai keresési táblázat beállítása
 Húzza a **projekt akusztikai** paneljét a projekt panelről a színtérbe:

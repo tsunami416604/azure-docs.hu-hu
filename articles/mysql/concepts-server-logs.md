@@ -21,7 +21,7 @@ További információ a MySQL lassú lekérdezési naplóról: a MySQL-hivatkoz�
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 A Azure Portal és az Azure CLI használatával Azure Database for MySQL lassú lekérdezési naplókat listázhat és tölthet le.
 
-A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
+Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgálóhoz. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
 
 Az Azure CLI-vel kapcsolatos további információkért lásd: [kiszolgálók naplófájljainak konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
 
@@ -31,17 +31,17 @@ A naplók akár hét napig is elérhetők a létrehozásuk után. Ha a rendelkez
 A naplók 24 óránként vagy 7 GB-onként vannak elforgatva, attól függően, hogy melyik érkezik először.
 
 ## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálása 
-Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéshez állítsa be a slow_query_log a következőre:.
+Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéshez állítsa be slow_query_log a következőre:.
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha egy lekérdezés a lekérdezés naplózott long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
-- **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_log írt utasításokban.
+- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
-- **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha a log_queries_not_using_indexes beállítása be értékre van állítva.
+- **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
 
 > [!Note]
-> @No__t – 0 esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+> `sql_text`esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MySQL [lassú lekérdezési napló dokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) találja.
 
@@ -57,18 +57,18 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| @no__t – 0 [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `TimeGenerated` [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | A kiszolgáló neve |
-| @no__t – 0 [UTC] | A lekérdezés elkezdésének ideje |
+| `start_time_t` [UTC] | A lekérdezés elkezdésének ideje |
 | `query_time_s` | A lekérdezés végrehajtásának teljes időtartama (másodpercben) |
 | `lock_time_s` | A lekérdezés zárolásának teljes ideje másodpercben |
 | `user_host_s` | Felhasználónév |
@@ -81,5 +81,5 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `thread_id_s` | Szál azonosítója |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A kiszolgálói naplók konfigurálása és elérése az Azure CLI-](howto-configure-server-logs-in-cli.md)vel.

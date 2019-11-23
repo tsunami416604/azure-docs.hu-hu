@@ -23,7 +23,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2019
 ms.locfileid: "71261867"
 ---
-# <a name="what-is-azure-sentinel"></a>Mi az az Azure Sentinel?
+# <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
 A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, **biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM)** és biztonsági előkészítési **(felszárnyaló)** megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. 
 
@@ -51,7 +51,7 @@ Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](co
 
 ## <a name="workbooks"></a>Munkafüzetek
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez, az Azure Sentinel-integrációval Azure monitor munkafüzetek használatával figyelheti az adatait, amely sokoldalúan használható az egyéni munkafüzetek létrehozásához. Habár a munkafüzetek másképpen jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
+Miután az [adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgáltatáshoz csatlakoztatta, az Azure Sentinel-integrációval Azure monitor-munkafüzetek segítségével figyelheti az adatait, amely sokoldalúan használható az egyéni munkafüzetek létrehozásához. Habár a munkafüzetek másképpen jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 ![Irányítópultok](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -59,7 +59,7 @@ Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure se
 
 A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel az elemzések segítségével összekapcsolja a [riasztásokat az incidensekkel](tutorial-detect-threats-built-in.md). Az **incidensek** a kapcsolódó riasztások csoportjai, amelyek együttesen a megvizsgálható és oldható fenyegetést jelenthetnek. Használhatja a beépített korrelációs szabályokat, vagy kiindulási pontként használhatja a saját létrehozásához. Az Azure Sentinel gépi tanulási szabályokat is biztosít a hálózat működésének feltérképezéséhez, majd az erőforrások közötti rendellenességek kereséséhez. Ezek az elemzések összekapcsolják a pontokat a különböző entitások alacsony hűséggel kapcsolatos riasztásait a lehetséges magas szintű biztonsági incidensekkel.
 
-![Incidensek](./media/tutorial-investigate-cases/incident-severity.png)
+![Események](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Biztonsági automatizálás &
@@ -90,7 +90,7 @@ Az Azure Sentinel-Közösség hatékony erőforrás a fenyegetések észlelésé
 
 ![Közösség](./media/overview/community.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

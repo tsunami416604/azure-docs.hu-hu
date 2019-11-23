@@ -45,7 +45,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
     * A ExpressRoute létrehozásakor válassza az **Oracle Cloud FastConnect** szolgáltatást szolgáltatóként. ExpressRoute áramkör létrehozásához tekintse meg a [lépésenkénti útmutatót](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     * Az Azure ExpressRoute-áramkör részletes sávszélesség-beállításokat biztosít, míg a FastConnect 1, 2, 5 vagy 10 GB/s használatát támogatja. Ezért javasoljuk, hogy válasszon egyet a megfelelő sávszélesség-beállítások közül a ExpressRoute területen.
 
-    ![ExpressRoute-kapcsolatcsoport](media/configure-azure-oci-networking/exr-create-new.png)
+    ![ExpressRoute áramkör létrehozása](media/configure-azure-oci-networking/exr-create-new.png)
 1. Jegyezze fel a ExpressRoute **szolgáltatás kulcsát**. A FastConnect-áramkör konfigurálása során meg kell adnia a kulcsot.
 
     ![ExpressRoute szolgáltatás kulcsa](media/configure-azure-oci-networking/exr-service-key.png)
@@ -57,7 +57,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
 1. Hozzon létre egy dinamikus útválasztási átjárót (DRG). Erre szüksége lesz a FastConnect-áramkör létrehozásakor. További információt a [dinamikus útválasztási átjáró](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) dokumentációjában talál.
 1. Hozzon létre egy FastConnect áramkört az Oracle-bérlő alatt. További információkért tekintse meg az [Oracle dokumentációját](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
   
-    * A FastConnect konfigurálása területen válassza a **Microsoft Azure: ExpressRoute @ no__t – 0, szolgáltatóként.
+    * A FastConnect konfigurálása területen válassza a **Microsoft Azure: ExpressRoute** lehetőséget szolgáltatóként.
     * Válassza ki az előző lépésben kiépített dinamikus útválasztási átjárót.
     * Válassza ki a kiépíteni kívánt sávszélességet. Az optimális teljesítmény érdekében a sávszélességnek meg kell egyeznie a ExpressRoute áramkör létrehozásakor kiválasztott sávszélességgel.
     * A **szolgáltatói szolgáltatás kulcsában**illessze be a ExpressRoute szolgáltatás kulcsát.
@@ -99,7 +99,7 @@ Az összekötő törléséhez a következő lépéseket kell követni a megadott
 
 Ezen a ponton a törlési és megszüntetési folyamat befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A OCI és az Azure közötti Felhőbeli kapcsolattal kapcsolatos további információkért tekintse meg az [Oracle dokumentációját](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
 * A [Terraform-parancsfájlok](https://aka.ms/azureociinterconnecttf) használatával az Azure-on keresztül megcélozhatja az Oracle-alkalmazások infrastruktúráját, és konfigurálhatja a hálózati összekötőt. 

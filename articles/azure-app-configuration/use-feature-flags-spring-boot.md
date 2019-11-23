@@ -21,7 +21,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71687170"
 ---
-# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Oktatóanyag: Szolgáltatás-jelzők használata Spring boot-alkalmazásokban
+# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Oktatóanyag: funkció-jelzők használata Spring boot-alkalmazásokban
 
 A tavaszi rendszerindítási alapszolgáltatások kezelési kódtárai támogatják a szolgáltatás-jelzők megvalósítását egy Spring boot-alkalmazásban. Ezek a kódtárak lehetővé teszik a funkció-jelzők deklaratív hozzáadását a kódhoz.
 
@@ -37,7 +37,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 
 ## <a name="set-up-feature-management"></a>A szolgáltatások kezelésének beállítása
 
-A Spring boot Feature Manager `FeatureManager` lekéri a keretrendszer natív konfigurációs rendszerének jelzőit. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit bármely olyan konfigurációs forrás használatával, amelyet a Spring boot támogat, beleértve a helyi *bootstrap. YML* fájl-vagy környezeti változókat is. @no__t – 0 a függőségi injektálásra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
+A Spring boot Feature Manager `FeatureManager` lekéri a keretrendszer natív konfigurációs rendszerének funkcióit. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit bármely olyan konfigurációs forrás használatával, amelyet a Spring boot támogat, beleértve a helyi *bootstrap. YML* fájl-vagy környezeti változókat is. a `FeatureManager` függőségi injektálásra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
 
 ```java
 private FeatureManager featureManager;
@@ -81,15 +81,15 @@ feature-management:
               value: 50
 ```
 
-Az egyezmény alapján a YML-dokumentum `feature-management` szakasza használatos a funkció jelző beállításaihoz. Az előző példában három funkció-jelző látható a `EnabledFor` tulajdonságban definiált szűrőkkel:
+Az egyezmény szerint a YML-dokumentum `feature-management` szakasza a szolgáltatás-jelölő beállításaihoz használatos. Az előző példában három funkció-jelző látható a `EnabledFor` tulajdonságban definiált szűrőkkel:
 
-* a `FeatureA` *be van kapcsolva*.
-* @no__t – 0 *ki van kapcsolva*.
-* a `FeatureC` egy `Percentage` nevű szűrőt ad meg `Parameters` tulajdonsággal. a `Percentage` egy konfigurálható szűrő. Ebben a példában a `Percentage` érték a `FeatureC` jelzőhöz tartozó 50 százalékos valószínűséget adja *meg*.
+* `FeatureA` *bekapcsolva*.
+* `FeatureB` *ki van kapcsolva*.
+* `FeatureC` a `Percentage` nevű szűrőt adja meg `Parameters` tulajdonsággal. `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` 50 százalékos valószínűséget *ad meg a*`FeatureC` jelzőhöz.
 
 ## <a name="feature-flag-checks"></a>Szolgáltatás-jelző ellenőrzése
 
-A szolgáltatások felügyeletének alapszintű mintája először ellenőrizze, hogy be van *-e állítva*a szolgáltatás jelölője. Ebben az esetben a Feature Manager ezután futtatja a funkció által tartalmazott műveleteket. Példa:
+A szolgáltatások felügyeletének alapszintű mintája először ellenőrizze, hogy be van *-e állítva*a szolgáltatás jelölője. Ebben az esetben a Feature Manager ezután futtatja a funkció által tartalmazott műveleteket. Például:
 
 ```java
 private FeatureManager featureManager;
@@ -102,7 +102,7 @@ if (featureManager.isEnabled("FeatureA"))
 
 ## <a name="dependency-injection"></a>Függőséginjektálás
 
-A Spring boot-ben elérheti a Feature Manager @no__t – 0 függőségi befecskendezést:
+A Spring boot használatával a szolgáltatás-kezelő `FeatureManager` a függőségek befecskendezésével érheti el:
 
 ```java
 @Controller
@@ -118,7 +118,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Vezérlő műveletei
 
-Az MVC-vezérlőkben a `@FeatureGate` attribútum használatával szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelethez az szükséges, hogy az `FeatureA` legyen *a* Futtatás előtt:
+Az MVC-vezérlőkben a `@FeatureGate` attribútum használatával szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelet végrehajtásához `FeatureA` kell lennie *a* futtatásához:
 
 ```java
 @GetMapping("/")
@@ -128,11 +128,11 @@ public String index(Model model) {
 }
 ```
 
-Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva*, a rendszer regisztrált `IDisabledFeaturesHandler` felületet hív meg. Az alapértelmezett @no__t – 0 illesztőfelület 404 állapotkódot ad vissza az ügyfélnek a válasz törzse nélkül.
+Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva*, a rendszer regisztrált `IDisabledFeaturesHandler` felületet hív meg. Az alapértelmezett `IDisabledFeaturesHandler` felület 404 állapotkódot ad vissza az ügyfélnek, és nincs válasz törzse.
 
 ## <a name="mvc-filters"></a>MVC-szűrők
 
-Az MVC-szűrőket beállíthatja úgy, hogy azok a szolgáltatás jelzőjének állapota alapján legyenek aktiválva. A következő kód egy `FeatureFlagFilter` nevű MVC szűrőt hoz létre. Ez a szűrő csak akkor aktiválódik az MVC-folyamaton belül, ha a `FeatureA` engedélyezve van.
+Az MVC-szűrőket beállíthatja úgy, hogy azok a szolgáltatás jelzőjének állapota alapján legyenek aktiválva. A következő kód egy `FeatureFlagFilter`nevű MVC-szűrőt hoz létre. Ez a szűrő csak akkor aktiválódik az MVC-folyamaton belül, ha `FeatureA` engedélyezve van.
 
 ```java
 @Component
@@ -156,7 +156,7 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Útvonalak
 
-Az útvonalak átirányításához használhatja a szolgáltatás jelzőit. A következő kód átirányítja a felhasználót a `FeatureA` beállítással:
+Az útvonalak átirányításához használhatja a szolgáltatás jelzőit. A következő kód átirányítja a felhasználót `FeatureA`ről, ha engedélyezve van:
 
 ```java
 @GetMapping("/redirect")
@@ -171,7 +171,7 @@ public String getOldFeature() {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhatja a szolgáltatás-jelzőket a Spring boot-alkalmazásban a `spring-cloud-azure-feature-management-web` kódtárak használatával. A Spring boot és az alkalmazások konfigurációjának szolgáltatás-kezelési támogatásával kapcsolatos további információkért tekintse meg a következő forrásokat:
 

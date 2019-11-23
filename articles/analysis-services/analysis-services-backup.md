@@ -49,7 +49,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
     ![Biztonsági mentési beállítások mentése](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Biztonsági mentés a SSMS használatával
 

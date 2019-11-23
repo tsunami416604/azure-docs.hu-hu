@@ -22,7 +22,7 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért lásd: [K
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt, és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha AK-fürtöt kell létrehoznia, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető témakört.
+A jelen dokumentumban ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt, és létrehozott egy `kubectl`-kapcsolatokat a fürttel. Ha AK-fürtöt kell létrehoznia, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető témakört.
 
 Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió azonosításához futtassa a következőt:  `az --version` . Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
@@ -34,7 +34,7 @@ A Kubernetes-irányítópult elindításához használja az az [AK Browse][az-ak
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API között, és egy webböngészőt nyit meg a Kubernetes-irányítópulton. Ha egy webböngésző nem nyílik meg a Kubernetes irányítópultra, másolja és illessze be az Azure CLI-ben feljegyzett URL `http://127.0.0.1:8001`-címet, jellemzően.
+Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API között, és egy webböngészőt nyit meg a Kubernetes-irányítópulton. Ha egy webböngésző nem nyílik meg a Kubernetes irányítópultra, másolja és illessze be az Azure CLI-ben feljegyzett URL-címet, általában `http://127.0.0.1:8001`.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -107,7 +107,7 @@ Válassza ki a végpontot, és nyissa meg a webböngésző ablakát az alapérte
 
 A Kubernetes irányítópulton alapszintű figyelési mérőszámok és hibaelhárítási információk, például naplók adhatók meg.
 
-Ha többet szeretne megtudni az alkalmazás hüvelyéről, válassza a bal oldali menüben a hüvelyek lehetőséget. Megjelenik az elérhető hüvelyek listája. Válassza ki az *Nginx* Pod-t az információk, például az erőforrás-felhasználás megtekintéséhez:
+Ha többet szeretne megtudni az alkalmazás hüvelyéről, válassza a bal oldali menüben a **hüvelyek** lehetőséget. Megjelenik az elérhető hüvelyek listája. Válassza ki az *Nginx* Pod-t az információk, például az erőforrás-felhasználás megtekintéséhez:
 
 ![Pod-adatok megtekintése](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -119,7 +119,7 @@ Központi telepítés szerkesztése:
 
 1. Válassza a **központi telepítések** lehetőséget a bal oldali menüben, majd válassza ki a *Nginx* -telepítést.
 1. Válassza a **Szerkesztés** lehetőséget a jobb felső navigációs sávon.
-1. Keresse meg `spec.replica` az értéket a következő helyen: 20. sor. Az alkalmazás replikáinak számának növeléséhez módosítsa az értéket *1* és *3*között.
+1. Keresse meg a `spec.replica` értéket a következő helyen: 20. sor. Az alkalmazás replikáinak számának növeléséhez módosítsa az értéket *1* és *3*között.
 1. Ha elkészült, válassza a **frissítés** lehetőséget.
 
 ![A központi telepítés szerkesztése a replikák számának frissítéséhez](./media/kubernetes-dashboard/edit-deployment.png)
@@ -128,7 +128,7 @@ Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy r
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
 

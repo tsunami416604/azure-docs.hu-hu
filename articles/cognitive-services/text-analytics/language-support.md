@@ -66,8 +66,8 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 | koreai                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
 | Norvég (nyelven)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | lengyel                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Portugál (portugáliai) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is elfogadva |
-| Portugál (brazíliai)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
+| portugál (általános) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is elfogadva |
+| portugál (brazíliai)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
 | orosz               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | spanyol               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
 | svéd               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |

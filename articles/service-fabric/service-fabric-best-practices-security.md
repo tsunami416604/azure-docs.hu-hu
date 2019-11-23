@@ -79,7 +79,7 @@ Ha ACL-t szeretne alkalmazni a Service Fabric-fürt folyamataihoz tartozó tanú
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Service Fabric-fürt tanúsítványának védelme köznapi név szerint
 
-Ha Service Fabric-fürtöt a (z) `Common Name` tanúsítvánnyal szeretné biztonságossá tenni, használja a Resource Manager-sablon tulajdonságának [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)a következő módon:
+A Service Fabric-fürtnek a tanúsítvány `Common Name`általi biztonságossá tételéhez használja a Resource Manager-sablon tulajdonság [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), az alábbiak szerint:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ Ha Service Fabric-fürtöt a (z) `Common Name` tanúsítvánnyal szeretné bizto
 > [!NOTE]
 > Service Fabric-fürtök az első érvényes tanúsítványt fogják használni, amelyet a gazdagép tanúsítványtárolójában talál. Windows rendszeren ez az a tanúsítvány, amelynek a legkésőbbi lejárati dátuma megegyezik a köznapi névvel és a kiállító ujjlenyomatával.
 
-Az Azure-tartományok, például * \<YOUR SUBDOMAIN\>.cloudapp.azure.com vagy \<YOUR SUBDOMAIN\>.trafficmanager.net, a Microsoft tulajdonában vannak. A hitelesítésszolgáltatók nem adnak ki tanúsítványokat a tartományokhoz a jogosulatlan felhasználók számára. A legtöbb felhasználónak meg kell vásárolnia egy tartományt a regisztrátorból, vagy pedig a hitelesítő tartományi rendszergazdának kell lennie ahhoz, hogy egy hitelesítésszolgáltató kiadja az adott köznapi névvel rendelkező tanúsítványt.
+Az Azure-tartományok, például * a *\<az altartomány\>. cloudapp.azure.com vagy \<a\>. trafficmanager.net altartománya a Microsoft tulajdonában van. A hitelesítésszolgáltatók nem adnak ki tanúsítványokat a tartományokhoz a jogosulatlan felhasználók számára. A legtöbb felhasználónak meg kell vásárolnia egy tartományt a regisztrátorból, vagy pedig a hitelesítő tartományi rendszergazdának kell lennie ahhoz, hogy egy hitelesítésszolgáltató kiadja az adott köznapi névvel rendelkező tanúsítványt.
 
 Ha további információt szeretne arról, hogyan konfigurálhatja a DNS-szolgáltatást a tartomány Microsoft IP-címhez való feloldására, tekintse át a Azure DNS konfigurálása a [tartomány üzemeltetéséhez](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)című témakört.
 
 > [!NOTE]
 > Miután delegálta a tartományneveket a Azure DNS zónák névkiszolgálók számára, adja hozzá a következő két rekordot a DNS-zónához:
-> - A tartományhoz tartozó "A" rekord, amely nem `Alias record set` minden IP-címhez, amelyet az egyéni tartomány fel fog oldani.
-> - "C" rekord a kiépített Microsoft sub-tartományokhoz, amelyek nem `Alias record set`. Használhatja például a Traffic Manager vagy a Load Balancer DNS-nevét.
+> - A tartományhoz tartozó "A" rekord, amely nem `Alias record set` az egyéni tartomány által feloldható összes IP-címhez.
+> - "C" rekord a kiépített Microsoft sub-tartományokhoz, amelyek nem `Alias record set`ek. Használhatja például a Traffic Manager vagy a Load Balancer DNS-nevét.
 
-Ha a portált úgy szeretné frissíteni, hogy az Service Fabric-fürthöz tartozó egyéni DNS-nevet jelenítse meg @no__t – 0, frissítse a következő Service Fabric fürterőforrás-kezelő sablon tulajdonságait:
+Ha a portált úgy szeretné frissíteni, hogy az Service Fabric-fürthöz tartozó egyéni DNS-nevet jelenítse meg `"managementEndpoint"`, frissítse a következő Service Fabric fürterőforrás-kezelő sablon tulajdonságait:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -171,7 +171,7 @@ Az Azure Service Fabric-fürtök a [Managed Service Identityt](https://docs.micr
 Az MSI-t használó szolgáltatások listájának lekéréséhez tekintse meg az [Azure Active Directory hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
 
-Ha engedélyezni szeretné a rendszerhez rendelt felügyelt identitást a virtuálisgép-méretezési csoport vagy egy meglévő virtuálisgép-méretezési csoport létrehozása során, állapítsa meg a következő `"Microsoft.Compute/virtualMachinesScaleSets"` tulajdonságot:
+A rendszerhez rendelt felügyelt identitás engedélyezéséhez egy virtuálisgép-méretezési csoport vagy egy meglévő virtuálisgép-méretezési csoport létrehozása során deklarálja a következő `"Microsoft.Compute/virtualMachinesScaleSets"` tulajdonságot:
 
 ```json
 "identity": { 
@@ -180,7 +180,7 @@ Ha engedélyezni szeretné a rendszerhez rendelt felügyelt identitást a virtu�
 ```
 További információért lásd: [Mi az az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) .
 
-Ha [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hozott létre, deklarálja a sablonban a következő erőforrást a virtuálisgép-méretezési csoporthoz való hozzárendeléshez. Cserélje le a `\<USERASSIGNEDIDENTITYNAME\>` értéket a létrehozott felhasználó által hozzárendelt felügyelt identitás nevére:
+Ha [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hozott létre, deklarálja a sablonban a következő erőforrást a virtuálisgép-méretezési csoporthoz való hozzárendeléshez. Cserélje le a `\<USERASSIGNEDIDENTITYNAME\>`t a létrehozott felhasználó által hozzárendelt felügyelt identitás nevére:
 
 ```json
 "identity": {
@@ -217,7 +217,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Javasoljuk, hogy olyan iparági szabványnak megfelelő konfigurációt alkalmazzon, amely széles körben ismert és jól tesztelt, mint például a Microsoft biztonsági alapkonfigurációi, és ne hozzon létre egy alaptervet](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); Ha ezeket a Virtual Machine Scale Sets szeretné kiépíteni, az Azure desired State Configuration (DSC) bővítmény kezelőjét kell használnia a virtuális gépek online állapotba való konfigurálásához, hogy azok az éles szoftvert használják.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-a [Azure tűzfal felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure Virtual Network-erőforrásokat védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi, hogy a kimenő HTTP/S forgalmat a teljes tartománynevek (FQDN) egy adott listájára korlátozza, beleértve a helyettesítő kártyákat is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Javasoljuk, hogy a Windows-frissítések [Azure Firewall FQDN-címkéit](https://docs.microsoft.com/azure/firewall/fqdn-tags) használja, és engedélyezze a hálózati forgalmat a Microsoft Windows Update végpontok számára a tűzfalon keresztül. [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template) a Microsoft. Network/azureFirewalls erőforrás-sablon definícióját tartalmazza. Az Service Fabric alkalmazások számára közös tűzfalszabályok lehetővé teszik a következők használatát a fürtök virtuális hálózata számára:
+A [Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure-Virtual Network erőforrásait. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.](https://docs.microsoft.com/azure/firewall/overview) Ez lehetővé teszi, hogy a kimenő HTTP/S forgalmat a teljes tartománynevek (FQDN) egy adott listájára korlátozza, beleértve a helyettesítő kártyákat is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Javasoljuk, hogy a Windows-frissítések [Azure Firewall FQDN-címkéit](https://docs.microsoft.com/azure/firewall/fqdn-tags) használja, és engedélyezze a hálózati forgalmat a Microsoft Windows Update végpontok számára a tűzfalon keresztül. [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template) a Microsoft. Network/azureFirewalls erőforrás-sablon definícióját tartalmazza. Az Service Fabric alkalmazások számára közös tűzfalszabályok lehetővé teszik a következők használatát a fürtök virtuális hálózata számára:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -263,7 +263,7 @@ Alapértelmezés szerint a Windows Defender víruskereső a Windows Server 2016 
 > Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok antimalware-dokumentációját. A Windows Defender Linux rendszeren nem támogatott.
 
 ## <a name="platform-isolation"></a>Platform elkülönítése
-Alapértelmezés szerint Service Fabric alkalmazások hozzáférést kapnak a Service Fabric futtatókörnyezethez, amely különböző formákban nyilvánul meg: a [környezeti változók](service-fabric-environment-variables-reference.md) az alkalmazás és a háló fájljainak megfelelő gazdagép elérési útjaira mutatnak, a folyamaton belüli kommunikációs végpont, amely az alkalmazásspecifikus kérelmeket fogadja el, valamint azt az ügyféltanúsítványt, amelyet a háló arra vár, hogy az alkalmazás hitelesítse magát. Abban az esetben, ha a szolgáltatás nem megbízható programkódot üzemeltet, célszerű letiltani ezt a hozzáférést az SF futtatókörnyezethez – hacsak erre nincs kifejezetten szükség. A futtatókörnyezet elérését az alkalmazás jegyzékfájljának szabályzatok szakaszának következő nyilatkozata alapján távolítja el a rendszer: 
+Alapértelmezés szerint Service Fabric az alkalmazások hozzáférést kapnak a Service Fabric futtatókörnyezethez, amely különböző formákban nyilvánul meg: [környezeti változók](service-fabric-environment-variables-reference.md) , amelyek az alkalmazás és a háló fájljainak megfelelő gazdagép elérési útjaira mutatnak, egy folyamaton belüli kommunikációs végpontot, amely az alkalmazásspecifikus kérelmeket fogadja el, valamint azt az ügyféltanúsítványt, amelyet a háló az alkalmazás hitelesítéséhez használ. Abban az esetben, ha a szolgáltatás nem megbízható programkódot üzemeltet, célszerű letiltani ezt a hozzáférést az SF futtatókörnyezethez – hacsak erre nincs kifejezetten szükség. A futtatókörnyezet elérését az alkalmazás jegyzékfájljának szabályzatok szakaszának következő nyilatkozata alapján távolítja el a rendszer: 
 
 ```xml
 <ServiceManifestImport>
@@ -274,10 +274,10 @@ Alapértelmezés szerint Service Fabric alkalmazások hozzáférést kapnak a Se
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Hozzon létre egy fürtöt a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
-* Hozzon létre egy fürtöt a virtuális gépeken vagy a Linuxon futó számítógépeken: [Hozzon létre egy Linux](service-fabric-cluster-creation-via-portal.md)-fürtöt.
+* Hozzon létre egy fürtöt a virtuális gépeken vagy a Windows Servert futtató számítógépeken: [Service Fabric a fürt létrehozását a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
+* Hozzon létre egy fürtöt a virtuális gépeken vagy számítógépeken Linux rendszeren: [hozzon létre egy Linux-fürtöt](service-fabric-cluster-creation-via-portal.md).
 * További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

@@ -15,18 +15,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67179110"
 ---
-**Felügyelt lemezek standard HDD**
+**Standard HDD felügyelt lemezek**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Felügyelt lemezek standard SSD**
+**Standard SSD felügyelt lemezek**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Prémium SSD felügyelt lemezek: Lemezterület-korlátok**
+**Prémium SSD felügyelt lemezek: lemezterület-korlátozás**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Prémium SSD felügyelt lemezek: VIRTUÁLIS gépekre vonatkozó korlátok**
+**Prémium SSD felügyelt lemezek: virtuális gépekre vonatkozó korlátok**
 
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | IOPS maximális száma virtuális gépenként |80 000 IOPS GS5 virtuális géppel |
 | Maximális átviteli sebesség virtuális gépenként |2 000 MB/s GS5 virtuális géppel |

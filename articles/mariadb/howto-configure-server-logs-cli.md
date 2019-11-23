@@ -24,8 +24,8 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>Azure Database for MariaDB naplózásának konfigurálása
 A kiszolgálót úgy is beállíthatja, hogy a következő lépések végrehajtásával hozzáférhessen a MariaDB lassú lekérdezési naplóhoz:
-1. A naplózás bekapcsolásához állítsa be a **lassú @ no__t-1query @ no__t-2log** PARAMÉTERt a következőre:.
-2. Módosítsa a többi paramétert, például a **Long @ no__t-1query @ no__t-2time** és a **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
+1. A naplózás bekapcsolásához állítsa be a **lassú\_lekérdezés\_log** PARAMÉTERt a következőre:.
+2. Módosítsa a többi paramétert, például a **hosszú\_lekérdezést\_időt** és a **naplót\_lassú\_rendszergazdai\_utasításait**.
 
 Ha meg szeretné tudni, hogyan állíthatja be a paraméterek értékét az Azure CLI-n keresztül, tekintse meg a [kiszolgáló paramétereinek konfigurálása](howto-configure-server-parameters-cli.md)című témakört.
 
@@ -40,7 +40,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló naplófájljainak listázása
 A kiszolgáló rendelkezésre álló lassú lekérdezési naplófájljainak listázásához futtassa az az [MariaDB Server-logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) parancsot.
 
-A kiszolgálói **mydemoserver.MariaDB.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját egy **log @ no__t-1files\_list.txt**nevű szövegfájlba.
+A kiszolgálói **mydemoserver.MariaDB.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját a **log\_Files nevű szövegfájlba\_Listázás. txt**fájlban.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
@@ -52,5 +52,5 @@ A következő példa használatával letöltheti a kiszolgáló **mydemoserver.M
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a Azure Database for MariaDB lassú lekérdezési naplóiról](concepts-server-logs.md).

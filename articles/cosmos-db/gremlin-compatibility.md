@@ -23,17 +23,17 @@ Azure Cosmos DB Graph Engine szorosan követi az [Apache TinkerPop](https://tink
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-* A ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** egy programnyelvfüggetlen specifikáció gráfbejárásokhoz. Cosmos DB gráf még nem támogatja. Használjon ```GremlinClient.SubmitAsync()``` értéket, és szöveges karakterláncként adja át a bejárást.
+* A ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** egy programnyelvfüggetlen specifikáció gráfbejárásokhoz. Cosmos DB gráf még nem támogatja. Használjon ```GremlinClient.SubmitAsync()```, és szöveges karakterláncként adja át a bejárást.
 
-* a ***```property(set, 'xyz', 1)```*** beállítása jelenleg nem támogatott. Ehelyett használja a ```property(list, 'xyz', 1)``` értéket.
+* ***```property(set, 'xyz', 1)```*** a kardinális beállítás jelenleg nem támogatott. Ehelyett használja a ```property(list, 'xyz', 1)```.
 
-* a ***```match()```*** lehetővé teszi a graphok lekérdezését a deklaratív minta egyeztetésével. Ez a funkció nem érhető el.
+* ***```match()```*** lehetővé teszi a graphok lekérdezését a deklaratív minta egyeztetésével. Ez a funkció nem érhető el.
 
 * A csúcspontokon vagy éleken lévő ***Tulajdonságok*** nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
 
-* ***A rendezési tömb tulajdonságai*** ```.order().by(<array property>)``` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
+* ***A tömb tulajdonságainak rendezése*** ```.order().by(<array property>)``` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
 
-* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használja ```string```, ```number```, vagy ```true``` @ no__t-3 @ no__t-4 típust. @no__t – 0 érték nem támogatott. 
+* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. ```string```, ```number```vagy ```true```/```false``` típusokat használjon. ```null``` értékek nem támogatottak. 
 
 * A ***GraphSONv3*** szerializáló jelenleg nem érhető el.
 

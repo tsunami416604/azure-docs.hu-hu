@@ -66,7 +66,7 @@ Vegye figyelembe, hogy az alkalmazás regisztrációs portálján elérhető egy
    ![-rendszerkép **regisztrálása**](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Az átirányítási URI-t az Ön számára számítjuk ki.
-   ![rendszerkép](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás Jegyzékfájlján keresztül teheti meg. Az ajánlott formátum a következő:
 
@@ -76,7 +76,7 @@ Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalma
 
 ### <a name="username-password"></a>Felhasználónév jelszava
 
-Ha az alkalmazás csak a username/Password nevet használja, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Valójában ez a folyamat a Microsoft Identity platform v 2.0-végpontját is átveszi, és az alkalmazás nem hívható vissza semmilyen konkrét URI-ra. Azonban meg kell adnia, hogy az alkalmazás egy nyilvános ügyfélalkalmazás. Ezt a konfigurációt az alkalmazás **hitelesítési** szakasza fogja megvalósítani, a **Speciális beállítások** alszakaszban pedig válassza az **Igen**lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére** szolgáló kérdésnél (az **alapértelmezett érték ügyfél típusa** bekezdés)
+Ha az alkalmazás csak a username/Password nevet használja, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Valójában ez a folyamat a Microsoft Identity platform v 2.0-végpontját is átveszi, és az alkalmazás nem hívható vissza semmilyen konkrét URI-ra. Azonban meg kell adnia, hogy az alkalmazás egy nyilvános ügyfélalkalmazás. Ezt a konfigurációt az alkalmazás **hitelesítési** szakasza fogja megvalósítani, a **Speciális beállítások** alszakaszban pedig válassza az **Igen**lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére** szolgáló kérdésnél (az **alapértelmezett ügyfél típusa** bekezdésben).
 
 ## <a name="api-permissions"></a>API-engedélyek
 

@@ -25,14 +25,14 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza a (z) @no__t – 0 formátumban, ahol:
+  Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza a (z) `YYYY-MM-DDThh:mm:ss.sssZ` formátumban:
   
   |||
   |-|-|
   |ÉÉÉÉ|négyjegyű év|
   |MM|kétjegyű hónap (01 = Január stb.)|
   |DD|hónap kétjegyű napja (01 – 31)|
-  |K|az időelemek kezdetének jelölője|
+  |T|az időelemek kezdetének jelölője|
   |óó|két számjegyű óra (00 – 23)|
   |mm|két számjegyből álló perc (00 – 59)|
   |SS|két számjegyű másodperc (00 – 59)|
@@ -63,7 +63,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 }]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

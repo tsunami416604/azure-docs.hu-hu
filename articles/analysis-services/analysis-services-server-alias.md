@@ -43,7 +43,7 @@ Ebben a példában egy ASP.NET Web Forms alkalmazást hoz létre a Visual Studi�
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-A Default.aspx.cs Page_Load eseménye a Response. write () metódust használja a Azure Analysis Services-kiszolgáló nevének visszaadásához.
+A Default.aspx.cs Page_Load esemény a Response. write () metódust használja a Azure Analysis Services-kiszolgáló nevének visszaadásához.
 
 ```
 protected void Page_Load(object sender, EventArgs e)
@@ -52,7 +52,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Ügyféloldali kódtárak](analysis-services-data-providers.md)   
 [Csatlakozási Power BI Desktop](analysis-services-connect-pbi.md)

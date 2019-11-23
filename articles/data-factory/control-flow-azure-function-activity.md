@@ -30,7 +30,7 @@ A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a
 
 Az Azure-függvény visszatérési típusának érvényes `JObject`nak kell lennie. (Ne feledje, hogy [](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) a JArray *nem* `JObject`.) A `JObject`tól eltérő visszatérési típusok sikertelenek, és a felhasználói hibákra *adott tartalom nem érvényes JObject*.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
 | type   | A Type tulajdonságot a következőre kell beállítani: **AzureFunction** | igen |
 | function alkalmazás URL-címe | Az Azure-függvényalkalmazás URL-címe. A formátum `https://<accountname>.azurewebsites.net`. Ez az URL-cím az **URL-** cím szakaszban található, amikor a függvényalkalmazás megtekinti a Azure Portal  | igen |
@@ -39,11 +39,11 @@ Az Azure-függvény visszatérési típusának érvényes `JObject`nak kell lenn
 
 ## <a name="azure-function-activity"></a>Azure Function tevékenység
 
-| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
 | név  | A folyamatban szereplő tevékenység neve  | Sztring | igen |
 | type  | A tevékenység típusa "AzureFunctionActivity". | Sztring | igen |
-| Társított szolgáltatás | Az Azure Function társított szolgáltatás a megfelelő Azure-függvényalkalmazás  | Társított szolgáltatás leírása | igen |
+| társított szolgáltatás | Az Azure Function társított szolgáltatás a megfelelő Azure-függvényalkalmazás  | Társított szolgáltatás leírása | igen |
 | Függvény neve  | Azon függvény neve az Azure függvényalkalmazásban, amelyre ez a tevékenység hív | Sztring | igen |
 | method  | A függvény hívásának REST API metódusa | Támogatott karakterlánc-típusok: "GET", "POST", "PUT"   | igen |
 | header  | A kérelembe küldendő fejlécek. Például a nyelv és a típus megadásához a következőre: "headers": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"} | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem |
@@ -69,6 +69,6 @@ További információ a Durable Functionsről [ebben a cikkben](../azure-functio
 
 Megtalálhatja az Azure-függvényt használó Data Factory mintáját, amellyel kinyerheti a Tar [-fájl tartalmát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Data Factory kapcsolódó tevékenységekről [Azure Data Factory folyamatokban és tevékenységekben](concepts-pipelines-activities.md).

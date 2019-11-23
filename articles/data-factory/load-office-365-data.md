@@ -73,7 +73,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
     ![Új Office 365 társított szolgáltatás](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. A **táblázat**mellett kattintson a lefelé mutató nyílra az elérhető Office 365-adatkészletek listájának kibontásához, majd válassza a "BasicDataSet_v0" lehetőséget. Message_v0 "a legördülő listából:
+7. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. A **táblázat**mellett kattintson a lefelé mutató nyílra az elérhető Office 365-adatkészletek listájának kibontásához, majd válassza a BasicDataSet_v0 lehetőséget. Message_v0 "a legördülő listából:
 
     ![Config Office 365 adatkészlet táblázata](./media/load-office-365-data/edit-dataset.png)
 
@@ -143,7 +143,7 @@ Miután megadta a beleegyezett adatgyűjtést, a rendszer folytatja az adatfeldo
 
 Most lépjen a cél Azure Blob Storagera, és ellenőrizze, hogy az Office 365-es Adatkivonatok bináris formátumban lettek kibontva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását: 
 

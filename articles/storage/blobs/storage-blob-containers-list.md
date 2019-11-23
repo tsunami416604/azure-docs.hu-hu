@@ -32,7 +32,7 @@ Ezeknek a módszereknek a túlterhelései további lehetőségeket biztosítanak
 
 Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza. Ha kisebb eredményeket szeretne visszaadni, adjon meg nullától eltérő értéket a `maxresults` paraméternek az egyik **ListContainerSegmented** metódus hívásakor.
 
-Ha a Storage-fiókja több mint 5000 tárolót tartalmaz, vagy ha olyan `maxresults` értéket adott meg, amelynél a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a következő listával: konténerek. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+Ha a Storage-fiók több mint 5000 tárolót tartalmaz, vagy ha olyan értéket adott meg `maxresults` például, hogy a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a tárolók listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
 
 A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor hívja meg újra a **ListContainersSegmented** vagy a **ListContainersSegmentedAsync** , majd a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási token null nem lesz.
 
@@ -97,7 +97,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-[Tárolók listázása](/rest/api/storageservices/list-containers2) a[blob-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources) 
+[Tárolók listázása](/rest/api/storageservices/list-containers2) a [blob-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)
 

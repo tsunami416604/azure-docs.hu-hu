@@ -552,7 +552,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16 -00. txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016-11-16 -02. txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
@@ -694,12 +694,12 @@ A hibaelhárítás néhány alapvető módszerből áll:
 
    Amikor rákattint a tevékenység futtatására, a **tevékenység futtatása részletek panel** jelenik meg a naplófájlok listájával. A naplózott üzenetek a user_0. log fájlban láthatók. Hiba esetén három tevékenység fut, mert az újrapróbálkozások száma a folyamat/tevékenység JSON-ben 3 értékre van állítva. Amikor rákattint a tevékenység futtatására, a naplófájlokat láthatja, amelyeket a hiba megoldásához tekinthet meg.
 
-   A naplófájlok listájában kattintson a **User-0. log**fájlra. A jobb oldali panelen a **IActivityLogger. Write** metódus használatának eredményei láthatók. Ha nem látja az összes üzenetet, ellenőrizze, hogy van-e további naplófájlok neve: user_1. log, user_2. log stb. Ellenkező esetben előfordulhat, hogy a kód az utolsó naplózott üzenet után meghiúsult.
+   A naplófájlok listájában kattintson a **User-0. log**fájlra. A jobb oldali panelen a **IActivityLogger. Write** metódus használatának eredményei láthatók. Ha nem látja az összes üzenetet, ellenőrizze, hogy van-e további naplófájl neve: user_1. log, user_2. log stb. Ellenkező esetben előfordulhat, hogy a kód az utolsó naplózott üzenet után meghiúsult.
 
    Továbbá az **System-0. log naplófájlban** találhatja meg a rendszerhibákat és a kivételeket.
 4. Adja meg a **PDB** -fájlt a zip-fájlban, hogy a hiba részletei olyan információkkal rendelkezzenek, mint a **hívási verem** , ha hiba történik.
 5. Az egyéni tevékenység zip-fájljában lévő összes fájlnak a **legfelső szinten** kell lennie, almappák nélkül.
-6. Győződjön meg arról, hogy a **assemblyName** (MyDotNetActivity. dll), **BelépésiPont**(MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) és **packageLinkedService** (kell pont a zip **-fájlt tartalmazó általános célú**Azure Blob Storage-hoz a megfelelő értékekre van beállítva.
+6. Győződjön meg arról, hogy a **assemblyName** (MyDotNetActivity. dll), a **BelépésiPont**(MyDotNetActivityNS. MyDotNetActivity), a **packageFile** (customactivitycontainer/MyDotNetActivity. zip) és a **packageLinkedService** (a zip-fájlt tartalmazó **általános célú**Azure Blob-tárolóra kell mutatnia) a helyes értékre van állítva.
 7. Ha kijavított egy hibát, és újra fel szeretné dolgozni a szeletet, kattintson a jobb gombbal a szeletre az **OutputDataset** panelen, és kattintson a **Futtatás** parancsra.
 8. Ha a következő hibaüzenet jelenik meg, akkor az Azure Storage-csomagot használja > 4.3.0. Data Factory Service Launcher használatához a WindowsAzure. Storage 4,3-es verziója szükséges. Ha az Azure Storage szerelvény újabb verzióját kell használnia, tekintse meg a [alkalmazástartomány elkülönítése](#appdomain-isolation) című szakaszt.
 
@@ -721,7 +721,7 @@ A hibaelhárítás néhány alapvető módszerből áll:
 ## <a name="update-custom-activity"></a>Egyéni tevékenység frissítése
 Ha frissíti az egyéni tevékenység kódját, hozza létre, és töltse fel a blob Storage-ba új bináris fájlokat tartalmazó zip-fájlt.
 
-## <a name="appdomain-isolation"></a>Alkalmazástartomány elkülönítése
+## <a name="appdomain-isolation"></a>Appdomain isolation
 Tekintse meg a [alkalmazástartomány mintáját](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely bemutatja, hogyan hozhat létre olyan egyéni tevékenységet, amely nem korlátozza a Data Factory indító által használt szerelvény-verziókat (például: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.).
 
 ## <a name="access-extended-properties"></a>Kiterjesztett tulajdonságok elérése
@@ -1022,7 +1022,7 @@ namespace DataFactoryAPITestApp
 A GitHubon található [Azure Data Factory helyi környezeti](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) minta olyan eszközt tartalmaz, amely lehetővé teszi az egyéni .net-tevékenységek hibakeresését a Visual Studióban.
 
 ## <a name="sample-custom-activities-on-github"></a>Egyéni tevékenységek mintája a GitHubon
-| Minta | Milyen egyéni tevékenységet végez |
+| Sample | Milyen egyéni tevékenységet végez |
 | --- | --- |
 | [Http-adatletöltő](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Letölti az adatait egy HTTP-végpontról az Azure C# -ba Blob Storage a Data Factory egyéni tevékenységével. |
 | [Twitter Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Meghívja a Azure Machine Learning Studio modellt, és elvégzi az érzelmek elemzését, pontozását, előrejelzését stb. |

@@ -147,7 +147,7 @@ Jelenleg a Azure Database Migration Service hibrid üzemmód eltávolítása csa
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [SQL Server migrálása Azure SQL Database felügyelt példányra online](tutorial-sql-server-managed-instance-online.md)

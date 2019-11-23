@@ -18,9 +18,9 @@ ms.locfileid: "72432912"
 
 Alapértelmezés szerint az AK-fürtök olyan egyszerű szolgáltatással jönnek létre, amely egy éves lejárati idővel rendelkezik. A lejárati dátum közelében visszaállíthatja a hitelesítő adatokat, hogy a szolgáltatásnév további ideig is kiterjeszthető legyen. Előfordulhat, hogy a hitelesítő adatokat egy meghatározott biztonsági szabályzat részeként szeretné frissíteni vagy elforgatni. Ez a cikk részletesen ismerteti, hogyan frissítheti ezeket a hitelesítő adatokat egy AK-fürthöz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>Egy egyszerű szolgáltatás frissítésének vagy létrehozásának kiválasztása
 
@@ -31,7 +31,7 @@ Ha egy AK-fürt hitelesítő adatait szeretné frissíteni, a következőket teh
 
 ### <a name="update-existing-service-principal-expiration"></a>Meglévő egyszerű szolgáltatásnév lejáratának frissítése
 
-A meglévő szolgáltatásnév hitelesítő adatainak frissítéséhez szerezze be a fürt egyszerű szolgáltatásnév-AZONOSÍTÓját az az az [AK show][az-aks-show] paranccsal. A következő példa lekéri a *myAKSCluster* nevű fürt azonosítóját a *myResourceGroup* erőforráscsoporthoz. Az egyszerű szolgáltatás azonosítója *SP_ID* nevű változóként van beállítva a további parancsokban való használathoz.
+A meglévő szolgáltatásnév hitelesítő adatainak frissítéséhez szerezze be a fürt egyszerű szolgáltatásnév-AZONOSÍTÓját az az az [AK show][az-aks-show] paranccsal. A következő példa lekéri a *myAKSCluster* nevű fürt azonosítóját a *myResourceGroup* erőforráscsoporthoz. Az egyszerű szolgáltatásnév AZONOSÍTÓját *SP_ID* nevű változóként kell beállítani a további parancsokban való használathoz.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -67,7 +67,7 @@ A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `
 }
 ```
 
-Most adja meg az egyszerű szolgáltatásnév és az ügyfél titkos KÓDJÁnak változóit az az [ad SP Create-for-RBAC][az-ad-sp-create] parancs kimenete alapján, az alábbi példában látható módon. A *SP_ID* a *AppID*, a *SP_SECRET* pedig a *jelszó*:
+Most adja meg az egyszerű szolgáltatásnév és az ügyfél titkos KÓDJÁnak változóit az az [ad SP Create-for-RBAC][az-ad-sp-create] parancs kimenete alapján, az alábbi példában látható módon. A *SP_ID* a *AppID*, és a *SP_SECRET* a *jelszava*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5

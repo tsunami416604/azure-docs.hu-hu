@@ -40,7 +40,7 @@ Egy alkalmazás egyszerre csak a VNet-integrációs szolgáltatás egyik formáj
 | Probléma  | Megoldás | 
 |----------|----------|
 | Egy adott régióban szeretné elérni az RFC 1918-es címeket (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16). | regionális VNet-integráció |
-| Szeretné elérni az erőforrásokat egy másik régióban található klasszikus VNet vagy VNet | átjáró szükséges VNet-integráció |
+| Szeretné elérni az erőforrásokat egy másik régióban található klasszikus VNet vagy VNet | Átjáró szükséges VNet-integráció |
 | Az RFC 1918-végpontok elérését szeretné elérni a ExpressRoute között | regionális VNet-integráció |
 | Erőforrásokat szeretne elérni a szolgáltatási végpontok között | regionális VNet-integráció |
 
@@ -53,7 +53,7 @@ A használt verziótól függetlenül a VNet integrációja lehetővé teszi, ho
 A VNet integrációs funkciója:
 
 * Standard, prémium vagy PremiumV2 díjszabási csomagot igényel 
-* a TCP és az UDP támogatása
+* A TCP és az UDP támogatása
 * együttműködik App Service alkalmazásokkal és a Function apps szolgáltatással
 
 Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következőket:
@@ -62,7 +62,7 @@ Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következők
 * AD-integráció 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>Regionális VNet-integráció 
+## <a name="regional-vnet-integration"></a>regionális VNet-integráció 
 
 > [!NOTE]
 > A peering még nem érhető el Linux-alapú App Service számára.
@@ -114,7 +114,7 @@ Ha le szeretné bontani az alkalmazást a VNet, válassza a **Leválasztás**leh
 
 #### <a name="web-app-for-containers"></a>Tárolókhoz készült Web App
 
-Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy a SSH_PORT környezeti változó által megadott portszámot figyelje a regionális VNet-integráció használatakor.
+Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy figyelje a SSH_PORT környezeti változó által megadott portszámot a regionális VNet-integráció használatakor.
 
 ### <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont
 
@@ -175,13 +175,13 @@ Ha most hozza létre az átjárót App Service VNet-integrációval való haszn�
 Az VNet-integráció engedélyezése az alkalmazásban: 
 
 1. Nyissa meg az alkalmazást a Azure Portalon, és nyissa meg az alkalmazás beállításait, és válassza a hálózatkezelés > VNet-integráció lehetőséget. Az ASP-nek standard SKU-ban kell lennie, vagy jobb a VNet-integrációs funkció használatához. 
- @no__t – 0VNet-integráció felhasználói felülete @ no__t-1
+ ![VNet-integráció felhasználói felülete][1]
 
 1. Válassza a **VNet hozzáadása**lehetőséget. 
- ![Add VNet Integration @ no__t-1
+ ![VNet-integráció hozzáadása][2]
 
 1. Válassza ki a VNet. 
-  @no__t 0Select a VNet @ no__t-1
+  ![válassza ki a VNet][8]
   
 Az alkalmazás az utolsó lépés után újraindul.  
 
@@ -249,7 +249,7 @@ A regionális VNet-integrációs szolgáltatásnak nem kell további díjat fize
 
 Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjjal jár:
 
-* Az ASP díjszabási szintjeinek díjai – az alkalmazásainak standard, prémium vagy PremiumV2 App Service-csomaggal kell rendelkezniük. Ezekről a költségekről itt talál további részleteket: [App Service díjszabása][ASPricing]. 
+* Az ASP díjszabási szintjeinek díjai – az alkalmazásainak standard, prémium vagy PremiumV2 App Service-csomaggal kell rendelkezniük. A költségekről további részleteket itt talál: [app Service díjszabás][ASPricing]. 
 * Adatátviteli költségek – a kimenő adatforgalomért akkor is díjat számítunk fel, ha a VNet ugyanabban az adatközpontban található. Ezeket a díjakat [adatátvitel díjszabása][DataPricing]ismerteti. 
 * VPN Gateway költségek – a pont – hely típusú VPN-hez szükséges VNet-átjáró költségeinek költsége. A részletek a [VPN Gateway díjszabási][VNETPricing] oldalán találhatók.
 
@@ -262,7 +262,7 @@ Az eszközök **pingelése**, az **nslookup** és a **tracert** a biztonsági ko
 
     nameresolver.exe hostname [optional: DNS Server]
 
-A **nameresolver** segítségével megtekintheti az alkalmazástól függő gazdagépeket. Így ellenőrizheti, hogy van-e valamilyen helytelenül konfigurálva a DNS-sel, vagy lehet, hogy nem fér hozzá a DNS-kiszolgálóhoz. A DNS-kiszolgáló, amelyet az alkalmazás a-konzolon fog használni, a környezeti változók WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER tekintheti meg.
+A **nameresolver** segítségével megtekintheti az alkalmazástól függő gazdagépeket. Így ellenőrizheti, hogy van-e valamilyen helytelenül konfigurálva a DNS-sel, vagy lehet, hogy nem fér hozzá a DNS-kiszolgálóhoz. Az alkalmazás által a konzolon használt DNS-kiszolgáló a környezeti változók WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER alapján tekinthető meg.
 
 A következő eszköz lehetővé teszi a TCP-kapcsolat tesztelését egy gazdagép és port kombinációhoz. Az eszköz neve **tcpping** , és a szintaxis a következő:
 

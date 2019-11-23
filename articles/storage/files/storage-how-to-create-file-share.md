@@ -44,7 +44,7 @@ Azure-fájlmegosztás létrehozásához használhat meglévő tárfiókot, vagy 
 
 
 ## <a name="create-file-share-through-powershell"></a>Fájlmegosztás létrehozása PowerShell-lel
-A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. Lásd: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/overview)  for a telepítési pont és a telepítési utasítások.
+A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. Lásd: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/overview) a telepítési ponthoz és a telepítési utasításokhoz.
 
 > [!Note]  
 > Javasoljuk, hogy frissítsen a legújabb Azure PowerShell modulra, vagy töltse le és telepítse azt.
@@ -73,7 +73,7 @@ A PowerShell használatának előkészítéseként töltse le és telepítse az 
     Lásd: [Az Azure CLI telepítése és az](https://docs.microsoft.com/cli/azure/install-azure-cli) [Azure CLI első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Hozzon létre egy kapcsolati sztringet ahhoz a tárfiókhoz, amelyen létre szeretné hozni a megosztást.**  
-    Cserélje le a  ```<storage-account>```  and  ```<resource_group>```  with a Storage-fiók nevét és az erőforráscsoportot a következő példában:
+    Cserélje le ```<storage-account>``` és ```<resource_group>``` a Storage-fiók nevére és az erőforráscsoporthoz a következő példában:
 
    ```azurecli
     current_env_conn_string=$(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)
@@ -95,6 +95,6 @@ A PowerShell használatának előkészítéseként töltse le és telepítse az 
 
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
-* [GYIK](../storage-files-faq.md)
+* [GYAKORI KÉRDÉSEK](../storage-files-faq.md)
 * [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      
 * [Hibaelhárítás a Linux rendszerben](storage-troubleshoot-linux-file-connection-problems.md)   

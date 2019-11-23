@@ -110,7 +110,7 @@ Belsőleg az alkalmazásban minden bérlő egy SQL-alapú rugalmas készletbe he
 
 A központi **esemény-központ** oldal a központi telepítésben lévő bérlők hivatkozásainak listáját tartalmazza.
 
-1. Az URL-cím használatával nyissa meg az Events hubot a böngészőben: http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net. Helyettesítse be &lt;felhasználói&gt; az üzembe helyezés felhasználói értékével.
+1. Az URL-cím használatával nyissa meg az Events hubot a böngészőben: http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net. Helyettesítse be &lt;felhasználói&gt; az üzembe helyezés felhasználói értékével.
 
     ![Events hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -122,7 +122,7 @@ A központi **esemény-központ** oldal a központi telepítésben lévő bérl�
 
 A Wingtip alkalmazás az [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) használatával szabályozza a bejövő kérelmek eloszlását. Egy adott bérlő események lapjához való hozzáféréshez használt URL-cím a következő formátumot használja:
 
-- http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     Az előző formátum részeit a következő táblázat ismerteti.
 
@@ -130,7 +130,7 @@ A Wingtip alkalmazás az [*Azure Traffic Manager*](../traffic-manager/traffic-m
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | A Wingtip alkalmazás eseményeinek részei.<br /><br /> *– a DPT* megkülönbözteti a Wingtip-jegyek *adatbázis-bérlői* implementációját más megvalósításokból. Ilyenek például az *egyetlen* alkalmazás-bérlő ( *-sa*) vagy több- *bérlős adatbázis* ( *-MT*) implementációk. |
     | . *&lt;felhasználói&gt;* | a példában szereplő *AF1* . |
-    | . trafficmanager.net/ | Traffic Manager, alap URL-cím. |
+    | .trafficmanager.net/ | Traffic Manager, alap URL-cím. |
     | fabrikamjazzclub | A fabrikam Jazz Club nevű bérlőt azonosítja. |
     | &nbsp; | &nbsp; |
 
@@ -183,7 +183,7 @@ A *demo-LoadGenerator. ps1* a vevői tranzakciók aktív terhelését utánozza.
     - *sp_CpuLoadGenerator* hurkok egy olyan SQL SELECT utasítás körül, amely magas CPU-terhelést okoz. A kiválasztott problémák közötti időintervallum változó a paraméter értékei alapján, amelyekkel ellenőrizhető CPU-terhelés hozható létre. A betöltési szintek és az intervallumok véletlenszerűek a reális terhelések szimulálása érdekében.
     - Ezt az. SQL-fájlt a *WingtipTenantDB\\dbo\\StoredProcedures\\* alatt tárolja.
 
-4. Ha `$OneTime = $false`, a Load Generator elindítja a háttérben futó feladatokat, majd folytatja a futtatást. Minden 10 másodpercenként figyeli a kiépített új bérlőket. Ha a `$OneTime = $true` értéket állítja be, a LoadGenerator elindítja a háttérben futó feladatokat, majd leállítja a futtatást az előtérben. Ebben az oktatóanyagban hagyja `$OneTime = $false` értéket.
+4. Ha `$OneTime = $false`, a Load Generator elindítja a háttérben futó feladatokat, majd folytatja a futtatást. Minden 10 másodpercenként figyeli a kiépített új bérlőket. Ha a `$OneTime = $true`t állítja be, a LoadGenerator elindítja a háttérben futó feladatokat, majd leállítja a futtatást az előtérben. Ebben az oktatóanyagban hagyja `$OneTime = $false`.
 
    Ha szeretné leállítani vagy újraindítani a Load Generatort, használja a CTRL-C vagy a Leállítás művelet Ctrl-Break billentyűkombinációt.
 
@@ -256,7 +256,7 @@ A két diagram azt szemlélteti, hogy a rugalmas készletek és a SQL Databaseek
 - A rugalmas feladatokkal kapcsolatos további tudnivalókért tekintse meg a kibővített [felhőalapú adatbázisok kezelése](elastic-jobs-overview.md)című témakört.
 - A több-bérlős SaaS-alkalmazásokkal kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 
