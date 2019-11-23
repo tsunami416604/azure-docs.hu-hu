@@ -1,148 +1,142 @@
 ---
-title: Az Azure-ban Hyperledger Fabric Consortium Network
-description: Sablon üzembe helyezéséhez és a egy Hyperledger Fabric consortium network konfigurálása
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Deploy Hyperledger Fabric Consortium solution template on Azure
+description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: caleteet
-manager: femila
-ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510749"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325136"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
 
-Használhatja a Hyperledger Fabric consortium megoldássablon üzembe helyezéséhez és a egy Hyperledger Fabric consortium network konfigurálása az Azure-ban.
+You can use the Hyperledger Fabric consortium solution template to deploy and configure a Hyperledger Fabric consortium network on Azure.
 
 A cikk elolvasása után:
 
-- Blockchain, Hyperledger Fabric és a bonyolultabb consortium műholdhálózati architektúrákat beszerzése
-- Ismerje meg, hogyan telepítheti és konfigurálhatja egy Hyperledger Fabric consortium network, az az Azure Portalon
+- Obtain working knowledge of blockchain, Hyperledger Fabric, and more complicated consortium network architectures
+- Learn how to deploy and configure a Hyperledger Fabric consortium network from within the Azure portal
 
-## <a name="about-blockchain"></a>Információ a blockchainről
+## <a name="about-blockchain"></a>About blockchain
 
-Ha most ismerkedik a blockchain-Közösséggel, ez a megoldássablon egy nagyszerű lehetőséget biztosít a technológia megismerheti az Azure-ban könnyen és konfigurálható módon. Blockchain az alapul szolgáló technológiát Bitcoin; mögött azonban sokkal több, mint egy virtuális pénznem programkódként. Olyan meglévő adatbázis, az elosztott rendszer és a titkosítási technológiák összetett, amely lehetővé teszi a biztonságos több résztvevős számítási garanciákkal módosíthatatlansági, verifiability, auditability és rugalmasság, a támadásokkal szemben. A különböző protokollok szoftverbiztonsági használható különböző mechanizmusokat biztosít, ezek az attribútumok. [Hyperledger Fabric](https://github.com/hyperledger/fabric) egyik protokoll.
+If you are new to the blockchain community, this solution template is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Blockchain is the underlying technology behind Bitcoin; however, it is much more than just an enabler for a virtual currency. It is a composite of existing database, distributed system, and cryptographic technologies that enables secure multi-party computation with guarantees around immutability, verifiability, auditability, and resiliency to attack. Different protocols employ different mechanisms to provide these attributes. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is one such protocol.
 
-## <a name="consortium-architecture-on-azure"></a>Az Azure Consortium architektúra
+## <a name="consortium-architecture-on-azure"></a>Consortium architecture on Azure
 
-Ahhoz, hogy az Azure-ban Hyperledger Fabric, nincsenek két elsődleges központi telepítési típusok támogatottak. Ezeket az üzemelő példányokat különböző topológiák kívánt cél alapján úgy lettek kialakítva.
+To enable Hyperledger Fabric in Azure, there are two primary deployment types that are supported. These deployments are designed to accommodate different topologies, based on desired target.
 
-- **Egyetlen virtuális gép, fejlesztői server** -célja, hogy a központi telepítési típus egy fejlesztési környezetként használt összeállításához és teszteléséhez Hyperledger Fabric épülő megoldásokkal.
-- **Több virtuális gép üzembe helyezés horizontális** – a központi telepítési típus lett tervezve, amelyek a megosztott környezetben kihasználva különböző résztvevők konzorcium környezetekben.
+- **Single virtual machine, developer server** - This deployment type is designed as a development environment used to build and test solutions built on Hyperledger Fabric.
+- **Multiple virtual machines, scale out deployment** - This deployment type is designed for environments that model a consortium of different participants leveraging a shared environment.
 
-Mindkét központi telepítés esetén, amelyek vannak Hyperledger fabric az alapvető építőelemeit azonosak.  Az üzemelő példányok közötti különbségek, hogyan vannak horizontálisan ezeket az összetevőket.
+In either deployment, the building blocks that are make the core of Hyperledger Fabric are the same.  The differences in the deployments are how these components are scaled out.
 
-- **Hitelesítésszolgáltató csomópontok**: Egy hitelesítésszolgáltató identitások a hálózat által használt tanúsítványok előállításához használt futtató csomópont.
-- **Megrendelő csomópontok**: A végrehajtási egy kézbesítési garanciával, például a teljes rendelési szórástól vagy elemi tranzakciókat kommunikációs szolgáltatást futtató csomópont.
-- **Csomópontok társviszonyt**: Egy csomópont, amely véglegesíti a tranzakciókat, és fenntartja az állapot és a egy példányát az elosztott Főkönyv.
-- **A CouchDB csomópontok**: A CouchDB-szolgáltatást, amelyek a adatbázis tárolásához, majd adja meg a chaincode adatok, JSON típusú Storage egyszerű kulcs-érték a kibontás lekérdezési futtatható csomópont.
+- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
+- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
+- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
+- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
 
-### <a name="single-virtual-machine-architecture"></a>Egyetlen virtuális gép architektúrája
+### <a name="single-virtual-machine-architecture"></a>Single virtual machine architecture
 
-Amint azt korábban említettük a egyetlen virtuális gépének architektúrája: a fejlesztők egy kis erőforrás-igényű kiszolgálón az alkalmazások fejlesztéséhez használt épül fel. Látható az összes tárolót egyetlen virtuális gép fut. A rendelési szolgáltatás használ [egyedi](https://github.com/hyperledger/fabric/tree/master/orderer) ehhez a konfigurációhoz. Ez a konfiguráció *nem* tartalék hibatűrő rendezése szolgáltatást, de könnyű fejlesztési célokra tervezték.
+As mentioned previously the single virtual machine architecture is built for developers to have a low footprint server that is used to develop applications. All containers shown are running in a single virtual machine. The ordering service is using [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) for this configuration. This configuration is *not* a fault tolerant ordering service, but is designed to be lightweight for development purposes.
 
-![Egyetlen virtuális gép architektúrája](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
+![Single Virtual Machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
 
-### <a name="multiple-virtual-machine-architecture"></a>Több virtuális gép architektúrája
+### <a name="multiple-virtual-machine-architecture"></a>Multiple virtual machine architecture
 
-A több virtuális gépet, a kibővített architektúrát, beépített magas rendelkezésre állással és a Méretezés minden egyes összetevő középpontjában. Ez az architektúra olyan sokkal jobban megfelel az éles környezetben szintű üzembe helyezéséhez.
+The multiple virtual machine, scale-out architecture, is built with high availability and scaling of each component at the core. This architecture is much more suitable for production grade deployments.
 
-![Több virtuális gép architektúrája](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
+![Multiple virtual machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
-A kezdéshez Azure-előfizetés által támogatott több virtuális gépek és a standard szintű tárfiókok telepítése szükséges. Ha nem rendelkezik Azure-előfizetéssel, akkor az [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+To begin, you need an Azure subscription that can support deploying several virtual machines and standard storage accounts. If you do not have an Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/).
 
-Ha már rendelkezik előfizetéssel, nyissa meg a [az Azure portal](https://portal.azure.com). Válassza ki **erőforrás létrehozása > Blockchain > Hyperledger Fabric Consortium**.
+Once you have a subscription, go to the [Azure portal](https://portal.azure.com). Select **Create a resource > Blockchain > Hyperledger Fabric Consortium**.
 
-![Hyperledger Fabric egyetlen tag Blockchain Marketplace-sablon](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
+![Hyperledger Fabric Single Member Blockchain Marketplace template](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
-Az a **Hyperledger Fabric Consortium** sablont, válassza ki **létrehozás**.
+In the **Hyperledger Fabric Consortium** template, select **Create**.
 
-A sablon üzembe helyezéséhez végigvezeti a több csomópontos konfigurálása [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) hálózati. Az üzembe helyezési folyamat négy lépést oszlik: Alapvető beállítások, Consortium hálózati beállítások, Fabric konfigurálása és a választható összetevők.
+The template deployment will walk you through configuring the multi-node [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) network. The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
 
 ### <a name="basics"></a>Alapvető beállítások
 
-A **alapjai**, adja meg minden olyan központi telepítés standard paraméterek értékeit. Például előfizetés, erőforráscsoport és az alapszintű virtuális gép tulajdonságait.
+In **Basics**, specify values for standard parameters for any deployment. Such as, subscription, resource group, and basic virtual machine properties.
 
 ![Alapvető beállítások](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Erőforrás-előtag** | A telepítés részeként üzembe helyezett erőforrások-előtagja |6 karakter vagy kevesebb |
-**Felhasználónév** | A felhasználónév, a rendszergazda minden ehhez a taghoz telepített virtuális gépekhez |1 – 64 karakter |
-**Hitelesítés típusa** | A módszert a virtuális géphez |Jelszó vagy SSH nyilvános kulcs|
-**Jelszó (hitelesítési típus = jelszó)** |Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 speciális karakter<br /><br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után a jelszó megváltoztatásához|12 – 72 karakter|
-**SSH-kulcs (hitelesítési típus = a nyilvános SSH-kulcs)** |A secure shell-kulcsot a távoli bejelentkezéshez használt ||
-**Előfizetés** |Az előfizetés, melyben szeretné üzembe helyezni ||
-**Erőforráscsoport** |Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network ||
-**Hely** |Az Azure-régió, melyben szeretné üzembe helyezni az első tag ||
+**Resource prefix** | Name prefix for resources provisioned as part of the deployment |6 characters or less |
+**Felhasználónév** | The user name of the administrator for each of the virtual machines deployed for this member |1 - 64 characters |
+**Authentication type** | The method to authenticate to the virtual machine |Password or SSH public key|
+**Password (Authentication type = Password)** |The password for the administrator account for each of the virtual machines deployed. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />While all VMs initially have the same password, you can change the password after provisioning|12 - 72 characters|
+**SSH key (Authentication type = SSH public key)** |The secure shell key used for remote login ||
+**Előfizetés** |The subscription to which to deploy ||
+**Erőforráscsoport** |The resource group to which to deploy the consortium network ||
+**Hely** |The Azure region to which to deploy the first member in ||
 
 Kattintson az **OK** gombra.
 
 ### <a name="consortium-network-settings"></a>Consortium Network Settings
 
-A **hálózati beállítások**, adja meg a bemenetek létrehozása vagy csatlakoztatása egy meglévő consortium hálózati és a szervezet beállításainak konfigurálása.
+In **Network settings**, specify inputs for creating or joining an existing consortium network and configure your organization settings.
 
 ![Consortium Network Settings](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Hálózati konfiguráció** |Választhat, hozzon létre egy új hálózatot, vagy egy meglévő csatlakozhat. Ha úgy dönt, *csatlakozzon a meglévő*, meg kell adnia értékeket. |Új hálózati <br/> Csatlakozás a meglévő |
-**HLF hitelesítésszolgáltató jelszó** |A hitelesítésszolgáltatók, a telepítés részeként létrehozott által létrehozott tanúsítványokat használt jelszó. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter.<br /><br />Míg az összes virtuális gép kezdetben ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|1 - 25 karakternél |
-**A telepítő szervezet** |Testre szabhatja a szervezet és a tanúsítvány, vagy a használt alapértelmezett értékek találhatók.|Alapértelmezett <br/> Speciális |
-**VPN-hálózati beállítások** | VPN-alagút átjáró fér hozzá a virtuális gépek kiépítése | Igen <br/> Nem |
+**Hálózati konfiguráció** |You can choose to create a new network or join an existing one. If you choose *Join existing*, you need to provide additional values. |New network <br/> Join existing |
+**HLF CA password** |A password used for the certificates generated by the certificate authorities that are created as part of the deployment. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character.<br /><br />While all virtual machines initially have the same password, you can change the password after provisioning.|1 - 25 characters |
+**Organization setup** |You can customize your Organization's name and certificate or have default values to be used.|Alapértelmezett <br/> Extra szintű |
+**VPN network settings** | Provision a VPN tunnel gateway for accessing the VMs | Igen <br/> Nem |
 
 Kattintson az **OK** gombra.
 
-### <a name="fabric-specific-settings"></a>Fabric-specifikus beállításokat
+### <a name="fabric-specific-settings"></a>Fabric-specific settings
 
-A **Fabric konfigurációs**, hálózati méretének és teljesítményének megfelelő konfigurálásával, és adja meg a hálózat rendelkezésre állásának tartozó bemeneti. Például a number megrendelő és a társ-csomópontok, minden egyes csomópontot, és a virtuális gép mérete által használt adatmegőrzési-motor.
+In **Fabric configuration**, you configure network size and performance, and specify inputs for the availability of the network. Such as, number orderer and peer nodes, persistence engine used by each node, and the VM size.
 
-![Fabric-beállítások](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
-
-| Paraméter neve | Leírás | Megengedett értékek |
-|---|---|---|
-**Lépték típusa** |A központi telepítési típus több tárolót egyetlen virtuális gép vagy egy több virtuális gép egy horizontális felskálázási modellben.|Egyetlen virtuális Gépet vagy virtuális gépre kiterjedő |
-**Virtuálisgép-lemez típusa** |A tárolás, a üzembe helyezett csomópontok biztonsági típusát. <br/> A rendelkezésre álló szabad típusaival kapcsolatos további tudnivalókért látogasson el a [válassza ki a lemez típusát](../../virtual-machines/windows/disks-types.md).|Standard SSD <br/> Prémium SSD |
-
-### <a name="multiple-vm-deployment-additional-settings"></a>Több virtuális gép üzembe helyezése (további beállításokat)
-
-![Több virtuálisgép-telepítéshez hálóbeállítások](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
+![Fabric settings](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Megrendelő csomópontok száma** |A rendelés csomópontok száma (rendszerezése) egy tranzakciókat. <br />A rendelési szolgáltatás további információért látogasson el a Hyperledger [dokumentációja](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1 – 4 |
-**Megrendelő csomópont virtuális gépének mérete** |A használt megrendelő csomópontjai a hálózaton lévő virtuális gép mérete|Szabványos Bs<br />Standard DS-ben<br />Standard FS |
-**A társ-csomópontok száma** | Tranzakciók végrehajtása, és az állapot és a egy példányát a Főkönyv karbantartása consortium tagokat tulajdonában lévő csomópontokat.<br />A rendelési szolgáltatás további információért látogasson el a Hyperledger [dokumentáció](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
-**Csomópont-állapot megőrzését** |Az adatmegőrzés motor a társ csomópontja használ. Ez a motor társ csomópontonként konfigurálhatja. Tekintse meg több egyenrangú csomópontok részleteit alább olvashatja.|CouchDB <br />LevelDB |
-**Társ csomópont virtuális gépének mérete** |A hálózaton lévő összes csomópont használt virtuálisgép-méret|Szabványos Bs<br />Standard DS-ben<br />Standard FS |
+**Scale type** |The deployment type of either a single virtual machine with multiple containers or multiple virtual machines in a scale-out model.|Single VM or Multi VM |
+**VM Disk type** |The type of storage backing each of the deployed nodes. <br/> To learn more about the available disk types, visit [select a disk type](../../virtual-machines/windows/disks-types.md).|Standard SSD <br/> Prémium SSD |
 
-### <a name="multiple-peer-node-configuration"></a>Társ több csomópont-konfiguráció
+### <a name="multiple-vm-deployment-additional-settings"></a>Multiple VM deployment (additional settings)
 
-Ez a sablon lehetővé teszi a társ csomópontonként adatmegőrzés motor válasszon. Például ha társ három csomóponttal rendelkezik is használhatja a CouchDB egy és a másik kettő a LevelDB.
+![Fabric settings for multiple vm deployments](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-![Társ több csomópont-konfiguráció](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
+| Paraméter neve | Leírás | Megengedett értékek |
+|---|---|---|
+**Number of orderer nodes** |The number of nodes that order (organize) transactions into a block. <br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
+**Orderer node virtual machine size** |The virtual machine size used for orderer nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+**Number of peer nodes** | Nodes that are owned by consortium members that execute transactions and maintain the state and a copy of the ledger.<br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
+**Node state persistence** |The persistence engine used by the peer nodes. You can configure this engine per peer node. See details below for multiple peer nodes.|CouchDB <br />LevelDB |
+**Peer node virtual machine size** |The virtual machine size used for all nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+
+### <a name="multiple-peer-node-configuration"></a>Multiple peer node configuration
+
+This template allows you to pick your persistence engine per peer node. For example, if you have three peer nodes you can use CouchDB on one and LevelDB on the other two.
+
+![Multiple peer node configuration](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
 Kattintson az **OK** gombra.
 
 ### <a name="deploy"></a>Üzembe helyezés
 
-A **összefoglalás**, tekintse át a megadott bemeneti adatok és a központi telepítés előtti Alapszintű ellenőrzés futtatásához.
+In **Summary**, review the inputs specified and to run basic pre-deployment validation.
 
 ![Összefoglalás](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-Jogi tudnivalók és adatvédelem feltételek áttekintése és kiválasztása **beszerzési** üzembe helyezéséhez. Virtuális gépek kiépítése folyamatban számától függően üzembe helyezési idő perc alatt több tíz, változhat pár percet vagy.
+Review legal and privacy terms and select **Purchase** to deploy. Depending on the number of VMs being provisioned, deployment time can vary from a few minutes to tens of minutes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most már készen áll az alkalmazás és chaincode fejlesztési ellen a Hyperledger consortium blockchain-hálózat.
+You are now ready to focus on application and chaincode development against your Hyperledger consortium blockchain network.

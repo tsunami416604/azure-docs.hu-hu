@@ -1,181 +1,181 @@
 ---
-title: Hibaelhárítás az Azure Active Directoryban Enterprise State Roaming beállítások |} A Microsoft Docs
-description: Biztosít a rendszergazdák feltett kérdésekre adott válaszokat beállításairól és az alkalmazás data Sync szolgáltatással rendelkezhet.
+title: Troubleshoot Enterprise State Roaming in Azure Active Directory
+description: Provides answers to some questions IT administrators might have about settings and app data sync.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cceae17b06e8b631dd530b0408008a8222bccbf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481852"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379764"
 ---
-# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
+# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Troubleshooting Enterprise State Roaming settings in Azure Active Directory
 
-Ez a témakör információt nyújt az Enterprise State Roaming problémák diagnosztizálására és megoldására, és ismert problémák listáját tartalmazza.
+This topic provides information on how to troubleshoot and diagnose issues with Enterprise State Roaming, and provides a list of known issues.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="preliminary-steps-for-troubleshooting"></a>Első lépések a hibaelhárításhoz 
+## <a name="preliminary-steps-for-troubleshooting"></a>Preliminary steps for troubleshooting 
 
-Hibaelhárítás megkezdése előtt győződjön meg arról, hogy a felhasználó és eszköz konfigurált megfelelően, és, hogy a követelményeinek, Enterprise State Roaming teljesülnek-e az eszköz és a felhasználó által. 
+Before you start troubleshooting, verify that the user and device have been configured properly, and that all the requirements of Enterprise State Roaming are met by the device and the user. 
 
-1. Windows 10-es, a legújabb frissítéseket, és a egy minimális 1511-es verziója (operációs rendszer buildszáma 10586 vagy újabb) telepítve van az eszközön. 
-1. Az eszköz kapcsolódik az Azure AD tartományhoz kell csatlakoznia, vagy hibrid Azure AD-csatlakoztatott. További információkért lásd: [beszerzése egy eszközt az Azure AD vezérlése alá](overview.md).
-1. Ügyeljen arra, hogy **Enterprise State Roaming** engedélyezve van a bérlő Azure AD-ben leírtak szerint [ahhoz Enterprise State Roaming](enterprise-state-roaming-enable.md). Engedélyezheti a barangolás, az összes felhasználó számára, vagy csak felhasználók kiválasztott csoportja számára.
-1. A felhasználó már kell rendelni egy Azure Active Directory Premium-licencet.  
-1. Az eszköz újra kell indítani, és a felhasználónak be kell jelentkeznie a újra Enterprise State Roaming funkcióhoz férhet hozzá.
+1. Windows 10, with the latest updates, and a minimum Version 1511 (OS Build 10586 or later) is installed on the device. 
+1. The device is Azure AD joined or hybrid Azure AD joined. For more information, see [how to get a device under the control of Azure AD](overview.md).
+1. Ensure that **Enterprise State Roaming** is enabled for the tenant in Azure AD as described in [To enable Enterprise State Roaming](enterprise-state-roaming-enable.md). You can enable roaming for all users or for only a selected group of users.
+1. The user must already be assigned an Azure Active Directory Premium license.  
+1. The device must be restarted and the user must sign in again to access Enterprise State Roaming features.
 
-## <a name="information-to-include-when-you-need-help"></a>Ha segítségre van szüksége adatokat
-Ha az alábbi útmutatót a probléma nem oldódik meg, forduljon a támogatási. Amikor kapcsolatba lép a őket, az alábbi információkat:
+## <a name="information-to-include-when-you-need-help"></a>Information to include when you need help
+If you cannot solve your issue with the guidance below, you can contact our support engineers. When you contact them, include the following information:
 
-* **Általános hibaleírást**: Vannak-e a felhasználó által látott hibaüzenetek? Ha ott nem hibaüzenet nélküli hibát, a nem várt viselkedést, hogy észrevette a részletes leírása Milyen funkciók engedélyezettek a szinkronizálási szolgáltatás, és mi az a felhasználó szinkronizálása várt? Van több funkció nem szinkronizálja, vagy azt elkülönül egy?
-* **Érintett felhasználók** – szinkronizálási működő/sikertelen egy felhasználó vagy több felhasználó van? Hány eszközt felhasználónként van szó? Nem szinkronizálja ezek mindegyike vagy némelyike szinkronizálását, és néhány nem szinkronizálja?
-* **A felhasználó adatai** – milyen identitás az a felhasználó, jelentkezzen be az eszköz használatával? Hogyan, a felhasználó bejelentkezik az eszközre? Azok azok egy része számára engedélyezett a szinkronizálás a kijelölt biztonsági csoport? 
-* **Az eszköz adatai** – az eszköz Azure AD-hez csatlakoztatott vagy tartományhoz csatlakoztatott? Milyen build van az eszköz? Mik a legújabb frissítéseket?
-* **Dátum / idő / időzóna** – mi volt a pontos dátum és idő, a hibaüzenet vonatkozott (beleértve az időzónát)?
+* **General description of the error**: Are there error messages seen by the user? If there was no error message, describe the unexpected behavior you noticed, in detail. What features are enabled for sync and what is the user expecting to sync? Are multiple features not syncing or is it isolated to one?
+* **Users affected** – Is sync working/failing for one user or multiple users? How many devices are involved per user? Are all of them not syncing or are some of them syncing and some not syncing?
+* **Information about the user** – What identity is the user using to sign in to the device? How is the user signing in to the device? Are they part of a selected security group allowed to sync? 
+* **Information about the device** – Is this device Azure AD-joined or domain-joined? What build is the device on? What are the most recent updates?
+* **Date / Time / Timezone** – What was the precise date and time you saw the error (include the timezone)?
 
-Például ez az információ segít megoldani a problémát a lehető leggyorsabban.
+Including this information helps us solve your problem as quickly as possible.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Hibaelhárítás és a problémák diagnosztizálása
-Ez a szakasz hogyan Enterprise State Roaming kapcsolatos problémák diagnosztizálására és javaslatokat nyújt.
+This section gives suggestions on how to troubleshoot and diagnose problems related to Enterprise State Roaming.
 
-## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Ellenőrizze a szinkronizálás és a "Beállítások szinkronizálása" beállítások lap 
+## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Verify sync, and the “Sync your settings” settings page 
 
-1. Csatlakozás a Windows 10 rendszerű Számítógépeken az olyan tartományhoz, amely engedélyezi a vállalati Állapothordozás, után jelentkezzen be munkahelyi fiókjával. Lépjen a **beállítások** > **fiókok** > **a szinkronizálási beállítások** és győződjön meg róla, hogy szinkronizálás és az egyéni beállításokat, és hogy felső részén a beállítások lap azt jelzi, hogy a munkahelyi fiókjával való szinkronizálását. Ellenőrizze, hogy ugyanazt a fiókot is használja a bejelentkezési fiókját **beállítások** > **fiókok** > **az adatok**. 
-1. Ellenőrizze a Szinkronizáló működését több gép közötti azáltal, hogy néhány módosítást az eredeti gépen, például a tálca áthelyezése a képernyő jobb vagy felső részén. Figyelje meg, a második gép öt percen belül propagálja a módosítást. 
+1. After joining your Windows 10 PC to a domain that is configured to allow Enterprise State Roaming, sign on with your work account. Go to **Settings** > **Accounts** > **Sync Your Settings** and confirm that sync and the individual settings are on, and that the top of the settings page indicates that you are syncing with your work account. Confirm the same account is also used as your login account in **Settings** > **Accounts** > **Your Info**. 
+1. Verify that sync works across multiple machines by making some changes on the original machine, such as moving the taskbar to the right or top side of the screen. Watch the change propagate to the second machine within five minutes. 
 
-   * Zárolás és a zárolás feloldásához (Win + L) a képernyő a egy szinkronizálási események indítása segíthetnek.
-   * Meg kell jelentkezett ugyanazzal a fiókkal, a szinkronizáláshoz mindkét számítógépeken működnek –, a felhasználói fiók és a gép fiók nem Enterprise State Roaming kötődik.
+   * Locking and unlocking the screen (Win + L) can help trigger a sync.
+   * You must be signing in with the same account on both PCs for sync to work – as Enterprise State Roaming is tied to the user account and not the machine account.
 
-**Lehetséges probléma**: Ha a vezérlőelemek a **beállítások** lap nem érhető el, és az üzenetet látja, "egyes Windows-szolgáltatások érhetők el csak egy Microsoft-fiókjával vagy a munkahelyi fiók használata." A probléma esetlegesen felmerülő eszközökhöz, amelyek akár tartományhoz csatlakoztatott és a regisztrált az Azure ad-hez, de az eszköz még nem még sikeresen hitelesítést az Azure ad-hez. Egy lehetséges oka, hogy az eszköz szabályzatot kell alkalmazni, de ez az alkalmazás aszinkron módon történik, és néhány órával késhet. 
+**Potential issue**: If the controls in the **Settings** page are not available, and you see the message “Some Windows features are only available if you are using a Microsoft account or work account.” This issue might arise for devices that are set up to be domain-joined and registered to Azure AD, but the device has not yet successfully authenticated to Azure AD. A possible cause is that the device policy must be applied, but this application happens asynchronously, and could be delayed by a few hours. 
 
-### <a name="verify-the-device-registration-status"></a>Az eszköz regisztrációs állapotának ellenőrzése
+### <a name="verify-the-device-registration-status"></a>Verify the device registration status
 
-Az eszköz regisztrálása az Azure ad-vel Enterprise State Roaming igényel. Bár nem kifejezetten az Enterprise State Roaming, az alábbi utasításokat követve segítségével győződjön meg arról, hogy a Windows 10-es ügyfél regisztrálva van, és erősítse meg az ujjlenyomatát, az Azure AD-beállítások URL-CÍMÉT, NGC állapotát, és egyéb információkat.
+Enterprise State Roaming requires the device to be registered with Azure AD. Although not specific to Enterprise State Roaming, following the instructions below can help confirm that the Windows 10 Client is registered, and confirm thumbprint, Azure AD settings URL, NGC status, and other information.
 
-1. Nyissa meg a megvont jogosultságú parancssort. Ehhez a Windows, nyissa meg a Futtatás indítója (Win + R), és írja be a "cmd" megnyitásához.
-1. A parancssor megnyitása után írja be a "*dsregcmd.exe/status*".
-1. Várt kimenet a **AzureAdJoined** mező értéke legyen "Igen" **WamDefaultSet** mező értéke legyen "Igen" és a **WamDefaultGUID** mező értékét egy GUID Azonosítót kell lennie. a "(Azure ad)" végén.
+1. Open the command prompt unelevated. To do this in Windows, open the Run launcher (Win + R) and type “cmd” to open.
+1. Once the command prompt is open, type “*dsregcmd.exe /status*”.
+1. For expected output, the **AzureAdJoined** field value should be “YES”, **WamDefaultSet** field value should be “YES”, and the **WamDefaultGUID** field value should be a GUID with “(AzureAd)” at the end.
 
-**Lehetséges probléma**: **WamDefaultSet** és **AzureAdJoined** egyaránt mező értéke "Nem" rendelkeznek, az eszköz volt a tartományhoz csatlakoztatott és az Azure AD-ben regisztrált és nem szinkronizálja az eszköz. Ez látható, ha az eszköz is kell várnia a alkalmazni lehessen a házirend vagy az eszköz a hitelesítés sikertelen, amikor csatlakozik az Azure ad-ben. A felhasználó jogosult az a alkalmazni lehessen a szabályzat néhány óráig várnia. További hibaelhárítási lépéseket tartalmazhatnak automatikus regisztráció újrapróbálkozás kijelentkezés és a biztonsági, illetve a feladat a Feladatütemező indítása. Bizonyos esetekben futtatása "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
+**Potential issue**: **WamDefaultSet** and **AzureAdJoined** both have “NO” in the field value, the device was domain-joined and registered with Azure AD, and the device does not sync. If it is showing this, the device may need to wait for policy to be applied or the authentication for the device failed when connecting to Azure AD. The user may have to wait a few hours for the policy to be applied. Other troubleshooting steps may include retrying auto-registration by signing out and back in, or launching the task in Task Scheduler. In some cases, running “*dsregcmd.exe /leave*” in an elevated command prompt window, rebooting, and trying registration again may help with this issue.
 
-**Lehetséges probléma**: A mező **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon lépjen a rendszergazdának kellene próbálja **Azure Active Directory** > **eszközök** > **Enterprise State Roaming** letiltását és újraengedélyezését **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
+**Potential issue**: The field for **SettingsUrl** is empty and the device does not sync. The user may have last logged in to the device before Enterprise State Roaming was enabled in the Azure Active Directory Portal. Restart the device and have the user login. Optionally, in the portal, try having the IT Admin navigate to **Azure Active Directory** > **Devices** > **Enterprise State Roaming** disable and re-enable **Users may sync settings and app data across devices**. Once re-enabled, restart the device and have the user login. If this does not resolve the issue, **SettingsUrl** may be empty in the case of a bad device certificate. In this case, running “*dsregcmd.exe /leave*” in an elevated command prompt window, rebooting, and trying registration again may help with this issue.
 
-## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és a multi-factor Authentication hitelesítés 
+## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming and Multi-Factor Authentication 
 
-Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet szinkronizálja az adatokat, ha az Azure multi-factor Authentication hitelesítés van konfigurálva. További részleteket az alábbi tüneteket figyelje, tekintse meg a támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
+Under certain conditions, Enterprise State Roaming can fail to sync data if Azure Multi-Factor Authentication is configured. For additional details on these symptoms, see the support document [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Lehetséges probléma**: Ha az eszköz az Azure Active Directory portálon a többtényezős hitelesítés megkövetelése van konfigurálva, előfordulhat, hogy átadja beállítások szinkronizálása közben jelentkezik be egy Windows 10 rendszerű eszköz jelszó használatával. Multi-factor Authentication konfigurációjától az ilyen típusú célja egy Azure-rendszergazdai fiók védelme érdekében. Rendszergazda felhasználók továbbra is lehet tudni bejelentkezni a Windows 10-es eszközeiket a Microsoft Passport for Work PIN-KÓDJÁNAK vagy többtényezős hitelesítés elvégzése közben: más Azure-szolgáltatásokhoz az Office 365-höz hasonló szinkronizálni.
+**Potential issue**: If your device is configured to require Multi-Factor Authentication on the Azure Active Directory portal, you may fail to sync settings while signing in to a Windows 10 device using a password. This type of Multi-Factor Authentication configuration is intended to protect an Azure administrator account. Admin users may still be able to sync by signing in to their Windows 10 devices with their Microsoft Passport for Work PIN or by completing Multi-Factor Authentication while accessing other Azure services like Office 365.
 
-**Lehetséges probléma**: Szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
+**Potential issue**: Sync can fail if the admin configures the Active Directory Federation Services Multi-Factor Authentication Conditional Access policy and the access token on the device expires. Ensure that you sign in and sign out using the Microsoft Passport for Work PIN or complete Multi-Factor Authentication while accessing other Azure services like Office 365.
 
-### <a name="event-viewer"></a>Az Eseménynapló
+### <a name="event-viewer"></a>Event Viewer
 
-Speciális hibaelhárításhoz, az Eseménynapló használható hibaüzenetek megkereséséhez. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló területen található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync Azure-beli** és identitással kapcsolatos problémáinak szinkronizálási **Microsoft** > **Windows** > **AAD**.
+For advanced troubleshooting, Event Viewer can be used to find specific errors. These are documented in the table below. The events can be found under Event Viewer > Applications and Services Logs > **Microsoft** > **Windows** > **SettingSync-Azure** and for identity-related issues with sync **Microsoft** > **Windows** > **AAD**.
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Szinkronizálás nem működik az eszközökön, az alkalmazások oldalon be mobileszköz-kezelési szoftver használatával
+### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Sync does not work on devices that have apps side-loaded using MDM software
 
-A Windows 10 Évfordulós frissítés (1607-es verzió) rendszerű eszközökre van hatással. Az Event ID 6013 80070259 hiba az eseménynaplóban a SettingSync-Azure naplók alatt, gyakran látható.
+Affects devices running the Windows 10 Anniversary Update (Version 1607). In Event Viewer under the SettingSync-Azure logs, the Event ID 6013 with error 80070259 is frequently seen.
 
 **Javasolt művelet**  
-Győződjön meg arról, hogy a Windows 10-es v1607 ügyfél rendelkezik a 2016. augusztus 23-összegző frissítés ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393.82). 
+Make sure the Windows 10 v1607 client has the August 23, 2016 Cumulative Update ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393.82). 
 
 ---
 
-### <a name="internet-explorer-favorites-do-not-sync"></a>Az Internet Explorer Kedvencek szinkronizálja a
+### <a name="internet-explorer-favorites-do-not-sync"></a>Internet Explorer Favorites do not sync
 
-A Windows 10. novemberi frissítés (1511-es verzió) rendszerű eszközökre van hatással.
+Affects devices running the Windows 10 November Update (Version 1511).
 
 **Javasolt művelet**  
-Győződjön meg arról, hogy a Windows 10-es v1511 ügyfél rendelkezik a 2016. július összegző frissítés ([KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586.494).
+Make sure the Windows 10 v1511 client has the July 2016 Cumulative Update ([KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586.494).
 
 ---
 
-### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Téma nem szinkronizálja, valamint a Windows Information Protection által védett adatok 
+### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Theme is not syncing, as well as data protected with Windows Information Protection 
 
-A védett adatokhoz adatszivárgás megelőzése érdekében [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) nem szinkronizálja az Enterprise State Roaming keresztül a Windows 10 Évfordulós frissítést használó eszközök esetében.
+To prevent data leakage, data that is protected with [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) will not sync through Enterprise State Roaming for devices using the Windows 10 Anniversary Update.
 
 **Javasolt művelet**  
-Nincs. Windows jövőbeli frissítései megoldhatja a problémát.
+Nincs. Future updates to Windows may resolve this issue.
 
 ---
 
-### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>Dátum, idő és a területi beállítások nem szinkronizálhatók a tartományhoz csatlakoztatott eszköz 
+### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>Date, Time, and Region settings do not sync on domain-joined device 
   
-Tartományhoz csatlakoztatott eszközök szinkronizálása a beállítás dátum, idő és a régió nem fog tapasztalni: automatikus idő. Automatikus ideje a más dátum, idő és régió beállításainak felülbírálása, és ezeket a beállításokat a szinkronizálni kívánt nem okoznak. 
+Devices that are domain-joined will not experience sync for the setting Date, Time, and Region: automatic time. Using automatic time may override the other Date, Time, and Region settings and cause those settings not to sync. 
 
 **Javasolt művelet**  
 Nincs. 
 
 ---
 
-### <a name="uac-prompts-when-syncing-passwords"></a>A felhasználói fiókok felügyelete kéri, jelszavak szinkronizálása során
+### <a name="uac-prompts-when-syncing-passwords"></a>UAC Prompts when syncing passwords
 
-Hatással van a Windows 10. novemberi frissítés (1511-es verzió) rendszerű eszközökhöz, egy vezeték nélküli hálózati adapterrel van konfigurálva szinkronizálja a jelszavakat.
+Affects devices running the Windows 10 November Update (Version 1511) with a wireless NIC that is configured to sync passwords.
 
 **Javasolt művelet**  
-Ellenőrizze, hogy a Windows 10-es v1511 ügyfél rendelkezik a kumulatív frissítés ([KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586.494).
+Make sure the Windows 10 v1511 client has the Cumulative Update ([KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586.494).
 
 ---
 
-### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Szinkronizálás nem működik az intelligens kártyás bejelentkezés használó eszközök
+### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Sync does not work on devices that use smart card for login
 
-Ha próbál bejelentkezni a Windows-eszközök egy intelligens kártya vagy virtuális intelligens kártya, a szinkronizálási beállítások fognak tovább működni.     
+If you attempt to sign in to your Windows device using a smart card or virtual smart card, settings sync will stop working.     
 
 **Javasolt művelet**  
-Nincs. Windows jövőbeli frissítései megoldhatja a problémát.
+Nincs. Future updates to Windows may resolve this issue.
 
 ---
 
-### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Vállalati hálózat elhagyása után nem szinkronizálja a tartományhoz csatlakoztatott eszköz     
+### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Domain-joined device is not syncing after leaving corporate network     
 
-Regisztrált az Azure AD-tartományhoz csatlakozott eszközökkel szinkronizálási hiba tapasztalhat, ha az eszköz nem külső helyszínen lévő huzamosabb ideig, és nem tudja végrehajtani a tartományi hitelesítéshez.
+Domain-joined devices registered to Azure AD may experience sync failure if the device is off-site for extended periods of time, and domain authentication can't complete.
 
 **Javasolt művelet**  
-Csatlakoztassa az eszközt a vállalati hálózathoz, hogy a szinkronizálási folytathatja.
+Connect the device to a corporate network so that sync can resume.
 
 ---
 
-### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Az Azure AD-csatlakoztatás eszköz nem szinkronizálja, és a felhasználó rendelkezik-e a vegyes megkülönbözteti a kis egyszerű felhasználónév.
+### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD Joined device is not syncing and the user has a mixed case User Principal Name.
 
-Ha a felhasználó rendelkezik, egy nagybetű UPN (pl. helyett a username felhasználónév) és a felhasználó frissítette a Windows 10-Build 10586 14393, amely egy Azure AD-csatlakoztatás eszközön, a felhasználó-eszköz szinkronizálása sikertelen lehet. 
+If the user has a mixed case UPN (e.g. UserName instead of username) and the user is on an Azure AD Joined device which has upgraded from Windows 10 Build 10586 to 14393, the user's device may fail to sync. 
 
 **Javasolt művelet**  
-A felhasználónak kell elhagyása, és csatlakozzon újra az eszközt a felhőbe. Ebben az esetben jelentkezzen be a helyi rendszergazdai felhasználó, és nyissa meg az eszköz elhagyása **beállítások** > **rendszer** > **kapcsolatos** , és válassza ki a "kezelés vagy válassza le a munkahelyi vagy iskolai rendszerhez". A fájlok közül, majd az Azure AD Join az eszköz ismét a karbantartás **beállítások** > **rendszer** > **kapcsolatos** , és válassza "munkahelyi csatlakozás vagy Iskolai". Továbbra is az eszköz csatlakoztatása az Azure Active Directory és a folyamat befejezése.
+The user will need to unjoin and rejoin the device to the cloud. To do this, login as the Local Administrator user and unjoin the device by going to **Settings** > **System** > **About** and select "Manage or disconnect from work or school". Clean up the files below, and then Azure AD Join the device again in **Settings** > **System** > **About** and selecting "Connect to Work or School". Continue to join the device to Azure Active Directory and complete the flow.
 
-A törlési lépésben a következő tisztítás fájlok:
-- A Settings.dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- A mappában található összes fájl `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+In the cleanup step, cleanup the following files:
+- Settings.dat in `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- All the files under the folder `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Event ID 6065: 80070533 Ez a felhasználó nem tud bejelentkezni, mert ez a fiók jelenleg le van tiltva  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Event ID 6065: 80070533 This user can’t sign in because this account is currently disabled  
 
-Az eseménynaplóban alatt SettingSync és hibakeresési naplók Ez a hiba látható, ha a felhasználói hitelesítő adatok lejártak. Ezenkívül azt előfordulhatnak, ha a bérlő automatikusan nem rendelkezett AzureRMS kiépítve. 
+In Event Viewer under the SettingSync/Debug logs, this error can be seen when the user's credentials have expired. In addition, it can occur when the tenant did not automatically have AzureRMS provisioned. 
 
 **Javasolt művelet**  
-Az első esetben a felhasználó hitelesítő adatait, és a bejelentkezési frissítése az eszközhöz az új hitelesítő adatokkal rendelkezik. A AzureRMS probléma megoldásához, folytassa a felsorolt lépéseket [KB3193791](https://support.microsoft.com/kb/3193791). 
+In the first case, have the user update their credentials and login to the device with the new credentials. To solve the AzureRMS issue, proceed with the steps listed in [KB3193791](https://support.microsoft.com/kb/3193791). 
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Eseményazonosító 1098: Hiba: 0xCAA5001C jogkivonat broker művelet végrehajtása sikertelen volt  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Event ID 1098: Error: 0xCAA5001C Token broker operation failed  
 
-Az eseménynaplóban az AAD/műveleti naplók alapján ez a hiba az esemény 1104 előfordulhat, hogy láthatók: AAD-felhő AP beépülő modul hívása Get token a következő hibát: 0xC000005F. Ez a probléma akkor fordul elő, ha vannak, hiányzó engedélyeket vagy tulajdonosi attribútumokkal.  
+In Event Viewer under the AAD/Operational logs, this error may be seen with Event 1104: AAD Cloud AP plugin call Get token returned error: 0xC000005F. This issue occurs if there are missing permissions or ownership attributes.  
 
 **Javasolt művelet**  
-Folytassa a felsorolt lépésekkel [KB3196528](https://support.microsoft.com/kb/3196528).  
+Proceed with the steps listed [KB3196528](https://support.microsoft.com/kb/3196528).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Áttekintéséhez lásd: [vállalati állapothordozás áttekintése](enterprise-state-roaming-overview.md).
+For an overview, see [enterprise state roaming overview](enterprise-state-roaming-overview.md).

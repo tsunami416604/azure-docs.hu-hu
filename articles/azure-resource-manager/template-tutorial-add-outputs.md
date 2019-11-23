@@ -1,56 +1,56 @@
 ---
-title: Oktatóanyag – kimenetek hozzáadása a sablonhoz
-description: Adja hozzá a kimeneteket a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
+title: Tutorial - add outputs to template
+description: Add outputs to your Azure Resource Manager template to simplify the syntax.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 654d3f7cbf6362d982549c86e6f54fea1e890cfc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148272"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406002"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Oktatóanyag: kimenetek hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Add outputs to your Resource Manager template
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat vissza egy értéket a sablonból. A kimenetek akkor használhatók, ha egy központilag telepített erőforrásból származó értékre van szüksége. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+In this tutorial, you learn how to return a value from your template. You use outputs when you need a value from a deployed resource. This tutorial takes **7 minutes** to complete.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy fejezze be a [változókról szóló oktatóanyagot](template-tutorial-add-variables.md), de ez nem kötelező.
+We recommend that you complete the [tutorial about variables](template-tutorial-add-variables.md), but it's not required.
 
-A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>A sablon áttekintése
+## <a name="review-template"></a>Review template
 
-Az előző oktatóanyag végén a sablon a következő JSON-t használta:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
 
-Üzembe helyez egy Storage-fiókot, de nem ad vissza semmilyen információt a Storage-fiókról. Előfordulhat, hogy a tulajdonságokat egy új erőforrásból kell rögzítenie, hogy később is elérhetők legyenek a hivatkozáshoz.
+It deploys a storage account, but it doesn't return any information about the storage account. You might need to capture properties from a new resource so they're available later for reference.
 
-## <a name="add-outputs"></a>Kimenetek hozzáadása
+## <a name="add-outputs"></a>Add outputs
 
-A kimenetek segítségével adhat vissza értékeket a sablonból. Előfordulhat például, hogy hasznos lehet az új Storage-fiókhoz tartozó végpontok beszerzése.
+You can use outputs to return values from the template. For example, it might be helpful to get the endpoints for your new storage account.
 
-A következő példa kiemeli a sablon módosítását a kimeneti érték hozzáadásához. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
+The following example highlights the change to your template to add an output value. Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
 
-Néhány fontos elemet érdemes megjegyezni a hozzáadott kimeneti értékről.
+There are some important items to note about the output value you added.
 
-A visszaadott érték típusa **objektum**, ami azt jelenti, hogy egy JSON-objektumot ad vissza.
+The type of returned value is set to **object**, which means it returns a JSON object.
 
-A [hivatkozási](resource-group-template-functions-resource.md#reference) függvényt használja a Storage-fiók futásidejű állapotának lekéréséhez. Egy erőforrás futásidejű állapotának lekéréséhez egy erőforrás nevét vagy AZONOSÍTÓját kell átadnia. Ebben az esetben ugyanazt a változót használja, amelyet a Storage-fiók nevének létrehozásához használt.
+It uses the [reference](resource-group-template-functions-resource.md#reference) function to get the runtime state of the storage account. To get the runtime state of a resource, you pass in the name or ID of a resource. In this case, you use the same variable you used to create the name of the storage account.
 
-Végül visszaadja a **primaryEndpoints** tulajdonságot a Storage-fiókból.
+Finally, it returns the **primaryEndpoints** property from the storage account
 
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Készen áll a sablon üzembe helyezésére, és megtekinteni a visszaadott értéket.
+You're ready to deploy the template and look at the returned value.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -75,7 +75,7 @@ az group deployment create \
 
 ---
 
-A központi telepítési parancs kimenetében a következőhöz hasonló objektum jelenik meg:
+In the output for the deployment command, you'll see an object similar to:
 
 ```json
 {
@@ -88,50 +88,50 @@ A központi telepítési parancs kimenetében a következőhöz hasonló objektu
 }
 ```
 
-## <a name="review-your-work"></a>A munka áttekintése
+## <a name="review-your-work"></a>Review your work
 
-Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörténtek áttekintésére. Létrehozott egy könnyen elérhető paramétereket tartalmazó sablont. A sablon többször is felhasználható a különböző környezetekben, mivel lehetővé teszi a testreszabást, és dinamikusan létrehozza a szükséges értékeket. Emellett a parancsfájlban használható Storage-fiókkal kapcsolatos információkat is adja vissza.
+You've done a lot in the last six tutorials. Let's take a moment to review what you have done. You created a template with parameters that are easy to provide. The template is reusable in different environments because it allows for customization and dynamically creates needed values. It also returns information about the storage account that you could use in your script.
 
-Most nézzük meg az erőforráscsoportot és az üzembe helyezési előzményeket.
+Now, let's look at the resource group and deployment history.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
-1. Attól függően, hogy milyen lépések történtek, rendelkeznie kell legalább egy, és talán több Storage-fiókkal az erőforráscsoporthoz.
-1. Emellett több sikeres központi telepítést is meg kell jelennie az előzményekben. Válassza ki a hivatkozást.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. Depending on the steps you did, you should have at least one and perhaps several storage accounts in the resource group.
+1. You should also have several successful deployments listed in the history. Select that link.
 
-   ![Központi telepítések kiválasztása](./media/template-tutorial-add-outputs/select-deployments.png)
+   ![Select deployments](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Az összes üzemelő példány megjelenik az előzmények között. Válassza ki a **addoutputs**nevű központi telepítést.
+1. You see all of your deployments in the history. Select the deployment called **addoutputs**.
 
-   ![Telepítési előzmények megjelenítése](./media/template-tutorial-add-outputs/show-history.png)
+   ![Show deployment history](./media/template-tutorial-add-outputs/show-history.png)
 
-1. A bemenetek áttekinthetők.
+1. You can review the inputs.
 
-   ![Bemenetek megjelenítése](./media/template-tutorial-add-outputs/show-inputs.png)
+   ![Show inputs](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. A kimenetek áttekinthetők.
+1. You can review the outputs.
 
-   ![Kimenetek megjelenítése](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Show outputs](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. Áttekintheti a sablont.
+1. You can review the template.
 
-   ![Sablon megjelenítése](./media/template-tutorial-add-outputs/show-template.png)
+   ![Show template](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban hozzáadott egy visszatérési értéket a sablonhoz. A következő oktatóanyagban megtudhatja, hogyan exportálhat sablont, és hogyan használhatja az exportált sablon részeit a sablonban.
+In this tutorial, you added a return value to the template. In the next tutorial, you'll learn how to export a template and use parts of that exported template in your template.
 
 > [!div class="nextstepaction"]
-> [Exportált sablon használata](template-tutorial-export-template.md)
+> [Use exported template](template-tutorial-export-template.md)

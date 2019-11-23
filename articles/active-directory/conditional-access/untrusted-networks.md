@@ -1,72 +1,72 @@
 ---
-title: A többtényezős hitelesítés (MFA) megkövetelése a nem megbízható hálózatokról való hozzáféréshez Azure Active Directory (Azure AD) feltételes hozzáféréssel | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat feltételes hozzáférési szabályzatot Azure Active Directoryban (Azure AD) a nem megbízható hálózatok hozzáférési kísérleteinek eléréséhez.
+title: Require MFA from untrusted networks - Azure Active Directory
+description: Learn how to configure a Conditional Access policy in Azure Active Directory (Azure AD) to for access attempts from untrusted networks.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175685"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379992"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: az MFA megkövetelése a nem megbízható hálózatokból való hozzáféréshez feltételes hozzáféréssel   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>How to: Require MFA for access from untrusted networks with Conditional Access   
 
-Azure Active Directory (Azure AD) lehetővé teszi az egyszeri bejelentkezést az eszközökre, alkalmazásokra és szolgáltatásokra bárhonnan. A felhasználók nem csak a szervezet hálózatáról, hanem bármely nem megbízható internetes helyről is hozzáférhetnek a felhőalapú alkalmazásokhoz. A nem megbízható hálózatokból való hozzáférésre vonatkozó gyakori ajánlott eljárás a többtényezős hitelesítés (MFA) megkövetelése.
+Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere. Your users can access your cloud apps not only from your organization's network, but also from any untrusted Internet location. A common best practice for access from untrusted networks is to require multi-factor authentication (MFA).
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat olyan feltételes hozzáférési szabályzatot, amely az MFA használatát igényli a nem megbízható hálózatokról való hozzáféréshez. 
+This article gives you the information you need to configure a Conditional Access policy that requires MFA for access from untrusted networks. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy ismeri a következőket: 
+This article assumes that you are familiar with: 
 
-- Az Azure AD feltételes hozzáférés [alapvető fogalmai](overview.md) 
-- A feltételes hozzáférési házirendek konfigurálásának [ajánlott eljárásai](best-practices.md) a Azure Portal
+- The [basic concepts](overview.md) of Azure AD Conditional Access 
+- The [best practices](best-practices.md) for configuring Conditional Access policies in the Azure portal
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-A biztonság és a termelékenység egyensúlyának elsajátításához elegendő lehet a szervezet hálózatán lévő bejelentkezések jelszavának megkövetelése. A nem megbízható hálózati helyről való hozzáféréshez azonban nagyobb a kockázata, hogy a bejelentkezéseket nem a legitim felhasználók hajtják végre. A probléma megoldása érdekében letilthatja a nem megbízható hálózatokból való hozzáférést. Azt is megteheti, hogy többtényezős hitelesítést (MFA) is megkövetelheti, hogy további garanciát szerezzen a fiók jogos tulajdonosa által történt kísérletekhez. 
+To master the balance between security and productivity, it might be sufficient for you to only require a password for sign-ins from your organization's network. However, for access from an untrusted network location, there is an increased risk that sign-ins are not performed by legitimate users. To address this concern, you can block access from untrusted networks. Alternatively, you can also require multi-factor authentication (MFA) to gain back additional assurance that an attempt was made by the legitimate owner of the account. 
 
-Az Azure AD feltételes hozzáférésével ezt a követelményt egyetlen, hozzáférést biztosító szabályzattal kezelheti: 
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access: 
 
-- A kiválasztott felhőalapú alkalmazások
-- A kiválasztott felhasználók és csoportok esetében  
-- Többtényezős hitelesítés megkövetelése 
-- Ha a hozzáférés a következőkből származik: 
-   - Nem megbízható hely
+- To selected cloud apps
+- For selected users and groups  
+- Requiring multi-factor authentication 
+- When access is originated from: 
+   - A location that is not trusted
 
 ## <a name="implementation"></a>Megvalósítás
 
-Ennek a forgatókönyvnek a feladata a nem *megbízható hálózati helyről való hozzáférés* feltételes hozzáférési feltételre való lefordítása. A feltételes hozzáférési házirendben beállíthatja a [helyszínek feltételét](location-condition.md) a hálózati telephelyekhez kapcsolódó forgatókönyvek kezeléséhez. A helyszínek feltétele lehetővé teszi az elnevezett helyszínek kiválasztását, amelyek az IP-címtartományok, országok és régiók logikai csoportjai.  
+The challenge of this scenario is to translate *access from an untrusted network location* into a Conditional Access condition. In a Conditional Access policy, you can configure the [locations condition](location-condition.md) to address scenarios that are related to network locations. The locations condition enables you to select named locations, which are logical groupings of IP address ranges, countries and regions.  
 
-A szervezet általában egy vagy több címtartományt birtokol, például: 199.30.16.0-199.30.16.15.
-Megnevezett helyet az alábbiak szerint állíthat be:
+Typically, your organization owns one or more address ranges, for example, 199.30.16.0 - 199.30.16.15.
+You can configure a named location by:
 
-- A tartomány meghatározása (199.30.16.0/28) 
-- Leíró név, például **vállalati hálózat** kiosztása 
+- Specifying this range (199.30.16.0/28) 
+- Assigning a descriptive name such as **Corporate Network** 
 
-Ahelyett, hogy az összes olyan helyet meg kellene határozni, amely nem megbízható, a következőket teheti:
+Instead of trying to define what all locations are that are not trusted, you can:
 
-- Bármely hely belefoglalása 
+- Include any location 
 
    ![Feltételes hozzáférés](./media/untrusted-networks/02.png)
 
-- Az összes megbízható helyszín kizárása 
+- Exclude all trusted locations 
 
    ![Feltételes hozzáférés](./media/untrusted-networks/01.png)
 
-## <a name="policy-deployment"></a>Házirend központi telepítése
+## <a name="policy-deployment"></a>Policy deployment
 
-A jelen cikkben ismertetett megközelítéssel mostantól konfigurálhat feltételes hozzáférési szabályzatot nem megbízható helyszínekhez. Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információ: [új szabályzat üzembe helyezése](best-practices.md#how-should-you-deploy-a-new-policy). 
+With the approach outlined in this article, you can now configure a Conditional Access policy for untrusted locations. To make sure that your policy works as expected, the recommended best practice is to test it before rolling it out into production. Ideally, use a test tenant to verify whether your new policy works as intended. For more information, see [How to deploy a new policy](best-practices.md#how-should-you-deploy-a-new-policy). 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](../active-directory-conditional-access-azure-portal.md) című témakört.
+If you would like to learn more about Conditional Access, see [What is Conditional Access in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)

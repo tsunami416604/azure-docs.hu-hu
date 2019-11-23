@@ -1,85 +1,85 @@
 ---
-title: Meglévő NPS-kiszolgálók használata az Azure MFA-képességek biztosításához – Azure Active Directory
-description: Felhőalapú kétlépéses ellenőrzési funkciók hozzáadása a meglévő hitelesítési infrastruktúrához
+title: Provide Azure MFA capabilities using NPS - Azure Active Directory
+description: Add cloud-based two-step verification capabilities to your existing authentication infrastructure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b5faf7c73e071b1eb075a72dac103b92e982ed84
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061486"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381743"
 ---
-# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrate your existing NPS infrastructure with Azure Multi-Factor Authentication
 
-Az Azure MFA hálózati házirend-kiszolgáló (NPS) bővítménye felhőalapú MFA-képességeket biztosít a hitelesítési infrastruktúrához a meglévő kiszolgálók használatával. A hálózati házirend-kiszolgáló bővítmény használatával telefonhívást, szöveges üzenetet vagy telefonos alkalmazást is hozzáadhat a meglévő hitelesítési folyamathoz anélkül, hogy új kiszolgálókat kellene telepítenie, konfigurálnia és karbantartani. 
+The Network Policy Server (NPS) extension for Azure MFA adds cloud-based MFA capabilities to your authentication infrastructure using your existing servers. With the NPS extension, you can add phone call, text message, or phone app verification to your existing authentication flow without having to install, configure, and maintain new servers. 
 
-Ez a bővítmény olyan szervezetek számára lett létrehozva, amelyek az Azure MFA-kiszolgáló telepítése nélkül szeretnék védelemmel ellátni a VPN-kapcsolatokat. A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS és a felhőalapú Azure MFA között, hogy az összevont vagy szinkronizált felhasználók hitelesítésének második tényezője legyen.
+This extension was created for organizations that want to protect VPN connections without deploying the Azure MFA Server. The NPS extension acts as an adapter between RADIUS and cloud-based Azure MFA to provide a second factor of authentication for federated or synced users.
 
-Az Azure MFA NPS-bővítményének használatakor a hitelesítési folyamat a következő összetevőket tartalmazza: 
+When using the NPS extension for Azure MFA, the authentication flow includes the following components: 
 
-1. A **NAS/VPN-kiszolgáló** fogadja a VPN-ügyfelektől érkező kéréseket, és RADIUS-kérelmekre konvertálja azokat a hálózati házirend-kiszolgálók 
-2. A **hálózati házirend-kiszolgáló** csatlakozik a Active Directoryhoz a RADIUS-kérelmek elsődleges hitelesítésének végrehajtásához, és a sikeres művelet után átadja a kérést a telepített bővítményeknek.  
-3. A **hálózati házirend-kiszolgáló bővítmény** a másodlagos hitelesítésre vonatkozó kérelmet indít az Azure MFA-nak. Ha a bővítmény megkapja a választ, és ha az MFA-kérdés sikeres, akkor a hitelesítési kérést úgy hajtja végre, hogy a hálózati házirend-kiszolgálót olyan biztonsági jogkivonatokkal biztosítja, amelyekben az Azure STS által kiadott MFA-jogcím szerepel.  
-4. Az **Azure MFA** Azure Active Directory a felhasználó adatainak lekérésére és a másodlagos hitelesítés elvégzésére a felhasználóhoz konfigurált ellenőrzési módszer használatával.
+1. **NAS/VPN Server** receives requests from VPN clients and converts them into RADIUS requests to NPS servers. 
+2. **NPS Server** connects to Active Directory to perform the primary authentication for the RADIUS requests and, upon success, passes the request to any installed extensions.  
+3. **NPS Extension** triggers a request to Azure MFA for the secondary authentication. Once the extension receives the response, and if the MFA challenge succeeds, it completes the authentication request by providing the NPS server with security tokens that include an MFA claim, issued by Azure STS.  
+4. **Azure MFA** communicates with Azure Active Directory to retrieve the user’s details and performs the secondary authentication using a verification method configured to the user.
 
-A következő ábra a magas szintű hitelesítési kérelmek folyamatát szemlélteti: 
+The following diagram illustrates this high-level authentication request flow: 
 
-![Hitelesítési folyamat diagramja](./media/howto-mfa-nps-extension/auth-flow.png)
+![Authentication flow diagram](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
 
-A hálózati házirend-kiszolgáló bővítménye automatikusan kezeli a redundanciát, így nincs szükség speciális konfigurációra.
+The NPS extension automatically handles redundancy, so you don't need a special configuration.
 
-Annyi Azure MFA-kompatibilis hálózati házirend-kiszolgálót hozhat létre, amennyire csak szüksége van. Ha több kiszolgálót is telepít, akkor mindegyikhez meg kell egyeznie a különbözeti ügyféltanúsítvány használatával. Az egyes kiszolgálókhoz tartozó tanúsítványok létrehozása azt jelenti, hogy az egyes tanúsítványokat egyenként is frissítheti, és nem kell aggódnia az összes kiszolgáló leállásával szemben.
+You can create as many Azure MFA-enabled NPS servers as you need. If you do install multiple servers, you should use a difference client certificate for each one of them. Creating a cert for each server means that you can update each cert individually, and not worry about downtime across all your servers.
 
-A VPN-kiszolgálók átirányítják a hitelesítési kéréseket, így tudniuk kell az új Azure MFA-kompatibilis NPS-kiszolgálókat.
+VPN servers route authentication requests, so they need to be aware of the new Azure MFA-enabled NPS servers.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a meglévő infrastruktúrával. Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e az alábbi előfeltételekkel.
+The NPS extension is meant to work with your existing infrastructure. Make sure you have the following prerequisites before you begin.
 
-### <a name="licenses"></a>Licencek
+### <a name="licenses"></a>Licenses
 
-Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](multi-factor-authentication.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
+The NPS Extension for Azure MFA is available to customers with [licenses for Azure Multi-Factor Authentication](multi-factor-authentication.md) (included with Azure AD Premium, EMS, or an MFA stand-alone license). Consumption-based licenses for Azure MFA such as per user or per authentication licenses are not compatible with the NPS extension. 
 
 ### <a name="software"></a>Szoftver
 
-Windows Server 2008 R2 SP1 vagy újabb.
+Windows Server 2008 R2 SP1 or above.
 
 ### <a name="libraries"></a>Kódtárak
 
-Ezek a kódtárak automatikusan települnek a bővítménnyel.
+These libraries are installed automatically with the extension.
 
-- [Vizualizációs C++ terjeszthető csomagok a visual Studio 2013 (x64) rendszerhez](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory modul a Windows PowerShell-verzió 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Azure Active Directory Module for Windows PowerShell version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
-A Windows PowerShell Microsoft Azure Active Directory modulja telepítve van, ha még nem létezik, a telepítési folyamat részeként futtatott konfigurációs parancsfájllal. Ha még nincs telepítve, a modult nem kell telepítenie az idő előtt.
+The Microsoft Azure Active Directory Module for Windows PowerShell is installed, if it is not already present, through a configuration script you run as part of the setup process. There is no need to install this module ahead of time if it is not already installed.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-A hálózati házirend-kiszolgáló bővítményt használó mindenki számára Azure AD Connect használatával kell szinkronizálni Azure Active Directory, és az MFA-hoz kell regisztrálni.
+Everyone using the NPS extension must be synced to Azure Active Directory using Azure AD Connect, and must be registered for MFA.
 
-A bővítmény telepítésekor szüksége lesz az Azure AD-bérlő címtár-AZONOSÍTÓra és rendszergazdai hitelesítő adataira. A címtár AZONOSÍTÓját a [Azure Portalban](https://portal.azure.com)találja. Jelentkezzen be rendszergazdaként, válassza ki a **Azure Active Directory** ikont a bal oldalon, majd válassza a **Tulajdonságok**lehetőséget. Másolja a GUID azonosítót a **címtár-azonosító** mezőbe, és mentse. Ezt a GUID azonosítót használja bérlői azonosítóként a hálózati házirend-kiszolgáló bővítményének telepítésekor.
+When you install the extension, you need the directory ID and admin credentials for your Azure AD tenant. You can find your directory ID in the [Azure portal](https://portal.azure.com). Sign in as an administrator, select the **Azure Active Directory** icon on the left, then select **Properties**. Copy the GUID in the **Directory ID** box and save it. You use this GUID as the tenant ID when you install the NPS extension.
 
-![A címtár AZONOSÍTÓjának megkeresése Azure Active Directory tulajdonságok területen](./media/howto-mfa-nps-extension/find-directory-id.png)
+![Find your Directory ID under Azure Active Directory properties](./media/howto-mfa-nps-extension/find-directory-id.png)
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-Az NPS-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címekkel a 80-es és a 443-es porton keresztül.
+The NPS server needs to be able to communicate with the following URLs over ports 80 and 443.
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
 
-Emellett a következő URL-címekhez való kapcsolódás szükséges az [adapter megadott PowerShell-parancsfájl használatával](#run-the-powershell-script) történő végrehajtásához.
+Additionally, connectivity to the following URLs is required to complete the [setup of the adapter using the provided PowerShell script](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
 - https:\//provisioningapi.microsoftonline.com
@@ -87,169 +87,169 @@ Emellett a következő URL-címekhez való kapcsolódás szükséges az [adapter
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-A hálózati házirend-kiszolgáló bővítmény telepítése előtt elő szeretné készíteni a környezetet a hitelesítési forgalom kezeléséhez.
+Before you install the NPS extension, you want to prepare you environment to handle the authentication traffic.
 
-### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Hálózati házirend-kiszolgáló szerepkör engedélyezése tartományhoz csatlakoztatott kiszolgálón
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Enable the NPS role on a domain-joined server
 
-Az NPS-kiszolgáló csatlakozik Azure Active Directoryhoz, és hitelesíti az MFA-kérelmeket. Válasszon egy kiszolgálót ehhez a szerepkörhöz. Azt javasoljuk, hogy olyan kiszolgálót válasszon, amely nem kezeli más szolgáltatások kéréseit, mert a hálózati házirend-kiszolgáló bővítmény hibát jelez a nem RADIUS-kérelmeknél. A hálózati házirend-kiszolgálót a környezet elsődleges és másodlagos hitelesítési kiszolgálójának kell beállítania; a RADIUS-kérések nem adhatók át másik kiszolgálónak.
+The NPS server connects to Azure Active Directory and authenticates the MFA requests. Choose one server for this role. We recommend choosing a server that doesn't handle requests from other services, because the NPS extension throws errors for any requests that aren't RADIUS. The NPS server must be set up as the primary and secondary authentication server for your environment; it cannot proxy RADIUS requests to another server.
 
-1. A kiszolgálón nyissa meg a **szerepkörök és szolgáltatások hozzáadása varázslót** a Kiszolgálókezelő Gyorsindítás menüjéből.
-2. Válassza a **szerepkör-alapú vagy a szolgáltatáson alapuló telepítést** a telepítési típushoz.
-3. Válassza ki a **hálózati házirend-és elérési szolgáltatások** kiszolgálói szerepkört. Előfordulhat, hogy egy ablak felugró ablakban értesíti a szükséges szolgáltatásokat a szerepkör futtatásához.
-4. Folytassa a varázslót a megerősítési oldalig. Válassza az **Install** (Telepítés) lehetőséget.
+1. On your server, open the **Add Roles and Features Wizard** from the Server Manager Quickstart menu.
+2. Choose **Role-based or feature-based installation** for your installation type.
+3. Select the **Network Policy and Access Services** server role. A window may pop up to inform you of required features to run this role.
+4. Continue through the wizard until the Confirmation page. Válassza az **Install** (Telepítés) lehetőséget.
 
-Most, hogy már rendelkezik egy kiszolgálóval a hálózati házirend-kiszolgáló számára, konfigurálnia kell a kiszolgálót a bejövő RADIUS-kérések kezelésére is a VPN-megoldásból.
+Now that you have a server designated for NPS, you should also configure this server to handle incoming RADIUS requests from the VPN solution.
 
-### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>VPN-megoldás konfigurálása a hálózati házirend-kiszolgálóval való kommunikációhoz
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>Configure your VPN solution to communicate with the NPS server
 
-Attól függően, hogy melyik VPN-megoldást használja, a RADIUS-hitelesítési házirend konfigurálásának lépései eltérőek. Konfigurálja ezt a házirendet úgy, hogy az a RADIUS NPS-kiszolgálóra mutasson.
+Depending on which VPN solution you use, the steps to configure your RADIUS authentication policy vary. Configure this policy to point to your RADIUS NPS server.
 
-### <a name="sync-domain-users-to-the-cloud"></a>Tartományi felhasználók szinkronizálása a felhővel
+### <a name="sync-domain-users-to-the-cloud"></a>Sync domain users to the cloud
 
-Lehetséges, hogy ez a lépés már készen áll a bérlőre, de érdemes megnéznie, hogy a Azure AD Connect nemrég szinkronizálta-e az adatbázisokat.
+This step may already be complete on your tenant, but it's good to double-check that Azure AD Connect has synchronized your databases recently.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Válassza ki **Azure Active Directory** > **Azure ad Connect**
-3. Ellenőrizze, hogy a szinkronizálási állapot **engedélyezve** van-e, és hogy az utolsó szinkronizálás kevesebb mint egy órával ezelőtt történt-e.
+2. Select **Azure Active Directory** > **Azure AD Connect**
+3. Verify that your sync status is **Enabled** and that your last sync was less than an hour ago.
 
-Ha új szinkronizálási kört kell kiindulnia, akkor [Azure ad Connect Sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)utasításait.
+If you need to kick off a new round of synchronization, us the instructions in [Azure AD Connect sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
-### <a name="determine-which-authentication-methods-your-users-can-use"></a>A felhasználók által használható hitelesítési módszerek meghatározása
+### <a name="determine-which-authentication-methods-your-users-can-use"></a>Determine which authentication methods your users can use
 
-Két tényező befolyásolja, hogy mely hitelesítési módszerek érhetők el egy NPS-bővítmény üzembe helyezésével:
+There are two factors that affect which authentication methods are available with an NPS extension deployment:
 
-1. A RADIUS-ügyfél (VPN, NetScaler-kiszolgáló vagy más) és az NPS-kiszolgálók között használt jelszó-titkosítási algoritmus.
-   - A **pap** az Azure MFA összes hitelesítési módszerét támogatja a felhőben: telefonhívást, egyirányú szöveges üzenetet, a Mobile App notificationt, az esküt és a mobileszköz-ellenőrző kódot.
-   - A **CHAPv2** és az **EAP** támogatja a telefonhívást és a Mobile apps-értesítést.
+1. The password encryption algorithm used between the RADIUS client (VPN, Netscaler server, or other) and the NPS servers.
+   - **PAP** supports all the authentication methods of Azure MFA in the cloud: phone call, one-way text message, mobile app notification, OATH hardware tokens, and mobile app verification code.
+   - **CHAPV2** and **EAP** support phone call and mobile app notification.
 
       > [!NOTE]
-      > A hálózati házirend-kiszolgáló bővítmény központi telepítésekor ezeket a tényezőket használva kiértékelheti, hogy mely módszerek érhetők el a felhasználók számára. Ha a RADIUS-ügyfél támogatja a PAP-t, de az ügyfél UX nem tartalmaz bemeneti mezőket az ellenőrző kódhoz, akkor a telefonhívás és a Mobile App Notification a két támogatott lehetőség.
+      > When you deploy the NPS extension, use these factors to evaluate which methods are available for your users. If your RADIUS client supports PAP, but the client UX doesn't have input fields for a verification code, then phone call and mobile app notification are the two supported options.
       >
-      > Továbbá, ha a VPN-ügyfél UX támogatja a beviteli mezőt, és konfigurálta a hálózati hozzáférési házirendet – a hitelesítés sikeres lehet, de a hálózati házirendben konfigurált egyik RADIUS-attribútum sem lesz alkalmazva a hálózati elérési eszközre sem. mint az RRAS-kiszolgáló, sem a VPN-ügyfél. Ennek eredményeképpen előfordulhat, hogy a VPN-ügyfél több hozzáférésre van szükség, mint amennyire csak szeretné.
+      > In addition, if your VPN client UX does support input field and you have configured Network Access Policy - the authentication might succeed, however none of the RADIUS attributes configured in the Network Policy will be applied to neither the Network Access Device, like the RRAS server, nor the VPN client. As a result, the VPN client might have more access than desired or less to no access.
       >
 
-2. Az ügyfélalkalmazás (VPN, NetScaler-kiszolgáló vagy más) által kezelhető bemeneti metódusok. A VPN-ügyfél például bizonyos módon lehetővé teszi, hogy a felhasználó szöveges vagy mobil alkalmazásból származó ellenőrző kódot írjon be?
+2. The input methods that the client application (VPN, Netscaler server, or other) can handle. For example, does the VPN client have some means to allow the user to type in a verification code from a text or mobile app?
 
-A nem [támogatott hitelesítési módszereket letilthatja](howto-mfa-mfasettings.md#verification-methods) az Azure-ban.
+You can [disable unsupported authentication methods](howto-mfa-mfasettings.md#verification-methods) in Azure.
 
-### <a name="register-users-for-mfa"></a>Felhasználók regisztrálása MFA-hoz
+### <a name="register-users-for-mfa"></a>Register users for MFA
 
-A hálózati házirend-kiszolgáló bővítmény üzembe helyezése és használata előtt a kétlépéses ellenőrzés végrehajtásához szükséges felhasználókat regisztrálni kell az MFA-hoz. A bővítmény üzembe helyezése során még egyszer kell tesztelni, legalább egy olyan teszt fiókra van szükség, amely teljesen regisztrálva van a Multi-Factor Authentication számára.
+Before you deploy and use the NPS extension, users that are required to perform two-step verification need to be registered for MFA. More immediately, to test the extension as you deploy it, you need at least one test account that is fully registered for Multi-Factor Authentication.
 
-A következő lépésekkel kérhet le egy teszt fiókot:
+Use these steps to get a test account started:
 
-1. Jelentkezzen be [https://aka.ms/mfasetup](https://aka.ms/mfasetup) egy teszt-fiókkal.
-2. Kövesse az utasításokat az ellenőrzési módszer beállításához.
-3. [Hozzon létre egy feltételes hozzáférési szabályzatot](howto-mfa-getstarted.md#create-conditional-access-policy) a többtényezős hitelesítés megköveteléséhez a teszt fiókhoz.
+1. Sign in to [https://aka.ms/mfasetup](https://aka.ms/mfasetup) with a test account.
+2. Follow the prompts to set up a verification method.
+3. [Create a Conditional Access policy](howto-mfa-getstarted.md#create-conditional-access-policy) to require multi-factor authentication for the test account.
 
-## <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
+## <a name="install-the-nps-extension"></a>Install the NPS extension
 
 > [!IMPORTANT]
-> Telepítse a hálózati házirend-kiszolgáló bővítményt egy másik kiszolgálóra, mint a VPN-hozzáférési pont.
+> Install the NPS extension on a different server than the VPN access point.
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Töltse le és telepítse az Azure MFA NPS-bővítményét
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Download and install the NPS extension for Azure MFA
 
-1. [Töltse le a hálózati házirend-kiszolgáló bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
-2. Másolja a bináris fájlt a konfigurálni kívánt hálózati házirend-kiszolgálóra.
-3. Futtassa a *Setup. exe fájlt* , és kövesse a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy az előfeltételi szakasz két könyvtára sikeresen telepítve lett-e.
+1. [Download the NPS Extension](https://aka.ms/npsmfa) from the Microsoft Download Center.
+2. Copy the binary to the Network Policy Server you want to configure.
+3. Run *setup.exe* and follow the installation instructions. If you encounter errors, double-check that the two libraries from the prerequisite section were successfully installed.
 
-#### <a name="upgrade-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének frissítése
+#### <a name="upgrade-the-nps-extension"></a>Upgrade the NPS extension
 
-Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgáló újraindításának elkerüléséhez hajtsa végre a következő lépéseket:
+When upgrading an existing NPS extension install, to avoid a reboot of the underlying server complete the following steps:
 
-1. A meglévő verzió eltávolítása
-1. Az új telepítő futtatása
-1. A hálózati házirend-kiszolgáló (IAS) szolgáltatás újraindítása
+1. Uninstall the existing version
+1. Run the new installer
+1. Restart the Network Policy Server (IAS) service
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
 
-A telepítő létrehoz egy PowerShell-parancsfájlt a következő helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
+The installer creates a PowerShell script in this location: `C:\Program Files\Microsoft\AzureMfa\Config` (where C:\ is your installation drive). This PowerShell script performs the following actions each time it is run:
 
-- Hozzon létre egy önaláírt tanúsítványt.
-- Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
-- Tárolja a tanúsítványt a helyi számítógép tanúsítvány-tárolójában.
-- Hozzáférés biztosítása a tanúsítvány titkos kulcsához a hálózati felhasználó számára.
-- Indítsa újra a hálózati házirend-kiszolgálót.
+- Create a self-signed certificate.
+- Associate the public key of the certificate to the service principal on Azure AD.
+- Store the cert in the local machine cert store.
+- Grant access to the certificate’s private key to Network User.
+- Restart the NPS.
 
-Ha nem szeretne saját tanúsítványokat használni (a PowerShell-parancsfájl által létrehozott önaláírt tanúsítványok helyett), futtassa a PowerShell-parancsfájlt a telepítés befejezéséhez. Ha több kiszolgálóra telepíti a bővítményt, mindegyiknek saját tanúsítvánnyal kell rendelkeznie.
+Unless you want to use your own certificates (instead of the self-signed certificates that the PowerShell script generates), run the PowerShell Script to complete the installation. If you install the extension on multiple servers, each one should have its own certificate.
 
-1. Futtassa a Windows PowerShellt rendszergazdaként.
-2. Módosítsa a címtárakat.
+1. Run Windows PowerShell as an administrator.
+2. Change directories.
 
    `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
 
-3. Futtassa a telepítő által létrehozott PowerShell-szkriptet.
+3. Run the PowerShell script created by the installer.
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
-4. Jelentkezzen be az Azure AD-be rendszergazdaként.
-5. PowerShell-kérések a bérlői AZONOSÍTÓhoz. Használja az előfeltételek szakaszban található Azure Portalból másolt címtár-azonosító GUID azonosítót.
-6. A PowerShell a parancsfájl befejeződése után sikert jelző üzenetet jelenít meg.  
+4. Sign in to Azure AD as an administrator.
+5. PowerShell prompts for your tenant ID. Use the Directory ID GUID that you copied from the Azure portal in the prerequisites section.
+6. PowerShell shows a success message when the script is finished.  
 
-Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-kiszolgálón, amelyet be szeretne állítani a terheléselosztáshoz.
+Repeat these steps on any additional NPS servers that you want to set up for load balancing.
 
-Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
+If your previous computer certificate has expired, and a new certificate has been generated, you should delete any expired certificates. Having expired certificates can cause issues with the NPS Extension starting.
 
 > [!NOTE]
-> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN =\<TenantID\>, OU = Microsoft NPS bővítménynek**kell lennie. 
+> If you use your own certificates instead of generating certificates with the PowerShell script, make sure that they align to the NPS naming convention. The subject name must be **CN=\<TenantID\>,OU=Microsoft NPS Extension**. 
 
-### <a name="certificate-rollover"></a>Tanúsítvány-rollover
+### <a name="certificate-rollover"></a>Certificate rollover
 
-A hálózati házirend-kiszolgáló bővítmény kiadási 1.0.1.32 a több tanúsítvány olvasása mostantól támogatott. Ezzel a képességgel a lejáratuk előtt megkönnyítheti a működés közbeni tanúsítványok frissítését. Ha a szervezete a hálózati házirend-kiszolgáló bővítmény korábbi verzióját futtatja, frissítsen a 1.0.1.32 vagy újabb verzióra.
+With release 1.0.1.32 of the NPS extension, reading multiple certificates is now supported. This capability will help facilitate rolling certificate updates prior to their expiration. If your organization is running a previous version of the NPS extension, you should upgrade to version 1.0.1.32 or higher.
 
-A `AzureMfaNpsExtnConfigSetup.ps1` parancsfájl által létrehozott tanúsítványok 2 évig érvényesek. Az informatikai szervezeteknek meg kell figyelniük a lejárati tanúsítványokat. A hálózati házirend-kiszolgáló kiterjesztéséhez tartozó tanúsítványok a helyi számítógép tanúsítványtárolójában, a személyes és a parancsfájlhoz megadott bérlői AZONOSÍTÓra kerülnek.
+Certificates created by the `AzureMfaNpsExtnConfigSetup.ps1` script are valid for 2 years. IT organizations should monitor certificates for expiration. Certificates for the NPS extension are placed in the Local Computer certificate store under Personal and are Issued To the tenant ID provided to the script.
 
-Ha egy tanúsítvány a lejárati dátumra közeledik, egy új tanúsítványt kell létrehozni a lecseréléséhez.  Ez a folyamat a `AzureMfaNpsExtnConfigSetup.ps1` újbóli futtatásával, és a kéréskor megegyező bérlői azonosító megtartásával valósítható meg. Ezt a folyamatot meg kell ismételni a környezet minden NPS-kiszolgálóján.
+When a certificate is approaching the expiration date, a new certificate should be created to replace it.  This process is accomplished by running the `AzureMfaNpsExtnConfigSetup.ps1` again and keeping the same tenant ID when prompted. This process should be repeated on each NPS server in your environment.
 
-## <a name="configure-your-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének konfigurálása
+## <a name="configure-your-nps-extension"></a>Configure your NPS extension
 
-Ez a szakasz tervezési szempontokat és javaslatokat tartalmaz a hálózati házirend-bővítmények sikeres üzembe helyezéséhez.
+This section includes design considerations and suggestions for successful NPS extension deployments.
 
-### <a name="configuration-limitations"></a>Konfigurációs korlátozások
+### <a name="configuration-limitations"></a>Configuration limitations
 
-- Az Azure MFA NPS-bővítménye nem tartalmaz olyan eszközöket, amelyekkel a felhasználók és beállítások áttelepíthetők az MFA-kiszolgálóról a felhőbe. Ezért javasoljuk, hogy a meglévő telepítés helyett a bővítményt használja az új központi telepítésekhez. Ha a bővítményt egy meglévő üzemelő példányon használja, a felhasználóknak újra kell végezniük az MFA adatainak a felhőben való feltöltéséhez.  
-- A hálózati házirend-kiszolgáló bővítmény a helyszíni Active Directoryból származó UPN-t használja az Azure MFA-felhasználó azonosításához a másodlagos hitelesítés végrehajtásához. A bővítmény konfigurálható úgy, hogy más azonosítót használjon, például alternatív bejelentkezési azonosítót vagy egyéni Active Directory mezőt, amely nem egyszerű felhasználónév. További információkért tekintse meg a [multi-Factor Authentication hálózati házirend-bővítményének speciális konfigurációs beállításait](howto-mfa-nps-extension-advanced.md)ismertető cikket.
-- Nem minden titkosítási protokoll támogatja az összes ellenőrzési módszert.
-   - A **pap** támogatja a telefonhívást, egyirányú szöveges üzenetet, a Mobile App notificationt és a Mobile App ellenőrző kódját
-   - A **CHAPv2** és az **EAP** támogatásának telefonos hívása és a Mobile App Notification
+- The NPS extension for Azure MFA does not include tools to migrate users and settings from MFA Server to the cloud. For this reason, we suggest using the extension for new deployments, rather than existing deployment. If you use the extension on an existing deployment, your users have to perform proof-up again to populate their MFA details in the cloud.  
+- The NPS extension uses the UPN from the on-premises Active directory to identify the user on Azure MFA for performing the Secondary Auth. The extension can be configured to use a different identifier like alternate login ID or custom Active Directory field other than UPN. For more information, see the article, [Advanced configuration options for the NPS extension for Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md).
+- Not all encryption protocols support all verification methods.
+   - **PAP** supports phone call, one-way text message, mobile app notification, and mobile app verification code
+   - **CHAPV2** and **EAP** support phone call and mobile app notification
 
-### <a name="control-radius-clients-that-require-mfa"></a>Az MFA-t igénylő RADIUS-ügyfelek szabályozása
+### <a name="control-radius-clients-that-require-mfa"></a>Control RADIUS clients that require MFA
 
-Miután engedélyezte az MFA-t egy RADIUS-ügyfél számára a hálózati házirend-kiszolgáló bővítmény használatával, az ügyfél összes hitelesítése szükséges az MFA végrehajtásához. Ha bizonyos RADIUS-ügyfelek esetében engedélyezni szeretné az MFA-t, de mások nem, akkor két hálózati házirend-kiszolgálót is beállíthat, és a bővítményt csak az egyikre telepítheti. Konfigurálja azokat a RADIUS-ügyfeleket, amelyeknek az MFA-t szeretné megkövetelni a bővítménysel konfigurált hálózati házirend-kiszolgálónak küldött kérések küldéséhez, valamint más RADIUS-ügyfeleket az NPS-kiszolgálóhoz, amely nincs beállítva a bővítménnyel.
+Once you enable MFA for a RADIUS client using the NPS Extension, all authentications for this client are required to perform MFA. If you want to enable MFA for some RADIUS clients but not others, you can configure two NPS servers and install the extension on only one of them. Configure RADIUS clients that you want to require MFA to send requests to the NPS server configured with the extension, and other RADIUS clients to the NPS server not configured with the extension.
 
-### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Az MFA-ban nem regisztrált felhasználók előkészítése
+### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Prepare for users that aren't enrolled for MFA
 
-Ha az MFA-ban nem regisztrált felhasználók vannak, akkor megadhatja, hogy mi történjen a hitelesítéskor. A szolgáltatás működésének vezérléséhez használja a beállításjegyzékbeli elérési út *HKLM\Software\Microsoft\AzureMFA* beállításjegyzék-beállítás *REQUIRE_USER_MATCH* . Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik:
+If you have users that aren't enrolled for MFA, you can determine what happens when they try to authenticate. Use the registry setting *REQUIRE_USER_MATCH* in the registry path *HKLM\Software\Microsoft\AzureMFA* to control the feature behavior. This setting has a single configuration option:
 
 | Jelmagyarázat | Value (Díj) | Alapértelmezett |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
+| REQUIRE_USER_MATCH | TRUE/FALSE | Not set (equivalent to TRUE) |
 
-Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha egy felhasználó nincs regisztrálva az MFA-hoz. Ha a kulcs nem létezik, nincs beállítva, vagy igaz értékre van állítva, és a felhasználó nincs regisztrálva, akkor a bővítmény meghiúsul az MFA-kérdésben. Ha a kulcs hamis értékre van állítva, és a felhasználó nincs regisztrálva, a hitelesítés az MFA végrehajtása nélkül folytatódik. Ha egy felhasználó regisztrálva van az MFA-ban, akkor is hitelesítenie kell magát az MFA-val, ha a REQUIRE_USER_MATCH hamis értékre van állítva.
+The purpose of this setting is to determine what to do when a user is not enrolled for MFA. When the key does not exist, is not set, or is set to TRUE, and the user is not enrolled, then the extension fails the MFA challenge. When the key is set to FALSE and the user is not enrolled, authentication proceeds without performing MFA. If a user is enrolled in MFA, they must authenticate with MFA even if REQUIRE_USER_MATCH is set to FALSE.
 
-Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre állítja a felhasználók bevezetését, és az Azure MFA még nem minden esetben regisztrálható. Mivel azonban a kulcs beállítása lehetővé teszi, hogy az MFA-ban nem regisztrált felhasználók bejelentkezzenek, el kell távolítania ezt a kulcsot az éles környezetbe való belépés előtt.
+You can choose to create this key and set it to FALSE while your users are onboarding, and may not all be enrolled for Azure MFA yet. However, since setting the key permits users that aren't enrolled for MFA to sign in, you should remove this key before going to production.
 
 ## <a name="troubleshooting"></a>Hibakeresés
 
-### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
+### <a name="nps-extension-health-check-script"></a>NPS extension health check script
 
-A következő parancsfájl a TechNet Gallery webhelyen érhető el, amely alapszintű állapot-ellenőrzési lépéseket hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
+The following script is available on the TechNet Gallery to perform basic health check steps when troubleshooting the NPS extension.
 
-[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
-
----
-
-### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
-
-Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve **CN \<tenantid\>, OU = Microsoft NPS bővítmény**
-
-A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi ideje két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
+[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
 
 ---
 
-### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Hogyan tudom ellenőrizni, hogy az ügyféltanúsítvány társítva van-e a bérlőhöz a Azure Active Directory?
+### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>How do I verify that the client cert is installed as expected?
 
-Nyisson meg egy PowerShell-parancssort, és futtassa a következő parancsokat:
+Look for the self-signed certificate created by the installer in the cert store, and check that the private key has permissions granted to user **NETWORK SERVICE**. The cert has a subject name of **CN \<tenantid\>, OU = Microsoft NPS Extension**
+
+Self-signed certificates generated by the *AzureMfaNpsExtnConfigSetup.ps1* script also have a validity lifetime of two years. When verifying that the certificate is installed, you should also check that the certificate has not expired.
+
+---
+
+### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>How can I verify that my client cert is associated to my tenant in Azure Active Directory?
+
+Open PowerShell command prompt and run the following commands:
 
 ``` PowerShell
 import-module MSOnline
@@ -257,9 +257,9 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
-Ezek a parancsok kinyomtatják a bérlőhöz társító összes tanúsítványt a PowerShell-munkamenetben lévő NPS-bővítmény példányával. Keresse meg a tanúsítványt úgy, hogy az ügyfél tanúsítványát "Base-64 kódolt X. 509 (. cer)" fájlként exportálja a titkos kulcs nélkül, és összehasonlítja a listával a PowerShell-lel.
+These commands print all the certificates associating your tenant with your instance of the NPS extension in your PowerShell session. Look for your certificate by exporting your client cert as a "Base-64 encoded X.509(.cer)" file without the private key, and compare it with the list from PowerShell.
 
-A következő parancs létrehoz egy "npscertificate" nevű fájlt a "C:" meghajtón a Format. cer fájlban.
+The following command will create a file named "npscertificate" on your "C:" drive in format .cer.
 
 ``` PowerShell
 import-module MSOnline
@@ -267,59 +267,59 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-A parancs futtatása után lépjen a C meghajtóra, keresse meg a fájlt, és kattintson rá duplán. Lépjen a részletek elemre, és görgessen le az "ujjlenyomat" kifejezésre, hasonlítsa össze a kiszolgálón telepített tanúsítvány ujjlenyomatát. A tanúsítvány ujjlenyomatai megfelelnek egyeznie kell.
+Once you run this command, go to your C drive, locate the file and double-click on it. Go to details and scroll down to "thumbprint", compare the thumbprint of the certificate installed on the server to this one. The certificate thumbprints should match.
 
-Az érvényes – és az érvényes – csak az emberi olvashatóságot eredményező időbélyegek esetében használható a nyilvánvaló Misfits kiszűrésére, ha a parancs egynél több tanúsítványt ad vissza.
-
----
-
-### <a name="why-cant-i-sign-in"></a>Miért nem tud bejelentkezni?
-
-Győződjön meg arról, hogy a jelszó még nem járt le. A hálózati házirend-kiszolgáló bővítmény nem támogatja a jelszavak módosítását a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai részlegéhez.
+Valid-From and Valid-Until timestamps, which are in human-readable form, can be used to filter out obvious misfits if the command returns more than one cert.
 
 ---
 
-### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Miért nem sikerül a kérések ADAL-jogkivonat hibája?
+### <a name="why-cant-i-sign-in"></a>Why cant I sign in?
 
-Ezt a hibát számos ok okozhatja. A következő lépésekkel segíthet a hibaelhárításban:
+Check that your password hasn't expired. The NPS Extension does not support changing passwords as part of the sign-in workflow. Contact your organization's IT Staff for further assistance.
 
-1. Indítsa újra a hálózati házirend-kiszolgálót.
-2. Ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve.
-3. Ellenőrizze, hogy a tanúsítvány társítva van-e a bérlőhöz az Azure AD-ben.
+---
+
+### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Why are my requests failing with ADAL token error?
+
+This error could be due to one of several reasons. Use these steps to help troubleshoot:
+
+1. Restart your NPS server.
+2. Verify that client cert is installed as expected.
+3. Verify that the certificate is associated with your tenant on Azure AD.
 4. Ellenőrizze, hogy a https://login.microsoftonline.com/ elérhető-e a bővítményt futtató kiszolgálóról.
 
 ---
 
-### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Miért sikertelen a hitelesítés a HTTP-naplókban, hogy a felhasználó nem található?
+### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Why does authentication fail with an error in HTTP logs stating that the user is not found?
 
-Ellenőrizze, hogy az AD-kapcsolat fut-e, és hogy a felhasználó szerepel-e a Windows Active Directoryban és a Azure Active Directory is.
+Verify that AD Connect is running, and that the user is present in both Windows Active Directory and Azure Active Directory.
 
 ---
 
-### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért látok HTTP-csatlakozási hibákat a naplókban az összes saját hitelesítéssel?
+### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Why do I see HTTP connect errors in logs with all my authentications failing?
 
 Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
 ---
 
-### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Miért nem működik a hitelesítés, annak ellenére, hogy érvényes tanúsítvány van jelen?
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Why is authentication not working, despite a valid certificate being present?
 
-Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
+If your previous computer certificate has expired, and a new certificate has been generated, you should delete any expired certificates. Having expired certificates can cause issues with the NPS Extension starting.
 
-Annak ellenőrzéséhez, hogy érvényes tanúsítvánnyal rendelkezik-e, ellenőrizze a helyi számítógépfiók tanúsítványtárolóját az MMC használatával, és győződjön meg arról, hogy a tanúsítvány nem felelt meg a lejárati dátumnak. Egy újonnan érvényes tanúsítvány létrehozásához futtassa újra a "[PowerShell-parancsfájl futtatása](#run-the-powershell-script)" szakasz lépéseit.
+To check if you have a valid certificate, check the local Computer Account's Certificate Store using MMC, and ensure the certificate has not passed its expiry date. To generate a newly valid certificate, rerun the steps under the section "[Run the PowerShell script](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
-Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, vagy távolítsa el, ha a szervezet nem igényli. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
+It is recommended that older and weaker cipher suites be disabled or removed unless required by your organization. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
-### <a name="additional-troubleshooting"></a>További hibaelhárítás
+### <a name="additional-troubleshooting"></a>Additional troubleshooting
 
-További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
+Additional troubleshooting guidance and possible solutions can be found in the article [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Konfiguráljon alternatív azonosítókat a bejelentkezéshez, vagy állítson be olyan IP-címekre vonatkozó kivételeket, amelyek nem hajtják végre a kétlépéses ellenőrzést a [hálózati házirend-kiszolgáló bővítményének speciális konfigurációs beállításaiban multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
+- Configure alternate IDs for login, or set up an exception list for IPs that shouldn't perform two-step verification in [Advanced configuration options for the NPS extension for Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 
-- Ismerje meg, hogyan integrálhatja a [Távoli asztali átjáró](howto-mfa-nps-extension-rdg.md) és a [VPN-kiszolgálókat](howto-mfa-nps-extension-vpn.md) a hálózati házirend-kiszolgáló bővítmény használatával
+- Learn how to integrate [Remote Desktop Gateway](howto-mfa-nps-extension-rdg.md) and [VPN servers](howto-mfa-nps-extension-vpn.md) using the NPS extension
 
 - [Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)

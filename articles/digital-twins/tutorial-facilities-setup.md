@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure digitális Twins üzembe helyezése'
-description: Ismerje meg, hogyan helyezheti üzembe az Azure digitális Twins-példány, és a térbeli erőforrások konfigurálása az ebben az oktatóanyagban szereplő lépések segítségével.
+title: 'Tutorial: Deploy a preview environment and spatial graph - Azure Digital Twins| Microsoft Docs'
+description: Learn how to deploy your instance of Azure Digital Twins and configure your spatial resources by using the steps in this tutorial.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -9,30 +9,30 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 4d4e7e47b82c46cca53fab0540a4867031eaab85
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107741"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383027"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: az Azure digitális Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Deploy Azure Digital Twins Preview and configure a spatial graph
 
-Az Azure Digital ikrek előzetes verzió szolgáltatásával egy koherens térbeli rendszerbe rendezheti az embereket, a helyeket és az eszközöket. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
+You can use the Azure Digital Twins Preview service to bring together people, places, and devices in a coherent spatial system. This series of tutorials demonstrates how to use Azure Digital Twins to detect room occupancy with optimal conditions of temperature and air quality. 
 
-Ezekben az oktatóanyagokban végigvezeti egy .NET-konzolalkalmazást hozhat létre egy forgatókönyv irodaépület. Az épületen belül minden egyes emelet több emeleteken és a rendelkezik. A termek eszközöket tartalmazó olyan csatlakoztatott mozgásfelismerés, környezeti hőmérséklet és légi minőségét. 
+These tutorials will walk you through a .NET console application to build a scenario of an office building. The building has multiple floors and rooms within each floor. The rooms contain devices with attached sensors that detect motion, ambient temperature, and air quality. 
 
-Megtudhatja, hogyan replikálni a fizikai területek és a digitális objektumokként az épületben entitásokat az Azure digitális Twins használatával. Eszközeseményeket egy másik Konzolalkalmazás használatával fogjuk szimulálásához. Ezután megtudhatja, hogyan figyelheti az eseményeket, amelyek e fizikai területek és a közel valós időben entitások származnak. 
+You'll learn how to replicate the physical areas and entities in the building as digital objects by using the Azure Digital Twins service. You'll simulate device events by using another console application. Then, you'll learn how to monitor the events that come from these physical areas and entities in near real time. 
 
-Egy irodai rendszergazda ezekkel az információkkal segíthet az épületben dolgozóknak az optimális feltételeknek megfelelő tárgyalótermek lefoglalásában. Az office-létesítményekben manager használhatja a telepítő a berendezése használati trendeket, és karbantartási célból visszaállni figyelése.
+Egy irodai rendszergazda ezekkel az információkkal segíthet az épületben dolgozóknak az optimális feltételeknek megfelelő tárgyalótermek lefoglalásában. An office facilities manager can use your setup to get usage trends of the rooms, and to monitor working conditions for maintenance purposes.
 
 A sorozat első oktatóanyagában az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Helyezze üzembe a digitális Twins.
-> * Az alkalmazás engedélyt adnia.
-> * Módosítsa egy digitális Twins mintaalkalmazást.
-> * Az épület kiépítése.
+> * Deploy Digital Twins.
+> * Grant permissions to your app.
+> * Modify a Digital Twins sample app.
+> * Provision your building.
 
 Ezek az oktatóanyagok ugyanazokat a mintákat használják és módosítják, mint a [szabad helyiségek keresését bemutató rövid útmutató](quickstart-view-occupancy-dotnet.md), amelyben megtalálhatja a fogalmak részletesebb leírását.
 
@@ -40,52 +40,52 @@ Ezek az oktatóanyagok ugyanazokat a mintákat használják és módosítják, m
 
 - Azure-előfizetés. Ha még nincs Azure-fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- A .NET Core SDK-t. Az Azure digitális Twins minták ezekben az oktatóanyagokban használt nyelven írták C#. Mindenképpen telepítse [.NET Core SDK 2.1.403 verzió vagy újabb](https://www.microsoft.com/net/download) a fejlesztői gépen való létrehozásához és a minta futtatásához. Ellenőrizze, hogy a megfelelő verziója telepítve van a gépén futtatásával `dotnet --version` egy parancssori ablakban.
+- The .NET Core SDK. The Azure Digital Twins samples used in these tutorials are written in C#. Make sure to install [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to build and run the sample. Check that the right version is installed on your machine by running `dotnet --version` in a command window.
 
 - [Visual Studio Code](https://code.visualstudio.com/) a mintakód vizsgálatához. 
 
 ## <a name="deploy-digital-twins"></a>A Digital Twins üzembe helyezése
 
-Ebben a szakaszban a lépések segítségével hozzon létre egy új példányát az Azure digitális Twins szolgáltatás. Előfizetésenként csak egy példányban lehet létrehozni. Ha már rendelkezik egy futó, ugorjon a következő szakaszra. 
+Use the steps in this section to create a new instance of the Azure Digital Twins service. Only one instance can be created per subscription. Skip to the next section if you already have one running. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="grant-permissions-to-your-app"></a>Engedélyek megadása az alkalmazásnak
 
-Digitális Twins használ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) vezérlésére [olvasási/írási hozzáférés](../active-directory/develop/v1-permissions-and-consent.md) a szolgáltatáshoz. Minden olyan alkalmazás, amely a digitális Twins-példányhoz való csatlakozáshoz meg kell regisztrálni kell az Azure ad-ben. A jelen szakaszban ismertetett lépések bemutatják a mintaalkalmazás regisztrálásának módját.
+Digital Twins uses [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) to control [read/write access](../active-directory/develop/v1-permissions-and-consent.md) to the service. Any application that needs to connect with your Digital Twins instance must be registered with Azure AD. A jelen szakaszban ismertetett lépések bemutatják a mintaalkalmazás regisztrálásának módját.
 
-Ha már rendelkezik az alkalmazás regisztrációját, a minta felhasználhatja azt. De mindenképpen tekintse át ezt a szakaszt, hogy az alkalmazásregisztráció megfelelően legyen konfigurálva.
+If you already have an app registration, you can reuse it for your sample. De mindenképpen tekintse át ezt a szakaszt, hogy az alkalmazásregisztráció megfelelően legyen konfigurálva.
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-## <a name="configure-the-digital-twins-sample"></a>A digitális Twins minta konfigurálásához
+## <a name="configure-the-digital-twins-sample"></a>Configure the Digital Twins sample
 
-Ez a szakasz végigvezeti egy Azure digitális Twins alkalmazás, amely kommunikál a [digitális Twins REST API-k](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index). 
+This section walks you through an Azure Digital Twins application that communicates with the [Digital Twins REST APIs](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index). 
 
 ### <a name="download-the-sample"></a>A minta letöltése
 
 Ha már letöltötte a [szabad helyiségek keresésére szolgáló rövid útmutató](quickstart-view-occupancy-dotnet.md) mintáit, kihagyhatja ezeket a lépéseket.
 
-1. Töltse le a [digitális Twins .NET-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
-2. Bontsa ki a tömörített mappát a gépen tartalmát.
+1. Download the [Digital Twins .NET samples](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
+2. Extract the contents of the zip folder on your machine.
 
 ### <a name="explore-the-sample"></a>A minta vizsgálata
 
-A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\digital-twins-samples.code-workspace** Visual Studio Code-ban. Ez két projektet tartalmaz:
+In the extracted sample folder, open the file **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Ez két projektet tartalmaz:
 
-* Használhatja az eszközkiépítési minta **foglaltsága-quickstart** konfigurálására és kiosztására egy [térbeli intelligencia graph](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Ez a diagram a fizikai szóközöket és azokat az erőforrásokat a digitális képe. Használja az [hálózatiobjektum-modellt](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), amely megadja, hogy egy intelligens épület-objektumokat. Digitális Twins objektumok és a REST API-k teljes listáját a Microsoft [a REST API-dokumentáció](https://docs.westcentralus.azuresmartspaces.net/management/swagger) vagy a felügyeleti API URL-címe, amelyhez létrehozták [a példány](#deploy-digital-twins).
+* You can use the provisioning sample **occupancy-quickstart** to configure and provision a [spatial intelligence graph](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). This graph is the digitized image of your physical spaces and the resources in them. It uses an [object model](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), which defines objects for a smart building. For a complete list of Digital Twins objects and REST APIs, visit [this REST API documentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) or the Management API URL that was created for [your instance](#deploy-digital-twins).
 
-   Részletesebben is áttekinti a megtekintéséhez, hogyan kommunikál a digitális Twins-példány, hogy kezdhet az **src\actions** mappát. Ebben a mappában lévő fájlok ezekben az oktatóanyagokban használt parancsok végrehajtására:
-    - A **provisionSample.cs** fájl bemutatja, hogyan építheti ki a térbeli grafikon.
-    - A **getSpaces.cs** fájlt a kiépített tárolóhelyek adatainak beolvasása.
-    - A **getAvailableAndFreshSpaces.cs** fájl lekérdezi egy felhasználó által definiált függvény nevű egyéni függvény eredménye.
-    - A **createEndpoints.cs** fájl más szolgáltatásokkal interakcióba végpontokat hoz létre.
+   To explore the sample to see how it communicates with your Digital Twins instance, you can start with the **src\actions** folder. The files in this folder implement the commands that you'll use in these tutorials:
+    - The **provisionSample.cs** file shows how to provision your spatial graph.
+    - The **getSpaces.cs** file gets information about the provisioned spaces.
+    - The **getAvailableAndFreshSpaces.cs** file gets the results of a custom function called a user-defined function.
+    - The **createEndpoints.cs** file creates endpoints to interact with other services.
 
-* A szimuláció minta **eszközkapcsolattal** szimulálja az adatokat, és elküldi azt az IoT hubnak, amely ki van építve a digitális Twins példány. Ez a példa a használni kívánt [a következő oktatóanyaggal, miután a térbeli graph üzembe](tutorial-facilities-udf.md#simulate-sensor-data). Ez a minta konfigurálásához érzékelő- és azonosítók lehet ugyanaz, mint a gráfhoz kiépítése fogja használni.
+* The simulation sample **device-connectivity** simulates sensor data and sends it to the IoT hub that's provisioned for your Digital Twins instance. You'll use this sample in [the next tutorial after you provision your spatial graph](tutorial-facilities-udf.md#simulate-sensor-data). The sensor and device identifiers that you use to configure this sample should be the same as what you'll use to provision your graph.
 
 ### <a name="configure-the-provisioning-sample"></a>A kiépítési minta konfigurálása
 
-1. Nyisson meg egy parancsablakot, és lépjen a letöltött minta. Futtassa az alábbi parancsot:
+1. Open a command window and go to the downloaded sample. Futtassa az alábbi parancsot:
 
     ```cmd/sh
     cd occupancy-quickstart/src
@@ -97,22 +97,22 @@ A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\d
     dotnet restore
     ```
 
-1. A Visual Studio Code-ban nyissa meg a [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) fájlt a **foglaltsága-quickstart** projekt. Frissítse a következő értékeket:
-   * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás Azonosítóját. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#grant-permissions-to-your-app).
-   * **Bérlő**: Adja meg a címtár-azonosító, a [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ezt az Azonosítót az szakaszban is feljegyzett ahol, [Alkalmazásengedélyek beállítása](#grant-permissions-to-your-app).
-   * **BaseUrl**: Adja meg a Digital Twins-példány URL-címét. Az URL-cím lekéréséhez cserélje le az URL-cím helyőrzőit a példányának értékeire: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy-digital-twins). Cserélje le **swagger /** a **api/v1.0/** .
+1. In Visual Studio Code, open the [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) file in the **occupancy-quickstart** project. Update the following values:
+   * **ClientId**: Enter the application ID of your Azure AD app registration. You noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
+   * **Tenant**: Enter the directory ID of your [Azure AD tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). You also noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
+   * **BaseUrl**: Adja meg a Digital Twins-példány URL-címét. To get this URL, replace the placeholders in this URL with values for your instance: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. You can also get this URL by modifying the Management API URL from [the deployment section](#deploy-digital-twins). Replace **swagger/** with **api/v1.0/** .
 
-1. Minta használatával megvizsgálhatja digitális Twins szolgáltatások listájának megtekintéséhez. Futtassa az alábbi parancsot:
+1. See a list of Digital Twins features that you can explore by using the sample. Futtassa az alábbi parancsot:
 
     ```cmd/sh
     dotnet run
     ```
 
-## <a name="understand-the-provisioning-process"></a>A kiépítési folyamat ismertetése
+## <a name="understand-the-provisioning-process"></a>Understand the provisioning process
 
 Ez a szakasz egy épület térbeli diagramjának kiépítését mutatja be.
 
-A Visual Studio Code-ban keresse meg a **foglaltsága-quickstart\src\actions** mappába és nyissa meg a **provisionSample.cs**. Figyelje meg az alábbi függvényt:
+In Visual Studio Code, browse to the **occupancy-quickstart\src\actions** folder and open the file **provisionSample.cs**. Figyelje meg az alábbi függvényt:
 
 ```csharp
 public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(HttpClient httpClient, ILogger logger)
@@ -132,51 +132,51 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Ez a funkció [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ugyanabban a mappában. Nyissa meg a fájlt, és jegyezze fel a hierarchia irodaépület: *helyszín*, *emelet*, *terület*, és *termek*. A fizikai területek bármelyike tartalmazhat *eszközöket* és *érzékelőket*. Mindegyik bejegyzés rendelkezik egy előre meghatározott `type` &mdash;például emelet, szobában.
+This function uses [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in the same folder. Open this file, and note the hierarchy of an office building: *Venue*, *Floor*, *Area*, and *Rooms*. A fizikai területek bármelyike tartalmazhat *eszközöket* és *érzékelőket*. Each entry has a predefined `type`&mdash;for example, Floor, Room.
 
-A minta **yaml** fájl használó térbeli grafikonon jeleníti meg a `Default` digitális Twins hálózatiobjektum-modellt. Ez a modell biztosítja a legtöbb általános névvel. Általános névvel épület elegendőek. Példák a SensorDataType hőmérséklet, és a SpaceBlobType leképezése. Egy példa terület típus altípus FocusRoom, ahol ConferenceRoom és így tovább. 
+The sample **yaml** file shows a spatial graph that uses the `Default` Digital Twins object model. This model provides generic names for most types. Generic names are sufficient for a building. Examples are Temperature for SensorDataType, and Map for SpaceBlobType. An example space type is Room with subtypes FocusRoom, ConferenceRoom, and so on. 
 
-Ha más típusú helyszínhez, például gyárhoz szeretne létrehozni térbeli diagramot, előfordulhat, hogy más objektummodellre lesz szüksége. Megtudhatja, mely modellek legyenek elérhetők a parancs futtatásával `dotnet run GetOntologies` a kiépítési mintában a parancssoron. 
+Ha más típusú helyszínhez, például gyárhoz szeretne létrehozni térbeli diagramot, előfordulhat, hogy más objektummodellre lesz szüksége. You can find out which models are available to use by running the command `dotnet run GetOntologies` on the command line for the provisioning sample. 
 
-A térbeli diagramjait és objektummodellt további információért olvassa el [ismertetése digitális Twins objektum modelleket és a térbeli intelligencia graph](concepts-objectmodel-spatialgraph.md).
+For more information on spatial graphs and object models, read [Understanding Digital Twins object models and spatial intelligence graph](concepts-objectmodel-spatialgraph.md).
 
-### <a name="modify-the-sample-spatial-graph"></a>A minta térbeli graph módosítása
+### <a name="modify-the-sample-spatial-graph"></a>Modify the sample spatial graph
 
-A **provisionSample.yaml** fájl a következő csomópontokat tartalmazza:
+The **provisionSample.yaml** file contains the following nodes:
 
-- **erőforrások**: A `resources` csomópont létrehoz egy Azure IoT Hub-erőforrást, és a telepítő az eszközök közötti kommunikációt. Az IoT hub, a csomópont a gráfhoz, az összes eszközök és érzékelők a gráfban található kommunikálhat.  
+- **resources**: The `resources` node creates an Azure IoT Hub resource to communicate with the devices in your setup. An IoT hub at the root node of your graph can communicate with all the devices and sensors in your graph.  
 
-- **spaces**: A Digital Twins-objektummodellben a `spaces` jelöli a fizikai helyeket. Minden egyes címtérhez tartozik egy `Type` &mdash;például a régió, a helyszín vagy az ügyfél&mdash;és a egy rövid `Name`. Tárolóhelyek más tárolóhelyek létrehozása a hierarchikus is tartozhat. A provisionSample.yaml fájl rendelkezik egy képzeletbeli épület térbeli grafikon. Vegye figyelembe a logikai típusú tárolóhelyek beágyazását `Floor` belül `Venue`, `Area` a egy emelet és `Room` csomópontok területen. 
+- **spaces**: A Digital Twins-objektummodellben a `spaces` jelöli a fizikai helyeket. Each space has a `Type`&mdash;for example, Region, Venue, or Customer&mdash;and a friendly `Name`. Spaces can belong to other spaces, creating a hierarchical structure. The provisionSample.yaml file has a spatial graph of an imaginary building. Note the logical nesting of spaces of type `Floor` within `Venue`, `Area` in a floor, and `Room` nodes in an area. 
 
-- **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. Egy eszköz lehet például a felhasználó telefonja, érzékelő podot Raspberry Pi vagy egy átjárót. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
+- **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. For example, a device might be a user’s phone, a Raspberry Pi sensor pod, or a gateway. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
 
-- **érzékelő**: egy eszköz több tartalmazhat `sensors`. Azt is észleli, és rekord fizikai módosítása, például hőmérséklet mozgásban lévő adatoknak egyaránt és töltöttségi szint. Minden érzékelő-csomópontot egyedien azonosít egy `hardwareId`, amely itt szoftveresen kötött. Tényleges alkalmazás esetén cserélje le ezeket a telepítő az érzékelők egyedi azonosítói használatával. A provisionSample.yaml fájl rendelkezik két érzékelők rögzítése *mozgásban lévő adatoknak egyaránt* és *CarbonDioxide*. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Vegye figyelembe, hogy ezek szerepelnek provisionSample.yaml ellátva kibővített sorok formájában. Akkor is távolítsa el őket eltávolításával a `#` minden egyes sorban található karaktert. 
+- **sensors**: A device can contain multiple `sensors`. They can detect and record physical changes like temperature, motion, and battery level. Each sensor node is uniquely identified by a `hardwareId`, hardcoded here. For an actual application, replace these by using the unique identifiers of the sensors in your setup. The provisionSample.yaml file has two sensors to record *Motion* and *CarbonDioxide*. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Note that these are provided in provisionSample.yaml as commented-out lines. You can uncomment them by removing the `#` character in the front of each line. 
 
     ```yaml
             - dataType: Temperature
               hardwareId: SAMPLE_SENSOR_TEMPERATURE
     ```
     > [!NOTE]
-    > Győződjön meg arról, hogy a `dataType` és `hardwareId` kulcsok összhangba kerüljenek az utasításokat, ez a kódrészlet felett. Azt is ellenőrizze, hogy a szerkesztő nem cserélte-e le a szóközöket tabulátorokra. 
+    > Make sure the `dataType` and `hardwareId` keys align with the statements above this snippet. Azt is ellenőrizze, hogy a szerkesztő nem cserélte-e le a szóközöket tabulátorokra. 
 
-Mentse és zárja be a provisionSample.yaml fájlt. A következő oktatóanyaggal fog további információk hozzáadása ehhez a fájlhoz, és hogyan építhet ki az Azure digitális Twins minta létrehozása.
+Save and close the provisionSample.yaml file. In the next tutorial, you'll add more information to this file, and then provision your Azure Digital Twins sample building.
 
 > [!TIP]
-> Megtekintheti és módosíthatja a térbeli graph használatával a [Azure digitális Twins Graph megjelenítő](https://github.com/Azure/azure-digital-twins-graph-viewer).
+> You can view and modify your spatial graph using the [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
+If you want to stop exploring Azure Digital Twins at this point, feel free to delete resources created in this tutorial:
 
-1. A bal oldali menüben lévő a [az Azure portal](https://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
+1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and select **Delete**.
 
     > [!TIP]
-    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
 
-1. Ha szükséges, törölje a mintaalkalmazás a munkahelyi számítógépen.
+1. If necessary, delete the sample application on your work machine.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan valósíthat meg egy egyéni logikát megfigyelik a az épület minta, nyissa meg a következő oktatóanyag a sorozat: 
+To learn how to implement a custom logic to monitor conditions in your sample building, go to the next tutorial in the series: 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az épület kiépítése és a munkakörülmények monitorozása](tutorial-facilities-udf.md)

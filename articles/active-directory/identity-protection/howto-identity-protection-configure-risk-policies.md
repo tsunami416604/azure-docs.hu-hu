@@ -1,6 +1,6 @@
 ---
-title: Kockázatkezelési szabályzatok konfigurálása és engedélyezése a Azure Active Directory Identity Protectionban
-description: Kockázatkezelési szabályzatok engedélyezése és konfigurálása Azure Active Directory Identity Protection
+title: Risk policies - Azure Active Directory Identity Protection
+description: Enable and configure risk policies in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,73 +11,73 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f919633f6b1912ef07b7ff636eb60fb3d5859f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886960"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382175"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
+# <a name="how-to-configure-and-enable-risk-policies"></a>How To: Configure and enable risk policies
 
-Az előző cikkben megtanultuk, hogy az [Identity Protection-szabályzatok](concept-identity-protection-policies.md) két kockázati szabályzattal rendelkezünk, amelyeket a címtárban engedélyezünk. 
+As we learned in the previous article, [Identity Protection policies](concept-identity-protection-policies.md) we have two risk policies that we can enable in our directory. 
 
-- Bejelentkezési kockázati házirend
-- Felhasználói kockázati házirend
+- Sign-in risk policy
+- User risk policy
 
-![Biztonsági Áttekintés lap a felhasználói és bejelentkezési kockázati házirendek engedélyezéséhez](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Security overview page to enable user and sign-in risk policies](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Mindkét szabályzat úgy működik, hogy automatizálja a kockázati észlelésekre adott válaszokat a környezetben, és lehetővé teszi a felhasználók számára, hogy a kockázatok észlelése után önmagukban is szervizelni lehessen őket. 
+Both policies work to automate the response to risk detections in your environment and allow users to self-remediate when risk is detected. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ha a szervezet szeretné lehetővé tenni a felhasználók számára, hogy a kockázatok észlelése után is önmagukban tudják javítani a felhasználókat, regisztrálni kell mind az önkiszolgáló jelszó-visszaállítást, mind az Azure-Multi-Factor Authentication. Javasoljuk, hogy a lehető legjobb felhasználói élmény érdekében [engedélyezze a kombinált biztonsági információk regisztrálását](../authentication/howto-registration-mfa-sspr-combined.md) . Lehetővé teheti a felhasználók számára, hogy a rendszergazda beavatkozása nélkül gyorsabban visszakapjanak produktív állapotba. A rendszergazdák továbbra is láthatják ezeket az eseményeket, és a tény után kivizsgálják azokat. 
+If your organization wants to allow users to self-remediate when risks are detected, users must be registered for both self-service password reset and Azure Multi-Factor Authentication. We recommend [enabling the combined security information registration experience](../authentication/howto-registration-mfa-sspr-combined.md) for the best experience. Allowing users to self-remediate gets them back to a productive state more quickly without requiring administrator intervention. Administrators can still see these events and investigate them after the fact. 
 
-## <a name="choosing-acceptable-risk-levels"></a>Elfogadható kockázati szintek kiválasztása
+## <a name="choosing-acceptable-risk-levels"></a>Choosing acceptable risk levels
 
-A szervezeteknek el kell dönteniük, hogy milyen kockázati szintet kívánnak elfogadni a felhasználói élmény és a biztonsági helyzet elfogadásához. 
+Organizations must decide the level of risk they are willing to accept balancing user experience and security posture. 
 
-A Microsoft javaslata, hogy a felhasználói kockázati házirend küszöbértékét **magas** értékre állítsa, a bejelentkezési kockázati házirendet pedig **közepesre vagy annál magasabbra**.
+Microsoft's recommendation is to set the user risk policy threshold to **High** and the sign-in risk policy to **Medium and above**.
 
-A **magas** küszöbérték kiválasztása csökkenti a szabályzatok indításának számát, és minimálisra csökkenti a felhasználókra gyakorolt hatást. Azonban nem zárja ki az **alacsony** és **közepes** kockázati észleléseket a szabályzatból, ami esetleg nem gátolja meg, hogy a támadók illetéktelenül feltört identitást használjanak. Az **alacsony** küszöbérték kiválasztásával további felhasználói megszakítások jelennek meg, a biztonsági helyzet azonban nagyobb.
+Choosing a **High** threshold reduces the number of times a policy is triggered and minimizes the impact to users. However, it excludes **Low** and **Medium** risk detections from the policy, which may not block an attacker from exploiting a compromised identity. Selecting a **Low** threshold introduces additional user interrupts, but increased security posture.
 
 ## <a name="exclusions"></a>Korlátozások
 
-Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../users-groups-roles/directory-emergency-access.md). A szervezetek meghatározhatják, hogy a fiókok használatának módja alapján ki kell zárniuk a más fiókokat a meghatározott házirendekből. Az összes kizárást rendszeresen felül kell vizsgálni, hogy ellenőrizze, hogy továbbra is alkalmazhatók-e.
+All of the policies allow for excluding users such as your [emergency access or break-glass administrator accounts](../users-groups-roles/directory-emergency-access.md). Organizations may determine they need to exclude other accounts from specific policies based on the way the accounts are used. All exclusions should be reviewed regularly to see if they are still applicable.
 
-## <a name="enable-policies"></a>Házirendek engedélyezése
+## <a name="enable-policies"></a>Enable policies
 
-A felhasználói kockázat és a bejelentkezési kockázati házirendek engedélyezéséhez hajtsa végre az alábbi lépéseket.
+To enable the user risk and sign-in risk policies complete the following steps.
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **Identity Protection** > **áttekintését**.
-1. Válassza a **felhasználói kockázati házirend konfigurálása**lehetőséget.
-   1. A **hozzárendelések** alatt
-      1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
-         1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek** - **felhasználói kockázat** a Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa be.
-   1. A **vezérlők** területen
-      1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
-   1. Házirend **- - ** **érvénybe léptetése**
-   1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
-1. Válassza a **bejelentkezési kockázati házirend konfigurálása**lehetőséget.
-   1. A **hozzárendelések** alatt
-      1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
-         1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. A **Feltételeit** - **bejelentkezési kockázat** a Microsoft javaslata, hogy ezt a beállítást **közepes vagy magasabb**értékre állítsa.
-   1. A **vezérlők** területen
-      1. **Hozzáférés** – a Microsoft javaslata, hogy **engedélyezze a hozzáférést** és a **többtényezős hitelesítés megkövetelését**.
-   1. Házirend **- - ** **érvénybe léptetése**
-   1. **Mentés**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
+1. Select **Configure user risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **User risk** Microsoft's recommendation is to set this option to **High**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require password change**.
+   1. **Enforce Policy** - **On**
+   1. **Save** - This action will return you to the **Overview** page.
+1. Select **Configure sign-in risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **Sign-in risk** Microsoft's recommendation is to set this option to **Medium and above**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require multi-factor authentication**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
+- [Enable Azure Multi-Factor Authentication registration policy](howto-identity-protection-configure-mfa-policy.md)
 
-- [Mi a kockázat](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md)
 
-- [Kockázati észlelések vizsgálata](howto-identity-protection-investigate-risk.md)
+- [Investigate risk detections](howto-identity-protection-investigate-risk.md)
 
-- [Kockázati észlelések szimulálása](howto-identity-protection-simulate-risk.md)
+- [Simulate risk detections](howto-identity-protection-simulate-risk.md)

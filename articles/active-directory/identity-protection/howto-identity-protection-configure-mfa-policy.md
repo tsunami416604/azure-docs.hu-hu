@@ -1,6 +1,6 @@
 ---
-title: A multi-Factor Authentication regisztrációs szabályzatának konfigurálása a Azure Active Directory Identity Protectionban
-description: Ismerje meg, hogyan konfigurálhatja a Azure AD Identity Protection multi-Factor Authentication regisztrációs szabályzatot.
+title: Configure the MFA registration policy - Azure Active Directory Identity Protection
+description: Learn how to configure the Azure AD Identity Protection multi-factor authentication registration policy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,52 +11,52 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc98f645c6b24069e090560a049ccb4fcd03dfec
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887571"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382146"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Útmutató: az Azure Multi-Factor Authentication regisztrációs szabályzatának konfigurálása
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>How To: Configure the Azure Multi-Factor Authentication registration policy
 
-Azure AD Identity Protection segít az Azure-beli Multi-Factor Authentication (MFA) regisztrációjának kezelésében egy feltételes hozzáférési szabályzat konfigurálásával, amely az MFA-regisztráció megkövetelését írja elő, függetlenül attól, hogy milyen modern hitelesítési alkalmazásba jelentkezik be.
+Azure AD Identity Protection helps you manage the roll-out of Azure Multi-Factor Authentication (MFA) registration by configuring a Conditional Access policy to require MFA registration no matter what modern authentication app you are signing in to.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Mi az Azure Multi-Factor Authentication regisztrációs szabályzata?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>What is the Azure Multi-Factor Authentication registration policy?
 
-Az Azure Multi-Factor Authentication lehetővé teszi annak ellenőrzését, hogy ki használ-e egynél több felhasználónevet és jelszót. Egy második biztonsági réteget biztosít a felhasználói bejelentkezésekhez. Ahhoz, hogy a felhasználók képesek legyenek válaszolni az MFA-kérésekre, először regisztrálniuk kell az Azure Multi-Factor Authentication.
+Azure Multi-Factor Authentication provides a means to verify who you are using more than just a username and password. It provides a second layer of security to user sign-ins. In order for users to be able to respond to MFA prompts, they must first register for Azure Multi-Factor Authentication.
 
-Javasoljuk, hogy a felhasználói bejelentkezésekhez az Azure Multi-Factor Authentication használata szükséges, mert:
+We recommend that you require Azure Multi-Factor Authentication for user sign-ins because it:
 
-- Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával.
-- Kulcsszerepet játszik abban, hogy a szervezet felkészítse az Identity Protection kockázati észlelési feladatait.
+- Delivers strong authentication through a range of verification options.
+- Plays a key role in preparing your organization to self-remediate from risk detections in Identity Protection.
 
-További információ az Azure Multi-Factor Authenticationról: [Mi az az azure multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
+For more information on Azure Multi-Factor Authentication, see [What is Azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>Szabályzatkonfiguráció
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **Identity Protection** > **MFA regisztrációs szabályzatot**.
-   1. A **hozzárendelések** alatt
-      1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
-         1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-   1. A **vezérlők** területen
-      1. Győződjön meg arról, hogy az **Azure MFA-regisztráció megkövetelése** jelölőnégyzet be van jelölve, majd válassza a **kiválasztás**lehetőséget
-   1. Házirend **- - ** **érvénybe léptetése**
-   1. **Mentés**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **MFA registration policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+   1. Under **Controls**
+      1. Ensure the checkbox **Require Azure MFA registration** is checked and choose **Select**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
-## <a name="user-experience"></a>Felhasználói élmény
+## <a name="user-experience"></a>User experience
 
-Azure Active Directory Identity Protection fogja kérni a felhasználókat, hogy regisztrálják a következő bejelentkezést, amikor interaktív módon jelentkeznek be, és a regisztráció befejezéséhez 14 nap szükséges. Ez a 14 napos időszak során megkerülheti a regisztrációt, de az időszak végén, hogy a bejelentkezési folyamat elvégzése előtt regisztrálnia kell.
+Azure Active Directory Identity Protection will prompt your users to register the next time they sign in interactively and they will have 14 days to complete registration. During this 14-day period, they can bypass registration but at the end of the period they will be required to register before they can complete the sign-in process.
 
-A kapcsolódó felhasználói élmény áttekintését lásd:
+For an overview of the related user experience, see:
 
-- A [Azure ad Identity Protectionekkel való bejelentkezési élmény](concept-identity-protection-user-experience.md).  
+- [Sign-in experiences with Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Bejelentkezési és felhasználói kockázati házirendek engedélyezése](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)
 
-- [Az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](../authentication/howto-sspr-deployment.md)
+- [Enable Azure AD self-service password reset](../authentication/howto-sspr-deployment.md)
 
-- [Azure-Multi-Factor Authentication engedélyezése](../authentication/howto-mfa-getstarted.md)
+- [Enable Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

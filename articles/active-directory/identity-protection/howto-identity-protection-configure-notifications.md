@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection értesítések | Microsoft Docs
-description: Ismerje meg, hogy az értesítések hogyan támogatják a vizsgálati tevékenységeket.
+title: Azure Active Directory Identity Protection notifications
+description: Learn how notifications support your investigation activities.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,59 +11,59 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81452f4d1f77c07222bbff05093a7e8d5d0a1bee
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887545"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382155"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
+# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection notifications
 
-Azure AD Identity Protection kétféle automatizált értesítő e-mailt küld a felhasználói kockázatok és a kockázati észlelések kezeléséhez:
+Azure AD Identity Protection sends two types of automated notification emails to help you manage user risk and risk detections:
 
-- Veszélyeztetett felhasználók észlelt e-mail-címe
-- Heti kivonatoló e-mail
+- Users at risk detected email
+- Weekly digest email
 
-Ez a cikk az értesítő e-mailek áttekintését tartalmazza.
+This article provides you with an overview of both notification emails.
 
-## <a name="users-at-risk-detected-email"></a>Veszélyeztetett felhasználók észlelt e-mail-címe
+## <a name="users-at-risk-detected-email"></a>Users at risk detected email
 
-A veszélyeztetett észlelt fiókra adott válaszként Azure AD Identity Protection e-mail-riasztást hoz létre a **veszélyeztetett felhasználókkal** kapcsolatban. Az e-mail tartalmazza a kockázati jelentésre **[megjelölt felhasználókra](../reports-monitoring/concept-user-at-risk.md)** mutató hivatkozást. Ajánlott eljárásként azonnal vizsgálja meg a veszélyeztetett felhasználókat.
+In response to a detected account at risk, Azure AD Identity Protection generates an email alert with **Users at risk detected** as subject. The email includes a link to the **[Users flagged for risk](../reports-monitoring/concept-user-at-risk.md)** report. As a best practice, you should immediately investigate the users at risk.
 
-Ennek a riasztásnak a konfigurációja lehetővé teszi, hogy meghatározza, milyen felhasználói kockázati szinten szeretné létrehozni a riasztást. A rendszer akkor hozza létre az e-mailt, ha a felhasználó kockázati szintje eléri a megadott értéket; a felhasználó számára azonban nem fogja tudni észlelni az e-mail-riasztásokat, miután erre a felhasználói kockázati szintre költöztek. Ha például úgy állítja be a házirendet, hogy közepes felhasználói kockázattal figyelmeztessen, és a felhasználó John közepes kockázatra vált, a veszélyeztetett felhasználókat a rendszer az észlelt e-mail-címre fogja kapni John számára. Azonban nem kap a veszélyeztetett második felhasználót a riasztás, ha János ezt követően magas kockázatra vált, vagy további kockázati észleléseket is tartalmaz.
+The configuration for this alert allows you to specify at what user risk level you want the alert to be generated. The email will be generated when the user's risk level reaches what you have specified; however, you will not receive new users at risk detected email alerts for this user after they move to this user risk level. For example, if you set the policy to alert on medium user risk and your user John moves to medium risk, you will receive the users at risk detected email for John. However, you will not receive a second user at risk detected alert if John then moves to high risk or has additional risk detections.
 
-![Veszélyeztetett felhasználók észlelt e-mail-címe](./media/howto-identity-protection-configure-notifications/01.png)
+![Users at risk detected email](./media/howto-identity-protection-configure-notifications/01.png)
 
-### <a name="configure-users-at-risk-detected-alerts"></a>Veszélyeztetett felhasználók konfigurálása észlelt riasztásokkal
+### <a name="configure-users-at-risk-detected-alerts"></a>Configure users at risk detected alerts
 
-Rendszergazdaként a következőket állíthatja be:
+As an administrator, you can set:
 
-- **Az e-mailek generációját kiváltó felhasználói kockázati szint** alapértelmezés szerint a kockázati szint "magas" kockázatra van állítva.
-- **Az e-mail címzettjei** – alapértelmezés szerint a címzettek az összes globális rendszergazdát tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.
-   - Opcionálisan **további e-maileket is hozzáadhat a riasztási értesítések fogadásához** . Ez a funkció előzetes verzió, és a felhasználók által definiált felhasználóknak rendelkezniük kell a megfelelő engedélyekkel a csatolt jelentések megtekintéséhez a Azure Portal.
+- **The user risk level that triggers the generation of this email** - By default, the risk level is set to “High” risk.
+- **The recipients of this email** - By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
+   - Optionally you can **Add additional emails to receive alert notifications** this feature is a preview and users defined must have the appropriate permissions to view the linked reports in the Azure portal.
 
-Konfigurálja a veszélyeztetett felhasználókat a **Azure Portal** **Azure Active Directory** > **Biztonság** > **Identity Protection** > a **veszélyeztetett riasztásokat észlelő felhasználók számára**.
+Configure the users at risk email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Users at risk detected alerts**.
 
-## <a name="weekly-digest-email"></a>Heti kivonatoló e-mail
+## <a name="weekly-digest-email"></a>Weekly digest email
 
-A heti kivonatoló e-mail tartalmazza az új kockázati észlelések összegzését.  
-A következőket tartalmazza:
+The weekly digest email contains a summary of new risk detections.  
+It includes:
 
 - Veszélyeztetett felhasználók
-- Gyanús tevékenységek
-- Észlelt biztonsági rések
-- Az Identity Protection kapcsolódó jelentéseire mutató hivatkozások
+- Suspicious activities
+- Detected vulnerabilities
+- Links to the related reports in Identity Protection
 
-![Heti kivonatoló e-mail](./media/howto-identity-protection-configure-notifications/400.png)
+![Weekly digest email](./media/howto-identity-protection-configure-notifications/400.png)
 
-Alapértelmezés szerint a címzettek a globális rendszergazdákat is tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.
+By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
 
-### <a name="configure-weekly-digest-email"></a>Heti kivonatoló e-mail konfigurálása
+### <a name="configure-weekly-digest-email"></a>Configure weekly digest email
 
-Rendszergazdaként a heti kivonatoló e-mailek küldését vagy kikapcsolását is elvégezheti, és kiválaszthatja az e-mailek fogadásához hozzárendelt felhasználókat.
+As an administrator, you can switch sending a weekly digest email on or off and choose the users assigned to receive the email.
 
-Konfigurálja a heti kivonatoló e-mailt a Azure Portal **Azure Active Directory** > **biztonsági** > **Identity Protection** > **heti kivonatoló**elemnél.
+Configure the weekly digest email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Weekly digest**.
 
 ## <a name="see-also"></a>Lásd még:
 

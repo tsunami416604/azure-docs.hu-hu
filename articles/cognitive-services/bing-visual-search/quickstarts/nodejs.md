@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Lemezkép-elemzések, a Bing Visual Search REST API és a Node.js használatával'
+title: 'Quickstart: Get image insights using the REST API and Node.js - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kaphat elemzési információkat, és töltsön fel egy képet, a Bing Visual Search API.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9414bac220d928618b403aa2f7df7748772e0e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecfe341fa050e693f919f35c29c8120c687c88f8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832608"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383193"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: Lemezkép-elemzések, a Bing Visual Search REST API és a Node.js használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Node.js
 
-Ez a rövid útmutató segítségével a Bing Visual Search API az első hívását, és megtekintheti a keresési eredmények között. Ez az egyszerű JavaScript alkalmazás Rendszerképadatok az API-t, és a visszaadott kapcsolatos információkat jeleníti meg. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Use this quickstart to make your first call to the Bing Visual Search API and view the search results. This simple JavaScript application uploads an image to the API, and displays the information returned about it. While this application is written in JavaScript, the API is a RESTful Web service compatible with most programming languages.
 
-Ha feltöltenek egy helyi lemezképet, az űrlapadatok tartalmaznia kell a `Content-Disposition` fejléc. Be kell állítani a `name` paraméter "image", és a `filename` paraméter bármilyen karakterlánc értékre lehet beállítani. Az űrlap a rendszerkép a bináris adatokat is tartalmazza. A legnagyobb feltölthető képméret 1 MB.
+When uploading a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and the `filename` parameter can be set to any string. The contents of the form include the binary data of the image. A legnagyobb feltölthető képméret 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -35,14 +35,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
-* A JavaScript-kérelem modul. Használhat `npm install request` parancsot a modul telepítéséhez.
-* Az űrlap-adatok modul. Használhatja a `npm install form-data` parancsot a modul telepítéséhez. 
+* The Request module for JavaScript. You can use `npm install request` command to install the module.
+* The form-data module. You can use the `npm install form-data` command to install the module. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
+## <a name="initialize-the-application"></a>Initialize the application
 
-1. Hozzon létre egy JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és állítsa be az alábbi követelményeknek:
+1. Create a JavaScript file in your favorite IDE or editor, and set the following requirements:
 
     ```javascript
     var request = require('request');
@@ -50,7 +50,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Változók létrehozása az API-végpont, előfizetési kulcsot, és a lemezkép elérési útja:
+2. Create variables for your API endpoint, subscription key, and the path to your image:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -58,7 +58,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var imagePath = "path-to-your-image";
     ```
 
-3. Hozzon létre egy függvényt, nevű `requestCallback()` nyomtatása válasz az API-val:
+3. Create a function named `requestCallback()` to print the response from the API:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -66,16 +66,16 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     }
     ```
 
-## <a name="construct-and-send-the-search-request"></a>Hozza létre, és a keresési kérelem küldése
+## <a name="construct-and-send-the-search-request"></a>Construct and send the search request
 
-1. Hozzon létre egy új **űrlapadat-tartalmat** objektumba `FormData()`, és fűzze hozzá a lemezkép elérési útja, használatával `fs.createReadStream()`:
+1. Create a new **FormData** object using `FormData()`, and append your image path to it, using `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. A kérelem könyvtár segítségével feltölti a lemezképet, és hívja `requestCallback()` a válasz. Ügyeljen arra, hogy az előfizetési kulcs hozzáadása a kérelem fejléce:
+2. Use the request library to upload the image, and call `requestCallback()` to print the response. Be sure to add your subscription key to the request header:
 
     ```javascript
     form.getLength(function(err, length){
@@ -88,7 +88,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     });
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Vizuális keresés egyoldalas webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

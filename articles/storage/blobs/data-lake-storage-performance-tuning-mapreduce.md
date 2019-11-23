@@ -1,111 +1,111 @@
 ---
-title: Azure Data Lake Storage Gen2 MapReduce teljesítmény-hangolási útmutatója | Microsoft Docs
-description: Azure Data Lake Storage Gen2 MapReduce teljesítményének finomhangolására vonatkozó irányelvek
+title: 'Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Azure Data Lake Storage Gen2 MapReduce Performance Tuning Guidelines
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3bd73b62b8859ffc5a71f610ebbdb55705284a76
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855516"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327931"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen2 MapReduce
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
-Ismerje meg azokat a tényezőket, amelyeket figyelembe kell vennie a Térkép teljesítményének csökkentése érdekében. Ez a cikk a teljesítmény-hangolási irányelvek széles körét ismerteti.
+Understand the factors that you should consider when you tune the performance of Map Reduce jobs. This article covers a range of performance tuning guidelines.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd [: gyors útmutató: Hozzon létre egy Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)Storage-fiókot.
-* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) -fürtökkel
-* **A MapReduce használata a HDInsight-on**.  További információ: [MapReduce használata a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen2**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen2 teljesítmény-finomhangolási útmutató](data-lake-storage-performance-tuning-guidance.md)
+* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* **Using MapReduce on HDInsight**.  For more information, see [Use MapReduce in Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
+* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>Paraméterek
 
-A MapReduce-feladatok futtatásakor a Data Lake Storage Gen2 teljesítményének növeléséhez konfigurálható paraméterek:
+When running MapReduce jobs, here are the parameters that you can configure to increase performance on Data Lake Storage Gen2:
 
-* **MapReduce. map. Memory. MB** – az egyes leképezések számára lefoglalható memória mennyisége
-* **MapReduce. job. Maps** – feladat-hozzárendelési feladatok száma
-* **MapReduce. csökkentse. Memory. MB** – az egyes redukálók számára lefoglalható memória mennyisége
-* **MapReduce. job.** csökkentsük – a feladatok csökkentésének száma feladat alapján
+* **Mapreduce.map.memory.mb** – The amount of memory to allocate to each mapper
+* **Mapreduce.job.maps** – The number of map tasks per job
+* **Mapreduce.reduce.memory.mb** – The amount of memory to allocate to each reducer
+* **Mapreduce.job.reduces** – The number of reduce tasks per job
 
-**MapReduce. map. Memory/MapReduce. csökkentse a memóriát** Ezt a számot úgy kell beállítani, hogy mennyi memóriát igényel a Térkép és/vagy a feladat csökkentése.  A MapReduce. map. Memory és a MapReduce. csökkentse. memória alapértelmezett értékei a Ambari a fonal konfigurációján keresztül tekinthetők meg.  A Ambari-ben navigáljon a fonal lapra, és tekintse meg a konfigurációk lapot.  Ekkor megjelenik a szál memóriája.  
+**Mapreduce.map.memory / Mapreduce.reduce.memory** This number should be adjusted based on how much memory is needed for the map and/or reduce task.  The default values of mapreduce.map.memory and mapreduce.reduce.memory can be viewed in Ambari via the Yarn configuration.  In Ambari, navigate to YARN and view the Configs tab.  The YARN memory will be displayed.  
 
-**MapReduce. job. Maps/MapReduce. job. csökkentse** Ez határozza meg a létrehozandó leképezések vagy szűkítők maximális számát.  A felosztások száma határozza meg, hogy a MapReduce-feladatokhoz hány leképezést hoz létre a rendszer.  Ezért előfordulhat, hogy kevesebb leképezést kap, mint amennyit kért, ha a kért adatleképezések száma kevesebb.       
+**Mapreduce.job.maps / Mapreduce.job.reduces** This will determine the maximum number of mappers or reducers to be created.  The number of splits will determine how many mappers will be created for the MapReduce job.  Therefore, you may get less mappers than you requested if there are less splits than the number of mappers requested.       
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Segédletek
 
 > [!NOTE]
-> A jelen dokumentumban szereplő útmutatás azt feltételezi, hogy az alkalmazás az egyetlen, a fürtön futó alkalmazás.
+> The guidance in this document assumes that your application is the only application running on your cluster.
 
-**1. lépés: A futó feladatok számának meghatározása**
+**Step 1: Determine number of jobs running**
 
-Alapértelmezés szerint a MapReduce a teljes fürtöt fogja használni a feladatokhoz.  Az elérhető tárolók közül kevesebbet használhat a fürt kevesebb leképező használatával.        
+By default, MapReduce will use the entire cluster for your job.  You can use less of the cluster by using less mappers than there are available containers.        
 
-**2. lépés: Állítsa be a MapReduce. map. Memory/MapReduce. csökkentse a memóriát**
+**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
 
-A térképhez és a tevékenységek csökkentéséhez használt memória mérete az adott feladattól függ.  Ha a párhuzamosságot szeretné bővíteni, csökkentheti a memória méretét.  Az egyidejűleg futó feladatok száma a tárolók számától függ.  Ha csökkenti a memória mennyiségét a leképező vagy a csökkentő memóriában, több tárolót is létrehozhat, amelyek lehetővé teszik, hogy egyidejűleg több leképezést vagy szűkítőt futtasson.  A túl sok memória mennyiségének csökkentése miatt előfordulhat, hogy bizonyos folyamatok elfogynak a memóriából.  Ha a feladatok futtatásakor egy halom hibaüzenetet kap, növelje a memóriát a leképező vagy a csökkentő alapján.  Érdemes figyelembe vennie, hogy a további tárolók hozzáadásával további terhelések is megadhatók, ami potenciálisan csökkentheti a teljesítményt.  Egy másik alternatíva, hogy több memóriát kell használnia egy olyan fürt használatával, amely nagyobb mennyiségű memóriával rendelkezik, vagy növeli a fürt csomópontjainak számát.  Több memória használata több tároló használatát teszi lehetővé, ami nagyobb párhuzamosságot jelent.  
+The size of the memory for map and reduce tasks will be dependent on your specific job.  You can reduce the memory size if you want to increase concurrency.  The number of concurrently running tasks depends on the number of containers.  By decreasing the amount of memory per mapper or reducer, more containers can be created, which enable more mappers or reducers to run concurrently.  Decreasing the amount of memory too much may cause some processes to run out of memory.  If you get a heap error when running your job, you should increase the memory per mapper or reducer.  You should consider that adding more containers will add extra overhead for each additional container, which can potentially degrade performance.  Another alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the number of nodes in your cluster.  More memory will enable more containers to be used, which means more concurrency.  
 
-**3. lépés: A fonal teljes memóriájának meghatározása**
+**Step 3: Determine Total YARN memory**
 
-A MapReduce. job. Maps/MapReduce. job. reakcióhoz. csökkentse a rendelkezésre álló szál teljes memóriájának mennyiségét.  Ez az információ a Ambari-ben érhető el.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  A fonalak memóriáját a fürtben lévő csomópontok számával kell szorozni a teljes fonal memóriájának beolvasásához.
+To tune mapreduce.job.maps/mapreduce.job.reduces, you should consider the amount of total YARN memory available for use.  This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  You should multiply the YARN memory with the number of nodes in your cluster to get the total YARN memory.
 
     Total YARN memory = nodes * YARN memory per node
 
-Ha üres fürtöt használ, a memória a fürt teljes FONALának memóriája lehet.  Ha más alkalmazások használják a memóriát, akkor úgy is dönthet, hogy csak a fürt memóriájának egy részét használja. ehhez csökkentse a használni kívánt tárolók számát.  
+If you are using an empty cluster, then memory can be the total YARN memory for your cluster.  If other applications are using memory, then you can choose to only use a portion of your cluster’s memory by reducing the number of mappers or reducers to the number of containers you want to use.  
 
-**4. lépés: A FONALas tárolók számának kiszámítása**
+**Step 4: Calculate number of YARN containers**
 
-A FONALas tárolók a feladatokhoz rendelkezésre álló Egyidejűség mennyiségét írják le.  A fonal teljes memóriájának és osztásának elvégzése a MapReduce. map. Memory használatával.  
+YARN containers dictate the amount of concurrency available for the job.  Take total YARN memory and divide that by mapreduce.map.memory.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**5. lépés: Állítsa be a MapReduce. job. Maps/MapReduce. job. csökkentse**
+**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
 
-Állítsa be a MapReduce. job. Maps/MapReduce. job parancsot, és csökkentse legalább a rendelkezésre álló tárolók számát.  További kísérletet tehet a mappers és a szűkítők számának növelésével, hogy megtudja, jobb teljesítményt érhet-e el.  Ne feledje, hogy a további leképezések további terheléssel fognak rendelkezni, így túl sok Mapper is csökkentheti a teljesítményt.  
+Set mapreduce.job.maps/mapreduce.job.reduces to at least the number of available containers.  You can experiment further by increasing the number of mappers and reducers to see if you get better performance.  Keep in mind that more mappers will have additional overhead so having too many mappers may degrade performance.  
 
-A CPU-ütemezés és a CPU-elkülönítés alapértelmezés szerint ki van kapcsolva, így a szálak tárolóinak száma korlátozott a memóriában.
+CPU scheduling and CPU isolation are turned off by default so the number of YARN containers is constrained by memory.
 
-## <a name="example-calculation"></a>Példa a számításra
+## <a name="example-calculation"></a>Example calculation
 
-Tegyük fel, hogy egy 8 D14-csomópontból álló fürttel rendelkezünk, és egy I/O-igényes feladatot szeretnénk futtatni.  A következő számításokat kell végrehajtania:
+Let’s assume that we have a cluster composed of 8 D14 nodes, and we want to run an I/O intensive job.  Here are the calculations you should do:
 
-**1. lépés: A futó feladatok számának meghatározása**
+**Step 1: Determine number of jobs running**
 
-Ebben a példában feltételezzük, hogy az egyetlen futó feladatot felhasználjuk.  
+In this example, let's assume that our job is the only job that is running.  
 
-**2. lépés: Állítsa be a MapReduce. map. Memory/MapReduce. csökkentse a memóriát**
+**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
 
-Ebben a példában egy I/O-igényes feladatot futtatunk, és eldöntjük, hogy a térképi feladatokhoz szükséges 3GB memória elegendő lesz-e.
+In this example, we are running an I/O intensive job and decide that 3GB of memory for map tasks will be sufficient.
 
     mapreduce.map.memory = 3GB
 
-**3. lépés: A fonal teljes memóriájának meghatározása**
+**Step 3: Determine Total YARN memory**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**4. lépés: A FONALas tárolók számának kiszámítása**
+**Step 4: Calculate # of YARN containers**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**5. lépés: Állítsa be a MapReduce. job. Maps/MapReduce. job. csökkentse**
+**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
 
     mapreduce.map.jobs = 256
 
-## <a name="examples-to-run"></a>Futtatási példák
+## <a name="examples-to-run"></a>Examples to run
 
-Ha szeretné bemutatni, hogy a MapReduce hogyan fut Data Lake Storage Gen2on, az alábbiakban egy olyan mintakód található, amely egy fürtön futott a következő beállításokkal:
+To demonstrate how MapReduce runs on Data Lake Storage Gen2, below is some sample code that was run on a cluster with the following settings:
 
-* 16 csomópontos D14v2
-* Hadoop-fürt, amely HDI 3,6-t futtat
+* 16 node D14v2
+* Hadoop cluster running HDI 3.6
 
-A kiindulási pontnál Íme néhány példa a MapReduce Teragen, a Terasort és a Teravalidate futtatására szolgáló parancsokra.  Ezeket a parancsokat az erőforrások alapján módosíthatja.
+For a starting point, here are some example commands to run MapReduce Teragen, Terasort, and Teravalidate.  You can adjust these commands based on your resources.
 
 **Teragen**
 

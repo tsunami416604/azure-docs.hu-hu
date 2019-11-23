@@ -1,115 +1,115 @@
 ---
-title: Az Azure Data Lake Storage Gen2 Spark teljesítmény-finomhangolási útmutató |} A Microsoft Docs
-description: Az Azure Data Lake Storage Gen2 Spark teljesítmény-finomhangolási útmutató
+title: 'Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Azure Data Lake Storage Gen2 Spark Performance Tuning Guidelines
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939338"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327545"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Spark on HDInsight és az Azure Data Lake Storage Gen2
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2
 
-A Spark teljesítményének hangolása, amikor kell figyelembe venni a fürtön futó alkalmazások száma.  Alapértelmezés szerint 4 futtatható egyidejűleg a HDI-fürtön lévő alkalmazások (Megjegyzés: az alapértelmezett beállítás: változhat).  Kevesebb alkalmazások használatához, így felülírják az alapértelmezett beállításokat, és használja a fürt több ezen alkalmazások esetén dönthet.  
+When tuning performance on Spark, you need to consider the number of apps that will be running on your cluster.  By default, you can run 4 apps concurrently on your HDI cluster (Note: the default setting is subject to change).  You may decide to use fewer apps so you can override the default settings and use more of the cluster for those apps.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot](data-lake-storage-quickstart-create-account.md).
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
-* **Spark-fürtön futó Data Lake Storage Gen2**.  További információkért lásd: [használata a HDInsight Spark-fürt a Data Lake Storage Gen2 adatok elemzése](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md) 
+* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Make sure you enable Remote Desktop for the cluster.
+* **Running Spark cluster on Data Lake Storage Gen2**.  For more information, see [Use HDInsight Spark cluster to analyze data in Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>Paraméterek
 
-Amikor Spark futó feladatok, az alábbiakban a legfontosabb beállítások, amelyek megfelelő hangolásával a Data Lake Storage Gen2 a teljesítmény növelése:
+When running Spark jobs, here are the most important settings that can be tuned to increase performance on Data Lake Storage Gen2:
 
-* **NUM-végrehajtóval** -végrehajtható egyidejű feladatok számát.
+* **Num-executors** - The number of concurrent tasks that can be executed.
 
-* **Végrehajtó memóriabeli** – minden végrehajtó kiosztott memória mennyiségét.
+* **Executor-memory** - The amount of memory allocated to each executor.
 
-* **Végrehajtó virtuális mag** – az egyes végrehajtó lefoglalt magok száma.                     
+* **Executor-cores** - The number of cores allocated to each executor.                     
 
-**NUM-végrehajtóval** Num-végrehajtóval fogja beállítani a párhuzamosan futtatható feladatok maximális számát.  A párhuzamosan futtatható feladatok tényleges száma a memória és a fürtben rendelkezésre álló Processzor-erőforrások korlátozódik.
+**Num-executors** Num-executors will set the maximum number of tasks that can run in parallel.  The actual number of tasks that can run in parallel is bounded by the memory and CPU resources available in your cluster.
 
-**Végrehajtó memóriabeli** Ez az egyes végrehajtó lefoglalt memória mennyisége.  A memória szükséges minden egyes végrehajtó szolgáltatás a feladat függ.  Összetett művelet a memória van szüksége, magasabb lehet.  Egyszerű műveletek, mint például az olvasási és írási alacsonyabb lesz a memóriára vonatkozó követelményeknek.  Az egyes végrehajtó memória Ambari lehet megtekinteni.  Az Ambari keresse meg a Spark, és a konfigurációkat lapon.  
+**Executor-memory** This is the amount of memory that is being allocated to each executor.  The memory needed for each executor is dependent on the job.  For complex operations, the memory needs to be higher.  For simple operations like read and write, memory requirements will be lower.  The amount of memory for each executor can be viewed in Ambari.  In Ambari, navigate to Spark and view the Configs tab.  
 
-**Végrehajtó virtuális mag** Ezzel beállítja, hogy a használt végrehajtó, amely megadja, hogy kiszolgálónként végrehajtó futtatható párhuzamos szálak száma / magok számát.  Például ha végrehajtó virtuális mag = 2, majd minden egyes végrehajtó 2 párhuzamos feladatokat futtathat a végrehajtó.  Az executor-magok szükség lesz a feladat függ.  Nagy i/o-feladatok nem igényelnek nagy mennyiségű memóriát biztosít a feladat, így minden végrehajtó további párhuzamos feladatok képes kezelni.
+**Executor-cores** This sets the number of cores used per executor, which determines the number of parallel threads that can be run per executor.  For example, if executor-cores = 2, then each executor can run 2 parallel tasks in the executor.  The executor-cores needed will be dependent on the job.  I/O heavy jobs do not require a large amount of memory per task so each executor can handle more parallel tasks.
 
-Alapértelmezés szerint két virtuális YARN magok minden egyes fizikai maghoz vannak meghatározva a HDInsight Spark futtatásakor.  Ez a szám egyidejűség és a környezet több szálon való váltás mennyisége jó biztosít.  
+By default, two virtual YARN cores are defined for each physical core when running Spark on HDInsight.  This number provides a good balance of concurrency and amount of context switching from multiple threads.  
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Segédletek
 
-Futtatásakor a Spark a Data Lake Storage Gen2 adatokkal való munka adatelemzési számítási feladatokhoz, azt javasoljuk, hogy a HDInsight legfrissebb használatával a Data Lake Storage Gen2 a legjobb teljesítmény. Ha a feladat további i/o-igényes, majd bizonyos paraméterek konfigurálható teljesítmény javítása érdekében.  Data Lake Storage Gen2 egy rugalmasan méretezhető tárolási platform, amely képes kezelni a nagy átviteli sebességet.  Ha a feladat főként olvasási vagy írási áll, egyidejűségi majd növeli az i/o és a Data Lake Storage Gen2 megnövelheti teljesítményét.
+While running Spark analytic workloads to work with data in Data Lake Storage Gen2, we recommend that you use the most recent HDInsight version to get the best performance with Data Lake Storage Gen2. When your job is more I/O intensive, then certain parameters can be configured to improve performance.  Data Lake Storage Gen2 is a highly scalable storage platform that can handle high throughput.  If the job mainly consists of read or writes, then increasing concurrency for I/O to and from Data Lake Storage Gen2 could increase performance.
 
-Többféleképpen néhány általános i/o-igényes feladatok az egyidejűség mértékének növelése érdekében.
+There are a few general ways to increase concurrency for I/O intensive jobs.
 
-**1. lépés: Határozza meg, hány alkalmazásokat a fürtön futnak** – Ha tisztában van a fürtön, beleértve a jelenlegivel hány alkalmazások futnak.  Minden Spark beállítás feltételezi, hogy az alapértelmezett értékeit, ha 4 egyidejűleg futó alkalmazások.  Ezért csak akkor 25 %-át a fürt minden alkalmazáshoz elérhető.  Jobb teljesítményt érhet el, hogy az alapértelmezett értéket felülírhatja végrehajtóval számának módosításával.  
+**Step 1: Determine how many apps are running on your cluster** – You should know how many apps are running on the cluster including the current one.  The default values for each Spark setting assumes that there are 4 apps running concurrently.  Therefore, you will only have 25% of the cluster available for each app.  To get better performance, you can override the defaults by changing the number of executors.  
 
-**2. lépés: Állítsa be a memórián belüli végrehajtó** – az első lépésben állítsa be a végrehajtó memória.  A memória lesz, amelyek futtatni kívánja a feladat függ.  Egyidejűségi növelheti végrehajtó kevesebb memória lefoglalásával.  Ha memória kivételek kívül a feladat futtatásakor, majd, növelje a paraméter értéke.  Egy másik, hogy több memóriát kap a nagyobb mennyiségű memóriával rendelkező fürt használatával, vagy a fürt méretének növelését.  Több memóriát lehetővé teszi több végrehajtóval használható, ami azt jelenti, hogy több egyidejűséget.
+**Step 2: Set executor-memory** – The first thing to set is the executor-memory.  The memory will be dependent on the job that you are going to run.  You can increase concurrency by allocating less memory per executor.  If you see out of memory exceptions when you run your job, then you should increase the value for this parameter.  One alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the size of your cluster.  More memory will enable more executors to be used, which means more concurrency.
 
-**3. lépés: Állítsa be az executor-magok** – az I/O-igényű számítási feladatokhoz, amelyek nem rendelkeznek összetett operations, fontos executor-magok / végrehajtó párhuzamos feladatok számának növeléséhez nagy számú kezdeni.  Remek kezdőpont beállítása végrehajtó virtuális mag, 4.   
+**Step 3: Set executor-cores** – For I/O intensive workloads that do not have complex operations, it’s good to start with a high number of executor-cores to increase the number of parallel tasks per executor.  Setting executor-cores to 4 is a good start.   
 
     executor-cores = 4
-Executor-magok számának növelésével kap további párhuzamosság, kísérletezhet a különböző végrehajtó virtuális mag.  Összetettebb műveleteket rendelkező feladatok akkor csökkentse a végrehajtó / magok számát.  Ha végrehajtó virtuális mag nagyobb, mint 4, ezután szemétgyűjtés előfordulhat, hogy nem elég hatékony válnak, és ronthatja a teljesítményt.
+Increasing the number of executor-cores will give you more parallelism so you can experiment with different executor-cores.  For jobs that have more complex operations, you should reduce the number of cores per executor.  If executor-cores is set higher than 4, then garbage collection may become inefficient and degrade performance.
 
-**4. lépés: Határozza meg a fürt YARN memória mennyisége** – Ez az információ érhető el az Ambari.  Keresse meg a YARN és a konfigurációkat lapon.  A YARN memória ebben az ablakban jelenik meg.  
-Megjegyzés: amíg a ablakban, láthatja az alapértelmezett YARN tárolóméret is.  A YARN-tároló mérete megegyezik a memória végrehajtó paraméterenként.
+**Step 4: Determine amount of YARN memory in cluster** – This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  
+Note while you are in the window, you can also see the default YARN container size.  The YARN container size is the same as memory per executor parameter.
 
     Total YARN memory = nodes * YARN memory per node
-**5. lépés: Num-végrehajtóval kiszámítása**
+**Step 5: Calculate num-executors**
 
-**Memória megkötés kiszámítása** -num-végrehajtóval paraméter által korlátozott, memória, vagy CPU.  A memória korlátozás az alkalmazás elérhető YARN memória mennyisége határozza meg.  YARN teljes memória igénybe kell, és, hogy nullával való osztás végrehajtó memóriában.  A korlátozás kell lennie megszüntetéséhez méretezett, az alkalmazások száma, ezért azt el kell osztani alkalmazások száma.
+**Calculate memory constraint** - The num-executors parameter is constrained either by memory or by CPU.  The memory constraint is determined by the amount of available YARN memory for your application.  You should take total YARN memory and divide that by executor-memory.  The constraint needs to be de-scaled for the number of apps so we divide by the number of apps.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**CPU-korlátozás kiszámítása** – a CPU-korlátozás számítjuk ki, hogy a virtuális magok száma összesen a magok száma végrehajtó száma osztva.  Nincsenek 2 virtuális mag, minden egyes fizikai maghoz.  A memória megkötés hasonlóan kell, hogy nullával való osztás alkalmazások száma.
+**Calculate CPU constraint** - The CPU constraint is calculated as the total virtual cores divided by the number of cores per executor.  There are 2 virtual cores for each physical core.  Similar to the memory constraint, we have to divide by the number of apps.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Állítsa be a num-végrehajtóval** – a num-végrehajtóval paraméter határozza meg a minimális, a memória korlátozás és a CPU-korlátozás véve. 
+**Set num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Num-végrehajtóval, ha nagyobb értékre nem feltétlenül növelheti teljesítményt.  Vegye figyelembe, hogy további végrehajtóval hozzáadása felveszi nagyon általános, az egyes további végrehajtó, amely potenciálisan ronthatja a teljesítményt.  A fürt erőforrásainak NUM-végrehajtóval korlátozódik.    
+Setting a higher number of num-executors does not necessarily increase performance.  You should consider that adding more executors will add extra overhead for each additional executor, which can potentially degrade performance.  Num-executors is bounded by the cluster resources.    
 
-## <a name="example-calculation"></a>Példa kiszámítása
+## <a name="example-calculation"></a>Example calculation
 
-Tegyük fel, jelenleg rendelkezik 8 D4v2 csomópontokból álló fürttel 2 rendszerű alkalmazásokat, beleértve futtatni kívánja.  
+Let’s say you currently have a cluster composed of 8 D4v2 nodes that is running 2 apps including the one you are going to run.  
 
-**1. lépés: Határozza meg, hány alkalmazásokat a fürtön futnak** – tudja, hogy 2 is beleértve futtatni kívánja, a fürtön lévő alkalmazások.  
+**Step 1: Determine how many apps are running on your cluster** – you know that you have 2 apps on your cluster, including the one you are going to run.  
 
-**2. lépés: Állítsa be a memórián belüli végrehajtó** – ebben a példában azt határozza meg, hogy az i/o-igényes feladat elegendő lesz-e a 6 GB memória végrehajtó.  
+**Step 2: Set executor-memory** – for this example, we determine that 6GB of executor-memory will be sufficient for I/O intensive job.  
 
     executor-memory = 6GB
-**3. lépés: Állítsa be az executor-magok** – mivel ez egy i/o-igényes feladat, azt az egyes végrehajtó 4 állíthatja a magok számát.  Magok száma végrehajtó beállítás nagyobb, mint 4 szemétgyűjtési gyűjtemény problémákat okozhat.  
+**Step 3: Set executor-cores** – Since this is an I/O intensive job, we can set the number of cores for each executor to 4.  Setting cores per executor to larger than 4 may cause garbage collection problems.  
 
     executor-cores = 4
-**4. lépés: Határozza meg a fürt YARN memória mennyisége** – azt keresse meg az Ambari tudja meg, hogy minden egyes D4v2 25 GB-nyi memóriát YARN rendelkezik-e.  Mivel ebben az esetben 8 csomópont, a rendszer megszorozza a rendelkezésre álló memória YARN 8.
+**Step 4: Determine amount of YARN memory in cluster** – We navigate to Ambari to find out that each D4v2 has 25GB of YARN memory.  Since there are 8 nodes, the available YARN memory is multiplied by 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**5. lépés: Num-végrehajtóval kiszámítása** – a num-végrehajtóval paraméter határozza meg a minimális, a memória megkötés véve, és a CPU-korlátozás a Sparkon futó alkalmazások száma osztva.    
+**Step 5: Calculate num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint divided by the # of apps running on Spark.    
 
-**Memória megkötés kiszámítása** – a memória megkötés számítjuk ki, hogy elosztja az executor-memória memória összesen YARN.
+**Calculate memory constraint** – The memory constraint is calculated as the total YARN memory divided by the memory per executor.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**CPU-korlátozás kiszámítása** – a CPU-korlátozás számítjuk ki, hogy a teljes yarn Processzormagok száma osztva a végrehajtó / magok számát.
+**Calculate CPU constraint** - The CPU constraint is calculated as the total yarn cores divided by the number of cores per executor.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Set num-végrehajtóval**
+**Set num-executors**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

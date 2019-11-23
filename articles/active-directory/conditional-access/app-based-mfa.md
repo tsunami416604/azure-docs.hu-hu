@@ -1,188 +1,188 @@
 ---
-title: Gyors útmutató – többtényezős hitelesítés (MFA) megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel | Microsoft Docs
-description: Ebből a rövid útmutatóból megtudhatja, hogyan lehet a hitelesítési követelményeket a Azure Active Directory (Azure AD) feltételes hozzáférés használatával összekapcsolt felhőalapú alkalmazás típusához kötni.
+title: Require Azure MFA with Conditional Access -Azure Active Directory
+description: In this quickstart, you learn how you can tie your authentication requirements to the type of accessed cloud app using Azure Active Directory (Azure AD) Conditional Access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 01/30/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55c9188a1320b92aafa5fc67a253b42b6b107711
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474040"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381082"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rövid útmutató: többtényezős hitelesítés megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quickstart: Require MFA for specific apps with Azure Active Directory Conditional Access
 
-A felhasználók bejelentkezési élményének egyszerűsítése érdekében előfordulhat, hogy engedélyezni szeretné a felhasználóknak, hogy felhasználónevet és jelszót használjanak a felhőalapú alkalmazásokba való bejelentkezéshez. Számos környezetnek azonban legalább néhány alkalmazással kell rendelkeznie, amelyekhez javasolt a fiókok ellenőrzésének erősebb formája, például a többtényezős hitelesítés (MFA) megkövetelése. Ez a szabályzat igaz lehet a szervezete e-mail-rendszeréhez vagy a HR-alkalmazásaihoz való hozzáféréshez. Azure Active Directory (Azure AD) esetében ezt a célt egy feltételes hozzáférési szabályzattal hajthatja végre.
+To simplify the sign in experience of your users, you might want to allow them to sign in to your cloud apps using a user name and a password. However, many environments have at least a few apps for which it is advisable to require a stronger form of account verification, such as multi-factor authentication (MFA). This policy might be true for access to your organization's email system or your HR apps. In Azure Active Directory (Azure AD), you can accomplish this goal with a Conditional Access policy.
 
-Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy [Azure ad feltételes hozzáférési szabályzatot](../active-directory-conditional-access-azure-portal.md) , amely megköveteli a többtényezős hitelesítést egy kiválasztott felhőalapú alkalmazás számára a környezetben.
+This quickstart shows how to configure an [Azure AD Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that requires multi-factor authentication for a selected cloud app in your environment.
 
-![Feltételes hozzáférési szabályzat – példa a Azure Portal](./media/app-based-mfa/32.png)
+![Example Conditional Access policy in the Azure portal](./media/app-based-mfa/32.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben a rövid útmutatóban szereplő forgatókönyv végrehajtásához a következőkre lesz szüksége:
+To complete the scenario in this quickstart, you need:
 
-- **Hozzáférés egy prémium szintű Azure ad kiadáshoz** – az Azure ad feltételes hozzáférés egy prémium szintű Azure ad képesség.
-- **Egy Isabella Simonsen nevű tesztüzenet** – ha nem tudja, hogyan hozhat létre egy teszt fiókot, tekintse meg a [felhőalapú felhasználók hozzáadása](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)című témakört.
+- **Access to an Azure AD Premium edition** - Azure AD Conditional Access is an Azure AD Premium capability.
+- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-Az ebben a rövid útmutatóban szereplő forgatókönyv megköveteli, hogy a felhasználónkénti MFA-azonosítók ne legyenek engedélyezve a tesztelési fiókjához. További információkért lásd: [kétlépéses ellenőrzés megkövetelése a felhasználók](../authentication/howto-mfa-userstates.md)számára.
+The scenario in this quickstart requires that per user MFA is not enabled for your test account. For more information, see [How to require two-step verification for a user](../authentication/howto-mfa-userstates.md).
 
-## <a name="test-your-experience"></a>A felhasználói élmény tesztelése
+## <a name="test-your-experience"></a>Test your experience
 
-Ennek a lépésnek a célja, hogy benyomást kapjon a feltételes hozzáférési szabályzat nélkül.
+The goal of this step is to get an impression of the experience without a Conditional Access policy.
 
-**A környezet inicializálása:**
+**To initialize your environment:**
 
-1. Jelentkezzen be a Azure Portalba Isabella Simonsen.
+1. Sign in to your Azure portal as Isabella Simonsen.
 1. Jelentkezzen ki.
 
-## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
+## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
 
-Ez a szakasz bemutatja, hogyan hozhatja létre a kötelező feltételes hozzáférési szabályzatot. Az ebben a rövid útmutatóban szereplő forgatókönyv a következőket használja:
+This section shows how to create the required Conditional Access policy. The scenario in this quickstart uses:
 
-- Az MFA-t igénylő felhőalapú alkalmazások helyőrzőként való Azure Portal. 
-- A minta felhasználója a feltételes hozzáférési szabályzat teszteléséhez.  
+- The Azure portal as placeholder for a cloud app that requires MFA. 
+- Your sample user to test the Conditional Access policy.  
 
-A házirendben állítsa be a következőket:
+In your policy, set:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 | --- | --- |
 | Felhasználók és csoportok | Isabella Simonsen |
-| Felhőalapú alkalmazások | Microsoft Azure-kezelés |
-| Hozzáférés biztosítása | Többtényezős hitelesítés megkövetelése |
+| Cloud apps | Microsoft Azure Management |
+| Hozzáférés biztosítása | Require multi-factor authentication |
 
-![Kiterjesztett feltételes hozzáférési szabályzat](./media/app-based-mfa/31.png)
+![Expanded Conditional Access policy](./media/app-based-mfa/31.png)
 
-**A feltételes hozzáférési szabályzat konfigurálása:**
+**To configure your Conditional Access policy:**
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférési rendszergazdaként.
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
+1. In the Azure portal, search for and select **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-1. A **Azure Active Directory** lap **Biztonság** szakaszában kattintson a **feltételes hozzáférés**elemre.
+1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
 
    ![Feltételes hozzáférés](./media/app-based-mfa/03.png)
 
-1. A **feltételes hozzáférés** lapon, a felső eszköztáron kattintson az **új házirend**elemre.
+1. On the **Conditional Access** page, in the toolbar on the top, click **New policy**.
 
    ![Hozzáadás](./media/app-based-mfa/04.png)
 
-1. Az **új** lap **név** szövegmezőbe írja be az **MFA megkövetelése Azure Portal hozzáféréshez**értéket.
+1. On the **New** page, in the **Name** textbox, type **Require MFA for Azure portal access**.
 
-   ![Name (Név)](./media/app-based-mfa/05.png)
+   ![Név](./media/app-based-mfa/05.png)
 
-1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok**elemre.
+1. In the **Assignment** section, click **Users and groups**.
 
    ![Felhasználók és csoportok](./media/app-based-mfa/06.png)
 
-1. A **felhasználók és csoportok** lapon hajtsa végre a következő lépéseket:
+1. On the **Users and groups** page, perform the following steps:
 
    ![Felhasználók és csoportok](./media/app-based-mfa/24.png)
 
-   1. Kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza a **felhasználók és csoportok**lehetőséget.
+   1. Click **Select users and groups**, and then select **Users and groups**.
    1. Kattintson a **Kiválasztás** gombra.
-   1. A **kiválasztás** lapon válassza az **Isabella Simonsen**elemet, majd kattintson a **kiválasztás**elemre.
-   1. A **felhasználók és csoportok** lapon kattintson a **kész**gombra.
+   1. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
+   1. On the **Users and groups** page, click **Done**.
 
-1. Kattintson a **Cloud apps**lehetőségre.
+1. Click **Cloud apps**.
 
-   ![Felhőalapú alkalmazások](./media/app-based-mfa/08.png)
+   ![Cloud apps](./media/app-based-mfa/08.png)
 
-1. A **Cloud apps** oldalon hajtsa végre a következő lépéseket:
+1. On the **Cloud apps** page, perform the following steps:
 
-   ![Felhőalapú alkalmazások kiválasztása](./media/app-based-mfa/26.png)
+   ![Select cloud apps](./media/app-based-mfa/26.png)
 
-   1. Kattintson az **alkalmazások kiválasztása**elemre.
+   1. Click **Select apps**.
    1. Kattintson a **Kiválasztás** gombra.
-   1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
-   1. A **Cloud apps** lapon kattintson a **kész**gombra.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the **Cloud apps** page, click **Done**.
 
-1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
+1. In the **Access controls** section, click **Grant**.
 
-   ![Hozzáférés-vezérlés](./media/app-based-mfa/10.png)
+   ![Access controls](./media/app-based-mfa/10.png)
 
-1. A **támogatás** lapon hajtsa végre a következő lépéseket:
+1. On the **Grant** page, perform the following steps:
 
    ![Grant](./media/app-based-mfa/11.png)
 
-   1. Válassza a **hozzáférés engedélyezése**lehetőséget.
-   1. Válassza a **többtényezős hitelesítés megkövetelése**lehetőséget.
+   1. Select **Grant access**.
+   1. Select **Require multi-factor authentication**.
    1. Kattintson a **Kiválasztás** gombra.
 
-1. A **házirend engedélyezése** szakaszban kattintson **a be**gombra.
+1. In the **Enable policy** section, click **On**.
 
-   ![Házirend engedélyezése](./media/app-based-mfa/18.png)
+   ![Enable policy](./media/app-based-mfa/18.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
+## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign in
 
-Most, hogy konfigurálta a feltételes hozzáférési házirendet, érdemes tudnia, hogy a várt módon működik-e. Első lépésként használja a feltételes hozzáférés, mi a teendő, ha a szabályzat eszközzel szimulálni kívánja a felhasználó bejelentkezési adatait. A szimuláció azt a hatást becsüli meg, hogy a bejelentkezés milyen hatással van a szabályzatokra, és létrehoz egy szimulációs jelentést.  
+Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access what if policy tool to simulate a sign in of your test user. The simulation estimates the impact this sign in has on your policies and generates a simulation report.  
 
-A **What if** Policy értékelési eszköz inicializálásához állítsa be a következőt:
+To initialize the **What If** policy evaluation tool, set:
 
-- **Isabella Simonsen** felhasználóként
-- **Microsoft Azure-kezelés** Felhőbeli alkalmazásként
+- **Isabella Simonsen** as user
+- **Microsoft Azure Management** as cloud app
 
-A **What if** elemre kattintva létrehoz egy szimulációs jelentést, amely a következőket jeleníti meg:
+Clicking **What If** creates a simulation report that shows:
 
-- **MFA Megkövetelése Azure Portal-hozzáféréshez** az **alkalmazandó szabályzatok** alatt
-- **Többtényezős hitelesítés megkövetelése** **engedélyezési vezérlőkként**.
+- **Require MFA for Azure portal access** under **Policies that will apply**
+- **Require multi-factor authentication** as **Grant Controls**.
 
-![Mi a teendő, ha a házirend eszköz](./media/app-based-mfa/23.png)
+![What if policy tool](./media/app-based-mfa/23.png)
 
-**A feltételes hozzáférési szabályzat kiértékelése:**
+**To evaluate your Conditional Access policy:**
 
-1. A [feltételes hozzáférés – házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson a **What if**elemre.  
+1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
 
-   ![mi van, ha](./media/app-based-mfa/14.png)
+   ![What If](./media/app-based-mfa/14.png)
 
-1. Kattintson a **felhasználók**elemre, jelölje ki az **Isabella Simonsen**, majd kattintson a **kiválasztás**elemre.
+1. Click **Users**, select **Isabella Simonsen**, and then click **Select**.
 
    ![Felhasználó](./media/app-based-mfa/15.png)
 
-1. A felhőalapú alkalmazások kiválasztásához hajtsa végre a következő lépéseket:
+1. To select a cloud app, perform the following steps:
 
-   ![Felhőalapú alkalmazások](./media/app-based-mfa/16.png)
+   ![Cloud apps](./media/app-based-mfa/16.png)
 
-   1. Kattintson a **Cloud apps**lehetőségre.
-   1. A **Cloud apps lapon**kattintson az **alkalmazások kiválasztása**elemre.
+   1. Click **Cloud apps**.
+   1. On the **Cloud apps page**, click **Select apps**.
    1. Kattintson a **Kiválasztás** gombra.
-   1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
-   1. A Cloud apps lapon kattintson a **kész**gombra.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the cloud apps page, click **Done**.
 
-1. Kattintson **What if**.
+1. Click **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
+## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
 
-Az előző szakaszban megtanulta, hogyan értékelheti ki a szimulált bejelentkezést. A szimuláción kívül a feltételes hozzáférési szabályzatot is tesztelni kell, hogy az a várt módon működjön.
+In the previous section, you have learned how to evaluate a simulated sign in. In addition to a simulation, you should also test your Conditional Access policy to ensure that it works as expected.
 
-A szabályzat teszteléséhez próbáljon meg bejelentkezni a [Azure Portalba](https://portal.azure.com) az **Isabella Simonsen** -teszt fiók használatával. Meg kell jelennie egy párbeszédpanelnek, amely megköveteli, hogy állítsa be a fiókját a további biztonsági ellenőrzéshez.
+To test your policy, try to sign in to your [Azure portal](https://portal.azure.com) using your **Isabella Simonsen** test account. You should see a dialog that requires you to set up your account for additional security verification.
 
-![Multi-Factor Authentication](./media/app-based-mfa/22.png)
+![Többtényezős hitelesítés](./media/app-based-mfa/22.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes hozzáférési szabályzatot:
+When no longer needed, delete the test user and the Conditional Access policy:
 
-- Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
-- A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
+- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
 
-    ![Multi-Factor Authentication](./media/app-based-mfa/33.png)
+    ![Többtényezős hitelesítés](./media/app-based-mfa/33.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> A használati [feltételek elfogadásának Megkövetelése](require-tou.md)
-> a [hozzáférés letiltása a munkamenet-kockázat észlelésekor](app-sign-in-risk.md)
+> [Require terms of use to be accepted](require-tou.md)
+> [Block access when a session risk is detected](app-sign-in-risk.md)

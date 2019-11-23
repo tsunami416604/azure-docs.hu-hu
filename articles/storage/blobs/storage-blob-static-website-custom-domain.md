@@ -1,82 +1,82 @@
 ---
-title: 'Oktatóanyag: Egyéni tartomány engedélyezése SSL használatával statikus webhelyeken Azure CDN-Azure Storage használatával'
-description: 'Útmutató: egyéni tartomány statikus webhelyüzemeltetésre konfigurálja.'
+title: 'Tutorial: Enable custom domain & SSL for a static website in Azure'
+description: Learn how to configure a custom domain for static website hosting.
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847005"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327497"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Oktatóanyag: Az SSL-t használó egyéni tartomány engedélyezése a Azure CDN használatával statikus webhelyeken
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>Tutorial: Enable custom domain & SSL for a static website in Azure
 
-Ez az oktatóanyag egy sorozat második része. Bemutatja egy egyéni tartomány végpont a statikus webhely SSL-lel való engedélyezéséhez. 
+Ez az oktatóanyag egy sorozat második része. In it, you learn to enable a custom domain endpoint with SSL for your static website. 
 
-Ebből az oktatóanyagból megtudhatja, hogyan használható [Azure CDN](../../cdn/cdn-overview.md) az egyéni tartomány végpontját a statikus webhely konfigurálása. Az Azure CDN egyéni SSL-tanúsítványokat hozhat létre, egy egyéni tartományt használja, és egyszerre az összes egyéni újraírási szabályok konfigurálása. Konfigurálása Azure CDN további díjakat eredményez, de itt egységesen rövid késleltetésével webhelyéhez bárhol a világon. Az Azure CDN emellett saját tanúsítványt az SSL-titkosítást. Információ az Azure CDN-tarifacsomag: [Azure CDN-tarifacsomag](https://azure.microsoft.com/pricing/details/cdn/).
+The tutorial shows how to use [Azure CDN](../../cdn/cdn-overview.md) to configure the custom domain endpoint for your static website. With Azure CDN, you can provision custom SSL certificates, use a custom domain, and configure custom rewrite rules all at the same time. Configuring Azure CDN results in additional charges, but provides consistent low latencies to your website from anywhere in the world. Azure CDN also provides SSL encryption with your own certificate. For information on Azure CDN pricing, see [Azure CDN pricing](https://azure.microsoft.com/pricing/details/cdn/).
 
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * CDN-végpont létrehozása a statikus webhely-végponton
-> * Egyéni tartományt és SSL engedélyezése
+> * Create a CDN endpoint on the static website endpoint
+> * Enable custom domain and SSL
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt végezze [el a következő oktatóanyagot: Statikus webhely üzemeltetése Blob Storageon](storage-blob-static-website-host.md). 
+Before you begin this tutorial, complete part one, [Tutorial: Host a static website on Blob Storage](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a kezdéshez.
+Sign in to the [Azure portal](https://portal.azure.com/) to get started.
 
-## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>CDN-végpont létrehozása a statikus webhely-végponton
+## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>Create a CDN endpoint on the static website endpoint
 
-1. Keresse meg a Storage-fiókját a Azure Portalban, és jelenítse meg a fiók áttekintését.
-1. Válassza ki **Azure CDN** alatt a **Blob Service** konfigurálása Azure CDN menü.
-1. A **CDN-profil** szakaszban válasszon egy új vagy meglévő CDN-profilt. További információ: gyors útmutató [: Hozzon létre egy Azure CDN profilt](../../cdn/cdn-create-new-endpoint.md)és végpontot.
-1. Határozza meg a CDN-végpont díjszabási szintjét. Ez az oktatóanyag a **standard Akamai** díjszabási szintet használja, mert gyorsan propagálja, jellemzően néhány percen belül. Az egyéb díjszabási csomagok továbbra is hosszabb ideig tarthatnak, de más előnyöket is biztosíthatnak. További információ: [Azure CDN termék funkcióinak összehasonlítása](../../cdn/cdn-features.md).
-1. A **CDN-végpont neve** mezőben adja meg a CDN-végpont nevét. A CDN-végpontnak egyedinek kell lennie az Azure-ban.
-1. Itt adhatja meg a statikus webhely végpontját a **forrás állomásneve** mezőben. A statikus webhely végpontjának megkereséséhez keresse meg a **statikus webhely** beállításait a Storage-fiókhoz. Másolja az elsődleges végpontot, és illessze be a CDN-konfigurációba, és távolítsa el a protokoll azonosítóját (*például*: https).
+1. Locate your storage account in the Azure portal and display the account overview.
+1. Select **Azure CDN** under the **Blob Service** menu to configure Azure CDN.
+1. In the **CDN profile** section, specify a new or existing CDN profile. További információk: [Gyors útmutató: Azure CDN-profil és -végpont létrehozása](../../cdn/cdn-create-new-endpoint.md)
+1. Specify a pricing tier for the CDN endpoint. This tutorial uses the **Standard Akamai** pricing tier, because it propagates quickly, typically within a few minutes. Other pricing tiers may take longer to propagate, but may also offer other advantages. For more information, see [Compare Azure CDN product features](../../cdn/cdn-features.md).
+1. In the **CDN endpoint name** field, specify a name for your CDN endpoint. The CDN endpoint must be unique across Azure.
+1. Specify your the static website endpoint in the **Origin hostname** field. To find your static website endpoint, navigate to the **Static website** settings for your storage account. Copy the primary endpoint and paste it into the CDN configuration, removing the protocol identifier (*e.g.* , HTTPS).
 
-    Az alábbi képen egy példa végpont-konfiguráció látható:
+    The following image shows an example endpoint configuration:
 
-    ![A példa CDN-végpont konfigurációját bemutató képernyőkép](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+    ![Screenshot showing sample CDN endpoint configuration](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-1. Hozza létre a CDN-végpontot, és várjon, amíg propagálja.
-1. Annak ellenőrzéséhez, hogy a CDN-végpont megfelelően van-e konfigurálva, kattintson a végpontra, és navigáljon a beállításaihoz. A Storage-fiókhoz tartozó CDN áttekintésében keresse meg a végpont állomásnevét, és navigáljon a végponthoz az alábbi ábrán látható módon. A CDN- `https://staticwebsitesamples.azureedge.net`végpont formátuma hasonló lesz a következőhöz:.
+1. Create the CDN endpoint and wait for it to propagate.
+1. To verify that the CDN endpoint is configured correctly, click on the endpoint to navigate to its settings. From the CDN overview for your storage account, locate the endpoint hostname, and navigate to the endpoint, as shown in the following image. The format of your CDN endpoint will be similar to `https://staticwebsitesamples.azureedge.net`.
 
-    ![A CDN-végpont áttekintését bemutató képernyőkép](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![Screenshot showing overview of CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-    A CDN-végpont propagálásának befejeződése után a CDN-végpontra való navigálás megjeleníti a statikus webhelyre korábban feltöltött index. html fájl tartalmát.
+    Once the CDN endpoint propagation is complete, navigating to the CDN endpoint displays the contents of the index.html file that you previously uploaded to your static website.
 
-1. A CDN-végpont forrás-beállításainak áttekintéséhez navigáljon a **forráshoz** a CDN-végpont **Beállítások** szakaszában. Látni fogja, hogy a **forrás típusa** mező *Egyéni forrásként* van beállítva, és a **forrás állomásnév** mező megjeleníti a statikus webhely végpontját.
+1. To review the origin settings for your CDN endpoint, navigate to **Origin** under the **Settings** section for your CDN endpoint. You will see that the **Origin type** field is set to *Custom Origin* and that the **Origin hostname** field displays your static website endpoint.
 
-    ![A CDN-végpont forrás-beállításainak megjelenítését bemutató képernyőkép](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![Screenshot showing Origin settings for CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
-## <a name="enable-custom-domain-and-ssl"></a>Egyéni tartományt és SSL engedélyezése
+## <a name="enable-custom-domain-and-ssl"></a>Enable custom domain and SSL
 
-1. Hozzon létre egy CNAME rekordot a tartomány neve szolgáltatónál átirányítja az egyéni tartomány a CDN-végponthoz. A CNAME rekordot a *www* altartomány a következőhöz hasonló lesz:
+1. Create a CNAME record with your domain name provider to redirect your custom domain to the CDN endpoint. The CNAME record for the *www* subdomain should be similar to the following:
 
-    ![Adja meg a CNAME rekordot adott altartomány www](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
+    ![Specify CNAME record for subdomain www](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
-1. A Azure Portalban jelenítse meg a CDN-végpont beállításait. Az egyéni tartomány és az SSL-tanúsítvány konfigurálásához navigáljon a **Beállítások** területen lévő **Egyéni tartományokra** .
-1. Válassza ki **egyéni tartomány hozzáadása** , és adja meg a tartomány nevét, majd kattintson a **Hozzáadás**.
-1. Válassza ki az új egyéni tartomány-hozzárendelést az SSL-tanúsítvány kiépítéséhez.
-1. Állítsa be az **Egyéni tartományhoz tartozó HTTPS** -t, majd kattintson **a** **Mentés**gombra. Az egyéni tartomány konfigurálása több óráig is eltarthat. A portál a következő képen látható módon jeleníti meg a folyamatot.
+1. In the Azure portal, display the settings for your CDN endpoint. Navigate to **Custom domains** under **Settings** to configure the custom domain and the SSL certificate.
+1. Select **Add custom domain** and enter your domain name, then click **Add**.
+1. Select the new custom domain mapping to provision an SSL certificate.
+1. Set **Custom Domain HTTPS** to **ON**, then click **Save**. It may take several hours to configure your custom domain. The portal displays progress as shown in the following image.
 
-    ![Az egyéni tartomány konfigurációjának előrehaladását bemutató képernyőkép](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
+    ![Screenshot showing progress of custom domain configuration](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
 
-1. Az egyéni tartomány URL-címének elérésével tesztelheti a statikus webhely leképezését az egyéni tartományhoz.
+1. Test the mapping of your static website to your custom domain by accessing the URL for your custom domain.
 
-További információ a https egyéni tartományokhoz [való engedélyezéséről: oktatóanyag: Konfigurálja a HTTPS-t egy Azure CDN](../../cdn/cdn-custom-ssl.md)egyéni tartományon.
+For more information about enabling HTTPS for custom domains, see [Tutorial: Configure HTTPS on an Azure CDN custom domain](../../cdn/cdn-custom-ssl.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag második részében megtanulta, hogyan egyéni tartomány konfigurálása az Azure CDN SSL-lel a statikus webhely.
+In part two of this tutorial, you learned how to configure a custom domain with SSL in Azure CDN for your static website.
 
-A Azure CDN konfigurálásával és használatával kapcsolatos további információkért lásd: [Mi az Azure CDN?](../../cdn/cdn-overview.md)
+For more information about configuring and using Azure CDN, see [What is Azure CDN?](../../cdn/cdn-overview.md).

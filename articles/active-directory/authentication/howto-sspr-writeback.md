@@ -1,26 +1,26 @@
 ---
-title: A jelszó-visszaírási konfigurálása az Azure AD SSPR – Azure Active Directory
-description: Az Azure AD és a Azure AD Connect használata jelszavak visszaírási egy helyszíni címtárba
+title: Configure password writeback for SSPR - Azure Active Directory
+description: Use Azure AD and Azure AD Connect to writeback passwords to an on-premises directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021773"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381158"
 ---
-# <a name="how-to-configure-password-writeback"></a>Útmutató: a jelszó visszaírási konfigurálása
+# <a name="how-to-configure-password-writeback"></a>How-to: Configure password writeback
 
-Az alábbi lépések feltételezik, hogy már konfigurálta Azure AD Connect a környezetben az [expressz](../hybrid/how-to-connect-install-express.md) vagy az [Egyéni](../hybrid/how-to-connect-install-custom.md) beállítások használatával.
+The following steps assume you have already configured Azure AD Connect in your environment by using the [Express](../hybrid/how-to-connect-install-express.md) or [Custom](../hybrid/how-to-connect-install-custom.md) settings.
 
 1. A jelszóvisszaíró konfigurálásához és engedélyezéséhez jelentkezzen be az Azure AD Connect-kiszolgálóra, és indítsa el az **Azure AD Connect** konfigurációs varázslóját.
 2. Az **üdvözlőlapon** kattintson a **Konfigurálás** gombra.
@@ -28,81 +28,81 @@ Az alábbi lépések feltételezik, hogy már konfigurálta Azure AD Connect a k
 4. A **Csatlakozás az Azure AD szolgáltatáshoz** lapon adja meg egy globális rendszergazda hitelesítő adatait, majd kattintson a **Tovább** gombra.
 5. A **Címtárak csatlakoztatása** és a **Tartomány/szervezeti egység** szűrőoldalakon kattintson a **Tovább** gombra.
 6. A **Választható funkciók** lapon jelölje be a **Jelszóvisszaíró** melletti jelölőnégyzetet, és kattintson a **Tovább** gombra.
-   ![Jelszó visszaírási engedélyezése a Azure AD Connectban][Writeback]
+   ![Enable password writeback in Azure AD Connect][Writeback]
 7. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 8. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-A jelszó-visszaírási kapcsolatos gyakori hibaelhárítási feladatokért tekintse meg a hibaelhárítási cikkben a [jelszó visszaírási hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) című szakaszt.
+For common troubleshooting tasks related to password writeback, see the section [Troubleshoot password writeback](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) in our troubleshooting article.
 
 > [!WARNING]
-> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../develop/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
+> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
 >
-> A szolgáltatás megszakadásának elkerülése érdekében frissítse a Azure AD Connect egy korábbi verziójáról egy újabb verzióra, és tekintse meg a [Azure ad Connect: frissítés korábbi verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md) című cikket.
+> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-## <a name="licensing-requirements-for-password-writeback"></a>A jelszó-visszaírási licencelési követelményei
+## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
 
-Az **önkiszolgáló jelszó-visszaállítás, illetve a helyszíni visszaírási való módosítás/feloldás az Azure ad prémium funkciója**. A licenceléssel kapcsolatos további információkért tekintse meg a [Azure Active Directory díjszabási webhelyét](https://azure.microsoft.com/pricing/details/active-directory/).
+**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő licencek egyike szükséges:
+To use password writeback, you must have one of the following licenses assigned on your tenant:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
-* E3 vagy a3 Enterprise Mobility + Security
-* Enterprise Mobility + Security E5 vagy a5
-* E3 vagy a3 Microsoft 365
-* Microsoft 365 E5 vagy a5
+* Enterprise Mobility + Security E3 or A3
+* Enterprise Mobility + Security E5 or A5
+* Microsoft 365 E3 or A3
+* Microsoft 365 E5 or A5
 * Microsoft 365 F1
 * Microsoft 365 Vállalati verzió
 
 > [!WARNING]
-> Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
+> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
 >
 
-## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory engedélyek és a helyszíni jelszó bonyolultságára vonatkozó szabályzatok 
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory permissions and on-premises password complexity policies 
 
-A Azure AD Connect segédprogramban megadott fióknak a következő elemeknek kell megadnia, ha a SSPR hatókörében szeretné használni:
+The account specified in the Azure AD Connect utility must have the following items set if you want to be in scope for SSPR:
 
 * **Új jelszó létrehozása** 
 * **Jelszó módosítása** 
-* **Írási engedélyek** `lockoutTime`
-* **Írási engedélyek** `pwdLastSet`
-* **Kiterjesztett jogosultságok** a következők közül:
-   * Az erdő *minden tartományának* legfelső szintű objektuma
-   * A SSPR hatókörében használni kívánt felhasználói szervezeti egységek (OU-ket)
+* **Write permissions** on `lockoutTime`
+* **Write permissions** on `pwdLastSet`
+* **Extended rights** on either:
+   * The root object of *each domain* in that forest
+   * The user organizational units (OUs) you want to be in scope for SSPR
 
-Ha nem biztos abban, hogy milyen fiókra hivatkozik a leírt fiók, nyissa meg a Azure Active Directory Connect konfigurációs felhasználói felületet, és válassza a **jelenlegi konfiguráció megtekintése** lehetőséget. Az a fiók, amelyhez engedélyeket kell hozzáadnia, megjelenik a **szinkronizált könyvtárak**területen.
+If you're not sure what account the described account refers to, open the Azure Active Directory Connect configuration UI and select the **View current configuration** option. The account that you need to add permission to is listed under **Synchronized Directories**.
 
-Ha ezeket az engedélyeket állítja be, az egyes erdőkhöz tartozó MA-szolgáltatásfiók az adott erdőben lévő felhasználói fiókok nevében képes kezelni a jelszavakat. 
+If you set these permissions, the MA service account for each forest can manage passwords on behalf of the user accounts within that forest. 
 
 > [!IMPORTANT]
-> Ha nem szeretné hozzárendelni ezeket az engedélyeket, akkor annak ellenére, hogy a visszaírási megfelelően van konfigurálva, a felhasználók hibákat fognak tapasztalni, amikor megkísérlik a felhőből kezelni a helyszíni jelszavukat.
+> If you neglect to assign these permissions, then, even though writeback appears to be configured correctly, users will encounter errors when they attempt to manage their on-premises passwords from the cloud.
 >
 
 > [!NOTE]
-> Ezekhez az engedélyekhez akár egy óráig is eltarthat, hogy az engedélyek a címtárban lévő összes objektumra replikálódnak.
+> It might take up to an hour or more for these permissions to replicate to all the objects in your directory.
 >
 
-A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajtsa végre a következő lépéseket:
+To set up the appropriate permissions for password writeback to occur, complete the following steps:
 
-1. Nyisson meg Active Directory felhasználókat és számítógépeket egy olyan fiókkal, amely rendelkezik a megfelelő tartományi rendszergazdai engedélyekkel.
-2. A **nézet** menüben ellenőrizze, hogy be van-e kapcsolva a **Speciális funkciók** .
-3. A bal oldali panelen kattintson a jobb gombbal arra az objektumra, amely a tartomány gyökerét jelöli, majd válassza a **tulajdonságok** > **biztonsági** > **speciális**lehetőséget.
-4. Az **engedélyek** lapon válassza a **Hozzáadás**lehetőséget.
-5. Válassza ki azt a fiókot, amelyre az engedélyek vonatkoznak (a Azure AD Connect telepítőből).
-6. Az **érintettek** legördülő listában válassza a **leszármazott felhasználói objektumok**elemet.
-7. Az **engedélyek**területen jelölje be a következő beállításokhoz tartozó mezőket:
+1. Open Active Directory Users and Computers with an account that has the appropriate domain administration permissions.
+2. From the **View** menu, make sure **Advanced features** is turned on.
+3. In the left panel, right-click the object that represents the root of the domain and select **Properties** > **Security** > **Advanced**.
+4. From the **Permissions** tab, select **Add**.
+5. Pick the account that permissions are being applied to (from the Azure AD Connect setup).
+6. In the **Applies to** drop-down list, select **Descendant User objects**.
+7. Under **Permissions**, select the boxes for the following options:
     * **Jelszó módosítása**
     * **Új jelszó létrehozása**
-8. A **Tulajdonságok**területen jelölje be a következő beállításokhoz tartozó mezőket:
-    * **LockoutTime írása**
-    * **PwdLastSet írása**
-9. Válassza az **alkalmaz/ok** lehetőséget a módosítások alkalmazásához és a megnyitott párbeszédpanelek bezárásához.
+8. Under **Properties**, select the boxes for the following options:
+    * **Write lockoutTime**
+    * **Write pwdLastSet**
+9. Select **Apply/OK** to apply the changes and exit any open dialog boxes.
 
-Mivel a hatóság forrása a helyszínen található, a jelszó-összetettségi szabályzatok ugyanarra a csatlakoztatott adatforrásra vonatkoznak. Ellenőrizze, hogy módosította-e a meglévő csoportházirendeket a "jelszó minimális kora" értékre. A csoportházirend nem állítható be 1 értékre, ami azt jelenti, hogy a jelszónak legalább egy nappal korábbinak kell lennie ahhoz, hogy frissíteni lehessen. Győződjön meg arról, hogy 0-ra van beállítva. Ezek a beállítások a `gpmc.msc` **Számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > fiók házirendek**területen találhatók. `gpupdate /force` futtatásával győződjön meg arról, hogy a módosítás érvénybe lép. 
+Since the source of authority is on premises, the password complexity policies apply from the same connected data source. Make sure you've changed the existing group policies for "Minimum password age". The group policy shouldn't be set to 1, which means password should be at least a day old before it can be updated. You need make sure it's set to 0. These settings can be found in `gpmc.msc` under **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies**. Run `gpupdate /force` to ensure that the change takes effect. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Mi a jelszó visszaírási?](concept-sspr-writeback.md)
+[What is password writeback?](concept-sspr-writeback.md)
 
-[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Jelszó visszaírási engedélyezése a Azure AD Connectban"
+[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Enable password writeback in Azure AD Connect"

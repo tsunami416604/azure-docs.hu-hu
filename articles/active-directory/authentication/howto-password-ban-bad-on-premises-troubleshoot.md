@@ -1,102 +1,102 @@
 ---
-title: Hibaelhárítás az Azure AD jelszavas védelmében – Azure Active Directory
-description: Az Azure AD jelszavas védelem gyakori hibaelhárítása
+title: Troubleshooting password protection - Azure Active Directory
+description: Understand Azure AD password protection common troubleshooting
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 06169056c9b17abfda2af67ec0784dfbf2ed04d5
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893283"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381653"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
+# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD Password Protection troubleshooting
 
-Az Azure AD jelszavas védelem üzembe helyezése után szükség lehet a hibaelhárításra. Ez a cikk részletesen ismerteti a gyakori hibaelhárítási lépéseket.
+After the deployment of Azure AD Password Protection, troubleshooting may be required. This article goes into detail to help you understand some common troubleshooting steps.
 
-## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>A tartományvezérlő ügynöke nem talál proxyt a címtárban.
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>The DC agent cannot locate a proxy in the directory
 
-Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplójának 30017 eseménye.
+The main symptom of this problem is 30017 events in the DC agent Admin event log.
 
-A probléma leggyakoribb oka, hogy a proxy még nincs regisztrálva. Ha egy proxy regisztrálva van, előfordulhat, hogy az AD-replikáció késése miatt némi késés történt, amíg egy adott tartományvezérlő ügynöke meg nem látja a proxyt.
+The usual cause of this issue is that a proxy has not yet been registered. If a proxy has been registered, there may be some delay due to AD replication latency until a particular DC agent is able to see that proxy.
 
-## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>A DC-ügynök nem tud kommunikálni a proxyval
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>The DC agent is not able to communicate with a proxy
 
-Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplójának 30018 eseménye. A probléma több lehetséges oka lehet:
+The main symptom of this problem is 30018 events in the DC agent Admin event log. This problem may have several possible causes:
 
-1. A DC-ügynök a hálózat egy elkülönített részében található, amely nem engedélyezi a hálózati kapcsolatot a regisztrált proxy (ka) t. Ez a probléma akkor lehet jóindulatú, ha más TARTOMÁNYVEZÉRLŐk nem tudnak kommunikálni a proxy (k) vel az Azure-beli jelszóházirendek letöltése érdekében. A letöltés után ezeket a házirendeket a rendszer ezután az elkülönített tartományvezérlő szerzi be a SYSVOL-megosztásban lévő házirend-fájlok replikálásával.
+1. The DC agent is located in an isolated portion of the network that does not allow network connectivity to the registered proxy(s). This problem may be benign as long as other DC agents can communicate with the proxy(s) in order to download password policies from Azure. Once downloaded, those policies will then be obtained by the isolated DC via replication of the policy files in the sysvol share.
 
-1. A proxykiszolgáló blokkolja az RPC Endpoint Mapper-végpont elérését (135-es port).
+1. The proxy host machine is blocking access to the RPC endpoint mapper endpoint (port 135)
 
-   Az Azure AD jelszavas védelem proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely engedélyezi a hozzáférést az 135-es porthoz. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell konfigurálnia, hogy engedélyezze a hozzáférést a 135-es porthoz.
+   The Azure AD Password Protection Proxy installer automatically creates a Windows Firewall inbound rule that allows access to port 135. If this rule is later deleted or disabled, DC agents will be unable to communicate with the Proxy service. If the builtin Windows Firewall has been disabled in lieu of another firewall product, you must configure that firewall to allow access to port 135.
 
-1. A proxykiszolgáló blokkolja a proxy szolgáltatás által figyelt RPC-végponthoz (dinamikus vagy statikus) való hozzáférést.
+1. The proxy host machine is blocking access to the RPC endpoint (dynamic or static) listened on by the Proxy service
 
-   Az Azure AD jelszavas védelmi proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely lehetővé teszi az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portok elérését. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a hozzáférést az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portokhoz. Ez a konfiguráció konkrétabb lehet, ha a proxy szolgáltatás úgy van konfigurálva, hogy egy adott statikus RPC-portot figyeljen (az `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával).
+   The Azure AD Password Protection Proxy installer automatically creates a Windows Firewall inbound rule that allows access to any inbound ports listened to by the Azure AD Password Protection Proxy service. If this rule is later deleted or disabled, DC agents will be unable to communicate with the Proxy service. If the builtin Windows Firewall has been disabled in lieu of another firewall product, you must configure that firewall to allow access to any inbound ports listened to by the Azure AD Password Protection Proxy service. This configuration may be made more specific if the Proxy service has been configured to listen on a specific static RPC port (using the `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet).
 
-1. A proxykiszolgáló nem engedélyezi, hogy a tartományvezérlők be tudják jelentkezni a gépre. Ezt a viselkedést a "számítógép elérése a hálózatról" felhasználói jogosultságok kiosztása vezérli. Ezt a jogosultságot az erdő összes tartományának összes tartományvezérlőjén meg kell adni. Ezt a beállítást gyakran egy nagyobb hálózati megerősítési tevékenység részeként korlátozzák.
+1. The proxy host machine is not configured to allow domain controllers the ability to log on to the machine. This behavior is controlled via the "Access this computer from the network" user privilege assignment. All domain controllers in all domains in the forest must be granted this privilege. This setting is often constrained as part of a larger network hardening effort.
 
-## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>A proxy szolgáltatás nem tud kommunikálni az Azure-ban
+## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy service is unable to communicate with Azure
 
-1. Győződjön meg arról, hogy a proxykiszolgáló kapcsolódik a [központi telepítési követelményekben](howto-password-ban-bad-on-premises-deploy.md)felsorolt végpontokhoz.
+1. Ensure the proxy machine has connectivity to the endpoints listed in the [deployment requirements](howto-password-ban-bad-on-premises-deploy.md).
 
-1. Győződjön meg arról, hogy az erdő és az összes proxykiszolgáló regisztrálva van ugyanazon az Azure-bérlőn.
+1. Ensure that the forest and all proxy servers are registered against the same Azure tenant.
 
-   Ezt a követelményt a `Get-AzureADPasswordProtectionProxy` és `Get-AzureADPasswordProtectionDCAgent` PowerShell-parancsmagok futtatásával, majd az egyes visszaadott elemek `AzureTenant` tulajdonságának összehasonlításával tekintheti meg. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
+   You can check this requirement by running the  `Get-AzureADPasswordProtectionProxy` and `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlets, then compare the `AzureTenant` property of each returned item. For correct operation, the reported tenant name must be the same across all DC agents and proxy servers.
 
-   Ha egy Azure-bérlő regisztrációjának eltérő feltétele létezik, ezt a problémát kijavíthatja a `Register-AzureADPasswordProtectionProxy` és/vagy `Register-AzureADPasswordProtectionForest` PowerShell-parancsmagok igény szerinti futtatásával, így minden regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használhatja.
+   If an Azure tenant registration mismatch condition does exist, this problem can be fixed by running the `Register-AzureADPasswordProtectionProxy` and/or `Register-AzureADPasswordProtectionForest` PowerShell cmdlets as needed, making sure to use credentials from the same Azure tenant for all registrations.
 
-## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>A tartományvezérlő ügynöke nem tudja titkosítani vagy visszafejteni a jelszóházirend fájljait
+## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC agent is unable to encrypt or decrypt password policy files
 
-Az Azure AD jelszavas védelme kritikus függőséggel rendelkezik a Microsoft Key Distribution szolgáltatás által biztosított titkosítási és visszafejtési funkcióktól. A titkosítási és a visszafejtési hibák számos tünettel rendelkezhetnek, és számos lehetséges oka lehet.
+Azure AD Password Protection has a critical dependency on the encryption and decryption functionality supplied by the Microsoft Key Distribution Service. Encryption or decryption failures can manifest with a variety of symptoms and have several potential causes.
 
-1. Győződjön meg arról, hogy a KDS szolgáltatás engedélyezve van és működőképes a tartomány minden Windows Server 2012-es és újabb tartományvezérlőjén.
+1. Ensure that the KDS service is enabled and functional on all Windows Server 2012 and later domain controllers in a domain.
 
-   Alapértelmezés szerint a KDS szolgáltatás szolgáltatás indítási módja manuálisan (trigger Start) van konfigurálva. Ez a konfiguráció azt jelenti, hogy az ügyfél első alkalommal próbálja meg használni a szolgáltatást, igény szerint elindítva. Ez az alapértelmezett szolgáltatás indítási módja elfogadható az Azure AD jelszavas védelem működéséhez.
+   By default the KDS service's service start mode is configured as Manual (Trigger Start). This configuration means that the first time a client tries to use the service, it is started on-demand. This default service start mode is acceptable for Azure AD Password Protection to work.
 
-   Ha a KDS szolgáltatás indítási módja le van tiltva, akkor ezt a konfigurációt meg kell oldani az Azure AD jelszavas védelem megfelelő működéséhez.
+   If the KDS service start mode has been configured to Disabled, this configuration must be fixed before Azure AD Password Protection will work properly.
 
-   A probléma egyszerű tesztelése a KDS szolgáltatás manuális elindítása a Service Management MMC konzolon vagy más felügyeleti eszközök használatával (például "net start kdssvc" futtatása egy parancssori konzolról). A KDS szolgáltatás várhatóan sikeresen elindul és fut.
+   A simple test for this issue is to manually start the KDS service, either via the Service management MMC console, or using other management tools (for example, run "net start kdssvc" from a command prompt console). The KDS service is expected to start successfully and stay running.
 
-   A KDS szolgáltatás nem indítható el a leggyakoribb alapvető oka az, hogy az Active Directory tartományvezérlő objektum az alapértelmezett tartományvezérlők szervezeti egységén kívül található. Ezt a konfigurációt a KDS szolgáltatás nem támogatja, és az Azure AD jelszavas védelme nem kényszeríti. Ennek a feltételnek a kijavítása a tartományvezérlő objektum áthelyezése egy helyre az alapértelmezett tartományvezérlők szervezeti egységben.
+   The most common root cause for the KDS service being unable to start is that the Active Directory domain controller object is located outside of the default Domain Controllers OU. This configuration is not supported by the KDS service and is not a limitation imposed by Azure AD Password Protection. The fix for this condition is to move the domain controller object to a location under the default Domain Controllers OU.
 
-1. Inkompatibilis KDS – a titkosított puffer formátuma a Windows Server 2012 R2-ről Windows Server 2016-re módosult
+1. Incompatible KDS encrypted buffer format change from Windows Server 2012 R2 to Windows Server 2016
 
-   A Windows Server 2016 olyan KDS-biztonsági javítást vezetett be, amely módosítja a KDS titkosított pufferek formátumát; Ezek a pufferek néha nem lesznek visszafejtve a Windows Server 2012 és a Windows Server 2012 R2 rendszeren. A fordított irány rendben van – a Windows Server 2012-es és a Windows Server 2012 R2-KDS titkosított pufferek a Windows Server 2016-es és újabb verzióiban mindig sikeresen visszafejtik. Ha a Active Directory tartományban lévő tartományvezérlők ezen operációs rendszerek kombinációját futtatják, akkor előfordulhat, hogy az Azure AD jelszavas védelemének esetleges visszafejtési hibáit is jelenteni kell. A biztonsági javítás jellegéből adódóan nem lehet pontosan megjósolni a hibák időzítését vagy tüneteit, és mivel nem determinisztikus, hogy melyik Azure AD jelszavas védelmet biztosító tartományvezérlő ügynöke fogja titkosítani az adatait egy adott időpontban.
+   A KDS security fix was introduced in Windows Server 2016 that modifies the format of KDS encrypted buffers; these buffers will sometimes fail to decrypt on Windows Server 2012 and Windows Server 2012 R2. The reverse direction is okay - buffers that are KDS-encrypted on Windows Server 2012 and Windows Server 2012 R2 will always successfully decrypt on Windows Server 2016 and later. If the domain controllers in your Active Directory domains are running a mix of these operating systems, occasional Azure AD Password Protection decryption failures may be reported. It is not possible to accurately predict the timing or symptoms of these failures given the nature of the security fix, and given that it is non-deterministic which Azure AD Password Protection DC Agent on which domain controller will encrypt data at a given time.
 
-   A Microsoft a probléma javítását vizsgálja, de még nem érhető el az ETA. Addig is ezt a problémát nem lehet megkerülő megoldás, mint hogy nem futtatja a nem kompatibilis operációs rendszerek kombinációját a Active Directory tartomány (ok) ban. Ez azt jelenti, hogy csak Windows Server 2012 és Windows Server 2012 R2 rendszerű tartományvezérlőket kell futtatnia, vagy csak Windows Server 2016 vagy újabb rendszerű tartományvezérlőket kell futtatnia.
+   Microsoft is investigating a fix for this issue but no ETA is available yet. In the meantime, there is no workaround for this issue other than to not run a mix of these incompatible operating systems in your Active Directory domain(s). In other words, you should run only Windows Server 2012 and Windows Server 2012 R2 domain controllers, OR you should only run Windows Server 2016 and above domain controllers.
 
-## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A rendszer nem fogadja el a gyenge jelszavakat, de nem feltétlenül kell
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Weak passwords are being accepted but should not be
 
-A probléma több oka is lehet.
+This problem may have several causes.
 
-1. A tartományvezérlő ügynöke a nyilvános előzetes verziót futtatja, amely lejárt. [A nyilvános előzetes VERZIÓJÚ DC-ügynök szoftvere lejárt](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+1. Your DC agent(s) are running a public preview software version that has expired. See [Public preview DC agent software has expired](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
 
-1. A tartományvezérlő ügynöke nem tud letölteni egy házirendet, vagy nem tudja visszafejteni a meglévő szabályzatokat. A fenti témakörökben a lehetséges okokat érdemes megkeresni.
+1. Your DC agent(s) cannot download a policy or is unable to decrypt existing policies. Check for possible causes in the above topics.
 
-1. A jelszóházirend kényszerített módja továbbra is naplózásra van beállítva. Ha ez a konfiguráció van érvényben, konfigurálja újra úgy, hogy az az Azure AD jelszavas védelmi portál használatával érvénybe lépjen. Lásd a [jelszavas védelem engedélyezése](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)című témakört.
+1. The password policy Enforce mode is still set to Audit. If this configuration is in effect, reconfigure it to Enforce using the Azure AD Password Protection portal. See [Enable Password protection](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 
-1. A jelszó-házirend le van tiltva. Ha ez a konfiguráció van érvényben, konfigurálja újra a beállítást az Azure AD jelszavas védelem portál használatával. Lásd a [jelszavas védelem engedélyezése](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)című témakört.
+1. The password policy has been disabled. If this configuration is in effect, reconfigure it to enabled using the Azure AD Password Protection portal. See [Enable Password protection](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 
-1. Nem telepítette a tartományvezérlő-ügynök szoftverét a tartomány összes tartományvezérlőjén. Ebben az esetben nehéz biztosítani, hogy a távoli Windows-ügyfelek egy adott tartományvezérlőt célozzanak meg a jelszó-módosítási művelet során. Ha úgy gondolja, hogy sikeresen megcélozta azt a TARTOMÁNYVEZÉRLŐt, ahol a DC-ügynök szoftvere telepítve van, akkor a tartományvezérlő ügynök rendszergazdai eseménynaplójának dupla ellenőrzésével ellenőrizheti, hogy az eredménytől függetlenül van-e legalább egy esemény a jelszó eredményének dokumentálására. érvényesítés. Ha nincs olyan esemény a felhasználó számára, akinek a jelszava megváltozik, a jelszó módosítását valószínűleg egy másik tartományvezérlő dolgozza fel.
+1. You have not installed the DC agent software on all domain controllers in the domain. In this situation, it is difficult to ensure that remote Windows clients target a particular domain controller during a password change operation. If you think you have successfully targeted a particular DC where the DC agent software is installed, you can verify by double-checking the DC agent admin event log: regardless of outcome, there will be at least one event to document the outcome of the password validation. If there is no event present for the user whose password is changed, then the password change was likely processed by a different domain controller.
 
-   Alternatív tesztként próbálja meg setting\changing a jelszavakat, miközben közvetlenül egy olyan TARTOMÁNYVEZÉRLŐre jelentkezett be, amelyen telepítve van a DC Agent szoftver. Ez a technika éles Active Directory-tartományokhoz nem ajánlott.
+   As an alternative test, try setting\changing passwords while logged in directly to a DC where the DC agent software is installed. This technique is not recommended for production Active Directory domains.
 
-   A DC-ügynök szoftverének növekményes üzembe helyezése a korlátozások hatálya alá esik, a Microsoft határozottan azt javasolja, hogy a tartományvezérlő ügynök szoftverét a lehető leghamarabb telepítse a tartomány összes tartományvezérlőjén.
+   While incremental deployment of the DC agent software is supported subject to these limitations, Microsoft strongly recommends that the DC agent software is installed on all domain controllers in a domain as soon as possible.
 
-1. Előfordulhat, hogy a jelszó-ellenőrzési algoritmus ténylegesen a várt módon működik. Tekintse meg [, hogyan történik a jelszavak kiértékelése](concept-password-ban-bad.md#how-are-passwords-evaluated).
+1. The password validation algorithm may actually be working as expected. See [How are passwords evaluated](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Az Ntdsutil. exe nem tudja beállítani a gyenge címtárszolgáltatások helyreállító módjának jelszavát
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe fails to set a weak DSRM password
 
-A Active Directory mindig érvényesíti az új címtárszolgáltatások helyreállító módjának jelszavát, hogy az megfeleljen a tartomány jelszó-bonyolultsági követelményeinek. Ez az ellenőrzés a jelszó-szűrési DLL-eket, például az Azure AD jelszavas védelmet is kéri. Ha a rendszer visszautasítja az új címtárszolgáltatások helyreállító módjának jelszavát, a következő hibaüzenet jelenik meg:
+Active Directory will always validate a new Directory Services Repair Mode password to make sure it meets the domain's password complexity requirements; this validation also calls into password filter dlls like Azure AD Password Protection. If the new DSRM password is rejected, the following error message results:
 
 ```text
 C:\>ntdsutil.exe
@@ -109,39 +109,39 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Ha az Azure AD jelszavas védelem egy Active Directory címtárszolgáltatások helyreállító módjához tartozó jelszó-ellenőrzési esemény (eke) t naplóz, akkor az Eseménynapló üzenetei nem tartalmazzák a felhasználónevet. Ez a viselkedés azért fordul elő, mert a Címtárszolgáltatások helyreállító fiókja olyan helyi fiók, amely nem része a tényleges Active Directory tartománynak.  
+When Azure AD Password Protection logs the password validation event log event(s) for an Active Directory DSRM password, it is expected that the event log messages will not include a user name. This behavior occurs because the DSRM account is a local account that is not part of the actual Active Directory domain.  
 
-## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>A tartományvezérlő replikájának előléptetése sikertelen, mert gyenge címtárszolgáltatások helyreállító jelszava
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Domain controller replica promotion fails because of a weak DSRM password
 
-A tartományvezérlő-előléptetési folyamat során az új címtárszolgáltatások helyreállító módjának jelszava a tartomány egy meglévő TARTOMÁNYVEZÉRLŐje számára lesz elküldve érvényesítésre. Ha a rendszer visszautasítja az új címtárszolgáltatások helyreállító módjának jelszavát, a következő hibaüzenet jelenik meg:
+During the DC promotion process, the new Directory Services Repair Mode password will be submitted to an existing DC in the domain for validation. If the new DSRM password is rejected, the following error message results:
 
 ```powershell
 Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
 ```
 
-A fenti probléma megoldásához hasonlóan az Azure AD jelszavas védelemhez tartozó jelszó-ellenőrzés eredményének eseménye üres felhasználóneveket fog tartalmazni ehhez a forgatókönyvhöz.
+Just like in the above issue, any Azure AD Password Protection password validation outcome event will have empty user names for this scenario.
 
-## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>A tartományvezérlő lefokozása nem sikerült, mert gyenge a helyi rendszergazda jelszava
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Domain controller demotion fails due to a weak local Administrator password
 
-Ez a tartományvezérlő lefokozását támogatja, amely még mindig futtatja a tartományvezérlő-ügynök szoftverét. A rendszergazdáknak tisztában kell lenniük azzal, hogy a tartományvezérlő ügynöke továbbra is érvényesíti a jelenlegi jelszóházirend-házirendet a lefokozási eljárás során. A rendszer az új helyi rendszergazdai fiók jelszavát (a lefokozási művelet részeként adja meg) érvényesíti, mint bármely más jelszó. A Microsoft azt javasolja, hogy a tartományvezérlő lefokozási eljárásának részeként a helyi rendszergazdai fiókok számára a biztonságos jelszavakat kell kiválasztani.
+It is supported to demote a domain controller that is still running the DC agent software. Administrators should be aware however that the DC agent software continues to enforce the current password policy during the demotion procedure. The new local Administrator account password (specified as part of the demotion operation) is validated like any other password. Microsoft recommends that secure passwords be chosen for local Administrator accounts as part of a DC demotion procedure.
 
-Ha a lefokozás sikeres volt, és a tartományvezérlőt újraindították, és a rendszer újraindul, és ismét normál tagkiszolgálóként fut, a tartományvezérlői ügynök szoftvere visszavált a passzív módban történő futtatásra. Ezt követően bármikor el lehet távolítani.
+Once the demotion has succeeded, and the domain controller has been rebooted and is again running as a normal member server, the DC agent software reverts to running in a passive mode. It may then be uninstalled at any time.
 
-## <a name="booting-into-directory-services-repair-mode"></a>A Címtárszolgáltatások helyreállító módjának indítása
+## <a name="booting-into-directory-services-repair-mode"></a>Booting into Directory Services Repair Mode
 
-Ha a tartományvezérlő címtárszolgáltatás-javító módban van elindítva, a tartományvezérlői ügynök jelszavas szűrője dll észleli ezt a feltételt, és az összes jelszó-ellenőrzési vagy kényszerítési tevékenység le lesz tiltva, az aktuálisan aktív házirendtől függetlenül. Configuration. A DC Agent jelszavas szűrő DLL-je egy 10023-es figyelmeztetési eseményt naplóz a felügyeleti eseménynaplóba, például:
+If the domain controller is booted into Directory Services Repair Mode, the DC agent password filter dll detects this condition and will cause all password validation or enforcement activities to be disabled, regardless of the currently active policy configuration. The DC agent password filter dll will log a 10023 warning event to the Admin event log, for example:
 
 ```text
 The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
 ```
-## <a name="public-preview-dc-agent-software-has-expired"></a>A nyilvános előzetes verziójú DC-ügynök szoftvere lejárt
+## <a name="public-preview-dc-agent-software-has-expired"></a>Public preview DC agent software has expired
 
-Az Azure AD jelszavas védelem nyilvános előzetes verziójában a DC-ügynök szoftverét nem lehetett a következő dátumokon leállítani a jelszó-ellenőrzési kérelmek feldolgozásának leállítására:
+During the Azure AD Password Protection public preview period, the DC agent software was hard-coded to stop processing password validation requests on the following dates:
 
-* A 1.2.65.0 verziója leállítja a jelszó-ellenőrzési kérelmek feldolgozását szeptember 1 2019-én.
-* A 1.2.25.0 verzió és a korábban leállított jelszó-ellenőrzési kérések feldolgozása július 1 2019-én.
+* Version 1.2.65.0 will stop processing password validation requests on September 1 2019.
+* Version 1.2.25.0 and prior stopped processing password validation requests on July 1 2019.
 
-A határidő megközelítése szerint az összes időkorlátos DC-ügynök verziója 10021 eseményt bocsát ki a DC-ügynök rendszergazdai eseménynaplójában a következőhöz hasonló rendszerindítási időpontban:
+As the deadline approaches, all time-limited DC agent versions will emit a 10021 event in the DC agent Admin event log at boot time that looks like this:
 
 ```text
 The password filter dll has successfully loaded and initialized.
@@ -153,7 +153,7 @@ Expiration date:  9/01/2019 0:00:00 AM
 This message will not be repeated until the next reboot.
 ```
 
-A határidő lejárta után az összes időkorlátos DC-ügynök verziója 10022 eseményt bocsát ki a DC-ügynök rendszergazdai eseménynaplójában a következőhöz hasonló rendszerindítási időpontban:
+Once the deadline has passed, all time-limited DC agent versions will emit a 10022 event in the DC agent Admin event log at boot time that looks like this:
 
 ```text
 The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
@@ -161,12 +161,12 @@ The password filter dll is loaded but the allowable trial period has expired. Al
 No further messages will be logged until after the next reboot.
 ```
 
-Mivel a határidőt csak a kezdeti rendszerindítás során ellenőrzi a rendszer, előfordulhat, hogy a naptári határidő lejárta után nem látja ezeket az eseményeket. A határidő felismerése után a rendszer nem gyakorol negatív hatást a tartományvezérlőre vagy a nagyobb környezetre, mint az összes jelszó, automatikusan jóvá lesz hagyva.
+Since the deadline is only checked on initial boot, you may not see these events until long after the calendar deadline has passed. Once the deadline has been recognized, no negative effects on either the domain controller or the larger environment will occur other than all passwords will be automatically approved.
 
 > [!IMPORTANT]
-> A Microsoft azt javasolja, hogy a lejárt nyilvános előzetes tartományvezérlő ügynökök azonnal frissítve legyenek a legújabb verzióra.
+> Microsoft recommends that expired public preview DC agents be immediately upgraded to the latest version.
 
-Az `Get-AzureADPasswordProtectionDCAgent` parancsmag futtatásával egyszerűen felderítheti az olyan TARTOMÁNYVEZÉRLŐi ügynököket, amelyeket frissíteni kell a környezetben, például:
+An easy way to discover DC agents in your environment that need to be upgrade is by running the `Get-AzureADPasswordProtectionDCAgent` cmdlet, for example:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -180,33 +180,33 @@ HeartbeatUTC          : 8/1/2019 10:00:00 PM
 AzureTenant           : bpltest.onmicrosoft.com
 ```
 
-Ebben a témakörben a SoftwareVersion mező nyilvánvalóan a legfontosabb tulajdonság, amellyel megtekintheti. A PowerShell-szűrés használatával kiszűrheti az olyan egyenáramú ügynököket, amelyek már megtalálhatók a szükséges alapkonfiguráció-verziónál, például:
+For this topic, the SoftwareVersion field is obviously the key property to look at. You can also use PowerShell filtering to filter out DC agents that are already at or above the required baseline version, for example:
 
 ```powershell
 PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Az Azure AD jelszavas védelmi proxy szoftver semmilyen verzióban nem korlátozott. A Microsoft továbbra is javasolja a DC és a proxy ügynökök frissítését a legújabb verzióra, amint azok megjelentek. A `Get-AzureADPasswordProtectionProxy` parancsmag használatával a DC-ügynököknél a fenti példához hasonló, frissítést igénylő proxykat kereshet.
+The Azure AD Password Protection Proxy software is not time-limited in any version. Microsoft still recommends that both DC and proxy agents be upgraded to the latest versions as they are released. The `Get-AzureADPasswordProtectionProxy` cmdlet may be used to find Proxy agents that require upgrades, similar to the example above for DC agents.
 
-Az adott frissítési eljárásokkal kapcsolatos további részletekért tekintse meg a [tartományvezérlő-ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) és [a proxy ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) ismertető témakört.
+Refer to [Upgrading the DC agent](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) and [Upgrading the Proxy agent](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) for more details on specific upgrade procedures.
 
-## <a name="emergency-remediation"></a>Vészhelyzeti szervizelés
+## <a name="emergency-remediation"></a>Emergency remediation
 
-Ha olyan helyzet történik, ahol a tartományvezérlő ügynöke problémát okoz, előfordulhat, hogy a tartományvezérlő ügynök szolgáltatása azonnal leáll. A DC Agent jelszó-szűrő DLL-fájlja továbbra is megkísérli hívni a nem futó szolgáltatást, és naplózza a figyelmeztetési eseményeket (10012, 10013), de az összes bejövő jelszót elfogadja a rendszer. A DC Agent szolgáltatás ezután a Windows szolgáltatásvezérlő kezelőjén keresztül is konfigurálható a "Letiltva" indítási típussal, igény szerint.
+If a situation occurs where the DC agent service is causing problems, the DC agent service may be immediately shut down. The DC agent password filter dll still attempts to call the non-running service and will log warning events (10012, 10013), but all incoming passwords are accepted during that time. The DC agent service may then also be configured via the Windows Service Control Manager with a startup type of “Disabled” as needed.
 
-Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: [érvényesítési mód](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Another remediation measure would be to set the Enable mode to No in the Azure AD Password Protection portal. Once the updated policy has been downloaded, each DC agent service will go into a quiescent mode where all passwords are accepted as-is. For more information, see [Enforce mode](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
-## <a name="removal"></a>Eltávolítása
+## <a name="removal"></a>Removal
 
-Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét, és az összes kapcsolódó állapotot a tartomány (ok) és az erdő alapján végzi el, ez a feladat a következő lépések végrehajtásával valósítható meg:
+If it is decided to uninstall the Azure AD password protection software and cleanup all related state from the domain(s) and forest, this task can be accomplished using the following steps:
 
 > [!IMPORTANT]
-> Fontos, hogy ezeket a lépéseket sorrendben hajtsa végre. Ha a proxy szolgáltatás bármelyik példánya fut, akkor a rendszer rendszeres időközönként újra létrehozza a serviceConnectionPoint objektumot. Ha a DC Agent szolgáltatás bármelyik példánya fut, a rendszer rendszeres időközönként újra létrehozza a serviceConnectionPoint-objektumot és a SYSVOL-állapotot.
+> It is important to perform these steps in order. If any instance of the Proxy service is left running it will periodically re-create its serviceConnectionPoint object. If any instance of the DC agent service is left running it will periodically re-create its serviceConnectionPoint object and the sysvol state.
 
-1. Távolítsa el a proxy szoftvert az összes gépről. Ez a lépés **nem** igényel újraindítást.
-2. Távolítsa el a DC Agent szoftverét az összes tartományvezérlőről. Ehhez a lépéshez újraindítás **szükséges** .
-3. Manuálisan távolítsa el az összes proxy Service-csatlakozási pontot az egyes tartománynév-névhasználati környezetekben. Az objektumok helye a következő Active Directory PowerShell-paranccsal deríthető fel:
+1. Uninstall the Proxy software from all machines. This step does **not** require a reboot.
+2. Uninstall the DC Agent software from all domain controllers. This step **requires** a reboot.
+3. Manually remove all Proxy service connection points in each domain naming context. The location of these objects may be discovered with the following Active Directory PowerShell command:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -214,11 +214,11 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
+   Do not omit the asterisk (“*”) at the end of the $keywords variable value.
 
-   Az eredményül kapott objektum (ok) a `Get-ADObject` parancs használatával `Remove-ADObject`vagy manuálisan törölhető.
+   The resulting object(s) found via the `Get-ADObject` command can then be piped to `Remove-ADObject`, or deleted manually.
 
-4. Manuálisan távolítsa el az összes tartományvezérlői ügynök csatlakoztatási pontját az egyes tartománynév-névhasználati környezetekben. A szoftver központi telepítésének módjától függően előfordulhat, hogy az erdőn belül egy adott objektum egy tartományvezérlőn található. Az objektum helye a következő Active Directory PowerShell-paranccsal deríthető fel:
+4. Manually remove all DC agent connection points in each domain naming context. There may be one these objects per domain controller in the forest, depending on how widely the software was deployed. The location of that object may be discovered with the following Active Directory PowerShell command:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -226,29 +226,29 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Az eredményül kapott objektum (ok) a `Get-ADObject` parancs használatával `Remove-ADObject`vagy manuálisan törölhető.
+   The resulting object(s) found via the `Get-ADObject` command can then be piped to `Remove-ADObject`, or deleted manually.
 
-   Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
+   Do not omit the asterisk (“*”) at the end of the $keywords variable value.
 
-5. Távolítsa el manuálisan az erdő szintű konfigurációs állapotot. Az erdő konfigurációs állapotát a rendszer a Active Directory konfigurációjának névhasználati környezetében lévő tárolóban tartja karban. A következő módon deríthető fel és törölhető:
+5. Manually remove the forest-level configuration state. The forest configuration state is maintained in a container in the Active Directory configuration naming context. It can be discovered and deleted as follows:
 
    ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```
 
-6. Manuálisan távolítsa el az összes SYSVOL-hez kapcsolódó állapotot úgy, hogy manuálisan törli a következő mappát és annak tartalmát:
+6. Manually remove all sysvol related state by manually deleting the following folder and all of its contents:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   Ha szükséges, az elérési út helyileg is elérhető egy adott tartományvezérlőn. az alapértelmezett hely a következő elérési úthoz hasonló:
+   If necessary, this path may also be accessed locally on a given domain controller; the default location would be something like the following path:
 
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
-   Ez az elérési út eltérő, ha a SYSVOL-megosztás nem alapértelmezett helyen van konfigurálva.
+   This path is different if the sysvol share has been configured in a non-default location.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Gyakori kérdések az Azure AD jelszavas védelméről](howto-password-ban-bad-on-premises-faq.md)
+[Frequently asked questions for Azure AD Password Protection](howto-password-ban-bad-on-premises-faq.md)
 
-A globális és az egyéni tiltott jelszavakkal kapcsolatos további információkért tekintse meg a [helytelen jelszavakat](concept-password-ban-bad.md) tartalmazó cikket.
+For more information on the global and custom banned password lists, see the article [Ban bad passwords](concept-password-ban-bad.md)

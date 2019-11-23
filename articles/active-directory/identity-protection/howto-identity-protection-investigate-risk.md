@@ -1,6 +1,6 @@
 ---
-title: A kockázatok vizsgálata Azure Active Directory Identity Protection
-description: Ismerje meg, hogyan vizsgálhatja meg a kockázatos felhasználókat, az észleléseket és a bejelentkezéseket Azure Active Directory Identity Protection
+title: Investigate risk Azure Active Directory Identity Protection
+description: Learn how to investigate risky users, detections, and sign-ins in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,85 +11,85 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e04cadef1f6a4aee7d8f807fc7aaa999ba6da8d7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887090"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382125"
 ---
-# <a name="how-to-investigate-risk"></a>Útmutató: a kockázat vizsgálata
+# <a name="how-to-investigate-risk"></a>How To: Investigate risk
 
-Az Identity Protection három jelentéssel rendelkező szervezeteket biztosít, amelyek segítségével megvizsgálhatja az identitás kockázatait a környezetében. Ezek a jelentések a **kockázatos felhasználók**, a **kockázatos bejelentkezések**és a **kockázati észlelések**. Az események vizsgálata kulcsfontosságú a biztonsági stratégiában található gyenge pontok jobb megismerése és azonosítása érdekében.
+Identity Protection provides organizations with three reports they can use to investigate identity risks in their environment. These reports are the **risky users**, **risky sign-ins**, and **risk detections**. Investigation of events is key to better understanding and identifying any weak points in your security strategy.
 
-Mindhárom jelentés lehetővé teszi az események letöltését a alkalmazásban. CSV-formátum a Azure Portalon kívüli további elemzéshez. A kockázatos felhasználók és a kockázatos bejelentkezések jelentései lehetővé teszik a legfrissebb 2500-bejegyzések letöltését, míg a kockázati észlelési jelentés lehetővé teszi a legfrissebb 5000-rekordok letöltését.
+All three reports allow for downloading of events in .CSV format for further analysis outside of the Azure portal. The risky users and risky sign-ins reports allow for downloading the most recent 2500 entries, while the risk detections report allows for downloading the most recent 5000 records.
 
-A szervezetek kihasználhatják a Microsoft Graph API-integrációját, hogy más forrásokkal összesítsék az adatokat, és ez a szervezet számára is elérhető.
+Organizations can take advantage of the Microsoft Graph API integrations to aggregate data with other sources they may have access to as an organization.
 
-A három jelentés a **Azure Portal** > **Azure Active Directory** > **biztonsági**szolgáltatásban található.
+The three reports are found in the **Azure portal** > **Azure Active Directory** > **Security**.
 
-## <a name="navigating-the-reports"></a>Navigálás a jelentésekben
+## <a name="navigating-the-reports"></a>Navigating the reports
 
-Minden jelentés a jelentés tetején látható időszakra vonatkozó összes észlelési listával elindul. Minden jelentés lehetővé teszi az oszlopok hozzáadását vagy eltávolítását a rendszergazdai beállítások alapján. A rendszergazdák eldönthetik, hogy letöltik-e az adatfájlokat. CSV-formátum. A jelentések a jelentés tetején lévő szűrők használatával szűrhetők.
+Each report launches with a list of all detections for the period shown at the top of the report. Each report allows for the addition or removal of columns based on administrator preference. Administrators can choose to download the data in .CSV format. Reports can be filtered using the filters across the top of the report.
 
-Az egyes bejegyzések kijelölése további bejegyzéseket is engedélyezhet a jelentés tetején, például megerősítheti a bejelentkezést sérült vagy biztonságos módon, megerősítheti a felhasználót, hogy feltörték a felhasználót, vagy utasítsa el a felhasználói kockázatot.
+Selecting individual entries may enable additional entries at the top of the report such as the ability to confirm a sign-in as compromised or safe, confirm a user as compromised, or dismiss user risk.
 
-Az egyes bejegyzések kijelölésekor a rendszer kibontja a részletek ablakot az észlelések alatt. A részletek nézet lehetővé teszi, hogy a rendszergazdák megvizsgálják és végrehajtsák az egyes észlelések műveleteit. 
+Selecting individual entries expands a details window below the detections. The details view allows administrators to investigate and perform actions on each detection. 
 
-![Példa Identity Protection-jelentésre, amely a kockázatos bejelentkezéseket és a részleteket tartalmazza](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
+![Example Identity Protection report showing risky sign-ins and details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Kockázatos felhasználók
+## <a name="risky-users"></a>Risky users
 
-A kockázatos felhasználók jelentés által biztosított információkkal a rendszergazdák a következőket kereshetik:
+With the information provided by the risky users report, administrators can find:
 
-- Mely felhasználók vannak kitéve kockázatoknak, vagy kockázatos volt a kockázata?
-- Az észlelések részletei
-- Kockázatos bejelentkezések előzményei
-- Kockázati előzmények
+- Which users are at risk, have had risk remediated, or have had risk dismissed?
+- Details about detections
+- History of risky sign-ins
+- Risk history
  
-A rendszergazdák ezután dönthetnek úgy, hogy műveleteket hajtanak végre ezekről az eseményekről. A rendszergazdák a következőket választhatják:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Felhasználói jelszó alaphelyzetbe állítása
-- Felhasználói biztonság megerősítése
-- Felhasználói kockázat elvetése
-- A felhasználó bejelentkezésének tiltása
-- További vizsgálat az Azure ATP használatával
+- Reset the user password
+- Confirm user compromise
+- Dismiss user risk
+- Block user from signing in
+- Investigate further using Azure ATP
 
 ## <a name="risky-sign-ins"></a>Kockázatos bejelentkezések
 
-A kockázatos bejelentkezések jelentés az elmúlt 30 nap (1 hónap) alapján szűrt adatértékeket tartalmaz.
+The risky sign-ins report contains filterable data for up to the past 30 days (1 month).
 
-A kockázatos bejelentkezési jelentés által biztosított információkkal a rendszergazdák a következőket kereshetik meg:
+With the information provided by the risky sign-ins report, administrators can find:
 
-- A bejelentkezések a kockázat, a megerősítve, a megerősített biztonság, a kihagyott vagy a szervizelés alapján vannak osztályozva.
-- A bejelentkezési kísérletekhez kapcsolódó valós idejű és összesített kockázati szintek.
-- Aktivált észlelési típusok
-- Alkalmazott feltételes hozzáférési szabályzatok
-- MFA-részletek
-- Eszköz adatai
+- Which sign-ins are classified as at risk, confirmed compromised, confirmed safe, dismissed, or remediated.
+- Real-time and aggregate risk levels associated with sign-in attempts.
+- Detection types triggered
+- Conditional Access policies applied
+- MFA details
+- Device information
 - Alkalmazásadatok
-- Hely adatai
+- Location information
 
-A rendszergazdák ezután dönthetnek úgy, hogy műveleteket hajtanak végre ezekről az eseményekről. A rendszergazdák a következőket választhatják:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Bejelentkezési kompromisszum megerősítése
-- Biztonságos bejelentkezés megerősítése
+- Confirm sign-in compromise
+- Confirm sign-in safe
 
 ## <a name="risk-detections"></a>Kockázatészlelések
 
-A kockázati észlelési jelentés az elmúlt 90 nap (3 hónap) során szűrt adattípusokat tartalmaz.
+The risk detections report contains filterable data for up to the past 90 days (3 months).
 
-A kockázati észlelések jelentés által biztosított információkkal a rendszergazdák a következőket kereshetik:
+With the information provided by the risk detections report, administrators can find:
 
-- Az egyes kockázatok észlelésére vonatkozó információk, beleértve a típust.
-- Az adott időpontban kiváltott egyéb kockázatok
-- Bejelentkezési kísérlet helye
-- A Microsoft Cloud App Security (MCAS) részletes adatainak csatolása.
+- Information about each risk detection including type.
+- Other risks triggered at the same time
+- Sign-in attempt location
+- Link out to more detail from Microsoft Cloud App Security (MCAS).
 
-A rendszergazdák ezután dönthetnek úgy, hogy visszatérnek a felhasználó kockázati vagy bejelentkezési jelentéséhez, hogy a gyűjtött információk alapján hajtsák végre a műveleteket.
+Administrators can then choose to return to the user's risk or sign-ins report to take actions based on information gathered.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md)
 
-- [Bejelentkezési és felhasználói kockázati házirendek engedélyezése](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)

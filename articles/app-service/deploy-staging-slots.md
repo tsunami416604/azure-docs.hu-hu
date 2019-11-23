@@ -1,6 +1,6 @@
 ---
-title: Átmeneti környezetek beállítása webalkalmazásokhoz Azure App Serviceban | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a szakaszos közzétételt a webalkalmazásokhoz Azure App Serviceban.
+title: Set up staging environments for web apps in Azure App Service | Microsoft Docs
+description: Learn how to use staged publishing for web apps in Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,195 +15,195 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304736"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382268"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Set up staging environments in Azure App Service
 <a name="Overview"></a>
 
-Amikor üzembe helyezi a webalkalmazást, a webalkalmazást a Linuxon, a mobil háttérben vagy az API-alkalmazáson [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714), az alapértelmezett üzemi tárolóhely helyett külön üzembe helyezési pontot használhat a **standard**, **prémium**vagy **elkülönített** app Service csomag szintjén. Az üzembe helyezési pontok a saját állomásneveket tartalmazó élő alkalmazások. Az alkalmazás tartalmának és konfigurációjának elemei két üzembe helyezési pont között, beleértve az üzemi tárolóhelyet is. 
+When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. 
 
-Az alkalmazás nem éles tárolóhelyre való üzembe helyezése a következő előnyökkel jár:
+Deploying your application to a non-production slot has the following benefits:
 
-* Egy átmeneti telepítési tárolóhelyen ellenőrizheti az alkalmazások változásait, mielőtt az éles tárolóhelyre cseréli.
-* Ha először helyez üzembe egy alkalmazást egy tárolóhelyen, és az éles környezetbe kerül, akkor győződjön meg arról, hogy a tárolóhely összes példánya bemelegszik az éles környezetbe való váltás előtt. Ezzel kiküszöbölheti az állásidőt az alkalmazás telepítésekor. A forgalom átirányítása zökkenőmentes, és a swap-műveletek miatt a rendszer nem távolít el kérelmeket. Ez a teljes munkafolyamat automatizálható úgy, hogy az [automatikus swap](#Auto-Swap) konfigurálásával nem szükséges az előzetes swap érvényesítése.
-* A swap után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor azonnal végrehajthatja ugyanezt a cserét, hogy az "utolsó ismert jó hely" vissza legyen hajtva.
+* You can validate app changes in a staging deployment slot before swapping it with the production slot.
+* Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
+* After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can perform the same swap immediately to get your "last known good site" back.
 
-Minden App Service díjcsomag különböző számú üzembe helyezési tárolóhelyet támogat. Az üzembe helyezési pontok használata nem jár további költségekkel. Az alkalmazás szintjei által támogatott résidők számának megállapításához tekintse meg a [app Service korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)című témakört. 
+Each App Service plan tier supports a different number of deployment slots. There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
 
-Ha az alkalmazást egy másik szinten szeretné méretezni, győződjön meg arról, hogy a cél szintje támogatja az alkalmazás által már használt bővítőhelyek számát. Ha például az alkalmazás ötnél több tárolóhelye van, nem méretezheti le a **standard** szintű csomagra, mert a **standard** szint csak öt üzembe helyezési helyet támogat. 
+To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Tárolóhely hozzáadása
-Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten kell futnia, hogy több üzembe helyezési tárolóhelyet engedélyezzen.
+## <a name="add-a-slot"></a>Add a slot
+The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
 
-1. A [Azure Portal](https://portal.azure.com/)nyissa meg az alkalmazás [erőforrás-lapját](../azure-resource-manager/manage-resources-portal.md#manage-resources).
+1. In the [Azure portal](https://portal.azure.com/), open your app's [resource page](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
-2. A bal oldali ablaktáblán válassza a **telepítési bővítőhelyek** > **tárolóhely hozzáadása**lehetőséget.
+2. In the left pane, select **Deployment slots** > **Add Slot**.
    
-    ![Új üzembe helyezési pont hozzáadása](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Ha az alkalmazás még nem szerepel a **standard**, **prémium**vagy **elkülönített** szinten, egy üzenet jelenik meg, amely a szakaszos közzététel engedélyezésének támogatott szintjeire utal. Ezen a ponton lehetősége van a **frissítés** lehetőség kiválasztására, és a folytatás előtt lépjen az alkalmazás **skálázás** lapjára.
+   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
    > 
 
-3. A **tárolóhely hozzáadása** párbeszédpanelen adja meg a tárolóhely nevét, és válassza ki, hogy az alkalmazás konfigurációját egy másik üzembe helyezési pontról szeretné-e klónozott. A folytatáshoz válassza a **Hozzáadás** lehetőséget.
+3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
    
-    ![Konfiguráció forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    A konfigurációt bármely meglévő tárolóhelyről klónozással végezheti el. A klónozott beállítások közé tartozik az Alkalmazásbeállítások, a kapcsolati karakterláncok, a nyelvi keretrendszer verziói, a webes szoftvercsatornák, a HTTP-verzió és a platform bitszáma.
+    You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
 
-4. A tárolóhely hozzáadása után kattintson a **Bezárás** gombra a párbeszédpanel bezárásához. Az új tárolóhely mostantól megjelenik az **üzembe helyezési** pontok oldalon. Alapértelmezés szerint a **(z)%** értéke 0-ra van állítva az új tárolóhely esetében, és az összes ügyfél-forgalom az éles tárolóhelyre van irányítva.
+4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
 
-5. Válassza ki az új üzembe helyezési tárolóhelyet a tárolóhely erőforrás-oldalának megnyitásához.
+5. Select the new deployment slot to open that slot's resource page.
    
-    ![Üzembe helyezési pont címe](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Az előkészítési pont olyan felügyeleti oldallal rendelkezik, mint bármely más App Service alkalmazás. A tárolóhely konfigurációját módosíthatja. A tárolóhely neve megjelenik a lap tetején, és emlékezteti arra, hogy megtekinti az üzembe helyezési pontot.
+    The staging slot has a management page just like any other App Service app. You can change the slot's configuration. The name of the slot is shown at the top of the page to remind you that you're viewing the deployment slot.
 
-6. Válassza ki az alkalmazás URL-címét a tárolóhely erőforrás lapján. Az üzembe helyezési pont saját állomásnévvel rendelkezik, és egy élő alkalmazás is. Az üzembe helyezési pont nyilvános hozzáférésének korlátozásához tekintse meg [Azure app Service IP-korlátozásokat](app-service-ip-restrictions.md).
+6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
 
-Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](app-service-deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre. 
+The new deployment slot has no content, even if you clone the settings from a different slot. For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). You can deploy to the slot from a different repository branch or a different repository. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>Mi történik a swap során
+## <a name="what-happens-during-a-swap"></a>What happens during a swap
 
-### <a name="swap-operation-steps"></a>Műveletek cseréje lépések
+### <a name="swap-operation-steps"></a>Swap operation steps
 
-Ha két tárolóhelyet cserél le (általában egy átmeneti tárolóhelyről az üzemi tárolóhelyre), App Service a következőket biztosítja annak biztosításához, hogy a cél tárolóhelye ne legyen leállás:
+When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
 
-1. Alkalmazza a következő beállításokat a cél tárolóhelyről (például az üzemi tárolóhelyről) a forrás-tárolóhely összes példányára: 
-    - A [tárolóhely-specifikus](#which-settings-are-swapped) Alkalmazásbeállítások és a kapcsolatok karakterláncai, ha vannak ilyenek.
-    - [Folyamatos üzembe helyezési](deploy-continuous-deployment.md) beállítások, ha engedélyezve vannak.
-    - [App Service hitelesítési](overview-authentication-authorization.md) beállítások, ha engedélyezve vannak.
+1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
+    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
+    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
+    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
     
-    Ezen esetek bármelyike elindítja a forrás-tárolóhely összes példányának újraindítását. Az [előzetes verzióra való csere](#Multi-Phase)során ez az első fázis végét jelöli. A swap művelet szüneteltetve van, és ellenőrizheti, hogy a forrás bővítőhely megfelelően működik-e a cél tárolóhely beállításaival.
+    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
 
-1. Várjon, amíg a forrás-tárolóhely minden példánya el nem végzi az újraindítást. Ha valamelyik példány nem indul újra, a swap művelet visszaállítja a forrás tárolóhelyének összes módosítását, és leállítja a műveletet.
+1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
 
-1. Ha a [helyi gyorsítótár](overview-local-cache.md) engedélyezve van, aktiválja a helyi gyorsítótár inicializálását úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán. Várjon, amíg az egyes példányok HTTP-válaszokat nem adnak vissza. A helyi gyorsítótár inicializálása egy másik újraindítást okoz az egyes példányokon.
+1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
 
-1. Ha az [automatikus swap](#Auto-Swap) engedélyezve van az [Egyéni bemelegítővel](#Warm-up), aktiválja az [alkalmazás indítását](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán.
+1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
 
-    Ha `applicationInitialization` nincs megadva, indítson el egy HTTP-kérelmet az egyes példányok forrás-tárolóhelyének alkalmazás gyökerébe. 
+    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
     
-    Ha egy példány bármilyen HTTP-választ ad vissza, a rendszer felmelegszik.
+    If an instance returns any HTTP response, it's considered to be warmed up.
 
-1. Ha a forrás tárolóhelyén lévő összes példány sikeresen befejeződik, cserélje le a két tárolóhelyet a két tárolóhely útválasztási szabályainak átváltásával. Ezt a lépést követően a cél tárolóhely (például az éles tárolóhely) azt az alkalmazást alkalmazza, amely korábban a forrás tárolóhelyen van bemelegítve.
+1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
 
-1. Most, hogy a forrás-tárolóhely korábban a cél tárolóhelyen lévő előzetes swap alkalmazást használja, végezze el ugyanezt a műveletet az összes beállítás alkalmazásával és a példányok újraindításával.
+1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
 
-A swap művelet bármely pontján a felcserélt alkalmazások inicializálásának minden munkája a forrás tárolóhelyen történik. A cél tárolóhely online marad, amíg a forrás tárolóhelye fel van készítve, és bemelegszik, függetlenül attól, hogy a swap sikeres vagy sikertelen volt-e. Ha egy átmeneti tárolóhelyet szeretne cserélni az üzemi tárolóhelyre, győződjön meg arról, hogy az éles tárolóhely mindig a cél tárolóhely. Így a swap művelet nem befolyásolja az üzemi alkalmazást.
+At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
 
-### <a name="which-settings-are-swapped"></a>Mely beállítások lesznek felcserélve?
+### <a name="which-settings-are-swapped"></a>Which settings are swapped?
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-Ha egy adott tárolóhelyre vagy kapcsolódási sztringre kíván beállítani egy adott tárolóhelyet (nem cseréli le), lépjen az adott tárolóhely **konfiguráció** lapjára. Adjon hozzá vagy szerkesszen egy beállítást, majd válassza a **telepítési tárolóhely beállítása**lehetőséget. Ha bejelöli ezt a jelölőnégyzetet, App Service, hogy a beállítás nem cserélhető. 
+To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
 
-![Tárolóhely beállítása](./media/web-sites-staged-publishing/SlotSetting.png)
+![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Két tárolóhely cseréje 
-Az üzembe helyezési pontokat az alkalmazás **üzembe helyezési** pontjainak oldalán és az **Áttekintés** oldalon lehet cserélni. A tárolóhelyek swap szolgáltatásával kapcsolatos technikai részletekért lásd: [Mi történik a swap során](#AboutConfiguration).
+## <a name="swap-two-slots"></a>Swap two slots 
+You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Mielőtt egy alkalmazást becserél egy üzembe helyezési pontról az éles környezetbe, győződjön meg arról, hogy az éles környezet a cél tárolóhelye, és hogy a forrás tárolóhelyén lévő összes beállítás pontosan úgy van konfigurálva, ahogy éles környezetben szeretné.
+> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
 > 
 > 
 
-Az üzembe helyezési pontok cseréje:
+To swap deployment slots:
 
-1. Nyissa meg az alkalmazás **üzembe helyezési** pontjai lapot, és válassza a **Csere**lehetőséget.
+1. Go to your app's **Deployment slots** page and select **Swap**.
    
-    ![Csere gomb](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    A **Csere** párbeszédpanel a kiválasztott forrás és cél tárolóhelyek beállításait jeleníti meg, amelyeket a rendszer megváltoztat.
+    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
 
-2. Válassza ki a kívánt **forrás** -és **cél** tárolóhelyeket. A cél általában az üzemi tárolóhely. Emellett válassza ki a **forrás módosításait** és a **cél módosítása** lapokat, és ellenőrizze, hogy a konfigurációs változások várhatóak-e. Ha elkészült, azonnal lecserélheti a tárolóhelyeket a **swap**lehetőség kiválasztásával.
+2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
 
     ![Csere befejezése](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    Ha szeretné megtekinteni, hogy a cél tárolóhelye Mikor fusson az új beállításokkal, mielőtt a swap ténylegesen megtörténne, ne válassza a **swap**lehetőséget, de kövesse a [swap with Preview (előzetes](#Multi-Phase)verzió) című témakör
+    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
 
-3. Ha elkészült, a **Bezárás**gombra kattintva zárjuk be a párbeszédpanelt.
+3. When you're finished, close the dialog box by selecting **Close**.
 
-Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Felcserélés előzetes verzióval (többfázisú swap)
+### <a name="swap-with-preview-multi-phase-swap"></a>Swap with preview (multi-phase swap)
 
-Az éles környezetbe való váltás előtt ellenőrizze, hogy az alkalmazás a megcserélt beállításokkal fut-e. A forrásként szolgáló tárolóhely a swap befejeződése előtt is felmelegszik, ami a kritikus fontosságú alkalmazások számára is kívánatos.
+Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
 
-Ha az előzetes verzióra cserél, App Service végrehajtja ugyanazt a [swap-műveletet](#AboutConfiguration) , de az első lépés után szünetel. Ezután ellenőrizheti az eredményét az átmeneti tárolóhelyen a csere befejezése előtt. 
+When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
 
-Ha megszakítja a cserét, App Service a konfigurációs elemeket újra alkalmazza a forrás tárolóhelyre.
+If you cancel the swap, App Service reapplies configuration elements to the source slot.
 
-Az előzetes verzióra való váltáshoz:
+To swap with preview:
 
-1. Kövesse az [üzembe helyezési pontok cseréje](#Swap) szakasz lépéseit, de válassza a **csere elvégzése előzetes**verzióval lehetőséget.
+1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
 
-    ![Felcserélés előzetes verzióval](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    A párbeszédpanelen megtekintheti, hogy a forrás tárolóhelye hogyan változik az 1. fázisban, és hogyan változik a forrás és a cél tárolóhelye a 2. fázisban.
+    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
 
-2. Ha készen áll a swap elindítására, válassza a **Csere indítása**lehetőséget.
+2. When you're ready to start the swap, select **Start Swap**.
 
-    Ha az 1. fázis befejeződik, a rendszer értesítést küld a párbeszédpanelen. Tekintse meg a swapot a forrás tárolóhelyen a `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
-3. Ha készen áll a függőben lévő csere befejezésére, válassza a swap-csere **befejezése** **műveletet** , és válassza a **Csere befejezése**lehetőséget.
+3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
 
-    A függőben lévő csere megszakításához válassza a **Csere megszakítása** helyet.
+    To cancel a pending swap, select **Cancel Swap** instead.
 
-4. Ha elkészült, a **Bezárás**gombra kattintva zárjuk be a párbeszédpanelt.
+4. When you're finished, close the dialog box by selecting **Close**.
 
-Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-A többfázisú swap automatizálásához lásd: [automatizálás a PowerShell használatával](#automate-with-powershell).
+To automate a multi-phase swap, see [Automate with PowerShell](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Swap visszaállítása
-Ha a cél tárolóhelyen (például az üzemi tárolóhelyen) a tárolóhelyek cseréje után valamilyen hiba fordul elő, állítsa vissza a tárolóhelyeket az előcserélés előtti állapotba úgy, hogy az azonos két tárolóhelyet azonnal felcseréli.
+## <a name="roll-back-a-swap"></a>Roll back a swap
+If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by swapping the same two slots immediately.
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Automatikus felcserélés konfigurálása
+## <a name="configure-auto-swap"></a>Configure auto swap
 
 > [!NOTE]
-> Az automatikus swap szolgáltatás nem támogatott a Linuxon futó webalkalmazásokban.
+> Auto swap isn't supported in web apps on Linux.
 
-Az automatikus swap szolgáltatás egyszerűsíti az Azure DevOps-forgatókönyveket, amelyekben az alkalmazás folyamatos üzembe helyezését, valamint az alkalmazás ügyfeleinek nulla állásidőt kell alkalmaznia. Ha az automatikus swap engedélyezve van egy tárolóhelyről az éles környezetbe, minden alkalommal, amikor leküldi a kód módosításait az adott tárolóhelyre, App Service automatikusan [kicseréli az alkalmazást éles üzembe](#swap-operation-steps) , miután bemelegedett a forrás tárolóhelyen.
+Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
 
    > [!NOTE]
-   > Mielőtt konfigurálja az automatikus swap-t az üzemi tárolóhelyre, érdemes lehet tesztelni az automatikus swap szolgáltatást egy nem éles tárolóhelyen.
+   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
    > 
 
-Az automatikus swap beállítása:
+To configure auto swap:
 
-1. Nyissa meg az alkalmazás erőforrás-lapját. Válassza ki az **üzembe helyezési** pontok >  *\<kívánt forrás-tárolóhely >*  > **konfiguráció** > **általános beállítások**elemet.
+1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
    
-2. Ha **engedélyezve van az automatikus csere**, válassza **a be**lehetőséget. Ezután válassza ki a kívánt cél tárolóhelyet az **automatikus swap üzembe helyezési**ponthoz, és válassza a **Mentés** parancsot a parancssáv számára. 
+2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
    
-    ![Automatikus felcserélés konfigurálásának kiválasztása](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Hajtson végre egy kódot a forrás tárolóhelyre való leküldéssel. Az automatikus felcserélés rövid idő elteltével történik, és a frissítés a cél tárolóhelyének URL-címén jelenik meg.
+3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
 
-Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Egyéni bemelegítő beállítása
+## <a name="specify-custom-warm-up"></a>Specify custom warm-up
 
-Egyes alkalmazások esetében előfordulhat, hogy a swap előtt egyéni Warm-up műveletekre van szükség. A web. config `applicationInitialization` konfigurációs eleme egyéni inicializálási műveletek megadását teszi lehetővé. A [swap művelet](#AboutConfiguration) megvárja, amíg ez az egyéni bemelegítő befejeződik a cél tárolóhelyre való váltás előtt. Íme egy minta web. config töredék.
+Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
 
     <system.webServer>
         <applicationInitialization>
@@ -212,75 +212,75 @@ Egyes alkalmazások esetében előfordulhat, hogy a swap előtt egyéni Warm-up 
         </applicationInitialization>
     </system.webServer>
 
-A `applicationInitialization` elem testreszabásával kapcsolatos további információkért lásd: az [üzembe helyezési pontok leggyakoribb felcserélésekor fellépő hibák és azok kijavítása](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-A bemelegítő viselkedést a következő [Alkalmazásbeállítások](configure-common.md)egyikével vagy mindkettővel is testreszabhatja:
+You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: a hely bemelegítésének elérési útja. Adja hozzá ezt az alkalmazás-beállítást egy olyan egyéni elérési út megadásával, amely egy perjelként kezdődik az értékként. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: érvényes HTTP-válasz kódok a bemelegítő művelethez. Adja hozzá ezt az alkalmazás-beállítást a HTTP-kódok vesszővel tagolt listájához. Példa `200,202`. Ha a visszaadott állapotkód nem szerepel a listában, a bemelegedési és a swap művelet leáll. Alapértelmezés szerint az összes válasz kódja érvényes.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. Add this app setting by specifying a custom path that begins with a slash as the value. Például: `/statuscheck`. The default value is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. Add this app setting with a comma-separated list of HTTP codes. An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. By default, all response codes are valid.
 
 > [!NOTE]
-> A `<applicationInitialization>` konfigurációs elem az egyes alkalmazások indításának része, míg a két Warm-up viselkedési alkalmazás beállításai csak a tárolóhelyek swap-elemeire érvényesek.
+> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
 
-Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-## <a name="monitor-a-swap"></a>Swap figyelése
+## <a name="monitor-a-swap"></a>Monitor a swap
 
-Ha a [swap művelet](#AboutConfiguration) végrehajtása hosszú időt vesz igénybe, akkor a [tevékenység naplójának](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)swap műveletével kapcsolatos információkat kaphat.
+If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-Az alkalmazás erőforrás oldalán a portálon, a bal oldali ablaktáblán válassza a **műveletnapló**elemet.
+On your app's resource page in the portal, in the left pane, select **Activity log**.
 
-Egy swap művelet `Swap Web App Slots`ként jelenik meg a napló lekérdezésében. Kibonthatja, és kiválaszthatja az egyik alműveletet vagy hibát a részletek megjelenítéséhez.
+A swap operation appears in the log query as `Swap Web App Slots`. You can expand it and select one of the suboperations or errors to see the details.
 
-## <a name="route-traffic"></a>Útvonal forgalma
+## <a name="route-traffic"></a>Route traffic
 
-Alapértelmezés szerint az alkalmazás éles URL-címére (`http://<app_name>.azurewebsites.net`) irányuló összes ügyfél-kérelem át lesz irányítva az üzemi tárolóhelyre. A forgalom egy részét átirányíthatja egy másik tárolóhelyre. Ez a funkció akkor hasznos, ha új frissítéshez felhasználói visszajelzésre van szüksége, de nem áll készen az éles környezetbe való kiadásra.
+By default, all client requests to the app's production URL (`http://<app_name>.azurewebsites.net`) are routed to the production slot. You can route a portion of the traffic to another slot. This feature is useful if you need user feedback for a new update, but you're not ready to release it to production.
 
-### <a name="route-production-traffic-automatically"></a>Éles forgalom automatikus irányítása
+### <a name="route-production-traffic-automatically"></a>Route production traffic automatically
 
-A termelési forgalom automatikus irányítása:
+To route production traffic automatically:
 
-1. Nyissa meg az alkalmazás erőforrás-lapját, és válassza az **üzembe helyezési**pontok lehetőséget.
+1. Go to your app's resource page and select **Deployment slots**.
 
-2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Kattintson a **Mentés** gombra.
+2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. Kattintson a **Mentés** gombra.
 
-    ![Forgalmi arány beállítása](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-A beállítás mentése után a rendszer véletlenszerűen továbbítja az ügyfelek megadott százalékos arányát a nem éles tárolóhelyre. 
+After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
 
-Miután egy ügyfél automatikusan átirányítja egy adott tárolóhelyre, az adott ügyfél-munkamenet élettartamára "rögzítve" lesz az adott tárolóhelyre. Az ügyfél böngészőjében megtekintheti, hogy a munkamenet melyik bővítőhelyre van rögzítve, ha a HTTP-fejlécekben megtekinti a `x-ms-routing-name` cookie-t. Az "átmeneti" tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=staging`. Az éles tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=self`.
+After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Az Azure Portal mellett az Azure CLI [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) parancsával is beállíthatja a CI/CD-eszközök, például a DevOps-folyamatok vagy más Automation-rendszerek útválasztási százalékos arányát.
+   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
    > 
 
-### <a name="route-production-traffic-manually"></a>Éles forgalom manuális irányítása
+### <a name="route-production-traffic-manually"></a>Route production traffic manually
 
-Az automatikus forgalmi útválasztás mellett App Service a kérelmeket egy adott tárolóhelyre irányíthatja. Ez akkor hasznos, ha azt szeretné, hogy a felhasználók bejelentkezhetnek a bétaverzióba, vagy letiltsák azokat. A termelési forgalom manuális átirányításához használja a `x-ms-routing-name` Query paramétert.
+In addition to automatic traffic routing, App Service can route requests to a specific slot. This is useful when you want your users to be able to opt in to or opt out of your beta app. To route production traffic manually, you use the `x-ms-routing-name` query parameter.
 
-Ha szeretné, hogy a felhasználók elhagyják a bétaverzióját, például a következő hivatkozásra kattintva adhatja meg a weblapon:
+To let users opt out of your beta app, for example, you can put this link on your webpage:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-A `x-ms-routing-name=self` karakterlánc az üzemi tárolóhelyet határozza meg. Miután az ügyfél böngészője hozzáfér a hivatkozáshoz, a rendszer átirányítja az éles tárolóhelyre. Minden további kérelem rendelkezik a `x-ms-routing-name=self` cookie-val, amely a munkamenetet az üzemi tárolóhelyre PIN-kódra kéri.
+The string `x-ms-routing-name=self` specifies the production slot. After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
 
-Ha engedélyezni szeretné, hogy a felhasználók belépjenek a bétaverzióba, állítsa ugyanazt a lekérdezési paramétert a nem üzemi tárolóhely nevére. Például:
+To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. Például:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Alapértelmezés szerint az új bővítőhelyek egy `0%`útválasztási szabályt kapnak, amely szürke színnel jelenik meg. Ha ezt az értéket explicit módon `0%` (fekete szövegben látható) állítja be, a felhasználók a `x-ms-routing-name` lekérdezési paraméter használatával manuálisan érhetik el az átmeneti tárolóhelyet. De a rendszer nem irányítja át automatikusan a tárolóhelyre, mert az útválasztási százalék értéke 0. Ez egy speciális forgatókönyv, ahol "elrejtheti" az átmeneti tárolóhelyet a nyilvános környezetből, miközben lehetővé teszi a belső csapatok számára a tárolóhelyek változásainak tesztelését.
+By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Tárolóhely törlése
+## <a name="delete-a-slot"></a>Delete a slot
 
-Nyissa meg az alkalmazás erőforrás-lapját. Válassza ki az **üzembe helyezési** pontok >  *\<tárolóhelyet a >*  > **áttekintéséhez**. Válassza a **delete (Törlés** ) lehetőséget a parancssáv sávon.  
+Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
 
-![Üzembe helyezési pont törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -290,9 +290,9 @@ Nyissa meg az alkalmazás erőforrás-lapját. Válassza ki az **üzembe helyez�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell egy modul, amely parancsmagokat biztosít az Azure-nak a Windows PowerShellen keresztüli felügyeletéhez, beleértve az üzembe helyezési pontok Azure App Service-ben való felügyeletének támogatását.
+Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
 
-További információ a Azure PowerShell telepítéséről és konfigurálásáról, valamint az Azure-előfizetéssel végzett Azure PowerShell hitelesítéséről: [Microsoft Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).  
+For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
@@ -301,52 +301,52 @@ New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location
 ```
 
 ---
-### <a name="create-a-slot"></a>Tárolóhely létrehozása
+### <a name="create-a-slot"></a>Create a slot
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Váltás kezdeményezése az előzetes verzióval (többfázisú swap) és a tárolóhely konfigurációjának alkalmazása a forrás tárolóhelyre
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Függőben lévő felcserélés megszakítása (áttekintéssel való csere) és a forrás tárolóhely konfigurációjának visszaállítása
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Üzembe helyezési pontok cseréje
+### <a name="swap-deployment-slots"></a>Swap deployment slots
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>A tevékenység naplójában lévő swap-események figyelése
+### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Tárolóhely törlése
+### <a name="delete-a-slot"></a>Delete a slot
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatizálás ARM-sablonokkal
+## <a name="automate-with-arm-templates"></a>Automate with ARM templates
 
-Az [ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) deklaratív JSON-fájlok, amelyek az Azure-erőforrások üzembe helyezésének és konfigurálásának automatizálására szolgálnak. A tárolóhelyek ARM-sablonokkal való kicseréléséhez két tulajdonságot fog beállítani a *Microsoft. Web/Sites/Slots* és a *Microsoft. Web/Sites* erőforrásokon:
+[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
 
-- `buildVersion`: ez egy karakterlánc-tulajdonság, amely a tárolóhelyen üzembe helyezett alkalmazás aktuális verzióját jelöli. Például: "v1", "1.0.0.1" vagy "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: ez egy karakterlánc-tulajdonság, amely megadja, hogy a tárolóhelynek milyen `buildVersion` kell lennie. Ha a targetBuildVersion nem egyezik a jelenlegi `buildVersion`, akkor a rendszer a megadott `buildVersion`tartalmazó tárolóhely megkeresésével elindítja a swap-műveletet.
+- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
 
-### <a name="example-arm-template"></a>Példa ARM-sablonra
+### <a name="example-arm-template"></a>Example ARM Template
 
-A következő ARM-sablon frissíti az átmeneti tárolóhely `buildVersion`ét, és beállítja a `targetBuildVersion` az üzemi tárolóhelyen. Ez a két tárolóhelyet fogja cserélni. A sablon feltételezi, hogy már van egy "előkészítés" nevű tárolóhelytel létrehozott WebApp.
+The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
 
 ```json
 {
@@ -390,27 +390,27 @@ A következő ARM-sablon frissíti az átmeneti tárolóhely `buildVersion`ét, 
 }
 ```
 
-Ez az ARM-sablon idempotens, ami azt jelenti, hogy többször is végrehajtható, és a tárolóhelyek azonos állapotba hozhatók. Az első végrehajtás után a `targetBuildVersion` megfelel a jelenlegi `buildVersion`nak, ezért a rendszer nem indít el cserét.
+This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automatizálás a parancssori felülettel
+## <a name="automate-with-the-cli"></a>Automate with the CLI
 
-Az üzembe helyezési pontok [Azure CLI](https://github.com/Azure/azure-cli) -parancsaival kapcsolatban lásd: [az WebApp Deployment slot](/cli/azure/webapp/deployment/slot).
+For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
-## <a name="troubleshoot-swaps"></a>Swap-hibák megoldása
+## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
 
-Ha bármilyen hiba történik egy [tárolóhely cseréjekor](#AboutConfiguration), a rendszer bejelentkezett a *D:\home\LogFiles\eventlog.XML*. Az alkalmazásspecifikus hibanapló is be van jelentkezve.
+If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
 
-Íme néhány gyakori swap-hiba:
+Here are some common swap errors:
 
-- Az alkalmazás gyökerére irányuló HTTP-kérelem időkorlátja. A swap művelet minden HTTP-kérelem esetében 90 másodpercig vár, és legfeljebb 5 alkalommal próbálkozik újra. Ha az összes újrapróbálkozás időkorlátja lejárt, a swap művelet leáll.
+- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
 
-- A helyi gyorsítótár inicializálása sikertelen lehet, ha az alkalmazás tartalma meghaladja a helyi gyorsítótárhoz megadott helyi lemezkvóta-kvótát. További információ: [helyi gyorsítótár – áttekintés](overview-local-cache.md).
+- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
 
-- Az [Egyéni felmelegedés](#Warm-up)során a HTTP-kérések belsőleg történnek (a külső URL-cím nélkül). A *web. config fájlban*megadott URL-re vonatkozó Újraírási szabályokkal sikertelenek lehetnek. Például a tartománynevek átirányítására vagy a HTTPS érvényesítésére vonatkozó szabályok megakadályozhatják a bemelegítő kérések elérését az alkalmazás kódjának elérésekor. A probléma megkerüléséhez módosítsa az Újraírási szabályokat úgy, hogy hozzáadja a következő két feltételt:
+- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
 
     ```xml
     <conditions>
@@ -419,7 +419,7 @@ Ha bármilyen hiba történik egy [tárolóhely cseréjekor](#AboutConfiguration
       ...
     </conditions>
     ```
-- Egyéni bemelegítő nélkül az URL-írási szabályok továbbra is letilthatják a HTTP-kérelmeket. A probléma megkerüléséhez módosítsa az Újraírási szabályokat a következő feltétel hozzáadásával:
+- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
 
     ```xml
     <conditions>
@@ -427,9 +427,9 @@ Ha bármilyen hiba történik egy [tárolóhely cseréjekor](#AboutConfiguration
       ...
     </conditions>
     ```
-- Egyes [IP-korlátozási szabályok](app-service-ip-restrictions.md) megakadályozhatják, hogy a swap művelet http-kérelmeket küldjön az alkalmazásnak. A `10.` és a `100.` kezdő IPv4-címtartományok belsőek az üzemelő példányon. Engedélyezze az alkalmazáshoz való kapcsolódást.
+- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
 
-- A tárolóhelyek cseréje után az alkalmazás váratlan újraindítást tapasztalhat. Ennek az az oka, hogy a cserét követően az állomásnév-kötési konfiguráció elkerül a szinkronizálásból, ami önmagában nem okozza az újraindítást. Előfordulhat azonban, hogy bizonyos mögöttes tárolási események (például a tárolási kötetek feladatátvétele) észlelik ezeket az eltéréseket, és kényszerítik az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa a [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazás beállítást](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyen*. Ez az Alkalmazásbeállítás azonban *nem* működik Windows COMMUNICATION Foundation (WCF) alkalmazásokkal.
+- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
 
 ## <a name="next-steps"></a>Következő lépések
-[Nem éles tárolóhelyekhez való hozzáférés letiltása](app-service-ip-restrictions.md)
+[Block access to non-production slots](app-service-ip-restrictions.md)

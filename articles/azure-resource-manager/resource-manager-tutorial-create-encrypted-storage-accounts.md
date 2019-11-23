@@ -1,25 +1,25 @@
 ---
 title: A sablonreferencia felhasználása
-description: Sablon üzembe helyezéséhez titkosított tárfiókban létrehozása Azure Resource Manager sablonreferenciája használatára.
+description: Utilize the Azure Resource Manager template reference to create a template for deploying an encrypted storage account.
 author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 99ec64529b90c7a80aea62090f80c55cf4e23510
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149375"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326486"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Oktatóanyag: Az Azure Resource Manager sablonreferenciája vételéhez
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Utilize the Azure Resource Manager template reference
 
 Megtudhatja, hogyan keresheti meg a sablonséma-információkat és használhatja fel őket Azure Resource Manager-sablonok létrehozására.
 
 Ebben az oktatóanyagban egy alapszintű sablont fog használni az Azure-gyorssablonok közül. A sablon referenciadokumentációjával testreszabja a sablont egy titkosított tárfiók létrehozásához.
 
-![Resource Manager-sablon referenciája titkosított Storage-fiók üzembe helyezése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Resource Manager template reference deploy encrypted storage account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* [Visual Studio Code](https://code.visualstudio.com/) [Resource Manager Tools bővítménnyel](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
@@ -70,15 +70,15 @@ Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Res
 
 ## <a name="find-the-template-reference"></a>A sablonreferencia megkeresése
 
-1. Tallózással keresse meg az [Azure-sablonok referenciáját](https://docs.microsoft.com/azure/templates/).
-2. A **szűrés cím szerint** mezőben adja meg a **Storage-fiókokat**.
-3. Válassza a **hivatkozás/sablon hivatkozás/Storage/&lt;verzió >/Storage-fiókok** lehetőséget az alábbi képernyőképen látható módon:
+1. Browse to [Azure Template reference](https://docs.microsoft.com/azure/templates/).
+2. In the **Filter by title** box, enter **storage accounts**.
+3. Select **Reference/Template reference/Storage/&lt;Version>/Storage Accounts** as shown in the following screenshot:
 
     ![Resource Manager-sablonreferencia – tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    Ha nem tudja, melyik verziót választani, a legújabb verzióját használja.
+    If you don't know which version to choose, use the latest version.
 
-4. Keresse meg a titkosítással kapcsolatos definíció információit.  
+4. Keresse meg a titkosítással kapcsolatos definíció információit.
 
     ```json
     "encryption": {
@@ -146,7 +146,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Több tárfiókpéldány létrehozása:
 

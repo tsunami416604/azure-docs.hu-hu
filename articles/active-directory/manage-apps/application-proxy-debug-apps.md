@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásproxy-alkalmazások hibakeresése – Azure Active Directory | Microsoft Docs
-description: Azure Active Directory-(Azure AD-) alkalmazásproxy-alkalmazásokkal kapcsolatos hibák elhárítása.
+title: Debug Application Proxy applications - Azure Active Directory | Microsoft Docs
+description: Debug issues with Azure Active Directory (Azure AD) Application Proxy applications.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057749"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382077"
 ---
-# <a name="debug-application-proxy-application-issues"></a>Alkalmazásproxy alkalmazásával kapcsolatos hibák elhárítása 
+# <a name="debug-application-proxy-application-issues"></a>Debug Application Proxy application issues 
 
-Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) alkalmazásproxy alkalmazásaival kapcsolatos problémák elhárításában. Ha az alkalmazásproxy szolgáltatást a helyszíni webalkalmazáshoz való távoli hozzáféréshez használja, de az alkalmazáshoz való csatlakozás nem sikerül, használja ezt a folyamatábrát az alkalmazással kapcsolatos problémák hibakereséséhez. 
+This article helps you troubleshoot issues with Azure Active Directory (Azure AD) Application Proxy applications. If you're using the Application Proxy service for remote access to an on-premises web application, but you're having trouble connecting to the application, use this flowchart to debug application issues. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Az alkalmazásproxy hibáinak elhárításakor javasoljuk, hogy kezdjen el az összekötők közül. Először kövesse a hibaelhárítási folyamatot az [alkalmazásproxy-összekötő hibakeresése](application-proxy-debug-connectors.md) című témakörben, és győződjön meg arról, hogy az alkalmazásproxy-összekötők megfelelően vannak konfigurálva. Ha továbbra is problémákat tapasztal, térjen vissza ehhez a cikkhez az alkalmazás hibaelhárításához.  
+When troubleshooting Application Proxy issues, we recommend you start with the connectors. First, follow the troubleshooting flow in [Debug Application Proxy Connector issues](application-proxy-debug-connectors.md) to make sure Application Proxy connectors are configured correctly. If you're still having issues, return to this article to troubleshoot the application.  
 
-További információ az alkalmazásproxy használatáról:
+For more information about Application Proxy, see:
 
-- [Távoli hozzáférés a helyszíni alkalmazásokhoz alkalmazásproxy használatával](application-proxy.md)
-- [Alkalmazásproxy-összekötők](application-proxy-connectors.md)
-- [Összekötő telepítése és regisztrálása](application-proxy-add-on-premises-application.md)
-- [Az alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Remote access to on-premises applications through Application Proxy](application-proxy.md)
+- [Application Proxy connectors](application-proxy-connectors.md)
+- [Install and register a connector](application-proxy-add-on-premises-application.md)
+- [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-application-issues"></a>Az alkalmazással kapcsolatos problémák folyamatábrája
+## <a name="flowchart-for-application-issues"></a>Flowchart for application issues
 
-Ez a folyamatábra végigvezeti az alkalmazáshoz való csatlakozás leggyakoribb problémáinak hibakeresési lépésein. Az egyes lépésekkel kapcsolatos részletekért tekintse meg a folyamatábrát követő táblázatot.
+This flowchart walks you through the steps for debugging some of the more common issues with connecting to the application. For details about each step, see the table following the flowchart.
 
-![Egy alkalmazás hibakeresésének lépéseit bemutató folyamatábra](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
+![Flowchart showing steps for debugging an application](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Action | Leírás | 
+|  | Műveletek | Leírás | 
 |---------|---------|---------|
-|1 | Nyisson meg egy böngészőt, és lépjen be az alkalmazásba, és adja meg a hitelesítő adatait | A hitelesítő adataival jelentkezzen be az alkalmazásba, és keresse meg a felhasználóval kapcsolatos hibákat, például [a vállalati alkalmazás nem érhető el](application-proxy-sign-in-bad-gateway-timeout-error.md). |
-|2 | A felhasználó-hozzárendelés ellenőrzése az alkalmazáshoz | Győződjön meg arról, hogy a felhasználói fiókja rendelkezik engedéllyel az alkalmazásnak a vállalati hálózaton belüli eléréséhez, majd tesztelje a bejelentkezést az [alkalmazásba az alkalmazás tesztelése](application-proxy-add-on-premises-application.md#test-the-application)lépéseit követve. Ha a bejelentkezési problémák továbbra is fennállnak, tekintse [meg a bejelentkezéssel kapcsolatos hibák elhárítása](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)című témakört.  |
-|3 | Nyisson meg egy böngészőt, és próbálja meg elérni az alkalmazást | Ha egy hiba azonnal megjelenik, ellenőrizze, hogy az alkalmazásproxy megfelelően van-e konfigurálva. Az adott hibaüzenetekkel kapcsolatos részletekért lásd: [az alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).  |
-|4 | Az egyéni tartomány beállításának megkeresése vagy a hiba hibáinak megoldása | Ha a lap egyáltalán nem jelenik meg, ellenőrizze, hogy az egyéni tartomány megfelelően van-e konfigurálva az [Egyéni tartományokkal végzett munka](application-proxy-configure-custom-domain.md)áttekintésével.<br></br>Ha a lap nem töltődik be, és hibaüzenet jelenik meg, hárítsa el a hibát az [alkalmazásproxy-problémák és a hibaüzenetek hibaelhárítására](application-proxy-troubleshoot.md)való hivatkozással. <br></br>Ha a hibaüzenet 20 másodpercnél hosszabb időt vesz igénybe, akkor kapcsolódási probléma lehet. Nyissa meg a [Debug Application proxy-összekötők](application-proxy-debug-connectors.md) hibaelhárítási cikkét.  |
-|5 | Ha a probléma továbbra is fennáll, ugorjon az összekötő hibakeresése | A proxy és az összekötő, illetve az összekötő és a háttér közötti kapcsolati probléma lehet. Nyissa meg a [Debug Application proxy-összekötők](application-proxy-debug-connectors.md) hibaelhárítási cikkét. |
-|6 | Tegye közzé az összes erőforrást, keresse meg a böngésző fejlesztői eszközeit, és javítsa a hivatkozásokat. | Győződjön meg arról, hogy a közzétételi útvonal tartalmazza az alkalmazáshoz szükséges összes lemezképet, parancsfájlt és stíluslapot. Részletekért lásd: helyszíni [alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)hez. <br></br>Használja a böngésző fejlesztői eszközeit (F12-eszközök az Internet Explorerben vagy a Microsoft Edge-ben), és keressen rá a közzétételi problémákra az [alkalmazás lap nem megfelelően jelenik meg](application-proxy-page-appearance-broken-problem.md). <br></br>Tekintse át [a lapon lévő hivatkozásokban lévő nem működő](application-proxy-page-links-broken-problem.md)hivatkozások feloldási beállításait. |
-|7 | Hálózati késés keresése | Ha az oldal lassan töltődik be, Ismerje meg, hogyan csökkentheti a hálózati késést a [késés csökkentése](application-proxy-network-topology.md#considerations-for-reducing-latency)érdekében. | 
-|8 | További hibaelhárítási Súgó | Ha a probléma továbbra is fennáll, további hibaelhárítási cikkeket talál az [alkalmazásproxy hibaelhárítási dokumentációjában](application-proxy-page-appearance-broken-problem.md). |
+|1 | Open a browser, access the app, and enter your credentials | Try using your credentials to sign in to the app, and check for any user-related errors, like [This corporate app can't be accessed](application-proxy-sign-in-bad-gateway-timeout-error.md). |
+|2 | Verify user assignment to the app | Make sure your user account has permission to access the app from inside the corporate network, and then test signing in to the app by following the steps in [Test the application](application-proxy-add-on-premises-application.md#test-the-application). If sign-in issues persist, see [How to troubleshoot sign-in errors](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |
+|3 | Open a browser and try to access the app | If an error appears immediately, check to see that Application Proxy is configured correctly. For details about specific error messages, see [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md).  |
+|4 | Check your custom domain setup or troubleshoot the error | If the page doesn't display at all, make sure your custom domain is configured correctly by reviewing [Working with custom domains](application-proxy-configure-custom-domain.md).<br></br>If the page doesn't load and an error message appears, troubleshoot the error by referring to  [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md). <br></br>If it takes longer than 20 seconds for an error message to appear, there could be connectivity issue. Go to the [Debug Application Proxy connectors](application-proxy-debug-connectors.md) troubleshooting article.  |
+|5 | If issues persist, go to connector debugging | There could be a connectivity issue between the proxy and the connector or between the connector and the back end. Go to the [Debug Application Proxy connectors](application-proxy-debug-connectors.md) troubleshooting article. |
+|6 | Publish all resources, check browser developer tools, and fix links | Make sure the publishing path includes all the necessary images, scripts, and style sheets for your application. For details, see [Add an on-premises app to Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Use the browser's developer tools (F12 tools in Internet Explorer or Microsoft Edge) and check for publishing issues as described in [Application page does not display correctly](application-proxy-page-appearance-broken-problem.md). <br></br>Review options for resolving broken links in [Links on the page don't work](application-proxy-page-links-broken-problem.md). |
+|7 | Check for network latency | If the page loads slowly, learn about ways to minimize network latency in [Considerations for reducing latency](application-proxy-network-topology.md#considerations-for-reducing-latency). | 
+|8 | See additional troubleshooting help | If issues persist, find additional troubleshooting articles in the [Application Proxy troubleshooting documentation](application-proxy-troubleshoot.md). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
-* [Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele](application-proxy-connector-groups.md)
-* [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Proxy és az összekötő kapcsolatos hibák elhárítása](application-proxy-troubleshoot.md)
-* [Az Azure AD alkalmazásproxy-összekötő csendes telepítése](application-proxy-register-connector-powershell.md)
+* [Publish applications on separate networks and locations using connector groups](application-proxy-connector-groups.md)
+* [Work with existing on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Troubleshoot Application Proxy and connector errors](application-proxy-troubleshoot.md)
+* [How to silently install the Azure AD Application Proxy Connector](application-proxy-register-connector-powershell.md)
