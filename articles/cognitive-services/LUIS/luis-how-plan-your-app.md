@@ -1,7 +1,7 @@
 ---
-title: Az alkalmazás megtervezése – LUIS
+title: Plan your app - LUIS
 titleSuffix: Azure Cognitive Services
-description: Körvonalazza a releváns alkalmazás-leképezéseket és entitásokat, majd hozza létre az alkalmazási terveket Language Understanding intelligens szolgáltatásokban (LUIS).
+description: Outline relevant app intents and entities, and then create your application plans in Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: b5e5df111b81cb60b6d194be190421bdb5ce2683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467696"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326771"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plan your LUIS app schema with subject domain and data extraction
 
-A LUIS-alkalmazás sémája a tárgy tartományához kapcsolódó leképezéseket és entitásokat tartalmaz. A cél a felhasználói hosszúságú kimondott szöveg besorolása, az entitások pedig kinyerik az adatait a felhasználói hosszúságú kimondott szöveg. 
+A LUIS app schema contains [intents](luis-glossary.md#intent) and [entities](luis-glossary.md#entity) relevant to your subject [domain](luis-glossary.md#domain). The intents classify user [utterances](luis-glossary.md#utterance), and the entities extract data from the user utterances.
 
-## <a name="identify-your-domain"></a>A tartomány azonosítása
+## <a name="identify-your-domain"></a>Identify your domain
 
-A LUIS-alkalmazások egy adott tartományszintű témakör köré épülnek.  Előfordulhat például, hogy olyan utazási alkalmazást futtat, amely jegyek, repülőjáratok, szállodák és bérelt autók foglalását végzi. Egy másik alkalmazás a gyakorlásával, a fitness-erőfeszítések nyomon követésével és a célok beállításával kapcsolatos tartalmakat is biztosít. A tartomány azonosításával olyan szavakat vagy kifejezéseket találhat, amelyek fontosak a tartomány számára.
+A LUIS app is centered around a subject domain. For example, you may have a travel app that handles booking of tickets, flights, hotels, and rental cars. Another app may provide content related to exercising, tracking fitness efforts and setting goals. Identifying the domain helps you find words or phrases that are relevant to your domain.
 
 > [!TIP]
-> A LUIS [előre elkészített tartományokat](luis-how-to-use-prebuilt-domains.md) kínál számos gyakori forgatókönyvhöz.
-> Ellenőrizze, hogy használható-e előre összeépített tartomány az alkalmazás kiindulási pontjaként.
+> LUIS offers [prebuilt domains](luis-how-to-use-prebuilt-domains.md) for many common scenarios. Check to see if you can use a prebuilt domain as a starting point for your app.
 
-## <a name="identify-your-intents"></a>A szándékok azonosítása
+## <a name="identify-your-intents"></a>Identify your intents
 
-Gondoljon az alkalmazás feladatához fontos [szándékokra](luis-concept-intent.md) . 
+Think about the [intents](luis-concept-intent.md) that are important to your application's task.
 
-Tegyük fel például, hogy egy utazási alkalmazás példája egy repülés lefoglalására és az időjárási adatok ellenőrzésére a felhasználó célhelyén. Megadhatja a műveletekhez tartozó `BookFlight` és `GetWeather` leképezéseket. 
+Let's take the example of a travel app, with functions to book a flight and check the weather at the user's destination. You can define the `BookFlight` and `GetWeather` intents for these actions.
 
-A további funkciókat tartalmazó összetettebb alkalmazásokban több szándék áll rendelkezésére, és körültekintően kell meghatároznia azokat, hogy a szándékok ne legyenek túl konkrétak. Előfordulhat például, hogy a `BookFlight` és az `BookHotel`nak külön szándékra van szüksége, de a `BookInternationalFlight` és a `BookDomesticFlight` túl hasonló lehet.
+In a more complex app with more functions, you have more intents, and you should define them carefully so the intents aren't too specific. For example, `BookFlight` and `BookHotel` may need to be separate intents, but `BookInternationalFlight` and `BookDomesticFlight` may be too similar.
 
 > [!NOTE]
-> Az ajánlott eljárás az, hogy csak annyi szándékot használjon, amennyire az alkalmazás funkcióinak elvégzéséhez szükség van. Ha túl sok leképezést határoz meg, akkor a LUIS a hosszúságú kimondott szöveg helyes besorolása érdekében nehezebbé válik. Ha túl kevést ad meg, előfordulhat, hogy az általános átfedésben van.
+> It is a best practice to use only as many intents as you need to perform the functions of your app. If you define too many intents, it becomes harder for LUIS to classify utterances correctly. If you define too few, they may be so general that they overlap.
 
-Ha nem kell azonosítania az általános felhasználói szándékot, adja hozzá az összes példa felhasználói hosszúságú kimondott szöveg a nincs szándékhoz. Ha az alkalmazás egyre nagyobb szándékot igényel, később is létrehozhatja őket. 
+If you don't need to identify overall user intention, add all the example user utterances to the `None` intent. If your app grows into needing more intents, you can create them later.
 
-## <a name="create-example-utterances-for-each-intent"></a>Példa hosszúságú kimondott szöveg létrehozása az egyes szándékokhoz
+## <a name="create-example-utterances-for-each-intent"></a>Create example utterances for each intent
 
-A leképezések meghatározása után hozzon létre 15 – 30 példa hosszúságú kimondott szöveg az egyes szándékokhoz. A kezdéshez ne legyen kevesebb ennél a számnál, vagy hozzon létre túl sok hosszúságú kimondott szöveg az egyes leképezésekhez. Minden Kimondás nem lehet azonos az előzőtől. A hosszúságú kimondott szöveg jó választéka magában foglalja a szavak teljes darabszámát, a szavak megválasztását, a művelet időpontját és a központozást. 
+To begin with, avoid creating too many utterances for each intent. Once you have determined the intents, create 15 to 30 example utterances per intent. Each utterance should be different from the previously provided utterances. A good variety in utterances include overall word count, word choice, verb tense, and punctuation.
 
-További információkért tekintse át a [hosszúságú kimondott szöveg](luis-concept-utterance.md) .
+For more information, see [understanding good utterances for LUIS apps](luis-concept-utterance.md).
 
-## <a name="identify-your-entities"></a>Entitások azonosítása
+## <a name="identify-your-entities"></a>Identify your entities
 
-A példában hosszúságú kimondott szöveg azonosítsa a kibontani kívánt entitásokat. Egy járat lefoglalásához olyan információra van szüksége, mint a cél, a dátum, a légitársaság, a jegy kategóriája és az utazási osztály. Hozzon létre entitásokat ezekhez az adattípusokhoz, majd jelölje meg az [entitásokat](luis-concept-entity-types.md) a példában szereplő hosszúságú kimondott szöveg, mert fontosak a szándék megvalósításához. 
+In the example utterances, identify the entities you want extracted. To book a flight, you need information like the destination, date, airline, ticket category, and travel class. Create entities for these data types and then mark the [entities](luis-concept-entity-types.md) in the example utterances. Entities are important for accomplishing an intent.
 
-Ha meghatározza, hogy mely entitásokat szeretné használni az alkalmazásban, vegye figyelembe, hogy különböző típusú entitások vannak az objektumok típusai közötti kapcsolatok rögzítéséhez. A [Luis-entitások](luis-concept-entity-types.md) részletesebben ismertetik a különböző típusokat.
+When determining which entities to use in your app, keep in mind that there are different types of entities for capturing relationships between object types. [Entities in LUIS](luis-concept-entity-types.md) provides more detail about the different types.
 
-## <a name="next-steps"></a>További lépések
+> [!TIP]
+> LUIS offers [prebuilt entities](luis-prebuilt-entities.md) for common, conversational user scenarios. Consider using prebuilt entities as a starting point for your application development.
 
-Ismerje meg a tipikus [fejlesztési ciklust](luis-concept-app-iteration.md).  
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [Learning the LUIS development lifecylce](luis-concept-app-iteration.md)
+

@@ -1,54 +1,54 @@
 ---
-title: Nyelvfelismerés Kubernetes-konfiguráció és a lépések telepítése
+title: Language Detection Kubernetes config and deploy steps
 titleSuffix: Azure Cognitive Services
-description: Nyelvfelismerés Kubernetes-konfiguráció és a lépések telepítése
+description: Language Detection Kubernetes config and deploy steps
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: e3051a72a115e711a99ecd68756967e2cef0cc04
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c39df1e6af292d3774c6cba62663454bd2d8ad28
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130049"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383452"
 ---
-### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Az Nyelvfelismerés tároló üzembe helyezése egy AK-fürtön
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Deploy the Language Detection container to an AKS cluster
 
-1. Nyissa meg az Azure CLI-t, és jelentkezzen be az Azure-ba.
+1. Open the Azure CLI, and sign in to Azure.
 
     ```azurecli
     az login
     ```
 
-1. Jelentkezzen be az AK-fürtbe. Cserélje `your-cluster-name` le `your-resource-group` a és a értéket a megfelelő értékekre.
+1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    A parancs futtatása után a következőhöz hasonló üzenetet küld:
+    After this command runs, it reports a message similar to the following:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Ha több előfizetése is elérhető az Azure-fiókjában, és `az aks get-credentials` a parancs hibával tér vissza, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
+    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
+1. Open the text editor of choice. This example uses Visual Studio Code.
 
     ```azurecli
     code .
     ```
 
-1. A szövegszerkesztőben hozzon létre egy új, *Language. YAML*nevű fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy `billing/value` a `apikey/value` és a saját adatait cserélje le.
+1. Within the text editor, create a new file named *language.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -66,6 +66,13 @@ ms.locfileid: "71130049"
             image: mcr.microsoft.com/azure-cognitive-services/language
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -87,39 +94,39 @@ ms.locfileid: "71130049"
         app: language-app
     ```
 
-1. Mentse a fájlt, és zárjuk be a szövegszerkesztőt.
-1. Futtassa a Kubernetes `apply` parancsot a *Language. YAML* fájllal a célként megadott módon:
+1. Save the file, and close the text editor.
+1. Run the Kubernetes `apply` command with the *language.yaml* file as its target:
 
     ```console
-    kuberctl apply -f language.yaml
+    kubectl apply -f language.yaml
     ```
 
-    Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
+    After the command successfully applies the deployment configuration, a message appears similar to the following output:
 
     ```console
     deployment.apps "language" created
     service "language" created
     ```
-1. Ellenőrizze, hogy telepítve van-e a pod:
+1. Verify that the pod was deployed:
 
     ```console
     kubectl get pods
     ```
 
-    A pod futási állapotának kimenete:
+    The output for the running status of the pod:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Győződjön meg arról, hogy a szolgáltatás elérhető, és kérje le az IP-címet.
+1. Verify that the service is available, and get the IP address.
 
     ```console
     kubectl get services
     ```
 
-    A pod *nyelvi* szolgáltatás futási állapotának kimenete:
+    The output for the running status of the *language* service in the pod:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

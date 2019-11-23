@@ -1,6 +1,6 @@
 ---
-title: Apple Push Notification Service konfigurálása az Azure Notification Hubsban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat egy Azure Notification hub-t Apple Push Notification Service (APNS) beállításokkal.
+title: Configure Apple Push Notification Service in Azure Notification Hubs | Microsoft Docs
+description: Learn how to configure an Azure notification hub with Apple Push Notification Service (APNS) settings.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,40 +12,40 @@ ms.date: 03/25/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 74e7e3c74934e292b668b8bff594a5efbca19716
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 116af5192236045ec50409f65a9687ffec5223b5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212542"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406100"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Az értesítési központ Apple Push Notification Service (APNS) beállításainak konfigurálása a Azure Portal
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Notification hub Apple Push Notification Service (APNS) beállításait a Azure Portal használatával. 
+# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Configure Apple Push Notification Service (APNS) settings for a notification hub in the Azure portal
+This article shows you how to configure Apple Push Notification Service (APNS) settings for an Azure notification hub by using the Azure portal. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md). 
+If you haven't already created a notification hub, create one now. For more information, see [Create an Azure notification hub in the Azure portal](create-notification-hub-portal.md). 
 
-## <a name="configure-apple-push-notification-service"></a>Apple Push Notification Service konfigurálása
+## <a name="configure-apple-push-notification-service"></a>Configure Apple Push Notification Service
 
-Az alábbi eljárás az értesítési központ Apple Push Notification Service (APNS) beállításainak konfigurálásához nyújt útmutatást:
+The following procedure gives you steps to configure Apple Push Notification Service (APNS) settings for a notification hub:
 
-1. A Azure Portal az **értesítési központ** lapon válassza az **Apple (APNS)** lehetőséget a bal oldali menüben.
+1. In the Azure portal, on the **Notification Hub** page, select **Apple (APNS)** on the left menu.
 
-1. A **hitelesítési mód**beállításnál válassza a **tanúsítvány** vagy a **token**lehetőséget.
+1. For **Authentication Mode**, select either **Certificate** or **Token**.
 
-   a. Ha a **tanúsítvány**lehetőséget választja:
-   * Válassza ki a fájl ikont, majd válassza ki a feltölteni kívánt *. P12* -fájlt.
-   * Adjon meg egy jelszót.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
+   a. If you select **Certificate**:
+   * Select the file icon, and then select the *.p12* file you want to upload.
+   * Enter a password.
+   * Válassza a **Védőfal** módot. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Képernyőkép a APNS-tanúsítvány konfigurációjának Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Screenshot of an APNS certificate configuration in the Azure portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
-   b. Ha a **jogkivonat**lehetőséget választja:
+   b. If you select **Token**:
 
-   * Adja meg a **kulcs azonosítójának**, **a köteg azonosítójának**, a **csoport azonosítójának**és a **tokennek**az értékeit.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
+   * Enter the values for **Key ID**, **Bundle ID**, **Team ID**, and **Token**.
+   * Válassza a **Védőfal** módot. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Képernyőkép a APNS-jogkivonat konfigurációjának Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Screenshot of an APNS token configuration in the Azure portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
-## <a name="next-steps"></a>További lépések
-Az értesítések iOS-eszközökre történő leküldésével kapcsolatos részletes utasításokért tekintse meg a következő cikket: [Leküldéses értesítések iOS-eszközökre Notification Hubs és APNS használatával](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+## <a name="next-steps"></a>Következő lépések
+For a tutorial with step-by-step instructions for pushing notifications to iOS devices, see the following article: [Push notifications to iOS devices by using Notification Hubs and APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)

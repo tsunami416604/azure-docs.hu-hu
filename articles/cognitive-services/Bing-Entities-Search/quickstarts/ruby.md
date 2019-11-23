@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Keresési kérelem küldése a Bing Entity Search REST API Ruby használatával'
+title: 'Quickstart: Send a search request to the REST API using Ruby - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API Ruby használatával, és JSON-választ kap.
+description: Use this quickstart to send a request to the Bing Entity Search REST API using Ruby, and receive a JSON response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: e892d9917d0cc295236ee5e134348248dd4817a1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 076fad8c1fc6fdd4bccf07f5eb3223800eddd4a0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034516"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323553"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rövid útmutató a Bing Entity Search API és a Ruby használatához
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű Ruby-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb)
+Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple Ruby application sends a news search query to the API, and displays the response. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
 Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) or later.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. A kedvenc IDE-vagy Kódszerkesztő-szerkesztőben hozzon létre egy Hírek Ruby-fájlt, és importálja a következő csomagokat.
+1. In your favorite IDE or code editor, create a news Ruby file and import the following packages.
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
     require 'json'
     ```
 
-2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és egy keresési lekérdezéshez.
+2. Create variables for your API endpoint, News search URL, your subscription key, and a search query.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -51,21 +51,21 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
 
 ## <a name="format-and-make-an-api-request"></a>Formázás és API-kérelem létrehozása
 
-1. Hozza létre a kérés paramétereinek karakterláncát úgy, hogy hozzáfűzi a piaci változót a `?mkt=` paraméterhez. Kódolja a lekérdezést, és fűzze hozzá a `&q=` paraméterhez. Egyesítse az API-gazdagépet, az elérési utat és a kérés paramétereit, és adja őket URI-objektumként.
+1. Create the parameters string for your request by appending your market variable to the `?mkt=` parameter. Encode your query and append it to the `&q=` parameter. Combine your API host, path, and the parameters for your request, and cast them as a URI object.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
     uri = URI (host + path + params)
     ```
 
-2. A kérelem létrehozásához használja az utolsó lépés változóit. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+2. Use the variables from the last step to create the request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header.
 
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Küldje el a kérést, és nyomtassa ki a választ
+3. Send the request, and print the response
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -75,7 +75,7 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
     puts JSON::pretty_generate (JSON (response.body))
     ```
 
-## <a name="example-json-response"></a>Példa JSON-válaszra
+## <a name="example-json-response"></a>Example JSON response
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -140,10 +140,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi a Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [What is the Bing Entity Search API](../search-the-web.md)
+* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

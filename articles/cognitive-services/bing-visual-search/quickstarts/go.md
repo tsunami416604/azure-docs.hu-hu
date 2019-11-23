@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A Bing Visual Search REST API és a Go lemezkép elemzések lekérése'
+title: 'Quickstart: Get image insights using the REST API and Go - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kaphat elemzési információkat, és töltsön fel egy képet, a Bing Visual Search API.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: dcfb2d7dc49dae03c733a3016d37425e33fb0535
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1612db9b0c0f6a5ec85734d5a26ed0e25cb8c07
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796486"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383216"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Gyors útmutató: A Bing Visual Search REST API és a Go lemezkép elemzések lekérése
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Go
 
-Ez a rövid útmutató a Go programnyelv használatával a Bing Visual Search API meghívása és az eredményeket megjeleníti. Egy POST kérést Rendszerképadatok az API-végpont. Az eredmények tartalmazzák a URL-címek és a feltöltött kép hasonló képek leíró adatait.
+This quickstart uses the Go programming language to call the Bing Visual Search API and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [nyissa meg a bináris fájlok](https://golang.org/dl/).
-* A go-kimenet mély közérthető nyomtató eredmények megjelenítéséhez használatos. Go-kimenet és telepítheti a `$ go get -u https://github.com/davecgh/go-spew` parancsot.
+* Install the [Go binaries](https://golang.org/dl/).
+* The go-spew deep pretty printer is used to display results. You can install go-spew with the `$ go get -u https://github.com/davecgh/go-spew` command.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-libraries"></a>Projekt és könyvtárak
+## <a name="project-and-libraries"></a>Project and libraries
 
-Az integrált Fejlesztőkörnyezetével vagy szerkesztőjével a Go-projekt létrehozása. Importálja az `net/http` kérelmeknél `ioutil` beolvasni a választ, és `encoding/json` kezeli a JSON-szöveget az eredmények. A `go-spew` tárhasználat elemzése JSON-eredményeket.
+Create a Go project in your IDE or editor. Then import `net/http` for requests, `ioutil` to read the response, and `encoding/json` to handle the JSON text of results. The `go-spew` library is used to parse JSON results.
 
 ```
 package main
@@ -50,9 +50,9 @@ import (
 
 ```
 
-## <a name="struct-to-format-results"></a>Typ Struktura eredmények formázása
+## <a name="struct-to-format-results"></a>Struct to format results
 
-A `BingAnswer` struktúra, amely többszintű és komplex JSON válaszban visszaadott adatok formátumát. Az alábbi megvalósításra áttekint néhány az alapvető erőforrások:
+The `BingAnswer` structure formats data returned in the JSON response, which is multilevel and complex. The following implementation covers some of the essentials:
 
 ```
 type BingAnswer struct {
@@ -107,9 +107,9 @@ type BingAnswer struct {
 
 ```
 
-## <a name="main-function-and-variables"></a>Fő függvényhez, és a változók  
+## <a name="main-function-and-variables"></a>Main function and variables  
 
-A következő kódot a fő függvényt deklarálja, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. A `batchNumber` egy kezdő és záró határait a POST data szükséges GUID. A `fileName` változó a képfájl azonosítja a POST esetében. Az alábbi szakaszok ismertetik a kód részletei:
+The following code declares the main function and assigns required variables. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data. The `fileName` variable identifies the image file for the POST. The following sections explain the details of the code:
 
 ```
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>A bejegyzés törzse határok
+## <a name="boundaries-of-post-body"></a>Boundaries of POST body
 
-A Visual Search-végpont egy POST kérelmet kezdő és záró határokat a POST data mellékelve van szükség. A vezető határhoz tartozik egy kötegelt tartalomtípus-azonosító szám `Content-Disposition: form-data; name="image"; filename=`, a lemezkép-bejegyzésre mutató fájlneve továbbá. A záró határ egyszerűen a batch számos. Ezek a függvények nem szerepelnek a `main` letiltása:
+A POST request to the Visual Search endpoint requires leading and trailing boundaries enclosing the POST data. The leading boundary includes a batch number, the content type identifier `Content-Disposition: form-data; name="image"; filename=`, plus the filename of the image to POST. The trailing boundary is simply the batch number. These functions are not included in the `main` block:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>Kép bájt hozzáadása bejegyzés törzse
+## <a name="add-image-bytes-to-post-body"></a>Add image bytes to POST body
 
-A kódszegmensben hoz létre a POST-kérelmet, amely tartalmazza a rendszerkép-adatok:
+This code segment creates the POST request that contains image data:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -205,9 +205,9 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ```
 
-## <a name="send-the-request"></a>A kérés küldése
+## <a name="send-the-request"></a>Send the request
 
-Az alábbi kód elküldi a kérelmet, és az eredmények beolvasása:
+The following code sends the request and reads the results:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A `Unmarshall` függvény információkat gyűjt a a Visual Search API által visszaadott JSON-szövegben. A `go-spew` közérthető nyomtató az eredményeket jeleníti meg:
+The `Unmarshall` function extracts information from the JSON text returned by the Visual Search API. The `go-spew` pretty printer displays the results:
 
 ```
     // Create a new answer.  
@@ -245,11 +245,11 @@ A `Unmarshall` függvény információkat gyűjt a a Visual Search API által vi
 
 ```
 > [!NOTE]
-> Francesco Giordano viszonyított ebben a példában a kódot.
+> Francesco Giordano contributed code to this example.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-Az eredmények POST törzsében képen láthatóhoz hasonló képek azonosítása. A hasznos mezők `WebSearchUrl` és `Name`:
+The results identify images similar to the image contained in the POST body. The useful fields are `WebSearchUrl` and `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -284,8 +284,8 @@ Az eredmények POST törzsében képen láthatóhoz hasonló képek azonosítás
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Mi az a Bing Visual Search API? ](../overview.md) 
->  [, Lépjen a Bing webes keresés rövid útmutató](../../Bing-Web-Search/quickstarts/go.md)
+> [What is the Bing Visual Search API?](../overview.md)
+> [Bing Web Search quickstart in Go](../../Bing-Web-Search/quickstarts/go.md)

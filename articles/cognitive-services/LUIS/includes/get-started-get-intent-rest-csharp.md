@@ -1,25 +1,25 @@
 ---
-title: Előrejelzés beszerzése REST-hívássalC#
+title: Get prediction with REST call in C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2d3a000040ff1b4f6e0ae548b578e8be014dc06a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125510"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414611"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
+* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,20 +27,22 @@ ms.locfileid: "74125510"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-C# A segítségével lekérdezheti az előrejelzési végpont Get [API](https://aka.ms/luis-apim-v3-prediction) -ját az előrejelzés eredményének lekéréséhez. 
+Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Hozzon létre egy új, a C# nyelvet célzó alkalmazást, amelyben a projekt és a mappa neve `predict-with-rest`. 
+1. Create a new console application targeting the C# language, with a project and folder name of `predict-with-rest`. 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Telepítse a szükséges függőségeket a következő DotNet CLI-parancsokkal.
+1. Change to the `predict-with-rest` directory you just created, and install required dependencies with these commands:  
 
     ```console
+    cd predict-with-rest
     dotnet add package System.Net.Http
     ```
-1. Írja felül a Program.cs fájlt a következő kóddal:
+
+1. Open `Program.cs` in your favorite IDE or editor. Then overwrite `Program.cs` with the following code:
     
    ```csharp
     using System;
@@ -100,31 +102,31 @@ C# A segítségével lekérdezheti az előrejelzési végpont Get [API](https://
 
    ```
 
-1. Cserélje le a következő értékeket:
+1. Replace the following values:
 
-    * `YOUR-KEY` az alapszintű kulccsal
-    * `YOUR-ENDPOINT` a végponttal, például `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. Hozza létre a konzolalkalmazást. 
+1. Build the console application with this command: 
 
     ```console
     dotnet build
     ```
 
-1. Futtassa a konzolalkalmazást. A konzol kimenete ugyanazt a JSON-t jeleníti meg, amelyet korábban a böngészőablakban látott.
+1. Futtassa a konzolalkalmazást. The console output displays the same JSON that you saw earlier in the browser window.
 
     ```console
     dotnet run
     ```
 
-1. Az előrejelzési válasz áttekintése JSON formátumban:
+1. Review the prediction response, which is returned as JSON:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Az olvashatóságra formázott JSON-Válasz: 
+    The JSON response formatted for readability: 
 
     ```JSON
     {
@@ -173,9 +175,9 @@ C# A segítségével lekérdezheti az előrejelzési végpont Get [API](https://
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
+When you are finished with this quickstart, delete the file from the file system. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

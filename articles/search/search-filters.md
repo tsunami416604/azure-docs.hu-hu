@@ -1,85 +1,84 @@
 ---
-title: Keresési eredmények szűrése
+title: Filter on search results
 titleSuffix: Azure Cognitive Search
-description: Szűrés felhasználói biztonsági identitás, nyelv, földrajzi hely vagy numerikus értékek alapján, amelyekkel csökkenthető a keresési eredmények az Azure Cognitive Search-on futó felhőalapú keresési szolgáltatásban Microsoft Azureeken.
+description: Filter by user security identity, language, geo-location, or numeric values to reduce search results on queries in Azure Cognitive Search, a hosted cloud search service on Microsoft Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132927"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406742"
 ---
-# <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
+# <a name="filters-in-azure-cognitive-search"></a>Filters in Azure Cognitive Search 
 
-A *szűrők* az Azure Cognitive Search-lekérdezésekben használt dokumentumok kiválasztására vonatkozó feltételeket biztosítanak. A szűretlen keresés az index összes dokumentumát tartalmazza. A szűrési hatókörök a keresési lekérdezések a dokumentumok egy részhalmazára vonatkoznak. Egy szűrő például korlátozhatja a teljes szöveges keresést arra, hogy csak az adott márkával vagy színnel rendelkező termékek legyenek egy adott küszöbérték felett.
+A *filter* provides criteria for selecting documents used in an Azure Cognitive Search query. Unfiltered search includes all documents in the index. A filter scopes a search query to a subset of documents. For example, a filter could restrict full text search to just those products having a specific brand or color, at price points above a certain threshold.
 
-Egyes keresési funkciók a megvalósítás részeként határozzák meg a szűrési követelményeket, de a szűrőket bármikor használhatja, ha az *érték-alapú feltételek alapján* szeretné korlátozni a keresést (a "könyvekben" a "Simon & Schuster" kategóriába tartozó "nem fikció" kategóriájú "könyvek" kifejezésre való kereséssel).
+Some search experiences impose filter requirements as part of the implementation, but you can use filters anytime you want to constrain search using *value-based* criteria (scoping search to product type "books" for category "non-fiction" published by "Simon & Schuster").
 
-Ha a cél az adott *adatstruktúrákra* irányuló célzott keresés (egy ügyfél-visszajelzési mezőben való keresés), akkor az alább ismertetett alternatív módszerek érhetők el.
+If instead your goal is targeted search on specific data *structures* (scoping search to a customer-reviews field), there are alternative methods, described below.
 
-## <a name="when-to-use-a-filter"></a>Mikor kell szűrőt használni
+## <a name="when-to-use-a-filter"></a>When to use a filter
 
-A szűrők számos keresési élményhez, többek között a "keresés a közelben", a sokoldalú navigáláshoz és a csak azokat a dokumentumokat megjelenítő biztonsági szűrőkhöz használhatók, amelyeken a felhasználók számára engedélyezett a megtekintés. Ha a fentiekben ismertetett tapasztalatok valamelyikét alkalmazza, szűrőt kell megadnia. Ez a keresési lekérdezéshez csatolt szűrő, amely a térinformatikai koordinátákat, a felhasználó által kiválasztott aspektusi kategóriát vagy a kérelmező biztonsági AZONOSÍTÓját adja meg.
+Filters are foundational to several search experiences, including "find near me", faceted navigation, and security filters that show only  those documents a user is allowed to see. If you implement any one of these experiences, a filter is required. It's the filter attached to the search query that provides the geolocation coordinates, the facet category selected by the user, or the security ID of the requestor.
 
-Például a következő forgatókönyvek tartoznak ide:
+Example scenarios include the following:
 
-1. Egy szűrő használatával az indexet az indexben lévő adatértékek alapján darabolhatja. A várossal, a lakhatási típussal és a kényelemmel rendelkező séma alapján létrehozhat egy szűrőt, amellyel explicit módon kiválaszthatja azokat a dokumentumokat, amelyek megfelelnek a feltételeknek (Seattle, Condos, Waterfront). 
+1. Use a filter to slice your index based on data values in the index. Given a schema with city, housing type, and amenities, you might create a filter to explicitly select documents that satisfy your criteria (in Seattle, condos, waterfront). 
 
-   Az azonos bemenetekkel rendelkező teljes szöveges keresés gyakran hasonló eredményeket eredményez, de a szűrő precízebb, ha pontosan egyeznie kell a szűrő kifejezéssel az index tartalmával szemben. 
+   Full text search with the same inputs often produces similar results, but a filter is more precise in that it requires an exact match of the filter term against content in your index. 
 
-2. Szűrő használata, ha a keresési élményhez egy szűrőre vonatkozó követelmény tartozik:
+2. Use a filter if the search experience comes with a filter requirement:
 
-   * A [sokoldalú Navigálás](search-faceted-navigation.md) egy szűrő használatával adja vissza a felhasználó által kiválasztott aspektusi kategóriát.
-   * A Geo-Search egy szűrő használatával továbbítja a jelenlegi hely koordinátáit a "keresés a közeljövőben" alkalmazásokban. 
-   * A biztonsági szűrők a biztonsági azonosítókat szűrési feltételként adják át, ahol az index egyezése proxyként szolgál a dokumentumhoz való hozzáférési jogokhoz.
+   * [Faceted navigation](search-faceted-navigation.md) uses a filter to pass back the facet category selected by the user.
+   * Geo-search uses a filter to pass coordinates of the current location in "find near me" apps. 
+   * Security filters pass security identifiers as filter criteria, where a match in the index serves as a proxy for access rights to the document.
 
-3. Használjon szűrőt, ha numerikus mezőben keresési feltételeket szeretne használni. 
+3. Use a filter if you want search criteria on a numeric field. 
 
-   A numerikus mezők beolvashatók a dokumentumban, és megjelenhetnek a keresési eredmények között, de nem kereshetők (a teljes szöveges kereséstől függően). Ha numerikus adat alapján kell megadnia a kiválasztási feltételeket, használjon szűrőt.
+   Numeric fields are retrievable in the document and can appear in search results, but they are not searchable (subject to full text search) individually. If you need selection criteria based on numeric data, use a filter.
 
-### <a name="alternative-methods-for-reducing-scope"></a>Alternatív módszerek a hatókör csökkentéséhez
+### <a name="alternative-methods-for-reducing-scope"></a>Alternative methods for reducing scope
 
-Ha szűkítő hatást szeretne a keresési eredményekre, a szűrők nem az Ön egyetlen választása. Ezek az alternatívák jobban illeszkednek az Ön céljától függően:
+If you want a narrowing effect in your search results, filters are not your only choice. These alternatives could be a better fit, depending on your objective:
 
- + `searchFields` lekérdezési paraméter adott mezőkre keres. Ha például az index külön mezőket biztosít az angol és a spanyol leíráshoz, a searchFields segítségével megcélozhatja, hogy mely mezők használhatók a teljes szöveges kereséshez. 
+ + `searchFields` query parameter pegs search to specific fields. For example, if your index provides separate fields for English and Spanish descriptions, you can use searchFields to target which fields to use for full text search. 
 
-+ `$select` paraméterrel határozható meg, hogy mely mezők szerepeljenek egy eredményhalmaz számára, és hogy a válasz ténylegesen a hívó alkalmazásba való küldés előtt legyen kimetszve. Ez a paraméter nem pontosítja a lekérdezést, vagy nem csökkenti a dokumentum-gyűjteményt, de ha a cél kisebb válasz, ez a paraméter egy megfontolandó lehetőség. 
++ `$select` parameter is used to specify which fields to include in a result set, effectively trimming the response before sending it to the calling application. This parameter does not refine the query or reduce the document collection, but if a smaller response is your goal, this parameter is an option to consider. 
 
-A paraméterekkel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paraméterek](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+For more information about either parameter, see [Search Documents > Request > Query parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="how-filters-are-executed"></a>A szűrők végrehajtása
+## <a name="how-filters-are-executed"></a>How filters are executed
 
-A lekérdezési időpontnál a szűrő-elemző a feltételeket bemenetként fogadja el, átalakítja a kifejezést egy faszerkezetként jelölt atomi logikai kifejezésre, majd kiértékeli a szűrő faszerkezetét egy index szűrt mezőin.
+At query time, a filter parser accepts criteria as input, converts the expression into atomic Boolean expressions represented as a tree, and then evaluates the filter tree over filterable fields in an index.
 
-A szűrés párhuzamosan történik a kereséssel, amely feljogosítja, hogy a dokumentumok lekéréséhez és a relevancia pontozásához mely dokumentumokat kell felvenni az alárendelt feldolgozásba. Keresési karakterlánccal párosítva a szűrő hatékonyan csökkenti a későbbi keresési művelet visszahívási készletét. Ha egyedül használja (például ha a lekérdezési karakterlánc üres, ahol `search=*`), a szűrési feltételek az egyetlen bemenetek. 
+Filtering occurs in tandem with search, qualifying which documents to include in downstream processing for document retrieval and relevance scoring. When paired with a search string, the filter effectively reduces the recall set of the subsequent search operation. When used alone (for example, when the query string is empty where `search=*`), the filter criteria is the sole input. 
 
-## <a name="defining-filters"></a>Szűrők definiálása
+## <a name="defining-filters"></a>Defining filters
+Filters are OData expressions, articulated using a [subset of OData V4 syntax supported in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-A szűrők OData kifejezések, amelyek az [Azure Cognitive Search által támogatott OData v4-szintaxist](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)használnak. 
+You can specify one filter for each **search** operation, but the filter itself can include multiple fields, multiple criteria, and if you use an **ismatch** function, multiple full-text search expressions. In a multi-part filter expression, you can specify predicates in any order (subject to the rules of operator precedence). There is no appreciable gain in performance if you try to rearrange predicates in a particular sequence.
 
-Megadhat egy szűrőt az egyes **keresési** műveletekhez, de maga a szűrő több mezőt is tartalmazhat, több feltételt, és ha **ismatch** függvényt használ, több teljes szöveges keresési kifejezés is használható. A többrészes szűrési kifejezésekben bármely sorrendben megadhat predikátumokat (az operátori prioritás szabályainak megfelelően). Ha egy adott sorozatban megpróbál átrendezni predikátumokat, a teljesítmény nem észlelhető.
+One of the limits on a filter expression is the maximum size limit of the request. The entire request, inclusive of the filter, can be a maximum of 16 MB for POST, or 8 KB for GET. There is also a limit on the number of clauses in your filter expression. A good rule of thumb is that if you have hundreds of clauses, you are at risk of running into the limit. We recommend designing your application in such a way that it does not generate filters of unbounded size.
 
-A szűrési kifejezés egyik korlátja a kérelem maximális mérete. A teljes kérelem, amely tartalmazza a szűrőt, legfeljebb 16 MB lehet a POST számára, vagy 8 KB a GET értékhez. A szűrési kifejezésben a záradékok száma is korlátozott. A jó ökölszabály az, hogy ha több száz záradékkal rendelkezik, akkor fennáll a lehetősége, hogy a korláton fut. Javasoljuk, hogy az alkalmazást úgy tervezze meg, hogy ne állítson be nem kötött méretű szűrőket.
-
-Az alábbi példák több API-ban prototípusos-szűrési definíciókat tartalmaznak.
+The following examples represent prototypical filter definitions in several APIs.
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -87,91 +86,91 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>Használati minták szűrése
+## <a name="filter-usage-patterns"></a>Filter usage patterns
 
-Az alábbi példák több használati mintát mutatnak be a szűrési forgatókönyvek esetében. További ötletek: OData- [kifejezés szintaxisa > példák](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+The following examples illustrate several usage patterns for filter scenarios. For more ideas, see [OData expression syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-+ Önálló **$Filter**lekérdezési karakterlánc nélkül, akkor hasznos, ha a szűrő kifejezés képes teljes mértékben minősíteni a dokumentumokat. A lekérdezési karakterláncok nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás vagy rangsorolás. Figyelje meg, hogy a keresési sztring csak egy csillag, ami az összes dokumentum egyezését jelenti.
-
-   ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
-   ```
-
-+ A lekérdezési karakterlánc és a **$Filter**kombinációja, ahol a szűrő létrehozza a részhalmazt, és a lekérdezési karakterlánc a teljes szöveges keresésre szolgáló bemeneteket biztosít a szűrt részhalmazon. Egy lekérdezési sztringet tartalmazó szűrő használata a leggyakoribb használati minta.
++ Standalone **$filter**, without a query string, useful when the filter expression is able to fully qualify documents of interest. Without a query string, there is no lexical or linguistic analysis, no scoring, and no ranking. Notice the search string is just an asterisk, which means "match all documents".
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ A "vagy" karakterrel elválasztott összetett lekérdezések, amelyek mindegyike saját szűrési feltételekkel rendelkezik (például "Beagle" a "Dog" vagy "Sziámi" a "Cat"-ben). A `or` összevont kifejezések kiértékelése külön történik, és a válaszban visszaküldött kifejezésekkel megegyező dokumentumok Uniója. Ez a használati minta a `search.ismatchscoring` függvényen keresztül érhető el. A nem pontozási verziót is használhatja, `search.ismatch`.
++ Combination of query string and **$filter**, where the filter creates the subset, and the query string provides the term inputs for full text search over the filtered subset. The addition of terms (walking distance theaters) introduces search scores in the results, where documents that best match the terms are ranked higher. Using a filter with a query string is the most common usage pattern.
+
+   ```
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
+   ```
+
++ Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  A teljes szöveges keresést a `search.ismatchscoring` használatával is összekapcsolhatja, ha a szűrőket nem a `or`helyett `and` használja, de ez a funkció egyenértékű a keresési kérelemben szereplő `search` és `$filter` paraméterek használatával. Például a következő két lekérdezés ugyanazt az eredményt eredményezi:
+  It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
-Az alábbi cikkekben részletes útmutatást talál az egyes használati esetekhez:
+Follow up with these articles for comprehensive guidance on specific use cases:
 
 + [Jellemzők szűrői](search-filters-facets.md)
 + [Nyelvi szűrők](search-filters-language.md)
 + [Biztonsági elrejtés](search-security-trimming-for-azure-search.md) 
 
-## <a name="field-requirements-for-filtering"></a>A szűréshez szükséges mezők
+## <a name="field-requirements-for-filtering"></a>Field requirements for filtering
 
-A REST APIban az egyszerű mezők esetében a szűrhető beállítás alapértelmezés szerint be van *kapcsolva* . Szűrhető mezők: az index mérete növekszik; Ügyeljen arra, hogy a szűrőben ténylegesen használni nem tervezett mezőkhöz `"filterable": false` állítson be. További információ a mezőértékek beállításairól: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+In the REST API, filterable is *on* by default for simple fields. Filterable fields increase index size; be sure to set `"filterable": false` for fields that you don't plan to actually use in a filter. For more information about settings for field definitions, see [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) `true`értékre állítja. Ezt a deklaratív [IsFilterable attribútum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum a Model osztály `BaseRate` tulajdonságára van beállítva, amely az index definícióját képezi le.
+In the .NET SDK, the filterable is *off* by default. You can make a field filterable by setting the [IsFilterable property](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) of the corresponding [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object to `true`. You can also do this declaratively by using the [IsFilterable attribute](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). In the example below, the attribute is set on the `BaseRate` property of a model class that maps to the index definition.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="making-an-existing-field-filterable"></a>Meglévő mező szűrhetővé tétele
+### <a name="making-an-existing-field-filterable"></a>Making an existing field filterable
 
-A meglévő mezők nem módosíthatók úgy, hogy szűrhetők legyenek. Ehelyett új mezőt kell felvennie, vagy újra kell építenie az indexet. Az indexek újraépítésével vagy a mezők újrafeltöltésével kapcsolatos további információkért lásd: [Azure Cognitive Search index](search-howto-reindex.md)újraépítése.
+You can't modify existing fields to make them filterable. Instead, you need to add a new field, or rebuild the index. For more information about rebuilding an index or repopulating fields, see [How to rebuild an Azure Cognitive Search index](search-howto-reindex.md).
 
-## <a name="text-filter-fundamentals"></a>A szöveg szűrő alapjai
+## <a name="text-filter-fundamentals"></a>Text filter fundamentals
 
-A szöveges szűrők a szűrőben megadott literális karakterláncok alapján egyeznek meg a karakterlánc mezőivel. A teljes szöveges kereséstől eltérően a szöveges szűrők nem rendelkeznek lexikális analízissel vagy sortöréssel, így az összehasonlítások csak a pontos egyezésekre vonatkoznak. Tegyük fel például, hogy az *f* mező a "Sunny Day" kifejezést tartalmazza, `$filter=f eq 'Sunny'` nem egyezik, de a `$filter=f eq 'sunny day'` is. 
+Text filters match string fields against literal strings that you provide in the filter. Unlike full-text search, there is no lexical analysis or word-breaking for text filters, so comparisons are for exact matches only. For example, assume a field *f* contains "sunny day", `$filter=f eq 'Sunny'` does not match, but `$filter=f eq 'sunny day'` will. 
 
-A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. Nem létezik alsó rétegű szó a kis-és nagybetűkből: `$filter=f eq 'Sunny day'` nem fogja megtalálni a "Sunny Day" kifejezést.
+Text strings are case-sensitive. There is no lower-casing of upper-cased words: `$filter=f eq 'Sunny day'` will not find "sunny day".
 
-### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
+### <a name="approaches-for-filtering-on-text"></a>Approaches for filtering on text
 
-| A módszer | Leírás | A következő esetekben használja |
+| Approach | Leírás | When to use |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény a sebességhez lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összevetése az egyes sztringekkel `eq` és `or`használatával. | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Mezőkből, operátorokból és értékből álló, felhasználó által definiált kifejezés. | Akkor használja ezt a lehetőséget, ha pontos egyezést szeretne találni egy karakterlánc-mező és egy karakterlánc-érték között. |
+| [`search.in`](search-query-odata-search-in-function.md) | A function that matches a field against a delimited list of strings. | Recommended for [security filters](search-security-trimming-for-azure-search.md) and for any filters where many raw text values need to be matched with a string field. The **search.in** function is designed for speed and is much faster than explicitly comparing the field against each string using `eq` and `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | A function that allows you to mix full-text search operations with strictly Boolean filter operations in the same filter expression. | Use **search.ismatch** (or its scoring equivalent, **search.ismatchscoring**) when you want multiple search-filter combinations in one request. You can also use it for a *contains* filter to filter on a partial string within a larger string. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | A user-defined expression composed of fields, operators, and values. | Use this when you want to find exact matches between a string field and a string value. |
 
-## <a name="numeric-filter-fundamentals"></a>Numerikus szűrők alapjai
+## <a name="numeric-filter-fundamentals"></a>Numeric filter fundamentals
 
-A numerikus mezők nem `searchable` a teljes szöveges keresés kontextusában. Csak karakterláncok tartoznak a teljes szöveges keresésre. Ha például a 99,99 értéket adja meg keresési kifejezésként, akkor nem fog visszakerülni a $99,99-es díjszabású elemekbe. Ehelyett a dokumentum sztring mezőiben szereplő, 99 számú elemek jelennek meg. Így ha numerikus adattal rendelkezik, feltételezi, hogy a szűrőket, például a tartományokat, a dimenziókat, a csoportokat és így tovább használni fogja. 
+Numeric fields are not `searchable` in the context of full text search. Only strings are subject to full text search. For example, if you enter 99.99 as a search term, you won't get back items priced at $99.99. Instead, you would see items that have the number 99 in string fields of the document. Thus, if you have numeric data, the assumption is that you will use them for filters, including ranges, facets, groups, and so forth. 
 
-A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben biztosítják ezeket az értékeket, ha a mező `retrievable`van megjelölve. Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
+Documents that contain numeric fields (price, size, SKU, ID) provide those values in search results if the field is marked `retrievable`. The point here is that full text search itself is not applicable to numeric field types.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Először a portálon keresse meg a **keresési Explorert** , hogy **$Filter** paraméterekkel küldje el a lekérdezéseket. A [Real-Estate-Sample index](search-get-started-portal.md) érdekes eredményeket biztosít a következő szűrt lekérdezésekhez, amikor beilleszti őket a keresősávba:
+First, try **Search explorer** in the portal to submit queries with **$filter** parameters. The [real-estate-sample index](search-get-started-portal.md) provides interesting results for the following filtered queries when you paste them into the search bar:
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -194,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+To work with more examples, see [OData Filter Expression Syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-+ [Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search](search-lucene-query-architecture.md)
-+ [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Supported data types](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

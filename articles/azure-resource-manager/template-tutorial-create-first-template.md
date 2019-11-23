@@ -1,55 +1,55 @@
 ---
-title: Oktatóanyag – & üzembe helyezési sablon létrehozása
-description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
+title: Tutorial - Create & deploy template
+description: Create your first Azure Resource Manager template. In the tutorial, you learn about the template file syntax and how to deploy a storage account.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 961c68ca6d5e0bf6dda95a26a684c3fff60b1d1b
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9650b8c67e3fd5c786b066c53e78b106935e11e1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148011"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406036"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése
+# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Create and deploy your first Azure Resource Manager template
 
-Ez az oktatóanyag bemutatja, hogyan Azure Resource Manager sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
+This tutorial introduces you to Azure Resource Manager templates. It shows you how to create a starter template and deploy it to Azure. You'll learn about the structure of the template and the tools you'll need for working with templates. It takes about **12 minutes** to complete this tutorial, but the actual time will vary based on how many tools you need to install.
 
-Ez az oktatóanyag egy sorozat első része. Az adatsorozaton keresztüli előrehaladást követően módosítsa a sablon indítása lépésről lépésre, amíg meg nem vizsgálja a Resource Manager-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
+This tutorial is the first of a series. As you progress through the series, you modify the starting template step-by-step until you've explored all of the core parts of a Resource Manager template. These elements are the building blocks for much more complex templates. We hope by the end of the series you're confident creating your own templates and ready to automate your deployments with templates.
 
-Ha szeretné megismerni a sablonok használatának előnyeit, és azt, hogy miért érdemes a sablonokkal automatizálni az üzembe helyezést, olvassa el a [Azure Resource Manager-sablonok](template-deployment-overview.md)című témakört.
+If you want to learn about the benefits of using templates and why you should automate deployment with templates, see [Azure Resource Manager templates](template-deployment-overview.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="get-tools"></a>Eszközök beolvasása
+## <a name="get-tools"></a>Get tools
 
-Először is győződjön meg arról, hogy rendelkezik a sablonok létrehozásához és üzembe helyezéséhez szükséges eszközökkel.
+Let's start by making sure you have the tools you need to create and deploy templates.
 
 ### <a name="editor"></a>Szerkesztő
 
-A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van szükség. A Visual Studio Code-ot a Resource Manager-eszközök bővítménnyel ajánljuk. Ha telepítenie kell ezeket az eszközöket, tekintse meg [Azure Resource Manager sablonok létrehozásához használja a Visual Studio Code-](./resource-manager-tools-vs-code.md)ot.
+Templates are JSON files. To create templates, you need a good JSON editor. We recommend Visual Studio Code with the Resource Manager Tools extension. If you need to install these tools, see [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
-### <a name="command-line-deployment"></a>Parancssori telepítés
+### <a name="command-line-deployment"></a>Command-line deployment
 
-A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. A telepítési utasításokért lásd:
+You also need either Azure PowerShell or Azure CLI to deploy the template. For the installation instructions, see:
 
 - [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
-- [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
-- [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
+- [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows)
+- [Install Azure CLI on Linux](/cli/azure/install-azure-cli-linux)
 
-A Azure PowerShell vagy az Azure CLI telepítését követően ellenőrizze, hogy az első alkalommal jelentkezik-e be. Segítségért lásd: [Bejelentkezés – PowerShell](/powershell/azure/install-az-ps#sign-in) vagy [Bejelentkezés – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+After installing either Azure PowerShell or Azure CLI, make sure you sign in for the first time. For help, see [Sign in - PowerShell](/powershell/azure/install-az-ps#sign-in) or [Sign in - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
-Most már készen áll a sablonok megismerésének megkezdésére.
+Okay, you're ready to start learning about templates.
 
-## <a name="create-your-first-template"></a>Az első sablon létrehozása
+## <a name="create-your-first-template"></a>Create your first template
 
-1. Nyissa meg a Visual Studio Code-ot, és telepítse a Resource Manager Tools bővítményt.
-1. Új fájl létrehozásához a **fájl** menüben válassza az **új fájl** elemet.
-1. A **fájl** menüben válassza a **Mentés másként**lehetőséget.
-1. Nevezze el a fájlt **azuredeploy** , és válassza ki a **JSON** -fájl kiterjesztését. A **azuredeploy. JSON**fájl teljes neve.
-1. Mentse a fájlt a munkaállomásra. Olyan elérési utat adjon meg, amely könnyen megjegyezhető, mert a sablon telepítésekor később is megadhatja ezt az útvonalat.
-1. Másolja és illessze be a következő JSON-fájlt a fájlba:
+1. Open Visual Studio Code with the Resource Manager Tools extension installed.
+1. From the **File** menu, select **New File** to create a new file.
+1. From the **File** menu, select **Save as**.
+1. Name the file **azuredeploy** and select the **JSON** file extension. The complete name of the file **azuredeploy.json**.
+1. Save the file to your workstation. Select a path that is easy to remember because you'll provide that path later when deploying the template.
+1. Copy and paste the following JSON into the file:
 
     ```json
     {
@@ -59,25 +59,25 @@ Most már készen áll a sablonok megismerésének megkezdésére.
     }
     ```
 
-    A VS Code-környezet a következőképpen néz ki:
+    Here's what your VS Code environment looks like:
 
-    ![Resource Manager-sablon Visual Studio Code – első sablon](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Resource Manager template visual studio code first template](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
-    Ez a sablon nem telepít semmilyen erőforrást. A rendszer egy üres sablont használ, hogy megismerje a sablon üzembe helyezésének lépéseit, miközben minimalizálja a hiba valószínűségét.
+    This template doesn't deploy any resources. We're starting with a blank template so you can get familiar with the steps to deploy a template while minimizing the chance of something going wrong.
 
-    A JSON-fájl a következő elemeket tartalmazza:
+    The JSON file has these elements:
 
-    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2015-01-01. Ez a séma-verzió naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
-    - **contentVersion**: a sablon verzióját adja meg (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e.
-    - **erőforrások**: tartalmazza a telepíteni vagy frissíteni kívánt erőforrásokat. Jelenleg üres, de később további erőforrásokat fog hozzáadni.
+    - **$schema**: Specifies the location of the JSON schema file. The schema file describes the properties that are available within a template. For example, the schema defines **resources** as one of the valid properties for a template. Don't worry that the date for the schema is 2015-01-01. This schema version is up-to-date and includes all of the latest features. The schema date hasn't been changed because there have been no breaking changes since its introduction.
+    - **contentVersion**: Specifies the version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. When deploying resources using the template, this value can be used to make sure that the right template is being used.
+    - **resources**: Contains the resources you want to deploy or update. Currently, it's empty, but you'll add resources later.
 
 1. Mentse a fájlt.
 
-Gratulálunk, létrehozta az első sablont.
+Congratulations, you've created your first template.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-A Azure PowerShell/Azure CLI használatának megkezdéséhez jelentkezzen be az Azure-beli hitelesítő adataival.
+To start working with Azure PowerShell/Azure CLI, sign in with your Azure credentials.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Sablon központi telepítésekor megadhat egy erőforráscsoportot, amely az erőforrásokat fogja tartalmazni. Az üzembe helyezési parancs futtatása előtt hozza létre az erőforráscsoportot az Azure CLI vagy a Azure PowerShell használatával. Válassza ki az alábbi kódrészletet a Azure PowerShell és az Azure CLI közötti választáshoz.
+When you deploy a template, you specify a resource group that will contain the resources. Before running the deployment command, create the resource group with either Azure CLI or Azure PowerShell. Select the tabs in the following code section to choose between Azure PowerShell and Azure CLI. The CLI examples in this article are written for the Bash shell.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell. Használja az Ön által létrehozott erőforráscsoportot. Adjon nevet a központi telepítésnek, hogy könnyen azonosítható legyen az üzembe helyezési előzményekben. A kényelem érdekében hozzon létre egy olyan változót is, amely a sablonfájl elérési útját tárolja. Ez a változó megkönnyíti az üzembe helyezési parancsok futtatását, mert minden egyes telepítésekor nem kell újraírnia az elérési utat.
+To deploy the template, use either Azure CLI or Azure PowerShell. Use the resource group you created. Give a name to the deployment so you can easily identify it in the deployment history. For convenience, also create a variable that stores the path to the template file. This variable makes it easier for you to run the deployment commands because you don't have to retype the path every time you deploy.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-$templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{provide-the-path-to-the-template-file}"
 az group deployment create \
   --name blanktemplate \
   --resource-group myResourceGroup \
@@ -140,54 +140,54 @@ az group deployment create \
 
 ---
 
-Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `ProvisioningState`, és ellenőrizze, hogy sikeres volt-e az üzembe helyezés.
+The deployment command returns results. Look for `ProvisioningState` to see whether the deployment succeeded.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-![PowerShell üzembe helyezési állapota](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
+![PowerShell deployment provisioning state](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-![Azure CLI üzembe helyezési állapot](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
+![Azure CLI deployment provisioning state](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. From the left menu, select **Resource groups**.
 
-1. Válassza ki az erőforráscsoport központi telepítését a legutóbbi eljárásban. Az alapértelmezett név a **myResourceGroup**. Az erőforráscsoporthoz tartozó erőforrás nem jelenik meg.
+1. Select the resource group deploy in the last procedure. The default name is **myResourceGroup**. You shall see no resource deployed within the resource group.
 
-1. Az Áttekintés jobb felső sarkában megjelenik az üzemelő példány állapota. Válassza az **1 sikeres**lehetőséget.
+1. Notice in the upper right of the overview, the status of the deployment is displayed. Select **1 Succeeded**.
 
-   ![Központi telepítés állapotának megtekintése](./media/template-tutorial-create-first-template/deployment-status.png)
+   ![View deployment status](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. Az erőforráscsoport központi telepítésének előzményei láthatók. Válassza a **blanktemplate**lehetőséget.
+1. You see a history of deployment for the resource group. Select **blanktemplate**.
 
-   ![Központi telepítés kiválasztása](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
+   ![Select deployment](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
-1. A központi telepítés összegzése látható. Ebben az esetben nem sokat kell látnia, mert nincs üzembe helyezett erőforrás. A sorozat későbbi részében hasznos lehet megtekinteni az összefoglalás áttekintését az üzembe helyezési előzményekben. A bal oldalon megtekintheti a bemeneteket, a kimeneteket és az üzembe helyezés során használt sablont.
+1. You see a summary of the deployment. In this case, there's not a lot to see because no resources were deployed. Later in this series you might find it helpful to review the summary in the deployment history. Notice on the left you can view inputs, outputs, and the template used during deployment.
 
-   ![Központi telepítés összegzésének megtekintése](./media/template-tutorial-create-first-template/view-deployment-summary.png)
+   ![View deployment summary](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Ha most leáll, érdemes törölni az erőforráscsoportot.
+If you're stopping now, you might want to delete the resource group.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Létrehozott egy egyszerű sablont az Azure-ba való üzembe helyezéshez. A következő oktatóanyagban hozzá kell adnia egy Storage-fiókot a sablonhoz, és telepítenie kell azt az erőforráscsoporthoz.
+You created a simple template to deploy to Azure. In the next tutorial, you'll add a storage account to the template and deploy it to your resource group.
 
 > [!div class="nextstepaction"]
-> [Erőforrás hozzáadása](template-tutorial-add-resource.md)
+> [Add resource](template-tutorial-add-resource.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Videók keresése a Bing Video Search REST API és a Node. js használatával'
+title: 'Quickstart: Search for videos using the REST API and Node.js - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kereshet a Bing Video Search REST API a JavaScript használatával.
+description: Use this quickstart to send video search requests to the Bing Video Search REST API using JavaScript.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932961"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383814"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: Videók keresése a Bing Video Search REST API és a Node. js használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Quickstart: Search for videos using the Bing Video Search REST API and Node.js
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
+Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple JavaScript application sends an HTTP video search query to the API, and displays the response. While this application is written in JavaScript and uses Node.js, the API is a RESTful Web service compatible with most programming languages. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
 
-* A JavaScript kérési modulja
-    * Ezt a modult a következő használatával telepítheti`npm install request`
+* The Request module for JavaScript
+    * You can install this module using `npm install request`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
+## <a name="initialize-the-application"></a>Initialize the application
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a korlátozást, és adja hozzá a következő követelményt:
+1. Create a new JavaScript file in your favorite IDE or editor. Set the strictness and add the following requirement:
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési kifejezéshez.
+2. Create variables for your API endpoint, subscription key, and your search term.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
 
 ## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
 
-1. Hozzon létre egy `response_handler` nevű függvényt, amely JSON-választ készít az API-tól. Hozzon létre egy változót a válasz törzse számára. A válasz `data` hozzáfűzése a jelző fogadásakor, a használatával `response.on()`.
+1. Create a function called `response_handler` to take a JSON response from the API. Create a variable for the response body. Append the response when a `data` flag is received, using `response.on()`.
 
     ```javascript
     let response_handler = function (response) {
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     };
     ```
     
-   1. Ha `end` a rendszer jelzi, a `response.on()` használatával tárolhatja a Binggel kapcsolatos fejléceket ( `bingapis` a `x-msedge-`vagy a verziótól kezdődően). Ezután elemezze a JSON `JSON.parse()`-t a használatával, alakítsa át `JSON.stringify()`egy sztringre, és nyomtassa ki.
+   1. When `end` is signaled, use `response.on()` to store the bing-related headers (beginning with `bingapis` or `x-msedge-`). Then parse the JSON using `JSON.parse()`, convert it to a string with `JSON.stringify()`, and print it.
 
        ```javascript
        response.on('end', function () {
@@ -75,9 +75,9 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
        });
        ```
 
-## <a name="create-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
+## <a name="create-and-send-the-search-request"></a>Create and send the search request
 
-1. Hozzon létre egy `bing_video_search()`nevű függvényt. Adja hozzá a kérelem paramétereit, beleértve az állomásnevet és a fejléceket. Kódolja a keresési kifejezést, és fűzze hozzá a Path paraméterhez a `?q=` (z) paraméterrel. Ezt követően küldje el a `req.end()`kérelmet a-val.
+1. Create a function called `bing_video_search()`. Add the parameters for your request including your host name, and headers. Encode your search term and append it to your path parameter with the `?q=` parameter. Then send the request with `req.end()`.
 
     ```javascript
     let bing_video_search = function (search_term) {
@@ -205,11 +205,11 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még: 
 
- [Mi a Bing Video Search API?](../overview.md)
+ [What is the Bing Video Search API?](../overview.md)

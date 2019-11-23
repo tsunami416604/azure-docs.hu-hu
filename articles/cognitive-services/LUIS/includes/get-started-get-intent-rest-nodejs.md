@@ -1,25 +1,25 @@
 ---
-title: REST-hívás a Node. js-ben
+title: Get intent with REST call in Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 10216b52ded61328a73e5401549a59e6abc4667a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b158f3738e5d5e33c831e7312c167e5185d19e95
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125508"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414535"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/) programozási nyelv 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,9 +27,9 @@ ms.locfileid: "74125508"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-A Node. js segítségével lekérdezheti az előrejelzési végpont beolvasása [API](https://aka.ms/luis-apim-v3-prediction) -t az előrejelzés eredményének lekéréséhez.
+Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Másolja az alábbi kódrészletet egy `predict.js`nevű fájlba:
+1. Copy the following code snippet to a file named `predict.js`:
 
     ```javascript
     var request = require('request');
@@ -76,30 +76,30 @@ A Node. js segítségével lekérdezheti az előrejelzési végpont beolvasása 
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Állítsa be a következő értékeket:
+1. Replace the following values:
 
-    * `YOUR-KEY` az alapszintű kulcshoz
-    * `YOUR-ENDPOINT` a végpont URL-címére
+    * `YOUR-KEY` to your starter key.
+    * `YOUR-ENDPOINT` to your endpoint URL. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. A függőségek telepítéséhez futtassa a következő parancsot a parancssorban: 
+1. Install the `request`, `request-promise`, and `querystring` dependencies with this command: 
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. Futtassa a kódot a következő paranccsal:
+1. Run your app with this command:
 
     ```console
     node predict.js
     ```
 
- 1. Az előrejelzési válasz áttekintése JSON formátumban:   
+ 1. Review the prediction response, which is returned as JSON:   
     
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    Az olvashatóságra formázott JSON-Válasz: 
+    The JSON response formatted for readability: 
 
     ```JSON
     {
@@ -148,9 +148,9 @@ A Node. js segítségével lekérdezheti az előrejelzési végpont beolvasása 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
+When you are finished with this quickstart, delete the file from the file system. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

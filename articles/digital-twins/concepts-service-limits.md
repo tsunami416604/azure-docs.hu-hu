@@ -1,78 +1,78 @@
 ---
-title: Nyilvános előzetes verziójú szolgáltatás korlátai – Azure digitális Twins | Microsoft Docs
-description: Ismerje meg a nyilvános előzetes verziójú Azure Digital Twins szolgáltatásra vonatkozó korlátozásait.
+title: Public preview service limits - Azure Digital Twins | Microsoft Docs
+description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014173"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383071"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
-A nyilvános előzetes verzióban az Azure Digital Twins a következő ideiglenes előfizetést, példányt és díjszabási korlátot jeleníti meg.
+During the public preview, Azure Digital Twins has the following temporary subscription, instance, and rate limits.
 
-Ezek a megkötések megkönnyítik az új szolgáltatással és számos szolgáltatásával kapcsolatos ismeretek leegyszerűsítését.
+These constraints exist to help simplify learning about the new service and its many features.
 
 > [!NOTE]
-> Ezeket a korlátokat az általános elérhetőség (GA) növeli vagy eltávolítja.
+> These limits will be increased or removed by general availability (GA).
 
-## <a name="per-subscription-limits"></a>Előfizetési korlátok
+## <a name="per-subscription-limits"></a>Per-subscription limits
 
-A nyilvános előzetes verzióban minden egyes Azure-előfizetés egyszerre csak egy Azure digitális Twins-példányt tud létrehozni vagy futtatni.
+During the public preview, each Azure subscription can create or run only one Azure Digital Twins instance at a time.
 
 > [!TIP]
-> Ha törli a példányt, létrehozhat egy újat.
+> If you delete your instance, you can create a new one.
 
-## <a name="per-instance-limits"></a>Felhasználónkénti korlátok
+## <a name="per-instance-limits"></a>Per-instance limits
 
-Az egyes Azure-beli digitális Twins-példányok pedig a következőket tehetik:
+In turn, each Azure Digital Twins instance can have:
 
-- Pontosan egy beágyazott **IoTHub** -erőforrás, amelyet a rendszer automatikusan hozott létre a szolgáltatás kiépítés során.
-- Pontosan egy **EventHub** -végpont az esemény típusának **DeviceMessage**.
-- Legfeljebb három **EventHub**, **ServiceBus**vagy **EventGrid** végpont, **SensorChange**, **SpaceChange**, **TopologyOperation**vagy **UdfCustom**eseménytípus.
+- Exactly one embedded **IoTHub** resource that's created automatically during service provisioning.
+- Exactly One **EventHub** endpoint for the event type **DeviceMessage**.
+- Up to three **EventHub**, **ServiceBus**, or **EventGrid** endpoints of the event type **SensorChange**, **SpaceChange**, **TopologyOperation**, or **UdfCustom**.
 
 > [!NOTE]
-> A nyilvános előzetes verzióban általában a fenti Azure IoT-entitások létrehozásakor meghatározott paraméterek nem szükségesek.
-> - A legfrissebb API-specifikációkat a [hencegő dokumentációban találja](./how-to-use-swagger.md) .
+> Some parameters that are usually defined in creating the above Azure IoT entities are not required during public preview.
+> - Consult the [Swagger reference documentation](./how-to-use-swagger.md) for the most recent API specifications.
 
-## <a name="azure-digital-twins-management-api-limits"></a>Azure digitális Twins felügyeleti API-korlátok
+## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API limits
 
-Az Azure Digital Twins felügyeleti API-ra vonatkozó kérelmek díjszabása a következő:
+The request rate limits for your Azure Digital Twins Management API are:
 
-- 100 másodpercenkénti kérelmek az Azure digitális Twins felügyeleti API-hoz.
-- Akár 1 000 objektum, amelyet egyetlen Azure digitális ikrek felügyeleti API-lekérdezése adott vissza.
+- 100 requests per second to the Azure Digital Twins Management API.
+- Up to 1,000 objects returned by a single Azure Digital Twins Management API query.
 
 > [!IMPORTANT]
-> Ha túllépi az 1 000-Object korlátot, hibaüzenetet kap, és egyszerűsíteni kell a lekérdezést.
+> If you exceed the 1,000-object limit, you receive an error and must simplify your query.
 
-## <a name="user-defined-functions-rate-limits"></a>Felhasználó által definiált függvények díjszabási korlátai
+## <a name="user-defined-functions-rate-limits"></a>User-defined functions rate limits
 
-A következő korlátok határozzák meg az Azure Digital Twins-példányon végrehajtott összes felhasználó által megadott függvényhívás teljes számát:
+The following limits set the total number of all user-defined function calls made to your Azure Digital Twins instance:
 
-- 400 ügyféloldali függvénytár-hívások másodpercenként
-- 100 **SendNotification** -hívások másodpercenként
+- 400 client library calls per second
+- 100 **SendNotification** calls per second
 
 > [!NOTE]
-> A következő műveletek a további díjszabási korlátokat is okozhatják ideiglenesen:
-> - A topológiai objektum metaadatainak módosításai
-> - A felhasználó által definiált függvény definíciójának frissítései
-> - Azok az eszközök, amelyek első alkalommal küldenek telemetria
+> The following actions might cause additional rate limits to be applied temporarily:
+> - Edits made to the topology object metadata
+> - Updates made to the user-defined function definition
+> - Devices that send telemetry for the first time
 
-## <a name="device-telemetry-limits"></a>Eszközök telemetria korlátai
+## <a name="device-telemetry-limits"></a>Device telemetry limits
 
-Az alábbi korlátok az eszközök által az Azure Digital Twins-példányba küldött összes üzenet teljes száma.
+The following limits cap the total number of all messages your devices can send to your Azure Digital Twins instance:
 
-- 100 üzenet másodpercenként az összes eszközön
--   25 üzenet/másodperc/eszköz
+- 100 messages per second across all devices
+-   25 messages per second per device
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Egy Azure-beli digitális Twins-minta kipróbálásához lépjen a gyors üzembe helyezési [lehetőségre, és keresse meg az elérhető szobákat](./quickstart-view-occupancy-dotnet.md).
+- To try out an Azure Digital Twins sample, go to [Quickstart to find available rooms](./quickstart-view-occupancy-dotnet.md).

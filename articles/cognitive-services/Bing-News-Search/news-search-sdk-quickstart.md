@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre egy hírkeresés a Bing News Search SDK használatávalC#'
+title: 'Quickstart: Perform a news search using the SDK for C# - Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével hírkeresés a Bing News Search SDK használatával C#, és a válasz feldolgozása.
+description: Use this quickstart to search for news using the Bing News Search SDK for C#, and process the response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 626596cc88b1b3b1067d7d6d157a548f92fb621a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 03f582b4ba5b3321f46af370a0bb4adfa005046c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206018"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379016"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Gyors útmutató: Hajtsa végre egy hírkeresés a Bing News Search SDK esetében azC#
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Quickstart: Perform a news search with the Bing News Search SDK for C#
 
-Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing News Search SDK esetében az C#. Míg a Bing News Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
+Use this quickstart to begin searching for news with the Bing News Search SDK for C#. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/).
+* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
-* A [Bing News Search SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Ez a csomag is telepíti a következő:
+* The [Bing News Search SDK NuGet package](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Installing this package also installs the following:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
@@ -37,11 +37,11 @@ Ha a Bing News Search SDK-val szeretne beállítani egy konzolalkalmazást, kere
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzol megoldást a Visual Studióban. Ezután adja hozzá a következő, a fő kód fájlba.
+1. Create a new C# console solution in Visual Studio. Then add the following into the main code file.
     
     ```csharp
     using System;
@@ -49,7 +49,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
     ```
 
-2. Hozzon létre egy változót az API-kulcs – a keresési kifejezést, és ezután hozza létre a news search ügyfél vele.
+2. Create a variable for your API key, a search term, and then instantiate the news search client with it.
 
     ```csharp
     var key = "YOUR-ACCESS-KEY";
@@ -57,14 +57,14 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     var client = new NewsSearchClient(new ApiKeyServiceClientCredentials(key));
     ```
 
-## <a name="send-a-request-and-parse-the-result"></a>Egy kérelem küldése, és elemezheti az eredményt
+## <a name="send-a-request-and-parse-the-result"></a>Send a request, and parse the result
 
-1. Használja az ügyfél egy keresési kérelmet küld a Bing News Search szolgáltatás:
+1. Use the client to send a search request to the Bing News Search service:
     ```csharp
     var newsResults = client.News.SearchAsync(query: searchTerm, market: "en-us", count: 10).Result;
     ```
 
-2. Ha adott vissza eredményt, elemezni őket:
+2. If any results were returned, parse them:
 
     ```csharp
     if (newsResults.Value.Count > 0)
@@ -88,7 +88,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     Console.ReadKey();
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: elérhető szobák keresése – Azure digitális Twins'
+title: 'Quickstart: Find available rooms - Azure Digital Twins | Microsoft Docs'
 description: Ebben a rövid útmutatóban két .NET Core-alkalmazást futtathat egy adott tér szimulált mozgás- és szén-dioxid-telemetriaadatainak az Azure Digital Twinsbe való elküldésére. A cél a friss levegővel rendelkező és szabad szobák keresése a Management API-kon keresztül az adatok a felhőben való számítási feldolgozását követően.
 ms.author: alinast
 author: alinamstanciu
@@ -10,18 +10,18 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123197"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383145"
 ---
-# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető Teremkeresés Azure digitális Twins használatával
+# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Quickstart: Find available rooms by using Azure Digital Twins
 
-Az Azure digitális Twins szolgáltatás lehetővé teszi, hogy hozza létre újból a fizikai környezetnek digitális képe. Ezután értesítéseket kaphat a környezetben zajló eseményekről, és testre szabhatja a rájuk adott válaszokat.
+The Azure Digital Twins service allows you to re-create a digital image of your physical environment. Ezután értesítéseket kaphat a környezetben zajló eseményekről, és testre szabhatja a rájuk adott válaszokat.
 
-Ebben a rövid útmutatóban használt [olyan .NET-minták virtuálisgép-pár](https://github.com/Azure-Samples/digital-twins-samples-csharp) egy képzeletbeli irodaépület digitalizálhatók. Ez bemutatja, hogyan érhető el az adott épület teremkeresés. A digitális Twins sok érzékelő is társíthat a környezetben. Is talál a légi minőség a rendelkezésre álló hely-e egy szimulált érzékelő szén-dioxid segítségével optimális. A mintaalkalmazások egyike állít elő, véletlenszerű érzékelőktől kapott adatok segítségével vizualizálhatja az ebben a forgatókönyvben.
+This quickstart uses [a pair of .NET samples](https://github.com/Azure-Samples/digital-twins-samples-csharp) to digitize an imaginary office building. It shows you how to find available rooms in that building. With Digital Twins, you can associate many sensors with your environment. You also can find out if the air quality of your available room is optimal with the help of a simulated sensor for carbon dioxide. One of the sample applications generates random sensor data to help you visualize this scenario.
 
 A következő videó a rövid útmutatóban ismertetett beállítási folyamatot foglalja össze:
 
@@ -31,137 +31,137 @@ A következő videó a rövid útmutatóban ismertetett beállítási folyamatot
 
 1. Ha még nem rendelkezik Azure-fiókkal, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Ebben a rövid útmutatóban a két konzol alkalmazások használatával írt C#. Telepítse a [.NET Core SDK 2.1.403 verzió vagy újabb](https://www.microsoft.com/net/download) a fejlesztői gépen. Ha a .NET Core SDK telepítve van, ellenőrizze a jelenlegi verziója C# a fejlesztői gépen. Futtatás `dotnet --version` parancsot.
+1. The two console applications you run in this quickstart are written by using C#. Install the [.NET Core SDK version 2.1.403 or above](https://www.microsoft.com/net/download) on your development machine. If you have the .NET Core SDK installed, verify the current version of C# on your development machine. Run `dotnet --version` in a command prompt.
 
-1. Töltse le a [minta C# projekt](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip). Bontsa ki a digitális-twins-samples-csharp-master.zip archívumot.
+1. Download the [sample C# project](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip). Extract the digital-twins-samples-csharp-master.zip archive.
 
 ## <a name="create-a-digital-twins-instance"></a>Digital Twins-példány létrehozása
 
-Hozzon létre egy új példányát a digitális Twins a [portál](https://portal.azure.com) a jelen szakaszban ismertetett lépéseket követve.
+Create a new instance of Digital Twins in the [portal](https://portal.azure.com) by following the steps in this section.
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>Az alkalmazás engedélyeinek beállítása
 
-Ez a szakasz a mintaalkalmazást az Azure Active Directory (Azure AD) regisztrál, úgy, hogy hozzá tudjon férni a digitális Twins-példány. Ha már rendelkezik egy Azure AD-alkalmazás regisztrációjának, újból felhasználhatja a mintában. Győződjön meg arról, hogy ebben a szakaszban leírtak szerint konfigurálva van.
+This section registers your sample application to Azure Active Directory (Azure AD) so that it can access your Digital Twins instance. If you already have an Azure AD app registration, reuse it for your sample. Make sure that it's configured as described in this section.
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
 ## <a name="build-application"></a>Az alkalmazás összeállítása
 
-Hozza létre az foglaltsága alkalmazást az alábbi lépéseket.
+Build the occupancy application by following these steps.
 
-1. Nyisson meg egy parancssort. Nyissa meg azt a mappát, ahová a `digital-twins-samples-csharp-master.zip` fájlokat kibontotta.
+1. Nyisson meg egy parancssort. Go to the folder where your `digital-twins-samples-csharp-master.zip` files were extracted.
 1. Futtassa az `cd occupancy-quickstart/src` parancsot.
 1. Futtassa az `dotnet restore` parancsot.
 1. Az [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) fájlban módosítsa az alábbi változókat:
-    - **ClientId**: Adja meg az Azure AD alkalmazás regisztrációját, az előző szakaszban feljegyzett alkalmazás Azonosítóját.
-    - **Bérlő**: Adja meg a címtár-azonosító az Azure AD-bérlő, is az előző szakaszban feljegyzett.
-    - **BaseUrl**: felügyeleti API URL-cím a digitális Twins-példány a következő formátumban kell `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Cserélje le a helyőrzőket a URL-CÍMBEN szereplő értékek a példány az előző szakaszban.
+    - **ClientId**: Enter the Application ID of your Azure AD app registration, noted in the preceding section.
+    - **Tenant**: Enter the Directory ID of your Azure AD tenant, also noted in the previous section.
+    - **BaseUrl**: The Management API URL of your Digital Twins instance is in the format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Replace the placeholders in this URL with values for your instance from the previous section.
 
-    Mentse a módosított fájlt.
+    Save the updated file.
 
 ## <a name="provision-graph"></a>Diagram kiépítése
 
-Ebben a lépésben a digitális Twins térbeli gráf építi ki:
+This step provisions your Digital Twins spatial graph with:
 
-- Több szóközt.
-- Egy eszköz.
-- Két érzékelők.
-- Egyéni függvény.
-- Egy szerepkör-hozzárendelés.
+- Several spaces.
+- One device.
+- Two sensors.
+- A custom function.
+- One role assignment.
 
-A térbeli graph használatával van kiépítve a [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) fájlt.
+The spatial graph is provisioned by using the [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) file.
 
 1. Futtassa az `dotnet run ProvisionSample` parancsot.
 
     >[!NOTE]
-    >Az eszköz bejelentkezési Azure parancssori eszköz segítségével hitelesíti a felhasználót az Azure AD. A felhasználónak meg kell adnia, hogy egy adott kód használatával történő hitelesítéshez [a Microsoft bejelentkezési](https://microsoft.com/devicelogin) lapot. A kód megadása után végezze el a hitelesítés lépéseit. Az eszköz futtatásakor a felhasználónak hitelesítenie kell magát.
+    >The Device Login Azure CLI tool is used to authenticate the user to Azure AD. The user must enter a given code to authenticate by using [the Microsoft login](https://microsoft.com/devicelogin) page. After the code is entered, follow the steps to authenticate. The user must authenticate when the tool is running.
 
     >[!TIP]
-    > Amikor futtatja ezt a lépést, ellenőrizze, hogy a változók megfelelően lettek másolva, ha a következő hibaüzenet jelenik meg: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
+    > When you run this step, make sure your variables were copied properly if the following error message appears: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
 
-1. A kiépítési lépés néhány percet is igénybe vehet. Azt is látja el a digitális Twins példány belül az IoT hubra. Ez végighalad mindaddig, amíg az IoT Hub állapotát jeleníti meg =`Running`.
+1. The provisioning step might take a few minutes. It also provisions an IoT Hub within your Digital Twins instance. It loops through until the IoT Hub shows Status=`Running`.
 
-    [![kiépíteni a minta-status = futást](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![Provision the sample - Status=Running](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
-1. A végrehajtás végén, másolja a `ConnectionString` az eszköz az eszköz szimulátor minta használható. Csak a képen leírt karakterlánc másolja.
+1. At the end of the execution, copy the `ConnectionString` of the device for use in the device simulator sample. Copy only the string outlined in this image.
 
-    [![a kapcsolatok karakterláncának másolása](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [![Copy the connection string](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
 
     >[!TIP]
-    > Megtekintheti és módosíthatja a térbeli graph használatával a [Azure digitális Twins Graph megjelenítő](https://github.com/Azure/azure-digital-twins-graph-viewer).
+    > You can view and modify your spatial graph using the [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
-A konzol ablakát később is megnyitva használhatja.
+Keep the console window open for use again later.
 
 ## <a name="send-sensor-data"></a>Érzékelőadatok küldése
 
-Az alábbi lépéseket követve hozza létre és futtassa az Sensor Simulator eszköz alkalmazást.
+Build and run the sensor simulator device application by following these steps.
 
-1. Nyisson meg egy új parancssort. Lépjen a `digital-twins-samples-csharp-master` mappában letöltött projekthez.
+1. Open a new command prompt. Go to the project you downloaded in the `digital-twins-samples-csharp-master` folder.
 1. Futtassa az `cd device-connectivity` parancsot.
 1. Futtassa az `dotnet restore` parancsot.
-1. Szerkesztés [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) frissíteni **DeviceConnectionString** az előző `ConnectionString`. Mentse a módosított fájlt.
-1. Futtatás `dotnet run` érzékelőktől kapott adatok küldésének elkezdésére. Láthatja, küldve digitális Twins az alábbi képen látható módon.
+1. Edit [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) to update **DeviceConnectionString** with the previous `ConnectionString`. Save the updated file.
+1. Run `dotnet run` to start sending sensor data. You see it sent to Digital Twins as shown in the following image.
 
-     [![eszköz kapcsolata](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![Device Connectivity](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
-1. Lehetővé teszik a szimulátor futtatni, hogy párhuzamosan lesz a következő lépés művelet eredményeit tekintheti meg. Ebben az ablakban látható digitális Twins küldött szimulált érzékelőadatokat. A következő lépés lekérdezések friss vezeték nélkül regisztrálja az elérhető teremkeresés valós időben.
+1. Let this simulator run so that you can view results side by side with the next step action. This window shows you the simulated sensor data sent to Digital Twins. The next step queries in real time to find available rooms with fresh air.
 
     >[!TIP]
-    > Amikor futtatja ezt a lépést, ellenőrizze, hogy `DeviceConnectionString` helyesen másolta, ha a következő hibaüzenet jelenik meg: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
+    > When you run this step, make sure `DeviceConnectionString` was copied properly if the following error message appears: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
 
 ## <a name="find-available-spaces-with-fresh-air"></a>Friss levegővel rendelkező szabad szobák keresése
 
-Az érzékelő minta szimulálja véletlenszerű adatértékek két érzékelő számára. Azok a mozgásban lévő adatoknak egyaránt és szén-dioxid. Friss vezeték nélkül regisztrálja az elérhető tárolóhelyek határozzák meg a minta nem észlelnek a helyiségben jelenlétét. Ezek Ön is határozzák meg egy szén-dioxid-szint alatt 1000 ppm. Ha a feltétel nem teljesül, a hely nem érhető el, vagy a légi minősége gyenge.
+The sensor sample simulates random data values for two sensors. They're motion and carbon dioxide. Available spaces with fresh air are defined in the sample by no presence in the room. They're also defined by a carbon dioxide level under 1,000 ppm. If the condition isn't fulfilled, the space isn't available or the air quality is poor.
 
-1. Nyissa meg a parancssort, amelyet korábban a kiépítési lépés futtatásához használt.
+1. Open the command prompt you used to run the provisioning step earlier.
 1. Futtassa az `dotnet run GetAvailableAndFreshSpaces` parancsot.
-1. Tekintse meg a parancssort, és az érzékelő adatokat parancssor egymás mellett.
+1. Look at this command prompt and the sensor data command prompt side by side.
 
-    Az érzékelő adatkérési parancssora öt másodpercenként szimulált mozgást és széndioxid-adatokat küld a digitális ikreknek. A másik parancssor valós időben beolvassa a diagramot, hogy a véletlenszerűen szimulált adatokat tartalmazó, friss levegővel rendelkező szobákból kiderítse a rendelkezésre álló szobákat. Ezek a feltételek egyik közel valós időben a legutóbb elküldött érzékelőktől kapott adatok alapján megjeleníti:
+    The sensor data command prompt sends simulated motion and carbon dioxide data to Digital Twins every five seconds. The other command prompt reads the graph in real time to find out available rooms with fresh air based on random simulated data. It displays one of these conditions in near real time based on the sensor data that was sent last:
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![rendelkezésre álló tárhelyek lekérése friss levegővel](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![Get available spaces with fresh air](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
-Ha meg szeretné tudni, hogy mi történt ebben a rövid útmutatóban, és milyen API-kat hívott meg, nyissa meg a [Visual Studio Code](https://code.visualstudio.com/Download) -ot a `digital-twins-samples-csharp`címen található Code Workspace- Használja az alábbi parancsot:
+To understand what happened in this quickstart and what APIs were called, open [Visual Studio Code](https://code.visualstudio.com/Download) with the code workspace project found in `digital-twins-samples-csharp`. Használja az alábbi parancsot:
 
 ```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
 ```
 
-Az oktatóanyagok meg alaposabban a kódot. Azok a szól, hogyan lehet módosítani a konfigurációs adatok és az API-k ún. További információ a felügyeleti API-k nyissa meg a digitális Twins Swagger oldalát:
+The tutorials go deep into the code. They teach you how to modify configuration data and what APIs are called. For more information on Management APIs, go to your Digital Twins Swagger page:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Név) | Csere erre |
+| Név | Csere erre |
 | --- | --- |
-| YOUR_INSTANCE_NAME | A digitális Twins-példány nevét |
-| YOUR_LOCATION | Az a kiszolgáló régiója, ahol a példánya üzemeltetve van |
+| YOUR_INSTANCE_NAME | The name of your Digital Twins instance |
+| YOUR_LOCATION | The server region where your instance is hosted |
 
-Az egyszerűség kedvéért tallózással vagy [digitális Twins Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
+Or for convenience, browse to [Digital Twins Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagok nyissa meg az útmutató részletesen:
+The tutorials go into detail about how to:
 
-- Létesítmény vezetők bent termelékenység növelése és a egy olyan alkalmazás létrehozásához.
-- Működik az épület hatékonyabban.
+- Build an application for facility managers to increase occupant productivity.
+- Operate the building more efficiently.
 
-Továbbra is az oktatóanyagok, hogy ne törölje az erőforrásokat létrehozott ebben a rövid útmutatóban. Ha nem szeretné folytatni, törölje a rövid útmutatóhoz létrehozott összes erőforrást.
+To continue to the tutorials, don't clean up the resources created in this quickstart. If you don't plan to continue, delete all the resources created by this quickstart.
 
-1. Törölje a mappát, amely jött létre, amikor a minta tárház letöltött.
-1. A bal oldali menüben a [az Azure portal](https://portal.azure.com)válassza **összes erőforrás**. Ezután válassza ki a digitális Twins erőforrás. Felső részén a **összes erőforrás** ablaktáblán válassza előbb **törlése**.
+1. Delete the folder that was created when you downloaded the sample repository.
+1. From the menu on the left in the [Azure portal](https://portal.azure.com), select **All resources**. Then select your Digital Twins resource. At the top of the **All resources** pane, select **Delete**.
 
     > [!TIP]
-    > Ha korábban már problémát észlelt a digitális Twins-példány törlése során, a rendszer a javítást a javítással együtt kivezette. Ismételje meg a példány törlése.
+    > If you previously experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a rövid útmutató egy egyszerű forgatókönyvet és egy példaként szolgáló alkalmazást használt, amely bemutatja, hogyan használhatók a digitális ikrek a megfelelő munkafeltételekkel rendelkező szobák megtalálására. Ez a forgatókönyv részletes elemzéséhez ebben az oktatóanyagban talál:
+This quickstart used a simple scenario and sample applications to show how Digital Twins can be used to find rooms with good working conditions. For in-depth analysis of this scenario, see this tutorial:
 
 >[!div class="nextstepaction"]
 >[Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása](tutorial-facilities-setup.md)

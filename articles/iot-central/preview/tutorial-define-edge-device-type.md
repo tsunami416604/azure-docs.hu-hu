@@ -1,6 +1,6 @@
 ---
-title: Új Azure IoT Edge eszköz típusának meghatározása az Azure IoT Centralban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre új Azure IoT Edge eszközt az Azure IoT Central alkalmazásban. Megadhatja a típus telemetria, állapotát, tulajdonságait és parancsait.
+title: Define a new Azure IoT Edge device type in Azure IoT Central | Microsoft Docs
+description: This tutorial shows you, as a builder, how to create a new Azure IoT Edge device in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,105 +9,105 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c205b4dd4871ed53e32dce72f12cc2dcfb3baf41
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893052"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406466"
 ---
-# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: új Azure IoT Edge eszköz típusának meghatározása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
+# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new Azure IoT Edge device type in your Azure IoT Central application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhat egy új típusú Azure IoT Edge-eszközt az Azure IoT Central-alkalmazásban, mint építőként. 
+This tutorial shows you, as a builder, how to use a device template to define a new type of Azure IoT Edge device in your Azure IoT Central application. 
 
-A Azure IoT Edge áttekintéséhez [tekintse meg ezt a cikket](overview-iot-central.md). 
+For an overview, see [What is Azure IoT Central (preview features)?](overview-iot-central.md). 
 
-Az Azure IoT Edge három összetevőből áll:
-* **IoT Edge modulok** olyan tárolók, amelyek Azure-szolgáltatásokat, harmadik féltől származó szolgáltatásokat vagy saját kódot futtatnak. A modulok üzembe helyezése IoT Edge eszközökön történik, és az eszközökön helyileg végrehajtható.
-* A **IoT Edge futtatókörnyezet** minden IoT Edge eszközön fut, és az egyes eszközökön üzembe helyezett modulokat kezeli.
-* A **felhőalapú felület** lehetővé teszi IoT Edge-eszközök távoli figyelését és kezelését. A IoT Central a felhő felülete lesz.
+IoT Edge is made up of three components:
+* **IoT Edge modules** are containers that run Azure services, partner services, or your own code. Modules are deployed to IoT Edge devices, and run locally on those devices.
+* The **IoT Edge runtime** runs on each IoT Edge device, and manages the modules deployed to each device.
+* A **cloud-based interface** enables you to remotely monitor and manage IoT Edge devices. IoT Central is the cloud interface.
 
-Az **Azure IoT Edge** eszköz lehet átjáró-eszköz, amely a Azure IoT Edge eszközhöz csatlakozó alsóbb rétegbeli eszközökkel rendelkezik. Ebben az oktatóanyagban az alsóbb rétegbeli eszközök kapcsolódási mintáit fogjuk tárgyalni.
+An **Azure IoT Edge** device can be a gateway device, with downstream devices connecting into the IoT Edge device. This tutorial shares more information about downstream device connectivity patterns.
 
-Az **eszköz-sablonok** az eszköz & IoT Edge moduljainak képességeit határozzák meg. A képességek közé tartozik a modul által küldött telemetria, a modul tulajdonságai, valamint az a parancs, amelyet a modul válaszol.
+A **device template** defines the capabilities of your device and IoT Edge modules. Capabilities include telemetry the module sends, module properties, and the commands a module responds to.
 
-Ebben az oktatóanyagban egy **környezeti Sensor** -eszköz sablonját hozza létre. Környezeti érzékelő eszköz:
+In this tutorial, you create an Environment Sensor device template. An environmental sensor device:
 
-* Telemetria, például hőmérsékletet küld.
-* A felhőben, például a telemetria küldési intervallumban frissülő, írható tulajdonságokra válaszol.
-* Válaszol a parancsokra, például a hőmérséklet alaphelyzetbe állítására.
+* Sends telemetry, such as temperature.
+* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
+* Responds to commands, such as resetting temperature.
 
-Ebben az oktatóanyagban egy **környezeti átjáró** -eszköz sablonját is létrehozhatja. Környezeti átjáró eszköz:
+Also in this tutorial, you create an Environment Gateway device template. An environmental gateway device:
 
-* Telemetria, például hőmérsékletet küld.
-* A felhőben, például a telemetria küldési intervallumban frissülő, írható tulajdonságokra válaszol.
-* Válaszol a parancsokra, például a hőmérséklet alaphelyzetbe állítására.
-* Más eszköz-képesség modellek kapcsolatainak engedélyezése
+* Sends telemetry, such as temperature.
+* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
+* Responds to commands, such as resetting temperature.
+* Allows relationships to other device capability models.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy új Azure IoT Edge eszköz-eszköz sablont.
-> * Töltse fel az üzembe helyezési jegyzéket.
-> * Képességek létrehozása, beleértve a telemetria, a tulajdonságokat és a parancsokat az egyes modulokhoz
-> * Adjon meg egy vizualizációt a modul telemetria.
-> * Kapcsolatok hozzáadása az alsóbb rétegbeli eszközök sablonjaihoz
-> * Tegye közzé az eszköz sablonját.
+> * Create a new Azure IoT Edge device device template.
+> * Upload a deployment manifest.
+> * Create capabilities including telemetry, properties, and commands for each module.
+> * Define a visualization for the module telemetry.
+> * Add relationships to downstream device templates.
+> * Publish your device template.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ezt a rövid útmutatót követve [hozzon létre egy Azure IoT Central alkalmazást](quick-deploy-iot-central.md).
+To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
 
 
-## <a name="downstream-device-relationships-with-gateway--modules"></a>Alsóbb rétegbeli eszközök kapcsolatai az átjáró & moduljaival
+## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Downstream device relationships with a gateway and modules
 
-Az alsóbb rétegbeli eszközök a $edgeHub modulon keresztül csatlakozhatnak Azure IoT Edge átjáró eszközhöz. Ez a Azure IoT Edge-eszköz átlátszó átjáró lesz ebben a forgatókönyvben
+Downstream devices can connect to an IoT Edge gateway device through the `$edgeHub` module. This IoT Edge device becomes a transparent gateway in this scenario.
 
-![Központi alkalmazás lapja](./media/tutorial-define-edge-device-type/gateway-transparent.png)
+![Diagram of transparent gateway](./media/tutorial-define-edge-device-type/gateway-transparent.png)
 
-Az alsóbb rétegbeli eszközök egy egyéni modul segítségével csatlakozhatnak Azure IoT Edge átjáróhoz. Az alábbi forgatókönyvben az alsóbb rétegbeli eszközök egy Modbus egyéni modulon keresztül csatlakoznak, és az alsóbb rétegbeli eszközök az $edgeHub modulon keresztül csatlakozhatnak Azure IoT Edge Gateway-eszközhöz.
+Downstream devices can also connect to an IoT Edge gateway device through a custom module. In the following scenario, downstream devices connect through a Modbus custom module.
 
-![Központi alkalmazás lapja](./media/tutorial-define-edge-device-type/gateway-module.png)
+![Diagram of custom module connection](./media/tutorial-define-edge-device-type/gateway-module.png)
 
-Az alsóbb rétegbeli eszközök egy egyéni modul segítségével csatlakozhatnak Azure IoT Edge átjáróhoz. Az alábbi forgatókönyvben az alsóbb rétegbeli eszközök egy Modbus egyéni modulon keresztül csatlakoznak. 
+The following diagram shows connection to an IoT Edge gateway device through both types of modules (custom and `$edgeHub`).  
 
-![Központi alkalmazás lapja](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
+![Diagram of connecting via both connection modules](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
 
-Az alsóbb rétegbeli eszközök több egyéni modulon keresztül csatlakozhatnak Azure IoT Edge Gateway-eszközhöz. Az alábbi forgatókönyvben az alsóbb rétegbeli eszközök egy egyéni Modbus-modulon keresztül csatlakoznak, az egyedi modul és az alsóbb rétegbeli eszközök pedig az $edgeHub modulon keresztül csatlakozhatnak Azure IoT Edge átjáró eszközéhez. 
+Finally, downstream devices can connect to an IoT Edge gateway device through multiple custom modules. The following diagram shows downstream devices connecting through a Modbus custom module, a BLE custom module, and the `$edgeHub` module. 
 
-![Központi alkalmazás lapja](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
+![Diagram of connecting via multiple custom modules](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
 
 
 ## <a name="create-a-template"></a>Sablon létrehozása
 
-Építőként létrehozhat és szerkeszthet Azure IoT Edge-sablonokat az alkalmazásban. Miután közzétett egy sablont, összekapcsolhat valódi eszközöket, amelyek implementálják az eszköz sablonját.
+As a builder, you can create and edit IoT Edge device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
 
-### <a name="select-device-template-type"></a>Válassza ki az eszköz sablonjának típusát 
+### <a name="select-device-template-type"></a>Select device template type 
 
-Új sablon az alkalmazáshoz való hozzáadásához nyissa meg az **eszközök sablonjai** lapot. Ehhez válassza ki a bal oldali ablaktábla **eszközök sablonjai** lapot.
+To add a new device template to your application, select **Device Templates** on the left pane.
 
-![Központi alkalmazás lapja](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
+![Screenshot of Preview Application, with Device Templates highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
 
-Új sablon létrehozásához kattintson az **+ új** elemre.
+Select **+ New** to start creating a new device template.
 
-![Eszközök sablonjai – új](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
+![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
 
-Az eszköz sablon típusa kiválasztási oldalon fog megjelenni. Válassza ki **Azure IoT Edge** csempét, és kattintson a **Tovább gombra: testreszabás** gomb alul
+On the **Select template type** page, select **Azure IoT Edge**, and select **Next: Customize**.
 
-![Eszközök sablonjainak kiválasztása – Azure IoT Edge](./media/tutorial-define-edge-device-type/selectiotedge.png)
+![Screenshot of Select template type page](./media/tutorial-define-edge-device-type/selectiotedge.png)
 
-### <a name="customize-device-template"></a>Eszköz sablonjának testreszabása
+### <a name="customize-device-template"></a>Customize device template
 
-Azure IoT Edge lehetővé teszi az üzleti logika üzembe helyezését és kezelését modulok formájában. A **Azure IoT Edge modulok** a IoT Edge által kezelt számítási egységek legkisebb egységei, és tartalmazhatnak Azure-szolgáltatásokat (például Azure stream Analytics) vagy a saját megoldásra vonatkozó kódokat. A modulok fejlesztésének, üzembe helyezésének és karbantartásának megismeréséhez olvassa el [IoT Edge modulokat](../../iot-edge/iot-edge-modules.md).
+In IoT Edge, you can deploy and manage business logic in the form of modules. IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics), or your own solution-specific code. To understand how modules are developed, deployed, and maintained, see [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
 
-Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek a kívánt tulajdonságokkal vannak konfigurálva. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok kívánt tulajdonságait. IoT Edge az eszközök jelentést készítenek az egyes modulok jelentett tulajdonságairól.
+At a high level, a deployment manifest is a list of module twins that are configured with their desired properties. A deployment manifest tells an IoT Edge device (or a group of devices) which modules to install, and how to configure them. Deployment manifests include the desired properties for each module twin. IoT Edge devices report back the reported properties for each module.
 
-A Visual Studio Code használatával hozzon létre egy üzembe helyezési jegyzéket. Az [üzembe helyezési jegyzék](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)létrehozásához kövesse a dokumentációt.
+Use Visual Studio Code to create a deployment manifest. To learn more, see [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
-Itt található egy alapszintű üzembe helyezési jegyzék, amely egy modult mutat be példaként ehhez az oktatóanyaghoz. Másolja az alábbi JSON-t, és mentse. JSON-fájlként. 
+Here's a basic deployment manifest, with one module as an example to be used for this tutorial. Copy the following JSON, and save it as a .json file. 
 
    ```JSON
    {
@@ -176,58 +176,53 @@ Itt található egy alapszintű üzembe helyezési jegyzék, amely egy modult mu
    }
    ```
 
-**Azure IoT Edge telepítési jegyzék feltöltése**
+#### <a name="upload-an-iot-edge-deployment-manifest"></a>Upload an IoT Edge deployment manifest
 
-Kattintson a **Tallózás** gombra 
+On the **Customize device** page, under **Upload an Azure IoT Edge deployment manifest**, select **Browse**. 
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
+![Screenshot of Customize device page, with Browse highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
 
-Ha azt tervezi, hogy létrehoz egy Azure IoT Edge Gateway-eszköz sablonját, ügyeljen arra, hogy a **alsóbb rétegbeli eszközök** jelölőnégyzetet jelölje ki.
+If you plan to create an IoT Edge Gateway device template, make sure to select **Gateway device with downstream devices**.
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-upload.png)
+![Screenshot of Customize device page, with Gateway device with downstream devices highlighted](./media/tutorial-define-edge-device-type/gateway-upload.png)
 
-Ekkor megjelenik egy fájl-kiválasztási párbeszédpanel. Válassza ki a központi telepítési jegyzékfájlt, és kattintson a **Megnyitás** gombra.
+In the file selection dialog box, select the deployment manifest file, and select **Open**.
 
-Az üzembe helyezési jegyzékfájl a séma alapján lesz érvényesítve. Sikeres ellenőrzés után kattintson a **felülvizsgálat** gombra
+IoT Edge validates the deployment manifest file against a schema. If the validation is successful, select **Review**.
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
+![Screenshot of Customize device page, with Deployment Manifest and Review highlighted](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
 
-Az alábbi folyamat az üzembe helyezési jegyzék életciklusát mutatja IoT Centralban.
+The following flowchart shows a deployment manifest life cycle in IoT Central.
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/dmflow.png)
+![Flowchart of deployment manifest life cycle](./media/tutorial-define-edge-device-type/dmflow.png)
 
-A felülvizsgálati oldal az üzembe helyezési jegyzék részleteivel jelenik meg. Az üzembe helyezési jegyzékből származó modulok listája a felülvizsgálati oldalon jelenik meg. Ebben az oktatóanyagban a felsorolt SimulatedTemperatureSensor-modul jelenik meg. Kattintson a **Létrehozás** gombra.
+Next, you'll see a review page, with details of the deployment manifest. This page shows a list of modules from the deployment manifest. In this tutorial, note that the `SimulatedTemperatureSensor` module is listed. Kattintson a **Létrehozás** gombra.
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
+![Screenshot of Review page, with Module and Create highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
-Ha az átjáró eszközét választotta, akkor ez a felülvizsgálati oldal jelenik meg.
+If you had selected a gateway device, you see the following review page.
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-review.png)
+![Screenshot of Review page, with Azure IoT Edge Gateway highlighted](./media/tutorial-define-edge-device-type/gateway-review.png)
 
 
-A rendszer létrehoz egy új dokumentumsablon-léptetőt, amely az eszköz sablonját IoT Centralban hozza létre.
+You create a device template with module capability models. In this tutorial, you create a device template with the `SimulatedTemperatureSensor` module capability model. 
 
-Az eszközök modul-képességi modellel jönnek létre. Ebben az oktatóanyagban látni fogja a SimulatedTemperatureSensor modul képesség modell létrehozását. 
+Change title of the device template to **Environment Sensor Device Template**.
 
-Módosítsa az eszköz sablonjának nevét a környezeti érzékelő eszköz sablonjában.
+![Screenshot of device template, with updated title highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
+In IoT Edge device, model IoT Plug and Play as follows:
+* Every IoT Edge device template has a device capability model.
+* For every custom module listed in the deployment manifest, a module capability model is generated.
+* A relationship is established between each module capability model and a device capability model.
+* A module capability model implements module interfaces.
+* Each module interface contains telemetry, properties, and commands.
 
-Azure IoT Edge Device plug n play modellezés a következőképpen történik
-* Minden Azure IoT Edge eszköz-sablonhoz tartozik egy **eszköz-képesség modell**
-* Az üzembe helyezési jegyzékben felsorolt összes egyéni modulhoz a rendszer létrehoz egy **modul-képesség modellt** .
-* A rendszer létrehoz egy **kapcsolatot** az egyes modulok képességeinek modellje és az eszköz képességeinek modellje között
-* Modul-képesség modell implementálja a **modul felületeit**
-* Minden modul felülete tartalmaz
-   - Telemetria
-   - Tulajdonságok
-   - Parancsok
+![Diagram of IoT Edge modeling](./media/tutorial-define-edge-device-type/edgemodelling.png)
 
-![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgemodelling.png)
+#### <a name="add-capabilities-to-a-module-capability-model"></a>Add capabilities to a module capability model
 
-**Képességek hozzáadása a modul-képesség modellhez**
-
-Íme egy minta kimenet a SimulatedTemperatureSensor modulból
+Here is a sample output from the `SimulatedTemperatureSensor` module:
 ```json
 {
 
@@ -244,167 +239,165 @@ Azure IoT Edge Device plug n play modellezés a következőképpen történik
 }
 ```
 
-Vegyen fel képességeket a SimulatedTemperatureSensor modulba, amely a fenti JSON-t tükrözi. 
+You can add capabilities to the `SimulatedTemperatureSensor` module, which will reflect the preceding output. 
 
-* Kattintson a SimulatedTemperatureSensor modul képesség modell felületének **kezelése** lehetőségre. Kattintson a **képesség hozzáadása**lehetőségre. 
+1. To manage an interface of the `SimulatedTemperatureSensor` module capability model, select **Manage** > **Add Capability**. 
 
-    ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
+    ![Screenshot of Environment Sensor Template, with Add Capability highlighted](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
   
-* Adja hozzá a gépet objektumtípus típusú objektumként, mivel ez egy összetett típus
+1. Add a machine as an object type.
   
-    ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
+    ![Screenshot of Environment Sensor Template Capabilities page, with Schema highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
 
-    Kattintson a **Definiálás**gombra. Az előugró ablak módosítása objektum neve mezőben válassza a számítógép lehetőséget, és hozza létre a tulajdonságok hőmérsékletét, nyomást, és kattintson az **alkalmaz** gombra.
+1. Select **Define**. In the dialog box that appears, change the object name to **machine**. Create temperature and pressure properties, and select **Apply**.
   
-    ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
+    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
   
-* Környezeti elem hozzáadása objektumtípus, mivel ez egy összetett típus
+1. Add **ambient** as an object type.
 
-    Kattintson a **Definiálás**gombra. Az előugró ablak módosítása objektum neve a környezeti értékre, és a tulajdonságok hőmérséklete, a páratartalom és az **alkalmaz** gombra.
+1. Select **Define**. In the dialog box that appears, change the object name to **ambient**. Create temperature and humidity properties, and select **Apply**.
   
-    ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
+    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
 
   
-* TimeCreated hozzáadása DateTime típusú típusként, majd kattintson a **Mentés** gombra.
+1. Add `timeCreated` as a `DateTime` type, and select **Save**.
   
-    ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
+    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
 
 
-### <a name="add-relationships"></a>Kapcsolatok hozzáadása
+### <a name="add-relationships"></a>Add relationships
 
-Ha bejelölte Azure IoT Edge eszköz legyen átjáró-eszköz, hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz képességi modelljeihez az átjáró-eszközhöz csatlakozó eszközökhöz.
+If you selected an IoT Edge device to be a gateway device, you can add downstream relationships to device capability models for devices you want to connect to the gateway device.
   
-  ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
+  ![Screenshot of Environment Gateway Template, with Add Relationship highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
 
-A kapcsolat hozzáadhatók egy eszközhöz vagy egy modulhoz.
+You can add a relationship at a device or at a module.
   
-  ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
+  ![Screenshot of Environment Gateway Template, with device and module level relationships highlighted](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
 
 
-Kiválaszthat egy alsóbb rétegbeli eszköz képességeinek modelljét vagy kiválaszthatja az Asterix elemet. 
+You can select a downstream device capability model, or you can select the asterisk symbol. 
   
-  ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
+  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
 
-  Ebben az oktatóanyagban kiválasztjuk az Asterix-t, ami azt jelenti, hogy minden alárendelt kapcsolat engedélyezve lesz. Kattintson a **Mentés** gombra.
+  For this tutorial, select the asterisk. This option allows any downstream relationship. Ezután válassza a **Save** (Mentés) lehetőséget.
 
-  ![Eszköz sablonja – Azure IoT Edge](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
+  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
 
 
-### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
+### <a name="add-cloud-properties"></a>Add cloud properties
 
-Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
+A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
 
-1. Válassza a **felhő tulajdonságai** lehetőséget, majd a **+ felhő tulajdonságot**. A következő táblázatban található információk használatával hozzáadhat egy Felhőbeli tulajdonságot az eszköz sablonhoz.
+1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
 
-    | Megjelenítendő név      | Szemantikai típus | Séma |
+    | Megjelenített név      | Semantic type | Séma |
     | ----------------- | ------------- | ------ |
     | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Customer name     | None          | Sztring |
 
-2. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra:
-
-  
-    ![Felhő tulajdonságai – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
-
-### <a name="add-customizations"></a>Testreszabások hozzáadása
-
-Ha módosítania kell egy felületet, vagy IoT Central-specifikus funkciókat kell hozzáadnia egy olyan funkcióhoz, amely nem igényli az eszköz képességeinek megadását, használja a testreszabásokat. A mezőket testreszabhatja, ha a képesség modell Piszkozat vagy közzétett állapotban van. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőket:
-
-- Testreszabhatja egy képesség megjelenített nevét és egységeit.
-- Adja meg az alapértelmezett színt, amelyet akkor kell használni, ha az érték megjelenik a diagramon.
-- Egy tulajdonság kezdeti, minimális és maximális értékének megadása.
-
-Nem szabhatja testre a képesség nevét vagy a képesség típusát. Kattintson a **Mentés** gombra.
-  
-![Testreszabások – Azure IoT Edge](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
-
-
-### <a name="create-views"></a>Nézetek létrehozása
-
-Építőként testreszabhatja az alkalmazást, hogy a megfelelő információkat jelenítse meg a környezeti érzékelő eszközéről egy operátorra. A testreszabások lehetővé teszik, hogy az operátor felügyelje az alkalmazáshoz kapcsolódó környezeti érzékelők eszközeit. Kétféle nézetet hozhat létre az operátorok számára az eszközök használatához:
-
-* Az eszközök és a felhő tulajdonságainak megtekintésére és szerkesztésére szolgáló űrlapok.
-* Irányítópultok az eszközök megjelenítéséhez.
-
-### <a name="configure-a-view-to-visualize-devices"></a>Nézet konfigurálása eszközök megjelenítéséhez
-
-Az eszközök irányítópultja lehetővé teszi, hogy az operátor diagramok és metrikák használatával megjelenítse az eszközt. Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszköz irányítópultján. Több irányítópultot is megadhat az eszközökhöz. Ha létre szeretne hozni egy irányítópultot a környezeti érzékelők telemetria megjelenítéséhez, válassza a **nézetek** lehetőséget, majd **jelenítse meg az eszközt**:
+2. Kattintson a **Mentés** gombra.
 
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
+    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
 
+### <a name="add-customizations"></a>Add customizations
 
-A környezeti telemetria és a gépi telemetria összetett objektumok, a diagramok létrehozásához tegye a következőket
+Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Megteheti például a következőket:
 
-Húzza a környezeti telemetria, és válassza a vonal diagram lehetőséget. 
+- Customize the display name and units of a capability.
+- Add a default color to use when the value appears on a chart.
+- Specify initial, minimum, and maximum values for a property.
+
+You can't customize the capability name or capability type.
+
+When you're finished customizing, select **Save**.
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/sensorambientchart.png)
+![Screenshot of Environment Sensor Template Customize page](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
 
-Kattintson a configure (Konfigurálás) ikonra, és válassza a hőmérséklet és a páratartalom lehetőséget az adatmegjelenítéshez, majd kattintson a **konfiguráció frissítése** gombra. 
+
+### <a name="create-views"></a>Create views
+
+As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+
+* Forms to view and edit device and cloud properties.
+* Dashboards to visualize devices.
+
+### <a name="configure-a-view-to-visualize-devices"></a>Configure a view to visualize devices
+
+A device dashboard lets an operator visualize a device by using charts and metrics. As a builder, you can define what information appears on a device dashboard. You can define multiple dashboards for devices. To create a dashboard to visualize the environmental sensor telemetry, select **Views** > **Visualizing the Device**:
+
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
+![Screenshot of Environment Sensor Template Views page, with Visualizing the Device highlighted](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
 
-A nézet mentéséhez válassza a **Mentés** lehetőséget:
 
-További csempéket is hozzáadhat, amelyek további tulajdonságokat vagy telemetria értékeket jelenítenek meg. Hozzáadhat statikus szöveget, hivatkozásokat és képeket is. Az irányítópulton lévő csempe áthelyezéséhez vagy átméretezéséhez vigye az egérmutatót a csempére, és húzza a csempét egy új helyre, vagy méretezze át.
+Ambient Telemetry and Machine Telemetry are complex objects. To create charts:
+
+1. Drag **Ambient Telemetry**, and select **Line chart**. 
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/viewsdashboard.png)
+   ![Screenshot of Environment Sensor Template, with Ambient Telemetry and Line chart highlighted](./media/tutorial-define-edge-device-type/sensorambientchart.png)
 
-### <a name="add-a-device-form"></a>Eszköz űrlapjának hozzáadása
-
-Az eszközök űrlapja lehetővé teszi, hogy az operátor az írható eszköz tulajdonságait és a felhő tulajdonságait szerkessze. Építőként több űrlapot is meghatározhat, és kiválaszthatja, hogy mely eszközök és felhő-tulajdonságok jelenjenek meg az egyes űrlapokon. Az űrlap írásvédett eszközének tulajdonságait is megjelenítheti.
-
-Űrlap létrehozása a környezeti érzékelő tulajdonságainak megtekintéséhez és szerkesztéséhez:
-
-Navigáljon a **nézetekhez** a **környezeti érzékelő** sablonban. Új nézet hozzáadásához válassza az **eszköz és a Felhőbeli** adatcsempe szerkesztése lehetőséget.
+1. Select the configure icon. Select **Temperature** and **Humidity** to visualize the data, and select **Update configuration**. 
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
+   ![Screenshot of Environment Sensor Template, with various options highlighted](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
-Adja meg az űrlap neve **környezeti érzékelő tulajdonságait**.
+1. Kattintson a **Mentés** gombra.
 
-Húzza az **ügyfél neve** és az **utolsó szolgáltatás dátumának** Felhőbeli tulajdonságai elemet az űrlap meglévő szakaszára.
+You can add more tiles that show other properties or telemetry values. You can also add static text, links, and images. To move or resize a tile on the dashboard, move the mouse pointer over the tile, and drag the tile to a new location or resize it.
   
-![Nézetek – Azure IoT Edge](./media/tutorial-define-edge-device-type/views-properties.png)
+![Screenshot of Environment Sensor Template Dashboard view](./media/tutorial-define-edge-device-type/viewsdashboard.png)
 
-A nézet mentéséhez válassza a **Mentés** lehetőséget.
+### <a name="add-a-device-form"></a>Add a device form
 
-### <a name="generate-default-views"></a>Alapértelmezett nézetek előállítása
+A device form lets an operator edit writeable device properties and cloud properties. As a builder, you can define multiple forms and choose which device and cloud properties to show on each form. You can also display read-only device properties on a form.
 
-Azure IoT Edge sablonok nem támogatják az alapértelmezett nézetek használatát. 
+To create a form to view and edit environmental sensor properties:
 
-## <a name="publish-device-template"></a>Eszköz sablonjának közzététele
+1. In the **Environmental Sensor Template**, go to **Views**. Select the **Editing Device and Cloud data** tile to add a new view.
+  
+   ![Screenshot of Environmental Sensor Template Views page, with Editing Device and Cloud data highlighted](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
 
-Szimulált környezeti érzékelő létrehozása vagy valódi környezeti érzékelő csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
+1. Enter the form name **Environmental Sensor properties**.
 
-Eszköz sablonjának közzététele:
+1. Drag the **Customer name** and **Last service date** cloud properties onto the existing section on the form.
+  
+   ![Screenshot of Environmental Sensor Template Views page, with various options highlighted](./media/tutorial-define-edge-device-type/views-properties.png)
 
-1. Nyissa meg az eszköz sablonját az **eszközök sablonjai** lapon.
+1. Kattintson a **Mentés** gombra.
+
+## <a name="publish-a-device-template"></a>Publish a device template
+
+Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+
+To publish a device template:
+
+1. Go to your device template from the **Device Templates** page.
 
 2. Kattintson a **Publish** (Közzététel) elemre.
   
-    ![Nézetek – közzététel](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
+    ![Screenshot of Environmental Sensor Template, with Publish highlighted](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
 
-1. Az **eszközbeállítások közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget:
+1. In the **Publish a Device Template** dialog box, choose **Publish**.
   
-    ![Nézetek – közzététel](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
+    ![Screenshot of Publish a Device Template dialog box, with Publish highlighted](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
 
-Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszközön azonban verziószámozás nélkül is frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
+After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After you make any changes, select **Publish** to push those changes out to your operator.
   
-![Nézetek – közzététel](./media/tutorial-define-edge-device-type/publishedtemplate.png)
+![Screenshot of Device templates list of published templates](./media/tutorial-define-edge-device-type/publishedtemplate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-* Új Edge létrehozása levélként szolgáló eszköz sablonként
-* Modulok létrehozása feltöltött üzembe helyezési jegyzékből
-* Összetett típusú telemetria és tulajdonságok hozzáadása
-* Felhő tulajdonságainak létrehozása
-* Testreszabások létrehozása.
-* Adjon meg egy vizualizációt az eszköz telemetria.
-* Tegye közzé az Edge-eszköz sablonját.
+* Create a new edge as a leaf device template.
+* Generate modules from an uploaded deployment manifest.
+* Add complex type telemetry and properties.
+* Create cloud properties.
+* Create customizations.
+* Define a visualization for the device telemetry.
+* Publish your edge device template.
 
-Most, hogy létrehozott egy eszközt az Azure IoT Central-alkalmazásban, itt látható a következő lépés:
+Now that you've created a device template in your Azure IoT Central application, you can do this next:
 
 > [!div class="nextstepaction"]
-> [Eszköz csatlakoztatása](./tutorial-connect-pnp-device.md)
+> [Connect device](./tutorial-connect-pnp-device.md)

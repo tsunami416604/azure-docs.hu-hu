@@ -1,6 +1,6 @@
 ---
-title: Új IoT-eszköz típusának meghatározása az Azure IoT Centralban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy új Azure IoT-sablont az Azure IoT Central-alkalmazásban. Megadhatja a típus telemetria, állapotát, tulajdonságait és parancsait.
+title: Define a new IoT device type in Azure IoT Central | Microsoft Docs
+description: This tutorial shows you, as a builder, how to create a new Azure IoT device template in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,426 +9,434 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5642ce6065c4b76bdbd6d772c74fed894de0888f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893353"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407019"
 ---
-# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: új IoT-eszköz típusának meghatározása az Azure IoT Central-alkalmazásban (előzetes verziójú funkciók)
+# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new IoT device type in your Azure IoT Central application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Az eszköz sablonja egy olyan terv, amely meghatározza egy Azure IoT Central-alkalmazáshoz csatlakozó eszköz típusának jellemzőit és viselkedését.
+A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
 
-A Builder például létrehozhat egy eszköz sablont egy csatlakoztatott ventilátorhoz, amely a következő jellemzőkkel rendelkezik:
+For example, a builder can create a device template for a connected fan that has the following characteristics:
 
-- Hőmérséklet telemetria küld
-- Location tulajdonság küldése
-- Ventilátor motoros hibák eseményeinek küldése
-- Ventilátor működési állapotának küldése
-- Írható ventilátor sebességének tulajdonsága
-- Az eszköz újraindítására szolgáló parancs
-- Irányítópult, amely átfogó képet nyújt az eszközről
+- Sends temperature telemetry
+- Sends location property
+- Sends fan motor error events
+- Sends fan operating state
+- Provides a writeable fan speed property
+- Provides a command to restart the device
+- Gives you an overall view of the device via a dashboard
 
-Az eszköz sablonja alapján a kezelők valódi ventilátoros eszközöket hozhatnak létre és csatlakozhatnak. Ezek a ventilátorok olyan mérésekkel, tulajdonságokkal és parancsokkal rendelkeznek, amelyeket az operátorok a figyeléshez és kezeléshez használnak. A kezelők az eszközök irányítópultját és űrlapjait használják a ventilátorral való interakcióra.
+From this device template, an operator can create and connect real fan devices. All these fans have measurements, properties, and commands that operators use to monitor and manage them. Operators use the device dashboards and forms to interact with the fan devices.
 
 > [!NOTE]
-> Csak az építők és a rendszergazdák hozhatnak létre, szerkeszthetnek és törölhetnek eszközöket. Bármely felhasználó létrehozhat eszközöket az **eszközök** lapon a meglévő eszközök sablonjaiból.
+> Only builders and administrators can create, edit, and delete device templates. Any user can create devices on the **Devices** page from existing device templates.
 
-A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play a Device képesség modell sémája, amely leírja az eszközök képességeit. IoT Central előnézeti alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play eszköz-képesség modelleket használják.
+[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices, without you writing any embedded device code. At the core of IoT Plug and Play is a device capability model schema that describes device capabilities. In an IoT Central Preview application, device templates use these IoT Plug and Play device capability models.
 
-A Builder számos lehetőséget kínál az eszközök sablonjainak létrehozására:
+As a builder, you have several options for creating device templates:
 
-- Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz képességeinek modelljét az eszköz kódjában.
-- Importáljon egy eszköz-képességi modellt az [Azure Certified for IoT-Device Catalog eszközből](https://aka.ms/iotdevcat) , majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
-- Eszköz-képesség modell létrehozása a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz képességeinek modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
-- Eszköz-képesség modell létrehozása a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből, és csatlakoztathatja a valódi eszközt a IoT Central alkalmazáshoz egy eszköz – első kapcsolat használatával. IoT Central megkeresi és importálja az eszköz képességeinek modelljét a nyilvános adattárból. Ezután hozzáadhat bármilyen Felhőbeli tulajdonságot, testreszabást és irányítópultot, amely az IoT Central alkalmazásnak az eszköz sablonját kell használnia.
+- Design the device template in IoT Central, and then implement its device capability model in your device code.
+- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat). Then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model by using Visual Studio Code. Implement your device code from the model. Manually import the device capability model into your IoT Central application, and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model by using Visual Studio Code. Implement your device code from the model, and connect your real device to your IoT Central application by using a device-first connection. IoT Central finds and imports the device capability model from the public repository for you. You can then add any cloud properties, customizations, and dashboards your IoT Central application needs to the device template.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ezt a rövid útmutatót követve [hozzon létre egy Azure IoT Central alkalmazást](quick-deploy-iot-central.md).
+To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>Eszköz sablonjának létrehozása az eszköz-katalógusból
+## <a name="create-a-device-template-from-the-device-catalog"></a>Create a device template from the device catalog
 
-Építőként gyorsan megkezdheti a megoldás kiépítését egy IoT Plug and Play tanúsított eszköz használatával, amely az [Azure IoT-eszköz katalógusában](https://catalog.azureiotsolutions.com/alldevices)szerepel. A IoT Central együttműködik az eszköz-katalógussal, így az eszköz képességeinek egyik modelljét importálhatja bármelyik IoT Plug and Play tanúsítvánnyal rendelkező eszközről. Eszköz sablonjának létrehozása ezen eszközök egyikéről a IoT Centralban:
+As a builder, you can quickly start building out your solution by using an IoT Plug and Play certified device. See the list in the [Azure IoT Device Catalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrates with the device catalog so you can import a device capability model from any of these IoT Plug and Play certified devices. To create a device template from one of these devices in IoT Central:
 
-1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
-1. Válassza az **+ új**lehetőséget, majd válassza ki a IoT Plug and Play minősített eszközöket az alábbi katalógusból. IoT Central létrehoz egy sablont ezen eszköz-képesség modell alapján.
-1. Bármilyen Felhőbeli tulajdonságot, testreszabást és nézetet hozzáadhat az eszköz sablonhoz.
-1. Válassza a **Közzététel** lehetőséget az eszköz sablonjának közzétételéhez, hogy az operátorok elérhetők legyenek az eszközök megtekintéséhez és csatlakoztatásához.
+1. Go to the **Device Templates** page in your IoT Central application.
+1. Select **+ New**, and then select any of the IoT Plug and Play certified devices from the catalog. IoT Central creates a device template based on this device capability model.
+1. Add any cloud properties, customizations, or views to your device template.
+1. Select **Publish** to make the template available for operators to view and connect devices.
 
-## <a name="create-a-device-template-from-scratch"></a>Sablon létrehozása a semmiből
+## <a name="create-a-device-template-from-scratch"></a>Create a device template from scratch
 
-Az eszköz sablonjai A következőket tartalmazzák:
+A device template contains:
 
-- Az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat meghatározó _eszköz-képességi modell_ . Ezeket a képességeket egy vagy több interfészbe rendezi a rendszer.
-- A _felhő tulajdonságai_ , amelyek a IoT Central alkalmazás által az eszközökön tárolt adatokat határozzák meg. A Felhőbeli tulajdonságok például rögzíthetik az eszköz utoljára szervizelt adatát. Ezeket az adatokat soha nem osztja meg az eszközzel.
-- A _testreszabások_ lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modellje definícióit. A szerkesztő például felülbírálhatja egy eszköz tulajdonságának a nevét. A tulajdonságok neve IoT Central irányítópultokon és űrlapokon jelenik meg.
-- Az _irányítópultok és űrlapok_ lehetővé teszik, hogy a szerkesztő olyan felhasználói felületet hozzon létre, amely lehetővé teszi a kezelők számára az alkalmazáshoz csatlakoztatott eszközök figyelését és kezelését
+- A _device capability model_ that specifies the telemetry, properties, and commands that the device implements. These capabilities are organized into one or more interfaces.
+- _Cloud properties_ that define information that your IoT Central application stores about your devices. For example, a cloud property might record the date a device was last serviced. This information is never shared with the device.
+- _Customizations_ let the builder override some of the definitions in the device capability model. For example, the builder can override the name of a device property. Property names appear in IoT Central dashboards and forms.
+- _Dashboards and forms_ let the builder create a UI that lets operators monitor and manage the devices connected to your application.
 
-Eszköz sablonjának létrehozása a IoT Centralban:
+To create a device template in IoT Central:
 
-1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
-1. Válassza az **+ új**, majd az **Egyéni**lehetőséget.
-1. Adja meg a sablon nevét, például a **környezeti érzékelőt**.
-1. Nyomja le az **Enter** billentyűt. IoT Central létrehoz egy üres sablont.
+1. Go to the **Device Templates** page in your IoT Central application.
+1. Select **+ New** > **Custom**.
+1. Enter a name for your template, such as **Environmental Sensor**.
+1. Nyomja le az **Enter** billentyűt. IoT Central creates an empty device template.
 
-## <a name="manage-a-device-template"></a>Eszköz sablonjának kezelése
+## <a name="manage-a-device-template"></a>Manage a device template
 
-A sablon kezdőlapján átnevezheti vagy törölheti a sablonokat.
+You can rename or delete a template from the template's home page.
 
-Miután hozzáadta az eszköz képességeinek modelljét a sablonhoz, közzéteheti azt. A sablon alapján nem **lehet eszközöket** összekapcsolni az operátorok számára, amíg közzé nem teszi a sablont.
+After you've added a device capability model to your template, you can publish it. Until you've published the template, you can't connect a device based on this template for your operators to see in the **Devices** page.
 
-## <a name="create-a-capability-model"></a>Képesség modell létrehozása
+## <a name="create-a-capability-model"></a>Create a capability model
 
-Eszköz-képesség modell létrehozásához a következőket teheti:
+To create a device capability model, you can:
 
-- A IoT Central használatával hozzon létre egy egyéni modellt a semmiből.
-- Modell importálása JSON-fájlból. Előfordulhat, hogy egy eszköz-szerkesztő a Visual Studio Code-ot használta az alkalmazáshoz tartozó eszköz-képesség modell létrehozásához.
-- Válasszon egy eszközt az eszköz-katalógusból. Ezzel a beállítással importálhatja azt az eszköz-képességi modellt, amelyet a gyártó közzétett az eszközön. Az ehhez hasonló eszköz-képesség modell automatikusan közzé lesz téve.
+- Use IoT Central to create a custom model from scratch.
+- Import a model from a JSON file. A device builder might have used Visual Studio Code to author a device capability model for your application.
+- Select one of the devices from the Device Catalog. This option imports the device capability model that the manufacturer has published for this device. A device capability model imported like this is automatically published.
 
-## <a name="manage-a-capability-model"></a>Képesség modell kezelése
+## <a name="manage-a-capability-model"></a>Manage a capability model
 
-Az eszköz-képesség modell létrehozása után a következőket teheti:
+After you create a device capability model, you can:
 
-- Felületek hozzáadása a modellhez. A modellnek legalább egy csatolóval kell rendelkeznie.
-- Szerkessze a modell metaadatait, például az azonosítót, a névteret és a nevet.
-- Törölje a modellt.
+- Add interfaces to the model. A model must have at least one interface.
+- Edit model metadata, such as its ID, namespace, and name.
+- Delete the model.
 
-## <a name="create-an-interface"></a>Felület létrehozása
+## <a name="create-an-interface"></a>Create an interface
 
-Az eszköz képességeinek legalább egy csatolóval kell rendelkezniük. Az illesztőfelület a képességek újrafelhasználható gyűjteménye.
+A device capability must have at least one interface. An interface is a reusable collection of capabilities.
 
-Felület létrehozása:
+To create an interface:
 
-1. Nyissa meg az eszköz képességeinek modelljét, és válassza a **+ kapcsolat hozzáadása**elemet.
+1. Go to your device capability model, and choose **+ Add Interface**.
 
-1. A **csatoló kiválasztása** lapon a következőket teheti:
+1. On the **Select an Interface** page, you can:
 
-    - Hozzon létre egy egyéni felületet a semmiből.
-    - Meglévő illesztőfelület importálása egy fájlból. Előfordulhat, hogy egy eszközön a Visual Studio Code-ot használta az eszközhöz tartozó felület létrehozásához.
-    - Válasszon egyet a standard felületek közül, például az **eszköz adatai** felületet. A standard felületek a sok eszközhöz közös képességeket határozzák meg. Ezek a standard felületek Microsoft Azure IoT vannak közzétéve, és nem telepíthetők és nem szerkeszthetők.
+    - Create a custom interface from scratch.
+    - Import an existing interface from a file. A device builder might have used Visual Studio Code to author an interface for your device.
+    - Choose one of the standard interfaces, such as the **Device Information** interface. Standard interfaces specify the capabilities common to many devices. These standard interfaces are published by Azure IoT, and can't be versioned or edited.
 
-1. Miután létrehozta a felületet, az **identitás szerkesztése** elemre kattintva módosíthatja az interfész megjelenítendő nevét.
+1. After you create an interface, choose **Edit Identity** to change the display name of the interface.
 
-1. Ha úgy dönt, hogy új egyéni felületet hoz létre, hozzáadhatja az eszköz képességeit. Az eszköz képességei a következők: telemetria, tulajdonságok és parancsok.
+1. If you choose to create a custom interface from scratch, you can add your device's capabilities. Device capabilities are telemetry, properties, and commands.
 
 ### <a name="telemetry"></a>Telemetria
 
-A telemetria az eszközről küldött értékek streamje, jellemzően egy érzékelőből. Egy érzékelő például jelenthetheti a környezeti hőmérsékletet.
+Telemetry is a stream of values sent from the device, typically from a sensor. For example, a sensor might report the ambient temperature.
 
-A következő táblázat a telemetria képesség konfigurációs beállításait mutatja be:
+The following table shows the configuration settings for a telemetry capability:
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetria érték megjelenítendő neve. |
-| Név | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
-| Képesség típusa | Telemetria. |
-| Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
-| Séma | A telemetria adattípus, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
-| Severity | Csak az esemény szemantikai típusához érhető el. **Hiba**, **információ**vagy **Figyelmeztetés**. |
-| Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Unit (Egység) | A telemetria értékének (például: **mph**, **%** vagy **&deg;C**) egysége. |
-| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
-| Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
-| Leírás | A telemetria képesség leírása. |
+| Megjelenítendő név | The display name for the telemetry value used on dashboards and forms. |
+| Név | The name of the field in the telemetry message. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Telemetry. |
+| Semantic Type | The semantic type of the telemetry, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Séma | The telemetry data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
+| Súlyosság | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
+| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
+| Unit (Egység) | A unit for the telemetry value, such as **mph**, **%** , or **&deg;C**. |
+| Display Unit | A display unit for use on dashboards and forms. |
+| Megjegyzés | Any comments about the telemetry capability. |
+| Leírás | A description of the telemetry capability. |
 
 ### <a name="properties"></a>Tulajdonságok
 
-A tulajdonságok a pont időértékeit jelölik. Egy eszköz például egy tulajdonság használatával jelentheti a elérni kívánt cél hőmérsékletét. A IoT Central írható tulajdonságokat adhat meg.
+Properties represent point-in-time values. For example, a device can use a property to report the target temperature it's trying to reach. You can set writeable properties from IoT Central.
 
-A következő táblázat a tulajdonságok funkciójának konfigurációs beállításait mutatja be:
+The following table shows the configuration settings for a property capability:
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
-| Név | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
-| Képesség típusa | Tulajdonság. |
-| Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
-| Séma | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
-| Írható | Ha a tulajdonság nem írható, az eszköz jelentést készíthet IoT Central. Ha a tulajdonság írható, az eszköz jelentést készíthet IoT Central, és IoT Central a tulajdonságok frissítését is elküldheti az eszköznek.
-| Severity | Csak az esemény szemantikai típusához érhető el. **Hiba**, **információ**vagy **Figyelmeztetés**. |
-| Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** vagy **&deg;C**. |
-| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
-| Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
-| Leírás | A tulajdonság funkciójának leírása. |
+| Megjelenítendő név | The display name for the property value used on dashboards and forms. |
+| Név | The name of the property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Property. |
+| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Séma | The property data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
+| Writeable | If the property isn't writeable, the device can report property values to IoT Central. If the property is writeable, the device can report property values to IoT Central and IoT Central can send property updates to the device.
+| Súlyosság | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
+| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
+| Unit (Egység) | A unit for the property value, such as **mph**, **%** , or **&deg;C**. |
+| Display Unit | A display unit for use on dashboards and forms. |
+| Megjegyzés | Any comments about the property capability. |
+| Leírás | A description of the property capability. |
 
 ### <a name="commands"></a>Parancsok
 
-A IoT Central eszköz parancsai hívhatók. A parancsok opcionálisan továbbítják a paramétereket az eszköznek, és választ kapnak az eszköztől. Meghívhat például egy parancsot egy eszköz 10 másodpercen belüli újraindítására.
+You can call device commands from IoT Central. Commands optionally pass parameters to the device and receive a response from the device. For example, you can call a command to reboot a device in 10 seconds.
 
-A következő táblázat a parancs funkciójának konfigurációs beállításait mutatja be:
-
-| Mező | Leírás |
-| ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
-| Név | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
-| Képesség típusa | Parancs |
-| Parancs | SynchronousExecutionType. |
-| Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
-| Leírás | A parancs funkciójának leírása. |
-| Kérés | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
-| Válasz | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
-
-## <a name="manage-an-interface"></a>Illesztőfelület kezelése
-
-Ha még nem tette közzé a felületet, szerkesztheti az illesztőfelület által definiált képességeket. Miután közzétette a felületet, létre kell hoznia az eszköz sablonjának új verzióját, és a felületet kell megadnia a módosítások elvégzéséhez. A verziószámozást nem igénylő módosítások, például a megjelenítendő nevek vagy egységek a **Testreszabás** szakaszban hozhatók létre.
-
-Azt is megteheti, hogy a felületet JSON-fájlként exportálja, ha újra szeretné használni egy másik képesség modellben.
-
-## <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
-
-A felhő tulajdonságai a IoT Central lévő eszközök adatainak tárolására használhatók. A felhő tulajdonságai soha nem továbbítódnak az eszközre. Például a Cloud Properties használatával tárolhatja annak az ügyfélnek a nevét, aki az eszközt telepítette, vagy az eszköz utolsó szolgáltatásának dátuma.
-
-A következő táblázat a Cloud Property konfigurációs beállításait mutatja be:
+The following table shows the configuration settings for a command capability:
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt Cloud Property érték megjelenítendő neve. |
-| Név | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
-| Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
-| Séma | A Felhőbeli tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. |
+| Megjelenítendő név | The display name for the command used on dashboards and forms. |
+| Név | The name of the command. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Command. |
+| Parancs | `SynchronousExecutionType` kérdésre adott válaszban foglalt lépéseket. |
+| Megjegyzés | Any comments about the command capability. |
+| Leírás | A description of the command capability. |
+| Kérelem | If enabled, a definition of the request parameter, including: name, display name, schema, unit, and display unit. |
+| Válasz | If enabled, a definition of the command response, including: name, display name, schema, unit, and display unit. |
 
-## <a name="add-customizations"></a>Testreszabások hozzáadása
+## <a name="manage-an-interface"></a>Manage an interface
 
-Ha módosítania kell egy importált felületet, vagy IoT Central-specifikus funkciókat kell hozzáadnia egy képességhez, használja a testreszabásokat. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőket:
+If you haven't published the interface, you can edit the capabilities defined by the interface. After you publish the interface, if you want to make any changes, you'll need to create a new version of the device template and version the interface. You can make changes that don't require versioning, such as display names or units, in the **Customize** section.
 
-- Testreszabhatja egy képesség megjelenített nevét és egységeit.
-- Adja meg az alapértelmezett színt, amelyet akkor kell használni, ha az érték megjelenik a diagramon.
-- Egy tulajdonság kezdeti, minimális és maximális értékének megadása.
+You can also export the interface as a JSON file if you want to reuse it in another capability model.
 
-Nem szabhatja testre a képesség nevét vagy a képesség típusát. Ha módosítások nem hajthatók végre a **Testreszabás** szakaszban, az eszköz sablonját és felületét kell megadnia a funkció módosításához.
+## <a name="add-cloud-properties"></a>Add cloud properties
 
-### <a name="generate-default-views"></a>Alapértelmezett nézetek előállítása
+Use cloud properties to store information about devices in IoT Central. Cloud properties are never sent to a device. For example, you can use cloud properties to store the name of the customer who has installed the device, or the device's last service date.
 
-Az alapértelmezett nézetek létrehozásával gyorsan megkezdheti a fontos eszköz adatainak megjelenítését. Az eszköz sablonja legfeljebb három alapértelmezett nézetet fog létrehozni:
+The following table shows the configuration settings for a cloud property:
 
-- A **parancsok** megadják az eszköz parancsainak nézetét, és lehetővé teszik az operátor számára, hogy az eszközre küldje őket.
-- Az **Áttekintés** az eszközök telemetria, a diagramok és a metrikák megjelenítését teszi lehetővé.
-- A **Névjegy** az eszköz információit megjelenítő nézetet jeleníti meg, és megjeleníti az eszköz tulajdonságait.
+| Mező | Leírás |
+| ----- | ----------- |
+| Megjelenítendő név | The display name for the cloud property value used on dashboards and forms. |
+| Név | The name of the cloud property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Séma | The cloud property data type, such as double, string, or vector. The available choices are determined by the semantic type. |
 
-Miután kiválasztotta az **alapértelmezett nézetek létrehozását** , látni fogja, hogy az eszköz sablonjának **nézetek** szakaszában automatikusan hozzá lettek adva.
+## <a name="add-customizations"></a>Add customizations
 
-## <a name="add-dashboards"></a>Irányítópultok hozzáadása
+Use customizations when you need to modify an imported interface or add IoT Central-specific features to a capability. You can only customize fields that don't break interface compatibility. Megteheti például a következőket:
 
-Irányítópultokat adhat hozzá egy eszköz sablonhoz, hogy az operátorok diagramok és metrikák használatával jelenítsék meg az eszközöket. Az eszközök sablonjaihoz több irányítópult is tartozhat.
+- Customize the display name and units of a capability.
+- Add a default color to use when the value appears on a chart.
+- Specify initial, minimum, and maximum values for a property.
 
-Irányítópult hozzáadása egy eszköz sablonhoz:
+You can't customize the capability name or capability type. If there are changes you can't make in the **Customize** section, you'll need to version your device template and interface to modify the capability.
 
-- Nyissa meg az eszköz sablonját, és válassza a **nézetek**lehetőséget.
-- Ezután válassza **az eszköz megjelenítését**.
-- Adja meg az irányítópult nevét az **irányítópult neve**mezőben.
-- Csempe hozzáadása az irányítópulthoz a statikus, a tulajdonság, a Cloud Property, a telemetria és a Command csempék listájából. Húzza az irányítópultra felvenni kívánt csempéket.
-- Ha több telemetria-értéket szeretne ábrázolni egyetlen diagramon, válassza ki a telemetria-értékeket, majd kattintson az **összevonás**elemre.
-- A fogaskerék ikonra kattintva, illetve a diagram csempén a **konfiguráció módosítása** gombra kattintva testreszabhatja az összes hozzáadott csempét.
-- Rendezze és méretezze át a csempéket az irányítópulton.
-- Mentse a módosításokat.
+### <a name="generate-default-views"></a>Generate default views
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Az előnézet eszköz konfigurálása az irányítópult megtekintéséhez
+Generating default views is a quick way to visualize your important device information. You have up to three default views generated for your device template:
 
-Az irányítópult megtekintéséhez és teszteléséhez válassza az **előnézeti eszköz konfigurálása**lehetőséget, amely lehetővé teszi, hogy a felhasználó a közzététel után láthassa az irányítópultot. Ezzel a beállítással ellenőrizheti, hogy a nézetek a megfelelő adatokon jelenjenek-e meg. Az eszköz AZONOSÍTÓjának használatával kiválaszthatja az előnézeti eszköz, az eszköz sablonja számára konfigurált valós tesztelési eszköz vagy az alkalmazás meglévő eszközét.
+- **Commands** provides a view with device commands, and allows your operator to dispatch them to your device.
+- **Overview** provides a view with device telemetry, displaying charts and metrics.
+- **About** provides a view with device information, displaying device properties.
 
-## <a name="add-forms"></a>Űrlapok hozzáadása
+After you've selected **Generate default views**, you see that they have been automatically added under the **Views** section of your device template.
 
-Űrlapokat adhat hozzá egy eszköz sablonhoz, hogy az operátorok a tulajdonságok megtekintésével és beállításával lehetővé tegyék az eszközök felügyeletét. Az operátorok csak a felhő tulajdonságait és az írható eszköz tulajdonságait módosíthatják. Az eszközök sablonjaihoz több űrlap is tartozhat.
+## <a name="add-dashboards"></a>Add dashboards
 
-Űrlap hozzáadása egy eszköz sablonhoz:
+Add dashboards to a device template to enable operators to visualize a device by using charts and metrics. You can have multiple dashboards for a device template.
 
-1. Nyissa meg az eszköz sablonját, és válassza a **nézetek**lehetőséget.
-1. Ezután válassza **az eszköz és a Felhőbeli adattárolás szerkesztése**lehetőséget.
-1. Adja meg az űrlap nevét az **űrlap nevében**.
-1. Válassza ki az űrlap elrendezéséhez használni kívánt oszlopok számát.
-1. Adja hozzá a tulajdonságokat egy meglévő szakaszhoz az űrlapon, vagy válassza a tulajdonságok lehetőséget, és válassza a **Hozzáadás szakaszt**. Az űrlapon található tulajdonságok csoportosításához használjon szakaszt. Hozzáadhat egy címet egy szakaszhoz.
-1. Konfigurálja az űrlap minden tulajdonságát, hogy testre szabja a viselkedését.
-1. Rendezze a tulajdonságokat az űrlapon.
+To add a dashboard to a device template:
+
+1. Go to your device template, and select **Views**.
+1. Choose **Visualizing the Device**.
+1. Enter a name for your dashboard in **Dashboard Name**.
+1. Add tiles to your dashboard from the list of static, property, cloud property, telemetry, and command tiles. Drag and drop the tiles you want to add to your dashboard.
+1. To plot multiple telemetry values on a single chart tile, select the telemetry values, and then select **Combine**.
+1. Configure each tile you add to customize how it displays data. You can do this by selecting the gear icon, or by selecting **Change configuration** on your chart tile.
+1. Arrange and resize the tiles on your dashboard.
 1. Mentse a módosításokat.
 
-## <a name="publish-a-device-template"></a>Eszköz sablonjának közzététele
+### <a name="configure-preview-device-to-view-dashboard"></a>Configure preview device to view dashboard
 
-Az eszköz képességeinek modelljét megvalósító eszköz csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
+To view and test your dashboard, select **Configure preview device**. This enables you to see the dashboard as your operator sees it after it's published. Use this option to validate that your views show the correct data. You can choose from the following:
 
-Miután közzétett egy sablont, csak korlátozott módosításokat végezhet az eszköz képességeinek modelljében. Egy felület módosításához [létre kell hoznia és közzé kell tennie egy új verziót](./howto-version-device-template.md).
+- No preview device.
+- The real test device you've configured for your device template.
+- An existing device in your application, by using the device ID.
 
-Egy sablon közzétételéhez nyissa meg az eszköz sablonját, és válassza a **Közzététel**lehetőséget.
+## <a name="add-forms"></a>Add forms
 
-Miután közzétett egy sablont, az operátor megkeresheti az **eszközök** lapot, és hozzáadhat akár valódi, akár szimulált eszközöket, amelyek az eszköz sablonját használják. A módosítások végrehajtása során továbbra is módosíthatja és mentheti az eszköz sablonját, ha azonban ezeket a módosításokat a kezelőben szeretné leküldeni az **eszközök** lapon, ki kell választania a **közzétételi** időt.
+Add forms to a device template to enable operators to manage a device by viewing and setting properties. Operators can only edit cloud properties and writeable device properties. You can have multiple forms for a device template.
 
-## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Új IoT-átjáró típusú eszköz típusának definiálása (előzetes verziójú funkciók)
+To add a form to a device template:
+
+1. Go to your device template, and select **Views**.
+1. Choose **Editing Device and Cloud data**.
+1. Enter a name for your form in **Form Name**.
+1. Select the number of columns to use to lay out your form.
+1. Add properties to an existing section on your form, or select properties and choose **Add Section**. Use sections to group properties on your form. You can add a title to a section.
+1. Configure each property on the form to customize its behavior.
+1. Arrange the properties on your form.
+1. Mentse a módosításokat.
+
+## <a name="publish-a-device-template"></a>Publish a device template
+
+Before you can connect a device that implements your device capability model, you must publish your device template.
+
+After you publish a device template, you can only make limited changes to the device capability model. To modify an interface, you need to [create and publish a new version](./howto-version-device-template.md).
+
+To publish a device template, go to you your device template, and select **Publish**.
+
+After you publish a device template, an operator can go to the **Devices** page, and add either real or simulated devices that use your device template. You can continue to modify and save your device template as you're making changes. When you want to push these changes out to the operator to view under the **Devices** page, you must select **Publish** each time.
+
+## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Define a new IoT gateway device type (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-beli IoT-eszközöket egy új Azure-beli IoT Central-alkalmazásban az átjáró-sablon használatával. 
+This tutorial shows you, as a builder, how to use a gateway device template to define a new type of IoT device in your IoT Central application. 
 
-Ebben a szakaszban egy **intelligens** létrehozási eszköz sablonját hozza létre. Egy intelligens Building Gateway-eszköz:
+In this section, you create a **Smart Building** device template. A Smart Building gateway device:
 
-* Telemetria, például hőmérsékletet és kihasználtságot küld.
-* A felhőben, például a telemetria küldési intervallumban frissülő, írható tulajdonságokra válaszol.
-* Válaszol a parancsokra, például a hőmérséklet alaphelyzetbe állítására.
-* Más eszköz-képesség modellek kapcsolatainak engedélyezése
+* Sends telemetry, such as temperature and occupancy.
+* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
+* Responds to commands, such as resetting temperature.
+* Allows relationships to other device capability models.
 
-### <a name="create-iot-device-templates"></a>IoT-sablonok létrehozása
+### <a name="create-iot-device-templates"></a>Create IoT device templates
 
-Létre fog hozni IoT-eszközök sablonjait. 
+Here's how to create IoT device templates: 
 
-Kattintson a bal oldali navigációs sávon a sablonok elemre, majd az **+ új**elemre, válassza az **IoT-eszköz** csempét, és válassza a kihasználtsági érzékelők csempét, és kattintson a **tovább**
+1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and occupancy sensor tile. Select **Next: Customize**.
 
-![IoT-eszköz](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
+   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
 
-Ekkor megjelenik a felülvizsgálati oldal. Kattintson a **Létrehozás** gombra. 
+1. On the **Review** page, select **Create**. 
 
-![IoT-eszköz](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
-Létrejön az új eszköz sablonja. 
+1. A new device template is created. 
 
-![IoT-eszköz](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
+   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
 
-Létre kell hoznia egy eszközt az S1-érzékelőhöz. 
+Here's how to create a device template for S1 Sensor:
 
-Kattintson a bal oldali navigációs sávon a sablonok elemre, majd az **+ új**elemre, válassza az **IoT-eszköz** csempét, és válassza a kihasználtsági érzékelők csempét, és kattintson a **tovább**
+1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and select occupancy sensor tile. Select **Next: Customize**.
 
-![IoT-eszköz](./media/tutorial-define-iot-device-type/s1-sensor.png)
+   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/s1-sensor.png)
 
-Ekkor megjelenik a felülvizsgálati oldal. Kattintson a **Létrehozás** gombra. 
+1. On the **Review** page, select **Create**. 
 
-![Alsóbb rétegbeli eszköz](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/s1-review.png)
 
-Létrejön az új eszköz sablonja. 
+1. A new device template is created. 
 
-![Alsóbb rétegbeli eszköz](./media/tutorial-define-iot-device-type/s1-template.png)
+   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/s1-template.png)
 
-## <a name="create-an-iot-gateway-device-template"></a>IoT-átjáró eszköz sablonjának létrehozása
+## <a name="create-an-iot-gateway-device-template"></a>Create an IoT gateway device template
 
-Dönthet úgy is, hogy létrehoz egy IoT Gateway-eszköz sablonját. Az átjáró eszköze kapcsolattal fog rendelkezni az olyan alsóbb rétegbeli eszközökkel, amelyek az átjáró-eszközön keresztül kapcsolódnak IoT Centralhoz. 
+You can choose to create an IoT gateway device template. The gateway device has relationships with downstream devices that connect into IoT Central through the gateway device. 
 
-### <a name="downstream-device-relationships-with-gateway-device"></a>Alsóbb rétegbeli eszközök kapcsolatai az átjáró eszközzel
+### <a name="downstream-device-relationships-with-gateway-device"></a>Downstream device relationships with gateway device
 
-Az IoT-eszközök kapcsolódhatnak az Azure IoT Gateway-eszközhöz 
+IoT devices can connect to an IoT gateway device.
 
-![Központi alkalmazás lapja](./media/tutorial-define-iot-device-type/gatewaypattern.png)
+![Diagram of relationship between gateway device and downstream devices](./media/tutorial-define-iot-device-type/gatewaypattern.png)
 
-A Builder használatával létrehozhat és szerkeszthet Azure IoT Gateway-eszközöket az alkalmazásban. Miután közzétett egy sablont, összekapcsolhat valódi eszközöket, amelyek implementálják az eszköz sablonját.
+As a builder, you can create and edit IoT gateway device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
 
-### <a name="select-device-template-type"></a>Válassza ki az eszköz sablonjának típusát 
+### <a name="select-a-device-template-type"></a>Select a device template type 
 
-Új sablon az alkalmazáshoz való hozzáadásához nyissa meg az **eszközök sablonjai** lapot. Ehhez válassza ki a bal oldali ablaktábla **eszközök sablonjai** lapot.
+To add a new device template to your application:
 
-![Központi alkalmazás lapja](./media/tutorial-define-iot-device-type/devicetemplate.png)
+1. From the left pane, select the **Device Templates** tab.
 
-Új sablon létrehozásához kattintson az **+ új** elemre.
+   ![Screenshot of Device templates page](./media/tutorial-define-iot-device-type/devicetemplate.png)
 
-![Eszközök sablonjai – új](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
+1. Select **+ New** to start creating a new device template.
 
-![Eszközök sablonjainak kiválasztása – átjáró](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
 
-Az eszköz sablon típusa kiválasztási oldalon fog megjelenni. Válassza ki az **Azure IoT** csempét, és kattintson a Tovább gombra: az alján található **Testreszabás gombra.**
+   ![Screenshot of Customize device page](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-Jelölje be az átjáró jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. 
+1. On the **Select template type** page, select **Azure IoT**, and then select **Next: Customize**.
 
-![Eszközök sablonjainak kiválasztása – átjáró](./media/tutorial-define-iot-device-type/gateway-customize.png)
+   ![Screenshot of Select template type page](./media/tutorial-define-iot-device-type/gateway-customize.png)
 
-Ekkor megjelenik egy felülvizsgálati oldal, kattintson a **Létrehozás** gombra. 
+1. Select the gateway check box, and select **Create**.
 
-![Eszköz sablonja – átjáró](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Screenshot of Customize device page, with gateway highlighted](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-Adja meg az átjáró sablonjának neve **intelligens építési átjáró sablonját**. Kattintson az **Egyéni** csempe elemre.
+1. On the review page, select **Create**. 
 
-Adja meg a szabványos felületi **eszközök adatait**.
+1. Enter the gateway template name, **Smart Building Gateway Template**. Select the **Custom** tile.
 
-### <a name="add-relationships"></a>Kapcsolatok hozzáadása
+1. Add a standard interface **Device Information**.
 
-Az eszköz képességi modelljeihez hozzáadhat alsóbb rétegbeli kapcsolatokat az átjáró-eszközhöz csatlakozó eszközökhöz.
+### <a name="add-relationships"></a>Add relationships
 
-Kapcsolatot hozhat létre az alsóbb rétegbeli eszköz képességeinek modelljeivel. Kattintson a **Mentés** gombra.
+You can add downstream relationships to device capability models for devices you connect to a gateway device.
 
-![Eszköz sablonja – átjáró](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
+Create relationships to downstream device capability models. Kattintson a **Mentés** gombra.
 
-### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
+![Screenshot of Smart Building Gateway Template, with various options highlighted](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
-Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
+### <a name="add-cloud-properties"></a>Add cloud properties
 
-1. Válassza a **felhő tulajdonságai** lehetőséget, majd a **+ felhő tulajdonságot**. A következő táblázatban található információk használatával hozzáadhat egy Felhőbeli tulajdonságot az eszköz sablonhoz.
+A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
 
-    | Megjelenítendő név      | Szemantikai típus | Séma |
+1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+
+    | Megjelenített név      | Semantic type | Séma |
     | ----------------- | ------------- | ------ |
     | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Customer name     | None          | Sztring |
 
-2. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra:
+2. Kattintson a **Mentés** gombra.
 
-### <a name="add-customizations"></a>Testreszabások hozzáadása
+### <a name="add-customizations"></a>Add customizations
 
-Ha módosítania kell egy felületet, vagy IoT Central-specifikus funkciókat kell hozzáadnia egy olyan funkcióhoz, amely nem igényli az eszköz képességeinek megadását, használja a testreszabásokat. A mezőket testreszabhatja, ha a képesség modell Piszkozat vagy közzétett állapotban van. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőket:
+Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Megteheti például a következőket:
 
-- Testreszabhatja egy képesség megjelenített nevét és egységeit.
-- Adja meg az alapértelmezett színt, amelyet akkor kell használni, ha az érték megjelenik a diagramon.
-- Egy tulajdonság kezdeti, minimális és maximális értékének megadása.
+- Customize the display name and units of a capability.
+- Add a default color to use when the value appears on a chart.
+- Specify initial, minimum, and maximum values for a property.
 
-Nem szabhatja testre a képesség nevét vagy a képesség típusát. Kattintson a **Mentés** gombra.
+You can't customize the capability name or capability type.
 
-### <a name="create-views"></a>Nézetek létrehozása
+When you're finished customizing, select **Save**.
 
-Építőként testreszabhatja az alkalmazást, hogy a megfelelő információkat jelenítse meg a környezeti érzékelő eszközéről egy operátorra. A testreszabások lehetővé teszik, hogy az operátor felügyelje az alkalmazáshoz kapcsolódó környezeti érzékelők eszközeit. Kétféle nézetet hozhat létre az operátorok számára az eszközök használatához:
+### <a name="create-views"></a>Create views
 
-* Az eszközök és a felhő tulajdonságainak megtekintésére és szerkesztésére szolgáló űrlapok.
-* Irányítópultok az eszközök megjelenítéséhez.
+As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
 
-### <a name="generate-default-views"></a>Alapértelmezett nézetek előállítása
+* Forms to view and edit device and cloud properties.
+* Dashboards to visualize devices.
 
-Ehhez az oktatóanyaghoz kattintson az alapértelmezett nézetek előállítása elemre. Az irányítópultok & áttekintése. 
+### <a name="generate-default-views"></a>Generate default views
 
-## <a name="publish-device-template"></a>Eszköz sablonjának közzététele
+If you select **Generate default views**, you can generate the **Overview** and **About** dashboards. 
 
-Szimulált környezeti érzékelő létrehozása vagy valódi környezeti érzékelő csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
+## <a name="publish-a-device-template"></a>Publish a device template
 
-Eszköz sablonjának közzététele:
+Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
 
-1. Nyissa meg az eszköz sablonját az **eszközök sablonjai** lapon.
+To publish a device template:
+
+1. Go to your device template from the **Device Templates** page.
 
 2. Kattintson a **Publish** (Közzététel) elemre.
 
-3. Az **eszközbeállítások közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget:
+3. In the **Publish a Device Template** dialog box, choose **Publish**.
 
-Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszközön azonban verziószámozás nélkül is frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
+After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After making any changes, select **Publish**  to push those changes out to your operator.
 
-## <a name="create-gateway-simulated-device"></a>Átjáró szimulált eszközének létrehozása
+## <a name="create-a-gateway-simulated-device"></a>Create a gateway simulated device
 
-Az eszköz Explorerben hozzon létre egy szimulált intelligens építési átjárót. 
+From the device explorer, create a simulated smart building gateway. 
 
-![Eszköz sablonja – átjáró](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
 
-## <a name="create-downstream-simulated-devices"></a>Alsóbb rétegbeli szimulált eszközök létrehozása
+## <a name="create-downstream-simulated-devices"></a>Create downstream simulated devices
 
-Az eszköz Explorerben hozzon létre egy szimulált Foglaltság érzékelőt. 
+From the device explorer, create a simulated occupancy sensor. 
 
-![Eszköz sablonja – Foglaltság](./media/tutorial-define-iot-device-type/occupancydevice.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/occupancydevice.png)
 
-Az eszköz Explorerben hozzon létre egy szimulált S1-érzékelőt. 
+From the device explorer, create a simulated S1 sensor. 
 
-![Eszköz sablonja – S1](./media/tutorial-define-iot-device-type/s1device.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/s1device.png)
 
-## <a name="add-downstream-devices-relationships-to-gateway-device"></a>Alsóbb rétegbeli eszközök kapcsolatainak hozzáadása az átjáró-eszközhöz
+## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Add downstream devices relationships to a gateway device
 
-Válassza az S1 szenzor és a kihasználtsági érzékelő elemet, majd kattintson **a Kapcsolódás az átjáróhoz**lehetőségre. 
+Select S1 Sensor and Occupancy Sensor, and select **Connect to gateway**. 
 
-![Eszköz sablonja – S1](./media/tutorial-define-iot-device-type/connecttogateway.png)
+![Screenshot of Occupancy Sensor, with Connect to gateway highlighted](./media/tutorial-define-iot-device-type/connecttogateway.png)
 
-Válassza az átjáró-eszköz sablonja, átjáró-eszköz példány elemet, majd kattintson a **Csatlakozás**elemre.
+Select a gateway device template and gateway device instance, and select **Join**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-* Új IoT-átjáró létrehozása eszköz sablonként
-* Felhő tulajdonságainak létrehozása
-* Testreszabások létrehozása.
-* Adjon meg egy vizualizációt az eszköz telemetria.
-* Kapcsolatok hozzáadása
-* Tegye közzé az eszköz sablonját.
+* Create a new IoT gateway as a device template.
+* Create cloud properties.
+* Create customizations.
+* Define a visualization for the device telemetry.
+* Add relationships.
+* Publish your device template.
 
-Íme a javasolt következő lépés:
+Next, you can:
 
 > [!div class="nextstepaction"]
-> [Eszköz csatlakoztatása](tutorial-connect-pnp-device.md)
+> [Connect a device](tutorial-connect-pnp-device.md)

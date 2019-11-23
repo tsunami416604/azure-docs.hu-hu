@@ -1,124 +1,115 @@
 ---
-title: 'Gyors útmutató: alkalmazás elindítása a Maven használatával – Azure Spring Cloud'
-description: Minta alkalmazás elindítása Maven használatával
+title: 'Quickstart: Launch an application using Maven - Azure Spring Cloud'
+description: Launch a sample application using Maven
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123818"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384080"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Quickstart: Launch an Azure Spring Cloud app using the Maven plug-in
 
-Az Azure Spring Cloud Maven beépülő modullal egyszerűen létrehozhatja és frissítheti az Azure Spring Cloud-alkalmazásait. Egy konfiguráció elődefiniálásával alkalmazásokat telepíthet a meglévő Azure Spring Cloud Service-be. Ebben a cikkben egy PiggyMetrics nevű minta alkalmazást használ a funkció bemutatásához.
+Using the Azure Spring Cloud Maven plug-in, you can easily create and update your Azure Spring Cloud applications. By predefining a configuration, you can deploy applications to your existing Azure Spring Cloud service. In this article, you use a sample application called PiggyMetrics to demonstrate this feature.
 
-Ez a rövid útmutató a következőket ismerteti:
+Following this quickstart, you will learn how to:
 
 > [!div class="checklist"]
-> * Szolgáltatási példány kiépítése
-> * Konfigurációs kiszolgáló beállítása egy példányhoz
-> * A Services-alkalmazások helyi klónozása és kiépítése
-> * Az egyes szolgáltatások üzembe helyezése
-> * Nyilvános végpont kiosztása az alkalmazáshoz
+> * Provision a service instance
+> * Set up a configuration server for an instance
+> * Clone and build microservices application locally
+> * Deploy each microservice
+> * Assign a public endpoint for your application
 
 >[!Note]
-> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  Az előzetes verziókra vonatkozó támogatással kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](https://azure.microsoft.com/support/faq/) , vagy a [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
+> Azure Spring Cloud is currently offered as a public preview. Public preview offerings allow customers to experiment with new features prior to their official release.  Public preview features and services are not meant for production use.  For more information about support during previews, please review our [FAQ](https://azure.microsoft.com/support/faq/) or file a [Support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) to learn more.
 
 
 >[!TIP]
-> A Azure Cloud Shell egy ingyenes interaktív felület, amelyet a cikkben szereplő parancsok futtatására használhat. A közös Azure-eszközök előre telepítve vannak, beleértve a git legújabb verzióit, a Java Development Kit (JDK), a Maven és az Azure CLI-t. Ha bejelentkezett az Azure-előfizetésbe, indítsa el [Azure Cloud Shell](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](../cloud-shell/overview.md).
+> Azure Cloud Shell is a free interactive shell that you can use to run the commands in this article. It has common Azure tools preinstalled, including the latest versions of Git, the Java Development Kit (JDK), Maven, and the Azure CLI. If you're signed in to your Azure subscription, launch [Azure Cloud Shell](https://shell.azure.com). For more information, see [Overview of Azure Cloud Shell](../cloud-shell/overview.md).
 
 A gyorsútmutató elvégzéséhez:
 
 1. [Telepítse a Git szoftvert](https://git-scm.com/).
-2. A [JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
-3. [Telepítse a Maven 3,0-es vagy újabb verzióját](https://maven.apache.org/download.cgi).
-4. [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-5. [Regisztráljon egy ingyenes Azure-előfizetésre](https://azure.microsoft.com/free/).
+2. [Install JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
+3. [Install Maven 3.0 or later](https://maven.apache.org/download.cgi).
+4. [Sign up for a free Azure subscription](https://azure.microsoft.com/free/).
 
-## <a name="install-the-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
+## <a name="provision-a-service-instance-on-the-azure-portal"></a>Provision a service instance on the Azure portal
 
-Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal:
+1. In a web browser, open [this link to Azure Spring Cloud in the Azure portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), and sign in to your account.
 
-```Azure CLI
-az extension add --name spring-cloud
-```
+1. Provide the **Project Details** for the sample application as follows:
 
-## <a name="provision-a-service-instance-on-the-azure-portal"></a>Szolgáltatási példány kiépítése a Azure Portal
-
-1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), és jelentkezzen be a fiókjába.
-
-1. Adja meg a minta alkalmazás **projekt részleteit** a következőképpen:
-
-    1. Válassza ki azt az **előfizetést** , amelyhez az alkalmazást társítani kívánja.
-    1. Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazáshoz. Javasoljuk, hogy hozzon létre egy új erőforráscsoportot.  Az alábbi példa egy `myspringservice`nevű új erőforráscsoportot mutat be.
-    1. Adja meg az új Azure Spring Cloud szolgáltatás nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat. A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.  Az alábbi példában szereplő szolgáltatás neve `contosospringcloud`.
-    1. Válasszon egy helyet az alkalmazás számára a megadott beállítások közül.  Ebben a példában a `East US`lehetőséget választjuk.
-    1. Az új szolgáltatás összefoglalásának áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.  Ha úgy tűnik, hogy minden helyes, válassza a **Létrehozás**lehetőséget.
+    1. Select the **Subscription** with which the application will be associated.
+    1. Select or create a resource group for the application. We recommend creating a new resource group.  The example below shows a new resource group called `myspringservice`.
+    1. Provide a name for the new Azure Spring Cloud service.  The name must be between 4 and 32 characters long and can contain only lowercase letters, numbers, and hyphens. The first character of the service name must be a letter and the last character must be either a letter or a number.  The service in the example below has the name `contosospringcloud`.
+    1. Select a location for your application from the options provided.  In this example, we select `East US`.
+    1. Select **Review + create** to review a summary of your new service.  If everything looks correct, select **Create**.
 
     > [!div class="mx-imgBorder"]
-    > ![válassza a felülvizsgálat + létrehozás](media/maven-qs-review-create.jpg)
+    > ![Select Review + create](media/maven-qs-review-create.jpg)
 
-A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szolgáltatás telepítése után válassza az Ugrás az **erőforráshoz** lehetőséget, és megjelenik a szolgáltatási példány **Áttekintés** lapja.
+It takes about 5 minutes for the service to be deployed. After the service is deployed, select **Go to resource** and the **Overview** page for the service instance appears.
 
-## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
+## <a name="set-up-your-configuration-server"></a>Set up your configuration server
 
-1. A szolgáltatás **áttekintése** lapon válassza a **konfigurációs kiszolgáló**lehetőséget.
-1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** - **t https://github.com/Azure-Samples/piggymetricsre** , állítsa be a **címkét** a **config**értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+1. On the service **Overview** page, select **Config Server**.
+1. In the **Default repository** section, set **URI** to **https://github.com/Azure-Samples/piggymetrics** , set **Label** to **config**, and then select **Apply** to save your changes.
 
     > [!div class="mx-imgBorder"]
-    > ![a konfigurációs beállítások megadása és alkalmazása](media/maven-qs-apply-config.jpg)
+    > ![Define and apply config settings](media/maven-qs-apply-config.jpg)
 
-## <a name="clone-and-build-the-sample-application-repository"></a>A minta alkalmazás-adattár klónozása és összeállítása
+## <a name="clone-and-build-the-sample-application-repository"></a>Clone and build the sample application repository
 
-1. Indítsa el a [Azure Cloud Shell](https://shell.azure.com).
+1. Launch the [Azure Cloud Shell](https://shell.azure.com).
 
-1. A git-tárház klónozásához futtassa a következő parancsot:
+1. Clone the Git repository by running the following command:
 
     ```azurecli
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
-1. Módosítsa a könyvtárat, és hozza létre a projektet a következő parancs futtatásával:
+1. Change directory and build the project by running the following command:
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Konfigurációk készítése és üzembe helyezése az Azure Spring Cloud-ban
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generate configurations and deploy to the Azure Spring Cloud
 
-1. Konfigurációk előállításához futtassa a következő parancsot a szülő POM-t tartalmazó PiggyMetrics gyökérkönyvtárában:
+1. Generate configurations by running the following command in the root folder of PiggyMetrics containing the parent POM:
 
     ```azurecli
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Válassza ki a modulokat `gateway`,`auth-service`és `account-service`.
+    a. Select the modules `gateway`,`auth-service`, and `account-service`.
 
-    b. Válassza ki az előfizetését és az Azure Spring Cloud Service-fürtöt.
+    b. Select your subscription and Azure Spring Cloud service cluster.
 
-    c. A megadott projektek listájában adja meg azt a számot, amely megfelel a `gateway`nek, hogy nyilvános hozzáférést adjon.
+    c. In the list of provided projects, enter the number that corresponds with `gateway` to give it public access.
     
-    d. Erősítse meg a konfigurációt.
+    d. Confirm the configuration.
 
-1. A POM mostantól tartalmazza a beépülő modul függőségeit és konfigurációit. Telepítse az alkalmazásokat a következő parancs használatával:
+1. The POM now contains the plugin dependencies and configurations. Deploy the apps using the following command:
 
    ```azurecli
    mvn azure-spring-cloud:deploy
    ```
 
-1. Az üzembe helyezés befejezése után a PiggyMetrics az előző parancs kimenetében megadott URL-címen keresztül érheti el.
+1. After the deployment has finished, you can access PiggyMetrics by using the URL provided in the output from the preceding command.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást telepített egy Maven-tárházból. Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás telepítésre való előkészítésének oktatóanyagával.
+In this quickstart, you've deployed a Spring Cloud application from a Maven repository. To learn more about Azure Spring Cloud, continue to the tutorial about preparing your app for deployment.
 
 > [!div class="nextstepaction"]
-> [Az Azure Spring Cloud-alkalmazás előkészítése az üzembe helyezéshez](spring-cloud-tutorial-prepare-app-deployment.md)
-> további információ az Azure-beli [Maven beépülő moduljairól](https://github.com/microsoft/azure-maven-plugin)
+> [Prepare your Azure Spring Cloud application for deployment](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Learn more about Maven plug-ins for Azure](https://github.com/microsoft/azure-maven-plugin)

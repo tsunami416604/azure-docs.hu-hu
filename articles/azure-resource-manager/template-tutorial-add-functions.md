@@ -1,52 +1,52 @@
 ---
-title: Oktatóanyag – sablon-függvények hozzáadása
-description: Adja hozzá a Template functions-t a Azure Resource Manager-sablonhoz az értékek létrehozásához.
+title: Tutorial - add template functions
+description: Add template functions to your Azure Resource Manager template to construct values.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fe571c2a0088375feff8351f49a476669461b6aa
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 03a38178ec66c1c1a10934975d20778369d80dbe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150249"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405960"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Oktatóanyag: template functions hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Add template functions to your Resource Manager template
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá [sablon-függvényeket](resource-group-template-functions.md) a sablonhoz. A függvények használatával dinamikusan hozhat létre értékeket. A rendszer által biztosított sablon-függvények mellett létrehozhat [felhasználó által definiált függvényeket](./template-user-defined-functions.md)is. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+In this tutorial, you learn how to add [template functions](resource-group-template-functions.md) to your template. You use functions to dynamically construct values. In addition to these system-provided template functions, you can also create [user-defined functions](./template-user-defined-functions.md). This tutorial takes **7 minutes** to complete.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy fejezze be a [paraméterekkel kapcsolatos oktatóanyagot](template-tutorial-add-parameters.md), de ez nem kötelező.
+We recommend that you complete the [tutorial about parameters](template-tutorial-add-parameters.md), but it's not required.
 
-A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>A sablon áttekintése
+## <a name="review-template"></a>Review template
 
-Az előző oktatóanyag végén a sablon a következő JSON-t használta:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
-A Storage-fiók helye az **USA keleti**régiójában rögzített. Előfordulhat azonban, hogy más régiókban is telepítenie kell a Storage-fiókot. A sablon problémája még nincs rugalmassága. Hozzáadhat egy paramétert a helyhez, de nagyszerű lenne, ha az alapértelmezett értéke több értelme, mint a nehezen kódolt érték.
+The location of the storage account is hard-coded to **East US**. However, you may need to deploy the storage account to other regions. You're again facing an issue of your template lacking flexibility. You could add a parameter for location, but it would be great if its default value made more sense than just a hard-coded value.
 
-## <a name="use-function"></a>Függvény használata
+## <a name="use-function"></a>Use function
 
-Ha befejezte az előző oktatóanyagot ebben a sorozatban, már használt egy függvényt. Ha hozzáadta a **"[parameters (' storageName ')]"** paramétert, a [Paraméterek](resource-group-template-functions-deployment.md#parameters) függvényt használta. A zárójelek azt jelzik, hogy a zárójelben lévő szintaxis a [sablon kifejezése](template-expressions.md). A Resource Manager úgy oldja fel a szintaxist, hogy literál értékként kezelje.
+If you've completed the previous tutorial in this series, you've already used a function. When you added **"[parameters('storageName')]"** , you used the [parameters](resource-group-template-functions-deployment.md#parameters) function. The brackets indicate that the syntax inside the brackets is a [template expression](template-expressions.md). Resource Manager resolves the syntax rather than treating it as a literal value.
 
-A függvények rugalmasságot biztosítanak a sablonhoz az értékek dinamikus beolvasásával az üzembe helyezés során. Ebben az oktatóanyagban egy függvény használatával beolvassa az üzembe helyezéshez használt erőforráscsoport helyét.
+Functions add flexibility to your template by dynamically getting values during deployment. In this tutorial, you use a function to get the location of the resource group you're using for deployment.
 
-A következő példa kiemeli a **Location**nevű paraméter hozzáadásának módosításait.  A paraméter alapértelmezett értéke meghívja a [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
+The following example highlights the changes to add a parameter called **location**.  The parameter default value calls the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. This function returns an object with information about the resource group being used for deployment. One of the properties on the object is a location property. When you use the default value, the storage account location has the same location as the resource group. The resources inside a resource group don't have to share the same location. You can also provide a different location when needed.
 
-Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
+Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Az előző oktatóanyagokban létrehozott egy Storage-fiókot az USA keleti régiójában, de az erőforráscsoport az USA középső régiójában lett létrehozva. Ebben az oktatóanyagban a Storage-fiók ugyanabban a régióban jön létre, mint az erőforráscsoport. Használja az alapértelmezett értéket a helyhez, így nem kell megadnia a paraméter értékét. Meg kell adnia egy új nevet a Storage-fiókhoz, mert egy másik helyen hoz létre egy Storage-fiókot. Használja például a **store2** előtagot a **store1**helyett.
+In the previous tutorials, you created a storage account in East US, but your resource group was created in Central US. For this tutorial, your storage account is created in the same region as the resource group. Use the default value for location, so you don't need to provide that parameter value. You must provide a new name for the storage account because you're creating a storage account in a different location. For example, use **store2** as the prefix instead of **store1**.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,29 +70,29 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
-1. Láthatja, hogy a Storage-fiók erőforrása telepítve van, és ugyanazzal a hellyel rendelkezik, mint az erőforráscsoport.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. You see that a storage account resource has been deployed and has the same location as the resource group.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy függvényt használt egy paraméter alapértelmezett értékének definiálásához. Ebben az oktatóanyag-sorozatban továbbra is használhatja a functions funkciót. Az adatsorozat végére a sablon minden szakaszához hozzá kell adnia a függvényeket.
+In this tutorial, you used a function when defining the default value for a parameter. In this tutorial series, you'll continue using functions. By the end of the series, you'll add functions to every section of the template.
 
 > [!div class="nextstepaction"]
-> [Változók hozzáadása](template-tutorial-add-variables.md)
+> [Add variables](template-tutorial-add-variables.md)

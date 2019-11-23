@@ -1,120 +1,119 @@
 ---
-title: Felügyeleti eszköz üzembe helyezése – Azure
-description: Felhasználói felületi eszköz telepítése a Windows rendszerű virtuális asztali erőforrások kezeléséhez.
+title: Deploy management tool - Azure
+description: How to install a user interface tool to manage Windows Virtual Desktop resources.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904912"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384282"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: felügyeleti eszköz üzembe helyezése
+# <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Deploy a management tool
 
-A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virtuális asztali erőforrásainak kezeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz.
+The management tool provides a user interface (UI) for managing Microsoft Virtual Desktop resources. In this tutorial, you'll learn how to deploy and connect to the management tool.
 
 >[!NOTE]
->Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
+>These instructions are for a Windows Virtual Desktop-specific configuration that can be used with your organization's existing processes.
 
-## <a name="important-considerations"></a>Fontos szempontok
+## <a name="important-considerations"></a>Important considerations
 
-Mivel az alkalmazásnak hozzá kell járulnia a Windows virtuális asztal használatához, az eszköz nem támogatja a vállalatközi (B2B) forgatókönyveket. Minden Azure Active Directory (HRE) bérlő előfizetéséhez a felügyeleti eszköz saját külön üzembe helyezésére lesz szükség.
+Since the app requires consent to interact with Windows Virtual Desktop, this tool doesn't support Business-to-Business (B2B) scenarios. Each Azure Active Directory (AAD) tenant's subscription will need its own separate deployment of the management tool.
 
-Ez a felügyeleti eszköz egy minta. A Microsoft fontos biztonsági és minőségi frissítéseket biztosít. A [forráskód a githubon érhető el](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Az ügyfelek és a partnerek számára ajánlott az eszköz testreszabása az üzleti igényeknek megfelelően.
+This management tool is a sample. Microsoft will provide important security and quality updates. The [source code is available in GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Customers and partners are encouraged to customize the tool to fit their business needs.
 
-A következő böngészők kompatibilisek a felügyeleti eszközzel:
-- Google Chrome 68 vagy újabb verzió
-- Microsoft Edge 40,15063 vagy újabb verzió
-- Mozilla Firefox 52,0 vagy újabb verzió
-- Safari 10 vagy újabb (csak macOS)
+To following browsers are compatible with the management tool:
+- Google Chrome 68 or later
+- Microsoft Edge 40.15063 or later
+- Mozilla Firefox 52.0 or later
+- Safari 10 or later (macOS only)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Mire van szükség a Azure Resource Manager sablon futtatásához
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>What you need to run the Azure Resource Manager template
 
-A Azure Resource Manager sablon telepítése előtt szüksége lesz egy Azure Active Directory felhasználóra a felügyeleti felhasználói felület telepítéséhez. A felhasználónak a következőket kell tennie:
+Before deploying the Azure Resource Manager template, you'll need an Azure Active Directory user to deploy the management UI. This user must:
 
-- Az Azure Multi-Factor Authentication (MFA) le van tiltva
-- Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
-- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. A következő lépésekkel ellenőrizheti, hogy a felhasználó rendelkezik-e a [szükséges engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Have Azure Multi-Factor Authentication (MFA) disabled
+- Have permission to create resources in your Azure subscription
+- Have permission to create an Azure AD application. Follow these steps to check if your user has the [required permissions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-A Azure Resource Manager sablon üzembe helyezése után el kell indítania a felügyeleti felhasználói felületet az ellenőrzéshez. A felhasználónak a következőket kell tennie:
-- Szerepkör-hozzárendeléssel megtekintheti vagy szerkesztheti a Windows rendszerű virtuális asztali bérlőt
+After deploying the Azure Resource Manager template, you'll want to launch the management UI to validate. This user must:
+- Have a role assignment to view or edit your Windows Virtual Desktop tenant
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>A felügyeleti felhasználói felület kiépítéséhez futtassa a Azure Resource Manager sablont
+## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Run the Azure Resource Manager template to provision the management UI
 
-Mielőtt elkezdené, győződjön meg arról, hogy a kiszolgáló és az ügyfélalkalmazások beleegyeznek a Azure Active Directory (HRE) által képviselt [Windows virtuális asztali engedélyezési oldalára](https://rdweb.wvd.microsoft.com) .
+Before you start, ensure the server and client apps have consent by visiting the [Windows Virtual Desktop Consent Page](https://rdweb.wvd.microsoft.com) for the Azure Active Directory (AAD) represented.
 
-Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi utasításokat:
+Follow these instructions to deploy the Azure Resource Management template:
 
-1. Nyissa meg a [GitHub Azure RDS-templates oldalt](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. A sablon üzembe helyezése az Azure-ban.
-    - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget. Lásd: [útmutató a sablon paramétereinek](#guidance-for-template-parameters)megtekintéséhez.
-    - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
-        1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
-        2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-        3. Közvetlenül a <https://portal.azure.com/> után és a hashtag (#) előtt adjon meg egy kukac (@) jelet, majd a bérlői tartománynevet. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
-        4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
-        5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
+1. Go to the [GitHub Azure RDS-Templates page](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+2. Deploy the template to Azure.
+    - If you're deploying in an Enterprise subscription, scroll down and select **Deploy to Azure**. See [Guidance for template parameters](#guidance-for-template-parameters).
+    - If you're deploying in a Cloud Solution Provider subscription, follow these instructions to deploy to Azure:
+        1. Scroll down and right-click **Deploy to Azure**, then select **Copy Link Location**.
+        2. Open a text editor like Notepad and paste the link there.
+        3. Right after <https://portal.azure.com/> and before the hashtag (#), enter an at sign (@) followed by the tenant domain name. Here's an example of the format: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        4. Sign in to the Azure portal as a user with Admin/Contributor permissions to the Cloud Solution Provider subscription.
+        5. Paste the link you copied to the text editor into the address bar.
 
-### <a name="guidance-for-template-parameters"></a>Útmutató a sablon paramétereinek megadásához
-A következő módon adhatja meg az eszköz konfigurálásához szükséges paramétereket:
+### <a name="guidance-for-template-parameters"></a>Guidance for template parameters
+Here's how to enter parameters for configuring the tool:
 
-- Ez a távoli asztali közvetítő URL-címe: https:\//rdbroker.wvd.microsoft.com/
-- Ez az erőforrás URL-címe: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
-- A HRE hitelesítő adataival tiltsa le az MFA-t az Azure-ba való bejelentkezéshez. Nézze [meg, mi szükséges a Azure Resource Manager sablon futtatásához](#what-you-need-to-run-the-azure-resource-manager-template).
-- Használjon egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directory a felügyeleti eszközhöz; például: Apr3UX.
+- For the **isServicePrincipal** parameter, select **false**.
+- For the credentials, enter your Azure Active Directory credentials with multi-factor authentication disabled. These credentials will be the ones you use to sign in to Azure and create the Azure AD application and Azure web app resources. To learn more, see [What you need to run the Azure Resource Manager template](#what-you-need-to-run-the-azure-resource-manager-template).
+- For the **applicationName**, use a unique name for your app that will be registered in your Azure Active Directory. This name will also be used for the web app URL. For example, you can use a name like "Apr3UX."
 
-## <a name="provide-consent-for-the-management-tool"></a>Adja meg a felügyeleti eszköz beleegyezikét
+## <a name="provide-consent-for-the-management-tool"></a>Provide consent for the management tool
 
-A GitHub-Azure Resource Manager sablon befejezése után egy olyan erőforráscsoportot talál, amely a Azure Portal egy app Service-csomaggal együtt két app Services-csomagot tartalmaz.
+After the GitHub Azure Resource Manager template completes, you'll find a resource group containing two app services along with one app service plan in the Azure portal.
 
-A bejelentkezés és a felügyeleti eszköz használata előtt meg kell adnia a felügyeleti eszközhöz társított új Azure Active Directory alkalmazáshoz való hozzájárulásukat. A beleegyezik, hogy lehetővé teszi a felügyeleti eszköz számára, hogy a Windows virtuális asztali felügyeleti hívásokat az eszközbe bejelentkezett felhasználó nevében végezze el.
+Before you sign in and use the management tool, you'll need to provide consent for the new Azure Active Directory application that is associated with the management tool. By providing consent, you are allowing the management tool to make Windows Virtual Desktop management calls on behalf of the user who's signed into the tool.
 
-![Képernyőkép, amely a felhasználói felületi felügyeleti eszközhöz való hozzáféréskor megadott engedélyeket mutatja.](media/management-ui-delegated-permissions.png)
+![A screenshot showing the permissions being provided when you consent to the UI management tool.](media/management-ui-delegated-permissions.png)
 
-Az eszközre való bejelentkezéshez használható felhasználó meghatározásához lépjen a [Azure Active Directory felhasználói beállítások lapra](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel, hogy a felhasználók milyen értékkel férhetnek hozzá a **vállalati adatokhoz a nevükben**.
+To determine which user you can use to sign in to the tool, go to your [Azure Active Directory user settings page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) and take note of the value for **Users can consent to apps accessing company data on their behalf**.
 
-![Képernyőkép, amely azt mutatja, hogy a felhasználók megadhatnak-e jóváhagyást az alkalmazásoknak csak a felhasználó számára.](media/management-ui-user-consent-allowed.png)
+![A screenshot showing if users can grant consent to applications for just their user.](media/management-ui-user-consent-allowed.png)
 
-- Ha az érték értéke **Igen**, akkor a Azure Active Directory bármely felhasználói fiókjával bejelentkezhet, és csak az adott felhasználó beleegyezett. Ha azonban később egy másik felhasználóval jelentkezik be a felügyeleti eszközre, akkor újra kell végrehajtania ugyanezt a hozzájárulásukat.
-- Ha a **nem**értékre van állítva, akkor a Azure Active Directory globális rendszergazdájaként kell bejelentkeznie, és rendszergazdai jogosultsággal kell rendelkeznie a címtár összes felhasználója számára. Más felhasználók nem fognak megjelenni a jóváhagyásban.
+- If the value is set to **Yes**, you can sign in with any user account in the Azure Active Directory and provide consent for that user only. However, if you sign in to the management tool with a different user later, you must perform the same consent again.
+- If the value is set to **No**, you must sign in as a Global Administrator in the Azure Active Directory and provide admin consent for all users in the directory. No other users will face a consent prompt.
 
 
-Ha eldöntötte, hogy melyik felhasználót fogja használni a beleegyezikés megadásához, kövesse az alábbi utasításokat az eszköz beleegyezikének biztosításához:
+Once you decide which user you will use to provide consent, follow these instructions to provide consent to the tool:
 
-1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
-3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében**való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
+1. Go to your Azure resources, select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Sign in using the appropriate Azure Active Directory user account.
+3. If you authenticated with a Global Administrator, you can now select the checkbox to **Consent on behalf of your organization**. Select **Accept** to provide consent.
    
-   ![A felhasználó vagy a rendszergazda által megjelenő teljes körű beleegyezikés oldalra mutató képernyőkép.](media/management-ui-consent-page.png)
+   ![A screenshot showing the full consent page that the user or admin will see.](media/management-ui-consent-page.png)
 
-Ekkor a felügyeleti eszközre kerül.
+This will now take you to the management tool.
 
-## <a name="use-the-management-tool"></a>A felügyeleti eszköz használata
+## <a name="use-the-management-tool"></a>Use the management tool
 
-Miután beleegyezett a szervezetbe vagy egy adott felhasználóhoz, bármikor hozzáférhet a felügyeleti eszközhöz.
+After providing consent for the organization or for a specified user, you can access the management tool at any time.
 
-Az eszköz elindításához kövesse az alábbi utasításokat:
+Follow these instructions to launch the tool:
 
-1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
-3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
-4. Amikor kiválasztja az alapértelmezett bérlői csoportot, az ablak jobb oldalán megjelenik egy menü. Ezen a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
+1. Select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Sign in using your Windows Virtual Desktop credentials.
+3. When prompted to choose a Tenant Group, select **Default Tenant Group** from the drop-down list.
+4. When you select Default Tenant Group, a menu should appear on the right side of your window. On this menu, find the name of your tenant group and select it.
 
 > [!NOTE]
-> Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
+> If you have a custom Tenant Group, enter the name manually instead of choosing from the drop-down list.
 
-## <a name="report-issues"></a>Problémák jelentése
+## <a name="report-issues"></a>Report issues
 
-Ha problémák merülnek fel a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatban, kövesse az [ARM-sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez távoli asztali szolgáltatások.
+If you encounter any issues with the management tool or other Windows Virtual Desktop tools, follow the directions in [ARM Templates for Remote Desktop Services](https://github.com/Azure/RDS-Templates/blob/master/README.md) to report them on GitHub.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja a Azure Service Healtht a szolgáltatási problémák és az állapot-útmutatók figyelésére.
+Now that you've learned how to deploy and connect to the management tool, you can learn how to use Azure Service Health to monitor service issues and health advisories.
 
 > [!div class="nextstepaction"]
-> [A szolgáltatási riasztások oktatóanyagának beállítása](./set-up-service-alerts.md)
+> [Set up service alerts tutorial](./set-up-service-alerts.md)

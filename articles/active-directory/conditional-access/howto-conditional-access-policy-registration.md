@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés – kombinált biztonsági információk – Azure Active Directory
-description: Egyéni feltételes hozzáférési szabályzat létrehozása a biztonsági adatok regisztrálásához szükséges megbízható hely megköveteléséhez
+title: Conditional Access - Combined security information - Azure Active Directory
+description: Create a custom Conditional Access policy to require a trusted location for security info registration
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,44 +11,44 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771e4e0ecbda4baf1f38aacd1f39397875bbd0dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150758"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322734"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Feltételes hozzáférés: megbízható hely megkövetelése az MFA-regisztrációhoz
+# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Conditional Access: Require trusted location for MFA registration
 
-Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználó általi regisztrálásának engedélyezése a felhasználói műveletekhez a feltételes hozzáférési házirendben. Ez az előzetes verziójú funkció olyan szervezetek számára érhető el, akik engedélyezték a [közös regisztráció előzetes](../authentication/concept-registration-mfa-sspr-combined.md)verzióját. Ez a funkció olyan szervezeteknél engedélyezhető, amelyekben a felhasználóknak regisztrálniuk kell az Azure Multi-Factor Authentication és SSPR egy központi helyről, például egy megbízható hálózati helyről az HR bevezetése során. A megbízható helyek feltételes hozzáférésben való létrehozásával kapcsolatos további információkért tekintse meg a következő cikket: [Mi a hely feltétele a feltételes hozzáférés Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Szabályzat létrehozása megbízható helyről való regisztráció megköveteléséhez
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
 
-A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a közös regisztrációs élmény használatával próbálnak regisztrálni, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakoznak.
+The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
 
-1. A **Azure Portal**keresse meg **Azure Active Directory** > **feltételes hozzáférés**lehetőséget.
-1. Válassza az **új szabályzat**lehetőséget.
-1. A név mezőben adja meg a szabályzat nevét. Például **a megbízható hálózatokon található kombinált biztonsági adatok regisztrálása**.
-1. A **hozzárendelések**területen kattintson a **felhasználók és csoportok**elemre, majd válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
+1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**.
+1. Select **New policy**.
+1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**.
+1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to.
 
    > [!WARNING]
-   > A felhasználók számára engedélyezni kell a [kombinált regisztráció előzetes](../authentication/howto-registration-mfa-sspr-combined.md)verzióját.
+   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. A **Cloud apps vagy műveletek**területen válassza a **felhasználói műveletek**lehetőséget, és jelölje be a **biztonsági adatok regisztrálása (előzetes verzió)** jelölőnégyzetet.
-1. A **feltételek** > **helyen**.
-   1. Konfigurálja az **Igen értéket**.
-   1. Adjon meg **bármilyen helyet**.
-   1. **Az összes megbízható helyszín**kizárása.
-   1. Kattintson a **kész** gombra a helyszínek panelen.
-   1. A feltételek panelen kattintson a **kész** gombra.
-1. A **hozzáférés-vezérlés** > a **támogatás**elemre.
-   1. Kattintson a **hozzáférés letiltása**elemre.
+1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)** .
+1. Under **Conditions** > **Locations**.
+   1. Configure **Yes**.
+   1. Include **Any location**.
+   1. Exclude **All trusted locations**.
+   1. Click **Done** on the Locations blade.
+   1. Click **Done** on the Conditions blade.
+1. Under **Access controls** > **Grant**.
+   1. Click **Block access**.
    1. Ezután kattintson a **Kiválasztás** elemre.
-1. **Engedélyezze a házirend engedélyezése beállítást** **a**következőre:.
-1. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+1. Set **Enable policy** to **On**.
+1. Ezután kattintson a **Save** (Mentés) gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+[Conditional Access common policies](concept-conditional-access-policy-common.md)
 
-[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
+[Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md)

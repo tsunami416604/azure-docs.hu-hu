@@ -1,222 +1,231 @@
 ---
-title: Windows rendszerű virtuális asztali partner-integrációk – Azure
-description: Ismerje meg a Windows rendszerű virtuális asztalok partnereit és a velük való integrációval kapcsolatos dokumentációt.
+title: Windows Virtual Desktop partner integrations - Azure
+description: Learn about Windows Virtual Desktop's partners and access documentation about how to integrate with them.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084004"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384303"
 ---
-# <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
+# <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop partner integrations
 
-Ez a cikk a Windows rendszerű virtuális asztalok partnereit sorolja fel.
+This article lists partners of Windows Virtual Desktop.
 
 ## <a name="citrix"></a>Citrix
 
-![Citrix-embléma](./media/partners/citrix.png)
+![Citrix logo](./media/partners/citrix.png)
 
-A Citrix egy olyan jóváhagyott szolgáltató, amely a virtuális alkalmazások és asztali munkaterhelések központi hibrid kezelését kínálja az Azure-ban, egymás mellett helyszíni környezetekkel. A Citrix munkaterület a Virtual apps és a desktops szolgáltatás lehetővé teszi, hogy a felhasználók bármely eszközről hozzáférjenek az alkalmazásokhoz és az asztalokhoz, így a speciális Citrix HDX protokoll használatával a magas felbontású élmény bárhonnan elérhetővé válik.
+Citrix is an approved provider that offers enterprises centralized hybrid management of virtual apps and desktops workloads in Azure, side by side with on-premises deployments. Citrix Workspace with the Virtual Apps and Desktops service allows users to access apps and desktops from any device, leveraging the advanced Citrix HDX protocol to deliver a high definition experience from anywhere.
 
-A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyvállalati eszközökkel a felhasználók sűrűségének és teljesítményének javítására, a számítási feladatok igény szerinti kiépítésére, valamint a képek és az alkalmazások kezelésének egyszerűsítésére. Optimalizálhatja a költségeket az intelligens méretezési eszközökkel, miközben egy hihetetlen felhasználói élményt nyújt, amely a legszigorúbb alkalmazások között kipróbálta az iparágban. Emellett a Citrix által felügyelt asztalok egy olyan Windows rendszerű virtuális asztali szolgáltatás, amely egy egyszerű, felhőalapú felügyeleti megoldást biztosít a virtuális alkalmazások és az asztali számítógépek bármely eszközre történő kézbesítéséhez.
+Citrix extends the value of Windows Virtual Desktop with robust enterprise tools to improve user density and performance, provision workloads on demand, and simplify image and application management. IT can optimize costs with intelligent scaling tools, while delivering an incredible user experience that's field-tested against the toughest applications across industries. Additionally, Citrix Managed Desktops is a Windows Virtual Desktop-enabled desktops-as-a-service program that provides a simple, cloud-based management solution for delivering virtual apps and desktops to any device.
 
-- [Lépjen a partner webhelyére](https://more.citrix.com/wvd).
+- [Go to the partner website](https://more.citrix.com/wvd).
 
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse logo](./media/partners/cloudhouse.png)
+
+Cloudhouse is a Windows Virtual Desktop value-added services provider that offers customers a turnkey application migration service that can move all applications, including ones that are incompatible with modern Windows operating systems, to the Windows Virtual Desktop environment, allowing customers to truly leverage multi-session Windows 10. 
+
+By leveraging proven Cloudhouse containerization technology, the Cloudhouse service takes all applications, including ones designed for Windows XP, Windows 7, or Windows 8, and deploys them to a modern Windows Virtual Desktop without needing to change code or impact user experience. Cloudhouse further adds to the value of Windows Virtual Desktop by isolating applications from the underlying operating system, allowing Windows Servicing updates to be rolled out without affecting the containerized application. 
+
+- [Go to the partner website](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="vmware"></a>VMware
 
-![VMware-embléma](./media/partners/vmware.png)
+![VMware Logo](./media/partners/vmware.png)
 
-A VMware Horizon Cloud on Microsoft Azure lehetővé teszi a szervezetek számára, hogy az egyszerű, intuitív horizontú felhő-ellenőrzési síkon összekapcsolják a saját Microsoft Azure a saját példányát, így biztonságos, átfogó, felhőben üzemeltetett megoldást biztosítanak a virtualizált eszközök megvalósításához Windows-alkalmazások és-asztalok. A Windows rendszerű virtuális asztali verzióban a VMware a Microsofttal együttműködve kiterjesztheti a Windows rendszerű virtuális asztal funkcióit az ügyfeleknek a Horizon Cloud on Microsoft Azure használatával. Ez a funkció a tech Preview-ban lesz elérhető a 2019 végéig.
+VMware Horizon Cloud on Microsoft Azure gives organizations the ability to connect their own instance of Microsoft Azure to the simple, intuitive Horizon Cloud control plane, creating a secure, comprehensive, cloud-hosted solution for delivering virtualized Windows applications and desktops. With the release of Windows Virtual Desktop, VMware has partnered with Microsoft to extend the functionality of Windows Virtual Desktop to customers using Horizon Cloud on Microsoft Azure. This functionality will be available in Tech Preview by the end of 2019.
  
-Jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előnyeit a VMware Horizon Cloud-ra terjeszti ki Microsoft Azure ügyfeleken, beleértve a Windows 10 Enterprise for multi-session, a Windows 7 ingyenes kiterjesztett biztonsági frissítéseit akár három évig is, és FSLogix. Emellett az ügyfelek a Horizon Cloud nagyvállalati szintű funkcióit is megkapják, például a széles körű végpontok támogatását; globális, felhőben optimalizált közvetítés; rugalmas asztali beállítások és konfigurációk; felhasználói környezet kezelése; és a hibrid környezetek támogatása.
+As an approved provider, the benefits of Windows Virtual Desktop will be extended to VMware Horizon Cloud on Microsoft Azure customers, including Windows 10 Enterprise for multi-session, Windows 7 with free Extended Security Updates for up to three years, and FSLogix. Additionally, customers will receive the enterprise-class features of Horizon Cloud, such as broad endpoint support; global, cloud-optimized brokering; flexible desktop options and configurations; user-environment management; and support for hybrid environments.
 
-- [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
-- [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Register for the Tech Preview of Horizon Cloud on Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Go to the partner website](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
-![CloudJumper embléma](./media/partners/cloudjumper.png)
+![CloudJumper Logo](./media/partners/cloudjumper.png)
 
-A CloudJumper egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely a Windows rendszerű virtuális asztali környezetek teljes körű kiépítéséhez és felügyeletéhez szoftverrel biztosítja a megoldás-szolgáltatókat és a vállalati informatikai szolgáltatásokat. A CloudJumper szoftverrel felügyelheti a Windows rendszerű virtuális asztali környezetek minden rétegét. A munkaterhelések és az alkalmazások szállítása automatizált, így biztosítva, hogy a felhasználók bármely eszközön gyorsan hozzáférjenek az asztalhoz.
+CloudJumper is a Windows Virtual Desktop value-added services provider that equips solution providers and enterprise IT with software to  provision and manage Windows Virtual Desktop environments holistically. With CloudJumper software, IT can manage every layer of a Windows Virtual Desktop deployment. Delivery of workloads and applications is automated, ensuring that users can quickly access their desktop anywhere on any device.
 
-A CloudJumper szoftvere, a Cloud Workspace Management Suite kiterjeszti a Windows virtuális asztal értékét azáltal, hogy leegyszerűsíti az üzembe helyezést és a folyamatos felügyeleti feladatokat az Azure-ban. Egyetlen ablaktáblából kiépítheti, kezelheti és optimalizálhatja a felhasználói munkaterületek infrastruktúráját. A CloudJumper egyszerű parancsfájl-indító motorja integrálható az IT-szolgáltatás-platformokkal a Windows rendszerű virtuális asztal üzembe helyezése során felmerülő feladatok automatizálásához. Emellett a CloudJumper API-k további bővíthetőséget és integrációt tesznek lehetővé más vállalati rendszerekkel, például a ServiceNow és a BMC-mel.
+CloudJumper’s software, Cloud Workspace Management Suite extends the value of Windows Virtual Desktop by simplifying deployment and ongoing administration tasks in Azure. From a single pane of glass, IT can provision, manage, and optimize infrastructure for user workspaces. CloudJumper’s Simple Script Triggering Engine integrates with IT service platforms to automate tasks involved in provisioning Windows Virtual Desktop. Additionally, CloudJumper APIs allow further extensibility and integration with other enterprise systems like ServiceNow and BMC Ready.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
-- [Lépjen a partner webhelyére](https://cloudjumper.com/wvd/).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Go to the partner website](https://cloudjumper.com/wvd/).
 
 ## <a name="controlup"></a>ControlUp
 
-![ControlUp embléma](./media/partners/controlup.png)
+![ControlUp Logo](./media/partners/controlup.png)
 
-A ControlUp egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás szolgáltatója, amely lehetővé teszi az informatikai csapatok számára a helyszíni, hibrid Felhőbeli és felhőalapú infrastruktúrabeli problémák figyelését, hibaelhárítását, elemzését és közvetlen szervizelését egyetlen konzolról. A ControlUp elemzési és felügyeleti platformja azt is lehetővé teszi, hogy proaktív módon automatizálja a javításokat egy gyorsan növekvő használati esethez.
+ControlUp is a Windows Virtual Desktop value-added services provider that enables IT teams to monitor, troubleshoot, analyze, and directly remediate problems in their on-premises, hybrid cloud, and cloud infrastructure in real time from a single console. ControlUp’s analytics and management platform also allows IT to proactively automate fixes for a rapidly growing set of use cases.
 
-Windows rendszerű virtuális asztallal való használat esetén a ControlUp további képességeket biztosít a Windows rendszerű virtuális asztali környezetek és a végfelhasználói élmény optimalizálása érdekében. A ControlUp-konzolról a végfelhasználói környezet láthatóvá válik a teljesítménnyel kapcsolatos problémák hatékony figyelése és hibaelhárítása érdekében. Az intuitív irányítópultok bepillantást és elemzéseket biztosítanak a virtuális asztali környezetekhez, valamint a közösségi referenciaértékekkel gazdagított automatizált jelentéskészítési lehetőségeket. A ControlUp több adatforrást és típust is kezelhet, amelyek nagy teljesítményű adatkészletekben vannak rendszerezve a számítási, tárolási és a Windows rendszerű virtuális asztali infrastruktúrában összesítve, így egyetlen üvegtábla részletes láthatóságát is lehetővé teszi.
+When used with Windows Virtual Desktop, ControlUp provides additional capabilities to optimize Windows Virtual Desktop environments and the end-user experience. From the ControlUp console, IT gets end-user environment visibility to effectively monitor and troubleshoot performance issues. An intuitive dashboard provides insights and analytics for virtual desktop deployments, as well as options for automated reporting enriched with community benchmarks. ControlUp can manage multiple data sources and types, organizing them in high-performance data sets aggregated across compute, storage, and Windows Virtual Desktop infrastructure, allowing granular visibility from a single pane of glass.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
-- [Lépjen a partner webhelyére](https://www.controlup.com/solutions/ms_wvd/).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Go to the partner website](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
 
-![deviceTRUST embléma](./media/partners/devicetrust.png)
+![deviceTRUST Logo](./media/partners/devicetrust.png)
 
-a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely contextualizes a vállalati vállalatot. Lehetővé teszi a felhasználók számára, hogy bárhonnan, bármilyen hálózaton keresztül hozzáférjenek a Windows rendszerű virtuális asztalhoz, miközben az informatikai részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást biztosítják. 
+deviceTRUST is a Windows Virtual Desktop value-added services provider that contextualizes the corporate enterprise. It allows users the freedom to access their Windows Virtual Desktop from any location, on any device, over any network, while giving IT departments the information and control they need to meet their governance requirements. 
 
-a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek. 
+deviceTRUST extends the value of Windows Virtual Desktop with their contextual security technology. deviceTRUST enables conditional access for a secure Windows Virtual Desktop access, conditional application access within Windows Virtual Desktop and to apply conditional Windows Virtual Desktop policies without any additional infrastructure. Using deviceTRUST enables a mobile, flexible workspace that meets all security, compliance, and regulatory requirements. 
 
-- [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
+- [Go to the partner website](https://devicetrust.com/wvd).
 
 ## <a name="igel"></a>IGEL
 
-![IGEL embléma](./media/partners/igel.png)
+![IGEL logo](./media/partners/igel.png)
 
-A IGEL a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltatások jóváhagyott és ellenőrzött partnere. A IGEL a IGEL operációs rendszert, a Felhőbeli munkaterületekhez készült Next-Gen Edge operációs rendszert, amely a virtuális alkalmazások, az asztali számítógépek és a Felhőbeli munkaterületek elérését teszi lehetővé egy könnyű, egyszerű és biztonságos Linux-alapú végponttal. A platform-független szoftveres megoldás, a IGEL operációs rendszer és a kiszolgáló-alapú felügyeleti és vezérlési szoftver, a IGEL Universal Management Suite (UMS) egy Endpoint Management-és vezérlési megoldás, amely a vállalatoknak az Azure-alapú szolgáltatások teljes körű kihasználását felhasználja Felhőbeli példányok és Windows rendszerű virtuális asztali asztali számítógépek, beleértve a gazdaságos többmunkamenetes Windows virtuális asztalt, miközben csökkenti a végponti hardverek és a végponti eszközök felügyeletét és üzemeltetési költségeit.
+IGEL is an approved and verified partner of Microsoft Azure and Windows Virtual Desktop services. IGEL offers IGEL OS, the next-gen edge OS for cloud workspaces designed to access virtual apps, desktops, and cloud workspaces from one or more user devices with a lightweight, simple, and secure Linux-based endpoint. A platform-independent software solution, IGEL OS and its server-based management and control software, IGEL Universal Management Suite (UMS), comprise an endpoint management and control solution that frees enterprises to take full advantage of Azure-based cloud instances and Windows Virtual Desktop desktops, including economical multi-session Windows Virtual Desktop, while reducing endpoint hardware and endpoint device management and operations costs.
  
-A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, asztali gépeket és Felhőbeli munkaterület-protokollt támogatja a Citrixtől, a Microsofttól és a VMware-től. Integrált technológiákat tartalmaz a 85 perifériás, Interface és Protocol partnerektől, hogy a szervezetek gyorsan fogadjanak el Windowsos virtuális asztali szolgáltatásokat a saját egyedi felhasználói környezetében. A IGEL operációs rendszer írásvédett, moduláris végpont operációs rendszer, amely segít a védelemben. Emellett egy teljes "megbízhatósági láncot" is tartalmaz, amely ellenőrzi a végponton futó legfontosabb főbb folyamatok integritását, a végponti hardvertől (néhány kiválasztott modelltől), vagy az UEFI folyamattól egészen az Azure Cloud és a Windows Virtual Desktop szolgáltatásokhoz. A IGEL operációs rendszerrel a vállalatok az Azure-felhőből előfizethetnek a Windows rendszerű virtuális asztalra, így teljes körű megbízhatósággal rendelkeznek a felhasználói végpont eszközeinek integritásában, biztonságában és kezelhetőségében.
+IGEL OS supports all popular virtual apps, desktops, and cloud workspace client protocols from Citrix, Microsoft, and VMware. It includes integrated technologies from 85 peripheral, interface, and protocol partners to help organizations quickly adopt Windows Virtual Desktop services into their own unique user environments. IGEL OS is a read-only, modular endpoint OS, which helps protect it from tampering. It now also includes a complete “chain of trust” that verifies the integrity of all key major processes running on the endpoint, from the endpoint hardware (some selected models) or UEFI process all the way to the Azure cloud and Windows Virtual Desktop services. With IGEL OS, enterprises can subscribe to Windows Virtual Desktop from the Azure cloud with full confidence in the integrity, security, and manageability of their users’ endpoint devices.
 
-- [Lépjen a partner webhelyére.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Go to the partner website.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
-![Ivanti embléma](./media/partners/ivanti.png)
+![Ivanti Logo](./media/partners/ivanti.png)
 
-A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti segítségével a felhasználók olyan összetett projekteket tehetnek elérhetővé, mint például a Windows 10-es verzióra való áttérés, az Office 365 bevezetése vagy a szolgáltatások felhőbe való áthelyezése. 
+Ivanti User Workspace Manager is a Windows Virtual Desktop value-added service that eases desktop deployment and management by separating user data from the desktop for seamless portability. With Ivanti, users can deliver complex projects like migrating to Windows 10, adopting Office 365, or moving services to the cloud faster. 
 
-A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok felszámolását. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
+When used with Windows Virtual Desktop, Ivanti User Workspace Manager provides simple contextual management of the user desktop experience, eliminating long sign-in times and eradicating group policy nightmares. Ivanti User Workspace Manager out-of-the-box templates simplify installation for users through agents and the existing console. Ivanti User Workspace Manager delivers responsive, secure desktops that users love, saving money on servers, managing users more effectively, and reducing endpoint security risk. 
 
-- [Lépjen a partner webhelyére](https://www.ivanti.com/products/user-workspace-manager).
+- [Go to the partner website](https://www.ivanti.com/products/user-workspace-manager).
 
-## <a name="lakeside-software"></a>Tóparti szoftverek
+## <a name="lakeside-software"></a>Lakeside Software
 
-![Tóparti szoftver emblémája](./media/partners/lakeside.png)
+![Lakeside Software Logo](./media/partners/lakeside.png)
 
-A tóparti szoftverek egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely szoftverekkel látja el az informatikai csapatokat a teljesítmény monitorozásához és a felhasználói számítási feladatok Azure-beli áttelepítési készültségének felméréséhez. Ezzel a szoftverrel tisztábban megtekintheti az alkalmazások felhasználását és az erőforrások felhasználását az áttelepítési folyamat leegyszerűsítése érdekében. A Lakeside szoftver minden munkaterületen gyűjt adatokat, így átfogó jelentést készít a felhasználói környezetekről, lehetővé téve a gyors hibaelhárítást és az eszközök optimalizálását.
+Lakeside Software is a Windows Virtual Desktop value-added services provider that equips IT teams with software for monitoring performance and assessing Azure migration readiness of user workloads. With this software, IT gains clearer visibility into application usage and resource consumption to streamline the migration process. Lakeside Software collects data at every workspace to create a comprehensive report on user environments, enabling quick troubleshooting and optimization of assets.
 
-A Lakeside szoftver digitális felhasználói felületének figyelési megoldása, a SysTrack, a teljesítmény nyomon követésével és a Migrálás ideális számítási feladatainak azonosításával kiváló felhasználói élményt nyújthat. A SysTrack a Windows rendszerű virtuális asztalok értékét a jobb méretezési felmérések és a felhasználói környezetek folyamatos figyelése révén is kiterjesztheti.
+Lakeside Software’s digital experience monitoring solution, SysTrack, can help provide a great user experience by tracking performance and identifying ideal workloads for migration. SysTrack works to extend the value of Windows Virtual Desktop through right-sizing assessments and continuous monitoring of user environments.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
-- [Lépjen a partner webhelyére](https://www.lakesidesoftware.com/assessments/wvd).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Go to the partner website](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
-![Liquidware embléma](./media/partners/liquidware.png)
+![Liquidware Logo](./media/partners/liquidware.png)
 
-A Liquidware egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely a Windows rendszerű virtuális asztali telepítést kezelő és optimalizáló szoftvereket biztosít. A Liquidware Essentials Suite lehetővé teszi az alkalmazások továbbítását a rétegek, a felhasználói környezetek kezelése és a kulcsfontosságú felhasználói élmény terén. Az áttelepítési készültség értékelésére és a használati metrikák elemzésére szolgáló megoldásokkal a Liquidware zökkenőmentes virtuális asztali élményt biztosít a végfelhasználók számára.
+Liquidware is a Windows Virtual Desktop value-added services provider that delivers software that manages and optimizes Windows Virtual Desktop deployment. The Liquidware Essentials suite provides application delivery through layering, user environment management, and key user experience visibility and diagnostics. With solutions for assessing migration readiness and analyzing usage metrics, Liquidware provides a seamless virtual desktop experience for end users.
 
-A Liquidware Essentials a felhasználói profilok hatékony betakarításával és a felhasználói környezetek Azure-ba való áttelepítésének egyszerűsítésével kiterjeszti a Windows virtuális asztal értékét. Emellett a Liquidware Essentials leegyszerűsíti a képkezelést a felhasználói profilok és a rétegbeli alkalmazások egységesítésével a konfigurálható Rights Management-beállítások alapján.
+Liquidware Essentials extends the value of Windows Virtual Desktop by efficiently harvesting user profiles and gathering key user data to streamline migration of user environments to Azure. Additionally, Liquidware Essentials simplifies image management by unifying user profiles and layering apps based on configurable rights management settings.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
-- [Lépjen a partner webhelyére](https://www.liquidware.com/solutions/solutions-platform/microsoft).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Go to the partner website](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
-## <a name="login-vsi"></a>Bejelentkezési VSI
+## <a name="login-vsi"></a>Login VSI
 
-![Bejelentkezési VSI emblémája](./media/partners/loginvsi.png)
+![Login VSI Logo](./media/partners/loginvsi.png)
 
-A login VSI egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója és a Microsoft partner szoftvereket biztosít az alkalmazások teljesítményének teszteléséhez a Windows rendszerű virtuális asztali környezetekben. A helyszíni üzleti szolgáltatásaikat a Windows virtuális asztalra helyező ügyfelek a login VSI Enterprise Edition használatával értékelik és kezelhetik az optimális teljesítményt, méretezhetőséget és rendelkezésre állást a Windows 10 Enterprise multi-session, Windows 10 Enterprise és A Windows 7 az üzleti szempontból kritikus alkalmazásaival van engedélyezve.
+Login VSI is a Windows Virtual Desktop value-added services provider and Microsoft partner delivering software for application performance testing in Windows Virtual Desktop environments. Customers moving their on-premises business services to Windows Virtual Desktop use Login VSI Enterprise Edition to evaluate and maintain optimal performance, scalability, and availability of Windows 10  Enterprise multi-session, Windows 10 Enterprise, and Windows 7 enabled with their business critical applications.
 
-- [Lépjen a partner webhelyére](https://www.loginvsi.com).
+- [Go to the partner website](https://www.loginvsi.com).
 
 ## <a name="nerdio"></a>Nerdio
 
-![Nerdio embléma](./media/partners/nerdio.png)
+![Nerdio Logo](./media/partners/nerdio.png)
 
-A Nerdio egy Azure IT Automation platform, amely megkönnyíti a Windows rendszerű virtuális asztalok üzembe helyezését és felügyeletét. A Nerdio az ügyfelek Azure-beli üzembe helyezésére, árára, csomagolására, kezelésére és optimalizálására szolgáló ismereteket és technológiákat biztosít, a Windows rendszerű virtuális asztali környezettel és központtal.
+Nerdio is an Azure IT automation platform that makes it easy to deploy and manage Windows Virtual Desktop. Nerdio provides the knowledge and technology to deploy, price, package, manage, and optimize customers’ Azure deployments—with Windows Virtual Desktop front-and-center.
 
-A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megkönnyíti az Azure-erőforrások kiépítését és az üzembe helyezés egyszerűsítését. Az Azure-hoz készült Nerdio használatával a teljes körű Azure-környezetet, például a Windows virtuális asztalt is automatikusan üzembe helyezheti és kezelheti két órán belül.
+Nerdio extends the value of Windows Virtual Desktop by making it easy to provision Azure resources and streamline deployment. With Nerdio for Azure, IT can automatically deploy and manage a complete Azure environment, including Windows Virtual Desktop, in under two hours.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Lépjen a partner webhelyére](https://getnerdio.com/windows-virtual-desktop/).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Go to the partner website](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="numecent"></a>Numecent
 
-![Numecent embléma](./media/partners/numecent.png)
+![Numecent Logo](./media/partners/numecent.png)
 
-A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+Numecent is a Windows Virtual Desktop value-added services provider that significantly reduces the total operating costs through rapid onboarding and migration of complicated or incompatible Windows apps in Windows Virtual Desktop environments. Numecent also minimizes the amount of configuration that users need to do, reduces application updates, and simplifies complex processes. Because Numecent Cloudpaging supports more applications seamlessly than any other application delivery tool, it reduces time and IT workloads in environments with a diverse set of applications. 
 
-A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+When used with Windows Virtual Desktop, Cloudpaging further reduces costs by completing software asset lifecycle from deployment to upgrading, metering, and removing applications. Cloudpaging simplifies image management by dynamically provisioning apps as needed in real time to the Windows Virtual Desktop deployments. Cloudpaging helps applications run without administration or intervention through the periodic Windows 10 updates. Cloudpaging also reduces the licensing cost of expensive applications by enabling more efficient deployment and usage of these applications. 
 
-- [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Go to the partner website](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
 ## <a name="policypak"></a>PolicyPak
 
-![PolicyPak embléma](./media/partners/policypak.png)
+![PolicyPak Logo](./media/partners/policypak.png)
 
-A PolicyPak szoftver egy Windows rendszerű virtuális asztali partner, amely az alkalmazások, az asztal, a böngészők, a Java és a biztonsági beállítások teljes körű felügyeletét végzi. A PolicyPak biztosítja az asztali, a rendszerszintű és a biztonsági beállítások megfelelőségét. A PolicyPak a Windows rendszerű virtuális asztalok értékét a Windows beépített felügyeletét javító összetevők hozzáadásával fokozza. A meglévő Active Directory Csoportházirend és/vagy a Windows Intune használatával biztosíthatja a PolicyPak beállításait, és növelheti a rendszergazdák számára a Windows 10-es gépek felügyeletének képességét. 
+PolicyPak Software is a Windows Virtual Desktop partner that performs total settings management for applications, desktop, browsers, Java, and security settings. PolicyPak keeps your desktop, system, and security settings in compliance. PolicyPak enhances the value of Windows Virtual Desktop by adding a suite of components to enhance Windows’ built-in administration. Use your existing Active Directory Group Policy and/or Windows Intune to deliver PolicyPak’s settings and increase administrators’ ability to manage their Windows 10 machines. 
 
-A PolicyPak leggyakoribb felhasználási esetei a helyi rendszergazdai jogosultságok eltávolítása és az UAC-kérések legyőzése, a ransomware letiltása, a több böngésző kezelése, az Internet Explorer vállalati és kompatibilitási módjai, a csoportházirend-objektumok számának csökkentése, a Windows 10-es fájltársítások kezelése, a Windows 10 Start menüjének és tálcájának kezelése, valamint a Windows 10 szolgáltatásainak és választható funkcióinak kezelése.  
+The top use cases for PolicyPak are to remove local admin rights and overcome UAC prompts, block Ransomware, manage multiple browsers, manage Internet Explorer’s Enterprise and Compatibility modes, reduce the number of GPOs, manage Windows 10 File Associations, manage Windows 10 Start Menu and Taskbar, and manage Windows 10 Features and Optional features.  
 
-- [Lépjen a partner webhelyére](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+- [Go to partner website](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
 
-![PrinterLogic embléma](./media/partners/printerlogic.png)
+![PrinterLogic Logo](./media/partners/printerlogic.png)
 
-A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren. 
+PrinterLogic is a Windows Virtual Desktop value-added service provider platform that empowers IT professionals to eliminate all print servers and deliver a highly available serverless printing infrastructure. PrinterLogic extends the value of Windows Virtual Desktop and Azure by making it easy to manage centrally and deploy printer objects to any printer or endpoint OS. 
 
-A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
+Available as SaaS or as a web stack in your own private cloud, the PrinterLogic platform ensures users always have the right printers they need in their virtual sessions based on user ID, device name, or location. This functionality is complemented by a full suite of enterprise print management features such as print tracking and reporting, mobile printing, and secure badge release printing. 
 
-- [Lépjen a partner webhelyére](https://www.printerlogic.com).
+- [Go to partner website](https://www.printerlogic.com).
 
 ## <a name="printix"></a>Printix
 
-![Printix embléma](./media/partners/printix.png)
+![Printix Logo](./media/partners/printix.png)
 
-A Printix egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely automatizálja a felhasználói kapcsolatokat az Office nyomtatási erőforrásaihoz. Az ügyfél Azure-beli áttelepítésének hiányában a Printix a leghatékonyabb szolgáltatás, amely a nyomtatási munkafolyamatok minden felhasználó számára történő támogatásához és optimalizálásához kapcsolódó infrastruktúra és IT-feladatok eltávolítására szolgál, a helytől függetlenül.
+Printix is a Windows Virtual Desktop value-added service provider that automates user connection to office printing resources. As the missing piece in your customer Azure migration, Printix is the most cost-effective service available to remove infrastructure and IT tasks associated with supporting and optimizing print workflow for every user, regardless of location.
 
-A nyomtatás alapvető feladat minden irodai és kisméretű üzleti környezetben. A Windows rendszerű virtuális asztalok teljes körű kihasználása és a nagyszerű felhasználói élmény biztosítása érdekében elengedhetetlen, hogy a felhasználók a minimális erőfeszítéssel és a maximális megbízhatósággal csatlakozhassanak a nyomtatókhoz. A Printix használatával az egyszeri bejelentkezés (SSO), a csendes konfiguráció, a rendszeres frissítések és a nyomtatási környezet folyamatos figyelése révén a lehető legtöbbet hozhatja ki a Windows rendszerű virtuális asztalok közül.
+Printing is a fundamental task in just about every office and small business environment. In order to take full advantage of Windows Virtual Desktop and provide a great user experience, it's essential to ensure your users can connect to printers with minimum effort and maximum reliability. With Printix, you can get the most out of Windows Virtual Desktop through single sign-on (SSO), silent configuration, regular updates, and continuous monitoring of your print environment.
 
-- [Rövid útmutató a közös megoldásról](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Ugrás a partner webhelyére](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [Go to the partner website](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 
-![RDPSoft embléma](./media/partners/rdpsoft.png)
+![RDPSoft logo](./media/partners/rdpsoft.png)
 
-A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatékony és költséges monitorozási, felügyeleti és jelentéskészítési megoldásokat kínál. A Távoli asztal Commander-ajánlatok lehetővé teszik az informatikai szakemberek számára, hogy betekintést kapjanak a Windows rendszerű virtuális asztali környezetek állapotával, teljesítményével, felhasználói tevékenységével, licencelésével és biztonságával. 
+RDPSoft is a Windows Virtual Desktop partner that provides powerful and inexpensive monitoring, management, and reporting solutions. Their Remote Desktop Commander offerings allow IT professionals to gain insight into the health, performance, user activity, licensing, and security of their Windows Virtual Desktop deployments. 
  
-A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményéről és terheléséről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL-alkalmazásba az adatbázis-példány áttekintése. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
+RDPSoft's Remote Desktop Commander solutions enhance Windows Virtual Desktop administration. Premium Management features simplify delegation of Windows Virtual Desktop management tasks to support desk staff by providing remote assistance, user session, and process management. At the same time, the Remote Desktop Commander Suite collects rich metrics about per-user performance and load, user activity and auditing, Windows Virtual Desktop connection quality (latency and bandwidth), licensing, and security into a central Azure SQL database instance for review. With RDPSoft, rich historic reporting and comprehensive dashboards are just a click away.
 
-- [Ugrás a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Go to the partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
 ## <a name="thinprint"></a>ThinPrint
 
-![ThinPrint embléma](./media/partners/thinprint.png)
+![ThinPrint Logo](./media/partners/thinprint.png)
 
-A ThinPrint egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely egyszerű és biztonságos Felhőbeli nyomtatást biztosít a Windows rendszerű virtuális asztalról. Szolgáltatásai és szoftverei révén a meglévő nyomtatási infrastruktúra használható a dokumentumok felhőből való kinyomtatásához. A ThinPrint lehetővé teszi a helyi és hálózati nyomtatókhoz való kapcsolódást, így a felhasználók könnyedén nyomtathatnak az irodában, vagy távolról is dolgozhatnak.
+ThinPrint is a Windows Virtual Desktop value-added services provider that delivers simple and secure cloud printing from Windows Virtual Desktop. With its services and software, existing print infrastructure can be utilized to print documents from the cloud. ThinPrint enables connection to both local and network printers, making it easy for users to print while at the office or working remotely.
 
-A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrához való kapcsolódás engedélyezésével kiterjeszti a Windowsos virtuális asztal értékét. a ezeep lehetővé teszi a felhasználók számára a nyomtatást a vállalaton belül, függetlenül attól, hogy hol vannak. A ezeep használatával a felhasználók áthidalják a Windows rendszerű virtuális asztal és a nyomtató hardvere közötti szakadékot.
+ThinPrint’s ezeep solution extends the value of Windows Virtual Desktop by enabling the connection to existing enterprise print infrastructure. ezeep gives users control over printing in the enterprise no matter where they are. Using ezeep, users can bridge the gap between Windows Virtual Desktop and printing hardware.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
-- [Lépjen a partner webhelyére](https://www.ezeep.com/wvd-printing).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Go to partner website](https://www.ezeep.com/wvd-printing).
 
 ## <a name="tricerat"></a>Tricerat
 
-![Tricerat embléma](./media/partners/tricerat.png)
+![Tricerat Logo](./media/partners/tricerat.png)
 
-A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a felhasználók, az eszközök és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint a gyors nyomtató kiválasztására szolgáló önkiszolgáló lehetőségek révén növeli a bejelentkezési időt. 
+Tricerat offers a superior print management solution for Windows Virtual Desktop and other desktop platforms. Tricerat software has robust functionality, offering a better experience for both users and administrators. Administrators gain efficiencies through complete driver management, simplified deployment of print queues, and consistent management across hybrid platforms. User experience improves with shorter sign-in times, intelligent print queues based on user, device, and network location, and self-service options for quick printer selection. 
 
-A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
+With Tricerat, printing is seamless in Windows Virtual Desktop and beyond. Tricerat software allows administrators to easily connect on-premises printers to the cloud, extending enterprise print management from traditional environments to new, modern workspaces.
 
-- [Lépjen a partner webhelyére](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [Go to the partner website](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 
-![Workspot embléma](./media/partners/workspot.png)
+![Workspot Logo](./media/partners/workspot.png)
 
-A Workspot egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely nagy teljesítményű asztali számítógépekkel és munkaállomásokkal rendelkező vállalatokat biztosít az Azure-ban. A Workspot az infrastruktúra-kiépítés automatizált, ami azt jelenti, hogy a felhasználók a világ bármely pontján érhetik el a Windows rendszerű virtuális asztali környezetét magas rendelkezésre állással.
+Workspot is a Windows Virtual Desktop value-added services provider that equips enterprises with high-performance desktops and workstations in Azure. With Workspot, infrastructure provisioning is automated, which means users can access their Windows Virtual Desktop environment from anywhere around the world with high availability.
 
-A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-infrastruktúra kiépítési folyamatának leegyszerűsítésével. A Workspot révén az erőforrások könnyen méretezhetők fel és le, hogy megfeleljenek a különböző felhasználók igényeinek és használati eseteinek. A Workspot a CAD-és mérnöki felhasználók számára szükséges nagy teljesítményű GPU-munkaállomások, valamint a Windows-alkalmazások és a Windows 10 rendszerű asztali gépek összes üzleti felhasználó számára történő üzembe helyezését is optimalizálhatja.
+Workspot extends the value of Windows Virtual Desktop by simplifying the provisioning process of cloud desktop infrastructure. With Workspot, resources can be easily scaled up and down to meet the needs of different users and uses cases. Workspot can optimize deployments for high-performance GPU workstations necessary for CAD and engineering users, as well as Windows applications and Windows 10 desktops for all business users.
 
-- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
-- [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
+- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Go to partner website](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
-- [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
+- [Learn more about Windows Virtual Desktop](overview.md).
+- [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).

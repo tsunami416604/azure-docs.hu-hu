@@ -1,61 +1,61 @@
 ---
-title: A rendszergazdák kezelhetik a felhasználókat és az eszközöket – Azure MFA – Azure Active Directory
-description: Hogyan módosíthatják a rendszergazdák a felhasználói beállításokat, például arra kényszerítve a felhasználókat, hogy újra elvégezzék a feligazolási folyamatot.
+title: Manage users and devices Azure MFA - Azure Active Directory
+description: How can administrators change user settings such as forcing the users to do the proof-up process again.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808faaed76ff63d69feb8170eaac72021c7bd49d
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042111"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404167"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Felhasználói beállítások kezelése az Azure Multi-Factor Authentication a felhőben
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Manage user settings with Azure Multi-Factor Authentication in the cloud
 
-Rendszergazdaként a következő felhasználói és eszközbeállítások felügyeletét végezheti el:
+As an administrator, you can manage the following user and device settings:
 
-* A kapcsolattartási módszerek újbóli megkövetelése a felhasználóktól
-* Alkalmazás jelszavának törlése
-* MFA megkövetelése minden megbízható eszközön
+* Require users to provide contact methods again
+* Delete app passwords
+* Require MFA on all trusted devices
 
-## <a name="manage-authentication-methods"></a>Hitelesítési módszerek kezelése
+## <a name="manage-authentication-methods"></a>Manage authentication methods
 
-A hitelesítés-rendszergazdai szerepkörhöz rendelt rendszergazda megkövetelheti, hogy a felhasználók új jelszót állítsanak vissza, regisztrálják újra az MFA-t, vagy visszavonják a meglévő MFA-munkameneteket a felhasználói objektumból.
+As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
 
-![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
-
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. A bal oldalon válassza **Azure Active Directory**  > **felhasználók**  > **minden felhasználó**lehetőséget.
-1. Válassza ki azt a felhasználót, akinek műveletet kíván végrehajtani, és válassza a **hitelesítési módszerek**lehetőséget.
-   - A **jelszó alaphelyzetbe** állítása visszaállítja a felhasználó jelszavát, és hozzárendel egy ideiglenes jelszót, amelyet a következő bejelentkezéskor módosítani kell.
-   - Az **MFA ismételt regisztrálásának megkövetelése** , hogy amikor a felhasználó a következő alkalommal jelentkezik be, a rendszer kérni fogja az új MFA hitelesítési módszer beállítását.
-   - Az **MFA-munkamenetek visszavonása** törli a felhasználó által megjegyzett MFA-munkameneteket, és azt igényli, hogy az MFA-t a következő alkalommal kell végrehajtania, amikor a szabályzat az eszközön szükséges.
-
-## <a name="delete-users-existing-app-passwords"></a>Meglévő alkalmazások jelszavainak törlése
-
-Ezzel a beállítással törlődik a felhasználó által létrehozott összes alkalmazás jelszava. Az alkalmazás jelszavával társított nem böngészőbeli alkalmazások nem működnek, amíg új alkalmazás jelszava nem jön létre. A művelet végrehajtásához globális rendszergazdai jogosultságok szükségesek.
-
-### <a name="how-to-delete-users-existing-app-passwords"></a>Meglévő alkalmazások jelszavainak törlése
+![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory**  > **felhasználók**  > **minden felhasználó**lehetőséget.
-3. A jobb oldalon válassza a **multi-Factor Authentication** lehetőséget az eszköztáron. Megnyílik a multi-Factor Authentication oldal.
-4. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
-5. Válassza a **felhasználói beállítások kezelése**lehetőséget.
-6. Jelölje be a jelölőnégyzetet a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törléséhez**.
-   ![az összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. On the left, select **Azure Active Directory** > **Users** > **All users**.
+1. Choose the user you wish to perform an action on and select **Authentication methods**.
+   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
+   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
+   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+
+## <a name="delete-users-existing-app-passwords"></a>Delete users existing app passwords
+
+This setting deletes all of the app passwords that a user has created. Non-browser apps that were associated with these app passwords stop working until a new app password is created. Global administrator permissions are required to perform this action.
+
+### <a name="how-to-delete-users-existing-app-passwords"></a>How to delete users existing app passwords
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. On the left, select **Azure Active Directory** > **Users** > **All users**.
+3. On the right, select **Multi-Factor Authentication** on the toolbar. The multi-factor authentication page opens.
+4. Check the box next to the user or users that you wish to manage. A list of quick step options appears on the right.
+5. Select **Manage user settings**.
+6. Check the box for **Delete all existing app passwords generated by the selected users**.
+   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Kattintson a **mentés** gombra.
-8. Kattintson a **Bezárás**gombra.
+8. Click **close**.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [Azure multi-Factor Authentication beállításainak konfigurálásáról](howto-mfa-mfasettings.md)
-- Ha a felhasználóknak segítségre van szüksége, a [kétlépéses ellenőrzés felhasználói útmutatója](../user-help/multi-factor-authentication-end-user.md) felé mutatnak
+- Get more information about how to [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
+- If your users need help, point them towards the [User guide for two-step verification](../user-help/multi-factor-authentication-end-user.md)

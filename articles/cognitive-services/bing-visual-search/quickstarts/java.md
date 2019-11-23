@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Lemezkép-elemzések, a Bing Visual Search REST API és a Java használatával'
+title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kaphat elemzési információkat, és töltsön fel egy képet, a Bing Visual Search API.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512417"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383606"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: Lemezkép-elemzések, a Bing Visual Search REST API és a Java használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
 
-Ez a rövid útmutató segítségével győződjön meg arról, az első, a Bing Visual Search API hívása, és tekintse meg az eredményeket. A Java-alkalmazás feltölt egy képet az API-hoz, és visszaadja az információkat jeleníti meg. Bár ez az alkalmazás Java nyelven van megírva, az API-t az szinte bármelyik programozási nyelvével kompatibilis webes RESTful szolgáltatás.
+Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
 
-Tartalmaznia kell a helyi rendszerképet tölt fel, amikor az űrlap adatait a `Content-Disposition` fejléc. Be kell állítani a `name` paraméter "image", és állíthatja a `filename` bármilyen karakterlánc paramétert. Az űrlap a rendszerkép a bináris adatokat is tartalmazza. A maximális képméret feltöltheti az 1 MB.
+When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -34,15 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks)
-* A [Gson Java-kódtár](https://github.com/google/gson)
+* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
+* The [Gson Java library](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és importálja a következő könyvtárak:
+1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Változók létrehozása az API-végpont, előfizetési kulcsot, és a lemezkép elérési útja:
+2. Create variables for your API endpoint, subscription key, and the path to your image:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,9 +71,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
-## <a name="create-the-json-parser"></a>A JSON-elemző létrehozása
+## <a name="create-the-json-parser"></a>Create the JSON parser
 
-Hozzon létre egy metódust, hogy a JSON-válasz az API-val további olvasható használatával `JsonParser`:
+Create a method to make the JSON response from the API more readable using `JsonParser`:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Hozzon létre egy metódust, hogy a JSON-válasz az API-val további olvasható 
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
-1. A fő módszer az alkalmazás, hozzon létre egy HTTP-ügyfelének használatával `HttpClientBuilder.create().build();`:
+1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Hozzon létre egy `HttpEntity` feltöltheti a rendszerképet az API-objektum:
+2. Create an `HttpEntity` object to upload your image to the API:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Hozzon létre egy metódust, hogy a JSON-válasz az API-val további olvasható 
         .build();
     ```
 
-3. Hozzon létre egy `httpPost` objektumot a végponthoz, és állítsa be a fejléc az előfizetési kulcs használata:
+3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Hozzon létre egy metódust, hogy a JSON-válasz az API-val további olvasható 
 
 ## <a name="receive-and-process-the-json-response"></a>A JSON-válasz fogadása és feldolgozása
 
-1. Használja a `HttpClient.execute()` módszer kérést küldhet az API-t, a válasz tárolása egy `InputStream` objektum:
+1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. A JSON-karakterlánc Store, és a válasz:
+2. Store the JSON string, and print the response:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -126,7 +126,7 @@ System.out.println("\nJSON Response:\n");
 System.out.println(prettify(json));
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Vizuális keresés egyoldalas webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

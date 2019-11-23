@@ -10,12 +10,12 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 47913f86edcf83825254775705e38310f3c2c6b4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647470"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325937"
 ---
 Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügyfélalkalmazásban, közzé kell tennie az alkalmazást a végponton. 
 
@@ -27,8 +27,8 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 
     ![LUIS közzététel a végponton](../media/howto-publish/publish-app-popup.png)
 
-3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+3. Publishing is complete when you see the status bar at the top of the page confirming success.
 
     ![LUIS közzététel a végponton](../media/howto-publish/publish-endpoint-success.png)
 
-4. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként**jelennek meg.
+4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.

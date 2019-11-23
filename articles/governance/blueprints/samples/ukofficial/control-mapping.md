@@ -1,168 +1,168 @@
 ---
-title: Egyesült Királyság hivatalos & Egyesült Királysági NHS Blueprint Samples – vezérlés leképezése
-description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
+title: UK OFFICIAL & UK NHS blueprint samples - Control mapping
+description: Control mapping of the UK OFFICIAL and UK NHS blueprint samples. Each control is mapped to one or more Azure Policies that assist with assessment.
 ms.date: 06/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.topic: sample
+ms.openlocfilehash: be4ac8fd5251929f2e6717aed18af7afd3262025
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037764"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406654"
 ---
-# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
+# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Control mapping of the UK OFFICIAL and UK NHS blueprint samples
 
-A következő cikk azt ismerteti, hogyan jelennek meg az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei az Egyesült Királyság hivatalos és egyesült királysági NHS-vezérlőinek. További információ a vezérlőelemekről: [Egyesült Királyság hivatalos](https://www.gov.uk/government/publications/government-security-classifications).
+The following article details how the UK OFFICIAL and UK NHS blueprint samples map to the UK OFFICIAL and UK NHS controls. For more information about the controls, see [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications).
 
-Az alábbi hozzárendelések az **Egyesült Királyság hivatalos** és **Egyesült Királysági NHS** -vezérlőinek. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[előzetes verzióját\] a naplózási Egyesült Királyság hivatalos és az Egyesült királyságbeli NHS-vezérlőket, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezés támogatására
+The following mappings are to the **UK OFFICIAL** and **UK NHS** controls. Use the navigation on the right to jump directly to a specific control mapping. Many of the mapped controls are implemented with an [Azure Policy](../../../policy/overview.md) initiative. To review the complete initiative, open **Policy** in the Azure portal and select the **Definitions** page. Then, find and select the **\[Preview\] Audit UK OFFICIAL and UK NHS controls and deploy specific VM Extensions to support audit requirements** built-in policy initiative.
 
 > [!IMPORTANT]
-> Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
+> Each control below is associated with one or more [Azure Policy](../../../policy/overview.md) definitions. These policies may help you [assess compliance](../../../policy/how-to/get-compliance-data.md) with the control; however, there often is not a 1:1 or complete match between a control and one or more policies. As such, **Compliant** in Azure Policy refers only to the policies themselves; this doesn't ensure you're fully compliant with all requirements of a control. In addition, the compliance standard includes controls that aren't addressed by any Azure Policy definitions at this time. Therefore, compliance in Azure Policy is only a partial view of your overall compliance status. The associations between controls and Azure Policy definitions for this compliance blueprint sample may change over time. To view the change history, see the [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
 
-## <a name="1-data-in-transit-protection"></a>1 adatátviteli védelem
+## <a name="1-data-in-transit-protection"></a>1 Data in transit protection
 
-A terv segítségével biztosítható, hogy az Azure-szolgáltatásokkal való adatátvitel biztonságos legyen, ha olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá, amelyek naplózzák a nem biztonságos kapcsolatokat a Storage-fiókokhoz és Redis cache.
+The blueprint helps you ensure information transfer with Azure services is secure by assigning [Azure Policy](../../../policy/overview.md) definitions that audit insecure connections to storage accounts and Redis Cache.
 
-- Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
-- A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
+- Only secure connections to your Redis Cache should be enabled
+- Secure transfer to storage accounts should be enabled
 
-## <a name="23-data-at-rest-protection"></a>2,3 inaktív adatok védelme
+## <a name="23-data-at-rest-protection"></a>2.3 Data at rest protection
 
-Ez a terv segítséget nyújt a házirendnek a titkosítási vezérlők használatára való érvényesítéséhez, ha olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá, amelyek kikényszerítik az adott titkosítási vezérlőket, és naplózzák a gyenge titkosítási beállítások használatát.
-Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, a tervhez hozzárendelt szabályzatok titkosítást igényelnek a Lake Storage-fiókokhoz; transzparens adattitkosítás megkövetelése SQL-adatbázisokban; a Storage-fiókokon, az SQL-adatbázisokon, a virtuálisgép-lemezeken és az Automation-fiók változójában a hiányzó titkosítás naplózása; nem biztonságos kapcsolatok naplózása a Storage-fiókokhoz és a Redis Cache; gyenge virtuális gép jelszavas titkosításának naplózása; és a titkosítatlan Service Fabric kommunikáció naplózása.
+This blueprint helps you enforce your policy on the use of cryptograph controls by assigning [Azure Policy](../../../policy/overview.md) definitions that enforce specific cryptograph controls and audit use of weak cryptographic settings.
+Understanding where your Azure resources may have non-optimal cryptographic configurations can help you take corrective actions to ensure resources are configured in accordance with your information security policy. Specifically, the policies assigned by this blueprint require encryption for data lake storage accounts; require transparent data encryption on SQL databases; audit missing encryption on storage accounts, SQL databases, virtual machine disks, and automation account variables; audit insecure connections to storage accounts and Redis Cache; audit weak virtual machine password encryption; and audit unencrypted Service Fabric communication.
 
-- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Az Automation-fiók változóit titkosítani kell
-- A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
-- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- Az SQL DB transzparens adattitkosításának üzembe helyezése
-- Titkosítás megkövetelése Data Lake Store fiókokon
-- Engedélyezett helyszínek (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített)
-- Engedélyezett telephelyek az erőforráscsoportok számára (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített kód)
+- Transparent Data Encryption on SQL databases should be enabled
+- Disk encryption should be applied on virtual machines
+- Automation account variables should be encrypted
+- Secure transfer to storage accounts should be enabled
+- Service Fabric clusters should have the ClusterProtectionLevel property set to EncryptAndSign
+- Transparent Data Encryption on SQL databases should be enabled
+- Deploy SQL DB transparent data encryption
+- Require encryption on Data Lake Store accounts
+- Allowed locations (has been hard coded to "UK SOUTH" and "UK WEST")
+- Allowed locations for resource groups (has been hard coded to "UK SOUTH" and "UK WEST")
 
-## <a name="52-vulnerability-management"></a>5,2 biztonsági rések kezelése
+## <a name="52-vulnerability-management"></a>5.2 Vulnerability Management
 
-Ez a terv segítséget nyújt az információs rendszer biztonsági réseinak kezeléséhez olyan [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével, amelyek figyelik a hiányzó Endpoint Protectiont, a hiányzó rendszerfrissítéseket, az operációs rendszer sebezhetőségeit, az SQL biztonsági réseket és a virtuális Ezek az információk valós idejű információkat biztosítanak az üzembe helyezett erőforrások biztonsági állapotáról, és segíthetnek a Szervizelési műveletek rangsorolásában.
+This blueprint helps you manage information system vulnerabilities by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor missing endpoint protection, missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities. These insights provide real-time information about the security state of your deployed resources and can help you prioritize remediation actions.
 
-- Hiányzó Endpoint Protection figyelése Azure Security Center
-- A számítógépekre telepíteni kell a rendszerfrissítéseket
-- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
-- Az SQL-adatbázisok biztonsági réseit szervizelni kell
-- A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
+- Monitor missing Endpoint Protection in Azure Security Center
+- System updates should be installed on your machines
+- Vulnerabilities in security configuration on your machines should be remediated
+- Vulnerabilities on your SQL databases should be remediated
+- Vulnerabilities should be remediated by a Vulnerability Assessment solution
 
-## <a name="53-protective-monitoring"></a>5,3 védelmi monitorozás
+## <a name="53-protective-monitoring"></a>5.3 Protective Monitoring
 
-Ez a terv segítséget nyújt az információs rendszer eszközeinek védelméhez olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek védelmet nyújtanak a korlátlan hozzáféréshez, a engedélyezési listán szereplő tevékenységekhez és a fenyegetésekhez.
+This blueprint helps you protect information system assets by assigning [Azure Policy](../../../policy/overview.md) definitions that provide protective monitoring on unrestricted access, whitelist activity, and threats.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
-- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
-- Az alapértelmezett Microsoft IaaS anti-malware bővítmény telepítése a Windows Serverhez
+- Audit unrestricted network access to storage accounts
+- Adaptive Application Controls should be enabled on virtual machines
+- Deploy Threat Detection on SQL servers
+- Deploy default Microsoft IaaS Anti-malware extension for Windows Server
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 biztonságos felhasználói felügyelet/10 identitás és hitelesítés
+## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 Secure User Management / 10 Identity and Authentication
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, hogy a külső fiókokat a tulajdonossal és/vagy az olvasási/írási engedélyekkel és a tulajdonosi, olvasási és/vagy írási engedélyekkel rendelkező fiókokkal naplózza, amelyeken nincs engedélyezve a többtényezős hitelesítés
+Azure implements role-based access control (RBAC) to helps you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint helps you restrict and control access rights by assigning [Azure Policy](../../../policy/overview.md) definitions to audit external accounts with owner and/or read/write permissions and accounts with owner, read and/or write permissions that do not have multi-factor authentication enabled.
 
-- Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
-- Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
-- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- MFA should be enabled on accounts with owner permissions on your subscription
+- MFA should be enabled accounts with write permissions on your subscription
+- MFA should be enabled on accounts with read permissions on your subscription
+- External accounts with owner permissions should be removed from your subscription
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- External accounts with read permissions should be removed from your subscription
 
-Ez a terv Azure Policy definíciókat rendel hozzá az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését.
+This blueprint assigns Azure Policy definitions to audit use of Azure Active Directory authentication for SQL servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
 
-- Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
-- Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez
+- An Azure Active Directory administrator should be provisioned for SQL servers
+- Service Fabric clusters should only use Azure Active Directory for client authentication
 
-Ez a terv Azure Policy definíciókat is hozzárendeli a naplózási fiókokhoz, amelyeket érdemes áttekinteni, beleértve az értékcsökkenéssel rendelkező fiókokat és a külső fiókokat is. Ha szükséges, a fiókokat le lehet tiltani a bejelentkezés (vagy Eltávolítás) alól, amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogokat. Ez a terv két Azure Policy-definíciót rendel hozzá az olyan leértékelt fiókokhoz, amelyeket el kell tekinteni az eltávolításhoz.
+This blueprint also assigns Azure Policy definitions to audit accounts that should be prioritized for review, including depreciated accounts and external accounts. When needed, accounts can be blocked from signing in (or removed), which immediately removes access rights to Azure resources. This blueprint assigns two Azure Policy definitions to audit depreciated account that should be considered for removal.
 
-- Az elavult fiókokat el kell távolítani az előfizetésből
-- A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
-- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-
-Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
-
-- \[előzetes verzió\]: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása a 0644 értékre van állítva.
-
-Ez a terv segít az erős jelszavak betartatásában olyan Azure Policy-definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
-
-- \[előzetes verzió\]: követelmények központi telepítése a jelszó bonyolultsága beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
-- \[előzetes verzió\]: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
-- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
-- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
-- \[előzetes verzió\]: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
-- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
-- \[előzetes verzió\]: olyan Windowsos virtuális gépek naplózása, amelyek nem rendelkeznek maximális jelszóval (70 nap)
-- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- \[előzetes verzió\]: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[előzetes verzió\]: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-
-A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehetővé teszi Azure Policy definíciók hozzárendelésével. Ezek a házirendek olyan erőforrástípusok és konfigurációk használatát naplózzák, amelyek lehetővé tehetik az erőforrásokhoz való hozzáférést. A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azure-erőforrások elérését engedélyező, a jogosult felhasználókra korlátozódó kijavítási műveletek elvégzésében.
-
-- \[előzetes verzió\]: követelmények telepítése a jelszavak nélküli fiókokkal rendelkező linuxos virtuális gépek naplózására
-- \[előzetes verzió\]: követelmények telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózására
-- \[előzetes verzió\]: Linux rendszerű virtuális gépek naplózása jelszavak nélkül
-- \[előzetes verzió\]: a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
-- A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
-- A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
-- Felügyelt lemezeket nem használó virtuális gépek naplózása
-
-## <a name="11-external-interface-protection"></a>11 külső felület védelme
-
-Ha több mint 25 házirendet használ a megfelelő biztonságos felhasználói felügyelethez, ez a terv a nem korlátozott tárolási fiókokat figyelő [Azure Policy](../../../policy/overview.md) -definíció hozzárendelésével segíti a szolgáltatási felületek jogosulatlan hozzáférés elleni védelmét. A korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz. Ez a terv egy olyan szabályzatot is hozzárendel, amely lehetővé teszi az adaptív alkalmazások vezérlését a virtuális gépeken.
-
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
-
-## <a name="12-secure-service-administration"></a>12 biztonságos szolgáltatás felügyelete
-
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít az emelt szintű hozzáférési jogosultságok korlátozásában és szabályozásában azáltal, hogy öt [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá a tulajdonossal és/vagy írási engedélyekkel rendelkező külső fiókokhoz, valamint a tulajdonossal és/vagy olyan írási engedélyekkel, amelyeken nincs engedélyezve a többtényezős hitelesítés.
-
-A felhőalapú szolgáltatás felügyeletéhez használt rendszerek magas jogosultsági szintű hozzáférést kapnak a szolgáltatáshoz. A kompromisszum jelentős hatással lenne, beleértve a biztonsági ellenőrzés megkerülését és a nagy adatmennyiségek ellopását és kezelését. A szolgáltató rendszergazdája által az operatív szolgáltatás kezeléséhez használt módszereket úgy kell kialakítani, hogy enyhítse a szolgáltatás biztonságát veszélyeztető kiaknázás kockázatát. Ha ez az elv nem valósul meg, a támadók megkerülhetik a biztonsági ellenőrzéseket, vagy nagy mennyiségű adatmennyiséget ellopnak vagy kezelhetnek.
-
-- Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
-- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Deprecated accounts should be removed from your subscription
+- Deprecated accounts with owner permissions should be removed from your subscription
+- External accounts with owner permissions should be removed from your subscription
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-Ez a terv Azure Policy definíciókat rendel hozzá az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését.
+This blueprint also assigns an Azure Policy definition that audits Linux VM password file permissions to alert if they're set incorrectly. This design enables you to take corrective action to ensure authenticators aren't compromised.
 
-- Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
-- Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez
+- \[Preview\]: Audit Linux VM /etc/passwd file permissions are set to 0644
 
-Ez a terv Azure Policy-definíciókat is hozzárendeli a naplózási fiókokhoz, amelyeket érdemes áttekinteni, beleértve az értékcsökkenéssel rendelkező fiókokat és a emelt szintű engedélyekkel rendelkező külső fiókokat is. Ha szükséges, a fiókokat le lehet tiltani a bejelentkezés (vagy Eltávolítás) alól, amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogokat. Ez a terv két Azure Policy-definíciót rendel hozzá az olyan leértékelt fiókokhoz, amelyeket el kell tekinteni az eltávolításhoz.
+This blueprint helps you enforce strong passwords by assigning Azure Policy definitions that audit Windows VMs that don't enforce minimum strength and other password requirements. Awareness of VMs in violation of the password strength policy helps you take corrective actions to ensure passwords for all VM user accounts are compliant with policy.
 
-- Az elavult fiókokat el kell távolítani az előfizetésből
-- A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
-- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Preview\]: Audit Windows VMs that do not have the password complexity setting enabled
+- \[Preview\]: Audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Audit Windows VMs that do not have a minimum password age of 1 day
+- \[Preview\]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Audit Windows VMs that allow re-use of the previous 24 passwords
+
+This blueprint also helps you control access to Azure resources by assigning Azure Policy definitions. These policies audit use of resource types and configurations that may allow more permissive access to resources. Understanding resources that are in violation of these policies can help you take corrective actions to ensure access Azure resources is restricted to authorized users.
+
+- \[Preview\]: Deploy requirements to audit Linux VMs that have accounts without passwords
+- \[Preview\]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
+- \[Preview\]: Audit Linux VMs that have accounts without passwords
+- \[Preview\]: Audit Linux VMs that allow remote connections from accounts without passwords
+- Storage accounts should be migrated to new Azure Resource Manager resources
+- Virtual machines should be migrated to new Azure Resource Manager resources
+- Audit VMs that do not use managed disks
+
+## <a name="11-external-interface-protection"></a>11 External Interface Protection
+
+Other than using more than 25 policies for appropriate secure user management, this blueprint helps you protect service interfaces from unauthorized access by assigning an [Azure Policy](../../../policy/overview.md) definition that monitors unrestricted storage accounts. Storage accounts with unrestricted access can allow unintended access to information contained within the information system. This blueprint also assigns a policy that enables adaptive application controls on virtual machines.
+
+- Audit unrestricted network access to storage accounts
+- Adaptive Application Controls should be enabled on virtual machines
+
+## <a name="12-secure-service-administration"></a>12 Secure Service Administration
+
+Azure implements role-based access control (RBAC) to helps you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint helps you restrict and control privileged access rights by assigning five [Azure Policy](../../../policy/overview.md) definitions to audit external accounts with owner and/or write permissions and accounts with owner, and/or write permissions that do not have multi-factor authentication enabled.
+
+Systems used for administration of a cloud service will have highly privileged access to that service. Their compromise would have significant impact, including the means to bypass security controls and steal or manipulate large volumes of data. The methods used by the service provider's administrators to manage the operational service should be designed to mitigate any risk of exploitation that could undermine the security of the service. If this principle isn't implemented, an attacker may have the means to bypass security controls and steal or manipulate large volumes of data.
+
+- MFA should be enabled on accounts with owner permissions on your subscription
+- MFA should be enabled accounts with write permissions on your subscription
+- External accounts with owner permissions should be removed from your subscription
 - Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
+This blueprint assigns Azure Policy definitions to audit use of Azure Active Directory authentication for SQL servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
 
-- \[előzetes verzió\]: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása a 0644 értékre van állítva.
+- An Azure Active Directory administrator should be provisioned for SQL servers
+- Service Fabric clusters should only use Azure Active Directory for client authentication
 
-## <a name="13-audit-information-for-users"></a>13 naplózási információ a felhasználók számára
+This blueprint also assigns Azure Policy definitions to audit accounts that should be prioritized for review, including depreciated accounts and external accounts with elevated permissions. When needed, accounts can be blocked from signing in (or removed), which immediately removes access rights to Azure resources. This blueprint assigns two Azure Policy definitions to audit depreciated account that should be considered for removal.
 
-Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével. A hozzárendelt szabályzat azt is naplózza, hogy a virtuális gépek nem küldenek naplókat egy adott log Analytics-munkaterületre.
+- Deprecated accounts should be removed from your subscription
+- Deprecated accounts with owner permissions should be removed from your subscription
+- External accounts with owner permissions should be removed from your subscription
+- Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
+This blueprint also assigns an Azure Policy definition that audits Linux VM password file permissions to alert if they're set incorrectly. This design enables you to take corrective action to ensure authenticators aren't compromised.
+
+- \[Preview\]: Audit Linux VM /etc/passwd file permissions are set to 0644
+
+## <a name="13-audit-information-for-users"></a>13 Audit Information for Users
+
+This blueprint helps you ensure system events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit log settings on Azure resources. An assigned policy also audits if virtual machines aren't sending logs to a specified log analytics workspace.
+
+- Auditing should be enabled on advanced data security settings on SQL Server
 - Diagnosztikai beállítás naplózása
-- Az SQL Server szintű naplózási beállítások naplózása
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
-- A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
+- Audit SQL server level Auditing settings
+- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
+- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
+- Deploy network watcher when virtual networks are created
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy áttekintette az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
+Now that you've reviewed the control mapping of the UK OFFICIAL and UK NHS blueprints, visit the following articles to learn about the overview and how to deploy this sample:
 
 > [!div class="nextstepaction"]
-> [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – áttekintés](./index.md)
-> [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – lépések üzembe helyezése](./deploy.md)
+> [UK OFFICIAL and UK NHS blueprints - Overview](./index.md)
+> [UK OFFICIAL and UK NHS blueprints - Deploy steps](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 

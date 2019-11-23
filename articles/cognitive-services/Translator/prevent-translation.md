@@ -1,45 +1,50 @@
 ---
-title: Tartalom fordításának megakadályozása – Translator Text API
+title: Prevent content translation - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: A tartalom fordításának megakadályozása a Translator Text API. A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva.
+description: Prevent translation of content with the Translator Text API. The Translator Text API allows you to tag content so that it isn't translated.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 11/21/2019
 ms.author: swmachan
-ms.openlocfilehash: dd3684cbd7c03851bfcc75293a9690f77b4652b2
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a36451c18d65df6667f24284f3f69f3d1c06b8
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184814"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326762"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>A tartalom fordításának megakadályozása a Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>How to prevent translation of content with the Translator Text API
 
-A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Előfordulhat például, hogy meg szeretné címkézni a kódot, a márkanevet vagy egy olyan szót vagy kifejezést, amely nincs értelme a honosított értéknél.
+The Translator Text API allows you to tag content so that it isn't translated. For example, you may want to tag code, a brand name, or a word/phrase that doesn't make sense when localized.
 
-## <a name="methods-for-preventing-translation"></a>A fordítás megakadályozásának módszerei
-1. Escape to a Twitter-címke @somethingtopassthrough vagy #somethingtopassthrough. Kilépés a fordítás után. Érvényes Twitter-címkék esetén ez a reguláris kifejezés: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A címkének "@" jellel kell kezdődnie, amelyet egy karakter követ, majd egy vagy több karaktert, számjegyet vagy aláhúzást kell követnie. Javasoljuk, hogy rövid idő alatt tartsa meg a címkéket, és a nyitó címkét szóköz előtt kell megadni.
+## <a name="methods-for-preventing-translation"></a>Methods for preventing translation
+1. Escape to a Twitter tag @somethingtopassthrough or #somethingtopassthrough. Un-escape after translation. This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
 
-2. A tartalom címkézése `notranslate`.
+2. Tag your content with `notranslate`. It's by design that this works only when the input textType is set as HTML
 
    Példa:
 
+   ```html
+   <span class="notranslate">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
    ```html
    <div class="notranslate">This will not be translated.</div>
    <div>This will be translated. </div>
    ```
 
-3. A [dinamikus szótár](dynamic-dictionary.md) használatával egy adott fordítást írhat elő.
+3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
 
-4. Ne adja át a karakterláncot a fordítási Translator Text APInak.
+4. Don't pass the string to the Translator Text API for translation.
 
-5. Egyéni fordító: használjon egy [szótárt az egyéni fordítóban](custom-translator/what-is-dictionary.md) egy kifejezés fordításának megírásához 100%-os valószínűséggel.
+5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
 
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Kerülje a fordítást a Translator API-hívásban](reference/v3-0-translate.md)
+> [Avoid translation in your Translator API call](reference/v3-0-translate.md)

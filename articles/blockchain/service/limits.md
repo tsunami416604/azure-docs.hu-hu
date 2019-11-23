@@ -1,67 +1,61 @@
 ---
-title: Az Azure Blockchain korlátai
-description: A szolgáltatás és a működési korlátok áttekintése az Azure Blockchain szolgáltatásban
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service limits
+description: Overview of the service and functional limits in Azure Blockchain Service
 ms.date: 05/02/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0500d7c5e2d05d185b4d032a33c008726d996df1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577219"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326156"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Korlátok az Azure Blockchain szolgáltatásban
+# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
 
-Az Azure Blockchain szolgáltatás rendelkezik olyan szolgáltatás-és működési korlátokkal, mint például egy tag csomópontjainak száma, a konzorcium korlátozásai és a tárterület mennyisége.
+Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
 
-## <a name="pricing-tier"></a>Tarifacsomag
+## <a name="pricing-tier"></a>Díjcsomag
 
-A tranzakciók és az érvényesítő csomópontok maximális korlátai attól függnek, hogy az Azure Blockchain szolgáltatást alapszintű vagy standard szintű díjszabással kívánja-e kiépíteni.
+Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
 
-| Tarifacsomag | Tranzakciós csomópontok maximális száma | Érvényesítő csomópontok maximális száma |
+| Díjcsomag | Max transaction nodes | Max validator nodes |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-Az alapszintű és a standard szintű díjszabás a tag létrehozása után történő módosítása nem támogatott.
+Changing the pricing tier between Basic and Standard after member creation is not supported.
 
 ## <a name="storage-capacity"></a>Tárkapacitás
 
-A Főkönyv és a naplók számára a csomópontok által használható maximális tárterület 1,8 terabájt.
+The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
 
-A Főkönyv és a napló tárolási méretének csökkentése nem támogatott.
+Decreasing ledger and log storage size is not supported.
 
-## <a name="consortium-limits"></a>Konzorcium korlátai
+## <a name="consortium-limits"></a>Consortium limits
 
-* A **konzorcium és a tagok nevének egyedinek kell lennie** az Azure Blockchain szolgáltatásban található többi konzorciumtól és tag nevétől.
+* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
 
-* **A tag és a konzorcium neve nem módosítható**
+* **Member and consortium names cannot be changed**
 
-* **A konzorcium összes tagjának ugyanabban az árképzési szinten kell lennie**
+* **All members in a consortium must be in the same pricing tier**
 
-* **A konzorciumban részt vevő összes tagnak ugyanabban a régióban kell lennie**
+* **All members that participate in a consortium must reside in the same region**
 
-    A konzorciumban létrehozott első tag diktálja a régiót. A konzorciumnak meghívott tagoknak ugyanabban a régióban kell lenniük, mint az első taggal. Ha egyetlen régióra korlátozza az összes tagot, azzal biztosítható, hogy a hálózati konszenzus ne legyen negatív hatással.
+    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
 
-* **A konzorciumnak rendelkeznie kell legalább egy rendszergazdával**
+* **A consortium must have at least one administrator**
 
-    Ha a konzorciumban csak egy rendszergazda található, akkor nem távolíthatja el magukat a konzorciumból, vagy törölhetik a tagjaikat, amíg egy másik rendszergazdát nem ad hozzá vagy nem előléptet a konzorciumban.
+    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
 
-* **A konzorciumból eltávolított tagok nem vehetők fel újra**
+* **Members removed from the consortium cannot be added again**
 
-    Ehelyett újra kell hívni őket a konzorciumhoz való csatlakozáshoz és egy új tag létrehozásához. A meglévő tag-erőforrás nem törlődik a korábbi tranzakciók megőrzése érdekében.
+    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
 
-* **A konzorcium összes tagjának ugyanazt a Főkönyv-verziót kell használnia.**
+* **All members in a consortium must be using the same ledger version**
 
-    Az Azure Blockchain szolgáltatásban elérhető javításokkal, frissítésekkel és Főkönyv verziókkal kapcsolatos további információkért lásd: [javítások, frissítések és verziók](ledger-versions.md).
+    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Javítások, frissítések és verziók](ledger-versions.md)
+* [Patching, updates, and versions](ledger-versions.md)

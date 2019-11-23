@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a szándékok előrejelzése – LUIS'
+title: 'Tutorial: Predict intentions - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban hozzon létre egy egyéni alkalmazást, amely előrejelzést készít a felhasználó szándékáról. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
+description: In this tutorial, create a custom app that predicts a user's intention. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822760"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325941"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: a felhasználói szándékok meghatározására szolgáló LUIS-alkalmazás létrehozása
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Build a LUIS app to determine user intentions
 
-Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja a felhasználó szándékát a Kimondás (szöveg) alapján. 
+In this tutorial, you create a custom app that predicts a user's intention based on the utterance (text). 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -32,25 +32,25 @@ Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja 
 > * Példa kimondott szövegek hozzáadása
 > * Alkalmazás betanítása
 > * Alkalmazás közzététele
-> * Leképezési előrejelzés beolvasása a végpontról
+> * Get intent prediction from endpoint
 
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
-## <a name="user-intentions-as-intents"></a>Felhasználói szándékok
+## <a name="user-intentions-as-intents"></a>User intentions as intents
 
-Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékának meghatározása: 
+The purpose of the app is to determine the intention of conversational, natural language text: 
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
 Ezek különféle **szándékokként** vannak csoportosítva. 
 
-|Szándék|Cél|
+|Szándék|Rendeltetés|
 |--|--|
-|`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
-|`Greeting`|Kezdje el a bot-beszélgetést.|
-|`ConfirmOrder`|A pizza-sorrend megerősítése.|
-|`None`|Annak megállapítása, hogy a felhasználó kér-e valamit, ha az alkalmazás nem válaszol. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
+|`ModifyOrder`|Determine user's pizza order.|
+|`Greeting`|Begin bot conversation.|
+|`ConfirmOrder`|Confirm pizza order.|
+|`None`|Determine if user is asking something the app is not supposed to answer. This intent if provided as part of app creation and can't be deleted. |
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
@@ -58,13 +58,13 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
 ## <a name="create-a-new-intent"></a>Új szándék létrehozása 
 
-1. A [Luis-portálon](https://preview.luis.ai), az alkalmazás **Build** szakaszán belül válassza a **+ Létrehozás**elemet. Adja meg az új cél nevet az alábbi listában, majd válassza a **kész**lehetőséget.
+1. In the portal, inside the app's **Build** section, select **+ Create**. Enter the new intent name, `OrderPizza`, then select **Done**.
 
-    A `OrderPizza` célja a következő: Ha a felhasználó egy pizzát szeretne rendelni. 
+    The `OrderPizza` intent is predicted when: a user wants to order a pizza. 
 
-1. Vegyen fel több példát a hosszúságú kimondott szöveg erre a célra, ha a felhasználó a következőt kéri:
+1. Add several example utterances to this intent that you expect a user to ask:
 
-    |`OrderPizza` példa hosszúságú kimondott szöveg|
+    |`OrderPizza` example utterances|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -74,15 +74,15 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
     ![Példa kimondott szövegek hozzáadása](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Ha _például hosszúságú kimondott szöveg_-t használ, akkor a Luis betanítása arról nyújt segítséget, hogy milyen hosszúságú kimondott szöveg kell előre jelezni. 
+    By providing _example utterances_, you are training LUIS about what kinds of utterances should be predicted for this intent. 
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
 
-## <a name="create-remaining-intents"></a>Hátralévő leképezések létrehozása
+## <a name="create-remaining-intents"></a>Create remaining intents
 
-1. Hozza létre a `Greeting` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a cél annak megállapítása, hogy egy felhasználó elkezd-e új pizza Order beszélgetést.
+1. Create the `Greeting` intent and add the following example utterances. This is the intent to determine if a user is beginning a new pizza order conversation.
 
-    |`Greeting` példa hosszúságú kimondott szöveg|
+    |`Greeting` example utterances|
     |--|
     |`Hi`|
     |`Hello`|
@@ -90,9 +90,9 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     |`Start`|
     |`Begin`|
 
-1. Hozza létre a `Confirm` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit. 
+1. Create the `Confirm` intent and add the following example utterances. This is the intent to determine if a user is done ordering and accepts the order details. 
 
-    |`Confirm` példa hosszúságú kimondott szöveg|
+    |`Confirm` example utterances|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -100,7 +100,7 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     |`Sure`|
 
 
-## <a name="none-intent-example-utterances"></a>Nincs leképezési példa hosszúságú kimondott szöveg
+## <a name="none-intent-example-utterances"></a>None intent example utterances
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
@@ -108,21 +108,21 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Az alkalmazás közzététele 
+## <a name="publish-the-app"></a>Publish the app 
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
 
-## <a name="get-intent-prediction"></a>Leképezési előrejelzés beolvasása
+## <a name="get-intent-prediction"></a>Get intent prediction
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és írja be a következőt:
+1. Go to the end of the URL in the address bar and enter:
 
     `get a medium vegetarian pizza for delivery` 
 
-    Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal.
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent.
 
-    Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `OrderPizza` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
+    Az utolsó lekérdezésisztring-paraméter a `query`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `OrderPizza` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
 
     ```JSON
     {
@@ -148,15 +148,15 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     }
     ```
 
-    Az entitások tömbje üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal. 
+    The entities array is empty because this app currently does not have any entities (unit of data inside the utterance to extract). 
 
-    A JSON-eredmény a **`prediction.topIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. Az összes pontszám 1 és 0 közé esik, a jobb pontszám pedig az 1 értékhez közeledik. 
+    A JSON-eredmény a **`prediction.topIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. All scores are between 1 and 0, with the better score being closer to 1. 
 
-1. Módosítsa az URL- **lekérdezési** paramétert az **üdvözlési** szándék megcélzásához:
+1. Change the URL **query** parameter to target the **Greeting** intent:
 
     `Howdy`
 
-    Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal. 
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent. 
 
     ```json
     {
@@ -182,27 +182,27 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     }    
     ```
  
-    Ennek az előrejelzésnek a 44%-os megbízhatósági pontszáma van. A megbízhatósági pontszám növeléséhez adjon hozzá 15 és 30 közötti példa hosszúságú kimondott szöveg.  
+    This prediction has a 44% confidence score. To increase the confidence score, add between 15 and 30 example utterances.  
 
-## <a name="client-application-next-steps"></a>Ügyfél – alkalmazás következő lépései
+## <a name="client-application-next-steps"></a>Client-application next steps
 
-Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. A beszélgetés utáni nyomon követést az ügyfélalkalmazás, például egy Azure bot nyújtja. 
+Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. The conversational follow-up is provided by the client application such as an Azure Bot. 
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitások típusai](luis-concept-entity-types.md)
-* [Betanítás](luis-how-to-train.md)
+* [Types of entities](luis-concept-entity-types.md)
+* [How to train](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [Tesztelés a LUIS portálon](luis-interactive-test.md)
-* [Azure-robot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [How to test in LUIS portal](luis-interactive-test.md)
+* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
+This tutorial created a LUIS app, created intents, added example utterances to each intent, added example utterances to the None intent, trained, published, and tested at the endpoint. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
 
 > [!div class="nextstepaction"]
-> [Előre összeállított szándékok és entitások hozzáadása ehhez az alkalmazáshoz](tutorial-machine-learned-entity.md)
+> [Add a decomposable entity to this app](tutorial-machine-learned-entity.md)

@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Blueprint sample to new environment'
 description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
-ms.date: 03/05/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 31363f8756a8483533a24a8005c0ca9cb7ea7ea0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216926"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321738"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
 
@@ -183,9 +183,7 @@ When finished with this tutorial, delete the following resources:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about the [blueprint lifecycle](../concepts/lifecycle.md)
-- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása
-- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+In this tutorial, you've learned how to create a new blueprint from a sample definition. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)

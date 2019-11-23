@@ -1,6 +1,6 @@
 ---
-title: Igényelhető virtuális gépek létrehozása és kezelése a Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá igényelhető virtuális gépet egy laborhoz Azure DevTest Labs
+title: Create and manage claimable VMs in Azure DevTest Labs | Microsoft Docs
+description: Learn how to add a claimable virtual machine to a lab in Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a3b8085a4dd2ece384ece72578ffafbd0e2e0b9d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184288"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383951"
 ---
-# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Igényelhető virtuális gépek létrehozása és kezelése Azure DevTest Labs
-Az igény szerinti virtuális gépeket hasonló módon veheti fel a laborba úgy, hogy hogyan [vegyen fel egy szabványos virtuális gépet](devtest-lab-add-vm.md) – egy olyan *alapból* , amely [Egyéni rendszerkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md)vagy [piactér-rendszerkép](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti a Azure Portal használatával, hogy a DevTest Labs szolgáltatásban egy, az igénylést használó virtuális gépet felvegyen egy laborba, és megjeleníti a felhasználó által a virtuális gép igénylésére és visszaigénylésére vonatkozó folyamatokat.
+# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Create and manage claimable VMs in Azure DevTest Labs
+You add a claimable VM to a lab in a similar manner to how you [add a standard VM](devtest-lab-add-vm.md) – from a *base* that is either a [custom image](devtest-lab-create-template.md), [formula](devtest-lab-manage-formulas.md), or [Marketplace image](devtest-lab-configure-marketplace-images.md). This tutorial walks you through using the Azure portal to add a claimable VM to a lab in DevTest Labs, and shows the processes a user follows to claim and unclaim the VM.
 
-## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>A lekéréses virtuális gép tesztkörnyezetben való hozzáadásának lépései Azure DevTest Labs
-1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a **DEVOPS** szakaszban. Ha a * (csillag) lehetőséget választja a **DevTest Labs** mellett a **DEVOPS** szakaszban. Ez a művelet hozzáadja a **DevTest Labs** szolgáltatást a bal oldali navigációs menühöz, hogy a következő alkalommal könnyen elérhető legyen. Ezután kiválaszthatja a bal oldali navigációs menü **DevTest Labs** elemét.
+## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Steps to add a claimable VM to a lab in Azure DevTest Labs
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Select **All Services**, and then select **DevTest Labs** in the **DEVOPS** section. If you select * (star) next to **DevTest Labs** in the **DEVOPS** section. This action adds **DevTest Labs** to the left navigational menu so that you can access it easily the next time. Then, you can select **DevTest Labs** on the left navigational menu.
 
-    ![Minden szolgáltatás – válassza a DevTest Labs lehetőséget](./media/devtest-lab-create-lab/all-services-select.png)
-1. A Labs listából válassza ki azt a labort, amelyben létre szeretné hozni a virtuális gépet.
-2. A labor **Áttekintés** lapján válassza a **+ Hozzáadás**lehetőséget.
+    ![All services - select DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
+1. From the list of labs, select the lab in which you want to create the VM.
+2. On the lab's **Overview** page, select **+ Add**.
 
-    ![Virtuális gép hozzáadása gomb](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. A **kiinduló** kiválasztása lapon válasszon ki egy Piactéri rendszerképet a virtuális géphez.
-1. A **virtuális gép** lap **alapbeállítások** lapján hajtsa végre a következő műveleteket:
-    1. A virtuális gép neve szövegmezőben adjon meg egy nevet a **virtuális gépnek** . A szövegmező előre ki van töltve egy egyedi, automatikusan létrehozott névvel. A név az e-mail-címen belüli felhasználónévnek felel meg, amelyet egy egyedi 3 számjegyű szám követ. Ezzel a funkcióval megtakaríthatja a gép nevét, és minden egyes számítógép létrehozásakor begépelheti azt. Ha kívánja, felülbírálhatja ezt az automatikusan kitöltött mezőt az Ön által választott névvel. A virtuális gép automatikusan kitöltött nevének felülbírálásához írjon be egy nevet a virtuálisgép- **név** szövegmezőbe.
-    2. Adjon meg egy **felhasználónevet** , amely rendszergazdai jogosultságokat kap a virtuális gépen. A gép **felhasználóneve** előre ki van töltve egy egyedi, automatikusan létrehozott névvel. A név az e-mail-címen belüli felhasználónévnek felel meg. Ezzel a funkcióval időt takaríthat meg, hogy minden új gép létrehozásakor eldöntse a felhasználónevet. Ezt követően felülbírálhatja ezt az automatikusan kitöltött mezőt az Ön által választott felhasználónévvel, ha szeretné. A felhasználónévhez tartozó automatikusan kitöltött érték felülbírálásához írjon be egy értéket a **Felhasználónév** szövegmezőbe. Ez a felhasználó **rendszergazdai** jogosultságokat kap a virtuális gépen.
-    3. Ha az első virtuális gépet a laborban hozza létre, adjon meg egy **jelszót** a felhasználó számára. Ha ezt a jelszót alapértelmezett jelszóként szeretné menteni a laborhoz társított Azure Key vaultban, válassza a **Mentés alapértelmezett jelszóként**lehetőséget. Az alapértelmezett jelszót a Key Vault menti a Name: **VmPassword**. Amikor további virtuális gépeket próbál létrehozni a tesztkörnyezetben, a rendszer automatikusan kiválasztja a **jelszót**a **VmPassword** . Az érték felülbírálásához törölje a jelet a **mentett titkos kód használata** jelölőnégyzetből, és adjon meg egy jelszót.
+    ![Add VM button](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+1. On the **Choose a base** page, select a marketplace image for the VM.
+1. On the **Basic Settings** tab of the **Virtual machine** page, do the following actions:
+    1. Enter a name for the VM in the **Virtual machine name** text box. The text box is pre-filled for you with a unique auto-generated name. The name corresponds to the user name within your email address followed by a unique 3-digit number. This feature saves you the time to think of a machine name and type it every time you create a machine. You can override this auto-filled field with a name of your choice if you wish to. To override the auto-filled name for the VM, enter a name in the **Virtual machine name** text box.
+    2. Enter a **User Name** that is granted administrator privileges on the virtual machine. The **user name** for the machine is pre-filled with a unique auto-generated name. The name corresponds to the user name within your email address. This feature saves you the time to decide on a username every time you create a new machine. Again, you can override this auto-filled field with a username of your choice if you wish to. To override the auto-filled value for user name, enter a value in the **User Name** text box. This user is granted **administrator** privileges on the virtual machine.
+    3. If you are creating first VM in the lab, enter a **password** for the user. To save this password as a default password in the Azure key vault associated with the lab, select **Save as default password**. The default password is saved in the key vault with the name: **VmPassword**. When you try to create subsequent VMs in the lab, **VmPassword** is automatically selected for the **password**. To override the value, clear the **Use a saved secret** check box, and enter a password.
 
-        Először a Key vaultban is mentheti a titkos kulcsokat, majd használhatja azt a laborban található virtuális gép létrehozásakor. További információ: a [titkos kulcsok tárolása a kulcstartóban](devtest-lab-store-secrets-in-key-vault.md). A Key vaultban tárolt jelszó használatához válassza a **mentett titkos kód használata**lehetőséget, és adjon meg egy olyan kulcsot, amely megfelel a titkos kulcsnak (jelszó).
-    4. A **További beállítások** szakaszban válassza a **méret módosítása**lehetőséget. Válassza ki az előre definiált elemek egyikét, amely meghatározza a processzor magjait, a RAM méretét és a létrehozandó virtuális gép merevlemezének méretét.
-    5. Válassza az összetevők **hozzáadása vagy eltávolítása**lehetőséget. Válassza ki és konfigurálja azokat az összetevőket, amelyeket hozzá szeretne adni az alaprendszerképhez.
-    **Megjegyzés:** Ha most ismerkedik a DevTest Labs szolgáltatással vagy az összetevők konfigurálásával, tekintse meg a [meglévő összetevő hozzáadása virtuális géphez](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) című szakaszt, és ha elkészült, térjen vissza ide.
-2. Váltson a felül található **Speciális beállítások** lapra, és végezze el a következő műveleteket:
-    1. Ha módosítani szeretné azt a virtuális hálózatot, amelyen a virtuális gép található, válassza a **VNet módosítása**lehetőséget.
-    2. Az alhálózat módosításához válassza az **alhálózat módosítása**lehetőséget.
-    3. Annak megadása, hogy a virtuális gép IP-címe **nyilvános, magánjellegű vagy megosztott**.
-    4. A virtuális gép automatikus törléséhez határozza meg a **lejárat dátumát és időpontját**.
-    5. Ahhoz, hogy a virtuális gép számára elérhető legyen egy labor-felhasználó, válassza az **Igen** lehetőséget a **gép igény** szerinti beállításának megköveteléséhez.
-    6. Adja meg a tesztkörnyezet felhasználói számára elérhetővé tenni kívánt **virtuális gép példányainak** számát.
-3. Válassza a **Létrehozás** lehetőséget a megadott virtuális gép laborhoz való hozzáadásához.
+        You can also save secrets in the key vault first and then use it while creating a VM in the lab. For more information, see [Store secrets in a key vault](devtest-lab-store-secrets-in-key-vault.md). To use the password stored in the key vault, select **Use a saved secret**, and specify a key value that corresponds to your secret (password).
+    4. In the **More options** section, select **Change size**. Select one of the predefined items that specify the processor cores, RAM size, and the hard drive size of the VM to create.
+    5. Select **Add or Remove Artifacts**. Select and configure the artifacts that you want to add to the base image.
+    **Note:** If you're new to DevTest Labs or configuring artifacts, refer to the [Add an existing artifact to a VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) section, and then return here when finished.
+2. Switch to the **Advanced Settings** tab at the top, and do the following actions:
+    1. To change the virtual network that the VM is in, select **Change VNet**.
+    2. To change the subnet, select **Change subnet**.
+    3. Specify whether the IP address of the VM is **public, private, or shared**.
+    4. To automatically delete the VM, specify the **expiration date and time**.
+    5. To make the VM claimable by a lab user, select **Yes** for **Make this machine claimable** option.
+    6. Specify the number of the **instances of VM** that you want to make it available to your lab users.
+3. Select **Create** to add the specified VM to the lab.
 
-   A labor lapon megjelenik a virtuális gép létrehozásának állapota – elsőként a **Létrehozás**után, majd a virtuális gép elindítása után **futtatva** .
+   The lab page displays the status of the VM's creation - first as **Creating**, then as **Running** after the VM has been started.
 
 > [!NOTE]
-> Ha [Azure Resource Manager-sablonokon](devtest-lab-create-environment-from-arm.md)keresztül helyez üzembe tesztkörnyezet-alapú virtuális gépeket, a tulajdonságok szakaszban a **allowClaim** tulajdonság True értékre állításával hozhat létre igénylésre képes virtuális gépeket.
+> If you deploy lab VMs through [Azure Resource Manager templates](devtest-lab-create-environment-from-arm.md), you can create claimable VMs by setting the **allowClaim** property to true in the properties section.
 
 
-## <a name="using-a-claimable-vm"></a>Igény szerinti virtuális gép használata
+## <a name="using-a-claimable-vm"></a>Using a claimable VM
 
-A felhasználók az alábbi lépések egyikével igényelhetnek bármely virtuális gépet a "igényelhető virtuális gépek" listájáról:
+A user can claim any VM from the list of "Claimable virtual machines" by doing one of these steps:
 
-* A labor "áttekintés" paneljének alján található "igényelhető virtuális gépek" listájában kattintson a jobb gombbal a listában szereplő egyik virtuális gépre, és válassza a **jogcím-gép**lehetőséget.
+* From the list of "Claimable virtual machines" at the bottom of the lab's "Overview" pane, right-click on one of the VMs in the list and choose **Claim machine**.
 
-  ![Igényeljen egy konkrét igényelhető virtuális gépet.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
-
-
-* Az "áttekintés" panel tetején válassza a **jogcím bármelyik**lehetőséget. A rendszer egy véletlenszerűen kiválasztott virtuális gépet rendel a jogcímek listájához.
-
-  ![Igényeljen bármely igényelhető virtuális gépet.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Request a specific claimable VM.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-Miután egy felhasználó megkövetelte a virtuális gépet, a DevTest Labs elindítja a gépet, és áthelyezi a labor felhasználó "saját virtuális gépek" listájára. Ez azt jelenti, hogy a labor felhasználó most már rendelkezik tulajdonosi privilegdes ezen a mahcine. A lépéshez szükséges idő a kezdési időponttól és a jogcím-esemény során végrehajtott egyéb egyéni művelettől függően változhat. Az igénylést követően a gép már nem érhető el a kérelmezhető készletben.  
+* At the top of the "Overview" pane, choose **Claim any**. A random virtual machine is assigned from the list of claimable VMs.
 
-## <a name="unclaim-a-vm"></a>Virtuális gép lekérése
+  ![Request any claimable VM.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
-Ha egy felhasználó egy igényelt virtuális gép használatával fejeződött be, és elérhetővé szeretné tenni valaki másnak, a következő lépések egyikével visszaadhatják a kért virtuális gépet a jogcímek listájához:
 
-- A "saját virtuális gépek" listájában kattintson a jobb gombbal a listában szereplő egyik virtuális gépre, vagy válassza ki a három pontot (...), és válassza a **jogcímek**megszüntetése lehetőséget.
+After a user claims a VM, DevTest Labs will start the machine and move it up into lab user's list of "My virtual machines". This means the lab user will now have owner privileges on this machine. The time required for this step may vary depending on start up times as well as any other custom actions being performed during the claim event. Once claimed, the machine is no longer available in the claimable pool.  
 
-  ![A virtuális gép listáján szereplő virtuális gép lekérése.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
+## <a name="unclaim-a-vm"></a>Unclaim a VM
 
-- A "saját virtuális gépek" listájában válasszon ki egy virtuális gépet a felügyeleti ablaktáblájának megnyitásához, majd a felső menüsorból válassza a kikapcsolás **elemet.**
+When a user is finished using a claimed VM and wants to make it available to someone else, they can return the claimed VM to the list of claimable virtual machines by doing one of these steps:
 
-  ![Virtuális gép lekérése a virtuális gép felügyeleti paneljén.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
+- From the list of "My virtual machines", right-click on one of the VMs in the list – or select its ellipsis (...) – and choose **Unclaim**.
 
-Ha a felhasználó nem igényel virtuális gépet, akkor már nem rendelkezik tulajdonosi engedélyekkel az adott labor virtuális géphez, és az elérhetővé válik bármely más labor-felhasználó számára abban az állapotban, hogy a készlethez retured. 
+  ![Unclaim a VM on the list of VM.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
 
-### <a name="transferring-the-data-disk"></a>Az adatlemez átvitele
-Ha egy igényelt virtuális gépnek van egy adatlemeze, és a felhasználó nem állítja azt, akkor az adatlemez marad a virtuális géppel. Ha egy másik felhasználó ezt követően azt állítja be, hogy a virtuális gép, az új felhasználó az adatlemezt és a virtuális gépet is állítja be.
+- In the list of "My virtual machines", select a VM to open its management pane, then select **Unclaim** from the top menu bar.
 
-Ez az úgynevezett "adatlemez átvitele". Az adatlemez ezután elérhetővé válik az **adatlemezek** az új felhasználó listájában, amelyekkel kezelhetők.
+  ![Unclaim a VM on the VM's management pane.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-![Adatlemezek visszaigénylése](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+When a user unclaims a VM, they no longer have owner permissions for that specific lab VM and it is available to be claimed by any other lab user in the state that it was retured to the pool. 
+
+### <a name="transferring-the-data-disk"></a>Transferring the data disk
+If a claimable VM has a data disk attached to it and a user unclaims it, the data disk stays with the VM. When another user then claims that VM, that new user claims the data disk as well as the VM.
+
+This is known as "transferring the data disk". The data disk then becomes available in the new user's list of **My data disks** for them to manage.
+
+![Unclaim data disks.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-* A létrehozást követően csatlakozhat a virtuális géphez a felügyeleti paneljén a **Kapcsolódás** lehetőség kiválasztásával.
-* Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Once it is created, you can connect to the VM by selecting **Connect** on its management pane.
+* Explore the [DevTest Labs Azure Resource Manager quickStart template gallery](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

@@ -1,70 +1,70 @@
 ---
 title: Gyakori hibák elhárítása
-description: Megtudhatja, hogyan lehet elhárítani a tervrajzok létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat.
-ms.date: 12/11/2018
+description: Learn how to troubleshoot issues creating, assigning, and removing blueprints such as policy violations and blueprint parameter functions.
+ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960296"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406610"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Troubleshoot errors using Azure Blueprints
 
-A tervrajzok létrehozásakor vagy kiosztásakor hibákat lehet futtatni. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
+You may run into errors when creating or assigning blueprints. This article describes various errors that may occur and how to resolve them.
 
-## <a name="finding-error-details"></a>Hiba részleteinek megállapítása
+## <a name="finding-error-details"></a>Finding error details
 
-Számos hiba lesz a terv egy hatókörhöz való hozzárendelésének eredménye. Ha egy hozzárendelés meghiúsul, a terv részletesen ismerteti a sikertelen telepítés részleteit. Ez az információ azt jelzi, hogy a probléma kijavítható, és a következő telepítés sikeres lesz.
+Many errors will be the result of assigning a blueprint to a scope. When an assignment fails, the blueprint provides details about the failed deployment. This information indicates the issue so that it can be fixed and the next deployment succeeds.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról, és a keresőmező segítségével szűrje a terv-hozzárendeléseket a sikertelen hozzárendelés megkereséséhez. A hozzárendelések tábláját a **kiépítési állapot** oszlopban is rendezheti, ha az összes sikertelen hozzárendelést együtt szeretné látni.
+1. Select **Assigned blueprints** from the page on the left and use the search box to filter the blueprint assignments to find the failed assignment. You can also sort the table of assignments by the **Provisioning State** column to see all failed assignments grouped together.
 
-1. Kattintson a _nem_ megfelelő állapotú tervezetre, vagy kattintson a jobb gombbal, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
+1. Left-click on the blueprint with the _Failed_ status or right-click and select **View assignment details**.
 
-1. Egy piros szalagcím figyelmeztetése, hogy a hozzárendelés meghiúsult a terv-hozzárendelés oldal tetején. További részletekért kattintson a szalagcím tetszőleges pontjára.
+1. A red banner warning that the assignment has failed is at the top of the blueprint assignment page. Click anywhere on the banner to get more details.
 
-Gyakori, hogy a hiba oka egy összetevő, nem pedig a terv egésze. Ha egy összetevő létrehoz egy Key Vault, és Azure Policy megakadályozza a Key Vault létrehozását, a teljes hozzárendelés sikertelen lesz.
+It's common for the error to be caused by an artifact and not the blueprint as a whole. If an artifact creates a Key Vault and Azure Policy prevents Key Vault creation, the entire assignment will fail.
 
-## <a name="general-errors"></a>Általános hibák
+## <a name="general-errors"></a>General errors
 
-### <a name="policy-violation"></a>Forgatókönyv: szabályzat megsértése
-
-#### <a name="issue"></a>Probléma
-
-A sablon központi telepítése a szabályzat megsértése miatt nem sikerült.
-
-#### <a name="cause"></a>Ok
-
-Egy házirend több okból is ütközhet az üzembe helyezéssel:
-
-- A létrehozandó erőforrást házirend korlátozza (általában SKU vagy Location korlátozásokkal).
-- Az üzemelő példány olyan mezőket állít be, amelyeket a szabályzat konfigurál (közös címkékkel)
-
-#### <a name="resolution"></a>Megoldás:
-
-Módosítsa a tervet úgy, hogy az ne ütközzön a hiba részleteiben szereplő szabályzatokkal. Ha ez a változás nem lehetséges, egy másik lehetőség, hogy a házirend-hozzárendelés hatóköre megváltozott, így a terv már nem ütközik a szabályzattal.
-
-### <a name="escape-function-parameter"></a>Forgatókönyv: a Blueprint paraméter egy függvény
+### <a name="policy-violation"></a>Scenario: Policy Violation
 
 #### <a name="issue"></a>Probléma
 
-A függvények feldolgozására szolgáló tervrajzi paramétereket a rendszer az összetevőknek való továbbítás előtt dolgozza fel.
+The template deployment failed because of policy violation.
 
 #### <a name="cause"></a>Ok
 
-Egy függvényt (például `[resourceGroup().tags.myTag]`t) használó tervrajzi paraméter átadása egy összetevőnek, amely a dinamikus függvény helyett a tárgyon beállított függvény feldolgozott eredményét eredményezi.
+A policy may conflict with the deployment for a number of reasons:
 
-#### <a name="resolution"></a>Megoldás:
+- The resource being created is restricted by policy (commonly SKU or location restrictions)
+- The deployment is setting fields that are configured by policy (common with tags)
 
-Ha paraméterként át szeretne adni egy függvényt, a teljes karakterláncot a `[` úgy kell elmenekülnie, hogy a terv paramétere `[[resourceGroup().tags.myTag]`. Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/template-expressions.md).
+#### <a name="resolution"></a>Felbontás
+
+Change the blueprint so it doesn't conflict with the policies in the error details. If this change isn't possible, an alternative option is to have the scope of the policy assignment changed so the blueprint is no longer in conflict with the policy.
+
+### <a name="escape-function-parameter"></a>Scenario: Blueprint parameter is a function
+
+#### <a name="issue"></a>Probléma
+
+Blueprint parameters that are functions are processed before being passed to artifacts.
+
+#### <a name="cause"></a>Ok
+
+Passing a blueprint parameter that uses a function, such as `[resourceGroup().tags.myTag]`, to an artifact results in the processed outcome of the function being set on the artifact instead of the dynamic function.
+
+#### <a name="resolution"></a>Felbontás
+
+To pass a function through as a parameter, escape the entire string with `[` such that the blueprint parameter looks like `[[resourceGroup().tags.myTag]`. The escape character causes Blueprints to treat the value as a string when processing the blueprint. Blueprints then places the function on the artifact allowing it to be dynamic as expected. For more information, see [Syntax and expressions in Azure Resource Manager templates](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
-- Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
+- Get answers from Azure experts through [Azure Forums](https://azure.microsoft.com/support/forums/).
 - Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+- If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.

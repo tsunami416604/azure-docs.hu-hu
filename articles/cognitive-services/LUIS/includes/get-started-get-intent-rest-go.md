@@ -1,25 +1,25 @@
 ---
-title: A REST-hívás beszerzése a Go-ban
+title: Get intent with REST call in Go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125507"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414513"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Go](https://golang.org/) programozási nyelv  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125507"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Az előrejelzési eredmény beszerzéséhez használja a Go-t az előrejelzési végpont beolvasása [API](https://aka.ms/luis-apim-v3-prediction) lekéréséhez.
+Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
 1. Hozzon létre egy új fájlt `predict.go` néven. Adja hozzá a következő kódot:
     
@@ -83,12 +83,12 @@ Az előrejelzési eredmény beszerzéséhez használja a Go-t az előrejelzési 
     }
     ```
 
-1. Cserélje le a következő értékeket:
+1. Replace the following values:
 
-    * `YOUR-KEY` az alapszintű kulccsal
-    * `YOUR-ENDPOINT` a végponttal, például `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. Ha a parancssor ugyanabban a címtárban található, ahol a fájlt létrehozta, adja meg a következő parancsot a go-fájl fordításához:
+1. With a command prompt in the same directory as where you created the file, enter the following command to compile the Go file:
 
     ```console
     go build predict.go
@@ -111,7 +111,7 @@ Az előrejelzési eredmény beszerzéséhez használja a Go-t az előrejelzési 
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    Az olvashatósághoz formázott JSON:
+    JSON formatted for readability:
 
     ```json
     {
@@ -161,9 +161,9 @@ Az előrejelzési eredmény beszerzéséhez használja a Go-t az előrejelzési 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
+When you are finished with this quickstart, delete the file from the file system. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

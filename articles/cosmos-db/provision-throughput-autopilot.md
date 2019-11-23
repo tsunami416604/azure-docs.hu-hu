@@ -1,101 +1,112 @@
 ---
-title: Hozzon létre Azure Cosmos-tárolókat és-adatbázisokat az Autopilot módban.
-description: Ismerje meg az előnyöket, használati eseteket, valamint az Azure Cosmos-adatbázisok és-tárolók üzembe helyezését Autopilot módban.
+title: Create Azure Cosmos containers and databases in autopilot mode.
+description: Learn about the benefits, use cases, and how to provision Azure Cosmos databases and containers in autopilot mode.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953133"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383089"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása Autopilot módban (előzetes verzió)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Create Azure Cosmos containers and databases in autopilot mode (Preview)
 
-Azure Cosmos DB lehetővé teszi az átviteli sebesség manuális vagy Autopilot módban való kiépítését a tárolókban. Ez a cikk az Autopilot mód előnyeit és használati eseteit ismerteti.
+Azure Cosmos DB allows you to provision throughput on your containers in either manual or autopilot mode. This article describes the benefits and use cases of autopilot mode.
 
 > [!NOTE]
-> Az Autopilot mód jelenleg nyilvános előzetes verzióban érhető el. Az Autopilot funkció Azure Cosmos-fiókhoz való engedélyezéséhez tekintse meg a jelen cikk [Autopilot engedélyezése](#enable-autopilot) című szakaszát. Az Autopilot csak új adatbázisok és tárolók számára engedélyezhető, és a meglévő tárolók és adatbázisok esetében nem érhető el.
+> Autopilot mode is currently available in public preview. To enable autopilot feature for your Azure Cosmos account, see the [enable autopilot](#enable-autopilot) section of this article. You can enable autopilot for new databases and containers only,it's not available for existing containers and databases.
 
-Az átviteli sebesség manuális kiépítés mellett mostantól az Azure Cosmos-tárolókat is konfigurálhatja Autopilot módban. Az Autopilot módban konfigurált Azure Cosmos-tárolók és-adatbázisok **automatikusan és azonnal méretezhetik a kiépített átviteli sebességet az alkalmazás igényeinek megfelelően anélkül, hogy veszélyeztetné a SLA-kat.**
+In addition to manual provisioning of throughput, you can now configure Azure cosmos containers in autopilot mode. Azure Cosmos containers and databases configured in autopilot mode will **automatically and instantly scale the provisioned throughput based on your application needs without compromising the SLAs.**
 
-Többé nem kell manuálisan kezelnie a kiépített átviteli sebességet vagy a kezelői sebesség korlátozásával kapcsolatos problémákat. Az Autopilot módban konfigurált Azure Cosmos-tárolók azonnal méretezhetők a munkaterhelésre adott válasz nélkül, anélkül, hogy ez hatással lenne a munkaterhelés rendelkezésre állására, késésére, átviteli sebességére vagy teljesítményére. A magas kihasználtság alatt az Autopilot módban konfigurált Azure Cosmos-tárolók a folyamatban lévő műveletek befolyásolása nélkül méretezhetők vagy leállíthatók.
+You no longer need to manually manage the provisioned throughput or handle rate-limiting issues. Azure Cosmos containers configured in autopilot mode can be scaled instantly in response to the workload without any impacting the availability, latency, throughput, or performance of the workload globally. Under high utilization, Azure Cosmos containers configured in autopilot mode can be scaled up or down without impacting the ongoing operations.
 
-A tárolók és adatbázisok robotpilóta-módban való konfigurálásakor meg kell adnia a maximális átviteli sebességet, `Tmax` nem lehet túllépni. A tárolók ezután azonnal méretezhetők a számítási feladatok igénye alapján a `0.1*Tmax < T < Tmax` tartományon belül. Más szóval a tárolók és az adatbázisok a munkaterhelési igényeknek megfelelően méretezhetők, a beállított maximális átviteli sebességtől 10%-kal, a beállított maximális átviteli sebességig. Az Autopilot-adatbázison vagy a tárolón bármikor módosíthatja a maximális átviteli sebesség (Tmax) beállítást. Az Autopilot beállítás használata esetén az 400 RU/s minimális átviteli sebesség a tároló vagy az adatbázis esetében már nem alkalmazható.
+When configuring containers and databases in autopilot mode, you need to specify the maximum throughput `Tmax`  not to be exceeded. Containers can then scale instantly based on the workload needs within the `0.1*Tmax < T < Tmax` range. In other words, containers and databases scale instantly based on the workload needs, from as low as 10% of the maximum throughput value that you have configured, and up to the configured maximum throughput value. You can change the maximum throughput (Tmax) setting on autopilot database or container at any point in time. With autopilot option, the 400 RU/s minimum throughput per container or database is no longer applicable.
 
-Az Autopilot előzetes verziójában a tárolón vagy az adatbázison megadott maximális átviteli sebességnél a rendszer a számított tárolási korláton belül lehetővé teszi a működést. Ha túllépi a tárolási korlátot, a maximális átviteli sebesség automatikusan magasabb értékre van igazítva. Ha az adatbázis-szint átviteli sebességét robotpilóta módban használja, az adatbázison belül engedélyezett tárolók száma a következő lesz: (0,001 * maximális átviteli sebesség). Ha például 20 000 Autopilot RU/s-t épít ki, akkor az adatbázis 20 tárolóval rendelkezhet.
+During the preview of autopilot, for the specified maximum throughput on the container or the database, the system allows operating within the calculated storage limit. If the storage limit is exceeded, then the maximum throughput is automatically adjusted to a higher value. When using database level throughput with autopilot mode, the number of containers allowed within a database is calculated as: (0.001 * Max throughput ). For example, if you provision 20,000 autopilot RU/s, then the database can have 20 containers.
 
-## <a name="benefits-of-autopilot-mode"></a>Az Autopilot mód előnyei
+## <a name="benefits-of-autopilot-mode"></a>Benefits of autopilot mode
 
-Az Autopilot módban konfigurált Azure Cosmos-tárolók a következő előnyöket nyújtják:
+Azure Cosmos containers that are configured in autopilot mode have the following benefits:
 
-* **Egyszerű:** Az Autopilot módban lévő tárolók megszüntetik az összetettséget a kiépített átviteli sebesség (RUs) és a kapacitás manuális kezeléséhez a különböző tárolók esetében.
+* **Simple:** Containers in autopilot mode remove the complexity to manage provisioned throughput (RUs) and capacity manually for various containers.
 
-* **Skálázható:** Az Autopilot módban lévő tárolók zökkenőmentesen méretezhetők a kiosztott átviteli kapacitás igény szerint. Az ügyfélkapcsolatok, az alkalmazások és a meglévő SLA-kat nem érintik.
+* **Scalable:** Containers in autopilot mode seamlessly scale the provisioned throughput capacity as needed. There is no disruption to client connections, applications and they don’t impact any existing SLAs.
 
-* **Költséghatékony:** Ha robotpilóta módban konfigurált Azure Cosmos-tárolókat használ, csak azokat az erőforrásokat kell fizetnie, amelyeket a számítási feladatoknak óránként kell használniuk.
+* **Cost-effective:** When you use Azure Cosmos containers configured in autopilot mode, you only pay for the resources that your workloads need on a per-hour basis.
 
-* **Magasan elérhető:** Az Autopilot módban lévő Azure Cosmos-tárolók ugyanazt a globálisan elosztott, hibatűrő, magas rendelkezésre állású hátteret használják az adattartósság és a magas rendelkezésre állás érdekében.
+* **Highly available:** Azure Cosmos containers in autopilot mode use the same globally distributed, fault-tolerant, highly available backend to ensure data durability, and high availability always.
 
-## <a name="use-cases-of-autopilot-mode"></a>Az Autopilot mód használatának esetei
+## <a name="use-cases-of-autopilot-mode"></a>Use cases of autopilot mode
 
-Az Autopilot módban konfigurált Azure Cosmos-tárolók használati esetei a következők:
+The use cases for Azure Cosmos containers configured in autopilot mode include:
 
-* **Változó számítási feladatok:** Ha egy könnyű használatú alkalmazást futtat, és a maximális kihasználtsága 1 óra, akkor naponta többször, vagy évente többször is. Ilyenek például az emberi erőforrások, a költségvetések és az operatív jelentéskészítési alkalmazások. Ilyen esetekben az Autopilot módban konfigurált tárolók is használhatók, ezért nem kell manuálisan kiépíteni a csúcs-vagy az átlagos kapacitást.
+* **Variable workloads:** When you are running a lightly used application with peak usage of 1 hour to several hours few times each day, or several times per year. Examples include applications for human resources, budgeting, and operational reporting. For such scenarios, containers configured in autopilot mode can be used, you no longer need to manually provision for either peak or average capacity.
 
-* **Előre nem látható számítási feladatok:** Ha olyan munkaterheléseket futtat, amelyeken a nap folyamán adatbázis-használat van, de a tevékenységek is nehezen megbecsülhető. Ilyen például egy olyan forgalmi hely, amely az időjárás-előrejelzés változásakor meghaladó aktivitást lát. Az Autopilot üzemmódban konfigurált tárolók úgy módosítják a kapacitást, hogy megfeleljenek az alkalmazás maximális terhelésének, és a leskálázás a tevékenység túllépését eredményezi.
+* **Unpredictable workloads:** When you are running workloads where there is database usage throughout the day, but also peaks of activity that are hard to predict. An example includes a traffic site that sees a surge of activity when weather forecast changes. Containers configured in autopilot mode adjust the capacity to meet the needs of the application's peak load and scale back down when the surge of activity is over.
 
-* **Új alkalmazások:** Ha új alkalmazást telepít, és nem biztos benne, hogy mekkora mennyiségű kiosztott átviteli sebességre van szükség. Az Autopilot módban konfigurált tárolók automatikusan méretezhetők az alkalmazás kapacitási igényeire és követelményeire.
+* **New applications:** If you are deploying a new application and are unsure about how much provisioned throughput (i.e., how many RUs) you need. With containers configured in autopilot mode, you can automatically scale to the capacity needs and requirements of your application.
 
-* **Ritkán használt alkalmazások:** Ha olyan alkalmazást használ, amely naponta, hetente vagy havonta többször is használatban van, például egy kis mennyiségű alkalmazás/Web/Blog webhelyen.
+* **Infrequently used applications:** If you have an application that is only used for a few hours several times per day or week or month, such as a low-volume application/web/blog site.
 
-* **Fejlesztési és tesztelési adatbázisok:** A fejlesztők a munkaidő alatt használják az Azure Cosmos-fiókokat, de nem szükséges éjszakára vagy hétvégére használni őket. Az Autopilot módban konfigurált tárolók esetében a használaton kívüli minimálisra méretezhetők.
+* **Development and test databases:** Developers use the Azure Cosmos accounts during work hours but don't need them on nights or weekends. With containers configured in autopilot mode, they scale down to minimum when not in use.
 
-* **Ütemezett üzemi munkaterhelések/lekérdezések:** Ha egy adott tárolón ütemezett kérelmek/műveletek/lekérdezések sorozata van, és ha vannak olyan tétlen időszakok, amikor egy abszolút alacsony átviteli sebességen szeretne futni, mostantól könnyedén elvégezhető. Ha egy ütemezett lekérdezés/kérelem egy Autopilot módban konfigurált tárolóhoz van elküldve, a rendszer a szükséges mértékben automatikusan felskálázást végez, és futtatja a műveletet.
+* **Scheduled production workloads/queries:** When you have a series of scheduled requests/operations/queries on a single container, and if there are idle periods where you want to run at an absolute low throughput, you can now do that easily. When a scheduled query/request is submitted to a container configured in autopilot mode, it will automatically scale up as much as needed and run the operation.
 
-Az előző problémák megoldásához nem csupán nagy mennyiségű időt kell igénybe venni a megvalósításban, de összetettséget is bevezetnek a konfigurációban vagy a kódban, és gyakran kézi beavatkozásra van szükségük a megoldáshoz. Az Autopilot mód lehetővé teszi, hogy a fenti forgatókönyvek a dobozból is elérhetők legyenek, így többé nem kell aggódnia ezekkel a problémákról.
+Solutions to the previous problems not only require an enormous amount of time in implementation, but they also introduce complexity in configuration or your code, and frequently require manual intervention to address them. The autopilot mode enables above scenarios out of the box, so that you do not need to worry about these problems anymore.
 
-## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Összehasonlítás – kézi üzemmódban konfigurált tárolók és Autopilot mód
+## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Comparison – Containers configured in manual mode vs. autopilot mode
 
-|  | Manuális módban konfigurált tárolók  | Robotpilóta-módban konfigurált tárolók |
+|  | Containers configured in manual mode  | Containers configured in autopilot mode |
 |---------|---------|---------|
-| **Kiosztott átviteli sebesség** | Manuálisan kiépítve | Automatikusan és azonnal méretezhető a munkaterhelés-használati minták alapján. |
-| **Kérelmek/műveletek korlátozása (429)**  | Előfordulhat, hogy a felhasználás meghaladja a kiosztott kapacitást. | Nem fog történni, ha a felhasznált átviteli sebesség az Autopilot módban kiválasztott maximális átviteli sebességen belül van.   |
-| **Kapacitástervezés** |  Meg kell tennie a kezdeti kapacitás megtervezését és a szükséges átviteli sebesség kiépítését. |    Nem kell aggódnia a kapacitás megtervezése miatt. A rendszer automatikusan gondoskodik a kapacitás megtervezéséről és a kapacitások kezeléséről. |
-| **Díjszabás** | Manuálisan kiépített RU/s óránként. | Az egyszeri írási régió fiókjai esetében óradíjat használ a robotpilóta (RU/s) óránkénti díjszabása alapján. <br/><br/>A több írási régióval rendelkező fiókok esetében nem számítunk fel külön díjat a robotpilóta számára. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a több főkiszolgálós RU/s-díj használatával. |
-| **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
+| **Provisioned throughput** | Manually provisioned | Automatically and instantaneously scaled based on the workload usage patterns. |
+| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | Will not happen if the throughput consumed is within the max throughput that you choose with autopilot mode.   |
+| **Kapacitástervezés** |  You have to do an initial capacity planning and provision of the throughput you need. |    You don’t have to worry about capacity planning. The system automatically takes care of capacity planning and capacity management. |
+| **Díjszabás** | Manually provisioned RU/s per hour. | For single write region accounts, you pay for the throughput used on an hourly basis, by using the autopilot RU/s per hour rate. <br/><br/>For accounts with multiple write regions, there is no extra charge for autopilot. You pay for the throughput used on hourly basis using the same multi-master RU/s per hour rate. |
+| **Best suited for workload types** |  Predictable and stable workloads|   Unpredictable and variable workloads  |
 
-## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> az Autopilot engedélyezése Azure Portal
+## <a id="enable-autopilot"></a> Enable autopilot from Azure portal
 
-Kipróbálhatja az Autopilot-t az Azure Cosmos-fiókokban, ha engedélyezi a alkalmazást a Azure Portalról. Az Autopilot beállítás engedélyezéséhez kövesse az alábbi lépéseket:
+You can try out autopilot in your Azure Cosmos accounts by enabling in from Azure portal. Use the following steps to enable the autopilot option:
 
-1. Jelentkezzen be a [Azure Portalba.](https://portal.azure.com)
+1. Sign in to the [Azure portal.](https://portal.azure.com)
 
-2. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg az **új funkciók** lapot. Válassza az **automatikus próba** és **regisztrálás** lehetőséget a következő képernyőképen látható módon:
+2. Navigate to your Azure Cosmos account and open the **New Features** tab. Select **Auto Pilot** and **Register** as shown in the following screenshot:
 
-![Tároló létrehozása Autopilot módban](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
+![Create a container in autopilot mode](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
-## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Adatbázis vagy tároló létrehozása robotpilóta-móddal
+## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Create a database or a container with autopilot mode
 
-Az Autopilot-t konfigurálhatja adatbázisok vagy tárolók létrehozásához. Használja az alábbi lépéseket egy új adatbázis vagy tároló számára, engedélyezze az Autopilot-t, és határozza meg a maximális átviteli sebességet.
+You can configure autopilot for databases or containers while creating them. Use the following steps to a new database or container, enable autopilot, and specify the maximum throughput.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy az [Azure Cosmos Explorerben.](https://cosmos.azure.com/)
+1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos explorer.](https://cosmos.azure.com/)
 
-1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő** lapot.
+1. Navigate to your Azure Cosmos account and open the **Data Explorer** tab.
 
-1. Válassza az **új tároló**elemet, adja meg a tároló nevét, egy partíciós kulcsot. Válassza ki az **Autopilot** beállítást, és válassza ki azt a maximális átviteli sebességet, amelyet a tároló nem tud túllépni az Autopilot beállítás használatakor.
+1. Select **New Container**, enter a name for your container, a partition key. Select the **Autopilot** option, and choose the maximum throughput that the container cannot exceed when using the autopilot option.
 
-   ![Tároló létrehozása Autopilot módban](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
+   ![Create a container in autopilot mode](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Kattintson az **OK** gombra.
 
-A hasonló lépéseket követve létrehozhat egy, a kiépített átviteli sebességgel rendelkező adatbázist is az Autopilot módban.
+With similar steps, you can also create a database with provisioned throughput in autopilot mode.
+
+## <a id="autopilot-limits"></a> Throughput and storage limits for autopilot
+
+The following table shows the maximum throughout and storage limits for different options in autopilot mode:
+
+|Maximum throughput limit  |Maximum storage limit  |
+|---------|---------|
+|4000 RU/s  |   50 GB    |
+|20,000 RU/s  |  200 GB  |
+|100,000 RU/s    |  1 TB   |
+|500,000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [logikai partíciókhoz](partition-data.md).
-* Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
-* Útmutató az [átviteli sebesség Azure Cosmos-adatbázison](how-to-provision-database-throughput.md)való kiépítéséhez.
+* Learn more about [logical partitions](partition-data.md).
+* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
+* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).

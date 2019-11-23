@@ -1,36 +1,36 @@
 ---
 title: Folyamatos integráció az Azure Pipelinesszal
-description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azure Resource Manager-sablonokat.
+description: Learn how to continuously build, test, and deploy Azure Resource Manager templates.
 author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 457d2a8868283eed2e211ff26ce77156eee68e01
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149304"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326411"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
+# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous integration of Azure Resource Manager templates with Azure Pipelines
 
-Ismerje meg, hogyan hozhat létre és helyezhet üzembe Azure Resource Manager sablon-projekteket az Azure-folyamatok használatával.
+Learn how to use Azure Pipelines to continuously build and deploy Azure Resource Manager template projects.
 
-Az Azure DevOps fejlesztői szolgáltatásokat biztosít a csapatok számára a munka megtervezéséhez, a programkódok fejlesztéséhez való együttműködéshez, valamint alkalmazások létrehozásához és üzembe helyezéséhez. A fejlesztők az Azure DevOps Services használatával dolgozhatnak a felhőben. Az Azure DevOps a webböngészőn vagy az IDE-ügyfélen keresztül elérő szolgáltatások integrált készletét nyújtja. Az Azure-folyamat ezen funkciók egyike. Az Azure-folyamatok egy teljes funkcionalitású folyamatos integrációs (CI) és folyamatos kézbesítési (CD) szolgáltatás. Az előnyben részesített git-szolgáltatóval működik, és a legtöbb jelentős felhőalapú szolgáltatásban üzembe helyezhető. Ezután automatizálhatja a kód kiépítését, tesztelését és üzembe helyezését Microsoft Azure, Google Cloud Platform vagy Amazon Web Services.
+Azure DevOps provides developer services to support teams to plan work, collaborate on code development, and build and deploy applications. Developers can work in the cloud using Azure DevOps Services. Azure DevOps provides an integrated set of features that you can access through your web browser or IDE client. Azure Pipeline is one of these features. Azure Pipelines is a fully featured continuous integration (CI) and continuous delivery (CD) service. It works with your preferred Git provider and can deploy to most major cloud services. Then you can automate the build, testing, and deployment of your code to Microsoft Azure, Google Cloud Platform, or Amazon Web Services.
 
-Ez az oktatóanyag olyan Azure Resource Manager sablon-fejlesztőknek készült, akik új Azure DevOps-szolgáltatásokat és Azure-folyamatokat használnak. Ha már ismeri a GitHubot és a DevOps-t, ugorjon a [folyamat létrehozása](#create-a-pipeline)lehetőségre.
+This tutorial is designed for Azure Resource Manager template developers who are new Azure DevOps Services and Azure Pipelines. If you are already familiar with GitHub and DevOps, you can skip to [Create a pipeline](#create-a-pipeline).
 
 > [!NOTE]
-> Válasszon egy projekt nevét. Ha átugorja az oktatóanyagot, cserélje le bármelyik **AzureRmPipeline** a projekt nevével.
+> Pick a project name. When you go through the tutorial, replace any of the **AzureRmPipeline** with your project name.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * GitHub-adattár előkészítése
 > * Azure DevOps-projekt létrehozása
-> * Azure-folyamat létrehozása
-> * A folyamat központi telepítésének ellenőrzése
-> * A sablon frissítése és újbóli üzembe helyezése
+> * Create an Azure pipeline
+> * Verify the pipeline deployment
+> * Update the template and redeploy
 > * Az erőforrások eltávolítása
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
@@ -39,38 +39,38 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* **Egy GitHub-fiók**, amelyben felhasználhatja a sablonok tárházának létrehozását. Ha még nem rendelkezik ilyennel, [létrehozhat egyet ingyen](https://github.com). További információ a GitHub-adattárak használatáról: [GitHub-adattárak létrehozása](/azure/devops/pipelines/repos/github).
-* **Telepítse a Git szoftvert**. Ez az oktatóanyag-utasítás a *git bash* vagy a *git Shell*használatát ismerteti. Útmutatásért lásd: a [git telepítése]( https://www.atlassian.com/git/tutorials/install-git).
-* **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik ilyennel, létrehozhat egyet ingyen. Lásd: [szervezet vagy projekt gyűjtemény létrehozása]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* **[Visual Studio Code](https://code.visualstudio.com/) a Resource Manager-eszközök bővítménnyel**. Lásd [a bővítmény telepítését](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites) ismertető részt.
+* **A GitHub account**, where you use it to create a repository for your templates. If you don’t have one, you can [create one for free](https://github.com). For more information about using GitHub repositories, see [Build GitHub repositories](/azure/devops/pipelines/repos/github).
+* **Telepítse a Git szoftvert**. This tutorial instruction uses *Git Bash* or *Git Shell*. For instructions, see [Install Git]( https://www.atlassian.com/git/tutorials/install-git).
+* **An Azure DevOps organization**. If you don't have one, you can create one for free. See [Create an organization or project collection]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
 
-A GitHub a projekt forráskódjának tárolására szolgál, beleértve a Resource Manager-sablonokat is. Más támogatott adattárak esetében lásd: az [Azure DevOps által támogatott adattárak](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
+GitHub is used to store your project source code including Resource Manager templates. For other supported repositories, see [repositories supported by Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
 
-### <a name="create-a-github-repository"></a>GitHub-adattár létrehozása
+### <a name="create-a-github-repository"></a>Create a GitHub repository
 
-Ha nem rendelkezik GitHub-fiókkal, tekintse meg az [Előfeltételek](#prerequisites)című témakört.
+If you don’t have a GitHub account, see [Prerequisites](#prerequisites).
 
-1. Jelentkezzen be a [githubba](https://github.com).
-2. Válassza ki a fiókját a jobb felső sarokban, majd válassza ki **a tárházat**.
+1. Sign in to [GitHub](https://github.com).
+2. Select your account image on the upper right corner, and then select **Your repositories**.
 
-    ![Azure-DevOps Azure-folyamatok Azure Resource Manager létrehozása GitHub-tárház létrehozásához](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines create GitHub repository](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
 
-1. Válassza az **új**, zöld gomb lehetőséget.
-1. A **tárház neve**mezőbe írja be az adattár nevét.  Például: **AzureRmPipeline-repo**. Ne felejtse el lecserélni bármelyik **AzureRmPipeline** a projekt nevével. Az oktatóanyagban a **nyilvános** vagy a **magánjellegű** lehetőség közül választhat. Majd válassza a **Tárház létrehozása**lehetőséget.
-1. Írja le az URL-címet. Az adattár URL-címe a következő:
+1. Select **New**, a green button.
+1. In **Repository name**, enter a repository name.  For example, **AzureRmPipeline-repo**. Remember to replace any of **AzureRmPipeline** with your project name. You can select either **Public** or **private** for going through this tutorial. And then select **Create repository**.
+1. Write down the URL. The repository URL is the following format:
 
     ```url
     https://github.com/[YourAccountName]/[YourRepositoryName]
     ```
 
-Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden fejlesztője klónozott saját *helyi tárházát*, és egyesítheti a változtatásokat a távoli tárházban.
+This repository is referred to as a *remote repository*. Each of the developers of the same project can clone his/her own *local repository*, and merge the changes to the remote repository.
 
-### <a name="clone-the-remote-repository"></a>A távoli tárház klónozása
+### <a name="clone-the-remote-repository"></a>Clone the remote repository
 
-1. Nyissa meg a git-rendszerhéj vagy a git bash felületet.  Lásd: [Előfeltételek](#prerequisites).
-1. Ellenőrizze, hogy az aktuális mappa a **GitHub**-e.
+1. Open Git Shell or Git Bash.  Lásd: [Előfeltételek](#prerequisites).
+1. Verify your current folder is **github**.
 1. Futtassa az alábbi parancsot:
 
     ```bash
@@ -81,34 +81,34 @@ Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden 
     pwd
     ```
 
-    Cserélje le a **[YourAccountName]** nevet a GitHub-fiókja nevére, és cserélje le a **[YourGitHubRepositoryName]** helyére az előző eljárásban létrehozott adattár-névvel.
+    Replace **[YourAccountName]** with your GitHub account name, and replace **[YourGitHubRepositoryName]** with your repository name you created in the previous procedure.
 
-    Az alábbi képernyőképen egy példa látható.
+    The following screenshot shows an example.
 
-    ![Azure DevOps Azure-folyamatok Azure Resource Manager létrehozása GitHub bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines create GitHub bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
-A **CreateAzureStorage** mappa a sablon tárolására szolgáló mappa. A **pwd** parancs a mappa elérési útját jeleníti meg. Az elérési út a sablon mentése a következő eljárásba.
+The **CreateAzureStorage** folder is the folder where the template is stored. The **pwd** command shows the folder path. The path is where you save the template to in the following procedure.
 
-### <a name="download-a-quickstart-template"></a>Gyorsindítás sablon letöltése
+### <a name="download-a-quickstart-template"></a>Download a Quickstart template
 
-Sablon létrehozása helyett egy gyors üzembe helyezési [sablon]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)is letölthető. Ez a sablon létrehoz egy Azure Storage-fiókot.
+Instead of creating a template, you can download a [Quickstart template]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json). This template creates an Azure Storage account.
 
-1. Nyissa meg a Visual Studio Code-ot. Lásd: [Előfeltételek](#prerequisites).
-2. Nyissa meg a sablont a következő URL-címmel:
+1. Open Visual Studio code. Lásd: [Előfeltételek](#prerequisites).
+2. Open the template with the following URL:
 
     ```URL
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Mentse a fájlt **azuredeploy. JSON** néven a **CreateAzureStorage** mappába. A rendszer a mappa nevét és nevét is használja, mivel azok a folyamatban vannak.  Ha megváltoztatja ezeket a neveket, frissítenie kell a folyamatban használt neveket.
+3. Save the file as **azuredeploy.json** to the **CreateAzureStorage** folder. Both the folder name and the file name are used as they are in the pipeline.  If you change these names, you must update the names used in the pipeline.
 
-### <a name="push-the-template-to-the-remote-repository"></a>A sablon leküldése a távoli tárházba
+### <a name="push-the-template-to-the-remote-repository"></a>Push the template to the remote repository
 
-A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a sablont a távoli tárházba.
+The azuredeploy.json has been added to the local repository. Next, you upload the template to the remote repository.
 
-1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash*eszközt.
-1. Módosítsa a könyvtárat a helyi tárház CreateAzureStorage mappájába.
-1. Ellenőrizze, hogy a **azuredeploy. JSON** fájl a mappában található-e.
+1. Open *Git Shell* or *Git Bash*, if it is not opened.
+1. Change directory to the CreateAzureStorage folder in your local repository.
+1. Verify the **azuredeploy.json** file is in the folder.
 1. Futtassa az alábbi parancsot:
 
     ```bash
@@ -117,61 +117,61 @@ A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a 
     git push origin master
     ```
 
-    Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
-1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím **https://github.com/[YourAccountName]/[YourGitHubRepository]** . A mappában a **CreateAzureStorage** mappát és a **Azuredeploy. JSON** fájlt kell látnia.
+    You might get a warning about LF. You can ignore the warning. **master** is the master branch.  You typically create a branch for each update. To simplify the tutorial, you use the master branch directly.
+1. Browse to your GitHub repository from a browser.  The URL is **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . You shall see the **CreateAzureStorage** folder and **Azuredeploy.json** inside the folder.
 
-Eddig létrehozott egy GitHub-tárházat, és feltöltött egy sablont az adattárba.
+So far, you have created a GitHub repository, and uploaded a template to the repository.
 
-## <a name="create-a-devops-project"></a>DevOps-projekt létrehozása
+## <a name="create-a-devops-project"></a>Create a DevOps project
 
-A következő eljárás folytatásához szükség van egy DevOps-szervezetre.  Ha még nem rendelkezik ilyennel, tekintse meg az [Előfeltételek](#prerequisites)című témakört.
+A DevOps organization is needed before you can proceed to the next procedure.  If you don’t have one, see [Prerequisites](#prerequisites).
 
-1. Jelentkezzen be az [Azure DevOps](https://dev.azure.com)-ba.
-1. Válasszon ki egy DevOps-szervezetet a bal oldalon.
+1. Sign in to [Azure DevOps](https://dev.azure.com).
+1. Select a DevOps organization from the left.
 
-    ![Azure DevOps-projekt létrehozása Azure-DevOps Azure-folyamatokkal Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines create Azure DevOps project](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. Válassza a **Create project** (Projekt létrehozása) lehetőséget. Ha nem rendelkezik projektekkel, a projekt létrehozása lap automatikusan megnyílik.
+1. Válassza a **Create project** (Projekt létrehozása) lehetőséget. If you don't have any projects, the create project page is opened automatically.
 1. Írja be a következő értékeket:
 
-    * **Projekt neve**: adja meg a projekt nevét. Az oktatóanyag legelején a projekt nevét is használhatja.
-    * **Verziókövetés**: válassza a **git**lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés**megjelenítéséhez.
+    * **Project name**: enter a project name. You can use the project name you picked at the very beginning of the tutorial.
+    * **Version control**: Select **Git**. You might need to expand **Advanced** to see **Version control**.
 
-    Használja az alapértelmezett értéket a többi tulajdonsághoz.
+    Use the default value for the other properties.
 1. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
 
-Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-ba való telepítésére szolgál.
+Create a service connection that is used to deploy projects to Azure.
 
-1. A bal oldali menü alján válassza a **projekt beállításai** lehetőséget.
-1. Válassza a **szolgáltatási kapcsolatok** lehetőséget a **folyamatok**alatt.
-1. Válassza az **új szolgáltatás-kapcsolatok**lehetőséget, majd válassza a **AzureResourceManager**lehetőséget.
+1. Select **Project settings** from the bottom of the left menu.
+1. Select **Service connections** under **Pipelines**.
+1. Select **New Service connection**, and then select **AzureResourceManager**.
 1. Írja be a következő értékeket:
 
-    * **Kapcsolatok neve**: adjon meg egy nevet. Például: **AzureRmPipeline-Conn**. Jegyezze fel ezt a nevet, a folyamat létrehozásakor szüksége lesz a névre.
-    * **Hatóköri szint**: válassza az **előfizetés**lehetőséget.
-    * **Előfizetés**: válassza ki az előfizetését.
-    * **Erőforráscsoport**: hagyja üresen.
-    * A **Kapcsolódás használatának engedélyezése az összes folyamat számára**. kiválasztott
+    * **Connection name**: enter a connection name. For example, **AzureRmPipeline-conn**. Write down this name, you need the name when you create your pipeline.
+    * **Scope level**: select **Subscription**.
+    * **Subscription**: select your subscription.
+    * **Resource Group**: Leave it blank.
+    * **Allow all pipelines to use this connection**. (selected)
 1. Kattintson az **OK** gombra.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-Eddig a következő feladatokat végezte el.  Ha kihagyja az előző szakaszt, mert már ismeri a GitHubot és a DevOps-t, a folytatás előtt végre kell hajtania a feladatokat.
+Until now, you have completed the following tasks.  If you skip the previous sections because you are familiar with GitHub and DevOps, you must complete the tasks before you continue.
 
-- Hozzon létre egy GitHub-tárházat, és mentse a [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) az adattár **CreateAzureStorage** mappájába.
-- Hozzon létre egy DevOps-projektet, és hozzon létre egy Azure Resource Manager szolgáltatás-összekötőt.
+- Create a GitHub repository, and save [this template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) to the **CreateAzureStorage** folder in the repository.
+- Create a DevOps project, and create an Azure Resource Manager service connection.
 
-Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
+To create a pipeline with a step to deploy a template:
 
-1. Válassza ki a **folyamatokat** a bal oldali menüben.
-1. Válassza az **új folyamat**lehetőséget.
-1. A **kapcsolat** lapon válassza a **GitHub**lehetőséget. Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, majd kövesse az utasításokat. Ha a következő képernyő jelenik meg, válassza a **csak adattárak lehetőséget**, és ellenőrizze, hogy az adattár szerepel-e a listában, mielőtt kiválasztja a **jóváhagyás & a telepítés**gombra.
+1. Select **Pipelines** from the left menu.
+1. Select **New pipeline**.
+1. From the **Connect** tab, select **GitHub**. If asked, enter your GitHub credentials, and then follow the instructions. If you see the following screen, select **Only select repositories**, and verify your repository is in the list before you select **Approve & Install**.
 
-    ![Azure Resource Manager Azure DevOps Azure-folyamatok csak adattárakat választanak](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines only select repositories](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. A **Select (kiválasztás** ) lapon válassza ki a tárházat.  Az alapértelmezett név: **[YourAccountName]/[YourGitHubRepositoryName]** .
-1. A **configure (Konfigurálás** ) lapon válassza a **kezdő folyamat**elemet. Megjeleníti a **Azure-pipelines. YML** folyamat fájlját két parancsfájl lépéssel.
-1. Cserélje le a **Steps** szakaszt a következő YAML:
+1. From the **Select** tab, select your repository.  The default name is **[YourAccountName]/[YourGitHubRepositoryName]** .
+1. From the **Configure** tab, select **Starter pipeline**. It shows the **azure-pipelines.yml** pipeline file with two script steps.
+1. Replace the **steps** section with the following YAML:
 
     ```yaml
     steps:
@@ -188,48 +188,48 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
         deploymentMode: 'Incremental'
     ```
 
-    A következőhöz hasonlóan néz ki:
+    It shall look like:
 
-    ![Azure DevOps Azure-YAML Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
 
     Hajtsa végre a következő módosításokat:
 
-    * **deloymentScope**: válassza ki az üzembe helyezés hatókörét a következő lehetőségek közül: `Management Group`, `Subscription` és `Resource Group`. Ebben az oktatóanyagban használja az **erőforráscsoportot** . További információ a hatókörökről: [telepítési hatókörök](./resource-group-template-deploy-rest.md#deployment-scope).
-    * **ConnectedServiceName**: adja meg a korábban létrehozott szolgáltatási kapcsolatok nevét.
-    * **SubscriptionName**: a cél ELŐfizetési azonosítójának meghatározása.
-    * **művelet**: az **erőforráscsoport létrehozása vagy frissítése** művelet 2 műveletet hajt végre – 1. hozzon létre egy erőforráscsoportot, ha új erőforráscsoport-nevet ad meg; 2. a megadott sablon üzembe helyezése.
-    * **resourceGroupName**: adjon meg egy új erőforráscsoport-nevet. Például: **AzureRmPipeline-RG**.
-    * **hely**: határozza meg az erőforráscsoport helyét.
-    * **templateLocation**: Ha a **csatolt** összetevő meg van adva, a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
-    * a **csmFile** a sablonfájl elérési útja. Nem kell megadnia a sablon paramétereit tartalmazó fájlt, mert a sablonban definiált összes paraméter alapértelmezett értékkel rendelkezik.
+    * **deloymentScope**: Select the scope of deployment from the options: `Management Group`, `Subscription` and `Resource Group`. Use **Resource Group** in this tutorial. To learn more about the scopes, see [Deployment scopes](./resource-group-template-deploy-rest.md#deployment-scope).
+    * **ConnectedServiceName**: Specify the service connection name that you created earlier.
+    * **SubscriptionName**:  Specify the target subscription ID.
+    * **action**: the **Create Or Update Resource Group** action does 2 actions - 1. create a resource group if a new resource group name is provided; 2. deploy the template specified.
+    * **resourceGroupName**: specify a new resource group name. For example, **AzureRmPipeline-rg**.
+    * **location**: specify the location for the resource group.
+    * **templateLocation**: when **Linked artifact** is specified, the task looks for the template file directly from the connected repository.
+    * **csmFile** is the path to the template file. You don't need to specify a template parameters file because all of the parameters defined in the template have default values.
 
-    További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
+    For more information about the task, see [Azure Resource Group Deployment task](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment), and [Azure Resource Manager template deployment task](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 1. Kattintson a **Mentés és futtatás** elemre.
-1. Válassza **a Mentés és Futtatás** újra lehetőséget. A rendszer menti a YAML fájl egy példányát a csatlakoztatott adattárba. A YAML-fájlt a tárház tallózásával érheti el.
-1. Ellenőrizze, hogy a folyamat végrehajtása sikeresen megtörtént-e.
+1. Select **Save and run** again. A copy of the YAML file is saved into the connected repository. You can see the YAML file by browse to your repository.
+1. Verify that the pipeline is executed successfully.
 
-    ![Azure DevOps Azure-YAML Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval**kezdődik.
-1. Válassza ki a Storage-fiók nevét a megnyitásához.
-1. Válassza ki a **Tulajdonságok** elemet. Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolást (LRS)** .
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Open the resource group. The name is what you specified in the pipeline YAML file.  You shall see one storage account created.  The storage account name starts with **store**.
+1. Select the storage account name to open it.
+1. Válassza ki a **Tulajdonságok** elemet. Notice the **Replication** is **Locally-redundant storage (LRS)** .
 
-    ![Azure Resource Manager Azure DevOps Azure-folyamatok portáljának ellenőrzése](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines portal verification](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
-## <a name="update-and-redeploy"></a>Frissítés és újbóli üzembe helyezés
+## <a name="update-and-redeploy"></a>Update and redeploy
 
-Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba, a folyamat automatikusan frissíti az erőforrásokat, a Storage-fiókot ebben az esetben.
+When you update the template and push the changes to the remote repository, the pipeline automatically updates the resources, the storage account in this case.
 
-1. Nyissa meg a **azuredeploy. JSON** fájlt a helyi adattárból a Visual Studio Code-ban.
-1. Frissítse a **Tárfióktípus** **defaultValue** értékét **Standard_GRSra**. Tekintse meg a következő képernyőképet:
+1. Open **azuredeploy.json** from your local repository in Visual Studio Code.
+1. Update the **defaultValue** of **storageAccountType** to **Standard_GRS**. Tekintse meg a következő képernyőképet:
 
-    ![Azure-DevOps Azure-YAML frissítésének Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines update yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 
 1. Mentse a módosításokat.
-1. A következő parancsok a git bash/shellből való futtatásával küldje el a módosításokat a távoli adattárba.
+1. Push the changes to the remote repository by running the following commands from Git Bash/Shell.
 
     ```bash
     git pull origin master
@@ -238,11 +238,11 @@ Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba
     git push origin master
     ```
 
-    Az első parancs szinkronizálja a helyi tárházat a távoli adattárral. Ne feledje, hogy a folyamat YAML-fájlja hozzá lett adva a távoli tárházhoz.
+    The first command syncs the local repository with the remote repository. Remember the pipeline YAML file was added to the remote repository.
 
-    A távoli tárház főágának frissítése után a folyamat újra bekerül.
+    With the master branch of the remote repository updated, the pipeline is fired again.
 
-A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók replikáció tulajdonságát.  Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
+To verify the changes, you can check the Replication property of the storage account.  See [Verify the deployment](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -253,11 +253,11 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
+You might also want to delete the GitHub repository and the Azure DevOps project.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehoz egy Azure DevOps-folyamatot egy Azure Resource Manager-sablon üzembe helyezéséhez. Annak megismeréséhez, hogyan lehet Azure-erőforrásokat több régióban üzembe helyezni, és hogyan alkalmazhat biztonságos üzembehelyezési gyakorlatokat, tekintse meg a következőt:
+In this tutorial, you create an Azure DevOps pipeline to deploy an Azure Resource Manager template. Annak megismeréséhez, hogyan lehet Azure-erőforrásokat több régióban üzembe helyezni, és hogyan alkalmazhat biztonságos üzembehelyezési gyakorlatokat, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [Biztonságos üzembehelyezési gyakorlatok](./deployment-manager-tutorial.md)

@@ -1,7 +1,7 @@
 ---
-title: Adatok szinkronizálása Azure SQL Database Edge-ből Azure Data Factory használatával | Microsoft Docs
-description: Tudnivalók az Azure SQL Database Edge és az Azure Blob Storage közötti adatszinkronizálásról
-keywords: SQL Database Edge, adatok szinkronizálása az SQL Database Edge-ből, az SQL Database Edge-adatgyárból
+title: Sync data from Azure SQL Database Edge by using Azure Data Factory | Microsoft Docs
+description: Learn about syncing data between Azure SQL Database Edge and Azure Blob storage
+keywords: sql database edge,sync data from sql database edge, sql database edge data factory
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -9,44 +9,44 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e75da9516303bb4250b6847a4b381d07b3d7dad
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501322"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384208"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása SQL Database Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Tutorial: Sync data from SQL Database Edge to Azure Blob storage by using Azure Data Factory
 
-Ebben az oktatóanyagban a Azure Data Factory segítségével az adatok növekményes szinkronizálása egy Azure SQL Database Edge-példányból az Azure Blob Storage-ba.
+In this tutorial, you'll use Azure Data Factory to incrementally sync data to Azure Blob storage from a table in an instance of Azure SQL Database Edge.
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Ha még nem hozott létre adatbázist vagy táblát a Azure SQL Database Edge-telepítésben, akkor az alábbi módszerek egyikével hozhat létre egyet:
+If you haven't already created a database or table in your Azure SQL Database Edge deployment, use one of these methods to create one:
 
-* [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) vagy [Azure Data Studio](/sql/azure-data-studio/download/) használatával csatlakozhat az SQL Database Edge-hez, és végrehajthat egy SQL-parancsfájlt az adatbázis és a tábla létrehozásához.
-* Hozzon létre egy SQL-adatbázist és-táblázatot a [Sqlcmd](/sql/tools/sqlcmd-utility/) használatával az SQL Database Edge-modulhoz való közvetlen csatlakozással. További információ: [Kapcsolódás az adatbázis-kezelőhöz a Sqlcmd használatával](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* A SQLPackage. exe használatával helyezzen üzembe egy dacpac-fájlt az SQL Database Edge-tárolón. Ez automatizálható úgy, hogy a SQLPackage fájl URI-JÁT a kívánt tulajdonságok konfigurációjának részeként, vagy közvetlenül a SqlPackage. exe ügyfélalkalmazás használatával helyezi üzembe a dacpac a SQL Database Edge-ben.
+* Use [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) or [Azure Data Studio](/sql/azure-data-studio/download/) to connect to SQL Database Edge. Run a SQL script to create the database and table.
+* Create a SQL database and table by using [SQLCMD](/sql/tools/sqlcmd-utility/) by directly connecting to the SQL Database Edge module. For more information, see [Connect to the Database Engine by using sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Use SQLPackage.exe to deploy a DAC package file to the SQL Database Edge container. You can automate this process by specifying the SqlPackage file URI as part of the module's desired properties configuration. You can also directly use the SqlPackage.exe client tool to deploy a DAC package to SQL Database Edge.
 
-    A sqlpackage letöltéséhez tekintse meg a [Sqlpackage letöltése és telepítése](/sql/tools/sqlpackage-download/)című témakört. A SqlPackage. exe következő mintáit kell megadnia, de további információért olvassa el a SqlPackage dokumentációját.
+    For information about how to download SqlPackage.exe, see [Download and install sqlpackage](/sql/tools/sqlpackage-download/). Following are some sample commands for SqlPackage.exe. For more information, see the SqlPackage.exe documentation.
 
-    **Dacpac létrehozása**:
+    **Create a DAC package**
 
     ```cmd
-    sqlpackage /Action:Extract /SourceConnectionString:"Data Source=<Server_Name>,<port>;Initial Catalog=<DB_name>;User ID=<user>;Password=<password>" /TargetFile:<dacpac_file_name> 
+    sqlpackage /Action:Extract /SourceConnectionString:"Data Source=<Server_Name>,<port>;Initial Catalog=<DB_name>;User ID=<user>;Password=<password>" /TargetFile:<dacpac_file_name>
     ```
 
-    **Dacpac alkalmazása**:
+    **Apply a DAC package**
 
     ```cmd
     sqlpackage /Action:Publish /Sourcefile:<dacpac_file_name> /TargetServerName:<Server_Name>,<port> /TargetDatabaseName:<DB_Name> /TargetUser:<user> /TargetPassword:<password>
     ```
 
-## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>SQL-tábla és-eljárás létrehozása a vízjel szintjeinek tárolására és frissítésére
+## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>Create a SQL table and procedure to store and update the watermark levels
 
-A vízjel tábla azon utolsó időbélyeg tárolására szolgál, amelybe az adatokat már szinkronizálták az Azure Storage szolgáltatással. A Transact-SQL (T-SQL) tárolt eljárás használatával a rendszer minden szinkronizálás után frissíti a vízjel-táblázatot. 
+A watermark table is used to store the last timestamp up to which data has already been synchronized with Azure Storage. A Transact-SQL (T-SQL) stored procedure is used to update the watermark table after every sync.
 
-Hajtsa végre a következő parancsokat az SQL Database Edge-példányon:
+Run these commands on the SQL Database Edge instance:
 
 ```sql
     Create table [dbo].[watermarktable]
@@ -65,161 +65,159 @@ Hajtsa végre a következő parancsokat az SQL Database Edge-példányon:
     Go
 ```
 
-## <a name="create-a-data-factory-workflow"></a>Data Factory munkafolyamat létrehozása
+## <a name="create-a-data-factory-pipeline"></a>Create a Data Factory pipeline
 
-Ebben a szakaszban egy Azure Data Factory folyamatot hoz létre az adatok Azure SQL Database Edge-ből az Azure Blob Storage-ba való szinkronizálásához.
+In this section, you'll create an Azure Data Factory pipeline to sync data to Azure Blob storage from a table in Azure SQL Database Edge.
 
-### <a name="create-data-factory-using-the-data-factory-ui"></a>Data Factory létrehozása a Data Factory felhasználói felület használatával
+### <a name="create-a-data-factory-by-using-the-data-factory-ui"></a>Create a data factory by using the Data Factory UI
 
-Hozzon létre egy Data Factory az [oktatóanyag](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)utasításai alapján.
+Create a data factory by following the instructions in [this tutorial](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-### <a name="create-a-data-factory-pipeline"></a>Data Factory folyamat létrehozása
+### <a name="create-a-data-factory-pipeline"></a>Create a Data Factory pipeline
 
-1. A Data Factory felhasználói felületének **első lépések** lapján kattintson a **folyamat létrehozása** csempére.
+1. On the **Let's get started** page of the Data Factory UI, select **Create pipeline**.
 
-    ![Data Factory – folyamat létrehozása](media/tutorial-sync-data-factory/data-factory-get-started.png)
+    ![Create a Data Factory pipeline](media/tutorial-sync-data-factory/data-factory-get-started.png)
 
-2. A folyamat **Tulajdonságok** ablakának **általános** lapján adja meg a **PeriodicSync** nevét.
+2. On the **General** page of the **Properties** window for the pipeline, enter **PeriodicSync** for the name.
 
-3. Adja hozzá a **keresési** tevékenységet a régi vízjel értékének lekéréséhez. A **tevékenységek eszközkészletben**bontsa ki az **általános**elemet, és húzza & a **keresési** tevékenység eldobása a folyamat tervező felületére. Módosítsa a tevékenység nevét a *OldWatermark*értékre.
+3. Add the Lookup activity to get the old watermark value. In the **Activities** pane, expand **General** and drag the **Lookup** activity to the pipeline designer surface. Change the name of the activity to **OldWatermark**.
 
-    ![régi vízjel keresése](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
+    ![Add the old watermark lookup](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
 
-4. Váltson a **Beállítások** lapra, és válassza az **+ új** lehetőséget a **forrás adatkészlethez**. Ebben a lépésben létrehoz egy adatkészletet, amely a watermarktable lévő adatokat jelöli. Ez a tábla tartalmazza az előző másolási művelet során használt régi küszöbértéket.
+4. Switch to the **Settings** tab and select **New** for **Source Dataset**. You'll now create a dataset to represent data in the watermark table. Ez a tábla tartalmazza az előző másolási művelet során használt régi küszöbértéket.
 
-5. Az **új adatkészlet** ablakban válassza az **Azure SQL Server**lehetőséget, majd válassza a **Folytatás**lehetőséget.  
+5. In the **New Dataset** window, select **Azure SQL Server**, and then select **Continue**.  
 
-6. Az adatkészlet **tulajdonságok beállítása** ablakában adja meg a *WatermarkDataset* nevet.
+6. In the **Set properties** window for the dataset, under **Name**, enter **WatermarkDataset**.
 
-7. A **társított szolgáltatás**esetében válassza az **új**lehetőséget, majd hajtsa végre a következő lépéseket:
+7. For **Linked Service**, select **New**, and then complete these steps:
 
-    1. Adja meg a *SQLDBEdgeLinkedService* **nevet**.
+    1. Under **Name**, enter **SQLDBEdgeLinkedService**.
 
-    2. Adja meg a **kiszolgáló neve**SQL Database Edge-kiszolgálójának adatait.
+    2. Under **Server name**, enter your SQL Database Edge server details.
 
-    3. Adja meg az **adatbázis nevét** a legördülő listából.
+    3. Select your **Database name** from the list.
 
-    4. Adja meg a **felhasználónevét** és a **jelszavát**.
+    4. Enter your **User name** and **Password**.
 
-    5. Az SQL Database Edge-példányhoz való kapcsolódás teszteléséhez válassza a **Kapcsolódás tesztelése**lehetőséget.
+    5. To test the connection to the SQL Database Edge instance, select **Test connection**.
 
     6. Kattintson a **Létrehozás** gombra.
 
-    ![társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
+    ![Társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. Kattintson **az OK gombra**
+    7. Kattintson az **OK** gombra.
 
-8. A **Beállítások** lapon válassza a **Szerkesztés**lehetőséget.
+8. On the **Settings** tab, select **Edit**.
 
-9. A **kapcsolatok** lapon válassza a *[dbo] lehetőséget. [ watermarktable]* a **táblához**. Ha meg szeretné tekinteni az adatmegjelenítést a táblázatban, válassza az **előnézet**-adatelemet.
+9. On the **Connection** tab, select **[dbo].[watermarktable]** for **Table**. If you want to preview data in the table, select **Preview data**.
 
-10. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A **keresési tevékenység**tulajdonságok ablakában ellenőrizze, hogy a **WatermarkDataset** van-e kiválasztva a **forrás adatkészlet** mezőhöz.
+10. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left. In the properties window for the Lookup activity, confirm that **WatermarkDataset** is selected in the **Source dataset** list.
 
-11. A **tevékenységek** eszközkészletben bontsa ki az **általános**elemet, húzzon át egy másik **keresési** tevékenységet a folyamat tervező felületére, és állítsa a nevet a **NewWatermark** értékre a Tulajdonságok ablak **általános** lapján. Ez a keresési tevékenység a célhelyre átmásolandó forrásadatokat tartalmazó táblából kap új küszöbértéket.
+11. In the **Activities** pane, expand **General** and drag another **Lookup** activity to the pipeline designer surface. Set the name to **NewWatermark** on the **General** tab of the properties window. This Lookup activity gets the new watermark value from the table that contains the source data so it can be copied to the destination.
 
-12. A második **keresési** tevékenység tulajdonságok ablakában váltson a **Beállítások** lapra, majd az **új** elemre kattintva hozzon létre egy adatkészletet, amely az új küszöbértéket tartalmazó forrás táblára mutat.
+12. In the properties window for the second Lookup activity, switch to the **Settings** tab and select **New** to create a dataset to point to the source table that contains the new watermark value.
 
-13. Az **új adatkészlet** ablakban válassza ki SQL Database Edge-példányt, majd válassza a **Folytatás**lehetőséget.
+13. In the **New Dataset** window, select **SQL Database Edge instance**, and then select **Continue**.
 
-    1. A **készlet tulajdonságai** ablakban adja meg a **SourceDataset** **nevet**. Válassza a *SQLDBEdgeLinkedService* elemet a társított szolgáltatáshoz.
+    1. In the **Set properties** window, under **Name**, enter **SourceDataset**. Under **Linked service**, select **SQLDBEdgeLinkedService**.
 
-    2. Válassza ki azt ***a táblázatot, amelyet szinkronizálni szeretne*** a táblával. Ehhez az adatkészlethez is megadhat egy lekérdezést az oktatóanyag későbbi részében leírtak szerint. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblával szemben.
+    2. Under **Table**, select the table that you want to synchronize. You can also specify a query for this dataset, as described later in this tutorial. The query takes precedence over the table you specify in this step.
 
     3. Kattintson az **OK** gombra.
 
-14. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A **keresési** tevékenység tulajdonságainak lapján ellenőrizze, hogy a **SourceDataset** lehetőség van-e kiválasztva a **Forrásadatkészlet** mezőnél.
+14. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left. In the properties window for the Lookup activity, confirm that **SourceDataset** is selected in the **Source dataset** list.
 
-15. Válassza a lekérdezés lehetőséget a lekérdezés **használata** mezőnél, és adja meg a következő lekérdezést a tábla nevének frissítése után a lekérdezésben: csak az időbélyeg maximális értékét **választja ki a** táblából. Győződjön meg arról, hogy csak az **első sort**jelölte be.
+15. Select **Query** under **Use query**. Update the table name in the following query and then enter the query. You're selecting only the maximum value of `timestamp` from the table. Be sure to select **First row only**.
 
     ```sql
     select MAX(timestamp) as NewWatermarkvalue from [TableName]
     ```
 
-    ![lekérdezés kiválasztása](media/tutorial-sync-data-factory/select-query-data-factory.png)
+    ![select query](media/tutorial-sync-data-factory/select-query-data-factory.png)
 
-16. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & átalakítás**elemet, húzza át a **Másolás** tevékenységet a tevékenységek eszközkészletből, és állítsa a nevet **IncrementalCopy**értékre.
+16. In the **Activities** pane, expand **Move & Transform** and drag the **Copy** activity from the **Activities** pane to the designer surface. Set the name of the activity to **IncrementalCopy**.
 
-17. **A keresési tevékenységhez** csatolt **zöld gombot** a **másolási** tevékenységhez húzva mindkét **keresési** tevékenységet a **másolási** tevékenységhez csatlakoztathatja. Ha a másolási tevékenység szegélyének színe kékre változik, engedje el az egérgombot.
+17. Connect both Lookup activities to the Copy activity by dragging the green button attached to the Lookup activities to the Copy activity. Release the mouse button when you see the border color of the Copy activity change to blue.
 
-18. Válassza ki a **másolási** tevékenységet, és ellenőrizze, hogy megjelenik-e a tevékenység tulajdonságai a **Tulajdonságok** ablakban.
+18. Select the Copy activity and confirm that you see the properties for the activity in the **Properties** window.
 
-19. Váltson a **Forrás** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
+19. Switch to the **Source** tab in the **Properties** window and complete these steps:
 
-    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél.
+    1. In the **Source dataset** box, select **SourceDataset**.
 
-    2. A **Lekérdezés használata** mezőnél válassza a **Lekérdezés** lehetőséget.
+    2. Under **Use query**, select **Query**.
 
-    3. Adja meg a **lekérdezési** mezőhöz tartozó SQL-lekérdezést. Példa az alábbi lekérdezésre
-
-    4. SQL-lekérdezés:
+    3. Enter the SQL query in the **Query** box. Here's a sample query:
 
     ```sql
     select * from TemperatureSensor where timestamp > '@{activity('OldWaterMark').output.firstRow.WatermarkValue}' and timestamp <= '@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}'
     ```
 
-20. Váltson a fogadó **lapra,** és válassza a **+ új** lehetőséget a fogadó **adatkészlet** mezőben.
+20. On the **Sink** tab, select **New** under **Sink Dataset**.
 
-21. Ebben az oktatóanyagban a fogadó adattár típusa **Azure Blob Storage**. Válassza az **Azure Blob Storage**lehetőséget, majd válassza a **Folytatás** lehetőséget az **új adatkészlet** ablakban.
+21. In this tutorial, the sink data store is an Azure Blob storage data store. Select **Azure Blob storage**, and then select **Continue** in the **New Dataset** window.
 
-22. A **formátum kiválasztása** ablakban válassza ki az adatai formátumának típusát, majd kattintson a **Folytatás**gombra.
+22. In the **Select Format** window, select the format of your data, and then select **Continue**.
 
-23. A **készlet tulajdonságai** ablakban adja meg a **SinkDataset** nevet. A társított szolgáltatás esetében válassza az **+ új**lehetőséget. Ebben a lépésben létrehoz egy kapcsolatot (társított szolgáltatást) az **Azure Blob-tárolóhoz**.
+23. In the **Set Properties** window, under **Name**, enter **SinkDataset**. Under **Linked service**, select **New**. You'll now create a connection (a linked service) to your Azure Blob storage.
 
-24. Az **új társított szolgáltatás (Azure Blob Storage)** ablakban végezze el a következő lépéseket:
+24. In the **New Linked Service (Azure Blob storage)** window, complete these steps:
 
-    1. Adja meg a *AzureStorageLinkedService* nevet.
+    1. In the **Name** box, enter **AzureStorageLinkedService**.
 
-    2. Az Azure-előfizetéséhez válassza ki az Azure Storage-fiókját a **Storage-fiók nevéhez** .
+    2. Under **Storage account name**, select the Azure storage account for your Azure subscription.
 
-    3. Tesztelje a **kapcsolatokat** , majd válassza a **Befejezés**lehetőséget.
+    3. Test the connection and then select **Finish**.
 
-25. A **készlet tulajdonságai** ablakban ellenőrizze, hogy a *AzureStorageLinkedService* van-e kiválasztva a **társított szolgáltatáshoz**. Ezután válassza a **Létrehozás** és **az OK gombot**.
+25. In the **Set Properties** window, confirm that **AzureStorageLinkedService** is selected under **Linked service**. Select **Create** and **OK**.
 
-26. A **fogadó** lapon válassza a **Szerkesztés**lehetőséget.
+26. On **Sink** tab, select **Edit**.
 
-27. Nyissa meg a *SinkDataset* **Kapcsolódás** lapját, és hajtsa végre a következő lépéseket:
+27. Go to the **Connection** tab of SinkDataset and complete these steps:
 
-    1. A **fájl elérési útja** mezőbe írja be a következőt: *asdedatasync/incrementalcopy*, ahol a **adftutorial** a blob-tároló neve, a **incrementalcopy** pedig a mappa neve. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az Azure Data Factory automatikusan létrehozza az *incrementalcopy* kimeneti mappát, ha az még nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
+    1. Under **File path**, enter *asdedatasync/incrementalcopy*, where *adftutorial* is the blob container name and *incrementalcopy* is the folder name. Create the container if it doesn't exist, or use the name of an existing one. Azure Data Factory automatically creates the output folder *incrementalcopy* if it doesn't exist. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
 
-    2. A **fájl elérési útja** mező **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd *írja be a @CONCAT(növekményes, folyamat () értéket. RunId, '. txt ')* a megnyitott ablakban. Ezután kattintson a **Befejezés** gombra. A fájl neve dinamikusan jön létre a kifejezés használatával. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
+    2. For the **File** part of the **File path**, select **Add dynamic content [Alt+P]** , and then enter **@CONCAT('Incremental-', pipeline().RunId, '.txt')** in the window that opens. Válassza a **Finish** (Befejezés) elemet. The file name is dynamically generated by the expression. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
-28. Váltson a **folyamat** -szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával.
+28. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left.
 
-29. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, és húzza a **tárolt eljárási** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. **Kapcsolja** a **másolási** tevékenység zöld (sikeres) kimenetét a **tárolt eljárási** tevékenységhez.
+29. In the **Activities** pane, expand **General** and drag the **Stored Procedure** activity from the **Activities** pane to the pipeline designer surface. Connect the green (success) output of the Copy activity to the Stored Procedure activity.
 
-30. Válassza a **tárolt eljárási tevékenység** lehetőséget a folyamat-tervezőben, módosítsa a nevét a *SPtoUpdateWatermarkActivity*értékre.
+30. Select **Stored Procedure Activity** in the pipeline designer and change its name to **SPtoUpdateWatermarkActivity**.
 
-31. Váltson az **SQL-fiók** lapra, és válassza a *SQLDBEdgeLinkedService* lehetőséget a **társított szolgáltatáshoz**.
+31. Switch to the **SQL Account** tab, and select ***QLDBEdgeLinkedService** under **Linked service**.
 
-32. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
+32. Switch to the **Stored Procedure** tab and complete these steps:
 
-    1. A **tárolt eljárás neve**mezőben válassza a *[dbo] lehetőséget. [ usp_write_watermark]* .
+    1. Under **Stored procedure name**, select **[dbo].[usp_write_watermark]** .
 
-    2. A tárolt eljárás paraméterei értékének megadásához válassza a paraméter importálása lehetőséget, majd adja meg a következő értékeket a paraméterekhez:
+    2. To specify values for the stored procedure parameters, select **Import parameter** and enter these values for the parameters:
 
-    |Name (Név)|Típus|Érték|
+    |Név|Type (Típus)|Value (Díj)|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
-    |TableName|Sztring|@ {Activity ("OldWaterMark"). output. firstRow. Táblanév}|
+    |LastModifiedtime|Dátum és idő|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
+    |TableName|Sztring|@{activity('OldWaterMark').output.firstRow.TableName}|
 
-33. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. **A folyamat-ellenőrzési jelentés** ablakának bezárásához válassza a **>>** lehetőséget.
+33. To validate the pipeline settings, select **Validate** on the toolbar. Ellenőrizze, hogy nincs-e érvényesítési hiba. To close the **Pipeline Validation Report** window, select **>>** .
 
-34. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** elem kiválasztásával teheti közzé az Azure Data Factory szolgáltatásban. Várjon, amíg megjelenik a sikeres közzétételt jelző üzenet.
+34. Publish the entities (linked services, datasets, and pipelines) to the Azure Data Factory service by selecting the **Publish All** button. Wait until you see a message confirming that the publish operation has succeeded.
 
-## <a name="trigger-a-pipeline-on-schedule"></a>Folyamat elindítása az ütemterv szerint
+## <a name="trigger-a-pipeline-based-on-a-schedule"></a>Trigger a pipeline based on a schedule
 
-1. A folyamat eszköztárán válassza az **aktiválás hozzáadása**, majd az **új/szerkesztés**lehetőséget, és válassza az **+ új**lehetőséget.
+1. On the pipeline toolbar, select **Add Trigger**, select **New/Edit**, and then select **New**.
 
-2. Nevezze el az eseményindítót a *HourlySync*, válassza a **típus** ütemezése lehetőséget, és állítsa be az **ismétlődést** 1 óránként.
+2. Name your trigger **HourlySync**. Under **Type**, select **Schedule**. Set the **Recurrence** to every 1 hour.
 
 3. Kattintson az **OK** gombra.
 
 4. Kattintson **Az összes közzététele** gombra.
 
-5. Válassza az **aktiválás most**lehetőséget.
+5. Select **Trigger Now**.
 
-6. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **frissítés** gombra.
+6. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyagban szereplő Azure Data Factory folyamat az SQL Database Edge-példány egyik táblájából az Azure Blob Storage-ba egy óránként másolja az adatait. Ha többet szeretne megtudni a Data Factory használatáról további forgatókönyvekben, folytassa ezeket az [oktatóanyagokat](../data-factory/tutorial-copy-data-portal.md).
+The Azure Data Factory pipeline in this tutorial copies data from a table on a SQL Database Edge instance to a location in Azure Blob storage once every hour. To learn about using Data Factory in other scenarios, see these [tutorials](../data-factory/tutorial-copy-data-portal.md).
