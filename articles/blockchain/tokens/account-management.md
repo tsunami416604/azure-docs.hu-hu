@@ -1,40 +1,36 @@
 ---
-title: Azure Blockchain tokenek – Fiókkezelés
-description: Az Azure Blockchain-tokenek Fiókkezelés használatával csoportokat hozhat létre, és Blockchain-fiókokat csatolhat a Blockchain-műveletekhez való hozzáférés szabályozásához.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens account management
+description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 91dcadd3c7704b7b8c6cab45005bc83e1bba18bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9931ef59e613501ba6feaedf3ac5d4721f0df752
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579776"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326101"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain tokenek – Fiókkezelés
+# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-A blockchain-megoldások esetében előfordulhat, hogy a felhasználók eltérő szintű hozzáférést igényelnek az Azure Blockchain tokens szolgáltatással létrehozott jogkivonatokhoz. A legtöbb blockchain forgatókönyvben a főkönyvben meglévő különböző blockchain-fiókokat kell terveznie és telepítenie. Emellett a résztvevők közötti hozzáférés kezelése is szükséges. Az Azure Blockchain-tokenek Fiókkezelés használatával csoportokat hozhat létre, és Blockchain-fiókokat csatolhat a Blockchain-műveletekhez való hozzáférés szabályozásához.
+For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
 
-## <a name="blockchain-networks"></a>Blockchain hálózatok
+## <a name="blockchain-networks"></a>Blockchain networks
 
-Az Azure Blockchain-tokenek lehetővé teszik a jogkivonatok üzembe helyezését és kezelését Blockchain-hálózatokon keresztül. Egyetlen blockchain vagy több blockchain-főkönyvet is összekapcsolhat a szolgáltatással.
+Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
 
 ## <a name="accounts"></a>Fiókok
 
-Az Azure Blockchain-tokenekhez kapcsolódó blockchain-hálózatok esetében a szolgáltatás létrehozza és kezeli a fiók titkos kulcs párokat, és elvégzi a tranzakciók aláírását és küldését. Az Azure Blockchain-tokenek identitás-hozzárendelést is biztosítanak a főkönyvben lévő nyilvános kulcsú identitású fiókok egyeztetéséhez.
+For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
 
 ## <a name="groups"></a>Csoportok
 
-A csoportok segítségével nagy mennyiségű blockchain-fiókot kezelhet a csatlakoztatott hálózatokon. Nyomon követheti és naplózhatja, hogy mely alkalmazások és felhasználók tudják használni a fiókokat az Azure Blockchain tokens API-kon keresztül. Például csoportosíthat olyan fiókokat, amelyek különböző üzletági vagy különböző szerepköröket képviselnek, és blockchain jogkivonatokhoz férnek hozzá.
+Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
 
-A csoportokat társíthatja egy Azure Active Directory felhasználóhoz vagy egyszerű szolgáltatáshoz, és ez a rendszerbiztonsági tag jogosult a csoport és a hozzá tartozó fiókok hozzáférésére.  
+You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az elérhető [Azure Blockchain-jogkivonat-sablonokról](templates.md).
+Learn more about available [Azure Blockchain Tokens templates](templates.md).

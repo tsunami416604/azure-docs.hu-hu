@@ -1,50 +1,46 @@
 ---
-title: Mi az Azure Blockchain Service-hez készült Blockchain Data Manager
-description: A Blockchain Data Manager rögzíti, átalakítja és kézbesíti a Blockchain-információt Event Grid témakörökbe.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: What is Blockchain Data Manager for Azure Blockchain Service
+description: Blockchain Data Manager to captures, transforms, and delivers blockchain data to Event Grid Topics.
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 94534d9b98f6c93d1d439775d3269df71f587ca4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577487"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326203"
 ---
-# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Mi a Blockchain Data Manager az Azure Blockchain Service-hez?
+# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Mi az Azure Blockchain Service-hez készült Blockchain Data Manager?
 
-A Blockchain Data Manager az Azure Blockchain szolgáltatás tranzakciós információit rögzíti, átalakítja és biztosítja az Azure-szolgáltatásokkal való megbízható és skálázható Blockchain-integrációt biztosító témakörök Azure Event Grid.
+Blockchain Data Manager captures, transforms, and delivers Azure Blockchain Service transaction data to Azure Event Grid Topics providing reliable and scalable blockchain ledger integration with Azure services.
 
-A legtöbb vállalati blockchain forgatókönyvben a blockchain Ledger egy megoldás egyik része. Például egy eszköz egyik entitásból egy másikba való átadásához szüksége van egy mechanizmusra a tranzakció elküldéséhez. Ezután szükség van egy olyan mechanizmusra, amely lehetővé teszi a főkönyvi információk olvasását a tranzakció bevezetésének biztosításához, és az eredményül kapott állapot módosításait a rendszer integrálja a teljes körű megoldással. Ebben a példában, ha intelligens szerződést ír az eszközök átadásához, a Blockchain Data Manager használatával integrálhatja az alkalmazásokat és az adattárakat. Ha például egy adategységet a blockchain továbbít, az események és a tulajdonságok állapotának módosításait a Blockchain Data Manager a Event Gridon keresztül továbbítja. Ezt követően több lehetséges eseménykezelőt is használhat a Event Grid számára a blockchain-adatkapcsolat nélküli tároláshoz, vagy valós időben reagálhat az állapot változásaira.
+In most enterprise blockchain scenarios, a blockchain ledger is one part of a solution. For example, to transfer an asset from one entity to another, you need a mechanism for submitting the transaction. You then need a mechanism for reading ledger data to ensure the transaction occurred, was accepted, and the resulting state changes are then integrated with your end-to-end solution. In this example, if you write a smart contract to transfer assets, you can use Blockchain Data Manager to integrate off-chain applications and data stores. For the asset transfer example, when an asset is transferred on the blockchain, events and property state changes are delivered by Blockchain Data Manager via Event Grid. You can then use multiple possible event handlers for Event Grid to store blockchain data off-chain or react to state changes in real time.
 
-A Blockchain Data Manager három fő funkciót hajt végre: a rögzítést, átalakítást és továbbítást.
+Blockchain Data Manager performs three main functions: capture, transform, and deliver.
 
-![Blockchain Data Manager függvények](./media/data-manager/functions.png)
+![Blockchain Data Manager functions](./media/data-manager/functions.png)
 
 ## <a name="capture"></a>Rögzítés
 
-Minden Blockchain-Data Manager példány egy Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára csatlakozik. Csak a tranzakciós csomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre olyan kapcsolatot, amely biztosítja a megfelelő hozzáférés-vezérlést az ügyféladatok számára. A Blockchain Data Manager példányok megbízhatóan rögzítik az összes nyers blokkot és nyers tranzakciós adatmennyiséget a tranzakciós csomópontból, és méretezhetők a vállalati munkaterhelések támogatásához.
+Each Blockchain Data Manager instance connects to one Azure Blockchain Service member transaction node. Only users with access to the transaction node can create a connection ensuring proper access control to customer data. A Blockchain Data Manager instance reliably captures all raw block and raw transaction data from the transaction node and can scale to support enterprise workloads.
 
 ## <a name="transform"></a>Átalakítás
 
-Az esemény-és Blockchain Data Manager az intelligens szerződési alkalmazások Blockchain-Data Manager belüli konfigurálásával is dekódolhatja. Intelligens szerződés hozzáadásához adja meg az ABI és a bytecode szerződést. A Blockchain Data Manager az intelligens szerződési összetevők használatával dekódolja és felderíti a szerződések címeit. Miután hozzáadta a blockchain alkalmazást a példányhoz, a Blockchain Data Manager dinamikusan felfedi az intelligens szerződési címeket, amikor az intelligens szerződést üzembe helyezi a konzorciumban, és a dekódolású eseményt és tulajdonságot a konfigurált célhelyekre küldi.
+You can use Blockchain Data Manager to decode event and property state by configuring smart contract applications within Blockchain Data Manager. To add a smart contract, you provide the contract ABI and bytecode. Blockchain Data Manager uses the smart contract artifacts to decode and discover contract addresses. After adding the blockchain application to the instance, Blockchain Data Manager dynamically discovers the smart contract address when the smart contract is deployed to the consortium and sends decoded event and property state to configured destinations.
 
 ## <a name="deliver"></a>Kézbesítés
 
-A Blockchain Data Manager több Event Grid témakör kimenő kapcsolatait is támogatja bármely adott Blockchain Data Manager-példány esetében. Blockchain-adatküldést egyetlen célhelyre is küldhet, vagy több célhelyre is küldhet blockchain-fájlokat. A Blockchain Data Manager használatával méretezhető eseményvezérelt adatközzétételi megoldást hozhat létre bármely Blockchain-telepítéshez.
+Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance. You can send blockchain data to a single destination or send blockchain data to multiple destinations. Using Blockchain Data Manager, you can build a scalable event-based data publishing solution for any blockchain deployment.
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-A Blockchain Data Manager konfigurálhatja a megoldás igényeinek kielégítéséhez. Például a következőket teheti:
+You can configure Blockchain Data Manager to meet the needs of your solution. For example, you can provision:
 
-* Egyetlen Blockchain Data Manager példány egy Azure Blockchain-szolgáltatás tagja számára.
-* Egy Blockchain Data Manager példány Azure Blockchain szolgáltatás-tranzakciós csomóponton. Például a privát tranzakciós csomópontok rendelkezhetnek saját Blockchain Data Manager-példánnyal a titkosság fenntartása érdekében.
-* Egy Blockchain Data Manager-példány több kimeneti kapcsolatot is támogat. Egy Blockchain Data Manager-példány használatával felügyelhető az Azure Blockchain-szolgáltatás összes adatközzétételi integrációs pontja.
+* A single Blockchain Data Manager instance for an Azure Blockchain Service member.
+* A Blockchain Data Manager instance per Azure Blockchain Service transaction node. For example, private transaction nodes can have their own Blockchain Data Manager instance to maintain confidentiality.
+* A Blockchain Data Manager instance can support multiple output connections. One Blockchain Data Manager instance can be used to manage all data publishing integration points for an Azure Blockchain Service member.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Próbáljon meg [Blockchain Data Manager példányt létrehozni](data-manager-portal.md) egy Azure Blockchain-szolgáltatás tagjához.
+Try [creating a Blockchain Data Manager instance](data-manager-portal.md) for an Azure Blockchain Service member.

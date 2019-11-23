@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services élő átirat | Microsoft Docs
-description: Ez a cikk ismerteti a Azure Media Services élő átírását.
+title: Azure Media Services live transcription | Microsoft Docs
+description: This article explains what the Azure Media Services live transcription is.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,33 +11,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 98084b9bb6f19d22c7995d3044bb32ceaa947dc5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a85f9f8b9d98f77cf673778f031d8f47f132fbe1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040423"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327342"
 ---
-# <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
+# <a name="live-transcription-preview"></a>Live transcription (preview)
 
-Az Azure Media Service videó-, hang-és más protokollokat tartalmazó szövegeket biztosít. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML, amely az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve. 
+Azure Media Service delivers video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. 
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services v3-vel való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be. 
+This article describes how to enable live transcription when streaming a Live Event with Azure Media Services v3. Before you proceed, make sure you are familiar with the use of Media Services v3 REST APIs (see [this tutorial](stream-files-tutorial-with-rest.md) for details). You should also be familiar with the [live streaming](live-streaming-overview.md) concept. It is recommended to complete the [Stream live with Media Services](stream-live-tutorial-with-api.md) tutorial. 
 
 > [!NOTE]
-> Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Támogatja az angol nyelvű szöveg átírását. A szolgáltatás API-referenciája ebben a dokumentumban van – mivel az előzetes verzióban érhető el, a részletek nem érhetők el a REST-dokumentumokban. 
+> Currently, live transcription is only available as a preview feature in the West US 2 region. It supports transcription of spoken words in English to text. The API reference for this feature is in this document – since it is in preview, the details are not available with our REST documents. 
 
-## <a name="creating-the-live-event"></a>Az élő esemény létrehozása 
+## <a name="creating-the-live-event"></a>Creating the Live Event 
 
-Az élő esemény létrehozásához a PUT műveletet a 2019-05-01-es verzióra kell elküldeni, például: 
+To create the Live Event, you would send the PUT operation to the 2019-05-01 version, such as: 
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását. A nyelvhez csak az en-US engedélyezett érték adható meg. 
+The operation has the following body (where a pass-through Live Event is created with RTMP as the ingest protocol). Note the addition of a transcriptions property. The only allowed value for language is en-US. 
 
 ```
 { 
@@ -87,24 +87,24 @@ A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény
 } 
 ```
 
-Az élő esemény állapota csak akkor kérdezhető le, ha a "Running" állapotba kerül, ami azt jelzi, hogy most már küldhet egy, az RTMP-hírcsatornát is. Mostantól ugyanazok a lépések hajthatók végre, mint az oktatóanyagban, például az előnézeti hírcsatorna ellenőrzése és az élő kimenetek létrehozása. 
+You should poll the status of the Live Event until it goes into the “Running” state, which indicates that you can now send a contribution RTMP feed. You can now follow the same steps as in this tutorial, such as checking the preview feed, and creating Live Outputs. 
 
-## <a name="delivery-and-playback"></a>Kézbesítés és lejátszás 
+## <a name="delivery-and-playback"></a>Delivery and playback 
 
-Tekintse át a [dinamikus csomagolás áttekintése](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) című cikket, amely bemutatja, hogyan használja a szolgáltatás a dinamikus csomagolást a videó-, hang-és egyéb protokollok továbbítására. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML, amely az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve. A stream lejátszásához használhat egy weblejátszót, például a [Azure Media Player](use-azure-media-player.md) .  
+Review the [Dynamic packaging overview](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) article of how our service uses dynamic packaging to deliver video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. You can use a web player such as the [Azure Media Player](use-azure-media-player.md) to play the stream.  
 
 > [!NOTE]
->  Azure Media Player használata esetén használja a 2.3.3-es vagy újabb verziót.
+>  If using Azure Media Player, use version 2.3.3 or later.
 
 ## <a name="known-issues"></a>Ismert problémák 
 
-Előzetes verzióban az élő átírással kapcsolatos ismert problémák a következők: 
+At preview, following are the known issues with Live Transcription 
 
-* A szolgáltatás csak az USA 2. nyugati régiójában érhető el.
-* Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI specifikációjának](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) leírásában talál.
-* Az egyetlen támogatott nyelv az angol.
-* A tartalomvédelem tekintetében csak az AES-borítékok titkosítása támogatott.
+* The feature is available only in West US 2.
+* Applications need to use the preview APIs, described in the [Media Services v3 OpenAPI Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) specification.
+* The only supported language is English.
+* With respect to content protection, only AES envelope encryption is supported.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Media Services áttekintése](media-services-overview.md)
+[Media Services overview](media-services-overview.md)

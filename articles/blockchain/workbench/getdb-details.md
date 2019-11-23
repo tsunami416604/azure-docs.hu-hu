@@ -1,29 +1,23 @@
 ---
-title: Az Azure Blockchain Workbench előzetes verziójú adatbázisának beszerzése – részletek
-description: Ismerje meg, hogyan kérheti le az Azure Blockchain Workbench előzetes verziójú adatbázisát és az adatbázis-kiszolgáló adatait.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Az Azure Blockchain Workbench-adatbázis adatainak lekérése
+description: Learn how to get Azure Blockchain Workbench Preview database and database server information.
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845081"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324691"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Az Azure Blockchain Workbench előzetes verziójával kapcsolatos információk lekérése
+# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Az Azure Blockchain Workbench-adatbázis adatainak lekérése
 
-Ez a cikk bemutatja, hogyan kérhet részletes információkat az Azure Blockchain Workbench előzetes verziójú adatbázisáról.
+This article shows how to get detailed information about your Azure Blockchain Workbench Preview database.
 
 ## <a name="overview"></a>Áttekintés
 
-Az alkalmazások, a munkafolyamatok és az intelligens szerződések végrehajtásának adatait a Blockchain Workbench SQL-adatbázisa adatbázisnézetek formájában tárolja. A fejlesztők ezt az információt használhatják olyan eszközök, mint például a Microsoft Excel, a Power BI, a Visual Studio és a SQL Server Management Studio használatakor.
+Az alkalmazások, a munkafolyamatok és az intelligens szerződések végrehajtásának adatait a Blockchain Workbench SQL-adatbázisa adatbázisnézetek formájában tárolja. Developers can use this information when using tools such as Microsoft Excel, Power BI, Visual Studio, and SQL Server Management Studio.
 
 Ahhoz, hogy egy fejlesztő csatlakozni tudjon az adatbázishoz, a következőkre lesz szüksége:
 
@@ -34,7 +28,7 @@ Ahhoz, hogy egy fejlesztő csatlakozni tudjon az adatbázishoz, a következőkre
 
 Az adatbázishoz való csatlakozáshoz:
 
-1. Jelentkezzen be a Azure Portalba egy olyan fiókkal , amely rendelkezik tulajdonosi engedélyekkel az Azure Blockchain Workbench erőforrásaihoz.
+1. Sign in to the Azure portal with an account that has **Owner** permissions for the Azure Blockchain Workbench resources.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza a Blockchain Workbench-környezete erőforráscsoportjának nevét.
 4. Válassza a **Típus** lehetőséget az erőforráslista rendezéséhez, majd válassza az **SQL server** lehetőséget. Az alábbi képernyőképen szemléltetett rendezett listában két SQL-adatbázis látható, egy „master” nevű, illetve egy másik, mely az „lhgn” nevet használja **erőforrás-előtagként**.
@@ -47,7 +41,7 @@ Az adatbázishoz való csatlakozáshoz:
 
 Az adatbázis-kiszolgáló neve és az adatbázisnév használatával csatlakozhat a Blockchain Workbench-adatbázishoz a saját fejlesztési vagy jelentéskészítő eszközével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: d85ea932a62718d04e0c0aff1eeae80472a410f1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4aa995e8e246e96b4fdac59a7ad94fa4abd3cabc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173945"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378213"
 ---
-Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
+Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Customers can also choose to further subdivide the resources of these Isolated virtual machines by using [Azure support for nested virtual machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
-Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az adott kiszolgálópéldány esetében csak egy fut.  A jelenlegi elkülönített virtuálisgép-ajánlatok a következők:
+Utilizing an isolated size guarantees that your virtual machine will be the only one running on that specific server instance.  The current Isolated virtual machine offerings include:
 * Standard_E64is_v3
 * Standard_E64i_v3
 * Standard_M128ms
@@ -27,77 +27,77 @@ Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az 
 * Standard_D15_v2
 * Standard_F72s_v2
 
-Az összes rendelkezésre álló elszigetelt méretről [itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)olvashat bővebben.
+You can learn more about each available isolated size [here](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
-## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>D15_v2/DS15_v2 elkülönítés kivonása 2020. február 15-én
-Nemrég bejelentettük az Azure dedikált gazdagép előzetes verzióját, amely lehetővé teszi a szervezet Linux és Windows rendszerű virtuális gépei futtatását egybérlős fizikai kiszolgálókon. Azt tervezzük, hogy az elkülönített Azure-beli virtuális gépeket teljesen lecseréljük az Azure dedikált gazdagépre. A **2020. február 15** . után az Azure-beli virtuális gépek D15_v2/DS15_v2 már nem különíthető el a hardver.
+## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Retiring D15_v2/DS15_v2 isolation on February 15, 2020
+We recently announced the Preview of Azure Dedicated Host, which allows you to run your organization’s Linux and Windows virtual machines on single-tenant physical servers. We plan to fully replace isolated Azure VMs with Azure Dedicated Host. After **February 15, 2020** the D15_v2/DS15_v2 Azure VMs may no longer be hardware isolated.
 
-## <a name="how-does-this-affect-me"></a>Hogyan érint ez engem?
-2020. február 15-én már nem biztosítunk elkülönítési garanciát a D15_v2/DS15_v2 Azure-beli virtuális gépekhez. 
+## <a name="how-does-this-affect-me"></a>How does this affect me?
+After February 15, 2020, we will no longer provide an isolation guarantee for your D15_v2/DS15_v2 Azure virtual machines. 
 
-## <a name="what-actions-should-i-take"></a>Milyen műveleteket kell elvégeznie?
-Ha a hardveres elkülönítés nem szükséges az Ön számára, nincs szükség beavatkozásra. 
+## <a name="what-actions-should-i-take"></a>What actions should I take?
+If hardware isolation is not required for you, there is no action you need to take. 
 
-Ha elkülönítésre van szükség, a 2020. február 15. előtt a következőkre lesz szüksége:
+If isolation is required to you, before February 15, 2020, you would need to either:
 
-• A számítási feladatok [migrálása](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) az Azure dedikált gazdagép előzetes verziójára
+•   [Migrate](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) your workload to Azure Dedicated Host Preview
 
-• [Hozzáférés kérése](https://aka.ms/D15iRequestAccess) egy D15i_v2hoz és DS15i_v2 Azure-beli virtuális géphez, hogy ugyanazt az árat lehessen elérni. Ez a lehetőség csak az utólagos elszámolású és az egy éves fenntartott példányok esetében érhető el.    
+•   [Request access](https://aka.ms/D15iRequestAccess) to a D15i_v2 and DS15i_v2 Azure VM, to get the same price performance. This option is only available for pay-as-you-go and one-year reserved instance scenarios.    
 
-• A számítási feladatok [áttelepíthetők](https://azure.microsoft.com/blog/resize-virtual-machines/) egy másik Azure elkülönített virtuális gépre. 
+•   [Migrate](https://azure.microsoft.com/blog/resize-virtual-machines/) your workload to another Azure isolated virtual machine. 
 
-Részletekért lásd alább:
+For details see below:
 
 ## <a name="timeline"></a>Idővonal
 | Dátum | Műveletek | 
 | --- | --- |
-| November 18., 2019  | D/DS15i_v2 rendelkezésre állása (TB, 1 éves RI) |
-| Február 14., 2020  | Az elmúlt nap, hogy megvásárolja a D/DS15i_v2 1 éves RI | 
-| Február 15., 2020   | D/DS15_v2 elkülönítési garancia eltávolítva | 
-| Május 15., 2021  | A D/DS15i_v2 kivonása (az összes ügyfél, kivéve, ha a D/DS15_v2 3 éves RI-t vásárolt, 2019. november 18. előtt)| 
-| November 17, 2022   | A (z) D/DS15i_v2 kivonása a 3 éves beérkező 2019 DS15_v2 példányok esetében | 
+| Nov 18, 2019  | Availability of D/DS15i_v2 (PAYG, 1-year RI) |
+| Feb 14, 2020  | Last day to buy D/DS15i_v2 1-year RI | 
+| Feb 15, 2020   | D/DS15_v2 isolation guarantee removed | 
+| May 15, 2021  | Retire D/DS15i_v2 (all customers except who bought 3-year RI of D/DS15_v2 before November 18, 2019)| 
+| Nov 17, 2022   | Retire D/DS15i_v2 when 3-year RIs done (for customers who bought 3-year RI of D/DS15_v2 before November 18, 2019) | 
 
-## <a name="faq"></a>GYIK
-### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>K: Miért nem látom az új D/DS15i_v2 méreteket a portálon?
-**A**: Ha aktuális d/DS15_v2 ügyfél, és az új d/DS15i_v2 méretet szeretné használni, töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
+## <a name="faq"></a>Gyakori kérdések
+### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>Q: Why am I not seeing the new D/DS15i_v2 sizes in the portal?
+**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
 
-### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>K: Miért nem látok kvótát az új D/DS15i_v2 méretekhez?
-**A**: Ha aktuális d/DS15_v2 ügyfél, és az új d/DS15i_v2 méretet szeretné használni, töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
+### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>Q: Why I am not seeing any quota for the new D/DS15i_v2 sizes?
+**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUNU1XUkhZWkNXQUFMNEJWUk9VWkRRVUJPMy4u)
 
-### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>K: Mikor kell kivonni a többi elszigetelt méretet?
-**A**: a méretek hivatalos leszerelése előtt 12 hónappal a rendszer emlékeztetőket biztosít.
+### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>Q: When are the other isolated sizes going to retire?
+**A**: We will provide reminders 12 months in advance of the official decommissioning of the sizes.
 
-### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>K: van olyan állásidő, amikor a virtuális gép nem elszigetelt hardveren landol?
-**A**: Ha nincs szüksége elkülönítésre, nincs szükség semmilyen műveletre, és nem fog semmilyen állásidőt látni.
+### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Q: Is there a downtime when my vm lands on a non-isolated hardware?
+**A**: If you do not need isolation you do not need to take any action and you would not see any downtime.
 
-### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>K: módosulnak a nem elkülönített virtuális gépekre való áttérés?
-**A**: nem 
+### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>Q: Are there any cost changes for moving to a non-isolated virtual machine?
+**A**: No 
 
-### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>K: már vásárolt 1 vagy 3 éves fenntartott példányt D15_v2 vagy Ds15_v2. Hogyan történik a kedvezmény alkalmazása a virtuális gépek használatára?
-**A**: a 2019. november 18. előtt megvásárolt RIs-példányok automatikusan kiterjesztik a lefedettséget az új elkülönített virtuálisgép-sorozatra. 
+### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>Q: I already purchased 1- or 3-year Reserved Instance for D15_v2 or Ds15_v2. How will the discount be applied to my VM usage?
+**A**: RIs purchased before November 18, 2019 will automatically extend coverage to the new isolated VM series. 
 
-| FENNTARTOTT példányok |  Példány méretének rugalmassága | Juttatások támogathatósága |   
+| RI |  Instance Size Flexibility | Benefit eligibility |   
 | --- | --- | --- |
-|   D15_v2  |   Ki     |   D15_v2 és D15i_v2 |    
-|   D15_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
-|   D14_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
+|   D15_v2  |   Ki     |   D15_v2 and D15i_v2 |    
+|   D15_v2  |   Be  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
+|   D14_v2  |   Be  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
  
-Hasonlóképpen a Dsv2 sorozathoz.
+Likewise for Dsv2 series.
  
-### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>K: szeretnék további fenntartott példányokat vásárolni a Dv2. Melyiket válasszam?
-**A**: a 2019. november 18. után megvásárolt összes RIs a következő viselkedéssel rendelkezik. 
+### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>Q: I want to purchase additional Reserved Instances for Dv2. Which one should I choose?
+**A**: All RIs purchased after Nov 18, 2019, have the following behavior. 
 
-| FENNTARTOTT példányok |  Példány méretének rugalmassága | Juttatások támogathatósága |   
+| RI |  Instance Size Flexibility | Benefit eligibility |   
 | --- | --- | --- |
-| D15_v2 |  Ki |   Csak D15_v2  
-| D15_v2 |  Bekapcsolva |    A D15_v2 sorozat az RI juttatást fogja kapni. Az új D15i_v2 nem jogosult a ri-típusból származó RI juttatásra. | 
-| D15i_v2 |     Ki | Csak D15i_v2 |  
-| D15i_v2 |     Bekapcsolva  | Csak D15i_v2 | 
+| D15_v2 |  Ki |   D15_v2 only  
+| D15_v2 |  Be |    D15_v2 series will receive the RI benefit. The new D15i_v2 will not be eligible for RI benefit from this RI type. | 
+| D15i_v2 |     Ki | D15i_v2 only |  
+| D15i_v2 |     Be  | D15i_v2 only | 
  
-A példányok méretének rugalmassága nem használható más méretekre, például D2_v2re, D4_v2ra vagy D15_v2re. Hasonlóképpen, a Dsv2 sorozathoz.  
+Instance Size Flexibility cannot be used to apply to any other sizes such as D2_v2, D4_v2, or D15_v2. Likewise, for Dsv2 series.  
  
-### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>K: vásárolhatok új, 3 éves D15i_v2 és DS15i_v2?
-**A**: sajnos nem, csak 1 éves ri érhető el az új vásárláshoz.
+### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>Q: Can I buy a new 3-year RI for D15i_v2 and DS15i_v2?
+**A**: Unfortunately no, only 1-year RI is available for new purchase.
  
-### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>K: áthelyezhetem a meglévő D15_v2/DS15_v2 Reserve-példányt egy elkülönített méretre fenntartott példányra?
-**A**: ez nem szükséges, mivel a juttatás az elkülönített és a nem elkülönített méretekre is érvényes. Az Azure azonban támogatni fogja a meglévő D15_v2/DS15_v2 fenntartott példányok módosítását D15i_v2/DS15i_v2ra. Az összes többi Dv2/Dsv2 fenntartott példány esetében használja a meglévő fenntartott példányt, vagy vásároljon új fenntartott példányt az elkülönített méretekhez.
+### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>Q: Can I move my existing D15_v2/DS15_v2 Reserve Instance to an isolated size Reserved Instance?
+**A**: This is not necessary since the benefit will apply to both isolated and non-isolated sizes. But Azure will support changing existing D15_v2/DS15_v2 Reserved Instances to D15i_v2/DS15i_v2. For all other Dv2/Dsv2 Reserved Instances, use the existing Reserved Instance or buy new Reserved Instances for the isolated sizes.

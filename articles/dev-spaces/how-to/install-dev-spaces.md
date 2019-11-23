@@ -1,35 +1,35 @@
 ---
-title: Az Azure dev Spaces telepítése az AK-ra és az ügyféloldali eszközökre
+title: Install Azure Dev Spaces on AKS & the client-side tooling
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Ismerje meg, hogyan telepítheti az Azure dev Spaces szolgáltatást egy AK-fürtön, és hogyan telepítheti az ügyféloldali eszközöket.
-keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: c62fe38a12b5ec279bc51fe8bc0d340e2f439200
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+description: Learn how to install Azure Dev Spaces on an AKS cluster and install the client-side tooling.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280056"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325775"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Az Azure dev Spaces telepítése az AK-ra és az ügyféloldali eszközökre
+# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Install Azure Dev Spaces on AKS and the client-side tooling
 
-Ebből a cikkből megtudhatja, hogyan telepítheti az Azure dev-helyeket egy AK-fürtre, valamint telepítheti az ügyféloldali eszközöket.
+This article shows you several ways to install Azure Dev Spaces on an AKS cluster as well as install the client-side tooling.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>Az Azure dev Spaces telepítése a parancssori felület használatával
+## <a name="install-azure-dev-spaces-using-the-cli"></a>Install Azure Dev Spaces using the CLI
 
-Mielőtt a parancssori felület használatával telepítené a fejlesztői helyeket, a következőkre lesz szüksége:
+Before you can install Dev Spaces using the CLI, you need:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot][az-portal-create-account].
-* [Az Azure CLI telepítve van][install-cli].
-* Egy [AK-fürt][create-aks-cli] egy [támogatott régióban][supported-regions].
+* [The Azure CLI installed][install-cli].
+* [An AKS cluster][create-aks-cli] in a [supported region][supported-regions].
 
-A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat.
+Use the `use-dev-spaces` command to enable Dev Spaces on your AKS cluster and follow the prompts.
 
 ```cmd
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-A fenti parancs lehetővé teszi a dev Spaces használatát a *myAKSCluster* -fürtön a *myResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
+The above command enables Dev Spaces on the *myAKSCluster* cluster in the *myResourceGroup* group and creates a *default* dev space.
 
 ```cmd
 $ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -49,39 +49,39 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-Az `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti.
+The `use-dev-spaces` command also installs the Azure Dev Spaces CLI.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Az Azure dev Spaces telepítése a Azure Portal használatával
+## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Install Azure Dev Spaces using the Azure portal
 
-Mielőtt a Azure Portal használatával telepítené a dev Spaces-t, a következőkre lesz szüksége:
+Before you can install Dev Spaces using the Azure portal, you need:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot][az-portal-create-account].
-* Egy [AK-fürt][create-aks-portal] egy [támogatott régióban][supported-regions].
+* [An AKS cluster][create-aks-portal] in a [supported region][supported-regions].
 
-Az Azure dev Spaces telepítése a Azure Portal használatával:
-1. Bejelentkezés az [Azure Portalra][az-portal].
-1. Navigáljon az AK-fürthöz.
-1. Kattintson a *dev Spaces*elemre.
-1. Módosítsa a *fejlesztői tárhelyek engedélyezése* *beállítást igen* értékre, és kattintson a *Mentés*gombra.
+To install Azure Dev Spaces using the Azure portal:
+1. Jelentkezzen be az [Azure portálra][az-portal].
+1. Navigate to your AKS cluster.
+1. Click *Dev Spaces*.
+1. Change *Enable Dev Spaces* to *Yes* and click *Save*.
 
-![Fejlesztői szóközök engedélyezése a Azure Portalban](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
+![Enable Dev Spaces in the Azure portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Az Azure dev Spaces Azure Portal használatával történő telepítése **nem** telepíti az Azure dev Spaces-hez készült ügyféloldali eszközöket.
+Installing Azure Dev Spaces using the Azure portal **does not** install any client-side tooling for Azure Dev Spaces.
 
-## <a name="install-the-client-side-tooling"></a>Az ügyféloldali eszközök telepítése
+## <a name="install-the-client-side-tooling"></a>Install the client-side tooling
 
-Az Azure dev Spaces ügyféloldali eszközeivel a helyi gépről a fejlesztői tereket egy AK-fürtön keresztül használhatja. Az ügyféloldali eszközök több módon is telepíthetők:
+You can use the Azure Dev Spaces client-side tooling to interact with dev spaces on an AKS cluster from your local machine. There are several ways to install the client-side tooling:
 
-* A [Visual Studio Code][vscode]-ban telepítse az [Azure dev Spaces bővítményt][vscode-extension].
-* A [Visual Studio 2019][visual-studio]-es verziójában telepítse az Azure-fejlesztési számítási feladatot.
-* A Visual Studio 2017-es verziójában telepítse a webes fejlesztés számítási feladatait és a [Visual Studio-eszközöket a Kubernetes][visual-studio-k8s-tools].
-* Töltse le és telepítse a [Windows][cli-win], [Mac][cli-mac]vagy [Linux][cli-linux] parancssori felületet.
+* In [Visual Studio Code][vscode], install the [Azure Dev Spaces extension][vscode-extension].
+* In [Visual Studio 2019][visual-studio], install the Azure Development workload.
+* In Visual Studio 2017, install the Web Development workload and [Visual Studio Tools for Kubernetes][visual-studio-k8s-tools].
+* Download and install the [Windows][cli-win], [Mac][cli-mac], or [Linux][cli-linux] CLI.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
 
 > [!div class="nextstepaction"]
-> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-development-qs]
+> [Team development in Azure Dev Spaces][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster

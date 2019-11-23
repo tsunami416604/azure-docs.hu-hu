@@ -1,96 +1,96 @@
 ---
-title: Hogyan – megkövetelése felügyelt eszközök számára a felhőalapú alkalmazás-hozzáférés az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
-description: Útmutató Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók, amely a felügyelt eszközök igényel a felhőalapú alkalmazás eléréséhez.
+title: Conditional Access require managed device - Azure Active Directory
+description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c99b8390cd43c3f0767123684fe06e0ae74f86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 31b7aa906cbefc0ffda707a228f2a9d50be351a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509377"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380030"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A felügyelt eszközök szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
 
-Mobileszközök és a felhő-és felhőközpontú világában Azure Active Directory (Azure AD) lehetővé teszi, hogy egyszeri bejelentkezés alkalmazásokhoz és szolgáltatásokhoz bárhonnan. Jogosult felhasználók férhessenek a felhőalapú alkalmazások származó sokféle eszközt, beleértve a mobil- és személyes eszközök is. Sok környezetben azonban csak legyenek elérhetők a eszközöket, amelyek a biztonsági és megfelelőségi szabványoknak legalább néhány alkalmazások rendelkeznek. Ezek az eszközök felügyelt eszközök is ismertek. 
+In a mobile-first, cloud-first world, Azure Active Directory (Azure AD) enables single sign-on to apps, and services from anywhere. Authorized users can access your cloud apps from a broad range of devices including mobile and also personal devices. However, many environments have at least a few apps that should only be accessed by devices that meet your standards for security and compliance. These devices are also known as managed devices. 
 
-Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatokat, amelyek a felügyelt eszközök férhessenek hozzá az egyes felhőalkalmazások a környezetében szükséges. 
+This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférési** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
+Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. If you are not familiar with one of these areas yet, you should read the following topics, first:
 
-- **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)**  – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
-- **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md)**  – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
+- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
+- **[Introduction to device management in Azure Active Directory](../devices/overview.md)** - This article gives you an overview of the various options you have to get devices under organizational control. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Biztonság és hatékonyság közötti egyensúly szakértő kezelése kihívást jelent. Támogatott eszközök hozzáférését a felhőbeli erőforrások elterjedése segítségével a felhasználók a hatékonyság növelése érdekében. A tükrözés oldalon valószínűleg nem lesz szüksége bizonyos erőforrások érnek el egy ismeretlen védelmi szintet az eszközök a környezetben. Érintett erőforrások érdemes beállítani, hogy felhasználók csak érhetik el azokat a felügyelt eszközök használata. 
+Mastering the balance between security and productivity is a challenge. The proliferation of supported devices to access your cloud resources helps to improve the productivity of your users. On the flip side, you probably don't want certain resources in your environment to be accessed by devices with an unknown protection level. For the affected resources, you should require that users can only access them using a managed device. 
 
-Az Azure AD feltételes hozzáférés meg lehet oldani ezt a követelményt, egy egyetlen szabályzattal, amely engedélyezi a hozzáférést:
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
 
-- A kiválasztott felhőalapú alkalmazások
-- A kijelölt felhasználók és csoportok
-- Felügyelt eszköz megkövetelése
+- To selected cloud apps
+- For selected users and groups
+- Requiring a managed device
 
-## <a name="managed-devices"></a>A felügyelt eszközök  
+## <a name="managed-devices"></a>Managed devices  
 
-Egyszerűen fogalmazva a felügyelt eszközök azok az alatt álló eszközök *valamilyen* szervezeti vezérlő. Az Azure AD-ben a felügyelt eszközök előfeltétel, hogy azt az Azure ad-ben regisztrálták. Az eszköz identitásának eszköz regisztrálásához ajánlatos hoz létre a hálózatieszköz-objektum formájában. Ez az objektum állapotát nyomon követheti a olyan eszköz, az Azure használja. Azure ad-ben a rendszergazdák már használhatja ezt az objektumot a váltógomb (engedélyezés/letiltás) egy eszköz állapotáról.
+In simple terms, managed devices are devices that are under *some sort* of organizational control. In Azure AD, the prerequisite for a managed device is that it has been registered with Azure AD. Registering a device creates an identity for the device in form of a device object. This object is used by Azure to track status information about a device. As an Azure AD administrator, you can already use this object to toggle (enable/disable) the state of a device.
   
-![Eszköz-alapú feltételek](./media/require-managed-devices/32.png)
+![Device-based conditions](./media/require-managed-devices/32.png)
 
-Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez: 
+To get a device registered with Azure AD, you have three options: 
 
-- **Az Azure ad-ben regisztrált eszközök** – az Azure ad-vel regisztrált egy személyes eszköz
-- **Az Azure AD-hez csatlakoztatott eszközök** – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
-- **Hibrid Azure AD-hez csatlakoztatott eszközök** – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+- **Azure AD registered devices** - to get a personal device registered with Azure AD
+- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
+- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
 
-Ezek a beállítások a cikkben említett [eszközidentitás mi?](../devices/overview.md)
+These three options are discussed in the article [What is a device identity?](../devices/overview.md)
 
-Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
+To become a managed device, a registered device must be either a **Hybrid Azure AD joined device** or a **device that has been marked as compliant**.  
 
-![Eszköz-alapú feltételek](./media/require-managed-devices/47.png)
+![Device-based conditions](./media/require-managed-devices/47.png)
  
-## <a name="require-hybrid-azure-ad-joined-devices"></a>Szükséges a hibrid Azure AD-hez csatlakoztatott eszközök
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Require Hybrid Azure AD joined devices
 
-A feltételes hozzáférési szabályzat kiválaszthatja **hibrid Azure AD-csatlakoztatott eszköz megkövetelése** , de a, hogy a kiválasztott felhőalapú alkalmazások csak érhetők el a felügyelt eszközök használata. 
+In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
 
-![Eszköz-alapú feltételek](./media/require-managed-devices/10.png)
+![Device-based conditions](./media/require-managed-devices/10.png)
 
-Ez a beállítás csak Windows 10-es vagy régebbi verziójú eszközök például a Windows 7 vagy Windows 8, amely csatlakozik egy helyszíni AD. Csak regisztrálhatja ezeket az eszközöket az Azure AD-bA egy hibrid Azure AD joinnal, amely egy [automatikus folyamat](../devices/hybrid-azuread-join-plan.md) egy regisztrált Windows 10-es eszköz. 
+This setting only applies to Windows 10 or down-level devices such as Windows 7 or Windows 8 that are joined to an on-premises AD. You can only register these devices with Azure AD using a Hybrid Azure AD join, which is an [automated process](../devices/hybrid-azuread-join-plan.md) to get a Windows 10 device registered. 
 
-![Eszköz-alapú feltételek](./media/require-managed-devices/45.png)
+![Device-based conditions](./media/require-managed-devices/45.png)
 
-Eszköz teszi a hibrid Azure ad-ben csatlakozott egy felügyelt eszközt?  Egy helyszíni tartományhoz csatlakoztatott eszközök AD, feltételezzük, hogy ezek az eszközök felett van érvényben, használjon, például felügyeleti megoldások **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** őket. Mivel nincs semmilyen metódus az Azure ad-e az alábbi módszereket írtunk egy eszközt meghatározásához, a hibrid Azure AD léptetett eszköz megkövetelése egy viszonylag egyszerű olyan mechanizmus, egy felügyelt eszköz megkövetelése. Célszerű megítélhető, hogy a módszereket, amelyek érvényesek a helyi tartományhoz csatlakoztatott eszközök-e elég erős a felügyelt eszközök jelent, ha ilyen eszközt is egy hibrid Azure AD-csatlakoztatású eszközt rendszergazdaként.
+What makes a Hybrid Azure AD joined device a managed device?  For devices that are joined to an on-premises AD, it is assumed that the control over these devices is enforced using management solutions such as **System Center Configuration Manager (SCCM)** or **group policy (GP)** to manage them. Because there is no method for Azure AD to determine whether any of these methods has been applied to a device, requiring a hybrid Azure AD joined device is a relatively weak mechanism to require a managed device. It is up to you as an administrator to judge whether the methods that are applied to your on-premises domain-joined devices are strong enough to constitute a managed device if such a device is also a Hybrid Azure AD joined device.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Megfelelőként megjelölt eszköz megkövetelése
+## <a name="require-device-to-be-marked-as-compliant"></a>Require device to be marked as compliant
 
-Lehetőség *megfelelőként megjelölt eszköz megkövetelése* a legerősebb űrlap kérése egy felügyelt eszközt.
+The option to *require a device to be marked as compliant* is the strongest form to request a managed device.
 
-![Eszköz-alapú feltételek](./media/require-managed-devices/11.png)
+![Device-based conditions](./media/require-managed-devices/11.png)
 
-Ez utóbbi lehetőség megköveteli egy eszközt regisztrálni kell az Azure ad-vel és előírásainak megjelölni:
+This option requires a device to be registered with Azure AD, and also to be marked as compliant by:
          
-- Intune-ban.
-- Egy harmadik fél mobileszköz-felügyelet (MDM) rendszer által felügyelt Windows 10-es eszközök Azure AD-integráció. Eszköz operációs rendszer típusa Windows 10-es nem harmadik fél mobileszköz-kezelési rendszerek nem támogatottak.
+- Intune.
+- A third-party mobile device management (MDM) system that manages Windows 10 devices via Azure AD integration. Third-party MDM systems for device OS types other than Windows 10 are not supported.
  
-![Eszköz-alapú feltételek](./media/require-managed-devices/46.png)
+![Device-based conditions](./media/require-managed-devices/46.png)
 
-Megfelelőként megjelölt eszköz akkor feltételezheti, hogy: 
+For a device that is marked as compliant, you can assume that: 
 
-- Kezeli a mobileszközöket, a munkatársak által használt céges adatok elérésére
-- A munkatársak által használt mobilalkalmazásokat kezel.
-- A vállalati adatok védelmét a módja a munkatársak elérik és megosztják őket szabályozva
-- Az eszköz és az alkalmazások megfeleljenek a vállalat biztonsági követelményeinek
+- The mobile devices your workforce uses to access company data are managed
+- Mobile apps your workforce uses are managed
+- Your company information is protected by helping to control the way your workforce accesses and shares it
+- The device and its apps are compliant with company security requirements
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Eszközalapú feltételes hozzáférési szabályzat konfigurálása a környezetében, előtt meg kell vessen egy pillantást a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).
+Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

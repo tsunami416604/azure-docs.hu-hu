@@ -1,85 +1,85 @@
 ---
-title: Kivetítések használata a Knowledge Store-ban (előzetes verzió)
+title: Working with projections in a knowledge store (preview)
 titleSuffix: Azure Cognitive Search
-description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
+description: Save and shape your enriched data from the AI enrichment indexing pipeline into a knowledge store for use in scenarios other than full text search. Knowledge store is currently in public preview.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720043"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326592"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések használata az Azure-beli Knowledge Store-ban Cognitive Search
+# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Working with projections in a knowledge store in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
+> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
 
-Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A bővítések struktúrát adhatnak a dokumentumokhoz, és hatékonyabbá tehetik a keresést. Sok esetben a dúsított dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
+Azure Cognitive Search enables content enrichment through built-in cognitive skills and custom skills as part of indexing. Enrichments add structure to your documents and make searching more effective. In many instances, the enriched documents are useful for scenarios other than search, such as for knowledge mining.
 
-A kivetítések, a [Knowledge Store](knowledge-store-concept-intro.md)egy összetevője, a kibővített dokumentumok nézetei, amelyek a fizikai tárterületre menthetők a tudás-bányászati célokra. A kivetítés lehetővé teszi, hogy az adatai egy olyan alakzatba kerüljenek, amely igazodik az igényeihez, és megőrzi a kapcsolatokat, hogy az eszközök, például a Power BI további erőfeszítés nélkül is beolvassák az adatait.
+Projections, a component of [knowledge store](knowledge-store-concept-intro.md), are views of enriched documents that can be saved to physical storage for knowledge mining purposes. A projection lets you "project" your data into a shape that aligns with your needs, preserving relationships so that tools like Power BI can read the data with no additional effort.
 
-A vetítés táblázatos lehet, az Azure Table Storage-ban sorokban és oszlopokban tárolt adatokat, illetve az Azure Blob Storage-ban tárolt JSON-objektumokat. Több kivetítést is megadhat az adataihoz, mivel azok gazdagítva vannak. Több kivetítés is hasznos lehet, ha ugyanazokat az adatszerkezeteket szeretné eltérő módon használni az egyes használati esetekben.
+Projections can be tabular, with data stored in rows and columns in Azure Table storage, or JSON objects stored in Azure Blob storage. You can define multiple projections of your data as it is being enriched. Multiple projections are useful when you want the same data shaped differently for individual use cases.
 
-A Tudásbázis háromféle típusú kivetítést támogat:
+The knowledge store supports three types of projections:
 
-+ **Táblák**: a táblázatos kivetítések lehetővé teszik a sematikus-alakzat vagy-leképezés megadását a táblázatos tárolóban.
++ **Tables**: For data that's best represented as rows and columns, table projections allow you to define a schematized shape or projection in Table storage.
 
-+ **Objektumok**: Ha az adatai és a bővítések JSON-ábrázolására van szüksége, az objektum-vetítések blobként lesznek mentve.
++ **Objects**: When you need a JSON representation of your data and enrichments, object projections are saved as blobs.
 
-+ **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájl-kivetítések lehetővé teszik a normalizált rendszerképek mentését.
++ **Files**: When you need to save the images extracted from the documents, file projections allow you to save the normalized images.
 
-Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, tekintse át az [Ismerkedés a Knowledge Store szolgáltatással](knowledge-store-howto.md)című témakört.
+To see projections defined in context, step through [How to get started with knowledge store](knowledge-store-howto.md).
 
-## <a name="projection-groups"></a>Kivetítési csoportok
+## <a name="projection-groups"></a>Projection groups
 
-Bizonyos esetekben különböző alakzatokban kell kibővíteni a dúsított adatait, hogy azok megfeleljenek a különböző célkitűzéseknek. A Tudásbázis segítségével több kivetítési csoportot is meghatározhat. A kivetítési csoportok az alábbi fő jellemzőkkel rendelkeznek a kölcsönös kizárólagosság és a kapcsolódó jelleg tekintetében.
+In some cases, you will need to project your enriched data in different shapes to meet different objectives. The knowledge store allows you to define multiple groups of projections. Projection groups have the following key characteristics of mutual exclusivity and relatedness.
 
-### <a name="mutual-exclusivity"></a>Kölcsönös kizárólagosság
+### <a name="mutual-exclusivity"></a>Mutual exclusivity
 
-Az egyetlen csoportba tartozó összes tartalom független a többi kivetítési csoportba tervezett adatokat.
-Ez a függetlenség azt feltételezi, hogy ugyanazokat az adatszerkezeteket kell megismételni, amelyeket az egyes leképezési csoportokban még meg is ismétlik.
+All content projected into a single group is independent of data projected into other projection groups.
+This independence implies that you can have the same data shaped differently, yet repeated in each projection group.
 
-### <a name="relatedness"></a>Rokonság
+### <a name="relatedness"></a>Relatedness
 
-A kivetítési csoportok mostantól lehetővé teszik a dokumentumok kivetítését a leképezési típusok között, miközben megőrzi a különböző leképezési típusok közötti kapcsolatokat. Az egyetlen kivetítési csoporton belül megjelenő összes tartalom megőrzi az adatokat a leképezési típusok közötti kapcsolaton belül. A táblákon belül a kapcsolatok egy generált kulcson alapulnak, és minden alárendelt csomópont megőrzi a szülő csomópontra mutató hivatkozást. A különböző típusok (táblák, objektumok és fájlok) között a kapcsolatok megmaradnak, ha egyetlen csomópontot terveznek a különböző típusok között. Vegyünk például egy olyan forgatókönyvet, amelyben van egy kép és szöveg tartalmú dokumentum. A szöveget táblázatokra vagy objektumokra, valamint azokra a fájlokra is felhasználhatja, amelyekben a táblák vagy objektumok a fájl URL-címét tartalmazó tulajdonsággal rendelkeznek.
+Projection groups now allow you to project your documents across projection types while preserving the relationships across projection types. All content projected within a single projection group preserves relationships within the data across projection types. Within tables, relationships are based on a generated key and each child node retains a reference to the parent node. Across types (tables, objects, and files), relationships are preserved when a single node is projected across different types. For example, consider a scenario where you have a document containing images and text. You could project the text to tables or objects and the images to files where the tables or objects have a property containing the file URL.
 
-## <a name="input-shaping"></a>Bevitel kialakítása
+## <a name="input-shaping"></a>Input shaping
 
-Az adatai megfelelő formában vagy struktúrában való beolvasása kulcsfontosságú a hatékony használathoz, legyen az a tábla vagy az objektum. Az adatelemzési és-használati lehetőségek alapján úgy alakíthatja ki és alakíthatja át az adatait, hogy az a készségkészlet belüli **formáló** képességként elérhetővé válik.  
+Getting your data in the right shape or structure is key to effective use, be it tables or objects. The ability to shape or structure your data based on how you plan to access and use it is a key capability exposed as the **Shaper** skill within the skillset.  
 
-A kivetítések könnyebben definiálhatók, ha olyan objektum szerepel a dúsítási fában, amely megfelel a leképezés sémájának. A frissített [formáló képességgel](cognitive-search-skill-shaper.md) egy objektumot hozhat létre a dúsítási fa különböző csomópontjaiból, és egy új csomópont alatt megadhatja őket. A **formáló** képesség lehetővé teszi, hogy beágyazott objektumokkal rendelkező összetett típusokat határozzon meg.
+Projections are easier to define when you have an object in the enrichment tree that matches the schema of the projection. The updated [Shaper skill](cognitive-search-skill-shaper.md) allows you to compose an object from different nodes of the enrichment tree and parent them under a new node. The **Shaper** skill allows you to define complex types with nested objects.
 
-Ha egy olyan új alakzat van definiálva, amely tartalmazza a kivetítéshez szükséges összes elemet, ezt az alakzatot már használhatja a kivetítések forrásaként, vagy egy másik képességbe bemenetként is.
+When you have a new shape defined that contains all the elements you need to project out, you can now use this shape as the source for your projections or as an input to another skill.
 
-## <a name="projection-slicing"></a>Leképezések szeletelése
+## <a name="projection-slicing"></a>Projection slicing
 
-A kivetítési csoport definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblába vagy objektumba is feldarabolható. Ha olyan forrás elérési úttal rendelkező leképezést ad hozzá, amely egy meglévő leképezés gyermeke, akkor a gyermek csomópont ki lesz darabolva a szülő csomópontból, és az új, még kapcsolódó táblába vagy objektumba kerül. Ez a módszer lehetővé teszi, hogy egyetlen csomópontot határozzon meg egy olyan alakzatban, amely az összes kivetítés forrása lehet.
+When defining a projection group, a single node in the enrichment tree can be sliced into multiple related tables or objects. Adding a projection with a source path that is a child of an existing projection will result in the child node being sliced out of the parent node and projected into the new yet related table or object. This technique allows you to define a single node in a shaper skill that can be the source for all of your projections.
 
-## <a name="table-projections"></a>Táblázatos előrejelzések
+## <a name="table-projections"></a>Table projections
 
-Mivel megkönnyíti az importálást, javasoljuk, hogy a Power BIekkel való adatfeltáráshoz táblázatos előrejelzéseket ajánlson. Emellett a tábla-kivetítések lehetővé teszik a tábla kapcsolatai közötti különbségek módosítását. 
+Because it makes importing easier, we recommend table projections for data exploration with Power BI. Additionally, table projections allow for changing the cardinality between table relationships. 
 
-Az indexben egyetlen dokumentumot is létrehozhat több táblázatba, és megőrizheti a kapcsolatokat. Több táblázatra való kivetítéskor a teljes alakzat az egyes táblákba kerül, kivéve, ha egy alárendelt csomópont egy másik tábla forrása egy adott csoporton belül.
+You can project a single document in your index into multiple tables, preserving the relationships. When projecting to multiple tables, the complete shape will be projected into each table, unless a child node is the source of another table within the same group.
 
-### <a name="defining-a-table-projection"></a>Tábla kivetítésének meghatározása
+### <a name="defining-a-table-projection"></a>Defining a table projection
 
-Ha a készségkészlet `knowledgeStore` elemében lévő táblázat kivetítését határozza meg, először egy csomópontot rendel a dúsítási fában a tábla forrásához. Ez a csomópont általában egy olyan **formáló** képesség kimenete, amelyet a szaktudás listájához adott hozzá, hogy egy adott alakzatot hozzon létre a táblázatokban való projekthez. A projekthez kiválasztott csomópont több táblázatba is feldarabolható a projektbe. A táblák definíciója a projekthez használni kívánt táblák listáját tartalmazza.
+When defining a table projection within the `knowledgeStore` element of your skillset, start by mapping a node on the enrichment tree to the table source. Typically this node is the output of a **Shaper** skill that you added to the list of skills to produce a specific shape that you need to project into tables. The node you choose to project can be sliced to project into multiple tables. The tables definition is a list of tables that you want to project.
 
-Minden táblázathoz három tulajdonság szükséges:
+Each table requires three properties:
 
-+ Táblanév: a tábla neve az Azure Storage-ban.
++ tableName: The name of the table in Azure Storage.
 
-+ generatedKeyName: a kulcs oszlopának neve, amely egyedileg azonosítja ezt a sort.
++ generatedKeyName: The column name for the key that uniquely identifies this row.
 
-+ Forrás: a dúsítási fában lévő csomópont, amelyből a dúsítást beadja. Ez a csomópont általában egy formáló kimenete, de a képességek bármelyikének kimenete lehet.
++ source: The node from the enrichment tree you are sourcing your enrichments from. This node is usually the output of a shaper, but could be the output of any of the skills.
 
-Íme egy példa a tábla-kivetítésekre.
+Here is an example of table projections.
 
 ```json
 {
@@ -112,15 +112,17 @@ Minden táblázathoz három tulajdonság szükséges:
 }
 ```
 
-Ahogy az ebben a példában is látható, a legfontosabb kifejezések és entitások különböző táblákba vannak modellezve, és az egyes sorokhoz tartozó szülőre (MainTable) mutató hivatkozást tartalmaznak.
+As demonstrated in this example, the key phrases and entities are modeled into different tables and will contain a reference back to the parent (MainTable) for each row.
 
-Az alábbi ábra a [Knowledge Store használatbavételének első lépéseit](knowledge-store-howto.md)ismertető esettanulmányt mutatja be. Abban az esetben, ha egy esetnek több véleménye is van, és az egyes véleményeket a benne található entitások azonosításával gazdagítják, az itt látható módon modellezheti az előrejelzéseket.
+<!---
+The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
 
-![Entitások és kapcsolatok a táblákban](media/knowledge-store-projection-overview/TableRelationships.png "Modellezési kapcsolatok a táblázatos kivetítésekben")
+![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
+--->
 
-## <a name="object-projections"></a>Objektum-kivetítések
+## <a name="object-projections"></a>Object projections
 
-Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek bármely csomópontból származnak. Sok esetben ugyanaz a **shapeer** -képesség, amely létrehoz egy tábla-kivetítést egy objektum-kivetítés létrehozásához. 
+Object projections are JSON representations of the enrichment tree that can be sourced from any node. In many cases, the same **Shaper** skill that creates a table projection can be used to generate an object projection. 
 
 ```json
 {
@@ -156,15 +158,15 @@ Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek b�
 }
 ```
 
-Az objektumok leképezésének létrehozásához néhány objektum-specifikus attribútumra van szükség:
+Generating an object projection requires a few object-specific attributes:
 
-+ storageContainer: az a tároló, ahová a rendszer menti az objektumokat
-+ Forrás: a kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja
-+ kulcs: egy elérési út, amely a tárolni kívánt objektum egyedi kulcsát jelöli. A rendszer felhasználja a blob nevének létrehozására a tárolóban.
++ storageContainer: The container where the objects will be saved
++ source: The path to the node of the enrichment tree that is the root of the projection
++ key: A path that represents a unique key for the object to be stored. It will be used to create the name of the blob in the container.
 
-## <a name="file-projection"></a>Fájl kivetítése
+## <a name="file-projection"></a>File projection
 
-A fájl-kivetítések hasonlóak az objektum-kivetítésekhez, és csak a `normalized_images` gyűjteményben működnek. Az objektumok kivetítéséhez hasonlóan a fájl-kivetítések a blob tárolóban lesznek mentve a dokumentum-azonosító Base64 kódolású értékének mappa előtaggal. A fájl-kivetítések nem oszthatják meg ugyanazt a tárolót, mint az objektum-kivetítéseket, és egy másik tárolóba kell őket betervezni.
+File projections are similar to object projections and only act on the `normalized_images` collection. Similar to object projections, file projections are saved in the blob container with folder prefix of the base64 encoded value of the document ID. File projections cannot share the same container as object projections and need to be projected into a different container.
 
 ```json
 {
@@ -198,23 +200,23 @@ A fájl-kivetítések hasonlóak az objektum-kivetítésekhez, és csak a `norma
 }
 ```
 
-## <a name="projection-lifecycle"></a>Leképezési életciklus
+## <a name="projection-lifecycle"></a>Projection lifecycle
 
-Az előrejelzések olyan életciklussal rendelkeznek, amely az adatforrás adatforrásához van kötve. Ahogy az adatai frissülnek és újraindexelve vannak, a rendszer frissíti a kivetítéseket a kivetítéseket biztosító bővítések eredményeivel, és az adatforrásban lévő összes adattal összhangban van. A kivetítések öröklik az indexhez konfigurált törlési szabályzatot. A kivetítések nem törlődnek, ha az indexelő vagy a keresési szolgáltatás törlődik.
+Your projections have a lifecycle that is tied to the source data in your data source. As your data is updated and reindexed, your projections are updated with the results of the enrichments ensuring your projections are eventually consistent with the data in your data source. The projections inherit the delete policy you've configured for your index. Projections are not deleted when the indexer or the search service itself is deleted.
 
-## <a name="using-projections"></a>Kivetítések használata
+## <a name="using-projections"></a>Using projections
 
-Az indexelő futtatása után a kivetítésen keresztül megadott tárolókban vagy táblákban is elolvashatja a tervezett adatértékeket.
+After the indexer is run, you can read the projected data in the containers or tables you specified through projections.
 
-Az elemzéshez a Power BI felderítése olyan egyszerű, mint az Azure Table Storage beállítása adatforrásként. A-ban található kapcsolatokkal könnyedén hozhat létre vizualizációkat az adataihoz.
+For analytics, exploration in Power BI is as simple as setting Azure Table storage as the data source. You can easily create a set of visualizations on your data using the relationships within.
 
-Ha a dúsított adatok adatelemzési folyamatokban való használatát szeretné használni, akkor a [blobokból származó adatok egy Panda DataFrame tölthetők](../machine-learning/team-data-science-process/explore-data-blob.md)be.
+Alternatively, if you need to use the enriched data in a data science pipeline, you could [load the data from blobs into a Pandas DataFrame](../machine-learning/team-data-science-process/explore-data-blob.md).
 
-Végül, ha a Knowledge Store-ból kell exportálnia az adatait, Azure Data Factory rendelkezik összekötővel az adatok exportálásához és az Ön által választott adatbázisban való tárolásához. 
+Finally, if you need to export your data from the knowledge store, Azure Data Factory has connectors to export the data and land it in the database of your choice. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő lépésként hozza létre az első Knowledge Store-t mintaadatok és utasítások használatával.
+As a next step, create your first knowledge store using sample data and instructions.
 
 > [!div class="nextstepaction"]
-> [Tudásbázis létrehozása](knowledge-store-howto.md).
+> [How to create a knowlege store](knowledge-store-howto.md).

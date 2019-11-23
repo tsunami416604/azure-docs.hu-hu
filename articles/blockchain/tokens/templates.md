@@ -1,95 +1,91 @@
 ---
-title: Azure Blockchain-tokenek sablonjai
-description: Az Azure Blockchain-tokenek sablonjai szabványosított és újrafelhasználható sablonok, amelyek leegyszerűsítik a Főkönyv-alapú jogkivonatok létrehozását és üzembe helyezését.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens templates
+description: Azure Blockchain Tokens templates are standardized and reusable templates that simplify the creation and deployment of ledger-based tokens.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 5b8fc2bd4d2cedadb4c50f7ec11def8bea7b37c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577294"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324983"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain-tokenek sablonjai
+# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Tokens templates
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Az Azure Blockchain-tokenek sablonja egy szabványosított és újrahasznosítható sablon, amely leegyszerűsíti a Főkönyv-alapú jogkivonatok létrehozását és üzembe helyezését. A sablon egy olyan képletből áll, amely a [jogkivonat-taxonómiai keretrendszer (TTF)](overview.md#token-taxonomy-framework) nyelvtanán alapul. A nyelvtan magában foglalja az alapszintű jogkivonat típusát és a token viselkedési készletét.  
+An Azure Blockchain Tokens template is a standardized and reusable template that simplifies the creation and deployment of ledger-based tokens. A template consists of a formula, which is based off the [Token Taxonomy Framework (TTF)](overview.md#token-taxonomy-framework) grammar. The grammar encompasses the base token type and the set of behaviors for the token.  
 
-Például a **τϜ {d, m, b, r}** token sablon egy olyan helyettesíthető alaptokent ír le, amely alméretű, felmenthető és írható, és szerepkör-támogatással rendelkezik.
+For example, **τϜ{d,m,b,r}** token template describes a fungible base token that is sub-dividable, mintable, burnable, and has role support.
   
-## <a name="base-token-types"></a>Alapjogkivonat-típusok
+## <a name="base-token-types"></a>Base token types
 
-Az adott eszközhöz tartozó Főkönyv-token meghatározásakor és létrehozásakor fontos figyelembe venni, hogy milyen alaptokent kell használni.
+When defining and creating the ledger-based token for your particular asset, it is important to consider what base token to use.
 
-### <a name="fungible"></a>Helyettesíthető
+### <a name="fungible"></a>Fungible
 
-A helyettesíthető tokenek (τF-EK) felcserélhető értékkel rendelkeznek egymással, feltéve, hogy ugyanabban az osztályban vagy sorozatban találhatók. Egy jogkivonat ugyanazzal az értékkel rendelkezik, mint egy másik jogkivonat, vagy a tokenek egy adott mennyisége azonos értékkel rendelkezik, mint egy másik azonos mennyiség. A dollár például egy helyettesíthető jogkivonat. Ha két személy van egy dollár számlán, akkor az ilyen Dollar-számlákat a következmények nélkül cserélhetik be. A dollár számláinak értéke egyenlő. 
+Fungible tokens (𝜏F) have interchangeable value with each other as long as they are in the same class or series. One token has the same value as another token or a given quantity of tokens has the same value as another equal quantity. For example, a dollar is a fungible token. If two people are each holding a dollar bill, they can exchange these dollar bills without consequence. The dollar bills have equal value. 
 
-### <a name="non-fungible"></a>Nem helyettesíthető
+### <a name="non-fungible"></a>Non-Fungible
 
-A nem helyettesíthető tokenek (τN-EK) nem cserélhetők az azonos típusú más jogkivonatokkal, mivel általában eltérő értékekkel rendelkeznek. Egy tulajdonság címe például egy nem helyettesíthető jogkivonat. Az apartmankomplexum két különböző lakásához tartozó tulajdonságok címei nem szükségszerűen egyenlőek, mert az egység helye, vagy az a szint, amelyen az egység található. A két tulajdonság címe jogkivonatok érzékelt értéke nem egyenlő.
+Non-fungible tokens (𝜏N) are not interchangeable with other tokens of the same type as they typically have different values. For example, a property title is a non-fungible token. Property titles to two different apartments in an apartment complex are not necessarily of equal value, due to either the location of the unit or which floor the unit is on. The perceived value of the two property title tokens are not equal.
 
 ### <a name="hybrid"></a>Hibrid
 
-A hibrid jogkivonatok olyan tokenek, amelyekben a helyettesíthető tokenek és a nem helyettesíthető tokenek összetevői is vannak. A hibrid jogkivonat olyan alapjogkivonat-típus, amely a másik jogkivonat-típus osztályának tulajdonosa.
+Hybrid tokens are tokens that have components of both fungible tokens and non-fungible tokens. A hybrid token is a base token type that owns a class of the other token type.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hibrid, nem helyettesíthető, helyettesíthető szegmensekkel rendelkező talp
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybrid non-fungible base with fungible segments
 
-A helyettesíthető szegmensek tokenjét tartalmazó hibrid, nem helyettesíthető kiindulási alap nem helyettesíthető jogkivonat-szegmensekkel rendelkezik.
-Egy koncert jegy például egy hibrid token, amelyben a koncert dátuma és időpontja a nem helyettesíthető alapjogkivonat. Az adott koncert különböző ülőhelyeit tartalmazó jegyek a szegmensek, amelyek helyettesített tokenekkel rendelkeznek. A jegyek a különálló ülőhelyek között, de nem több különböző szakaszban is cserélhetők.
+A hybrid non-fungible base with fungible segments token has a non-fungible base with fungible token segments.
+For example, a concert ticket is a hybrid token where the date and time of the concert is the non-fungible base token. The tickets in various seating sections for the given concert are the segments with fungible tokens. The tickets are exchangeable in their individual seating sections, but not across sections.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Nem helyettesíthető szegmensekkel rendelkező hibrid helyettesíthető alap
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybrid fungible base with non-fungible segments
 
-A nem helyettesíthető szegmensek tokenjét tartalmazó hibrid helyettesíthető alapértékek nem helyettesíthető jogkivonat-szegmensekkel rendelkeznek. A jelzálog által támogatott biztonság például egy hibrid token, amelyben több tulajdonos a több tulajdonos között felosztott helyettesíthető alap. A biztonság felcserélhető. Az egyéni jelzálog a nem helyettesíthető szegmensek, amelyek az adott jelzálog-alapú biztonsági mentést jelölik.
+A hybrid fungible base with a non-fungible segments token has a fungible base with non-fungible token segments. For example, a mortgage backed security is a hybrid token where multiple owners are the fungible base that is split across many owners. The security is interchangeable. The individual mortgages are the non-fungible segments that represent the specific mortgage backed security.
 
-## <a name="token-behaviors"></a>Jogkivonat-viselkedések
+## <a name="token-behaviors"></a>Token behaviors
 
-A jogkivonat viselkedése a jogkivonat képességeit vagy korlátozásait határozza meg. A viselkedés magában foglalja a jogkivonat-definíció részét képező támogató tulajdonságokat is. A viselkedésmódok az összes jogkivonat-típusra vagy csak egy alkalmazásra alkalmazhatók. A viselkedés a viselkedés hatásaitól függően belső vagy külső lehet. A belső viselkedés lehetővé teszi, hogy maga a jogkivonat tulajdonságait is engedélyezi vagy korlátozza. A külső viselkedés lehetővé teszi vagy korlátozza egy külső szereplő viselkedésének meghívását.
+A token behavior defines capabilities or restrictions of the token. The behavior includes supporting properties that are a part of the token definition. Behaviors can be applied across all token types or just one. Behaviors can be internal or external depending on what the behavior effects. An internal behavior enables or restricts properties on the token itself. An external behavior enables or restricts the invocation of the behavior from an external actor.
 
-További információ az Azure Blockchain tokenek által támogatott jogkivonat-besorolási keretrendszer (TTF) token-viselkedéséről: [token-megkomponálás](composability.md).
+For more information about Azure Blockchain Tokens supported Token Taxonomy Framework (TTF) token behaviors, see [token composability](composability.md).
 
-## <a name="pre-built-token-templates"></a>Előre elkészített jogkivonat-sablonok
+## <a name="pre-built-token-templates"></a>Pre-built token templates
 
-Az Azure Blockchain-tokenek négy előre elkészített jogkivonat-sablont biztosítanak, amelyek módosítás nélkül használhatók. A legtöbb felhasználási esethez meghívhatja ezeket az előre elkészített sablonokat a tokenek gyors létrehozásának, üzembe helyezésének és kezelésének megkezdéséhez.
+Azure Blockchain Tokens provides four pre-built token templates that can be used without modification. You can call into these pre-built templates for most use cases to get started creating, deploying, and managing your tokens quickly.
 
-### <a name="commodity-tokens"></a>Nyersanyag-tokenek
+### <a name="commodity-tokens"></a>Commodity tokens
 
-A nyersanyag-tokenek konzisztens értékkel rendelkeznek, és átruházhatók. Például egy hordó olaj vagy egy energia egység.
+Commodity tokens have consistent value and are transferrable. For example, a barrel of oil or a unit of energy.
 
-**τF {~ d, t, m, b, r}** – helyettesíthető, teljes, átvihető, felmenthető, írható és szerepkör-támogatás
+**𝜏F{~d,t,m,b,r}** - fungible, whole, transferable, mintable, burnable, and have role support
 
-Számos blockchain-forgatókönyv esetében átláthatóságra és láthatóságra van szükség az ellátási láncban vagy több szervezeten belül. A nyersanyag-tokenek ezen gyakori használati esetektől függenek. A tokenek felcserélhetők és konzisztensek. A nyersanyag-jogkivonat sablonja rugalmas és testreszabható metaadatokkal.
+Many blockchain scenarios require transparency and visibility across the supply chain or multiple organizations. Commodity tokens are based off these common use cases. The tokens are interchangeable and consistent. The commodity token template is flexible and customizable with metadata.
 
-### <a name="qualified-tokens"></a>Minősített jogkivonatok
+### <a name="qualified-tokens"></a>Qualified tokens
 
-A minősített jogkivonatok egy adott személyt jelképeznek, és általában egy entitáshoz vannak társítva, és nem vihetők át. Például egy oklevél vagy egy parkoló megsértése.
+Qualified tokens represent something earned and are usually associated with one entity and cannot be transferred. For example, a diploma or a parking violation.
 
-**τN {s, ~ t}** – nem helyettesíthető, egyedi és nem átvihető
+**𝜏N{s,~t}** - non-fungible, singleton, and non-transferable
 
-A különböző naplózási és igazolási forgatókönyvek megkövetelik, hogy a jogkivonat tulajdonjoga nem módosítható. Vannak olyan használati esetek, amelyeknek szükségük van egy minősített jogkivonat megadására, hogy a társítás jó vagy rossz.
+Various audit and attestation scenarios require that the ownership of the token cannot be changed. There is a set of use cases, which have a need to provide a qualified token whether the association is good or bad.
 
-### <a name="asset-tokens"></a>Eszközök jogkivonatai
+### <a name="asset-tokens"></a>Asset tokens
 
-Az objektum-tokenek egyedi értéktől függenek az elemtől, és nem commoditized. Például egy múzeumi összetevő vagy egy tulajdonság neve.
+Asset tokens have unique value dependent on the item and are not commoditized. For example, a museum artifact or a property title.
 
-**τN {s, t}** – nem helyettesíthető, egyszeres és átvihető
+**𝜏N{s,t}** - non-fungible, singleton, and transferable
 
-Előfordulhat, hogy az eszköz jogkivonatai összetévesztik a jogkivonatokat. A két jogkivonat közötti fő különbség az, hogy az eszközök jogkivonatai eredendően egyediek, és az érték független a jogkivonat típusától. Egy olyan műalkotás például, amely egy kialakult művész által készített olajfestmény, egy eszköz tokenje. A Mona Lisa művészi nyomtatása azonban egy árucikk-tokennek tekintendő. Hasonlóképpen, a tulajdonság címe egy eszköz jogkivonata, mivel az érték a tulajdonság szubjektív tulajdonságaiban szerepel.
+Asset tokens may be confused with commodity tokens. The major difference between the two tokens is that asset tokens are inherently unique, and value is independent of the type of token it is. For example, a piece of art like an oil painting by an established artist is an asset token. However, an art print of the Mona Lisa is considered a commodity token. Similarly, a property title is an asset token since the value exists in the subjective qualities of the property.
 
-### <a name="ticket-tokens"></a>Jegyek jogkivonatai
+### <a name="ticket-tokens"></a>Ticket tokens
 
-A jegyek tokenje konzisztens értékkel rendelkezik, de általában lejár. Például egy repülőjegy.
+Ticket tokens have consistent value but typically expire. For example, a plane ticket.
 
-**τN {m, b, r}** – nem helyettesíthető, felmenthető, írható és szerepkör-támogatással rendelkezik.
+**𝜏N{m,b,r}** - non-fungible, mintable, burnable, and have role support.
 
-A Ticket tokenek jellemzően lejárati dátummal rendelkeznek, amely eltér a normál, a szokásostól eltérő jogkivonattól. A repülőjegyek, a koncert jegyek vagy a sportfogadási jegyek például az adott időponthoz rendelt ülőhelyekkel rendelkeznek. Nem lehet egyszerűen átváltani a jegyeket a dátumok vagy az ülőhelyek között.
+Ticket tokens typically have an expiry date that makes them different from a regular commodity token. For example, an airplane ticket, concert ticket, or sports ticket all have options of assigned seating with specific dates of use. You cannot easily interchange tickets between dates or seating areas.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha nagyobb rugalmasságra van szüksége a forgatókönyvhöz, Ismerje meg, hogyan hozhat létre saját jogkivonat-sablonokat a [jogkivonat-megkomponálás](composability.md)használatával.
+If you require more flexibility for your scenario, learn about creating your own token templates using [token composability](composability.md).

@@ -1,24 +1,24 @@
 ---
-title: Feltétel használata a sablonokban
-description: Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján. Bemutatja, hogyan helyezhet üzembe egy új erőforrást, vagy használjon egy meglévő erőforrást.
+title: Use condition in templates
+description: Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján. Shows how to either deploy a new resource or use an existing resource.
 author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fe0a30ab3931be0473ea4f067d6a02797fec1e4d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 7aecc25daed8f73e903b181d782e53c0ea5acd74
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150381"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325332"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltételek használata az Azure Resource Manager-sablonokban
 
 Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján.
 
-Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre. Ellenkező esetben a rendszer a megadott nevű meglévő Storage-fiókot használja.
+Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre. Otherwise, an existing storage account with the name provided is used.
 
-![Resource Manager-sablon használati feltételeinek diagramja](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
+![Resource Manager template use condition diagram](./media/resource-manager-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -28,12 +28,12 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 > * Az erőforrások eltávolítása
 
-Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információkért lásd:
+This tutorial only covers a basic scenario of using conditions. További információ eléréséhez lásd:
 
-* [Sablonfájl szerkezete: feltétel](conditional-resource-deployment.md).
-* [Erőforrás feltételes üzembe helyezése Azure Resource Manager-sablonban](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
-* [Sablon függvény: if](./resource-group-template-functions-logical.md#if).
-* [Azure Resource Manager-sablonok összehasonlító funkciói](./resource-group-template-functions-comparison.md)
+* [Template file structure: Condition](conditional-resource-deployment.md).
+* [Conditionally deploy a resource in an Azure Resource Manager template](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Template function: If](./resource-group-template-functions-logical.md#if).
+* [Comparison functions for Azure Resource Manager templates](./resource-group-template-functions-comparison.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* [Visual Studio Code](https://code.visualstudio.com/) [Resource Manager Tools bővítménnyel](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```azurecli-interactive
@@ -64,11 +64,11 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A sablon öt erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
      Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
@@ -78,15 +78,15 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 A meglévő sablont két helyen kell módosítania:
 
 * Adjon hozzá egy tárfióknév paramétert. A felhasználók megadhatnak egy új tárfióknevet vagy egy meglévő tárfiók nevét is.
-* Adjon hozzá egy új, **newOrExisting** nevű paramétert. A központi telepítés ezzel a paraméterrel határozza meg, hogy létre kell-e hozni egy új Storage-fiókot, vagy egy meglévő Storage-fiókot kell használnia.
+* Adjon hozzá egy új, **newOrExisting** nevű paramétert. The deployment uses this parameter to determine whether to create a new storage account or use an existing storage account.
 
 A következő eljárással hajthatja végre a módosításokat:
 
 1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
-2. Cserélje le a három **változót ("storageAccountName")** a teljes sablonban található **paraméterekkel ("storageAccountName")** .
+2. Replace the three **variables('storageAccountName')** with **parameters('storageAccountName')** in the whole template.
 3. Távolítsa el az alábbi változódefiníciót:
 
-    ![Resource Manager-sablon használati feltételeinek diagramja](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Resource Manager template use condition diagram](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 4. Adja hozzá a sablonhoz az alábbi két paramétert:
 
@@ -118,7 +118,7 @@ A következő eljárással hajthatja végre a módosításokat:
     A frissített tárfiók-definíció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Frissítse a virtuális gép erőforrás-definíciójának **storageUri** tulajdonságát a következő értékkel:
+6. Update the **storageUri** property of the virtual machine resource definition with the following value:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -130,7 +130,7 @@ A következő eljárással hajthatja végre a módosításokat:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Kövesse a [sablon telepítése](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) a Cloud Shell megnyitására és a módosított sablon feltöltésére vonatkozó utasításokat, majd futtassa a következő PowerShell-szkriptet a sablon üzembe helyezéséhez.
+Follow the instructions in [Deploy the template](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) to open the Cloud shell and upload the revised template, and then run the following PowerShell script to deploy the template.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,18 +155,18 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new**, de a megadott névvel rendelkező tárfiók már létezik.
 
-Próbáljon meg egy másik üzemelő példányt a **newOrExisting** beállítással a "meglévő" értékre állítani, és adjon meg egy meglévő Storage-fiókot. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető útmutatót.
+Try making another deployment with **newOrExisting** set to "existing" and specify an existing storage account. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető útmutatót.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. To delete the resource group, select **Try it** to open the Cloud shell. To paste the PowerShell script, right-click the shell pane, and then select **Paste**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan sablont állított össze, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat jelszóként sablonok üzembe helyezésekor, tekintse meg a következőt:
 

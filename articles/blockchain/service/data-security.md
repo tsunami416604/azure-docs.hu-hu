@@ -1,68 +1,62 @@
 ---
-title: Az Azure Blockchain szolgáltatás biztonsága
-description: Az Azure Blockchain szolgáltatás adathozzáférési és biztonsági fogalmai
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service security
+description: Azure Blockchain Service data access and security concepts
 ms.date: 05/02/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.reviewer: janders
+ms.openlocfilehash: 3c68ea237f3026f4f670b156e63989ceca857cad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579924"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325200"
 ---
-# <a name="azure-blockchain-service-security"></a>Az Azure Blockchain szolgáltatás biztonsága
+# <a name="azure-blockchain-service-security"></a>Azure Blockchain Service security
 
 Az Azure Blockchain Service számos Azure-funkció segítségével tartja biztonságban és könnyen elérhetően az adatokat. Az adatbiztonságért az elkülönítés, a titkosítás és a hitelesítés felel.
 
-## <a name="isolation"></a>Elkülönítés
+## <a name="isolation"></a>Elszigetelés
 
-Az Azure Blockchain szolgáltatás erőforrásai elkülönítettek egy magánhálózati virtuális hálózaton. Minden tranzakció és érvényesítési csomópont egy virtuális gép (VM). Az egyik virtuális hálózatban lévő virtuális gépek nem tudnak közvetlenül kommunikálni egy másik virtuális hálózatban lévő virtuális gépekkel. Az elkülönítés biztosítja, hogy a kommunikáció a virtuális hálózaton belül maradjon. Az Azure Virtual Network elkülönítésével kapcsolatos további információkért lásd: [elkülönítés az Azure nyilvános felhőben](../../security/fundamentals/isolation-choices.md#networking-isolation).
+Azure Blockchain Service resources are isolated in a private virtual network. Each transaction and validation node is a virtual machine (VM). VMs in one virtual network cannot communicate directly to VMs in a different virtual network. Isolation ensures communication remains private within the virtual network. For more information on Azure virtual network isolation, see [isolation in the Azure Public Cloud](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
 ![VNET diagram](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Titkosítás
 
-A felhasználói adattárolók tárolása az Azure Storage szolgáltatásban történik. A felhasználói adatok titkosítása mozgásban és nyugalmi állapotban a biztonság és a titkosság érdekében történik. További információkért lásd: az [Azure Storage biztonsági útmutatója](../../storage/common/storage-security-guide.md).
+User data is stored in Azure storage. User data is encrypted in motion and at rest for security and confidentiality. For more information, see: [Azure Storage security guide](../../storage/common/storage-security-guide.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-A tranzakciókat RPC-végponton keresztül lehet elküldeni a blockchain-csomópontoknak. Az ügyfelek egy tranzakciós csomóponttal kommunikálnak egy fordított proxykiszolgáló használatával, amely kezeli a felhasználói hitelesítést, és titkosítja az adattitkosítást az SSL protokollon keresztül.
+Transactions can be sent to blockchain nodes via an RPC endpoint. Clients communicate with a transaction node using a reverse proxy server that handles user authentication and encrypts data over SSL.
 
-![Hitelesítési diagram](./media/data-security/authentication.png)
+![Authentication diagram](./media/data-security/authentication.png)
 
-Az RPC-hozzáféréshez háromféle hitelesítési mód van.
+There are three modes of authentication for RPC access.
 
 ### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
-Az egyszerű hitelesítés a felhasználónevet és a jelszót tartalmazó HTTP-hitelesítési fejlécet használ. A Felhasználónév a blockchain csomópont neve. A jelszó beállítása egy tag vagy csomópont kiépítés során történik. A jelszót a Azure Portal vagy a parancssori felület használatával lehet megváltoztatni.
+Basic authentication uses an HTTP authentication header containing the user name and password. User name is the name of the blockchain node. Password is set during provisioning of a member or node. The password can be changed using the Azure portal or CLI.
 
 ### <a name="access-keys"></a>Elérési kulcs
 
-A hozzáférési kulcsok véletlenszerűen generált karakterláncot használnak a végpont URL-címében. A kulcsok elforgatásának engedélyezése két hozzáférési kulcs segítségével. A kulcsok a Azure Portal és a parancssori felületről is újrahozhatók.
+Access keys use a randomly generated string included in the endpoint URL. Two access keys help enable key rotation. Keys can be regenerated from the Azure portal and CLI.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD) egy jogcím-alapú hitelesítési mechanizmust használ, ahol a felhasználó hitelesítése az Azure AD-ben az Azure AD felhasználói hitelesítő adataival történik. Az Azure AD biztosítja a felhőalapú Identitáskezelés használatát, és lehetővé teszi, hogy az ügyfelek egyetlen identitást használjanak a teljes vállalati és a felhőben elérhető alkalmazások számára. Az Azure Blockchain szolgáltatás integrálható az Azure AD-vel, amely lehetővé teszi az AZONOSÍTÓk összevonását, az egyszeri bejelentkezést és a többtényezős hitelesítést. A szervezeten belül felhasználókat, csoportokat és blockchain rendelhet hozzá a tagokhoz és a csomópontokhoz.
+Azure Active Directory (Azure AD) uses a claim-based authentication mechanism where the user is authenticated by Azure AD using Azure AD user credentials. Azure AD provides cloud-based identity management and allows customers to use a single identity across an entire enterprise and access applications on the cloud. Azure Blockchain Service integrates with Azure AD enabling ID federation, single sign-on and multi-factor authentication. You can assign users, groups, and application roles in your organization for blockchain member and node access.
 
-Az Azure AD-ügyfél proxyja elérhető a [githubon](https://github.com/Microsoft/azure-blockchain-connector/releases). Az ügyfél-proxy irányítja a felhasználót az Azure AD bejelentkezési oldalára, és sikeres hitelesítés után beolvas egy tulajdonosi jogkivonatot. Ezt követően a felhasználó egy Ethereum-ügyfélalkalmazás, például a geth vagy a szarvasgomba összekapcsolja az ügyfél proxyjának végpontját. Végül, ha egy tranzakciót küld el, az ügyfél proxyja beadja a tulajdonosi jogkivonatot a HTTP-fejlécben, és a fordított proxy érvényesíti a jogkivonatot a OAuth protokoll használatával.
+The Azure AD client proxy is available on [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases). The client proxy directs the user to the Azure AD sign-in page and obtains a bearer token upon successful authentication. Subsequently, the user connects an Ethereum client application such as Geth or Truffle to the client proxy's endpoint. Finally, when a transaction is submitted, the client proxy injects the bearer token in the http header and the reverse proxy validates the token using OAuth protocol.
 
-## <a name="keys-and-ethereum-accounts"></a>Kulcsok és Ethereum fiókok
+## <a name="keys-and-ethereum-accounts"></a>Keys and Ethereum accounts
 
-Egy Azure Blockchain-szolgáltatási tag kiépítés után létrejön egy Ethereum-fiók, valamint egy nyilvános és titkos kulcspár. A titkos kulcs használatával tranzakciókat küldhet a blockchain. A Ethereum fiók a nyilvános kulcs kivonatának utolsó 20 bájtja. A Ethereum-fiók neve is mobiltárca.
+When provisioning an Azure Blockchain Service member, an Ethereum account and a public and private key pair is generated. The private key is used to send transactions to the blockchain. The Ethereum account is the last 20 bytes of the public key's hash. The Ethereum account is also called a wallet.
 
-A privát és a nyilvános kulcspár keyfile JSON formátumban van tárolva. A titkos kulcs titkosítása a blockchain-Főkönyv szolgáltatás létrehozásakor megadott jelszó használatával történik.
+The private and public key pair is stored as a keyfile in JSON format. The private key is encrypted using the password entered when the blockchain ledger service is created.
 
-A titkos kulcsok a tranzakciók digitális aláírására szolgálnak. A privát blokkláncok egy titkos kulccsal aláírt intelligens szerződés az aláíró identitását jelöli. Az aláírás érvényességének ellenőrzéséhez a fogadó össze tudja hasonlítani az aláíró nyilvános kulcsát az aláírásból kiszámított címtől.
+Private keys are used to digitally sign transactions. In private blockchains, a smart contract signed by a private key represents the signer's identity. To verify the validity of the signature, the receiver can compare the public key of the signer with the address computed from the signature.
 
-A konstellációs kulcsok a kvórum-csomópontok egyedi azonosítására szolgálnak. A konstellációs kulcsok a csomópont-kiépítés időpontjában jönnek létre, és a kvórumban található privát tranzakció privateFor paraméterében vannak megadva.
+Constellation keys are used to uniquely identify a Quorum node. Constellation keys are generated at the time of node provisioning and are specified in the privateFor parameter of a private transaction in Quorum.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása](configure-transaction-nodes.md)
+[Configure Azure Blockchain Service transaction nodes](configure-transaction-nodes.md)

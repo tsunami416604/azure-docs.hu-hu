@@ -1,68 +1,68 @@
 ---
-title: Data Lake Storage Gen2 engedélyeinek beállítása Azure Storage Explorer
-description: Ebben a témakörben megtudhatja, hogyan állíthatja be az engedélyeket Azure Storage Explorer használatával a Azure Data Lake Storage Gen2-kompatibilis Storage-fiókban található fájlokhoz és könyvtárakhoz.
+title: 'Azure Storage Explorer: Manage access in Azure Data Lake Storage Gen2'
+description: In this how to, you learn how to set permissions with Azure Storage Explorer on files and directories inside your Azure Data Lake Storage Gen2 capable storage account.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/11/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: b34103e521def678acce17e3292e04fca95b5e6e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992280"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327968"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer to manage access in Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2ban tárolt fájlok támogatják a részletes engedélyeket és a hozzáférés-vezérlési lista (ACL) kezelését. A részletes engedélyek és az ACL-kezelés együttes használata lehetővé teszi, hogy az adataihoz való hozzáférés rendkívül részletességgel kezelhető legyen.
+Files stored in Azure Data Lake Storage Gen2 support fine grained permissions and access control list (ACL) management. Together, fine grained permissions and ACL management allow you to manage access to your data at a very granular level.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Azure Storage Explorer:
+In this article, you learn how to use Azure Storage Explorer to:
 
 > [!div class="checklist"]
-> * Fájl szintű engedélyek beállítása
-> * Könyvtár szintű engedélyek beállítása
-> * Felhasználók vagy csoportok hozzáadása hozzáférés-vezérlési listához
+> * Set file level permissions
+> * Set directory level permissions
+> * Add users or groups to an access control list
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folyamat legjobb ábrázolásához a [Azure Storage Explorer](data-lake-storage-Explorer.md)gyors üzembe helyezést kell végrehajtania. Ez biztosítja, hogy a Storage-fiók a legmegfelelőbb állapotban legyen (a létrehozott tárolók és az azokhoz feltöltött adattárolók).
+In order to best depict the process, we require that you complete our [Azure Storage Explorer quickstart](data-lake-storage-Explorer.md). This ensures your storage account will be in the most appropriate state (container created and data uploaded to it).
 
 ## <a name="managing-access"></a>Hozzáférés-kezelés
 
-A tároló gyökerén is beállíthat engedélyeket. Ehhez be kell jelentkeznie Azure Storage Explorerba az egyéni fiókjával (a kapcsolódási karakterlánccal ellentétben). Kattintson a jobb gombbal a tárolóra, és válassza az **engedélyek kezelése**lehetőséget, és hozza létre az **engedély kezelése** párbeszédpanelt.
+You can set permissions at the root of your container. To do so, you must be logged into Azure Storage Explorer with your individual account with rights to do so (as opposed to with a connection string). Right-click your container and select **Manage Permissions**, bringing up the **Manage Permission** dialog box.
 
-![Microsoft Azure Storage Explorer – címtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Storage Explorer - Manage directory access](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
-Az **engedély kezelése** párbeszédpanel lehetővé teszi a tulajdonos és a tulajdonosok csoport engedélyeinek kezelését. Azt is lehetővé teszi, hogy új felhasználókat és csoportokat vegyen fel a hozzáférés-vezérlési listára, ahol az engedélyeket kezelheti.
+The **Manage Permission** dialog box allows you to manage permissions for owner and the owners group. It also allows you to add new users and groups to the access control list for whom you can then manage permissions.
 
-Ha új felhasználót vagy csoportot szeretne hozzáadni a hozzáférés-vezérlési listához, válassza a **felhasználó vagy csoport hozzáadása** mezőt.
+To add a new user or group to the access control list, select the **Add user or group** field.
 
-Adja meg a listához hozzáadni kívánt Azure Active Directory-(HRE-) bejegyzést, majd válassza a **Hozzáadás**lehetőséget.
+Enter the corresponding Azure Active Directory (AAD) entry you wish to add to the list and then select **Add**.
 
-A felhasználó vagy csoport ekkor megjelenik a **felhasználók és csoportok:** mezőben, így megkezdheti az engedélyeik kezelését.
+The user or group will now appear in the **Users and groups:** field, allowing you to begin managing their permissions.
 
 > [!NOTE]
-> Ajánlott eljárás, és javasoljuk, hogy hozzon létre egy biztonsági csoportot a HRE-ben, és tartsa meg az engedélyeket a csoporton az egyes felhasználók helyett. A javaslat részletes ismertetését, valamint az egyéb ajánlott eljárásokat lásd: [ajánlott eljárások Data Lake Storage Gen2hoz](data-lake-storage-best-practices.md).
+> It is a best practice, and recommended, to create a security group in AAD and maintain permissions on the group rather than individual users. For details on this recommendation, as well as other best practices, see [best practices for Data Lake Storage Gen2](data-lake-storage-best-practices.md).
 
-Az engedélyek két kategóriája adható meg: hozzáférés-vezérlési listák és alapértelmezett ACL-ek.
+There are two categories of permissions you can assign: access ACLs and default ACLs.
 
-* **Hozzáférés**: Hozzáférési ACL-ek szabályozzák az objektumokhoz való hozzáférést. A fájlok és könyvtárak egyaránt rendelkeznek hozzáférési ACL-ekkel.
+* **Access**: Access ACLs control access to an object. Files and directories both have access ACLs.
 
-* **Alapértelmezett**: Egy címtárhoz társított ACL-ek sablonja, amely meghatározza az adott címtárban létrehozott alárendelt elemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
+* **Default**: A template of ACLs associated with a directory that determines the access ACLs for any child items that are created under that directory. Files do not have default ACLs.
 
-Mindkét kategórián belül három engedély van a fájlok vagy könyvtárak hozzárendeléséhez: **Olvasás**, **írás**és **végrehajtás**.
+Within both of these categories, there are three permissions you can then assign on files or directories: **Read**, **Write**, and **Execute**.
 
 >[!NOTE]
-> Az itt megadott beállítások megadásakor a rendszer nem állítja be az engedélyeket a címtárban lévő aktuális elemekhez. Ha a fájl már létezik, minden egyes elemhez meg kell adnia az engedélyeket manuálisan.
+> Making selections here will not set permissions on any currently existing item inside the directory. You must go to each individual item and set the permissions manually, if the file already exists.
 
-Az egyes címtárakra, valamint az egyes fájlokra vonatkozó engedélyeket is kezelheti, ami lehetővé teszi a részletes hozzáférés-vezérlést. A könyvtárak és fájlok engedélyeinek kezelésére szolgáló folyamat ugyanaz, mint a fentiekben leírtak szerint. Kattintson a jobb gombbal arra a fájlra vagy könyvtárra, amelyre az engedélyeket szeretné kezelni, és kövesse ugyanezt a folyamatot.
+You can manage permissions on individual directories, as well as individual files, which are what allows you fine grained access control. The process for managing permissions for both directories and files is the same as described above. Right-click the file or directory you wish to manage permissions on and follow the same process.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban megtanulta, hogyan állíthatja be a fájlokra és könyvtárakra vonatkozó engedélyeket **Azure Storage Explorer**használatával. Az ACL-ekkel, például az alapértelmezett ACL-ekkel, a hozzáférési ACL-ekkel, azok működésével és a hozzájuk tartozó engedélyekkel kapcsolatos további információkért tekintse meg a tárgyban található fogalmi cikket is.
+In this how-to, you learned how to set permissions on files and directories using **Azure Storage Explorer**. To learn more about ACLs, including default ACLs, access ACLs, their behavior, and their corresponding permissions, continue to our conceptual article on the subject.
 
 > [!div class="nextstepaction"]
 > [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](data-lake-storage-access-control.md)

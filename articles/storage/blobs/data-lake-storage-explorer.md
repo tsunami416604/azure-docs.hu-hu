@@ -1,23 +1,23 @@
 ---
-title: A Azure Storage Explorer használatával kezelheti az adatAzure Data Lake Storage Gen2
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre tárolót egy Azure Data Lake Storage Gen2-fiókban, valamint egy könyvtárat és egy fájlt a Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépre, és hogyan tekintheti meg az összes fájlt egy címtárban.
+title: Use Azure Storage Explorer with Azure Data Lake Storage Gen2
+description: In this quickstart, you learn how to use Azure Storage Explorer to create a container in an Azure Data Lake Storage Gen2 account, as well as a directory and a file. Next, you learn how to download the file to your local computer, and how to view all of the file in a directory.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 53f43945b13a9dae44eba752f935eb34d7aa498b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991419"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327616"
 ---
-# <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2-fiókban tárolt adatkezelés Azure Storage Explorer használata
+# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer with Azure Data Lake Storage Gen2
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy könyvtárat és egy blobot a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépre, és hogyan tekintheti meg az összes blobot egy címtárban. Azt is megtudhatja, hogyan hozhat létre egy blob pillanatképét, hogyan kezelheti a címtár-hozzáférési házirendeket, és hogyan hozhat létre közös hozzáférési aláírást.
+In this quickstart, you learn how to use [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) to create a directory and a blob. Next, you learn how to download the blob to your local computer, and how to view all of the blobs in a directory. You also learn how to create a snapshot of a blob, manage directory access policies, and create a shared access signature.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,15 +25,15 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy könyvtára
 
 A rövid útmutatóhoz az Azure Storage Explorer telepítése szükséges. Az Azure Storage Explorer Windows, Macintosh vagy Linux rendszerre való letöltése: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="sign-in-to-storage-explorer"></a>Bejelentkezés Storage Explorer
+## <a name="sign-in-to-storage-explorer"></a>Sign in to Storage Explorer
 
-Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. Míg Storage Explorer számos módszert biztosít a Storage-fiókokhoz való kapcsolódáshoz, a hozzáférés-vezérlési listák kezelése jelenleg csak egyetlen módon támogatott.
+Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. While Storage Explorer provides several ways to connect to storage accounts, only one way is currently supported for managing ACLs.
 
-|Tevékenység|Cél|
+|Tevékenység|Rendeltetés|
 |---|---|
-|Azure-fiók hozzáadása | Átirányítja a vállalati bejelentkezési oldalra az Azure-hitelesítéshez. Jelenleg ez az egyetlen támogatott hitelesítési módszer, ha az ACL-eket szeretné kezelni és beállítani. |
+|Azure-fiók hozzáadása | Átirányítja a vállalati bejelentkezési oldalra az Azure-hitelesítéshez. Currently this is the only supported authentication method if you want to manage and set ACLs. |
 
-Válassza az **Azure-fiók hozzáadása** lehetőséget, majd kattintson a **Bejelentkezés** gombra. A képernyőn megjelenő utasításokat követve jelentkezzen be Azure-fiókjába.
+Select **Add an Azure Account** and click **Sign in..** . Follow the on-screen prompts to sign into your Azure account.
 
 ![Microsoft Azure Storage Explorer – Csatlakozás ablak](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -43,41 +43,41 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A Blobok mindig egy könyvtárba lesznek feltöltve. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
+Blobs are always uploaded into a directory. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
 
-A címtár létrehozásához bontsa ki a folytatás lépésben létrehozott Storage-fiókot. Válassza a **blob-tároló**elemet, kattintson a jobb gombbal, majd válassza a blob- **tároló létrehozása**lehetőséget. Adja meg a tároló nevét. Ha elkészült, nyomja le az **ENTER** billentyűt a tároló létrehozásához. A blob könyvtárának sikeres létrehozása után a rendszer a kiválasztott Storage-fiók **blob Container** mappájában jelenik meg.
+To create a directory, expand the storage account you created in the proceeding step. Select **Blob container**, right-click and select **Create Blob container**. Enter the name for your container. When complete, press **Enter** to create the container. Once the blob directory has been successfully created, it is displayed under the **Blob container** folder for the selected storage account.
 
-![Microsoft Azure Storage Explorer-tároló létrehozása](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Storage Explorer - Creating a container](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
-## <a name="upload-blobs-to-the-directory"></a>Blobok feltöltése a könyvtárba
+## <a name="upload-blobs-to-the-directory"></a>Upload blobs to the directory
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Az IaaS típusú virtuális gépek biztonsági mentéséhez használt VHD-fájlok lapblobok. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A blobtárolókban tárolt fájlok a legtöbb esetben blokkblobok.
 
-A címtár menüszalagján válassza a **feltöltés**lehetőséget. Ez a művelet lehetővé teszi egy mappa vagy fájl feltöltését.
+On the directory ribbon, select **Upload**. Ez a művelet lehetővé teszi egy mappa vagy fájl feltöltését.
 
 Válassza ki a feltölteni kívánt fájlokat vagy mappát. Válassza ki a **blob típusát**. A választható lehetőségek: **Hozzáfűző**, **Lap** és **Blokk**.
 
 .vhd- vagy .vhdx-fájlok feltöltésekor válassza a **.vhd- vagy .vhdx-fájlok feltöltése lapblobként (ajánlott)** lehetőséget.
 
-A **feltöltés mappába (nem kötelező)** mezőben adjon meg egy mappanevet a fájlok vagy mappák tárolására a könyvtárban található mappában. Ha nincs kiválasztva mappa, a fájlok közvetlenül a címtárban lesznek feltöltve.
+In the **Upload to folder (optional)** field either a folder name to store the files or folders in a folder under the directory. If no folder is chosen, the files are uploaded directly under the directory.
 
 ![Microsoft Azure Storage Explorer – Blob feltöltése](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
 
 Ha az **OK** gombra kattint, a kiválasztott fájlokat a rendszer sorba állítja a feltöltéshez, majd egyesével feltölti azokat. A feltöltés befejeztével az eredmények megjelennek a **Tevékenységek** ablakban.
 
-## <a name="view-blobs-in-a-directory"></a>Blobok megtekintése egy könyvtárban
+## <a name="view-blobs-in-a-directory"></a>View blobs in a directory
 
-A **Azure Storage Explorer** alkalmazásban válasszon ki egy könyvtárat egy Storage-fiókban. A fő ablaktábla a kiválasztott könyvtárban lévő Blobok listáját jeleníti meg.
+In the **Azure Storage Explorer** application, select a directory under a storage account. The main pane shows a list of the blobs in the selected directory.
 
-![Microsoft Azure Storage Explorer – Blobok listázása egy könyvtárban](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Microsoft Azure Storage Explorer - list blobs in a directory](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>Blobok letöltése
 
 Blobok az **Azure Storage Explorer** használatával való letöltéséhez jelöljön ki egy blobot, majd válassza a menüszalag **Letöltés** elemét. Megnyílik egy fájl párbeszédpanel, amelyen megadhat egy fájlnevet. Kattintson a **Mentés** lehetőségre a blob letöltéséhez a helyi helyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az **Azure Storage Explorer** használatával. Ha szeretne többet megtudni arról, hogyan állíthatja be az ACL-eket a fájlokra és a címtárakra, folytassa a témával kapcsolatos tudnivalókat.
+Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az **Azure Storage Explorer** használatával. To learn about how to set ACLs on your files and directories, continue to our How-to on the subject.
 
 > [!div class="nextstepaction"]
-> [Hozzáférés-vezérlési listák beállítása fájlokhoz és könyvtárakhoz](data-lake-storage-how-to-set-permissions-storage-explorer.md)
+> [How to set ACLs on files and directories](data-lake-storage-how-to-set-permissions-storage-explorer.md)

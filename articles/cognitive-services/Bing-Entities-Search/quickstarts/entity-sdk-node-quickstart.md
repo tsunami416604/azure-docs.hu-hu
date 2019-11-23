@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Keresési kérelem küldése a Node. js-hez készült Bing Entity Search SDK-val'
+title: 'Quickstart: Send a search request with the SDK for Node.js - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató a Node. js-hez készült Bing Entity Search SDK-val rendelkező entitások keresésére használható.
+description: Use this quickstart to search for entities with the Bing Entity Search SDK for Node.js
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,50 +10,50 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 40c9062dba5eb3bbed6ee90bfdb0a74c1d6c11d5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 86c0507c3796693f29170f6059d7774312c2b3f0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479030"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323850"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Gyors útmutató: Keresési kérelem küldése a Node. js-hez készült Bing Entity Search SDK-val
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Node.js
 
-Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Node. js-hez készült Bing Entity Search SDK-val. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)található.
+Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Node.js. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 
-* A [Node. js-hez készült BING Entity Search SDK](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* The [Bing Entity Search SDK for Node.js](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
 
-Az Bing Entity Search SDK telepítése:
+To install the Bing Entity Search SDK:
 
-1. Futtatás `npm install ms-rest-azure` a fejlesztési környezetben.
-2. Futtatás `npm install azure-cognitiveservices-entitysearch` a fejlesztési környezetben.
+1. Run `npm install ms-rest-azure` in your development environment.
+2. Run `npm install azure-cognitiveservices-entitysearch` in your development environment.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá az alábbi követelményeket. 
+1. Create a new JavaScript file in your favorite IDE or editor, and add the following requirements. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
     ```
 
-2. Hozzon létre egy `CognitiveServicesCredentials` példányt az előfizetési kulcs használatával. Ezután hozza létre a keresési ügyfél egy példányát.
+2. Create an instance of `CognitiveServicesCredentials` using your subscription key. Then create an instance of the search client with it.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let entitySearchApiClient = new EntitySearchAPIClient(credentials);
     ```
 
-## <a name="send-a-request-and-receive-a-response"></a>Kérelem küldése és válasz fogadása
+## <a name="send-a-request-and-receive-a-response"></a>Send a request and receive a response
 
-1. Entitások keresési kérelmének küldése `entitiesOperations.search()`a szolgáltatással. A válasz fogadása után nyomtassa ki `queryContext`a, a visszaadott eredmények számát és az első eredmény leírását.
+1. Send an entities search request with `entitiesOperations.search()`. After receiving a response, print out the `queryContext`, number of returned results, and the description of the first result.
       
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
@@ -69,9 +69,9 @@ Az Bing Entity Search SDK telepítése:
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi a Bing Entity Search API?](../overview.md )
+* [What is the Bing Entity Search API?](../overview.md )

@@ -1,21 +1,15 @@
 ---
-title: Az Azure Blockchain Workbench SQL-adatbázis tűzfalának konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja az Azure Blockchain Workbench előzetes verziójú SQL DB-tűzfalát.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Workbench database firewall
+description: Learn how to configure the Azure Blockchain Workbench Preview database firewall to allow external clients and applications to connect.
 ms.date: 09/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 0153065ca0ccd6cf34456d630d7437d5ea7c5b48
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845234"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326004"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Az Azure Blockchain Workbench-adatbázis tűzfalának konfigurálása
 
@@ -25,7 +19,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat tűzfalszabályokat az Azure Portal s
 
 A következőképpen csatlakozhat ahhoz az adatbázishoz, amelyben szabályt szeretne konfigurálni:
 
-1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely rendelkezik **tulajdonosi** engedélyekkel az Azure Blockchain Workbench erőforrásaihoz.
+1. Sign in to the Azure portal with an account that has **Owner**     permissions for the Azure Blockchain Workbench resources.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza a Blockchain Workbench-környezete erőforráscsoportjának nevét.
 4. Válassza a **Típus** lehetőséget az erőforrások rendezéséhez, majd válassza az **SQL server** lehetőséget.
@@ -56,7 +50,7 @@ Tűzfalszabály létrehozásához:
 1. A tűzfal-konfiguráció mentéséhez válassza a **Mentés** lehetőséget.
 2. Tesztelje az adatbázishoz konfigurált IP-címtartományt úgy, hogy csatlakozik egy alkalmazásból vagy eszközből. Ehhez használhatja például az SQL Server Management Studiót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)
