@@ -8,20 +8,20 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 11/04/2018
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 0a93f4fcf862930c831feb71d5f6a84103a2c77d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: aa080b40c20cbc8946db8cd163ee6cadb3b75972
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647425"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451402"
 ---
 1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra. 
 
     ![Betanítás gomb](../media/train-button-preview.png)
 
-2. A betanítás akkor fejeződik be, amikor megjelenik az állapot megerősítésének sikeressége.
+2. Training is complete when you see the status confirming success.
 
     > [!Tip]
-    > Az **értesítések** a jobb felső navigációs sávon érhetők el, és előzményeket tartalmaznak.
+    > **Notifications** is available in the top-right navigation and includes a history.

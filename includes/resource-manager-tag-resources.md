@@ -8,66 +8,66 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179505"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451650"
 ---
-1. Egy erőforrást vagy erőforráscsoportot, címkéinek megtekintéséhez keres az áttekintésben meglévő címkéit. Ha eddig még nem vett fel címkéket, a lista üres.
+1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Ha eddig még nem vett fel címkéket, a lista üres.
    
-     ![Címkék megtekintése az erőforrás vagy erőforráscsoport](./media/resource-manager-tag-resources/view-tags.png)
-1. Címke hozzáadásához válassza ki a **címkék hozzáadásához kattintson ide**.
+     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
+1. To add a tag, select **Click here to add tags**.
 
-1. Adjon meg egy nevet és egy értéket. Válassza ki **+** a címke hozzáadása.
+1. Provide a name and value. Select **+** to add the tag.
    
-     ![Címke hozzáadása](./media/resource-manager-tag-resources/add-tag.png)
-1. Továbbra is a címkék hozzáadása, igény szerint. Ha elkészült, kattintson a **Mentés** elemre.
+     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
+1. Continue adding tags as needed. Ha elkészült, kattintson a **Mentés** elemre.
    
-     ![Címkék mentése](./media/resource-manager-tag-resources/save-tags.png)
-1. A címkék jelennek meg a áttekintésében.
+     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
+1. The tags are now displayed in the overview.
    
-     ![Címkék megjelenítése](./media/resource-manager-tag-resources/view-new-tags.png)
-1. Adja hozzá, vagy törli a címkét, válassza ki **módosítása**.
+     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
+1. To add or delete a tag, select **change**.
    
-1. Egy címke törlése, válassza a Kuka ikonra. Ezt követően válassza a **Mentés** lehetőséget.
+1. To delete a tag, select the trash icon. Ezt követően válassza a **Mentés** lehetőséget.
 
-     ![Címke törlése](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-Tömegesen rendelhet hozzá címkéket, hogy több erőforrást:
+To bulk assign tags to multiple resources:
 
-1. Az erőforrások bármely listában jelölje ki a címke hozzárendelni kívánt erőforrások be a jelölőnégyzetet.
+1. From any list of resources, select the checkbox for the resources you want to assign the tag.
 
-     ![Válassza ki a több erőforrást](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Válassza ki **címkék hozzárendelése**
+1. Select **Assign tags**
 
-     ![Címkék hozzárendelése](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Után minden nevét és értékét, válassza ki a **+** . Ha elkészült, válassza **hozzárendelése**.
+1. After each name and value, select **+** . When done, select **Assign**.
 
-     ![Válassza ki a hozzárendelése](./media/resource-manager-tag-resources/select-assign.png)
+     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
 
-Címkével ellátott összes erőforrás megtekintése:
+To view all resources with a tag:
 
-1. Válassza ki **minden szolgáltatás** és **címkék**.
+1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
 
-     ![Keresse meg a címke szerint](./media/resource-manager-tag-resources/find-tags.png)
+     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Jelölje be a kódot az erőforrások megtekintése.
+1. Select the tag for viewing resources.
 
-     ![Címke kiválasztása](./media/resource-manager-tag-resources/select-tag.png)
+     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
 
-1. Adott címkével rendelkező összes erőforrás jelennek meg.
+1. All resources with that tag are displayed.
 
-     ![Címke szerinti erőforrások megtekintése](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. A gyors hozzáféréshez rögzítheti a nézetet az irányítópulton.
+1. For quick access, pin the view to the dashboard.
 
      ![Rögzítés az irányítópulton](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. A nézet nem érhető el az irányítópulton.
+1. The view is available from the dashboard.
 
-     ![Irányítópult](./media/resource-manager-tag-resources/dashboard.png)
+     ![Irányítópult](./media/resource-manager-tag-resources/dashboard-with-view.png)
