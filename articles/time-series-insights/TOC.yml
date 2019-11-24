@@ -17,10 +17,6 @@
           href: time-series-insights-update-quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: A Time Series Insights JavaScript ügyfélkódtár
-      href: tutorial-explore-js-client-lib.md
-    - name: Egyoldalas webalkalmazás létrehozása
-      href: tutorial-create-tsi-sample-spa.md
     - name: Az Azure Time Series Insights általánosan elérhető verziója
       items:
         - name: Time Series Insights-környezet létrehozása
