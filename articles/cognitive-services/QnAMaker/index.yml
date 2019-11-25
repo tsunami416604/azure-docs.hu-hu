@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: 091d2007d115c5e08904af6081d0f67b2eb60071
-  ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+  ms.openlocfilehash: f88336107203a166b61df98c55b680f1f11f79f6
+  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/05/2019
-  ms.locfileid: "71971465"
+  ms.lasthandoff: 11/23/2019
+  ms.locfileid: "74422641"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -64,10 +64,8 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 'Gyorsútmutató: A Postman használata'
-      url: quickstarts/get-answer-from-kb-using-postman.md
-    - text: 'Gyorsútmutató: A cURL használata'
-      url: quickstarts/get-answer-from-kb-using-curl.md
+    - text: 'Gyorsútmutató: Postman vagy cURL használatával'
+      url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - text: 'Gyorsútmutató: A REST és a C# használata'
       url: quickstarts/get-answer-from-knowledge-base-csharp.md
     - text: 'Gyorsútmutató: A NuGet és a C# használata'

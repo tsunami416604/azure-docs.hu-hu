@@ -59,6 +59,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási lehetőségek
+      href: cognitive-services-support-options.md
     - name: Szolgáltatói szerződés (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Videók

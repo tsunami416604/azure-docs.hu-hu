@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure Portal
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: Rendszerindítási hibák
-  href: boot-error-troubleshoot.md
+- name: Rendszerindítási hibák (Linux)
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
+- name: Rendszerindítási hibák (Windows)
+  href: boot-error-troubleshoot.md
+  items:
     - name: Rendszerindítási diagnosztika
       href: boot-diagnostics.md
     - name: BitLocker-hibák

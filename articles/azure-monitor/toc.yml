@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: Állapotmonitorozás konfigurációja
               href: insights/container-insights-health-monitors-config.md
-            - name: Monitorozás letiltása
+            - name: AKS monitorozásának letiltása
               href: insights/container-insights-optout.md
+            - name: Red Hat OpenShift monitorozásának letiltása
+              href: insights/container-insights-optout-openshift.md
             - name: Hibaelhárítás
               href: insights/container-insights-troubleshoot.md
         - name: Docker- és Windows-tárolók monitorozása

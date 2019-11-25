@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: Metaadatokkal rendelkező kérdések felvétele
       href: quickstarts/add-question-metadata-portal.md
-    - name: Válasz kérése
-      items:
-        - name: A Postman használata
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: A cURL használata
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Válasz kérése Postman vagy cURL használatával
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: A REST API-k használata
       items:
         - name: Új tudásbázis létrehozása

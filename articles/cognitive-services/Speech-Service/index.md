@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: A Speech Service dokumentációja
 description: Bevezetés a Speech Service használatába.
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580335"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406187"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580335"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Beszéd, szándékok és entitások felismerése</h3>
-                                                    <p>A Speech SDK és a LUIS használatával felismerheti a beszédet, a szándékokat és az entitásokat.</p>
+                                                    <p>A Speech SDK és a Language Understanding (LUIS) használatával felismerheti a beszédet, a szándékokat és az entitásokat.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580335"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>A LUIS dokumentációja</h3>
+                                                    <h3>A Language Understanding (LUIS) dokumentációja</h3>
                                                     <p>További információ a Language Understanding szolgáltatásról (LUIS) és a természetes nyelvi feldolgozásról (Natural Language Processing, NLP).</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580335"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS portál</h3>
+                                                    <h3>A Language Understanding (LUIS) portálja</h3>
                                                     <p>Természetes nyelvet építhet be az alkalmazásokba, robotokba és IoT-eszközökbe.</p>
                                                 </div>
                                             </div>

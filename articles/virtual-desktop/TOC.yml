@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: Kapcsolódás az iOS-ügyfélhez
           href: connect-ios.md
-    - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
-      href: create-host-pools-arm-template.md
-    - name: Gazdagépcsoport létrehozása a PowerShell-lel
-      href: create-host-pools-powershell.md
-    - name: Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
-      href: deploy-windows-7-virtual-machine.md
-    - name: Windows-licenc alkalmazása Windows Virtual Desktop munkamenetgazdákra
+    - name: Gazdagépkészlet és munkamenetgazdák létrehozása
+      items:
+        - name: Azure Resource Manager-sablon
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: Windows 7 rendszerű virtuális gép üzembe helyezése
+          href: deploy-windows-7-virtual-machine.md
+        - name: GPU-alapú munkamenetgazda üzembe helyezése
+          href: configure-vm-gpu.md
+    - name: Profiltároló létrehozása
+      items:
+        - name: VM-alapú fájlmegosztás használata
+          href: create-host-pools-user-profile.md
+        - name: Az Azure NetApp Files használata
+          href: create-fslogix-profile-container.md
+    - name: Gazdagépkészlet beállításainak konfigurálása
+      items:
+        - name: RDP-tulajdonságok
+          href: customize-rdp-properties.md
+        - name: Készletezett gazdagépkészletek terheléselosztása
+          href: configure-host-pool-load-balancing.md
+    - name: Windows Virtual Desktop-licenc használata
       href: apply-windows-license.md
     - name: Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
       href: create-host-pools-user-profile.md
-    - name: Profiltároló létrehozása gazdagépkészlet számára az Azure NetApp Files használatával
-      href: create-fslogix-profile-container.md
-    - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
-      href: configure-host-pool-load-balancing.md
-    - name: Fő VHD-rendszerkép létrehozása és testreszabása
-      href: set-up-customize-master-image.md
-    - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
-      href: install-office-on-wvd-master-image.md
-    - name: GPU beállítása a Windows Virtual Desktophoz
-      href: configure-vm-gpu.md
+    - name: Munkamenetgazda rendszerképének testreszabása
+      items:
+        - name: Egy fő virtuálisgép-rendszerkép beállítása
+          href: set-up-customize-master-image.md
+        - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
+          href: install-office-on-wvd-master-image.md
     - name: Munkamenet-gazdagépek dinamikus skálázása
       href: set-up-scaling-script.md
-    - name: Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
+    - name: Csatorna testreszabása
       href: customize-feed-for-virtual-desktop-users.md
-    - name: RDP-tulajdonságok testreszabása
-      href: customize-rdp-properties.md
     - name: A diagnosztikai eszköz üzembe helyezése
       href: deploy-diagnostics.md
     - name: MSIX-alkalmazás csatolásának beállítása
