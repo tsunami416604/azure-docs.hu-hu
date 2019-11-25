@@ -1,38 +1,33 @@
 ---
-title: Rövid útmutató – Azure Container Registry események küldése Event Grid
-description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit a tároló-beállításjegyzékben, majd elküldheti a tároló-rendszerkép leküldését és az események törlését egy minta alkalmazásba.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Quickstart - Send events to Event Grid
+description: In this quickstart, you enable Event Grid events for your container registry, then send container image push and delete events to a sample application.
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ff9572cf8614e3eb5d015a602ca3f878875a0a4
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309806"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455344"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: Események küldése a privát tároló beállításjegyzékből a Event Gridba
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Quickstart: Send events from private container registry to Event Grid
 
-A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egységes esemény-felhasználást biztosít a közzétételi és előfizetési modell használatával. Ebben a rövid útmutatóban az Azure CLI használatával hozzon létre egy tároló-beállításjegyzéket, fizessen elő a beállításjegyzék eseményeire, majd helyezzen üzembe egy minta webalkalmazást az események fogadásához. Végezetül aktiválja a tároló képét `push` és `delete` eseményeit, és tekintse meg az esemény hasznos adatait a minta alkalmazásban.
+Azure Event Grid is a fully managed event routing service that provides uniform event consumption using a publish-subscribe model. In this quickstart, you use the Azure CLI to create a container registry, subscribe to registry events, then deploy a sample web application to receive the events. Finally, you trigger container image `push` and `delete` events and view the event payload in the sample application.
 
-A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljuttatott események Event Grid megjelennek a minta-webalkalmazásban:
+After you complete the steps in this article, events sent from your container registry to Event Grid appear in the sample web app:
 
-![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
+![Web browser rendering the sample web application with three received events][sample-app-01]
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][azure-account] a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
+The Azure CLI commands in this article are formatted for the **Bash** shell. If you're using a different shell like PowerShell or Command Prompt, you may need to adjust line continuation characters or variable assignment lines accordingly. This article uses variables to minimize the amount of command editing required.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
+An Azure resource group is a logical container in which you deploy and manage your Azure resources. The following [az group create][az-group-create] command creates a resource group named *myResourceGroup* in the *eastus* region. If you want to use a different name for your resource group, set `RESOURCE_GROUP_NAME` to a different value.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -42,7 +37,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ezután helyezzen üzembe egy tároló-beállításjegyzéket az erőforráscsoporthoz az alábbi parancsokkal. Az az [ACR Create][az-acr-create] parancs futtatása előtt állítsa `ACR_NAME` be a beállításjegyzék nevét. A névnek egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karakterre van korlátozva.
+Next, deploy a container registry into the resource group with the following commands. Before you run the [az acr create][az-acr-create] command, set `ACR_NAME` to a name for your registry. The name must be unique within Azure, and is restricted to 5-50 alphanumeric characters.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -50,7 +45,7 @@ ACR_NAME=<acrName>
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```
 
-A beállításjegyzék létrehozása után az Azure CLI a következőhöz hasonló kimenetet ad vissza:
+Once the registry has been created, the Azure CLI returns output similar to the following:
 
 ```json
 {
@@ -74,11 +69,11 @@ A beállításjegyzék létrehozása után az Azure CLI a következőhöz hasonl
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Esemény-végpont létrehozása
+## <a name="create-an-event-endpoint"></a>Create an event endpoint
 
-Ebben a szakaszban egy GitHub-tárházban található Resource Manager-sablont használ egy előre elkészített minta webalkalmazás üzembe helyezéséhez Azure App Service. Később előfizet a beállításjegyzék Event Grid eseményeire, és megadhatja az alkalmazást, mint az eseményeket küldő végpontot.
+In this section, you use a Resource Manager template located in a GitHub repository to deploy a pre-built sample web application to Azure App Service. Later, you subscribe to your registry's Event Grid events and specify this app as the endpoint to which the events are sent.
 
-A minta alkalmazás üzembe helyezéséhez állítson be `SITE_NAME` egy egyedi nevet a webalkalmazás számára, és hajtsa végre a következő parancsokat. A hely nevének egyedinek kell lennie az Azure-ban, mivel az a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban navigáljon az alkalmazás teljes tartománynevéhez egy böngészőben a beállításjegyzék eseményeinek megtekintéséhez.
+To deploy the sample app, set `SITE_NAME` to a unique name for your web app, and execute the following commands. The site name must be unique within Azure because it forms part of the fully qualified domain name (FQDN) of the web app. In a later section, you navigate to the app's FQDN in a web browser to view your registry's events.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -89,19 +84,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Ha az üzembe helyezés sikeres volt (eltarthat néhány percig), nyisson meg egy böngészőt, és navigáljon a webalkalmazáshoz, és győződjön meg arról, hogy az fut:
+Once the deployment has succeeded (it might take a few minutes), open a browser and navigate to your web app to make sure it's running:
 
 `http://<your-site-name>.azurewebsites.net`
 
-Meg kell jelennie a példaként megjelenített alkalmazásnak, amely nem jeleníti meg az esemény üzeneteit:
+You should see the sample app rendered with no event messages displayed:
 
-![Webböngészőben megjelenített, események nélküli minta webalkalmazás][sample-app-02]
+![Web browser showing sample web app with no events displayed][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Előfizetés a beállításjegyzék eseményeire
+## <a name="subscribe-to-registry-events"></a>Subscribe to registry events
 
-Event Grid a *témakörre* való előfizetéssel megtudhatja, hogy mely eseményeket kívánja nyomon követni, és hová szeretné elküldeni őket. A következő az [eventgrid Event-előfizetés-létrehozási][az-eventgrid-event-subscription-create] parancs előfizet a létrehozott tároló-beállításjegyzékre, és megadja a webalkalmazás URL-címét, amelynek a végpontjának kell elküldeni az eseményeket. A korábbi szakaszokban feltöltött környezeti változók itt lesznek újra felhasználva, ezért nincs szükség módosításra.
+In Event Grid, you subscribe to a *topic* to tell it which events you want to track, and where to send them. The following [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] command subscribes to the container registry you created, and specifies your web app's URL as the endpoint to which it should send events. The environment variables you populated in earlier sections are reused here, so no edits are required.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -113,7 +108,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjelennie:
+When the subscription is completed, you should see output similar to the following:
 
 ```JSON
 {
@@ -140,19 +135,19 @@ Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjel
 }
 ```
 
-## <a name="trigger-registry-events"></a>Beállításjegyzék-események kiváltása
+## <a name="trigger-registry-events"></a>Trigger registry events
 
-Most, hogy már működik a minta alkalmazás, és előfizetett a beállításjegyzékbe Event Grid, készen áll néhány esemény előállítására. Ebben a szakaszban ACR-feladatokat használ a tárolók rendszerképének kiépítéséhez és leküldéséhez a beállításjegyzékbe. Az ACR-feladatok az Azure Container Registry egyik funkciója, amely lehetővé teszi a tároló lemezképek létrehozását a felhőben anélkül, hogy a Docker-motort telepíteni kellene a helyi gépre.
+Now that the sample app is up and running and you've subscribed to your registry with Event Grid, you're ready to generate some events. In this section, you use ACR Tasks to build and push a container image to your registry. ACR Tasks is a feature of Azure Container Registry that allows you to build container images in the cloud, without needing the Docker Engine installed on your local machine.
 
-### <a name="build-and-push-image"></a>Rendszerkép létrehozása és leküldése
+### <a name="build-and-push-image"></a>Build and push image
 
-A következő Azure CLI-parancs végrehajtásával hozzon létre egy tároló-rendszerképet egy GitHub-tárház tartalmából. Alapértelmezés szerint az ACR-feladatok automatikusan leküldenek egy sikeresen létrehozott rendszerképet a beállításjegyzékbe, `ImagePushed` amely létrehozza az eseményt.
+Execute the following Azure CLI command to build a container image from the contents of a GitHub repository. By default, ACR Tasks automatically pushes a successfully built image to your registry, which generates the `ImagePushed` event.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-A következőhöz hasonló kimenetnek kell megjelennie, míg az ACR-feladatok buildek, majd leküldi a rendszerképet. A következő minta kimenete rövidítve lett csonkítva.
+You should see output similar to the following while ACR Tasks builds and then pushes your image. The following sample output has been truncated for brevity.
 
 ```console
 $ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -169,13 +164,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-Annak ellenőrzéséhez, hogy a beépített rendszerkép szerepel-e a beállításjegyzékben, hajtsa végre a következő parancsot a címkék megtekintéséhez a "MyImage" adattárban:
+To verify that the built image is in your registry, execute the following command to view the tags in the "myimage" repository:
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-A létrehozott rendszerkép "v1" címkéje a kimenetben jelenik meg, a következőhöz hasonlóan:
+The "v1" tag of the image you built should appear in the output, similar to the following:
 
 ```console
 $ az acr repository show-tags --name $ACR_NAME --repository myimage
@@ -184,15 +179,15 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 ]
 ```
 
-### <a name="delete-the-image"></a>A rendszerkép törlése
+### <a name="delete-the-image"></a>Delete the image
 
-Most állítson elő `ImageDeleted` egy eseményt a rendszerkép törlésével az az [ACR repository delete][az-acr-repository-delete] paranccsal:
+Now, generate an `ImageDeleted` event by deleting the image with the [az acr repository delete][az-acr-repository-delete] command:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-Az alábbihoz hasonló kimenetnek kell megjelennie, amely megerősítést kér a jegyzékfájl és a kapcsolódó rendszerképek törléséhez:
+You should see output similar to the following, asking for confirmation to delete the manifest and associated images:
 
 ```console
 $ az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -200,38 +195,38 @@ This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a5
 Are you sure you want to continue? (y/n): y
 ```
 
-## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
+## <a name="view-registry-events"></a>View registry events
 
-Most leküldte a rendszerképet a beállításjegyzékbe, majd törölte. Navigáljon a Event Grid Viewer webalkalmazáshoz, és mindkettőt `ImageDeleted` és `ImagePushed` eseményt kell látnia. Előfordulhat, hogy megjelenik egy előfizetés-ellenőrzési esemény is, amelyet a [Feliratkozás a beállításjegyzék eseményeire](#subscribe-to-registry-events) című szakaszban található parancs végrehajtásával generált.
+You've now pushed an image to your registry and then deleted it. Navigate to your Event Grid Viewer web app, and you should see both `ImageDeleted` and `ImagePushed` events. You might also see a subscription validation event generated by executing the command in the [Subscribe to registry events](#subscribe-to-registry-events) section.
 
-Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmazás látható, az `ImageDeleted` esemény pedig kibontva jelenik meg a részletek megjelenítéséhez.
+The following screenshot shows the sample app with the three events, and the `ImageDeleted` event is expanded to show its details.
 
-![Webböngésző, amely a ImagePushed és a ImageDeleted eseményekkel rendelkező minta alkalmazást jeleníti meg][sample-app-03]
+![Web browser showing the sample app with ImagePushed and ImageDeleted events][sample-app-03]
 
-Gratulálunk! Ha a és `ImageDeleted` az `ImagePushed` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
+Gratulálunk! If you see the `ImagePushed` and `ImageDeleted` events, your registry is sending events to Event Grid, and Event Grid is forwarding those events to your web app endpoint.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
+Once you're done with the resources you created in this quickstart, you can delete them all with the following Azure CLI command. When you delete a resource group, all of the resources it contains are permanently deleted.
 
-**FIGYELMEZTETÉS**: Ez a művelet nem vonható vissza. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
+**WARNING**: This operation is irreversible. Be sure you no longer need any of the resources in the group before running the command.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Event Gridi esemény sémája
+## <a name="event-grid-event-schema"></a>Event Grid event schema
 
-A Event Grid dokumentációjában találhatja meg az Azure Container Registry esemény-üzenet sémájának hivatkozását:
+You can find the Azure Container Registry event message schema reference in the Event Grid documentation:
 
-[Container Registry Azure Event Gridi esemény sémája](../event-grid/event-schema-container-registry.md)
+[Azure Event Grid event schema for Container Registry](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban üzembe helyezett egy tároló-beállításjegyzéket, amely egy ACR-feladatokból álló képet készített, törölte azt, és felhasználta a beállításjegyzék eseményeit Event Grid egy minta alkalmazással. Ezután lépjen be az ACR-feladatok oktatóanyagba, ahol többet tudhat meg a Felhőbeli tároló-lemezképek létrehozásáról, beleértve az alapszintű lemezkép frissítésének automatizált buildeit is:
+In this quickstart, you deployed a container registry, built an image with ACR Tasks, deleted it, and have consumed your registry's events from Event Grid with a sample application. Next, move on to the ACR Tasks tutorial to learn more about building container images in the cloud, including automated builds on base image update:
 
 > [!div class="nextstepaction"]
-> [Tároló lemezképek létrehozása a felhőben ACR-feladatokkal](container-registry-tutorial-quick-task.md)
+> [Build container images in the cloud with ACR Tasks](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

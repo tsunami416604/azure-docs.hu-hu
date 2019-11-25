@@ -1,113 +1,108 @@
 ---
-title: Szabályzat a címkézetlen jegyzékfájlok megőrzéséhez Azure Container Registry
-description: Megtudhatja, hogyan engedélyezheti az adatmegőrzési szabályzatot az Azure Container registryben a címkézetlen jegyzékfájlok meghatározott időszak után történő automatikus törléséhez.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Policy to retain untagged manifests
+description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: danlep
-ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972650"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454811"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési szabályzat beállítása a címkézetlen jegyzékekhez
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
 
-Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha egy címkézetlen jegyzékfájl `delete-enabled` attribútuma `false` értékre van beállítva, a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
+Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
 
-Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathatja a jelen cikkben szereplő példákat. Ha helyileg szeretné használni, a 2.0.74 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 > [!WARNING]
-> Adatmegőrzési házirend beállítása gondossággal – törölt képadatokkal nem állítható helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne állítson be adatmegőrzési szabályt a címkézetlen jegyzékekhez. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
+> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Preview limitations
 
-* Csak a **prémium** szintű tároló-beállításjegyzék állítható be adatmegőrzési házirenddel. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban.
-* Csak a címkézetlen jegyzékek adatmegőrzési szabályzata állítható be.
-* Az adatmegőrzési szabály jelenleg csak azokra a jegyzékfájlokra vonatkozik, amelyeket a szabályzat engedélyezése *után* címkéztek. A beállításjegyzékben meglévő címkézetlen jegyzékek nem vonatkoznak a szabályzatra. Meglévő címkézetlen jegyzékfájlok törléséhez tekintse meg a példák a [tároló lemezképének törlése a Azure Container Registry](container-registry-delete.md)-ben című témakört.
+* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can only set a retention policy for untagged manifests.
+* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-## <a name="about-the-retention-policy"></a>Tudnivalók az adatmegőrzési szabályzatról
+## <a name="about-the-retention-policy"></a>About the retention policy
 
-A Azure Container Registry a beállításjegyzékben lévő jegyzékfájlok leltározását végzi. Ha egy jegyzékfájl címkézetlen, ellenőrzi az adatmegőrzési szabályt. Ha egy adatmegőrzési szabály engedélyezve van, egy jegyzékfájl törlési művelete várólistára kerül, egy adott dátummal, a szabályzatban beállított napok száma szerint.
+Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
 
-Egy külön üzenetsor-kezelési feladatokkal folyamatosan dolgozza fel az üzeneteket, igény szerint méretezhető. Tegyük fel például, hogy egy 30 napos adatmegőrzési szabályzattal rendelkező beállításjegyzékben a két jegyzékfájlt (1 óra) megcímkézte. Két üzenet várólistára kerül. Ezután 30 nappal később, körülbelül 1 órával az üzenetek lekérése a sorból és a feldolgozás után történik, feltételezve, hogy a házirend még érvényben volt.
+A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
 
-## <a name="set-a-retention-policy---cli"></a>Adatmegőrzési szabály beállítása – parancssori felület
+## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
 
-Az alábbi példa bemutatja, hogyan állíthatja be a beállításjegyzékben az Azure CLI használatával a címkézetlen jegyzékfájlok megőrzési szabályát.
+The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Adatmegőrzési szabályzat engedélyezése
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-Alapértelmezés szerint a tároló-beállításjegyzékben nincs beállítva adatmegőrzési szabály. Adatmegőrzési szabály beállításához vagy frissítéséhez futtassa az az [ACR config adatmegőrzési frissítés][az-acr-config-retention-update] parancsot az Azure CLI-ben. 0 és 365 közötti napokat is megadhat a címkézetlen jegyzékfájlok megőrzéséhez. Ha nem adja meg a napok számát, a parancs alapértelmezés szerint 7 napot állít be. A megőrzési időtartam után a beállításjegyzékben szereplő összes címkézetlen jegyzékfájl automatikusan törlődik.
+By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
 
-A következő példa egy 30 napos adatmegőrzési szabályzatot állít be címkézetlen jegyzékekhez a beállításjegyzék *myregistry*:
+The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-A következő példa egy szabályzatot állít be a beállításjegyzékben lévő összes jegyzékfájl törlésére, amint a címke fel van jelölve. Hozza létre ezt a házirendet 0 napos megőrzési időtartam beállításával. 
+The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Adatmegőrzési szabály érvényesítése
+### <a name="validate-a-retention-policy"></a>Validate a retention policy
 
-Ha az előző szabályzatot 0 napos megőrzési időtartammal engedélyezi, gyorsan ellenőrizheti, hogy a címkézetlen jegyzékfájlok törlődnek-e:
+If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
 
-1. Küldjön le egy `hello-world:latest` rendszerképet a beállításjegyzékbe, vagy helyezzen be egy másik, választott tesztelési képet.
-1. Jelölését az `hello-world:latest` képet, például az az [ACR adattár jelölését][az-acr-repository-untag] parancs használatával. A címkézetlen jegyzékfájl a beállításjegyzékben marad.
+1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
+1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Néhány másodpercen belül töröljük a címkézetlen jegyzékfájlt. A törlést a tárház jegyzékfájlok listázásával ellenőrizheti, például az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancs használatával. Ha a rendszerkép csak egyetlen a tárházban, a tárház törlődik.
+1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
 
-### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-Ha meg szeretné tekinteni a beállításjegyzékben beállított adatmegőrzési szabályzatot, futtassa az az [ACR config adatmegőrzési show][az-acr-config-retention-show] parancsot:
+To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config adatmegőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be az `--status disabled` beállítást:
+To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Adatmegőrzési szabályzat beállítása – portál
+## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
 
-A beállításjegyzék adatmegőrzési házirendjét is beállíthatja a [Azure Portalban](https://portal.azure.com). A következő példa azt mutatja be, hogyan használható a portál a címkézetlen jegyzékfájlok megőrzési szabályának beállítására a beállításjegyzékben.
+You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Adatmegőrzési szabályzat engedélyezése
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
-1. Az **állapot**területen válassza az **engedélyezve**lehetőséget.
-1. A címkézetlen jegyzékfájlok megőrzéséhez válassza ki a 0 és 365 közötti napok számát. Kattintson a **Mentés** gombra.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Enabled**.
+1. Select a number of days between 0 and 365 to retain the untagged manifests. Kattintson a **Mentés** gombra.
 
-![Adatmegőrzési szabályzat engedélyezése Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
-1. Az **állapot**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Disabled**. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [lemezképek és adattárak Azure Container Registry való törlésének](container-registry-delete.md) lehetőségeiről
+* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
 
-* Megtudhatja, hogyan lehet [automatikusan törölni](container-registry-auto-purge.md) a kijelölt lemezképeket és jegyzékeket egy beállításjegyzékből
+* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
 
-* További információ a [lemezképek és](container-registry-image-lock.md) a jegyzékek beállításjegyzékben való zárolásának lehetőségeiről
+* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

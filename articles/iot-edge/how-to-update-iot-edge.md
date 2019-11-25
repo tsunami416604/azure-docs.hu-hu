@@ -1,6 +1,6 @@
 ---
-title: Frissítés az IoT Edge verziója az Azure IoT Edge-eszközök – |} A Microsoft Docs
-description: A biztonság-démont és az IoT Edge-futtatókörnyezet legfrissebb verzióit futtatni az IoT Edge-eszközök frissítése
+title: Update IoT Edge version on devices - Azure IoT Edge | Microsoft Docs
+description: How to update IoT Edge devices to run the latest versions of the security daemon and the IoT Edge runtime
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,90 +9,89 @@ ms.date: 06/27/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 58171d2fc8e7e1563bd83689d1cd91c55fea239a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698588"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456543"
 ---
-# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
+# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Update the IoT Edge security daemon and runtime
 
-Mivel a IoT Edge szolgáltatás új verziókat szabadít fel, frissítenie kell a IoT Edge eszközöket a legújabb funkciókkal és biztonsági frissítésekkel. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
+As the IoT Edge service releases new versions, you'll want to update your IoT Edge devices for the latest features and security improvements. This article provides information about how to update your IoT Edge devices when a new version is available. 
 
-IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni kell. Az első a biztonsági démon, amely az eszközön fut, és elindítja a futásidejű modulokat az eszköz indításakor. Jelenleg a biztonsági démon csak frissíthetők magáról az eszközről. A második összetevő a futtatókörnyezet, amely az IoT Edge hub és a IoT Edge Agent moduljaiból tevődik fel. Az üzembe helyezés felépítésében függően a futtatókörnyezet frissíthetők az eszközről, vagy távolról. 
+Two components of an IoT Edge device need to be updated if you want to move to a newer version. The first is the security daemon, which runs on the device and starts the runtime modules when the device starts. Currently, the security daemon can only be updated from the device itself. The second component is the runtime, made up of the IoT Edge hub and IoT Edge agent modules. Depending on how you structure your deployment, the runtime can be updated from the device or remotely. 
 
-Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
+To find the latest version of Azure IoT Edge, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="update-the-security-daemon"></a>A biztonsági démon frissítése
+## <a name="update-the-security-daemon"></a>Update the security daemon
 
-Az IoT Edge biztonsági démon a natív összetevője, amely az IoT Edge-eszközön a package manager használatával frissíteni kell. 
+The IoT Edge security daemon is a native component that needs to be updated using the package manager on the IoT Edge device. 
 
-Ellenőrizze a verziót a biztonsági démon a paranccsal az eszközön futó `iotedge version`. 
+Check the version of the security daemon running on your device by using the command `iotedge version`. 
 
-### <a name="linux-devices"></a>Linux rendszerű eszközök
+### <a name="linux-devices"></a>Linux devices
 
-Linux x64 rendszerű eszközökön használja az apt-get vagy a megfelelő csomagkezelő eszközt a biztonsági démon frissítéséhez. 
+On Linux x64 devices, use apt-get or your appropriate package manager to update the security daemon. 
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-Linux ARM32-eszközökön a biztonsági démon legújabb verziójának telepítéséhez hajtsa végre a következő témakört: [install Azure IoT Edge Runtime for Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) . 
+On Linux ARM32 devices, use the steps in [Install Azure IoT Edge runtime on Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) to install the latest version of the security daemon. 
 
-### <a name="windows-devices"></a>Windows-eszközök
+### <a name="windows-devices"></a>Windows devices
 
-Windows-eszközökön a PowerShell-parancsfájl használatával frissítse a biztonsági démont. A parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját. 
+On Windows devices, use the PowerShell script to update the security daemon. The script automatically pulls the latest version of the security daemon. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Az Update-IoTEdge parancs futtatásával távolítsa el a biztonsági démont az eszközről, a két futásidejű tároló lemezképével együtt. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine-ből származó adatokkal (ha Windows-tárolókat használ). A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz. 
+Running the Update-IoTEdge command removes the security daemon from your device, along with the two runtime container images. The config.yaml file is kept on the device, as well as data from the Moby container engine (if you're using Windows containers). Keeping the configuration information means that you don't have to provide the connection string or Device Provisioning Service information for your device again during the update process. 
 
-Ha a biztonsági démon egy adott verzióját szeretné telepíteni, töltse le a megfelelő Microsoft-Azure-IoTEdge. cab-fájlt [IoT Edge kiadásokból](https://github.com/Azure/azure-iotedge/releases). Ezután a `-OfflineInstallationPath` paraméter használatával mutasson a fájl helyére. További információ: [Offline telepítés](how-to-install-iot-edge-windows.md#offline-installation).
+If you want to install a specific version of the security daemon, download the appropriate Microsoft-Azure-IoTEdge.cab file from [IoT Edge releases](https://github.com/Azure/azure-iotedge/releases). Then, use the `-OfflineInstallationPath` parameter to point to the file location. For more information, see [Offline installation](how-to-install-iot-edge-windows.md#offline-installation).
 
-## <a name="update-the-runtime-containers"></a>A futtatókörnyezet tárolóiból frissítése
+## <a name="update-the-runtime-containers"></a>Update the runtime containers
 
-A IoT Edge-ügynök és a IoT Edge hub-tárolók frissítésének módja attól függ, hogy a működés közbeni címkéket (például 1,0) vagy az adott címkéket (például 1.0.7) használja-e a telepítésben. 
+The way that you update the IoT Edge agent and IoT Edge hub containers depends on whether you use rolling tags (like 1.0) or specific tags (like 1.0.7) in your deployment. 
 
-A parancsok `iotedge logs edgeAgent` vagy `iotedge logs edgeHub`a segítségével keresse meg az eszközön a IoT Edge-ügynök és IoT Edge hub-modulok verzióját. 
+Check the version of the IoT Edge agent and IoT Edge hub modules currently on your device using the commands `iotedge logs edgeAgent` or `iotedge logs edgeHub`. 
 
-  ![A naplókat tároló verzió azonosításához](./media/how-to-update-iot-edge/container-version.png)
+  ![Find container version in logs](./media/how-to-update-iot-edge/container-version.png)
 
-### <a name="understand-iot-edge-tags"></a>IoT Edge-címkék ismertetése
+### <a name="understand-iot-edge-tags"></a>Understand IoT Edge tags
 
-A IoT Edge-ügynök és a IoT Edge hub-lemezképek a IoT Edge azon verziójával vannak címkézve, amelyhez társítva vannak. Címkék használata a futtatókörnyezet képekkel két különböző módja van: 
+The IoT Edge agent and IoT Edge hub images are tagged with the IoT Edge version that they are associated with. There are two different ways to use tags with the runtime images: 
 
-* **A működés közbeni címkék** – csak az első két értékeket a verziószám használatával a legújabb rendszerképet, amely megfelel ezen számjegy. Például 1.0 frissül, amikor nincs az új kiadás, mutasson a legújabb 1.0.x verziót. Ha a tároló-futtatókörnyezet az IoT Edge-eszközön újra lekéri a rendszerképet, a futásidejű modulok a legújabb verzióra frissíti. Ez a módszer javasolt fejlesztési célokra. A működés közbeni címkéket az Azure portal alapértelmezett telepítések. 
-* **Adott címkék** -explicit módon állítsa be a rendszerkép verziószámát a verziószám mindhárom értéket használja. A 1.0.7 például nem változik a kezdeti kiadás után. Ha készen áll frissíteni eszközhöz adhat meg egy új verziószámot a manifest nasazení. Ez a megközelítés termelési célra ajánlott.
+* **Rolling tags** - Use only the first two values of the version number to get the latest image that matches those digits. For example, 1.0 is updated whenever there's a new release to point to the latest 1.0.x version. If the container runtime on your IoT Edge device pulls the image again, the runtime modules are updated to the latest version. This approach is suggested for development purposes. Deployments from the Azure portal default to rolling tags. 
+* **Specific tags** - Use all three values of the version number to explicitly set the image version. For example, 1.0.7 won't change after its initial release. You can declare a new version number in the deployment manifest when you're ready to update. This approach is suggested for production purposes.
 
-### <a name="update-a-rolling-tag-image"></a>A működés közbeni címke-lemezkép frissítése
+### <a name="update-a-rolling-tag-image"></a>Update a rolling tag image
 
-Ha a központi telepítésben használja működés közbeni címkék (például mcr.microsoft.com/azureiotedge-hub:**1.0-s**) a tároló-futtatókörnyezet kényszerítése az eszközön, hogy a rendszerkép legújabb verzióját kell majd. 
+If you use rolling tags in your deployment (for example, mcr.microsoft.com/azureiotedge-hub:**1.0**) then you need to force the container runtime on your device to pull the latest version of the image. 
 
-Törölje a rendszerkép helyi verzióját az IoT Edge-eszköz. Windows rendszerű gépeken a biztonsági démon eltávolítása eltávolítja a futtatókörnyezet lemezképeit is, így nem kell újból végrehajtania ezt a lépést. 
+Delete the local version of the image from your IoT Edge device. On Windows machines, uninstalling the security daemon also removes the runtime images, so you don't need to take this step again. 
 
 ```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
 
-Előfordulhat, hogy kell használnia a kényszerített `-f` jelző eltávolítja a képeket. 
+You may need to use the force `-f` flag to remove the images. 
 
-Az IoT Edge szolgáltatás kérje le a legújabb verzióra a futtatókörnyezet képek és automatikusan indítsa el az eszközön újra azokat. 
+The IoT Edge service will pull the latest versions of the runtime images and automatically start them on your device again. 
 
-### <a name="update-a-specific-tag-image"></a>Egy adott címkével lemezkép frissítése
+### <a name="update-a-specific-tag-image"></a>Update a specific tag image
 
-Ha adott címkéket használ a központi telepítésben (például mcr.microsoft.com/azureiotedge-hub:**1.0.7**), akkor mindössze annyit kell tennie, hogy frissíti a címkét a telepítési jegyzékben, és alkalmazza a módosításokat az eszközön. 
+If you use specific tags in your deployment (for example, mcr.microsoft.com/azureiotedge-hub:**1.0.7**) then all you need to do is update the tag in your deployment manifest and apply the changes to your device. 
 
-Az Azure Portalon, a modul telepítési lemezképeket a deklarált a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszban. 
+In the Azure portal, the runtime deployment images are declared in the **Configure advanced Edge Runtime settings** section. 
 
-![Speciális Edge-futtatókörnyezet beállításainak konfigurálása](./media/how-to-update-iot-edge/configure-runtime.png)
+![Configure advanced edge runtime settings](./media/how-to-update-iot-edge/configure-runtime.png)
 
-A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **systemModules** szakaszban. 
+In a JSON deployment manifest, update the module images in the **systemModules** section. 
 
 ```json
 "systemModules": {
@@ -115,19 +114,19 @@ A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **syst
 },
 ```
 
-## <a name="update-to-a-release-candidate-version"></a>Frissítés a Release Candidate verzióra
+## <a name="update-to-a-release-candidate-version"></a>Update to a release candidate version
 
-Azure IoT Edge rendszeresen felszabadítja a IoT Edge szolgáltatás új verzióit. Az egyes stabil kiadások előtt egy vagy több Release Candidate (RC) verzió található. Az RC-verziók tartalmazzák a kiadás tervezett funkcióit, de továbbra is a stabil kiadáshoz szükséges tesztelési és érvényesítési folyamatokon mennek keresztül. Ha korábban új funkciót szeretne tesztelni, telepítheti az RC verziót, és visszajelzést küldhet a GitHubon keresztül. 
+Azure IoT Edge regularly releases new versions of the IoT Edge service. Before each stable release, there is one or more release candidate (RC) versions. RC versions include all the planned features for the release, but are still going through the testing and validation processes required for a stable release. If you want to test a new feature early, you can install the RC version and provide feedback through GitHub. 
 
-A kiadásra jelölt verziók ugyanazt a számozási konvenciót követik, mint a Releases, de a **-RC** és egy növekményes szám is a végéhez fűzve. A kiadási jelölteket megtekintheti a stabil verzióként megjelenő [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases) listájában. Keresse meg például a **1.0.7-RC1** és a **1.0.7-RC2**, a **1.0.7**előtti két kiadási jelöltet. Azt is láthatja, hogy az RC-verziók **előzetes** címkékkel vannak megjelölve. 
+Release candidate versions follow the same numbering convention of releases, but have **-rc** plus an incremental number appended to the end. You can see the release candidates in the same list of [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) as the stable versions. For example, find **1.0.7-rc1** and **1.0.7-rc2**, the two release candidates that came before **1.0.7**. You can also see that RC versions are marked with **pre-release** labels. 
 
-Előzetes verzióként a Release Candidate verziók nem szerepelnek a normál telepítők által megcélzott legújabb verzióban. Ehelyett manuálisan kell megcéloznia a tesztelni kívánt RC-verzióhoz tartozó eszközöket. A IoT Edge eszköz operációs rendszertől függően a következő fejezetek segítségével frissítheti a IoT Edget egy adott verzióra:
+As previews, release candidate versions aren't included as the latest version that the regular installers target. Instead, you need to manually target the assets for the RC version that you want to test. Depending on your IoT Edge device operating system, use the following sections to update IoT Edge to a specific version:
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-installation)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtekintheti a legfrissebb [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
+View the latest [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-Naprakészen tarthatja a legújabb frissítéseket és bejelentéseket a [eszközök internetes hálózata blogban](https://azure.microsoft.com/blog/topics/internet-of-things/) 
+Stay up-to-date with recent updates and announcement in the [Internet of Things blog](https://azure.microsoft.com/blog/topics/internet-of-things/) 

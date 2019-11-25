@@ -1,19 +1,14 @@
 ---
-title: Az Azure Container Registry ajánlott eljárásai
+title: Ajánlott eljárások a beállításjegyzék használatához
 description: Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: danlep
-ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309768"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455320"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
@@ -47,15 +42,15 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Dedikált erőforráscsoport
 
-Mivel a tároló-beállításjegyzékek olyan erőforrások, amelyeket több tároló gazdagépe használ, a beállításjegyzéknek a saját erőforráscsoporthoz kell tartoznia.
+Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.
 
 Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
-| Type | Példaforgatókönyv | Javasolt módszer |
+| Type (Típus) | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
 | Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatás](container-registry-authentication.md#service-principal) |
@@ -64,9 +59,9 @@ Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesí
 
 ## <a name="manage-registry-size"></a>Regisztrációs adatbázis méretének kezelése
 
-Az egyes [tárolók beállításjegyzékbeli SKU][container-registry-skus] tárolási korlátozásai egy tipikus forgatókönyvhöz igazodnak:  Alapszintű – első lépések, **standard** az üzemi alkalmazások többsége számára, **prémium** szintű teljesítmény és [geo-replikálás][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
+The storage constraints of each [container registry SKU][container-registry-skus] are intended to align with a typical scenario: **Basic** for getting started, **Standard** for the majority of production applications, and **Premium** for hyper-scale performance and [geo-replication][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
-Használja az Azure CLI-parancsot az [ACR show-][az-acr-show-usage] use paranccsal a beállításjegyzék aktuális méretének megjelenítéséhez:
+Use the Azure CLI command [az acr show-usage][az-acr-show-usage] to display the current size of your registry:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -76,17 +71,17 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-A Azure Portalban található beállításjegyzék **áttekintésében** használt aktuális tárterületet is megtalálhatja:
+You can also find the current storage used in the **Overview** of your registry in the Azure portal:
 
 ![Adattár használati adatainak megtekintése az Azure Portalon][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Rendszerkép-adatok törlése
+### <a name="delete-image-data"></a>Delete image data
 
-Azure Container Registry számos módszert támogat a képadatoknak a tároló-beállításjegyzékből való törléséhez. A képeket címkével vagy jegyzékfájl-kivonattal is törölheti, vagy törölheti a teljes tárházat.
+Azure Container Registry supports several methods for deleting image data from your container registry. You can delete images by tag or manifest digest, or delete a whole repository.
 
-A képadatok beállításjegyzékből való törlésével kapcsolatos részletekért, beleértve a címkézett (más néven "lelógó" vagy "árva") lemezképeket, lásd: [tároló lemezképek törlése Azure Container Registry](container-registry-delete.md).
+For details on deleting image data from your registry, including untagged (sometimes called "dangling" or "orphaned") images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Container Registry több szinten, azaz termékváltozatban érhető el, melyek különféle képességeket biztosítanak. Részletek az elérhető termékváltozatokról: [Az Azure Container Registry termékváltozatai](container-registry-skus.md).
 

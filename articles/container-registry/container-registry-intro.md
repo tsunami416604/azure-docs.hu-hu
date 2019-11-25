@@ -1,56 +1,53 @@
 ---
-title: Privát Docker-tárolók nyilvántartása az Azure-ban – áttekintés
+title: Managed container registries
 description: Bevezetés az Azure Container Registry szolgáltatásba, amely felhőalapú, felügyelt és magán Docker-beállításjegyzékeket biztosít.
-services: container-registry
 author: stevelas
-manager: gwallace
-ms.service: container-registry
 ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: fceaf312f35356acf18c0873a467ed43d11ddd83
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994364"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454929"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
-A Azure Container Registry egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely a nyílt forráskódú Docker beállításjegyzék 2,0-es számán alapul. Létrehozhatja és karbantarthatja az Azure Container-nyilvántartásokat a privát Docker-tárolók rendszerképeinek tárolásához és kezeléséhez.
+Azure Container Registry is a managed, private Docker registry service based on the open-source Docker Registry 2.0. Create and maintain Azure container registries to store and manage your private Docker container images.
 
-Az Azure Container-jegyzékeket meglévő tároló-fejlesztési és üzembe helyezési folyamataival használhatja, vagy Azure Container Registry feladatok használatával készíthet tároló-lemezképeket az Azure-ban. Igény szerint építhető, vagy teljesen automatizálható az eseményindítók, például a forráskód-véglegesítés és az alaprendszerkép frissítései.
+Use Azure container registries with your existing container development and deployment pipelines, or use Azure Container Registry Tasks to build container images in Azure. Build on demand, or fully automate builds with triggers such as source code commits and base image updates.
 
-A Docker-és a beállításjegyzék-fogalmakkal kapcsolatos [](https://docs.docker.com/engine/docker-overview/) további információkért tekintse meg a Docker áttekintését, valamint a [jegyzékek, a adattárak és a lemezképek ismertetését](container-registry-concepts.md).
+For more about Docker and registry concepts, see the [Docker overview](https://docs.docker.com/engine/docker-overview/) and [About registries, repositories, and images](container-registry-concepts.md).
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
 * **Méretezhető előkészítési rendszerek**, amelyek tárolóalapú alkalmazásokat kezelnek gazdagépfürtökben (többek között [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) és [Docker Swarm](https://docs.docker.com/swarm/)).
 * **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve az [Azure Kubernetes Service (AKS)](../aks/index.yml), az [App Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/) és egyéb szolgáltatásokat.
 
-A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy folyamatos integrációs és kézbesítési eszközről, például [Azure](/azure/devops/pipelines/ecosystems/containers/acr-template) -folyamatokból vagy [Jenkins](https://jenkins.io/)-ből.
+A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. For example, target a container registry from a continuous integration and delivery tool such as [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) or [Jenkins](https://jenkins.io/).
 
-Az ACR-feladatok konfigurálásával automatikusan újraépítheti az alkalmazás lemezképeit az alaplemezképek frissítésekor, vagy automatizálhatja a lemezképeket, amikor a csapata egy git-tárházban véglegesíti a kódot. Többlépéses feladatok létrehozásával automatizálhatja a felhőben párhuzamosan több tároló lemezképének létrehozását, tesztelését és javítását.
+Configure ACR Tasks to automatically rebuild application images when their base images are updated, or automate image builds when your team commits code to a Git repository. Create multi-step tasks to automate building, testing, and patching multiple container images in parallel in the cloud.
 
-Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azure Portal és az API-támogatás az Azure Container-nyilvántartások kezeléséhez. Telepítse a Docker-bővítményt a [Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
+Azure provides tooling including Azure Command-Line Interface, Azure portal, and API support to manage your Azure container registries. Optionally install the [Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) and the [Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extension to work with your Azure container registries. Pull and push images to an Azure container registry, or run ACR Tasks, all within Visual Studio Code.
 
-## <a name="key-features"></a>A legfontosabb jellemzők
+## <a name="key-features"></a>Fő funkciók
 
-* **Beállításjegyzékbeli SKU** – hozzon létre egy vagy több tároló-beállításjegyzéket az Azure-előfizetésében. A kibocsátásiegység-forgalmi jegyzékek három SKU-ban érhetők el: [Alapszintű, standard és prémium](container-registry-skus.md), amelyek mindegyike támogatja a webhook-integrációt, a beállításjegyzék hitelesítését Azure Active Directory és a törlési funkciót. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. 
+* **Registry SKUs** - Create one or more container registries in your Azure subscription. Registries are available in three SKUs: [Basic, Standard, and Premium](container-registry-skus.md), each of which supports webhook integration, registry authentication with Azure Active Directory, and delete functionality. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. 
 
-  Egy tároló-beállításjegyzékhez [való hozzáférést](container-registry-authentication.md) egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával szabályozhatja. Jelentkezzen be a beállításjegyzékbe az Azure CLI vagy a standard `docker login` parancs használatával.
+  You [control access](container-registry-authentication.md) to a container registry using an Azure identity, an Azure Active Directory-backed [service principal](../active-directory/develop/app-objects-and-service-principals.md), or a provided admin account. Log in to the registry using the Azure CLI or the standard `docker login` command.
 
-* **Támogatott lemezképek és** összetevők – egy adattárba csoportosítva minden rendszerkép egy Docker-kompatibilis tároló írásvédett pillanatképe. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. A Docker-tároló rendszerképein kívül a Azure Container Registry a [kapcsolódó tartalom formátumait](container-registry-image-formats.md) , például [Helm](container-registry-helm-repos.md) -diagramokat és rendszerképeket is tartalmaz, amelyek az [Open Container Initiative (OCI) képformátum](https://github.com/opencontainers/image-spec/blob/master/spec.md)-specifikációra épülnek.
+* **Supported images and artifacts** - Grouped in a repository, each image is a read-only snapshot of a Docker-compatible container. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. In addition to Docker container images, Azure Container Registry stores [related content formats](container-registry-image-formats.md) such as [Helm charts](container-registry-helm-repos.md) and images built to the [Open Container Initiative (OCI) Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/spec.md).
 
-* **Azure Container Registry feladatok** – a lemezképek Azure-ban való létrehozásának, tesztelésének, leküldésének és üzembe helyezésének egyszerűsítése [Azure Container Registry feladatok](container-registry-tasks-overview.md) (ACR-feladatok) használatával. Például az ACR-feladatok használatával kiterjesztheti a fejlesztési belső hurkot a felhőbe a `docker build` műveletek Azure-ba való kiszervezésével. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
+* **Azure Container Registry Tasks** - Use [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) to streamline building, testing, pushing, and deploying images in Azure. For example, use ACR Tasks to extend your development inner-loop to the cloud by offloading `docker build` operations to Azure. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
 
-  A többlépéses [tevékenységek](container-registry-tasks-overview.md#multi-step-tasks) a Felhőbeli tároló-lemezképek létrehozásához, teszteléséhez és javításához szükséges lépéseken alapuló feladatok meghatározását és végrehajtását teszik lehetővé. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
+  [Multi-step tasks](container-registry-tasks-overview.md#multi-step-tasks) provide step-based task definition and execution for building, testing, and patching container images in the cloud. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
 * [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
-* [A tárolók és a karbantartás ACR-feladatokkal való automatizálása](container-registry-tasks-overview.md)
+* [Automate container builds and maintenance with ACR Tasks](container-registry-tasks-overview.md)

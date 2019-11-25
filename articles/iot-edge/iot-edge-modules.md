@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg, hogyan modulok futtatása az Azure IoT Edge - eszközökön logikai |} A Microsoft Docs
-description: Az Azure IoT Edge-modulok olyan tárolóalapú egységet logika, amely telepíthető és kezelhető távolról, hogy futtathatja üzleti logikát az IoT Edge-ben eszközök
+title: Learn how modules run logic on your devices - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge modules are containerized units of logic that can be deployed and managed remotely so that you can run business logic on IoT Edge devices
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,53 +8,52 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 744a901c6b0260f4fc14a2f06b88dfb36973b0f8
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152669"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456581"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
-Az Azure IoT Edge lehetővé teszi, hogy központi telepítésére és felügyeletére az üzleti logikát az Edge formájában *modulok*. Az Azure IoT Edge-modulok a legkisebb számítási egységek, IoT Edge által felügyelt, és az Azure-szolgáltatások (például az Azure Stream Analytics) vagy a saját megoldásspecifikus kódját is tartalmazhat. Tudni, hogyan modulok kifejlesztett, üzembe helyezett, és karbantartott, segít úgy gondolja, hogy a modul négy fogalmi elemét:
+Azure IoT Edge lets you deploy and manage business logic on the edge in the form of *modules*. Azure IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics) or your own solution-specific code. To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
 
-* A **modul rendszerképének** a szoftvert, amely meghatározza egy modult tartalmazó csomag.
-* A **modulpéldány** az adott számítási egységek, a modul rendszerképének futó IoT Edge-eszköz van. A modul példány van indíthatja el az IoT Edge-futtatókörnyezet.
-* A **modul identitás** olyan információk (beleértve a biztonsági hitelesítő adatok) az IoT hubon, minden egyes modul-példányhoz tartozó tárolt.
-* A **ikermodul** az IoT hubon, egy modul példányt, beleértve a metaadatokat, konfigurációkat és állapotokat állapotinformációinak tartalmazó tárolt JSON-dokumentumok. 
+* A **module image** is a package containing the software that defines a module.
+* A **module instance** is the specific unit of computation running the module image on an IoT Edge device. The module instance is started by the IoT Edge runtime.
+* A **module identity** is a piece of information (including security credentials) stored in IoT Hub, that is associated to each module instance.
+* A **module twin** is a JSON document stored in IoT Hub, that contains state information for a module instance, including metadata, configurations, and conditions. 
 
-## <a name="module-images-and-instances"></a>A modul képek és példányok
+## <a name="module-images-and-instances"></a>Module images and instances
 
-IoT Edge-modul lemezképek szerepelnek, felügyeleti, biztonsági és az IoT Edge-futtatókörnyezet, kommunikációs szolgáltatások előnyeit. Fejlesszen saját modul rendszerképét, vagy exportálhatja egy támogatott Azure-szolgáltatás, például az Azure Stream Analytics közül.
-A képek a felhőben található, és azok frissíthetők, megváltozott, és különböző megoldások üzembe helyezve. Például egy modul által használt gépi tanulás segítségével megkönnyíti a gyártósor kimeneti létezik egy modul által használt számítógépes látástechnológiai egy drónt szabályozhatja, mint egy különálló lemezképet. 
+IoT Edge module images contain applications that take advantage of the management, security, and communication features of the IoT Edge runtime. You can develop your own module images, or export one from a supported Azure service, such as Azure Stream Analytics.
+The images exist in the cloud and they can be updated, changed, and deployed in different solutions. For instance, a module that uses machine learning to predict production line output exists as a separate image than a module that uses computer vision to control a drone. 
 
-Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul a lemezképet. Azonban minden egyes eszköz áll a saját modulpéldány a modul indításakor az eszközön. 
+Each time a module image is deployed to a device and started by the IoT Edge runtime, a new instance of that module is created. Two devices in different parts of the world could use the same module image. However, each device would have its own module instance when the module is started on the device. 
 
-![Diagram - modul képek a felhőben, a modul példányok az eszközökön](./media/iot-edge-modules/image_instance.png)
+![Diagram - Module images in cloud, module instances on devices](./media/iot-edge-modules/image_instance.png)
 
-Végrehajtására, a modulok képek jelen vannak egy tárházban lévő tárolórendszerképek, és modul példányok olyan tárolók, az eszközökön. 
+In implementation, modules images exist as container images in a repository, and module instances are containers on devices. 
 
 <!--
 As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
 -->
 
-## <a name="module-identities"></a>A modul identitások
+## <a name="module-identities"></a>Module identities
 
-Az IoT Edge-futtatókörnyezet új modul példányt létrehozza, ha a példány egy megfelelő modul identitás társítva. A modul identitását az IoT Hub tárolja, és a címzési és biztonsági hatókör összes helyi és felhőalapú kommunikációt az eszközspecifikus modul példányhoz alkalmazzák.
+When a new module instance is created by the IoT Edge runtime, the instance is associated with a corresponding module identity. The module identity is stored in IoT Hub, and is employed as the addressing and security scope for all local and cloud communications for that specific module instance.
 
-Az identitás, a modul-példányhoz társított függ az eszköz az identitással fut-e a példány és a megoldás adja át, hogy a modul nevét. Például ha felhívja `insight` olyan modul, amely egy Azure Stream Analytics, és használja telepítése egy eszközön nevű `Hannover01`, az IoT Edge-futtatókörnyezet létrehoz egy megfelelő nevű modul identitást `/devices/Hannover01/modules/insight`.
+The identity associated with a module instance depends on the identity of the device on which the instance is running and the name you provide to that module in your solution. For instance, if you call `insight` a module that uses an Azure Stream Analytics, and you deploy it on a device called `Hannover01`, the IoT Edge runtime creates a corresponding module identity called `/devices/Hannover01/modules/insight`.
 
-Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképének többször ugyanazon az eszközön, amikor üzembe helyezéséhez használható többször, különböző neveket ugyanazt a lemezképet.
+Clearly, in scenarios when you need to deploy one module image multiple times on the same device, you can deploy the same image multiple times with different names.
 
-![Diagram - modul identitások egyediek-e az eszközök és az eszközök között](./media/iot-edge-modules/identity.png)
+![Diagram - Module identities are unique within devices and across devices](./media/iot-edge-modules/identity.png)
 
-## <a name="module-twins"></a>Ikermodulokkal
+## <a name="module-twins"></a>Module twins
 
-Minden egyes modul példány is rendelkezik egy megfelelő ikermodul, amely a modul példány konfigurálásához használhatja. A példány és az ikereszköz kapcsolódnak egymással a modul identitás keresztül. 
+Each module instance also has a corresponding module twin that you can use to configure the module instance. The instance and the twin are associated with each other through the module identity. 
 
-Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik az ikereszközök. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
+A module twin is a JSON document that stores module information and configuration properties. This concept parallels the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) concept from IoT Hub. The structure of a module twin is the same as a device twin. The APIs used to interact with both types of twins are also the same. The only difference between the two is the identity used to instantiate the client SDK. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -69,9 +68,9 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Offline képességek
 
-Az Azure IoT Edge-modulok határozatlan ideig után az IoT Hub szinkronizálása során legalább egyszer offline módban is működhetnek. IoT Edge-eszközök egyéb IoT-eszköz kapcsolat nélküli képessége ki is bővítheti. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
+Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. For more information, see [Understand extended offline capabilities for IoT Edge devices, modules, and child devices](offline-capabilities.md).
 
-## <a name="next-steps"></a>További lépések
- - [A követelmények és az eszközök IoT Edge-modulok megismerése](module-development.md)
- - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése](iot-edge-runtime.md)
+## <a name="next-steps"></a>Következő lépések
+ - [Understand the requirements and tools for developing IoT Edge modules](module-development.md)
+ - [Understand the Azure IoT Edge runtime and its architecture](iot-edge-runtime.md)
 

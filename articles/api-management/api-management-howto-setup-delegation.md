@@ -1,6 +1,6 @@
 ---
-title: A felhasználói regisztráció és a termék-előfizetés delegálása
-description: Megtudhatja, hogyan delegálhat felhasználói regisztrációt és előfizetést harmadik félnek az Azure API Managementban.
+title: How to delegate user registration and product subscription
+description: Learn how to delegate user registration and product subscription to a third party in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,134 +13,134 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073450"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454354"
 ---
-# <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
+# <a name="how-to-delegate-user-registration-and-product-subscription"></a>How to delegate user registration and product subscription
 
-A delegálás lehetővé teszi, hogy meglévő webhelyét használja a fejlesztői bejelentkezéshez/regisztrációhoz és előfizetéshez a termékekhez, a fejlesztői portál beépített funkciójának használata helyett. Ez lehetővé teszi, hogy a webhelye a felhasználói adatok tulajdonosa legyen, és egyéni módon végezze el ezeknek a lépéseknek az érvényesítését.
+Delegation allows you to use your existing website for handling developer sign in/sign up and subscription to products, as opposed to using the built-in functionality in the developer portal. It enables your website to own the user data and perform the validation of these steps in a custom way.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"> </a>A fejlesztői bejelentkezés delegálása és regisztráció
+## <a name="delegate-signin-up"> </a>Delegating developer sign-in and sign-up
 
-A fejlesztői bejelentkezés delegálásához és a meglévő webhelyre való regisztrációhoz létre kell hoznia egy speciális delegálási végpontot a webhelyén. A API Management fejlesztői portálról kezdeményezett ilyen kérések belépési pontként kell működnie.
+To delegate developer, sign in and sign up to your existing website, you'll need to create a special delegation endpoint on your site. It needs to act as the entry-point for any such request initiated from the API Management developer portal.
 
-Az utolsó munkafolyamat a következő lesz:
+The final workflow will be as follows:
 
-1. A fejlesztő rákattint a bejelentkezés vagy a regisztráció hivatkozásra a API Management fejlesztői portálon
-2. A böngésző átirányítja a delegálási végpontra
-3. Delegálási végpont a Return átirányítással vagy a felhasználó bejelentkezését kérő felhasználói felület
-4. A művelet sikeressége után a rendszer visszairányítja a felhasználót a API Management fejlesztői portálra.
+1. Developer clicks on the sign in or sign up link at the API Management developer portal
+2. Browser is redirected to the delegation endpoint
+3. Delegation endpoint in return redirects to or presents UI asking user to sign in or sign up
+4. On success, the user is redirected back to the API Management developer portal page they started from
 
-Első lépésként először állítsa be API Management a kérelmek átirányítását a delegálási végponton keresztül. A Azure Portalban keressen rá a **Biztonság** kifejezésre a API Management erőforrásban, majd kattintson a **delegálás** elemre. A jelölőnégyzet bejelölésével engedélyezheti a "delegált bejelentkezés & regisztráció" lehetőséget.
+To begin, let's first set-up API Management to route requests via your delegation endpoint. In the Azure portal, search for **Security** in your API Management resource and then click the **Delegation** item. Click the checkbox to enable 'Delegate sign in & sign up'.
 
-![Delegálás lap][api-management-delegation-signin-up]
+![Delegation page][api-management-delegation-signin-up]
 
-* Döntse el, hogy a speciális delegálási végpont URL-címe milyen lesz, majd adja meg a **delegálási végpont URL-címe** mezőben. 
-* A delegálás hitelesítési kulcsa mezőben adja meg azt a titkot, amelyet az ellenőrzéshez megadott aláírás kiszámításához fog használni, hogy a kérelem valóban az Azure API Management legyen. A **Létrehozás** gombra kattintva API Management véletlenszerűen generált kulcsot.
+* Decide what the URL of your special delegation endpoint will be and enter it in the **Delegation endpoint URL** field. 
+* Within the Delegation authentication key field, enter a secret that will be used to compute a signature provided to you for verification to ensure that the request is indeed coming from Azure API Management. You can click the **generate** button to have API Management randomly generate a key for you.
 
-Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell végrehajtania:
+Now you need to create the **delegation endpoint**. It has to perform a number of actions:
 
-1. Kérelem fogadása a következő formában:
+1. Receive a request in the following form:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? Operation = bejelentkezési & returnUrl = {forrás lap URL-címe} & Salt = {string} & SIG = {string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
    > 
    > 
    
-    A bejelentkezési/regisztrációs eset lekérdezési paraméterei:
+    Query parameters for the sign in / sign up case:
    
-   * **művelet**: azt határozza meg, hogy milyen típusú delegálási kérelem van – csak ebben az esetben lehet **bejelentkezési**
-   * **returnUrl**: annak az oldalnak az URL-címe, amelyen a felhasználó a bejelentkezés vagy a regisztráció hivatkozásra kattint
-   * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-   * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
-2. Győződjön meg arról, hogy a kérés az Azure API Managementról érkezik (opcionális, de kifejezetten ajánlott a biztonság érdekében)
+   * **operation**: identifies what type of delegation request it is - it can only be **SignIn** in this case
+   * **returnUrl**: the URL of the page where the user clicked on a sign in or sign up link
+   * **salt**: a special salt string used for computing a security hash
+   * **sig**: a computed security hash to be used for comparison to your own computed hash
+2. Verify that the request is coming from Azure API Management (optional, but highly recommended for security)
    
-   * HMAC-SHA512 kivonatának kiszámítása a **returnUrl** és a **Salt** lekérdezési paraméterek alapján ([példa az alább megadott kódra]):
+   * Compute an HMAC-SHA512 hash of a string based on the **returnUrl** and **salt** query parameters ([example code provided below]):
      
-     > HMAC (**Salt** + "\n" + **returnUrl**)
+     > HMAC(**salt** + '\n' + **returnUrl**)
      > 
      > 
-   * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
-3. Győződjön meg arról, hogy a bejelentkezéshez vagy a regisztrációhoz kér kérést: a **művelet** lekérdezési paramétere "**bejelentkezési**" lesz.
-4. A felhasználó bejelentkezett felhasználói FELÜLETtel a bejelentkezéshez vagy a regisztrációhoz
-5. Ha a felhasználó regisztrál, létre kell hoznia egy hozzá tartozó fiókot API Managementban. [Hozzon létre egy felhasználót] a API Management REST API. Ha így tesz, győződjön meg arról, hogy a felhasználói azonosító értéke megegyezik a felhasználói tárolóban szereplő értékkel, vagy egy olyan AZONOSÍTÓval, amely nyomon követhető.
-6. A felhasználó sikeres hitelesítése után:
+   * Compare the above-computed hash to the value of the **sig** query parameter. If the two hashes match, move on to the next step, otherwise deny the request.
+3. Verify that you are receiving a request for sign in/sign up: the **operation** query parameter will be set to "**SignIn**".
+4. Present the user with UI to sign in or sign up
+5. If the user is signing-up you have to create a corresponding account for them in API Management. [Create a user] with the API Management REST API. When doing so, ensure that you set the user ID to the same value as in your user store or to an ID that you can keep track of.
+6. When the user is successfully authenticated:
    
-   * [egyszeri bejelentkezéses (SSO) jogkivonat kérése] a API Management használatával REST API
-   * fűzze hozzá a returnUrl lekérdezési paramétert a fenti API-hívásból kapott SSO URL-címhez:
+   * [request a single-sign-on (SSO) token] via the API Management REST API
+   * append a returnUrl query parameter to the SSO URL you have received from the API call above:
      
-     > például: https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > for example, https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
-   * a felhasználó átirányítása a fenti létrehozott URL-címre
+   * redirect the user to the above produced URL
 
-A **bejelentkezési** műveleten kívül az előző lépések végrehajtásával és a következő műveletek egyikének használatával is elvégezheti a fiókok felügyeletét:
+In addition to the **SignIn** operation, you can also perform account management by following the previous steps and using one of the following operations:
 
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
 
-A következő lekérdezési paramétereket kell átadnia a fiókkezelés műveleteihez.
+You must pass the following query parameters for account management operations.
 
-* **művelet**: meghatározza, hogy milyen típusú delegálási kérelem (ChangePassword, ChangeProfile vagy CloseAccount)
-* **felhasználóazonosító**: a felügyelni kívánt fiók felhasználói azonosítója
-* **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-* **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
+* **operation**: identifies what type of delegation request it is (ChangePassword, ChangeProfile, or CloseAccount)
+* **userId**: the user ID of the account to manage
+* **salt**: a special salt string used for computing a security hash
+* **sig**: a computed security hash to be used for comparison to your own computed hash
 
-## <a name="delegate-product-subscription"> </a>A termék-előfizetés delegálása
-A termék-előfizetés delegálása hasonlóan működik a felhasználói bejelentkezés delegálásakor. Az utolsó munkafolyamat a következő lesz:
+## <a name="delegate-product-subscription"> </a>Delegating product subscription
+Delegating product subscription works similarly to delegating user sign in/-up. The final workflow would be as follows:
 
-1. A fejlesztő kiválaszt egy terméket a API Management fejlesztői portálon, és rákattint az Előfizetés gombra.
-2. A böngésző átirányítja a delegálási végpontra.
-3. A delegálási végpont a szükséges termék-előfizetési lépéseket hajtja végre. A lépések megtervezése. Tartalmazhatnak átirányítást egy másik lapra a számlázási információk kérelmezéséhez, további kérdések feltevéséhez vagy az adatok egyszerű tárolásához, és nem igényelnek felhasználói beavatkozást.
+1. Developer selects a product in the API Management developer portal and clicks on the Subscribe button.
+2. Browser is redirected to the delegation endpoint.
+3. Delegation endpoint performs required product subscription steps. It's up to you to design the steps. They may include redirecting to another page to request billing information, asking additional questions, or simply storing the information and not requiring any user action.
 
-A funkció engedélyezéséhez a **delegálás** lapon kattintson a **termék-előfizetés delegálása**elemre.
+To enable the functionality, on the **Delegation** page click **Delegate product subscription**.
 
-Ezután győződjön meg arról, hogy a delegálási végpont a következő műveleteket végzi el:
+Next, ensure the delegation endpoint does the following actions:
 
-1. Kérelem fogadása a következő formában:
+1. Receive a request in the following form:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? Operation = {Operation} & Termékkód = {a termék előfizetése} & userId = {User Making Request} & Salt = {string} & SIG = {string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    >
    
-    Lekérdezési paraméterek a termék-előfizetési esethez:
+    Query parameters for the product subscription case:
    
-   * **művelet**: azt határozza meg, hogy milyen típusú delegálási kérelem van. A termék-előfizetési kérelmek esetében az érvényes beállítások a következők:
-     * "Előfizetés": a felhasználó egy adott termékre való előfizetésére vonatkozó kérelem a megadott AZONOSÍTÓval (lásd alább)
-     * "Leiratkozás": egy termék felhasználójának lemondására vonatkozó kérelem
-     * "Megújítás": az előfizetés megújítására vonatkozó kérelem (például lejáró lehet)
-   * **Termékkód**: annak a terméknek az azonosítója, amelyre az előfizetést kérte
-   * **subscriptionId**: *lemondás* és *megújítás* – a termék-előfizetés azonosítója
-   * **felhasználóazonosító**: annak a felhasználónak az azonosítója, akinek a kérelmét elvégezték
-   * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-   * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
+   * **operation**: identifies what type of delegation request it is. For product subscription requests the valid options are:
+     * "Subscribe": a request to subscribe the user to a given product with provided ID (see below)
+     * "Unsubscribe": a request to unsubscribe a user from a product
+     * "Renew": a request to renew a subscription (for example, that may be expiring)
+   * **productId**: the ID of the product the user requested to subscribe to
+   * **subscriptionId**: on *Unsubscribe* and *Renew* - the ID of the product subscription
+   * **userId**: the ID of the user the request is made for
+   * **salt**: a special salt string used for computing a security hash
+   * **sig**: a computed security hash to be used for comparison to your own computed hash
 
-2. Győződjön meg arról, hogy a kérés az Azure API Managementról érkezik (opcionális, de kifejezetten ajánlott a biztonság érdekében)
+2. Verify that the request is coming from Azure API Management (optional, but highly recommended for security)
    
-   * A HMAC-SHA512 kiszámítása a **Termékkód**, a **userId**és a **Salt** lekérdezési paraméterek alapján:
+   * Compute an HMAC-SHA512 of a string based on the **productId**, **userId**, and **salt** query parameters:
      
-     > HMAC (**Salt** + ' \n ' + **Termékkód** + ' \n ' + **userId**)
+     > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
-   * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
-3. Termék-előfizetés feldolgozása a **műveletben** kért művelet típusa alapján – például számlázás, további kérdések stb.
-4. Ha sikeresen előfizette a felhasználót az oldalán lévő termékre, a [az előfizetések REST APIának meghívása]előfizethet a felhasználóra a API Management termékre.
+   * Compare the above-computed hash to the value of the **sig** query parameter. If the two hashes match, move on to the next step, otherwise deny the request.
+3. Process product subscription based on the type of operation requested in **operation** - for example, billing, further questions, etc.
+4. On successfully subscribing the user to the product on your side, subscribe the user to the API Management product by [calling the REST API for subscriptions].
 
-## <a name="delegate-example-code"></a> Példa kódja
+## <a name="delegate-example-code"> </a> Example Code
 
-Ezek a kódok a következőket mutatják be:
+These code samples show how to:
 
-* Végezze el a *delegálás érvényesítési kulcsát*, amely a közzétevő portál delegálás képernyőjén van beállítva
-* Hozzon létre egy HMAC, amely az aláírás érvényesítésére szolgál, amely igazolja az átadott returnUrl érvényességét.
+* Take the *delegation validation key*, which is set in the Delegation screen of the publisher portal
+* Create an HMAC, which is then used to validate the signature, proving the validity of the passed returnUrl.
 
-Ugyanez a kód a termékkód és a userId kis módosításával is működik.
+The same code works for the productId and userId with slight modification.
 
-**C#kód a returnUrl kivonatának létrehozásához**
+**C# code to generate hash of returnUrl**
 
 ```csharp
 using System.Security.Cryptography;
@@ -157,7 +157,7 @@ using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 }
 ```
 
-**NodeJS-kód a returnUrl kivonatának létrehozásához**
+**NodeJS code to generate hash of returnUrl**
 
 ```
 var crypto = require('crypto');
@@ -174,8 +174,11 @@ var digest = hmac.update(salt + '\n' + returnUrl).digest();
 var signature = digest.toString('base64');
 ```
 
-## <a name="next-steps"></a>További lépések
-A delegálással kapcsolatos további információkért tekintse meg a következő videót:
+> [!IMPORTANT]
+> You need to [republish the developer portal](api-management-howto-developer-portal-customize.md#publish) for the delegation changes to take effect.
+
+## <a name="next-steps"></a>Következő lépések
+For more information on delegation, see the following video:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]
 > 
@@ -183,10 +186,10 @@ A delegálással kapcsolatos további információkért tekintse meg a következ
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[egyszeri bejelentkezéses (SSO) jogkivonat kérése]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
-[Hozzon létre egy felhasználót]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
-[az előfizetések REST APIának meghívása]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
+[request a single-sign-on (SSO) token]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
+[create a user]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
+[calling the REST API for subscriptions]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
 [Next steps]: #next-steps
-[példa az alább megadott kódra]: #delegate-example-code
+[example code provided below]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

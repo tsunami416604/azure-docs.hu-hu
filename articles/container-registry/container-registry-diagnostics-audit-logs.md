@@ -1,101 +1,90 @@
 ---
-title: Erőforrás-naplók a Azure Container Registryhoz | Microsoft Docs
-description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
-services: container-registry
-documentationcenter: ''
-author: dlepow
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: container-registry
-ms.devlang: na
+title: Collect & analyze resource logs
+description: Record and analyze resource log events for Azure Container Registry such as authentication, image push, and image pull.
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: ''
 ms.date: 10/30/2019
-ms.author: danlep
-ms.openlocfilehash: e419f8c5cf06efc93294f9c428e9102c1f81b36a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180815"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456435"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logs for diagnostic evaluation and auditing
 
-Ez a cikk azt ismerteti, hogyan gyűjthetők be az Azure Container Registry naplózási adatai a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor [erőforrás-naplókat](../azure-monitor/platform/resource-logs-overview.md) (korábbi néven *diagnosztikai naplókat*) gyűjt a beállításjegyzékben lévő felhasználó által vezérelt eseményekhez. Gyűjtse össze és használja fel ezeket az adatokat az igények kielégítéséhez, például:
+This article explains how to collect log data for an Azure container registry using features of [Azure Monitor](../azure-monitor/overview.md). Azure Monitor collects [resource logs](../azure-monitor/platform/resource-logs-overview.md) (formerly called *diagnostic logs*) for user-driven events in your registry. Collect and consume this data to meet needs such as:
 
-* A beállításjegyzék hitelesítési eseményeinek naplózása a biztonság és a megfelelőség biztosítása érdekében 
+* Audit registry authentication events to ensure security and compliance 
 
-* Adjon meg egy teljes tevékenység-nyomvonalat a beállításjegyzék összetevőiről, például a lekéréses és lekéréses eseményekről, hogy diagnosztizálja a beállításjegyzék működési problémáit 
+* Provide a complete activity trail on registry artifacts such as pull and pull events so you can diagnose operational issues with your registry 
 
-Az erőforrás-naplózási adatok Azure Monitor használatával történő összegyűjtése további költségeket eredményezhet. Lásd: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/). 
+Collecting resource log data using Azure Monitor may incur additional costs. See [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/). 
 
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások](#preview-limitations) érvényesek. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> This feature is currently in preview, and some [limitations](#preview-limitations) apply. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Preview limitations
 
-A tárház szintű események naplózása jelenleg nem tartalmaz törlési vagy jelölését eseményeket. Csak a következő adattár-események vannak naplózva:
-* Képek és egyéb összetevők **leküldéses eseményei**
-* **Lekéréses események** képek és egyéb összetevők számára
+Logging of repository-level events doesn't currently include delete or untag events. Only the following repository events are logged:
+* **Push events** for images and other artifacts
+* **Pull events** for images and other artifacts
 
-## <a name="registry-resource-logs"></a>Beállításjegyzék-erőforrások naplói
+## <a name="registry-resource-logs"></a>Registry resource logs
 
-Az erőforrás-naplók olyan Azure-erőforrások által kibocsátott információkat tartalmaznak, amelyek leírják a belső műveleteket. Az Azure Container Registry esetében a naplók a következő táblázatokban tárolt hitelesítési és adattár-szintű eseményeket tartalmazzák. 
+Resource logs contain information emitted by Azure resources that describe their internal operation. For an Azure container registry, the logs contain authentication and repository-level events stored in the following tables. 
 
-* **ContainerRegistryLoginEvents** – a beállításjegyzék hitelesítési eseményei és állapota, beleértve a bejövő identitást és IP-címet is
-* **ContainerRegistryRepositoryEvents** – például leküldéses és lekéréses műveletek a beállításjegyzékbeli adattárakban található képekhez és egyéb összetevőkhöz
-* A **AzureMetrics** - a [tároló beállításjegyzékének mérőszámait](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , például az összesített leküldéses és lekérési számlálókat.
+* **ContainerRegistryLoginEvents**  - Registry authentication events and status, including the incoming identity and IP address
+* **ContainerRegistryRepositoryEvents** - Operations such as push and pull for images and other artifacts in registry repositories
+* **AzureMetrics** - [Container registry metrics](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) such as aggregated push and pull counts.
 
-A műveletek esetében a naplózási adatok a következők:
-  * Sikeres vagy sikertelen állapot
-  * Kezdő és záró időbélyegző
+For operations, log data includes:
+  * Success or failure status
+  * Start and end time stamps
 
-Az Azure az erőforrás-naplók mellett egy [tevékenységi naplót](../azure-monitor/platform/activity-logs-overview.md)is biztosít, amely az Azure felügyeleti eseményeinek egyetlen előfizetési szintű rekordja, például egy tároló-beállításjegyzék létrehozása vagy törlése.
+In addition to resource logs, Azure provides an [activity log](../azure-monitor/platform/activity-logs-overview.md), a single subscription-level record of Azure management events such as the creation or deletion of a container registry.
 
-## <a name="enable-collection-of-resource-logs"></a>Erőforrás-naplók gyűjtésének engedélyezése
+## <a name="enable-collection-of-resource-logs"></a>Enable collection of resource logs
 
-A tároló-beállításjegyzék erőforrás-naplófájljainak gyűjteménye alapértelmezés szerint nincs engedélyezve. Explicit módon engedélyezze a diagnosztikai beállításokat minden figyelni kívánt beállításjegyzékhez. A diagnosztikai beállítások engedélyezésének lehetőségeiért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md).
+Collection of resource logs for a container registry isn't enabled by default. Explicitly enable diagnostic settings for each registry you want to monitor. For options to enable diagnostic settings, see [Create diagnostic setting to collect platform logs and metrics in Azure](../azure-monitor/platform/diagnostic-settings.md).
 
-Ha például egy tároló-beállításjegyzék naplóit és metrikáit szeretné megtekinteni a Azure Monitor közel valós időben, Gyűjtse össze az erőforrás-naplókat egy Log Analytics munkaterületen. A diagnosztikai beállítás engedélyezése a Azure Portal használatával:
+For example, to view logs and metrics for a container registry in near real-time in Azure Monitor, collect the resource logs in a Log Analytics workspace. To enable this diagnostic setting using the Azure portal:
 
-1. Ha még nem rendelkezik munkaterülettel, hozzon létre egy munkaterületet a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)használatával. Az adatgyűjtés késleltetésének csökkentése érdekében ügyeljen arra, hogy a munkaterület ugyanabban a **régióban** legyen, mint a tároló-beállításjegyzék.
-1. A portálon válassza ki a beállításjegyzéket, és válassza a **figyelés > diagnosztikai beállítások > diagnosztikai beállítás hozzáadása**elemet.
-1. Adja meg a beállítás nevét, majd kattintson a **küldés log Analytics**lehetőségre.
-1. Válassza ki a beállításjegyzék diagnosztikai naplóihoz tartozó munkaterületet.
-1. Válassza ki a gyűjteni kívánt naplózási adatokat, majd kattintson a **Mentés**gombra.
+1. If you don't already have a workspace, create a workspace using the [Azure portal](../azure-monitor/learn/quick-create-workspace.md). To minimize latency in data collection, ensure that the workspace is in the **same region** as your container registry.
+1. In the portal, select the registry, and select **Monitoring > Diagnostic settings > Add diagnostic setting**.
+1. Enter a name for the setting, and select **Send to Log Analytics**.
+1. Select the workspace for the registry diagnostic logs.
+1. Select the log data you want to collect, and click **Save**.
 
-Az alábbi ábrán egy beállításjegyzék diagnosztikai beállításainak létrehozása látható a portál használatával.
+The following image shows creation of a diagnostic setting for a registry using the portal.
 
 ![Diagnosztikai beállítások engedélyezése](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Gyűjtsön csak a szükséges adatokat, kiegyensúlyozza a költségeket és a figyelési igényeket. Ha például csak a hitelesítési események naplózása szükséges, csak a **ContainerRegistryLoginEvents** -naplót válassza ki. 
+> Collect only the data that you need, balancing cost and your monitoring needs. For example, if you only need to audit authentication events, select only the **ContainerRegistryLoginEvents** log. 
 
-## <a name="view-data-in-azure-monitor"></a>Azure Monitorban lévő adatmegjelenítés
+## <a name="view-data-in-azure-monitor"></a>View data in Azure Monitor
 
-Miután engedélyezte a diagnosztikai naplók gyűjtését Log Analyticsban, eltarthat néhány percig, amíg az adat megjelenik a Azure Monitorban. Ha meg szeretné tekinteni az adatait a portálon, válassza ki a beállításjegyzéket, és válassza a **figyelés > naplók**lehetőséget. Válassza ki az egyik táblázatot, amely a beállításjegyzék adatait tartalmazza. 
+After you enable collection of diagnostic logs in Log Analytics, it can take a few minutes for data to appear in Azure Monitor. To view the data in the portal, select the registry, and select **Monitoring > Logs**. Select one of the tables that contains data for the registry. 
 
-Lekérdezések futtatása az adatmegjelenítéshez. Több minta lekérdezés van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a **ContainerRegistryRepositoryEvents** táblából:
+Run queries to view the data. Several sample queries are provided, or run your own. For example, the following query retrieves the most recent 24 hours of data from the **ContainerRegistryRepositoryEvents** table:
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | where TimeGenerated > ago(1d) 
 ```
 
-Az alábbi képen a minta kimenet látható:
+The following image shows sample output:
 
 ![Naplóadatok lekérdezése](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [Bevezetés a Azure Monitor log Analytics használatába](../azure-monitor/log-query/get-started-portal.md), vagy próbálja ki a log Analytics [bemutató környezetét](https://portal.loganalytics.io/demo). 
+For a tutorial on using Log Analytics in the Azure portal, see [Get started with Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md), or try the Log Analytics [Demo environment](https://portal.loganalytics.io/demo). 
 
-A naplók lekérdezésével kapcsolatos további információkért lásd: [a Azure monitorban található naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
+For more information on log queries, see [Overview of log queries in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>További példák a lekérdezésekre
+### <a name="additional-query-examples"></a>Additional query examples
 
-#### <a name="100-most-recent-registry-events"></a>100 a legfrissebb beállításjegyzék-események
+#### <a name="100-most-recent-registry-events"></a>100 most recent registry events
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -104,16 +93,16 @@ ContainerRegistryRepositoryEvents
 | project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
 ```
 
-## <a name="additional-log-destinations"></a>További naplófájl-célhelyek
+## <a name="additional-log-destinations"></a>Additional log destinations
 
-Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldásként egy Azure Storage-fiókot kell kiválasztania a napló célhelyként. Az Azure Storage-beli naplók archiválásához hozzon létre egy Storage-fiókot, mielőtt engedélyezi az archiválást a diagnosztikai beállításokon.
+In addition to sending the logs to Log Analytics, or as an alternative, a common scenario is to select an Azure Storage account as a log destination. To archive logs in Azure Storage, create a storage account before enabling archiving through the diagnostic settings.
 
-A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
+You can also stream diagnostic log events to an [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs can ingest millions of events per second, which you can then transform and store using any real-time analytics provider. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [log Analytics](../azure-monitor/log-query/get-started-portal.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
-* A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.
+* Learn more about using [Log Analytics](../azure-monitor/log-query/get-started-portal.md) and creating [log queries](../azure-monitor/log-query/get-started-queries.md).
+* See [Overview of Azure platform logs](../azure-monitor/platform/platform-logs-overview.md) to learn about platform logs that are available at different layers of Azure.
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitás használata Azure Container Registry feladatokkal
-description: Felügyelt identitás engedélyezése az Azure-erőforrásokhoz egy Azure Container Registry feladatban, hogy a feladat hozzáférhessen más Azure-erőforrásokhoz, beleértve a privát tárolók beállításjegyzékeit is.
+title: Managed identity in ACR task
+description: Enable a managed identity for Azure Resources in an Azure Container Registry task to allow the task to access other Azure resources including other private container registries.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,51 +8,51 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: 9f7c083a079e42172a9e2865f90293fa4d6813d8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: c86553d7658e57032393c682628d4b12d6945381
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640414"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454732"
 ---
-# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Azure által felügyelt identitás használata az ACR-feladatokban 
+# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Use an Azure-managed identity in ACR Tasks 
 
-Felügyelt [identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése az Azure-erőforrásokhoz egy [ACR](container-registry-tasks-overview.md)-feladatban, így a feladat hozzáférhet más Azure-erőforrásokhoz anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. Például egy felügyelt identitás használatával engedélyezheti a feladatok lépéseit a tárolók rendszerképeinek egy másik beállításjegyzékbe való lekéréséhez vagy leküldéséhez.
+Enable a [managed identity for Azure resources](../active-directory/managed-identities-azure-resources/overview.md) in an [ACR task](container-registry-tasks-overview.md), so the task can access other Azure resources, without needing to provide or manage credentials. For example, use a managed identity to enable a task step to pull or push container images to another registry.
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI-t egy felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitás engedélyezésére egy ACR-feladatban. Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja. Ha helyileg szeretné használni, a 2.0.68 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+In this article, you learn how to use the Azure CLI to enable a user-assigned or system-assigned managed identity on an ACR task. You can use the Azure Cloud Shell or a local installation of the Azure CLI. If you'd like to use it locally, version 2.0.68 or later is required. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-A biztonságos erőforrásoknak a felügyelt identitás használatával való eléréséhez az ACR-feladatokból a következő témakörben talál további információt:
+For scenarios to access secured resources from an ACR task using a managed identity, see:
 
-* [Beállításjegyzék közötti hitelesítés](container-registry-tasks-cross-registry-authentication.md)
-* [Külső erőforrások elérése Azure Key Vaultban tárolt titkos kulcsokkal](container-registry-tasks-authentication-key-vault.md)
+* [Cross-registry authentication](container-registry-tasks-cross-registry-authentication.md)
+* [Access external resources with secrets stored in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
 
-## <a name="why-use-a-managed-identity"></a>Miért érdemes felügyelt identitást használni?
+## <a name="why-use-a-managed-identity"></a>Why use a managed identity?
 
-Az Azure-erőforrások felügyelt identitása a kiválasztott Azure-szolgáltatásokat a Azure Active Directory (Azure AD) automatikusan felügyelt identitással biztosítja. Az ACR-feladatokat felügyelt identitással is konfigurálhatja, hogy a feladat hozzáférhessen más védett Azure-erőforrásokhoz anélkül, hogy a hitelesítő adatokat átadná a feladat lépéseibe.
+A managed identity for Azure resources provides selected Azure services with an automatically managed identity in Azure Active Directory (Azure AD). You can configure an ACR task with a managed identity so that the task can access other secured Azure resources, without passing credentials in the task steps.
 
-A felügyelt identitások két típusúak:
+Managed identities are of two types:
 
-* *Felhasználó által hozzárendelt identitások*, amelyek több erőforráshoz rendelhetők, és ameddig szeretnék megőrizni. A felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhetők el.
+* *User-assigned identities*, which you can assign to multiple resources and persist for as long as you want. User-assigned identities are currently in preview.
 
-* Egy *rendszer által hozzárendelt identitás*, amely egyedi egy adott erőforráshoz, például egy ACR-feladathoz, és az adott erőforrás élettartamára vonatkozik.
+* A *system-assigned identity*, which is unique to a specific resource such as an ACR task and lasts for the lifetime of that resource.
 
-Az ACR-feladatokban bármelyik vagy mindkét típusú identitás engedélyezhető. Az identitás hozzáférésének biztosítása egy másik erőforráshoz, ugyanúgy, mint bármely rendszerbiztonsági tag. A feladat futtatásakor a rendszer az identitás használatával fér hozzá az erőforráshoz bármely, hozzáférést igénylő feladat lépéseiben.
+You can enable either or both types of identity in an ACR task. Grant the identity access to another resource, just like any security principal. When the task runs, it uses the identity to access the resource in any task steps that require access.
 
-## <a name="steps-to-use-a-managed-identity"></a>A felügyelt identitás használatának lépései
+## <a name="steps-to-use-a-managed-identity"></a>Steps to use a managed identity
 
-Kövesse ezeket a magas szintű lépéseket, hogy felügyelt identitást alkalmazzon egy ACR-feladattal.
+Follow these high-level steps to use a managed identity with an ACR task.
 
-### <a name="1-optional-create-a-user-assigned-identity"></a>1. Választható Felhasználó által hozzárendelt identitás létrehozása
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (Optional) Create a user-assigned identity
 
-Ha felhasználó által hozzárendelt identitást szeretne használni, használhat meglévő identitást is. Vagy hozza létre az identitást az Azure CLI vagy más Azure-eszközök használatával. Használja például az az [Identity Create][az-identity-create] parancsot. 
+If you plan to use a user-assigned identity, you can use an existing identity. Or, create the identity using the Azure CLI or other Azure tools. For example, use the [az identity create][az-identity-create] command. 
 
-Ha úgy tervezi, hogy csak rendszerhez rendelt identitást használ, hagyja ki ezt a lépést. Az ACR-feladat létrehozásakor létrehozhat egy rendszer által hozzárendelt identitást is.
+If you plan to use only a system-assigned identity, skip this step. You can create a system-assigned identity when you create the ACR task.
 
-### <a name="2-enable-identity-on-an-acr-task"></a>2. Identitás engedélyezése ACR-feladaton
+### <a name="2-enable-identity-on-an-acr-task"></a>2. Enable identity on an ACR task
 
-Ha egy ACR-feladatot hoz létre, opcionálisan engedélyezheti a felhasználó által hozzárendelt identitást, a rendszerhez rendelt identitást vagy mindkettőt. Adja át például a `--assign-identity` paramétert az az [ACR Task Create][az-acr-task-create] parancs az Azure CLI-ben való futtatásakor.
+When you create an ACR task, optionally enable a user-assigned identity, a system-assigned identity, or both. For example, pass the `--assign-identity` parameter when you run the [az acr task create][az-acr-task-create] command in the Azure CLI.
 
-A rendszer által hozzárendelt identitás engedélyezéséhez adjon `--assign-identity` meg értéket vagy `assign-identity [system]`értéket. A következő parancs egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot `hello-world` , amely egy git commit triggerrel és egy rendszerhez rendelt felügyelt identitással építi össze a rendszerképet:
+To enable a system-assigned identity, pass `--assign-identity` with no value or `assign-identity [system]`. The following command creates a Linux task from a public GitHub repository which builds the `hello-world` image with a Git commit trigger and with a system-assigned managed identity:
 
 ```azurecli
 az acr task create \
@@ -63,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-A felhasználó által hozzárendelt identitás engedélyezéséhez adja `--assign-identity` meg az identitás erőforrás- *azonosítójának* értékét. A következő parancs egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot `hello-world` , amely egy git commit triggerrel és egy felhasználó által hozzárendelt felügyelt identitással építi fel a rendszerképet:
+To enable a user-assigned identity, pass `--assign-identity` with a value of the *resource ID* of the identity. The following command creates a Linux task from a public GitHub repository which builds the `hello-world` image with a Git commit trigger and with a user-assigned managed identity:
 
 ```azurecli
 az acr task create \
@@ -74,33 +74,33 @@ az acr task create \
     --assign-identity <resourceID>
 ```
 
-Az identitás erőforrás-AZONOSÍTÓját az az [Identity show][az-identity-show] parancs futtatásával kérheti le. Az erőforráscsoport *myResourceGroup* lévő azonosító *MYUSERASSIGNEDIDENTITY* erőforrás-azonosítója a következő: Form. 
+You can get the resource ID of the identity by running the [az identity show][az-identity-show] command. The resource ID for the ID *myUserAssignedIdentity* in resource group *myResourceGroup* is of the form. 
 
 ```
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Személyazonossági engedélyek megadása más Azure-erőforrások eléréséhez
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Grant the identity permissions to access other Azure resources
 
-A feladat követelményeitől függően adja meg az identitás engedélyeit más Azure-erőforrások eléréséhez. Példák erre vonatkozóan:
+Depending on the requirements of your task, grant the identity permissions to access other Azure resources. Példák:
 
-* A felügyelt identitást hozzárendelheti egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve egyéb engedélyekkel rendelkezik az Azure-beli cél tároló A beállításjegyzék szerepköreinek teljes listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md). 
-* Rendeljen hozzá egy szerepkört a felügyelt identitáshoz az Azure Key vaultban található titkos kódok olvasásához.
+* Assign the managed identity a role with pull, push and pull, or other permissions to a target container registry in Azure. For a complete list of registry roles, see [Azure Container Registry roles and permissions](container-registry-roles.md). 
+* Assign the managed identity a role to read secrets in an Azure key vault.
 
-Az [Azure CLI](../role-based-access-control/role-assignments-cli.md) -vel vagy más Azure-eszközökkel kezelheti a szerepköralapú hozzáférést az erőforrásokhoz. Futtassa például az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancsát, hogy hozzárendelje az identitás szerepkört az identitáshoz. 
+Use the [Azure CLI](../role-based-access-control/role-assignments-cli.md) or other Azure tools to manage role-based access to resources. For example, run the [az role assignment create][az-role-assignment-create] command to assign the identity a role to the identity. 
 
-A következő példa felügyelt identitást rendel hozzá a tároló-beállításjegyzékből való lekéréshez szükséges engedélyekhez. A parancs megadja az identitás *egyszerű szolgáltatásnév azonosítóját* és a cél beállításjegyzék *erőforrás* -azonosítóját.
+The following example assigns a managed identity the permissions to pull from a container registry. The command specifies the *service principal ID* of the identity and the *resource ID* of the target registry.
 
 
 ```azurecli
 az role assignment create --assignee <servicePrincipalID> --scope <registryID> --role acrpull
 ```
 
-### <a name="4-optional-add-credentials-to-the-task"></a>4. Választható Hitelesítő adatok hozzáadása a feladathoz
+### <a name="4-optional-add-credentials-to-the-task"></a>4. (Optional) Add credentials to the task
 
-Ha a feladat lekéri vagy leküldi a képeket egy másik Azure Container registrybe, adja hozzá a hitelesítő adatokat a feladathoz az identitás hitelesítéséhez. Futtassa az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] parancsot, és adja `--use-identity` át a paramétert az identitás hitelesítő adatainak a feladathoz való hozzáadásához. 
+If your task pulls or pushes images to another Azure container registry, add credentials to the task for the identity to authenticate. Run the [az acr task credential add][az-acr-task-credential-add] command and pass the `--use-identity` parameter to add the identity's credentials to the task. 
 
-Ha például egy rendszerhez rendelt identitás hitelesítő adatait szeretné felvenni a beállításjegyzék *targetregistry*való hitelesítéshez, adja `use-identity [system]`meg a következőt:
+For example, to add credentials for a system-assigned identity to authenticate with the registry *targetregistry*, pass `use-identity [system]`:
 
 ```azurecli
 az acr task credential add \
@@ -110,7 +110,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Ha a felhasználó által hozzárendelt identitáshoz hitelesítő adatokat szeretne hozzáadni a beállításjegyzék *targetregistry*való hitelesítéshez `use-identity` , adja meg az identitás *ügyfél* -azonosítójának értékét. Példa:
+To add credentials for a user-assigned identity to authenticate with the registry *targetregistry*, pass `use-identity` with a value of the *client ID* of the identity. Példa:
 
 ```azurecli
 az acr task credential add \
@@ -120,14 +120,14 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-Az identitás ügyfél-AZONOSÍTÓját az az [Identity show][az-identity-show] parancs futtatásával kérheti le. Az ügyfél-azonosító az űrlap `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`GUID azonosítója.
+You can get the client ID of the identity by running the [az identity show][az-identity-show] command. The client ID is a GUID of the form `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan engedélyezheti és használhatja a felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitást egy ACR-feladatban. A biztonságos erőforrásoknak a felügyelt identitás használatával való eléréséhez az ACR-feladatokból a következő témakörben talál további információt:
+In this article, you learned how to enable and use a user-assigned or system-assigned managed identity on an ACR task. For scenarios to access secured resources from an ACR task using a managed identity, see:
 
-* [Beállításjegyzék közötti hitelesítés](container-registry-tasks-cross-registry-authentication.md)
-* [Külső erőforrások elérése Azure Key Vaultban tárolt titkos kulcsokkal](container-registry-tasks-authentication-key-vault.md)
+* [Cross-registry authentication](container-registry-tasks-cross-registry-authentication.md)
+* [Access external resources with secrets stored in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
 
 
 <!-- LINKS - Internal -->

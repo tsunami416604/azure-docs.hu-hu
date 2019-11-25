@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – a leküldéses frissítés földrajzilag replikált Azure Container Registry
-description: Küldjön le egy frissített Docker-rendszerképet a Geo-replikált Azure Container registrybe, majd tekintse meg a több régióban futó webalkalmazások automatikusan telepített módosításait. Ez egy háromrészes sorozat harmadik része.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial - Push update to geo-replicated registry
+description: Push an updated Docker image to your geo-replicated Azure container registry, then see the changes automatically deployed to web apps running in multiple regions. Ez egy háromrészes sorozat harmadik része.
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: adf6348e3b4c5fa728a0289ccd5bd3f289872108
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931380"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454689"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: frissített tároló-rendszerkép leküldése a földrajzi helyről replikált tároló-beállításjegyzékbe a regionális webalkalmazások üzembe helyezéséhez
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Push an updated container image to a geo-replicated container registry for regional web app deployments
 
 Ez egy háromrészes sorozat harmadik része. Az [előző oktatóanyagban](container-registry-tutorial-deploy-app.md) a georeplikációt két különböző régióban üzembe helyezett webalkalmazáshoz konfigurálta. Ebben az oktatóanyagban először az alkalmazást módosítjuk, majd egy új tárolórendszerképet hozunk létre, és leküldjük azt a georeplikált beállításjegyzékbe. Végül megtekintjük az Azure Container Registry webhookok által automatikusan üzembe helyezett módosításokat mind a két webalkalmazás esetében.
 

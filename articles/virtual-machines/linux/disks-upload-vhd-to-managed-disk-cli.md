@@ -1,6 +1,6 @@
 ---
-title: VHD feltöltése az Azure-ba az Azure CLI használatával
-description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azure-beli felügyelt lemezre, és hogyan másolhat egy felügyelt lemezt régiók között az Azure CLI használatával.
+title: Upload a vhd to Azure using Azure CLI
+description: Learn how to upload a vhd to an Azure managed disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,59 +9,59 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803991"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457605"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
+# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Upload a vhd to Azure using Azure CLI
 
-Ez a cikk azt ismerteti, hogyan tölthetők fel virtuális merevlemezek a helyi gépről egy Azure-beli felügyelt lemezre. Korábban egy olyan folyamatot kellett követnie, amely a Storage-fiókban tárolt adatait és a Storage-fiók kezelését is magában foglalja. Most már nem kell kezelnie a Storage-fiókot, vagy nem kell megadnia azokat a virtuális merevlemezek feltöltéséhez. Ehelyett létre kell hoznia egy üres felügyelt lemezt, és fel kell töltenie egy virtuális merevlemezt. Ez leegyszerűsíti a helyszíni virtuális gépek Azure-ba való feltöltését, és lehetővé teszi, hogy a virtuális merevlemezt akár 32 TiB-ra feltöltse közvetlenül egy nagy felügyelt lemezre.
+This article explains how to upload a vhd from your local machine to an Azure managed disk. Previously, you had to follow a more involved process that included staging your data in a storage account, and managing that storage account. Now, you no longer need to manage a storage account, or stage data in it to upload a vhd. Instead, you create an empty managed disk, and upload a vhd directly to it. This simplifies uploading on-premises VMs to Azure and enables you to upload a vhd up to 32 TiB directly into a large managed disk.
 
-Ha biztonsági mentési megoldást biztosít a IaaS virtuális gépek számára az Azure-ban, javasoljuk, hogy a közvetlen feltöltés használatával állítsa vissza az ügyfelek biztonsági mentését a felügyelt lemezekre. Ha a virtuális merevlemezt az Azure-on kívüli gépről tölti fel, a sebesség a helyi sávszélességtől függ. Ha Azure-beli virtuális gépet használ, a sávszélesség ugyanaz lesz, mint a standard HDD-k.
+If you are providing a backup solution for IaaS VMs in Azure, we recommend you use direct upload to restore customer backups to managed disks. If you are uploading a VHD from a machine external to Azure, speeds will depend on your local bandwidth. If you are using an Azure VM, then your bandwidth will be the same as standard HDDs.
 
-A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium szintű SSD által felügyelt lemezek esetében támogatott. Ultra SSD-k esetén még nem támogatott.
+Currently, direct upload is supported for standard HDD, standard SSD, and premium SSD managed disks. It is not yet supported for ultra SSDs.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
-- [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
-- Helyileg tárolt vhd-fájl
-- Ha a virtuális merevlemezt a helyszínen kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
-- Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
+- Download the latest [version of AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
+- [Install the Azure CLI](/cli/azure/install-azure-cli).
+- A vhd file, stored locally
+- If you intend to upload a vhd from on-premises: A vhd that [has been prepared for Azure](../windows/prepare-for-upload-vhd-image.md), stored locally.
+- Or, a managed disk in Azure, if you intend to perform a copy action.
 
-## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
+## <a name="create-an-empty-managed-disk"></a>Create an empty managed disk
 
-A virtuális merevlemez Azure-ba való feltöltéséhez létre kell hoznia egy üres felügyelt lemezt, amely ehhez a feltöltési folyamathoz van konfigurálva. Mielőtt létrehoz egyet, néhány további információra van szüksége a lemezekről.
+To upload your vhd to Azure, you'll need to create an empty managed disk that is configured for this upload process. Before you create one, there's some additional information you should know about these disks.
 
-Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
+This kind of managed disk has two unique states:
 
-- ReadToUpload, ami azt jelenti, hogy a lemez készen áll a feltöltésre, de nem jött létre [biztonságos hozzáférési aláírás](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
-- ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
+- ReadToUpload, which means the disk is ready to receive an upload but, no [secure access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) has been generated.
+- ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
 
-Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak akkor lesz igaz, ha `revoke-access` a felügyelt lemezen van meghívva, amely ahhoz szükséges, hogy a lemezt egy virtuális géphez csatlakoztassa.
+While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
 
-Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, bájtban kell megadnia a feltölteni kívánt vhd-fájl méretét. Ehhez `wc -c <yourFileName>.vhd` vagy `ls -al <yourFileName>.vhd` is használhatja. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
+Before you can create an empty standard HDD for uploading, you'll need to have the file size of the vhd you want to upload, in bytes. To get that, you can use either `wc -c <yourFileName>.vhd` or `ls -al <yourFileName>.vhd`. This value is used when specifying the **--upload-size-bytes** parameter.
 
-Hozzon létre egy üres szabványos HDD-t a feltöltéshez a **-– for-upload** paraméter és a **--upload-size-Bytes** paraméter megadásával a [lemez létrehozása](/cli/azure/disk#az-disk-create) parancsmagban:
+Create an empty standard HDD for uploading by specifying both the **-–for-upload** parameter and the **--upload-size-bytes** parameter in a [disk create](/cli/azure/disk#az-disk-create) cmdlet:
 
 ```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-Ha prémium szintű SSD-t vagy standard SSD-t szeretne feltölteni, cserélje le a **standard_lrs** -t a **premium_LRS** vagy a **standardssd_lrs**értékre. A ultra SSD még nem támogatott.
+If you would like to upload either a premium SSD or a standard SSD, replace **standard_lrs** with either **premium_LRS** or **standardssd_lrs**. Ultra SSD is not yet supported.
 
-Ezzel létrehozott egy üres felügyelt lemezt, amely a feltöltési folyamathoz van konfigurálva. A virtuális merevlemezek lemezre való feltöltéséhez írható SAS szükséges, hogy a feltöltés céljának megfelelően hivatkozzon legyen rá.
+You have now created an empty managed disk that is configured for the upload process. To upload a vhd to the disk, you'll need a writeable SAS, so that you can reference it as the destination for your upload.
 
-Az üres felügyelt lemezre írható SAS létrehozásához használja a következő parancsot:
+To generate a writable SAS of your empty managed disk, use the following command:
 
 ```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
-Minta visszaadott értéke:
+Sample returned value:
 
 ```
 {
@@ -69,21 +69,21 @@ Minta visszaadott értéke:
 }
 ```
 
-## <a name="upload-vhd"></a>VHD feltöltése
+## <a name="upload-vhd"></a>Upload vhd
 
-Most, hogy rendelkezik egy SAS-vel az üres felügyelt lemezhez, használhatja azt a felügyelt lemez beállításához a feltöltési parancs céljának megfelelően.
+Now that you have a SAS for your empty managed disk, you can use it to set your managed disk as the destination for your upload command.
 
-A AzCopy v10 használatával töltse fel a helyi VHD-fájlt egy felügyelt lemezre úgy, hogy megadja a létrehozott SAS URI-t.
+Use AzCopy v10 to upload your local VHD file to a managed disk by specifying the SAS URI you generated.
 
-Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos HDD](disks-types.md#standard-hdd). Ha például egy olyan mérettel rendelkezik, amely megfelel az S4 értéknek, akkor akár 60 MiB/s sebességű átviteli sebességgel fog rendelkezni. Ha azonban egy olyan mérettel rendelkezik, amely megfelel a S70, akkor akár 500 MiB/s sebességű átviteli sebességgel fog rendelkezni.
+This upload has the same throughput as the equivalent [standard HDD](disks-types.md#standard-hdd). For example, if you have a size that equates to S4, you will have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you will have a throughput of up to 500 MiB/s.
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Ha a SAS lejár a feltöltés során, és még nem nevezte meg `revoke-access`, akkor új SAS-t kaphat a feltöltés folytatásához `grant-access` használatával.
+If your SAS expires during upload, and you haven't called `revoke-access` yet, you can get a new SAS to continue the upload using `grant-access`, again.
 
-Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
+After the upload is complete, and you no longer need to write any more data to the disk, revoke the SAS. Revoking the SAS will change the state of the managed disk and allow you to attach the disk to a VM.
 
 ```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
@@ -91,14 +91,14 @@ az disk revoke-access -n mydiskname -g resourcegroupname
 
 ## <a name="copy-a-managed-disk"></a>Felügyelt lemez másolása
 
-A közvetlen feltöltés emellett leegyszerűsíti a felügyelt lemezek másolásának folyamatát. A másolást elvégezheti ugyanazon a régión vagy régión belül (egy másik régióba).
+Direct upload also simplifies the process of copying a managed disk. You can either copy within the same region or cross-region (to another region).
 
-A következő szkript ezt elvégzi Önnek, a folyamat hasonló a korábban ismertetett lépésekhez, néhány különbséggel, mivel meglévő lemezzel dolgozik.
+The follow script will do this for you, the process is similar to the steps described earlier, with some differences since you're working with an existing disk.
 
 > [!IMPORTANT]
-> Ha az Azure-ból felügyelt lemez mérete bájtban van megadva, akkor 512 eltolást kell hozzáadnia. Ennek az az oka, hogy az Azure kihagyja a láblécet a lemez méretének visszaadása során. Ha ezt nem teszi meg, a másolás sikertelen lesz. A következő szkript ezt már elvégezte Önnek.
+> You need to add an offset of 512 when you're providing the disk size in bytes of a managed disk from Azure. This is because Azure omits the footer when returning the disk size. The copy will fail if you do not do this. The following script already does this for you.
 
-Cserélje le a `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` és `<yourTargetLocationHere>` (például a uswest2) értékeit, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
+Replace the `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, and `<yourTargetLocationHere>` (an example of a location value would be uswest2) with your values, then run the following script in order to copy a managed disk.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -124,5 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt [adatlemezként egy meglévő virtuális géphez](add-disk.md) , vagy [csatlakoztathatja a lemezt egy virtuális géphez egy operációsrendszer-lemezként](upload-vhd.md#create-the-vm)egy új virtuális gép létrehozásához. 
+Now that you've successfully uploaded a vhd to a managed disk, you can attach the disk as a [data disk to an existing VM](add-disk.md) or [attach the disk to a VM as an OS disk](upload-vhd.md#create-the-vm), to create a new VM. 
 

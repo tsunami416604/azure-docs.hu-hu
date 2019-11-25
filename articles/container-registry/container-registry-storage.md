@@ -1,57 +1,52 @@
 ---
-title: Rendszerkép-tároló Azure Container Registry
-description: A Docker-tárolók lemezképeit Azure Container Registry tárolja, beleértve a biztonságot, a redundanciát és a kapacitást.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Container image storage
+description: Details on how your Docker container images are stored in Azure Container Registry, including security, redundancy, and capacity.
 ms.topic: article
 ms.date: 03/21/2018
-ms.author: danlep
-ms.openlocfilehash: 4517cc21ca0087358e750cd480288d4ec3718791
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310537"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456209"
 ---
-# <a name="container-image-storage-in-azure-container-registry"></a>Tároló képtárolója Azure Container Registry
+# <a name="container-image-storage-in-azure-container-registry"></a>Container image storage in Azure Container Registry
 
-Minden [alapszintű, standard és prémium](container-registry-skus.md) szintű Azure Container Registry előnyt élvez az Azure Storage fejlett szolgáltatásait, például a titkosítást, a képadatok biztonságát és a Geo-redundanciát a képadatok védelme érdekében. A következő szakaszok a Azure Container Registry (ACR) képtára funkcióit és korlátait ismertetik.
+Every [Basic, Standard, and Premium](container-registry-skus.md) Azure container registry benefits from advanced Azure storage features like encryption-at-rest for image data security and geo-redundancy for image data protection. The following sections describe both the features and limits of image storage in Azure Container Registry (ACR).
 
-## <a name="encryption-at-rest"></a>Titkosítás – Rest
+## <a name="encryption-at-rest"></a>Encryption-at-rest
 
-A beállításjegyzékben lévő összes tároló lemezkép inaktív állapotban van. Az Azure automatikusan titkosítja a rendszerképet a tárolás előtt, és visszafejti azt menet közben, amikor az alkalmazások és szolgáltatások lekérik a rendszerképet.
+All container images in your registry are encrypted at rest. Azure automatically encrypts an image before storing it, and decrypts it on-the-fly when you or your applications and services pull the image.
 
 ## <a name="geo-redundant-storage"></a>Georedundáns tárolás
 
-Az Azure egy geo-redundáns tárolási sémát használ a tároló-lemezképek elvesztése elleni védelemhez. A Azure Container Registry automatikusan replikálja a tároló lemezképeit több földrajzilag távoli adatközpontba, így megakadályozza az adatvesztést a regionális tárolási hibák esetén.
+Azure uses a geo-redundant storage scheme to guard against loss of your container images. Azure Container Registry automatically replicates your container images to multiple geographically distant data centers, preventing their loss in the event of a regional storage failure.
 
 ## <a name="geo-replication"></a>Georeplikáció
 
-A még nagyobb rendelkezésre állást biztosító forgatókönyvek esetében érdemes lehet a prémium szintű kibocsátásiegység-forgalmi jegyzékek [geo-replikálás](container-registry-geo-replication.md) funkcióját használni. A Geo-replikáció a *teljes* regionális meghibásodás esetén megakadályozza a beállításjegyzékhez való hozzáférés elvesztését, nem csak a tárolási hibát. A Geo-replikáció más előnyöket is biztosít, például a hálózati bezárást, amely gyorsabb leküldést és lekérést tesz lehetővé elosztott fejlesztési vagy üzembe helyezési forgatókönyvekben.
+For scenarios requiring even more high-availability assurance, consider using the [geo-replication](container-registry-geo-replication.md) feature of Premium registries. Geo-replication helps guard against losing access to your registry in the event of a *total* regional failure, not just a storage failure. Geo-replication provides other benefits, too, like network-close image storage for faster pushes and pulls in distributed development or deployment scenarios.
 
-## <a name="image-limits"></a>Képkorlátok
+## <a name="image-limits"></a>Image limits
 
-Az alábbi táblázat az Azure Container-nyilvántartók számára elérhető tároló-rendszerképet és tárolási korlátokat ismerteti.
+The following table describes the container image and storage limits in place for Azure container registries.
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 | -------- | :---- |
 | Adattárak | Korlátlan |
-| Képek | Korlátlan |
-| Rétegek | Korlátlan |
-| Tags | Korlátlan|
-| Storage | 5 TB |
+| Lemezképek | Korlátlan |
+| Layers | Korlátlan |
+| Címkék | Korlátlan|
+| Adattárolás | 5 TB |
 
-Nagyon nagy számú tárház és címke befolyásolhatja a beállításjegyzék teljesítményét. Rendszeresen törölje a nem használt adattárakat, címkéket és képeket a beállításjegyzék karbantartási rutinjának részeként. A törölt beállításjegyzék-erőforrások, például a Tárházak, a képek és a címkék törlés után *nem* állíthatók vissza. A beállításjegyzék-erőforrások törlésével kapcsolatos további információkért lásd: [tároló lemezképek törlése a Azure Container Registryban](container-registry-delete.md).
+Very high numbers of repositories and tags can impact the performance of your registry. Periodically delete unused repositories, tags, and images as part of your registry maintenance routine. Deleted registry resources like repositories, images, and tags *cannot* be recovered after deletion. For more information about deleting registry resources, see [Delete container images in Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Tárhely költsége
 
-A díjszabással kapcsolatos részletes információkért tekintse meg a [Azure Container Registry díjszabását][pricing].
+For full details about pricing, see [Azure Container Registry pricing][pricing].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a különböző Azure Container Registry SKU-ról (alapszintű, standard, prémium): [Azure Container Registry SKU](container-registry-skus.md).
+For more information about the different Azure Container Registry SKUs (Basic, Standard, Premium), see [Azure Container Registry SKUs](container-registry-skus.md).
 
 <!-- IMAGES -->
 

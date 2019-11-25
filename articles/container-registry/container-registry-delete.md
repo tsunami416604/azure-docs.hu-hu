@@ -1,51 +1,46 @@
 ---
-title: Rendszerkép-erőforrások törlése a Azure Container Registry
-description: A beállításjegyzék méretének hatékony kezeléséről a tároló képadatainak Azure CLI-parancsokkal történő törlésével foglalkozó témakörben olvashat.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Delete image resources
+description: Details on how to effectively manage registry size by deleting container image data using Azure CLI commands.
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: danlep
-ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8d20bf2be1d472855c3e67dd79ea1725c152e3d2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300193"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455269"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry tároló lemezképének törlése az Azure CLI használatával
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Delete container images in Azure Container Registry using the Azure CLI
 
-Az Azure Container Registry méretének megőrzése érdekében rendszeresen törölnie kell az elavult képadatokat. Míg az éles környezetben üzembe helyezett egyes tároló-lemezképek hosszabb távú tárolást igényelhetnek, másokat általában gyorsabban lehet törölni. Egy automatizált Build-és tesztelési forgatókönyvben például a beállításjegyzék gyorsan kitöltheti azokat a lemezképeket, amelyek soha nem helyezhetők üzembe, és a létrehozási és tesztelési menet befejezése után nem sokkal törölhetők.
+To maintain the size of your Azure container registry, you should periodically delete stale image data. While some container images deployed into production may require longer-term storage, others can typically be deleted more quickly. For example, in an automated build and test scenario, your registry can quickly fill with images that might never be deployed, and can be purged shortly after completing the build and test pass.
 
-Mivel számos különböző módon törölheti a képadatokat, fontos tisztában lennie azzal, hogy az egyes törlési műveletek milyen hatással vannak a tárterület használatára. Ez a cikk a képadatok törlésének számos módszerét ismerteti:
+Because you can delete image data in several different ways, it's important to understand how each delete operation affects storage usage. This article covers several methods for deleting image data:
 
-* [Adattár](#delete-repository)törlése: A tárházban lévő összes rendszerkép és az összes egyedi réteg törlése.
-* Törlés [címke](#delete-by-tag)szerint: Töröl egy képet, a címkét, a rendszerkép által hivatkozott összes egyedi réteget és a képhez társított összes egyéb címkét.
-* Törlés a [manifest Digest](#delete-by-manifest-digest)használatával: Töröl egy képet, a rendszerkép által hivatkozott összes egyedi réteget és a képhez társított összes címkét.
+* Delete a [repository](#delete-repository): Deletes all images and all unique layers within the repository.
+* Delete by [tag](#delete-by-tag): Deletes an image, the tag, all unique layers referenced by the image, and all other tags associated with the image.
+* Delete by [manifest digest](#delete-by-manifest-digest): Deletes an image, all unique layers referenced by the image, and all tags associated with the image.
 
-A törlési műveletek automatizálása érdekében a rendszer parancsfájlokat biztosít.
+Sample scripts are provided to help automate delete operations.
 
-A fogalmak bevezetését lásd: a beállításjegyzékek [, adattárak és rendszerképek](container-registry-concepts.md).
+For an introduction to these concepts, see [About registries, repositories, and images](container-registry-concepts.md).
 
-## <a name="delete-repository"></a>Adattár törlése
+## <a name="delete-repository"></a>Delete repository
 
-A tárház törlése törli az adattár összes lemezképét, beleértve az összes címkét, az egyedi réteget és a jegyzékfájlokat is. Amikor töröl egy tárházat, az adott adattár egyedi rétegeire hivatkozó lemezképek által használt tárterületet fogja helyreállítani.
+Deleting a repository deletes all of the images in the repository, including all tags, unique layers, and manifests. When you delete a repository, you recover the storage space used by the images that reference unique layers in that repository.
 
-A következő Azure CLI-parancs törli az "ACR-HelloWorld" tárházat és az adattárban található összes címkét és jegyzékfájlt. Ha a törölt jegyzékfájlok által hivatkozott rétegek nem hivatkoznak a beállításjegyzékben található többi rendszerképre, a rétegbeli adatait is törli a rendszer, és helyreállítja a tárolóhelyet.
+The following Azure CLI command deletes the "acr-helloworld" repository and all tags and manifests within the repository. If layers referenced by the deleted manifests are not referenced by any other images in the registry, their layer data is also deleted, recovering the storage space.
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
 ```
 
-## <a name="delete-by-tag"></a>Törlés címke szerint
+## <a name="delete-by-tag"></a>Delete by tag
 
-Az egyes lemezképeket törölheti egy adattárból, ha megadja az adattár nevét és a címkét a törlési műveletben. Ha a címke alapján törli a címkét, akkor a rendszerképben lévő egyedi rétegek által használt tárolóhelyet is helyreállítja
+You can delete individual images from a repository by specifying the repository name and tag in the delete operation. When you delete by tag, you recover the storage space used by any unique layers in the image (layers not shared by any other images in the registry).
 
-A címke alapján történő törléshez használja az [az ACR adattár törlése][az-acr-repository-delete] lehetőséget, és adja meg `--image` a rendszerkép nevét a paraméterben. A rendszer minden, a képhez egyedi réteget töröl, és a képhez társított egyéb címkéket is törli.
+To delete by tag, use [az acr repository delete][az-acr-repository-delete] and specify the image name in the `--image` parameter. All layers unique to the image, and any other tags associated with the image are deleted.
 
-Például törölje az "ACR-HelloWorld: Latest" rendszerképet a "myregistry" beállításjegyzékből:
+For example, deleting the "acr-helloworld:latest" image from registry "myregistry":
 
 ```azurecli
 $ az acr repository delete --name myregistry --image acr-helloworld:latest
@@ -54,13 +49,13 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> A címkével *való törlés nem* tévesztendő össze a címkék törlésével (címkézés törlése). A címkét törölheti az Azure CLI-parancs az [ACR repository jelölését][az-acr-repository-untag]használatával. A rendszer nem szabadít fel lemezterületet, ha jelölését egy képet [](container-registry-concepts.md#manifest) , mert a jegyzékfájlja és a rétegbeli adatok megmaradnak a beállításjegyzékben. Csak a címke hivatkozását törli a rendszer.
+> Deleting *by tag* shouldn't be confused with deleting a tag (untagging). You can delete a tag with the Azure CLI command [az acr repository untag][az-acr-repository-untag]. No space is freed when you untag an image because its [manifest](container-registry-concepts.md#manifest) and layer data remain in the registry. Only the tag reference itself is deleted.
 
-## <a name="delete-by-manifest-digest"></a>Törlés a manifest Digest használatával
+## <a name="delete-by-manifest-digest"></a>Delete by manifest digest
 
-A [jegyzékfájlok kivonata](container-registry-concepts.md#manifest-digest) egy, none vagy több címkével is társítható. Ha kivonatoló törlést végez, a jegyzékfájlban hivatkozott összes címkét törli a rendszer, ahogy a rétegben lévő adatok a képhez egyediek. A megosztott rétegbeli adatértékek nem törlődnek.
+A [manifest digest](container-registry-concepts.md#manifest-digest) can be associated with one, none, or multiple tags. When you delete by digest, all tags referenced by the manifest are deleted, as is layer data for any layers unique to the image. Shared layer data is not deleted.
 
-A kivonatoló törléshez először sorolja fel a törölni kívánt képeket tartalmazó adattár jegyzékfájl-kivonatait. Példa:
+To delete by digest, first list the manifest digests for the repository containing the images you wish to delete. Példa:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -83,13 +78,13 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-Ezután határozza meg a törölni kívánt kivonatot az az [ACR adattár törlése][az-acr-repository-delete] paranccsal. A parancs formátuma:
+Next, specify the digest you wish to delete in the [az acr repository delete][az-acr-repository-delete] command. A parancs formátuma:
 
 ```azurecli
 az acr repository delete --name <acrName> --image <repositoryName>@<digest>
 ```
 
-Ha például törölni szeretné az előző kimenetben felsorolt utolsó jegyzékfájlt (a "v2" címkével):
+For example, to delete the last manifest listed in the preceding output (with the tag "v2"):
 
 ```console
 $ az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
@@ -97,23 +92,23 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-A `acr-helloworld:v2` rendszer törli a rendszerképet a beállításjegyzékből, ahogy az adott képhez egyedi adatrétegi adatok is. Ha egy jegyzékfájl több címkével van társítva, az összes hozzá tartozó címke is törlődik.
+The `acr-helloworld:v2` image is deleted from the registry, as is any layer data unique to that image. If a manifest is associated with multiple tags, all associated tags are also deleted.
 
-## <a name="delete-digests-by-timestamp"></a>Kivonatok törlése timestamp alapján
+## <a name="delete-digests-by-timestamp"></a>Delete digests by timestamp
 
-A tárház vagy a beállításjegyzék méretének megőrzése érdekében előfordulhat, hogy rendszeres időközönként törölni kell az adott dátumnál régebbi jegyzékfájl-kivonatokat.
+To maintain the size of a repository or registry, you might need to periodically delete manifest digests older than a certain date.
 
-A következő Azure CLI-parancs felsorolja az összes manifest-kivonatot egy megadott időbélyegnél régebbi tárházban, növekvő sorrendben. Cserélje `<acrName>` le `<repositoryName>` a és a értéket a környezetének megfelelő értékekre. Az időbélyeg lehet egy teljes dátum-idő kifejezés vagy egy dátum, ahogy az ebben a példában is látható.
+The following Azure CLI command lists all manifest digest in a repository older than a specified timestamp, in ascending order. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment. The timestamp could be a full date-time expression or a date, as in this example.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Az elavult jegyzékfájl-kivonatok azonosítása után a következő bash-szkripttel törölheti a megadott időbélyegnél régebbi jegyzékfájl-kivonatokat. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `ENABLE_DELETE` törlésének `true` engedélyezéséhez módosítsa az értéket.
+After identifying stale manifest digests, you can run the following Bash script to delete manifest digests older than a specified timestamp. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 > [!WARNING]
-> A következő minta-parancsfájlt körültekintően kell használni – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A jegyzékfájl-kivonatok törlésével megakadályozhatja, hogy ezek a rendszerek a lemezképeket a beállításjegyzékből húzza. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md). 
+> Use the following sample script with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting the manifest digests will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md). 
 
 ```bash
 #!/bin/bash
@@ -146,12 +141,12 @@ else
 fi
 ```
 
-## <a name="delete-untagged-images"></a>Címkézetlen lemezképek törlése
+## <a name="delete-untagged-images"></a>Delete untagged images
 
-Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) szakaszban is említettük, a módosított rendszerkép egy **meglévő címkével** való kihagyása a korábban lenyomott képpel, amely árva (vagy "lógó") képet eredményezett. A korábban leküldett rendszerkép jegyzékfájlja – és a rétegbeli adatok – a beállításjegyzékben maradnak. Vegye figyelembe a következő eseménysorozat-sorozatot:
+As mentioned in the [Manifest digest](container-registry-concepts.md#manifest-digest) section, pushing a modified image using an existing tag **untags** the previously pushed image, resulting in an orphaned (or "dangling") image. The previously pushed image's manifest--and its layer data--remains in the registry. Consider the following sequence of events:
 
-1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. A repository *ACR-HelloWorld*ellenőrzési jegyzékfájljának megtekintése:
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -166,9 +161,9 @@ Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) sz
    ]
    ```
 
-1. *ACR módosítása – HelloWorld* Docker
-1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. A repository *ACR-HelloWorld*ellenőrzési jegyzékfájljának megtekintése:
+1. Modify *acr-helloworld* Dockerfile
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -188,24 +183,24 @@ Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) sz
    ]
    ```
 
-Ahogy az a sorozatban az utolsó lépés kimenetében is látható, már létezik egy árva jegyzékfájl, amelynek `"tags"` a tulajdonsága egy üres lista. Ez a jegyzékfájl továbbra is létezik a beállításjegyzékben, valamint az általa hivatkozott egyedi rétegbeli adatokkal együtt. **Az ilyen árva rendszerképek és a hozzájuk**tartozó adatrétegek törléséhez a manifest Digest utasítással kell törölnie.
+As you can see in the output of the last step in the sequence, there is now an orphaned manifest whose `"tags"` property is an empty list. This manifest still exists within the registry, along with any unique layer data that it references. **To delete such orphaned images and their layer data, you must delete by manifest digest**.
 
-## <a name="delete-all-untagged-images"></a>Az összes címkézetlen rendszerkép törlése
+## <a name="delete-all-untagged-images"></a>Delete all untagged images
 
-Az adattár összes címkézetlen lemezképét az alábbi Azure CLI-paranccsal listázhatja. Cserélje `<acrName>` le `<repositoryName>` a és a értéket a környezetének megfelelő értékekre.
+You can list all untagged images in your repository using the following Azure CLI command. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-Ha ezt a parancsot egy parancsfájlban használja, törölheti az összes címkézetlen lemezképet egy adattárból.
+Using this command in a script, you can delete all untagged images in a repository.
 
 > [!WARNING]
-> A következő minta-parancsfájlok körültekintő használata – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
+> Use the following sample scripts with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
-**Azure CLI a Bashben**
+**Azure CLI in Bash**
 
-A következő bash-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `ENABLE_DELETE` törlésének `true` engedélyezéséhez módosítsa az értéket.
+The following Bash script deletes all untagged images from a repository. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 ```bash
 #!/bin/bash
@@ -233,9 +228,9 @@ else
 fi
 ```
 
-**Azure CLI a PowerShellben**
+**Azure CLI in PowerShell**
 
-A következő PowerShell-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez a PowerShell és az Azure CLI szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `$enableDelete` törlésének `$TRUE` engedélyezéséhez módosítsa az értéket.
+The following PowerShell script deletes all untagged images from a repository. It requires PowerShell and the Azure CLI. By default, the script performs no deletion. Change the `$enableDelete` value to `$TRUE` to enable image deletion.
 
 ```powershell
 # WARNING! This script deletes data!
@@ -262,13 +257,13 @@ if ($enableDelete) {
 
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
 
-Az Azure parancssori felület parancsainak alternatívájaként egy igény szerinti vagy ütemezett ACR-feladat futtatásával törölheti az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. További információ: [lemezképek automatikus törlése az Azure Container registryből](container-registry-auto-purge.md).
+As an alternative to scripting Azure CLI commands, run an on-demand or scheduled ACR task to delete all tags that are older than a certain duration or match a specified name filter. For more information, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
 
-Opcionálisan beállíthat egy [adatmegőrzési szabályt](container-registry-retention-policy.md) minden beállításjegyzékhez a címkézetlen jegyzékfájlok kezeléséhez. Ha engedélyez egy adatmegőrzési szabályzatot, a rendszer a beállításjegyzékben olyan rendszerképeket tartalmaz, amelyek nem rendelkeznek társított címkékkel, és az alapul szolgáló réteg adatai automatikusan törlődnek egy meghatározott időszak után.
+Optionally set a [retention policy](container-registry-retention-policy.md) for each registry, to manage untagged manifests. When you enable a retention policy, image manifests in the registry that don't have any associated tags, and the underlying layer data, are automatically deleted after a set period.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Container Registry található képtárolóról: [tároló képtárolója Azure Container Registry](container-registry-storage.md).
+For more information about image storage in Azure Container Registry see [Container image storage in Azure Container Registry](container-registry-storage.md).
 
 <!-- IMAGES -->
 [manifest-digest]: ./media/container-registry-delete/01-manifest-digest.png

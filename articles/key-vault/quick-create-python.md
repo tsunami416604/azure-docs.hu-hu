@@ -1,62 +1,62 @@
 ---
-title: Gyors útmutató – Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
-description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet titkos kódokat az Azure Key vaultban a Python ügyféloldali kódtár használatával
+title: Quickstart -  Azure Key Vault client library for Python
+description: Learn how to create, retrieve, and delete secrets from an Azure key vault using the Python client library
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b8a6099bb4beb7a3c3b6b132584dcb397f69ead5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7f1b238eb0e355d7e82b985ff82d7cb6cacfad59
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158694"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457582"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rövid útmutató: Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
+# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Azure Key Vault client library for Python
 
-Ismerkedés a Azure Key Vault a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
+Get started with the Azure Key Vault client library for Python. Follow the steps below to install the package and try out example code for basic tasks.
 
-Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Pythonhoz készült Key Vault ügyféloldali kódtára a következőre használható:
+Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Use the Key Vault client library for Python to:
 
-- Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
-- Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
-- Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
-- Használja az FIPS 140-2 2-es szintű hitelesített HSM.
+- Increase security and control over keys and passwords.
+- Create and import encryption keys in minutes.
+- Reduce latency with cloud scale and global redundancy.
+- Simplify and automate tasks for SSL/TLS certificates.
+- Use FIPS 140-2 Level 2 validated HSMs.
 
-[API-referenciák dokumentációja](/python/api/overview/azure/key-vault?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault/)
+[API reference documentation](/python/api/overview/azure/key-vault?view=azure-python) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Package (Python Package Index)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Python 2,7, 3.5.3 vagy újabb
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
+- An Azure subscription - [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Python 2.7, 3.5.3, or later
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or [Azure PowerShell](/powershell/azure/overview)
 
-Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t egy Linux-terminál ablakban futtatja.
+This quickstart assumes you are running [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in a Linux terminal window.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Setting up
 
-### <a name="install-the-package"></a>A csomag telepítése
+### <a name="install-the-package"></a>Install the package
 
-A konzol ablakban telepítse a Pythonhoz készült Azure Key Vault Secrets kódtárat.
+From the console window, install the Azure Key Vault secrets library for Python.
 
 ```console
 pip install azure-keyvault-secrets
 ```
 
-Ebben a rövid útmutatóban az Azure. Identity csomagot is telepítenie kell:
+For this quickstart, you will need to install the azure.identity package as well:
 
 ```console
 pip install azure.identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
+### <a name="create-a-resource-group-and-key-vault"></a>Create a resource group and key vault
 
-Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat is futtatja.
+This quickstart uses a pre-created Azure key vault. You can create a key vault by following the steps in the [Azure CLI quickstart](quick-create-cli.md), [Azure PowerShell quickstart](quick-create-powershell.md), or [Azure portal quickstart](quick-create-portal.md). Alternatively, you can run the Azure CLI commands below.
 
 > [!Important]
-> Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le a < az egyedi-kulcstartó-Name > a Key Vault nevét.
+> Each key vault must have a unique name. Replace <your-unique-keyvault-name> with the name of your key vault in the following examples.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -66,15 +66,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-A felhőalapú .NET-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](managed-identity.md) című témakört. Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre. Egy asztali alkalmazás Azure-beli hitelesítéséhez egy egyszerű szolgáltatásnevet és egy hozzáférés-vezérlési szabályzatot kell használni.
+The simplest way to authenticate a cloud-based .NET application is with a managed identity; see [Use an App Service managed identity to access Azure Key Vault](managed-identity.md) for details. For the sake of simplicity however, this quickstart creates a .NET console application. Authenticating a desktop application with Azure requires the use of a service principal and an access control policy.
 
-Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
+Create a service principle using the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
+This operation will return a series of key / value pairs. 
 
 ```console
 {
@@ -91,21 +91,21 @@ A művelet a kulcs/érték párok sorozatát fogja visszaadni.
 }
 ```
 
-Jegyezze fel a clientId és a clientSecret, ahogy azokat az alábbi [környezeti változó beállítása](#set-environmental-variables) lépésben fogjuk használni.
+Take note of the clientId and clientSecret, as we will use them in the [Set environmental variable](#set-environmental-variables) step below.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Give the service principal access to your key vault
 
-Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak a clientId az az a Key Vault [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal. Adja meg a szolgáltatás egyszerű lekérését, listáját, és állítsa be mindkét kulcs és titok engedélyeit.
+Create an access policy for your key vault that grants permission to your service principal by passing the clientId to the [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) command. Give the service principal get, list, and set permissions for both keys and secrets.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Környezeti változók beállítása
+#### <a name="set-environmental-variables"></a>Set environmental variables
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és `AZURE_TENANT_ID`. Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben jegyezte fel a `export VARNAME=VALUE` formátum használatával. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze `/etc/environment `-fájlját.) 
+The DefaultAzureCredential method in our application relies on three environmental variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID`. Set these variables to the clientId, clientSecret, and tenantId values you noted in the [Create a service principal](#create-a-service-principal) step using the `export VARNAME=VALUE` format. (This method only sets the variables for your current shell and processes created from the shell; to permanently add these variables to your environment, edit your `/etc/environment ` file.) 
 
-A kulcstároló nevét a `KEY_VAULT_NAME`nevű környezeti változóként is menteni kell.
+You will also need to save your key vault name as an environment variable called `KEY_VAULT_NAME`.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -117,17 +117,17 @@ export AZURE_TENANT_ID=<your-tenantId>
 export KEY_VAULT_NAME=<your-key-vault-name>
 ````
 
-## <a name="object-model"></a>Objektummodell
+## <a name="object-model"></a>Object model
 
-A Pythonhoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot.
+The Azure Key Vault client library for Python allows you to manage keys and related assets such as certificates and secrets. The code samples below will show you how to create a client, set a secret, retrieve a secret, and delete a secret.
 
-A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+The entire console app is available at https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Code examples
 
-### <a name="add-directives"></a>Irányelvek hozzáadása
+### <a name="add-directives"></a>Add directives
 
-Adja hozzá a következő irányelveket a kód elejéhez:
+Add the following directives to the top of your code:
 
 ```python
 import os
@@ -135,9 +135,9 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
+### <a name="authenticate-and-create-a-client"></a>Authenticate and create a client
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van kibontva, a "https://< your-key-Vault-Name >. Vault. Azure. net" formátumban.
+Authenticating to your key vault and creating a key vault client depends on the environmental variables in the [Set environmental variables](#set-environmental-variables) step above. The name of your key vault is expanded to the key vault URI, in the format "https://<your-key-vault-name>.vault.azure.net".
 
 ```python
 credential = DefaultAzureCredential()
@@ -145,39 +145,39 @@ credential = DefaultAzureCredential()
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
 ```
 
-### <a name="save-a-secret"></a>Titkos kód mentése
+### <a name="save-a-secret"></a>Save a secret
 
-Most, hogy az alkalmazás hitelesítése megtörtént, egy titkos kulcsot is hozzáadhat a kulcstartóhoz az ügyfél használatával. SetSecret metódus] (/DotNet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) ehhez a "keresési kifejezésként" kifejezést kell használnia ebben a mintában.  
+Now that your application is authenticated, you can put a secret into your keyvault using the client.SetSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) This requires a name for the secret -- we're using "mySecret" in this sample.  
 
 ```python
 client.set_secret(secretName, secretValue);
 ```
 
-Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal:
+You can verify that the secret has been set with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
+### <a name="retrieve-a-secret"></a>Retrieve a secret
 
-Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecret metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+You can now retrieve the previously set value with the [client.GetSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 retrieved_secret = client.get_secret(secretName)
  ```
 
-A titkos kód most már `retrieved_secret.value`néven lett mentve.
+Your secret is now saved as `retrieved_secret.value`.
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
-Végül törölje a titkos kulcsot a Key vaultból az [ügyféllel. DeleteSecret metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Finally, let's delete the secret from your key vault with the [client.DeleteSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 client.delete_secret(secretName);
 ```
 
-A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal ellenőrizhető:
+You can verify that the secret is gone with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -185,7 +185,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
+When no longer needed, you can use the Azure CLI or Azure PowerShell to remove your key vault and the corresponding  resource group.
 
 ```azurecli
 az group delete -g "myResourceGroup" -l "EastUS" 
@@ -203,14 +203,13 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-secretName = "mySecret";
-
 keyVaultName = os.environ["KEY_VAULT_NAME"];
 KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 credential = DefaultAzureCredential()
-
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
+
+secretName = "mySecret";
 
 print("Input the value of your secret > ");
 secretValue = raw_input();
@@ -239,11 +238,11 @@ print(" done.");
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
+In this quickstart you created a key vault, stored a secret, and retrieved that secret. See the [entire console app in GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 
-Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+To learn more about Key Vault and how to integrate it with your applications, continue on to the articles below.
 
-- [A Azure Key Vault áttekintése](key-vault-overview.md)
-- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
-- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
-- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése
+- Read an [Overview of Azure Key Vault](key-vault-overview.md)
+- See the [Azure Key Vault developer's guide](key-vault-developers-guide.md)
+- Learn about [keys, secrets, and certificates](about-keys-secrets-and-certificates.md)
+- Review [Azure Key Vault best practices](key-vault-best-practices.md)

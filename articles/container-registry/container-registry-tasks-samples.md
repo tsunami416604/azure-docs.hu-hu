@@ -1,50 +1,45 @@
 ---
-title: Azure Container Registry feladatok mintái
-description: Minta Azure Container Registry feladatok (ACR-feladatok) a tároló-lemezképek létrehozásához, futtatásához és javításához
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: ACR task samples
+description: Sample Azure Container Registry Tasks (ACR Tasks) to build, run, and patch container images
 ms.topic: article
 ms.date: 11/14/2019
-ms.author: danlep
-ms.openlocfilehash: 488e13ed0d1961fbafad545057accb61957a7005
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152852"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456082"
 ---
-# <a name="acr-tasks-samples"></a>ACR-feladatok mintái
+# <a name="acr-tasks-samples"></a>ACR Tasks samples
 
-Ez a cikk több [Azure Container Registry feladathoz](container-registry-tasks-overview.md) (ACR-feladatok) kapcsolódó forgatókönyvek `task.yaml` fájlokra és társított Dockerfiles mutató hivatkozásokat tartalmaz. 
+This article links to example `task.yaml` files and associated Dockerfiles for several [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) scenarios. 
 
-További példákért tekintse meg az [Azure Samples][task-examples] tárházat.
+For additional examples, see the [Azure samples][task-examples] repo.
 
 ## <a name="scenarios"></a>Alkalmazási helyzetek
 
-* **Rendszerkép létrehozása** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Build image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Tároló** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml) futtatása
+* **Run container** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
 
-* **Rendszerkép létrehozása és leküldése** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Build and push image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Rendszerkép létrehozása és futtatása** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Build and run image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Több rendszerkép kiépítése és leküldése** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Build and push multiple images** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Lemezképek létrehozása és tesztelése párhuzamosan** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Build and test images in parallel** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Képek létrehozása és leküldése több** beállításjegyzékbe - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
+* **Build and push images to multiple registries** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az ACR-feladatokról:
+Learn more about ACR Tasks:
 
-* [Többlépéses feladatok](container-registry-tasks-multi-step.md) – az ACR-alapú munkafolyamatok a Felhőbeli tároló-lemezképek létrehozásához, teszteléséhez és javításához.
-* [Feladat leírása](container-registry-tasks-reference-yaml.md) – a feladat lépésének típusai, tulajdonságai és használata.
-* [Cmd](https://github.com/AzureCR/cmd) -tárház – a tárolók gyűjteménye az ACR-feladatok parancsaiként.
+* [Multi-step tasks](container-registry-tasks-multi-step.md) - ACR Task-based workflows for building, testing, and patching container images in the cloud.
+* [Task reference](container-registry-tasks-reference-yaml.md) - Task step types, their properties, and usage.
+* [Cmd repo](https://github.com/AzureCR/cmd) - A collection of containers as commands for ACR Tasks.
 
 
 <!-- LINKS - External -->

@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Authentication Library (MSAL) használata az országos felhőkben – Microsoft Identity platform
-description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára a jogkivonatok beszerzését a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, partner webes API-k vagy a saját webes API-k. A MSAL több alkalmazás-architektúrát és platformot is támogat.
+title: Use Microsoft Authentication Library (MSAL) in national clouds - Microsoft identity platform
+description: Microsoft Authentication Library (MSAL) enables application developers to acquire tokens in order to call secured web APIs. These web APIs can be Microsoft Graph, other Microsoft APIs, partner web APIs, or your own web API. MSAL supports multiple application architectures and platforms.
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -12,87 +12,91 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97855a52831a63a92a46bd0d25d23ba3fc91a07b
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5c8f6ba4d5b983fc0bf73b0b07d4a8d4f202ad5b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268562"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452587"
 ---
-# <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
+# <a name="use-msal-in-a-national-cloud-environment"></a>Use MSAL in a national cloud environment
 
-Az [országos felhők](authentication-national-cloud.md) fizikailag elkülönített Azure-példányok. Az Azure ezen régiói segítenek biztosítani, hogy az adattárolási, a szuverenitási és a megfelelőségi követelmények a földrajzi határokon belül legyenek tiszteletben.
+[National clouds](authentication-national-cloud.md), also known as Sovereign clouds, are physically isolated instances of Azure. These regions of Azure help make sure that data residency, sovereignty, and compliance requirements are honored within geographical boundaries.
 
-A Microsoft globális felhőn kívül a Microsoft Authentication Library (MSAL) lehetővé teszi, hogy az alkalmazások fejlesztői az országos felhőkben jogkivonatokat szerezzenek be a biztonságos webes API-k hitelesítéséhez és meghívásához. Ezek a webes API-k Microsoft Graph vagy más Microsoft API-k lehetnek.
+In addition to the Microsoft worldwide cloud, the Microsoft Authentication Library (MSAL) enables application developers in national clouds to acquire tokens in order to authenticate and call secured web APIs. These web APIs can be Microsoft Graph or other Microsoft APIs.
 
-A globális felhővel (Azure Active Directory (Azure AD) együtt a következő nemzeti felhőkben is üzembe helyezhetők:  
+Including the global cloud, Azure Active Directory (Azure AD) is deployed in the following national clouds:  
 
 - Azure Government
 - Azure China 21Vianet
 - Azure Germany
 
-Ez az útmutató bemutatja, hogyan jelentkezhet be a munkahelyi és iskolai fiókba, hogyan szerezhet be hozzáférési jogkivonatot, és hogyan hívhatja meg a Microsoft Graph API-t a [Azure Government felhőalapú](https://azure.microsoft.com/global-infrastructure/government/) környezetben.
+This guide demonstrates how to sign in to work and school accounts, get an access token, and call the Microsoft Graph API in the [Azure Government cloud](https://azure.microsoft.com/global-infrastructure/government/) environment.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy megfelel az előfeltételeknek.
+Before you start, make sure that you meet these prerequisites.
 
-### <a name="choose-the-appropriate-identities"></a>A megfelelő identitások kiválasztása
+### <a name="choose-the-appropriate-identities"></a>Choose the appropriate identities
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) alkalmazások használhatják az Azure ad Government-identitásokat és az Azure ad nyilvános identitásait a felhasználók hitelesítéséhez. Mivel ezen identitások bármelyikét felhasználhatja, el kell döntenie, hogy melyik szolgáltatói végpontot válassza ki a forgatókönyvhöz:
+[Azure Government](https://docs.microsoft.com/azure/azure-government/) applications can use Azure AD Government identities and Azure AD Public identities to authenticate users. Because you can use any of these identities, you need to decide which authority endpoint you should choose for your scenario:
 
-- Nyilvános Azure AD: Gyakran használatos, ha a szervezete már rendelkezik Azure AD-beli nyilvános Bérlővel az Office 365 (nyilvános vagy GCC) vagy más alkalmazás támogatásához.
-- Azure AD-kormányzat: Gyakran használt, ha a szervezete már rendelkezik Azure AD Government-Bérlővel az Office 365 (GCC High vagy DoD) támogatásához, vagy új bérlőt hoz létre az Azure AD Governmentben.
+- Azure AD Public: Commonly used if your organization already has an Azure AD Public tenant to support Office 365 (Public or GCC) or another application.
+- Azure AD Government: Commonly used if your organization already has an Azure AD Government tenant to support Office 365 (GCC High or DoD) or is creating a new tenant in Azure AD Government.
 
-Miután eldöntötte, hogy elvégezte az alkalmazás regisztrálását, külön figyelmet igényel. Ha az Azure AD nyilvános identitásait választja a Azure Government alkalmazáshoz, regisztrálnia kell az alkalmazást az Azure AD nyilvános bérlőben.
+After you decide, a special consideration is where you perform your app registration. If you choose Azure AD Public identities for your Azure Government application, you must register the application in your Azure AD Public tenant.
 
-### <a name="get-an-azure-government-subscription"></a>Azure Government előfizetés beszerzése
+### <a name="get-an-azure-government-subscription"></a>Get an Azure Government subscription
 
-Azure Government előfizetés beszerzéséhez tekintse meg az [előfizetésének kezelése és csatlakoztatása Azure Government-ban](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions)című témakört.
+To get an Azure Government subscription, see [Managing and connecting to your subscription in Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
 
-Ha nem rendelkezik Azure Government-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/global-infrastructure/government/request/) a Kezdés előtt.
+If you don't have an Azure Government subscription, create a [free account](https://azure.microsoft.com/global-infrastructure/government/request/) before you begin.
+
+For details about using a national cloud with a particular programming language, choose the tab matching your language:
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ## <a name="javascript"></a>JavaScript
 
 ### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.us/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.us/).
     
-   Más nemzeti felhők Azure Portal végpontjának megkereséséhez lásd: [alkalmazás-regisztrációs végpontok](authentication-national-cloud.md#app-registration-endpoints).
+   To find Azure portal endpoints for other national clouds, see [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
-1. Nyissa meg a Microsoft Identity platform [Alkalmazásregisztrációk](https://aka.ms/ra/ff) lapját a fejlesztők számára.
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
-1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
-1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot** , és állítsa az értéket az alkalmazás URL-címére a webkiszolgáló alapján. A következő részekben megtudhatja, hogyan állíthatja be és kérheti le az átirányítási URL-címet a Visual Studióban és a csomópontban.
+1. If your account gives you access to more than one tenant, select your account in the upper-right corner, and set your portal session to the desired Azure AD tenant.
+1. Go to the [App registrations](https://aka.ms/ra/ff) page on the Microsoft identity platform for developers.
+1. When the **Register an application** page appears, enter a name for your application.
+1. Under **Supported account types**, select **Accounts in any organizational directory**.
+1. In the **Redirect URI** section, select the **Web** platform and set the value to the application's URL based on your web server. See the next sections for instructions on how to set and obtain the redirect URL in Visual Studio and Node.
 1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
-1. Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
-1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. On the app **Overview** page, note down the **Application (client) ID** value.
+1. This tutorial requires you to enable the [implicit grant flow](v2-oauth2-implicit-grant-flow.md). In the left pane of the registered application, select **Authentication**.
+1. In **Advanced settings**, under **Implicit grant**, select the **ID tokens** and **Access tokens** check boxes. ID tokens and access tokens are required because this app needs to sign in users and call an API.
 1. Kattintson a **Mentés** gombra.
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>2\. lépés:  Webkiszolgáló vagy projekt beállítása
+### <a name="step-2--set-up-your-web-server-or-project"></a>Step 2:  Set up your web server or project
 
-- [Töltse le a](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) helyi webkiszolgáló (például a csomópont) projektfájl-fájljait.
+- [Download the project files](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) for a local web server, such as Node.
 
-  or
+  vagy
 
-- [Töltse le a Visual Studio-projektet](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+- [Download the Visual Studio project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
-Ezután ugorjon a [JavaScript-Spa konfigurálásához](#step-4-configure-your-javascript-spa) a kód minta konfigurálásához a futtatása előtt.
+Then skip to [Configure your JavaScript SPA](#step-4-configure-your-javascript-spa) to configure the code sample before running it.
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>3\. lépés: A Microsoft hitelesítési függvénytárának használata a felhasználónak való bejelentkezéshez
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Step 3: Use the Microsoft Authentication Library to sign in the user
 
-Kövesse a [JavaScript oktatóanyag](tutorial-v2-javascript-spa.md#create-your-project) lépéseit a projekt létrehozásához és a MSAL-mel való integrálásához a felhasználónak való bejelentkezéshez.
+Follow steps in the [JavaScript tutorial](tutorial-v2-javascript-spa.md#create-your-project) to create your project and integrate with MSAL to sign in the user.
 
-### <a name="step-4-configure-your-javascript-spa"></a>4\. lépés: A JavaScript SPA konfigurálása
+### <a name="step-4-configure-your-javascript-spa"></a>Step 4: Configure your JavaScript SPA
 
-A Project beállítása során létrehozott fájlbanadjamegazalkalmazásregisztrációsadatait.`index.html` Adja hozzá a következő kódot a `<script></script>` címkén belül a `index.html` fájl törzsében:
+In the `index.html` file created during project setup, add the application registration information. Add the following code at the top within the `<script></script>` tags in the body of your `index.html` file:
 
 ```javascript
 const msalConfig = {
@@ -111,38 +115,37 @@ const graphConfig = {
 const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
-Ebben a kódban:
+In that code:
 
-- `Enter_the_Application_Id_here`az alkalmazás **(ügyfél) azonosítójának** értéke a regisztrált alkalmazáshoz.
-- `Enter_the_Tenant_Info_Here`az a következő lehetőségek egyikére van beállítva:
-    - Ha az alkalmazás támogatja a **szervezeti címtárban lévő fiókokat**, cserélje le ezt az értéket a BÉRLŐi azonosítóra vagy a bérlő nevére (például contoso.microsoft.com).
-    - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le `organizations`ezt az értéket a következőre:.
+- `Enter_the_Application_Id_here` is the **Application (client) ID** value for the application that you registered.
+- `Enter_the_Tenant_Info_Here` is set to one of the following options:
+    - If your application supports **Accounts in this organizational directory**, replace this value with the tenant ID or tenant name (for example, contoso.microsoft.com).
+    - If your application supports **Accounts in any organizational directory**, replace this value with `organizations`.
     
-    Az összes országos felhőhöz tartozó hitelesítési végpontok megkereséséhez tekintse meg az [Azure ad-hitelesítési végpontokat](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    To find authentication endpoints for all the national clouds, see [Azure AD authentication endpoints](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
     > [!NOTE]
-    > A személyes Microsoft-fiókok nem támogatottak az országos felhőkben.
+    > Personal Microsoft accounts are not supported in national clouds.
   
-- `graphEndpoint`a Microsoft Cloud az Egyesült Államok kormányának Microsoft Graph végpontja.
+- `graphEndpoint` is the Microsoft Graph endpoint for the Microsoft cloud for US government.
 
-   Az összes országos felhők Microsoft Graph végpontjának megkereséséhez lásd: [Microsoft Graph végpontok az országos felhőkben](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   To find Microsoft Graph endpoints for all the national clouds, see [Microsoft Graph endpoints in national clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="net"></a>.NET
 
-A MSAL.NET segítségével bejelentkezhet a felhasználókba, megvásárolhatja a jogkivonatokat, és meghívhatja a Microsoft Graph API-t az országos felhőkben.
+You can use MSAL.NET to sign in users, acquire tokens, and call the  Microsoft Graph API in national clouds.
 
-Az alábbi oktatóanyagok bemutatják, hogyan hozhat létre .NET Core 2,2 MVC-webalkalmazást. Az alkalmazás az OpenID Connect használatával írja be a felhasználókat munkahelyi és iskolai fiókkal egy olyan szervezetbe, amely egy nemzeti felhőhöz tartozik.
+The following tutorials demonstrate how to build a .NET Core 2.2 MVC Web app. The app uses OpenID Connect to sign in users with a work and school account in an organization that belongs to a national cloud.
 
-- A felhasználóknak való bejelentkezéshez és a jogkivonatok beszerzéséhez kövesse [ezt az oktatóanyagot](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
-- A Microsoft Graph API meghívásához kövesse [ezt az oktatóanyagot](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- To sign in users and acquire tokens, follow [this tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
+- To call the Microsoft Graph API, follow [this tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerhez
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerekre
 
-Az iOS és a macOS rendszerhez készült MSAL használhatók a jogkivonatok beszerzésére az országos felhőkben, `MSALPublicClientApplication`de a létrehozásakor további konfigurálásra is szükség van.
+MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
 
-Ha például azt szeretné, hogy az alkalmazása több-bérlős alkalmazás legyen egy nemzeti felhőben (itt az USA kormánya), akkor a következőket írhatja:
-
-Objective-C:
+For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -161,7 +164,11 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+
+For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -170,10 +177,21 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="javatabjava"></a>[Java](#tab/java)
 
-További információk az alábbiakról:
+To enable your MSAL for Java application for sovereign clouds, you must:
 
+- Register your application in a specific portal, depending on the cloud
+- Use a specific authority, depending on the cloud in the config file for your application
+- To call the Microsoft Graph API requires a specific Graph endpoint URL, depending on the cloud.
+
+---
+
+## <a name="next-steps"></a>Következő lépések
+
+További információk:
+
+- [Authentication in National Clouds](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Germany](https://docs.microsoft.com/azure/germany/)

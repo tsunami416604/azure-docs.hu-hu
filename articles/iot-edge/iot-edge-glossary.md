@@ -1,6 +1,6 @@
 ---
-title: Szószedet - az Azure IoT Edge |} A Microsoft Docs
-description: Alapelvei – az Azure IoT Edge kapcsolatos gyakori kifejezések.
+title: Glossary of terms - Azure IoT Edge | Microsoft Docs
+description: Concepts - a glossary of common terms relating to Azure IoT Edge.
 author: chrissie926
 manager: philmea
 ms.service: iot-edge
@@ -8,19 +8,18 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: menchi
-ms.custom: seodec18
-ms.openlocfilehash: f32af89f43f88840207dfc5ff2e49e4a21ea3b16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1db6f077a1482f25d8e342834bbd6958dbb971cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445067"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456624"
 ---
-# <a name="glossary-of-terms-for-azure-iot-edge"></a>Az Azure IoT Edge kifejezések jegyzéke
-Ez a cikk felsorolja az egyes az IoT Edge-cikkekben használt gyakori kifejezések.
+# <a name="glossary-of-terms-for-azure-iot-edge"></a>Glossary of terms for Azure IoT Edge
+This article lists some of the common terms used in the IoT Edge articles.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az IoT Hub-szószedet](../iot-hub/iot-hub-devguide-glossary.md)
+[IoT Hub glossary](../iot-hub/iot-hub-devguide-glossary.md)

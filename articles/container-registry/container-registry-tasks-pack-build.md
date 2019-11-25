@@ -1,45 +1,40 @@
 ---
-title: Azure Container Registry rendszerkép létrehozása alkalmazásból
-description: Az az ACR Pack Build paranccsal hozzon létre egy tároló-rendszerképet egy alkalmazásból, és leküldheti Azure Container Registryra anélkül, hogy Docker használ.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Build image with Cloud Native Buildpack
+description: Use the az acr pack build command to build a container image from an app and push to Azure Container Registry, without using a Dockerfile.
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: danlep
-ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965897"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456116"
 ---
-# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Rendszerkép létrehozása és elküldése egy Felhőbeli natív Buildpack használatával
+# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Build and push an image from an app using a Cloud Native Buildpack
 
-Az Azure CLI-parancs `az acr pack build` a [`pack`](https://github.com/buildpack/pack) CLI eszközt használja a [Buildpacks](https://buildpacks.io/)-ből, hogy létrehoz egy alkalmazást, és leküldi a rendszerképet egy Azure Container registrybe. Ez a funkció lehetővé teszi, hogy gyorsan hozzon létre egy tároló-rendszerképet a Node. js-, Java-és más nyelveken anélkül, hogy meg kellene adni egy Docker.
+The Azure CLI command `az acr pack build` uses the [`pack`](https://github.com/buildpack/pack) CLI tool, from [Buildpacks](https://buildpacks.io/), to build an app and push its image into an Azure container registry. This feature provides an option to quickly build a container image from your application source code in Node.js, Java, and other languages without having to define a Dockerfile.
 
-Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben szereplő példák futtatásához. Ha helyileg szeretné használni, a 2.0.70 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the examples in this article. If you'd like to use it locally, version 2.0.70 or later is required. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="use-the-build-command"></a>A Build parancs használata
+## <a name="use-the-build-command"></a>Use the build command
 
-Ha Felhőbeli natív Buildpacks szeretné felépíteni és leküldeni egy tároló-rendszerképet, futtassa az az [ACR Pack Build][az-acr-pack-build] parancsot. Míg az az [ACR Build][az-acr-build] parancs létrehoz egy képet egy Docker forrásról és egy kapcsolódó kódból, `az acr pack build` értékkel pedig közvetlenül az alkalmazás forrásának fáját kell megadnia.
+To build and push a container image using Cloud Native Buildpacks, run the [az acr pack build][az-acr-pack-build] command. Whereas the [az acr build][az-acr-build] command builds and pushes an image from a Dockerfile source and related code, with `az acr pack build` you specify an application source tree directly.
 
-A `az acr pack build` futtatásakor legalább a következőket kell megadnia:
+At a minimum, specify the following when you run `az acr pack build`:
 
-* Egy Azure Container Registry, amelyen futtatja a parancsot
-* Az eredményül kapott képhez tartozó rendszerkép neve és címkéje
-* Az ACR-feladatok egyik [támogatott környezeti helye](container-registry-tasks-overview.md#context-locations) , például egy helyi könyvtár, egy GitHub-tárház vagy egy távoli Fez
-* Az alkalmazáshoz megfelelő Buildpack Builder-rendszerkép neve. Azure Container Registry gyorsítótárazza a Builder-lemezképeket, például a `cloudfoundry/cnb:0.0.34-cflinuxfs3`t a gyorsabb buildekhez.  
+* An Azure container registry where you run the command
+* An image name and tag for the resulting image
+* One of the [supported context locations](container-registry-tasks-overview.md#context-locations) for ACR Tasks, such as a local directory, a GitHub repo, or a remote tarball
+* The name of a Buildpack builder image suitable for your application. Azure Container Registry caches builder images such as `cloudfoundry/cnb:0.0.34-cflinuxfs3` for faster builds.  
 
-a `az acr pack build` az ACR-feladatok egyéb funkcióit is támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatásához továbbított naplókat](container-registry-tasks-overview.md#view-task-logs) , amelyeket később is elmenthet.
+`az acr pack build` supports other features of ACR Tasks commands including [run variables](container-registry-tasks-reference-yaml.md#run-variables) and [task run logs](container-registry-tasks-overview.md#view-task-logs) that are streamed and also saved for later retrieval.
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Példa: Node. js-rendszerkép összeállítása Cloud Foundry Builder-sel
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Example: Build Node.js image with Cloud Foundry builder
 
-Az alábbi példa egy Node. js-alkalmazásból származó tároló-rendszerképet hoz létre az [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) tárházban a `cloudfoundry/cnb:0.0.34-cflinuxfs3` Builder használatával. A szerkesztőt Azure Container Registry gyorsítótárazza, így nincs szükség `--pull` paraméterre:
+The following example builds a container image from a Node.js app in the [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) repo, using the `cloudfoundry/cnb:0.0.34-cflinuxfs3` builder. This builder is cached by Azure Container Registry, so a `--pull` parameter isn't required:
 
 ```azurecli
 az acr pack build \
@@ -49,27 +44,27 @@ az acr pack build \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-Ez a példa a `node-app` képet hozza létre a `1.0` címkével, és leküldi azt a *myregistry* tároló-beállításjegyzékbe. Ebben a példában a célként megadott beállításjegyzék neve explicit módon előtagértéke a rendszerkép nevéhez. Ha nincs megadva, a rendszer automatikusan előtagértéke a beállításjegyzék bejelentkezési kiszolgálójának nevét.
+This example builds the `node-app` image with the `1.0` tag and pushes it to the *myregistry* container registry. In this example, the target registry name is explicitly prepended to the image name. If not specified, the registry login server name is automatically prepended to the image name.
 
-A parancs kimenete a rendszerkép felépítési és leküldéses állapotát mutatja. 
+Command output shows the progress of building and pushing the image. 
 
-A rendszerkép sikeres felépítése után a Docker használatával futtathatja, ha telepítve van. Először jelentkezzen be a beállításjegyzékbe:
+After the image is successfully built, you can run it with Docker, if you have it installed. First sign into your registry:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-A rendszerkép futtatása:
+Run the image:
 
 ```console
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-A mintául szolgáló webalkalmazás megtekintéséhez keresse meg `localhost:1337` értéket a kedvenc böngészőjében. A tároló leállításához nyomja meg az `[Ctrl]+[C]` gombot.
+Browse to `localhost:1337` in your favorite browser to see the sample web app. Press `[Ctrl]+[C]` to stop the container.
 
-## <a name="example-build-java-image-with-heroku-builder"></a>Példa: Java-rendszerkép létrehozása a Heroku Builder-vel
+## <a name="example-build-java-image-with-heroku-builder"></a>Example: Build Java image with Heroku builder
 
-Az alábbi példa létrehoz egy tároló rendszerképet a Java-alkalmazásból a [buildpack/Sample-Java-app](https://github.com/buildpack/sample-java-app) tárházban a `heroku/buildpacks:18` Builder használatával. A `--pull` paraméter azt adja meg, hogy a parancsnak le kell kérnie a legújabb Builder-lemezképet. 
+The following example builds a container image from the Java app in the [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) repo, using the `heroku/buildpacks:18` builder. The `--pull` parameter specifies that the command should pull the latest builder image. 
 
 ```azurecli
 az acr pack build \
@@ -79,30 +74,30 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-Ebben a példában a parancs futtatási azonosítójával létrehozta a `java-app` rendszerképet, és leküldi azt a *myregistry* tároló-beállításjegyzékbe.
+This example builds the `java-app` image tagged with the run ID of the command and pushes it to the *myregistry* container registry.
 
-A parancs kimenete a rendszerkép felépítési és leküldéses állapotát mutatja. 
+Command output shows the progress of building and pushing the image. 
 
-A rendszerkép sikeres felépítése után a Docker használatával futtathatja, ha telepítve van. Először jelentkezzen be a beállításjegyzékbe:
+After the image is successfully built, you can run it with Docker, if you have it installed. First sign into your registry:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Futtassa a rendszerképet, és cserélje le a képcímkét a *runid*:
+Run the image, substituting your image tag for *runid*:
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-A mintául szolgáló webalkalmazás megtekintéséhez keresse meg `localhost:8080` értéket a kedvenc böngészőjében. A tároló leállításához nyomja meg az `[Ctrl]+[C]` gombot.
+Browse to `localhost:8080` in your favorite browser to see the sample web app. Press `[Ctrl]+[C]` to stop the container.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután felépíti és leküldte a tároló lemezképét `az acr pack build` használatával, bármely rendszerképhez hasonlóan telepítheti a kívánt célra. Az Azure-beli üzembe helyezési lehetőségek közé tartozik a [app Service](../app-service/containers/tutorial-custom-docker-image.md) vagy az [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md)-ben való futtatás, egyebek között.
+After you build and push a container image with `az acr pack build`, you can deploy it like any image to a target of your choice. Azure deployment options include running it in [App Service](../app-service/containers/tutorial-custom-docker-image.md) or [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md), among others.
 
-Az ACR-feladatok funkcióival kapcsolatos további információkért lásd: [a tárolók rendszerképének automatizálása és karbantartása ACR-feladatokkal](container-registry-tasks-overview.md).
+For more information about ACR Tasks features, see [Automate container image builds and maintenance with ACR Tasks](container-registry-tasks-overview.md).
 
 
 <!-- LINKS - External -->

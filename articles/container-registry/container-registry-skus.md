@@ -1,45 +1,40 @@
 ---
-title: SKU Azure Container Registry
-description: Ismerje meg a Azure Container Registry alapszintű, standard és prémium szintű szolgáltatási szintjeinek funkcióit és korlátait.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Service tiers and SKUs
+description: Learn about the features and limits in the Basic, Standard, and Premium service tiers (SKUs) of Azure Container Registry.
 ms.topic: article
 ms.date: 11/05/2019
-ms.author: danlep
-ms.openlocfilehash: 19b1fb78413f82d422779b12227b4a5e2361d813
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681811"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456268"
 ---
-# <a name="azure-container-registry-skus"></a>SKU Azure Container Registry
+# <a name="azure-container-registry-skus"></a>Azure Container Registry SKUs
 
-Azure Container Registry (ACR) több szolgáltatási rétegben, azaz SKU-ban is elérhető. Ezek az SKU-elemek kiszámítható díjszabást és számos lehetőséget biztosítanak az Azure-beli privát Docker-beállításjegyzék kapacitása és használati mintáinak összehangolásához.
+Azure Container Registry (ACR) is available in multiple service tiers, known as SKUs. These SKUs provide predictable pricing and several options for aligning to the capacity and usage patterns of your private Docker registry in Azure.
 
-| SKU | Leírás |
+| SKU (Cikkszám) | Leírás |
 | --- | ----------- |
-| **Basic** | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Az alapszintű beállításjegyzékek ugyanazokkal a programozási képességekkel rendelkeznek, mint a standard és a prémium (például Azure Active Directory [Authentication Integration](container-registry-authentication.md#individual-login-with-azure-ad), a [képek törlése][container-registry-delete]és a [webhookok][container-registry-webhook]). A tartalmazott tárolási és képátviteli teljesítmény azonban a legmegfelelőbb az alacsonyabb használati forgatókönyvek esetében. |
-| **Standard** | A standard szintű beállításjegyzékek ugyanazokat a képességeket kínálnak, mint az alapszintű, a megnövekedett tárterület és a képátviteli teljesítmény. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
-| **Prémium** | A prémium szintű kibocsátásiegység-forgalmi jegyzékek biztosítják a legnagyobb mennyiségű foglalt tárterületet és az egyidejű műveleteket, ami lehetővé teszi a nagy mennyiségű forgatókönyvek A magasabb képátviteli teljesítmény mellett a Premium olyan funkciókat is tartalmaz, mint például a [geo-replikáció][container-registry-geo-replication] több régióban, a képcímkék aláírása, a [tűzfalak és a virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) [megbízhatósága](container-registry-content-trust.md) a beállításjegyzékhez való hozzáférés korlátozása. |
+| **Basic** | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Basic registries have the same programmatic capabilities as Standard and Premium (such as Azure Active Directory [authentication integration](container-registry-authentication.md#individual-login-with-azure-ad), [image deletion][container-registry-delete], and [webhooks][container-registry-webhook]). However, the included storage and image throughput are most appropriate for lower usage scenarios. |
+| **Standard** | Standard registries offer the same capabilities as Basic, with increased included storage and image throughput. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
+| **Prémium** | Premium registries provide the highest amount of included storage and concurrent operations, enabling high-volume scenarios. In addition to higher image throughput, Premium adds features such as [geo-replication][container-registry-geo-replication] for managing a single registry across multiple regions, [content trust](container-registry-content-trust.md) for image tag signing, [firewalls and virtual networks (preview)](container-registry-vnet.md) to restrict access to the registry. |
 
-Az alapszintű, a standard és a prémium SKU mind ugyanazt a programozási képességeket biztosítja. Emellett minden előnyt élveznek az Azure által teljes mértékben felügyelt [képtárolóból][container-registry-storage] . A magasabb szintű SKU kiválasztása nagyobb teljesítményt és méretezést biztosít. Több szolgáltatási szint esetén megkezdheti az alapszintű, majd a standard és a prémium szintű konverziót, ha a beállításjegyzék-használat növekszik.
+The Basic, Standard, and Premium SKUs all provide the same programmatic capabilities. They also all benefit from [image storage][container-registry-storage] managed entirely by Azure. Choosing a higher-level SKU provides more performance and scale. With multiple service tiers, you can get started with Basic, then convert to Standard and Premium as your registry usage increases.
 
-## <a name="sku-features-and-limits"></a>SKU-funkciók és-korlátok
+## <a name="sku-features-and-limits"></a>SKU features and limits
 
-Az alábbi táblázat az alapszintű, standard és prémium szintű szolgáltatási szintek funkcióit és korlátait részletezi.
+The following table details the features and limits of the Basic, Standard, and Premium service tiers.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>SKU-i módosítása
+## <a name="changing-skus"></a>Changing SKUs
 
-A beállításjegyzék SKU-jának módosításához használhatja az Azure CLI-t vagy a Azure Portal. Az SKU-ket szabadon áthelyezheti, ha a váltáshoz használt SKU a szükséges maximális tárolókapacitással rendelkezik. 
+You can change a registry's SKU with the Azure CLI or in the Azure portal. You can move freely between SKUs as long as the SKU you're switching to has the required maximum storage capacity. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
-Az SKU-nak az Azure CLI-ben való áthelyezéséhez használja az az [ACR Update][az-acr-update] parancsot. Ha például a prémium szintre szeretne váltani:
+To move between SKUs in the Azure CLI, use the [az acr update][az-acr-update] command. For example, to switch to Premium:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
@@ -47,25 +42,25 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal tároló beállításjegyzékének **Áttekintés** területén válassza a **frissítés**lehetőséget, majd válasszon ki egy új **SKU** -t az SKU legördülő menüből.
+In the container registry **Overview** in the Azure portal, select **Update**, then select a new **SKU** from the SKU drop-down.
 
-![Tároló beállításjegyzékbeli SKU frissítése Azure Portal][update-registry-sku]
+![Update container registry SKU in Azure portal][update-registry-sku]
 
 ## <a name="pricing"></a>Díjszabás
 
-Az egyes Azure Container Registry SKU-ra vonatkozó díjszabással kapcsolatban lásd: [Container Registry díjszabása][container-registry-pricing].
+For pricing information on each of the Azure Container Registry SKUs, see [Container Registry pricing][container-registry-pricing].
 
-Az adatforgalom díjszabásával kapcsolatos részletekért lásd: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/). 
+For details about pricing for data transfers, see [Bandwidth Pricing Details](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-**Azure Container Registry ütemterv**
+**Azure Container Registry Roadmap**
 
-Látogasson el az [ACR-ütemtervre][acr-roadmap] a githubon, ahol információt talál a szolgáltatás közelgő szolgáltatásairól.
+Visit the [ACR Roadmap][acr-roadmap] on GitHub to find information about upcoming features in the service.
 
 **Azure Container Registry UserVoice**
 
-Küldje el és szavazzon az [ACR UserVoice][container-registry-uservoice]új funkcióinak javaslataira.
+Submit and vote on new feature suggestions in [ACR UserVoice][container-registry-uservoice].
 
 <!-- IMAGES -->
 [update-registry-sku]: ./media/container-registry-skus/update-registry-sku.png

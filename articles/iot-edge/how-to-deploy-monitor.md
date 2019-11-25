@@ -1,6 +1,6 @@
 ---
-title: Az automatikus központi telepítés létrehozása az Azure portal – Azure IoT Edge |} A Microsoft Docs
-description: Eszközök automatikus csoportok az IoT Edge üzemelő példány létrehozása az Azure portal használatával
+title: Create automatic deployments from Azure portal - Azure IoT Edge | Microsoft Docs
+description: Use the Azure portal to create automatic deployments for groups of IoT Edge devices
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,23 +9,22 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 286bab7b7fdbe42190c32dabb42c59d6fc094b2a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540902"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457367"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezés és monitorozás az Azure portal használatával nagy mennyiségű IoT Edge-modulok
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Deploy and monitor IoT Edge modules at scale using the Azure portal
 
-Hozzon létre egy **IoT Edge automatikus központi telepítési** sok eszköz a folyamatban lévő központi telepítések felügyeletéhez szükséges egyszerre az Azure Portalon. Az IoT Edge-hez az automatikus központi telepítések részét képezik a [automatikus kezelés](/azure/iot-hub/iot-hub-automatic-device-management) az IoT Hub szolgáltatást. Központi telepítések dinamikus folyamatokat, amelyek lehetővé teszik több eszközökre telepíti központilag a több modul, nyomon követheti az állapotát és a modulok állapotát, és szükség esetén módosítható. 
+Create an **IoT Edge automatic deployment** in the Azure portal to manage ongoing deployments for many devices at once. Automatic deployments for IoT Edge are part of the [automatic device management](/azure/iot-hub/iot-hub-automatic-device-management) feature of IoT Hub. Deployments are dynamic processes that enable you to deploy multiple modules to multiple devices, track the status and health of the modules, and make changes when necessary. 
 
-További információkért lásd: [automatikus telepítések megismerheti az IoT Edge egy eszközök vagy ipari méretekben](module-deployment-monitoring.md).
+For more information, see [Understand IoT Edge automatic deployments for single devices or at scale](module-deployment-monitoring.md).
 
-## <a name="identify-devices-using-tags"></a>Címkék használatával eszközök azonosítása
+## <a name="identify-devices-using-tags"></a>Identify devices using tags
 
-Központi telepítés létrehozásához, akkor megadhatja, mely eszközöket szeretné befolyásolni. Az Azure IoT Edge használatával eszközök azonosítja **címkék** az ikereszközben. Minden eszköz rendelkezhet, amelyeket bármilyen módon, amely logikus a megoldás több címkét. Például ha Ön kezeli a telephelyi intelligens épületek, előfordulhat, hogy hozzá a következő címkék eszköz:
+Before you can create a deployment, you have to be able to specify which devices you want to affect. Azure IoT Edge identifies devices using **tags** in the device twin. Each device can have multiple tags that you define in any way that makes sense for your solution. For example, if you manage a campus of smart buildings, you might add the following tags to a device:
 
 ```json
 "tags":{
@@ -38,71 +37,71 @@ Központi telepítés létrehozásához, akkor megadhatja, mely eszközöket sze
 }
 ```
 
-Ikereszközök és címkékkel kapcsolatos további információkért lásd: [ikereszközök megismerése és használata az IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+For more information about device twins and tags, see [Understand and use device twins in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
-## <a name="create-a-deployment"></a>Központi telepítés létrehozása
+## <a name="create-a-deployment"></a>Create a deployment
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
-1. Válassza ki **IoT Edge**.
-1. Válassza ki **üzemelő IoT Edge-példány hozzáadása**.
+1. In the [Azure portal](https://portal.azure.com), go to your IoT hub. 
+1. Select **IoT Edge**.
+1. Select **Add IoT Edge Deployment**.
 
-Vannak egy központi telepítést hozhat létre öt lépést. A következő szakaszok egyenként végig. 
+There are five steps to create a deployment. The following sections walk through each one. 
 
-### <a name="step-1-name-and-label"></a>1\. lépés: Név és címke
+### <a name="step-1-name-and-label"></a>Step 1: Name and Label
 
-1. Adjon meg egy egyedi nevet, amely legfeljebb 128 kisbetűk használata a központi telepítés. Kerülje a tárolóhelyek és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
-1. Címkék, kulcs-érték párok nyomon követéséhez az üzemelő példányok is hozzáadhat. Például **HostPlatform** és **Linux**, vagy **verzió** és **3.0.1-es**.
-1. Válassza ki **tovább** áthelyezése két lépést. 
+1. Give your deployment a unique name that is up to 128 lowercase letters. Avoid spaces and the following invalid characters: `& ^ [ ] { } \ | " < > /`.
+1. You can add labels as key-value pairs to help track your deployments. For example, **HostPlatform** and **Linux**, or **Version** and **3.0.1**.
+1. Select **Next** to move to step two. 
 
-### <a name="step-2-add-modules-optional"></a>2\. lépés: (Nem kötelező) modulok hozzáadása
+### <a name="step-2-add-modules-optional"></a>Step 2: Add Modules (optional)
 
-Központi telepítés legfeljebb 20 modulok is hozzáadhat. 
+You can add up to 20 modules to a deployment. 
 
-Modulok nélküli egy központi telepítést hoz létre, ha bármely aktuális modulok eltávolítása a Céleszközök. 
+If you create a deployment with no modules, it removes any current modules from the target devices. 
 
-Az Azure Stream Analytics modul hozzáadásához kövesse az alábbi lépéseket:
+To add a module from Azure Stream Analytics, follow these steps:
 
-1. Az a **üzembe helyezési modulok** szakaszban kattintson az oldal **Hozzáadás**.
-1. Válassza ki **Azure Stream Analytics modul**.
-1. Válassza ki a **előfizetés** a legördülő menüből.
-1. Válassza ki az IoT **Edge-feladat** a legördülő menüből.
-1. Válassza ki **mentése** a modul hozzáadása a központi telepítést. 
+1. In the **Deployment Modules** section of the page, click **Add**.
+1. Select **Azure Stream Analytics module**.
+1. Choose your **Subscription** from the drop-down menu.
+1. Choose your IoT **Edge job** from the drop-down menu.
+1. Select **Save** to add your module to the deployment. 
 
-Egyéni kód hozzáadása modulként, vagy manuálisan adja hozzá az Azure-szolgáltatások modul, kövesse az alábbi lépéseket:
+To add custom code as a module, or to manually add an Azure service module, follow these steps:
 
-1. Az a **tároló-beállításjegyzékek beállításai** szakasz az oldal, adja meg a neveket és a hitelesítő adatok bármelyik privát tárolójegyzékek, amelyek tartalmazzák a modul képek az üzembe helyezés. Ha a container registry hitelesítő adat nem található a Docker-rendszerkép 500-as hiba jelentést küld az IoT Edge-ügynök.
-1. Az a **üzembe helyezési modulok** szakaszban kattintson az oldal **Hozzáadás**.
-1. Válassza ki **IoT Edge-modul**.
-1. A modul adjon egy **neve**.
-1. Az a **rendszerkép URI** mezőben adja meg a tároló rendszerképét a modul. 
-1. Bármely **tároló létrehozása beállítások** , amely a tárolóhoz kell átadni. További információkért lásd: [docker létrehozása](https://docs.docker.com/engine/reference/commandline/create/).
-1. Válassza ki a legördülő menü használatával egy **újraindítási házirend**. Az alábbi lehetőségek közül választhat: 
-   * **Mindig** – a modul mindig újraindul, ha valamilyen okból vannak leáll.
-   * **Soha ne** – a modul soha nem indul újra, ha valamilyen okból vannak leáll.
-   * **sikertelenség** – a modul újraindítása, ha azt összeomlik, de nem Ha, szabályszerűen álljon le. 
-   * **A sérült** – a modul újraindul, ha összeomlik, vagy egy nem megfelelő állapotot ad vissza. Szolgáltatás minden modulnak a health állapot függvény végrehajtásához. 
-1. A legördülő menü segítségével válassza ki a **kívánt állapot** modul. Az alábbi lehetőségek közül választhat:
-   * **futó** -futó lesz az alapértelmezett beállítás. A modul futtatása után azonnal parancsfájlműveletekkel elindul.
-   * **Leállítva** -után üzembe helyezéséhez, a modul tétlen mindaddig, amíg Ön vagy egy másik modul első lépésként alapján kell marad.
-1. Válassza ki **Set ikermodul kívánt tulajdonságai** , ha a címkék vagy egyéb tulajdonságok hozzáadása az ikermodul kívánt.
-1. Adja meg **környezeti változók** a modulhoz. A környezeti változók modul konfigurációs információt tartalmaznak.
-1. Válassza ki **mentése** a modul hozzáadása a központi telepítést. 
+1. In the **Container Registry Settings** section of the page, provide the names and credentials for any private container registries that contain the module images for this deployment. The IoT Edge Agent will report error 500 if it can't find the container registry credential for a Docker image.
+1. In the **Deployment Modules** section of the page, click **Add**.
+1. Select **IoT Edge Module**.
+1. Give your module a **Name**.
+1. For the **Image URI** field, enter the container image for your module. 
+1. Specify any **Container Create Options** that should be passed to the container. For more information, see [docker create](https://docs.docker.com/engine/reference/commandline/create/).
+1. Use the drop-down menu to select a **Restart policy**. Choose from the following options: 
+   * **Always** - The module always restarts if it shuts down for any reason.
+   * **never** - The module never restarts if it shuts down for any reason.
+   * **on-failure** - The module restarts if it crashes, but not if it shuts down cleanly. 
+   * **on-unhealthy** - The module restarts if it crashes or returns an unhealthy status. It's up to each module to implement the health status function. 
+1. Use the drop-down menu to select the **Desired Status** for the module. Choose from the following options:
+   * **running** - Running is the default option. The module will start running immediately after being deployed.
+   * **stopped** - After being deployed, the module will remain idle until called upon to start by you or another module.
+1. Select **Set module twin's desired properties** if you want to add tags or other properties to the module twin.
+1. Enter **Environment Variables** for this module. Environment variables provide configuration information to a module.
+1. Select **Save** to add your module to the deployment. 
 
-Ha már konfigurált összes modult, válassza ki a **tovább** szeretne váltani a harmadik lépése.
+Once you have all the modules for a deployment configured, select **Next** to move to step three.
 
-### <a name="step-3-specify-routes-optional"></a>3\. lépés: Adja meg az útvonalakat (nem kötelező)
+### <a name="step-3-specify-routes-optional"></a>Step 3: Specify Routes (optional)
 
-Útvonalak megadása, hogyan modulok kommunikálnak egymással egy telepítésben található. A varázsló lehetővé teszi, hogy alapértelmezés szerint egy útvonal neve **útvonal** és meghatározott, *FROM /be felső $* \*, ami azt jelenti, kimenetét kapcsolt modulok üzeneteket az IoT hubnak küldött.  
+Routes define how modules communicate with each other within a deployment. By default the wizard gives you a route called **route** and defined as **FROM /* INTO $upstream**, which means that any messages output by any modules are sent to your IoT hub.  
 
-Hozzáadása vagy frissítése az útvonalak származó adatokkal [útvonalak deklarálja](module-composition.md#declare-routes), majd **tovább** továbbra is a felülvizsgálati szakaszban.
+Add or update the routes with information from [Declare routes](module-composition.md#declare-routes), then select **Next** to continue to the review section.
 
-### <a name="step-4-specify-metrics-optional"></a>4\. lépés: Adja meg a metrikák (nem kötelező)
+### <a name="step-4-specify-metrics-optional"></a>Step 4: Specify Metrics (optional)
 
-Metrikák adja meg az eszköz lehet, hogy jelentéseket küldhetnek vissza alkalmazása konfigurációjának tartalma eredményeként állapotait összesítő számát.
+Metrics provide summary counts of the various states that a device may report back as a result of applying configuration content.
 
-1. Adjon meg egy nevet **metrika neve**.
+1. Enter a name for **Metric Name**.
 
-1. Adjon meg egy lekérdezést a **metrika feltételek**. A lekérdezés alapul IoT Edge hubot ikermodul [jelentett tulajdonságokként](module-edgeagent-edgehub.md#edgehub-reported-properties). A metrika a lekérdezés által visszaadott sorok számát jelöli.
+1. Enter a query for **Metric Criteria**. The query is based on IoT Edge hub module twin [reported properties](module-edgeagent-edgehub.md#edgehub-reported-properties). The metric represents the number of rows returned by the query.
 
    Példa:
 
@@ -111,105 +110,105 @@ Metrikák adja meg az eszköz lehet, hogy jelentéseket küldhetnek vissza alkal
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
-### <a name="step-5-target-devices"></a>5\. lépés: Céleszközök
+### <a name="step-5-target-devices"></a>Step 5: Target Devices
 
-Az eszközökről a tags tulajdonság használatával a kívánt eszközök, amelyek megkapják a központi telepítés céljaként. 
+Use the tags property from your devices to target the specific devices that should receive this deployment. 
 
-Több központi telepítést megcélozhatnak ugyanarra az eszközre, mivel egy prioritást minden egyes üzembe helyezési kell adnia. Minden eddiginél van ütközés, ha a központi telepítés (nagyobb értékek azt jelzik, magasabb prioritású) a legmagasabb prioritású wins. Ha két üzembe helyezés azonos prioritású számot, azt, amelyik a legtöbb készült nemrégiben wins. 
+Since multiple deployments may target the same device, you should give each deployment a priority number. If there's ever a conflict, the deployment with the highest priority (larger values indicate higher priority) wins. If two deployments have the same priority number, the one that was created most recently wins. 
 
-1. Adja meg egy pozitív egész számot a központi telepítés **prioritású**.
-1. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
-1. Válassza ki **tovább** , továbbléphet az utolsó lépés.
+1. Enter a positive integer for the deployment **Priority**.
+1. Enter a **Target condition** to determine which devices will be targeted with this deployment. The condition is based on device twin tags or device twin reported properties and should match the expression format. For example, `tags.environment='test'` or `properties.reported.devicemodel='4000x'`. 
+1. Select **Next** to move on to the final step.
 
-### <a name="step-6-review-deployment"></a>6\. lépés: Tekintse át a központi telepítés
+### <a name="step-6-review-deployment"></a>Step 6: Review Deployment
 
-Tekintse át a telepítési adatokat, majd válassza a **küldés**.
+Review your deployment information, then select **Submit**.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketplace-ről modulok telepítése
+## <a name="deploy-modules-from-azure-marketplace"></a>Deploy modules from Azure Marketplace
 
-Az Azure Marketplace-en, tallózhat a vállalati alkalmazások és megoldások, hitelesített és optimalizált futtatásához az Azure-ban számos online alkalmazások és szolgáltatások piactérről köztük [IoT Edge-modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Az Azure Marketplace-en is elérhető az Azure Portalon a **erőforrás létrehozása**.
+Azure Marketplace is an online applications and services marketplace where you can browse through a wide range of enterprise applications and solutions that are certified and optimized to run on Azure, including [IoT Edge modules](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Marketplace can also be accessed through the Azure portal under **Create a Resource**.
 
-Az IoT Edge-modul az Azure Marketplace-en vagy az Azure Portalon helyezheti üzembe:
+You can deploy an IoT Edge module from either Azure Marketplace or the Azure portal:
 
-1. Keresse meg a modult, és a telepítési folyamat.
+1. Find a module and begin the deployment process.
 
-   * Az Azure Portalon: Egy modul megkeresése és kiválasztása **létrehozás**.
+   * Azure portal: Find a module and select **Create**.
 
-   * Az Azure Marketplace-en:
+   * Azure Marketplace:
 
-     1. Egy modul megkeresése és kiválasztása **Letöltés most**.
-     1. Tudomásul veszi a szolgáltató használati feltételei és adatvédelmi szabályzat kiválasztásával **Folytatás**.
+     1. Find a module and select **Get it now**.
+     1. Acknowledge the provider's terms of use and privacy policy by selecting **Continue**.
 
-1. Válassza ki az előfizetés és az IoT Hub, az eszköznek, amelyhez csatlakozik.
+1. Choose your subscription and the IoT Hub to which the target device is attached.
 
-1. Válasszon **üzembe helyezés**.
+1. Choose **Deploy at Scale**.
 
-1. Döntse el, hogy a modul hozzáadása egy új központi telepítést, vagy egy meglévő központi telepítése; klónja Ha a klónozás, válassza ki a listából a meglévő üzemelő példányt.
+1. Choose whether to add the module to a new deployment or to a clone of an existing deployment; if cloning, select the existing deployment from the list.
 
-1. Válassza ki **létrehozás** folytatja a központi telepítés ipari méretekben történő létrehozásának folyamatán. Fogja tudni adja meg azonos módon környezethez.
+1. Select **Create** to continue the process of creating a deployment at scale. You'll be able to specify the same details as you would for any deployment.
 
-## <a name="monitor-a-deployment"></a>Egy központi telepítésének figyelése
+## <a name="monitor-a-deployment"></a>Monitor a deployment
 
-A központi telepítés a részletek megtekintéséhez és az azt futtató eszközök figyelését, kövesse az alábbi lépéseket:
+To view the details of a deployment and monitor the devices running it, use the following steps:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
-1. Válassza ki **IoT Edge**.
-1. Válassza ki **IoT Edge-telepítések**. 
+1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
+1. Select **IoT Edge**.
+1. Select **IoT Edge deployments**. 
 
-   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Vizsgálja meg a központi telepítés listában. Minden egyes üzemelő példányhoz a következő adatokat tekintheti meg:
-   * **ID** – a központi telepítés nevét.
-   * **A feltétel cél** – a címke segítségével határozhatók meg a megcélzott eszközökön.
-   * **Prioritás** – a prioritást az üzemelő példányhoz társítva.
-   * **Rendszermérőszámokat** - **célzott** ikereszközök számát adja meg, amely a célcsoport-kezelési feltételnek megfelelő IoT hub és **alkalmazott** rendelkező eszközök számát adja meg a telepítési tartalom alkalmazza kellett az ikermodulokkal az IoT hubon. 
-   * **Eszközmetrikák** – a központi telepítés reporting sikeres, vagy hibákat az IoT Edge-ügyfél futtatókörnyezet az IoT Edge-eszközök számát.
-   * **Egyéni metrikák** – bármely mérőszámadatok, amelyet a központi telepítés megadott reporting az üzemelő IoT Edge-eszközök számát.
-   * **Létrehozás ideje** – a központi telepítés létrehozásakor időbélyege. Az időbélyegző ties megszüntetése, ha a két üzembe helyezés azonos prioritású szolgál. 
-1. Válassza ki a figyelni kívánt telepítést.  
-1. Vizsgálja meg az üzembe helyezés részleteiről. Lapok segítségével ellenőrizze az üzemelő példány részleteit.
+1. Inspect the deployment list. For each deployment, you can view the following details:
+   * **ID** - the name of the deployment.
+   * **Target condition** - the tag used to define targeted devices.
+   * **Priority** - the priority number assigned to the deployment.
+   * **System metrics** - **Targeted** specifies the number of device twins in IoT Hub that match the targeting condition, and **Applied** specifies the number of devices that have had the deployment content applied to their module twins in IoT Hub. 
+   * **Device metrics** - the number of IoT Edge devices in the deployment reporting success or errors from the IoT Edge client runtime.
+   * **Custom metrics** - the number of IoT Edge devices in the deployment reporting data for any metrics that you defined for the deployment.
+   * **Creation time** - the timestamp from when the deployment was created. This timestamp is used to break ties when two deployments have the same priority. 
+1. Select the deployment that you want to monitor.  
+1. Inspect the deployment details. You can use tabs to review the details of the deployment.
 
-## <a name="modify-a-deployment"></a>Központi telepítés módosítása
+## <a name="modify-a-deployment"></a>Modify a deployment
 
-Amikor módosít egy központi telepítést, a módosítások azonnal replikálja az összes megcélzott eszközre. 
+When you modify a deployment, the changes immediately replicate to all targeted devices. 
 
-A célfeltétel frissít, ha elő a következő frissítéseket:
+If you update the target condition, the following updates occur:
 
-* Ha egy eszköz nem felelt meg a régi célfeltétel, de az új célfeltétel megfelel, és a központi telepítés rendszer a legmagasabb prioritású az eszközön, a központi telepítéshez az eszköz van alkalmazva. 
-* Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célfeltétel, eltávolítja a központi telepítés és veszi fel a következő legmagasabb prioritású üzembe helyezés. 
-* Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célként megadott feltétel, és nem felel meg a célfeltétel más központi telepítések, majd nincs változás történik az eszközön. Az eszköz addig a jelenlegi modulok fut, a jelenlegi állapotuk, de nem felügyelt már a központi telepítés részeként. Megfelel a célfeltétel, bármely más konfigurációért, miután eltávolítja a központi telepítés, és az új kiszolgálón vesz igénybe. 
+* If a device didn't meet the old target condition, but meets the new target condition and this deployment is the highest priority for that device, then this deployment is applied to the device. 
+* If a device currently running this deployment no longer meets the target condition, it uninstalls this deployment and takes on the next highest priority deployment. 
+* If a device currently running this deployment no longer meets the target condition and doesn't meet the target condition of any other deployments, then no change occurs on the device. The device continues running its current modules in their current state, but is not managed as part of this deployment anymore. Once it meets the target condition of any other deployment, it uninstalls this deployment and takes on the new one. 
 
-Központi telepítés módosításához használja az alábbi lépéseket: 
+To modify a deployment, use the following steps: 
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
-1. Válassza ki **IoT Edge**.
-1. Válassza ki **IoT Edge-telepítések**. 
+1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
+1. Select **IoT Edge**.
+1. Select **IoT Edge deployments**. 
 
-   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Válassza ki a telepítést, amelyet módosítani szeretne. 
-1. Hajtsa végre a frissítéseket a következő mezőket: 
-   * Célfeltétel
-   * Metrika -, módosíthatják vagy törölhetik metrikák meghatározta, vagy újakat vehet fel.
+1. Select the deployment that you want to modify. 
+1. Make updates to the following fields: 
+   * Target condition
+   * Metrics - you can modify or delete metrics you've defined, or add new ones.
    * Címkék
    * Prioritás
 1. Kattintson a **Mentés** gombra.
-1. Kövesse a [központi telepítésének figyeléséről](#monitor-a-deployment) megkezdik a módosítások megtekintéséhez. 
+1. Follow the steps in [Monitor a deployment](#monitor-a-deployment) to watch the changes roll out. 
 
-## <a name="delete-a-deployment"></a>Üzemelő példányának törlése
+## <a name="delete-a-deployment"></a>Delete a deployment
 
-Ha töröl egy központi telepítést, a következő legmagasabb prioritású üzembe helyezés az egyik eszközön sem igénybe vehet. Ha az eszközök nem felelnek meg a célfeltétel, bármely más konfigurációért, majd a modulok nem lesznek eltávolítva az üzemelő példány törlése. 
+When you delete a deployment, any devices take on their next highest priority deployment. If your devices don't meet the target condition of any other deployment, then the modules are not removed when the deployment is deleted. 
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
-1. Válassza ki **IoT Edge**.
-1. Válassza ki **IoT Edge-telepítések**. 
+1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
+1. Select **IoT Edge**.
+1. Select **IoT Edge deployments**. 
 
-   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. A jelölőnégyzet segítségével válassza ki a törölni kívánt központi telepítés. 
+1. Use the checkbox to select the deployment that you want to delete. 
 1. Válassza a **Törlés** elemet.
-1. Kérdés megtudhatja, hogy, hogy ez a művelet törli a központi telepítés és minden eszköz korábbi állapotára visszaállítani.  Ez azt jelenti, hogy egy alacsonyabb prioritású üzembe helyezés során vonatkoznak.  Ha nincs másik üzemelő példány vonatkozik, nem modulok távolítja el. Ha el kívánja távolítani az összes modult az eszközről, nulla modulok egy központi telepítés létrehozásához, és telepítheti az ugyanazokkal az eszközökkel. Válassza ki **Igen** folytatásához. 
+1. A prompt will inform you that this action will delete this deployment and revert to the previous state for all devices.  This means that a deployment with a lower priority will apply.  If no other deployment is targeted, no modules will be removed. If you want to remove all modules from your device, create a deployment with zero modules and deploy it to the same devices. Select **Yes** to continue. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tudjon meg többet [IoT Edge-eszközökön való üzembe helyezés a modulok](module-deployment-monitoring.md).
+Learn more about [Deploying modules to IoT Edge devices](module-deployment-monitoring.md).

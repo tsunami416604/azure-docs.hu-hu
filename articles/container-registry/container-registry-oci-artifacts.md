@@ -1,55 +1,52 @@
 ---
-title: OCI-összetevők leküldése a privát Azure Container registrybe
-description: A nyílt Container Initiative (OCI) összetevők leküldése és lekérése az Azure-beli privát tároló-beállításjegyzék használatával
-services: container-registry
+title: Push and pull OCI artifact
+description: Push and pull Open Container Initiative (OCI) artifacts using a private container registry in Azure
 author: SteveLasker
 manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: stevelas
-ms.custom: ''
-ms.openlocfilehash: 69423f85aecdc3f8049a7e784888e1f71d0bc702
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182705"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456257"
 ---
-# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával
+# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Push and pull an OCI artifact using an Azure container registry
 
-Az [Open Container Initiative (OCI)](container-registry-image-formats.md#oci-artifacts) összetevőinek, valamint a Docker és a Docker-kompatibilis tároló lemezképének tárolására és kezelésére használhat Azure Container registryt.
+You can use an Azure container registry to store and manage [Open Container Initiative (OCI) artifacts](container-registry-image-formats.md#oci-artifacts) as well as Docker and Docker-compatible container images.
 
-A funkció bemutatásához ez a cikk bemutatja, hogyan használhatja a [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) eszközt egy minta-összetevő leküldésére – egy szövegfájlt az Azure Container registrybe. Ezután húzza le az összetevőt a beállításjegyzékből. Az Azure Container registryben számos különböző OCI-összetevőt kezelhet az egyes összetevőknek megfelelő parancssori eszközök használatával.
+To demonstrate this capability, this article shows how to use the [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) tool to push a sample artifact -  a text file - to an Azure container registry. Then, pull the artifact from the registry. You can manage a variety of OCI artifacts in an Azure container registry using different command-line tools appropriate to each artifact.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t.
-* **ORAS eszköz** – letöltheti és telepítheti az operációs rendszerének aktuális ORAS-kiadását a [GitHub](https://github.com/deislabs/oras/releases)-tárházból. Az eszköz tömörített csomagként (`.tar.gz` fájlként) van közzétéve. Bontsa ki és telepítse a fájlt az operációs rendszerének megfelelő általános eljárások használatával.
-* **Azure Active Directory egyszerű szolgáltatás (nem kötelező)** – a ORAS való közvetlen hitelesítéshez hozzon létre egy [egyszerű szolgáltatásnevet](container-registry-auth-service-principal.md) a beállításjegyzék eléréséhez. Győződjön meg arról, hogy a szolgáltatásnév hozzá van rendelve egy olyan szerepkörhöz, mint például a AcrPush, hogy rendelkezik az összetevők leküldéséhez és lekéréséhez szükséges engedélyekkel.
-* **Azure CLI (opcionális)** – ha egyéni identitást szeretne használni, az Azure CLI helyi telepítésére van szükség. A 2.0.71 vagy újabb verzió használata javasolt. A `az --version `verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
-* **Docker (nem kötelező)** – ha egyéni identitást szeretne használni, akkor a Docker-t helyileg kell telepíteni a beállításjegyzékben való hitelesítéshez. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
+* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
+* **ORAS tool** - Download and install a current ORAS release for your operating system from the [GitHub repo](https://github.com/deislabs/oras/releases). The tool is released as a compressed tarball (`.tar.gz` file). Extract and install the file using standard procedures for your operating system.
+* **Azure Active Directory service principal (optional)** - To authenticate directly with ORAS, create a [service principal](container-registry-auth-service-principal.md) to access your registry. Ensure that the service principal is assigned a role such as AcrPush so that it has permissions to push and pull artifacts.
+* **Azure CLI (optional)** - To use an individual identity, you need a local installation of the Azure CLI. Version 2.0.71 or later is recommended. Run `az --version `to find the version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+* **Docker (optional)** - To use an individual identity, you must also have Docker installed locally, to authenticate with the registry. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
 
 
-## <a name="sign-in-to-a-registry"></a>Bejelentkezés egy beállításjegyzékbe
+## <a name="sign-in-to-a-registry"></a>Sign in to a registry
 
-Ez a szakasz két javasolt munkafolyamatot mutat be a beállításjegyzékbe való bejelentkezéshez a használt identitástól függően. Válassza ki a környezetének megfelelő módszert.
+This section shows two suggested workflows to sign into the registry, depending on the identity used. Choose the method appropriate for your environment.
 
-### <a name="sign-in-with-oras"></a>Bejelentkezés a ORAS
+### <a name="sign-in-with-oras"></a>Sign in with ORAS
 
-Ha leküldéses jogokkal rendelkező [szolgáltatást](container-registry-auth-service-principal.md) használ, futtassa `oras login` a parancsot, és jelentkezzen be a beállításjegyzékbe a szolgáltatás egyszerű alkalmazás-azonosítója és jelszava használatával. Adja meg a teljes beállításjegyzékbeli nevet (az összes kisbetűs), ebben az esetben a *myregistry.azurecr.IO*. A szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID`, a változóban `$SP_PASSWD`pedig a jelszót adja át.
+Using a [service principal](container-registry-auth-service-principal.md) with push rights, run the `oras login` command to sign in to the registry using the service principal application ID and password. Specify the fully qualified registry name (all lowercase), in this case *myregistry.azurecr.io*. The service principal application ID is passed in the environment variable `$SP_APP_ID`, and the password in the variable `$SP_PASSWD`.
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-A jelszó stdin-ből való olvasásához használja `--password-stdin`a következőt:.
+To read the password from Stdin, use `--password-stdin`.
 
 ### <a name="sign-in-with-azure-cli"></a>Bejelentkezés az Azure CLI használatával
 
-[Jelentkezzen](/cli/azure/authenticate-azure-cli) be az Azure CLI-be a személyazonosságával, hogy lekérje és lekérje az összetevők beküldését a tároló-beállításjegyzékből.
+[Sign in](/cli/azure/authenticate-azure-cli) to the Azure CLI with your identity to push and pull artifacts from the container registry.
 
-Ezután használja az Azure CLI-parancsot az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) használatával a beállításjegyzék eléréséhez. Például egy *myregistry*nevű beállításjegyzékbeli hitelesítéshez:
+Then, use the Azure CLI command [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) to access the registry. For example, to authenticate to a registry named *myregistry*:
 
 ```azurecli
 az login
@@ -57,17 +54,17 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`a a Docker-ügyfél használatával állít be Azure Active Directory tokent `docker.config` a fájlban. Az egyéni hitelesítési folyamat befejezéséhez telepíteni kell a Docker-ügyfelet, és futnia kell rajta.
+> `az acr login` uses the Docker client to set an Azure Active Directory token in the `docker.config` file. The Docker client must be installed and running to complete the individual authentication flow.
 
-## <a name="push-an-artifact"></a>Összetevő leküldése
+## <a name="push-an-artifact"></a>Push an artifact
 
-Hozzon létre egy szövegfájlt egy helyi munkakönyvtárban egy adott mintaszöveg alapján. Például egy bash-rendszerhéjban:
+Create a text file in a local working working directory with some sample text. For example, in a bash shell:
 
 ```bash
 echo "Here is an artifact!" > artifact.txt
 ```
 
-A `oras push` paranccsal küldje el a szövegfájlt a beállításjegyzékbe. A következő példa leküldi a minta szöveges fájlt a `samples/artifact` tárházba. A beállításjegyzéket a rendszer a teljesen minősített *myregistry.azurecr.IO* (az összes kisbetűs) azonosítja. Az összetevő címkézve `1.0`van. Az összetevő alapértelmezés szerint nem definiált típust tartalmaz, amelyet a rendszer az *adathordozó Type* karakterlánca azonosít a `artifact.txt`fájlnév után. További típusok: [OCI](https://github.com/opencontainers/artifacts) -összetevők. 
+Use the `oras push` command to push this text file to your registry. The following example pushes the sample text file to the `samples/artifact` repo. The registry is identified with the fully qualified registry name *myregistry.azurecr.io* (all lowercase). The artifact is tagged `1.0`. The artifact has an undefined type, by default, identified by the *media type* string following the filename `artifact.txt`. See [OCI Artifacts](https://github.com/opencontainers/artifacts) for additional types. 
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -75,7 +72,7 @@ oras push myregistry.azurecr.io/samples/artifact:1.0 \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
-A sikeres leküldések kimenete a következőhöz hasonló:
+Output for a successful push is similar to the following:
 
 ```console
 Uploading 33998889555f artifact.txt
@@ -83,7 +80,7 @@ Pushed myregistry.azurecr.io/samples/artifact:1.0
 Digest: sha256:xxxxxxbc912ef63e69136f05f1078dbf8d00960a79ee73c210eb2a5f65xxxxxx
 ```
 
-Ha az Azure CLI-t használja a beállításjegyzékben található összetevők kezelésére, futtassa a standard `az acr` parancsokat a lemezképek kezeléséhez. Az összetevő attribútumait például az az [ACR adattár show][az-acr-repository-show] paranccsal szerezheti be:
+To manage artifacts in your registry, if you are using the Azure CLI, run standard `az acr` commands for managing images. For example, get the attributes of the artifact using the [az acr repository show][az-acr-repository-show] command:
 
 ```azurecli
 az acr repository show \
@@ -109,33 +106,33 @@ A kimenet a következőkhöz hasonló:
 }
 ```
 
-## <a name="pull-an-artifact"></a>Összetevő lekérése
+## <a name="pull-an-artifact"></a>Pull an artifact
 
-Futtassa a `oras pull` parancsot az összetevő beállításjegyzékből való lekéréséhez.
+Run the `oras pull` command to pull the artifact from your registry.
 
-Először távolítsa el a szövegfájlt a helyi munkakönyvtárból:
+First remove the text file from your local working directory:
 
 ```bash
 rm artifact.txt
 ```
 
-Az `oras pull` összetevő lekéréséhez futtassa a parancsot, és adja meg az összetevő leküldéséhez használt adathordozó típusát:
+Run `oras pull` to pull the artifact, and specify the media type used to push the artifact:
 
 ```bash
 oras pull myregistry.azurecr.io/samples/artifact:1.0 \
     --media-type application/vnd.unknown.layer.v1+txt
 ```
 
-Ellenőrizze, hogy a lekérés sikeres volt-e:
+Verify that the pull was successful:
 
 ```bash
 $ cat artifact.txt
 Here is an artifact!
 ```
 
-## <a name="remove-the-artifact-optional"></a>Az összetevő eltávolítása (nem kötelező)
+## <a name="remove-the-artifact-optional"></a>Remove the artifact (optional)
 
-Az összetevő Azure Container registryből való eltávolításához használja az az [ACR repository delete][az-acr-repository-delete] parancsot. A következő példa eltávolítja az ott tárolt összetevőt:
+To remove the artifact from your Azure container registry, use the [az acr repository delete][az-acr-repository-delete] command. The following example removes the artifact you stored there:
 
 ```azurecli
 az acr repository delete \
@@ -143,10 +140,10 @@ az acr repository delete \
     --image samples/artifact:1.0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ [a ORAS](https://github.com/deislabs/oras/tree/master/docs)-könyvtárról, beleértve az összetevők jegyzékfájljának konfigurálását is
-* Tekintse meg a [OCI](https://github.com/opencontainers/artifacts) -összetevők tárházát, amely az új összetevő-típusokra vonatkozó információkat tartalmaz.
+* Learn more about [the ORAS Library](https://github.com/deislabs/oras/tree/master/docs), including how to configure a manifest for an artifact
+* Visit the [OCI Artifacts](https://github.com/opencontainers/artifacts) repo for reference information about new artifact types
 
 
 

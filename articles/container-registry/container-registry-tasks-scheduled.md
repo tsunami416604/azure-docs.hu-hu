@@ -1,54 +1,49 @@
 ---
-title: Azure Container Registry feladatok ütemezett végrehajtása
-description: Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy Azure Container Registry feladatot egy meghatározott ütemterven egy vagy több időzítő-eseményindító beállításával
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial - Schedule an ACR task
+description: In this tutorial, learn how to run an Azure Container Registry Task on a defined schedule by setting one or more timer triggers
 ms.topic: article
 ms.date: 06/27/2019
-ms.author: danlep
-ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148643"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454675"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
+# <a name="run-an-acr-task-on-a-defined-schedule"></a>Run an ACR task on a defined schedule
 
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy [ACR-feladatot](container-registry-tasks-overview.md) ütemterv szerint. Egy vagy több *időzítő-eseményindító*beállításával ütemezhet egy feladatot. Az időzítő eseményindítók önállóan vagy más feladatokkal együtt is használhatók.
+This tutorial shows you how to run an [ACR Task](container-registry-tasks-overview.md) on a schedule. Schedule a task by setting up one or more *timer triggers*. Timer triggers can be used alone, or in combination with other task triggers.
 
-Ez az oktatóanyag a feladatok ütemezését és a következőket ismerteti:
+In this tutorial, learn about scheduling tasks and:
 
 > [!div class="checklist"]
-> * Feladat létrehozása időzítő-triggerrel
-> * Időzítő eseményindítók kezelése
+> * Create a task with a timer trigger
+> * Manage timer triggers
 
-A feladatok ütemezése a következőhöz hasonló esetekben hasznos:
+Scheduling a task is useful for scenarios like the following:
 
-* A tároló munkaterhelésének futtatása ütemezett karbantartási műveletekhez. Például futtasson egy tároló alkalmazást, hogy eltávolítsa a szükségtelen lemezképeket a beállításjegyzékből.
-* Futtasson teszteket egy éles rendszerképben a munkanap során az élő hely figyelésének részeként.
+* Run a container workload for scheduled maintenance operations. For example, run a containerized app to remove unneeded images from your registry.
+* Run a set of tests on a production image during the workday as part of your live-site monitoring.
 
-Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben szereplő példák futtatásához. Ha helyileg szeretné használni, a 2.0.68 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the examples in this article. If you'd like to use it locally, version 2.0.68 or later is required. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 
-## <a name="about-scheduling-a-task"></a>Feladat ütemezése
+## <a name="about-scheduling-a-task"></a>About scheduling a task
 
-* **Trigger a cron kifejezéssel** – a feladatok időzítő triggere cron- *kifejezést*használ. A kifejezés egy öt mezőt tartalmazó karakterlánc, amely a feladat elindításához a percet, az órát, a napot, a hónapot és a hét napját adja meg. A percenkénti gyakoriságok támogatottak.
+* **Trigger with cron expression** - The timer trigger for a task uses a *cron expression*. The expression is a string with five fields specifying the minute, hour, day, month, and day of week to trigger the task. Frequencies of up to once per minute are supported.
 
-  Az `"0 12 * * Mon-Fri"` kifejezés például az egyes munkanapokon a (z) (UTC) időpontban indítja el a feladatot. A [részleteket](#cron-expressions) a cikk későbbi részében találja.
-* **Több időzítő eseményindító** – több időzítő hozzáadása egy feladathoz, ha az ütemtervek eltérnek.
-    * A feladat létrehozásakor több időzítő eseményindítót adjon meg, vagy később adja hozzá őket.
-    * Szükség esetén megadhatja az eseményindítókat az egyszerűbb kezelés érdekében, vagy az ACR-feladatok alapértelmezett eseményindító-neveket biztosítanak.
-    * Ha az időzítő ütemezése egyszerre van átfedésben, az ACR-feladatok minden időzítő esetében az ütemezett időpontban indítja el a feladatot.
-* **Egyéb feladat-eseményindítók** – egy időzítő által aktivált feladatban engedélyezheti az eseményindítókat a [forráskód-véglegesítő](container-registry-tutorial-build-task.md) vagy az [alaprendszerkép frissítései](container-registry-tutorial-base-image-update.md)alapján is. Más ACR-feladatokhoz hasonlóan [manuálisan is aktiválhat][az-acr-task-run] egy ütemezett feladatot.
+  For example, the expression `"0 12 * * Mon-Fri"` triggers a task at noon UTC on each weekday. See [details](#cron-expressions) later in this article.
+* **Multiple timer triggers** - Adding multiple timers to a task is allowed, as long as the schedules differ.
+    * Specify multiple timer triggers when you create the task, or add them later.
+    * Optionally name the triggers for easier management, or ACR Tasks will provide default trigger names.
+    * If timer schedules overlap at a time, ACR Tasks triggers the task at the scheduled time for each timer.
+* **Other task triggers** - In a timer-triggered task, you can also enable triggers based on [source code commit](container-registry-tutorial-build-task.md) or [base image updates](container-registry-tutorial-base-image-update.md). Like other ACR tasks, you can also [manually trigger][az-acr-task-run] a scheduled task.
 
-## <a name="create-a-task-with-a-timer-trigger"></a>Feladat létrehozása időzítő-triggerrel
+## <a name="create-a-task-with-a-timer-trigger"></a>Create a task with a timer trigger
 
-Amikor az [az ACR Task Create][az-acr-task-create] paranccsal hoz létre egy feladatot, lehetősége van egy időzítő-trigger hozzáadására. Adja hozzá a `--schedule` paramétert, és adjon meg egy cron-kifejezést az időzítőhöz.
+When you create a task with the [az acr task create][az-acr-task-create] command, you can optionally add a timer trigger. Add the `--schedule` parameter and pass a cron expression for the timer.
 
-Egyszerű példaként a következő parancs elindítja a `hello-world` rendszerképet a Docker hub-ból minden nap 21:00 UTC időpontban. A feladat forráskód-környezet nélkül fut.
+As a simple example, the following command triggers running the `hello-world` image from Docker Hub every day at 21:00 UTC. The task runs without a source code context.
 
 ```azurecli
 az acr task create \
@@ -59,7 +54,7 @@ az acr task create \
   --context /dev/null
 ```
 
-Az az [ACR Task show][az-acr-task-show] parancs futtatásával ellenőrizze, hogy az időzítő trigger konfigurálva van-e. Alapértelmezés szerint az alapszintű rendszerkép frissítésének triggere is engedélyezve van.
+Run the [az acr task show][az-acr-task-show] command to see that the timer trigger is configured. By default, the base image update trigger is also enabled.
 
 ```console
 $ az acr task show --name mytask --registry registry --output table
@@ -68,13 +63,13 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-A feladat manuális elindítása az [az ACR Task Run][az-acr-task-run] paranccsal, hogy megfelelően legyen beállítva:
+Trigger the task manually with [az acr task run][az-acr-task-run] to ensure that it is set up properly:
 
 ```azurecli
 az acr task run --name mytask --registry myregistry
 ```
 
-Ha a tároló sikeresen fut, a kimenet a következőhöz hasonló:
+If the container runs successfully, the output is similar to the following:
 
 ```console
 Queued a run with ID: cf2a
@@ -89,13 +84,13 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-Az ütemezett időpont után futtassa az az [ACR Task List-][az-acr-task-list-runs] Run parancsot annak ellenőrzéséhez, hogy az időzítő a várt módon aktiválta-e a feladatot:
+After the scheduled time, run the [az acr task list-runs][az-acr-task-list-runs] command to verify that the timer triggered the task as expected:
 
 ```azurecli
 az acr task list-runs --name mytask --registry myregistry --output table
 ```
 
-Ha az időzítő sikeres, a kimenet a következőhöz hasonló:
+When the timer is successful, output is similar to the following:
 
 ```console
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
@@ -105,13 +100,13 @@ cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
 
-## <a name="manage-timer-triggers"></a>Időzítő eseményindítók kezelése
+## <a name="manage-timer-triggers"></a>Manage timer triggers
 
-Az az [ACR Task Timer][az-acr-task-timer] parancs használatával kezelheti az ACR-feladatok időzítő eseményindítóit.
+Use the [az acr task timer][az-acr-task-timer] commands to manage the timer triggers for an ACR task.
 
-### <a name="add-or-update-a-timer-trigger"></a>Időzítő-trigger hozzáadása vagy frissítése
+### <a name="add-or-update-a-timer-trigger"></a>Add or update a timer trigger
 
-Egy feladat létrehozása után opcionálisan hozzáadhat egy időzítő-triggert az az [ACR Task Timer Add][az-acr-task-timer-add] paranccsal. A következő példa egy időzítő-trigger nevét adja hozzá a korábban létrehozott *mytask* - *timer2* . Ez az időzítő minden nap 10:30 UTC időpontban indítja el a feladatot.
+After a task is created, optionally add a timer trigger by using the [az acr task timer add][az-acr-task-timer-add] command. The following example adds a timer trigger name *timer2* to *mytask* created previously. This timer triggers the task every day at 10:30 UTC.
 
 ```azurecli
 az acr task timer add \
@@ -121,7 +116,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-Frissítse egy meglévő trigger ütemtervét, vagy módosítsa annak állapotát az az [ACR Task Timer Update][az-acr-task-timer-update] parancs használatával. Frissítse például a *timer2* nevű triggert, hogy aktiválja a feladatot a 11:30 UTC időpontban:
+Update the schedule of an existing trigger, or change its status, by using the [az acr task timer update][az-acr-task-timer-update] command. For example, update the trigger named *timer2* to trigger the task at 11:30 UTC:
 
 ```azurecli
 az acr task timer update \
@@ -131,9 +126,9 @@ az acr task timer update \
   --schedule "30 11 * * *"
 ```
 
-### <a name="list-timer-triggers"></a>Időzítő eseményindítók listázása
+### <a name="list-timer-triggers"></a>List timer triggers
 
-Az az [ACR Task Timer List][az-acr-task-timer-list] parancs megjeleníti az adott feladathoz beállított időzítő eseményindítókat:
+The [az acr task timer list][az-acr-task-timer-list] command shows the timer triggers set up for a task:
 
 ```azurecli
 az acr task timer list --name mytask --registry myregistry
@@ -156,9 +151,9 @@ Példa a kimenetre:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Időzítő-trigger eltávolítása
+### <a name="remove-a-timer-trigger"></a>Remove a timer trigger
 
-Az az [ACR Task Timer Remove][az-acr-task-timer-remove] paranccsal távolíthatja el egy időzítő triggert egy feladatból. Az alábbi példa eltávolítja a *timer2* triggert a *mytask*-ből:
+Use the [az acr task timer remove][az-acr-task-timer-remove] command to remove a timer trigger from a task. The following example removes the *timer2* trigger from *mytask*:
 
 ```azurecli
 az acr task timer remove \
@@ -167,49 +162,49 @@ az acr task timer remove \
   --timer-name timer2
 ```
 
-## <a name="cron-expressions"></a>Cron-kifejezések
+## <a name="cron-expressions"></a>Cron expressions
 
-Az ACR-feladatok a [NCronTab](https://github.com/atifaziz/NCrontab) könyvtár használatával értelmezik a cron-kifejezéseket. Az ACR-feladatok támogatott kifejezései öt kötelező mezőt foglalnak el szóközzel elválasztva:
+ACR Tasks uses the [NCronTab](https://github.com/atifaziz/NCrontab) library to interpret cron expressions. Supported expressions in ACR Tasks have five required fields separated by white space:
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-A cron-kifejezésekkel használt időzóna egyezményes világidő (UTC) szerint van megadva. Az órák 24 órás formátumban jelennek meg.
+The time zone used with the cron expressions is Coordinated Universal Time (UTC). Hours are in 24-hour format.
 
 > [!NOTE]
-> Az ACR-feladatok nem támogatják a `{second}` vagy `{year}` mezőt a cron-kifejezésekben. Ha egy másik rendszeren használt cron-kifejezést másol, ne felejtse el eltávolítani ezeket a mezőket, ha azok használatban vannak.
+> ACR Tasks does not support the `{second}` or `{year}` field in cron expressions. If you copy a cron expression used in another system, be sure to remove those fields, if they are used.
 
-Minden mezőhöz a következő típusú értékek tartozhatnak:
+Each field can have one of the following types of values:
 
-|Típus  |Példa  |Aktiváláskor  |
+|Type (Típus)  |Példa  |When triggered  |
 |---------|---------|---------|
-|Egy adott érték |<nobr>`"5 * * * *"`</nobr>|minden órában, 5 perccel az óra múltán|
-|Minden érték (`*`)|<nobr>`"* 5 * * *"`</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
-|Tartomány (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
-|Értékek halmaza (`,` operátor)|<nobr>`"20,30,40 * * * *"`</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
-|Intervallum érték (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
+|A specific value |<nobr>`"5 * * * *"`</nobr>|every hour at 5 minutes past the hour|
+|All values (`*`)|<nobr>`"* 5 * * *"`</nobr>|every minute of the hour beginning 5:00 UTC (60 times a day)|
+|A range (`-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 times per day, at 1:00, 2:00, and 3:00 UTC|
+|A set of values (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 times per hour, at 20 minutes, 30 minutes, and 40 minutes past the hour|
+|An interval value (`/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 times per hour, at 10 minutes, 20 minutes, and so on, past the hour
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Cron-példák
+### <a name="cron-examples"></a>Cron examples
 
-|Példa|Aktiváláskor  |
+|Példa|When triggered  |
 |---------|---------|
-|`"*/5 * * * *"`|öt percenként|
-|`"0 * * * *"`|egyszer minden óra elején|
-|`"0 */2 * * *"`|két óránként egyszer|
-|`"0 9-17 * * *"`|óránként, 9:00 és 17:00 UTC között|
-|`"30 9 * * *"`|minden nap 9:30 UTC-kor|
-|`"30 9 * * 1-5"`|minden hétköznap 9:30 UTC-kor|
-|`"30 9 * Jan Mon"`|Január 9:30-kor, minden hétfőn|
+|`"*/5 * * * *"`|once every five minutes|
+|`"0 * * * *"`|once at the top of every hour|
+|`"0 */2 * * *"`|once every two hours|
+|`"0 9-17 * * *"`|once every hour from 9:00 to 17:00 UTC|
+|`"30 9 * * *"`|at 9:30 UTC every day|
+|`"30 9 * * 1-5"`|at 9:30 UTC every weekday|
+|`"30 9 * Jan Mon"`|at 9:30 UTC every Monday in January|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre olyan Azure Container Registry feladatokat, amelyeket egy időzítő automatikusan indít el. 
+In this tutorial, you learned how to create Azure Container Registry tasks that are automatically triggered by a timer. 
 
-Ha például egy ütemezett feladatot szeretne használni a beállításjegyzékben lévő adattárak törléséhez, olvassa el a [lemezképek automatikus kitakarítása Azure Container registryből](container-registry-auto-purge.md)című témakört.
+For an example of using a scheduled task to clean up repositories in a registry, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
 
-A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az [ACR feladatok oktatóanyag-sorozatának](container-registry-tutorial-quick-task.md)egyéb cikkeit.
+For examples of tasks triggered by source code commits or base image updates, see other articles in the [ACR Tasks tutorial series](container-registry-tutorial-quick-task.md).
 
 
 

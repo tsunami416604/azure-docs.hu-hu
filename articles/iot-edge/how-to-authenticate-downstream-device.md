@@ -1,6 +1,6 @@
 ---
-title: Alsóbb rétegbeli eszközök hitelesítése – Azure IoT Edge | Microsoft Docs
-description: Hogyan hitelesítheti az alárendelt eszközöket vagy a levélben lévő eszközöket IoT Hub, és hogyan irányíthatja át a kapcsolódást Azure IoT Edge átjáró-eszközökön.
+title: Authenticate downstream devices - Azure IoT Edge | Microsoft Docs
+description: How to authenticate downstream devices or leaf devices to IoT Hub, and route their connection through Azure IoT Edge gateway devices.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,104 +8,103 @@ ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 922654a6947a21eeee945762100abe086c552ad7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025939"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457210"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
-Transzparens átjáró esetén az alsóbb rétegbeli eszközöknek (más néven levél-vagy gyermek-eszközöknek) identitásokra van szükségük IoT Hub mint bármely más eszköz. Ez a cikk végigvezeti az alsóbb rétegbeli eszközök IoT Hubra való hitelesítésének lehetőségeit, majd bemutatja, hogyan deklarálhatja az átjáró-kapcsolatokat.
+In a transparent gateway scenario, downstream devices (sometimes called leaf devices or child devices) need identities in IoT Hub like any other device. This article walks through the options for authenticating a downstream device to IoT Hub, and then demonstrates how to declare the gateway connection.
 
-A sikeres transzparens átjáró-kapcsolatok létrehozásához három általános lépés szükséges. Ez a cikk a második lépést ismerteti:
+There are three general steps to set up a successful transparent gateway connection. This article covers the second step:
 
-1. Az átjáró-eszköznek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra, az alárendelt eszközökről érkező kommunikáció fogadására és az üzenetek megfelelő célhelyre való továbbítására. További információ: [IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)használatra.
-2. **Az alsóbb rétegbeli eszköznek rendelkeznie kell egy eszköz-identitással, hogy képes legyen hitelesíteni a IoT Hub, és tudnia kell kommunikálni az átjáró eszközén keresztül.**
-3. Az alsóbb rétegbeli eszköznek képesnek kell lennie az átjáró eszközéhez való biztonságos kapcsolódásra. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
+1. The gateway device needs to be able to securely connect to downstream devices, receive communications from downstream devices, and route messages to the proper destination. For more information, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md).
+2. **The downstream device needs to have a device identity to be able to authenticate with IoT Hub, and know to communicate through its gateway device.**
+3. The downstream device needs to be able to securely connect to its gateway device. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Az alsóbb rétegbeli eszközök a következő három módszer egyikével hitelesíthetők a IoT Hub használatával: szimmetrikus kulcsok (más néven közös hozzáférési kulcsok), X. 509 önaláírt tanúsítvány vagy X. 509 hitelesítésszolgáltató (CA) által aláírt tanúsítvány. A hitelesítési lépések hasonlók a nem IoT-eszközök IoT Hub-vel való beállításához használt lépésekhez, és kisebb eltéréseket jelentenek az átjáró kapcsolatának bejelentéséhez.
+Downstream devices can authenticate with IoT Hub using one of three methods: symmetric keys (sometimes referred to as shared access keys), X.509 self-signed certificates, or X.509 certificate authority (CA) signed certificates. The authentication steps are similar to the steps used to set up any non-IoT-Edge device with IoT Hub, with small differences to declare the gateway relationship.
 
-A cikkben ismertetett lépések bemutatják a manuális eszközök kiépítés nélküli üzembe helyezését, és nem automatikus kiépítés az Azure IoT Hub Device Provisioning Service. 
+The steps in this article show manual device provisioning, not automatic provisioning with the Azure IoT Hub Device Provisioning Service. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el az [IoT Edge-eszköz konfigurálásának lépéseit transzparens átjáróként való](how-to-create-transparent-gateway.md)művelethez. Ha X. 509 hitelesítést használ az alsóbb rétegbeli eszközhöz, ugyanazt a tanúsítvány-létrehozási parancsfájlt kell használnia, amelyet az átlátszó átjáró című cikkben állított be. 
+Complete the steps in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). If you're using X.509 authentication for your downstream device, you need to use the same certificate generating script that you set up in the transparent gateway article. 
 
-Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Ez a cikk a tanúsítványok létrehozásához használatos, és az alsóbb rétegbeli eszközök kapcsolódási karakterláncában hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy gazdagépet tartalmazó bejegyzést kell használnia.
+This article refers to the *gateway hostname* at several points. The gateway hostname is declared in the **hostname** parameter of the config.yaml file on the IoT Edge gateway device. It's used to create the certificates in this article, and is referred to in the connection string of the downstream devices. The gateway hostname needs to be resolvable to an IP Address, either using DNS or a host file entry.
 
-## <a name="symmetric-key-authentication"></a>Szimmetrikus kulcsos hitelesítés
+## <a name="symmetric-key-authentication"></a>Symmetric key authentication
 
-A szimmetrikus kulcsos hitelesítés vagy a közös hozzáférésű kulcsos hitelesítés a legegyszerűbb módszer a IoT Hub való hitelesítéshez. A szimmetrikus kulcsos hitelesítéssel Base64-kulcsot társítunk a IoT-eszköz AZONOSÍTÓJÁHOZ IoT Hub. Ezt a kulcsot a IoT-alkalmazásokban is felveszi, hogy az eszköz bemutassa a IoT Hubhoz való csatlakozáskor. 
+Symmetric key authentication, or shared access key authentication, is the simplest way to authenticate with IoT Hub. With symmetric key authentication, a base64 key is associated with your IoT device ID in IoT Hub. You include that key in your IoT applications so that your device can present it when it connects to IoT Hub. 
 
-### <a name="create-the-device-identity"></a>Az eszköz identitásának létrehozása 
+### <a name="create-the-device-identity"></a>Create the device identity 
 
-Vegyen fel egy új IoT-eszközt az IoT hub-ban a Visual Studio Code-hoz készült Azure Portal, az Azure CLI vagy a IoT-bővítmény használatával. Ne feledje, hogy az alsóbb rétegbeli eszközöket IoT Hub kell azonosítani a normál IoT-eszközként, nem IoT Edge eszközöket. 
+Add a new IoT device in your IoT hub, using either the Azure portal, Azure CLI, or the IoT extension for Visual Studio Code. Remember that downstream devices need to be identified in IoT Hub as regular IoT device, not IoT Edge devices. 
 
-Az új eszköz identitásának létrehozásakor adja meg a következő információkat: 
+When you create the new device identity, provide the following information: 
 
-* Hozzon létre egy azonosítót az eszközhöz.
+* Create an ID for your device.
 
-* A hitelesítési típusként válassza a **szimmetrikus kulcs** lehetőséget. 
+* Select **Symmetric key** as the authentication type. 
 
-* Igény szerint **beállíthatja a szülő eszközt** , és kiválaszthatja azt a IoT Edge átjáró-eszközt, amelyre az alárendelt eszköz kapcsolódni fog. Ez a lépés nem kötelező a szimmetrikus kulcsos hitelesítéshez, de ajánlott, mert a szülő eszköz beállítása lehetővé teszi az alsóbb rétegbeli eszköz [Offline képességeit](offline-capabilities.md) . Bármikor frissítheti az eszköz adatait, hogy később hozzáadja vagy megváltoztassa a szülőt. 
+* Optionally, choose to **Set a parent device** and select the IoT Edge gateway device that this downstream device will connect through. This step is optional for symmetric key authentication, but it's recommended because setting a parent device enables [offline capabilities](offline-capabilities.md) for your downstream device. You can always update the device details to add or change the parent later. 
 
-   ![Eszköz AZONOSÍTÓjának létrehozása szimmetrikus kulcsú hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+   ![Create device ID with symmetric key auth in portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-Ugyanezt a műveletet az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) használatával végezheti el. A következő példa egy új IoT-eszközt hoz létre szimmetrikus kulcsos hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same operation. The following example creates a new IoT device with symmetric key authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID}
 ```
 
-Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Kapcsolódás IoT Hub átjárón keresztül
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Ugyanez a folyamat használható a normál IoT-eszközöknek a szimmetrikus kulccsal való IoT Hub hitelesítésére is az alárendelt eszközökre. Az egyetlen különbség, hogy fel kell vennie egy mutatót az átjáró eszközre a kapcsolat irányításához, vagy offline helyzetekben, hogy kezelni tudja a hitelesítést a IoT Hub nevében. 
+The same process is used to authenticate regular IoT devices to IoT Hub with symmetric keys also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. 
 
-A szimmetrikus kulcsos hitelesítéshez nem kell további lépéseket végrehajtania az eszközön a IoT Hub való hitelesítéshez. Továbbra is szükség van a tanúsítványokra, hogy az alsóbb rétegbeli eszköz csatlakozhasson az átjáró eszközéhez, ahogy az [egy alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md)című témakörben leírtak szerint.
+For symmetric key authentication, there's no additional steps that you need to take on your device for it to authenticate with IoT Hub. You still need the certificates in place so that your downstream device can connect to its gateway device, as described in [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Miután létrehozta a IoT-eszköz identitását a portálon, lekérheti az elsődleges vagy másodlagos kulcsait. A kulcsok egyikének szerepelnie kell a IoT Hubkal kommunikáló alkalmazásokban szerepeltetett kapcsolódási karakterláncban. A szimmetrikus kulcsos hitelesítéshez IoT Hub biztosítja a teljes mértékben formázott kapcsolati karakterláncot az eszköz részleteiben az Ön kényelme érdekében. További információkat kell felvennie az átjáró-eszközről a kapcsolódási karakterláncra. 
+After creating an IoT device identity in the portal, you can retrieve its primary or secondary keys. One of these keys needs to be included in the connection string that you include in any application that communicates with IoT Hub. For symmetric key authentication, IoT Hub provides the fully formed connection string in the device details for your convenience. You need to add extra information about the gateway device to the connection string. 
 
-Az alsóbb rétegbeli eszközök szimmetrikus kulcsú kapcsolatainak karakterláncai a következő összetevőket igényelik: 
+Symmetric key connection strings for downstream devices need the following components: 
 
-* Az a IoT hub, amelyhez az eszköz csatlakozik: `Hostname={iothub name}.azure-devices.net`
-* A központban regisztrált eszköz azonosítója: `DeviceID={device ID}`
-* Vagy az elsődleges vagy a másodlagos kulcs: `SharedAccessKey={key}`
-* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában: `GatewayHostName={gateway hostname}`
+* The IoT hub that the device connects to: `Hostname={iothub name}.azure-devices.net`
+* The device ID registered with the hub: `DeviceID={device ID}`
+* Either the primary or secondary key: `SharedAccessKey={key}`
+* The gateway device that the device connects through. Provide the **hostname** value from the IoT Edge gateway device's config.yaml file: `GatewayHostName={gateway hostname}`
 
-Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőképpen néz ki:
+All together, a complete connection string looks like:
 
 ``` 
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz, a kapcsolati karakterlánc leegyszerűsíthető úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Példa: 
+If you established a parent/child relationship for this downstream device, then you can simplify the connection string by calling the gateway directly as the connection host. Példa: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
-## <a name="x509-authentication"></a>X. 509 hitelesítés 
+## <a name="x509-authentication"></a>X.509 authentication 
 
-Az X. 509 tanúsítványokkal kétféleképpen hitelesíthető egy IoT-eszköz. Bármelyik módszert választja, az eszköz IoT Hub való csatlakoztatásának lépései megegyeznek. Válassza ki az önaláírt vagy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványokat a hitelesítéshez, majd folytassa a IoT Hubhoz való kapcsolódással kapcsolatos tudnivalókat. 
+There are two ways to authenticate an IoT device using X.509 certificates. Whichever way you choose to authenticate, the steps to connect your device to IoT Hub are the same. Choose either self-signed or CA-signed certs for authentication, then continue to learn how to connect to IoT Hub. 
 
-A IoT Hub X. 509 hitelesítés használatával kapcsolatos további információkért tekintse meg a következő cikkeket: 
-* [Eszköz hitelesítése X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok használatával](../iot-hub/iot-hub-x509ca-overview.md)
-* [Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban](../iot-hub/iot-hub-x509ca-concept.md)
+For more information about how IoT Hub uses X.509 authentication, see the following articles: 
+* [Device authentication using X.509 CA certificates](../iot-hub/iot-hub-x509ca-overview.md)
+* [Conceptual understanding of X.509 CA certificates in the IoT industry](../iot-hub/iot-hub-x509ca-concept.md)
 
-### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Az eszköz identitásának létrehozása X. 509 önaláírt tanúsítványokkal
+### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Create the device identity with X.509 self-signed certificates
 
-Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez. Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez. 
+For X.509 self-signed authentication, sometimes referred to as thumbprint authentication, you need to create new certificates to place on your IoT device. These certificates have a thumbprint in them that you share with IoT Hub for authentication. 
 
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. Navigáljon a munkakönyvtárhoz egy bash-vagy PowerShell-ablakban. 
+1. Navigate to your working directory in either a bash or PowerShell window. 
 
-2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Adja meg az eszköz nevét, majd az elsődleges vagy a másodlagos címkét. Ezek az adatok a fájlok elnevezésére szolgálnak, így nyomon követheti a több eszköz tanúsítványait. 
+2. Create two certificates (primary and secondary) for the downstream device. Provide your device name and then the primary or secondary label. This information is used to name the files so that you can keep track of certificates for multiple devices. 
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -117,21 +116,21 @@ A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számító
    ./certGen.sh create_device_certificate "<device name>-secondary"
    ```
 
-3. Kérje le az SHA1 ujjlenyomatot (a IoT Hub felületen található ujjlenyomatot) minden tanúsítványból, amely egy 40 hexadecimális karakterből álló karakterlánc. A következő OpenSSL-paranccsal tekintheti meg a tanúsítványt, és keresse meg az ujjlenyomatot:
+3. Retrieve the SHA1 fingerprint (called a thumbprint in the IoT Hub interface) from each certificate, which is a 40 hexadecimal character string. Use the following openssl command to view the certificate and find the fingerprint:
 
    ```PowerShell/bash
    openssl x509 -in <WORKDIR>/certs/iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
    ```
 
-4. Navigáljon az IoT hubhoz a Azure Portalon, és hozzon létre egy új IoT-eszköz identitását a következő értékekkel: 
+4. Navigate to your IoT hub in the Azure portal and create a new IoT device identity with the following values: 
 
-   * Válassza az **X. 509 önaláírt** hitelesítési típusként lehetőséget.
-   * Illessze be azokat a hexadecimális karakterláncokat, amelyeket az eszköz elsődleges és másodlagos tanúsítványainakből másolt.
-   * Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró-eszközt, amelyre ez az alárendelt eszköz fog csatlakoztatva. Egy alárendelt eszköz X. 509 hitelesítéséhez szülő eszköz szükséges. 
+   * Select **X.509 Self-Signed** as the authentication type.
+   * Paste the hexadecimal strings that you copied from your device's primary and secondary certificates.
+   * Select **Set a parent device** and choose the IoT Edge gateway device that this downstream device will connect through. A parent device is required for X.509 authentication of a downstream device. 
 
-   ![Eszköz AZONOSÍTÓjának létrehozása X. 509 önaláírt hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
+   ![Create device ID with X.509 self-signed auth in portal](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
-5. Másolja a következő fájlokat az alsóbb rétegbeli eszköz bármelyik könyvtárába:
+5. Copy the following files to any directory on your downstream device:
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device name>*.cert.pem`
@@ -139,28 +138,28 @@ A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számító
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 önaláírt hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 self-signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+For more information about Azure CLI commands for device creation, certificate generation, and parent and child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Az eszköz identitásának létrehozása X. 509 HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványokkal
+### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Create the device identity with X.509 CA signed certificates
 
-Az X. 509 hitelesítésszolgáltató (CA) által aláírt hitelesítéshez szükség van egy IoT Hub regisztrált legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra, amelyet a IoT-eszköz tanúsítványainak aláírásához használ. Minden olyan eszköz, amely a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a köztes tanúsítványok valamelyikével kapcsolatos hibát okozó tanúsítványt használ, a hitelesítés engedélyezve lesz. 
+For X.509 certificate authority (CA) signed authentication, you need a root CA certificate registered in IoT Hub that you use to sign certificates for your IoT device. Any device using a certificate that was issues by the root CA certificate or any of its intermediate certificates will be permitted to authenticate. 
 
-Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](../iot-hub/iot-hub-security-x509-get-started.md)IoT hub cikkében részletesen ismertetett utasításokon alapul. Az ebben a szakaszban ismertetett lépéseket követve megtudhatja, hogy mely értékeket kell használni egy átjárón keresztül csatlakozó alsóbb rétegbeli eszköz beállításához. 
+This section is based on the instructions detailed in the IoT Hub article [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md). Follow the steps in this section to know which values to use to set up a downstream device that connects through a gateway. 
 
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre: 
+1. Follow the instructions in the [Register X.509 CA certificates to your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a transzparens Gateway-cikkben létrehozott tanúsítványokat használja, töltse fel **\<WRKDIR >/certs/Azure-IOT-test-only.root.ca.CERT.PEM** a főtanúsítvány-fájlként. 
-   2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa. \<WRKDIR >jában ellenőrizheti a tanúsítvány-ellenőrzési eszközöket. 
+   1. Upload a root CA certificate. If you're using the certificates that you created in the transparent gateway article, upload **\<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem** as the root certificate file. 
+   2. Verify that you own that root CA certificate. You can verify possession with the cert tools in \<WRKDIR>. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -170,12 +169,12 @@ A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számító
       ./certGen.sh create_verification_certificate <verification code from Azure portal>"
       ```
 
-2. Az *x. 509 Biztonság beállítása az Azure IoT hub-ban*című rész útmutatását követve [hozzon létre egy x. 509-eszközt az IoT hub létrehozásához](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) . Ebben a szakaszban a következő lépéseket hajtja végre: 
+2. Follow the instructions in the [Create an X.509 device for your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Adjon hozzá egy új eszközt. Adja meg az **eszköz azonosítójának**kisbetűs nevét, és válassza ki az **X. 509 hitelesítésszolgáltató által aláírt**hitelesítési típust. 
-   2. Hozzon létre egy fölérendelt eszközt. Alsóbb rétegbeli eszközök esetén válassza a **fölérendelt eszköz beállítása** lehetőséget, majd válassza ki azt a IoT Edge átjáró eszközt, amely a IoT hubhoz való kapcsolódást biztosítja. 
+   1. Add a new device. Provide a lowercase name for **device ID**, and choose the authentication type **X.509 CA Signed**. 
+   2. Set a parent device. For downstream devices, select **Set a parent device** and choose the IoT Edge gateway device that will provide the connection to IoT Hub. 
 
-3. Hozzon létre egy tanúsítványláncot az alsóbb rétegbeli eszközhöz. Használja ugyanazt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt, amelyet a IoT Hub feltöltött a lánc elvégzéséhez. Használja ugyanazt a kisbetűs eszköz-azonosítót, amelyet az eszköz identitásához adott a portálon.
+3. Create a certificate chain for your downstream device. Use the same root CA certificate that you uploaded to IoT Hub to make this chain. Use the same lowercase device ID that you gave to your device identity in the portal.
 
    ```powershell
    New-CACertsDevice "<device id>"
@@ -185,7 +184,7 @@ A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számító
    ./certGen.sh create_device_certificate "<device id>"
    ```
 
-4. Másolja a következő fájlokat az alsóbb rétegbeli eszköz bármelyik könyvtárába: 
+4. Copy the following files to any directory on your downstream device: 
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device id>*.cert.pem`
@@ -193,33 +192,33 @@ A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számító
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 HITELESÍTÉSSZOLGÁLTATÓI aláírásos hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 CA signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Kapcsolódás IoT Hub átjárón keresztül
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Minden egyes Azure IoT SDK egy kicsit másképp kezeli az X. 509 hitelesítést. Ugyanakkor ugyanez a folyamat használható a normál IoT-eszközöknek az X. 509 tanúsítványokkal való IoT Hub való hitelesítésére is az alárendelt eszközökre. Az egyetlen különbség, hogy fel kell vennie egy mutatót az átjáró eszközre a kapcsolat irányításához, vagy offline helyzetekben, hogy kezelni tudja a hitelesítést a IoT Hub nevében. Általában ugyanazokat az X. 509 hitelesítési lépéseket követheti az összes IoT Hub eszközön, majd egyszerűen lecserélheti az **állomásnév** értékét a kapcsolódási karakterláncban az átjáró-eszköz állomásneveként. 
+Each Azure IoT SDK handles X.509 authentication a little differently. However, the same process is used to authenticate regular IoT devices to IoT Hub with X.509 certificates also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. In general, you can follow the same X.509 authentication steps for all IoT Hub devices, then simply replace the value of **Hostname** in the connection string to be the hostname of your gateway device. 
 
-A következő részekben néhány példa látható a különböző SDK-nyelvekre. 
+The following sections show some examples for different SDK languages. 
 
 >[!IMPORTANT]
->Az alábbi példák azt mutatják be, hogy az IoT Hub SDK-k hogyan használnak tanúsítványokat az eszközök hitelesítéséhez. Éles környezetben az összes titkot, például a magán-vagy SAS-kulcsokat egy hardveres Secure modulban (HSM) kell tárolnia. 
+>The following samples demonstrate how the IoT Hub SDKs use certificates to authenticate devices. In a production deployment, you should store all secrets like private or SAS keys in a hardware secure module (HSM). 
 
 #### <a name="net"></a>.NET
 
-Ha például az X. C# 509 tanúsítványokkal IoT hub hitelesítő programot szeretne elvégezni, tekintse [meg az x. 509 Biztonság beállítása az Azure IoT hub-ban](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)című témakört. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
+For an example of a C# program authenticating to IoT Hub with X.509 certificates, see [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-A DeviceClient-példány állomásnévének deklarálása során használja az IoT Edge Gateway-eszköz állomásnevét. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
+When declaring the hostname for your DeviceClient instance, use the IoT Edge gateway device's hostname. The hostname can be found in the gateway device's config.yaml file. 
 
-Ha a IoT Edge git-tárház által biztosított tesztelési tanúsítványokat használja, a tanúsítványok kulcsa **1234**.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```csharp
 try
@@ -248,9 +247,9 @@ catch (Exception ex)
 
 #### <a name="c"></a>C#
 
-Ha például az X. 509 tanúsítvánnyal IoT Hub hitelesítő C programra van hitelesítés, tekintse meg a C IoT SDK [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) -mintáját. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
+For an example of a C program authenticating to IoT Hub with X.509 certificates, see the C IoT SDK's [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```C
 // If your downstream device uses X.509 authentication (self signed or X.509 CA) then
@@ -296,11 +295,11 @@ int main(void)
 
 #### <a name="nodejs"></a>Node.js
 
-Ha egy Node. js-programot szeretne egy X. 509 tanúsítvánnyal IoT Hub hitelesíteni, tekintse meg a Node. js IoT SDK [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) -mintáját. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
+For an example of a Node.js program authenticating to IoT Hub with X.509 certificates, see the Node.js IoT SDK's [simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
-Ha a IoT Edge git-tárház által biztosított tesztelési tanúsítványokat használja, a tanúsítványok kulcsa **1234**.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```node
 // String containing Hostname and Device Id in the following format:
@@ -325,9 +324,9 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-A Python SDK jelenleg csak a X509-tanúsítványok és-kulcsok használatát támogatja a fájlokból, amelyek nincsenek definiálva beágyazottként. A következő példában a releváns filepaths a környezeti változók tárolják.
+The Python SDK currently only supports using X509 certificates and and keys from files, not ones which are defined inline. In the following example, relevant filepaths are stored in environment variables.
 
-Az alsóbb rétegbeli eszköz állomásnévének meghatározásakor használja az IoT Edge Gateway-eszköz állomásnévjét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
+When defining the hostname for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```python
 import os
@@ -355,9 +354,9 @@ if __name__ == '__main__':
 
 #### <a name="java"></a>Java
 
-Az X. 509 tanúsítványokkal IoT Hubra hitelesítő Java-programokra példát a Java IoT SDK [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) -mintájában talál. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
+For an example of a Java program authenticating to IoT Hub with X.509 certificates, see the Java IoT SDK's [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```java
 //PEM encoded representation of the public key certificate
@@ -388,4 +387,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és üzeneteket küldjön neki. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
+By completing this article, you should have an IoT Edge device working as a transparent gateway and a downstream device registered with an IoT hub. Next, you need to configure your downstream devices to trust the gateway device and send messages to it. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).

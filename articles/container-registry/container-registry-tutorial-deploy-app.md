@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – alkalmazás üzembe helyezése a földrajzilag replikált Azure Container Registry
-description: Egy Linux-alapú webalkalmazás üzembe helyezése két különböző Azure-régióban egy geo-replikált Azure Container Registry-beli tároló-rendszerkép használatával. Ez egy háromrészes sorozat második része.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial - Deploy from geo-replicated registry
+description: Deploy a Linux-based web app to two different Azure regions using a container image from a geo-replicated Azure container registry. Ez egy háromrészes sorozat második része.
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931415"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456103"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: webalkalmazás üzembe helyezése egy földrajzilag replikált Azure Container registryből
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
 
 Ez egy háromrészes oktatóanyag-sorozat második része. Az [első részben](container-registry-tutorial-prepare-registry.md) létrehozott egy privát, georeplikált tárolóregisztrációs adatbázist, valamint felépített egy tárolórendszerképet a forrásból, és leküldte a regisztrációs adatbázisba. Az ebben a cikkben leírtakat követve kihasználhatja a georeplikált regisztrációs adatbázis hálózatközeli aspektusát a tároló két, különböző Azure-régióban található webalkalmazás-példányban történő üzembe helyezésével. Ekkor mindegyik példány a legközelebbi regisztrációs adatbázisból kéri le a tárolólemezképet.
 
@@ -50,7 +45,7 @@ Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, e
 
 Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjelenített **Web App for Containers** területen adja meg a következő értékeket a beállításokhoz:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
@@ -59,7 +54,7 @@ Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjeleníte
 | **Operációs rendszer** | Linux |
 
 > [!NOTE]
-> Amikor létrehoz egy új App Service-csomagot a tároló alkalmazás üzembe helyezéséhez, a rendszer automatikusan kijelöl egy alapértelmezett csomagot az alkalmazás üzemeltetéséhez. Az alapértelmezett terv az operációs rendszer beállításától függ.
+> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
 
 Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA nyugati régiójában* való üzembe helyezéséhez.
 
@@ -83,7 +78,7 @@ A Docker-rendszerkép georeplikált tárolóregisztrációs adatbázisból való
 
 Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az *USA keleti régiójában* való üzembe helyezéséhez. A **Web App for Containers** területen adja meg a következő értékeket:
 
-| Beállítás | Érték |
+| Beállítás | Value (Díj) |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |

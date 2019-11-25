@@ -1,6 +1,6 @@
 ---
-title: Eszközök és üzemelő példányok előkészítése a termeléshez – Azure IoT Edge | Microsoft Docs
-description: Megtudhatja, hogyan hozhatja létre a Azure IoT Edge-megoldását a fejlesztéstől a Termelésig, beleértve az eszközök beállítását a megfelelő tanúsítványokkal, valamint a jövőbeli programkód-frissítések üzembe helyezési tervének kidolgozását.
+title: Prepare devices and deployments for production - Azure IoT Edge | Microsoft Docs
+description: Learn how to take your Azure IoT Edge solution from development to production, including setting up your devices with the appropriate certificates and making a deployment plan for future code updates.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,210 +8,209 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1d8ba8452f5f2d4ab05083e1a97fa0b9ba75017f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73096964"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457305"
 ---
-# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
+# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Prepare to deploy your IoT Edge solution in production
 
-Ha készen áll arra, hogy az IoT Edge-megoldást a fejlesztésből éles környezetbe hozza, győződjön meg arról, hogy a folyamatban lévő teljesítményre van konfigurálva.
+When you're ready to take your IoT Edge solution from development into production, make sure that it's configured for ongoing performance.
 
-A cikkben szereplő információk nem egyenlőek. A rangsorolás elősegítése érdekében az egyes szakaszok a következő két szakaszra oszthatják meg a munkát: **fontos** , hogy elvégezze az éles környezetbe való bevezetést, vagy a **hasznos** tudnivalókat.
+The information provided in this article isn't all equal. To help you prioritize, each section starts with lists that divide the work into two sections: **important** to complete before going to production, or **helpful** for you to know.
 
-## <a name="device-configuration"></a>Eszköz konfigurációja
+## <a name="device-configuration"></a>Device configuration
 
-IoT Edge az eszközök a málna PI-ből egy laptopra vagy egy kiszolgálón futó virtuális gépre is felhasználhatók. Lehet, hogy fizikailag vagy virtuális kapcsolaton keresztül fér hozzá az eszközhöz, vagy hosszabb ideig el lehet különíteni. Mindkét esetben meg kell győződnie arról, hogy a megfelelő működésre van konfigurálva. 
+IoT Edge devices can be anything from a Raspberry Pi to a laptop to a virtual machine running on a server. You may have access to the device either physically or through a virtual connection, or it may be isolated for extended periods of time. Either way, you want to make sure that it's configured to work appropriately. 
 
 * **Fontos**
-    * Éles tanúsítványok telepítése
-    * Eszközkezelés
-    * A Moby használata tároló motorként
+    * Install production certificates
+    * Have a device management plan
+    * Use Moby as the container engine
 
-* **Hasznos**
-    * Felsőbb rétegbeli protokoll kiválasztása
+* **Helpful**
+    * Choose upstream protocol
 
-### <a name="install-production-certificates"></a>Éles tanúsítványok telepítése
+### <a name="install-production-certificates"></a>Install production certificates
 
-Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a config. YAML fájlban lévő IoT Edge futtatókörnyezetnek. A fejlesztés és a tesztelés egyszerűbbé tétele érdekében az IoT Edge Runtime ideiglenes tanúsítványokat hoz létre, ha nincsenek deklarálva tanúsítványok a config. YAML fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben. 
+Every IoT Edge device in production needs a device certificate authority (CA) certificate installed on it. That CA certificate is then declared to the IoT Edge runtime in the config.yaml file. To make development and testing easier, the IoT Edge runtime creates temporary certificates if no certificates are declared in the config.yaml file. However, these temporary certificates expire after three months and aren't secure for production scenarios. 
 
-Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa szerepkörének megismeréséhez tekintse meg a [hogyan használja a Azure IoT Edge a tanúsítványokat](iot-edge-certs.md).
+To understand the role of the device CA certificate, see [How Azure IoT Edge uses certificates](iot-edge-certs.md).
 
-Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg az IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működésre című témakört. A tanúsítványok konfigurálásának lépései megegyeznek attól, hogy az eszköz átjáróként fog-e használni. Ez a cikk parancsfájlokat biztosít a csak tesztelési célú tanúsítványok létrehozásához. Ezeket a tanúsítványokat ne használja éles környezetben. 
+For more information about how to install certificates on an IoT Edge device and reference them from the config.yaml file, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). The steps for configuring the certificates are the same whether the device is going to be used as a gateway or not. That article provides scripts to generate sample certificates for testing only. Don't use those sample certificates in production. 
 
-### <a name="have-a-device-management-plan"></a>Eszközkezelés
+### <a name="have-a-device-management-plan"></a>Have a device management plan
 
-Mielőtt üzembe helyezi az eszközt az éles környezetben, tudnia kell, hogyan fogja kezelni a jövőbeli frissítéseket. Egy IoT Edge eszköz esetében a frissítendő összetevők listája a következőket tartalmazhatja:
+Before you put any device in production you should know how you're going to manage future updates. For an IoT Edge device, the list of components to update may include:
 
-* Eszköz belső vezérlőprogramja
-* Operációs rendszer kódtárai
-* Tároló motor, például Moby
-* IoT Edge démon
-* HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok
+* Device firmware
+* Operating system libraries
+* Container engine, like Moby
+* IoT Edge daemon
+* CA certificates
 
-További információ: [a IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md). A IoT Edge démon frissítésének jelenlegi módszerei fizikai vagy SSH-hozzáférést igényelnek a IoT Edge eszközhöz. Ha sok eszközt szeretne frissíteni, vegye fel a frissítési lépéseket egy parancsfájlba, vagy használjon olyan Automation-eszközt, mint például a Ansible.
+For more information, see [Update the IoT Edge runtime](how-to-update-iot-edge.md). The current methods for updating the IoT Edge daemon require physical or SSH access to the IoT Edge device. If you have many devices to update, consider adding the update steps to a script or use an automation tool like Ansible.
 
-### <a name="use-moby-as-the-container-engine"></a>A Moby használata tároló motorként
+### <a name="use-moby-as-the-container-engine"></a>Use Moby as the container engine
 
-A tároló-motor minden IoT Edge eszköz előfeltétele. Csak a Moby Engine támogatott az éles környezetben. Más tároló-hajtóművek, például a Docker, a IoT Edge használatával működnek, és az ilyen motorokat a fejlesztéshez használják. A Moby Engine a Azure IoT Edge használatával terjeszthető újra, és a Microsoft karbantartást biztosít ehhez a motorhoz.
+A container engine is a prerequisite for any IoT Edge device. Only moby-engine is supported in production. Other container engines, like Docker, do work with IoT Edge and it's ok to use these engines for development. The moby-engine can be redistributed when used with Azure IoT Edge, and Microsoft provides servicing for this engine.
 
-### <a name="choose-upstream-protocol"></a>Felsőbb rétegbeli protokoll kiválasztása
+### <a name="choose-upstream-protocol"></a>Choose upstream protocol
 
-A IoT Hubhoz való upstream kommunikációhoz használt protokoll (és így a port is) konfigurálható mind a IoT Edge-ügynök, mind a IoT Edge hub számára. Az alapértelmezett protokoll a AMQP, de előfordulhat, hogy a hálózat beállításától függően módosítani kívánja a beállításokat. 
+The protocol (and therefore the port used) for upstream communication to IoT Hub can be configured for both the IoT Edge agent and the IoT Edge hub. The default protocol is AMQP, but you may want to change that depending on your network setup. 
 
-A két futásidejű modul **UpstreamProtocol** környezeti változóval rendelkezik. A változó érvényes értékei a következők: 
+The two runtime modules both have an **UpstreamProtocol** environment variable. The valid values for the variable are: 
 
 * MQTT
 * AMQP
 * MQTTWS
 * AMQPWS
 
-Konfigurálja a UpstreamProtocol változót a IoT Edge ügynökhöz a config. YAML fájlban az eszközön. Ha például a IoT Edge eszköz egy olyan proxykiszolgáló mögött található, amely blokkolja a AMQP-portokat, előfordulhat, hogy a IoT Edge-ügynököt úgy kell konfigurálnia, hogy az AMQP-t használja a WebSocket (AMQPWS) használatával a kezdeti kapcsolat létrehozásához a IoT Hub. 
+Configure the UpstreamProtocol variable for the IoT Edge agent in the config.yaml file on the device itself. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you may need to configure the IoT Edge agent to use AMQP over WebSocket (AMQPWS) to establish the initial connection to IoT Hub. 
 
-Ha a IoT Edge-eszköz csatlakozik, mindenképpen folytassa a UpstreamProtocol változó konfigurálását mindkét futtatókörnyezeti modulban a jövőbeli telepítések során. Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztül történő kommunikációra](how-to-configure-proxy-support.md)című cikkben található.
+Once your IoT Edge device connects, be sure to continue configuring the UpstreamProtocol variable for both runtime modules in future deployments. An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
 ## <a name="deployment"></a>Üzembe helyezés
 
-* **Hasznos**
-    * Konzisztensnek kell lennie a felsőbb rétegbeli protokollal
-    * Gazdagép-tároló beállítása rendszermodulokhoz
-    * Csökkentse a IoT Edge hub által használt memória méretét
-    * A modul rendszerképeinek hibakeresési verzióját ne használja
+* **Helpful**
+    * Be consistent with upstream protocol
+    * Set up host storage for system modules
+    * Reduce memory space used by the IoT Edge hub
+    * Do not use debug versions of module images
 
-### <a name="be-consistent-with-upstream-protocol"></a>Konzisztensnek kell lennie a felsőbb rétegbeli protokollal
+### <a name="be-consistent-with-upstream-protocol"></a>Be consistent with upstream protocol
 
-Ha úgy konfigurálta a IoT Edge ügynököt a IoT Edge eszközön, hogy az alapértelmezett AMQP eltérő protokollt használjon, akkor minden jövőbeli telepítésnél ugyanazt a protokollt kell deklarálnia. Ha például az IoT Edge-eszköz egy olyan proxykiszolgáló mögött található, amely blokkolja a AMQP-portokat, akkor valószínűleg úgy konfigurálta az eszközt, hogy a AMQP-en keresztül kapcsolódjon a WebSocket (AMQPWS) használatával. Amikor modulokat telepít az eszközre, konfigurálja ugyanazt a AMQPWS protokollt a IoT Edge-ügynökhöz és a IoT Edge hub-hoz, különben az alapértelmezett AMQP felülbírálja a beállításokat, és megakadályozza a csatlakozást. 
+If you configured the IoT Edge agent on your IoT Edge device to use a different protocol than the default AMQP, then you should declare the same protocol in all future deployments. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you probably configured the device to connect over AMQP over WebSocket (AMQPWS). When you deploy modules to the device, configure the same AMQPWS protocol for the IoT Edge agent and IoT Edge hub, or else the default AMQP will override the settings and prevent you from connecting again. 
 
-A UpstreamProtocol környezeti változót csak a IoT Edge ügynökhöz és IoT Edge hub-modulokhoz kell konfigurálnia. Bármely további modul, amely bármilyen protokollt tartalmaz, a futásidejű modulokban van beállítva. 
+You only have to configure the UpstreamProtocol environment variable for the IoT Edge agent and IoT Edge hub modules. Any additional modules adopt whatever protocol is set in the runtime modules. 
 
-Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztül történő kommunikációra](how-to-configure-proxy-support.md)című cikkben található.
+An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
-### <a name="set-up-host-storage-for-system-modules"></a>Gazdagép-tároló beállítása rendszermodulokhoz
+### <a name="set-up-host-storage-for-system-modules"></a>Set up host storage for system modules
 
-Az IoT Edge hub és az Agent modulok a helyi tárterületet használják az állapot fenntartásához és a modulok, eszközök és a felhő közötti üzenetkezelés engedélyezéséhez. A jobb megbízhatóság és teljesítmény érdekében konfigurálja a rendszermodulokat a gazdagép fájlrendszerén a tároló használatára.
+The IoT Edge hub and agent modules use local storage to maintain state and enable messaging between modules, devices, and the cloud. For better reliability and performance, configure the system modules to use storage on the host filesystem.
 
-További információ: [Host Storage for System modulok](how-to-access-host-storage-from-module.md).
+For more information, see [Host storage for system modules](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge hub által használt memória méretének csökkentése
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduce memory space used by IoT Edge hub
 
-Ha korlátozott számú memóriával rendelkező korlátozott méretű eszközöket helyez üzembe, az IoT Edge hub-t úgy konfigurálhatja, hogy egyszerűbben fusson, és kevesebb lemezterületet használjon. Ezek a konfigurációk korlátozzák az IoT Edge hub teljesítményét, ezért érdemes megkeresni a megoldáshoz használható megfelelő egyensúlyt. 
+If you're deploying constrained devices with limited memory available, you can configure IoT Edge hub to run in a more streamlined capacity and use less disk space. These configurations do limit the performance of the IoT Edge hub, however, so find the right balance that works for your solution. 
 
-#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>A korlátozott eszközök teljesítményének optimalizálása
+#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Don't optimize for performance on constrained devices
 
-Az IoT Edge hub alapértelmezés szerint a teljesítményre van optimalizálva, így nagy mennyiségű memóriát próbál lefoglalni. Ez a konfiguráció stabilitási problémákat okozhat a kisebb eszközökön, például a málna PI-ben. Ha korlátozott erőforrásokkal rendelkező eszközöket helyez üzembe, érdemes lehet **hamis** értékre állítani a **OptimizeForPerformance** környezeti változót az IoT Edge központban. 
+The IoT Edge hub is optimized for performance by default, so it attempts to allocate large chunks of memory. This configuration can cause stability problems on smaller devices like the Raspberry Pi. If you're deploying devices with constrained resources, you may want to set the **OptimizeForPerformance** environment variable to **false** on the IoT Edge hub. 
 
-Ha a **OptimizeForPerformance** értéke **true (igaz**), a MQTT-protokoll feje a PooledByteBufferAllocator-t használja, amely jobb teljesítményt nyújt, de több memóriát foglal le. A lefoglaló nem működik megfelelően a 32 bites operációs rendszereken, illetve az alacsony memóriával rendelkező eszközökön. Emellett, ha teljesítményre optimalizált, a RocksDb több memóriát foglal le a szerepköréhez, mint a helyi tároló szolgáltatója. 
+When **OptimizeForPerformance** is set to **true**, the MQTT protocol head uses the PooledByteBufferAllocator which has better performance but allocates more memory. The allocator does not work well on 32 bit operating systems or on devices with low memory. Additionally, when optimized for performance, RocksDb allocates more memory for its role as the local storage provider. 
 
-További információ: [stabilitási problémák az erőforrás által korlátozott eszközökön](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+For more information, see [Stability issues on resource constrained devices](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
-#### <a name="disable-unused-protocols"></a>Nem használt protokollok letiltása
+#### <a name="disable-unused-protocols"></a>Disable unused protocols
 
-Az IoT Edge hub teljesítményének optimalizálása és a memóriahasználat csökkentése is lehetővé teszi, hogy kikapcsolja a protokollok fejeit a megoldásában nem használt protokollok esetében. 
+Another way to optimize the performance of the IoT Edge hub and reduce its memory usage is to turn off the protocol heads for any protocols that you're not using in your solution. 
 
-A protokollok a központi telepítési jegyzékekben a IoT Edge hub modul logikai környezeti változóinak beállításával konfigurálhatók. A három változó a következők:
+Protocol heads are configured by setting boolean environment variables for the IoT Edge hub module in your deployment manifests. The three variables are:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-Mindhárom változó *két aláhúzással* rendelkezik, és beállítható igaz vagy hamis értékre. 
+All three variables have *two underscores* and can be set to either true or false. 
 
-#### <a name="reduce-storage-time-for-messages"></a>Az üzenetek tárolási idejének csökkentése
+#### <a name="reduce-storage-time-for-messages"></a>Reduce storage time for messages
 
-Az IoT Edge hub-modul átmenetileg tárolja az üzeneteket, ha bármilyen okból nem lehet IoT Hub továbbítani őket. Azt is beállíthatja, hogy az IoT Edge hub mennyi ideig tartson a nem leküldött üzeneteknek a lejárat előtt. Ha a memóriával kapcsolatos problémái vannak az eszközön, csökkentheti a **timeToLiveSecs** értéket az IoT Edge hub-modul Twin-ben. 
+The IoT Edge hub module stores messages temporarily if they cannot be delivered to IoT Hub for any reason. You can configure how long the IoT Edge hub holds on to undelivered messages before letting them expire. If you have memory concerns on your device, you can lower the **timeToLiveSecs** value in the IoT Edge hub module twin. 
 
-A timeToLiveSecs paraméter alapértelmezett értéke 7200 másodperc, amely két óra. 
+The default value of the timeToLiveSecs parameter is 7200 seconds, which is two hours. 
 
-### <a name="do-not-use-debug-versions-of-module-images"></a>A modul rendszerképeinek hibakeresési verzióját ne használja
+### <a name="do-not-use-debug-versions-of-module-images"></a>Do not use debug versions of module images
 
-Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik a **\.debug** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is. 
+When moving from test scenarios to production scenarios, remember to remove debug configurations from deployment manifests. Check that none of the module images in the deployment manifests have the **\.debug** suffix. If you added create options to expose ports in the modules for debugging, remove those create options as well. 
 
 ## <a name="container-management"></a>Tárolófelügyelet
 
 * **Fontos**
-    * A tároló-beállításjegyzékhez való hozzáférés kezelése
-    * Címkék használata a verziók kezeléséhez
+    * Manage access to your container registry
+    * Use tags to manage versions
 
-### <a name="manage-access-to-your-container-registry"></a>A tároló-beállításjegyzékhez való hozzáférés kezelése
+### <a name="manage-access-to-your-container-registry"></a>Manage access to your container registry
 
-Mielőtt üzembe helyezi a modulokat a termelési IoT Edge eszközökön, győződjön meg arról, hogy a tároló-beállításjegyzékhez való hozzáférést felügyeli, hogy a kívülállók ne férhessenek hozzá a tároló-lemezképekhez, illetve ne legyenek A tároló-lemezképek kezeléséhez használjon privát, nem nyilvános, tároló-beállításjegyzéket. 
+Before you deploy modules to production IoT Edge devices, ensure that you control access to your container registry so that outsiders can't access or make changes to your container images. Use a private, not public, container registry to manage container images. 
 
-Az oktatóanyagokban és más dokumentációban arra utasítja Önt, hogy ugyanazt a tároló beállításjegyzékbeli hitelesítő adatokat használja a IoT Edge eszközön a fejlesztői gépen való használat során. Ezek az utasítások csak a tesztelési és fejlesztési környezetek egyszerűbb beállítására szolgálnak, és nem kell éles környezetben követniük. Azure Container Registry javasolja [az egyszerű szolgáltatásokkal történő hitelesítést](../container-registry/container-registry-auth-service-principal.md) , amikor az alkalmazások vagy szolgáltatások egy automatizált vagy más módon felügyelet nélkül lekérik a tárolók lemezképeit, mivel IoT Edge eszközök. Hozzon létre egy egyszerű szolgáltatást, amely csak olvasási hozzáféréssel rendelkezik a tároló beállításjegyzékéhez, és adja meg a felhasználónevet és a jelszót az üzembe helyezési jegyzékben.
+In the tutorials and other documentation, we instruct you to use the same container registry credentials on your IoT Edge device as you use on your development machine. These instructions are only intended to help you set up testing and development environments more easily, and should not be followed in a production scenario. Azure Container Registry recommends [authenticating with service principals](../container-registry/container-registry-auth-service-principal.md) when applications or services pull container images in an automated or otherwise unattended manner, as IoT Edge devices do. Create a service principal with read-only access to your container registry, and provide that username and password in the deployment manifest.
 
-### <a name="use-tags-to-manage-versions"></a>Címkék használata a verziók kezeléséhez
+### <a name="use-tags-to-manage-versions"></a>Use tags to manage versions
 
-A címke egy Docker-koncepció, amellyel megkülönböztethető a Docker-tárolók verziói között. A címkék olyan utótagok, mint a **1,0** , amelyek a tárolók tárházának végére mutatnak. Például: **MCR.microsoft.com/azureiotedge-Agent:1.0**. A címkék változhatnak, és bármikor módosíthatók úgy, hogy egy másik tárolóra mutassanak, így a csapatnak meg kell egyeznie egy, a modul rendszerképeinek továbbításakor követendő konvencióval. 
+A tag is a docker concept that you can use to distinguish between versions of docker containers. Tags are suffixes like **1.0** that go on the end of a container repository. For example, **mcr.microsoft.com/azureiotedge-agent:1.0**. Tags are mutable and can be changed to point to another container at any time, so your team should agree on a convention to follow as you update your module images moving forward. 
 
-A címkék a IoT Edge-eszközök frissítéseinek betartatásához is segítséget nyújtanak. Ha egy modul frissített verzióját leküldi a tároló-beállításjegyzékbe, növelje a címkét. Ezután leküldheti az eszközökre egy új központi telepítést a címke növelésével. A tároló motor felismeri a megnövelt címkét új verzióként, és lekéri a legújabb modul verziószámát az eszközre. 
+Tags also help you to enforce updates on your IoT Edge devices. When you push an updated version of a module to your container registry, increment the tag. Then, push a new deployment to your devices with the tag incremented. The container engine will recognize the incremented tag as a new version and will pull the latest module version down to your device. 
 
-A címkézési konvencióra példát a [IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md#understand-iot-edge-tags) című témakörben talál, amelyből megtudhatja, hogyan használja a IoT Edge a működés közbeni címkéket és adott címkéket a verziók nyomon követésére. 
+For an example of a tag convention, see [Update the IoT Edge runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) to learn how IoT Edge uses rolling tags and specific tags to track versions. 
 
 ## <a name="networking"></a>Hálózatkezelés
 
-* **Hasznos**
-    * Kimenő/bejövő konfiguráció áttekintése
-    * IoT Edge eszközök kapcsolatainak engedélyezése
-    * Kommunikáció konfigurálása proxyn keresztül
+* **Helpful**
+    * Review outbound/inbound configuration
+    * Allow connections from IoT Edge devices
+    * Configure communication through a proxy
 
-### <a name="review-outboundinbound-configuration"></a>Kimenő/bejövő konfiguráció áttekintése
+### <a name="review-outboundinbound-configuration"></a>Review outbound/inbound configuration
 
-Az Azure IoT Hub és IoT Edge közötti kommunikációs csatornák mindig kimenő értékre vannak konfigurálva. A legtöbb IoT Edge forgatókönyv esetén csak három kapcsolat szükséges. A tároló-motornak kapcsolódnia kell a modul lemezképeit tároló beállításjegyzékbeli (vagy kibocsátásiegység-nyilvántartási) adatbázishoz. Az IoT Edge futtatókörnyezetnek csatlakoznia kell a IoT Hubhoz az eszköz konfigurációs adatainak lekéréséhez, valamint üzenetek és telemetria küldéséhez. Ha az automatikus kiépítés szolgáltatást használja, a IoT Edge démonnak csatlakoznia kell az eszköz kiépítési szolgáltatásához. További információ: a [tűzfal és a port konfigurációs szabályai](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Communication channels between Azure IoT Hub and IoT Edge are always configured to be outbound. For most IoT Edge scenarios, only three connections are necessary. The container engine needs to connect with the container registry (or registries) that holds the module images. The IoT Edge runtime needs to connect with IoT Hub to retrieve device configuration information, and to send messages and telemetry. And if you use automatic provisioning, the IoT Edge daemon needs to connect to the Device Provisioning Service. For more information, see [Firewall and port configuration rules](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge eszközök kapcsolatainak engedélyezése
+### <a name="allow-connections-from-iot-edge-devices"></a>Allow connections from IoT Edge devices
 
-Ha a hálózatkezelés beállítása megköveteli, hogy explicit módon engedélyezze a IoT Edge eszközökről érkező kapcsolatokat, tekintse át az alábbi IoT Edge összetevők listáját:
+If your networking setup requires that you explicitly permit connections made from IoT Edge devices, review the following list of IoT Edge components:
 
-* **IoT Edge-ügynök** állandó AMQP/MQTT-kapcsolaton keresztül nyitja meg a IoT hub, valószínűleg a WebSockets szolgáltatásban. 
-* **IoT Edge hub** egyetlen állandó AMQP-kapcsolatot nyit meg, vagy több MQTT-kapcsolatot hoz IoT hub, valószínűleg a websocketek felett. 
-* **IoT Edge démon** időszakos HTTPS-hívásokat végez IoT hub. 
+* **IoT Edge agent** opens a persistent AMQP/MQTT connection to IoT Hub, possibly over WebSockets. 
+* **IoT Edge hub** opens a single persistent AMQP connection or multiple MQTT connections to IoT Hub, possibly over WebSockets. 
+* **IoT Edge daemon** makes intermittent HTTPS calls to IoT Hub. 
 
-A DNS-név mindhárom esetben a következő mintának felel meg: \*.azure-devices.net. 
+In all three cases, the DNS name would match the pattern \*.azure-devices.net. 
 
-Emellett a **Container Engine** a tároló-BEÁLLÍTÁSJEGYZÉKek HTTPS-kapcsolaton keresztüli hívását is lehetővé teszi. A IoT Edge Runtime-tároló lemezképének lekéréséhez a DNS-név mcr.microsoft.com. A tároló motor az üzemelő példányban konfigurált többi beállításjegyzékhez csatlakozik. 
+Additionally, the **Container engine** makes calls to container registries over HTTPS. To retrieve the IoT Edge runtime container images, the DNS name is mcr.microsoft.com. The container engine connects to other registries as configured in the deployment. 
 
-Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
+This checklist is a starting point for firewall rules:
 
-   | URL-cím (\* = helyettesítő karakter) | Kimenő TCP-portok | Használat |
+   | URL (\* = wildcard) | Outbound TCP Ports | Használat |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
-   | global.azure-devices-provisioning.net  | 443 | DPS-hozzáférés (nem kötelező) |
-   | \*. azurecr.io | 443 | Személyes és harmadik féltől származó tároló-nyilvántartások |
-   | \*.blob.core.windows.net | 443 | Azure Container Registry rendszerkép-különbözetek letöltése a blob Storage-ból  | 
-   | \*. azure-devices.net | 5671, 8883, 443 | IoT Hub hozzáférés |
-   | \*. docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
+   | mcr.microsoft.com  | 443 | Microsoft container registry |
+   | global.azure-devices-provisioning.net  | 443 | DPS access (optional) |
+   | \*.azurecr.io | 443 | Personal and third-party container registries |
+   | \*.blob.core.windows.net | 443 | Download Azure Container Registry image deltas from blob storage  | 
+   | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub access |
+   | \*.docker.io  | 443 | Docker Hub access (optional) |
 
-A tűzfalszabályok némelyike a Azure Container Registry örököl. További információkért lásd: [szabályok konfigurálása Azure Container Registry eléréséhez tűzfal mögött](../container-registry/container-registry-firewall-access-rules.md).
+Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md).
 
-### <a name="configure-communication-through-a-proxy"></a>Kommunikáció konfigurálása proxyn keresztül
+### <a name="configure-communication-through-a-proxy"></a>Configure communication through a proxy
 
-Ha az eszközök egy proxykiszolgálót használó hálózaton lesznek telepítve, akkor képesnek kell lenniük arra, hogy a proxyn keresztül kommunikáljanak a IoT Hub és a tárolói kibocsátásiegység-forgalmi jegyzékek eléréséhez. További információ: [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztüli kommunikációhoz](how-to-configure-proxy-support.md).
+If your devices are going to be deployed on a network that uses a proxy server, they need to be able to communicate through the proxy to reach IoT Hub and container registries. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
-## <a name="solution-management"></a>Megoldás-kezelés
+## <a name="solution-management"></a>Solution management
 
-* **Hasznos**
-    * Naplók és diagnosztika beállítása
-    * Tesztek és CI/CD-folyamatok megfontolása
+* **Helpful**
+    * Set up logs and diagnostics
+    * Consider tests and CI/CD pipelines
 
-### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
+### <a name="set-up-logs-and-diagnostics"></a>Set up logs and diagnostics
 
-Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A démon-naplók lekérdezéséhez használhatja a `journalctl` parancssori eszközt. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. `Get-IoTEdgeLog` használatával kérdezheti le a naplókat a démonból. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
+On Linux, the IoT Edge daemon uses journals as the default logging driver. You can use the command-line tool `journalctl` to query the daemon logs. On Windows, the IoT Edge daemon uses PowerShell diagnostics. Use `Get-IoTEdgeLog` to query logs from the daemon. IoT Edge modules use the JSON driver for logging, which is the  default.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-IoT Edge központi telepítés tesztelésekor általában hozzáférhet az eszközökhöz a naplók és a hibák lekérdezéséhez. Egy üzembe helyezési forgatókönyvben előfordulhat, hogy nem rendelkezik ezzel a lehetőséggel. Gondolja át, hogyan fog adatokat gyűjteni az eszközökről éles környezetben. Az egyik lehetőség egy olyan naplózási modul használata, amely adatokat gyűjt a többi modulból, és elküldi azt a felhőbe. A naplózási modul egy példája a [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), vagy megtervezheti a sajátját is. 
+When you're testing an IoT Edge deployment, you can usually access your devices to retrieve logs and troubleshoot. In a deployment scenario, you may not have that option. Consider how you're going to gather information about your devices in production. One option is to use a logging module that collects information from the other modules and sends it to the cloud. One example of a logging module is [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), or you can design your own. 
 
-### <a name="place-limits-on-log-size"></a>Korlátok elhelyezése a naplók méretében
+### <a name="place-limits-on-log-size"></a>Place limits on log size
 
-Alapértelmezés szerint a Moby Container Engine nem állítja be a tároló naplójának méretére vonatkozó korlátozásokat. Az idő múlásával az eszköz betöltődik a naplókba, és elfogyott a szabad lemezterület. Ennek elkerüléséhez vegye figyelembe a következő lehetőségeket:
+By default the Moby container engine does not set container log size limits. Over time this can lead to the device filling up with logs and running out of disk space. Consider the following options to prevent this:
 
-**Lehetőség: az összes tároló modulra érvényes globális korlátok megadása**
+**Option: Set global limits that apply to all container modules**
 
-Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor naplójának beállításaiban. A következő példa a `json-file` (ajánlott) értékre állítja be a napló illesztőprogramját a méret és a fájlok számának korlátozásával:
+You can limit the size of all container logfiles in the container engine log options. The following example sets the log driver to `json-file` (recommended) with limits on size and number of files:
 
 ```JSON
 {
@@ -223,18 +222,18 @@ Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor napló
 }
 ```
 
-Adja hozzá (vagy fűzze hozzá) ezt az információt egy `daemon.json` nevű fájlhoz, és helyezze el a megfelelő helyet az eszköz platformjának.
+Add (or append) this information to a file named `daemon.json` and place it the right location for your device platform.
 
 | Platform | Földrajzi egység |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-A módosítások életbe léptetéséhez újra kell indítani a tároló motorját.
+The container engine must be restarted for the changes to take effect.
 
-**Lehetőség: az egyes tároló modulok naplózási beállításainak módosítása**
+**Option: Adjust log settings for each container module**
 
-Ezt megteheti az egyes modulok **createOptions** . Példa:
+You can do so in the **createOptions** of each module. Példa:
 
 ```yml
 "createOptions": {
@@ -250,11 +249,11 @@ Ezt megteheti az egyes modulok **createOptions** . Példa:
 }
 ```
 
-**További beállítások Linux rendszereken**
+**Additional options on Linux systems**
 
-* Konfigurálja úgy a tároló motort, hogy a naplókat a `systemd` [naplóba](https://docs.docker.com/config/containers/logging/journald/) küldje el az alapértelmezett naplózási illesztőprogram `journald` beállításával. 
+* Configure the container engine to send logs to `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) by setting `journald` as the default logging driver. 
 
-* A logrotate eszköz telepítésével rendszeresen távolítsa el a régi naplókat az eszközről. Használja a következő fájl-specifikációt: 
+* Periodically remove old logs from your device by installing a logrotate tool. Use the following file specification: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{
@@ -268,11 +267,11 @@ Ezt megteheti az egyes modulok **createOptions** . Példa:
    }
    ```
 
-### <a name="consider-tests-and-cicd-pipelines"></a>Tesztek és CI/CD-folyamatok megfontolása
+### <a name="consider-tests-and-cicd-pipelines"></a>Consider tests and CI/CD pipelines
 
-A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-ci-cd.md).
+For the most efficient IoT Edge deployment scenario, consider integrating your production deployment into your testing and CI/CD pipelines. Azure IoT Edge supports multiple CI/CD platforms, including Azure DevOps. For more information, see [Continuous integration and continuous deployment to Azure IoT Edge](how-to-ci-cd.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
-* Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-ci-cd.md).
+* Learn more about [IoT Edge automatic deployment](module-deployment-monitoring.md).
+* See how IoT Edge supports [Continuous integration and continuous deployment](how-to-ci-cd.md).

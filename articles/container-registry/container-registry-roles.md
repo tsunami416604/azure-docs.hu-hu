@@ -1,25 +1,20 @@
 ---
-title: Azure Container Registry – szerepkörök és engedélyek
-description: Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és az identitás-és hozzáférés-kezelés (IAM) használatával részletes engedélyeket biztosíthat az Azure Container Registry erőforrásaihoz.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: RBAC roles and permissions
+description: Use Azure role-based access control (RBAC) and identity and access management (IAM) to provide fine-grained permissions to resources in an Azure container registry.
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: danlep
-ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793984"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456236"
 ---
-# <a name="azure-container-registry-roles-and-permissions"></a>Szerepkörök és engedélyek Azure Container Registry
+# <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roles and permissions
 
-A Azure Container Registry szolgáltatás olyan Azure-szerepköröket támogat, amelyek különböző szintű engedélyeket biztosítanak egy Azure Container Registry-nek. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával olyan konkrét engedélyeket rendelhet a felhasználókhoz vagy egyszerű szolgáltatásokhoz, amelyeknek a beállításjegyzékkel kell működniük.
+The Azure Container Registry service supports a set of Azure roles that provide different levels of permissions to an Azure container registry. Use Azure [role-based access control](../role-based-access-control/index.yml) (RBAC) to assign specific permissions to users or service principals that need to interact with a registry.
 
-| Szerepkör/engedély       | [Hozzáférés a Resource Managerhez](#access-resource-manager) | [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Leküldéses rendszerkép](#push-image) | [Lekéréses rendszerkép](#pull-image) | [Rendszerkép-adatok törlése](#delete-image-data) | [Szabályzatok módosítása](#change-policies) |   [Képek aláírása](#sign-images)  |
+| Role/Permission       | [Access Resource Manager](#access-resource-manager) | [Create/delete registry](#create-and-delete-registry) | [Push image](#push-image) | [Pull image](#pull-image) | [Delete image data](#delete-image-data) | [Change policies](#change-policies) |   [Sign images](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Tulajdonos | X | X | X | X | X | X |  |  
 | Közreműködő | X | X | X |  X | X | X |  |  
@@ -29,52 +24,52 @@ A Azure Container Registry szolgáltatás olyan Azure-szerepköröket támogat, 
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
-## <a name="differentiate-users-and-services"></a>Felhasználók és szolgáltatások megkülönböztetése
+## <a name="differentiate-users-and-services"></a>Differentiate users and services
 
-Minden alkalommal érvényesek az engedélyek, a legjobb megoldás az, ha a feladat elvégzéséhez egy személy vagy szolgáltatás számára a legkorlátozottat kell megadni. A következő engedélyek olyan képességeket jelentenek, amelyeket az emberek és a fej nélküli szolgáltatások használhatnak.
+Any time permissions are applied, a best practice is to provide the most limited set of permissions for a person, or service, to accomplish a task. The following permission sets represent a set of capabilities that may be used by humans and headless services.
 
-### <a name="cicd-solutions"></a>CI/CD-megoldások
+### <a name="cicd-solutions"></a>CI/CD solutions
 
-`docker build` parancsok CI/CD-megoldásokból való automatizálásakor `docker push` képességekre van szükség. A fej nélküli szolgáltatási forgatókönyvek esetében javasoljuk, hogy rendelje hozzá a **AcrPush** szerepkört. Ez a szerepkör a szélesebb körben **közreműködő** szerepkörtől eltérően megakadályozza, hogy a fiók más beállításjegyzékbeli műveleteket végezzen, vagy Azure Resource Managerhoz hozzáférjen.
+When automating `docker build` commands from CI/CD solutions, you need `docker push` capabilities. For these headless service scenarios, we suggest assigning the **AcrPush** role. This role, unlike the broader **Contributor** role, prevents the account from performing other registry operations or accessing Azure Resource Manager.
 
-### <a name="container-host-nodes"></a>Tároló-gazdagép csomópontjai
+### <a name="container-host-nodes"></a>Container host nodes
 
-Hasonlóképpen, a tárolókat futtató csomópontoknak a **AcrPull** szerepkörre van szükségük, de nem igényelnek **olvasói** képességeket.
+Likewise, nodes running your containers need the **AcrPull** role, but shouldn't require **Reader** capabilities.
 
-### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker-bővítmény
+### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker extension
 
-Az olyan eszközökhöz, mint a Visual Studio Code [Docker bővítmény](https://code.visualstudio.com/docs/azure/docker), további erőforrás-szolgáltatói hozzáférésre van szükség az elérhető Azure Container-jegyzékek listázásához. Ebben az esetben adja meg a felhasználók hozzáférését az **olvasó** vagy **közreműködő** szerepkörhöz. Ezek a szerepkörök lehetővé teszik `docker pull`, `docker push`, `az acr list`, `az acr build`és egyéb képességeket. 
+For tools like the Visual Studio Code [Docker extension](https://code.visualstudio.com/docs/azure/docker), additional resource provider access is required to list the available Azure container registries. In this case, provide your users access to the **Reader** or **Contributor** role. These roles allow `docker pull`, `docker push`, `az acr list`, `az acr build`, and other capabilities. 
 
-## <a name="access-resource-manager"></a>Hozzáférés a Resource Managerhez
+## <a name="access-resource-manager"></a>Access Resource Manager
 
-Az [Azure CLI](/cli/azure/)-vel való Azure Portal és beállításjegyzék-kezeléshez Azure Resource Manager hozzáférés szükséges. Ha például a `az acr list` parancs használatával szeretné lekérni a beállításjegyzékek listáját, erre az engedélyre van szüksége. 
+Azure Resource Manager access is required for the Azure portal and registry management with the [Azure CLI](/cli/azure/). For example, to get a list of registries by using the `az acr list` command, you need this permission set. 
 
-## <a name="create-and-delete-registry"></a>Beállításjegyzék létrehozása és törlése
+## <a name="create-and-delete-registry"></a>Create and delete registry
 
-Azure Container-jegyzékek létrehozásának és törlésének lehetősége.
+The ability to create and delete Azure container registries.
 
-## <a name="push-image"></a>Leküldéses rendszerkép
+## <a name="push-image"></a>Push image
 
-Rendszerképek `docker push`ának lehetősége, vagy egy másik [támogatott](container-registry-image-formats.md) összetevő, például egy Helm-diagram leküldése a beállításjegyzékbe. [Hitelesítés](container-registry-authentication.md) szükséges a beállításjegyzékben a hitelesítő adatokkal. 
+The ability to `docker push` an image, or push another [supported artifact](container-registry-image-formats.md) such as a Helm chart, to a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity. 
 
-## <a name="pull-image"></a>Lekéréses rendszerkép
+## <a name="pull-image"></a>Pull image
 
-Nem karanténba helyezett rendszerkép `docker pull`ának lehetősége, vagy egy másik [támogatott](container-registry-image-formats.md) összetevő, például egy Helm-diagram lekérése egy beállításjegyzékből. [Hitelesítés](container-registry-authentication.md) szükséges a beállításjegyzékben a hitelesítő adatokkal.
+The ability to `docker pull` a non-quarantined image, or pull another [supported artifact](container-registry-image-formats.md) such as a Helm chart, from a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity.
 
-## <a name="delete-image-data"></a>Rendszerkép-adatok törlése
+## <a name="delete-image-data"></a>Delete image data
 
-Képes törölni a [tároló lemezképeit](container-registry-delete.md), vagy törölhet más [támogatott](container-registry-image-formats.md) összetevőket, például Helm-diagramokat egy beállításjegyzékből.
+The ability to [delete container images](container-registry-delete.md), or delete other [supported artifacts](container-registry-image-formats.md) such as Helm charts, from a registry.
 
-## <a name="change-policies"></a>Szabályzatok módosítása
+## <a name="change-policies"></a>Change policies
 
-Szabályzatok konfigurálása a beállításjegyzékben. A szabályzatok közé tartozik például a rendszerkép kiürítése, a karanténba helyezés és a képaláírások engedélyezése.
+The ability to configure policies on a registry. Policies include image purging, enabling quarantine, and image signing.
 
-## <a name="sign-images"></a>Képek aláírása
+## <a name="sign-images"></a>Sign images
 
-Képes a képek aláírására, általában egy automatizált folyamathoz rendelve, amely egy egyszerű szolgáltatást használ. Ez az engedély általában [leküldéses képpel](#push-image) kombinálva lehetővé teszi a megbízható rendszerképek beállításjegyzékbe való leküldését. Részletekért lásd: [a tartalom megbízhatósága Azure Container Registryban](container-registry-content-trust.md).
+The ability to sign images, usually assigned to an automated process, which would use a service principal. This permission is typically combined with [push image](#push-image) to allow pushing a trusted image to a registry. For details, see [Content trust in Azure Container Registry](container-registry-content-trust.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a RBAC-szerepkörök Azure-identitáshoz való hozzárendeléséről a [Azure Portal](../role-based-access-control/role-assignments-portal.md), az [Azure CLI](../role-based-access-control/role-assignments-cli.md)vagy más Azure-eszközök használatával.
+* Learn more about assigning RBAC roles to an Azure identity by using the [Azure portal](../role-based-access-control/role-assignments-portal.md), the [Azure CLI](../role-based-access-control/role-assignments-cli.md), or other Azure tools.
 
-* További információ a Azure Container Registry [hitelesítési lehetőségeiről](container-registry-authentication.md) .
+* Learn about [authentication options](container-registry-authentication.md) for Azure Container Registry.

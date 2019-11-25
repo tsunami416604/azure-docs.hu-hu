@@ -1,62 +1,58 @@
 ---
-title: Több beállításjegyzékbeli hitelesítés Azure Container Registry feladatból
-description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása az Azure-erőforrások felügyelt identitásának használatával való hozzáféréshez egy másik privát Azure Container registryhez
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: Cross-registry authentication from ACR task
+description: Configure an Azure Container Registry Task (ACR Task) to access another private Azure container registry by using a managed identity for Azure Resources
 ms.topic: article
 ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931522"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456192"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Cross-registry authentication in an ACR task using an Azure-managed identity 
 
-Egy [ACR-feladatban](container-registry-tasks-overview.md) [engedélyezheti az Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
+In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely a feladat futtatásához használttól eltérő beállításjegyzékből kér le egy rendszerképet.
+In this article, you learn how to enable a managed identity in a task that pulls an image from a registry different from the one used to run the task.
 
-Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-A példában szereplő feladat egy másik Azure Container registryből származó alaprendszerkép lekérése egy alkalmazás rendszerképének elkészítéséhez és leküldéséhez. Az alaprendszerkép lekéréséhez konfigurálja a feladatot egy felügyelt identitással, és rendelje hozzá a megfelelő engedélyeket. 
+The example task pulls a base image from another Azure container registry to build and push an application image. To pull the base image, you configure the task with a managed identity and assign appropriate permissions to it. 
 
-Ez a példa egy felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitást használó lépéseket mutatja be. Az Ön által választott identitás a szervezet igényeitől függ.
+This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
 
-A valós forgatókönyvekben a szervezetek az összes fejlesztői csapat által az alkalmazásaikat felépítő alaplemezképek készletét is tarthatják. Ezeket az alaplemezképeket egy vállalati beállításjegyzék tárolja, és minden fejlesztői csapat csak lekéréses jogokkal rendelkezik. 
+In a real-world scenario, an organization might maintain a set of base images used by all development teams to build their applications. These base images are stored in a corporate registry, with each development team having only pull rights. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez két Azure Container-nyilvántartóra van szükség:
+For this article, you need two Azure container registries:
 
-* Az első beállításjegyzék használatával ACR-feladatokat hozhat létre és futtathat. Ebben a cikkben a beállításjegyzék neve *myregistry*. 
-* A második beállításjegyzékben található egy rendszerkép létrehozására szolgáló feladathoz használt alaprendszerkép. Ebben a cikkben a második beállításjegyzék neve *mybaseregistry*. 
+* You use the first registry to create and execute ACR tasks. In this article, this registry is named *myregistry*. 
+* The second registry hosts a base image used for the task to build an image. In this article, the second registry is named *mybaseregistry*. 
 
-Cserélje le a változót a saját beállításjegyzékbeli nevére a későbbi lépésekben.
+Replace with your own registry names in later steps.
 
-Ha még nem rendelkezik a szükséges Azure Container-nyilvántartásokkal, tekintse meg a következőt: rövid útmutató [: privát tároló-beállításjegyzék létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md). A lemezképeket még nem kell leküldeni a beállításjegyzékbe.
+If you don't already have the needed Azure container registries, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
 
-## <a name="prepare-base-registry"></a>Alapszintű beállításjegyzék előkészítése
+## <a name="prepare-base-registry"></a>Prepare base registry
 
-Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy Docker nevű fájlt az alábbi tartalommal. Ez az egyszerű példa egy Node. js-alapú alaprendszerképet hoz létre egy nyilvános rendszerképből a Docker hub-ban.
+First, create a working directory and then create a file named Dockerfile with the following content. This simple example builds a Node.js base image from a public image in Docker Hub.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
-Az aktuális könyvtárban futtassa az az [ACR Build][az-acr-build] parancsot az alaprendszerkép kiépítéséhez és az alap beállításjegyzékbe való leküldéséhez. A gyakorlatban a szervezet egy másik csapata vagy folyamata is megtarthatja az alap beállításjegyzéket.
+In the current directory, run the [az acr build][az-acr-build] command to build and push the base image to the base registry. In practice, another team or process in the organization might maintain the base registry.
     
 ```azurecli
 az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
 ```
 
-## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
+## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
 
-A példa [többlépéses feladatának](container-registry-tasks-multi-step.md) lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `helloworldtask.yaml` nevű fájlt a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse `REGISTRY_NAME` értékét a Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
+The steps for this example [multi-step task](container-registry-tasks-multi-step.md) are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `helloworldtask.yaml` in your local working directory and paste in the following contents. Update the value of `REGISTRY_NAME` in the build step with the server name of your base registry.
 
 ```yml
 version: v1.0.0
@@ -66,17 +62,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-A Build lépés az [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár `Dockerfile-app` fájlját használja egy rendszerkép létrehozásához. A `--build-arg` az alaprendszerkép lekérésére hivatkozik az alap beállításjegyzékre. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
+The build step uses the `Dockerfile-app` file in the [Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) repo to build an image. The `--build-arg` references the base registry to pull the base image. When successfully built, the image is pushed to the registry used to run the task.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>1\. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a felhasználó által hozzárendelt identitást. Ha inkább a rendszer által hozzárendelt identitást szeretné engedélyezni, tekintse meg a [2. lehetőség: feladat létrehozása a rendszer által hozzárendelt identitással](#option-2-create-task-with-system-assigned-identity)című témakört. 
+The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="create-task"></a>Feladat létrehozása
+### <a name="create-task"></a>Create task
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtár `helloworldtask.yaml` fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-AZONOSÍTÓját. 
+Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
 
 ```azurecli
 az acr task create \
@@ -89,13 +85,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>2\. lehetőség: feladat létrehozása rendszer által hozzárendelt identitással
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse meg az [1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity)című témakört. 
+The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
 
-### <a name="create-task"></a>Feladat létrehozása
+### <a name="create-task"></a>Create task
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtár `helloworldtask.yaml` fájlra hivatkozik. Az érték nélküli `--assign-identity` paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
+Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task. 
 
 ```azurecli
 az acr task create \
@@ -107,25 +103,25 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
+## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Give identity pull permissions to the base registry
 
-Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry*.
+In this section, give the managed identity permissions to pull from the base registry, *mybaseregistry*.
 
-Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításjegyzék erőforrás-azonosítójának lekéréséhez és egy változóban való tárolásához:
+Use the [az acr show][az-acr-show] command to get the resource ID of the base registry and store it in a variable:
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a `acrpull` szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
+Use the [az role assignment create][az-role-assignment-create] command to assign the identity the `acrpull` role to the base registry. This role has permissions only to pull images from the registry.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
 ```
 
-## <a name="add-target-registry-credentials-to-task"></a>Cél beállításjegyzékbeli hitelesítő adatok hozzáadása a feladathoz
+## <a name="add-target-registry-credentials-to-task"></a>Add target registry credentials to task
 
-Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy hozzáadja az identitás hitelesítő adatait a feladathoz, hogy az képes legyen hitelesíteni az alap beállításjegyzékével. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást, adja át `--use-identity` az identitás ügyfél-azonosítójával. Ha engedélyezte a rendszer által hozzárendelt identitást, adja át `--use-identity [system]`.
+Now use the [az acr task credential add][az-acr-task-credential-add] command to add the identity's credentials to the task so that it can authenticate with the base registry. Run the command corresponding to the type of managed identity you enabled in the task. If you enabled a user-assigned identity, pass `--use-identity` with the client ID of the identity. If you enabled a system-assigned identity, pass `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -143,9 +139,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-## <a name="manually-run-the-task"></a>A feladat manuális futtatása
+## <a name="manually-run-the-task"></a>Manually run the task
 
-Annak ellenőrzéséhez, hogy a felügyelt identitást engedélyező feladat sikeresen fut-e, manuálisan aktiválja a feladatot az az [ACR Task Run][az-acr-task-run] paranccsal. 
+To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. 
 
 ```azurecli
 az acr task run \
@@ -153,7 +149,7 @@ az acr task run \
   --registry myregistry
 ```
 
-Ha a feladat sikeresen fut, a kimenet a következőhöz hasonló:
+If the task runs successfully, output is similar to:
 
 ```
 Queued a run with ID: cf10
@@ -202,7 +198,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Futtassa az az [ACR repository show-Tags][az-acr-repository-show-tags] parancsot annak ellenőrzéséhez, hogy a rendszerkép létrehozva lett-e, és sikeresen leküldve a *myregistry*:
+Run the [az acr repository show-tags][az-acr-repository-show-tags] command to verify that the image built and was successfully pushed to *myregistry*:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -216,8 +212,8 @@ cf10
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
-* Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)
+* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
+* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

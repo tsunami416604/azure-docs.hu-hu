@@ -1,6 +1,6 @@
 ---
-title: Modulok üzembe helyezése a Visual Studio Code-Azure IoT Edgeban | Microsoft Docs
-description: Modulok üzembe helyezése a Visual Studio Code használatával IoT Edge eszközön
+title: Deploy modules from Visual Studio Code - Azure IoT Edge | Microsoft Docs
+description: Use Visual Studio Code to deploy modules to an IoT Edge device
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,34 +9,33 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: c3d721427075736138ba73fda51a4fd515125f1c
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 415494fed0870a855a20314816bcebbe22680a98
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964863"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457412"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modulok üzembe helyezése a Visual Studio Code-ból
+# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Deploy Azure IoT Edge modules from Visual Studio Code
 
-Miután létrehozta IoT Edge modulokat az üzleti logikával, üzembe helyezheti azokat az eszközökön a peremhálózat működéséhez. Ha több modullal is együttműködik az adatok gyűjtéséhez és feldolgozásához, egyszerre telepítheti őket, és deklarálhatja az azokat összekötő útválasztási szabályokat.
+Once you create IoT Edge modules with your business logic, you want to deploy them to your devices to operate at the edge. If you have multiple modules that work together to collect and process data, you can deploy them all at once and declare the routing rules that connect them.
 
-Ez a cikk bemutatja, hogyan hozhat létre JSON központi telepítési jegyzéket, majd ezzel a fájllal leküldheti a központi telepítést egy IoT Edge eszközre. További információ a megosztott címkék alapján több eszközt célzó központi telepítés létrehozásáról: [IoT Edge modulok üzembe helyezése és figyelése nagy léptékben](how-to-deploy-monitor.md)
+This article shows how to create a JSON deployment manifest, then use that file to push the deployment to an IoT Edge device. For information about creating a deployment that targets multiple devices based on their shared tags, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
-* [IoT Edge-eszköz](how-to-register-device.md#register-with-visual-studio-code) , amelyen telepítve van a IoT Edge futtatókörnyezet.
+* An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
+* An [IoT Edge device](how-to-register-device.md#register-with-visual-studio-code) with the IoT Edge runtime installed.
 * [Visual Studio Code](https://code.visualstudio.com/).
-* A Visual Studio Code-hoz készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) for Visual Studio Code.
 
-## <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
+## <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
+A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. For more information about how deployment manifests work and how to create them, see [Understand how IoT Edge modules can be used, configured, and reused](module-composition.md).
 
-Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse helyileg a telepítési jegyzéket. JSON-fájl. A fájl elérési útját a következő szakaszban fogja használni, amikor a parancs futtatásával alkalmazza a konfigurációt az eszközre.
+To deploy modules using Visual Studio Code, save the deployment manifest locally as a .JSON file. You will use the file path in the next section when you run the command to apply the configuration to your device.
 
-Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
+Here's a basic deployment manifest with one module as an example:
 
    ```json
    {
@@ -102,53 +101,53 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
    }
    ```
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
+## <a name="sign-in-to-access-your-iot-hub"></a>Sign in to access your IoT hub
 
-A Visual Studio Code-hoz készült Azure IoT Extensions használatával műveleteket hajthat végre az IoT hub segítségével. Ezeknek a műveleteknek a működéséhez be kell jelentkeznie az Azure-fiókjába, és ki kell választania azt az IoT hub-t, amelyen dolgozik.
+You can use the Azure IoT extensions for Visual Studio Code to perform operations with your IoT hub. For these operations to work, you need to sign in to your Azure account and select the IoT hub that you are working on.
 
-1. A Visual Studio Code-ban nyissa meg a **Explorer** nézetet.
+1. In Visual Studio Code, open the **Explorer** view.
 
-1. Az Explorer alján bontsa ki az **Azure IoT hub-eszközök** szakaszt.
+1. At the bottom of the Explorer, expand the **Azure IoT Hub Devices** section.
 
-   ![Az Azure IoT Hub-eszközök szakasz kibontása](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Expand Azure IoT Hub Devices section](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. Kattintson a **...** elemre az **Azure IoT hub eszközök** szakasz fejlécében. Ha nem látja a három pontot, vigye a kurzort a fejléc fölé.
+1. Click on the **...** in the **Azure IoT Hub Devices** section header. If you don't see the ellipsis, hover over the header.
 
-1. Válassza a **IoT hub kiválasztása**lehetőséget.
+1. Choose **Select IoT Hub**.
 
-1. Ha nem jelentkezett be az Azure-fiókjába, kövesse az utasításokat.
+1. If you are not signed in to your Azure account, follow the prompts to do so.
 
 1. Válassza ki az Azure-előfizetését.
 
-1. Válassza ki az IoT hubot.
+1. Select your IoT hub.
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 
-A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataival konfigurált telepítési jegyzékfájlt.
+You deploy modules to your device by applying the deployment manifest that you configured with the module information.
 
-1. A Visual Studio Code Explorer nézetében bontsa ki az **Azure IoT hub-eszközök** szakaszt.
+1. In the Visual Studio Code explorer view, expand the **Azure IoT Hub Devices** section.
 
-1. Kattintson a jobb gombbal arra a IoT Edge eszközre, amelyet az üzembe helyezési jegyzékkel szeretne konfigurálni.
+1. Right-click on the IoT Edge device that you want to configure with the deployment manifest.
 
     > [!TIP]
-    > Annak ellenőrzéséhez, hogy a kiválasztott eszköz egy IoT Edge eszköz-e, válassza ki a modulok listájának kibontásához és a **$edgeHub** és a **$edgeAgent**meglétének ellenőrzéséhez. Minden IoT Edge eszköz tartalmazza ezt a két modult.
+    > To confirm that the device you've chosen is an IoT Edge device, select it to expand the list of modules and verify the presence of **$edgeHub** and **$edgeAgent**. Every IoT Edge device includes these two modules.
 
-1. Válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+1. Select **Create Deployment for Single Device**.
 
-1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása**elemre.
+1. Navigate to the deployment manifest JSON file that you want to use, and click **Select Edge Deployment Manifest**.
 
-   ![Edge központi telepítési jegyzékfájljának kiválasztása](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
+   ![Select Edge Deployment Manifest](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
-Az üzembe helyezés eredményét a VS Code kimenetében kell kinyomtatni. A sikeres telepítések néhány percen belül alkalmazhatók, ha a célként megadott eszköz fut, és az internethez csatlakozik.
+The results of your deployment are printed in the VS Code output. Successful deployments are applied within a few minutes if the target device is running and connected to the internet.
 
-## <a name="view-modules-on-your-device"></a>Az eszközön található modulok megtekintése
+## <a name="view-modules-on-your-device"></a>View modules on your device
 
-Miután telepítette a modulokat az eszközre, megtekintheti az összeset az **Azure IoT hub-eszközök** szakaszban. Kattintson a IoT Edge eszköz melletti nyílra a kibontásához. A jelenleg futó modulok jelennek meg.
+Once you've deployed modules to your device, you can view all of them in the **Azure IoT Hub Devices** section. Select the arrow next to your IoT Edge device to expand it. All the currently running modules are displayed.
 
-Ha nemrég telepített új modulokat egy eszközre, vigye az egérmutatót az **Azure IoT hub-eszközök** szakasz fejlécére, és kattintson a frissítés ikonra a nézet frissítéséhez.
+If you recently deployed new modules to a device, hover over the **Azure IoT Hub Devices** section header and select the refresh icon to update the view.
 
-Kattintson a jobb gombbal egy modul nevére a különálló modul megtekintéséhez és szerkesztéséhez.
+Right-click the name of a module to view and edit the module twin.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge modulokat a skálán](how-to-deploy-monitor.md)
+Learn how to [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)

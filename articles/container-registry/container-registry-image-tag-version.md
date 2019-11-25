@@ -1,63 +1,61 @@
 ---
-title: A címkék és a verziók képei a Azure Container Registry
-description: Ajánlott eljárások a Docker-tároló rendszerképeinek címkézéséhez és verziószámozásához, amikor képeket küld és húz le egy Azure Container registryből
-services: container-registry
+title: Image tag best practices
+description: Best practices for tagging and versioning Docker container images when pushing images to and pulling images from an Azure container registry
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931561"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454994"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Recommendations for tagging and versioning container images
 
-Amikor egy tároló-beállításjegyzékbe helyezi üzembe a tároló-lemezképek telepítését, majd telepíti őket, szüksége lesz egy, a képcímkézésre és a verziószámozásra vonatkozó stratégiára. Ebből a cikkből megtudhatja, hogyan illeszkedik a tároló életciklusa során a következő két módszerre:
+When pushing deploying container images to a container registry and then deploying them, you need a strategy for image tagging and versioning. This article discusses two approaches and where each fits during the container lifecycle:
 
-* **Stabil címkék** – felhasználható címkék, például egy fő vagy alverzió (például *mycontainerimage: 1.0*) jelzése.
-* **Egyedi címkék** – egy másik címkét minden olyan képhez, amelyet egy beállításjegyzékbe küld, például *mycontainerimage: abc123*.
+* **Stable tags** - Tags that you reuse, for example, to indicate a major or minor version such as *mycontainerimage:1.0*.
+* **Unique tags** - A different tag for each image you push to a registry, such as *mycontainerimage:abc123*.
 
-## <a name="stable-tags"></a>Stabil Címkék
+## <a name="stable-tags"></a>Stable tags
 
-**Javaslat**: használjon stabil címkéket a tároló-buildek **alapképeinek** fenntartásához. Kerülje a stabil címkékkel való üzembe helyezést, mivel ezek a címkék továbbra is megkapják a frissítéseket, és következetlenségeket vezethetnek be az éles környezetekben.
+**Recommendation**: Use stable tags to maintain **base images** for your container builds. Avoid deployments with stable tags, because those tags continue to receive updates and can introduce inconsistencies in production environments.
 
-A *stabil címkék* azt jelentik, hogy egy fejlesztő vagy egy összeállítási rendszer továbbra is lehívhat egy adott címkét, amely továbbra is frissítéseket kap. A stabil nem jelenti azt, hogy a tartalom zárolva van. Ehelyett a stabil a rendszerképnek stabilnak kell lennie az adott verzió céljához. A "stabil" maradni a biztonsági javítások vagy a keretrendszer frissítéseinek alkalmazásával lehet kiszolgálni.
+*Stable tags* mean a developer, or a build system, can continue to pull a specific tag, which continues to get updates. Stable doesn’t mean the contents are frozen. Rather, stable implies the image should be stable for the intent of that version. To stay “stable”, it might be serviced to apply security patches or framework updates.
 
 ### <a name="example"></a>Példa
 
-A Framework Team-hajók 1,0-es verzióval rendelkeznek. Tudják, hogy frissítéseket küldenek, beleértve a kisebb frissítéseket is. Egy adott fő-és alverzióhoz tartozó stabil címkék támogatásához két stabil címkével rendelkeznek.
+A framework team ships version 1.0. They know they’ll ship updates, including minor updates. To support stable tags for a given major and minor version, they have two sets of stable tags.
 
-* `:1` – a főverzió stabil címkéje. a `1` a "legújabb" vagy "legújabb" 1. * verziót jelöli.
-* `:1.0`– a 1,0-es verzióhoz tartozó stabil címke, amely lehetővé teszi a fejlesztők számára, hogy a 1,0-es frissítésekhez kapcsolódjanak, és ne legyenek felkészülve a 1,1-ra a kiadáskor.
+* `:1` – a stable tag for the major version. `1` represents the “newest” or “latest” 1.* version.
+* `:1.0`- a stable tag for version 1.0, allowing a developer to bind to updates of 1.0, and not be rolled forward to 1.1 when it is released.
 
-A csapat a `:latest` címkét is használja, amely a legújabb stabil címkére mutat, függetlenül attól, hogy milyen a jelenlegi főverzió.
+The team also uses the `:latest` tag, which points to the latest stable tag, no matter what the current major version is.
 
-Ha az alapszintű lemezkép frissítései elérhetők, vagy a keretrendszer bármely típusú karbantartási kiadása, a stabil címkékkel rendelkező rendszerképek frissülnek a legújabb kivonatoló értékre, amely az adott verzió legújabb stabil kiadását jelöli.
+When base image updates are available, or any type of servicing release of the framework, images with the stable tags are updated to the newest digest that represents the most current stable release of that version.
 
-Ebben az esetben a fő és a másodlagos címkéket is folyamatosan szervizeli a rendszer. Alaprendszerkép-forgatókönyv esetén ez lehetővé teszi, hogy a rendszerkép tulajdonosa kiszolgált lemezképeket biztosítson.
+In this case, both the major and minor tags are continually being serviced. From a base image scenario, this allows the image owner to provide serviced images.
 
-## <a name="unique-tags"></a>Egyedi címkék
+## <a name="unique-tags"></a>Unique tags
 
-**Javaslat**: használjon egyedi címkéket az üzemelő **példányokhoz**, különösen olyan környezetben, amely több csomópontra is méretezhető. Valószínűleg az összetevők konzisztens verziójának szándékos telepítését szeretné használni. Ha a tároló újraindul, vagy egy Orchestrator több példányra van kibővítve, a gazdagépek nem fognak véletlenül újabb verziót lekérni, és nem konzisztensek a többi csomóponttal.
+**Recommendation**: Use unique tags for **deployments**, especially in an environment that could scale on multiple nodes. You likely want deliberate deployments of a consistent version of components. If your container restarts or an orchestrator scales out more instances, your hosts won’t accidentally pull a newer version, inconsistent with the other nodes.
 
-Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe leküldött összes rendszerkép egyedi címkével rendelkezik. A címkék nem lesznek újra felhasználva. Az egyedi címkék létrehozásához több minta is készíthető, többek között a következők:
+Unique tagging simply means that every image pushed to a registry has a unique tag. Tags are not reused. There are several patterns you can follow to generate unique tags, including:
 
-* **Dátum-idő bélyegző** – ez a megközelítés meglehetősen gyakori, mivel a rendszerkép létrehozásakor egyértelműen megtudhatja, hogy mikor készült. De hogyan lehet összekapcsolni a Build-rendszerrel? Meg kell keresnie az adott időpontban befejezett buildet? Milyen időzóna van? Az összes Build rendszerét UTC-re kalibrálták?
-* **Git-véglegesítés** – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig*stabil címkét biztosít.
-* **Manifest Digest** – a tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép egy jegyzékfájlhoz van társítva, amely egyedi SHA-256 kivonattal vagy kivonattal van azonosítva. Míg egyedi, a kivonat hosszú, nehezen olvasható és nem korrelál a Build-környezettel.
-* **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
+* **Date-time stamp** - This approach is fairly common, since you can clearly tell when the image was built. But, how to correlate it back to your build system? Do you have to find the build that was completed at the same time? What time zone are you in? Are all your build systems calibrated to UTC?
+* **Git commit**  – This approach works until you start supporting base image updates. If a base image update happens, your build system  kicks off with the same Git commit as the previous build. However, the base image has new content. In general, a Git commit provides a *semi*-stable tag.
+* **Manifest digest** - Each container image pushed to a container registry is associated with a manifest, identified by a unique SHA-256 hash, or digest. While unique, the digest is long, difficult to read, and uncorrelated with your build environment.
+* **Build ID** - This option may be best since it's likely incremental, and it allows you to correlate back to the specific build to find all the artifacts and logs. However, like a manifest digest, it might be difficult for a human to read.
 
-  Ha a szervezet több Build-rendszerrel rendelkezik, a címke előállítása a létrehozási rendszer nevével a következő beállítás egyik változata: `<build-system>-<build-id>`. Megkülönböztetni például az API csapat Jenkins Build rendszerét és a webes csapat Azure-folyamatait.
+  If your organization has several build systems, prefixing the tag with the build system name is a variation on this option: `<build-system>-<build-id>`. For example, you could differentiate builds from the API team’s Jenkins build system and the web team's Azure Pipelines build system.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az ebben a cikkben szereplő fogalmak részletesebb ismertetését lásd [: Docker-címkék címkézése és a Docker-rendszerképek verziószámozására vonatkozó ajánlott eljárások](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+For a more detailed discussion of the concepts in this article, see the blog post [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-Az Azure Container Registry teljesítményének és költséghatékony használatának maximalizálása érdekében tekintse meg az [ajánlott eljárásokat a Azure Container Registryhoz](container-registry-best-practices.md).
+To help maximize the performance and cost-effective use of your Azure container registry, see [Best practices for Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 
