@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665643"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287097"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
 
@@ -37,6 +37,30 @@ Az állampolgárok adatintegrátorai több mint 60%-ot költenek az adatgyűjté
 ### <a name="data-validation"></a>Adatérvényesítés
 
 Az adatokat kód nélküli módon vizsgálhatja, hogy eltávolítsa a kiugró értékeket, a rendellenességeket, és megegyezzen a gyors elemzések egy alakzatával.
+
+## <a name="supported-sources"></a>Támogatott források
+
+| Összekötő | Adatformátum | Hitelesítés típusa |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Fiókkulcs |
+| [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | CSV | Szolgáltatásnév |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Fiók kulcsa, egyszerű szolgáltatásnév |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-hitelesítés |
+| [Azure szinapszis-elemzés](connector-azure-sql-data-warehouse.md) | - | SQL-hitelesítés |
+
+## <a name="the-mashup-editor"></a>Az összemashup-szerkesztő
+
+Amikor létrehoz egy huzavona-adatfolyamot, az összes forrás-adatkészlet adatkészlet-lekérdezésekvé válik, és a **ADFResource** mappába kerül. Alapértelmezés szerint a UserQuery az első adatkészlet-lekérdezésre mutat. Az összes átalakítást a UserQuery kell elvégezni, mivel az adatkészlet-lekérdezések módosításai nem támogatottak, és nem maradnak meg. A lekérdezések átnevezése, hozzáadása és törlése jelenleg nem támogatott.
+
+![Huzavona](media/wrangling-data-flow/editor.png)
+
+Jelenleg nem minden Power Query M függvény támogatott az adatok huzavona, annak ellenére, hogy a létrehozás során elérhetővé válik. A huzavona-adatfolyamatok létrehozásakor a rendszer a következő hibaüzenetet fogja kérni, ha egy függvény nem támogatott:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+A támogatott átalakításokkal kapcsolatos további információkért lásd: [huzavona-adatfolyam függvények](wrangling-data-flow-functions.md).
+
+Az huzavona-adatfolyam jelenleg csak egy fogadóba való írást támogatja.
 
 ## <a name="next-steps"></a>További lépések
 
