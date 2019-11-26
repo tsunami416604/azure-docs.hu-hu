@@ -1,7 +1,7 @@
 ---
-title: 'Regressziós oktatóanyag: automatizált ML'
+title: 'Regression tutorial: Automated ML'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hozhatja ki gépi tanulási modellt az automatizált gépi tanulás használatával. A Azure Machine Learning az adatok előfeldolgozását, az algoritmus kiválasztását és a hiperparaméter kiválasztását automatizált módon végezheti el. Ezután az utolsó modell üzembe helyezése Azure Machine Learning.
+description: In this tutorial, you learn how to generate a machine learning model by using automated machine learning. Azure Machine Learning can perform data preprocessing, algorithm selection, and hyperparameter selection in an automated way for you.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,39 +10,39 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 5e7d897b3a845580d7830e2cf816417f2282dd27
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2a47b6851d9c3250913783c8a63b666e8a8474d9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271864"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483550"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Use automated machine learning to predict taxi fares
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben az oktatóanyagban a Azure Machine Learning automatizált gépi tanulást használ egy regressziós modell létrehozásához a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
+In this tutorial, you use automated machine learning in Azure Machine Learning to create a regression model to predict NYC taxi fare prices. This process accepts training data and configuration settings, and automatically iterates through combinations of different feature normalization/standardization methods, models, and hyperparameter settings to arrive at the best model.
 
-![Folyamatábra](./media/tutorial-auto-train-models/flow2.png)
+![Flow diagram](./media/tutorial-auto-train-models/flow2.png)
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+In this tutorial you learn the following tasks:
 
 > [!div class="checklist"]
-> * Az Azure Open-adatkészletek használatával letöltheti, átalakíthatja és megtisztíthatja az adatokat
-> * Automatizált gépi tanulási regressziós modell betanítása
-> * Modell pontosságának kiszámítása
+> * Download, transform, and clean data using Azure Open Datasets
+> * Train an automated machine learning regression model
+> * Calculate model accuracy
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version](https://aka.ms/AMLFree) of Azure Machine Learning today.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nem rendelkezik Azure Machine Learning munkaterülettel vagy notebook virtuális géppel, fejezze be a [telepítési útmutatót](tutorial-1st-experiment-sdk-setup.md) .
-* A telepítési oktatóanyag befejezése után nyissa meg az **oktatóanyagok/Regression-Automated-ml. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
+* Complete the [setup tutorial](tutorial-1st-experiment-sdk-setup.md) if you don't already have an Azure Machine Learning workspace or notebook virtual machine.
+* After you complete the setup tutorial, open the **tutorials/regression-automated-ml.ipynb** notebook using the same notebook server.
 
-Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetben](how-to-configure-environment.md#local)szeretné futtatni. Futtassa `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` a szükséges csomagok beszerzéséhez.
+This tutorial is also available on [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) if you wish to run it in your own [local environment](how-to-configure-environment.md#local). Run `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` to get the required packages.
 
-## <a name="download-and-prepare-data"></a>Az adatgyűjtés letöltése és előkészítése
+## <a name="download-and-prepare-data"></a>Download and prepare data
 
-Importálja a szükséges csomagokat. A nyílt adatkészletek csomag olyan osztályt tartalmaz, amely az egyes adatforrásokat (például a`NycTlcGreen`) jelképezi, és a letöltés előtt egyszerűen szűrheti a dátum-paramétereket.
+Import the necessary packages. The Open Datasets package contains a class representing each data source (`NycTlcGreen` for example) to easily filter date parameters before downloading.
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -51,9 +51,9 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Először hozzon létre egy dataframe a taxi-adattároláshoz. Ha nem Spark-környezetben dolgozik, a nyílt adatkészletek csak egy hónapos adat letöltését teszik lehetővé bizonyos osztályokkal, hogy ne `MemoryError` nagyméretű adatkészletekkel.
+Begin by creating a dataframe to hold the taxi data. When working in a non-Spark environment, Open Datasets only allows downloading one month of data at a time with certain classes to avoid `MemoryError` with large datasets.
 
-A taxi-adatok letöltéséhez egyszerre egy hónapot iteratív le, és mielőtt hozzáfűzi, hogy `green_taxi_df` véletlenszerűen mintát 2 000 rekordokat minden hónapból, hogy elkerülje a dataframe felduzzadása. Ezután tekintse meg az adatmegjelenítést.
+To download taxi data, iteratively fetch one month at a time, and before appending it to `green_taxi_df` randomly sample 2,000 records from each month to avoid bloating the dataframe. Then preview the data.
 
 
 ```python
@@ -70,7 +70,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -114,23 +114,23 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4,84</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,88</td>
-      <td>40,84</td>
-      <td>– 73,94</td>
+      <td>4.84</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.88</td>
+      <td>40.84</td>
+      <td>-73.94</td>
       <td>...</td>
       <td>2</td>
-      <td>15,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>16,30</td>
-      <td>1,00</td>
+      <td>15.00</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>16.30</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1129817</th>
@@ -138,23 +138,23 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,81</td>
-      <td>– 73,96</td>
+      <td>0.69</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.81</td>
+      <td>-73.96</td>
       <td>...</td>
       <td>2</td>
       <td>4.50</td>
-      <td>1,00</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.30</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1278620</th>
@@ -162,23 +162,23 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
-      <td>0,45</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,92</td>
-      <td>40,76</td>
-      <td>– 73,91</td>
+      <td>0.45</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.92</td>
+      <td>40.76</td>
+      <td>-73.91</td>
       <td>...</td>
       <td>2</td>
-      <td>4,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>4,80</td>
-      <td>1,00</td>
+      <td>4.00</td>
+      <td>0.00</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>4.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>348430</th>
@@ -186,23 +186,23 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,81</td>
-      <td>40,70</td>
-      <td>– 73,82</td>
+      <td>0.00</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.81</td>
+      <td>40.70</td>
+      <td>-73.82</td>
       <td>...</td>
       <td>2</td>
-      <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>13,80</td>
-      <td>1,00</td>
+      <td>12.50</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>13.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1269627</th>
@@ -210,23 +210,23 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,92</td>
-      <td>40,76</td>
-      <td>– 73,92</td>
+      <td>0.50</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.92</td>
+      <td>40.76</td>
+      <td>-73.92</td>
       <td>...</td>
       <td>2</td>
-      <td>4,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>4.00</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
       <td>5.00</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>811755</th>
@@ -234,23 +234,23 @@ green_taxi_df.head(10)
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1,10</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,72</td>
-      <td>– 73,95</td>
+      <td>1.10</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.72</td>
+      <td>-73.95</td>
       <td>...</td>
       <td>2</td>
-      <td>6,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>7,80</td>
-      <td>1,00</td>
+      <td>6.50</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>7.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>737281</th>
@@ -258,23 +258,23 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
-      <td>0,90</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,88</td>
-      <td>40,76</td>
-      <td>– 73,87</td>
+      <td>0.90</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.88</td>
+      <td>40.76</td>
+      <td>-73.87</td>
       <td>...</td>
       <td>2</td>
       <td>6.00</td>
-      <td>0,00</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,80</td>
-      <td>1,00</td>
+      <td>0.00</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>113951</th>
@@ -282,23 +282,23 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
-      <td>3,30</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,72</td>
-      <td>– 73,91</td>
+      <td>3.30</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.72</td>
+      <td>-73.91</td>
       <td>...</td>
       <td>2</td>
-      <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>13,80</td>
-      <td>1,00</td>
+      <td>12.50</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>13.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>150436</th>
@@ -306,23 +306,23 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
-      <td>1,19</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,94</td>
-      <td>40,71</td>
-      <td>– 73,95</td>
+      <td>1.19</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.94</td>
+      <td>40.71</td>
+      <td>-73.95</td>
       <td>...</td>
       <td>1</td>
-      <td>7,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
-      <td>0,3</td>
+      <td>7.00</td>
+      <td>0.00</td>
+      <td>0.50</td>
+      <td>0.3</td>
       <td>1.75</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>9,55</td>
-      <td>1,00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>9.55</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>432136</th>
@@ -330,31 +330,31 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
-      <td>0,65</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,94</td>
-      <td>40,71</td>
-      <td>– 73,94</td>
+      <td>0.65</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.94</td>
+      <td>40.71</td>
+      <td>-73.94</td>
       <td>...</td>
       <td>2</td>
       <td>5.00</td>
-      <td>0,50</td>
-      <td>0,50</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,30</td>
-      <td>1,00</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.30</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
-<p>10 sor × 23 oszlop</p>
+<p>10 rows × 23 columns</p>
 </div>
 
 
-Most, hogy a kezdeti adatok betöltődik, Definiáljon egy függvényt, amely különböző időalapú szolgáltatásokat hoz létre a pickup datetime mezőből. Ez új mezőket hoz létre a hónap, a hónap napja, a hét napja és a nap órájában, és lehetővé teszi a modell időalapú szezonális felszámítását. Használja a dataframe `apply()` függvényt, hogy a iteratív alkalmazza a `build_time_features()` függvényt a taxi összes sorára.
+Now that the initial data is loaded, define a function to create various time-based features from the pickup datetime field. This will create new fields for the month number, day of month, day of week, and hour of day, and will allow the model to factor in time-based seasonality. Use the `apply()` function on the dataframe to iteratively apply the `build_time_features()` function to each row in the taxi data.
 
 ```python
 def build_time_features(vector):
@@ -371,7 +371,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -415,19 +415,19 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4,84</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,88</td>
-      <td>40,84</td>
-      <td>– 73,94</td>
+      <td>4.84</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.88</td>
+      <td>40.84</td>
+      <td>-73.94</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>16,30</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>16.30</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -439,19 +439,19 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,81</td>
-      <td>– 73,96</td>
+      <td>0.69</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.81</td>
+      <td>-73.96</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,30</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.30</td>
+      <td>1.00</td>
       <td>1</td>
       <td>20</td>
       <td>1</td>
@@ -463,19 +463,19 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
-      <td>0,45</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,92</td>
-      <td>40,76</td>
-      <td>– 73,91</td>
+      <td>0.45</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.92</td>
+      <td>40.76</td>
+      <td>-73.91</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>4,80</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>4.80</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -487,19 +487,19 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,81</td>
-      <td>40,70</td>
-      <td>– 73,82</td>
+      <td>0.00</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.81</td>
+      <td>40.70</td>
+      <td>-73.82</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>13,80</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>13.80</td>
+      <td>1.00</td>
       <td>1</td>
       <td>17</td>
       <td>5</td>
@@ -511,19 +511,19 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,92</td>
-      <td>40,76</td>
-      <td>– 73,92</td>
+      <td>0.50</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.92</td>
+      <td>40.76</td>
+      <td>-73.92</td>
       <td>...</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
       <td>5.00</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -535,19 +535,19 @@ green_taxi_df.head(10)
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1,10</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,72</td>
-      <td>– 73,95</td>
+      <td>1.10</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.72</td>
+      <td>-73.95</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>7,80</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>7.80</td>
+      <td>1.00</td>
       <td>1</td>
       <td>4</td>
       <td>6</td>
@@ -559,19 +559,19 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
-      <td>0,90</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,88</td>
-      <td>40,76</td>
-      <td>– 73,87</td>
+      <td>0.90</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.88</td>
+      <td>40.76</td>
+      <td>-73.87</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,80</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.80</td>
+      <td>1.00</td>
       <td>1</td>
       <td>3</td>
       <td>5</td>
@@ -583,19 +583,19 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
-      <td>3,30</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,96</td>
-      <td>40,72</td>
-      <td>– 73,91</td>
+      <td>3.30</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.96</td>
+      <td>40.72</td>
+      <td>-73.91</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>13,80</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>13.80</td>
+      <td>1.00</td>
       <td>1</td>
       <td>9</td>
       <td>4</td>
@@ -607,19 +607,19 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
-      <td>1,19</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,94</td>
-      <td>40,71</td>
-      <td>– 73,95</td>
+      <td>1.19</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.94</td>
+      <td>40.71</td>
+      <td>-73.95</td>
       <td>...</td>
-      <td>0,3</td>
+      <td>0.3</td>
       <td>1.75</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>9,55</td>
-      <td>1,00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>9.55</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -631,19 +631,19 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
-      <td>0,65</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
-      <td>– 73,94</td>
-      <td>40,71</td>
-      <td>– 73,94</td>
+      <td>0.65</td>
+      <td>None</td>
+      <td>None</td>
+      <td>-73.94</td>
+      <td>40.71</td>
+      <td>-73.94</td>
       <td>...</td>
-      <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>Nan</td>
-      <td>6,30</td>
-      <td>1,00</td>
+      <td>0.3</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>6.30</td>
+      <td>1.00</td>
       <td>1</td>
       <td>22</td>
       <td>3</td>
@@ -651,10 +651,10 @@ green_taxi_df.head(10)
     </tr>
   </tbody>
 </table>
-<p>10 sor × 27 oszlop</p>
+<p>10 rows × 27 columns</p>
 </div>
 
-Távolítson el néhány olyan oszlopot, amelyre nem lesz szüksége a betanításhoz vagy a további funkciók létrehozásához.
+Remove some of the columns that you won't need for training or additional feature building.
 
 ```python
 columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
@@ -667,16 +667,16 @@ for col in columns_to_remove:
 green_taxi_df.head(5)
 ```
 
-### <a name="cleanse-data"></a>Adatok megtisztítása
+### <a name="cleanse-data"></a>Cleanse data
 
-Futtassa az `describe()` függvényt az új dataframe, és tekintse meg az egyes mezők összegző statisztikáit.
+Run the `describe()` function on the new dataframe to see summary statistics for each field.
 
 ```python
 green_taxi_df.describe()
 ```
 
 <div>
-<style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -707,136 +707,136 @@ green_taxi_df.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
-      <td>48000,00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
+      <td>48000.00</td>
     </tr>
     <tr>
-      <th>középérték</th>
-      <td>1,78</td>
-      <td>1,37</td>
-      <td>2,87</td>
-      <td>– 73,83</td>
-      <td>40,69</td>
-      <td>– 73,84</td>
-      <td>40,70</td>
-      <td>14,75</td>
-      <td>6,50</td>
-      <td>15,13</td>
-      <td>3,27</td>
-      <td>13,52</td>
+      <th>mean</th>
+      <td>1.78</td>
+      <td>1.37</td>
+      <td>2.87</td>
+      <td>-73.83</td>
+      <td>40.69</td>
+      <td>-73.84</td>
+      <td>40.70</td>
+      <td>14.75</td>
+      <td>6.50</td>
+      <td>15.13</td>
+      <td>3.27</td>
+      <td>13.52</td>
     </tr>
     <tr>
-      <th>Standard</th>
+      <th>std</th>
       <td>0.41</td>
-      <td>1,04</td>
-      <td>2,93</td>
-      <td>2,76</td>
-      <td>1,52</td>
+      <td>1.04</td>
+      <td>2.93</td>
+      <td>2.76</td>
+      <td>1.52</td>
       <td>2.61</td>
-      <td>1,44</td>
-      <td>12,08</td>
+      <td>1.44</td>
+      <td>12.08</td>
       <td>3.45</td>
-      <td>8,45</td>
-      <td>1,95</td>
-      <td>6,83</td>
+      <td>8.45</td>
+      <td>1.95</td>
+      <td>6.83</td>
     </tr>
     <tr>
       <th>perc</th>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
-      <td>– 74,66</td>
-      <td>0,00</td>
-      <td>– 74,66</td>
-      <td>0,00</td>
-      <td>– 300,00</td>
-      <td>1,00</td>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-74.66</td>
+      <td>0.00</td>
+      <td>-74.66</td>
+      <td>0.00</td>
+      <td>-300.00</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>2,00</td>
-      <td>1,00</td>
-      <td>1,06</td>
-      <td>– 73,96</td>
-      <td>40,70</td>
-      <td>– 73,97</td>
-      <td>40,70</td>
-      <td>7,80</td>
+      <td>2.00</td>
+      <td>1.00</td>
+      <td>1.06</td>
+      <td>-73.96</td>
+      <td>40.70</td>
+      <td>-73.97</td>
+      <td>40.70</td>
+      <td>7.80</td>
       <td>3.75</td>
       <td>8.00</td>
-      <td>2,00</td>
-      <td>9,00</td>
+      <td>2.00</td>
+      <td>9.00</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2,00</td>
-      <td>1,00</td>
-      <td>1,90</td>
-      <td>– 73,94</td>
-      <td>40,75</td>
-      <td>– 73,94</td>
-      <td>40,75</td>
-      <td>11,30</td>
-      <td>6,50</td>
-      <td>15,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
+      <td>1.90</td>
+      <td>-73.94</td>
+      <td>40.75</td>
+      <td>-73.94</td>
+      <td>40.75</td>
+      <td>11.30</td>
+      <td>6.50</td>
+      <td>15.00</td>
       <td>3.00</td>
-      <td>15,00</td>
+      <td>15.00</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2,00</td>
-      <td>1,00</td>
-      <td>3,60</td>
-      <td>– 73,92</td>
-      <td>40,80</td>
-      <td>– 73,91</td>
-      <td>40,79</td>
-      <td>17,80</td>
-      <td>9,25</td>
-      <td>22,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
+      <td>3.60</td>
+      <td>-73.92</td>
+      <td>40.80</td>
+      <td>-73.91</td>
+      <td>40.79</td>
+      <td>17.80</td>
+      <td>9.25</td>
+      <td>22.00</td>
       <td>5.00</td>
-      <td>19,00</td>
+      <td>19.00</td>
     </tr>
     <tr>
-      <th>Max</th>
-      <td>2,00</td>
-      <td>9,00</td>
-      <td>97,57</td>
-      <td>0,00</td>
-      <td>41,93</td>
-      <td>0,00</td>
-      <td>41,94</td>
-      <td>450,00</td>
-      <td>12,00</td>
-      <td>30,00</td>
+      <th>max</th>
+      <td>2.00</td>
+      <td>9.00</td>
+      <td>97.57</td>
+      <td>0.00</td>
+      <td>41.93</td>
+      <td>0.00</td>
+      <td>41.94</td>
+      <td>450.00</td>
+      <td>12.00</td>
+      <td>30.00</td>
       <td>6.00</td>
-      <td>23,00</td>
+      <td>23.00</td>
     </tr>
   </tbody>
 </table>
 </div>
 
 
-Az összegző statisztikában láthatja, hogy több olyan mező van, amely kiugró vagy értékkel rendelkezik, ami csökkenti a modell pontosságát. Először szűrje a Lat/Long mezőket a Manhattan terület határain belülre. Ezzel kiszűri a hosszú taxi-utakat vagy-utazásokat, amelyek a más funkciókkal való kapcsolatuk tekintetében kiugró módon jelennek meg.
+From the summary statistics, you see that there are several fields that have outliers or values that will reduce model accuracy. First filter the lat/long fields to be within the bounds of the Manhattan area. This will filter out longer taxi trips or trips that are outliers in respect to their relationship with other features.
 
-Emellett szűrje a `tripDistance` mezőt nullánál nagyobb értékre, de 31 mérföldnél kevesebbet (a haversine távolságot a két lat/hosszú pár között). Ezzel kiküszöbölheti a hosszú kiugró utakat, amelyekben inkonzisztens utazási díj szerepel.
+Additionally filter the `tripDistance` field to be greater than zero but less than 31 miles (the haversine distance between the two lat/long pairs). This eliminates long outlier trips that have inconsistent trip cost.
 
-Végül a `totalAmount` mező negatív értékekkel rendelkezik a taxi viteldíjak esetében, amelyek nem ésszerűek a modell kontextusában, és a `passengerCount` mező hibás adatokkal rendelkezik, és a minimális érték nulla.
+Lastly, the `totalAmount` field has negative values for the taxi fares, which don't make sense in the context of our model, and the `passengerCount` field has bad data with the minimum values being zero.
 
-Szűrje ki ezeket a rendellenességeket a Query functions használatával, majd távolítsa el az utolsó néhány oszlopot, amely nem szükséges a betanításhoz.
+Filter out these anomalies using query functions, and then remove the last few columns unnecessary for training.
 
 
 ```python
@@ -850,7 +850,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-A várt módon történő tisztítás érdekében hívjon `describe()` újra az adattárolásban. Most már készen áll a gépi tanulási modell betanításához használt, a taxi, a nyaralás és az időjárási idő előkészítésére.
+Call `describe()` again on the data to ensure cleansing worked as expected. You now have a prepared and cleansed set of taxi, holiday, and weather data to use for machine learning model training.
 
 ```python
 final_df.describe()
@@ -858,18 +858,18 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy olyan osztály, amely elfogadja az Azure-előfizetést és az erőforrás-információkat. Létrehoz egy felhőalapú erőforrást is a modell futtatásának figyelésére és nyomon követésére. `Workspace.from_config()` beolvassa a **config. JSON** fájlt, és betölti a hitelesítési adatokat egy `ws`nevű objektumba. A `ws` a kód további részében használható ebben az oktatóanyagban.
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is a class that accepts your Azure subscription and resource information. It also creates a cloud resource to monitor and track your model runs. `Workspace.from_config()` reads the file **config.json** and loads the authentication details into an object named `ws`. A `ws` a kód további részében használható ebben az oktatóanyagban.
 
 ```python
 from azureml.core.workspace import Workspace
 ws = Workspace.from_config()
 ```
 
-## <a name="split-the-data-into-train-and-test-sets"></a>Az adat felosztása a vonatra és a tesztelési csoportokra
+## <a name="split-the-data-into-train-and-test-sets"></a>Split the data into train and test sets
 
-Az adatgyűjtést betanítási és tesztelési csoportokra bontva a `scikit-learn`-függvénytár `train_test_split` függvényének használatával. Ez a függvény elkülöníti az adatait az x (**szolgáltatások**) adatkészletbe a modell betanításához, valamint az y (**előre jelzett értékek**) adatkészletet a teszteléshez.
+Split the data into training and test sets by using the `train_test_split` function in the `scikit-learn` library. This function segregates the data into the x (**features**) data set for model training and the y (**values to predict**) data set for testing.
 
-A `test_size` paraméter határozza meg az adatok tesztelését lefoglalni aránya. A `random_state` paraméter egy magot állít be a véletlenszerű generátorra, így a vonat-teszt felosztása determinisztikus.
+The `test_size` parameter determines the percentage of data to allocate to testing. The `random_state` parameter sets a seed to the random generator, so that your train-test splits are deterministic.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -880,29 +880,29 @@ x_df = final_df
 x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
 ```
 
-Ennek a lépésnek a célja, hogy az adatpontokkal tesztelje a modell betanítására nem használt befejezett modellt a valódi pontosság mérése érdekében.
+The purpose of this step is to have data points to test the finished model that haven't been used to train the model, in order to measure true accuracy.
 
-Más szóval a jól betanított modellnek képesnek kell lennie arra, hogy a már nem látott adatok alapján pontosan elvégezze az előrejelzések készítését. Most már készen áll a gépi tanulási modell automatikus betanítására.
+In other words, a well-trained model should be able to accurately make predictions from data it hasn't already seen. You now have data prepared for auto-training a machine learning model.
 
-## <a name="automatically-train-a-model"></a>Automatikusan a modell tanítása
+## <a name="automatically-train-a-model"></a>Automatically train a model
 
-A modellek automatikus betanításához hajtsa végre a következő lépéseket:
-1. Adja meg a kísérlet futtatásának beállításait. Csatolja a betanítási adatait a konfigurációhoz, és módosítsa a betanítási folyamatot szabályozó beállításokat.
-1. A kísérlet beküldése a modell finomhangolására. A kísérlet elküldése után a folyamat különböző gépi tanulási algoritmusokon és hiperparaméter-beállításokon keresztül megismétli a megadott megkötéseket. A pontosság mérőszámának optimalizálásával kiválasztja a legjobban illeszkedő modellt.
+To automatically train a model, take the following steps:
+1. Define settings for the experiment run. Attach your training data to the configuration, and modify settings that control the training process.
+1. Submit the experiment for model tuning. After submitting the experiment, the process iterates through different machine learning algorithms and hyperparameter settings, adhering to your defined constraints. It chooses the best-fit model by optimizing an accuracy metric.
 
-### <a name="define-training-settings"></a>Képzési beállítások megadása
+### <a name="define-training-settings"></a>Define training settings
 
-A kísérlet paraméter és a modell beállításainak megadása a betanításhoz. Tekintse meg a teljes listáját [beállítások](how-to-configure-auto-train.md). A kísérlet ezen alapértelmezett beállításokkal való elküldése körülbelül 5-20 percig tart, de ha rövidebb futási időt szeretne használni, csökkentse a `experiment_timeout_minutes` paramétert.
+Define the experiment parameter and model settings for training. View the full list of [settings](how-to-configure-auto-train.md). Submitting the experiment with these default settings will take approximately 5-20 min, but if you want a shorter run time, reduce the `experiment_timeout_minutes` parameter.
 
 |Tulajdonság| Az oktatóanyagban szereplő érték |Leírás|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Az egyes iterációk időkorlátja percben kifejezve. Csökkentse ezt az értéket a teljes futtatókörnyezet csökkentése érdekében.|
-|**experiment_timeout_minutes**|20|Az a maximális időtartam (percben), ameddig az összes iteráció a kísérlet megszakítása előtt elvégezhető.|
-|**enable_early_stopping**|True (Igaz)|A enble korai lezárásának jelzője, ha a pontszám rövid távon nem javul.|
-|**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A legjobban illeszkedő modell a metrika alapján lesz kiválasztva.|
-|**featurization**| automatikus | Az **automatikus**használatával a kísérlet elődolgozhatja a bemeneti adatokat (a hiányzó adatok kezelésével, a szöveg és a numerikus szöveggé való átalakítással stb.).|
-|**Részletességi**| logging.INFO | A naplózási szint szabályozza.|
-|**n_cross_validations**|5|Az ellenőrzési adatok megadásakor végrehajtandó, több ellenőrzési felosztások száma.|
+|**iteration_timeout_minutes**|2|Time limit in minutes for each iteration. Reduce this value to decrease total runtime.|
+|**experiment_timeout_minutes**|20|Maximum amount of time in minutes that all iterations combined can take before the experiment terminates.|
+|**enable_early_stopping**|Igaz|Flag to enble early termination if the score is not improving in the short term.|
+|**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. The best-fit model will be chosen based on this metric.|
+|**featurization**| auto | By using **auto**, the experiment can preprocess the input data (handling missing data, converting text to numeric, etc.)|
+|**verbosity**| logging.INFO | Controls the level of logging.|
+|**n_cross_validations**|5|Number of cross-validation splits to perform when validation data is not specified.|
 
 ```python
 import logging
@@ -918,7 +918,7 @@ automl_settings = {
 }
 ```
 
-A megadott tanítási beállításokat `**kwargs` paraméterként használhatja egy `AutoMLConfig` objektumhoz. Emellett adja meg a betanítási adatait és a modell típusát, amely ebben az esetben `regression`.
+Use your defined training settings as a `**kwargs` parameter to an `AutoMLConfig` object. Additionally, specify your training data and the type of model, which is `regression` in this case.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -931,13 +931,13 @@ automl_config = AutoMLConfig(task='regression',
 ```
 
 > [!NOTE]
-> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+> Automated machine learning pre-processing steps (feature normalization, handling missing data, converting text to numeric, etc.) become part of the underlying model. When using the model for predictions, the same pre-processing steps applied during training are applied to your input data automatically.
 
-### <a name="train-the-automatic-regression-model"></a>Az automatikus regressziós modell betanítása
+### <a name="train-the-automatic-regression-model"></a>Train the automatic regression model
 
-Hozzon létre egy kísérlet objektumot a munkaterületen. Egy kísérlet tárolóként működik az egyes futtatásokhoz. Adja át a definiált `automl_config` objektumot a kísérletnek, és állítsa be a kimenetet `True`re a futtatás közbeni előrehaladás megtekintéséhez.
+Create an experiment object in your workspace. An experiment acts as a container for your individual runs. Pass the defined `automl_config` object to the experiment, and set the output to `True` to view progress during the run.
 
-A kísérlet elindítása után a kimenet a kísérlet futtatásakor élőben jelenik meg. Minden egyes iterációnál megjelenik a modell típusa, a Futtatás időtartama és a képzés pontossága. A mező `BEST` nyomon követi a legjobb futó tanítási pontszámot a metrika típusa alapján.
+After starting the experiment, the output shown updates live as the experiment runs. For each iteration, you see the model type, the run duration, and the training accuracy. The field `BEST` tracks the best running training score based on your metric type.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -986,19 +986,19 @@ local_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-the-results"></a>Az eredmények vizsgálata
 
-Ismerje meg az automatikus képzés eredményeit egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A widget lehetővé teszi, hogy megtekintse az egyes futtatási ismétlések gráfját és táblázatát, valamint a betanítási pontossági mérőszámokat és metaadatokat. Emellett a legördülő választóval szűrheti az elsődleges metrikától eltérő pontossági mérőszámokat is.
+Explore the results of automatic training with a [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). The widget allows you to see a graph and table of all individual run iterations, along with training accuracy metrics and metadata. Additionally, you can filter on different accuracy metrics than your primary metric with the dropdown selector.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Jupyter widget-Futtatás részletei](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widget Plot](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupyter widget run details](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Jupyter widget plot](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="retrieve-the-best-model"></a>A legjobb modellt beolvasása
+### <a name="retrieve-the-best-model"></a>Retrieve the best model
 
-Válassza ki az iterációk legjobb modelljét. A `get_output` függvény a legjobb futtatást adja vissza, és a legutóbb illeszkedő híváshoz tartozó modellt. A `get_output`túlterhelésének használatával lekérheti az összes naplózott metrika és egy adott iteráció esetében a legjobb futtatási és a beépített modellt.
+Select the best model from your iterations. The `get_output` function returns the best run and the fitted model for the last fit invocation. By using the overloads on `get_output`, you can retrieve the best run and fitted model for any logged metric or a particular iteration.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1006,16 +1006,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-### <a name="test-the-best-model-accuracy"></a>A legpontosabb modell tesztelése
+### <a name="test-the-best-model-accuracy"></a>Test the best model accuracy
 
-A legjobb modell segítségével előrejelzéseket futtathat a tesztelési adatkészleten a taxi viteldíjak előrejelzéséhez. A `predict` függvény a legjobb modellt használja, és a `x_test` adatkészletből előre megjósolja az y és az **utazási ár**értékét. Nyomtatás az első 10-es előre jelzett költség értékeit `y_predict`.
+Use the best model to run predictions on the test data set to predict taxi fares. The function `predict` uses the best model and predicts the values of y, **trip cost**, from the `x_test` data set. Print the first 10 predicted cost values from `y_predict`.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Kiszámítja az eredmények `root mean squared error`ét. Alakítsa át a `y_test` dataframe egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értékkel rendelkezik, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál **hibát.** Nagyjából azt jelzi, hogy a taxi díjszabása milyen messzire kerül a tényleges díjszabás alapján.
+Calculate the `root mean squared error` of the results. Convert the `y_test` dataframe to a list to compare to the predicted values. The function `mean_squared_error` takes two arrays of values and calculates the average squared error between them. Taking the square root of the result gives an error in the same units as the y variable, **cost**. It indicates roughly how far the taxi fare predictions are from the actual fares.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1026,7 +1026,7 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Futtassa a következő kódot a teljes `y_actual` és `y_predict` adatkészletek használatával a középérték abszolút százalékos hibájának (MAPE) kiszámításához. Ez a mérőszám az összes előre jelzett és tényleges érték közötti abszolút különbséget számítja ki, és összegzi az összes különbséget. Ezt követően a tényleges értékek összegének százalékában kifejezi az összeget.
+Run the following code to calculate mean absolute percent error (MAPE) by using the full `y_actual` and `y_predict` data sets. This metric calculates an absolute difference between each predicted and actual value and sums all the differences. Then it expresses that sum as a percent of the total of the actual values.
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1054,36 +1054,36 @@ print(1 - mean_abs_percent_error)
     0.8564613239394718
 
 
-A két előrejelzési pontossági mérőszámból láthatja, hogy a modell elég jó, ha az adatkészlet szolgáltatásaiból, jellemzően a +-$4,00-es és körülbelül 15%-os hiba miatt megjósolja a taxi viteldíjait.
+From the two prediction accuracy metrics, you see that the model is fairly good at predicting taxi fares from the data set's features, typically within +- $4.00, and approximately 15% error.
 
-A hagyományos gépi tanulási modell fejlesztési folyamatok magas erőforrás-igényes, és jelentős tartomány ismeretek és idő befektetési futtatásához, és több tucatnyi modellek eredményeinek összehasonlítására, igényel. Az automatizált gépi tanulás nagyszerű módja annak, hogy gyorsan tesztelje a forgatókönyv számos különböző modelljét.
+The traditional machine learning model development process is highly resource-intensive, and requires significant domain knowledge and time investment to run and compare the results of dozens of models. Using automated machine learning is a great way to rapidly test many different models for your scenario.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
+Do not complete this section if you plan on running other Azure Machine Learning tutorials.
 
-### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
+### <a name="stop-the-notebook-vm"></a>Stop the Notebook VM
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Mindent törölni
+### <a name="delete-everything"></a>Delete everything
 
-Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így nem számítunk fel díjat.
+If you don't plan to use the resources you created, delete them, so you don't incur any charges.
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen.
 1. Válassza ki a listában az Ön által létrehozott erőforráscsoportot.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
+1. Enter the resource group name. Ezután válassza a **Törlés** elemet.
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+You can also keep the resource group but delete a single workspace. Display the workspace properties and select **Delete**.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat hajtotta végre:
+In this automated machine learning tutorial, you did the following tasks:
 
 > [!div class="checklist"]
-> * Egy kísérlethez konfigurált egy munkaterületet és egy előkészített adatkészletet.
-> * Automatikus regressziós modell használatával, helyi egyéni paraméterekkel.
-> * A betanítási eredmények megismerése és felülvizsgálata.
+> * Configured a workspace and prepared data for an experiment.
+> * Trained by using an automated regression model locally with custom parameters.
+> * Explored and reviewed training results.
 
-[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) az Azure Machine Learning.
+[Deploy your model](tutorial-deploy-models-with-aml.md) with Azure Machine Learning.

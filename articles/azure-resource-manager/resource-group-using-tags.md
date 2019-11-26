@@ -1,26 +1,26 @@
 ---
-title: Erőforrások címkézése a logikai szervezet számára
-description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
+title: Tag resources for logical organization
+description: Shows how to apply tags to organize Azure resources for billing and managing.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149584"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484262"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználónak írási hozzáféréssel kell rendelkeznie az adott erőforrás-típushoz. Ha címkéket szeretne alkalmazni az összes erőforrástípus, használja a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkört. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+To apply tags to resources, the user must have write access to that resource type. To apply tags to all resource types, use the [Contributor](../role-based-access-control/built-in-roles.md#contributor) role. To apply tags to only one resource type, use the contributor role for that resource. For example, to apply tags to virtual machines, use the [Virtual Machine Contributor](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Házirendek
+## <a name="policies"></a>Irányelvek
 
-A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
+You can use [Azure Policy](../governance/policy/overview.md) to enforce tagging rules and conventions. By creating a policy, you avoid the scenario of resources being deployed to your subscription that don't comply with the expected tags for your organization. Instead of manually applying tags or searching for resources that aren't compliant, you can create a policy that automatically applies the needed tags during deployment. Tags can also now be applied to existing resources with the new [Modify](../governance/policy/concepts/effects.md#modify) effect and a [remediation task](../governance/policy/how-to/remediate-resources.md). The following section shows example policies for tags.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -67,7 +67,7 @@ Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglé
 (Get-AzResource -Tag @{ Dept="Finance"}).Name
 ```
 
-*Egy adott címke nevével rendelkező erőforrások*lekéréséhez használja a következőt:
+To get *resources that have a specific tag name*, use:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName Dept).Name
@@ -104,7 +104,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira szeretné alkalmazni, és *nem szeretné megtartani a meglévő címkéket az erőforrásokon*, használja a következő parancsfájlt:
+To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -114,7 +114,7 @@ foreach ($g in $groups)
 }
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket a nem duplikált erőforrásokon szeretné megtartani*, használja a következő parancsfájlt:
+To apply all tags from a resource group to its resources, and *keep existing tags on resources that aren't duplicates*, use the following script:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -148,7 +148,7 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -165,25 +165,25 @@ A szkript a következő formátumot adja vissza:
 }
 ```
 
-Vagy a *megadott névvel, típussal és erőforráscsoporthoz rendelkező erőforrás*meglévő címkéit a következő paranccsal tekintheti meg:
+Or, to see the existing tags for a *resource that has a specified name, type, and resource group*, use:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Ha egy erőforrás-gyűjteményen keresztüli hurkot szeretne használni, érdemes lehet az erőforrást erőforrás-azonosító alapján megjeleníteni. A cikk későbbi részében megjelenik egy teljes példa. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
+When looping through a collection of resources, you might want to show the resource by resource ID. A complete example is shown later in this article. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Adott címkével rendelkező erőforráscsoportok lekéréséhez használja a `az group list`:
+To get resource groups that have a specific tag, use `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Az adott címkével és értékkel rendelkező összes erőforrás beszerzéséhez használja a `az resource list`:
+To get all the resources that have a particular tag and value, use `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -203,21 +203,21 @@ Ha *meglévő címkék nélküli erőforráshoz* szeretne címkéket adni, haszn
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Ha címkéket szeretne felvenni egy olyan erőforráshoz, amely már rendelkezik címkékkel, kérje le a meglévő címkéket, formázza újra az értéket, majd alkalmazza újra a meglévő és az új címkéket:
+To add tags to a resource that already has tags, retrieve the existing tags, reformat that value, and reapply the existing and new tags:
 
 ```azurecli
-jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
+jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags -o json)
 rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira szeretné alkalmazni, és *nem szeretné megtartani a meglévő címkéket az erőforrásokon*, használja a következő parancsfájlt:
+To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
 for rg in $groups
 do
-  jsontag=$(az group show -n $rg --query tags)
+  jsontag=$(az group show -n $rg --query tags -o json)
   t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
   r=$(az resource list -g $rg --query [].id --output tsv)
   for resid in $r
@@ -227,18 +227,18 @@ do
 done
 ```
 
-Ha az erőforráscsoport összes címkéjét az erőforrásaira kívánja alkalmazni, és a *meglévő címkéket szeretné megőrizni az erőforrásokon*, használja a következő parancsfájlt:
+To apply all tags from a resource group to its resources, and *keep existing tags on resources*, use the following script:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
 for rg in $groups
 do
-  jsontag=$(az group show -n $rg --query tags)
+  jsontag=$(az group show -n $rg --query tags -o json)
   t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
   r=$(az resource list -g $rg --query [].id --output tsv)
   for resid in $r
   do
-    jsonrtag=$(az resource show --id $resid --query tags)
+    jsonrtag=$(az resource show --id $resid --query tags -o json)
     rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
     az resource tag --tags $t$rt --id $resid
   done
@@ -247,7 +247,7 @@ done
 
 ## <a name="templates"></a>Sablonok
 
-Ha egy erőforrást az üzembe helyezés során szeretne címkézni, adja hozzá a `tags` elemet a telepíteni kívánt erőforráshoz. Adja meg a címke nevét és értékét.
+To tag a resource during deployment, add the `tags` element to the resource you're deploying. Adja meg a címke nevét és értékét.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Szövegkonstansérték alkalmazása a címkenévre
 
@@ -283,7 +283,7 @@ Az alábbi példában egy tárfiók látható két címkével (`Dept` és `Envir
 }
 ```
 
-Ha a címkét datetime értékre szeretné beállítani, használja a [utcNow függvényt](resource-group-template-functions-string.md#utcnow).
+To set a tag to a datetime value, use the [utcNow function](resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>Objektum alkalmazása a címkeelemre
 
@@ -325,7 +325,7 @@ Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalma
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>JSON-sztring alkalmazása a címkenévre
 
-Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-sztringet. A teljes JSON-karakterlánc egyetlen címkeként van tárolva, amely nem lehet hosszabb 256 karakternél. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-sztring számos értékét tartalmazza:  
+Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-sztringet. The entire JSON string is stored as one tag that can't exceed 256 characters. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-sztring számos értékét tartalmazza:  
 
 ```json
 {
@@ -356,9 +356,9 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
+### <a name="apply-tags-from-resource-group"></a>Apply tags from resource group
 
-Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasásakor használja a `tags.[tag-name]` szintaxist a `tags.tag-name` szintaxis helyett, mert egyes karaktereket nem megfelelően értelmezi a pont jelölése.
+To apply tags from a resource group to a resource, use the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. When getting the tag value, use the `tags.[tag-name]` syntax instead of the `tags.tag-name` syntax, because some characters aren't parsed correctly in the dot notation.
 
 ```json
 {
@@ -396,17 +396,17 @@ Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, h
 
 ## <a name="rest-api"></a>REST API
 
-A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító **lekérése** lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
+The Azure portal and PowerShell both use the [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) behind the scenes. If you need to integrate tagging into another environment, you can get tags by using **GET** on the resource ID and update the set of tags by using a **PATCH** call.
 
-## <a name="tags-and-billing"></a>Címkék és számlázás
+## <a name="tags-and-billing"></a>Tags and billing
 
-A címkéket a számlázási adataik csoportosítására használhatja. Ha például több virtuális gépet futtat különböző szervezetekhez, a címkék használatával csoportosítsa a használatot Cost Center alapján. A címkék használatával kategorizálhatja a költségeket futásidejű környezet szerint, például az éles környezetben futó virtuális gépek számlázási használatát.
+You can use tags to group your billing data. For example, if you're running multiple VMs for different organizations, use the tags to group usage by cost center. You can also use tags to categorize costs by runtime environment, such as the billing usage for VMs running in the production environment.
 
-A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../billing/billing-usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../billing/billing-download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
+You can retrieve information about tags through the [Azure Resource Usage and RateCard APIs](../billing/billing-usage-rate-card-overview.md) or the usage comma-separated values (CSV) file. You download the usage file from the [Azure Account Center](https://account.azure.com/Subscriptions) or Azure portal. For more information, see [Download or view your Azure billing invoice and daily usage data](../billing/billing-download-azure-invoice-daily-usage-date.md). When downloading the usage file from the Azure Account Center, select **Version 2**. For services that support tags with billing, the tags appear in the **Tags** column.
 
-REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
+For REST API operations, see [Azure Billing REST API Reference](/rest/api/billing/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
-* A portál használatának bevezetését lásd: [a Azure Portal használata az Azure-erőforrások kezeléséhez](manage-resource-groups-portal.md).  
+* Not all resource types support tags. To determine if you can apply a tag to a resource type, see [Tag support for Azure resources](tag-support.md).
+* For an introduction to using the portal, see [Using the Azure portal to manage your Azure resources](manage-resource-groups-portal.md).  

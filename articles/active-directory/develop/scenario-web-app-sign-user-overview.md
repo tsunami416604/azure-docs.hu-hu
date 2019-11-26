@@ -1,6 +1,6 @@
 ---
-title: Felhasználók számára bejelentkező webes alkalmazás (áttekintés) – Microsoft Identity platform
-description: Megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely aláírja a felhasználókat (áttekintés)
+title: Web app that signs in users (overview) - Microsoft identity platform
+description: Learn how to build a web app that signs in users (overview)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,76 +15,78 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d47d4233aec62ec5f1955e52025b0d55221af8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 316ab055a077b251e88421ab26997f8556a6e31f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596714"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482499"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
+# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web app that signs in users
 
-Ismerje meg a Microsoft Identity platformot használó webalkalmazások létrehozásához szükséges összes információt.
+Learn all you need to build a web app that uses the Microsoft identity platform to sign in users.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Bevezetés
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ha az első olyan hordozható (ASP.NET Core) webalkalmazást szeretné létrehozni, amely felhasználói bejelentkezést végez, kövesse az alábbi rövid útmutatót:
+If you want to create your first portable (ASP.NET Core) web app that signs in users, follow this quickstart:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET Core webalkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-core-webapp.md)
+> [Quickstart: ASP.NET Core web app that signs in users](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-f szeretné megismerni, hogyan adhat hozzá bejelentkezést egy örökölt ASP.NET-webalkalmazáshoz, próbálja ki a következő oktatóanyagot:
+If you want to understand how to add sign-in to an existing ASP.NET web application, try the following quickstart:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET webes alkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-webapp.md)
+> [Quickstart: ASP.NET web app that signs in users](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ha Ön Java-fejlesztő, próbálja ki a következő rövid útmutatót:
+If you're a Java developer, try the following quickstart:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
+> [Quickstart: Add sign-in with Microsoft to a Java web app](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Ha Python-fejlesztést végez, próbálkozzon a következőket:
+If you develop with Python, try the following quickstart:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba](quickstart-v2-python-webapp.md)
+> [Quickstart: Add sign-in with Microsoft to a Python web app](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Áttekintés
 
-A hitelesítést a webalkalmazáshoz adja hozzá, hogy bejelentkezzen a felhasználókba. A hitelesítés hozzáadása lehetővé teszi a webalkalmazás számára a korlátozott profilokra vonatkozó információk elérését, és például testreszabhatja a felhasználók számára kínált felhasználói élményt. A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen az Azure AD-be. Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. A bejelentkezett felhasználók a [nyílt azonosító összekapcsolására](./v2-protocols-oidc.md) szolgáló protokollt is egyszerűsítik, a köztes [kódtárak](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps)használatával.
+You add authentication to your web app so that it can sign in users. Adding authentication enables your web app to access limited profile information in order to customize the experience for users. 
 
-![Webalkalmazás-bejelentkezési felhasználók](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+Web apps authenticate a user in a web browser. In this scenario, the web app directs the user's browser to sign them in to Azure Active Directory (Azure AD). Azure AD returns a sign-in response through the user's browser, which contains claims about the user in a security token. Signing in users takes advantage of the [Open ID Connect](./v2-protocols-oidc.md) standard protocol, simplified by the use of middleware [libraries](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
-Második fázisként azt is engedélyezheti, hogy az alkalmazás a bejelentkezett felhasználó nevében meghívja a webes API-kat. Ez a következő fázis egy másik forgatókönyv, amelyet a web [app calls web API](scenario-web-app-call-api-overview.md) -kon talál
+![Web app signs in users](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+
+As a second phase, you can enable your application to call web APIs on behalf of the signed-in user. This next phase is a different scenario, which you'll find in [Web app that calls web APIs](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Ha bejelentkezik a webalkalmazásba, a webalkalmazás védelme és a felhasználói token érvényesítése is megtörténik. A .NET esetében ebben a forgatókönyvben még nem szükséges a Microsoft Authentication librarys (MSAL), amelyek a védett API-k meghívására szolgáló token beszerzésére vonatkoznak. A hitelesítési kódtárak csak akkor lesznek bevezetve a követési forgatókönyvben, amikor a webalkalmazásnak webes API-kat kell meghívnia.
+> Adding sign-in to a web app is about protecting the web app and validating a user token, which is what  **middleware** libraries do. In the case of .NET, this scenario does not yet require the Microsoft Authentication Library (MSAL), which is about acquiring a token to call protected APIs. Authentication libraries will be introduced in the follow-up scenario, when the web app needs to call web APIs.
 
-## <a name="specifics"></a>Sajátosságai
+## <a name="specifics"></a>Specifics
 
-- Az alkalmazás regisztrációja során meg kell adnia egy vagy több (ha az alkalmazást több helyen helyezi üzembe) válasz URI-k. Bizonyos esetekben (ASP.NET/ASP.NET Core) engedélyeznie kell az azonosító tokent. Végül egy kijelentkezési URI-t kell beállítania, hogy az alkalmazás a felhasználók számára kijelentkezést váltson ki.
-- Az alkalmazás kódjában meg kell adnia azt a szolgáltatót, amelyhez a webalkalmazás a bejelentkezést delegálja. Előfordulhat, hogy testre szeretné szabni a jogkivonat-ellenőrzést (különösen az ISV-forgatókönyvekben).
-- A webalkalmazások bármilyen fióktípus használatát támogatják. További információ: [támogatott fióktípus](v2-supported-account-types.md).
+- During the application registration, you'll need to provide one or several (if you deploy your app to several locations) reply URIs. In some cases (ASP.NET and ASP.NET Core), you'll need to enable the ID token. Finally, you'll want to set up a sign-out URI so that your application reacts to users signing out.
+- In the code for your application, you'll need to provide the authority to which your web app delegates sign-in. You might want to customize token validation (in particular, in partner scenarios).
+- Web applications support any account types. For more information, see [Supported account types](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore?tabs=aspnetcore)
+> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 

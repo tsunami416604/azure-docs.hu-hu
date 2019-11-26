@@ -1,6 +1,6 @@
 ---
-title: Kapcsolati architektúra
-description: Ez a dokumentum ismerteti az Azure SQL-kapcsolati architektúráját az Azure-on belüli vagy az Azure-on kívüli adatbázis-kapcsolatokhoz.
+title: Connectivity Architecture
+description: This document explains the Azure SQL connectivity architecture for database connections from within Azure or from outside of Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,65 +12,71 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280790"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483712"
 ---
-# <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
+# <a name="azure-sql-connectivity-architecture"></a>Azure SQL Connectivity Architecture
 
-Ez a cikk ismerteti a Azure SQL Database és SQL Data Warehouse kapcsolati architektúrát, valamint azt, hogy a különböző összetevők hogyan irányítják át a forgalmat az Azure SQL-példányra. Ezek a kapcsolati összetevők az Azure-ból és az Azure-on kívülről csatlakozó ügyfelektől a Azure SQL Database vagy SQL Data Warehouse felé irányuló hálózati forgalmat irányítják. Ez a cikk parancsfájl-mintákat is biztosít a kapcsolódás módjának módosításához, valamint az alapértelmezett kapcsolati beállítások módosításával kapcsolatos szempontokat.
+This article explains the Azure SQL Database and SQL Data Warehouse connectivity architecture as well as how the different components function to direct traffic to your instance of Azure SQL. These connectivity components function to direct network traffic to the Azure SQL Database or SQL Data Warehouse with clients connecting from within Azure and with clients connecting from outside of Azure. This article also provides script samples to change how connectivity occurs, and the considerations related to changing the default connectivity settings.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
-Az alábbi ábra a Azure SQL Database kapcsolati architektúrájának áttekintését nyújtja.
+The following diagram provides a high-level overview of the Azure SQL Database connectivity architecture.
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-A következő lépések azt ismertetik, hogyan történik a kapcsolatok létrehozása egy Azure SQL Database-adatbázisba:
+The following steps describe how a connection is established to an Azure SQL database:
 
-- Az ügyfelek csatlakoznak az átjáróhoz, amely nyilvános IP-címmel rendelkezik, és az 1433-es porton figyel.
-- Az átjáró a hatályos kapcsolódási házirendtől függően átirányítja vagy proxyként továbbítja a forgalmat a megfelelő adatbázis-fürtre.
-- Az adatbázis-fürt forgalmát a megfelelő Azure SQL Database-adatbázisba továbbítja a rendszer.
+- Clients connect to the gateway, that has a public IP address and listens on port 1433.
+- The gateway, depending on the effective connection policy, redirects or proxies the traffic to the right database cluster.
+- Inside the database cluster traffic is forwarded to the appropriate Azure SQL database.
 
-## <a name="connection-policy"></a>Kapcsolatok házirendje
+## <a name="connection-policy"></a>Connection policy
 
-A Azure SQL Database a következő három lehetőséget támogatja egy SQL Database-kiszolgáló kapcsolatbiztonsági házirendjének beállításához:
+Azure SQL Database supports the following three options for the connection policy setting of a SQL Database server:
 
-- **Átirányítás (ajánlott):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. A kapcsolat engedélyezéséhez az ügyfeleknek engedélyezniük kell a kimenő tűzfalszabályok használatát a régió összes Azure-beli IP-címére a (z) 11000-11999-es portokhoz tartozó NSG használatával, nem csak a 1433 [-es](../virtual-network/security-overview.md#service-tags) porton található Azure SQL Database átjáró IP-címeit. Mivel a csomagok közvetlenül az adatbázishoz mennek, a késés és az átviteli sebesség jobb teljesítményt biztosít.
-- **Proxy:** Ebben a módban az összes kapcsolat proxyn keresztül az Azure SQL Database-átjárón keresztül történik. A kapcsolat engedélyezéséhez az ügyfélnek olyan kimenő tűzfalszabályok szükségesek, amelyek csak a Azure SQL Database átjáró IP-címeit engedélyezik (általában két IP-cím régiónként). Ha ezt a módot választja, a számítási feladatok természetétől függően nagyobb késést és alacsonyabb átviteli sebességet eredményezhet. Javasoljuk, hogy a `Redirect` kapcsolati házirendet a legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében a `Proxy` kapcsolati szabályzaton keresztül.
-- **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási szabályzatot `Proxy` vagy `Redirect`. A hatályos szabályzat attól függ, hogy a kapcsolatok az Azure-ból (`Redirect`) vagy az Azure-on kívülről (`Proxy`) származnak-e.
+- **Redirect (recommended):** Clients establish connections directly to the node hosting the database, leading to reduced latency and improved throughout. For connections to use this mode clients need to
+   - Allow inbound and outbound communication from the client to all Azure IP addresses in the region on ports in the range of 11000 11999.  
+   - Allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
 
-## <a name="connectivity-from-within-azure"></a>Kapcsolat az Azure-on belül
+- **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways,leading to increased latency and reduced throughout. For connections to use this mode clients need to allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
 
-Ha az Azure-ból csatlakozik, a kapcsolatok alapértelmezés szerint `Redirect` kapcsolati házirenddel rendelkeznek. `Redirect` házirend azt jelenti, hogy a TCP-munkamenetnek az Azure SQL Database-adatbázishoz való létrehozása után az ügyfél-munkamenetet a rendszer átirányítja a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a Azure SQL Database átjárótól a fürt. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
+- **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is`Redirect` for all client connections originating inside of Azure (e.g. from an Azure Virtual Machine) and `Proxy`for all client connections originating inside ( e.g. connections from your local workstation)
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+ We highly recommend the `Redirect` connection policy over the `Proxy` connection policy for the lowest latency and highest throughput.However, you will need to meet the additional requirements for allowing network traffic as outlined above. If the client is an Azure Virtual Machine you can accomplish this using Network Security Groups (NSG) with [service tags](../virtual-network/security-overview.md#service-tags). If the client is connecting from a workstation on-premises then you may need to work with your network admin to allow network traffic through your corporate firewall.
 
-## <a name="connectivity-from-outside-of-azure"></a>Kapcsolódás az Azure-on kívülről
+## <a name="connectivity-from-within-azure"></a>Connectivity from within Azure
 
-Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés szerint `Proxy` kapcsolati házirenddel rendelkeznek. A `Proxy` szabályzata azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatforgalomban van létrehozva. A következő ábra szemlélteti ezt a forgalmat.
+If you are connecting from within Azure your connections have a connection policy of `Redirect` by default. A policy of `Redirect` means that after the TCP session is established to the Azure SQL database, the client session is then redirected to the right database cluster with a change to the destination virtual IP from that of the Azure SQL Database gateway to that of the cluster. Thereafter, all subsequent packets flow directly to the cluster, bypassing the Azure SQL Database gateway. The following diagram illustrates this traffic flow.
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+
+## <a name="connectivity-from-outside-of-azure"></a>Connectivity from outside of Azure
+
+If you are connecting from outside Azure, your connections have a connection policy of `Proxy` by default. A policy of `Proxy` means that the TCP session is established via the Azure SQL Database gateway and all subsequent packets flow via the gateway. The following diagram illustrates this traffic flow.
+
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Emellett a 14000-14999-as porton keresztül is engedélyezheti a [csatlakozást a DAC](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) használatával
+> Additionally open ports 14000-14999 to enable [Connecting with DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database-átjárók IP-címei
 
-Az alábbi táblázat az átjárók régió szerinti IP-címeit sorolja fel. Azure SQL Databasehoz való kapcsolódáshoz engedélyeznie kell a hálózati forgalmat, hogy & a régió **összes** átjáróján.
+The table below lists the IP Addresses of Gateways by region. To connect to an Azure SQL Database, you need to allow network traffic to & from **all** Gateways for the region.
 
-A forgalom áttelepítésének részletei az egyes régiókban lévő új átjárók számára a következő cikkben olvashatók: [Azure SQL Database forgalom áttelepítése újabb átjáróra](sql-database-gateway-migration.md)
+Details of how traffic shall be migrated to new Gateways in specific regions are in the following article: [Azure SQL Database traffic migration to newer Gateways](sql-database-gateway-migration.md)
 
 
-| Régiónév          | Átjáró IP-címei |
+| Régió neve          | Gateway IP Addresses |
 | --- | --- |
 | Ausztrália középső régiója    | 20.36.105.0 |
-| Ausztráliai Central2   | 20.36.113.0 |
-| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 |
+| Australia Central2   | 20.36.113.0 |
+| Ausztrália keleti régiója       | 13.75.149.87, 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 |
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
 | Közép-Kanada       | 40.85.224.249      |
@@ -82,17 +88,17 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Kína 2. északi régiója        | 40.73.50.0         |
 | Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | USA keleti régiója              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0,  191.239.224.107, 104.208.150.3 | 
 | Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |
 | Közép-Németország      | 51.4.144.100       |
-| Kelet-Észak-Németország   | 51.5.144.179       |
+| Germany North East   | 51.5.144.179       |
 | Közép-India        | 104.211.96.159     |
 | Dél-India          | 104.211.224.146    |
 | Nyugat-India           | 104.211.160.80     |
 | Kelet-Japán           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Nyugat-Japán           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea középső régiója        | 52.231.32.42       |
-| Korea déli régiója          | 52.231.200.86      |
+| Dél-Korea          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Dél-Afrika északi régiója   | 102.133.152.0      |
@@ -101,28 +107,28 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |
 | Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |
-| Az Egyesült Királyság déli régiója             | 51.140.184.11      |
-| Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
+| Egyesült Királyság déli régiója             | 51.140.184.11      |
+| Egyesült Királyság nyugati régiója              | 51.141.8.11        |
 | USA nyugati középső régiója      | 13.78.145.25       |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA nyugati régiója, 2.            | 13.66.226.202      |
+| USA 2. nyugati régiója            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Databasei kapcsolatok házirendjének módosítása
+## <a name="change-azure-sql-database-connection-policy"></a>Change Azure SQL Database connection policy
 
-Azure SQL Database-kiszolgáló Azure SQL Database-kapcsolódási házirendjének módosításához használja a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) parancsot.
+To change the Azure SQL Database connection policy for an Azure SQL Database server, use the [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) command.
 
-- Ha a kapcsolódási házirend értéke `Proxy`, az összes hálózati csomag a Azure SQL Database átjárón keresztül áramlik. Ebben a beállításban engedélyezni kell a kimenő értéket csak az Azure SQL Database átjáró IP-címére. `Proxy` beállításának használata több késéssel rendelkezik, mint a `Redirect`beállítása.
-- Ha a kapcsolódási szabályzata `Redirect`, az összes hálózati csomag közvetlenül az adatbázis-fürthöz áramlik. Ennél a beállításnál engedélyeznie kell a kimenő és a több IP-cím használatát.
+- If your connection policy is set to `Proxy`, all network packets flow via the Azure SQL Database gateway. For this setting, you need to allow outbound to only the Azure SQL Database gateway IP. Using a setting of `Proxy` has more latency than a setting of `Redirect`.
+- If your connection policy is setting `Redirect`, all network packets flow directly to the database cluster. For this setting, you need to allow outbound to multiple IPs.
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>A kapcsolódási beállítások PowerShell használatával történő módosítására szolgáló parancsfájl
+## <a name="script-to-change-connection-settings-via-powershell"></a>Script to change connection settings via PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A következő parancsfájlhoz a [Azure PowerShell modul](/powershell/azure/install-az-ps)szükséges.
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
-A következő PowerShell-szkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzatot.
+The following PowerShell script shows how to change the connection policy.
 
 ```powershell
 # Get SQL Server ID
@@ -138,17 +144,17 @@ $id="$sqlserverid/connectionPolicies/Default"
 Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>A kapcsolódási beállítások Azure CLI-n keresztüli módosítására szolgáló parancsfájl
+## <a name="script-to-change-connection-settings-via-azure-cli"></a>Script to change connection settings via Azure CLI
 
 > [!IMPORTANT]
-> Ehhez a parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI bash-rendszerhéjban
+### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in a bash shell
 
 > [!IMPORTANT]
-> Ehhez a parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-A következő CLI-szkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzatot egy bash-rendszerhéjban.
+The following CLI script shows how to change the connection policy in a bash shell.
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -164,12 +170,12 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI Windows-parancssorból
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI from a Windows command prompt
 
 > [!IMPORTANT]
-> Ehhez a parancsfájlhoz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)szükséges.
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-A következő CLI-szkript bemutatja, hogyan lehet módosítani a Windows-parancssorból a kapcsolódási szabályzatot (az Azure CLI telepítve van).
+The following CLI script shows how to change the connection policy from a Windows command prompt (with Azure CLI installed).
 
 ```azurecli
 # Get SQL Server ID and set URI
@@ -184,6 +190,6 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure SQL Database-kiszolgálók Azure SQL Database-kapcsolódási szabályzatának módosításáról további információt a következő témakörben talál: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
-- A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](sql-database-develop-direct-route-ports-adonet-v12.md)-ban.
-- Az alkalmazások fejlesztésének általános áttekintését lásd: [SQL Database alkalmazásfejlesztés áttekintése](sql-database-develop-overview.md).
+- For information on how to change the Azure SQL Database connection policy for an Azure SQL Database server, see [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- For information about Azure SQL Database connection behavior for clients that use ADO.NET 4.5 or a later version, see [Ports beyond 1433 for ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
+- For general application development overview information, see [SQL Database Application Development Overview](sql-database-develop-overview.md).

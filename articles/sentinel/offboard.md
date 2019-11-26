@@ -1,6 +1,6 @@
 ---
-title: Regisztrációjának megszüntetésére szolgáló Azure Sentinel | Microsoft Docs
-description: Az Azure Sentinel-példány törlése.
+title: Offboard Azure Sentinel| Microsoft Docs
+description: How to delete your Azure Sentinel instance.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,74 +14,74 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: d3b9284282a7ee14cde2461598c81e6dfdfd9f72
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316750"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464140"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Az Azure Sentinel eltávolítása a bérlőből
+# <a name="remove-azure-sentinel-from-your-tenant"></a>Remove Azure Sentinel from your tenant
 
-Ha már nem szeretné használni az Azure Sentinelt, ez a cikk azt ismerteti, hogyan távolíthatja el a bérlőből.
+If you no longer want to use the Azure Sentinel, this article explains how to remove it from your tenant.
 
-## <a name="how-to-delete-azure-sentinel"></a>Az Azure Sentinel törlése
+## <a name="how-to-delete-azure-sentinel"></a>How to delete Azure Sentinel
 
-A háttérben az Azure Sentinel telepítésekor a **SecurityInsights** megoldás a kiválasztott munkaterületre van telepítve. Ezért először el kell távolítania a **SecurityInsights** -megoldást.
+In the background, when you install Azure Sentinel, the **SecurityInsights** solution is installed on your selected workspace. So the first thing you need to do is remove the **SecurityInsights** solution.
 
-1.  Nyissa meg az **Azure sentinelt**, majd a **konfiguráció**, majd a **munkaterület-beállítások**, majd a **megoldások**menüpontot.
+1.  Go to **Azure Sentinel**, followed by **Configuration**, followed by **Workspace settings**, and then **Solutions**.
 
-2.  Jelölje `SecurityInsights` ki, majd kattintson rá.
+2.  Select `SecurityInsights` and click on it.
 
-    ![A SecurityInsights-megoldás megkeresése](media/offboard/find-solution.png)
+    ![Find the SecurityInsights solution](media/offboard/find-solution.png)
 
-3.  A lap tetején válassza a **Törlés**lehetőséget.
+3.  At the top of the page select **Delete**.
 
     > [!IMPORTANT]
-    > Ha törli a munkaterületet, a munkaterület és az Azure Sentinel el lesz távolítva a bérlőből Azure Monitor.
+    > If you remove the workspace, it may affect other solutions and data sources that are using this workspace, including Azure Monitor. To check which solutions are using this workspace, see [List installed monitoring solutions](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). To check which solutions' data is being ingested into the workspace, see [Understanding ingested data volume](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
 
-    ![A SecurityInsights-megoldás törlése](media/offboard/delete-solution.png)
+    ![Delete the SecurityInsights solution](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes"></a>Mi történik a színfalak mögött?
+## <a name="what-happens-behind-the-scenes"></a>What happens behind the scenes?
 
-A megoldás törlésekor az Azure Sentinel akár 48 órát is igénybe vesz a törlési folyamat első fázisának elvégzéséhez.
+When you delete the solution, Azure Sentinel takes up to 48 hours to complete the first phase of the deletion process.
 
-A leválasztást követően a offboarding folyamat megkezdődik.
+After the disconnection is identified, the offboarding process begins.
 
-**Az összekötők konfigurációját a rendszer törli:**
+**The configuration of these connectors is deleted:**
 -   Office 365
 
 -   AWS
 
--   Microsoft-szolgáltatások biztonsági riasztásai (Azure ATP, Microsoft Cloud App Security beleértve Cloud Discovery Shadow IT Reporting, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Microsoft services security alerts (Azure ATP, Microsoft Cloud App Security including Cloud Discovery Shadow IT reporting, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
 
--   Intelligens veszélyforrás-felderítés
+-   Fenyegetések felderítése
 
--   Gyakori biztonsági naplók (beleértve a CEF-alapú naplókat, a Barracuda-t és a syslog-t) (ha van Azure Security Center, a rendszer ezeket a naplókat továbbra is gyűjti.)
+-   Common security logs (including CEF-based logs, Barracuda, and Syslog) (If you have Azure Security Center, these logs will continue to be collected.)
 
--   Windows biztonsági események (ha van Azure Security Center, ezek a naplók továbbra is gyűjtése történik.)
+-   Windows Security Events (If you have Azure Security Center, these logs will continue to be collected.)
 
-Az első 48 órán belül az adatkezelési és riasztási szabályok (beleértve a valós idejű Automation-konfigurációt) többé nem lesznek elérhetők vagy lekérdezhető az Azure Sentinelben.
+Within the first 48 hours, the data and alert rules (including real-time automation configuration) will no longer be accessible or queryable in Azure Sentinel.
 
-**30 nap elteltével ezeket az erőforrásokat törli:**
+**After 30 days these resources are deleted:**
 
--   Incidensek (beleértve a vizsgálati metaadatokat is)
+-   Incidents (including investigation metadata)
 
 -   Riasztási szabályok
 
--   Könyvjelzők
+-   Bookmarks
 
-A forgatókönyvek, a mentett munkafüzetek, a mentett vadászati lekérdezések és a jegyzetfüzetek nem törlődnek. **Előfordulhat, hogy az eltávolított adatvesztés miatt egyesek megszakadnak. Ezeket manuálisan is eltávolíthatja.**
+Your playbooks, saved workbooks, saved hunting queries, and notebooks are not deleted. **Some may break due to the removed data. You can remove those manually.**
 
-A szolgáltatás eltávolítása után 30 napos türelmi időszak áll rendelkezésre, amely során újra engedélyezheti a megoldást, és a rendszer visszaállítja az adatait és a riasztási szabályokat, de a konfigurált összekötőket újra kell kapcsolni.
+After you remove the service, there is a grace period of 30 days during which you can re-enable the solution and your data and alert rules will be restored but the configured connectors that were disconnected must be reconnected.
 
 > [!NOTE]
-> Ha eltávolítja a megoldást, az előfizetése továbbra is regisztrálva lesz az Azure Sentinel erőforrás-szolgáltatóban. **Manuálisan is eltávolíthatja.**
+> If you remove the solution, your subscription will continue to be registered with the Azure Sentinel resource provider. **You can remove it manually.**
 
 
 
 
-## <a name="next-steps"></a>További lépések
-Ebből a dokumentumból megtanulta, hogyan távolíthatja el az Azure Sentinel szolgáltatást. Ha meggondolja magát, és újra szeretné telepíteni:
-- Ismerkedés [Az Azure Sentinel](quickstart-onboard.md)beszerzésével.
+## <a name="next-steps"></a>Következő lépések
+In this document, you learned how to remove the Azure Sentinel service. If you change your mind and want to install it again:
+- Get started [on-boarding Azure Sentinel](quickstart-onboard.md).
 

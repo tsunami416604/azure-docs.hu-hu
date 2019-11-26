@@ -1,6 +1,6 @@
 ---
-title: Válassza ki a megfelelő hitelesítési módszert az Azure AD Hybrid Identity megoldáshoz | Microsoft Docs
-description: Ez az útmutató segítséget nyújt az ügyvezetők, a informatikai igazgatók, a CISOs, a vezető identitás-építészek, a vállalati építészek és a biztonsági és informatikai döntéshozók számára, hogy az Azure AD Hybrid Identity megoldáshoz használt hitelesítési módszert használják közepes és nagy szervezetekben.
+title: Choose the right authentication method for your Azure AD hybrid identity solution | Microsoft Docs
+description: This guide helps CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects, and Security and IT decision makers responsible for choosing an authentication method for their Azure AD hybrid identity solution in medium to large organizations.
 keywords: ''
 author: martincoetzer
 ms.author: martinco
@@ -9,214 +9,214 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820542"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483946"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Choose the right authentication method for your Azure Active Directory hybrid identity solution
 
-A megfelelő hitelesítési módszer kiválasztásával az alkalmazásait a felhőbe áthelyezni kívánó szervezeteknek az első szempontja. Ne tegye meg ezt a döntést a következő okok miatt:
+Choosing the correct authentication method is the first concern for organizations wanting to move their apps to the cloud. Don't take this decision lightly, for the following reasons:
 
-1. Ez az első döntés egy olyan szervezet számára, amely át kíván térni a felhőbe.
+1. It's the first decision for an organization that wants to move to the cloud.
 
-2. A hitelesítési módszer a szervezet Felhőbeli jelenlétének kritikus eleme. Az összes Felhőbeli adattal és erőforrással való hozzáférést szabályozza.
+2. The authentication method is a critical component of an organization’s presence in the cloud. It controls access to all cloud data and resources.
 
-3. Ez az Azure AD összes többi speciális biztonsági és felhasználói élményének alapja.
+3. It's the foundation of all the other advanced security and user experience features in Azure AD.
 
-4. A hitelesítési módszert nehéz megváltoztatni a megvalósítása után.
+4. The authentication method is difficult to change after it's implemented.
 
-Az identitás az informatikai biztonság új vezérlő síkja. Így a hitelesítés egy szervezet hozzáférés-őrzése az új felhő világába. A szervezeteknek olyan Identity Control-síkon kell rendelkezniük, amely megerősíti a biztonságot, és a támadók biztonságban tartja a Felhőbeli alkalmazásaikat.
+Identity is the new control plane of IT security. So authentication is an organization’s access guard to the new cloud world. Organizations need an identity control plane that strengthens their security and keeps their cloud apps safe from intruders.
 
-### <a name="out-of-scope"></a>Hatókörön kívül
-Azok a szervezetek, amelyek nem rendelkeznek meglévő helyszíni címtár-lábnyommal, nem a jelen cikk középpontjában állnak. Ezek a vállalatok jellemzően csak a felhőben hoznak létre identitásokat, ami nem igényel hibrid identitási megoldást. A csak felhőalapú identitások kizárólag a felhőben találhatók, és nem kapcsolódnak a megfelelő helyszíni identitásokhoz.
+### <a name="out-of-scope"></a>Out of scope
+Organizations that don't have an existing on-premises directory footprint aren't the focus of this article. Typically, those businesses create identities only in the cloud, which doesn’t require a hybrid identity solution. Cloud-only identities exist solely in the cloud and aren't associated with corresponding on-premises identities.
 
-## <a name="authentication-methods"></a>Hitelesítési módszerek
-Ha az Azure AD Hybrid Identity megoldás az új vezérlő síkja, a hitelesítés a Felhőbeli hozzáférés alapja. A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
+## <a name="authentication-methods"></a>Hitelesítési módok
+When the Azure AD hybrid identity solution is your new control plane, authentication is the foundation of cloud access. Choosing the correct authentication method is a crucial first decision in setting up an Azure AD hybrid identity solution. Implement the authentication method that is configured by using Azure AD Connect, which also provisions users in the cloud.
 
-A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak.
+To choose an authentication method, you need to consider the time, existing infrastructure, complexity, and cost of implementing your choice. These factors are different for every organization and might change over time.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
-Az Azure AD a következő hitelesítési módszereket támogatja a hibrid identitási megoldásokhoz.
+Azure AD supports the following authentication methods for hybrid identity solutions.
 
-### <a name="cloud-authentication"></a>Felhőbeli hitelesítés
-Ha ezt a hitelesítési módszert választja, az Azure AD kezeli a felhasználók bejelentkezési folyamatát. A zökkenőmentes egyszeri bejelentkezéssel (SSO) párosulva a felhasználók a hitelesítő adataik újbóli megadása nélkül is bejelentkezhetnek a Felhőbeli alkalmazásokba. A felhőalapú hitelesítés használatával két lehetőség közül választhat:
+### <a name="cloud-authentication"></a>Cloud authentication
+When you choose this authentication method, Azure AD handles users' sign-in process. Coupled with seamless single sign-on (SSO), users can sign in to cloud apps without having to reenter their credentials. With cloud authentication, you can choose from two options:
 
-**Azure ad-jelszó kivonatának szinkronizálása**. A helyszíni címtár-objektumok hitelesítésének legegyszerűbb módja az Azure AD-ben. A felhasználók ugyanazt a felhasználónevet és jelszót használhatják, amelyet a helyszínen használnak anélkül, hogy további infrastruktúrát kellene üzembe helyeznie. Az Azure AD egyes prémium funkciói, például az Identity Protection és a [Azure ad Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), jelszó-kivonatolási szinkronizálást igényelnek, függetlenül attól, hogy melyik hitelesítési módszert választja.
+**Azure AD password hash synchronization**. The simplest way to enable authentication for on-premises directory objects in Azure AD. Users can use the same username and password that they use on-premises without having to deploy any additional infrastructure. Some premium features of Azure AD, like Identity Protection and [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), require password hash synchronization, no matter which authentication method you choose.
 
 > [!NOTE]
-> A jelszavak soha nem tiszta szövegben tárolódnak, vagy az Azure AD-ben egy reverzibilis algoritmussal titkosítva vannak. A jelszó-kivonatolási szinkronizálás tényleges folyamatával kapcsolatos további információkért lásd: [jelszó-kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+> Passwords are never stored in clear text or encrypted with a reversible algorithm in Azure AD. For more information on the actual process of password hash synchronization, see [Implement password hash synchronization with Azure AD Connect sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
-**Az Azure ad átmenő hitelesítése**. Egyszerű jelszó-érvényesítést biztosít az Azure AD hitelesítési szolgáltatásokhoz egy vagy több helyszíni kiszolgálón futó szoftver-ügynök használatával. A kiszolgálók közvetlenül a helyszíni Active Directory érvényesítik a felhasználókat, így biztosítva, hogy a jelszó érvényesítése ne történjen meg a felhőben.
+**Azure AD Pass-through Authentication**. Provides a simple password validation for Azure AD authentication services by using a software agent that runs on one or more on-premises servers. The servers validate the users directly with your on-premises Active Directory, which ensures that the password validation doesn't happen in the cloud.
 
-A vállalati felhasználói fiókok állapotának azonnali betartatására, a jelszóházirendek és a bejelentkezési órák használatára vonatkozó biztonsági követelményt biztosító vállalatok ezt a hitelesítési módszert használhatják. A tényleges átmenő hitelesítési folyamattal kapcsolatos további információkért lásd: [felhasználói bejelentkezés az Azure ad átmenő hitelesítéssel](../../active-directory/hybrid/how-to-connect-pta.md).
+Companies with a security requirement to immediately enforce on-premises user account states, password policies, and sign-in hours might use this authentication method. For more information on the actual pass-through authentication process, see [User sign-in with Azure AD pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md).
 
-### <a name="federated-authentication"></a>Összevont hitelesítés
-Ha ezt a hitelesítési módszert választja, az Azure AD kikapcsolja a hitelesítési folyamatot egy különálló megbízható hitelesítési rendszerre, például a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) a felhasználó jelszavának ellenőrzésére.
+### <a name="federated-authentication"></a>Federated authentication
+When you choose this authentication method, Azure AD hands off the authentication process to a separate trusted authentication system, such as on-premises Active Directory Federation Services (AD FS), to validate the user’s password.
 
-A hitelesítési rendszeren további speciális hitelesítési követelmények is megadhatók. Ilyenek például az intelligens kártya alapú hitelesítés vagy a külső féltől származó többtényezős hitelesítés. További információ: [Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
+The authentication system can provide additional advanced authentication requirements. Examples are smartcard-based authentication or third-party multifactor authentication. For more information, see [Deploying Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
 
-A következő szakasz segítségével eldöntheti, hogy melyik hitelesítési módszer a legmegfelelőbb a döntési fa használatával. Segít eldönteni, hogy az Azure AD Hybrid Identity megoldáshoz felhőalapú vagy összevont hitelesítést kíván-e üzembe helyezni.
+The following section helps you decide which authentication method is right for you by using a decision tree. It helps you determine whether to deploy cloud or federated authentication for your Azure AD hybrid identity solution.
 
 ## <a name="decision-tree"></a>Döntési fa
 
-![Azure AD-hitelesítés döntési fája](./media/choose-ad-authn/azure-ad-authn-image1.png)
+![Azure AD authentication decision tree](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
-A döntéssel kapcsolatos kérdések részletei:
+Details on decision questions:
 
-1. Az Azure AD a felhasználók bejelentkezését anélkül tudja kezelni, hogy helyszíni összetevőket kellene használni a jelszavak ellenőrzéséhez.
-2. Az Azure AD szolgáltatással kikapcsolhatja a felhasználói bejelentkezést egy megbízható hitelesítési szolgáltatóra, például a Microsoft AD FSra.
-3. Ha alkalmaznia kell, a felhasználói szintű Active Directory biztonsági házirendeket, például a fiók lejártát, a fiók lejáratát, a jelszó lejártát, a fiók zárolását, valamint a bejelentkezési órákat minden felhasználói bejelentkezéskor, az Azure AD-nek néhány helyszíni összetevőt kell használnia.
-4. Az Azure AD nem támogatja natív módon a bejelentkezési funkciókat:
-   * Bejelentkezés intelligens kártyák vagy tanúsítványok használatával.
-   * Bejelentkezés a helyszíni MFA-kiszolgáló használatával.
-   * Bejelentkezés harmadik féltől származó hitelesítési megoldás használatával.
-   * Többhelyes helyszíni hitelesítési megoldás.
-5. Azure AD Identity Protection jelszó-kivonatolási szinkronizálást igényel, függetlenül attól, hogy melyik bejelentkezési módszert választja ki, hogy a *felhasználók kiszivárgott hitelesítő adatokat tartalmazó* jelentést nyújtsanak. Ha az elsődleges bejelentkezési módszer meghiúsul, és a hiba esemény előtt lett konfigurálva, a szervezetek átadhatják a jelszó-kivonatolási szinkronizálást.
-
-> [!NOTE]
-> Azure AD Identity Protection [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) -licencek szükségesek.
-
-## <a name="detailed-considerations"></a>Részletes megfontolások
-
-### <a name="cloud-authentication-password-hash-synchronization"></a>Felhőbeli hitelesítés: jelszó-kivonat szinkronizálása
-
-* **Erőfeszítés**. A jelszó-kivonatolási szinkronizáláshoz a legkevesebb erőfeszítést kell tenni az üzembe helyezés, a karbantartás és az infrastruktúra terén.  Ez az erőkifejtési szint jellemzően olyan szervezetekre vonatkozik, amelyeknek csak a felhasználóknak kell bejelentkezniük az Office 365, az SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokhoz. Ha be van kapcsolva, a jelszó-kivonat szinkronizálása a Azure AD Connect szinkronizálási folyamatának része, és két percenként fut.
-
-* **Felhasználói élmény**. A felhasználók bejelentkezési élményének javításához helyezzen üzembe zökkenőmentes egyszeri bejelentkezést jelszó-kivonatolási szinkronizálással. Ha a felhasználók bejelentkeznek, a zökkenőmentes egyszeri bejelentkezés kiküszöböli a szükségtelen kéréseket.
-
-* **Speciális forgatókönyvek**. Ha a szervezetek úgy döntenek, hogy az prémium szintű Azure AD P2-vel rendelkező Azure AD Identity Protection-jelentésekkel identitásokkal kapcsolatos bepillantásokat használhat. Ilyen például a kiszivárgott hitelesítő adatok jelentés. A Windows Hello for Business [speciális követelményeket támaszt a jelszó-kivonatolási szinkronizálás használatakor](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure ad Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) jelszó-kivonatolási szinkronizálást igényel a felhasználók vállalati hitelesítő adatokkal való kiépítéséhez a felügyelt tartományban.
-
-    Azoknak a szervezeteknek, amelyeken többtényezős hitelesítés szükséges a jelszó-kivonat szinkronizálásához, az Azure AD többtényezős hitelesítést vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszereket, amelyek az összevonásra támaszkodnak.
+1. Azure AD can handle sign-in for users without relying on on-premises components to verify passwords.
+2. Azure AD can hand off user sign-in to a trusted authentication provider such as Microsoft’s AD FS.
+3. If you need to apply, user-level Active Directory security policies such as account expired, disabled account, password expired, account locked out, and sign-in hours on each user sign-in, Azure AD requires some on-premises components.
+4. Sign-in features not natively supported by Azure AD:
+   * Sign-in using smartcards or certificates.
+   * Sign-in using on-premises MFA Server.
+   * Sign-in using third party authentication solution.
+   * Multi-site on-premises authentication solution.
+5. Azure AD Identity Protection requires Password Hash Sync regardless of which sign-in method you choose, to provide the *Users with leaked credentials* report. Organizations can fail over to Password Hash Sync if their primary sign-in method fails and it was configured before the failure event.
 
 > [!NOTE]
-> Az Azure AD feltételes hozzáféréséhez [prémium szintű Azure ad P1](https://azure.microsoft.com/pricing/details/active-directory/) licenc szükséges.
+> Azure AD Identity Protection require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
-* Az **üzletmenet folytonossága**. A jelszó-kivonatoló szinkronizálás Felhőbeli hitelesítéssel való használata olyan felhőalapú szolgáltatásként érhető el, amely az összes Microsoft-adatközpontra méretezhető. Annak érdekében, hogy a jelszó-kivonat szinkronizálása ne menjen le hosszabb ideig, helyezzen üzembe egy második Azure AD Connect kiszolgálót átmeneti módban egy készenléti konfigurációban.
+## <a name="detailed-considerations"></a>Detailed considerations
 
-* **Megfontolások**. A jelszó-kivonatolási szinkronizálás jelenleg nem kényszeríti ki azonnal a helyi fiók állapotának módosításait. Ebben az esetben a felhasználók csak akkor férhetnek hozzá a felhőalapú alkalmazásokhoz, ha a felhasználói fiók állapota szinkronizálva lett az Azure AD-val. Előfordulhat, hogy a szervezetek egy új szinkronizálási ciklus futtatásával szeretnék legyőzni ezt a korlátozást, miután a rendszergazdák tömeges frissítést végeznek a helyszíni felhasználói fiókok állapotára. Ilyen például a fiókok letiltása.
+### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authentication: Password hash synchronization
 
-> [!NOTE]
-> A jelszó lejárt, és a fiókhoz tartozó kizárt állapotok jelenleg nem szinkronizálhatók az Azure AD-val Azure AD Connect. Amikor megváltoztatja a felhasználó jelszavát, és beállítja, hogy a felhasználónak be kell állítania a *jelszót a következő bejelentkezéskor* , a rendszer nem szinkronizálja a jelszó-kivonatot az Azure ad-val Azure ad Connect, amíg a felhasználó meg nem változtatja a jelszavát.
+* **Effort**. Password hash synchronization requires the least effort regarding deployment, maintenance, and infrastructure.  This level of effort typically applies to organizations that only need their users to sign in to Office 365, SaaS apps, and other Azure AD-based resources. When turned on, password hash synchronization is part of the Azure AD Connect sync process and runs every two minutes.
 
-Tekintse át a [jelszó-kivonatok szinkronizálásának megvalósítása](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) című témakört.
+* **User experience**. To improve users' sign-in experience, deploy seamless SSO with password hash synchronization. Seamless SSO eliminates unnecessary prompts when users are signed in.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Felhőalapú hitelesítés: átmenő hitelesítés  
+* **Advanced scenarios**. If organizations choose to, it's possible to use insights from identities with Azure AD Identity Protection reports with Azure AD Premium P2. An example is the leaked credentials report. Windows Hello for Business has [specific requirements when you use password hash synchronization](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) requires password hash synchronization to provision users with their corporate credentials in the managed domain.
 
-* **Erőfeszítés**. Az átmenő hitelesítéshez egy vagy több (három) egyszerűsített ügynököt kell telepíteni a meglévő kiszolgálókon. Ezeknek az ügynököknek hozzáféréssel kell rendelkezniük a helyszíni Active Directory tartományi szolgáltatásokokhoz, beleértve a helyszíni AD-tartományvezérlőket is. Kimenő hozzáférésre van szükségük az internethez és a tartományvezérlőkhöz való hozzáféréshez. Emiatt nem támogatott az ügynökök üzembe helyezése peremhálózati hálózatban.
-
-    Az átmenő hitelesítéshez a tartományvezérlők számára nem korlátozott hálózati hozzáférés szükséges. Minden hálózati forgalom titkosítva van, és a hitelesítési kérelmekre korlátozódik. A folyamattal kapcsolatos további információkért tekintse meg az átmenő hitelesítés [biztonsági](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) részletes ismertetését.
-
-* **Felhasználói élmény**. A felhasználók bejelentkezési élményének javítása érdekében zökkenőmentes SSO-t helyezzen üzembe átmenő hitelesítéssel. Ha a felhasználók bejelentkeznek, a zökkenőmentes egyszeri bejelentkezés kiküszöböli a szükségtelen kéréseket.
-
-* **Speciális forgatókönyvek**. Az átmenő hitelesítés a bejelentkezés időpontjában kényszeríti a helyszíni fiók házirendjét. A hozzáférés megtagadható például akkor, ha egy helyszíni felhasználó fiókjának állapota le van tiltva, ki van zárva, vagy a [jelszó lejárt](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) , vagy az órákon kívül esik, amikor a felhasználó bejelentkezhet.
-
-    Az átmenő hitelesítéssel többtényezős hitelesítést igénylő szervezeteknek az Azure Multi-Factor Authentication (MFA) vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszert, amely az összevonásra támaszkodik. A speciális funkciók megkövetelik, hogy a jelszó-kivonat szinkronizálása telepítve legyen, függetlenül attól, hogy az áteresztő hitelesítést választja-e. Ilyen például az Identity Protection kiszivárgott hitelesítő adatairól szóló jelentés.
-
-* Az **üzletmenet folytonossága**. Javasoljuk, hogy két további áteresztő hitelesítési ügynököt helyezzen üzembe. Ezek az Extrák a Azure AD Connect-kiszolgáló első ügynökén kívül vannak. Ez a további üzemelő példány biztosítja a hitelesítési kérések magas rendelkezésre állását. Ha három ügynök van telepítve, az egyik ügynök továbbra is meghiúsulhat, ha egy másik ügynök karbantartás alatt áll.
-
-    További előnyt jelent a jelszó-kivonatolási szinkronizálás üzembe helyezése az átmenő hitelesítés mellett. Biztonsági mentési hitelesítési módszerként működik, ha az elsődleges hitelesítési módszer már nem érhető el.
-
-* **Megfontolások**. A jelszó-kivonatoló szinkronizálást biztonsági mentési hitelesítési módszerként használhatja az átmenő hitelesítéshez, ha az ügynökök nem tudják érvényesíteni a felhasználó hitelesítő adatait egy jelentős helyszíni hiba miatt. A jelszó-kivonat szinkronizálása nem történik meg automatikusan, és a Azure AD Connect használatával manuálisan kell átváltania a bejelentkezési módszert.
-
-    Az átmenő hitelesítéssel kapcsolatos egyéb megfontolásokért, beleértve az alternatív AZONOSÍTÓk támogatását is, tekintse meg a [gyakran ismételt kérdéseket](../../active-directory/hybrid/how-to-connect-pta-faq.md).
-
-Tekintse át az [átmenő hitelesítés implementálása](../../active-directory/hybrid/how-to-connect-pta.md) az üzembe helyezés lépésein című témakört.
-
-### <a name="federated-authentication"></a>Összevont hitelesítés
-
-* **Erőfeszítés**. Az összevont hitelesítési rendszer külső megbízható rendszerre támaszkodik a felhasználók hitelesítéséhez. Néhány vállalat újra szeretné használni a meglévő összevont rendszerbefektetést az Azure AD Hybrid Identity megoldásával. Az összevont rendszerek karbantartása és kezelése az Azure AD-n kívül esik. A szervezet számára az összevont rendszer használatával gondoskodni kell arról, hogy biztonságos módon legyen üzembe helyezhető, és képes legyen kezelni a hitelesítési terhelést.
-
-* **Felhasználói élmény**. Az összevont hitelesítés felhasználói élménye az összevonási Farm funkcióinak, topológiájának és konfigurációjának megvalósításán múlik. Egyes szervezeteknek erre a rugalmasságra van szükségük az összevonási farmhoz való hozzáféréshez és a biztonsági követelmények kielégítéséhez. Beállíthatja például, hogy a belsőleg csatlakoztatott felhasználók és eszközök automatikusan jelentkezzenek be a felhasználókba anélkül, hogy hitelesítő adatokat kelljen megadniuk. Ez a konfiguráció azért működik, mert már be van jelentkezve az eszközeibe. Ha szükséges, néhány speciális biztonsági funkció nehezebbé teszi a felhasználók bejelentkezési folyamatát.
-
-* **Speciális forgatókönyvek**. Általában akkor van szükség összevont hitelesítési megoldásra, ha az ügyfeleknek olyan hitelesítési követelményük van, amelyet az Azure AD natív módon nem támogat. [A megfelelő bejelentkezési lehetőség kiválasztásához](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)tekintse meg a részletes információkat. Vegye figyelembe a következő gyakori követelményeket:
-
-  * Intelligens kártyák vagy tanúsítványok használatát igénylő hitelesítés.
-  * A helyszíni MFA-kiszolgálók vagy az összevont identitás-szolgáltatót igénylő külső többtényezős szolgáltatók.
-  * Hitelesítés harmadik féltől származó hitelesítési megoldások használatával. Tekintse meg az [Azure ad-összevonás kompatibilitási listáját](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * A bejelentkezéshez szükség van egy sAMAccountName, például: tartomány \ Felhasználónév, egyszerű felhasználónév (UPN) helyett, például user@domain.com.
-
-* Az **üzletmenet folytonossága**. Az összevont rendszerek általában a kiszolgálók terheléses, farmként ismert tömbjét igénylik. Ez a farm belső hálózati és peremhálózati topológiában van konfigurálva a hitelesítési kérések magas rendelkezésre állásának biztosítása érdekében.
-
-    Ha az elsődleges hitelesítési módszer már nem érhető el, a jelszó-kivonatolási szinkronizálást és az összevont hitelesítést is üzembe helyezheti biztonsági mentési hitelesítési módszerként. Ilyen eset például, ha a helyszíni kiszolgálók nem érhetők el. Egyes nagyméretű nagyvállalati szervezetek olyan összevonási megoldást igényelnek, amely támogatja a Geo-DNS-sel konfigurált több internetes beléptetési pont használatát kis késleltetésű hitelesítési kérelmek esetén.
-
-* **Megfontolások**. Az összevont rendszerek jellemzően nagyobb mértékű befektetést igényelnek a helyszíni infrastruktúrában. A legtöbb szervezet ezt a lehetőséget választja, ha már van helyszíni összevonási beruházása. Ha pedig erős üzleti követelmény, hogy egyetlen identitású szolgáltatót használjon. Az összevonás bonyolultabb a felhőalapú hitelesítési megoldásokkal összehasonlítva a működéshez és a hibakereséshez.
-
-Olyan nem irányítható tartomány esetén, amely nem ellenőrizhető az Azure AD-ben, további konfigurációra van szükség a felhasználói azonosító bejelentkezésének megvalósításához. Ezt a követelményt másodlagos bejelentkezési AZONOSÍTÓnak is nevezzük. Lásd: [alternatív bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a korlátozásokhoz és a követelményekhez. Ha úgy dönt, hogy egy külső féltől származó multi-Factor Authentication szolgáltatót használ összevonással, a szolgáltató támogatja a WS-Trust használatát, hogy az eszközök csatlakozzanak az Azure AD-hoz.
-
-Tekintse át az [összevonási kiszolgálók](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) központi telepítésének lépéseit ismertető témakört.
+    Organizations that require multifactor authentication with password hash synchronization must use Azure AD multifactor authentication or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use third-party or on-premises multifactor authentication methods that rely on federation.
 
 > [!NOTE]
-> Az Azure AD Hybrid Identity megoldás üzembe helyezésekor a Azure AD Connect támogatott topológiáinak egyikét kell megvalósítani. További információ a támogatott és nem támogatott konfigurációkról [Azure ad Connect-topológiák esetében](../../active-directory/hybrid/plan-connect-topologies.md).
+> Azure AD Conditional Access require [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
-## <a name="architecture-diagrams"></a>Architektúra-diagramok
+* **Business continuity**. Using password hash synchronization with cloud authentication is highly available as a cloud service that scales to all Microsoft datacenters. To make sure password hash synchronization does not go down for extended periods, deploy a second Azure AD Connect server in staging mode in a standby configuration.
 
-Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az egyes hitelesítési módszerekhez szükséges magas szintű architektúrák összetevőit vázolják fel. Áttekintést nyújtanak a megoldások közötti különbségek összehasonlításához.
+* **Considerations**. Currently, password hash synchronization doesn't immediately enforce changes in on-premises account states. In this situation, a user has access to cloud apps until the user account state is synchronized to Azure AD. Organizations might want to overcome this limitation by running a new synchronization cycle after administrators do bulk updates to on-premises user account states. An example is disabling accounts.
 
-* Jelszó-kivonatoló szinkronizációs megoldás egyszerűsége:
+> [!NOTE]
+> The password expired and account locked-out states aren't currently synced to Azure AD with Azure AD Connect. When you change a user's password and set the *user must change password at next logon* flag, the password hash will not be synced to Azure AD with Azure AD Connect, until the user change their password.
 
-    ![Azure AD Hybrid Identity jelszó-kivonatoló szinkronizálással](./media/choose-ad-authn/azure-ad-authn-image2.png)
+Refer to [implementing password hash synchronization](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) for deployment steps.
 
-* Az átmenő hitelesítés ügynöki követelményei, két ügynököt használva a redundancia érdekében:
+### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authentication: Pass-through Authentication  
 
-    ![Azure AD hibrid identitás átmenő hitelesítéssel](./media/choose-ad-authn/azure-ad-authn-image3.png)
+* **Effort**. For pass-through authentication, you need one or more (we recommend three) lightweight agents installed on existing servers. These agents must have access to your on-premises Active Directory Domain Services, including your on-premises AD domain controllers. They need outbound access to the Internet and access to your domain controllers. For this reason, it's not supported to deploy the agents in a perimeter network.
 
-* Az Ön és a szervezet belső hálózata közötti összevonáshoz szükséges összetevők:
+    Pass-through Authentication requires unconstrained network access to domain controllers. All network traffic is encrypted and limited to authentication requests. For more information on this process, see the [security deep dive](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) on pass-through authentication.
 
-    ![Azure AD Hybrid Identity összevont hitelesítéssel](./media/choose-ad-authn/azure-ad-authn-image4.png)
+* **User experience**. To improve users' sign-in experience, deploy seamless SSO with Pass-through Authentication. Seamless SSO eliminates unnecessary prompts after users sign in.
 
-## <a name="comparing-methods"></a>Módszerek összehasonlítása
+* **Advanced scenarios**. Pass-through Authentication enforces the on-premises account policy at the time of sign-in. For example, access is denied when an on-premises user’s account state is disabled, locked out, or [password expired](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) or falls outside the hours when the user is allowed to sign in.
 
-|Figyelembe|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
+    Organizations that require multifactor authentication with pass-through authentication must use Azure Multi-Factor Authentication (MFA) or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use a third-party or on-premises multifactor authentication method that relies on federation. Advanced features require that password hash synchronization is deployed whether or not you choose pass-through authentication. An example is the leaked credentials report of Identity Protection.
+
+* **Business continuity**. We recommend that you deploy two extra pass-through authentication agents. These extras are in addition to the first agent on the Azure AD Connect server. This additional deployment ensures high availability of authentication requests. When you have three agents deployed, one agent can still fail when another agent is down for maintenance.
+
+    There's another benefit to deploying password hash synchronization in addition to pass-through authentication. It acts as a backup authentication method when the primary authentication method is no longer available.
+
+* **Considerations**. You can use password hash synchronization as a backup authentication method for pass-through authentication, when the agents can't validate a user's credentials due to a significant on-premises failure. Fail over to password hash synchronization doesn't happen automatically and you must use Azure AD Connect to switch the sign-on method manually.
+
+    For other considerations on Pass-through Authentication, including Alternate ID support, see [frequently asked questions](../../active-directory/hybrid/how-to-connect-pta-faq.md).
+
+Refer to [implementing pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md) for deployment steps.
+
+### <a name="federated-authentication"></a>Federated authentication
+
+* **Effort**. A federated authentication system relies on an external trusted system to authenticate users. Some companies want to reuse their existing federated system investment with their Azure AD hybrid identity solution. The maintenance and management of the federated system falls outside the control of Azure AD. It's up to the organization by using the federated system to make sure it's deployed securely and can handle the authentication load.
+
+* **User experience**. The user experience of federated authentication depends on the implementation of the features, topology, and configuration of the federation farm. Some organizations need this flexibility to adapt and configure the access to the federation farm to suit their security requirements. For example, it's possible to configure internally connected users and devices to sign in users automatically, without prompting them for credentials. This configuration works because they already signed in to their devices. If necessary, some advanced security features make users' sign-in process more difficult.
+
+* **Advanced scenarios**. A federated authentication solution is usually required when customers have an authentication requirement that Azure AD doesn't support natively. See detailed information to help you [choose the right sign-in option](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Consider the following common requirements:
+
+  * Authentication that requires smartcards or certificates.
+  * On-premises MFA servers or third-party multifactor providers requiring a federated identity provider.
+  * Authentication by using third-party authentication solutions. See the [Azure AD federation compatibility list](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
+  * Sign in that requires an sAMAccountName, for example, DOMAIN\username, instead of a User Principal Name (UPN), for example, user@domain.com.
+
+* **Business continuity**. Federated systems typically require a load-balanced array of servers, known as a farm. This farm is configured in an internal network and perimeter network topology to ensure high availability for authentication requests.
+
+    Deploy password hash synchronization along with federated authentication as a backup authentication method when the primary authentication method is no longer available. An example is when the on-premises servers aren't available. Some large enterprise organizations require a federation solution to support multiple Internet ingress points configured with geo-DNS for low-latency authentication requests.
+
+* **Considerations**. Federated systems typically require a more significant investment in on-premises infrastructure. Most organizations choose this option if they already have an on-premises federation investment. And  if it's a strong business requirement to use a single-identity provider. Federation is more complex to operate and troubleshoot compared to cloud authentication solutions.
+
+For a nonroutable domain that can't be verified in Azure AD, you need extra configuration to implement user ID sign in. This requirement is known as Alternate login ID support. See [Configuring Alternate Login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) for limitations and requirements. If you choose to use a third-party multi-factor authentication provider with federation, ensure the provider supports WS-Trust to allow devices to join Azure AD.
+
+Refer to [Deploying Federation Servers](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) for deployment steps.
+
+> [!NOTE]
+> When you deploy your Azure AD hybrid identity solution, you must implement one of the supported topologies of Azure AD Connect. Learn more about supported and unsupported configurations at [Topologies for Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
+
+## <a name="architecture-diagrams"></a>Architecture diagrams
+
+The following diagrams outline the high-level architecture components required for each authentication method you can use with your Azure AD hybrid identity solution. They provide an overview to help you compare the differences between the solutions.
+
+* Simplicity of a password hash synchronization solution:
+
+    ![Azure AD hybrid identity with Password hash synchronization](./media/choose-ad-authn/azure-ad-authn-image2.png)
+
+* Agent requirements of pass-through authentication, using two agents for redundancy:
+
+    ![Azure AD hybrid identity with Pass-through Authentication](./media/choose-ad-authn/azure-ad-authn-image3.png)
+
+* Components required for federation in your perimeter and internal network of your organization:
+
+    ![Azure AD hybrid identity with federated authentication](./media/choose-ad-authn/azure-ad-authn-image4.png)
+
+## <a name="comparing-methods"></a>Comparing methods
+
+|Consideration|Password hash synchronization + Seamless SSO|Pass-through Authentication + Seamless SSO|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
-|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
-|Van SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
-|Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
-|Milyen típusú bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + jelszó<br><br>sAMAccountName + jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány-és intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Másodlagos bejelentkezési azonosító](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
-|Támogatott a vállalati Windows Hello?|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*A Windows Server 2016-tartomány működési szintjét igényli*|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|Mik a többtényezős hitelesítési lehetőségek?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-kiszolgáló](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Harmadik féltől származó MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|
-|Milyen felhasználói fiókok támogatottak?|Letiltott fiókok<br>(legfeljebb 30 perces késleltetés)|Letiltott fiókok<br><br>Fiók kizárva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Bejelentkezési idő|Letiltott fiókok<br><br>Fiók kizárva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Bejelentkezési idő|
-|Mik a feltételes hozzáférési lehetőségek?|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)<br><br>[AD FS jogcím szabályai](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|A örökölt protokollok blokkolása támogatott?|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
-|Testre szabhatja az emblémát, a képet és a leírást a bejelentkezési lapokon?|[Igen, prémium szintű Azure AD](../../active-directory/fundamentals/customize-branding.md)|[Igen, prémium szintű Azure AD](../../active-directory/fundamentals/customize-branding.md)|[Igen](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|Milyen speciális forgatókönyvek támogatottak?|[Intelligens jelszó zárolása](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Kiszivárgott hitelesítő adatok jelentései prémium szintű Azure AD P2-vel](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligens jelszó zárolása](../../active-directory/authentication/howto-password-smart-lockout.md)|Többhelyes, kis késleltetésű hitelesítési rendszerek<br><br>[Extranetes zárolás AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integráció harmadik féltől származó személyazonossági rendszerekkel](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|Where does authentication happen?|A felhőben|In the cloud after a secure password verification exchange with the on-premises authentication agent|Helyszíni|
+|What are the on-premises server requirements beyond the provisioning system: Azure AD Connect?|None|One server for each additional authentication agent|Two or more AD FS servers<br><br>Two or more WAP servers in the perimeter/DMZ network|
+|What are the requirements for on-premises Internet and networking beyond the provisioning system?|None|[Outbound Internet access](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) from the servers running authentication agents|[Inbound Internet access](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) to WAP servers in the perimeter<br><br>Inbound network access to AD FS servers from WAP servers in the perimeter<br><br>Hálózati terheléselosztás|
+|Is there an SSL certificate requirement?|Nem|Nem|Igen|
+|Is there a health monitoring solution?|Nem szükséges|Agent status provided by [Azure Active Directory admin center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Do users get single sign-on to cloud resources from domain-joined devices within the company network?|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
+|What sign-in types are supported?|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + password<br><br>sAMAccountName + password<br><br>Windows-Integrated Authentication<br><br>[Certificate and smart card authentication](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternate login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Is Windows Hello for Business supported?|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Requires Windows Server 2016 Domain functional level*|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificate trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
+|What are the multifactor authentication options?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Third-party MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|
+|What user account states are supported?|Disabled accounts<br>(up to 30-minute delay)|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|
+|What are the Conditional Access options?|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim rules](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|Is blocking legacy protocols supported?|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Can you customize the logo, image, and description on the sign-in pages?|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Igen](../../active-directory/hybrid/how-to-connect-fed-management.md)|
+|What advanced scenarios are supported?|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Leaked credentials reports, with Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|Multisite low-latency authentication system<br><br>[AD FS extranet lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration with third-party identity systems](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
-> Az Azure AD feltételes hozzáférés szolgáltatásban az egyéni vezérlők jelenleg nem támogatják az eszközök regisztrálását.
+> Custom controls in Azure AD Conditional Access does not currently support device registration.
 
-## <a name="recommendations"></a>Javaslatok
-Az Identity rendszer biztosítja, hogy a felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz, valamint az áttelepített és a felhőben elérhetővé tenni kívánt üzletági alkalmazásokhoz. Annak érdekében, hogy a jogosult felhasználók a szervezet bizalmas adataiból származó, produktív és rosszul működő felhasználókat is megőrizzen, a hitelesítés szabályozza az alkalmazásokhoz való hozzáférést.
+## <a name="recommendations"></a>Ajánlatok
+Your identity system ensures your users' access to cloud apps and the line-of-business apps that you migrate and make available in the cloud. To keep authorized users productive and bad actors out of your organization’s sensitive data, authentication controls access to apps.
 
-A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerhez használhatja vagy engedélyezheti a következő okok miatt:
+Use or enable password hash synchronization for whichever authentication method you choose, for the following reasons:
 
-1. **Magas rendelkezésre állás és vész-helyreállítás**. Az átmenő hitelesítés és az összevonás a helyszíni infrastruktúrára támaszkodik. Az átmenő hitelesítéshez a helyszíni lábnyom magában foglalja a kiszolgálói hardvert és az átmenő hitelesítési ügynökök hálózatának megkövetelését. Az összevonás esetében a helyszíni lábnyom még nagyobb. A peremhálózaton lévő kiszolgálókat a proxy hitelesítési kéréseinek és a belső összevonási kiszolgálóknak kell megadniuk.
+1. **High availability and disaster recovery**. Pass-through Authentication and federation rely on on-premises infrastructure. For pass-through authentication, the on-premises footprint includes the server hardware and networking the Pass-through Authentication agents require. For federation, the on-premises footprint is even larger. It requires servers in your perimeter network to proxy authentication requests and the internal federation servers.
 
-    Az egyes meghibásodási pontok elkerülése érdekében helyezzen üzembe redundáns kiszolgálókat. A hitelesítési kérelmeket a rendszer mindig szervizeli, ha valamelyik összetevő meghibásodik. Az átmenő hitelesítés és az összevonás is arra támaszkodik, hogy a tartományvezérlők válaszolnak a hitelesítési kérelmekre, ami szintén sikertelen lehet. Ezeknek az összetevőknek sok karbantartásra van szükségük, hogy egészségesek maradjanak. Az kimaradások nagyobb valószínűséggel működnek, ha a karbantartás nem tervezett és nem megfelelően van megvalósítva. A jelszó-kivonatoló szinkronizálás használatával elkerülhetők a leállások, mivel a Microsoft Azure AD felhőalapú hitelesítési szolgáltatás globálisan méretezhető, és mindig elérhető.
+    To avoid single points of failures, deploy redundant servers. Then authentication requests will always be serviced if any component fails. Both pass-through authentication and federation also rely on domain controllers to respond to authentication requests, which can also fail. Many of these components need maintenance to stay healthy. Outages are more likely when maintenance isn't planned and implemented correctly. Avoid outages by using password hash synchronization because the Microsoft Azure AD cloud authentication service scales globally and is always available.
 
-2. **A helyszíni leállás túlélése**.  Egy, a Cyber-támadás vagy a katasztrófa miatti helyszíni kimaradás következményei jelentősek lehetnek, a megbénult szervezettől kezdve a támadók nem tudják kezelni a támadásokat. A közelmúltban számos szervezet volt a kártevők elleni támadásoknak, beleértve a megcélzó ransomware is, amelyek miatt a helyszíni kiszolgálók leállnak. Ha a Microsoft segítséget nyújt az ügyfeleknek az ilyen típusú támadások kezelésében, két szervezetet lát:
+2. **On-premises outage survival**.  The consequences of an on-premises outage due to a cyber-attack or disaster can be substantial, ranging from reputational brand damage to a paralyzed organization unable to deal with the attack. Recently, many organizations were victims of malware attacks, including targeted ransomware, that caused their on-premises servers to go down. When Microsoft helps customers deal with these kinds of attacks, it sees two categories of organizations:
 
-   * Azok a szervezetek, amelyek korábban bekapcsolták a jelszó-kivonatolási szinkronizálást, módosították a hitelesítési módszert a jelszó-kivonatoló szinkronizálás használatára. Egy órán belül ismét online állapotba kerültek. Ha az Office 365-on keresztül fér hozzá az e-mailekhez, a problémák megoldásához és más felhőalapú számítási feladatokhoz való hozzáféréshez is dolgozott.
+   * Organizations that previously turned on password hash synchronization changed their authentication method to use password hash synchronization. They were back online in a matter of hours. By using access to email via Office 365, they worked to resolve issues and access other cloud-based workloads.
 
-   * Azok a szervezetek, amelyeknek korábban nem engedélyezték a jelszó-kivonatolási szinkronizálást, nem megbízható külső fogyasztói e-mail-rendszerekre kellett volna rendelkezniük a problémák megoldásához. Ezekben az esetekben hetekig tartották a helyszíni identitás-infrastruktúrát, mielőtt a felhasználók újra bejelentkeznek a felhőalapú alkalmazásokba.
+   * Organizations that didn’t previously enable password hash synchronization had to resort to untrusted external consumer email systems for communications to resolve issues. In those cases, it took them weeks to restore their on-premises identity infrastructure, before users were able to sign in to cloud-based apps again.
 
-3. **Identity Protection**. A Felhőbeli felhasználók védelmének egyik legjobb módja a prémium szintű Azure AD P2 Azure AD Identity Protection. A Microsoft folyamatosan ellenőrzi az interneten a felhasználók és a jelszavak listáját, hogy a rossz szereplőkkel árulnak és elérhetővé teszik a Dark web-t. Az Azure AD ezeket az információkat használva ellenőrizheti, hogy a szervezetben lévő felhasználónevek és jelszavak biztonsága sérült-e. Ezért fontos, hogy az összevont vagy átmenő hitelesítéstől függetlenül engedélyezze a jelszó-kivonatok szinkronizálását, függetlenül attól, hogy milyen hitelesítési módszert használ. A kiszivárgott hitelesítő adatok jelentésként jelennek meg. Ezekkel az adatokkal blokkolhatja vagy kényszerítheti a felhasználókat a jelszavuk módosítására, amikor megpróbálnak bejelentkezni a kiszivárgott jelszavakkal.
+3. **Identity protection**. One of the best ways to protect users in the cloud is Azure AD Identity Protection with Azure AD Premium P2. Microsoft continually scans the Internet for user and password lists that bad actors sell and make available on the dark web. Azure AD can use this information to verify if any of the usernames and passwords in your organization are compromised. So it's critical to enable password hash synchronization no matter what authentication method you use, whether that's federated or pass-through authentication. Leaked credentials are presented as a report. Use this information to block or force users to change their passwords when they try to sign in with leaked passwords.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk a felhőalapú alkalmazásokhoz való hozzáférés támogatásához a szervezetek által konfigurálható és telepíthető különböző hitelesítési lehetőségeket ismerteti. A különböző üzleti, biztonsági és technikai követelmények teljesítése érdekében a szervezetek választhatnak a jelszó-kivonat szinkronizálása, az átmenő hitelesítés és az összevonás között.
+This article outlines various authentication options that organizations can configure and deploy to support access to cloud apps. To meet various business, security, and technical requirements, organizations can choose between password hash synchronization, Pass-through Authentication, and federation.
 
-Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének és a felhasználói élményének a megterhelése az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
+Consider each authentication method. Does the effort to deploy the solution, and the user's experience of the sign-in process, address your business requirements? Evaluate whether your organization needs the advanced scenarios and business continuity features of each authentication method. Finally, evaluate the considerations of each authentication method. Do any of them prevent you from implementing your choice?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Napjaink világában a fenyegetések napi 24 órában jelennek meg, és bárhonnan érkeznek. Implementálja a megfelelő hitelesítési módszert, és csökkenti a biztonsági kockázatokat, és gondoskodik az identitások védelméről.
+In today’s world, threats are present 24 hours a day and come from everywhere. Implement the correct authentication method, and it will mitigate your security risks and protect your identities.
 
-[Ismerkedjen](../../active-directory/fundamentals/get-started-azure-ad.md) meg az Azure ad-vel, és telepítse a megfelelő hitelesítési megoldást a szervezet számára.
+[Get started](../../active-directory/fundamentals/get-started-azure-ad.md) with Azure AD and deploy the right authentication solution for your organization.
 
-Ha úgy gondolja, hogy összevontról felhőbe történő áttelepítést végez, további információ [a bejelentkezési módszer módosításáról](../../active-directory/hybrid/plan-connect-user-signin.md). Az áttelepítés megtervezéséhez és megvalósításához használja ezeket a projekt-telepítési terveket, vagy vegye fontolóra az új [szakaszos](../../active-directory/hybrid/how-to-connect-staged-rollout.md) [bevezetési](https://aka.ms/deploymentplans) funkciót, amellyel áttelepítheti az összevont felhasználókat a felhőalapú hitelesítés használatával egy szakaszos megközelítésben.
+If you're thinking about migrating from federated to cloud authentication, learn more about [changing the sign-in method](../../active-directory/hybrid/plan-connect-user-signin.md). To help you plan and implement the migration, use [these project deployment plans](https://aka.ms/deploymentplans) or consider using the new [Staged Rollout](../../active-directory/hybrid/how-to-connect-staged-rollout.md) feature to migrate federated users to using cloud authentication in a staged approach.

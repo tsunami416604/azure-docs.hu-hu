@@ -1,6 +1,6 @@
 ---
-title: Verziókövetés a Azure Data Factory
-description: Ismerje meg, hogyan konfigurálhatja a verziókövetés Azure Data Factory
+title: Source control in Azure Data Factory
+description: Learn how to configure source control in Azure Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,181 +12,181 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122894"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484453"
 ---
-# <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
+# <a name="source-control-in-azure-data-factory"></a>Source control in Azure Data Factory
 
-A Azure Data Factory felhasználói felületi élmény (UX) a Visual authoring szolgáltatásban két funkciót kínál:
+The Azure Data Factory user interface experience (UX) has two experiences available for visual authoring:
 
-- Szerzői közvetlenül a Data Factory szolgáltatással
-- Az Azure Repos git vagy a GitHub integrációjának szerzője
-
-> [!NOTE]
-> A Azure Government-felhőben csak a Data Factory szolgáltatással történő közvetlen szerzői műveletek támogatottak.
-
-## <a name="author-directly-with-the-data-factory-service"></a>Szerzői közvetlenül a Data Factory szolgáltatással
-
-A Data Factory szolgáltatással végzett szerzői műveletek során a módosítások mentéséhez kizárólag az **összes közzététele** gomb segítségével lehet menteni. Ha rákattintott, az összes elvégzett módosítás közvetlenül a Data Factory szolgáltatásban lesz közzétéve. 
-
-![Közzétételi mód](media/author-visually/data-factory-publish.png)
-
-A Data Factory szolgáltatással történő közvetlen létrehozás a következő korlátozásokkal rendelkezik:
-
-- A Data Factory szolgáltatás nem tartalmaz olyan tárházat, amely a változtatások JSON-entitásait tárolja.
-- A Data Factory szolgáltatás nem optimalizált együttműködésre vagy verziókövetés céljára.
+- Author directly with the Data Factory service
+- Author with Azure Repos Git or GitHub integration
 
 > [!NOTE]
-> A Data Factory szolgáltatással közvetlenül történő szerzői műveletek a git-tárház konfigurálásakor le vannak tiltva a Azure Data Factory UX-ben. A módosításokat közvetlenül a PowerShell vagy egy SDK használatával végezheti el a szolgáltatásban.
+> Only authoring directly with the Data Factory service is supported in the Azure Government Cloud.
 
-## <a name="author-with-azure-repos-git-integration"></a>Az Azure Repos git-integrációjának szerzője
+## <a name="author-directly-with-the-data-factory-service"></a>Author directly with the Data Factory service
 
-A Visual authoring with Azure Repos git-integrációja támogatja a forrás-és együttműködési munkát az adatfeldolgozó-folyamatokban. Az Azure Repos git szervezeti adattárral társíthat egy adatgyárat a verziókövetés, az együttműködés, a verziószámozás és így tovább. Egyetlen Azure Repos git-szervezet több tárházral is rendelkezhet, de egy Azure-beli Repos git-tárház csak egy adatgyárhoz társítható. Ha nem rendelkezik Azure Repos-szervezettel vagy-adattárral, kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) az erőforrások létrehozásához.
+While authoring directly with the Data Factory service, the only way to save changes is via the **Publish All** button. Once clicked, all changes that you made are published directly to the Data Factory service. 
+
+![Publish mode](media/author-visually/data-factory-publish.png)
+
+Authoring directly with the Data Factory service has the following limitations:
+
+- The Data Factory service doesn't include a repository for storing the JSON entities for your changes.
+- The Data Factory service isn't optimized for collaboration or version control.
 
 > [!NOTE]
-> A parancsfájlokat és az adatfájlokat egy Azure Repos git-tárházban tárolhatja. A fájlokat azonban manuálisan kell feltöltenie az Azure Storage-ba. Egy Data Factory folyamat nem tölt fel automatikusan egy Azure Repos git-tárházban tárolt parancsfájl-vagy adatfájlt az Azure Storage-ba.
+> Authoring directly with the Data Factory service is disabled in the Azure Data Factory UX when a Git repository is configured. Changes can be made directly to the service via PowerShell or an SDK.
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Azure Repos git-tárház konfigurálása Azure Data Factory
+## <a name="author-with-azure-repos-git-integration"></a>Author with Azure Repos Git integration
 
-Az Azure Repos git-tárházat két módszer használatával konfigurálhatja egy adatgyárral.
+Visual authoring with Azure Repos Git integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with an Azure Repos Git organization repository for source control, collaboration, versioning, and so on. A single Azure Repos Git organization can have multiple repositories, but an Azure Repos Git repository can be associated with only one data factory. If you don't have an Azure Repos organization or repository, follow [these instructions](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) to create your resources.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>1\. konfigurációs módszer: Azure Data Factory Kezdőlap
+> [!NOTE]
+> You can store script and data files in an Azure Repos Git repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in an Azure Repos Git repository to Azure Storage.
 
-A Azure Data Factory kezdőlapján válassza a **kódlap beállítása**lehetőséget.
+### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Configure an Azure Repos Git repository with Azure Data Factory
 
-![Azure Repos-programkódok tárházának konfigurálása](media/author-visually/configure-repo.png)
+You can configure an Azure Repos Git repository with a data factory through two methods.
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX authoring Canvas
-A Azure Data Factory UX authoring vásznon válassza a **Data Factory** legördülő menüt, majd válassza a **kódlap beállítása**lehetőséget.
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
 
-![A Code adattár beállításainak konfigurálása az UX-létrehozáshoz](media/author-visually/configure-repo-2.png)
+On the Azure Data Factory home page, select **Set up Code Repository**.
 
-Mindkét módszer megnyithatja a tárház beállításainak konfigurációs paneljét.
+![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
 
-![A kódlap beállításainak konfigurálása](media/author-visually/repo-settings.png)
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
+In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
 
-A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai láthatók:
+![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
 
-| Beállítás | Leírás | Érték |
+Both methods open the repository settings configuration pane.
+
+![Configure the code repository settings](media/author-visually/repo-settings.png)
+
+The configuration pane shows the following Azure Repos code repository settings:
+
+| Beállítás | Leírás | Value (Díj) |
 |:--- |:--- |:--- |
-| **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
-| **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
-| **Azure Repos-szervezet** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet neve a következő helyen található: `https://{organization name}.visualstudio.com`. Bejelentkezhet az [Azure Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
-| **ProjectName** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét a következő helyen találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
-| **RepositoryName** | Az Azure Repos-kód tárházának neve. Az Azure Repos-projektek git-adattárakat tartalmaznak, amelyekkel a projekt növekedésével kezelhetők a forráskód. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a projektben. | `<your Azure Repos code repository name>` |
-| **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a `master`. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch name>` |
-| **Gyökérmappa** | Az Azure Repos együttműködési ág gyökérkönyvtára. | `<your root folder name>` |
-| **Meglévő Data Factory-erőforrások importálása adattárba** | Itt adhatja meg, hogy a rendszer importálja-e a meglévő adatok gyári erőforrásait az UX **authoring vászonból** egy Azure Repos git-tárházba. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
-| **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
+| **Repository Type** | The type of the Azure Repos code repository.<br/> | Azure DevOps Git or GitHub |
+| **Azure Active Directory** | Your Azure AD tenant name. | `<your tenant name>` |
+| **Azure Repos Organization** | Your Azure Repos organization name. You can locate your Azure Repos organization name at `https://{organization name}.visualstudio.com`. You can [sign in to your Azure Repos organization](https://www.visualstudio.com/team-services/git/) to access your Visual Studio profile and see your repositories and projects. | `<your organization name>` |
+| **ProjectName** | Your Azure Repos project name. You can locate your Azure Repos project name at `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **RepositoryName** | Your Azure Repos code repository name. Azure Repos projects contain Git repositories to manage your source code as your project grows. You can create a new repository or use an existing repository that's already in your project. | `<your Azure Repos code repository name>` |
+| **Collaboration branch** | Your Azure Repos collaboration branch that is used for publishing. By default, it’s `master`. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch name>` |
+| **Root folder** | Your root folder in your Azure Repos collaboration branch. | `<your root folder name>` |
+| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX **Authoring canvas** into an Azure Repos Git repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
+| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
 
 > [!NOTE]
-> Ha a Microsoft Edge-t használja, és nem lát értékeket az Azure DevOps-fiók legördülő listájában, adja hozzá a https://*. VisualStudio. com kiterjesztést a megbízható helyek listájához.
+> If you are using Microsoft Edge and do not see any values in your Azure DevOps Account dropdown, add https://*.visualstudio.com to the trusted sites list.
 
-### <a name="use-a-different-azure-active-directory-tenant"></a>Másik Azure Active Directory bérlő használata
+### <a name="use-a-different-azure-active-directory-tenant"></a>Use a different Azure Active Directory tenant
 
-Létrehozhat egy Azure Repos Git-adattárat egy másik Azure Active Directory-bérlőn. Ha másik Azure AD-bérlőt szeretne megadni, rendszergazdai jogosultságokkal kell rendelkeznie a használt Azure-előfizetéshez.
+Létrehozhat egy Azure Repos Git-adattárat egy másik Azure Active Directory-bérlőn. To specify a different Azure AD tenant, you have to have administrator permissions for the Azure subscription that you're using.
 
-### <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiók használata
+### <a name="use-your-personal-microsoft-account"></a>Use your personal Microsoft account
 
-Ha személyes Microsoft-fiók szeretne használni a git-integrációhoz, összekapcsolhatja a személyes Azure-tárházat a szervezete Active Directory.
+To use a personal Microsoft account for Git integration, you can link your personal Azure Repo to your organization's Active Directory.
 
-1. Adja hozzá személyes Microsoft-fiókét a szervezet Active Directory vendégként. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md).
+1. Add your personal Microsoft account to your organization's Active Directory as a guest. For more info, see [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md).
 
-2. Jelentkezzen be a Azure Portalba személyes Microsoft-fiókával. Ezután váltson a szervezet Active Directoryra.
+2. Log in to the Azure portal with your personal Microsoft account. Then switch to your organization's Active Directory.
 
-3. Nyissa meg az Azure DevOps szakaszt, ahol most megjelenik a személyes tárháza. Válassza ki a tárházat, és kapcsolódjon Active Directory.
+3. Go to the Azure DevOps section, where you now see your personal repo. Select the repo and connect with Active Directory.
 
-Ezeket a konfigurációs lépéseket követően a saját tárháza akkor érhető el, ha a Data Factory felhasználói felületen beállítja a git-integrációt.
+After these configuration steps, your personal repo is available when you set up Git integration in the Data Factory UI.
 
-Az Azure Repos szervezete Active Directoryhoz való csatlakoztatásával kapcsolatos további információkért lásd: [Az Azure DevOps-szervezet csatlakoztatása Azure Active Directoryhoz](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+For more info about connecting Azure Repos to your organization's Active Directory, see [Connect your Azure DevOps organization to Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
-## <a name="author-with-github-integration"></a>Létrehozás a GitHub-integrációval
+## <a name="author-with-github-integration"></a>Author with GitHub integration
 
-A GitHub-integrációval rendelkező vizuális szerzői műveletek támogatják a forrás-és együttműködési munkát a saját adatfeldolgozó-folyamataiban. Egy GitHub-fiók adattárral társíthat egy adatgyárat a verziókövetés, az együttműködés, a verziószámozás érdekében. Egyetlen GitHub-fióknak több tárháza is lehet, de egy GitHub-tárház csak egy adatgyárhoz társítható. Ha nem rendelkezik GitHub-fiókkal vagy-adattárral, kövesse az [alábbi utasításokat](https://github.com/join) az erőforrások létrehozásához.
+Visual authoring with GitHub integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with a GitHub account repository for source control, collaboration, versioning. A single GitHub account can have multiple repositories, but a GitHub repository can be associated with only one data factory. If you don't have a GitHub account or repository, follow [these instructions](https://github.com/join) to create your resources.
 
-A GitHub-integráció Data Factory a nyilvános GitHubot (azaz [https://github.com](https://github.com)) és a GitHub Enterprise-t is támogatja. A nyilvános és a privát GitHub-adattárakat Data Factory is használhatja, ha már rendelkezik olvasási és írási engedéllyel a GitHubon lévő tárházhoz.
+The GitHub integration with Data Factory supports both public GitHub (that is, [https://github.com](https://github.com)) and GitHub Enterprise. You can use both public and private GitHub repositories with Data Factory as long you have read and write permission to the repository in GitHub.
 
-GitHub-tárház konfigurálásához rendszergazdai jogosultságokkal kell rendelkeznie a használt Azure-előfizetéshez.
+To configure a GitHub repo, you must have administrator permissions for the Azure subscription that you're using.
 
-A szolgáltatás kilenc perces bemutatása és bemutatása esetén tekintse meg a következő videót:
+For a nine-minute introduction and demonstration of this feature, watch the following video:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
 
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>GitHub-adattár konfigurálása Azure Data Factory
+### <a name="configure-a-github-repository-with-azure-data-factory"></a>Configure a GitHub repository with Azure Data Factory
 
-A GitHub-tárházat két módszerrel is konfigurálhatja egy adatelőállítóval.
+You can configure a GitHub repository with a data factory through two methods.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>1\. konfigurációs módszer: Azure Data Factory Kezdőlap
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
 
-A Azure Data Factory kezdőlapján válassza a **kódlap beállítása**lehetőséget.
+On the Azure Data Factory home page, select **Set up Code Repository**.
 
-![Azure Repos-programkódok tárházának konfigurálása](media/author-visually/configure-repo.png)
+![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX authoring Canvas
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
 
-A Azure Data Factory UX authoring vásznon válassza a **Data Factory** legördülő menüt, majd válassza a **kódlap beállítása**lehetőséget.
+In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
 
-![A Code adattár beállításainak konfigurálása az UX-létrehozáshoz](media/author-visually/configure-repo-2.png)
+![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
 
-Mindkét módszer megnyithatja a tárház beállításainak konfigurációs paneljét.
+Both methods open the repository settings configuration pane.
 
-![GitHub-adattár beállításai](media/author-visually/github-integration-image2.png)
+![GitHub repository settings](media/author-visually/github-integration-image2.png)
 
-A konfigurációs ablaktábla a GitHub-tárház következő beállításait jeleníti meg:
+The configuration pane shows the following GitHub repository settings:
 
 | **Beállítás** | **Leírás**  | **Érték**  |
 |:--- |:--- |:--- |
-| **Tárház típusa** | Az Azure Repos Code adattár típusa. | GitHub |
-| **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kiválasztva (alapértelmezett) |
-| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökérkönyvtárának URL-címe. Például: https://github.mydomain.com. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
-| **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https:\//GitHub.com/{Account Name}/{repository neve} címen található. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
-| **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
-| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
-| **Gyökérmappa** | A legfelső szintű mappa a GitHub-együttműködési ágban. |`<your root folder name>` |
-| **Meglévő Data Factory-erőforrások importálása adattárba** | Meghatározza, hogy a meglévő adatok gyári erőforrásai a UX authoring vászonról egy GitHub-tárházba legyenek importálva. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
-| **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
+| **Repository Type** | The type of the Azure Repos code repository. | GitHub |
+| **Use GitHub Enterprise** | Checkbox to select GitHub Enterprise | unselected (default) |
+| **GitHub Enterprise URL** | The GitHub Enterprise root URL. Például: https://github.mydomain.com. Required only if **Use GitHub Enterprise** is selected | `<your GitHub enterprise url>` |                                                           
+| **GitHub account** | Your GitHub account name. This name can be found from https:\//github.com/{account name}/{repository name}. Navigating to this page prompts you to enter GitHub OAuth credentials to your GitHub account. | `<your GitHub account name>` |
+| **Repository Name**  | Your GitHub code repository name. GitHub accounts contain Git repositories to manage your source code. You can create a new repository or use an existing repository that's already in your account. | `<your repository name>` |
+| **Collaboration branch** | Your GitHub collaboration branch that is used for publishing. By default, its master. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch>` |
+| **Root folder** | Your root folder in your GitHub collaboration branch. |`<your root folder name>` |
+| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX authoring canvas into a GitHub repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
+| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
 
-### <a name="known-github-limitations"></a>Ismert GitHub-korlátozások
+### <a name="known-github-limitations"></a>Known GitHub limitations
 
-- A parancsfájlokat és az adatfájlokat egy GitHub-tárházban tárolhatja. A fájlokat azonban manuálisan kell feltöltenie az Azure Storage-ba. Egy Data Factory folyamat nem tölt fel automatikusan egy GitHub-tárházban tárolt parancsfájl-vagy adatfájlt az Azure Storage-ba.
+- You can store script and data files in a GitHub repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in a GitHub repository to Azure Storage.
 
-- A 2.14.0-nál régebbi verzióval rendelkező GitHub Enterprise nem működik a Microsoft Edge böngészőben.
+- GitHub Enterprise with a version older than 2.14.0 doesn't work in the Microsoft Edge browser.
 
-- A GitHub-integráció a Data Factory Visual authoring Tools eszközzel csak a Data Factory általánosan elérhető verziójában működik.
+- GitHub integration with the Data Factory visual authoring tools only works in the generally available version of Data Factory.
 
-## <a name="switch-to-a-different-git-repo"></a>Váltás másik git-tárházra
+## <a name="switch-to-a-different-git-repo"></a>Switch to a different Git repo
 
-Ha másik git-tárházra szeretne váltani, kattintson a git-tárház **beállításai** ikonra a Data Factory áttekintés oldal jobb felső sarkában. Ha nem látja az ikont, törölje a helyi böngésző gyorsítótárát. Válassza ki az ikont az aktuális tárház társításának eltávolításához.
+To switch to a different Git repo, click the **Git Repo Settings** icon in the upper right corner of the Data Factory overview page. If you can’t see the icon, clear your local browser cache. Select the icon to remove the association with the current repo.
 
-![Git ikon](media/author-visually/remove-repo.png)
+![Git icon](media/author-visually/remove-repo.png)
 
-Ha megjelenik az adattár beállításai ablaktábla, válassza a **git eltávolítása**lehetőséget. Adja meg az adatelőállító nevét, és kattintson a **Confirm (megerősítés** ) gombra az adatgyárhoz társított git-tárház eltávolításához.
+Once the Repository Settings pane appears, select **Remove Git**. Enter your data factory name and click **confirm** to remove the Git repository associated with your data factory.
 
-![Az aktuális git-tárház társításának eltávolítása](media/author-visually/remove-repo2.png)
+![Remove the association with the current Git repo](media/author-visually/remove-repo2.png)
 
-Miután eltávolította az aktuális tárházhoz való társítást, beállíthatja, hogy a git-beállítások egy másik tárházat használjanak, majd meglévő Data Factory erőforrásokat importáljon az új tárházba. 
+After you remove the association with the current repo, you can configure your Git settings to use a different repo and then import existing Data Factory resources to the new repo. 
 
 ## <a name="version-control"></a>Verziókövetés
 
-A verziókövetés rendszerei (más néven a _verziókövetés_) lehetővé teszik a fejlesztők számára a kód és a kód alapján végzett módosítások nyomon követését. A verziókövetés elengedhetetlen eszköz a több fejlesztő projektjeihez.
+Version control systems (also known as _source control_) let developers collaborate on code and track changes that are made to the code base. Source control is an essential tool for multi-developer projects.
 
-### <a name="creating-feature-branches"></a>Szolgáltatási ágak létrehozása
+### <a name="creating-feature-branches"></a>Creating feature branches
 
-Minden olyan Azure Repos git-tárház, amely egy adatgyárhoz van társítva, együttműködési ág tartozik. (`master` az alapértelmezett együttműködési ág). A felhasználók létrehozhatnak szolgáltatási ágakat is, ha a ág legördülő menüben az **+ új ág** lehetőségre kattintanak. Miután megjelenik az új ág ablaktábla, adja meg a szolgáltatási ág nevét.
+Each Azure Repos Git repository that's associated with a data factory has a collaboration branch. (`master` is the default collaboration branch). Users can also create feature branches by clicking **+ New Branch** in the branch dropdown. Once the new branch pane appears, enter the name of your feature branch.
 
-![Új ág létrehozása](media/author-visually/new-branch.png)
+![Create a new branch](media/author-visually/new-branch.png)
 
-Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az együttműködési ágra, kattintson az ág legördülő listára, és válassza a **pull-kérelem létrehozása**lehetőséget. Ezzel a művelettel elvégezheti az Azure Repos git-t, ahol lekéréses kérelmeket tehet fel, kód-felülvizsgálatokat végezhet, és egyesítheti az együttműködési ág módosításait. (`master` az alapértelmezett). Az együttműködési ágban csak a Data Factory szolgáltatásban lehet közzétenni. 
+When you are ready to merge the changes from your feature branch to your collaboration branch, click on the branch dropdown and select **Create pull request**. This action takes you to Azure Repos Git where you can raise pull requests, do code reviews, and merge changes to your collaboration branch. (`master` is the default). You are only allowed to publish to the Data Factory service from your collaboration branch. 
 
-![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
+![Create a new pull request](media/author-visually/create-pull-request.png)
 
-### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
+### <a name="configure-publishing-settings"></a>Configure publishing settings
 
-A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok mentésének helye – adjon hozzá egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch`mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Például:
+To configure the publish branch - that is, the branch where Resource Manager templates are saved - add a `publish_config.json` file to the root folder in the collaboration branch. Data Factory reads this file, looks for the field `publishBranch`, and creates a new branch (if it doesn't already exist) with the value provided. Then it saves all Resource Manager templates to the specified location. Példa:
 
 ```json
 {
@@ -194,69 +194,69 @@ A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok ment
 }
 ```
 
-Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
+When you specify a new publish branch, Data Factory doesn't delete the previous publish branch. If you want to remove the previous publish branch, delete it manually.
 
 > [!NOTE]
-> Data Factory csak a `publish_config.json` fájlt olvassa be, amikor betölti a gyárat. Ha már betöltötte a gyárat a portálon, frissítse a böngészőt a módosítások érvénybe léptetéséhez.
+> Data Factory only reads the `publish_config.json` file when it loads the factory. If you already have the factory loaded in the portal, refresh the browser to make your changes take effect.
 
-### <a name="publish-code-changes"></a>Kód módosításának közzététele
+### <a name="publish-code-changes"></a>Publish code changes
 
-Miután összevonta a módosításokat az együttműködési ág (`master` az alapértelmezett), kattintson a **Közzététel** gombra a kód módosításainak manuális közzétételéhez a főág és a Data Factory szolgáltatás között.
+After you have merged changes to the collaboration branch (`master` is the default), click **Publish** to manually publish your code changes in the master branch to the Data Factory service.
 
-![Módosítások közzététele a Data Factory szolgáltatásban](media/author-visually/publish-changes.png)
+![Publish changes to the Data Factory service](media/author-visually/publish-changes.png)
 
-Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzétételi ág és a függőben lévő módosítások helyesek. A módosítások ellenőrzése után kattintson az **OK** gombra a közzététel megerősítéséhez.
+A side pane will open where you confirm that the publish branch and pending changes are correct. Once you verify your changes, click **OK** to confirm the publish.
 
-![A megfelelő közzétételi ág megerősítése](media/author-visually/configure-publish-branch.png)
+![Confirm the correct publish branch](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> A fő ág nem reprezentatív a Data Factory szolgáltatásban üzembe helyezett szolgáltatások esetében. A *fő ágat manuálisan közzé kell tenni* a Data Factory szolgáltatásban.
+> The master branch is not representative of what's deployed in the Data Factory service. The master branch *must* be published manually to the Data Factory service.
 
-## <a name="advantages-of-git-integration"></a>A git-integráció előnyei
+## <a name="advantages-of-git-integration"></a>Advantages of Git integration
 
--   **Verziókövetés**. Mivel az adat-előállító számítási feladatai elengedhetetlenek, a gyárat a git segítségével integrálva számos forrás-ellenőrzési előnyt használhat, például az alábbiakat:
-    -   A módosítások nyomon követésének és naplózásának lehetősége.
-    -   A hibákat bevezetett változások visszaállíthatók.
--   **Részleges mentés**. Ahogy sok változást végez a gyárban, azt tapasztalhatja, hogy a normál élő módban nem mentheti a módosításokat piszkozatként, mert nem áll készen, vagy nem szeretné elveszíteni a módosításokat abban az esetben, ha a számítógép összeomlik. A git-integrációval a módosítások növekményes mentését folytathatja, és csak akkor teheti közzé a gyárat, ha készen áll. A git átmeneti helyként működik a munkához, amíg meg nem tesztelte a módosításokat a saját igényeinek megfelelően.
--   **Együttműködés és felügyelet**. Ha több csapattag is részt vesz ugyanahhoz a gyárhoz, érdemes lehet a csapattársait egy kód-felülvizsgálati folyamattal együttműködni egymással. A gyárat úgy is beállíthatja, hogy a gyár nem minden közreműködője jogosult legyen a gyárban való üzembe helyezésre. A csapattagok csak a git-n keresztül módosíthatják a módosításokat, de csak a csapat egyes tagjai számára engedélyezett a gyári módosítások közzététele.
--   **Diffek megjelenítése**. A git módban megtekintheti, hogy a rendszer milyen hasznos adatokat fog közzétenni a gyárban. Ez a különbség azt mutatja, hogy minden olyan erőforrás/entitás, amelyet a gyárban történt legutóbbi közzététel óta módosítottak/hozzáadtak/töröltek. A diff alapján tovább folytathatja a közzétételt, vagy visszatérhet, és megtekintheti a módosításokat, majd később is visszatérhet.
--   **Jobb CI/CD**. Ha git-módot használ, beállíthatja, hogy a kiadási folyamat automatikusan induljon el, amint a fejlesztői gyárban bármilyen változás történt. A gyári tulajdonságokat is testreszabhatja, amelyek a Resource Manager-sablonban paraméterként érhetők el. Hasznos lehet, ha csak a szükséges tulajdonságokat szeretné megtartani paraméterekként, és minden más nehezen kódolva van.
--   **Jobb teljesítmény**. Egy átlagos gyár gyorsabban töltődik be a git módban, mint a normál élő módban, mert az erőforrások a git használatával tölthetők le.
+-   **Source Control**. As your data factory workloads become crucial, you would want to integrate your factory with Git to leverage several source control benefits like the following:
+    -   Ability to track/audit changes.
+    -   Ability to revert changes that introduced bugs.
+-   **Partial Saves**. As you make a lot of changes in your factory, you will realize that in the regular LIVE mode, you can't save your changes as draft, because you are not ready, or you don’t want to lose your changes in case your computer crashes. With Git integration, you can continue saving your changes incrementally, and publish to the factory only when you are ready. Git acts as a staging place for your work, until you have tested your changes to your satisfaction.
+-   **Collaboration and Control**. If you have multiple team members participating to the same factory, you may want to let your teammates collaborate with each other via a code review process. You can also set up your factory such that not every contributor to the factory has permission to deploy to the factory. Team members may just be allowed to make changes via Git, but only certain people in the team are allowed to "Publish" the changes to the factory.
+-   **Showing diffs**. In Git mode, you get to see a nice diff of the payload that’s about to get published to the factory. This diff shows you all resources/entities that got modified/added/deleted since the last time you published to your factory. Based on this diff, you can either continue further with publishing, or go back and check your changes, and then come back later.
+-   **Better CI/CD**. If you are using Git mode, you can configure your release pipeline to trigger automatically as soon as there are any changes made in the dev factory. You also get to customize the properties in your factory that are available as parameters in the Resource Manager template. It can be useful to keep only the required set of properties as parameters, and have everything else hard coded.
+-   **Better Performance**. An average factory loads ten times faster in Git mode than in regular LIVE mode, because the resources are downloaded via Git.
 
-## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a git-integrációhoz
+## <a name="best-practices-for-git-integration"></a>Best practices for Git integration
 
 ### <a name="permissions"></a>Engedélyek
 
-Általában nem szeretné, hogy minden csapattag rendelkezzen a gyár frissítéséhez szükséges engedélyekkel. A következő engedélyek használata ajánlott:
+Typically you don’t want every team member to have permissions to update the factory. The following permissions settings are recommended:
 
-*   Az összes csapattagnak olvasási engedéllyel kell rendelkeznie az adatelőállítóhoz.
-*   A gyárban csak a kiválasztott személyek adhatók közzé. Ehhez rendelkeznie kell a **Data Factory közreműködő** szerepkörrel a gyárban. Az engedélyekkel kapcsolatos további információkért lásd: [szerepkörök és engedélyek a Azure Data Factoryhoz](concepts-roles-permissions.md).
+*   All team members should have read permissions to the data factory.
+*   Only a select set of people should be allowed to publish to the factory. To do so, they must have the **Data Factory contributor** role on the factory. For more information on permissions, see [Roles and permissions for Azure Data Factory](concepts-roles-permissions.md).
    
-az ajánlott, hogy a közvetlen bejelentkezések ne legyenek engedélyezve az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a pull-kérelmek folyamatán keresztül történik.
+It's recommended to not allow direct check-ins to the collaboration branch. This restriction can help prevent bugs as every check-in will go through a pull request review process described in [Creating feature branches](source-control.md#creating-feature-branches).
 
-### <a name="using-passwords-from-azure-key-vault"></a>Jelszavak használata Azure Key Vault
+### <a name="using-passwords-from-azure-key-vault"></a>Using passwords from Azure Key Vault
 
-ajánlott a Azure Key Vault használata a Data Factory társított szolgáltatások kapcsolati karakterláncának vagy jelszavának tárolására. Biztonsági okokból nem tárolunk ilyen titkos adatokat a git-ben, így a társított szolgáltatások módosításai azonnal közzé lesznek téve a Azure Data Factory szolgáltatásnak.
+its recommended to use Azure Key Vault to store any connection strings or passwords for Data Factory Linked Services. For security reasons, we don’t store any such secret information in Git, so any changes to Linked Services are published immediately to the Azure Data Factory service.
 
-A Key Vault használata is megkönnyíti a folyamatos integrációt és üzembe helyezést, mivel nem kell megadnia ezeket a titkokat a Resource Manager-sablonok üzembe helyezése során.
+Using Key Vault also makes continuous integration and deployment easier as you will not have to provide these secrets during Resource Manager template deployment.
 
-## <a name="troubleshooting-git-integration"></a>A git-integráció hibaelhárítása
+## <a name="troubleshooting-git-integration"></a>Troubleshooting Git integration
 
-### <a name="stale-publish-branch"></a>Elavult közzétételi ág
+### <a name="stale-publish-branch"></a>Stale publish branch
 
-Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzététel ellenére elavult erőforrásokat tartalmaz, próbálkozzon a következő lépésekkel:
+If the publish branch is out of sync with the master branch and contains out-of-date resources despite a recent publish, try following these steps:
 
-1. Az aktuális git-tárház eltávolítása
-1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása az adattárba** lehetőség van **kiválasztva**
-1. Az együttműködési ág összes erőforrásának törlése
-1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
+1. Remove your current Git repository
+1. Reconfigure Git with the same settings, but make sure **Import existing Data Factory resources to repository** is selected and choose **New branch**
+1. Delete all resources from your collaboration branch
+1. Create a pull request to merge the changes to the collaboration branch 
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
-Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
+Select **Feedback** to comment about features or to notify Microsoft about issues with the tool:
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.
-* A folyamatos integráció és üzembe helyezés megvalósításához tekintse [meg az Azure Data Factory folyamatos integrációját és továbbítását (CI/CD)](continuous-integration-deployment.md).
+* To learn more about monitoring and managing pipelines, see [Monitor and manage pipelines programmatically](monitor-programmatically.md).
+* To implement continuous integration and deployment, see [Continuous integration and delivery (CI/CD) in Azure Data Factory](continuous-integration-deployment.md).

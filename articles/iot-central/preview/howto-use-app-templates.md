@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central-alkalmazás exportálása | Microsoft Docs
-description: Megoldás-kezelőként exportálni szeretném az alkalmazás sablonját, hogy újra lehessen használni.
+title: Export an Azure IoT Central application | Microsoft Docs
+description: As a solution manager, I want to export an application template to be able to reuse it.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/17/2019
@@ -8,89 +8,95 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 81e24712de186e2d5ec03e33ecabe485cc0d9f31
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894759"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480373"
 ---
-# <a name="export-your-application-preview-features"></a>Alkalmazás exportálása (előzetes verziójú funkciók)
+# <a name="export-your-application-preview-features"></a>Export your application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ez a cikk azt ismerteti, hogyan lehet a megoldás-kezelőként exportálni egy IoT Central alkalmazást, hogy újra lehessen használni.
+This article describes how, as a solution manager, to export an IoT Central application to be able to reuse it.
 
 Erre két lehetősége van:
 
-- Létrehozhat egy másolatot az alkalmazásról, ha csak egy másolatot kell készítenie az alkalmazásról.
-- Ha több példányt szeretne létrehozni, létrehozhat egy alkalmazás-sablont az alkalmazásból.
+- You can create a copy of your application if you just need to create a duplicate copy of your application.
+- You can create an application template from your application if you plan to create multiple copies.
 
-## <a name="copy-your-application"></a>Az alkalmazás másolása
+## <a name="copy-your-application"></a>Copy your application
 
-Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példányait, az eszköz adatelőzményeit és a felhasználói adatmennyiségeket. A másolás egy utólagos elszámolású alkalmazás, amelyet fizetnie kell. Egy alkalmazás másolásával nem hozhat létre próbaverziós alkalmazást.
+You can create a copy of any application, minus any device instances, device data history, and user data. The copy is a Pay-As-You-Go application that you'll be charged for. You can't create a Trial application by copying an application.
 
-Válassza a **Másolás**lehetőséget. A párbeszédpanelen adja meg az új utólagos elszámolású alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. Ha többet szeretne megtudni az űrlap mezőiről, tekintse meg az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót.
+Select **Copy**. In the dialog box, enter the details for the new Pay-As-You-Go application. Then select **Copy** to confirm that you want to continue. To learn more about the fields in the form, see the [Create an application](quick-deploy-iot-central.md) quickstart.
 
-![Alkalmazásbeállítások lap](media/howto-use-app-templates/appcopy2.png)
+> [!NOTE]
+> You can **Copy your application** to **Europe** and **US** locations only.
 
-Az alkalmazás másolási műveletének sikerességét követően az új alkalmazásra kattintva megnyithatja a hivatkozást.
+![Application settings page](media/howto-use-app-templates/appcopy2.png)
 
-![Alkalmazásbeállítások lap](media/howto-use-app-templates/appcopy3a.png)
+After the app copy operation succeeds, you can navigate to the new application using the link.
 
-Az alkalmazások másolása a szabályok és az e-mail művelet definícióját is másolja. Bizonyos műveletek, például a flow és a Logic Apps a szabály-AZONOSÍTÓn keresztül vannak társítva meghatározott szabályokhoz. Ha egy szabályt egy másik alkalmazásba másolnak, az a saját szabály AZONOSÍTÓját kapja meg. Ebben az esetben a felhasználóknak új műveletet kell létrehozniuk, majd hozzá kell rendelniük az új szabályt. Általánosságban is érdemes ellenőrizni a szabályokat és a műveleteket, hogy biztosan naprakészek legyenek az új alkalmazásban.
+![Application settings page](media/howto-use-app-templates/appcopy3a.png)
 
-> [!WARNING]
-> Ha az irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a kért erőforrást nem találhatók** az új alkalmazásban. Ezeket a csempéket újra kell konfigurálnia az új alkalmazás eszközeivel kapcsolatos információk megjelenítéséhez.
-
-## <a name="create-an-application-template"></a>Alkalmazás sablonjának létrehozása
-
-Azure IoT Central-alkalmazás létrehozásakor választhat a beépített sablonok közül. Saját alkalmazásokat is létrehozhat meglévő IoT Central alkalmazásokból. Az új alkalmazások létrehozásakor saját alkalmazás-sablonjait is használhat.
-
-Alkalmazás-sablon létrehozásakor a következő elemeket tartalmazza a meglévő alkalmazásból:
-
-- Az alkalmazás alapértelmezett irányítópultja, beleértve az irányítópult elrendezését és az összes definiált csempét.
-- Eszközök sablonjai, beleértve a méréseket, a beállításokat, a tulajdonságokat, a parancsokat és az irányítópultot.
-- Szabályok. A rendszer minden szabály-definíciót tartalmaz. Az e-mail-műveletek kivételével azonban nem tartalmazza a műveleteket.
-- Eszközök készletei, beleértve a feltételeket és az irányítópultokat.
+Copying an application also copies the definition of rules and email action. Some actions, such as Flow and  Logic Apps, are tied to specific rules via the Rule ID. When a rule is copied to a different application, it gets its own Rule ID. In this case, users will have to create a new action and then associate the new rule with it. In general, it's a good idea to check the rules and actions to make sure they're up-to-date in the new app.
 
 > [!WARNING]
-> Ha az irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a kért erőforrást nem találhatók** az új alkalmazásban. Ezeket a csempéket újra kell konfigurálnia az új alkalmazás eszközeivel kapcsolatos információk megjelenítéséhez.
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
 
-Alkalmazás sablonjának létrehozásakor az nem tartalmazza a következő elemeket:
+## <a name="create-an-application-template"></a>Create an application template
+
+When you create an Azure IoT Central application, you have a choice of built-in sample templates. You can also create your own application templates from existing IoT Central applications. You can then use your own application templates when you create new applications.
+
+When you create an application template, it includes the following items from your existing application:
+
+- The default application dashboard, including the dashboard layout and all the tiles you've defined.
+- Device templates, including measurements, settings, properties, commands, and dashboard.
+- Rules. All rule definitions are included. However actions, except for email actions, aren't included.
+- Device sets, including their conditions and dashboards.
+
+> [!WARNING]
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
+
+When you create an application template, it doesn't include the following items:
 
 - Eszközök
 - Felhasználók
-- Feladatdefiníciók
-- Folyamatos adatexportálási definíciók
+- Job definitions
+- Continuous data export definitions
 
-Ezeket az elemeket manuálisan adja hozzá az alkalmazás sablonból létrehozott összes alkalmazáshoz.
+Add these items manually to any applications created from an application template.
 
-Alkalmazás sablonjának létrehozása meglévő IoT Central alkalmazásból:
+To create an application template from an existing IoT Central application:
 
-1. Nyissa meg az alkalmazás **Adminisztráció** szakaszát.
-1. Válassza az **alkalmazás sablon exportálás**lehetőséget.
-1. Az **alkalmazás sablonjának exportálása** lapon adja meg a sablon nevét és leírását.
-1. Válassza az **Exportálás** gombot az alkalmazás sablonjának létrehozásához. Most már másolhatja a **megosztható hivatkozást** , amely lehetővé teszi, hogy valaki új alkalmazást hozzon létre a sablonból:
+1. Go to the **Administration** section in your application.
+1. Select **Application Template Export**.
+1. On the **Application Template Export** page, enter a name and description for your template.
+1. Select the **Export** button to create the application template. You can now copy the **Shareable Link** that enables someone to create a new application from the template:
 
-![Alkalmazás sablonjának létrehozása](media/howto-use-app-templates/create-template.png)
+![Create an application template](media/howto-use-app-templates/create-template.png)
 
-### <a name="use-an-application-template"></a>Alkalmazás sablonjának használata
+### <a name="use-an-application-template"></a>Use an application template
 
-Ha új IoT Central alkalmazást szeretne létrehozni egy alkalmazás-sablonnal, egy korábban létrehozott **megosztható hivatkozásra**van szüksége. Illessze be a **megosztható hivatkozást** a böngésző címsorába. Megjelenik az **alkalmazás létrehozása** lap a kiválasztott egyéni alkalmazás sablonnal:
+To use an application template to create a new IoT Central application, you need a previously created **Shareable Link**. Paste the **Shareable Link** into your browser's address bar. The **Create an application** page displays with your custom application template selected:
 
-![Alkalmazás létrehozása sablonból](media/howto-use-app-templates/create-app.png)
+![Create an application from a template](media/howto-use-app-templates/create-app.png)
 
-Válassza ki a fizetési tervet, és töltse ki a többi mezőt az űrlapon. Ezután a **Létrehozás** gombra kattintva hozzon létre egy új IoT Central alkalmazást az alkalmazás sablonból.
+Select your payment plan and fill out the other fields on the form. Then select **Create** to create a new IoT Central application from the application template.
 
-### <a name="manage-application-templates"></a>Alkalmazás-sablonok kezelése
+> [!NOTE]
+> When an application is created using **Shareable Link** the available locations are **Europe** and **US**.
 
-Az **alkalmazás sablonjának exportálása** lapon törölheti vagy frissítheti az alkalmazás sablonját.
+### <a name="manage-application-templates"></a>Manage application templates
 
-Ha töröl egy alkalmazást, már nem használhatja a korábban létrehozott megosztható hivatkozást új alkalmazások létrehozásához.
+On the **Application Template Export** page, you can delete or update the application template.
 
-Az alkalmazás sablonjának frissítéséhez módosítsa a sablon nevét vagy leírását az **alkalmazás sablon exportálása** lapon. Ezután kattintson ismét az **Exportálás** gombra. Ez a művelet létrehoz egy új **megosztható hivatkozást** , és érvényteleníti az előző **megosztható hivatkozás** URL-címét.
+If you delete an application template, you can no longer use the previously generated shareable link to create new applications.
 
-## <a name="next-steps"></a>További lépések
+To update your application template, change the template name or description on the **Application Template Export** page. Then select the **Export** button again. This action generates a new **Shareable link** and invalidates any previous **Shareable link** URL.
 
-Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
+## <a name="next-steps"></a>Következő lépések
+
+Now that you've learned how to use application templates, the suggested next step is to learn how to [Manage IoT Central from the Azure portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)

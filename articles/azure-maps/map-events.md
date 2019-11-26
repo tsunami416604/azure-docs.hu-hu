@@ -1,6 +1,6 @@
 ---
-title: Események kezelése a Azure Mapskal | Microsoft Docs
-description: Interaktív web SDK-Térkép készítése térképi eseményekkel
+title: Handle events with Azure Maps | Microsoft Docs
+description: How to make an interactive Web SDK map with map events
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -9,105 +9,112 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c5b4ed73d7bc4d89a67280a0bb183f374ae093d8
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 99ef5aa0ee8fa542b0aa807cc536ebfbee369e10
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899433"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484292"
 ---
-# <a name="interact-with-the-map"></a>A térképpel való interakció
+# <a name="interact-with-the-map"></a>Interact with the map
 
-Ez a cikk bemutatja, hogyan használhatja a [map Class Events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) tulajdonságot a Térkép eseményeinek és a Térkép különböző rétegeinek kiemeléséhez. Azt is bemutatja, hogyan használhatja a Map Class Events tulajdonságot az események kiemelésére a HTML-jelölővel való interakció során.
+This article shows you how to use [map class events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) property to highlight events on the map and on different layers of the map. It also shows you how to use the map class events property to highlight events when you interact with an HTML marker.
 
-## <a name="interact-with-the-map"></a>A térképpel való interakció
+## <a name="interact-with-the-map"></a>Interact with the map
 
-Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megfelelő egérmutatóval jelölt eseményeket. A **js lapra** kattintva megtekintheti és szerkesztheti a JavaScript-kódot. Kattintson a **Szerkesztés CodePen** gombra, és szerkessze a kódot a CodePen.
-
-<br/>
-
-<iframe height='600' scrolling='no' title='Interakció a térképsel – egér eseményei' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>a Térkép – az egér eseményei</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() alapján a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="interact-with-map-layers"></a>A Térkép rétegekkel való interakció
-
-A következő kód kiemeli az események nevét, amelyekkel a rendszer a szimbólum réteggel folytatott kommunikáció során felveszi a munkát. A szimbólum, a buborék, a vonal és a sokszög réteg egyaránt támogatja ugyanezeket az eseményeket. A Heat Térkép és a csempe réteg nem támogatja ezeket az eseményeket.
+Play with the map below, and see the corresponding mouse events highlighted on the right. You can click on the **JS tab** to view and edit the JavaScript code. You can also click on the **Edit on CodePen** button and edit the code on CodePen.
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakció a térképekkel – rétegbeli események' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Térkép – réteg eseményeivel</a> .
+<iframe height='600' scrolling='no' title='Interacting with the map – mouse events' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interact with the map – mouse events</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="interact-with-html-marker"></a>Interakció a HTML-jelölővel
+## <a name="interact-with-map-layers"></a>Interact with map layers
 
-A következő kód hozzáadja a JavaScript-leképezési eseményeket egy HTML-jelölőhöz. Kiemeli továbbá azon események nevét is, amelyek a HTML-jelölővel való interakció során felkészülnek.
+The following code highlights the name of the events that get fired up as you interact with the Symbol Layer. The symbol, bubble, line, and polygon layer all support the same set of events. The heat map and tile layers do not support any of these events.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interakció a Térkép-HTML-jelölő eseményeivel' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által a <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Térkép-HTML jelölő eseményeivel kommunikáló</a> tollat.
+<iframe height='600' scrolling='no' title='Interacting with the map – Layer Events' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A következő táblázat felsorolja az összes támogatott leképezési osztály eseményét.
+## <a name="interact-with-html-marker"></a>Interact with HTML Marker
 
-| Esemény             | Leírás |
-|-------------------|-------------|
-| boxzoomend        | A "Box zoom" interakció befejezése után.|
-| boxzoomstart      | A "Box zoom" interakció indításakor indul el.|
-| kattintson             | Egy mutató eszköz megnyomásakor és a térképen való kikapcsolásakor jelenik meg.|
-| bezárás             | Akkor aktiválódik, ha a felugró ablak manuálisan vagy programozott módon van lezárva.|
-| ContextMenu       | Akkor következik be, amikor rákattintanak az egér jobb oldali gombjára.|
-| dataadded         | Az adatforráshoz való hozzáadáskor aktiválódik.|
-| dataremoved       | A rendszer az adatforrásból eltávolítja az alakzatokat.|
-| datasourceupdated | Az adatforrás-objektum frissítésekor aktiválódik.|
-| DblClick          | Akkor következik be, amikor egy mutató eszköz kétszer kattint a térképen megjelenő ponton.|
-| húzza              | A Térkép, az előugró ablak vagy a HTML-jelölő "húzás a serpenyőbe" művelete során ismételten felmerül.|
-| dragend           | Ha egy "húzás a serpenyőbe" művelet befejeződik, a Térkép, az előugró ablak vagy a HTML-jelölő jelenik meg.|
-| dragstart         | Az "húzza a serpenyőbe" interakciót a Térkép, az előugró ablak vagy a HTML-jelölő használatával kezdi meg.|
-| hiba             | Hiba bekövetkezésekor következik be.|
-| keydown           | A billentyű lenyomásakor aktiválódik.|
-| KeyPress          | Egy tipizálható karaktert (ANSI-kulcsot) előállító kulcs megnyomásakor.|
-| KeyUp             | Kulcs felszabadításakor.|
-| layeradded        | Egy réteg a térképhez való hozzáadásakor aktiválódik.|
-| load              | Rögtön az összes szükséges erőforrás letöltését követően, a Térkép első vizuálisan teljes renderelése történt.|
-| MouseDown         | Egy mutatóeszköz a térképen való megnyomásakor aktiválódik.|
-| MouseMove         | Egy mutató eszköz a térképen való áthelyezésekor.|
-| mouseout          | Kilőtt, amikor egy pont eszköz elhagyja a Térkép vászonját.|
-| mouseover         | Egy mutató eszköz a térképen való áthelyezésekor.|
-| MouseUp           | Egy mutatóeszköz a térképen való kiadása után jelenik meg.|
-| Áthelyezése              | Az egyik nézetről a másikra történő animált áttérés során többször is elindítható a felhasználói interakció vagy módszerek eredményeképpen.|
-| moveend           | Közvetlenül azután, hogy a Térkép befejezte a váltást az egyik nézetről a másikra, a felhasználói interakció vagy módszerek eredményeképpen.|
-| movestart         | Közvetlenül a Térkép megkezdése előtt az egyik nézetről a másikra való áttérést a felhasználói interakció vagy módszerek eredményeképpen lehet megkezdeni.|
-| nyitás              | Akkor aktiválódik, amikor a felugró ablak manuálisan vagy programozott módon van megnyitva.|
-| betűközű             | Akkor következik be, amikor a Térkép szurok (billenés) megváltozik a felhasználói interakció vagy módszerek eredményeképpen.|
-| pitchend          | Közvetlenül a térképi szurok (billenés) befejezése után a rendszer a felhasználói interakció vagy metódusok eredményeképpen változtatja meg a módosítást.|
-| pitchstart        | Minden alkalommal, amikor a Térkép szurok (billenés) megkezdi a változást a felhasználói interakció vagy módszerek eredményeképpen.|
-| üzemkész             | Akkor aktiválódik, ha a minimálisan szükséges leképezési erőforrások betöltődik, mielőtt a Térkép készen áll a programozással való együttműködésre.|
-| renderelési            | <p> A Térkép a képernyőre való rajzolásakor következik be, a következők eredményeképpen:<ul><li>A Térkép pozíciójának, nagyításának, magasságának vagy megjelölésének módosítása</li><li>A Térkép stílusának módosítása</li><li>Adatforrás-forrás módosítása</li><li>Vektoros csempe, GeoJSON-fájl, karakterjel vagy sprite betöltése.</li></ul></p>|
-| lakik            | Közvetlenül a Térkép átméretezése után következik be.|
-| elforgatása            | Többször is elindítható a "húzás a forgatáshoz" interakció során.|
-| rotateend         | A "húzás a forgatáshoz" művelet véget ér.|
-| rotatestart       | A "húzás az elforgatásra" művelet elindul.|
-| shapechanged      | Egy alakzat objektum tulajdonságának módosításakor aktiválódik.|
-| sourceadded       | Akkor aktiválódik, amikor egy adatforrást vagy VectorTileSource adnak hozzá a térképhez.|
-| sourceremoved     | Az adatforrás-vagy VectorTileSource eltávolítását a térképről.|
-| styledata         | Akkor következik be, amikor a Térkép stílusa betöltődik vagy módosul.|
-| tokenacquired     | HRE hozzáférési jogkivonat beszerzése esetén.|
-| touchcancel       | Akkor következik be, amikor egy touchcancel esemény kerül a térképen belül.|
-| touchend          | Akkor következik be, amikor egy touchend esemény kerül a térképen belül.|
-| touchmove         | Akkor következik be, amikor egy touchmove esemény kerül a térképen belül.|
-| touchstart        | Akkor következik be, amikor egy touchstart esemény kerül a térképen belül.|
-| kerék             | Akkor következik be, amikor egy görgős esemény történik a térképen.|
-| Nagyítás              | A felhasználói interakció vagy módszerek eredményeképpen az egyik nagyítási szintről a másikra történő animált áttérés során többször is elindítható.|
-| zoomend           | Közvetlenül a Térkép befejezése után az egyik nagyítási szintről a másikra való áttérést a felhasználói interakció vagy módszerek eredményeképpen végezheti el.|
-| zoomstart         | Közvetlenül a Térkép megkezdése előtt az egyik nagyítási szintről a másikra vált, a felhasználói interakció vagy módszerek eredményeképpen.|
+The following code adds Javascript map events to an HTML marker. It also highlights the name of the events that get fired up as you interact with the HTML marker.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Interacting with the map - HTML Marker events' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+The following table lists all of the supported map class events.
+
+| Esemény               | Leírás |
+|---------------------|-------------|
+| `boxzoomend`        | Fired when a "box zoom" interaction ends.|
+| `boxzoomstart`      | Fired when a "box zoom" interaction starts.|
+| `click`             | Fired when a pointing device is pressed and released at the same point on the map.|
+| `close`             | Fired when the popup is closed manually or programatically.|
+| `contextmenu`       | Fired when the right button of the mouse is clicked.|
+| `data`              | Fired when any map data loads or changes. |
+| `dataadded`         | Fired when shapes are added to the `DataSource`.|
+| `dataremoved`       | Fired when shapes are removed from the `DataSource`.|
+| `datasourceupdated` | Fired when the `DataSource` object is updated.|
+| `dblclick`          | Fired when a pointing device is clicked twice at the same point on the map.|
+| `drag`              | Fired repeatedly during a "drag to pan" interaction on the map, popup, or HTML marker.|
+| `dragend`           | Fired when a "drag to pan" interaction ends on the map, popup, or HTML marker.|
+| `dragstart`         | Fired when a "drag to pan" interaction starts on the map, popup, or HTML marker.|
+| `error`             | Fired when an error occurs.|
+| `idle`              | <p>Fired after the last frame rendered before the map enters an "idle" state:<ul><li>No camera transitions are in progress.</li><li>All currently requested tiles have loaded.</li><li>All fade/transition animations have completed.</li></ul></p>|
+| `keydown`           | Fired when a key is pressed down.|
+| `keypress`          | Fired when a key that produces a typable character (an ANSI key) is pressed.|
+| `keyup`             | Fired when a key is released.|
+| `layeradded`        | Fired when a layer is added to the map.|
+| `layerremoved`      | Fired when a layer is removed from the map.|
+| `load`              | Fired immediately after all necessary resources have been downloaded and the first visually complete rendering of the map has occurred.|
+| `mousedown`         | Fired when a pointing device is pressed within the map or when on top of an element.|
+| `mouseenter`        | Fired when a pointing device is initially moved over the map or an element. |
+| `mouseleave`        | Fired when a pointing device is moved out the map or an element. |
+| `mousemove`         | Fired when a pointing device is moved within the map or an element.|
+| `mouseout`          | Fired when a point device leaves the map's canvas our leaves an element.|
+| `mouseover`         | Fired when a pointing device is moved over the map or an element.|
+| `mouseup`           | Fired when a pointing device is released within the map or when on top of an element.|
+| `move`              | Fired repeatedly during an animated transition from one view to another, as the result of either user interaction or methods.|
+| `moveend`           | Fired just after the map completes a transition from one view to another, as the result of either user interaction or methods.|
+| `movestart`         | Fired just before the map begins a transition from one view to another, as the result of either user interaction or methods.|
+| `open`              | Fired when the popup is opened manually or programatically.|
+| `pitch`             | Fired whenever the map's pitch (tilt) changes as the result of either user interaction or methods.|
+| `pitchend`          | Fired immediately after the map's pitch (tilt) finishes changing as the result of either user interaction or methods.|
+| `pitchstart`        | Fired whenever the map's pitch (tilt) begins a change as the result of either user interaction or methods.|
+| `ready`             | Fired when the minimum required map resources are loaded before the map is ready to be programmatically interacted with.|
+| `render`            | <p>Fired whenever the map is drawn to the screen, as the result of:<ul><li>A change to the map's position, zoom, pitch, or bearing.</li><li>A change to the map's style.</li><li>A change to a `DataSource` source.</li><li>The loading of a vector tile, GeoJSON file, glyph, or sprite.</li></ul></p>|
+| `resize`            | Fired immediately after the map has been resized.|
+| `rotate`            | Fired repeatedly during a "drag to rotate" interaction.|
+| `rotateend`         | Fired when a "drag to rotate" interaction ends.|
+| `rotatestart`       | Fired when a "drag to rotate" interaction starts.|
+| `shapechanged`      | Fired when a shape object property is changed.|
+| `sourcedata`        | Fired when one of the map's sources loads or changes, including if a tile belonging to a source loads or changes. |
+| `sourceadded`       | Fired when a `DataSource` or `VectorTileSource` is added to the map.|
+| `sourceremoved`     | Fired when a `DataSource` or `VectorTileSource` is removed from the map.|
+| `styledata`         | Fired when the map's style loads or changes.|
+| `styleimagemissing` | Fired when a layer tries to load an image from the image sprite that doesn't exist |
+| `tokenacquired`     | Fired when an AAD access token is obtained.|
+| `touchcancel`       | Fired when a touchcancel event occurs within the map.|
+| `touchend`          | Fired when a touchend event occurs within the map.|
+| `touchmove`         | Fired when a touchmove event occurs within the map.|
+| `touchstart`        | Fired when a touchstart event occurs within the map.|
+| `wheel`             | Fired when a mouse wheel event occurs within the map.|
+| `zoom`              | Fired repeatedly during an animated transition from one zoom level to another, as the result of either user interaction or methods.|
+| `zoomend`           | Fired just after the map completes a transition from one zoom level to another, as the result of either user interaction or methods.|
+| `zoomstart`         | Fired just before the map begins a transition from one zoom level to another, as the result of either user interaction or methods.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő cikkekben talál részletes példákat:
+See the following articles for full code examples:
 
 > [!div class="nextstepaction"]
-> [A Azure Maps Services modul használata](./how-to-use-services-module.md)
+> [Using the Azure Maps Services module](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
 > [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

@@ -1,187 +1,152 @@
 ---
-title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
-description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+title: Understand how metric alerts work in Azure Monitor.
+description: Get an overview of what you can do with metric alerts and how they work in Azure Monitor.
+author: rboucher
+ms.author: robb
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972064"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484250"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikai riasztások működésének ismertetése Azure Monitor
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Understand how metric alerts work in Azure Monitor
 
-A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)-metrikák, [Egyéni metrikák](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](../../azure-monitor/platform/alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
+Metric alerts in Azure Monitor work on top of multi-dimensional metrics. These metrics could be [platform metrics](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [custom metrics](../../azure-monitor/platform/metrics-custom-overview.md), [popular logs from Azure Monitor converted to metrics](../../azure-monitor/platform/alerts-metric-logs.md) and Application Insights metrics. Metric alerts evaluate at regular intervals to check if conditions on one or more metric time-series are true and notify you when the evaluations are met. Metric alerts are stateful, that is, they only send out notifications when the state changes.
 
-## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikus riasztások?
+## <a name="how-do-metric-alerts-work"></a>How do metric alerts work?
 
-Meghatározhatja a metrika riasztási szabályát úgy, hogy megadhatja a figyelni kívánt cél erőforrást, a metrika nevét, a feltétel típusát (statikus vagy dinamikus), valamint a feltételt (egy operátort és egy küszöbértéket/érzékenységet), valamint egy, a riasztási szabály által kiváltott műveleti csoportot. A feltétel típusa befolyásolja a küszöbértékek meghatározásának módját. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
+You can define a metric alert rule by specifying a target resource to be monitored, metric name, condition type (static or dynamic), and the condition (an operator and a threshold/sensitivity) and an action group to be triggered when the alert rule fires. Condition types affect the way thresholds are determined. [Learn more about Dynamic Thresholds condition type and sensitivity options](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Riasztási szabály statikus feltétel típussal
+### <a name="alert-rule-with-static-condition-type"></a>Alert rule with static condition type
 
-Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika riasztási szabályt a következőképpen:
+Let's say you have created a simple static threshold metric alert rule as follows:
 
-- Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
-- Metrika Százalékos processzorhasználat
-- Feltétel típusa: Statikus tartalom
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): Average
-- Pont (a visszatekintő ablak, amelyen a metrikai értékek be vannak jelölve): Az elmúlt 5 percben
-- Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
-- Üzemeltető Nagyobb, mint
-- Küszöb 70
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Static
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Threshold: 70
 
-A riasztási szabály létrehozásakor a figyelő 1 percenként fut, és az elmúlt 5 perc metrikai értékeit vizsgálja, és ellenőrzi, hogy az értékek átlaga meghaladja-e a 70 értéket. Ha a feltétel teljesül, az utolsó 5 perc átlagos CPU-értéke meghaladja az 70-as értéket, a riasztási szabály aktivált értesítést indít el. Ha e-mailt vagy webhook-műveletet konfigurált a riasztási szabályhoz társított műveleti csoportban, akkor mindkettőn aktiválva lesz egy értesítés.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values for the last 5 minutes and checks if the average of those values exceeds 70. If the condition is met that is, the average Percentage CPU for the last 5 minutes exceeds 70, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-Ha egy szabályban több feltételt használ, a "and" szabály együttesen szerepel a feltételekben.  Ez azt eredményezi, hogy a riasztás akkor aktiválódik, ha a riasztás minden feltétele igaz értékre van kiértékelve, és akkor oldódik fel, ha az egyik feltétel már nem igaz. Az ilyen típusú riasztás például akkor riasztás, ha a "CPU nagyobb, mint 90%" és a "várólista hossza több mint 300 elem". 
+When you are using multiple conditions in one rule, the rule "ands" the conditions together.  That is, the alert fires when all the conditions in the alert evaluate as true and resolve when one of the conditions is no longer true. And example of this type of alert would be alert when "CPU higher than 90%" and "queue length is over 300 items". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Riasztási szabály dinamikus feltétel típussal
+### <a name="alert-rule-with-dynamic-condition-type"></a>Alert rule with dynamic condition type
 
-Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérőszámának riasztási szabályát az alábbiak szerint:
+Let's say you have created a simple Dynamic Thresholds metric alert rule as follows:
 
-- Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
-- Metrika Százalékos processzorhasználat
-- Feltétel típusa: Dinamikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): Average
-- Pont (a visszatekintő ablak, amelyen a metrikai értékek be vannak jelölve): Az elmúlt 5 percben
-- Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
-- Üzemeltető Nagyobb, mint
-- Érzékenységi Közepes
-- Visszatérési időszakok: 4
-- Szabálysértések száma: 4
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Dynamic
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Sensitivity: Medium
+- Look Back Periods: 4
+- Number of Violations: 4
 
-A riasztási szabály létrehozása után a dinamikus küszöbértékek gépi tanulási algoritmusa az elérhető korábbi adatokat fogja beszerezni, kiszámítja a metrikus adatsorozat viselkedési mintájának legjobban megfelelő küszöbértéket, és az új adatok alapján folyamatosan megtanulja azokat. a küszöbérték pontosabb.
+Once the alert rule is created, the Dynamic Thresholds machine learning algorithm will acquire historical data that is available, calculate threshold that best fits the metric series behavior pattern and will continuously learn based on new data to make the threshold more accurate.
 
-A riasztási szabály létrehozásának időpontjában a figyelő 1 percenként fut, és az elmúlt 20 percben 5 perces időszakra csoportosított metrikus értékeket keres, és ellenőrzi, hogy az egyes 4 időszakokban mért időszakok átlaga meghaladja-e a várt küszöbértéket. Ha a feltétel teljesül, az elmúlt 20 percben (négy 5 perces időszak) az átlagos CPU-érték négyszer eltér a várt viselkedéstől, a riasztási szabály aktivált értesítést indít. Ha e-mailt vagy webhook-műveletet konfigurált a riasztási szabályhoz társított műveleti csoportban, akkor mindkettőn aktiválva lesz egy értesítés.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values in the last 20 minutes grouped into 5 minutes periods and checks if the average of the period values in each of the 4 periods exceeds the expected threshold. If the condition is met that is, the average Percentage CPU in the last 20 minutes (four 5 minutes periods) deviated from expected behavior four times, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Kilőtt riasztások megtekintése és megoldása
+### <a name="view-and-resolution-of-fired-alerts"></a>View and resolution of fired alerts
 
-A riasztási szabályok elégetésének fenti példái a **minden riasztás** panel Azure Portal is megtekinthetők.
+The above examples of alert rules firing can also be viewed in the Azure portal in the **All Alerts** blade.
 
-Tegyük fel, hogy a "myVM" használata a későbbi ellenőrzések során továbbra is a küszöbérték felett marad, a riasztási szabály a feltételek feloldása előtt nem indul újra.
+Say the usage on "myVM" continues being above the threshold in subsequent checks, the alert rule will not fire again until the conditions are resolved.
 
-Egy kis idő elteltével a "myVM" használata visszakerül a normál értékre (a küszöbérték alá esik). A riasztási szabály két alkalommal figyeli a feltételt, hogy elküldjék a megoldott értesítéseket. A riasztási szabály elküld egy megoldott/inaktivált üzenetet, ha a riasztási feltétel nem teljesül három egymást követő időszakon belül a zaj csökkentése érdekében.
+After some time, the usage on "myVM" comes back down to normal (goes below the threshold). The alert rule monitors the condition for two more times, to send out a resolved notification. The alert rule sends out a resolved/deactivated message when the alert condition is not met for three consecutive periods to reduce noise in case of flapping conditions.
 
-Mivel a megoldott értesítést webhookok vagy e-mailek útján küldi el a rendszer, a riasztási példány állapota (figyelő állapota) a Azure Portalban is megoldottra van állítva.
+As the resolved notification is sent out via web hooks or email, the status of the alert instance (called monitor state) in Azure portal is also set to resolved.
 
-### <a name="using-dimensions"></a>Méretek használata
+### <a name="using-dimensions"></a>Using dimensions
 
-A Azure Monitor metrikai riasztások is támogatják a több dimenziós érték kombinációjának figyelését egyetlen szabállyal. Lássuk, miért érdemes több dimenzió kombinációt használni egy példa segítségével.
+Metric alerts in Azure Monitor also support monitoring multiple dimensions value combinations with one rule. Let's understand why you might use multiple dimension combinations with the help of an example.
 
-Tegyük fel, hogy van egy App Service terve a webhelyhez. Szeretné figyelni a CPU-használatot a webhelyet vagy alkalmazást futtató több példányon. Ezt egy metrikus riasztási szabály használatával teheti meg a következőképpen:
+Say you have an App Service plan for your website. You want to monitor CPU usage on multiple instances running your web site/app. You can do that using a metric alert rule as follows:
 
-- Cél erőforrás: myAppServicePlan
-- Metrika Százalékos processzorhasználat
-- Feltétel típusa: Statikus tartalom
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Dimenziók
-  - Példány = InstanceName1, InstanceName2
-- Idő összesítése: Average
-- Időszak Az elmúlt 5 percben
-- Frekvencia 1 perc
-- Üzemeltető GreaterThan
-- Küszöb 70
+  - Instance = InstanceName1, InstanceName2
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Mint korábban, ez a szabály figyeli, hogy az elmúlt 5 percben az átlagos CPU-használat meghaladja-e a 70%-ot. Ugyanakkor ugyanazzal a szabállyal két, a webhelyét futtató példányt is figyelheti. Minden példány külön lesz megfigyelve, és a rendszer külön értesítést fog kapni.
+Like before, this rule monitors if the average CPU usage for the last 5 minutes exceeds 70%. However, with the same rule you can monitor two instances running your website. Each instance will get monitored individually and you will get notifications individually.
 
-Tegyük fel, hogy van egy webalkalmazása, amely nagy mennyiségű igényt lát, és további példányokat kell hozzáadnia. A fenti szabály továbbra is csak két példányt figyeli. Azonban a következőképpen hozhat létre szabályt:
+Say you have a web app that is seeing massive demand and you will need to add more instances. The above rule still monitors just two instances. However, you can create a rule as follows:
 
-- Cél erőforrás: myAppServicePlan
-- Metrika Százalékos processzorhasználat
-- Feltétel típusa: Statikus tartalom
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Dimenziók
-  - Példány = *
-- Idő összesítése: Average
-- Időszak Az elmúlt 5 percben
-- Frekvencia 1 perc
-- Üzemeltető GreaterThan
-- Küszöb 70
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Ez a szabály automatikusan figyeli a példány összes értékét, azaz a példányokat úgy figyelheti, hogy a rendszer a metrikus riasztási szabály újbóli módosítása nélkül is feldolgozza őket.
+This rule will automatically monitor all values for the instance i.e you can monitor your instances as they come up without needing to modify your metric alert rule again.
 
-Több dimenzió figyelése esetén a dinamikus küszöbértékek riasztási szabálya egyszerre több száz metrikus adatsorozatra szabott küszöbértékeket hozhat létre. A dinamikus küszöbértékek kevesebb riasztási szabályt eredményeznek a felügyelethez és a riasztási szabályok létrehozásához szükséges jelentős idő megtakarításához.
+When monitoring multiple dimensions, Dynamic Thresholds alerts rule can create tailored thresholds for hundreds of metric series at a time. Dynamic Thresholds results in fewer alert rules to manage and significant time saving on management and creation of alerts rules.
 
-Tegyük fel, hogy van egy webalkalmazása, amely sok példánnyal rendelkezik, és nem tudja, mi a legmegfelelőbb küszöbérték. A fenti szabályok mindig a 70%-os küszöbértéket fogják használni. Azonban a következőképpen hozhat létre szabályt:
+Say you have a web app with many instances and you don't know what the most suitable threshold is. The above rules will always use threshold of 70%. However, you can create a rule as follows:
 
-- Cél erőforrás: myAppServicePlan
-- Metrika Százalékos processzorhasználat
-- Feltétel típusa: Dinamikus
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Dynamic
 - Dimenziók
-  - Példány = *
-- Idő összesítése: Average
-- Időszak Az elmúlt 5 percben
-- Frekvencia 1 perc
-- Üzemeltető GreaterThan
-- Érzékenységi Közepes
-- Visszatérési időszakok: 1
-- Szabálysértések száma: 1
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Sensitivity: Medium
+- Look Back Periods: 1
+- Number of Violations: 1
 
-Ez a szabály figyeli, hogy az elmúlt 5 percben az átlagos CPU-használat meghaladja-e az egyes példányok várt viselkedését. Ugyanezt a szabályt követheti a példányok figyelése, anélkül, hogy újra kellene módosítania a metrikus riasztási szabályt. Az egyes példányok egy küszöbértéket kapnak, amely megfelel a metrikus adatsorozat viselkedési mintájának, és folyamatosan változik az új adatok alapján, hogy a küszöbérték pontosabb legyen. A fentiekhez hasonlóan az egyes példányok külön lesznek figyelve, és a rendszer külön értesítést fog kapni.
+This rule monitors if the average CPU usage for the last 5 minutes exceeds the expected behavior for each instance. The same rule you can monitor instances as they come up without needing to modify your metric alert rule again. Each instance will get a threshold that fits the metric series behavior pattern and will continuously change based on new data to make the threshold more accurate. Like before, each instance will be monitored individually and you will get notifications individually.
 
-A visszapillantási időszakok és a szabálysértések számának növelése is lehetővé teszi a riasztások szűrését, hogy csak a jelentős eltérés definíciójában figyelmeztessen. [További információ a dinamikus küszöbértékekkel kapcsolatos speciális beállításokról](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Increasing look-back periods and number of violations can also allow filtering alerts to only alert on your definition of a significant deviation. [Learn more about Dynamic Thresholds advanced options](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Méretezés a metrikus riasztások használatával Azure Monitor
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitoring at scale using metric alerts in Azure Monitor
 
-Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor egy metrikai riasztási szabállyal több erőforrás figyelését is támogatja. Ez a funkció jelenleg csak virtuális gépeken támogatott. Egyetlen metrikai riasztás is képes figyelni az erőforrásokat egy Azure-régióban.
+So far, you have seen how a single metric alert could be used to monitor one or many metric time-series related to a single Azure resource. Many times, you might want the same alert rule applied to many resources. Azure Monitor also supports monitoring multiple resources with one metric alert rule. This feature is currently supported only on virtual machines. Also, a single metric alert can monitor resources in one Azure region.
 
-A figyelés hatókörét egyetlen metrikai riasztással adhatja meg a háromféle módon:
+You can specify the scope of monitoring by a single metric alert in one of three ways:
 
-- egy Azure-régióban lévő virtuális gépek listája egy előfizetésen belül
-- az előfizetésben lévő egy vagy több erőforráscsoport összes virtuális gépe (egy Azure-régióban)
-- minden virtuális gép (egy Azure-régióban) egy előfizetésben
+- as a list of virtual machines in one Azure region within a subscription
+- all virtual machines (in one Azure region) in one or more resource groups in a subscription
+- all virtual machines (in one Azure region) in one subscription
 
-Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes virtuális géphez külön értesítést fog kapni.
+Creating metric alert rules that monitor multiple resources is like [creating any other metric alert](alerts-metric.md) that monitors a single resource. Only difference is that you would select all the resources you want to monitor. You can also create these rules through [Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). You will receive individual notifications for each virtual machine.
 
-## <a name="typical-latency"></a>Jellemző késés
+## <a name="typical-latency"></a>Typical latency
 
-A metrikus riasztások esetében általában 5 percen belül értesítést fog kapni, ha a riasztási szabály gyakorisága 1 perc. Az értesítési rendszerek nagy terhelésű betöltése esetén előfordulhat, hogy hosszú késést tapasztal.
+For metric alerts, typically you will get notified in under 5 minutes if you set the alert rule frequency to be 1 min. In cases of heavy load for notification systems, you might see a longer latency.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>A metrikus riasztások által támogatott erőforrástípusok
+## <a name="supported-resource-types-for-metric-alerts"></a>Supported resource types for metric alerts
 
-A támogatott erőforrástípusok teljes listáját ebben a [cikkben](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
+You can find the full list of supported resource types in this [article](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Ha jelenleg klasszikus metrikai riasztásokat használ, és azt szeretné megtekinteni, hogy a metrikus riasztások támogatják-e az összes Ön által használt erőforrástípust, az alábbi táblázatban láthatók a klasszikus metrikai riasztások által támogatott erőforrástípusok, és ha a metrikai riasztások még ma is támogatják őket.
 
-|Klasszikus metrikai riasztások által támogatott erőforrástípus | Metrikus riasztások által támogatott |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | Igen |
-| Microsoft.Batch/batchAccounts| Igen|
-|Microsoft.Cache/redis| Igen |
-|Microsoft.ClassicCompute/virtualMachines | Nem |
-|Microsoft.ClassicCompute/domainNames/slots/roles | Nem|
-|Microsoft.CognitiveServices/accounts | Nem |
-|Microsoft.Compute/virtualMachines | Igen|
-|Microsoft.Compute/virtualMachineScaleSets| Igen|
-|Microsoft.ClassicStorage/storageAccounts| Nem |
-|Microsoft.DataFactory/datafactories | Igen|
-|Microsoft.DBforMySQL/servers| Igen|
-|Microsoft.DBforPostgreSQL/servers| Igen|
-|Microsoft.Devices/IotHubs | Nem|
-|Microsoft.DocumentDB/databaseAccounts| Igen|
-|Microsoft.EventHub/namespaces | Igen|
-|Microsoft.Logic/workflows | Igen|
-|Microsoft.Network/loadBalancers |Igen|
-|Microsoft.Network/publicIPAddresses| Igen|
-|Microsoft.Network/applicationGateways| Igen|
-|Microsoft.Network/expressRouteCircuits| Igen|
-|Microsoft.Network/trafficManagerProfiles | Igen|
-|Microsoft.Search/searchServices | Igen|
-|Microsoft.ServiceBus/namespaces| Igen |
-|Microsoft.Storage/storageAccounts | Igen|
-|Microsoft.StreamAnalytics/streamingjobs| Igen|
-|Microsoft.TimeSeriesInsights/environments | Igen|
-|Microsoft. Web-és kiszolgálófarmok | Igen |
-|Microsoft. Web/Sites (a függvények kivételével) | Igen|
-|Microsoft. Web/hostingEnvironments/multiRolePools | Nem|
-|Microsoft. Web/hostingEnvironments/workerPools| Nem |
-|Microsoft.SQL/Servers | Nem |
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-- [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
-- [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [További információ a műveleti csoportokról](action-groups.md)
-- [További információ a dinamikus küszöbértékek feltételének típusáról](alerts-dynamic-thresholds.md)
+- [Learn how to create, view, and manage metric alerts in Azure](alerts-metric.md)
+- [Learn how to deploy metric alerts using Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Learn more about action groups](action-groups.md)
+- [Learn more about Dynamic Thresholds condition type](alerts-dynamic-thresholds.md)

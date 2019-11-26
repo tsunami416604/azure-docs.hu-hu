@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés kezelése Azure Mapsban | Microsoft Docs
-description: A Azure Portal segítségével kezelheti a hitelesítést a Azure Mapsban.
+title: Manage authentication in Azure Maps | Microsoft Docs
+description: You can use the Azure portal to manage authentication in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/24/2019
@@ -8,108 +8,108 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478775"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484357"
 ---
-# <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
+# <a name="manage-authentication-in-azure-maps"></a>Manage authentication in Azure Maps
 
-Azure Maps fiók létrehozása után létrejön egy ügyfél-azonosító és-kulcs, amely támogatja az Azure Active Directory (Azure AD) vagy a megosztott kulcsos hitelesítést.
+After you create an Azure Maps account, a client ID and keys are created to support either Azure Active Directory (Azure AD) or Shared Key authentication.
 
-## <a name="view-authentication-details"></a>Hitelesítés részleteinek megtekintése
+## <a name="view-authentication-details"></a>View authentication details
 
-A hitelesítési adatokat a Azure Portalon tekintheti meg. Nyissa meg a fiókját, és válassza a **hitelesítés** lehetőséget a **Beállítások** menüben.
+You can view your authentication details on the Azure portal. Go to your account and select **Authentication** on the **Settings** menu.
 
-![Hitelesítés részletei](./media/how-to-manage-authentication/how-to-view-auth.png)
+![Authentication details](./media/how-to-manage-authentication/how-to-view-auth.png)
 
- További információ: [hitelesítés Azure Maps](https://aka.ms/amauth)használatával.
+ To learn more, see [Authentication with Azure Maps](https://aka.ms/amauth).
 
 
-## <a name="set-up-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrációjának beállítása
+## <a name="set-up-azure-ad-app-registration"></a>Set up Azure AD app registration
 
-Azure Maps fiók létrehozása után létre kell hoznia egy hivatkozást az Azure AD-bérlő és a Azure Maps erőforrás között.
+After you create an Azure Maps account, you need to establish a link between your Azure AD tenant and the Azure Maps resource.
 
-1. Nyissa meg az Azure AD panelt, és hozzon létre egy alkalmazást. Adja meg a regisztráció nevét. A **bejelentkezési URL-cím** mezőben adja meg a webalkalmazás/API kezdőlapját (például https:\//localhost/). Ha már rendelkezik regisztrált alkalmazással, folytassa a 2. lépéssel.
+1. Go to the Azure AD blade and create an app registration. Provide a name for the registration. In the **Sign-on URL** box, provide the home page of the web app / API (for example, https:\//localhost/). If you already have a registered app, go to step 2.
 
     ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-    ![Alkalmazás regisztrációjának részletei](./media/how-to-manage-authentication/app-create.png)
+    ![App registration details](./media/how-to-manage-authentication/app-create.png)
 
-2. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást a **Alkalmazásregisztrációk**területen, majd válassza a **Beállítások**lehetőséget.  Válassza a **szükséges engedélyek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget. Keresse meg és válassza ki **Azure Maps** az **API kiválasztása**területen, majd kattintson a **kiválasztás** gombra.
+2. To assign delegated API permissions to Azure Maps, go to the application under **App registrations**, and then select **Settings**.  Select **Required permissions**, and then select **Add**. Search for and select **Azure Maps** under **Select an API**, and then select the **Select** button.
 
-    ![Alkalmazás API-engedélyei](./media/how-to-manage-authentication/app-permissions.png)
+    ![App API permissions](./media/how-to-manage-authentication/app-permissions.png)
 
-3. Az **engedélyek kiválasztása**területen válassza a **hozzáférés Azure Maps**elemet, majd kattintson a **kiválasztás** gombra.
+3. Under **Select permissions**, select **Access Azure Maps**, and then select the **Select** button.
 
-    ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
+    ![Select app API permissions](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. A hitelesítési módszertől függően végezze el az a vagy a b lépést.
+4. Complete step a or b, depending on your authentication method.
 
-    1. Ha az alkalmazás felhasználói tokenes hitelesítést használ a Azure Maps web SDK-val, engedélyezze a `oauthEnableImplicitFlow`t az alkalmazás regisztrációjának részletei oldal jegyzékfájl szakaszában az igaz értékre állítva.
+    1. If your application uses user-token authentication with the Azure Maps Web SDK, enable `oauthEnableImplicitFlow` by setting it to true in the Manifest section of your app registration detail page.
     
-       ![Alkalmazás jegyzékfájlja](./media/how-to-manage-authentication/app-manifest.png)
+       ![App manifest](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Ha az alkalmazás kiszolgálói/alkalmazás-hitelesítést használ, lépjen a **kulcsok** panelre az alkalmazás regisztrálása lapon, vagy hozzon létre egy jelszót, vagy töltsön fel egy nyilvános kulcsú tanúsítványt az alkalmazás regisztrálásához. Ha jelszót hoz létre, a **Mentés**gombra kattintva másolja a jelszót később, és tárolja biztonságosan. Ezt a jelszót fogja használni a jogkivonatok Azure AD-ből való beszerzéséhez.
+    2. If your application uses server/application authentication, go to the **Keys** blade in app registration and either create a password or upload a public key certificate to the app registration. If you create a password, after you select **Save**, copy the password for later and store it securely. You'll use this password to acquire tokens from Azure AD.
 
-       ![Alkalmazás kulcsai](./media/how-to-manage-authentication/app-keys.png)
-
-
-## <a name="grant-rbac-to-azure-maps"></a>RBAC megadása Azure Maps
-
-Miután hozzárendelt egy Azure Maps fiókot az Azure AD-bérlőhöz, hozzáférés-vezérlést adhat hozzá egy felhasználóhoz, csoporthoz vagy alkalmazáshoz egy vagy több Azure Maps hozzáférés-vezérlési szerepkörhöz.
-
-1. Lépjen a **hozzáférés-vezérlés (iam)** elemre, válassza a **szerepkör-hozzárendelések**lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
-
-    ![RBAC megadása](./media/how-to-manage-authentication/how-to-grant-rbac.png)
-
-2. A **szerepkör-hozzárendelés hozzáadása** ablakban a **szerepkör**területen válassza a **Azure Maps Date Reader (előzetes verzió)** lehetőséget. A **hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. A **kiválasztás**területen válassza ki a felhasználót vagy az alkalmazást. Kattintson a **Mentés** gombra.
-
-    ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/add-role-assignment.png)
-
-## <a name="view-available-azure-maps-rbac-roles"></a>Elérhető Azure Maps RBAC szerepköreinek megtekintése
-
-Ha Azure Maps számára elérhető szerepköralapú hozzáférés-vezérlési (RBAC) szerepköröket szeretné megtekinteni, lépjen a **hozzáférés-vezérlés (iam)** elemre, válassza a **szerepkörök**lehetőséget, majd keresse meg a **Azure Mapstól**kezdődő szerepköröket. Ezek azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
-
-![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
+       ![App keys](./media/how-to-manage-authentication/app-keys.png)
 
 
-## <a name="view-azure-maps-rbac"></a>Azure Maps RBAC megtekintése
+## <a name="grant-rbac-to-azure-maps"></a>Grant RBAC to Azure Maps
 
-A RBAC részletes hozzáférés-vezérlést biztosít.
+After you associate an Azure Maps account with your Azure AD tenant, you can grant access control by assigning a user, group or application to one or more Azure Maps access control roles.
 
-A Azure Maps RBAC kapott felhasználók és alkalmazások megtekintéséhez lépjen a **Access Control (iam)** elemre, válassza a szerepkör- **hozzárendelések**lehetőséget, majd a szűrés a **Azure Maps**alapján.
+1. Go to **Access control (IAM)** , select **Role assignments**, and then select **Add role assignment**.
 
-![A RBAC által biztosított felhasználók és alkalmazások megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+    ![Grant RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+
+2. In the **Add role assignment** window, under **Role**, select **Azure Maps Date Reader (Preview)** . Under **Assign access to**, select **Azure AD user, group, or service principal**. Under **Select**, select the user or application. Kattintson a **Mentés** gombra.
+
+    ![Add role assignment](./media/how-to-manage-authentication/add-role-assignment.png)
+
+## <a name="view-available-azure-maps-rbac-roles"></a>View available Azure Maps RBAC roles
+
+To view role-based access control (RBAC) roles that are available for Azure Maps, go to **Access control (IAM)** , select **Roles**, and then search for roles beginning with **Azure Maps**. These are the roles that you can grant access to.
+
+![View available roles](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 
-## <a name="request-tokens-for-azure-maps"></a>Azure Maps igénylési jogkivonatai
+## <a name="view-azure-maps-rbac"></a>View Azure Maps RBAC
 
-Miután regisztrálta az alkalmazást, és hozzárendelte Azure Mapshoz, hozzáférési jogkivonatokat kérhet le.
+RBAC provides granular access control.
 
-* Ha az alkalmazás felhasználói tokenes hitelesítést használ a Azure Maps web SDK-val, a HTML-lapot a Azure Maps ügyfél-AZONOSÍTÓval és az Azure AD-alkalmazás azonosítójával kell konfigurálnia.
+To view users and apps that have been granted RBAC for Azure Maps, go to **Access Control (IAM)** , select **Role assignments**, and then filter by **Azure Maps**.
 
-* Ha az alkalmazás kiszolgálói/alkalmazás-hitelesítést használ, akkor az Azure ad-jogkivonat végpontjának `https://login.microsoftonline.com` kell igényelnie az Azure AD erőforrás-azonosító `https://atlas.microsoft.com/`, az Azure Maps ügyfél-azonosító, az Azure AD-alkalmazás azonosítója és az Azure AD-alkalmazás regisztrációs jelszava vagy tanúsítvány.
+![View users and apps granted RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
-| Azure-környezet   | Azure AD-jogkivonat végpontja | Azure-erőforrás azonosítója |
+
+## <a name="request-tokens-for-azure-maps"></a>Request tokens for Azure Maps
+
+After you register your app and associated it with Azure Maps, you can request access tokens.
+
+* If your application uses user-token authentication with the Azure Maps Web SDK, you need to configure your HTML page with the Azure Maps client ID and the Azure AD app ID.
+
+* If your application uses server/application authentication, you need to request a token from Azure AD token endpoint `https://login.microsoftonline.com` with the Azure AD resource ID `https://atlas.microsoft.com/`, the Azure Maps client ID, the Azure AD app ID, and the Azure AD app registration password or certificate.
+
+| Azure Environment   | Azure AD token endpoint | Azure Resource ID |
 | --------------------|-------------------------|-------------------|
-| Nyilvános Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
 | Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
-További információ az Azure AD-től a felhasználók és az egyszerű szolgáltatások hozzáférési jogkivonatok igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+For more information about requesting access tokens from Azure AD for users and service principals, see [Authentication scenarios for Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD-hitelesítéssel és a Azure Maps web SDK-val kapcsolatos további tudnivalókért tekintse meg az [Azure ad-t és a Azure Maps web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)-t.
+To learn more about Azure AD authentication and the Azure Maps Web SDK, see [Azure AD and Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 
-Ismerje meg, hogyan tekintheti meg Azure Maps fiókjának API-használati metrikáit:
+Learn how to see the API usage metrics for your Azure Maps account:
 > [!div class="nextstepaction"] 
-> [Használati metrikák megtekintése](how-to-view-api-usage.md)
+> [View usage metrics](how-to-view-api-usage.md)
 
-A Azure Active Directory (HRE) Azure Maps használatával történő integrálását bemutató minták listáját a következő témakörben tekintheti meg:
+For a list of samples showing how to integrate Azure Active Directory (AAD) with Azure Maps, see:
 
 > [!div class="nextstepaction"]
-> [HRE hitelesítési minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD authentication samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

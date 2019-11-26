@@ -1,6 +1,6 @@
 ---
-title: Megismerheti az Azure-erőforrások hozzárendelések elutasítása |} A Microsoft Docs
-description: 'További tudnivalók: elutasítás-hozzárendeléseit a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz.'
+title: Understand deny assignments for Azure resources | Microsoft Docs
+description: Learn about deny assignments in role-based access control (RBAC) for Azure resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,65 +11,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165984"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479353"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Megismerheti az Azure-erőforrások hozzárendelések megtagadása
+# <a name="understand-deny-assignments-for-azure-resources"></a>Understand deny assignments for Azure resources
 
-Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport vagy szolgáltatásnév céljából megtagadja a hozzáférést egy adott hatókörben. Megtagadási hozzárendelések letiltása a felhasználók számára az adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra.
+Similar to a role assignment, a *deny assignment* attaches a set of deny actions to a user, group, or service principal at a particular scope for the purpose of denying access. Deny assignments block users from performing specific Azure resource actions even if a role assignment grants them access.
 
-Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiálva.
+This article describes how deny assignments are defined.
 
-## <a name="how-deny-assignments-are-created"></a>Hogyan megtagadása a hozzárendelések jönnek létre.
+## <a name="how-deny-assignments-are-created"></a>How deny assignments are created
 
-Megtagadási hozzárendelések létrehozása és felügyelete az Azure-erőforrások védelmét. Ha például az Azure-tervek és az Azure felügyelt alkalmazások használata megtagadása-hozzárendeléseket a rendszer által felügyelt erőforrások védelmét. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+Deny assignments are created and managed by Azure to protect resources. Azure Blueprints and Azure managed apps use deny assignments to protect system-managed resources. Azure Blueprints and Azure managed apps are the only way that deny assignments can be created. You can't directly create your own deny assignments.  For more information, see [Protect new resources with Azure Blueprints resource locks](../governance/blueprints/tutorials/protect-new-resources.md).
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Hasonlítsa össze a szerepkör-hozzárendelések és a hozzárendelés elutasítása
+> [!NOTE]
+> You can't directly create your own deny assignments.
 
-Megtagadási hozzárendelések hasonló mintát követi, szerepkör-hozzárendeléseket, de néhány eltérés is rendelkezik.
+## <a name="compare-role-assignments-and-deny-assignments"></a>Compare role assignments and deny assignments
 
-| Képesség | Szerepkör-kijelölés | Hozzárendelés elutasítása |
+Deny assignments follow a similar pattern as role assignments, but also have some differences.
+
+| Szolgáltatás | Szerepkör-kijelölés | Deny assignment |
 | --- | --- | --- |
 | Hozzáférés biztosítása | :heavy_check_mark: |  |
 | Hozzáférés megtagadása |  | :heavy_check_mark: |
-| Közvetlenül hozható létre | :heavy_check_mark: |  |
-| A alkalmazni a hatókörben | :heavy_check_mark: | :heavy_check_mark: |
-| Rendszerbiztonsági tagok kizárása |  | :heavy_check_mark: |
-| Gyermek hatókörök öröklődés megakadályozása |  | :heavy_check_mark: |
-| A alkalmazni [hagyományos előfizetés-adminisztrátor](rbac-and-directory-admin-roles.md) hozzárendelések |  | :heavy_check_mark: |
+| Can be directly created | :heavy_check_mark: |  |
+| Apply at a scope | :heavy_check_mark: | :heavy_check_mark: |
+| Exclude principals |  | :heavy_check_mark: |
+| Prevent inheritance to child scopes |  | :heavy_check_mark: |
+| Apply to [classic subscription administrator](rbac-and-directory-admin-roles.md) assignments |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Hozzárendelés tulajdonságait megtagadása
+## <a name="deny-assignment-properties"></a>Deny assignment properties
 
- Egy megtagadási-hozzárendelést a következő tulajdonságokkal rendelkezik:
+ A deny assignment has the following properties:
 
 > [!div class="mx-tableFixed"]
-> | Tulajdonság | Kötelező | Típus | Leírás |
+> | Tulajdonság | Szükséges | Type (Típus) | Leírás |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Igen | String | A megtagadási hozzárendelés megjelenített neve. Egy adott hatókör egyedi névvel kell rendelkeznie. |
-> | `Description` | Nem | String | A megtagadási hozzárendelés leírása. |
-> | `Permissions.Actions` | Legalább egy műveletet, vagy egy DataActions | String] | Adja meg a felügyeleti műveleteket, amelyhez a Megtagadás hozzárendelés letiltja a hozzáférést, amelyek tömbje. |
-> | `Permissions.NotActions` | Nem | String] | Adja meg a Megtagadás hozzárendelés kizárása a felügyeleti műveleteket, amelyek tömbje. |
-> | `Permissions.DataActions` | Legalább egy műveletet, vagy egy DataActions | String] | Adja meg, mely adatműveletekre, amelyhez a Megtagadás hozzárendelés letiltja a hozzáférést, amelyek tömbje. |
-> | `Permissions.NotDataActions` | Nem | String] | Adja meg, mely adatműveletekre kell kizárása a Megtagadás hozzárendelésekor karakterláncok tömbje. |
-> | `Scope` | Nem | String | Egy karakterlánc, amely meghatározza azt a hatókört, amely a Megtagadás hozzárendelés vonatkozik. |
-> | `DoNotApplyToChildScopes` | Nem | Boolean | Itt adhatja meg, hogy érvényes-e a Megtagadás hozzárendelés gyermek hatókörhöz. Alapértelmezett értéke FALSE (hamis). |
-> | `Principals[i].Id` | Igen | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás), amelyekre vonatkozik a Megtagadás hozzárendelés tömbje. Állítsa egy üres GUID azonosító `00000000-0000-0000-0000-000000000000` képviselő összes rendszerbiztonsági tag. |
-> | `Principals[i].Type` | Nem | String] | Rendszerbiztonsági tagok [i] .id által képviselt objektumtípusok tömbje. Állítsa be `SystemDefined` képviselő összes rendszerbiztonsági tag. |
-> | `ExcludePrincipals[i].Id` | Nem | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás), amelyre nem vonatkozik a Megtagadás hozzárendelés tömbje. |
-> | `ExcludePrincipals[i].Type` | Nem | String] | Objektumtípusok ExcludePrincipals [i] .id által képviselt tömbje. |
-> | `IsSystemProtected` | Nem | Boolean | Itt adhatja meg, hogy ez megtagadása hozzárendelés hozta létre az Azure és a nem szerkeszthető vagy törölhető. Jelenleg az összes elutasítása hozzárendelések a védett rendszer. |
+> | `DenyAssignmentName` | Igen | Sztring | The display name of the deny assignment. Names must be unique for a given scope. |
+> | `Description` | Nem | Sztring | The description of the deny assignment. |
+> | `Permissions.Actions` | At least one Actions or one DataActions | String[] | An array of strings that specify the management operations to which the deny assignment blocks access. |
+> | `Permissions.NotActions` | Nem | String[] | An array of strings that specify the management operations to exclude from the deny assignment. |
+> | `Permissions.DataActions` | At least one Actions or one DataActions | String[] | An array of strings that specify the data operations to which the deny assignment blocks access. |
+> | `Permissions.NotDataActions` | Nem | String[] | An array of strings that specify the data operations to exclude from the deny assignment. |
+> | `Scope` | Nem | Sztring | A string that specifies the scope that the deny assignment applies to. |
+> | `DoNotApplyToChildScopes` | Nem | Logikai | Specifies whether the deny assignment applies to child scopes. Default value is false. |
+> | `Principals[i].Id` | Igen | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment applies. Set to an empty GUID `00000000-0000-0000-0000-000000000000` to represent all principals. |
+> | `Principals[i].Type` | Nem | String[] | An array of object types represented by Principals[i].Id. Set to `SystemDefined` to represent all principals. |
+> | `ExcludePrincipals[i].Id` | Nem | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment does not apply. |
+> | `ExcludePrincipals[i].Type` | Nem | String[] | An array of object types represented by ExcludePrincipals[i].Id. |
+> | `IsSystemProtected` | Nem | Logikai | Specifies whether this deny assignment was created by Azure and cannot be edited or deleted. Currently, all deny assignments are system protected. |
 
-## <a name="the-all-principals-principal"></a>Az összes rendszerbiztonsági tag egyszerű
+## <a name="the-all-principals-principal"></a>The All Principals principal
 
-A támogatási megtagadása hozzárendelések, a rendszer által meghatározott nevű egyszerű *összes rendszerbiztonsági tag* fejlődéséből. Ez az egyszerű felhasználók, csoportok, a szolgáltatásnevek és az Azure AD-címtár felügyelt identitások jelöli. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és egyszerű típus `SystemDefined`, az egyszerű jelöli az összes rendszerbiztonsági tag. Az Azure PowerShell-lel kimeneti összes rendszerbiztonsági tag a következőhöz hasonlóan néz ki:
+To support deny assignments, a system-defined principal named *All Principals* has been introduced. This principal represents all users, groups, service principals, and managed identities in an Azure AD directory. If the principal ID is a zero GUID `00000000-0000-0000-0000-000000000000` and the principal type is `SystemDefined`, the principal represents all principals. In Azure PowerShell output, All Principals looks like the following:
 
 ```azurepowershell
 Principals              : {
@@ -79,12 +82,12 @@ Principals              : {
                           }
 ```
 
-Minden rendszerbiztonsági tagok kombinálva `ExcludePrincipals` megtagadni az egyes felhasználók kivételével az összes rendszerbiztonsági tagok. Összes rendszerbiztonsági tag a következő korlátozások vonatkoznak:
+All Principals can be combined with `ExcludePrincipals` to deny all principals except some users. All Principals has the following constraints:
 
-- Csak a felhasznált `Principals` és nem használható `ExcludePrincipals`.
-- `Principals[i].Type` meg kell `SystemDefined`.
+- Can be used only in `Principals` and cannot be used in `ExcludePrincipals`.
+- `Principals[i].Type` must be set to `SystemDefined`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Listában elutasítása hozzárendelések Azure-erőforrások az Azure portal használatával](deny-assignments-portal.md)
-* [Megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md)
+* [List deny assignments for Azure resources using the Azure portal](deny-assignments-portal.md)
+* [Understand role definitions for Azure resources](role-definitions.md)

@@ -1,18 +1,18 @@
 ---
-title: Példaként engedélyezett helyszínek
-description: Ez a minta házirend-definíció megköveteli, hogy minden erőforrást a jóváhagyott helyszínekre telepítsen.
+title: Sample - Allowed locations
+description: This sample policy definition requires that all resources are deployed to the approved locations defined in a parameter.
 ms.date: 01/26/2019
 ms.topic: sample
-ms.openlocfilehash: 7561e57a00f440e50701fa75bd54676ad014e1d5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7620055c82a49c1e805da69205d14c5f0a925e8c
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071922"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463702"
 ---
-# <a name="sample---allowed-region-locations"></a>Példa – engedélyezett régió helyei
+# <a name="sample---allowed-region-locations"></a>Sample - Allowed region locations
 
-Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a szervezet megadhat az erőforrások üzembe helyezésekor. A földrajzi megfelelőségi követelmények betartására szolgál. Az erőforráscsoportok, a Microsoft. AzureActiveDirectory/b2cDirectories és a "globális" régiót használó erőforrások kizárása. Az engedélyezett helyszínek tömbjét kell megadnia.
+Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a szervezet megadhat az erőforrások üzembe helyezésekor. A földrajzi megfelelőségi követelmények betartására szolgál. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region. You specify an array of allowed locations.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -48,14 +48,14 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 ## <a name="parameters"></a>Paraméterek
 
-|Name (Név) |Típus |Mező |Leírás |
+|Név |Type (Típus) |Mező |Leírás |
 |---|---|---|---|
-|listOfAllowedLocations |Tömb |locations |Az engedélyezett helyszínek listája|
+|listOfAllowedLocations |Tömb |locations |The list of allowed locations|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
 
-Ebben a példában csak a _eastus2_ vagy a _westus_ hely lesz engedélyezve.
+In this example parameter, only the _eastus2_ or _westus_ locations will be allowed.
 
 ```json
 {
@@ -70,8 +70,8 @@ Ebben a példában csak a _eastus2_ vagy a _westus_ hely lesz engedélyezve.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![telepítse a házirend-mintát az Azure-](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json) ba
-[![telepítse a házirend-mintát az Azure gov-](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json) ba
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -117,11 +117,11 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Eltávolít egy létező Azure Policy-definíciót. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
