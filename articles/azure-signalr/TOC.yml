@@ -61,6 +61,8 @@
   items:
     - name: Méretezés
       items:
+        - name: Egy példány
+          href: signalr-howto-scale-signalr.md
         - name: Több példány
           href: signalr-howto-scale-multi-instances.md
     - name: Biztonságos
