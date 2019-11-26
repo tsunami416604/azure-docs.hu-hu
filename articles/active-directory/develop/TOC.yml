@@ -289,6 +289,8 @@
               items:
                 - name: ADFS-támogatás az MSAL.NET-ben
                   href: msal-net-adfs-support.md
+                - name: ADFS-támogatás a Pythonhoz készült MSAL-ben
+                  href: msal-python-adfs-support.md
                 - name: ADFS-támogatás a Javához készült MSAL-ben
                   href: msal-java-adfs-support.md
             - name: Integrálás az Azure AD B2C szolgáltatással

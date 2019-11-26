@@ -133,6 +133,9 @@
         - name: Event Hubs-adatok feldolgozása
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
+        - name: Azure SQL Database-adatbázis feldolgozása
+          href: ../sql-database/sql-database-stream-analytics.md
+          maintainContext: true
         - name: Térinformatikai forgatókönyvek
           href: geospatial-scenarios.md
     - name: Figyelés

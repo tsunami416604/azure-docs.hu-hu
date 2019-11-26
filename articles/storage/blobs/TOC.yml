@@ -667,7 +667,21 @@
               href: ../blobs/data-lake-storage-explorer.md
             - name: Tárfiók frissítése
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok betöltése
+        - name: 'Könyvtárak, fájlok és ACL-ek kezelése'
+          items:
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: parancssori felület
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: Storage Explorer
+              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
+        - name: Adatátvitel
           items:
             - name: AzCopy
               items:
@@ -717,10 +731,16 @@
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Fájlok kezelése (blobok)
           items:
-            - name: PowerShell
-              href: /powershell/module/azure.storage
-            - name: Azure CLI
-              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Áttekintés
+              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Spark optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Hive optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú MapReduce optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Storm optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatok áttelepítése
           items:
             - name: Frissítés a Data Lake Storage Gen1-ből
