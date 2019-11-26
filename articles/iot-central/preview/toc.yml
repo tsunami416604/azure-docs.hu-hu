@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: Eszközök kezelése
           href: howto-manage-devices.md
+        - name: Szabályok konfigurálása
+          href: howto-configure-rules.md
         - name: Eszközadatok elemzése
           href: howto-create-analytics.md
         - name: Csempék hozzáadása az irányítópulthoz

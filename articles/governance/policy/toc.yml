@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure szabályzatának áttekintése
+    - name: Mi az Azure Policy?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
 - name: Gyors útmutatók

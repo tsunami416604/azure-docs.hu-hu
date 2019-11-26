@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Forgalom megjelenítése
               href: map-show-traffic.md
-            - name: Vezérlés egérrel
+            - name: Reagálás az eseményekre
               href: map-events.md
             - name: Alkalmazás elérhetővé tétele
               href: map-accessibility.md

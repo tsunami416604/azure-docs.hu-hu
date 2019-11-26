@@ -49,16 +49,18 @@
           href: concepts-limits.md
     - name: Adathozzáférés és -biztonság
       items:
-        - name: Tűzfalszabályok
-          href: concepts-firewall-rules.md
+        - name: Biztonsági áttekintés
+          href: concepts-security.md
         - name: Az SSL konfigurálása
           href: concepts-ssl-connection-security.md
-        - name: Fejlett fenyegetésvédelem
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: Virtual Network
-          href: concepts-data-access-security-vnet.md
         - name: Kapcsolati architektúra
           href: concepts-connectivity-architecture.md
+        - name: Tűzfalszabályok
+          href: concepts-firewall-rules.md
+        - name: Virtual Network
+          href: concepts-data-access-security-vnet.md
+        - name: Fejlett fenyegetésvédelem
+          href: concepts-data-access-and-security-threat-protection.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Az üzletmenet folytonossága – bevezetés
