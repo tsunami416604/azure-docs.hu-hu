@@ -1,6 +1,6 @@
 ---
-title: Szimbólum hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Szimbólumok hozzáadása a Azure Maps web SDK-hoz.
+title: Add a Symbol layer to Azure Maps | Microsoft Docs
+description: How to add symbols to the Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,23 +9,31 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 10f6a7ef92bfd6558ed93e7fb40df9e48e1b92f5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976175"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480607"
 ---
-# <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
+# <a name="add-a-symbol-layer-to-a-map"></a>Add a symbol layer to a map
 
-Egy szimbólum egy adatforráshoz is csatlakoztatható, és egy ikon és/vagy szöveg megjelenítésére szolgál egy adott ponton. A szimbólumok rétegei a WebGL használatával jelennek meg, és a térképeken nagy gyűjteményeket lehet megjeleníteni. Ez a réteg sokkal több pont-adat megjelenítését teszi lehetővé a térképen, jó teljesítménnyel, mint a HTML-jelölők használatával. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
+A symbol can be connected up to a data source and used to render an icon and/or text at a given point. Symbol layers are rendered using WebGL and can be used to render large collections of points on the map. This layer can render a lot more point data on the map, with good performance, than what is achievable using HTML markers. However, the symbol layer doesn't support traditional CSS and HTML elements for styling.  
 
 > [!TIP]
-> A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha korlátozni szeretné a réteget úgy, hogy az csak a pont geometriai `filter` funkcióit jelenítse meg `['==', ['geometry-type'], 'Point']` , `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` állítsa a réteg tulajdonságát a (vagy) értékre, ha a multipoint-szolgáltatásokat is szeretné használni.
+> Symbol layers by default will render the coordinates of all geometries in a data source. To limit the layer such that it only renders point geometry features set the `filter` property of the layer to `['==', ['geometry-type'], 'Point']` or `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` if you want to include MultiPoint features as well.
+
+The maps image sprite manager, which is used to load custom images used by the symbol layer supports the following image formats:
+
+- JPEG
+- PNG
+- SVG
+- BMP
+- GIF (no animations)
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ha szimbólum réteget szeretne hozzáadni a térképhez és az adatmegjelenítéshez, először létre kell hoznia egy adatforrást, és hozzá kell adnia a térképet. Ezután létrehozhatja és átadhat egy szimbólum réteget az adatforrásban az adatok lekéréséhez. Végül fel kell venni az adatforrásba az adatforrást, hogy meg lehessen jeleníteni valamit. A következő kód azt a kódot mutatja be, amelyet a térképhez kell hozzáadni, miután betöltötte azt, hogy a Térkép egyetlen pontját jeleníti meg egy szimbólum réteg használatával. 
+To add a symbol layer to the map and render data, a data source first needs to be created and added the map. A symbol layer can then be created and passed in the data source to retrieve the data from. Finally, data needs to be added into the data source so that there is something to be rendered. The following code shows the code that should be added to the map after it has loaded to render a single point on the map using a symbol layer. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -42,50 +50,50 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-A térképhez négy különböző típusú pont-adattípust lehet hozzáadni:
+There are four different types of point data to that can be added to the map:
 
-- GeoJSON pont geometriája – ez az objektum csak egy pont koordinátáit tartalmazza, semmi más. A `atlas.data.Point` segítő osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- GeoJSON multipoint geometria – Ez az objektum több pont koordinátáit tartalmazza, de semmi mást nem. A `atlas.data.MultiPoint` segítő osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- GeoJSON funkció – ez az objektum bármilyen GeoJSON geometriát és olyan tulajdonságokat tartalmaz, amelyek a geometriához társított metaadatokat tartalmaznak. A `atlas.data.Feature` segítő osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- `atlas.Shape`az osztály hasonló a GeoJSON szolgáltatáshoz, amely egy GeoJSON geometriát és olyan tulajdonságokat tartalmaz, amelyek a geometriához társított metaadatokat tartalmaznak. Ha egy GeoJSON objektumot ad hozzá egy adatforráshoz, könnyen megjeleníthető egy rétegben, azonban ha a GeoJSON objektum koordináták tulajdonsága frissül, akkor az adatforrás és a leképezés nem változik, mert a JSON-objektumban nincs olyan mechanizmus, amely egy frissítést indít el. Az Shape osztály a benne foglalt adatok frissítésére, valamint a módosítás megváltozására szolgáló funkciókat biztosít, az adatforrást és a leképezést automatikusan értesíti és frissíti. 
+- GeoJSON Point geometry - This object only contains a coordinate of a point and nothing else. The `atlas.data.Point` helper class can be used to easily create these objects.
+- GeoJSON MultiPoint geometry - This object contains the coordinates of multiple points but nothing else. The `atlas.data.MultiPoint` helper class can be used to easily create these objects.
+- GeoJSON Feature - This object consists of any GeoJSON geometry and a set of properties that contain metadata associated to the geometry. The `atlas.data.Feature` helper class can be used to easily create these objects.
+- `atlas.Shape` class is similar to the GeoJSON feature in that it consists of a GeoJSON geometry and a set of properties that contain metadata associated to the geometry. If a GeoJSON object is added to a data source it can easily be rendered in a layer, however, if the coordinates property of that GeoJSON object is updated, the data source and map don't change as there is no mechanism in the JSON object to trigger an update. The shape class provides functions for updating the data it contains, and when a change is made, the data source and map are automatically notified and updated. 
 
-Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja azt az `atlas.Shape` osztálynak, hogy könnyen frissíthető legyen. A Térkép középpontját kezdetben egy szimbólum megjelenítéséhez használjuk. A térképhez egy kattintást jelző eseményt adnak hozzá, amely azt jelzi, hogy az egérrel való kattintások koordinátáit a rendszer az alakzatok `setCoordinates` függvénnyel használja, amely frissíti a szimbólum helyét a térképen.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='PIN-kód helyének váltása' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>switch PIN-kód helyét</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-> [!TIP]
-> A teljesítmény érdekében a szimbólum-rétegek alapértelmezés szerint az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. Ahogy a rejtett szimbólumok nagyítása láthatóvá válik. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa be a `allowOverlap` `iconOptions` beállítások `true`tulajdonságát a következőre:.
-
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása egy szimbólum réteghez
-
-A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz, majd használhatja azt a Térkép egyéni szimbólumának megjelenítéséhez. A szimbólum réteg tulajdonságának meg kell adni egy kifejezést. `textField` Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni, de mivel ez egy szám, karakterlánccá kell alakítani. Emellett szeretnénk hozzáfűzni a "°F"-t is. Ezt a kifejezést használhatja; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+The following code sample creates a GeoJSON Point geometry and passes it into the `atlas.Shape` class to make it easy to update. The center of the map is used initially to render a symbol. A click event is added to the map such that when it fires, the coordinates of where the mouse was clicked are used with the shapes `setCoordinates` function that updates the location of the symbol on the map.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Egyéni szimbólum képe ikon' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Egyéni szimbólumának</a> ikonját<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Switch pin location' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Switch pin location</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket a szimbólum rétegben használhat. További részletekért lásd a képsablonokkal kapcsolatos dokumentum [használatát](how-to-use-image-templates-web-sdk.md) ismertető témakört.
+> By default, for performance, symbol layers optimize the rendering of symbols by hiding symbols that overlap. As you zoom in the hidden symbols become visible. To disable this feature and render all symbols at all times, set the `allowOverlap` property of the `iconOptions` options to `true`.
 
-## <a name="customize-a-symbol-layer"></a>Szimbólum réteg testreszabása 
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Add a custom icon to a symbol layer
 
-A szimbólum rétegben számos lehetőség áll rendelkezésre. Az alábbi eszköz segítségével tesztelheti ezeket a különböző stílusokat.
+Symbol layers are rendered using WebGL. As such all resources, such as icon images, must be loaded into the WebGL context. This sample shows how to add a custom icon to the map resources and then use it to render point data with a custom symbol on the map. The `textField` property of the symbol layer requires an expression to be specified. In this case, we want to render the temperature property but since it's a number, it needs to be converted to a string. Additionally we want to append the "°F" to it. An expression can be used to do this; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Szimbólum réteg beállításai' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll szimbólumának rétegbeli<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/PxVXje/'>beállításait</a> Azure Maps () alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Custom Symbol Image Icon' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Custom Symbol Image Icon</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Ha csak szimbólum réteggel kívánja megjeleníteni a szöveget, elrejtheti a ikont az ikon `image` `'none'`beállításainak tulajdonságának beállításával.
+> The Azure Maps web SDK provides several customizable image templates you can use with the symbol layer. For more infromation, see the [How to use image templates](how-to-use-image-templates-web-sdk.md) document.
 
-## <a name="next-steps"></a>További lépések
+## <a name="customize-a-symbol-layer"></a>Customize a symbol layer 
 
-További információ a cikkben használt osztályokról és módszerekről:
+The symbol layer has many styling options available. Here is a tool to test out these various styling options.
+
+<br/>
+
+<iframe height='700' scrolling='no' title='Symbol Layer Options' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol Layer Options</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+> [!TIP]
+> When you only want to render text with a symbol layer, you can hide the icon by setting the `image` property of the icon options to `'none'`.
+
+## <a name="next-steps"></a>Következő lépések
+
+Learn more about the classes and methods used in this article:
 
 > [!div class="nextstepaction"]
 > [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
@@ -99,28 +107,28 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [!div class="nextstepaction"]
 > [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
-Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
+See the following articles for more code samples to add to your maps:
 
 > [!div class="nextstepaction"]
-> [Adatforrás létrehozása](create-data-source-web-sdk.md)
+> [Create a data source](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Felugró ablak hozzáadása](map-add-popup.md)
+> [Add a popup](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)
+> [Use data-driven style expressions](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [A képsablonok használata](how-to-use-image-templates-web-sdk.md)
+> [How to use image templates](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+> [Add a line layer](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Sokszög réteg hozzáadása](map-add-shape.md)
+> [Add a polygon layer](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Buborék réteg hozzáadása](map-add-bubble-layer.md)
+> [Add a bubble layer](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [HTML-készítők hozzáadása](map-add-bubble-layer.md)
+> [Add HTML Makers](map-add-bubble-layer.md)

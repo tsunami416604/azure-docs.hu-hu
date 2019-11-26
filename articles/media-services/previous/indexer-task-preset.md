@@ -1,6 +1,6 @@
 ---
-title: Azure Media Indexer feladatának beállítása
-description: Ez a témakör áttekintést nyújt a Azure Media Indexerhez beállított feladatról.
+title: Task preset for Azure Media Indexer
+description: This topic gives an overview of task preset for Azure Media Indexer.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -13,30 +13,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: a9a47f970f0f934e0953bd5e2d6e5575758a9c1c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 38baa4f69d96efd68839e7ee15ae5ee6088d2063
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67873509"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464100"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer feladatának beállítása 
+# <a name="task-preset-for-azure-media-indexer"></a>Task preset for Azure Media Indexer 
 
-Azure Media Indexer a következő feladatok elvégzéséhez használt adathordozó-feldolgozó: médiafájlok és tartalmak kereshetővé tétele, lezárt feliratozási számok és kulcsszavak létrehozása, az eszköz részét képező indexfájl-fájlok.
+Azure Media Indexer is a Media Processor that you use to perform the following tasks: make media files and content searchable, generate closed captioning tracks and keywords, index asset files that are part of your asset.
 
-Ez a témakör az indexelési feladatnak átadandó feladattípust ismerteti. A teljes példa: [médiafájlok indexelése Azure Media Indexersal](media-services-index-content.md).
+This topic describes the task preset that you need to pass to your indexing job. For complete example, see [Indexing media files with Azure Media Indexer](media-services-index-content.md).
 
-## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer konfigurációs XML
+## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer Configuration XML
 
-Az alábbi táblázat a konfigurációs XML elemeit és attribútumait ismerteti.
+The following table explains elements and attributes of the configuration XML.
 
-|Name (Név)|Kötelező|Leírás|
+|Név|Kötelező|Leírás|
 |---|---|---|
-|Input (Bemenet)|true|Az indexelni kívánt adatfájl (ok).<br/>A Azure Media Indexer a következő médiafájl-formátumokat támogatja: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Megadhatja a fájl nevét (ke) t a **bemeneti** elem **Name** vagy **List** attribútumában (az alább látható módon). Ha nem határozza meg, hogy melyik adatfájlt szeretné indexelni, az elsődleges fájl lesz kiválasztva. Ha nincs beállítva elsődleges adatfájl, a bemeneti eszköz első fájlja indexelve lesz.<br/><br/>Ha explicit módon meg szeretné adni az eszköz fájljának nevét, tegye a következőket:<br/>```<input name="TestFile.wmv" />```<br/><br/>Egyszerre több adatfájlt is indexelheti (legfeljebb 10 fájlt). Ehhez tegye a következőket:<br/>– Hozzon létre egy szövegfájlt (manifest-fájlt), és adjon hozzá egy. lst kiterjesztést.<br/>-Adja meg a bemeneti objektumban található összes adatfájl nevét ebbe a jegyzékfájlba.<br/>-Adja hozzá (feltölti) a jegyzékfájlt az objektumhoz.<br/>-Adja meg a jegyzékfájl nevét a bemenet List attribútumában.<br/>```<input list="input.lst">```<br/><br/>**Megjegyzés:** Ha több mint 10 fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz az 2006-es hibakód miatt.|
-|metaadatok|false|A megadott adatfájl (ok) metaadatai.<br/>```<metadata key="..." value="..." />```<br/><br/>Megadhatja az előre definiált kulcsok értékeit. <br/><br/>Jelenleg a következő kulcsok támogatottak:<br/><br/>**cím** és **Leírás** – a nyelvi modell frissítésére szolgál a beszédfelismerés pontosságának javítása érdekében.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**Felhasználónév** és **jelszó** – az internetes fájlok http-vagy https-kapcsolaton keresztüli letöltéséhez használt hitelesítéshez.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>A Felhasználónév és a jelszó érték a bemeneti jegyzékfájlban lévő összes adathordozó URL-címére érvényes.|
-|funkciókkal<br/><br/>Az 1,2-es verzióban lett hozzáadva. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR").|false|A beszédfelismerési funkció a következő beállítások kulcsokkal rendelkezik:<br/><br/>Nyelv:<br/>– A multimédiás fájlban felismerhető természetes nyelv.<br/>-Angol, Spanyol<br/><br/>CaptionFormats:<br/>– a kívánt kimeneti felirat formátumának pontosvesszővel tagolt listája (ha van ilyen)<br/>-ttml; számi; webvtt<br/><br/><br/>GenerateAIB:<br/>-Logikai jelző, amely meghatározza, hogy szükség van-e egy AIB-fájlra (SQL Server és az ügyfél indexelő IFilter-vel való használatra). További információ: AIB-fájlok használata Azure Media Indexer és SQL Server.<br/>Igaz Hamis<br/><br/>GenerateKeywords:<br/>– Logikai jelző, amely meghatározza, hogy szükség van-e egy kulcsszó XML-fájlra.<br/>Igaz Hamis.|
+|Input (Bemenet)|igaz|Asset file(s) that you want to index.<br/>Azure Media Indexer supports the following media file formats: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>You can specify the file name (s) in the **name** or **list** attribute of the **input** element (as shown below). If you do not specify which asset file to index, the primary file is picked. If no primary asset file is set, the first file in the input asset is indexed.<br/><br/>To explicitly specify the asset file name, do:<br/>```<input name="TestFile.wmv" />```<br/><br/>You can also index multiple asset files at once (up to 10 files). Ehhez tegye a következőket:<br/>- Create a text file (manifest file) and give it an .lst extension.<br/>- Add a list of all the asset file names in your input asset to this manifest file.<br/>- Add (upload) the manifest file to the asset.<br/>- Specify the name of the manifest file in the input’s list attribute.<br/>```<input list="input.lst">```<br/><br/>**Note:** If you add more than 10 files to the manifest file, the indexing job will fail with the 2006 error code.|
+|metaadatok|hamis|Metadata for the specified asset file(s).<br/>```<metadata key="..." value="..." />```<br/><br/>You can supply values for predefined keys. <br/><br/>Currently, the following keys are supported:<br/><br/>**title** and **description** - used to update the language model to improve speech recognition accuracy.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**username** and **password** - used for authentication when downloading internet files via http or https.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>The username and password values apply to all media URLs in the input manifest.|
+|funkciókkal<br/><br/>Added in version 1.2. Currently, the only supported feature is speech recognition ("ASR").|hamis|The Speech Recognition feature has the following settings keys:<br/><br/>Nyelv:<br/>- The natural language to be recognized in the multimedia file.<br/>- English, Spanish<br/><br/>CaptionFormats:<br/>- a semicolon-separated list of the desired output caption formats (if any)<br/>- ttml;webvtt<br/><br/><br/>GenerateKeywords:<br/>- A boolean flag specifying whether or not a keyword XML file is required.<br/>- True; False.|
 
-## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer konfigurációs XML-példa
+## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer configuration XML example
 
 ``` 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -52,8 +52,6 @@ Az alábbi táblázat a konfigurációs XML elemeit és attribútumait ismerteti
     <feature name="ASR">    
       <settings>  
         <add key="Language" value="English"/>  
-        <add key="CaptionFormats" value="ttml;sami;webvtt"/>  
-        <add key="GenerateAIB" value ="true" />  
         <add key="GenerateKeywords" value ="true" />  
       </settings>  
     </feature>  
@@ -62,7 +60,7 @@ Az alábbi táblázat a konfigurációs XML elemeit és attribútumait ismerteti
 </configuration>  
 ```
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Lásd: [médiafájlok indexelése Azure Media Indexerokkal](media-services-index-content.md).
+See [Indexing media files with Azure Media Indexer](media-services-index-content.md).
 

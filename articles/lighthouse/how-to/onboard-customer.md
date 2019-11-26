@@ -1,44 +1,44 @@
 ---
 title: Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
-description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
+description: Learn how to onboard a customer to Azure delegated resource management, allowing their resources to be accessed and managed through your own tenant.
 ms.date: 11/7/2019
-ms.topic: overview
-ms.openlocfilehash: 61b639a65d42d64a828db896b7c815c3d8f84734
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131256"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463951"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
-Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe egy ügyfelet az Azure által delegált erőforrás-kezelésben, lehetővé téve a delegált erőforrások (előfizetések és/vagy erőforráscsoportok) elérését és kezelését a saját Azure Active Directory (Azure AD) bérlőn keresztül. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
+This article explains how you, as a service provider, can onboard a customer to Azure delegated resource management, allowing their delegated resources (subscriptions and/or resource groups) to be accessed and managed through your own Azure Active Directory (Azure AD) tenant. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
 
-Ezt a folyamatot megismételheti, ha több ügyfél erőforrásait kezeli. Ezután, amikor egy jogosult felhasználó bejelentkezik a bérlőbe, a felhasználó jogosult lehet az ügyfél-kihelyezés hatókörében a felügyeleti műveletek végrehajtására anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
+You can repeat this process if you are managing resources for multiple customers. Then, when an authorized user signs in to your tenant, that user can be authorized across customer tenancy scopes to perform management operations without having to sign in to every individual customer tenant.
 
-A Microsoft Partner Network-(MPN-) azonosítót társíthatja a beérkező előfizetésekkel, hogy nyomon követhesse az ügyfelek és a fogadások elismerését. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Vegye figyelembe, hogy ezt a társítást a szolgáltatói bérlőben kell végrehajtania.
+You can associate your Microsoft Partner Network (MPN) ID with your onboarded subscriptions to track your impact across customer engagements and receive recognition. For more info, see [Link a partner ID to your Azure accounts](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Note that you'll need to perform this association in your service provider tenant.
 
 > [!NOTE]
-> Az ügyfelek akkor is bevonhatók, ha az Azure Marketplace-en közzétett, felügyelt szolgáltatások (nyilvános vagy privát) vásárlási ajánlatot vásárolnak. További információ: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal is elvégezheti.
+> Customers can also be onboarded when they purchase a managed services offer (public or private) that you published to Azure Marketplace. For more info, see [Publish Managed Services offers to Azure Marketplace](publish-managed-services-offers.md). You can also use the onboarding process described here with an offer published to Azure Marketplace.
 
-A bevezetési folyamathoz a szolgáltató bérlője és az ügyfél bérlője között végrehajtandó műveletek szükségesek. A fenti lépéseket a cikk ismerteti.
+The onboarding process requires actions to be taken from within both the service provider's tenant and from the customer's tenant. All of these steps are described in this article.
 
 > [!IMPORTANT]
-> Az Azure-beli delegált erőforrás-kezeléshez jelenleg nem lehet előfizetést (vagy erőforráscsoportot) előkészíteni, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha regisztrálva van egy előfizetés a **Microsoft. ManagedServices** erőforrás-szolgáltatóval való bevezetéshez, jelenleg nem fog tudni Databricks-munkaterületet létrehozni az adott előfizetéshez.
+> Currently, you can’t onboard a subscription (or resource group within a subscription) for Azure delegated resource management if the subscription uses Azure Databricks. Similarly, if a subscription has been registered for onboarding with the **Microsoft.ManagedServices** resource provider, you won’t be able to create a Databricks workspace for that subscription at this time.
 
-## <a name="gather-tenant-and-subscription-details"></a>Bérlői és előfizetési adatok összegyűjtése
+## <a name="gather-tenant-and-subscription-details"></a>Gather tenant and subscription details
 
-Az ügyfél bérlője számára aktív Azure-előfizetéssel kell rendelkeznie. Ismernie kell a következőket:
+To onboard a customer's tenant, it must have an active Azure subscription. You'll need to know the following:
 
-- A szolgáltató bérlője bérlői azonosítója (ahol az ügyfél erőforrásait fogja kezelni)
-- Az ügyfél bérlője bérlői azonosítója (amelynek erőforrásai a szolgáltató által felügyelt erőforrások lesznek)
-- Az ügyfél bérlője által felügyelt minden egyes előfizetéshez tartozó előfizetési azonosítók (vagy a szolgáltató által felügyelt erőforráscsoport (oka) t tartalmazza)
+- The tenant ID of the service provider's tenant (where you will be managing the customer's resources)
+- The tenant ID of the customer's tenant (which will have resources managed by the service provider)
+- The subscription IDs for each specific subscription in the customer's tenant that will be managed by the service provider (or that contains the resource group(s) that will be managed by the service provider)
 
-Ha még nem rendelkezik ezzel az információval, a következő módokon kérheti le.
+If you don't have this info already, you can retrieve it in one of the following ways.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve fölé helyezve, vagy a **könyvtár váltása**lehetőség kiválasztásával lehet látni. A bérlői azonosító kiválasztásához és másolásához keressen a "Azure Active Directory" kifejezésre a portálon, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki a **címtár-azonosító** mezőben megjelenő értéket. Az előfizetés AZONOSÍTÓjának megkereséséhez keressen rá az "előfizetések" kifejezésre, majd válassza ki a megfelelő előfizetés-azonosítót.
+Your tenant ID can be seen by hovering over your account name on the upper right-hand side of the Azure portal, or by selecting **Switch directory**. To select and copy your tenant ID, search for "Azure Active Directory" from within the portal, then select **Properties** and copy the value shown in the **Directory ID** field. To find the ID of a subscription, search for "Subscriptions" and then select the appropriate subscription ID.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -48,7 +48,7 @@ A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -58,15 +58,15 @@ az account show
 ```
 
 > [!NOTE]
-> Ha egy előfizetést (vagy egy vagy több, az előfizetésen belüli erőforráscsoportot) készít az itt leírt eljárással, a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez.
+> When onboarding a subscription (or one or more resource groups within a subscription) using the process described here, the **Microsoft.ManagedServices** resource provider will be registered for that subscription.
 
-## <a name="define-roles-and-permissions"></a>Szerepkörök és engedélyek definiálása
+## <a name="define-roles-and-permissions"></a>Define roles and permissions
 
-Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. Annyi jogosultságot is megadhat, amennyi szükséges ahhoz, hogy [szerepköralapú hozzáférés-vezérlési (RBAC) szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) rendeljen a bérlő felhasználói számára.
+As a service provider, you may want to perform multiple tasks for a single customer, requiring different access for different scopes. You can define as many authorizations as you need to assign [role-based access control (RBAC) built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) to users in your tenant.
 
-A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz, ami lehetővé teszi az egyes felhasználók hozzáadását vagy eltávolítását, nem pedig közvetlenül az adott felhasználóhoz rendel hozzá engedélyeket. Az is előfordulhat, hogy szerepköröket szeretne hozzárendelni egy egyszerű szolgáltatáshoz. Ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos javaslatokért és információkért lásd: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
+To make management easier, we recommend using Azure AD user groups for each role, allowing you to add or remove individual users to the group rather than assigning permissions directly to that user. You may also want to assign roles to a service principal. Be sure to follow the principle of least privilege so that users only have the permissions needed to complete their job. For recommendations and info about supported roles, see [Tenants, users, and roles in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
 
-Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhasználói csoportok vagy egyszerű szolgáltatásnév azonosító értékeit, amelyekhez hozzáférést szeretne biztosítani. A hozzárendelni kívánt beépített szerepkörökhöz is szüksége lesz a szerepkör-definíciós AZONOSÍTÓra. Ha még nem rendelkezik velük, a következő módszerek egyikével kérheti le őket.
+In order to define authorizations, you'll need to know the ID values for each user, user group, or service principal to which you want to grant access. You'll also need the role definition ID for each built-in role you want to assign. If you don't have them already, you can retrieve them in one of the following ways.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -86,7 +86,7 @@ Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhaszn
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -104,34 +104,34 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 az role definition list --name "<roleName>" | grep name
 ```
 > [!TIP]
-> Javasoljuk, hogy a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) a felhasználó bevezetéséhez rendelje hozzá, hogy a bérlő felhasználói szükség esetén később is [el tudják távolítani a delegáláshoz való hozzáférést](#remove-access-to-a-delegation) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
+> We recommend assigning the [Managed Services Registration Assignment Delete Role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) when onboarding a customer, so that users in your tenant can [remove access to the delegation](#remove-access-to-a-delegation) later if needed. If this role is not assigned, delegated resources can only be removed by a user in the customer's tenant.
 
-## <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
+## <a name="create-an-azure-resource-manager-template"></a>Create an Azure Resource Manager template
 
-Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
+To onboard your customer, you'll need to create an [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) template for your offer with the following information. The **mspOfferName** and **mspOfferDescription** values are visible to the customer when viewing offer details in the [Service providers page](view-manage-service-providers.md) of the Azure portal.
 
 |Mező  |Meghatározás  |
 |---------|---------|
-|**mspOfferName**     |A definíciót leíró név. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként.         |
-|**mspOfferDescription**     |Az ajánlat rövid leírása (például "contoso VM Management ajánlat")      |
-|**managedByTenantId**     |A bérlő azonosítója         |
-|**engedélyek**     |A bérlőből származó felhasználók/csoportok/SPN- **principalId** értékei, amelyek mindegyike **principalIdDisplayName** segíti az ügyfél számára az engedélyezés céljának megértését, és a beépített **roleDefinitionId** értékre van leképezve, hogy megadja a hozzáférési szint         |
+|**mspOfferName**     |A name describing this definition. This value is displayed to the customer as the title of the offer.         |
+|**mspOfferDescription**     |A brief description of your offer (for example, "Contoso VM management offer")      |
+|**managedByTenantId**     |Your tenant ID         |
+|**authorizations**     |The **principalId** values for the users/groups/SPNs from your tenant, each with a **principalIdDisplayName** to help your customer understand the purpose of the authorization and mapped to a built-in **roleDefinitionId** value to specify the level of access         |
 
-Az ügyfél előfizetésének bevezetéséhez használja a [minták](https://github.com/Azure/Azure-Lighthouse-samples/)tárházában megadott megfelelő Azure Resource Manager sablont, valamint egy megfelelő paramétereket tartalmazó fájlt, amelyet a konfigurációnak megfelelően módosítania kell, és meg kell határoznia az engedélyeket. A különálló sablonokat attól függően kell megadnia, hogy egy teljes előfizetést, egy erőforráscsoportot vagy több erőforráscsoportot kíván-e előkészíteni egy előfizetésen belül. Egy olyan sablont is biztosítunk, amely az Azure Marketplace-en közzétett, felügyelt szolgáltatási ajánlatot megvásárló ügyfelek számára is felhasználható, ha így szeretne előfizetni.
+To onboard a customer's subscription, use the appropriate Azure Resource Manager template that we provide in our [samples repo](https://github.com/Azure/Azure-Lighthouse-samples/), along with a corresponding parameters file that you modify to match your configuration and define your authorizations. Separate templates are provided depending on whether you are onboarding an entire subscription, a resource group, or multiple resource groups within a subscription. We also provide a template that can be used for customers who purchased a managed service offer that you published to Azure Marketplace, if you prefer to onboard their subscription(s) this way.
 
-|A beléptetéshez  |Azure Resource Manager sablon használata  |A paraméter fájljának módosítása |
+|To onboard this  |Use this Azure Resource Manager template  |And modify this parameter file |
 |---------|---------|---------|
-|Előfizetést   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Előfizetés   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Erőforráscsoport   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Több erőforráscsoport egy előfizetésen belül   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Multiple resource groups within a subscription   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Subscription (when using an offer published to Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Az itt leírt folyamatnak külön üzembe kell helyeznie a bevezetéshez szükséges összes előfizetést. Külön központi telepítések is szükségesek, ha több különböző előfizetésben lévő erőforráscsoportot készít elő. Egy adott előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen központi telepítésben is elvégezheti.
+> The process described here requires a separate deployment for each subscription being onboarded. Separate deployments are also required if you are onboarding multiple resource groups within different subscriptions. However, onboarding multiple resource groups within a single subscription can be done in one deployment.
 >
-> Külön központi telepítések is szükségesek ahhoz, hogy több ajánlat is alkalmazható legyen ugyanarra az előfizetésre (vagy az előfizetésen belüli erőforráscsoportok). Minden egyes alkalmazásnak eltérő **mspOfferName**kell használnia.
+> Separate deployments are also required for multiple offers being applied to the same subscription (or resource groups within a subscription). Each offer applied must use a different **mspOfferName**.
 
-Az alábbi példa az **delegatedResourceManagement. Parameters. JSON** fájlt mutatja, amelyet az előfizetés bevezetéséhez fog használni. Az erőforráscsoport-paraméter fájljai (az [RG-delegált erőforrás-kezelő](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) mappában találhatók) hasonlóak, de tartalmaznak egy **rgName** paramétert is a bevezetéshez megadott erőforráscsoport (ok) azonosításához.
+The following example shows **delegatedResourceManagement.parameters.json** file that will be used to onboard a subscription. The resource group parameter files (located in the [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) folder) are similar, but also include an **rgName** parameter to identify the specific resource group(s) to be onboarded.
 
 ```json
 {
@@ -183,16 +183,16 @@ Az alábbi példa az **delegatedResourceManagement. Parameters. JSON** fájlt mu
     }
 }
 ```
-A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a felhasználói hozzáférés rendszergazdai szerepkörrel (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). A szerepkör kiosztásakor meg kell adnia a **delegatedRoleDefinitionIds** tulajdonságot, és egy vagy több beépített szerepkört. Az ebben az engedélyben létrehozott felhasználó ezeket a beépített szerepköröket a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)rendeli hozzá, ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md). Erre a felhasználóra nem vonatkozik a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyek.
+The last authorization in the example above adds a **principalId** with the User Access Administrator role (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). When assigning this role, you must include the **delegatedRoleDefinitionIds** property and one or more built-in roles. The user created in this authorization will be able to assign these built-in roles to [managed identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview),  which is required in order to [deploy policies that can be remediated](deploy-policy-remediation.md). No other permissions normally associated with the User Access Administrator role will apply to this user.
 
-## <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
+## <a name="deploy-the-azure-resource-manager-templates"></a>Deploy the Azure Resource Manager templates
 
-Miután frissítette a paramétert tartalmazó fájlt, az ügyfélnek a Azure Resource Manager sablont kell telepítenie az ügyfél bérlője számára előfizetési szintű telepítésként. Külön üzembe helyezésre van szükség minden olyan előfizetés esetében, amelyet be szeretne készíteni az Azure-beli delegált erőforrás-kezelésbe (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
+Once you have updated your parameter file, the customer must deploy the Azure Resource Manager template in their customer's tenant as a subscription-level deployment. A separate deployment is needed for each subscription that you want to onboard to Azure delegated resource management (or for each subscription that contains resource groups that you want to onboard).
 
-Mivel ez egy előfizetési szintű telepítés, nem indítható el a Azure Portalban. A központi telepítés a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
+Because this is a subscription-level deployment, it cannot be initiated in the Azure portal. The deployment may be done by using PowerShell or Azure CLI, as shown below.
 
 > [!IMPORTANT]
-> Az üzembe helyezést egy nem vendég fióknak kell végrehajtania az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+> The deployment must be done by a non-guest account in the customer’s tenant which has the [Owner built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) for the subscription being onboarded (or which contains the resource groups that are being onboarded). To see all users who can delegate the subscription, a user in the customer's tenant can select the subscription in the Azure portal, open **Access control (IAM)** , and [view all users with the Owner role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -214,7 +214,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -234,29 +234,29 @@ az deployment create –-name <deploymentName \
                      --verbose
 ```
 
-## <a name="confirm-successful-onboarding"></a>Sikeres előkészítés megerősítése
+## <a name="confirm-successful-onboarding"></a>Confirm successful onboarding
 
-Ha az ügyfél-előfizetés sikeresen bekerült az Azure-beli delegált erőforrás-kezelésbe, a szolgáltató bérlője felhasználói láthatják az előfizetést és annak erőforrásait (ha a fenti folyamaton keresztül kaptak hozzáférést hozzájuk. egyénileg vagy egy Azure AD-csoport tagjaként a megfelelő engedélyekkel. Ennek megerősítéséhez győződjön meg arról, hogy az előfizetés az alábbi módszerek egyikével jelenik meg.  
+When a customer subscription has successfully been onboarded to Azure delegated resource management, users in the service provider's tenant will be able to see the subscription and its resources (if they have been granted access to it through the process above, either individually or as a member of an Azure AD group with the appropriate permissions). To confirm this, check to make sure the subscription appears in one of the following ways.  
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A szolgáltató bérlője:
+In the service provider's tenant:
 
-1. Navigáljon a [saját ügyfelek oldalra](view-manage-customers.md).
-2. Válassza az **ügyfelek**lehetőséget.
-3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
+1. Navigate to the [My customers page](view-manage-customers.md).
+2. Select **Customers**.
+3. Confirm that you can see the subscription(s) with the offer name you provided in the Resource Manager template.
 
 > [!IMPORTANT]
-> Ha szeretné megtekinteni a delegált előfizetést az [ügyfeleken](view-manage-customers.md), a szolgáltató bérlője számára engedélyezni kell az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört (vagy egy másik beépített szerepkört is, amely olvasói hozzáférést is tartalmaz) az Azure-előfizetéshez. delegált erőforrás-kezelés.
+> In order to see the delegated subscription in [My customers](view-manage-customers.md), users in the service provider's tenant must have been granted the [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) role (or another built-in role which includes Reader access) when the subscription was onboarded for Azure delegated resource management.
 
-Az ügyfél bérlője:
+In the customer's tenant:
 
-1. Navigáljon a szolgáltatók [lapra](view-manage-service-providers.md).
-2. Válassza ki a **szolgáltatói ajánlatokat**.
-3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
+1. Navigate to the [Service providers page](view-manage-service-providers.md).
+2. Select **Service provider offers**.
+3. Confirm that you can see the subscription(s) with the offer name you provided in the Resource Manager template.
 
 > [!NOTE]
-> A telepítés befejezése után néhány percet is igénybe vehet, mielőtt a frissítések megjelennek a Azure Portalban.
+> It may take a few minutes after your deployment is complete before the updates are reflected in the Azure portal.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -266,7 +266,7 @@ Az ügyfél bérlője:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -274,13 +274,13 @@ Get-AzContext
 az account list
 ```
 
-## <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
+## <a name="remove-access-to-a-delegation"></a>Remove access to a delegation
 
-Alapértelmezés szerint az ügyfél bérlője, aki rendelkezik a megfelelő engedélyekkel, el tudja távolítani a hozzáférést a szolgáltatónak a Azure Portal [szolgáltatói lapján](view-manage-service-providers.md#add-or-remove-service-provider-offers) delegált erőforrásokhoz.
+By default, a user in the customer's tenant who has the appropriate permissions can remove access to resources that have been delegated to a service provider in the [Service providers page](view-manage-service-providers.md#add-or-remove-service-provider-offers) of the Azure portal.
 
-Ha a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörével](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) rendelkező felhasználók belefoglalják az ügyfelet az Azure által delegált erőforrás-kezeléshez, a bérlőben lévő felhasználók is eltávolíthatják a delegálást. Ha ezt teszi, a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
+If you have included users with the [Managed Services Registration Assignment Delete Role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) when onboarding the customer for Azure delegated resource management, those users in your tenant can also remove the delegation. When you do so, no users in the service provider's tenant will be able to access the resources that had been previously delegated.
 
-Az alábbi példa egy olyan hozzárendelést mutat be, amely megadja a **felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét** , amely szerepelhet egy paraméter-fájlban:
+The example below shows an assignment granting the **Managed Services Registration Assignment Delete Role** that can be included in a parameter file:
 
 ```json
     "authorizations": [ 
@@ -292,7 +292,7 @@ Az alábbi példa egy olyan hozzárendelést mutat be, amely megadja a **felügy
     ] 
 ```
 
-Az ezzel az engedéllyel rendelkező felhasználók a következő módszerek egyikével törölhetik a delegálást.
+A user with this permission can remove a delegation in one of the following ways.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -316,7 +316,7 @@ Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}
 Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -338,7 +338,7 @@ az managedservices assignment list
 az managedservices assignment delete –assignment <id or full resourceId>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
-- [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
+- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
+- [View and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.

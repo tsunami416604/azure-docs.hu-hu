@@ -1,138 +1,138 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
-description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
+description: Azure delegated resource management enables a cross-tenant management experience.
 ms.date: 11/7/2019
-ms.topic: overview
-ms.openlocfilehash: 0d04a7a77a3f92cffb185ff829f0d678dac2a9ff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131915"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464036"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
-Szolgáltatóként az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md) használatával több ügyfél számára is kezelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)a saját bérlőn belül. A legtöbb feladat és szolgáltatás elvégezhető delegált Azure-erőforrásokon a felügyelt bérlők között. Ez a cikk néhány olyan továbbfejlesztett forgatókönyvet ismertet, amelyekben az Azure-beli delegált erőforrás-kezelés hatékony lehet.
+As a service provider, you can use [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) to manage Azure resources for multiple customers from within your own tenant in the [Azure portal](https://portal.azure.com). Most tasks and services can be performed on delegated Azure resources across managed tenants. This article describes some of the enhanced scenarios where Azure delegated resource management can be effective.
 
 > [!NOTE]
-> Az Azure-beli delegált erőforrás-kezelés egy olyan vállalaton belül is felhasználható, amely a saját több Bérlővel rendelkezik a több-bérlős felügyelet egyszerűsítése érdekében.
+> Azure delegated resource management can also be used within an enterprise which has multiple tenants of its own to simplify cross-tenant administration.
 
-## <a name="understanding-customer-tenants"></a>Ügyfelek bérlők ismertetése
+## <a name="understanding-customer-tenants"></a>Understanding customer tenants
 
-Egy Azure Active Directory (Azure AD) bérlő egy szervezet képviselete. Ez az Azure AD dedikált példánya, amelyet a szervezet akkor kap, amikor kapcsolatot hoz létre a Microsofttal az Azure-ra, Microsoft 365ra vagy más szolgáltatásokra való feliratkozással. Minden Azure AD-bérlő különálló, és elkülönül a többi Azure AD-bérlőtől, és saját bérlői AZONOSÍTÓval (GUID) rendelkezik. További információ: [Mi az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+An Azure Active Directory (Azure AD) tenant is a representation of an organization. It's a dedicated instance of Azure AD that an organization receives when they create a relationship with Microsoft by signing up for Azure, Microsoft 365, or other services. Each Azure AD tenant is distinct and separate from other Azure AD tenants, and has its own tenant ID (a GUID). For more info, see [What is Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
 
-Az ügyfelekhez tartozó Azure-erőforrások kezeléséhez általában a szolgáltatóknak az ügyfél bérlője által hozzárendelt fiókkal kell bejelentkezniük a Azure Portalba, és a felhasználói fiókok létrehozásához és kezeléséhez az ügyfél bérlője rendszergazdájának kell megkövetelni a felhasználókat. a szolgáltatónál.
+Typically, in order to manage Azure resources for a customer, service providers would have to sign in to the Azure portal using an account associated with that customer's tenant, requiring an administrator in the customer's tenant to create and manage user accounts for the service provider.
 
-Az Azure delegált erőforrás-kezeléssel a bevezetési folyamat meghatározza a szolgáltató bérlője azon felhasználóit, akik hozzá tudnak férni és kezelhetnek előfizetéseket, erőforráscsoportokat és erőforrásokat az ügyfél bérlője számára. Ezek a felhasználók ezután a saját hitelesítő adataikkal jelentkezhetnek be a Azure Portalba. A Azure Portalon belül az összes olyan ügyfél erőforrásait kezelhetik, amelyhez hozzáféréssel rendelkeznek. Ezt úgy teheti meg, hogy felkeresi a [saját ügyfelek](../how-to/view-manage-customers.md) lapját a Azure Portalon, vagy közvetlenül az ügyfél előfizetésének kontextusában, akár a Azure Portal, akár API-n keresztül.
+With Azure delegated resource management, the onboarding process specifies users within the service provider's tenant who will be able to access and manage subscriptions, resource groups, and resources in the customer's tenant. These users can then sign in to the Azure portal using their own credentials. Within the Azure portal, they can manage resources belonging to all customers to which they have access. This can be done by visiting the [My customers](../how-to/view-manage-customers.md) page in the Azure portal, or by working directly within the context of that customer's subscription, either in the Azure portal or via APIs.
 
-Az Azure-beli delegált erőforrás-kezelés nagyobb rugalmasságot biztosít a több ügyfél erőforrásainak kezeléséhez anélkül, hogy a különböző bérlők különböző fiókjaiba kellene bejelentkezniük. Előfordulhat például, hogy a szolgáltató három ügyfelet tartalmaz, amelyek eltérő felelősséggel és hozzáférési szinttel rendelkeznek, ahogy az itt látható:
+Azure delegated resource management allows greater flexibility to manage resources for multiple customers without having to sign in to different accounts in different tenants. For example, a service provider may have three customers, with different responsibilities and access levels, as shown here:
 
-![Három ügyfél-bérlő, amely a szolgáltatói feladatokat mutatja](../media/azure-delegated-resource-management-customer-tenants.jpg)
+![Three customer tenants showing service provider responsibilities](../media/azure-delegated-resource-management-customer-tenants.jpg)
 
-Az Azure delegált erőforrás-kezelés használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlője számára, hogy hozzáférjenek ezekhez az erőforrásokhoz, ahogy az itt is látható:
+Using Azure delegated resource management, authorized users can sign in to the service provider’s tenant to access these resources, as shown here:
 
-![Egy szolgáltatói bérlőn keresztül kezelt ügyfelek erőforrásai](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Customer resources managed through one service provider tenant](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="apis-and-management-tool-support"></a>API-k és felügyeleti eszközök támogatása
+## <a name="apis-and-management-tool-support"></a>APIs and management tool support
 
-A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t felhasználhat a delegált erőforrások használata esetén, ha a funkció támogatott a több-bérlős felügyelet esetében, és a felhasználó rendelkezik a megfelelő engedélyekkel.
+You can perform management tasks on delegated resources either directly in the portal or by using APIs and management tools (such as Azure CLI and Azure PowerShell). All existing APIs can be used when working with delegated resources, as long as the functionality is supported for cross-tenant management and the user has the appropriate permissions.
 
-Az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához API-kat is biztosítunk. További információért lásd a **hivatkozási** szakaszt.
+We also provide APIs to perform Azure delegated resource management tasks. For more info, see the **Reference** section.
 
-## <a name="enhanced-services-and-scenarios"></a>Továbbfejlesztett szolgáltatások és forgatókönyvek
+## <a name="enhanced-services-and-scenarios"></a>Enhanced services and scenarios
 
-A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrásain végezhető el. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet is hatásos lehet.
+Most tasks and services can be performed on delegated resources across managed tenants. Below are some of the key scenarios where cross-tenant management can be effective.
 
-[Azure arc for Servers (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[Azure Arc for servers (preview)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
 
-- A [Windows Server vagy Linux rendszerű gépek összekötése az Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) -on kívül az Azure-ban delegált előfizetésekkel és/vagy erőforráscsoportok
-- Csatlakoztatott gépek kezelése Azure-konstrukciók használatával, például Azure Policy és címkézés
+- [Connect Windows Server or Linux machines outside Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) to delegated subscriptions and/or resource groups in Azure
+- Manage connected machines using Azure constructs, such as Azure Policy and tagging
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
-- Az Automation-fiókok használata a delegált ügyfelek erőforrásainak eléréséhez és használatához
+- Use automation accounts to access and work with delegated customer resources
 
 [Azure Backup](https://docs.microsoft.com/azure/backup/):
 
-- Ügyféladatok biztonsági mentése és visszaállítása az ügyfelek bérlői számára
+- Back up and restore customer data in customer tenants
 
-[Azure Kubernetes szolgáltatás (ak)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
-- Üzemeltetett Kubernetes-környezetek kezelése, tárolón belüli alkalmazások üzembe helyezése és kezelése az ügyfelek bérlői között
+- Manage hosted Kubernetes environments and deploy and manage containerized applications within customer tenants
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Megtekintheti a delegált előfizetések riasztásait, és megtekintheti a riasztásokat az összes előfizetés között
-- A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
-- Log Analytics: adatok lekérdezése távoli ügyfelek munkaterületeiről több bérlőn
-- Hozzon létre riasztásokat az olyan ügyfelek bérlői számára, amelyek automatizálást indítanak, például Azure Automation runbookok vagy Azure Functionst a szolgáltató bérlője webhookok használatával
+- View alerts for delegated subscriptions, with the ability to view alerts across all subscriptions
+- View activity log details for delegated subscriptions
+- Log analytics: Query data from remote customer workspaces in multiple tenants
+- Create alerts in customer tenants that trigger automation, such as Azure Automation runbooks or Azure Functions, in the service provider tenant through webhooks
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
-- A megfelelőségi Pillanatképek a delegált előfizetéseken belüli hozzárendelt szabályzatok részleteit mutatják
-- Szabályzat-definíciók létrehozása és szerkesztése delegált előfizetésen belül
-- Ügyfél által definiált szabályzat-definíciók kiosztása a delegált előfizetésen belül
-- Az ügyfelek a szolgáltató által készített szabályzatokat a saját maguk által létrehozott szabályzatok mellett látják
-- Javíthatja [a deployIfNotExists, vagy módosíthatja a hozzárendeléseket az ügyfél bérlőn belül](../how-to/deploy-policy-remediation.md)
+- Compliance snapshots show details for assigned policies within delegated subscriptions
+- Create and edit policy definitions within a delegated subscription
+- Assign customer-defined policy definitions within the delegated subscription
+- Customers see policies authored by the service provider alongside any policies they've authored themselves
+- Can [remediate deployIfNotExists or modify assignments within the customer tenant](../how-to/deploy-policy-remediation.md)
 
-[Azure-erőforrás gráf](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
 
-- A most már tartalmazza a bérlő AZONOSÍTÓját a visszaadott lekérdezés eredményei között, így azonosíthatja, hogy az előfizetés az ügyfél bérlője vagy a szolgáltatói bérlőhöz tartozik-e
+- Now includes the tenant ID in returned query results, allowing you to identify whether a subscription belongs to the customer tenant or service provider tenant
 
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/):
 
-- Több-bérlős láthatóság
-  - A biztonsági szabályzatoknak való megfelelőség monitorozása és a biztonsági lefedettség biztosítása az összes bérlő erőforrásai között
-  - Folyamatos szabályozási megfelelőség monitorozása több ügyfél között egyetlen nézetben
-  - Gyakorlati biztonsági javaslatok monitorozása, osztályozása és rangsorolása biztonságos pontszámok számításával
-- Több-bérlős biztonsági testhelyzet kezelése
-  - Biztonsági házirendek kezelése
-  - Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a végrehajtható biztonsági javaslatoknak
-  - Biztonsággal kapcsolatos adatok gyűjtése és tárolása
-- Több-bérlős fenyegetések észlelése és védelme
-  - Fenyegetések észlelése a bérlők erőforrásai között
-  - Komplex veszélyforrások elleni védelem szabályozása, például igény szerinti (JIT) virtuálisgép-hozzáférés alkalmazása
-  - Hálózati biztonsági csoport konfigurációjának megerősítése adaptív hálózati megerősítéssel
-  - Győződjön meg arról, hogy a kiszolgálók csak azokat az alkalmazásokat és folyamatokat futtatják, amelyeknek adaptív alkalmazás-vezérlőkkel kell rendelkezniük
-  - Fontos fájlok és beállításjegyzék-bejegyzések változásainak figyelése a fájlok integritásának figyelésével (FIM)
+- Cross-tenant visibility
+  - Monitor compliance to security policies and ensure security coverage across all tenants’ resources
+  - Continuous regulatory compliance monitoring across multiple customers in a single view
+  - Monitor, triage, and prioritize actionable security recommendations with secure score calculation
+- Cross-tenant security posture management
+  - Manage security policies
+  - Take action on resources that are out of compliance with actionable security recommendations
+  - Collect and store security-related data
+- Cross-tenant threat detection and protection
+  - Detect threats across tenants’ resources
+  - Apply advanced threat protection controls such as just-in-time (JIT) VM access
+  - Harden network security group configuration with Adaptive Network Hardening
+  - Ensure servers are running only the applications and processes they should be with adaptive application controls
+  - Monitor changes to important files and registry entries with File Integrity Monitoring (FIM)
 
 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
 
-- Azure Sentinel-erőforrások kezelése az ügyfelek bérlői számára
+- Manage Azure Sentinel resources in customer tenants
 
 [Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 
-- Az ügyfelek erőforrásainak állapotának figyelése Azure Resource Health
-- Az ügyfelek által használt Azure-szolgáltatások állapotának nyomon követése
+- Monitor the health of customer resources with Azure Resource Health
+- Track the health of the Azure services used by your customers
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
 
-- Az Azure-beli virtuális gépek vész-helyreállítási lehetőségeinek kezelése az ügyfelek bérlői számára (ne feledje, hogy a futtató fiókokat nem lehet a virtuálisgép-bővítmények másolására használni)
+- Manage disaster recovery options for Azure virtual machines in customer tenants (note that you can't use RunAs accounts to copy VM extensions)
 
 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/):
 
-- Virtuálisgép-bővítmények használata az Azure-beli virtuális gépeken üzembe helyezés utáni konfigurációs és automatizálási feladatok biztosításához az ügyfelek bérlői számára
-- Rendszerindítási diagnosztika használata az Azure-beli virtuális gépek az ügyfelek bérlői általi megoldásához
-- Virtuális gépek elérése a soros konzollal az ügyfelek bérlői számára
-- Vegye figyelembe, hogy nem használhatja a Azure Active Directory távoli bejelentkezéshez a virtuális géphez, és nem integrálhat egy virtuális Key Vault gépet a jelszavakhoz, titkokhoz vagy titkosítási kulcsokhoz a lemezes titkosításhoz.
+- Use virtual machine extensions to provide post-deployment configuration and automation tasks on Azure VMs in customer tenants
+- Use boot diagnostics to troubleshoot Azure VMs in customer tenants
+- Access VMs with serial console in customer tenants
+- Note that you can't use Azure Active Directory for remote login to a VM, and you can't integrate a VM with a Key Vault for passwords, secrets or cryptographic keys for disk encryption
 
 [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
 
-- Virtuális hálózatok és virtuális hálózati adapterek (Vnic-EK) üzembe helyezése és kezelése az ügyfelek bérlői között
+- Deploy and manage virtual networks and virtual network interface cards (vNICs) within customer tenants
 
-Támogatási kérelmek:
+Support requests:
 
-- Nyissa meg a támogatási kérelmeket a delegált erőforrásokhoz a Azure Portal **Súgó + támogatás** paneljén (a delegált hatókörhöz elérhető támogatási csomag kiválasztásával)
+- Open support requests for delegated resources from the **Help + support** blade in the Azure portal (selecting the support plan available to the delegated scope)
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
-Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásokat:
+With all scenarios, please be aware of the following current limitations:
 
-- Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérelmekhez tartozó műveleti URI-k a következővel kezdődnek: `https://management.azure.com`. Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/`. Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
-- A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy a [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nem támogatottak.
-- Az Azure-beli delegált erőforrás-kezeléshez jelenleg nem lehet előfizetést (vagy erőforráscsoportot) előkészíteni, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha regisztrálva van egy előfizetés a **Microsoft. ManagedServices** erőforrás-szolgáltatóval való bevezetéshez, jelenleg nem fog tudni Databricks-munkaterületet létrehozni az adott előfizetéshez.
-- Míg az Azure-beli delegált erőforrás-kezeléshez az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok is bejelentkezhetnek, ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveleteket a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
+- Requests handled by Azure Resource Manager can be performed using Azure delegated resource management. The operation URIs for these requests start with `https://management.azure.com`. However, requests that are handled by an instance of a resource type (such as KeyVault secrets access or storage data access) aren’t supported with Azure delegated resource management. The operation URIs for these requests typically start with an address that is unique to your instance, such as `https://myaccount.blob.core.windows.net` or `https://mykeyvault.vault.azure.net/`. The latter also are typically data operations rather than management operations. 
+- Role assignments must use role-based access control (RBAC) [built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). All built-in roles are currently supported with Azure delegated resource management except for Owner or any built-in roles with [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) permission. The User Access Administrator role is supported only for limited use in [assigning roles to managed identities](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Custom roles and [classic subscription administrator roles](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) are not supported.
+- Currently, you can’t onboard a subscription (or resource group within a subscription) for Azure delegated resource management if the subscription uses Azure Databricks. Similarly, if a subscription has been registered for onboarding with the **Microsoft.ManagedServices** resource provider, you won’t be able to create a Databricks workspace for that subscription at this time.
+- While you can onboard subscriptions and resource groups for Azure delegated resource management which have resource locks, those locks will not prevent actions from being performed by users in the managing tenant. [Deny assignments](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) that protect system-managed resources, such as those created by Azure managed applications or Azure Blueprints (system-assigned deny assignments), do prevent users in the managing tenant from acting on those resources; however, at this time users in the customer tenant can’t create their own deny assignments (user-assigned deny assignments).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
-- [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
+- Onboard your customers to Azure delegated resource management, either by [using Azure Resource Manager templates](../how-to/onboard-customer.md) or by [publishing a private or public managed services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- [View and manage customers](../how-to/view-manage-customers.md) by going to **My customers** in the Azure portal.

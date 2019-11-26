@@ -1,18 +1,18 @@
 ---
-title: Minta – a címke és az alapértelmezett érték alkalmazása
-description: Ez a minta házirend-definíció hozzáfűzi a megadott címke nevét és értékét, ha a címke nincs megadva.
+title: Sample - Apply tag and its default value
+description: This sample policy definition appends a specified tag name and value defined in a parameter, if that tag is not provided.
 ms.date: 01/26/2019
 ms.topic: sample
-ms.openlocfilehash: 0e5bb38b65f4c302fc5a2c4a0a0d3c2da0082a30
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 33d0580d2f6c231c4cd7e73abdaab6cb14c363d9
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071478"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463673"
 ---
-# <a name="sample---apply-tag-and-its-default-value"></a>Minta – a címke és az alapértelmezett érték alkalmazása
+# <a name="sample---apply-tag-and-its-default-value"></a>Sample - Apply tag and its default value
 
-Ez a szabályzat hozzáfűz egy megadott címkenevet és -értéket, ha a címke nem található. Az alkalmazandó címkenevet és -értéket Ön határozza meg.
+Ez a szabályzat hozzáfűz egy megadott címkenevet és -értéket, ha a címke nem található. Meg kell adnia az alkalmazandó címkenevet és -értéket.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -46,10 +46,10 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Név) |Típus |Mező |Leírás |
+|Név |Type (Típus) |Mező |Leírás |
 |---|---|---|---|
-|tagName |Sztring |címkét |A címke neve, például costCenter|
-|tagValue |Sztring |címkét |A címke értéke, például headquarter|
+|tagName |Sztring |tags |A címke neve, például costCenter|
+|tagValue |Sztring |tags |A címke értéke, például headquarter|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -69,8 +69,8 @@ Ebben a példaparaméterben a _tagName_ a **costCenter**, a _tagValue_ pedig a *
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![telepítse a házirend-mintát az Azure-](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json) ba
-[![telepítse a házirend-mintát az Azure gov-](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json) ba
+[![Deploy the Policy sample to Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure Gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -116,11 +116,11 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Eltávolít egy létező Azure Policy-definíciót. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)

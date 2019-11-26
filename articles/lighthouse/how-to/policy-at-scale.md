@@ -1,24 +1,24 @@
 ---
-title: Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
-description: Ismerje meg, hogy az Azure-beli delegált erőforrás-kezelés lehetővé teszi a szabályzat-definíciók és a házirendek hozzárendelésének telepítését több bérlőn keresztül.
+title: Deploy Azure Policy to delegated subscriptions at scale
+description: Learn how Azure delegated resource management lets you deploy a policy definition and policy assignment across multiple tenants.
 ms.date: 11/8/2019
-ms.topic: overview
-ms.openlocfilehash: fd335e77feb26241d573db48c2e96c725f70d031
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131270"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463866"
 ---
-# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
+# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Deploy Azure Policy to delegated subscriptions at scale
 
-Szolgáltatóként több ügyfél-bérlőt is felkészített az Azure-beli delegált erőforrás-kezeléshez. Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
+As a service provider, you may have onboarded multiple customer tenants for Azure delegated resource management. [Azure Lighthouse](../overview.md) allows service providers to perform operations at scale across several tenants at once, making management tasks more efficient.
 
-Ebből a témakörből megtudhatja, hogyan használhatók a [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) egy házirend-definíció és egy házirend-hozzárendelés több bérlőn való üzembe helyezésére a PowerShell-parancsok használatával. Ebben a példában a házirend-definíció biztosítja, hogy a rendszer csak HTTPS-forgalmat engedélyezzen a Storage-fiókok biztonságossá tételéhez.
+This topic shows you how to use [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) to deploy a policy definition and policy assignment across multiple tenants using PowerShell commands. In this example, the policy definition ensures that storage accounts are secured by allowing only HTTPS traffic.
 
-## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Az Azure Resource Graph használata az ügyfél-bérlők lekérdezéséhez
+## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Use Azure Resource Graph to query across customer tenants
 
-Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) segítségével lekérdezheti a kezelt ügyfél-bérlő összes előfizetését. Ebben a példában olyan Storage-fiókokat fogunk azonosítani ezekben az előfizetésekben, amelyek jelenleg nem igényelnek HTTPS-forgalmat.  
+You can use [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) to query across all subscriptions in the customer tenants that you manage. In this example, we’ll identify any storage accounts in these subscriptions that do not currently require HTTPS traffic.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -30,9 +30,9 @@ $ManagedSubscriptions = Search-AzGraph -Query "ResourceContainers | where type =
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | project name, location, subscriptionId, tenantId, properties.supportsHttpsTrafficOnly" -subscription $ManagedSubscriptions.subscriptionId | convertto-json
 ```
 
-## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Házirend üzembe helyezése több ügyfél bérlője között
+## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Deploy a policy across multiple customer tenants
 
-Az alábbi példa azt mutatja be, hogyan használható egy [Azure Resource Manager sablon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) egy házirend-definíció és egy házirend-hozzárendelés központi telepítéséhez több ügyfél-bérlőben lévő delegált előfizetések között. Ennek a házirend-definíciónak a használatához minden Storage-fióknak HTTPS-forgalmat kell használnia, megakadályozva az új Storage-fiókok létrehozását, amelyek nem felelnek meg a meglévő Storage-fiókoknak, és nem megfelelő beállítás nélkül.
+The example below shows how to use an [Azure Resource Manager template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) to deploy a policy definition and policy assignment across delegated subscriptions in multiple customer tenants. This policy definition requires all storage accounts to use HTTPS traffic, preventing the creation of any new storage accounts that don’t comply and marking existing storage accounts without the setting as non-compliant.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -48,9 +48,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="validate-the-policy-deployment"></a>Szabályzat központi telepítésének ellenőrzése
+## <a name="validate-the-policy-deployment"></a>Validate the policy deployment
 
-Miután telepítette a Azure Resource Manager sablont, megerősítheti, hogy a házirend-definíció alkalmazása sikeresen megtörtént, ha a **EnableHttpsTrafficOnly** beállítással **Hamis értéket** ad meg a delegált előfizetések egyikében. A házirend-hozzárendelés miatt nem lehet létrehozni ezt a Storage-fiókot.  
+After you’ve deployed the Azure Resource Manager template, you can confirm that the policy definition was successfully applied by attempting to create a storage account with **EnableHttpsTrafficOnly** set to **false** in one of your delegated subscriptions. Because of the policy assignment, you should be unable to create this storage account.  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült, távolítsa el az üzemelő példány által létrehozott házirend-definíciót és hozzárendelést.
+When you’re finished, remove the policy definition and assignment created by the deployment.
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)
@@ -88,7 +88,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)megismerése.
-- További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
+- Learn about [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).

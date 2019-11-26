@@ -1,16 +1,16 @@
 ---
-title: Minta – a Data Lake Store titkosításának megkövetelése
-description: A példában szereplő házirend-definíció Data Lake Store titkosítás engedélyezését igényli.
+title: Sample - Require encryption for Data Lake Store
+description: This sample policy definition requires the encryption state on Data Lake Store accounts to be enabled.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: a8ed66e9b07e1fc15c8a1a3c8c33f0e218eb62b3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 5b29caa7fa8b9169b8c2164975f9cdb2663c5cef
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070659"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463643"
 ---
-# <a name="sample---require-data-lake-store-encryption"></a>Minta – Data Lake Store titkosítást igényel
+# <a name="sample---require-data-lake-store-encryption"></a>Sample - Require Data Lake Store encryption
 
 Ez a beépített szabályzat elutasít minden olyan Data Lake Store-fiókot, ahol nincs engedélyezve a titkosítás.
 
@@ -62,7 +62,7 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -70,7 +70,7 @@ Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 az policy assignment create --scope <scope> --name "Data Lake Store encryption" --policy a7ff3161-0087-490a-9ad9-ad6217f4f43a
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 
@@ -78,6 +78,6 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 az policy assignment delete --name "Data Lake Store encryption" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

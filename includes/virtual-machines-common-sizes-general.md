@@ -8,43 +8,43 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: c4e30c553ed7c697e1903d9745700755776700d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85429e67c5e02ef6eb9fe4ef76a5c7e1abaa3d69
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73993692"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74485506"
 ---
-Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memória arányt biztosítanak. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint az ebben a csoportosításban lévő méretek tárolási sebességével kapcsolatos információkat tartalmaz.
+General purpose VM sizes provide balanced CPU-to-memory ratio. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. This article provides information about the number of vCPUs, data disks and NICs as well as storage throughput for sizes in this grouping.
 
-- A [DC sorozat](#dc-series) az Azure-beli virtuális gépek egyik családja, amely az adatok és a kód titkosságának és integritásának védelmét segíti a nyilvános felhőben történő feldolgozás során. A gépeket SGX technológiát használó 3,7 GHz-es Intel XEON E-2176G processzorok támogatják. Az Intel Turbo Boost technológiával a teljesítményük akár 4,7 GHz-ig is növelhető. A DC-példányokkal enklávéalapú alkalmazások hozhatók létre, amelyekkel a felhasználók használat közben is védelmet biztosíthatnak a kódnak és az adatoknak.
+- The [DC-series](#dc-series) is a family of virtual machines in Azure that can help protect the confidentiality and integrity of your data and code while it’s processed in the public cloud. A gépeket SGX technológiát használó 3,7 GHz-es Intel XEON E-2176G processzorok támogatják. Az Intel Turbo Boost technológiával a teljesítményük akár 4,7 GHz-ig is növelhető. A DC-példányokkal enklávéalapú alkalmazások hozhatók létre, amelyekkel a felhasználók használat közben is védelmet biztosíthatnak a kódnak és az adatoknak.
 
-- A Av2 sorozatú virtuális gépek számos különböző hardvereszközön és processzoron is üzembe helyezhetők. Az A sorozatú virtuális gépek a belépő szintű számítási feladatokhoz – például fejlesztéshez és teszteléshez – igazodó CPU-teljesítmény- és memóriakonfigurációkkal rendelkeznek. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
+- The Av2-series VMs can be deployed on a variety of hardware types and processors. Az A sorozatú virtuális gépek a belépő szintű számítási feladatokhoz – például fejlesztéshez és teszteléshez – igazodó CPU-teljesítmény- és memóriakonfigurációkkal rendelkeznek. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
 
-  Ilyenek például a fejlesztési és tesztelési kiszolgálók, az alacsony forgalmú webkiszolgálók, a kis-és közepes adatbázisok, a bizonyítási fogalmak és a kódok tárházai.
+  Example use cases include development and test servers, low traffic web servers, small to medium databases, proof-of-concepts, and code repositories.
 
-- A Dv2 sorozat, amely az eredeti D sorozatra épül, egy nagyobb teljesítményű CPU-és optimális CPU-memória-konfigurációval rendelkezik, ami a legtöbb éles számítási feladathoz megfelelő. A Dv2 sorozat körülbelül 35%-kal gyorsabb a D sorozatnál. A Dv2 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorral fut, amely az Intel Turbo Boost Technology 2,0. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+- Dv2-series, a follow-on to the original D-series, features a more powerful CPU and optimal CPU-to-memory configuration making them suitable for most production workloads. The Dv2-series is about 35% faster than the D-series. Dv2-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with the Intel Turbo Boost Technology 2.0. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
-- A Dv3 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Hyper-threaded konfigurációban való futtatásával nagyobb értékű kiosztást biztosít a legtöbb általános cél munkaterhelések.  A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva.  A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, a Windows és a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series) [rendszerre](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) optimalizált Ev3-sorozatba kerültek át.
+- The Dv3-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors in a hyper-threaded configuration, providing a better value proposition for most general purpose workloads.  Memory has been expanded (from ~3.5 GiB/vCPU to 4 GiB/vCPU) while disk and network limits have been adjusted on a per core basis to align with the move to hyperthreading.  The Dv3-series no longer has the high memory VM sizes of the D/Dv2-series, those have been moved to the memory optimized Ev3-series for [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) and [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series).
 
-  Példa: a D sorozat használati esetei nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
+  Example D-series use cases include enterprise-grade applications, relational databases, in-memory caching, and analytics.
 
-- A Dav4 sorozat és a Dasv4 sorozat új méretek az AMD 2.35 GHz EPYC<sup>TM</sup> 7452 processzorát használó többszálas konfigurációban akár 256 GB L3 gyorsítótárral, 8 GB-ot kihasználva minden 8 maggal, amely növeli az ügyfelek általános cél munkaterhelések. A Dav4-sorozat és a Dasv4-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a D & Dsv3 sorozat.
+- The Dav4-series and Dasv4-series are new sizes utilizing AMD’s 2.35Ghz EPYC<sup>TM</sup> 7452 processor in a multi-threaded configuration with up to 256 GB L3 cache dedicating 8 GB of that L3 cache to every 8 cores increasing customer options for running their general purpose workloads. The Dav4-series and Dasv4-series have the same memory and disk configurations as the D & Dsv3-series.
   
 ## <a name="b-series"></a>B sorozat
 
-Premium Storage: támogatott
+Premium Storage:  Supported
 
-Premium Storage gyorsítótárazás: nem támogatott
+Premium Storage caching:  Not Supported
 
-A B sorozatú, feltört virtuális gépek ideálisak olyan számítási feladatokhoz, amelyeknek nincs szükségük a CPU teljes teljesítményére, például webkiszolgálók, kisméretű adatbázisok, fejlesztési és tesztelési környezetek. Ezek a számítási feladatok általában feltört teljesítménnyel kapcsolatos követelményekkel rendelkeznek. A B sorozat biztosítja, hogy ezek az ügyfelek a virtuálisgép-méretet olyan tudatos alapszintű teljesítmény mellett vásárolják meg, amely lehetővé teszi, hogy a virtuálisgép-példány krediteket hozzon létre, amikor a virtuális gép az alapteljesítménynél kevesebbet használ. Ha a virtuális gép felhalmozott Kredittel rendelkezik, a virtuális gép a CPU alapkonfigurációja felett akár 100%-ot is megadhat, ha az alkalmazás a nagyobb CPU-teljesítményt igényli.
+The B-series burstable VMs are ideal for workloads that do not need the full performance of the CPU continuously, like web servers, small databases and development and test environments. These workloads typically have burstable performance requirements. The B-Series provides these customers the ability to purchase a VM size with a price conscious baseline performance that allows the VM instance to build up credits when the VM is utilizing less than its base performance. When the VM has accumulated credit, the VM can burst above the VM’s baseline using up to 100% of the CPU when your application requires the higher CPU performance.
 
-Ilyenek például a fejlesztési és tesztelési kiszolgálók, az alacsony forgalmú webkiszolgálók, a kisméretű adatbázisok, a mikro-szolgáltatások, a rendszer-előállítók kiszolgálói, a Build-kiszolgálók.
+Example use cases include development and test servers, low-traffic web servers, small databases, micro services, servers for proof-of-concepts, build servers.
 
 
-| Méret             | vCPU  | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Virtuális gép alapszintű CPU-teljesítmény | Virtuális gép maximális CPU-teljesítmény | Kezdeti kreditek | Banki/óránkénti kreditek | Maximális banki kreditek | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma |          
+| Méret             | vCPU  | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Base CPU Perf of VM | Max CPU Perf of VM | Initial Credits | Credits banked / hour | Max Banked Credits | Adatlemezek max. száma | Max cached and temp storage throughput: IOPS / MBps | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
 | Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
@@ -52,71 +52,71 @@ Ilyenek például a fejlesztési és tesztelési kiszolgálók, az alacsony forg
 | Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400%                   | 120                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 240                   | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
 | Standard_B12ms | 12           | 48             | 96                         | 202%                  | 1200%                   | 360                   | 121                 | 2909           | 16                                     | 6480 / 75                                 | 4320 / 50                                 | 6  |
-| Standard_B16ms | 16           | 64             | 128                         | 270%                  | 1600%                   | 480                   | 162                 | 3888           | 32                                     | 8640/100                                 | 4320 / 50                                 | 8  |
+| Standard_B16ms | 16           | 64             | 128                         | 270%                  | 1600%                   | 480                   | 162                 | 3888           | 32                                     | 8640 / 100                                 | 4320 / 50                                 | 8  |
 | Standard_B20ms | 20           | 80             | 160                         | 337%                  | 2000%                   | 600                   | 203                 | 4860           | 32                                     | 10800 / 125                                 | 4320 / 50                                 | 8  |
 
-<sup>1</sup> a B1ls csak Linux rendszeren támogatott
+<sup>1</sup> B1ls is supported only on Linux
 
-## <a name="dsv3-series-sup1sup"></a>Dsv3 – <sup>1</sup> . sorozat
+## <a name="dsv3-series-sup1sup"></a>Dsv3-series <sup>1</sup>
 
 ACU: 160–190
 
-Premium Storage: támogatott
+Premium Storage:  Supported
 
-Premium Storage gyorsítótárazás: támogatott
+Premium Storage caching:  Supported
 
-Az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok az Intel Turbo Boost Technology 2,0 használatával futnak, és a Premium Storage-t használják a Dsv3 sorozatos méretek futtatására. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Dsv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage. A Dsv3 sorozatú méretek a legtöbb éles üzemű számítási feladathoz megoldást nyújtanak a virtuális processzor, a memória és az ideiglenes tárhely kombinációjával.
 
 
-| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Max NICs / Expected network bandwidth (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000 / 32 (50)                                                       | 3200 / 48                                | 2 / 1000                                   |
-| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000 / 64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
+| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000 / 64 (100)                                                      | 6400 / 96                                | 2 / 2000                                   |
 | Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000 / 128 (200)                                                    | 12800 / 192                              | 4 / 4000                                      |
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000 / 256 (400)                                                    | 25600 / 384                              | 8 / 8000                                      |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16000                                               |
 | Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000 / 768 (1200)                                                    | 76800 / 1152                               | 8 / 24000                                               |
-| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000 / 1024 (1600)                                                    | 80000/1200                              | 8 / 30000                                               |
+| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000 / 1024 (1600)                                                    | 80000 / 1200                              | 8 / 30000                                               |
 
-<sup>1</sup> a Dsv3 SOROZATú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
+<sup>1</sup> Dsv3-series VM’s feature Intel® Hyper-Threading Technology
 
 ## <a name="dasv4-series"></a>Dasv4 sorozat
 
-ACU: 230-260
+ACU:  230-260
 
-Premium Storage: támogatott
+Premium Storage: Supported
 
-Premium Storage gyorsítótárazás: támogatott
+Premium Storage caching: Supported
 
-A Dasv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot, és prémium SSD-t használhat. A Dasv4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Dasv4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz and use premium SSD. The Dasv4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads.
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Max NICs / Expected network bandwidth (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2 / 1000 |
-| Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400/96|2 / 2000 |
+| Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2 / 2000 |
 | Standard_D8as_v4|8|32|64|16|16000 / 128 (200)|12800 / 192|4 / 4000 |
-| Standard_D16as_v4|16|64|128|32|32000/255 (400)|25600 / 384|8 / 8000 |
-| Standard_D32as_v4|32|128|256|32|64000/510 (800)|51200 / 768|8 / 16000 |
+| Standard_D16as_v4|16|64|128|32|32000 / 255 (400)|25600 / 384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000 / 510 (800)|51200 / 768|8 / 16000 |
 | Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
 | Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
 | Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-<sup>**</sup> Ezek a méretek előzetes verzióban érhetők el.  Ha szeretné kipróbálni ezeket a nagyobb méreteket, Regisztráljon itt: [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
-## <a name="dv3-series-sup1sup"></a>Dv3 – <sup>1</sup> . sorozat
+## <a name="dv3-series-sup1sup"></a>Dv3-series <sup>1</sup>
 
 ACU: 160–190
 
-Premium Storage: nem támogatott
+Premium Storage:  Not Supported
 
-Premium Storage gyorsítótárazás: nem támogatott
+Premium Storage caching:  Not Supported
 
-A Dv3 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Intel Turbo Boost Technology 2,0. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Dv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
-Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához Dsv3-méreteket vegyen igénybe. A Dsv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Dv3-sorozatéval. 
+Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához Dsv3-méreteket vegyen igénybe. A Dsv3 méret díjszabása és számlázási mérőszámai azonosak a Dv3 sorozatéival. 
 
 
-| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Max NICs / Network bandwidth (Mbps) |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -126,19 +126,19 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 | Standard_D48_v3 | 48        | 192          | 1200            | 32             | 96000/1000/500                                            | 8 / 24000                             |
 | Standard_D64_v3 | 64        | 256         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000                   |
 
-<sup>1</sup> a Dv3 SOROZATú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
+<sup>1</sup> Dv3-series VM’s feature Intel® Hyper-Threading Technology
 
 ## <a name="dav4-series"></a>Dav4 sorozat
 
 ACU: 230-260
 
-Premium Storage: nem támogatott
+Premium Storage: Not Supported
 
-Premium Storage gyorsítótárazás: nem támogatott
+Premium Storage caching: Not Supported
 
-A Dav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot. A Dav4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A prémium SSD használatához használja a Dasv4-méreteket. A Dasv4-méretek díjszabása és számlázási mérőszámai megegyeznek a Dav4 sorozattal.
+Dav4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz. The Dav4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. To use premium SSD, use the Dasv4 sizes. The pricing and billing meters for Dasv4 sizes are the same as the Dav4-series.
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Max NICs / Expected network bandwidth (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000 / 46 / 23   | 2 / 1000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000 / 93 / 46   | 2 / 2000 |
@@ -149,37 +149,37 @@ A Dav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron al
 | Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
 | Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-<sup>**</sup> Ezek a méretek előzetes verzióban érhetők el.  Ha szeretné kipróbálni ezeket a nagyobb méreteket, Regisztráljon itt: [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dsv2-series"></a>DSv2-sorozat
 
 ACU: 210–250
 
-Premium Storage: támogatott
+Premium Storage:  Supported
 
-Premium Storage gyorsítótárazás: támogatott
+Premium Storage caching:  Supported
 
-A DSv2 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok, amelyek az Intel Turbo Boost Technology 2,0 és a Premium Storage szolgáltatást használják.
+DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Max NICs / Expected network bandwidth (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3.5 |7 |4 |4000 / 32 (43) |3200 / 48 |2 / 750 |
-| Standard_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400/96 |2 / 1500 |
+| Standard_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400 / 96 |2 / 1500 |
 | Standard_DS3_v2 |4 |14 |28 |16 |16000 / 128 (172) |12800 / 192 |4 / 3000 |
 | Standard_DS4_v2 |8 |28 |56 |32 |32000 / 256 (344) |25600 / 384 |8 / 6000 |
-| Standard_DS5_v2 |16 |56 |112 |64 |64000/512 (688) |51200 / 768 |8 / 12000 |
+| Standard_DS5_v2 |16 |56 |112 |64 |64000 / 512 (688) |51200 / 768 |8 / 12000 |
 
-## <a name="dv2-series"></a>Dv2-sorozat
+## <a name="dv2-series"></a>Dv2 sorozat
 
 ACU: 210–250
 
-Premium Storage: nem támogatott
+Premium Storage:  Not Supported
 
-Premium Storage gyorsítótárazás: nem támogatott
+Premium Storage caching:  Not Supported
 
-A DSv2 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz-es (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal futnak, és az Intel Turbo Boost Technology 2,0.
+DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0.
 
-| Méret           | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma | Átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret           | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma | Throughput: IOPS | Max NICs / Expected network bandwidth (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 4              | 4x500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8x500            | 2 / 1500                                     |
@@ -191,13 +191,13 @@ A DSv2 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz-es (Skylake) vagy az Int
 
 ACU: 100
 
-Premium Storage: nem támogatott
+Premium Storage:  Not Supported
 
-Premium Storage gyorsítótárazás: nem támogatott
+Premium Storage caching:  Not Supported
 
-A Av2 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok, amelyek az Intel Turbo Boost Technology 2,0 és a Premium Storage szolgáltatást használják.
+Av2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
 
-| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Max NICs / Expected network bandwidth (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2x500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4x500               | 2 / 500                 |
@@ -209,13 +209,13 @@ A Av2 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake) vagy az Intel®
 
 ## <a name="dc-series"></a>DC sorozat
 
-Premium Storage: támogatott
+Premium Storage: Supported
 
-Premium Storage gyorsítótárazás: támogatott
+Premium Storage caching: Supported
 
 
 
-| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Max NICs / Expected network bandwidth (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
