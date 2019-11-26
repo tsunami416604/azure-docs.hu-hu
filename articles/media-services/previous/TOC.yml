@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: 'Specifikáció: darabolt MP4 élő feldolgozása'
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Első lépések
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Videók betöltése
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Billentyűparancsok konfigurálása
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Honosítás konfigurálása
-          href: media-services-azure-media-clipper-localization.md
-        - name: Klipekkel kapcsolatos feladatok elküldése
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure Portal
-          href: media-services-azure-media-clipper-portal.md
     - name: Tartalom védelme
       href: media-services-content-protection-overview.md
       items:

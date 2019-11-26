@@ -175,6 +175,10 @@
   items:
     - name: Egyetlen kiszolgáló
       items:
+        - name: Kiszolgáló kezelése
+          items:
+            - name: Azure Portal
+              href: howto-create-manage-server-portal.md
         - name: Hitelesítés
           items:
             - name: Felhasználók létrehozása

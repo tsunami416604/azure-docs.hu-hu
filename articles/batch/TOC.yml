@@ -45,6 +45,8 @@
       href: batch-api-basics.md
     - name: API-k és eszközök
       href: batch-apis-tools.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
     - name: Kvóták és korlátok
       href: batch-quota-limit.md
     - name: Támogatott virtuálisgép-méretek
