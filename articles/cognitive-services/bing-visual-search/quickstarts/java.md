@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
+title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Java-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383606"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: képelemzések lekérése a Bing Visual Search REST API és a Java használatával
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Java-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
+Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítani, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
 
 ```
 --boundary_1234-abcd
@@ -34,15 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
-* The [Gson Java library](https://github.com/google/gson)
+* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks)
+* A [Gson Java-könyvtára](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Create variables for your API endpoint, subscription key, and the path to your image:
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,9 +71,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
-## <a name="create-the-json-parser"></a>Create the JSON parser
+## <a name="create-the-json-parser"></a>A JSON-elemző létrehozása
 
-Create a method to make the JSON response from the API more readable using `JsonParser`:
+Hozzon létre egy metódust, amellyel a JSON-válasz a `JsonParser`használatával olvashatóbb lehet az API-tól:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
-1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
+1. Az alkalmazás fő metódusában hozzon létre egy HTTP-ügyfelet `HttpClientBuilder.create().build();`használatával:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Create an `HttpEntity` object to upload your image to the API:
+2. Hozzon létre egy `HttpEntity` objektumot a rendszerkép API-ba való feltöltéséhez:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Create a method to make the JSON response from the API more readable using `Json
         .build();
     ```
 
-3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
+3. Hozzon létre egy `httpPost` objektumot a végponttal, és állítsa be a fejlécet az előfizetési kulcs használatára:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="receive-and-process-the-json-response"></a>A JSON-válasz fogadása és feldolgozása
 
-1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
+1. A `HttpClient.execute()` metódussal küldhet egy kérést az API-nak, és tárolhatja a választ egy `InputStream` objektumban:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Store the JSON string, and print the response:
+2. Tárolja a JSON-karakterláncot, és nyomtassa ki a választ:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -126,7 +126,7 @@ System.out.println("\nJSON Response:\n");
 System.out.println(prettify(json));
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

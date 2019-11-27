@@ -5,8 +5,8 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
 ms.topic: conceptual
-description: Use a custom NuGet feed to access and use NuGet packages in an Azure Dev Space.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
+description: Egyéni NuGet-hírcsatorna használata NuGet-csomagok eléréséhez és használatához az Azure fejlesztői tárhelyén.
+keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 manager: gwallace
 ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
@@ -15,13 +15,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325721"
 ---
-# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Use a custom NuGet feed with Azure Dev Spaces
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Egyéni NuGet-hírcsatorna használata az Azure dev Spaces használatával
 
-A NuGet feed provides a convenient way to include package sources in a project. Azure Dev Spaces needs to access this feed in order for dependencies to be properly installed in the Docker container.
+A NuGet-hírcsatornák kényelmes módszert biztosítanak a projektek csomagjainak belefoglalására. Az Azure dev Spaces szolgáltatásnak el kell érnie ezt a hírcsatornát ahhoz, hogy a függőségeket megfelelően lehessen telepíteni a Docker-tárolóba.
 
-## <a name="set-up-a-nuget-feed"></a>Set up a NuGet feed
+## <a name="set-up-a-nuget-feed"></a>NuGet-hírcsatorna beállítása
 
-Add a [package reference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) for your dependency in the `*.csproj` file under the `PackageReference` node. Példa:
+Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) a függőséghez a `PackageReference` csomópont alatt található `*.csproj` fájlban. Például:
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ Add a [package reference](https://docs.microsoft.com/nuget/consume-packages/pack
 </ItemGroup>
 ```
 
-Create a [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) file in the project folder and set the `packageSources` and `packageSourceCredentials` sections for your NuGet feed. The `packageSources` section contains your feed url, which must be accessible from your AKS cluster. The `packageSourceCredentials` are the credentials for accessing the feed. Példa:
+Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és állítsa be a NuGet-csatornához tartozó `packageSources` és `packageSourceCredentials` szakaszt. Az `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. A `packageSourceCredentials` a hírcsatorna eléréséhez szükséges hitelesítő adatok. Például:
 
 ```xml
 <packageSources>
@@ -46,17 +46,17 @@ Create a [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-
 </packageSourceCredentials>
 ```
 
-Update your Dockerfiles to copy the `NuGet.Config` file to the image. Példa:
+Frissítse a Dockerfiles, és másolja a `NuGet.Config` fájlt a rendszerképbe. Például:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
 ```
 
 > [!TIP]
-> On Windows, `NuGet.Config`, `Nuget.Config`, and `nuget.config` all works as valid file names. On Linux, only `NuGet.Config` is a valid file name for this file. Since Azure Dev Spaces uses Docker and Linux, this file must be named `NuGet.Config`. You can fix the naming manually or by running `dotnet restore --configfile nuget.config`.
+> Windows, `NuGet.Config`, `Nuget.Config`és `nuget.config` minden ugyanúgy működik, mint az érvényes fájlnevek. Linux rendszeren csak a fájl `NuGet.Config` érvényes fájlnév. Mivel az Azure dev Spaces a Docker és a Linux szolgáltatást használja, a fájlnak `NuGet.Config`nevűnek kell lennie. Az elnevezést manuálisan vagy a `dotnet restore --configfile nuget.config`futtatásával is kijavíthatja.
 
 
-If you are using Git, you should not have the credentials for your NuGet feed in version control. Add `NuGet.Config` to the `.gitignore` for your project so that the `NuGet.Config` file is not added to version control. Azure Dev Spaces will needs this file during the container image build process, but by default, it respects the rules defined in `.gitignore` and `.dockerignore` during synchronization. To change the default and allow Azure Dev Spaces to synchronize the `NuGet.Config` file, update the `azds.yaml` file:
+Ha a git-t használja, nem kell a NuGet-csatornához tartozó hitelesítő adatokkal rendelkeznie. Adja hozzá a `NuGet.Config`t a projekt `.gitignore`hoz, hogy a `NuGet.Config`-fájl ne legyen hozzáadva a verziókövetés számára. Az Azure dev Spaces-nek szüksége lesz erre a fájlra a tároló képfordítási folyamata során, de alapértelmezés szerint tiszteletben tartja a szinkronizálás során `.gitignore` és `.dockerignore`ban meghatározott szabályokat. Ha módosítani szeretné az alapértelmezett értéket, és engedélyezi az Azure dev Spaces számára a `NuGet.Config` fájl szinkronizálását, frissítse a `azds.yaml` fájlt:
 
 ```yaml
 build:
@@ -65,10 +65,10 @@ ignore:
 - "!NuGet.Config"
 ```
 
-If you are not using Git, you can skip this step.
+Ha nem a git-t használja, kihagyhatja ezt a lépést.
 
-The next time you run `azds up` or hit `F5` in Visual Studio Code or Visual Studio, Azure Dev Spaces will synchronize the `NuGet.Config` file use it to install package dependencies.
+Amikor legközelebb futtatja `azds up` vagy megüt `F5` a Visual Studio Code-ban vagy a Visual Studióban, az Azure dev Spaces szinkronizálja a `NuGet.Config` fájlt a csomagok függőségeinek telepítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Learn more about [NuGet and how it works](https://docs.microsoft.com/nuget/what-is-nuget).
+További információ a [NuGet és működéséről](https://docs.microsoft.com/nuget/what-is-nuget).

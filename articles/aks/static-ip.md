@@ -1,6 +1,6 @@
 ---
-title: Use a static IP address with the Azure Kubernetes Service (AKS) load balancer
-description: Learn how to create and use a static IP address with the Azure Kubernetes Service (AKS) load balancer.
+title: Statikus IP-cím használata az Azure Kubernetes szolgáltatás (ak) terheléselosztó használatával
+description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,23 +14,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325444"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Use a static public IP address with the Azure Kubernetes Service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím használata az Azure Kubernetes szolgáltatással (ak) terheléselosztó
 
-By default, the public IP address assigned to a load balancer resource created by an AKS cluster is only valid for the lifespan of that resource. If you delete the Kubernetes service, the associated load balancer and IP address are also deleted. If you want to assign a specific IP address or retain an IP address for redeployed Kubernetes services, you can create and use a static public IP address.
+Alapértelmezés szerint egy AK-fürt által létrehozott terheléselosztó-erőforráshoz hozzárendelt nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
 
-This article shows you how to create a static public IP address and assign it to your Kubernetes service.
+Ez a cikk bemutatja, hogyan hozhat létre statikus nyilvános IP-címet, és hogyan rendelheti hozzá a Kubernetes szolgáltatáshoz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-This article covers using a *Standard* SKU IP with a *Standard* SKU load balancer. For more information, see [IP address types and allocation methods in Azure][ip-sku].
+Ez a cikk a standard *SKU IP* *standard* SKU Load Balancer használatával történő használatát ismerteti. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban][ip-sku]című témakörben talál.
 
-## <a name="create-a-static-ip-address"></a>Create a static IP address
+## <a name="create-a-static-ip-address"></a>Statikus IP-cím létrehozása
 
-Create a static public IP address with the [az network public ip create][az-network-public-ip-create] command. The following creates a static IP resource named *myAKSPublicIP* in the *myResourceGroup* resource group:
+Hozzon létre egy statikus nyilvános IP-címet az az [Network Public IP Create][az-network-public-ip-create] paranccsal. A következő létrehoz egy *myAKSPublicIP* nevű statikus IP-erőforrást a *myResourceGroup* erőforráscsoporthoz:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -41,9 +41,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> If you are using a *Basic* SKU load balancer in your AKS cluster, use *Basic* for the *sku* parameter when defining a public IP. Only *Basic* SKU IPs work with the *Basic* SKU load balancer and only *Standard* SKU IPs work with *Standard* SKU load balancers. 
+> Ha *alapszintű* SKU Load balancert használ az AK-fürtben, az *alapszintű* érték használata a nyilvános IP-cím definiálásakor a *SKU* paraméter esetében. Csak az *Alapszintű* SKU IP-címei működnek az *alapszintű* SKU Load balancerben, és csak a *standard* SKU IP-címei működnek a *standard* SKU Load balancerekkel. 
 
-The IP address is displayed, as shown in the following condensed example output:
+Az IP-cím jelenik meg, ahogy az a következő tömörített példában látható:
 
 ```json
 {
@@ -55,7 +55,7 @@ The IP address is displayed, as shown in the following condensed example output:
 }
 ```
 
-You can later get the public IP address using the [az network public-ip list][az-network-public-ip-list] command. Specify the name of the node resource group and public IP address you created, and query for the *ipAddress* as shown in the following example:
+Később lekérheti a nyilvános IP-címet az az [Network Public-IP List][az-network-public-ip-list] paranccsal. Adja meg a létrehozott csomópont-erőforráscsoport és nyilvános IP-cím nevét, és az *IP* -cím lekérdezését az alábbi példában látható módon:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -63,9 +63,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Create a service using the static IP address
+## <a name="create-a-service-using-the-static-ip-address"></a>Szolgáltatás létrehozása a statikus IP-cím használatával
 
-Before creating a service, ensure the service principal used by the AKS cluster has delegated permissions to the other resource group. Példa:
+A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AK-fürt által használt egyszerű szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz. Például:
 
 ```azurecli-interactive
 az role assignment create \
@@ -74,7 +74,7 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-To create a *LoadBalancer* service with the static public IP address, add the `loadBalancerIP` property and the value of the static public IP address to the YAML manifest. Create a file named `load-balancer-service.yaml` and copy in the following YAML. Provide your own public IP address created in the previous step. The following example also sets the annotation to the resource group named *myResourceGroup*. Provide your own resource group name.
+Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy `load-balancer-service.yaml` nevű fájlt, és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup*nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Create the service and deployment with the `kubectl apply` command.
+Hozza létre a szolgáltatást és az üzembe helyezést az `kubectl apply` paranccsal.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,13 +100,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-If the static IP address defined in the *loadBalancerIP* property of the Kubernetes service manifest does not exist, or has not been created in the node resource group and no additional delegations configured, the load balancer service creation fails. To troubleshoot, review the service creation events with the [kubectl describe][kubectl-describe] command. Provide the name of the service as specified in the YAML manifest, as shown in the following example:
+Ha a Kubernetes szolgáltatás jegyzékfájljának *loadBalancerIP* tulajdonságában definiált statikus IP-cím nem létezik, vagy nem lett létrehozva a csomópont-erőforráscsoporthoz, és nincs további delegálás konfigurálva, a terheléselosztó szolgáltatás létrehozása sikertelen lesz. A hibák megoldásához tekintse át a szolgáltatás-létrehozási eseményeket a [kubectl leíró][kubectl-describe] paranccsal. Adja meg a szolgáltatás nevét a YAML jegyzékfájlban megadott módon, az alábbi példában látható módon:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Information about the Kubernetes service resource is displayed. The *Events* at the end of the following example output indicate that the *user supplied IP Address was not found*. In these scenarios, verify that you have created the static public IP address in the node resource group and that the IP address specified in the Kubernetes service manifest is correct.
+Megjelenik a Kubernetes szolgáltatás erőforrásával kapcsolatos információ. Az alábbi példa kimenetének végén lévő *események* azt jelzik, hogy a *felhasználó által megadott IP-cím nem található*. Ezekben a forgatókönyvekben ellenőrizze, hogy a csomópont erőforráscsoporthoz létrehozta-e a statikus nyilvános IP-címet, és hogy a Kubernetes szolgáltatás jegyzékfájljában megadott IP-cím helyes-e.
 
 ```
 Name:                     azure-load-balancer
@@ -130,9 +130,9 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-For additional control over the network traffic to your applications, you may want to instead [create an ingress controller][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
+Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

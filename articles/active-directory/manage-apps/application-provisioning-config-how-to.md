@@ -52,6 +52,6 @@ Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory hasz
 
 A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ide tartozik a "megfelelő tulajdonság" beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál. Az attribútumok hozzárendelésével kapcsolatos további információkért tekintse meg a *következő lépések* hivatkozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az SaaS-alkalmazások felhasználói kiépítési attribútum-leképezésének testreszabása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

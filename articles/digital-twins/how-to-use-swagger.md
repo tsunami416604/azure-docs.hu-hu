@@ -1,6 +1,6 @@
 ---
-title: How to use reference Swagger documentation - Azure Digital Twins | Microsoft Docs
-description: Understanding how to use Azure Digital Twins Swagger reference documentation.
+title: Útmutató a hivatkozási felvágási dokumentáció használatához – Azure digitális Twins | Microsoft Docs
+description: Az Azure Digital Twins hencegő dokumentációjának használatának ismertetése.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,118 +16,118 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456982"
 ---
-# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger reference documentation
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure digitális ikrek – dokumentáció
 
-Each provisioned Azure Digital Twins instance includes its own automatically generated Swagger reference documentation.
+Minden egyes kiépített Azure-beli digitális Twins-példány magában foglalja a saját automatikusan generált hencegő dokumentációját.
 
-[Swagger](https://swagger.io/), or [OpenAPI](https://www.openapis.org/), unites complex API information into an interactive and language-agnostic reference resource. Swagger provides critical reference material about which JSON payloads, HTTP methods, and specific endpoints to use to perform operations against an API.
+A [hencegés](https://swagger.io/)vagy a [OpenAPI](https://www.openapis.org/)összetett API-információkat egyesít egy interaktív és nyelv – agnosztikus hivatkozási erőforrásba. A hencegés kritikus fontosságú segédanyagot biztosít a JSON-adattartalom, a HTTP-metódusok és az API-k elleni műveletek végrehajtásához használható végpontok számára.
 
-## <a name="swagger-summary"></a>Swagger summary
+## <a name="swagger-summary"></a>Hencegés összegzése
 
-Swagger provides an interactive summary of your API, which includes:
+A hencegés interaktív összefoglalást biztosít az API-ról, amely a következőket tartalmazza:
 
-* API and object model information.
-* REST API endpoints that specify the required request payloads, headers, parameters, context paths, and HTTP methods.
-* Testing of API functionalities.
-* Example response information used to validate and confirm HTTP responses.
-* Error code information.
+* API-és objektummodell-információk.
+* REST API végpontok, amelyek meghatározzák a szükséges kérelmek hasznos adatait, fejléceit, paramétereit, környezeti elérési útját és HTTP-metódusait.
+* Az API-funkciók tesztelése.
+* Példa a HTTP-válaszok érvényesítésére és megerősítésére szolgáló válaszokra.
+* Hibakód adatai.
 
-Swagger is a convenient tool to assist with development and testing calls made to the Azure Digital Twins Management APIs.
+A hencegés egy kényelmes eszköz, amely segítséget nyújt az Azure digitális Twins felügyeleti API-k fejlesztéséhez és teszteléséhez.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Leírások
 
-The automatically generated Swagger reference material supplies a quick overview of important concepts, available Management API endpoints, and a description of each object model to assist development and testing.
+Az automatikusan generált hencegő anyagminta gyors áttekintést nyújt a fontos fogalmakról, az elérhető felügyeleti API-végpontokról, valamint az egyes objektummodell-modellekről a fejlesztés és a tesztelés elősegítése érdekében.
 
-A concise summary describes the API.
+A tömör összefoglalás leírja az API-t.
 
-[![Swagger summary and API overview information](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![hencegés összegzése és API-áttekintési információk](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
-Management API object models are also listed.
+A felügyeleti API-objektumok modelljei is fel vannak sorolva.
 
-[![Swagger models listed at bottom of Swagger UI](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[a hencegő felhasználói felület alján felsorolt fel![i modellek](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
-You can select each listed object model for a more detailed summary of key attributes.
+A főbb attribútumok részletesebb összefoglalásához kiválaszthatja az egyes felsorolt objektummodell-modelleket.
 
-[![Swagger models expanded to see contents of models](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[a ![a modellek tartalmának megjelenítéséhez kibővített hencegő modelleket](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-The generated Swagger object models are convenient to see all available Azure Digital Twins [objects and APIs](./concepts-objectmodel-spatialgraph.md). Developers can use this resource when they build solutions on Azure Digital Twins.
+A létrehozott hencegő objektumok modelljei kényelmesek az összes elérhető Azure digitális Twins [-objektum és API](./concepts-objectmodel-spatialgraph.md)megjelenítéséhez. A fejlesztők használhatják ezt az erőforrást, amikor az Azure Digital Twins megoldásait építenek.
 
-## <a name="endpoint-summary"></a>Endpoint summary
+## <a name="endpoint-summary"></a>Végpont összefoglalása
 
-Swagger also provides a thorough overview of all endpoints that compose the Management APIs.
+A hencegés emellett részletes áttekintést nyújt a felügyeleti API-kat alkotó összes végpontról.
 
-Each listed endpoint also includes the required request information, such as the:
+A felsorolt végpontok a kért információkat is tartalmazzák, például a következőket:
 
-* Required parameters.
-* Required parameter data types.
-* HTTP method to access the resource.
+* Kötelező paraméterek.
+* A kötelező paraméter adattípusai.
+* Az erőforrás eléréséhez használt HTTP-metódus.
 
-[![Swagger endpoints displayed in Swagger UI](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[a hencegő felhasználói felületen megjelenő ![hencegő végpontok](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-To see a more detailed overview, select each resource.
+Ha részletesebb áttekintést szeretne látni, válassza ki az egyes erőforrásokat.
 
-## <a name="use-swagger-to-test-endpoints"></a>Use Swagger to test endpoints
+## <a name="use-swagger-to-test-endpoints"></a>A végpontok tesztelése a hencegés használatával
 
-One of the powerful functionalities Swagger provides is the ability to test an API endpoint directly through the documentation UI.
+Az egyik hatékony funkció, amely lehetővé teszi az API-végpontok közvetlen tesztelését a dokumentációs felhasználói felületen.
 
-After you select a specific endpoint, you see **Try it out**.
+Egy adott végpont kiválasztása után **kipróbálhatja a kipróbálást**.
 
-[![Swagger Try it out button](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![hencegés kipróbálása gomb](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-Expand that section to bring up input fields for each required and optional parameter. Enter the correct values, and select **Execute**.
+Bontsa ki a szakaszt, hogy minden szükséges és választható paraméterhez bevigye a beviteli mezőket. Adja meg a helyes értékeket, majd kattintson a **végrehajtás**gombra.
 
-[![Swagger Try it out result example](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![kipróbálni az eredmény példáját](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
-After you execute the test, you can validate the response data.
+A teszt végrehajtása után ellenőrizheti a válaszokat.
 
-## <a name="swagger-response-data"></a>Swagger response data
+## <a name="swagger-response-data"></a>Hencegő válaszok adatvédelme
 
-Each listed endpoint also includes response body data to validate your development and tests. These examples include the status codes and JSON you want to see for successful HTTP requests.
+A felsorolt végpontok a válasz törzsének adatait is tartalmazzák a fejlesztés és a tesztek ellenőrzéséhez. Ilyenek például a sikeres HTTP-kérésekhez használni kívánt állapotkódok és JSON-kódok.
 
-[![Swagger JSON response example](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[Példa ![hencegő JSON-válaszra](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
-The examples also include error codes to help debug or improve failing tests.
+A példák olyan hibakódokat is tartalmaznak, amelyek segítenek a hibakeresésben vagy a sikertelen tesztek tökéletesítésében.
 
-## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 authorization
+## <a name="swagger-oauth-20-authorization"></a>Hencegő OAuth 2,0-engedélyezés
 
 > [!NOTE]
-> * The user principal that created the Azure Digital Twins resource will have a Space Administrator role assignment and will be able to create additional role assignments for other users. Such users and their roles can be authorized to call the APIs.
+> * Az Azure Digital Twins-erőforrást létrehozó felhasználói fióknak van egy hely-rendszergazdai szerepkör-hozzárendelése, és további szerepkör-hozzárendeléseket is létrehozhat más felhasználók számára. Az ilyen felhasználók és szerepköreik az API-k meghívására is engedélyezhetők.
 
-1. Follow the steps in [this quickstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) to create and configure an Azure AD application. Alternatively, you can reuse an existing app registration.
+1. Kövesse az [ebben](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) a rövid útmutatóban található lépéseket egy Azure ad-alkalmazás létrehozásához és konfigurálásához. Azt is megteheti, hogy újból felhasznál egy meglévő alkalmazás-regisztrációt.
 
-1. Add the following **Redirect url** to your Azure AD app registration:
+1. Adja hozzá a következő **átirányítási URL-címet** az Azure ad-alkalmazás regisztrálásához:
 
-    [![Register Swagger redirect url in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
+    [a HRE-ben lévő hencegő átirányítási URL-cím ![](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Név  | Csere erre | Példa |
+    | Name (Név)  | Csere erre | Példa |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Your Management REST API documentation URL found in the portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | A felügyeleti REST API dokumentációjának URL-címe megtalálható a portálon  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Copy the **Client ID** of your Azure AD app.
+1. Másolja az Azure AD-alkalmazás **ügyfél-azonosítóját** .
 
-After completing the Azure Active Directory registration:
+A Azure Active Directory regisztrációjának befejezése után:
 
-1. Select the **Authorize** button on your swagger page.
+1. Kattintson az **Engedélyezés** gombra a hencegő oldalon.
 
-    [![Select the Swagger authorize button](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![válassza a hencegés engedélyezése gombot](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Paste the application ID into the **client_id** field.
+1. Illessze be az alkalmazás AZONOSÍTÓját a **client_id** mezőbe.
 
-    [![Swagger client_id field](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![hencegés client_id mező](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. You will then be redirected to the following success modal.
+1. Ezt követően a rendszer átirányítja a következő sikeres modális állapotba.
 
-    [![Swagger redirect modal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![a hencegő átirányítási modális](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-To learn more about interactively testing requests protected by OAuth 2.0, see the [official documentation](https://swagger.io/docs/specification/authentication/oauth2/).
+Ha többet szeretne megtudni a OAuth 2,0 által védett, interaktívan tesztelő kérelmekről, tekintse meg a [hivatalos dokumentációt](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- To read more about Azure Digital Twins object models and the spatial intelligence graph, read [Understand Azure Digital Twins object models](./concepts-objectmodel-spatialgraph.md).
+- Ha többet szeretne megtudni az Azure Digital Twins Object models és a térbeli intelligencia gráfról, olvassa el a következőt: az [Azure digitális Twins Object models ismertetése](./concepts-objectmodel-spatialgraph.md).
 
-- To learn how to authenticate with your Management API, read [Authenticate with APIs](./security-authenticating-apis.md).
+- Ha szeretné megtudni, hogyan végezhet hitelesítést a felügyeleti API-val, olvassa el [a hitelesítést API](./security-authenticating-apis.md)-kkal című témakört.

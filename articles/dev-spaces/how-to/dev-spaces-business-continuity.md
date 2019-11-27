@@ -6,7 +6,7 @@ ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
+keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
@@ -15,86 +15,86 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327296"
 ---
-# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business continuity and disaster recovery in Azure Dev Spaces
+# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
-## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Review disaster recovery guidance for Azure Kubernetes Service (AKS)
+## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>A vész-helyreállítási útmutatás áttekintése az Azure Kubernetes Service (ak) szolgáltatáshoz
 
-Azure Dev Spaces is a feature of Azure Kubernetes Service (AKS). You should be aware of guidelines for disaster recovery in AKS and consider whether they apply to the AKS clusters that you use for Dev Spaces. For more information, please reference [Best practices for business continuity and disaster recovery in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Az Azure dev Spaces az Azure Kubernetes Service (ak) egyik funkciója. Tisztában kell lennie az AK-beli vész-helyreállítási irányelvekkel, és figyelembe kell venni, hogy azok a fejlesztői tárhelyekhez használt AK-fürtökre vonatkoznak-e. További információ: [ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
 
-## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Enable Dev Spaces on AKS clusters in different regions
+## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Fejlesztői szóközök engedélyezése a különböző régiókban található AK-fürtökön
 
-Enabling Dev Spaces on AKS clusters in different regions allows you to resume using Dev Spaces immediately after an Azure region failure.
+A fejlesztői szóközöknek a különböző régiókban található AK-fürtökön való engedélyezése lehetővé teszi, hogy az Azure-régió meghibásodása után azonnal folytassa a dev Spaces használatát.
 
-For general information about multi-region deployments of AKS, see [Plan for multi-region deployment](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Az AK többrégiós üzembe helyezésével kapcsolatos általános információkért lásd: [a többrégiós telepítés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-For information about deploying an AKS cluster that is compatible with Azure Dev Spaces, see [Create a Kubernetes cluster using Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
+Az Azure dev Spaces szolgáltatással kompatibilis AK-fürtök telepítésével kapcsolatos információkért lásd: [Kubernetes-fürt létrehozása Azure Cloud Shell használatával](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Enable Dev Spaces via the Azure portal
+### <a name="enable-dev-spaces-via-the-azure-portal"></a>A fejlesztői szóközök engedélyezése a Azure Portal használatával
 
-Click the **Dev Spaces** navigation item under the properties of each cluster in the Azure portal. Then choose the option to enable Dev Spaces.
+Kattintson a **dev Spaces** navigációs elemre a Azure Portal egyes fürtjének tulajdonságai alatt. Ezután válassza a fejlesztői szóközök engedélyezésének lehetőségét.
 
-![Enabling Dev Spaces via Azure portal](../media/common/enable-dev-spaces.jpg)
+![A fejlesztői szóközök engedélyezése Azure Portal használatával](../media/common/enable-dev-spaces.jpg)
 
-Repeat this process for each cluster.
+Ismételje meg a folyamatot az egyes fürtökön.
 
-### <a name="enable-dev-spaces-via-the-azure-cli"></a>Enable Dev Spaces via the Azure CLI
+### <a name="enable-dev-spaces-via-the-azure-cli"></a>A dev Spaces használatának engedélyezése az Azure CLI-n keresztül
 
-You can also enable Dev Spaces at the command line:
+A dev Spaces is engedélyezhető a parancssorban:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Deploy your team's baseline to each cluster
+## <a name="deploy-your-teams-baseline-to-each-cluster"></a>A csapat alaptervének üzembe helyezése minden fürtön
 
-When working with Dev Spaces, you typically deploy the entire application to a parent dev space on your Kubernetes cluster. By default, the `default` space is used. The initial deployment includes all services as well as the external resources that those services depend on, such as databases or queues. This is known as the *baseline*. Once you set up a baseline in the parent dev space, you iterate on and debug individual services inside child dev spaces.
+A dev Spaces használata esetén általában a teljes alkalmazást a Kubernetes-fürt szülő-fejlesztői területére telepíti. Alapértelmezés szerint a rendszer a `default` területet használja. A kezdeti üzembe helyezés magában foglalja az összes szolgáltatást, valamint a szolgáltatástól függő külső erőforrásokat, például az adatbázisokat vagy a várólistákat. Ezt az *alaptervnek*nevezzük. Miután beállította az alapkonfigurációt a szülő fejlesztői térben, megismételheti és hibakeresést végezhet a gyermek-fejlesztési tereken belüli egyes szolgáltatásokon.
 
-You should deploy the most recent versions of your baseline set of services to clusters in multiple regions. Updating your baseline services in this manner ensures that you can continue to use Dev Spaces if there is an Azure region failure. For example, if you deploy your baseline via a CI/CD pipeline, modify the pipeline so that it deploys to multiple clusters in different regions.
+Az alapkonfiguráció-készlet legújabb verzióit több régióban lévő fürtökre kell telepítenie. Az alapszolgáltatások frissítése így biztosíthatja, hogy továbbra is használhatja a fejlesztői helyeket, ha van Azure-régió meghibásodása. Ha például egy CI/CD folyamaton keresztül telepíti az alapkonfigurációt, módosítsa úgy a folyamatot, hogy az a különböző régiókban lévő több fürtre legyen telepítve.
 
-## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Select the correct AKS cluster to use for Dev Spaces
+## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Válassza ki a fejlesztői Szóközökhez használandó megfelelő AK-fürtöt
 
-Once you've properly configured a backup cluster running your team's baseline, you can quickly switch over to the backup cluster at any time. Then you can rerun the individual services that you are working on in Dev Spaces.
+Miután megfelelően konfigurált egy biztonsági mentési fürtöt, amely a csapata alapkonfigurációját futtatja, bármikor gyorsan átválthat a tartalék fürtre. Ezután újra futtathatja azokat az egyes szolgáltatásokat, amelyeken dolgozik a fejlesztői terekben.
 
-Select a different cluster with the following CLI command:
+Válasszon másik fürtöt a következő CLI-paranccsal:
 
 ```cmd
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
-You can list the available dev spaces on the new cluster with the following command:
+A következő paranccsal listázhatja az elérhető fejlesztői helyeket az új fürtön:
 
 ```cmd
 azds space list
 ```
 
-You can create a new dev space to work in, or select an existing dev space, with the following command:
+Létrehozhat egy új fejlesztői területet a alkalmazásban, vagy kiválaszthat egy meglévő fejlesztői területet a következő paranccsal:
 
 ```cmd
 azds space select -n <space name>
 ```
 
-After running these commands, the selected cluster and dev space will be used for subsequent CLI operations, and for debugging projects using the Visual Studio Code extension for Azure Dev Spaces.
+A parancsok futtatása után a rendszer a kiválasztott fürtöt és fejlesztési helyet fogja használni a későbbi CLI-műveletekhez, valamint az Azure dev Spaces-hez készült Visual Studio Code-bővítményt használó projektek hibakereséséhez.
 
-If you are using Visual Studio, you can switch the cluster used by an existing project through the following steps:
+Ha a Visual studiót használja, a következő lépésekkel válthat egy meglévő projekt által használt fürtöt:
 
-1. Open your project in Visual Studio.
-1. Right click the project name in Solution Explorer and click **Properties**
-1. In the left pane, click **Debug**
-1. On the Debug properties page, click the **Profile** drop-down list and choose **Azure Dev Spaces**.
-1. Click the **Change** button.
-1. In the dialog that appears, select the AKS cluster that you wish to use. If desired, choose a different dev space to work in, or create a new dev space, by selecting the appropriate option from the **Space** drop-down list.
+1. Nyissa meg a projektet a Visual Studióban.
+1. Kattintson a jobb gombbal a projekt nevére Megoldáskezelő majd kattintson a **Tulajdonságok** elemre.
+1. A bal oldali ablaktáblán kattintson a **hibakeresés** elemre.
+1. A hibakeresés tulajdonságai lapon kattintson a **profil** legördülő listára, és válassza az **Azure dev Spaces**elemet.
+1. Kattintson a **módosítás** gombra.
+1. A megjelenő párbeszédpanelen válassza ki a használni kívánt AK-fürtöt. Ha kívánja, válasszon egy másik fejlesztői helyet a működéséhez, vagy hozzon létre egy új fejlesztői területet a megfelelő beállítás kiválasztásával a **hely** legördülő listából.
 
-Once you have selected the correct cluster and space, you can press F5 to run the service in Dev Spaces.
+Miután kiválasztotta a megfelelő fürtöt és területet, az F5 billentyű lenyomásával futtathatja a szolgáltatást a dev Spaces szolgáltatásban.
 
-Repeat these steps for any other projects configured to use the original cluster.
+Ismételje meg ezeket a lépéseket minden más, az eredeti fürt használatára konfigurált projekt esetében.
 
-## <a name="access-a-service-on-a-backup-cluster"></a>Access a service on a backup cluster
+## <a name="access-a-service-on-a-backup-cluster"></a>Szolgáltatás elérése egy tartalék fürtön
 
-If you have configured your service to use a public DNS name, then the service will have a different URL if you run it on a backup cluster. Public DNS names are always in the format `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. If you switch to a different cluster, the cluster GUID and possibly the region will change.
+Ha úgy állította be a szolgáltatást, hogy a nyilvános DNS-nevet használja, akkor a szolgáltatás egy másik URL-címmel fog rendelkezni, ha egy biztonsági mentési fürtön futtatja. A nyilvános DNS-neveket mindig `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`formátumban kell megadni. Ha másik fürtre vált, a fürt GUID azonosítója és valószínűleg a régió módosul.
 
-Dev Spaces always shows the correct URL for the service when running `azds up`, or in the Output window in Visual Studio under **Azure Dev Spaces**.
+A dev Spaces mindig a szolgáltatás helyes URL-címét jeleníti meg a `azds up`futtatásakor, vagy a Visual Studióban, az **Azure dev Spaces**szakaszban található output (kimenet) ablakban.
 
-You can also find the URL by running the `azds list-uris` command:
+Az URL-címet a `azds list-uris` parancs futtatásával is megtalálhatja:
 ```
 $ azds list-uris
 Uri                                                     Status
@@ -102,4 +102,4 @@ Uri                                                     Status
 http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
-Use this URL when accessing the service.
+Használja ezt az URL-címet a szolgáltatáshoz való hozzáféréskor.

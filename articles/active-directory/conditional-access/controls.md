@@ -1,6 +1,6 @@
 ---
-title: Access controls in Azure Active Directory Conditional Access
-description: Learn how access controls in Azure Active Directory Conditional Access work.
+title: Hozzáférés-vezérlés Azure Active Directory feltételes hozzáféréshez
+description: Ismerje meg, hogyan működik a hozzáférés-vezérlés a Azure Active Directory feltételes hozzáférésben.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,102 +18,102 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380813"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
+A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. A feltételes hozzáférési szabályzatban megadhatja a választ ("ezt") a szabályzat aktiválásának okáról ("Ha ez megtörténik").
 
-![Vezérlés](./media/controls/10.png)
+![Szabályozás](./media/controls/10.png)
 
-In the context of Conditional Access,
+A feltételes hozzáférés kontextusában
 
-- "**When this happens**" is called **conditions**
-- "**Then do this**" is called **access controls**
+- "**Ha ez történik**", az ún. **feltételek**
+- "**Ezt követően ezt**" hozzáférés- **vezérlésnek** nevezzük
 
-The combination of a condition statement with your controls represents a Conditional Access policy.
+Egy feltétel-utasítás és a vezérlők kombinációja feltételes hozzáférési szabályzatot jelöl.
 
-![Vezérlés](./media/controls/61.png)
+![Szabályozás](./media/controls/61.png)
 
-Each control is either a requirement that must be fulfilled by the person or system signing in, or a restriction on what the user can do after signing in.
+Mindegyik vezérlő olyan követelmény, amelyet a személynek vagy a rendszernek be kell tartania, vagy meg kell határoznia, hogy mit tehet a felhasználó a bejelentkezés után.
 
-There are two types of controls:
+Két típusú vezérlő létezik:
 
-- **Grant controls** - To gate access
-- **Session controls** - To restrict access within a session
+- **Vezérlőelemek engedélyezése** a Gate-hozzáféréshez
+- **Munkamenet-vezérlők** – a hozzáférés korlátozása egy munkameneten belül
 
-This topic explains the various controls that are available in Azure AD Conditional Access. 
+Ez a témakör az Azure AD feltételes hozzáférésben elérhető különböző vezérlőket ismerteti. 
 
-## <a name="grant-controls"></a>Grant controls
+## <a name="grant-controls"></a>Vezérlők megadása
 
-With grant controls, you can either block access altogether or allow access with additional requirements by selecting the desired controls. For multiple controls, you can require:
+A Grant Controls segítségével a kívánt vezérlők kiválasztásával letilthatja a hozzáférést, vagy további követelményekkel is engedélyezheti a hozzáférést. Több vezérlő esetén a következőket kérheti:
 
-- All selected controls to be fulfilled (*AND*)
-- One selected control to be fulfilled (*OR*)
+- Az összes kijelölt vezérlő (*és*)
+- Egy kiválasztott vezérlőelem teljesítése (*vagy*)
 
-![Vezérlés](./media/controls/18.png)
+![Szabályozás](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
-You can use this control to require multi-factor authentication to access the specified cloud app. This control supports the following multi-factor providers:
+Ezzel a vezérlőelemmel megkövetelheti a többtényezős hitelesítés használatát a megadott felhőalapú alkalmazás eléréséhez. Ez a vezérlő a következő multi-Factor providerket támogatja:
 
 - Azure Multi-Factor Authentication
-- An on-premises multi-factor authentication provider, combined with Active Directory Federation Services (AD FS).
+- Helyszíni multi-Factor Authentication-szolgáltató, Active Directory összevonási szolgáltatások (AD FS) (AD FS) kombinálva.
 
-Using multi-factor authentication helps protect resources from being accessed by an unauthorized user who might have gained access to the primary credentials of a valid user.
+A többtényezős hitelesítés használatával megvédheti az erőforrásokat egy olyan jogosulatlan felhasználó számára, aki egy érvényes felhasználó elsődleges hitelesítő adataihoz tudott hozzáférni.
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
-You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). Requiring a device to be marked as compliant is one option you have to limit access to managed devices. A device can be marked as compliant by Intune (for any device OS) or by your third-party MDM system for Windows 10 devices. Third-party MDM systems for device OS types other than Windows 10 are not supported. 
+Konfigurálhatja az eszközön alapuló feltételes hozzáférési szabályzatokat. Az eszköz alapú feltételes hozzáférési szabályzat célja, hogy csak a [felügyelt eszközökről](require-managed-devices.md)engedélyezze a kiválasztott felhőalapú alkalmazásokhoz való hozzáférést. Az eszköz megfelelőként való megjelölésének megkövetelése az egyik lehetőség, hogy korlátozza a hozzáférést a felügyelt eszközökhöz. Az eszközök az Intune (bármilyen eszköz operációs rendszer esetén) vagy a külső gyártótól származó, Windows 10-es eszközökhöz tartozó MDM-rendszerek által megfelelőként jelölhetők meg. A harmadik féltől származó MDM rendszerek nem Windows 10 rendszerű eszközökön használhatók. 
 
-Your device needs to be registered to Azure AD before it can be marked as compliant. To register a device, you have three options: 
+Az eszköznek regisztrálva kell lennie az Azure AD-ben, mielőtt a megfelelőnek lenne megjelölve. Az eszközök regisztrálásához három lehetőség közül választhat: 
 
 - Azure AD-ben regisztrált eszközök
 - Azure AD-hez csatlakoztatott eszközök  
 - Hibrid Azure AD-csatlakoztatott eszközök
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Ezt a három lehetőséget a cikk a [Mi az eszköz identitása](../devices/overview.md) című cikkben tárgyalja?
 
-For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
+További információkért lásd: [felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](require-managed-devices.md).
 
-### <a name="hybrid-azure-ad-joined-device"></a>Hybrid Azure AD joined device
+### <a name="hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-hez csatlakoztatott eszköz
 
-Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. This requirement refers to Windows desktops, laptops, and enterprise tablets that are joined to an on-premises Active Directory. If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
+Egy hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése egy másik lehetőség, amely az eszközön alapuló feltételes hozzáférési szabályzatokat konfigurálhatja. Ez a követelmény olyan Windows rendszerű asztali számítógépekre, laptopokra és vállalati tablettákra vonatkozik, amelyek egy helyszíni Active Directoryhoz vannak csatlakoztatva. Ha ez a beállítás be van jelölve, a feltételes hozzáférési szabályzat hozzáférést biztosít a helyszíni Active Directoryhoz és a Azure Active Directoryhoz csatlakoztatott eszközökhöz való hozzáférési kísérletekhez.  
 
-For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
+További információ: [Azure Active Directory eszközön alapuló feltételes hozzáférési házirendek beállítása](require-managed-devices.md).
 
-### <a name="approved-client-app"></a>Approved client app
+### <a name="approved-client-app"></a>Jóváhagyott ügyfélalkalmazás
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Mivel az alkalmazottak a személyes és a munkahelyi feladatokhoz egyaránt használják a mobileszközök használatát, érdemes lehet az eszköz használatával hozzáférni a vállalati adatokhoz, még abban az esetben is, ha azokat nem Ön felügyeli.
+Az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy) segítségével megvédheti vállalata adatait a mobileszköz-kezelési (Mdm) megoldástól függetlenül.
 
-With approved client apps, you can require a client app that attempts to access your cloud apps to support [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app. A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). For a list of supported approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
+A jóváhagyott ügyfélalkalmazások esetében olyan ügyfélalkalmazás szükséges, amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy)támogatásához. Például korlátozhatja az Exchange Online-hoz való hozzáférést az Outlook alkalmazáshoz. A jóváhagyott ügyfélalkalmazások használatát igénylő feltételes hozzáférési szabályzatot az [alkalmazás-alapú feltételes hozzáférési szabályzatnak](app-based-conditional-access.md)is nevezzük. A támogatott jóváhagyott ügyfélalkalmazások listáját lásd: az ügyfél- [alkalmazásra vonatkozó jóváhagyott követelmény](technical-reference.md#approved-client-app-requirement).
 
-### <a name="app-protection-policy-preview"></a>App protection policy (preview)
+### <a name="app-protection-policy-preview"></a>App Protection-házirend (előzetes verzió)
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Mivel az alkalmazottak a személyes és a munkahelyi feladatokhoz egyaránt használják a mobileszközök használatát, érdemes lehet az eszköz használatával hozzáférni a vállalati adatokhoz, még abban az esetben is, ha azokat nem Ön felügyeli.
+Az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy) segítségével megvédheti vállalata adatait a mobileszköz-kezelési (Mdm) megoldástól függetlenül.
 
-With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
+Az alkalmazás-védelmi szabályzattal korlátozhatja az Azure AD-be jelentett ügyfélalkalmazások hozzáférését az [Intune app Protection-házirendekkel](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja az Exchange Online-hoz való hozzáférést az Intune app Protection-szabályzattal rendelkező Outlook alkalmazáshoz. Az alkalmazás-védelmi szabályzatot igénylő feltételes hozzáférési szabályzatok [alkalmazás-védelmi alapú feltételes hozzáférési szabályzatként](app-protection-based-conditional-access.md)is ismertek. 
 
-Your device must be registered to Azure AD before an application can be marked as policy protected.
+Az eszköznek regisztrálva kell lennie az Azure AD-ben ahhoz, hogy egy alkalmazás védett házirendként legyen megjelölve.
 
-For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
+A támogatott szabályzatok által védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](technical-reference.md#app-protection-policy-requirement).
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-You can require a user in your tenant to consent to the terms of use before being granted access to a resource. As an administrator, you can configure and customize terms of use by uploading a PDF document. If a user falls in scope of this control access to an application is only granted if the terms of use have been agreed.
+Megkövetelheti, hogy a bérlő felhasználója beleférjen a használati feltételekbe, mielőtt hozzáférést kap egy erőforráshoz. Rendszergazdaként a használati feltételek konfigurálását és testreszabását PDF-dokumentum feltöltésével végezheti el. Ha a felhasználó beletartozik az alkalmazáshoz való hozzáféréshez, csak akkor kap hozzáférést, ha a használati feltételek megegyeznek.
 
-## <a name="custom-controls-preview"></a>Custom controls (preview)
+## <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
-Custom controls are a capability of the Azure Active Directory Premium P1 edition. When using custom controls, your users are redirected to a compatible service to satisfy further requirements outside of Azure Active Directory. To satisfy this control, a user’s browser is redirected to the external service, performs any required authentication or validation activities, and is then redirected back to Azure Active Directory. Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
+Az egyéni vezérlők a prémium szintű Azure Active Directory P1 kiadás egyik funkciója. Egyéni vezérlők használatakor a rendszer átirányítja a felhasználókat egy kompatibilis szolgáltatáshoz, hogy az Azure Active Directoryon kívül további követelményeket is kielégítse. Ennek a vezérlőnek a kielégítéséhez a rendszer átirányítja a felhasználó böngészőjét a külső szolgáltatáshoz, végrehajtja a szükséges hitelesítési vagy ellenőrzési tevékenységeket, majd átirányítja a Azure Active Directoryre. Azure Active Directory ellenőrzi a választ, és ha a felhasználó hitelesítése vagy ellenőrzése sikeres volt, a felhasználó folytatja a feltételes hozzáférés folyamatát.
 
-These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
+Ezek a vezérlők lehetővé teszik bizonyos külső vagy egyéni szolgáltatások használatát feltételes hozzáférés-vezérlésként, és általában kibővítik a feltételes hozzáférés képességeit.
 
-Providers currently offering a compatible service include:
+A jelenleg kompatibilis szolgáltatást nyújtó szolgáltatók a következők:
 
-- [Duo Security](https://duo.com/docs/azure-ca)
+- [Duo biztonság](https://duo.com/docs/azure-ca)
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
-- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
+- [Pingelési identitás](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
@@ -121,52 +121,52 @@ Providers currently offering a compatible service include:
 - [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
-For more information on those services, contact the providers directly.
+A szolgáltatásokkal kapcsolatos további információkért forduljon közvetlenül a szolgáltatóhoz.
 
-### <a name="creating-custom-controls"></a>Creating custom controls
+### <a name="creating-custom-controls"></a>Egyéni vezérlők létrehozása
 
-To create a custom control, you should first contact the provider that you wish to utilize. Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. At that point, the provider will provide you with a block of data in JSON format. This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
+Egyéni vezérlő létrehozásához először kapcsolatba kell lépnie a használni kívánt szolgáltatóval. Az egyes nem Microsoft-szolgáltatók saját folyamattal és követelményekkel rendelkeznek a szolgáltatás regisztrálásához, előfizetéséhez vagy egyéb részévé tételéhez, és jelezniük kell, hogy a feltételes hozzáféréssel szeretne integrálni. Ezen a ponton a szolgáltató JSON formátumú adatblokkot biztosít Önnek. Ez az információ lehetővé teszi, hogy a szolgáltató és a feltételes hozzáférés együtt működjön a bérlő számára, létrehozza az új vezérlőt, és meghatározza, hogy a feltételes hozzáférés Hogyan állapítható meg, hogy a felhasználók sikeresen végrehajtották-e az ellenőrzést a szolgáltatóval.
 
-Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
+Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely többtényezős hitelesítést igényel, vagy a szerepköröket a Privileged Identity Managerben (PIM) kell megemelni.
 
-Copy the JSON data and then paste it into the related textbox. Do not make any changes to the JSON unless you explicitly understand the change you’re making. Making any change could break the connection between the provider and Microsoft and potentially lock you and your users out of your accounts.
+Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne módosítsa a JSON-t, kivéve, ha explicit módon megértette az Ön által végzett módosítást. A változtatások miatt a szolgáltató és a Microsoft közötti kapcsolat megszakadhat, és előfordulhat, hogy az Ön és a felhasználók is zárolják magukat a fiókból.
 
-The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
+Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Vezérlés](./media/controls/82.png)
+![Szabályozás](./media/controls/82.png)
 
-Clicking **New custom control**, opens a blade with a textbox for the JSON data of your control.  
+Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Vezérlés](./media/controls/81.png)
+![Szabályozás](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Deleting custom controls
+### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
-To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. Once complete:
+Egyéni vezérlő törléséhez először gondoskodnia kell arról, hogy ne legyen használatban semmilyen feltételes hozzáférési házirendben. Ha elkészült:
 
-1. Go to the Custom controls list
-1. Click …  
+1. Ugrás az egyéni vezérlők listára
+1. Kattintson a...  
 1. Válassza a **Törlés** elemet.
 
-### <a name="editing-custom-controls"></a>Editing custom controls
+### <a name="editing-custom-controls"></a>Egyéni vezérlők szerkesztése
 
-To edit a custom control, you must delete the current control and create a new control with the updated information.
+Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és létre kell hoznia egy új vezérlőt a frissített információkkal.
 
-## <a name="session-controls"></a>Session controls
+## <a name="session-controls"></a>Munkamenet-vezérlőelemek
 
-Session controls enable limited experience within a cloud app. The session controls are enforced by cloud apps and rely on additional information provided by Azure AD to the app about the session.
+A munkamenet-vezérlők lehetővé teszik a felhőalapú alkalmazások korlátozott felhasználói élményét. A munkamenet-vezérlőket a Cloud apps kényszeríti, és az Azure AD által az alkalmazással kapcsolatban elérhető további információkra támaszkodik.
 
-![Vezérlés](./media/controls/31.png)
+![Szabályozás](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Use app enforced restrictions
+### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 
-You can use this control to require Azure AD to pass device information to the selected cloud apps. The device information enables the cloud apps to know whether a connection is initiated from a compliant or domain-joined device. This control only supports SharePoint Online and Exchange Online as selected cloud apps. When selected, the cloud app uses the device information to provide users, depending on the device state, with a limited or full experience.
+Ezzel a vezérlővel megkövetelheti, hogy az Azure AD átadja az eszköz adatait a kiválasztott felhőalapú alkalmazásoknak. Az eszköz adatai lehetővé teszik a felhőalapú alkalmazások számára, hogy megismerjék, hogy a kapcsolat kompatibilis vagy tartományhoz csatlakoztatott eszközről kezdeményezhető-e. Ez a vezérlő csak a SharePoint Online-t és az Exchange Online-t támogatja a kiválasztott felhőalapú alkalmazásokként. Ha bejelöli, a felhőalapú alkalmazás az eszköz információi alapján biztosítja a felhasználók számára az eszköz állapotától függően korlátozott vagy teljes körű felhasználói élményt.
 
 További tudnivalókért lásd:
 
-- [Enabling limited access with SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-- [Enabling limited access with Exchange Online](https://aka.ms/owalimitedaccess)
+- [Korlátozott hozzáférés engedélyezése a SharePoint Online-ban](https://aka.ms/spolimitedaccessdocs)
+- [Korlátozott hozzáférés engedélyezése az Exchange Online-ban](https://aka.ms/owalimitedaccess)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

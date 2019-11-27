@@ -1,6 +1,6 @@
 ---
-title: How to manage devices using the Azure portal | Microsoft Docs
-description: Learn how to use the Azure portal to manage devices.
+title: Eszközök kezelése a Azure Portal használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az eszközöket a Azure Portal használatával.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,189 +18,189 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420600"
 ---
-# <a name="manage-device-identities-using-the-azure-portal"></a>Manage device identities using the Azure portal
+# <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
-With device identity management in Azure Active Directory (Azure AD), you can ensure that your users are accessing your resources from devices that meet your standards for security and compliance.
+Az Azure Active Directory (Azure AD) eszköz-identitások kezelésével biztosíthatja, hogy a felhasználók hozzáférhessenek az erőforrásokhoz a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről.
 
 A cikk tartalma:
 
-- Assumes that you are familiar with the [introduction to device identity management in Azure Active Directory](overview.md)
-- Provides you with information about managing your device identities using the Azure AD portal
+- Feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének bevezetését](overview.md)
+- Információt nyújt az eszköz identitásának az Azure AD-portál használatával történő kezeléséről
 
 ## <a name="manage-device-identities"></a>Eszközidentitások kezelése
 
-The Azure AD portal provides you with a central place to manage your device identities. You can get to this place by either using a [direct link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) or by following these manual steps:
+Az Azure AD-portál központi helyet biztosít az eszköz identitásának kezeléséhez. Ezt a helyet a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) használatával vagy a manuális lépések követésével érheti el:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as administrator.
+1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
 
-2. Search for and select **Azure Active Directory** or select it from the **Home** page.
+2. Keresse meg és válassza ki **Azure Active Directory** vagy válassza ki a **kezdőlapon** .
 
-3. In the **Manage** section, click **Devices**.
+3. A **kezelés** szakaszban kattintson az **eszközök**elemre.
 
-   ![Configure device settings](./media/device-management-azure-portal/74.png)
+   ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/74.png)
 
-The **Devices** page enables you to:
+Az **eszközök** lap a következőket teszi lehetővé:
 
-- Configure your device settings
-- Locate devices
-- Perform device identity management tasks
-- Review device-related audit logs  
+- Az eszközbeállítások konfigurálása
+- Eszközök megkeresése
+- Eszközállapot-kezelési feladatok végrehajtása
+- Az eszközhöz kapcsolódó naplók áttekintése  
   
-## <a name="configure-device-settings"></a>Configure device settings
+## <a name="configure-device-settings"></a>Eszközbeállítások konfigurálása
 
-To manage your device identities using the Azure AD portal, your devices need to be either [registered or joined](overview.md) to Azure AD. As an administrator, you can fine-tune the process of registering and joining devices by configuring the device settings.
+Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközöknek [regisztrálva](overview.md) kell lenniük, vagy hozzá kell csatlakozniuk az Azure ad-hez. Rendszergazdaként az eszközbeállítások konfigurálásával részletesen beállíthatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
 
-![Configure device settings](./media/device-management-azure-portal/22.png)
+![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/22.png)
 
-The device settings page enables you to configure:
+Az eszközbeállítások oldalon a következőket konfigurálhatja:
 
-![Manage an Intune device](./media/device-management-azure-portal/21.png)
+![Intune-eszköz kezelése](./media/device-management-azure-portal/21.png)
 
-- **Users may join devices to Azure AD** - This setting enables you to select the users who can register their devices as Azure AD joined devices. The default is **All**.
-
-> [!NOTE]
-> **Users may join devices to Azure AD** setting is only applicable to Azure AD join on Windows 10.
-
-- **Additional local administrators on Azure AD joined devices** - You can select the users that are granted local administrator rights on a device. Users added here are added to the *Device Administrators* role in Azure AD. Global administrators in Azure AD and device owners are granted local administrator rights by default. This option is a premium edition capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
-- **Users may register their devices with Azure AD** - You need to configure this setting to allow Windows 10 personal, iOS, Android, and macOs devices to be registered with Azure AD. If you select **None**, devices are not allowed to register with Azure AD. Enrollment with Microsoft Intune or Mobile Device Management (MDM) for Office 365 requires registration. If you have configured either of these services, **ALL** is selected and **NONE** is not available.
-- **Require Multi-Factor Auth to join devices** - You can choose whether users are required to provide an additional authentication factor to join their device to Azure AD. The default is **No**. We recommend requiring multi-factor authentication when registering a device. Before you enable multi-factor authentication for this service, you must ensure that multi-factor authentication is configured for the users that register their devices. For more information on different Azure multi-factor authentication services, see [getting started with Azure multi-factor authentication](../authentication/concept-mfa-whichversion.md). 
+- A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
 
 > [!NOTE]
-> **Require Multi-Factor Auth to join devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> Előfordulhat, hogy a **felhasználók az Azure ad-be való csatlakoztatáshoz** csak az Azure ad-csatlakozásra vonatkoznak a Windows 10 rendszeren.
 
-- **Maximum number of devices** - This setting enables you to select the maximum number of Azure AD joined or Azure AD registered devices that a user can have in Azure AD. If a user reaches this quota, they are not be able to add additional devices until one or more of the existing devices are removed. The default value is **20**.
+- **További helyi rendszergazdák az Azure ad-hez csatlakoztatott eszközökön** : kiválaszthatja azokat a felhasználókat, akik helyi rendszergazdai jogosultságokat kapnak az eszközön. Az itt hozzáadott felhasználók az Azure AD-ben az *eszköz-rendszergazdák* szerepkörbe kerülnek. A globális rendszergazdák az Azure AD-ben és az eszközök tulajdonosai alapértelmezés szerint helyi rendszergazdai jogosultságokat kapnak. Ez a lehetőség egy prémium kiadású funkció, amely olyan termékeken keresztül érhető el, mint a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS).
+- A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és macOs-eszközök regisztrálását az Azure ad-ben. Ha a **nincs**lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. Az Office 365-hez készült Microsoft Intune vagy mobileszköz-felügyelettel (MDM) való regisztrációhoz regisztráció szükséges. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
+- **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. A különböző Azure multi-Factor Authentication-szolgáltatásokkal kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication első lépései](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
-> **Maximum number of devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> A **többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.
 
-- **Users may sync settings and app data across devices** - By default, this setting is set to **NONE**. Selecting specific users or groups or ALL allows the user’s settings and app data to sync across their Windows 10 devices. Learn more on how sync works in Windows 10.
-This option is a premium capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
+- **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték **20**.
 
-## <a name="locate-devices"></a>Locate devices
+> [!NOTE]
+> **Az eszközök maximális száma** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.
 
-You have two options to locate registered and joined devices:
+- A **felhasználók a beállításokat és az alkalmazásadatok közötti szinkronizálást is megadhatják** – alapértelmezés szerint ez a beállítás a **none**értékre van állítva. Adott felhasználók vagy csoportok kiválasztása esetén a felhasználó beállításai és az alkalmazásadatok szinkronizálása a Windows 10-es eszközökön keresztül végezhető el. További információ a szinkronizálás működéséről a Windows 10 rendszerben.
+Ez a lehetőség olyan prémium szintű funkció, amely a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS) segítségével érhető el.
 
-- **All devices** in the **Manage** section of the **Devices** page  
+## <a name="locate-devices"></a>Eszközök megkeresése
 
-   ![All devices](./media/device-management-azure-portal/41.png)
+A regisztrált és a csatlakoztatott eszközök keresésére két lehetőség áll rendelkezésre:
 
-- **Devices** in the **Manage** section of a **User** page
+- Az **eszközök** lap **kezelés** szakaszában található **összes eszköz**  
 
-   ![All devices](./media/device-management-azure-portal/43.png)
+   ![Minden eszköz](./media/device-management-azure-portal/41.png)
 
-With both options, you can get to a view that:
+- A **felhasználói** oldal **kezelés** szakaszában lévő **eszközök**
 
-- Enables you to search for devices using the display name or device ID as filter.
-- Provides you with detailed overview of registered and joined devices
-- Enables you to perform common device management tasks
+   ![Minden eszköz](./media/device-management-azure-portal/43.png)
 
-![All devices](./media/device-management-azure-portal/51.png)
+Mindkét lehetőséggel megtekintheti a következőket:
+
+- Lehetővé teszi az eszközök keresését a megjelenítendő név vagy az eszköz azonosítója alapján szűrőként.
+- Részletes áttekintést nyújt a regisztrált és csatlakoztatott eszközökről
+- Lehetővé teszi az eszközök általános felügyeleti feladatainak elvégzését
+
+![Minden eszköz](./media/device-management-azure-portal/51.png)
 
 >[!TIP]
 >
->* If you see a device that is "Hybrid Azure AD joined" with a state "Pending" under the REGISTERED column, it indicates that the device has been synchronized from Azure AD connect and is waiting to complete registration from the client. Read more on how to [plan your Hybrid Azure AD join implementation](hybrid-azuread-join-plan.md). Additional information can be found in the article, [Devices frequently asked questions](faq.md).
+>* Ha megjelenik egy "hibrid Azure AD-hez csatlakoztatott" állapotú eszköz, amely a regisztrált oszlopban a "függőben" állapotban van, az azt jelzi, hogy az eszköz szinkronizálva lett az Azure AD-kapcsolattal, és az ügyféltől való regisztráció befejezésére vár. További információ a [hibrid Azure ad-csatlakozás megvalósításának megtervezéséről](hybrid-azuread-join-plan.md). További információt a cikkben, az [eszközök gyakori kérdéseiben](faq.md)találhat.
 >
->   ![Pending devices](./media/device-management-azure-portal/75.png)
+>   ![Függőben lévő eszközök](./media/device-management-azure-portal/75.png)
 >
->* For some iOS devices, the device names containing apostrophes can potentially use different characters that look like apostrophes. So searching for such devices is a little tricky - if you are not seeing search results correctly, ensure that the search string contains matching apostrophe character.
+>* Egyes iOS-eszközök esetében az aposztrófokat tartalmazó eszközök nevei különböző karaktereket használhatnak, amelyek hasonlóak az aposztrófokhoz. Így az ilyen eszközök keresése kicsit trükkös – ha nem látja megfelelően a keresési eredményeket, ügyeljen arra, hogy a keresési karakterlánc a megfelelő aposztróf-karaktert tartalmazza.
 
-## <a name="device-identity-management-tasks"></a>Device identity management tasks
+## <a name="device-identity-management-tasks"></a>Eszközállapot-kezelési feladatok
 
-As a global administrator or cloud device administrator, you can manage the registered or joined devices. Intune Service administrators can:
+Globális rendszergazdaként vagy felhőalapú eszköz-rendszergazdaként felügyelheti a regisztrált vagy csatlakoztatott eszközöket. Az Intune szolgáltatás-rendszergazdák a következőket tehetik:
 
-- Update devices  - Examples are daily operations such as enabling/disabling devices
-- Delete devices – When a device is retired and should be deleted in Azure AD
+- Eszközök frissítése – a példák olyan napi műveletek, mint például az eszközök engedélyezése/letiltása
+- Eszközök törlése – ha egy eszköz ki van vonva, és az Azure AD-ben kell törölni
 
-This section provides you with information about common device identity management tasks.
+Ez a szakasz az eszköz általános identitás-kezelési feladataival kapcsolatos információkat tartalmaz.
 
-### <a name="manage-an-intune-device"></a>Manage an Intune device
+### <a name="manage-an-intune-device"></a>Intune-eszköz kezelése
 
-If you are an Intune administrator, you can manage devices marked as **Microsoft Intune**. If the device is not enrolled with Microsoft Intune the "Manage" option will be greyed out.
+Ha Ön Intune-rendszergazda, akkor a **Microsoft Intuneként**megjelölt eszközöket kezelheti. Ha az eszköz nincs regisztrálva Microsoft Intune a "kezelés" beállítás szürkén jelenik meg.
 
-![Manage an Intune device](./media/device-management-azure-portal/31.png)
+![Intune-eszköz kezelése](./media/device-management-azure-portal/31.png)
 
-### <a name="enable--disable-an-azure-ad-device"></a>Enable / disable an Azure AD device
+### <a name="enable--disable-an-azure-ad-device"></a>Azure AD-eszköz engedélyezése/letiltása
 
-To enable / disable a device, you have two options:
+Az eszközök engedélyezéséhez vagy letiltásához két lehetőség közül választhat:
 
-- The tasks menu ("...") on the **All devices** page
+- A feladatok menü ("...") a **minden eszköz** lapon
 
-   ![Manage an Intune device](./media/device-management-azure-portal/71.png)
+   ![Intune-eszköz kezelése](./media/device-management-azure-portal/71.png)
 
-- The toolbar on the **Devices** page
+- Az **eszközök** lapon lévő eszköztár
 
-   ![Manage an Intune device](./media/device-management-azure-portal/32.png)
+   ![Intune-eszköz kezelése](./media/device-management-azure-portal/32.png)
 
-**Remarks:**
+**Megjegyzéseket tartalmazó**
 
-- You need to be a global administrator or cloud device administrator in Azure AD to enable / disable a device. 
-- Disabling a device prevents a device from successfully authenticating with Azure AD, thereby preventing the device from accessing your Azure AD resources that are guarded by device CA or using your WH4B credentials.
-- Disabling the device will revoke both the Primary Refresh Token (PRT) and any Refresh Tokens (RT) on the device.
+- Az eszközök engedélyezéséhez vagy letiltásához globális rendszergazdai vagy felhőalapú eszköz-rendszergazdának kell lennie az Azure AD-ben. 
+- Az eszköz letiltásával megakadályozható, hogy az eszköz sikeresen hitelesítse az Azure AD-t, így megakadályozva, hogy az eszköz hozzáférjen az eszköz HITELESÍTÉSSZOLGÁLTATÓja által védett Azure AD-erőforrásokhoz vagy a WH4B hitelesítő adataihoz.
+- Ha letiltja az eszközt, az az elsődleges frissítési tokent (PRT) és a frissítési tokeneket (RT) is visszavonja az eszközön.
 
-### <a name="delete-an-azure-ad-device"></a>Delete an Azure AD device
+### <a name="delete-an-azure-ad-device"></a>Azure AD-eszköz törlése
 
-To delete a device, you have two options:
+Egy eszköz törléséhez két lehetőség közül választhat:
 
-- The tasks menu ("...") on the **All devices** page
+- A feladatok menü ("...") a **minden eszköz** lapon
 
-   ![Manage an Intune device](./media/device-management-azure-portal/72.png)
+   ![Intune-eszköz kezelése](./media/device-management-azure-portal/72.png)
 
-- The toolbar on the **Devices** page
+- Az **eszközök** lapon lévő eszköztár
 
-   ![Delete a device](./media/device-management-azure-portal/34.png)
+   ![Eszköz törlése](./media/device-management-azure-portal/34.png)
 
-**Remarks:**
+**Megjegyzéseket tartalmazó**
 
-- You need to be a global administrator or an Intune administrator in Azure AD to delete a device.
-- Deleting a device:
-   - Prevents a device from accessing your Azure AD resources.
-   - Removes all details that are attached to the device, for example, BitLocker keys for Windows devices.  
-   - Represents a non-recoverable activity and is not recommended unless it is required.
+- Egy eszköz törléséhez globális rendszergazdának vagy Intune-rendszergazdának kell lennie az Azure AD-ben.
+- Eszköz törlése:
+   - Megakadályozza, hogy az eszköz hozzáférjen az Azure AD-erőforrásokhoz.
+   - Eltávolítja az eszközhöz csatolt összes adatot, például a BitLocker-kulcsokat a Windows-eszközökhöz.  
+   - Nem helyreállítható tevékenységet jelöl, és nem ajánlott, ha szükséges.
 
-If a device is managed by another management authority (for example, Microsoft Intune), make sure that the device has been wiped / retired before deleting the device in Azure AD. Review how to [manage stale devices](device-management-azure-portal.md) before deleting any devices.
+Ha egy eszközt egy másik felügyeleti hatóság felügyel (például Microsoft Intune), győződjön meg róla, hogy az eszköz törölve lett vagy ki lett vonva, mielőtt törölné az eszközt az Azure AD-ben. Tekintse át, hogyan [kezelheti az elavult eszközöket](device-management-azure-portal.md) az eszközök törlése előtt.
 
-### <a name="view-or-copy-device-id"></a>View or copy device ID
+### <a name="view-or-copy-device-id"></a>Eszköz AZONOSÍTÓjának megtekintése vagy másolása
 
-You can use a device ID to verify the device ID details on the device or using PowerShell during troubleshooting. To access the copy option, click the device.
+Az eszköz AZONOSÍTÓjának használatával ellenőrizheti az eszköz AZONOSÍTÓjának adatait, vagy a PowerShell használatával végezheti el a hibaelhárítást. A másolási lehetőség eléréséhez kattintson az eszközre.
 
-![View a device ID](./media/device-management-azure-portal/35.png)
+![Eszköz AZONOSÍTÓjának megtekintése](./media/device-management-azure-portal/35.png)
   
-### <a name="view-or-copy-bitlocker-keys"></a>View or copy BitLocker keys
+### <a name="view-or-copy-bitlocker-keys"></a>BitLocker-kulcsok megtekintése vagy másolása
 
-You can view and copy the BitLocker keys to help users to recover their encrypted drive. These keys are only available for Windows devices that are encrypted and have their keys stored in Azure AD. You can copy these keys when accessing details of the device.
+Megtekintheti és átmásolhatja a BitLocker-kulcsokat, hogy a felhasználók helyreállítsák a titkosított meghajtókat. Ezek a kulcsok csak a titkosított Windows-eszközökön érhetők el, és a kulcsaikat az Azure AD-ben tárolják. Ezeket a kulcsokat az eszköz adataihoz való hozzáféréskor is másolhatja.
 
-![View BitLocker keys](./media/device-management-azure-portal/36.png)
+![BitLocker-kulcsok megtekintése](./media/device-management-azure-portal/36.png)
 
-To view or copy the BitLocker keys, you need to be either the owner of the device, or a user that has at least one of the following roles assigned:
+A BitLocker-kulcsok megtekintéséhez vagy másolásához az eszköz tulajdonosának kell lennie, vagy egy olyan felhasználónak, amely legalább az alábbi szerepkörök valamelyikével rendelkezik:
 
-- Cloud Device Administrator
+- Felhőalapú eszköz rendszergazdája
 - Globális rendszergazda
-- Helpdesk Administrator
+- Segélyszolgálat rendszergazdája
 - Intune szolgáltatás rendszergazdája
-- Security Administrator
-- Security Reader
+- Biztonsági rendszergazda
+- Biztonsági olvasó
 
 > [!NOTE]
-> Hybrid Azure AD Joined Windows 10 devices do not have an owner. So, if you are looking for a device by owner and didn't find it, search by the device ID.
+> A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökhöz nem tartozik tulajdonos. Így ha az eszközt tulajdonos szerint keresi, és nem találta meg, akkor keresse meg az eszköz AZONOSÍTÓját.
 
 ## <a name="audit-logs"></a>Naplók
 
-Device activities are available through the activity logs. These logs include activities triggered by the device registration service and by users:
+Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
-- Device creation and adding owners / users on the device
-- Changes to device settings
-- Device operations such as deleting or updating a device
+- Eszközök létrehozása és tulajdonosok/felhasználók hozzáadása az eszközhöz
+- Eszközbeállítások módosítása
+- Eszközök műveletei, például az eszközök törlése vagy frissítése
 
-Your entry point to the auditing data is **Audit logs** in the **Activity** section of the **Devices** page.
+A naplózási adathoz való belépési pont az **eszközök** lap **tevékenység** szakaszában található **naplók** .
 
 ![Naplók](./media/device-management-azure-portal/61.png)
 
 Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 
-- The date and time of the occurrence
-- The targets
-- The initiator / actor (who) of an activity
-- The activity (what)
+- Az előfordulás dátuma és időpontja
+- A célok
+- Egy tevékenység kezdeményezője/szereplője
+- A tevékenység (mi)
 
 ![Naplók](./media/device-management-azure-portal/63.png)
 
@@ -214,13 +214,13 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység erőforrástípusa
 - Tevékenység
 - Dátumtartomány
-- Cél
-- Initiated By (Actor)
+- Target
+- Kezdeményező (színész)
 
-In addition to the filters, you can search for specific entries.
+A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 ![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[How to manage stale devices in Azure AD](manage-stale-devices.md)
+[Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

@@ -105,7 +105,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Ha Windows ren
     
 Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesítést végezhet olyan szolgáltatásokban, amelyekhez név és jelszó szükséges.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan érhető el Azure Key Vault a Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.  További információ az Azure Key Vault szolgáltatásról:
 

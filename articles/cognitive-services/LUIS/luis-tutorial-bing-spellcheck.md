@@ -1,7 +1,7 @@
 ---
-title: Correct misspelled words - LUIS
+title: Helytelenül beírt szavak – LUIS
 titleSuffix: Azure Cognitive Services
-description: Correct misspelled words in utterances by adding Bing Spell Check API V7 to LUIS endpoint queries.
+description: Beszédmódok LUIS végpont lekérdezések ad hozzá a Bing Spell ellenőrzés API 7-es megfelelő kijavítsa a hibásan leírt szavakat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,69 +18,69 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225453"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Correct misspelled words with Bing Spell Check
+# <a name="correct-misspelled-words-with-bing-spell-check"></a>A Bing Spell Check megfelelő kijavítsa a hibásan leírt szavakat
 
-You can integrate your LUIS app with [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) to correct misspelled words in utterances before LUIS predicts the score and entities of the utterance. 
+A Luis-alkalmazást [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -vel integrálhatja, hogy javítsa a hibásan írt szavakat a hosszúságú kimondott szöveg, mielőtt Luis megjósolja a pontszámot és az entitásokat. 
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Create first key for Bing Spell Check V7
+## <a name="create-first-key-for-bing-spell-check-v7"></a>A Bing-helyesírás-ellenőrzés 7-es első kulcs létrehozása
 
-Your [first Bing Spell Check API v7 key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is free. 
+Az [első Bing Spell Check API v7-kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ingyenes. 
 
-![Create free key](./media/luis-tutorial-bing-spellcheck/free-key.png)
+![Ingyenes kulcs létrehozása](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
 <a name="create-subscription-key"></a>
 
-## <a name="create-endpoint-key"></a>Create Endpoint key
-If your free key expired, create an endpoint key.
+## <a name="create-endpoint-key"></a>Végponti kulcs létrehozása
+Ha az ingyenes kulcs lejárt, a végpont kulcs létrehozása.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
-2. Select **Create a resource** in the top left corner.
+2. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
 3. A keresőmezőbe írja be a `Bing Spell Check API V7` kifejezést.
 
-    ![Search for Bing Spell Check API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+    ![Keresés a Bing helyesírás-ellenőrzése API 7-es verziója](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. Select the service. 
+4. Válassza ki a szolgáltatást. 
 
-5. An information panel appears to the right containing information including the Legal Notice. Select **Create** to begin the subscription creation process. 
+5. Az információk panel a jobb oldalon, beleértve a jogi nyilatkozat adatokat tartalmazó jelenik meg. Válassza a **Létrehozás** lehetőséget az előfizetés-létrehozási folyamat megkezdéséhez. 
 
-6. In the next panel, enter your service settings. Wait for service creation process to finish.
+6. A következő panelen adja meg a szolgáltatás beállításait. Várjon, amíg a szolgáltatás létrehozásának folyamatát a befejezéshez.
 
-    ![Enter service settings](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
+    ![Adja meg a szolgáltatás beállításai](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. Select **All resources** under the **Favorites** title on the left side navigation.
+7. A bal oldali navigációs sávon a **Kedvencek** cím alatt válassza az **összes erőforrás** lehetőséget.
 
-8. Select the new service. Its type is **Cognitive Services** and the location is **global**. 
+8. Válassza ki az új szolgáltatást. A típusa **Cognitive Services** , és a hely **globális**. 
 
-9. In the main panel, select **Keys** to see your new keys.
+9. A fő panelen a **kulcsok** elemre kattintva megtekintheti az új kulcsokat.
 
-    ![Grab keys](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
+    ![Kulcsok megnyitása](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. Copy the first key. You only need one of the two keys. 
+10. Másolja ki az első kulcsot. Csak akkor kell egyik két kulcsot. 
 
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="adding-the-key-to-the-endpoint-url"></a>Adding the key to the endpoint URL
-The endpoint query needs the key passed in the query string parameters for each query you want to apply spelling correction. You may have a chatbot that calls LUIS or you may call the LUIS endpoint API directly. Regardless of how the endpoint is called, each and every call must include the required information for spelling corrections to work properly.
+## <a name="adding-the-key-to-the-endpoint-url"></a>A kulcs hozzáadása a végpont URL-címe
+A végpont lekérdezés minden egyes lekérdezés javításra a alkalmazni szeretné a lekérdezési karakterlánc paraméterei átadott kulcs szükséges. Előfordulhat, hogy egy csevegőrobot, amely meghívja a LUIS, vagy közvetlenül a LUIS-végpont API-t hívhatja. Függetlenül attól, milyen a végpont neve minden hívás tartalmaznia kell a helyesírási javításokkal megfelelő működéséhez szükséges információkat.
 
-The endpoint URL has several values that need to be passed correctly. The Bing Spell Check API v7 key is just another one of these. You must set the **spellCheck** parameter to true and you must set the value of **bing-spell-check-subscription-key** to the key value:
+A végpont URL-címnek megfelelően átadandó igénylő több értéket. A Bing Spell Check API 7-es verziója kulcs, ezek közül csak egy másikat. A **helyesírási** paramétert True értékre kell állítani, és a **Bing-Spell-Check-előfizetés-Key** értéket kell beállítania a kulcs értékére:
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
 
-## <a name="send-misspelled-utterance-to-luis"></a>Send misspelled utterance to LUIS
-1. In a web browser, copy the preceding string and replace the `region`, `appId`, `luisKey`, and `bingKey` with your own values. Make sure to use the endpoint region, if it is different from your publishing [region](luis-reference-regions.md).
+## <a name="send-misspelled-utterance-to-luis"></a>A LUIS felbontása utterance (kifejezés) küldése
+1. Egy webböngészőben másolja az előző karakterláncot, és cserélje le a `region`, `appId`, `luisKey`és `bingKey` a saját értékeire. Ügyeljen arra, hogy a végpont régióját használja, ha az eltér a közzétételi [régiótól](luis-reference-regions.md).
 
-2. Add a misspelled utterance such as "How far is the mountainn?". In English, `mountain`, with one `n`, is the correct spelling. 
+2. Adja hozzá a hibásan írt utterance (kifejezés) például a "milyen is a mountainn?". Az angol nyelvű, `mountain`egy `n`, a helyes helyesírás. 
 
-3. Select enter to send the query to LUIS.
+3. Válassza ki a lekérdezés küldendő LUIS adja meg.
 
-4. LUIS responds with a JSON result for `How far is the mountain?`. If Bing Spell Check API v7 detects a misspelling, the `query` field in the LUIS app's JSON response contains the original query, and the `alteredQuery` field contains the corrected query sent to LUIS.
+4. LUIS a `How far is the mountain?`JSON-eredménnyel válaszol. Ha Bing Spell Check API v7 hibát észlel, akkor a LUIS alkalmazás JSON-válaszában szereplő `query` mező tartalmazza az eredeti lekérdezést, és a `alteredQuery` mező tartalmazza a LUIS-nak küldött javított lekérdezést.
 
 ```json
 {
@@ -94,17 +94,17 @@ The endpoint URL has several values that need to be passed correctly. The Bing S
 }
 ```
 
-## <a name="ignore-spelling-mistakes"></a>Ignore spelling mistakes
+## <a name="ignore-spelling-mistakes"></a>Hagyja figyelmen kívül a helyesírási hibákat
 
-If you don't want to use the Bing Spell Check API v7 service, you need to add the correct and incorrect spelling. 
+Ha nem szeretné használni a Bing Spell Check API v7 szolgáltatást, hozzá kell adnia a helyes és helytelen helyesírást. 
 
-Two solutions are:
+Két megoldás a következők:
 
-* Label example utterances that have the all the different spellings so that LUIS can learn proper spelling as well as typos. This option requires more labeling effort than using a spell checker.
-* Create a phrase list with all variations of the word. With this solution, you do not need to label the word variations in the example utterances. 
+* Címkézheti például az összes különböző helyesírású hosszúságú kimondott szöveg, hogy LUIS el tudja sajátítani a megfelelő helyesírást és elírásokat. Ez a beállítás nagyobb címkézési munkát, mint a helyesírás-ellenőrzés használata szükséges.
+* Hozzon létre egy kifejezés listát a szó összes változatával. Ezzel a megoldással nem kell megcímkézni a példában szereplő hosszúságú kimondott szöveg. 
 
-## <a name="publishing-page"></a>Publishing page
-The [publishing](luis-how-to-publish-app.md) page has an **Enable Bing spell checker** checkbox. This is a convenience to create the key and understand how the endpoint URL changes. You still have to use the correct endpoint parameters in order to have spelling corrected for each utterance. 
+## <a name="publishing-page"></a>Közzétételi lap
+A [közzétételi](luis-how-to-publish-app.md) lapon engedélyezve van a **Bing helyesírás-ellenőrző engedélyezése** jelölőnégyzet. Ez az a kényelmi célokat szolgál, a kulcs létrehozásához, és megismerheti, hogyan változik a végpont URL-CÍMÉT. Továbbra is meg kell ahhoz, hogy minden kimondásakor korrigálni helyesírási rendelkezik a megfelelő végpontra paraméterek használatával. 
 
 > [!div class="nextstepaction"]
-> [Learn more about example utterances](luis-how-to-add-example-utterances.md)
+> [További információ a példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md)

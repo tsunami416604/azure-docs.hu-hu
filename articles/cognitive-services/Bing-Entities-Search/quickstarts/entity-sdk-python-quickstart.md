@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Python - Bing Entity Search'
+title: 'Gyors útmutató: entitások keresése a Pythonhoz készült SDK-val – Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Python.
+description: Ezzel a rövid útmutatóval megkeresheti az entitásokat a Pythonhoz készült Bing Entity Search SDK-val.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -19,21 +19,21 @@ ms.locfileid: "74327132"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rövid útmutató: A Bing Entity Search SDK a Python használatával
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Python. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
+Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Pythonhoz készült Bing Entity Search SDK-val. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Python [2.x or 3.x](https://www.python.org/)
+* Python [2. x vagy 3. x](https://www.python.org/)
 
-* The [Bing Entity Search SDK for Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
+* A [Pythonhoz készült BING Entity Search SDK](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-It is recommended that you use a python virtual environment. You can install and initialize a virtual environment with the venv module. You can install virtualenv with:
+Javasoljuk, hogy használjon Python virtuális környezetet. A venv modul használatával telepítheti és inicializálhatja a virtuális környezeteket. A virtualenv a használatával telepítheti:
 
 ```Console
 python -m venv mytestenv
 ```
 
-Install the Bing Entity Search SDK with:
+Telepítse a Bing Entity Search SDK-t a használatával:
 
 ```Console
 cd mytestenv
@@ -44,7 +44,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Create a new Python file in your favorite IDE or editor, and add the following import statements. 
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasításokat. 
 
     ```python
     from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
@@ -52,22 +52,22 @@ python -m pip install azure-cognitiveservices-search-entitysearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Create a variable for your subscription key, and instantiate the client by creating a new `CognitiveServicesCredentials` object with it.
+2. Hozzon létre egy változót az előfizetési kulcshoz, és hozza létre az ügyfelet egy új `CognitiveServicesCredentials` objektum létrehozásával.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
 
-## <a name="send-a-search-request-and-receive-a-response"></a>Send a search request and receive a response
+## <a name="send-a-search-request-and-receive-a-response"></a>Keresési kérelem küldése és válasz fogadása
 
-1. Send a search request to Bing Entity Search with `client.entities.search()` and a search query. 
+1. Keresési kérelem küldése a Bing Entity Searchnek `client.entities.search()` és keresési lekérdezéssel. 
     
     ```python
     entity_data = client.entities.search(query="Gibralter")
     ```
 
-2. If entities were returned, convert `entity_data.entities.value` to a list, and print the first result.
+2. Ha entitásokat adott vissza, alakítsa át `entity_data.entities.value` egy listára, és nyomtassa ki az első eredményt.
     ```python
     if entity_data.entities.value:
     
@@ -83,4 +83,4 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Mi a Bing Entity Search API?](../overview.md )

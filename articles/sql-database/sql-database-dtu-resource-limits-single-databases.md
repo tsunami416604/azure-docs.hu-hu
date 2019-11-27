@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811283"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539333"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Az DTU beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -43,6 +43,12 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
 
+> [!IMPORTANT]
+> Az alapszintű szolgáltatási csomag kevesebb mint egy virtuális mag (CPU) biztosít.  A CPU-igényes számítási feladatokhoz az S3 vagy nagyobb szolgáltatási réteg ajánlott. 
+>
+>Az adattárolásra vonatkozó alapszintű szolgáltatási szintet a standard oldal Blobokra helyezi. A standard oldal Blobok a merevlemezes (HDD-) alapú tárolóeszközöket használják, és a leghatékonyabb fejlesztéshez, teszteléshez és más, ritkán használt számítási feladatokhoz, amelyek kevésbé érzékenyek a teljesítmény változékonyságára.
+>
+
 ### <a name="standard-service-tier"></a>Standard szolgáltatási szint
 
 | **Számítási méret** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | Egyidejű feldolgozók maximális száma (kérelem)| 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> A standard S0, S1 és S2 szintjei kevesebb mint egy virtuális mag (CPU) biztosítanak.  A CPU-igényes számítási feladatokhoz az S3 vagy nagyobb szolgáltatási réteg ajánlott. 
+>
+>Az adattárolással kapcsolatban a standard szintű S0 és az S1 szolgáltatási szint a standard oldal Blobokra kerül. A standard oldal Blobok a merevlemezes (HDD-) alapú tárolóeszközöket használják, és a leghatékonyabb fejlesztéshez, teszteléshez és más, ritkán használt számítási feladatokhoz, amelyek kevésbé érzékenyek a teljesítmény változékonyságára.
+>
 
 ### <a name="standard-service-tier-continued"></a>Standard szintű szolgáltatási szint (folytatás)
 
@@ -72,8 +84,8 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | **Számítási méret** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | DTU-k maximális száma | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| Maximális tárolási lehetőségek (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maximális tárolási lehetőségek (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Egyidejű feldolgozók maximális száma (kérelem)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -86,7 +98,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 > [!NOTE]
 > `tempdb` korlátok esetében lásd: [tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](sql-database-vcore-resource-limits-single-databases.md)
 - A rugalmas készletek virtuális mag erőforrás-korlátaival kapcsolatban lásd: [rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával](sql-database-vcore-resource-limits-elastic-pools.md)

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Quick container image build
+title: Oktatóanyag – gyors tároló – rendszerkép összeállítása
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 ms.topic: tutorial
 ms.date: 09/24/2018
@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456051"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Build and deploy container images in the cloud with Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
 
 Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
 
@@ -26,11 +26,11 @@ Ez az oktatóanyag egy sorozat első része, és az alábbiakat ismerteti:
 > * Tárolórendszerkép összeállítása az Azure-ban
 > * Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 
-A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. ACR Tasks can also run [multi-step tasks](container-registry-tasks-multi-step.md), using a YAML file to define steps to build, push, and optionally test multiple containers.
+A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. Az ACR-feladatok [több lépésből álló feladatokat](container-registry-tasks-multi-step.md)is futtathatnak, egy YAML-fájllal a több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez szükséges lépéseket határozzák meg.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed and logged in with [az login][az-login]. A verzió azonosításához futtassa a következőt: `az --version`. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Ha helyileg szeretné használni az Azure CLI-t, az Azure CLI **2.0.46** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login]paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepítenie vagy frissítenie kell a CLI-t, tekintse meg az [Azure CLI telepítését][azure-cli]ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +70,7 @@ Az oktatóanyag-sorozatban használt parancsok a Bash-felületnek megfelelően v
 
 Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzon lére egy tárolóregisztrációs adatbázist, és állítsa össze a tárolórendszerképet az ACR Tasks használatával.
 
-A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A **\<registry-name\>** helyőrzőt cserélje az új tárolóregisztrációs adatbázis egyedi nevével. The registry name must be unique within Azure, contain only lower case letters, and contain 5-50 alphanumeric characters. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
+A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A **\<registry-name\>** helyőrzőt cserélje az új tárolóregisztrációs adatbázis egyedi nevével. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -85,13 +85,13 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Execute the [az acr build][az-acr-build] command to perform a *quick task*:
+Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Hajtsa végre az az [ACR Build][az-acr-build] parancsot egy *gyors feladat*végrehajtásához:
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-Output from the [az acr build][az-acr-build] command is similar to the following. Láthatja a forráskód (a „környezet”) feltöltését az Azure-ba, valamint az ACR Tasks által a felhőben futtatott `docker build` művelet részleteit. Mivel az ACR Tasks a `docker build` használatával állítja össze a rendszerképeket, a Docker-fájlokat nem kell módosítani az ACR Tasks használatának azonnali megkezdéséhez.
+Az az [ACR Build][az-acr-build] parancs kimenete az alábbihoz hasonló. Láthatja a forráskód (a „környezet”) feltöltését az Azure-ba, valamint az ACR Tasks által a felhőben futtatott `docker build` művelet részleteit. Mivel az ACR Tasks a `docker build` használatával állítja össze a rendszerképeket, a Docker-fájlokat nem kell módosítani az ACR Tasks használatának azonnali megkezdéséhez.
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -171,7 +171,7 @@ Ebben a szakaszban létrehoz egy Azure Key Vault kulcstárolót és egy szolgál
 
 ### <a name="configure-registry-authentication"></a>Regisztrációs adatbázis hitelesítésének konfigurálása
 
-All production scenarios should use [service principals][service-principal-auth] to access an Azure container registry. A szolgáltatásnevek lehetővé teszik a szerepköralapú hozzáférés-vezérlés biztosítását a tárolórendszerképek számára. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
+Az összes üzemi forgatókönyvnek [egyszerű szolgáltatást][service-principal-auth] kell használnia az Azure Container Registry eléréséhez. A szolgáltatásnevek lehetővé teszik a szerepköralapú hozzáférés-vezérlés biztosítását a tárolórendszerképek számára. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
 #### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
@@ -187,7 +187,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Létre kell hoznia egy szolgáltatásnevet, és el kell tárolnia annak hitelesítő adatait a kulcstárolóban.
 
-Use the [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] to store the service principal's **password** in the vault:
+Használja az az [ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] parancsot az egyszerű szolgáltatásnév létrehozásához, és az az Key [Vault Secret set][az-keyvault-secret-set] paranccsal tárolja a szolgáltatásnév **jelszavát** a tárolóban:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -202,7 +202,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-The `--role` argument in the preceding command configures the service principal with the *acrpull* role, which grants it pull-only access to the registry. To grant both push and pull access, change the `--role` argument to *acrpush*.
+Az előző parancs `--role` argumentuma konfigurálja a szolgáltatásnevet a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa a `--role` argumentumot *acrpush*értékre.
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 
@@ -225,7 +225,7 @@ Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy a
 
 Miután a szolgáltatásnév hitelesítő adatait titkos kulcsként mentette az Azure Key Vaultban, az alkalmazások és a szolgáltatások a kulcsok használatával hozzáférhetnek a privát regisztrációs adatbázishoz.
 
-Execute the following [az container create][az-container-create] command to deploy a container instance. A parancs a szolgáltatásnévnek az Azure Key Vault-tárolóban tárolt hitelesítő adatait használja a tárolóregisztrációs adatbázisban való hitelesítéshez.
+A Container instance üzembe helyezéséhez hajtsa végre a következőt az [az Container Create][az-container-create] paranccsal. A parancs a szolgáltatásnévnek az Azure Key Vault-tárolóban tárolt hitelesítő adatait használja a tárolóregisztrációs adatbázisban való hitelesítéshez.
 
 ```azurecli-interactive
 az container create \
@@ -260,9 +260,9 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 Jegyezze fel a tároló teljes tartománynevét, amelyet a következő szakaszban fog használni.
 
-### <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-To watch the startup process of the container, use the [az container attach][az-container-attach] command:
+A tároló indítási folyamatának megtekintéséhez használja az az [Container Attach][az-container-attach] parancsot:
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -290,7 +290,7 @@ A konzolt a `Control+C` billentyűkombinációval választhatja le a tárolóró
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Stop the container instance with the [az container delete][az-container-delete] command:
+Állítsa le a tároló példányát az az [Container delete][az-container-delete] paranccsal:
 
 ```azurecli-interactive
 az container delete --resource-group $RES_GROUP --name acr-tasks

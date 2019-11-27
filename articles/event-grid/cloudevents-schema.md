@@ -1,6 +1,6 @@
 ---
-title: Use Azure Event Grid with events in CloudEvents schema
-description: Describes how to set the CloudEvents schema for events in Azure Event Grid.
+title: Azure Event Grid használata a CloudEvents-sémában lévő eseményekkel
+description: Leírja, hogyan kell beállítani a CloudEvents sémát a Azure Event Grid eseményeihez.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -14,25 +14,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325473"
 ---
-# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Use CloudEvents v1.0 schema with Event Grid
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma használata Event Grid
 
-In addition to its [default event schema](event-schema.md), Azure Event Grid natively supports events in the [JSON implementation of CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) and [HTTP protocol binding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) is an [open specification](https://github.com/cloudevents/spec/blob/v1.0/spec.md) for describing event data.
+Az [alapértelmezett esemény sémáján](event-schema.md)kívül Azure Event Grid natív módon támogatja a [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) és a [http protokoll kötésének](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON-implementációjában lévő eseményeket. A [CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az események leírásához.
 
-CloudEvents simplifies interoperability by providing a common event schema for publishing, and consuming cloud based events. This schema allows for uniform tooling, standard ways of routing & handling events, and universal ways of deserializing the outer event schema. With a common schema, you can more easily integrate work across platforms.
+A CloudEvents a felhőalapú események közzétételére és felhasználására szolgáló közös esemény sémájának használatával egyszerűsíti az együttműködési képességet. Ez a séma lehetővé teszi, hogy egységes eszközöket biztosítson, és szabványos módon irányítsa át & az események kezelését, valamint a külső esemény sémájának deszerializálásának univerzális módszereit. Közös sémával könnyebben integrálhatja a munkafolyamatokat a különböző platformokon.
 
-CloudEvents is being built by several [collaborators](https://github.com/cloudevents/spec/blob/master/community/contributors.md), including Microsoft, through the [Cloud Native Computing Foundation](https://www.cncf.io/). It's currently available as version 1.0.
+A CloudEvents számos [közreműködő](https://github.com/cloudevents/spec/blob/master/community/contributors.md), például a Microsoft, a [Felhőbeli natív számítástechnikai alaprendszer](https://www.cncf.io/)segítségével építhető ki. Jelenleg 1,0-as verzióként érhető el.
 
-This article describes how to use the CloudEvents schema with Event Grid.
+Ez a cikk azt ismerteti, hogyan használható a CloudEvents séma a Event Grid használatával.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Install preview feature
+## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="cloudevent-schema"></a>CloudEvent schema
+## <a name="cloudevent-schema"></a>CloudEvent séma
 
-Here is an example of an Azure Blob Storage event in CloudEvents format:
+Íme egy példa egy Azure Blob Storage eseményre CloudEvents formátumban:
 
 ``` JSON
 {
@@ -60,27 +60,27 @@ Here is an example of an Azure Blob Storage event in CloudEvents format:
 }
 ```
 
-A detailed description of the available fields, their types, and definitions in CloudEvents v0.1 is [available here](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+[Itt](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)található az elérhető mezők, azok típusai és definíciói részletes leírása a CloudEvents v 0.1-ben.
 
-The headers values for events delivered in the CloudEvents schema and the Event Grid schema are the same except for `content-type`. For CloudEvents schema, that header value is `"content-type":"application/cloudevents+json; charset=utf-8"`. For Event Grid schema, that header value is `"content-type":"application/json; charset=utf-8"`.
+A CloudEvents-sémában és a Event Grid sémában szállított események fejlécének értékei megegyeznek a `content-type`kivételével. A CloudEvents séma esetében a fejléc értéke `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid séma esetében a fejléc értéke `"content-type":"application/json; charset=utf-8"`.
 
-## <a name="configure-event-grid-for-cloudevents"></a>Configure Event Grid for CloudEvents
+## <a name="configure-event-grid-for-cloudevents"></a>A CloudEvents Event Grid konfigurálása
 
-You can use Event Grid for both input and output of events in CloudEvents schema. You can use CloudEvents for system events, like Blob Storage events and IoT Hub events, and custom events. It can also transform those events on the wire back and forth.
+A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Grid is használhatja. A CloudEvents-t használhatja rendszereseményekhez, például Blob Storage eseményekhez és IoT Hub eseményekhez és egyéni eseményekhez. Emellett átalakíthatja ezeket az eseményeket a huzalon oda-vissza.
 
 
-| Input schema       | Output schema
+| Bemeneti séma       | Kimeneti séma
 |--------------------|---------------------
-| CloudEvents format | CloudEvents format
-| Event Grid format  | CloudEvents format
-| CloudEvents format | Event Grid format
-| Event Grid format  | Event Grid format
+| CloudEvents formátuma | CloudEvents formátuma
+| Event Grid formátum  | CloudEvents formátuma
+| CloudEvents formátuma | Event Grid formátum
+| Event Grid formátum  | Event Grid formátum
 
-For all event schemas, Event Grid requires validation when publishing to an event grid topic and when creating an event subscription. For more information, see [Event Grid security and authentication](security-authentication.md).
+Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
-### <a name="input-schema"></a>Input schema
+### <a name="input-schema"></a>Bemeneti séma
 
-You set the input schema for a custom topic when you create the custom topic.
+Egyéni témakörhöz tartozó bemeneti sémát az egyéni témakör létrehozásakor állíthatja be.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -110,11 +110,11 @@ New-AzureRmEventGridTopic `
   -InputSchema CloudEventSchemaV1_0
 ```
 
-The current version of CloudEvents doesn't support batching of events. To publish events with CloudEvent schema to a topic, publish each event individually.
+A CloudEvents jelenlegi verziója nem támogatja az események kötegelt feldolgozását. Ha CloudEvent-sémával rendelkező eseményeket szeretne közzétenni egy témakörben, tegye közzé az egyes eseményeket egyenként.
 
-### <a name="output-schema"></a>Output schema
+### <a name="output-schema"></a>Kimeneti séma
 
-You set the output schema when you create the event subscription.
+A kimeneti séma az esemény-előfizetés létrehozásakor állítható be.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -139,14 +139,14 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- Currently, you can't use an Event Grid trigger for an Azure Functions app when the event is delivered in the CloudEvents schema. Use an HTTP trigger. For examples of implementing an HTTP trigger that receives events in the CloudEvents schema, see [Use an HTTP trigger as an Event Grid trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+ Jelenleg nem használhat Event Grid eseményindítót egy Azure Functions alkalmazáshoz, ha az esemény a CloudEvents-sémában kerül kézbesítésre. HTTP-trigger használata. A CloudEvents sémában eseményeket fogadó HTTP-triggerek megvalósítására példákat a [http-trigger használata Event Grid triggerként](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)című témakörben talál.
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpoint Validation with CloudEvents v1.0
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>Végpont ellenőrzése a CloudEvents 1.0-s verziójában
 
-If you are already familiar with Event Grid, you may be aware of Event Grid's endpoint validation handshake for preventing abuse. CloudEvents v1.0 implements its own [abuse protection semantics](security-authentication.md#webhook-event-delivery) using the HTTP OPTIONS method. További információk [itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). When using the CloudEvents schema for output, Event Grid uses with the CloudEvents v1.0 abuse protection in place of the Event Grid validation event mechanism.
+Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](security-authentication.md#webhook-event-delivery) beállításait. További információk [itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* For information about monitoring event deliveries, see [Monitor Event Grid message delivery](monitor-event-delivery.md).
-* We encourage you to test, comment on, and [contribute](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) to CloudEvents.
-* For more information about creating an Azure Event Grid subscription, see [Event Grid subscription schema](subscription-creation-schema.md).
+* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
+* Javasoljuk, hogy tesztelje, véleményezze és [járuljon hozzá](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) a CloudEvents.
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

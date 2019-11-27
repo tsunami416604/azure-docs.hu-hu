@@ -1,6 +1,6 @@
 ---
-title: Deprovision devices that were provisioned with Azure IoT Hub Device Provisioning Service
-description: How to deprovision devices that have been provisioned with Azure IoT Hub Device Provisioning Service
+title: Az Azure-IoT Hub Device Provisioning Service kiépített eszközök megszüntetése
+description: Az Azure-IoT Hub Device Provisioning Service kiépített eszközök megszüntetése
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
@@ -14,56 +14,56 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229694"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>How to deprovision devices that were previously auto-provisioned 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Korábban automatikusan kiépített eszközök kiépítése 
 
-You may find it necessary to deprovision devices that were previously auto-provisioned through the Device Provisioning Service. For example, a device may be sold or moved to a different IoT hub, or it may be lost, stolen, or otherwise compromised. 
+Előfordulhat, hogy meg kell szüntetnie az eszköz kiépítési szolgáltatásával korábban automatikusan kiépített eszközök kiépítését. Előfordulhat például, hogy egy eszközt egy másik IoT-hubhoz lehet értékesíteni vagy áthelyezni, vagy az elveszett, ellopták vagy más módon sérült. 
 
-In general, deprovisioning a device involves two steps:
+Általánosságban elmondható, hogy az eszköz kiépítése két lépést tesz szükségessé:
 
-1. Disenroll the device from your provisioning service, to prevent future auto-provisioning. Depending on whether you want to revoke access temporarily or permanently, you may want to either disable or delete an enrollment entry. For devices that use X.509 attestation, you may want to disable/delete an entry in the hierarchy of your existing enrollment groups.  
+1. Az eszköz regisztrációjának törlése a kiépítési szolgáltatásból a jövőbeli automatikus kiépítés megelőzése érdekében. Attól függően, hogy átmenetileg vagy véglegesen szeretné-e visszavonni a hozzáférést, érdemes lehet letiltani vagy törölni egy beléptetési bejegyzést. Az X. 509 igazolást használó eszközök esetében érdemes lehet letiltani/törölni egy bejegyzést a meglévő regisztrációs csoportok hierarchiájában.  
  
-   - To learn how to disenroll a device, see [How to disenroll a device from Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - To learn how to disenroll a device programmatically using one of the provisioning service SDKs, see [Manage device enrollments with service SDKs](how-to-manage-enrollments-sdks.md).
+   - További információ az eszközök regisztrálásáról: az [eszköz regisztrálása az Azure-ból IoT hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - Ha meg szeretné tudni, hogyan lehet az eszközöket programozott módon felvenni az egyik kiépítési szolgáltatási SDK használatával, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.
 
-2. Deregister the device from your IoT Hub, to prevent future communications and data transfer. Again, you can temporarily disable or permanently delete the device's entry in the identity registry for the IoT Hub where it was provisioned. See [Disable devices](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) to learn more about disablement. See "Device Management / IoT Devices" for your IoT Hub resource, in the [Azure portal](https://portal.azure.com).
+2. Regisztrálja az eszközt a IoT Hub, hogy elkerülje a jövőbeli kommunikációt és az adatátvitelt. Újra ideiglenesen letilthatja vagy véglegesen törölheti az eszköz bejegyzését az azonosító beállításjegyzékében arra a IoT Hub, ahol üzembe lett helyezve. További információ a [tiltásról: eszközök letiltása](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . A [Azure Portalban](https://portal.azure.com)tekintse meg az IoT hub erőforrás "eszközkezelés/IoT eszközei" című témakört.
 
-The exact steps you take to deprovision a device depend on its attestation mechanism and its applicable enrollment entry with your provisioning service. The following sections provide an overview of the process, based on the enrollment and attestation type.
+Az eszközök kiépítésének pontos lépései az igazolási mechanizmustól és a kiépítési szolgáltatáshoz kapcsolódó regisztrációs bejegyzéstől függenek. A következő szakasz áttekintést nyújt a folyamatról a regisztráció és az igazolás típusa alapján.
 
-## <a name="individual-enrollments"></a>Individual enrollments
-Devices that use TPM attestation or X.509 attestation with a leaf certificate are provisioned through an individual enrollment entry. 
+## <a name="individual-enrollments"></a>Egyéni regisztrációk
+A TPM-igazolást vagy az X. 509 igazolást használó eszközöket egy külön beléptetési bejegyzés keretében kell kiépíteni. 
 
-To deprovision a device that has an individual enrollment: 
+Egyéni regisztrációval rendelkező eszköz kiépítése: 
 
-1. Disenroll the device from your provisioning service:
+1. Az eszköz regisztrációjának törlése a kiépítési szolgáltatásból:
 
-   - For devices that use TPM attestation, delete the individual enrollment entry to permanently revoke the device's access to the provisioning service, or disable the entry to temporarily revoke its access. 
-   - For devices that use X.509 attestation, you can either delete or disable the entry. Be aware, though, if you delete an individual enrollment for a device that uses X.509 and an enabled enrollment group exists for a signing certificate in that device's certificate chain, the device can re-enroll. For such devices, it may be safer to disable the enrollment entry. Doing so prevents the device from re-enrolling, regardless of whether an enabled enrollment group exists for one of its signing certificates.
+   - A TPM-igazolást használó eszközök esetében törölje az egyéni beléptetési bejegyzést, hogy véglegesen visszavonja az eszköz hozzáférését a kiépítési szolgáltatáshoz, vagy tiltsa le a bejegyzést a hozzáférés ideiglenes visszavonásához. 
+   - Az X. 509 igazolást használó eszközök esetében törölheti vagy letilthatja a bejegyzést. Ügyeljen arra, hogy ha töröl egy, az X. 509 protokollt használó eszközhöz tartozó egyéni regisztrációt, és létezik egy engedélyezett regisztrációs csoport az adott eszközhöz tartozó tanúsítványlánc aláíró tanúsítványához, az eszköz újra regisztrálhat. Ilyen eszközök esetén biztonságosabb lehet a beléptetési bejegyzés letiltása. Ezzel megakadályozza, hogy az eszköz újból regisztrálja az eszközt, függetlenül attól, hogy van-e engedélyezve beléptetési csoport az egyik aláíró tanúsítványához.
 
-2. Disable or delete the device in the identity registry of the IoT hub that it was provisioned to. 
+2. Tiltsa le vagy törölje az eszközt azon az IoT hub Identity registryben, amelyről kiépített. 
 
 
-## <a name="enrollment-groups"></a>Enrollment groups
-With X.509 attestation, devices can also be provisioned through an enrollment group. Enrollment groups are configured with a signing certificate, either an intermediate or root CA certificate, and control access to the provisioning service for devices with that certificate in their certificate chain. To learn more about enrollment groups and X.509 certificates with the provisioning service, see [X.509 certificates](concepts-security.md#x509-certificates). 
+## <a name="enrollment-groups"></a>Beléptetési csoportok
+Az X. 509 igazolásával az eszközök beléptetési csoporton keresztül is üzembe helyezhetők. A beléptetési csoportok az aláíró tanúsítvánnyal, vagy egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal vannak konfigurálva, és a tanúsítványhoz tartozó eszközökhöz való hozzáférés szabályozása a tanúsítvány láncában. További információ a regisztrációs csoportokról és az X. 509 tanúsítványokról a kiépítési szolgáltatással kapcsolatban: [x. 509 tanúsítványok](concepts-security.md#x509-certificates). 
 
-To see a list of devices that have been provisioned through an enrollment group, you can view the enrollment group's details. This is an easy way to understand which IoT hub each device has been provisioned to. To view the device list: 
+A regisztrációs csoporton keresztül kiépített eszközök listájának megtekintéséhez tekintse meg a regisztrációs csoport adatait. Ezzel a módszerrel egyszerűen megtudhatja, hogy melyik IoT hub-eszköz lett kiépítve. Az eszközök listájának megtekintése: 
 
-1. Log in to the Azure portal and click **All resources** on the left-hand menu.
-2. Click your provisioning service in the list of resources.
-3. In your provisioning service, click **Manage enrollments**, then select **Enrollment Groups** tab.
-4. Click the enrollment group to open it.
+1. Jelentkezzen be a Azure Portalba, és a bal oldali menüben kattintson az **összes erőforrás** elemre.
+2. Az erőforrások listájában kattintson a kiépítési szolgáltatásra.
+3. A kiépítési szolgáltatásban kattintson a **regisztrációk kezelése**, majd a **beléptetési csoportok** lap elemre.
+4. Kattintson a beléptetési csoportra a megnyitásához.
 
-   ![View enrollment group entry in the portal](./media/how-to-unprovision-devices/view-enrollment-group.png)
+   ![Regisztrációs csoport bejegyzésének megtekintése a portálon](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-With enrollment groups, there are two scenarios to consider:
+A beléptetési csoportok esetében kétféle esetben érdemes figyelembe venni a következőket:
 
-- To deprovision all of the devices that have been provisioned through an enrollment group:
-  1. Disable the enrollment group to blacklist its signing certificate. 
-  2. Use the list of provisioned devices for that enrollment group to disable or delete each device from the identity registry of its respective IoT hub. 
-  3. After disabling or deleting all devices from their respective IoT hubs, you can optionally delete the enrollment group. Be aware, though, that, if you delete the enrollment group and there is an enabled enrollment group for a signing certificate higher up in the certificate chain of one or more of the devices, those devices can re-enroll. 
+- A beléptetési csoporton keresztül kiépített összes eszköz kivonása:
+  1. Tiltsa le a beléptetési csoportot az aláíró tanúsítványának feketelistára történő letiltásához. 
+  2. A regisztrációs csoport kiépített eszközeinek listájával letilthatja vagy törölheti az egyes eszközöket a megfelelő IoT hub azonosító beállításjegyzékében. 
+  3. Miután letiltotta vagy törölte az összes eszközt a megfelelő IoT-hubokból, lehetősége van törölni a beléptetési csoportot. Ügyeljen arra, hogy ha törli a beléptetési csoportot, és van egy engedélyezett regisztrációs csoport egy vagy több eszközhöz tartozó tanúsítványláncnél magasabb szintű aláíró tanúsítványhoz, akkor ezek az eszközök újra regisztrálhatnak. 
 
-- To deprovision a single device from an enrollment group:
-  1. Create a disabled individual enrollment for its leaf (device) certificate. This revokes access to the provisioning service for that device while still permitting access for other devices that have the enrollment group's signing certificate in their chain. Do not delete the disabled individual enrollment for the device. Doing so will allow the device to re-enroll through the enrollment group. 
-  2. Use the list of provisioned devices for that enrollment group to find the IoT hub that the device was provisioned to and disable or delete it from that hub's identity registry. 
+- Egyetlen eszköz kiépítése egy beléptetési csoportból:
+  1. Hozzon létre egy letiltott egyéni regisztrációt a levél (eszköz) tanúsítványához. Ez visszavonja az eszköz kiépítési szolgáltatáshoz való hozzáférését, miközben továbbra is engedélyezi a hozzáférést azokhoz az eszközökhöz, amelyeken a regisztrációs csoport aláíró tanúsítványa szerepel a láncban. Ne törölje az eszköz letiltott egyéni regisztrációját. Ezzel lehetővé teszi, hogy az eszköz újra regisztrálja a regisztrációs csoportot. 
+  2. A regisztrációs csoport kiépített eszközeinek listájával megkeresheti azt az IoT hubot, amelyet az eszköz kiépített, illetve amelyről letiltotta vagy törölheti az adott hub identitás-beállításjegyzékében. 
   
   
 

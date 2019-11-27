@@ -1,6 +1,6 @@
 ---
-title: Continuous integration and continuous deployment - Azure IoT Edge | Microsoft Docs
-description: Set up continuous integration and continuous deployment - Azure IoT Edge with Azure DevOps, Azure Pipelines
+title: Folyamatos integráció és folyamatos üzembe helyezés – Azure IoT Edge |} A Microsoft Docs
+description: Folyamatos integráció és folyamatos üzembe helyezés – Azure IoT Edge segítségével az Azure DevOps, Azure-folyamatok beállítása
 author: shizn
 manager: philmea
 ms.author: xshi
@@ -15,211 +15,211 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457246"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous integration and continuous deployment to Azure IoT Edge
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
-You can easily adopt DevOps with your Azure IoT Edge applications with the built-in Azure IoT Edge tasks in Azure Pipelines. This article demonstrates how you can use the continuous integration and continuous deployment features of Azure Pipelines to build, test, and deploy applications quickly and efficiently to your Azure IoT Edge. 
+Az Azure-folyamatok beépített Azure IoT Edge feladataival könnyedén elvégezheti a DevOps a Azure IoT Edge alkalmazásaiban. Ez a cikk bemutatja, hogyan használhatja az Azure-folyamatok folyamatos integrációját és folyamatos üzembe helyezését az alkalmazások gyors és hatékony létrehozásához, teszteléséhez és üzembe helyezéséhez a Azure IoT Edge. 
 
-![Diagram - CI and CD branches for development and production](./media/how-to-ci-cd/cd.png)
+![Diagram – a CI és CD ágak fejlesztési és termelési célra](./media/how-to-ci-cd/cd.png)
 
-In this article, you learn how to use the built-in Azure IoT Edge tasks for Azure Pipelines to create two pipelines for your IoT Edge solution. There are four actions can be used in the Azure IoT Edge tasks.
-   - **Azure IoT Edge - Build Module images** takes your IoT Edge solution code and builds the container images.
-   - **Azure IoT Edge - Push Module images** pushes module images to the container registry you specified.
-   - **Azure IoT Edge - Generate Deployment Manifest** takes a deployment.template.json file and the variables, then generates the final IoT Edge deployment manifest file.
-   - **Azure IoT Edge - Deploy to IoT Edge devices** helps create IoT Edge deployments to single/multiple IoT Edge devices.
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített Azure IoT Edge feladatait két folyamat létrehozásához a IoT Edge-megoldáshoz. A Azure IoT Edge feladatokban négy műveletet lehet használni.
+   - **Azure IoT Edge – a modul lemezképei felépítik** a IoT Edge megoldás kódját, és felépítik a tároló lemezképeit.
+   - **Azure IoT Edge – a leküldéses modul képei** leküldik a modul rendszerképeit a megadott tároló-beállításjegyzékbe.
+   - **Azure IoT Edge – az üzembe helyezési jegyzékfájl előállítása** üzembe helyezési. template. JSON fájlt és változókat hoz létre, majd létrehozza a végső IoT Edge telepítési jegyzékfájlt.
+   - **Azure IoT Edge – a IoT Edge eszközökre való üzembe helyezéssel** IoT Edge központi telepítéseket hozhat létre egy vagy több IoT Edge eszközön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* An Azure Repos repository. If you don't have one, you can [Create a new Git repo in your project](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav).
-* An IoT Edge solution committed and pushed to your repository. If you want to create a new sample solution for testing this article, follow the steps in [Develop and debug modules in Visual Studio Code](how-to-vs-code-develop-module.md) or [Develop and debug C# modules in Visual Studio](how-to-visual-studio-develop-csharp-module.md).
-   * For this article, all you need is the solution folder created by the IoT Edge templates in either Visual Studio Code or Visual Studio. You don't need to build, push, deploy, or debug this code before proceeding. You'll set those processes up in Azure Pipelines. 
-   * If you're creating a new solution, clone your repository locally first. Then, when you create the solution you can choose to create it directly in the repository folder. You can easily commit and push the new files from there. 
-* A container registry where you can push module images. You can use [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) or a third-party registry. 
-* An active [IoT hub](../iot-hub/iot-hub-create-through-portal.md) with at least IoT Edge devices for testing the separate test and production deployment stages. You can follow the quickstart articles to create an IoT Edge device on [Linux](quickstart-linux.md) or [Windows](quickstart.md)
+* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav).
+* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [a Visual Studióban található modulok fejlesztését és hibakeresését C# ](how-to-visual-studio-develop-csharp-module.md)ismertető cikket.
+   * Ehhez a cikkhez mindössze annyit kell tennie, hogy a Visual Studio Code vagy a Visual Studio IoT Edge sablonjai által létrehozott megoldási mappát hozza létre. A továbblépés előtt nem kell ezt a kódot felépíteni, leküldeni, telepíteni vagy hibakeresést végeznie. Ezeket a folyamatokat az Azure-folyamatokban fogja beállítani. 
+   * Ha új megoldást hoz létre, először a tárházat klónozással. Ezután a megoldás létrehozásakor megadhatja, hogy közvetlenül a tárház mappájába hozza létre. Egyszerűen véglegesítheti és leküldheti az új fájlokat. 
+* Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy külső gyártótól származó beállításjegyzéket is használhat. 
+* Egy aktív [IoT hub](../iot-hub/iot-hub-create-through-portal.md) legalább IoT Edge eszközzel a különálló tesztelési és éles üzembe helyezési szakaszok teszteléséhez. Az IoT Edge-eszköz [Linux](quickstart-linux.md) vagy [Windows](quickstart.md) rendszeren való létrehozásához kövesse a rövid útmutató cikkeit
 
 
-For more information about using Azure Repos, see [Share your code with Visual Studio and Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+További információ az Azure Repos használatáról: [kód megosztása a Visual Studióval és az Azure repostel](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
 
-## <a name="configure-continuous-integration"></a>Configure continuous integration
-In this section, you create a new build pipeline. Configure the pipeline to run automatically when you check in any changes to the sample IoT Edge solution, and publish build logs.
+## <a name="configure-continuous-integration"></a>Folyamatos integráció konfigurálása
+Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a folyamatot, hogy automatikusan fusson, amikor bejelentkezik a minta IoT Edge-megoldás változásai között, és közzéteszi a létrehozási naplókat.
 
 >[!NOTE]
->This article uses the Azure DevOps visual designer. Before you follow the steps in this section, turn off the preview feature for the new YAML pipeline creation experience. 
->1. In Azure DevOps, select your profile icon then select **Preview features**.
->2. Turn **New YAML pipeline creation experience** off. 
+>Ez a cikk az Azure DevOps vizuális tervezőjét használja. Mielőtt elkezdené az ebben a szakaszban leírt lépéseket, kapcsolja ki az új YAML-folyamat létrehozási élményének előzetes verzióját. 
+>1. Az Azure DevOps válassza ki a profil ikont, majd válassza az **előzetes verziójú funkciók**lehetőséget.
+>2. Kapcsolja ki az **új YAML-folyamat létrehozási élményét** . 
 >
->For more information, see [Create a build pipeline](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline).
+>További információ: build- [folyamat létrehozása](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline).
 
-1. Sign into your Azure DevOps organization (**https:\//dev.azure.com/{your organization}/** ) and open the project that contains your IoT Edge solution repository.
+1. Jelentkezzen be az Azure DevOps-szervezetbe (**https:\//dev.Azure.com/{your Organization}/** ), és nyissa meg a IoT Edge megoldás tárházát tartalmazó projektet.
 
-   For this article, we created a repository called **IoTEdgeRepo**. That repository contains **IoTEdgeSolution** which has the code for a module named **filtermodule**. 
+   Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre. Ez a tárház olyan **IoTEdgeSolution** tartalmaz, amely egy **filtermodule**nevű modul kódját tartalmazza. 
 
-   ![Open your DevOps project](./media/how-to-ci-cd/init-project.png)
+   ![A DevOps-projekt megnyitása](./media/how-to-ci-cd/init-project.png)
 
-2. Navigate to Azure Pipelines in your project. Open the **Builds** tab and select **New pipeline**. Or, if you already have build pipelines, select the **New** button. Then choose **New build pipeline**.
+2. Navigáljon a projektben található Azure-folyamatokhoz. Nyissa meg a **builds** fület, és válassza az **új folyamat**elemet. Ha már rendelkezik Build-folyamatokkal, kattintson az **új** gombra. Ezután válassza az **új létrehozási folyamat**lehetőséget.
 
     ![Új buildfolyamat létrehozása](./media/how-to-ci-cd/add-new-build.png)
 
-3. Follow the prompts to create your pipeline. 
+3. A folyamat létrehozásához kövesse az utasításokat. 
 
-   1. Provide the source information for your new build pipeline. Select **Azure Repos Git** as the source, then select the project, repository, and branch where your IoT Edge solution code is located. Then, select **Continue**. 
+   1. Adja meg az új build-folyamat forrásának adatait. Válassza az **Azure Repos git** lehetőséget forrásként, majd válassza ki azt a projektet, tárházat és ágat, ahol a IoT Edge-megoldás kódja található. Ezután válassza a **Folytatás**lehetőséget. 
 
-      ![Select your pipeline source](./media/how-to-ci-cd/pipeline-source.png)
+      ![Válassza ki a folyamat forrását](./media/how-to-ci-cd/pipeline-source.png)
 
-   2. Select **Empty job** instead of a template. 
+   2. Sablon helyett válassza az **üres feladatot** . 
 
-      ![Start with an empty process](./media/how-to-ci-cd/start-with-empty.png)
+      ![Kezdje egy üres folyamatot](./media/how-to-ci-cd/start-with-empty.png)
 
-4. Once your pipeline is created, you are taken to the pipeline editor. In your pipeline description, choose the correct agent pool based on your target platform: 
+4. A folyamat létrehozása után a rendszer a folyamat-szerkesztőt veszi át. A folyamat leírásában válassza ki a megfelelő ügynököt a cél platform alapján: 
     
-   * If you would like to build your modules in platform amd64 for Linux containers, choose **Hosted Ubuntu 1604**
+   * Ha a Linux-tárolók platform amd64-es verziójában szeretné létrehozni a modulokat, válassza az **üzemeltetett Ubuntu 1604**
 
-   * If you would like to build your modules in platform amd64 for Windows 1809 containers, you need to [set up self-hosted agent on Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Ha a Windows 1809-tárolók esetében szeretné felépíteni a modulokat a platform amd64-ben, akkor a [Windowsban saját üzemeltetésű ügynököt kell beállítania](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-   * If you would like to build your modules in platform arm32v7 or arm64 for Linux containers, you need to [set up self-hosted agent on Linux](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
+   * Ha a modulokat a platform arm32v7 vagy a arm64 for Linux-tárolók számára szeretné felépíteni, a saját üzemeltetésű [ügynököt Linux rendszeren kell beállítania](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-     ![Configure build agent pool](./media/how-to-ci-cd/configure-env.png)
+     ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
-5. Your pipeline comes preconfigured with a job called **Agent job 1**. Select the plus sign ( **+** ) to add three tasks to the job: **Azure IoT Edge** twice, **Copy Files** once and **Publish Build Artifacts** once. (Hover over the name of each task to see the **Add** button.)
+5. A folyamat előre konfigurálva van egy **Agent Job 1**nevű feladatokkal. Válassza a pluszjelet ( **+** ) három feladat hozzáadásához a feladathoz: **Azure IoT Edge** kétszer, egyszer **másolja a fájlokat** , és **tegye közzé a Build** -összetevőket. (Vigye a kurzort az egyes feladatok nevére a **Hozzáadás** gomb megjelenítéséhez.)
 
-   ![Add Azure IoT Edge task](./media/how-to-ci-cd/add-iot-edge-task.png)
+   ![Azure IoT Edge feladat hozzáadása](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   When all four tasks are added, your Agent job looks like the following example:
+   Ha mind a négy feladat hozzá lett adva, az ügynök feladata a következő példához hasonlóan néz ki:
     
-   ![Three tasks in the build pipeline](./media/how-to-ci-cd/add-tasks.png)
+   ![Három feladat az összeállítási folyamatban](./media/how-to-ci-cd/add-tasks.png)
 
-6. Select the first **Azure IoT Edge** task to edit it. This task builds all modules in the solution with the target platform that you specify.
+6. Válassza ki az első **Azure IoT Edge** feladatot a szerkesztéshez. Ez a feladat a megoldás összes modulját felépíti a megadott megcélzott platformra.
 
-   * **Display name**: Accept the default **Azure IoT Edge - Build module images**.
-   * **Action**: Accept the default **Build module images**. 
-   * **.template.json file**: Select the ellipsis ( **...** ) and navigate to the **deployment.template.json** file in the repository that contains your IoT Edge solution. 
-   * **Default platform**: Select the appropriate platform for your modules based on your target IoT Edge device. 
-   * **Output variables**: The output variables include a reference name that you can use to configure the file path where your deployment.json file will be generated. Set the reference name to something memorable like **edge**. 
+   * **Megjelenítendő név**: fogadja el az alapértelmezett **Azure IoT Edge-Build-modul lemezképeit**.
+   * **Művelet**: fogadja el az alapértelmezett **Build-modul lemezképeit**. 
+   * **. template. JSON fájl**: válassza a három pontot ( **..** .), majd navigáljon a **központi telepítési. template. JSON** fájlhoz az IoT Edge megoldást tartalmazó adattárban. 
+   * **Alapértelmezett platform**: válassza ki a megfelelő platformot a modulok számára a cél IoT Edge eszköz alapján. 
+   * **Kimeneti változók**: a kimeneti változók közé tartozik egy hivatkozás neve, amellyel konfigurálható a fájl elérési útja, ahol a rendszer létrehozza a telepítési. JSON fájlt. Adja meg a hivatkozási nevet egy olyan emlékezethez, mint a **Edge**. 
 
-7. Select the second **Azure IoT Edge** task to edit it. This task pushes all module images to the container registry that you select.
+7. Válassza ki a második **Azure IoT Edge** feladatot a szerkesztéshez. Ez a feladat leküldi az összes modul lemezképét a kiválasztott tároló-beállításjegyzékbe.
 
-   * **Display name**: The display name is automatically updated when the action field changes. 
-   * **Action**: Use the dropdown list to select **Push module images**. 
-   * **Container registry type**: Select the type of container registry that you use to store your module images. Depending on which registry type you choose, the form changes. If you choose **Azure Container Registry**, use the dropdown lists to select the Azure subscription and the name of your container registry. If you choose **Generic Container Registry**, select **New** to create a registry service connection. 
-   * **.template.json file**: Select the ellipsis ( **...** ) and navigate to the **deployment.template.json** file in the repository that contains your IoT Edge solution. 
-   * **Default platform**: Select the same platform as your built module images.
+   * **Megjelenítendő név**: a művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. 
+   * **Művelet**: a legördülő lista használatával válassza ki a **leküldéses modul lemezképeit**. 
+   * **Tároló beállításjegyzékének típusa**: válassza ki a modul lemezképének tárolására használt tároló-beállításjegyzék típusát. Attól függően, hogy melyik beállításjegyzék-típust választja, az űrlap megváltoznak. Ha a **Azure Container Registry**lehetőséget választja, a legördülő listák használatával válassza ki az Azure-előfizetést és a tároló-beállításjegyzék nevét. Ha az **általános Container Registry**lehetőséget választja, akkor az **új** elemre kattintva hozzon létre egy beállításjegyzék-szolgáltatáshoz való kapcsolódást. 
+   * **. template. JSON fájl**: válassza a három pontot ( **..** .), majd navigáljon a **központi telepítési. template. JSON** fájlhoz az IoT Edge megoldást tartalmazó adattárban. 
+   * **Alapértelmezett platform**: válassza ki ugyanazt a platformot, mint a beépített modul lemezképeit.
 
-   If you have multiple container registries to host your module images, you need to duplicate this task, select different container registry, and use **Bypass module(s)** in the advanced settings to bypass the images which are not for this specific registry.
+   Ha több tároló-nyilvántartóval rendelkezik a modul lemezképének üzemeltetéséhez, ezt a feladatot duplikálni kell, válassza a másik tároló-beállításjegyzék lehetőséget, majd a speciális beállítások **megkerüléséhez a modul (ok)** megkerüléséhez használja az adott beállításjegyzékhez nem tartozó lemezképeket.
 
-8. Select the **Copy Files** task to edit it. Use this task to copy files to the artifact staging directory.
+8. A szerkesztéshez válassza a **fájlok másolása** feladatot. Ezzel a feladattal másolhat fájlokat az összetevő-előkészítési könyvtárba.
 
-   * **Display name**: Copy Files to: Drop folder.
-   * **Contents**: Put two lines in this section, `deployment.template.json` and `**/module.json`. These two types of files are the inputs to generate IoT Edge deployment manifest. Need to be copied to the artifact staging folder and published for release pipeline.
-   * **Target Folder**: Put the variable `$(Build.ArtifactStagingDirectory)`. See [Build variables](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) to learn about the description.
+   * **Megjelenítendő név**: fájlok másolása ide: drop mappába.
+   * **Tartalom**: ebben a szakaszban két sort kell elhelyezni, `deployment.template.json` és `**/module.json`. Ez a két típusú fájl a IoT Edge üzembe helyezési jegyzék előállításához szükséges bemenet. Az összetevő átmeneti mappájába kell másolni, és közzé kell tenni a kiadási folyamat számára.
+   * **Célmappa**: helyezze a változót `$(Build.ArtifactStagingDirectory)`. A leírással kapcsolatos további tudnivalókért lásd: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
 
-9. Select the **Publish Build Artifacts** task to edit it. Provide artifact staging directory path to the task so that the path can be published to release pipeline.
+9. A szerkesztéshez válassza a Build-összetevők **közzététele** feladatot. Adja meg a feladat átmeneti könyvtárának elérési útját a feladathoz, hogy az elérési út közzétehető legyen a kiadási folyamatban.
    
-   * **Display name**: Publish Artifact: drop.
-   * **Path to publish**: Put the variable `$(Build.ArtifactStagingDirectory)`. See [Build variables](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) to learn about the description.
-   * **Artifact name**: drop.
-   * **Artifact publish location**: Azure Pipelines.
+   * **Megjelenítendő név**: közzétételi összetevő: drop.
+   * **Közzététel elérési útja**: helyezze a változót `$(Build.ArtifactStagingDirectory)`. A leírással kapcsolatos további tudnivalókért lásd: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * Összetevő **neve**: drop.
+   * Összetevő **közzétételi helye**: Azure-folyamatok.
 
 
-10. Open the **Triggers** tab and check the box to **Enable continuous integration**. Make sure the branch containing your code is included.
+10. Nyissa meg az **Eseményindítók** lapot, és jelölje be a jelölőnégyzetet a **folyamatos integráció engedélyezéséhez**. Ellenőrizze, hogy az ág a kódot tartalmazó részét képezi.
 
-    ![Turn on continuous integration trigger](./media/how-to-ci-cd/configure-trigger.png)
+    ![Kapcsolja be a folyamatos integráció aktiválása](./media/how-to-ci-cd/configure-trigger.png)
 
-11. Save the new build pipeline with **Save** button.
+11. Mentse az új Build-folyamatot **Mentés** gombbal.
 
-This pipeline is now configured to run automatically when you push new code to your repo. The last task, publishing the pipeline artifacts, triggers a release pipeline. Continue to the next section to build the release pipeline. 
+Ez a folyamat most úgy van konfigurálva, hogy automatikusan fusson, amikor új kódot küld a tárházba. Az utolsó feladat, amely közzéteszi a folyamat összetevőit, elindítja a kiadási folyamatokat. Folytassa a következő szakasszal a kiadási folyamat felépítéséhez. 
 
 ## <a name="configure-continuous-deployment"></a>Folyamatos üzembe helyezés konfigurálása
-In this section, you create a release pipeline that is configured to run automatically when your build pipeline drops artifacts, and it will show deployment logs in Azure Pipelines.
+Ebben a szakaszban létrehoz egy kiadási folyamatot, amely úgy van beállítva, hogy automatikusan fusson, amikor a build-folyamat elveszíti az összetevőket, és az üzembe helyezési naplókat az Azure-folyamatokban fogja megjeleníteni.
 
-Create a new pipeline, and add a new stage 
+Új folyamat létrehozása és új szakasz hozzáadása 
 
-1. In the **Releases** tab, choose **+ New pipeline**. Or, if you already have release pipelines, choose the **+ New** button and select **+ New release pipeline**.  
+1. A **kiadások** lapon válassza az **+ új folyamat**elemet. Ha már rendelkezik kiadási folyamatokkal, kattintson az **+ új** gombra, és válassza az **+ új kiadási folyamat**lehetőséget.  
 
-    ![Add release pipeline](./media/how-to-ci-cd/add-release-pipeline.png)
+    ![Adja hozzá a kibocsátási folyamat](./media/how-to-ci-cd/add-release-pipeline.png)
 
-2. When prompted to select a template, choose to start with an **Empty job**.
+2. Amikor a rendszer rákérdez a sablon kiválasztására, válassza az **üres feladatokkal**lehetőséget.
 
-    ![Start with an empty job](./media/how-to-ci-cd/start-with-empty-job.png)
+    ![Egy üres feladat indítása](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. Your new release pipeline initializes with one stage, called **Stage 1**. Rename Stage 1 to **dev** and treat it as a test environment. Usually, continuous deployment pipelines have multiple stages including **dev**, **staging** and **prod**. You can create more based on your DevOps practice. Close the stage details window once it's renamed. 
+3. Az új kiadási folyamat inicializálása egyetlen fázissal, az **1. fázis**néven. Nevezze át az 1. szakaszt a fejlesztéshez **és a** tesztelési környezetként való kezeléséhez. A folyamatos üzembe helyezési folyamatok általában több szakaszból állnak **, beleértve a**fejlesztést, az **előkészítést** és a **gyártási**folyamatot. A DevOps gyakorlat alapján többet is létrehozhat. Az Átnevezés után a szakasz részletei ablak bezárásához. 
 
-4. Link the release to the build artifacts that are published by the build pipeline. Click **Add** in artifacts area.
+4. Csatolja a kiadást a build-folyamat által közzétett Build-összetevőkhöz. Kattintson a **Hozzáadás** az összetevők területén elemre.
 
-   ![Add artifacts](./media/how-to-ci-cd/add-artifacts.png)  
+   ![Adjon hozzá összetevőket](./media/how-to-ci-cd/add-artifacts.png)  
     
-5. In **Add an artifact page**, select source type **Build**. Then, select the project and the build pipeline you created. Ezután válassza a **Hozzáadás** lehetőséget.
+5. Az **összetevő hozzáadása lapon**válassza a forrás típusa **Build**lehetőséget. Ezután válassza ki a projektet és a létrehozott Build-folyamatot. Ezután válassza a **Hozzáadás** lehetőséget.
 
-   ![Add a build artifact](./media/how-to-ci-cd/add-an-artifact.png)
+   ![Adja hozzá a buildösszetevőt](./media/how-to-ci-cd/add-an-artifact.png)
 
-6. Open the artifact triggers and select the toggle to enable the continuous deployment trigger. Now, a new release will be created each time a new build is available.
+6. Nyissa meg az összetevő-eseményindítókat, és válassza ki a váltást a folyamatos üzembe helyezési eseményindító engedélyezéséhez. Most új kiadás jön létre minden alkalommal, amikor új Build áll rendelkezésre.
 
-   ![Configure continuous deployment trigger](./media/how-to-ci-cd/add-a-trigger.png)
+   ![A folyamatos készregyártás eseményindítója konfigurálása](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. The **dev** stage is preconfigured with one job and zero tasks. From the pipeline menu, select **Tasks** then choose the **dev** stage.  Select the job and task count to configure the tasks in this stage.
+7. A **fejlesztői** fázis előre konfigurálva van egy feladattal és nulla tevékenységgel. A folyamat menüben válassza a **feladatok** lehetőséget, majd válassza ki a **fejlesztői** szakaszt.  Válassza ki a feladat és a feladat darabszámát az ebben a szakaszban található feladatok konfigurálásához.
 
-    ![Configure dev tasks](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![Fejlesztői feladatok konfigurálása](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. In the **dev** stage, you should see a default **Agent job**. You can configure details about the agent job, but the deployment task is platform insensitive so you can use either **Hosted VS2017** or **Hosted Ubuntu 1604** in the **Agent pool** (or any other agent managed by yourself). 
+8. A **fejlesztői** szakaszban egy alapértelmezett **ügynöki feladatot**kell megjelennie. Megadhatja az ügynök feladatának adatait, de az üzembe helyezési feladat a platformtól eltérő, így az **ügynök-készletben** (vagy a saját maga által felügyelt bármely más ügynökben) **üzemeltetett VS2017** vagy **üzemeltetett Ubuntu 1604** is használható. 
 
-9. Select the plus sign ( **+** ) to add two task. Search for and add **Azure IoT Edge** twice.
+9. Válassza ki a plusz jelet ( **+** ) két feladat hozzáadásához. Keresse meg és adja hozzá a **Azure IoT Edge** kétszer.
 
-    ![Add tasks for dev](./media/how-to-ci-cd/add-task-qa.png)
+    ![Fejlesztési feladatok hozzáadása](./media/how-to-ci-cd/add-task-qa.png)
 
-10. Select the first **Azure IoT Edge** task and configure it with the following values:
+10. Válassza ki az első **Azure IoT Edge** feladatot, és konfigurálja a következő értékekkel:
 
-    * **Display name**: The display name is automatically updated when the action field changes. 
-    * **Action**: Use the dropdown list to select **Generate deployment manifest**. Changing the action value also updates the task display name to match.
-    * **.template.json file**: Put the path `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`. The path is published from build pipeline.
-    * **Default platform**: Choose the same value when building the module images.
-    * **Output path**: Put the path `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. This path is the final IoT Edge deployment manifest file.
+    * **Megjelenítendő név**: a művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. 
+    * **Művelet**: a legördülő lista használatával válassza ki az **üzembe helyezési jegyzék előállítása**lehetőséget. A művelet értékének módosítása a feladat megjelenítendő nevét is frissíti a megfeleltetéshez.
+    * **. template. JSON fájl**: helyezze el az elérési utat `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`. Az elérési út közzé lett téve a Build-folyamatból.
+    * **Alapértelmezett platform**: válassza ki ugyanazt az értéket a modul lemezképének létrehozásakor.
+    * **Kimeneti elérési út**: helyezze el az elérési utat `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. Ez az elérési út a végső IoT Edge telepítési jegyzékfájl.
 
-    These configurations helps replace the module image URLs in the `deployment.template.json` file. The **Generate deployment manifest** also helps replace the variables with the exact value you defined in the `deployment.template.json` file. In VS/VS Code, you are specifying the actual value in a `.env` file. In Azure Pipelines, you set the value in Release Pipeline Variables tab. Move to Variables tab and configure the Name and Value as following.
+    Ezek a konfigurációk segítenek lecserélni a modul képurl-címeit a `deployment.template.json` fájlban. Az **üzembe helyezési jegyzék létrehozása** a `deployment.template.json` fájlban megadott pontos értékkel rendelkező változók cseréjét is lehetővé teszi. A VS/VS kódban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban a kiadási folyamat változói lapon adja meg az értéket. Váltson át a változók lapra, és konfigurálja a nevet és az értéket az alábbiak szerint.
 
-    * **ACR_ADDRESS**: Your Azure Container Registry address. 
-    * **ACR_PASSWORD**: Your Azure Container Registry password.
-    * **ACR_USER**: Your Azure Container Registry username.
+    * **ACR_ADDRESS**: a Azure Container Registry-címe. 
+    * **ACR_PASSWORD**: a Azure Container Registry jelszava.
+    * **ACR_USER**: a Azure Container Registry felhasználóneve.
 
-    If you have other variables in your project, you can specify the name and value in this tab. The **Generate deployment manifest** can only recognize the variables are in `${VARIABLE}` flavor, make sure you are using this in your `*.template.json` files.
+    Ha a projektben más változók is szerepelnek, akkor ebben a lapon megadhatja a nevet és az értéket. Az **üzembe helyezési jegyzék létrehozása** csak `${VARIABLE}` íz esetén ismeri fel a változókat, ügyeljen arra, hogy a `*.template.json`-fájlokban ezt használja.
 
-    ![Configure variables for release pipeline](./media/how-to-ci-cd/configure-variables.png)
+    ![Változók konfigurálása a kiadási folyamathoz](./media/how-to-ci-cd/configure-variables.png)
 
-10. Select the second **Azure IoT Edge** task and configure it with the following values:
+10. Válassza ki a második **Azure IoT Edge** feladatot, és konfigurálja a következő értékekkel:
 
-    * **Display name**: The display name is automatically updated when the action field changes. 
-    * **Action**: Use the dropdown list to select **Deploy to IoT Edge devices**. Changing the action value also updates the task display name to match.
-    * **Azure subscription**: Select the subscription that contains your IoT Hub.
-    * **IoT Hub name**: Select your IoT hub. 
-    * **Choose single/multiple device**: Choose whether you want the release pipeline to deploy to one device or multiple devices. 
-      * If you deploy to a single device, enter the **IoT Edge device ID**. 
-      * If you are deploying to multiple devices, specify the device **target condition**. The target condition is a filter to match a set of IoT Edge devices in IoT Hub. If you want to use Device Tags as the condition, you need to update your corresponding devices Tags with IoT Hub device twin. Update the **IoT Edge deployment ID** and **IoT Edge deployment priority** in the advanced settings. For more information about creating a deployment for multiple devices, see [Understand IoT Edge automatic deployments](module-deployment-monitoring.md).
-    * Expand Advanced Settings, select **IoT Edge deployment ID**, put the variable `$(System.TeamProject)-$(Release.EnvironmentName)`. This maps the project and release name with your IoT Edge deployment ID.
+    * **Megjelenítendő név**: a művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. 
+    * **Művelet**: a legördülő lista használatával válassza ki a **IoT Edge eszközök üzembe helyezését**. A művelet értékének módosítása a feladat megjelenítendő nevét is frissíti a megfeleltetéshez.
+    * **Azure-előfizetés**: válassza ki a IoT Hubt tartalmazó előfizetést.
+    * **IoT hub neve**: válassza ki az IoT hubot. 
+    * **Válasszon egy/több eszközt**: válassza ki, hogy szeretné-e a kiadási folyamatot egy vagy több eszközre telepíteni. 
+      * Ha egyetlen eszközre telepít központilag, adja meg **IoT Edge eszköz azonosítóját**. 
+      * Ha több eszközre telepít üzembe helyezést, az eszköz **célját**kell megadnia. A célként megadott feltétel egy szűrő, amely a IoT Hub IoT Edge-eszközeinek felel meg. Ha azt szeretné, eszköz-címkék használata a feltételt, az IoT Hub ikereszköz a megfelelő eszközök címkék frissíteni szeretné. Frissítse a **IoT Edge központi telepítési azonosítót** és a **IoT Edge központi telepítési prioritást** a speciális beállítások között. További információ a központi telepítés több eszközhöz való létrehozásáról: [IoT Edge automatikus központi telepítések ismertetése](module-deployment-monitoring.md).
+    * Bontsa ki a speciális beállítások, majd a **IoT Edge központi telepítési azonosító**elemet, helyezze a változót `$(System.TeamProject)-$(Release.EnvironmentName)`. Ez a projekt és a kiadás nevét a IoT Edge telepítési azonosítójával képezi le.
 
-11. Select **Save** to save your changes to the new release pipeline. Return to the pipeline view by selecting **Pipeline** from the menu. 
+11. A **Mentés** gombra kattintva mentheti a módosításokat az új kiadási folyamatba. Térjen vissza a folyamat nézethez a menüből válassza a **folyamat** lehetőséget. 
     
-## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Verify IoT Edge CI/CD with the build and release pipelines
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD kérdezze meg a build és a folyamatok felszabadítása
 
-To trigger a build job, you can either push a commit to source code repository or manually trigger it. In this section, you manually trigger the CI/CD pipeline to test that it works. Then verify that the deployment succeeds.
+A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Ebben a szakaszban manuálisan indítja el a CI/CD folyamatot a működésének ellenőrzéséhez. Ezután ellenőrizze, hogy az üzembe helyezés sikeres volt-e.
 
-1. Navigate to the build pipeline that you created at the beginning of this article. 
+1. Navigáljon a cikk elején létrehozott összeállítási folyamathoz. 
 
-2. You can trigger a build job in your build pipeline by selecting the **Queue** button as in following screenshot.
+2. A létrehozási folyamat során kiválthat egy felépítési feladatot úgy, hogy kijelöli a **várólista** gombot a következő képernyőképen látható módon.
 
-    ![Manual trigger](./media/how-to-ci-cd/manual-trigger.png)
+    ![Manuális eseményindító](./media/how-to-ci-cd/manual-trigger.png)
 
-3. Select the build job to watch its progress. If the build pipeline is completed successfully, it triggers a release to **dev** stage. 
+3. A folyamat előrehaladásának megtekintéséhez válassza ki a Build feladatot. Ha az összeállítási folyamat sikeresen befejeződött, elindítja a kiadást a **fejlesztői** fázisba. 
 
-    ![Build logs](./media/how-to-ci-cd/build-logs.png)
+    ![Buildnaplók](./media/how-to-ci-cd/build-logs.png)
 
-4. The successful **dev** release creates IoT Edge deployment to target IoT Edge devices.
+4. A sikeres **fejlesztői** kiadás IoT Edge központi telepítést hoz létre IoT Edge eszközök megcélzásához.
 
-    ![Release to dev](./media/how-to-ci-cd/pending-approval.png)
+    ![Kiadás a dev-be](./media/how-to-ci-cd/pending-approval.png)
 
-5. Click **dev** stage to see release logs.
+5. A kiadási naplók megjelenítéséhez kattintson a **fejlesztői** fázis elemre.
 
-    ![Release logs](./media/how-to-ci-cd/release-logs.png)
+    ![Kiadási naplók](./media/how-to-ci-cd/release-logs.png)
 
 
 
-## <a name="next-steps"></a>Következő lépések
-* IoT Edge DevOps best practices sample in [Azure DevOps Project for IoT Edge](how-to-devops-project.md)
-* Understand the IoT Edge deployment in [Understand IoT Edge deployments for single devices or at scale](module-deployment-monitoring.md)
-* Walk through the steps to create, update, or delete a deployment in [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
+## <a name="next-steps"></a>További lépések
+* IoT Edge DevOps – ajánlott eljárásokat ismertető példa az [Azure DevOps-projektben IoT Edge](how-to-devops-project.md)
+* A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)
+* Végigvezeti a központi telepítések létrehozásához, frissítéséhez vagy törléséhez szükséges lépéseket a [IoT Edge modulok nagy léptékű üzembe helyezéséhez és figyeléséhez](how-to-deploy-monitor.md).

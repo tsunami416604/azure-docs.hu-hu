@@ -1,10 +1,10 @@
 ---
-title: Create a Kubernetes cluster with Azure Dev Spaces enabled - Azure Cloud Shell
+title: Kubernetes-fürt létrehozása az Azure dev Spaces szolgáltatással engedélyezve – Azure Cloud Shell
 services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
-description: Learn how to quickly create a Kubernetes cluster enabled for Azure Dev Spaces directly from your browser without installing anything.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+description: Megtudhatja, hogyan hozhat létre gyorsan egy Kubernetes-fürtöt az Azure dev Spaces szolgáltatáshoz közvetlenül a böngészőből anélkül, hogy bármit kellene telepítenie.
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.openlocfilehash: ac825caa7aacbc6ac21dd1f9fe7acbb9cf12e900
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
@@ -12,13 +12,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325757"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Create a Kubernetes cluster with Azure Dev Spaces enabled with Azure Cloud Shell
+# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Kubernetes-fürt létrehozása az Azure dev Spaces szolgáltatással Azure Cloud Shell
 
-You can use [Azure Cloud Shell](/azure/cloud-shell) to create an Azure Kubernetes Service cluster by using the **Try It** button from this page. If you aren't signed in, follow the prompts to sign in with an Azure account, then type the commands at the Azure Cloud Shell prompt when it appears.
+A [Azure Cloud Shell](/azure/cloud-shell) használatával létrehozhat egy Azure Kubernetes Service-fürtöt az oldal **kipróbálása** gombjának használatával. Ha nincs bejelentkezve, kövesse az utasításokat az Azure-fiókkal való bejelentkezéshez, majd írja be a parancsokat a Azure Cloud Shell üzenet megjelenésekor.
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-First, create the resource group in a [region that supports Azure Dev Spaces][supported-regions].
+Először hozza létre az erőforráscsoportot egy olyan [régióban, amely támogatja az Azure dev Spaces használatát][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -30,14 +30,14 @@ Hozzon létre egy Kubernetes-fürtöt az alábbi paranccsal:
 az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
 ```
 
-A fürt létrehozása néhány percet vesz igénybe.  When complete, the output is shown in the JSON format. Look for `provisioningState` and verify it's `Succeeded`.
+A fürt létrehozása néhány percet vesz igénybe.  Ha elkészült, a kimenet JSON formátumban jelenik meg. Keresse meg a `provisioningState`, és ellenőrizze, hogy `Succeeded`-e.
 
 ## <a name="next-steps"></a>Következő lépések
 
-See [Azure Dev Spaces](/azure/dev-spaces/) for links to full tutorials.
+A teljes oktatóanyagokra mutató hivatkozásokat az [Azure dev Spaces](/azure/dev-spaces/) című részben tekintheti meg.
 
 > [!IMPORTANT]
-> Many of the Azure Dev Spaces quickstarts and tutorials use the Azure Dev Spaces CLI to perform operations. You cannot install the Azure Dev Spaces CLI in the Azure Cloud Shell.
+> Az Azure dev Spaces rövid útmutatók és oktatóanyagok az Azure dev Spaces CLI használatával végeznek műveleteket. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

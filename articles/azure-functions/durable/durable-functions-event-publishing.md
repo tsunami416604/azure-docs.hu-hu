@@ -1,6 +1,6 @@
 ---
-title: Durable Functions publishing to Azure Event Grid (preview)
-description: Learn how to configure automatic Azure Event Grid publishing for Durable Functions.
+title: Durable Functions Publishing to Azure Event Grid (előzetes verzió)
+description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatikus Azure Event Grid közzétételét.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
@@ -10,36 +10,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231450"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publishing to Azure Event Grid (preview)
+# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 
-This article shows how to set up Durable Functions to publish orchestration lifecycle events (such as created, completed, and failed) to a custom [Azure Event Grid Topic](https://docs.microsoft.com/azure/event-grid/overview).
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Durable Functionst a munkafolyamatok életciklusával kapcsolatos események (például a létrehozás, a Befejezés és a sikertelen) közzétételéhez egy egyéni [Azure Event Grid témakörben](https://docs.microsoft.com/azure/event-grid/overview).
 
-Following are some scenarios where this feature is useful:
+Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a funkció hasznos:
 
-* **DevOps scenarios like blue/green deployments**: You might want to know if any tasks are running before implementing the [side-by-side deployment strategy](durable-functions-versioning.md#side-by-side-deployments).
+* **DevOps-forgatókönyvek, például kék/zöld környezetek**: érdemes tudnia, hogy a [párhuzamos üzembe helyezési stratégia](durable-functions-versioning.md#side-by-side-deployments)megvalósítása előtt futnak-e a feladatok.
 
-* **Advanced monitoring and diagnostics support**: You can keep track of orchestration status information in an external store optimized for queries, such as SQL database or CosmosDB.
+* **Speciális monitorozási és diagnosztikai támogatás**: egy lekérdezésekre optimalizált külső tárolóban, például az SQL Database-ben vagy a CosmosDB-ban is nyomon követheti a munkafolyamati állapot adatait.
 
-* **Long-running background activity**: If you use Durable Functions for a long-running background activity, this feature helps you to know the current status.
+* **Hosszan futó háttérbeli tevékenység**: ha a Durable Functionst hosszan futó háttérbeli tevékenységhez használja, ez a funkció segít megismerni az aktuális állapotot.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Install [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in your Durable Functions project.
-* Install [Azure Storage Emulator](../../storage/common/storage-use-emulator.md).
-* Install [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) or use [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Telepítse a [Microsoft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) programot a Durable functions-projektbe.
+* Telepítse az [Azure Storage emulatort](../../storage/common/storage-use-emulator.md).
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) telepítése vagy a [Azure Cloud Shell](../../cloud-shell/overview.md) használata
 
-## <a name="create-a-custom-event-grid-topic"></a>Create a custom event grid topic
+## <a name="create-a-custom-event-grid-topic"></a>Egyéni Event Grid-témakör létrehozása
 
-Create an event grid topic for sending events from Durable Functions. The following instructions show how to create a topic by using Azure CLI. For information about how to do it by using PowerShell or the Azure portal, refer to the following articles:
+Hozzon létre egy Event Grid-témakört az események Durable Functionsból való küldéséhez. Az alábbi utasítások bemutatják, hogyan hozhat létre egy témakört az Azure CLI használatával. A PowerShell vagy a Azure Portal használatával történő végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-* [EventGrid Quickstarts: Create custom event - PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
-* [EventGrid Quickstarts: Create custom event - Azure portal](../../event-grid/custom-event-quickstart-portal.md)
+* [EventGrid gyors útmutató: egyéni esemény létrehozása – PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
+* [EventGrid gyors útmutató: egyéni esemény létrehozása – Azure Portal](../../event-grid/custom-event-quickstart-portal.md)
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. Currently, Azure Event Grid doesn't support all regions. For information about which regions are supported, see the [Azure Event Grid overview](../../event-grid/overview.md).
+Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. A Azure Event Grid jelenleg nem támogatja az összes régiót. További információ a támogatott régiókról: [Azure Event Grid Overview (áttekintés](../../event-grid/overview.md)).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -47,33 +47,33 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-An event grid topic provides a user-defined endpoint that you post your event to. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. The topic name must be unique because it becomes a DNS entry.
+Az Event Grid-témakör egy felhasználó által definiált végpontot biztosít, amelyre az eseményt közzéteszi. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert DNS-bejegyzés lesz.
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
-## <a name="get-the-endpoint-and-key"></a>Get the endpoint and key
+## <a name="get-the-endpoint-and-key"></a>A végpont és a kulcs lekérése
 
-Get the endpoint of the topic. Replace `<topic_name>` with the name you chose.
+A témakör végpontjának beolvasása. Cserélje le a `<topic_name>`t a kiválasztott névre.
 
 ```bash
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
-Get the topic key. Replace `<topic_name>` with the name you chose.
+A témakör kulcsának beolvasása. Cserélje le a `<topic_name>`t a kiválasztott névre.
 
 ```bash
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 
-Now you can send events to the topic.
+Most már küldhet eseményeket a témakörbe.
 
-## <a name="configure-azure-event-grid-publishing"></a>Configure Azure Event Grid publishing
+## <a name="configure-azure-event-grid-publishing"></a>Azure Event Grid közzétételének konfigurálása
 
-In your Durable Functions project, find the `host.json` file.
+A Durable Functions-projektben keresse meg a `host.json` fájlt.
 
-Add `eventGridTopicEndpoint` and `eventGridKeySettingName` in a `durableTask` property.
+`eventGridTopicEndpoint` és `eventGridKeySettingName` hozzáadása `durableTask` tulajdonságban.
 
 ```json
 {
@@ -84,9 +84,9 @@ Add `eventGridTopicEndpoint` and `eventGridKeySettingName` in a `durableTask` pr
 }
 ```
 
-The possible Azure Event Grid configuration properties can be found in the [host.json documentation](../functions-host-json.md#durabletask). After you configure the `host.json` file, your function app sends lifecycle events to the event grid topic. This works when you run your function app both locally and in Azure.```
+A lehetséges Azure Event Grid konfigurációs tulajdonságok a [Host. JSON dokumentációjában](../functions-host-json.md#durabletask)találhatók. A `host.json` fájl konfigurálása után a Function alkalmazás életciklus-eseményeket küld az Event Grid témakörbe. Ez akkor működik, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
 
-Set the app setting for the topic key in the Function App and `local.setting.json`. The following JSON is a sample of the `local.settings.json` for local debugging. Replace `<topic_key>` with the topic key.  
+Adja meg a témakörhöz tartozó függvényalkalmazás és `local.setting.json`alkalmazásának beállításait. A következő JSON a helyi hibakeresési `local.settings.json` mintája. Cserélje le a `<topic_key>`t a témakör kulcsára.  
 
 ```json
 {
@@ -99,29 +99,29 @@ Set the app setting for the topic key in the Function App and `local.setting.jso
 }
 ```
 
-Make sure that [Storage Emulator](../../storage/common/storage-use-emulator.md) is working. It's a good idea to run the `AzureStorageEmulator.exe clear all` command before executing.
+Győződjön meg arról, hogy a [Storage Emulator](../../storage/common/storage-use-emulator.md) működik. A végrehajtás előtt érdemes futtatni a `AzureStorageEmulator.exe clear all` parancsot.
 
-## <a name="create-functions-that-listen-for-events"></a>Create functions that listen for events
+## <a name="create-functions-that-listen-for-events"></a>Eseményeket figyelő függvények létrehozása
 
-Create a Function App. It's best to locate it in the same region as the event grid topic.
+Hozzon létre egy függvényalkalmazás. A legjobb megoldás, ha ugyanabban a régióban található, mint az Event Grid-témakör.
 
-### <a name="create-an-event-grid-trigger-function"></a>Create an event grid trigger function
+### <a name="create-an-event-grid-trigger-function"></a>Event Grid eseményindító-függvény létrehozása
 
-Create a function to receive the lifecycle events. Select **Custom Function**.
+Hozzon létre egy függvényt az életciklus eseményeinek fogadásához. Válassza az **Egyéni függvény**lehetőséget.
 
-![Select a Create a custom function.](./media/durable-functions-event-publishing/functions-portal.png)
+![Válassza az egyéni létrehozása funkciót.](./media/durable-functions-event-publishing/functions-portal.png)
 
-Choose Event Grid Trigger, and select `C#`.
+Válassza ki Event Grid triggert, és válassza a `C#`lehetőséget.
 
-![Select the Event Grid Trigger.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+![Válassza ki a Event Grid triggert.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
-Enter the name of the function, and then select `Create`.
+Adja meg a függvény nevét, majd válassza a `Create`lehetőséget.
 
-![Create the Event Grid Trigger.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+![Hozza létre a Event Grid triggert.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-A function with the following code is created:
+A rendszer létrehoz egy függvényt a következő kóddal:
 
-#### <a name="precompiled-c"></a>Precompiled C#
+#### <a name="precompiled-c"></a>ElőfordítottC#
 ```csharp
 public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
 {
@@ -129,7 +129,7 @@ public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
 }
 ```
 
-#### <a name="c-script"></a>C# Script
+#### <a name="c-script"></a>C#Parancsfájl
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -143,21 +143,21 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-Válassza a(z) `Add Event Grid Subscription` lehetőséget. This operation adds an event grid subscription for the event grid topic that you created. For more information, see [Concepts in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
+Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet hozzáadja az Event Grid-előfizetést az Ön által létrehozott Event Grid-témakörhöz. További információ: [fogalmak a Azure Event Grid-ban](https://docs.microsoft.com/azure/event-grid/concepts)
 
-![Select the Event Grid Trigger link.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+![Válassza ki a Event Grid trigger hivatkozást.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-Select `Event Grid Topics` for **Topic Type**. Select the resource group that you created for the event grid topic. Then select the instance of the event grid topic. Press `Create`.
+Válassza ki `Event Grid Topics` a **témakör típusa mezőben**. Válassza ki az Event Grid-témakörhöz létrehozott erőforráscsoportot. Ezután válassza ki az Event Grid-témakör példányát. Nyomja meg az `Create`gombot.
 
 ![Event Grid-előfizetés létrehozása.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Now you're ready to receive lifecycle events.
+Most már készen áll az életciklus-események fogadására.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Create Durable Functions to send the events
+## <a name="create-durable-functions-to-send-the-events"></a>Durable Functions létrehozása az események elküldéséhez
 
-In your Durable Functions project, start debugging on your local machine.  The following code is the same as the template code for the Durable Functions. You already configured `host.json` and `local.settings.json` on your local machine.
+A Durable Functions-projektben indítsa el a hibakeresést a helyi gépen.  A következő kód megegyezik a Durable Functions sablon kódjával. Már konfigurálta `host.json` és `local.settings.json` a helyi gépen.
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>ElőfordítottC#
 
 ```csharp
 using System.Collections.Generic;
@@ -211,11 +211,11 @@ namespace LifeCycleEventSpike
 ```
 
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`, `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett a `IDurableOrchestrationContext`helyett a `OrchestrationClient` attribútumot kell `DurableOrchestrationContext` használnia, és `DurableOrchestrationClient` helyett a `IDurableOrchestrationClient`paramétert kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-If you call the `Sample_HttpStart` with Postman or your browser, Durable Function starts to send lifecycle events. The endpoint is usually `http://localhost:7071/api/Sample_HttpStart` for local debugging.
+Ha a `Sample_HttpStart` a Poster vagy a böngészővel hívja, a tartós függvény elkezdi életciklus-események küldését. A végpont általában `http://localhost:7071/api/Sample_HttpStart` a helyi hibakereséshez.
 
-See the logs from the function that you created in the Azure portal.
+Tekintse meg a Azure Portalban létrehozott függvény naplóit.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -257,32 +257,32 @@ See the logs from the function that you created in the Azure portal.
 2019-04-20T09:28:37.098 [Info] Function completed (Success, Id=36fadea5-198b-4345-bb8e-2837febb89a2, Duration=0ms)
 ```
 
-## <a name="event-schema"></a>Event Schema
+## <a name="event-schema"></a>Esemény sémája
 
-The following list explains the lifecycle events schema:
+Az alábbi lista az életciklus-események sémáját mutatja be:
 
-* **`id`** : Unique identifier for the event grid event.
-* **`subject`** : Path to the event subject. `durable/orchestrator/{orchestrationRuntimeStatus}` kérdésre adott válaszban foglalt lépéseket. `{orchestrationRuntimeStatus}` will be `Running`, `Completed`, `Failed`, and `Terminated`.  
-* **`data`** : Durable Functions Specific Parameters.
-  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) name.
-  * **`functionName`** : Orchestrator function name.
-  * **`instanceId`** : Durable Functions instanceId.
-  * **`reason`** : Additional data associated with the tracking event. For more information, see [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`** : Orchestration Runtime Status. Running, Completed, Failed, Canceled.
+* **`id`** : az Event Grid esemény egyedi azonosítója.
+* **`subject`** : az esemény tárgyának elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. a `{orchestrationRuntimeStatus}` `Running`, `Completed`, `Failed`és `Terminated`lesz.  
+* **`data`** : Durable functions megadott paraméterek.
+  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) neve.
+  * **`functionName`** : a Orchestrator függvény neve.
+  * **`instanceId`** : Durable functions instanceId.
+  * **`reason`** : a nyomkövetési eseményhez kapcsolódó további információk. További információ: [diagnosztika a Durable functions (Azure functions)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`** : a hangolási futtatókörnyezet állapota. Fut, befejezett, sikertelen, megszakítva.
 * **`eventType`** : "orchestratorEvent"
-* **`eventTime`** : Event time (UTC).
-* **`dataVersion`** : Version of the lifecycle event schema.
-* **`metadataVersion`** :  Version of the metadata.
-* **`topic`** : Event grid topic resource.
+* **`eventTime`** : esemény időpontja (UTC).
+* **`dataVersion`** : az életciklus-esemény sémájának verziója.
+* **`metadataVersion`** : a metaadatok verziója.
+* **`topic`** : Event Grid-témakör erőforrása.
 
-## <a name="how-to-test-locally"></a>How to test locally
+## <a name="how-to-test-locally"></a>Helyi tesztelés
 
-To test locally, use [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok).
+A helyi teszteléshez használja a [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok).
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn instance management in Durable Functions](durable-functions-instance-management.md)
+> [A példányok kezelésének megismerése Durable Functions](durable-functions-instance-management.md)
 
 > [!div class="nextstepaction"]
-> [Learn versioning in Durable Functions](durable-functions-versioning.md)
+> [A verziószámozás megismerése Durable Functions](durable-functions-versioning.md)

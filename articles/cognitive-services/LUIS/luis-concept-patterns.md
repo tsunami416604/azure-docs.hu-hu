@@ -1,7 +1,7 @@
 ---
 title: Minták Súgó előrejelzése – LUIS
 titleSuffix: Azure Cognitive Services
-description: A mintákkal magasabb szintű pontosság érhető el egy beszédelemnél anélkül, hogy sok további beszédelemre lenne szükség.
+description: Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -19,7 +19,7 @@ ms.lasthandoff: 11/21/2019
 ms.locfileid: "74280857"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
-Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  A mintákkal magasabb szintű pontosság érhető el egy beszédelemnél anélkül, hogy sok további beszédelemre lenne szükség. 
+Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Minták szándék alacsony megbízhatósági megoldása
 Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Fontolja meg egy alkalmazott Tom, egy alkalmazott felettesétől az Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
@@ -50,7 +50,7 @@ A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök 
 Ne várja meg a továbbfejlesztett entitások előrejelzését, ha több hosszúságú kimondott szöveg összecsuk egyetlen mintára. Az egyszerű entitások a hosszúságú kimondott szöveg hozzáadásához vagy a listához tartozó entitások használata más, mint a minta nem fog tüzet használni.
 
 ## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használata
-Ha két vagy több entitások egy minta kontextusban kapcsolódó, mintákat használják az entitást [szerepkörök](luis-concept-roles.md) entitásokról környezeti információk kinyeréséhez.  
+Ha a mintában két vagy több entitás kontextussal kapcsolatos kapcsolatban áll, a minták az entitások környezetfüggő információinak kinyeréséhez használják az entitás- [szerepköröket](luis-concept-roles.md) .  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzési pontszámok rendelkező és anélküli minták
 Adott elegendő példa utterances, LUIS elvileg látnia kell növelni az előrejelzés megbízhatósági minták nélkül. Minták növelheti a megbízhatósági pontszám annyi kimondott szöveg megadása nélkül.  
@@ -62,13 +62,13 @@ A minta egyezik az entitások belül a mintát először észlelése, majd ellen
 Olyan alkalmazásokat hozhat létre, amelyek nem rendelkeznek példa hosszúságú kimondott szöveg, feltéve, hogy az egyes szándékok esetében minta van. Csak minta alkalmazás esetében a minta nem tartalmazhat géppel megtanult entitásokat, mert ezek a hosszúságú kimondott szöveg példaként szükségesek. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
+Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Minta szintaxisa
+## <a name="pattern-syntax"></a>A minta-szintaxis
 
 A minta szintaxisának ismertetése a [minta szintaxisának](reference-pattern-syntax.md)leírásában. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a mintákról:
 
@@ -77,4 +77,4 @@ További információ a mintákról:
 * [Mintázatok szintaxisa](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Ebben az oktatóanyagban minták megvalósítása](luis-tutorial-pattern.md)
+> [Ismerje meg, hogyan implementálhat mintákat ebben az oktatóanyagban](luis-tutorial-pattern.md)

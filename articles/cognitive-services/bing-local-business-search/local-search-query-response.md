@@ -1,7 +1,7 @@
 ---
-title: Sending and using API queries and responses - Bing Local Business Search
+title: API-lekérdezések és válaszok küldése és használata – Bing helyi üzleti keresés
 titleSuffix: Azure Cognitive Services
-description: Use this article to learn how to send and use search queries with the Bing Local Business Search API.
+description: Ebből a cikkből megtudhatja, hogyan küldhet és használhat keresési lekérdezéseket a Bing local Business Search API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,27 +17,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326722"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Sending and using Bing Local Business Search API queries and responses
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing helyi üzleti keresési API-lekérdezések és válaszok küldése és használata
 
-You can get local results from the Bing Local Business Search API by sending a search query to its endpoint and including the `Ocp-Apim-Subscription-Key` header, which is required. Along with available [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters), Searches can be customized by specifying [geographic boundaries](specify-geographic-search.md) for the area to be searched, and the [categories](local-search-query-response.md) of places returned.
+Helyi eredményeket szerezhet be a Bing local Business Search API-ból, ha keresési lekérdezést küld a végpontjának, és tartalmazza a `Ocp-Apim-Subscription-Key` fejlécet, amely kötelező. A rendelkezésre álló [fejlécekkel](local-search-reference.md#headers) és [paraméterekkel](local-search-reference.md#query-parameters)együtt a keresések testreszabhatók a keresendő terület [földrajzi határainak](specify-geographic-search.md) , valamint a visszaadott helyek [kategóriáinak](local-search-query-response.md) megadásával.
 
-## <a name="creating-a-request"></a>Creating a request
+## <a name="creating-a-request"></a>Kérelem létrehozása
 
-To send a request to the Bing Local Business Search API, append a search term to the `q=` parameter before adding it to the API endpoint, and including the `Ocp-Apim-Subscription-Key` header. Példa:
+Ha kérést szeretne küldeni a Bing local Business Search API-nak, fűzze hozzá a keresési kifejezést a `q=` paraméterhez, mielőtt hozzáadja azt az API-végponthoz, és tartalmazza a `Ocp-Apim-Subscription-Key` fejlécet is. Például:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-The full request URL syntax is shown below. See the Bing Local Business Search API [quickstarts](quickstarts/local-quickstart.md), and reference content for [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters) for more information on sending requests. 
+A kérelem URL-címének teljes szintaxisa alább látható. A kérelmek küldésével kapcsolatos további információkért tekintse meg a Bing helyi üzleti [keresési API-](quickstarts/local-quickstart.md)gyors útmutatóit és a [fejlécek](local-search-reference.md#headers) és [Paraméterek](local-search-reference.md#query-parameters) hivatkozási tartalmát. 
 
-For information on local search categories, see [Search categories for the Bing Local Business Search API](local-categories.md).
+A helyi keresési kategóriákkal kapcsolatos információkért lásd: [keresési kategóriák a Bing local Business Search API](local-categories.md)-hoz.
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Using responses
+## <a name="using-responses"></a>Válaszok használata
 
-JSON responses from the Bing Local Business Search API contain a `SearchResponse` object. The API will return relevant search results in the `places` field. if no results are found, the `places` field will not be included in the response.
+A Bing helyi üzleti keresési API-ból származó JSON-válaszok `SearchResponse` objektumot tartalmaznak. Az API a `places` mezőben a releváns keresési eredményeket fogja visszaadni. Ha nem található eredmény, a válaszban nem szerepel a `places` mező.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -52,29 +52,29 @@ JSON responses from the Bing Local Business Search API contain a `SearchResponse
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Search result attributes
+### <a name="search-result-attributes"></a>Keresési eredmények attribútumai
 
-The JSON results returned by the API include the following attributes:
+Az API által visszaadott JSON-eredmények a következő attribútumokat tartalmazzák:
 
 * _type
-* address
+* Cím
 * entityPresentationInfo
-* geo
+* georedundáns
 * id
 * név
 * routeablePoint
-* telephone
+* telefonon
 * url
 
-For general information about headers, parameters, market codes, response objects, errors, etc., see the [Bing Local Search API v7](local-search-reference.md) reference.
+A fejlécekkel, paraméterekkel, piaci kódokkal, válasz objektumokkal, hibákkal és egyéb adatokkal kapcsolatos általános információkért lásd a [Bing helyi keresési API v7](local-search-reference.md) dokumentációját.
 
 > [!NOTE]
-> You, or a third party on your behalf, may not use, retain, store, cache, share, or distribute any data from the Local Search API for the purpose of testing, developing, training, distributing or making available any non-Microsoft service or feature. 
+> Ön vagy egy harmadik fél az Ön nevében nem használhatja fel, nem őrzi meg, nem tárolja, nem osztja meg, nem oszthatja meg és nem terjesztheti a helyi keresési API adatait a nem a Microsofttól származó szolgáltatások vagy szolgáltatások tesztelésére, fejlesztésére, betanítására, terjesztésére vagy elérhetővé tételére. 
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
-The following JSON response includes search results specified by the query `?q=restaurant+in+Bellevue`.
+A következő JSON-válasz a lekérdezés `?q=restaurant+in+Bellevue`által megadott keresési eredményeket tartalmazza.
 
 ```json
 Vary: Accept-Encoding
@@ -147,7 +147,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Következő lépések
-- [Local Business Search quickstart](quickstarts/local-quickstart.md)
-- [Local Business Search Java quickstart](quickstarts/local-search-java-quickstart.md)
-- [Local Business Search Node quickstart](quickstarts/local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](quickstarts/local-search-python-quickstart.md)
+- [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
+- [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
+- [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)
+- [Helyi üzleti keresés – Python rövid útmutató](quickstarts/local-search-python-quickstart.md)

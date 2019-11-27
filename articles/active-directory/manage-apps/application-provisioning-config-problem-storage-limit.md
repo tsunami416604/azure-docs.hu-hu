@@ -45,5 +45,5 @@ Ezt a problémát kétféleképpen lehet megkerülni ma:
 
 2. **Csökkentse a tárolt konfigurációs adatok mennyiségét** – a létesítés lap [rendszergazdai hitelesítő](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) adatok szakaszában megadott összes adat ugyanabban a helyen TÁROLÓDIK, mint az SAML-tanúsítvány. Habár előfordulhat, hogy az összes adat hosszának csökkentése nem lehetséges, néhány opcionális konfigurációs mező, például az **értesítési e-mail** is eltávolítható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A felhasználók üzembe helyezésének és megszüntetésének beállítása SaaS-alkalmazásokhoz](user-provisioning.md)

@@ -16,7 +16,7 @@ ms.locfileid: "74279931"
 
 A Kubernetes-fürtöt egy Azure fejlesztői tárhelyen belül érheti el, és használhat meglévő Kubernetes-eszközöket (például `kubectl`).
 
-`az aks use-dev-spaces` parancs futtatásakor a rendszer automatikusan hozzáad egy `kubectl` konfigurációs környezetet, így az kubectl-nek már csatlakoznia kell az Azure dev Spaces Kubernetes-fürthöz. Példák:
+`az aks use-dev-spaces` parancs futtatásakor a rendszer automatikusan hozzáad egy `kubectl` konfigurációs környezetet, így az kubectl-nek már csatlakoznia kell az Azure dev Spaces Kubernetes-fürthöz. Például:
 - Az aktuális környezet megerősítése: `kubectl config current-context`
 - Az összes elérhető kontextus listázása: `kubectl config get-contexts`. 
 - Változás kontextusa: `kubectl config use-context <context-name>`

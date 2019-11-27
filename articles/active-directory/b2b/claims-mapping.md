@@ -36,7 +36,7 @@ A jogcímek hozzáadásával és szerkesztésével kapcsolatos további informá
 
 A B2B-együttműködés felhasználói számára a NameID és az UPN-t használó több-bérlős felhasználók biztonsági okokból nem érhetők el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a B2B együttműködés felhasználói tulajdonságairól: [Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](user-properties.md).
 - A B2B-együttműködés felhasználói jogkivonatával kapcsolatos információkért lásd: [felhasználói jogkivonatok megismerése az Azure ad B2B együttműködésben](user-token.md).

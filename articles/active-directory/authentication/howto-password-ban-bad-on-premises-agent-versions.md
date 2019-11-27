@@ -1,6 +1,6 @@
 ---
-title: Password protection agent release history - Azure Active Directory
-description: Documents version release and behavior change history
+title: A jelszavas védelem ügynökének kiadási előzményei – Azure Active Directory
+description: A dokumentumok verziójának kiadása és a viselkedés változási előzményei
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,122 +18,122 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381735"
 ---
-# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD Password Protection agent version history
+# <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszavas védelmi ügynök korábbi verziói
 
 ## <a name="121250"></a>1.2.125.0
 
-Release date: 3/22/2019
+Kiadás dátuma: 3/22/2019
 
-* Fix minor typo errors in event log messages
-* Update EULA agreement to final General Availability version
+* Kisebb typo hibák javítása az Eseménynapló üzeneteiben
+* Végfelhasználói licencszerződés frissítése a végleges általánosan elérhető verzióra
 
 > [!NOTE]
-> Build 1.2.125.0 is the General Availability build. Thank you again to everyone has provided feedback on the product!
+> A build 1.2.125.0 az általánosan elérhető Build. Köszönjük, hogy mindenki visszajelzést kapott a termékről!
 
 ## <a name="121160"></a>1.2.116.0
 
-Release date: 3/13/2019
+Kiadás dátuma: 3/13/2019
 
-* The Get-AzureADPasswordProtectionProxy and Get-AzureADPasswordProtectionDCAgent cmdlets now report software version and the current Azure tenant with the following limitations:
-  * Software version and Azure tenant data are only available for DC agents and proxies running version 1.2.116.0 or later.
-  * Azure tenant data may not be reported until a re-registration (or renewal) of the proxy or forest has occurred.
-* The Proxy service now requires that .NET 4.7 is installed.
-  * .NET 4.7 should already be installed on a fully updated Windows Server. If this is not the case, download and run the installer found at [The .NET Framework 4.7 offline installer for Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
-  * On Server Core systems it may be necessary to pass the /q flag to the .NET 4.7 installer to get it to succeed.
-* The Proxy service now supports automatic upgrade. Automatic upgrade uses the Microsoft Azure AD Connect Agent Updater service which is installed side-by-side with the Proxy service. Automatic upgrade is on by default.
-* Automatic upgrade can be enabled or disabled using the Set-AzureADPasswordProtectionProxyConfiguration cmdlet. The current setting can be queried using the Get-AzureADPasswordProtectionProxyConfiguration cmdlet.
-* The service binary for the DC agent service has been renamed to AzureADPasswordProtectionDCAgent.exe.
-* The service binary for the Proxy service has been renamed to AzureADPasswordProtectionProxy.exe. Firewall rules may need to be modified accordingly if a third-party firewall is in-use.
-  * NOTE: if an http proxy config file was being used in a previous Proxy install, it will need to be renamed (from *proxyservice.exe.config* to *AzureADPasswordProtectionProxy.exe.config*) after this upgrade.
-* All time-limited functionality checks have been removed from the DC agent.
-* Minor bugs fixes and logging improvements.
+* A Get-AzureADPasswordProtectionProxy és a Get-AzureADPasswordProtectionDCAgent parancsmagok mostantól a szoftver verzióját és az aktuális Azure-bérlőt jelentik a következő korlátozásokkal:
+  * A szoftver verziója és az Azure-bérlői adatközpont csak a 1.2.116.0 vagy újabb verziót futtató TARTOMÁNYVEZÉRLŐk és proxyk esetében érhető el.
+  * Előfordulhat, hogy az Azure-bérlői adatforgalmi jelentés nem jelent meg, amíg a proxy vagy az erdő újbóli regisztrálása (vagy megújítása) be nem következik.
+* A proxy szolgáltatáshoz most már telepítve kell lennie a .NET 4,7-nek.
+  * A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7-es offline telepítője a Windowshoz](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * A Server Core rendszerekben szükség lehet a/q jelző megadására a .NET 4,7 telepítőre, hogy a sikeres legyen.
+* A proxy szolgáltatás mostantól támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Alapértelmezés szerint az automatikus frissítés be van kapcsolva.
+* Az automatikus frissítés a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le.
+* A DC Agent szolgáltatáshoz tartozó szolgáltatás bináris fájlját átnevezték a AzureADPasswordProtectionDCAgent. exe névre.
+* A proxy szolgáltatáshoz tartozó bináris fájl át lett nevezve a AzureADPasswordProtectionProxy. exe névre. Előfordulhat, hogy a tűzfalszabályok módosítására van szükség, ha egy külső gyártótól származó tűzfal van használatban.
+  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, a frissítés után át kell őket átnevezni (a *proxyservice. exe. config* fájlból a *AzureADPasswordProtectionProxy. exe. config*fájlba).
+* Az összes időkorlátos funkció-ellenőrzés el lett távolítva a DC-ügynökből.
+* A kisebb hibák javításai és naplózási funkciói.
 
 ## <a name="12650"></a>1.2.65.0
 
-Release date: 2/1/2019
+Kiadás dátuma: 2/1/2019
 
-Changes:
+Változások
 
-* DC agent and proxy service are now supported on Server Core. Mininimum OS requirements are unchanged from before: Windows Server 2012 for DC agents, and Windows Server 2012 R2 for proxies.
-* The Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest cmdlets now support device-code-based Azure authentication modes.
-* The Get-AzureADPasswordProtectionDCAgent cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
-* The Get-AzureADPasswordProtectionSummaryReport cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
-* The Proxy powershell module is now registered from %ProgramFiles%\WindowsPowerShell\Modules. The machine's PSModulePath environment variable is no longer modified.
-* A new Get-AzureADPasswordProtectionProxy cmdlet has been added to aid in discovering registered proxies in a forest or domain.
-* The DC agent uses a new folder in the sysvol share for replicating password policies and other files.
+* A DC-ügynök és a proxy szolgáltatás mostantól támogatott a Server Core-ban. A Mininimum operációs rendszerre vonatkozó követelmények nem változnak a következő előtt: Windows Server 2012 for DC Agents, és Windows Server 2012 R2 for proxys.
+* A Register-AzureADPasswordProtectionProxy és a Register-AzureADPasswordProtectionForest parancsmag mostantól támogatja az eszköz-kód alapú Azure-hitelesítési módokat.
+* A Get-AzureADPasswordProtectionDCAgent parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
+* A Get-AzureADPasswordProtectionSummaryReport parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
+* A proxy PowerShell-modul már regisztrálva van a%ProgramFiles%\WindowsPowerShell\Modules. A gép PSModulePath környezeti változója már nem módosul.
+* Új Get-AzureADPasswordProtectionProxy parancsmag lett hozzáadva a regisztrált proxyk egy erdőben vagy tartományban való felfedéséhez.
+* A tartományvezérlő ügynöke egy új mappát használ a SYSVOL megosztásban a jelszóházirend és más fájlok replikálásához.
 
-   Old folder location:
+   Régi mappa helye:
 
    `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
 
-   New folder location:
+   Új mappa helye:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   (This change was made to avoid false-positive "orphaned GPO" warnings.)
+   (Ez a változás a hamis pozitív "árva GPO" figyelmeztetések elkerülését eredményezte.)
 
    > [!NOTE]
-   > No migration or sharing of data will be done between the old folder and the new folder. Older DC agent versions will continue to use the old location until upgraded to this version or later. Once all DC agents are running version 1.2.65.0 or later, the old sysvol folder may be manually deleted.
+   > A régi mappa és az új mappa között nem történik áttelepítés vagy adatmegosztás. A régebbi DC-ügynök verziói továbbra is a régi helyet fogják használni, amíg erre a verzióra vagy később nem frissítik. Ha minden tartományvezérlő ügynöke 1.2.65.0 vagy újabb verziót futtat, lehet, hogy a régi SYSVOL mappát manuálisan törli.
 
-* The DC agent and proxy service will now detect and delete mangled copies of their respective service connection points.
-* Each DC agent will periodically delete mangled and stale service connection points in its domain, for both DC agent and proxy service connection points. Both DC agent and proxy service connection points are considered stale if its heartbeat timestamp is older than seven days.
-* The DC agent will now renew the forest certificate as needed.
-* The Proxy service will now renew the proxy certificate as needed.
-* Updates to password validation algorithm: the global banned password list and customer-specific banned password list (if configured) are combined prior to password validations. A given password may now be rejected (fail or audit-only) if it contains tokens from both the global and customer-specific list. The event log documentation has been updated to reflect this; please see [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md).
-* Performance and robustness fixes
-* Improved logging
+* A DC Agent és a proxy szolgáltatás mostantól felismeri és törli a megfelelő szolgáltatási kapcsolatainak összekeveredett másolatait.
+* Minden tartományvezérlő ügynök rendszeresen törli az összekeveredett és elavult szolgáltatási kapcsolati pontokat a tartományában, a DC-ügynök és a proxykiszolgáló kapcsolati pontjai esetében is. A DC-ügynök és a proxy Service-kapcsolati pontok elavultnak tekintendők, ha a szívverési időbélyegzője hét napnál régebbi.
+* A DC-ügynök most szükség szerint megújítja az erdő tanúsítványát.
+* A proxy szolgáltatás most szükség szerint megújítja a proxy-tanúsítványt.
+* A jelszó-ellenőrzési algoritmus frissítései: a globálisan tiltott jelszavak listáját és az ügyfél-specifikus tiltott jelszavak listáját (ha be van állítva) a rendszer a jelszó érvényessége előtt kombinálja. Egy adott jelszó elutasítása elvégezhető (sikertelen vagy csak naplózás), ha a globális és az ügyfél-specifikus listából is tartalmaz jogkivonatokat. Az Eseménynapló dokumentációja frissítve lett, hogy tükrözze ezt; Tekintse meg az [Azure ad jelszavas védelem figyelése](howto-password-ban-bad-on-premises-monitor.md)című témakört.
+* Teljesítmény-és megbízhatósági javítások
+* Továbbfejlesztett naplózás
 
 > [!WARNING]
-> Time-limited functionality:  the DC agent service in this release (1.2.65.0) will stop processing password validation requests as of September 1st 2019.  DC agent services in prior releases (see list below) will stop processing as of July 1st 2019. The DC agent service in all versions will log 10021 events to the Admin event log in the two months leading up these deadlines. All time-limit restrictions will be removed in the upcoming GA release. The Proxy agent service is not time-limited in any version but should still be upgraded to the latest version in order to take advantage of all subsequent bug fixes and other improvements.
+> Időkorlátos funkciók: ebben a kiadásban a DC Agent szolgáltatás (1.2.65.0) leállítja a jelszó-ellenőrzési kérések feldolgozását szeptember 1-től 2019.  A korábbi kiadásokban a DC Agent Services (lásd az alábbi listát) az 2019. július 1-től leállítja a feldolgozást. A DC Agent szolgáltatás minden verzióban az 10021-es eseményeket a rendszergazdai eseménynaplóba fogja naplózni a két hónap során, amely a következő határidőket vezeti. A következő kiadásban az összes időkorlát el lesz távolítva. A proxy Agent szolgáltatás semmilyen verzióban nem korlátozott, de továbbra is a legújabb verzióra kell frissíteni ahhoz, hogy kihasználhassa az összes további hibajavítást és egyéb fejlesztést.
 
 ## <a name="12250"></a>1.2.25.0
 
-Release date: 11/01/2018
+Kiadás dátuma: 11/01/2018
 
-Fixes:
+Hibajavítások
 
-* DC agent and proxy service should no longer fail due to certificate trust failures.
-* DC agent and proxy service have additional fixes for FIPS-compliant machines.
-* Proxy service will now work properly in a TLS 1.2-only networking environment.
-* Minor performance and robustness fixes
-* Improved logging
+* A tartományvezérlő ügynökének és a proxy szolgáltatásnak a tanúsítvány-megbízhatósági hibák miatt már nem kell meghiúsulnia.
+* A DC-ügynök és a proxy szolgáltatás további javításokat tartalmaz az FIPS-kompatibilis gépekhez.
+* A proxy szolgáltatás mostantól megfelelően fog működni a TLS 1,2-alapú hálózatkezelési környezetben.
+* Kisebb teljesítmény és robusztus javítások
+* Továbbfejlesztett naplózás
 
-Changes:
+Változások
 
-* The minimum required OS level for the Proxy service is now Windows Server 2012 R2. The minimum required OS level for the DC agent service remains at Windows Server 2012.
-* The Proxy service now requires .NET version 4.6.2.
-* The password validation algorithm uses an expanded character normalization table. This may result in passwords being rejected that were accepted in prior versions.
+* A proxy szolgáltatás minimálisan szükséges operációsrendszer-szintje mostantól a Windows Server 2012 R2. A DC Agent szolgáltatás minimálisan szükséges operációsrendszer-szintje a Windows Server 2012-es verzióban marad.
+* A proxy szolgáltatáshoz mostantól a .NET-es verzió 4.6.2 szükséges.
+* A jelszó-ellenőrzési algoritmus kibontott karakteres normalizáló táblát használ. Ez azt eredményezheti, hogy a rendszer elutasítja a jelszavakat, amelyeket a korábbi verziókban elfogadtak.
 
 ## <a name="12100"></a>1.2.10.0
 
-Release date: 8/17/2018
+Kiadás dátuma: 8/17/2018
 
-Fixes:
+Hibajavítások
 
-* Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest now support multi-factor authentication
-* Register-AzureADPasswordProtectionProxy requires a WS2012 or later domain controller in the domain to avoid encryption errors.
-* DC agent service is more reliable about requesting a new password policy from Azure on startup.
-* DC agent service will request a new password policy from Azure every hour if necessary, but will now do so on a randomly selected start time.
-* DC agent service will no longer cause an indefinite delay in new DC advertisement when installed on a server prior to its promotion as a replica.
-* DC agent service will now honor the “Enable password protection on Windows Server Active Directory” configuration setting
-* Both DC agent and proxy installers will now support in-place upgrade when upgrading to future versions.
+* A Register-AzureADPasswordProtectionProxy és a Register-AzureADPasswordProtectionForest mostantól támogatja a többtényezős hitelesítést
+* A regisztráláshoz a AzureADPasswordProtectionProxy WS2012 vagy újabb tartományvezérlő szükséges a tartományban a titkosítási hibák elkerülése érdekében.
+* A DC Agent szolgáltatás megbízhatóbb az Azure-beli új jelszóházirend indításkor történő kérésekor.
+* A DC Agent szolgáltatás szükség esetén minden órában új jelszóházirend-szabályzatot kér az Azure-ban, de ezt követően véletlenszerűen kiválasztott kezdési időpontban fog megjelenni.
+* A DC Agent szolgáltatás a továbbiakban nem eredményez határozatlan késleltetést az új TARTOMÁNYVEZÉRLŐi hirdetményben, ha az előléptetésük előtt egy kiszolgálóra van telepítve.
+* A DC Agent Service mostantól tiszteletben tartja a "jelszavas védelem engedélyezése Windows Server Active Directory" konfigurációs beállítást.
+* Mostantól a DC-ügynök és a proxy-telepítők is támogatják a helyi frissítést a későbbi verzióra való frissítéskor.
 
 > [!WARNING]
-> In-place upgrade from version 1.1.10.3 is not supported and will result in an installation error. To upgrade to version 1.2.10 or later, you must first completely uninstall the DC agent and proxy service software, then install the new version from scratch. Re-registration of the Azure AD password protection Proxy service is required.  It is not required to re-register the forest.
+> A 1.1.10.3 verzióról történő helyszíni frissítés nem támogatott, és telepítési hibát eredményez. A 1.2.10 vagy újabb verzióra történő frissítéshez először teljesen el kell távolítania a DC Agent és a proxy Service szoftvert, majd az új verziót újra kell telepítenie. Az Azure AD jelszavas védelem proxy szolgáltatásának ismételt regisztrálása szükséges.  Az erdő újbóli regisztrálásához nem szükséges.
 
 > [!NOTE]
-> In-place upgrades of the DC agent software will require a reboot.
+> A DC-ügynök szoftverének helyben történő frissítése újraindítást igényel.
 
-* DC agent and proxy service now support running on a server configured to only use FIPS-compliant algorithms.
-* Minor performance and robustness fixes
-* Improved logging
+* A DC Agent és a proxy Service mostantól támogatja a futtatást olyan kiszolgálón, amely úgy van konfigurálva, hogy csak az FIPS-kompatibilis algoritmusokat használja.
+* Kisebb teljesítmény és robusztus javítások
+* Továbbfejlesztett naplózás
 
 ## <a name="11103"></a>1.1.10.3
 
-Release date: 6/15/2018
+Kiadás dátuma: 6/15/2018
 
-Initial public preview release
+Kezdeti nyilvános előzetes kiadás
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Deploy Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md)
+[Az Azure AD jelszavas védelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)

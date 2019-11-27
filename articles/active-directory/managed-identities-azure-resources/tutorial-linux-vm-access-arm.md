@@ -1,5 +1,5 @@
 ---
-title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
+title: Gyors útmutató`:` felügyelt identitás használata a Azure Resource Manager eléréséhez – Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -56,16 +56,16 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
 
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra.  
 2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. In the terminal window, using `curl`, make a request to the local managed identities for Azure resources endpoint to get an access token for Azure Resource Manager.  
+3. A terminál ablakban `curl`használatával tegyen fel egy kérést az Azure-erőforrások végpontjának helyi felügyelt identitására, hogy hozzáférési jogkivonatot kapjon Azure Resource Managerhoz.  
  
-    The `curl` request for the access token is below.  
+    A hozzáférési jogkivonat `curl`-kérelme alább látható.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
+    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.  A Resource Manager erőforrás-azonosítója esetén a záró perjelet is meg kell adnia az URI-n. 
     
     A válasz tartalmazza az Azure Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
     
@@ -81,7 +81,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     "token_type":"Bearer"} 
     ```
     
-    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
+    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek. Cserélje le \<előfizetés-azonosító\>, \<ERŐFORRÁSCSOPORT\>, és \<hozzáférési JOGKIVONAT\> a korábban létrehozott értékekre. 
     
     > [!NOTE]
     > Az URL-cím megkülönbözteti a kis-és nagybetűket, ezért pontosan ugyanúgy adja meg, mint ahogy az erőforráscsoportot elnevezte, illetve ügyeljen a „resourceGroup” sztringben a nagy G betű használatára is.  
@@ -101,4 +101,4 @@ Ennek a rövid útmutatónak a segítségével megtanulta, hogyan használható 
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)
+>[felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése Azure PowerShell használatával](how-to-manage-ua-identity-powershell.md)

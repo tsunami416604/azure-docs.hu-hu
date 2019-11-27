@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for images REST API and Python - Bing Image Search'
+title: 'Gyors útmutató: képek keresése REST API és Python-Bing Image Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send image search requests to the Bing Image Search REST API using Python, and receive JSON responses.
+description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API a Python használatával, és JSON-válaszokat kaphat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,9 +18,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323802"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Quickstart: Search for images using the Bing Image Search REST API and Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search REST API és a Python használatával
 
-Use this quickstart to start sending search requests to the Bing Image Search API. This Python application sends a search query to the API, and displays the URL of the first image in the results. While this application is written in Python, the API is a RESTful web service compatible with most programming languages.
+Ezzel a rövid útmutatóval megkezdheti a keresési kérések küldését a Bing Image Search API. Ez a Python-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti az eredményekben szereplő első rendszerkép URL-címét. Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva.
 
@@ -32,15 +32,15 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 2.x or 3.x](https://www.python.org/)
-* The [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
+* [Python 2. x vagy 3. x](https://www.python.org/)
+* A [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
 * [matplotlib](https://matplotlib.org/) 
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Create a new Python file in your favorite IDE or editor, and import the following modules. Create a variable for your subscription key, search endpoint, and search term.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő modulokat. Hozzon létre egy változót az előfizetési kulcshoz, a keresési végponthoz és a keresési kifejezéshez.
 
     ```python
     import requests
@@ -53,21 +53,21 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     search_term = "puppies"
     ```
 
-2. Add your subscription key to the `Ocp-Apim-Subscription-Key` header by creating a dictionary, and adding the key as a value. 
+2. Vegye fel az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejlécbe egy szótár létrehozásával, és adja hozzá a kulcsot értékként. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="create-and-send-a-search-request"></a>Create and send a search request
+## <a name="create-and-send-a-search-request"></a>Keresési kérelem létrehozása és küldése
 
-1. Create a dictionary for the search request's parameters. Add your search term to the `q` parameter. Use "public" for the `license` parameter to search for images in the public domain. Use "photo" for the `imageType` to search only for photos.
+1. Hozzon létre egy szótárt a keresési kérelem paramétereinek. Adja hozzá a keresési kifejezést a `q` paraméterhez. A nyilvános tartományban található lemezképek kereséséhez használja a "Public" (nyilvános) lehetőséget a `license` paraméterhez. A `imageType` Photo (fénykép) használatával kereshet csak a fényképek kereséséhez.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Use the `requests` library to call the Bing Image Search API. Add your header and parameters to the request, and return the response as a JSON object. Get The URLs to several thumbnail images from the response's `thumbnailUrl` field.
+2. A Bing Image Search API meghívásához használja a `requests` könyvtárat. Adja hozzá a fejlécet és a paramétereket a kérelemhez, és adja vissza a választ JSON-objektumként. A válasz `thumbnailUrl` mezőjében több miniatűr lemezkép URL-címének beolvasása.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -76,13 +76,13 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
-## <a name="view-the-response"></a>View the response
+## <a name="view-the-response"></a>Válasz megtekintése
 
-1. Create a new figure with four columns, and four rows using the matplotlib library. 
+1. Hozzon létre egy új ábrát négy oszloppal és négy sorral a matplotlib könyvtár használatával. 
 
-2. Iterate through the figure's rows and columns, and use the PIL library's `Image.open()` method to add an image thumbnail to each space. 
+2. Ismételje meg az ábra sorait és oszlopait, és a PIL Library `Image.open()` metódusával adja hozzá a kép miniatűrjét az egyes területekhez. 
 
-3. Use `plt.show()` to draw the figure and display the images.
+3. A `plt.show()` segítségével rajzolja meg az ábrát, és jelenítse meg a képeket.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -97,7 +97,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     ```
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -145,13 +145,13 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-* [What is the Bing Image Search API?](../overview.md)  
-* [Pricing details](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) for the Bing Search APIs. 
+* [Mi a Bing Image Search API?](../overview.md)  
+* A Bing Search API-k [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) . 
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

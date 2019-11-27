@@ -1,6 +1,6 @@
 ---
-title: Sub-orchestrations for Durable Functions - Azure
-description: How to call orchestrations from orchestrations in the Durable Functions extension for Azure Functions.
+title: Durable Functions – Azure
+description: A Azure Functionshoz Durable Functions-bővítményben lévő előkészítési folyamatokat hívhatja.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
@@ -11,16 +11,16 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231296"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-orchestrations in Durable Functions (Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
-In addition to calling activity functions, orchestrator functions can call other orchestrator functions. For example, you can build a larger orchestration out of a library of smaller orchestrator functions. Or you can run multiple instances of an orchestrator function in parallel.
+A Orchestrator függvények más Orchestrator-függvényeket is hívhatnak. Létrehozhat például egy kisebb Orchestrator-függvények könyvtárainak nagyobb előkészítését. Vagy egy Orchestrator függvény több példányát is futtathatja párhuzamosan.
 
-An orchestrator function can call another orchestrator function using the `CallSubOrchestratorAsync` or the `CallSubOrchestratorWithRetryAsync` methods in .NET, or the `callSubOrchestrator` or `callSubOrchestratorWithRetry` methods in JavaScript. The [Error Handling & Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) article has more information on automatic retry.
+A Orchestrator függvény egy másik Orchestrator-függvényt hívhat meg a .NET-ben lévő `CallSubOrchestratorAsync` vagy a `CallSubOrchestratorWithRetryAsync` metódusok, illetve a JavaScript `callSubOrchestrator` vagy `callSubOrchestratorWithRetry` metódusok használatával. A [& Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) szolgáltatással kapcsolatos hiba további információkat tartalmaz az automatikus Újrapróbálkozással kapcsolatban.
 
-Sub-orchestrator functions behave just like activity functions from the caller's perspective. They can return a value, throw an exception, and can be awaited by the parent orchestrator function. 
+Az Orchestrator függvények a hívó szemszögéből hasonlóan működnek a tevékenységi funkciókkal. Egy értéket adhatnak vissza, kivételt jeleznek, és a szülő Orchestrator függvénytől is megtekinthetők. 
 ## <a name="example"></a>Példa
 
-The following example illustrates an IoT ("Internet of Things") scenario where there are multiple devices that need to be provisioned. The following function represents the provisioning workflow that needs to be executed for each device:
+Az alábbi példa egy IoT ("eszközök internetes hálózata") forgatókönyvet mutat be, ahol több eszközt kell kiépíteni. A következő függvény az egyes eszközökön végrehajtandó kiépítési munkafolyamatot jelöli:
 
 ### <a name="c"></a>C#
 
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -64,9 +64,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-This orchestrator function can be used as-is for one-off device provisioning or it can be part of a larger orchestration. In the latter case, the parent orchestrator function can schedule instances of `DeviceProvisioningOrchestration` using the `CallSubOrchestratorAsync` (.NET) or `callSubOrchestrator` (JavaScript) API.
+Ez a Orchestrator függvény használható az egyszeri eszköz kiosztásához, vagy egy nagyobb előkészítés része lehet. Az utóbbi esetben a szülő Orchestrator függvény a `CallSubOrchestratorAsync` (.NET) vagy a `callSubOrchestrator` (JavaScript) API használatával ütemezhet `DeviceProvisioningOrchestration` példányait.
 
-Here is an example that shows how to run multiple orchestrator functions in parallel.
+Íme egy példa, amely bemutatja, hogyan futtathat párhuzamosan több Orchestrator-függvényt.
 
 ### <a name="c"></a>C#
 
@@ -92,9 +92,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -119,9 +119,9 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Sub-orchestrations must be defined in the same function app as the parent orchestration. If you need to call and wait for orchestrations in another function app, consider using the built-in support for HTTP APIs and the HTTP 202 polling consumer pattern. For more information, see the [HTTP Features](durable-functions-http-features.md) topic.
+> Az alrendszereket a szülő-összehangolás során megegyező Function alkalmazásban kell meghatározni. Ha egy másik Function-alkalmazásban kell meghívnia és várnia a meghívást, érdemes lehet használni a HTTP API-k beépített támogatását és a HTTP 202 lekérdezési fogyasztói mintát. További információkért lásd a http- [funkciók](durable-functions-http-features.md) témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn how to set a custom orchestration status](durable-functions-custom-orchestration-status.md)
+> [Ismerje meg, hogyan állíthat be egyéni előkészítési állapotot](durable-functions-custom-orchestration-status.md)

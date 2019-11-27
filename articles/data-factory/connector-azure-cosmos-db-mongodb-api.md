@@ -21,19 +21,19 @@ ms.locfileid: "74280707"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Adatok másolása Azure Cosmos DB API-MongoDB az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure Cosmos DB API-MongoDB való másolásához. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure Cosmos DB API-MongoDB való másolásához. A cikk a [másolási tevékenységre épül Azure Data Factoryban](copy-activity-overview.md), amely a másolási tevékenység általános áttekintését mutatja be.
 
 >[!NOTE]
 >Ez az összekötő csak a Azure Cosmos DB API-MongoDB való Adatmásolást támogatja. Az SQL API esetében tekintse meg az [Cosmos db SQL API-összekötőt](connector-azure-cosmos-db.md). Más API-típusok jelenleg nem támogatottak.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A Azure Cosmos DB API-MongoDB bármely támogatott fogadó adattárba másolhatja az adatait, vagy bármely támogatott forrás adattárból átmásolhatja az adatAzure Cosmos DB API-ját a MongoDB. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+A Azure Cosmos DB API-MongoDB bármely támogatott fogadó adattárba másolhatja az adatait, vagy bármely támogatott forrás adattárból átmásolhatja az adatAzure Cosmos DB API-ját a MongoDB. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
 A MongoDB-összekötő Azure Cosmos DB API-ját a következőre használhatja:
 
 - Adatok másolása a és a rendszerből a [Azure Cosmos db API-MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
-- Írni az Azure Cosmos DB **beszúrása** vagy **upsert**.
+- Írás a Azure Cosmos DB **Insert** vagy **upsert**.
 - Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. A dokumentumok fájlként való másolásához JSON-fájlokba vagy egy másik Azure Cosmos DB gyűjteményből vagy más-gyűjteményből: JSON-dokumentumok importálása vagy exportálása.
 
 ## <a name="get-started"></a>Első lépések
@@ -49,9 +49,9 @@ A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **CosmosDbMongoDbApi**értékre kell beállítani. | Igen |
-| connectionString |Adja meg a Azure Cosmos DB API-MongoDB tartozó kapcsolatok karakterláncát. A Azure Portal > a Cosmos DB > elsődleges vagy másodlagos kapcsolatok karakterláncát, `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`mintázatával. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| connectionString |Adja meg a Azure Cosmos DB API-MongoDB tartozó kapcsolatok karakterláncát. A Azure Portal > a Cosmos DB > elsődleges vagy másodlagos kapcsolatok karakterláncát, `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`mintázatával. <br/><br />A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. |Igen |
 | database | Az elérni kívánt adatbázis neve. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -77,7 +77,7 @@ A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). A MongoDB-adatkészlet Azure Cosmos DB API-jával a következő tulajdonságok támogatottak:
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md). A MongoDB-adatkészlet Azure Cosmos DB API-jával a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -107,11 +107,11 @@ Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját l�
 
 Ez a szakasz azoknak a tulajdonságoknak a listáját tartalmazza, amelyeket a Azure Cosmos DB API-ját a MongoDB forrás-és fogadó támogatásához.
 
-Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md).
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md).
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Azure Cosmos DB MongoDB API-ját forrásként
 
-A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -166,12 +166,12 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Azure Cosmos DB API a MongoDB as fogadóként
 
-A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
+A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának **Type** tulajdonságát **CosmosDbMongoDbApiSink**értékre kell állítani. |Igen |
-| writeBehavior |Ismerteti, hogyan lehet adatokat írni az Azure Cosmos DB-hez. Megengedett értékek: **beszúrása** és **upsert**.<br/><br/>A **upsert** viselkedése a dokumentum cseréje, ha már létezik azonos `_id`ú dokumentum. Ha nem, szúrja be a dokumentumot.<br /><br />**Megjegyzés**: a Data Factory automatikusan létrehoz egy `_id` a dokumentumhoz, ha az eredeti dokumentumban vagy az oszlop-hozzárendelésben nincs megadva `_id`. Ez azt jelenti, hogy gondoskodnia kell arról, hogy a **upsert** a várt módon működik, a dokumentum rendelkezik azonosítóval. |Nem<br />(az alapértelmezett érték **beszúrása**) |
+| writeBehavior |Ismerteti, hogyan lehet adatokat írni az Azure Cosmos DB-hez. Megengedett értékek: **Insert** és **upsert**.<br/><br/>A **upsert** viselkedése a dokumentum cseréje, ha már létezik azonos `_id`ú dokumentum. Ha nem, szúrja be a dokumentumot.<br /><br />**Megjegyzés**: a Data Factory automatikusan létrehoz egy `_id` a dokumentumhoz, ha az eredeti dokumentumban vagy az oszlop-hozzárendelésben nincs megadva `_id`. Ez azt jelenti, hogy meg kell győződnie arról, hogy a **upsert** a várt módon működnek, a dokumentum azonosítója. |Nem<br />(az alapértelmezett érték a **Beszúrás**) |
 | writeBatchSize | A **writeBatchSize** tulajdonság az egyes kötegekben írandó dokumentumok méretét határozza meg. A **writeBatchSize** értékének növelésével növelheti a teljesítményt és csökkentheti az értéket, ha a dokumentum mérete nagy. |Nem<br />(az alapértelmezett érték **10 000**) |
 | writeBatchTimeout | Az a várakozási idő, ameddig a kötegelt beszúrási művelet befejezi az időtúllépést. Az engedélyezett érték a TimeSpan. | Nem<br/>(az alapértelmezett érték **00:30:00** – 30 perc) |
 
@@ -238,4 +238,4 @@ A másolási tevékenység végrehajtása után a BSON ObjectId a fogadóban jö
 
 ## <a name="next-steps"></a>Következő lépések
 
-Másolási tevékenységet támogatja az adatforrások és az Azure Data Factoryban fogadók adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintheti meg. lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

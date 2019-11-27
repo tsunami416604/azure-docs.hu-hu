@@ -112,7 +112,7 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 
 A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" kifejezés azt jelzi, hogy a nyelv a felsorolt parancsfájlokból vagy azok egyikére is átadható. A "-->" érték azt jelzi, hogy a nyelv csak az egyik parancsfájlból a másikba való átírására használható.
 
-| Nyelv    | Nyelvkód | Parancsfájl | /Feladó | Parancsfájl|
+| Nyelv    | Nyelvkód | Szkript | /Feladó | Szkript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | `ar` | Arab `Arab` | <--> | Latin `Latn` |
 |Bengáli  | `bn` | Bengáli `Beng` | <--> | Latin `Latn` |
@@ -192,7 +192,7 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | vietnami      | `vi`          |
 | walesi      | `cy`          |
 
-## <a name="detect"></a>Detect
+## <a name="detect"></a>Észlelés
 
 Translator Text API észleli a fordításhoz és az íráshoz elérhető összes nyelvet.
 

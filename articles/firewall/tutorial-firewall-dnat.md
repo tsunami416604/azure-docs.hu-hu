@@ -19,7 +19,7 @@ ms.locfileid: "74195737"
 
 Az Azure Firewall DNAT (Destination Network Address Translation, célhálózati címfordítás) funkciójának konfigurálásával lefordíthatja és szűrheti az alhálózatokra bejövő forgalmat. A DNAT konfigurálásakor a NAT-szabálygyűjtemény művelete **DNAT**értékre van állítva. A NAT-szabálygyűjtemény minden szabálya használható arra, hogy lefordítsa a tűzfal nyilvános IP-címét és portját egy magánhálózati IP-címre és portra. A DNAT-szabályok implicit módon hozzáadnak egy kapcsolódó hálózati szabályt a lefordított adatforgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tesztelési hálózati környezet beállítása
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban két társított virtuális hálózatot hozunk létre:
 3. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **RG-DNAT-Test**.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 5. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Minden ezután létrehozott erőforrásnak ugyanezen a helyen kell lennie.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** elemre.
 
 ## <a name="set-up-the-network-environment"></a>A hálózati környezet beállítása
 
@@ -136,7 +136,7 @@ Hozzon létre egy virtuális gépet a számítási feladat futtatásához, és h
 4. A **Nyilvános bejövő portok kiválasztása** mezőben válassza a **Nincsenek nyilvános bejövő portok** lehetőséget. 
 2. Hagyja meg az egyéb alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-**összegzés**
+**Összefoglalás**
 
 Tekintse át az összefoglalást, majd kattintson a **Létrehozás** gombra. Ez eltarthat pár percig.
 
@@ -151,8 +151,8 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Name (Név)     |FW-DNAT-test|
-   |Előfizetést     |\<az Ön előfizetése\>|
+   |Név     |FW-DNAT-test|
+   |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Meglévő használata**: RG-DNAT-Test |
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: VN-Hub|
@@ -176,7 +176,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd az **RG-DNAT-Test** lehetőséget.
 7. A **Hely** elemnél válassza a korábban használt helyet.
-8. Kattintson a **Létrehozás** gombra.
+8. Kattintson a **Létrehozás** elemre.
 9. Kattintson a **Frissítés** elemre, majd az **RT-FWroute** útválasztási táblázatra.
 10. Kattintson az **Alhálózatok**, majd a **Társítás** elemre.
 11. Kattintson a **Virtuális hálózat** elemre, majd válassza a **VN-Spoke** elemet.
@@ -216,7 +216,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje az **RG-DNAT-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

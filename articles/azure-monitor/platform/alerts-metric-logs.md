@@ -1,6 +1,6 @@
 ---
-title: Creating Metric Alerts for Logs in Azure Monitor
-description: Tutorial on creating near-real time metric alerts on popular log analytics data.
+title: Metrikai riasztások létrehozása a naplókhoz Azure Monitor
+description: Útmutató a közel valós idejű metrikai riasztások létrehozásához a népszerű log Analytics-adatokon.
 author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
@@ -15,76 +15,76 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226519"
 ---
-# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Create Metric Alerts for Logs in Azure Monitor
+# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
 ## <a name="overview"></a>Áttekintés
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor supports [metric alert type](../../azure-monitor/platform/alerts-metric-near-real-time.md) which has benefits over the [classic alerts](../../azure-monitor/platform/alerts-classic-portal.md). Metrics are available for [large list of Azure services](../../azure-monitor/platform/metrics-supported.md). This article explains usage of a subset (that is) for resource - `Microsoft.OperationalInsights/workspaces`.
+Azure Monitor támogatja a [metrikus riasztási típust](../../azure-monitor/platform/alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../../azure-monitor/platform/metrics-supported.md)érhetők el. Ez a cikk az erőforrás-`Microsoft.OperationalInsights/workspaces`részhalmazának (azaz) használatát ismerteti.
 
-You can use metric alerts on popular Log Analytics logs extracted as metrics as part of Metrics from Logs including resources in Azure or on-premises. The supported Log Analytics solutions are listed below:
+Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analytics naplókban, beleértve az Azure-ban vagy a helyszínen található erőforrásokat is. A támogatott Log Analytics megoldások az alábbiak szerint vannak felsorolva:
 
-- [Performance counters](../../azure-monitor/platform/data-sources-performance-counters.md) for Windows & Linux machines
-- [Heartbeat records for Agent Health](../../azure-monitor/insights/solution-agenthealth.md)
-- [Update management](../../automation/automation-update-management.md) records
-- [Event data](../../azure-monitor/platform/data-sources-windows-events.md) logs
+- [Teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) Windows & Linux rendszerű gépekhez
+- [Szívverési rekordok Agent Health](../../azure-monitor/insights/solution-agenthealth.md)
+- [Felügyeleti rekordok frissítése](../../automation/automation-update-management.md)
+- [Esemény](../../azure-monitor/platform/data-sources-windows-events.md) -adatnaplók
 
-There are many benefits for using **Metric Alerts for Logs** over query based [Log Alerts](../../azure-monitor/platform/alerts-log.md) in Azure; some of them are listed below:
+Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](../../azure-monitor/platform/alerts-log.md) **vonatkozó mérőszám-riasztások** használatának számos előnye van. Némelyikük alább látható:
 
-- Metric Alerts offer near-real time monitoring capability and Metric Alerts for Logs forks data from log source to ensure the same.
-- Metric Alerts are stateful - only notifying once when alert is fired and once when alert is resolved; as opposed to Log alerts, which are stateless and keep firing at every interval if the alert condition is met.
-- Metric Alerts for Log provide multiple dimensions, allowing filtering to specific values like Computers, OS Type, etc. simpler; without the need for penning query in analytics.
-
-> [!NOTE]
-> Specific metric and/or dimension will only be shown if data for it exists in chosen period. These metrics are available for customers with Azure Log Analytics workspaces.
-
-## <a name="metrics-and-dimensions-supported-for-logs"></a>Metrics and dimensions supported for logs
-
- Metric alerts support alerting for metrics that use dimensions. You can use dimensions to filter your metric to the right level. The full list of metrics supported for Logs from [Log Analytics workspaces](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) is listed; across supported solutions.
+- A metrikai riasztások közel valós idejű figyelési képességet és metrikai riasztásokat biztosítanak a naplókból származó adatoknak a log forrásból való biztosításához.
+- A metrikai riasztások csak akkor jelennek meg, ha riasztást küldenek, és ha a riasztás megoldódott, Ha a riasztási feltétel teljesül, a riasztásokat a rendszer az állapot nélküli naplóba helyezi, és minden intervallumban megőrzi a tüzelést.
+- A naplók metrikai riasztásai több dimenziót biztosítanak, így például a számítógépek, az operációs rendszer típusa stb. egyszerűbb a szűrés. anélkül, hogy az elemzés során kellene megadnia a lekérdezéseket.
 
 > [!NOTE]
-> To view supported metrics for being extracted from Log Analytics workspace via [Azure Monitor - Metrics](../../azure-monitor/platform/metrics-charts.md); a metric alert for log must be created for the said metric. The dimensions chosen in Metric Alert for logs - will only appear for exploration via Azure Monitor - Metrics.
+> Az adott metrika és/vagy dimenzió csak akkor jelenik meg, ha az adatok a kiválasztott időszakban szerepelnek. Ezek a metrikák az Azure Log Analytics-munkaterületekkel rendelkező ügyfelek számára érhetők el.
 
-## <a name="creating-metric-alert-for-log-analytics"></a>Creating metric alert for Log Analytics
+## <a name="metrics-and-dimensions-supported-for-logs"></a>Naplók által támogatott mérőszámok és méretek
 
-Metric data from popular logs is piped before it is processed in Log Analytics, into Azure Monitor - Metrics. This allows users to leverage the capabilities of the Metric platform as well as metric alert - including having alerts with frequency as low as 1 minute.
-Listed below are the means of crafting a metric alert for logs.
-
-## <a name="prerequisites-for-metric-alert-for-logs"></a>Prerequisites for Metric Alert for Logs
-
-Before Metric for Logs gathered on Log Analytics data works, the following must be set up and available:
-
-1. **Active Log Analytics Workspace**: A valid and active Log Analytics workspace must be present. For more information, see [Create a Log Analytics Workspace in Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-2. **Agent is configured for Log Analytics Workspace**: Agent needs to be configured for Azure VMs (and/or) on-premises VMs to send data into the Log Analytics Workspace used in earlier step. For more information, see [Log Analytics - Agent Overview](../../azure-monitor/platform/agents-overview.md).
-3. **Supported Log Analytics Solutions is installed**: Log Analytics solution should be configured and sending data into Log Analytics workspace - supported solutions are [Performance counters for Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [Heartbeat records for Agent Health](../../azure-monitor/insights/solution-agenthealth.md), [Update management](../../automation/automation-update-management.md), and [Event data](../../azure-monitor/platform/data-sources-windows-events.md).
-4. **Log Analytics solutions configured to send logs**: Log Analytics solution should have the required logs/data corresponding to [metrics supported for Log Analytics workspaces](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) enabled. For example, for *% Available Memory* counter of it must be configured in [Performance counters](../../azure-monitor/platform/data-sources-performance-counters.md) solution first.
-
-## <a name="configuring-metric-alert-for-logs"></a>Configuring Metric Alert for Logs
-
- Metric alerts can be created and managed using the Azure portal, Resource Manager Templates, REST API, PowerShell, and Azure CLI. Since Metric Alerts for Logs, is a variant of metric alerts - once the prerequisites are done, metric alert for logs can be created for specified Log Analytics workspace. All characteristics and functionalities of [metric alerts](../../azure-monitor/platform/alerts-metric-near-real-time.md) will be applicable to metric alerts for logs, as well; including payload schema, applicable quota limits, and billed price.
-
-For step-by-step details and samples - see [creating and managing metric alerts](https://aka.ms/createmetricalert). Specifically, for Metric Alerts for Logs - follow the instructions for managing metric alerts and ensure the following:
-
-- Target for metric alert is a valid *Log Analytics workspace*
-- Signal chosen for metric alert for selected *Log Analytics workspace* is of type **Metric**
-- Filter for specific conditions or resource using dimension filters; metrics for logs are multi-dimensional
-- When configuring *Signal Logic*, a single alert can be created to span multiple values of dimension (like Computer)
-- If **not** using Azure portal for creating metric alert for selected *Log Analytics workspace*; then user must manually first create an explicit rule for converting log data into a metric using [Azure Monitor - Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
+ A metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. A rendszer felsorolja a [log Analytics munkaterületekről](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) származó naplókhoz támogatott metrikák teljes listáját. a támogatott megoldások között.
 
 > [!NOTE]
-> When creating metric alert for Log Analytics workspace via Azure portal - corresponding rule for converting log data into metric via [Azure Monitor - Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) is automatically created in background, *without the need of any user intervention or action*. For metric alert for logs creation using means other than Azure portal, see [Resource Template for Metric Alerts for Logs](#resource-template-for-metric-alerts-for-logs) section on sample means of creating a ScheduledQueryRule based log to metric conversion rule before metric alert creation - else there will be no data for the metric alert on logs created.
+> Log Analytics munkaterületről [Azure monitor-metrikák](../../azure-monitor/platform/metrics-charts.md)használatával kinyert támogatott metrikák megtekintése az említett metrika esetében létre kell hozni egy metrikai riasztást a naplóhoz. A naplók metrikai Riasztásában kiválasztott dimenziók csak Azure Monitor-mérőszámokon keresztül jelennek meg a feltáráshoz.
 
-## <a name="resource-template-for-metric-alerts-for-logs"></a>Resource Template for Metric Alerts for Logs
+## <a name="creating-metric-alert-for-log-analytics"></a>Metrikai riasztás létrehozása Log Analyticshoz
 
-As stated earlier, the process for creation of metric alerts from logs is two pronged:
+A népszerű naplókból származó metrikai adatok a Log Analyticsba való feldolgozásuk előtt Azure Monitor metrikák. Ez lehetővé teszi a felhasználók számára, hogy kihasználják a metrikus platform képességeit, valamint a metrikai riasztást – beleértve a riasztások gyakoriságát is, amely akár 1 percet is igénybe vehet.
+Az alábbiakban felsoroljuk a naplókhoz tartozó metrikus riasztások készítésének módját.
 
-1. Create a rule for extracting metrics from supported logs using scheduledQueryRule API
-2. Create a metric alert for metric extracted from log (in step1) and Log Analytics workspace as a target resource
+## <a name="prerequisites-for-metric-alert-for-logs"></a>A naplók metrika-riasztásának előfeltételei
 
-### <a name="metric-alerts-for-logs-with-static-threshold"></a>Metric Alerts for Logs with static threshold
+A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell állítani és elérhetővé kell tennie a következőket:
 
-To achieve the same, one can use the sample Azure Resource Manager Template below - where creation of a static threshold metric alert depends on successful creation of the rule for extracting metrics from logs via scheduledQueryRule.
+1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/learn/quick-create-workspace.md).
+2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](../../azure-monitor/platform/agents-overview.md).
+3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../../azure-monitor/insights/solution-agenthealth.md) [Update Management](../../automation/automation-update-management.md)és az [Event adatok](../../azure-monitor/platform/data-sources-windows-events.md)számára.
+4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) megoldásban kell konfigurálni.
+
+## <a name="configuring-metric-alert-for-logs"></a>Metrikai riasztás konfigurálása a naplókhoz
+
+ A metrikai riasztások a Azure Portal, a Resource Manager-sablonok, a REST API, a PowerShell és az Azure CLI használatával hozhatók létre és kezelhetők. Mivel a naplók metrikai riasztásai, a metrikus riasztások egy változata – amint az előfeltételek teljesülnek, a naplók metrikai riasztása a megadott Log Analytics munkaterülethez hozható létre. A [metrikai riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) minden jellemzője és funkciója a naplók metrikájának riasztására is vonatkozik. beleértve a hasznos adatok sémáját, a vonatkozó kvóta korlátait és a számlázás díját.
+
+Részletes részletekért és példákért tekintse meg a [metrikai riasztások létrehozásával és kezelésével](https://aka.ms/createmetricalert)foglalkozó témakört. A naplók metrikai riasztásai esetében kövesse a metrikai riasztások kezelésével kapcsolatos útmutatást, és győződjön meg a következőkről:
+
+- A metrikai riasztás célja érvényes *log Analytics munkaterület*
+- A kiválasztott *log Analytics-munkaterület* metrikai riasztására kiválasztott jel a következő típusú: **metrika**
+- Adott feltételek vagy erőforrások szűrése dimenzió szűrők használatával; a naplók metrikái többdimenziós
+- A *jel logikájának*konfigurálásakor egyetlen riasztás hozható létre a dimenzió több értékének (például a számítógép) átméretezéséhez.
+- Ha **nem** használja a Azure Portal a metrikai riasztások létrehozásához a kiválasztott *log Analytics-munkaterülethez*; Ezután a felhasználónak manuálisan kell létrehoznia egy explicit szabályt, amellyel a rendszer [Azure monitor ütemezett lekérdezési szabályok](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)segítségével konvertálja a napló adatait metrikai adatokra.
+
+> [!NOTE]
+> Amikor metrikai riasztást hoz létre Log Analytics munkaterülethez Azure Portal – a naplózási adatok metrikaba való átalakítására vonatkozó szabály a [Azure monitor ütemezett lekérdezési szabályok](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatával automatikusan jön létre, és nincs *szükség felhasználói beavatkozásra vagy műveletre*. Ahhoz, hogy a naplók a Azure Portalon kívüli módon történő létrehozásához metrikai riasztást kapjanak, tekintse meg a metrikus riasztások [a naplókhoz](#resource-template-for-metric-alerts-for-logs) című szakaszát, amely a ScheduledQueryRule-alapú naplózás metrikus átalakítási szabályhoz való létrehozását ismerteti a metrikus riasztások létrehozása előtt
+
+## <a name="resource-template-for-metric-alerts-for-logs"></a>Erőforrás-sablon metrikai riasztásokhoz a naplókhoz
+
+Ahogy korábban már említettük, a naplókból származó metrikus riasztások létrehozásának folyamata két részből áll:
+
+1. Szabály létrehozása a mérőszámok kinyeréséhez a támogatott naplókból a scheduledQueryRule API használatával
+2. Metrikai riasztás létrehozása a naplóból kinyert metrika (1. lépés) és Log Analytics munkaterület célként megadott erőforrásként
+
+### <a name="metric-alerts-for-logs-with-static-threshold"></a>Metrikus riasztások statikus küszöbértékű naplók esetén
+
+Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Manager sablont – ahol a statikus küszöbértékek metrikai riasztásának létrehozása a scheduledQueryRule-on keresztüli naplókból kinyerhető szabály sikeres létrehozásával függ.
 
 ```json
 {
@@ -301,7 +301,7 @@ To achieve the same, one can use the sample Azure Resource Manager Template belo
 }
 ```
 
-Say the above JSON is saved as metricfromLogsAlertStatic.json - then it can be coupled with a parameter JSON file for Resource Template based creation. A sample parameter JSON file is listed below:
+Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertStatic. JSON néven menti, majd az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
 
 ```json
 {
@@ -357,23 +357,23 @@ Say the above JSON is saved as metricfromLogsAlertStatic.json - then it can be c
 }
 ```
 
-Assuming the above parameter file is saved as metricfromLogsAlertStatic.parameters.json; then one can create metric alert for logs using [Resource Template for creation in Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Feltételezve, hogy a fenti metricfromLogsAlertStatic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-Alternatively, one can use the Azure Powershell command below as well:
+Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
-Or use deploy Resource Template using Azure CLI:
+Vagy használja az Azure CLI-vel történő üzembe helyezési sablont:
 
 ```CLI
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
-### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Metric Alerts for Logs with Dynamic Thresholds
+### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Metrikus riasztások a dinamikus küszöbértékekkel rendelkező naplókhoz
 
-To achieve the same, one can use the sample Azure Resource Manager Template below - where creation of a Dynamic Thresholds metric alert depends on successful creation of the rule for extracting metrics from logs via scheduledQueryRule.
+Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Manager sablont – ahol a dinamikus küszöbértékek metrikai riasztásának létrehozása a scheduledQueryRule-on keresztüli adatnaplókból kinyert szabály sikeres létrehozásával függ.
 
 ```json
 {
@@ -611,7 +611,7 @@ To achieve the same, one can use the sample Azure Resource Manager Template belo
 }
 ```
 
-Say the above JSON is saved as metricfromLogsAlertDynamic.json - then it can be coupled with a parameter JSON file for Resource Template based creation. A sample parameter JSON file is listed below:
+Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertDynamic. JSON néven menti, majd az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
 
 ```json
 {
@@ -673,15 +673,15 @@ Say the above JSON is saved as metricfromLogsAlertDynamic.json - then it can be 
 }
 ```
 
-Assuming the above parameter file is saved as metricfromLogsAlertDynamic.parameters.json; then one can create metric alert for logs using [Resource Template for creation in Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Feltételezve, hogy a fenti metricfromLogsAlertDynamic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-Alternatively, one can use the Azure Powershell command below as well:
+Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 
-Or use deploy Resource Template using Azure CLI:
+Vagy használja az Azure CLI-vel történő üzembe helyezési sablont:
 
 ```CLI
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
@@ -689,6 +689,6 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn more about the [metric alerts](alerts-metric.md).
-- Learn about [log alerts in Azure](../../azure-monitor/platform/alerts-unified-log.md).
-- Learn about [alerts in Azure](alerts-overview.md).
+- További információ a [metrikai riasztásokról](alerts-metric.md).
+- További információ a [log-riasztásokról az Azure-ban](../../azure-monitor/platform/alerts-unified-log.md).
+- További információ [Az Azure-beli riasztásokról](alerts-overview.md).

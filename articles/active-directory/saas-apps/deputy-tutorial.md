@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Deputy | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Deputy.
+title: 'Oktatóanyag: Azure Active Directory integráció a helyettessel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a helyettes között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,90 +23,90 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227605"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Tutorial: Azure Active Directory integration with Deputy
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
 
-In this tutorial, you learn how to integrate Deputy with Azure Active Directory (Azure AD).
-Integrating Deputy with Azure AD provides you with the following benefits:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a helyettest Azure Active Directory (Azure AD) használatával.
+Az Azure AD-vel való integráció az alábbi előnyöket nyújtja:
 
-* You can control in Azure AD who has access to Deputy.
-* You can enable your users to be automatically signed-in to Deputy (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a helyetteshez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a helyettes (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To configure Azure AD integration with Deputy, you need the following items:
+Az Azure AD-integráció helyettessel való konfigurálásához a következő elemek szükségesek:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Deputy single sign-on enabled subscription
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Egyszeri bejelentkezésre engedélyezett előfizetés helyettese
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Deputy supports **SP** and **IDP** initiated SSO
+* A helyettes támogatja az **SP** -t és a **IDENTITÁSSZOLGÁLTATÓ** kezdeményezett SSO
 
-## <a name="adding-deputy-from-the-gallery"></a>Adding Deputy from the gallery
+## <a name="adding-deputy-from-the-gallery"></a>Helyettes hozzáadása a gyűjteményhez
 
-To configure the integration of Deputy into Azure AD, you need to add Deputy from the gallery to your list of managed SaaS apps.
+Az Azure AD-beli helyettes integrálásának konfigurálásához hozzá kell adnia a katalógushoz tartozó helyettest a felügyelt SaaS-alkalmazások listájához.
 
-**To add Deputy from the gallery, perform the following steps:**
+**A következő lépések végrehajtásával adhat hozzá helyettest a katalógusból:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, type **Deputy**, select **Deputy** from result panel then click **Add** button to add the application.
+4. A keresőmezőbe írja be a **helyettes**kifejezést, válassza az eredmény panel **helyettes** elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Deputy in the results list](common/search-new-app.png)
+     ![Helyettes az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-In this section, you configure and test Azure AD single sign-on with Deputy based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Deputy needs to be established.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
-To configure and test Azure AD single sign-on with Deputy, you need to complete the following building blocks:
+Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Deputy Single Sign-On](#configure-deputy-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Deputy test user](#create-deputy-test-user)** - to have a counterpart of Britta Simon in Deputy that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[egyszeri bejelentkezés konfigurálása](#configure-deputy-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre egy felhasználó-helyettest](#create-deputy-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon-helyettese lesz.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-To configure Azure AD single sign-on with Deputy, perform the following steps:
+Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Deputy** application integration page, select **Single sign-on**.
+1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **helyettese** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, If you wish to configure the application in **IDP** initiated mode, perform the following steps:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Deputy Domain and URLs single sign-on information](common/idp-intiated.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak helyettese](common/idp-intiated.png)
 
-    a. In the **Identifier** text box, type a URL using the following pattern:
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     |  |
     | ----|
@@ -126,7 +126,7 @@ To configure Azure AD single sign-on with Deputy, perform the following steps:
     | `https://<subdomain>.<region>.ent-an.deputy.com` |
     | `https://<subdomain>.<region>.deputy.com` |
 
-    b. In the **Reply URL** text box, type a URL using the following pattern:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |----|
@@ -146,146 +146,146 @@ To configure Azure AD single sign-on with Deputy, perform the following steps:
     | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
     | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
 
-5. Click **Set additional URLs** and perform the following step if you wish to configure the application in **SP** initiated mode:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Deputy Domain and URLs single sign-on information](common/metadata-upload-additional-signon.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak helyettese](common/metadata-upload-additional-signon.png)
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<your-subdomain>.<region>.deputy.com`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<your-subdomain>.<region>.deputy.com`
 
     >[!NOTE]
-    > Deputy region suffix is optional, or it should use one of these: au | na | eu |as |la |af |an |ent-au |ent-na |ent-eu |ent-as | ent-la | ent-af | ent-an
+    > A helyettes régió utótagja nem kötelező, vagy az alábbiak valamelyikét kell használnia: Au | Na | EU | mint | La | AF | a | ENT-au | ENT-na | ENT-EU | ENT-as | ENT – La | ENT – AF | ENT – egy
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Identifier, Reply URL and Sign-on URL. Contact [Deputy Client support team](https://www.deputy.com/call-centers-customer-support-scheduling-software) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [helyettes ügyfél-támogatási csapathoz](https://www.deputy.com/call-centers-customer-support-scheduling-software) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-7. On the **Set up Deputy** section, copy the appropriate URL(s) as per your requirement.
+7. A **beállítás helyettese** szakaszban másolja a megfelelő URL-címeket a követelmények szerint.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Logout URL
+    c. Kijelentkezési URL
 
-### <a name="configure-deputy-single-sign-on"></a>Configure Deputy Single Sign-On
+### <a name="configure-deputy-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
 
-1. Navigate to the following URL:[https://(your-subdomain).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Go to **Security Settings** and click **Edit**.
+1. Navigáljon a következő URL-címre:[https://(az-altartomány). helyettes. com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
    
-    ![Configure Single Sign-On](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_004.png)
 
-2. On this **Security Settings** page, perform below steps.
+2. A **biztonsági beállítások** lapon végezze el az alábbi lépéseket.
 
-    ![Configure Single Sign-On](./media/deputy-tutorial/tutorial_deputy_005.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. Enable **Social Login**.
+    a. Engedélyezze a **közösségi bejelentkezést**.
    
-    b. Open your Base64 encoded certificate downloaded from Azure portal in notepad, copy the content of it into your clipboard, and then paste it to the **OpenSSL Certificate** textbox.
+    b. Nyissa meg Azure Portal a Jegyzettömbben letöltött Base64-kódolású tanúsítványt, másolja a vágólapra a tartalmát, majd illessze be az **OpenSSL-tanúsítvány** szövegmezőbe.
    
-    c. In the SAML SSO URL textbox, type `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
+    c. Az SAML SSO URL szövegmezőbe írja be a következőt: `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. In the SAML SSO URL textbox, replace `<your subdomain>` with your subdomain.
+    d. Az SAML SSO URL szövegmezőben cserélje le a `<your subdomain>`t az altartományra.
    
-    e. In the SAML SSO URL textbox, replace `<saml sso url>` with the **Login URL** you have copied from the Azure portal.
+    e. Az SAML SSO URL szövegmezőben cserélje le a `<saml sso url>` elemet a Azure Portalból másolt **bejelentkezési URL-címre** .
    
-    f. Click **Save Settings**.
+    f. Kattintson a **Beállítások mentése**gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
-    ![New user Button](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![The User dialog box](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Deputy.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a helyettesnek.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Deputy**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **helyettes**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, select **Deputy**.
+2. Az alkalmazások listában válassza a **helyettes**elemet.
 
-    ![The Deputy link in the Applications list](common/all-applications.png)
+    ![A helyettes hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-deputy-test-user"></a>Create Deputy test user
+### <a name="create-deputy-test-user"></a>Hozzon létre egy ellenőrző felhasználót
 
-To enable Azure AD users to log in to Deputy, they must be provisioned into Deputy. In case of Deputy, provisioning is a manual task.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Helyettesbe, a helyettesnek kell kiépíteni őket. Helyettes esetén a kiépítés manuális feladat.
 
-#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
+#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
-1. Log in to your Deputy company site as an administrator.
+1. Jelentkezzen be a vállalati webhelyre rendszergazdaként.
 
-2. On the top navigation pane, click **People**.
+2. A felső navigációs ablaktáblán kattintson a **személyek**elemre.
    
-    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "Emberek")
+    ![Személyek](./media/deputy-tutorial/tutorial_deputy_001.png "Emberek")
 
-3. Click the **Add People** button and click **Add a single person**.
+3. Kattintson a **személyek hozzáadása** gombra, és kattintson az **egyetlen személy hozzáadása**lehetőségre.
    
-    ![Add People](./media/deputy-tutorial/tutorial_deputy_002.png "Add People")
+    ![Személyek hozzáadása](./media/deputy-tutorial/tutorial_deputy_002.png "Személyek hozzáadása")
 
-4. Perform the following steps and click **Save & Invite**.
+4. Hajtsa végre a következő lépéseket, és kattintson a **mentés & meghívás**gombra.
    
-    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
+    ![Új felhasználó](./media/deputy-tutorial/tutorial_deputy_003.png "Új felhasználó")
 
-    a. In the **Name** textbox, type name of the user like **BrittaSimon**.
+    a. A **név** szövegmezőbe írja be a felhasználó nevét (például **BrittaSimon**).
    
-    b. In the **Email** textbox, type the email address of an Azure AD account you want to provision.
+    b. Az **e-mail** szövegmezőbe írja be a kiépíteni kívánt Azure ad-fiók e-mail-címét.
    
-    c. In the **Work at** textbox, type the business name.
+    c. A **Work on** szövegmezőbe írja be a vállalat nevét.
    
-    d. Click **Save & Invite** button.
+    d. Kattintson a **mentés & meghívás** gombra.
 
-5. The Azure AD account holder receives an email and follows a link to confirm their account before it becomes active. You can use any other Deputy user account creation tools or APIs provided by Deputy to provision Azure AD user accounts.
+5. Az Azure AD-fiók tulajdonosa egy e-mailt kap, és egy hivatkozást követ, amely megerősíti a fiókját, mielőtt az aktívvá válna. Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a helyettes által biztosított felhasználói fiók létrehozási eszközét vagy API-t használhat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the Deputy tile in the Access Panel, you should be automatically signed in to the Deputy for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a helyettes csempére kattint, automatikusan be kell jelentkeznie arra a helyettesre, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

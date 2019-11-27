@@ -1,5 +1,5 @@
 ---
-title: Use Azure Key Vault in templates
+title: Azure Key Vault használata a sablonokban
 description: Megtudhatja, hogyan használható az Azure Key Vault biztonságos paraméterértékek megadására a Resource Manager-sablon üzembe helyezése során
 author: mumian
 ms.date: 05/23/2019
@@ -13,18 +13,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326397"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Tutorial: Integrate Azure Key Vault in your Resource Manager template deployment
+# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Oktatóanyag: a Azure Key Vault integrálása a Resource Manager-sablonok üzembe helyezésével
 
-Learn how to retrieve secrets from an Azure key vault and pass the secrets as parameters when you deploy Azure Resource Manager. The parameter value is never exposed, because you reference only its key vault ID. For more information, see [Use Azure Key Vault to pass secure parameter value during deployment](./resource-manager-keyvault-parameter.md).
+Megtudhatja, hogyan kérhet le titkos kulcsokat egy Azure Key vaultból, és hogyan továbbíthatja a titkokat paraméterekként a Azure Resource Manager telepítésekor. A paraméter értéke soha nem érhető el, mert csak a Key Vault-AZONOSÍTÓra hivatkozik. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](./resource-manager-keyvault-parameter.md)átadására az üzembe helyezés során.
 
-In the [Set resource deployment order](./resource-manager-tutorial-create-templates-with-dependent-resources.md) tutorial, you create a virtual machine (VM). You need to provide the VM administrator username and password. Instead of providing the password, you can pre-store the password in an Azure key vault and then customize the template to retrieve the password from the key vault during the deployment.
+Az [erőforrás-telepítési sorrend beállítása](./resource-manager-tutorial-create-templates-with-dependent-resources.md) oktatóanyagban hozzon létre egy virtuális GÉPET (VM). Meg kell adnia a virtuális gép rendszergazdájának felhasználónevét és jelszavát. A jelszó megadása helyett előre tárolhatja a jelszót egy Azure Key vaultban, majd testreszabhatja a sablont a Key vaultból a telepítés során való lekéréséhez.
 
-![Diagram displaying the integration of a Resource Manager template with a key vault](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
+![Egy Resource Manager-sablon és egy kulcstartó integrálását megjelenítő diagram](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Prepare a key vault
+> * Kulcstartó előkészítése
 > * Gyorsindítási sablon megnyitása
 > * A paraméterfájl szerkesztése
 > * A sablon üzembe helyezése
@@ -39,25 +39,25 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
-* To increase security, use a generated password for the VM administrator account. Here's a sample for generating a password:
+* Visual Studio Code a Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](./resource-manager-tools-vs-code.md).
+* A biztonság növeléséhez használjon generált jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa a jelszó létrehozására:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Verify that the generated password meets the VM password requirements. Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. For the VM password requirements, see [What are the password requirements when you create a VM?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    Ellenőrizze, hogy a generált jelszó megfelel-e a virtuális gép jelszavával kapcsolatos követelményeknek. Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. A virtuális gép jelszavával kapcsolatos követelményekért lásd: [Mik a jelszóra vonatkozó követelmények a virtuális gépek létrehozásakor?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-## <a name="prepare-a-key-vault"></a>Prepare a key vault
+## <a name="prepare-a-key-vault"></a>Kulcstartó előkészítése
 
-In this section, you create a key vault and add a secret to it, so that you can retrieve the secret when you deploy your template. There are many ways to create a key vault. In this tutorial, you use Azure PowerShell to deploy a [Resource Manager template](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). This template does the following:
+Ebben a szakaszban létrehoz egy kulcstartót, és hozzáad egy titkos kulcsot a sablon üzembe helyezése során a titkos kulcs lekéréséhez. A Key Vault számos módon hozható létre. Ebben az oktatóanyagban egy [Resource Manager-sablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)üzembe helyezéséhez Azure PowerShell használ. A sablon a következő műveleteket végzi el:
 
-* Creates a key vault with the `enabledForTemplateDeployment` property enabled. This property must be *true* before the template deployment process can access the secrets that are defined in the key vault.
-* Adds a secret to the key vault. The secret stores the VM administrator password.
+* Létrehoz egy Key vaultot, amelyen engedélyezve van a `enabledForTemplateDeployment` tulajdonság. Ennek a tulajdonságnak *igaznak* kell lennie ahhoz, hogy a sablon központi telepítési folyamata hozzáférhessen a kulcstartóban definiált titkos kulcsokhoz.
+* Titkos kulcsot helyez el a kulcstartóhoz. A titkos kulcs a virtuális gép rendszergazdai jelszavát tárolja.
 
 > [!NOTE]
-> As the user who's deploying the virtual machine template, if you're not the Owner of or a Contributor to the key vault, the Owner or a Contributor must grant you access to the *Microsoft.KeyVault/vaults/deploy/action* permission for the key vault. For more information, see [Use Azure Key Vault to pass a secure parameter value during deployment](./resource-manager-keyvault-parameter.md).
+> Ha a virtuálisgép-sablont telepítő felhasználó nem a kulcstartó tulajdonosa vagy közreműködője, akkor a tulajdonosnak vagy a közreműködőnek hozzáférést kell adnia a Microsoft. kulcstartó/tárolók/ *üzembe helyezés/művelet* engedélyhez a kulcstartóhoz. További információ: a [Azure Key Vault használata biztonságos paraméterek értékének](./resource-manager-keyvault-parameter.md)átadására az üzembe helyezés során.
 
-To run the following Azure PowerShell script, select **Try it** to open Azure Cloud Shell. To paste the script, right-click the shell pane, and then select **Paste**.
+A következő Azure PowerShell parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -75,52 +75,52 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ```
 
 > [!IMPORTANT]
-> * The resource group name is the project name, but with **rg** appended to it. To make it easier to [clean up the resources that you created in this tutorial](#clean-up-resources), use the same project name and resource group name when you [deploy the next template](#deploy-the-template).
-> * The default name for the secret is **vmAdminPassword**. It's hardcoded in the template.
-> * To enable the template to retrieve the secret, you must enable an access policy called "Enable access to Azure Resource Manager for template deployment" for the key vault. This policy is enabled in the template. For more information about the access policy, see [Deploy key vaults and secrets](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets).
+> * Az erőforráscsoport neve a projekt neve, de **RG** hozzáfűzéssel. Az [oktatóanyagban létrehozott erőforrások](#clean-up-resources)törlésének egyszerűbbé tételéhez használja a projekt nevét és az erőforráscsoport nevét a [következő sablon telepítésekor](#deploy-the-template).
+> * A titok alapértelmezett neve **vmAdminPassword**. A sablon hardcoded.
+> * Ha engedélyezni szeretné a sablon számára a titkos kulcs lekérését, engedélyeznie kell egy "hozzáférés engedélyezése Azure Resource Manager a sablon központi telepítéséhez" nevű hozzáférési szabályzatot a kulcstartóhoz. Ez a szabályzat engedélyezve van a sablonban. A hozzáférési szabályzattal kapcsolatos további információkért lásd: [kulcstartók és titkos kulcsok üzembe helyezése](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets).
 
-The template has one output value, called *keyVaultId*. Write down the ID value for later use, when you deploy the virtual machine. The resource ID format is:
+A sablon egy *keyVaultId*nevű kimeneti értékkel rendelkezik. A virtuális gép telepítésekor írja le az azonosító értékét későbbi használatra. Az erőforrás-azonosító formátuma:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
 ```
 
-When you copy and paste the ID, it might be broken into multiple lines. Merge the lines and trim the extra spaces.
+Az azonosító másolásakor és beillesztésekor előfordulhat, hogy több sorba van bontva. Egyesítse a sorokat, és vágja fel a felesleges szóközöket.
 
-To validate the deployment, run the following PowerShell command in the same shell pane to retrieve the secret in clear text. The command works only in the same shell session, because it uses the variable *$keyVaultName*, which is defined in the preceding PowerShell script.
+A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a *$keyVaultName*változót használja, amely az előző PowerShell-parancsfájlban van meghatározva.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
 ```
 
-Now you've prepared a key vault and a secret. The following sections show you how to customize an existing template to retrieve the secret during the deployment.
+Most előkészített egy kulcstartót és egy titkos kulcsot. A következő részben bemutatjuk, hogyan szabhatja testre a meglévő sablonokat a titkos kód beolvasására a telepítés során.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Azure Quickstart Templates is a repository for Resource Manager templates. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. The template that's used in this tutorial is called [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az oktatóanyagban használt sablon [egy egyszerű Windows-alapú virtuális gép üzembe helyezését](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)hívja meg.
 
-1. In Visual Studio Code, select **File** > **Open File**.
+1. A Visual Studio Code-ban válassza a **fájl** > fájl **megnyitása**lehetőséget.
 
-1. In the **File name** box, paste the following URL:
+1. Illessze be a következő URL-címet a **fájlnév** mezőbe:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. The scenario is the same as the one that's used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-   The template defines five resources:
+1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. A forgatókönyv ugyanaz, mint az [oktatóanyagban használt: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+   A sablon öt erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-   It's helpful to have some basic understanding of the template before you customize it.
+   A Testreszabás előtt hasznos lehet a sablon alapvető ismerete.
 
-1. Select **File** > **Save As**, and then save a copy of the file to your local computer with the name *azuredeploy.json*.
+1. Válassza a **fájl** > **Mentés másként**lehetőséget, majd mentse a fájl egy másolatát a helyi számítógépre a *azuredeploy. JSON*néven.
 
-1. Repeat steps 1-3 to open the following URL, and then save the file as *azuredeploy.parameters.json*.
+1. Ismételje meg a 1-3 lépést a következő URL-cím megnyitásához, majd mentse a fájlt *azuredeploy. Parameters. JSON*néven.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -130,8 +130,8 @@ Azure Quickstart Templates is a repository for Resource Manager templates. Telje
 
 A sablonfájlt nem kell módosítania.
 
-1. In Visual Studio Code, open *azuredeploy.parameters.json* if it's not already open.
-1. Update the `adminPassword` parameter to:
+1. A Visual Studio Code-ban nyissa meg a *azuredeploy. Parameters. JSON* fájlt, ha még nincs megnyitva.
+1. Frissítse a `adminPassword` paramétert a következőre:
 
     ```json
     "adminPassword": {
@@ -145,22 +145,22 @@ A sablonfájlt nem kell módosítania.
     ```
 
     > [!IMPORTANT]
-    > Replace the value for **id** with the resource ID of the key vault that you created in the previous procedure.
+    > Cserélje le az **azonosító** értékét az előző eljárás során létrehozott kulcstartó erőforrás-azonosítójával.
 
-    ![Integrate key vault and Resource Manager template virtual machine deployment parameters file](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+    ![A Key Vault és a Resource Manager-sablon virtuális gép telepítési paramétereinek fájljának integrálása](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
-1. Update the following values:
+1. Frissítse a következő értékeket:
 
-    * **adminUsername**: The name of the virtual machine administrator account.
-    * **dnsLabelPrefix**: Name the dnsLabelPrefix value.
+    * **adminUsername**: a virtuális gép rendszergazdai fiókjának neve.
+    * **dnsLabelPrefix**: nevezze el a dnsLabelPrefix értéket.
 
-    For examples of names, see the preceding image.
+    Példák a nevekre: az előző képen látható.
 
 1. Mentse a módosításokat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Follow the instructions in [Deploy the template](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Upload both *azuredeploy.json* and *azuredeploy.parameters.json* to Cloud Shell, and then use the following PowerShell script to deploy the template:
+Kövesse a [sablon üzembe helyezése](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)című témakör utasításait. Töltse fel a *azuredeploy. JSON* és a *azuredeploy. Parameters. json* fájlt a Cloud Shellba, majd a következő PowerShell-parancsfájl használatával telepítse a sablont:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -173,21 +173,21 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
 ```
 
-When you deploy the template, use the same resource group that you used in the key vault. This approach makes it easier for you to clean up the resources, because you need to delete only one resource group instead of two.
+A sablon központi telepítésekor használja ugyanazt az erőforráscsoportot, amelyet a Key vaultban használt. Ezzel a módszerrel könnyebben törölheti az erőforrásokat, mivel kettő helyett csak egy erőforráscsoportot kell törölnie.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-After you've successfully deployed the virtual machine, test the sign-in credentials by using the password that's stored in the key vault.
+A virtuális gép sikeres üzembe helyezését követően tesztelje a bejelentkezési hitelesítő adatokat a Key vaultban tárolt jelszó használatával.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 
-1. Select **Resource groups** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
-1. Select **connect** at the top.
-1. Select **Download RDP File**, and then follow the instructions to sign in to the virtual machine by using the password that's stored in the key vault.
+1. Válassza ki az **erőforráscsoportok** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
+1. Kattintson a fent található **kapcsolat** lehetőségre.
+1. Válassza az **RDP-fájl letöltése**lehetőséget, majd kövesse az utasításokat a virtuális gépre való bejelentkezéshez a Key vaultban tárolt jelszó használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you no longer need your Azure resources, clean up the resources that you deployed by deleting the resource group.
+Ha már nincs szüksége az Azure-erőforrásokra, az erőforráscsoport törlésével törölje az üzembe helyezett erőforrásokat.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you retrieved a secret from your Azure key vault. You then used the secret in your template deployment. Ha meg szeretné tudni, hogyan hozhat létre csatolt sablonokat, tekintse meg a következőt:
+Ebben az oktatóanyagban egy titkos kulcsot adott vissza az Azure Key vaultból. Ezután használta a titkot a sablon üzembe helyezésében. Ha meg szeretné tudni, hogyan hozhat létre csatolt sablonokat, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [Csatolt sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)

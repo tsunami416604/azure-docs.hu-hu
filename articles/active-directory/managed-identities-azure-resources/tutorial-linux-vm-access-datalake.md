@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Data Lake Store - Linux - Azure AD
+title: Oktatóanyag`:` felügyelt identitás használata a Azure Data Lake Store-Linux-Azure AD eléréséhez
 description: Ez az oktatóanyag bemutatja, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Data Lake Storage eléréséhez.
 services: active-directory
 documentationcenter: ''
@@ -26,9 +26,9 @@ ms.locfileid: "74224288"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-This tutorial shows you how to use a system-assigned managed identity for a Linux virtual machine (VM) to access Azure Data Lake Store. Az alábbiak végrehajtásának módját ismerheti meg: 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerhez rendelt felügyelt identitást a linuxos virtuális gépekhez (VM) a Azure Data Lake Store eléréséhez. Az alábbiak végrehajtásának módját ismerheti meg: 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz.
@@ -71,7 +71,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
 
 1. A portálon tallózzon a Linux rendszerű virtuális géphez. Az **Áttekintés** területen válassza a **Csatlakozás** lehetőséget.  
 2. Csatlakozzon a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminálablakban a cURL használatával intézzen egy kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot a Data Lake Storage-fájlrendszerhez. The resource identifier for Data Lake Store is `https://datalake.azure.net/`.  Mindenképpen bele kell foglalni a záró perjelet az erőforrás-azonosítóba.
+3. A terminálablakban a cURL használatával intézzen egy kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot a Data Lake Storage-fájlrendszerhez. A Data Lake Store erőforrás-azonosítója `https://datalake.azure.net/`.  Mindenképpen bele kell foglalni a záró perjelet az erőforrás-azonosítóba.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

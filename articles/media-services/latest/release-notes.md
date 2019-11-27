@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 release notes | Microsoft Docs
-description: To stay up-to-date with the most recent developments, this article provides you with the latest updates on Azure Media Services v3.
+title: A Azure Media Services v3 kibocsátási megjegyzései | Microsoft Docs
+description: Ha naprakészen szeretne maradni a legújabb fejleményekkel, ez a cikk az Azure Media Services v3 legújabb frissítéseit tartalmazza.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -18,284 +18,284 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420040"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 release notes
+# <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
-To stay up-to-date with the most recent developments, this article provides you with information about:
+Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
-* The latest releases
+* A legújabb kiadásaihoz.
 * Ismert problémák
 * Hibajavítások
-* Deprecated functionality
+* Elavult funkciók
 
 ## <a name="known-issues"></a>Ismert problémák
 
 > [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Use the [REST API](https://aka.ms/ams-v3-rest-sdk), CLI, or one of the supported SDKs.
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [Rest APIt](https://aka.ms/ams-v3-rest-sdk), a CLI-t vagy az egyik támogatott SDK-t.
 
-For more information, see [Migration guidance for moving from Media Services v2 to v3](migrate-from-v2-to-v3.md#known-issues).
+További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="september-2019"></a>2019. szeptember
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
-#### <a name="live-linear-encoding-of-live-events"></a>Live linear encoding of live events
+#### <a name="live-linear-encoding-of-live-events"></a>Élő események élő lineáris kódolása
 
-Media Services v3 is announcing the preview of 24 hrs x 365 days of live linear encoding of live events.
+Media Services v3 bejelenti az élő események élő lineáris kódolásának 24 órás x 365 napos előzetes verzióját.
 
 ###  <a name="media-services-v2"></a>Media Services v2  
 
-#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
+#### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-We are announcing deprecation of *Azure Media Indexer* and *Azure Media Indexer 2 Preview*. The [Azure Media Indexer](../previous/media-services-index-content.md) media processor will be retired on October 1st of 2020. The [Azure Media Indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) media processors will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces these legacy media processors.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A [Azure Media Indexer](../previous/media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 előnézeti](../previous/media-services-process-content-with-indexer2.md) adathordozó processzora 2020 január 1-től megszűnik. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
-For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
+További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>2019. augusztus
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
-#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>South Africa regional pair is open for Media Services 
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>A Dél-afrikai regionális pár nyitva van a Media Services 
 
-Media Services is now available in South Africa North and South Africa West regions.
+A Media Services mostantól elérhető Dél-Afrikában Észak-és Dél-Afrika nyugati régiójában.
 
-For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
+További információkért tekintse [meg a felhőket és a régiókat, amelyekben Media Services v3 létezik](azure-clouds-regions.md).
 
 ###  <a name="media-services-v2"></a>Media Services v2  
 
-#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
+#### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors, which are being retired on March 31, 2020.
+Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavult változatát, amelyek 2020. március 31-én megszűnnek.
 
-For details, see [Migrate WAME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) and [Migrate AME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101334) és az [ame áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
 ## <a name="july-2019"></a>2019. július
 
 ### <a name="content-protection"></a>Tartalomvédelem
 
-When streaming content protected with token restriction, end users need to obtain a token that is sent as part of the key delivery request. The *Token Replay Prevention* feature allows Media Services customers to set a limit on how many times the same token can be used to request a key or a license. For more information, see [Token Replay Prevention](content-protection-overview.md#token-replay-prevention).
+A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
 
-This feature is currently available in US Central and US West Central.
+Ez a szolgáltatás jelenleg az USA középső és nyugati középső régiójában érhető el.
 
 ## <a name="june-2019"></a>2019. június
 
-### <a name="video-subclipping"></a>Video subclipping
+### <a name="video-subclipping"></a>Videó kivágása
 
-You can now trim or subclip a video when encoding it using a [Job](https://docs.microsoft.com/rest/api/media/jobs). 
+Most már elvégezheti a videó kivágását vagy alvágását, amikor [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs)kódolja. 
 
-This functionality works with any [Transform](https://docs.microsoft.com/rest/api/media/transforms) that is built using either the [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) presets, or the [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) presets. 
+Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik. 
 
-See examples:
+Példák:
 
-* [Subclip a video with .NET](subclip-video-dotnet-howto.md)
-* [Subclip a video with REST](subclip-video-rest-howto.md)
+* [Videó kivágása a .NET-tel](subclip-video-dotnet-howto.md)
+* [Videó kivágása a REST-tel](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019. május
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor support for Media Services diagnostic logs and metrics
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Media Services diagnosztikai naplók és metrikák Azure Monitor támogatása
 
-You can now use Azure Monitor to view telemetry data emmited by Media Services.
+Mostantól a Azure Monitor használatával megtekintheti a telemetria-emmited Media Services alapján.
 
-* Use the Azure Monitor diagnostic logs to monitor requests sent by the Media Services Key Delivery endpoint. 
-* Monitor metrics emitted by Media Services [Streaming Endpoints](streaming-endpoint-concept.md).   
+* A Media Services kulcs kézbesítési végpontja által küldött kérelmek figyeléséhez használja a Azure Monitor diagnosztikai naplókat. 
+* Media Services [streaming-végpontok](streaming-endpoint-concept.md)által kibocsátott mérőszámok figyelése.   
 
-For details, see [Monitor Media Services metrics and diagnostic logs](media-services-metrics-diagnostic-logs.md).
+Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Multi audio tracks support in Dynamic Packaging 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Többszörös hangsávok támogatják a dinamikus csomagolást 
 
-When streaming Assets that have multiple audio tracks with multiple codecs and languages, [Dynamic Packaging](dynamic-packaging-overview.md) now supports multi audio tracks for the HLS output (version 4 or above).
+Ha több, több kodeket és nyelvet tartalmazó hangsávokkal rendelkező adatfolyam-továbbítási eszközt is tartalmaz, a [dinamikus csomagolás](dynamic-packaging-overview.md) mostantól támogatja a HLS kimenetének több hangsávot (4-es vagy újabb verzió).
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea regional pair is open for Media Services 
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea regionális pár nyitva van a Media Services 
 
-Media Services is now available in Korea Central and Korea South regions. 
+A Media Services mostantól Korea középső és déli régiójában érhető el. 
 
-For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
+További információkért tekintse [meg a felhőket és a régiókat, amelyekben Media Services v3 létezik](azure-clouds-regions.md).
 
 ### <a name="performance-improvements"></a>Teljesítménnyel kapcsolatos fejlesztések
 
-Added updates that include Media Services performance improvements.
+A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítések lettek hozzáadva.
 
-* The maximum file size supported for processing was updated. See, [Quotas and limitations](limits-quotas-constraints.md).
-* [Encoding speeds improvements](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* A feldolgozáshoz támogatott maximális fájlméret frissült. Lásd: [kvóták és korlátozások](limits-quotas-constraints.md).
+* A [kódolási sebesség fejlesztése](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
 ## <a name="april-2019"></a>2019. április
 
-### <a name="new-presets"></a>New presets
+### <a name="new-presets"></a>Új beállításkészletek
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) was added to the built-in analyzer presets.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) was added to the built-in encoder presets. For more information, see [Content-aware encoding](cae-experimental.md). 
+* A rendszer hozzáadta a [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) a beépített analizátor-előkészletekhez.
+* A rendszer hozzáadta a [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) a beépített kódoló-előbeállításokhoz. További információ: [Content-Aware kódolás](cae-experimental.md). 
 
 ## <a name="march-2019"></a>2019. március
 
-Dynamic Packaging now supports Dolby Atmos. For more information, see [Audio codecs supported by dynamic packaging](dynamic-packaging-overview.md#audio-codecs).
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](dynamic-packaging-overview.md#audio-codecs).
 
-You can now specify a list of asset or account filters, which would apply to your Streaming Locator. For more information, see [Associate filters with Streaming Locator](filters-concept.md#associating-filters-with-streaming-locator).
+Mostantól megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. További információ: [szűrők hozzárendelése a streaming Locator](filters-concept.md#associating-filters-with-streaming-locator)szolgáltatáshoz.
 
 ## <a name="february-2019"></a>2019. február
 
-Media Services v3 is now supported in Azure national clouds. Not all features are available in all clouds yet. For details, see [Clouds and regions in which Azure Media Services v3 exists](azure-clouds-regions.md).
+A Media Services v3 mostantól támogatott az Azure National felhőkben. Az összes funkció még nem érhető el az összes felhőben. Részletekért lásd: [felhők és régiók, amelyekben Azure Media Services v3 létezik](azure-clouds-regions.md).
 
-[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) event was added to the Azure Event Grid schemas for Media Services.
+A [Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) esemény hozzá lett adva a Media Services Azure Event Grid sémához.
 
 ## <a name="january-2019"></a>2019. január
 
-### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard and MPI files 
+### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard-és MPI-fájlok 
 
-When encoding with Media Encoder Standard to produce MP4 file(s), a new .mpi file is generated and added to the output Asset. This MPI file is intended to improve performance for [dynamic packaging](dynamic-packaging-overview.md) and streaming scenarios.
+Ha az MP4-fájl (ok) Media Encoder Standard kódolást hoz létre, a rendszer létrehoz egy új. MPI-fájlt, és hozzáadja a kimeneti eszközhöz. Ez az MPI-fájl a [dinamikus csomagolás](dynamic-packaging-overview.md) és a folyamatos átviteli forgatókönyvek teljesítményének növelésére szolgál.
 
-You should not modify or remove the MPI file, or take any dependency in your service on the existence (or not) of such a file.
+Ne módosítsa vagy távolítsa el az MPI-fájlt, vagy az ilyen fájl létezésére (vagy nem) való függőséget a szolgáltatásban.
 
 ## <a name="december-2018"></a>2018. december
 
-Updates from the GA release of the V3 API include:
+A V3 API GA-kiadásának frissítései a következők:
        
-* The **PresentationTimeRange** properties are no longer 'required' for **Asset Filters** and **Account Filters**. 
-* The $top and $skip query options for **Jobs** and **Transforms** have been removed and $orderby was added. As part of adding the new ordering functionality, it was discovered that the $top and $skip options had accidentally been exposed previously even though they are not implemented.
-* Enumeration extensibility was re-enabled. This feature was enabled in the preview versions of the SDK and got accidentally disabled in the GA version.
-* Two predefined streaming policies have been renamed. **SecureStreaming** is now **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** is now **Predefined_MultiDrmStreaming**.
+* A **PresentationTimeRange** tulajdonságai többé nem szükségesek az **eszközök** és a **fiókok szűrőinek**kiszűréséhez. 
+* A **feladatok** és **átalakítások** $Top és $skip lekérdezési beállításai el lettek távolítva, és $OrderBy lettek hozzáadva. Az új rendezési funkció hozzáadásának részeként a rendszer azt észlelte, hogy a $top és $skip lehetőség korábban még nem volt elérhető, noha nincsenek implementálva.
+* A számbavétel bővíthetőségét újra engedélyezték. Ez a funkció engedélyezve volt az SDK előzetes verzióiban, és véletlenül le lett tiltva a GA verzióban.
+* Két előre megadott folyamatos átviteli házirend lett átnevezve. A **SecureStreaming** mostantól **MultiDrmCencStreaming**. A **SecureStreamingWithFairPlay** most már **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>2018. november
 
-The CLI 2.0 module is now available for [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
-### <a name="new-commands"></a>New commands
+### <a name="new-commands"></a>Új parancsok
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - enables you to manage Media Reserved Units. For more information, see [Scale Media Reserved Units](media-reserved-units-cli-how-to.md).
+- [az AMS-fiók](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az AMS Job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az AMS Live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információ: a [Media szolgáltatás számára fenntartott egységek skálázása](media-reserved-units-cli-how-to.md).
 
-### <a name="new-features-and-breaking-changes"></a>New features and breaking changes
+### <a name="new-features-and-breaking-changes"></a>Új funkciók és a változások megszakítása
 
-#### <a name="asset-commands"></a>Asset commands
+#### <a name="asset-commands"></a>Eszköz parancsai
 
-- ```--storage-account``` and ```--container``` arguments added.
-- Default values for expiry time (Now+23h) and permissions (Read) in ```az ams asset get-sas-url``` command added.
+- ```--storage-account``` és ```--container``` argumentumok hozzáadva.
+- A rendszer a lejárati idő (most + 23H) és az engedélyek (olvasás) alapértelmezett értékeit adja hozzá ```az ams asset get-sas-url``` parancshoz.
 
-#### <a name="job-commands"></a>Job commands
+#### <a name="job-commands"></a>Feladatok parancsai
 
-- ```--correlation-data``` and ```--label``` arguments added
-- ```--output-asset-names``` renamed to ```--output-assets```. Now it accepts a space-separated list of assets in 'assetName=label' format. An asset without label can be sent like this: 'assetName='.
+- ```--correlation-data``` és ```--label``` argumentumok hozzáadva
+- ```--output-asset-names``` átnevezve ```--output-assets```re. Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
 
-#### <a name="streaming-locator-commands"></a>Streaming Locator commands
+#### <a name="streaming-locator-commands"></a>Adatfolyam-kereső parancsai
 
-- ```az ams streaming locator``` base command replaced with ```az ams streaming-locator```.
-- ```--streaming-locator-id``` and ```--alternative-media-id support``` arguments added.
-- ```--content-keys argument``` argument updated.
-- ```--content-policy-name``` renamed to ```--content-key-policy-name```.
+- ```az ams streaming locator``` alapparancs lecserélve a ```az ams streaming-locator```ra.
+- ```--streaming-locator-id``` és ```--alternative-media-id support``` argumentumok hozzáadva.
+- ```--content-keys argument``` argumentum frissítve.
+- ```--content-policy-name``` átnevezve ```--content-key-policy-name```re.
 
-#### <a name="streaming-policy-commands"></a>Streaming Policy commands
+#### <a name="streaming-policy-commands"></a>Streaming Policy parancsok
 
-- ```az ams streaming policy``` base command replaced with ```az ams streaming-policy```.
-- Encryption parameters support in ```az ams streaming-policy create``` added.
+- ```az ams streaming policy``` alapparancs lecserélve a ```az ams streaming-policy```ra.
+- A titkosítási paraméterek támogatása ```az ams streaming-policy create``` hozzáadva.
 
-#### <a name="transform-commands"></a>Transform commands
+#### <a name="transform-commands"></a>Átalakítási parancsok
 
-- ```--preset-names``` argument replaced with ```--preset```. Now you can only set 1 output/preset at a time (to add more you have to run ```az ams transform output add```). Also, you can set custom StandardEncoderPreset by passing the path to your custom JSON.
-- ```az ams transform output remove``` can be performed by passing the output index to remove.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` arguments added in ```az ams transform create``` and ```az ams transform output add``` commands.
+- ```--preset-names``` argumentum helyébe ```--preset```. Most már csak 1 kimenetet/beállításkészletet állíthat be (a ```az ams transform output add```futtatásához szükséges további beállítások hozzáadásához). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
+- a ```az ams transform output remove``` elvégezhető az eltávolításhoz szükséges kimeneti index átadásával.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` ```az ams transform create``` és ```az ams transform output add``` parancsokban hozzáadott argumentumok.
 
-## <a name="october-2018---ga"></a>October 2018 - GA
+## <a name="october-2018---ga"></a>Október 2018 – GA
 
-This section describes Azure Media Services (AMS) October updates.
+Ez a szakasz a Azure Media Services (AMS) októberi frissítéseit ismerteti.
 
-### <a name="rest-v3-ga-release"></a>REST v3 GA release
+### <a name="rest-v3-ga-release"></a>REST v3 GA kiadás
 
-The [REST v3 GA release](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) includes more APIs for Live, Account/Asset level manifest filters, and DRM support.
+A [Rest v3](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) -as kiadás több API-t tartalmaz az élő, a fiókok és az eszközök szintjének szűréséhez, valamint a DRM-támogatáshoz.
 
-#### <a name="azure-resource-management"></a>Azure Resource Management 
+#### <a name="azure-resource-management"></a>Azure-erőforrások kezelése 
 
-Support for Azure Resource Management enables unified management and operations API (now everything in one place).
+Az Azure Erőforrás-kezelés támogatása lehetővé teszi az egységes felügyeleti és üzemeltetési API-t (mostantól minden egy helyen).
 
-Starting with this release, you can use Resource Manager templates to create Live Events.
+Ettől a kiadástól kezdve a Resource Manager-sablonok használatával élő eseményeket hozhat létre.
 
-#### <a name="improvement-of-asset-operations"></a>Improvement of Asset operations 
+#### <a name="improvement-of-asset-operations"></a>Az Asset Operations fejlesztése 
 
-The following improvements were introduced:
+A következő fejlemények lettek bevezetve:
 
-- Ingest from HTTP(s) URLs or Azure Blob Storage SAS URLs.
-- Specify you own container names for Assets. 
-- Easier output support to create custom workflows with Azure Functions.
+- HTTP (s) URL-címekről vagy Azure Blob Storage SAS URL-címekről való betöltés.
+- Az eszközökhöz tartozó saját tárolók nevének megadása. 
+- A Azure Functions használatával egyszerűbben hozhat létre egyéni munkafolyamatokat.
 
-#### <a name="new-transform-object"></a>New Transform object
+#### <a name="new-transform-object"></a>Új átalakítási objektum
 
-The new **Transform** object simplifies the Encoding model. The new object makes it easy to create and share encoding Resource Manager templates and presets. 
+Az új **átalakítási** objektum leegyszerűsíti a kódolási modellt. Az új objektum segítségével egyszerűen hozhat létre és oszthat meg Encoding Resource Manager-sablonokat és-készleteket. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory authentication and RBAC
+#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory hitelesítés és RBAC
 
-Azure AD Authentication and Role-Based Access Control (RBAC) enable secure Transforms, LiveEvents, Content Key Policies, or Assets by Role or Users in Azure AD.
+Az Azure AD-hitelesítés és a szerepköralapú Access Control (RBAC) lehetővé teszik a biztonságos átalakításokat, LiveEvents, tartalmi kulcsokra vonatkozó szabályzatokat vagy eszközöket az Azure AD-ban lévő szerepkörök vagy felhasználók számára.
 
 #### <a name="client-sdks"></a>Ügyfél-SDK-k  
 
-Languages supported in Media Services v3: .NET Core, Java, Node.js, Ruby, Typescript, Python, Go.
+A Media Services v3 által támogatott nyelvek: .NET Core, Java, Node. js, Ruby, írógéppel, Python, go.
 
-#### <a name="live-encoding-updates"></a>Live encoding updates
+#### <a name="live-encoding-updates"></a>Élő kódolási frissítések
 
-The following live encoding updates are introduced:
+A következő élő kódolási frissítések vannak bevezetve:
 
-- New low latency mode for live (10 seconds end-to-end).
-- Improved RTMP support (increased stability and more source encoder support).
-- RTMPS secure ingest.
+- Új, alacsony késleltetésű mód az élő (10 másodperces végpont) számára.
+- Továbbfejlesztett RTMP-támogatás (nagyobb stabilitás és több forrás-kódoló támogatása).
+- A RTMP biztonságos betöltést biztosít.
 
-    When you create a Live Event, you now get 4 ingest URLs. The 4 ingest URLs are almost identical, have the same streaming token (AppId), only the port number part is different. Two of the URLs are primary and backup for RTMPS. 
-- 24-hour transcoding support. 
-- Improved ad-signaling support in RTMP via SCTE35.
+    Ha élő eseményt hoz létre, most 4 betöltési URL-címet kap. A 4 betöltési URL-cím majdnem azonos, ugyanazzal a folyamatos átviteli jogkivonattal (AppId) rendelkezik, csak a portszám rész különbözik. A két URL-cím elsődleges és biztonsági másolat az RTMP-hez. 
+- 24 órás átkódolási támogatás. 
+- Továbbfejlesztett ad-jelzéses támogatás az RTMP-n keresztül a SCTE35-on keresztül.
 
-#### <a name="improved-event-grid-support"></a>Improved Event Grid support
+#### <a name="improved-event-grid-support"></a>Továbbfejlesztett Event Grid támogatás
 
-You can see the following Event Grid support improvements:
+A következő Event Grid-támogatással kapcsolatos fejlesztési funkciók láthatók:
 
-- Azure Event Grid integration for easier development with Logic Apps and Azure Functions. 
-- Subscribe for events on Encoding, Live Channels, and more.
+- Azure Event Grid integráció a Logic Apps és a Azure Functions egyszerűbb fejlesztéséhez. 
+- Fizessen elő a kódolással, az élő csatornákkal és egyebekkel kapcsolatos eseményekre.
 
-### <a name="cmaf-support"></a>CMAF support
+### <a name="cmaf-support"></a>CMAF-támogatás
 
-CMAF and 'cbcs' encryption support for Apple HLS (iOS 11+) and MPEG-DASH players that support CMAF.
+A CMAF és a "CBCS" titkosítási támogatása az Apple HLS (iOS 11 +) és az MPEG-DASH-lejátszók számára, amelyek támogatják a CMAF.
 
-### <a name="video-indexer"></a>Videóindexelő
+### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA release was announced in August. For new information about currently supported features, see [What is Video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
+A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Plans for changes
+### <a name="plans-for-changes"></a>Módosítások tervek
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
-The Azure CLI 2.0 module that includes operations on all features (including Live, Content Key Policies, Account/Asset Filters, Streaming Policies) is coming soon. 
+Hamarosan elérhető az Azure CLI 2,0-modul, amely az összes funkcióra vonatkozik (beleértve az élő, a tartalmi kulcsra vonatkozó szabályzatokat, a fiók-és az adategységeket, a folyamatos átviteli szabályzatokat). 
 
 ### <a name="known-issues"></a>Ismert problémák
 
-Only customers that used the preview API for Asset or AccountFilters are impacted by the following issue.
+Az alábbi probléma csak azokat az ügyfeleket érinti, akik az előnézeti API-t használták az eszköz-vagy AccountFilters.
 
-If you created Assets or Account Filters between 09/28 and 10/12 with Media Services v3 CLI or APIs, you need to remove all Asset and AccountFilters and re-create them due to a version conflict. 
+Ha 09/28 és 10/12 közötti eszközöket vagy fiók-szűrőket hozott létre Media Services v3 parancssori felülettel vagy API-kkal, el kell távolítania az összes eszközt és AccountFilters, majd újra létre kell hoznia őket a verziók ütközése miatt. 
 
-## <a name="may-2018---preview"></a>May 2018 - Preview
+## <a name="may-2018---preview"></a>Május 2018 – előzetes verzió
 
 ### <a name="net-sdk"></a>.NET SDK
 
-The following features are present in the .NET SDK:
+A .NET SDK-ban a következő funkciók találhatók:
 
-* **Transforms** and **Jobs** to encode or analyze media content. For examples, see [Stream files](stream-files-tutorial-with-api.md) and [Analyze](analyze-videos-tutorial-with-api.md).
-* **Streaming Locators** for publishing and streaming content to end-user devices
-* **Streaming Policies** and **Content Key Policies** to configure key delivery and content protection (DRM) when delivering content.
-* **Live Events** and **Live Outputs** to configure the ingest and archiving of live streaming content.
-* **Assets** to store and publish media content in Azure Storage. 
-* **Streaming Endpoints** to configure and scale dynamic packaging, encryption, and streaming for both live and on-demand media content.
+* **Átalakítja** és **feladatait** a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
+* **Streaming-lokátorok** tartalmak közzétételéhez és a végfelhasználói eszközökre való továbbításához
+* **Folyamatos átviteli szabályzatok** és **tartalmi kulcsokra vonatkozó házirendek** a kulcsfontosságú kézbesítés és a tartalomvédelem (DRM) konfigurálásához a tartalmak kézbesítése során.
+* Élő **események** és **élő kimenetek** élő adatfolyam-tartalmak betöltésének és archiválásának konfigurálásához.
+* A médiatartalom tárolására és közzétételére szolgáló **eszközök** az Azure Storage-ban. 
+* **Adatfolyam-végpontok** a dinamikus csomagolás, a titkosítás és a folyamatos átviteli sebesség konfigurálásához és méretezéséhez mind az élő, mind az igény szerinti médiatartalmak esetében.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* When submitting a job, you can specify to ingest your source video using HTTPS URLs, SAS URLs, or paths to files located in Azure Blob storage. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+* A feladatok elküldésekor megadhatja, hogy a forrás videóját HTTPS URL-címek, SAS URL-címek vagy az Azure Blob Storage-ban található fájlok elérési útjai használatával beolvassa. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Ask questions, give feedback, get updates
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
-Check out the [Azure Media Services community](media-services-community.md) article to see different ways you can ask questions, give feedback, and get updates about Media Services.
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
-- [Media Services v2 release notes](../previous/media-services-release-notes.md)
+- [A Media Services v2 kibocsátási megjegyzései](../previous/media-services-release-notes.md)

@@ -1,6 +1,6 @@
 ---
-title: Task hubs in Durable Functions - Azure
-description: Learn what a task hub is in the Durable Functions extension for Azure Functions. Learn how to configure task hubs.
+title: Durable Functions-Azure-beli feladat-hubok
+description: Megtudhatja, mi a Task hub a Azure Functions Durable Functions-bővítményében. Útmutató a feladatok hubok konfigurálásához.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,32 +12,32 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232789"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Task hubs in Durable Functions (Azure Functions)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) feladat-hubok
 
-A *task hub* in [Durable Functions](durable-functions-overview.md) is a logical container for Azure Storage resources that are used for orchestrations. Orchestrator and activity functions can only interact with each other when they belong to the same task hub.
+A [Durable Functionsban](durable-functions-overview.md) található egyik *feladat* egy olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
 
-If multiple function apps share a storage account, each function app *must* be configured with a separate task hub name. A storage account can contain multiple task hubs. The following diagram illustrates one task hub per function app in shared and dedicated storage accounts.
+Ha több Function-alkalmazás is osztozik egy Storage-fiókkal, minden egyes Function *-alkalmazást külön* feladat-központtal kell konfigurálni. A Storage-fiókok több feladatot tartalmazó hubokat is tartalmazhatnak. A következő diagram egy Function hub-t ábrázol a megosztott és a dedikált Storage-fiókokban.
 
-![Diagram showing shared and dedicated storage accounts.](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![A megosztott és dedikált Storage-fiókokat bemutató diagram.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure Storage resources
+## <a name="azure-storage-resources"></a>Azure Storage-erőforrások
 
-A task hub consists of the following storage resources:
+A feladatok központja a következő tárolási erőforrásokból áll:
 
-* One or more control queues.
-* One work-item queue.
-* One history table.
-* One instances table.
-* One storage container containing one or more lease blobs.
-* A storage container containing large message payloads, if applicable.
+* Egy vagy több vezérlő-várólista.
+* Egy munkaelem-várólista.
+* Egy előzményi tábla.
+* Egy példány tábla.
+* Egy vagy több bérleti blobot tartalmazó tároló.
+* Nagyméretű üzenet-adattartalomot tartalmazó tárolási tároló, ha van ilyen.
 
-All of these resources are created automatically in the default Azure Storage account when orchestrator, entity, or activity functions run or are scheduled to run. The [Performance and Scale](durable-functions-perf-and-scale.md) article explains how these resources are used.
+Az összes ilyen erőforrás automatikusan létrejön az alapértelmezett Azure Storage-fiókban, ha a Orchestrator, az entitás vagy a tevékenység funkció fut, vagy ütemezve van a futtatásra. A [teljesítmény-és méretezési](durable-functions-perf-and-scale.md) cikk elmagyarázza, hogyan használják ezeket az erőforrásokat.
 
-## <a name="task-hub-names"></a>Task hub names
+## <a name="task-hub-names"></a>Task hub-nevek
 
-Task hubs are identified by a name that is declared in the *host.json* file, as shown in the following example:
+A feladatok hubokat a *Host. JSON* fájlban deklarált név azonosítja, ahogy az az alábbi példában is látható:
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (functions 2,0)
 
 ```json
 {
@@ -60,9 +60,9 @@ Task hubs are identified by a name that is declared in the *host.json* file, as 
 }
 ```
 
-Task hubs can also be configured using app settings, as shown in the following `host.json` example file:
+A feladatok hubok az Alkalmazásbeállítások használatával is konfigurálhatók, ahogy az az alábbi `host.json` például fájlban látható:
 
-### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
+### <a name="hostjson-functions-10"></a>Host. JSON (functions 1,0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (functions 2,0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-The task hub name will be set to the value of the `MyTaskHub` app setting. The following `local.settings.json` demonstrates how to define the `MyTaskHub` setting as `samplehubname`:
+A feladat hub neve a `MyTaskHub` Alkalmazásbeállítások értékére lesz állítva. Az alábbi `local.settings.json` bemutatja, hogyan határozhatja meg a `MyTaskHub` beállítást `samplehubname`ként:
 
 ```json
 {
@@ -96,7 +96,7 @@ The task hub name will be set to the value of the `MyTaskHub` app setting. The f
 }
 ```
 
-The following code is a precompiled C# example of how to write a function that uses the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to work with a task hub that is configured as an App Setting:
+A következő kód egy előre lefordított C# példa arra, hogy miként írhat egy olyan függvényt, amely a beállítási [ügyfél kötését](durable-functions-bindings.md#orchestration-client) használja egy olyan feladattal való együttműködéshez, amely alkalmazás-beállításként van konfigurálva:
 
 ### <a name="c"></a>C#
 
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző C# példa a Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 ### <a name="javascript"></a>JavaScript
 
-The task hub property in the `function.json` file is set via App Setting:
+A `function.json` fájljának Task hub tulajdonsága az alkalmazás beállításain keresztül van beállítva:
 
 ```json
 {
@@ -134,19 +134,19 @@ The task hub property in the `function.json` file is set via App Setting:
 }
 ```
 
-Task hub names must start with a letter and consist of only letters and numbers. If not specified, a default task hub name will be used as shown in the following table:
+A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a rendszer a következő táblázatban látható módon fogja használni az alapértelmezett feladat-hub nevet:
 
-| Durable extension version | Default task hub name |
+| Tartós bővítmény verziója | Alapértelmezett Task hub-név |
 | - | - |
-| 2.x | When deployed in Azure, the task hub name is derived from the name of the _function app_. When running outside of Azure, the default task hub name is `TestHubName`. |
-| 1.x | The default task hub name for all environments is `DurableFunctionsHub`. |
+| 2. x | Az Azure-ban való üzembe helyezéskor a feladat hub neve a _Function alkalmazás_nevéből származik. Az Azure-on kívül futtatva az alapértelmezett feladat hub neve `TestHubName`. |
+| 1. x | Az összes környezet alapértelmezett feladatának központi neve `DurableFunctionsHub`. |
 
-For more information about the differences between extension versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+A bővítmény-verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 > [!NOTE]
-> The name is what differentiates one task hub from another when there are multiple task hubs in a shared storage account. If you have multiple function apps sharing a shared storage account, you must explicitly configure different names for each task hub in the *host.json* files. Otherwise the multiple function apps will compete with each other for messages, which could result in undefined behavior, including orchestrations getting unexpectedly "stuck" in the `Pending` or `Running` state.
+> A név az, ami megkülönbözteti az egyik feladatot a másiktól, ha egy megosztott Storage-fiókban több Task hub található. Ha több Function-alkalmazás osztozik egy megosztott Storage-fiókkal, explicit módon konfigurálnia kell a különböző neveket az egyes feladatok hubhoz a *Host. JSON* fájlokban. Ellenkező esetben a több függvényt használó alkalmazások versenyeznek egymással az üzeneteknél, ami nem definiált viselkedést eredményezhet, beleértve az előkészítést, amely váratlanul "ragadt" a `Pending` vagy `Running` állapotban.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn how to handle orchestration versioning](durable-functions-versioning.md)
+> [Megtudhatja, hogyan kezelheti a hangszerelési verziószámozást](durable-functions-versioning.md)

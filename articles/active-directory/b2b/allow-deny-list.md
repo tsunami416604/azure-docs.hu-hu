@@ -49,7 +49,7 @@ Megtagadási lista hozzáadása:
 
    ![A megtagadási beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
  
-6. Ha elkészült, kattintson a **mentése**.
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
 Miután beállította a házirendet, ha egy felhasználót egy letiltott tartományból próbál meghívni, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
  
@@ -70,7 +70,7 @@ Engedélyezési lista hozzáadása:
 
    ![Az engedélyezési beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
  
-6. Ha elkészült, kattintson a **mentése**.
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
 Miután beállította a házirendet, ha olyan tartományból próbál meg felhasználót meghívni, amely nem szerepel az engedélyezési listán, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
 
@@ -158,7 +158,7 @@ A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://do
 Remove-AzureADPolicy -Id $currentpolicy.Id 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD B2B áttekintése: [Mi az az Azure ad B2B Collaboration?](what-is-b2b.md)
 - További információ a feltételes hozzáférésről és a B2B együttműködésről: [feltételes hozzáférés a B2B együttműködés felhasználói](conditional-access.md)számára.

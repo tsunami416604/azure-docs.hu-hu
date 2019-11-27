@@ -1,6 +1,6 @@
 ---
-title: Secure artifacts in templates
-description: Learn how to secure the artifacts used in your Azure Resource Manager templates.
+title: Biztonságos összetevők a sablonokban
+description: Ismerje meg, hogyan védheti meg az Azure Resource Manager-sablonokkal a használt összetevőket.
 author: mumian
 ms.date: 10/08/2019
 ms.topic: tutorial
@@ -12,20 +12,20 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326443"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Secure artifacts in Azure Resource Manager template deployments
+# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Biztonságos összetevők az Azure Resource Manager-sablon-üzembehelyezések
 
-Learn how to secure the artifacts used in your Azure Resource Manager templates using Azure Storage account with shared access signatures (SAS). Deployment artifacts are any files, in addition to the main template file, that are needed to complete a deployment. For example, in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), the main template creates an Azure SQL Database; it also calls a BACPAC file to create tables and insert data. The BACPAC file is an artifact. The artifact is stored in an Azure storage account with public access. In this tutorial, you use SAS to grant limited access to the BACPAC file in your own Azure Storage account. For more information about SAS, see [Using shared access signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Ismerje meg, hogyan teheti biztonságossá az összetevőket az Azure Resource Manager-sablonok az Azure Storage-fiók használata közös hozzáférésű jogosultságkódok (SAS) használt. Üzembe helyezési összetevők olyan fájlok, a fő sablonfájl mellett a telepítés befejezéséhez szükséges. Például az [oktatóanyagban: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)a fő sablon létrehoz egy Azure SQL Database; egy BACPAC-fájlt is meghív a táblák létrehozásához és az adatbeszúráshoz. A BACPAC-fájlba az összetevőt. A lehívandó összetevő nyilvános hozzáférés az Azure storage-fiók tárolva van. Ebben az oktatóanyagban SAS használhatja a BACPAC-fájlba korlátozott hozzáférés adható a saját Azure Storage-fiókban. További információ az SAS-ról: [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-To learn how to secure linked template, see [Tutorial: Create linked Azure Resource Manager templates](./resource-manager-tutorial-create-linked-templates.md).
+A csatolt sablonok biztonságossá tételéhez tekintse meg az [oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)című témakört.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * A BACPAC-fájl előkészítése
-> * Open an existing template
+> * Nyisson meg egy meglévő sablon
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
-> * Az üzemelő példány ellenőrzése
+> * A telepítés ellenőrzése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -33,8 +33,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
-* Review [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). The template used in this tutorial is the one developed in that tutorial. A download link of the completed template is provided in this article.
+* Visual Studio Code a Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](./resource-manager-tools-vs-code.md).
+* [Oktatóanyag áttekintése: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). Ebben az oktatóanyagban használt sablon fejlesztett ki, hogy az oktatóanyag lesz. Ebben a cikkben egy letöltési hivatkozást a befejezett sablon áll rendelkezésre.
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót az SQL Server rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```azurecli-interactive
@@ -44,89 +44,89 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-bacpac-file"></a>A BACPAC-fájl előkészítése
 
-In this section, you prepare the BACPAC file so the file is accessible securely when you deploy the Resource Manager template. There are five procedures in this section:
+Ebben a szakaszban, készítse elő a BACPAC-fájlba, a fájl elérhető biztonságosan központi telepítése esetén a Resource Manager-sablon. Ez a szakasz öt eljárás szerepelnek:
 
-* Download the BACPAC file.
+* Töltse le a BACPAC-fájlba.
 * Azure Storage-fiók létrehozása.
-* Create a Storage account Blob container.
-* Upload the BACPAC file to the container.
-* Retrieve the SAS token of the BACPAC file.
+* Hozzon létre egy Storage-fiók Blob tárolóba.
+* Töltse fel a BACPAC-fájlt a tárolóba.
+* A SAS-jogkivonat a BACPAC-fájl lekérése.
 
-To automate these steps using a PowerShell script, see the script from [Upload the linked template](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
+A lépések PowerShell-parancsfájl használatával történő automatizálásához tekintse meg a [csatolt sablon feltöltése](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template)a szkriptből című témakört.
 
-### <a name="download-the-bacpac-file"></a>Download the BACPAC file
+### <a name="download-the-bacpac-file"></a>A BACPAC-fájl letöltése
 
-Download the [BACPAC file](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac), and save the file to your local computer with the same name, **SQLDatabaseExtension.bacpac**.
+Töltse le a [BACPAC fájlt](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac), és mentse a fájlt a helyi számítógépre a **SQLDatabaseExtension. BACPAC**névvel.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
-1. Select the following image to open a Resource Manager template in the Azure portal.
+1. Válassza ki az alábbi képre kattintva megnyithatja a Resource Manager-sablont az Azure Portalon.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Enter the following properties:
+2. Adja meg a következő tulajdonságokat:
 
     * **Előfizetés**: Válassza ki az Azure-előfizetést.
-    * **Resource Group**: Select **Create new** and give it a name. A resource group is a container for Azure resources for the management purpose. In this tutorial, you can use the same resource group for the storage account and the Azure SQL Database. Make a note of this resource group name, you need it when you create the Azure SQL Database later in the tutorials.
-    * **Location**: Select a region. For example, **Central US**.
-    * **Storage Account Type**: use the default value, which is **Standard_LRS**.
-    * **Location**: Use the default value, which is **[resourceGroup().location]** . That means you use the resource group location for the storage account.
-    * **I agree to the terms and conditions started above**: (selected)
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, és adjon meg egy nevet. Egy erőforráscsoportot az Azure-erőforrások tárolója felügyeleti erre a célra. Ebben az oktatóanyagban a tárfiók és az Azure SQL Database használhatja ugyanazt az erőforráscsoportot. Jegyezze fel az erőforráscsoport neve, szüksége lesz rá az Azure SQL Database később az oktatóanyagok létrehozásakor.
+    * **Hely**: válasszon régiót. Például az **USA középső**régiója.
+    * **Storage-fiók típusa**: használja az alapértelmezett értéket, amely **Standard_LRS**.
+    * **Hely**: használja az alapértelmezett értéket, amely **[resourceGroup (). location]** . Ez azt jelenti, hogy a tárfiók használata az erőforráscsoport helyét.
+    * **Elfogadom a fentiekben megkezdett feltételeket és kikötéseket**: (kiválasztva)
 3. Válassza a **Beszerzés** lehetőséget.
-4. Select the notification icon (the bell icon) on the upper right corner of the portal to see the deployment status.
+4. Válassza ki az értesítési ikonra (Harang ikon) a központi telepítési állapotának megtekintéséhez a portál jobb felső sarokban.
 
-    ![Resource Manager tutorial portal notifications pane](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. After the storage account is deployed successfully, select **Go to resource group** from the notification pane to open the resource group.
+    ![Erőforrás-kezelő oktatóanyag portál értesítési panel](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
+5. Miután a Storage-fiók üzembe helyezése sikeres volt, az értesítési panel **Ugrás az erőforráscsoport** elemére kattintva nyissa meg az erőforráscsoportot.
 
-### <a name="create-a-blob-container"></a>Create a Blob container
+### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 
-A Blob container is needed before you can upload any files.
+Egy Blob-tárolóba van szükség a fájlok feltöltése előtt.
 
-1. A megnyitáshoz válassza ki a tárfiókot. You shall see only one storage account listed in the resource group. Your storage account name is different from the one shown in the following screenshot.
+1. A megnyitáshoz válassza ki a tárfiókot. Csak egy storage-fiókot az erőforráscsoportban szereplő gondoskodnak. A tárfiók nevét az alábbi képernyőképen látható egy eltér.
 
-    ![Resource Manager tutorial storage account](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    ![Erőforrás-kezelő oktatóanyag storage-fiók](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
 
-2. Select the **Blobs** tile.
+2. Válassza a **Blobok** csempét.
 
-    ![Resource Manager tutorial blobs](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. Select **+ Container** from the top to create a new container.
+    ![Útmutató Resource Manager-blobok](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
+3. Új tároló létrehozásához válassza a felül található **+ tároló** elemet.
 4. Írja be a következő értékeket:
 
-    * **Name**: enter **sqlbacpac**.
-    * **Public access level**: use the default value, **Private (no anonymous access)** .
+    * **Név**: adja meg a **sqlbacpac**.
+    * **Nyilvános hozzáférési szint**: használja az alapértelmezett értéket, a **privát (nincs névtelen hozzáférés)** .
 5. Kattintson az **OK** gombra.
-6. Select **sqlbacpac** to open the newly created container.
+6. Az újonnan létrehozott tároló megnyitásához válassza a **sqlbacpac** lehetőséget.
 
-### <a name="upload-the-bacpac-file-to-the-container"></a>Upload the BACPAC file to the container
+### <a name="upload-the-bacpac-file-to-the-container"></a>A BACPAC-fájl feltöltése a tárolóba
 
 1. Válassza a **Feltöltés** lehetőséget.
 2. Írja be a következő értékeket:
 
-    * **Files**: Following the instructions to select the BACPAC file you downloaded earlier. The default name is **SQLDatabaseExtension.bacpac**.
-    * **Authentication type**: Select **SAS**.  *SAS* is the default value.
-3. Válassza a **Feltöltés** lehetőséget.  Once the file is uploaded successfully, the file name shall be listed in the container.
+    * **Fájlok**: az utasításokat követve válassza ki a korábban letöltött BACPAC-fájlt. Az alapértelmezett név a **SQLDatabaseExtension. bacpac**.
+    * **Hitelesítés típusa**: válassza az **sas**elemet.  Az *sas* az alapértelmezett érték.
+3. Válassza a **Feltöltés** lehetőséget.  Miután sikeresen feltöltötte a fájlt, a fájlnév fel kell sorolni a tárolóban.
 
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Generate a SAS token
+### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />SAS-token létrehozása
 
-1. Right-click **SQLDatabaseExtension.bacpac** from the container, and then select **Generate SAS**.
+1. Kattintson a jobb gombbal a **SQLDatabaseExtension. bacpac** elemre a tárolóból, majd válassza az SAS-csoport **előállítása**lehetőséget.
 2. Írja be a következő értékeket:
 
-    * **Permission**: Use the default, **Read**.
-    * **Start and expiry date/time**: The default value gives you eight hours to use the SAS token. If you need more time to complete this tutorial, update **Expiry**.
-    * **Allowed IP addresses**: Leave this field blank.
-    * **Allowed protocols**: use the default value: **HTTPS**.
-    * **Signing key**: use the default value: **Key 1**.
-3. Select **Generate blob SAS token and URL**.
-4. Make a copy of **Blob SAS URL**. In the middle of the URL is the file name **SQLDatabaseExtension.bacpac**.  The file name divides the URL into three parts:
+    * **Engedély**: használja az alapértelmezett, **olvasás**.
+    * **Kezdési és lejárati dátum/idő**: az alapértelmezett érték nyolc órát biztosít az SAS-token használatára. Ha több időre van szüksége az oktatóanyag elvégzéséhez, a frissítés **lejár**.
+    * **Engedélyezett IP-címek**: hagyja üresen ezt a mezőt.
+    * **Engedélyezett protokollok**: használja az alapértelmezett értéket: **https**.
+    * **Aláíró kulcs**: használja az alapértelmezett értéket: **1. kulcs**.
+3. Válassza **a blob sas-token és URL-cím előállítása**lehetőséget.
+4. Készítsen másolatot a **blob sas URL-címéről**. Az URL-cím közepén a fájlnév a **SQLDatabaseExtension. bacpac**.  A fájl nevét az URL-címet osztja három részből áll:
 
-   - **Artifact location**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Make sure the location ends with a "/".
-   - **BACPAC file name**: SQLDatabaseExtension.bacpac.
-   - **Artifact location SAS token**: Make sure the token precedes with a "?."
+   - Összetevő **helye**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ellenőrizze, hogy a hely végződik a "/".
+   - **BACPAC-fájl neve**: SQLDatabaseExtension. BACPAC.
+   - Összetevő **helye sas-token**: Ellenőrizze, hogy a jogkivonat megelőzi-e a "?" előtagot.
 
-     You need these three values in [Deploy the template](#deploy-the-template).
+     [A sablon üzembe helyezéséhez](#deploy-the-template)a következő három érték szükséges.
 
-## <a name="open-an-existing-template"></a>Open an existing template
+## <a name="open-an-existing-template"></a>Nyisson meg egy meglévő sablon
 
-In this session, you modify the template you created in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) to call the BACPAC file with a SAS token.  The template developed in the SQL extension tutorial is shared in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+Ebben a munkamenetben módosítja az [oktatóanyagban létrehozott sablont: az SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) a BACPAC-fájl sas-tokenrel való meghívásához.  Az SQL-bővítmény oktatóanyagában kifejlesztett sablon meg van osztva a [githubban](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. A Visual Studio Code-ban válassza a **File** (Fájl) > **Open File** (Fájl megnyitása) elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
@@ -136,20 +136,20 @@ In this session, you modify the template you created in [Tutorial: Import SQL BA
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 
-    There are five resources defined in the template:
+    Nincsenek definiálva a sablonban öt erőforrások:
 
-   * `Microsoft.Sql/servers` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-   * `Microsoft.SQL/servers/securityAlertPolicies` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-   * `Microsoft.SQL/servers/filewallRules` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-   * `Microsoft.SQL/servers/databases` kérdésre adott válaszban foglalt lépéseket.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-   * `Microsoft.SQL/server/databases/extensions` kérdésre adott válaszban foglalt lépéseket.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/securityAlertPolicies`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
+   * `Microsoft.SQL/servers/filewallRules`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
      Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 4. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-Add the following additional parameters:
+Adja hozzá a következő további paraméterek:
 
 ```json
 "_artifactsLocation": {
@@ -174,9 +174,9 @@ Add the following additional parameters:
 }
 ```
 
-![Resource Manager tutorial secure artifacts parameters](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+![Erőforrás-kezelő oktatóanyag biztonságos összetevők paramétereit](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-Update the value of the following two elements:
+Frissítse az értéket, a következő két elemet:
 
 ```json
 "storageKey": "[parameters('_artifactsLocationSasToken')]",
@@ -209,10 +209,10 @@ New-AzResourceGroupDeployment `
     -TemplateFile "$HOME/azuredeploy.json"
 ```
 
-Use a generated password. Lásd: [Előfeltételek](#prerequisites).
-For the values of _artifactsLocation, _artifactsLocationSasToken and bacpacFileName, see [Generate a SAS token](#generate-a-sas-token).
+Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
+_ArtifactsLocation, _artifactsLocationSasToken és bacpacFileName értékeit lásd: SAS- [token létrehozása](#generate-a-sas-token).
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
 A portálon válassza ki az SQL Database-adatbázist az újonnan üzembe helyezett erőforráscsoportból. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Két, az adatbázisba importált táblázatot fog látni:
 
@@ -229,7 +229,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you deployed a SQL Server, a SQL Database, and imported a BACPAC file using SAS token. To learn how to create an Azure Pipeline to continuously develop and deploy Resource Manager templates, see
+Ebben az oktatóanyagban üzembe helyezett egy SQL Server, SQL-adatbázis és a SAS-jogkivonat használatával egy BACPAC-fájlba importálni. A Resource Manager-sablonok folyamatos fejlesztéséhez és üzembe helyezéséhez szükséges Azure-folyamat létrehozásáról további információt a következő témakörben talál:.
 
 > [!div class="nextstepaction"]
-> [Continuous integration with Azure Pipeline](./resource-manager-tutorial-use-azure-pipelines.md)
+> [Folyamatos integráció az Azure-folyamattal](./resource-manager-tutorial-use-azure-pipelines.md)

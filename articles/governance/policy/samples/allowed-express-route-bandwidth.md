@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed ExpressRoute bandwidth
-description: This sample policy definition requires that ExpressRoute use a specified set of bandwidths defined in a parameter.
+title: Minta – engedélyezett ExpressRoute sávszélesség
+description: A példában szereplő házirend-definíció megköveteli, hogy a ExpressRoute a paraméterben meghatározott sávszélesség-készletet használjon.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: b7c60879b62020a0864eb2da3a29e1bfe57215c0
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463739"
 ---
-# <a name="sample---allowed-expressroute-bandwidth"></a>Sample - Allowed ExpressRoute bandwidth
+# <a name="sample---allowed-expressroute-bandwidth"></a>Minta – engedélyezett ExpressRoute sávszélesség
 
 Ez a szabályzat megköveteli a megadott sávszélességek használatát az ExpressRoute-útvonalakon. Meg kell adnia egy tömböt, amely tartalmazza az Express Route-hoz használható termékváltozatokat.
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-bandwidthInMbps%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-bandwidthInMbps%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -45,7 +45,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'express-route-bandwidthInMbps' --display-nam
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-bandwidthInMbps"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

@@ -1,7 +1,7 @@
 ---
-title: Iterative app design - LUIS
+title: Iterációs alkalmazás tervezése – LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries.
+description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,136 +18,136 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422599"
 ---
-# <a name="iterative-app-design-for-luis"></a>Iterative app design for LUIS
+# <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
 
-A Language Understanding (LUIS) app learns and performs most efficiently with iteration. Here's a typical iteration cycle:
+A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt végre iterációval. Íme egy tipikus iterációs ciklus:
 
-* Create new version
-* Edit the LUIS app schema. Az érintett műveletek közé tartoznak az alábbiak:
-    * Intents with example utterances
+* új verzió létrehozása
+* A LUIS-alkalmazás sémájának szerkesztése. Az érintett műveletek közé tartoznak az alábbiak:
+    * leképezések példa hosszúságú kimondott szöveg
     * Entitások
-    * Jellemzők
-* Train, test, and publish
-    * Test at the prediction endpoint for active learning
-* Gather data from endpoint queries
+    * Szolgáltatások
+* Betanítás, tesztelés és közzététel
+    * Tesztelés az aktív tanulás előrejelzési végpontján
+* adatok összegyűjtése végponti lekérdezésekből
 
 ![Tartalomkészítési ciklus](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>Building a LUIS schema
+## <a name="building-a-luis-schema"></a>LUIS-séma létrehozása
 
-An app's schema defines what the user is asking for (the _intention_ or _intent_ ) and what parts of the intent provide details (called _entities_) that are used to help determine the answer. 
+Az alkalmazás sémája határozza meg, hogy a felhasználó mit kér (a _szándékot_ vagy szándékot), és a szándék mely részeit adja meg ( _entitások_ _),_ amelyek segítségével meghatározhatja a választ. 
 
-The app schema must be specific to the app domains to determine words and phrases that are relevant, as well as to determine typical word ordering. 
+Az alkalmazás sémájának egyedinek kell lennie az alkalmazás-tartományokban, hogy meghatározza a releváns szavakat és kifejezéseket, valamint hogy meghatározza a szokásos Word-sorrendet. 
 
-Example utterances represent user inputs, such as recognized speech or text, that the app expects at runtime. 
+A hosszúságú kimondott szöveg olyan felhasználói bemeneteket jelentenek, mint például a felismert beszéd vagy szöveg, amelyet az alkalmazás futásidőben vár. 
 
-The schema requires intents, and _should have_ entities. 
+A sémához leképezések szükségesek, és _rendelkeznie kell_ entitásokkal. 
 
-### <a name="example-schema-of-intents"></a>Example schema of intents
+### <a name="example-schema-of-intents"></a>Példa a szándékok sémájára
 
-The most common schema is an intent schema organized with intents. This type of schema uses LUIS to determine a user's intention. 
+A leggyakoribb séma a szándékokkal rendezett leképezési séma. Ez a típusú séma a LUIS használatával határozza meg a felhasználó szándékát. 
 
-The intent schema type may have entities if it helps LUIS determine the user's intention. For example, a shipping entity (as a descriptor to an intent) helps LUIS determine a shipping intention. 
+Előfordulhat, hogy a szándék sémájának típusa entitásokkal rendelkezik, ha segítséget nyújt a felhasználóknak a felhasználó szándékának meghatározásában. Például egy szállítási entitás (a szándéknak megfelelően) segít a kiszállítási szándék meghatározásában. 
 
-### <a name="example-schema-of-entities"></a>Example schema of entities
+### <a name="example-schema-of-entities"></a>Példa entitások sémája
 
-An entity schema focuses on entities, which is the data that is extracted from user utterances. For example, if a user was to say, "I'd like to order three pizzas." There are two entities that would be extracted: _three_ and _pizzas_. These are used to help fulfill the intention, which was to make an order. 
+Az entitások sémái az entitásokra összpontosítanak, amelyek a felhasználói hosszúságú kimondott szöveg kinyert adatok. Ha például egy felhasználó azt mondta, hogy "Szeretnék három pizzát rendelni." Két entitást kell kinyerni: _három_ és _pizzát_. Ezek a célok teljesítéséhez szükségesek, amely a megrendelés megrendelése volt. 
 
-For an entity schema, the intention of the utterance is less important to the client application. 
+Az entitások sémája esetében a Kimondás célja kevésbé fontos az ügyfélalkalmazás számára. 
 
-A common method of organizing an entity schema is to add all example utterances to the **None** intent. 
+Az entitások sémájának megszervezésének közös módszere az összes példa hosszúságú kimondott szöveg hozzáadása a **nincs** szándékhoz. 
 
-### <a name="example-of-a-mixed-schema"></a>Example of a mixed schema
+### <a name="example-of-a-mixed-schema"></a>Példa vegyes sémára
 
-The most powerful and mature schema is an intent schema with a full range of entities and features. This schema can begin as either an intent or entity schema and grow to include concepts of both, as the client application needs those pieces of information. 
+A leghatékonyabb és legérettebb séma olyan leképezési séma, amely az entitások és szolgáltatások teljes skáláját tartalmazza. Ez a séma megkezdhető úgy, mint a szándék vagy az entitás sémája, és az is növekszik, hogy mindkét fogalomban szerepelnek, mivel az ügyfélalkalmazás ezekre az adatokra van szüksége. 
 
-## <a name="add-example-utterances-to-intents"></a>Add example utterances to intents
+## <a name="add-example-utterances-to-intents"></a>Példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez
 
-LUIS needs a few example utterances in each **intent**. The example utterances need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. 
+A LUIS-nek néhány példát kell hosszúságú kimondott szöveg az egyes **szándékokhoz**. A példának a Word Choice és a Word hosszúságú kimondott szöveg elég variációra van szüksége ahhoz, hogy meg tudja határozni, melyik szándékot jelenti a kiírás. 
 
 > [!CAUTION]
-> Do not add example utterances in bulk. Start with 15 to 30 specific and varying examples. 
+> Ne vegyen fel több példát a hosszúságú kimondott szöveg. Kezdje a 15 – 30 konkrét és változó példával. 
 
-Each example utterance needs to have any **required data to extract** designed and labeled with **entities**. 
+Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal**megtervezett és címkézett **adatok kinyeréséhez** . 
 
-|Key element|Rendeltetés|
+|Kulcs eleme|Cél|
 |--|--|
-|Szándék|**Classify** user utterances into a single intention, or action. Examples include `BookFlight` and `GetWeather`.|
-|Jogi személy|**Extract** data from utterance required to complete intention. Examples include date and time of travel, and location.|
+|Szándék|A felhasználó hosszúságú kimondott szöveg egyetlen célra vagy műveletbe **osztályozhatja** . Ilyenek például a `BookFlight` és a `GetWeather`.|
+|Entitás|Az adatok **kinyerése** a cél befejezéséhez szükséges. Ilyenek például az utazás dátuma és időpontja, valamint a hely.|
 
-A LUIS app can be designed to ignore utterances that aren't relevant to an app's domain by assigning the utterance to the **None** intent.
+A LUIS-alkalmazás úgy van kialakítva, hogy figyelmen kívül hagyja az alkalmazás tartományához nem kapcsolódó hosszúságú kimondott szöveg úgy, hogy nem rendeli hozzá a kiírást a **nincs** szándékhoz.
 
-## <a name="test-and-train-your-app"></a>Test and train your app
+## <a name="test-and-train-your-app"></a>Az alkalmazás tesztelése és betanítása
 
-After you have 15 to 30 different example utterances in each intent, with the required entities labeled, you need to test and [train](luis-how-to-train.md) your LUIS app. 
+Miután 15 – 30 különböző példát hosszúságú kimondott szöveg az egyes szándékokhoz, és a szükséges entitások címkével rendelkeznek, meg kell vizsgálnia és be kell [tanítania](luis-how-to-train.md) a Luis alkalmazást. 
 
-## <a name="publish-to-a-prediction-endpoint"></a>Publish to a prediction endpoint
+## <a name="publish-to-a-prediction-endpoint"></a>Közzététel előrejelzési végponton
 
-The LUIS app must be published so that it's available to you in the list [prediction endpoint regions](luis-reference-regions.md).
+A LUIS-alkalmazást közzé kell tenni, hogy elérhető legyen a List [előrejelzési végpontok régióiban](luis-reference-regions.md).
 
-## <a name="test-your-published-app"></a>Test your published app
+## <a name="test-your-published-app"></a>A közzétett alkalmazás tesztelése
 
-You can test your published LUIS app from the HTTPS prediction endpoint. Testing from the prediction endpoint allows LUIS to choose any utterances with low-confidence for [review](luis-how-to-review-endpoint-utterances.md).  
+A közzétett LUIS-alkalmazást a HTTPS-előrejelzési végpontról tesztelheti. Az előrejelzési végpont tesztelése lehetővé teszi, hogy a LUIS kiválassza az alacsony megbízhatóságú hosszúságú kimondott szöveg az [ellenőrzéshez](luis-how-to-review-endpoint-utterances.md).  
 
-## <a name="create-a-new-version-for-each-cycle"></a>Create a new version for each cycle
+## <a name="create-a-new-version-for-each-cycle"></a>Új verzió létrehozása minden ciklushoz
 
-Each version is a snapshot in time of the LUIS app. Before you make changes to the app, create a new version. It is easier to go back to an older version than to try to remove intents and utterances to a previous state.
+Minden verzió egy pillanatkép a LUIS-alkalmazás időpontjában. Mielőtt módosításokat hajt végre az alkalmazásban, hozzon létre egy új verziót. A régebbi verzióra való visszalépés könnyebb, mint a leképezések eltávolításának és a hosszúságú kimondott szöveg egy korábbi állapotának kipróbálása.
 
-The version ID consists of characters, digits or '.' and cannot be longer than 10 characters.
+A verzióazonosító karakterből, számjegyből vagy "." áll, és nem lehet hosszabb 10 karakternél.
 
-The initial version (0.1) is the default active version. 
+A kezdeti verzió (0,1) az alapértelmezett aktív verzió. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Begin by cloning an existing version
+### <a name="begin-by-cloning-an-existing-version"></a>Kezdés egy meglévő verzió klónozásával
 
-Clone an existing version to use as a starting point for each new version. After you clone a version, the new version becomes the **active** version. 
+Meglévő verzió klónozása az egyes új verziók kiindulási pontként való használatához. Egy verzió klónozása után az új verzió lesz az **aktív** verzió. 
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>Közzétételi résidők
 
-You can publish to either the stage and/or production slots. Each slot can have a different version or the same version. This is useful for verifying changes before publishing to production, which is available to bots or other LUIS calling apps. 
+Közzéteheti a fázist és/vagy az éles tárolóhelyeket is. Az egyes tárolóhelyek eltérő verziójúak vagy azonos verziójúak lehetnek. Ez akkor lehet hasznos, ha az éles környezetbe való közzététel előtt ellenőrzi a módosításokat, ami elérhető a botok vagy más LUIS hívó alkalmazások számára. 
 
-Trained versions aren't automatically available at your LUIS app's [endpoint](luis-glossary.md#endpoint). You must [publish](luis-how-to-publish-app.md) or republish a version in order for it to be available at your LUIS app endpoint. You can publish to **Staging** and **Production**, giving you two versions of the app available at the endpoint. If more versions of the app need to be available at an endpoint, you should export the version and reimport it to a new app. The new app has a different app ID.
+A betanított verziók nem érhetők el automatikusan a LUIS-alkalmazás [végpontján](luis-glossary.md#endpoint). Ahhoz, hogy a LUIS-alkalmazás végpontján elérhető legyen, [közzé](luis-how-to-publish-app.md) kell tennie vagy újra közzé kell tennie egy verziót. Közzéteheti az **előkészítést** és a **gyártást**, így az alkalmazás két verziója érhető el a végponton. Ha az alkalmazás több verzióját is elérhetőnek kell lennie egy végponton, exportálnia kell a verziót, és újra importálnia kell egy új alkalmazásba. Az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik.
 
-### <a name="import-and-export-a-version"></a>Import and export a version
+### <a name="import-and-export-a-version"></a>Verzió importálása és exportálása
 
-A version can be imported at the app level. That version becomes the active version and uses the version ID in the `versionId` property of the app file. You can also import into an existing app, at the version level. The new version becomes the active version. 
+A verziók az alkalmazás szintjén importálhatók. Ez a verzió lesz az aktív verzió, és a verziószámot használja az alkalmazás `versionId` tulajdonságában. A verzió szintjén is importálhat egy meglévő alkalmazást. Az új verzió lesz az aktív verzió. 
 
-A version can be exported at the app or version level as well. The only difference is that the app-level exported version is the currently active version while at the version level, you can choose any version to export on the **[Settings](luis-how-to-manage-versions.md)** page. 
+Egy verzió is exportálható az alkalmazás vagy a verzió szintjén is. Az egyetlen különbség, hogy az alkalmazás-szintű exportált verzió a jelenleg aktív verzió a verzió szintjén, a **[Beállítások](luis-how-to-manage-versions.md)** lapon bármilyen verziót kiválaszthat az exportáláshoz. 
 
-The exported file **doesn't** contain:
+Az exportált fájl **nem** tartalmazza a következőket:
 
-* Machine-learned information, because the app is retrained after it's imported
-* Contributor information
+* A géppel megtanult információk, mert az alkalmazás a importálása után újra be lett tanítva
+* közreműködői információ
 
-In order to back up your LUIS app schema, export a version from the [LUIS portal](https://www.luis.ai/applications).
+A LUIS-alkalmazás sémájának biztonsági mentéséhez exportáljon egy verziót a [Luis portálról](https://www.luis.ai/applications).
 
-## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Manage contributor changes with versions and contributors
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Közreműködői változások kezelése verziók és közreműködők révén
 
-LUIS uses the concept of contributors to an app, by providing Azure resource-level permissions. Combine this concept with versioning to provide targeted collaboration. 
+A LUIS az Azure-erőforrásokra vonatkozó engedélyek biztosításával a közreműködők fogalmát használja egy alkalmazáshoz. Ezt a koncepciót a verziószámozással kombinálva megcélozható együttműködés biztosítható. 
 
-Use the following techniques to manage contributor changes to your app.
+A következő módszerekkel kezelheti az alkalmazás közreműködői módosításait.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Manage multiple versions inside the same app
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
 
-Begin by [cloning](luis-how-to-manage-versions.md#clone-a-version) from a base version for each author. 
+Először [klónozást](luis-how-to-manage-versions.md#clone-a-version) kell kezdenie az egyes szerzők alapverziójából. 
 
-Each author makes changes to their own version of the app. When the author is satisfied with the model, export the new versions to JSON files.  
+Minden szerző módosítja az alkalmazás saját verzióját. Ha a szerző elégedett a modellel, exportálja az új verziókat a JSON-fájlokba.  
 
-Exported apps, .json or .lu files, can be compared for changes. Combine the files to create a single file of the new version. Change the `versionId` property to signify the new merged version. Import that version into the original app. 
+Az exportált alkalmazások, a. JSON vagy a. lu fájlok összehasonlítható a változásokkal. Egyesítse a fájlokat úgy, hogy egyetlen fájlt hozzon létre az új verzióval. Módosítsa a `versionId` tulajdonságot úgy, hogy az az új egyesített verziót jelenti. Importálja azt a verziót az eredeti alkalmazásba. 
 
-This method allows you to have one active version, one stage version, and one published version. You can compare the results of the active version with a published version (stage or production) in the [interactive testing pane](luis-interactive-test.md).
+Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy közzétett verziója. Az aktív verzió eredményeit összehasonlíthatja egy közzétett verzióval (fázis vagy éles környezet) az [interaktív tesztelési panelen](luis-interactive-test.md).
 
-### <a name="manage-multiple-versions-as-apps"></a>Manage multiple versions as apps
+### <a name="manage-multiple-versions-as-apps"></a>Alkalmazások több verziók kezelése
 
-[Export](luis-how-to-manage-versions.md#export-version) the base version. Each author imports the version. The person that imports the app is the owner of the version. When they are done modifying the app, export the version. 
+[Exportálja](luis-how-to-manage-versions.md#export-version) az alapverziót. Mindegyik Szerző importálja a verziót. A személy, amely az alkalmazás importál a verzió tulajdonosa. Amikor végzett a verzió módosítása az alkalmazás exportálása. 
 
-Exported apps are JSON-formatted files, which can be compared with the base export for changes. Combine the files to create a single JSON file of the new version. Change the **versionId** property in the JSON to signify the new merged version. Import that version into the original app.
+Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a JSON **versionId** tulajdonságát úgy, hogy az az új egyesített verziót jelenti. Importálja azt a verziót az eredeti alkalmazásba.
 
-Learn more about authoring contributions from [collaborators](luis-how-to-collaborate.md).
+További információ a [közreműködők](luis-how-to-collaborate.md)hozzájárulásainak létrehozásáról.
 
-## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Review endpoint utterances to begin the new iterative cycle
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Az új iterációs ciklus megkezdéséhez tekintse át a végpont hosszúságú kimondott szöveg
 
-When you are done with an iteration cycle, you can repeat the process. Start with [reviewing prediction endpoint utterances](luis-how-to-review-endpoint-utterances.md) LUIS marked with low-confidence. Check these utterances for both correct predicted intent and correct and complete entity extracted. After you review and accept changes, the review list should be empty.  
+Ha egy iterációs ciklust használ, megismételheti a folyamatot. Első lépésként [tekintse meg az előrejelzési végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) , amely alacsony megbízhatósággal van megjelölve. Ezeket a hosszúságú kimondott szöveg a helyes előre jelzett szándékot, valamint a helyes és a kinyert entitást is megvizsgálhatja. A módosítások áttekintése és elfogadása után a felülvizsgálati listának üresnek kell lennie.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Learn concepts about [collaboration](luis-concept-keys.md).
+Ismerje meg az [együttműködéssel](luis-concept-keys.md)kapcsolatos fogalmakat.

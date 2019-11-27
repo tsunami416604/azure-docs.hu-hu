@@ -1,7 +1,7 @@
 ---
-title: Prevent content translation - Translator Text API
+title: Tartalom fordításának megakadályozása – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Prevent translation of content with the Translator Text API. The Translator Text API allows you to tag content so that it isn't translated.
+description: A tartalom fordításának megakadályozása a Translator Text API. A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -17,14 +17,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326762"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>How to prevent translation of content with the Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>A tartalom fordításának megakadályozása a Translator Text API
 
-The Translator Text API allows you to tag content so that it isn't translated. For example, you may want to tag code, a brand name, or a word/phrase that doesn't make sense when localized.
+A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Előfordulhat például, hogy meg szeretné címkézni a kódot, a márkanevet vagy egy olyan szót vagy kifejezést, amely nincs értelme a honosított értéknél.
 
-## <a name="methods-for-preventing-translation"></a>Methods for preventing translation
-1. Escape to a Twitter tag @somethingtopassthrough or #somethingtopassthrough. Un-escape after translation. This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
+## <a name="methods-for-preventing-translation"></a>A fordítás megakadályozásának módszerei
+1. Escape to a Twitter-címke @somethingtopassthrough vagy #somethingtopassthrough. Kilépés a fordítás után. Érvényes Twitter-címkék esetén ez a reguláris kifejezés: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A címkének "@" jellel kell kezdődnie, amelyet egy karakter követ, majd egy vagy több karaktert, számjegyet vagy aláhúzást kell követnie. Javasoljuk, hogy rövid idő alatt tartsa meg a címkéket, és a nyitó címkét szóköz előtt kell megadni.
 
-2. Tag your content with `notranslate`. It's by design that this works only when the input textType is set as HTML
+2. A tartalom címkézése `notranslate`. Úgy tervezték, hogy ez csak akkor működik, ha a bemeneti textType HTML-ként van beállítva
 
    Példa:
 
@@ -38,13 +38,13 @@ The Translator Text API allows you to tag content so that it isn't translated. F
    <div>This will be translated. </div>
    ```
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+3. A [dinamikus szótár](dynamic-dictionary.md) használatával egy adott fordítást írhat elő.
 
-4. Don't pass the string to the Translator Text API for translation.
+4. Ne adja át a karakterláncot a fordítási Translator Text APInak.
 
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. Egyéni fordító: használjon egy [szótárt az egyéni fordítóban](custom-translator/what-is-dictionary.md) egy kifejezés fordításának megírásához 100%-os valószínűséggel.
 
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Avoid translation in your Translator API call](reference/v3-0-translate.md)
+> [Kerülje a fordítást a Translator API-hívásban](reference/v3-0-translate.md)

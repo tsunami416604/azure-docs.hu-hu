@@ -1,6 +1,6 @@
 ---
-title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
-description: This article describes what backends and backend pools are in Front Door configuration.
+title: A háttérrendszer és a háttérbeli készletek az Azure bejárati ajtó szolgáltatásában | Microsoft Docs
+description: Ez a cikk ismerteti, hogy milyen háttér-és háttér-készletek találhatók az előtérben lévő konfigurációban.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -18,78 +18,78 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229033"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Backends and backend pools in Azure Front Door Service
-This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
+# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>A háttérrendszer és a háttérbeli készletek az Azure bejárati ajtó szolgáltatásában
+Ez a cikk bemutatja, hogyan képezhető le az alkalmazás üzembe helyezése az Azure bevezetési szolgáltatásával. Emellett ismerteti a különböző használati feltételeket is az alkalmazási háttérrendszer-konfigurációban.
 
 ## <a name="backends"></a>Háttérrendszerek
-A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
+A háttérrendszer egy adott régióban található alkalmazás telepítési példányával egyenlő. A bejárati ajtós szolgáltatás az Azure-t és a nem Azure-beli háttereket is támogatja, így a régió nem csak az Azure-régiókra korlátozódik. Emellett lehet a helyszíni adatközpont vagy egy másik Felhőbeli alkalmazás-példány is.
 
-Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
+A bejárati ajtó szolgáltatásának háttere az alkalmazás állomásneve vagy nyilvános IP-címe, amely az ügyfelek kérelmeit szolgálja ki. A háttérrendszer nem tévesztendő össze az adatbázis szintjével, a tárolási szintjével és így tovább. A háttereket az alkalmazás-háttér nyilvános végpontjának kell tekinteni. Amikor felvesz egy hátteret egy előtérben található háttér-készletbe, a következőket is hozzá kell adnia:
 
-- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
+- **Háttérbeli gazdagép típusa** A hozzáadni kívánt erőforrás típusa. A bejárati ajtós szolgáltatás az App Service, a Cloud Service vagy a Storage szolgáltatásból támogatja az alkalmazási hátterek automatikus észlelését. Ha egy másik erőforrást szeretne használni az Azure-ban, vagy akár egy nem Azure-beli hátteret is, válassza az **Egyéni gazdagép**lehetőséget.
 
     >[!IMPORTANT]
-    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
+    >A konfiguráció során az API-k nem ellenőrzik, hogy a háttérrendszer nem érhető-e el az ajtós környezetekben. Győződjön meg arról, hogy a bejárati ajtó elérheti a hátteret.
 
-- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
+- **Az előfizetés és a háttérbeli gazdagép neve**. Ha nem választotta ki az **Egyéni gazdagép** a háttérbeli gazdagéphez lehetőséget, válassza ki a megfelelő előfizetést, és a megfelelő háttér-gazdagép nevét a felhasználói felületen.
 
-- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
+- **Háttérbeli állomásfejléc**. A gazdagép fejlécének értéke minden kérelem esetében a háttérbe kerül. További információ: [backend Host header](#hostheader).
 
-- **Priority**. Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
+- **Prioritás**. Rendeljen prioritásokat a különböző háttérekhez, ha az elsődleges szolgáltatási hátteret szeretné használni az összes forgalomhoz. Adja meg a biztonsági mentést is, ha az elsődleges vagy a biztonsági mentési háttérrendszer nem érhető el. További információ: Priority ( [prioritás](front-door-routing-methods.md#priority)).
 
-- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
+- **Súlyozás**. Súlyok hozzárendelésével a különböző háttérrendszer-adatokkal terjesztheti a forgalmat a különféle háttérrendszer-csoportokon belül, akár egyenletesen, akár súlyozási együtthatók alapján. További információ: [súlyok](front-door-routing-methods.md#weighted).
 
-### <a name = "hostheader"></a>Backend host header
+### <a name = "hostheader"></a>Háttérbeli gazdagép fejléce
 
-Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. The value for this field typically comes from the backend URI and has the host and port.
+A háttérben a háttérbe továbbított kérések közé tartozik egy állomásfejléc mező, amelyet a háttér a célként megadott erőforrás lekérésére használ. A mező értéke általában a háttér-URI-ból származik, és a gazdagép és a port.
 
-For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
+Például a www\.contoso.com-ra vonatkozó kérelemben a gazdagép fejléce www\.contoso.com lesz. Ha Azure Portalt használ a háttér konfigurálásához, a mező alapértelmezett értéke a háttér állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, a Azure Portal a háttérbeli állomásfejléc automatikusan kitöltött értéke contoso-westus.azurewebsites.net lesz. Ha azonban Azure Resource Manager sablonokat vagy más módszert használ a mező explicit beállítása nélkül, a bejárati ajtó szolgáltatás a beérkező állomásnév értékét a gazdagép fejlécének értékeként fogja elküldeni. Ha a kérés a www\.contoso.com, és a háttér olyan contoso-westus.azurewebsites.net, amely üres fejléc mezővel rendelkezik, a bekapcsolási szolgáltatás a gazdagép fejlécét a www\.contoso.com fogja beállítani.
 
-Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
+A legtöbb alkalmazás-háttér (az Azure Web Apps, a blob Storage és a Cloud Services) megköveteli, hogy a gazdagép fejléce megfeleljen a háttér tartományának. Ugyanakkor a háttér-gazdagép, amely a háttérre irányítja, egy másik állomásnevet fog használni, például a www\.contoso.azurefd.net.
 
-If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
+Ha a háttérrendszer számára szükséges, hogy a gazdagép fejléce megfeleljen a háttérbeli állomásnévnek, győződjön meg arról, hogy a háttérbeli állomásfejléc tartalmazza az állomásnév-háttér nevet.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Configuring the backend host header for the backend
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>A háttérrendszer-állomásfejléc konfigurálása a háttérrendszer számára
 
-To configure the **backend host header** field for a backend in the backend pool section:
+A háttérbeli **gazdagép fejlécének** beállítása a háttérrendszer-készletben:
 
-1. Open your Front Door resource and select the backend pool with the backend to configure.
+1. Nyissa meg az előtérben található erőforrást, és válassza ki a háttérrendszer-készletet a konfiguráláshoz.
 
-2. Add a backend if you haven't done so, or edit an existing one.
+2. Ha még nem tette meg, vegyen fel egy hátteret, vagy szerkesszen egy meglévőt.
 
-3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
+3. Állítsa a háttérbeli állomásfejléc mezőt egyéni értékre, vagy hagyja üresen. A rendszer a bejövő kérelem állomásneveként fogja használni a gazdagép fejlécének értékét.
 
-## <a name="backend-pools"></a>Backend pools
-A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
+## <a name="backend-pools"></a>Háttér-készletek
+A bejárati ajtón a háttérrendszer-készlet az alkalmazáshoz hasonló adatforgalmat fogadó háttérrendszer-készletre hivatkozik. Ez azt jelenti, hogy az alkalmazás példányainak logikai csoportosítása a világon, amely ugyanazt a forgalmat kapja, és a várt működésre reagál. Ezek a hátterek különböző régiókban vagy ugyanazon a régión belül vannak telepítve. Az összes háttér aktív/aktív üzembe helyezési módban lehet, vagy az aktív/passzív konfigurációként van meghatározva.
 
-A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
+A háttér-készletek határozzák meg, hogy a különböző háttérrendszer milyen módon legyen kiértékelve az állapot-ellenőrzéseken keresztül. Azt is meghatározza, hogyan történik a terheléselosztás a közöttük.
 
 ### <a name="health-probes"></a>Állapotminták
-Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
+A bejárati ajtó szolgáltatás rendszeres HTTP/HTTPS mintavételi kérelmeket küld az egyes konfigurált háttérrendszer-példányokhoz. A mintavételi kérelmek meghatározzák az egyes háttérrendszer közelségét és állapotát a végfelhasználói kérelmek elosztása érdekében. A háttérbeli készlet állapot-mintavételi beállításai határozzák meg, hogy az alkalmazás-háttérrendszer állapotának lekérdezése hogyan történjen. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
 
-- **Path**. The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Elérési út**. A háttér-készletben található összes háttérrendszer mintavételi kérelméhez használt URL-cím. Ha például az egyik háttérrendszer a contoso-westus.azurewebsites.net, és az elérési út a/Probe/test.aspx értékre van állítva, akkor a bevezető üzemi környezetek, feltéve, hogy a protokoll HTTP-értékre van állítva, az állapot-mintavételi kérelmeket a http\://contoso-westus.azurewebsites.net/probe/test.aspx küldi.
 
-- **Protocol**. Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
+- **Protokoll**. Meghatározza, hogy a rendszer elküldje-e az állapot-mintavételi kérelmeket az első ajtós szolgáltatástól a háttérben HTTP vagy HTTPS protokollal.
 
-- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
+- **Időköz (másodperc)** . Meghatározza az állapot-mintavételek gyakoriságát a háttérrendszer számára, illetve azokat az intervallumokat, amelyekben az egyes bejárati környezetek egy mintavételt küldenek.
 
     >[!NOTE]
-    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
+    >A gyorsabb feladatátvétel érdekében állítsa az intervallumot alacsonyabb értékre. Minél alacsonyabb az érték, annál nagyobb az állapot mintavételi mennyisége, amelyet a hátterek kapnak. Ha például az intervallum 30 másodpercre van beállítva, és 90 bejárati ajtót, vagy globálisan jelenik meg, az egyes háttérrendszer a 3-5 mintavételi kérelmek másodpercenkénti számát fogja kapni.
 
-For more information, see [Health probes](front-door-health-probes.md).
+További információ: [Health](front-door-health-probes.md)mintavétel.
 
-### <a name="load-balancing-settings"></a>Load-balancing settings
-Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
+### <a name="load-balancing-settings"></a>Terheléselosztási beállítások
+A háttér-készlet terheléselosztási beállításai határozzák meg, hogyan értékeljük ki az állapotadatok kiértékelését. Ezek a beállítások határozzák meg, hogy a háttér állapota Kifogástalan-e. Azt is bemutatják, hogyan kell terheléselosztást alkalmazni a különböző háttérrendszer-adatforgalom között a háttér-készletben. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
 
-- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
+- **Minta mérete** Meghatározza, hogy a háttér-állapot kiértékeléséhez hány mintát kell figyelembe venni.
 
-- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
+- A **minta mérete sikeres**. Meghatározza a korábban említett minta méretét, a háttér kifogástalan meghívásához szükséges sikeres minták számát. Tegyük fel például, hogy a bejárati ajtó állapotának mintavételi intervalluma 30 másodperc, a minta mérete 5, a sikeres minta mérete pedig 3. Minden alkalommal, amikor kiértékeljük a háttérrendszer állapotát, megvizsgáljuk az utolsó öt mintát 150 másodpercnél (5 x 30). Legalább három sikeres mintavételre van szükség ahhoz, hogy a hátteret Kifogástalan állapotba lehessen nyilvánítani.
 
-- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
+- **Késési érzékenység (további késés)** . Azt határozza meg, hogy a bejárati ajtón szeretné-e elküldeni a kérést a háttérrendszer-mérési érzékenységi tartományon belül, vagy továbbítsa a kérést a legközelebbi háttérbe.
 
-For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
+További információ: a [minimális késésen alapuló útválasztási módszer](front-door-routing-methods.md#latency).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Create a Front Door profile](quickstart-create-front-door.md)
-- [How Front Door works](front-door-routing-architecture.md)
+- [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
+- [Az előtérben működik](front-door-routing-architecture.md)

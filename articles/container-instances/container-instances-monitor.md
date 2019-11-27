@@ -1,19 +1,14 @@
 ---
-title: Tárolók figyelése az Azure Container Instances-ben
+title: Tároló-példányok figyelése
 description: A számítási erőforrások (például a processzor és a memória) használatának figyelése a tárolók Azure Container Instancesban.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172260"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533644"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
@@ -30,13 +25,13 @@ Jelenleg Azure Monitor mérőszámok csak Linux-tárolók esetén érhetők el.
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-A Azure Monitor a következő [metrikákat][supported-metrics]biztosítja a Azure Container Instanceshoz. Ezek a metrikák a tárolók és az egyes tárolók számára érhetők el.
+A Azure Monitor a következő [metrikákat biztosítja a Azure Container Instanceshoz][supported-metrics]. Ezek a metrikák a tárolók és az egyes tárolók számára érhetők el.
 
 * **CPU-használat** – a **millicores**-ben mérve. Az egyik millicore egy CPU-mag 1/1000th, így a 500 millicores (vagy 500 m) a CPU-mag 50%-os használatát jelenti. Az összes mag **átlagos kihasználtsága** szerint összesítve.
 
 * **Memóriahasználat** – **átlagos bájtként**összesítve.
 
-* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok** másodpercenkéntiszáma összesen. 
+* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok** **másodpercenkénti száma összesen.** 
 
 ## <a name="get-metrics---azure-portal"></a>Metrika beolvasása – Azure Portal
 
@@ -44,7 +39,7 @@ Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Po
 
 ![kettős diagram][dual-chart]
 
-Egy több tárolót tartalmazó tároló csoportban használjon dimenziót a [][monitor-dimension] mérőszámok tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
+Egy több tárolót tartalmazó tároló csoportban használjon [dimenziót][monitor-dimension] a mérőszámok tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Az **Áttekintés** oldalon válassza ki az egyik mérőszám-diagramot, például a **processzort**. 
 1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve**lehetőséget.
@@ -81,7 +76,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Módosítsa a `--metric` paraméter értékét a parancsban más [támogatott metrikák][supported-metrics]beszerzéséhez. Használja például a következő parancsot a **memóriahasználat** metrikáinak beolvasásához. 
+Módosítsa a parancs `--metric` paraméterének értékét a többi [támogatott metrika][supported-metrics]beszerzéséhez. Használja például a következő parancsot a **memóriahasználat** metrikáinak beolvasásához. 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -102,7 +97,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-A többtárolós csoportok esetében a dimenzió `containerName` hozzáadható a metrikák visszaküldéséhez.
+A többtárolós csoportok esetében a `containerName` dimenzió hozzáadható egy tárolóban lévő metrikák visszaküldéséhez.
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
@@ -135,7 +130,7 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure monitoring szolgáltatásról az [Azure monitoring áttekintése című][azure-monitoring]témakörben.
 

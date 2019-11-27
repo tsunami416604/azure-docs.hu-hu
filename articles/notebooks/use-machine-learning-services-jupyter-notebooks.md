@@ -16,7 +16,7 @@ Azure Notebooks előre konfigurálva van a szükséges környezettel, hogy műk�
 
 ## <a name="clone-the-sample-into-your-account"></a>A fiók a minta klónozása
 
-1. Jelentkezzen be a [Azure notebookok](https://notebooks.azure.com/).
+1. Jelentkezzen be [Azure Notebooksba](https://notebooks.azure.com/).
 1. Válassza a **saját projektek** elemet a projektek irányítópultra való ugráshoz.
 1. Válassza a **GitHub** -tárház feltöltése (a felfelé mutató nyíl) gombot a **GitHub-adattár** felugró ablakának megnyitásához.
 1. A felugró ablakban adja meg `Azure/MachineLearningNotebooks` **a GitHub-tárházban**, adjon meg egy nevet a projektnek a projekt **neve** mezőben (például "Azure Machine learning"), adjon meg egy azonosítót a **projekt azonosítójában**, törölje a **nyilvános** elemet, ha kívánja, majd válassza az **Importálás**lehetőséget.
@@ -27,7 +27,7 @@ Azure Notebooks előre konfigurálva van a szükséges környezettel, hogy műk�
 
 ## <a name="run-a-sample-notebook"></a>Egy minta-jegyzetfüzet futtatása
 
-1. Válassza ki **00 - configuration.ipynb** indítsa el a konfigurációs szakasz a jegyzetfüzetet, és kövesse az utasításokat egy Azure Machine Learning-munkaterület létrehozása.
+1. Válassza a **00-Configuration. ipynb** elemet a jegyzetfüzet konfigurációs szakaszának elindításához, és kövesse az utasításait Azure Machine learning-munkaterület létrehozásához.
 
     - Azure-jegyzetfüzetek már tartalmazza a szükséges Python-csomagokat, mert csak futtathatja a kódrészletet az Előfeltételek ellenőrzése az Azure Machine Learning SDK-verziójának 2. lépésben.
 
@@ -37,9 +37,9 @@ Azure Notebooks előre konfigurálva van a szükséges környezettel, hogy műk�
 
 Az Azure Machine Learning dokumentációja számos más erőforrást tartalmaz, amelyek végigvezetik a Machine Learning jegyzetfüzeteken belüli használatának lépésein:
 
-- [Gyors útmutató: A Python használatával Azure Machine Learning használatának első lépései](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [Rövid útmutató: a Azure Machine Learning használatának első lépései a Python használatával](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
 - [Oktatóanyag #1: képosztályozási modell betanítása Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [#2. oktatóanyag: Egy kép osztályozási modell az Azure Container Instance (ACI) üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Oktatóanyag #2: lemezkép-besorolási modell üzembe helyezése az Azure Container Instanceban (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
 - [Oktatóanyag: besorolási modell betanítása automatizált gépi tanulással Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
-Emellett a dokumentációjában talál a [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)dokumentációját is.

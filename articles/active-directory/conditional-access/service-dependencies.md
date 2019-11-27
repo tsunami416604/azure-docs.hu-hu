@@ -1,6 +1,6 @@
 ---
-title: Conditional Access service dependencies - Azure Active Directory
-description: Learn how conditions are used in Azure Active Directory Conditional Access to trigger a policy.
+title: Feltételes hozzáférési szolgáltatás függőségei – Azure Active Directory
+description: Megtudhatja, hogyan használhatók a feltételek a Azure Active Directory feltételes hozzáférésben a szabályzat kiváltásához.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,49 +18,49 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380012"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>What are service dependencies in Azure Active Directory Conditional Access? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
-With Conditional Access policies, you can specify access requirements to websites and services. For example, your access requirements can include requiring multi-factor authentication (MFA) or [managed devices](require-managed-devices.md). 
+A feltételes hozzáférési szabályzatok segítségével megadhatja a webhelyekhez és a szolgáltatásokhoz való hozzáférési követelményeket. A hozzáférési követelmények például többek között a többtényezős hitelesítés (MFA) vagy a [felügyelt eszközök](require-managed-devices.md)megkövetelését is tartalmazhatják. 
 
-When you access a site or service directly, the impact of a related policy is typically easy to assess. For example, if you have a policy that requires MFA for SharePoint Online configured, MFA is enforced for each sign-in to the SharePoint web portal. However, it is not always straight-forward to assess the impact of a policy because there are cloud apps with dependencies to other cloud apps. For example, Microsoft Teams can provide access to resources in SharePoint Online. So, when you access Microsoft Teams in our current scenario, you are also subject to the SharePoint MFA policy.   
+Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely az MFA-t igényli a SharePoint Online-hoz, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes.   
 
 ## <a name="policy-enforcement"></a>Szabályzatbetartatás 
 
-If you have a service dependency configured, the policy may be applied using early-bound or late-bound enforcement. 
+Ha a szolgáltatás függősége konfigurálva van, a szabályzatot a rendszer a korai vagy késői kötésű kényszerítéssel is alkalmazhatja. 
 
-- **Early-bound policy enforcement** means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into MS Teams. 
-- **Late-bound policy enforcement** occurs after the user signs into the calling app. Enforcement is deferred to when calling app requests, a token for the downstream service. Examples include MS Teams accessing Planner and Office.com accessing SharePoint. 
+- A **korai kötésű szabályzatok kényszerítése** azt jelenti, hogy a felhasználónak meg kell felelnie a függő szolgáltatási házirendnek a hívó alkalmazás elérése előtt. A felhasználóknak például meg kell felelniük a SharePoint-házirendnek, mielőtt bejelentkeznek az MS Teams szolgáltatásba. 
+- A **késői kötésű szabályzat kényszerítése** akkor következik be, amikor a felhasználó bejelentkezik a hívó alkalmazásba. Az alkalmazásra vonatkozó kérelmek meghívásakor a kényszerítés az alárendelt szolgáltatáshoz tartozó jogkivonat. Ilyenek például azok az MS-csapatok, akik a Plannerhez és a Office.com hozzáférnek a SharePointhoz. 
 
-The diagram below illustrates MS Teams service dependencies. Solid arrows indicate early-bound enforcement the dashed arrow for Planner indicates late-bound enforcement. 
+Az alábbi ábra az MS Teams szolgáltatás függőségeit mutatja be. A folytonos nyilak jelzik a korai kötésű kényszerítést a Planner szaggatott nyila jelzi a késői kötések kényszerítését. 
 
-![MS Teams service dependencies](./media/service-dependencies/01.png)
+![MS Teams szolgáltatás függőségei](./media/service-dependencies/01.png)
 
-As a best practice, you should set common policies across related apps and services whenever possible. Having a consistent security posture provides you with the best user experience. For example, setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for business significantly reduces unexpected prompts that may arise from different policies being applied to downstream services. 
+Ajánlott eljárásként a kapcsolódó alkalmazásokban és szolgáltatásokban közös házirendeket kell beállítania, amikor csak lehetséges. A konzisztens biztonsági testhelyzet a legjobb felhasználói élményt nyújtja. Például az Exchange Online, a SharePoint Online, a Microsoft Teams és a Skype for Business közös házirendjének beállítása jelentősen csökkenti az alárendelt szolgáltatásokra alkalmazott különböző házirendektől esetlegesen felmerülő váratlan kéréseket. 
 
-The below table lists additional service dependencies, where the client apps must satisfy  
+Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amelyeknek meg kell felelniük az ügyfélalkalmazások számára  
 
-| Client apps         | Downstream service                          | Enforcement |
+| Ügyfélalkalmazások         | Alsóbb rétegbeli szolgáltatás                          | Kényszerítési |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Classroom | Adatcsere                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| Microsoft Teams     | Adatcsere                                    | Early-bound |
-|                     | MS Planner                                  | Late-bound  |
-|                     | SharePoint                                  | Early-bound |
-|                     | Skype Vállalati online verzió                   | Early-bound |
-| Office Portal       | Adatcsere                                    | Late-bound  |
-|                     | SharePoint                                  | Late-bound  |
-| Outlook groups      | Adatcsere                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| PowerApps           | Microsoft Azure Management (portal and API) | Early-bound |
-|                     | Windows Azure Active Directory              | Early-bound |
-| Project             | Dynamics CRM                                | Early-bound |
-| Skype Vállalati verzió  | Adatcsere                                    | Early-bound |
-| Visual Studio       | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Forms     | Adatcsere                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| Microsoft To-Do     | Adatcsere                                    | Early-bound |
+| Azure Data Lake     | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
+| Microsoft tanterem | Exchange                                    | Korai kötésű |
+|                     | SharePoint                                  | Korai kötésű |
+| Microsoft Teams     | Exchange                                    | Korai kötésű |
+|                     | MS Planner                                  | Késői kötés  |
+|                     | SharePoint                                  | Korai kötésű |
+|                     | Skype Vállalati online verzió                   | Korai kötésű |
+| Office-portál       | Exchange                                    | Késői kötés  |
+|                     | SharePoint                                  | Késői kötés  |
+| Outlook-csoportok      | Exchange                                    | Korai kötésű |
+|                     | SharePoint                                  | Korai kötésű |
+| PowerApps           | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
+|                     | Windows Azure Active Directory              | Korai kötésű |
+| Project             | Dynamics CRM                                | Korai kötésű |
+| Skype Vállalati verzió  | Exchange                                    | Korai kötésű |
+| Visual Studio       | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
+| Microsoft Forms     | Exchange                                    | Korai kötésű |
+|                     | SharePoint                                  | Korai kötésű |
+| Microsoft To-Do     | Exchange                                    | Korai kötésű |
 
 ## <a name="next-steps"></a>Következő lépések
 
-To learn how to implement Conditional Access in your environment, see [Plan your Conditional Access deployment in Azure Active Directory](plan-conditional-access.md).
+Ha meg szeretné tudni, hogyan valósítható meg a feltételes hozzáférés a környezetben, tekintse meg [a feltételes hozzáférés Megtervezése Azure Active Directoryban](plan-conditional-access.md)című témakört.

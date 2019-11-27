@@ -19,9 +19,9 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Download [Power BI Desktop](https://aka.ms/pbidesktopstore).
+* [Power bi Desktop](https://aka.ms/pbidesktopstore)letöltése.
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Connecting Power BI to data in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI csatlakoztatása az Azure Blockchain Workbench-beli adatkapcsolathoz
 
 1.  Nyissa meg a Power BI Desktopot.
 2.  Válassza az **Adatok lekérése** lehetőséget.
@@ -43,7 +43,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
     ![Kezelő](./media/data-powerbi/navigator.png)
 
-7.  Jelölje ki a belefoglalni kívánt nézeteket. For demonstration purposes, we include **vwContractAction**, which provides details on the actions that have taken place on a contract.
+7.  Jelölje ki a belefoglalni kívánt nézeteket. Demonstrációs célokra a **vwContractAction**tartalmazza, amely részletesen ismerteti a szerződésben vállalt műveleteket.
 
     ![Nézetek kiválasztása](./media/data-powerbi/select-views.png)
 

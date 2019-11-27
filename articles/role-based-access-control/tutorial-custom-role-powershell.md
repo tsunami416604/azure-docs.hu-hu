@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a custom role for Azure resources using Azure PowerShell
-description: Get started creating a custom role for Azure resources using Azure PowerShell in this tutorial.
+title: Oktatóanyag – egyéni szerepkör létrehozása az Azure-erőforrásokhoz Azure PowerShell használatával
+description: Első lépésként hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az oktatóanyag Azure PowerShell használatával.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419745"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Tutorial: Create a custom role for Azure resources using Azure PowerShell
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz Azure PowerShell használatával
 
-If the [built-in roles for Azure resources](built-in-roles.md) don't meet the specific needs of your organization, you can create your own custom roles. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure PowerShell-lel. The custom role allows the user to view everything in the management plane of a subscription and also open support tickets.
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure PowerShell-lel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) or [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>Bejelentkezés az Azure PowerShellbe
 
@@ -51,7 +51,7 @@ Jelentkezzen be az [Azure PowerShellbe](/powershell/azure/authenticate-azureps).
 
 Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szerepkört szerkeszt át.
 
-1. In PowerShell, use the [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) command to get the list of operations for the Microsoft.Support resource provider. Érdemes megismerkedni az engedélyek létrehozására szolgáló műveletekkel. Az összes műveletet tartalmazó listát az [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md#microsoftsupport) témakörében is megtekintheti.
+1. A PowerShellben használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) parancsot a Microsoft. support erőforrás-szolgáltató műveleteinek listájának lekéréséhez. Érdemes megismerkedni az engedélyek létrehozására szolgáló műveletekkel. Az összes műveletet tartalmazó listát az [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md#microsoftsupport) témakörében is megtekintheti.
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
@@ -65,7 +65,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
     Microsoft.Support/supportTickets/write Creates or Updates a Support Ticket. You can create a Support Tic...
     ```
 
-1. Use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to output the [Reader](built-in-roles.md#reader) role in JSON format.
+1. Használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot az [olvasói](built-in-roles.md#reader) szerepkör JSON formátumban való exportálásához.
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
@@ -95,7 +95,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
     
 1. A JSON-fájl szerkesztésével adja hozzá a `"Microsoft.Support/*"` műveletet az `Actions` tulajdonsághoz. Ügyeljen arra, hogy az olvasási művelet után mindenképpen használjon vesszőt. Ez a művelet lehetővé teszi a felhasználónak a támogatási jegyek létrehozását.
 
-1. Get the ID of your subscription using the [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) command.
+1. Szerezze be az előfizetés AZONOSÍTÓját a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancs használatával.
 
     ```azurepowershell
     Get-AzSubscription
@@ -129,7 +129,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
     }
     ```
     
-1. To create the new custom role, use the [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) command and specify the JSON role definition file.
+1. Az új egyéni szerepkör létrehozásához használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) parancsot, és határozza meg a JSON-szerepkör definícióját tartalmazó fájlt.
 
     ```azurepowershell
     New-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
@@ -151,7 +151,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-- To list all your custom roles, use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command.
+- Az összes egyéni szerepkör listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot.
 
     ```azurepowershell
     Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
@@ -171,7 +171,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
 
 Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a `PSRoleDefinition` objektumot.
 
-1. To update the JSON file, use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to output the custom role in JSON format.
+1. A JSON-fájl frissítéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot az egyéni szerepkör JSON formátumban való exportálásához.
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
@@ -203,7 +203,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
     }
     ```
         
-1. To update the custom role, use the [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) command and specify the updated JSON file.
+1. Az egyéni szerepkör frissítéséhez használja a [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) parancsot, és adja meg a frissített JSON-fájlt.
 
     ```azurepowershell
     Set-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
@@ -221,7 +221,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. To use the `PSRoleDefintion` object to update your custom role, first use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to get the role.
+1. Ha a `PSRoleDefintion` objektumot szeretné használni az egyéni szerepkör frissítéséhez, először használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot a szerepkör beszerzéséhez.
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"
@@ -233,7 +233,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")
     ```
 
-1. Use the [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) to update the role.
+1. A szerepkör frissítéséhez használja a [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) .
 
     ```azurepowershell
     Set-AzRoleDefinition -Role $role
@@ -254,13 +254,13 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
     
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
-1. Use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to get the ID of the custom role.
+1. Használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot az egyéni szerepkör azonosítójának lekéréséhez.
 
     ```azurepowershell
     Get-AzRoleDefinition "Reader Support Tickets"
     ```
 
-1. Use the [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) command and specify the role ID to delete the custom role.
+1. Használja a [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) parancsot, és határozza meg a SZEREPKÖR-azonosítót az egyéni szerepkör törléséhez.
 
     ```azurepowershell
     Remove-AzRoleDefinition -Id "22222222-2222-2222-2222-222222222222"
@@ -274,7 +274,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
 
 1. Ha rendszer megerősítést kér, írja be a következőt: **Y**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](custom-roles-powershell.md)

@@ -105,7 +105,7 @@ A helyszíni feltételes hozzáférési szabályzatok kikényszeríthető a B2B-
 
 A kockázatalapú bejelentkezési szabályzatok jelenleg nem alkalmazhatók a B2B-felhasználókra, mert a kockázatértékelést a VÁLLALATKÖZI felhasználó otthoni szervezete végzi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

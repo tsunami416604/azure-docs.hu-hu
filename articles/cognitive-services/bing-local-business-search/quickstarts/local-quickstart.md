@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API in C# - Bing Local Business Search
+title: Rövid útmutató – lekérdezés küldése az API C# -nak a Bing helyi üzleti keresésben
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,22 +17,22 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326714"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Quickstart: Send a query to the Bing Local Business Search API in C#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a következőben:C#
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in C#, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás be C#van írva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a http-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Ez a példában szereplő alkalmazás helyi válaszüzeneteket kap az API-ból a keresési lekérdezés `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Any edition of [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* A [Visual Studio 2019](https://www.visualstudio.com/downloads/)bármely kiadása.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
-Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz.  Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="create-the-request"></a>Create the request 
+## <a name="create-the-request"></a>A kérelem létrehozása 
 
-The following code creates a `WebRequest`, sets the access key header, and adds a query string for "restaurant in Bellevue".  Ezután elküldi a kérelmet, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejlécét, és hozzáadja a "Restaurant in Bellevue" lekérdezési karakterláncot.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```
     // Replace the accessKey string value with your valid access key.
@@ -52,12 +52,12 @@ The following code creates a `WebRequest`, sets the access key header, and adds 
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 ```
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
-The Bing Local Business Search API returns localized search results from the Bing search engine.
+A Bing helyi üzleti keresési API honosított keresési eredményeket ad vissza a Bing keresőmotorból.
 1. Hozzon létre egy új konzolmegoldást a Visual Studióban (a Community Edition kiadás is használható).
 2. Cserélje le a Program.cs fájl tartalmát az alábbi kódra.
-3. Replace the accessKey value with an access key valid for your subscription.
+3. Cserélje le a accessKey értéket egy olyan hozzáférési kulcsra, amely érvényes az előfizetéséhez.
 4. Futtassa a programot.
 
 ```
@@ -209,6 +209,6 @@ namespace localSearch
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- [Local Business Search Java quickstart](local-search-java-quickstart.md)
-- [Local Business Search Node quickstart](local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](local-search-python-quickstart.md)
+- [Helyi üzleti keresés – Java rövid útmutató](local-search-java-quickstart.md)
+- [Helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)
+- [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

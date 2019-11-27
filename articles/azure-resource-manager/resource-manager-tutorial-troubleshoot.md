@@ -1,6 +1,6 @@
 ---
-title: Üzembehelyezési problémák hibaelhárítása
-description: Learn how to monitor and troubleshoot Azure Resource Manager template deployments. Shows activity logs and deployment history.
+title: Üzemelő példányok hibaelhárítása
+description: Megtudhatja, hogyan figyelheti és elháríthatja Azure Resource Manager sablon központi telepítéseit. Megjeleníti a tevékenységek naplóit és az üzembe helyezési előzményeket.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
@@ -12,22 +12,22 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325357"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Troubleshoot Resource Manager template deployments
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Oktatóanyag: Resource Manager-sablonok központi telepítésének hibakeresése
 
-Learn how to troubleshoot Resource Manager template deployment errors. In this tutorial, you set up two errors in a template, and learn how to use the activity logs and deployment history to resolve the issues.
+Útmutató a Resource Manager-sablonok telepítési hibáinak elhárításához. Ebben az oktatóanyagban két hibát állít be egy sablonban, és megtudhatja, hogyan oldja meg a problémákat a tevékenységek naplói és a telepítési előzmények használatával.
 
-There are two types of errors that are related to template deployment:
+A sablon üzembe helyezéséhez két típusú hiba van:
 
-- **Validation errors** arise from scenarios that can be determined before deployment. Ezek közé tartoznak a sablon szintaxishibái, vagy az olyan erőforrások üzembe helyezése, amelyek túllépik az előfizetése kvótáit.
-- **Deployment errors** arise from conditions that occur during the deployment process. Ezek közé tartozik például egy olyan erőforrás elérésére tett kísérlet, amelynek az üzembe helyezése párhuzamosan zajlik.
+- Az **érvényesítési hibák** az üzembe helyezés előtt meghatározható forgatókönyvek esetén jelentkeznek. Ezek közé tartoznak a sablon szintaxishibái, vagy az olyan erőforrások üzembe helyezése, amelyek túllépik az előfizetése kvótáit.
+- A **telepítési hibák** a telepítési folyamat során felmerülő feltételekből származnak. Ezek közé tartozik például egy olyan erőforrás elérésére tett kísérlet, amelynek az üzembe helyezése párhuzamosan zajlik.
 
-Mindkét típusú hiba az üzembe helyezés hibaelhárításához használható hibakódot ad vissza. Both types of errors appear in the activity log. Az érvényesítési hibák azonban nem jelennek meg az üzembe helyezési előzmények között, mert az üzembe helyezés el sem indult.
+Mindkét típusú hiba az üzembe helyezés hibaelhárításához használható hibakódot ad vissza. A tevékenység naplójában mindkét típusú hiba megjelenik. Az érvényesítési hibák azonban nem jelennek meg az üzembe helyezési előzmények között, mert az üzembe helyezés el sem indult.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Create a problematic template
-> * Troubleshoot validation errors
+> * Problémás sablon létrehozása
+> * Érvényesítési hibák elhárítása
 > * Üzembehelyezési hibák elhárítása
 > * Az erőforrások eltávolítása
 
@@ -39,11 +39,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code a Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](./resource-manager-tools-vs-code.md).
 
-## <a name="create-a-problematic-template"></a>Create a problematic template
+## <a name="create-a-problematic-template"></a>Problémás sablon létrehozása
 
-Open a template called [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) from [Azure QuickStart Templates](https://azure.microsoft.com/resources/templates/), and setup two template issues.
+Nyisson meg egy [standard Storage-fiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/) az [Azure gyorsindítási sablonokból](https://azure.microsoft.com/resources/templates/)nevű sablont, és állítson be két sablonbeli problémát.
 
 1. A Visual Studio Code-ban válassza a **File** (Fájl) > **Open File** (Fájl megnyitása) elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
@@ -52,35 +52,35 @@ Open a template called [Create a standard storage account](https://azure.microso
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. Change the **apiVersion** line to the following line:
+4. Módosítsa a **apiVersion** sort a következő sorba:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
-    - **apiVersion1** is invalid element name. It is a validation error.
-    - The API version shall be "2018-07-01".  It is a deployment error.
+    - a **apiVersion1** érvénytelen az elem neve. Érvényesítési hiba.
+    - Az API-verzió "2018-07-01".  Központi telepítési hiba.
 
 5. A **File** (Fájl) > **Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
-## <a name="troubleshoot-the-validation-error"></a>Troubleshoot the validation error
+## <a name="troubleshoot-the-validation-error"></a>Az érvényesítési hiba megoldása
 
-Refer to the [Deploy the template](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) section to deploy the template.
+A sablon üzembe helyezéséhez tekintse meg a [sablon üzembe helyezése](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) szakaszt.
 
-You shall get an error from the shell similar to:
+A rendszerhéj a következőhöz hasonló hibaüzenetet kap:
 
 ```
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-The error message indicates the problem is with **apiVersion1**.
+A hibaüzenet azt jelzi, hogy a probléma a **apiVersion1**.
 
-Use Visual Studio Code to correct the problem by changing **apiVersion1** to **apiVersion**, and then save the template.
+A Visual Studio Code segítségével javítsa ki a problémát úgy, hogy módosítja a **apiVersion1** a **apiVersion**, majd menti a sablont.
 
-## <a name="troubleshoot-the-deployment-error"></a>Troubleshoot the deployment error
+## <a name="troubleshoot-the-deployment-error"></a>A központi telepítési hiba megoldása
 
-Refer to the [Deploy the template](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) section to deploy the template.
+A sablon üzembe helyezéséhez tekintse meg a [sablon üzembe helyezése](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) szakaszt.
 
-You shall get an error from the shell similar to:
+A rendszerhéj a következőhöz hasonló hibaüzenetet kap:
 
 ```
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
@@ -91,31 +91,31 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 }'
 ```
 
-The deployment error can be found from the Azure portal using the following procedure:
+Az üzembe helyezési hiba a Azure Portal az alábbi eljárással érhető el:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Open the resource group by selecting **Resource groups** and then the resource group name. You shall see **1 Failed** under **Deployment**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2. Nyissa meg az erőforráscsoportot az **erőforráscsoportok** , majd az erőforráscsoport neve lehetőség kiválasztásával. Az üzemelő **példányban** **1 sikertelen hiba** jelenik meg.
 
-    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. Select **Error details**.
+    ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+3. Válassza ki a **hiba részleteit**.
 
-    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
-    The error message is the same as the one shown earlier:
+    A hibaüzenet ugyanaz, mint a korábban bemutatott:
 
-    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
-You can also find the error from the activity logs:
+A hibát a tevékenység naplóiból is megtalálhatja:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Select **Monitor** > **Activity log**.
-3. Use the filters to find the log.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2. Válassza a **figyelő** > a **tevékenység naplója**lehetőséget.
+3. A szűrők segítségével keresse meg a naplót.
 
-    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
+    ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
 
-Use Visual Studio Code to correct the problem, and then redeploy the template.
+Javítsa ki a problémát a Visual Studio Code használatával, majd telepítse újra a sablont.
 
-For a list of common errors, see [Troubleshoot common Azure deployment errors with Azure Resource Manager](./resource-manager-common-deployment-errors.md).
+A gyakori hibák listáját lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managersal](./resource-manager-common-deployment-errors.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -128,4 +128,4 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you learned how to troubleshoot Resource Manager template deployment errors.  For more information, see [Troubleshoot common Azure deployment errors with Azure Resource Manager](./resource-manager-common-deployment-errors.md).
+Ebben az oktatóanyagban megtanulta, hogyan lehet elhárítani a Resource Manager-sablonok telepítési hibáit.  További információ: [Az Azure központi telepítési hibáinak elhárítása Azure Resource Managersal](./resource-manager-common-deployment-errors.md).

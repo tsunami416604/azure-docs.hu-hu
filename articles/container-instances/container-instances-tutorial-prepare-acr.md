@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – tároló-beállításjegyzék előkészítése Azure Container Instanceshoz
+title: Oktatóanyag – a tároló beállításjegyzékének előkészítése lemezkép üzembe helyezéséhez
 description: Azure Container Instances oktatóanyag – 3. rész – Azure Container Registry előkészítése és rendszerkép küldése
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d8a14acb196b257d96792444fe41e7e9f6b73592
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325607"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533320"
 ---
-# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Oktatóanyag: Azure Container Registry üzembe helyezése és a tároló lemezképének leküldése
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Oktatóanyag: Azure Container Registry üzembe helyezése és tároló lemezképének leküldése
 
 Ez az oktatóanyag egy háromrészes sorozat második része. Az oktatóanyag [első részében](container-instances-tutorial-prepare-app.md) egy Docker-tároló rendszerképét hoztuk létre egy Node.js-webalkalmazáshoz. Ebben az oktatóanyagban leküldéssel továbbítjuk a rendszerképet az Azure Container Registrybe. Ha még nem hozta létre a tárolórendszerképet, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](container-instances-tutorial-prepare-app.md) részhez.
 
@@ -95,7 +90,7 @@ Login Succeeded
 
 Ha a tárolójegyzék-rendszerképet egy privát tárolójegyzékbe kívánja leküldeni, mint az Azure Container Registry, akkor először fel kell címkéznie a rendszerképet a tárolójegyzék bejelentkezési kiszolgálójának teljes nevével.
 
-Először is szerezze be az Azure Container Registry bejelentkezési kiszolgálójának teljes nevét. Futtassa a következő az [ACR show][az-acr-show] parancsot, és cserélje `<acrName>` le az imént létrehozott beállításjegyzék nevére:
+Először is szerezze be az Azure Container Registry bejelentkezési kiszolgálójának teljes nevét. Futtassa a következő az [ACR show][az-acr-show] parancsot, és cserélje le a `<acrName>`t az imént létrehozott beállításjegyzék nevére:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -124,7 +119,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Címkézze fel az *aci-tutorial-app* rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Adja hozzá a `:v1` címkét a rendszerkép nevének végéhez, ami jelzi a rendszerkép verziószámát. Cserélje `<acrLoginServer>` le a parancsot a korábban végrehajtott az [ACR show][az-acr-show] parancs eredményére.
+Címkézze fel az *aci-tutorial-app* rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Adja hozzá a `:v1` címkét a rendszerkép nevének végéhez, ami jelzi a rendszerkép verziószámát. Cserélje le a `<acrLoginServer>`t a korábban végrehajtott az [ACR show][az-acr-show] parancs eredményével.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -169,7 +164,7 @@ Annak ellenőrzéséhez, hogy az imént leküldött lemezkép valóban az Azure 
 az acr repository list --name <acrName> --output table
 ```
 
-Példa:
+Például:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table
@@ -193,7 +188,7 @@ Result
 v1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban előkészítettünk egy Azure Container Registryt az Azure Container Instancesben való használatra, és leküldtünk bele egy tárolórendszerképet. A következő lépéseket hajtotta végre:
 

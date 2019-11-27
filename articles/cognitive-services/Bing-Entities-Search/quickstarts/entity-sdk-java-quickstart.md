@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Java - Bing Entity Search'
+title: 'Gyors útmutató: entitások keresése a Javához készült SDK-Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Java
+description: Ezzel a rövid útmutatóval megkeresheti az entitásokat a Javához készült Bing Entity Search SDK-val
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,15 +17,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327145"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Java
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Gyors útmutató: keresési kérelem küldése a Javához készült Bing Entity Search SDK-val
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Java. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Javához készült Bing Entity Search SDK-val. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* The Bing Entity Search SDK for Java
+* A Javához készült Bing Entity Search SDK
 
 Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
 
@@ -59,15 +59,15 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
     import java.util.List;
     ```
 
-2. Create a variable for your subscription key
+2. Változó létrehozása az előfizetési kulcshoz
 
     ```java
     String subscriptionKey = "your-key-here"
     ```
 
-## <a name="create-a-search-client"></a>Create a search client
+## <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. Implement the `dominantEntityLookup` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
+1. Implementálja az `dominantEntityLookup`-ügyfelet, amely az API-végpontot és a `ServiceClientCredentials` osztály egy példányát igényli.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -78,9 +78,9 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
     )};
     ```
 
-    To implement the `ServiceClientCredentials`, follow these steps:
+    A `ServiceClientCredentials`megvalósításához kövesse az alábbi lépéseket:
 
-   1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
+   1. felülbírálja a `applyCredentialsFilter()` függvényt egy `OkHttpClient.Builder` objektum paraméterként. 
         
        ```java
        //...
@@ -92,7 +92,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
        //...
        ```
     
-   2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
+   2. A `applyCredentialsFilter()`on belül hívja meg `builder.addNetworkInterceptor()`. Hozzon létre egy új `Interceptor` objektumot, és bírálja felül a `intercept()` metódust egy `Chain` Interceptor objektum elvégzéséhez.
 
        ```java
        //...
@@ -106,7 +106,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
        ///...
        ```
 
-   3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
+   3. A `intercept` függvényben hozzon létre változókat a kérelemhez. A kérés létrehozásához használja a `Request.Builder()`. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és adja vissza `chain.proceed()` a kérelem objektumon.
             
        ```java
        //...
@@ -120,9 +120,9 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
        }
        //...
        ```
-      ## <a name="send-a-request-and-receive-a-response"></a>Send a request and receive a response
+      ## <a name="send-a-request-and-receive-a-response"></a>Kérelem küldése és válasz fogadása
 
-1. Create a new instance of the search client with your subscription key. use `client.entities().search()` to send a search request for the search query `satya nadella`, and get a response. 
+1. Hozzon létre egy új példányt a keresési ügyfélhez az előfizetési kulccsal. a `client.entities().search()` használatával küldhet keresési kéréseket a keresési lekérdezéshez `satya nadella`és választ kaphat. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);
@@ -130,7 +130,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-1. If any entities were returned, convert them into a list. Iterate through them, and print the dominant entity.
+1. Ha bármelyik entitást visszaadott, alakítsa át őket egy listára. Ismételje meg őket, és nyomtassa ki a domináns entitást.
 
     ```java
     if (entityData.entities().value().size() > 0){
@@ -150,6 +150,6 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Mi a Bing Entity Search API?](../overview.md )

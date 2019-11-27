@@ -341,7 +341,7 @@ az group delete --name {your resource group name}
 
 A Azure Portal, a PowerShell vagy a REST API-k használatával is törölhet erőforráscsoportokat és egyedi erőforrásokat, valamint a Azure Resource Managerhoz vagy IoT Hub Device Provisioning Servicehoz közzétett támogatott Platform SDK-kat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
 

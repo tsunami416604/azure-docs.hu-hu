@@ -1,6 +1,6 @@
 ---
-title: Deploy modules from Azure portal - Azure IoT Edge | Microsoft Docs
-description: Use the Azure portal to deploy modules to an IoT Edge device
+title: Modulok az Azure portal – Azure IoT Edge üzembe helyezése |} A Microsoft Docs
+description: Modulok IoT Edge-eszköz üzembe helyezése az Azure portal használatával
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,96 +16,96 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457422"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Deploy Azure IoT Edge modules from the Azure portal
+# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Az Azure Portalról az Azure IoT Edge-modulok telepítése
 
-Once you create IoT Edge modules with your business logic, you want to deploy them to your devices to operate at the edge. If you have multiple modules that work together to collect and process data, you can deploy them all at once and declare the routing rules that connect them.
+Miután létrehozott egy IoT Edge modulok az üzleti logikával rendelkező, érdemes őket az eszközökre telepíteni kívánt megfelelően működjenek a peremhálózaton. Ha több modulokat, amelyek együttműködve gyűjtenek és dolgoznak fel adatokat, és egyszerre telepítheti őket, és deklarálja az útválasztási szabályokat, amelyek csatlakoztathatja őket.
 
-This article shows how the Azure portal guides you through creating a deployment manifest and pushing the deployment to an IoT Edge device. For information about creating a deployment that targets multiple devices based on their shared tags, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
+Ez a cikk bemutatja, hogyan az Azure Portalon végigvezeti egy manifest nasazení létrehozása és leküldése az üzembe helyezés az IoT Edge-eszköz. További információ a megosztott címkék alapján több eszközt célzó központi telepítés létrehozásáról: [IoT Edge modulok üzembe helyezése és figyelése nagy léptékben](how-to-deploy-monitor.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
-* An [IoT Edge device](how-to-register-device.md#register-in-the-azure-portal) with the IoT Edge runtime installed.
+* Egy [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
+* [IoT Edge-eszköz](how-to-register-device.md#register-in-the-azure-portal) , amelyen telepítve van a IoT Edge futtatókörnyezet.
 
-## <a name="select-your-device"></a>Select your device
+## <a name="select-your-device"></a>Válassza ki az eszközt
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub.
-1. Select **IoT Edge** from the menu.
-1. Click on the ID of the target device from the list of devices.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
+1. A menüből válassza a **IoT Edge** lehetőséget.
+1. Kattintson az eszközök a listából a célként megadott eszköz Azonosítóját.
 1. Válassza a **Modulok beállítása** lehetőséget.
 
-## <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
+## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
 
-A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. For more information about how deployment manifests work and how to create them, see [Understand how IoT Edge modules can be used, configured, and reused](module-composition.md).
+A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
 
-The Azure portal has a wizard that walks you through creating the deployment manifest, instead of building the JSON document manually. It has three steps: **Add modules**, **Specify routes**, and **Review deployment**.
+Az Azure Portalon rendelkezik egy varázslót, amely manifest nasazení, a JSON-dokumentum manuálisan semmint létrehozásának módját ismerteti. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
-### <a name="add-modules"></a>Add modules
+### <a name="add-modules"></a>Modulok hozzáadása
 
-1. In the **Container Registry Settings** section of the page, provide the credentials to access any private container registries that contain your module images.
+1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
 
-1. In the **Deployment Modules** section of the page, select **Add**.
+1. A lap **központi telepítési modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
 
-1. Look at the types of modules from the drop-down list:
+1. A modulok típusú tekintse meg a legördülő listából:
 
-   * **IoT Edge Module** - the default option.
-   * **Azure Stream Analytics Module** - only modules generated from an Azure Stream Analytics workload.
-   * **Azure Machine Learning Module** - only model images generated from an Azure Machine Learning workspace.
+   * **IoT Edge modul** – az alapértelmezett beállítás.
+   * **Azure stream Analytics modul** – csak Azure stream Analytics munkaterhelés által generált modulok.
+   * **Azure Machine learning modul** – csak Azure Machine learning munkaterületről generált modell-lemezképek.
 
-1. Select the **IoT Edge Module**.
+1. Válassza ki a **IoT Edge modult**.
 
-1. Provide a name for the module, then specify the container image. Példa:
+1. Adja meg a modul nevét, majd adja meg a tároló rendszerképét. Például:
 
-   * **Name** - SimulatedTemperatureSensor
-   * **Image URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
+   * **Név** – SimulatedTemperatureSensor
+   * **Rendszerkép URI-ja** – MCR.microsoft.com/azureiotedge-simulated-Temperature-Sensor:1.0
 
-1. Fill out the optional fields if necessary. For more information about container create options, restart policy, and desired status see [EdgeAgent desired properties](module-edgeagent-edgehub.md#edgeagent-desired-properties). For more information about the module twin see [Define or update desired properties](module-composition.md#define-or-update-desired-properties).
+1. Töltse ki az opcionális mezőket, ha szükséges. További információ a tároló létrehozási lehetőségeiről, az újraindítási szabályzatról és a kívánt állapotról: [EdgeAgent kívánt tulajdonságai](module-edgeagent-edgehub.md#edgeagent-desired-properties). További információ a modul Twin-ről: a [kívánt tulajdonságok meghatározása vagy frissítése](module-composition.md#define-or-update-desired-properties).
 
 1. Kattintson a **Mentés** gombra.
 
-1. Repeat steps 2-6 to add additional modules to your deployment.
+1. Ismételje meg a 2 – 6 további modulok hozzáadása a központi telepítés.
 
-1. Select **Next** to continue to the routes section.
+1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
-### <a name="specify-routes"></a>Specify routes
+### <a name="specify-routes"></a>Útvonalak megadása
 
-By default the wizard gives you a route called **route** and defined as **FROM /* INTO $upstream**, which means that any messages output by any modules are sent to your IoT hub.  
+Alapértelmezés szerint a varázsló egy **route (útvonal** ) nevű útvonalat ad meg, amelyet **a/* be $upstream * *-ban határoz meg, ami azt jelenti, hogy bármely modulból kimenetet küld az IoT hubhoz.  
 
-Add or update the routes with information from [Declare routes](module-composition.md#declare-routes), then select **Next** to continue to the review section.
+Adja hozzá vagy frissítse az útvonalakat a [deklarált útvonalak](module-composition.md#declare-routes)információi alapján, majd kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
 
-### <a name="review-deployment"></a>Review deployment
+### <a name="review-deployment"></a>Tekintse át a központi telepítés
 
-The review section shows you the JSON deployment manifest that was created based on your selections in the previous two sections. Note that there are two modules declared that you didn't add: **$edgeAgent** and **$edgeHub**. These two modules make up the [IoT Edge runtime](iot-edge-runtime.md) and are required defaults in every deployment.
+A tekintse át a szakasz azt mutatja be, a JSON-telepítésben manifest létrehozott az előző két szakaszokban alapján. Vegye figyelembe, hogy két modul deklarálta azt, hogy nem adta hozzá a következőket: **$edgeAgent** és **$edgeHub**. Ez a két modul hozza létre a [IoT Edge futtatókörnyezetet](iot-edge-runtime.md) , és minden központi telepítés esetében kötelező alapértelmezett érték.
 
-Review your deployment information, then select **Submit**.
+Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget.
 
-## <a name="view-modules-on-your-device"></a>View modules on your device
+## <a name="view-modules-on-your-device"></a>Modulok megjelenítése az eszközön
 
-Once you've deployed modules to your device, you can view all of them in the **Device details** page of the portal. This page displays the name of each deployed module, as well as useful information like the deployment status and exit code.
+Miután telepítette a modulokat az eszközre, megtekintheti az összeset a portál **eszköz adatai** lapján. Ezen a lapon minden egyes telepített modul, valamint a hasznos információk, például a központi telepítési állapot és a kilépési kód nevét jeleníti meg.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Deploy modules from Azure Marketplace
+## <a name="deploy-modules-from-azure-marketplace"></a>Modulok üzembe helyezése az Azure Marketplace-en
 
-Azure Marketplace is an online applications and services marketplace where you can browse through a wide range of enterprise applications and solutions that are certified and optimized to run on Azure, including [IoT Edge modules](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Marketplace can also be accessed through the Azure portal under **Create a Resource**.
+Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol az Azure-on futó Nagyvállalati alkalmazások és megoldások széles körét böngészheti, beleértve a [IoT Edge modulokat](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)is. Az Azure Marketplace a Azure Portal **erőforrás létrehozása**lehetőség alatt is elérhető.
 
-You can install an IoT Edge module from either Azure Marketplace or the Azure portal:
+IoT Edge modult az Azure Marketplace-ről vagy a Azure Portalról is telepíthet:
 
-1. Find a module and begin the deployment process.
+1. Keresse meg a modult, és kezdje el a telepítési folyamatot.
 
-   * Azure portal: Find a module and select **Create**.
+   * Azure Portal: keresse meg a modult, és válassza a **Létrehozás**lehetőséget.
 
    * Azure Marketplace:
 
-     1. Find a module and select **Get it now**.
-     1. Acknowledge the provider's terms of use and privacy policy by selecting **Continue**.
+     1. Keresse meg a modult, és válassza a **Letöltés most**lehetőséget.
+     1. A **Folytatás**gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát.
 
-1. Choose your subscription and the IoT Hub to which the target device is attached.
+1. Válassza ki az előfizetését és azt a IoT Hub, amelyhez a céleszköz csatolva van.
 
-1. Choose **Deploy to a device**.
+1. Válassza **a telepítés eszközre**lehetőséget.
 
-1. Enter the name of the device or select **Find Device** to browse among the devices registered with the hub.
+1. Adja meg az eszköz nevét, vagy válassza az **eszköz keresése** lehetőséget a hub-ban regisztrált eszközök között a tallózáshoz.
 
-1. Select **Create** to continue the standard process of configuring a deployment manifest, including adding other modules if desired. Details for the new module such as image URI, create options, and desired properties are predefined but can be changed.
+1. Válassza a **Létrehozás** lehetőséget a telepítési jegyzék konfigurálásának szabványos folyamatának folytatásához, beleértve a további modulok hozzáadását, ha szükséges. Az új modul adatai, például a rendszerkép URI-ja, a létrehozási beállítások és a kívánt tulajdonságok előre definiálva vannak, de módosíthatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Learn how to [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
+Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge modulokat a skálán](how-to-deploy-monitor.md)

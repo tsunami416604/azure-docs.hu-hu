@@ -1,5 +1,5 @@
 ---
-title: Two-step verification Azure MFA and ADFS - Azure Active Directory
+title: Kétlépéses ellenőrzés – Azure MFA és ADFS – Azure Active Directory
 description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381167"
 
 <center>
 
-![Azure MFA and ADFS getting started](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Azure MFA és ADFS – első lépések](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Ha a szervezete az AD FS használatával vonta össze a helyszíni Active Directoryt az Azure Active Directoryval, az Azure Multi-Factor Authentication két módon használható .
 

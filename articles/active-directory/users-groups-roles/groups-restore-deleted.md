@@ -1,6 +1,6 @@
 ---
-title: Restore a deleted Office 365 group - Azure AD | Microsoft Docs
-description: How to restore a deleted group, view restorable groups, and permanently delete a group in Azure Active Directory
+title: Törölt Office 365-csoport visszaállítása – Azure AD | Microsoft Docs
+description: Törölt csoport visszaállítása, visszaállítható csoportok megtekintése és csoport végleges törlése Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -22,33 +22,33 @@ ms.locfileid: "74422375"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Törölt Office 365-csoport visszaállítása az Azure Active Directoryban
 
-Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma szükség esetén visszaállítható legyen. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén. Please note that the 30-day group restoration period is not customizable.
+Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma szükség esetén visszaállítható legyen. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén. Vegye figyelembe, hogy a 30 napos csoportos visszaállítási időszak nem szabható testre.
 
 > [!NOTE]
-> Ne használja a `Remove-MsolGroup` parancsot, mert azzal véglegesen törli a csoportot. Always use `Remove-AzureADMSGroup` to delete an Office 365 group.
+> Ne használja a `Remove-MsolGroup` parancsot, mert azzal véglegesen törli a csoportot. Az Office 365-csoportok törléséhez mindig használjon `Remove-AzureADMSGroup`.
 
 A csoportok visszaállításához szükséges engedély az alábbiak bármelyike lehet:
 
 Szerepkör | Engedélyek
 --------- | ---------
-Global administrator, Group administrator, Partner Tier2 support, and Intune administrator | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
-User administrator and Partner Tier1 support | Can restore any deleted Office 365 group except those groups assigned to the Company Administrator role
-Felhasználó | Can restore any deleted Office 365 group that they own
+Globális rendszergazda, csoport rendszergazdája, partner szint-támogatás és Intune-rendszergazda | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
+Felhasználói rendszergazda és partner Tier1-támogatás | Visszaállíthatja a törölt Office 365-csoportot, kivéve azokat a csoportokat, amelyek a vállalati rendszergazda szerepkörhöz vannak rendelve
+Felhasználó | Visszaállíthatja az összes olyan törölt Office 365-csoportot, amely a saját tulajdonában van
 
-## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>View and manage the deleted Office 365 groups that are available to restore
+## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>A törölt Office 365-csoportok megtekintése és kezelése, amelyek elérhetők a visszaállításhoz
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a User administrator account.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy felhasználói rendszergazdai fiókkal.
 
-2. Select **Groups**, then select **Deleted groups** to view the deleted groups that are available to restore.
+2. Válassza a **csoportok**lehetőséget, majd válassza a **törölt csoportok** lehetőséget a visszaállítani kívánt törölt csoportok megtekintéséhez.
 
-    ![view groups that are available to restore](media/groups-lifecycle/deleted-groups3.png)
+    ![a visszaállításhoz elérhető csoportok megtekintése](media/groups-lifecycle/deleted-groups3.png)
 
-3. On the **Deleted groups** blade, you can:
+3. A **törölt csoportok** panelen a következőket teheti:
 
-   - Restore the deleted group and its contents by selecting **Restore group**.
-   - Permanently remove the deleted group by selecting **Delete permanently**. To permanently remove a group, you must be an administrator.
+   - Állítsa vissza a törölt csoportot és annak tartalmát a **Restore Group (visszaállítási csoport**) lehetőség kiválasztásával.
+   - Véglegesen távolítsa el a törölt csoportot a **Törlés végleges**lehetőség kiválasztásával. A csoportok végleges eltávolításához rendszergazdának kell lennie.
 
-## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>View the deleted Office 365 groups that are available to restore using Powershell
+## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>A PowerShell használatával visszaállítható, törölt Office 365-csoportok megtekintése
 
 Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrzéséhez, hogy a kívánt csoport vagy csoportok végleges törlése nem történt-e még meg. A parancsmagok az [Azure AD PowerShell-modul](https://www.powershellgallery.com/packages/AzureAD/) részét képezik. A modullal kapcsolatban az [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0) ismertető cikkben tekinthet meg további információt.
 
@@ -65,7 +65,7 @@ Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrz
     Get-AzureADMSDeletedGroup –Id <objectId>
     ```
 
-## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>How to restore your deleted Office 365 group using Powershell
+## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>Törölt Office 365-csoport visszaállítása a PowerShell használatával
 
 Miután ellenőrizte, hogy a csoport visszaállítható-e, az alábbi lépések valamelyikét végrehajtva állíthatja vissza a törölt csoportot. Ha a csoport dokumentumokat, SP-webhelyeket vagy más állandó objektumokat tartalmaz, a csoport és a tartalmainak teljes visszaállítása akár 24 órát is igénybe vehet.
 
@@ -89,10 +89,10 @@ Az Office 365-csoport visszaállításának sikerességét a `Get-AzureADGroup �
 
 - A csoport megjelenik az Exchange bal oldali navigációs sávján.
 - A csoportra vonatkozó terv megjelenik a Planner alkalmazásban.
-- Any SharePoint sites and all of their contents will be available
+- Minden SharePoint-webhely és annak tartalma elérhető lesz
 - A csoport elérhető lesz bármelyik Exchange-végpontról, illetve az Office 365-csoportokat támogató egyéb Office 365 számítási feladatokból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 E cikkekben további információk találhatók az Azure Active Directory-csoportokkal kapcsolatban.
 

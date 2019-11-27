@@ -1,6 +1,6 @@
 ---
 title: Elastic Database-kezelési feladatok (előzetes)
-description: Configure Elastic Database Jobs (preview) to run Transact-SQL (T-SQL) scripts across a set of one or more Azure SQL databases
+description: Elastic Database feladatok (előzetes verzió) konfigurálása a Transact-SQL (T-SQL) parancsfájlok futtatásához egy vagy több Azure SQL Database-adatbázison keresztül
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,28 +18,28 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420380"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Create, configure, and manage elastic jobs
+# <a name="create-configure-and-manage-elastic-jobs"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése
 
-In this article, you will learn how to create, configure, and manage elastic jobs.
+Ebből a cikkből megtudhatja, hogyan hozhat létre, konfigurálhat és kezelhet rugalmas feladatokat.
 
-If you have not used Elastic jobs, [learn more about the job automation concepts in Azure SQL Database](sql-database-job-automation-overview.md).
+Ha nem használt rugalmas feladatokat, [Ismerkedjen meg a Azure SQL Database feladat-automatizálási fogalmakkal](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>Az ügynök létrehozása és konfigurálása
 
-1. Hozzon létre vagy azonosítson egy üres, S0 vagy magasabb szintű SQL-adatbázist. This database will be used as the *Job database* during Elastic Job agent creation.
-2. Create an Elastic Job agent in the [portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) or with [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
+1. Hozzon létre vagy azonosítson egy üres, S0 vagy magasabb szintű SQL-adatbázist. Ez az adatbázis lesz felhasználva a *feladatok adatbázisa* számára a rugalmas feladatok ügynökének létrehozása során.
+2. Hozzon létre egy rugalmas feladatot a [portálon](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) vagy a [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent)-lel.
 
-   ![Creating Elastic Job agent](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Rugalmas feladatok ügynökének létrehozása](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>Feladatok létrehozása, futtatása és kezelése
 
-1. Create a credential for job execution in the *Job database* using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
-2. Define the target group (the databases you want to run the job against) using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
+1. Hozzon létre egy hitelesítő adatot a feladatok végrehajtásához a *feladatok adatbázisban* a [PowerShell](elastic-jobs-powershell.md) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution)használatával.
+2. Adja meg a célcsoportot (azokat az adatbázisokat, amelyeken a feladatot futtatni szeretné) a [PowerShell](elastic-jobs-powershell.md) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers)használatával.
 3. Hozzon létre feladatügynök-hitelesítő adatokat minden adatbázisban, ahol a feladat futni fog [(adja hozzá a felhasználót (vagy a szerepkört) a csoport minden adatbázisához)](sql-database-control-access.md). Példaként tekintse meg a [PowerShell-oktatóanyagot](elastic-jobs-powershell.md).
-4. Create a job using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
+4. Hozzon létre egy feladatot a [PowerShell](elastic-jobs-powershell.md) vagy a [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases)használatával.
 5. Adjon hozzá feladatlépéseket a [PowerShell](elastic-jobs-powershell.md) vagy a [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) használatával.
-6. Run a job using [PowerShell](elastic-jobs-powershell.md#run-the-job) or [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
-7. Monitor job execution status using the portal, [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) or [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
+6. Futtasson egy feladatot a [PowerShell](elastic-jobs-powershell.md#run-the-job) vagy a [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job)használatával.
+7. A feladatok végrehajtási állapotának figyelése a portál, a [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) vagy a [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status)használatával.
 
    ![Portál](media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -50,8 +50,8 @@ A feladatok [adatbázishoz kötődő hitelesítő adatokat](/sql/t-sql/statement
 Lehetséges, hogy a feladatfuttatáshoz szükséges megfelelő hitelesítő adatok beállítása nem egyértelmű, ezért tartsa szem előtt a következőket:
 
 - Az adatbázishoz kötődő hitelesítő adatokat a *feladat-adatbázisban* kell létrehozni.
-- **All target databases must have a login with [sufficient permissions](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) for the job to complete successfully** (`jobuser` in the diagram below).
-- Credentials can be reused across jobs, and the credential passwords are encrypted and secured from users who have read-only access to job objects.
+- Az **összes célként megadott adatbázisnak [megfelelő engedélyekkel](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) kell rendelkeznie ahhoz, hogy a feladatok sikeresen befejeződik** (`jobuser` az alábbi ábrán).
+- A hitelesítő adatok újra felhasználhatók a feladatok között, a hitelesítő adatok jelszava pedig titkosítva van, és a feladat objektumaihoz csak olvasási hozzáféréssel rendelkező felhasználók férhetnek hozzá.
 
 Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértéséhez és beállításához. **Ne feledje létrehozni a felhasználót minden olyan adatbázisban (minden *célként megjelölt felhasználói adatbázisban*), ahol a feladatot futtatni szeretné**.
 
@@ -62,8 +62,8 @@ Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértés�
 Néhány megfontolandó ajánlott eljárás a rugalmas feladatokkal végzett munkához:
 
 - Az API-k felhasználását korlátozza megbízható személyekre.
-- A hitelesítő adatok a feladatlépés végrehajtásához szükséges minimális engedélyekkel rendelkezzenek. For more information, see [Authorization and Permissions SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
-- When using a server and/or pool target group member, it is highly suggested to create a separate credential with rights on the master database to view/list databases that is used to expand the database lists of the server(s) and/or pool(s) prior to the job execution.
+- A hitelesítő adatok a feladatlépés végrehajtásához szükséges minimális engedélyekkel rendelkezzenek. További információ: [Engedélyezés és engedélyek SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- A kiszolgáló és/vagy a készlet célcsoportjának használatakor a rendszer erősen javasolja, hogy hozzon létre egy külön hitelesítő adatokat, amelyekkel a főadatbázison megtekintheti vagy listázhatja azokat az adatbázisokat, amelyekkel a feladatok végrehajtása előtt kibonthatja a kiszolgáló (k) és/vagy a készlet (ek) adatbázis-listáját.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Az ügynök teljesítménye, kapacitása és korlátai
 
@@ -77,7 +77,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-Set the number of concurrent databases a job runs on by setting the `sp_add_jobstep` stored procedure's `@max_parallelism` parameter in T-SQL, or `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell.
+Állítsa be a feladat által futtatott egyidejű adatbázisok számát a `sp_add_jobstep` tárolt eljárás `@max_parallelism` paraméterének T-SQL-ben vagy `Add-AzSqlElasticJobStep -MaxParallelism` a PowerShellben való beállításával.
 
 ## <a name="best-practices-for-creating-jobs"></a>Ajánlott eljárások feladatok létrehozásához
 
@@ -97,7 +97,7 @@ Ehhez hasonlóan a szkriptnek sikeresen végrehajthatónak kell lennie az észle
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
 - [Rugalmas feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával](elastic-jobs-tsql.md)

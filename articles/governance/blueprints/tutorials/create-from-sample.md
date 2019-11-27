@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Blueprint sample to new environment'
-description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
+title: 'Oktatóanyag: a terv mintája az új környezethez'
+description: Ebben az oktatóanyagban egy tervezet-mintát használ egy olyan tervezet-definíció létrehozásához, amely két erőforráscsoportot állít be, és minden egyes szerepkör-hozzárendelést konfigurál.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
@@ -10,180 +10,180 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74321738"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: környezet létrehozása tervrajz mintából
 
-Sample blueprints provide examples of what can be done using Azure Blueprints. Each is a sample with a specific intent or purpose, but doesn't create a complete environment by themselves. Each is intended as a starting place to explore using Azure Blueprints with various combinations of included artifacts, designs, and parameters.
+A minta tervezetek példákat tartalmaznak arra, hogy mit lehet tenni az Azure-tervrajzokkal. Az egyes minták egy adott szándékkal vagy céllal vannak ellátva, de önmagukban nem hozhatnak létre teljes környezetet. A szolgáltatás kiindulópontként szolgál az Azure-tervezetek használatának megkezdéséhez, amely a tartalmazott összetevők, minták és paraméterek különféle kombinációit tartalmazza.
 
-The following tutorial uses the **Resource Groups with RBAC** blueprint sample to showcase different aspects of the Blueprints service. The following steps are covered:
+Az alábbi oktatóanyag az **RBAC** Blueprint minta használatával mutatja be a tervrajzok szolgáltatás különböző szempontjait. A következő lépéseket tárgyaljuk:
 
 > [!div class="checklist"]
-> - Create a new blueprint definition from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
-> - Inspect deployed resources for the assignment
-> - Unassign the blueprint to remove the locks
+> - Új terv meghatározásának létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
+> - A hozzárendelés üzembe helyezett erőforrásainak vizsgálata
+> - A terv hozzárendelésének megszüntetése a zárolások eltávolításához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To complete this tutorial, an Azure subscription is needed. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Az oktatóanyag elvégzéséhez szükség van egy Azure-előfizetésre. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-definition-from-sample"></a>Create blueprint definition from sample
+## <a name="create-blueprint-definition-from-sample"></a>Terv definíciójának létrehozása mintából
 
-First, implement the blueprint sample. Importing creates a new blueprint in your environment based on the sample.
+Először is implementálja a terv mintáját. Az importálás egy új tervet hoz létre a környezetben a minta alapján.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Find the **Resource Groups with RBAC** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. Keresse meg az RBAC tervvel **ellátott erőforráscsoportokat** _más minták_ alatt, és válassza a **minta használata**lehetőséget.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name _two-rgs-with-role-assignments_.
-   - **Definition location**: Use the ellipsis and select the management group or subscription to save your copy of the sample to.
+   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a _Two-RGS-to-role-hozzárendelések_nevet fogjuk használni.
+   - **Definíció helye**: használja a három pontot, és válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a minta másolatát.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
-1. Review the list of artifacts that make up the blueprint sample. This sample defines two resource groups, with display names of _ProdRG_ and _PreProdRG_. The final name and location of each resource group are set during blueprint assignment. The _ProdRG_ resource group is assigned the _Contributor_ role and the _PreProdRG_ resource group is assigned the _Owner_ and _Readers_ roles. The roles assigned in the definition are static, but user, app, or group that is assigned the role is set during blueprint assignment.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Ez a minta két erőforráscsoportot határoz meg, amelyek a _ProdRG_ és a _PreProdRG_megjelenítendő nevei. Az egyes erőforráscsoportok végső neve és helye a terv hozzárendelése során van beállítva. A _ProdRG_ erőforráscsoport hozzá van rendelve a _közreműködő_ szerepkörhöz, és a _PreProdRG_ erőforráscsoport hozzá van rendelve a _tulajdonosi_ és az _olvasói_ szerepkörökhöz. A definícióban hozzárendelt szerepkörök statikusak, de a szerepkörhöz hozzárendelt felhasználó, alkalmazás vagy csoport a terv hozzárendelése során be van állítva.
 
-1. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-This step creates a copy of the sample blueprint definition in the selected management group or subscription. The saved blueprint definition is managed like any blueprint created from scratch. You may save the sample to your management group or subscription as many times as needed. However, each copy must be provided a unique name.
+Ezzel a lépéssel a kiválasztott felügyeleti csoportban vagy előfizetésben létrehozhatja a minta tervezet definíciójának másolatát. A mentett terv definíciója úgy van kezelve, mint a semmiből létrehozott tervrajzok. A mintát igény szerint bármikor mentheti a felügyeleti csoportba vagy előfizetésbe. Az egyes példányokat azonban egyedi névvel kell megadni.
 
-Once the **Saving blueprint definition succeeded** portal notification appears, move to the next step.
+Ha megjelenik a **terv mentése sikeres** portál értesítése, lépjen a következő lépésre.
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs. For this tutorial, we won't make any changes.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezetében és igényei szerint. Ebben az oktatóanyagban nem teszünk semmilyen változást.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a _két RGS-a-role-hozzárendelései_ terv definícióját, majd jelölje ki.
 
-1. Select **Publish blueprint** at the top of the page. In the new pane on the right, provide **Version** as _1.0_ for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the resource groups with RBAC blueprint sample." Then select **Publish** at the bottom of the page.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldali új ablaktáblán adja meg a _1,0_ -as **verziót** a tervezet mintájának másolatában. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amelyet az ERŐFORRÁSCSOPORTOK a RBAC Blueprint minta alapján közzétettek." Ezután válassza a **Közzététel** elemet az oldal alján.
 
-This step makes it possible to assign the blueprint to a subscription. Once published, changes can still be made. Additional changes require publishing with a new **Version** value to track differences between different versions of the same blueprint definition.
+Ez a lépés lehetővé teszi a terv hozzárendelését egy előfizetéshez. A közzététel után a módosítások továbbra is elvégezhető. A további módosításokhoz új **verzió** értékkel kell közzétenni, hogy nyomon kövessék a különbségeket az azonos terv definíciójának különböző verziói között.
 
-Once the **Publishing blueprint definition succeeded** portal notification appears, move to the next step.
+Ha megjelenik a **közzétételi terv definíciója sikeres** portál értesítése, lépjen a következő lépésre.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a _két RGS-a-role-hozzárendelései_ terv definícióját, majd jelölje ki.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
-1. Provide the parameter values for the blueprint assignment:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint definition.
-     - **Location**: Select a region for the managed identity to be created in. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
-       For this tutorial, select _East US 2_.
-     - **Blueprint definition version**: Pick the **Published** version _1.0_ of your copy of the sample blueprint definition.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv definíciójának neve alapján.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Ebben az oktatóanyagban válassza az _USA 2. keleti_régióját.
+     - **Tervezet definíciójának verziója**: válassza ki a **közzétett** _1,0_ -es verziót a minta-tervezet definíciójának másolatáról.
 
-   - Lock Assignment
+   - Hozzárendelés zárolása
 
-     Select the _Read Only_ blueprint lock mode. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+     Válassza a _csak olvasható_ terv zárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Leave the default _System assigned_ option. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Hagyja meg az alapértelmezett _rendszer-hozzárendelési_ beállítást. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - Artifact parameters
+   - Összetevő paramétereinek
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what is defined in the **Value** column. For `{Your ID}`, select your Azure user account.
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . `{Your ID}`válassza ki az Azure-beli felhasználói fiókját.
 
-     |Artifact name|Artifact type|Paraméter neve|Value (Díj)|Leírás|
+     |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |ProdRG resource group|Erőforráscsoport|Név|ProductionRG|Defines the name of the first resource group.|
-     |ProdRG resource group|Erőforráscsoport|Földrajzi egység|USA 2. nyugati régiója|Sets the location of the first resource group.|
-     |Közreműködő|Szerepkör-kijelölés|User or Group|{Your ID}|Defines which user or group to grant the _Contributor_ role assignment within the first resource group.|
-     |PreProdRG resource group|Erőforráscsoport|Név|PreProductionRG|Defines the name of the second resource group.|
-     |PreProdRG resource group|Erőforráscsoport|Földrajzi egység|USA nyugati régiója|Sets the location of the second resource group.|
-     |Tulajdonos|Szerepkör-kijelölés|User or Group|{Your ID}|Defines which user or group to grant the _Owner_ role assignment within the second resource group.|
-     |Olvasók|Szerepkör-kijelölés|User or Group|{Your ID}|Defines which user or group to grant the _Readers_ role assignment within the second resource group.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Megadja az első erőforráscsoport helyét.|
+     |Közreműködő|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _közreműködői_ szerepkör-hozzárendelést az első erőforráscsoporthoz.|
+     |PreProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
+     |PreProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója|Beállítja a második erőforráscsoport helyét.|
+     |Tulajdonos|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _tulajdonosi_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
+     |Olvasók|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg az _olvasók_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet.
 
-This step deploys the defined resources and configures the selected **Lock Assignment**. Blueprint locks can take up to 30 minutes to apply.
+Ez a lépés telepíti a definiált erőforrásokat, és konfigurálja a kiválasztott **zárolási hozzárendelést**. A tervrajzi zárolások akár 30 percet is igénybe vehetnek.
 
-Once the **Assigning blueprint definition succeeded** portal notification appears, move to the next step.
+Ha megjelenik a **terv kiosztásának meghatározása sikeres** portál értesítés, lépjen a következő lépésre.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
+## <a name="inspect-resources-deployed-by-the-assignment"></a>A hozzárendelés által üzembe helyezett erőforrások vizsgálata
 
-The blueprint assignment creates and tracks the artifacts defined in the blueprint definition. We can see the status of the resources from the blueprint assignment page and by looking at the resources directly.
+A terv-hozzárendelés létrehozza és nyomon követi a terv definíciójában meghatározott összetevőket. Az erőforrások állapotát a terv hozzárendelése oldalon tekintheti meg, az erőforrásokat pedig közvetlenül is megtekintheti.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
+1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a _hozzárendelés-két-RGS-a-role-hozzárendeléseinek terv-_ hozzárendelést, majd jelölje ki.
 
-   From this page, we can see the assignment succeeded and the list of created resources along with their blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. Each listed resource that was created can be clicked and opens that resources property page.
+   Ezen a lapon láthatjuk a hozzárendelés sikerességét, valamint a létrehozott erőforrások listáját a terv zárolási állapotával együtt. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. Minden létrehozott felsorolt erőforrás rákattinthat, és megnyithatja az erőforrások tulajdonságlapját.
 
-1. Select the **ProductionRG** resource group.
+1. Válassza ki a **ProductionRG** erőforráscsoportot.
 
-   We see that the name of the resource group is **ProductionRG** and not the artifact display name _ProdRG_. This name matches the value set during the blueprint assignment.
+   Azt láthatjuk, hogy az erőforráscsoport neve **ProductionRG** , és nem az összetevő megjelenítendő neve _ProdRG_. Ez a név megegyezik a terv-hozzárendelés során beállított értékkel.
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör-hozzárendelések** lapot.
 
-   Here we see that your account has been granted the _Contributor_ role on the scope of _This resource_. The _Assignment-two-rgs-with-role-assignments_ blueprint assignment has the _Owner_ role as it was used to create the resource group. These permissions are also used to manage resources with configured blueprint locks.
+   Itt láthatjuk, hogy a fiókja a _közreműködői_ szerepkört adta meg az _erőforrás_hatókörén. A _hozzárendelés-két-RGS-a-role-hozzárendelések terv-_ hozzárendelés a _tulajdonosi_ szerepkört használja az erőforráscsoport létrehozásához. Ezek az engedélyek a konfigurált Blueprint-zárolásokkal rendelkező erőforrások kezelésére is használhatók.
 
-1. From the Azure portal breadcrumb, select **Assignment-two-rgs-with-role-assignments** to go back one page, then select the **PreProductionRG** resource group.
+1. Az Azure Portal-navigációs panelen válassza a **hozzárendelés-két-RGS-a-role-hozzárendelések** lehetőséget egy lap visszalépéséhez, majd válassza ki a **PreProductionRG** erőforráscsoportot.
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör-hozzárendelések** lapot.
 
-   Here we see that your account has been granted both the _Owner_ and _Reader_ roles, both on the scope of _This resource_. The blueprint assignment also has the _Owner_ role like the first resource group.
+   Itt láthatjuk, hogy a fiókja a _tulajdonosi_ és a _olvasói_ szerepkört is biztosította az _erőforrás_hatókörén. A terv hozzárendelése a _tulajdonosi_ szerepkörrel is rendelkezik, mint az első erőforráscsoport.
 
-1. Select the **Deny assignments** tab.
+1. Jelölje be a **megtagadási hozzárendelések** lapot.
 
-   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the _Read Only_ blueprint lock mode. The deny assignment prevents someone with appropriate rights on the _Role assignments_ tab from taking specific actions. The deny assignment affects _All principals_.
+   A terv-hozzárendelés [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az _írásvédett_ terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a _szerepkör-hozzárendelések_ lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_hatással van.
 
-1. Select the deny assignment, then select the **Denied Permissions** page on the left.
+1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza a **megtagadott engedélyek** lapot.
 
-   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but allows read access by excluding **\*/read** via **NotActions**.
+   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de az olvasási hozzáférés engedélyezése a **\*/Read** kizárásával **.**
 
-1. From the Azure portal breadcrumb, select **PreProductionRG - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name _PreProductionRG_ to confirm the delete and select **Delete** at the bottom of the pane.
+1. A Azure Portal navigációs listából válassza a **PreProductionRG-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a _PreProductionRG_ nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
-   The portal notification **Delete resource group PreProductionRG failed** is displayed. The error states that while your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the _Read Only_ blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+   A portál értesítésének **törlési erőforráscsoport-PreProductionRG nem sikerült** . A hiba azt jelzi, hogy a fióknak nincs engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a _csak olvasható_ terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár _tulajdonossal_is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
-These steps show that our resources were created as defined and the blueprint locks prevented unwanted deletion, even from an account with permission.
+Ezek a lépések azt mutatják, hogy az erőforrások definiálva lettek, és a terv zárolása megakadályozta a nemkívánatos törlést, még az engedéllyel rendelkező fiókból is.
 
-## <a name="unassign-the-blueprint"></a>Unassign the blueprint
+## <a name="unassign-the-blueprint"></a>A terv hozzárendelésének megszüntetése
 
-The last step is to remove the assignment of the blueprint and the resources that it deployed.
-Removing the assignment doesn't remove the deployed artifacts.
+Az utolsó lépés a terv és az üzembe helyezett erőforrások hozzárendelésének eltávolítása.
+A hozzárendelés eltávolítása nem távolítja el az üzembe helyezett összetevőket.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
+1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a _hozzárendelés-két-RGS-a-role-hozzárendeléseinek terv-_ hozzárendelést, majd jelölje ki.
 
-1. Select the **Unassign blueprint** button at the top of the page. Read the warning in the confirmation dialog, then select **OK**.
+1. Válassza ki a **tervezet hozzárendelésének megszüntetése** gombot az oldal tetején. Olvassa el a figyelmeztetést a megerősítő párbeszédpanelen, majd kattintson az **OK gombra**.
 
-   With the blueprint assignment removed, the blueprint locks are also removed. The created resources can once again be deleted by an account with permissions.
+   Ha a terv-hozzárendelés el lett távolítva, a terv zárolása is törlődik. A létrehozott erőforrásokat újra törölheti egy olyan fiókkal, amely engedélyekkel rendelkezik.
 
-1. Select **Resource groups** from the Azure menu, then select **ProductionRG**.
+1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **ProductionRG**lehetőséget.
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör-hozzárendelések** lapot.
 
-The security for each resource groups still has the deployed role assignments, but the blueprint assignment no longer has _Owner_ access.
+Az egyes erőforráscsoportok biztonsága továbbra is a telepített szerepkör-hozzárendelésekkel rendelkezik, de a terv hozzárendelése már nem rendelkezik _tulajdonosi_ hozzáféréssel.
 
-Once the **Removing blueprint assignment succeeded** portal notification appears, move to the next step.
+Ha megjelenik a **terv-hozzárendelés eltávolítása sikeres** portál értesítés, lépjen a következő lépésre.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When finished with this tutorial, delete the following resources:
+Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat:
 
-- Resource group _ProductionRG_
-- Resource group _PreProductionRG_
-- Blueprint definition _two-rgs-with-role-assignments_
+- Erőforráscsoport _ProductionRG_
+- Erőforráscsoport _PreProductionRG_
+- Terv definíciója: _Two-RGS-a-role-hozzárendelései_
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you've learned how to create a new blueprint from a sample definition. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy új tervet egy minta definícióból. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)
+> [A terv életciklusának megismerése](../concepts/lifecycle.md)

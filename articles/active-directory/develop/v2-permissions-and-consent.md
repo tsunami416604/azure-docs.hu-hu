@@ -86,7 +86,7 @@ Az OpenID Connect Microsoft Identity platform megvalósítása néhány jól def
 
 Ha egy alkalmazás az [OpenID Connect](active-directory-v2-protocols.md)használatával hajtja végre a bejelentkezést, akkor a `openid` hatókört kell kérnie. A `openid` hatókör a munkahelyi fiókra vonatkozó hozzájárulás oldalon jelenik meg, a "Bejelentkezés" engedéllyel, valamint a személyes Microsoft-fiók beleegyezés lapon a Profil megtekintése és az alkalmazásokhoz és szolgáltatásokhoz való kapcsolódás a Microsoft-fiók használatával című engedéllyel. Ezzel az engedéllyel az alkalmazás a `sub` jogcím formájában egyedi azonosítót kaphat a felhasználó számára. Emellett hozzáférést biztosít az alkalmazásnak az UserInfo-végponthoz is. A `openid` hatókört a Microsoft Identity platform token végpontján használhatja azonosító tokenek megszerzéséhez, amelyet az alkalmazás használhat hitelesítésre.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>email
 
 A `email` hatókör a `openid` hatókörrel és másokkal is használható. Az alkalmazás az `email` jogcím formájában hozzáférést biztosít a felhasználó elsődleges e-mail-címéhez. A `email` jogcímet csak akkor tartalmazza a token, ha a felhasználói fiókhoz társított e-mail-cím, amely nem mindig az eset. Ha a `email` hatókört használja, az alkalmazásnak fel kell készülnie arra az esetre, amikor az `email` jogcím nem létezik a jogkivonatban.
 
@@ -199,11 +199,11 @@ Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától
 
 | Paraméter     | Állapot     | Leírás                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A (z) GUID vagy a felhasználóbarát név formátumban adható meg, vagy általános módon hivatkozik `common`re, ahogy az a példában látható. |
-| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
-| `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
+| `tenant` | Szükséges | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A (z) GUID vagy a felhasználóbarát név formátumban adható meg, vagy általános módon hivatkozik `common`re, ahogy az a példában látható. |
+| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `redirect_uri` | Szükséges |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
 | `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-|`scope`        | Kötelező      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). | 
+|`scope`        | Szükséges      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). | 
 
 
 Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszergazda a `scope` paraméterben kért összes engedély jóváhagyását kéri.  Ha statikus (`/.default`) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezését kéri.

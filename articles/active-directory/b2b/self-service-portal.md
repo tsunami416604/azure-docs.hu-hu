@@ -30,7 +30,7 @@ Ez a GitHub-projekt bemutatja, hogyan biztosíthatnak a vállalatok szabályokon
 
 A kód mintaként lett elérhetővé téve, hogy bemutassa az Azure Active Directory B2B meghívó API használatát. Saját fejlesztői csapatának vagy egy partnerének kell módosítania, és ellenőriznie egy éles helyzetben való üzembe helyezés előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [Az Azure AD B2B-együttműködés licencelése](licensing-guidance.md)

@@ -22,7 +22,7 @@ Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben be fogja olvasni az adatstreamet az Azure Stream Analytics segítségével, amely elkülöníti az érvényes tranzakciókat az érvénytelenektől, majd a Power BI használatával vizuálisan azonosítani fogja az érvénytelenként megjelölt tranzakciókat.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * Eseményközpont létrehozása
@@ -318,7 +318,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép a vizualizációtípus és a mezők megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   Kattintson a **Tovább**gombra.
+   Kattintson a **Tovább** gombra.
 
 10. A címhez írja be a **Csalárd felhasználás**, az alcímhez pedig az **Összeg az elmúlt néhány percben** szöveget. Kattintson az **Alkalmaz** gombra. Ez menti a csempét az irányítópultra.
 
@@ -330,7 +330,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
     * Kattintson a **Csempe hozzáadása** elemre.
     * Válassza az **Egyedi streamelési adatok** lehetőséget. 
-    * Kattintson a **Tovább**gombra.
+    * Kattintson a **Tovább** gombra.
     * Válassza ki az adatkészletét, majd kattintson a **Tovább** gombra. 
 
 12. A **Vizualizáció típusa** területen válassza a **Vonaldiagram** lehetőséget.
@@ -339,7 +339,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
 14. Az **Értékek** területen kattintson az **Érték hozzáadása** elemre, és válassza a **fraudulentuses** lehetőséget.
 
-15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább**gombra.
+15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább** gombra.
 
 16. A csempe címeként adja meg a **Csalárd felhasználás megjelenítése az idő múlásával** címet, hagyja üresen az alcím mezőt, majd kattintson az **Alkalmaz** gombra. A rendszer automatikusan visszairányítja az irányítópultra.
 
@@ -371,7 +371,7 @@ Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

@@ -140,16 +140,16 @@ Tekintse át az [ajánlott eljárásokat](luis-concept-best-practices.md) , és 
 
 Ha a választott word vagy a word megállapodás azonos, de nem ugyanazt jelenti, nem címkét, az entitáshoz. 
 
-A következő utterances, a word `fair` egy homográfokat van. Akkor helyesírása megegyezik, de eltérő jelentéssel rendelkezik:
+A következő hosszúságú kimondott szöveg a Word `fair` egy homográfia. Akkor helyesírása megegyezik, de eltérő jelentéssel rendelkezik:
 
 |Kimondott szöveg|
 |--|
 |Milyen típusú megye vásárokon Seattle környékén lévő történik az Ez évi riói nyári?|
 |Az a jelenlegi besorolása a Seattle felülvizsgálatra valós?|
 
-Ha egy esemény entitás összes esemény az adatok keresésére, a word címke `fair` az első utterance (kifejezés), de nem a második.
+Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézse a szót `fair` az első kiíráskor, de a másodikban nem.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
 

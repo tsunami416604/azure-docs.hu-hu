@@ -50,11 +50,11 @@ Minden hiperparaméter lehet különálló vagy folyamatos, és egy [paraméter-
 
 #### <a name="discrete-hyperparameters"></a>Különálló hiperparaméterek 
 
-Különálló hiperparaméterek vannak megadva a `choice` diszkrét értékei között. `choice` lehetnek:
+A diszkrét hiperparaméterek beállítása a különálló értékek között `choice` vannak megadva. `choice` a következőket teheti:
 
 * egy vagy több vesszővel tagolt értékek
 * egy `range` objektum
-* bármilyen tetszőleges `list` objektum
+* tetszőleges `list` objektum
 
 
 ```Python
@@ -64,23 +64,23 @@ Különálló hiperparaméterek vannak megadva a `choice` diszkrét értékei k�
     }
 ```
 
-Ebben az esetben `batch_size` egy [16 32, 64, 128] értéket veszi fel, és `number_of_hidden_layers` egy [1, 2, 3, 4] értéket veszi fel.
+Ebben az esetben a `batch_size` a [16, 32, 64, 128] érték valamelyikét veszi igénybe, és a `number_of_hidden_layers` a [1, 2, 3, 4] érték egyikére kerül.
 
 Speciális diszkrét hiperparaméterek is eloszlás használatával adható meg. A következő disztribúciók támogatottak:
 
-* `quniform(low, high, q)` – Visszaad egy értéket, például a ciklikus (egységes (alacsony, magas) / q) * q
-* `qloguniform(low, high, q)` – Visszaad egy értéket, például a ciklikus (exp (egységes (alacsony, magas)) / q) * q
-* `qnormal(mu, sigma, q)` – Visszaad egy értéket, például a ciklikus (normál (mu, szigma) / q) * q
-* `qlognormal(mu, sigma, q)` – Visszaad egy értéket, például a ciklikus (exp (normál (mu, szigma)) / q) * q
+* `quniform(low, high, q)` – olyan értéket ad vissza, mint a Round (egységes (alacsony, magas)/q) * q
+* `qloguniform(low, high, q)` – egy olyan értéket ad vissza, mint a Round (exp (egységes (alacsony, magas))/q
+* `qnormal(mu, sigma, q)` – olyan értéket ad vissza, mint a Round (normál (MU, Sigma)/q) * q
+* `qlognormal(mu, sigma, q)` – olyan értéket ad vissza, mint a Round (exp (normál (MU, Sigma))/q) * q
 
 #### <a name="continuous-hyperparameters"></a>Folyamatos hiperparaméterek 
 
 Folyamatos hiperparaméterek értékek folyamatos számos terjesztési vannak megadva. Támogatott disztribúciók a következők:
 
-* `uniform(low, high)` -Értékét adja vissza egy egyenletesen alacsony és magas között elosztott
-* `loguniform(low, high)` -Adja vissza egy merőleges exp (egységes (alacsony, magas)) alapján, hogy egyenletesen oszlik el a visszaadott érték a logaritmusa
-* `normal(mu, sigma)` -Értéket ad vissza egy valódi általában a mean mu és a szórást szigma elosztott
-* `lognormal(mu, sigma)` -Adja vissza egy merőleges exp (normál (mu, szigma)) alapján, hogy a visszaadott érték logaritmusát általában terjesztése
+* `uniform(low, high)` – az alacsony és a magas közötti egységesen elosztott értéket adja vissza
+* `loguniform(low, high)` – az exp (egységes (alacsony, magas)) alapján rajzolt értéket adja vissza, hogy a visszatérési érték logaritmusa egységesen legyen elosztva.
+* `normal(mu, sigma)` – egy olyan valós értéket ad vissza, amelyet általában a Mean és a standard szórás Sigma
+* `lognormal(mu, sigma)` – az exp (normál (MU, Sigma)) szerint rajzolt értéket adja vissza, hogy a visszatérési érték logaritmusa szabályosan legyen elosztva.
 
 A példában egy paraméterdefinícióhoz terület:
 
@@ -91,7 +91,7 @@ A példában egy paraméterdefinícióhoz terület:
     }
 ```
 
-Ez a kód határozza meg a keresési tárhely két paraméter – `learning_rate` és `keep_probability`. `learning_rate` közepes értéke 10-es és a egy 3 szórását normál eloszláshoz rendelkezik. `keep_probability` 0,05 és a egy 0,1 maximális értéke egy egyenletes elosztása a minimális értékkel rendelkezik.
+Ez a kód két paramétert definiáló keresési helyet határoz meg – `learning_rate` és `keep_probability`. a `learning_rate` normál eloszlása a 10-es értékkel, a szórás pedig 3. a `keep_probability` egy egységes eloszlású, 0,05-es minimális értékkel és 0,1-es maximális értékkel rendelkezik.
 
 ### <a name="sampling-the-hyperparameter-space"></a>Mintavétel a hiperparaméter terület
 
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Rács mintavétel
 
-A [rács mintavételezése](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) egyszerű rácsos keresést végez a definiált keresési terület minden lehetséges értékén. Csak használható hiperparaméterek megadni, használja a `choice`. Például az azt követő szóközt, összesen hat minták:
+A [rács mintavételezése](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) egyszerű rácsos keresést végez a definiált keresési terület minden lehetséges értékén. Csak `choice`használatával megadott hiperparaméterek beállítása használható. Például az azt követő szóközt, összesen hat minták:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -148,7 +148,7 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayes mintavételi nem támogatja a korai lemondási házirendek (lásd: [adjon meg egy korai lemondási szabályzatot](#specify-early-termination-policy)). Bayes paraméter-mintavétel használatakor beállítása `early_termination_policy = None`, vagy hagyja a `early_termination_policy` paraméter.
+> A Bayes mintavételezés nem támogatja a korai megszakítási házirendet (lásd: [a korai megszakítási házirend meghatározása](#specify-early-termination-policy)). Ha a Bayes paraméter mintavételét használja, állítsa be `early_termination_policy = None`, vagy hagyja ki a `early_termination_policy` paramétert.
 
 <a name='specify-primary-metric-to-optimize'/>
 
@@ -156,8 +156,8 @@ param_sampling = BayesianParameterSampling( {
 
 Itt adhatja meg azt az [elsődleges metrikát](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) , amelyet a hiperparaméter-hangolási kísérlettel optimalizálni szeretne. Egyes betanítási futtatások abban az esetben a elsődleges metrika. Rosszul működő futtatja (amelyen az elsődleges metrika nem felel meg a korai lemondási házirendek által beállított feltételek) befejeződik. Az elsődleges metrika neve mellett is megadhatja a cél az optimalizálási - e az elsődleges metrika vagy teljes méretűre.
 
-* `primary_metric_name`: Az elsődleges metrika optimalizálása a neve. A metrika a tanítási szkriptet által naplózott neve pontosan egyeznie kell az elsődleges metrika neve. Lásd: [metrikáinak hiperparaméter finomhangolása jelentkezzen](#log-metrics-for-hyperparameter-tuning).
-* `primary_metric_goal`: Ez lehet `PrimaryMetricGoal.MAXIMIZE` vagy `PrimaryMetricGoal.MINIMIZE` és határozza meg, hogy az elsődleges metrika teljes méretű vagy kis méretben fut az fut kiértékelése során. 
+* `primary_metric_name`: az optimalizálni kívánt elsődleges metrika neve. A metrika a tanítási szkriptet által naplózott neve pontosan egyeznie kell az elsődleges metrika neve. Lásd: [a hiperparaméter hangolásának naplózási mérőszámai](#log-metrics-for-hyperparameter-tuning).
+* `primary_metric_goal`: lehet `PrimaryMetricGoal.MAXIMIZE` vagy `PrimaryMetricGoal.MINIMIZE`, és meghatározza, hogy az elsődleges metrika maximalizálva vagy Lekicsinyítve legyen a futtatások kiértékelése során. 
 
 ```Python
 primary_metric_name="accuracy",
@@ -180,7 +180,7 @@ run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 
-Kiszámítja a tanítási szkriptet a `val_accuracy` és naplózza, mint "pontossággal", mint az elsődleges metrika használt. A mérőszám a rendszer naplózza minden alkalommal, amikor megkapta a hiperparaméter finomhangolása a szolgáltatás. A modell fejlesztő határozza meg, hogy milyen gyakran kell jelentse, ez a metrika esetén.
+A betanítási parancsfájl kiszámítja a `val_accuracy`, és "pontosságként" naplózza, amelyet elsődleges metrikaként használ a rendszer. A mérőszám a rendszer naplózza minden alkalommal, amikor megkapta a hiperparaméter finomhangolása a szolgáltatás. A modell fejlesztő határozza meg, hogy milyen gyakran kell jelentse, ez a metrika esetén.
 
 <a name='specify-early-termination-policy'/>
 
@@ -190,8 +190,8 @@ Kiszámítja a tanítási szkriptet a `val_accuracy` és naplózza, mint "pontos
 
 Egy korai lemondási szabályzat használatakor konfigurálhatja az alábbi paramétereket, amelyek vezérlik a házirend alkalmazásakor:
 
-* `evaluation_interval`: a házirend alkalmazására vonatkozó gyakoriságát. Minden egyes a tanítási szkriptet az elsődleges metrika számít egy időközt. Így egy `evaluation_interval` 1 alkalmazza a szabályzatot minden alkalommal, amikor a tanítási szkriptet jelenti az elsődleges metrikát. Egy `evaluation_interval` 2 alkalmazza a szabályzatot minden más, a tanítási szkriptet jelenti az elsődleges metrika alkalommal. Ha nincs megadva, `evaluation_interval` alapértelmezés szerint 1-re van állítva.
-* `delay_evaluation`: késlelteti az intervallumok megadott számú első szabályzat-kiértékelés. Egy nem kötelező paraméter, amely lehetővé teszi az összes konfiguráció futtatása egy kezdeti minimális számú időközök, elkerülve a képzés korai lemondási futtatja. Ha meg van adva, a szabályzat vonatkozik, amely nagyobb vagy egyenlő delay_evaluation evaluation_interval minden többszöröse.
+* `evaluation_interval`: a házirend alkalmazásának gyakorisága. Minden egyes a tanítási szkriptet az elsődleges metrika számít egy időközt. Így az 1. `evaluation_interval` minden alkalommal alkalmazza a szabályzatot, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. A 2 `evaluation_interval` a szabályzatot minden más alkalommal alkalmazza, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. Ha nincs megadva, `evaluation_interval` alapértelmezett értéke 1.
+* `delay_evaluation`: az első szabályzat kiértékelését késlelteti a megadott számú intervallumra vonatkozóan. Egy nem kötelező paraméter, amely lehetővé teszi az összes konfiguráció futtatása egy kezdeti minimális számú időközök, elkerülve a képzés korai lemondási futtatja. Ha meg van adva, a szabályzat vonatkozik, amely nagyobb vagy egyenlő delay_evaluation evaluation_interval minden többszöröse.
 
 Azure Machine Learning a következő korai megszakítási házirendeket támogatja.
 
@@ -199,11 +199,11 @@ Azure Machine Learning a következő korai megszakítási házirendeket támogat
 
 A [Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) egy tartalékidő-tényező/Slack-mennyiség és a kiértékelési időköz alapján felmondási szabályzat. A szabályzat korai bármely fut, ahol az elsődleges metrika nem esik a megadott slack tényező / garanciát a legjobb teljesítményt nyújtó képzés slack összeg futtatása leáll. Az alábbi konfigurációs paramétereket tart:
 
-* `slack_factor` vagy `slack_amount`: a Slack-en garanciát a legjobb teljesítményt nyújtó képzés futtatása engedélyezett. `slack_factor` Adja meg a megengedett slack arány. `slack_amount` Adja meg a megengedett slack abszolút összeg, szélesség-magasság arányban helyett.
+* `slack_factor` vagy `slack_amount`: a tartalékidő a legjobban teljesítő képzések esetében engedélyezett. `slack_factor` megadja az engedélyezett tartalékidőt arányként. `slack_amount` a megengedett tartalékidőt abszolút értékként adja meg egy arány helyett.
 
-    Vegyük példaként egy Bandit házirend 10 időközönként alkalmazása folyamatban. Tegyük fel, hogy a legjobb végrehajtása 10 időközönként futtatása jelentett 0,8 elsődleges metrika az a célja, hogy az elsődleges metrika maximalizálása érdekében. Ha a házirend lett megadva a egy `slack_factor` képzést, fut, 0.2-es, amelynek ajánlott metrika időközönként 10-es nem éri el 0.66 (0,8 / (1 +`slack_factor`)) befejeződik. Ha ehelyett a házirendet az lett megadva egy `slack_amount` képzést, fut, 0.2-es, amelynek ajánlott metrika időközönként 10-es nem éri el a 0.6-os (0,8 - `slack_amount`) befejeződik.
-* `evaluation_interval`: a házirend (nem kötelező paraméter) alkalmazása gyakoriságát.
-* `delay_evaluation`: (nem kötelező paraméter) időközönként megadott számú első szabályzat-kiértékelés késlelteti.
+    Vegyük példaként egy Bandit házirend 10 időközönként alkalmazása folyamatban. Tegyük fel, hogy a legjobb végrehajtása 10 időközönként futtatása jelentett 0,8 elsődleges metrika az a célja, hogy az elsődleges metrika maximalizálása érdekében. Ha a házirendet a 0,2-es `slack_factor` értékkel adták meg, akkor minden olyan képzés fut, amelynek a 10. intervallumhoz tartozó legjobb mérőszáma kevesebb, mint 0,66 (0,8/(1 +`slack_factor`)). Ha helyette a szabályzatot a 0,2-es `slack_amount`, a betanítási folyamat, amelynek a 10. intervallumának legjobb mérőszáma kisebb, mint 0,6 (0,8-`slack_amount`), a rendszer leállítja.
+* `evaluation_interval`: a házirend alkalmazásának gyakorisága (opcionális paraméter).
+* `delay_evaluation`: az első szabályzat kiértékelését késlelteti a megadott számú intervallumra (opcionális paraméter).
 
 
 ```Python
@@ -216,8 +216,8 @@ Ebben a példában a korai lemondási házirend esetén is alkalmazva lesz minde
 ### <a name="median-stopping-policy"></a>Közepes leállításával házirend
 
 A [középérték leállítása](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) a futtatások által jelentett elsődleges metrikák futtatási átlagán alapuló korai megszakítási házirend. Ez a szabályzat átlagokat kiszámítja az összes betanítási futtatás során, és amelyek teljesítményét az rosszabb, mint az átlagokat középértékének futtatások befejeződik. Ez a szabályzat az alábbi konfigurációs paramétereket fogadja:
-* `evaluation_interval`: a házirend (nem kötelező paraméter) alkalmazása gyakoriságát.
-* `delay_evaluation`: (nem kötelező paraméter) időközönként megadott számú első szabályzat-kiértékelés késlelteti.
+* `evaluation_interval`: a házirend alkalmazásának gyakorisága (opcionális paraméter).
+* `delay_evaluation`: az első szabályzat kiértékelését késlelteti a megadott számú intervallumra (opcionális paraméter).
 
 
 ```Python
@@ -231,9 +231,9 @@ Ebben a példában a korai lemondási házirendet alkalmazza minden időközönk
 
 A [csonkítás kiválasztása](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) megszakítja a legalacsonyabb végrehajtású futtatások adott százalékát az egyes értékelési intervallumokban. Futtatások összehasonlítja az elsődleges metrikát a teljesítményük alapján, és a legalacsonyabb X % megszűnik. Az alábbi konfigurációs paramétereket tart:
 
-* `truncation_percentage`: a legalacsonyabb végrehajtása aránya fut, hogy minden egyes kiértékelési időköze fejeződik be. Adjon meg egy egész számot 1 és 99 között.
-* `evaluation_interval`: a házirend (nem kötelező paraméter) alkalmazása gyakoriságát.
-* `delay_evaluation`: (nem kötelező paraméter) időközönként megadott számú első szabályzat-kiértékelés késlelteti.
+* `truncation_percentage`: a legalacsonyabb végrehajtású futtatások százalékos aránya az egyes értékelési intervallumok leállításához. Adjon meg egy egész számot 1 és 99 között.
+* `evaluation_interval`: a házirend alkalmazásának gyakorisága (opcionális paraméter).
+* `delay_evaluation`: az első szabályzat kiértékelését késlelteti a megadott számú intervallumra (opcionális paraméter).
 
 
 ```Python
@@ -257,22 +257,22 @@ Ha nincs megadva házirend, a hiperparaméter hangolási szolgáltatás lehetőv
 
 ### <a name="picking-an-early-termination-policy"></a>Korai megszakítási szabályzat kiválasztása
 
-* Megtakarítás ígéret feladatok megszakítása nélkül biztosító konzervatív szabályzatot keres, ha a középérték leállítása szabályzat használhatja `evaluation_interval` 1 és `delay_evaluation` 5. Ezek a konzervatív beállításait, amely körülbelül 35 %-os 25 %-os megtakarítás adatvesztés nélkül képes biztosítani az elsődleges metrika (értékelési adatok alapján).
+* Ha olyan konzervatív szabályzatot keres, amely megtakarítást biztosít az ígéretes feladatok megszakítása nélkül, használhat egy középértékes leállítási szabályzatot `evaluation_interval` 1 és `delay_evaluation` 5 használatával. Ezek a konzervatív beállításait, amely körülbelül 35 %-os 25 %-os megtakarítás adatvesztés nélkül képes biztosítani az elsődleges metrika (értékelési adatok alapján).
 * Ha a korai felmondásban agresszívebb megtakarítást keres, akkor a Bandit-szabályzatot egy szigorúbb (kisebb) megengedett tartalékidő-vagy csonkolt kiválasztási szabályzattal is használhatja, amely nagyobb mennyiségű csonkítás százalékos arányt biztosít.
 
 ## <a name="allocate-resources"></a>Erőforrásokat
 
 Szabályozhatja a hiperparaméter finomhangolása kísérlet megadásával a betanítási futtatások maximális száma erőforrás költségkeretét.  Nem kötelezően megadhatja a hiperparaméter finomhangolása kísérlet az engedélyezett maximális időtartam.
 
-* `max_total_runs`: A betanítási Futtatás létrehozni maximális teljes száma. Felső határérték - lehet kevesebb fut le, például ha a hiperparaméter terület véges, és kevesebb mintákat. 1 és 1000 közötti számnak kell lennie.
-* `max_duration_minutes`: A maximális időtartam percben kifejezve a hiperparaméter finomhangolása kísérlet. A paraméter nem kötelező, és ha van ilyen, az ezen időtartam után szeretné futó futtatásokat automatikusan törlődnek.
+* `max_total_runs`: a létrehozandó betanítási futtatások maximális száma. Felső határérték - lehet kevesebb fut le, például ha a hiperparaméter terület véges, és kevesebb mintákat. 1 és 1000 közötti számnak kell lennie.
+* `max_duration_minutes`: a hiperparaméter-hangolási kísérlet maximális időtartama percben. A paraméter nem kötelező, és ha van ilyen, az ezen időtartam után szeretné futó futtatásokat automatikusan törlődnek.
 
 >[!NOTE] 
->Ha mindkét `max_total_runs` és `max_duration_minutes` meg van adva, a hiperparaméter finomhangolása kísérlet megszakítása, ha az első e két küszöbértékek elérésekor.
+>Ha a `max_total_runs` és a `max_duration_minutes` is meg van adva, a hiperparaméter hangolási kísérlet akkor leáll, amikor elérik az első két küszöbértéket.
 
 Emellett adja meg legfeljebb hány betanítási fut egyidejűleg a hiperparaméter finomhangolása keresési idejére.
 
-* `max_concurrent_runs`: Futtatások maximális száma egy adott időpontban egyidejűleg ipari környezetekben történő futtatását. Ha nincs megadva, az összes `max_total_runs` párhuzamosan elindul. Ha meg van adva, 1 és 100 közötti számnak kell lennie.
+* `max_concurrent_runs`: a futtatott futtatások maximális száma egy adott pillanatban. Ha nincs megadva, az összes `max_total_runs` párhuzamosan fog elindulni. Ha meg van adva, 1 és 100 közötti számnak kell lennie.
 
 >[!NOTE] 
 >Egyidejű futtatásainak számát a megadott számítási célkiszolgálón elérhető erőforrásokon engedi át. Ezért kell, hogy a számítási célnak legyen-e a kívánt egyidejűségi számára elérhető erőforrások.
@@ -288,7 +288,7 @@ Ez a kód úgy konfigurálja a hiperparaméter hangolási kísérletet, hogy leg
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
 
-[Konfigurálja a hiperparaméter hangolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) kísérletet a megadott hiperparaméter keresési területtel, a korai megszakítási házirenddel, az elsődleges metrikával és az erőforrás-elosztással a fenti fejezetekben. Továbbá adja meg egy `estimator` , amely a mintavételezett hiperparaméterek hívja. A `estimator` ismerteti a tanítási szkriptet futtatja, az erőforrások száma (egyszeres vagy többszörös-gpu), a feladat és a számítási célnak használatára. Mivel egyidejűségi esetében a hiperparaméter finomhangolása kísérlet engedi át az erőforrások, győződjön meg arról, hogy a számítási célnak megadott a `estimator` elegendő erőforrással rendelkezik a kívánt egyidejűségi számára. (Estimators további információkért lásd: [modelleket taníthat be hogyan](how-to-train-ml-models.md).)
+[Konfigurálja a hiperparaméter hangolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) kísérletet a megadott hiperparaméter keresési területtel, a korai megszakítási házirenddel, az elsődleges metrikával és az erőforrás-elosztással a fenti fejezetekben. Továbbá adjon meg egy `estimator`, amely a mintául szolgáló hiperparaméterek beállítása lesz meghívva. A `estimator` ismerteti a futtatott képzési szkriptet, az erőforrások/feladatok (egy vagy több GPU) és a használni kívánt számítási célt. Mivel a hiperparaméter-hangolási kísérletre vonatkozó Egyidejűség a rendelkezésre álló erőforrásokon van leképezve, győződjön meg arról, hogy a `estimator`ben megadott számítási cél elegendő erőforrással rendelkezik a kívánt egyidejűséghez. (További információ a becslések: [modellek betanítása](how-to-train-ml-models.md).)
 
 Adja meg a hiperparaméter finomhangolása kísérlet:
 
@@ -376,7 +376,7 @@ Ezenkívül vizuálisan azonosíthatja a teljesítmény és az egyes hiperparam�
 
 [![hiperparaméter hangolása párhuzamos koordinátákkal](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Az összes a hiperparaméter finomhangolása fut, valamint az Azure webes portálján jelenítheti meg. A kísérlet megtekintése a webportálon további információkért lásd: [nyomon követését kísérletek](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
+Az összes a hiperparaméter finomhangolása fut, valamint az Azure webes portálján jelenítheti meg. A kísérleteknek a webes portálon való megtekintésével kapcsolatos további információkért lásd: [a kísérletek nyomon követése](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ## <a name="find-the-best-model"></a>A legjobb modellt keresése
 
@@ -396,10 +396,10 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Minta notebook
 Tekintse meg a következő mappában található hiperparaméter-* jegyzetfüzeteket:
-* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [használat – azureml/képzés – mélyreható tanulás](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
-* [Egy kísérlet nyomon követése](how-to-track-experiments.md)
-* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+## <a name="next-steps"></a>További lépések
+* [Kísérlet nyomon követése](how-to-track-experiments.md)
+* [Betanított modell üzembe helyezése](how-to-deploy-and-where.md)

@@ -127,5 +127,5 @@ Ha elérhető, nyisson meg egy támogatási jegyet a következő információkka
 -   Az időzóna és az idő vagy az időkeret a hiba bekövetkezésekor
 -   Hegedűs nyomkövetései
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](what-is-single-sign-on.md)

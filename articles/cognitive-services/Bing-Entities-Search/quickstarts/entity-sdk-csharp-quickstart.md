@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for C# - Bing Entity Search'
+title: 'Gyors útmutató: entitások keresése a C# -Bing Entity Search SDK-val'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for C#.
+description: Ezzel a rövid útmutatóval megkeresheti az Bing Entity Search SDK- C#val rendelkező entitásokat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,29 +17,29 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323826"
 ---
-# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Send a search request with the Bing Entity Search SDK for C#
+# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Keresési kérelem küldése a Bing Entity Search SDK-valC#
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for C#. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch).
+Ezzel a rövid útmutatóval megkezdheti az entitások keresését C#a Bing Entity Search SDK-val. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)található.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-* The [Bing News Search SDK NuGet package](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Installing this package also installs the following:
+* A [BING News Search SDK NuGet csomagja](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). A csomag telepítése a következőket is telepíti:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-To add the Bing Entity Search SDK to your Visual Studio project, use the **Manage NuGet Packages** option from **Solution Explorer**, and add the `Microsoft.Azure.CognitiveServices.Search.EntitySearch` package.
+Ha hozzá szeretné adni a Bing Entity Search SDK-t a Visual Studio-projekthez, használja a **NuGet-csomagok kezelése** lehetőséget a **megoldáskezelő**, és adja hozzá a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomagot.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Create and initialize an application
+## <a name="create-and-initialize-an-application"></a>Alkalmazás létrehozása és inicializálása
 
-1. create a new C# console solution in Visual Studio. Then add the following into the main code file.
+1. hozzon létre C# egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a következőt a fő kódhoz.
 
     ```csharp
     using System;
@@ -50,29 +50,29 @@ To add the Bing Entity Search SDK to your Visual Studio project, use the **Manag
     using Newtonsoft.Json;
     ```
 
-## <a name="create-a-client-and-send-a-search-request"></a>Create a client and send a search request
+## <a name="create-a-client-and-send-a-search-request"></a>Ügyfél létrehozása és keresési kérelem küldése
 
-1. Create a new search client. Add your subscription key by creating a new `ApiKeyServiceClientCredentials`.
+1. Hozzon létre egy új keresési ügyfelet. Adja hozzá az előfizetési kulcsot egy új `ApiKeyServiceClientCredentials`létrehozásához.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. Use the client's `Entities.Search()` function to search for your query:
+1. A lekérdezés megkereséséhez használja az ügyfél `Entities.Search()` függvényét:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
     ```
 
-## <a name="get-and-print-an-entity-description"></a>Get and print an entity description
+## <a name="get-and-print-an-entity-description"></a>Entitás leírásának beolvasása és nyomtatása
 
-1. If the API returned search results, get the main entity from `entityData`.
+1. Ha az API keresési eredményeket adott vissza, szerezze be a fő entitást `entityData`.
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();
     ```
 
-2. Print the description of the main entity 
+2. A fő entitás leírásának nyomtatása 
 
     ```csharp
     Console.WriteLine(mainEntity.Description);
@@ -83,4 +83,4 @@ To add the Bing Entity Search SDK to your Visual Studio project, use the **Manag
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Mi a Bing Entity Search API?](../overview.md )

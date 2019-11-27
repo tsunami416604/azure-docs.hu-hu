@@ -1,6 +1,6 @@
 ---
-title: Author policies for array properties on resources
-description: Learn to work with array parameters and array language expressions, evaluate the [*] alias, and to append elements with Azure Policy definition rules.
+title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
+description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
@@ -10,23 +10,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463502"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Author policies for array properties on Azure resources
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
-Azure Resource Manager properties are commonly defined as strings and booleans. When a one-to-many relationship exists, complex properties are instead defined as arrays. In Azure Policy, arrays are used in several different ways:
+A Azure Resource Manager tulajdonságok általában karakterláncként és logikai értékként vannak definiálva. Ha egy-a-többhöz kapcsolat létezik, az összetett tulajdonságok tömbként vannak definiálva. Azure Policy a tömbök számos különböző módon használatosak:
 
-- The type of a [definition parameter](../concepts/definition-structure.md#parameters), to provide multiple options
-- Part of a [policy rule](../concepts/definition-structure.md#policy-rule) using the conditions **in** or **notIn**
-- Part of a policy rule that evaluates the [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) to evaluate specific scenarios such as **None**, **Any**, or **All**
-- In the [append effect](../concepts/effects.md#append) to replace or add to an existing array
+- Egy [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa több beállítás megadásához
+- Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **notIn** feltételek használatával
+- Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) , hogy kiértékelje az egyes forgatókönyveket, például a **none**, **az any**vagy **az All** értéket
+- Meglévő tömb lecseréléséhez vagy hozzáadásához a [hozzáfűzési effektusban](../concepts/effects.md#append)
 
-This article covers each use by Azure Policy and provides several example definitions.
+Ez a cikk a Azure Policy egyes használatát ismerteti, és számos példát tartalmaz.
 
-## <a name="parameter-arrays"></a>Parameter arrays
+## <a name="parameter-arrays"></a>Paraméterek tömbök
 
-### <a name="define-a-parameter-array"></a>Define a parameter array
+### <a name="define-a-parameter-array"></a>Paraméter-tömb definiálása
 
-Defining a parameter as an array allows the policy flexibility when more than one value is needed.
-This policy definition allows any single location for the parameter **allowedLocations** and defaults to _eastus2_:
+A paraméter tömbként való meghatározása lehetővé teszi a szabályzat rugalmasságát, ha egynél több értékre van szükség.
+Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** paraméter egyetlen helye legyen, és az alapértelmezett érték a _eastus2_:
 
 ```json
 "parameters": {
@@ -42,9 +42,9 @@ This policy definition allows any single location for the parameter **allowedLoc
 }
 ```
 
-As **type** was _string_, only one value can be set when assigning the policy. If this policy is assigned, resources in scope are only allowed within a single Azure region. Most policies definitions need to allow for a list of approved options, such as allowing _eastus2_, _eastus_, and _westus2_.
+A **Type** _karakterlánc_volt, csak egy érték állítható be a szabályzat kiosztásakor. Ha ez a szabályzat hozzá van rendelve, a hatókörben lévő erőforrások csak egyetlen Azure-régión belül engedélyezettek. A legtöbb szabályzat-definíciónak lehetővé kell tennie a jóváhagyott beállítások listáját, például a _eastus2_, a _eastus_és a _westus2_engedélyezését.
 
-To create the policy definition to allow multiple options, use the _array_ **type**. The same policy can be rewritten as follows:
+Ha a házirend-definíciót több beállítás engedélyezéséhez szeretné létrehozni, használja a _tömb_ **típusát**. Ugyanezt a szabályzatot a következőképpen lehet újraírni:
 
 ```json
 "parameters": {
@@ -67,17 +67,17 @@ To create the policy definition to allow multiple options, use the _array_ **typ
 ```
 
 > [!NOTE]
-> Once a policy definition is saved, the **type** property on a parameter can't be changed.
+> A házirend-definíció mentése után a paraméter **Type** tulajdonsága nem módosítható.
 
-This new parameter definition takes more than one value during policy assignment. With the array property **allowedValues** defined, the values available during assignment are further limited to the predefined list of choices. Use of **allowedValues** is optional.
+Ez az új paraméter-definíció egynél több értéket vesz igénybe a szabályzat-hozzárendelés során. Ha a tömb tulajdonsága **allowedValues** van definiálva, a hozzárendelés során elérhető értékek tovább korlátozódnak az előre definiált lehetőségek listájára. A **allowedValues** használata nem kötelező.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Pass values to a parameter array during assignment
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Értékek átadása egy paraméter-tömbnek a hozzárendelés során
 
-When assigning the policy through the Azure portal, a parameter of **type** _array_ is displayed as a single textbox. The hint says "Use ; to separate values. (e.g. London;New York)". To pass the allowed location values of _eastus2_, _eastus_, and _westus2_ to the parameter, use the following string:
+Ha a házirendet a Azure Portalon keresztül rendeli hozzá, a _tömb_ **típusú** paraméterek egyetlen szövegmezőként jelennek meg. A tipp a "use; az értékek elkülönítéséhez. (pl.: London; New York) ". Ha át szeretné adni a _eastus2_, a _eastus_és a _westus2_ engedélyezett tárolási értékeit a paraméternek, használja a következő karakterláncot:
 
 `eastus2;eastus;westus2`
 
-The format for the parameter value is different when using Azure CLI, Azure PowerShell, or the REST API. The values are passed through a JSON string that also includes the name of the parameter.
+A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vagy a REST API használatakor. Az értékeket egy JSON-karakterlánc adja át, amely tartalmazza a paraméter nevét is.
 
 ```json
 {
@@ -91,18 +91,18 @@ The format for the parameter value is different when using Azure CLI, Azure Powe
 }
 ```
 
-To use this string with each SDK, use the following commands:
+Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következő parancsokat:
 
-- Azure CLI: Command [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with parameter **params**
-- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with parameter **PolicyParameter**
-- REST API: In the _PUT_ [create](/rest/api/resources/policyassignments/create) operation as part of the Request Body as the value of the **properties.parameters** property
+- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **-paraméterekkel**
+- Azure PowerShell: parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
+- REST API: a _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
 
-## <a name="policy-rules-and-arrays"></a>Policy rules and arrays
+## <a name="policy-rules-and-arrays"></a>Házirend-szabályok és tömbök
 
-### <a name="array-conditions"></a>Array conditions
+### <a name="array-conditions"></a>Tömb feltételei
 
-The policy rule [conditions](../concepts/definition-structure.md#conditions) that an _array_
-**type** of parameter may be used with is limited to `in` and `notIn`. Take the following policy definition with condition `equals` as an example:
+A házirend-szabály azon [feltételei](../concepts/definition-structure.md#conditions) , amelyekben a _tömb_
+a paraméter **típusa** használható, `in` és `notIn`ra korlátozódik. A következő házirend-definíciót a feltétel `equals` példaként vegye fel:
 
 ```json
 {
@@ -130,20 +130,20 @@ The policy rule [conditions](../concepts/definition-structure.md#conditions) tha
 }
 ```
 
-Attempting to create this policy definition through the Azure portal leads to an error such as this error message:
+A házirend-definíciónak a Azure Portalon keresztüli létrehozására tett kísérlet a következő hibaüzenetet eredményezi:
 
-- "The policy '{GUID}' could not be parameterized because of validation errors. Please check if policy parameters are properly defined. The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'."
+- "A (z) {GUID} szabályzatot érvényesítési hibák miatt nem lehetett paraméterbe állítani. Ellenőrizze, hogy a házirend-paraméterek megfelelően vannak-e megadva. A belső kivétel "a nyelv kifejezésének" [parameters (' allowedLocations ')] típusának "Array" típusúnak kell lennie, a várt típus a "string". "
 
-The expected **type** of condition `equals` is _string_. Since **allowedLocations** is defined as **type** _array_, the policy engine evaluates the language expression and throws the error. With the `in` and `notIn` condition, the policy engine expects the **type** _array_ in the language expression. To resolve this error message, change `equals` to either `in` or `notIn`.
+A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és `notIn` feltétellel a irányelvmodul a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához módosítsa `equals` `in` vagy `notIn`re.
 
-### <a name="evaluating-the--alias"></a>Evaluating the [*] alias
+### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-Aliases that have **[\*]** attached to their name indicate the **type** is an _array_. Instead of evaluating the value of the entire array, **[\*]** makes it possible to evaluate each element of the array. There are three scenarios this per item evaluation is useful in: None, Any, and All.
+A nevükhöz csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelésének három forgatókönyve hasznos a következőkben: none, any és ALL.
 
-The policy engine triggers the **effect** in **then** only when the **if** rule evaluates as true.
-This fact is important to understand in context of the way **[\*]** evaluates each individual element of the array.
+A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
+Ezt a tényt fontos megérteni, hogy a **[\*]** hogyan értékeli ki a tömb egyes elemeit.
 
-The example policy rule for the scenario table below:
+Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 
 ```json
 "policyRule": {
@@ -162,7 +162,7 @@ The example policy rule for the scenario table below:
 }
 ```
 
-The **ipRules** array is as follows for the scenario table below:
+A **ipRules** tömb az alábbi forgatókönyv-táblázat esetében a következő:
 
 ```json
 "ipRules": [
@@ -177,35 +177,35 @@ The **ipRules** array is as follows for the scenario table below:
 ]
 ```
 
-For each condition example below, replace `<field>` with `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+Az alábbi példában szereplő összes feltételnél cserélje le a `<field>`t a `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ra.
 
-The following outcomes are the result of the combination of the condition and the example policy rule and array of existing values above:
+A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
 |Állapot |Eredmény |Magyarázat |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_ and the effect is triggered. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_. The logical operator evaluates as false (**not** _true_), so the effect isn't triggered. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nincs |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Házirend hatása |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Házirend hatása |A tömb elemeinek értéke false (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1), így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Házirend hatása |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nincs |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nincs |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nincs |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
 
-## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
+## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 
-The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **[\*]** alias or not.
+A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** egy **[\*]** alias-e, vagy sem.
 
-- When not a **[\*]** alias, append replaces the entire array with the **value** property
-- When a **[\*]** alias, append adds the **value** property to the existing array or creates the new array
+- Ha nem a **[\*]** aliast, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
+- **[\*]** alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt.
 
-For more information, see the [append examples](../concepts/effects.md#append-examples).
+További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Understand how to [programmatically create policies](programmatically-create.md).
-- Learn how to [remediate non-compliant resources](remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

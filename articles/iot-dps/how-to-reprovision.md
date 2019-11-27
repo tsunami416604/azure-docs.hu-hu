@@ -1,6 +1,6 @@
 ---
-title: Reprovision devices in Azure IoT Hub Device Provisioning Service
-description: Learn how to reprovision devices with your device provisioning service instance, and why you might need to do this.
+title: Eszközök újraépítése az Azure IoT Hub Device Provisioning Serviceban
+description: Megtudhatja, hogyan hozhatja létre az eszközöket az eszköz kiépítési szolgáltatásának példányával, és miért lehet erre szükség.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -14,86 +14,86 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229708"
 ---
-# <a name="how-to-reprovision-devices"></a>How to reprovision devices
+# <a name="how-to-reprovision-devices"></a>Eszközök újraépítése
 
-During the lifecycle of an IoT solution, it is common to move devices between IoT hubs. The reasons for this move may include the following scenarios:
+Egy IoT-megoldás életciklusa során gyakori az eszközök áthelyezése a IoT-hubok között. Az áthelyezés okai a következők lehetnek:
 
-* **Geolocation**: As a device moves between locations, network latency is improved by having the device migrated to an IoT hub closer to each location.
+* Földrajzi **hely: mivel**az eszköz a helyek között mozog, a hálózati késést úgy javítja ki, hogy az eszközt az egyes helyekhez közelebb helyezi át egy IoT hubhoz.
 
-* **Multi-tenancy**: A device could be used within the same IoT solution but, reassigned or leased to a new customer, or customer site. This new customer may be serviced using a different IoT hub.
+* **Több-bérlő**: egy eszköz felhasználható ugyanabban a IoT-megoldásban, de új ügyfélhez vagy vásárlói helyhez rendelhető hozzá vagy bérletbe. Ezt az új ügyfelet egy másik IoT hub használatával lehet kiszolgálni.
 
-* **Solution change**: A device could be moved into a new or updated IoT solution. This reassignment may require that the device communicate with a new IoT hub that is connected to other backend components. 
+* **Megoldás módosítása**: egy eszköz áthelyezhető egy új vagy frissített IoT-megoldásba. Ez az ismételt hozzárendelés megkövetelheti, hogy az eszköz kommunikáljon egy olyan új IoT hubhoz, amely más háttér-összetevőkhöz van csatlakoztatva. 
 
-* **Quarantine**: Similar to a solution change. A device that is malfunctioning, compromised, or out-of-date may be reassigned to an IoT hub where all it can do is update and get back in compliance. Once the device is functioning properly, it is then migrated back to its main hub.
+* **Karanténba helyezés**: hasonló a megoldás módosításához. Olyan eszköz, amely hibásan működik, sérült vagy elavult, újra hozzárendelhető egy IoT hubhoz, ahol az összes művelet frissíthető, és visszatérhet a megfelelőséghez. Ha az eszköz megfelelően működik, a rendszer visszatelepíti a főhubhoz.
 
-For more a more detailed overview of reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md).
+Az újraépítéssel kapcsolatos részletesebb áttekintésért tekintse meg az eszközök újraépítésével kapcsolatos [fogalmakat IoT hub](concepts-device-reprovision.md).
 
 
-## <a name="configure-the-enrollment-allocation-policy"></a>Configure the enrollment allocation policy
+## <a name="configure-the-enrollment-allocation-policy"></a>A regisztráció kiosztási szabályzatának konfigurálása
 
-The allocation policy determines how the devices associated with the enrollment will be allocated, or assigned, to an IoT hub once reprovisioned.
+A foglalási házirend határozza meg, hogy a rendszer hogyan rendeli hozzá a beléptetéshez társított eszközöket a IoT hubhoz az újbóli kiépítése után.
 
-The following steps configure the allocation policy for a device's enrollment:
+Az alábbi lépéseket követve konfigurálhatja egy eszköz regisztrálásának foglalási szabályzatát:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your Device Provisioning Service instance.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Device kiépítési szolgáltatás példányához.
 
-2. Click **Manage enrollments**, and click the enrollment group or individual enrollment that you want to configure for reprovisioning. 
+2. Kattintson a **regisztrációk kezelése**lehetőségre, majd kattintson arra a beléptetési csoportra vagy egyéni regisztrációra, amelyet be szeretne állítani az újbóli kiépítéshez. 
 
-3. Under **Select how you want to assign devices to hubs**, select one of the following allocation policies:
+3. Válassza ki az alábbi kiosztási szabályzatok egyikét a **válassza ki, hogyan szeretné hozzárendelni az eszközöket**a központokhoz:
 
-    * **Lowest latency**: This policy assigns devices to the linked IoT Hub that will result in the lowest latency communications between device and IoT Hub. This option enables the device to communicate with the closest IoT hub based on location. 
+    * **Legalacsonyabb késés**: Ez a szabályzat olyan eszközöket rendel hozzá a csatolt IoT hubhoz, amelyek az eszköz és a IoT hub közötti legalacsonyabb késésű kommunikációt eredményezik. Ez a beállítás lehetővé teszi, hogy az eszköz a legközelebbi IoT-hubhoz kommunikáljon a hely alapján. 
     
-    * **Evenly weighted distribution**: This policy distributes devices across the linked IoT Hubs based on the allocation weight assigned to each linked IoT hub. This policy allows you to load balance devices across a group of linked hubs based on the allocation weights set on those hubs. If you are provisioning devices to only one IoT Hub, we recommend this setting. Ez az alapértelmezett beállítás. 
+    * **Egyenletesen súlyozott eloszlás**: Ez a szabályzat az egyes csatolt IoT-hubhoz rendelt foglalási súlyozás alapján osztja el az eszközöket a társított IoT-hubok között. Ez a szabályzat lehetővé teszi, hogy az adott hubokon beállított foglalási súlyok alapján terheléselosztást biztosítson az eszközök számára a társított hubok csoportján belül. Ha csak egy IoT Hub szeretné kiépíteni az eszközöket, ezt a beállítást javasoljuk. Ez az alapértelmezett beállítás. 
     
-    * **Static configuration**: This policy requires a desired IoT Hub be listed in the enrollment entry for a device to be provisioned. This policy allows you to designate a single specific IoT hub that you want to assign devices to.
+    * **Statikus konfiguráció**: ehhez a Szabályzathoz szükség van egy kívánt IoT hub a kiépíthető eszköz beléptetési bejegyzésében szereplő listára. Ez a szabályzat lehetővé teszi egy adott IoT hub kijelölését, amelyhez eszközöket szeretne hozzárendelni.
 
-4. Under **Select the IoT hubs this group can be assigned to**, select the linked IoT hubs that you want included with your allocation policy. Optionally, add a new linked Iot hub using the **Link a new IoT Hub** button.
+4. A **válassza ki a IoT hubok ezt a csoportot hozzá lehet rendelni**, majd válassza ki azokat a társított IoT hubokat, amelyeket a foglalási szabályzatba kíván foglalni. Opcionálisan hozzáadhat egy új csatolt IOT hubot az **új IoT hub csatolása** gomb használatával.
 
-    With the **Lowest latency** allocation policy, the hubs you select will be included in the latency evaluation to determine the closest hub for device assignment.
+    A **legalacsonyabb késési** kiosztási szabályzattal a kiválasztott hubok a késés kiértékelésében lesznek felszámítva, hogy meghatározzák az eszköz hozzárendelésének legközelebbi elosztóját.
 
-    With the **Evenly weighted distribution** allocation policy, devices will be load balanced across the hubs you select based on their configured allocation weights and their current device load.
+    Az **egyenletesen súlyozott terjesztési** kiosztási szabályzattal az eszközök terheléselosztása a konfigurált hubokon történik a kiválasztott kiosztási súlyok és a jelenlegi eszközök terhelése alapján.
 
-    With the **Static configuration** allocation policy, select the IoT hub you want devices assigned to.
+    A **statikus konfiguráció** kiosztási házirendjével válassza ki azt az IoT hub-t, amelyhez hozzá szeretné rendelni az eszközöket.
 
-4. Click **Save**, or proceed to the next section to set the reprovisioning policy.
+4. Kattintson a **Save (Mentés**) gombra, vagy folytassa a következő szakasszal a kiépítési házirend beállításához.
 
-    ![Select enrollment allocation policy](./media/how-to-reprovision/enrollment-allocation-policy.png)
-
-
-
-## <a name="set-the-reprovisioning-policy"></a>Set the reprovisioning policy
-
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your Device Provisioning Service instance.
-
-2. Click **Manage enrollments**, and click the enrollment group or individual enrollment that you want to configure for reprovisioning.
-
-3. Under **Select how you want device data to be handled on re-provision to a different IoT hub**, choose one of the following reprovisioning policies:
-
-    * **Re-provision and migrate data**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request. Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. All device state information from that initial IoT hub will be migrated over to the new IoT hub. During migration, the device's status will be reported as **Assigning**
-
-    * **Re-provision and reset to initial config**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request. Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The initial configuration data that the provisioning service instance received when the device was provisioned is provided to the new IoT hub. During migration, the device's status will be reported as **Assigning**.
-
-4. Click **Save** to enable the reprovisioning of the device based on your changes.
-
-    ![Select enrollment allocation policy](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Regisztráció kiosztási szabályzatának kiválasztása](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
-## <a name="send-a-provisioning-request-from-the-device"></a>Send a provisioning request from the device
+## <a name="set-the-reprovisioning-policy"></a>Az újraépítési szabályzat beállítása
 
-In order for devices to be reprovisioned based on the configuration changes made in the preceding sections, these devices must request reprovisioning. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Device kiépítési szolgáltatás példányához.
 
-How often a device submits a provisioning request depends on the scenario. However, it is advised to program your devices to send a provisioning request to a provisioning service instance on reboot, and support a [method](../iot-hub/iot-hub-devguide-direct-methods.md) to manually trigger provisioning on demand. Provisioning could also be triggered by setting a [desired property](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example). 
+2. Kattintson a **regisztrációk kezelése**lehetőségre, majd kattintson arra a beléptetési csoportra vagy egyéni regisztrációra, amelyet be szeretne állítani az újbóli kiépítéshez.
 
-The reprovisioning policy on an enrollment entry determines how the device provisioning service instance handles these provisioning requests, and if device state data should be migrated during reprovisioning. The same policies are available for individual enrollments and enrollment groups:
+3. Az **adja meg, hogyan kívánja kezelni az eszköz adatait egy másik IoT-hubhoz**, válassza az alábbi újraépítési házirendek egyikét:
 
-For example code of sending provisioning requests from a device during a boot sequence, see [Auto-provisioning a simulated device](quick-create-simulated-device.md).
+    * Az **adat ismételt kiépítése és áttelepítése**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új létesítési kérelmet küldenek be. A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A rendszer az adott kezdeti IoT hub összes Eszközállapot-adatát áttelepíti az új IoT hubhoz. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként** fogja jelenteni.
+
+    * A **kezdeti konfiguráció újbóli létrehozása és alaphelyzetbe állítása**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új létesítési kérést küldenek. A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A kiépítési szolgáltatás példánya által az eszköz kiosztásakor fogadott kezdeti konfigurációs információk az új IoT hub számára. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
+
+4. A **Mentés** gombra kattintva engedélyezheti az eszköz újraépítését a módosítások alapján.
+
+    ![Regisztráció kiosztási szabályzatának kiválasztása](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
-## <a name="next-steps"></a>Következő lépések
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+## <a name="send-a-provisioning-request-from-the-device"></a>Kiépítési kérelem küldése az eszközről
+
+Ahhoz, hogy az eszközök újra kiálljanak az előző szakaszban megadott konfigurációs változások alapján, ezeknek az eszközöknek újra kell telepíteniük a kiépítést. 
+
+Az, hogy az eszköz milyen gyakran küldjön üzembe helyezési kérést, a forgatókönyvtől függ. Javasoljuk azonban, hogy az eszközök kiépítési kérést küldjön a kiépítési szolgáltatási példánynak az újraindításkor, és [támogassa az igény](../iot-hub/iot-hub-devguide-direct-methods.md) szerinti kiépítés manuális indítását. A kiépítés a [kívánt tulajdonság](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)beállításával is elindítható. 
+
+A beléptetési bejegyzés újraépítési szabályzata határozza meg, hogy az eszköz kiépítési szolgáltatási példánya hogyan kezeli ezeket a kiépítési kérelmeket, és ha az eszköz állapotának áttelepítését át kell telepíteni az Újraépítés során. Ugyanazok a szabályzatok érhetők el az egyes regisztrációk és beléptetési csoportok esetében:
+
+Például a kiépítési kérelmek egy eszközről történő küldésének kódja a rendszerindítási folyamat során: [szimulált eszköz automatikus kiépítés](quick-create-simulated-device.md).
+
+
+## <a name="next-steps"></a>További lépések
+
+- További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
+- További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
 
 
 

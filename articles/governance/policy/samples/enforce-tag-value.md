@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce tag and its value
-description: This sample policy definition requires a tag name and value defined in a parameter on each Azure resource.
+title: A minta érvényesítése címke és annak értéke
+description: A példában szereplő házirend-definícióhoz az egyes Azure-erőforrások paraméterében definiált címke neve és értéke szükséges.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: d405b5cbe2bdb7b96c74d665171714d1890ef624
@@ -10,9 +10,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463334"
 ---
-# <a name="sample---enforce-tag-and-its-value"></a>Sample - Enforce tag and its value
+# <a name="sample---enforce-tag-and-its-value"></a>A minta érvényesítése címke és annak értéke
 
-Ez a szabályzat megkövetel egy bizonyos címkenevet és -értéket. Meg kell adnia a kényszerítendő címkenevet és -értéket.
+Ez a szabályzat megkövetel egy bizonyos címkenevet és -értéket. Ön adja meg a kikényszerítendő címkenevet és -értéket.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -45,7 +45,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'enforce-tag-value' --display-name 'Enforce t
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-tag-value"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

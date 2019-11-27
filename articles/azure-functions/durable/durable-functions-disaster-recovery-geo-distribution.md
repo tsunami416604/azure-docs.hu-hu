@@ -1,6 +1,6 @@
 ---
-title: Disaster recovery and geo-distribution in Durable Functions - Azure
-description: Learn about disaster recovery and geo-distribution in Durable Functions.
+title: Vész-helyreállítás és geo-eloszlás a Durable Functionsban – Azure
+description: Ismerje meg a vész-helyreállítást és a Geo-eloszlást Durable Functionsban.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
@@ -16,73 +16,73 @@ ms.locfileid: "74232938"
 
 ## <a name="overview"></a>Áttekintés
 
-In Durable Functions, all state is persisted in Azure Storage. A [task hub](durable-functions-task-hubs.md) is a logical container for Azure Storage resources that are used for orchestrations. Orchestrator and activity functions can only interact with each other when they belong to the same task hub.
-The described scenarios propose deployment options to increase availability and minimize downtime during disaster recovery activities.
+A Durable Functionsban az összes állapot az Azure Storage-ban marad. A [Task hub](durable-functions-task-hubs.md) olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
+Az ismertetett forgatókönyvek javaslatot tesznek a rendelkezésre állás növelésére és az állásidő minimalizálására a vész-helyreállítási tevékenységek során.
 
-It's important to notice that these scenarios are based on Active-Passive configurations, since they are guided by the usage of Azure Storage. This pattern consists of deploying a backup (passive) function app to a different region. Traffic Manager will monitor the primary (active) function app for availability. It will fail over to the backup function app if the primary fails. For more information,  see [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)'s [Priority Traffic-Routing Method.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Fontos megjegyezni, hogy ezek a forgatókönyvek az aktív-passzív konfigurációkon alapulnak, mivel ezeket az Azure Storage használata vezérli. Ez a minta egy biztonsági mentési (passzív) függvény alkalmazásának egy másik régióba való telepítését jelenti. A Traffic Manager az elsődleges (aktív) function alkalmazást fogja figyelni a rendelkezésre álláshoz. Ha az elsődleges művelet meghiúsul, a rendszer átadja a feladatokat a Backup Function alkalmazásnak. További információ: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [prioritású forgalom – útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >
-> - The proposed Active-Passive configuration ensures that a client is always able to trigger new orchestrations via HTTP. However, as a consequence of having two function apps sharing the same storage, background processing will be distributed between both of them, competing for messages on the same queues. This configuration incurs in added egress costs for the secondary function app.
-> - The underlying storage account and task hub are created in the primary region, and are shared by both function apps.
-> - All function apps that are redundantly deployed, must share the same function access keys in the case of being activated via HTTP. The Functions Runtime exposes a [management API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) that enables consumers to programmatically add, delete, and update function keys.
+> - A javasolt aktív-passzív konfiguráció biztosítja, hogy az ügyfél mindig képes legyen új, HTTP-n keresztül kiváltani a folyamatokat. Ha azonban két Function apps azonos tárterületet használ, a háttérben történő feldolgozás a kettő között oszlik meg egymás között, és az ugyanazon a várólistán lévő üzenetek versengenek egymással. Ez a konfiguráció a másodlagos függvény alkalmazásának kimenő költségeinek kilépését eredményezi.
+> - Az alapul szolgáló Storage-fiók és a Task hub az elsődleges régióban jön létre, és mindkét Function-alkalmazásban meg van osztva.
+> - A redundánsan telepített összes Function apps esetében ugyanazt a függvény-hozzáférési kulcsokat kell megosztania, ha HTTP-n keresztül aktiválva van. A functions futtatókörnyezet olyan [felügyeleti API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) -t tesz elérhetővé, amely lehetővé teszi a felhasználóknak a funkcióbillentyűk programozott hozzáadását, törlését és frissítését.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenario 1 - Load balanced compute with shared storage
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>1\. eset – elosztott terhelésű számítás megosztott tárolóval
 
-If the compute infrastructure in Azure fails, the function app may become unavailable. To minimize the possibility of such downtime, this scenario uses two function apps deployed to different regions.
-Traffic Manager is configured to detect problems in the primary function app and automatically redirect traffic to the function app in the secondary region. This function app shares the same Azure Storage account and Task Hub. Therefore, the state of the function apps isn't lost and work can resume normally. Once health is restored to the primary region, Azure Traffic Manager will start routing requests to that function app automatically.
+Ha az Azure-beli számítási infrastruktúra meghibásodik, előfordulhat, hogy a Function alkalmazás elérhetetlenné válik. Ha csökkenteni szeretné az ilyen állásidők lehetőségét, ez a forgatókönyv két, különböző régiókban üzembe helyezett függvény alkalmazást használ.
+Traffic Manager úgy van konfigurálva, hogy észlelje a problémákat az elsődleges Function alkalmazásban, és automatikusan átirányítsa a forgalmat a másodlagos régióban található Function alkalmazásba. Ez a Function-alkalmazás ugyanazt az Azure Storage-fiókot és-feladatot osztja meg. Ezért a Function apps állapota nem vész el, és a munka a szokásos módon folytatódik. Ha az állapotot visszaállítja az elsődleges régióba, az Azure Traffic Manager automatikusan elindítja az útválasztási kérelmeket az adott függvény alkalmazásnak.
 
-![Diagram showing scenario 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Az 1. forgatókönyvet ábrázoló diagram](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-There are several benefits when using this deployment scenario:
+Ennek a telepítési forgatókönyvnek a használata számos előnnyel jár:
 
-- If the compute infrastructure fails, work can resume in the fail over region without state loss.
-- Traffic Manager takes care of the automatic fail over to the healthy function app automatically.
-- Traffic Manager automatically re-establishes traffic to the primary function app after the outage has been corrected.
+- Ha a számítási infrastruktúra meghibásodik, a feladat az állami adatvesztés nélkül folytathatja a feladatátvételt a régióban.
+- A Traffic Manager automatikusan átveszi az automatikus feladatátvételt az egészséges Function alkalmazásba.
+- Traffic Manager automatikusan újra létrehozza a forgalmat az elsődleges Function alkalmazásnak a leállás kijavítása után.
 
-However,  using this scenario consider:
+Ebben a forgatókönyvben azonban a következőket érdemes figyelembe venni:
 
-- If the function app is deployed using a dedicated App Service plan, replicating the compute infrastructure in the fail over datacenter increases costs.
-- This scenario covers outages at the compute infrastructure, but the storage account continues to be the single point of failure for the function App. If there is a Storage outage, the application suffers a downtime.
-- If the function app is failed over, there will be increased latency since it will access its storage account across regions.
-- Accessing the storage service from a different region where it's located incurs in higher cost due to network egress traffic.
-- This scenario depends on Traffic Manager. Considering [how Traffic Manager works](../../traffic-manager/traffic-manager-how-it-works.md), it may be some time until a client application that consumes a Durable Function needs to query again the function app address from Traffic Manager.
+- Ha a Function alkalmazást dedikált App Service-csomag használatával telepíti, a számítási infrastruktúra replikálása a feladatátvételi adatközpontban növeli a költségeket.
+- Ez a forgatókönyv a számítási infrastruktúra leállásait fedi le, de a Storage-fiók továbbra is a Function alkalmazás egyetlen meghibásodási pontja. Ha van tárolási leállás, az alkalmazás leállást szenved.
+- Ha a Function alkalmazás feladatátvételt végez, a rendszer megnöveli a késést, mivel a több régióban is hozzáfér a Storage-fiókjához.
+- A Storage szolgáltatást egy másik régióból érheti el, ahol a hálózati forgalom miatt magasabb költségekkel jár.
+- Ez a forgatókönyv a Traffic Managertól függ. Tekintettel arra, [hogy Traffic Manager működik](../../traffic-manager/traffic-manager-how-it-works.md)-e, lehet, hogy egy olyan ügyfélalkalmazás, amely nem használ tartós függvényt, újra le kell kérdezni a Function app-címeket a Traffic Managerról.
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenario 2 - Load balanced compute with regional storage
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>2\. forgatókönyv – elosztott terhelésű számítás regionális tárterülettel
 
-The preceding scenario covers only the case of failure in the compute infrastructure. If the storage service fails, it will result in an outage of the function app.
-To ensure continuous operation of the durable functions, this scenario uses a local storage account on each region to which the function apps are deployed.
+Az előző forgatókönyv csak a számítási infrastruktúra meghibásodásának esetét tárgyalja. Ha a tárolási szolgáltatás meghibásodik, akkor a függvény alkalmazás leállás miatt leáll.
+A tartós függvények folyamatos működésének biztosítása érdekében ez a forgatókönyv egy helyi Storage-fiókot használ minden olyan régióban, amelyhez a Function apps telepítve van.
 
-![Diagram showing scenario 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![A 2. forgatókönyvet bemutató diagram](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-This approach adds improvements on the previous scenario:
+Ez a megközelítés javítja az előző forgatókönyvet:
 
-- If the function app fails, Traffic Manager takes care of failing over to the secondary region. However, because the function app relies on its own storage account, the durable functions continue to work.
-- During a fail over, there is no additional latency in the fail over region, since the function app and the storage account are co-located.
-- Failure of the storage layer will cause failures in the durable functions, which, in turn, will trigger a redirection to the fail over region. Again, since the function app and storage are isolated per region, the durable functions will continue to work.
+- Ha a Function alkalmazás meghibásodik, Traffic Manager gondoskodik a másodlagos régióba való feladatátvételről. Mivel azonban a Function alkalmazás a saját Storage-fiókjára támaszkodik, a tartós függvények továbbra is működőképesek maradnak.
+- A feladatátvétel során nincs további késés a feladatátvételi régióban, mivel a Function alkalmazás és a Storage-fiók közös helyen található.
+- A tárolási réteg meghibásodása hibát okoz a tartós függvényeknél, ami viszont egy átirányítást indít a feladatátvételi régióba. Mivel a Function app és a Storage régiónként elkülönített, a tartós függvények továbbra is működni fognak.
 
-Important considerations for this scenario:
+A forgatókönyvhöz kapcsolódó fontos szempontok:
 
-- If the function app is deployed using a dedicated AppService plan, replicating the compute infrastructure in the fail over datacenter increases costs.
-- Current state isn't failed over, which implies that executing and checkpointed functions will fail. It's up to the client application to retry/restart the work.
+- Ha a Function alkalmazás egy dedikált AppService-csomag használatával van üzembe helyezve, a számítási infrastruktúra replikálása a feladatátvételi adatközpontban növeli a költségeket.
+- A jelenlegi állapot nem halad át, ami azt jelenti, hogy a végrehajtás és az ellenőrzőponttal nem rendelkező függvények sikertelenek lesznek. Az ügyfélalkalmazás a feladat újrapróbálkozására/újraindítására használható.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenario 3 - Load balanced compute with GRS shared storage
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>3\. forgatókönyv – elosztott terhelésű számítás GRS megosztott tárolóval
 
-This scenario is a modification over the first scenario, implementing a shared storage account. The main difference that the storage account is created with geo-replication enabled.
-Functionally, this scenario provides the same advantages as Scenario 1, but it enables additional data recovery advantages:
+Ez a forgatókönyv az első forgatókönyv módosítása, egy megosztott Storage-fiók implementálása. A fő különbség, hogy a Storage-fiók a Geo-replikáció engedélyezve beállítással jön létre.
+Funkcionálisan ez a forgatókönyv ugyanazokat az előnyöket biztosítja, mint az 1. forgatókönyv, de lehetővé teszi a további adat-helyreállítási előnyöket:
 
-- Geo-redundant storage (GRS) and Read-access GRS (RA-GRS) maximize availability for your storage account.
-- If there is a region outage of the storage service, one of the possibilities is that the datacenter operations determine that storage must be failed over to the secondary region. In this case, storage account access will be redirected transparently to the geo-replicated copy of the storage account, without user intervention.
-- In this case, state of the durable functions will be preserved up to the last replication of the storage account, which occurs every few minutes.
+- A Geo-redundáns tárolás (GRS) és az olvasási hozzáférésű GRS (RA-GRS) teljes körű rendelkezésre állást biztosít a Storage-fiók számára.
+- Ha a tárolási szolgáltatás a régió meghibásodása miatt leáll, az egyik lehetőség az, hogy az adatközpont műveletei azt határozzák meg, hogy a tárolónak feladatátvételt kell végrehajtania a másodlagos régióba. Ebben az esetben a Storage-fiók hozzáférését a rendszer a felhasználói beavatkozás nélkül átirányítja a Storage-fiók geo-replikált példányára.
+- Ebben az esetben a tartós függvények állapotát a Storage-fiók utolsó replikálásával fogja megőrizni, ami néhány percenként történik.
 
-As with the other scenarios, there are important considerations:
+A többi forgatókönyvhöz hasonlóan fontos szempontokat is figyelembe kell venni:
 
-- Fail over to the replica is done by datacenter operators and it may take some time. Until that time, the function app will suffer an outage.
-- There is an increased cost for using geo-replicated storage accounts.
-- GRS occurs asynchronously. Some of the latest transactions might be lost because of the latency of the replication process.
+- A replika feladatátvételét az adatközpont-kezelők végzik, és ez eltarthat egy ideig. A Function alkalmazás addig nem fog kiesést szenvedni.
+- A földrajzilag replikált Storage-fiókok használatának megnövelt díja.
+- A GRS aszinkron módon történik. A replikálási folyamat késése miatt előfordulhat, hogy a legújabb tranzakciók némelyike elvész.
 
-![Diagram showing scenario 3.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
+![A 3. forgatókönyvet bemutató diagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-You can read more about [Designing Highly Available Applications using RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+További információk a [magasan elérhető alkalmazások a ra-GRS használatával történő tervezéséről](../../storage/common/storage-designing-ha-apps-with-ragrs.md)

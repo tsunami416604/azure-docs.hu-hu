@@ -78,7 +78,7 @@ A **üzemeltetési terv konfigurálása** párbeszédpanelen használja a követ
 |-|-|-|
 |App Service-csomag| MySharingServicePlan | Az App Service-csomag neve. |
 | Hely | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Free | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
+| Méret | Ingyenes | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
 
 Kattintson az **OK** gombra.
 

@@ -169,7 +169,7 @@ A riasztási művelet erőforrásaihoz tartozó tulajdonságokat az alábbi táb
 | `type` | Igen | A művelet típusa.  **Riasztás a** riasztási műveletekhez. |
 | `name` | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
 | `description` | Nem | A riasztás opcionális leírása. |
-| `severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
+| `severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **kritikus**<br>**Figyelmeztetés**<br>**tájékoztató**
 
 #### <a name="threshold"></a>Küszöbérték
 Ezt a szakaszt kötelező megadni. Meghatározza a riasztási küszöbérték tulajdonságait.

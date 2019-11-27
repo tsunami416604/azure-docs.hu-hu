@@ -1,22 +1,17 @@
 ---
-title: Mi az Azure Container Instances?
+title: Kiszolgáló nélküli tárolók az Azure-ban
 description: A Azure Container Instances szolgáltatás az elkülönített tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját kínálja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű Orchestrator alkalmaznia.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325745"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533551"
 ---
-# <a name="what-is-azure-container-instances"></a>Mi az Azure Container Instances?
+# <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
 Egyre többen használják a tárolókat felhőalapú alkalmazások csomagolásához, üzembe helyezéséhez és felügyeletéhez. Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kezelnie vagy magasabb szintű szolgáltatást kellene alkalmaznia.
 
@@ -53,8 +48,8 @@ Egyes funkciók jelenleg csak Linux-tárolók:
 * Több tároló tárolócsoportonként
 * Kötet csatlakoztatása ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo típusú](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
 * [Erőforrás-használati metrikák](container-instances-monitor.md) Azure monitor
-* [Virtuális hálózat központi telepítése](container-instances-vnet.md) előnézet
-* [GPU-erőforrások](container-instances-gpu.md) előnézet
+* [Virtuális hálózat üzembe helyezése](container-instances-vnet.md) (előzetes verzió)
+* [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
 
 A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Windows alapképek](container-instances-faq.md#what-windows-base-os-images-are-supported)alapján kell használni.
 
@@ -72,7 +67,7 @@ Ez a jelenleg előzetes verzióban lévő Azure Container Instances-funkció leh
 > [!IMPORTANT]
 > A Azure Container Instances bizonyos funkciói előzetes verzióban érhetők el, és bizonyos [korlátozások érvényesek](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A funkciók bizonyos aspektusai megváltozhatnak az általánosan elérhetővé válás előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a rövid útmutatónk alapján:
 

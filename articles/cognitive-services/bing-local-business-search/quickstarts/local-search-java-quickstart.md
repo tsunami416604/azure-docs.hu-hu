@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API using Java - Bing Local Business Search
+title: Rövid útmutató – lekérdezés küldése az API-nak a Java-Bing helyi üzleti keresés használatával
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,23 +17,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326749"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Quickstart: Send a query to the Bing Local Business Search API using Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Java, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Ez a példában szereplő alkalmazás helyi válaszüzeneteket kap az API-ból a keresési lekérdezés `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. You will need the access key provided when you activate your free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásához megadott hozzáférési kulcsra.  Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-This example application gets local response data from the query for a *hotel in Bellevue*.
+Ez a példa az alkalmazás helyi válaszüzeneteket olvas be a *Bellevue egyik szállodájának*lekérdezése alapján.
 
-## <a name="create-the-request"></a>Create the request 
+## <a name="create-the-request"></a>A kérelem létrehozása 
 
-The following code creates a `WebRequest`, sets the access key header, and adds a query string for "hotel in Bellevue".  Ezután elküldi a kérelmet, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejlécét, és hozzáadja a "Hotel in Bellevue" lekérdezési karakterláncot.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```
     // construct URL of search request (endpoint + query string)
@@ -49,9 +49,9 @@ The following code creates a `WebRequest`, sets the access key header, and adds 
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ```
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
-The Bing Local Business Search API returns results from the Bing search engine.
+A Bing helyi üzleti keresési API a Bing keresőmotor eredményeit adja vissza.
 1. Töltse le vagy telepítse a gson-kódtárat.
 2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
@@ -165,6 +165,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- [Local Business Search quickstart](local-quickstart.md)
-- [Local Business Search Node quickstart](local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](local-search-python-quickstart.md)
+- [Helyi üzleti keresés – rövid útmutató](local-quickstart.md)
+- [Helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)
+- [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce tag and value on resource groups
-description: This sample policy definition requires a tag and a value defined in a parameter on a resource group.
+title: Minta – a címke és az érték alkalmazása az erőforráscsoportok esetében
+description: Ez a minta házirend-definíció egy erőforráscsoport paraméterében definiált címkét és értéket igényel.
 ms.date: 01/31/2019
 ms.topic: sample
 ms.openlocfilehash: d04c48e2633e1a23990723c91a66cf8ec219b160
@@ -10,9 +10,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463619"
 ---
-# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Sample - Enforce tag and its value on resource groups
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Minta – kikényszerítés címkéje és értéke az erőforráscsoportok esetében
 
-Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Meg kell adnia a kényszerítendő címkenevet és -értéket.
+Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Ön adja meg a kötelező címkenevet és -értéket.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -46,10 +46,10 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Név |Type (Típus) |Mező |Leírás |
+|Name (Név) |Típus |Mező |Leírás |
 |---|---|---|---|
-|tagName |Sztring |tags |A címke neve, például costCenter|
-|tagValue |Sztring |tags |A címke értéke, például headquarter|
+|tagName |Sztring |címkét |A címke neve, például costCenter|
+|tagValue |Sztring |címkét |A címke értéke, például headquarter|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -69,8 +69,8 @@ Ebben a példaparaméterben a _tagName_ a **costCenter**, a _tagValue_ pedig a *
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Deploy the Policy sample to Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
-[![Deploy the Policy sample to Azure Gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![telepítse a házirend-mintát az Azure-](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json) ba
+[![telepítse a házirend-mintát az Azure gov-](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json) ba
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -110,17 +110,17 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
+| [Új – AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Egyetlen erőforráscsoportot kér le. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
+| [Új – AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Eltávolít egy létező Azure Policy-definíciót. |
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)

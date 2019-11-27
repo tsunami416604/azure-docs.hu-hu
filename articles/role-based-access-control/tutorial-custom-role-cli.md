@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a custom role for Azure resources using Azure CLI
-description: Get started creating a custom role for Azure resources using Azure CLI in this tutorial.
+title: Oktatóanyag – egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával
+description: Első lépésként hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az oktatóanyagban az Azure CLI használatával.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419595"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Tutorial: Create a custom role for Azure resources using Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával
 
-If the [built-in roles for Azure resources](built-in-roles.md) don't meet the specific needs of your organization, you can create your own custom roles. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. The custom role allows the user to view everything in the management plane of a subscription and also open support tickets.
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) or [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 
@@ -61,7 +61,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
 
 1. Nyissa meg a ReaderSupportRole.json fájlt egy szövegszerkesztőben, és adja hozzá a következő JSON-t.
 
-    For information about the different properties, see [Custom roles for Azure resources](custom-roles.md).
+    További információ a különböző tulajdonságokkal kapcsolatban: [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md).
 
     ```json
     {
@@ -266,7 +266,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
     az role definition delete --name "Reader Support Tickets"
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md)
