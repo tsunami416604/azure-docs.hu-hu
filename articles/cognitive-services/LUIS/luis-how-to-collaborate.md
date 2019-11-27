@@ -20,7 +20,7 @@ ms.locfileid: "74533803"
 ---
 # <a name="add-contributors-to-your-app"></a>Közreműködők hozzáadása az alkalmazáshoz
 
-Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. A közreműködők módosíthatja a modell betanítását és tegye közzé az alkalmazást. 
+Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. Ezek a közreműködők módosíthatják a modellt, betanítják és közzétehetik az alkalmazást. 
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -49,15 +49,15 @@ Az alábbi eljárás az összes olyan felhasználóra vonatkozik, akik nem lette
 
 Nem telepítette át, ha a LUIS authoring Experience nem kötődik egy authoring-erőforráshoz a LUIS **-portál Manage-> Azure-erőforrások** lapján.
 
-Egy alkalmazás egyetlen Szerző, a tulajdonos, rendelkezik, de sok közreműködők is. Ahhoz, hogy a LUIS-alkalmazás szerkesztéséhez közreműködő, hozzá kell adnia az e-mailt a közreműködők listája a LUIS-portál eléréséhez használnak. Hozzáadás után az alkalmazás pedig a LUIS-portálon jeleníti meg.
+Egy alkalmazás egyetlen szerzővel, a tulajdonossal, de több közreműködővel is rendelkezhet. Ha lehetővé szeretné tenni a közreműködők számára a LUIS-alkalmazás szerkesztését, hozzá kell adnia az általuk használt e-mailt a LUIS-portálhoz a közreműködők listájához való hozzáféréshez. A Hozzáadás után az alkalmazás a LUIS-portálon jelenik meg.
 
 1. A jobb felső menüben válassza a **kezelés** lehetőséget, majd a bal oldali menüben válassza a **közreműködők** lehetőséget.
 
 1. Válassza a **munkatárs hozzáadása** lehetőséget az eszköztáron.
 
-1. Adja meg az e-mail-cím, a közreműködő segítségével jelentkezzen be a LUIS-portálon.
+1. Adja meg azt az e-mail-címet, amelyet a közreműködő használ a LUIS portálra való bejelentkezéshez.
 
-    ![Adja meg a közreműködő e-mail-címet](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![Közreműködő e-mail-címének hozzáadása](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
 ### <a name="users-with-multiple-emails"></a>Több e-mailekkel rendelkező felhasználók 
@@ -66,26 +66,26 @@ Ha a LUIS-alkalmazáshoz közreműködőket/közreműködőket ad hozzá, pontos
 
 <a name="owner-and-collaborators"></a>
 
-### <a name="azure-active-directory-resources"></a>Az Azure Active Directory-erőforrások
+### <a name="azure-active-directory-resources"></a>Erőforrások Azure Active Directory
 
-Ha [Azure Active Directoryt](https://docs.microsoft.com/azure/active-directory/) (Azure ad) használ a szervezetben, Language UNDERSTANDING (Luis) engedélyre van szüksége a felhasználók hozzáférésére vonatkozó információkhoz, amikor a Luis-t szeretnék használni. A LUIS igénylő erőforrások minimálisak. 
+Ha [Azure Active Directoryt](https://docs.microsoft.com/azure/active-directory/) (Azure ad) használ a szervezetben, Language UNDERSTANDING (Luis) engedélyre van szüksége a felhasználók hozzáférésére vonatkozó információkhoz, amikor a Luis-t szeretnék használni. A LUIS által igényelt erőforrások minimálisak. 
 
-Amikor egy olyan fiókkal, amely rendelkezik rendszergazdai jóváhagyás, vagy nincs szükség rendszergazdai jóváhagyás, például a rendszergazdai jóváhagyást bejelentkezés jelenik meg a részletes leírása:
+A részletes leírást akkor tekintheti meg, ha olyan fiókkal próbál regisztrálni, amely rendszergazdai jogosultságokkal rendelkezik, vagy nem igényel rendszergazdai jogosultságot, például a rendszergazdai beleegyezett:
 
-* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását. Ez LUIS engedélyt ad az alapszintű profilokra vonatkozó adatok olvasására, például felhasználói azonosító, e-mail, név
-* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást. A felhasználó hozzáférési jogkivonatának frissítéséhez engedély szükséges.
+* Lehetővé teszi, hogy bejelentkezzen az alkalmazásba a szervezeti fiókjával, és hagyja, hogy az alkalmazás beolvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazás beolvassa az alapszintű vállalati adatokat. Ez LUIS engedélyt ad az alapszintű profilokra vonatkozó adatok olvasására, például felhasználói azonosító, e-mail, név
+* Lehetővé teszi az alkalmazás számára, hogy megtekintse és frissítse az adatait, még akkor is, ha jelenleg nem használja az alkalmazást. A felhasználó hozzáférési jogkivonatának frissítéséhez engedély szükséges.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Az Azure Active Directory-bérlői felhasználó
+### <a name="azure-active-directory-tenant-user"></a>Bérlői felhasználó Azure Active Directory
 
-A LUIS a standard szintű Azure Active Directory (Azure AD) jóváhagyási folyamatot használ. 
+A LUIS standard Azure Active Directory (Azure AD) engedélyezési folyamatot használ. 
 
-A bérlői rendszergazda közvetlenül a felhasználó, aki a LUIS használatát az Azure AD-ben biztosított hozzáférést kell működnie. 
+A bérlői rendszergazdának közvetlenül kell működnie azzal a felhasználóval, akinek hozzáférést kell biztosítania a LUIS használatához az Azure AD-ben. 
 
-* A felhasználó először jelentkezik be a LUIS, és megtekinti a rendszergazdai jóváhagyást igénylő felugró párbeszédpanel. A felhasználó felveszi a kapcsolatot a bérlői rendszergazda a folytatás előtt. 
-* A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással. Ha a bérlői rendszergazda nem tud bejelentkezni a LUIS-be, a [rendszergazda hozzáférhet a](https://account.activedirectory.windowsazure.com/r#/applications) luishoz, amely az alábbi képernyőfelvételen látható. Figyelje meg, hogy a lista a `LUIS`nevet tartalmazó elemekre van szűrve.
+* Először a felhasználó bejelentkezik a LUIS-be, és a rendszergazdai jóváhagyást igénylő előugró párbeszédpanelt látja. A folytatás előtt a felhasználó kapcsolatba lép a bérlői rendszergazdával. 
+* Másodszor, a bérlői rendszergazda bejelentkezik a LUIS-ba, és megtekint egy beleegyező folyamat előugró párbeszédpanelt. Ez az a párbeszédpanel, amely számára a rendszergazdának engedélyt kell adnia a felhasználó számára. Ha a rendszergazda elfogadja az engedélyt, a felhasználó továbbra is elvégezheti a LUIS-t. Ha a bérlői rendszergazda nem tud bejelentkezni a LUIS-be, a [rendszergazda hozzáférhet a](https://account.activedirectory.windowsazure.com/r#/applications) luishoz, amely az alábbi képernyőfelvételen látható. Figyelje meg, hogy a lista a `LUIS`nevet tartalmazó elemekre van szűrve.
 
-![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Azure Active Directory-engedély az alkalmazás webhelyén](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Ha a bérlői rendszergazda csak bizonyos felhasználók számára szeretne LUIS-t használni, néhány lehetséges megoldás létezik:
 * Adja meg a "rendszergazdai beleegyezett" (beleegyezett az Azure AD összes felhasználójára), de az "igen" értékre állítsa a "felhasználói hozzárendelés szükséges" értéket a vállalati alkalmazás tulajdonságai területen, végül pedig csak a kívánt felhasználókat rendeli hozzá az alkalmazáshoz. Ezzel a módszerrel a rendszergazda továbbra is "rendszergazdai beleegyezett" az alkalmazáshoz, de megadhatja azokat a felhasználókat, akik hozzáférhetnek hozzá.

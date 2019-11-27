@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74539087"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Első lépések: Munkafolyamat futtatása a Microsoft Genomics szolgáltatásban
 
 Ez a rövid útmutató bemutatja, hogyan tölthet be bementi adatokat az Azure Blob Storage-ba, illetve hogyan futtathat munkafolyamatokat a Microsoft Genomics szolgáltatással. A Microsoft Genomics egy méretezhető, biztonságos másodlagos elemzési szolgáltatás, amely képes a genom gyors feldolgozására, és nyersolvasásokból kiindulva rendezett beolvasásokat és változóhívásokat hoz létre. 
 
@@ -38,10 +38,10 @@ Konfigurálja Genomics-fiókját az alábbi információkkal az előző képen l
 
  |**Beállítás**          |  **Ajánlott érték**  | **Mező leírása** |
  |:-------------       |:-------------         |:----------            |
- |Előfizetést         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
+ |Előfizetés         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
  |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
  |Fióknév         | MyGenomicsAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
- |Hely                   | USA nyugati régiója, 2.                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
+ |Földrajzi egység                   | USA 2. nyugati régiója                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
 
 
 
@@ -118,14 +118,14 @@ Konfigurálja Storage-fiókját az alábbi információkkal az előző képen l�
 
  |**Beállítás**          |  **Ajánlott érték**  | **Mező leírása** |
  |:-------------------------       |:-------------         |:----------            |
- |Előfizetést         | Az Azure-előfizetése |Az előfizetései részleteivel kapcsolatban lásd: [Előfizetések](https://account.azure.com/Subscriptions) |      
+ |Előfizetés         | Az Azure-előfizetése |Az előfizetései részleteivel kapcsolatban lásd: [Előfizetések](https://account.azure.com/Subscriptions) |      
  |Erőforráscsoport       | MyResourceGroup       |  A Genomics-fiókéval megegyező erőforráscsoportot is választhatja. Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
  |Storage account name (Tárfiók neve)         | MyStorageAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
- |Hely                  | USA nyugati régiója, 2.                  | A kimenő forgalmi díjak, illetve a késés mértékének csökkentése érdekében használja ugyanazt a helyet, ahol a Genomics-fiókja található.  | 
+ |Földrajzi egység                  | USA 2. nyugati régiója                  | A kimenő forgalmi díjak, illetve a késés mértékének csökkentése érdekében használja ugyanazt a helyet, ahol a Genomics-fiókja található.  | 
  |Teljesítmény                  | Standard                   | Az alapértelmezett beállítás a standard. A standard és a prémium szintű tárfiókokkal kapcsolatos további információ: [A Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
- |Fióktípus       | Blob Storage       |  A le- és feltöltés a blobtárolók esetében 2–5-ször gyorsabb az általános célú fiókokhoz képest. |
+ |Fióktípus       | Blobtároló       |  A le- és feltöltés a blobtárolók esetében 2–5-ször gyorsabb az általános célú fiókokhoz képest. |
  |Replikáció                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
- |Hozzáférési szint                  | Gyakori                   | A Gyakori hozzáférés a tárfiókban tárolt objektumok gyakoribb elérésére utal.    |
+ |Elérési szint                  | Gyakori                   | A Gyakori hozzáférés a tárfiókban tárolt objektumok gyakoribb elérésére utal.    |
 
 
 Ezután kattintson a `Review + create` elemre a Storage-fiók létrehozásához. A felső menüsávon kattintson az Értesítések parancsra az üzembehelyezési folyamat megfigyeléséhez, ahogy a Genomics-fiók létrehozása során is tette. 
@@ -155,7 +155,7 @@ Nyissa meg a config.txt fájlt, amelyet a Genomics-fiókból töltött le. A meg
 
 Ha a GATK4-t szeretné futtatni, állítsa a `process_name` paramétert `gatk4`re.
 
-Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (`-emitRefConfidence` amely egyenértékű a GATK 3. x-es és a GATK 4. x-ben `emit-ref-confidence`), adja hozzá a `emit_ref_confidence` paramétert a `config.txt`hoz, és állítsa be `gvcf`, ahogy az a fenti ábrán is látható.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a `config.txt` fájlból, vagy állítsa a `emit_ref_confidence` paramétert `none`értékre. 
+Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF-kimenetet `-emitRefConfidence` (a GATK 3. x és a GATK 4. x verzióban `emit-ref-confidence`), adja hozzá a `emit_ref_confidence` paramétert a `config.txt`hoz, és állítsa be `gvcf`re, ahogy az a fenti ábrán látható.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a `config.txt` fájlból, vagy állítsa a `emit_ref_confidence` paramétert `none`értékre. 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Munkafolyamat elküldése a Microsoft Genomics szolgáltatásba a Microsoft Genomics-kliensen keresztül
 

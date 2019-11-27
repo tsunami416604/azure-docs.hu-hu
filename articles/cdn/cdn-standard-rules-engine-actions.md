@@ -38,7 +38,7 @@ Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabál
 
 #### <a name="additional-fields"></a>További mezők
 
-Nap | Óra | perc | másodperc
+Nap | óra | perc | másodperc
 -----|-------|---------|--------
 Int | Int | Int | Int 
 
@@ -61,10 +61,10 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak k�
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Műveletek | HTTP-fejléc neve | Value (Díj)
 -------|------------------|------
 Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
-Írja felül | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
+Felülírja | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a kérelemből. | Sztring
 
 ### <a name="modify-response-header"></a>Válasz fejlécének módosítása
@@ -73,10 +73,10 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Műveletek | HTTP-fejléc neve | Value (Díj)
 -------|------------------|------
 Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
-Írja felül | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
+Felülírja | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a válaszból. | Sztring
 
 ### <a name="url-redirect"></a>URL-átirányítás
@@ -87,12 +87,12 @@ Ezzel a művelettel átirányíthatja az ügyfeleket egy új URL-címre.
 
 Mező | Leírás 
 ------|------------
-Típus | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
-Protokoll | Egyeztetési kérelem, HTTP, HTTPS.
+Type (Típus) | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
+Protocol (Protokoll) | Egyeztetési kérelem, HTTP, HTTPS.
 Gazdanév | Válassza ki annak az állomásnak a nevét, amelyre át szeretné irányítani a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
 Útvonal | Adja meg az átirányításhoz használandó elérési utat. Hagyja üresen a bejövő elérési út megőrzését.  
 Lekérdezési karakterlánc | Adja meg az átirányítás során használt lekérdezési karakterláncot. Hagyja üresen a bejövő lekérdezési karakterlánc megőrzését. 
-Fragment | Adja meg az átirányítás során használandó kódrészletet. Hagyja üresen a bejövő töredék megőrzése érdekében. 
+Töredék | Adja meg az átirányítás során használandó kódrészletet. Hagyja üresen a bejövő töredék megőrzése érdekében. 
 
 Kifejezetten ajánlott abszolút URL-címet használni. Egy relatív URL-cím használatával átirányíthatja Azure CDN URL-címeket egy érvénytelen elérési útra. 
 

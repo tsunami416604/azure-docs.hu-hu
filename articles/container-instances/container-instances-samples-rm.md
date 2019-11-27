@@ -34,7 +34,7 @@ Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#
 | **Azure-erőforrások** ||
 | [Azure Storage-fiók és-fájlmegosztás létrehozása][az-files] | Az Azure CLI-t használja egy tároló példányban egy Storage-fiók és egy Azure Files-megosztás létrehozásához.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének számos lehetősége van:
 
@@ -42,7 +42,7 @@ Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének szám
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure Portalra][deploy-portal]
 
 [REST API][deploy-rest]
 

@@ -35,7 +35,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 A **kvóta több régió esetében is igényelhető** egyetlen támogatási esettel. A részletekért tekintse meg az alábbi 10. lépést. 
 
 
-1. https://portal.azure.comválassza a **Súgó + támogatás**lehetőséget.
+1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
 
    ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -83,7 +83,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 A **kvóta több régió esetében is igényelhető** egyetlen támogatási esettel. A részletekért tekintse meg az alábbi 9. lépést. 
 
-1.  https://portal.azure.comválassza az **előfizetések**lehetőséget.
+1.  https://portal.azure.com válassza az **előfizetések**lehetőséget.
 
  ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 

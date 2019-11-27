@@ -31,7 +31,7 @@ Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, 
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -88,21 +88,21 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU|Processzormagok|Memory (Memória)|Tárolás|
+|SKU (Cikkszám)|Processzormagok|Memória|Adattárolás|
 |--|--|--|--|
 |EP1|1|3.5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Térségek
 
 Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott régiói.
 
-|Régió| Windows | Linux |
+|Region (Régió)| Windows | Linux |
 |--| -- | -- |
 |Ausztrália középső régiója| ✔<sup>1</sup> | |
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
-|Kelet-Ausztrália| ✔ | |
+|Ausztrália keleti régiója| ✔ | |
 |Délkelet-Ausztrália | ✔ | ✔ |
 |Dél-Brazília| ✔<sup>2</sup> |  |
 |Közép-Kanada| ✔ |  |
@@ -119,12 +119,12 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |USA déli középső régiója| ✔ |  |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔ |
-|Az Egyesült Királyság déli régiója| ✔ | |
-|Az Egyesült Királyság nyugati régiója| ✔ |  |
+|Egyesült Királyság déli régiója| ✔ | |
+|Egyesült Királyság nyugati régiója| ✔ |  |
 |Nyugat-Európa| ✔ | ✔ |
 |Nyugat-India| ✔ |  |
 |USA nyugati régiója| ✔ | ✔ |
-|USA nyugati régiója, 2.| ✔ |  |
+|USA 2. nyugati régiója| ✔ |  |
 
 <sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  
 <sup>2</sup> A maximális felskálázás 60 példányra korlátozódik.

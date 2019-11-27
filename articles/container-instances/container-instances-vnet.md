@@ -63,7 +63,7 @@ A virtuális hálózat határozza meg azt a címtartományt, amelyben egy vagy t
 
 ### <a name="subnet-delegated"></a>Alhálózat (delegált)
 
-Alhálózatok, külön címterek használható a virtuális hálózat szegmentáljon az Azure-erőforrások bennük. Létrehoz egy vagy több alhálózatot egy virtuális hálózaton belül.
+Az alhálózatok a virtuális hálózatot különálló, a bennük található Azure-erőforrások által használható címekre osztják. Létrehoz egy vagy több alhálózatot egy virtuális hálózaton belül.
 
 A tárolók csoportjaihoz használt alhálózat csak tároló csoportokat tartalmazhat. Amikor először telepít egy tároló csoportot egy alhálózatra, az Azure delegálja az alhálózatot Azure Container Instances. A delegálás után az alhálózat csak a tároló csoportok esetében használható. Ha a tárolói csoportokon kívül más erőforrásokat is telepít egy delegált alhálózatra, a művelet sikertelen lesz.
 
@@ -77,7 +77,7 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 
 ![Virtuális hálózaton belüli tároló-csoportok][aci-vnet-01]
 
-## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
+## <a name="deployment-scenarios"></a>Üzembe helyezési helyzetek
 
 Az [az Container Create][az-container-create] paranccsal telepíthet tároló csoportokat egy új virtuális hálózatra, és engedélyezheti az Azure számára a szükséges hálózati erőforrások létrehozását, vagy üzembe helyezését egy meglévő virtuális hálózaton. 
 

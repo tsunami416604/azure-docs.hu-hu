@@ -50,7 +50,7 @@ Akár a tartomány, akár post-vagy valós idejű, az Azure számos fejlett és 
 
 A hívási központ bármely megoldásában a legkeresettebb funkció a [beszéd – szöveg](speech-to-text.md) . Mivel az alsóbb rétegbeli elemzési folyamatok többsége az átadott szövegre támaszkodik, a Word-hibák aránya (_wer_) rendkívül fontos. A Call Center átiratának egyik fő kihívása a Call Centerben elterjedt zaj (például a háttérben megjelenő más ügynökök), a különböző nyelvi területi beállítások és dialektusok, valamint a tényleges telefonos jel alacsony minősége. A WER szorosan összefügg azzal, hogy az akusztikai és nyelvi modellek hogyan vannak betanítva egy adott területi beállításhoz, ezért fontos a modell testreszabásának lehetősége a területi beállításra. A legújabb, egységes 4-es verziójú 4. x modellek az átírás pontosságát és késését jelentik. Több tízezer akusztikus adatmennyiséggel és több milliárd lexikális adattal van kiképezve, a piacon a legpontosabb modellek a Call Center adatainak átírása.
 
-### <a name="sentiment"></a>Hangulat
+### <a name="sentiment"></a>Vélemény
 
 Annak mérése, hogy az ügyfél jó tapasztalattal rendelkezik-e a Speech Analytics egyik legfontosabb területén, ha alkalmazva van a Call Center területére. A [Batch-átírási API](batch-transcription.md) -ban a vélemények elemzését is kimondjuk. Összeállíthatja a hívási átirat részeként kapott értékek halmazát, hogy meghatározza az ügynökök és az ügyfél hívásának hangulatát.
 
@@ -62,7 +62,7 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 
 Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](translation.md) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
 
-### <a name="text-to-speech"></a>Szövegfelolvasás
+### <a name="text-to-speech"></a>Text to Speech
 
 A [szöveg és a beszéd](text-to-speech.md) egy másik fontos része az ügyfelekkel kommunikáló robotok megvalósításának. A tipikus elérési út az, hogy az ügyfél beszél, a hangja szövegbe kerül, a szöveget pedig a szándékok alapján elemezzük, a rendszer a felismert szándék alapján szintetizálja a választ, majd egy adategységet az ügyfélnek vagy egy szintetizált hangválasztó létrehozott. Természetesen mindeznek gyorsan kell történnie – ezért az alacsony késés a rendszerek sikeres sikerének fontos eleme.
 
@@ -70,11 +70,11 @@ A végpontok közötti késés jelentősen alacsony az olyan különböző techn
 
 Az új hangok is megkülönböztetni az emberi hangokat. A hangjukat a robotjának egyedi személyiségét is felhasználhatja.
 
-### <a name="search"></a>Keresés
+### <a name="search"></a>Search
 
 Az elemzések egy másik része az olyan interakciók azonosítása, amelyekben egy adott esemény vagy tapasztalat történt. Ez általában két módszer egyikével történik. egy alkalmi keresés, ahol a felhasználó egyszerűen csak egy kifejezést és a rendszer válaszait, vagy egy strukturált lekérdezést, amelyben egy elemző olyan logikai utasításokat hozhat létre, amelyek azonosítják a hívást, majd minden egyes hívás indexelhető az adott lekérdezések alapján. Jó keresési példa a mindennapos megfelelőségi nyilatkozat, amely szerint a rendszer a felhívást minőségi célokra rögzíti... ". Számos vállalat szeretné biztosítani, hogy az ügynökök a hívás tényleges rögzítése előtt biztosítsák az ügyfeleknek ezt a jogi nyilatkozatot. A legtöbb elemzési rendszer képes a lekérdezési/keresési algoritmusok által észlelt viselkedések trendjeire, és ez a Trends jelentéskészítés végső soron az analitikai rendszerek legfontosabb funkciói közé tartozik. A [kognitív szolgáltatások címtárában](https://azure.microsoft.com/services/cognitive-services/directory/search/) a végpontok közötti megoldás jelentősen fokozható az indexelési és keresési képességekkel.
 
-### <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+### <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
 Ez a terület az egyik nagyobb kihívást jelentő elemzési alkalmazás, amely az AI és a gépi tanulás alkalmazásából származik. Ebben az esetben az elsődleges forgatókönyv az ügyfél szándékának következtetése. Miért hívja meg az ügyfelet? Mi az ügyfél problémája? Miért adta meg az ügyfél negatív felhasználói élményt? A [text Analytics szolgáltatás](https://azure.microsoft.com/services/cognitive-services/text-analytics/) számos elemzést biztosít a mezőkből, így gyorsan frissítheti a teljes körű megoldást a fontos kulcsszavak vagy kifejezések kinyeréséhez.
 
@@ -125,7 +125,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
-|                | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, amely egy egyszerű `.txt` fájl. |
+|                | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos a testreszabott kifejezések, például a terméknév vagy a betűszók kezelésére. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, amely egy egyszerű `.txt` fájl. |
 | Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Az egyéni hangbetűkészletek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez csak kis mennyiségű adat szükséges. Minél több, az Ön által megadott információ, annál természetesebb és emberi – például a hangbetűkészletek is megszólalnak. |
 
 ## <a name="sample-code"></a>Mintakód

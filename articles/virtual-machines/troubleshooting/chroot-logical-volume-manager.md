@@ -190,7 +190,7 @@ Futtassa a **LVS** parancsot annak ellenőrzéséhez, hogy mely **LVS** érhető
 
 Kilépés a **kromát** -környezetből a szükséges **lv** -vel
 
-![Speciális](./media/chroot-logical-volume-manager/advanced.png)
+![Extra szintű](./media/chroot-logical-volume-manager/advanced.png)
 
 Most futtassa ismét a **kromát** -környezetet
 
@@ -198,11 +198,11 @@ Most futtassa ismét a **kromát** -környezetet
 
 Minden LVs csatlakoztatott partícióként kell látni
 
-![Speciális](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Extra szintű](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 A telepített **kernel** lekérdezése
 
-![Speciális](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Extra szintű](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 Ha szükséges, frissítse a **kernel**
 ![Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

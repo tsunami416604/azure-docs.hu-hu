@@ -46,7 +46,7 @@ Az Azure FarmBeats üzemelő példánya az alábbi felsorolt erőforrásokat hoz
 |9  |       Tárfiók     |  Adatközpont/gyorssegéd        |
 |10  |    Logikai alkalmazás        |     Adatközpont      |
 |11  |    API-kapcsolatok        |     Adatközpont      |
-|12|      App Service-ben      |  Adatközpont/gyorssegéd       |
+|12|      App Service      |  Adatközpont/gyorssegéd       |
 |13 |    App Service-csomag        |     Adatközpont/gyorssegéd      |
 |14 |Azure Maps fiók     |Accelerator    |
 |15 |       Time Series Insights      |  Adatközpont     |
@@ -72,7 +72,7 @@ Megjelenik a Használati feltételek lap. Tekintse át a standard piactér haszn
 > [!NOTE]
 > Az ajánlat az Azure piactéren való befejezése csak a telepítő egy részét hajtja végre. Az Azure-FarmBeats Azure-előfizetésében való üzembe helyezésének befejezéséhez kövesse az alábbi utasításokat.
 
-## <a name="prepare"></a>Előkészítés
+## <a name="prepare"></a>Előkészületek
 
 Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek:
 
@@ -80,7 +80,7 @@ Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek:
 - Előfizetés: közreműködő vagy tulajdonos
 - Erőforráscsoport: tulajdonos
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az üzembe helyezés megkezdése előtt győződjön meg arról, hogy a következőkkel rendelkezik:
 
@@ -156,7 +156,7 @@ A fájl előkészítése előtt tekintse át a paramétereket.
 
 |Parancs | Leírás|
 |--- | ---|
-|sku  | A lehetőséget nyújt az Azure-FarmBeats-összetevők vagy azok mindkét összetevőjének letöltésére. Meghatározza a letölteni kívánt összetevőket. Csak az adatközpont telepítéséhez használja a "onlydatabhub" kifejezést. Az adatközpont és a gyorsító telepítéséhez használja a "mindkettő" lehetőséget.|
+|SKU  | A lehetőséget nyújt az Azure-FarmBeats-összetevők vagy azok mindkét összetevőjének letöltésére. Meghatározza a letölteni kívánt összetevőket. Csak az adatközpont telepítéséhez használja a "onlydatabhub" kifejezést. Az adatközpont és a gyorsító telepítéséhez használja a "mindkettő" lehetőséget.|
 |subscriptionId | Az Azure FarmBeats telepítéséhez szükséges előfizetés megadása|
 |datahubResourceGroup| Az adatközpont erőforrásainak erőforráscsoport-neve|
 |location |A hely, ahol létre szeretné hozni az erőforrásokat|

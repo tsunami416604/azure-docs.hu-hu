@@ -24,7 +24,7 @@ A huzavona adatáramlási folyamata az Power Query online mashup-szerkesztő ál
 
 A huzavona adatforgalmai különösen hasznosak az adatmérnökök vagy a Citizen-adatintegrátorok számára.
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>Gyors interaktív adatfeltárás és-előkészítés
 
@@ -42,7 +42,7 @@ Az adatokat kód nélküli módon vizsgálhatja, hogy eltávolítsa a kiugró é
 
 | Összekötő | Adatformátum | Hitelesítés típusa |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Fiókkulcs |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Fiók kulcsa |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | CSV | Szolgáltatásnév |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Fiók kulcsa, egyszerű szolgáltatásnév |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-hitelesítés |

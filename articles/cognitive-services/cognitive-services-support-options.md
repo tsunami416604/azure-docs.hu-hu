@@ -36,7 +36,7 @@ Most megkezdi az Azure Cognitive Services funkcióinak megismerését? Új funkc
 
 Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](https://azure.microsoft.com/support/plans) legjobban illeszkedő csomagot, legyen szó akár fejlesztőknek, akár a Felhőbeli utazásról, akár egy olyan nagy szervezetről, amely üzleti szempontból kritikus fontosságú, stratégiai alkalmazásokat helyez üzembe. Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Kérdés közzététele Stack Overflow
@@ -67,20 +67,20 @@ Ha nem talál választ a problémára a keresésen keresztül, küldjön új ké
 
 | Szolgáltatás                       | Cognitive Services UserVoice URL-címe |
 |-------------------------------|---------------|
-| Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
+| Anomáliadetektor              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Bing szolgáltatások                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Számítógépes látástechnológia               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Tartalommoderátor             | https://cognitive.uservoice.com/forums/559960-content-moderator |
+| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Arcfelismerés                          | https://cognitive.uservoice.com/forums/430315-face |
+| Face                          | https://cognitive.uservoice.com/forums/430315-face |
 | Űrlap                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Alámerülés                     | https://feedback.azure.com/forums/34192--general-feedback |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| Hangfelismerés (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Beszédszolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Szövegelemzés                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Fordítói szöveg               | https://cognitive.uservoice.com/forums/558796-translator |
+| Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| Translator Text               | https://cognitive.uservoice.com/forums/558796-translator |
 | Videóindexelő                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
@@ -106,7 +106,7 @@ A kibocsátási megjegyzések frissülnek, mivel az új kiadások elérhetővé 
 
 A Cognitive Servicesról szóló híreket az [Azure blogban](https://azure.microsoft.com/blog/topics/cognitive-services/)osztjuk meg.
 
-## <a name="search"></a>Keresés
+## <a name="search"></a>Search
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>

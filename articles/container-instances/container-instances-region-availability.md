@@ -25,7 +25,7 @@ További információ a központi telepítések kvótái és egyéb korlátairó
 
 A következő régiók és erőforrások elérhetők a Linux és a [támogatott](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-alapú tárolók számára.
 
-| Hely | Operációs rendszer | CPU | Memória (GB) |
+| Földrajzi egység | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, USA nyugati | Linux | 4 | 16 |
 | Nyugat-Európa, USA 2. nyugati régiója | Linux | 4 | 14 |
@@ -39,7 +39,7 @@ A következő régiók és erőforrások elérhetők a Linux és a [támogatott]
 
 A következő régiók és erőforrások elérhetők a Windows Server 2019-alapú tárolókkal (előzetes verzió) rendelkező tárolók csoportjai számára.
 
-| Hely | Operációs rendszer | CPU | Memória (GB) |
+| Földrajzi egység | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | Délkelet-Ázsia, Észak-Európa, Nyugat-Európa, USA középső régiója, USA keleti régiója, USA nyugati régiója, USA 2. nyugati régiója | Windows | 4 | 16 |
 | USA 2. keleti régiója | Windows | 2 | 3.5 |

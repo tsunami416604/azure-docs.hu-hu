@@ -36,7 +36,7 @@ A Azure Container Instances lehetővé teszi egy rétegen belüli megközelíté
 
 Mivel a Container instances mögöttes infrastruktúráját az Azure felügyeli, a Orchestrator platformnak nincs szüksége arra, hogy megkeresse a megfelelő gazdagépet, amelyre egyetlen tárolót szeretne futtatni. A felhő rugalmassága biztosítja, hogy az egyik mindig elérhető legyen. Ehelyett a Orchestrator olyan feladatokra koncentrálhat, amelyek leegyszerűsítik a többtárolós architektúrák fejlesztését, beleértve a skálázást és az összehangolt frissítéseket is.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Habár a Orchestrator-integráció Azure Container Instances még mindig születik, várható, hogy néhány különböző környezet fog megjelenni:
 

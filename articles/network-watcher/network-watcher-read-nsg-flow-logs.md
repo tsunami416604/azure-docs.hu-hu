@@ -29,11 +29,11 @@ A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](https://do
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 A következő esetben egy Storage-fiókban tárolt folyamat naplója van. Megtudhatja, hogyan olvashatja el a legújabb eseményeket a NSG flow naplóiban. Ebben a cikkben a PowerShellt használja, azonban a cikkben tárgyalt fogalmak nem korlátozódnak a programozási nyelvre, és alkalmazhatók az Azure Storage API-k által támogatott összes nyelvre.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 Mielőtt elkezdené, a fiókjában egy vagy több hálózati biztonsági csoporton engedélyezni kell a hálózati biztonsági csoport folyamatának naplózását. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg a következő cikket: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md).
 

@@ -118,7 +118,7 @@ A műveletek sorrendje megköveteli, hogy az objektumokat ebben a sorrendben hoz
 
 Az Azure Blob Storage-ban található JSON-Blobok jellemzően egyetlen JSON-dokumentum vagy egy JSON "tömb". Az Azure Cognitive Searchban található blob indexelő képes elemezni az építkezést, attól függően, hogy miként állítja be a **parsingMode** paramétert a kérelemre.
 
-| JSON-dokumentum | parsingMode | Leírás | Rendelkezésre állás |
+| JSON-dokumentum | parsingMode | Leírás | Elérhetőség |
 |--------------|-------------|--------------|--------------|
 | Egy blob | `json` | A JSON-blobokat egyetlen darab szövegként elemzi. Minden JSON-blob egyetlen Azure Cognitive Search-dokumentum lesz. | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
 | Több blobon | `jsonArray` | Egy JSON-tömböt elemez a blobban, ahol a tömb minden eleme külön Azure Cognitive Search dokumentum lesz.  | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
@@ -424,7 +424,7 @@ Az egyes tömb elemeit nulla alapú index használatával is megtekintheti. Ha p
 >
 >
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Indexelő az Azure Cognitive Search](search-indexer-overview.md)
 + [Azure-Blob Storage indexelése az Azure Cognitive Search](search-howto-index-json-blobs.md)

@@ -294,7 +294,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: az SQL-adatbázis lezárta az SQL-kapcsolatokat, ha a nagy egyidejű Futtatás és a kiszolgáló megszakítása a csatlakozást.
 
-- **Javaslat**: a távoli kiszolgáló lezárta az SQL-kapcsolatokat. Próbálkozzon újra. Ha probléma Reprodukálási, forduljon az Azure SQL támogatási szolgálatához.
+- **Javaslat**: a távoli kiszolgáló lezárta az SQL-kapcsolatokat. Próbálja újból. Ha probléma Reprodukálási, forduljon az Azure SQL támogatási szolgálatához.
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hibaüzenet: nem sikerült az átalakítás a karakterláncról uniqueidentifier való átalakításkor
 
@@ -408,7 +408,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

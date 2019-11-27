@@ -379,7 +379,7 @@ Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizet�
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha az alkalmazás már előfizetett erre a munkaterületre, vagy ha a bérlő egy másik munkaterületre van előfizetve, a következő hibaüzenet jelenhet meg:
 
@@ -532,10 +532,10 @@ Kattintson az **office 365** csempére az **Office 365** irányítópultjának m
 
 Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop felsorolja az első tíz riasztást az oszlopnak a megadott hatókörhöz és időtartományhoz tartozó feltételeinek megfelelő számokkal. Futtathat egy naplóbeli keresést, amely a teljes listát az oszlop alján található az összes megjelenítése elemre kattintva vagy az oszlop fejlécére kattintva jeleníti meg.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 |:--|:--|
 | Műveletek | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
-| Exchange | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
+| Adatcsere | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
 | SharePoint | Megjeleníti a felhasználók által a SharePoint-dokumentumokon végrehajtott legfontosabb tevékenységeket. Ha ezen a csempén végez részletezést, a Keresés lap megjeleníti a tevékenységek részleteit, például a célként megadott dokumentumot és a tevékenység helyét. Egy fájlhoz hozzáférő esemény esetében például megtekintheti az elérni kívánt dokumentumot, a hozzá tartozó fióknevet és IP-címet. |
 | Azure Active Directory | Magában foglalja a leggyakoribb felhasználói tevékenységeket, például a felhasználói jelszavak visszaállítását és a bejelentkezési kísérleteket. A részletezés során látni fogja a tevékenységek részleteit, például az eredmény állapotát. Ez általában akkor hasznos, ha a Azure Active Directory gyanús tevékenységeket szeretne figyelni. |
 
@@ -552,16 +552,16 @@ A következő tulajdonságok minden Office 365-rekordnál közösek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus | *OfficeActivity* |
-| ClientIP | Annak az eszköznek az IP-címe, amelyet a tevékenység naplózása során használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
-| OfficeWorkload | Az Office 365 szolgáltatás, amelyre a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Type (Típus) | *OfficeActivity* |
+| Ügyfélip | Annak az eszköznek az IP-címe, amelyet a tevékenység naplózása során használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
+| OfficeWorkload | Az Office 365 szolgáltatás, amelyre a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Adatcsere<br>SharePoint|
 | Művelet | A felhasználó vagy a rendszergazda tevékenység neve.  |
 | OrganizationId | A szervezet Office 365-bérlője GUID azonosítója. Ez az érték mindig ugyanaz lesz a szervezetnél, függetlenül attól, hogy melyik Office 365-szolgáltatásban történik. |
-| RecordType | A végrehajtott művelet típusa. |
+| Rekordtípus | A végrehajtott művelet típusa. |
 | ResultStatus | Azt jelzi, hogy a művelet (a műveleti tulajdonságban megadott művelet) sikeres volt-e. A lehetséges értékek sikeresek, PartiallySucceeded vagy sikertelenek. Exchange-rendszergazdai tevékenység esetén az érték igaz vagy hamis. |
 | UserId | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
 | UserKey | A felhasználóazonosító tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a Passport egyedi azonosítójával (PUID) van feltöltve a felhasználók által a SharePointban, a vállalati OneDrive és az Exchange-ben végrehajtott eseményekhez. Ez a tulajdonság a felhasználóazonosító tulajdonsággal megegyező értéket is megadhat a más szolgáltatásokban és a rendszerfiókokban végrehajtott eseményekben előforduló események esetében.|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
+| userType | A műveletet végrehajtó felhasználó típusa.<br><br>felügyeleti<br>Jelentkezés<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory alapja
@@ -571,9 +571,9 @@ A következő tulajdonságok minden Azure Active Directory rekordnál közösek.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Rekordtípus     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Az Azure AD-esemény típusa. |
-| ExtendedProperties | Az Azure AD-esemény kiterjesztett tulajdonságai. |
+| Extendedproperties példányt paraméterként | Az Azure AD-esemény kiterjesztett tulajdonságai. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory fiók bejelentkezése
@@ -597,7 +597,7 @@ Ezek a rekordok akkor jönnek létre, amikor módosítást vagy kiegészítést 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Rekordtípus     | AzureActiveDirectory |
 | AADTarget | A felhasználó, aki a műveletet (a művelet tulajdonsága azonosítja) elvégezte. |
 | Színész | Az a felhasználó vagy szolgáltatásnév, amely végrehajtotta a műveletet. |
 | ActorContextId | Annak a szervezetnek a GUID azonosítója, amelyhez a szereplő tartozik. |
@@ -630,11 +630,11 @@ Ezek a rekordok akkor jönnek létre, amikor módosításokat végeznek az Excha
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeAdmin |
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeAdmin |
 | ExternalAccess |  Megadja, hogy a parancsmagot a szervezet egy felhasználója, a Microsoft Datacenter személyzete vagy egy adatközpont-szolgáltatásfiók vagy egy meghatalmazott rendszergazda futtatta-e. A False érték azt jelzi, hogy a parancsmagot a szervezet egy személye futtatta. Az igaz érték azt jelzi, hogy a parancsmagot az adatközpont munkatársai, egy adatközpont-szolgáltatásfiók vagy meghatalmazott rendszergazda futtatták. |
 | ModifiedObjectResolvedName |  Ez a parancsmag által módosított objektum felhasználóbarát neve. Ezt csak akkor naplózza a rendszer, ha a parancsmag módosítja az objektumot. |
-| Cégnév | A bérlő neve. |
+| Szervezetnév | A bérlő neve. |
 | OriginatingServer | Annak a kiszolgálónak a neve, amelyből a parancsmag végre lett hajtva. |
 | Paraméterek | Az Operations tulajdonságban azonosított parancsmaggal használt összes paraméter neve és értéke. |
 
@@ -645,8 +645,8 @@ Ezek a rekordok akkor jönnek létre, amikor az Exchange-postaládák módosít�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeItem |
 | ClientInfoString | A művelet végrehajtásához használt e-mail-ügyféllel kapcsolatos információk, például a böngésző verziószáma, az Outlook verziója és a mobileszköz-információ. |
 | Client_IPAddress | Annak az eszköznek az IP-címe, amelyet a művelet naplózásakor használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
 | ClientMachineName | Az Outlook-ügyfelet futtató számítógépnév. |
@@ -668,9 +668,9 @@ Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek l
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
-| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeItem |
+| Tétel | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
 | SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
 | SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
 | SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
@@ -683,7 +683,7 @@ Ezek a rekordok akkor jönnek létre, amikor változtatásokat vagy kiegészít�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Adatcsere |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Információk a csoport egyes elemeiről. |
 | CrossMailboxOperations | Azt jelzi, hogy a művelet több postaládát is érintett-e. |
@@ -757,7 +757,7 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 |SharePoint-webhelyek használata|OfficeActivity &#124; , ahol a OfficeWorkload = ~ " &#124; SharePoint" összesítő darabszám () SiteUrl szerint \| rendezése az ASC szám szerint|
 |Fájl-hozzáférési műveletek felhasználói típus szerint|Keresés a következőben: (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory" és "MyTest"|
 |Keresés adott kulcsszóval|Type = OfficeActivity OfficeWorkload = azureactivedirectory "MyTest"|
-|Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
+|Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124; , ahol OfficeWorkload = ~ "Exchange" és ExternalAccess = = True|
 
 
 

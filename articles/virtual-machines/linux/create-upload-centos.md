@@ -43,7 +43,7 @@ Ez a cikk azt feltételezi, hogy már telepítette a CentOS (vagy hasonló szár
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök úgy konfigurálható, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén.  Erről további információt az alábbi lépésekben találhat.
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="centos-6x"></a>CentOS 6.x
+## <a name="centos-6x"></a>CentOS 6. x
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 

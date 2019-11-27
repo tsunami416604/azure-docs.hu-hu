@@ -58,7 +58,7 @@ Győződjön meg arról, hogy a Cosmos DB adatbázisa tartalmaz adatait. Az [ada
 
 ### <a name="2---start-import-data-wizard"></a>2 – az adatimportálás megkezdése varázsló
 
-A [varázsló elindításához](search-import-data-portal.md) a parancssáv az Azure Cognitive Search szolgáltatás lapján, vagy ha Cosmos db SQL API-hoz csatlakozik, kattintson az **Azure-Cognitive Search hozzáadása** lehetőségre az Cosmos db-fiók bal oldali **Beállítások** szakaszában. navigációs ablaktábla
+A [varázsló elindításához](search-import-data-portal.md) a parancssáv az Azure Cognitive Search szolgáltatás lapján, vagy ha Cosmos db SQL API-hoz csatlakozik, az Cosmos db fiók bal oldali navigációs paneljének **Beállítások** szakaszában kattintson az **Azure-Cognitive Search hozzáadása** lehetőségre.
 
    ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
@@ -251,14 +251,14 @@ Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>A JSON-adattípusok és az Azure Cognitive Search adattípusok közötti leképezés
 | JSON-adattípus | Kompatibilis cél index típusú mezők |
 | --- | --- |
-| Bool |Edm.Boolean, Edm.String |
-| Egész számokhoz hasonló számok |Edm.Int32, Edm.Int64, Edm.String |
-| A lebegő pontokhoz hasonló számok |Edm.Double, Edm.String |
+| Bool |EDM. Boolean, EDM. String |
+| Egész számokhoz hasonló számok |EDM. Int32, EDM. Int64, EDM. String |
+| A lebegő pontokhoz hasonló számok |EDM. Double, EDM. String |
 | Sztring |Edm.String |
-| Egyszerű típusok tömbje, például ["a", "b", "c"] |Gyűjtemény (Edm.String) |
-| A dátumokhoz hasonló karakterláncok |Edm.DateTimeOffset, Edm.String |
+| Egyszerű típusok tömbje, például ["a", "b", "c"] |Collection(Edm.String) |
+| A dátumokhoz hasonló karakterláncok |EDM. DateTimeOffset, EDM. String |
 | GeoJSON objektumok, például {"type": "pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
-| Egyéb JSON-objektumok |N/A |
+| Egyéb JSON-objektumok |– |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – az indexelő konfigurálása és futtatása
 

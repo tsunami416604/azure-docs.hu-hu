@@ -20,13 +20,13 @@ ms.locfileid: "74548291"
 
 Kövesse ezt a cikket, ha el szeretné végezni **a tagolt szövegfájlok elemzését vagy az adatmennyiség tagolt szöveges formátumba való írását**. 
 
-A tagolt szöveges formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md) [ Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
+A tagolt szöveges formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a tagolt szöveges adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-| Tulajdonság         | Leírás                                                  | Kötelező |
+| Tulajdonság         | Leírás                                                  | Szükséges |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Az adatkészlet Type tulajdonságát **DelimitedText**értékre kell állítani. | Igen      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz a saját hely típusa és a `location`alatt támogatott tulajdonságok tartozik.  | Igen      |
@@ -75,7 +75,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság       | Leírás                                                  | Kötelező |
+| Tulajdonság       | Leírás                                                  | Szükséges |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSource**értékre kell állítani. | Igen      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, **tagolt szöveg olvasási beállítások** táblázatát. | Nem       |
@@ -83,7 +83,7 @@ A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdons�
 
 Támogatott **tagolt szöveges olvasási beállítások** a `formatSettings`alatt:
 
-| Tulajdonság      | Leírás                                                  | Kötelező |
+| Tulajdonság      | Leírás                                                  | Szükséges |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | A formatSettings típusát **DelimitedTextReadSetting**értékre kell beállítani. | Igen      |
 | skipLineCount | Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. <br>Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. | Nem       |
@@ -92,7 +92,7 @@ Támogatott **tagolt szöveges olvasási beállítások** a `formatSettings`alat
 
 A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság       | Leírás                                                  | Kötelező |
+| Tulajdonság       | Leírás                                                  | Szükséges |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSink**értékre kell állítani. | Igen      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, **tagolt szöveges írási beállítások** táblázatát. |          |
@@ -100,7 +100,7 @@ A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdon
 
 Támogatott **tagolt szöveges írási beállítások** a `formatSettings`alatt:
 
-| Tulajdonság      | Leírás                                                  | Kötelező                                              |
+| Tulajdonság      | Leírás                                                  | Szükséges                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | A formatSettings típusát **DelimitedTextWriteSetting**értékre kell beállítani. | Igen                                                   |
 | fileExtension | A kimeneti fájlok elnevezéséhez használt fájlkiterjesztés, például `.csv`, `.txt`. Meg kell adni, ha a `fileName` nincs megadva a kimeneti DelimitedText adatkészletben. | Igen, ha a fájl neve nincs megadva a kimeneti adatkészletben |

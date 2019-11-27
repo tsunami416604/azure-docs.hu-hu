@@ -37,9 +37,9 @@ Ebben a cikkben az Azure CLI használatával megtudhatja, hogyan hajthatja végr
 
 - Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Három lehetősége van a CLI-példaszkriptek futtatásához:
+- A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
     - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
-    - Használja a beágyazott Azure Cloud Shell-t a "Kipróbálom" gomb, mindegyik blokk jobb felső sarkában található.
+    - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
     - Ha inkább helyi CLI-konzolt szeretne használni, [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
       
       > [!NOTE]
@@ -61,7 +61,7 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
    az login
    ```
 
-2. Az [az group create](../../azure-resource-manager/resource-group-overview.md#terminology) paranccsal hozzon létre egy [erőforráscsoportot](/cli/azure/group/#az-group-create) a virtuális gép és az ahhoz kapcsolódó erőforrások elkülönítéséhez és üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
+2. Az [az group create](/cli/azure/group/#az-group-create) paranccsal hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#terminology) a virtuális gép és az ahhoz kapcsolódó erőforrások elkülönítéséhez és üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

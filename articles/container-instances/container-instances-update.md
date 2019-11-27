@@ -65,7 +65,7 @@ Ezek a tulajdonságok a tárolók csoportjának törlését igénylik az újrate
 
 * Operációs rendszer típusa
 * CPU
-* Memory (Memória)
+* Memória
 * Újraindítási szabályzat
 * Portok
 

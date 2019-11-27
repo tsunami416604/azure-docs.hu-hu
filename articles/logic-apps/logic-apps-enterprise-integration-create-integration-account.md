@@ -56,7 +56,7 @@ Ehhez a feladathoz a Azure Portal az ebben a szakaszban, [Azure PowerShell](/pow
 
    ![Integrációs fiók adatainak megadása](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | <*integráció – fiók neve*> | Az integrációs fiók neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "Fabrikam-Integration" szolgáltatást használja. |
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
@@ -131,7 +131,7 @@ A módosítás végrehajtásához a Azure Portal az ebben a részben vagy az [Az
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 1. Ha még nem tette meg, [telepítse az Azure CLI előfeltételeit](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -181,7 +181,7 @@ Ha a logikai alkalmazást egy másik integrációs fiókhoz szeretné kapcsolni,
 
 1. Nyissa meg a böngészőablakot, és lépjen a [Azure erőforrás-kezelő (https://resources.azure.com)](https://resources.azure.com)elemre. Jelentkezzen be ugyanazzal az Azure-fiók hitelesítő adataival.
 
-   ![Azure Resource Explorer](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
+   ![Azure Resource Manager](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 
 1. A keresőmezőbe írja be a logikai alkalmazás nevét, így megkeresheti és kiválaszthatja a logikai alkalmazást.
 
@@ -207,7 +207,7 @@ Ha a logikai alkalmazást egy másik integrációs fiókhoz szeretné kapcsolni,
    },
    ```
 
-   Például:
+   Példa:
 
    !["IntegrationAccount" objektum keresése](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

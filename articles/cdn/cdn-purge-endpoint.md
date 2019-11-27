@@ -73,7 +73,7 @@ Ez az oktatóanyag végigvezeti a végpontok összes peremhálózati csomópontj
 > 
 > 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [Eszközök előzetes betöltése Azure CDN-végponton](cdn-preload-endpoint.md)
 * [Azure CDN REST API hivatkozás – végpont kiürítése vagy előzetes betöltése](/rest/api/cdn/endpoints)
 

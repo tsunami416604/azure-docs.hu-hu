@@ -43,7 +43,7 @@ Emellett hasonló műveleteket is végrehajthat más objektumokon, például cso
 
 Az Azure Active Directory Graph API használatának megkezdéséhez tekintse meg az [Azure ad Graph API rövid útmutatóját](active-directory-graph-api-quickstart.md), vagy tekintse meg az [interaktív Azure ad Graph API dokumentációját](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 Az Azure AD Graph API a következő funkciókat biztosítja:
 
@@ -59,7 +59,7 @@ Az Azure AD Graph API a következő funkciókat biztosítja:
     
     A delegált és az alkalmazásra vonatkozó engedélyek egyaránt az Azure AD-Graph API által közzétett jogosultságot jelentenek, és az ügyfélalkalmazások a [Azure Portal](https://portal.azure.com)alkalmazás-regisztrációs engedélyek funkciói által igényelhetők. Az [Azure AD Graph API engedély-hatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) az ügyfélalkalmazás által használható információkról nyújtanak információt.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Az Azure AD Graph API számos alkalmazási forgatókönyvet tesz lehetővé. A leggyakoribb forgatókönyvek a következők:
 

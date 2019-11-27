@@ -1,7 +1,7 @@
 ---
 title: A Batch transzkripció használata – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
+description: A Batch-átírás ideális megoldás, ha nagy mennyiségű hanganyagot szeretne átírni a Storage-ban, például az Azure-blobokat. A dedikált REST API használatával a hangfájlok közös hozzáférésű aláírási (SAS) URI-val és aszinkron módon fogadhatók.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -17,45 +17,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74538115"
 ---
-# <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
+# <a name="why-use-batch-transcription"></a>Miért érdemes a Batch-átírást használni?
 
-Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
+A Batch-átírás ideális megoldás, ha nagy mennyiségű hanganyagot szeretne átírni a Storage-ban, például az Azure-blobokat. A dedikált REST API használatával a hangfájlok közös hozzáférésű aláírási (SAS) URI-val és aszinkron módon fogadhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="subscription-key"></a>Előfizetési kulcs
 
-Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md). Ha azt tervezi, a beszédátírás kérhet az eredeti modellt, a kulcs létrehozása még minden kell tennie.
+Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md). Ha tervbe kell vennie az alapmodellből való átírásokat, a kulcs létrehozásához mindössze annyit kell tennie.
 
 >[!NOTE]
-> Beszédszolgáltatások (S0) standard előfizetést kell használnia a batch beszédátírási. Ingyenes előfizetési kulcsok (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A Batch átírásához szabványos előfizetés (S0) szükséges a Speech Services használatához. Az ingyenes előfizetés kulcsa (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Egyéni modellek
 
 Ha az akusztikus vagy nyelvi modellek testreszabását tervezi, kövesse az [akusztikus modellek testreszabása](how-to-customize-acoustic-models.md) és a [nyelvi modellek testreszabása](how-to-customize-language-model.md)című témakör lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell-azonosítóra. Ez az azonosító nem a végpontok részletes nézetében megtalált végpont-azonosító, ez a modell azonosítója, amelyet a modellek részleteinek kiválasztásakor kérhet le.
 
-## <a name="the-batch-transcription-api"></a>A Batch Beszédátírási API
+## <a name="the-batch-transcription-api"></a>A Batch-átírási API
 
-A Batch Beszédátírási API aszinkron hang-szöveg transzformációs átírást, valamint olyan kiegészítő funkciókat kínál. Egy REST API-t, amely metódusokat tárja fel:
+A Batch-átírási API aszinkron beszéd-szöveg átírást biztosít, valamint további funkciókat is tartalmaz. Ez egy REST API, amely a következő metódusokat teszi elérhetővé:
 
-1. Kötegelt feldolgozási kérelmek létrehozása
+1. Batch-feldolgozási kérelmek létrehozása
 1. Lekérdezés állapota
-1. Beszédátírás letöltése
+1. Átiratok letöltése
 
 > [!NOTE]
-> A Batch Beszédátírási API telefonos ügyfélszolgálatok, amely általában a több ezer órás hanganyagra gyűlnek ideális. Megkönnyíti a nagy mennyiségű hangfelvételek átírását.
+> A Batch-átírási API ideális a Call Centers szolgáltatásokhoz, ami általában több ezer órányi hangot is felhalmoz. Megkönnyíti a nagy mennyiségű hangfelvételek átírását.
 
 ### <a name="supported-formats"></a>Támogatott formátumok
 
-A Batch Beszédátírási API támogatja a következő formátumok:
+A Batch transzkripciós API a következő formátumokat támogatja:
 
-| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
+| Formátum | Codec | Sávszélességű | Mintavételezési arány |
 |--------|-------|---------|-------------|
-| WAV | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
-| MP3 | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
-| OGG | OPUS | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
+| WAV | PCM | 16 bites | 8 vagy 16 kHz, monó, sztereó |
+| MP3 | PCM | 16 bites | 8 vagy 16 kHz, monó, sztereó |
+| VORBIS | OPUS | 16 bites | 8 vagy 16 kHz, monó, sztereó |
 
-Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. Ez a példa a káromkodás szűrésére, írásjelekre és a Word szintű időbélyegekre vonatkozó tulajdonságokat tartalmazza.
+A sztereó hangadatfolyamok esetében a Batch transzkripciós API a bal és a jobb oldali csatornát feldarabolja az átírás során. Az eredményrel rendelkező két JSON-fájl egyetlen csatornából lett létrehozva. A kizáró időbélyegek lehetővé teszik a fejlesztő számára a rendezett végső átirat létrehozását. Ez a példa a káromkodás szűrésére, írásjelekre és a Word szintű időbélyegekre vonatkozó tulajdonságokat tartalmazza.
 
 ### <a name="configuration"></a>Konfiguráció
 
@@ -78,7 +78,7 @@ A konfigurációs paraméterek JSON-ként vannak megadva:
 ```
 
 > [!NOTE]
-> A Batch Beszédátírási API egy REST-szolgáltatás beszédátírás, állapotát és kapcsolódó eredmények kérő használja. Az API bármilyen nyelvet is használhat. Ez a szakasz azt ismerteti, hogyan használja fel az API-t.
+> A Batch-átírási API REST-szolgáltatást használ az átírások, az állapotuk és a hozzájuk tartozó eredmények kérelmezéséhez. Az API bármilyen nyelven használható. A következő szakasz az API használatának módját ismerteti.
 
 ### <a name="configuration-properties"></a>Konfigurációs tulajdonságok
 
@@ -86,13 +86,13 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `masked` amely a csillagokkal való káromkodást váltja fel, `removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `masked`. |
-| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `dictated` amely explicit írásjeleket feltételez, `automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `dictatedandautomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
+| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `masked` amely a csillagokkal való káromkodást váltja fel, `removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `masked`. |
+| `PunctuationMode` | Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `dictated` amely explicit írásjeleket feltételez, `automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `dictatedandautomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
  | `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
  | `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |
  | `AddDiarization` | Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a diarization és a `false` (az alapértelmezett érték) letiltását. Azt is megköveteli, hogy a `AddWordLevelTimestamps` True értékre legyen állítva.|
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 
 A Batch átirata támogatja az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) -t, hogy hang-és írási átírásokat olvasson a tárolóba.
 
@@ -125,7 +125,7 @@ Azt is vegye figyelembe, hogy a Diarization nem érhető el a sztereó felvétel
 > [!NOTE]
 > A Diarization minden régióban és minden területi beállításban elérhető.
 
-## <a name="sentiment"></a>Hangulat
+## <a name="sentiment"></a>Vélemény
 
 A hangulat a Batch átírási API új funkciója, amely a Call Center tartomány egyik fontos funkciója. Az ügyfelek a `AddSentiment` paramétereket használhatják a kéréseiket
 
@@ -190,9 +190,9 @@ A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezut
 
 Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.cris.ai/swagger/ui/index). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) a `samples/batch` alkönyvtárban.
 
-Jegyezze fel a könyvelési hang és a fogadás beszédátírási állapot aszinkron beállítása. Az ügyfél, amely létrehoz egy .NET-HTTP-alapú. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére és egy `GetTranscriptions` metódusra az eredmények fogadásához. a `PostTranscriptions` egy leírót ad vissza, és `GetTranscriptions` használja egy leíró létrehozásához az átirat állapotának lekéréséhez.
+Jegyezze fel a hang-és átírási állapot küldésének aszinkron beállítását. A létrehozott ügyfél egy .NET HTTP-ügyfél. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére és egy `GetTranscriptions` metódusra az eredmények fogadásához. a `PostTranscriptions` egy leírót ad vissza, és `GetTranscriptions` használja egy leíró létrehozásához az átirat állapotának lekéréséhez.
 
-A jelenlegi mintakód nem adja meg egy egyéni modell. A szolgáltatás használ a kiindulási modelleket alkalmazhatnak lefényképezheti a fájlt vagy fájlokat. A modellek megadásához meg ugyanezt a módszert, a modell azonosítóját a akusztikai és a nyelvi modell adhat át.
+Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodelleket használja a fájl vagy fájlok átírásához. A modellek megadásához ugyanazt a módszert adja át, mint az akusztikus és a nyelvi modell azonosítói.
 
 > [!NOTE]
 > Alapértékek átírásakor nem kell deklarálnia az alapmodellek AZONOSÍTÓját. Ha csak a nyelvi modell AZONOSÍTÓját (és az akusztikus modell AZONOSÍTÓját) adta meg, a rendszer automatikusan kiválasztja a megfelelő akusztikus modellt. Ha csak az akusztikus modell AZONOSÍTÓját adta meg, a rendszer automatikusan kiválasztja a megfelelő nyelvi modellt.

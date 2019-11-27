@@ -89,11 +89,11 @@ Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amel
 > A forrásoldali portok elmúlóak, ezért ügyeljen arra, hogy az összes szabályhoz `*` állítsa be őket.
 > Az alhálózatokon belüli belső kommunikációhoz az ISE megköveteli, hogy az alhálózatokon belül minden portot meg lehessen nyitni.
 
-| Cél | Irány | Célportok | Forrásoldali szolgáltatás címkéje | Cél szolgáltatáscímkéje | Megjegyzések |
+| Rendeltetés | Irány | Célportok | Forrásoldali szolgáltatás címkéje | Cél szolgáltatáscímkéje | Megjegyzések |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
 | Kommunikáció a Azure Logic Apps | Kimenő | 80, 443 | VirtualNetwork | Internet | A port a külső szolgáltatástól függ, amellyel a Logic Apps szolgáltatás kommunikál |
 | Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage-függőség | Kimenő | 80, 443 | VirtualNetwork | Tárolás | |
+| Azure Storage-függőség | Kimenő | 80, 443 | VirtualNetwork | Adattárolás | |
 | Alhálózati kommunikáció | Bejövő & kimenő | 80, 443 | VirtualNetwork | VirtualNetwork | Az alhálózatok közötti kommunikációhoz |
 | Kommunikáció Azure Logic Apps | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](connect-virtual-network-vnet-isolated-environment.md#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak az IP-címe, amely a logikai alkalmazásban található kérelem-triggert vagy webhookot hívja meg. A port bezárása vagy blokkolása megakadályozza a HTTP-hívásokat a logikai alkalmazásokhoz kérelem-eseményindítókkal. |
 | Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek az IP-címe, amelyről meg kell tekinteni a logikai alkalmazás futtatási előzményeit. Bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, a futtatási előzményekben nem tekintheti meg az egyes lépések bemeneteit és kimeneteit. |
@@ -132,7 +132,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
    ![Adja meg a környezet részleteit](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | A környezetéhez használni kívánt Azure-előfizetés |
    | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport neve*> | Az Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
@@ -159,7 +159,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
    * Az [osztály nélküli Inter-domain Routing (CIDR) formátumot](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és egy B osztályú címtartományt használ.
 
-   * Legalább egy `/27`t használ a címtartomány esetében, mert minden alhálózatnak *legalább 32-es címnek kell* lennie *.* Például:
+   * Legalább egy `/27`t használ a címtartomány esetében, mert minden alhálózatnak *legalább 32-es címnek kell* lennie *.* Példa:
 
      * a `10.0.0.0/27` 32-es címmel rendelkezik, mert 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32.
 

@@ -296,7 +296,7 @@ Ebben a példában a `my-directory`nevű könyvtár összes felhasználó által
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Minta](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

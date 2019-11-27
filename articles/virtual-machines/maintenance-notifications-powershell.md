@@ -33,7 +33,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 A MaintenanceRedeployStatus alatt a következő tulajdonságokat adja vissza: 
 
-| Érték | Leírás   |
+| Value (Díj) | Leírás   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy most elindítható-e a virtuális gép karbantartása. |
 | PreMaintenanceWindowStartTime         | A karbantartás önkiszolgáló ablakának kezdete, ha a virtuális gépen karbantartást kezdeményezhet |

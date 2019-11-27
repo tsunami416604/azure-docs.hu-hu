@@ -129,7 +129,7 @@ properties: # Properties of container group
     options: string
 ```
 
-## <a name="property-values"></a>Tulajdonságok értékei
+## <a name="property-values"></a>Tulajdonságértékek
 
 A következő táblázatok ismertetik a sémában beállítani kívánt értékeket.
 
@@ -137,13 +137,13 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="microsoftcontainerinstancecontainergroups-object"></a>Microsoft. ContainerInstance/containerGroups objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A tároló csoport neve. |
 |  apiVersion | Enum | Igen | 2018-10-01 |
 |  location | sztring | Nem | Az erőforrás helye. |
-|  címkét | objektum | Nem | Az erőforrás-címkék. |
-|  identity | objektum | Nem | A tároló csoport identitása, ha be van állítva. - [ContainerGroupIdentity objektum](#ContainerGroupIdentity) |
+|  tags | objektum | Nem | Az erőforrás-címkék. |
+|  identitáskezelés | objektum | Nem | A tároló csoport identitása, ha be van állítva. - [ContainerGroupIdentity objektum](#ContainerGroupIdentity) |
 |  properties | objektum | Igen | [ContainerGroupProperties objektum](#ContainerGroupProperties) |
 
 
@@ -151,7 +151,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containergroupidentity-object"></a>ContainerGroupIdentity objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  type | Enum | Nem | A tároló csoporthoz használt identitás típusa A "SystemAssigned, UserAssigned" típus egy implicit módon létrehozott identitást és egy felhasználó által hozzárendelt identitást is tartalmaz. A "None" típus eltávolítja az összes identitást a tároló csoportjából. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, none |
 |  userAssignedIdentities | objektum | Nem | A tároló csoporthoz társított felhasználói identitások listája. A felhasználói azonosító szótár kulcsára vonatkozó hivatkozások a következő formában lesznek Azure Resource Manager erőforrás-azonosítók: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". |
@@ -161,7 +161,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containergroupproperties-object"></a>ContainerGroupProperties objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  tárolók | tömb | Igen | A tároló csoportban lévő tárolók. - [Container objektum](#Container) |
 |  imageRegistryCredentials | tömb | Nem | A rendszerkép beállításjegyzékbeli hitelesítő adatai, amelyek alapján a rendszer létrehozza a tároló csoportját. - [ImageRegistryCredential objektum](#ImageRegistryCredential) |
@@ -178,7 +178,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="container-object"></a>Tároló objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A tároló példány felhasználó által megadott neve. |
 |  properties | objektum | Igen | A tároló példányának tulajdonságai. - [ContainerProperties objektum](#ContainerProperties) |
@@ -188,7 +188,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  kiszolgáló | sztring | Igen | A Docker-rendszerkép beállításjegyzék-kiszolgálója olyan protokoll nélkül, mint a "http" és a "https". |
 |  felhasználónév | sztring | Igen | A privát beállításjegyzék felhasználóneve. |
@@ -199,7 +199,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="ipaddress-object"></a>IP-cím objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  ports | tömb | Igen | A tároló csoporton elérhető portok listája. - [port objektum](#Port) |
 |  type | Enum | Igen | Meghatározza, hogy az IP-cím elérhető-e a nyilvános internethez vagy a privát VNET. -Nyilvános vagy privát |
@@ -211,7 +211,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="volume-object"></a>Kötet objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A kötet neve. |
 |  azureFile | objektum | Nem | Az Azure-fájl kötete. - [AzureFileVolume objektum](#AzureFileVolume) |
@@ -224,7 +224,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  logAnalytics | objektum | Nem | A Container Group log Analytics információi. - [LogAnalytics objektum](#LogAnalytics) |
 
@@ -233,7 +233,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  id | sztring | Igen | Egy hálózati profil azonosítója. |
 
@@ -242,18 +242,18 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  Névkiszolgálók | tömb | Igen | A tároló csoport DNS-kiszolgálói. -string |
 |  searchDomains | sztring | Nem | A DNS-keresési tartományok az állomásnév kereséséhez a tároló csoportban. |
-|  options | sztring | Nem | A tároló csoport DNS-beállításai. |
+|  beállítások | sztring | Nem | A tároló csoport DNS-beállításai. |
 
 
 <a id="ContainerProperties" />
 
 ### <a name="containerproperties-object"></a>ContainerProperties objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  image | sztring | Igen | A Container-példány létrehozásához használt rendszerkép neve. |
 |  command | tömb | Nem | A tároló-példányon belül végrehajtandó parancsok az exec formában. -string |
@@ -269,9 +269,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="port-object"></a>Port objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  protocol | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
+|  protokoll | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
 |  port | egész szám | Igen | A portszám. |
 
 
@@ -279,10 +279,10 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  shareName | sztring | Igen | A kötetként csatlakoztatni kívánt Azure-fájlmegosztás neve. |
-|  readOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
+|  ReadOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
 |  storageAccountName | sztring | Igen | Az Azure-fájlmegosztást tartalmazó Storage-fiók neve. |
 |  storageAccountKey | sztring | Nem | Az Azure-fájlmegosztás eléréséhez használt Storage-fiók elérési kulcsa. |
 
@@ -291,10 +291,10 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  Directory | sztring | Nem | Célkönyvtár neve. A nem tartalmazhat ".." karaktert.  Ha a "." meg van adva, a kötet könyvtára lesz a git-tárház.  Ellenkező esetben, ha meg van adva, a kötet a megadott nevű alkönyvtárban található git-tárházat fogja tartalmazni. |
-|  repository | sztring | Igen | Tárház URL-címe |
+|  tárház | sztring | Igen | Tárház URL-címe |
 |  változat | sztring | Nem | A megadott változat kivonatának véglegesítve. |
 
 
@@ -302,9 +302,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="loganalytics-object"></a>LogAnalytics objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  workspaceId | sztring | Igen | A log Analytics-munkaterület azonosítója |
+|  Munkaterület azonosítója | sztring | Igen | A log Analytics-munkaterület azonosítója |
 |  workspaceKey | sztring | Igen | A log Analytics-munkaterület kulcsa |
 |  logType | Enum | Nem | A használandó naplózási típus. -ContainerInsights vagy ContainerInstanceLogs |
 |  metaadatok | objektum | Nem | A log Analytics metaadatai. |
@@ -314,9 +314,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containerport-object"></a>ContainerPort objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  protocol | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
+|  protokoll | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
 |  port | egész szám | Igen | A tároló csoporton belül elérhető portszám. |
 
 
@@ -324,7 +324,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A környezeti változó neve. |
 |  érték | sztring | Nem | A környezeti változó értéke. |
@@ -335,7 +335,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  kérelmek | objektum | Igen | A tároló-példány erőforrás-kérései. - [ResourceRequests objektum](#ResourceRequests) |
 |  határértékeket | objektum | Nem | A tároló-példány erőforrás-korlátai. - [ResourceLimits objektum](#ResourceLimits) |
@@ -345,18 +345,18 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="volumemount-object"></a>VolumeMount objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  név | sztring | Igen | A kötet csatlakoztatásának neve. |
 |  mountPath | sztring | Igen | Az elérési út a tárolón belül, ahol a kötetet csatlakoztatni kell. Nem tartalmazhat kettőspontot (:). |
-|  readOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
+|  ReadOnly | logikai | Nem | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
 
 
 <a id="ContainerProbe" />
 
 ### <a name="containerprobe-object"></a>ContainerProbe objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  exec | objektum | Nem | A [ContainerExec objektum](#ContainerExec) végrehajtási parancsa |
 |  httpGet | objektum | Nem | A http-lekérési beállítások mintavételi [ContainerHttpGet objektum](#ContainerHttpGet) |
@@ -371,7 +371,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="resourcerequests-object"></a>ResourceRequests objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | szám | Igen | A tároló példányának GB-ban megadott memória-kérelem. |
 |  cpu | szám | Igen | A tároló-példány CPU-kérelme. |
@@ -382,7 +382,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="resourcelimits-object"></a>ResourceLimits objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | szám | Nem | A tároló példány GB-ban megadott memória-korlátja. |
 |  cpu | szám | Nem | A tároló-példány CPU-korlátja. |
@@ -393,7 +393,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containerexec-object"></a>ContainerExec objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  command | tömb | Nem | A tárolón belül végrehajtandó parancsok. -string |
 
@@ -402,9 +402,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
-|  elérési út | sztring | Nem | A mintavétel elérési útja. |
+|  elérési útja | sztring | Nem | A mintavétel elérési útja. |
 |  port | egész szám | Igen | A mintavételhez használandó portszám. |
 |  séma | Enum | Nem | A séma. -http vagy https |
 
@@ -413,10 +413,10 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 ### <a name="gpuresource-object"></a>GpuResource objektum
 
-|  Name (Név) | Típus | Kötelező | Érték |
+|  Név | Type (Típus) | Szükséges | Value (Díj) |
 |  ---- | ---- | ---- | ---- |
 |  count | egész szám | Igen | A GPU-erőforrás száma. |
-|  sku | Enum | Igen | A GPU-erőforrás SKU-jának. -K80, P100, V100 |
+|  SKU | Enum | Igen | A GPU-erőforrás SKU-jának. -K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -42,7 +42,7 @@ A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a
     >
     > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+## <a name="prepare-for-deployment"></a>Az üzembe helyezés előkészítése
 
 A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges alapvető elemeket ismerteti:
 

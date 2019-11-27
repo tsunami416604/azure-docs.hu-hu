@@ -24,7 +24,7 @@ A tárolók újrahasznosítása esetén az [erőforrások](container-instances-c
 
 A Leállítás műveletnek nincs hatása, ha a tároló csoport már le van állítva (vagy sikeres vagy sikertelen állapotban van). Például egy olyan tároló-csoport, amelyen a Run-Once tároló feladatainak futtatása sikeres volt, sikeresen leállt a sikeres állapotba. Az adott állapotban lévő csoport leállítására tett kísérletek nem változtatják meg az állapotot. 
 
-## <a name="start"></a>Indítás
+## <a name="start"></a>Kezdés
 
 Ha egy tároló csoport leáll – vagy azért, mert a tárolók le vannak zárva, vagy manuálisan leállította a csoportot –, elindíthatja a tárolókat. Például az az [Container Start][az-container-start] paranccsal vagy Azure Portal használatával manuálisan indíthatja el a csoportba tartozó tárolókat. Ha egy tárolóhoz tartozó tároló képe frissül, egy új rendszerképet kell meghúzni. 
 

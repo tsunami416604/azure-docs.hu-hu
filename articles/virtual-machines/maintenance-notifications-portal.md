@@ -24,7 +24,7 @@ A [tervezett karbantartási](maintenance-notifications.md) hullám ütemezése u
 
 Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett virtuális gépeket.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. A bal oldali navigációs sávon kattintson a **Virtual Machines**elemre.
 
@@ -34,7 +34,7 @@ Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett vir
 
    **Karbantartási állapot**: a virtuális gép karbantartási állapotát jeleníti meg. A lehetséges értékek a következők:
       
-      | Érték | Leírás |
+      | Value (Díj) | Leírás |
       |-------|-------------|
       | Az első lépések | A virtuális gép önkiszolgáló karbantartási ablakban van, amely lehetővé teszi a karbantartás elindítását. A virtuális gép karbantartásának megkezdéséről alább tájékozódhat. | 
       | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. A karbantartási időszak megismeréséhez kattintson a karbantartás – ütemezett ablakra ebben a nézetben, vagy a virtuális gépre kattintva. | 

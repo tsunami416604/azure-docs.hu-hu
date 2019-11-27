@@ -59,22 +59,22 @@ Ez a hivatkozás azt mutatja be, hogy az SAP NetWeaver az Azure-beli Windows-kö
 
 ## <a name="disaster-recovery-considerations"></a>Vész-helyreállítási megfontolások
 
-A vészhelyreállítás (DR) meg kell tudni átadja a feladatokat egy másodlagos régióba. Minden egyes réteg más stratégiával biztosít vészhelyreállítási (DR) védelmet.
+A vész-helyreállítási (DR) esetében át kell tudnia adni a feladatátvételt egy másodlagos régióba. Minden egyes réteg más stratégiával biztosít vészhelyreállítási (DR) védelmet.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>SAP web diszpécser készletet futtató virtuális gépek 
-A Web Dispatcher összetevő terheléselosztóként szolgál az SAP-forgalmat az SAP-alkalmazáskiszolgálók között. Ha magas rendelkezésre állást szeretne elérni a web diszpécser összetevőjénél, Azure Load Balancer a párhuzamos webes diszpécser telepítő megvalósítására szolgál a HTTP (S) forgalom eloszlásának ciklikus, a kiegyenlítő készletben elérhető webes kiosztói között. Ezt a rendszer a Azure Site Recovery (ASR) és az Automation-parancsfájlok használatával replikálja a terheléselosztó a vész-helyreállítási régióban való konfigurálásához. 
+A web diszpécser összetevő a SAP-alkalmazások kiszolgálói közötti SAP-forgalomhoz használt terheléselosztó. Ha magas rendelkezésre állást szeretne elérni a web diszpécser összetevőjénél, Azure Load Balancer a párhuzamos webes diszpécser telepítő megvalósítására szolgál a HTTP (S) forgalom eloszlásának ciklikus, a kiegyenlítő készletben elérhető webes kiosztói között. Ezt a rendszer a Azure Site Recovery (ASR) és az Automation-parancsfájlok használatával replikálja a terheléselosztó a vész-helyreállítási régióban való konfigurálásához. 
 
 #### <a name="vms-running-application-servers-pool"></a>Application Server-készletet futtató virtuális gépek
-Bejelentkezési csoportokat ABAP alkalmazáskiszolgálók kezeléséhez, az SMLG tranzakció szolgál. A terheléselosztási függvényt az üzenet-kiszolgálón, a központi szolgáltatások használatával oszthatja meg a munkaterhelést SAP alkalmazáskészlet-kiszolgálók között SAPGUIs és RFC forgalmat. Ez Azure Site Recovery használatával lesz replikálva 
+A ABAP alkalmazás-kiszolgálók bejelentkezési csoportjainak kezeléséhez a rendszer a SMLG tranzakciót használja. A terheléselosztási függvényt használja a központi szolgáltatások SAPGUIs belül a számítási feladatok elosztásához a SAP Application Servers-készletek között a és az RFC-forgalom számára. Ez Azure Site Recovery használatával lesz replikálva 
 
 #### <a name="vms-running-sap-central-services-cluster"></a>SAP Central Services-fürtöt futtató virtuális gépek
-Ez a referenciaarchitektúra a virtuális gépek központi szolgáltatást futtat az alkalmazás szinten. A központi szolgáltatások egy potenciálisan hibaérzékeny pont (SPOF), egyetlen virtuális gép telepítésekor – szokásos telepítése, ha magas rendelkezésre állás nem követelmény.<br>
+Ez a viszonyítási architektúra központi szolgáltatásokat futtat az alkalmazási szinten lévő virtuális gépeken. A központi szolgáltatások egy lehetséges meghibásodási pont (SPOF), ha egyetlen virtuális gépre van üzembe helyezve – tipikus telepítés esetén, ha a magas rendelkezésre állás nem követelmény.<br>
 
 Magas rendelkezésre állású megoldás megvalósításához egy megosztott fürtlemez vagy egy fájlmegosztási fürt is használható. A virtuális gépek megosztott lemezes fürthöz való konfigurálásához használja a Windows Server feladatátvevő fürtöt. A Felhőbeli tanúsító kvórum tanúsító. 
  > [!NOTE]
  > Azure Site Recovery nem replikálja a Felhőbeli tanút, ezért javasolt a Felhőbeli tanú üzembe helyezése a vész-helyreállítási régióban.
 
-A feladatátvevő fürt környezetének támogatásához a [SIOS DataKeeper-fürt kiadása](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) a fürt megosztott kötetének működését a fürtcsomópontok által birtokolt független lemezek replikálásával hajtja végre. Az Azure nem natív módon támogatja a megosztott lemezeket, és ezért az SIOS által biztosított megoldások igényel. 
+A feladatátvevő fürt környezetének támogatásához a [SIOS DataKeeper-fürt kiadása](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) a fürt megosztott kötetének működését a fürtcsomópontok által birtokolt független lemezek replikálásával hajtja végre. Az Azure nem támogatja natív módon a megosztott lemezeket, ezért a SIOS által biztosított megoldásokat igényel. 
 
 A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementálása. Az [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a központi szolgáltatások telepítési mintáját, hogy a/sapmnt globális könyvtárakat egy UNC elérési úton keresztül elérje. Azonban továbbra is ajánlott biztosítani, hogy a/sapmnt UNC-megosztás erősen elérhető legyen. Ezt a központi szolgáltatási példányon végezheti el a Windows Server feladatátvevő fürt és a kibővíthető fájlkiszolgáló (SOFS) és a Windows Server 2016 Közvetlen tárolóhelyek (S2D) funkciójának használatával. 
  > [!NOTE]

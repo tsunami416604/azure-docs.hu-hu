@@ -124,13 +124,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-cím és az állomásnevet, az alábbi parancsokban. A Hosts használatával előnye, hogy a fürt független a DNS, amely túl lehet egyetlen pont, a hibák válik.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra. A/etc/hosts használatának előnye, hogy a fürt független lesz a DNS-től, ami egyetlen meghibásodási pont lehet.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -198,26 +198,26 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 ## <a name="create-stonith-device"></a>STONITH-eszköz létrehozása
 
-A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
+A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi a Microsoft Azure. Egy egyszerű szolgáltatásnév létrehozásához kövesse az alábbi lépéseket.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
-1. Nyissa meg az Azure Active Directory panel  
-   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlő azonosítója**.
-1. Kattintson az alkalmazásregisztrációk
+1. A Azure Active Directory panel megnyitása  
+   Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a **bérlő azonosítója**.
+1. Kattintson Alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
 2. Válassza az alkalmazás típusa "web" lehetőséget, írja be a bejelentkezési URL-címet (például http:\//localhost), és kattintson a Hozzáadás gombra.  
-   A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
+   A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
 1. Jegyezze fel az értéket. Az egyszerű szolgáltatás **jelszavaként** van használatban
-1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A szolgáltatás felhasználóneveként (**Bejelentkezési azonosítóként** az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
+1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás AZONOSÍTÓját. A szolgáltatás felhasználóneveként (**Bejelentkezési azonosítóként** az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
 
-Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) használatával hozhatja létre
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik az Azure-erőforrások eléréséhez szükséges engedélyekkel. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) használatával hozhatja létre
 
-A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a tartalmat, amely alkalmazkodik c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 cserélje le az előfizetés azonosítóját. Ha több előfizetéssel rendelkezik, távolítsa el a második bejegyzés AssignableScopes.
+Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetéséhez kell igazítania, a c276fc76-9cd4-44c9-99a7-4fd71546436e és a e91d47c4-76f3-4271-a796-21b4ecfe3624 helyére az előfizetés azonosítóit kell cserélnie. Ha csak egy előfizetéssel rendelkezik, távolítsa el a második bejegyzést a AssignableScopes-ben.
 
 ```json
 {
@@ -241,22 +241,22 @@ A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** az egyéni szerepkör társítása az egyszerű szolgáltatáshoz
 
-Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
+Rendelje hozzá az előző fejezetben az egyszerű szolgáltatásnév számára létrehozott "Linux kerítési ügynök szerepkör" egyéni szerepkört. Ne használja többé a tulajdonosi szerepkört!
 
 1. Nyissa meg a következőt: https://portal.azure.com
-1. Nyissa meg az összes erőforrás panelen
-1. Válassza ki a virtuális gépet, az első fürtcsomópontra
-1. Kattintson a hozzáférés-vezérlés (IAM)
-1. Kattintson a szerepkör-hozzárendelés hozzáadása
-1. A "Linux időkorlát ügynök szerepkör" szerepkör kiválasztása
-1. Adja meg a fent létrehozott alkalmazás neve
+1. Nyissa meg az összes erőforrás panelt
+1. Válassza ki az első fürtcsomópont virtuális gépét.
+1. Kattintson a hozzáférés-vezérlés (IAM) elemre.
+1. Kattintson a szerepkör-hozzárendelés hozzáadása elemre.
+1. Válassza ki a "Linux kerítési ügynök szerepkör" szerepkört
+1. Adja meg a fent létrehozott alkalmazás nevét
 1. Kattintson a Save (Mentés) gombra.
 
-Ismételje meg a fenti lépéseket a második fürtcsomópontra.
+Ismételje meg a fenti lépéseket a második fürtcsomóponton.
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** a STONITH-eszközök létrehozása
 
-Miután szerkesztette az engedélyek a virtuális gépek, konfigurálhatja úgy a STONITH eszközöket a fürtben.
+A virtuális gépek engedélyeinek szerkesztése után a fürtben konfigurálhatja a STONITH-eszközöket.
 
 <pre><code>
 sudo pcs property set stonith-timeout=900

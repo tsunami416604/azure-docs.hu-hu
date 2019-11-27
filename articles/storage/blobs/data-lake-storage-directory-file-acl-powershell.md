@@ -380,7 +380,7 @@ A következő táblázat azt mutatja be, hogy a parancsmagok hogyan használhat�
 |Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item|
 |Set-AzDataLakeStoreItemOwner <br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Frissítés – AzDataLakeGen2Item|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Azure PowerShell használata az Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-ban.

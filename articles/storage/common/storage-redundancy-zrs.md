@@ -33,7 +33,7 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 - Nyugat-Európa
 - Közép-Franciaország
 - Kelet-Japán
-- Az Egyesült Királyság déli régiója
+- Egyesült Királyság déli régiója
 - USA középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -163,7 +163,7 @@ Ha a CLI-vel szeretne frissíteni a ZRS, hívja meg a következő parancsot:
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 - [Azure Storage replication (Azure Storage replikáció)](storage-redundancy.md)
 - [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](storage-redundancy-lrs.md)
 - [Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-hoz](storage-redundancy-grs.md)

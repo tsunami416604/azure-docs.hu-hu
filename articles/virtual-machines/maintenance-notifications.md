@@ -69,7 +69,7 @@ A következő esetekben ajánlott önkiszolgáló karbantartást használni:
 - Két frissítési tartomány (frissítési) között több mint 30 percnyi virtuális gép helyreállítási ideje szükséges. A frissítési tartományok közötti idő szabályozásához a virtuális gépek karbantartását egyszerre egy frissítési tartományon (UD) kell elindítania.
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 
 **K: Miért van szükség a virtuális gépek újraindítására?**

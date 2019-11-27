@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai a Instance Metadata Service számára. |
 | `api-version`  | Egy lekérdezési karakterlánc paraméter, amely a IMDS-végpont API-verzióját jelzi. Használja az API-verziót `2018-02-01` vagy újabb. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/ alkalmazás-azonosító URI-ja. |
 | `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében. |
 | `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/ alkalmazás-azonosító URI-ja. |
 | `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében.|
 | `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
@@ -391,9 +391,9 @@ A szabályozás korlátozásai az IMDS-végponton végrehajtott hívások szám�
 
 Az újrapróbálkozáshoz a következő stratégiát javasoljuk: 
 
-| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működés** |
+| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
+|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 

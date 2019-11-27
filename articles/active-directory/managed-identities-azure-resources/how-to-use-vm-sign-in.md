@@ -48,7 +48,7 @@ Az Azure-erőforrások felügyelt identitásai egy [egyszerű szolgáltatásnév
 
 Az Azure-erőforrásokhoz tartozó felügyelt identitások esetében a parancsfájl-ügyfélnek többé nem kell tennie, mert az Azure-erőforrások szolgáltatásnév felügyelt identitások területén tud bejelentkezni. 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az alábbi szkript a következőket mutatja be:
 

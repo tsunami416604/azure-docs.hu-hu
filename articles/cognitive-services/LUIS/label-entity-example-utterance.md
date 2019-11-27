@@ -87,7 +87,7 @@ Entitás kicímkézéséhez válassza ki az entitás nevét a szöveg alatt, és
 
 Ha a címkézés során hiba történik, az Entity paletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitás címkéje egy további szót mutat be a hiba alapján, és már rendelkezik címkézett alösszetevőkkel, akkor az Entity paletta használatával ecsetet adhat a szavak rövidebb időtartamára.
 
-Például:
+Példa:
 
 1. A pizza Type alösszetevő a "Cheese pizza with" kifejezéssel is rendelkezik, amely tartalmaz egy extra helytelen szót – "with"
 

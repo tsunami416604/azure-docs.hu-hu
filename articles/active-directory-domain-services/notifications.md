@@ -76,7 +76,7 @@ Riasztás feloldásakor a rendszer törli a riasztást a Azure Portalról. A leg
 
 Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, nem rendelkezik az Azure AD DS felügyelt tartományának szerkesztéséhez szükséges engedélyekkel. Kérje meg a globális rendszergazdát, hogy kérjen engedélyt az Azure AD DS erőforrásának szerkesztésére, vagy távolítsa el a címzettek listájáról.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Hogy miért?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Miért?
 
 Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról, hogy engedélyezi a `azure-noreply@microsoft.com`küldőjét.
 

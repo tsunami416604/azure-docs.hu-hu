@@ -47,7 +47,7 @@ Ez az általános REST-összekötő a következőket támogatja:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -57,19 +57,19 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **RestService**értékre kell beállítani. | Igen |
 | url | A REST-szolgáltatás alap URL-címe. | Igen |
 | enableServerCertificateValidation | Ellenőrzi, hogy a kiszolgálóoldali SSL-tanúsítvány érvényesíthető-e a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett érték **igaz**) |
 | authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt. | Igen |
-| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 ### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
 
 Állítsa a **authenticationType** tulajdonságot **alapértékre.** Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | userName | A REST-végpont eléréséhez használandó Felhasználónév. | Igen |
 | jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Igen |
@@ -102,11 +102,11 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Állítsa a **authenticationType** tulajdonságot **AadServicePrincipal**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Igen |
 | servicePrincipalKey | A Azure Active Directory alkalmazás kulcsának megadásához. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Igen |
 | aadResourceId | Határozza meg az HRE-erőforrást, amelyet az engedélyezéshez kér, például `https://management.core.windows.net`.| Igen |
 
 **Példa**
@@ -139,7 +139,7 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Állítsa a **authenticationType** tulajdonságot **ManagedServiceIdentity**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | aadResourceId | Határozza meg az HRE-erőforrást, amelyet az engedélyezéshez kér, például `https://management.core.windows.net`.| Igen |
 
@@ -171,7 +171,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok REST-ből való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **RestResource**értékre kell állítani. | Igen |
 | relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nem |
@@ -207,7 +207,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **RestSource**értékre kell állítani. | Igen |
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
@@ -309,7 +309,7 @@ A **tördelési szabályok** az adatkészletben olyan szótárként vannak defin
 
 A tördelési szabályokban **támogatott kulcsok** :
 
-| Paraméter | Leírás |
+| Jelmagyarázat | Leírás |
 |:--- |:--- |
 | AbsoluteUrl | Azt az URL-címet adja meg, amely a következő kérést adja ki. **Abszolút URL-cím vagy relatív URL-cím**is lehet. |
 | QueryParameters. *request_query_parameter* VAGY QueryParameters [' request_query_parameter '] | a "request_query_parameter" felhasználó által definiált, amely egy lekérdezési paraméter nevére hivatkozik a következő HTTP-kérelem URL-címében. |
@@ -317,7 +317,7 @@ A tördelési szabályokban **támogatott kulcsok** :
 
 A tördelési szabályokban **támogatott értékek** :
 
-| Érték | Leírás |
+| Value (Díj) | Leírás |
 |:--- |:--- |
 | Fejlécek. *response_header* VAGY fejlécek ["response_header"] | a "response_header" felhasználó által definiált, amely a jelenlegi HTTP-válaszban egy fejléc nevére hivatkozik, amelynek értéke a következő kérelem kibocsátására szolgál majd. |
 | A "$" kezdetű JSONPath kifejezés (amely a válasz törzsének gyökerét jelöli) | A válasz törzsének csak egy JSON-objektumot kell tartalmaznia. A JSONPath kifejezésnek egyetlen primitív értéket kell visszaadnia, amely a következő kérelem kibocsátására szolgál majd. |

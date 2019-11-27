@@ -32,7 +32,7 @@ A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő 
 - Délkelet-Ázsia
 - Észak-Európa
 - Nyugat-Európa
-- Az Egyesült Királyság déli régiója
+- Egyesült Királyság déli régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA középső régiója
@@ -155,7 +155,7 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
 
 A támogatási képviselő felveszi Önnel a kapcsolatot a segítség biztosításához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

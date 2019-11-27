@@ -268,11 +268,11 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)
-* [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)

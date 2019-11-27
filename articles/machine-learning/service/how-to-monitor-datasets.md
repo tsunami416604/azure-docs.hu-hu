@@ -61,7 +61,7 @@ Létrehozhat egy adatkészlet-figyelőt az adathalmaz új adateltolódásának �
 
 Elméletileg három fő forgatókönyv áll rendelkezésre az adatkészlet-figyelők beállításához Azure Machine Learningban.
 
-Forgatókönyv | Leírás
+Alkalmazási helyzet | Leírás
 ---|---
 A modellnek a modell betanítási adatokból való eltolódására szolgáló adatok figyelése | Ennek a forgatókönyvnek az eredményei a modell pontosságára szolgáló proxy figyelésére használhatók, mivel a modell pontossága csökkenti, ha a kiszolgált adatok a betanítási adatokból származnak.
 Idősorozat-adatkészlet figyelése egy korábbi időszakból származó eltolódáshoz. | Ez a forgatókönyv általánosabb, és a modell kiépítése során a felsőbb rétegbeli vagy az ahhoz kapcsolódó adatkészletek figyelésére használható.  A célként megadott adatkészletnek időbélyeg-oszloptal kell rendelkeznie, míg az alapkonfiguráció adatkészlete bármely táblázatos adatkészlet lehet, amely közösen tartalmazza a célként megadott adatkészletet.
@@ -131,11 +131,11 @@ Ez a táblázat az adatkészlet-figyelő alapszintű beállításait tartalmazza
 
 | Beállítás | Leírás | Tippek | Változtatható | 
 | ------- | ----------- | ---- | ------- | 
-| Name (Név) | Az adatkészlet figyelő neve. | | Nem |
+| Név | Az adatkészlet figyelő neve. | | Nem |
 | Alapterv-adatkészlet | Táblázatos adatkészlet, amely a célként megadott adatkészlet időbeli összehasonlításához használt alapkonfigurációként fog megjelenni. | Az alapadatkészletnek a célként megadott adatkészlettel közös szolgáltatásokkal kell rendelkeznie. Az alaptervet általában a modell betanítási adatkészletére vagy a célként megadott adatkészlet egy szeletére kell beállítani. | Nem |
 | Cél adatkészlet | A táblázatos adatkészlet, amely az adateltolódás elemzésére szolgáló időbélyeg-oszloppal van megadva. | A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapadatkészlet esetében, és `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni. | Nem | 
 | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Módosítsa ezt a beállítást úgy, hogy az az alaptervhez hasonló adatméretet tartalmazzon. | Nem | 
-| Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+| Jellemzők | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
 | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
 
 ### <a name="monitor-settings"></a>Beállítások figyelése
@@ -144,10 +144,10 @@ Ezek a beállítások az ütemezett adatkészlet-figyelő folyamathoz tartoznak,
 
 | Beállítás | Leírás | Tippek | Változtatható | 
 | ------- | ----------- | ---- | ------- |
-| Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
+| Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
 | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
-| E-mail cím | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
-| Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
+| E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
+| Küszöb | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
 
 ### <a name="backfill-settings"></a>Backfill-beállítások
 
@@ -307,7 +307,7 @@ Meglévő műveleti csoportot is használhat, vagy létrehozhat egy újat, hogy 
 
 ![Új műveleti csoport](media/how-to-monitor-datasets/action-group.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Korlátozások és ismert problémák:
 

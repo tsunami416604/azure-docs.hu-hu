@@ -54,7 +54,7 @@ Két támogatott adatfolyam-betöltési típus létezik:
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Válassza ki a megfelelő adatfolyam-betöltési típust
 
-|   |Eseményközpont  |Egyéni betöltés  |
+|   |Event Hubs-eseményközpontok  |Egyéni betöltés  |
 |---------|---------|---------|
 |Adatfeldolgozási kezdeményezés és a lekérdezéshez rendelkezésre álló adatmennyiség közötti késleltetés   |    hosszabb késleltetés     |   rövidebb késleltetés      |
 |Fejlesztési terhelés    |   gyors és egyszerű telepítés, nincs fejlesztési terhelés    |   magas fejlesztési terhelés az alkalmazás számára a hibák kezeléséhez és az adatkonzisztencia biztosításához     |

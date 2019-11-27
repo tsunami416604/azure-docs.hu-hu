@@ -23,7 +23,7 @@ A *gitrepo típusú* kötet csatlakoztat egy könyvtárat, és a tároló indít
 
 *Gitrepo típusú* -kötet csatlakoztatásakor a kötet konfigurálásához három tulajdonságot állíthat be:
 
-| Tulajdonság | Kötelező | Leírás |
+| Tulajdonság | Szükséges | Leírás |
 | -------- | -------- | ----------- |
 | `repository` | Igen | A klónozott git-tárház teljes URL-címe, beleértve a `http://` vagy `https://`is.|
 | `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhatja a "`..`" karaktert.  Ha a "`.`" lehetőséget választja, a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |

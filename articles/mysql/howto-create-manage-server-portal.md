@@ -17,9 +17,9 @@ ms.locfileid: "74534060"
 Ez a cikk bemutatja, hogyan kezelheti a MySQL-kiszolgálók kigyulladt-adatbázisát. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
 
 ## <a name="sign-in"></a>Bejelentkezés
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-## <a name="create-a-server"></a>A kiszolgáló létrehozása
+## <a name="create-a-server"></a>Kiszolgáló létrehozása
 A rövid útmutatóból megtudhatja [, hogyan](quickstart-create-mysql-server-database-using-azure-portal.md) hozhat létre és kezdjen el egy Azure Database for MySQL-kiszolgálót.
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
@@ -94,7 +94,7 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy ez a kiszolgáló, amelyet törölni szeretne.
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![Törlés megerősítése](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > A kiszolgáló törlése visszafordíthatatlan.

@@ -56,7 +56,7 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 Vannak olyan változtatások, amelyek különleges szempontokat igényelnek a tesztelés során, olyan egyszerű technikáktól, mint például a felhasználók célzott részhalmazának bevezetése egy párhuzamos tesztelési bérlő módosításának üzembe helyezéséhez. Ha még nem alkalmazott tesztelési stratégiát, az alábbi táblázatban szereplő irányelvek alapján meg kell határoznia a tesztelési módszert:
 
-| Forgatókönyv| Ajánlás |
+| Alkalmazási helyzet| Ajánlás |
 |-|-|
 |A hitelesítési típus módosítása összevontról PHS/PTA-re vagy fordítva| A [szakaszos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) bevezetéssel tesztelheti a hitelesítési típus módosításának hatását.|
 |Új feltételes hozzáférési (CA-) házirend vagy Identity Protection-házirend bevezetése|Hozzon létre egy új HITELESÍTÉSSZOLGÁLTATÓI szabályzatot, és rendelje hozzá a felhasználók teszteléséhez.|

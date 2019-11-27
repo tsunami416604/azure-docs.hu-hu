@@ -29,7 +29,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 > [!NOTE]  
 > Előfordulhat, hogy a HDInsight szolgáltatás alapértelmezett verziója értesítés nélkül változhat. Ha a verzió-függőséggel rendelkezik, adja meg a HDInsight verzióját, amikor létrehozza a fürtöket a .NET SDK-val a Azure PowerShell és a klasszikus Azure CLI használatával.
 
-| Összetevő              | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett)     |
+| Component (Összetevő)              | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett)     |
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop és fonal | 3.1.1         | 2.7.3                       |
 | Apache TEZ             | 0.9.1         | 0.7.0                       |
@@ -42,7 +42,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
 | Apache Storm           | -             | 1.1.0                       |
-| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
@@ -70,7 +70,7 @@ A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lej
 
 A következő táblázat felsorolja a Azure Portalban elérhető HDInsight-verziókat, valamint az egyéb központi telepítési módszereket, például a PowerShellt és a .NET SDK-t.
 
-| HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
+| HDInsight verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | December 31., 2020 |December 31., 2020 |Igen |Igen |
@@ -84,15 +84,15 @@ A Spark 2,1, 2,2 & Kafka 1,0 támogatásának érvényessége 2020. június 30-�
 
 A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem** érhetők el a Azure Portalban.
 
-| HDInsight verziója | HDP verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
+| HDInsight verziója | HDP verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |2018. június 28. |Igen |Nem |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |December 29., 2016 |2018. január 9. |Igen |Nem |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |Március 29., 2016 |December 29., 2016 |2018. január 9. |Igen |Nem |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |
 | HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS vagy Windows Server 2012 R2 |Február 18., 2015 |2016. március 1. |2017. április 1. |Igen |Nem |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |2016. június 30. |Igen |Nem |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |Június 30., 2015 |Igen |Nem |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |Június 30., 2016 |Igen |Nem |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |Június 30., 2015 |Igen |Nem |
 | HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |Október 28., 2013 |2014. május 12. |2015. május 31. |Igen |Nem |
 | HDInsight 1,6 |HDP 1,1 | |Október 28., 2013 |Április 26., 2014 |2015. május 31. |Nem |Nem |
 
@@ -107,7 +107,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
 
     A múltban csak helyi rendszergazdai felhasználóval és helyi SSH-felhasználóval hozhat létre HDInsight-fürtöket. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést, ha a HDInsight-fürtöket a saját Active Directoryba integrálja, beleértve a helyszíni Active Directory, Azure Active Directory Domain Services vagy Active Directoryt a IaaS virtuális gép. A fürt tartományi rendszergazdája engedélyezheti a felhasználóknak, hogy a saját vállalati (tartományi) felhasználónevét és jelszavát használják a fürt eléréséhez.
 
-    További információkért lásd:
+    További információ eléréséhez lásd:
 
     - [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](./domain-joined/hdinsight-security-overview.md)
     - [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +119,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
   - Integráció az Apache Ranger-nal a kaptár, a Spark SQL és a fonalas várólisták engedélyezéséhez.
   - Megadhatja a fájlok és mappák hozzáférés-vezérlését.
 
-    További információkért lásd:
+    További információ eléréséhez lásd:
 
   - [Apache Hive házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
 

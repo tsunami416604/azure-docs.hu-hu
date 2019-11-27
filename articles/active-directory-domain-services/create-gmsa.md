@@ -26,7 +26,7 @@ Ehelyett egy csoportosan felügyelt szolgáltatásfiók (gMSA) hozható létre a
 
 Ez a cikk bemutatja, hogyan hozhat létre gMSA egy Azure AD DS felügyelt tartományban Azure PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 

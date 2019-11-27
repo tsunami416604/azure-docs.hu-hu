@@ -24,7 +24,7 @@ A Azure PowerShell használatával szüneteltetheti a számításokat Azure SQL 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -56,7 +56,7 @@ Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó a
 
 Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
 3. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
 

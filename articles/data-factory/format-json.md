@@ -20,13 +20,13 @@ ms.locfileid: "74548260"
 
 Kövesse ezt a cikket, ha **elemezni szeretné a JSON-fájlokat, vagy írja be az adatbevitelt JSON formátumba**. 
 
-A JSON formátum a következő összekötők esetén támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Felhőalapú tárolás](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
+A JSON formátum a következő összekötők esetén támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a JSON-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-| Tulajdonság         | Leírás                                                  | Kötelező |
+| Tulajdonság         | Leírás                                                  | Szükséges |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Az adatkészlet Type tulajdonságát **JSON**-ra kell beállítani. | Igen      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz a saját hely típusa és a `location`alatt támogatott tulajdonságok tartozik. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
@@ -67,7 +67,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság      | Leírás                                                  | Kötelező |
+| Tulajdonság      | Leírás                                                  | Szükséges |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | A másolási tevékenység forrásának Type tulajdonságát **JSONSource**értékre kell állítani. | Igen      |
 | storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott olvasási beállításokkal a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
@@ -76,7 +76,7 @@ A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdons�
 
 A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság      | Leírás                                                  | Kötelező |
+| Tulajdonság      | Leírás                                                  | Szükséges |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | A másolási tevékenység forrásának Type tulajdonságát **JSONSink**értékre kell állítani. | Igen      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi **JSON írási beállítások** táblázatát. | Nem       |
@@ -84,7 +84,7 @@ A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdon
 
 Támogatott **JSON írási beállítások** a `formatSettings`alatt:
 
-| Tulajdonság      | Leírás                                                  | Kötelező                                              |
+| Tulajdonság      | Leírás                                                  | Szükséges                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | A formatSettings típusát **JsonWriteSetting**értékre kell beállítani. | Igen                                                   |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |

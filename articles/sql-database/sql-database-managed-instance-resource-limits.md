@@ -78,7 +78,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[a fájlméret növelése a jobb IO-teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
+| Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 
@@ -135,9 +135,9 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Előfizetés típusa| Felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
 |Utólagos, használatalapú fizetés|3|320|
-|CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
+|Felhőszolgáltató (CSP) |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
-|Enterprise Dev/Test|3|320|
+|Nagyvállalati Szerződés – Fejlesztés és tesztelés|3|320|
 |EA|8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
@@ -178,7 +178,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Létrehozás** gombra.
+7. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

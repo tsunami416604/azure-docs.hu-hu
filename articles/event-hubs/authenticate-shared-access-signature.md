@@ -20,7 +20,7 @@ A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön ált
 
 - Az az intervallum, ameddig az SAS érvényes, beleértve a kezdési időt és a lejárati időt.
 - Az SAS által megadott engedélyek. Egy Event Hubs-névtér SAS-je például megadhatja a figyelési engedélyt, a küldési engedélyt azonban nem.
-- Csak olyan ügyfelek érvényes hitelesítő adatokat küldhet adatokat egy eseményközpontba.
+- Csak az érvényes hitelesítő adatokat tartalmazó ügyfelek küldhetnek adatokat az Event hub-nak.
 - Az ügyfél nem tud megszemélyesíteni egy másik ügyfelet.
 - Egy Rouge-ügyfél blokkolható az adatoknak az Event hub szolgáltatásba való küldéséhez.
 
@@ -179,13 +179,13 @@ private static string createToken(string resourceUri, string keyName, string key
 ```
 
 ## <a name="authenticating-event-hubs-publishers-with-sas"></a>Event Hubs-közzétevők hitelesítése SAS használatával 
-Egy esemény-közzétevő egy eseményközpontba egy virtuális végpontot határozza meg. A közzétevő csak akkor használható, ha üzeneteket küld az Event hubhoz, és nem fogad üzeneteket.
+Egy esemény-közzétevő definiál egy virtuális végpontot az Event hub számára. A közzétevő csak akkor használható, ha üzeneteket küld az Event hubhoz, és nem fogad üzeneteket.
 
-Általában egy eseményközpontba alkalmaz egy közzétevő ügyfelenként. Sem a kiadók az eseményközpontok felé küldött összes üzenet a várólistán lévő adott eseményközpontban. A kiadók részletes hozzáférés-vezérlést tesznek lehetővé.
+Az Event hub jellemzően egy közzétevőt alkalmaz egy ügyfélen. Az Event hub bármelyik közzétevője számára küldött összes üzenet az várólistán lévő belül van. A kiadók részletes hozzáférés-vezérlést tesznek lehetővé.
 
-Minden Event Hubs-ügyfél hozzá van rendelve egy egyedi jogkivonatot, amely az ügyfél fel a rendszer. A jogkivonatok úgy jönnek létre, hogy mindegyik egyedi jogkivonat különböző egyedi közzétevőhöz biztosít hozzáférést. A jogkivonatot birtokló ügyfelek csak egyetlen közzétevőnek küldhetnek, és nem rendelkezhetnek más közzétevővel. Ha több ügyfél ugyanazt a jogkivonatot használja, akkor mindegyik megosztja a közzétevőt.
+Minden Event Hubs ügyfélhez egy egyedi token van rendelve, amely fel van töltve az ügyfélre. A jogkivonatok úgy jönnek létre, hogy mindegyik egyedi jogkivonat különböző egyedi közzétevőhöz biztosít hozzáférést. A jogkivonatot birtokló ügyfelek csak egyetlen közzétevőnek küldhetnek, és nem rendelkezhetnek más közzétevővel. Ha több ügyfél ugyanazt a jogkivonatot használja, akkor mindegyik megosztja a közzétevőt.
 
-Minden token SAS-kulccsal van társítva. Általában minden jogkivonatok ugyanazzal a kulccsal van bejelentkezve. Az ügyfelek nem ismerik a kulcsot, ami megakadályozza az ügyfelek számára a gyártási jogkivonatokat. Az ügyfelek ugyanazon jogkivonatokon működnek, amíg lejárnak.
+Minden token SAS-kulccsal van társítva. Általában minden token ugyanazzal a kulccsal van aláírva. Az ügyfelek nem ismerik a kulcsot, ami megakadályozza az ügyfelek számára a gyártási jogkivonatokat. Az ügyfelek ugyanazon jogkivonatokon működnek, amíg lejárnak.
 
 Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatározni, hogy csak az Event Hubs küldésére vagy közzétételére legyen szükség, meg kell határoznia egy küldési engedélyezési szabályt. Ezt névtér szintjén lehet elvégezni, vagy részletesebb hatókört adhat egy adott entitásnak (Event hubok-példány vagy témakör). Az ilyen szemcsés eléréssel hatókörbe tartozó ügyfelet vagy alkalmazást Event Hubs közzétevőnek nevezzük. Ehhez kövesse az alábbi lépéseket:
 
@@ -207,16 +207,16 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 
 
 > [!NOTE]
-> Bár ez nem ajánlott, az eszközök olyan jogkivonatokkal is felhasználhatók, amelyek hozzáférést biztosítanak az Event hub-hoz vagy a névtérhez. Minden olyan eszköz, amelyik ezt a jogkivonatot tárolja, közvetlenül is küldhet üzeneteket az adott Event hub-nak. Továbbá az eszköz nem tiltólistán ennek az eseményközpontnak küldjön.
+> Bár ez nem ajánlott, az eszközök olyan jogkivonatokkal is felhasználhatók, amelyek hozzáférést biztosítanak az Event hub-hoz vagy a névtérhez. Minden olyan eszköz, amelyik ezt a jogkivonatot tárolja, közvetlenül is küldhet üzeneteket az adott Event hub-nak. Emellett az eszköz nem lehet feketelistára állítani az adott Event hubhoz való küldéssel.
 > 
 > A konkrét és a részletes hatóköröket mindig ajánlott megadni.
 
 > [!IMPORTANT]
-> A jogkivonatok létrehozása után, minden ügyfél saját egyedi tokenhez van kiépítve.
+> A jogkivonatok létrehozása után minden ügyfél saját egyedi jogkivonattal van kiépítve.
 >
-> Amikor az ügyfél adatokat küld egy Event hubhoz, a kérelmét a jogkivonattal címkézi. Hogy megakadályozza a lehallgatást, és a jogkivonat ellophatják a támadók, az ügyfél és az eseményközpont közötti kommunikáció egy titkosított csatornán keresztül kell történnie.
+> Amikor az ügyfél adatokat küld egy Event hubhoz, a kérelmét a jogkivonattal címkézi. Ha meg szeretné akadályozni, hogy a támadók lehallgatják és ellopják a tokent, akkor az ügyfél és az Event hub közötti kommunikációnak titkosított csatornán kell történnie.
 > 
-> Ha a jogkivonat támadók ellopják, a támadó az ügyfél, amelynek jogkivonat ellopott tudja megszemélyesíteni. A közzétevők feketelistára állítása az ügyfél használhatatlanul jelenik meg, amíg nem kap egy másik közzétevőt használó új jogkivonatot.
+> Ha egy támadó ellopja a jogkivonatot, a támadó megszemélyesítheti az ügyfelet, amelynek a jogkivonatát ellopták. A közzétevők feketelistára állítása az ügyfél használhatatlanul jelenik meg, amíg nem kap egy másik közzétevőt használó új jogkivonatot.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 

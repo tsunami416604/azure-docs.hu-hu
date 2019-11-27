@@ -50,7 +50,7 @@ Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltat�
 
    ![Szabály beállítása a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Value (Díj) | Leírás |
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
    | **Címelőtag** | <*cél – címek*> | A célrendszer címe, ahová a forgalmat el szeretné hajtani. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. |
@@ -72,7 +72,7 @@ Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltat�
 
    **Hálózati szabályok gyűjteményének tulajdonságai**
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Value (Díj) | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | <*Network-Rule-Collection-name*> | A hálózati szabály gyűjteményének neve |
    | **Priority (Prioritás)** | <*prioritási szintű*> | A szabály gyűjteményének futtatásához használandó prioritási sorrend. További információ: [Mi a Azure Firewall fogalmak](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
@@ -81,7 +81,7 @@ Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltat�
 
    **Hálózati szabály tulajdonságai**
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Value (Díj) | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | <*Network-rule-name*> | A hálózati szabály neve |
    | **Protocol (Protokoll)** | <*kapcsolatok – protokollok*> | A használandó kapcsolódási protokollok. Ha például NSG-szabályokat használ, válassza a **TCP** és az **UDP**beállítást, nem csak a **TCP protokollt**. |

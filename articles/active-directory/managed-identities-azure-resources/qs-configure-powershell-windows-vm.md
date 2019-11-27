@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e17b4a3f71e67b99bfbd4c52edc00f98d549ef2
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f24c89477d71df3f497590b49841403576343bd4
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183695"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547218"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure-erőforrásokhoz a PowerShell használatával
 
@@ -34,9 +34,9 @@ Ebben a cikkben a PowerShell használatával megtudhatja, hogyan hajthatja végr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Telepítés [az Azure PowerShell legújabb verzióját](/powershell/azure/install-az-ps) Ha még nem tette.
+- Ha még nem tette meg [, telepítse a Azure PowerShell legújabb verzióját](/powershell/azure/install-az-ps) .
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
@@ -144,7 +144,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 1. Tekintse át a következő Azure-beli VM-gyors útmutatókat, csak a szükséges részeket ("Bejelentkezés az Azure-ba", "erőforráscsoport létrehozása", "hálózatkezelési csoport létrehozása", "Create The VM"). 
   
-    Ha a "virtuális gép létrehozása" szakaszra kattint, akkor a [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) parancsmag szintaxisa némileg módosul. Adja hozzá a `-IdentityType UserAssigned` és `-IdentityID` paramétereket a virtuális gép felhasználó által hozzárendelt identitással való kiépítéséhez.  Cserélje le `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`és `<USER ASSIGNED IDENTITY NAME>` értékét a saját értékeire.  Például:
+    Ha a "virtuális gép létrehozása" szakaszra kattint, akkor a [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) parancsmag szintaxisa némileg módosul. Adja hozzá a `-IdentityType UserAssigned` és `-IdentityID` paramétereket a virtuális gép felhasználó által hozzárendelt identitással való kiépítéséhez.  Cserélje le `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`és `<USER ASSIGNED IDENTITY NAME>` értékét a saját értékeire.  Példa:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
@@ -210,7 +210,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
+- [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:
   
   - [Windows rendszerű virtuális gép létrehozása a PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md) 

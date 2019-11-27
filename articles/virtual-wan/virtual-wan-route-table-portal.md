@@ -19,9 +19,9 @@ ms.locfileid: "74534136"
 
 Ebből a cikkből megtudhatja, hogyan irányíthatja át a forgalmat egy olyan ág (helyszíni hely) felé, amely a virtuális WAN-hubhoz csatlakozik egy küllős vnet egy hálózati virtuális berendezésen (NVA) keresztül.
 
-![Virtuális WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
+![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
 

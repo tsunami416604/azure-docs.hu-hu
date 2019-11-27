@@ -29,7 +29,7 @@ A Azure Logic Apps és az FTP-összekötővel olyan automatizált feladatokat é
 
 Használhat olyan eseményindítókat, amelyek válaszokat kapnak az FTP-kiszolgálóról, és más műveletek számára elérhetővé teszik a kimenetet. Az FTP-kiszolgálón található fájlok kezelésére a Logic apps futtatási műveletei használhatók. Más műveletek is használhatók az FTP-műveletek kimenetének használatával. Ha például rendszeresen letölti a fájlokat az FTP-kiszolgálóról, e-mailt küldhet a fájlokról és azok tartalmáról az Office 365 Outlook Connector vagy a Outlook.com Connector használatával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 * Az FTP-összekötő csak az SSL-en keresztüli explicit FTP-t (FTPS) támogatja, és nem kompatibilis az implicit FTPS.
 

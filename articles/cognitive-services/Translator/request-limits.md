@@ -34,7 +34,7 @@ A következő táblázat a Translator Text API egyes műveleteinek tömb elemeit
 | Észlelés | 10,000 | 100 |   50 000 |
 | BreakSentence | 10,000    | 100 | 50 000 |
 | Keresés a szótárban| 100 |  10  | 1,000 |
-| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2,000 |
+| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2 000 |
 
 ## <a name="character-limits-per-hour"></a>Karakteres korlátok óránként
 
@@ -49,8 +49,8 @@ Ha eléri vagy meghaladja ezeket a korlátokat, vagy a kvóta egy részének rö
 | F0 | 2 000 000 karakter/óra |
 | S1 | 40 000 000 karakter/óra |
 | S2/C2 | 40 000 000 karakter/óra |
-| S3 / C3 | 120 000 000 karakter/óra |
-| S4 / C4 | 200 000 000 karakter/óra |
+| S3/C3 | 120 000 000 karakter/óra |
+| S4/C4 | 200 000 000 karakter/óra |
 
 A [több szolgáltatásra vonatkozó előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) korlátai megegyeznek az S1 szinttel.
 
@@ -70,7 +70,7 @@ A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator
 | német | de | 290 |
 | olasz | it | 280 |
 | japán | ja | 150 |
-| portugál | pt | 290 |
+| portugál | PT | 290 |
 | spanyol | es | 280 |
 | olasz | it | 280 |
 | thai | adik | 258 |

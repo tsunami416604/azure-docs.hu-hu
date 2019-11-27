@@ -52,7 +52,7 @@ A parancssori szintaxis a példányok létrehozásához használt Azure API vagy
 
 ### <a name="examples"></a>Példák
 
-|    |  Azure CLI   | Portál | Sablon | 
+|    |  Azure parancssori felület (CLI)   | Portál | Sablon | 
 | ---- | ---- | --- | --- |
 | Egyetlen parancs | `--command-line "python myscript.py arg1 arg2"` | **Parancs felülbírálása**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | Több parancs | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Parancs felülbírálása**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |

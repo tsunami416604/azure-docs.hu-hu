@@ -39,7 +39,7 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, majd **váltson át a könyvtárra**.
 1. Miután megnyitotta a **címtár + előfizetés** panelt, válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást, a **Kedvencek** vagy az **összes címtár** listából.
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menüben, majd válassza a **Azure Active Directory**lehetőséget.

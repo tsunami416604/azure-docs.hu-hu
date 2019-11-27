@@ -42,9 +42,9 @@ A hatókörrel rendelkező szinkronizálási beállítások konfigurálásához 
 
 | Műveletek | | |
 |--|--|--|
-| Azure AD DS felügyelt tartomány létrehozása és hatókörön belüli szinkronizálás konfigurálása | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Hatókörön belüli szinkronizálás módosítása | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Hatókörön belüli szinkronizálás letiltása | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS felügyelt tartomány létrehozása és hatókörön belüli szinkronizálás konfigurálása | [Azure Portalra](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Hatókörön belüli szinkronizálás módosítása | [Azure Portalra](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Hatókörön belüli szinkronizálás letiltása | [Azure Portalra](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja.

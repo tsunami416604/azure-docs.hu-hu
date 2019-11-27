@@ -46,7 +46,7 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fi�
    - **Előfizetés**: válassza ki azt az előfizetést, amely a felhasználó által hozzárendelt felügyelt identitást hozza létre
    - **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, amely tartalmazza a felhasználóhoz rendelt felügyelt identitást, vagy válassza a **meglévő használata** lehetőséget a felhasználó által hozzárendelt felügyelt identitás létrehozásához egy meglévő erőforráscsoporthoz.
    - **Hely**: válasszon egy helyet a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati**régiójában.
-4. Kattintson a **Létrehozás** gombra.
+4. Kattintson a  **Create** (Létrehozás) gombra.
 
 ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

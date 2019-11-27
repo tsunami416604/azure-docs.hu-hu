@@ -53,7 +53,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 2. Livestream-munkamenet létrehozása egy vadászati lekérdezésből:
     
     1. A **lekérdezések** lapon keresse meg a használni kívánt vadászati lekérdezést.
-    2. Kattintson a jobb gombbal a lekérdezésre, és válassza a **Hozzáadás a livestream-hoz**lehetőséget. Például:
+    2. Kattintson a jobb gombbal a lekérdezésre, és válassza a **Hozzáadás a livestream-hoz**lehetőséget. Példa:
     
     > [!div class="mx-imgBorder"]
     > ![livestream-munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-from-query.png)
@@ -83,7 +83,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 
 1. A Azure Portal navigáljon a **Sentinel** > **veszélyforrások kezelése** > **Hunting** > **livestream** lapon.
 
-2. Válassza ki a megtekinteni vagy szerkeszteni kívánt livestream-munkamenetet. Például:
+2. Válassza ki a megtekinteni vagy szerkeszteni kívánt livestream-munkamenetet. Példa:
     
     > [!div class="mx-imgBorder"]
     > ![livestream-munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-tab.png)
@@ -92,7 +92,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Értesítések fogadása új események bekövetkezésekor
 
-Mivel az új eseményekhez tartozó livestream-értesítések Azure Portal értesítéseket használnak, a Azure Portal használatakor ezek az értesítések jelennek meg. Például:
+Mivel az új eseményekhez tartozó livestream-értesítések Azure Portal értesítéseket használnak, a Azure Portal használatakor ezek az értesítések jelennek meg. Példa:
 
 ![Azure Portal értesítés a livestream-ról](./media/livestream/notification.png)
 

@@ -134,7 +134,7 @@ Az Azure AD két "feladó" címet használ: <o365mc@email2.microsoft.com>, amely
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Vállalati alkalmazás lejárati tanúsítványának értesítései](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Vállalati alkalmazás-kiépítés szolgáltatási értesítések
+- Vállalati alkalmazások kiépítési szolgáltatásával kapcsolatos értesítések
 
 Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket küld, és hogy hol keresse meg őket:
 

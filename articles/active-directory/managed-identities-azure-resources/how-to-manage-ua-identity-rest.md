@@ -67,7 +67,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Kérelem törzse**
 
-|Name (Név)  |Leírás  |
+|Név  |Leírás  |
 |---------|---------|
 |location     | Kötelező. Erőforrás helye.        |
 

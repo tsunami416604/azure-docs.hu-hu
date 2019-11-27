@@ -48,7 +48,7 @@ Most, hogy megkapta a log Analytics-munkaterület AZONOSÍTÓját és az elsődl
 
 Az alábbi példák két módszert mutatnak be egy olyan tároló-csoport létrehozására, amely egyetlen [Fluent][fluentd] -tárolóval rendelkezik: az Azure CLI és az Azure CLI egy YAML sablonnal. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 Az Azure CLI-vel való üzembe helyezéshez a `--log-analytics-workspace` és `--log-analytics-workspace-key` paramétereket az az [Container Create][az-container-create] parancsban kell megadni. Cserélje le a két munkaterület-értéket az előző lépésben lekért értékekre (és frissítse az erőforráscsoport nevét) a következő parancs futtatása előtt.
 

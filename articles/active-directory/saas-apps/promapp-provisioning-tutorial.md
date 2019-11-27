@@ -78,11 +78,11 @@ Az Azure AD-vel való automatikus Promapp konfigurálása előtt hozzá kell adn
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
 2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Promapp az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 

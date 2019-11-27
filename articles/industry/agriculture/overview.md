@@ -46,7 +46,7 @@ Az Azure FarmBeats adatközpont egy API-réteg, amely lehetővé teszi különb�
 
 Az adatközpontra épülő minta megoldás, amely a felhasználói felületet és a modell fejlesztését szorgalmazza. Ez a webalkalmazás kihasználja az API-kat, hogy bemutassa a betöltött érzékelői adatokat diagramokként és a modell kimenetének megjelenítésekor. A Gyorssegéd használatával például gyorsan létrehozhat egy farmot, és egyszerűen beszerezhet egy vegetációs index-térképet vagy az adott farmhoz tartozó érzékelő elhelyezési térképet.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 
 További információért látogasson el az Azure FarmBeats- [blogjára](https://aka.ms/AzureFarmBeats) és- [fórumokra](https://aka.ms/FarmBeatsMSDN) .
 

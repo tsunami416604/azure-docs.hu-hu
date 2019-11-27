@@ -33,7 +33,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure-Cognitive Search keresése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
 3. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **Web** > **Azure Cognitive Search**használatával.
 
