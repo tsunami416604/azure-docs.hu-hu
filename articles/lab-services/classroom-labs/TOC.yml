@@ -72,8 +72,6 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
           href: how-to-enable-nested-virtualization-template-vm.md
-        - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
-          href: how-to-enable-multi-vm-environment.md
     - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
       items:
         - name: Osztályterem-tesztkörnyezetek elérése
