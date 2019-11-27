@@ -1,6 +1,6 @@
 ---
-title: PHP (Laravel) with MySQL - Azure App Service | Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban. Laravel is used in the tutorial.
+title: PHP (Laravel) MySQL-vel – Azure App Service | Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban. A Laravel az oktatóanyagban van használatban.
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -22,17 +22,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480951"
 ---
-# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Tutorial: Build a PHP and MySQL app in Azure
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása az Azure-ban
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. To deploy to App Service on _Linux_, see [Build a PHP and MySQL app in Azure App Service on Linux](./containers/tutorial-php-mysql-app.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _linuxon_app Service való üzembe helyezéssel kapcsolatban lásd: [PHP-és MySQL-alkalmazás létrehozása Linuxon Azure app Service](./containers/tutorial-php-mysql-app.md).
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. This tutorial shows how to create a PHP app in Azure and connect it to a MySQL database. When you're finished, you'll have a [Laravel](https://laravel.com/) app running on Azure App Service.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást az Azure-ban, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Ha elkészült, Azure App Service fut egy [Laravel](https://laravel.com/) -alkalmazás.
 
 ![Az Azure App Service-ben futó PHP-alkalmazás](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * MySQL-adatbázis létrehozása az Azure-ban
@@ -93,7 +93,7 @@ Ebben a lépésben egy Laravel-mintaalkalmazásra tesz szert, konfigurálja anna
 
 A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.
 
-Futtassa a következő parancsot a minta tárház klónozásához.
+Futtassa a következő parancsot a mintatárház klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/laravel-tasks
@@ -123,7 +123,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-A [Laravel-környezet konfigurációjával](https://laravel.com/docs/5.4/configuration#environment-configuration) foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a _.env_ fájlt.
+A _Laravel-környezet konfigurációjával_ foglalkozó cikkben tekinthet meg információt arról, hogy a Laravel hogyan használja a [.env](https://laravel.com/docs/5.4/configuration#environment-configuration) fájlt.
 
 ### <a name="run-the-sample-locally"></a>A minta futtatása helyben
 
@@ -157,7 +157,7 @@ A PHP-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot a
 
 Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL-ben](/azure/mysql). Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -384,17 +384,17 @@ A helyi terminálablakban használja a `php artisan` parancsot egy új alkalmaz�
 php artisan key:generate --show
 ```
 
-In the Cloud Shell, set the application key in the App Service app by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) command. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
+A Cloud Shellban állítsa be az alkalmazás kulcsát a App Service alkalmazásban az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` tells Laravel to return debugging information when the deployed app encounters errors. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
+`APP_DEBUG="true"` tájékoztatja a Laravel a hibakeresési információk visszaadásáról, amikor az üzembe helyezett alkalmazás hibákat észlel. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
 
 ### <a name="set-the-virtual-application-path"></a>A virtuális alkalmazáselérési út beállítása
 
-Set the virtual application path for the app. Erre a lépésre azért van szükség, mert a [Laravel-alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. A többi PHP-keretrendszer, amelynek az életciklusa a gyökérkönyvtárban kezdődik, a virtuális alkalmazáselérési út manuális konfigurálása nélkül is működik.
+Állítsa be a virtuális alkalmazás elérési útját az alkalmazáshoz. Erre a lépésre azért van szükség, mert a [Laravel-alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. A többi PHP-keretrendszer, amelynek az életciklusa a gyökérkönyvtárban kezdődik, a virtuális alkalmazáselérési út manuális konfigurálása nélkül is működik.
 
 A Cloud Shellben állítsa be a virtuális alkalmazáselérési utat az [`az resource update`](/cli/azure/resource#az-resource-update) paranccsal. Cserélje le az _&lt;appname>_ helyőrzőt.
 
@@ -433,7 +433,7 @@ remote: Running deployment command...
 > Ezzel a módszerrel bármilyen lépést hozzáadhat a Git-alapú üzembe helyezéshez az App Service-ben. További információkért lásd: [Egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 >
 
-### <a name="browse-to-the-azure-app"></a>Browse to the Azure app
+### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
 
 Egy böngészőben keresse fel az `http://<app_name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
@@ -470,7 +470,7 @@ public function up()
 }
 ```
 
-A fenti kód egy `complete` nevű logikai oszlopot ad hozzá a `tasks` táblában.
+A fenti kód egy `tasks` nevű logikai oszlopot ad hozzá a `complete` táblában.
 
 Cserélje le a `down` metódust az alábbi kódra a visszaállítási művelethez:
 
@@ -577,7 +577,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Once the `git push` is complete, navigate to the Azure app and test the new functionality.
+A `git push` befejezése után navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -593,7 +593,7 @@ A naplóstreamelés indításához használja az [`az webapp log tail`](/cli/azu
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Once log streaming has started, refresh the Azure app in the browser to get some web traffic. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
+A log streaming elindítása után frissítse az Azure-alkalmazást a böngészőben a webes forgalom eléréséhez. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
 A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
 
@@ -604,15 +604,15 @@ A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
 >
 >
 
-## <a name="manage-the-azure-app"></a>Manage the Azure app
+## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-Go to the [Azure portal](https://portal.azure.com) to manage the app you created.
+A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
 
-From the left menu, click **App Services**, and then click the name of your Azure app.
+A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
-You see your app's Overview page. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -637,4 +637,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazásokhoz.
 
 > [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure App Service](app-service-web-tutorial-custom-domain.md)
+> [Meglévő egyéni DNS-név leképezése Azure App Service](app-service-web-tutorial-custom-domain.md)

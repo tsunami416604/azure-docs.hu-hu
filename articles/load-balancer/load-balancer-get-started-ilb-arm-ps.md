@@ -1,5 +1,5 @@
 ---
-title: Create an Azure internal Load Balancer by using PowerShell
+title: Az Azure belső terheléselosztó létrehozása a PowerShell használatával
 titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure PowerShell-modullal az Azure Resource Managerben
 services: load-balancer
@@ -23,7 +23,7 @@ ms.locfileid: "74225387"
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -251,7 +251,7 @@ A virtuális gép létrehozása után adja hozzá a hálózati adaptert.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>1\. lépés: A terheléselosztó-erőforrás tárolása
 
-Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). A (z) **$LB**nevű változót használjuk. A parancsfájlban szereplő attribútumok értékeihez használja az előző lépésekben létrehozott terheléselosztó-erőforrások nevét.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

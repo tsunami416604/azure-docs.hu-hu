@@ -42,7 +42,7 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
 ### <a name="check-your-tools-version"></a>Tekintse meg az eszközök verzióját a Visual Studio 2017-ben
 
-1. Az a **eszközök** menüben válassza a **bővítmények és frissítések**. Bontsa ki a **telepített** > **eszközök** elemet, és válassza **a Azure functions és a webes feladatok eszközöket**.
+1. A **Tools (eszközök** ) menüben válassza a **bővítmények és frissítések**lehetőséget. Bontsa ki a **telepített** > **eszközök** elemet, és válassza **a Azure functions és a webes feladatok eszközöket**.
 
     ![A functions Tools verziójának ellenőrzése](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 

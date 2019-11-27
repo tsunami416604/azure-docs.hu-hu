@@ -1,6 +1,6 @@
 ---
-title: IP firewall rules
-description: Configure server-level IP firewall rules for a SQL database or SQL Data Warehouse firewall. Manage access and configure database-level IP firewall rules for a single or pooled database.
+title: IP-tűzfalszabályok
+description: Kiszolgálói szintű IP-tűzfalszabályok konfigurálása SQL-adatbázishoz vagy SQL Data Warehouse tűzfalhoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -19,174 +19,174 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481441"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database and Azure SQL Data Warehouse IP firewall rules
+# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 
 > [!NOTE]
-> This article applies to Azure SQL servers, and to both Azure SQL Database and Azure SQL Data Warehouse databases on an Azure SQL server. For simplicity, *SQL Database* is used to refer to both SQL Database and SQL Data Warehouse.
+> Ez a cikk az Azure SQL Server-kiszolgálókra, valamint az Azure SQL-kiszolgálók Azure SQL Database és Azure SQL Data Warehouse adatbázisaira vonatkozik. Az egyszerűség kedvéért a *SQL Database* a SQL Database és a SQL Data Warehousera is vonatkozik.
 
 > [!IMPORTANT]
-> This article does *not* apply to *Azure SQL Database Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Database Managed Instance](sql-database-managed-instance-connect-app.md).
+> Ez a cikk *nem* vonatkozik *Azure SQL Database felügyelt példányra*. A hálózati konfigurációval kapcsolatos további információkért lásd: [az alkalmazás Összekötése Azure SQL Database felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
 
-When you create a new Azure SQL server named *mysqlserver*, for example, the SQL Database firewall blocks all access to the public endpoint for the server (which is accessible at *mysqlserver.database.windows.net*).
+Ha a *portra beállított mysqlserver*nevű új Azure SQL Servert hoz létre, például a SQL Database tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el).
 
 > [!IMPORTANT]
-> SQL Data Warehouse only supports server-level IP firewall rules. It doesn't support database-level IP firewall rules.
+> A SQL Data Warehouse csak a kiszolgálói szintű IP-tűzfalszabályok használatát támogatja. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak.
 
-## <a name="how-the-firewall-works"></a>How the firewall works
-Connection attempts from the internet and Azure must pass through the firewall before they reach your SQL server or SQL database, as the following diagram shows.
+## <a name="how-the-firewall-works"></a>A tűzfal működése
+Az internetről és az Azure-ról érkező csatlakozási kísérletek a tűzfalon keresztül jutnak el az SQL-kiszolgáló vagy az SQL-adatbázis eléréséhez, az alábbi ábrán látható módon.
 
-   ![Firewall configuration diagram][1]
+   ![Tűzfal-konfigurációs diagram][1]
 
 ### <a name="server-level-ip-firewall-rules"></a>Kiszolgálószintű IP-tűzfalszabályok
 
-  These rules enable clients to access your entire Azure SQL server, that is, all the databases within the same SQL Database server. The rules are stored in the *master* database. You can have a maximum of 128 server-level IP firewall rules for an Azure SQL Server.
+  Ezek a szabályok lehetővé teszik, hogy az ügyfelek hozzáférhessenek a teljes Azure SQL Server-kiszolgálóhoz, vagyis az összes adatbázishoz, amely ugyanabban a SQL Database-kiszolgálón található. A szabályokat a *Master* adatbázisban tárolja a rendszer. Az Azure-SQL Serverhoz legfeljebb 128 kiszolgálói szintű IP-tűzfalszabály tartozhat.
   
-  You can configure server-level IP firewall rules by using the Azure portal, PowerShell, or Transact-SQL statements.
-  - To use the portal or PowerShell, you must be the subscription owner or a subscription contributor.
-  - To use Transact-SQL, you must connect to the SQL Database instance as the server-level principal login or as the Azure Active Directory administrator. (A server-level IP firewall rule must first be created by a user who has Azure-level permissions.)
+  A kiszolgálói szintű IP-tűzfalszabályok a Azure Portal, a PowerShell vagy a Transact-SQL utasítások használatával konfigurálhatók.
+  - A portál vagy a PowerShell használatához az előfizetés tulajdonosának vagy az előfizetés közreműködőinek kell lennie.
+  - A Transact-SQL használatához az SQL Database-példányhoz kell csatlakoznia, mint a kiszolgálói szintű rendszerbiztonsági tag vagy a Azure Active Directory rendszergazda. (A kiszolgálói szintű IP-tűzfalszabályok először egy Azure szintű engedélyekkel rendelkező felhasználónak kell létrehoznia.)
 
-### <a name="database-level-ip-firewall-rules"></a>Database-level IP firewall rules
+### <a name="database-level-ip-firewall-rules"></a>Adatbázis szintű IP-tűzfalszabályok
 
-  These rules enable clients to access certain (secure) databases within the same SQL Database server. You create the rules for each database (including the *master* database), and they're stored in the individual database.
+  Ezek a szabályok lehetővé teszik, hogy az ügyfelek hozzáférhessenek bizonyos (biztonságos) adatbázisokhoz ugyanazon a SQL Database kiszolgálón belül. Létrehozhatja az egyes adatbázisok szabályait ( *beleértve a* főadatbázist is), és azokat az egyes adatbázisokban tárolja.
   
-  You can only create and manage database-level IP firewall rules for master and user databases by using Transact-SQL statements and only after you configure the first server-level firewall.
+  A fő-és a felhasználói adatbázisokhoz csak az adatbázis-szintű IP-tűzfalszabályok hozhatók létre és kezelhetők a Transact-SQL-utasítások használatával, és csak az első kiszolgálói szintű tűzfal konfigurálása után.
   
-  If you specify an IP address range in the database-level IP firewall rule that's outside the range in the server-level IP firewall rule, only those clients that have IP addresses in the database-level range can access the database.
+  Ha olyan IP-címtartományt ad meg az adatbázis-szintű IP-tűzfalszabály számára, amely a kiszolgálói szintű IP-tűzfalszabályok tartományán kívül esik, csak azok az ügyfelek férhetnek hozzá az adatbázishoz, amelyek IP-címmel rendelkeznek az adatbázis-szintű tartományon.
   
-  You can have a maximum of 128 database-level IP firewall rules for a database. For more information about configuring database-level IP firewall rules, see the example later in this article and see [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Az adatbázishoz legfeljebb 128 adatbázis-szintű IP-tűzfalszabályok tartozhat. Az adatbázis-szintű IP-tűzfalszabályok konfigurálásával kapcsolatos további információkért tekintse meg a jelen cikk későbbi, [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)című példáját.
 
-### <a name="recommendations-for-how-to-set-firewall-rules"></a>Recommendations for how to set firewall rules
+### <a name="recommendations-for-how-to-set-firewall-rules"></a>A tűzfalszabályok beállításával kapcsolatos javaslatok
 
-We recommend that you use database-level IP firewall rules whenever possible. This practice enhances security and makes your database more portable. Use server-level IP firewall rules for administrators. Also use them when you have many databases that have the same access requirements, and you don't want to configure each database individually.
+Az adatbázis szintű IP-tűzfalszabályok használatát javasoljuk, ha lehetséges. Ez a gyakorlat fokozza a biztonságot, és hordozhatóvé teszi az adatbázist. A rendszergazdákra vonatkozó kiszolgálói szintű IP-tűzfalszabályok használata. Akkor is használja őket, ha sok olyan adatbázisa van, amely azonos hozzáférési követelményekkel rendelkezik, és nem szeretné külön konfigurálni az egyes adatbázisokat.
 
 > [!NOTE]
 > Az üzletmenet folytonossága és a hordozható adatbázisok közötti kapcsolatról [a vészhelyreállítás hitelesítési követelményeit](sql-database-geo-replication-security-config.md)ismertető cikkből tájékozódhat.
 
-## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Server-level versus database-level IP firewall rules
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Kiszolgálói szintű és adatbázis-szintű IP-tűzfalszabályok
 
-*Should users of one database be fully isolated from another database?*
+*Egy adatbázis felhasználóinak teljesen el kell különíteni egy másik adatbázisból?*
 
-If *yes*, use database-level IP firewall rules to grant access. This method avoids using server-level IP firewall rules, which permit access through the firewall to all databases. That would reduce the depth of your defenses.
+Ha *Igen*, az adatbázis-szintű IP-tűzfalszabályok használatával engedélyezze a hozzáférést. Ez a módszer elkerüli a kiszolgálói szintű IP-tűzfalszabályok használatát, ami lehetővé teszi a tűzfalon keresztüli hozzáférését az összes adatbázishoz. Ez csökkenti a védelem mélységét.
 
-*Do users at the IP addresses need access to all databases?*
+*Az IP-címekhez tartozó felhasználóknak hozzáférésre van szükségük az összes adatbázishoz?*
 
-If *yes*, use server-level IP firewall rules to reduce the number of times that you have to configure IP firewall rules.
+Ha *Igen*, a kiszolgálói szintű IP-tűzfalszabályok használatával csökkentse az IP-tűzfalszabályok konfigurálásához szükséges időt.
 
-*Does the person or team who configures the IP firewall rules only have access through the Azure portal, PowerShell, or the REST API?*
+*Az IP-tűzfalszabályok konfigurálását végző személy vagy csapat csak a Azure Portalon, a PowerShellen vagy a REST APIon keresztül fér hozzá?*
 
-If so, you must use server-level IP firewall rules. Database-level IP firewall rules can only be configured through Transact-SQL.  
+Ha igen, a kiszolgálói szintű IP-tűzfalszabályok használatát kell használnia. Az adatbázis szintű IP-tűzfalszabályok csak Transact-SQL használatával konfigurálhatók.  
 
-*Is the person or team who configures the IP firewall rules prohibited from having high-level permission at the database level?*
+*Az a személy vagy csapat, aki úgy konfigurálja az IP-tűzfalszabályok szabályait, hogy az adatbázis szintjén magas szintű engedélyekkel rendelkezik?*
 
-If so, use server-level IP firewall rules. You need at least *CONTROL DATABASE* permission at the database level to configure database-level IP firewall rules through Transact-SQL.  
+Ha igen, használja a kiszolgálói szintű IP-tűzfalszabályok használatát. Az adatbázis-szintű IP-tűzfalszabályok Transact-SQL-en keresztüli konfigurálásához legalább a *vezérlési adatbázis* engedélyére van szükség az adatbázis szintjén.  
 
-*Does the person or team who configures or audits the IP firewall rules centrally manage IP firewall rules for many (perhaps hundreds) of databases?*
+*Az IP-tűzfalszabályok konfigurálását vagy naplózását végző személy vagy csoport központilag kezeli az IP-tűzfalszabályok több (akár száz) adatbázisra vonatkozó szabályait?*
 
-In this scenario, best practices are determined by your needs and environment. Server-level IP firewall rules might be easier to configure, but scripting can configure rules at the database-level. And even if you use server-level IP firewall rules, you might need to audit database-level IP firewall rules to see if users with *CONTROL* permission on the database  create database-level IP firewall rules.
+Ebben az esetben az ajánlott eljárásokat az Ön igényei és környezete határozza meg. A kiszolgálói szintű IP-tűzfalszabályok könnyebben konfigurálhatók, de a parancsfájlok az adatbázis szintjén is konfigurálhatók a szabályok. Ha pedig kiszolgálói szintű IP-tűzfalszabályok használatát is használja, előfordulhat, hogy az adatbázis-szintű IP-tűzfalszabályok naplózása lehetőségre kattintva ellenőrizheti, hogy a *felhasználók rendelkeznek-* e az adatbázis-szintű IP-tűzfalszabályok létrehozásához szükséges engedélyekkel.
 
-*Can I use a mix of server-level and database-level IP firewall rules?*
+*Használhatok a kiszolgálói szintű és az adatbázis szintű IP-tűzfalszabályok együttes használatát?*
 
-Igen. Some users, such as administrators, might need server-level IP firewall rules. Other users, such as users of a database application, might need database-level IP firewall rules.
+Igen. Egyes felhasználók, például a rendszergazdák kiszolgálói szintű IP-tűzfalszabályok szükségesek. Más felhasználók, például egy adatbázis-alkalmazás felhasználóinak adatbázis-szintű IP-tűzfalszabályok szükségesek.
 
-### <a name="connections-from-the-internet"></a>Connections from the internet
+### <a name="connections-from-the-internet"></a>Internetkapcsolatok
 
-When a computer tries to connect to your database server from the internet, the firewall first checks the originating IP address of the request against the database-level IP firewall rules for the database that the connection requests.
+Amikor egy számítógép az internetről próbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal először ellenőrzi a kérelem eredeti IP-címét a kapcsolódási kérelmeket tartalmazó adatbázis adatbázis-szintű IP-tűzfalszabályok szabályai alapján.
 
-- If the address is within a range that's specified in the database-level IP firewall rules, the connection is granted to the SQL database that contains the rule.
-- If the address isn't within a range in the database-level IP firewall rules, the firewall checks the server-level IP firewall rules. If the address is within a range that's in the server-level IP firewall rules, the connection is granted. Server-level IP firewall rules apply to all SQL databases on the Azure SQL server.  
-- If the address isn't within a range that's in any of the database-level or server-level IP firewall rules, the connection request fails.
+- Ha a cím az adatbázis szintű IP-tűzfalszabályok megadott tartományon belül van, akkor a rendszer a szabályt tartalmazó SQL-adatbázishoz adja meg a kapcsolódást.
+- Ha a cím nem az adatbázis szintű IP-tűzfalszabályok tartományán belül van, a tűzfal ellenőrzi a kiszolgálói szintű IP-tűzfalszabályok szabályait. Ha a cím olyan tartományon belül van, amely a kiszolgálói szintű IP-tűzfalszabályok esetében szerepel, akkor a rendszer megadta a kapcsolatokat. A kiszolgálói szintű IP-tűzfalszabályok az Azure SQL Server összes SQL-adatbázisára érvényesek.  
+- Ha a cím nem olyan tartományon belül van, amely az adatbázis vagy a kiszolgáló szintű IP-tűzfalszabályok egyikében sem szerepel, a kapcsolati kérelem sikertelen lesz.
 
 > [!NOTE]
-> To access SQL Database from your local computer, ensure that the firewall on your network and local computer allow outgoing communication on TCP port 1433.
+> A helyi számítógép SQL Databaseának eléréséhez győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt a 1433-es TCP-porton.
 
-### <a name="connections-from-inside-azure"></a>Connections from inside Azure
+### <a name="connections-from-inside-azure"></a>Kapcsolatok az Azure-on belül
 
-To allow applications hosted inside Azure to connect to your SQL server, Azure connections must be enabled. When an application from Azure tries to connect to your database server, the firewall verifies that Azure connections are allowed. A firewall setting that has starting and ending IP addresses equal to *0.0.0.0* indicates that Azure connections are allowed. If the connection isn't allowed, the request doesn't reach the SQL Database server.
-
-> [!IMPORTANT]
-> This option configures the firewall to allow all connections from Azure, including connections from the subscriptions of other customers. If you select this option, make sure that your login and user permissions limit access to authorized users only.
-
-## <a name="create-and-manage-ip-firewall-rules"></a>Create and manage IP firewall rules
-
-You create the first server-level firewall setting by using the [Azure portal](https://portal.azure.com/) or programmatically by using [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule), or an Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). You create and manage additional server-level IP firewall rules by using these methods or Transact-SQL.
+Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Egy olyan tűzfal-beállítás, amely a *0.0.0.0* értékkel megegyező IP-címekkel rendelkezik, azt jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a SQL Database-kiszolgálót.
 
 > [!IMPORTANT]
-> Database-level IP firewall rules can only be created and managed by using Transact-SQL.
+> Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure összes kapcsolatát, beleértve a más ügyfelek előfizetései által létesített kapcsolatokat is. Ha ezt a beállítást választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei csak a jogosult felhasználókra korlátozzák a hozzáférést.
 
-To improve performance, server-level IP firewall rules are temporarily cached at the database level. A gyorsítótár frissítésével kapcsolatban lásd: [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+## <a name="create-and-manage-ip-firewall-rules"></a>IP-tűzfalszabályok létrehozása és kezelése
+
+Az első kiszolgálói szintű tűzfalbeállítások létrehozásához használja a [Azure Portal](https://portal.azure.com/) vagy programozott módon az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), az [azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)vagy egy Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)használatával. Ezen metódusok vagy Transact-SQL használatával további kiszolgálói szintű IP-tűzfalszabályok hozhatók létre és kezelhetők.
+
+> [!IMPORTANT]
+> Az adatbázis-szintű IP-tűzfalszabályok csak a Transact-SQL használatával hozhatók létre és kezelhetők.
+
+A teljesítmény javítása érdekében a kiszolgálói szintű IP-tűzfalszabályok átmenetileg gyorsítótárazva lesznek az adatbázis szintjén. A gyorsítótár frissítésével kapcsolatban lásd: [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
 > [!TIP]
-> You can use [SQL Database Auditing](sql-database-auditing.md) to audit server-level and database-level firewall changes.
+> A kiszolgáló-és adatbázis-szintű tűzfal változásainak naplózásához [SQL Database naplózást](sql-database-auditing.md) használhat.
 
-### <a name="use-the-azure-portal-to-manage-server-level-ip-firewall-rules"></a>Use the Azure portal to manage server-level IP firewall rules
+### <a name="use-the-azure-portal-to-manage-server-level-ip-firewall-rules"></a>A kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával
 
-To set a server-level IP firewall rule in the Azure portal, go to the overview page for your Azure SQL database or your SQL Database server.
+A kiszolgálói szintű IP-tűzfalszabály beállításához a Azure Portal nyissa meg az Azure SQL Database vagy a SQL Database-kiszolgáló áttekintés lapját.
 
 > [!TIP]
-> For a tutorial, see [Create a DB using the Azure portal](sql-database-single-database-get-started.md).
+> Oktatóanyagért lásd: [adatbázis létrehozása a Azure Portal használatával](sql-database-single-database-get-started.md).
 
-#### <a name="from-the-database-overview-page"></a>From the database overview page
+#### <a name="from-the-database-overview-page"></a>Az adatbázis – áttekintés oldalon
 
-1. To set a server-level IP firewall rule from the database overview page, select **Set server firewall** on the toolbar, as the following image shows. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
+1. Kiszolgálóoldali IP-tűzfalszabály beállításához az adatbázis áttekintése lapon válassza a **kiszolgáló tűzfal beállítása** az eszköztáron lehetőséget, majd az alábbi képen látható módon. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
-      ![Server IP firewall rule](./media/sql-database-get-started-portal/server-firewall-rule.png)
+      ![Kiszolgáló IP-tűzfalának szabálya](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-2. Select **Add client IP** on the toolbar to add the IP address of the computer that you're using, and then select **Save**. A server-level IP firewall rule is created for your current IP address.
+2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés**gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
 
-      ![Set server-level IP firewall rule](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+      ![Kiszolgálói szintű IP-tűzfalszabály beállítása](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
 
-#### <a name="from-the-server-overview-page"></a>From the server overview page
+#### <a name="from-the-server-overview-page"></a>A kiszolgáló áttekintése lapon
 
-The overview page for your server opens. It shows the fully qualified server name (such as *mynewserver20170403.database.windows.net*) and provides options for further configuration.
+Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgálónevet (például *mynewserver20170403.database.Windows.net*), és további konfigurálási lehetőségeket biztosít.
 
-1. To set a server-level rule from this page, select **Firewall** from the **Settings** menu on the left side.
+1. Ha ezen a lapon szeretné beállítani a kiszolgálói szintű szabályt, válassza a bal oldalon található **Beállítások** menüből a **tűzfal** lehetőséget.
 
-2. Select **Add client IP** on the toolbar to add the IP address of the computer that you're using, and then select **Save**. A server-level IP firewall rule is created for your current IP address.
+2. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a használt számítógép IP-címét, majd kattintson a **Mentés**gombra. Az aktuális IP-címhez kiszolgálói szintű IP-tűzfalszabály jön létre.
 
-### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Use Transact-SQL to manage IP firewall rules
+### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Az IP-tűzfalszabályok kezelése a Transact-SQL használatával
 
-| Catalog view or stored procedure | Szint | Leírás |
+| Katalógus nézet vagy tárolt eljárás | Szint | Leírás |
 | --- | --- | --- |
-| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Kiszolgáló |Displays the current server-level IP firewall rules |
-| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Kiszolgáló |Creates or updates server-level IP firewall rules |
-| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Kiszolgáló |Removes server-level IP firewall rules |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Adatbázis |Displays the current database-level IP firewall rules |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Adatbázis |Creates or updates the database-level IP firewall rules |
-| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Adatbázis-kezelés |Removes database-level IP firewall rules |
+| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
+| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Adatbázis |Az adatbázis-szintű IP-tűzfalszabályok aktuális szabályait jeleníti meg |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Adatbázis |Az adatbázis-szintű IP-tűzfalszabályok létrehozása vagy frissítése |
+| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Adatbázisok |Adatbázis-szintű IP-tűzfalszabályok eltávolítása |
 
-The following example reviews the existing rules, enables a range of IP addresses on the server *Contoso*, and deletes an IP firewall rule:
+Az alábbi példa a meglévő szabályokat tekinti át, lehetővé teszi a kiszolgáló *contoso*IP-címeinek tartományát, és töröl egy IP-tűzfalszabály-szabályt:
 
 ```sql
 SELECT * FROM sys.firewall_rules ORDER BY name;
 ```
 
-Next, add a server-level IP firewall rule.
+Ezután adjon hozzá egy kiszolgálói szintű IP-tűzfalszabály-szabályt.
 
 ```sql
 EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-To delete a server-level IP firewall rule, execute the *sp_delete_firewall_rule* stored procedure. The following example deletes the rule *ContosoFirewallRule*:
+A kiszolgálói szintű IP-tűzfalszabály törléséhez hajtsa végre az *sp_delete_firewall_rule* tárolt eljárást. A következő példa törli a szabály *ContosoFirewallRule*:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```
 
-### <a name="use-powershell-to-manage-server-level-ip-firewall-rules"></a>Use PowerShell to manage server-level IP firewall rules 
+### <a name="use-powershell-to-manage-server-level-ip-firewall-rules"></a>A kiszolgáló szintű IP-tűzfalszabályok kezelése a PowerShell használatával 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all development is now for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az and AzureRm modules are substantially identical.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a fejlesztés most már az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 | Parancsmag | Szint | Leírás |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Kiszolgáló |Az aktuális kiszolgálószintű tűzfalszabályokat adja vissza |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Kiszolgáló |Új kiszolgálószintű tűzfalszabály létrehozása |
+| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Kiszolgáló |Új kiszolgálószintű tűzfalszabály létrehozása |
 | [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Kiszolgáló |Meglévő kiszolgálószintű tűzfalszabály tulajdonságainak frissítése |
 | [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok eltávolítása |
 
-The following example uses PowerShell to set a server-level IP firewall rule:
+A következő példa a PowerShell használatával állítja be a kiszolgálói szintű IP-tűzfalszabály beállításait:
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
@@ -194,79 +194,79 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -FirewallRuleName "ContosoIPRange" -StartIpAddress "192.168.1.0" -EndIpAddress "192.168.1.255"
 ```
 > [!TIP]
-> For $servername specify the server name and not the fully qualified DNS name e.g. specify **mysqldbserver** instead of **mysqldbserver.database.windows.net**
+> A $servername adja meg a kiszolgáló nevét, ne a teljes DNS-nevet, például adja meg a **mysqldbserver** -t a **mysqldbserver.database.Windows.net** helyett.
 
 > [!TIP]
-> For PowerShell examples in the context of a quickstart, see [Create DB - PowerShell](sql-database-powershell-samples.md) and [Create a single database and configure a SQL Database server-level IP firewall rule using PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
+> Egy rövid útmutató kontextusában a PowerShell-példákat lásd: [create db-PowerShell](sql-database-powershell-samples.md) és [egyetlen adatbázis létrehozása és egy SQL Database kiszolgálói szintű IP-tűzfalszabály konfigurálása a PowerShell használatával](scripts/sql-database-create-and-configure-database-powershell.md).
 
-### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Use CLI to manage server-level IP firewall rules
+### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Kiszolgálói szintű IP-tűzfalszabályok kezelése a CLI használatával
 
 | Parancsmag | Szint | Leírás |
 | --- | --- | --- |
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|Creates a server IP firewall rule|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|Lists the IP firewall rules on a server|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Kiszolgáló|Shows the detail of an IP firewall rule|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Kiszolgáló|Updates an IP firewall rule|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Kiszolgáló|Deletes an IP firewall rule|
+|[az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|Kiszolgálói IP-tűzfalszabály létrehozása|
+|[az SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|A kiszolgálón található IP-tűzfalszabályok listája|
+|[az SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Kiszolgáló|Egy IP-tűzfalszabály részleteit jeleníti meg|
+|[az SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Kiszolgáló|IP-tűzfalszabály frissítése|
+|[az SQL Server Firewall-Rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Kiszolgáló|IP-tűzfalszabály törlése|
 
-The following example uses CLI to set a server-level IP firewall rule:
+A következő példa a parancssori felületet használja a kiszolgálói szintű IP-tűzfalszabály beállításához:
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
 -n ContosoIPRange --start-ip-address 192.168.1.0 --end-ip-address 192.168.1.255
 ```
 > [!TIP]
-> For $servername specify the server name and not the fully qualified DNS name e.g. specify **mysqldbserver** instead of **mysqldbserver.database.windows.net**
+> A $servername adja meg a kiszolgáló nevét, ne a teljes DNS-nevet, például adja meg a **mysqldbserver** -t a **mysqldbserver.database.Windows.net** helyett.
 
 > [!TIP]
-> For a CLI example in the context of a quickstart, see [Create DB - Azure CLI](sql-database-cli-samples.md) and [Create a single database and configure a SQL Database IP firewall rule using the Azure CLI](scripts/sql-database-create-and-configure-database-cli.md).
+> CLI-példa egy rövid útmutató kontextusában: az [adatbázis létrehozása – Azure CLI](sql-database-cli-samples.md) és [egyetlen adatbázis létrehozása és egy SQL Database IP-tűzfalszabály konfigurálása az Azure CLI használatával](scripts/sql-database-create-and-configure-database-cli.md).
 
-### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Use a REST API to manage server-level IP firewall rules
+### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>A kiszolgálói szintű IP-tűzfalszabályok kezelésére szolgáló REST API használata
 
 | API | Szint | Leírás |
 | --- | --- | --- |
-| [List firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Displays the current server-level IP firewall rules |
-| [Create or update firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Creates or updates server-level IP firewall rules |
-| [Delete firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Removes server-level IP firewall rules |
-| [Get firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Gets server-level IP firewall rules |
+| [Tűzfalszabályok listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [Tűzfalszabályok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
+| [Tűzfalszabályok törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
+| [Tűzfalszabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálói szintű IP-tűzfalszabályok beolvasása |
 
-## <a name="troubleshoot-the-database-firewall"></a>Troubleshoot the database firewall
+## <a name="troubleshoot-the-database-firewall"></a>Az adatbázis tűzfala – problémamegoldás
 
-Consider the following points when access to the SQL Database service doesn't behave as you expect.
+Vegye figyelembe a következő szempontokat, amikor a SQL Database szolgáltatáshoz való hozzáférés nem a várt módon működik.
 
-- **Local firewall configuration:**
+- **Helyi tűzfal konfigurációja:**
 
-  Before your computer can access SQL Database, you may need to create a firewall exception on your computer for TCP port 1433. To make connections inside the Azure cloud boundary, you may have to open additional ports. For more information, see the "SQL Database: Outside vs inside" section of [Ports beyond 1433 for ADO.NET 4.5 and SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Ahhoz, hogy a számítógép hozzáférhessen SQL Databasehoz, előfordulhat, hogy létre kell hoznia egy tűzfal-kivételt a számítógépen a 1433-es TCP-porthoz. Előfordulhat, hogy az Azure-felhő határain belül szeretne kapcsolatokat létesíteni. további portok megnyitására van lehetőség. További információ: a [1433-es és a SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md)"SQL Database: külső és belső" szakasza, 4,5 ADO.net.
 
-- **Network address translation:**
+- **Hálózati címfordítás:**
 
-  Because of network address translation (NAT), the IP address that's used by your computer to connect to SQL Database may be different than the IP address in your computer's IP configuration settings. To view the IP address that your computer is using to connect to Azure:
+  Hálózati címfordítás (NAT) miatt a számítógépe által az SQL Databasehoz való kapcsolódáshoz használt IP-cím a számítógép IP-konfigurációs beállításainak IP-címétől eltérő lehet. A számítógép által az Azure-hoz való kapcsolódáshoz használt IP-cím megtekintése:
     1. Jelentkezzen be az Portalra.
-    1. Go to the **Configure** tab on the server that hosts your database.
-    1. The **Current Client IP Address** is displayed in the **Allowed IP Addresses** section. Select **Add** for **Allowed IP Addresses** to allow this computer to access the server.
+    1. Lépjen a **configure (Konfigurálás** ) lapra az adatbázist futtató kiszolgálón.
+    1. Az **aktuális ügyfél IP-címe** az **engedélyezett IP-címek** szakaszban jelenik meg. Válassza a **Hozzáadás** az **engedélyezett IP-címekhez** lehetőséget, hogy a számítógép hozzáférjen a kiszolgálóhoz.
 
-- **Changes to the allow list haven't taken effect yet:**
+- **Az engedélyezési lista módosításai még nem kerültek érvénybe:**
 
-  There may be up to a five-minute delay for changes to the SQL Database firewall configuration to take effect.
+  A SQL Database tűzfal konfigurációjának változásainak érvénybe léptetéséhez akár öt perc is eltelhet.
 
-- **The login isn't authorized, or an incorrect password was used:**
+- **A bejelentkezés nincs engedélyezve, vagy helytelen jelszót használt:**
 
-  If a login doesn't have permissions on the SQL Database server or the password is incorrect, the connection to the server is denied. Creating a firewall setting only gives clients an *opportunity* to try to connect to your server. The client must still provide the necessary security credentials. For more information about preparing logins, see [Controlling and granting database access to SQL Database and SQL Data Warehouse](sql-database-manage-logins.md).
+  Ha a bejelentkezési azonosító nem rendelkezik engedéllyel a SQL Database-kiszolgálón, vagy helytelen a jelszó, a rendszer megtagadja a kapcsolódást a kiszolgálóval. A tűzfalszabályok létrehozása csak *lehetőséget* biztosít az ügyfeleknek, hogy megpróbáljon csatlakozni a kiszolgálóhoz. Az ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat. A bejelentkezések előkészítésével kapcsolatos további információkért lásd: [az adatbázis-hozzáférés szabályozása és megadása SQL Database és SQL Data Warehousehoz](sql-database-manage-logins.md).
 
-- **Dynamic IP address:**
+- **Dinamikus IP-cím:**
 
-  If you have an internet connection that uses dynamic IP addressing and you have trouble getting through the firewall, try one of the following solutions:
+  Ha olyan internetkapcsolattal rendelkezik, amely dinamikus IP-címzést használ, és problémát tapasztal a tűzfalon keresztül, próbálkozzon az alábbi megoldások egyikével:
   
-  - Ask your internet service provider for the IP address range that's assigned to your client computers that access the SQL Database server. Add that IP address range as an IP firewall rule.
-  - Get static IP addressing instead for your client computers. Add the IP addresses as IP firewall rules.
+  - Kérje meg az internetszolgáltatót az SQL Database-kiszolgálót elérő ügyfélszámítógépekhez rendelt IP-címtartomány megadására. Adja hozzá az IP-címtartományt IP-tűzfalszabályként.
+  - Az ügyfélszámítógépek helyett statikus IP-címzést kell lekérnie. Adja hozzá az IP-címeket IP-tűzfalszabályokként.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Confirm that your corporate network environment allows inbound communication from the compute IP address ranges (including SQL ranges) that are used by the Azure datacenters. You might have to add those IP addresses to the allow list. See [Microsoft Azure datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653).  
-- For a quickstart about creating a server-level IP firewall rule, see [Create an Azure SQL database](sql-database-single-database-get-started.md).
-- For help with connecting to an Azure SQL database from open-source or third-party applications, see [Client quickstart code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- For information about additional ports that you may need to open, see the "SQL Database: Outside vs inside" section of [Ports beyond 1433 for ADO.NET 4.5 and SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
-- For an overview of Azure SQL Database security, see [Securing your database](sql-database-security-overview.md).
+- Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
+- A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [Azure SQL Database létrehozása](sql-database-single-database-get-started.md).
+- A nyílt forráskódú vagy külső alkalmazásokból származó Azure SQL Database-adatbázisokhoz való csatlakozással kapcsolatos segítségért tekintse meg a következő témakört: az ügyfél-útmutató [kódok mintái SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- További információ a megnyitható további portokról: a [ADO.NET 4,5-es és a 1433 SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md) "SQL Database: külső vs belső" szakasza.
+- A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md).
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
