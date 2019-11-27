@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
-description: This tutorial shows how to run Spark queries on an Azure Databricks cluster to access data in an Azure Data Lake Storage Gen2 storage account.
+title: 'Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
+description: Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön egy Azure Data Lake Storage Gen2 Storage-fiókban lévő adateléréshez.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,61 +15,61 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327539"
 ---
-# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
-This tutorial shows you how to connect your Azure Databricks cluster to data stored in an Azure storage account that has Azure Data Lake Storage Gen2 enabled. This connection enables you to natively run queries and analytics from your cluster on your data.
+Ez az oktatóanyag bemutatja, hogyan csatlakoztatható a Azure Databricks-fürt egy olyan Azure Storage-fiókban tárolt adataihoz, amely Azure Data Lake Storage Gen2 engedélyezve van. Ez a kapcsolat lehetővé teszi, hogy natív módon futtasson lekérdezéseket és elemzéseket a fürtből az adatokból.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Databricks-fürt létrehozása
 > * Strukturálatlan adatok betöltése egy tárfiókba
-> * Run analytics on your data in Blob storage
+> * Elemzés futtatása a blob Storage-beli adataiban
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Create an Azure Data Lake Storage Gen2 account.
+* Hozzon létre egy Azure Data Lake Storage Gen2 fiókot.
 
-  See [Create an Azure Data Lake Storage Gen2 account](data-lake-storage-quickstart-create-account.md).
+  Lásd: [Azure Data Lake Storage Gen2 fiók létrehozása](data-lake-storage-quickstart-create-account.md).
 
-* Make sure that your user account has the [Storage Blob Data Contributor role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) assigned to it.
+* Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
 
-* Install AzCopy v10. See [Transfer data with AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* Telepítse a AzCopy V10-es frissítést. [Adatok átvitele az AzCopy v10-vel](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Create a service principal. See [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-  There's a couple of specific things that you'll have to do as you perform the steps in that article.
+  A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  :heavy_check_mark: When performing the steps in the [Assign the application to a role](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) section of the article, make sure to assign the **Storage Blob Data Contributor** role to the service principal.
+  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
 
   > [!IMPORTANT]
-  > Make sure to assign the role in the scope of the Data Lake Storage Gen2 storage account. You can assign a role to the parent resource group or subscription, but you'll receive permissions-related errors until those role assignments propagate to the storage account.
+  > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  :heavy_check_mark: When performing the steps in the [Get values for signing in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section of the article, paste the tenant ID, app ID, and password values into a text file. You'll need those soon.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
-This tutorial uses flight data from the Bureau of Transportation Statistics to demonstrate how to perform an ETL operation. You must download this data to complete the tutorial.
+Ez az oktatóanyag repülési adatokat használ az Bureau of közlekedési statisztikából, hogy bemutassa, hogyan hajthat végre ETL-műveletet. Az oktatóanyag befejezéséhez le kell töltenie ezeket az adatfájlokat.
 
-1. Go to [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Látogasson el a [Research and innovatív Technology Administration, a közlekedés statisztikáit ismertető irodára](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Select the **Prezipped File** check box to select all data fields.
+2. Jelölje be az **előtömörített fájl** jelölőnégyzetet az összes adatmező kiválasztásához.
 
-3. Select the **Download** button and save the results to your computer. 
+3. Kattintson a **Letöltés** gombra, és mentse az eredményeket a számítógépére. 
 
-4. Unzip the contents of the zipped file and make a note of the file name and the path of the file. You need this information in a later step.
+4. Bontsa ki a tömörített fájl tartalmát, és jegyezze fel a fájl nevét és elérési útját. Ezt az információt egy későbbi lépésben kell megadnia.
 
-## <a name="create-an-azure-databricks-service"></a>Create an Azure Databricks service
+## <a name="create-an-azure-databricks-service"></a>Azure Databricks szolgáltatás létrehozása
 
-In this section, you create an Azure Databricks service by using the Azure portal.
+Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Portal használatával.
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
 
-    ![Databricks on Azure portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Databricks Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks Azure Portal")
 
-2. Under **Azure Databricks Service**, provide the following values to create a Databricks service:
+2. A **Azure Databricks szolgáltatás**területen adja meg a következő értékeket egy Databricks szolgáltatás létrehozásához:
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
@@ -77,25 +77,25 @@ In this section, you create an Azure Databricks service by using the Azure porta
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/resource-group-overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).       |
-    |**Tarifacsomag**     |  Select **Standard**.     |
+    |**Tarifacsomag**     |  Válassza a **standard**lehetőséget.     |
 
-    ![Create an Azure Databricks workspace](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Create an Azure Databricks service")
+    ![Azure Databricks munkaterület létrehozása](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks szolgáltatás létrehozása")
 
-3. A fiók létrehozása eltarthat néhány percig. To monitor the operation status, view the progress bar at the top.
+3. A fiók létrehozása eltarthat néhány percig. A művelet állapotának figyeléséhez tekintse meg a felső folyamatjelző sávot.
 
 4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Spark-fürt létrehozása az Azure Databricksben
 
-1. In the Azure portal, go to the Databricks service that you created, and select **Launch Workspace**.
+1. A Azure Portal lépjen a létrehozott Databricks szolgáltatásra, majd válassza a **munkaterület elindítása**lehetőséget.
 
-2. You're redirected to the Azure Databricks portal. A portálon válassza a **Fürt** elemet.
+2. A rendszer átirányítja a Azure Databricks portálra. A portálon válassza a **Fürt** elemet.
 
-    ![Databricks on Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Databricks on Azure")
+    ![Databricks az Azure-ban](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Create Databricks Spark cluster on Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Databricks Spark-fürt létrehozása az Azure-ban](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
     Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
 
@@ -103,49 +103,49 @@ In this section, you create an Azure Databricks service by using the Azure porta
      
     - Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-4. Válassza a **Fürt létrehozása** lehetőséget. After the cluster is running, you can attach notebooks to the cluster and run Spark jobs.
+4. Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
-## <a name="ingest-data"></a>Adatok kigyűjtése
+## <a name="ingest-data"></a>Adatok betöltése
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 
-Use AzCopy to copy data from your *.csv* file into your Data Lake Storage Gen2 account.
+A AzCopy segítségével másolja át az adatait a *. csv* -fájlból a Data Lake Storage Gen2-fiókjába.
 
-1. Open a command prompt window, and enter the following command to log into your storage account.
+1. Nyisson meg egy parancssori ablakot, és írja be a következő parancsot a Storage-fiókjába való bejelentkezéshez.
 
    ```bash
    azcopy login
    ```
 
-   Follow the instructions that appear in the command prompt window to authenticate your user account.
+   A felhasználói fiók hitelesítéséhez kövesse a parancssori ablakban megjelenő utasításokat.
 
-2. To copy data from the *.csv* account, enter the following command.
+2. Az adatok *. csv* -fiókból történő másolásához írja be a következő parancsot.
 
    ```bash
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+   * Cserélje le a `<csv-folder-path>` helyőrző értékét a *. csv* -fájl elérési útjára.
 
-   * Replace the `<storage-account-name>` placeholder value with the name of your storage account.
+   * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
-   * Replace the `<container-name>` placeholder with any name that you want to give your container.
+   * Cserélje le a `<container-name>` helyőrzőt a tárolóhoz adni kívánt névre.
 
-## <a name="create-a-container-and-mount-it"></a>Create a container and mount it
+## <a name="create-a-container-and-mount-it"></a>Tároló létrehozása és csatlakoztatása
 
-In this section, you'll create a container and a folder in your storage account.
+Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiókban.
 
-1. In the [Azure portal](https://portal.azure.com), go to the Azure Databricks service that you created, and select **Launch Workspace**.
+1. A [Azure Portal](https://portal.azure.com)lépjen a létrehozott Azure Databricks szolgáltatásra, majd válassza a **munkaterület indítása**elemet.
 
-2. On the left, select **Workspace**. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
+2. A bal oldalon válassza a **munkaterület**lehetőséget. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
 
-    ![Create a notebook in Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Create notebook in Databricks")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Select **Python** as the language, and then select the Spark cluster that you created earlier.
+3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Python** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
 4. Kattintson a **Létrehozás** gombra.
 
-5. Copy and paste the following code block into the first cell, but don't run this code yet.
+5. Másolja és illessze be az alábbi kódrészletet az első cellába, de még ne futtassa ezt a kódot.
 
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -161,28 +161,28 @@ In this section, you'll create a container and a folder in your storage account.
     extra_configs = configs)
     ```
 
-18. In this code block, replace the `appId`, `password`, `tenant`, and `storage-account-name` placeholder values in this code block with the values that you collected while completing the prerequisites of this tutorial. Replace the `container-name` placeholder value with the name that you gave to the container on the previous step.
+18. Ebben a kódban a blokkban cserélje le a `appId`, `password`, `tenant`és `storage-account-name` helyőrző értékeit az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `container-name` helyőrző értékét az előző lépésben a tárolóhoz megadott névre.
 
-Use these values to replace the mentioned placeholders.
+Ezeknek az értékeknek a használatával cserélheti le az említett helyőrzőket.
 
-   * The `appId`, and `password` are from the app that you registered with active directory as part of creating a service principal.
+   * A `appId`és az `password` az Active Directory szolgáltatásban regisztrált alkalmazásból származnak.
 
-   * The `tenant-id` is from your subscription.
+   * A `tenant-id` az előfizetésből származik.
 
-   * The `storage-account-name` is the name of your Azure Data Lake Storage Gen2 storage account.
+   * A `storage-account-name` a Azure Data Lake Storage Gen2 Storage-fiók neve.
 
-   * Replace the `container-name` placeholder with any name that you want to give your container.
+   * Cserélje le a `container-name` helyőrzőt a tárolóhoz adni kívánt névre.
 
    > [!NOTE]
-   > In a production setting, consider storing your password in Azure Databricks. Then, add a look up key to your code block instead of the password. After you've completed this quickstart, see the [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) article on the Azure Databricks Website to see examples of this approach.
+   > Éles környezetben érdemes megfontolni a jelszó tárolását Azure Databricks. Ezután adjon hozzá egy megkeresési kulcsot a kódhoz a jelszó helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
 
-19. Press the **SHIFT + ENTER** keys to run the code in this block.
+19. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
-   Keep this notebook open as you will add commands to it later.
+   Tartsa megnyitva a jegyzetfüzetet, mert később parancsokat ad hozzá.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>CSV konvertálása parquetté a Databricks-jegyzetfüzet használatával
 
-In the notebook that you previously created, add a new cell, and paste the following code into that cell. 
+A korábban létrehozott jegyzetfüzetben adjon hozzá egy új cellát, és illessze be a következő kódot a cellába. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -198,7 +198,7 @@ print("Done")
 
 ## <a name="explore-data"></a>Adatok megismerése
 
-In a new cell, paste the following code to get a list of CSV files uploaded via AzCopy.
+Az új cellában illessze be a következő kódot a AzCopy-on keresztül feltöltött CSV-fájlok listájának lekéréséhez.
 
 ```python
 import os.path
@@ -220,9 +220,9 @@ Ezekkel a kódmintákkal megismerte a HDFS hierarchikus jellegét a Data Lake St
 
 Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdezését. Írja be a következő kódblokkok mindegyikét a **Cmd 1** területre, majd nyomja le a **Cmd + ENTER** billentyűkombinációt a Python-szkript futtatásához.
 
-To create data frames for your data sources, run the following script:
+Az adatforrások adatkeretének létrehozásához futtassa a következő parancsfájlt:
 
-* Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+* Cserélje le a `<csv-folder-path>` helyőrző értékét a *. csv* -fájl elérési útjára.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -251,7 +251,7 @@ flightDF.show(20, False)
 display(flightDF)
 ```
 
-Enter this script to run some basic analysis queries against the data.
+Adja meg ezt a parancsfájlt az adatokra vonatkozó alapszintű elemzési lekérdezések futtatásához.
 
 ```python
 # Run each of these queries, preferably in a separate cmd cell for separate analysis
@@ -285,7 +285,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When they're no longer needed, delete the resource group and all related resources. To do so, select the resource group for the storage account and select **Delete**.
+Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,108 +1,108 @@
 ---
 title: Prémium szintű Azure Functions-csomag
-description: Details and configuration options (VNet, no cold start, unlimited execution duration) for the Azure Functions Premium plan.
+description: Részletek és konfigurációs beállítások (VNet, nem hideg indítás, korlátlan végrehajtási időtartam) a Azure Functions Premium csomaghoz.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 99589a4f11f91afa7d3c9f93d844654ccc69aab1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322964"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532903"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium szintű Azure Functions-csomag
 
-The Azure Functions Premium plan is a hosting option for function apps. The Premium plan provides features like VNet connectivity, no cold start, and premium hardware.  Multiple function apps can be deployed to the same Premium plan, and the plan allows you to configure compute instance size, base plan size, and maximum plan size.  For a comparison of the Premium plan and other plan and hosting types, see [function scale and hosting options](functions-scale.md).
+A Azure Functions Premium csomag egy üzemeltetési lehetőség a Function apps alkalmazásokhoz. A Prémium csomag olyan szolgáltatásokat nyújt, mint például a VNet-kapcsolat, a hidegindító és a prémium szintű hardverek.  Több Function apps is telepíthető ugyanarra a prémium csomagra, és a csomag lehetővé teszi a számítási példány méretének, az alapcsomag méretének és a maximális méretnek a konfigurálását.  A Prémium csomag és az egyéb csomag-és üzemeltetési típusok összehasonlítását lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
 
-## <a name="create-a-premium-plan"></a>Create a Premium plan
+## <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-You can also create a Premium plan using [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) in the Azure CLI. The following example creates an _Elastic Premium 1_ tier plan:
+Prémium szintű csomagot az az [functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) paranccsal is létrehozhat az Azure CLI-ben. Az alábbi példa egy _rugalmas prémium 1_ szintű csomagot hoz létre:
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-In this example, replace `<RESOURCE_GROUP>` with your resource group and `<PLAN_NAME>` with a name for your plan that is unique in the resource group. Specify a [supported `<REGION>`](#regions). To create a Premium plan that supports Linux, include the `--is-linux` option.
+Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [támogatott `<REGION>`](#regions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
 
-With the plan created, you can use [az functionapp create](/cli/azure/functionapp#az-functionapp-create) to create your function app. In the portal, both the plan and the app are created at the same time. 
+A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Jellemzők
+## <a name="features"></a>Szolgáltatások
 
-The following features are available to function apps deployed to a Premium plan.
+A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
-### <a name="pre-warmed-instances"></a>Pre-warmed instances
+### <a name="pre-warmed-instances"></a>Előre bemelegítő példányok
 
-If no events and executions occur today in the Consumption plan, your app may scale down to zero instances. When new events come in, a new instance needs to be specialized with your app running on it.  Specializing new instances may take some time depending on the app.  This additional latency on the first call is often called app cold start.
+Ha a használati tervben jelenleg nem fordulnak elő események és végrehajtások, az alkalmazás nulla példányra csökkentheti a méretét. Új események beolvasásakor egy új példányra van szükség a rajta futó alkalmazáshoz.  Az új példányok specializálása az alkalmazástól függően hosszabb időt is igénybe vehet.  Ezt a további késleltetést az első hívásnál gyakran az App Cold Start metódusnak nevezik.
 
-In the Premium plan, you can have your app pre-warmed on a specified number of instances, up to your minimum plan size.  Pre-warmed instances also let you pre-scale an app before high load. As the app scales out, it first scales into the pre-warmed instances. Additional instances continue to buffer out and warm immediately in preparation for the next scale operation. By having a buffer of pre-warmed instances, you can effectively avoid cold start latencies.  Pre-warmed instances is a feature of the Premium plan, and you need to keep at least one instance running and available at all times the plan is active.
+A prémium csomaggal előre bemelegítheti az alkalmazást egy adott számú példányra, a minimálisan szükséges méretig.  Az előre bemelegített példányok lehetővé teszik az alkalmazások előre méretezését a nagy terhelés előtt. Az alkalmazás kiskálázásakor először az előre bemelegítő példányokra méretezi a folyamatokat. A további példányok továbbra is kiállnak a pufferbe, és azonnal melegen vesznek részt a következő skálázási művelet előkészítésében. Az előre bemelegített példányok pufferével hatékonyan elkerülheti a hideg indítási késéseket.  Az előre bemelegített példányok a Prémium csomag egyik funkciója, és legalább egy példányon futnia kell, és a csomag aktív állapotban kell lennie.
 
-You can configure the number of pre-warmed instances in the Azure portal by selected your **Function App**, going to the **Platform Features** tab, and selecting the **Scale Out** options. In the function app edit window, pre-warmed instances is specific to that app, but the minimum and maximum instances apply to your entire plan.
+A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, hogy kiválasztja a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, és kiválasztja a **kibővíthető** lehetőségeket. Az alkalmazás szerkesztése ablakban az előre felmelegedett példányok az adott alkalmazásra vonatkoznak, de a minimális és a maximális példányszám a teljes tervre vonatkozik.
 
-![Elastic Scale Settings](./media/functions-premium-plan/scale-out.png)
+![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
-You can also configure pre-warmed instances for an app with the Azure CLI
+Az Azure CLI-vel is konfigurálhat előre bemelegített példányokat az alkalmazáshoz
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="private-network-connectivity"></a>Private network connectivity
+### <a name="private-network-connectivity"></a>Magánhálózati kapcsolat
 
-Azure Functions deployed to a Premium plan takes advantage of [new VNet integration for web apps](../app-service/web-sites-integrate-with-vnet.md).  When configured, your app can communicate with resources within your VNet or secured via service endpoints.  IP restrictions are also available on the app to restrict incoming traffic.
+A prémium csomagra telepített Azure Functions a [webalkalmazások új VNet-integrációját](../app-service/web-sites-integrate-with-vnet.md)is kihasználja.  Ha be van állítva, az alkalmazás képes kommunikálni a VNet lévő erőforrásokkal, vagy szolgáltatási végpontokon keresztül.  Az alkalmazásban az IP-korlátozások is elérhetők a bejövő forgalom korlátozására.
 
-When assigning a subnet to your function app in a Premium plan, you need a subnet with enough IP addresses for each potential instance. We require an IP block with at least 100 available addresses.
+Amikor prémium szintű csomagban rendel hozzá egy alhálózatot a Function alkalmazáshoz, szüksége van egy alhálózatra, amely minden lehetséges példányhoz elegendő IP-címmel rendelkezik. Legalább 100 rendelkezésre álló címmel rendelkező IP-blokkra van szükség.
 
-Fore more information, see [integrate your function app with a VNet](functions-create-vnet.md).
+További információk: [a Function app integrálása VNet](functions-create-vnet.md).
 
-### <a name="rapid-elastic-scale"></a>Rapid elastic scale
+### <a name="rapid-elastic-scale"></a>Gyors rugalmas skála
 
-Additional compute instances are automatically added for your app using the same rapid scaling logic as the Consumption plan.  To learn more about how scaling works, see [Function scale and hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Az alkalmazáshoz további számítási példányok is automatikusan hozzáadódnak a használati tervvel megegyező gyors skálázási logikával.  Ha többet szeretne megtudni a skálázás működéséről, tekintse meg a [függvények méretezése és üzemeltetése](./functions-scale.md#how-the-consumption-and-premium-plans-work)című témakört.
 
-### <a name="longer-run-duration"></a>Longer run duration
+### <a name="longer-run-duration"></a>Hosszabb Futtatás időtartama
 
-Azure Functions in a Consumption plan are limited to 10 minutes for a single execution.  In the Premium plan, the run duration defaults to 30 minutes to prevent runaway executions. However, you can [modify the host.json configuration](./functions-host-json.md#functiontimeout) to make this 60 minutes for Premium plan apps.
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. [A Host. JSON-konfiguráció azonban módosítható](./functions-host-json.md#functiontimeout) úgy, hogy ezt a 60 percet biztosítsa a prémium szintű csomag alkalmazásai számára.
 
-## <a name="plan-and-sku-settings"></a>Plan and SKU settings
+## <a name="plan-and-sku-settings"></a>Csomag-és SKU-beállítások
 
-When you create the plan, you configure two settings: the minimum number of instances (or plan size) and the maximum burst limit.  Minimum instances are reserved and always running.
+A terv létrehozásakor két beállítást kell beállítania: a példányok minimális száma (vagy a csomag mérete) és a maximális burst korlát.  A minimális példányok le vannak foglalva, és mindig futnak.
 
 > [!IMPORTANT]
-> You are charged for each instance allocated in the minimum instance count regardless if functions are executing or not.
+> A rendszer minden egyes, a példányok minimális száma alatt lefoglalt példány díját terheli, függetlenül attól, hogy a függvények végrehajtása történik-e.
 
-If your app requires instances beyond your plan size, it can continue to scale out until the number of instances hits the maximum burst limit.  You are billed for instances beyond your plan size only while they are running and rented to you.  We will make a best effort at scaling your app out to its defined maximum limit, whereas the minimum plan instances are guaranteed for your app.
+Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
 
-You can configure the plan size and maximums in the Azure portal by selected the **Scale Out** options in the plan or a function app deployed to that plan (under **Platform Features**).
+A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővíthető** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
-You can also increase the maximum burst limit from the Azure CLI:
+Az Azure CLI maximális burst korlátját is megnövelheti:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>Available instance SKUs
+### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
 
-When creating or scaling your plan, you can choose between three instance sizes.  You will be billed for the total number of cores and memory consumed per second.  Your app can automatically scale out to multiple instances as needed.  
+A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU (Cikkszám)|Processzormagok|Memória|Adattárolás|
+|SKU|Processzormagok|Memory (Memória)|Tárolás|
 |--|--|--|--|
-|EP1|1|3.5GB|250 GB|
+|EP1|1|3.5 GB|250 GB|
 |EP2|2|7GB|250 GB|
-|EP3|4|14GB|250 GB|
+|EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 
-Below are the currently supported regions for each OS.
+Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott régiói.
 
-|Region (Régió)| Windows | Linux |
+|Régió| Windows | Linux |
 |--| -- | -- |
 |Ausztrália középső régiója| ✔<sup>1</sup> | |
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
-|Ausztrália keleti régiója| ✔ | |
+|Kelet-Ausztrália| ✔ | |
 |Délkelet-Ausztrália | ✔ | ✔ |
 |Dél-Brazília| ✔<sup>2</sup> |  |
 |Közép-Kanada| ✔ |  |
@@ -119,18 +119,18 @@ Below are the currently supported regions for each OS.
 |USA déli középső régiója| ✔ |  |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔ |
-|Egyesült Királyság déli régiója| ✔ | |
-|Egyesült Királyság nyugati régiója| ✔ |  |
+|Az Egyesült Királyság déli régiója| ✔ | |
+|Az Egyesült Királyság nyugati régiója| ✔ |  |
 |Nyugat-Európa| ✔ | ✔ |
 |Nyugat-India| ✔ |  |
 |USA nyugati régiója| ✔ | ✔ |
-|USA 2. nyugati régiója| ✔ |  |
+|USA nyugati régiója, 2.| ✔ |  |
 
-<sup>1</sup>Maximum scale out limited to 20 instances.  
-<sup>2</sup>Maximum scale out limited to 60 instances.
+<sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  
+<sup>2</sup> A maximális felskálázás 60 példányra korlátozódik.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Understand Azure Functions scale and hosting options](functions-scale.md)
+> [A Azure Functions méretezési és üzemeltetési lehetőségeinek megismerése](functions-scale.md)

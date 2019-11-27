@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Analyze events in Time Series Insights - Azure Digital Twins| Microsoft Docs'
-description: Learn how to visualize and analyze events from your Azure Digital Twins spaces, with Azure Time Series Insights, by using the steps in this tutorial.
+title: 'Oktatóanyag: események elemzése Time Series Insightsban – Azure digitális Twins | Microsoft Docs'
+description: Megtudhatja, hogyan jelenítheti meg és elemezheti az Azure digitális Twins-tárhelyek eseményeit az oktatóanyag lépéseinek használatával Azure Time Series Insightsával.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -16,19 +16,19 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383061"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualize and analyze events from Azure Digital Twins by using Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Oktatóanyag: az Azure Digital Twins eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
-After you deploy your Azure Digital Twins instance, provision your spaces, and implement a custom function to monitor specific conditions, you can visualize the events and data coming from your spaces to look for trends and anomalies.
+Miután üzembe helyezte az Azure Digital Twins-példányt, kiépítheti a tárhelyeit, és egyéni függvényt valósíthat meg a konkrét feltételek figyeléséhez, megjelenítheti a tárhelyekről érkező eseményeket és az azokban lévő adatokra mutató trendeket és rendellenességeket.
 
-In [the first tutorial](tutorial-facilities-setup.md), you configured the spatial graph of an imaginary building, with a room that contains sensors for motion, carbon dioxide, and temperature. A [második oktatóanyagban](tutorial-facilities-udf.md) üzembe helyezte a diagramot és egy felhasználó által meghatározott függvényt. The function monitors these sensor values and triggers notifications for the right conditions. That is, the room is empty, and the temperature and carbon dioxide levels are normal.
+[Az első oktatóanyagban](tutorial-facilities-setup.md)egy képzeletbeli épületben beállította a térbeli gráfot egy olyan helyiséggel, amely mozgásérzékelőket tartalmaz a Motion, a Carbon dioxid és a hőmérséklet számára. A [második oktatóanyagban](tutorial-facilities-udf.md) üzembe helyezte a diagramot és egy felhasználó által meghatározott függvényt. A függvény figyeli ezeket az érzékelő-értékeket és eseményindító-értesítéseket a megfelelő feltételekhez. Ez a hely üres, a hőmérséklet és a szén-dioxid szintje normális.
 
-This tutorial shows you how you can integrate the notifications and data coming from your Azure Digital Twins setup with Azure Time Series Insights. You can then visualize your sensor values over time. You can look for trends such as which room is getting the most use and which are the busiest times of the day. You can also detect anomalies such as which rooms feel stuffier and hotter, or whether an area in your building is sending consistently high temperature values, indicating faulty air conditioning.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure Digital Twins-telepítőből érkező értesítéseket és az adatok Azure Time Series Insights használatával. Ezután az érzékelő értékeit az idő múlásával jelenítheti meg. Megkeresheti azokat a trendeket, mint a legtöbbet a legtöbbet, és amelyek a nap legforgalmasabb időpontját használják. Észlelheti a rendellenességeket is, például hogy mely helyiségek stuffier és melegebbek, illetve hogy az épületben lévő területek konzisztensen magas hőmérsékletű értékeket küldenek-e, jelezve a hibás légkondicionálást.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Stream data by using Azure Event Hubs.
-> * Analyze with Time Series Insights.
+> * Adatfolyamok továbbítása az Azure Event Hubs használatával.
+> * Elemzés a Time Series Insights.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,58 +37,58 @@ Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-s
 - Egy [Azure-fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy futó Digital Twins-példány.
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to run the sample. Run `dotnet --version` to verify that the right version is installed.
+- A minta futtatásához [.net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen. A `dotnet --version` futtatásával ellenőrizze, hogy telepítve van-e a megfelelő verzió.
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
 
-## <a name="stream-data-by-using-event-hubs"></a>Stream data by using Event Hubs
+## <a name="stream-data-by-using-event-hubs"></a>Adatfolyam-adatátvitel Event Hubs használatával
 
-You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to create a pipeline to stream your data. This section shows you how to create your event hub as the connector between your Azure Digital Twins and Time Series Insights instances.
+Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatokat hozhat létre az adatstreamek továbbításához. Ebből a szakaszból megtudhatja, hogyan hozhatja létre az Event hub-összekötőt az Azure digitális ikrek és a Time Series Insights példányok között.
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 
 1. Keressen rá és válassza ki az **Event Hubs** elemet. Kattintson a **Létrehozás** gombra.
 
-    [![Create an Event Hubs Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [Event Hubs névtér létrehozása ![](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Enter a **Name** for your Event Hubs namespace. Choose **Standard** for **Pricing tier**, your **Subscription**, the **Resource group** that you used for your Digital Twins instance, and the **Location**. Kattintson a **Létrehozás** gombra.
+1. Adja meg a Event Hubs névtér **nevét** . Válassza a **standard** lehetőséget az **árképzési szint**, az **előfizetés**, a digitális Twins-példányhoz használt **erőforráscsoport** , valamint a **hely**számára. Kattintson a **Létrehozás** gombra.
 
-1. In the Event Hubs namespace deployment, select the **Overview** pane, then select **Go to resource**.
+1. A Event Hubs névtér üzembe helyezése lapon válassza az **Áttekintés** panelt, majd válassza az **Ugrás az erőforráshoz**lehetőséget.
 
-    [![Event Hubs namespace after deployment](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![Event Hubs névteret az üzembe helyezés után](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
-1. In the Event Hubs namespace **Overview** pane, select the **Event Hub** button at the top.
-    [![Event Hub button](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+1. A Event Hubs névtér **Áttekintés** ablaktábláján kattintson a felül található **Event hub** gombra.
+    [![Event hub gomb](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
-1. Enter a **Name** for your event hub, and select **Create**.
+1. Adja meg az Event hub **nevét** , majd válassza a **Létrehozás**lehetőséget.
 
-   After the event hub is deployed, it appears in the **Event Hubs** pane of the Event Hubs namespace with an **Active** status. Select this event hub to open its **Overview** pane.
+   Az Event hub üzembe helyezése után a Event Hubs névtér **Event Hubs** ablaktábláján **aktív** állapot jelenik meg. Válassza ki ezt az Event hub-t az **Áttekintés** panel megnyitásához.
 
-1. Select the **Consumer group** button at the top, and enter a name such as **tsievents** for the consumer group. Kattintson a **Létrehozás** gombra.
+1. Válassza a Top ( **fogyasztói csoport** ) gombot, és adjon meg egy nevet, például **tsievents** a fogyasztói csoport számára. Kattintson a **Létrehozás** gombra.
 
-    [![Event Hub consumer group](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [![Event hub fogyasztói csoport](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
-   After the consumer group is created, it appears in the list at the bottom of the event hub's **Overview** pane.
+   A fogyasztói csoport létrehozása után megjelenik az Event hub **Áttekintés** paneljének alján található listában.
 
-1. Open the **Shared access policies** pane for your event hub, and select the **Add** button. Enter **ManageSend** as the policy name, make sure all the check boxes are selected, and select **Create**.
+1. Nyissa meg az Event hub **megosztott hozzáférési szabályzatok** paneljét, és kattintson a **Hozzáadás** gombra. Adja meg a **ManageSend** nevet a szabályzat neveként, győződjön meg róla, hogy az összes jelölőnégyzet be van jelölve, majd válassza a **Létrehozás**lehetőséget.
 
-    [![Event Hub connection strings](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [az Event hub kapcsolati karakterláncának ![](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
     > [!TIP]
-    > Verify that you are creating an SAS Policy for your event hub instance rather than your namespace.
+    > Győződjön meg arról, hogy a névtér helyett a SAS-szabályzatot hozza létre az Event hub-példányhoz.
 
-1. Nyissa meg az imént létrehozott **ManageSend** szabályzatot, és másolja a **Kapcsolati sztring – elsődleges kulcs** és a **Kapcsolati sztring – másodlagos kulcs** értékeit egy ideiglenes fájlba. You'll need these values to create an endpoint for the event hub in the next section.
+1. Nyissa meg az imént létrehozott **ManageSend** szabályzatot, és másolja a **Kapcsolati sztring – elsődleges kulcs** és a **Kapcsolati sztring – másodlagos kulcs** értékeit egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
 
-### <a name="create-an-endpoint-for-the-event-hub"></a>Create an endpoint for the event hub
+### <a name="create-an-endpoint-for-the-event-hub"></a>Végpont létrehozása az Event hub számára
 
-1. In the command window, make sure you're in the **occupancy-quickstart\src** folder of the Azure Digital Twins sample.
+1. Győződjön meg arról, hogy a parancsablakban az Azure digitális Twins minta **Occupancy-quickstart\src** mappájában van.
 
-1. Open the file **actions\createEndpoints.yaml** in your editor. Cserélje le a tartalmát a következő kódra:
+1. Nyissa meg a szerkesztőben a **actions\createEndpoints.YAML** fájlt. Cserélje le a tartalmát a következő kódra:
 
     ```yaml
     - type: EventHub
@@ -108,22 +108,22 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
       path: Name_of_your_Event_Hub
     ```
 
-1. Replace the placeholders `Primary_connection_string_for_your_event_hub` with the value of **Connection string--primary key** for the event hub. Make sure the format of this connection string is as follows:
+1. Cserélje le a helyőrzőket `Primary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értékére – elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Secondary_connection_string_for_your_event_hub` with the value of **Connection string--secondary key** for the event hub. Make sure the format of this connection string is as follows: 
+1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értéke – másodlagos kulcs** értékére. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Name_of_your_Event_Hub` with the name of your Event Hub.
+1. Cserélje le a helyőrzőket `Name_of_your_Event_Hub` az Event hub nevére.
 
     > [!IMPORTANT]
-    > Az értékeket idézőjelek nélkül adja meg. Make sure there's at least one space character after the colons in the YAML file. You can also validate your YAML file contents by using any online YAML validator, such as [this tool](https://onlineyamltools.com/validate-yaml).
+    > Az értékeket idézőjelek nélkül adja meg. Győződjön meg arról, hogy legalább egy szóköz karakter szerepel a YAML-fájlban lévő kettőspontok után. A YAML fájl tartalmát bármely online YAML-érvényesítő, például [az eszköz](https://onlineyamltools.com/validate-yaml)használatával is érvényesítheti.
 
 1. Mentse és zárja be a fájlt. Futtassa a következő parancsot a parancssori ablakban, és amikor a rendszer kéri, jelentkezzen be Azure-fiókjával.
 
@@ -131,56 +131,56 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
     dotnet run CreateEndpoints
     ```
 
-   It creates two endpoints for your event hub.
+   Két végpontot hoz létre az Event hub számára.
 
-   [![Endpoints for Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [Event Hubs ![végpontok](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Elemzés a Time Series Insights használatával
 
-1. In the left pane of the [Azure portal](https://portal.azure.com), select **Create a resource**. 
+1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza az **erőforrás létrehozása**lehetőséget. 
 
-1. Search for and select a **Time Series Insights** General Availability (GA) resource. Kattintson a **Létrehozás** gombra.
+1. Keresse meg és válassza ki a **Time Series Insights** általánosan elérhető (GA) erőforrást. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Select the **Resource group** that you used for your Digital Twins instance, and your **Location**. Select **Next: Event Source** button or the **Event Source** tab.
+1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a digitális Twins-példányhoz használt **erőforráscsoportot** , valamint a **helyét**. Válassza a **Tovább: eseményforrás** gomb vagy az **eseményforrás** lapot.
 
-    [![Selections for creating a Time Series Insights instance](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [Time Series Insights példány létrehozásához ![kiválasztása](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. In the **Event Source** tab, enter a **Name**, select **Event Hub** as the **Source type**, and make sure the other values are selected correctly. Select **ManageSend** for **Event Hub access policy name**, and then select the consumer group that you created in the previous section for **Event Hub consumer group**. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Az **eseményforrás** lapon adjon meg egy **nevet**, válassza az **Event hub** lehetőséget a **forrás típusaként**, és győződjön meg arról, hogy a többi érték helyesen van kiválasztva. Válassza az **ManageSend** lehetőséget az **Event hub hozzáférési házirendjének neveként**, majd válassza ki azt a fogyasztói csoportot, amelyet az **Event hub fogyasztói csoportjának**előző szakaszában hozott létre. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    [![Selections for creating an event source](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [az eseményforrás létrehozásának ![kiválasztása](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
-1. In the **Review + Create** pane, review the information you entered, and select **Create**.
+1. A **felülvizsgálat + létrehozás** ablaktáblán tekintse át a megadott adatokat, majd válassza a **Létrehozás**lehetőséget.
 
-1. In the deployment pane, select the Time Series Insights resource you just created. It opens the **Overview** pane for your Time Series Insights environment.
+1. A központi telepítés ablaktáblán válassza ki az imént létrehozott Time Series Insights erőforrást. Ekkor megnyílik a Time Series Insights környezet **Áttekintés** panelje.
 
-1. Select the **Go to Environment** button at the top. If you get a data access warning, open the **Data Access Policies** pane for your Time Series Insights instance, select **Add**, select **Contributor** as the role, and select the appropriate user.
+1. Válassza az **Ugrás a környezetre** gombra a felső részen. Ha adatelérési figyelmeztetés jelenik meg, nyissa meg az **adatelérési házirendek** panelt Time Series Insights példányához, válassza a **Hozzáadás**lehetőséget, válassza a **közreműködő** szerepkört, és válassza ki a megfelelő felhasználót.
 
-1. The **Go to Environment** button opens the [Time Series Insights explorer](../time-series-insights/time-series-insights-explorer.md). If it doesn't show any events, simulate device events by browsing to the **device-connectivity** project of your Digital Twins sample, and running `dotnet run`.
+1. A **Ugrás a környezetre** gombra kattintva megnyílik a [Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md). Ha nem jelenít meg eseményeket, szimulálja az eszköz eseményeit, és megkeresi a digitális Twins **-minta eszköz-csatlakozási** projektjét, és futtatja `dotnet run`.
 
-1. After a few simulated events are generated, go back to the Time Series Insights explorer, and select the refresh button at the top. You should see analytical charts being created for your simulated sensor data. 
+1. Néhány szimulált esemény generálása után térjen vissza a Time Series Insights Explorerrel, és kattintson a felül található frissítés gombra. Meg kell jelennie a szimulált érzékelő adataihoz létrehozott analitikai diagramoknak. 
 
-    [![Chart in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [![diagram a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
-1. In the Time Series Insights explorer, you can then generate charts and heatmaps for different events and data from your rooms, sensors, and other resources. On the left side, use the **MEASURE** and **SPLIT BY** drop-down boxes to create your own visualizations. 
+1. A Time Series Insights Explorerben létrehozhat diagramokat és intenzitástérképei a különböző eseményekhez és adatokhoz a szobákból, érzékelőkből és egyéb erőforrásokból. A bal oldalon a **mérték** és a **felosztás** legördülő lista használatával hozhat létre saját vizualizációkat. 
 
-   For example, select **Events** for **MEASURE** and **DigitalTwins-SensorHardwareId** for **SPLIT BY**, to generate a heatmap for each of your sensors. The heatmap will be similar to the following image:
+   Válassza például az **események** a **mértékhez** és a **DigitalTwins-SensorHardwareId** a **felosztáshoz**lehetőséget, hogy az egyes érzékelőkhöz hő állítson elő. A hő az alábbi képhez hasonló lesz:
 
-   [![Heatmap in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [![hő a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you want to stop exploring Azure Digital Twins beyond this point, feel free to delete resources created in this tutorial:
+Ha le szeretné állítani az Azure digitális ikrek felfedezését ezen a ponton kívül, nyugodtan törölheti az oktatóanyagban létrehozott erőforrásokat:
 
-1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and then select **Delete**.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
     > [!TIP]
-    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
+    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
 
-2. If necessary, delete the sample applications on your work machine.
+2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Go to the next article to learn more about spatial intelligence graphs and object models in Azure Digital Twins.
+A következő cikkből megtudhatja, hogyan lehet többet megtudni a térbeli intelligencia gráfokról és az Azure Digital Twins-beli objektummodell-modellekről.
 
 > [!div class="nextstepaction"]
 > [A Digital Twins-objektummodellek és a térbeliintelligencia-diagram ismertetése](concepts-objectmodel-spatialgraph.md)

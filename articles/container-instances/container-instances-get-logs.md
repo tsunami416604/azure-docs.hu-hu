@@ -1,6 +1,6 @@
 ---
-title: Get container instance logs & events
-description: Learn how to debug with container logs and events with Azure Container Instances
+title: Tároló-példányok naplóinak beolvasása & események
+description: Megtudhatja, hogyan végezhet hibakeresést a tároló naplóival és eseményeivel Azure Container Instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.custom: mvc
@@ -11,15 +11,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481742"
 ---
-# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Retrieve container logs and events in Azure Container Instances
+# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Tároló-naplók és-események beolvasása Azure Container Instances
 
-When you have a misbehaving container, start by viewing its logs with [az container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach].
+Ha nem megfelelő tárolót használ, először tekintse meg a naplókat az [az Container logs][az-container-logs]paranccsal, és a standard kimenő és standard hibáját az [az Container Attach][az-container-attach]paranccsal.
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
-To view logs from your application code within a container, you can use the [az container logs][az-container-logs] command.
+Ha az alkalmazás kódjában lévő naplókat szeretné megtekinteni egy tárolóban, használhatja az az [Container logs][az-container-logs] parancsot.
 
-The following is log output from the example task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having fed it an invalid URL to process:
+A következő lépés a példaként szolgáló feladaton alapuló tároló kimenete, amely az [ACI-ban futtatott tároló feladat futtatása](container-instances-restart-policy.md)után a feldolgozáshoz érvénytelen URL-címet adott meg:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -45,9 +45,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Kimeneti stream csatolása
 
-The [az container attach][az-container-attach] command provides diagnostic information during container startup. Once the container has started, it streams STDOUT and STDERR to your local console.
+Az az [Container Attach][az-container-attach] parancs diagnosztikai adatokat biztosít a tároló indításakor. A tároló megkezdése után az STDOUT és a STDERR a helyi konzolra kerül.
 
-For example, here is output from the task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having supplied a valid URL of a large text file to process:
+Itt látható például a feladat-alapú tároló kimenete a [tárolóban lévő sablon futtatásakor az ACI-ban](container-instances-restart-policy.md), miután a nagy szövegfájl érvényes URL-címét adta meg a feldolgozáshoz:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -74,15 +74,15 @@ Start streaming logs:
  ('is', 8195)]
 ```
 
-## <a name="get-diagnostic-events"></a>Get diagnostic events
+## <a name="get-diagnostic-events"></a>Diagnosztikai események beolvasása
 
-If your container fails to deploy successfully, you need to review the diagnostic information provided by the Azure Container Instances resource provider. To view the events for your container, run the [az container show][az-container-show] command:
+Ha a tároló telepítése sikertelen, akkor át kell tekintenie a Azure Container Instances erőforrás-szolgáltató által megadott diagnosztikai adatokat. A tároló eseményeinek megtekintéséhez futtassa az [az Container show] [az-Container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-The output includes the core properties of your container, along with deployment events (shown here truncated):
+A kimenet tartalmazza a tároló alapvető tulajdonságait, valamint az üzembe helyezési eseményeket (Itt láthatók a csonkítva):
 
 ```JSON
 {
@@ -142,8 +142,8 @@ The output includes the core properties of your container, along with deployment
   ...
 }
 ```
-## <a name="next-steps"></a>Következő lépések
-Learn how to [troubleshoot common container and deployment issues](container-instances-troubleshooting.md) for Azure Container Instances.
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogy miként lehet [elhárítani a Azure Container instances gyakori tároló-és üzembe helyezési problémáit](container-instances-troubleshooting.md) .
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach

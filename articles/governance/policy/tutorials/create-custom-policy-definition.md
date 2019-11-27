@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Create a custom policy definition'
-description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
+title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
+description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
@@ -10,72 +10,72 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483985"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
+# <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
-A custom policy definition allows customers to define their own rules for using Azure. These rules often enforce:
+Az egyéni szabályzatok definíciója lehetővé teszi, hogy az ügyfelek definiálják saját szabályaikat az Azure használatához. Ezek a szabályok gyakran kényszerítik a következőket:
 
 - Biztonsági eljárások
-- Költségkezelés
-- Organization-specific rules (like naming or locations)
+- Cost Management
+- Szervezetre vonatkozó szabályok (például elnevezés vagy hely)
 
-Whatever the business driver for creating a custom policy, the steps are the same for defining the new custom policy.
+Függetlenül attól, hogy az üzleti illesztőprogram egyéni házirendet hoz létre, a lépések ugyanazok, mint az új egyéni házirend definiálásához.
 
-Before creating a custom policy, check the [policy samples](../samples/index.md) to see if a policy that matches your needs already exists.
+Egyéni házirend létrehozása előtt tekintse meg a [szabályzat mintáit](../samples/index.md) , és ellenőrizze, hogy már létezik-e az igényeinek megfelelő szabályzat.
 
-The approach to creating a custom policy follows these steps:
+Az egyéni szabályzatok létrehozásának módszere az alábbi lépésekből áll:
 
 > [!div class="checklist"]
-> - Identify your business requirements
-> - Map each requirement to an Azure resource property
-> - Map the property to an alias
-> - Determine which effect to use
-> - Compose the policy definition
+> - Az üzleti követelmények meghatározása
+> - Minden követelmény hozzárendelése egy Azure Resource tulajdonsághoz
+> - A tulajdonság hozzárendelése aliashoz
+> - A használni kívánt effektus meghatározása
+> - A szabályzat definíciójának összeállítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="identify-requirements"></a>Identify requirements
+## <a name="identify-requirements"></a>Követelmények azonosítása
 
-Before creating the policy definition, it's important to understand the intent of the policy. For this tutorial, we'll use a common enterprise security requirement as the goal to illustrate the steps involved:
+A házirend-definíció létrehozása előtt fontos megérteni a szabályzat céljait. Ebben az oktatóanyagban egy közös nagyvállalati biztonsági követelményt használunk, amely a következő lépéseket szemlélteti:
 
-- Each storage account must be enabled for HTTPS
-- Each storage account must be disabled for HTTP
+- Minden Storage-fióknak engedélyezve kell lennie a HTTPS-hez
+- A Storage-fiókoknak le kell tiltaniuk a HTTP-t
 
-Your requirements should clearly identify both the "to be" and the "not to be" resource states.
+A követelményeknek egyértelműen azonosítaniuk kell mind a "to", mind a "nem lehet" erőforrás-állapotot.
 
-While we've defined the expected state of the resource, we've not yet defined what we want done with non-compliant resources. Azure Policy supports a number of [effects](../concepts/effects.md). For this tutorial, we'll define the business requirement as preventing the creation of resources if they aren't compliant with the business rules. To meet this goal, we'll use the [Deny](../concepts/effects.md#deny) effect. We also want the option to suspend the policy for specific assignments. As such, we'll use the [Disabled](../concepts/effects.md#disabled) effect and make the effect a [parameter](../concepts/definition-structure.md#parameters) in the policy definition.
+Noha meghatározta az erőforrás várható állapotát, még nem definiálta, hogy mit szeretne tenni a nem megfelelő erőforrásokkal. Azure Policy számos [effektust](../concepts/effects.md)támogat. Ebben az oktatóanyagban definiáljuk az üzleti követelményt, amely megakadályozza az erőforrások létrehozását, ha nem felelnek meg az üzleti szabályoknak. Ennek a célnak a teljesítéséhez a [Megtagadás](../concepts/effects.md#deny) effektust fogjuk használni. Azt is szeretnénk, hogy az adott hozzárendelésekre vonatkozó szabályzatot felfüggessze. Ezért a [letiltott](../concepts/effects.md#disabled) effektust fogjuk használni, és a [paramétereket](../concepts/definition-structure.md#parameters) a házirend-definícióban kell végrehajtani.
 
-## <a name="determine-resource-properties"></a>Determine resource properties
+## <a name="determine-resource-properties"></a>Erőforrás-tulajdonságok meghatározása
 
-Based on the business requirement, the Azure resource to audit with Azure Policy is a storage account. However, we don't know the properties to use in the policy definition. Azure Policy evaluates against the JSON representation of the resource, so we'll need to understand the properties available on that resource.
+Az üzleti követelménytől függően az Azure-erőforrás, amellyel a Azure Policy naplózni kívánja a Storage-fiókot. Azonban nem tudjuk, hogy milyen tulajdonságokat kell használni a házirend-definícióban. Azure Policy kiértékeli az erőforrás JSON-ábrázolását, ezért meg kell értenünk az adott erőforráshoz elérhető tulajdonságokat.
 
-There are many ways to determine the properties for an Azure resource. We'll look at each for this tutorial:
+Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
-- Azure Policy extension for VS Code
-- Erőforrás-kezelői sablonok
-  - Export existing resource
-  - Creation experience
-  - Quickstart templates (GitHub)
-  - Template reference docs
-- Azure Resource Manager
+- Azure Policy-bővítmény VSCode-hoz
+- Resource Manager-sablonok
+  - Meglévő erőforrás exportálása
+  - Létrehozási élmény
+  - Gyorsindítás sablonok (GitHub)
+  - Sablon-dokumentációs dokumentumok
+- Azure Resource Explorer
 
-### <a name="view-resources-in-vs-code-extension"></a>View resources in VS Code extension
+### <a name="view-resources-in-vs-code-extension"></a>Erőforrások megtekintése a VS Code-bővítményben
 
-The [VS Code extension](../how-to/extension-for-vscode.md#search-for-and-view-resources) can be used to browse resources in your environment and see the Resource Manager properties on each resource.
+A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) használatával böngészheti az erőforrásokat a környezetben, és megtekintheti a Resource Manager-tulajdonságokat az egyes erőforrásokon.
 
-### <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
+### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-There are several ways to look at a [Resource Manager template](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) that includes the property you're looking to manage.
+A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) .
 
-#### <a name="existing-resource-in-the-portal"></a>Existing resource in the portal
+#### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrás a portálon
 
-The simplest way to find properties is to look at an existing resource of the same type. Resources already configured with the setting you want to enforce also provide the value to compare against.
-Look at the **Export template** page (under **Settings**) in the Azure portal for that specific resource.
+A tulajdonságok megkeresésének legegyszerűbb módja egy azonos típusú meglévő erőforrás megkeresése. A kényszeríteni kívánt beállítással már konfigurált erőforrások is megadják az összehasonlításhoz használandó értéket.
+Tekintse meg a **sablon exportálása** lapot (a **Beállítások**alatt) az adott erőforráshoz tartozó Azure Portalban.
 
-![Export template page on existing resource](../media/create-custom-policy-definition/export-template.png)
+![Sablon exportálása lap a meglévő erőforráson](../media/create-custom-policy-definition/export-template.png)
 
-Doing so for a storage account reveals a template similar to this example:
+A Storage-fiók esetében a következőhöz hasonló sablon látható:
 
 ```json
 ...
@@ -119,13 +119,13 @@ Doing so for a storage account reveals a template similar to this example:
 ...
 ```
 
-Under **properties** is a value named **supportsHttpsTrafficOnly** set to **false**. This property looks like it may be the property we're looking for. Also, the **type** of the resource is **Microsoft.Storage/storageAccounts**. The type lets us limit the policy to only resources of this type.
+A **Tulajdonságok** területen a **supportsHttpsTrafficOnly** nevű érték false ( **hamis**) értékűre van állítva. Ez a tulajdonság úgy tűnik, hogy a keresett tulajdonság lehet. Emellett az erőforrás **típusa** **Microsoft. Storage/storageAccounts**. A típus lehetővé teszi, hogy csak az ilyen típusú erőforrásokra korlátozza a szabályzatot.
 
-#### <a name="create-a-resource-in-the-portal"></a>Create a resource in the portal
+#### <a name="create-a-resource-in-the-portal"></a>Erőforrás létrehozása a portálon
 
-Another way through the portal is the resource creation experience. While creating a storage account through the portal, an option under the **Advanced** tab is **Security transfer required**. This property has _Disabled_ and _Enabled_ options. The info icon has additional text that confirms this option is likely the property we want. However, the portal doesn't tell us the property name on this screen.
+A portálon keresztül egy másik módszer az erőforrás-létrehozási élmény. Amikor a portálon keresztül hoz létre egy Storage-fiókot, a **speciális** lapon található lehetőség a **biztonságos átvitelre van szükség**. Ez a tulajdonság _letiltott_ és _engedélyezett_ beállításokat tartalmaz. Az info ikon további szöveggel rendelkezik, amely megerősíti, hogy ez a beállítás valószínűleg a kívánt tulajdonság. A portálon azonban nem jelennek meg a tulajdonságok neve ezen a képernyőn.
 
-On the **Review + create** tab, a link is at the bottom of the page to **Download a template for automation**. Selecting the link opens the template that creates the resource we configured. In this case, we see two key pieces of information:
+A **felülvizsgálat + létrehozás** lapon egy hivatkozás található az oldal alján egy **sablon az automatizáláshoz való letöltéséhez**. A hivatkozás kiválasztásával megnyílik a konfigurált erőforrást létrehozó sablon. Ebben az esetben két fő információt látunk:
 
 ```json
 ...
@@ -140,41 +140,41 @@ On the **Review + create** tab, a link is at the bottom of the page to **Downloa
 ...
 ```
 
-This information tells us the property type and also confirms **supportsHttpsTrafficOnly** is the property we're looking for.
+Ez az információ azt jelzi, hogy a tulajdonság típusa és a **supportsHttpsTrafficOnly** is megerősíti a keresett tulajdonságot.
 
-#### <a name="quickstart-templates-on-github"></a>Quickstart templates on GitHub
+#### <a name="quickstart-templates-on-github"></a>Gyors útmutató sablonok a GitHubon
 
-The [Azure quickstart templates](https://github.com/Azure/azure-quickstart-templates) on GitHub has hundreds of Resource Manager templates built for different resources. These templates can be a great way to find the resource property you're looking for. Some properties may appear to be what you're looking for, but control something else.
+A GitHubon futó Azure rövid útmutató [sablonjai](https://github.com/Azure/azure-quickstart-templates) több száz Resource Manager-sablonnal rendelkeznek, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
 
-#### <a name="resource-reference-docs"></a>Resource reference docs
+#### <a name="resource-reference-docs"></a>Erőforrás-referenciák dokumentációja
 
-To validate **supportsHttpsTrafficOnly** is correct property, check the Resource Manager template reference for the [storage account resource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) on the storage provider.
-The properties object has a list of valid parameters. Selecting the [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) link shows a table of acceptable properties. **supportsHttpsTrafficOnly** is present and the description matches what we are looking for to meet the business requirements.
+A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) Resource Manager-sablonra vonatkozó hivatkozását a tárolási szolgáltatón.
+A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
 
-### <a name="azure-resource-explorer"></a>Azure Resource Manager
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
-Another way to explore your Azure resources is through the [Azure Resource Explorer](https://resources.azure.com) (Preview). This tool uses the context of your subscription, so you need to authenticate to the website with your Azure credentials. Once authenticated, you can browse by providers, subscriptions, resource groups, and resources.
+Az Azure-erőforrások megismerésének egy másik módja a [Azure erőforrás-kezelő](https://resources.azure.com) (előzetes verzió). Ez az eszköz az előfizetés kontextusát használja, ezért az Azure-beli hitelesítő adataival kell hitelesítenie a webhelyet. A hitelesítés után a szolgáltatók, előfizetések, erőforráscsoportok és erőforrások között böngészhet.
 
-Locate a storage account resource and look at the properties. We see the **supportsHttpsTrafficOnly** property here as well. Selecting the **Documentation** tab, we see that the property description matches what we found in the reference docs earlier.
+Keresse meg a Storage-fiók erőforrását, és tekintse meg a tulajdonságokat. Itt a **supportsHttpsTrafficOnly** tulajdonság is látható. A **dokumentáció** lapon láthatjuk, hogy a tulajdonság leírása megegyezik a korábban a hivatkozási dokumentációban találhatókkal.
 
-## <a name="find-the-property-alias"></a>Find the property alias
+## <a name="find-the-property-alias"></a>A tulajdonság aliasnevének megkeresése
 
-We've identified the resource property, but we need to map that property to an [alias](../concepts/definition-structure.md#aliases).
+Azonosította az erőforrás-tulajdonságot, de a tulajdonságot egy [aliasra](../concepts/definition-structure.md#aliases)kell leképeznie.
 
-There are a few ways to determine the aliases for an Azure resource. We'll look at each for this tutorial:
+Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
-- Azure Policy extension for VS Code
-- Azure parancssori felület (CLI)
+- Azure Policy-bővítmény VSCode-hoz
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
-### <a name="get-aliases-in-vs-code-extension"></a>Get aliases in VS Code extension
+### <a name="get-aliases-in-vs-code-extension"></a>Aliasok beolvasása a VS Code bővítménnyel
 
-The Azure Policy extension for VS Code extension makes it easy to browse your resources and [discover aliases](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+A VS Code bővítmény Azure Policy bővítménye megkönnyíti az erőforrások tallózását és az [aliasok felderítését](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
-In Azure CLI, the `az provider` command group is used to search for resource aliases. We'll filter for the **Microsoft.Storage** namespace based on the details we got about the Azure resource earlier.
+Az Azure CLI-ben az `az provider`-parancs az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -183,11 +183,11 @@ In Azure CLI, the `az provider` command group is used to search for resource ali
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-In the results, we see an alias supported by the storage accounts named **supportsHttpsTrafficOnly**. This existence of this alias means we can write the policy to enforce our business requirements!
+Az eredmények között a **supportsHttpsTrafficOnly**nevű Storage-fiókok által támogatott alias látható. Ennek az aliasnak a létezése azt jelenti, hogy megírhatjuk a szabályzatot az üzleti követelmények érvénybe léptetéséhez.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-In Azure PowerShell, the `Get-AzPolicyAlias` cmdlet is used to search for resource aliases. We'll filter for the **Microsoft.Storage** namespace based on the details we got about the Azure resource earlier.
+Azure PowerShell a `Get-AzPolicyAlias` parancsmag az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -196,11 +196,11 @@ In Azure PowerShell, the `Get-AzPolicyAlias` cmdlet is used to search for resour
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Like Azure CLI, the results show an alias supported by the storage accounts named **supportsHttpsTrafficOnly**.
+Az Azure CLI-hez hasonlóan az eredmények a **supportsHttpsTrafficOnly**nevű Storage-fiókok által támogatott aliast jelenítik meg.
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) is a new service. It enables another method to find properties of Azure resources. Here is a sample query for looking at a single storage account with Resource Graph:
+Az [Azure Resource Graph](../../resource-graph/overview.md) egy új szolgáltatás. Lehetővé teszi egy másik módszer számára az Azure-erőforrások tulajdonságainak megkeresését. Az alábbi példa egy olyan lekérdezési lekérdezést mutat be, amely egyetlen Storage-fiókot keres az erőforrás-Gráfmal:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -215,7 +215,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-The results look similar to what we see in the Resource Manager templates and through the Azure Resource Explorer. However, Azure Resource Graph results can also include [alias](../concepts/definition-structure.md#aliases) details by _projecting_ the _aliases_ array:
+Az eredmények ugyanúgy néznek ki, mint a Resource Manager-sablonokban és a Azure Erőforrás-kezelő. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -231,7 +231,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | p
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
-Here is example output from a storage account for aliases:
+Íme egy példa az aliasokhoz tartozó Storage-fiók kimenetére:
 
 ```json
 "aliases": {
@@ -313,17 +313,17 @@ Here is example output from a storage account for aliases:
 }
 ```
 
-Azure Resource Graph can be used through [Cloud Shell](https://shell.azure.com), making it a fast and easy way to explore the properties of your resources.
+Az Azure Resource Graph a [Cloud Shellon](https://shell.azure.com)keresztül is használható, így gyorsan és egyszerűen feltárhatja az erőforrások tulajdonságait.
 
-## <a name="determine-the-effect-to-use"></a>Determine the effect to use
+## <a name="determine-the-effect-to-use"></a>A használandó effektus meghatározása
 
-Deciding what to do with your non-compliant resources is nearly as important as deciding what to evaluate in the first place. Each possible response to a non-compliant resource is called an [effect](../concepts/effects.md). The effect controls if the non-compliant resource is logged, blocked, has data appended, or has a deployment associated to it for putting the resource back into a compliant state.
+Annak eldöntése, hogy mi a teendő a nem megfelelő erőforrásokkal, majdnem olyan fontos, mint az első helyen való kiértékelés eldöntése. A nem megfelelő erőforrásokra adott lehetséges válaszokat a rendszer [effektusnak](../concepts/effects.md)nevezzük. A hatás azt szabályozza, hogy a nem megfelelő erőforrás van-e naplózva, letiltva, van-e hozzáfűzve vagy van-e hozzárendelve az erőforrás megfelelő állapotba helyezéséhez szükséges központi telepítéshez.
 
-For our example, Deny is the effect we want as we do not want non-compliant resources created in our Azure environment. Audit is a good first choice for a policy effect to determine what the impact of a policy is before setting it to Deny. One way to make changing the effect per assignment easier is to parameterize the effect. See [parameters](#parameters) below for the details on how.
+A megtagadási példa a mi az a hatása, ahogy nem szeretnénk, hogy az Azure-környezetben létrehozott nem megfelelő erőforrások ne legyenek. A naplózás jó választás a házirendek hatására, hogy megtudja, milyen hatással van a szabályzat, mielőtt a rendszer megtagadja a beállítást. Az egyes hozzárendelések hatásának megváltoztatásának egyik módja a parametrizálja. A részletekért lásd az alábbi [paramétereket](#parameters) .
 
-## <a name="compose-the-definition"></a>Compose the definition
+## <a name="compose-the-definition"></a>A definíció összeállítása
 
-We now have the property details and alias for what we plan to manage. Next, we'll compose the policy rule itself. If you aren't yet familiar with the policy language, reference [policy definition structure](../concepts/definition-structure.md) for how to structure the policy definition. Here is an empty template of what a policy definition looks like:
+Most már megtörtént a tulajdonságok részletei és aliasa a felügyelni kívánt tervekhez. Ezután saját maga alkotja a házirend-szabályt. Ha még nem ismeri a házirend nyelvét, a hivatkozási szabályzat [definíciójának struktúrája](../concepts/definition-structure.md) a házirend-definíció strukturálása. Itt látható egy üres sablon arról, hogy a szabályzat definíciója hogyan néz ki:
 
 ```json
 {
@@ -348,7 +348,7 @@ We now have the property details and alias for what we plan to manage. Next, we'
 
 ### <a name="metadata"></a>Metaadatok
 
-The first three components are policy metadata. These components are easy to provide values for since we know what we are creating the rule for. [Mode](../concepts/definition-structure.md#mode) is primarily about tags and resource location. Since we don't need to limit evaluation to resources that support tags, we'll use the _all_ value for **mode**.
+Az első három összetevő a szabályzat metaadatai. Ezek az összetevők egyszerűen biztosítanak értékeket, mert tudjuk, mi hozza létre a szabályt. A [Mode](../concepts/definition-structure.md#mode) elsődlegesen a címkék és az erőforrás helye. Mivel nem kell a címkéket támogató erőforrásokra korlátozni a kiértékelést, a _minden_ értéket használni fogjuk **.**
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -358,7 +358,7 @@ The first three components are policy metadata. These components are easy to pro
 
 ### <a name="parameters"></a>Paraméterek
 
-While we didn't use a parameter for changing the evaluation, we do want to use a parameter to allow changing the **effect** for troubleshooting. We'll define an **effectType** parameter and limit it to only **Deny** and **Disabled**. These two options match our business requirements. The finished parameters block looks like this example:
+Habár nem használunk paramétert a kiértékelés módosításához, egy paraméterrel szeretnénk engedélyezni a hibaelhárítási **effektus** módosítását. Definiálunk egy **effectType** paramétert, és csak a **Megtagadás** és a **Letiltva**értékre korlátozzuk. Ez a két lehetőség megfelel az üzleti követelményeknek. A befejezett paraméterek blokk a következő példához hasonlít:
 
 ```json
 "parameters": {
@@ -377,14 +377,14 @@ While we didn't use a parameter for changing the evaluation, we do want to use a
 },
 ```
 
-### <a name="policy-rule"></a>Policy rule
+### <a name="policy-rule"></a>Szabályzatbeli szabály
 
-Composing the [policy rule](../concepts/definition-structure.md#policy-rule) is the final step in building our custom policy definition. We've identified two statements to test for:
+A házirend- [szabály](../concepts/definition-structure.md#policy-rule) összeállítása az egyéni szabályzat-definíció kiépítése utolsó lépése. A teszteléshez két utasítást azonosítottak:
 
-- That the storage account **type** is **Microsoft.Storage/storageAccounts**
-- That the storage account **supportsHttpsTrafficOnly** isn't **true**
+- A Storage-fiók **típusa** **Microsoft. Storage/storageAccounts**
+- A Storage-fiók **supportsHttpsTrafficOnly** nem **igaz**
 
-Since we need both of these statements to be true, we'll use the **allOf** [logical operator](../concepts/definition-structure.md#logical-operators). We'll pass the **effectType** parameter to the effect instead of making a static declaration. Our finished rule looks like this example:
+Mivel mindkét utasításnak igaz értékűnek kell lennie, a **allOf** [logikai operátort](../concepts/definition-structure.md#logical-operators)használjuk. Statikus deklaráció helyett a **effectType** paramétert adjuk át a hatásnak. A befejezett szabály a következő példához hasonlít:
 
 ```json
 "if": {
@@ -404,9 +404,9 @@ Since we need both of these statements to be true, we'll use the **allOf** [logi
 }
 ```
 
-### <a name="completed-definition"></a>Completed definition
+### <a name="completed-definition"></a>Befejezett definíció
 
-With all three parts of the policy defined, here is our completed definition:
+A szabályzat mindhárom részének meghatározása után itt látható a befejezett definíció:
 
 ```json
 {
@@ -449,13 +449,13 @@ With all three parts of the policy defined, here is our completed definition:
 }
 ```
 
-The completed definition can be used to create a new policy. Portal and each SDK (Azure CLI, Azure PowerShell, and REST API) accept the definition in different ways, so review the commands for each to validate correct usage. Then assign it, using the parameterized effect, to appropriate resources to manage the security of your storage accounts.
+Az elkészült definíció használatával új szabályzat hozható létre. A portál és az egyes SDK-kat (Azure CLI, Azure PowerShell és REST API) különböző módokon fogadja el a definíciót, ezért tekintse át az egyes parancsokat a helyes használat ellenőrzéséhez. Ezután rendelje hozzá a paraméteres hatás használatával a megfelelő erőforrásokhoz a Storage-fiókok biztonságának kezeléséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you're done working with resources from this tutorial, use the following steps to delete any of the assignments or definitions created above:
+Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az alábbi lépéseket, törölje a létrehozott hozzárendeléseket vagy definíciókat fent:
 
-1. Select **Definitions** (or **Assignments** if you're trying to delete an assignment) under **Authoring** in the left side of the Azure Policy page.
+1. Válassza a **definíciók** **(vagy** hozzárendelések) lehetőséget a Azure Policy lap bal oldalán található **authoring (szerzői műveletek** ) elemnél.
 
 1. Keresse meg az eltávolítani kívánt új kezdeményezést vagy szabályzatdefiníciót (vagy hozzárendelést).
 
@@ -466,15 +466,15 @@ If you're done working with resources from this tutorial, use the following step
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 
 > [!div class="checklist"]
-> - Identified your business requirements
-> - Mapped each requirement to an Azure resource property
-> - Mapped the property to an alias
-> - Determined the effect to use
-> - Composed the policy definition
+> - Az üzleti igények azonosítása
+> - Az egyes követelmények leképezve egy Azure Resource tulajdonsághoz
+> - A tulajdonság hozzárendelése egy aliashoz
+> - A használandó effektus meghatározása
+> - A szabályzat definíciójának tagjai
 
 ## <a name="next-steps"></a>Következő lépések
 
-Next, use your custom policy definition to create and assign a policy:
+Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 
 > [!div class="nextstepaction"]
-> [Create and assign a policy definition](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)
+> [Szabályzat-definíció létrehozása és társítása](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)

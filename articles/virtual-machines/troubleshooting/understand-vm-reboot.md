@@ -1,6 +1,6 @@
 ---
-title: Understand a system reboot for an Azure VM | Microsoft Docs
-description: Lists the events that can cause a VM to reboot
+title: Egy Azure-beli virtuális gép rendszer-újraindításának ismertetése | Microsoft Docs
+description: A virtuális gép újraindítását okozó események listája
 services: virtual-machines
 documentationcenter: ''
 author: genlin
@@ -20,106 +20,106 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384231"
 ---
-# <a name="understand-a-system-reboot-for-azure-vm"></a>Understand a system reboot for Azure VM
+# <a name="understand-a-system-reboot-for-azure-vm"></a>Az Azure-beli virtuális gép rendszer-újraindításának ismertetése
 
-Azure virtual machines (VMs) might sometimes reboot for no apparent reason, without evidence of your having initiated the reboot operation. This article lists the actions and events that can cause VMs to reboot and provides insight into how to avoid unexpected reboot issues or reduce the impact of such issues.
+Előfordulhat, hogy az Azure-beli virtuális gépek (VM-EK) időnként újraindulnak, anélkül, hogy az újraindítási műveletet kezdeményezték volna. Ez a cikk felsorolja azokat a műveleteket és eseményeket, amelyek a virtuális gépek újraindítását okozhatják, és betekintést nyújtanak a váratlan újraindítási problémák elkerülésére vagy az ilyen problémák hatásának csökkentésére.
 
-## <a name="configure-the-vms-for-high-availability"></a>Configure the VMs for high availability
+## <a name="configure-the-vms-for-high-availability"></a>A virtuális gépek konfigurálása magas rendelkezésre álláshoz
 
-The best way to protect an application that's running on Azure against VM reboots and downtime is to configure the VMs for high availability.
+Az Azure-on futó alkalmazások védelmének legjobb módja a virtuális gépek újraindításának és leállásának a biztosítása a virtuális gépek magas rendelkezésre álláshoz való konfigurálásához.
 
-To provide this level of redundancy to your application, we recommend that you group two or more VMs in an availability set. This configuration ensures that during either a planned or unplanned maintenance event, at least one VM is available and meets the 99.95 percent [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
+Ha ezt a redundancia-szintet szeretné biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportban csoportosítson. Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)-nak.
 
-For more information about availability sets, see the following articles:
+A rendelkezésre állási csoportokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Manage the availability of VMs](../windows/manage-availability.md)
-- [Configure availability of VMs](../windows/classic/configure-availability.md)
+- [Virtuális gépek rendelkezésre állásának kezelése](../windows/manage-availability.md)
+- [Virtuális gépek rendelkezésre állásának konfigurálása](../windows/classic/configure-availability.md)
 
-## <a name="resource-health-information"></a>Resource Health information
+## <a name="resource-health-information"></a>Resource Health információk
 
-Azure Resource Health is a service that exposes the health of individual Azure resources and provides actionable guidance for troubleshooting problems. In a cloud environment where it isn’t possible to directly access servers or infrastructure elements, the goal of Resource Health is to reduce the time that you spend on troubleshooting. In particular, the aim is to reduce the time that you spend determining whether the root of the problem lies in the application or in an event inside the Azure platform. For more information, see [Understand and use Resource Health](../../resource-health/resource-health-overview.md).
+Azure Resource Health egy olyan szolgáltatás, amely lehetővé teszi az egyes Azure-erőforrások állapotát, és gyakorlati útmutatást nyújt a problémák elhárításához. Olyan felhőalapú környezetben, ahol nem lehet közvetlenül hozzáférni a kiszolgálókhoz vagy infrastruktúra-elemekhez, a Resource Health célja, hogy csökkentse a hibaelhárítás során eltöltött időt. A cél az, hogy csökkentse azt az időpontot, ameddig a probléma kihasználása az alkalmazásban vagy az Azure platformon belüli eseményben rejlik. További információ: [Resource Health megismerése és használata](../../resource-health/resource-health-overview.md).
 
-## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Actions and events that can cause the VM to reboot
+## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Műveletek és események, amelyek a virtuális gép újraindítását okozhatják
 
 ### <a name="planned-maintenance"></a>Tervezett karbantartás
 
-Microsoft Azure periodically performs updates across the globe to improve the reliability, performance, and security of the host infrastructure that underlies VMs. Many of these updates, including memory-preserving updates, are performed without any impact on your VMs or cloud services.
+Microsoft Azure rendszeresen végez frissítéseket a világ minden táján, hogy javítsa a virtuális gépeken alapuló gazdagép-infrastruktúra megbízhatóságát, teljesítményét és biztonságát. A frissítések, köztük a memória-megőrzési frissítések jelentős része a virtuális gépekre vagy a Cloud Servicesre gyakorolt hatás nélkül történik.
 
-However, some updates do require a reboot. In such cases, the VMs are shut down while we patch the infrastructure, and then the VMs are restarted.
+Néhány frissítéshez azonban újraindítás szükséges. Ilyen esetekben a virtuális gépek le vannak állítva az infrastruktúra javítása közben, majd a virtuális gépek újraindulnak.
 
-To understand what Azure planned maintenance is and how it can affect the availability of your Linux VMs, see the articles listed here. A cikkek háttértudást biztosítanak az Azure tervezett karbantartási folyamatáról, illetve arról, hogy miként ütemezheti úgy a tervezett karbantartást, hogy az a lehető legkisebb hatást gyakorolja.
+Az Azure tervezett karbantartásának megismeréséhez és a linuxos virtuális gépek rendelkezésre állásának befolyásolásához tekintse meg az itt felsorolt cikkeket. A cikkek háttértudást biztosítanak az Azure tervezett karbantartási folyamatáról, illetve arról, hogy miként ütemezheti úgy a tervezett karbantartást, hogy az a lehető legkisebb hatást gyakorolja.
 
 - [A virtuális gépek tervezett karbantartása az Azure-ban](../windows/planned-maintenance.md)
 - [Azure-beli virtuális gépek tervezett karbantartásának ütemezése](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>Memóriamegőrző frissítések
 
-For this class of updates in Microsoft Azure, users experience no impact on their running VMs. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. Some are platform infrastructure updates on the host operating system that can be applied without a reboot of the VMs.
+A Microsoft Azure frissítéseinek ezen osztályában a felhasználók nem gyakorolnak hatást a futó virtuális gépekre. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. Némelyik a gazdagép operációs rendszerének platform-infrastruktúrájának frissítései, amelyeket a virtuális gépek újraindítása nélkül lehet alkalmazni.
 
-Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. When it is being updated, the VM is placed in a *paused* state. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
+Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. A frissítés során a virtuális gép *szüneteltetett* állapotba kerül. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
 
-Because of the short pause period, deploying updates through this mechanism greatly reduces the impact on the VMs. However, not all updates can be deployed in this way. 
+A rövid szüneteltetési időszak miatt a frissítések ezen a mechanizmuson keresztül történő üzembe helyezése jelentősen csökkenti a virtuális gépekre gyakorolt hatást. Így azonban nem minden frissítés helyezhető üzembe. 
 
 A többpéldányos frissítések végrehajtása (a rendelkezésre állási csoportokban lévő virtuális gépeken) frissítési tartományonként történik.
 
 > [!NOTE]
-> Linux machines that have old kernel versions are affected by a kernel panic during this update method. To avoid this issue, update to kernel version 3.10.0-327.10.1 or later. For more information, see [An Azure Linux VM on a 3.10-based kernel panics after a host node upgrade](https://support.microsoft.com/help/3212236).
+> A régi kernel-verziókkal rendelkező Linux-gépeket a kernel pánikja érinti a frissítési módszer során. A probléma elkerüléséhez frissítsen a kernel 3.10.0-327.10.1 vagy újabb verziójára. További információ: [Azure Linux rendszerű virtuális gép a 3,10-alapú kernelen a gazdagép csomópontjának frissítése után](https://support.microsoft.com/help/3212236).
 
-### <a name="user-initiated-reboot-or-shutdown-actions"></a>User-initiated reboot or shutdown actions
+### <a name="user-initiated-reboot-or-shutdown-actions"></a>Felhasználó által kezdeményezett újraindítási vagy leállítási műveletek
 
-If you perform a reboot from the Azure portal, Azure PowerShell, command-line interface, or REST API, you can find the event in the [Azure Activity Log](../../azure-monitor/platform/activity-logs-overview.md).
+Ha újraindítást végez a Azure Portal, Azure PowerShell, parancssori felületen vagy REST API, megkeresheti az eseményt az Azure-beli [tevékenység naplójában](../../azure-monitor/platform/activity-logs-overview.md).
 
-If you perform the action from the VM's operating system, you can find the event in the system logs.
+Ha a virtuális gép operációs rendszerének a műveletét hajtja végre, a rendszernaplókban megkeresheti az eseményt.
 
-Other scenarios that usually cause the VM to reboot include multiple configuration-change actions. You'll ordinarily see a warning message indicating that executing a particular action will result in a reboot of the VM. Examples include any VM resize operations, changing the password of the administrative account, and setting a static IP address.
+Más forgatókönyvek, amelyek általában a virtuális gép újraindítását okozzák, több konfigurációs módosítási műveletet is tartalmazhatnak. Általában egy figyelmeztető üzenet jelenik meg, amely jelzi, hogy egy adott művelet végrehajtása a virtuális gép újraindítását eredményezi. Ilyenek például a virtuális gépek átméretezési műveletei, a rendszergazdai fiók jelszavának módosítása és statikus IP-cím beállítása.
 
-### <a name="azure-security-center-and-windows-update"></a>Azure Security Center and Windows Update
+### <a name="azure-security-center-and-windows-update"></a>Azure Security Center és Windows Update
 
-Azure Security Center monitors daily Windows and Linux VMs for missing operating-system updates. Security Center retrieves a list of available security and critical updates from Windows Update or Windows Server Update Services (WSUS), depending on which service is configured on a Windows VM. Security Center also checks for the latest updates for Linux systems. If your VM is missing a system update, Security Center recommends that you apply system updates. The application of these system updates is controlled through the Security Center in the Azure portal. After you apply some updates, VM reboots might be required. For more information, see [Apply system updates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/security-center-apply-system-updates.md).
 
-Like on-premises servers, Azure does not push updates from Windows Update to Windows VMs, because these machines are intended to be managed by their users. You are, however, encouraged to leave the automatic Windows Update setting enabled. Automatic installation of updates from Windows Update can also cause reboots to occur after the updates are applied. For more information, see [Windows Update FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
+A helyszíni kiszolgálókhoz hasonlóan az Azure nem küldi le a frissítéseket a Windows Updateról a Windows rendszerű virtuális gépekre, mert ezeket a gépeket a felhasználók számára kívánja felügyelni. Javasoljuk azonban, hogy engedélyezze az automatikus Windows Update beállítást. A frissítések Windows Updateról történő automatikus telepítése a frissítések alkalmazása után is okozhat újraindítást. További információ: [Windows Update GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 
-### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Other situations affecting the availability of your VM
+### <a name="other-situations-affecting-the-availability-of-your-vm"></a>A virtuális gép rendelkezésre állását befolyásoló egyéb helyzetek
 
-There are other cases in which Azure might actively suspend the use of a VM. You'll receive email notifications before this action is taken, so you'll have a chance to resolve the underlying issues. Examples of issues that affect VM availability include security violations and the expiration of payment methods.
+Más esetekben előfordulhat, hogy az Azure aktívan felfüggeszti a virtuális gépek használatát. A művelet elvégzése előtt e-mail-értesítéseket fog kapni, így lehetősége lesz a mögöttes problémák megoldására. A virtuális gépek rendelkezésre állását befolyásoló problémák például a biztonsági szabálysértések és a fizetési módok lejárta.
 
-### <a name="host-server-faults"></a>Host server faults
+### <a name="host-server-faults"></a>Gazda kiszolgálói hibák
 
-The VM is hosted on a physical server that is running inside an Azure datacenter. The physical server runs an agent called the Host Agent in addition to a few other Azure components. When these Azure software components on the physical server become unresponsive, the monitoring system triggers a reboot of the host server to attempt recovery. The VM is usually available again within five minutes and continues to live on the same host as previously.
+A virtuális gépet egy Azure-adatközponton belül futó fizikai kiszolgálón üzemelteti a rendszer. A fizikai kiszolgáló egy másik Azure-összetevő mellett futtatja a gazdagép ügynökének nevezett ügynököt. Ha ezek az Azure-beli szoftver-összetevők a fizikai kiszolgálón nem válaszolnak, a figyelő rendszer elindítja a gazdagép újraindítását a helyreállítás megkísérlése érdekében. A virtuális gép általában öt percen belül újra elérhető, és továbbra is ugyanazon a gazdagépen él, mint korábban.
 
-Server faults are usually caused by hardware failure, such as the failure of a hard disk or solid-state drive. Azure continuously monitors these occurrences, identifies the underlying bugs, and rolls out updates after the mitigation has been implemented and tested.
+A kiszolgálói hibákat általában hardverhiba okozta, például a merevlemez vagy a SSD-meghajtó meghibásodása. Az Azure folyamatosan figyeli ezeket az eseményeket, azonosítja a mögöttes hibákat, és kivezeti a frissítéseket a megoldás implementálása és tesztelése után.
 
-Because some host server faults can be specific to that server, a repeated VM reboot situation might be improved by manually redeploying the VM to another host server. This operation can be triggered by using the **redeploy** option on the details page of the VM, or by stopping and restarting the VM in the Azure portal.
+Mivel egyes gazdagép-kiszolgálói hibák az adott kiszolgálóra jellemzőek lehetnek, a virtuális gép újraindítási helyzetét a virtuális gép másik gazdagép-kiszolgálóra történő manuális ismételt üzembe helyezésével lehet javítani. Ez a művelet a virtuális gép részletek lapjának **újratelepítése** lehetőségével indítható el, vagy a virtuális gép leállításával és újraindításával a Azure Portal.
 
-### <a name="auto-recovery"></a>Auto-recovery
+### <a name="auto-recovery"></a>Automatikus helyreállítás
 
-If the host server cannot reboot for any reason, the Azure platform initiates an auto-recovery action to take the faulty host server out of rotation for further investigation. 
+Ha a gazda-kiszolgáló valamilyen okból nem indítható újra, az Azure platform automatikus helyreállítási műveletet indít el, hogy a hibás gazdagép-kiszolgáló ne legyen elforgatva további vizsgálat céljára. 
 
-All VMs on that host are automatically relocated to a different, healthy host server. This process is usually complete within 15 minutes. To learn more about the auto-recovery process, see [Auto-recovery of VMs](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
+A rendszer a gazdagépen lévő összes virtuális gépet egy másik, kifogástalan állapotú gazdagépre helyezi át. Ez a folyamat általában 15 percen belül befejeződik. További információ az automatikus helyreállítási folyamatról: [virtuális gépek automatikus helyreállítása](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
-### <a name="unplanned-maintenance"></a>Unplanned maintenance
+### <a name="unplanned-maintenance"></a>Nem tervezett karbantartás
 
-On rare occasions, the Azure operations team might need to perform maintenance activities to ensure the overall health of the Azure platform. This behavior might affect VM availability, and it usually results in the same auto-recovery action as described earlier.  
+Ritkán előfordulhat, hogy az Azure-műveleti csapatnak karbantartási tevékenységeket kell végeznie az Azure platform általános állapotának biztosítása érdekében. Ez a viselkedés hatással lehet a virtuális gépek rendelkezésre állására, és általában ugyanazokat az automatikus helyreállítási műveleteket eredményezi, mint a korábban leírtak szerint.  
 
-Unplanned maintenance include the following:
+A nem tervezett karbantartás a következőket foglalja magában:
 
-- Urgent node defragmentation
-- Urgent network switch updates
+- Sürgős csomópont-töredezettségmentesítés
+- Sürgős hálózati kapcsolók frissítései
 
-### <a name="vm-crashes"></a>VM crashes
+### <a name="vm-crashes"></a>VIRTUÁLIS gépek összeomlása
 
-VMs might restart because of issues within the VM itself. The workload or role that's running on the VM might trigger a bug check within the guest operating system. For help determining the reason for the crash, view the system and application logs for Windows VMs, and the serial logs for Linux VMs.
+A virtuális gépeken belüli problémák miatt előfordulhat, hogy a virtuális gépek újraindulnak. A virtuális gépen futó munkaterhelés vagy szerepkör a vendég operációs rendszeren is aktiválhatja a hibákat. Ha segítségre van az összeomlás okának meghatározásához, tekintse meg a Windows rendszerű virtuális gépek rendszer-és alkalmazás-naplóit, valamint a linuxos virtuális gépek soros naplóit.
 
-### <a name="storage-related-forced-shutdowns"></a>Storage-related forced shutdowns
+### <a name="storage-related-forced-shutdowns"></a>Tárolással kapcsolatos kényszerített leállítások
 
-VMs in Azure rely on virtual disks for operating system and data storage that is hosted on the Azure Storage infrastructure. Whenever the availability or connectivity between the VM and the associated virtual disks is affected for more than 120 seconds, the Azure platform performs a forced shutdown of the VMs to avoid data corruption. The VMs are automatically powered back on after storage connectivity has been restored. 
+Az Azure-beli virtuális gépek az Azure Storage-infrastruktúrában üzemeltetett operációs rendszerek és adattárolási virtuális lemezeket használják. Ha a virtuális gép és a hozzá tartozó virtuális lemezek közötti rendelkezésre állást vagy kapcsolatot több mint 120 másodpercre érinti, az Azure platform a virtuális gépek kényszerített leállítását hajtja végre, hogy elkerülje az adatok sérülését. A rendszer automatikusan visszaállítja a virtuális gépeket a tárolási kapcsolat visszaállítása után. 
 
-The duration of the shutdown can be as short as five minutes but can be significantly longer. The following is one of the specific cases that is associated with storage-related forced shutdowns: 
+A Leállítás időtartama akár öt percet is igénybe vehet, de jóval hosszabb lehet. A következő a tárolással kapcsolatos kényszerített leállításokhoz kapcsolódó konkrét esetek egyike: 
 
-**Exceeding IO limits**
+**IO-korlátok túllépése**
 
-VMs might be temporarily shut down when I/O requests are consistently throttled because the volume of I/O operations per second (IOPS) exceeds the I/O limits for the disk. (Standard disk storage is limited to 500 IOPS.) To mitigate this issue, use disk striping or configure the storage space inside the guest VM, depending on the workload. For details, see [Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Előfordulhat, hogy a virtuális gépek átmenetileg le vannak állítva az I/o-kérelmek következetes szabályozása miatt, mert a másodpercenkénti I/o-műveletek mennyisége (IOPS) meghaladja a lemez I/O-korlátait. (A standard szintű lemezes tárolás 500 IOPS van korlátozva.) A probléma megoldásához használjon lemezes csíkozást, vagy konfigurálja a tárterületet a vendég virtuális gépen a munkaterheléstől függően. Részletekért lásd: [Azure-beli virtuális gépek konfigurálása optimális tárolási teljesítményhez](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
-### <a name="other-incidents"></a>Other incidents
+### <a name="other-incidents"></a>Egyéb incidensek
 
-In rare circumstances, a widespread issue can affect multiple servers in an Azure datacenter. If this issue occurs, the Azure team sends email notifications to the affected subscriptions. You can check the [Azure Service Health dashboard](https://azure.microsoft.com/status/) and the Azure portal for the status of ongoing outages and past incidents.
+Ritka esetekben egy elterjedt probléma az Azure-adatközpont több kiszolgálójára is hatással lehet. Ha ez a probléma merül fel, az Azure csapata e-mail-értesítéseket küld az érintett előfizetésekhez. A folyamatban lévő kimaradások és a múltbeli incidensek állapotának ellenőrzéséhez tekintse meg a [Azure Service Health irányítópultot](https://azure.microsoft.com/status/) és a Azure Portal.

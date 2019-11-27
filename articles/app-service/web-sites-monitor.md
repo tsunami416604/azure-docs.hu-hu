@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470125"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546197"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazásokhoz, a mobil háttér-és API-alkalmazásokhoz a [Azure Portal](https://portal.azure.com).
 
-A Azure Portal áttekintheti az alkalmazások *kvótáit* és *mérőszámait* , áttekintheti a app Service tervet, és automatikusan beállíthatja a metrikák alapján a *riasztásokat* és a *skálázást* .
+A Azure Portalban áttekintheti az alkalmazások *kvótáit* és *mérőszámait* , valamint app Service megtervezheti az alkalmazásokat, és beállíthatja a *riasztásokat* és az *automatikus skálázást* is.
 
 ## <a name="understand-quotas"></a>A kvóták ismertetése
 
@@ -46,7 +46,7 @@ Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 | **Sávszélesség** | Az alkalmazáshoz egy nap alatt engedélyezett kimenő sávszélesség teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
 | **Fájlrendszer** | Az engedélyezett tárterület teljes mennyisége. |
 
-Az *Alapszintű*, *standard*és *prémium* csomagokban üzemeltetett alkalmazásokra vonatkozó egyetlen kvóta a fájlrendszer.
+Az *Alapszintű*, standard és *prémium* *szintű*alkalmazások esetében az egyetlen kvóta a fájlrendszer.
 
 További információ a különböző App Service SKU-ban elérhető konkrét kvótákkal, korlátozásokkal és szolgáltatásokkal kapcsolatban: [Azure-előfizetési szolgáltatás korlátai](../azure-subscription-service-limits.md#app-service-limits).
 
@@ -64,6 +64,10 @@ Az App Service terv frissítésével növelheti vagy eltávolíthatja az alkalma
 
 ## <a name="understand-metrics"></a>A metrikák ismertetése
 
+> [!NOTE]
+> A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, és nem számítunk fel adatokat, kivéve, ha Ön rendelkezik a privát előzetes verzióra vonatkozó engedélyezési listával.
+> 
+
 A metrikák az alkalmazással vagy a App Service terv működésével kapcsolatos információkat biztosítanak.
 
 Egy alkalmazás esetében az elérhető metrikák a következők:
@@ -77,6 +81,7 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 | **Aktuális szerelvények** | Az alkalmazás összes alkalmazástartományok betöltött szerelvények aktuális száma. |
 | **A-ben tárolt adatértékek** | Az alkalmazás által felhasznált bejövő sávszélesség mennyisége a MiB-ben. |
 | **Kimenő adatvesztés** | Az alkalmazás által felhasznált kimenő sávszélesség mennyisége a MiB-ben. |
+| **Fájlrendszer használata** | Az alkalmazás által felhasznált fájlrendszerbeli kvóta százalékaránya. |
 | **0. generációs Garbage-gyűjtemények** | Az alkalmazási folyamat kezdete óta a 0. generációs objektumok számát gyűjti a rendszer. A magasabb generációs GCs közé tartozik az összes alacsonyabb generációs GCs.|
 | **1. generációs Garbage gyűjtemények** | Azon alkalmak száma, amikor az 1. generációs objektumok az alkalmazási folyamat kezdete óta beszedett szemetet gyűjtenek. A magasabb generációs GCs közé tartozik az összes alacsonyabb generációs GCs.|
 | **2. generációs Garbage gyűjtemények** | A 2. generációs objektumok száma az alkalmazási folyamat kezdete óta beszedett szemetet.|
@@ -90,7 +95,7 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 | **Http-4xx** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 400, de < 500. |
 | **Http-kiszolgálói hibák** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 500, de < 600. |
 | **IO – egyéb bájtok másodpercenként** | Az alkalmazási folyamat által az adatokhoz nem kapcsolódó I/O-műveletekhez (például vezérlési műveletekhez) tartozó bájtok kibocsátásának sebessége.|
-| **IO egyéb műveletek másodpercenként** | Az alkalmazás folyamata olyan I/O-műveletek kiadására szolgál, amelyek sem az olvasás, sem az írási művelet.|
+| **IO egyéb műveletek másodpercenként** | Az alkalmazás folyamata olyan I/O-műveletek kiadására szolgál, amelyek nem olvasási vagy írási műveletek.|
 | **IO olvasási bájtok másodpercenként** | Az alkalmazási folyamat által az I/O-műveletek bájtjainak olvasási sebessége.|
 | **I/o-olvasási műveletek másodpercenként** | Az alkalmazás folyamata olvasási I/O-műveletekre vonatkozó kiadási sebessége.|
 | **IO írási bájtok másodpercenként** | Az a sebesség, amellyel az alkalmazás a bájtok írását az I/O-műveletekhez.|

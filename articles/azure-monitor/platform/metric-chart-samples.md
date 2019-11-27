@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor metrikadiagram minták
-description: További információ az Azure Monitor adatai megjelenítéséhez.
+title: Példa Azure Monitor metrikus diagramra
+description: Tudnivalók a Azure Monitor adatainak megjelenítéséről.
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256712"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538967"
 ---
-# <a name="metric-chart-samples"></a>Metrikadiagram minták
+# <a name="metric-chart-examples"></a>Metrikus diagram – példák 
 
-Az Azure-platform ajánlatok [Kaliforniában mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), számát, amely rendelkezik a dimenziók. Használatával [szűrők dimenzió](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), alkalmazása [felosztás](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)diagramtípus szabályozása és hozhat létre hatékony diagnosztikai nézetek és állapotának betekintést biztosító irányítópultok diagram beállításainak módosítása az infrastruktúra és alkalmazások. Ez a cikk bemutatja a diagramokat hozhat létre használatával néhány példát [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) és egyes ezekbe a diagramokba konfigurálásához szükséges lépéseket ismerteti.
+Az Azure platform [több mint ezer mérőszámot](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)kínál, amelyek közül sok dimenziót tartalmaz. A [dimenzió szűrők](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)használatával a [felosztás](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), a diagramtípus szabályozása és a diagram beállításainak módosítása lehetővé teszi, hogy hatékony diagnosztikai nézeteket és irányítópultokat hozzon létre, amelyek betekintést nyújtanak az infrastruktúra és az alkalmazások állapotára. Ez a cikk néhány példát mutat be a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) használatával felépíthető diagramokra, és ismerteti az egyes diagramok konfigurálásához szükséges lépéseket.
 
-Szeretné megosztani a nagyszerű diagramokon példákat az egész világon? Ezen a lapon, a Githubon hozzájárul, és megoszthatja az itt szereplő példák a saját diagram!
+Szeretné megosztani a nagyszerű diagramok példáit a világgal? Járuljon hozzá ehhez az oldalhoz a GitHubon, és ossza meg a saját diagramon megjelenő példákat!
 
-## <a name="website-cpu-utilization-by-server-instances"></a>Webhely CPU-kihasználtság kiszolgálópéldányok
+## <a name="website-cpu-utilization-by-server-instances"></a>Webhely CPU-kihasználtsága kiszolgálói példányok szerint
 
-Ezen a diagramon látható, ha egy App Service-ben a CPU volt elfogadható tartományon belül-e, és felszámolja szerint határozza meg, hogy a terhelés megfelelően terjesztése-példány. A diagram, amely az alkalmazás Reggel 6 előtt egy önálló kiszolgáló példányt futtat, és a egy másik példány hozzáadásával vertikálisan is láthatja.
+Ez a diagram azt mutatja, hogy egy App Service PROCESSZORa az elfogadható tartományon belül van-e, és a példányok lebontásával megállapítja, hogy a terhelés megfelelően van-e elosztva. A diagramon láthatja, hogy az alkalmazás egy adott kiszolgálói példányon fut a 6. előtt, majd egy másik példány hozzáadásával felskálázást végez.
 
-![Vonaldiagram kiszolgálópéldány átlagos processzorhasználat (%)](./media/metric-chart-samples/cpu-by-instance.png)
+![A CPU átlagos százalékos arányának diagramja kiszolgálópéldány szerint](./media/metric-chart-samples/cpu-by-instance.png)
 
-### <a name="how-to-configure-this-chart"></a>Hogyan lehet a diagram konfigurálásához?
+### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
-Válassza ki az App Service-erőforrás, és keresse meg a **processzorhasználat** metrikát. Kattintson a **alkalmazni a felosztás** , és válassza ki a **példány** dimenzió.
+Válassza ki a App Service erőforrást, és keresse meg a **CPU százalékos** metrikáját. Ezután kattintson a **felosztás alkalmazása** elemre, és válassza ki a **példány** dimenziót.
 
-## <a name="application-availability-by-region"></a>Alkalmazás rendelkezésre állása régiónként
+## <a name="application-availability-by-region"></a>Alkalmazások elérhetősége régiónként
 
-Tekintse meg az alkalmazás rendelkezésre állása régiónként azonosításához milyen földrajzi helyeken problémák merülnek fel. Ezen a diagramon látható az Application Insights rendelkezésre állási metrika. Láthatja, hogy a figyelt alkalmazásban nem jelent problémát, az USA keleti Régiójában adatközpontból rendelkezésre állással rendelkezik, de azt az USA nyugati RÉGIÓJA és Kelet-Ázsia részleges rendelkezésre állási problémát észlelt.
+Megtekintheti az alkalmazás elérhetőségét régiónként, és meghatározhatja, hogy mely földrajzi helyeknél van probléma. Ez a diagram a Application Insights rendelkezésre állási metrikáját mutatja be. Láthatja, hogy a figyelt alkalmazás nem jelent problémát az USA keleti adatközpontjának rendelkezésre állása miatt, de az USA nyugati régiójában lévő, részlegesen rendelkezésre álló probléma tapasztalható, és Kelet-Ázsia.
 
-![Átlagos rendelkezésre állás helyek alapján diagramja](./media/metric-chart-samples/availability-run-location.png)
+![Helyek közötti átlagos elérhetőség diagramja](./media/metric-chart-samples/availability-run-location.png)
 
-### <a name="how-to-configure-this-chart"></a>Hogyan lehet a diagram konfigurálásához?
+### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
-Először be kell kapcsolnia [Application Insights rendelkezésre állási](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) figyelési webhelye számára. Ezt követően válassza ki az Application Insights-erőforrást, és válassza ki a rendelkezésre állási metrika. Felosztás a alkalmazni a **Futtatás helye** dimenzió.
+Először be kell kapcsolni [Application Insights rendelkezésre állásának](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) figyelését a webhelyén. Ezt követően válassza ki Application Insights erőforrását, és válassza ki a rendelkezésre állási metrikát. Alkalmazzon felosztást a **futtatási hely** dimenzión.
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>API-név alapján tárolási tranzakciók mennyisége
+## <a name="volume-of-storage-account-transactions-by-api-name"></a>A Storage-fiók tranzakcióinak mennyisége API-név szerint
 
-A tárfiók típusú erőforrást tapasztalható túlzott mennyiségű tranzakciót. A tranzakciók metrika segítségével azonosíthatja, amely API felelős a túlzott terhelés. Figyelje meg, hogy a következő diagram van konfigurálva a ugyanazt a dimenziót (API-név) a szűrés és a felosztás szeretné szűkíteni a nézetet, hogy csak a lényeges API-hívások:
+A Storage-fiók erőforrása túlzott mennyiségű tranzakciót tapasztal. A tranzakciók metrikájának használatával meghatározhatja, hogy melyik API felelős a felesleges terhelésért. Figyelje meg, hogy az alábbi diagram a szűrés és a felosztás során ugyanazzal a dimenzióval (API-névvel) van konfigurálva, hogy szűkítse a nézetet csak a kamat API-hívásokra:
 
-![API-tranzakciókhoz oszlopdiagram](./media/metric-chart-samples/transactions-by-api.png)
+![API-tranzakciók oszlopdiagram](./media/metric-chart-samples/transactions-by-api.png)
 
-### <a name="how-to-configure-this-chart"></a>Hogyan lehet a diagram konfigurálásához?
+### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
-A metrika hatókörbe, válassza ki a tárfiókját, és a **tranzakciók** metrikát. Váltson a diagram típusát **sávdiagram**. Kattintson a **alkalmazni a felosztás** , és válassza ki a dimenzió **API neve**. Kattintson a a **szűrő hozzáadása** , és válassza ki a **API neve** dimenzió még egyszer. A szűrés párbeszédpanelen válassza ki a diagram megjeleníteni kívánt API-k.
+A metrika-választóban válassza ki a Storage-fiókot és a **tranzakciók** metrikáját. Diagram típusának váltása **oszlopdiagram**. Kattintson a **felosztás alkalmazása** elemre, és válassza a dimenzió **API neve**elemet. Ezután kattintson a **szűrő hozzáadása** lehetőségre, majd válassza ki az **API-név** dimenziót újra. A szűrő párbeszédpanelen válassza ki a diagramon ábrázolni kívánt API-kat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További tudnivalók az Azure Monitor [munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
-* Tudjon meg többet [Metrikaböngésző](metrics-charts.md)
+* Tudnivalók a Azure Monitor- [munkafüzetek](../../azure-monitor/app/usage-workbooks.md) használatáról
+* További információ a [metrika-kezelőről](metrics-charts.md)

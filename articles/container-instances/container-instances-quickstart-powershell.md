@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – Docker-tároló üzembe helyezése Azure Container Instances-PowerShellben
+title: Gyors útmutató – Docker-tároló üzembe helyezése tároló példányon – PowerShell
 description: Ebben a rövid útmutatóban a Azure PowerShell használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
 services: container-instances
 author: dlepow
@@ -7,16 +7,15 @@ manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325829"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533607"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: Tároló-példány üzembe helyezése az Azure-ban Azure PowerShell használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban Azure PowerShell használatával
 
 A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
 
@@ -44,11 +43,11 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Azure PowerShell nevű tároló-példány létrehozásához adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét a [New-AzContainerGroup][New-AzContainerGroup] parancsmaghoz. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/windows/servercore/iis:nanoserver` rendszerképet használhatja. Ez a rendszerkép a Microsoft Internet Information Services (IIS) csomagot a nano Serveren való futtatásra.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Azure PowerShell nevű tároló-példány létrehozásához adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét a [New-AzContainerGroup][New-AzContainerGroup] parancsmaghoz. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/windows/servercore/iis:nanoserver` rendszerképet használja. Ez a rendszerkép a Microsoft Internet Information Services (IIS) csomagot a nano Serveren való futtatásra.
 
-A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy az IIS nyilvánosan elérhető legyen.
+Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy az IIS nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `-DnsNameLabel` értéket állítson be, amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `-DnsNameLabel` értéket állítson be, amely egyedi az Azure-régión belül, ahol létrehozta a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
@@ -92,15 +91,15 @@ Miután a tároló `ProvisioningState` értéke **Succeeded** (Sikerült) állap
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tárolóval, távolítsa el a Remove [-AzContainerGroup][Remove-AzContainerGroup] parancsmaggal:
+Ha elkészült a tárolóval, távolítsa el a [Remove-AzContainerGroup][Remove-AzContainerGroup] parancsmaggal:
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilvános Docker Hub beállításjegyzékben található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy Azure-beli privát tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban létrehozott egy Azure-beli tárolópéldányt egy, a nyilvános Docker Hub regisztrációs adatbázisban található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy Azure-beli privát tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)

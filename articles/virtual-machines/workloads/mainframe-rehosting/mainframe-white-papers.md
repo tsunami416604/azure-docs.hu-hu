@@ -1,6 +1,6 @@
 ---
-title: Azure white papers about mainframe topics using Azure Virtual Machines and Azure Storage
-description: Get resources about mainframe migration, rehosting, and moving IBM Z-based systems to Microsoft Azure.
+title: Azure-tanulmányok az Azure Virtual Machines és az Azure Storage szolgáltatással kapcsolatos nagyszámítógépi témákról
+description: Erőforrások beszerzése az IBM Z-alapú rendszerek Microsoft Azure való áttelepítéséhez, üzemeltetéséhez és áthelyezéséhez.
 services: multiple
 documentationcenter: ''
 author: njray
@@ -15,38 +15,38 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224747"
 ---
-# <a name="azure-white-papers-about-mainframe-topics"></a>Azure white papers about mainframe topics
+# <a name="azure-white-papers-about-mainframe-topics"></a>Azure-tanulmányok a nagyszámítógépekkel kapcsolatos témakörökről
 
-Get resources about mainframe migration, rehosting, and moving IBM Z-based systems to Microsoft Azure.
+Erőforrások beszerzése az IBM Z-alapú rendszerek Microsoft Azure való áttelepítéséhez, üzemeltetéséhez és áthelyezéséhez.
 
-### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
-Azure provides a mainframe alternative capable of delivering equivalent functionality and features. This paper, by Larry Mead of the AzureCAT team, covers the major IBM z/OS mainframe components and the Azure equivalents. It also provides a road map for starting the conversation with IT decision-makers who subscribe to outdated mainframe philosophies.
+Az Azure olyan nagyszámítógépi alternatívát kínál, amely egyenértékű funkciókat és funkciókat biztosít. Ez a tanulmány a AzureCAT csapatának Larry Meadével foglalkozik a főbb IBM z/OS mainframe-összetevőkkel és az Azure-val egyenértékűekkel. Egy olyan útitervet is biztosít, amellyel megkezdheti a beszélgetést az olyan döntéshozókkal, akik elavult nagyszámítógépi filozófiára fizetnek.
 
-### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[Move mainframe compute and storage to Azure](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
+### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[Nagyszámítógépes számítási és tárolási adatok áthelyezése az Azure-ba](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
 
-To run mainframe workloads on Microsoft Azure, you need to know how your mainframe’s capabilities compare to Azure. Based on an IBM z14 mainframe, this guide by Larry Mead of AzureCAT explores how to get comparable results on Azure. The massively scalable compute and storage resources on Azure provide immediate benefits to organizations running mainframe workloads.
+A nagyvállalati munkaterhelések Microsoft Azure-on való futtatásához tudnia kell, hogyan hasonlítják össze a mainframe képességeit az Azure-ban. Az IBM z14 mainframe alapján a Larry Mead of AzureCAT bemutatja, hogyan szerezhet össze hasonló eredményeket az Azure-ban. Az Azure-ban a nagymértékben méretezhető számítási és tárolási erőforrások azonnali előnyöket biztosítanak a nagyvállalati munkaterheléseket futtató szervezeteknek.
 
-### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government cloud for mainframe applications](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government felhő nagyszámítógépi alkalmazások számára](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-Planning an application migration is the ideal time to add value and agility to even well-established mainframe workloads. In this quick guide, Larry Mead of AzureCAT shows how United States government agencies and their partners can use Azure Government for mainframe applications—and migration may not be as difficult as you think. Azure Government delivers the advantages of a mainframe in a more cost-efficient and agile environment. In addition, Azure Government earned a Provisional Authority to Operate (P-ATO) for FedRAMP High Impact.
+Az alkalmazások áttelepítésének megtervezése ideális alkalom az érték és a rugalmasság hozzáadására a még jól bevált nagyszámítógépi munkaterhelések esetében. Ebben a rövid útmutatóban a Larry Mead of AzureCAT azt mutatja be, hogy a Egyesült Államok kormányzati szervei és partnereik hogyan használhatják a Azure Governmentt a nagyszámítógépek alkalmazásai számára – és előfordulhat, hogy a Migrálás nem annyira nehéz, ahogy gondolja. A Azure Government költséghatékony és agilis környezetben biztosítja a nagyszámítógépek előnyeit. Emellett Azure Government egy ideiglenes hatóságot (P-ATO) is megszerzett a FedRAMP nagy hatású működéséhez.
 
-### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[Deploy IBM DB2 pureScale on Azure](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
+### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[Az IBM DB2-pureScale üzembe helyezése az Azure-ban](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-Learn from our experience with an enterprise that recently rehosted its IBM DB2 environment on Azure. This guide was written by the AzureCAT and DMJ team members who were there: Larry Mead, Benjamin Guinebertière, Alessandro Vozza, and Jonathon Frost. They describe the steps they took during this migration. Their findings were reviewed by members of the IBM Db2 pureScale team. Installation scripts, available on GitHub, are based on the architecture that the team used for a typical medium-sized OLTP workload.
+Ismerje meg tapasztalatait egy olyan vállalattal, amely nemrég áttelepítette az IBM DB2-környezetét az Azure-ban. Ezt az útmutatót a AzureCAT és a DMJ csapat tagjai írták, akik ott voltak: Larry Mead, Benjamin GUINEBERTIÈRE, Alessandro Vozza és Jonatán Frost. Ezek az áttelepítés során végrehajtott lépéseket írják le. Az eredményeket az IBM DB2 pureScale csapatának tagjai vizsgálják. A GitHubon elérhető telepítési parancsfájlok azon architektúrán alapulnak, amelyet a csapat a tipikus közepes méretű OLTP számítási feladatokhoz használt.
 
-### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[Install TmaxSoft OpenFrame on Azure](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-Modernize your infrastructure at cloud scale. TmaxSoft OpenFrame makes it easy to lift your existing mainframe assets and shift them to Azure. In this paper, Steve Read (AzureCAT) and Manoj Aerroju (TmaxSoft) explain how to set up an OpenFrame environment suitable for development, demos, testing, and production workloads.
+Az infrastruktúra modernizálása Felhőbeli méretezéssel. A TmaxSoft OpenFrame Kiindulópontul segítségével könnyedén felemelheti a meglévő nagyvállalati eszközöket, és áthelyezheti őket az Azure-ba. Ebben a tanulmányban Steve Read (AzureCAT) és mano Aerroju (TmaxSoft) ismerteti, hogyan állíthat be olyan OpenFrame Kiindulópontul-környezetet, amely fejlesztési, bemutatói, tesztelési és éles számítási feladatokhoz alkalmas.
 
-### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM mainframe to Microsoft Azure reference architecture](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
+### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM mainframe – Microsoft Azure hivatkozási architektúra](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 
-This white paper reflects Astadia’s more than 25 years of mainframe platform modernization expertise. They explain the benefits and challenges of modernization efforts. This guide gives an overview of the IBM mainframe and an IBM mainframe-to-Azure reference architecture. It also provides a look at the Astadia success methodology.
+Ez a tanulmány a Astadia több mint 25 éve mutatja be a nagyvállalati platform modernizációs szakértelmét. Ismertetik a modernizációs erőfeszítések előnyeit és kihívásait. Ez az útmutató áttekintést nyújt az IBM-es nagyszámítógépekről és egy IBM-es nagyszámítógépről az Azure-ra mutató hivatkozási architektúráról. Emellett megtekintheti a Astadia sikerességének módszertanát is.
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Deploying mainframe applications to Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Nagyszámítógépes alkalmazások üzembe helyezése Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
-Solutions from Micro Focus free you from the constraints of proprietary mainframe hardware and software. In this guide, Micro Focus explains how to deploy your COBOL and PL/I applications running in IBM mainframes to the cloud instead.
+A Micro Focus megoldásai ingyenesen eltérhetnek a szabadalmaztatott mainframe-hardverek és szoftverek korlátaitól. Ebben az útmutatóban a Micro Focus azt ismerteti, hogyan helyezhető üzembe a COBOL és az IBM-es nagyszámítógépeken futó alkalmazások a felhőben.
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Breathe new life into mainframes](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
+### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Új élettartam belélegezni a nagyszámítógépekre](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
- Mainframes are increasingly challenging for business to maintain. This white paper by Infosys and Microsoft highlights the winning strategy for successful mainframe migration. Use cases and examples illustrate the options.
+ A nagyszámítógépek egyre nagyobb kihívást jelentenek a vállalatok számára. Ezt a tanulmányt a Infosys és a Microsoft kiemeli a sikeres nagyszámítógépek áttelepítésének nyertes stratégiáját. A használati esetek és példák szemléltetik a beállításokat.

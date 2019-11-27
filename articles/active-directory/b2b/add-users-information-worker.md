@@ -94,7 +94,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 3. Válassza a **csoportok**lehetőséget.
 4. Válassza az **új csoport**lehetőséget.
 5. A **csoport típusa**területen válassza a **Biztonság**elemet.
-6. Gépelje be a **Csoport nevét** és a **Csoport leírását**.
+6. Adja meg a **csoport nevét** és a **csoport leírását**.
 7. A **tagság típusa**területen válassza a **hozzárendelt**elemet.
 8. Válassza a **Létrehozás**lehetőséget, majd a **csoport** lap bezárásához.
 9. A **csoportok – minden csoport** lapon nyissa meg a csoportot. 
@@ -113,7 +113,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 7. A **kezelés**területen válassza a **felhasználók és csoportok**lehetőséget, majd ellenőrizze, hogy az Ön által létrehozott önkiszolgáló csoport megjelenik-e a listában.
 8. Ha hozzá szeretné adni az alkalmazást a csoport tulajdonosának hozzáférési paneljéhez, válassza a **felhasználó hozzáadása** > **felhasználók és csoportok**lehetőséget. Keresse meg a csoport tulajdonosát, és válassza ki a felhasználót, kattintson a **kiválasztás**elemre, majd kattintson a **hozzárendelés** gombra a felhasználó az alkalmazáshoz való hozzáadásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

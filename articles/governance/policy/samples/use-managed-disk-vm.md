@@ -1,6 +1,6 @@
 ---
-title: Sample - Create VM using managed disk
-description: This sample policy definition requires that virtual machines and virtual machine scale sets use managed disks.
+title: Minta – virtuális gép létrehozása felügyelt lemez használatával
+description: Ez a minta házirend-definíció megköveteli, hogy a virtuális gépek és a virtuálisgép-méretezési csoportok felügyelt lemezeket használjanak.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: e849f30c57a6e9776eec561d79cbb263f647b45e
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463022"
 ---
-# <a name="sample---create-vm-using-managed-disk"></a>Sample - Create VM using managed disk
+# <a name="sample---create-vm-using-managed-disk"></a>Minta – virtuális gép létrehozása felügyelt lemez használatával
 
 Kezelt lemezek használatát követeli meg a virtuális gépektől.
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -55,7 +55,7 @@ az policy definition create --name 'use-managed-disk-vm' --display-name 'Create 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "use-managed-disk-vm"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -63,6 +63,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

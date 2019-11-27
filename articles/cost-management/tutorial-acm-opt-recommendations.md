@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Reduce Azure costs with optimization recommendations | Microsoft Docs
-description: This tutorial helps you reduce Azure costs when you act on optimization recommendations.
+title: Oktatóanyag – Azure optimalizációs javaslatok a költségek csökkentése |} A Microsoft Docs
+description: Ez az oktatóanyag segít az Azure-költségek csökkentése, optimalizálás javaslatok működjön, amikor.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,95 +17,95 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229839"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimize costs from recommendations
+# <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
-Az Azure Cost Management az Azure Advisor segítségével tesz költségoptimalizálási javaslatokat. Az Azure Advisor a tétlen és kihasználatlan erőforrások azonosításával segítséget nyújt a hatékonyság optimalizálásában és javításában. This tutorial walks you through an example where you identify underutilized Azure resources and then you take action to reduce costs.
+Az Azure Cost Management költségek optimalizálása javaslatokat is ad az Azure Advisor együttműködik. Az Azure Advisor segít optimalizálása és a hatékonyság növelése az inaktív és kihasználatlan erőforrások azonosítása. Ez az oktatóanyag végigvezeti egy példa, ahol azonosíthatja a kihasználatlan fizetős Azure-erőforrások és a megfelelő, költségek csökkentése érdekében.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * View cost optimization recommendations to view potential usage inefficiencies
-> * Act on a recommendation to resize a virtual machine to a more cost-effective option
-> * Verify the action to ensure that the virtual machine was successfully resized
+> * Lehetséges a használat hatékonysági hiányosságainak megtekintéséhez optimalizálási javaslatok megtekintése
+> * Reagálás a javaslatra kattintva további szolgáltatás költséghatékony lehetőséget a virtuális gép átméretezése
+> * Ellenőrizze a műveletet, győződjön meg arról, hogy a virtuális gép sikeresen át lett méretezve
 
 ## <a name="prerequisites"></a>Előfeltételek
-Recommendations are available for a variety of scopes and Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében: For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+A javaslatok számos hatókörhöz és Azure-fiókhoz érhetők el. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében: További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
 - Előfizetés
 - Erőforráscsoport
 
-You must have active virtual machines with at least 14 days of activity.
+Aktív virtuális gépeket, amelyek legalább 14 napos aktivitás kell rendelkeznie.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) webhelyen.
 
-## <a name="view-cost-optimization-recommendations"></a>View cost optimization recommendations
+## <a name="view-cost-optimization-recommendations"></a>Optimalizálás javaslatok megtekintése
 
-To view cost optimization recommendations for a subscription, open the desired scope in the Azure portal and select **Advisor recommendations**.
+Az előfizetéshez tartozó költségtakarékos javaslatok megtekintéséhez nyissa meg a kívánt hatókört a Azure Portalon, és válassza az **Advisor-javaslatok**elemet.
 
-To view recommendations for a management group, open the desired scope in the Azure portal and select **Cost analysis** in the menu. Use the **Scope** pill to switch to a different scope, such as a management group. Select **Advisor recommendations** in the menu. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Egy felügyeleti csoportra vonatkozó javaslatok megtekintéséhez nyissa meg a kívánt hatókört a Azure Portalban, és válassza a menü **Cost Analysis** elemét. A **hatókör** -pirula használatával váltson át egy másik hatókörre, például egy felügyeleti csoportra. Válassza az **Advisor-javaslatok** lehetőséget a menüben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
-![Cost Management Advisor recommendations shown in the Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Az Azure Portalon látható a Cost Management Advisor-javaslatok](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-The list of recommendations identifies usage inefficiencies or shows purchase recommendations that can help you save additional money. The totaled **Potential yearly savings** shows the total amount that you can save if you shut down or deallocate all of your VMs that meet recommendation rules. If you don't want to shut them down, you should consider resizing them to a less expensive VM SKU.
+A javaslatok listája a használat hatékonysági hiányosságainak azonosítja, vagy további pénzt takaríthat meg, amelyek segítségével vásárlási javaslatok megjelenítése. Az **évenként megtakarított teljes potenciális megtakarítás** azt a teljes mennyiséget mutatja, amelyet menthet, ha leállítja vagy felszabadítja az összes olyan virtuális gépet, amely megfelel az ajánlási szabályoknak. Ha nem szeretné leállíthatja őket, érdemes egy kevésbé költséges, Virtuálisgép-termékváltozatra méretezheti azokat.
 
-The **Impact** category, along with the **Potential yearly savings**, are designed to help identify recommendations that have the potential to save as much as possible.
+A **hatás** kategóriája, valamint az **éves megtakarítások lehetséges**célja, hogy könnyebben azonosíthatók legyenek azok a javaslatok, amelyekkel a lehető legnagyobb mértékben menthetők.
 
-High impact recommendations include:
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Optimize virtual machine spend by resizing or shutting down underutilized instances](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Use Standard Storage to store Managed Disks snapshots](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+A nagy hatású javaslatok a következők:
+- [Fenntartott virtuálisgép-példányok vásárlása az utólagos elszámolású költségek megtakarítása érdekében](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [A virtuális gépek a kihasználatlan példányok átméretezésével vagy leállításával optimalizálható](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Managed Disks-Pillanatképek tárolása a standard Storage használatával](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Medium impact recommendations include:
-- [Delete Azure Data Factory pipelines that are failing](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Reduce costs by eliminating un-provisioned ExpressRoute circuits](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Reduce costs by deleting or reconfiguring idle virtual network gateways](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+Közepes hatású javaslatok a következők:
+- [Sikertelen Azure Data Factory folyamatok törlése](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Csökkentse a költségeket a nem kiépített ExpressRoute-áramkörök eltávolításával](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Csökkentse a költségeket a tétlen virtuális hálózati átjárók törlésével vagy újrakonfigurálásával](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
-## <a name="act-on-a-recommendation"></a>Act on a recommendation
+## <a name="act-on-a-recommendation"></a>Reagálás a javaslat
 
-Azure Advisor monitors your virtual machine usage for seven days and then identifies underutilized virtual machines. Virtual machines whose CPU utilization is five percent or less and network usage is seven MB or less for four or more days are considered low-utilization virtual machines.
+A Azure Advisor hét napig figyeli a virtuális gépek használatát, majd azonosítja a kihasználatlan virtuális gépeket. Virtuális gépek, amelynek CPU-kihasználtság öt százalékban kifejezett vagy annál kisebb, és a hálózati használati hét MB vagy belül a négy vagy több napot számítanak a kis-kihasználtság virtuális gépeket.
 
-The 5% or less CPU utilization setting is the default, but you can adjust the settings. For more information about adjusting the setting, see the [Configure the average CPU utilization rule or the low usage virtual machine recommendation](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
+A 5 % vagy kevesebb CPU-kihasználtsági beállítás az alapértelmezett érték, de módosíthatja a beállításokat. A beállítás módosításával kapcsolatos további információkért tekintse meg az [átlagos CPU-kihasználtsági szabály konfigurálása vagy az alacsony kihasználtságú virtuális gép javaslata](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)című témakört.
 
-Although some scenarios can result in low utilization by design, you can often save money by changing the size of your virtual machines to less expensive sizes. Your actual savings might vary if you choose a resize action. Let's walk through an example of resizing a virtual machine.
+Bár bizonyos forgatókönyvek elvárt eredményezhetnek alacsony kihasználtságot, gyakran pénzt takaríthat kevésbé költséges, méret, a virtuális gépek méretének módosításával. A tényleges megtakarításai eltérőek lehetnek, ha úgy dönt, hogy egy átméretezési művelet. Nézzük meg a virtuális gép átméretezése egy példát.
 
-In the list of recommendations, click the **Right-size or shutdown underutilized virtual machines** recommendation. In the list of virtual machine candidates, choose a virtual machine to resize and then click the virtual machine. The virtual machine's details are shown so that you can verify the utilization metrics. The **potential yearly savings** value is what you can save if you shut down or remove the VM. Resizing a VM will probably save you money, but you won't save the full amount of the potential yearly savings.
+A javaslatok listájában kattintson a **megfelelő méretű vagy leállítási kihasználatlan virtuális gépekre** vonatkozó javaslatra. A virtuális gép jelöltek listája válassza ki a virtuális gép átméretezése, és kattintson a virtuális gép. A virtuális gép részletei jelennek meg, hogy a kihasználtsági mérőszámokat ellenőrizheti. A **lehetséges éves megtakarítási** érték a virtuális gép leállításakor vagy eltávolításakor menthető. A virtuális gép átméretezése valószínűleg pénzt takaríthat meg, de nem menti a lehetséges éves megtakarítások teljes mennyisége.
 
-![Example of Recommendation details](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Javaslat részletei – példa](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
-In the VM details, check the utilization of the virtual machine to confirm that it's a suitable resize candidate.
+A virtuális gép adatait ellenőrizze a virtuális gép – győződjön meg arról, hogy egy megfelelő átméretezése jelölt kihasználását.
 
-![Example VM details showing historical utilization](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Példa virtuális gép részletesen bemutató korábbi kihasználtsága](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
-Note the current virtual machine's size. After you've verified that the virtual machine should be resized, close the VM details so that you see the list of virtual machines.
+Megjegyzés: az aktuális virtuális gép méretét. Miután meggyőződött arról, hogy a virtuális gépet át lehet méretezni, zárja be a virtuális gép adatait, hogy a virtuális gépek listájának megtekintéséhez.
 
-In the list of candidates to shut down or resize, select **Resize *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;***.
-![Example recommendation with the option to resize the virtual machine](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+A leállítani vagy átméretezni kívánt jelöltek listájában válassza a * * *&lt;FromVirtualMachineSKU* átméretezése&gt;a *&lt;ToVirtualMachineSKU&gt;* * * elemet.
+![példa a virtuális gép átméretezésére szolgáló lehetőségre](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-Next, you're presented with a list of available resize options. Choose the one that will give the best performance and cost-effectiveness for your scenario. In the following example, the option chosen resizes from **Standard_D8s_v3** to **Standard_D2s_v3**.
+Ezután megjelenik a rendelkezésre álló átméretezése lehetőségek listája. Válassza ki azt, amelyik a forgatókönyvnek a legjobb teljesítményt és költséghatékonyságot biztosít. A következő példában a kiválasztott beállítás átméretezi **Standard_D8s_v3ról** **Standard_D2s_v3re**.
 
-![Example list of available VM sizes where you can choose a size](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Adja meg a méret elérhető Virtuálisgép-méretek listájának példa](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-After you choose a suitable size, click **Resize** to start the resize action.
+Miután kiválasztotta a megfelelő méretet, kattintson az **átméretezés** gombra az átméretezés művelet elindításához.
 
-Resizing requires an actively running virtual machine to restart. If the virtual machine is in a production environment, we recommend that you run the resize operation after business hours. Scheduling the restart can reduce disruptions caused by momentarily unavailability.
+Átméretezése egy aktívan futó virtuális gép újraindítására van szükség. A virtuális gép nem éles környezetben, azt javasoljuk, hogy az átméretezés munkaidő után futtatja. Az újraindítás ütemezés csökkentheti a fennakadások rövid ideig elérhetetlensége által okozott.
 
-## <a name="verify-the-action"></a>Verify the action
+## <a name="verify-the-action"></a>A művelet ellenőrzéséhez.
 
-When the VM resizing completes successfully, an Azure notification is shown.
+Amikor a virtuális gép átméretezése sikeresen befejeződik, egy Azure-értesítés jelenik meg.
 
-![Successful resized virtual machine notification](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Értesítés a sikeres a virtuális gép átméretezve](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * View cost optimization recommendations to view potential usage inefficiencies
-> * Act on a recommendation to resize a virtual machine to a more cost-effective option
-> * Verify the action to ensure that the virtual machine was successfully resized
+> * Lehetséges a használat hatékonysági hiányosságainak megtekintéséhez optimalizálási javaslatok megtekintése
+> * Reagálás a javaslatra kattintva további szolgáltatás költséghatékony lehetőséget a virtuális gép átméretezése
+> * Ellenőrizze a műveletet, győződjön meg arról, hogy a virtuális gép sikeresen át lett méretezve
 
-If you haven't already read the Cost Management best practices article, it provides high-level guidance and principles to consider to help manage costs.
+Ha még nem olvasta a Cost Management – gyakorlati tanácsok cikk, biztosít magas szintű útmutatást és alapelveket költségeinek kezelése érdekében érdemes figyelembe venni.
 
 > [!div class="nextstepaction"]
-> [Cost Management best practices](cost-mgt-best-practices.md)
+> [Cost Management ajánlott eljárások](cost-mgt-best-practices.md)

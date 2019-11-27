@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and C#'
+title: 'Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API ésC#'
 titleSuffix: Azure Cognitive Services
-description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
+description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,94 +17,94 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483407"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and C# 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API ésC# 
 
-Use this quickstart to start using the Anomaly Detector API's two detection modes to detect anomalies in your time series data. This C# application sends two API requests containing JSON-formatted time series data, and gets the responses.
+Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észlelési módjának használatát az idősorozat-adataiban észlelt rendellenességek észlelésére. Ez C# az alkalmazás két, JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmet küld, és lekéri a válaszokat.
 
-| API request                                        | Application output                                                                                                                                         |
+| API-kérelem                                        | Alkalmazás kimenete                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Detect anomalies as a batch                        | The JSON response containing the anomaly status (and other data) for each data point in the time series data, and the positions of any detected anomalies. |
-| Detect the anomaly status of the latest data point | The JSON response containing the anomaly status (and other data) for the latest data point in the time series data.                                        |
+| Rendellenességek észlelése kötegként                        | Az idősorozat-adatpontokhoz tartozó anomália-állapotot (és az egyéb adatmennyiségeket) tartalmazó JSON-válasz, valamint az észlelt rendellenességek helyei. |
+| A legutóbbi adatpont anomália állapotának észlelése | Az idősorozat-adatként a legutóbbi adatponthoz tartozó anomália-állapotot (és egyéb adatértékeket) tartalmazó JSON-válasz.                                        |
 
- While this application is written in C#, the API is a RESTful web service compatible with most programming languages. You can find the source code for this quickstart on [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
+ Az alkalmazás beírásakor az C#API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A jelen rövid útmutató forráskódját a [githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Any edition of [Visual Studio 2017 or later](https://visualstudio.microsoft.com/downloads/),
-- An Anomaly detector key and endpoint
-- A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. To install Newtonsoft.Json as a NuGet package in Visual Studio:
+- A [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása,
+- Anomália-detektor kulcsa és végpontja
+- A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. A Newtonsoft. JSON telepítése NuGet-csomagként a Visual Studióban:
     
-    1. Right click your project in **Solution Explorer**.
-    2. Select **Manage NuGet Packages**.
-    3. Search for *Newtonsoft.Json* and install the package.
+    1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
+    2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
+    3. Keresse meg a *Newtonsoft. JSON* fájlt, és telepítse a csomagot.
 
-- If you're using Linux/MacOS, this application can be run by using [Mono](https://www.mono-project.com/).
+- Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
-- A JSON file containing time series data points. The example data for this quickstart can be found on [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Idősorozat-adatpontokat tartalmazó JSON-fájl. A rövid útmutatóhoz tartozó példa a [githubon](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)érhető el.
 
-### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
+### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. In Visual Studio, create a new console solution and add the following packages. 
+1. A Visual Studióban hozzon létre egy új konzolos megoldást, és adja hozzá a következő csomagokat. 
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
 
-2. Create variables for your subscription key and your endpoint. Below are the URIs you can use for anomaly detection. These will be appended to your service endpoint later to create the API request URLs.
+2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz. Az alábbi URI-k használhatók a anomáliák észleléséhez. Az API-kérelmek URL-címeinek létrehozásához ezeket a rendszer később hozzáfűzi a szolgáltatási végponthoz.
 
-    | Detection method                   | URI                                              |
+    | Észlelési módszer                   | URI                                              |
     |------------------------------------|--------------------------------------------------|
-    | Batch detection                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
-    | Detection on the latest data point | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | Kötegelt észlelés                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
+    | Észlelés a legújabb adatponton | `/anomalydetector/v1.0/timeseries/last/detect`   |
         
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
-## <a name="create-a-function-to-send-requests"></a>Create a function to send requests
+## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Create a new async function called `Request` that takes the variables created above.
+1. Hozzon létre egy új, `Request` nevű aszinkron függvényt, amely a fent létrehozott változókat veszi igénybe.
 
-2. Set the client's security protocol and header information using an `HttpClient` object. Be sure to add your subscription key to the `Ocp-Apim-Subscription-Key` header. Then create a `StringContent` object for the request.
+2. Állítsa be az ügyfél biztonsági protokollját és fejlécének adatait egy `HttpClient` objektum használatával. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez. Ezután hozzon létre egy `StringContent` objektumot a kérelemhez.
 
-3. Send the request with `PostAsync()`, and then return the response.
+3. Küldje el a kérelmet `PostAsync()`, majd adja vissza a választ.
 
     [!code-csharp[Request method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=requestMethod)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Detect anomalies as a batch
+## <a name="detect-anomalies-as-a-batch"></a>Rendellenességek észlelése kötegként
 
-1. Create a new function called `detectAnomaliesBatch()`. Construct the request and send it by calling the `Request()` function with your endpoint, subscription key, the URL for batch anomaly detection, and the time series data.
+1. Hozzon létre egy új, `detectAnomaliesBatch()`nevű függvényt. Hozza létre a kérést, és küldje el a `Request()` függvény meghívásával a végponttal, az előfizetés kulcsával, a köteg anomália észlelésének URL-címével és az idősorozat adataival.
 
-2. Deserialize the JSON object, and write it to the console.
+2. Deszerializálja a JSON-objektumot, és írja a konzolba.
 
-3. If the response contains `code` field, print the error code and error message. 
+3. Ha a válasz `code` mezőt tartalmaz, nyomtassa ki a hibakódot és a hibaüzenetet. 
 
-4. Otherwise, find the positions of anomalies in the data set. The response's `isAnomaly` field contains an array of boolean values, each of which indicates whether a data point is an anomaly. Convert this to a string array with the response object's `ToObject<bool[]>()` function. Iterate through the array, and print the index of any `true` values. These values correspond to the index of anomalous data points, if any were found.
+4. Ellenkező esetben keresse meg a rendellenességek pozícióit az adatkészletben. A válasz `isAnomaly` mezője logikai értékek tömbjét tartalmazza, amelyek mindegyike azt jelzi, hogy az adatpont anomália-e. Alakítsa át ezt a karakterlánc-tömbre a Response objektum `ToObject<bool[]>()` függvényével. Ismételje meg a tömböt, és nyomtassa ki a `true` értékek indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
     [!code-csharp[Detect anomalies batch](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesBatch)]
 
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-1. Create a new function called `detectAnomaliesLatest()`. Construct the request and send it by calling the `Request()` function with your endpoint, subscription key, the URL for latest point anomaly detection, and the time series data.
+1. Hozzon létre egy új, `detectAnomaliesLatest()`nevű függvényt. Hozza létre a kérést, és küldje el úgy, hogy meghívja a `Request()` függvényt a végponttal, az előfizetési kulccsal, a legutóbbi pont anomália észlelésének URL-címével és az idősorozat adataival.
 
-2. Deserialize the JSON object, and write it to the console.
+2. Deszerializálja a JSON-objektumot, és írja a konzolba.
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
  
-## <a name="load-your-time-series-data-and-send-the-request"></a>Load your time series data and send the request
+## <a name="load-your-time-series-data-and-send-the-request"></a>Töltse be az idősorozat adatait, és küldje el a kérést
 
-1. In the main method of your application, load your JSON time series data with `File.ReadAllText()`. 
+1. Az alkalmazás fő metódusában töltse be a JSON Time Series-adatait `File.ReadAllText()`. 
 
-2. Call the anomaly detection functions created above. Use `System.Console.ReadKey()` to keep the console window open after running the application.
+2. Hívja meg a fent létrehozott anomália-észlelési funkciókat. A `System.Console.ReadKey()` használatával megtarthatja a konzolablak megnyitását az alkalmazás futtatása után.
 
     [!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=main)]
 
 ### <a name="example-response"></a>Példaválasz
 
-A successful response is returned in JSON format. Click the links below to view the JSON response on GitHub:
-* [Example batch detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Example latest point detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+A sikeres válaszokat JSON formátumban adja vissza a rendszer. Az alábbi hivatkozásokra kattintva megtekintheti a JSON-választ a GitHubon:
+* [Példa a Batch észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Példa a legutóbbi pont észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d695c7a74945fd68591360864e107aadc826240
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ebcf7b3a8dfa4103c0b2773ace76797e5b8f899
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683681"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546412"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -62,7 +62,7 @@ Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az 
 
 1. Ha még nem rendelkezik Azure SQL Data Warehouse-zal, a létrehozás folyamatáért lásd az [SQL Data Warehouse létrehozásával](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) kapcsolatos cikket.
 
-2. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. Az [áttelepítési segédprogrammal](https://www.microsoft.com/download/details.aspx?id=49100) **áttelepítheti a sémákat** az Azure SQL Database-ből az Azure SQL Data Warehouse-ba. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
+2. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
 
 ## <a name="azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
 
@@ -581,7 +581,7 @@ Ez a folyamat két lépést hajt végre:
 
 3. Csatlakozzon a fogadó Azure SQL Data Warehouse-hoz, és ellenőrizze, hogy az adatok megfelelően át lettek-e másolva az Azure SQL Database-ből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

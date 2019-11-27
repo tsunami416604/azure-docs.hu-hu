@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 7dd0000d6797411d56143f8a977e4c478d551858
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 951cd7ae8962d71f41899eca848ce0740d6395ad
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694736"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538752"
 ---
-# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
 Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AK-ban, és üzembe helyezte a minta Azure-beli szavazási alkalmazást. Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizontálisan felskálázzuk az alkalmazás podjait, továbbá kipróbáljuk a podok automatikus méretezését. Emellett megismerjük, hogyan skálázható az Azure-beli virtuális gépek csomópontjainak száma a fürt kapacitásának beállításához a számítási feladatok futtatása érdekében. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -73,18 +73,18 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 A Kubernetes támogatja a [podok horizontális felskálázását][kubernetes-hpa] az üzemi környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. A [metrikai kiszolgáló][metrics-server] a Kubernetes erőforrás-felhasználás biztosítására szolgál, és a rendszer automatikusan üzembe helyezi az AK-fürtök 1,10-es és újabb verzióiban. Ha szeretné megtekinteni az AK-fürt verzióját, használja az az [AK show][az-aks-show] parancsot az alábbi példában látható módon:
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
 > [!NOTE]
-> Ha az AK-fürt kevesebb, mint *1,10*, a metrikák kiszolgálója nem települ automatikusan. A telepítéshez a `metrics-server` GitHub-tárház klónozása és a példaként megadott erőforrás-definíciók telepítése szükséges. A YAML-definíciók tartalmának megtekintéséhez lásd: [metrikai kiszolgáló Kuberenetes 1.8 +][metrics-server-github].
+> Ha az AK-fürt kevesebb, mint *1,10*, a metrikák kiszolgálója nem települ automatikusan. A telepítéséhez telepítse a `metrics-server` GitHub-tárházat, és telepítse a példaként szolgáló erőforrás-definíciókat. A YAML-definíciók tartalmának megtekintéséhez lásd: [metrikai kiszolgáló Kuberenetes 1.8 +][metrics-server-github].
 > 
 > ```console
 > git clone https://github.com/kubernetes-incubator/metrics-server.git
 > kubectl create -f metrics-server/deploy/1.8+/
 > ```
 
-Az automéretező használatához a hüvelyben és a hüvelyben lévő összes tárolónak meg kell határoznia a CPU-kérelmeket és-korlátozásokat. `azure-vote-front` Az üzembe helyezés során az előtér-tároló már 0,25 CPU-t kér, és legfeljebb 0,5 processzorral rendelkezik. Ezek az erőforrás-kérelmek és-korlátok az alábbi kódrészletben látható módon vannak meghatározva:
+Az automéretező használatához a hüvelyben és a hüvelyben lévő összes tárolónak meg kell határoznia a CPU-kérelmeket és-korlátozásokat. Az `azure-vote-front` üzemelő példányban az előtér-tároló már 0,25 CPU-t kér, 0,5 PROCESSZORral. Ezek az erőforrás-kérelmek és-korlátok az alábbi kódrészletben látható módon vannak meghatározva:
 
 ```yaml
 resources:
@@ -139,7 +139,7 @@ Ha a fürt méretezése sikeresen megtörtént, a kimenet a következő példáh
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

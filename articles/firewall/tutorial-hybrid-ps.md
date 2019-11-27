@@ -493,7 +493,7 @@ Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kel
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

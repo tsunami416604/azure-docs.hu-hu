@@ -1,6 +1,6 @@
 ---
-title: Create Durable Functions using the Azure portal
-description: Learn how to install the Durable Functions extension for Azure Functions for portal development.
+title: Durable Functions létrehozása a Azure Portal használatával
+description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Functions bővítményét a portál fejlesztéséhez.
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
@@ -11,36 +11,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231477"
 ---
-# <a name="create-durable-functions-using-the-azure-portal"></a>Create Durable Functions using the Azure portal
+# <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
-The [Durable Functions](durable-functions-overview.md) extension for Azure Functions is provided in the NuGet package [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). This extension must be installed in your function app. This article shows how to install this package so that you can develop durable functions in the Azure portal.
+A Azure Functions [Durable functions](durable-functions-overview.md) -bővítménye a [Microsoft. Azure. Webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)NuGet csomagban található. Ezt a bővítményt telepíteni kell a Function alkalmazásban. Ez a cikk bemutatja, hogyan telepítheti a csomagot úgy, hogy tartós funkciókat fejlesszen ki a Azure Portalban.
 
 > [!NOTE]
 > 
-> * If you are developing durable functions in C#, you should instead consider [Visual Studio 2019 development](durable-functions-create-first-csharp.md).
-> * If you are developing durable functions in JavaScript, you should instead consider [Visual Studio Code development](./quickstart-js-vscode.md).
+> * Ha tartós funkciókat fejleszt a alkalmazásban C#, érdemes megfontolnia a [Visual Studio 2019 fejlesztését](durable-functions-create-first-csharp.md).
+> * Ha a JavaScriptben tartós funkciókat fejleszt, érdemes megfontolnia a [Visual Studio Code-fejlesztést](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-You must have a function app to host the execution of any function. A function app lets you group your functions as a logic unit for easier management, deployment, and sharing of resources. You can create a .NET or JavaScript app.
+A függvények végrehajtásának üzemeltetéséhez Function-alkalmazás szükséges. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében. Létrehozhat .NET-vagy JavaScript-alkalmazást is.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-By default, the function app created uses version 2.x of the Azure Functions runtime. The Durable Functions extension works on both versions 1.x and 2.x of the Azure Functions runtime in C#, and version 2.x in JavaScript. However, templates are only available when targeting version 2.x of the runtime regardless of the chosen language.
+Alapértelmezés szerint a létrehozott Function alkalmazás a Azure Functions futtatókörnyezet 2. x verzióját használja. A Durable Functions bővítmény a (z) és a (z) Azure Functions futtatókörnyezetének 1. x és C#2. x verziójában is működik a JavaScriptben, és a 2. x verzió. A sablonok azonban csak akkor érhetők el, ha a kiválasztott nyelvtől függetlenül megcélozzák a futtatókörnyezet 2. x verzióját.
 
-## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Install the durable-functions npm package (JavaScript only)
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>A tartós függvények NPM-csomagjának telepítése (csak JavaScript)
 
-If you are creating JavaScript Durable Functions, you will need to install the [`durable-functions` npm package](https://www.npmjs.com/package/durable-functions).
+Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions).
 
-1. Select your function app's name, followed by **Platform Features**, then **Advanced tools (Kudu)** .
+1. Válassza ki a függvény alkalmazásának nevét, majd a **platform funkcióit**, majd a **speciális eszközöket (kudu)** .
 
-   ![Functions platform features choose Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   ![Functions platform-funkciók kudu kiválasztása](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 
-2. Inside the Kudu console, select **Debug console** then **CMD**.
+2. A kudu-konzolon válassza a **Debug konzol** , majd a **cmd parancsot**.
 
-   ![Kudu debug console](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu hibakeresési konzol](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Your function app's file directory structure should display. Navigáljon a `site/wwwroot` mappához. From there, you can upload a `package.json` file by dragging and dropping it into the file directory window. A sample `package.json` is below:
+3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltölthet egy `package.json` fájlt úgy, hogy áthúzza a fájl könyvtár ablakba. A minta `package.json` a következő:
 
     ```json
     {
@@ -50,15 +50,15 @@ If you are creating JavaScript Durable Functions, you will need to install the [
     }
     ```
 
-   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu feltöltési csomag. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Once your `package.json` is uploaded, run the `npm install` command from the Kudu Remote Execution Console.
+4. A `package.json` feltöltése után futtassa a `npm install` parancsot a kudu távoli végrehajtási konzolról.
 
-   ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
+   ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
 
-## <a name="create-an-orchestrator-function"></a>Create an orchestrator function
+## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -66,29 +66,29 @@ If you are creating JavaScript Durable Functions, you will need to install the [
 
     ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/durable-functions-create-portal/add-first-function.png)
 
-1. In the search field, type `durable` and then choose the  **Durable Functions HTTP starter** template.
+1. A keresőmezőbe írja be a `durable` kifejezést, majd válassza a **DURABLE FUNCTIONS http-indító** sablont.
 
-1. When prompted, select **Install** to install the Azure DurableTask extension any dependencies in the function app. You only need to install the extension once for a give function app. A telepítést követően válassza a **Folytatás** gombot.
+1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény bármely függőségének telepítéséhez a Function alkalmazásban. Az Add Function alkalmazáshoz csak egyszer kell telepítenie a bővítményt. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. After the installation completes, name the new function `HttpStart` and choose **Create**. The function created is used to start the orchestration.
+1. A telepítés befejezése után nevezze el az új függvényt `HttpStart` majd válassza a **Létrehozás**lehetőséget. A létrehozott függvény az előkészítés elindítására szolgál.
 
-1. Create another function in the function app, this time by using the **Durable Functions Orchestrator** template. Name your new orchestration function `HelloSequence`.
+1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új összehangoló függvényt `HelloSequence`.
 
-1. Create a third function named `Hello` by using the **Durable Functions Activity** template.
+1. Hozzon létre egy `Hello` nevű harmadik függvényt a **Durable functions Activity** sablon használatával.
 
-## <a name="test-the-durable-function-orchestration"></a>Test the durable function orchestration
+## <a name="test-the-durable-function-orchestration"></a>A tartós függvények előkészítésének tesztelése
 
-1. Go back to the **HttpStart** function, choose **</> Get function URL** and **Copy** the URL. You use this URL to start the **HelloSequence** function.
+1. Lépjen vissza a **HttpStart** függvényhez, válassza a **</> a függvény URL-címének beolvasása** lehetőséget, és **másolja** az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
 
-1. Use an HTTP tool like Postman or cURL to send a POST request to the URL that you copied. The following example is a cURL command that sends a POST request to the durable function:
+1. Használjon olyan HTTP-eszközt, mint a Poster vagy a cURL, hogy POST-kérést küldjön a másolt URL-címre. A következő példa egy olyan cURL-parancs, amely POST-kérést küld a tartós függvénynek:
 
     ```bash
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    In this example, `{your-function-app-name}` is the domain that is the name of your function app. The response message contains a set of URI endpoints that you can use to monitor and manage the execution, which looks like the following example:
+    Ebben a példában a `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet olyan URI-végpontokat tartalmaz, amelyek segítségével figyelheti és kezelheti a végrehajtást, ami a következő példához hasonlóan néz ki:
 
     ```json
     {  
@@ -100,7 +100,7 @@ If you are creating JavaScript Durable Functions, you will need to install the [
     }
     ```
 
-1. Call the `statusQueryGetUri` endpoint URI and you see the current status of the durable function, which might look like this example:
+1. Hívja meg az `statusQueryGetUri` Endpoint URI-t, és láthatja a tartós függvény aktuális állapotát, ami a következő példához hasonló lehet:
 
     ```json
         {
@@ -112,7 +112,7 @@ If you are creating JavaScript Durable Functions, you will need to install the [
         }
     ```
 
-1. Continue calling the `statusQueryGetUri` endpoint until the status changes to **Completed**, and you see a response like the following example:
+1. Folytassa a `statusQueryGetUri` végpont meghívását mindaddig, amíg az állapot be nem **fejeződik**, és az alábbi példához hasonló választ láthat:
 
     ```json
     {
@@ -128,9 +128,9 @@ If you are creating JavaScript Durable Functions, you will need to install the [
         }
     ```
 
-Your first durable function is now up and running in Azure.
+Az első tartós funkció most már működik az Azure-ban.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn about common durable function patterns](durable-functions-overview.md#application-patterns)
+> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)

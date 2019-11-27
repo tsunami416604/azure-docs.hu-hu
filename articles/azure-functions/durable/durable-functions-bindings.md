@@ -1,6 +1,6 @@
 ---
-title: Bindings for Durable Functions - Azure
-description: How to use triggers and bindings for the Durable Functions extension for Azure Functions.
+title: Kötések a Durable Functionshoz – Azure
+description: Eseményindítók és kötések használata a Azure Functions Durable Functions bővítményéhez.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,17 +11,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233023"
 ---
-# <a name="bindings-for-durable-functions-azure-functions"></a>Bindings for Durable Functions (Azure Functions)
+# <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
-The [Durable Functions](durable-functions-overview.md) extension introduces two new trigger bindings that control the execution of orchestrator and activity functions. It also introduces an output binding that acts as a client for the Durable Functions runtime.
+A [Durable functions](durable-functions-overview.md) bővítmény két új trigger kötést vezet be, amelyek a Orchestrator és a Activity függvények végrehajtását vezérlik. Emellett egy kimeneti kötést is bevezet, amely ügyfélként funkcionál az Durable Functions futtatókörnyezet számára.
 
-## <a name="orchestration-trigger"></a>Orchestration trigger
+## <a name="orchestration-trigger"></a>Előkészítési trigger
 
-The orchestration trigger enables you to author [durable orchestrator functions](durable-functions-types-features-overview.md#orchestrator-functions). This trigger supports starting new orchestrator function instances and resuming existing orchestrator function instances that are "awaiting" a task.
+Az előkészítési trigger lehetővé teszi [tartós Orchestrator függvények](durable-functions-types-features-overview.md#orchestrator-functions)készítését. Ez az aktiválás támogatja az új Orchestrator-függvények indítását és a meglévő Orchestrator-függvények lefolytatását, amelyek "várnak" egy feladatot.
 
-When you use the Visual Studio tools for Azure Functions, the orchestration trigger is configured using the [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET attribute.
+Ha a Visual Studio-eszközöket használja a Azure Functionshoz, a [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net-attribútummal konfigurálhatja a előkészítési triggert.
 
-When you write orchestrator functions in scripting languages (for example, JavaScript or C# scripting), the orchestration trigger is defined by the following JSON object in the `bindings` array of the *function.json* file:
+Ha Orchestrator-függvényeket ír a parancsfájlkezelési nyelveken (például JavaScript C# vagy Scripting), a rendszer a következő JSON-objektummal definiálja az összehangoló triggert a *function. JSON* fájl `bindings` sorában:
 
 ```json
 {
@@ -32,35 +32,35 @@ When you write orchestrator functions in scripting languages (for example, JavaS
 }
 ```
 
-* `orchestration` is the name of the orchestration that clients must use when they want to start new instances of this orchestrator function. Ez a tulajdonság nem kötelező. If not specified, the name of the function is used.
+* `orchestration` az ügyfelek által a Orchestrator-függvény új példányainak elindításához használni kívánt előkészítés neve. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
 
-Internally this trigger binding polls a series of queues in the default storage account for the function app. These queues are internal implementation details of the extension, which is why they are not explicitly configured in the binding properties.
+Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger behavior
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
-Here are some notes about the orchestration trigger:
+Íme néhány Megjegyzés az előkészítési triggerről:
 
-* **Single-threading** - A single dispatcher thread is used for all orchestrator function execution on a single host instance. For this reason, it is important to ensure that orchestrator function code is efficient and doesn't perform any I/O. It is also important to ensure that this thread does not do any async work except when awaiting on Durable Functions-specific task types.
-* **Poison-message handling** - There is no poison message support in orchestration triggers.
-* **Message visibility** - Orchestration trigger messages are dequeued and kept invisible for a configurable duration. The visibility of these messages is renewed automatically as long as the function app is running and healthy.
-* **Return values** - Return values are serialized to JSON and persisted to the orchestration history table in Azure Table storage. These return values can be queried by the orchestration client binding, described later.
-
-> [!WARNING]
-> Orchestrator functions should never use any input or output bindings other than the orchestration trigger binding. Doing so has the potential to cause problems with the Durable Task extension because those bindings may not obey the single-threading and I/O rules. If you'd like to use other bindings, add them to an Activity function called from your Orchestrator function.
+* **Egyszálas** – egyetlen kiosztó szál használatos egyetlen gazdagép-példányon az összes Orchestrator függvény végrehajtásához. Ezért fontos, hogy a Orchestrator funkció kódja hatékony legyen, és nem hajt végre semmilyen I/O-műveletet. Fontos továbbá, hogy a szál ne végezzen aszinkron munkát, kivéve, ha Durable Functions-specifikus feladattípusra vár.
+* **Méreg – üzenetkezelés** – a rendszer nem támogatja a hangfeldolgozási eseményindítók használatát.
+* **Üzenet láthatósága** – a hangelőkészítési trigger üzenetei el vannak különítve, és a konfigurálható időtartamra láthatatlanok maradnak. Az üzenetek láthatósága automatikusan megújítható, amíg a Function alkalmazás fut és kifogástalan állapotú.
+* **Visszatérési értékek** – a visszatérési értékek a JSON-ba vannak szerializálva, és az Azure Table Storage-ben megőrzött az előkészítési előzmények táblázata. Ezeket a visszaadott értékeket az összehangoló ügyfél kötése kérdezheti le, amely később van leírva.
 
 > [!WARNING]
-> JavaScript orchestrator functions should never be declared `async`.
+> A Orchestrator függvények soha nem használhatnak semmilyen bemeneti vagy kimeneti kötést, amely nem az előkészítési trigger kötése. Ennek köszönhetően problémák léphetnek fel a tartós feladattal, mivel ezek a kötések nem engedelmeskednek az egyszálas és az I/O-szabályoknak. Ha más kötéseket szeretne használni, vegye fel őket a Orchestrator függvény által hívott tevékenység-függvénybe.
 
-### <a name="trigger-usage-net"></a>Trigger usage (.NET)
+> [!WARNING]
+> A JavaScript Orchestrator functions soha nem deklarálható `async`.
 
-The orchestration trigger binding supports both inputs and outputs. Here are some things to know about input and output handling:
+### <a name="trigger-usage-net"></a>Trigger használata (.NET)
 
-* **inputs** - .NET orchestration functions support only `DurableOrchestrationContext` as a parameter type. Deserialization of inputs directly in the function signature is not supported. Code must use the `GetInput<T>` (.NET) or `getInput` (JavaScript) method to fetch orchestrator function inputs. These inputs must be JSON-serializable types.
-* **outputs** - Orchestration triggers support output values as well as inputs. The return value of the function is used to assign the output value and must be JSON-serializable. If a .NET function returns `Task` or `void`, a `null` value will be saved as the output.
+A előkészítési trigger kötése a bemeneteket és kimeneteket is támogatja. Íme néhány tudnivaló a bemeneti és kimeneti használatról:
 
-### <a name="trigger-sample"></a>Trigger sample
+* **bemenetek** – a .net-hangolási függvények csak a paraméter típusú `DurableOrchestrationContext` támogatják. A bemenetek közvetlenül a függvény aláírásában való deszerializálása nem támogatott. A kódnak a `GetInput<T>` (.NET) vagy a `getInput` (JavaScript) metódust kell használnia a Orchestrator függvények bemenetének beolvasásához. Ezeknek a bemeneteknek JSON-szerializálható típusúnak kell lenniük.
+* **kimenetek** – a hangelőkészítési eseményindítók támogatják a kimeneti értékeket és a bemeneteket. A függvény visszatérési értéke a kimeneti érték hozzárendelésére szolgál, és csak JSON-szerializálható lehet. Ha egy .NET-függvény `Task` vagy `void`ad vissza, a rendszer a `null` értéket fogja menteni kimenetként.
 
-The following example code shows what the simplest "Hello World" orchestrator function might look like:
+### <a name="trigger-sample"></a>Példa triggerre
+
+A következő mintakód azt szemlélteti, hogy a legegyszerűbb ""Helló világ!"alkalmazás" Orchestrator függvény a következőképpen néz ki:
 
 #### <a name="c"></a>C#
 
@@ -73,9 +73,9 @@ public static string Run([OrchestrationTrigger] IDurableOrchestrationContext con
 }
 ```
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions Versions](durable-functions-versions.md) article.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -87,12 +87,12 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> The `context` object in JavaScript does not represent the DurableOrchestrationContext, but the [function context as a whole](../functions-reference-node.md#context-object). You can access orchestration methods via the `context` object's `df` property.
+> A JavaScriptben lévő `context` objektum nem a DurableOrchestrationContext, hanem a [teljes függvényt](../functions-reference-node.md#context-object)képviseli. A `context` objektum `df` tulajdonságán keresztül férhet hozzá a koordinálási módszerekhez.
 
 > [!NOTE]
-> JavaScript orchestrators should use `return`. The `durable-functions` library takes care of calling the `context.done` method.
+> A JavaScript-szervezőknek `return`kell használniuk. A `durable-functions` kódtár gondoskodik a `context.done` metódus meghívásáról.
 
-Most orchestrator functions call activity functions, so here is a "Hello World" example that demonstrates how to call an activity function:
+A legtöbb Orchestrator függvény hívja a Activity functions funkciót, ezért itt látható egy ""Helló világ!"alkalmazás" példa, amely bemutatja, hogyan hívhat meg egy tevékenységi függvényt:
 
 #### <a name="c"></a>C#
 
@@ -108,9 +108,9 @@ public static async Task<string> Run(
 ```
 
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,13 +122,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="activity-trigger"></a>Activity trigger
+## <a name="activity-trigger"></a>Tevékenység-trigger
 
-The activity trigger enables you to author functions that are called by orchestrator functions, known as [activity functions](durable-functions-types-features-overview.md#activity-functions).
+A tevékenység-trigger lehetővé teszi olyan függvények készítését, amelyeket a Orchestrator függvények, más néven a [tevékenység-függvények](durable-functions-types-features-overview.md#activity-functions)hívnak.
 
-If you're using Visual Studio, the activity trigger is configured using the `ActivityTriggerAttribute` .NET attribute.
+Ha a Visual studiót használja, a tevékenység-trigger a `ActivityTriggerAttribute` .NET attribútummal van konfigurálva.
 
-If you're using VS Code or the Azure portal for development, the activity trigger is defined by the following JSON object in the `bindings` array of *function.json*:
+Ha a VS Code-ot vagy a Azure Portal fejlesztésre használja, a tevékenység-triggert a következő JSON-objektum határozza meg a *function. JSON*`bindings` tömbben:
 
 ```json
 {
@@ -139,33 +139,33 @@ If you're using VS Code or the Azure portal for development, the activity trigge
 }
 ```
 
-* `activity` is the name of the activity. This value is the name that orchestrator functions use to invoke this activity function. Ez a tulajdonság nem kötelező. If not specified, the name of the function is used.
+* `activity` a tevékenység neve. Ez az érték annak a névnek a neve, amelyet a Orchestrator függvények a tevékenység függvényének meghívására használnak. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
 
-Internally this trigger binding polls a queue in the default storage account for the function app. This queue is an internal implementation detail of the extension, which is why it is not explicitly configured in the binding properties.
+Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólistát kérdezi le. Ez a várólista a bővítmény belső implementációjának részletes adatai, ezért nincs explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger behavior
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
-Here are some notes about the activity trigger:
+Íme néhány Megjegyzés a tevékenység-triggerről:
 
-* **Threading** - Unlike the orchestration trigger, activity triggers don't have any restrictions around threading or I/O. They can be treated like regular functions.
-* **Poison-message handling** - There is no poison message support in activity triggers.
-* **Message visibility** - Activity trigger messages are dequeued and kept invisible for a configurable duration. The visibility of these messages is renewed automatically as long as the function app is running and healthy.
-* **Return values** - Return values are serialized to JSON and persisted to the orchestration history table in Azure Table storage.
+* **Szál** – a előkészítési eseményindítótól eltérően a tevékenység-eseményindítók nem rendelkeznek a Threading vagy az I/O műveletekkel kapcsolatos korlátozásokkal. Ugyanúgy kezelhetők, mint a hagyományos függvények.
+* **Méreg – üzenetkezelés** – a tevékenység-eseményindítók nem rendelkeznek a Megmérgező üzenet támogatásával.
+* **Üzenet láthatósága** – a tevékenység-trigger üzenetei el vannak különítve, és a konfigurálható időtartamig láthatatlanok maradnak. Az üzenetek láthatósága automatikusan megújítható, amíg a Function alkalmazás fut és kifogástalan állapotú.
+* **Visszatérési értékek** – a visszatérési értékek a JSON-ba vannak szerializálva, és az Azure Table Storage-ben megőrzött az előkészítési előzmények táblázata.
 
 > [!WARNING]
-> The storage backend for activity functions is an implementation detail and user code should not interact with these storage entities directly.
+> A Activity functions tárolási háttere a megvalósítás részletei, és a felhasználói kód nem használható közvetlenül ezekkel a tároló entitásokkal.
 
-### <a name="trigger-usage-net"></a>Trigger usage (.NET)
+### <a name="trigger-usage-net"></a>Trigger használata (.NET)
 
-The activity trigger binding supports both inputs and outputs, just like the orchestration trigger. Here are some things to know about input and output handling:
+A tevékenység-trigger kötés támogatja a bemeneteket és a kimeneteket is, ugyanúgy, mint a előkészítési trigger. Íme néhány tudnivaló a bemeneti és kimeneti használatról:
 
-* **inputs** - .NET activity functions natively use `DurableActivityContext` as a parameter type. Alternatively, an activity function can be declared with any parameter type that is JSON-serializable. When you use `DurableActivityContext`, you can call `GetInput<T>` to fetch and deserialize the activity function input.
-* **outputs** - Activity functions support output values as well as inputs. The return value of the function is used to assign the output value and must be JSON-serializable. If a .NET function returns `Task` or `void`, a `null` value will be saved as the output.
-* **metadata** - .NET activity functions can bind to a `string instanceId` parameter to get the instance ID of the parent orchestration.
+* **bemenetek** – a .net Activity functions natív módon használja a `DurableActivityContext` paraméterként. Azt is megteheti, hogy egy tevékenység-függvény deklarálható bármely olyan típusparaméter-típussal, amely JSON-szerializálható. `DurableActivityContext`használatakor meghívhatja `GetInput<T>` a tevékenységi függvény bemenetének beolvasására és deszerializálására.
+* **kimenetek** – a tevékenységi függvények támogatják a kimeneti értékeket és a bemeneteket. A függvény visszatérési értéke a kimeneti érték hozzárendelésére szolgál, és csak JSON-szerializálható lehet. Ha egy .NET-függvény `Task` vagy `void`ad vissza, a rendszer a `null` értéket fogja menteni kimenetként.
+* **metaadatok** – a .net-tevékenység funkciói egy `string instanceId` paraméterhez köthetők a szülő-előkészítési példány azonosítójának lekéréséhez.
 
-### <a name="trigger-sample"></a>Trigger sample
+### <a name="trigger-sample"></a>Példa triggerre
 
-The following example code shows what a simple "Hello World" activity function might look like:
+Az alábbi mintakód azt mutatja be, hogy egy egyszerű ""Helló világ!"alkalmazás" tevékenységi funkció hogyan nézhet ki:
 
 #### <a name="c"></a>C#
 
@@ -179,9 +179,9 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext helloCon
 ```
 
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableActivityContext` instead of `IDurableActivityContext`. For more information about the differences between versions, see the [Durable Functions Versions](durable-functions-versions.md) article.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `IDurableActivityContext`helyett `DurableActivityContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-The default parameter type for the .NET `ActivityTriggerAttribute` binding is `IDurableActivityContext`. However, .NET activity triggers also support binding directly to JSON-serializeable types (including primitive types), so the same function could be simplified as follows:
+A .NET `ActivityTriggerAttribute` kötés alapértelmezett paraméterének típusa `IDurableActivityContext`. A .NET-tevékenység-eseményindítók azonban közvetlenül a JSON-serializeable-típusokhoz is támogatják a kötéseket (beleértve az egyszerű típusokat is), így ugyanezt a funkciót a következőképpen egyszerűsítheti:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -191,7 +191,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 module.exports = async function(context) {
@@ -199,7 +199,7 @@ module.exports = async function(context) {
 };
 ```
 
-JavaScript bindings can also be passed in as additional parameters, so the same function could be simplified as follows:
+A JavaScript-kötések további paraméterekként is átadhatók, így az alábbi módon lehet egyszerűsíteni a műveletet:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -208,9 +208,9 @@ module.exports = async function(context, name) {
 ```
 
 
-### <a name="using-input-and-output-bindings"></a>Using input and output bindings
+### <a name="using-input-and-output-bindings"></a>Bemeneti és kimeneti kötések használata
 
-You can use regular input and output bindings in addition to the activity trigger binding. For example, you can take the input to your activity binding, and send a message to an EventHub using the EventHub output binding:
+A tevékenység-trigger kötés mellett normál bemeneti és kimeneti kötéseket is használhat. Például megteheti a bemenetet a tevékenység kötéséhez, és üzenetet küldhet egy EventHub a EventHub kimeneti kötés használatával:
 
 ```json
 {
@@ -237,19 +237,19 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="orchestration-client"></a>Orchestration client
+## <a name="orchestration-client"></a>Előkészítési ügyfél
 
-The orchestration client binding enables you to write functions that interact with orchestrator functions. These functions are sometimes referred to as [client functions](durable-functions-types-features-overview.md#client-functions). For example, you can act on orchestration instances in the following ways:
+A hangelőkészítési ügyfél kötése lehetővé teszi a Orchestrator functions szolgáltatással kommunikáló függvények írását. Ezeket a függvényeket időnként ügyfél- [függvénynek](durable-functions-types-features-overview.md#client-functions)is nevezzük. Például a következő módokon végezheti el az előkészítési példányok megszervezését:
 
-* Start them.
-* Query their status.
-* Terminate them.
-* Send events to them while they're running.
-* Purge instance history.
+* Indítsa el őket.
+* Az állapotuk lekérdezése.
+* Megszakítja őket.
+* Események küldése a futtatásuk közben.
+* Példányok előzményeinek kiürítése.
 
-If you're using Visual Studio, you can bind to the orchestration client by using the `OrchestrationClientAttribute` .NET attribute for Durable Functions 1.0. Starting in the Durable Functions 2.0, you can bind to the orchestration client by using the `DurableClientAttribute` .NET attribute.
+Ha a Visual studiót használja, a Durable Functions 1,0 .NET-attribútumának `OrchestrationClientAttribute` használatával kötést hozhat létre az összehangoló ügyfélhez. A Durable Functions 2,0-es verziótól kezdődően a `DurableClientAttribute` .NET-attribútum használatával lehet kötni a koordináló ügyféllel.
 
-If you're using scripting languages (for example, *.csx* or *.js* files) for development, the orchestration trigger is defined by the following JSON object in the `bindings` array of *function.json*:
+Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az összehangoló triggert a következő JSON-objektum határozza meg a *function. JSON*`bindings` tömbben:
 
 ```json
 {
@@ -261,15 +261,15 @@ If you're using scripting languages (for example, *.csx* or *.js* files) for dev
 }
 ```
 
-* `taskHub` - Used in scenarios where multiple function apps share the same storage account but need to be isolated from each other. If not specified, the default value from `host.json` is used. This value must match the value used by the target orchestrator functions.
-* `connectionName` - The name of an app setting that contains a storage account connection string. The storage account represented by this connection string must be the same one used by the target orchestrator functions. If not specified, the default storage account connection string for the function app is used.
+* `taskHub` – olyan helyzetekben használható, ahol több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket használja `host.json`. Ennek az értéknek meg kell egyeznie a cél Orchestrator függvények által használt értékkel.
+* `connectionName` – egy, a Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A megadott Orchestrator függvények által használt Storage-fióknak meg kell egyeznie. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
 
 > [!NOTE]
-> In most cases, we recommend that you omit these properties and rely on the default behavior.
+> A legtöbb esetben azt javasoljuk, hogy hagyja ki ezeket a tulajdonságokat, és használja az alapértelmezett viselkedést.
 
-### <a name="client-usage"></a>Client usage
+### <a name="client-usage"></a>Ügyfél használata
 
-In .NET functions, you typically bind to `IDurableOrchestrationClient`, which gives you full access to all orchestration client APIs supported by Durable Functions. In the older Durable Functions 2.x releases, you instead bind to the `DurableOrchestrationClient` class. In JavaScript, the same APIs are exposed by the object returned from `getClient`. APIs on the client object include:
+A .NET functions szolgáltatásban általában a `IDurableOrchestrationClient`hoz kötődik, ami teljes hozzáférést biztosít a Durable Functions által támogatott összes előkészítési ügyfél API-hoz. A régebbi Durable Functions 2. x kiadásokban Ehelyett a `DurableOrchestrationClient` osztályhoz kell kötnie. A JavaScriptben ugyanazokat az API-kat a `getClient`által visszaadott objektum teszi elérhetővé. Az ügyfél-objektum API-jai a következők:
 
 * `StartNewAsync`
 * `GetStatusAsync`
@@ -279,13 +279,13 @@ In .NET functions, you typically bind to `IDurableOrchestrationClient`, which gi
 * `CreateCheckStatusResponse`
 * `CreateHttpManagementPayload`
 
-Alternatively, .NET functions can bind to `IAsyncCollector<T>` where `T` is `StartOrchestrationArgs` or `JObject`.
+Másik megoldásként a .NET functions olyan `IAsyncCollector<T>`hoz is köthető, ahol a `T` `StartOrchestrationArgs` vagy `JObject`.
 
-For more information on these operations, see the `IDurableOrchestrationClient` API documentation.
+További információ ezekről a műveletekről: `IDurableOrchestrationClient` API dokumentációja.
 
-### <a name="client-sample-visual-studio-development"></a>Client sample (Visual Studio development)
+### <a name="client-sample-visual-studio-development"></a>Ügyfél minta (Visual Studio Development)
 
-Here is an example queue-triggered function that starts a "HelloWorld" orchestration.
+Itt látható egy üzenetsor által aktivált függvény, amely egy "HelloWorld" előkészítést indít el.
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -299,11 +299,11 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions Versions](durable-functions-versions.md) article.
+> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="client-sample-not-visual-studio"></a>Client sample (not Visual Studio)
+### <a name="client-sample-not-visual-studio"></a>Ügyfél minta (nem Visual Studio)
 
-If you're not using Visual Studio for development, you can create the following *function.json* file. This example shows how to configure a queue-triggered function that uses the durable orchestration client binding:
+Ha nem a Visual studiót használja a fejlesztéshez, a következő *function. JSON* fájlt hozhatja létre. Ebből a példából megtudhatja, hogyan konfigurálhat egy üzenetsor által aktivált függvényt, amely a tartós előkészítési ügyfél kötését használja:
 
 ```json
 {
@@ -324,13 +324,13 @@ If you're not using Visual Studio for development, you can create the following 
 ```
 
 > [!NOTE]
-> The previous JSON is for Durable Functions 2.x. For Durable Functions 1.x, you must use `orchestrationClient` instead of the `durableClient` as the trigger type. For more information about the differences between versions, see the [Durable Functions Versions](durable-functions-versions.md) article.
+> Az előző JSON a Durable Functions 2. x. Durable Functions 1. x esetén a `durableClient` helyett `orchestrationClient`t kell használnia az trigger típusaként. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-Following are language-specific samples that start new orchestrator function instances.
+Az alábbiakban olyan nyelvspecifikus példákat találhat, amelyek elindítják az új Orchestrator-függvények példányait.
 
-#### <a name="c-script-sample"></a>C# Script Sample
+#### <a name="c-script-sample"></a>C#Parancsfájl mintája
 
-The following sample shows how to use the durable orchestration client binding to start a new function instance from a queue-triggered C# function:
+Az alábbi minta azt mutatja be, hogyan használható a tartós előkészítési ügyfél kötése egy új Function-példány elindításához egy C# üzenetsor által aktivált függvényből:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -344,11 +344,11 @@ public static Task Run(string input, IDurableOrchestrationClient starter)
 ```
 
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions Versions](durable-functions-versions.md) article.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationClient`helyett a `DurableOrchestrationClient` paraméter típusát kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-#### <a name="javascript-sample"></a>JavaScript Sample
+#### <a name="javascript-sample"></a>JavaScript-minta
 
-The following sample shows how to use the durable orchestration client binding to start a new function instance from a JavaScript function:
+Az alábbi minta azt mutatja be, hogyan használható a tartós előkészítési ügyfél kötése egy új Function-példány elindításához egy JavaScript-függvényből:
 
 ```javascript
 const df = require("durable-functions");
@@ -359,53 +359,53 @@ module.exports = async function (context) {
 };
 ```
 
-More details on starting instances can be found in [Instance management](durable-functions-instance-management.md).
+A példányok elindításával kapcsolatos további részletek a [példányok kezelése](durable-functions-instance-management.md)oldalon találhatók.
 
-## <a name="entity-trigger"></a>Entity trigger
+## <a name="entity-trigger"></a>Entitás-trigger
 
-Entity triggers allow you to author [entity functions](durable-functions-entities.md). This trigger supports processing events for a specific entity instance.
+Az entitás-eseményindítók lehetővé teszik az [Entity functions](durable-functions-entities.md)létrehozását. Ez az aktiválás támogatja az adott entitás-példányok feldolgozási eseményeit.
 
-When you use the Visual Studio tools for Azure Functions, the entity trigger is configured using the `EntityTriggerAttribute` .NET attribute.
+Ha a Visual Studio-eszközöket használja a Azure Functionshoz, az entitás-trigger a `EntityTriggerAttribute` .NET attribútummal van konfigurálva.
 
 > [!NOTE]
-> Entity triggers are available starting in Durable Functions 2.x.
+> Az entitás-eseményindítók a Durable Functions 2. x verziótól kezdődően érhetők el.
 
-Internally this trigger binding polls a series of queues in the default storage account for the function app. These queues are internal implementation details of the extension, which is why they are not explicitly configured in the binding properties.
+Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger behavior
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
-Here are some notes about the entity trigger:
+Íme néhány Megjegyzés az entitás-triggerről:
 
-* **Single-threaded**: A single dispatcher thread is used to process operations for a particular entity. If multiple messages are sent to a single entity concurrently, the operations will be processed one-at-a-time.
-* **Poison-message handling** - There is no poison message support in entity triggers.
-* **Message visibility** - Entity trigger messages are dequeued and kept invisible for a configurable duration. The visibility of these messages is renewed automatically as long as the function app is running and healthy.
-* **Return values** - Entity functions do not support return values. There are specific APIs that can be used to save state or pass values back to orchestrations.
+* **Egyszálas**: egyetlen diszpécser szál egy adott entitás műveleteinek feldolgozásához. Ha egyszerre több üzenetet küld egyetlen entitásnak, a rendszer a műveleteket egy-egy időben dolgozza fel.
+* **Méreg – üzenetkezelés** – az entitás-eseményindítók nem támogatják az üzenetek megmérgezését.
+* **Üzenet láthatósága** – az entitás-trigger üzenetei el vannak különítve, és a konfigurálható időtartamra láthatatlanok maradnak. Az üzenetek láthatósága automatikusan megújítható, amíg a Function alkalmazás fut és kifogástalan állapotú.
+* **Visszatérési értékek** – az Entity functions nem támogatja a visszatérési értékeket. Vannak olyan API-k, amelyek segítségével az állapot menthető, vagy visszaadható az értékek az előkészítési folyamatoknak.
 
-Any state changes made to an entity during its execution will be automatically persisted after execution has completed.
+A végrehajtás során a rendszer automatikusan megőrzi a entitásban végrehajtott összes állapotot a végrehajtás befejezése után.
 
-### <a name="trigger-usage-net"></a>Trigger usage (.NET)
+### <a name="trigger-usage-net"></a>Trigger használata (.NET)
 
-Every entity function has a parameter type of `IDurableEntityContext`, which has the following members:
+Minden entitás függvényhez tartozik egy `IDurableEntityContext`paraméter, amely a következő tagokkal rendelkezik:
 
-* **EntityName**: the name of the currently executing entity.
-* **EntityKey**: the key of the currently executing entity.
-* **EntityId**: the ID of the currently executing entity.
-* **OperationName**: the name of the current operation.
-* **HasState**: whether the entity exists, that is, has some state. 
-* **GetState\<TState>()** : gets the current state of the entity. If it does not already exist, it is created and initialized to `default<TState>`. The `TState` parameter must be a primitive or JSON-serializeable type. 
-* **GetState\<TState>(initfunction)** : gets the current state of the entity. If it does not already exist, it is created by calling the provided `initfunction` parameter. The `TState` parameter must be a primitive or JSON-serializeable type. 
-* **SetState(arg)** : creates or updates the state of the entity. The `arg` parameter must be a JSON-serializeable object or primitive.
-* **DeleteState()** : deletes the state of the entity. 
-* **GetInput\<TInput>()** : gets the input for the current operation. The `TInput` type parameter must be a primitive or JSON-serializeable type.
-* **Return(arg)** : returns a value to the orchestration that called the operation. The `arg` parameter must be a primitive or JSON-serializeable object.
-* **SignalEntity(EntityId, operation, input)** : sends a one-way message to an entity. The `operation` parameter must be a non-null string, and the `input` parameter must be a primitive or JSON-serializeable object.
-* **CreateNewOrchestration(orchestratorFunctionName, input)** : starts a new orchestration. The `input` parameter must be a primitive or JSON-serializeable object.
+* **EntityName**: az aktuálisan végrehajtó entitás neve.
+* **EntityKey**: a jelenleg végrehajtó entitás kulcsa.
+* **EntityId**: a jelenleg végrehajtó entitás azonosítója.
+* **OperationName**: az aktuális művelet neve.
+* **HasState**: azt határozza meg, hogy az entitás létezik-e, azaz van-e valamilyen állapota. 
+* **GetState\<tstate-> ()** : az entitás aktuális állapotát kapja meg. Ha még nem létezik, a rendszer létrehozza és inicializálja `default<TState>`ra. A `TState` paraméternek primitív vagy JSON-serializeable típusúnak kell lennie. 
+* **GetState\<tstate-> (initfunction)** : az entitás aktuális állapotát kapja meg. Ha még nem létezik, a rendszer a megadott `initfunction` paraméter meghívásával hozza létre. A `TState` paraméternek primitív vagy JSON-serializeable típusúnak kell lennie. 
+* **SetState (ARG)** : az entitás állapotát hozza létre vagy frissíti. A `arg` paraméternek JSON-serializeable objektumnak vagy primitívnek kell lennie.
+* **DeleteState ()** : törli az entitás állapotát. 
+* **GetInput\<TInput > ()** : beolvassa az aktuális művelet bemenetét. A `TInput` Type paraméternek primitív vagy JSON-serializeable típusúnak kell lennie.
+* **Return (ARG)** : egy értéket ad vissza a műveletnek nevezett eljáráshoz. A `arg` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
+* **SignalEntity (EntityId, művelet, bemenet)** : egyirányú üzenet küldése egy entitásnak. A `operation` paraméternek nem null értékű sztringnek kell lennie, és a `input` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
+* **CreateNewOrchestration (orchestratorFunctionName, bemenet)** : új előkészítést indít el. A `input` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
 
-The `IDurableEntityContext` object passed to the entity function can be accessed using the `Entity.Current` async-local property. This approach is convenient when using the class-based programming model.
+Az Entity függvénynek átadott `IDurableEntityContext` objektum a `Entity.Current` aszinkron-local tulajdonsággal érhető el. Ez a megközelítés az osztály alapú programozási modell használata esetén hasznos.
 
-### <a name="trigger-sample-c-function-based-syntax"></a>Trigger sample (C# function-based syntax)
+### <a name="trigger-sample-c-function-based-syntax"></a>Trigger minta (C# Function-based szintaxis)
 
-The following code is an example of a simple *Counter* entity implemented as a durable function. This function defines three operations, `add`, `reset`, and `get`, each of which operate on an integer state.
+A következő kód egy egyszerű, tartós funkcióként megvalósított *számlálós* entitásra mutat példát. Ez a függvény három műveletet határoz meg, `add`, `reset`és `get`, amelyek mindegyike egész számban működik.
 
 ```csharp
 [FunctionName("Counter")]
@@ -426,11 +426,11 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-For more information on the function-based syntax and how to use it, see [Function-Based Syntax](durable-functions-dotnet-entities.md#function-based-syntax).
+A függvény-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd a [Function-based szintaxist](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="trigger-sample-c-class-based-syntax"></a>Trigger sample (C# class-based syntax)
+### <a name="trigger-sample-c-class-based-syntax"></a>Trigger minta (C# osztály alapú szintaxis)
 
-The following example is an equivalent implementation of the `Counter` entity using classes and methods.
+A következő példa az `Counter` entitás egyenértékű implementációját osztályok és metódusok használatával.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -451,20 +451,20 @@ public class Counter
 }
 ```
 
-The state of this entity is an object of type `Counter`, which contains a field that stores the current value of the counter. To persist this object in storage, it is serialized and deserialized by the [Json.NET](https://www.newtonsoft.com/json) library. 
+Az entitás állapota `Counter`típusú objektum, amely egy olyan mezőt tartalmaz, amely a számláló aktuális értékét tárolja. Ha meg szeretné őrizni ezt az objektumot a tárolóban, a rendszer szerializálja és deszerializálja a [JSON.net](https://www.newtonsoft.com/json) -könyvtár. 
 
-For more information on the class-based syntax and how to use it, see [Defining entity classes](durable-functions-dotnet-entities.md#defining-entity-classes).
+Az osztály-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd: entitás- [osztályok meghatározása](durable-functions-dotnet-entities.md#defining-entity-classes).
 
 > [!NOTE]
-> The function entry point method with the `[FunctionName]` attribute *must* be declared `static` when using entity classes. Non-static entry point methods may result in multiple object initialization and potentially other undefined behaviors.
+> Az *`[FunctionName]` attribútummal* rendelkező függvény belépési pontjának metódusát `static` kell deklarálni az Entity classs használatakor. A nem statikus belépési pontok metódusai több objektum inicializálását és esetleg más nem definiált viselkedést okozhatnak.
 
-Entity classes have special mechanisms for interacting with bindings and .NET dependency injection. For more information, see [Entity construction](durable-functions-dotnet-entities.md#entity-construction).
+Az entitások osztályai speciális mechanizmusokkal rendelkeznek a kötések és a .NET-függőségek befecskendezésével való interakcióhoz. További információ: [entitások kialakítása](durable-functions-dotnet-entities.md#entity-construction).
 
-### <a name="trigger-sample-javascript"></a>Trigger sample (JavaScript)
+### <a name="trigger-sample-javascript"></a>Példa a triggerre (JavaScript)
 
-The following code is an example of a simple *Counter* entity implemented as a durable function written in JavaScript. This function defines three operations, `add`, `reset`, and `get`, each of which operate on an integer state.
+A következő kód egy egyszerű *számláló* entitás, amely a JavaScriptben írt tartós függvényként van megvalósítva. Ez a függvény három műveletet határoz meg, `add`, `reset`és `get`, amelyek mindegyike egész számban működik.
 
-**function.json**
+**function. JSON**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ The following code is an example of a simple *Counter* entity implemented as a d
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -500,18 +500,18 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> Durable entities are available in JavaScript starting with version **1.3.0** of the `durable-functions` npm package.
+> A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben.
 
-## <a name="entity-client"></a>Entity client
+## <a name="entity-client"></a>Entitás ügyfele
 
-The entity client binding enables you to asynchronously trigger [entity functions](#entity-trigger). These functions are sometimes referred to as [client functions](durable-functions-types-features-overview.md#client-functions).
+Az entitás-ügyfél kötése lehetővé teszi az [Entity functions](#entity-trigger)aszinkron aktiválását. Ezeket a függvényeket időnként ügyfél- [függvénynek](durable-functions-types-features-overview.md#client-functions)is nevezzük.
 
-If you're using Visual Studio, you can bind to the entity client by using the `DurableClientAttribute` .NET attribute.
+Ha a Visual studiót használja, az `DurableClientAttribute` .NET attribútum használatával kötést hozhat létre az entitás-ügyfélhez.
 
 > [!NOTE]
-> The `[DurableClientAttribute]` can also be used to bind to the [orchestration client](#orchestration-client).
+> A `[DurableClientAttribute]` is felhasználható a koordináló [ügyfélhez](#orchestration-client)való kötéshez.
 
-If you're using scripting languages (for example, *.csx* or *.js* files) for development, the entity trigger is defined by the following JSON object in the `bindings` array of *function.json*:
+Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az entitás-triggert a következő JSON-objektum határozza meg a *function. JSON*`bindings` tömbben:
 
 ```json
 {
@@ -523,27 +523,27 @@ If you're using scripting languages (for example, *.csx* or *.js* files) for dev
 }
 ```
 
-* `taskHub` - Used in scenarios where multiple function apps share the same storage account but need to be isolated from each other. If not specified, the default value from `host.json` is used. This value must match the value used by the target entity functions.
-* `connectionName` - The name of an app setting that contains a storage account connection string. The storage account represented by this connection string must be the same one used by the target entity functions. If not specified, the default storage account connection string for the function app is used.
+* `taskHub` – olyan helyzetekben használható, ahol több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket használja `host.json`. Ennek az értéknek meg kell egyeznie a cél entitás függvények által használt értékkel.
+* `connectionName` – egy, a Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A relációs sztring által képviselt Storage-fióknak meg kell egyeznie a TARGET Entity functions által használttal. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
 
 > [!NOTE]
-> In most cases, we recommend that you omit the optional properties and rely on the default behavior.
+> A legtöbb esetben azt javasoljuk, hogy hagyja ki a nem kötelező tulajdonságokat, és használja az alapértelmezett viselkedést.
 
-### <a name="entity-client-usage"></a>Entity client usage
+### <a name="entity-client-usage"></a>Entitás-ügyfél használata
 
-In .NET functions, you typically bind to `IDurableEntityClient`, which gives you full access to all client APIs supported by Durable Entities. You can also bind to the `IDurableOrchestrationClient` interface, which provides access to client APIs for both entities and orchestrations. APIs on the client object include:
+A .NET-függvények általában a `IDurableEntityClient`hoz kötődnek, ami teljes hozzáférést biztosít a tartós entitások által támogatott összes ügyféloldali API-hoz. A `IDurableOrchestrationClient` felülethez is köthető, amely hozzáférést biztosít az ügyféloldali API-khoz mindkét entitáshoz és a munkafolyamatokhoz. Az ügyfél-objektum API-jai a következők:
 
-* **ReadEntityStateAsync\<T>** : reads the state of an entity. It returns a response that indicates whether the target entity exists, and if so, what its state is.
-* **SignalEntityAsync**: sends a one-way message to an entity, and waits for it to be enqueued.
+* **ReadEntityStateAsync\<t >** : egy entitás állapotának beolvasása. Egy olyan választ ad vissza, amely jelzi, hogy létezik-e a célként megadott entitás, és ha igen, milyen állapotban van.
+* **SignalEntityAsync**: egyirányú üzenetet küld egy entitásnak, és megvárja, amíg a várólistán lévő.
 
-There is no need to create the target entity before sending a signal - the entity state can be created from within the entity function that handles the signal.
+Nem kell létrehoznia a cél entitást a jel elküldése előtt – az entitás állapota a jelet kezelő entitás függvényből hozható létre.
 
 > [!NOTE]
-> It's important to understand that the "signals" sent from the client are simply enqueued, to be processed asynchronously at a later time. In particular, the `SignalEntityAsync` usually returns before the entity even starts the operation, and it is not possible to get back the return value or observe exceptions. If stronger guarantees are required (e.g. for workflows), *orchestrator functions* should be used, which can wait for entity operations to complete, and can process return values and observe exceptions.
+> Fontos tisztában lenni azzal, hogy az ügyféltől érkező "jelzések" egyszerűen várólistán lévő, és a későbbiekben aszinkron módon kell feldolgozni. A `SignalEntityAsync` általában csak akkor ad vissza, ha az entitás még a műveletet is elindítja, és nem lehet visszakapni a visszaadott értéket, vagy megfigyelni a kivételeket. Ha erősebb biztosítékokra van szükség (például a munkafolyamatok esetében), a *Orchestrator függvényeket* kell használni, amelyek megvárhatják az entitások műveleteinek befejeződését, és feldolgozhatják a visszatérési értékeket, és megfigyelheti a kivételeket.
 
-### <a name="example-client-signals-entity-directly---c"></a>Example: client signals entity directly - C#
+### <a name="example-client-signals-entity-directly---c"></a>Példa: ügyfél-szignálok entitás közvetlenül –C#
 
-Here is an example queue-triggered function that invokes a "Counter" entity.
+Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely egy "számláló" entitást hív meg.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -558,9 +558,9 @@ public static Task Run(
 }
 ```
 
-### <a name="example-client-signals-entity-via-interface---c"></a>Example: client signals entity via interface - C#
+### <a name="example-client-signals-entity-via-interface---c"></a>Példa: ügyfél-jelek entitás kapcsolaton keresztül –C#
 
-Where possible, we recommend [accessing entities through interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) because it provides more type checking. For example, suppose the `Counter` entity mentioned earlier implemented an `ICounter` interface, defined as follows:
+Ha lehetséges, javasoljuk, hogy az [entitásokat a felületeken keresztül használja](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , mert több típusú ellenőrzést is biztosít. Tegyük fel például, hogy a korábban említett `Counter` entitás egy `ICounter` felületet adott meg, amelyet a következőképpen határozhat meg:
 
 ```csharp
 public interface ICounter
@@ -576,7 +576,7 @@ public class Counter : ICounter
 }
 ```
 
-Client code can then use `SignalEntityAsync<ICounter>` to generate a type-safe proxy:
+Az ügyfél kódja ezután a `SignalEntityAsync<ICounter>` használatával hozhatja meg a típus-biztonságos proxyt:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -590,18 +590,18 @@ public static async Task AddValueClient(
 }
 ```
 
-The `proxy` parameter is a dynamically generated instance of `ICounter`, which internally translates the call to `Add` into the equivalent (untyped) call to `SignalEntityAsync`.
+A `proxy` paraméter a `ICounter`dinamikusan generált példánya, amely belsőleg lefordítja a `Add`t a `SignalEntityAsync`nak megfelelő (nem típusos) hívásra.
 
 > [!NOTE]
-> The `SignalEntityAsync` APIs represent one-way operations. If an entity interfaces returns `Task<T>`, the value of the `T` parameter will always be null or `default`.
+> A `SignalEntityAsync` API-k egyirányú műveleteket jelentenek. Ha az entitás-illesztőfelületek `Task<T>`adnak vissza, a `T` paraméter értéke mindig null vagy `default`lesz.
 
-In particular, it does not make sense to signal the `Get` operation, as no value is returned. Instead, clients can use either `ReadStateAsync` to access the counter state directly, or can start an orchestrator function that calls the `Get` operation.
+Különösen nem érdemes jelezni a `Get` műveletet, mivel a rendszer nem ad vissza értéket. Ehelyett az ügyfelek a `ReadStateAsync` használatával közvetlenül érhetik el a számláló állapotát, vagy elindíthatnak egy Orchestrator-függvényt, amely meghívja a `Get` műveletet.
 
-### <a name="example-client-signals-entity---javascript"></a>Example: client signals entity - JavaScript
+### <a name="example-client-signals-entity---javascript"></a>Példa: ügyfél-jelek entitás – JavaScript
 
-Here is an example queue-triggered function that signals a "Counter" entity in JavaScript.
+Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely "számláló" entitást mutat be a JavaScriptben.
 
-**function.json**
+**function. JSON**
 ```json
 {
     "bindings": [
@@ -621,7 +621,7 @@ Here is an example queue-triggered function that signals a "Counter" entity in J
   }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -633,14 +633,14 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> Durable entities are available in JavaScript starting with version **1.3.0** of the `durable-functions` npm package.
+> A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben.
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Built-in HTTP API reference for instance management](durable-functions-http-api.md)
+> [Beépített HTTP API-referenciák a példányok kezeléséhez](durable-functions-http-api.md)

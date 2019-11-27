@@ -1,6 +1,6 @@
 ---
-title: Azure Functions error handling guidance
-description: Learn to handle errors in Azure Functions with links to specific binding errors.
+title: Azure Functions hibakezelés – útmutató
+description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functionsban, és meghatározott kötési hibákra mutató hivatkozásokat.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
@@ -12,27 +12,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227318"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions error handling
+# <a name="azure-functions-error-handling"></a>Azure Functions hibakezelés
 
-Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
+A Azure Functions hibák elhárítása fontos az elveszett adat, a kihagyott események és az alkalmazás állapotának figyelése érdekében.
 
-This article describes general strategies for error handling along with links to binding-specific errors.
+Ez a cikk a hibák kezelésére vonatkozó általános stratégiákat, valamint a kötésekre vonatkozó hibákra mutató hivatkozásokat ismerteti.
 
-## <a name="handling-errors"></a>Handling errors
+## <a name="handling-errors"></a>Kezelési hibák
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Binding error codes
+## <a name="binding-error-codes"></a>Kötési hibakódok
 
-When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
+Az Azure-szolgáltatásokkal való integráció során a hibák a mögöttes szolgáltatások API-jai alapján származhatnak. A kötési hibákkal kapcsolatos információk a következő cikkek **kivételek és visszatérési kódok** szakaszában érhetők el:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
 + [Blob Storage](functions-bindings-storage-blob.md#exceptions-and-return-codes)
 
-+ [Event Hubs](functions-bindings-event-hubs.md#exceptions-and-return-codes)
++ [Azure Event Hubs-eseményközpontok](functions-bindings-event-hubs.md#exceptions-and-return-codes)
 
-+ [Értesítési központ](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
++ [Notification Hubs](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 
 + [Queue Storage](functions-bindings-storage-queue.md#exceptions-and-return-codes)
 

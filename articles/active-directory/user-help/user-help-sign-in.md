@@ -89,7 +89,7 @@ Ha valamilyen okból nem tudja használni az elsődleges bejelentkezési módsze
 
 3. Miután visszatért a fiókjába, frissítheti az ellenőrzési módszereket (ha szükséges). A módszerek hozzáadásával vagy módosításával kapcsolatos további információkért tekintse meg a [beállítások kezelése kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-manage-settings.md) című cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A biztonsági adatok [(előzetes verzió) – áttekintés című](user-help-security-info-overview.md) cikkben talál további információt.
 

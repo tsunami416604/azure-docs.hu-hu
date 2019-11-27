@@ -35,7 +35,7 @@ A kiépítési összekötők a [Azure Portal](https://portal.azure.com)használa
 * **Azure Portal** – ez a cikk elsősorban azt ismerteti, hogyan kell beolvasni a jelentési adatokat a [Azure Portalból](https://portal.azure.com), amely egyszerre egy kiépítési összegző jelentést is biztosít, valamint egy adott alkalmazás részletes kiépítési naplóit.
 * A **audit API** -Azure Active Directory egy olyan naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplók programozott lekérését. Tekintse meg az API használatára vonatkozó dokumentáció [Azure Active Directory naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Habár ez a cikk nem fedi le az API használatát, részletesen ismerteti a naplóban rögzített kiépítési események típusait.
 
-### <a name="definitions"></a>Meghatározások
+### <a name="definitions"></a>Definíciók
 
 Ez a cikk az alábbi, az alábbiakban meghatározott kifejezéseket használja:
 

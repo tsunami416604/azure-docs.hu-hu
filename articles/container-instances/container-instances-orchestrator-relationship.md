@@ -1,24 +1,19 @@
 ---
-title: Azure Container Instances és tárolók összehangolása
+title: Container instances és Container-előkészítés
 description: Ismerje meg, hogyan működnek együtt az Azure Container instances a Container-szervezővel.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972253"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533661"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances és Container-szervezők
 
-A kis méret és az alkalmazási irányultság miatt a tárolók jól illeszkednek az agilis kézbesítési környezetekhez és a Service-alapú architektúrához. A nagy mennyiségű tároló automatizálásának és kezelésének, valamint a velük való interakciónak a feladatát a rendszer hangolja. A népszerű Container-szervezők közé tartozik a Kubernetes, a DC/OS és a Docker Swarm.
+A kis méret és az alkalmazási irányultság miatt a tárolók jól illeszkednek az agilis kézbesítési környezetekhez és a Service-alapú architektúrához. A nagy mennyiségű tároló automatizálásának és kezelésének *, valamint a*velük való interakciónak a feladatát a rendszer hangolja. A népszerű Container-szervezők közé tartozik a Kubernetes, a DC/OS és a Docker Swarm.
 
 A Azure Container Instances a koordináló platformok alapszintű ütemezési funkcióit biztosítja. Noha nem fedi le a platform által biztosított magasabb értékű szolgáltatásokat, Azure Container Instances is kiegészítheti őket. Ez a cikk ismerteti a Azure Container Instances-kezelők hatókörét, valamint azt, hogy a teljes tárolók hogyan kezelhetik azt.
 
@@ -26,16 +21,16 @@ A Azure Container Instances a koordináló platformok alapszintű ütemezési fu
 
 A koordinálás szabványos definíciója a következő feladatokat tartalmazza:
 
-- **Ütemezés**: Egy tároló-rendszerkép és egy erőforrás-kérelem alapján keresse meg a megfelelő gépet, amelyen futtatni szeretné a tárolót.
-- **Affinitás/affinitás**: Adja meg, hogy a tárolók készletének a közelében kell futnia (a teljesítményhez) vagy a megfelelő távolban (a rendelkezésre álláshoz).
-- **Állapot figyelése**: Figyelje meg a tárolók hibáit, és automatikusan ütemezze őket.
-- **Feladatátvétel**: Tartsa nyomon, hogy mi fut az egyes gépeken, és ütemezze át a tárolókat a meghibásodott gépekről a kifogástalan állapotú csomópontokra.
-- **Méretezés**: Adja hozzá vagy távolítsa el a Container instances-t az igényeknek megfelelően manuálisan vagy automatikusan.
-- **Hálózatkezelés**: Adjon meg egy átfedésben lévő hálózatot a tárolók koordinálásához több gazdagépen keresztüli kommunikációhoz.
-- **Szolgáltatás felderítése**: Lehetővé teszi, hogy a tárolók automatikusan megtalálják egymást, még akkor is, ha a gazdagépek között mozognak, és az IP-címeket módosítják
-- **Összehangolt alkalmazások frissítése**: Kezelheti a tárolók frissítéseit, hogy elkerülje az alkalmazás leállását, és engedélyezze a visszaállítást, ha hiba történik.
+- **Ütemezés**: egy tároló rendszerképének és egy erőforrás-kérelemnek a megkeresése egy megfelelő gépre, amelyen futtatni kívánja a tárolót.
+- **Affinitás/affinitás**: azt határozza meg, hogy a tárolók készletének a közelében kell futnia (a teljesítményhez), vagy megfelelően távol kell lennie (a rendelkezésre álláshoz).
+- **Állapot-figyelés**: figyelje a tárolók hibáit, és automatikusan újraütemezze őket.
+- **Feladatátvétel**: nyomon követheti, hogy mi fut az egyes gépeken, és hogyan ütemezze át a tárolókat a meghibásodott gépekről a kifogástalan állapotú csomópontokra.
+- **Skálázás**: tároló-példányok hozzáadása vagy eltávolítása az igényeknek megfelelően manuálisan vagy automatikusan.
+- **Hálózatkezelés**: átfedésben lévő hálózatot biztosít a tárolók koordinálásához több gazdagép közötti kommunikációhoz.
+- **Szolgáltatás felderítése**: lehetővé teszi, hogy a tárolók automatikusan megtalálják egymást, még akkor is, ha azok a gazdagépek között mozognak, és az IP-címeket
+- **Alkalmazás-frissítések koordinálása**: a tárolók frissítéseinek kezelésével elkerülhető az alkalmazások leállása, és ha valamilyen hiba történik, engedélyezze a visszaállítást.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Előkészítés Azure Container Instancesekkel: Rétegzett megközelítés
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Előkészítés Azure Container Instancesekkel: rétegzett megközelítés
 
 A Azure Container Instances lehetővé teszi egy rétegen belüli megközelítés használatát, amely biztosítja az összes ütemezési és felügyeleti képességet, amely egyetlen tároló futtatásához szükséges, miközben lehetővé teszi a Orchestrator platformok számára a több tárolós feladatok kezelését.
 
@@ -61,11 +56,11 @@ Az alkalmazások számítási feladatainak gyors méretezéséhez egy [Azure Kub
 
 A virtuális csomópontok jelenleg támogatják a Linux Container instances-t. A virtuális csomópontok használatának első lépései az [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) vagy a [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545)használatával.
 
-A virtuális csomópontok a nyílt forráskódú [virtuális Kubelet][aci-connector-k8s] használatával utánozzák a Kubernetes- [Kubelet][kubelet-doc] úgy, hogy korlátlan kapacitással rendelkező csomópontként regisztrálják őket. A virtuális Kubelet elküldi a hüvelyek [][pod-doc] létrehozását a Azure Container Instancesban.
+A virtuális csomópontok a nyílt forráskódú [virtuális Kubelet][aci-connector-k8s] használatával utánozzák a Kubernetes- [Kubelet][kubelet-doc] úgy, hogy korlátlan kapacitással rendelkező csomópontként regisztrálják őket. A virtuális Kubelet elküldi a [hüvelyek][pod-doc] létrehozását a Azure Container Instancesban.
 
 A Kubernetes API kiszolgáló nélküli tároló platformokra való kiterjesztésével kapcsolatos további példákért tekintse meg a [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre az első tárolóját a Azure Container Instances a gyors [üzembe helyezési útmutató](container-instances-quickstart.md)segítségével.
 

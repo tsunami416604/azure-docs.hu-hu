@@ -1,6 +1,6 @@
 ---
-title: Azure Functions bindings expressions and patterns
-description: Learn to create different Azure Functions binding expressions based on common patterns.
+title: Azure Functions kötések és minták
+description: Ismerje meg, hogyan hozhat létre különböző Azure Functions kötési kifejezéseket közös minták alapján.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,34 +12,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227219"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions binding expression patterns
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
-One of the most powerful features of [triggers and bindings](./functions-triggers-bindings.md) is *binding expressions*. In the *function.json* file and in function parameters and code, you can use expressions that resolve to values from various sources.
+Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése*. A *function. JSON* fájlban és a függvény paraméterei és kódja területen olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva.
 
-Most expressions are identified by wrapping them in curly braces. For example, in a queue trigger function, `{queueTrigger}` resolves to the queue message text. If the `path` property for a blob output binding is `container/{queueTrigger}` and the function is triggered by a queue message `HelloWorld`, a blob named `HelloWorld` is created.
+A legtöbb kifejezést kapcsos zárójelek közé kell becsomagolni. Egy üzenetsor-kiváltó függvényben például `{queueTrigger}` a rendszer feloldja az üzenetsor-üzenet szövegét. Ha egy blob kimeneti kötés `path` tulajdonsága `container/{queueTrigger}`, és a függvényt egy üzenetsor-üzenet `HelloWorld`indítja el, a rendszer létrehoz egy `HelloWorld` nevű blobot.
 
-Types of binding expressions
+Kötési kifejezések típusai
 
-* [App settings](#binding-expressions---app-settings)
-* [Trigger file name](#trigger-file-name)
-* [Trigger metadata](#trigger-metadata)
-* [JSON payloads](#json-payloads)
-* [New GUID](#create-guids)
-* [Current date and time](#current-time)
+* [Alkalmazásbeállítások](#binding-expressions---app-settings)
+* [Trigger fájljának neve](#trigger-file-name)
+* [Trigger metaadatainak](#trigger-metadata)
+* [JSON-adattartalom](#json-payloads)
+* [Új GUID](#create-guids)
+* [Aktuális dátum és idő](#current-time)
 
-## <a name="binding-expressions---app-settings"></a>Binding expressions - app settings
+## <a name="binding-expressions---app-settings"></a>Kötési kifejezések – Alkalmazásbeállítások
 
-As a best practice, secrets and connection strings should be managed using app settings, rather than configuration files. This limits access to these secrets and makes it safe to store files such as *function.json* in public source control repositories.
+Ajánlott eljárásként a titkokat és a kapcsolatok karakterláncait az Alkalmazásbeállítások használatával kell felügyelni, nem pedig a konfigurációs fájlokat. Ez korlátozza a hozzáférést ezekhez a titkokhoz, és biztonságos módon tárolja az olyan fájlokat, mint a *function. JSON* a nyilvános forrású vezérlő adattárakban.
 
-App settings are also useful whenever you want to change configuration based on the environment. For example, in a test environment, you may want to monitor a different queue or blob storage container.
+Az Alkalmazásbeállítások akkor is hasznosak, ha módosítani szeretné a környezet alapján a konfigurációt. Tesztelési környezetben például érdemes lehet figyelni egy másik üzenetsor-vagy blob Storage-tárolót.
 
-App setting binding expressions are identified differently from other binding expressions: they are wrapped in percent signs rather than curly braces. For example if the blob output binding path is `%Environment%/newblob.txt` and the `Environment` app setting value is `Development`, a blob will be created in the `Development` container.
+Az Alkalmazásbeállítások kötési kifejezései más kötési kifejezésektől eltérően vannak azonosítva: a rendszer a kapcsos zárójelek helyett százalékos jelekbe csomagolja őket. Ha például a blob kimeneti kötési útvonala `%Environment%/newblob.txt`, és az `Environment` Alkalmazásbeállítások értéke `Development`, a rendszer létrehoz egy blobot a `Development` tárolóban.
 
-When a function is running locally, app setting values come from the *local.settings.json* file.
+Ha egy függvény helyileg fut, az Alkalmazásbeállítások értékei a *Local. Settings. JSON* fájlból származnak.
 
-Note that the `connection` property of triggers and bindings is a special case and automatically resolves values as app settings, without percent signs. 
+Vegye figyelembe, hogy az eseményindítók és kötések `connection` tulajdonsága egy speciális eset, és automatikusan feloldja az értékeket az alkalmazás beállításainál, a százalékos jelek nélkül. 
 
-The following example is an Azure Queue Storage trigger that uses an app setting `%input-queue-name%` to define the queue to trigger on.
+Az alábbi példa egy olyan Azure Queue Storage-trigger, amely egy alkalmazás-beállítási `%input-queue-name%` használatával határozza meg, hogy a várólista Mikor aktiválódik.
 
 ```json
 {
@@ -55,7 +55,7 @@ The following example is an Azure Queue Storage trigger that uses an app setting
 }
 ```
 
-You can use the same approach in class libraries:
+Ugyanezt a megközelítést használhatja az osztályok könyvtáraiban:
 
 ```csharp
 [FunctionName("QueueTrigger")]
@@ -67,11 +67,11 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger file name
+## <a name="trigger-file-name"></a>Trigger fájljának neve
 
-The `path` for a Blob trigger can be a pattern that lets you refer to the name of the triggering blob in other bindings and function code. The pattern can also include filtering criteria that specify which blobs can trigger a function invocation.
+A blob-triggerek `path` egy olyan minta lehet, amely lehetővé teszi az indító blob nevét más kötésekben és a függvény kódjában. A minta tartalmazhat olyan szűrési feltételeket is, amelyek meghatározzák, hogy mely Blobok indíthatnak el egy függvényt.
 
-For example, in the following Blob trigger binding, the `path` pattern is `sample-images/{filename}`, which creates a binding expression named `filename`:
+Például a blob-trigger következő kötésében a `path` minta `sample-images/{filename}`, amely létrehoz egy `filename`nevű kötési kifejezést:
 
 ```json
 {
@@ -86,7 +86,7 @@ For example, in the following Blob trigger binding, the `path` pattern is `sampl
     ...
 ```
 
-The expression `filename` can then be used in an output binding to specify the name of the blob being created:
+A `filename` kifejezés ezután használható kimeneti kötésben a létrehozandó blob nevének megadásához:
 
 ```json
     ...
@@ -101,7 +101,7 @@ The expression `filename` can then be used in an output binding to specify the n
 }
 ```
 
-Function code has access to this same value by using `filename` as a parameter name:
+A függvény kódjához a `filename` paraméter neveként való használata esetén ugyanaz az érték tartozik:
 
 ```csharp
 // C# example of binding to {filename}
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-The same ability to use binding expressions and patterns applies to attributes in class libraries. In the following example, the attribute constructor parameters are the same `path` values as the preceding *function.json* examples: 
+A kötési kifejezések és minták használata is ugyanaz, mint az osztályok könyvtáraiban található attribútumok esetében. A következő példában az attribútumok konstruktorának paraméterei ugyanazok `path` értékek, mint az előző *függvény. JSON* -példák: 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -131,23 +131,23 @@ public static void Run(
 
 ```
 
-You can also create expressions for parts of the file name such as the extension. For more information on how to use expressions and patterns in the Blob path string, see the [Storage blob binding reference](functions-bindings-storage-blob.md).
+A fájlnevek részeihez (például a kiterjesztéshez) is létrehozhat kifejezéseket. A kifejezéseknek és mintáknak a blob Path karakterláncban történő használatáról további információt a [Storage blob kötési referenciájában](functions-bindings-storage-blob.md)talál.
 
-## <a name="trigger-metadata"></a>Trigger metadata
+## <a name="trigger-metadata"></a>Trigger metaadatainak
 
-In addition to the data payload provided by a trigger (such as the content of the queue message that triggered a function), many triggers provide additional metadata values. These values can be used as input parameters in C# and F# or properties on the `context.bindings` object in JavaScript. 
+Az eseményindító által biztosított adattartalom (például a függvényt kiváltó üzenetsor-üzenet tartalma) mellett számos eseményindító további metaadat-értékeket is biztosít. Ezek az értékek a (z) C# és a ( F# z) és a (z) `context.bindings` objektumban található bemeneti paraméterekként használhatók a JavaScriptben. 
 
-For example, an Azure Queue storage trigger supports the following properties:
+Az Azure üzenetsor-tárolói trigger például a következő tulajdonságokat támogatja:
 
-* QueueTrigger - triggering message content if a valid string
+* QueueTrigger – az üzenet tartalmának elindítása, ha érvényes karakterlánc
 * DequeueCount
-* ExpirationTime
+* Expirationtime tulajdonságok
 * Azonosító
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-These metadata values are accessible in *function.json* file properties. For example, suppose you use a queue trigger and the queue message contains the name of a blob you want to read. In the *function.json* file, you can use `queueTrigger` metadata property in the blob `path` property, as shown in the following example:
+Ezek a metaadat-értékek a *function. JSON* fájl tulajdonságaiban érhetők el. Tegyük fel például, hogy üzenetsor-triggert használ, és az üzenetsor-üzenet tartalmazza az olvasni kívánt blob nevét. A *function. JSON* fájlban `queueTrigger` metadata tulajdonságot használhat a blob `path` tulajdonságban az alábbi példában látható módon:
 
 ```json
   "bindings": [
@@ -167,13 +167,13 @@ These metadata values are accessible in *function.json* file properties. For exa
   ]
 ```
 
-Details of metadata properties for each trigger are described in the corresponding reference article. For an example, see [queue trigger metadata](functions-bindings-storage-queue.md#trigger---message-metadata). Documentation is also available in the **Integrate** tab of the portal, in the **Documentation** section below the binding configuration area.  
+Az egyes triggerek metaadat-tulajdonságainak részletes ismertetését a megfelelő hivatkozási cikk ismerteti. Példa: [üzenetsor-trigger metaadatainak](functions-bindings-storage-queue.md#trigger---message-metadata). A dokumentáció a portál Integration ( **integrálás** ) lapján, a kötési konfiguráció terület alatti **dokumentáció** szakaszban is elérhető.  
 
-## <a name="json-payloads"></a>JSON payloads
+## <a name="json-payloads"></a>JSON-adattartalom
 
-When a trigger payload is JSON, you can refer to its properties in configuration for other bindings in the same function and in function code.
+Ha egy trigger adattartalma JSON, akkor a más kötésekhez tartozó tulajdonságokat a konfigurációban tekintheti meg ugyanabban a függvényben és a függvény kódjában.
 
-The following example shows the *function.json* file for a webhook function that receives a blob name in JSON: `{"BlobName":"HelloWorld.txt"}`. A Blob input binding reads the blob, and the HTTP output binding returns the blob contents in the HTTP response. Notice that the Blob input binding gets the blob name by referring directly to the `BlobName` property (`"path": "strings/{BlobName}"`)
+A következő példa egy olyan webhook-függvény *function. JSON* fájlját mutatja be, amely egy blob nevét kapja a JSON-ban: `{"BlobName":"HelloWorld.txt"}`. A blob bemeneti kötése beolvassa a blobot, és a HTTP-kimeneti kötés visszaadja a blob tartalmát a HTTP-válaszban. Figyelje meg, hogy a blob bemeneti kötése lekéri a blob nevét úgy, hogy közvetlenül a `BlobName` tulajdonságra hivatkozik (`"path": "strings/{BlobName}"`)
 
 ```json
 {
@@ -200,7 +200,7 @@ The following example shows the *function.json* file for a webhook function that
 }
 ```
 
-For this to work in C# and F#, you need a class that defines the fields to be deserialized, as in the following example:
+Ahhoz, hogy ez működjön C# a F#és a alkalmazásban, olyan osztályra van szüksége, amely meghatározza a deszerializálni kívánt mezőket, ahogy az alábbi példában is látható:
 
 ```csharp
 using System.Net;
@@ -225,7 +225,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-In JavaScript, JSON deserialization is automatically performed.
+A JavaScriptben a JSON-deszerializálás automatikusan történik.
 
 ```javascript
 module.exports = function (context, info) {
@@ -243,9 +243,9 @@ module.exports = function (context, info) {
 }
 ```
 
-### <a name="dot-notation"></a>Dot notation
+### <a name="dot-notation"></a>Pont jelölése
 
-If some of the properties in your JSON payload are objects with properties, you can refer to those directly by using dot notation. For example, suppose your JSON looks like this:
+Ha a JSON-adattartalom egyes tulajdonságai a tulajdonságokkal rendelkező objektumok, akkor ezeket közvetlenül a dot jelölés használatával tekintheti meg. Tegyük fel például, hogy a JSON így néz ki:
 
 ```json
 {
@@ -256,13 +256,13 @@ If some of the properties in your JSON payload are objects with properties, you 
 }
 ```
 
-You can refer directly to `FileName` as `BlobName.FileName`. With this JSON format, here's what the `path` property in the preceding example would look like:
+A `FileName` `BlobName.FileName`ként közvetlenül is hivatkozhat. Ezzel a JSON-formátummal a fenti példában szereplő `path` tulajdonság az alábbihoz hasonló lesz:
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
 ```
 
-In C#, you would need two classes:
+A C#-ben két osztályra van szükség:
 
 ```csharp
 public class BlobInfo
@@ -276,9 +276,9 @@ public class BlobName
 }
 ```
 
-## <a name="create-guids"></a>Create GUIDs
+## <a name="create-guids"></a>GUID-azonosítók létrehozása
 
-The `{rand-guid}` binding expression creates a GUID. The following blob path in a `function.json` file creates a blob with a name like *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy `function.json` fájlban a blob elérési útja egy olyan nevű blobot hoz létre, amelynek neve például *50710cb5-84b9-4d87-9d83-a03d6976a682. txt*.
 
 ```json
 {
@@ -289,9 +289,9 @@ The `{rand-guid}` binding expression creates a GUID. The following blob path in 
 }
 ```
 
-## <a name="current-time"></a>Current time
+## <a name="current-time"></a>Aktuális idő
 
-The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following blob path in a `function.json` file creates a blob with a name like *2018-02-16T17-59-55Z.txt*.
+A kötési kifejezés `DateTime` `DateTime.UtcNow`. Egy `function.json` fájlban a blob elérési útja egy olyan nevű blobot hoz létre, amelynek neve például *2018-02-16T17-59 -55z. txt*.
 
 ```json
 {
@@ -301,10 +301,10 @@ The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following b
   "path": "my-output-container/{DateTime}"
 }
 ```
-## <a name="binding-at-runtime"></a>Binding at runtime
+## <a name="binding-at-runtime"></a>Kötés futásidőben
 
-In C# and other .NET languages, you can use an imperative binding pattern, as opposed to the declarative bindings in *function.json* and attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. To learn more, see the [C# developer reference](functions-dotnet-class-library.md#binding-at-runtime) or the [C# script developer reference](functions-reference-csharp.md#binding-at-runtime).
+A C# -ben és más .net-nyelveken egy kötelező kötési mintát is használhat a *function. JSON* és attribútumok deklaratív kötéseinek használatával. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. További információért lásd a [ C# fejlesztői referenciát](functions-dotnet-class-library.md#binding-at-runtime) vagy a [ C# szkript fejlesztői referenciáját](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Using the Azure Function return value](./functions-bindings-return-value.md)
+> [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)

@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803448"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532999"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
-Az Azure AD-ben két alkalmazás van jelen: 
+Az Azure AD-ben két alkalmazás van jelen:
+
 * [Alkalmazásobjektumok](app-objects-and-service-principals.md#application-object) – bár vannak [kivételek](#notes-and-exceptions), az Application Objects egy alkalmazás definíciójának tekinthető.
 * [Egyszerű szolgáltatásnév](app-objects-and-service-principals.md#service-principal-object) – az alkalmazás egy példányát lehet tekinteni. Az egyszerű szolgáltatásnév általában egy Application objektumra hivatkozik, és egy alkalmazás-objektumra több egyszerű szolgáltatásnév is hivatkozhat a címtárak között.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Mik azok az alkalmazásobjektumok és honnan származnak?
+
 Az alkalmazás- [objektumok](app-objects-and-service-principals.md#application-object) a Azure Portalban kezelhetők az alkalmazások [regisztrációjának](https://aka.ms/appregistrations) felhasználói felületén keresztül. Az Application Objects leírja az alkalmazást az Azure AD-nek, és az alkalmazás definíciójának is tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak a beállításai alapján. Az Application objektum csak a saját könyvtárában létezik, még akkor is, ha egy több-bérlős alkalmazás, amely más címtárakban is támogatja az egyszerű szolgáltatásokat. Az Application objektum a következők bármelyikét tartalmazhatja (valamint további, itt nem említett információkat):
+
 * Név, embléma és közzétevő
 * Átirányítási URI-k
 * Titkos kódok (az alkalmazás hitelesítéséhez használt szimmetrikus és/vagy aszimmetrikus kulcsok)
@@ -45,13 +48,15 @@ Az alkalmazás- [objektumok](app-objects-and-service-principals.md#application-o
 * Proxy metaadatainak és konfiguráció
 
 Az Application Objects több útvonalon is létrehozható, többek között a következőkkel:
+
 * Alkalmazás-regisztrációk a Azure Portal
 * Új alkalmazás létrehozása a Visual Studióval és az Azure AD-hitelesítés használatára való konfigurálásával
 * Amikor egy rendszergazda felvesz egy alkalmazást az alkalmazás-katalógusból (amely egy egyszerű szolgáltatásnevet is létrehoz)
-* Új alkalmazás létrehozása a Microsoft Graph API, az Azure AD Graph API vagy a PowerShell használatával
+* Új alkalmazás létrehozása a Microsoft Graph API vagy a PowerShell használatával
 * Számos más, többek között az Azure-ban és az API Explorer fejlesztői központokban való fejlesztői tapasztalatai
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Mik azok az egyszerű szolgáltatások, és honnan származnak?
+
 A Azure Portal a [vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) felületén keresztül kezelheti az [egyszerű szolgáltatásokat](app-objects-and-service-principals.md#service-principal-object) . Az egyszerű szolgáltatások az Azure AD-hez csatlakozó alkalmazásra vonatkoznak, és az alkalmazás példányának tekinthetők a címtárban. Bármely adott alkalmazáshoz legfeljebb egy Application objektum tartozhat (amely a "Home" könyvtárban van regisztrálva), és egy vagy több egyszerű szolgáltatásnév, amely az alkalmazás példányait jelképezi minden olyan címtárban, amelyben ez működik. 
 
 Az egyszerű szolgáltatásnév a következőket tartalmazhatja:
@@ -122,7 +127,7 @@ Az alkalmazások az Azure AD-be való hozzáadásával kihasználhatják az ált
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kinek van engedélye alkalmazások hozzáadására az Azure AD-példányhoz?
 
-Habár vannak olyan feladatok, amelyeket csak a globális rendszergazdák végezhetnek el (például alkalmazások hozzáadását az alkalmazás-gyűjteményből, és az alkalmazás konfigurálását az alkalmazásproxy használatára) alapértelmezés szerint a címtárban lévő összes felhasználó az alkalmazás objektumainak regisztrálásához szükséges jogosultságokkal rendelkezik. a rendszer fejleszti és belátást biztosít azokra az alkalmazásokra, amelyeknek a megosztása vagy a szervezeti adathoz való hozzáférésük beleegyezik. Ha egy személy a címtár első felhasználója, hogy bejelentkezzen egy alkalmazásba, és megadja a jóváhagyást, akkor az egy egyszerű szolgáltatásnevet hoz létre a bérlőben; Ellenkező esetben a rendszer a jóváhagyáshoz szükséges adatokat a meglévő egyszerű szolgáltatásnév tárolja.
+Habár vannak olyan feladatok, amelyeket csak a globális rendszergazdák végezhetnek el (például alkalmazások hozzáadását az alkalmazás-katalógusból, és az alkalmazás konfigurálását az alkalmazásproxy használatára) alapértelmezés szerint a címtárban lévő összes felhasználó rendelkezik jogosultságokkal az alkalmazás objektumainak regisztrálásához, amelyeket a rendszer az általuk megosztott alkalmazások és a szervezeti adatokhoz való hozzáférés biztosítása érdekében adott meg. Ha egy személy a címtár első felhasználója, hogy bejelentkezzen egy alkalmazásba, és megadja a jóváhagyást, akkor az egy egyszerű szolgáltatásnevet hoz létre a bérlőben; Ellenkező esetben a rendszer a jóváhagyáshoz szükséges adatokat a meglévő egyszerű szolgáltatásnév tárolja.
 
 Az alkalmazások regisztrálásának és engedélyezésének lehetővé tétele a felhasználók számára kezdetben hangvételt jelenthet, de a következőket tartsa szem előtt:
 

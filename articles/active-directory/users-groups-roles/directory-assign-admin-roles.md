@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eefac10e2ab196affc4c4148348d19959fcfeec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266894"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547527"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -326,6 +326,10 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 
 > [!NOTE]
 > A Microsoft Graph API, az Azure AD Graph API és az Azure AD PowerShell esetében ez a szerepkör "Power BI szolgáltatás-rendszergazda" néven azonosítható. A [Azure Portal](https://portal.azure.com)"Power bi rendszergazda".
+
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Energiagazdálkodási platform rendszergazdája](#power-platform-administrator-permissions)
+
+A szerepkör felhasználói a környezetek, a PowerApps, a folyamatok és az adatveszteség-megelőzési szabályzatok minden aspektusát létrehozhatják és kezelhetik. Emellett az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a támogatási jegyeket, és figyelik a szolgáltatás állapotát.
 
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[Kiemelt jogosultságú hitelesítés rendszergazdája](#privileged-authentication-administrator-permissions)
 
@@ -1345,12 +1349,31 @@ A Power BI termék összes aspektusát képes kezelni.
 > Ez a szerepkör a Azure Active Directoryon kívül további engedélyekkel rendelkezik. További információ: a fenti szerepkör leírása.
 >
 >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Power BI összes aspektusának kezelése. |
+| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+
+### <a name="power-platform-administrator-permissions"></a>A Power platform rendszergazdai engedélyei
+
+A a Microsoft Dynamics 365, a PowerApps és a Microsoft Flow összes aspektusát képes létrehozni és kezelni. 
+
+> [!NOTE]
+> Ez a szerepkör a Azure Active Directoryon kívül további engedélyekkel rendelkezik. További információ: a fenti szerepkör leírása.
+>
+>
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. dynamics365/allEntities/allTasks | A Dynamics 365 összes aspektusának kezelése. |
+| Microsoft. flow/allEntities/allTasks | Microsoft Flow összes aspektusának kezelése. |
+| Microsoft. powerApps/allEntities/allTasks | A PowerApps összes aspektusának kezelése. |
 | microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
@@ -1708,6 +1731,7 @@ Office-alkalmazások rendszergazdája | Office-alkalmazások rendszergazdája | 
 2\. szintű partnertámogatás | Partneri szint-támogatás | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Jelszó-rendszergazda | Jelszó-rendszergazda | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI szolgáltatás rendszergazdája | Power BI rendszergazda | a9ea8996-122f-4c74-9520-8edcd192826c
+Energiagazdálkodási platform rendszergazdája | Power platform rendszergazda | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Kiemelt jogosultságú hitelesítés rendszergazdája | Kiemelt jogosultságú hitelesítés rendszergazdája | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Kiemelt szerepkörű rendszergazda | Kiemelt szerepkörű rendszergazda | e8611ab8-c189-46e8-94e1-60213ab1f814
 Jelentések olvasója | Jelentések olvasója | 4a5d8f65-41da-4de4-8968-e035b65339cf

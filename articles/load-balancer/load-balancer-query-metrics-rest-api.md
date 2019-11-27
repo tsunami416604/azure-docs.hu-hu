@@ -1,7 +1,7 @@
 ---
-title: Retrieve metrics with the REST API
+title: Metrikák beolvasása a REST API
 titleSuffix: Azure Load Balancer
-description: In this article, get started using the Azure REST APIs to collect health and usage metrics for Azure Load Balancer.
+description: Ez a cikk az Azure REST API-k használatának első lépéseit ismerteti a Azure Load Balancer állapotának és használati metrikáinak összegyűjtéséhez.
 services: sql-database
 author: asudbring
 manager: KumudD
@@ -17,21 +17,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225255"
 ---
-# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Get Load Balancer usage metrics using the REST API
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Load Balancer használati metrikák beszerzése a REST API használatával
 
-Collect the number of bytes processed by a [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) for an interval of time using the [Azure REST API](/rest/api/azure/).
+A [standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) által feldolgozott bájtok számának összegyűjtése az [Azure REST API](/rest/api/azure/)használatával.
 
-Complete reference documentation and additional samples for the REST API are available in the [Azure Monitor REST reference](/rest/api/monitor). 
+A REST API dokumentációja és a további minták a [Azure monitor Rest-referenciában](/rest/api/monitor)érhetők el. 
 
-## <a name="build-the-request"></a>A kérelem felépítése
+## <a name="build-the-request"></a>A kérelem létrehozása
 
-Use the following GET request to collect the [ByteCount metric](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) from a Standard Load Balancer. 
+A következő GET kérelem használatával gyűjtheti össze a [ByteCount metrikáját](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) egy standard Load Balancer. 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
 ```
 
-### <a name="request-headers"></a>Request headers
+### <a name="request-headers"></a>Kérelemfejlécek
 
 A következő fejlécek megadása kötelező: 
 
@@ -40,25 +40,25 @@ A következő fejlécek megadása kötelező:
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
 |*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
-### <a name="uri-parameters"></a>URI parameters
+### <a name="uri-parameters"></a>URI-paraméterek
 
 | Név | Leírás |
 | :--- | :---------- |
-| subscriptionId | The subscription ID that identifies an Azure subscription. If you have multiple subscriptions, see [Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API, CLI, or the portal. |
-| loadBalancerName | The name of the Azure Load Balancer. |
-| metric names | Comma-separated list of valid  [Load Balancer metrics](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | The API version to use for the request.<br /><br /> This document covers api-version `2018-01-01`, included in the above URL.  |
-| timespan | The timespan of the query. It's a string with the following format `startDateTime_ISO/endDateTime_ISO`. This optional parameter is set to return a day's worth of data in the example. |
+| subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
+| resourceGroupName | Az erőforrást tartalmazó erőforráscsoport neve. Ezt az értéket a Azure Resource Manager API-ból, a CLI-ből vagy a portálról szerezheti be. |
+| loadBalancerName | A Azure Load Balancer neve. |
+| metrikák nevei | Az érvényes [Load Balancer metrikák](/azure/load-balancer/load-balancer-standard-diagnostics)vesszővel tagolt listája. |
+| api-version | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL-cím részét képező API-Version `2018-01-01`tartalmazza.  |
+| TimeSpan | A lekérdezés TimeSpan. Ez egy karakterlánc a következő formátumban `startDateTime_ISO/endDateTime_ISO`. Ez a választható paraméter úgy van beállítva, hogy a példában egy nap értékű adatot adja vissza. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse
 
-No request body is needed for this operation.
+Ehhez a művelethez nem szükséges a kérelem törzse.
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-Status code 200 is returned when the list of metric values is returned successfully. A full list of error codes is available in the [reference documentation](/rest/api/monitor/metrics/list#errorresponse).
+A rendszer a 200-as állapotkódot adja vissza, ha a metrikai értékek listáját sikeresen visszaadja. A hibakódok teljes listája megtalálható a [dokumentációban](/rest/api/monitor/metrics/list#errorresponse).
 
 ## <a name="example-response"></a>Példaválasz 
 

@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködéssel rendelkez�
 
 ![A korlátozott rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/limited-admin-role.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)

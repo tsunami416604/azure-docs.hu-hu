@@ -16,11 +16,11 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
 ## <a name="sign-in"></a>Bejelentkezés
 
-1. Válassza ki **jelentkezzen be a** a felül, jobb [notebooks.azure.com](https://notebooks.azure.com/).
+1. Válassza a **Bejelentkezés** lehetőséget a [Notebooks.Azure.com](https://notebooks.azure.com/)jobb felső sarkában.
 
     ![Jelentkezzen be a parancs Azure notebookokban helye](media/accounts/sign-in-command.png)
 
-1. Amikor a rendszer kéri, adja meg annak a Microsoft-Account vagy egy munkahelyi vagy iskolai fiókkal és válassza ki az e-mail címét **tovább**. Fióktípus esetében leírása [a felhasználói fiók Azure notebookokhoz](azure-notebooks-user-account.md). Ha nem rendelkezik Microsoft-Account, vagy nem szeretne tenni egy kifejezetten az Azure-jegyzetfüzetek való használatra, válassza ki a **hozzon létre egyet**:
+1. Ha a rendszer kéri, adja meg egy Microsoft-fiók vagy egy munkahelyi vagy iskolai fiók e-mail-címét, és kattintson a **Tovább gombra**. A fiók típusainak ismertetését [Azure Notebooks felhasználói fiókjában](azure-notebooks-user-account.md)találja. Ha nem rendelkezik Microsoft-fiókkal, vagy kifejezetten a Azure Notebooks használatára szeretné használni az egyiket, válassza a **Létrehozás**lehetőséget:
 
     ![Hozzon létre új Microsoft-fiók parancs bejelentkezési kérések jelenhetnek](media/accounts/create-new-microsoft-account.png)
 
@@ -29,7 +29,7 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
 1. Adja meg a jelszót, amikor a rendszer kéri.
 
-1. Ha most jelentkezik be először, Azure notebookok engedélyt kér a fiókja eléréséhez. Válassza ki **Igen** folytatásához:
+1. Ha most jelentkezik be először, Azure notebookok engedélyt kér a fiókja eléréséhez. A folytatáshoz válassza az **Igen** lehetőséget:
 
     ![Fiók engedélyek kérése](media/accounts/account-permission-prompt.png)
 
@@ -39,9 +39,9 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
     ![Rákérdezés a felhasználói azonosító megadása Azure notebookokhoz](media/accounts/create-user-id.png)
 
-    Ha **nem Köszönjük, hogy**, Azure notebookok kéri a felhasználói azonosító minden alkalommal, amikor bejelentkezik továbbra is. A felhasználói azonosító is megadható a bármikor a [felhasználói profil](azure-notebooks-user-profile.md).
+    Ha a **No Thank (nem**) lehetőséget választja, a Azure Notebooks minden bejelentkezéskor továbbra is kéri a felhasználói azonosító megadását. A felhasználói azonosító a [felhasználói profilban](azure-notebooks-user-profile.md)bármikor beállítható.
 
-1. Miután sikeresen bejelentkezett, az Azure-jegyzetfüzetek navigál, amelyen kiválaszthatja a nyilvános profil lapon **profiladatok szerkesztése** töltse ki az Ön adatait a többi (további információkért lásd: [profilját és felhasználói azonosítója](azure-notebooks-user-profile.md)):
+1. A sikeres bejelentkezést követően Azure Notebooks navigál a nyilvános profil oldalra, amelyen kiválaszthatja a **profil adatainak szerkesztése** lehetőséget a további információk kitöltéséhez (további információért lásd [a profilt és a felhasználói azonosítót](azure-notebooks-user-profile.md)):
 
     ![Egy Azure-jegyzetfüzetek profilu kezdeti megtekintése](media/accounts/profile-page-new.png)
 
@@ -50,11 +50,11 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
 ## <a name="sign-out"></a>Kijelentkezés
 
-Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónevére, majd válassza ki a **Kijelentkezés**:
+A kijelentkezéshez válassza ki a felhasználónevet az oldal jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget:**
 
 ![Kijelentkezés parancsot Azure notebookokban helye](media/accounts/sign-out-command.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása](quickstart-create-share-jupyter-notebook.md)
+> [Rövid útmutató: jegyzetfüzet létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)

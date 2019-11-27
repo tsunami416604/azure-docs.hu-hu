@@ -12,15 +12,15 @@ ms.locfileid: "74277523"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Egy jegyzetfüzetet klónozása
 
-Számos adatelemzők és fejlesztők tárolja a jegyzetfüzetekre a [GitHub-adattárak](https://github.com), egy ingyenes szolgáltatás, amely számos különböző projekttípusok tárolási és verziókövetési. GitHub gyakran használják, pedig a helyileg futó Jupyter notebookok dolgoztunk. Ezekben az esetekben minden közreműködő fenntartja az adattár helyi példányának, és futtatja a notebookok a másolatot.
+Számos adattudós és fejlesztő tárolja a saját jegyzetfüzeteit a [GitHub-tárházban](https://github.com), amely egy ingyenes szolgáltatás, amely számos különböző projekttípus számára biztosít tárolási és verziókövetés szolgáltatást. GitHub gyakran használják, pedig a helyileg futó Jupyter notebookok dolgoztunk. Ezekben az esetekben minden közreműködő fenntartja az adattár helyi példányának, és futtatja a notebookok a másolatot.
 
 A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüzetek fiókban helyette. Ezt klón független az eredeti adattárból; módosítások csak az Azure-jegyzetfüzetek fiókban vannak tárolva, és az eredeti nem befolyásolják. Mivel a Klónozási a felhőben, akik nem kell minden olyan helyi másolatkészítésre vagy is, hogy a saját számítógépükre Jupyter más közreműködőkkel együtt megoszthatja a projekt. A notebook klónozhatja is előfordulhat, hogy egyszerűen kiindulási pontként egy projektet a saját vagy adatfájlok beszerzése.
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Az Azure Cognitive Services notebookok klónozása
 
-1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. (További információkért lásd: [rövid útmutató – jelentkezzen be Azure-jegyzetfüzetek](quickstart-sign-in-azure-notebooks.md)).
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. (Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksre](quickstart-sign-in-azure-notebooks.md)).
 
-1. Válassza ki a nyilvános profiloldalán **saját projektek** az oldal tetején:
+1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
@@ -31,9 +31,9 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 1. A megjelenő **GitHub-tárház feltöltése** lapon adja meg vagy állítsa be a következő adatokat, majd válassza az **Importálás**lehetőséget:
 
    - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név a Jupyter notebookokat az Azure Cognitive Services [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
-   - **Klónozza a rekurzív módon**: (törölve)
-   - **Projektnév**: Cognitive Services-klón
-   - **A projekt Azonosítóját**: cognitive services-klón
+   - **Rekurzív klónozás**: (törölve)
+   - **Projekt neve**: Cognitive Services klón
+   - **Projekt azonosítója**: kognitív – szolgáltatások – klón
    - **Nyilvános**: (törölve)
 
      ![A GitHub-tárház felugró ablakának feltöltése a tárház adatainak összegyűjtéséhez](media/quickstarts/upload-github-repo-popup.png)
@@ -46,25 +46,25 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
 ## <a name="share-a-notebook"></a>Jegyzetfüzet megosztása
 
-1. A klónozott projekt osztani, használja a **megosztása** vezérléséhez vagy hivatkozás beszerzése, szerezze be a hivatkozást tartalmazó HTML- vagy a Markdown kódot, vagy létrehozhat egy e-mailt a hivatkozást tartalmazó:
+1. A klónozott projekt másolatának megosztásához használja a **megosztás** vezérlőelemet, vagy szerezzen be egy hivatkozást, szerezze be a HIVATKOZÁST tartalmazó HTML-vagy Markdown-kódot, vagy hozzon létre egy e-mail-üzenetet a következő hivatkozással:
 
     ![Projekt megosztás parancs](media/quickstarts/share-project-command.png)
 
-1. Mivel töröltük az **nyilvános** beállítást, ha a projektet, a klón Klónozás je privátní. Válassza ki ahhoz, hogy a Másolás nyilvános, **Projektbeállítások**állítsa be a **nyilvános projekt** az előugró lehetőséget, majd válassza ki **mentése**.
+1. Mivel a projekt klónozásakor a **nyilvános** lehetőséget törölte, a klón privát. A másolás nyilvános létrehozásához válassza a **projekt beállításai**lehetőséget, állítsa be a **nyilvános projekt** beállítást a felugró ablakban, majd válassza a **Mentés**lehetőséget.
 
 1. Válassza ki egy jegyzetfüzetet a projektben való futtatáshoz. Minden egyes notebook az Azure Cognitive Services-tárházban, például a saját önálló rövid. Az alábbi képen láthatók a BingImageSearchAPI notebook használata után a Cognitive Services API-előfizetési kulcs hozzáadása és módosítása a keresési kifejezés "Kiskutyák", "bunnies" eredménye:
 
     ![A githubról klónozott futtatása a Jupyter notebook](media/quickstarts/clone-notebook-result.png)
 
-1. Ha befejezte a notebook fut, válassza ki **fájl** > **zárja be és halt** gombra kattintva zárja be a jegyzetfüzetet, és a böngészőablakot.
+1. Ha végzett a jegyzetfüzet futtatásával, válassza a **fájl** > **Bezárás és megállás** elemet a jegyzetfüzet és a böngésző ablakának bezárásához.
 
-1. Egy a projektben egyes notebook megosztásához kattintson a jobb gombbal a jegyzetfüzetet, és válassza **hivatkozás másolása** (billentyűparancs: y):
+1. Ha egy egyéni jegyzetfüzetet szeretne megosztani a projektben, kattintson a jobb gombbal a jegyzetfüzetre, és válassza a **hivatkozás másolása** lehetőséget (billentyűparancs: y):
 
     ![Helyi menü parancsot az egyes notebook mutató hivatkozás másolása](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. Eltérő notebookok fájlok szerkesztéséhez kattintson a jobb gombbal a projektre, és válassza ki a fájlt **Edit file** (billentyűparancs: e). Az alapértelmezett művelet **futtatása** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem szerkeszthető.
+1. A jegyzetfüzetek kivételével a fájlok szerkesztéséhez kattintson a jobb gombbal a fájlra a projektben, és válassza a **fájl szerkesztése** (billentyűparancs: i) elemet. Az alapértelmezett művelet, **Futtatás** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem teszi lehetővé a szerkesztést.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter-jegyzetfüzet futtatásának létrehozása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

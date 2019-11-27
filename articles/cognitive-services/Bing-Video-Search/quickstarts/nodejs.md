@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Node.js - Bing Video Search'
+title: 'Gyors útmutató: videók keresése a REST API és a Node. js használatával – Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests to the Bing Video Search REST API using JavaScript.
+description: Ezzel a rövid útmutatóval kereshet a Bing Video Search REST API a JavaScript használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,29 +17,29 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383814"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Quickstart: Search for videos using the Bing Video Search REST API and Node.js
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és Node. js használatával
 
-Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple JavaScript application sends an HTTP video search query to the API, and displays the response. While this application is written in JavaScript and uses Node.js, the API is a RESTful Web service compatible with most programming languages. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
 
-* The Request module for JavaScript
-    * You can install this module using `npm install request`
+* A JavaScript kérési modulja
+    * Ezt a modult `npm install request` használatával telepítheti.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Initialize the application
+## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Create a new JavaScript file in your favorite IDE or editor. Set the strictness and add the following requirement:
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a korlátozást, és adja hozzá a következő követelményt:
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Create variables for your API endpoint, subscription key, and your search term.
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési kifejezéshez.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +50,7 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
 
 ## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
 
-1. Create a function called `response_handler` to take a JSON response from the API. Create a variable for the response body. Append the response when a `data` flag is received, using `response.on()`.
+1. Hozzon létre egy `response_handler` nevű függvényt, amely JSON-választ készít az API-ból. Hozzon létre egy változót a válasz törzse számára. Ha `data` jelzőt fogad, `response.on()`használatával fűzze hozzá a választ.
 
     ```javascript
     let response_handler = function (response) {
@@ -61,7 +61,7 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
     };
     ```
     
-   1. When `end` is signaled, use `response.on()` to store the bing-related headers (beginning with `bingapis` or `x-msedge-`). Then parse the JSON using `JSON.parse()`, convert it to a string with `JSON.stringify()`, and print it.
+   1. `end` jelzése esetén a `response.on()` a bingtel kapcsolatos fejlécek (`bingapis` vagy `x-msedge-`) tárolására használható. Ezután elemezze a JSON-t a `JSON.parse()`használatával, alakítsa át a karakterláncot `JSON.stringify()`és nyomtassa ki.
 
        ```javascript
        response.on('end', function () {
@@ -75,9 +75,9 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
        });
        ```
 
-## <a name="create-and-send-the-search-request"></a>Create and send the search request
+## <a name="create-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. Create a function called `bing_video_search()`. Add the parameters for your request including your host name, and headers. Encode your search term and append it to your path parameter with the `?q=` parameter. Then send the request with `req.end()`.
+1. Hozzon létre egy `bing_video_search()`nevű függvényt. Adja hozzá a kérelem paramétereit, beleértve az állomásnevet és a fejléceket. Kódolja a keresési kifejezést, és fűzze hozzá a Path paraméterhez a `?q=` paraméterrel. Ezután küldje el a kérelmet `req.end()`.
 
     ```javascript
     let bing_video_search = function (search_term) {
@@ -208,8 +208,8 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
- [What is the Bing Video Search API?](../overview.md)
+ [Mi a Bing Video Search API?](../overview.md)

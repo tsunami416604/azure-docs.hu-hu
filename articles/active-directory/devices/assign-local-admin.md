@@ -1,6 +1,6 @@
 ---
-title: How to manage local administrators on Azure AD joined devices
-description: Learn how to assign Azure roles to the local administrators group of a Windows device.
+title: Helyi rendszergazdák kezelése az Azure AD-hez csatlakoztatott eszközökön
+description: Ismerje meg, hogyan rendelhet Azure-szerepköröket egy Windows-eszköz helyi rendszergazdák csoportjához.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,79 +18,79 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379660"
 ---
-# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>How to manage the local administrators group on Azure AD joined devices
+# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
-To manage a Windows device, you need to be a member of the local administrators group. As part of the Azure Active Directory (Azure AD) join process, Azure AD updates the membership of this group on a device. You can customize the membership update to satisfy your business requirements. A membership update is, for example, helpful if you want to enable your helpdesk staff to do tasks requiring administrator rights on a device.
+Windows-eszközök kezeléséhez a helyi Rendszergazdák csoport tagjának kell lennie. A Azure Active Directory (Azure AD) csatlakoztatási folyamatának részeként az Azure AD frissíti a csoport tagságát az eszközön. A tagsági frissítést testreszabhatja az üzleti igények kielégítése érdekében. A tagság frissítése például hasznos, ha engedélyezni szeretné, hogy az ügyfélszolgálat munkatársai olyan feladatokat végezzenek el, amelyeken rendszergazdai jogosultságok szükségesek az eszközön.
 
-This article explains how the membership update works and how you can customize it during an Azure AD Join. The content of this article doesn't apply to a **hybrid** Azure AD join.
+Ez a cikk azt ismerteti, hogyan működik a tagsági frissítés, és hogyan szabható testre az Azure AD JOIN szolgáltatásban. A cikk tartalma nem vonatkozik a **hibrid** Azure ad-csatlakozásra.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
-When you connect a Windows device with Azure AD using an Azure AD join, Azure AD adds the following security principles to the local administrators group on the device:
+Ha Azure ad-csatlakozással csatlakoztat egy Windows-eszközt az Azure AD-hez, az Azure AD a következő biztonsági alapelveket adja hozzá a helyi Rendszergazdák csoporthoz az eszközön:
 
-- The Azure AD global administrator role
-- The Azure AD device administrator role 
-- The user performing the Azure AD join   
+- Az Azure AD globális rendszergazdai szerepköre
+- Az Azure AD-eszköz rendszergazdai szerepköre 
+- Az Azure AD Joint végző felhasználó   
 
-By adding Azure AD roles to the local administrators group, you can update the users that can manage a device anytime in Azure AD without modifying anything on the device. Currently, you cannot assign groups to an administrator role.
-Azure AD also adds the Azure AD device administrator role to the local administrators group to support the principle of least privilege (PoLP). In addition to the global administrators, you can also enable users that have been *only* assigned the device administrator role to manage a device. 
+Az Azure AD-szerepkörök a helyi Rendszergazdák csoporthoz való hozzáadásával frissítheti azokat a felhasználókat, akik az Azure AD-ben bármikor kezelhetik az eszközöket anélkül, hogy bármit módosítani kellene az eszközön. Jelenleg nem rendelhet hozzá csoportokat rendszergazdai szerepkörhöz.
+Az Azure AD az Azure AD-eszköz rendszergazdai szerepkörét is hozzáadja a helyi rendszergazdák csoportjához a legalacsonyabb jogosultsági szint (PoLP) elvének támogatásához. A globális rendszergazdák mellett engedélyezheti azon felhasználók számára is, akik *csak* az eszköz rendszergazdai szerepkörét rendelték hozzá az eszközök kezeléséhez. 
 
-## <a name="manage-the-global-administrators-role"></a>Manage the global administrators role
+## <a name="manage-the-global-administrators-role"></a>A globális rendszergazdák szerepkör kezelése
 
-To view and update the membership of the global administrator role, see:
+A globális rendszergazdai szerepkör tagságának megtekintéséhez és frissítéséhez tekintse meg a következőt:
 
-- [View all members of an administrator role in Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
-- [Assign a user to administrator roles in Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
+- [Rendszergazdai szerepkör összes tagjának megtekintése Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
-## <a name="manage-the-device-administrator-role"></a>Manage the device administrator role 
+## <a name="manage-the-device-administrator-role"></a>Az eszköz rendszergazdai szerepkörének kezelése 
 
-In the Azure portal, you can manage the device administrator role on the **Devices** page. To open the **Devices** page:
+A Azure Portal az **eszközök** lapon kezelheti az eszköz rendszergazdai szerepkörét. Az **eszközök** lap megnyitása:
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as a global administrator or device administrator.
-1. Search for and select *Azure Active Directory*.
-1. In the **Manage** section, click **Devices**.
-1. On the **Devices** page, click **Device settings**.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként vagy az eszköz rendszergazdájával.
+1. Keresse meg és válassza ki a *Azure Active Directory*.
+1. A **kezelés** szakaszban kattintson az **eszközök**elemre.
+1. Az **eszközök** lapon kattintson az **eszközbeállítások**elemre.
 
-To modify the device administrator role, configure **Additional local administrators on Azure AD joined devices**.  
+Az eszköz rendszergazdai szerepkörének módosításához **további helyi rendszergazdákat kell konfigurálnia az Azure ad-hez csatlakoztatott eszközökön**.  
 
-![Additional local administrators](./media/assign-local-admin/10.png)
+![További helyi rendszergazdák](./media/assign-local-admin/10.png)
 
 >[!NOTE]
-> This option requires an Azure AD Premium tenant. 
+> Ehhez a beállításhoz prémium szintű Azure AD bérlő szükséges. 
 
-Device administrators are assigned to all Azure AD joined devices. You cannot scope device administrators to a specific set of devices. Updating the device administrator role doesn't necessarily have an immediate impact on the affected users. On devices where a user is already signed into, the privilege update takes place when *both* the below actions happen:
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Azokon az eszközökön, amelyeken a felhasználó már be van jelentkezve, a jogosultsági frissítés akkor kerül sor, ha az alábbi műveletek *is* megtörténnek:
 
-- 4 hours have passed for Azure AD to issue a new Primary Refresh Token with the appropriate privileges. 
-- User signs out and signs back in, not lock/unlock, to refresh their profile.
+- 4 óra telt el az Azure AD számára, hogy új elsődleges frissítési jogkivonatot adjon ki a megfelelő jogosultságokkal. 
+- A felhasználó kijelentkezik, és visszajelentkezik, nem zárolja vagy oldja fel a profil frissítését.
 
-## <a name="manage-regular-users"></a>Manage regular users
+## <a name="manage-regular-users"></a>Normál felhasználók kezelése
 
-By default, Azure AD adds the user performing the Azure AD join to the administrator group on the device. If you want to prevent regular users from becoming local administrators, you have the following options:
+Alapértelmezés szerint az Azure AD hozzáadja az Azure AD-csatlakozást végző felhasználót az eszközön található rendszergazdai csoporthoz. Ha meg szeretné akadályozni, hogy a normál felhasználók helyi rendszergazdák legyenek, a következő lehetőségek közül választhat:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot provides you with an option to prevent primary user performing the join from becoming a local administrator. You can accomplish this by [creating an Autopilot profile](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
-- [Bulk enrollment](https://docs.microsoft.com/intune/windows-bulk-enroll) - An Azure AD join that is performed in the context of a bulk enrollment happens in the context of an auto-created user. Users signing in after a device has been joined are not added to the administrators group.   
+- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – a Windows Autopilot lehetővé teszi, hogy megakadályozza, hogy az összekapcsolást végző elsődleges felhasználó helyi rendszergazda legyen. Ezt az [Autopilot-profil létrehozásával](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)végezheti el.
+- [Tömeges beléptetés](https://docs.microsoft.com/intune/windows-bulk-enroll) – egy olyan Azure ad-csatlakozás, amely egy tömeges beléptetés kontextusában történik, egy automatikusan létrehozott felhasználó kontextusában történik. Az eszköz csatlakoztatása után bejelentkezett felhasználók nem lesznek hozzáadva a rendszergazdák csoporthoz.   
 
-## <a name="manually-elevate-a-user-on-a-device"></a>Manually elevate a user on a device 
+## <a name="manually-elevate-a-user-on-a-device"></a>Felhasználó manuális megemelése egy eszközön 
 
-In addition to using the Azure AD join process, you can also manually elevate a regular user to become a local administrator on one specific device. This step requires you to already be a member of the local administrators group. 
+Az Azure AD JOIN folyamatán kívül manuálisan is beállíthatja, hogy egy normál felhasználó helyi rendszergazda legyen egy adott eszközön. Ehhez a lépéshez már a helyi Rendszergazdák csoport tagjának kell lennie. 
 
-Starting with the **Windows 10 1709** release, you can perform this task from **Settings -> Accounts -> Other users**. Select **Add a work or school user**, enter the user's UPN under **User account** and select *Administrator* under **Account type**  
+A **Windows 10 1709** kiadástól kezdve ezt a feladatot elvégezheti a **Beállítások – > fiókok – > más felhasználók**. Válassza a **munkahelyi vagy iskolai felhasználó hozzáadása**lehetőséget, írja be a felhasználó egyszerű felhasználónevét a **felhasználói fiók** területen, és válassza a *rendszergazda* elemet a **Fiók típusa** területen.  
  
-Additionally, you can also add users using the command prompt:
+Emellett a parancssor használatával is hozzáadhat felhasználókat:
 
-- If your tenant users are synchronized from on-premises Active Directory, use `net localgroup administrators /add "Contoso\username"`.
-- If your tenant users are created in Azure AD, use `net localgroup administrators /add "AzureAD\UserUpn"`
+- Ha a bérlő felhasználóit szinkronizálják a helyszíni Active Directory, használja a `net localgroup administrators /add "Contoso\username"`.
+- Ha a bérlői felhasználók az Azure AD-ban jönnek létre, használja a `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
-You cannot assign groups to the device administrator role, only individual users are allowed.
+Nem rendelhet hozzá csoportokat az eszköz rendszergazdai szerepköréhez, csak az egyes felhasználók engedélyezettek.
 
-Device administrators are assigned to all Azure AD Joined devices. They can't be scoped to a specific set of devices.
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Nem lehetnek hatókörük egy adott eszközre.
 
-When you remove users from the device administrator role, they still have the local administrator privilege on a device as long as they are signed in to it. The privilege is revoked during the next sign-in, or after 4 hours when a new primary refresh token is issued.
+Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, vagy 4 óra elteltével, amikor új elsődleges frissítési jogkivonatot állít ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
-- To learn more about device-based Conditional Access, see [configure Azure Active Directory device-based Conditional Access policies](../conditional-access/require-managed-devices.md).
+- Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

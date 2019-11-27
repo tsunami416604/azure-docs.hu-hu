@@ -193,7 +193,7 @@ A PowerShell használatával is gyorsan tesztelhető a végpontok közötti beá
 
 Vizsgálja meg a `$DataSet.Tables[0]` értékét, hogy áttekinthesse a lekérdezés eredményeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure SQL Serverhez való hozzáférésre. További információ az Azure SQL Serverről:
 

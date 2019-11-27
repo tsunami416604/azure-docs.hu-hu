@@ -45,9 +45,9 @@ A vállalati adatok védelme érdekében szabályozhatja a hozzáférést a megf
 
 A megvalósítás részleteiért lásd: a [helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure ad B2B együttműködés használatával](hybrid-on-premises-to-cloud.md).
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások](hybrid-cloud-to-on-premises.md)
+- [B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez](hybrid-cloud-to-on-premises.md)
 - [Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával](hybrid-on-premises-to-cloud.md)
 
 

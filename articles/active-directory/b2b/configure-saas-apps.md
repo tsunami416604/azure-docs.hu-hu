@@ -98,7 +98,7 @@ Az SAML protokollon alapuló összevonás használatával engedélyezheti a felh
 
 A Dropbox meghívásokhoz hasonlóan a Box-meghívásoknak is be kell váltaniuk a meghívót a Box alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

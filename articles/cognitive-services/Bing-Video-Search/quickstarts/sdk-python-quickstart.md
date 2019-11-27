@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Python - Bing Video Search'
+title: 'Gyors útmutató: videók keresése a Pythonhoz készült SDK használatával – Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests using the Bing Video Search SDK for Python
+description: Ezzel a rövid útmutatóval videó-keresési kéréseket küldhet a Pythonhoz készült Bing Video Search SDK-val
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,24 +17,24 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378758"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Python
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Gyors útmutató: videós keresés végrehajtása a Pythonhoz készült Bing Video Search SDK-val
 
-Use this quickstart to begin searching for news with the Bing Video Search SDK for Python. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) with additional annotations, and features.
+Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Pythonhoz készült Bing Video Search SDK-val. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) található további megjegyzésekkel és szolgáltatásokkal.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Python](https://www.python.org/) 2.x or 3.x
-- The Bing Video Search SDK for python
+- [Python](https://www.python.org/) 2. x vagy 3. x
+- A Pythonhoz készült Bing Video Search SDK
 
-It is recommended that you use a python [virtual environment](https://docs.python.org/3/tutorial/venv.html). You can install and initialize a virtual environment with the [venv module](https://pypi.python.org/pypi/virtualenv). Install virtualenv for Python 2.7 with:
+Javasoljuk, hogy használjon Python [virtuális környezetet](https://docs.python.org/3/tutorial/venv.html). A [venv modul](https://pypi.python.org/pypi/virtualenv)használatával telepítheti és inicializálhatja a virtuális környezeteket. Telepítse a virtualenv for Python 2,7-et a következővel:
 
 ```console
 python -m venv mytestenv
 ```
 
-Install the Bing Video Search SDK with:
+Telepítse a Bing Video Search SDK-t a használatával:
 
 ```console
 cd mytestenv
@@ -43,7 +43,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Create a new Python file in your favorite IDE or editor, and add the following import statements. 
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasításokat. 
 
     ```python
     from azure.cognitiveservices.search.videosearch import VideoSearchAPI
@@ -51,13 +51,13 @@ python -m pip install azure-cognitiveservices-search-videosearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Create a variable for your subscription key. 
+2. Hozzon létre egy változót az előfizetési kulcshoz. 
 
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     ```
 
-## <a name="create-the-search-client"></a>Create the search client
+## <a name="create-the-search-client"></a>A keresési ügyfél létrehozása
 
 Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 
@@ -65,15 +65,15 @@ Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányos�
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
 
-## <a name="send-a-search-request-and-get-a-response"></a>Send a search request and get a response
+## <a name="send-a-search-request-and-get-a-response"></a>Keresési kérelem küldése és Válasz kérése
 
-1. Use `client.videos.search()` with your search query to send a request to the Bing Video Search API, and get a response.
+1. A `client.videos.search()` a keresési lekérdezéssel küldhet egy kérést a Bing Video Search APInak, és választ kaphat.
 
     ```python
     video_result = client.videos.search(query="SwiftKey")
     ```
 
-2. If the response contains search results, get the first one, and print its ID, name, and url.
+2. Ha a válasz keresési eredményeket tartalmaz, szerezze be az elsőt, és nyomtassa ki az AZONOSÍTÓját, nevét és URL-címét.
 
     ```python
     if video_result.value:
@@ -89,9 +89,9 @@ client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
-- [What is the Bing Video Search API?](../overview.md)
+- [Mi a Bing Video Search API?](../overview.md)
 - [Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

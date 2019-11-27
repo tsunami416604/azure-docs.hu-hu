@@ -1,6 +1,6 @@
 ---
-title: Create a support request for Cloudyn in Azure | Microsoft Docs
-description: This article walks you through the steps needed to create a support request for Cloudyn.
+title: Hozzon létre egy támogatási kérést a Cloudyn Azure-ban |} A Microsoft Docs
+description: Ez a cikk végigvezeti a Cloudyn kérelem létrehozásához szükséges lépéseket.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,35 +17,35 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229897"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Create a support request for Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Hozzon létre egy támogatási kérést a Cloudyn
 
-You can open a support request if you can't find the information you're looking for. Or, if you suspect a problem is a service disruption or bug. When you open a support ticket, make sure that open it for a single problem. Do so helps to quickly route the reported issue.
+Is nyisson egy támogatási kérelmet, ha nem találja a keresett adatokat. Vagy, ha azt gyanítja, hogy probléma van egy szolgáltatáskimaradás vagy hiba. Támogatási jegy megnyitásakor győződjön meg arról, hogy nyissa meg az egyetlen probléma. Hajtsa végre, így segít gyorsan juthatnak el a jelentett hiba.
 
-## <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
+## <a name="open-a-support-ticket"></a>Hozzon létre egy támogatási jegyet
 
-1. Sign in to the Azure portal (https://portal.azure.com).
-2. On the top navigation bar, click **Help**.
-3. In the **Help** menu, click **Help + support**.
-4. In the Help + support menu under Support, click **New support request**.
-5. In the Basics area under Issue type, select **Billing**.
-6. Under Subscription, choose any listed subscription. The subscription that you choose isn't used for issue routing.
-7. Under Support plan, select your Azure Support Plan and then click **Next**.  
-8. In the Problem area, select a **Severity** level to help determine response time.
-9. In **Problem type** select **Cloudyn Legacy**, and then select a **Category**.
-10. In the **Title** box, enter a title that describes your request.
-11. In the **Details** box, type additional information.
-12. For **When did the problem start?** , select an approximate date and time for and then click **Next**.  
-14. In the **Contact information** area, select your preferred contact method and provide your contact information, then click **Create**.  
+1. Jelentkezzen be a Azure Portalba (https://portal.azure.com).
+2. A felső navigációs sávon kattintson a **Súgó**elemre.
+3. A **Súgó** menüben kattintson a **Súgó és támogatás**elemre.
+4. A támogatás területen található Súgó + támogatás menüben kattintson az **új támogatási kérelem**elemre.
+5. A probléma típusa alatt található alapok területen válassza a **számlázás**lehetőséget.
+6. Az előfizetésben válassza ki bármelyik felsorolt előfizetést. Az Ön által választott előfizetés nem használható, az útválasztási problémát.
+7. A támogatási csomag területen válassza ki az Azure-támogatási csomagot, majd kattintson a **tovább**gombra.  
+8. A probléma területen válasszon ki egy **súlyossági** szintet a válaszidő meghatározásához.
+9. A **probléma típusa** területen válassza a **Cloudyn örökölt**elemet, majd válasszon ki egy **kategóriát**.
+10. A **title (cím** ) mezőben adjon meg egy címet, amely leírja a kérést.
+11. A **részletek** mezőbe írja be a további adatokat.
+12. **Mikor indult el a probléma?** , válasszon ki egy hozzávetőleges dátumot és időpontot, majd kattintson a **tovább**gombra.  
+14. A **kapcsolattartási adatok** területen válassza ki a kívánt kapcsolattartási módszert, és adja meg a kapcsolattartási adatait, majd kattintson a **Létrehozás**gombra.  
 
-When the support ticket is created, it is added to the support queue. Response time varies, based on the Support Plan and Severity (business impact) of the issue. For more information, see [Support scope and responsiveness](https://azure.microsoft.com/support/plans/response/).
+A támogatási jegy létrehozását követően a támogatási várólistára kerül. Válaszidő változik, a támogatási csomagot, és a probléma súlyosságától (üzletmenetre gyakorolt hatás) alapján. További információ: a [támogatás hatóköre és a válaszadás](https://azure.microsoft.com/support/plans/response/).
 
-If you want to create a billing support ticket for Cost Management, under **Problem type**, select **Azure Cost Management**.
+Ha Cost Managementhez szeretne számlázási támogatási jegyet létrehozni, a **probléma típusa**területen válassza a **Azure Cost Management**lehetőséget.
 
-To check the status of an incident that you've filed, see [All support requests](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+A beküldött incidensek állapotának vizsgálatához tekintse meg az [összes támogatási kérelmet](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-If you're a legacy Cloudyn user without an Azure account, you can open a support request at https://support.microsoft.com/oas/default.aspx?prid=16451.
+Ha Ön egy Azure-fiókkal nem rendelkező örökölt Cloudyn-felhasználó, akkor a https://support.microsoft.com/oas/default.aspx?prid=16451címen megnyithatja a támogatási kérést.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- To learn more about Cloudyn, continue to the [Review usage and costs](tutorial-review-usage.md) tutorial for Cloudyn.
+- Ha többet szeretne megtudni a Cloudyn-ről, folytassa a használati és Cloudyn kapcsolatos oktatóanyag [áttekintésével](tutorial-review-usage.md) .

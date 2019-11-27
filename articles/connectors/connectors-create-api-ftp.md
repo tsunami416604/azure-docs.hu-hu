@@ -11,12 +11,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: conceptual
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a73fad3097be73e01a7a2a6652129cd7c9db9555
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ac6ae1a3b00a4e7568bd7967105f202fbf2e4f9b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050962"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547491"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, figyelése és kezelése Azure Logic Apps használatával
 
@@ -33,7 +33,7 @@ Használhat olyan eseményindítókat, amelyek válaszokat kapnak az FTP-kiszolg
 
 * Az FTP-összekötő csak az SSL-en keresztüli explicit FTP-t (FTPS) támogatja, és nem kompatibilis az implicit FTPS.
 
-* Alapértelmezés szerint az FTP-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Az 50 MB-nál nagyobb fájlok kezeléséhez az FTP-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **fájl tartalmának** beolvasása művelet implicit módon adatdarabolást használ.
+* Alapértelmezés szerint az FTP-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Az 50 MB-nál nagyobb fájlok kezeléséhez az FTP-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **fájl tartalmának beolvasása** művelet implicit módon adatdarabolást használ.
 
 * Az FTP-eseményindítók nem támogatják a darabolást. Fájl tartalmának kérésekor a triggerek csak 50 MB vagy annál kisebb fájlokat választanak ki. A 50 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
@@ -45,10 +45,10 @@ Használhat olyan eseményindítókat, amelyek válaszokat kapnak az FTP-kiszolg
 
 Az FTP-eseményindítók az FTP fájlrendszer lekérdezésével és a legutóbbi lekérdezés óta módosult fájlok keresésével működnek. Egyes eszközök lehetővé teszik, hogy a fájlok változásakor őrizze meg az időbélyeget. Ezekben az esetekben le kell tiltania ezt a funkciót, így az trigger működhet. Íme néhány gyakori beállítás:
 
-| SFTP-ügyfél | Action |
+| SFTP-ügyfél | Műveletek |
 |-------------|--------|
-| WinSCP | Ugrás a **Beállítások** > **Beállítások**átvitel szerkesztési megőrzési időbélyegénekletiltása >  >  >  >  |
-| Filezillát | Ugrás az > **átvitt fájlok** > adatmegőrzési időbélyegére –**Letiltás** |
+| WinSCP | Lépjen a **beállítások** > **beállítások** > **átvitel** > **Szerkesztés** > **megőrzése időbélyeg** > **Letiltás** |
+| Filezillát | Ugrás az **átvitel** > **az átvitt fájlok időbélyegének megőrzése** > **Letiltás** |
 |||
 
 Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
@@ -63,7 +63,7 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, ahová el szeretné érni az FTP-fiókját. Ha egy FTP-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). FTP-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az ismétlődési eseményindítóval.
+* Az a logikai alkalmazás, ahová el szeretné érni az FTP-fiókját. Ha egy FTP-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). FTP-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
 ## <a name="connect-to-ftp"></a>Kapcsolódás FTP-hez
 
@@ -87,17 +87,17 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-trigger: Fájl hozzáadásakor vagy módosításakor
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-trigger: fájl hozzáadásakor vagy módosításakor
 
 Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, ha az trigger észleli, ha egy fájlt hozzáadnak vagy módosítanak egy FTP-kiszolgálón. Így például hozzáadhat egy olyan feltételt, amely ellenőrzi a fájl tartalmát, és eldönti, hogy szeretné-e lekérni a tartalmat, attól függően, hogy az adott tartalom megfelel-e a megadott feltételnek. Végül hozzáadhat egy olyan műveletet, amely beolvassa a fájl tartalmát, és az SFTP-kiszolgáló egy mappájába helyezi a tartalmat.
 
-**Vállalati példa**: Ezzel a triggerrel figyelheti az új, az ügyfelek rendeléseit leíró fájlok FTP-mappáját. Ezután használhat egy FTP-műveletet, például a **fájlok**beolvasása lehetőséget, így a rendelés tartalmát megtekintheti további feldolgozás céljából, és tárolhatja az Orders adatbázisban.
+**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket leíró új fájlok FTP-mappájának figyelésére. Ezután használhat egy FTP-műveletet, például a **fájlok beolvasása**lehetőséget, így a rendelés tartalmát megtekintheti további feldolgozás céljából, és tárolhatja az Orders adatbázisban.
 
-Az alábbi példa az triggert mutatja be: **Fájl hozzáadásakor vagy módosításakor**
+Íme egy példa, amely megjeleníti ezt az triggert: **fájl hozzáadásakor vagy módosításakor**
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként az "FTP" kifejezést. Az eseményindítók listában válassza ki ezt az eseményindítót: **Egy iktatott vagy módosított FTP-vel**
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként az "FTP" kifejezést. Az eseményindítók listájában válassza ki ezt az eseményindítót: **Ha egy iktatott vagy módosított-FTP**
 
    ![FTP-trigger keresése és kiválasztása](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
@@ -107,7 +107,7 @@ Az alábbi példa az triggert mutatja be: **Fájl hozzáadásakor vagy módosít
 
    ![FTP-kiszolgáló kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. A **mappa** mező mellett válassza a mappa ikont, hogy megjelenjen a lista. Az új vagy szerkesztett fájlokhoz figyelni kívánt mappa megkereséséhez válassza a derékszög nyilat ( **>** ), tallózással keresse meg a mappát, majd válassza ki a mappát.
+1. A **mappa** mező mellett válassza a mappa ikont, hogy megjelenjen a lista. Az új vagy szerkesztett fájlokhoz figyelni kívánt mappa megkereséséhez válassza a derékszög nyilat ( **>** ), keresse meg a mappát, majd válassza ki a mappát.
 
    ![A figyelni kívánt mappa megkeresése és kiválasztása](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -119,15 +119,15 @@ Most, hogy a logikai alkalmazás rendelkezik triggerrel, adja hozzá a futtatni 
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP-művelet: Tartalom lekérése
+### <a name="ftp-action-get-content"></a>FTP-művelet: tartalom lekérése
 
 Ez a művelet beolvassa a tartalmat egy FTP-kiszolgálón lévő fájlból a fájl hozzáadásakor vagy frissítésekor. Így például hozzáadhat egy triggert az előző példához, és egy olyan műveletet, amely a fájl hozzáadását vagy szerkesztését követően lekéri a fájl tartalmát.
 
-Az alábbi példa a műveletet mutatja be: **Tartalom lekérése**
+Íme egy példa, amely megjeleníti ezt a műveletet: **tartalom lekérése**
 
 1. Az trigger vagy bármely egyéb művelet alatt válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként az "FTP" kifejezést. A műveletek listában válassza ki ezt a műveletet: **Fájl tartalmának beolvasása – FTP**
+1. A keresőmezőbe írja be szűrőként az "FTP" kifejezést. A műveletek listában válassza ki ezt a műveletet: **fájl tartalmának beolvasása – FTP**
 
    ![FTP-művelet kiválasztása](./media/connectors-create-api-ftp/select-ftp-action.png)  
 
@@ -135,7 +135,7 @@ Az alábbi példa a műveletet mutatja be: **Tartalom lekérése**
 
    ![FTP-kiszolgáló kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. Amikor megnyílik a **fájl** beolvasása művelet, kattintson a **fájl** szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Mostantól kiválaszthatja az előző lépésekből származó kimenetek tulajdonságait. A dinamikus tartalom listából válassza ki a **fájl tartalma** tulajdonságot, amely tartalmazza a hozzáadott vagy frissített fájl tartalmát.  
+1. Amikor megnyílik a **fájl beolvasása** művelet, kattintson a **fájl** szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Mostantól kiválaszthatja az előző lépésekből származó kimenetek tulajdonságait. A dinamikus tartalom listából válassza ki a **fájl tartalma** tulajdonságot, amely tartalmazza a hozzáadott vagy frissített fájl tartalmát.  
 
    ![Fájl keresése és kiválasztása](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
 
@@ -149,6 +149,6 @@ Az alábbi példa a műveletet mutatja be: **Tartalom lekérése**
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az [összekötő hivatkozási oldalát](/connectors/ftpconnector/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: orspodek
-ms.openlocfilehash: 6945e4dcf6baf44881bd5b13571dd03e3dee41ed
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300542"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547151"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Adatkezelőba vagy onnan a Azure Data Factory használatával
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok [Azure-Adatkezelőba](../data-explorer/data-explorer-overview.md)való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely általános áttekintést nyújt a másolási tevékenységről.
+
+>[!TIP]
+>A Azure Data Factory és az Azure Adatkezelő integrációja általában további információ az [Azure-adatkezelő és a Azure Data Factory integrálásáról](../data-explorer/data-factory-integration.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -45,7 +48,7 @@ Az Azure Adatkezelő-összekötővel a következőket teheti:
 ## <a name="getting-started"></a>Első lépések
 
 >[!TIP]
->Az Azure Adatkezelő Connector bemutatása: [adatok másolása Azure-adatkezelő az Azure Data Factory használatával](../data-explorer/data-factory-load-data.md).
+>Az Azure Adatkezelő Connector bemutatása: [adatok másolása az Azure-ba vagy az](../data-explorer/data-factory-load-data.md) Azure-ba Adatkezelő az [adatkezelő adatbázisból](../data-explorer/data-factory-template.md)az Azure-ba való tömeges másolás Azure Data Factory használatával
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -71,10 +74,10 @@ Az Azure Adatkezelő-összekötő az egyszerű szolgáltatásnév hitelesítés�
 
 Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **AzureDataExplorer**értékre kell beállítani. | Igen |
-| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek `https://<clusterName>.<regionName>.kusto.windows.net`formátuma:. | Igen |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma `https://<clusterName>.<regionName>.kusto.windows.net`. | Igen |
 | database | Az adatbázis neve. | Igen |
 | tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
@@ -109,7 +112,7 @@ Ha adatokat szeretne másolni az Azure Adatkezelőba, állítsa az adatkészlet 
 
 A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **AzureDataExplorerTable**értékre kell beállítani. | Igen |
 | table | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
@@ -139,19 +142,19 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="azure-data-explorer-as-source"></a>Azure-Adatkezelő forrásként
 
-Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **AzureDataExplorerSource**értékre. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
+Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **AzureDataExplorerSource**értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Igen |
-| query | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Igen |
+| lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Igen |
 | queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | Nem |
 | nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |Nem |
 
 >[!NOTE]
->Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, `set notruncation;` megadhatja a lekérdezés elején. További információ: [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Az összes csonkítás nélküli rekord lekéréséhez megadhat `set notruncation;` a lekérdezés elején. További információ: [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -186,14 +189,14 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure-Adatkezelő fogadóként
 
-Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenység fogadójának Type (típus) tulajdonságát a **AzureDataExplorerSink**értékre. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
+Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenység fogadójának Type (típus) tulajdonságát a **AzureDataExplorerSink**értékre. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
-| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure Adatkezelőra szeretné képezni (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat is), használhatja a másolási tevékenység [oszlop leképezését](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként), és /vagy Azure Adatkezelő leképezések. | Nem |
+| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -229,7 +232,7 @@ Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenys�
 
 További információ a tulajdonságokról: [keresési tevékenység](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
 

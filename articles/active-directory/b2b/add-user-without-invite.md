@@ -33,7 +33,7 @@ Ez az eredeti metódus továbbra is működik. Van azonban némi különbség a 
 
 Ha meghívja a felhasználót a címtárba, a vendég felhasználónak közvetlenül hozzá kell férnie az erőforrás-bérlőre jellemző Azure Portal URL-címhez (például https://portal.azure.com/*resourcetenant*. onmicrosoft.com) az adatvédelmi feltételek megtekintéséhez és elfogadásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)

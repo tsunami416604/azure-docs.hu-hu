@@ -1,6 +1,6 @@
 ---
-title: Optimize your cloud investment with Azure Cost Management | Microsoft Docs
-description: This article helps get the most value out of your cloud investments, reduce your costs, and evaluate where your money is being spent.
+title: Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása |} A Microsoft Docs
+description: Ez a cikk segít a lehető leghatékonyabban ki a felhőbefektetések, csökkentse a költségeket, és értékeléséhez, ahol a pénzt töltött.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,81 +17,81 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219118"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>How to optimize your cloud investment with Azure Cost Management
+# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása
 
-Azure Cost Management gives you the tools to plan for, analyze and reduce your spending to maximize your cloud investment. This document provides you with a methodical approach to cost management and highlights the tools available to you as you address your organization’s cost challenges. Azure makes it easy to build and deploy cloud solutions. However, it's important that those solutions are optimized to minimize the cost to your organization. Following the principles outlined in this document and using our tools will help to make sure your organization is prepared for success.
+Az Azure Cost Management segít azon eszközök tervezése, elemzése, és csökkentheti költségeit a felhőbe való befektetéséből maximalizálása érdekében. Ez a dokumentum a cost Management módszeres megközelítést biztosít, és kiemeli az Ön számára elérhető eszközöket, akkor kihívásaira a szervezet költség. Az Azure egyszerűen készíthet és helyezhet üzembe felhőalapú megoldásokat. Azonban fontos, hogy ezek a megoldások minimálisra csökkentheti a szervezet számára van optimalizálva. Az eszközök segítségével, győződjön meg arról, hogy a szervezet a jelen dokumentum és a használatával leírt elveket követő sikeres kész.
 
-## <a name="methodology"></a>Módszertan
+## <a name="methodology"></a>Módszer
 
-Cost management is an organizational problem and should be an ongoing practice that begins before you spend money on cloud resources. To successfully implement cost management and optimize costs, your organization must:
+A Cost management egy szervezeti probléma, és lehet egy folyamatban lévő eljárás, amely előtt a felhőbeli erőforrások előzetesen pénzt kezdődik. Sikeres végrehajtása Költségkezelés, és optimalizálhatja a költségeket, a szervezet kell:
 
-- Be prepared with the proper tools for success
-- Be accountable for costs
-- Take appropriate action to optimize spending
+- Készüljön fel a siker érdekében a megfelelő eszközökkel
+- A költségek elszámolással
+- Optimalizálhatja a költségeket a megfelelő művelet végrehajtása
 
-Three key groups, outlined below, must be aligned in your organization to make sure that you successfully manage costs.
+Három fő csoportra, az alábbi, úgy kell beállítani, győződjön meg arról, hogy sikeresen kezelheti költségeit a szervezetben.
 
-- **Finance** - People responsible for approving budget requests across the organization based on cloud spending forecasts. They pay the corresponding bill and assign costs to various teams to drive accountability.
-- **Managers** - Business decision makers in an organization that need to understand cloud spending to find the best spending results.
-- **App teams** - Engineers managing cloud resources on a day-to-day basis, developing services to meet the organization's needs. These teams need the flexibility to deliver the most value in their defined budgets.
+- **Pénzügy** – a szervezeten belüli költségvetési kérelmek jóváhagyásáért felelős személyek a felhőalapú kiadások előrejelzései alapján. Azok a megfelelő számlázási kell fizetnie, és rendelje hozzá költségek különböző csapatokkal együttműködve elszámoltathatóság.
+- **Vezetők** – az üzleti döntéshozók egy olyan cégnél, amelyeknek meg kell ismerniük a Felhőbeli kiadásokat, hogy megtalálják a legjobb kiadási eredményeket.
+- **Alkalmazás-csapatok** – a felhőalapú erőforrásokat napi rendszerességgel kezelő mérnökök, a szervezet igényeinek megfelelő szolgáltatások fejlesztése. Ezek a csoportok a rugalmasságot, amelyekkel értéket termelhet a legtöbb azok meghatározott költségvetések kell.
 
-### <a name="key-principles"></a>Key principles
+### <a name="key-principles"></a>Kulcsfontosságú alapelvek
 
-Use the principles outlined below to position your organization for success in cloud cost management.
+Használja a szervezet Költségkezelés felhőbeli siker érdekében helyezze az alább leírt elveket.
 
 #### <a name="planning"></a>Tervezés
 
-Comprehensive, up-front planning allows you to tailor cloud usage to your specific business requirements. Ask yourself:
+Átfogó, induló megtervezése lehetővé teszi a felhőhasználat, az adott üzleti igényeinek megfelelő kódolási sebesség kiválasztását. Tegye fel magának:
 
-- What business problem am I solving?
-- What usage patterns do I expect from my resources?
+- Milyen üzleti problémák léptek megoldására?
+- Milyen használati minták tegye várható az erőforrásaim?
 
-Your answers will help you select the offerings that are right for you. They determine the infrastructure to use and how it's used to maximize your Azure efficiency.
+A válaszok segítségével válassza ki az ajánlatok, amelyek az Ön számára megfelelő. Az infrastruktúra használatát, és hogyan használható az Azure hatékonyságának maximalizálása érdekében határozzák meg.
 
-#### <a name="visibility"></a>Visibility
+#### <a name="visibility"></a>Láthatóság
 
-When structured well, Cost Management helps you to inform people about the Azure costs they're responsible for or for the money they spend. Azure has services designed to give you insight into *where* your money is spent. Take advantage of these tools. They can help you find resources that are underused, remove waste, and maximize cost-saving opportunities.
+Ha jól strukturált, a Cost Management segít személyek tájékoztatása az Azure-költségek vagy töltenek pénzt felelős azok. Az Azure-ban olyan szolgáltatások vannak kialakítva, amelyek betekintést *nyújtanak a* pénzbe. Ezek az eszközök előnyeit. Keresse meg az erőforrásokat, amelyek használaton, távolítsa el a veszteséget és maximalizálja a költségtakarékos lehetőségek segíthetnek.
 
-#### <a name="accountability"></a>Accountability
+#### <a name="accountability"></a>Felelősségre vonhatóság
 
-Attribute costs in your organization to make sure that people responsible are accountable for their team's spending. To fully understand your organization's Azure spending, you should organize your resources to maximize insight into cost attribution. Good organization helps to manage and reduce costs and hold people accountable for efficient spending in your organization.
+Attribútum költségeit a szervezetben, hogy a költségkeret-beállítási csapatuk kiszolgálófelügyeletért felelős személyek biztosítják. Teljes mértékben megérteni a szervezet Azure költségeit, kell szervezni költség tesznek elérhetővé; ilyenek betekintést maximalizálhatja az erőforrások. Jó szervezet kezeléséhez, és csökkentheti a költségeket, és tartsa lenyomva a hatékony költségeit a szervezetben kiszolgálófelügyeletért személyek segít.
 
 #### <a name="optimization"></a>Optimalizálás
 
-Act to reduce your spending. Make the most of it based on the findings gathered through planning and increasing cost visibility. You might consider purchase and licensing optimizations along with infrastructure deployment changes that are discussed in detail later in this document.
+ACT a kiadások csökkentése érdekében. A legtöbbet hozhatja ki a tervezési és a növekvő költségek láthatósági keresztül begyűjtött eredmények alapján. Érdemes lehet megfontolni a beszerzési és licencelés optimalizálások infrastruktúra üzembe helyezési változásokkal, amelyek a jelen dokumentum részletesen taglalja.
 
-#### <a name="iteration"></a>Iteration
+#### <a name="iteration"></a>Iteráció
 
-Everyone in your organization must engage in the cost management lifecycle. They need to stay involved on an ongoing basis to optimize costs. Be rigorous about this iterative process and make it a key tenet of responsible cloud governance in your organization.
+A szervezet minden tagja a költség-kezelés életciklusának kell végezhetnek. Az érintett töltheti a költségek optimalizálása érdekében van szükség. Szigorú iteratív erről a folyamatról, és, hogy a szervezet felelős felhőalapú irányítási kulcsfontosságú alapelve.
 
-![Key principles diagram showing visibility, accountability, and optimization](./media/cost-mgt-best-practices/principles.png)
+![Láthatóság, elszámoltathatóság és optimalizálás a kulcsfontosságú alapelvek ábrája](./media/cost-mgt-best-practices/principles.png)
 
-## <a name="plan-with-cost-in-mind"></a>Plan with cost in mind
+## <a name="plan-with-cost-in-mind"></a>Költség szem megtervezése
 
-Before you deploy cloud resources, assess the following items:
+A felhőbeli erőforrások üzembe helyezése, előtt mérje fel a következő elemek:
 
-- The Azure offer that best meets your needs
-- The resources you plan to use
-- How much they might cost
+- Az Azure-ajánlat, amely az igényeinek legmegfelelőbb
+- Az erőforrások használatához
+- Akkor lehet, hogy mennyibe
 
-Azure provides tools to assist you in the assessment process. The tools can give you a good idea of the investment required to enable your workloads. Then you can select the best configuration for your situation.
+Az Azure biztosít eszközöket a értékelés folyamatban. Az eszközöket adhat a befektetés szükséges ahhoz, hogy a számítási feladatokat érdemes. Ezután kiválaszthatja az ajánlott konfiguráció az adott helyzetben.
 
-### <a name="azure-onboarding-options"></a>Azure onboarding options
+### <a name="azure-onboarding-options"></a>Azure előkészítési lehetőségek
 
-The first step in maximizing your experience within Cost Management is to investigate and decide which Azure offer is best for you. Think about how you plan to use Azure in the future. Also consider how you want your billing model configured. Consider the following questions when making your decision:
+Az első lépés a felhasználói élmény a Cost Management belül maximalizálása, hogy vizsgálja meg, és eldönteni, melyik Azure-ajánlat legjobban az Ön számára. Gondolja át hogyan tervezi használni az Azure a jövőben. Is vegye figyelembe, hogyan szeretné konfigurálni a számlázási modellt. A döntés meghozatalakor, vegye figyelembe a következő kérdéseket:
 
-- How long do I plan to use Azure? Am I testing, or do I plan to build longer-term infrastructure?
-- How do I want to pay for Azure? Should I prepay for a reduced price or get invoiced at the end of the month?
+- Mennyi ideig tervezi használni az Azure? Vagyok tesztelése, vagy tervezhetem hosszabb távú infrastruktúra létrehozását?
+- Hogyan szeretné az Azure díjat fizetni? Érdemes lehet fizessen elő az csökkentett vagy első számlázás a hónap végén?
 
-To learn more about the various options, visit [How to buy Azure](https://azure.microsoft.com/pricing/purchase-options/). Several of the most common billing models are identified below.
+Ha többet szeretne megtudni a különböző lehetőségekről, tekintse meg az [Azure megvásárlását](https://azure.microsoft.com/pricing/purchase-options/)ismertető témakört. A leggyakoribb számlázási modellek közül több alábbi azonosítja.
 
 #### <a name="freehttpsazuremicrosoftcomfree"></a>[Ingyenes](https://azure.microsoft.com/free/)
 
 - 12 hónapig ingyenes népszerű szolgáltatások
-- $200 in credit to explore services for 30 days
-- 25+ services are always free
+- 200 USD kredit 30 napig szolgáltatások
+- szolgáltatások több mint 25 mindig ingyenesek.
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Pay as you go](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Utólagos fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Nincs minimum díj és kötelezettségvállalás
 - Versenyképes díjszabás
@@ -100,96 +100,96 @@ To learn more about the various options, visit [How to buy Azure](https://azure.
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Nagyvállalati Szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- Options for up-front monetary commitments
-- Access to reduced Azure pricing
+- Előzetes pénzügyi kötelezettségvállalással lehetőségei
+- Az Azure kedvezményes díjszabása a hozzáférést
 
-## <a name="estimate-the-cost-of-your-solution"></a>Estimate the cost of your solution
+## <a name="estimate-the-cost-of-your-solution"></a>A megoldás kiszámítása
 
-Before you deploy any infrastructure, assess how much your solution will cost. The assessment will help you create a budget for your organization for the workload, up-front. Then you can use a budget over time to benchmark the validity of your initial estimation. And you can compare it with the actual cost of your deployed solution.
+Semmilyen infrastruktúra üzembe helyezése, előtt mérje fel, mekkora a megoldás díjait. Az értékelés segít a szervezet a számítási feladat előzetes díj költségvetés létrehozása. Ezután használhatja költségvetési idővel becslésére a kezdeti felmérést érvényességét. És összehasonlíthatja a tényleges költség az üzembe helyezett megoldás.
 
 ### <a name="azure-pricing-calculator"></a>Azure díjkalkulátor
 
-The Azure pricing calculator allows you to mix and match different combinations of Azure services to see an estimate of the costs. You can implement your solution using different ways in Azure - each might influence your overall spending. Thinking early about all of the infrastructure needs of your cloud deployment helps you use the tool most effectively. It can help you get a solid estimate of your estimated spending in Azure.
+Az Azure díjkalkulátorát keverheti a Azure-szolgáltatásokkal, tekintse meg a költségek becslése eltérő kombinációja lehetővé teszi. Valósítható meg a megoldás különböző módokon használatával az Azure-ban – a teljes költekezés mindegyike befolyásolhatja. Szem előtt tartva korai mind a felhőbeli üzemelő példány, az infrastruktúrához segít a leghatékonyabban az eszközzel. Ez segíthet beolvasása egy szilárd becsült becsült költségeit az Azure-ban.
 
-For more information, see the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator).
+További információ: [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator).
 
 ### <a name="azure-migrate"></a>Azure Migrate
 
-Azure Migrate is a service that assesses your organization's current workloads in on-premises datacenters. It gives you insight into what you might need from an Azure replacement solution. First, Migrate analyzes your on-premises machines to determine whether migration is feasible. Then, it recommends VM sizing in Azure to maximize performance. Finally, it also creates a cost estimate for an Azure-based solution.
+Az Azure Migrate egy szolgáltatása, amely a helyszíni adatközpontokban a szervezet aktuális számítási feladatok felmérésével. Biztosít, mit érdemes Azure helyettesítő megoldásokból betekintést. Első lépésként áttelepítése elemzi a helyszíni gépek migrálási megoldható meghatározásához. Ezt követően javaslatot tesz a legjobb teljesítmény érdekében az Azure-beli virtuális gép méretezése. Végül egy Azure-alapú megoldás egy költségbecslést is létrehoz.
 
-For more information, see [Azure Migrate](../migrate/migrate-overview.md).
+További információ: [Azure Migrate](../migrate/migrate-overview.md).
 
-## <a name="analyze-and-manage-your-costs"></a>Analyze and manage your costs
+## <a name="analyze-and-manage-your-costs"></a>A költségek kezelése és elemzése
 
-Keep informed about how your organization's costs evolve over time. Use the following techniques to properly understand and manage your spending.
+Hogyan a szervezet költségek időbeli alakulásával tisztában megtartása. Az alábbi technikák segítségével megfelelően ismertetése, és kezelheti költségeit.
 
-### <a name="organize-and-tag-your-resources"></a>Organize and tag your resources
+### <a name="organize-and-tag-your-resources"></a>Rendszerezése és megjelölése az erőforrások
 
-Organize your resources with cost in mind. As you create subscriptions and resource groups, think about the teams that are responsible for associated costs. Make sure your reporting keeps your organization in mind. Subscriptions and resource groups provide good buckets to organize and attribute spending across your organization. Tags provide a good way to attribute cost. You can use tags as a filter. And you can use them to group by when you analyze data and investigate costs. Enterprise Agreement customers can also create departments and place subscriptions under them. Cost-based organization in Azure helps keep the relevant people in your organization accountable for reducing their team's spending.
+Költség szem előtt az erőforrások rendszerezéséhez. Az előfizetések és -erőforráscsoportok létrehozása, gondolja át a kapcsolódó költségek felelős csapatok. Ellenőrizze, hogy a szervezet a jelentéskészítési tartja szem előtt. Az előfizetések és -erőforráscsoportok adja meg a helyes gyűjtők rendszerezése és attribútum költségeit a szervezetben. Címkék segítségével attribútum költség tartalmaznak. A címkék szűrőként is használhatja. És használhatja őket a csoportosítási szempont, ha az adatok elemzéséhez, és vizsgálja meg a költségek. Nagyvállalati szerződéssel rendelkező ügyfelek szervezeti egységek létrehozása és helyezze őket-előfizetések is. Költség-alapú szervezet az Azure-ban teszi lehetővé, az érintett személyeket a szervezetben csapatuk kiadások csökkentése a kiszolgálófelügyeletért.
 
-### <a name="use-cost-analysis"></a>Use cost analysis
+### <a name="use-cost-analysis"></a>Használja a költségek elemzése
 
-Cost analysis allows you to analyze your organizational costs in-depth by slicing and dicing your costs using standard resource properties. Consider the following common questions as a guide for your analysis. Answering these questions on a regular basis will help you stay more informed and enable more cost-conscious decisions.
+Költségelemzés lehetővé teszi a szervezeti költségeket részletes tovább szeletelve és darabolva a standard szintű erőforrás-tulajdonságok használatával költségeket, és elemezheti. Vegye figyelembe a következő gyakori kérdések az elemzés alapján. Rendszeres időközönként a kérdések megválaszolása segítségével több értesüljön, és további költségérzékeny döntések engedélyezése.
 
-- **Estimated costs for the current month** – How much have I incurred so far this month? Will I stay under my budget?
-- **Investigate anomalies** – Do routine checks to make sure that costs stay within a reasonable range of normal usage. Mik a trendek? Are there any outliers?
-- **Invoice reconciliation** - Is my latest invoiced cost more than the previous month? How did spending habits change month-over-month?
-- **Internal chargeback** - Now that I know how much I'm being charged, how should those charges be broken down for my organization?
+- **Az aktuális hónap becsült költségei** – mennyit vettem fel eddig ebben a hónapban? E marad a költségvetés alatt?
+- **Anomáliák vizsgálata** – a rutin ellenőrzi, hogy a költségek a normál használat ésszerű skáláján belül maradnak-e. Mik azok a trendek? Vannak-e kiugró adatokat?
+- **Számla-egyeztetés** – a legújabb számlázott díja az előző hónapnál nagyobb? Hogyan változott a költségkeret szokások hónap hónapos over?
+- **Belső** jóváírás – most, hogy tudom, mennyit kell fizetnem, hogyan kell lebontania ezeket a díjakat a szervezetem számára?
 
-For more information, see [cost analysis](quick-acm-cost-analysis.md).
+További információ: [Cost Analysis](quick-acm-cost-analysis.md).
 
-### <a name="export-billing-data-on-a-schedule"></a>Export billing data on a schedule
+### <a name="export-billing-data-on-a-schedule"></a>Ütemezés szerint számlázási adatok exportálása
 
-Do you need to import your billing data into an external system, like a dashboard or financial system? Set up automated exports to Azure Storage and avoid manually downloading files every month. You can then easily set up automatic integrations with other systems to keep your billing data in sync.
+Van szüksége a számlázási adatokat importálni külső rendszerek, például egy irányítópulton vagy pénzügyi rendszer? Állítsa be az Azure Storage automatikus export, és manuálisan tölt le fájlokat minden hónapban. Ezután könnyedén állíthat be más rendszerekkel való automatikus Integrációk szinkronban tartani az elszámolási adatok.
 
-For more information about exporting billing data, see [Create and manage exported data](tutorial-export-acm-data.md).
+További információ a számlázási adatok exportálásáról: [exportált adatok létrehozása és kezelése](tutorial-export-acm-data.md).
 
-### <a name="create-budgets"></a>Create budgets
+### <a name="create-budgets"></a>Hozzon létre költségvetése
 
-After you've identified and analyzed your spending patterns, it's important to begin setting limits for yourself and your teams. Azure budgets give you the ability to set either a cost or usage-based budget with many thresholds and alerts. Make sure to review the budgets that you create regularly to see your budget burn-down progress and make changes as needed. Azure budgets also allow you to configure an automation trigger when a given budget threshold is reached. For example, you can configure your service to shut down VMs. Or you can move your infrastructure to a different pricing tier in response to a budget trigger.
+Azonosított, és a költségkeret mintáinak elemzése után fontos megkezdheti a saját maga és a csapatok számának korlátozása. Az Azure költségvetése lehetővé teszik, egy költség vagy a használat alapú költségvetés számos küszöbérték és riasztások. Ellenőrizze, hogy tekintse át a költségvetés írási legördülő hétről és módosítható igény szerint hoz létre rendszeresen költségvetése. Az Azure költségvetése lehetővé teszi egy automation-eseményindító konfigurálása egy adott költségvetési küszöbérték elérésekor. Például konfigurálhatja a virtuális gépek leállítása a szolgáltatás. Vagy az infrastruktúra áthelyezheti egy másik tarifacsomagra költségvetés eseményindító válaszul.
 
-For more information, see [Azure Budgets](tutorial-acm-create-budgets.md).
+További információ: Azure- [költségvetés](tutorial-acm-create-budgets.md).
 
-For more information about budget-based automation, see [Budget Based Automation](../billing/billing-cost-management-budget-scenario.md).
+A költségvetésen alapuló automatizálással kapcsolatos további információkért lásd: a [költségvetés-alapú automatizálás](../billing/billing-cost-management-budget-scenario.md).
 
-## <a name="act-to-optimize"></a>Act to optimize
-Use the following ways to optimize spending.
+## <a name="act-to-optimize"></a>ACT optimalizálása
+Használja a következő módokon optimalizálhatja a költségeket.
 
-### <a name="cut-out-waste"></a>Cut out waste
+### <a name="cut-out-waste"></a>Vágja ki a veszteség
 
-Miután üzembe helyezte az infrastruktúrát az Azure-ba, fontos, hogy az valóban ki legyen használva. A legegyszerűbben úgy érhet el azonnali megtakarítást, ha áttekinti az erőforrásait, és eltávolítja azokat, amelyek nincsenek használva. From there, you should determine if your resources are being used as efficiently as possible.
+Miután telepítette az Azure-ban az infrastruktúra, fontos, hogy használatban van. Kezdjen el takarékoskodni azonnal a legegyszerűbb módja, hogy tekintse át az erőforrásokat, és távolítsa el azokat, amelyek nincsenek használatban. Itt ellenőrizze, ha az erőforrások lehető leghatékonyabb vannak használatban.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
-Azure Advisor is a service that, among other things, identifies virtual machines with low utilization from a CPU or network usage standpoint. From there, you can decide to either shut down or resize the machine based on the estimated cost to continue running the machines. Advisor also provides recommendations for reserved instance purchases. The recommendations are based on your last 30 days of virtual machine usage. When acted on, the recommendations can help you reduce your spending.
+Az Azure Advisor egy szolgáltatása, amely, többek között azonosítja a virtuális gépek Processzor- vagy hálózati használati szempontból alacsony kihasználtság mellett futottak. Itt eldöntheti, vagy állítsa le, vagy a gép a becsült költség a továbbra is fut a gépek alapján. Az Advisor is biztosít a fenntartott példány vásárlására vonatkozó javaslatok. A javaslatok a virtuális gép használatát az elmúlt 30 nap alapulnak. Határoz meg, ha a javaslatok segítségével csökkentheti költségeit.
 
-For more information, see [Azure Advisor](../advisor/advisor-overview.md).
+További információ: [Azure Advisor](../advisor/advisor-overview.md).
 
-### <a name="size-your-vms-properly"></a>Size your VMs properly
+### <a name="size-your-vms-properly"></a>A virtuális gépek megfelelő méretezése
 
-VM sizing has a significant impact on your overall Azure cost. The number of VMs needed in Azure might not equate to what you currently have deployed in an on-premises datacenter. Make sure your choose the right size for the workloads that you plan to run.
+Virtuálisgép-méretezési jelentős hatással van a teljes Azure költségeit. Szükséges Azure-beli virtuális gépek számát előfordulhat, hogy nem felel meg egy magnak mi jelenleg telepített egy helyszíni adatközpontban. Győződjön meg arról, hogy a válassza ki a futtatni kívánt számítási feladatokhoz megfelelő méretű.
 
-For more information, see [Azure IaaS: proper sizing and cost](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
+További információt az [Azure IaaS: megfelelő méretezéssel és a költséghatékonysággal](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/)foglalkozó témakörben talál.
 
-### <a name="use-purchase-discounts"></a>Use purchase discounts
+### <a name="use-purchase-discounts"></a>Vásárlás kedvezmények használata
 
-Azure has many discounts that your organization should take advantage of to save money.
+Az Azure rendelkezik számos kedvezményeket, amellyel a szervezet előnyeit, pénzt takaríthat meg.
 
-#### <a name="azure-reservations"></a>Azure Reservations
+#### <a name="azure-reservations"></a>Az Azure-foglalások
 
-Azure Reservations allow you to prepay for one-year or three-years of virtual machine or SQL Database compute capacity. Pre-paying will allow you to get a discount on the resources you use. Azure reservations can significantly reduce your virtual machine or SQL database compute costs — up to 72 percent on pay-as-you-go prices with one-year or three-year upfront commitment. A Reservations számlázási kedvezményt nyújt, és nincs hatással a virtuális gép vagy az SQL Database-adatbázisok futtatási állapotára.
+Azure foglalások engedélyezése, hogy fizessen elő az egyéves vagy hároméves virtuális gép vagy SQL-adatbázis a számítási kapacitást. Előre kell fizetnie kedvezményt szeretne kapni a használt erőforrások tehetőek. Az Azure-foglalások jelentősen csökkentheti a virtuális gép vagy SQL-adatbázis számítási költségeket – akár 72 %-a – egyéves vagy hároméves előzetes kötelezettségvállalás, használatalapú fizetéssel. foglalások számlázási engedményt adja meg, és a virtuális gépek vagy az SQL Database-adatbázisok futási állapotát nem befolyásolják.
 
-For more information, see [What are Azure Reservations?](../billing/billing-save-compute-costs-reservations.md).
+További információ: [Mi a Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)
 
-#### <a name="use-azure-hybrid-benefit"></a>Használja az Azure Hybrid Benefitet
+#### <a name="use-azure-hybrid-benefit"></a>Az Azure Hybrid Benefit
 
-If you already have Windows Server or SQL Server licenses in your on-premises deployments, you can use the Azure Hybrid Benefit program to save in Azure. A Windows Server előnyei közé tartozik, hogy minden licenc magában foglalja az operációs rendszer költségét (legfeljebb két virtuális géphez), és csak az alap számítási költségeket kell kifizetnie. A meglévő SQL Server-licenccel akár 55%-ot is megtakaríthat a virtuálismag-alapú SQL Database-lehetőségek költségéből. Ilyen például az Azure Virtual Machinesben az SQL Server és az SQL Server Integration Services.
+Ha már rendelkezik Windows Server vagy SQL Server-licenceivel a helyszíni központi telepítések, használhatja az Azure Hybrid Benefit program mentése az Azure-ban. A Windows Server az értékelemmel minden egyes licenc fedezi az operációs rendszer (akár két virtuális gép) költségeit, és számítási csak kell fizetnie. Meglévő SQL Server-licencek használatával akár megtakarítást 55 a Virtuálismag-alapú SQL Database beállításai. az Azure Virtual Machines és az SQL Server Integration Services a lehetőségek között az SQL Server.
 
-For more information, see [Azure Hybrid Benefit savings calculator](https://azure.microsoft.com/pricing/hybrid-benefit/).
+További információ: [Azure Hybrid Benefit megtakarítási kalkulátor](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-### <a name="other-resources"></a>Egyéb háttéranyagok
+### <a name="other-resources"></a>Egyéb erőforrások
 
-Azure also has a service that allows you to build services that take advantage of surplus capacity in Azure for reduced rates. For more information, see [Use low priority VMs with Batch](../batch/batch-low-pri-vms.md).
+Azure-szolgáltatás, amely lehetővé teszi, hogy igénybe többletkapacitását az Azure kedvezményes szolgáltatásokat is tartalmaz. További információ: [alacsony prioritású virtuális gépek használata a Batch használatával](../batch/batch-low-pri-vms.md).
 
-## <a name="next-steps"></a>Következő lépések
-- If you're new to Cost Management, read [What is Azure Cost Management?](overview-cost-mgt.md) to learn how it helps monitor and control Azure spending and to optimize resource use.
+## <a name="next-steps"></a>További lépések
+- Ha még nem Cost Management, olvassa el a [Mi a Azure Cost Management?](overview-cost-mgt.md) című témakört, amelyből megtudhatja, hogyan segíti az Azure-kiadások monitorozását és szabályozását, valamint az erőforrások használatának optimalizálását.

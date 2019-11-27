@@ -147,7 +147,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Nem      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `offerType`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -165,7 +165,7 @@ Futtassa az alábbi [New-AzSubscription](/powershell/module/az.subscription) par
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Nem      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `OfferType`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -186,7 +186,7 @@ Futtassa az az [Account Create](/cli/azure/ext/subscription/account?view=azure-c
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nem      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `offer-type`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -337,7 +337,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Igen      | Sztring | Az előfizetés megjelenített neve.|
 | `billingProfileId`   | Igen      | Sztring | Az előfizetés díjainak számlázására szolgáló számlázási profil azonosítója.  |
@@ -502,7 +502,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Igen      | Sztring | Az előfizetés megjelenített neve.|
 | `skuId` | Igen      | Sztring | Az Azure-csomag SKU-azonosítója. *0,001* használata Microsoft Azure csomag típusú előfizetésekhez |
@@ -510,7 +510,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 
 A válaszban egy `subscriptionCreationResult` objektumot kap a figyeléshez. Az előfizetés létrehozása után a `subscriptionCreationResult` objektum egy `subscriptionLink` objektumot ad vissza, amely az előfizetés-AZONOSÍTÓval rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha például egy Nagyvállalati Szerződés (EA) előfizetést .NET használatával kíván létrehozni, tekintse [meg a mintakód a githubon](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)című témakört.
 * Most, hogy létrehozott egy előfizetést, megadhatja ezt a lehetőséget más felhasználóknak és egyszerű szolgáltatásoknak. További információ: [hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)](grant-access-to-create-subscription.md).

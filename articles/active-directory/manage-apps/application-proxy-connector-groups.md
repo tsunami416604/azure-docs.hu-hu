@@ -34,15 +34,15 @@ Minden Application Proxy connector hozzá van rendelve egy összekötőcsoportho
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az összekötők csoport, győződjön meg arról, hogy rendelkezik [több összekötő telepítve](application-proxy-add-on-premises-application.md). Egy új összekötő a telepítéskor automatikusan bekerül a **alapértelmezett** összekötőcsoport.
+Az összekötők csoportosításához meg kell győződnie arról, hogy [több összekötőt telepített](application-proxy-add-on-premises-application.md). Új összekötő telepítésekor automatikusan csatlakozik az **alapértelmezett** összekötő-csoporthoz.
 
 ## <a name="create-connector-groups"></a>Összekötő-csoportok létrehozása
 
 Ezen lépések összekötő csoportok létrehozásához.
 
 1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**.
-1. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
+1. Válassza **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**elemet.
+1. Válassza az **új összekötő csoport**lehetőséget. Az új Összekötőcsoport panel jelenik meg.
 
    ![Megjeleníti az új összekötő csoport kiválasztására szolgáló képernyőt](./media/application-proxy-connector-groups/new-group.png)
 
@@ -53,9 +53,9 @@ Ezen lépések összekötő csoportok létrehozásához.
 
 Használja ezeket a lépéseket, már közzétett minden alkalmazáshoz az alkalmazásproxy használatával. Először tegye közzé azt, vagy használhatja ezeket a lépéseket, ha azt szeretné, a-hozzárendelés módosítása egy összekötőcsoporthoz alkalmazás rendelhet hozzá.
 
-1. Válassza ki a kezelési irányítópult a címtáron, **vállalati alkalmazások** > **minden alkalmazás** > az alkalmazás egy összekötőcsoporthoz hozzárendelni kívánt > **Alkalmazásproxy**.
-1. Használja a **Összekötőcsoport** legördülő menüre, és válassza ki a csoportot, a használni kívánt alkalmazást.
-1. Válassza ki **mentése** a módosítás alkalmazására.
+1. A címtár felügyeleti irányítópultján válassza a **vállalati alkalmazások** lehetőséget > **minden** alkalmazás > az > **alkalmazásproxy**-összekötőhöz hozzárendelni kívánt alkalmazást.
+1. Az **összekötő csoport** legördülő menüjéből válassza ki azt a csoportot, amelyet használni szeretne az alkalmazáshoz.
+1. A módosítás alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="use-cases-for-connector-groups"></a>Összekötőcsoportok alkalmazási helyzetei
 
@@ -126,7 +126,7 @@ Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B val�
 
 ![Példa 2 adatközpontot és 2 összekötőt tartalmazó vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
+* [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)

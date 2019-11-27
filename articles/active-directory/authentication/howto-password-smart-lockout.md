@@ -1,6 +1,6 @@
 ---
-title: Preventing attacks using smart lockout - Azure Active Directory
-description: Azure Active Directory smart lockout helps protect your organization from brute-force attacks trying to guess passwords
+title: Támadások megelőzése az intelligens zárolás használatával – Azure Active Directory
+description: A Azure Active Directory Smart zárolásával megvédheti szervezetét a jelszavak kitalálása céljából indított támadásokkal szemben.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,72 +18,72 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381533"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory smart lockout
+# <a name="azure-active-directory-smart-lockout"></a>Intelligens zárolás Azure Active Directory
 
-Smart lockout assists in locking out bad actors who are trying to guess your users’ passwords or use brute-force methods to get in. It can recognize sign-ins coming from valid users and treat them differently than ones of attackers and other unknown sources. Smart lockout locks out the attackers, while letting your users continue to access their accounts and be productive.
+Az intelligens zárolás segíti a felhasználók jelszavainak kiszűrését, illetve a találgatásos kényszerítési módszerek használatát. Felismeri az érvényes felhasználóktól érkező bejelentkezéseket, és a támadók és más ismeretlen forrásoktól eltérően kezeli őket. Az intelligens zárolás kizárja a támadókat, miközben lehetővé teszi, hogy a felhasználók továbbra is hozzáférjenek a fiókjához, és hatékonyak legyenek.
 
-By default, smart lockout locks the account from sign-in attempts for one minute after 10 failed attempts. The account locks again after each subsequent failed sign-in attempt, for one minute at first and longer in subsequent attempts.
+Alapértelmezés szerint az intelligens zárolás 10 sikertelen kísérlet után egy percen belül zárolja a fiókot a bejelentkezési kísérletekből. A fiók minden további sikertelen bejelentkezési kísérlet után ismét zárolja a műveletet, és a későbbi próbálkozások során egy percen belül megszakad.
 
-Smart lockout tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout.
+Az intelligens zárolási szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását.
 
  > [!NOTE]
- > Hash tracking functionality is not available for customers with pass-through authentication enabled as authentication happens on-premises not in the cloud.
+ > A kivonatoló követés funkció nem érhető el olyan ügyfelek esetében, amelyeknél engedélyezve van az átmenő hitelesítés, mert a hitelesítés a helyszínen nem a felhőben történik.
 
-Federated deployments using AD FS 2016 and AF FS 2019 can enable similar benefits using [AD FS Extranet Lockout and Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
+A AD FS 2016-es és AF FS 2019-et használó összevont telepítések a [AD FS extranetes zárolás és az extranetes intelligens zárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)használatával is engedélyezhetik a hasonló előnyöket.
 
-Smart lockout is always on for all Azure AD customers with these default settings that offer the right mix of security and usability. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+Az intelligens zárolás mindig az összes Azure AD-ügyfélre vonatkozik, ezekkel az alapértelmezett beállításokkal a biztonság és a használhatóság megfelelő kombinációját kínálja. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
 
-Using smart lockout does not guarantee that a genuine user will never be locked out. When smart lockout locks a user account, we try our best to not lockout the genuine user. The lockout service attempts to ensure that bad actors can’t gain access to a genuine user account.  
+Az intelligens zárolás használata nem garantálja, hogy egy valódi felhasználó soha nem lesz zárolva. Amikor az intelligens zárolás zárol egy felhasználói fiókot, igyekszünk a legjobbat választani, hogy ne zárolja a valódi felhasználót. A zárolási szolgáltatás megkísérli biztosítani, hogy a rossz szereplők ne férhessenek hozzá valódi felhasználói fiókhoz.  
 
-* Each Azure Active Directory data center tracks lockout independently. A user will have (threshold_limit * datacenter_count) number of attempts, if the user hits each data center.
-* Smart Lockout uses familiar location vs unfamiliar location to differentiate between a bad actor and the genuine user. Unfamiliar and familiar locations will both have separate lockout counters.
+* Az egyes Azure Active Directory adatközpontok egymástól függetlenül figyelik a zárolást. A felhasználók (threshold_limit * datacenter_count) száma sikertelen lesz, ha a felhasználó eléri az egyes adatközpontokat.
+* Az intelligens zárolás ismerős helyet és ismeretlen helyet használ a rossz színész és a valódi felhasználó közötti különbségtételhez. A nem ismerős és ismerős helyszínek külön zárolási számlálókkal is rendelkeznek.
 
-Smart lockout can be integrated with hybrid deployments, using password hash sync or pass-through authentication to protect on-premises Active Directory accounts from being locked out by attackers. By setting smart lockout policies in Azure AD appropriately, attacks can be filtered out before they reach on-premises Active Directory.
+Az intelligens zárolás integrálható hibrid környezetekkel, jelszó-kivonatolási szinkronizálással vagy átmenő hitelesítéssel, hogy megvédje a helyszíni Active Directory fiókokat a támadók számára. Ha intelligens zárolási szabályzatokat állít be az Azure AD-ben, akkor a támadások kiszűrhetők a helyszíni Active Directory elérése előtt.
 
-When using [pass-through authentication](../hybrid/how-to-connect-pta.md), you need to make sure that:
+[Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)használatakor meg kell győződnie arról, hogy:
 
-* The Azure AD lockout threshold is **less** than the Active Directory account lockout threshold. Set the values so that the Active Directory account lockout threshold is at least two or three times longer than the Azure AD lockout threshold. 
-* The Azure AD lockout duration must be set longer than the Active Directory reset account lockout counter after duration. Be aware that the Azure AD duration is set in seconds, while the AD duration is set in minutes. 
+* Az Azure AD zárolási küszöbértéke **kisebb** , mint az Active Directory fiókzárolás küszöbértéke. Állítsa be úgy az értékeket, hogy a Active Directory fiókzárolás küszöbértéke legalább kettő vagy háromszor hosszabb legyen, mint az Azure AD zárolási küszöbértéke. 
+* Az Azure AD zárolási időtartamának hosszabbnak kell lennie, mint a fiókzárolás visszavonása Active Directory az időtartam után. Vegye figyelembe, hogy az Azure AD időtartama másodpercben van megadva, míg az AD időtartama percben van megadva. 
 
-For example, if you want your Azure AD counter to be higher than AD, then Azure AD would be 120 seconds (2 minutes) while your on-premises AD is set to 1 minute (60 seconds).
+Ha például azt szeretné, hogy az Azure AD-számlálója nagyobb legyen, mint az AD, akkor az Azure AD 120 másodperc (2 perc), míg a helyszíni AD 1 percre (60 másodpercre) van beállítva.
 
 > [!IMPORTANT]
-> Currently, an administrator can't unlock the users' cloud accounts if they have been locked out by the Smart Lockout capability. The administrator must wait for the lockout duration to expire. However, the user can unlock by using self-service password reset (SSPR) from a trusted device or location.
+> Jelenleg a rendszergazda nem tudja feloldani a felhasználók felhőalapú fiókjait, ha azokat az intelligens zárolási funkció kizárta. A rendszergazdának várnia kell, amíg lejár a zárolás időtartama. A felhasználó azonban az önkiszolgáló jelszó-visszaállítás (SSPR) használatával egy megbízható eszközről vagy helyről oldhatja fel a zárolást.
 
-## <a name="verify-on-premises-account-lockout-policy"></a>Verify on-premises account lockout policy
+## <a name="verify-on-premises-account-lockout-policy"></a>Helyszíni fiókzárolási házirend ellenőrzése
 
-Use the following instructions to verify your on-premises Active Directory account lockout policy:
+A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez kövesse az alábbi utasításokat:
 
-1. Open the Group Policy Management tool.
-2. Edit the group policy that includes your organization's account lockout policy, for example, the **Default Domain Policy**.
-3. Browse to **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Account Policies** > **Account Lockout Policy**.
-4. Verify your **Account lockout threshold** and **Reset account lockout counter after** values.
+1. Nyissa meg a Csoportházirend felügyeleti eszközt.
+2. Szerkessze a szervezet fiókzárolási házirendjét (például az **alapértelmezett tartományi házirendet**) tartalmazó csoportházirendet.
+3. Tallózással keresse meg a **Számítógép konfigurációja** > **házirendek** > a **Windows beállításai** > **biztonsági beállítások** > **fiókházirend** > **fiókzárolási házirend**.
+4. Ellenőrizze a fiókzárolás **küszöbértékét** , és **állítsa alaphelyzetbe a fiókzárolás számlálóját** az értékek után.
 
-![Modify the on-premises Active Directory account lockout policy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![A helyszíni Active Directory fiókzárolási házirend módosítása](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
-## <a name="manage-azure-ad-smart-lockout-values"></a>Manage Azure AD smart lockout values
+## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD intelligens zárolási értékek kezelése
 
-Based on your organizational requirements, smart lockout values may need to be customized. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárolási értékeket testre kell szabni. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
 
-To check or modify the smart lockout values for your organization, use the following steps:
+A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Search for and select *Azure Active Directory*. Select **Authentication methods** > **Password protection**.
-1. Set the **Lockout threshold**, based on how many failed sign-ins are allowed on an account before its first lockout. The default is 10.
-1. Set the **Lockout duration in seconds**, to the length in seconds of each lockout. The default is 60 seconds (one minute).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **hitelesítési módszerek** > a **jelszavas védelem**lehetőséget.
+1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
+1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
 
 > [!NOTE]
-> If the first sign-in after a lockout also fails, the account locks out again. If an account locks repeatedly, the lockout duration increases.
+> Ha az első bejelentkezés a zárolás után is meghiúsul, a fiók ismét leáll. Ha egy fiók többször is zárolva van, a zárolás időtartama növekszik.
 
-![Customize the Azure AD smart lockout policy in the Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+![Az Azure AD intelligens zárolási szabályzatának testreszabása a Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>How to determine if the Smart lockout feature is working or not
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Hogyan állapítható meg, hogy az intelligens zárolási funkció működik-e
 
-When the smart lockout threshold is triggered, you will get the following message while the account is locked:
+Az intelligens zárolási küszöbérték kiváltása esetén a következő üzenet jelenik meg a fiók zárolásakor:
 
-**Your account is temporarily locked to prevent unauthorized use. Try again later, and if you still have trouble, contact your admin.**
+**A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Find out how to ban bad passwords in your organization using Azure AD.](howto-password-ban-bad.md)
-* [Configure self-service password reset to allow users to unlock their own accounts.](quickstart-sspr.md)
+* [Ismerje meg, hogyan tilthatja be a hibás jelszavakat a szervezetben az Azure AD használatával.](howto-password-ban-bad.md)
+* [Az önkiszolgáló jelszó-visszaállítás konfigurálásával engedélyezheti a felhasználóknak a saját fiókjaik feloldását.](quickstart-sspr.md)

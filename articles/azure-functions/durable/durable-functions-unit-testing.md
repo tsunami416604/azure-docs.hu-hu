@@ -1,6 +1,6 @@
 ---
-title: Azure Durable Functions unit testing
-description: Learn how to unit test Durable Functions.
+title: Azure Durable Functions-egység tesztelése
+description: Ismerje meg, hogyan lehet a test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
@@ -10,28 +10,28 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231225"
 ---
-# <a name="durable-functions-unit-testing"></a>Durable Functions unit testing
+# <a name="durable-functions-unit-testing"></a>Durable Functions egység tesztelése
 
-Unit testing is an important part of modern software development practices. Unit tests verify business logic behavior and protect from introducing unnoticed breaking changes in the future. Durable Functions can easily grow in complexity so introducing unit tests will help to avoid breaking changes. The following sections explain how to unit test the three function types - Orchestration client, orchestrator, and activity functions.
+Az egység tesztelése a modern szoftverfejlesztési eljárások fontos részét képezi. Az egység-tesztek ellenőrzik az üzleti logikát és a védelemtől való megfelelést, és a jövőben nem figyelt feltörési változásokat jelentenek. A Durable Functions könnyedén növelheti a bonyolultságot, így az egységek tesztelésének bevezetésével elkerülhető a változások megszakítása. A következő szakaszokban bemutatjuk, hogyan kell tesztelni a három függvényt – a-összehangoló ügyfelet, a Orchestrator és a tevékenységi funkciókat.
 
 > [!NOTE]
-> This article provides guidance for unit testing for Durable Functions apps targeting Durable Functions 1.x. It has not yet been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Ez a cikk útmutatást nyújt az Durable Functions alkalmazások Durable Functions 1. x célra való célzásához. Még nem frissült a Durable Functions 2. x verzióban bevezetett változások miatt. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The examples in this article require knowledge of the following concepts and frameworks:
+A cikkben szereplő példák a következő fogalmakat és keretrendszerek ismeretét igénylik:
 
 * Egységtesztelés
 
 * Tartós függvények
 
-* [xUnit](https://xunit.github.io/) - Testing framework
+* [xUnit](https://xunit.github.io/) – tesztelési keretrendszer
 
-* [moq](https://github.com/moq/moq4) - Mocking framework
+* [MOQ](https://github.com/moq/moq4) -modellezési keretrendszer
 
-## <a name="base-classes-for-mocking"></a>Base classes for mocking
+## <a name="base-classes-for-mocking"></a>A modellezés alaposztályai
 
-Mocking is supported via three abstract classes in Durable Functions 1.x:
+A kigúnyolás a Durable Functions 1. x három absztrakt osztályán keresztül támogatott:
 
 * `DurableOrchestrationClientBase`
 
@@ -39,29 +39,29 @@ Mocking is supported via three abstract classes in Durable Functions 1.x:
 
 * `DurableActivityContextBase`
 
-These classes are base classes for `DurableOrchestrationClient`, `DurableOrchestrationContext`, and `DurableActivityContext` that define Orchestration Client, Orchestrator, and Activity methods. The mocks will set expected behavior for base class methods so the unit test can verify the business logic. There is a two-step workflow for unit testing the business logic in the Orchestration Client and Orchestrator:
+Ezek az osztályok `DurableOrchestrationClient`, `DurableOrchestrationContext`és `DurableActivityContext` alaposztályai, amelyek a Orchestrator és a tevékenységi módszereket határozzák meg. A kigúnyolja az alaposztály-metódusok várt viselkedését állítja be, így az egység tesztelése ellenőrizheti az üzleti logikát. Az egység kétlépéses munkafolyamata az üzleti logikát teszteli az összehangoló ügyfélben és a Orchestrator:
 
-1. Use the base classes instead of the concrete implementation when defining orchestration client and orchestrator function signatures.
-2. In the unit tests mock the behavior of the base classes and verify the business logic.
+1. Az alaposztályok használata a konkrét implementáció helyett az előkészítési ügyfél és a Orchestrator függvény aláírásának meghatározásakor.
+2. A Unit-tesztek során az alaposztályok viselkedését és az üzleti logikát kell ellenőrizni.
 
-Find more details in the following paragraphs for testing functions that use the orchestration client binding and the orchestrator trigger binding.
+A következő bekezdésekben talál további részleteket az előkészítési ügyfél kötését és a Orchestrator trigger kötést használó függvények teszteléséhez.
 
-## <a name="unit-testing-trigger-functions"></a>Unit testing trigger functions
+## <a name="unit-testing-trigger-functions"></a>Unit Testing trigger functions
 
-In this section, the unit test will validate the logic of the following HTTP trigger function for starting new orchestrations.
+Ebben a szakaszban az egység tesztelése ellenőrzi a következő HTTP-trigger függvény logikáját az új előkészítések elindításához.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-The unit test task will be to verify the value of the `Retry-After` header provided in the response payload. So the unit test will mock some of `DurableOrchestrationClientBase` methods to ensure predictable behavior.
+Az egység teszt feladata a válasz adattartalomban megadott `Retry-After` fejléc értékének ellenőrzése. Így az egység tesztelése kigúnyol néhány `DurableOrchestrationClientBase` módszert a kiszámítható működés biztosítása érdekében.
 
-First, a mock of the base class is required, `DurableOrchestrationClientBase`. The mock can be a new class that implements `DurableOrchestrationClientBase`. However, using a mocking framework like [moq](https://github.com/moq/moq4) simplifies the process:
+Először is szükség van az alaposztály mintájának kiírására, `DurableOrchestrationClientBase`. A modell lehet egy új osztály, amely megvalósítja `DurableOrchestrationClientBase`. Azonban a [MOQ](https://github.com/moq/moq4) , például a következő modellezési keretrendszer használatával egyszerűsíti a folyamatot:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Then `StartNewAsync` method is mocked to return a well-known instance ID.
+Ezután `StartNewAsync` metódust egy jól ismert példány AZONOSÍTÓjának visszaadására.
 
 ```csharp
     // Mock StartNewAsync method
@@ -70,7 +70,7 @@ Then `StartNewAsync` method is mocked to return a well-known instance ID.
         ReturnsAsync(instanceId);
 ```
 
-Next `CreateCheckStatusResponse` is mocked to always return an empty HTTP 200 response.
+A következő `CreateCheckStatusResponse` a rendszer kigúnyolja, hogy mindig üres HTTP 200 választ ad vissza.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -87,14 +87,14 @@ Next `CreateCheckStatusResponse` is mocked to always return an empty HTTP 200 re
         });
 ```
 
-`ILogger` is also mocked:
+a `ILogger` a következőket is kigúnyolja:
 
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
 ```  
 
-Now the `Run` method is called from the unit test:
+Most a `Run` metódust kell meghívni az egység tesztből:
 
 ```csharp
     // Call Orchestration trigger function
@@ -109,7 +109,7 @@ Now the `Run` method is called from the unit test:
         loggerMock.Object);
  ```
 
- The last step is to compare the output with the expected value:
+ Az utolsó lépés a kimenet összehasonlítása a várt értékkel:
 
 ```csharp
     // Validate that output is not null
@@ -119,25 +119,25 @@ Now the `Run` method is called from the unit test:
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-After combining all steps, the unit test will have the following code:
+Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
-## <a name="unit-testing-orchestrator-functions"></a>Unit testing orchestrator functions
+## <a name="unit-testing-orchestrator-functions"></a>Unit Testing Orchestrator functions
 
-Orchestrator functions are even more interesting for unit testing since they usually have a lot more business logic.
+A Orchestrator függvények még érdekesebbek az egység tesztelése során, mivel általában sokkal több üzleti logikával rendelkeznek.
 
-In this section the unit tests will validate the output of the `E1_HelloSequence` Orchestrator function:
+Ebben a szakaszban az egység tesztek ellenőrzik a `E1_HelloSequence` Orchestrator függvény kimenetét:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-The unit test code will start with creating a mock:
+Az egység tesztelési kódja a modell létrehozásával kezdődik:
 
 ```csharp
     var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
 ```
 
-Then the activity method calls will be mocked:
+Ezt követően a tevékenység metódusának hívásait a rendszer kigúnyolja:
 
 ```csharp
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
@@ -145,13 +145,13 @@ Then the activity method calls will be mocked:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Next the unit test will call `HelloSequence.Run` method:
+Ezután az egység tesztelése `HelloSequence.Run` metódust hív meg:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
-And finally the output will be validated:
+Végül a rendszer érvényesíti a kimenetet:
 
 ```csharp
     Assert.Equal(3, result.Count);
@@ -160,25 +160,25 @@ And finally the output will be validated:
     Assert.Equal("Hello London!", result[2]);
 ```
 
-After combining all steps, the unit test will have the following code:
+Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
 
-## <a name="unit-testing-activity-functions"></a>Unit testing activity functions
+## <a name="unit-testing-activity-functions"></a>Unit Testing Activity functions
 
-Activity functions can be unit tested in the same way as non-durable functions.
+A Activity functions olyan egységként is tesztelhető, mint a nem tartós függvények.
 
-In this section the unit test will validate the behavior of the `E1_SayHello` Activity function:
+Ebben a szakaszban az egység tesztelése ellenőrzi a `E1_SayHello` Activity függvény viselkedését:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-And the unit tests will verify the format of the output. The unit tests can use the parameter types directly or mock `DurableActivityContextBase` class:
+Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy a `DurableActivityContextBase` osztályhoz tartozó paraméterek használatát vehetik igénybe:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn more about xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [További információ a xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
 > 
-> [Learn more about moq](https://github.com/Moq/moq4/wiki/Quickstart)
+> [További információ a MOQ](https://github.com/Moq/moq4/wiki/Quickstart)

@@ -1,6 +1,6 @@
 ---
-title: Understand the Windows agent check results in Azure Update Management
-description: Learn how to troubleshoot issues with the Update Management agent.
+title: A Windows-ügynök ellenőrzési eredményeinek ismertetése az Azure Update Management
+description: Ismerje meg, az Update Management ügynökkel kapcsolatos problémák elhárítása.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -16,100 +16,100 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480788"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Understand the Windows agent check results in Update Management
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows-ügynök ellenőrzési eredményeinek ismertetése Update Management
 
-There may be many reasons your machine isn't showing **Ready** in Update Management. In Update Management, you can check the health of a Hybrid Worker agent to determine the underlying problem. This article discusses how to run the troubleshooter for Azure machines from the Azure portal and Non-Azure machines in the [offline scenario](#troubleshoot-offline).
+Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 
-The following list are the three readiness states a machine can be in:
+A következő lista az alábbi három felkészültségi állapotot tartalmazza:
 
-* **Ready** - The update agent is deployed and was last seen less than 1 hour ago.
-* **Disconnected** -  The update agent is deployed and was last seen over 1 hour ago.
-* **Not configured** -  The update agent isn't found or hasn't finished onboarding.
-
-> [!NOTE]
-> There may be a slight delay between what the Azure portal shows and the current state of the machine.
-
-## <a name="start-the-troubleshooter"></a>Start the troubleshooter
-
-For Azure machines, clicking the **Troubleshoot** link under the **Update Agent Readiness** column in the portal launches the **Troubleshoot Update Agent** page. For Non-Azure machines, the link brings you to this article. See the [offline instructions](#troubleshoot-offline) to troubleshoot a Non-Azure machine.
-
-![Update management list of virtual machines](../media/update-agent-issues/vm-list.png)
+* **Készen áll** a frissítési ügynök üzembe helyezésére, és legalább 1 órával ezelőtt volt látható.
+* **Leválasztva** – a frissítési ügynök üzembe helyezése megtörtént, és a rendszer a legutóbbi 1 órával ezelőtt volt látható.
+* **Nincs konfigurálva** – a frissítési ügynök nem található, vagy nem fejeződött be.
 
 > [!NOTE]
-> To check the health of an agent, the VM must be running. If the VM isn't running, a **Start the VM** button appears.
+> A Azure Portal és a gép aktuális állapota között enyhe késés fordulhat elő.
 
-On the **Troubleshoot Update Agent** page, select **Run checks** to start the troubleshooter. The troubleshooter uses [Run Command](../../virtual-machines/windows/run-command.md) to run a script on the machine to verify agent dependencies. When the troubleshooter is finished, it returns the result of the checks.
+## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
-![Troubleshoot Update Agent page](../media/update-agent-issues/troubleshoot-page.png)
+Az Azure-gépek esetében a portál **frissítési ügynök készültsége** oszlopának **hibakeresés** hivatkozására kattintva elindítja az **ügynök frissítése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
 
-Results are shown on the page when they're ready. The checks sections show what's included in each check.
+![Virtuális gépek felügyeleti listájának frissítése](../media/update-agent-issues/vm-list.png)
 
-![Troubleshoot Update Agent checks](../media/update-agent-issues/update-agent-checks.png)
+> [!NOTE]
+> Egy ügynök állapotának vizsgálatához a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik a **virtuális gép indítása** gomb.
 
-## <a name="prerequisite-checks"></a>Prerequisite checks
+Az **ügynök frissítése** lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen az ügynök függőségeinek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
+
+![Az ügynök frissítése lap – problémamegoldás](../media/update-agent-issues/troubleshoot-page.png)
+
+Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések szakaszban látható, hogy mi szerepel az egyes ellenőrzésekben.
+
+![Frissítési ügynök ellenőrzésének hibáinak megoldása](../media/update-agent-issues/update-agent-checks.png)
+
+## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-The operating system check verifies whether the Hybrid Runbook Worker is running one of these operating systems:
+Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó fut-e az alábbi operációs rendszerek valamelyikén:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2008 R2 RTM, Windows Server 2008 | Supports only update assessments.         |
-|Windows Server 2008 R2 SP1 and later |.NET Framework 4.6 or later is required. ([Download the .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 is required.  ([Download Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 RTM, Windows Server 2008 | A csak a frissítési felméréseket támogatja.         |
+|Windows Server 2008 R2 SP1 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-462"></a>.NET 4.6.2
+### <a name="net-462"></a>.NET-4.6.2
 
-The .NET Framework check verifies that the system has a minimum of [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) installed.
+A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszer legalább a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) telepítve van-e.
 
-### <a name="wmf-51"></a>WMF 5.1
+### <a name="wmf-51"></a>WMF 5,1
 
-The WMF check verifies that the system has the required version of the Windows Management Framework (WMF) - [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616).
+A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával ( [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)).
 
-### <a name="tls-12"></a>TLS 1.2
+### <a name="tls-12"></a>TLS 1,2
 
-This check determines whether you're using TLS 1.2 to encrypt your communications. TLS 1.0 is no longer supported by the platform. We recommend that clients use TLS 1.2 to communicate with Update Management.
+Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. Javasoljuk, hogy az ügyfelek a TLS 1,2-et használják a Update Management való kommunikációhoz.
 
-## <a name="connectivity-checks"></a>Connectivity checks
+## <a name="connectivity-checks"></a>Kapcsolat ellenőrzése
 
-### <a name="registration-endpoint"></a>Registration endpoint
+### <a name="registration-endpoint"></a>Regisztrációs végpont
 
-This check determines whether the agent can properly communicate with the agent service.
+Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni az ügynök szolgáltatással.
 
-Proxy and firewall configurations must allow the Hybrid Runbook Worker agent to communicate with the registration endpoint. For a list of addresses and ports to open, see [Network planning for Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="operations-endpoint"></a>Operations endpoint
+### <a name="operations-endpoint"></a>Műveletek végpont
 
-This check determines whether the agent can properly communicate with the Job Runtime Data Service.
+Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
 
-Proxy and firewall configurations must allow the Hybrid Runbook Worker agent to communicate with the Job Runtime Data Service. For a list of addresses and ports to open, see [Network planning for Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy és a tűzfal beállításait a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladat modul Data Service lehetővé teszi. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
-## <a name="vm-service-health-checks"></a>VM service health checks
+## <a name="vm-service-health-checks"></a>Virtuálisgép-szolgáltatás állapotának ellenőrzése
 
-### <a name="monitoring-agent-service-status"></a>Monitoring agent service status
+### <a name="monitoring-agent-service-status"></a>Figyelési ügynök szolgáltatásának állapota
 
-This check determines whether `HealthService`, the Microsoft Monitoring Agent, is running on the machine.
+Ez az ellenőrzés meghatározza, hogy a számítógépen fut-e a `HealthService`, a Microsoft monitoring Agent.
 
-To learn more about troubleshooting the service, see [The Microsoft Monitoring Agent is not running](hybrid-runbook-worker.md#mma-not-running).
+Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a Microsoft monitoring Agent nem fut](hybrid-runbook-worker.md#mma-not-running).
 
-To reinstall the Microsoft Monitoring Agent, see [Install and configure the Microsoft Monitoring Agent](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+A Microsoft monitoring Agent újratelepítéséhez tekintse meg [a Microsoft monitoring Agent telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
 
-### <a name="monitoring-agent-service-events"></a>Monitoring agent service events
+### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatási eseményei
 
-This check determines whether any `4502` events appear in the Azure Operations Manager log on the machine in the past 24 hours.
+Ez az érték határozza meg, hogy minden `4502` esemény megjelenik-e az Azure Operations Manager a gépen az elmúlt 24 órában.
 
-To learn more about this event, see the [troubleshooting guide](hybrid-runbook-worker.md#event-4502) for this event.
+Az eseménnyel kapcsolatos további tudnivalókért tekintse meg az esemény [hibaelhárítási útmutatóját](hybrid-runbook-worker.md#event-4502) .
 
-## <a name="access-permissions-checks"></a>Access permissions checks
+## <a name="access-permissions-checks"></a>Hozzáférési engedélyek ellenőrzése
 
-### <a name="machinekeys-folder-access"></a>MachineKeys folder access
+### <a name="machinekeys-folder-access"></a>Következő
 
-The Crypto folder access check determines whether the Local System Account has access to C:\ProgramData\Microsoft\Crypto\RSA.
+A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a helyi rendszerfiók hozzáfér-e a C:\ProgramData\Microsoft\Crypto\RSA.
 
-## <a name="troubleshoot-offline"></a>Troubleshoot offline
+## <a name="troubleshoot-offline"></a>Offline hibák
 
-You can use the troubleshooter on a Hybrid Runbook Worker offline by running the script locally. You can get the script,  [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), in the PowerShell Gallery. You must have WMF 4.0, or greater, installed to run the script. To download the latest version of PowerShell, see [Installing various versions of PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. A szkriptet, a [hibakeresést](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)és a WindowsUpdateAgentRegistration a PowerShell-galériaban érheti el. A parancsfájl futtatásához a WMF 4,0 vagy újabb rendszernek kell futnia. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
-The output of this script looks like the following example:
+A szkript kimenete a következő példához hasonlóan néz ki:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -205,5 +205,5 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Következő lépések
 
-To troubleshoot more issues with your Hybrid Runbook Workers, see [Troubleshoot Hybrid Runbook Workers](hybrid-runbook-worker.md).
+A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).
 

@@ -1,7 +1,7 @@
 ---
-title: Add entities - LUIS
+title: Entitások hozzáadása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
+description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert fullfil használja.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,179 +18,179 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383679"
 ---
-# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
+# <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez 
 
-Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
+Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert entitások adatait használja az fullfilához.
 
-The entity represents a word or phrase inside the utterance that you want extracted. Entities describe information relevant to the intent, and sometimes they are essential for your app to perform its task. You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
+Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Entitások ismertetik a leképezés kapcsolódó információk, és néha nélkülözhetetlenek az alkalmazás a feladat végrehajtásához. Entitásokat akkor hozhat létre, ha egy példa szerinti kiválasztást ad hozzá egy szándékhoz, vagy kívülről (előtte vagy utána), ha egy Kimondás kiválasztását adja hozzá egy szándékhoz.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
+## <a name="plan-entities-then-create-and-label"></a>Entitások megtervezése, majd létrehozás és címkézés
 
-Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
+A géppel megtanult entitások létrehozhatók a példa hosszúságú kimondott szöveg, vagy az **entitások** lapról hozhatók létre. 
 
-In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
+Általánosságban elmondható, hogy az entitások megtervezésével időt kell fordítani ahhoz, hogy egy géppel megtanult entitást hozzanak létre a portálon. Ezután hozza létre a gép által megtanult entitást a példából, amely az alösszetevőkben és a leírókban és a megkötésekben a lehető legrészletesebben szerepel. A [dekomponálható entitás oktatóanyaga](tutorial-machine-learned-entity.md) bemutatja, hogyan használhatja ezt a módszert. 
 
-As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
+Az entitások megtervezésének részeként tudnia kell, hogy szöveg-egyeztetési entitásokra van szüksége (például előre összeépített entitások, reguláris kifejezésű entitások vagy lista entitások). Ezeket az **entitások** lapon hozhatja létre, mielőtt a címkét példaként hosszúságú kimondott szöveg. 
 
-When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
+Címkézéskor felcímkézheti az egyes entitásokat, majd felépítheti azt egy szülő géppel megtanult entitásba. Vagy elindíthat egy szülő géppel megtanult entitást, és elvégezheti a gyermek entitások kibontását. 
 
 > [!TIP] 
->Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
+>Címkézse az összes olyan szót, amely egy entitást jelezhet, még akkor is, ha a szavakat nem használják az ügyfélalkalmazás kibontásakor. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
+## <a name="creating-an-entity-before-or-with-labeling"></a>Entitás létrehozása a címkézés előtt vagy után
 
-Use the following table to understand which entities where to create or add each entity to the app. 
+Az alábbi táblázat segítségével megtudhatja, hogy mely entitások hozzanak létre vagy adjon hozzá minden entitást az alkalmazáshoz. 
 
-|Entity type|Where to create entity in the LUIS portal|
+|Entitás típusa|Hol hozható létre entitás a LUIS-portálon|
 |--|--|
-|Gépi tanulással létrejött entitás|Entities or Intent detail|
-|Listaentitás|Entities or Intent detail|
+|Gépi tanulással létrejött entitás|Entitások vagy leképezés részletei|
+|Listaentitás|Entitások vagy leképezés részletei|
 |Reguláriskifejezés-entitás|Entitások|
 |Pattern.any entitás|Entitások|
-|Prebuilt entity|Entitások|
-|Prebuilt domain entity|Entitások|
+|Előre összeállított entitások|Entitások|
+|Előre elkészített tartományi entitás|Entitások|
 
-You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
+**Az entitások lapon** hozhatja létre az összes entitást, vagy létrehozhat néhány entitást az entitás címkévé való címkézésének részeként a **leképezés részletei** lapon. Csak egy entitást lehet _címkével ellátni_ a **leképezés részletei** lapról. 
 
-## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
+## <a name="create-a-machine-learned-entity"></a>Gépi megtanult entitás létrehozása
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
+## <a name="create-a-text-matching-entity"></a>Szöveggel egyező entitás létrehozása
 
-Use text-matching entities provide several ways to extract data:
+A Text-Matching entitások használata számos módszert kínál az adatok kinyerésére:
 
-|Text-matching entities|Rendeltetés|
+|Szöveggel egyező entitások|Cél|
 |--|--|
-|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
-|Reguláriskifejezés-entitás|match text using a regular expression entity|
-|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
-|Prebuilt domain entity|match using selected subject domains|
-|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
+|[Entitás listázása](#add-list-entities-for-exact-matches)|kanonikus nevek listája a szinonimákkal együtt alternatív űrlapokként|
+|Reguláriskifejezés-entitás|szöveg egyeztetése reguláris kifejezéssel rendelkező entitás használatával|
+|[Előre elkészített entitás](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|közös adattípusok (például szám, e-mail, dátum) egyeztetése|
+|Előre elkészített tartományi entitás|egyezés a kijelölt tárgyi tartományok használatával|
+|[Minta. any](#add-a-patternany-entity)| a környező szöveggel könnyen összetéveszthető entitások egyeztetése|  
 
-Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
+Az előre elkészített entitások egyéni betanítási adatmennyiség nélkül működnek. A többi entitásnak szüksége van az ügyfél-betanítási adatok (például a lista entitás elemei) vagy egy kifejezés (például egy reguláris kifejezés vagy minta) megadására.
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
+### <a name="how-to-create-a-new-custom-entity"></a>Új egyéni entitás létrehozása
 
-1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
-1. Select **+ Create**, then select the entity type. 
-1. Continue configuring the entity then select **Create** when you are done. 
+1. A LUIS-portálon válassza a **kezelés** szakaszt, majd az **entitások** lapot. 
+1. Válassza a **+ Létrehozás**lehetőséget, majd válassza ki az entitás típusát. 
+1. Folytassa az entitás konfigurálását, majd válassza a **Létrehozás** lehetőséget, ha elkészült. 
 
-### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
+### <a name="add-list-entities-for-exact-matches"></a>Lista entitások hozzáadása a pontos egyezésekhez
 
-List entities represent a fixed, closed set of related words. While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
+Lista entitások kapcsolódó szavakat rögzített, lezárt csoportját képviselik. Amíg a szerző megváltoztathatja a listát, a LUIS nem fogja növelni vagy csökkenteni a listát. Egy meglévő List entitásba is importálhat egy [List Entity. JSON formátumú (hivatkozás-entitás-lista. MD # példa – JSON-to-import-into-List-Entity). 
 
-The following list demonstrates the canonical name and the synonyms. 
+A következő lista a kanonikus nevet és a szinonimákat mutatja be. 
 
-|Color - list item name|Color - synonyms|
+|Szín listaelem neve|Szín – szinonimák|
 |--|--|
-|Piros|crimson, blood, apple, fire-engine|
-|Kék|sky, azure, cobalt|
-|Zöld|kelly, lime|
+|Piros|Crimson, Blood, Apple, Fire-Engine|
+|Kék|égbolt, Azure, kobalt|
+|Zöld|Kelly, lime|
 
-Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
+A List entitás létrehozásához kövesse az eljárást. A lista entitás létrehozása után nem kell megadnia például a hosszúságú kimondott szöveg. A listaelemek és a szinonimák pontos szöveggel egyeznek meg. 
 
-1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
 
-1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
-1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, például `Colors`, majd a **lista**lehetőséget.
+1. Az **entitások listájának létrehozása** párbeszédpanel **új allista hozzáadása.** .. elemében adja meg a listaelem nevét, például `Green`, majd vegyen fel szinonimákat.
 
     > [!div class="mx-imgBorder"]
-    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![hozzon létre egy listát a színek listájaként az entitás részletei lapon.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. When you are finished adding list items and synonyms, select **Create**.
+1. Ha elkészült listaelemek és szinonimák hozzáadásával, válassza a **Létrehozás**elemet.
 
-    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
+    Ha végzett az alkalmazás változásainak egy csoportján, ne felejtse el **betanítani** az alkalmazást. Egyetlen módosítás után ne tanítsa az alkalmazást. 
 
     > [!NOTE]
-    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
+    > Ez az eljárás azt mutatja be, hogyan hozhat létre és címkéz fel egy lista entitást egy példa nélküli kifejezésből a **leképezés részletei** lapon. Ugyanezt az entitást is létrehozhatja az **entitások** lapon.
 
-## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
+## <a name="add-a-role-for-an-entity"></a>Szerepkör hozzáadása egy entitáshoz
 
-A role is a named subtype of an entity, based on context. 
+A szerepkör egy entitás névvel ellátott altípusa, a kontextus alapján. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Szerepkör hozzáadása a különböző kontextusok megkülönböztetéséhez
 
-In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
+A következő Kimondás során két helyen van, és mindegyiket szemantikailag, a körülötte található szavak határozzák meg, például `to` és `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
+Ebben az eljárásban hozzáadhat `origin` és `destination` szerepköröket egy előre elkészített geographyV2-entitáshoz.
 
-1. From the **Build** section, select **Entities** in the left panel.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen.
 
-1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
+1. Válassza az **+ előre összeépített entitás hozzáadása**elemet. Válassza a **geographyV2** lehetőséget, majd válassza a **kész**lehetőséget. Ezzel egy előre elkészített entitást adhat hozzá az alkalmazáshoz.
     
     Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát. 
 
-1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
-1. To add a new role, select **+** next to **No roles added**.
-1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
+1. Válassza ki az újonnan hozzáadott előre elkészített geographyV2 entitást **az entitások lap** entitások listájában. 
+1. Új szerepkör hozzáadásához válassza a **+** melletti **szerepkörök**hozzáadása lehetőséget.
+1. A **szerepkör..** . szövegmezőbe írja be a szerepkör nevét `Origin` majd írja be. Adja hozzá a második szerepkör nevét `Destination` majd írja be a nevet. 
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![a következő képernyőképet arról, hogyan adhat hozzá forrás szerepkört a Location entitáshoz](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
+    A szerepkör hozzá lett adva az előre összeépített entitáshoz, de az adott entitást használó egyik hosszúságú kimondott szöveg sincs hozzájuk adva. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Egy példa Kimondás szerepkörrel rendelkező szöveg felirata
 
-1. Go to the Intent details page, which has example utterances that use the role. 
-1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    The entity palette opens to the right. 
-
-1. Select the entity, then go to the bottom of the palette and select the role. 
+1. Ugrás a szándék részletei lapra, amely a szerepkört használó hosszúságú kimondott szöveg tartalmaz. 
+1. Ha címkével szeretne felcímkézni a szerepkört, válassza ki az entitás címkéjét (szöveg alatti folytonos vonal), majd a legördülő listából válassza ki a **Megtekintés az entitások palettán** lehetőséget. 
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    Az entitás paletta a jobb oldalon jelenik meg. 
+
+1. Válassza ki az entitást, majd lépjen a paletta aljára, és válassza ki a szerepkört. 
+
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
+## <a name="add-a-patternany-entity"></a>Minta hozzáadása bármely entitáshoz
 
-[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. This type of entity helps LUIS find the end of entities of varying length and word choice. Because this entity is used in a pattern, LUIS knows where the end of the entity is in the utterance template.
+[Minta. az](luis-concept-entity-types.md) entitások csak [mintákban](luis-how-to-model-intent-pattern.md)érvényesek, nem pedig a "példa hosszúságú kimondott szöveg". Az ilyen típusú entitás segít a LUIS-entitások különböző hossza és a word választott végén található. Ehhez az entitáshoz mintát használja, mert a LUIS tudja, ahol az entitás végén szerepel-e az utterance (kifejezés) sablont.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
+### <a name="steps-to-create-a-patternany-entity"></a>A minta létrehozásának lépései. bármely entitás
 
-1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
 
-1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
+1. Az **entitás típusának kiválasztása** párbeszédpanelen adja meg az entitás nevét a **név** mezőben, majd válassza a minta lehetőséget **. bármely** **típusnál** válassza a **Létrehozás**lehetőséget.
 
-    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
+    Miután [létrehozta a mintázatot](luis-how-to-model-intent-pattern.md) az entitás használatával, az entitást egy kombinált géppel megismert és szöveggel egyező algoritmussal kell kibontani. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Minta sablonhoz való Kimondás létrehozása mintaként. bármely entitás
 
-To use the pattern.any entity, add a pattern on the **Patterns** page, in the **Improve app performance** section, with the correct curly brace syntax, such as `Where is **{HumanResourcesFormTitle}** on the server?`.
+A minta. bármely entitás használatához vegyen fel egy mintát a **minták** lapon az **alkalmazás javítása** szakaszban, a megfelelő kapcsos zárójel szintaxissal, például `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát. 
 
-## <a name="do-not-change-entity-type"></a>Do not change entity type
+## <a name="do-not-change-entity-type"></a>Entitás típusának módosítása
 
-LUIS does not allow you to change the type of the entity because it doesn't know what to add or remove to construct that entity. In order to change the type, it is better to create a new entity of the correct type with a slightly different name. Once the entity is created, in each utterance, remove the old labeled entity name and add the new entity name. Once all the utterances have been relabeled, delete the old entity. 
+A LUIS nem engedi, hogy az entitás típusa módosítható, mert ez nem tudja, hogy melyik hozzáadása vagy eltávolítása, hogy az entitás létrehozásához. Annak érdekében, hogy módosítsa a típusát, célszerűbb a megfelelő típusú új entitás létrehozása egy kis mértékben eltérő nevű. Az entitás létrehozása után minden kimondásakor, távolítsa el a régi címkézett entitás nevét, és adja hozzá az új entitás nevét. Miután a kimondott szöveg rendelkezik lett relabeled, a régi entitás törlése. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Use prebuilt models](howto-add-prebuilt-models.md) 
+> [Előre elkészített modellek használata](howto-add-prebuilt-models.md) 
 
 További információk:
-* How to [train](luis-how-to-train.md)
-* How to [test](luis-interactive-test.md)
-* How to [publish](luis-how-to-publish-app.md)
-* Patterns:
+* Betanítás [](luis-how-to-train.md)
+* [Tesztelés](luis-interactive-test.md)
+* [Közzététel](luis-how-to-publish-app.md)
+* Minták
     * [Alapelvek](luis-concept-patterns.md)
-    * [Syntax](reference-pattern-syntax.md)
-* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
-* [Data Extraction concepts](luis-concept-data-extraction.md)
+    * [Szintaxis](reference-pattern-syntax.md)
+* [Előre elkészített entitások GitHub-tárháza](https://github.com/Microsoft/Recognizers-Text)
+* [Adatkiemelési fogalmak](luis-concept-data-extraction.md)
 
 
  

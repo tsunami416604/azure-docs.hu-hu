@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083790"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533848"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
 
@@ -74,9 +74,9 @@ Magas rendelkezésre állású megoldás megvalósításához egy megosztott fü
  > [!NOTE]
  > Azure Site Recovery nem replikálja a Felhőbeli tanút, ezért javasolt a Felhőbeli tanú üzembe helyezése a vész-helyreállítási régióban.
 
-A feladatátvételi fürtkörnyezetnek támogatásához [az SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) hajtja végre a fürt megosztott kötet függvény szerepét a fürtcsomópontok független lemezeinek replikálásával. Az Azure nem natív módon támogatja a megosztott lemezeket, és ezért az SIOS által biztosított megoldások igényel. 
+A feladatátvevő fürt környezetének támogatásához a [SIOS DataKeeper-fürt kiadása](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) a fürt megosztott kötetének működését a fürtcsomópontok által birtokolt független lemezek replikálásával hajtja végre. Az Azure nem natív módon támogatja a megosztott lemezeket, és ezért az SIOS által biztosított megoldások igényel. 
 
-A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementálása. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a szolgáltatások központi telepítési minta a /sapmnt globális könyvtárak keresztül UNC elérési út elérésére. Azonban továbbra is ajánlott biztosítani, hogy a/sapmnt UNC-megosztás erősen elérhető legyen. Ezt a központi szolgáltatási példányon végezheti el a Windows Server feladatátvevő fürt és a kibővíthető fájlkiszolgáló (SOFS) és a Windows Server 2016 Közvetlen tárolóhelyek (S2D) funkciójának használatával. 
+A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementálása. Az [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a központi szolgáltatások telepítési mintáját, hogy a/sapmnt globális könyvtárakat egy UNC elérési úton keresztül elérje. Azonban továbbra is ajánlott biztosítani, hogy a/sapmnt UNC-megosztás erősen elérhető legyen. Ezt a központi szolgáltatási példányon végezheti el a Windows Server feladatátvevő fürt és a kibővíthető fájlkiszolgáló (SOFS) és a Windows Server 2016 Közvetlen tárolóhelyek (S2D) funkciójának használatával. 
  > [!NOTE]
  > Jelenleg Azure Site Recovery támogatja a virtuális gépek csak a közvetlen tárolóhelyek és a SIOS Datakeeper passzív csomópontjának összeomlását.
 
@@ -95,7 +95,7 @@ A vész-helyreállítás beállításának lépései a következők:
 
 Alább látható az ebben a példában használt egyes szintek vész-helyreállítására vonatkozó javaslat. 
 
- **SAP-rétegek** | **Az ajánlás**
+ **SAP-rétegek** | **Ajánlás**
  --- | ---
 **SAP web diszpécser készlet** |  Replikálás a site Recovery használatával 
 **SAP Application Server-készlet** |  Replikálás a site Recovery használatával 
@@ -110,7 +110,7 @@ Az összes SAP-alkalmazás virtuális gép Azure vész-helyreállítási adatkö
 
 * A Active Directory és a DNS védelmével kapcsolatos útmutatásért tekintse meg a [Active Directory és a DNS-dokumentum védelme](site-recovery-active-directory.md) című témakört.
 
-* Az SQL Serveren futó adatbázis-rétegek védelméről a SQL Server dokumentumok [védelme](site-recovery-active-directory.md) című témakörben talál útmutatást.
+* Az SQL Serveren futó adatbázis-rétegek védelméről a SQL Server dokumentumok [védelme](site-recovery-sql.md) című témakörben talál útmutatást.
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 

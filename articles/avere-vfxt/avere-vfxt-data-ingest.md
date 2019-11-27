@@ -1,6 +1,6 @@
 ---
-title: Moving data to Avere vFXT for Azure
-description: How to add data to a new storage volume for use with the Avere vFXT for Azure
+title: Az Azure-ba irányuló avere-vFXT áthelyezése
+description: Az Azure-hoz készült avere-vFXT való használatra szolgáló új tárolási kötethez való adatfelvétel módja
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
@@ -13,63 +13,63 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480590"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Moving data to the vFXT cluster - Parallel data ingest
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Adatáthelyezés a vFXT-fürtbe – párhuzamos adatfeldolgozás
 
-After you've created a new vFXT cluster, your first task might be to move data onto its new storage volume. However, if your usual method of moving data is issuing a simple copy command from one client, you will likely see a slow copy performance. Single-threaded copying is not a good option for copying data to the Avere vFXT cluster's backend storage.
+Miután létrehozott egy új vFXT-fürtöt, az első feladat lehet az adatok áthelyezése az új tárolási kötetre. Ha azonban az adatok áthelyezésének szokásos módja egy egyszerű másolási parancs kiadása az egyik ügyfélről, valószínűleg lassú másolási teljesítményt fog látni. Az egyszálas másolás nem jó választás az adatoknak a avere vFXT-fürt háttér-tárolójába való másolásához.
 
-Because the Avere vFXT cluster is a scalable multi-client cache, the fastest and most efficient way to copy data to it is with multiple clients. This technique parallelizes ingestion of the files and objects.
+Mivel a avere vFXT-fürt méretezhető, több ügyfélre kiterjedő gyorsítótár, a leggyorsabb és leghatékonyabb módszer az adatmásolásra több ügyféllel. Ezzel a technikával parallelizes a fájlok és objektumok betöltését.
 
-![Diagram showing multi-client, multi-threaded data movement: At the top left, an icon for on-premises hardware storage has multiple arrows coming from it. The arrows point to four client machines. From each client machine three arrows point toward the Avere vFXT. From the Avere vFXT, multiple arrows point to Blob storage.](media/avere-vfxt-parallel-ingest.png)
+![Több ügyfélből álló, többszálas adatáthelyezést ábrázoló diagram: a bal felső sarokban a helyszíni hardveres tárterület ikonja több nyílból származik. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat a avere vFXT felé. A avere vFXT több nyíl mutat a blob Storage-ra.](media/avere-vfxt-parallel-ingest.png)
 
-The ``cp`` or ``copy`` commands that are commonly used to using to transfer data from one storage system to another are single-threaded processes that copy only one file at a time. This means that the file server is ingesting only one file at a time - which is a waste of the cluster’s resources.
+Az olyan ``cp`` vagy ``copy`` parancsok, amelyek az adatok egyik tárolási rendszerből egy másikba való átviteléhez használatosak, egyszálas folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a fürt erőforrásainak hulladéka.
 
-This article explains strategies for creating a multi-client, multi-threaded file copying system to move data to the Avere vFXT cluster. It explains file transfer concepts and decision points that can be used for efficient data copying using multiple clients and simple copy commands.
+Ez a cikk a több ügyfelet tartalmazó, többszálas fájlmásolási rendszer létrehozására szolgáló stratégiákat ismerteti az adatoknak a avere vFXT-fürtbe való áthelyezéséhez. Ismerteti a fájlátviteli fogalmakat és a döntési pontokat, amelyek segítségével több ügyfél és egyszerű másolási parancs használatával hatékony Adatmásolást lehet használni.
 
-It also explains some utilities that can help. The ``msrsync`` utility can be used to partially automate the process of dividing a dataset into buckets and using ``rsync`` commands. The ``parallelcp`` script is another utility that reads the source directory and issues copy commands automatically. Also, the ``rsync`` tool can be used in two phases to provide a quicker copy that still provides data consistency.
+Emellett ismerteti azokat a segédprogramokat is, amelyek segíthetnek. Az ``msrsync`` segédprogram használatával részben automatizálható az adathalmazok gyűjtővé való osztása és a ``rsync`` parancsok használata. A ``parallelcp`` szkript egy másik segédprogram, amely beolvassa a forrás könyvtárat, és automatikusan kiadja a másolási parancsokat. Emellett a ``rsync`` eszköz két fázisban is használható, így gyorsabb másolást biztosít, amely továbbra is biztosítja az adatkonzisztenciát.
 
-Click the link to jump to a section:
+Kattintson a hivatkozásra a szakaszra való ugráshoz:
 
-* [Manual copy example](#manual-copy-example) - A thorough explanation using copy commands
-* [Two-phase rsync example](#use-a-two-phase-rsync-process)
-* [Partially automated (msrsync) example](#use-the-msrsync-utility)
-* [Parallel copy example](#use-the-parallel-copy-script)
+* [Manuális másolási példa](#manual-copy-example) – alapos magyarázat a másolási parancsok használatával
+* [Kétfázisú rsync-példa](#use-a-two-phase-rsync-process)
+* [Részlegesen automatizált (msrsync) példa](#use-the-msrsync-utility)
+* [Példa párhuzamos másolásra](#use-the-parallel-copy-script)
 
-## <a name="data-ingestor-vm-template"></a>Data ingestor VM template
+## <a name="data-ingestor-vm-template"></a>Adatfeldolgozó virtuálisgép-sablon
 
-A Resource Manager template is available on GitHub to automatically create a VM with the parallel data ingestion tools mentioned in this article.
+A GitHubon egy Resource Manager-sablon áll rendelkezésre, amely automatikusan létrehoz egy virtuális gépet a jelen cikkben említett párhuzamos adatfeldolgozási eszközökkel.
 
-![diagram showing multiple arrows each from blob storage, hardware storage, and Azure file sources. The arrows point to a "data ingestor vm" and from there, multiple arrows point to the Avere vFXT](media/avere-vfxt-ingestor-vm.png)
+![a blob Storage, a hardver Storage és az Azure file sources használatával egyszerre több nyilat ábrázoló diagram. A nyilak egy "betöltési virtuális gépre" és onnan több nyílra mutatnak a avere vFXT](media/avere-vfxt-ingestor-vm.png)
 
-The data ingestor VM is part of a tutorial where the newly created VM mounts the Avere vFXT cluster and downloads its bootstrap script from the cluster. Read [Bootstrap a data ingestor VM](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) for details.
+Az adatfeldolgozó virtuális gép egy olyan oktatóanyag része, ahol az újonnan létrehozott virtuális gép csatlakoztatja a avere vFXT-fürtöt, és letölti a rendszerindítási parancsfájlt a fürtből. A részletekért olvassa el a rendszerindító [adatfeldolgozó virtuális gép](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) című cikkét.
 
-## <a name="strategic-planning"></a>Strategic planning
+## <a name="strategic-planning"></a>Stratégiai tervezés
 
-When building a strategy to copy data in parallel, you should understand the tradeoffs in file size, file count, and directory depth.
+Amikor párhuzamosan másolja az adatmásolási stratégiát, ismernie kell a fájlok mérete, a fájlok száma és a könyvtár mélysége közötti kompromisszumokat.
 
-* When files are small, the metric of interest is files per second.
-* When files are large (10MiBi or greater), the metric of interest is bytes per second.
+* Ha a fájlok kicsik, a kamat a fájlok másodpercenkénti száma.
+* Ha a fájlok nagy méretűek (10MiBi vagy nagyobbak), a kamat mérőszáma másodpercenként bájt.
 
-Each copy process has a throughput rate and a files-transferred rate, which can be measured by timing the length of the copy command and factoring the file size and file count. Explaining how to measure the rates is outside the scope of this document, but it is imperative to understand whether you’ll be dealing with small or large files.
+Minden másolási folyamathoz tartozik egy átviteli sebesség és egy fájl – átvitt sebesség, amely a másolási parancs hosszának időzítésével és a fájlméret és a fájlok számának megadásával mérhető. A díjszabás mértékének megállapítása kívül esik a jelen dokumentum hatókörén, de fontos tisztában lennie azzal, hogy a kis-és nagyméretű fájlokat is érdemes-e kezelni.
 
-## <a name="manual-copy-example"></a>Manual copy example
+## <a name="manual-copy-example"></a>Példa manuális másolásra
 
-You can manually create a multi-threaded copy on a client by running more than one copy command at once in the background against predefined sets of files or paths.
+Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
 
-The Linux/UNIX ``cp`` command includes the argument ``-p`` to preserve ownership and mtime metadata. Adding this argument to the commands below is optional. (Adding the argument increases the number of filesystem calls sent from the client to the destination filesystem for metadata modification.)
+A Linux/UNIX ``cp`` parancs a tulajdonosi és a mtime metaadatok megőrzéséhez ``-p`` argumentumot tartalmazza. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyfél és a cél fájlrendszer közötti, a metaadatok módosítására irányuló hívások számát.)
 
-This simple example copies two files in parallel:
+Ez az egyszerű példa két fájlt másol át párhuzamosan:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-After issuing this command, the `jobs` command will show that two threads are running.
+A parancs kiadása után a `jobs` parancs azt mutatja, hogy két szál fut.
 
-### <a name="predictable-filename-structure"></a>Predictable filename structure
+### <a name="predictable-filename-structure"></a>Kiszámítható fájlnév struktúra
 
-If your filenames are predictable, you can use expressions to create parallel copy threads.
+Ha a fájlnevek kiszámíthatók, a kifejezések használatával párhuzamos másolási szálakat hozhat létre.
 
-For example, if your directory contains 1000 files that are numbered sequentially from `0001` to `1000`, you can use the following expressions to create ten parallel threads that each copy 100 files:
+Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek `0001` egymás után sorszámozással `1000`, a következő kifejezésekkel hozhat létre 10 párhuzamos szálat, amelyek az egyes 100-fájlok másolására szolgálnak:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -84,11 +84,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-### <a name="unknown-filename-structure"></a>Unknown filename structure
+### <a name="unknown-filename-structure"></a>Ismeretlen fájlnév-struktúra
 
-If your file-naming structure is not predictable, you can group files by directory names.
+Ha a fájl-elnevezési struktúra nem kiszámítható, a fájlokat a címtár neve alapján csoportosíthatja.
 
-This example collects entire directories to send to ``cp`` commands run as background tasks:
+Ez a példa az ``cp`` parancsok futtatásához használható teljes címtárakat gyűjti a háttérben feladatként:
 
 ```bash
 /root
@@ -100,7 +100,7 @@ This example collects entire directories to send to ``cp`` commands run as backg
 |-/dir1d
 ```
 
-After the files are collected, you can run parallel copy commands to recursively copy the subdirectories and all of their contents:
+A fájlok gyűjtése után párhuzamos másolási parancsok futtatásával rekurzív módon másolhatja az alkönyvtárakat és azok tartalmát:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -111,11 +111,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-### <a name="when-to-add-mount-points"></a>When to add mount points
+### <a name="when-to-add-mount-points"></a>Csatlakoztatási pontok hozzáadása
 
-After you have enough parallel threads going against a single destination filesystem mount point, there will be a point where adding more threads does not give more throughput. (Throughput will be measured in files/second or bytes/second, depending on your type of data.) Or worse, over-threading can sometimes cause a throughput degradation.
+Ha elegendő párhuzamos szálat használ egy adott cél fájlrendszer csatlakoztatási pontján, akkor a több szál hozzáadására szolgáló pont nem ad nagyobb átviteli sebességet. (Az adatátviteli sebességet a rendszer a megadott adattípustól függően a fájl/másodperc vagy a bájt/másodperc értékben méri.) Vagy ami még rosszabb, az átviteli sebesség romlása időnként okozhatja a teljesítményt.
 
-When this happens, you can add client-side mount points to other vFXT cluster IP addresses, using the same remote filesystem mount path:
+Ebben az esetben az ügyféloldali csatlakoztatási pontokat más vFXT-fürt IP-címeihez is hozzáadhatja ugyanazzal a távoli fájlrendszer-csatlakozási útvonallal:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -124,9 +124,9 @@ When this happens, you can add client-side mount points to other vFXT cluster IP
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Adding client-side mount points lets you fork off additional copy commands to the additional `/mnt/destination[1-3]` mount points, achieving further parallelism.
+Az ügyféloldali csatlakoztatási pontok hozzáadásával további másolási parancsokat is kikapcsolhat a további `/mnt/destination[1-3]` csatlakoztatási pontokhoz, így további párhuzamosságot lehet elérni.
 
-For example, if your files are very large, you might define the copy commands to use distinct destination paths, sending out more commands in parallel from the client performing the copy.
+Ha például a fájlok nagyon nagy méretűek, a másolási parancsokat definiálhatja a különböző elérési utak használatára, és a másolást végző ügyféltől párhuzamosan több parancsot is küldhet.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -140,11 +140,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-In the example above, all three destination mount points are being targeted by the client file copy processes.
+A fenti példában mindhárom cél csatlakoztatási pontra az ügyfél fájlmásolási folyamata irányul.
 
-### <a name="when-to-add-clients"></a>When to add clients
+### <a name="when-to-add-clients"></a>Mikor kell ügyfeleket felvenni
 
-Lastly, when you have reached the client's capabilities, adding more copy threads or additional mount points will not yield any additional files/sec or bytes/sec increases. In that situation, you can deploy another client with the same set of mount points that will be running its own sets of file copy processes.
+Végül, ha elérte az ügyfél képességeit, további másolási szálak vagy további csatlakoztatási pontok hozzáadása nem eredményez további fájlokat/mp-t vagy bájt/mp-t. Ebben az esetben egy másik ügyfelet is telepíthet ugyanazon a csatlakoztatási ponttal, amely a fájlmásolás folyamatainak saját készletét fogja futtatni.
 
 Példa:
 
@@ -166,11 +166,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-### <a name="create-file-manifests"></a>Create file manifests
+### <a name="create-file-manifests"></a>Fájl-jegyzékfájlok létrehozása
 
-After understanding the approaches above (multiple copy-threads per destination, multiple destinations per client, multiple clients per network-accessible source filesystem), consider this recommendation: Build file manifests and then use them with copy commands across multiple clients.
+Miután megértette a fenti megközelítéseket (több másolási szál/cél, több ügyfél, hálózaton keresztül elérhető forrásoldali fájlrendszer), vegye figyelembe ezt a javaslatot: fájl-jegyzékfájlok létrehozása, majd a másolattal való használata több ügyfélen belüli parancsok.
 
-This scenario uses the UNIX ``find`` command to create manifests of files or directories:
+Ez a forgatókönyv a UNIX ``find`` parancs használatával hozza létre a fájlok vagy könyvtárak jegyzékét:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -185,9 +185,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Redirect this result to a file: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Az eredmény átirányítása fájlba: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Then you can iterate through the manifest, using BASH commands to count files and determine the sizes of the subdirectories:
+Ezután megismételheti a jegyzékfájlt, ha BASH-parancsokat használ a fájlok számlálásához és az alkönyvtárak méretének meghatározásához:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
@@ -226,76 +226,76 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Lastly, you must craft the actual file copy commands to the clients.
+Végül meg kell adnia a tényleges fájlmásolás-parancsokat az ügyfeleknek.
 
-If you have four clients, use this command:
+Ha négy ügyféllel rendelkezik, használja a következő parancsot:
 
 ```bash
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-If you have five clients, use something like this:
+Ha öt ügyfele van, használja az alábbihoz hasonlót:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-And for six.... Extrapolate as needed.
+És hat.... Kikövetkeztetés igény szerint.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-You will get *N* resulting files, one for each of your *N* clients that has the path names to the level-four directories obtained as part of the output from the `find` command.
+*N* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a `find` parancs kimenetének részeként kapott négy szinttel.
 
-Use each file to build the copy command:
+Az egyes fájlok használatával hozza létre a másolási parancsot:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-The above will give you *N* files, each with a copy command per line, that can be run as a BASH script on the client.
+A fentiekben *N* fájl jelenik meg, amelyek mindegyike soronként egy másolási paranccsal fut, amely bash-parancsfájlként is futtatható az ügyfélen.
 
-The goal is to run multiple threads of these scripts concurrently per client in parallel on multiple clients.
+A cél a parancsfájlok több szálának párhuzamos futtatása egyszerre több ügyfélen egyidejűleg.
 
-## <a name="use-a-two-phase-rsync-process"></a>Use a two-phase rsync process
+## <a name="use-a-two-phase-rsync-process"></a>Kétfázisú rsync-folyamat használata
 
-The standard ``rsync`` utility does not work well for populating cloud storage through the Avere vFXT for Azure system because it generates a large number of file create and rename operations to guarantee data integrity. However, you can safely use the ``--inplace`` option with ``rsync`` to skip the more careful copying procedure if you follow that with a second run that checks file integrity.
+A standard ``rsync`` segédprogram nem működik megfelelően a felhőalapú tároláshoz az Azure System avere-vFXT keresztül, mert nagy számú fájl létrehozására és átnevezésére szolgáló műveletet hoz létre az adatok integritásának garantálása érdekében. Azonban a ``rsync`` segítségével biztonságosan használhatja a ``--inplace`` lehetőséget, hogy kihagyja a körültekintő másolási eljárást, ha a fájl integritását ellenőrző második futtatást követ.
 
-A standard ``rsync`` copy operation creates a temporary file and fills it with data. If the data transfer completes successfully, the temporary file is renamed to the original filename. This method guarantees consistency even if the files are accessed during copy. But this method generates more write operations, which slows file movement through the cache.
+A standard ``rsync`` másolási művelet létrehoz egy ideiglenes fájlt, és betölti az adatmennyiséget. Ha az adatátvitel sikeresen befejeződött, az ideiglenes fájl átnevezve lesz az eredeti fájlnévre. Ez a módszer akkor is garantálja a konzisztenciát, ha a fájlok a másolás során hozzáférnek. Ez a módszer azonban több írási műveletet generál, ami lelassítja a fájlok áthelyezését a gyorsítótárban.
 
-The option ``--inplace`` writes the new file directly in its final location. Files are not guaranteed to be consistent during transfer, but that is not important if you are priming a storage system for use later.
+A beállítás ``--inplace`` közvetlenül a végső helyén írja az új fájlt. A fájlok nem garantáltan konzisztensek az átvitel során, de ez nem fontos, ha később szeretné használni a tárolási rendszereket.
 
-The second ``rsync`` operation serves as a consistency check on the first operation. Because the files have already been copied, the second phase is a quick scan to ensure that the files on the destination match the files on the source. If any files don't match, they are recopied.
+A második ``rsync`` művelet konzisztencia-ellenőrzésként szolgál az első művelethez. Mivel a fájlok már át lettek másolva, a második fázis egy gyors vizsgálat annak biztosítására, hogy a célhelyen lévő fájlok megegyezzenek a forrás fájljaival. Ha bármelyik fájl nem egyezik, a rendszer újramásolja őket.
 
-You can issue both phases together in one command:
+Mindkét fázist egy paranccsal együtt is kiállíthatja:
 
 ```bash
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-This method is a simple and time-effective method for datasets up to the number of files the internal directory manager can handle. (This is typically 200 million files for a 3-node cluster, 500 million files for a six-node cluster, and so on.)
+Ez a módszer egyszerű és időigényes módszer az adatkészletek számára a belső címtár-kezelő által kezelhető fájlok számára. (Ez általában 200 000 000 fájl egy 3 csomópontos fürthöz, 500 000 000 fájl egy hat csomópontos fürthöz, és így tovább.)
 
-## <a name="use-the-msrsync-utility"></a>Use the msrsync utility
+## <a name="use-the-msrsync-utility"></a>A msrsync segédprogram használata
 
-The ``msrsync`` tool also can be used to move data to a backend core filer for the Avere cluster. This tool is designed to optimize bandwidth usage by running multiple parallel ``rsync`` processes. It is available from GitHub at <https://github.com/jbd/msrsync>.
+A ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürthöz tartozó backend Core filerbe. Ez az eszköz úgy lett kialakítva, hogy optimalizálja a sávszélesség-használatot több párhuzamos ``rsync`` folyamat futtatásával. A GitHubról <https://github.com/jbd/msrsync>címen érhető el.
 
-``msrsync`` breaks up the source directory into separate “buckets” and then runs individual ``rsync`` processes on each bucket.
+``msrsync`` a forrás könyvtárat külön "gyűjtőre" bontja, majd az egyes gyűjtők egyéni ``rsync`` folyamatait futtatja.
 
-Preliminary testing using a four-core VM showed best efficiency when using 64 processes. Use the ``msrsync`` option ``-p`` to set the number of processes to 64.
+A négy Magos virtuális géppel végzett előzetes tesztelés az 64-es folyamatok használatakor a legjobb hatékonyságot mutatja. A 64-es folyamatok számának megadásához használja a ``-p`` ``msrsync`` lehetőséget.
 
-You also can use the ``--inplace`` argument with ``msrsync`` commands. If you use this option, consider running a second command (as with [rsync](#use-a-two-phase-rsync-process), described above) to ensure data integrity.
+Használhatja a ``--inplace`` argumentumot is ``msrsync`` parancsokkal. Ha ezt a beállítást használja, érdemes lehet egy második parancsot futtatni (mint a fent ismertetett [rsync](#use-a-two-phase-rsync-process)esetében) az adatok integritásának biztosításához.
 
-``msrsync`` can only write to and from local volumes. The source and destination must be accessible as local mounts in the cluster’s virtual network.
+a ``msrsync`` csak helyi kötetektől tud írni. A forrásnak és a célhelynek elérhetőnek kell lennie helyi csatlakoztatásként a fürt virtuális hálózatában.
 
-To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, follow these instructions:
+Az Azure-beli Felhőbeli kötetek avere-fürttel való feltöltéséhez ``msrsync`` használatával kövesse az alábbi utasításokat:
 
-1. Install ``msrsync`` and its prerequisites (rsync and Python 2.6 or later)
-1. Determine the total number of files and directories to be copied.
+1. ``msrsync`` telepítése és előfeltételei (rsync és Python 2,6 vagy újabb)
+1. A másolandó fájlok és könyvtárak teljes számának meghatározása.
 
-   For example, use the Avere utility ``prime.py`` with arguments ```prime.py --directory /path/to/some/directory``` (available by downloading url <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   Használja például a avere segédprogramot a ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (az URL-<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>letöltésével érhető el).
 
-   If not using ``prime.py``, you can calculate the number of items with the GNU ``find`` tool as follows:
+   Ha nem használja a ``prime.py``, a következő módon számíthatja ki az elemek számát a GNU ``find`` eszközzel:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -303,29 +303,29 @@ To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, foll
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Divide the number of items by 64 to determine the number of items per process. Use this number with the ``-f`` option to set the size of the buckets when you run the command.
+1. Az elemek számának felosztása a 64 alapján az elemek számának megállapítása folyamatban. Ezt a számot a ``-f`` kapcsolóval használva állíthatja be a gyűjtők méretét a parancs futtatásakor.
 
-1. Issue the ``msrsync`` command to copy files:
+1. Adja ki a ``msrsync`` parancsot a fájlok másolásához:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   If using ``--inplace``, add a second execution without the option to check that the data is correctly copied:
+   Ha ``--inplace``használ, vegyen fel egy második végrehajtást anélkül, hogy ellenőriznie kellene, hogy az Adatmásolás helyesen történt-e:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   For example, this command is designed to move 11,000 files in 64 processes from /test/source-repository to /mnt/vfxt/repository:
+   Ez a parancs például úgy lett kialakítva, hogy 11 000-es fájlokat helyezzen át a 64 folyamatokban a/test/Source-repository-ről a/mnt/vfxt/repository-re:
 
    ``msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
-## <a name="use-the-parallel-copy-script"></a>Use the parallel copy script
+## <a name="use-the-parallel-copy-script"></a>A párhuzamos másolási parancsfájl használata
 
-The ``parallelcp`` script also can be useful for moving data to your vFXT cluster's backend storage.
+A ``parallelcp`` szkript is hasznos lehet az vFXT-fürt háttér-tárolóba való áthelyezéséhez.
 
-The script below will add the executable `parallelcp`. (This script is designed for Ubuntu; if using another distribution, you must install ``parallel`` separately.)
+Az alábbi szkript hozzáadja a végrehajtható `parallelcp`. (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ, külön kell telepítenie ``parallel``.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -377,14 +377,14 @@ find \$SOURCE_DIR -mindepth 1 ! -type d -print0 | sed -z "s/\$SOURCE_DIR\///" | 
 EOM
 ```
 
-### <a name="parallel-copy-example"></a>Parallel copy example
+### <a name="parallel-copy-example"></a>Példa párhuzamos másolásra
 
-This example uses the parallel copy script to compile ``glibc`` using source files from the Avere cluster.
+Ez a példa a párhuzamos másolási parancsfájlt használja a ``glibc`` a avere-fürtből származó forrásfájlok használatával történő fordításához.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
-The source files are stored on the Avere cluster mount point, and the object files are stored on the local hard drive.
+A forrásfájlok a avere-fürt csatlakoztatási pontján tárolódnak, és az objektum fájljai a helyi merevlemezen vannak tárolva.
 
-This script uses parallel copy script above. The option ``-j`` is used with ``parallelcp`` and ``make`` to gain parallelization.
+Ez a szkript a fenti párhuzamos másolási parancsfájlt használja. A ``-j`` a ``parallelcp`` és a ``make`` használható a párhuzamos megszerzéséhez.
 
 ```bash
 sudo apt-get update

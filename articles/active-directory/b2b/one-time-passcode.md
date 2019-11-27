@@ -73,7 +73,7 @@ Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően 
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza ki **beállítások**.
+4.  Válassza a **Beállítások**lehetőséget.
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza az **Igen**lehetőséget.
  
 ### <a name="to-opt-in-using-powershell"></a>A PowerShell használatának engedélyezése
@@ -140,7 +140,7 @@ Eltarthat néhány percig, amíg a letiltási művelet érvénybe lép. Ha kikap
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza ki **beállítások**.
+4.  Válassza a **Beállítások**lehetőséget.
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza a **nem**lehetőséget.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Az előnézet kikapcsolása a PowerShell használatával

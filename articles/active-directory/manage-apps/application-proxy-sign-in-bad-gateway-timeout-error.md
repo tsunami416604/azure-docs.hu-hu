@@ -31,9 +31,9 @@ Ez a cikk segít az Azure AD-alkalmazásproxy-alkalmazáshoz a "Vállalati alkal
 
 Ezt a hibaüzenetet, ha a hiba lapon keresse meg az állapotkódot. Ezt a kódot, valószínűleg az egyik, a következő állapotkódok:
 
-- **Átjáró időtúllépése**: az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
-- **Hibás átjáróval**: az összekötő nem tudja elérni a háttéralkalmazás. Ez a hiba oka lehet az alkalmazás egy hibás.
-- **Tiltott**: A felhasználó nem jogosult az alkalmazás eléréséhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nincs hozzárendelve az alkalmazáshoz az Azure Active Directoryban, vagy ha a háttérkiszolgálón a felhasználónak nincs engedélye az alkalmazás eléréséhez.
+- **Átjáró időtúllépése**: az alkalmazásproxy szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
+- **Hibás átjáró**: az összekötő nem tudja elérni a háttérbeli alkalmazást. Ez a hiba oka lehet az alkalmazás egy hibás.
+- **Tiltott**: a felhasználó nem jogosult az alkalmazás elérésére. Ez a hiba akkor fordulhat elő, ha a felhasználó nincs hozzárendelve az alkalmazáshoz az Azure Active Directoryban, vagy ha a háttérkiszolgálón a felhasználónak nincs engedélye az alkalmazás eléréséhez.
 
 A kód megkereséséhez tekintse meg a szöveg a "Állapotkód:" mező a hibaüzenet bal alsó. Kereshet is minden további tippek a lap alján.
 
@@ -50,7 +50,7 @@ Egy átjáró időtúllépése akkor fordul elő, ha a szolgáltatás megpróbá
 A hibás átjáró hiba azt jelzi, hogy az összekötő nem érhető el a háttéralkalmazás. Győződjön meg arról, hogy közzétette-e a megfelelő alkalmazáshoz. Ezt a hibát okozó gyakori hibák a következők:
 
 - Egy gépelési vagy a belső URL-cím található hiba
-- Nem teszi közzé az alkalmazás. Például közzétételi <http://expenses/reimbursement> , de elérésére tett <http://expenses>
+- Nem teszi közzé az alkalmazás. Például tegye közzé <http://expenses/reimbursement>, de próbáljon meg hozzáférni <http://expenses>
 - A Kerberos által korlátozott delegálás (KCD) konfigurálásával kapcsolatos problémák
 - A háttéralkalmazás kapcsolatos problémák
 
@@ -58,25 +58,25 @@ A hibás átjáró hiba azt jelzi, hogy az összekötő nem érhető el a hátt�
 
 A tiltott hibát látja, ha a felhasználó nincs hozzárendelve az alkalmazáshoz. Ez a hiba lehet az Azure Active Directoryban vagy a háttéralkalmazás.
 
-Felhasználók hozzárendelése az Azure-ban az alkalmazás kapcsolatban lásd: a [konfigurációs dokumentációt](application-proxy-add-on-premises-application.md#test-the-application).
+Ha szeretné megtudni, hogyan rendelhet hozzá felhasználókat az alkalmazáshoz az Azure-ban, tekintse meg a [konfigurációs dokumentációt](application-proxy-add-on-premises-application.md#test-the-application).
 
 Ha Ön kijelenti, hogy a felhasználó hozzá van rendelve az alkalmazás az Azure-ban, ellenőrizze a háttéralkalmazás az felhasználó konfigurációját. Ha a Kerberos által korlátozott delegálás vagy integrált Windows-hitelesítést használ, lásd a KCD hibaelhárítása vonatkozó irányelveket.
 
 ## <a name="check-the-applications-internal-url"></a>Az alkalmazás belső URL-cím ellenőrzése
 
-Első gyors lépésben ellenőrizze és javítsa ki a belső URL-cím megnyitásával az alkalmazást **vállalati alkalmazások**, majd válassza a **alkalmazásproxy** menü. Ellenőrizze, hogy a belső URL-cím a helyszíni hálózatból az alkalmazás eléréséhez használt-e.
+Első lépésként nyissa meg a belső URL-címet úgy, hogy megnyitja az alkalmazást a **vállalati alkalmazásokkal**, majd kiválasztja az **alkalmazásproxy menüt.** Ellenőrizze, hogy a belső URL-cím a helyszíni hálózatból az alkalmazás eléréséhez használt-e.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Ellenőrizze, hogy az alkalmazás hozzá van rendelve egy működő Összekötőcsoport
 
 Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsoport:
 
-1. Nyissa meg az alkalmazás a portálon a **Azure Active Directory**, kattintson a **vállalati alkalmazások**, majd **összes alkalmazáshoz.** Nyissa meg az alkalmazást, majd válassza ki **alkalmazásproxy** a bal oldali menüből.
+1. Nyissa meg az alkalmazást a portálon a **Azure Active Directory**, majd a **vállalati alkalmazások**, majd az **összes alkalmazás** lehetőségre kattintva. Nyissa meg az alkalmazást, majd válassza az **alkalmazásproxy** elemet a bal oldali menüben.
 1. Tekintse meg a Összekötőcsoport mező. Ha a csoport nincs aktív összekötő, megjelenik egy figyelmeztetés. Ha nem jelennek meg figyelmeztetések, a bekapcsolásával ellenőrizze, hogy az összes szükséges port engedélyezve van-e.
 1. Ha nem a megfelelő Összekötőcsoport jelennek meg, használatával a listából válassza ki a megfelelő csoportot, majd erősítse meg, nem lesznek láthatók a figyelmeztetéseket. Ha az importálni kívánt Összekötőcsoport jelenik-e meg, kattintson a figyelmeztető üzenetet, nyissa meg a-összekötő felügyeleti.
 1. Itt van néhány módon lehet további:
 
    - Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, az összekötő áthelyezheti a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
-   - Az adott csoporthoz új összekötő letöltéséhez: ezen a lapon megtekintheti a hivatkozásra kattintva [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Az összekötő általában ugyanarra a kiszolgálóra van telepítve, mint az alkalmazás. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
+   - Új összekötő letöltése a csoport számára: ezen a lapon megtekintheti az [új összekötő letöltésére](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)mutató hivatkozást. Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Az összekötő általában ugyanarra a kiszolgálóra van telepítve, mint az alkalmazás. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
    - Vizsgálja meg az inaktív csatlakozó: egy összekötő akkor jeleníti meg inaktívként, ha nem tudja elérni a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához a következő lépésekkel ellenőrizheti, hogy az összes szükséges port engedélyezve van-e.
 
 Használata után ezeket a lépéseket, az alkalmazás hozzá van rendelve egy csoport használata összekötők, hogy tesztelje újból az alkalmazást. Ha nem továbbra is működik, továbbra is a következő szakaszban.
@@ -87,22 +87,22 @@ Annak ellenőrzéséhez, hogy minden szükséges portok nyitva, a portok megnyit
 
 ## <a name="check-for-other-connector-errors"></a>Más összekötők hibák keresése
 
-Ha a fentiek egyike a problémát, a következő lépés az problémák és hibák az összekötővel saját maga. Láthatja, hogy a gyakran előforduló hibákat a [hibaelhárítás dokumentum](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors).
+Ha a fentiek egyike a problémát, a következő lépés az problémák és hibák az összekötővel saját maga. A [hibaelhárítási dokumentumban](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)néhány gyakori hibát láthat.
 
-Kereshet közvetlenül a naplókban összekötő azonosítani az esetleges hibákat is. A hibaüzenetek számos ossza meg a javítások konkrét javaslatokért. A naplók megtekintéséhez lásd a [összekötők dokumentációja](application-proxy-connectors.md#under-the-hood).
+Kereshet közvetlenül a naplókban összekötő azonosítani az esetleges hibákat is. A hibaüzenetek számos ossza meg a javítások konkrét javaslatokért. A naplók megtekintéséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
 ## <a name="additional-resolutions"></a>További megoldások
 
 Ha a fenti nem oldja meg a probléma, néhány másik lehetséges oka is van. A probléma azonosításához:
 
-Ha az alkalmazás integrált Windows-hitelesítés (IWA) használatára van konfigurálva, tesztelje az alkalmazás egyszeri bejelentkezés nélkül. Ha nem, a következő bekezdésben helyezze át. Egyszeri bejelentkezés nélkül az alkalmazás ellenőrzéséhez nyissa meg az alkalmazás **, vállalati alkalmazások** és nyissa meg a **egyszeri bejelentkezés** menü. Módosítsa a listában "Integrált Windows-hitelesítés" a "Azure AD egyszeri bejelentkezés letiltva".
+Ha az alkalmazás integrált Windows-hitelesítés (IWA) használatára van konfigurálva, tesztelje az alkalmazás egyszeri bejelentkezés nélkül. Ha nem, a következő bekezdésben helyezze át. Ha az alkalmazást egyszeri bejelentkezés nélkül szeretné megnézni, nyissa meg az alkalmazást a **vállalati alkalmazásokkal,** és lépjen az **egyszeri bejelentkezési** menüre. Módosítsa a listában "Integrált Windows-hitelesítés" a "Azure AD egyszeri bejelentkezés letiltva".
 
 Most nyisson meg egy böngészőt, és próbálja meg újból elérni az alkalmazást. A rendszer kéri a hitelesítéshez és az alkalmazások beolvasása. Ha Ön elvégezheti a hitelesítést, akkor a probléma, a Kerberos által korlátozott delegálás (KCD) konfigurációval, amely lehetővé teszi az egyszeri bejelentkezést. További információkért lásd a kcd Szolgáltatáshoz hibaelhárítása.
 
 Tekintse meg a hiba továbbra is, ha nyissa meg a gép, ahol az összekötő telepítve van-e, nyisson meg egy böngészőt, és próbálják elérni a belső URL-cím az alkalmazáshoz használt. Az összekötő úgy viselkedik, mint egy másik ügyfél ugyanazt a gépet. Ha az alkalmazás nem érhető el, vizsgálja meg, miért, hogy a gép nem tudja elérni az alkalmazást, vagy az összekötő használata a kiszolgálón, amely képes elérni az alkalmazást.
 
-Ha az alkalmazás arról a gépről keresse meg az problémák és hibák az összekötővel saját maga is elérheti. Láthatja, hogy a gyakran előforduló hibákat a [hibaelhárítás dokumentum](application-proxy-troubleshoot.md#connector-errors). Kereshet közvetlenül a naplókban összekötő azonosítani az esetleges hibákat is. A hibaüzenetek számos lehet megosztani a javítások több konkrét javaslatokért. A naplók megtekintéséhez, lásd: [összekötők dokumentációnk](application-proxy-connectors.md#under-the-hood).
+Ha az alkalmazás arról a gépről keresse meg az problémák és hibák az összekötővel saját maga is elérheti. A [hibaelhárítási dokumentumban](application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat. Kereshet közvetlenül a naplókban összekötő azonosítani az esetleges hibákat is. A hibaüzenetek számos lehet megosztani a javítások több konkrét javaslatokért. A naplók megtekintésének megismeréséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
+[Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

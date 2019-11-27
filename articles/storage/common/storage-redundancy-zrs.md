@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186677"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544629"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -39,7 +39,7 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 - USA 2. keleti régiója
 - USA 2. nyugati régiója
 
-A FileStorage-fiókok (prémium fájlmegosztás) esetében a ZRS általánosan elérhető a következő régiókban:
+A FileStorage-fiókok (prémium szintű fájlmegosztás) és a BlockBlobStorage-fiókok (prémium blokkos Blobok) esetében a ZRS általánosan elérhető a következő régiókban:
 
 - Nyugat-Európa
 - USA keleti régiója

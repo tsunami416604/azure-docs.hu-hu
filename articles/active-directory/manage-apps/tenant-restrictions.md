@@ -30,9 +30,9 @@ A kihíváshoz tartozó Azure Active Directory (Azure AD) megoldás a bérlői k
 
 A bérlői korlátozásokkal a szervezetek meghatározhatják azon bérlők listáját, amelyekhez a felhasználók hozzáférhetnek. Az Azure AD majd csak ezeket a bérlők számára engedélyezett hozzáférést biztosít.
 
-Ez a cikk az Office 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazások egy másik Azure AD-bérlői Office 365 által használt bérlőtől használ, ellenőrizze, hogy az összes szükséges bérlők számára engedélyezett. További információ a felhőalapú SaaS-alkalmazások: a [Active Directory Marketplace-ről](https://azure.microsoft.com/marketplace/active-directory/).
+Ez a cikk az Office 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazások egy másik Azure AD-bérlői Office 365 által használt bérlőtől használ, ellenőrizze, hogy az összes szükséges bérlők számára engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azure.microsoft.com/marketplace/active-directory/).
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A teljes megoldás az alábbi összetevőkből áll:
 
@@ -42,7 +42,7 @@ A teljes megoldás az alábbi összetevőkből áll:
 
 3. **Ügyfélszoftver**: a bérlői korlátozások támogatásához az ügyfélszoftvernek közvetlenül az Azure ad-ből kell kérnie a jogkivonatokat, hogy a proxy-infrastruktúra képes legyen a forgalom elfogására. A böngészőalapú Office 365-alkalmazások jelenleg támogatják a bérlői korlátozásokat, mint a modern hitelesítést használó Office-ügyfeleket (például OAuth 2,0).
 
-4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Office 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. Az Office 365 modern hitelesítés támogatása a legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Office 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. A modern hitelesítést támogató Office 365-támogatással kapcsolatos legfrissebb információkért olvassa el a [frissített Office 365 – modern hitelesítés](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)című témakört.
 
 A következő ábra szemlélteti a magas szintű adatforgalmat. A bérlői korlátozások csak az Azure AD-ra irányuló adatforgalomra, az Office 365 Cloud Servicesre nem vonatkoznak. Ez a különbség azért fontos, mert az Azure AD-hitelesítéshez használt forgalom mennyisége általában sokkal alacsonyabb, mint a forgalom mennyisége olyan SaaS-alkalmazásokhoz, mint az Exchange Online és a SharePoint Online.
 
@@ -70,16 +70,16 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 #### <a name="configuration"></a>Konfiguráció
 
-Az egyes bejövő kérések login.microsoftonline.com, login.microsoft.com és login.windows.net két HTTP-fejlécek beszúrása: *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet*.
+A login.microsoftonline.com, login.microsoft.com és login.windows.net minden bejövő kérelméhez helyezzen be két HTTP-fejlécet: *korlátozza a hozzáférés-bérlők* és a *hozzáférés-kontextus*korlátozását.
 
 A fejlécek a következő elemeket kell tartalmaznia:
 
-- A *hozzáférés korlátozása a bérlők*számára értékkel \<engedélyezett bérlői lista\>, amely a bérlők vesszővel tagolt listája, amely számára engedélyezni kívánja a felhasználók számára a hozzáférést. Bármely tartomány, amely regisztrálva van a bérlő segítségével azonosíthatja a bérlő ebben a listában. Például hogy engedélyezze a hozzáférést a Contoso és Fabrikam is bérlők számára, a név-érték pár hasonlóan néz ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- A *hozzáférés korlátozása a bérlők*számára értékkel \<engedélyezett bérlői lista\>, amely a bérlők vesszővel tagolt listája, amely számára engedélyezni kívánja a felhasználók számára a hozzáférést. Bármely tartomány, amely regisztrálva van a bérlő segítségével azonosíthatja a bérlő ebben a listában. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték pár a következőképpen néz ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - A *korlátozás-hozzáférés-kontextushoz*használjon egy egyedi CÍMTÁR-azonosító értékét, amely deklarálja, hogy melyik bérlő állítja be a bérlői korlátozásokat. Ha például a contoso-t a bérlői korlátozási szabályzatot beállító bérlőként szeretné deklarálni, a név/érték párok a következőképpen néznek ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> A címtár-azonosítót a [Azure Active Directory-portálon](https://aad.portal.azure.com/)találhatja meg. Jelentkezzen be rendszergazdaként, válassza ki **Azure Active Directory**, majd **tulajdonságok**.
+> A címtár-azonosítót a [Azure Active Directory-portálon](https://aad.portal.azure.com/)találhatja meg. Jelentkezzen be rendszergazdaként, válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
 
 Annak megakadályozása érdekében, hogy a felhasználók beillesszenak saját HTTP-fejlécet nem jóváhagyott bérlők számára, a proxynak le kell cserélnie a *korlátozás-hozzáférés – bérlői* fejlécet, ha az már szerepel a bejövő kérelemben.
 
@@ -128,13 +128,13 @@ Az Office 365-alkalmazásoknak két feltételnek kell megfelelniük a bérlői k
 1. A használt ügyfél támogatja a modern hitelesítést.
 2. Modern hitelesítés engedélyezve van, mint az alapértelmezett hitelesítési protokoll, a felhőszolgáltatás számára.
 
-Tekintse meg [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) a legfrissebb információkat a Microsoft Office mely ügyfelek jelenleg támogatja a modern hitelesítést. Az oldal adott Exchange Online és Skype vállalati Online bérlők modern hitelesítés engedélyezése az utasításokra mutató hivatkozásokat is tartalmaz. A SharePoint Online alapértelmezés szerint már lehetővé teszi a modern hitelesítés használatát.
+Tekintse meg a [frissített office 365 modern hitelesítést](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) a legújabb információkra, amelyekkel az Office-ügyfelek jelenleg támogatják a modern hitelesítést. Az oldal adott Exchange Online és Skype vállalati Online bérlők modern hitelesítés engedélyezése az utasításokra mutató hivatkozásokat is tartalmaz. A SharePoint Online alapértelmezés szerint már lehetővé teszi a modern hitelesítés használatát.
 
 Az Office 365 böngésző-alapú alkalmazások (az Office-portál, a Yammer, a SharePoint-webhelyek, az Outlook a weben és egyebek) jelenleg is támogatja a bérlői korlátozásokat. A vastag ügyfelek (az Outlook, a Skype vállalati verzió, a Word, az Excel, a PowerPoint stb.) csak a modern hitelesítés használata esetén tudják kényszeríteni a bérlői korlátozásokat.  
 
 A modern hitelesítést támogató Outlook és Skype vállalati ügyfelek továbbra is használhatnak örökölt protokollokat a bérlők esetében, ahol nincs engedélyezve a modern hitelesítés, ami gyakorlatilag megkerüli a bérlői korlátozásokat. A bérlői korlátozások az örökölt protokollokat használó alkalmazásokat letilthatják, ha a hitelesítés során kapcsolatba kerülnek a login.microsoftonline.com, a login.microsoft.com vagy a login.windows.net.
 
-Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett e-mail-fiókokat ad hozzá a profilok korlátozásokat. Ha például a [nem alapértelmezett Exchange-fiókok hozzáadásának letiltása](https://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítás.
+Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett e-mail-fiókokat ad hozzá a profilok korlátozásokat. Tekintse meg például a [nem alapértelmezett Exchange-fiókok hozzáadásának tiltása](https://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítást.
 
 ## <a name="testing"></a>Tesztelés
 
@@ -144,15 +144,15 @@ Ha a teljes szervezete előtt szeretné kipróbálni a bérlői korlátozásokat
 
 A fiddler egy ingyenes webes hibaelhárító proxy, amely segítségével rögzítése, és módosítsa a HTTP/HTTPS-forgalmat, többek között a HTTP-fejlécek beszúrását. A Hegedűs a bérlői korlátozások teszteléséhez való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. [Töltse le és telepítse a Fiddler](https://www.telerik.com/fiddler).
+1. [A Hegedűs letöltése és telepítése](https://www.telerik.com/fiddler).
 
-2. Fiddler-HTTPS-forgalom visszafejtése konfigurálása [Fiddler a Súgó dokumentációját](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
+2. Állítsa be a hegedűst a HTTPS-forgalom visszafejtéséhez a [Hegedűs súgójának dokumentációjában](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
 
-3. Konfigurálja a Fiddler beszúrása a *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet* fejlécek egyéni szabályok használatával:
+3. A Hegedűs konfigurálása a *korlátozás-hozzáférés – bérlők* és a *hozzáférés-kontextusú* fejlécek egyéni szabályokkal történő beszúrásához:
 
-   1. A Fiddler webes hibakereső eszközben válassza ki a **szabályok** menüre, majd válassza **szabályok testreszabása...** a customrules fájl egynél fájl megnyitásához.
+   1. A Hegedűs webes hibakereső eszközében válassza a **szabályok** menüt, és válassza a **szabályok testreszabása...** lehetőséget. a customrules fájl egynél fájl megnyitásához.
 
-   2. Adja hozzá a következő sorokat a `OnBeforeRequest` függvény elejéhez. Cserélje le \<bérlői tartományt\> a Bérlővel regisztrált tartománnyal (például `contoso.onmicrosoft.com`). Cserélje le \<címtár-azonosító\> a bérlő Azure AD GUID azonosítóval.
+   2. Adja hozzá a következő sorokat a `OnBeforeRequest` függvény elejéhez. Cserélje le \<bérlői tartományt\> a Bérlővel regisztrált tartománnyal (például `contoso.onmicrosoft.com`). Cserélje le \<Directory-azonosítót\> a bérlő Azure AD GUID-azonosítójával.
 
       ```JScript.NET
       if (
@@ -172,7 +172,7 @@ A fiddler egy ingyenes webes hibaelhárító proxy, amely segítségével rögz�
 
 4. Mentse és zárja be a customrules fájl egynél fájlt.
 
-Miután konfigurálta a Fiddler, a forgalom rögzítése a **fájl** menüt, és kiválasztja **forgalom rögzítése**.
+A Hegedűs konfigurálása után a forgalmat a **fájl** menüre, majd a **forgalom rögzítése**lehetőségre kattintva rögzítheti.
 
 ### <a name="staged-rollout-of-proxy-settings"></a>A proxybeállítások szakaszos bevezetés
 
@@ -183,7 +183,7 @@ A proxy infrastruktúra képességeit, függően beállításait a felhasználó
 
 További részletekért tekintse meg a proxykiszolgáló dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
-- Tekintse át a [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
+- További információ a [frissített Office 365 modern hitelesítésről](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
+- Az [Office 365 URL-címeinek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) áttekintése

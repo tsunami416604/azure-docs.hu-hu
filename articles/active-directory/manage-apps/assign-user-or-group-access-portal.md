@@ -57,7 +57,7 @@ A **felhasználó-hozzárendelés szükséges?** beállítás:
 - Ha a beállítás értéke Igen, akkor a felhasználóknak először hozzá kell rendelniük ezt az alkalmazást ahhoz, hogy hozzáférhessenek hozzá.
 - Ha ez a beállítás a nem értékre van állítva, akkor az alkalmazás részletes URL-címére vagy az alkalmazás URL-címére navigáló összes felhasználó hozzáférése lesz elérhető
 - Nem befolyásolja, hogy az alkalmazás megjelenik-e az alkalmazás-hozzáférési panelen. Ahhoz, hogy megjelenjen az alkalmazás a hozzáférési panelen, hozzá kell rendelnie egy megfelelő felhasználót vagy csoportot az alkalmazáshoz.
-- Csak az SAML egyszeri bejelentkezéshez konfigurált felhőalapú alkalmazásokkal, az Azure Active Directory előhitelesítést használó alkalmazásproxy-alkalmazásokkal és az Azure AD alkalmazás-platformon közvetlenül a OAuth 2,0/ OpenID Connect-hitelesítés miután egy felhasználó vagy rendszergazda beleegyezett az adott alkalmazásba. Lásd: [egyszeri bejelentkezés az alkalmazásokhoz](what-is-single-sign-on.md). Lásd: [a végfelhasználók beleegyezik az alkalmazásba való beleegyezett módszer](configure-user-consent.md).
+- A csak az SAML egyszeri bejelentkezéshez konfigurált felhőalapú alkalmazásokkal, az olyan alkalmazásproxy-alkalmazásokkal működik, amelyek Azure Active Directory előhitelesítést vagy közvetlenül az Azure AD-alkalmazás platformján létrehozott alkalmazásokat használják, amelyek az OAuth 2,0/OpenID Connect hitelesítést használják, miután egy felhasználó vagy rendszergazda beleegyezett az adott alkalmazásba. Lásd: [egyszeri bejelentkezés az alkalmazásokhoz](what-is-single-sign-on.md). Lásd: [a végfelhasználók beleegyezik az alkalmazásba való beleegyezett módszer](configure-user-consent.md).
 - Ez a beállítás nem lép érvénybe, ha egy alkalmazás bármely más egyszeri bejelentkezési mód esetében konfigurálva van.
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>Felhasználó társítása egy alkalmazáshoz – PowerShell
@@ -128,7 +128,7 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

@@ -69,7 +69,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
     ![A LUIS-előrejelzési erőforrás hozzáadásához válassza az előrejelzési erőforrás hozzáadása lehetőséget.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza ki **erőforrás hozzárendelése**.
+1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
 
    ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 

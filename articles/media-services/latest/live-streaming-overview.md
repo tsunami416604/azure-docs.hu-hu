@@ -120,7 +120,7 @@ Az az objektum, amelyet az élő kimenet archivál, automatikusan egy igény sze
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
 * [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-from-v2-to-v3.md)

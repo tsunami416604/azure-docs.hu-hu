@@ -1,19 +1,14 @@
 ---
-title: Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
+title: Gitrepo típusú-kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat egy Gitrepo típusú-kötetet a git-tárház klónozásához a Container instances szolgáltatásba
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325443"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533212"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
 
@@ -28,17 +23,17 @@ A *gitrepo típusú* kötet csatlakoztat egy könyvtárat, és a tároló indít
 
 *Gitrepo típusú* -kötet csatlakoztatásakor a kötet konfigurálásához három tulajdonságot állíthat be:
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
-| `repository` | Igen | A klónozott git-tárház `http://` teljes `https://`URL-címe, beleértve a vagy a-t is.|
-| `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhat vagy kezdődhet a`..`következővel: "".  Ha a "`.`" lehetőséget választja, a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
-| `revision` | Nem | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozásra kerül. |
+| `repository` | Igen | A klónozott git-tárház teljes URL-címe, beleértve a `http://` vagy `https://`is.|
+| `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhatja a "`..`" karaktert.  Ha a "`.`" lehetőséget választja, a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
+| `revision` | Nem | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozása történik. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Gitrepo típusú-kötet csatlakoztatása: Azure CLI
 
-Ha gitrepo típusú-kötetet szeretne csatlakoztatni, amikor tároló-példányokat helyez üzembe az `--gitrepo-url` [Azure CLI](/cli/azure)-vel, adja meg a és `--gitrepo-mount-path` a paramétereket az az [Container Create][az-container-create] paranccsal. Opcionálisan megadhatja a köteten belüli könyvtárat a klónozás a következőbe: (`--gitrepo-dir`), valamint a verzió elküldési kivonatának klónozását (`--gitrepo-revision`).
+Ha Gitrepo típusú-kötetet szeretne csatlakoztatni, amikor tároló-példányokat helyez üzembe az [Azure CLI](/cli/azure)-vel, adja meg a `--gitrepo-url` és `--gitrepo-mount-path` paramétereket az [az Container Create][az-container-create] paranccsal. Megadhatja a köteten belüli könyvtárat a klónozás a következőbe: (`--gitrepo-dir`) és a verziójának véglegesített kivonatát (`--gitrepo-revision`).
 
-Ez a példában szereplő parancs klónozott a Microsoft [ACI-HelloWorld][aci-helloworld] minta alkalmazást `/mnt/aci-helloworld` a tároló-példányba:
+Ez a példában szereplő parancs a Microsoft [ACI-HelloWorld][aci-helloworld] minta alkalmazást a container instance `/mnt/aci-helloworld`ba klónozott:
 
 ```azurecli-interactive
 az container create \
@@ -65,7 +60,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>Gitrepo típusú-kötet csatlakoztatása: Resource Manager
 
-Ha gitrepo típusú-kötetet szeretne csatlakoztatni, amikor [Azure Resource Manager sablonnal](/azure/templates/microsoft.containerinstance/containergroups)telepít tároló példányokat, először töltse `volumes` ki a tömböt a `properties` sablon tároló csoport szakaszában. Ezt követően a tároló csoport minden olyan tárolójában, amelyben a *gitrepo típusú* -kötetet csatlakoztatni szeretné, töltse `volumeMounts` ki a tömböt `properties` a tároló definíciójának szakaszában.
+Ha Gitrepo típusú-kötetet szeretne csatlakoztatni, amikor [Azure Resource Manager sablonnal](/azure/templates/microsoft.containerinstance/containergroups)telepíti a Container instances-t, először a sablon `properties` szakaszában töltse ki a `volumes` tömböt. Ezt követően a tároló csoport minden olyan tárolóján, amelyben a *gitrepo típusú* -kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
 
 A következő Resource Manager-sablon például létrehoz egy tároló csoportot, amely egyetlen tárolóból áll. A tároló klónozása két GitHub-tárházat határoz meg a *gitrepo típusú* . A második kötet további tulajdonságokat is tartalmaz, amelyek megadják a klónozáshoz szükséges könyvtárat, valamint a klónozás egy adott változatának véglegesítő kivonatát.
 
@@ -79,13 +74,13 @@ Az előző sablonban definiált két klónozott repó eredményeként létrejöv
 /mnt/repo2/my-custom-clone-directory
 ```
 
-Ha egy Azure Resource Manager sablonnal szeretné megtekinteni a tároló példány központi telepítésének példáját, tekintse meg a többtárolós [csoportok telepítése Azure Container Instancesban](container-instances-multi-container-group.md)című témakört.
+Ha egy Azure Resource Manager sablonnal szeretné megtekinteni a tároló példány központi telepítésének példáját, tekintse meg a [többtárolós csoportok telepítése Azure Container Instancesban](container-instances-multi-container-group.md)című témakört.
 
 ## <a name="private-git-repo-authentication"></a>Privát git-tárház hitelesítése
 
 Ha egy privát git-tárházhoz szeretne Gitrepo típusú-kötetet csatlakoztatni, akkor a tárház URL-címében a hitelesítő adatokat kell megadni. A hitelesítő adatok általában egy Felhasználónév és egy személyes hozzáférési jogkivonat (PAT) formájában vannak, amely hatókörön belüli hozzáférést biztosít a tárházhoz.
 
-Egy privát GitHub-tárházhoz `--gitrepo-url` tartozó Azure CLI-paraméter például a következőhöz hasonlóan jelenik meg (ahol a "gituser" a GitHub-Felhasználónév, a "abcdef1234fdsa4321abcdef" pedig a felhasználó személyes hozzáférési jogkivonata):
+Például a privát GitHub-tárház Azure CLI `--gitrepo-url` paramétere a következőhöz hasonlóan fog megjelenni (ahol a "gituser" a GitHub-Felhasználónév, a "abcdef1234fdsa4321abcdef" pedig a felhasználó személyes hozzáférési jogkivonata):
 
 ```azurecli
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
@@ -99,16 +94,16 @@ Egy Azure Repos git-tárház esetében adja meg a felhasználónevet (a követke
 
 A GitHub és az Azure Repos személyes hozzáférési jogkivonatával kapcsolatos további információkért tekintse meg a következőket:
 
-GitHub: [Személyes hozzáférési jogkivonat létrehozása a parancssorhoz][pat-github]
+GitHub: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz][pat-github]
 
-Azure-beli adattárak: [Személyes hozzáférési tokenek létrehozása a hozzáférés hitelesítéséhez][pat-repos]
+Azure Repos: [személyes hozzáférési tokenek létrehozása a hozzáférés hitelesítéséhez][pat-repos]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 
-* [Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása](container-instances-volume-azure-files.md)
-* [Az Azure-tároló példányát emptyDir kötet csatlakoztatása](container-instances-volume-emptydir.md)
+* [Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben](container-instances-volume-azure-files.md)
+* [EmptyDir-kötet csatlakoztatása Azure Container Instances](container-instances-volume-emptydir.md)
 * [Titkos kötet csatlakoztatása Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

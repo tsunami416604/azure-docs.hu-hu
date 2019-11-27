@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036666"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534183"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxban
 A Linux rendszerű virtuális gépeken az Azure-ban a szoftveres RAID használatával egyetlen RAID-eszközként több csatlakoztatott adatlemezt is be lehet mutatni. Ez általában a teljesítmény javítása és a jobb átviteli sebesség lehetővé tétele, mint a csak egyetlen lemez használata.
 
 ## <a name="attaching-data-disks"></a>Adatlemezek csatolása
 RAID-eszköz konfigurálásához legalább két üres adatlemez szükséges.  A RAID-eszköz létrehozásának elsődleges oka a lemezes IO teljesítményének növelése.  Az i/o-igények alapján a standard szintű tárolóban tárolt lemezeket csatlakoztathatja, és akár 500 IO/PS-t, akár lemezes, akár 5000 IO/PS-alapú Premium Storage-t is használhat. Ez a cikk nem részletesen ismerteti az adatlemezek Linux rendszerű virtuális géphez való kiépítésének és csatlakoztatásának menetét.  Tekintse meg a Microsoft Azure a [lemez csatlakoztatása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című cikket, amely részletesen ismerteti, hogyan lehet üres adatlemezt csatlakoztatni egy linuxos virtuális géphez az Azure-ban.
+
+> [!IMPORTANT]
+>Ne keverje a különböző méretű lemezeket, így a raidset teljesítménye a leglassabb lemezre korlátozódik. 
 
 ## <a name="install-the-mdadm-utility"></a>A mdadm segédprogram telepítése
 * **Ubuntu**

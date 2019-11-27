@@ -12,7 +12,7 @@ ms.locfileid: "74277532"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Egy jegyzetfüzetet a csomagok telepítése
 
-Jóllehet konfigurálhat a [környezetet a notebookot a projekt szintjén](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), érdemes közvetlenül belül az egyes jegyzetfüzet-csomagok telepítéséhez.
+Bár a projekt szintjén konfigurálhatja a [notebook környezetét](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), érdemes lehet csomagokat közvetlenül egy adott jegyzetfüzeten belül telepíteni.
 
 A notebookból telepített csomagok csak az aktuális kiszolgáló munkamenet érvényesek. Csomag telepítését követően a kiszolgáló leállítása nem megőrzött.
 
@@ -26,7 +26,7 @@ Python-csomagok pip vagy conda-parancsok használatával a kód cellák segíts�
 !conda install <package_name> -y
 ```
 
-Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azure notebookok tartalmazhatnak a csomag alapértelmezés szerint. Előfordulhat, hogy a csomag is telepítve keresztül egy [projekt környezet telepítési lépés](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azure notebookok tartalmazhatnak a csomag alapértelmezés szerint. Előfordulhat, hogy a csomagot a [Project Environment telepítési lépése](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)is telepíti.
 
 ## <a name="r"></a>R
 
@@ -46,7 +46,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-A csomagok F# telepíthető [nuget.org](https://www.nuget.org) meghívásával Paket függőség-kezelőt a kód cellák. Első lépésként töltse be a Paket manager:
+F# A csomagok a [nuget.org](https://www.nuget.org) telepíthetők, ha meghívja a Paket függőség kezelőjét a kód celláiból. Első lépésként töltse be a Paket manager:
 
 ```fsharp
 #load "Paket.fsx"
@@ -73,5 +73,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
-- [Hogyan: diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: bemutató megjelenítése](present-jupyter-notebooks-slideshow.md)

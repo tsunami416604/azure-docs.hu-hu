@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti és távolíthatja el az A
 
 Az Azure több programozási platformot is támogat az [Azure SDK](https://azure.microsoft.com/downloads)-k sorozatán keresztül. Ezek közül több frissítve lett az Azure-erőforrások felügyelt identitásának támogatásához, és megfelelő mintákat biztosít a használat bemutatásához. A lista további támogatásként való hozzáadásakor frissül:
 
-| SDK | Sample |
+| SDK | Minta |
 | --- | ------ | 
 | .NET   | [Erőforrás kezelése egy olyan virtuális gépről, amelyen engedélyezve van a felügyelt identitások használata az Azure-erőforrások számára](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [Felügyelt identitással rendelkező virtuális gépek tárterületének kezelése Azure-erőforrásokhoz](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
@@ -46,6 +46,6 @@ Az Azure több programozási platformot is támogat az [Azure SDK](https://azure
 | Python | [Virtuális gép létrehozása rendszerhez rendelt felügyelt identitással](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [Azure-beli virtuális gép létrehozása rendszer által hozzárendelt identitással](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az **Azure virtuális gép identitásának konfigurálása**című kapcsolódó cikket, amelyből megtudhatja, hogyan használhatja a Azure Portal, a PowerShell, a CLI és az erőforrás-sablonokat is.

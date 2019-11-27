@@ -1,5 +1,5 @@
 ---
-title: Run a Databricks Notebook with the Databricks Notebook activity
+title: Databricks-jegyzetfüzet futtatása a Databricks notebook tevékenységgel
 description: Ismerje meg a Databricks-jegyzetfüzetek tevékenységeinek használatát egy Azure adat-előállítóban a Databricks-jegyzetfüzetek Databricks-feladatfürtön való futtatásához.
 services: data-factory
 ms.service: data-factory
@@ -108,7 +108,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     1.  A **Hozzáférési jogkivonatot** hozza létre az Azure Databricks-munkaterületről. A lépéseket [itt](https://docs.databricks.com/api/latest/authentication.html#generate-token) találhatja meg.
 
-    1.  For **Cluster version**, select **4.2** (with Apache Spark 2.3.1, Scala 2.11)
+    1.  A **fürt verziója**esetében válassza a **4,2** elemet (Apache Spark 2.3.1, Scala 2,11)
 
     1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget az **Általános célú (HDD)** területen ehhez az oktatóanyaghoz. 
     
@@ -150,7 +150,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
           ![Új mappa létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Create a new notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), let’s call it **mynotebook** under **adftutorial** Folder, click **Create.**
+       1. [Hozzon létre egy új jegyzetfüzetet](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), hívjuk meg **mynotebook** a **adftutorial** mappában, és kattintson a **Létrehozás gombra.**
 
           ![Új jegyzetfüzet létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -178,7 +178,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Name the parameter as **input** and provide the value as expression **\@pipeline().parameters.name**.
+    b.  Nevezze el a paramétert **bemenetként** , és adja meg az értéket kifejezés **\@folyamat (). paraméterek. név**szerint.
 
 1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **\>\>** (jobbra mutató nyíl) gombra.
 
@@ -200,7 +200,7 @@ A **Folyamatfuttatás** párbeszédpanel kéri a **név** paramétert. Itt param
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1.  Switch to the **Monitor** tab. Confirm that you see a pipeline run. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
+1.  Váltson a **figyelés** lapra. Ellenőrizze, hogy megjelenik-e a folyamat futása. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
 
     ![A folyamat figyelése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 
@@ -222,7 +222,7 @@ A **Feladat nevére** kattintva megtekintheti a további részleteket. Ha a fut�
 
 ![A futtatás részleteinek és kimenetének megtekintése](media/transform-data-using-databricks-notebook/databricks-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A mintában szereplő folyamat elindít egy Databricks-jegyzetfüzet tevékenységet, és átad neki egy paramétert. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

@@ -1,6 +1,6 @@
 ---
-title: Preview use cases - Azure Time Series Insights | Microsoft Docs
-description: Learn about Azure Time Series Insights Preview use cases.
+title: Előzetes verziójú használati esetek – Azure Time Series Insights | Microsoft Docs
+description: További információ a Azure Time Series Insights előzetes verziójának használati eseteiről.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -17,89 +17,89 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227726"
 ---
-# <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Preview use cases
+# <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
-This article summarizes several common use cases for Azure Time Series Insights Preview. The recommendations in this article serve as a starting point to develop your applications and solutions with Time Series Insights.
+Ez a cikk a Azure Time Series Insights előzetes verziójának számos gyakori felhasználási esetét összegzi. A cikkben szereplő javaslatok kiindulási pontként szolgálnak az alkalmazások és megoldások fejlesztéséhez Time Series Insights használatával.
 
-Specifically, this article answers the following questions:
+Ez a cikk a következő kérdésekre ad választ:
 
-* What are the common use cases for Time Series Insights?
-* What are the benefits of using Time Series Insights for [data exploration and visual anomaly detection](#data-exploration-and-visual-anomaly-detection)?
-* What are the benefits of using Time Series Insights for [operational analysis and process efficiency](#operational-analysis-and-driving-process-efficiency)?
-* What are the benefits of using Time Series Insights for [advanced analytics](#advanced-analytics)?
+* Melyek a Time Series Insights gyakori használati esetei?
+* Milyen előnyökkel jár a Time Series Insights használata az [adatelemzési és a vizualizációs rendellenességek észleléséhez](#data-exploration-and-visual-anomaly-detection)?
+* Milyen előnyökkel jár a Time Series Insights használata az [operatív elemzéshez és a folyamatok hatékonyságához](#operational-analysis-and-driving-process-efficiency)?
+* Milyen előnyökkel jár a [speciális elemzések](#advanced-analytics)Time Series Insights használata?
 
-An overview of these use scenarios is described in the following sections.
+A következő szakaszokban ismertetjük a használati forgatókönyvek áttekintését.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
-Azure Time Series Insights is an end-to-end, platform-as-a-service offering. It's used to collect, process, store, analyze, and query highly contextualized, time-series-optimized IoT-scale data. Time Series Insights is ideal for ad-hoc data exploration and operational analysis. Time Series Insights is a uniquely extensible, customized service offering that meets the broad needs of industrial IoT deployments.
+Azure Time Series Insights egy teljes körű, szolgáltatásként nyújtott platformot kínál. A szolgáltatás a kifejezetten környezetfüggő, idősorozat-optimalizált IoT adatok gyűjtésére, feldolgozására, tárolására, elemzésére és lekérdezésére szolgál. A Time Series Insights ideális megoldás az alkalmi adatfeltárásra és az operatív elemzésre. A Time Series Insights egy egyedileg bővíthető, testreszabott szolgáltatás, amely megfelel az ipari IoT üzemelő példányok széles körű igényeinek.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Adatfeltárás és vizuális anomáliadetektálás
 
 Több milliárd eseményt vizsgálhat meg és elemezhet azonnal, és feltárhatja a rendellenességeket, és megismerheti az adatok rejtett trendjeit. A Time Series Insights közel valós idejű teljesítményt nyújt az IoT- és DevOps-alapú elemzési számítási feladatoknál.
 
-[![Data explorer](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
+[![adatkezelő](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
-Most customers agree that the minimal amount of time required to gain insight is one of the standout features of Time Series Insights:
+A legtöbb ügyfél egyetért azzal, hogy az információk beszerzéséhez szükséges minimális idő az Time Series Insights egyik kiemelkedő funkciója:
 
-* Time Series Insights requires no upfront data preparation. 
-* It works fast to connect you to billions of events in your Azure IoT Hub or Azure Event Hubs instances in minutes. 
-* Once connected, you can visualize and analyze billions of events to spot anomalies and discover hidden trends in your data.
+* Az Time Series Insights nem igényel előzetes adatelőkészítést. 
+* Percek alatt összekapcsolhatja az Azure-IoT Hub vagy az Azure Event Hubs-példányok több milliárd eseményét. 
+* A csatlakozást követően több milliárd eseményt jeleníthet meg és elemezheti a rendellenességek észlelése és az adatai rejtett trendjeinek felderítése érdekében.
 
-Time Series Insights is intuitive and simple to use. You can interact with your data without writing a single line of code. There’s also no new language you're required to learn, although Time Series Insights provides a granular text-based querying language for advanced users who are familiar with SQL. It also provides select-and-click exploration for novices.
+A Time Series Insights intuitív és könnyen használható. Az adataival egyetlen sor kód írása nélkül is dolgozhat. Nem szükséges új nyelvet megtanulnia, bár a Time Series Insights egy részletes szöveges lekérdezési nyelvet biztosít az SQL-t ismerő haladó felhasználók számára. Emellett a kezdők számára kiválasztható és kattintásos feltárást is biztosít.
 
-Customers can take advantage of the speed to diagnose asset-related issues quickly. They can perform DevOps analysis to get to the root cause of a bug in an IoT solution. They also can identify areas to flag for further investigation as part of their data science initiatives. 
+Az ügyfelek gyorsan kihasználhatják az eszközökhöz kapcsolódó problémák gyors diagnosztizálásához szükséges előnyöket. DevOps-elemzést végezhetnek a IoT-megoldásban fellépő hibák kiváltó okának eléréséhez. Emellett az adatelemzési kezdeményezéseik részeként is meghatározhatják a további vizsgálathoz szükséges területeket. 
 
-There are three primary ways to interact with data stored in Time Series Insights:
+A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
-* The first and easiest way to get started is with the Time Series Insights Preview explorer. You can use it to quickly visualize all of your IoT data in one place. It provides tools like the heat map to help you spot anomalies in your data. It also provides a perspective view. Use it to compare up to four views from one or more Time Series Insights environments in a single dashboard. The dashboard gives you a view of your time-series data across all your locations. Learn more about the [Time Series Insights Preview explorer](./time-series-insights-update-explorer.md). To plan out your Time Series Insights environment, read [Time Series Insights planning](./time-series-insights-update-plan.md).
+* Első és legegyszerűbb módja a Time Series Insights Preview Explorer. A segítségével gyorsan megjelenítheti az összes IoT-adatait egy helyen. Olyan eszközöket biztosít, mint például a hő-Térkép, amely segít az adatrendellenességek kiépítésében. Emellett perspektivikus nézetet is biztosít. Ezzel a beállítással akár négy nézetet is összehasonlíthat egy vagy több Time Series Insights környezetből egyetlen irányítópulton. Az irányítópulton megtekintheti az idősoros adatait az összes helyen. További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md). Time Series Insights környezetének megtervezéséhez olvassa el [Time Series Insights megtervezését](./time-series-insights-update-plan.md).
 
-* The second way to start is to use the JavaScript SDK to quickly embed powerful charts and graphs in your web application. With just a few lines of code, you can author powerful queries. Use them to populate line charts, pie charts, bar charts, heat maps, data grids, and more. All of these elements exist out-of-the-box by using the SDK. The SDK also abstracts Time Series Insights query APIs. You can use them to author SQL-like predicates to query the data you want to show on a dashboard. For hybrid presentation-layer solutions, Time Series Insights offers parameterized URLs. They provide seamless connection points with the Time Series Insights Preview explorer for deep dives into data.
+* A második módszer a JavaScript SDK használata a hatékony diagramok és diagramok gyors beágyazásához a webalkalmazásban. A kód mindössze néhány sornyi kódot használhat a hatékony lekérdezések létrehozásához. A táblázatok, a tortadiagramok, a sávdiagramok, a Heat Maps és az adatrácsok feltöltésére használhatók. Ezen elemek mindegyike az SDK használatával létezik. Az SDK emellett absztrakt Time Series Insights lekérdezési API-kat is. Az SQL-hez hasonló predikátumok létrehozásához használhatja őket az irányítópulton megjeleníteni kívánt adatlekérdezéshez. Hibrid megjelenítési rétegbeli megoldások esetén a Time Series Insights paraméteres URL-címeket is kínál. Zökkenőmentes csatlakozást biztosítanak a Time Series Insights betekintő Explorerrel az adatelemzéshez.
 
-  * Read about the [Time Series Insights JS client library](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) and the [Time Series Insights client](https://github.com/Microsoft/tsiclient) documentation to learn more about the JavaScript SDK.
+  * A JavaScript SDK-val kapcsolatos további információkért olvassa el a [Time Series INSIGHTS js ügyféloldali kódtár](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) és a [Time Series Insights ügyfél](https://github.com/Microsoft/tsiclient) dokumentációja című témakört.
 
-  * Learn more about sharing URLs and the new UI by reviewing [Visualize data in the Azure Time Series Insights Preview explorer](time-series-insights-update-explorer.md).
+  * További információ az URL-címek és az új felhasználói felület megosztásáról: [a Azure Time Series Insights Preview Explorerben](time-series-insights-update-explorer.md)tekintheti meg az adatmegjelenítést.
 
-* The third way to start is to use the powerful APIs to query data stored in Time Series Insights. Time Series Insights has temporal operators such as `from`, `to`, `first`, and `last`. It has aggregations and transformations such as `average`, `min`, `max`, `split by`, `order by`, and `DateHistogram`. It also has filtering operators such as `has`, `in`, `and`, `or`, `greater than`, and `REGEX`. All these operators enable downstream applications to quickly find interesting trends and patterns in your data. Use them to populate homegrown visualizations to spot anomalies.
+* A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights olyan időbeli operátorokkal rendelkezik, mint például a `from`, a `to`, a `first`és a `last`. Összesítések és átalakítások, például `average`, `min`, `max`, `split by`, `order by`és `DateHistogram`. Emellett olyan szűrési operátorokat is tartalmaz, mint például a `has`, `in`, `and`, `or`, `greater than`és `REGEX`. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Üzemeltetéselemzés és a folyamatok hatékonyságának növelése
 
-Use Time Series Insights to monitor the health, usage, and performance of equipment at scale. Time Series Insights provides an easy way to measure operational efficiency. A Time Series Insights használatával azonnali és rugalmas skálázhatósággal kezelheti a változatos és kiszámíthatatlan IoT-terheléseket a betöltések és a lekérdezések teljesítményének csökkenése nélkül.
+A Time Series Insights használatával figyelheti az állapotot, a használatot és a nagy méretű berendezések teljesítményét. Time Series Insights egyszerű módszert kínál a működési hatékonyság mérésére. A Time Series Insights használatával azonnali és rugalmas skálázhatósággal kezelheti a változatos és kiszámíthatatlan IoT-terheléseket a betöltések és a lekérdezések teljesítményének csökkenése nélkül.
 
-[![Overview](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![áttekintése](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
-Streaming and continuous processing of data coming from operational processes can successfully transform any business if it's combined with the right technology or solution. Often these solutions are a combination of multiple systems. They enable exploration and analysis of data that changes constantly, especially in the IoT realm, and share a common pattern.
+A működési folyamatokból érkező adatok folyamatos átvitele és folyamatos feldolgozása a megfelelő technológiával vagy megoldással együtt sikeresen átalakíthatja a vállalatokat. Ezek a megoldások gyakran több rendszer kombinációját jelentik. Lehetővé teszik az állandóan módosult, különösen az IoT-tartományon belüli adatelemzést és elemzést, és megosztanak egy közös mintát.
 
-These patterns often start with IoT-enabled platforms that ingest billions of events from devices and sensors that span various locales. These systems process and analyze streaming data to derive real-time insights and actions. Data is typically archived to warm and cold store for near real-time and batch analytics.
+Ezek a minták gyakran olyan IoT-kompatibilis platformokkal kezdődnek, amelyek több milliárd eseményt is betöltenek az eszközöktől és érzékelőktől, amelyek különböző területi beállításokra terjednek ki. Ezek a rendszerek a valós idejű elemzések és műveletek elvégzése érdekében dolgozzák fel és elemzik a streaming-adatforrásokat. Az adatok általában a meleg és a hideg tárolóba kerülnek, közel valós időben és kötegelt elemzésekhez.
 
-Data that's collected goes through a series of processing to cleanse and contextualize it for downstream querying and analytics scenarios. Azure offers rich services that can be applied to IoT scenarios such as asset maintenance and manufacturing. These services include Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic Apps, Azure Databricks, Azure Machine Learning, and Power BI.
+Az összegyűjtött adatok több feldolgozási folyamaton keresztül megtisztíthatók és contextualize az alsóbb rétegbeli lekérdezési és elemzési forgatókönyvek esetében. Az Azure gazdag szolgáltatásokat kínál, amelyek alkalmazhatók olyan IoT-forgatókönyvek esetén, mint az eszközök karbantartása és a gyártás. Ezek a szolgáltatások többek között a következők: Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic apps, Azure Databricks, Azure Machine Learning és Power BI.
 
-Solution architecture can be achieved in the following manner:
+A megoldás architektúrája a következő módon érhető el:
 
-* Ingest data via IoT Hub or Event Hubs for best-in-class security, throughput, and latency.
-* Perform data processing and computations. Funnel ingested data through services such as Stream Analytics, Logic Apps, and Azure Functions. The service you use depends on the specific data-processing needs.
-* Computed signals from the processing pipeline are pushed to Time Series Insights for storing and analytics.
+* Adatok betöltése IoT Hub vagy Event Hubs használatával a legjobb biztonsági, átviteli sebesség és késés érdekében.
+* Adatfeldolgozás és-számítások végrehajtása. A betöltött adatcsatornákat olyan szolgáltatásokon keresztül, mint például a Stream Analytics, a Logic Apps és a Azure Functions. Az Ön által használt szolgáltatás a konkrét adatfeldolgozási igényektől függ.
+* A feldolgozási folyamatból származó számított jeleket a rendszer leküldi a tároláshoz és az elemzéshez Time Series Insights.
 
-Time Series Insights offers near real-time data exploration and asset-based insights over historical data. Depending on your business needs, MapReduce and Hive jobs can run on data stored in Time Series Insights by connecting Time Series Insights to Azure HDInsight. Data stored in Time Series Insights is available to Power BI and other customer applications via the Time Series Insights public surface query APIs. This data can be used for deep business and operational intelligence scenarios.
+A Time Series Insights közel valós idejű adatfeltárást és adatelemzést kínál a múltbeli adatokkal kapcsolatban. Az üzleti igényektől függően a MapReduce és a Kaptári feladatok a Time Series Insights tárolt adatokon futhatnak Time Series Insights az Azure HDInsight-hoz való csatlakoztatásával. A Time Series Insightsban tárolt adatPower BIk és más ügyfélalkalmazások számára elérhetők a Time Series Insights nyilvános felületű lekérdezési API-kon keresztül. Ezek az adatok a Deep Business és az operatív intelligenciával kapcsolatos forgatókönyvekhez használhatók.
 
 ## <a name="advanced-analytics"></a>Bővített analitika
 
-Integrate with advanced analytics services such as Machine Learning and Azure Databricks. Time Series Insights ingresses raw data from millions of devices. It adds contextual data that can be consumed seamlessly by a suite of Azure analytics services.
+Integrálja a fejlett elemzési szolgáltatásokkal, például a Machine Learning és a Azure Databricksokkal. Time Series Insights több millió eszközről ingresses a nyers adatok mennyiségét. Olyan környezetfüggő adatok hozzáadására szolgál, amelyeket az Azure Analytics-szolgáltatások egy csomagja zökkenőmentesen felhasználhat.
 
-[![Analytics](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
+[![Analitika](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
 
-Advanced analytics and machine learning consume and process large volumes of data. This data is used to make data-driven decisions and perform predictive analysis. In IoT use cases, advanced analytics algorithms learn from the data collected from millions of devices. These devices transmit data multiple times every second. The data collected from IoT devices is raw. It lacks contextual information such as the location of the device and the unit of the sensor reading. As a result, raw data is difficult to consume directly for advanced analytics.
+A fejlett elemzési és gépi tanulási szolgáltatás nagy mennyiségű adatmennyiséget használ fel és dolgoz fel. Ezek az adatok az adatvezérelt döntések végrehajtásához és a prediktív elemzések elvégzéséhez használatosak. A IoT-használati esetekben a fejlett elemzési algoritmusok a több millió eszközről gyűjtött adatokból tanulnak. Ezek az eszközök többször továbbítanak adatokat másodpercenként. A IoT-eszközökről gyűjtött adatok nyersek. Nem rendelkezik a kontextussal kapcsolatos információkkal, például az eszköz helyével és az érzékelő olvasásának egységével. Ennek eredményeképpen a nyers adatfeldolgozást nehéz közvetlenül a speciális elemzésekhez használni.
 
-Time Series Insights bridges the gap between IoT data and advanced analytics in two simple and cost-effective ways:
+Time Series Insights áthidalja a IoT és a fejlett Analitika közötti szakadékot két egyszerű és költséghatékony módon:
 
-* First, Time Series Insights collects raw telemetry data from millions of devices by using IoT Hub. It enriches data with contextual information and transforms data into a parquet format. This format can easily integrate with other advanced analytics services, such as Machine Learning, Azure Databricks, and third-party applications.
+* A Time Series Insights a IoT Hub használatával gyűjti össze a nyers telemetria-adatokat több millió eszközről. A szolgáltatás a környezetfüggő adatokkal gazdagítja az adatokat, és egy parketta formátumba alakítja át az adatokat. Ez a formátum egyszerűen integrálható más fejlett analitikai szolgáltatásokkal, például Machine Learningokkal, Azure Databricksekkel és külső gyártók alkalmazásaival.
 
-    Time Series Insights can serve as the source of truth for all data across an organization. It creates a central repository for downstream analytics workloads to consume. Because Time Series Insights is a near real-time storage service, advanced analytics models can learn continuously from incoming IoT telemetry data. As a result, the models can make more accurate predictions.
+    Time Series Insights az igazság forrásaként szolgálhat a szervezeten belüli összes adathoz. Létrehoz egy központi tárházat az alsóbb rétegbeli elemzési számítási feladatok felhasználásához. Mivel Time Series Insights közel valós idejű tárolási szolgáltatás, a fejlett elemzési modellek folyamatosan megismerhetik a bejövő IoT telemetria adatait. Ennek eredményeképpen a modellek pontosabb előrejelzéseket készíthetnek.
 
-* Second, the output of machine learning and prediction models can be fed into Time Series Insights to visualize and store their results. This procedure helps organizations to optimize and tweak their models. Time Series Insights makes it simple to visualize streaming telemetry data on the same plane as the trained model outputs. In this way, it helps data science teams spot anomalies and identify patterns.
+* Másodszor, a gépi tanulási és előrejelzési modellek kimenete Time Series Insightsba is helyezhető az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. A Time Series Insights megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban ábrázolni. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Learn more about the [Time Series Insights Preview explorer](./time-series-insights-update-explorer.md).
-* Read [Time Series Insights Preview planning](./time-series-insights-update-plan.md) to plan out your environment.
-* Read the [Time Series Insights client](https://github.com/Microsoft/tsiclient) documentation.
+* További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md).
+* A környezet megtervezéséhez olvassa el [Time Series Insights előzetes verziójának tervezését](./time-series-insights-update-plan.md) .
+* Olvassa el a [Time Series Insights-ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.

@@ -70,7 +70,7 @@ A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati
 Sablon paraméterei:
 
 * **namespacename tulajdonság**: Service Bus névtér.
-* **virtualNetworkingSubnetId**: teljesen minősített erőforrás-kezelő elérési útját a virtuális hálózat alhálózatához; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
+* **virtualNetworkingSubnetId**: a virtuális hálózati alhálózat teljes erőforrás-kezelő útvonala; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózatához.
 
 > [!NOTE]
 > Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
@@ -188,7 +188,7 @@ Sablon:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Virtuális hálózatokkal kapcsolatos további információkért lásd az alábbi hivatkozásokat:
 

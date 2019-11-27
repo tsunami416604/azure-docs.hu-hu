@@ -251,7 +251,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. Ha kiválasztotta, az **Áttekintés > Tárfiók törlése** paranccsal törölheti a tárfiókot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A példákból megtudhatja, hogyan tölthet le blobokat és jelentheti az állapotot a fájlfeltöltések során.
 
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Configure Workday for automatic user provisioning with Azure Active Directory | Microsoft Docs'
-description: Learn how to configure Azure Active Directory to automatically provision and de-provision user accounts to Workday.
+title: 'Oktatóanyag: munkanapok konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez a munkanapokon.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -22,839 +22,839 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233331"
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Configure Workday for automatic user provisioning
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
-The objective of this tutorial is to show the steps you need to perform to import worker profiles from Workday into both Active Directory and Azure Active Directory, with optional write-back of email address and username to Workday.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző profilok munkanapokból történő importálásához szükséges lépéseket a Active Directory és a Azure Active Directory között, az e-mail-cím és a Felhasználónév munkanapokon történő opcionális visszaírásával.
 
 ## <a name="overview"></a>Áttekintés
 
-The [Azure Active Directory user provisioning service](../manage-apps/user-provisioning.md) integrates with the [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) in order to provision user accounts. Azure AD uses this connection to enable the following user provisioning workflows:
+A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasználó-kiépítési szolgáltatás](../manage-apps/user-provisioning.md) integrálva van a [MUNKANAP emberi erőforrások API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) -val. Az Azure AD ezt a kapcsolódást használja a következő felhasználó-kiépítési munkafolyamatok engedélyezéséhez:
 
-* **Provisioning users to Active Directory** - Provision selected sets of users from Workday into one or more Active Directory domains.
+* A felhasználók kiépítésével **Active Directory** kiépíteni a kiválasztott felhasználók csoportját a munkanapokból egy vagy több Active Directory tartományba.
 
-* **Provisioning cloud-only users to Azure Active Directory** - In scenarios where on-premises Active Directory is not used, users can be provisioned directly from Workday to Azure Active Directory using the Azure AD user provisioning service.
+* **Csak a felhőben lévő felhasználók** kiépítésére Azure Active Directory – olyan helyzetekben, amikor a helyszíni Active Directory nem használatos, a felhasználók az Azure ad-alapú felhasználói létesítési szolgáltatás használatával közvetlenül a munkahelyről is üzembe helyezhetők Azure Active Directory.
 
-* **Write back email address and username to Workday** - The Azure AD user provisioning service can write the email addresses and username from Azure AD back to Workday.
+* **E-mail-cím és Felhasználónév visszaírása munkanapokba** – az Azure ad-beli felhasználói kiépítési szolgáltatás az Azure ad-ből származó e-mail-címeket és felhasználóneveket visszaállíthatja munkanapokra.
 
-### <a name="what-human-resources-scenarios-does-it-cover"></a>What human resources scenarios does it cover?
+### <a name="what-human-resources-scenarios-does-it-cover"></a>Milyen emberi erőforrás-forgatókönyveket takar?
 
-The Workday user provisioning workflows supported by the Azure AD user provisioning service enable automation of the following human resources and identity lifecycle management scenarios:
+Az Azure AD-alapú felhasználó-kiépítési szolgáltatás által támogatott munkafolyamatok munkafolyamatai lehetővé teszik a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását:
 
-* **Hiring new employees** - When a new employee is added to Workday, a user account is automatically created in Active Directory, Azure Active Directory, and optionally Office 365 and [other SaaS applications supported by Azure AD](../manage-apps/user-provisioning.md), with write-back of the email address to Workday.
+* **Új alkalmazottak felvétele** – új alkalmazottak munkanapokhoz való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../manage-apps/user-provisioning.md), és az e-mail-címet a munkanapokra írja vissza.
 
-* **Employee attribute and profile updates** - When an employee record is updated in Workday (such as their name, title, or manager), their user account will be automatically updated in Active Directory, Azure Active Directory, and optionally Office 365 and [other SaaS applications supported by Azure AD](../manage-apps/user-provisioning.md).
+* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekordot munkanapon frissítenek (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokban](../manage-apps/user-provisioning.md)is.
 
-* **Employee terminations** - When an employee is terminated in Workday, their user account is automatically disabled in Active Directory, Azure Active Directory, and optionally Office 365 and [other SaaS applications supported by Azure AD](../manage-apps/user-provisioning.md).
+* **Alkalmazotti megszakítások** – ha egy alkalmazott munkanapokon leáll, a felhasználói fiókja automatikusan le van tiltva Active Directory, Azure Active Directory és opcionálisan az Office 365 és az [Azure ad által támogatott egyéb SaaS-alkalmazások](../manage-apps/user-provisioning.md)esetében.
 
-* **Employee rehires** - When an employee is rehired in Workday, their old account can be automatically reactivated or re-provisioned (depending on your preference) to Active Directory, Azure Active Directory, and optionally Office 365 and [other SaaS applications supported by Azure AD](../manage-apps/user-provisioning.md).
+* **Alkalmazottak** újratelepítése – ha egy alkalmazottat munkanapokon helyeztek át újra, a régi fiókjuk automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory és opcionálisan az Office 365-et és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../manage-apps/user-provisioning.md).
 
-### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Who is this user provisioning solution best suited for?
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
 
-This Workday user provisioning solution is ideally suited for:
+Ez a munkanap felhasználói kiépítési megoldás ideális a következőkhöz:
 
-* Organizations that desire a pre-built, cloud-based solution for Workday user provisioning
+* Olyan szervezetek, amelyek előre elkészített, felhőalapú megoldást kívánnak a munkanapokon történő felhasználói kiépítéshez
 
-* Organizations that require direct user provisioning from Workday to Active Directory, or Azure Active Directory
+* Azok a szervezetek, amelyekhez közvetlen felhasználó-kiépítés szükséges a munkanapokból a Active Directoryba vagy Azure Active Directory
 
-* Organizations that require users to be provisioned using data obtained from the Workday HCM module (see [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
+* Azok a szervezetek, amelyekhez a felhasználók számára a munkanap HCM-modulból beszerzett adatok használatával kell kiépíteni a felhasználókat (lásd: [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
-* Organizations that require joining, moving, and leaving users to be synced to one or more Active Directory Forests, Domains, and OUs based only on change information detected in the Workday HCM module (see [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
+* Azokat a szervezeteket, amelyeknek a felhasználókhoz való csatlakozást, áthelyezést és ellépést kell elhagynia egy vagy több Active Directory-erdőben, tartományon és szervezeti egységen, csak a munkanap HCM- [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)modulban észlelt változási információk alapján
 
-* Organizations using Office 365 for email
+* Office 365-t használó szervezetek e-mailben
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
-This section describes the end-to-end user provisioning solution architecture for common hybrid environments. There are two related flows:
+Ez a szakasz a közös hibrid környezetek teljes körű felhasználói üzembe helyezési megoldásának architektúráját ismerteti. Két kapcsolódó folyamat létezik:
 
-* **Authoritative HR Data Flow – from Workday to on-premises Active Directory:** In this flow worker events (such as New Hires, Transfers, Terminations) first occur in the cloud Workday HR tenant and then the event data flows into on-premises Active Directory through Azure AD and the Provisioning Agent. Depending on the event, it may lead to create/update/enable/disable operations in AD.
-* **Email and Username Writeback Flow – from on-premises Active Directory to Workday:** Once the account creation is complete in Active Directory, it is synced with Azure AD through Azure AD Connect and email and username attribute can be written back to Workday.
+* **Mérvadó HR-adatfolyam – a munkanap és a helyszíni Active Directory között:** Ebben a folyamatban lévő munkavégző esemény (például új bérletek, átvitelek, megszakítások) először a Felhőbeli munkanap HR-bérlőben fordul elő, majd az esemény az Azure AD-n és a kiépítési ügynökön keresztül a helyszíni Active Directoryba áramlik. Az eseménytől függően előfordulhat, hogy az AD-ben létrehoz/frissít/engedélyez/letilt műveleteket.
+* **E-mail-cím és Felhasználónév visszaírási folyamat – helyszíni Active Directoryról munkanapokra:** Ha a fiók létrehozása befejeződött a Active Directoryban, az Azure AD-vel való szinkronizálása a Azure AD Connect és az e-mailek és a username attribútum használatával is visszaírható a munkanapokba.
 
 ![Áttekintés](./media/workday-inbound-tutorial/wd_overview.png)
 
-### <a name="end-to-end-user-data-flow"></a>End-to-end user data flow
+### <a name="end-to-end-user-data-flow"></a>Végpontok közötti felhasználói adatfolyam
 
-1. The HR team performs worker transactions (Joiners/Movers/Leavers or New Hires/Transfers/Terminations) in Workday HCM
-2. The Azure AD Provisioning Service runs scheduled synchronizations of identities from Workday HR and identifies changes that need to be processed for sync with on-premises Active Directory.
-3. The Azure AD Provisioning Service invokes the on-premises Azure AD Connect Provisioning Agent with a request payload containing AD account create/update/enable/disable operations.
-4. The Azure AD Connect Provisioning Agent uses a service account to add/update AD account data.
-5. The Azure AD Connect / AD Sync engine runs delta sync to pull updates in AD.
-6. The Active Directory updates are synced with Azure Active Directory.
-7. If the Workday Writeback connector is configured, it writes back email attribute and username to Workday, based on the matching attribute used.
+1. A HR-csapat munkavégző tranzakciókat (összekötőket/Mozgatókat/kimaradt vagy új bérleteket/átviteleket/megszakításokat) végez a munkanap HCM-ben.
+2. Az Azure AD kiépítési szolgáltatás a munkanap HR-ből futtatja az identitások ütemezett szinkronizálását, és azonosítja azokat a módosításokat, amelyeket a helyszíni Active Directorysal való szinkronizáláshoz kell feldolgozni.
+3. Az Azure AD-kiépítési szolgáltatás meghívja a helyszíni Azure AD Connect kiépítési ügynököt az AD-fiók létrehozási/frissítési/engedélyezési/letiltási műveleteit tartalmazó kérelem-adattartalommal.
+4. Az Azure AD Connect-kiépítési ügynök egy szolgáltatásfiókot használ az AD-fiókadatok hozzáadásához/frissítéséhez.
+5. A Azure AD Connect/AD-szinkronizáló motor különbözeti szinkronizálást futtat a frissítések AD-ben való lekéréséhez.
+6. A Active Directory frissítések szinkronizálva vannak a Azure Active Directoryval.
+7. Ha a munkanap visszaírási-összekötő konfigurálva van, az e-mail-attribútumot és a felhasználónevet a munkanap értékre írja, a használt attribútum alapján.
 
-## <a name="planning-your-deployment"></a>Planning your deployment
+## <a name="planning-your-deployment"></a>Az üzembe helyezés megtervezése
 
-Before beginning your Workday integration, check the prerequisites below and read the following guidance on how to match your current Active Directory architecture and user provisioning requirements with the solution(s) provided by Azure Active Directory. A comprehensive [deployment plan](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) with planning worksheets is also available to assist you in collaborating with your Workday integration partner and HR stakeholders.
+A munkanap-integráció megkezdése előtt tekintse át az alábbi előfeltételeket, és olvassa el az alábbi útmutatást arról, hogyan egyeznek meg a jelenlegi Active Directory architektúrával és a felhasználói kiépítési követelményekkel a Azure Active Directory által biztosított megoldás (ok) val. A tervezési munkalapokkal átfogó [üzembe helyezési terv](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) is rendelkezésre áll, amely segítséget nyújt a munkanap-integrációs partner és a HR-résztvevő együttműködéséhez.
 
-This section covers the following aspects of planning:
+Ez a szakasz a tervezés következő szempontjait ismerteti:
 
 * [Előfeltételek](#prerequisites)
-* [Selecting provisioning connector apps to deploy](#selecting-provisioning-connector-apps-to-deploy)
-* [Planning deployment of Azure AD Connect Provisioning Agent](#planning-deployment-of-azure-ad-connect-provisioning-agent)
-* [Integrating with multiple Active Directory domains](#integrating-with-multiple-active-directory-domains)
-* [Planning Workday to Active Directory User Attribute Mapping and Transformations](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
+* [Üzembe helyezési összekötő-alkalmazások kiválasztásának kiválasztása](#selecting-provisioning-connector-apps-to-deploy)
+* [Azure AD Connect kiépítési ügynök központi telepítésének megtervezése](#planning-deployment-of-azure-ad-connect-provisioning-agent)
+* [Integráció több Active Directory tartománnyal](#integrating-with-multiple-active-directory-domains)
+* [Munkanapok tervezése a felhasználói attribútumok leképezésének és átalakításának Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-The scenario outlined in this tutorial assumes that you already have the following items:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
-* A valid Azure AD Premium P1 or higher subscription license for every user that will be sourced from Workday and provisioned into either on-premises Active Directory or Azure Active Directory.
-* Azure AD global administrator access to configure the provisioning agent
-* A Workday implementation tenant for testing and integration purposes
-* Administrator permissions in Workday to create a system integration user, and make changes to test employee data for testing purposes
-* For user provisioning to Active Directory, a server running Windows Server 2012 or greater with .NET 4.7.1+ runtime is required to host the [on-premises provisioning agent](https://go.microsoft.com/fwlink/?linkid=847801)
-* [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) for synchronizing users between Active Directory and Azure AD
+* Érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizetési licenc minden olyan felhasználó számára, aki a munkanapokból származik, és amelyet a helyszíni Active Directoryba vagy Azure Active Directoryba kell kiépíteni.
+* Azure AD globális rendszergazdai hozzáférés a kiépítési ügynök konfigurálásához
+* Egy munkanap-implementációs bérlő tesztelési és integrációs célokra
+* Rendszergazdai engedélyek a munkanapokon rendszerintegrációs felhasználó létrehozásához, valamint a tesztelési célú alkalmazottakra vonatkozó adatellenőrzések módosítása
+* A felhasználók Active Directory való kiépítéséhez a .NET 4.7.1 + Runtime használatával a Windows Server 2012 vagy újabb rendszert futtató kiszolgáló szükséges a helyszíni [kiépítési ügynök](https://go.microsoft.com/fwlink/?linkid=847801) üzemeltetéséhez.
+* [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) a felhasználók Active Directory és az Azure ad közötti szinkronizálásához
 
-### <a name="selecting-provisioning-connector-apps-to-deploy"></a>Selecting provisioning connector apps to deploy
+### <a name="selecting-provisioning-connector-apps-to-deploy"></a>Üzembe helyezési összekötő-alkalmazások kiválasztásának kiválasztása
 
-To facilitate provisioning workflows between Workday and Active Directory, Azure AD provides multiple provisioning connector apps that you can add from the Azure AD app gallery:
+A munkafolyamatok munkanap és Active Directory közötti kiépítés megkönnyítéséhez az Azure AD több üzembe helyezési összekötő alkalmazást is biztosít, amelyeket hozzáadhat az Azure AD-alkalmazás-katalógusból:
 
-![Azure AD App Gallery](./media/workday-inbound-tutorial/wd_gallery.png)
+![Azure AD alkalmazás gyűjtemény](./media/workday-inbound-tutorial/wd_gallery.png)
 
-* **Workday to Active Directory User Provisioning** - This app facilitates user account provisioning from Workday to a single Active Directory domain. If you have multiple domains, you can add one instance of this app from the Azure AD app gallery for each Active Directory domain you need to provision to.
+* **Munkanapokat Active Directory a felhasználók üzembe** helyezéséhez – ez az alkalmazás megkönnyíti a felhasználói fiókok kiépítési idejét egyetlen Active Directory tartományba. Ha több tartománya van, az alkalmazás egy példányát hozzáadhatja az Azure AD-alkalmazás-katalógusból minden Active Directory-tartományhoz, amelyre telepítenie kell.
 
-* **Workday to Azure AD User Provisioning** - While Azure AD Connect is the tool that should be used to synchronize Active Directory users to Azure Active Directory, this app can be used to facilitate provisioning of cloud-only users from Workday to a single Azure Active Directory tenant.
+* **Munkanapokat az Azure ad** -felhasználók üzembe helyezéséhez – míg a Azure ad Connect az az eszköz, amellyel a Azure Active Directory Active Directory felhasználókat szinkronizálni kell, ez az alkalmazás a Felhőbeli felhasználók munkanapokból egyetlen Azure Active Directory bérlővé való kiépítés megkönnyítésére használható.
 
-* **Workday Writeback** - This app facilitates write-back of user's email addresses from Azure Active Directory to Workday.
+* **Munkanap visszaírási** – ez az alkalmazás lehetővé teszi a felhasználó e-mail-címeinek visszaírását Azure Active Directoryról munkanapokra.
 
 > [!TIP]
-> The regular "Workday" app is used for setting up single sign-on between Workday and Azure Active Directory.
+> A normál "munkanap" alkalmazás a munkanapok és a Azure Active Directory közötti egyszeri bejelentkezés beállítására szolgál.
 
-Use the decision flow chart below to identify which Workday provisioning apps are relevant to your scenario.
-    ![Decision Flowchart](./media/workday-inbound-tutorial/wday_app_flowchart.png "Decision Flowchart")
+Az alábbi döntési folyamatábra segítségével azonosíthatja, hogy mely munkanapokat kell kiépíteni az adott forgatókönyvhöz.
+    ![Döntési folyamatábra](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisIon-folyamatábra ")
 
-Use the table of contents to go to the relevant section of this tutorial.
+A tartalomjegyzék használatával lépjen az oktatóanyag vonatkozó szakaszára.
 
-### <a name="planning-deployment-of-azure-ad-connect-provisioning-agent"></a>Planning deployment of Azure AD Connect Provisioning Agent
+### <a name="planning-deployment-of-azure-ad-connect-provisioning-agent"></a>Azure AD Connect kiépítési ügynök központi telepítésének megtervezése
 
 > [!NOTE]
-> This section is relevant only if you plan to deploy the Workday to Active Directory User Provisioning App. You can skip this if you are deploying the Workday Writeback or Workday to Azure AD User Provisioning App.
+> Ez a szakasz csak akkor érvényes, ha azt tervezi, hogy üzembe helyezi a munkanapokat Active Directory a felhasználó kiépítési alkalmazásához. Ezt kihagyhatja, ha a munkanap visszaírási vagy munkanapon üzembe helyezi az Azure AD-felhasználó kiépítési alkalmazását.
 
-The Workday to AD User Provisioning solution requires deploying one or more Provisioning Agents on servers running Windows 2012 R2 or greater with minimum of 4 GB RAM and .NET 4.7.1+ runtime. The following considerations must be taken into account before installing the Provisioning Agent:
+Az AD-felhasználó kiépítési megoldásához szükséges munkanapokon legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel kell telepíteni egy vagy több kiépítési ügynököt a Windows 2012 R2 vagy újabb rendszert futtató kiszolgálókra. A kiépítési ügynök telepítése előtt a következő szempontokat kell figyelembe venni:
 
-* Ensure that the host server running the Provisioning Agent has network access to the target AD domain
-* The Provisioning Agent Configuration Wizard registers the agent with your Azure AD tenant and the registration process requires access to *.msappproxy.net over the SSL port 443. Ensure that outbound firewall rules are in place that enable this communication. The agent supports [outbound HTTPS proxy configuration](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
-* The Provisioning Agent uses a service account to communicate with the on-premises AD domain(s). Prior to installation of the agent, it is recommended that you create a service account with domain administrator permissions and a password that does not expire.  
-* During the Provisioning Agent configuration, you can select domain controllers that should handle provisioning requests. If you have several geographically distributed domain controllers, install the Provisioning Agent in the same site as your preferred domain controller(s) to improve the reliability and performance of the end-to-end solution
-* For high availability, you can deploy more than one Provisioning Agent and register it to handle the same set of on-premises AD domains.
+* Győződjön meg arról, hogy a kiépítési ügynököt futtató gazdagépnek van hálózati hozzáférése a cél AD-tartományhoz
+* A kiépítési ügynök konfigurációs varázslója regisztrálja az ügynököt az Azure AD-Bérlővel, és a regisztrációs folyamathoz hozzáférés szükséges a *. msappproxy.net az SSL 443-es porton keresztül. Győződjön meg arról, hogy a kimenő tűzfalszabályok vannak érvényben, amelyek lehetővé teszik a kommunikációt. Az ügynök támogatja a [kimenő HTTPS-proxy konfigurációját](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+* A kiépítési ügynök egy szolgáltatásfiók használatával kommunikál a helyszíni AD-tartomány (ok) val. Az ügynök telepítése előtt javasoljuk, hogy hozzon létre egy tartományi rendszergazdai engedélyekkel rendelkező szolgáltatásfiókot, és egy jelszót, amely nem jár le.  
+* A kiépítési ügynök konfigurálása során kiválaszthatja azokat a tartományvezérlőket, amelyeknek kezelniük kell a kiépítési kérelmeket. Ha több földrajzilag elosztott tartományvezérlővel rendelkezik, telepítse a kiépítési ügynököt ugyanazon a helyen, mint az elsődleges tartományvezérlő (k) a teljes körű megoldás megbízhatóságának és teljesítményének javítása érdekében.
+* A magas rendelkezésre állás érdekében több kiépítési ügynököt is telepíthet, és regisztrálhatja a helyszíni AD-tartományok ugyanazon készletének kezelésére.
 
 > [!IMPORTANT]
-> In production environments, Microsoft recommends that you have a minimum of 3 Provisioning Agents configured with your Azure AD tenant for high availability.
+> Éles környezetekben a Microsoft azt javasolja, hogy a magas rendelkezésre állás érdekében legalább 3 kiépítési ügynök legyen konfigurálva az Azure AD-Bérlővel.
 
-### <a name="integrating-with-multiple-active-directory-domains"></a>Integrating with multiple Active Directory domains
-
-> [!NOTE]
-> This section is relevant only if you plan to deploy the Workday to Active Directory User Provisioning App. You can skip this if you are deploying the Workday Writeback or Workday to Azure AD User Provisioning App.
-
-Depending on your Active Directory topology, you will need to decide the number of User Provisioning Connector Apps and number of Provisioning Agents to configure. Listed below are some of the common deployment patterns that you can refer to as you plan your deployment.
-
-#### <a name="deployment-scenario-1--single-workday-tenant---single-ad-domain"></a>Deployment Scenario #1 : Single Workday Tenant -> Single AD domain
-
-In this scenario, you have one Workday tenant and you would like to provision users to a single target AD domain. Here is the recommended production configuration for this deployment.
-
-|   |   |
-| - | - |
-| Nem. of provisioning agents to deploy on-premises | 3 (for high availability and fail over) |
-| Nem. of Workday to AD User Provisioning Apps to configure in Azure portal | 1 |
-
-  ![Scenario 1](./media/workday-inbound-tutorial/dep_scenario1.png)
-
-#### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>Deployment Scenario #2 : Single Workday Tenant -> Multiple child AD domains
-
-This scenario involves provisioning users from Workday to multiple target AD child domains in a forest. Here is the recommended production configuration for this deployment.
-
-|   |   |
-| - | - |
-| Nem. of provisioning agents to deploy on-premises | 3 (for high availability and fail over) |
-| Nem. of Workday to AD User Provisioning Apps to configure in Azure portal | one app per child domain |
-
-  ![Scenario 2](./media/workday-inbound-tutorial/dep_scenario2.png)
-
-#### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>Deployment Scenario #3 : Single Workday Tenant -> Disjoint AD forests
-
-This scenario involves provisioning users from Workday to domains in disjoint AD forests. Here is the recommended production configuration for this deployment.
-
-|   |   |
-| - | - |
-| Nem. of provisioning agents to deploy on-premises | 3 per disjoint AD forest |
-| Nem. of Workday to AD User Provisioning Apps to configure in Azure portal | one app per child domain |
-
-  ![Scenario 3](./media/workday-inbound-tutorial/dep_scenario3.png)
-
-### <a name="planning-workday-to-active-directory-user-attribute-mapping-and-transformations"></a>Planning Workday to Active Directory User Attribute Mapping and Transformations
+### <a name="integrating-with-multiple-active-directory-domains"></a>Integráció több Active Directory tartománnyal
 
 > [!NOTE]
-> This section is relevant only if you plan to deploy the Workday to Active Directory User Provisioning App. You can skip this if you are deploying the Workday Writeback or Workday to Azure AD User Provisioning App.
+> Ez a szakasz csak akkor érvényes, ha azt tervezi, hogy üzembe helyezi a munkanapokat Active Directory a felhasználó kiépítési alkalmazásához. Ezt kihagyhatja, ha a munkanap visszaírási vagy munkanapon üzembe helyezi az Azure AD-felhasználó kiépítési alkalmazását.
 
-Before configuring user provisioning to an Active Directory domain, consider the following questions. The answers to these questions will determine how your scoping filters and attribute mappings need to be set.
+A Active Directory-topológiától függően meg kell határoznia a felhasználók üzembe helyezési összekötő alkalmazásainak számát és a konfigurálni kívánt kiépítési ügynökök számát. Az alábbiakban felsorolunk néhány olyan általános telepítési mintát, amelyet az üzembe helyezés megtervezésekor használhat.
 
-* **What users in Workday need to be provisioned to this Active Directory forest?**
+#### <a name="deployment-scenario-1--single-workday-tenant---single-ad-domain"></a>Üzembe helyezési forgatókönyv #1: egymunkanapos bérlő – > egyetlen AD-tartomány
 
-  * *Example: Users where the Workday "Company" attribute contains the value "Contoso", and the "Worker_Type" attribute contains "Regular"*
+Ebben a forgatókönyvben egy munkanap Bérlővel rendelkezik, és a felhasználókat egyetlen célzott AD-tartományba szeretné kiépíteni. Itt látható az üzemelő példányhoz tartozó ajánlott éles konfiguráció.
 
-* **How are users routed into different organization units (OUs)?**
+|   |   |
+| - | - |
+| Nem. helyszíni üzembe helyezési ügynökök | 3 (a magas rendelkezésre álláshoz és a feladatátvételhez) |
+| Nem. a munkanapokon az AD felhasználói kiépítési alkalmazások konfigurálásához Azure Portal | 1 |
 
-  * *Example: Users are routed to OUs that correspond to an office location, as defined in the Workday "Municipality" and "Country_Region_Reference" attributes*
+  ![1\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
 
-* **How should the following attributes be populated in the Active Directory?**
+#### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>Üzembe helyezési forgatókönyv #2: egyetlen munkanap bérlő – > több alárendelt AD-tartomány
 
-  * Common Name (cn)
-    * *Example: Use the Workday User_ID value, as set by human resources*
+Ez a forgatókönyv azt jelenti, hogy a felhasználók a munkanapokból több célzott AD-gyermektartomány számára is üzembe helyezhetők egy erdőben. Itt látható az üzemelő példányhoz tartozó ajánlott éles konfiguráció.
 
-  * Employee ID (employeeId)
-    * *Example: Use the Workday Worker_ID value*
+|   |   |
+| - | - |
+| Nem. helyszíni üzembe helyezési ügynökök | 3 (a magas rendelkezésre álláshoz és a feladatátvételhez) |
+| Nem. a munkanapokon az AD felhasználói kiépítési alkalmazások konfigurálásához Azure Portal | egy alkalmazás/gyermektartomány |
 
-  * SAM Account Name (sAMAccountName)
-    * *Example: Use the Workday User_ID value, filtered through an Azure AD provisioning expression to remove illegal characters*
+  ![2\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario2.png)
 
-  * User Principal Name (userPrincipalName)
-    * *Example: Use the Workday User_ID value, with an Azure AD provisioning expression to append a domain name*
+#### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>Üzembe helyezési forgatókönyv #3: egyetlen munkanap bérlője – > különálló AD-erdők
 
-* **How should users be matched between Workday and Active Directory?**
+Ez a forgatókönyv magában foglalja a felhasználók munkanapokból való kivonását a különálló AD-erdőkben lévő tartományokra. Itt látható az üzemelő példányhoz tartozó ajánlott éles konfiguráció.
 
-  * *Example: Users with a specific Workday "Worker_ID" value are matched with Active Directory users where "employeeID" has the same value. If the Worker_ID value is not found in Active Directory, then create a new user.*
+|   |   |
+| - | - |
+| Nem. helyszíni üzembe helyezési ügynökök | 3/különálló AD-erdő |
+| Nem. a munkanapokon az AD felhasználói kiépítési alkalmazások konfigurálásához Azure Portal | egy alkalmazás/gyermektartomány |
+
+  ![3\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario3.png)
+
+### <a name="planning-workday-to-active-directory-user-attribute-mapping-and-transformations"></a>Munkanapok tervezése a felhasználói attribútumok leképezésének és átalakításának Active Directory
+
+> [!NOTE]
+> Ez a szakasz csak akkor érvényes, ha azt tervezi, hogy üzembe helyezi a munkanapokat Active Directory a felhasználó kiépítési alkalmazásához. Ezt kihagyhatja, ha a munkanap visszaírási vagy munkanapon üzembe helyezi az Azure AD-felhasználó kiépítési alkalmazását.
+
+Mielőtt a felhasználó üzembe helyezését egy Active Directory tartományra konfigurálja, vegye figyelembe az alábbi kérdéseket. Az ezekre a kérdésekre adott válaszok határozzák meg, hogyan kell beállítani a hatókörhöz tartozó szűrőket és attribútum-hozzárendeléseket.
+
+* **A munkanapokat milyen felhasználóknak kell kiépíteni a Active Directory erdőben?**
+
+  * *Példa: azok a felhasználók, amelyekben a "vállalati" attribútum "contoso" értéket tartalmaz, a "Worker_Type" attribútum pedig "normál" értéket tartalmaz.*
+
+* **Hogyan irányíthatók a felhasználók a különböző szervezeti egységekre (OU-ket)?**
+
+  * *Példa: a felhasználók olyan szervezeti egységekhez vannak irányítva, amelyek egy Office-helynek felelnek meg a munkanap "helyhatóság" és "Country_Region_Reference" attribútumaiban meghatározottak szerint.*
+
+* **Hogyan legyenek feltöltve a következő attribútumok a Active Directory?**
+
+  * Köznapi név (CN)
+    * *Példa: használja a munkanap User_ID értéket, amelyet emberi erőforrások állítanak be*
+
+  * Alkalmazott azonosítója (Alkalmazottkód)
+    * *Példa: a munkanap Worker_ID értékének használata*
+
+  * SAM-fiók neve (sAMAccountName)
+    * *Példa: a munkanap User_ID értékének használata az Azure AD-létesítési kifejezéssel szűrve az érvénytelen karakterek eltávolításához*
+
+  * Egyszerű felhasználónév (userPrincipalName)
+    * *Példa: használja a munkanap User_ID értéket egy Azure AD kiépítési kifejezéssel a tartománynév hozzáfűzéséhez*
+
+* **Hogyan kell egyeztetni a felhasználókat a munkanap és a Active Directory között?**
+
+  * *Példa: egy adott munkanap "Worker_ID" értékkel rendelkező felhasználók Active Directory felhasználókkal egyeznek meg, ahol az "Alkalmazottkód" értéke megegyezik. Ha a Worker_ID érték nem található a Active Directoryban, akkor hozzon létre egy új felhasználót.*
   
-* **Does the Active Directory forest already contain the user IDs required for the matching logic to work?**
+* **A Active Directory erdő már tartalmazza a megfelelő logikai működéshez szükséges felhasználói azonosítókat?**
 
-  * *Example: If this setup is a new Workday deployment, it is recommended that Active Directory be pre-populated with the correct Workday Worker_ID values (or unique ID value of choice) to keep the matching logic as simple as possible.*
+  * *Példa: Ha ez a beállítás egy új munkanapokon üzemelő példány, ajánlott előre kitölteni Active Directory a megfelelő munkanapokat Worker_ID értékekkel (vagy egyedi azonosító értékkel), hogy a lehető legegyszerűbb legyen a megfelelő logika.*
 
-How to set up and configure these special provisioning connector apps is the subject of the remaining sections of this tutorial. Which apps you choose to configure will depend on which systems you need to provision to, and how many Active Directory Domains and Azure AD tenants are in your environment.
+A speciális kiépítési összekötő-alkalmazások beállítása és konfigurálása az oktatóanyag hátralévő fejezeteinek tárgya. A konfigurálni kívánt alkalmazások attól függnek, hogy mely rendszerekre van szükség, és hogy hány Active Directory tartomány és Azure AD-bérlő van a környezetében.
 
-## <a name="configure-integration-system-user-in-workday"></a>Configure integration system user in Workday
+## <a name="configure-integration-system-user-in-workday"></a>Integrációs rendszer felhasználójának konfigurálása munkanapokon
 
-A common requirement of all the Workday provisioning connectors is that they require credentials of a Workday integration system user to connect to the Workday Human Resources API. This section describes how to create an integration system user in Workday and has the following sections:
+Az összes munkanap-létesítési összekötő általános követelménye, hogy egy munkanap-integrációs rendszer felhasználójának hitelesítő adatait igénylik a munkanap emberi erőforrások API-hoz való csatlakozáshoz. Ez a szakasz azt ismerteti, hogyan lehet integrációs rendszerbeli felhasználót létrehozni a munkanapokon, és a következő szakaszokból áll:
 
-* [Creating an integration system user](#creating-an-integration-system-user)
-* [Creating an integration security group](#creating-an-integration-security-group)
-* [Configuring domain security policy permissions](#configuring-domain-security-policy-permissions)
-* [Configuring business process security policy permissions](#configuring-business-process-security-policy-permissions)
-* [Activating security policy changes](#activating-security-policy-changes)
+* [Integrációs rendszer felhasználójának létrehozása](#creating-an-integration-system-user)
+* [Integrációs biztonsági csoport létrehozása](#creating-an-integration-security-group)
+* [Tartományi biztonsági házirend engedélyeinek konfigurálása](#configuring-domain-security-policy-permissions)
+* [Üzleti folyamatokra vonatkozó biztonsági házirend engedélyeinek konfigurálása](#configuring-business-process-security-policy-permissions)
+* [A biztonsági szabályzat módosításainak aktiválása](#activating-security-policy-changes)
 
 > [!NOTE]
-> It is possible to bypass this procedure and instead use a Workday global administrator account as the system integration account. This may work fine for demos, but is not recommended for production deployments.
+> Ezt az eljárást figyelmen kívül hagyhatja, és ehelyett egy munkanapon globális rendszergazdai fiókot kell használnia rendszerintegrációs fiókként. Ez kiválóan használható a demók számára, de nem ajánlott éles környezetekben üzemelő példányokhoz.
 
-### <a name="creating-an-integration-system-user"></a>Creating an integration system user
+### <a name="creating-an-integration-system-user"></a>Integrációs rendszer felhasználójának létrehozása
 
-**To create an integration system user:**
+**Integrációs rendszer felhasználójának létrehozása:**
 
-1. Sign into your Workday tenant using an administrator account. In the **Workday Application**, enter create user in the search box, and then click **Create Integration System User**.
+1. Jelentkezzen be a munkanap bérlőbe egy rendszergazdai fiók használatával. A **munkanap alkalmazásban**írja be a felhasználó létrehozása kifejezést a keresőmezőbe, majd kattintson az **integrációs rendszer felhasználójának létrehozása**elemre.
 
-    ![Create user](./media/workday-inbound-tutorial/wd_isu_01.png "Create user")
-2. Complete the **Create Integration System User** task by supplying a user name and password for a new Integration System User.  
+    ![Felhasználó létrehozása](./media/workday-inbound-tutorial/wd_isu_01.png "Felhasználó létrehozása")
+2. Fejezze be az **integrációs rendszer felhasználói feladat létrehozása** nevű felhasználót egy új integrációs rendszer felhasználójának felhasználónevével és jelszavával.  
   
-* Leave the **Require New Password at Next Sign In** option unchecked, because this user will be logging on programmatically.
-* Leave the **Session Timeout Minutes** with its default value of 0, which will prevent the user’s sessions from timing out prematurely.
-* Select the option **Do Not Allow UI Sessions** as it provides an added layer of security that prevents a user with the password of the integration system from logging into Workday.
+* Ha nem jelölte be az **új jelszó megkövetelése** jelölőnégyzetet, akkor a következő bejelentkezéskor nem kell bejelentkeznie, mert ez a felhasználó programozott módon lesz bejelentkezve.
+* Hagyja meg a **munkamenet időkorlátját percben** a 0 alapértelmezett értékkel, ami megakadályozza, hogy a felhasználó munkamenete idő előtt ne legyen időtúllépés.
+* Válassza a **felhasználói felületi munkamenetek tiltása** lehetőséget, mivel ez egy hozzáadott biztonsági réteget biztosít, amely megakadályozza, hogy a felhasználó az integrációs rendszer jelszavával ne jelentkezzen be munkanapokba.
 
-    ![Create Integration System User](./media/workday-inbound-tutorial/wd_isu_02.png "Create Integration System User")
+    ![Integrációs rendszer felhasználójának létrehozása](./media/workday-inbound-tutorial/wd_isu_02.png "Integrációs rendszer felhasználójának létrehozása")
 
-### <a name="creating-an-integration-security-group"></a>Creating an integration security group
+### <a name="creating-an-integration-security-group"></a>Integrációs biztonsági csoport létrehozása
 
-In this step, you will create an unconstrained or constrained integration system security group in Workday and assign the integration system user created in the previous step to this group.
+Ebben a lépésben létrehoz egy nem korlátozott vagy korlátozott integrációs rendszer biztonsági csoportot a munkanapokon, és hozzárendeli az előző lépésben létrehozott integrációs rendszer-felhasználót ehhez a csoporthoz.
 
-**To create a security group:**
+**Biztonsági csoport létrehozása:**
 
-1. Enter create security group in the search box, and then click **Create Security Group**.
+1. A keresőmezőbe írja be a biztonsági csoport létrehozása kifejezést, majd kattintson a **biztonsági csoport létrehozása**elemre.
 
-    ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity Group")
-2. Complete the **Create Security Group** task. 
+    ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity csoport")
+2. Fejezze be a **biztonsági csoport létrehozása** feladatot. 
 
-   * There are two types of security groups in Workday:
-     * **Unconstrained:** All members of the security group can access all data instances secured by the security group.
-     * **Constrained:** All security group members have contextual access to a subset of data instances (rows) that the security group can access.
-   * Please check with your Workday integration partner to select the appropriate security group type for the integration.
-   * Once you know the group type, select **Integration System Security Group (Unconstrained)** or **Integration System Security Group (Constrained)** from the **Type of Tenanted Security Group** dropdown.
+   * A munkanapokon két típusú biztonsági csoport létezik:
+     * Nem **korlátozott:** A biztonsági csoport összes tagja hozzáférhet a biztonsági csoport által védett összes adatpéldányhoz.
+     * **Korlátozott:** Az összes biztonsági csoport tagjai környezetfüggő hozzáféréssel rendelkeznek a biztonsági csoport által elérhető adatpéldányok (sorok) egy részhalmazához.
+   * A megfelelő biztonsági csoport típusának kiválasztásához válassza ki a munkahelye integrációs partnerét az integrációhoz.
+   * Ha ismeri a csoport típusát, válassza az **integrációs rendszer biztonsági csoport (nem korlátozott)** vagy az **integrációs rendszer biztonsági csoport (korlátozott)** lehetőséget a **bérlői biztonsági csoport** legördülő listából.
 
-     ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity Group")
+     ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity csoport")
 
-3. After the Security Group creation is successful, you will see a page where you can assign members to the Security Group. Add the new integration system user created in the previous step to this security group. If you are using *constrained* security group, you will also need to select the appropriate organization scope.
+3. Ha a biztonsági csoport létrehozása sikeres volt, egy oldal jelenik meg, ahol tagokat rendelhet a biztonsági csoporthoz. Adja hozzá az előző lépésben létrehozott új integrációs rendszer felhasználót ehhez a biztonsági csoporthoz. Ha *korlátozott* biztonsági csoportot használ, ki kell választania a megfelelő szervezeti hatókört is.
 
-    ![Edit Security Group](./media/workday-inbound-tutorial/wd_isu_05.png "Edit Security Group")
+    ![Biztonsági csoport szerkesztése](./media/workday-inbound-tutorial/wd_isu_05.png "Biztonsági csoport szerkesztése")
 
-### <a name="configuring-domain-security-policy-permissions"></a>Configuring domain security policy permissions
+### <a name="configuring-domain-security-policy-permissions"></a>Tartományi biztonsági házirend engedélyeinek konfigurálása
 
-In this step, you'll grant "domain security" policy permissions for the worker data to the security group.
+Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkavégző adatnak a biztonsági csoport számára.
 
-**To configure domain security policy permissions:**
+**Tartományi biztonsági házirend engedélyeinek konfigurálása:**
 
-1. Enter **Domain Security Configuration** in the search box, and then click on the link **Domain Security Configuration Report**.  
+1. A keresőmezőbe írja be a **tartomány biztonsági konfigurációját** , majd kattintson a **tartomány biztonsági konfigurációs jelentés**hivatkozására.  
 
-    ![Domain Security Policies](./media/workday-inbound-tutorial/wd_isu_06.png "Domain Security Policies")  
-2. In the **Domain** text box, search for the following domains and add them to the filter one by one.  
-   * *External Account Provisioning*
-   * *Worker Data: Public Worker Reports*
-   * *Person Data: Work Contact Information*
-   * *Worker Data: All Positions*
-   * *Worker Data: Current Staffing Information*
-   * *Worker Data: Business Title on Worker Profile*
-   * *Workday Accounts*
+    ![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_06.png "Tartományi biztonsági házirendek")  
+2. A **tartomány** szövegmezőben keresse meg a következő tartományokat, és adja hozzá őket a szűrőhöz eggyel.  
+   * *Külső fiók kiépítés*
+   * *Worker-jelentések: Public Worker-jelentések*
+   * *Személyes adatok: munkahelyi kapcsolattartási adatok*
+   * *Feldolgozói adatfeldolgozás: összes pozíció*
+   * *Munkavégző adatok: aktuális személyzeti információ*
+   * *Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím*
+   * *Munkanap-fiókok*
    
-     ![Domain Security Policies](./media/workday-inbound-tutorial/wd_isu_07.png "Domain Security Policies")  
+     ![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_07.png "Tartományi biztonsági házirendek")  
 
-     ![Domain Security Policies](./media/workday-inbound-tutorial/wd_isu_08.png "Domain Security Policies") 
+     ![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_08.png "Tartományi biztonsági házirendek") 
 
      Kattintson az **OK** gombra.
 
-3. In the report that shows up, select the ellipsis (...) that appears next to **External Account Provisioning** and click on the menu option **Domain -> Edit Security Policy Permissions**
+3. A megjelenített jelentésben válassza ki a **külső fiók kiépítés** mellett megjelenő három pontot (...), majd kattintson a **tartomány – > biztonsági házirend módosítása engedélyekre** .
 
-    ![Domain Security Policies](./media/workday-inbound-tutorial/wd_isu_09.png "Domain Security Policies")  
+    ![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_09.png "Tartományi biztonsági házirendek")  
 
-4. On the **Edit Domain Security Policy Permissions** page, scroll down to the section **Integration Permissions**. Click on the "+" sign to add the integration system group to the list of security groups with **Get** and **Put** integration permissions.
+4. A **tartomány biztonsági házirendjének szerkesztése** lapon görgessen le az **integrációs engedélyek**szakaszhoz. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
 
-    ![Edit Permission](./media/workday-inbound-tutorial/wd_isu_10.png "Edit Permission")  
+    ![Szerkesztési engedély](./media/workday-inbound-tutorial/wd_isu_10.png "Szerkesztési engedély")  
 
-5. Click on the "+" sign to add the integration system group to the list of security groups with **Get** and **Put** integration permissions.
+5. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
 
-    ![Edit Permission](./media/workday-inbound-tutorial/wd_isu_11.png "Edit Permission")  
+    ![Szerkesztési engedély](./media/workday-inbound-tutorial/wd_isu_11.png "Szerkesztési engedély")  
 
-6. Repeat steps 3-5 above for each of these remaining security policies:
+6. Ismételje meg a fenti 3-5. lépést a fennmaradó biztonsági házirendek mindegyikéhez:
 
-   | Művelet | Domain Security Policy |
+   | Művelet | Tartományi biztonsági házirend |
    | ---------- | ---------- |
-   | Get and Put | Worker Data: Public Worker Reports |
-   | Get and Put | Person Data: Work Contact Information |
-   | Beszerzés | Worker Data: All Positions |
-   | Beszerzés | Worker Data: Current Staffing Information |
-   | Beszerzés | Worker Data: Business Title on Worker Profile |
-   | Get and Put | Workday Accounts |
+   | Beolvasás és üzembe helyezés | Worker-jelentések: Public Worker-jelentések |
+   | Beolvasás és üzembe helyezés | Személyes adatok: munkahelyi kapcsolattartási adatok |
+   | Beszerzés | Feldolgozói adatfeldolgozás: összes pozíció |
+   | Beszerzés | Munkavégző adatok: aktuális személyzeti információ |
+   | Beszerzés | Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím |
+   | Beolvasás és üzembe helyezés | Munkanap-fiókok |
 
-### <a name="configuring-business-process-security-policy-permissions"></a>Configuring business process security policy permissions
+### <a name="configuring-business-process-security-policy-permissions"></a>Üzleti folyamatokra vonatkozó biztonsági házirend engedélyeinek konfigurálása
 
-In this step, you'll grant "business process security" policy permissions for the worker data to the security group. This step is required for setting up the Workday Writeback app connector.
+Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fogja megadni a munkavégző adat számára a biztonsági csoport számára. Ez a lépés szükséges a munkanap visszaírási alkalmazás-összekötő beállításához.
 
-**To configure business process security policy permissions:**
+**Üzleti folyamatokra vonatkozó biztonsági házirend engedélyeinek konfigurálása:**
 
-1. Enter **Business Process Policy** in the search box, and then click on the link **Edit Business Process Security Policy** task.  
+1. A keresőmezőbe írja be az **üzleti folyamat házirendjét** , majd kattintson az **üzleti folyamat biztonsági házirendjének szerkesztése** feladat hivatkozásra.  
 
-    ![Business Process Security Policies](./media/workday-inbound-tutorial/wd_isu_12.png "Business Process Security Policies")  
+    ![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_12.png "Üzleti folyamatok biztonsági házirendjei")  
 
-2. In the **Business Process Type** textbox, search for *Contact* and select **Contact Change** business process and click **OK**.
+2. Az **üzleti folyamat típusa** szövegmezőben keressen a *Contact* (kapcsolattartó) elemre, és válassza az üzleti folyamat **megváltozása** lehetőséget, majd kattintson **az OK**gombra.
 
-    ![Business Process Security Policies](./media/workday-inbound-tutorial/wd_isu_13.png "Business Process Security Policies")  
+    ![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_13.png "Üzleti folyamatok biztonsági házirendjei")  
 
-3. On the **Edit Business Process Security Policy** page, scroll to the **Maintain Contact Information (Web Service)** section.
+3. Az **üzleti folyamat biztonsági házirendjének szerkesztése** lapon görgessen a **kapcsolattartási adatok karbantartása (webszolgáltatás)** szakaszhoz.
 
-    ![Business Process Security Policies](./media/workday-inbound-tutorial/wd_isu_14.png "Business Process Security Policies")  
+    ![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_14.png "Üzleti folyamatok biztonsági házirendjei")  
 
-4. Select and add the new integration system security group to the list of security groups that can initiate the web services request. Click on **Done**. 
+4. Válassza ki és adja hozzá az új integrációs rendszer biztonsági csoportját azon biztonsági csoportok listájához, amelyek elindíthatják a webszolgáltatások kérelmét. Kattintson a **kész**gombra. 
 
-    ![Business Process Security Policies](./media/workday-inbound-tutorial/wd_isu_15.png "Business Process Security Policies")  
+    ![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_15.png "Üzleti folyamatok biztonsági házirendjei")  
 
-### <a name="activating-security-policy-changes"></a>Activating security policy changes
+### <a name="activating-security-policy-changes"></a>A biztonsági szabályzat módosításainak aktiválása
 
-**To activate security policy changes:**
+**A biztonsági szabályzat módosításainak aktiválása:**
 
-1. Enter activate in the search box, and then click on the link **Activate Pending Security Policy Changes**.
+1. A keresőmezőbe írja be az aktiválás kifejezést, majd kattintson a **függőben lévő biztonsági házirend módosításainak aktiválása**hivatkozásra.
 
     ![Aktiválás](./media/workday-inbound-tutorial/wd_isu_16.png "Aktiválás")
 
-1. Begin the Activate Pending Security Policy Changes task by entering a comment for auditing purposes, and then click **OK**.
-1. Complete the task on the next screen by checking the checkbox **Confirm**, and then click **OK**.
+1. A függőben lévő biztonsági házirend módosítására vonatkozó feladat megkezdéséhez adjon meg egy hozzászólást a naplózási célokhoz, majd kattintson **az OK**gombra.
+1. A következő képernyőn hajtsa végre a feladatot a jelölőnégyzet **bejelölésével**, majd kattintson az **OK**gombra.
 
-    ![Activate Pending Security](./media/workday-inbound-tutorial/wd_isu_18.png "Activate Pending Security")  
+    ![A függőben lévő biztonság aktiválása](./media/workday-inbound-tutorial/wd_isu_18.png "A függőben lévő biztonság aktiválása")  
 
-## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Configuring user provisioning from Workday to Active Directory
+## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>A felhasználó üzembe helyezésének beállítása munkahelyről Active Directory
 
-This section provides steps for user account provisioning from Workday to each Active Directory domain within the scope of your integration.
+Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a munkanapokról az egyes Active Directory tartományokra az integráció hatókörén belül.
 
-* [Install and configure on-premises Provisioning Agent(s)](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [Adding the provisioning connector app and creating the connection to Workday](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Configure attribute mappings](#part-3-configure-attribute-mappings)
-* [Enable and launch user provisioning](#enable-and-launch-user-provisioning)
+* [Helyszíni kiépítési ügynök (ek) telepítése és konfigurálása](#part-1-install-and-configure-on-premises-provisioning-agents)
+* [A kiépítési összekötő alkalmazás hozzáadása és a munkanapokhoz való csatlakozás létrehozása](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
+* [Attribútumok leképezésének konfigurálása](#part-3-configure-attribute-mappings)
+* [A felhasználók üzembe helyezésének engedélyezése és elindítása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>Part 1: Install and configure on-premises Provisioning Agent(s)
+### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>1\. rész: a helyszíni kiépítési ügynök (ek) telepítése és konfigurálása
 
-To provision to Active Directory on-premises, an agent must be installed on a server that has .NET 4.7.1+ Framework and network access to the desired Active Directory domain(s).
+A helyszíni Active Directory való kiépítéshez az ügynököt olyan kiszolgálóra kell telepíteni, amelyen a .NET 4.7.1 + Framework és a kívánt Active Directory tartomány (ok) hálózati hozzáférése van.
 
 > [!TIP]
-> You can check the version of the .NET framework on your server using the instructions provided [here](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed).
-> If the server does not have .NET 4.7.1 or higher installed, you can download it from [here](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows).  
+> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
+> Ha a kiszolgáló nem rendelkezik .NET 4.7.1 vagy újabb verzióval, letöltheti [innen.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
 
-Once you have deployed .NET 4.7.1+, you can download the **[on-premises provisioning agent here](https://go.microsoft.com/fwlink/?linkid=847801)** and follow the steps given below to complete the agent configuration.
+Miután telepítette a .NET 4.7.1 +-t, innen letöltheti a helyszíni **[kiépítési ügynököt](https://go.microsoft.com/fwlink/?linkid=847801)** , és az ügynök konfigurációjának befejezéséhez kövesse az alábbi lépéseket.
 
-1. Sign in to the Windows Server where you want to install the new agent.
+1. Jelentkezzen be arra a Windows Serverre, amelyre telepíteni kívánja az új ügynököt.
 
-1. Launch the Provisioning Agent installer, agree to the terms, and click on the **Install** button.
+1. Indítsa el a kiépítési ügynök telepítőjét, fogadja el a feltételeket, majd kattintson a **telepítés** gombra.
 
-   ![Install Screen](./media/workday-inbound-tutorial/pa_install_screen_1.png "Install Screen")
+   ![Telepítési képernyő](./media/workday-inbound-tutorial/pa_install_screen_1.png "Telepítési képernyő")
    
-1. After installation is complete, the wizard will launch and you will see the **Connect Azure AD** screen. Click on the **Authenticate** button to connect to your Azure AD instance.
+1. A telepítés befejezése után elindul a varázsló, és megjelenik az **Azure ad** -hez való csatlakozási képernyő. Az Azure AD-példányhoz való kapcsolódáshoz kattintson a **hitelesítés** gombra.
 
-   ![Connect Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Az Azure AD csatlakoztatása")
+   ![Az Azure AD összekötése](./media/workday-inbound-tutorial/pa_install_screen_2.png "Az Azure AD csatlakoztatása")
    
-1. Authenticate to your Azure AD instance using Global Admin Credentials.
+1. A globális rendszergazdai hitelesítő adatok használatával hitelesítse magát az Azure AD-példányon.
 
-   ![Admin Auth](./media/workday-inbound-tutorial/pa_install_screen_3.png "Admin Auth")
+   ![Rendszergazdai hitelesítés](./media/workday-inbound-tutorial/pa_install_screen_3.png "Rendszergazdai hitelesítés")
 
    > [!NOTE]
-   > The Azure AD admin credentials is used only to connect to your Azure AD tenant. The agent does not store the credentials locally on the server.
+   > Az Azure AD rendszergazdai hitelesítő adatai csak az Azure AD-bérlőhöz való kapcsolódáshoz használatosak. Az ügynök nem tárolja helyileg a hitelesítő adatokat a kiszolgálón.
 
-1. After successful authentication with Azure AD, you will see the **Connect Active Directory** screen. In this step, enter your AD domain name and click on the **Add Directory** button.
+1. Az Azure AD-vel való sikeres hitelesítés után megjelenik a **csatlakozási Active Directory** képernyő. Ebben a lépésben adja meg az AD-tartománynevet, és kattintson a **könyvtár hozzáadása** gombra.
 
-   ![Add Directory](./media/workday-inbound-tutorial/pa_install_screen_4.png "Add Directory")
+   ![Könyvtár hozzáadása](./media/workday-inbound-tutorial/pa_install_screen_4.png "Könyvtár hozzáadása")
   
-1. You will now be prompted to enter the credentials required to connect to the AD Domain. On the same screen, you can use the **Select domain controller priority** to specify domain controllers that the agent should use for sending provisioning requests.
+1. Ekkor a rendszer felszólítja az AD-tartományhoz való csatlakozáshoz szükséges hitelesítő adatok megadására. Ugyanazon a képernyőn a **tartományvezérlő kiválasztása prioritással** adhatja meg azokat a tartományvezérlőket, amelyeket az ügynöknek használnia kell a kiépítési kérelmek küldéséhez.
 
-   ![Domain Credentials](./media/workday-inbound-tutorial/pa_install_screen_5.png)
+   ![Tartományi hitelesítő adatok](./media/workday-inbound-tutorial/pa_install_screen_5.png)
    
-1. After configuring the domain, the installer displays a list of configured domains. On this screen, you can repeat step #5 and #6 to add more domains or click on **Next** to proceed to agent registration.
+1. A tartomány konfigurálása után a telepítő megjeleníti a konfigurált tartományok listáját. Ezen a képernyőn megismételheti a #5 és #6 lépést, ha további tartományokat szeretne hozzáadni, vagy kattintson a **tovább** gombra az ügynök regisztrációjának folytatásához.
 
-   ![Configured Domains](./media/workday-inbound-tutorial/pa_install_screen_6.png "Configured Domains")
+   ![Konfigurált tartományok](./media/workday-inbound-tutorial/pa_install_screen_6.png "Konfigurált tartományok")
 
    > [!NOTE]
-   > If you have multiple AD domains (e.g. na.contoso.com, emea.contoso.com), then please add each domain individually to the list.
-   > Only adding the parent domain (e.g. contoso.com) is not sufficient. You must register each child domain with the agent.
+   > Ha több AD-tartománnyal is rendelkezik (például na.contoso.com, emea.contoso.com), akkor egyenként adja hozzá az egyes tartományokat a listához.
+   > Csak a szülőtartomány hozzáadása (például contoso.com) nem elegendő. Minden alárendelt tartományt regisztrálnia kell az ügynökkel.
    
-1. Review the configuration details and click on **Confirm** to register the agent.
+1. Tekintse át a konfiguráció részleteit, és kattintson a **Confirm (megerősítés** ) gombra az ügynök regisztrálásához.
   
-   ![Confirm Screen](./media/workday-inbound-tutorial/pa_install_screen_7.png "Confirm Screen")
+   ![Képernyő megerősítése](./media/workday-inbound-tutorial/pa_install_screen_7.png "Képernyő megerősítése")
    
-1. The configuration wizard displays the progress of the agent registration.
+1. A konfigurációs varázsló megjeleníti az ügynök regisztrációjának állapotát.
   
-   ![Agent Registration](./media/workday-inbound-tutorial/pa_install_screen_8.png "Agent Registration")
+   ![Ügynök regisztrációja](./media/workday-inbound-tutorial/pa_install_screen_8.png "Ügynök regisztrációja")
    
-1. Once the agent registration is successful, you can click on **Exit** to exit the Wizard.
+1. Ha az ügynök regisztrációja sikeres volt, kattintson a **Kilépés** gombra a varázslóból való kilépéshez.
   
-   ![Exit Screen](./media/workday-inbound-tutorial/pa_install_screen_9.png "Exit Screen")
+   ![Kilépés képernyő](./media/workday-inbound-tutorial/pa_install_screen_9.png "Kilépés képernyő")
    
-1. Verify the installation of the Agent and make sure it is running by opening the “Services” Snap-In and look for the Service named “Microsoft Azure AD Connect Provisioning Agent”
+1. Ellenőrizze az ügynök telepítését, és ellenőrizze, hogy fut-e. Ehhez nyissa meg a "szolgáltatások" beépülő modult, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
   
    ![Szolgáltatások](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Part 2: Adding the provisioning connector app and creating the connection to Workday
+### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>2\. rész: a kiépítési összekötő alkalmazás hozzáadása és a kapcsolat létrehozása a munkanapokhoz
 
-**To configure Workday to Active Directory provisioning:**
+**Munkanapok konfigurálása Active Directory kiépítés megkezdéséhez:**
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
 
-2. In the left navigation bar, select **Azure Active Directory**
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Select **Enterprise Applications**, then **All Applications**.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
-4. Select **Add an application**, and select the **All** category.
+4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
 
-5. Search for **Workday Provisioning to Active Directory**, and add that app from the gallery.
+5. Keresse meg a **munkanapokon való kiépítés Active Directoryét**, és adja hozzá az alkalmazást a katalógusból.
 
-6. After the app is added and the app details screen is shown, select **Provisioning**
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
-7. Change the **Provisioning** **Mode** to **Automatic**
+7. A **kiépítési** **mód** módosítása **automatikusra**
 
-8. Complete the **Admin Credentials** section as follows:
+8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
-   * **Admin Username** – Enter the username of the Workday  integration system account, with the tenant domain name appended. It should look something like: **username\@tenant_name**
+   * **Rendszergazdai Felhasználónév** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. A következőhöz hasonlóan kell kinéznie: **username\@tenant_name**
 
-   * **Admin password –** Enter the password of the Workday integration system account
+   * **Rendszergazdai jelszó –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * **Tenant URL –** Enter the URL to the Workday web services  endpoint for your tenant. This value should look like: https://wd3-impl-services1.workday.com/ccx/service/contoso4, where *contoso4* is replaced with your correct tenant name and *wd3-impl* is replaced with the correct environment string.
+   * **Bérlői URL-cím –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen kell kinéznie: https://wd3-impl-services1.workday.com/ccx/service/contoso4, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül.
 
-   * **Active Directory Forest -** The "Name" of your Active Directory domain, as registered with the agent. Use the dropdown to select the target domain for provisioning. This value is typically a string like: *contoso.com*
+   * **Active Directory erdő –** A Active Directory tartományának neve, az ügynökkel való regisztrálással. A legördülő listából válassza ki a kiépítés célját. Ez az érték általában karakterlánc, például: *contoso.com*
 
-   * **Active Directory Container -** Enter the container DN where the agent should create user accounts by default.
-        Example: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+   * **Active Directory tároló –** Adja meg a tároló DN-t, amelyben az ügynöknek alapértelmezés szerint létre kell hoznia a felhasználói fiókokat.
+        Példa: *ou = standard felhasználók, OU = felhasználók, DC = contoso, DC = test*
         
      > [!NOTE]
-     > This setting only comes into play for user account creations if the *parentDistinguishedName* attribute is not configured in the attribute mappings. This setting is not used for user search or update operations. The entire domain sub tree falls in the scope of the search operation.
+     > Ez a beállítás csak akkor kerül lejátszásra a felhasználói fiókok létrehozásához, ha a *parentDistinguishedName* attribútum nincs konfigurálva az attribútum-hozzárendelésekben. Ez a beállítás nem használatos a felhasználói keresési vagy frissítési műveletekhez. A tartomány teljes alfájának a keresési művelet hatóköre esik.
 
-   * **Notification Email –** Enter your email address, and check the “send email if failure occurs” checkbox.
+   * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 
      > [!NOTE]
-     > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+     > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) állapotba kerülnek.
 
-   * Click the **Test Connection** button. If the connection test succeeds, click the **Save** button at  the top. If it fails, double-check that the Workday credentials and the AD credentials configured on the agent setup are valid.
+   * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanapokhoz tartozó hitelesítő adatok és az ügynök telepítésére konfigurált AD hitelesítő adatok érvényesek-e.
 
      ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
-   * Once the credentials are saved successfully, the **Mappings** section will display the default mapping **Synchronize Workday Workers to On Premises Active Directory**
+   * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett hozzárendelések **szinkronizálása munkanapokat a helyszíni munkatársaival Active Directory**
 
-### <a name="part-3-configure-attribute-mappings"></a>Part 3: Configure attribute mappings
+### <a name="part-3-configure-attribute-mappings"></a>3\. rész: attribútumok hozzárendelésének konfigurálása
 
-In this section, you will configure how user data flows from Workday to Active Directory.
+Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan áramlanak a munkanapokról a Active Directoryra.
 
-1. On the Provisioning tab under **Mappings**, click **Synchronize Workday Workers to On Premises Active Directory**.
+1. A **hozzárendelések**alatt a kiépítés lapon kattintson a **munkanap-munkavégzők szinkronizálása a helyszíni Active Directory**lehetőségre.
 
-1. In the **Source Object Scope** field, you can select which sets of  users in Workday should be in scope for provisioning to AD, by defining a set of attribute-based filters. The default scope is “all users in Workday”. Example filters:
+1. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy a munkanapokon mely felhasználóknak kell szerepelniük az ad-hoz való kiépítés hatókörében, az attribútumok alapján létrehozott szűrők definiálásával. Az alapértelmezett hatókör a "minden felhasználó a munkanapokon". Példa szűrők:
 
-   * Example: Scope to users with Worker IDs between 1000000 and    2000000 (excluding 2000000)
+   * Példa: hatókör azon felhasználók számára, akiknek a munkavégző azonosítója 1000000 és 2000000 között van (kivéve 2000000)
 
-      * Attribute: WorkerID
+      * Attribútum: WorkerID
 
-      * Operator: REGEX Match
+      * Operátor: REGEX egyezés
 
-      * Value: (1[0-9][0-9][0-9][0-9][0-9][0-9])
+      * Érték: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
 
-   * Example: Only employees and not contingent workers
+   * Példa: csak alkalmazottak és nem függő feldolgozók
 
-      * Attribute: EmployeeID
+      * Attribútum: Alkalmazottkód
 
-      * Operator: IS NOT NULL
+      * Operátor: nem NULL
 
    > [!TIP]
-   > When you are configuring the provisioning app for the first time, you will need to test and verify your attribute mappings and expressions to make sure that it is giving you the desired result. Microsoft recommends using the scoping filters under **Source Object Scope** to test your mappings with a few test users from Workday. Once you have verified that the mappings work, then you can either remove the filter or gradually expand it to include more users.
+   > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, meg kell vizsgálnia és ellenőriznie kell az attribútumok hozzárendeléseit és kifejezéseit, hogy biztosan megadja a kívánt eredményt. A Microsoft azt javasolja, hogy a **forrás objektum hatókörében** lévő hatókör-szűrők használatával tesztelje a leképezéseket néhány, munkanapokon tesztelő felhasználóval. Miután meggyőződött arról, hogy a leképezések működnek, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
    > [!CAUTION] 
-   > The default behavior of the provisioning engine is to disable/delete users that go out of scope. This may not be desirable in your Workday to AD integration. To override this default behavior refer to the article [Skip deletion of user accounts that go out of scope](../manage-apps/skip-out-of-scope-deletions.md)
+   > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy az AD-integrációhoz nem lehet szükség az adott munkanapon belül. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../manage-apps/skip-out-of-scope-deletions.md) című cikket.
   
-1. In the **Target Object Actions** field, you can globally filter what actions are performed on Active Directory. **Create** and **Update** are most common.
+1. A **cél objektum műveletek** mezőben globálisan szűrheti, hogy a Active Directory milyen műveleteket hajtson végre. A **Létrehozás** és a **frissítés** a leggyakoribb.
 
-1. In the **Attribute mappings** section, you can define how individual Workday attributes map to Active Directory attributes.
+1. Az **attribútum-hozzárendelések** szakaszban megadhatja, hogy az egyes munkanapok attribútumai hogyan Active Directory attribútumaikat.
 
-1. Click on an existing attribute mapping to update it, or click **Add new mapping** at the bottom of the screen to add new mappings. An individual attribute mapping supports these properties:
+1. Kattintson egy meglévő attribútum-hozzárendelésre a frissítéséhez, vagy kattintson az **Új leképezés hozzáadása** lehetőségre a képernyő alján új hozzárendelések hozzáadásához. Az egyes attribútumok megfeleltetése a következő tulajdonságokat támogatja:
 
-      * **Mapping Type**
+      * **Leképezés típusa**
 
-         * **Direct** – Writes the value of the Workday attribute to the AD attribute, with no changes
+         * **Direct** – a munkanap attribútum értékének beírása az ad attribútumba módosítás nélkül
 
-         * **Constant** - Write a static, constant string value to the AD attribute
+         * **Konstans** – statikus, állandó karakterlánc-érték írása az ad-attribútumba
 
-         * **Expression** – Allows you to write a custom value to the AD attribute, based on one or more Workday attributes. [For more info, see this article on expressions](../manage-apps/functions-for-customizing-application-data.md).
+         * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../manage-apps/functions-for-customizing-application-data.md).
 
-      * **Source attribute** - The user attribute from Workday. If the attribute you are looking for is not present, see [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes).
+      * **Forrásoldali attribútum** – a felhasználó attribútuma a munkanap alapján. Ha a keresett attribútum nem található, tekintse meg [a munkanapokat használó felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című témakört.
 
-      * **Default value** – Optional. If the source attribute has an empty value, the mapping will write this value instead.
-            Most common configuration is to leave this blank.
+      * **Alapértelmezett érték** – nem kötelező. Ha a forrás attribútum üres értékkel rendelkezik, a leképezés Ehelyett ezt az értéket fogja írni.
+            A leggyakoribb konfiguráció az, hogy ezt üresen hagyja.
 
-      * **Target attribute** – The user attribute in Active  Directory.
+      * **Target attribútum** – a felhasználó attribútuma Active Directoryban.
 
-      * **Match objects using this attribute** – Whether or not this mapping should be used to uniquely identify users between Workday and Active Directory. This value is typically set on the  Worker ID field for Workday, which is typically mapped to one of the Employee ID attributes in Active Directory.
+      * **Objektumok egyeztetése ezzel az attribútummal** – függetlenül attól, hogy ezt a leképezést kell-e használni a felhasználók munkanap és Active Directory közötti egyedi azonosításához. Ez az érték általában a munkavégző azonosító mezőjére van beállítva, amelyet általában a Active Directoryban lévő alkalmazotti azonosító attribútumok egyikére kell leképezni.
 
-      * **Matching precedence** – Multiple matching attributes can be set. When there are multiple, they are evaluated in the order defined by this field. As soon as a match is found, no  further matching attributes are evaluated.
+      * **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, a rendszer a mező által meghatározott sorrendben értékeli ki őket. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 
-      * **Apply this mapping**
+      * **A leképezés alkalmazása**
 
-         * **Always** – Apply this mapping on both user creation and update actions
+         * **Mindig** – alkalmazza ezt a leképezést a felhasználói létrehozási és frissítési műveletekre is
 
-         * **Only during creation** - Apply this mapping only on user creation actions
+         * **Csak a létrehozás során** – alkalmazza ezt a leképezést kizárólag felhasználói létrehozási műveletekre
 
-1. To save your mappings, click **Save** at the top of the  Attribute-Mapping section.
+1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
 
    ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
-#### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Below are some example attribute mappings between Workday and Active Directory, with some common expressions
+#### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Az alábbiakban néhány példát mutatunk be a munkanap és a Active Directory között, néhány gyakori kifejezéssel
 
-* The expression that maps to the *parentDistinguishedName* attribute is used to provision a user to different OUs based on one or more Workday source attributes. This example here places users in different OUs based on what city they are in.
+* A *parentDistinguishedName* attribútumra leképező kifejezés a felhasználó különböző szervezeti egységekhez való kiépítésére szolgál egy vagy több munkanap forrás attribútuma alapján. Ebben a példában a felhasználók különböző szervezeti egységekben vannak elhelyezve attól függően, hogy milyen városokban vannak.
 
-* The *userPrincipalName* attribute in Active Directory is generated using the de-duplication function [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) that checks for existence of a generated value in the target AD domain and only sets it if it is unique.  
+* A Active Directory *userPrincipalName* attribútumát a rendszer a deduplikálás függvény [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) hozza létre, amely ellenőrzi, hogy létezik-e egy GENERÁLT érték a cél ad-tartományban, és csak akkor állítja be, ha az egyedi.  
 
-* [There is documentation on writing expressions here](../manage-apps/functions-for-customizing-application-data.md). This section includes examples on how to remove special characters.
+* [A kifejezések írásához itt talál dokumentációt](../manage-apps/functions-for-customizing-application-data.md). Ez a szakasz példákat tartalmaz a speciális karakterek eltávolítására.
 
-| WORKDAY ATTRIBUTE | ACTIVE DIRECTORY ATTRIBUTE |  MATCHING ID? | CREATE / UPDATE |
+| MUNKANAP ATTRIBÚTUM | ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁS/FRISSÍTÉS |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  EmployeeID | **Igen** | Written on create only |
-| **PreferredNameData**    |  cn    |   |   Written on create only |
-| **SelectUniqueValue( Join("\@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Written on create only 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Written on create only |
-| **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Create + update |
-| **FirstName**   | givenName       |     |    Create + update |
-| **LastName**   |   sn   |     |  Create + update |
-| **PreferredNameData**  |  displayName |     |   Create + update |
-| **Company**         | company   |     |  Create + update |
-| **SupervisoryOrganization**  | department  |     |  Create + update |
-| **ManagerReference**   | manager  |     |  Create + update |
-| **BusinessTitle**   |  title     |     |  Create + update | 
-| **AddressLineData**    |  streetAddress  |     |   Create + update |
-| **Municipality**   |   l   |     | Create + update |
-| **CountryReferenceTwoLetter**      |   co |     |   Create + update |
-| **CountryReferenceTwoLetter**    |  c  |     |         Create + update |
-| **CountryRegionReference** |  st     |     | Create + update |
-| **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Create + update |
-| **PostalCode**  |   postalCode  |     | Create + update |
-| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Create + update |
-| **Fax**      | facsimileTelephoneNumber     |     |    Create + update |
-| **Mobile**  |    mobile       |     |       Create + update |
-| **LocalReference** |  preferredLanguage  |     |  Create + update |                                               
-| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  Create + update |
+| **WorkerID**  |  Alkalmazottkód | **Igen** | Csak létrehozásra írva |
+| **PreferredNameData**    |  CN    |   |   Csak létrehozásra írva |
+| **SelectUniqueValue (JOIN ("\@", JOIN (".", \[FirstName\], \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com")**   | userPrincipalName     |     | Csak létrehozásra írva 
+| **Replace (Mid (a Replace (\[UserID\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,), 1, 20),," ([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Csak létrehozásra írva |
+| **Kapcsoló (\[aktív\], "0", "true", "1", "false")** |  accountDisabled      |     | Létrehozás + frissítés |
+| **FirstName**   | givenName       |     |    Létrehozás + frissítés |
+| **LastName**   |   sorozatszám   |     |  Létrehozás + frissítés |
+| **PreferredNameData**  |  displayName |     |   Létrehozás + frissítés |
+| **Vállalati**         | Vállalati   |     |  Létrehozás + frissítés |
+| **SupervisoryOrganization**  | Szervezeti egység  |     |  Létrehozás + frissítés |
+| **ManagerReference**   | kezelő  |     |  Létrehozás + frissítés |
+| **BusinessTitle**   |  Cím     |     |  Létrehozás + frissítés | 
+| **AddressLineData**    |  streetAddress  |     |   Létrehozás + frissítés |
+| **Önkormányzat**   |   l   |     | Létrehozás + frissítés |
+| **CountryReferenceTwoLetter**      |   CO |     |   Létrehozás + frissítés |
+| **CountryReferenceTwoLetter**    |  c  |     |         Létrehozás + frissítés |
+| **CountryRegionReference** |  St     |     | Létrehozás + frissítés |
+| **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Létrehozás + frissítés |
+| **Irányítószám**  |   Irányítószám  |     | Létrehozás + frissítés |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Létrehozás + frissítés |
+| **Fax**      | facsimileTelephoneNumber     |     |    Létrehozás + frissítés |
+| **Mobileszköz**  |    mobil       |     |       Létrehozás + frissítés |
+| **LocalReference** |  preferredLanguage  |     |  Létrehozás + frissítés |                                               
+| **Switch (\[önkormányzat\], "OU = standard felhasználók, OU = felhasználók, OU = default, OU = Locations, DC = contoso, DC = com", "Dallas", "OU = standard felhasználók, OU = felhasználók, OU = Dallas, OU = Locations, DC = contoso, DC = com", "Austin", "OU = standard felhasználók, OU = felhasználók, OU = Austin, OU = Locations, DC = contoso, DC = com", "Seattle", "OU = standard felhasználók, OU = felhasználók, OU = Seattle, OU = Locations, DC = contoso, DC = com", "London", "OU = standard felhasználók, OU = felhasználók, OU = London, OU = Locations, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Létrehozás + frissítés |
 
-Once your attribute mapping configuration is complete, you can now [enable and launch the user provisioning service](#enable-and-launch-user-provisioning).
+Miután az attribútum-hozzárendelési konfiguráció elkészült, mostantól [engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
 
-## <a name="configuring-user-provisioning-to-azure-ad"></a>Configuring user provisioning to Azure AD
+## <a name="configuring-user-provisioning-to-azure-ad"></a>A felhasználók üzembe helyezésének konfigurálása az Azure AD-ben
 
-The following sections describe steps for configuring user provisioning from Workday to Azure AD for cloud-only deployments.
+A következő szakaszok ismertetik a felhasználók kiépítésének a munkahelyről az Azure AD-be való konfigurálásának lépéseit a csak felhőalapú környezetekben.
 
-* [Adding the Azure AD provisioning connector app and creating the connection to Workday](#part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Configure Workday and Azure AD attribute mappings](#part-2-configure-workday-and-azure-ad-attribute-mappings)
-* [Enable and launch user provisioning](#enable-and-launch-user-provisioning)
+* [Az Azure AD kiépítési összekötő alkalmazás hozzáadása és a munkanapokhoz való csatlakozás létrehozása](#part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday)
+* [A munkanap és az Azure AD attribútum-hozzárendelések konfigurálása](#part-2-configure-workday-and-azure-ad-attribute-mappings)
+* [A felhasználók üzembe helyezésének engedélyezése és elindítása](#enable-and-launch-user-provisioning)
 
 > [!IMPORTANT]
-> Only follow the procedure below if you have cloud-only users that need to be provisioned to Azure AD and not on-premises Active Directory.
+> Csak akkor kövesse az alábbi eljárást, ha csak felhőalapú felhasználókat szeretne kiépíteni az Azure AD-be és nem helyszíni Active Directory.
 
-### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Part 1: Adding the Azure AD provisioning connector app and creating the connection to Workday
+### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>1\. rész: az Azure AD-kiépítési összekötő alkalmazás hozzáadása és a munkanapokhoz való csatlakozás létrehozása
 
-**To configure Workday to Azure Active Directory provisioning for cloud-only users:**
+**Munkanapok konfigurálása a csak felhőalapú felhasználók Azure Active Directory kiépítés esetén:**
 
 1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. In the left navigation bar, select **Azure Active Directory**
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Select **Enterprise Applications**, then **All Applications**.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
-4. Select **Add an application**, and then select the **All** category.
+4. Válassza az **alkalmazás hozzáadása**lehetőséget, majd válassza az **összes** kategóriát.
 
-5. Search for **Workday to Azure AD provisioning**, and add that app from the gallery.
+5. Keresse meg a **munkanapokat az Azure ad**-ben, és adja hozzá az alkalmazást a katalógusból.
 
-6. After the app is added and the app details screen is shown, select **Provisioning**
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
-7. Change the **Provisioning** **Mode** to **Automatic**
+7. A **kiépítési** **mód** módosítása **automatikusra**
 
-8. Complete the **Admin Credentials** section as follows:
+8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
-   * **Admin Username** – Enter the username of the Workday integration system account, with the tenant domain name appended. Should look something like: username@contoso4
+   * **Rendszergazdai Felhasználónév** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. Valahogy így kell kinéznie: username@contoso4
 
-   * **Admin password –** Enter the password of the Workday integration system account
+   * **Rendszergazdai jelszó –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * **Tenant URL –** Enter the URL to the Workday web services  endpoint for your tenant. This value should look like: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, where *contoso4* is replaced with your correct tenant name and  *wd3-impl* is replaced with the correct environment string. If this URL is not known, please work with your Workday integration partner or support representative to determine the correct URL to use.
+   * **Bérlői URL-cím –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen kell kinéznie: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül. Ha ez az URL-cím nem ismert, használja a munkanap integrációs partnerét vagy a támogatási képviselőt a megfelelő URL-cím meghatározásához.
 
-   * **Notification Email –** Enter your email address, and check the  “send email if failure occurs” checkbox.
+   * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 
-   * Click the **Test Connection** button.
+   * Kattintson a **kapcsolatok tesztelése** gombra.
 
-   * If the connection test succeeds, click the **Save** button at the top. If it fails, double-check that the Workday URL and credentials are valid in Workday.
+   * Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanap URL-címe és a hitelesítő adatok a munkanapokon érvényesek-e.
 
-### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>Part 2: Configure Workday and Azure AD attribute mappings
+### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>2\. rész: a munkanap és az Azure AD attribútum-hozzárendelések konfigurálása
 
-In this section, you will configure how user data flows from Workday to Azure Active Directory for cloud-only users.
+Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan áramlanak a munkanapokból a csak felhőalapú felhasználók Azure Active Directory.
 
-1. On the Provisioning tab under **Mappings**, click **Synchronize Workers to Azure AD**.
+1. A **hozzárendelések**alatt a kiépítés lapon kattintson a **munkatársak szinkronizálása az Azure ad-be**lehetőségre.
 
-2. In the **Source Object Scope** field, you can select which sets of  users in Workday should be in scope for provisioning to Azure AD, by  defining a set of attribute-based filters. The default scope is “all  users in Workday”. Example filters:
+2. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy a munkanapokon mely felhasználóknak kell szerepelniük az Azure ad-be való kiépítés hatókörében az attribútumok alapján létrehozott szűrők definiálásával. Az alapértelmezett hatókör a "minden felhasználó a munkanapokon". Példa szűrők:
 
-   * Example: Scope to users with Worker IDs between 1000000 and    2000000
+   * Példa: hatókör azon felhasználók számára, akiknek a munkavégző azonosítója 1000000 és 2000000 között van
 
-      * Attribute: WorkerID
+      * Attribútum: WorkerID
 
-      * Operator: REGEX Match
+      * Operátor: REGEX egyezés
 
-      * Value: (1[0-9][0-9][0-9][0-9][0-9][0-9])
+      * Érték: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
 
-   * Example: Only contingent workers and not regular employees
+   * Példa: csak a feltételes feldolgozók és nem rendszeres alkalmazottak
 
-      * Attribute: ContingentID
+      * Attribútum: ContingentID
 
-      * Operator: IS NOT NULL
+      * Operátor: nem NULL
 
-3. In the **Target Object Actions** field, you can globally filter what actions are performed on Azure AD. **Create**  and **Update** are most common.
+3. A **cél objektum műveletek** mezőben globálisan szűrheti, hogy milyen műveleteket hajtson végre az Azure ad-ben. A **Létrehozás** és a **frissítés** a leggyakoribb.
 
-4. In the **Attribute mappings** section, you can define how individual Workday attributes map to Active Directory attributes.
+4. Az **attribútum-hozzárendelések** szakaszban megadhatja, hogy az egyes munkanapok attribútumai hogyan Active Directory attribútumaikat.
 
-5. Click on an existing attribute mapping to update it, or click **Add new mapping** at the bottom of the screen to add new mappings. An individual attribute mapping supports these properties:
+5. Kattintson egy meglévő attribútum-hozzárendelésre a frissítéséhez, vagy kattintson az **Új leképezés hozzáadása** lehetőségre a képernyő alján új hozzárendelések hozzáadásához. Az egyes attribútumok megfeleltetése a következő tulajdonságokat támogatja:
 
-   * **Mapping Type**
+   * **Leképezés típusa**
 
-      * **Direct** – Writes the value of the Workday attribute to the AD attribute, with no changes
+      * **Direct** – a munkanap attribútum értékének beírása az ad attribútumba módosítás nélkül
 
-      * **Constant** - Write a static, constant string value to the AD attribute
+      * **Konstans** – statikus, állandó karakterlánc-érték írása az ad-attribútumba
 
-      * **Expression** – Allows you to write a custom value to the AD attribute, based on one or more Workday attributes. [For more info, see this article on expressions](../manage-apps/functions-for-customizing-application-data.md).
+      * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../manage-apps/functions-for-customizing-application-data.md).
 
-   * **Source attribute** - The user attribute from Workday. If the attribute you are looking for is not present, see [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes).
+   * **Forrásoldali attribútum** – a felhasználó attribútuma a munkanap alapján. Ha a keresett attribútum nem található, tekintse meg [a munkanapokat használó felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című témakört.
 
-   * **Default value** – Optional. If the source attribute has an empty value, the mapping will write this value instead.
-            Most common configuration is to leave this blank.
+   * **Alapértelmezett érték** – nem kötelező. Ha a forrás attribútum üres értékkel rendelkezik, a leképezés Ehelyett ezt az értéket fogja írni.
+            A leggyakoribb konfiguráció az, hogy ezt üresen hagyja.
 
-   * **Target attribute** – The user attribute in Azure AD.
+   * **Target attribútum** – a User attribútum az Azure ad-ben.
 
-   * **Match objects using this attribute** – Whether or not this attribute should be used to uniquely identify users between Workday and Azure AD. This value is typically set on the Worker ID field for Workday, which is typically mapped to the Employee ID attribute (new) or an extension attribute in Azure AD.
+   * **Objektumok egyeztetése ezzel az attribútummal** – függetlenül attól, hogy ezt az attribútumot kell-e használni a felhasználók munkanap és az Azure ad közötti egyedi azonosításához. Ez az érték általában a munkavégző azonosító mezőjére van beállítva, amely általában az Employee ID attribútum (új) vagy egy Extension attribútum az Azure AD-ben van leképezve.
 
-   * **Matching precedence** – Multiple matching attributes can be set. When there are multiple, they are evaluated in the order defined by this field. As soon as a match is found, no further matching attributes are evaluated.
+   * **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, a rendszer a mező által meghatározott sorrendben értékeli ki őket. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 
-   * **Apply this mapping**
+   * **A leképezés alkalmazása**
 
-     * **Always** – Apply this mapping on both user creation and update actions
+     * **Mindig** – alkalmazza ezt a leképezést a felhasználói létrehozási és frissítési műveletekre is
 
-     * **Only during creation** - Apply this mapping only on user creation actions
+     * **Csak a létrehozás során** – alkalmazza ezt a leképezést kizárólag felhasználói létrehozási műveletekre
 
-6. To save your mappings, click **Save** at the top of the Attribute-Mapping section.
+6. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
 
-Once your attribute mapping configuration is complete, you can now [enable and launch the user provisioning service](#enable-and-launch-user-provisioning).
+Miután az attribútum-hozzárendelési konfiguráció elkészült, mostantól [engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
 
-## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>Configuring Azure AD attribute writeback to Workday
+## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>Az Azure AD-attribútumok visszaírási konfigurálása munkanapokra
 
-Follow these instructions to configure writeback of user email addresses and username from Azure Active Directory to Workday.
+Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasználónevek visszaírási konfigurálásához Azure Active Directoryról munkanapokra.
 
-* [Adding the Writeback connector app and creating the connection to Workday](#part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday)
-* [Configure writeback attribute mappings](#part-2-configure-writeback-attribute-mappings)
-* [Enable and launch user provisioning](#enable-and-launch-user-provisioning)
+* [A visszaírási-összekötő alkalmazás hozzáadása és a munkanapokhoz való csatlakozás létrehozása](#part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday)
+* [Visszaírási-attribútumok megfeleltetésének konfigurálása](#part-2-configure-writeback-attribute-mappings)
+* [A felhasználók üzembe helyezésének engedélyezése és elindítása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>Part 1: Adding the Writeback connector app and creating the connection to Workday
+### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>1\. rész: a visszaírási-összekötő alkalmazás hozzáadása és a kapcsolat létrehozása a munkanapokhoz
 
-**To configure Workday Writeback connector:**
+**A munkanap visszaírási-összekötő konfigurálása:**
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
 
-2. In the left navigation bar, select **Azure Active Directory**
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Select **Enterprise Applications**, then **All Applications**.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
-4. Select **Add an application**, then select the **All** category.
+4. Válassza az **alkalmazás hozzáadása**lehetőséget, majd válassza az **összes** kategóriát.
 
-5. Search for **Workday Writeback**, and add that app from the gallery.
+5. Keresse meg a **munkanap visszaírási**, és adja hozzá az alkalmazást a katalógusból.
 
-6. After the app is added and the app details screen is shown, select **Provisioning**
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
-7. Change the **Provisioning** **Mode** to **Automatic**
+7. A **kiépítési** **mód** módosítása **automatikusra**
 
-8. Complete the **Admin Credentials** section as follows:
+8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
-   * **Admin Username** – Enter the username of the Workday integration system account, with the tenant domain name appended. Should look something like: *username\@contoso4*
+   * **Rendszergazdai Felhasználónév** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. Valahogy így kell kinéznie: *felhasználónév\@contoso4*
 
-   * **Admin password –** Enter the password of the Workday integration system account
+   * **Rendszergazdai jelszó –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * **Tenant URL –** Enter the URL to the Workday web services endpoint for your tenant. This value should look like: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, where *contoso4* is replaced with your correct tenant name and *wd3-impl* is replaced with the correct environment string (if necessary).
+   * **Bérlői URL-cím –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen kell kinéznie: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül (ha szükséges).
 
-   * **Notification Email –** Enter your email address, and check the  “send email if failure occurs” checkbox.
+   * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 
-   * Click the **Test Connection** button. If the connection test succeeds, click the **Save** button at the top. If it fails, double-check that the Workday URL and credentials are valid in Workday.
+   * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanap URL-címe és a hitelesítő adatok a munkanapokon érvényesek-e.
 
-### <a name="part-2-configure-writeback-attribute-mappings"></a>Part 2: Configure writeback attribute mappings
+### <a name="part-2-configure-writeback-attribute-mappings"></a>2\. rész: a visszaírási attribútum-hozzárendelések konfigurálása
 
-In this section, you will configure how writeback attributes flow from Azure AD to Workday. At present, the connector only supports writeback of email address and username to Workday.
+Ebben a szakaszban azt fogja beállítani, hogy a visszaírási-attribútumok hogyan áramlanak az Azure AD-től a munkanapokig. Jelenleg az összekötő csak az e-mail-cím és a Felhasználónév visszaírási támogatja a munkanapokon.
 
-1. On the Provisioning tab under **Mappings**, click **Synchronize Azure Active Directory Users to Workday**.
+1. A **hozzárendelések**alatt a kiépítés lapon kattintson a **Azure Active Directory felhasználók szinkronizálása munkanapokra**elemre.
 
-2. In the **Source Object Scope** field, you can optionally filter, which sets of users in Azure Active Directory should have their email addresses written back to Workday. The default scope is “all users in Azure AD”.
+2. A **forrásoldali objektum hatóköre** mezőben opcionálisan szűrheti, hogy a Azure Active Directory felhasználók mely készletei rendelkeznek a munkanapokra írt e-mail-címekkel. Az alapértelmezett hatókör a "minden felhasználó az Azure AD-ben".
 
-3. In the **Attribute mappings** section, update the matching ID to indicate the attribute in Azure Active Directory where the Workday worker ID or employee ID is stored. A popular matching method is to synchronize the Workday worker ID or employee ID to extensionAttribute1-15 in Azure AD, and then use this attribute in Azure AD to match users back in Workday.
+3. Az **attribútum-hozzárendelések** szakaszban frissítse a megfelelő azonosítót, hogy jelezze a Azure Active Directory attribútumát, ahol a munkanapon dolgozó azonosítója vagy az alkalmazott azonosítója található. A népszerű egyeztetési módszer a munkanap munkavégző AZONOSÍTÓjának vagy az alkalmazott AZONOSÍTÓjának szinkronizálása az Azure AD-ben a extensionAttribute1-15 értékre, majd az Azure AD-ben ezt az attribútumot használva a felhasználók visszatérhetnek a munkanapokhoz.
 
-4. Typically you map the Azure AD *userPrincipalName* attribute to Workday *UserID* attribute and map the Azure AD *mail* attribute to the Workday *EmailAddress* attribute. To save your mappings, click **Save** at the top of the Attribute-Mapping section.
+4. Általában az Azure AD *userPrincipalName* attribútumát a munkanapokhoz tartozó *userid* attribútumra képezi le, és leképezi az Azure ad *mail* attribútumot a munkanap *EmailAddress* attribútumára. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
 
-Once your attribute mapping configuration is complete, you can now [enable and launch the user provisioning service](#enable-and-launch-user-provisioning).
+Miután az attribútum-hozzárendelési konfiguráció elkészült, mostantól [engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
 
-## <a name="enable-and-launch-user-provisioning"></a>Enable and launch user provisioning
+## <a name="enable-and-launch-user-provisioning"></a>A felhasználók üzembe helyezésének engedélyezése és elindítása
 
-Once the Workday provisioning app configurations have been completed, you can turn on the provisioning service in the Azure portal.
+Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekapcsolhatja a kiépítési szolgáltatást a Azure Portal.
 
 > [!TIP]
-> By default when you turn on the provisioning service, it will initiate provisioning operations for all users in scope. If there are errors in the mapping or Workday data issues, then the provisioning job might fail and go into the quarantine state. To avoid this, as a best practice, we recommend configuring **Source Object Scope** filter and testing  your attribute mappings with a few test users before launching the full sync for all users. Once you have verified that the mappings work and are giving you the desired results, then you can either remove the filter or gradually expand it to include more users.
+> Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. In the **Provisioning** tab, set the **Provisioning Status** to **On**.
+1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
 2. Kattintson a **Save** (Mentés) gombra.
 
-3. This operation will start the initial sync, which can take a variable number of hours depending on how many users are in the Workday tenant. 
+3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. 
 
-4. At any time, check the **Audit logs** tab in the Azure portal to see what actions the provisioning service has performed. The audit logs lists all individual sync events performed by the provisioning service, such as which users are being read out of Workday and then subsequently added or updated to Active Directory. Refer to the Troubleshooting section for instructions on how to review the audit logs and fix provisioning errors.
+4. A Azure Portal **naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók olvasnak el munkanapokon, majd ezt követően hozzáadják vagy frissítették Active Directory. A naplók áttekintésével és a kiépítési hibák kijavításával kapcsolatos utasításokért tekintse meg a hibaelhárítás című szakaszt.
 
-5. Once the initial sync is completed, it will write an audit summary report in the **Provisioning** tab, as shown below.
+5. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
 
    ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
-* **Solution capability questions**
-  * [When processing a new hire from Workday, how does the solution set the password for the new user account in Active Directory?](#when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory)
-  * [Does the solution support sending email notifications after provisioning operations complete?](#does-the-solution-support-sending-email-notifications-after-provisioning-operations-complete)
-  * [How do I manage delivery of passwords for new hires and securely provide a mechanism to reset their password?](#how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password)
-  * [Does the solution cache Workday user profiles in the Azure AD cloud or at the provisioning agent layer?](#does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer)
-  * [Does the solution support assigning on-premises AD groups to the user?](#does-the-solution-support-assigning-on-premises-ad-groups-to-the-user)
-  * [Which Workday APIs does the solution use to query and update Workday worker profiles?](#which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles)
-  * [Can I configure my Workday HCM tenant with two Azure AD tenants?](#can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants)
-  * [Why "Workday to Azure AD" user provisioning app is not supported if we have deployed Azure AD Connect?](#why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect)
-  * [How do I suggest improvements or request new features related to Workday and Azure AD integration?](#how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration)
+* **Megoldási képességgel kapcsolatos kérdések**
+  * [Amikor új bérletet dolgoz fel a munkanapokból, hogyan állítja be a megoldás az új felhasználói fiók jelszavát Active Directory?](#when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory)
+  * [Támogatja a megoldás az e-mail-értesítések küldését a kiépítési műveletek befejeződése után?](#does-the-solution-support-sending-email-notifications-after-provisioning-operations-complete)
+  * [Hogyan a jelszavak kézbesítését az új bérlők számára, és biztonságosan biztosítson egy mechanizmust a jelszavuk alaphelyzetbe állításához?](#how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password)
+  * [Az Azure AD-felhőben vagy a létesítési ügynök rétegében a megoldás gyorsítótár-munkanapokhoz tartozó felhasználói profilok vannak?](#does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer)
+  * [Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?](#does-the-solution-support-assigning-on-premises-ad-groups-to-the-user)
+  * [Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?](#which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles)
+  * [Konfigurálható a munkanap HCM-bérlő két Azure AD-Bérlővel?](#can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants)
+  * [Miért nem támogatott a "munkanap – Azure AD" felhasználó-kiépítési alkalmazás, ha üzembe helyezte a Azure AD Connect?](#why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect)
+  * [Hogyan a munkanapokkal és az Azure AD-integrációval kapcsolatos új funkciókra vonatkozó javaslatokat?](#how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration)
 
-* **Provisioning Agent questions**
-  * [What is the GA version of the Provisioning Agent?](#what-is-the-ga-version-of-the-provisioning-agent)
-  * [How do I know the version of my Provisioning Agent?](#how-do-i-know-the-version-of-my-provisioning-agent)
-  * [Does Microsoft automatically push Provisioning Agent updates?](#does-microsoft-automatically-push-provisioning-agent-updates)
-  * [Can I install the Provisioning Agent on the same server running Azure AD Connect?](#can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect)
-  * [How do I configure the Provisioning Agent to use a proxy server for outbound HTTP communication?](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)
-  * [How do I ensure that the Provisioning Agent is able to communicate with the Azure AD tenant and no firewalls are blocking ports required by the agent?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
-  * [How do I de-register the domain associated with my Provisioning Agent?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
-  * [How do I uninstall the Provisioning Agent?](#how-do-i-uninstall-the-provisioning-agent)
+* **Kiépítési ügynökkel kapcsolatos kérdések**
+  * [Mi a kiépítési ügynök GA-verziója?](#what-is-the-ga-version-of-the-provisioning-agent)
+  * [Hogyan ismeri a kiépítési ügynök verzióját?](#how-do-i-know-the-version-of-my-provisioning-agent)
+  * [A Microsoft automatikusan leküldi a kiépítési ügynök frissítéseit?](#does-microsoft-automatically-push-provisioning-agent-updates)
+  * [Telepíthetem a kiépítési ügynököt ugyanarra a kiszolgálóra, amelyen Azure AD Connect fut?](#can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect)
+  * [Hogyan konfigurálja a kiépítési ügynököt, hogy proxykiszolgálót használjon a kimenő HTTP-kommunikációhoz?](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)
+  * [Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
+  * [Hogyan a kiépítési ügynökhöz társított tartomány regisztrációját?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
+  * [Hogyan eltávolítja a kiépítési ügynököt?](#how-do-i-uninstall-the-provisioning-agent)
   
-* **Workday to AD attribute mapping and configuration questions**
-  * [How do I back up or export a working copy of my Workday Provisioning Attribute Mapping and Schema?](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
-  * [I have custom attributes in Workday and Active Directory. How do I configure the solution to work with my custom attributes?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
-  * [Can I provision user's photo from Workday to Active Directory?](#can-i-provision-users-photo-from-workday-to-active-directory)
-  * [How do I sync mobile numbers from Workday based on user consent for public usage?](#how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage)
-  * [How do I format display names in AD based on the user’s department/country/city attributes and handle regional variances?](#how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances)
-  * [How can I use SelectUniqueValue to generate unique values for samAccountName attribute?](#how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute)
-  * [How do I remove characters with diacritics and convert them into normal English alphabets?](#how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets)
+* **Az Active Directory-attribútumok hozzárendelésére és konfigurálására vonatkozó kérdések munkanapokon**
+  * [A munkaidő-kiépítési attribútum leképezésének és sémájának munkapéldányának biztonsági mentése vagy exportálása Hogyan?](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
+  * [Egyéni attribútumok vannak a munkanapokon és a Active Directory. Hogyan konfigurálja a megoldást az egyéni attribútumokkal való munkavégzéshez?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
+  * [Felépíthetem a felhasználó fényképét a munkanapból a Active Directoryra?](#can-i-provision-users-photo-from-workday-to-active-directory)
+  * [Hogyan szinkronizálni a munkanapokat a nyilvános használatra vonatkozó felhasználói beleegyezikés alapján?](#how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage)
+  * [A Hogyan formátum a felhasználó részlege/ország/város attribútumai alapján jeleníti meg az AD-beli neveket, és kezeli a regionális eltéréseket?](#how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances)
+  * [Hogyan használhatom a SelectUniqueValue-t egyedi értékek létrehozásához a samAccountName attribútumhoz?](#how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute)
+  * [Hogyan a mellékjeleket és a normál angol Ábécébe konvertálhatja a karaktereket?](#how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets)
 
-### <a name="solution-capability-questions"></a>Solution capability questions
+### <a name="solution-capability-questions"></a>Megoldási képességgel kapcsolatos kérdések
 
-#### <a name="when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory"></a>When processing a new hire from Workday, how does the solution set the password for the new user account in Active Directory?
+#### <a name="when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory"></a>Amikor új bérletet dolgoz fel a munkanapokból, hogyan állítja be a megoldás az új felhasználói fiók jelszavát Active Directory?
 
-When the on-premises provisioning agent gets a request to create a new AD account, it automatically generates a complex random password designed to meet the password complexity requirements defined by the AD server and sets this on the user object. This password is not logged anywhere.
+Ha a helyszíni kiépítési ügynök új AD-fiók létrehozására vonatkozó kérést kap, automatikusan létrehoz egy összetett véletlenszerű jelszót, amely megfelel az AD-kiszolgáló által meghatározott jelszó-összetettségi követelményeknek, és beállítja azt a felhasználói objektumon. Ez a jelszó bárhol nincs naplózva.
 
-#### <a name="does-the-solution-support-sending-email-notifications-after-provisioning-operations-complete"></a>Does the solution support sending email notifications after provisioning operations complete?
+#### <a name="does-the-solution-support-sending-email-notifications-after-provisioning-operations-complete"></a>Támogatja a megoldás az e-mail-értesítések küldését a kiépítési műveletek befejeződése után?
 
-No, sending email notifications after completing provisioning operations is not supported in the current release.
+Nem, e-mail-értesítések küldése a kiépítési műveletek befejezése után az aktuális kiadásban nem támogatott.
 
-#### <a name="how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password"></a>How do I manage delivery of passwords for new hires and securely provide a mechanism to reset their password?
+#### <a name="how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password"></a>Hogyan a jelszavak kézbesítését az új bérlők számára, és biztonságosan biztosítson egy mechanizmust a jelszavuk alaphelyzetbe állításához?
 
-One of the final steps involved in new AD account provisioning is the delivery of the temporary password assigned to the user’s AD account. Many enterprises still use the traditional approach of delivering the temporary password to the user’s manager, who then hands over the password to the new hire/contingent worker. This process has an inherent security flaw and there is an option available to implement a better approach using Azure AD capabilities.
+Az új AD-fiók üzembe helyezésének egyik végső lépése a felhasználó AD-fiókjához rendelt ideiglenes jelszó továbbítása. Számos vállalat továbbra is a hagyományos módszert használja az ideiglenes jelszó továbbítására a felhasználó felettesének, aki ezt követően átadja a jelszót az új bérlet/függő feldolgozónak. Ez a folyamat tartalmaz egy belső biztonsági hibát, és rendelkezésre áll egy lehetőség az Azure AD-funkciókkal való jobb megközelítés megvalósítására.
 
-As part of the hiring process, HR teams usually run a background check and vet the mobile number of the new hire. With the Workday to AD User Provisioning integration, you can build on top of this fact and rollout a self-service password reset capability for the user on Day 1. This is accomplished by propagating the “Mobile Number” attribute of the new hire from Workday to AD and then from AD to Azure AD using Azure AD Connect. Once the “Mobile Number” is present in Azure AD, you can enable the [Self-Service Password Reset (SSPR)](../authentication/howto-sspr-authenticationdata.md) for the user’s account, so that on Day 1, a new hire can use the registered and verified mobile number for authentication.
+A felvételi folyamat részeként a HR-csapatok általában egy háttér-ellenőrzési műveletet futtatnak, és az új bérlet mobil számát. Ha az AD-t a felhasználók kiépítéséhez szeretné kiépíteni, akkor a tényre épülve kiépítheti a felhasználó önkiszolgáló jelszó-visszaállítási funkcióját az 1. napon. Ezt úgy érheti el, hogy az új bérlet "Mobile Number" attribútumát az AD-be, majd az AD-ből az Azure AD-be a Azure AD Connect használatával propagálja. Miután az Azure AD-ban szerepel a "Mobile Number" (mobil szám), engedélyezheti a felhasználói fiókhoz tartozó önkiszolgáló [jelszó-visszaállítást (SSPR)](../authentication/howto-sspr-authenticationdata.md) , így az 1. napon az új bérlet a regisztrált és ellenőrzött mobil számot is használhatja a hitelesítéshez.
 
-#### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>Does the solution cache Workday user profiles in the Azure AD cloud or at the provisioning agent layer?
+#### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>Az Azure AD-felhőben vagy a létesítési ügynök rétegében a megoldás gyorsítótár-munkanapokhoz tartozó felhasználói profilok vannak?
 
-No, the solution does not maintain a cache of user profiles. The Azure AD provisioning service simply acts as a data processor, reading data from Workday and writing to the target Active Directory or Azure AD. See the section [Managing personal data](#managing-personal-data) for details related to user privacy and data retention.
+Nem, a megoldás nem tart fenn felhasználói profilok gyorsítótárát. Az Azure AD-kiépítési szolgáltatás egyszerűen adatfeldolgozóként funkcionál, adatok beolvasása a munkanapokból, és írás a cél Active Directory vagy az Azure AD-ba. Tekintse meg a [személyes adatok kezelése](#managing-personal-data) a felhasználói adatvédelmet és az adatmegőrzéssel kapcsolatos részleteket ismertető szakaszt.
 
-#### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Does the solution support assigning on-premises AD groups to the user?
+#### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?
 
-This functionality is not supported currently. Recommended workaround is to deploy a PowerShell script that queries the Azure AD Graph API endpoint for audit log data and use that to trigger scenarios such as group assignment. This PowerShell script can be attached to a task scheduler and deployed on the same box running the provisioning agent.  
+Ez a funkció jelenleg nem támogatott. Az ajánlott Áthidaló megoldás egy olyan PowerShell-parancsfájl üzembe helyezése, amely lekérdezi az Azure AD Graph API végpontot a naplózási adatokhoz, és ezzel olyan forgatókönyveket indít el, mint például a csoport hozzárendelése. Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
 
-#### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Which Workday APIs does the solution use to query and update Workday worker profiles?
+#### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?
 
-The solution currently uses the following Workday APIs:
+A megoldás jelenleg a következő munkanap API-kat használja:
 
-* Get_Workers (v21.1) for fetching worker information
-* Maintain_Contact_Information (v26.1) for the Work Email Writeback feature
-* Update_Workday_Account (v31.2) for Username Writeback feature
+* Get_Workers (v 21.1) a feldolgozói adatok beolvasásához
+* Maintain_Contact_Information (v 26.1) a munkahelyi e-mailek visszaírási szolgáltatásához
+* Update_Workday_Account (v 31.2) a username visszaírási szolgáltatáshoz
 
-#### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Can I configure my Workday HCM tenant with two Azure AD tenants?
+#### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Konfigurálható a munkanap HCM-bérlő két Azure AD-Bérlővel?
 
-Yes, this configuration is supported. Here are the high level steps to configure this scenario:
+Igen, ez a konfiguráció támogatott. A forgatókönyv konfigurálásának lépései a következők:
 
-* Deploy provisioning agent #1 and register it with Azure AD tenant #1.
-* Deploy provisioning agent #2 and register it with Azure AD tenant #2.
-* Based on the "Child Domains" that each Provisioning Agent will manage, configure each agent with the domain(s). One agent can handle multiple domains.
-* In Azure portal, setup the Workday to AD User Provisioning App in each tenant and configure it with the respective domains.
+* A kiépítési ügynök üzembe helyezése #1 és regisztrálása az Azure AD-bérlő #1.
+* A kiépítési ügynök üzembe helyezése #2 és regisztrálása az Azure AD-bérlő #2.
+* Az egyes kiépítési ügynökök által felügyelt "gyermektartomány" alapján minden ügynököt konfigurálhat a tartomány (ok) hoz. Egy ügynök több tartományt is képes kezelni.
+* A Azure Portalban állítsa be a munkanapokat az AD-felhasználó kiépítési alkalmazására minden egyes bérlőn, és konfigurálja azt a megfelelő tartományokkal.
 
-#### <a name="why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect"></a>Why "Workday to Azure AD" user provisioning app is not supported if we have deployed Azure AD Connect?
+#### <a name="why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect"></a>Miért nem támogatott a "munkanap – Azure AD" felhasználó-kiépítési alkalmazás, ha üzembe helyezte a Azure AD Connect?
 
-When Azure AD is used in hybrid mode (where it contains a mix of cloud + on-premises users), it's important to have a clear definition of "source of authority". Typically hybrid scenarios require deployment of Azure AD Connect. When Azure AD Connect is deployed, on-premises AD is the source of authority. Introducing the Workday to Azure AD connector into the mix can lead to a situation where Workday attribute values could potentially overwrite the values set by Azure AD Connect. Hence use of "Workday to Azure AD" provisioning app is not supported when Azure AD Connect is enabled. In such situations, we recommend using "Workday to AD User" provisioning app for getting users into on-premises AD and then syncing them into Azure AD using Azure AD Connect.
+Ha az Azure AD hibrid módban van használatban (ahol a Felhőbeli és a helyszíni felhasználók kombinációját tartalmazza), fontos, hogy egyértelmű definíciót tartalmazzon a "szolgáltatói forrás" kifejezésből. A hibrid forgatókönyvek általában a Azure AD Connect üzembe helyezését igénylik. Azure AD Connect telepítésekor a helyszíni AD a szolgáltató forrása. Az Azure AD Connectornak a mix szolgáltatásba való bevezetésével olyan helyzetet eredményezhet, amelyben a munkanap attribútum értékei felülírhatják a Azure AD Connect által beállított értékeket. Így a "munkanap – Azure AD" kiépítési alkalmazás használata nem támogatott, ha Azure AD Connect engedélyezve van. Ilyen helyzetekben azt javasoljuk, hogy a felhasználók helyszíni AD-be való beszerzéséhez és az Azure Azure AD Connect AD-ba való szinkronizálásához használja a "munkanap az AD-felhasználó számára" kiépítési alkalmazást.
 
-#### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>How do I suggest improvements or request new features related to Workday and Azure AD integration?
+#### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Hogyan a munkanapokkal és az Azure AD-integrációval kapcsolatos új funkciókra vonatkozó javaslatokat?
 
-Your feedback is highly valued as it helps us set the direction for the future releases and enhancements. We welcome all feedback and encourage you to submit your idea or improvement suggestion in the [feedback forum of Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory). For specific feedback related to the Workday integration, select the category *SaaS Applications* and search using the keywords *Workday* to find existing feedback related to the Workday.
+Az Ön visszajelzése nagyon értékes, mivel segít megállapítani a jövőbeli kiadások és fejlesztések irányát. Üdvözöljük az összes visszajelzést, és javasoljuk, hogy küldje el ötleteit vagy tökéletesítését az [Azure ad visszajelzési fórumában](https://feedback.azure.com/forums/169401-azure-active-directory). A munkanap-integrációval kapcsolatos konkrét Visszajelzésért válassza az *SaaS-alkalmazások* kategóriát, és a *kulcsszavak munkanapon való* kereséssel keresse meg a munkanapokhoz kapcsolódó meglévő visszajelzést.
 
-![UserVoice SaaS Apps](media/workday-inbound-tutorial/uservoice_saas_apps.png)
+![UserVoice SaaS-alkalmazások](media/workday-inbound-tutorial/uservoice_saas_apps.png)
 
-![UserVoice Workday](media/workday-inbound-tutorial/uservoice_workday_feedback.png)
+![UserVoice munkanap](media/workday-inbound-tutorial/uservoice_workday_feedback.png)
 
-When suggesting a new idea, please check to see if someone else has already suggested a similar feature. In that case, you can up vote the feature or enhancement request. You can also leave a comment regarding your specific use case to show your support for the idea and demonstrate how the feature will be valuable for you too.
+Ha új ötletet javasol, ellenőrizze, hogy valaki más már javasolta-e a hasonló funkció megjelenítését. Ebben az esetben lehetősége van szavazni a funkció vagy a javító kérelem számára. Megjegyzést is megadhat a konkrét használati esettel kapcsolatban, hogy megjelenítse az ötlete támogatását, és mutassa be, hogy a funkció milyen értékes lesz az Ön számára.
 
-### <a name="provisioning-agent-questions"></a>Provisioning Agent questions
+### <a name="provisioning-agent-questions"></a>Kiépítési ügynökkel kapcsolatos kérdések
 
-#### <a name="what-is-the-ga-version-of-the-provisioning-agent"></a>What is the GA version of the Provisioning Agent?
+#### <a name="what-is-the-ga-version-of-the-provisioning-agent"></a>Mi a kiépítési ügynök GA-verziója?
 
-* The GA version of the Provisioning Agent is 1.1.30 and above.
-* If your agent version is less than 1.1.30, you are running the public preview version and it will automatically be updated to the GA version if the server hosting the agent has .NET 4.7.1 runtime.
-  * You can [check the .NET version](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) installed on your server. If the server is not running .NET 4.7.1, you can [download and install .NET 4.7.1](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows). Your provisioning agent  will automatically be updated to the GA version after you install .NET 4.7.1.
+* A kiépítési ügynök GA-verziója 1.1.30 vagy újabb.
+* Ha az ügynök verziója kisebb, mint 1.1.30, a nyilvános előzetes verziót futtatja, és a rendszer automatikusan frissíti a GA verzióra, ha az ügynököt futtató kiszolgáló .NET 4.7.1 futtatókörnyezettel rendelkezik.
+  * A kiszolgálón telepített [.NET-verziót is megtekintheti](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Ha a kiszolgáló nem .NET-4.7.1 fut, [letöltheti és telepítheti a .net-4.7.1](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows). A .NET-4.7.1 telepítése után a kiépítési ügynök automatikusan frissülni fog a GA verzióra.
 
-#### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>How do I know the version of my Provisioning Agent?
+#### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Hogyan ismeri a kiépítési ügynök verzióját?
 
-* Sign in to the Windows server where the Provisioning Agent is installed.
-* Go to **Control Panel** -> **Uninstall or Change a Program** menu
-* Look for the version corresponding to the entry **Microsoft Azure AD Connect Provisioning Agent**
+* Jelentkezzen be arra a Windows-kiszolgálóra, amelyen a kiépítési ügynök telepítve van.
+* Nyissa meg a **vezérlőpultot** -> **távolítsa el vagy módosítsa a program** menüt
+* Keresse meg a bejegyzésnek megfelelő verziót **Microsoft Azure ad kapcsolódás kiépítési ügynökhöz**
 
   ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
-#### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Does Microsoft automatically push Provisioning Agent updates?
+#### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>A Microsoft automatikusan leküldi a kiépítési ügynök frissítéseit?
 
-Yes, Microsoft automatically updates the provisioning agent. You can disable automatic updates by stopping the Windows service **Microsoft Azure AD Connect Agent Updater**.
+Igen, a Microsoft automatikusan frissíti a kiépítési ügynököt. Az automatikus frissítések letiltásához állítsa le a Windows-szolgáltatás **Microsoft Azure ad a csatlakozási ügynök frissítését**.
 
-#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>Can I install the Provisioning Agent on the same server running Azure AD Connect?
+#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>Telepíthetem a kiépítési ügynököt ugyanarra a kiszolgálóra, amelyen Azure AD Connect fut?
 
-Yes, you can install the Provisioning Agent on the same server that runs Azure AD Connect.
+Igen, a kiépítési ügynököt ugyanarra a kiszolgálóra is telepítheti, amelyen Azure AD Connect fut.
 
-#### <a name="at-the-time-of-configuration-the-provisioning-agent-prompts-for-azure-ad-admin-credentials-does-the-agent-store-the-credentials-locally-on-the-server"></a>At the time of configuration the Provisioning Agent prompts for Azure AD admin credentials. Does the Agent store the credentials locally on the server?
+#### <a name="at-the-time-of-configuration-the-provisioning-agent-prompts-for-azure-ad-admin-credentials-does-the-agent-store-the-credentials-locally-on-the-server"></a>A konfigurálás időpontjában a kiépítési ügynök az Azure AD rendszergazdai hitelesítő adatait kéri. Az ügynök helyileg tárolja a hitelesítő adatokat a kiszolgálón?
 
-During configuration, the Provisioning Agent prompts for Azure AD admin credentials only to connect to your Azure AD tenant. It does not store the credentials locally on the server. However it does retain the credentials used to connect to the *on-premises Active Directory domain* in a local Windows password vault.
+A konfiguráció során a kiépítési ügynök csak az Azure ad-bérlőhöz való csatlakozásra kéri az Azure AD rendszergazdai hitelesítő adatait. A hitelesítő adatokat nem tárolja helyileg a kiszolgálón. Ugyanakkor megőrzi a helyszíni *Active Directory tartományhoz* való kapcsolódáshoz használt hitelesítő adatokat egy helyi Windows-jelszó-tárolóban.
 
-#### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>How do I configure the Provisioning Agent to use a proxy server for outbound HTTP communication?
+#### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Hogyan konfigurálja a kiépítési ügynököt, hogy proxykiszolgálót használjon a kimenő HTTP-kommunikációhoz?
 
-The Provisioning Agent supports use of outbound proxy. You can configure it by editing the agent config file **C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config**. Add the following lines into it, towards the end of the file just before the closing `</configuration>` tag.
-Replace the variables [proxy-server] and [proxy-port] with your proxy server name and port values.
+A kiépítési ügynök támogatja a kimenő proxy használatát. A konfigurálásához módosítsa az ügynök konfigurációs fájljának **C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config**. Adja hozzá a következő sorokat a fájl végéhez közvetlenül a záró `</configuration>` címke előtt.
+Cserélje le a [Proxy-Server] és a [proxy-port] változót a proxykiszolgáló nevére és a port értékeire.
 
 ```xml
     <system.net>
@@ -868,25 +868,25 @@ Replace the variables [proxy-server] and [proxy-port] with your proxy server nam
     </system.net>
 ```
 
-#### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>How do I ensure that the Provisioning Agent is able to communicate with the Azure AD tenant and no firewalls are blocking ports required by the agent?
+#### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?
 
-You can also check whether you have all the required ports open by opening the [Connector Ports Test Tool](https://aadap-portcheck.connectorporttest.msappproxy.net/) from your on premises network. More green checkmarks means greater resiliency.
+Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság.
 
-To make sure the tool gives you the right results, be sure to:
+Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hogy ne felejtse el:
 
-* Open the tool on a browser from the server where you have installed the Provisioning Agent.
-* Ensure that any proxies or firewalls applicable to your Provisioning Agent are also applied to this page. This can be done in Internet Explorer by going to **Settings -> Internet Options -> Connections -> LAN Settings**. On this page, you see the field "Use a Proxy Server for your LAN". Select this box, and put the proxy address into the "Address" field.
+* Nyissa meg az eszközt egy böngészőben azon a kiszolgálón, amelyen a kiépítési ügynököt telepítette.
+* Győződjön meg arról, hogy a kiépítési ügynökre érvényes proxyk vagy tűzfalak is érvényesek erre az oldalra. Ezt az Internet Explorerben a **Beállítások-> Internetbeállítások-> kapcsolatok-> LAN-beállítások**menüpontban teheti meg. Ezen az oldalon a "proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze el a proxy címe mezőt a "címek" mezőbe.
 
-#### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Can one Provisioning Agent be configured to provision multiple AD domains?
+#### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>A kiépítési ügynökök több AD-tartomány kiépítésére is konfigurálhatók?
 
-Yes, one Provisioning Agent can be configured to handle multiple AD domains as long as the agent has line of sight to the respective domain controllers. Microsoft recommends setting up a group of 3 provisioning agents serving the same set of AD domains to ensure high availability and provide fail over support.
+Igen, az egyik kiépítési ügynök úgy konfigurálható, hogy több AD-tartomány kezelésére is alkalmas legyen, ha az ügynöknek a megfelelő tartományvezérlők felé irányuló látványa van. A Microsoft azt javasolja, hogy a magas rendelkezésre állás biztosítása érdekében 3 kiépítési ügynökből álló csoportot hozzon létre, amelyek ugyanazt az AD-tartományt szolgálják, és biztosítson feladatátvételi támogatást.
 
-#### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>How do I de-register the domain associated with my Provisioning Agent?
+#### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>Hogyan a kiépítési ügynökhöz társított tartomány regisztrációját?
 
-* From the Azure portal, get the *tenant ID* of your Azure AD tenant.
-* Sign in to the Windows server running the Provisioning Agent.
-* Open PowerShell as Windows Administrator.
-* Change to the directory containing the registration scripts and run the following commands replacing the \[tenant ID\] parameter with the value of your tenant ID.
+* A Azure Portal beszerezheti az Azure AD-bérlő *bérlői azonosítóját* .
+* Jelentkezzen be a kiépítési ügynököt futtató Windows Server kiszolgálóra.
+* Nyissa meg a PowerShellt Windows-rendszergazdaként.
+* Váltson a regisztrációs parancsfájlokat tartalmazó könyvtárra, és futtassa az alábbi parancsokat, és cserélje le a \[bérlői azonosító\] paramétert a bérlői azonosító értékére.
 
   ```powershell
   cd “C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder”
@@ -894,112 +894,112 @@ Yes, one Provisioning Agent can be configured to handle multiple AD domains as l
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* From the list of agents that appear – copy the value of the "id" field from that resource whose *resourceName* equals to your AD domain name.
-* Paste the ID value into this command and execute the command in PowerShell.
+* A megjelenő ügynökök listájáról másolja ki az adott erőforrás "azonosító" mezőjének értékét, amelynek *resourcename* az ad-tartománynévvel egyenlő.
+* Illessze be az azonosító értékét ebbe a parancsba, és futtassa a parancsot a PowerShellben.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
   ```
 
-* Rerun the Agent configuration wizard.
-* Any other agents, that were previously assigned to this domain will need to be reconfigured.
+* Futtassa újra az ügynök konfigurációs varázslóját.
+* A korábban ehhez a tartományhoz rendelt egyéb ügynököket újra kell konfigurálni.
 
-#### <a name="how-do-i-uninstall-the-provisioning-agent"></a>How do I uninstall the Provisioning Agent?
+#### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Hogyan eltávolítja a kiépítési ügynököt?
 
-* Sign in to the Windows server where the Provisioning Agent is installed.
-* Go to **Control Panel** -> **Uninstall or Change a Program** menu
-* Uninstall the following programs:
-  * Microsoft Azure AD Connect Provisioning Agent
-  * Microsoft Azure AD Connect Agent Updater
-  * Microsoft Azure AD Connect Provisioning Agent Package
+* Jelentkezzen be arra a Windows-kiszolgálóra, amelyen a kiépítési ügynök telepítve van.
+* Nyissa meg a **vezérlőpultot** -> **távolítsa el vagy módosítsa a program** menüt
+* Távolítsa el a következő programokat:
+  * Microsoft Azure AD kiépítési ügynök összekötése
+  * Microsoft Azure AD összekapcsolási ügynök frissítése
+  * Microsoft Azure AD létesítési ügynök csomagjának összekötése
 
-### <a name="workday-to-ad-attribute-mapping-and-configuration-questions"></a>Workday to AD attribute mapping and configuration questions
+### <a name="workday-to-ad-attribute-mapping-and-configuration-questions"></a>Az Active Directory-attribútumok hozzárendelésére és konfigurálására vonatkozó kérdések munkanapokon
 
-#### <a name="how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema"></a>How do I back up or export a working copy of my Workday Provisioning Attribute Mapping and Schema?
+#### <a name="how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema"></a>A munkaidő-kiépítési attribútum leképezésének és sémájának munkapéldányának biztonsági mentése vagy exportálása Hogyan?
 
-You can use Microsoft Graph API to export your Workday User Provisioning configuration. Refer to the steps in the section [Exporting and Importing your Workday User Provisioning Attribute Mapping configuration](#exporting-and-importing-your-configuration) for details.
+Microsoft Graph API-val exportálhatja a munkanapokat használó felhasználó üzembe helyezési konfigurációját. A részletekért tekintse meg a következő témakör lépéseit: a [munkanap felhasználó kiépítési attribútumának leképezése konfigurációjának exportálása és importálása](#exporting-and-importing-your-configuration) .
 
-#### <a name="i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes"></a>I have custom attributes in Workday and Active Directory. How do I configure the solution to work with my custom attributes?
+#### <a name="i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes"></a>Egyéni attribútumok vannak a munkanapokon és a Active Directory. Hogyan konfigurálja a megoldást az egyéni attribútumokkal való munkavégzéshez?
 
-The solution supports custom Workday and Active Directory attributes. To add your custom attributes to the mapping schema, open the **Attribute Mapping** blade and scroll down to expand the section **Show advanced options**. 
+A megoldás támogatja az egyéni munkanapokat és a Active Directory attribútumokat. Ha egyéni attribútumait hozzá szeretné adni a leképezési sémához, nyissa meg az **attribútumok leképezése** panelt, és görgessen le a **Speciális beállítások megjelenítése**szakasz kibontásához. 
 
-![Edit Attribute List](./media/workday-inbound-tutorial/wd_edit_attr_list.png)
+![Attribútumok listájának szerkesztése](./media/workday-inbound-tutorial/wd_edit_attr_list.png)
 
-To add your custom Workday attributes, select the option *Edit attribute list for Workday* and to add your custom AD attributes, select the option *Edit attribute list for On Premises Active Directory*.
+Az egyéni munkanapok attribútumainak hozzáadásához válassza az *attribútumok szerkesztése a munkanapokhoz* lehetőséget, majd az egyéni ad-attribútumok hozzáadásához válassza az *attribútumok szerkesztése a helyszíni Active Directory*lehetőséget.
 
 Lásd még:
 
-* [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes)
+* [A munkanap felhasználói attribútumaik listájának testreszabása](#customizing-the-list-of-workday-user-attributes)
 
-#### <a name="how-do-i-configure-the-solution-to-only-update-attributes-in-ad-based-on-workday-changes-and-not-create-any-new-ad-accounts"></a>How do I configure the solution to only update attributes in AD based on Workday changes and not create any new AD accounts?
+#### <a name="how-do-i-configure-the-solution-to-only-update-attributes-in-ad-based-on-workday-changes-and-not-create-any-new-ad-accounts"></a>Hogyan úgy konfigurálja a megoldást, hogy csak a munkanapok változásai alapján frissítse az Active Directory-attribútumokat, és ne hozzon létre új AD-fiókot?
 
-This configuration can be achieved by setting the **Target Object Actions** in the **Attribute Mappings** blade as shown below:
+Ezt a konfigurációt úgy érheti el, ha a **cél objektum műveleteit** az **attribútum-hozzárendelések** panelen az alábbi ábrán látható módon állítja be:
 
-![Update action](./media/workday-inbound-tutorial/wd_target_update_only.png)
+![Művelet frissítése](./media/workday-inbound-tutorial/wd_target_update_only.png)
 
-Select the checkbox "Update" for only update operations to flow from Workday to AD. 
+Jelölje be a "frissítés" jelölőnégyzetet csak a munkanapokból az AD-be irányuló frissítési műveleteknél. 
 
-#### <a name="can-i-provision-users-photo-from-workday-to-active-directory"></a>Can I provision user's photo from Workday to Active Directory?
+#### <a name="can-i-provision-users-photo-from-workday-to-active-directory"></a>Felépíthetem a felhasználó fényképét a munkanapból a Active Directoryra?
 
-The solution currently does not support setting binary attributes such as *thumbnailPhoto* and *jpegPhoto* in Active Directory.
+A megoldás jelenleg nem támogatja a bináris attribútumok, például a *thumbnailPhoto* és a *jpegPhoto* beállítását Active Directoryban.
 
-#### <a name="how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage"></a>How do I sync mobile numbers from Workday based on user consent for public usage?
+#### <a name="how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage"></a>Hogyan szinkronizálni a munkanapokat a nyilvános használatra vonatkozó felhasználói beleegyezikés alapján?
 
-* Go the "Provisioning" blade of your Workday Provisioning App.
-* Click on the Attribute Mappings 
-* Under **Mappings**, select **Synchronize Workday Workers to On Premises Active Directory** (or **Synchronize Workday Workers to Azure AD**).
-* On the Attribute Mappings page, scroll down and check the box "Show Advanced Options".  Click on **Edit attribute list for Workday**
-* In the blade that opens up, locate the "Mobile" attribute and click on the row so you can edit the **API Expression** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* Nyissa meg a munkanap kiépítési alkalmazásának "kiépítés" paneljét.
+* Kattintson az attribútum-hozzárendelések elemre. 
+* A **leképezések**területen válassza **a munkavégző munkatársak szinkronizálása a helyszíni Active Directory** (vagy a **munkanapokon dolgozók szinkronizálása az Azure ad**-be) lehetőséget.
+* Az attribútum-hozzárendelések lapon görgessen le, és jelölje be a "speciális beállítások megjelenítése" jelölőnégyzetet.  Kattintson az **attribútumok szerkesztése munkanapokhoz** lehetőségre
+* A megnyíló panelen keresse meg a "Mobile" attribútumot, és kattintson a sorra, így szerkesztheti az **API-kifejezést** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
 
-* Replace the **API Expression** with the following new expression, which retrieves the work mobile number only if the "Public Usage Flag" is set to "True" in Workday.
+* Cserélje le az **API-kifejezést** a következő új kifejezésre, amely csak akkor kéri le a Work Mobile-számot, ha a "Public használati jelző" értéke "true" (igaz).
 
     ```
      wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Contact_Data/wd:Phone_Data[translate(string(wd:Phone_Device_Type_Reference/@wd:Descriptor),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')='MOBILE' and translate(string(wd:Usage_Data/wd:Type_Data/wd:Type_Reference/@wd:Descriptor),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')='WORK' and string(wd:Usage_Data/@wd:Public)='1']/@wd:Formatted_Phone
     ```
 
-* Save the Attribute List.
-* Save the Attribute Mapping.
-* Clear current state and restart the full sync.
+* Mentse az attribútumok listáját.
+* Mentse az attribútum-hozzárendelést.
+* Törölje az aktuális állapotot, és indítsa újra a teljes szinkronizálást.
 
-#### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>How do I format display names in AD based on the user’s department/country/city attributes and handle regional variances?
+#### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>A Hogyan formátum a felhasználó részlege/ország/város attribútumai alapján jeleníti meg az AD-beli neveket, és kezeli a regionális eltéréseket?
 
-It is a common requirement to configure the *displayName* attribute in AD so that it also provides information about the user's department and country/region. For e.g. if John Smith works in the Marketing Department in US, you might want his *displayName* to show up as *Smith, John (Marketing-US)* .
+Gyakori követelmény, hogy a *DisplayName* attribútumot az ad-ben konfigurálja, így a felhasználó részlegével és országával/régiójával kapcsolatos információkat is biztosít. Például, ha John Smith az Egyesült államokbeli marketing részlegen dolgozik, érdemes lehet a *DisplayName* , hogy megmutasson *Kovács Jánosként (marketing-US)* .
 
-Here is how you can handle such requirements for constructing *CN* or *displayName* to include attributes such as company, business unit, city, or country/region.
+Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *DisplayName* összeállításához, hogy olyan attribútumokat tartalmazzon, mint például a vállalat, az üzleti egység, a város vagy az ország/régió.
 
-* Each Workday attribute is retrieved using an underlying XPATH API expression, which is configurable in  **Attribute Mapping -> Advanced Section -> Edit attribute list for Workday**. Here is the default XPATH API expression for Workday *PreferredFirstName*, *PreferredLastName*, *Company* and *SupervisoryOrganization* attributes.
+* A rendszer minden egyes munkanap attribútumot egy mögöttes XPATH API-kifejezéssel kérdez le, amely az **attribútumok leképezése – > speciális szakasz – > a munkanapokhoz tartozó attribútumok listájának szerkesztése**. Itt látható az alapértelmezett XPATH API-kifejezés a munkanap *PreferredFirstName*, a *PreferredLastName*, a *vállalati* és a *SupervisoryOrganization* attribútumokhoz.
 
-     | Workday Attribute | API XPATH Expression |
+     | Munkanap attribútum | API XPATH kifejezés |
      | ----------------- | -------------------- |
-     | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
-     | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Cég | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
-     | SupervisoryOrganization | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Supervisory']/wd:Organization_Name/text() |
+     | PreferredFirstName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: First_Name/Text () |
+     | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/Text () |
+     | Vállalati | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [@wd:type= ' Organization_Type_ID '] = ' vállalat ']/wd:Organization_Reference/@wd:Descriptor |
+     | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' felügyelet ']/WD: Organization_Name/Text () |
   
-   Confirm with your Workday team that the API expression above is valid for your Workday tenant configuration. If necessary, you can edit them as described in the section [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes).
+   Erősítse meg a munkanap csapatát, hogy a fenti API-kifejezés érvényes a munkanap bérlői konfigurációjához. Szükség esetén szerkesztheti őket a [munkanap felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című szakaszban leírtak szerint.
 
-* Similarly the country information present in Workday is retrieved using the following XPATH: *wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference*
+* Hasonlóképpen a munkanapokban található országbeli információk a következő XPATH használatával kérhetők le: *WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
 
-     There are 5 country-related attributes that are available in the Workday attribute list section.
+     A munkanap-attribútumok listája szakaszban 5 országhoz kapcsolódó attribútum érhető el.
 
-     | Workday Attribute | API XPATH Expression |
+     | Munkanap attribútum | API XPATH kifejezés |
      | ----------------- | -------------------- |
-     | CountryReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-3_Code']/text() |
+     | CountryReference | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: azonosító [@wd:type= ' ISO_3166-1_Alpha-3_Code ']/text () |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Numeric-3_Code']/text() |
-     | CountryReferenceTwoLetter | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-2_Code']/text() |
+     | CountryReferenceNumeric | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: azonosító [@wd:type= ' ISO_3166-1_Numeric-3_Code ']/text () |
+     | CountryReferenceTwoLetter | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: azonosító [@wd:type= ' ISO_3166-1_Alpha-2_Code ']/text () |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
-  Confirm with your Workday team that the API expressions above are valid for your Workday tenant configuration. If necessary, you can edit them as described in the section [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes).
+  Erősítse meg a munkanapokat tartalmazó csapatát, hogy a fenti API-kifejezések érvényesek a munkanap bérlői konfigurációjához. Szükség esetén szerkesztheti őket a [munkanap felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című szakaszban leírtak szerint.
 
-* To build the right attribute mapping expression, identify which Workday attribute “authoritatively” represents the user’s first name, last name, country/region and department. Let’s say the attributes are *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* and *SupervisoryOrganization* respectively. You can use this to build an expression for the AD *displayName* attribute as follows to get a display name like *Smith, John (Marketing-US)* .
+* A megfelelő attribútum-hozzárendelési kifejezés kiépítéséhez határozza meg, hogy a "mérvadóan" melyik munkanap-attribútum a felhasználó utónevét, vezetéknevét, országát/régióját és osztályát jelöli. Tegyük fel, hogy az attribútumok a következők: *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* és *SupervisoryOrganization* . A következőképpen hozhat létre egy kifejezést az AD *DisplayName* attribútumhoz az alábbiak szerint, hogy megjelenítse a megjelenítendő nevet *, például: Smith, John (marketing-US)* .
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Once you have the right expression, edit the Attribute Mappings table and modify the *displayName* attribute mapping as shown below:   ![DisplayName Mapping](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Ha rendelkezik a megfelelő kifejezéssel, szerkessze az attribútum-hozzárendelések táblát, és módosítsa a *DisplayName* attribútum leképezését az alább látható módon: ![displayName leképezés](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
-* Extending the above example, let's say you would like to convert city names coming from Workday into shorthand values and then use it to build display names such as *Smith, John (CHI)* or *Doe, Jane (NYC)* , then this result can be achieved using a Switch expression with the Workday *Municipality* attribute as the determinant variable.
+* A fenti példát kiterjesztve tegyük fel, hogy a *munkanapokból* származó városokat a Gyorsírás értékekre szeretné átalakítani, majd felhasználja a megjelenítendő nevek (például a *Smith, John (Chi)* vagy *DOE, Jane (NYC))* összeállítására
 
      ```
     Switch
@@ -1012,13 +1012,13 @@ Here is how you can handle such requirements for constructing *CN* or *displayNa
     )
      ```
     Lásd még:
-  * [Switch Function Syntax](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Join Function Syntax](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Append Function Syntax](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Switch függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#switch)
+  * [Illesztési függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#join)
+  * [Függvény hozzáfűzése szintaxisa](../manage-apps/functions-for-customizing-application-data.md#append)
 
-#### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>How can I use SelectUniqueValue to generate unique values for samAccountName attribute?
+#### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>Hogyan használhatom a SelectUniqueValue-t egyedi értékek létrehozásához a samAccountName attribútumhoz?
 
-Let's say you want to generate unique values for *samAccountName* attribute using a combination of *FirstName* and *LastName* attributes from Workday. Given below is an expression that you can start with:
+Tegyük fel, hogy egyedi értékeket kíván előállítani a *sAMAccountName* attribútumhoz az *Utónév* és a *LastName* attribútum együttes használatával a munkanapból. Alább látható egy kifejezés, amely a következővel kezdődhet:
 
 ```
 SelectUniqueValue(
@@ -1028,63 +1028,63 @@ SelectUniqueValue(
 )
 ```
 
-How the above expression works: If the user is John Smith, it first tries to generate JSmith, if JSmith already exists, then it generates JoSmith, if that exists, it generates JohSmith. The expression also ensures that the value generated meets the length restriction and special characters restriction associated with *samAccountName*.
+A fenti kifejezés működése: Ha a felhasználó János Smith, először a JSmith-t próbálja generálni, ha a JSmith már létezik, akkor a JoSmith generál, és ha létezik, akkor létrehozza a JohSmith. A kifejezés azt is biztosítja, hogy a generált érték megfelel a *sAMAccountName*-hez társított hossz-korlátozásnak és a speciális karakterek korlátozásának.
 
 Lásd még:
 
-* [Mid Function Syntax](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Replace Function Syntax](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue Function Syntax](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [A Mid függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#mid)
+* [Függvény szintaxisának cseréje](../manage-apps/functions-for-customizing-application-data.md#replace)
+* [SelectUniqueValue függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
 
-#### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>How do I remove characters with diacritics and convert them into normal English alphabets?
+#### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Hogyan a mellékjeleket és a normál angol Ábécébe konvertálhatja a karaktereket?
 
-Use the function [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) to remove special characters in first name and last name of the user, while constructing the email address or CN value for the user.
+A [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) függvénnyel eltávolíthat speciális karaktereket a felhasználó keresztneve és vezetékneve alapján, a felhasználó e-mail-címének vagy a CN-értékének összeállításával.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-This section provides specific guidance on how to troubleshoot provisioning issues with your Workday integration using the Azure AD Audit Logs and Windows Server Event Viewer logs. It builds on top of the generic troubleshooting steps and concepts captured in the [Tutorial: Reporting on automatic user account provisioning](../manage-apps/check-status-user-account-provisioning.md)
+Ez a szakasz részletesen ismerteti, hogyan lehet elhárítani az Azure AD-naplók és a Windows Server Eseménynapló naplók használatával a munkanapokkal való integrációval kapcsolatos problémákat. Ez az oktatóanyagban rögzített általános hibaelhárítási lépésekre és fogalmakra épül [: jelentéskészítés az automatikus felhasználói fiók kiépítésekor](../manage-apps/check-status-user-account-provisioning.md)
 
-This section covers the following aspects of troubleshooting:
+Ez a szakasz a hibaelhárítás következő szempontjait ismerteti:
 
-* [Setting up Windows Event Viewer for agent troubleshooting](#setting-up-windows-event-viewer-for-agent-troubleshooting)
-* [Setting up Azure portal Audit Logs for service troubleshooting](#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-* [Understanding logs for AD User Account create operations](#understanding-logs-for-ad-user-account-create-operations)
-* [Understanding logs for Manager update operations](#understanding-logs-for-manager-update-operations)
-* [Resolving commonly encountered errors](#resolving-commonly-encountered-errors)
+* [Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás](#setting-up-windows-event-viewer-for-agent-troubleshooting)
+* [Azure Portal naplók beállítása a szolgáltatás hibaelhárításához](#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+* [Az AD felhasználói fiók létrehozási műveleteinek naplói](#understanding-logs-for-ad-user-account-create-operations)
+* [A kezelői frissítési műveletek naplóinak ismertetése](#understanding-logs-for-manager-update-operations)
+* [Gyakran előforduló hibák elhárítása](#resolving-commonly-encountered-errors)
 
-### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>Setting up Windows Event Viewer for agent troubleshooting
+### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás
 
-* Sign in to the Windows Server machine where the Provisioning Agent is deployed
-* Open **Windows Server Event Viewer** desktop app.
-* Select **Windows Logs > Application**.
-* Use the **Filter Current Log…** option to view all events logged under the source **AAD.Connect.ProvisioningAgent** and exclude events with Event ID "5", by specifying the filter "-5" as shown below.
+* Jelentkezzen be arra a Windows Server-gépre, amelyen a kiépítési ügynök telepítve van
+* Nyissa meg a **Windows Server Eseménynapló** asztali alkalmazást.
+* Válassza a **Windows-naplók > alkalmazást**.
+* Az **aktuális napló szűrése..** . lehetőség a forrás HRE alatt naplózott összes esemény megtekintéséhez **. A. ProvisioningAgent** és az "5" azonosítójú események kihagyása az alább látható "-5" szűrő megadásával.
 
-  ![Windows Event Viewer](media/workday-inbound-tutorial/wd_event_viewer_01.png))
+  ![Windows Eseménynapló](media/workday-inbound-tutorial/wd_event_viewer_01.png))
 
-* Click **OK** and sort the result view by **Date and Time** column.
+* Kattintson **az OK gombra** , és rendezze az eredmény nézetet **dátum és idő** oszlop szerint.
 
-### <a name="setting-up-azure-portal-audit-logs-for-service-troubleshooting"></a>Setting up Azure portal Audit Logs for service troubleshooting
+### <a name="setting-up-azure-portal-audit-logs-for-service-troubleshooting"></a>Azure Portal naplók beállítása a szolgáltatás hibaelhárításához
 
-* Launch the [Azure portal](https://portal.azure.com), and navigate to the **Audit logs** section of your Workday provisioning application.
-* Use the **Columns** button on the Audit Logs page to display only the following columns in the view (Date, Activity, Status, Status Reason). This configuration ensures that you focus only on data that is relevant for troubleshooting.
+* Indítsa el a [Azure Portalt](https://portal.azure.com), és navigáljon a munkaidő-kiépítési alkalmazás **naplók** szakaszához.
+* A naplók lapon lévő **oszlopok** gomb használatával csak a következő oszlopokat jelenítheti meg a nézetben (dátum, tevékenység, állapot, állapot oka). Ez a konfiguráció biztosítja, hogy csak a hibaelhárításhoz szükséges adatokat koncentrálja.
 
-  ![Audit log columns](media/workday-inbound-tutorial/wd_audit_logs_00.png)
+  ![Naplók oszlopai](media/workday-inbound-tutorial/wd_audit_logs_00.png)
 
-* Use the **Target** and **Date Range** query parameters to filter the view. 
-  * Set the **Target** query parameter to the "Worker ID" or "Employee ID" of the Workday worker object.
-  * Set the **Date Range** to an appropriate time period over which you want to investigate for errors or issues with the provisioning.
+* A nézet szűréséhez használja a **cél** és a **dátumtartomány** lekérdezési paramétereit. 
+  * Állítsa a **cél** lekérdezési paramétert a munkanap Worker objektum "Worker id" vagy "Employee id" értékére.
+  * Állítsa be a **dátumtartományt** arra a megfelelő időszakra, amelyre vonatkozóan meg szeretné vizsgálni a hibákat vagy a kiépítés során felmerülő problémákat.
 
-  ![Audit log filters](media/workday-inbound-tutorial/wd_audit_logs_01.png)
+  ![Naplók szűrése](media/workday-inbound-tutorial/wd_audit_logs_01.png)
 
-### <a name="understanding-logs-for-ad-user-account-create-operations"></a>Understanding logs for AD User Account create operations
+### <a name="understanding-logs-for-ad-user-account-create-operations"></a>Az AD felhasználói fiók létrehozási műveleteinek naplói
 
-When a new hire in Workday is detected (let's say with Employee ID *21023*), the Azure AD provisioning service attempts to create a new AD user account for the worker and in the process creates 4 audit log records as described below:
+Ha a rendszer egy új felvételt észlel a munkanapokon (tegyük fel, hogy a *21023*-es ALKALMAZOTTi azonosítóval), az Azure ad-kiépítési szolgáltatás megpróbál létrehozni egy új ad-felhasználói fiókot a feldolgozó számára, és a folyamat 4 naplóbeli rekordot hoz létre az alább leírtak szerint:
 
-  [![Audit log create ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![naplóbeli Create Ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
-When you click on any of the audit log records, the **Activity Details** page opens up. Here is what the **Activity Details** page displays for each log record type.
+Ha rákattint valamelyik naplóbeli rekordra, megnyílik a **tevékenység részletei** lap. Itt látható, hogy az egyes naplók bejegyzéstípusa milyen **tevékenység részleteit** jeleníti meg.
 
-* **Workday Import** record: This log record displays the worker information fetched from Workday. Use information in the *Additional Details* section of the log record to troubleshoot issues with fetching data from Workday. An example record is shown below along with pointers on how to interpret each field.
+* **Munkanap importálási** rekordja: Ez a naplóbejegyzés a munkavégző adatokat jeleníti meg a munkanapokból beolvasott adatokból. A naplózási rekord *További részletek* szakaszában található információk segítségével elháríthatja az adatok munkanapokból való beolvasásával kapcsolatos problémákat. Alább látható egy példa a rekordokra az egyes mezők értelmezésére szolgáló mutatókkal együtt.
 
   ```JSON
   ErrorCode : None  // Use the error code captured here to troubleshoot Workday issues
@@ -1093,7 +1093,7 @@ When you click on any of the audit log records, the **Activity Details** page op
   SourceAnchor : a071861412de4c2486eb10e5ae0834c3 // set to the WorkdayID (WID) associated with the record
   ```
 
-* **AD Import** record: This log record displays information of the account fetched from AD. As during initial user creation there is no AD account, the *Activity Status Reason* will indicate that no account with the Matching ID attribute value was found in Active Directory. Use information in the *Additional Details* section of the log record to troubleshoot issues with fetching data from Workday. An example record is shown below along with pointers on how to interpret each field.
+* **Ad-importálási** rekord: Ez a naplóbejegyzés az ad-ből beolvasott fiók adatait jeleníti meg. Ahogy a kezdeti felhasználó létrehozásakor nincs AD-fiók, a *tevékenység állapotának indoklása* arra utal, hogy nem található a megfelelő azonosító attribútum értékkel rendelkező fiók a Active Directory. A naplózási rekord *További részletek* szakaszában található információk segítségével elháríthatja az adatok munkanapokból való beolvasásával kapcsolatos problémákat. Alább látható egy példa a rekordokra az egyes mezők értelmezésére szolgáló mutatókkal együtt.
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot Workday issues
@@ -1101,19 +1101,19 @@ When you click on any of the audit log records, the **Activity Details** page op
   JoiningProperty : 21023 // Value of the Workday attribute that serves as the Matching ID
   ```
 
-  To find Provisioning Agent log records corresponding to this AD import operation, open the Windows Event Viewer logs and use the **Find…** menu option to find log entries containing the Matching ID/Joining Property attribute value (in this case *21023*).
+  Az AD-importálási műveletnek megfelelő kiépítési ügynök naplófájljainak megkereséséhez nyissa meg a Windows Eseménynapló-naplókat, és használja a **Keresés...** menüpont a megfelelő azonosító/összekapcsolási tulajdonság attribútum értékét tartalmazó naplóbejegyzések kereséséhez (ebben az esetben *21023*).
 
   ![Keresés](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
-  Look for the entry with *Event ID = 9*, which will provide you the LDAP search filter used by the agent to retrieve the AD account. You can verify if this is the right search filter to retrieve unique user entries.
+  Keresse meg az *Event ID = 9*azonosítójú bejegyzést, amely megadja az ügynök által az ad-fiók beolvasásához használt LDAP-keresési szűrőt. Az egyedi felhasználói bejegyzések beolvasásához ellenőrizze, hogy ez a megfelelő keresési szűrő-e.
 
-  ![LDAP Search](media/workday-inbound-tutorial/wd_event_viewer_03.png)
+  ![LDAP-keresés](media/workday-inbound-tutorial/wd_event_viewer_03.png)
 
-  The record that immediately follows it with *Event ID = 2* captures the result of the search operation and if it returned any results.
+  A közvetlenül az *Event ID = 2* azonosítójú rekord rögzíti a keresési művelet eredményét, és ha bármilyen eredményt adott vissza.
 
-  ![LDAP Results](media/workday-inbound-tutorial/wd_event_viewer_04.png)
+  ![LDAP-eredmények](media/workday-inbound-tutorial/wd_event_viewer_04.png)
 
-* **Synchronization rule action** record: This log record displays the results of the attribute mapping rules and configured scoping filters along with the provisioning action that will be taken to process the incoming Workday event. Use information in the *Additional Details* section of the log record to troubleshoot issues with the synchronization action. An example record is shown below along with pointers on how to interpret each field.
+* **Szinkronizálási szabály műveleti** rekordja: Ez a naplóbejegyzés az attribútum-leképezési szabályok és a konfigurált hatóköri szűrők eredményét jeleníti meg a bejövő munkanap eseményének feldolgozásához szükséges kiépítési művelettel együtt. A szinkronizálási művelettel kapcsolatos hibák elhárításához használja a naplófájl *További részletek* szakaszában található információkat. Alább látható egy példa a rekordokra az egyes mezők értelmezésére szolgáló mutatókkal együtt.
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot sync issues
@@ -1122,9 +1122,9 @@ When you click on any of the audit log records, the **Activity Details** page op
   SourceAnchor : a071861412de4c2486eb10e5ae0834c3 // set to the WorkdayID (WID) associated with the profile in Workday
   ```
 
-  If there are issues with your attribute mapping expressions or the incoming Workday data has issues (for example: empty or null value for required attributes), then you will observe a failure at this stage with the ErrorCode providing details of the failure.
+  Ha problémák merülnek fel az attribútum-hozzárendelési kifejezésekkel vagy a bejövő munkanapokkal kapcsolatos problémákkal kapcsolatban (például: üres vagy Null érték a kötelező attribútumok esetében), akkor ebben a szakaszban a hiba részleteinek megadásával megfigyelheti a ErrorCode.
 
-* **AD Export** record: This log record displays the result of AD account creation operation along with the attribute values that were set in the process. Use information in the *Additional Details* section of the log record to troubleshoot issues with the account create operation. An example record is shown below along with pointers on how to interpret each field. In the “Additional Details” section, the “EventName” is set to “EntryExportAdd”, the “JoiningProperty” is set to the value of the Matching ID attribute, the “SourceAnchor” is set to the WorkdayID (WID) associated with the record and the “TargetAnchor” is set to the value of the AD “ObjectGuid” attribute of the newly created user. 
+* **Ad-exportálási** rekord: Ez a naplóbejegyzés az ad-fiók létrehozási műveletének eredményét jeleníti meg, valamint a folyamatban beállított attribútumok értékeit. A log rekord *További részletek* szakaszában található információk segítségével elháríthatja a fiók-létrehozási művelettel kapcsolatos problémákat. Alább látható egy példa a rekordokra az egyes mezők értelmezésére szolgáló mutatókkal együtt. A "További részletek" szakaszban a "EventName" tulajdonság értéke "EntryExportAdd", a "JoiningProperty" a megfelelő azonosító attribútum értékére van állítva, a "SourceAnchor" értéke a rekordhoz társított WorkdayID (WID), a "TargetAnchor" pedig a következőre van beállítva: az újonnan létrehozott felhasználó AD "ObjectGuid" attribútumának értéke. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1134,23 +1134,23 @@ When you click on any of the audit log records, the **Activity Details** page op
   TargetAnchor : 83f0156c-3222-407e-939c-56677831d525 // set to the value of the AD "objectGuid" attribute of the new user
   ```
 
-  To find Provisioning Agent log records corresponding to this AD export operation, open the Windows Event Viewer logs and use the **Find…** menu option to find log entries containing the Matching ID/Joining Property attribute value (in this case *21023*).  
+  Az AD exportálási műveletnek megfelelő kiépítési ügynök naplófájljainak megkereséséhez nyissa meg a Windows Eseménynapló-naplókat, és használja a **Keresés...** menüpont a megfelelő azonosító/összekapcsolási tulajdonság attribútum értékét tartalmazó naplóbejegyzések kereséséhez (ebben az esetben *21023*).  
 
-  Look for a HTTP POST record corresponding to the timestamp of the export operation with *Event ID = 2*. This record will contain the attribute values sent by the provisioning service to the provisioning agent.
+  Keresse meg az exportálási művelet időbélyegének megfelelő HTTP-bejegyzést a következő azonosítójú *eseménynél: eseményazonosító = 2*. Ez a rekord a kiépítési szolgáltatás által a kiépítési ügynöknek elküldett attribútum-értékeket fogja tartalmazni.
 
-  [![SCIM Add](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  [![SCIM hozzáadása](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
 
-  Immediately following the above event, there should be another event that captures the response of the create AD account operation. This event returns the new objectGuid created in AD and it is set as the TargetAnchor attribute in the provisioning service.
+  Közvetlenül a fenti eseményt követően egy másik eseménynek kell lennie, amely rögzíti az AD-fiók létrehozása művelet válaszát. Ez az esemény az AD-ben létrehozott új objectGuid adja vissza, és a kiépítési szolgáltatásban a TargetAnchor attribútumként van beállítva.
 
-  [![SCIM Add](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  [![SCIM hozzáadása](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
 
-### <a name="understanding-logs-for-manager-update-operations"></a>Understanding logs for manager update operations
+### <a name="understanding-logs-for-manager-update-operations"></a>A kezelői frissítési műveletek naplóinak ismertetése
 
-The manager attribute is a reference attribute in AD. The provisioning service does not set the manager attribute as part of the user creation operation. Rather the manager attribute is set as part of an *update* operation after AD account is created for the user. Expanding the example above, let’s say a new hire with Employee ID "21451" is activated in Workday and the new hire’s manager (*21023*) already has an AD account. In this scenario, searching the Audit logs for user 21451 shows up 5 entries.
+A Manager attribútum az AD egyik hivatkozási attribútuma. A kiépítési szolgáltatás nem állítja be a felettes attribútumot a felhasználói létrehozási művelet részeként. Ehelyett a Manager-attribútum egy *frissítési* művelet részeként van beállítva, miután létrejött az Active Directory-fiók a felhasználó számára. A fenti példa kibővítésével tegyük fel, hogy a "21451" alkalmazotti AZONOSÍTÓval rendelkező új bérlet aktív, és az új bérlet kezelőjének (*21023*) már van egy ad-fiókja. Ebben a forgatókönyvben a 21451-es felhasználóhoz tartozó naplók keresése 5 bejegyzést mutat be.
 
-  [![Manager Update](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Manager frissítése](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
-The first 4 records are like the ones we explored as part of the user create operation. The 5th record is the export associated with manager attribute update. The log record displays the result of AD account manager update operation, which is performed using the manager’s *objectGuid* attribute.
+Az első 4 rekord például a felhasználói létrehozási művelet részeként feltárt. Az 5. rekord a Manager-attribútum frissítéséhez társított exportálás. A napló rekord az AD Account Manager frissítési műveletének eredményét jeleníti meg, amelyet a rendszer a kezelő *ObjectGUID* attribútumával hajt végre.
 
   ```JSON
   // Modified Properties
@@ -1166,89 +1166,89 @@ The first 4 records are like the ones we explored as part of the user create ope
 
   ```
 
-### <a name="resolving-commonly-encountered-errors"></a>Resolving commonly encountered errors
+### <a name="resolving-commonly-encountered-errors"></a>Gyakran előforduló hibák elhárítása
 
-This section covers commonly seen errors with Workday user provisioning and how to resolve it. The errors are grouped as follows:
+Ez a szakasz gyakran észlelt hibákat tartalmaz a munkanapokat használó felhasználók üzembe helyezésével és megoldásával kapcsolatban. A hibák a következőképpen vannak csoportosítva:
 
-* [Provisioning agent errors](#provisioning-agent-errors)
+* [Kiépítési ügynök hibái](#provisioning-agent-errors)
 * [Csatlakozási hibák](#connectivity-errors)
-* [AD user account creation errors](#ad-user-account-creation-errors)
-* [AD user account update errors](#ad-user-account-update-errors)
+* [AD felhasználói fiókok létrehozásával kapcsolatos hibák](#ad-user-account-creation-errors)
+* [Az AD felhasználói fiók frissítésével kapcsolatos hibák](#ad-user-account-update-errors)
 
-#### <a name="provisioning-agent-errors"></a>Provisioning agent errors
+#### <a name="provisioning-agent-errors"></a>Kiépítési ügynök hibái
 
-|#|Error Scenario |Probable Causes|Recommended Resolution|
+|#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
-|1.| Error installing the provisioning agent with error message:  *Service 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) failed to start. Verify that you have sufficient privileges to start the system.* | This error usually shows up if you are trying to install the provisioning agent on a domain controller and group policy prevents the service from starting.  It is also seen if you have a previous version of the agent running and  you have not uninstalled it before starting a new installation.| Install the provisioning agent on a non-DC server. Ensure that previous versions of the agent are uninstalled before installing the new agent.|
-|2.| The Windows Service 'Microsoft Azure AD Connect Provisioning Agent' is in *Starting* state and does not switch to *Running* state. | As part of the installation, the agent wizard creates a local account (**NT Service\\AADConnectProvisioningAgent**) on the server and this is the **Log On** account used for starting the service. If a security policy on your Windows server prevents local accounts from running the services, you will encounter this error. | Open the *Services console*. Right click on the Windows Service 'Microsoft Azure AD Connect Provisioning Agent' and in the Log On tab specify the account of a domain administrator to run the service. Restart the service. |
-|3.| When configuring the provisioning agent with your AD domain in the step *Connect Active Directory*, the wizard takes a long time trying to load the AD schema and eventually times out. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | On the *Connect Active Directory* wizard screen, while providing the credentials for your AD domain, there is an option called *Select domain controller priority*. Use this option to select a domain controller that is in the same site as the agent server and ensure that there are no firewall rules blocking the communication. |
+|1.| Hiba történt a kiépítési ügynök telepítésekor: a (z *) "Microsoft Azure ad kapcsolódási ügynökhöz (AADConnectProvisioningAgent)" szolgáltatás nem indult el. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a rendszer elindításához.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynököt tartományvezérlőre próbálja telepíteni, és a csoportházirend megakadályozza a szolgáltatás indulását.  Azt is láthatja, hogy az ügynök egy korábbi verziója fut-e, és még nem távolította el az új telepítés megkezdése előtt.| Telepítse a kiépítési ügynököt egy nem TARTOMÁNYVEZÉRLŐi kiszolgálóra. Az új ügynök telepítése előtt győződjön meg arról, hogy az ügynök korábbi verziói el lesznek távolítva.|
+|2.| A Windows-szolgáltatás "Microsoft Azure AD-kapcsolat létesítési ügynöke" *kezdő* állapotban van, és nem a *futó* állapotra vált. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT Service\\AADConnectProvisioningAgent**) a kiszolgálón, és ez a szolgáltatás indításához használt **bejelentkezési** fiók. Ha a Windows-kiszolgálón egy biztonsági házirend megakadályozza, hogy a helyi fiókok futtassák a szolgáltatásokat, akkor ezt a hibát fogja tapasztalni. | Nyissa meg a *szolgáltatások konzolt*. Kattintson a jobb gombbal a Windows-szolgáltatás "Microsoft Azure AD kapcsolódás kiépítési ügynöke" elemre, és a bejelentkezés lapon adja meg egy tartományi rendszergazda fiókját a szolgáltatás futtatásához. Indítsa újra a szolgáltatást. |
+|3.| Ha a létesítési ügynököt az AD-tartományhoz konfigurálja a *csatlakozás Active Directory*lépésben, a varázsló hosszú időt vesz igénybe az ad-séma betöltésére, és végül időtúllépést okoz. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | A Active Directory-varázsló *kapcsolódása* képernyőn, miközben megadja az ad-tartományhoz tartozó hitelesítő adatokat, a *tartományvezérlő prioritásának kiválasztása*lehetőségre van szükség. Ezzel a beállítással kiválaszthatja azt a tartományvezérlőt, amely ugyanabban a helyen található, mint az ügynök kiszolgálója, és gondoskodhat arról, hogy ne legyenek tűzfalszabályok blokkolja a kommunikációt. |
 
-#### <a name="connectivity-errors"></a>Csatlakozási hibák
+#### <a name="connectivity-errors"></a>Kapcsolódási hibák
 
-If the provisioning service is unable to connect to Workday or Active Directory, it could cause the provisioning to go into a quarantined state. Use the table below to troubleshoot connectivity issues.
+Ha a létesítési szolgáltatás nem tud csatlakozni a munkanapokhoz vagy a Active Directoryhoz, a kiépítés a karanténba helyezett állapotba léphet. A kapcsolódási problémák elhárításához használja az alábbi táblázatot.
 
-|#|Error Scenario |Probable Causes|Recommended Resolution|
+|#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
-|1.| When you click on **Test Connection**, you get the error message: *There was an error connecting to Active Directory. Please ensure that the on-premises Provisioning Agent is running and it is configured with the correct Active Directory domain.* | This error usually shows up if the provisioning agent is not running or there is a firewall blocking communication between Azure AD and the provisioning agent. You may also see this error, if the domain is not configured in the Agent Wizard. | Open the *Services* console on the Windows server to confirm that the agent is running. Open the provisioning agent wizard and confirm that the right domain is registered with the agent.  |
-|2.| The provisioning job goes into quarantine state over the weekends (Fri-Sat) and we get an email notification that there is an error with the synchronization. | A hiba egyik gyakori oka a Workday tervezett állásideje. Ha Ön Workday megvalósítási bérlőt használ, vegye figyelembe, hogy a Workday megvalósítási bérlőihez állásidő van ütemezve hétvégére (általában péntek estétől szombat reggelig), és ebben az időszakban a Workday kiépítési alkalmazások karanténba helyezett állapotba léphetnek, mivel nem tudnak csatlakozni a Workdayhez. Amint a Workday megvalósítási bérlője újra elérhetővé válik, visszaállnak normál állapotba. Ritka esetekben ez a hibaüzenet akkor is megjelenhet, ha az integrációs rendszer felhasználójának jelszava megváltozott a bérlő frissítése miatt, vagy ha a fiók zárolva lett, illetve lejárt. | Beszéljen Workday-rendszergazdájával vagy integrációs partnerével, hogy megtudja, mikorra van ütemezve a Workday állásideje, így figyelmen kívül hagyhatja a figyelmeztető üzeneteket a leállás ideje alatt, és meggyőződhet a rendelkezésre állásról, amint a Workday-példány újra elérhető.  |
+|1.| Ha a **kapcsolat tesztelése**gombra kattint, a következő hibaüzenet jelenik meg: *hiba történt a Active Directoryhoz való csatlakozáskor. Győződjön meg arról, hogy a helyszíni kiépítési ügynök fut, és a megfelelő Active Directory tartománnyal van konfigurálva.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynök nem fut, vagy egy tűzfal blokkolja az Azure AD és a kiépítési ügynök közötti kommunikációt. Ezt a hibát akkor is láthatja, ha a tartomány nincs konfigurálva az ügynök varázslóban. | Nyissa meg a *szolgáltatások* konzolt a Windows Serveren, és győződjön meg arról, hogy az ügynök fut. Nyissa meg a létesítési ügynök varázslót, és ellenőrizze, hogy a megfelelő tartomány regisztrálva van-e az ügynökben.  |
+|2.| A kiépítési feladatok a hétvégén (Pén-Szo) a karantén állapotba kerülnek, és e-mailben értesítést küldünk arról, hogy hiba történt a szinkronizálás során. | A hiba egyik gyakori oka a Workday tervezett állásideje. Ha Ön Workday megvalósítási bérlőt használ, vegye figyelembe, hogy a Workday megvalósítási bérlőihez állásidő van ütemezve hétvégére (általában péntek estétől szombat reggelig), és ebben az időszakban a Workday kiépítési alkalmazások karanténba helyezett állapotba léphetnek, mivel nem tudnak csatlakozni a Workdayhez. Amint a Workday megvalósítási bérlője újra elérhetővé válik, visszaállnak normál állapotba. Ritka esetekben ez a hibaüzenet akkor is megjelenhet, ha az integrációs rendszer felhasználójának jelszava megváltozott a bérlő frissítése miatt, vagy ha a fiók zárolva lett, illetve lejárt. | Beszéljen Workday-rendszergazdájával vagy integrációs partnerével, hogy megtudja, mikorra van ütemezve a Workday állásideje, így figyelmen kívül hagyhatja a figyelmeztető üzeneteket a leállás ideje alatt, és meggyőződhet a rendelkezésre állásról, amint a Workday-példány újra elérhető.  |
 
 
-#### <a name="ad-user-account-creation-errors"></a>AD user account creation errors
+#### <a name="ad-user-account-creation-errors"></a>AD felhasználói fiókok létrehozásával kapcsolatos hibák
 
-|#|Error Scenario |Probable Causes|Recommended Resolution|
+|#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
-|1.| Export operation failures in the audit log with the message *Error: OperationsError-SvcErr: An operation error occurred. No superior reference has been configured for the directory service. The directory service is therefore unable to issue referrals to objects outside this forest.* | This error usually shows up if the *Active Directory Container* OU is not set correctly or if there are issues with the Expression Mapping used for *parentDistinguishedName*. | Check the *Active Directory Container* OU parameter for typos. Ha a *parentDistinguishedName* elemet használja az attribútumleképezésben, győződjön meg arról, hogy mindig egy AD-tartományon belüli ismert tárolóba adja vissza az értékeket. Check the *Export* event in the audit logs to see the generated value. |
-|2.| Export operation failures in the audit log with error code: *SystemForCrossDomainIdentityManagementBadResponse* and message *Error: ConstraintViolation-AtrErr: A value in the request is invalid. A value for the attribute was not in the acceptable range of values. \nError Details: CONSTRAINT_ATT_TYPE - company*. | While this error is specific to the *company* attribute, you may see this error for other attributes like *CN* as well. This error appears due to AD enforced schema constraint. By default, the attributes like *company* and *CN* in AD have an upper limit of 64 characters. If the value coming from Workday is more than 64 characters, then you will see this error message. | Check the *Export* event in the audit logs to see the value for the attribute reported in the error message. Consider truncating the value coming from Workday using the [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) function or changing the mappings to an AD attribute that does not have similar length constraints.  |
+|1.| A naplózási hibák exportálása a naplóba hibaüzenet *: OperationsError-SvcErr: működési hiba történt. Nem lett konfigurálva kiváló hivatkozás a címtárszolgáltatások számára. A címtárszolgáltatás ezért nem tudja kiadni az átirányításokat az erdőn kívüli objektumokra.* | Ez a hiba általában akkor jelenik meg, ha a *Active Directory-tároló* szervezeti egysége helytelenül van beállítva, vagy ha problémák merülnek fel a *parentDistinguishedName*használt kifejezés-hozzárendeléssel kapcsolatban. | Az elíráshoz keresse meg a *Active Directory Container* ou paramétert. Ha a *parentDistinguishedName* elemet használja az attribútumleképezésben, győződjön meg arról, hogy mindig egy AD-tartományon belüli ismert tárolóba adja vissza az értékeket. A generált érték megjelenítéséhez tekintse meg az *Exportálás* eseményt a naplókban. |
+|2.| Művelet-meghibásodások exportálása a naplóban hibakód: *SystemForCrossDomainIdentityManagementBadResponse* és üzenet *: ConstraintViolation-AtrErr: a kérelemben szereplő érték érvénytelen. Az attribútum értéke nem az elfogadható tartományba esik. \nError részletei: CONSTRAINT_ATT_TYPE – vállalat*. | Habár ez a hiba a *vállalati* attribútumra jellemző, ezt a hibát más attribútumok, például a *CN* is láthatja. Ez a hiba az AD által kényszerített séma megkötése miatt jelenik meg. Alapértelmezés szerint az AD-ben a *vállalat* és a *CN* -hez hasonló attribútumok felső határértéke 64 karakter. Ha a munkanaptól érkező érték több mint 64 karakterből áll, akkor ez a hibaüzenet jelenik meg. | Ellenőrizze az *Exportálás* eseményt a naplókban, hogy megjelenjen-e a hibaüzenetben jelentett attribútum értéke. Érdemes lehet a munkanapokból származó értéket a [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) függvénnyel lerövidíteni, vagy a leképezéseket egy olyan ad-attribútumra módosítani, amely nem rendelkezik hasonló hosszúságú korlátozásokkal.  |
 
-#### <a name="ad-user-account-update-errors"></a>AD user account update errors
+#### <a name="ad-user-account-update-errors"></a>Az AD felhasználói fiók frissítésével kapcsolatos hibák
 
-During the AD user account update process, the provisioning service reads information from both Workday and AD, runs the attribute mapping rules and determines if any change needs to take effect. Accordingly an update event is triggered. If any of these steps encounters a failure, it is logged in the audit logs. Use the table below to troubleshoot common update errors.
+Az Active Directory felhasználói fiókjának frissítési folyamata során a kiépítési szolgáltatás a munkanapokon és az AD-ben is beolvassa az adatokat, futtatja az attribútum-leképezési szabályokat, és meghatározza, hogy a módosítások életbe lépjenek. Ennek megfelelően a rendszer elindítja a frissítési eseményt. Ha bármelyik lépés hibát észlel, akkor a rendszer naplózza a naplókban. A gyakori frissítési hibák elhárításához használja az alábbi táblázatot.
 
-|#|Error Scenario |Probable Causes|Recommended Resolution|
+|#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
-|1.| Synchronization rule action failures in the audit log with the message *EventName = EntrySynchronizationError and ErrorCode = EndpointUnavailable*. | This error shows up if the provisioning service is unable to retrieve user profile data from Active Directory due to a processing error encountered by the on-premises provisioning agent. | Check the Provisioning Agent Event Viewer logs for error events that indicate issues with the read operation (Filter by Event ID #2). |
-|2.| The manager attribute in AD does not get updated for certain users in AD. | The most likely cause of this error is if you are using scoping rules and the user's manager is not part of the scope. You may also run into this issue if the manager's matching ID attribute (e.g. EmployeeID) is not found in the target AD domain or not set to the correct value. | Review the scoping filter and add the manager user in scope. Check the manager's profile in AD to make sure that there is a value for the matching ID attribute. |
+|1.| A szinkronizálási szabály műveleti hibák a naplóban a következő üzenettel: *EventName = EntrySynchronizationError és ErrorCode = EndpointUnavailable*. | Ez a hiba akkor jelenik meg, ha a kiépítési szolgáltatás nem tudja lekérni a felhasználói profil adatait a Active Directory miatt, mert a helyszíni kiépítési ügynök feldolgozási hibát észlelt. | Tekintse meg a kiépítési ügynököt, Eseménynapló naplózza az olvasási művelettel kapcsolatos problémákat jelző hibaüzeneteket (szűrés eseményazonosító alapján #2). |
+|2.| Az Active Directory Manager-attribútuma nem frissül az AD egyes felhasználói számára. | A hiba legvalószínűbb oka az, ha hatóköri szabályokat használ, és a felhasználó felettese nem része a hatókörnek. Ezt a problémát akkor is futtathatja, ha a felettes egyező azonosító attribútuma (például Alkalmazottkód) nem található a cél AD-tartományban, vagy nem a megfelelő értékre van állítva. | Tekintse át a hatóköri szűrőt, és adja hozzá a kezelő felhasználót a hatókörben. Ellenőrizze a felettes profilját az Active Directoryban, és ellenőrizze, hogy van-e érték a megfelelő azonosító attribútumhoz. |
 
-## <a name="managing-your-configuration"></a>Managing your configuration
+## <a name="managing-your-configuration"></a>A konfiguráció kezelése
 
-This section describes how you can further extend, customize and manage your Workday-driven user provisioning configuration. It covers the following topics:
+Ez a szakasz azt ismerteti, hogyan lehet tovább bővíteni, testreszabni és felügyelni a munkanapokon alapuló felhasználók kiépítési konfigurációját. A következő témaköröket tartalmazza:
 
-* [Customizing the list of Workday user attributes](#customizing-the-list-of-workday-user-attributes)  
-* [Exporting and importing your configuration](#exporting-and-importing-your-configuration)
+* [A munkanap felhasználói attribútumaik listájának testreszabása](#customizing-the-list-of-workday-user-attributes)  
+* [A konfiguráció exportálása és importálása](#exporting-and-importing-your-configuration)
 
-### <a name="customizing-the-list-of-workday-user-attributes"></a>Customizing the list of Workday user attributes
+### <a name="customizing-the-list-of-workday-user-attributes"></a>A munkanap felhasználói attribútumaik listájának testreszabása
 
-The Workday provisioning apps for Active Directory and Azure AD both include a default list of Workday user attributes you can select from. However, these lists are not comprehensive. Workday supports many hundreds of possible user attributes, which can either be standard or unique to your Workday tenant.
+A Active Directory és az Azure AD-hoz készült munkanapokat kiépítő alkalmazások is tartalmazzák a munkanapokhoz tartozó felhasználói attribútumok alapértelmezett listáját, amelyet választhat. Ezek a felsorolások azonban nem átfogóak. A munkanap számos száz lehetséges felhasználói attribútumot támogat, amelyek lehetnek standard vagy egyediek a munkanapok bérlője számára.
 
-The Azure AD provisioning service supports the ability to customize your list or Workday attribute to include any attributes exposed in the [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) operation of the Human Resources API.
+Az Azure AD-kiépítési szolgáltatás lehetővé teszi a lista vagy a munkanap attribútum testreszabását, hogy tartalmazza a Human Resources API [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) műveletében elérhetővé tett attribútumokat.
 
-To do this change, you must use [Workday Studio](https://community.workday.com/studio-download) to extract the XPath expressions that represent the attributes you wish to use, and then add them to your provisioning configuration using the advanced attribute editor in the Azure portal.
+Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://community.workday.com/studio-download) használatával ki kell bontania a használni kívánt attribútumokat jelölő XPath-kifejezéseket, majd hozzá kell adnia őket a kiépítési konfigurációhoz a Azure Portal speciális attribútumok szerkesztőjének használatával.
 
-**To retrieve an XPath expression for a Workday user attribute:**
+**XPath-kifejezés beolvasása egy munkanap felhasználói attribútumhoz:**
 
-1. Download and install [Workday Studio](https://community.workday.com/studio-download). You will need a Workday community account to access the installer.
+1. Töltse le és telepítse a [munkanap Studio](https://community.workday.com/studio-download)alkalmazást. A telepítőhöz a munkanapokhoz tartozó közösségi fiókra lesz szüksége.
 
-2. Download the Workday Human_Resources WSDL file from this URL: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. Töltse le a munkanap Human_Resources WSDL-fájlt erről az URL-címről: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
-3. Launch Workday Studio.
+3. Indítsa el a munkanap studiót.
 
-4. From the command bar, select the  **Workday > Test Web Service in Tester** option.
+4. A parancssorban válassza ki a **munkanap > test Web Service in Tester** (tesztelési lehetőség) lehetőséget.
 
-5. Select **External**, and select the Human_Resources WSDL file you downloaded in step 2.
+5. Válassza a **külső**lehetőséget, majd válassza ki a 2. lépésben letöltött Human_Resources WSDL-fájlt.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
-6. Set the **Location** field to `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`, but replacing "IMPL-CC" with your actual instance type, and "TENANT" with your real tenant name.
+6. Állítsa a **Location (hely** ) mezőt `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`értékre, de cserélje le a "IMPL-CC" értéket a tényleges példány típusával, a "Bérlővel" pedig a valódi bérlő nevét.
 
-7. Set **Operation** to **Get_Workers**
+7. **Művelet** beállítása **Get_Workersre**
 
-8.  Click the small **configure** link below the Request/Response panes to set your Workday credentials. Check **Authentication**, and then enter the user name and password for your Workday integration system account. Be sure to format the user name as name\@tenant, and leave the **WS-Security UsernameToken** option selected.
+8.  Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet\@bérlőként formázza, és hagyja bejelölve a **WS-Security UsernameToken** beállítást.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Kattintson az **OK** gombra.
 
-10. In the **Request** pane, paste in the XML below and set **Employee_ID** to the employee ID of a real user in your Workday tenant. Select a user that has the attribute populated that you wish to extract.
+10. A **kérelem** ablaktáblában illessze be az alábbi XML-fájlt, és állítsa be **Employee_IDt** egy valós felhasználó alkalmazotti azonosítójára a munkahelye bérlője számára. Válasszon ki egy olyan felhasználót, aki rendelkezik a kinyerni kívánt attribútummal.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -1277,81 +1277,81 @@ To do this change, you must use [Workday Studio](https://community.workday.com/s
     </env:Envelope>
     ```
 
-11. Click the **Send Request** (green arrow) to execute the command. If successful, the response should appear in the **Response** pane. Check the response to ensure it has the data of the user ID you entered, and not an error.
+11. A parancs végrehajtásához kattintson a **küldési kérelemre** (zöld nyíl). Ha a művelet sikeres, a válasznak szerepelnie kell a **Válasz** ablaktáblában. Ellenőrizze a választ, hogy rendelkezik-e a megadott felhasználói AZONOSÍTÓval, és ne legyen hiba.
 
-12. If successful, copy the XML from the **Response** pane and save it as an XML file.
+12. Ha a művelet sikeres, másolja az XML-fájlt a **Válasz** ablaktábláról, és mentse XML-fájlként.
 
-13. In the command bar of Workday Studio, select **File > Open File...** and open the XML file you saved. This action will open the file in the Workday Studio XML editor.
+13. A munkanap Studio menüsávján válassza a **fájl > fájl megnyitása..** . lehetőséget, majd nyissa meg a mentett XML-fájlt. Ez a művelet megnyitja a fájlt a munkanap Studio XML-szerkesztőjében.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. In the file tree, navigate through **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker** to find your user's data.
+14. A fájl faszerkezetében navigáljon a **/env: boríték > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: Worker** a felhasználó adatai megkereséséhez.
 
-15. Under **wd: Worker**, find the attribute that you wish to add, and select it.
+15. A **WD: Worker**alatt keresse meg a hozzáadni kívánt attribútumot, és válassza ki.
 
-16. Copy the XPath expression for your selected attribute out of the **Document Path** field.
+16. Másolja ki a kijelölt attribútum XPath-kifejezését a **dokumentum elérési útja** mezőből.
 
-17. Remove the **/env:Envelope/env:Body/wd:Get_Workers_Response/wd:Response_Data/** prefix from the copied expression.
+17. Távolítsa el a **/env: boríték/env: Body/WD: Get_Workers_Response/WD: Response_Data/** előtagot a másolt kifejezésből.
 
-18. If the last item in the copied expression is a node (example: "/wd: Birth_Date"), then append **/text()** at the end of the expression. This is not necessary if the last item is an attribute (example: "/@wd: type").
+18. Ha a másolt kifejezés utolsó eleme egy csomópont (például: "/WD: Birth_Date"), akkor fűzze hozzá a **/text ()** kifejezést a kifejezés végén. Erre nincs szükség, ha az utolsó elem egy attribútum (például: "/@wd: típus").
 
-19. The result should be something like `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`. This value is what you will copy into the Azure portal.
+19. Az eredménynek olyannak kell lennie, mint a `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`. Ezt az értéket másolja a Azure Portalba.
 
-**To add your custom Workday user attribute to your provisioning configuration:**
+**Egyéni munkanap felhasználói attribútum hozzáadása a létesítési konfigurációhoz:**
 
-1. Launch the [Azure portal](https://portal.azure.com), and navigate to the Provisioning section of your Workday provisioning application, as described earlier in this tutorial.
+1. Indítsa el a [Azure Portalt](https://portal.azure.com), és navigáljon a munkaidő-kiépítési alkalmazás üzembe helyezési szakaszához az oktatóanyag korábbi részében leírtak szerint.
 
-2. Set **Provisioning Status** to **Off**, and select **Save**. This step will help ensure your changes will take effect only when you are ready.
+2. Állítsa ki a **kiépítési állapotot** **kikapcsolva**értékre, majd válassza a **Mentés**lehetőséget. Ez a lépés segít biztosítani, hogy a módosítások csak akkor lépnek érvénybe, ha készen áll.
 
-3. Under **Mappings**, select **Synchronize Workday Workers to On Premises Active Directory** (or **Synchronize Workday Workers to Azure AD**).
+3. A **leképezések**területen válassza **a munkavégző munkatársak szinkronizálása a helyszíni Active Directory** (vagy a **munkanapokon dolgozók szinkronizálása az Azure ad**-be) lehetőséget.
 
-4. Scroll to the bottom of the next screen, and select **Show advanced options**.
+4. Görgessen a következő képernyő aljára, és válassza a **Speciális beállítások megjelenítése**lehetőséget.
 
-5. Select **Edit attribute list for Workday**.
+5. Válassza **az attribútumok szerkesztése munkanapokhoz**elemet.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
-6. Scroll to the bottom of the attribute list to where the input fields are.
+6. Görgessen az attribútumok listájának aljára, ahol a beviteli mezők szerepelnek.
 
-7. For **Name**, enter a display name for your attribute.
+7. A **név**mezőben adja meg az attribútum megjelenítendő nevét.
 
-8. For **Type**, select type that appropriately corresponds to your attribute (**String** is most common).
+8. A **Típus mezőben**válassza ki a megfelelő típust, amely megfelel az attribútumnak (a**karakterlánc** a leggyakoribb).
 
-9. For **API Expression**, enter the XPath expression you copied from Workday Studio. Például: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. Az **API-kifejezés**mezőben adja meg a munkanap studióból másolt XPath-kifejezést. Például: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
-10. Select **Add Attribute**.
+10. Válassza az **attribútum hozzáadása**elemet.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
+    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Select **Save** above, and then **Yes** to the dialog. Close the Attribute-Mapping screen if it is still open.
+11. Válassza a fenti **Mentés** , majd az **Igen** lehetőséget a párbeszédpanelre. Ha még meg van nyitva, az attribútum-leképezési képernyő bezárásához.
 
-12. Back on the main **Provisioning** tab, select **Synchronize Workday Workers to On Premises Active Directory** (or **Synchronize Workers to Azure AD**) again.
+12. A fő **kiépítés** lapon válassza a **munkavégző munkatársak szinkronizálása a helyszínen Active Directory** (vagy a **munkatársak szinkronizálása az Azure ad**-be) lehetőséget.
 
-13. Select **Add new mapping**.
+13. Válassza az **Új leképezés hozzáadása**lehetőséget.
 
-14. Your new attribute should now appear in the **Source attribute** list.
+14. Az új attribútumnak ekkor meg kell jelennie a **forrás attribútum** listában.
 
-15. Add a mapping for your new attribute as desired.
+15. Szükség szerint adjon hozzá egy leképezést az új attribútumhoz.
 
-16. When finished, remember to set **Provisioning Status** back to **On** and save.
+16. Ha elkészült, ne felejtse el visszaállítani a **kiépítési állapotot** **a be** értékre, és mentse.
 
 ### <a name="exporting-and-importing-your-configuration"></a>Konfiguráció exportálása és importálása
 
-Refer to the article [Exporting and importing provisioning configuration](../manage-apps/export-import-provisioning-configuration.md)
+A [kiépítési konfiguráció exportálásával és importálásával](../manage-apps/export-import-provisioning-configuration.md) kapcsolatban tekintse meg a cikket.
 
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
 
-The Workday provisioning solution for Active Directory requires a provisioning agent to be installed on an on-premises Windows server, and this agent creates logs in the Windows Event log which may contain personal data depending on your Workday to AD attribute mappings. To comply with user privacy obligations, you can ensure that no data is retained in the Event logs beyond 48 hours by setting up a Windows scheduled task to clear the event log.
+A Active Directory munkahelyhez való kiépítési megoldásához egy üzembe helyezési ügynököt kell telepíteni egy helyszíni Windows Serverre, és ez az ügynök naplókat hoz létre a Windows-eseménynaplóban, amely a munkanaptól az AD-attribútumtól függően személyes adatait is tartalmazhatja. hozzárendelések. A felhasználói adatvédelmi kötelezettségek betartása érdekében gondoskodhat arról, hogy az eseménynaplókban ne őrizzen meg adatokat az 48 órán túli adatnaplóban egy Windows ütemezett feladat beállításával az Eseménynapló törléséhez.
 
-The Azure AD provisioning service falls into the **data processor** category of GDPR classification. As a data processor pipeline, the service provides data processing services to key partners and end consumers. Azure AD provisioning service does not generate user data and has no independent control over what personal data is collected and how it is used. Data retrieval, aggregation, analysis, and reporting in Azure AD provisioning service are based on existing enterprise data.
+Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** kategóriába tartozik. Adatfeldolgozó folyamatként a szolgáltatás adatfeldolgozási szolgáltatásokat biztosít a legfontosabb partnerek és a végfelhasználók számára. Az Azure AD kiépítési szolgáltatás nem hoz létre felhasználói adatokat, és nincs független vezérlése a személyes adatok gyűjtésének és felhasználásának módjától. Az Azure AD-létesítési szolgáltatás Adatlekérdezési, összesítési, elemzési és jelentéskészítési adatai a meglévő vállalati adatokon alapulnak.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-With respect to data retention, the Azure AD provisioning service does not generate reports, perform analytics, or provide insights beyond 30 days. Therefore, Azure AD provisioning service does not store, process, or retain any data beyond 30 days. This design is compliant with the GDPR regulations, Microsoft privacy compliance regulations, and Azure AD data retention policies.
+Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Learn how to review logs and get reports on provisioning activity](../manage-apps/check-status-user-account-provisioning.md)
-* [Learn how to configure single sign-on between Workday and Azure Active Directory](workday-tutorial.md)
-* [Learn how to integrate other SaaS applications with Azure Active Directory](tutorial-list.md)
-* [Learn how to use Microsoft Graph APIs to manage provisioning configurations](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
+* [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
+* [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

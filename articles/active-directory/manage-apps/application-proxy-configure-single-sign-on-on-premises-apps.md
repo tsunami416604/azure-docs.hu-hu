@@ -99,5 +99,5 @@ Ha végrehajtotta ezeket a lépéseket, az alkalmazás működik és kell lennie
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
-- [Az alkalmazásproxy hibaelhárítása](application-proxy-troubleshoot.md)
+- [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
+- [Alkalmazásproxy – problémamegoldás](application-proxy-troubleshoot.md)

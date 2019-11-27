@@ -1,29 +1,21 @@
 ---
-title: Azure CLI-példaszkript – Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz | Microsoft Docs
-description: Azure CLI-példaszkript – Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
+title: Kiszolgáló nélküli Function-alkalmazás létrehozása az Azure CLI-vel
+description: Function-alkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz az Azure-ban az Azure CLI használatával
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 265c4fa3c28783f0d9e5d789348c3cd2e249eb29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf0e43132662f6f5322485a59f356f872559092
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325721"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532504"
 ---
-# <a name="create-a-function-app-for-serverless-code-execution"></a>Függvényalkalmazás létrehozása kiszolgáló nélküli kódvégrehajtáshoz
+# <a name="create-a-function-app-for-serverless-code-execution"></a>Függvényalkalmazás létrehozása kiszolgáló nélküli kódvégrehajtáshoz 
 
 Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely az Ön függvényeinek tárolójaként szolgál. A függvényalkalmazás létrehozása a [használatalapú csomag](../functions-scale.md#consumption-plan) segítségével történik, amely ideális az eseményvezérelt, kiszolgáló nélküli számítási feladatokhoz.
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,8 +41,8 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

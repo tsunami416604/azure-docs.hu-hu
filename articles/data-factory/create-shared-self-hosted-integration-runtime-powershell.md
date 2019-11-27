@@ -1,6 +1,6 @@
 ---
-title: Create a shared self-hosted integration runtime with PowerShell
-description: Learn how to create a shared self-hosted integration runtime in Azure Data Factory, so multiple data factories can access the integration runtime.
+title: Megosztott, saját üzemeltetésű integrációs modul létrehozása a PowerShell-lel
+description: Megtudhatja, hogyan hozhat létre megosztott, saját üzemeltetésű integrációs modult Azure Data Factory, így több adatfeldolgozó is hozzáférhet az integrációs modulhoz.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -19,38 +19,38 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218235"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Create a shared self-hosted integration runtime in Azure Data Factory
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
 
-This guide shows you how to create a shared self-hosted integration runtime in Azure Data Factory. Then you can use the shared self-hosted integration runtime in another data factory.
+Ez az útmutató bemutatja, hogyan hozhat létre megosztott, saját üzemeltetésű integrációs modult Azure Data Factoryban. Ezt követően használhatja a megosztott saját üzemeltetésű integrációs modult egy másik adatgyárban.
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Create a shared self-hosted IR using Azure Data Factory UI
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Megosztott saját üzemeltetésű integrációs modul létrehozása Azure Data Factory felhasználói felület használatával
 
-To create a shared self-hosted IR using Azure Data Factory UI, you can take following steps:
+Ha közösen üzemeltetett IR-t szeretne létrehozni Azure Data Factory felhasználói felülettel, hajtsa végre a következő lépéseket:
 
-1. In the self-hosted IR to be shared, grant permission to the data factory in which you want to create the linked IR.
+1. A saját üzemeltetésű integrációs modulban adja meg azt az adat-előállítót, amelyben létre kívánja hozni a társított IR-t.
       
-    ![Button for granting permission on the Sharing tab](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
+    ![Engedélyek megadására szolgáló gomb a megosztás lapon](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
       
-    ![Selections for assigning permissions](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Engedélyek hozzárendelésének kiválasztása](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
     
-2. Note the resource ID of the self-hosted IR to be shared.
+2. Jegyezze fel a megosztott saját üzemeltetésű integrációs modul erőforrás-AZONOSÍTÓját.
       
-   ![Location of the resource ID](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
+   ![Az erőforrás-azonosító helye](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
     
-3. In the data factory to which the permissions were granted, create a new self-hosted IR (linked) and enter the resource ID.
+3. Hozzon létre egy új, saját üzemeltetésű IR-t (csatolt) az adatelőállítóban, és adja meg az erőforrás-azonosítót.
       
-   ![Button for creating a linked self-hosted integration runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
+   ![A társított saját üzemeltetésű integrációs modul létrehozásának gombja](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
       
-    ![Boxes for name and resource ID](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Név és erőforrás-azonosító mezői](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Create a shared self-hosted IR using Azure PowerShell
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Megosztott saját üzemeltetésű IR létrehozása Azure PowerShell használatával
 
-To create a shared self-hosted IR using Azure PowerShell, you can take following steps: 
+Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját üzemeltetésű integrációs modult, hajtsa végre a következő lépéseket: 
 1. Adat-előállító létrehozása 
 1. Hozzon létre egy saját üzemeltetésű integrációs modult.
-1. Share the self-hosted integration runtime with other data factories.
-1. Create a linked integration runtime.
-1. Revoke the sharing.
+1. Ossza meg a saját üzemeltetésű integrációs modult más adatgyárakkal.
+1. Hozzon létre egy társított integrációs modult.
+1. A megosztás visszavonása.
 
 ### <a name="prerequisites"></a>Előfeltételek 
 
@@ -58,16 +58,16 @@ To create a shared self-hosted IR using Azure PowerShell, you can take following
 
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
 
-- **Azure PowerShell**. Follow the instructions in [Install Azure PowerShell on Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). You use PowerShell to run a script to create a self-hosted integration runtime that can be shared with other data factories. 
+- **Azure PowerShell**. Kövesse a következő témakör utasításait: [Install Azure PowerShell for Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). A PowerShell használatával parancsfájlt futtathat egy olyan saját üzemeltetésű integrációs modul létrehozásához, amely más adatgyárakkal is megosztható. 
 
 > [!NOTE]  
-> For a list of Azure regions in which Data Factory is currently available, select the regions that interest you on  [Products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> Azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, válassza ki azokat a régiókat, amelyek érdeklik a [régiókban elérhető termékeken](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a Windows PowerShell integrált parancsfájlkezelési környezetet (ISE).
 
-1. Create variables. Copy and paste the following script. Replace the variables, such as **SubscriptionName** and **ResourceGroupName**, with actual values: 
+1. Hozzon létre változókat. Másolja és illessze be az alábbi szkriptet. Cserélje le a változókat (például **SubscriptionName** és **ResourceGroupName**) a tényleges értékekkel: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -88,19 +88,19 @@ To create a shared self-hosted IR using Azure PowerShell, you can take following
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Sign in and select a subscription. Add the following code to the script to sign in and select your Azure subscription:
+1. Jelentkezzen be, és válasszon egy előfizetést. Adja hozzá a következő kódot a szkripthez a bejelentkezéshez, és válassza ki az Azure-előfizetését:
 
     ```powershell
     Connect-AzAccount
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-1. Create a resource group and a data factory.
+1. Hozzon létre egy erőforráscsoportot és egy adatelőállítót.
 
     > [!NOTE]  
-    > Ez a lépés nem kötelező. If you already have a data factory, skip this step. 
+    > Ez a lépés nem kötelező. Ha már rendelkezik egy adatelőállítóval, ugorja át ezt a lépést. 
 
-    Create an [Azure resource group](../azure-resource-manager/resource-group-overview.md) by using the [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) command. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. The following example creates a resource group named `myResourceGroup` in the WestEurope location: 
+    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a WestEurope helyen: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -117,9 +117,9 @@ To create a shared self-hosted IR using Azure PowerShell, you can take following
 ### <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
 > [!NOTE]  
-> Ez a lépés nem kötelező. If you already have the self-hosted integration runtime that you want to share with other data factories, skip this step.
+> Ez a lépés nem kötelező. Ha már rendelkezik olyan saját üzemeltetésű integrációs futtatókörnyezettel, amelyet más adatgyárakkal szeretne megosztani, ugorja át ezt a lépést.
 
-Run the following command to create a self-hosted integration runtime:
+Futtassa a következő parancsot egy saját üzemeltetésű integrációs modul létrehozásához:
 
 ```powershell
 $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
@@ -130,9 +130,9 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Get the integration runtime authentication key and register a node
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Az Integration Runtime hitelesítési kulcsának beszerzése és a csomópont regisztrálása
 
-Run the following command to get the authentication key for the self-hosted integration runtime:
+Futtassa a következő parancsot a saját üzemeltetésű integrációs modul hitelesítési kulcsának beszerzéséhez:
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeKey `
@@ -141,34 +141,34 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
     -Name $SharedIntegrationRuntimeName
 ```
 
-The response contains the authentication key for this self-hosted integration runtime. You use this key when you register the integration runtime node.
+A válasz tartalmazza a saját üzemeltetésű integrációs modulhoz tartozó hitelesítési kulcsot. Ezt a kulcsot használja az Integration Runtime csomópontjának regisztrálása során.
 
-#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Install and register the self-hosted integration runtime
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>A saját üzemeltetésű integrációs modul telepítése és regisztrálása
 
-1. Download the self-hosted integration runtime installer from [Azure Data Factory Integration Runtime](https://aka.ms/dmg).
+1. Töltse le a saját üzemeltetésű Integration Runtime telepítőjét [Azure Data Factory Integration Runtimeról](https://aka.ms/dmg).
 
-2. Run the installer to install the self-hosted integration on a local computer.
+2. Futtassa a telepítőt a saját üzemeltetésű integráció helyi számítógépre történő telepítéséhez.
 
-3. Register the new self-hosted integration with the authentication key that you retrieved in a previous step.
+3. Regisztrálja az új saját üzemeltetésű integrációt az előző lépésben lekért hitelesítési kulccsal.
 
-### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Share the self-hosted integration runtime with another data factory
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>A saját üzemeltetésű integrációs modul megosztása egy másik adatgyárral
 
-#### <a name="create-another-data-factory"></a>Create another data factory
+#### <a name="create-another-data-factory"></a>Másik adatelőállító létrehozása
 
 > [!NOTE]  
-> Ez a lépés nem kötelező. If you already have the data factory that you want to share with, skip this step.
+> Ez a lépés nem kötelező. Ha már rendelkezik a-vel megosztani kívánt adatelőállítóval, ugorja át ezt a lépést.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-#### <a name="grant-permission"></a>Grant permission
+#### <a name="grant-permission"></a>Engedély megadása
 
-Grant permission to the data factory that needs to access the self-hosted integration runtime you created and registered.
+Adjon engedélyt az adat-előállítónak, amelynek hozzá kell férnie a létrehozott és regisztrált saját üzemeltetésű integrációs modulhoz.
 
 > [!IMPORTANT]  
-> Do not skip this step!
+> Ne ugorja át ezt a lépést!
 
 ```powershell
 New-AzRoleAssignment `
@@ -177,9 +177,9 @@ New-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-### <a name="create-a-linked-self-hosted-integration-runtime"></a>Create a linked self-hosted integration runtime
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Társított saját üzemeltetésű integrációs modul létrehozása
 
-Run the following command to create a linked self-hosted integration runtime:
+A következő parancs futtatásával hozzon létre egy társított saját üzemeltetésű integrációs modult:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime `
@@ -191,11 +191,11 @@ Set-AzDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Now you can use this linked integration runtime in any linked service. The linked integration runtime uses the shared integration runtime to run activities.
+Most már használhatja a társított integrációs modult bármelyik társított szolgáltatásban. A társított Integration Runtime a megosztott integrációs modult használja a tevékenységek futtatásához.
 
-### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Revoke integration runtime sharing from a data factory
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Az integrációs modul megosztásának visszavonása egy adatgyárból
 
-To revoke the access of a data factory from the shared integration runtime, run the following command:
+A következő parancs futtatásával vonhatja vissza az adatok előállítójának a megosztott integrációs modulból való hozzáférését:
 
 ```powershell
 Remove-AzRoleAssignment `
@@ -204,7 +204,7 @@ Remove-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-To remove the existing linked integration runtime, run the following command against the shared integration runtime:
+Ha el szeretné távolítani a meglévő társított integrációs modult, futtassa a következő parancsot a megosztott integrációs futtatókörnyezeten:
 
 ```powershell
 Remove-AzDataFactoryV2IntegrationRuntime `
@@ -217,6 +217,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Következő lépések
 
-- Review [integration runtime concepts in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Tekintse át [az Integration Runtime fogalmait a Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Learn how to [create a self-hosted integration runtime in the Azure portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Ismerje meg, hogyan [hozhat létre saját üzemeltetésű integrációs modult a Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).

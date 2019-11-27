@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028490"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539290"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
@@ -35,7 +35,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
@@ -61,9 +61,9 @@ Ebben a cikkben mintaadatok létrehozásához és az Event hub-hoz való elküld
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Subscription | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
-    | Resource group | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
-    | Location | *USA nyugati régiója* | A cikkhez válassza az *USA nyugati* régiója lehetőséget. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Hozza létre az Event hub-névteret ugyanabban a helyen, mint a Kusto-fürtöt a legjobb teljesítmény érdekében (amely a nagy átviteli sebességű Event hub-névterek esetében fontos
+    | Előfizetést | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
+    | Erőforráscsoport | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
+    | Hely | *USA nyugati régiója* | A cikkhez válassza az *USA nyugati* régiója lehetőséget. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Hozza létre az Event hub-névteret ugyanabban a helyen, mint a Kusto-fürtöt a legjobb teljesítmény érdekében (amely a nagy átviteli sebességű Event hub-névterek esetében fontos
     | Névtér neve | A névtér egyedi neve | Válasszon egy egyedi nevet a névtér azonosításához. Például: *mytestnamespace*. A rendszer hozzáfűzi a *servicebus.windows.net* tartománynevet a megadott névhez. A név csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. Az érték 6 és 50 karakter közötti hosszúságú lehet.
     | Event Hubs neve | *test-hub* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. Az eseményközpont nevének egyedinek kell lennie a névtéren belül. |
     | Fogyasztói csoport neve | *test-group* | A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
@@ -137,6 +137,8 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     > [!NOTE]
     > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
     > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
+    > * Engedélyezze a GZip-tömörítést a statikus útválasztáshoz egy [támogatási kérelem megnyitásával a Azure Portalban](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Engedélyezze a GZip-tömörítést a dinamikus útválasztáshoz a [minta alkalmazásban](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)látható módon. 
+    > * A Avro formátum és az eseményrendszer tulajdonságai nem támogatottak a tömörítési adattartalomban.
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
@@ -212,6 +214,6 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 
 1. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét (*test-hub-rg*), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő lekérdezése](web-query-data.md)

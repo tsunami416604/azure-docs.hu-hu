@@ -32,7 +32,7 @@ Ez az oktatóanyag leírja, hogyan használhatók az Azure Content Delivery Netw
 
 - Egyéni gyorsítótárazási szabályok: Beállíthat egy vagy több globális gyorsítótárazási szabályt minden egyes végponthoz a profiljában. Az egyéni gyorsítótárazási szabályok meghatározott elérési utaknak és fájlkiterjesztéseknek felelnek meg, a feldolgozásuk sorrendben történik, és felülbírálják a globális gyorsítótárazási szabályt, ha az be van állítva. 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - A gyorsítótárazási szabályok lap megnyitása.
 > - Globális gyorsítótárazási szabály létrehozása.
@@ -101,7 +101,7 @@ Az előző lépésekben gyorsítótárazási szabályokat hozott létre. Ha már
 6. Válassza a lap tetején a **Mentés** lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

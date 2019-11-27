@@ -46,6 +46,6 @@ A probléma három módon oldható meg. Az alábbi lehetőségek a növekvő kom
 
 3.  Ha ezek közül egyik lehetőség sem valósítható meg, több lehetőség is van a beágyazott hivatkozások fordításának engedélyezésére. Ezek a lehetőségek közé tartoznak a Intune Managed Browser, a saját alkalmazások bővítmény vagy az alkalmazáson keresztüli fordítási beállítás használata. Ha többet szeretne megtudni ezekről a lehetőségekről és azok engedélyezéséről, tekintse meg az [Azure ad Application proxy közzétett alkalmazásokra mutató hardcoded-hivatkozások átirányítása](application-proxy-configure-hard-coded-link-translation.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
 

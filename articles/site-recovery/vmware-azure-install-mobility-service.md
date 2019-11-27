@@ -64,7 +64,7 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 
 Ha a replikálni kívánt gépeken aktív víruskereső szoftver fut, akkor győződjön meg róla, hogy kizárja a mobilitási szolgáltatás telepítési mappáját a víruskereső műveleteiből (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció a várt módon működjön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A mobilitási szolgáltatás telepítése után a Azure Portal válassza a **+ replikálás** lehetőséget a virtuális gépek védelmének megkezdéséhez. További információ a [VMWare virtuális gépek](vmware-azure-enable-replication.md) és [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication)replikálásának engedélyezéséről.
 

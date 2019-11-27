@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+title: 'Gyors útmutató: alapszintű Load Balancer létrehozása – Azure CLI'
 titleSuffix: Azure Load Balancer
-description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
+description: Ez az útmutató bemutatja, hogyan hozható létre nyilvános terheléselosztót az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -23,15 +23,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214847"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
-This quickstart shows you how to create an Azure Load Balancer to load balance internet traffic between virtual machines in Azure. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Load Balancert az Azure-beli virtuális gépek közötti internetes forgalom elosztásához. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -61,7 +61,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEndPool** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
+Hozzon létre egy [myLoadBalancer](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű nyilvános Azure Load Balancert az **az network lb create** paranccsal, amely tartalmaz egy **myFrontEndPool** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
 
 ```azurecli-interactive
   az network lb create \
@@ -108,7 +108,7 @@ Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselos
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
+Az *az network vnet create* paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \
@@ -146,7 +146,7 @@ Hozzon létre biztonságicsoport-szabályt a 80-as porton keresztül érkező be
 ```
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
+Hozzon létre két hálózati adaptert az [az Network NIC Create](/cli/azure/network/nic#az-network-nic-create) paranccsal, és társítsa azokat a nyilvános IP-címhez és a hálózati biztonsági csoporthoz. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -261,7 +261,7 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban létrehozott egy alapszintű terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt, majd tesztelte a terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
 
 > [!div class="nextstepaction"]

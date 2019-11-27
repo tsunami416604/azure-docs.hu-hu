@@ -1,19 +1,14 @@
 ---
-title: Titkos kötet csatlakoztatása Azure Container Instances
+title: Titkos kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat titkos kötetet a tároló példányaihoz való hozzáférés bizalmas adatainak tárolásához
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: danlep
-ms.openlocfilehash: 2e96ef73c3ff89fd7941fa14a8a1e53e6d4d8593
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7f212a5090923a7d7bf00fc8ac78299f2edcc9c1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68325429"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533191"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Titkos kötet csatlakoztatása Azure Container Instances
 
@@ -26,7 +21,7 @@ Az összes *titkos* kötetet a [TMPFS][tmpfs], egy RAM-alapú fájlrendszer tám
 
 ## <a name="mount-secret-volume---azure-cli"></a>Titkos kötet csatlakoztatása – Azure CLI
 
-Ha egy vagy több titkos kulcsot tartalmazó tárolót szeretne üzembe helyezni az Azure CLI használatával, `--secrets` adja `--secrets-mount-path` meg a és a paramétereket az az [Container Create][az-container-create] parancsban. Ez a példa egy *titkos* kötetet csatlakoztat, amely a következő két titokból áll `/mnt/secrets`: "mysecret1" és "mysecret2".
+Ha egy vagy több titkos kulcsot tartalmazó tárolót szeretne üzembe helyezni az Azure CLI használatával, adja meg az `--secrets` és `--secrets-mount-path` paramétereket az [az Container Create][az-container-create] paranccsal. Ez a példa egy *titkos* kötetet csatlakoztat, amely a következő két titokból áll: "mysecret1" és "mysecret2", `/mnt/secrets`:
 
 ```azurecli-interactive
 az container create \
@@ -58,7 +53,7 @@ A tároló csoportokat az Azure CLI-vel és egy YAML- [sablonnal](container-inst
 
 Ha YAML-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
 
-A következő YAML-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat `/mnt/secrets`a (z) helyen. A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
+A következő YAML-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat `/mnt/secrets`. A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -89,7 +84,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-A YAML sablonnal való üzembe helyezéshez mentse az előző YAML egy nevű `deploy-aci.yaml`fájlba, majd hajtsa végre az az [Container Create][az-container-create] parancsot `--file` a következő paraméterrel:
+A YAML sablonnal való üzembe helyezéshez mentse az előző YAML egy `deploy-aci.yaml`nevű fájlba, majd hajtsa végre az az [Container Create][az-container-create] parancsot a `--file` paraméterrel:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -100,31 +95,31 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 A CLI és a YAML üzembe helyezése mellett az Azure [Resource Manager-sablonok](/azure/templates/microsoft.containerinstance/containergroups)használatával is üzembe helyezhet egy tároló csoportot.
 
-Először töltse `volumes` fel a tömböt a sablon tároló csoport `properties` szakaszában. Ha Resource Manager-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
+Először töltse ki a `volumes` tömböt a sablon `properties` szakaszának tároló csoportjában. Ha Resource Manager-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
 
-Ezután a tároló csoport minden olyan tárolójában, amelyben a *titkos* kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt `properties` a tároló definíciójának szakaszában.
+Ezután a tároló csoport minden olyan tárolójában, amelyben a *titkos* kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
 
-A következő Resource Manager-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet `/mnt/secrets`csatlakoztat a alkalmazásban. A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
+A következő Resource Manager-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat `/mnt/secrets`on. A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy `deploy-aci.json`nevű fájlba, majd hajtsa végre az az [Group Deployment Create][az-group-deployment-create] parancsot `--template-file` a következő paraméterrel:
+A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy `deploy-aci.json`nevű fájlba, majd hajtsa végre az az [Group Deployment Create][az-group-deployment-create] parancsot a `--template-file` paraméterrel:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
 az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="volumes"></a>Kötetek
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 
-* [Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása](container-instances-volume-azure-files.md)
-* [Az Azure-tároló példányát emptyDir kötet csatlakoztatása](container-instances-volume-emptydir.md)
-* [Azure-tároló példányát gitRepo kötet csatlakoztatása](container-instances-volume-gitrepo.md)
+* [Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben](container-instances-volume-azure-files.md)
+* [EmptyDir-kötet csatlakoztatása Azure Container Instances](container-instances-volume-emptydir.md)
+* [Gitrepo típusú-kötet csatlakoztatása Azure Container Instances](container-instances-volume-gitrepo.md)
 
 ### <a name="secure-environment-variables"></a>Biztonságos környezeti változók
 

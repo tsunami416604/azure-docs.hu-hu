@@ -1,6 +1,6 @@
 ---
-title: Run your Azure Functions from a package
-description: Have the Azure Functions runtime run your functions by mounting a deployment package file that contains your function app project files.
+title: Azure Functions futtatása csomagból
+description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
@@ -10,62 +10,62 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230350"
 ---
-# <a name="run-your-azure-functions-from-a-package-file"></a>Run your Azure Functions from a package file
+# <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
-In Azure, you can run your functions directly from a deployment package file in your function app. The other option is to deploy your files in the `d:\home\site\wwwroot` directory of your function app.
+Az Azure-ban a függvényeket közvetlenül egy központi telepítési csomagból is futtathatja a Function alkalmazásban. A másik lehetőség, hogy telepíti a fájlokat a Function alkalmazás `d:\home\site\wwwroot` könyvtárába.
 
-This article describes the benefits of running your functions from a package. It also shows how to enable this functionality in your function app.
+Ez a cikk a függvények csomagból való futtatásának előnyeit ismerteti. Azt is bemutatja, hogyan engedélyezheti ezt a funkciót a Function alkalmazásban.
 
 > [!IMPORTANT]
-> When deploying your functions to a Linux function app in a [Premium plan](functions-scale.md#premium-plan), you should always run from the package file and [publish your app using the Azure Functions Core Tools](functions-run-local.md#project-file-deployment).
+> Ha egy [prémium](functions-scale.md#premium-plan)szintű csomagban telepíti a függvényeket egy Linux-függvény alkalmazásba, mindig a csomagfájl alapján kell futtatnia, és [az alkalmazást a Azure functions Core Tools használatával kell közzétennie](functions-run-local.md#project-file-deployment).
 
-## <a name="benefits-of-running-from-a-package-file"></a>Benefits of running from a package file
+## <a name="benefits-of-running-from-a-package-file"></a>A csomagfájl futtatásának előnyei
   
-There are several benefits to running from a package file:
+A csomagfájl számos előnnyel jár:
 
-+ Reduces the risk of file copy locking issues.
-+ Can be deployed to a production app (with restart).
-+ You can be certain of the files that are running in your app.
-+ Improves the performance of [Azure Resource Manager deployments](functions-infrastructure-as-code.md).
-+ May reduce cold-start times, particularly for JavaScript functions with large npm package trees.
++ Csökkenti a fájlmásolás-zárolási problémák kockázatát.
++ Üzembe helyezhető egy éles alkalmazásban (újraindítással).
++ Biztos lehet benne, hogy az alkalmazásban futó fájlok vannak.
++ Javítja Azure Resource Manager üzemelő [példányok](functions-infrastructure-as-code.md)teljesítményét.
++ Csökkentheti a hideg kezdési időpontokat, különösen a JavaScript-függvények esetében nagyméretű NPM-csomagokkal.
 
-For more information, see [this announcement](https://github.com/Azure/app-service-announcements/issues/84).
+További információkért tekintse meg [ezt a bejelentést](https://github.com/Azure/app-service-announcements/issues/84).
 
-## <a name="enabling-functions-to-run-from-a-package"></a>Enabling functions to run from a package
+## <a name="enabling-functions-to-run-from-a-package"></a>A függvények csomagból való futtatásának engedélyezése
 
-To enable your function app to run from a package, you just add a `WEBSITE_RUN_FROM_PACKAGE` setting to your function app settings. The `WEBSITE_RUN_FROM_PACKAGE` setting can have one of the following values:
+Ha engedélyezni szeretné, hogy a Function app egy csomagból fusson, egyszerűen vegyen fel egy `WEBSITE_RUN_FROM_PACKAGE` beállítást a Function app-beállításokhoz. A `WEBSITE_RUN_FROM_PACKAGE` beállítás értéke a következő értékek egyike lehet:
 
-| Value (Díj)  | Leírás  |
+| Érték  | Leírás  |
 |---------|---------|
-| **`1`**  | Recommended for function apps running on Windows. Run from a package file in the `d:\home\data\SitePackages` folder of your function app. If not [deploying with zip deploy](#integration-with-zip-deployment), this option requires the folder to also have a file named `packagename.txt`. This file contains only the name of the package file in folder, without any whitespace. |
-|**`<URL>`**  | Location of a specific package file you want to run. When using Blob storage, you should use a private container with a [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) to enable the Functions runtime to access to the package. You can use the [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) to upload package files to your Blob storage account. When you specify a URL, you must also [sync triggers](functions-deployment-technologies.md#trigger-syncing) after you publish an updated package. |
+| **`1`**  | A Windows rendszeren futó Function apps esetében ajánlott. A Function alkalmazás `d:\home\data\SitePackages` mappájából futtassa a csomagot. Ha nem [telepíti a zip-telepítést](#integration-with-zip-deployment), ez a beállítás azt igényli, hogy a mappának rendelkeznie kell egy `packagename.txt`nevű fájllal is. Ez a fájl csak a mappában lévő csomagfájl nevét tartalmazza szóköz nélkül. |
+|**`<URL>`**  | A futtatni kívánt csomag adott fájljának helye. A blob Storage használatakor egy [megosztott hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót kell használnia, hogy a functions futtatókörnyezet hozzáférhessen a csomaghoz. A [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával tölthet fel csomagokat a blob Storage-fiókjába. URL-cím megadásakor az [eseményindítókat is szinkronizálnia](functions-deployment-technologies.md#trigger-syncing) kell, miután közzétett egy frissített csomagot. |
 
 > [!CAUTION]
-> When running a function app on Windows, the external URL option yields worse cold-start performance. When deploying your function app to Windows, you should set `WEBSITE_RUN_FROM_PACKAGE` to `1` and publish with zip deployment.
+> Ha Windows rendszeren futtat egy Function alkalmazást, a külső URL-cím beállításával rosszabb az indítási teljesítmény. Ha a Function alkalmazást a Windows rendszerre telepíti, akkor `WEBSITE_RUN_FROM_PACKAGE`t kell beállítania, hogy `1` és a közzététel a zip-telepítéssel történjen.
 
-The following shows a function app configured to run from a .zip file hosted in Azure Blob storage:
+Az alábbi példa egy, az Azure Blob Storage-ban üzemeltetett. zip-fájlból való futtatásra konfigurált Function-alkalmazást mutat be:
 
-![WEBSITE_RUN_FROM_ZIP app setting](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
+![Alkalmazás-beállítás WEBSITE_RUN_FROM_ZIP](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
 
 > [!NOTE]
-> Currently, only .zip package files are supported.
+> Jelenleg csak a. zip csomagfájl támogatottak.
 
-## <a name="integration-with-zip-deployment"></a>Integration with zip deployment
+## <a name="integration-with-zip-deployment"></a>Integráció a zip-telepítéssel
 
-[Zip deployment][Zip deployment for Azure Functions] is a feature of Azure App Service that lets you deploy your function app project to the `wwwroot` directory. The project is packaged as a .zip deployment file. The same APIs can be used to deploy your package to the `d:\home\data\SitePackages` folder. With the `WEBSITE_RUN_FROM_PACKAGE` app setting value of `1`, the zip deployment APIs copy your package to the `d:\home\data\SitePackages` folder instead of extracting the files to `d:\home\site\wwwroot`. It also creates the `packagename.txt` file. After a restart, the package is mounted to `wwwroot` as a read-only filesystem. For more information about zip deployment, see [Zip deployment for Azure Functions](deployment-zip-push.md).
+A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service egyik funkciója, amely lehetővé teszi a Function app-projekt üzembe helyezését a `wwwroot` könyvtárba. A projekt. zip telepítési fájlként van csomagolva. Ugyanazokat az API-kat használhatja a csomag `d:\home\data\SitePackages` mappába való telepítéséhez. A `1``WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítások értékével a zip telepítési API-k a `d:\home\data\SitePackages` mappába másolják a csomagot ahelyett, hogy a fájlokat a `d:\home\site\wwwroot`ba kicsomagoljuk. Emellett létrehozza a `packagename.txt` fájlt is. Újraindítás után a csomag írásvédett fájlrendszerként van csatlakoztatva a `wwwroot`hoz. További információ a zip-telepítésről: [a Azure functions zip központi telepítése](deployment-zip-push.md).
 
-## <a name="adding-the-website_run_from_package-setting"></a>Adding the WEBSITE_RUN_FROM_PACKAGE setting
+## <a name="adding-the-website_run_from_package-setting"></a>Az WEBSITE_RUN_FROM_PACKAGE-beállítás hozzáadása
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-- Run From Package makes `wwwroot` read-only, so you will receive an error when writing files to this directory.
-- Tar and gzip formats are not supported.
-- This feature does not compose with local cache.
-- For improved cold-start performance, use the local Zip option (`WEBSITE_RUN_FROM_PACKAGE`=1).
+- A csomagból való futtatás `wwwroot` írásvédett, így hibaüzenetet kap, amikor fájlokat ír a könyvtárba.
+- A tar és a gzip formátum nem támogatott.
+- Ez a funkció nem a helyi gyorsítótárral együtt működik.
+- A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

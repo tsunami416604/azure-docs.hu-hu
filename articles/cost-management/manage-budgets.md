@@ -1,6 +1,6 @@
 ---
-title: Manage Cloudyn budgets in Azure
-description: This article helps you quickly create budgets and start managing them in Cloudyn.
+title: Cloudyn-költségvetések kezelése az Azure-ban
+description: Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,73 +17,73 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219103"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Manage Azure budgets with Cloudyn
+# <a name="manage-azure-budgets-with-cloudyn"></a>A Cloudyn Azure költségvetése kezelése
 
-Setting up budgets and budget-based alerts help to improve your cloud governance and accountability. This article helps you quickly create budgets and start managing them in Cloudyn.
+Költségvetés létrehozása és a költségvetés-alapú súgó a felhő cégirányítási és felelősségre vonhatóság riasztást küld. Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 
-When you have an Enterprise or MSP account, you can use your hierarchical cost entity structure to assign monthly budget quotas to different business units, departments, or any other cost entity. When you have a Premium account, you can use the budget management functionality, which is then applied to your entire cloud expenditure. All budgets are manually assigned.
+Ha egy vállalati vagy MSP-fiókkal rendelkezik, használhatja a hierarchikus költség entitásstruktúrát havi költségvetés kvótákat rendelhet hozzá a különböző üzleti egységek, részlegek vagy bármely más költségentitás. Ha egy prémium szintű fiókkal rendelkezik, használhatja a költségvetés management szolgáltatásra, a rendszer ezután alkalmazza a teljes felhőalapú kiadások. Az összes költségvetés manuálisan hozzá vannak rendelve.
 
-Based on assigned budgets, you can set threshold alerts based on the percentage of your budget that's consumed and define the severity of each threshold.
+Hozzárendelt költségvetése alapján, a költségvetés felhasznált aránya alapján küszöbérték riasztásokat állíthat be, és minden egyes küszöbérték súlyosságát határozza meg.
 
-Budget reports show the assigned budget. Users can view when their spending is over, under, or at par with their consumption over time. When you select **Show/Hide Fields** at the top of a budget report, you can view cost, budget, accumulated cost, or total budget.
+Költségvetés szóló jelentésekben megtekintheti a hozzárendelt költségvetést. Felhasználók megtekinthetik, ha a költségkeret-beállítási keresztül, alatt, vagy a használat idővel rendelkező névértéken. Ha a költségvetési jelentés tetején a **mezők megjelenítése/elrejtése** lehetőséget választja, megtekintheti a költségeket, a költségvetést, a halmozott költségeket vagy a teljes költségvetést.
 
-Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. For more information about budgets in Cost Management, see [Create and manage budgets](tutorial-acm-create-budgets.md).
+Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. A Cost Management költségvetésével kapcsolatos további információkért lásd: [költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md).
 
-## <a name="create-budgets"></a>Create budgets
+## <a name="create-budgets"></a>Hozzon létre költségvetése
 
-When you create a budget, you set it for your fiscal year and it applies to a specific entity.
+Költségvetési létrehozásakor állítja be, a pénzügyi évben, és a egy adott entitásra vonatkozik.
 
-To create a budget and assign it to an entity:
+Költségvetés létrehozása, és rendelje hozzá egy entitás:
 
-1. Navigate to **Costs** &gt; **Cost Management** &gt; **Budget**.
-2. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
-3. In the budget year, select the year where you want to create the budget.
-4. For each month, set a budget value. When you're done, click  **Save**.
-In this example, the monthly budget for June 2018 is set to $135,000. The total budget for the year is $1,615,000.00.
-![Create a budget page where you set a budget for each month](./media/manage-budgets/set-budget.png)
+1. Navigáljon a **költségek** &gt; **Cost Management** &gt; **költségvetést**.
+2. A költségvetés kezelése lap **entitások**területén válassza ki azt az entitást, amelyben létre kívánja hozni a költségvetést.
+3. A költségvetési évben válassza ki az év, ahol szeretné létrehozni a költségvetést.
+4. Minden hónapban a költségvetés érték beállítása. Ha elkészült, kattintson a **Mentés**gombra.
+Ebben a példában a 2018 június havi költségvetését $135,000 értéke. A teljes költségvetés az év $1,615,000.00.
+![hozzon létre egy költségvetési oldalt, amelyben minden hónapra vonatkozóan költségvetést állít be](./media/manage-budgets/set-budget.png)
 
 
-To import a file for the annual budget:
+Az éves költségvetés-fájl importálása:
 
-1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
-2. Fill in the CSV file with your budget entries and save it locally.
-3. Under **Actions**, select **Import**.
-4. Select your saved file and then click **OK**.
+1. A **műveletek**területen válassza az **Exportálás** lehetőséget egy üres CSV-sablon letöltéséhez, amelyet a költségvetés alapjaként kíván használni.
+2. Töltse ki a költségvetés és a CSV-fájlt, és mentse helyileg.
+3. A **műveletek**területen válassza az **Importálás**lehetőséget.
+4. Válassza ki a mentett fájlt, majd kattintson **az OK**gombra.
 
-To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
+Ha a kész költségvetést CSV-fájlként szeretné exportálni, a **műveletek**területen válassza az **Exportálás** lehetőséget a fájl letöltéséhez.
 
-## <a name="view-budget-in-reports"></a>View budget in reports
+## <a name="view-budget-in-reports"></a>Költségvetés-jelentések megtekintése
 
-When completed, your budget is shown in most Cost reports under **Costs** &gt; **Cost Analysis** and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds using **Actions**.
+Ha elkészült, a költségkeret a legtöbb Cost-jelentésben a **költségek** &gt; a **Cost Analysis** és a Cost és a költségkeret időbeli változása című jelentésben látható. A jelentések a költségvetési küszöbértékek alapján is ütemezhetők a **műveletek**használatával.
 
-Here's an example of the Cost Analysis report. It shows the total budget and cost by workload and usage types since the beginning of the year.
+Íme egy példa a Költségelemzési jelentést. A teljes költségvetés és a számítási feladatok és a használati típusok költséget mutatja az év kezdete óta.
 
-![Example Cost Analysis report with budget](./media/manage-budgets/cost-analysis-budget-example.png)
+![Példa Költségelemzési jelentést a költségvetés](./media/manage-budgets/cost-analysis-budget-example.png)
 
-In this example, assume the current date is June 22. The cost for June 2018 is $71,611.28 compared to the monthly budget of $135,000. The cost is much lower than the monthly budget because there are still eight days of spending before the end of the month.
+Ebben a példában feltételeztük az aktuális dátum későbbi, június 22. 2018 június költsége $71,611.28 $135,000 havi költségvetését képest. A költségek továbbra is vannak a hónap végéig kiadások követő nyolc azért sokkal alacsonyabb, mint a havi költségvetést.
 
-Another way to view the report is to look at accumulated cost vs your budget. To see accumulated costs, under **Show/Hide Fields**, select **Accumulated Cost** and **Total Budget**. Here's an example showing the accumulated cost since the beginning of the year.
+A jelentés megtekintéséhez másik módja, és összesített költségeit és tekintse meg a költségvetést. A halmozott költségek megtekintéséhez a **mezők megjelenítése/elrejtése**területen válassza a **halmozott költség** és a **teljes költségvetés**lehetőséget. Íme egy példa az összesített költségeit az év kezdete óta.
 
-![Example accumulated cost and total budget shown in the Cost vs. Budget Over Time report](./media/manage-budgets/accumulated-budget.png)
+![Példa a költségek és a költségkeret összesített költségére és a költségvetés időbeli alakulására – jelentés](./media/manage-budgets/accumulated-budget.png)
 
-Sometime in the future your accumulated cost might exceed your budget. You can more easily see that if you change the chart view to the _line_ type.
+Valamikor a jövőben az összesített költségeit meghaladhatja a költségvetést. Könnyebben láthatja, hogy ha megváltoztatja a diagram nézetet a _sor_ típusára.
 
-![Budget shown in a line chart in the Cost by Months report](./media/manage-budgets/budget-line.png)
+![Költségvetés hónapok jelentés díja vonaldiagram látható](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Create budget alerts for a filter
+## <a name="create-budget-alerts-for-a-filter"></a>Szűrő költségvetés riasztások létrehozása
 
-In the previous example, you can see that the accumulated cost approached the budget. You can create automatic budget alerts so that you're notified when spending approaches or exceeds your budget. Basically, the alert is a scheduled report with a threshold. Budget alert threshold metrics include:
+Az előző példában láthatja, hogy a összesített költségeit a költségvetés válaszadásra. Automatikus költségvetés riasztásokat hozhat létre, hogy Ön értesítést megközelítések költségeit, vagy meghaladja a költségvetést. Alapvetően a riasztás az ütemezett jelentések egy küszöbértékkel. Költségvetés riasztási küszöbérték metrikák a következők:
 
-- Remaining cost vs. budget – to specify a currency value threshold
-- Cost percentage vs. budget – to specify a percentage value threshold
+- Fennmaradó költség és költségvetés – a pénznem érték küszöbértéket megadása
+- Költségszázalék vagy költségvetési – egy érték arányának küszöbértéke megadása
 
-Let's look at an example.
+Lássunk erre egy példát.
 
-In the Cost vs. Budget Over Time report, click **Actions** and then select **Schedule report**. On the Threshold tab, select a threshold metric. For example, **Cost percentage vs budget**. Select an alert type and enter a percentage value of the budget. If you want to get notified only once, select **Number of consecutive alerts** and then type _1_. Kattintson a **Save** (Mentés) gombra.
+A költség és a költségkeret időbeli alakulása jelentésben kattintson a **műveletek** , majd az **ütemezett jelentés**elemre. A küszöbérték lapon válassza ki egy küszöbértéket metrikát. Például a **Cost százalék vs költségvetés**. Válassza ki a riasztási típusát, és adja meg a költségvetés százalékos érték. Ha csak egyszer szeretne értesítést kapni, válassza **az egymást követő riasztások száma** lehetőséget, majd írja be az _1_értéket. Kattintson a **Save** (Mentés) gombra.
 
-![Creating a budget alert on the Save or Schedule this report box](./media/manage-budgets/budget-alert.png)
+![A Mentés vagy a jelentés be ütemezést a költségvetés riasztás létrehozása](./media/manage-budgets/budget-alert.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- If you haven't already completed the first tutorial for Cloudyn, read it at  [Review usage and costs](tutorial-review-usage.md).
-- Learn more about the [reports available in Cloudyn](use-reports.md).
+- Ha még nem végezte el az első oktatóanyagot a Cloudyn, olvassa el a [használat és a költségek áttekintése](tutorial-review-usage.md)című cikk lépéseit.
+- További információ a [Cloudyn-ben elérhető jelentésekről](use-reports.md).

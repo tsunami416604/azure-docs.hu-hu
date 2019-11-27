@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Key Vault - Windows - Azure AD
+title: Oktatóanyag`:` felügyelt identitás használata a Azure Key Vault eléréséhez – Windows-Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -41,7 +41,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz 
  
-Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.  However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use the VM's managed identity to access Key Vault to retrieve the credentials. 
+Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure AD-hitelesítést.  Azonban nem minden Azure-szolgáltatás támogatja az Azure AD-hitelesítést. Ha az Azure-erőforrások felügyelt identitásait szeretné használni ezekkel a szolgáltatásokkal, tárolja Azure Key Vault a szolgáltatás hitelesítő adatait, és a virtuális gép felügyelt identitásával férhet hozzá az Key Vaulthoz a hitelesítő adatok lekéréséhez. 
 
 Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni.   
 
@@ -50,7 +50,7 @@ Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a 
 3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
 4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
 5. A Konfigurálás sablonból mezőben válassza a **Titkos kódok kezelése** sablont. 
-6. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Select the VM in the result list and click **Select**. 
+6. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredmények listájában, és kattintson a **kiválasztás**elemre. 
 7. Az új hozzáférési szabályzat hozzáadásának befejezéshez kattintson az **OK**, majd a hozzáférési szabályzat kiválasztásának befejezéséhez ugyanúgy az **OK** gombra. 
 8. Kattintson a **Létrehozás** gombra a Key Vault létrehozásának befejezéséhez. 
 
@@ -62,7 +62,7 @@ Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja k�
 1. Válassza a **Minden erőforrás** lehetőséget, majd keresse meg és válassza ki a létrehozott Key Vaultot. 
 2. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra. 
 3. A **Feltöltési beállítások** mezőben válassza a **Manuális** lehetőséget. 
-4. Adja meg a titkos kód nevét és értékét.  The value can be anything you want. 
+4. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet, amit szeretne. 
 5. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
 6. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra. 
  
@@ -95,7 +95,7 @@ Először a VM rendszer által hozzárendelt felügyelt identitásával szerezze
     $KeyVaultToken = $content.access_token 
     ```
     
-    Végül a Powershell Invoke-WebRequest parancsával kérje le a Key Vaultban korábban létrehozott titkos kódot úgy, hogy a hozzáférési jogkivonatot az engedélyezési fejlécbe foglalja.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  
+    Végül a Powershell Invoke-WebRequest parancsával kérje le a Key Vaultban korábban létrehozott titkos kódot úgy, hogy a hozzáférési jogkivonatot az engedélyezési fejlécbe foglalja.  Szüksége lesz a Key Vault URL-címére, amely a Key Vault **Áttekintés** lapjának **Essentials (alapvető** erőforrások) szakaszában található.  
     
     ```powershell
     (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
@@ -109,7 +109,7 @@ Először a VM rendszer által hozzárendelt felügyelt identitásával szerezze
     
 Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesítést végezhet olyan szolgáltatásokban, amelyekhez név és jelszó szükséges. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan lehet hozzáférni az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.  További információ az Azure Key Vault szolgáltatásról:
 

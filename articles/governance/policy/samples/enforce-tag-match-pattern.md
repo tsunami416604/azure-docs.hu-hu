@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce tag match pattern
-description: This sample policy definition requires that resources meet the match pattern for tag value for a specific date format.
+title: Minta – a címkézési egyeztetési minta alkalmazása
+description: A példában szereplő házirend-definícióhoz az szükséges, hogy az erőforrások megfeleljenek a címke értékének egy adott dátumformátum esetében.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: a2d5f85f02a2197e9e213b7e9fd7dfec7adc7813
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463355"
 ---
-# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Sample - Enforce tag match pattern for tag values
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Minta-kikényszerítő címke egyezési mintája a címke értékeihez
 
 A mintával való megegyezést követeli meg a címkék értékétől. Az engedélyezett mintát a szabályzatban adhatja meg.
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -55,7 +55,7 @@ az policy definition create --name 'enforce-tag-match-pattern' --display-name 'E
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-tag-match-pattern"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -63,6 +63,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

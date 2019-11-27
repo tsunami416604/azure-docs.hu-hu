@@ -37,7 +37,7 @@ Ezeket az eseményeket a részletek megismeréséhez is elsajátíthatja. Tekint
 
 Ezeket a naplókat az Azure AD-ből is exportálhatja, és az Ön által választott jelentéskészítő eszköz használatával testreszabott jelentéseket kaphat.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 - [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)
 

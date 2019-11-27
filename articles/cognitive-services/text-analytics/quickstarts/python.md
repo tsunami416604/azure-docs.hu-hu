@@ -26,7 +26,7 @@ Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Text Analytics RE
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3.x](https://python.org)
+* [Python 3. x](https://python.org)
 
 * A Python-kérelmek könyvtára
     
@@ -456,7 +456,7 @@ pprint(entities)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)

@@ -28,7 +28,7 @@ A LUIS három típusú előre elkészített modellt biztosít. Minden modell az 
 
 |Modell típusa|Tartalmazza|
 |--|--|
-|[Tartomány](luis-reference-prebuilt-domains.md)|Leképezések, utterances, entitások|
+|[Tartományi](luis-reference-prebuilt-domains.md)|Leképezések, utterances, entitások|
 |Leképezések|Leképezések, kimondott szöveg|
 |[Szervezetek](luis-reference-prebuilt-entities.md)|Entitások csak| 
 
@@ -40,13 +40,13 @@ Az előre összeállított tartományok a következők: betanított és készen 
 
 > [!TIP]
 > A leképezések és a egy előre elkészített tartományban entitások működnek együtt a leghatékonyabban. Érdemes úgy, hogy szándékokat és entitásokat, amikor csak lehetséges ugyanahhoz a tartományhoz.
-> A segédprogramok előre összeállított tartományban van, amely testre szabható használható minden olyan tartományban szándékok. Például hozzáadhat `Utilities.Repeat` az alkalmazás és a vonat, felismerni bármilyen műveletek felhasználó szeretné ismételje meg az alkalmazásban. 
+> A segédprogramok előre összeállított tartományban van, amely testre szabható használható minden olyan tartományban szándékok. Hozzáadhat például `Utilities.Repeat`t az alkalmazáshoz, és betaníthatja, hogy a felhasználó milyen műveleteket lehet megismételni az alkalmazásban. 
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Egy előre elkészített tartomány szándékot viselkedésének módosítása
 
 Előfordulhat, hogy egy előre elkészített tartományt tartalmaz megjelölésű megjelölésű szeretné engedélyezni a LUIS-alkalmazás a hasonló, de azt szeretné, hogy eltérően viselkednek. Például a **helyek** előre összeépített tartománya `MakeReservation` szándékot biztosít egy éttermi foglaláshoz, de azt szeretné, hogy az alkalmazás ezt a szándékot használja a szállodai foglalások készítéséhez. Ebben az esetben módosíthatja a szándék viselkedését úgy, hogy hozzáad egy példát a hosszúságú kimondott szöveg a Szállásfoglaláshoz, majd újratanítja az alkalmazást. 
 
-Az előre összeállított tartományok teljes listáját megtalálhatja az [előre összeállított tartományok referencia](./luis-reference-prebuilt-domains.md).
+Az előre elkészített tartományokról az [előre elkészített tartományok című témakörben](./luis-reference-prebuilt-domains.md)talál teljes listát.
 
 ## <a name="prebuilt-intents"></a>Előre összeállított leképezések
 
@@ -54,13 +54,13 @@ A LUIS előre összeépített leképezéseket és azok hosszúságú kimondott s
 
 ## <a name="prebuilt-entities"></a>Előre összeállított entitások
 
-LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő. A LUIS támogatja, beleértve támogatási kulturális környezet, előre összeállított entitások teljes listáját lásd: a [előre összeállított entitások bemutatása](./luis-reference-prebuilt-entities.md).
+LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő. A LUIS által támogatott előre elkészített entitások teljes listáját, beleértve a kulturális környezet támogatását, az [előre elkészített entitások referenciája](./luis-reference-prebuilt-entities.md)című témakörben talál.
 
-Ha az alkalmazás tartalmaz egy előre összeállított entitások, az előrejelzéseket a közzétett alkalmazás szerepelnek. Előre összeállított entitások viselkedését előre betanított és **nem** módosítható. 
+Ha az alkalmazás tartalmaz egy előre összeállított entitások, az előrejelzéseket a közzétett alkalmazás szerepelnek. Az előre elkészített entitások viselkedése előre betanítva, és **nem** módosítható. 
 
 > [!NOTE]
-> **Builtin.DateTime** elavult. A rendszer felülírja [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), dátum és idő címtartományok recognition, valamint továbbfejlesztett elismerését nem egyértelmű dátumok és időpontok biztosítja.
+> a **beépített. datetime** elavult. A rendszer helyébe a [**beépített. datetimeV2**](luis-reference-prebuilt-datetimev2.md), amely a dátum-és időtartományok felismerését, valamint a kétértelmű dátumok és időpontok jobb felismerését is lehetővé teszi.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [előre összeállított entitások hozzáadása](luis-prebuilt-entities.md) az alkalmazáshoz.
+Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](luis-prebuilt-entities.md) az alkalmazáshoz.

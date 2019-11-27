@@ -64,6 +64,6 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. Mentse a .zip-fájlt a számítógépre. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)gyors útmutatójában.

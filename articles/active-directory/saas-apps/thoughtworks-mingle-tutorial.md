@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Thoughtworks Mingle | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Thoughtworks Mingle.
+title: 'Oktatóanyag: Azure Active Directory integráció a Thoughtworks keveredik | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Thoughtworks között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,219 +22,219 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233292"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory integration with Thoughtworks Mingle
+# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Oktatóanyag: Azure Active Directory integráció a Thoughtworks keveredik
 
-In this tutorial, you learn how to integrate Thoughtworks Mingle with Azure Active Directory (Azure AD).
-Integrating Thoughtworks Mingle with Azure AD provides you with the following benefits:
+Ebből az oktatóanyagból megismerheti, hogyan integrálhatja a Thoughtworks keveredik a Azure Active Directory (Azure AD) szolgáltatással.
+A Thoughtworks keveredik az Azure AD-vel az alábbi előnyökkel jár:
 
-* You can control in Azure AD who has access to Thoughtworks Mingle.
-* You can enable your users to be automatically signed-in to Thoughtworks Mingle (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Thoughtworks.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Thoughtworks keveredik (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To configure Azure AD integration with Thoughtworks Mingle, you need the following items:
+Az Azure AD-integráció Thoughtworks-sel való konfigurálásához a következő elemek szükségesek:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Thoughtworks Mingle single sign-on enabled subscription
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Thoughtworks-alapú egyszeri bejelentkezéses előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Thoughtworks Mingle supports **SP** initiated SSO
+* A Thoughtworks keveredik az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-thoughtworks-mingle-from-the-gallery"></a>Adding Thoughtworks Mingle from the gallery
+## <a name="adding-thoughtworks-mingle-from-the-gallery"></a>Thoughtworks-gyűjtemény hozzáadása a katalógusból
 
-To configure the integration of Thoughtworks Mingle into Azure AD, you need to add Thoughtworks Mingle from the gallery to your list of managed SaaS apps.
+A Thoughtworks az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Thoughtworks keveredik a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**To add Thoughtworks Mingle from the gallery, perform the following steps:**
+**Az alábbi lépések végrehajtásával adhat hozzá Thoughtworks a gyűjteményhez:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, type **Thoughtworks Mingle**, select **Thoughtworks Mingle** from result panel then click **Add** button to add the application.
+4. A keresőmezőbe írja be a következőt: **Thoughtworks keveredik**, válassza az **Thoughtworks keveredik** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Thoughtworks Mingle in the results list](common/search-new-app.png)
+     ![Thoughtworks keveredik az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-In this section, you configure and test Azure AD single sign-on with Thoughtworks Mingle based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Thoughtworks Mingle needs to be established.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Thoughtworks keveredik a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Thoughtworks keveredik a kapcsolódó felhasználó közötti kapcsolati kapcsolatot kell létrehozni.
 
-To configure and test Azure AD single sign-on with Thoughtworks Mingle, you need to complete the following building blocks:
+Az Azure AD egyszeri bejelentkezés az Thoughtworks-mel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Thoughtworks Mingle Single Sign-On](#configure-thoughtworks-mingle-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Thoughtworks Mingle test user](#create-thoughtworks-mingle-test-user)** - to have a counterpart of Britta Simon in Thoughtworks Mingle that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az Thoughtworks](#configure-thoughtworks-mingle-single-sign-on)** -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre Thoughtworks kevert teszt felhasználóval](#create-thoughtworks-mingle-test-user)** , hogy a Britta Simon, a Thoughtworks-hez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere legyen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-To configure Azure AD single sign-on with Thoughtworks Mingle, perform the following steps:
+Az Azure AD egyszeri bejelentkezés az Thoughtworks-mel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Thoughtworks Mingle** application integration page, select **Single sign-on**.
+1. A [Azure Portal](https://portal.azure.com/) **Thoughtworks keveredik** az alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Thoughtworks Mingle Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![A Thoughtworks a tartomány és az URL-címek egyszeri bejelentkezési információit vegyíti](common/sp-signonurl.png)
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<companyname>.mingle.thoughtworks.com`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.mingle.thoughtworks.com`
 
     > [!NOTE]
-    > The value is not real. Update the value with the actual Sign-On URL. Contact [Thoughtworks Mingle Client support team](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Thoughtworks-csoporttal](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    ![The Certificate download link](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. On the **Set up Thoughtworks Mingle** section, copy the appropriate URL(s) as per your requirement.
+6. A **Thoughtworks keveredett beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény szerint.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Bejelentkezési URL
 
-    b. Azure AD Identifier
+    b. Azure AD-azonosító
 
-    c. Logout URL
+    c. Kijelentkezési URL
 
-### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Configure Thoughtworks Mingle Single Sign-On
+### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Thoughtworks-alapú egyszeri bejelentkezés konfigurálása
 
-1. Sign in to your **Thoughtworks Mingle** company site as administrator.
+1. Jelentkezzen be a **Thoughtworks** a vállalati webhelyre rendszergazdaként.
 
-2. Click the **Admin** tab, and then, click **SSO Config**.
+2. Kattintson a **felügyelet** lapra, majd az SSO- **konfiguráció**elemre.
    
-    ![Admin tab](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO Config")
+    ![Adminisztrátor lap](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO-konfiguráció")
 
-3. In the **SSO Config** section, perform the following steps:
+3. Az **SSO-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
    
-    ![SSO Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
+    ![SSO-konfiguráció](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO-konfiguráció")
     
-    a. To upload the metadata file, click **Choose file**. 
+    a. A metaadat-fájl feltöltéséhez kattintson a **fájl kiválasztása**lehetőségre. 
 
-    b. Click **Save Changes**.
+    b. Kattintson a **módosítások mentése**gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
-    ![New user Button](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![The User dialog box](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be a következőt: brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Thoughtworks Mingle.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Thoughtworks keveredik.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Thoughtworks Mingle**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Thoughtworks keveredik**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, select **Thoughtworks Mingle**.
+2. Az alkalmazások listában válassza a **Thoughtworks keveredik**elemet.
 
-    ![The Thoughtworks Mingle link in the Applications list](common/all-applications.png)
+    ![Az Thoughtworks keveredik hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-thoughtworks-mingle-test-user"></a>Create Thoughtworks Mingle test user
+### <a name="create-thoughtworks-mingle-test-user"></a>Thoughtworks-teszt felhasználó létrehozása
 
-For Azure AD users to be able to sign in, they must be provisioned to the Thoughtworks Mingle application using their Azure Active Directory user names. In the case of Thoughtworks Mingle, provisioning is a manual task.
+Ahhoz, hogy az Azure AD-felhasználók be tudjanak jelentkezni, a Azure Active Directory felhasználónevek használatával kell kiépíteni őket a Thoughtworks keveredik az alkalmazásba. A Thoughtworks keveredik esetén a kiépítés manuális feladat.
 
-**To configure user provisioning, perform the following steps:**
+**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Sign in to your Thoughtworks Mingle company site as administrator.
+1. Jelentkezzen be a Thoughtworks a vállalati webhelyre rendszergazdaként.
 
-2. Click **Profile**.
+2. Kattintson a **profil**elemre.
    
-    ![Your First Project](./media/thoughtworks-mingle-tutorial/ic785160.png "Your First Project")
+    ![Az első projekt](./media/thoughtworks-mingle-tutorial/ic785160.png "Az első projekt")
 
-3. Click the **Admin** tab, and then click **Users**.
+3. Kattintson a **rendszergazda** lapra, majd a **felhasználók**elemre.
    
     ![Felhasználók](./media/thoughtworks-mingle-tutorial/ic785161.png "Felhasználók")
 
-4. Click **New User**.
+4. Kattintson az **új felhasználó**elemre.
    
-    ![New User](./media/thoughtworks-mingle-tutorial/ic785162.png "New User")
+    ![Új felhasználó](./media/thoughtworks-mingle-tutorial/ic785162.png "Új felhasználó")
 
-5. On the **New User** dialog page, perform the following steps:
+5. Az **új felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![New User dialog](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
+    ![Új felhasználó párbeszédpanel](./media/thoughtworks-mingle-tutorial/ic785163.png "Új felhasználó")  
  
-    a. Type the **Sign-in name**, **Display name**, **Choose password**, **Confirm password** of a valid Azure AD account you want to provision into the related textboxes. 
+    a. Írja be a **bejelentkezési nevet**, a **megjelenítendő nevet**, **válassza a jelszó lehetőséget**, adjon meg egy érvényes Azure ad-fiók **jelszavát** , amelyet a kapcsolódó szövegmezőbe szeretne kiépíteni. 
 
-    b. As **User type**, select **Full user**.
+    b. A **felhasználó típusa**beállításnál válassza a **teljes felhasználó**lehetőséget.
 
-    c. Click **Create This Profile**.
+    c. Kattintson **a profil létrehozása**elemre.
 
 >[!NOTE]
->You can use any other Thoughtworks Mingle user account creation tools or APIs provided by Thoughtworks Mingle to provision Azure AD user accounts.
+>Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Thoughtworks által biztosított Thoughtworks-létrehozási eszközt vagy API-t használhat.
 > 
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the Thoughtworks Mingle tile in the Access Panel, you should be automatically signed in to the Thoughtworks Mingle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Thoughtworks keveredik csempe csempére kattint, akkor automatikusan be kell jelentkeznie arra a Thoughtworks, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

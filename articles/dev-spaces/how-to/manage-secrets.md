@@ -105,7 +105,7 @@ Az Azure dev Spaces szolgáltatás két ajánlott, zökkenőmentesen használhat
     kubectl get secret --namespace default -o yaml
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezekkel a módszerekkel mostantól biztonságosan csatlakozhat egy adatbázishoz, egy Azure-gyorsítótárhoz a Redis-hez, vagy hozzáférhet a biztonságos Azure-szolgáltatásokhoz.
  

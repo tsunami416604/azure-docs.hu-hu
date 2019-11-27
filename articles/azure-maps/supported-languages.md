@@ -25,7 +25,7 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 A Azure Maps különböző nyelveken lettek honosítva a szolgáltatások között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID         | Név                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -80,7 +80,7 @@ A Azure Maps különböző nyelveken lettek honosítva a szolgáltatások közö
 | PT-PT      | portugál (általános)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | PA-IN      | pandzsábi                 |       |       |         |     ✓    |                   |                |
 | ro-RO      | román               |       |    ✓    |         |     ✓    |         ✓         |                |
-| ru-RU      | orosz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| ru-RU      | Orosz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | szerb (cirill betűs)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | sr-Latn-RS | szerb (latin betűs)        |       |       |         |     SR-Latn    |                   |                |
 | SK-SK      | szlovák             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |

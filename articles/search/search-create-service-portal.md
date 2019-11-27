@@ -1,29 +1,29 @@
 ---
-title: 'Quickstart: Create a search service in the portal'
+title: 'Gyors útmutató: keresési szolgáltatás létrehozása a portálon'
 titleSuffix: Azure Cognitive Search
-description: In this portal quickstart, learn how to set up an Azure Cognitive Search resource in the Azure portal. Choose resource groups, regions, and SKU or pricing tier.
+description: Ebből a portálból megtudhatja, hogyan állíthat be egy Azure Cognitive Search-erőforrást a Azure Portalban. Válassza az erőforráscsoportok, a régiók, az SKU vagy az árképzési szintet.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 79554429ddc9516eb2fbe9aa7b0e75c78fb17662
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406678"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534562"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Create an Azure Cognitive Search service in the portal
+# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search szolgáltatás létrehozása a portálon
 
-Azure Cognitive Search is a standalone resource used to plug in a search experience in custom apps. Although Azure Cognitive Search integrates easily with other Azure services, you can also use it as a standalone component, or integrate it with apps on network servers, or with software running on other cloud platforms.
+Az Azure Cognitive Search egy önálló erőforrás, amely az egyéni alkalmazások keresési funkcióinak csatlakoztatására szolgál. Habár az Azure Cognitive Search egyszerűen integrálható más Azure-szolgáltatásokkal, önálló összetevőként is használható, vagy a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel integrálható.
 
-In this article, learn how to create a resource in the [Azure portal](https://portal.azure.com/).
+Ebből a cikkből megtudhatja, hogyan hozhat létre erőforrásokat a [Azure Portalban](https://portal.azure.com/).
 
-[![Animated GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[Animált GIF ![](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). For help with getting started, see [Manage Azure Cognitive Search with PowerShell](search-manage-powershell.md).
+Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekkel kapcsolatos segítségért lásd: az [Azure Cognitive Search kezelése a PowerShell](search-manage-powershell.md)-lel.
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -31,36 +31,36 @@ Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szo
 
 Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) is. MSDN-előfizetéssel havonta kap fizetős Azure-szolgáltatásokra fordítható krediteket. 
 
-## <a name="find-azure-cognitive-search"></a>Find Azure Cognitive Search
+## <a name="find-azure-cognitive-search"></a>Azure-Cognitive Search keresése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Click the plus sign ("+ Create Resource") in the top-left corner.
-3. Use the search bar to find "Azure Cognitive Search" or navigate to the resource through **Web** > **Azure Cognitive Search**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
+3. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **Web** > **Azure Cognitive Search**használatával.
 
-![Create a resource in the portal](./media/search-create-service-portal/find-search3.png "Create a resource in the portal")
+![Erőforrás létrehozása a portálon](./media/search-create-service-portal/find-search3.png "Erőforrás létrehozása a portálon")
 
-## <a name="choose-a-subscription"></a>Choose a subscription
+## <a name="choose-a-subscription"></a>Előfizetés kiválasztása
 
-Setting the subscription ID and resource group is your first step. Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Azure Cognitive Search can autodetect Azure Table and Blob storage, SQL Database, and Azure Cosmos DB for indexing via [*indexers*](search-indexer-overview.md), but only for services under the same subscription.
+Ha egynél több előfizetéssel rendelkezik, válasszon egyet a keresési szolgáltatáshoz.
 
-## <a name="set-a-resource-group"></a>Set a resource group
+## <a name="set-a-resource-group"></a>Erőforráscsoport beállítása
 
-A resource group is required and is useful for managing resources all-up, including costs. A resource group can consist of one service, or multiple services used together. For example, if you are using Azure Cognitive Search to index an Azure Cosmos DB database, you could make both services part of the same resource group for management purposes. 
+Egy erőforráscsoport szükséges, amely az erőforrások teljes körű felügyeletéhez használható, beleértve a költségeket is. Egy erőforráscsoport állhat egy szolgáltatásból vagy több, együtt használt szolgáltatásból is. Ha például Azure Cognitive Searcht használ egy Azure Cosmos DB-adatbázis indexeléséhez, akkor az adott erőforráscsoport mindkét szolgáltatását felügyeleti célokra is elvégezheti. 
 
-If you aren't combining resources into a single group, or if existing resource groups are filled with resources used in unrelated solutions, create a new resource group just for your Azure Cognitive Search resource. 
+Ha egyetlen csoporthoz sem egyesít erőforrásokat, vagy ha a meglévő erőforráscsoportok a nem kapcsolódó megoldásokban használt erőforrásokkal vannak kitöltve, hozzon létre egy új erőforráscsoportot az Azure Cognitive Search-erőforráshoz. 
 
-![Create a new resource group](./media/search-create-service-portal/new-resource-group.png "Új erőforráscsoport létrehozása")
+![Új erőforráscsoport létrehozása](./media/search-create-service-portal/new-resource-group.png "Új erőforráscsoport létrehozása")
 
-Over time, you can track current and projected costs all-up (as shown in the screenshot) or scroll down to view charges for individual resources. The following screenshot shows the kind of cost information you can eventually expect to see when you combine multiple resources into one group.
+Az idő múlásával nyomon követheti az aktuális és a tervezett költségeket (a képernyőképen látható módon), vagy görgessen le az egyes erőforrások díjainak megtekintéséhez. A következő képernyőfelvételen látható, hogy milyen költségadatok várhatóak, amikor több erőforrást egyesít egy csoportba.
 
-![Manage costs at the resource group level](./media/search-create-service-portal/resource-group-cost-management.png "Manage costs at the resource group level")
+![Költségek kezelése az erőforráscsoport szintjén](./media/search-create-service-portal/resource-group-cost-management.png "Költségek kezelése az erőforráscsoport szintjén")
 
 > [!TIP]
-> Resource groups simplify cleanup because deleting a group also deletes the services within it. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
+> Az erőforráscsoportok leegyszerűsítik a tisztítást, mert egy csoport törlése szintén törli a benne lévő szolgáltatásokat. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
 
-## <a name="name-the-service"></a>Name the service
+## <a name="name-the-service"></a>A szolgáltatás neve
 
-In Instance Details, provide a service name in the **URL** field. The name is part of the URL endpoint against which API calls are issued: `https://your-service-name.search.windows.net`. For example, if you want the endpoint to be `https://myservice.search.windows.net`, you would enter `myservice`.
+A példány részletei területen adja meg a szolgáltatás nevét az **URL** mezőben. A név annak az URL-végpontnak a része, amelyen az API-hívások ki vannak bocsátva: `https://your-service-name.search.windows.net`. Ha például azt szeretné, hogy a végpont `https://myservice.search.windows.net`legyen, adja meg `myservice`.
 
 A szolgáltatásnévre vonatkozó követelmények:
 
@@ -71,52 +71,52 @@ A szolgáltatásnévre vonatkozó követelmények:
 * Sehol sem tartalmazhat két egymást követő kötőjelet ("--")
 
 > [!TIP]
-> If you think you'll be using multiple services, we recommend including the region (or location) in the service name as a naming convention. Services within the same region can exchange data at no charge, so if Azure Cognitive Search is in West US, and you have other services also in West US, a name like `mysearchservice-westus` can save you a trip to the properties page when deciding how to combine or attach resources.
+> Ha úgy gondolja, hogy több szolgáltatást fog használni, javasoljuk, hogy a szolgáltatás neveként a régiót (vagy helyet) nevezze el elnevezési konvencióként. Az azonos régión belüli szolgáltatások díjmentesen cserélhetik az adatcserét, így ha az Azure Cognitive Search az USA nyugati régiójában van, és más szolgáltatásokkal is rendelkezik az USA nyugati régiójában, akkor a név, például a `mysearchservice-westus` mentheti a Tulajdonságok lapját, amikor az erőforrások egyesítésével vagy csatlakoztatásával dönt.
 
-## <a name="choose-a-location"></a>Choose a location
+## <a name="choose-a-location"></a>Válasszon helyet
 
-As an Azure service, Azure Cognitive Search can be hosted in datacenters around the world. The list of supported regions can be found in the [pricing page](https://azure.microsoft.com/pricing/details/search/). 
+Azure-szolgáltatásként az Azure Cognitive Search világszerte elérhető adatközpontokban üzemeltethető. A támogatott régiók listája a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. 
 
-You can minimize or avoid bandwidth charges by choosing the same location for multiple services. For example, if you are indexing data provided by another Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), creating your Azure Cognitive Search service in the same region avoids bandwidth charges (there are no charges for outbound data when services are in the same region).
+A sávszélességgel kapcsolatos díjak minimalizálásához vagy elkerüléséhez válassza ki ugyanazt a helyet több szolgáltatás számára. Ha például egy másik Azure-szolgáltatás (Azure Storage, Azure Cosmos DB, Azure SQL Database) által biztosított adatok indexelését végzi, az Azure Cognitive Search szolgáltatás ugyanabban a régióban való létrehozása elkerüli a sávszélességi díjakat (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
 
-Additionally, if you are using AI enrichment, create your service in the same region as Cognitive Services. *Co-location of Azure Cognitive Search and Cognitive Services in the same region is a requirement for AI enrichment*.
+Emellett, ha AI-bővítést használ, a szolgáltatást ugyanabban a régióban hozza létre, mint Cognitive Services. *Az Azure Cognitive Search és az ugyanazon régióban lévő Cognitive Services együttes elhelyezése az AI-bővítés követelménye*.
 
 > [!Note]
-> Central India is currently unavailable for new services. For services already in Central India, you can scale up with no restrictions, and your service is fully supported in that region. The restriction on this region is temporary and limited to new services only. We will remove this note when the restriction no longer applies.
+> Közép-India jelenleg nem érhető el az új szolgáltatásokhoz. Az India középső régiójában már meglévő szolgáltatások esetében korlátozás nélkül is méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A régió korlátozásai ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozás már nem érvényes.
 
-## <a name="choose-a-pricing-tier-sku"></a>Choose a pricing tier (SKU)
+## <a name="choose-a-pricing-tier-sku"></a>Válasszon árképzési szintet (SKU)
 
-[Azure Cognitive Search is currently offered in multiple pricing tiers](https://azure.microsoft.com/pricing/details/search/): Free, Basic, or Standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
+Az [Azure Cognitive Search jelenleg több díjszabási szinten is elérhető](https://azure.microsoft.com/pricing/details/search/): ingyenes, alapszintű vagy standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
 
-Basic and Standard are the most common choices for production workloads, but most customers start with the Free service. Key differences among tiers is partition size and speed, and limits on the number of objects you can create.
+Az alapszintű és a standard az éles munkaterhelések leggyakoribb lehetőségei, de a legtöbb ügyfél az ingyenes szolgáltatással kezdődik. A szintek közötti fő különbségek a partíció mérete és sebessége, valamint a létrehozható objektumok számának korlátai.
 
-Remember that a pricing tier cannot be changed once the service is created. Ha később magasabb vagy alacsonyabb csomagra kíván áttérni, akkor újra létre kell hoznia a szolgáltatást.
+Ne feledje, hogy a szolgáltatás létrehozása után nem módosítható az árképzési szintek. Ha később magasabb vagy alacsonyabb csomagra kíván áttérni, akkor újra létre kell hoznia a szolgáltatást.
 
 ## <a name="create-your-service"></a>A szolgáltatás létrehozása
 
-After you've provided the necessary inputs, go ahead and create the service. 
+Miután megadta a szükséges bemeneteket, lépjen tovább, és hozza létre a szolgáltatást. 
 
-![Review and create the service](./media/search-create-service-portal/new-service3.png "Review and create the service")
+![A szolgáltatás áttekintése és létrehozása](./media/search-create-service-portal/new-service3.png "A szolgáltatás áttekintése és létrehozása")
 
-Your service is deployed within minutes, which you can monitor through Azure notifications. Consider pinning the service to your dashboard for easy access in the future.
+A szolgáltatás percek alatt üzembe helyezhető, amelyet az Azure-értesítéseken keresztül figyelheti. Érdemes lehet a szolgáltatást az irányítópultra rögzíteni, hogy később könnyebben hozzáférhessen.
 
-![Monitor and pin the service](./media/search-create-service-portal/monitor-notifications.png "Monitor and pin the service")
+![A szolgáltatás monitorozása és rögzítése](./media/search-create-service-portal/monitor-notifications.png "A szolgáltatás monitorozása és rögzítése")
 
-## <a name="get-a-key-and-url-endpoint"></a>Get a key and URL endpoint
+## <a name="get-a-key-and-url-endpoint"></a>Kulcs és URL-cím végpontjának beolvasása
 
-Unless you are using the portal, programmatic access to your new service requires that you provide the URL endpoint and an authentication api-key.
+Ha nem használja a portált, az új szolgáltatáshoz való programozott hozzáféréshez az URL-végpontot és egy hitelesítési API-kulcsot kell megadnia.
 
-1. On the **Overview** page, locate and copy the URL endpoint on the right side of the page.
+1. Az **Áttekintés** oldalon keresse meg és másolja ki az URL-végpontot az oldal jobb oldalán.
 
-2. On the **Keys** page, copy either one of the admin keys (they are equivalent). Admin api-keys are required for creating, updating, and deleting objects on your service. In contrast, query keys provide read-access to index content.
+2. A **kulcsok** lapon másolja át a rendszergazdai kulcsok egyikét (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez. Ezzel szemben a lekérdezési kulcsok olvasási hozzáférést biztosítanak a tartalom indexeléséhez.
 
-   ![Service overview page with URL endpoint](./media/search-create-service-portal/get-url-key.png "URL endpoint and other service details")
+   ![A szolgáltatás áttekintő lapja URL-végponttal](./media/search-create-service-portal/get-url-key.png "URL-végpont és egyéb szolgáltatás részletei")
 
-An endpoint and key are not needed for portal-based tasks. The portal is already linked to your Azure Cognitive Search resource with admin rights. For a portal walkthrough, start with [Quickstart: Create an Azure Cognitive Search index in the portal](search-get-started-portal.md).
+A portálon alapuló feladatokhoz nincs szükség végpontra és kulcsra. A portál már társítva van az Azure Cognitive Search-erőforráshoz rendszergazdai jogosultságokkal. A portál bemutatójának első lépései a gyors üzembe helyezési útmutató [: Azure Cognitive Search index létrehozása a portálon](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>A szolgáltatás méretezése
 
-A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. If you chose the Standard tier for your Azure Cognitive Search service, you can scale your service in two dimensions: replicas and partitions. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
+A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. Ha az Azure Cognitive Search szolgáltatás standard csomagját választotta, akkor a szolgáltatás két dimenzióban méretezhető: replikák és partíciók. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
 
 A ***partíciókkal*** a szolgáltatás több dokumentum tárolására és keresésére alkalmas.
 
@@ -131,29 +131,29 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 2. A bal oldali navigációs panelen válassza a **Beállítások** > **Méretezés** lehetőséget.
 3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
-![Add capacity](./media/search-create-service-portal/settings-scale.png "Add capacity through replicas and partitions")
+![Kapacitás hozzáadása](./media/search-create-service-portal/settings-scale.png "Kapacitás hozzáadása replikák és partíciók használatával")
 
 > [!Note]
-> Per-partition storage and speed increases at higher tiers. For more information, see [capacity and limits](search-limits-quotas-capacity.md).
+> A partíción belüli tárolás és a gyorsabb növekedés magasabb szintű szinten történik. További információ: [kapacitás és korlátok](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Mikor érdemes hozzáadni egy második szolgáltatást?
 
-Most customers use just one service provisioned at a tier providing the [right balance of resources](search-sku-tier.md). Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. In Azure Cognitive Search, requests can only be directed to one index, minimizing the chance of accidental or intentional data retrieval from other indexes in the same service.
+A legtöbb ügyfél csak egy olyan szolgáltatást használ, amely az [erőforrások megfelelő egyensúlyát](search-sku-tier.md)biztosító szinten van kiépítve. Egy szolgáltatásban több index is fenntartható [a választott csomag korlátozásainak megfelelő számban](search-capacity-planning.md), ha elkülönülnek egymástól. Az Azure Cognitive Searchban a kérelmek csak egyetlen indexre irányíthatók, ami minimalizálja az egyazon szolgáltatásban lévő más indexekről érkező véletlen vagy szándékos adatlekérdezés esélyét.
 
 Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet a szolgáltatás redundanciájára, ha az üzemeltetési körülmények között az alábbiak szerepelnek:
 
-* Vészhelyreállítás (adatközpont-kimaradás). Azure Cognitive Search does not provide instant failover in the event of an outage. Javaslatokat és útmutatást a [Szolgáltatásfelügyeletről](search-manage.md) szóló cikkben talál.
+* Vészhelyreállítás (adatközpont-kimaradás). Az Azure Cognitive Search áramszünet esetén nem biztosít azonnali feladatátvételt. Javaslatokat és útmutatást a [Szolgáltatásfelügyeletről](search-manage.md) szóló cikkben talál.
 * A több-bérlős modellezés vizsgálatával megállapította, hogy az optimális kialakítás további szolgáltatásokat is tartalmaz. További információ: [Tervezés több bérlő esetén](search-modeling-multitenant-saas-applications.md).
-* For globally deployed applications, you might require an instance of Azure Cognitive Search in multiple regions to minimize latency of your application’s international traffic.
+* A globálisan telepített alkalmazások esetében előfordulhat, hogy az Azure-Cognitive Search több régióban kell megkövetelni, hogy csökkentse az alkalmazás nemzetközi forgalmának késését.
 
 > [!NOTE]
-> In Azure Cognitive Search, you cannot segregate indexing and querying operations; thus, you would never create multiple services for segregated workloads. Az indexek lekérdezése mindig abban a szolgáltatásban történik, amelyben létre lettek hozva (nem lehet egy indexet egy szolgáltatásban létrehozni és egy másikba átmásolni).
+> Az Azure Cognitive Searchban nem különítheti el az indexelési és lekérdezési műveleteket; így soha nem hozhat létre több szolgáltatást az elkülönített munkaterhelésekhez. Az indexek lekérdezése mindig abban a szolgáltatásban történik, amelyben létre lettek hozva (nem lehet egy indexet egy szolgáltatásban létrehozni és egy másikba átmásolni).
 
-A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. Replica updates are sequential, which means at least one is operational when a service update is rolled out. For more information about uptime, see [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replika frissítései szekvenciálisak, ami azt jelenti, hogy legalább egy működőképes a szolgáltatás frissítésekor. További információ az üzemidőről: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Következő lépések
 
-After provisioning a service, you can continue in the portal to create your first index.
+A szolgáltatás kiépítés után folytathatja a portálon az első index létrehozását.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create an Azure Cognitive Search index in the portal](search-get-started-portal.md)
+> [Rövid útmutató: Azure Cognitive Search index létrehozása a portálon](search-get-started-portal.md)

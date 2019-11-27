@@ -76,9 +76,9 @@ Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 * [Helyi számítógép](#local)
-* [Az Azure Machine Learning Compute](#amlcompute)
+* [Azure Machine Learning számítás](#amlcompute)
 * [Távoli virtuális gépek](#vm)
-* [Az Azure HDInsight](#hdinsight)
+* [Azure-HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Helyi számítógép
@@ -91,7 +91,7 @@ Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a id="amlcompute"></a>Az Azure Machine Learning Compute
+### <a id="amlcompute"></a>Azure Machine Learning számítás
 
 Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy a felhasználó egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
@@ -186,7 +186,7 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a id="hdinsight"></a>Az Azure HDInsight 
+### <a id="hdinsight"></a>Azure-HDInsight 
 
 Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apache Spark biztosít, amely a modell betanítására használható.
 
@@ -346,8 +346,8 @@ A számítási célok listájának megtekintéséhez kövesse a fentebb ismertet
     > [!NOTE]
     > A Microsoft azt javasolja, hogy SSH-kulcsokat használjon, amelyek biztonságosabbak a jelszavaknál. A jelszavak ki vannak téve a találgatásos támadásoknak. Az SSH-kulcsok titkosítási aláírásokra támaszkodnak. Az Azure Virtual Machines használható SSH-kulcsok létrehozásával kapcsolatos információkért tekintse meg a következő dokumentumokat:
     >
-    > * [Hozzon létre és használhat SSH-kulcsokat a Linux vagy macOS rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Hozzon létre és SSH-kulcsok használata a Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-kulcsok létrehozása és használata Linux vagy macOS rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [SSH-kulcsok létrehozása és használata Windows rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Válassza a __csatolás__lehetőséget. 
 1. Tekintse meg a csatolási művelet állapotát a listából válassza ki a számítási célt.
@@ -504,12 +504,12 @@ Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a r
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
 Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból származó képzésekre:
-* [útmutatóval-to-használat – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [oktatóanyagok és img-besorolás-1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [használati útmutató – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [oktatóanyagok/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.

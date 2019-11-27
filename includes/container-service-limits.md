@@ -15,15 +15,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485464"
 ---
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Alapértelmezett korlát |
 | --- | :--- |
-| Maximum clusters per subscription | 100 |
-| Maximum nodes per cluster with Virtual Machine Availability Sets and Basic Load Balancer SKU  | 100 |
-| Maximum nodes per cluster with Virtual Machine Scale Sets and [Standard Load Balancer SKU][standard-load-balancer] | 800 (100 nodes per [node pool][node-pool]) |
-| Maximum pods per node: [Basic networking][basic-networking] with Kubenet | 110 |
-| Maximum pods per node: [Advanced networking][advanced-networking] with Azure Container Networking Interface | Azure CLI üzemelő példány: 30<sup>1</sup><br />Azure Resource Manager template: 30<sup>1</sup><br />Portálon keresztüli üzembe helyezés: 30 |
+| Fürtök maximális száma előfizetéskor | 100 |
+| Csomópontok maximális száma a virtuális gépek rendelkezésre állási csoportjaival és az alapszintű Load Balancer SKU-val  | 100 |
+| Csomópontok maximális száma fürtön Virtual Machine Scale Sets és [standard Load BALANCER SKU][standard-load-balancer] -val | 800 (100 csomópont/ [csomópont-készlet][node-pool]) |
+| Maximális hüvely/csomópont: [alapszintű hálózatkezelés][basic-networking] a Kubenet | 110 |
+| A hüvelyek maximális száma/csomópont: [speciális hálózatkezelés][advanced-networking] az Azure Container Network Interface felülettel | Azure CLI üzemelő példány: 30<sup>1</sup><br />Azure Resource Manager sablon: 30<sup>1</sup><br />Portálon keresztüli üzembe helyezés: 30 |
 
-<sup>1</sup>When you deploy an Azure Kubernetes Service (AKS) cluster with the Azure CLI or a Resource Manager template, this value is configurable up to 250 pods per node. You can't configure maximum pods per node after you've already deployed an AKS cluster, or if you deploy a cluster by using the Azure portal.<br />
+<sup>1</sup> Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal helyez üzembe egy Azure Kubernetes Service (ak) fürtöt, ez az érték legfeljebb 250 hüvelyre konfigurálható. Ha már üzembe helyezett egy AK-fürtöt, a csomópontok maximális száma nem konfigurálható, vagy ha a Azure Portal használatával helyez üzembe egy fürtöt.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

@@ -1,6 +1,6 @@
 ---
-title: Certificate-based authentication - Azure Active Directory
-description: Learn how to configure certificate-based authentication in your environment
+title: Tanúsítványalapú hitelesítés – Azure Active Directory
+description: Megtudhatja, hogyan konfigurálhatja a tanúsítvány alapú hitelesítést a környezetben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,52 +18,52 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382027"
 ---
-# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Get started with certificate-based authentication in Azure Active Directory
+# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései a Azure Active Directory
 
-Certificate-based authentication enables you to be authenticated by Azure Active Directory with a client certificate on a Windows, Android, or iOS device when connecting your Exchange online account to:
+A tanúsítványalapú hitelesítés lehetővé teszi, hogy egy Windows-, Android-vagy iOS-eszközön lévő ügyféltanúsítványt Azure Active Directory hitelesítse, amikor az Exchange online-fiókot a következőhöz csatlakoztatja:
 
-- Microsoft mobile applications such as Microsoft Outlook and Microsoft Word
-- Exchange ActiveSync (EAS) clients
+- Microsoft Mobile-alkalmazások, például a Microsoft Outlook és a Microsoft Word
+- Exchange ActiveSync-(EAS-) ügyfelek
 
-Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
+A szolgáltatás konfigurálásával nem kell megadnia a Felhasználónév és a jelszó kombinációját bizonyos levelezési és Microsoft Office alkalmazásokban a mobileszközön.
 
-This topic:
+Ez a témakör:
 
-- Provides you with the steps to configure and utilize certificate-based authentication for users of tenants in Office 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Office 365 China, US Government Defense, and US Government Federal plans.
-- Assumes that you already have a [public key infrastructure (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) and [AD FS](../hybrid/how-to-connect-fed-whatis.md) configured.
+- A következő lépésekkel konfigurálhatja és használhatja a tanúsítvány alapú hitelesítést a bérlők felhasználói számára az Office 365 Enterprise, az üzleti, az oktatási és az Egyesült Államok kormányzati csomagjaiban. Ez a funkció előzetes verzióban érhető el az Office 365 Kínában, az USA kormányzati védelmi és az USA kormányzati szövetségi terveiben.
+- Feltételezi, hogy már rendelkezik egy [nyilvános kulcsokra épülő infrastruktúrával (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) és [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfigurálva.
 
 ## <a name="requirements"></a>Követelmények
 
-To configure certificate-based authentication, the following statements must be true:
+A tanúsítványalapú hitelesítés konfigurálásához a következő utasításoknak igaznak kell lenniük:
 
-- Certificate-based authentication (CBA) is only supported for Federated environments for browser applications or native clients using modern authentication (ADAL). The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for  federated and managed accounts.
-- The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.
-- Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.
-- You must have at least one certificate authority configured in Azure Active Directory. You can find related steps in the [Configure the certificate authorities](#step-2-configure-the-certificate-authorities) section.
-- For Exchange ActiveSync clients, the client certificate must have the user’s routable email address in Exchange online in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.
-- Your client device must have access to at least one certificate authority that issues client certificates.
-- A client certificate for client authentication must have been issued to your client.
+- A tanúsítványalapú hitelesítés (CBA) csak a böngészőbeli alkalmazások és a modern hitelesítést (ADAL) használó natív ügyfelek összevont környezetei esetében támogatott. Az egyetlen kivétel Exchange Active Sync (EAS) az Exchange Online-hoz (EXO), amely összevont és felügyelt fiókokhoz is használható.
+- A legfelső szintű hitelesítésszolgáltató és a köztes hitelesítésszolgáltatók konfigurálását Azure Active Directory kell beállítani.
+- Minden hitelesítésszolgáltatónál szerepelnie kell egy olyan visszavont tanúsítványok listájának (CRL), amely egy internetre irányuló URL-cím használatával hivatkozható.
+- Rendelkeznie kell legalább egy, Azure Active Directory konfigurált hitelesítésszolgáltatóval. A kapcsolódó lépések a [hitelesítésszolgáltatók konfigurálása](#step-2-configure-the-certificate-authorities) szakaszban találhatók.
+- Az Exchange ActiveSync-ügyfelek esetében az ügyféltanúsítványt a felhasználónak az Exchange Online-ban lévő, a tulajdonos alternatív neve mező egyszerű neve vagy RFC822 neve mezőjében kell megadnia. Azure Active Directory leképezi a RFC822 értékét a címtárban található proxy címe attribútumra.
+- Az eszköznek hozzáféréssel kell rendelkeznie legalább egy olyan hitelesítésszolgáltatóhoz, amely ügyféltanúsítványt bocsát ki.
+- Az ügyfél-hitelesítéshez meg kell adni az ügyfél tanúsítványát.
 
-## <a name="step-1-select-your-device-platform"></a>Step 1: Select your device platform
+## <a name="step-1-select-your-device-platform"></a>1\. lépés: válassza ki az eszköz platformját
 
-As a first step, for the device platform you care about, you need to review the following:
+Első lépésként a megfelelő eszköz platformját kell áttekintenie:
 
-- The Office mobile applications support
-- The specific implementation requirements
+- Az Office Mobile-alkalmazások támogatása
+- A konkrét megvalósítási követelmények
 
-The related information exists for the following device platforms:
+A kapcsolódó információk a következő eszköz platformokon érhetők el:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Step 2: Configure the certificate authorities
+## <a name="step-2-configure-the-certificate-authorities"></a>2\. lépés: a hitelesítésszolgáltatók konfigurálása
 
-To configure your certificate authorities in Azure Active Directory, for each certificate authority, upload the following:
+A hitelesítésszolgáltatók Azure Active Directoryban való konfigurálásához minden hitelesítésszolgáltatónál töltse fel a következőket:
 
-* The public portion of the certificate, in *.cer* format
-* The internet-facing URLs where the Certificate Revocation Lists (CRLs) reside
+* A tanúsítvány nyilvános része *. cer* formátumban
+* Az internetre irányuló URL-címek, ahol a visszavont tanúsítványok listái (CRL-ek) találhatók
 
-The schema for a certificate authority looks as follows:
+A hitelesítésszolgáltató sémája a következőképpen néz ki:
 
     class TrustedCAsForPasswordlessAuth
     {
@@ -87,30 +87,30 @@ The schema for a certificate authority looks as follows:
         IntermediateAuthority = 1
     }
 
-For the configuration, you can use the [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0):
 
-1. Start Windows PowerShell with administrator privileges.
-2. Install the Azure AD module version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) or higher.
+1. Indítsa el a Windows PowerShellt rendszergazdai jogosultságokkal.
+2. Telepítse az Azure AD-modul [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-As a first configuration step, you need to establish a connection with your tenant. As soon as a connection to your tenant exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.
+Első konfigurálási lépésként létre kell hoznia egy kapcsolatot a Bérlővel. Amint létezik a bérlőhöz való kapcsolódás, áttekintheti, hozzáadhatja, törölheti és módosíthatja a címtárban definiált megbízható hitelesítésszolgáltatók listáját.
 
 ### <a name="connect"></a>Kapcsolódás
 
-To establish a connection with your tenant, use the [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
+Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) parancsmagot:
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Retrieve
+### <a name="retrieve"></a>Beolvasni
 
-To retrieve the trusted certificate authorities that are defined in your directory, use the [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
+A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásához használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot.
 
     Get-AzureADTrustedCertificateAuthority
 
 ### <a name="add"></a>Hozzáadás
 
-To create a trusted certificate authority, use the [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet and set the **crlDistributionPoint** attribute to a correct value:
+Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
 
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
@@ -121,89 +121,89 @@ To create a trusted certificate authority, use the [New-AzureADTrustedCertificat
 
 ### <a name="remove"></a>Eltávolítás
 
-To remove a trusted certificate authority, use the [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
 
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
 ### <a name="modify"></a>Módosítás
 
-To modify a trusted certificate authority, use the [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+Egy megbízható hitelesítésszolgáltató módosításához használja a [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>Step 3: Configure revocation
+## <a name="step-3-configure-revocation"></a>3\. lépés: visszavonás konfigurálása
 
-To revoke a client certificate, Azure Active Directory fetches the certificate revocation list (CRL) from the URLs uploaded as part of certificate authority information and caches it. The last publish timestamp (**Effective Date** property) in the CRL is used to ensure the CRL is still valid. The CRL is periodically referenced to revoke access to certificates that are a part of the list.
+Ügyféltanúsítvány visszavonásához Azure Active Directory beolvassa a visszavont tanúsítványok listáját (CRL) a hitelesítésszolgáltató adatainak részeként feltöltött URL-címekről, és gyorsítótárazza azt. A visszavont tanúsítványok listájának utolsó közzétételi időbélyegzője (**hatálybalépés dátuma** tulajdonsága) annak biztosítására szolgál, hogy a CRL továbbra is érvényes. A CRL rendszeres időközönként hivatkozik a lista részét képező tanúsítványokhoz való hozzáférés visszavonására.
 
-If a more instant revocation is required (for example, if a user loses a device), the authorization token of the user can be invalidated. To invalidate the authorization token, set the **StsRefreshTokenValidFrom** field for this particular user using Windows PowerShell. You must update the **StsRefreshTokenValidFrom** field for each user you want to revoke access for.
+Ha további azonnali visszavonásra van szükség (például ha egy felhasználó elveszíti az eszközt), akkor a felhasználó engedélyezési jogkivonata érvényteleníthető. Az engedélyezési jogkivonat érvénytelenítéséhez állítsa az adott felhasználóhoz tartozó **StsRefreshTokenValidFrom** mezőt a Windows PowerShell használatával. Minden olyan felhasználó esetében frissítenie kell a **StsRefreshTokenValidFrom** mezőt, amelynek hozzáférését vissza kívánja vonni.
 
-To ensure that the revocation persists, you must set the **Effective Date** of the CRL to a date after the value set by **StsRefreshTokenValidFrom** and ensure the certificate in question is in the CRL.
+Annak érdekében, hogy a visszavonás megmaradjon, be kell állítania a CRL **érvényességi dátumát** a **StsRefreshTokenValidFrom** által beállított érték után, és biztosítania kell, hogy a kérdéses tanúsítvány a CRL-ben legyen.
 
-The following steps outline the process for updating and invalidating the authorization token by setting the **StsRefreshTokenValidFrom** field.
+Az alábbi lépések az engedélyezési jogkivonat frissítésének és érvénytelenítésének folyamatát ismertetik a **StsRefreshTokenValidFrom** mező beállításával.
 
-**To configure revocation:**
+**Visszavonás beállítása:**
 
-1. Connect with admin credentials to the MSOL service:
+1. Kapcsolódás rendszergazdai hitelesítő adatokkal a MSOL szolgáltatáshoz:
 
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
 
-2. Retrieve the current StsRefreshTokensValidFrom value for a user:
+2. Egy felhasználó aktuális StsRefreshTokensValidFrom-értékének beolvasása:
 
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
 
-3. Configure a new StsRefreshTokensValidFrom value for the user equal to the current timestamp:
+3. Új StsRefreshTokensValidFrom-érték konfigurálása a felhasználó számára az aktuális időbélyeggel egyenlő:
 
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-The date you set must be in the future. If the date is not in the future, the **StsRefreshTokensValidFrom** property is not set. If the date is in the future, **StsRefreshTokensValidFrom** is set to the current time (not the date indicated by Set-MsolUser command).
+A beállított dátumnak a jövőben kell lennie. Ha a dátum nem a jövőben, a **StsRefreshTokensValidFrom** tulajdonság nincs beállítva. Ha a dátum jövőbeli, a **StsRefreshTokensValidFrom** az aktuális időpontra van állítva (nem a set-MsolUser parancs által jelzett dátumra).
 
-## <a name="step-4-test-your-configuration"></a>Step 4: Test your configuration
+## <a name="step-4-test-your-configuration"></a>4\. lépés: a konfiguráció tesztelése
 
-### <a name="testing-your-certificate"></a>Testing your certificate
+### <a name="testing-your-certificate"></a>A tanúsítvány tesztelése
 
-As a first configuration test, you should try to sign in to [Outlook Web Access](https://outlook.office365.com) or [SharePoint Online](https://microsoft.sharepoint.com) using your **on-device browser**.
+Első konfigurációs tesztként próbáljon meg bejelentkezni az [Outlook Web Accessbe](https://outlook.office365.com) vagy a [SharePoint Online](https://microsoft.sharepoint.com) -ba az **eszközön futó böngésző**használatával.
 
-If your sign-in is successful, then you know that:
+Ha a bejelentkezés sikeres, akkor tudja, hogy:
 
-- The user certificate has been provisioned to your test device
-- AD FS is configured correctly
+- A felhasználói tanúsítvány kiépítve a tesztelési eszközre
+- A AD FS megfelelően van konfigurálva
 
-### <a name="testing-office-mobile-applications"></a>Testing Office mobile applications
+### <a name="testing-office-mobile-applications"></a>Office Mobile-alkalmazások tesztelése
 
-**To test certificate-based authentication on your mobile Office application:**
+**A tanúsítványalapú hitelesítés tesztelése a Mobile Office-alkalmazásban:**
 
-1. On your test device, install an Office mobile application (for example, OneDrive).
-3. Launch the application.
-4. Enter your username, and then select the user certificate you want to use.
+1. A tesztelési eszközön telepítsen egy Office Mobile-alkalmazást (például OneDrive).
+3. Indítsa el az alkalmazást.
+4. Adja meg a felhasználónevét, majd válassza ki a használni kívánt felhasználói tanúsítványt.
 
-You should be successfully signed in.
+Sikeresen be kell jelentkeznie.
 
-### <a name="testing-exchange-activesync-client-applications"></a>Testing Exchange ActiveSync client applications
+### <a name="testing-exchange-activesync-client-applications"></a>Exchange ActiveSync-ügyfélalkalmazások tesztelése
 
-To access Exchange ActiveSync (EAS) via certificate-based authentication, an EAS profile containing the client certificate must be available to the application.
+Az Exchange ActiveSync (EAS) tanúsítvány alapú hitelesítésen keresztüli eléréséhez az ügyféltanúsítványt tartalmazó EAS-profilnak elérhetőnek kell lennie az alkalmazás számára.
 
-The EAS profile must contain the following information:
+Az EAS-profilnak tartalmaznia kell a következő információkat:
 
-- The user certificate to be used for authentication
+- A hitelesítéshez használandó felhasználói tanúsítvány
 
-- The EAS endpoint (for example, outlook.office365.com)
+- Az EAS-végpont (például outlook.office365.com)
 
-An EAS profile can be configured and placed on the device through the utilization of Mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.
+Az EAS-profilok a mobileszköz-felügyelet (MDM), például az Intune használatával konfigurálhatók és helyezhetők el az eszközön, vagy a tanúsítvány manuális elhelyezése az eszköz EAS-profiljában.
 
-### <a name="testing-eas-client-applications-on-android"></a>Testing EAS client applications on Android
+### <a name="testing-eas-client-applications-on-android"></a>EAS-ügyfélalkalmazások tesztelése Androidon
 
-**To test certificate authentication:**
+**A tanúsítvány hitelesítésének tesztelése:**
 
-1. Configure an EAS profile in the application that satisfies the requirements in the prior section.
-2. Open the application, and verify that mail is synchronizing.
+1. Konfiguráljon egy EAS-profilt az alkalmazásban, amely megfelel az előző szakaszban foglalt követelményeknek.
+2. Nyissa meg az alkalmazást, és ellenőrizze, hogy a levelek szinkronizálása folyamatban van-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Additional information about certificate-based authentication on Android devices.](active-directory-certificate-based-authentication-android.md)
+[További információ a tanúsítványalapú hitelesítésről Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
 
-[Additional information about certificate-based authentication on iOS devices.](active-directory-certificate-based-authentication-ios.md)
+[További információ a tanúsítványalapú hitelesítésről iOS-eszközökön.](active-directory-certificate-based-authentication-ios.md)

@@ -1,6 +1,6 @@
 ---
-title: Manage a user-assigned managed identity in the Azure portal - Azure AD
-description: Step by step instructions on how to create, list, delete and assign a role to a user-assigned managed identity.
+title: Felhasználó által hozzárendelt felügyelt identitás kezelése a Azure Portal-Azure AD-ben
+description: Részletes útmutató egy szerepkör felhasználó által hozzárendelt felügyelt identitáshoz való létrehozásához, listázásához, törléséhez és hozzárendeléséhez.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,77 +15,77 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06d25604ca1e8a59ca1da3c8e290d9052856b769
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224645"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547463"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Create, list, delete or assign a role to a user-assigned managed identity using the Azure portal
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory felügyelt identitásával. Ezt az identitást hitelesítheti az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene használnia a kódban. 
 
-In this article, you learn how to create, list, delete or assign a role to a user-assigned managed identity using the Azure Portal.
+Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat, törölhet vagy rendelhet hozzá egy szerepkört egy felhasználóhoz rendelt felügyelt identitáshoz az Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelésével.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to create the user-assigned managed identity.
-2. In the search box, type *Managed Identities*, and under **Services**, click **Managed Identities**.
-3. Click **Add** and enter values in the following fields under **Create user assigned managed** identity pane:
-   - **Resource Name**: This is the name for your user-assigned managed identity, for example UAI1.
-   - **Subscription**: Choose the subscription to create the user-assigned managed identity under
-   - **Resource Group**: Create a new resource group to contain your user-assigned managed identity or choose **Use existing** to create the user-assigned managed identity in an existing resource group.
-   - **Location**: Choose a location to deploy the user-assigned managed identity,for example **West US**.
-4. Kattintson a  **Create** (Létrehozás) gombra.
+1. A felhasználó által hozzárendelt felügyelt identitás létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-előfizetéshez társított fiók használatával.
+2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a **szolgáltatások**területen kattintson a **felügyelt identitások**elemre.
+3. Kattintson a **Hozzáadás** gombra, és adja meg az értékeket az alábbi mezőkben a **felhasználóhoz rendelt felügyelt identitás létrehozása** panelen:
+   - **Erőforrás neve**: Ez a felhasználó által hozzárendelt felügyelt identitás neve, például UAI1.
+   - **Előfizetés**: válassza ki azt az előfizetést, amely a felhasználó által hozzárendelt felügyelt identitást hozza létre
+   - **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, amely tartalmazza a felhasználóhoz rendelt felügyelt identitást, vagy válassza a **meglévő használata** lehetőséget a felhasználó által hozzárendelt felügyelt identitás létrehozásához egy meglévő erőforráscsoporthoz.
+   - **Hely**: válasszon egy helyet a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati**régiójában.
+4. Kattintson a **Létrehozás** gombra.
 
 ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 
-## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
+## <a name="list-user-assigned-managed-identities"></a>Felhasználó által hozzárendelt felügyelt identitások listázása
 
-To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Felhasználó által hozzárendelt felügyelt identitás listázásához/olvasásához a fióknak a [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) vagy a [felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelésre van szüksége.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
-2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
-3. A list of the user-assigned managed identities for your subscription is returned.  To see the details of a user-assigned managed identity click its name.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) az Azure-előfizetéshez társított fiókkal a felhasználó által hozzárendelt felügyelt identitások listázásához.
+2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások**elemre.
+3. Az előfizetéshez tartozó felhasználó által hozzárendelt felügyelt identitások listáját adja vissza.  A felhasználó által hozzárendelt felügyelt identitás részleteinek megtekintéséhez kattintson a nevére.
 
-![List user-assigned managed identity](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
+![Felhasználó által hozzárendelt felügyelt identitások listázása](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
+## <a name="delete-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás törlése
 
-To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Felhasználó által hozzárendelt felügyelt identitás törléséhez a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelésével.
 
-Deleting a user assigned identity does not remove it from the VM or resource it was assigned to.  To remove the user assigned identity from a VM see, [Remove a user-assigned managed identity from a VM](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
+A felhasználó által hozzárendelt identitás törlése nem távolítja el azt a virtuális gépről vagy erőforrásból, amelyhez hozzá lett rendelve.  Ha el szeretné távolítani a felhasználó által hozzárendelt identitást egy virtuális gépről, [távolítsa el a felhasználó által hozzárendelt felügyelt identitást egy virtuális](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm)gépről.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to delete a user-assigned managed identity.
-2. Select the user-assigned managed identity and click **Delete**.
-3. Under the confirmation box choose, **Yes**.
+1. A felhasználó által hozzárendelt felügyelt identitás törléséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-előfizetéshez társított fiók használatával.
+2. Válassza ki a felhasználó által hozzárendelt felügyelt identitást, és kattintson a **Törlés**gombra.
+3. A megerősítés mezőben válassza az **Igen**lehetőséget.
 
-![Delete user-assigned managed identity](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+![Felhasználó által hozzárendelt felügyelt identitás törlése](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Assign a role to a user-assigned managed identity 
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Szerepkör hozzárendelése felhasználóhoz rendelt felügyelt identitáshoz 
 
-To assign a role to a user-assigned managed identity, your account needs the [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) role assignment.
+Ha szerepkört szeretne hozzárendelni egy felhasználóhoz rendelt felügyelt identitáshoz, a fióknak szüksége van a [felhasználói hozzáférés rendszergazdai](/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkör-hozzárendelésére.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
-2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
-3. A list of the user-assigned managed identities for your subscription is returned.  Select the user-assigned managed identity that you want to assign a role.
-4. Select **Access control (IAM)** and then select **Add role assignment**.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) az Azure-előfizetéshez társított fiókkal a felhasználó által hozzárendelt felügyelt identitások listázásához.
+2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások**elemre.
+3. Az előfizetéshez tartozó felhasználó által hozzárendelt felügyelt identitások listáját adja vissza.  Válassza ki azt a felhasználó által hozzárendelt felügyelt identitást, amelyhez szerepkört szeretne hozzárendelni.
+4. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
 
-   ![User-assigned managed identity start](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+   ![Felhasználó által hozzárendelt felügyelt identitás kezdete](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. In the Add role assignment blade, configure the following values and then click **Save**:
-   - **Role** - the role to assign
-   - **Assign access to**  - the resource to assign the user-assigned managed identity
-   - **Select** - the member to assign access
+5. A szerepkör-hozzárendelés hozzáadása panelen konfigurálja a következő értékeket, majd kattintson a **Mentés**gombra:
+   - **Szerepkör** – a hozzárendelni kívánt szerepkör
+   - **Hozzáférés hozzárendelése** a felhasználóhoz rendelt felügyelt identitást hozzárendelő erőforráshoz
+   - **Select** – a hozzáféréshez hozzárendelni kívánt tag
    
-   ![User-assigned managed identity IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
+   ![Felhasználó által hozzárendelt felügyelt identitás IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

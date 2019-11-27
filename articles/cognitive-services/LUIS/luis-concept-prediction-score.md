@@ -24,7 +24,7 @@ Az előrejelzési pontszám azt jelzi, hogy a LUIS megbízhatósági foka a felh
 
 Egy előrejelzési pontszám, nulla (0) és a egy (1) között. Egy példát egy magas abban a LUIS-pontszám 0.99. Egy példa egy alacsony megbízhatósági pontszám, 0,01. 
 
-|Pontszám értéke|Megbízhatóság|
+|Pontszám értéke|Confidence|
 |--|--|
 |1|egyértelmű egyezés|
 |0.99|magas megbízhatóság|
@@ -68,7 +68,7 @@ Kikapcsolhatja a **nem determinisztikus képzést** az [összes adattal betanít
 
 ## <a name="e-exponent-notation"></a>E (kitevő) jelölés
 
-Előrejelzési pontszámok használható kitevő jelöléssel _jelennek meg_ fent a 0 – 1 tartományban, mint például `9.910309E-07`. Ezt az értéket arra utalhat, hogy egy rendkívül **kis** számát.
+Az előrejelzési pontszámok használhatnak kitevő-jelölést, amely az 0-1 tartomány fölött _jelenik_ meg, például `9.910309E-07`. Ez a pontszám nagyon **kis** számot jelez.
 
 |E jelöléssel pontszám |Tényleges eredmény|
 |--|--|
@@ -78,6 +78,6 @@ Előrejelzési pontszámok használható kitevő jelöléssel _jelennek meg_ fen
 
 [További](luis-concept-utterance.md#punctuation-marks) információ a központozás használatáról vagy kihagyásáról. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.
+Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

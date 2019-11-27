@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: New policy assignment with templates'
-description: In this quickstart, you use a Resource Manager template to create a policy assignment to identify non-compliant resources.
+title: 'Rövid útmutató: új szabályzat-hozzárendelés sablonokkal'
+description: Ebben a rövid útmutatóban egy Resource Manager-sablonnal hozhat létre szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482336"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Create a policy assignment to identify non-compliant resources by using a Resource Manager template
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához Resource Manager-sablon használatával
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
 Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
@@ -23,66 +23,66 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-In this quickstart, you create a policy assignment and assign a built-in policy definition called _Audit VMs that do not use managed disks_. For a partial list of available built-in policies, see [Azure Policy samples](./samples/index.md).
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és a _felügyelt lemezeket nem használó, naplózási virtuális gépek_nevű beépített szabályzat-definíciót rendel hozzá. Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
 
-There are several methods for creating policy assignments. In this quickstart, you use a [quickstart template](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
-Here is a copy of the template:
+A szabályzat-hozzárendelések létrehozásának számos módja van. Ebben a rövid útmutatóban egy rövid útmutató [sablont](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)használ.
+A sablon egy másolata:
 
 [!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
-> Azure Policy service is free. For more information, see [Overview of Azure Policy](./overview.md).
+> Azure Policy szolgáltatás ingyenes. További információ: [Azure Policy áttekintése](./overview.md).
 
-1. Select the following image to sign in to the Azure portal and open the template:
+1. Válassza ki az alábbi rendszerképet, hogy bejelentkezzen a Azure Portalba, és nyissa meg a sablont:
 
-   [![Deploy the Policy template to Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![a házirend-sablon üzembe helyezése az Azure-ban](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
-1. Select or enter the following values:
+1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Név | Value (Díj) |
+   | Name (Név) | Érték |
    |------|-------|
-   | Előfizetés | Válassza ki az Azure-előfizetését. |
-   | Erőforráscsoport | Select **Create new**, specify a name, and then select **OK**. In the screenshot, the resource group name is _mypolicyquickstart\<Date in MMDD\>rg_. |
-   | Földrajzi egység | Select a region. For example, **Central US**. |
-   | Policy Assignment Name | Specify a policy assignment name. You can use the policy definition display if you want. For example, **Audit VMs that do not use managed disks**. |
-   | Rg Name | Specify a resource group name where you want to assign the policy to. In this quickstart, use the default value **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** is a template function that retrieves the resource group. |
-   | Policy Definition ID | Specify **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
-   | I agree to the terms and conditions stated above | (Select) |
+   | Előfizetést | Válassza ki az Azure-előfizetését. |
+   | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. A képernyőképen az erőforráscsoport neve _mypolicyquickstart\<dátum a MMDD\>RG-ban_. |
+   | Hely | Válasszon régiót. Például az **USA középső**régiója. |
+   | Szabályzat-hozzárendelés neve | Adja meg a szabályzat-hozzárendelés nevét. Ha szeretné, használhatja a szabályzat-definíció megjelenítését. Például a **felügyelt lemezeket nem használó virtuális gépek naplózása**. |
+   | RG neve | Adja meg azt az erőforráscsoport-nevet, amelyhez hozzá szeretné rendelni a szabályzatot. Ebben a rövid útmutatóban használja az alapértelmezett **[resourceGroup (). name]** értéket. a **[resourceGroup ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** egy olyan sablon-függvény, amely lekéri az erőforráscsoportot. |
+   | Házirend-definíció azonosítója | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**megadásához. |
+   | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
 1. Válassza a **Beszerzés** lehetőséget.
 
-Some additional resources:
+Néhány további erőforrás:
 
-- To find more samples templates, see [Azure Quickstart template](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
-- To see the template reference, go to [Azure template reference](/azure/templates/microsoft.authorization/allversions).
-- To learn how to develop Resource Manager templates, see [Azure Resource Manager documentation](../../azure-resource-manager/resource-group-overview.md).
-- To learn subscription-level deployment, see [Create resource groups and resources at the subscription level](../../azure-resource-manager/deploy-to-subscription.md).
+- További minták sablonjait az Azure rövid útmutató [sablonjában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)talál.
+- A sablon hivatkozásának megtekintéséhez nyissa meg az [Azure-sablonok referenciáját](/azure/templates/microsoft.authorization/allversions).
+- A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](../../azure-resource-manager/resource-group-overview.md)talál további információt.
+- Az előfizetési szintű központi telepítés megismeréséhez tekintse meg [Az erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../../azure-resource-manager/deploy-to-subscription.md)című témakört.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
 
-Select **Compliance** in the left side of the page. Then locate the **Audit VMs that do not use managed disks** policy assignment you created.
+A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg **azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezeken** létrehozott házirend-hozzárendelést.
 
-![Policy compliance overview page](./media/assign-policy-template/policy-compliance.png)
+![A szabályzatok megfelelőségének áttekintése oldal](./media/assign-policy-template/policy-compliance.png)
 
-If there are any existing resources that aren't compliant with this new assignment, they appear under **Non-compliant resources**.
+Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások**alatt jelennek meg.
 
-For more information, see [How compliance works](./how-to/get-compliance-data.md#how-compliance-works).
+További információt a [megfelelőség működéséről](./how-to/get-compliance-data.md#how-compliance-works)szóló témakörben talál.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-To remove the assignment created, follow these steps:
+A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépéseket:
 
 1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott **Felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelést.
 
-1. Right-click the **Audit VMs that do not use managed disks** policy assignment and select **Delete assignment**.
+1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését **nem használó naplózási virtuális gépekre** , és válassza a **hozzárendelés törlése**lehetőséget.
 
-   ![Delete an assignment from the compliance overview page](./media/assign-policy-template/delete-assignment.png)
+   ![Hozzárendelés törlése a megfelelőségi áttekintés lapról](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you assigned a built-in policy definition to a scope and evaluated its compliance report. The policy definition validates that all the resources in the scope are compliant and identifies which ones aren't.
+Ebben a rövid útmutatóban egy beépített szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A szabályzatdefiníció ellenőrzi, hogy megfelelő a hatókörben lévő összes erőforrást, és azonosítja a nem.
 
-To learn more about assigning policies to validate that new resources are compliant, continue to the tutorial for:
+További információ a szabályzatok ellenőrzése, hogy az új erőforrások megfelelnek hozzárendeléséről, folytassa a következő oktatóanyagban:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./tutorials/create-and-manage.md)

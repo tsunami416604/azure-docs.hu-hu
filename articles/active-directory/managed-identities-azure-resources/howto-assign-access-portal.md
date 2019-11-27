@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184142"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547284"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Egy felügyelt identitás hozzáférés hozzárendelése egy erőforrást az Azure portal használatával
 
@@ -30,25 +30,25 @@ Miután beállította egy Azure-erőforrás felügyelt identitással, a felügye
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Az RBAC használatával hozzáférést egy felügyelt identitás hozzárendelése egy másik erőforrás
 
-Engedélyezését követően felügyelt identitás egy Azure-erőforrás, például egy [Azure virtuális gép](qs-configure-portal-windows-vm.md) vagy [Azure VMSS](qs-configure-portal-windows-vmss.md):
+Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, például egy Azure-beli [virtuális gépen](qs-configure-portal-windows-vm.md) vagy egy [Azure-VMSS](qs-configure-portal-windows-vmss.md):
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely alatt a felügyelt identitás konfigurálása Azure-előfizetéshez társított.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) az Azure-előfizetéshez társított fiókkal, amely alatt a felügyelt identitást konfigurálta.
 
 2. Keresse meg a kívánt erőforrást, amelyre szeretné módosítani a hozzáférés-vezérlés. Ebben a példában azt egy Azure-beli virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot, hogy lépjen a tárfiókhoz.
 
-3. Válassza ki a **hozzáférés-vezérlés (IAM)** az erőforrást, és válassza az oldal **+ szerepkör-hozzárendelés hozzáadása**. Adja meg a **szerepkör**, **rendelhet hozzáféréseket**, és adja meg a megfelelő **előfizetés**. A keresési feltételek területen látnia kell az erőforrás. Válassza ki az erőforrást, és válassza ki **mentése**. 
+3. Válassza ki az erőforrás **hozzáférés-vezérlés (iam)** lapját, és válassza a **+ szerepkör-hozzárendelés hozzáadása**elemet. Ezután adja meg a **szerepkört**, **rendeljen hozzá hozzáférést**, és adja meg a megfelelő **előfizetést**. A keresési feltételek területen látnia kell az erőforrás. Válassza ki az erőforrást, és kattintson a **Mentés**gombra. 
 
    ![Hozzáférés-vezérlés (IAM) képernyőképe](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
-- Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md).
-- Engedélyezheti a felügyelt identitás egy Azure-beli virtuálisgép-méretezési [konfigurálása felügyelt identitások beállítása az Azure portal használatával virtuálisgép-méretezési csoportot az Azure-erőforrások](qs-configure-portal-windows-vmss.md).
+- [Felügyelt identitás az Azure-erőforrásokhoz – áttekintés](overview.md)
+- Az Azure-beli virtuális gépek felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
+- Az Azure virtuálisgép-méretezési csoport felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuálisgép-méretezési csoportokban a Azure Portal használatával](qs-configure-portal-windows-vmss.md).
 
 

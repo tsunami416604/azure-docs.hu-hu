@@ -1,6 +1,6 @@
 ---
-title: Security guidance for Azure Multi-Factor Authentication - Azure Active Directory
-description: This document provides guidance around using Azure MFA with Azure accounts
+title: Az Azure Multi-Factor Authentication-Azure Active Directory biztonsági útmutatója
+description: Ez a dokumentum útmutatást nyújt az Azure MFA Azure-fiókokkal való használatáról
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,102 +18,102 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74208435"
 ---
-# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Security guidance for using Azure Multi-Factor Authentication with Azure AD accounts
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Biztonsági útmutató az Azure Multi-Factor Authentication Azure AD-fiókokkal való használatához
 
-Two-step verification is the preferred choice for most organizations that want to enhance their authentication process. Azure Multi-Factor Authentication (MFA) helps companies meet their security and compliance requirements while providing a simple sign-in experience for their users. This article covers some tips that you should consider when planning for the adoption of Azure MFA.
+A kétlépéses ellenőrzés az ajánlott választás a legtöbb szervezet számára, akik szeretnék javítani a hitelesítési folyamatát. Az Azure Multi-Factor Authentication (MFA) segíti a vállalatoknak a biztonsági és megfelelőségi követelményeknek való megfelelést, miközben egyszerű bejelentkezési élményt biztosítanak a felhasználók számára. Ez a cikk az Azure MFA bevezetésének megtervezése során megfontolandó tippeket ismerteti.
 
-## <a name="deploy-azure-mfa-in-the-cloud"></a>Deploy Azure MFA in the cloud
+## <a name="deploy-azure-mfa-in-the-cloud"></a>Az Azure MFA üzembe helyezése a felhőben
 
-There are two ways to [enable Azure MFA for all your users](howto-mfa-getstarted.md).
+Az Azure MFA két módon [engedélyezhető az összes felhasználó](howto-mfa-getstarted.md)számára.
 
-* Buy licenses for each user (Either Azure MFA, Azure AD Premium, or Enterprise Mobility + Security)
-* Create a Multi-Factor Auth Provider and pay per-user or per-authentication
+* Licencek vásárlása minden felhasználóhoz (Azure MFA, prémium szintű Azure AD vagy Enterprise Mobility + Security)
+* Multi-Factor Auth szolgáltató létrehozása és felhasználónkénti vagy felhasználónkénti fizetés
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Licencek
 
-![Apply licenses to users, enable, notify](./media/multi-factor-authentication-security-best-practices/ems.png)
+![Licencek alkalmazása felhasználók számára, engedélyezés, értesítés](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-If you have Azure AD Premium or Enterprise Mobility + Security licenses, you already have Azure MFA. Your organization doesn't need anything additional to extend the two-step verification capability to all users. You only need to assign a license to a user, and then you can turn on MFA.
+Ha prémium szintű Azure AD vagy Enterprise Mobility + Security licenccel rendelkezik, akkor már rendelkezik Azure MFA-val. A szervezetnek nincs szüksége további információkra a kétlépéses ellenőrzési képesség kiterjesztéséhez minden felhasználó számára. Csak egy licencet kell hozzárendelni egy felhasználóhoz, majd be lehet kapcsolni az MFA-t.
 
-When setting up Multi-Factor Authentication, consider the following tips:
+Multi-Factor Authentication beállításakor vegye figyelembe a következő tippeket:
 
-* Do not create a per-authentication Multi-Factor Auth Provider. If you do, you could end up paying for verification requests from users that already have licenses.
-* If you don't have enough licenses for all your users, you can create a per-user Multi-Factor Auth Provider to cover the rest of your organization. 
-* Azure AD Connect is only required if you are synchronizing your on-premises Active Directory environment with an Azure AD directory. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need Azure AD Connect.
+* Ne hozzon létre hitelesítést használó multi-Factor Auth szolgáltatót. Ha így tesz, előfordulhat, hogy a licencekkel már rendelkező felhasználóktól érkező ellenőrzési kérelmekért kell fizetnie.
+* Ha nem rendelkezik elegendő licenccel az összes felhasználó számára, létrehozhat egy felhasználónkénti multi-Factor Auth-szolgáltatót, hogy az fedezze a szervezet többi részét. 
+* Azure AD Connect csak akkor szükséges, ha a helyszíni Active Directory környezetet egy Azure AD-címtárral szinkronizálja. Ha olyan Azure AD-címtárat használ, amely nincs szinkronizálva a Active Directory helyszíni példányával, nincs szükség Azure AD Connectra.
 
-### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
+### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth szolgáltató
 
-![Multi-Factor Authentication Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![Multi-Factor Authentication szolgáltató](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-If you don't have licenses that include Azure MFA, then you can [create an MFA Auth Provider](concept-mfa-authprovider.md).
+Ha nincs olyan licence, amely tartalmazza az Azure MFA-t, [hozzon létre egy MFA-hitelesítési szolgáltatót](concept-mfa-authprovider.md).
 
-When creating the Auth Provider, you need to select a directory and consider the following details:
+Az Auth-szolgáltató létrehozásakor ki kell választania egy könyvtárat, és figyelembe kell vennie a következő adatokat:
 
-* You do not need an Azure AD directory to create a Multi-Factor Auth Provider, but you get more functionality with one. The following features are enabled when you associate the Auth Provider with an Azure AD directory:
-  * Extend two-step verification to all your users
-  * Offer your global administrators additional features, such as the management portal, custom greetings, and reports.
-* If you synchronize your on-premises Active Directory environment with an Azure AD directory, you need DirSync or Azure AD Sync. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need DirSync or Azure AD Sync.
-* Choose the consumption model that best suits your business. Once you select the usage model, you can’t change it. The two models are:
-  * Per authentication: charges you for each verification. Use this model if you want two-step verification for anyone that accesses a certain app, not for specific users.
-  * Per enabled user: charges you for each user that you enable for Azure MFA. Use this model if you have some users with Azure AD Premium or Enterprise Mobility Suite licenses, and some without.
+* A multi-Factor Auth szolgáltató létrehozásához nincs szükség Azure AD-címtárra, de további funkciókat is kap. A következő funkciók engedélyezettek, ha az Auth-szolgáltatót egy Azure AD-címtárral társítja:
+  * Kétlépéses ellenőrzés kiterjesztése az összes felhasználóra
+  * A globális rendszergazdák számára további funkciókat is kínál, például a felügyeleti portált, az egyéni üdvözléseket és a jelentéseket.
+* Ha a helyszíni Active Directory-környezetet egy Azure AD-címtárral szinkronizálja, a következőkre lesz szüksége: inrsync vagy Azure AD-szinkronizáló. Ha olyan Azure AD-címtárat használ, amely nem a Active Directory helyszíni példányával van szinkronizálva, nem kell megadnia az rSync vagy a Azure AD-szinkronizáló.
+* Válassza ki a vállalata számára legmegfelelőbb felhasználási modellt. A használati modell kiválasztását követően nem módosítható. A két modell a következők:
+  * /Hitelesítés: az egyes ellenőrzésekhez tartozó díjakat számítjuk fel. Akkor használja ezt a modellt, ha azt szeretné, hogy a kétlépéses ellenőrzés mindenki számára, aki hozzáfér egy adott alkalmazáshoz, nem pedig adott felhasználók számára.
+  * /Engedélyezett felhasználó: az Azure MFA-hoz tartozó összes felhasználóra vonatkozó díjat számít fel. Akkor használja ezt a modellt, ha prémium szintű Azure AD vagy nagyvállalati mobilitási csomaggal rendelkező felhasználókkal rendelkezik, és néhány nem.
 
 ### <a name="supportability"></a>Támogatási lehetőségek
 
-Since most users are accustomed to using only passwords to authenticate, it is important that your company brings awareness to all users regarding this process. This awareness can reduce the likelihood that users call your help desk for minor issues related to MFA. However, there are some scenarios where temporarily disabling MFA is necessary. Use the following guidelines to understand how to handle those scenarios:
+Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a hitelesítéshez, fontos, hogy a vállalat a folyamattal kapcsolatos összes felhasználóra felhívja a figyelmét. Ez a figyelem csökkenti annak a valószínűségét, hogy a felhasználók az MFA-hoz kapcsolódó kisebb problémák esetén meghívja az ügyfélszolgálatot. Vannak azonban olyan helyzetek, amikor átmenetileg le kell tiltani az MFA-t. Az alábbi irányelvek segítségével megismerheti, hogyan kezelheti ezeket a forgatókönyveket:
 
-* Train your technical support staff to handle scenarios where the user can't sign in because the mobile app or phone is not receiving a notification or phone call. Technical support can [enable a one-time bypass](howto-mfa-mfasettings.md#one-time-bypass) to allow a user to authenticate a single time by "bypassing" two-step verification. The bypass is temporary and expires after a specified number of seconds.
-* Consider the [Trusted IPs capability](howto-mfa-mfasettings.md#trusted-ips) in Azure MFA as a way to minimize two-step verification. With this feature, administrators of a managed or federated tenant can bypass two-step verification for users that are signing in from the company’s local intranet. The features are available for Azure AD tenants that have Azure AD Premium, Enterprise Mobility Suite, or Azure Multi-Factor Authentication licenses.
+* A technikai támogatási munkatársak betanítása olyan forgatókönyvek kezelésére, amelyekben a felhasználó nem tud bejelentkezni, mert a mobil alkalmazás vagy telefon nem kap értesítést vagy telefonhívást. A technikai támogatás lehetővé teszi, hogy egy egyszeri [mellőzést](howto-mfa-mfasettings.md#one-time-bypass) engedélyezzen a felhasználóknak a kétlépéses ellenőrzés megkerülésével egy adott idő hitelesítéséhez. A Mellőzés ideiglenes, és a megadott számú másodperc elteltével lejár.
+* Tekintse át az Azure MFA [megbízható IP](howto-mfa-mfasettings.md#trusted-ips) -címeinek képességét a kétlépéses ellenőrzés minimalizálására. Ezzel a funkcióval a felügyelt vagy összevont bérlő rendszergazdái megkerülhetik a kétlépéses ellenőrzést a vállalat helyi intranetéről bejelentkezett felhasználók számára. A szolgáltatások olyan Azure AD-bérlők számára érhetők el, amelyek prémium szintű Azure AD, nagyvállalati mobilitási csomaggal vagy Azure Multi-Factor Authentication licenccel rendelkeznek.
 
-## <a name="best-practices-for-an-on-premises-deployment"></a>Best Practices for an on-premises deployment
+## <a name="best-practices-for-an-on-premises-deployment"></a>Ajánlott eljárások helyszíni központi telepítéshez
 
-If your company decided to leverage its own infrastructure to enable MFA, then you need to [deploy an Azure Multi-Factor Authentication Server on-premises](howto-mfaserver-deploy.md). The MFA Server components are shown in the following diagram:
+Ha a vállalat úgy döntött, hogy kihasználja a saját infrastruktúráját az MFA engedélyezéséhez, akkor [telepítenie kell egy Azure multi-Factor Authentication-kiszolgáló a helyszínen](howto-mfaserver-deploy.md). Az MFA-kiszolgáló összetevői a következő ábrán láthatók:
 
-![The default MFA Server components](./media/multi-factor-authentication-security-best-practices/server.png) \*Not installed by default \**Installed but not enabled by default
+![az alapértelmezett MFA-kiszolgáló összetevőit](./media/multi-factor-authentication-security-best-practices/server.png) \*nincs telepítve alapértelmezés szerint \** telepítve, de alapértelmezés szerint nincs engedélyezve
 
-Azure Multi-Factor Authentication Server can secure cloud resources and on-premises resources by using federation. You must have AD FS and have it federated with your Azure AD tenant.
-When setting up Multi-Factor Authentication Server, consider the following details:
+Az Azure Multi-Factor Authentication-kiszolgáló a Felhőbeli erőforrásokat és a helyszíni erőforrásokat is biztonságossá teszi az összevonás használatával. Az Azure AD-Bérlővel AD FS kell összevontnak lennie.
+Multi-Factor Authentication-kiszolgáló beállításakor vegye figyelembe az alábbi adatokat:
 
-* If you are securing Azure AD resources using Active Directory Federation Services (AD FS), then the first verification step is performed on-premises using AD FS. A második lépés a helyszínen történik a jogcím betartásával.
-* You don't have to install the Azure Multi-Factor Authentication Server your AD FS federation server. However, the Multi-Factor Authentication Adapter for AD FS must be installed on a Windows Server 2012 R2 running AD FS. You can install the server on a different computer, as long as it is a supported version, and install the AD FS adapter separately on your AD FS federation server. 
-* The Multi-Factor Authentication AD FS Adapter installation wizard creates a security group called PhoneFactor Admins in your Active Directory, and then adds your AD FS service account to this group. Ellenőrizze, hogy létrejött-e a PhoneFactor-adminisztrátorok csoport a tartományvezérlőn, illetve hogy az AD FS-szolgáltatásfiók valóban tagja-e a csoportnak. Ha szükséges, adja hozzá manuálisan az AD FS-szolgáltatásfiókot a tartományvezérlőn a PhoneFactor-adminisztrátorok csoporthoz.
+* Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával védi az Azure AD-erőforrásokat, akkor az első ellenőrzési lépést a helyszíni AD FS használatával hajtja végre. A második lépés a helyszínen történik a jogcím betartásával.
+* Nem kell telepítenie az Azure-Multi-Factor Authentication-kiszolgáló a AD FS összevonási kiszolgálót. A AD FS Multi-Factor Authentication-adapterét azonban a AD FS rendszert futtató Windows Server 2012 R2 rendszerre kell telepíteni. A kiszolgálót másik számítógépre is telepítheti, ha az egy támogatott verzió, és a AD FS adaptert külön telepíti a AD FS összevonási kiszolgálón. 
+* A Multi-Factor Authentication AD FS-adapter telepítővarázslója létrehoz egy PhoneFactor-adminisztrátorok nevű biztonsági csoportot a Active Directory, majd hozzáadja a AD FS szolgáltatásfiókot a csoporthoz. Ellenőrizze, hogy létrejött-e a PhoneFactor-adminisztrátorok csoport a tartományvezérlőn, illetve hogy az AD FS-szolgáltatásfiók valóban tagja-e a csoportnak. Ha szükséges, adja hozzá manuálisan az AD FS-szolgáltatásfiókot a tartományvezérlőn a PhoneFactor-adminisztrátorok csoporthoz.
 
 ### <a name="user-portal"></a>Felhasználói portál
 
-The user portal allows self-service capabilities and provides a full set of user administration capabilities. It runs in an Internet Information Server (IIS) web site. Use the following guidelines to configure this component:
+A felhasználói portál lehetővé teszi az önkiszolgáló képességeket, és teljes körű felhasználói felügyeleti képességeket biztosít. Egy Internet Information Server-(IIS-) webhelyen fut. Az összetevő konfigurálásához kövesse az alábbi irányelveket:
 
-* Use IIS 6 or greater
-* Install and register ASP.NET v2.0.507207
-* Ensure that this server can be deployed in a perimeter network
+* AZ IIS 6-os vagy újabb használata
+* A ASP.NET v 2.0.507207 telepítése és regisztrálása
+* Győződjön meg arról, hogy a kiszolgáló üzembe helyezhető egy peremhálózati hálózaton
 
-### <a name="app-passwords"></a>App Passwords
+### <a name="app-passwords"></a>Alkalmazás jelszavai
 
-If your organization is federated for SSO with Azure AD and you are going to be using Azure MFA, then be aware of the following details:
+Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült, és az Azure MFA-t fogja használni, vegye figyelembe a következő adatokat:
 
-* The app password is verified by Azure AD and therefore bypasses federation. Federation is only used when setting up app passwords.
-* For federated (SSO) users, passwords are stored in the organizational ID. If the user leaves the company, that info has to flow to organizational ID using DirSync. Account disable/deletion may take up to three hours to sync, which delays disable/deletion of app passwords in Azure AD.
+* Az alkalmazás jelszavait az Azure AD ellenőrzi, így megkerüli az összevonást. Az összevonás csak az alkalmazás jelszavának beállításakor használatos.
+* Összevont (SSO) felhasználók esetén a rendszer a jelszavakat a szervezeti AZONOSÍTÓban tárolja. Ha a felhasználó elhagyja a vállalatot, az információnak a szervezet AZONOSÍTÓját kell használnia az rSync használatával. A fiókok letiltása/törlése akár három órát is igénybe vehet, ami késlelteti az alkalmazások jelszavainak letiltását/törlését az Azure AD-ben.
 * Az alkalmazásjelszó nem tartja be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
-* No on-premises authentication logging/auditing capability is available for app passwords.
-* Certain advanced architectural designs may require using a combination of organizational username and passwords and app passwords when using two-step verification with clients, depending on where they authenticate. For clients that authenticate against an on-premises infrastructure, you would use an organizational username and password. For clients that authenticate against Azure AD, you would use the app password.
-* By default, users cannot create app passwords. If you need to allow users to create app passwords, select the **Allow users to create app passwords to sign into non-browser applications** option.
+* Nem érhető el helyszíni hitelesítési naplózási/naplózási képesség az alkalmazások jelszavainak megadásához.
+* Bizonyos speciális építészeti kialakításokhoz szükség lehet a szervezeti felhasználónevek és jelszavak és az alkalmazások jelszavának együttes használatára, ha kétlépéses ellenőrzést használ az ügyfelekkel a hitelesítés helyétől függően. A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia. Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
+* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha engedélyezni szeretné a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a nem böngésző alkalmazásokba való bejelentkezéshez** .
 
-## <a name="additional-considerations"></a>Additional Considerations
+## <a name="additional-considerations"></a>További szempontok
 
-Use this list for additional considerations and guidance for each component that is deployed on-premises:
+A következő lista további szempontokat és útmutatást nyújt a helyszínen üzembe helyezett egyes összetevőkhöz:
 
 * Az Azure Multi-Factor Authentication telepítése az [Active Directory összevonási szolgáltatással](multi-factor-authentication-get-started-adfs.md).
 * Az Azure MFA-kiszolgáló telepítése és konfigurálása [RADIUS-hitelesítéssel](howto-mfaserver-dir-radius.md).
-* Set up and configure the Azure MFA Server with [IIS Authentication](howto-mfaserver-iis.md).
-* Set up and configure the Azure MFA Server with [Windows Authentication](howto-mfaserver-windows.md).
-* Set up and configure the Azure MFA Server with [LDAP Authentication](howto-mfaserver-dir-ldap.md).
-* Set up and configure the Azure MFA Server with [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
-* Set up and configure synchronization between the Azure MFA Server and [Windows Server Active Directory](howto-mfaserver-dir-ad.md).
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása [IIS-hitelesítéssel](howto-mfaserver-iis.md).
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása [Windows-hitelesítéssel](howto-mfaserver-windows.md).
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása [LDAP-hitelesítéssel](howto-mfaserver-dir-ldap.md).
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása a [Távoli asztali átjáró és az azure multi-Factor Authentication-kiszolgáló RADIUS használatával](howto-mfaserver-nps-rdg.md).
+* Az Azure MFA-kiszolgáló és a [Windows Server-Active Directory](howto-mfaserver-dir-ad.md)közötti szinkronizálás beállítása és konfigurálása.
 * [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md).
-* [Advanced VPN Configuration with Azure Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) for Cisco ASA, Citrix Netscaler, and Juniper/Pulse Secure VPN appliances using LDAP or RADIUS.
+* [Speciális VPN-konfiguráció az Azure multi-Factor Authentication](howto-mfaserver-nps-vpn.md) a Cisco ASA, a Citrix NetScaler és a Juniper/Pulse Secure VPN-készülékek számára LDAP vagy RADIUS használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-While this article highlights some best practices for Azure MFA, there are other resources that you can also use while planning your MFA deployment. The list below has some key articles that can assist you during this process:
+Ez a cikk az Azure MFA-hoz kapcsolódó ajánlott eljárásokat mutatja be, és egyéb erőforrásokat is használhat az MFA üzembe helyezésének megtervezése során. Az alábbi lista néhány kulcsfontosságú cikket tartalmaz, amelyek segítséget nyújthatnak a folyamat során:
 
-* [Reports in Azure Multi-Factor Authentication](howto-mfa-reporting.md)
-* [The two-step verification registration experience](../user-help/multi-factor-authentication-end-user-first-time.md)
-* [Azure Multi-Factor Authentication FAQ](multi-factor-authentication-faq.md)
+* [Jelentések az Azure Multi-Factor Authentication](howto-mfa-reporting.md)
+* [A kétlépéses ellenőrzés regisztrációs felülete](../user-help/multi-factor-authentication-end-user-first-time.md)
+* [Azure Multi-Factor Authentication GYIK](multi-factor-authentication-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: Learn what you need to know to migrate classic policies in the Azure portal.
+title: Feltételes hozzáférési szabályzatok áttelepíteni – Azure Active Directory
+description: Ismerje meg, hogy mit kell tudnia a klasszikus szabályzatok áttelepítéséhez a Azure Portalban.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,119 +18,119 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380556"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>What is a policy migration in Azure Active Directory Conditional Access? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Mi a szabályzat áttelepítése Azure Active Directory feltételes hozzáférésben? 
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active directory (Azure AD) that enables you to control how authorized users access your cloud apps. While the purpose is still the same, the release of the new Azure portal has introduced significant improvements to how Conditional Access works.
+A [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) az Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi annak vezérlését, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Habár a cél még mindig ugyanaz, az új Azure Portal kiadása jelentős újdonságokat vezetett be a feltételes hozzáférés működéséhez.
 
-Consider migrating the policies you have not created in the Azure portal because:
+Érdemes áttelepíteni azokat a házirendeket, amelyeket nem a Azure Portal hozott létre, mert:
 
-- You can now address scenarios you could not handle before.
-- You can reduce the number of policies you have to manage by consolidating them.   
-- You can manage all your Conditional Access policies in one central location.
-- The Azure classic portal will be retired.   
+- Mostantól olyan forgatókönyveket is megadhat, amelyeket nem tudott kezelni.
+- Csökkentheti a felügyelni kívánt szabályzatok számát.   
+- A feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti.
+- A klasszikus Azure portál kivonásra kerül.   
 
-This article explains what you need to know to migrate your existing Conditional Access policies to the new framework.
+Ez a cikk azt ismerteti, hogy mit kell tudnia a meglévő feltételes hozzáférési szabályzatok új keretrendszerre való átállításához.
  
-## <a name="classic-policies"></a>Classic policies
+## <a name="classic-policies"></a>Klasszikus szabályzatok
 
-In the [Azure portal](https://portal.azure.com), the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page is your entry point to your Conditional Access policies. However, in your environment, you might also have Conditional Access policies you have not created using this page. These policies are known as *classic policies*. Classic policies are Conditional Access policies, you have created in:
+A [Azure Portal](https://portal.azure.com)a [feltételes](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) hozzáférési szabályzatok oldal a feltételes hozzáférési szabályzatok belépési pontja. Előfordulhat azonban, hogy a környezetében olyan feltételes hozzáférési szabályzatokat is tartalmazhat, amelyeket nem ezen a lapon hozott létre. Ezeket a szabályzatokat *klasszikus szabályzatoknak*nevezzük. A klasszikus szabályzatok feltételes hozzáférési szabályzatok, amelyeket a ben hozott létre:
 
-- The Azure classic portal
-- The Intune classic portal
-- The Intune App Protection portal
+- A klasszikus Azure portál
+- A klasszikus Intune-portál
+- A Intune App Protection portál
 
-On the **Conditional Access** page, you can access your classic policies by clicking [**Classic policies (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in the **Manage** section. 
+A **feltételes hozzáférés** lapon a klasszikus szabályzatok [ **(előzetes verzió)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) elemre kattintva érheti el a klasszikus házirendeket a **kezelés** szakaszban. 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
-The **Classic policies** view provides you with an option to:
+A **klasszikus szabályzatok** nézet a következő lehetőségeket kínálja:
 
-- Filter your classic policies.
+- A klasszikus szabályzatok szűrése.
  
    ![Azure Active Directory](./media/policy-migration/72.png)
 
-- Disable classic policies.
+- Klasszikus szabályzatok letiltása.
 
    ![Azure Active Directory](./media/policy-migration/73.png)
    
-- Review the settings of a classic policy (and to disable it).
+- Tekintse át a klasszikus szabályzat beállításait (és tiltsa le).
 
    ![Azure Active Directory](./media/policy-migration/74.png)
 
-If you have disabled a classic policy, you can't revert this step anymore. This is why you can modify the group membership in a classic policy using the **Details** view. 
+Ha letiltotta a klasszikus szabályzatot, többé nem tudja visszaállítani ezt a lépést. Ezért módosítható a csoporttagság egy klasszikus szabályzatban a **részletek** nézet használatával. 
 
 ![Azure Active Directory](./media/policy-migration/75.png)
 
-By either changing the selected groups or by excluding specific groups, you can test the effect of a disabled classic policy for a few test users before disabling the policy for all included users and groups. 
+A kiválasztott csoportok módosításával vagy adott csoportok kizárásával tesztelheti a letiltott klasszikus házirendek hatását néhány tesztelési felhasználóra, mielőtt letiltja a házirendet az összes befoglalt felhasználó és csoport számára. 
 
-## <a name="azure-ad-conditional-access-policies"></a>Azure AD Conditional Access policies
+## <a name="azure-ad-conditional-access-policies"></a>Azure AD feltételes hozzáférési szabályzatok
 
-With Conditional Access in the Azure portal, you can manage all your policies in one central location. Because the implementation of how Conditional Access has changed, you should familiarize yourself with the basic concepts before migrating your classic policies.
+A Azure Portal feltételes hozzáférésével egyetlen központi helyen kezelheti az összes házirendet. Mivel a feltételes hozzáférés változásának implementációja, a klasszikus szabályzatok áttelepítése előtt Ismerkedjen meg az alapvető fogalmakkal.
 
 Lásd:
 
-- [What is Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) to learn about the basic concepts and the terminology.
-- [Best practices for Conditional Access in Azure Active Directory](best-practices.md) to get some guidance on deploying Conditional Access in your organization.
-- [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md) to familiarize yourself with the user interface in the Azure portal.
+- [Mi a feltételes hozzáférés a Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md) az alapvető fogalmak és a terminológia megismeréséhez.
+- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](best-practices.md) a feltételes hozzáférés üzembe helyezéséhez a szervezetben.
+- Többtényezős [hitelesítés megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md) a Azure Portal felhasználói felületének megismeréséhez.
  
 ## <a name="migration-considerations"></a>Migrálási szempontok
 
-In this article, Azure AD Conditional Access policies are also referred to as *new policies*.
-Your classic policies continue to work side by side with your new policies until you disable or delete them. 
+Ebben a cikkben az Azure AD feltételes hozzáférési szabályzatait *új szabályzatoknak*is nevezzük.
+A klasszikus szabályzatok továbbra is az új szabályzatokkal együtt működnek, amíg le nem tiltja vagy nem törli őket. 
 
-The following aspects are important in the context of a policy consolidation:
+A házirend-Összevonás kontextusában a következő szempontok fontosak:
 
-- While classic policies are tied to a specific cloud app, you can select as many cloud apps as you need to in a new policy.
-- Controls of a classic policy and a new policy for a cloud app require all controls (*AND*) to be fulfilled. 
-- In a new policy, you can:
-   - Combine multiple conditions if required by your scenario. 
-   - Select several grant requirements as access control and combine them with a logical *OR* (require one of the selected controls) or with a logical *AND* (require all of the selected controls).
+- Habár a klasszikus szabályzatok egy adott felhőalapú alkalmazáshoz vannak kötve, az új szabályzatokban tetszőleges számú felhőalapú alkalmazást választhat.
+- A klasszikus szabályzatok és a felhőalapú alkalmazások új szabályzatának szabályozása megköveteli az összes vezérlő (*és*) teljesítését. 
+- Egy új szabályzatban a következőket teheti:
+   - Ha a forgatókönyve megköveteli, több feltételt is egyesíteni kell. 
+   - Válasszon több engedélyezési követelményt hozzáférés-vezérlésként, és kombinálja őket logikai *vagy* (a kijelölt vezérlők valamelyikének megkövetelése) vagy logikai *és* (az összes kijelölt vezérlő megkövetelése) beállítással.
 
    ![Azure Active Directory](./media/policy-migration/25.png)
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange online
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-If you want to migrate classic policies for **Office 365 Exchange online** that include **Exchange Active Sync** as client apps condition, you might not be able to consolidate them into one new policy. 
+Ha olyan klasszikus házirendeket szeretne áttelepíteni az **Office 365 Exchange Online** -hoz, amelyek **Exchange Active Sync** ügyfél-alkalmazási feltételként szerepelnek, előfordulhat, hogy nem tudja összevonni őket egy új szabályzatba. 
 
-This is, for example, the case if you want to support all client app types. In a new policy that has **Exchange Active Sync** as client apps condition, you can't select other client apps.
+Ez például az az eset, ha az összes ügyfélalkalmazás-típust támogatni szeretné. Egy olyan új szabályzatban, amely **Exchange Active Sync** ügyfél-alkalmazási feltételként, nem választhat más ügyfélalkalmazások közül.
 
 ![Azure Active Directory](./media/policy-migration/64.png)
 
-A consolidation into one new policy is also not possible if your classic policies contain several conditions. A new policy that has **Exchange Active Sync** as client apps condition configured does not support other conditions:   
+Ha a klasszikus szabályzat több feltételt is tartalmaz, akkor nem lehet konszolidálni egy új szabályzatot. Egy olyan új szabályzat, amely **Exchange Active Sync** ügyfél-alkalmazási feltétel konfigurálva, nem támogatja a többi feltételt:   
 
 ![Azure Active Directory](./media/policy-migration/08.png)
 
-If you have a new policy that has **Exchange Active Sync** as client apps condition configured, you need to make sure that all other conditions are not configured. 
+Ha van olyan új szabályzata, amely **Exchange Active Sync** ügyfél-alkalmazási feltétel konfigurálva van, akkor győződjön meg arról, hogy az összes többi feltétel sincs konfigurálva. 
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-[App-based](technical-reference.md#approved-client-app-requirement) classic policies for Office 365 Exchange Online that include **Exchange Active Sync** as client apps condition allow **supported** and **unsupported** [device platforms](technical-reference.md#device-platform-condition). While you can't configure individual device platforms in a related new policy, you can limit the support to [supported device platforms](technical-reference.md#device-platform-condition) only. 
+Az Office 365 Exchange Online-hoz készült, [alkalmazáson alapuló](technical-reference.md#approved-client-app-requirement) klasszikus házirendek, amelyek tartalmazzák a **Exchange Active Sync** as Client apps-feltételt, lehetővé teszik a **támogatott** és nem **támogatott** [eszközök platformját](technical-reference.md#device-platform-condition) Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](technical-reference.md#device-platform-condition) korlátozhatja a támogatást. 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
-You can consolidate multiple classic policies that include **Exchange Active Sync** as client apps condition if they have:
+Több klasszikus szabályzatot is összevonhat, amelyek a **Exchange Active Sync** ügyfél-alkalmazási feltételnek minősülnek, ha rendelkeznek a következőkkel:
 
-- Only **Exchange Active Sync** as condition 
-- Several requirements for granting access configured
+- Csak **Exchange Active Sync** feltételként 
+- A hozzáférés konfigurálásának számos követelménye
 
-One common scenario is the consolidation of:
+Az egyik gyakori forgatókönyv az alábbiak összevonása:
 
-- A device-based classic policy from the Azure classic portal 
-- An app-based classic policy in the Intune app protection portal 
+- A klasszikus Azure portál eszközön alapuló klasszikus szabályzata 
+- Egy alkalmazás-alapú klasszikus szabályzat az Intune app Protection portálon 
  
-In this case, you can consolidate your classic policies into one new policy that has both requirements selected.
+Ebben az esetben a klasszikus szabályzatokat egy új házirendbe összevonhatja, amely mindkét követelménynek megfelel.
 
 ![Azure Active Directory](./media/policy-migration/62.png)
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Eszköz platformok
 
-Classic policies with [app-based controls](technical-reference.md#approved-client-app-requirement) are pre-configured with iOS and Android as the [device platform condition](technical-reference.md#device-platform-condition). 
+Az [alkalmazáson alapuló vezérlőkkel](technical-reference.md#approved-client-app-requirement) rendelkező klasszikus szabályzatok előre konfigurálva vannak az iOS és az Android [platformon az eszköz platformjának feltétele](technical-reference.md#device-platform-condition). 
 
-In a new policy, you need to select the [device platforms](technical-reference.md#device-platform-condition) you want to support individually.
+Egy új szabályzatban ki kell választania a támogatni kívánt [eszközök platformját](technical-reference.md#device-platform-condition) .
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
+- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 

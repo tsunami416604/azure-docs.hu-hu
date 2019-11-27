@@ -37,7 +37,7 @@ Amikor egy felhasználó elindítja az alkalmazást, a rendszer alapértelmezés
 - Ehelyett a Kezdőlap URL-címét szeretné beállítani `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`ként, így a külső felhasználó először a bejelentkezési oldalt látja.
 
 > [!NOTE]
-> Amikor engedélyezi a felhasználók elérését a közzétett alkalmazásokat, az alkalmazások megjelennek a [Azure AD hozzáférési Panel](../user-help/my-apps-portal-end-user-access.md) és a [Office 365 appindítóban](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Amikor hozzáférést ad a felhasználóknak a közzétett alkalmazásokhoz, az alkalmazások megjelennek az [Azure ad hozzáférési paneljén](../user-help/my-apps-portal-end-user-access.md) és az [Office 365 app launcherben](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -85,7 +85,7 @@ A csomag telepítéséhez kövesse az alábbi lépéseket:
    Install-Module -Name AzureAD
    ```
 
-    Ha a parancsot futtatja, nem rendszergazda, a `-scope currentuser` lehetőséget.
+    Ha nem rendszergazdaként futtatja a parancsot, használja a `-scope currentuser` kapcsolót.
 
 1. A telepítés során a Nuget.org két csomag telepítéséhez válassza az **Y** lehetőséget. Mindkét csomagot kötelező megadni.
 
@@ -147,7 +147,7 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a `https://sharepoint-iddemo.msappproxy.net/` való `https://sharepoint-iddemo.msappproxy.net/hybrid/`,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
+1. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Ha például a Kezdőlap URL-címét `https://sharepoint-iddemo.msappproxy.net/`ról `https://sharepoint-iddemo.msappproxy.net/hybrid/`re módosítja, az alkalmazás felhasználói közvetlenül az egyéni kezdőlapra kerülnek.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -178,7 +178,7 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
 > [!NOTE]
 > Módosításokat hajt végre az alkalmazás előfordulhat, hogy állítsa alaphelyzetbe a kezdőlap URL-címe. Ha alaphelyzetbe állítja a kezdőlap URL-címe, ismételje meg a állítja vissza a jelen szakaszban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
+- [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD Application Proxy](application-proxy-integrate-with-sharepoint-server.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)

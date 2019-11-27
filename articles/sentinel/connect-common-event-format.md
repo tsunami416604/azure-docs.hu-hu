@@ -1,6 +1,6 @@
 ---
-title: Connect CEF data to Azure Sentinel Preview| Microsoft Docs
-description: Learn how to connect CEF data to Azure Sentinel.
+title: CEF-adatkapcsolatok összekötése az Azure Sentinel előzetes verziójával | Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat a CEF-adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -21,110 +21,110 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463981"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>Connect your external solution using Common Event Format
+# <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
 
 
-This article explains how to connect Azure Sentinel with your external security solutions that send Common Event Format (CEF) messages on top of Syslog. 
+Ez a cikk azt ismerteti, hogyan kapcsolódhat az Azure Sentinel szolgáltatáshoz olyan külső biztonsági megoldásokkal, amelyek Common Event Format-(CEF-) üzeneteket küldenek a syslog-ben. 
 
 > [!NOTE] 
-> Data is stored in the geographic location of the workspace on which you are running Azure Sentinel.
+> Az adattárolást annak a munkaterületnek a földrajzi helye tárolja, amelyen az Azure Sentinel alkalmazást futtatja.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
-You need to deploy an agent on a dedicated Linux machine (VM or on premises) to support the communication between the appliance and Azure Sentinel. The following diagram describes the setup in the event of a Linux VM in Azure.
+Telepítenie kell egy ügynököt egy dedikált linuxos gépen (VM vagy helyszíni) a készülék és az Azure Sentinel közötti kommunikáció támogatásához. Az alábbi ábra az Azure-beli Linux rendszerű virtuális gépek esetén történő telepítést ismerteti.
 
- ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
+ ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
 
-Alternatively, this setup will exist if you use a VM in another cloud, or an on-premises machine. 
+Másik lehetőségként ez a beállítás akkor is fennáll, ha egy másik felhőben vagy egy helyszíni gépen használ virtuális gépet. 
 
- ![CEF on premises](./media/connect-cef/cef-syslog-onprem.png)
+ ![CEF a helyszínen](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-Make sure to configure the machine's security according to your organization's security policy. For example, you can configure your network to align with your corporate network security policy and change the ports and protocols in the daemon to align with your requirements. You can use the following instructions to improve your machine security configuration:  [Secure VM in Azure](../virtual-machines/linux/security-policy.md), [Best practices for Network security](../security/fundamentals/network-best-practices.md).
+Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/linux/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
 
-To use TLS communication between the security solution and the Syslog machine, you will need to configure the Syslog daemon (rsyslog or syslog-ng) to communicate in TLS: [Encrypting Syslog Traffic with TLS -rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [Encrypting log messages with TLS –syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Ha TLS-kommunikációt szeretne használni a biztonsági megoldás és a syslog-gép között, konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS protokollon keresztüli kommunikációhoz: a [syslog-forgalom titkosítása TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), a [naplózási üzenetek titkosítása TLS használatával – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Előfeltételek
-Make sure the Linux machine you use as a proxy is running one of the following operating systems:
+Győződjön meg arról, hogy a proxyként használt Linux-gép az alábbi operációs rendszerek egyikét futtatja:
 
-- 64-bit
-  - CentOS 6 and 7
-  - Amazon Linux 2017.09
-  - Oracle Linux 6 and 7
-  - Red Hat Enterprise Linux Server 6 and 7
-  - Debian GNU/Linux 8 and 9
-  - Ubuntu Linux 14.04 LTS, 16.04 LTS and 18.04 LTS
+- 64 bites
+  - CentOS 6 és 7
+  - Amazon Linux 2017,09
+  - Oracle Linux 6 és 7
+  - Red Hat Enterprise Linux 6. és 7. kiszolgáló
+  - Debian GNU/Linux 8 és 9
+  - Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32-bit
+- 32 bites
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6
-   - Debian GNU/Linux 8 and 9
-   - Ubuntu Linux 14.04 LTS and 16.04 LTS
+   - Debian GNU/Linux 8 és 9
+   - Ubuntu Linux 14,04 LTS és 16,04 LTS
  
- - Daemon versions
-   - Syslog-ng: 2.1 - 3.22.1
-   - Rsyslog: v8
+ - Daemon-verziók
+   - Syslog-ng: 2,1 – 3.22.1
+   - Rsyslog: V8
   
- - Syslog RFCs supported
+ - A syslog RFC-k támogatottak
    - Syslog RFC 3164
    - Syslog RFC 5424
  
-Make sure your machine also meets the following requirements: 
+Győződjön meg arról, hogy a gép a következő követelményeknek is megfelel: 
 - Engedélyek
-    - You must have elevated permissions (sudo) on your machine. 
+    - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
 - Szoftverkövetelmények
-    - Make sure you have Python running on your machine
-## <a name="step-1-deploy-the-agent"></a>STEP 1: Deploy the agent
+    - Győződjön meg arról, hogy a Python fut a gépen
+## <a name="step-1-deploy-the-agent"></a>1\. lépés: az ügynök üzembe helyezése
 
-In this step, you need to select the Linux machine that will act as a proxy between Azure Sentinel and your security solution. You will have to run a script on the proxy machine that:
-- Installs the Log Analytics agent and configures it as needed to listen for Syslog messages.
-- Configures the Syslog daemon to listen to Syslog messages using TCP port 514 and then forwards only the CEF messages to the Log Analytics agent using TCP port 25226.
-- Sets the Syslog agent to collect the data and send it securely to Azure Sentinel, where it is parsed and enriched.
+Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog működni az Azure Sentinel és a biztonsági megoldás között. Futtatnia kell egy parancsfájlt a proxy gépen, amely a következőket teszi:
+- Telepíti a Log Analytics ügynököt, és szükség szerint konfigurálja a syslog-üzenetek figyeléséhez.
+- Úgy konfigurálja a syslog démont, hogy a 514-es TCP-porton keresztül figyelje a syslog-üzeneteket, majd csak a CEF üzeneteket továbbítja a Log Analytics ügynöknek a 25226-es TCP-porton keresztül.
+- Beállítja a syslog-ügynököt az adatok gyűjtésére és biztonságos küldésére az Azure Sentinel számára, ahol a rendszer elemzi és gazdagítja az adatokat.
  
  
-1. In the Azure Sentinel portal, click **Data connectors** and select **Common Event Format (CEF)** and then **Open connector page**. 
+1. Az Azure Sentinel portálon kattintson az **adatösszekötők** elemre, és válassza a **Common Event Format (CEF)** lehetőséget, majd **nyissa meg az összekötő lapot**. 
 
-1. Under **Install and configure the Syslog agent**, select your machine type, either Azure, other cloud, or on-premises. 
+1. **A syslog-ügynök telepítése és konfigurálása**területen válassza ki a gép típusát, akár az Azure-t, akár a másik felhőt, akár a helyszínen. 
    > [!NOTE]
-   > Because the script in the next step installs the Log Analytics agent and connects the machine to your Azure Sentinel workspace, make sure this machine is not connected to any other workspace.
-1. You must have elevated permissions (sudo) on your machine. Make sure that you have Python on your machine using the following command: `python –version`
+   > Mivel a következő lépésben a parancsfájl telepíti a Log Analytics ügynököt, és csatlakoztatja a gépet az Azure Sentinel-munkaterülethez, győződjön meg róla, hogy ez a számítógép nincs csatlakoztatva más munkaterülethez.
+1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. A következő paranccsal ellenőrizze, hogy rendelkezik-e a Python használatával a gépen: `python –version`
 
-1. Run the following script on your proxy machine.
+1. Futtassa a következő szkriptet a proxy gépen.
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. While the script is running, check to make sure you don't get any error or warning messages.
+1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
 
 
-## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>STEP 2: Configure your security solution to send CEF messages
+## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2\. lépés: a biztonsági megoldás konfigurálása CEF-üzenetek küldésére
 
-1. On the appliance you need to set these values so that the appliance sends the necessary logs in the necessary format to the Azure Sentinel Syslog agent, based on the Log Analytics agent. You can modify these parameters in your appliance, as long as you also modify them in the Syslog daemon on the Azure Sentinel agent.
-    - Protocol = TCP
+1. A készüléken ezeket az értékeket úgy kell beállítania, hogy a berendezés a szükséges formátumú naplókat a szükséges formátumban küldje el az Azure Sentinel syslog-ügynöknek a Log Analytics ügynök alapján. Ezeket a paramétereket módosíthatja a berendezésben, ha az Azure Sentinel-ügynök syslog démonán is módosítja őket.
+    - Protokoll = TCP
     - Port = 514
     - Format = CEF
-    - IP address - make sure to send the CEF messages to the IP address of the virtual machine you dedicated for this purpose.
+    - IP-cím – ügyeljen arra, hogy a CEF üzeneteket az erre a célra kijelölt virtuális gép IP-címére küldje el.
 
    > [!NOTE]
-   > This solution supports Syslog RFC 3164 or RFC 5424.
+   > Ez a megoldás a syslog RFC 3164 vagy az RFC 5424 szolgáltatást támogatja.
 
 
-1. To use the relevant schema in Log Analytics for the CEF events, search for `CommonSecurityLog`.
+1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a `CommonSecurityLog`kifejezést.
 
-## <a name="step-3-validate-connectivity"></a>STEP 3: Validate connectivity
+## <a name="step-3-validate-connectivity"></a>3\. lépés: a kapcsolat ellenőrzése
 
-1. Open Log Analytics to make sure that logs are received using the CommonSecurityLog schema.<br> It may take upwards of 20 minutes until your logs start to appear in Log Analytics. 
+1. A Log Analytics megnyitásával győződjön meg arról, hogy a naplók a CommonSecurityLog séma használatával érkeznek.<br> Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-1. Before you run the script, we recommend that you send messages from your security solution to make sure they are being forwarded to the Syslog proxy machine you configured. 
-1. You must have elevated permissions (sudo) on your machine. Make sure that you have Python on your machine using the following command: `python –version`
-1. Run the following script to check connectivity between the agent, Azure Sentinel, and your security solution. It checks that the daemon forwarding is properly configured, listens on the correct ports, and that nothing is blocking communication between the daemon and the Log Analytics agent. The script also sends mock messages 'TestCommonEventFormat' to check end-to-end connectivity. <br>
+1. A szkript futtatása előtt javasoljuk, hogy küldjön üzeneteket a biztonsági megoldásból, hogy azok továbbítva legyenek a konfigurált syslog-proxy gépre. 
+1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. A következő paranccsal ellenőrizze, hogy rendelkezik-e a Python használatával a gépen: `python –version`
+1. Futtassa a következő szkriptet az ügynök, az Azure Sentinel és a biztonsági megoldás közötti kapcsolat vizsgálatához. Ellenőrzi, hogy a démon továbbítása megfelelően van-e konfigurálva, figyeli a megfelelő portokat, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. A parancsfájl a "TestCommonEventFormat" nevű, a végpontok közötti kapcsolat vizsgálatához is elküldi a "" üzenetet. <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>Következő lépések
-In this document, you learned how to connect CEF appliances to Azure Sentinel. To learn more about Azure Sentinel, see the following articles:
-- Learn how to [get visibility into your data, and potential threats](quickstart-get-visibility.md).
-- Get started [detecting threats with Azure Sentinel](tutorial-detect-threats.md).
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 

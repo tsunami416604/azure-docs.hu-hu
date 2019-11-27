@@ -52,7 +52,7 @@ Tekintse meg az adott nyelvű példa:
 
 * [2. xC#](#2x-c-input-examples)
 * [2. x JavaScript](#2x-javascript-input-examples)
-* [2.x Java](#2x-java-input-examples)
+* [2. x Java](#2x-java-input-examples)
 
 Ha további információra van szükség arról, hogy ez a kötés hogyan használható a Signaler ügyféloldali SDK által felhasználható "egyeztetés" függvény létrehozásához, tekintse meg a következő témakört: [Azure functions fejlesztés és konfiguráció cikk](../azure-signalr/signalr-concept-serverless-development-config.md) a Signaler szolgáltatással kapcsolatos fogalmak dokumentációjában.
 
@@ -193,7 +193,7 @@ Tekintse meg az adott nyelvű példa:
 
 * [2. xC#](#2x-c-send-message-output-examples)
 * [2. x JavaScript](#2x-javascript-send-message-output-examples)
-* [2.x Java](#2x-java-send-message-output-examples)
+* [2. x Java](#2x-java-send-message-output-examples)
 
 ### <a name="2x-c-send-message-output-examples"></a>2. x C# üzenet küldése kimeneti példák
 
@@ -384,7 +384,7 @@ A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba val
 
 A következő példa egy felhasználót egy csoportba helyez.
 
-*function.json*
+*function. JSON*
 
 ```json
 {
@@ -415,7 +415,7 @@ A következő példa egy felhasználót egy csoportba helyez.
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -431,7 +431,7 @@ module.exports = async function (context, req) {
 
 A következő példa egy felhasználót távolít el egy csoportból.
 
-*function.json*
+*function. JSON*
 
 ```json
 {
@@ -462,7 +462,7 @@ A következő példa egy felhasználót távolít el egy csoportból.
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -590,35 +590,35 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `SignalRConnectionInfo` attribútum.
+Az alábbi táblázat a *function. JSON* fájlban és a `SignalRConnectionInfo` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| Meg kell `signalRConnectionInfo`.|
-|**direction**|| Meg kell `in`.|
-|**name**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**type**|| `signalRConnectionInfo`értékre kell állítani.|
+|**direction**|| `in`értékre kell állítani.|
+|**név**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `SignalR` attribútum.
+Az alábbi táblázat a *function. JSON* fájlban és a `SignalR` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| Meg kell `signalR`.|
-|**direction**|| Meg kell `out`.|
-|**name**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**type**|| `signalR`értékre kell állítani.|
+|**direction**|| `out`értékre kell állítani.|
+|**név**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)

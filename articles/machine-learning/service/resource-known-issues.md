@@ -46,7 +46,7 @@ Az alábbi képen látható, hogyan: ![visulize](./media/resource-known-issues/a
 
 ## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
 
-**Hibaüzenet: "PyYAML" nem lehet eltávolítani.**
+**Hibaüzenet: nem távolítható el a (z) PyYAML**
 
 Az Azure Machine Learning SDK Pythonhoz készült: PyYAML egy telepített distutils projektet. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
 
@@ -74,9 +74,9 @@ Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő me
 
 Ha betartja `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, módosítsa az üzemelő példányban használt virtuális gépek SKU-jának méretét, amely több memóriával rendelkezik.
 
-## <a name="fpgas"></a>FPGA-k
+## <a name="fpgas"></a>FPGA-kban
 
-Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
+Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
@@ -112,7 +112,7 @@ Databricks és az Azure Machine Learning problémákat.
 
 ### <a name="failure-when-installing-packages"></a>Hiba a csomagok telepítésekor
 
-Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
+Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil`ütközést okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -178,7 +178,7 @@ A műveletek némelyike a munkaterület __tevékenységek__ területén jelenik 
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
-További információ a [erőforráskvóták](how-to-manage-quotas.md) az Azure Machine Learning használata során találkozhat.
+Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülhetnek fel a Azure Machine learning használatakor.
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 

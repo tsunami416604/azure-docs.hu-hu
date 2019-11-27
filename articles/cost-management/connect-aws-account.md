@@ -1,6 +1,6 @@
 ---
-title: Connect an Amazon Web Services account to Cloudyn in Azure | Microsoft Docs
-description: Connect an Amazon Web Services account to view cost and usage data in Cloudyn reports.
+title: Csatlakozás Amazon Web Services-fiók az Azure-ban a Cloudyn |} A Microsoft Docs
+description: Csatlakozás egy Amazon Web Services-fiók költség- és használati adatok megtekintéséhez a Cloudyn jelentésekben.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,118 +17,118 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219735"
 ---
-# <a name="connect-an-amazon-web-services-account"></a>Connect an Amazon Web Services account
+# <a name="connect-an-amazon-web-services-account"></a>Csatlakozás Amazon Web Services-fiók
 
-You have two options to connect your Amazon Web Services (AWS) account to Cloudyn. You can connect with an IAM role or with a read-only IAM user account. The IAM role is recommended because it allows you to delegate access with defined permissions to trusted entities. The IAM role doesn't require you to share long-term access keys. After you connect an AWS account to Cloudyn, cost and usage data is available in Cloudyn reports. This document guides you through both options.
+Az Amazon Web Services (AWS) fiók csatlakoztatásához a Cloudyn két lehetősége van. Az IAM-szerepkörrel, vagy egy csak olvasható IAM felhasználói fiókkal is lehet kapcsolódni. Az IAM-szerepkör ajánlott, mert lehetővé teszi, hogy meghatározott engedélyekkel a megbízható entitások hozzáférés delegálására. Az IAM-szerepkör nem igényel hosszú távú tárelérési kulcsok megoszthatja. AWS-fiók a Cloudynben a kapcsolódás után a költség- és használati adatokat a Cloudyn jelentésekben érhető el. Ez a dokumentum végigvezeti mindkét lehetőség.
 
-For more information about AWS IAM identities, see [Identities (Users, Groups, and Roles)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
+Az AWS IAM-identitásokkal kapcsolatos további információkért lásd: [identitások (felhasználók, csoportok és szerepkörök)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
 
-Also, you enable AWS detailed billing reports and store the information in an AWS simple storage service (S3) bucket. Detailed billing reports include billing charges with tag and resource information on an hourly basis. Storing the reports allows Cloudyn to retrieve them from your bucket and display the information in its reports.
-
-
-## <a name="aws-role-based-access"></a>AWS role-based access
-
-The following sections walk you through creating a read-only IAM role to provide access to Cloudyn.
-
-### <a name="get-your-cloudyn-account-external-id"></a>Get your Cloudyn account external ID
-
-The first step is to get the unique connection passphrase from the Cloudyn portal. It is used in AWS as the **External ID**.
-
-1. Open the Cloudyn portal from the Azure portal or navigate to  [https://azure.cloudyn.com](https://azure.cloudyn.com) and sign in.
-2. Click the cog symbol and then select **Cloud Accounts**.
-3. In Accounts Management, select the **AWS Accounts** tab and then click **Add new +** .
-4. In the **Add AWS Account** dialog, copy the **External ID** and save the value for AWS Role creation steps in the next section. The External ID is unique to your account. In the following image, the example External ID is _Contoso_ followed by a number. Your ID differs.  
-    ![External ID shown in the Add AWS Account box](./media/connect-aws-account/external-id.png)
-
-### <a name="add-aws-read-only-role-based-access"></a>Add AWS read-only role-based access
-
-1. Sign in to the AWS console at https://console.aws.amazon.com/iam/home and select **Roles**.
-2. Click **Create Role** and then select **Another AWS account**.
-3. In the **Account ID** box, paste `432263259397`. This Account ID is the Cloudyn data collector account assigned by AWS to the Cloudyn service. Use the exact Account ID shown.
-4. Next to **Options**, select **Require external ID**. Paste your unique value that copied previously from the **External ID** field in Cloudyn. Then click **Next: Permissions**.  
-    ![paste External ID from Cloudyn on the Create role page](./media/connect-aws-account/create-role01.png)
-5. Under **Attach permissions policies**, in the **Policy type** filter box search, type `ReadOnlyAccess`, select **ReadOnlyAccess**, then click **Next: Review**.  
-    ![select Read-only access in the list of policy names](./media/connect-aws-account/readonlyaccess.png)
-6. On the Review page, ensure your selections are correct and type a **Role name**. For example, *Azure-Cost-Mgt*. Enter a **Role description**. For example, _Role assignment for Cloudyn_, then click **Create role**.
-7. In the **Roles** list, click the role you created and copy the **Role ARN** value from the Summary page. Use the Role ARN (Amazon Resource Name) value later when you register your configuration in Cloudyn.  
-    ![copy the Role ARN from the Summary page](./media/connect-aws-account/role-arn.png)
-
-### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Configure AWS IAM role access in Cloudyn
-
-1. Open the Cloudyn portal from the Azure portal or navigate to  https://azure.cloudyn.com/ and sign in.
-2. Click the cog symbol and then select **Cloud Accounts**.
-3. In Accounts Management, select the **AWS Accounts** tab and then click **Add new +** .
-4. In **Account Name**, type a name for the account.
-5. Next to **Access Type**, select **IAM Role**.
-6. In the **Role ARN** field, paste the value you previously copied and then click **Save**.  
-    ![paste the Role ARN in the Add AWS Account box](./media/connect-aws-account/add-aws-account-box.png)
+Ezenkívül engedélyeznie az AWS részletes jelentések számlázási és a egy AWS simple storage service (S3) gyűjtőbe az információkat tárolja. Részletes számlázási jelentések címke- és erőforrás adatok óránként díjak tartalmazzák. A jelentések tárolására lehetővé teszi, hogy a Cloudyn kérheti le azokat, a gyűjtő és az információk megjelenítése a jelentésekben.
 
 
-Your AWS account appears in the list of accounts. The **Owner ID** listed matches your Role ARN value. Your **Account Status** should have a green check mark symbol indicating that Cloudyn can access your AWS account. Until you enable detailed AWS billing, your consolidation status appears as **Standalone**.
+## <a name="aws-role-based-access"></a>Az AWS-szerepkörön alapuló hozzáférés
 
-![AWS account status shown on the Accounts Management page](./media/connect-aws-account/aws-account-status01.png)
+A következő szakaszok végigvezetik egy csak olvasható IAM szerepkör számára hozzáférést biztosítsunk a Cloudyn.
 
-Cloudyn starts collecting the data and populating reports. Next, [enable detailed AWS billing](#enable-detailed-aws-billing).
+### <a name="get-your-cloudyn-account-external-id"></a>A Cloudyn-fiók külső azonosító beszerzése
+
+Az első lépés, hogy az egyedi kapcsolat hozzáférési kód lekérése a Cloudyn portálon. Az AWS-ben **külső azonosítóként**használatos.
+
+1. Nyissa meg a Cloudyn-portált a Azure Portal, vagy navigáljon a [https://azure.cloudyn.comra](https://azure.cloudyn.com) , és jelentkezzen be.
+2. Kattintson a fogaskerék jelre, majd válassza a **Cloud accounts (Felhőbeli fiókok**) lehetőséget.
+3. A fiókok kezelése lapon válassza az **AWS-fiókok** fület, majd kattintson az **új + hozzáadása**lehetőségre.
+4. Az **AWS-fiók hozzáadása** párbeszédpanelen másolja át a **külső azonosítót** , és mentse az AWS szerepkör-létrehozási lépések értékét a következő szakaszban. A külső azonosító egyediségét a fiókjához. A következő képen a külső azonosító a _contoso_ , amelyet egy szám követ. Az azonosító különbözik.  
+    ![külső azonosítót az AWS-fiók hozzáadása mezőbe](./media/connect-aws-account/external-id.png)
+
+### <a name="add-aws-read-only-role-based-access"></a>Az AWS csak olvasható szerepkör alapú hozzáférés hozzáadása
+
+1. Jelentkezzen be az AWS-konzolra https://console.aws.amazon.com/iam/home és válassza a **szerepkörök**lehetőséget.
+2. Kattintson a **szerepkör létrehozása** lehetőségre, majd válasszon **egy másik AWS-fiókot**.
+3. A **fiók azonosítója** mezőben illessze be a `432263259397`. A Fiókazonosító az AWS által a Cloudyn-szolgáltatáshoz rendelt Cloudyn gyűjtő fiók. Használhatja a pontos Fiókazonosító látható.
+4. A **Beállítások**mellett válassza a **külső azonosító megkövetelése**lehetőséget. Illessze be a korábban a Cloudyn **külső azonosító** mezőjéből másolt egyedi értéket. Ezután kattintson a **Tovább gombra: engedélyek**.  
+    ![illessze be a külső azonosítót a Cloudyn elemre a szerepkör létrehozása oldalon](./media/connect-aws-account/create-role01.png)
+5. Az **engedélyek csatolása**területen a **házirend típusának** szűrése mezőbe írja be a `ReadOnlyAccess`kifejezést, válassza a **ReadOnlyAccess**, majd a **Tovább: felülvizsgálat**lehetőséget.  
+    ![válassza a csak olvasási hozzáférés elemet a házirendek nevei listájában](./media/connect-aws-account/readonlyaccess.png)
+6. Az Áttekintés lapon győződjön meg arról, hogy a beállítások helyesek, és adjon meg egy **szerepkör-nevet**. Például: *Azure-Cost-kez*. Adja meg a **szerepkör leírását**. Például a _Cloudyn szerepkör-hozzárendelését_, majd kattintson a **szerepkör létrehozása**lehetőségre.
+7. A **szerepkörök** listájában kattintson a létrehozott szerepkörre, és másolja az **ARN (szerepkör** ) értéket az összefoglalás lapról. A szerepkör információ (Amazon erőforrás neve) értéke is regisztrálhatja a konfigurációt, a Cloudyn később használni.  
+    ![másolja az ARN szerepkört az összefoglalás lapról](./media/connect-aws-account/role-arn.png)
+
+### <a name="configure-aws-iam-role-access-in-cloudyn"></a>A Cloudyn AWS IAM szerepköralapú hozzáférés konfigurálása
+
+1. Nyissa meg a Cloudyn-portált a Azure Portal, vagy navigáljon a https://azure.cloudyn.com/ra, és jelentkezzen be.
+2. Kattintson a fogaskerék jelre, majd válassza a **Cloud accounts (Felhőbeli fiókok**) lehetőséget.
+3. A fiókok kezelése lapon válassza az **AWS-fiókok** fület, majd kattintson az **új + hozzáadása**lehetőségre.
+4. A **fiók neve**mezőben adja meg a fiók nevét.
+5. A **hozzáférés típusa**mellett válassza a **iam szerepkör**lehetőséget.
+6. Illessze be a korábban másolt értéket a **role ARN** mezőbe, majd kattintson a **Save (Mentés**) gombra.  
+    ![illessze be az ARN szerepkört az AWS-fiók hozzáadása mezőbe](./media/connect-aws-account/add-aws-account-box.png)
 
 
-## <a name="aws-user-based-access"></a>AWS user-based access
+AWS-fiók fiókok listája jelenik meg. A felsorolt **tulajdonosi azonosító** megfelel a szerepkör ARN értékének. A **fiók állapotának** zöld pipa szimbólummal kell rendelkeznie, amely azt jelzi, hogy a Cloudyn HOZZÁFÉRHET az AWS-fiókhoz. Amíg nem engedélyezi a részletes AWS-számlázást, a konszolidációs állapot **önállóként**jelenik meg.
 
-The following sections walk you through creating a read-only user to provide access to Cloudyn.
+![A fiókok kezelése lapon látható az AWS-fiók állapota](./media/connect-aws-account/aws-account-status01.png)
 
-### <a name="add-aws-read-only-user-based-access"></a>Add AWS read-only user-based access
+A Cloudyn elindítja az adatok gyűjtése és jelentések feltöltése. Ezután [engedélyezze a részletes AWS-számlázást](#enable-detailed-aws-billing).
 
-1. Sign in to the AWS console at https://console.aws.amazon.com/iam/home and select **Users**.
-2. Click **Add User**.
-3. In the **User name** field, type a user name.
-4. For **Access type**, select **Programmatic access** and click **Next: Permissions**.  
-    ![enter a user name on the Add user page](./media/connect-aws-account/add-user01.png)
-5. For permissions, select **Attach existing policies directly**.
-6. Under **Attach permissions policies**, in the **Policy type** filter box search, type `ReadOnlyAccess`, select **ReadOnlyAccess**, and then click **Next: Review**.  
-    ![select ReadOnlyAccess to set permissions for the user](./media/connect-aws-account/set-permission-for-user.png)
-7. On the Review page, ensure your selections are correct then click **Create user**.
-8. On the Complete page, your Access key ID and Secret access key are shown. You use this information to configure registration in Cloudyn.
-9. Click **Download .csv** and save the credentials.csv file to a secure location.  
-    ![click Download .csv to save the credentials](./media/connect-aws-account/download-csv.png)
 
-### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Configure AWS IAM user-based access in Cloudyn
+## <a name="aws-user-based-access"></a>AWS – felhasználó-alapú hozzáférés
+
+A következő szakaszok végigvezetik egy csak olvasható hozzáférést biztosítsunk a Cloudyn-felhasználó létrehozása.
+
+### <a name="add-aws-read-only-user-based-access"></a>Az AWS írásvédett felhasználó-alapú hozzáférés hozzáadása
+
+1. Jelentkezzen be az AWS-konzolra https://console.aws.amazon.com/iam/home és válassza a **felhasználók**lehetőséget.
+2. Kattintson a **felhasználó hozzáadása**elemre.
+3. A **Felhasználónév** mezőbe írja be a felhasználónevet.
+4. A **hozzáférés típusa**beállításnál válassza a **programozott hozzáférés** lehetőséget, majd kattintson a **Tovább gombra: engedélyek**.  
+    ![adjon meg egy felhasználónevet a felhasználó hozzáadása lapon](./media/connect-aws-account/add-user01.png)
+5. Az engedélyek beállításnál válassza a **meglévő szabályzatok közvetlen csatolása**lehetőséget.
+6. Az **engedélyek csatolása**területen a **házirend típusának** szűrése mezőbe írja be a `ReadOnlyAccess`kifejezést, válassza a **ReadOnlyAccess**lehetőséget, majd kattintson a **Tovább gombra: Áttekintés**.  
+    ![válassza a ReadOnlyAccess lehetőséget a felhasználó engedélyeinek beállításához](./media/connect-aws-account/set-permission-for-user.png)
+7. Az Áttekintés lapon győződjön meg arról, hogy helyesek a megfelelő beállítások, majd kattintson a **felhasználó létrehozása**elemre.
+8. A teljes lapon jelenik meg a hozzáférési kulcs azonosítója és kulcsa hozzáférési kulccsal. Ezen információk használatával a Cloudyn regisztrációs konfigurálása.
+9. Kattintson a **download. csv** fájlra, és mentse a hitelesítő adatokat tartalmazó. csv fájlt egy biztonságos helyre.  
+    ![a hitelesítő adatok mentéséhez kattintson a Download. csv fájlra](./media/connect-aws-account/download-csv.png)
+
+### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>A Cloudyn AWS IAM felhasználóalapú hozzáférés konfigurálása
 
 1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com/ webhelyre, és jelentkezzen be.
-2. Click the cog symbol and then select **Cloud Accounts**.
-3. In Accounts Management, select the **AWS Accounts** tab and then click **Add new +** .
-4. For **Account Name**, type an account name.
-5. Next to **Access Type**, select **IAM User**.
-6. In **Access Key**, paste the **Access key ID** value from the credentials.csv file.
-7. In **Secret Key**, paste the **Secret access key** value from the credentials.csv file and then click **Save**.  
+2. Kattintson a fogaskerék jelre, majd válassza a **Cloud accounts (Felhőbeli fiókok**) lehetőséget.
+3. A fiókok kezelése lapon válassza az **AWS-fiókok** fület, majd kattintson az **új + hozzáadása**lehetőségre.
+4. A **fiók neve**mezőbe írja be a fiók nevét.
+5. A **hozzáférés típusa**mellett válassza a **iam felhasználó**elemet.
+6. A **hozzáférési kulcsban**illessze be a **hozzáférési kulcs azonosítójának** értékét a hitelesítő adatok. csv fájlból.
+7. A **titkos kulcs**mezőben illessze be a **titkos elérési kulcs** értékét a hitelesítő adatok. csv fájlból, majd kattintson a **Mentés**gombra.  
 
-Your AWS account appears in the list of accounts. Your **Account Status** should have a green check mark symbol.
+AWS-fiók fiókok listája jelenik meg. A **fiók állapotának** zöld pipa jellel kell rendelkeznie.
 
-Cloudyn starts collecting the data and populating reports. Next, [enable detailed AWS billing](#enable-detailed-aws-billing).
+A Cloudyn elindítja az adatok gyűjtése és jelentések feltöltése. Ezután [engedélyezze a részletes AWS-számlázást](#enable-detailed-aws-billing).
 
-## <a name="enable-detailed-aws-billing"></a>Enable detailed AWS billing
+## <a name="enable-detailed-aws-billing"></a>Részletes AWS Számlázás engedélyezése
 
-Use the following steps to get your AWS Role ARN. You use the Role ARN to grant read permissions to a billing bucket.
+Az alábbi lépések segítségével az AWS-szerepkör információ beolvasása. A szerepkör információ segítségével egy számlázási gyűjtőhöz olvasási engedélyeket ad.
 
-1. Sign in to the AWS console at https://console.aws.amazon.com and select **Services**.
-2. In the Service Search box type *IAM*, and select that option.
-3. Select **Roles** from the left-hand menu.
-4. In the list of Roles, select the role that you created for Cloudyn access.
-5. On the Roles Summary page, click to copy the **Role ARN**. Keep the Role ARN handy for later steps.
+1. Jelentkezzen be az AWS-konzolra https://console.aws.amazon.com és válassza a **szolgáltatások**lehetőséget.
+2. A szolgáltatás keresési mezőjében írja be a következőt: *iam*, és válassza ezt a lehetőséget.
+3. Válassza ki a **szerepkörök** elemet a bal oldali menüben.
+4. A szerepkörök listájában válassza ki a Cloudyn-hozzáférést létrehozott szerepkör.
+5. A Szerepkörök összegzése lapon kattintson ide az **ARN szerepkör**másolásához. Tartsa meg a szerepkör információ hasznos a későbbi lépésekben.
 
-### <a name="create-an-s3-bucket"></a>Create an S3 bucket
+### <a name="create-an-s3-bucket"></a>Hozzon létre egy S3 gyűjtő
 
-You create an S3 bucket to store detailed billing information.
+Létrehozhat egy S3 gyűjtőt részletes számlázási információk tárolására.
 
-1. Sign in to the AWS console at https://console.aws.amazon.com and select **Services**.
-2. In the Service Search box type *S3*, and select **S3**.
-3. On the Amazon S3 page, click **Create bucket**.
-4. In the Create bucket wizard, choose a Bucket name and Region and then click **Next**.  
-    ![example information one the Create bucket page](./media/connect-aws-account/create-bucket.png)
-5. On the **Set properties** page, keep the default values, and then click **Next**.
-6. On the Review page, click **Create bucket**. Your bucket list is displayed.
-7. Click the bucket that you created and select the **Permissions** tab and then select **Bucket Policy**. The Bucket policy editor opens.
-8. Copy the following JSON example and paste it in the Bucket policy editor.
-   - Replace `<BillingBucketName>` with the name of your S3 bucket.
-   - Replace `<ReadOnlyUserOrRole>` with the Role or User ARN that you had previously copied.
+1. Jelentkezzen be az AWS-konzolra https://console.aws.amazon.com és válassza a **szolgáltatások**lehetőséget.
+2. A szolgáltatás keresési mezőjébe írja be az *S3*kifejezést, majd válassza az **S3**elemet.
+3. Az Amazon S3 lapon kattintson a **create Bucket (gyűjtő létrehozása**) elemre.
+4. A gyűjtő létrehozása varázslóban válassza ki a gyűjtő nevét és a régiót, majd kattintson a **tovább**gombra.  
+    ![példa a Create Bucket (gyűjtő létrehozása) lapra](./media/connect-aws-account/create-bucket.png)
+5. A **készlet tulajdonságai** lapon tartsa meg az alapértelmezett értékeket, majd kattintson a **tovább**gombra.
+6. Az Áttekintés lapon kattintson a **gyűjtő létrehozása**elemre. A gyűjtő lista jelenik meg.
+7. Kattintson a létrehozott gyűjtőre, és válassza az **engedélyek** fület, majd válassza a **gyűjtő házirend**elemet. A gyűjtő Helyicsoportházirend-szerkesztő megnyitása.
+8. Másolja az alábbi példa JSON, és illessze be a gyűjtő Helyicsoportházirend-szerkesztő.
+   - Cserélje le a `<BillingBucketName>`t az S3 gyűjtő nevére.
+   - Cserélje le a `<ReadOnlyUserOrRole>`t arra a szerepkörre vagy felhasználói ARN-ra, amelyet korábban már másolt.
 
    ```json
    {
@@ -173,24 +173,24 @@ You create an S3 bucket to store detailed billing information.
    ```
 
 9. Kattintson a **Save** (Mentés) gombra.  
-    ![click Save in the Bucket policy editor](./media/connect-aws-account/bucket-policy-editor.png)
+    ![kattintson a Mentés gombra a gyűjtő házirend-szerkesztőjében](./media/connect-aws-account/bucket-policy-editor.png)
 
 
-### <a name="enable-aws-billing-reports"></a>Enable AWS billing reports
+### <a name="enable-aws-billing-reports"></a>Az AWS számlázási jelentések engedélyezése
 
-After you create and configure the S3 bucket, navigate to [Billing Preferences](https://console.aws.amazon.com/billing/home?#/preference) in the AWS console.
+Az S3-gyűjtő létrehozása és konfigurálása után navigáljon a [számlázási beállítások](https://console.aws.amazon.com/billing/home?#/preference) pontra az AWS-konzolon.
 
-1. On the Preferences page, select **Receive Billing Reports**.
-2. Under **Receive Billing Reports**, enter the name of the bucket that you created and then click **Verify**.  
-3. Select all four report granularity options and then click **Save preferences**.  
-    ![select granularity to enable reports](./media/connect-aws-account/enable-reports.png)
+1. A beállítások lapon válassza a **Számlázási jelentések fogadása**lehetőséget.
+2. A **Számlázási jelentések fogadása**területen adja meg a létrehozott gyűjtő nevét, majd kattintson az **ellenőrzés**gombra.  
+3. Válassza ki mind a négy jelentés részletességi beállításait, majd kattintson a **Beállítások mentése**lehetőségre.  
+    ![a jelentések engedélyezéséhez válassza a részletesség lehetőséget](./media/connect-aws-account/enable-reports.png)
 
-Cloudyn retrieves detailed billing information from your S3 bucket and populates reports after detailed billing is enabled. It can take up to 24 hours until detailed billing data appears in the Cloudyn console. When detailed billing data is available, your account consolidation status appears as **Consolidated**. Account status appears as **Completed**.
+A Cloudyn részletes számlázási adatait kérdezi le az S3 gyűjtőt, és feltölti a jelentések, részletes számlázási engedélyezése után. Mindaddig, amíg a Cloudyn-konzolon megjelenik a részletes számlázási adatok 24 órát is igénybe vehet. Ha részletes számlázási információk állnak rendelkezésre, a fiók konszolidációs állapota **összevonva**jelenik meg. A fiók állapota **befejezettként**jelenik meg.
 
-![consolidation status shown on the AWS Accounts tab](./media/connect-aws-account/consolidated-status.png)
+![az AWS-fiókok lapon látható konszolidálási állapota](./media/connect-aws-account/consolidated-status.png)
 
-Some of the optimization reports may require a few days of data to get an adequate data sample size for accurate recommendations.
+Néhány nap adatait egy megfelelő minta adatméret pontos javaslatokat beolvasni az optimalizálási jelentések némelyike lehet szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- To learn more about Cloudyn, continue to the [Review usage and costs](tutorial-review-usage.md) tutorial for Cloudyn.
+- Ha többet szeretne megtudni a Cloudyn-ről, folytassa a használati és Cloudyn kapcsolatos oktatóanyag [áttekintésével](tutorial-review-usage.md) .

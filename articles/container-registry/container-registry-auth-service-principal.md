@@ -1,6 +1,6 @@
 ---
-title: Authenticate with service principal
-description: Provide access to images in your private container registry by using an Azure Active Directory service principal.
+title: Hitelesítés az egyszerű szolgáltatással
+description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
@@ -10,96 +10,96 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455410"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry authentication with service principals
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
 
-You can use an Azure Active Directory (Azure AD) service principal to provide container image `docker push` and `pull` access to your container registry. By using a service principal, you can provide access to "headless" services and applications.
+Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával biztosíthatja a tárolók rendszerképét `docker push` és `pull` hozzáférést a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
 
 ## <a name="what-is-a-service-principal"></a>Mi az a szolgáltatásnév?
 
-Azure AD *service principals* provide access to Azure resources within your subscription. You can think of a service principal as a user identity for a service, where "service" is any application, service, or platform that needs to access the resources. You can configure a service principal with access rights scoped only to those resources you specify. Then, configure your application or service to use the service principal's credentials to access those resources.
+Az Azure AD- *szolgáltatások* hozzáférést biztosítanak az előfizetésében található Azure-erőforrásokhoz. Azt is megteheti, hogy egy egyszerű szolgáltatás felhasználói identitása egy szolgáltatáshoz, ahol a "szolgáltatás" bármely olyan alkalmazás, szolgáltatás vagy platform, amelynek hozzá kell férnie az erőforrásokhoz. Az egyszerű szolgáltatásnevet csak a megadott erőforrásokra vonatkozó hozzáférési jogosultságokkal konfigurálhatja. Ezután konfigurálja az alkalmazást vagy szolgáltatást úgy, hogy az egyszerű szolgáltatásnév hitelesítő adatait használja az erőforrásokhoz való hozzáféréshez.
 
-In the context of Azure Container Registry, you can create an Azure AD service principal with pull, push and pull, or other permissions to your private registry in Azure. For a complete list, see [Azure Container Registry roles and permissions](container-registry-roles.md).
+Azure Container Registry kontextusában létrehozhat egy Azure AD-szolgáltatást, amely lekéréses, leküldéses és lekéréses, illetve egyéb engedélyekkel rendelkezik az Azure-beli privát beállításjegyzékhez. A teljes listát itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).
 
-## <a name="why-use-a-service-principal"></a>Why use a service principal?
+## <a name="why-use-a-service-principal"></a>Miért érdemes egyszerű szolgáltatást használni?
 
-By using an Azure AD service principal, you can provide scoped access to your private container registry. Create different service principals for each of your applications or services, each with tailored access rights to your registry. And, because you can avoid sharing credentials between services and applications, you can rotate credentials or revoke access for only the service principal (and thus the application) you choose.
+Az Azure AD egyszerű szolgáltatásnév használatával hatókörön belüli hozzáférést biztosíthat a saját tároló-beállításjegyzékhez. Hozzon létre különböző egyszerű szolgáltatásokat az egyes alkalmazásokhoz vagy szolgáltatásokhoz, amelyek mindegyike testreszabott hozzáférési jogokkal rendelkezik a beállításjegyzékhez. Továbbá, mivel elkerülheti a hitelesítő adatok megosztását a szolgáltatások és az alkalmazások között, elforgathatja a hitelesítő adatokat, vagy visszavonhatja a hozzáférést csak az egyszerű szolgáltatásnév (és így az alkalmazás) közül.
 
-For example, configure your web application to use a service principal that provides it with image `pull` access only, while your build system uses a service principal that provides it with both `push` and `pull` access. If development of your application changes hands, you can rotate its service principal credentials without affecting the build system.
+Például úgy konfigurálhatja a webalkalmazást, hogy olyan egyszerű szolgáltatást használjon, amely csak a rendszerképeket `pull` hozzáférést biztosítja, míg a Build rendszer egy egyszerű szolgáltatásnevet használ, amely a `push` és a `pull` hozzáférést is biztosítja. Ha megváltoztatja az alkalmazás fejlesztését, elforgathatja a szolgáltatás egyszerű hitelesítő adatait anélkül, hogy ez hatással lenne a Build rendszerre.
 
-## <a name="when-to-use-a-service-principal"></a>When to use a service principal
+## <a name="when-to-use-a-service-principal"></a>Mikor kell szolgáltatásnevet használni
 
-You should use a service principal to provide registry access in **headless scenarios**. That is, any application, service, or script that must push or pull container images in an automated or otherwise unattended manner. Példa:
+Egy egyszerű szolgáltatásnév használatával kell megadni a beállításjegyzék-hozzáférést a **fej nélküli forgatókönyvekben**. Ez azt jelenti, hogy minden olyan alkalmazás, szolgáltatás vagy parancsfájl, amely automatizált vagy más módon felügyelet nélkül leküld vagy lehívhatja a tárolók lemezképeit. Például:
 
-  * *Pull*: Deploy containers from a registry to orchestration systems including Kubernetes, DC/OS, and Docker Swarm. You can also pull from container registries to related Azure services such as [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/), and others.
+  * *Pull*: tárolók üzembe helyezése a beállításjegyzékből a Kubernetes, a DC/os és a Docker Swarm rendszerbe. Lekérheti a tároló-beállításjegyzékből a kapcsolódó Azure-szolgáltatásokat, például az [Azure Kubernetes Service (ak)](../aks/cluster-container-registry-integration.md), a [Azure Container Instances](container-registry-auth-aci.md), a [app Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/)és más szolgáltatásait is.
 
-  * *Push*: Build container images and push them to a registry using continuous integration and deployment solutions like Azure Pipelines or Jenkins.
+  * *Leküldés*: tároló-lemezképek létrehozása és továbbítása egy beállításjegyzékbe folyamatos integrációs és üzembe helyezési megoldások, például az Azure-folyamatok vagy a Jenkins használatával.
 
-For individual access to a registry, such as when you manually pull a container image to your development workstation, we recommend using your own [Azure AD identity](container-registry-authentication.md#individual-login-with-azure-ad) instead for registry access (for example, with [az acr login][az-acr-login]).
+A beállításjegyzékhez való egyéni hozzáféréshez, például amikor manuálisan húz le egy tároló-rendszerképet a fejlesztői munkaállomásra, javasoljuk, hogy a beállításjegyzék-hozzáférés helyett saját [Azure ad-identitást](container-registry-authentication.md#individual-login-with-azure-ad) használjon (például az [az ACR login][az-acr-login]használatával).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ### <a name="sample-scripts"></a>Mintaszkriptek
 
-You can find the preceding sample scripts for Azure CLI on GitHub, as well as versions for Azure PowerShell:
+Az előző minta parancsfájlokat az Azure CLI-hez, a GitHubon, valamint a Azure PowerShell verzióihoz is megtalálja:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="authenticate-with-the-service-principal"></a>Authenticate with the service principal
+## <a name="authenticate-with-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatással
 
-Once you have a service principal that you've granted access to your container registry, you can configure its credentials for access to "headless" services and applications, or enter them using the `docker login` command. Használja a következő értékeket:
+Ha már rendelkezik egy olyan egyszerű szolgáltatással, amely hozzáférést kapott a tároló-beállításjegyzékhez, a hitelesítő adatait megadhatja a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, vagy megadhatja azokat a `docker login` paranccsal. Használja a következő értékeket:
 
-* **User name** - service principal application ID (also called *client ID*)
-* **Password** - service principal password (also called *client secret*)
+* **Felhasználónév** – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
+* **Jelszó** – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
 
-Each value is a GUID of the form `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Minden érték a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`űrlap GUID azonosítója. 
 
 > [!TIP]
-> You can regenerate the password of a service principal by running the [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) command.
+> Egy egyszerű szolgáltatásnév jelszavát az az [ad SP reset-hitelesítőadats](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancs futtatásával lehet újból előállítani.
 >
 
-### <a name="use-credentials-with-azure-services"></a>Use credentials with Azure services
+### <a name="use-credentials-with-azure-services"></a>Hitelesítő adatok használata az Azure-szolgáltatásokkal
 
-You can use service principal credentials from any Azure service that authenticates with an Azure container registry.  Use service principal credentials in place of the registry's admin credentials for a variety of scenarios.
+A szolgáltatás egyszerű hitelesítő adatait bármely olyan Azure-szolgáltatáshoz használhatja, amely egy Azure Container registryben van hitelesítve.  A beállításjegyzék rendszergazdai hitelesítő adatai helyett használja a szolgáltatás egyszerű hitelesítő adatait a különböző forgatókönyvek esetében.
 
-For example, use the credentials to pull an image from an Azure container registry to [Azure Container Instances](container-registry-auth-aci.md).
+A hitelesítő adatok használatával például lekérheti a rendszerképet egy Azure Container Registry-ből a [Azure Container Instancesba](container-registry-auth-aci.md).
 
-### <a name="use-with-docker-login"></a>Use with docker login
+### <a name="use-with-docker-login"></a>Használat a Docker-bejelentkezéssel
 
-You can run `docker login` using a service principal. In the following example, the service principal application ID is passed in the environment variable `$SP_APP_ID`, and the password in the variable `$SP_PASSWD`. For best practices to manage Docker credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference.
+`docker login` az egyszerű szolgáltatásnév használatával futtatható. A következő példában az egyszerű szolgáltatásnév alkalmazásának azonosítója a `$SP_APP_ID`környezeti változóban, a `$SP_PASSWD`változóban pedig a jelszó. A Docker hitelesítő adatainak kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
 ```bash
 # Log in to Docker with service principal credentials
 docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Once logged in, Docker caches the credentials.
+A bejelentkezést követően a Docker gyorsítótárazza a hitelesítő adatokat.
 
-### <a name="use-with-certificate"></a>Use with certificate
+### <a name="use-with-certificate"></a>Használat tanúsítvánnyal
 
-If you've added a certificate to your service principal, you can sign into the Azure CLI with certificate-based authentication, and then use the [az acr login][az-acr-login] command to access a registry. Using a certificate as a secret instead of a password provides additional security when you use the CLI. 
+Ha hozzáadta a tanúsítványt az egyszerű szolgáltatáshoz, bejelentkezhet az Azure CLI-be tanúsítványalapú hitelesítéssel, majd az az [ACR login][az-acr-login] paranccsal elérheti a beállításjegyzéket. Ha a tanúsítványokat jelszó helyett titkosként használja, a parancssori felület használata további biztonságot nyújt. 
 
-A self-signed certificate can be created when you [create a service principal](/cli/azure/create-an-azure-service-principal-azure-cli). Or, add one or more certificates to an existing service principal. For example, if you use one of the scripts in this article to create or update a service principal with rights to pull or push images from a registry, add a certificate using the [az ad sp credential reset][az-ad-sp-credential-reset] command.
+Egy önaláírt tanúsítvány hozható létre [egy egyszerű szolgáltatásnév létrehozásakor](/cli/azure/create-an-azure-service-principal-azure-cli). Vagy adjon hozzá egy vagy több tanúsítványt egy meglévő egyszerű szolgáltatáshoz. Ha például a cikkben szereplő parancsfájlok egyikét használja egy olyan egyszerű szolgáltatásnév létrehozásához vagy frissítéséhez, amely jogosult a rendszerképek beállításjegyzékből való lekérésére vagy leküldésére, adjon hozzá egy tanúsítványt az az [ad SP hitelesítőadat-visszaállítási][az-ad-sp-credential-reset] parancs használatával.
 
-To use the service principal with certificate to [sign into the Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), the certificate must be in PEM format and include the private key. If your certificate isn't in the required format, use a tool such as `openssl` to convert it. When you run [az login][az-login] to sign into the CLI using the service principal, also provide the service principal's application ID and the Active Directory tenant ID. The following example shows these values as environment variables:
+Ahhoz, hogy az egyszerű szolgáltatásnév használatával [bejelentkezzen az Azure CLI-be](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), a tanúsítványnak PEM formátumban kell lennie, és tartalmaznia kell a titkos kulcsot. Ha a tanúsítvány nem a szükséges formátumban van, az átalakításhoz használjon egy eszközt, például `openssl`. Amikor az az [login][az-login] paranccsal jelentkezik be a CLI-be az egyszerű szolgáltatásnév használatával, adja meg a szolgáltatásnév alkalmazás-azonosítóját és a Active Directory bérlő azonosítóját is. A következő példa környezeti változókként jeleníti meg ezeket az értékeket:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
 ```
 
-Then, run [az acr login][az-acr-login] to authenticate with the registry:
+Ezután futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékben való hitelesítéshez:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-The CLI uses the token created when you ran `az login` to authenticate your session with the registry.
+A CLI a `az login` futtatásakor létrehozott jogkivonat használatával hitelesíti a munkamenetet a beállításjegyzékben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* See the [authentication overview](container-registry-authentication.md) for other scenarios to authenticate with an Azure container registry.
+* Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos egyéb forgatókönyvek [hitelesítésének áttekintését](container-registry-authentication.md) itt tekintheti meg.
 
-* For an example of using an Azure key vault to store and retrieve service principal credentials for a container registry, see the tutorial to [build and deploy a container image using ACR Tasks](container-registry-tutorial-quick-task.md).
+* Az Azure Key Vault egy tároló-beállításjegyzékhez tartozó egyszerű hitelesítő adatok tárolására és lekérésére példaként tekintse meg az oktatóanyagot, amely [egy tároló lemezképének összeépítésére és üzembe helyezésére használható az ACR-feladatokkal](container-registry-tutorial-quick-task.md).
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Python - Bing News Search'
+title: 'Rövid útmutató: Hírek keresése a Pythonhoz készült SDK használatával – Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Python, and process the response.
+description: Ezzel a rövid útmutatóval híreket kereshet a Pythonhoz készült Bing News Search SDK-val, és feldolgozhatja a választ.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,21 +18,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379052"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Quickstart: Perform a news search with the Bing News Search SDK for Python
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Gyors útmutató: Hírek keresése a Pythonhoz készült Bing News Search SDK-val
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Python. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
+Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Pythonhoz készült Bing News Search SDK-val. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python](https://www.python.org/) 2.x or 3.x
+* [Python](https://www.python.org/) 2. x vagy 3. x
 
-It is recommended to use a [virtual environment](https://docs.python.org/3/tutorial/venv.html) for your python development. You can install and initialize the virtual environment with the [venv module](https://pypi.python.org/pypi/virtualenv). You must install a virtualenv for Python 2.7. You can create a virtual environment with:
+Javasoljuk, hogy használjon egy [virtuális környezetet](https://docs.python.org/3/tutorial/venv.html) a Python-fejlesztéshez. A virtuális környezetet a [venv modul](https://pypi.python.org/pypi/virtualenv)használatával telepítheti és inicializálhatja. Telepítenie kell egy virtualenv a Python 2,7-hez. Létrehozhat egy virtuális környezetet a használatával:
 
 ```console
 python -m venv mytestenv
 ```
 
-You can install the Bing News Search SDK dependencies with this command:
+A Bing News Search SDK-függőségek a következő paranccsal telepíthetők:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -42,7 +42,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Create a new Python file in your favorite IDE or editor, and import the following libraries. Create a variable for your subscription key, and your search term.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat. Hozzon létre egy változót az előfizetési kulcshoz és a keresett kifejezéshez.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchAPI
@@ -51,7 +51,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     search_term = "Quantum Computing"
     ```
 
-## <a name="initialize-the-client-and-send-a-request"></a>Initialize the client and send a request
+## <a name="initialize-the-client-and-send-a-request"></a>Az ügyfél inicializálása és kérelem küldése
 
 1. Hozza létre a `CognitiveServicesCredentials` egy példányát. Ezután példányosítsa az ügyfelet:
     
@@ -59,15 +59,15 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Send a search query to the News Search API, store the response.
+2. Keresési lekérdezés küldése a News Search API-nak, tárolja a választ.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
     ```
 
-## <a name="parse-the-response"></a>Parse the response
+## <a name="parse-the-response"></a>A válasz elemzése
 
-If any search results are found, print the first webpage result:
+Ha keresési eredmények találhatók, nyomtassa ki az első weblap eredményét:
 
 ```python
 if news_result.value:
@@ -84,7 +84,7 @@ else:
     print("Didn't see any news result data..")
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

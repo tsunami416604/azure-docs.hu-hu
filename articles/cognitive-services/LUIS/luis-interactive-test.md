@@ -1,7 +1,7 @@
 ---
-title: Test app in LUIS portal
+title: A LUIS-portál alkalmazást
 titleSuffix: Azure Cognitive Services
-description: Use Language Understanding (LUIS) to continuously work on your application to refine it and improve its language understanding.
+description: Folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,9 +18,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221742"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Test your LUIS app in the LUIS portal
+# <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 
-[Testing](luis-concept-test.md) an app is an iterative process. After training your LUIS app, test it with sample utterances to see if the intents and entities are recognized correctly. If they're not, make updates to the LUIS app, train, and test again. 
+Az alkalmazások [tesztelése](luis-concept-test.md) egy iterációs folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,77 +30,77 @@ ms.locfileid: "74221742"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Train before testing
+## <a name="train-before-testing"></a>Tesztelés előtti tanítás
 
-In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
+Ha tesztelni szeretné az aktív alkalmazás legújabb verzióját, a tesztelés előtt válassza a **betanítás** lehetőséget a felső menüben. 
 
-## <a name="test-an-utterance"></a>Test an utterance
+## <a name="test-an-utterance"></a>Tesztelje az utterance (kifejezés)
 
-The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
+A teszt kimondása nem egyezhet meg pontosan az alkalmazás egyik hosszúságú kimondott szöveg sem. A teszt kiírásának tartalmaznia kell a felhasználó számára várt szót, kifejezés hosszúságát és az entitások használatát. 
 
-1. Access your app by selecting its name on the **My Apps** page. 
+1. Az alkalmazás eléréséhez válassza ki a saját **alkalmazások** lapján a saját nevét. 
 
-1. To access the **Test** slide-out panel, select **Test** in your application's top panel.
+1. A **teszt** kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén.
 
     > [!div class="mx-imgBorder"]
-    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
+    > ![a Train & test app (alkalmazás tesztelése) lapot](./media/luis-how-to-interactive-test/test.png)
 
-1. Enter an utterance in the text box and select Enter. You can type as many test utterances as you want in the **Test**, but only one utterance at a time.
+1. Írja be az utterance (kifejezés) a szövegmezőbe, és nyomja le az Enter. Annyi teszt hosszúságú kimondott szöveg is beírhat, amennyit csak szeretne a **tesztben**, de egyszerre csak egy Kimondás.
 
-1. The utterance, its top intent, and score are added to the list of utterances under the text box.
+1. A szövegmező alatt utterances listáját az utterance (kifejezés), a felső szándékot és pontszám kerülnek.
 
-    ![Interactive testing identifies the wrong intent](./media/luis-how-to-interactive-test/test-weather-1.png)
+    ![Interaktív vizsgálati azonosítja a nem megfelelő leképezés](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Inspect score
+## <a name="inspect-score"></a>Vizsgálja meg a pontszám
 
-You inspect details of the test result in the **Inspect** panel. 
+A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg. 
  
-1. With the **Test** slide-out panel open, select **Inspect** for an utterance you want to compare. 
+1. Nyissa meg a test slide (tesztelés) panelt, és válassza a **vizsgálat** lehetőséget az összehasonlítani kívánt kifejezés kiválasztásához. 
 
-    ![Select Inspect button to see more details about the test results](./media/luis-how-to-interactive-test/inspect.png)
+    ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
 
-1. The **Inspection** panel appears. The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.
+1. Megjelenik a **vizsgálat** panel. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 
-    ![The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Correct top scoring intent
+## <a name="correct-top-scoring-intent"></a>Leképezés pontozási megfelelő felső
 
-1. If the top scoring intent is incorrect, select the **Edit** button.
+1. Ha a felső pontozási szándék helytelen, kattintson a **Szerkesztés** gombra.
 
-1.  In the drop-down list, select the correct intent for the utterance.
+1.  A legördülő listában válassza ki a megfelelő leképezésének az utterance (kifejezés).
 
-    ![Select correct intent](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Válassza ki a megfelelő leképezés](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>View sentiment results
+## <a name="view-sentiment-results"></a>Vélemények eredmények megtekintése
 
-If **Sentiment analysis** is configured on the **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** page, the test results include the sentiment found in the utterance. 
+Ha a találatok elemzése a **[közzétételi](luis-how-to-publish-app.md#enable-sentiment-analysis)** oldalon van konfigurálva, a teszt eredményei közé tartozik a teljes **kiértékelésben** talált hangulat. 
 
-![Image of Test pane with sentiment analysis](./media/luis-how-to-interactive-test/sentiment.png)
+![Hangulatelemzés a teszt panel képe](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Correct matched pattern's intent
+## <a name="correct-matched-patterns-intent"></a>Javítsa ki az egyeztetett minta célja
 
-If you are using [Patterns](luis-concept-patterns.md) and the utterance matched a pattern, but the wrong intent was predicted, select the **Edit** link by the pattern, then select the correct intent.
+Ha [mintázatokat](luis-concept-patterns.md) használ, és a kihagyás egy mintázatnak felel meg, de a rossz szándékot jósolta meg, válassza a minta alapján a **Szerkesztés** hivatkozást, majd válassza ki a megfelelő szándékot.
 
-## <a name="compare-with-published-version"></a>Compare with published version
+## <a name="compare-with-published-version"></a>Hasonlítsa össze a közzétett verzióra
 
-You can test the active version of your app with the published [endpoint](luis-glossary.md#endpoint) version. In the **Inspect** panel, select **Compare with published**. Any testing against the published model is deducted from your Azure subscription quota balance. 
+Tesztelheti az alkalmazás aktív verzióját a közzétett [végpont](luis-glossary.md#endpoint) verziószámával. Az **ellenőrzés** panelen válassza a **összehasonlítás a közzétetttel**lehetőséget. Bármely a közzétett modell tesztelése az Azure-előfizetés kvótája egyenleg vonni. 
 
-![Compare with published](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Hasonlítsa össze a közzétett](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>View endpoint JSON in test panel
-You can view the endpoint JSON returned for the comparison by selecting the **Show JSON view**.
+## <a name="view-endpoint-json-in-test-panel"></a>Teszt panel végpont JSON megtekintése
+Az összehasonlításhoz a **JSON-nézet megjelenítése**lehetőség kiválasztásával megtekintheti a végpont által VISSZAadott JSON-t.
 
-![Published JSON response](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Közzétett JSON-válasz](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>Additional settings in test panel
+## <a name="additional-settings-in-test-panel"></a>Teszt panel további beállítások
 
-### <a name="luis-endpoint"></a>LUIS endpoint
+### <a name="luis-endpoint"></a>A LUIS-végpont
 
-If you have several LUIS endpoints, use the **Additional Settings** link on the Test's Published pane to change the endpoint used for testing. If you are not sure which endpoint to use, select the default **Starter_Key**. 
+Ha több LUIS-végponttal rendelkezik, a teszt közzétett paneljén a **További beállítások** hivatkozásra kattintva módosíthatja a teszteléshez használt végpontot. Ha nem biztos abban, hogy melyik végpontot szeretné használni, válassza ki az alapértelmezett **Starter_Key**. 
 
 > [!div class="mx-imgBorder"]
-> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
+> ![a teszt panel további beállítások hivatkozását kiemelve](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 <!--
 ###  View Bing Spell Check corrections in test panel
@@ -136,11 +136,11 @@ Use the following procedure to include the [Bing Spell Check v7](https://azure.m
 -->
 
 ## <a name="batch-testing"></a>Kötegelt tesztelés
-See batch testing [concepts](luis-concept-batch-test.md) and learn [how to](luis-how-to-batch-test.md) test a batch of utterances.
+Tekintse meg a Batch-tesztelési [fogalmakat](luis-concept-batch-test.md) , és Ismerje meg, [Hogyan](luis-how-to-batch-test.md) tesztelheti a Batch of hosszúságú kimondott szöveg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-If testing indicates that your LUIS app doesn't recognize the correct intents and entities, you can work to improve your LUIS app's accuracy by labeling more utterances or adding features. 
+Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, további utterances címkézés vagy szolgáltatások hozzáadására a LUIS-alkalmazás pontosságának növelése érdekében használhatja. 
 
-* [Label suggested utterances with LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Use features to improve your LUIS app's performance](luis-how-to-add-features.md) 
+* [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md) 
+* [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md) 

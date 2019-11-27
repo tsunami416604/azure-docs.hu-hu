@@ -1,6 +1,6 @@
 ---
-title: Assign access to Azure Cost Management data
-description: This article walks you though assigning permission to Azure Cost Management data for various access scopes.
+title: Hozzáférés kiosztása Azure Cost Management-adatkapcsolathoz
+description: Ez a cikk bemutatja, ha az engedély hozzárendelése az Azure Cost Management-adatok különféle hozzáférési hatókörök.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,169 +17,169 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219850"
 ---
-# <a name="assign-access-to-cost-management-data"></a>Assign access to Cost Management data
+# <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
-For users with Azure Enterprise agreements, a combination of permissions granted in the Azure portal and the Enterprise (EA) portal define a user's level of access to Azure Cost Management data. For users with other Azure account types, defining a user's level of access to Cost Management data is simpler by using Azure role-based access control. This article walks you through assigning access to Cost Management data. After the combination of permissions is assigned, the user views data in Cost Management based the scope that they have access to and on the scope that they select in the Azure portal.
+Az Azure nagyvállalati szerződéssel rendelkező felhasználók számára a Azure Portal és a nagyvállalati (EA) portálon megadott engedélyek kombinációja határozza meg, hogy a felhasználó milyen szintű hozzáférést biztosít a Azure Cost Managementi adatmennyiséghez. A többi Azure-fiókkal rendelkező felhasználók számára az Azure szerepköralapú hozzáférés-vezérlés használatával egyszerűbben definiálható, hogy a felhasználó milyen szintű hozzáférést Cost Management az adathoz. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
 
-The scope that a user selects is used throughout Cost Management to provide data consolidation and to control access to cost information. When using scopes, users don't multi-select them. Instead, they select a larger scope that child scopes roll up to and then they filter-down to what they want to view. Data consolidation is important to understand because some people shouldn't have access to a parent scope that child scopes roll up to.
+Adja meg az adatok összevonása, és a költségadatok való hozzáférésének a hatókör, amely a felhasználó kiválaszt Cost Management használja. Hatókörök használatakor a felhasználók ne válassza ki őket. Ehelyett, válassza ki a nagyobb hatókör, amely gyermek hatókörök visszaállítás akár, és ezután azok szűrő válassza ki, amit szeretnének megtekintéséhez. Adatok összevonása fontos tudni, mert vannak, akik nem rendelkezik hozzáféréssel, annak egy szülőhatóköréhez gyermek hatókörök összegző akár.
 
-Watch the [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) video to learn about assigning access to view costs and charges with Azure role-based access control.
+Tekintse meg a [hozzáférés kiosztása Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) videóval című témakört, amelyből megtudhatja, hogyan oszthatja meg a költségeket és a díjakat az Azure szerepköralapú hozzáférés-vezérléssel.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
-## <a name="cost-management-scopes"></a>Cost Management scopes
+## <a name="cost-management-scopes"></a>A Cost Management hatókörök
 
-Cost management supports a variety of Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). The type of account determines available scopes.
+A Cost Management számos Azure-fióktípus használatát támogatja. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A fiók típusa határozza meg az elérhető hatóköröket.
 
-### <a name="azure-ea-subscription-scopes"></a>Azure EA subscription scopes
+### <a name="azure-ea-subscription-scopes"></a>Azure EA-előfizetési hatókörök
 
-To view cost data for Azure EA subscriptions, a user must have at least read access to one or more of the following scopes.
+Az Azure EA-előfizetések költségadatok megtekintéséhez a felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörökhöz.
 
-| **Hatókör** | **Meghatározás helye** | **Required access to view data** | **Nagyvállalati Szerződés előfeltételként szükséges beállítása** | **Consolidates data to** |
+| **Hatókör** | **Meghatározás helye** | **Az adatmegjelenítéshez szükséges hozzáférés** | **Nagyvállalati Szerződés előfeltételként szükséges beállítása** | **Az adatösszesítés** |
 | --- | --- | --- | --- | --- |
 | Számlázási fiók<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Vállalati rendszergazda | None | A Nagyvállalati Szerződésben foglalt összes előfizetés |
-| Részleg | [https://ea.azure.com](https://ea.azure.com/) | Részlegszintű rendszergazda | **DA view charges** enabled | A részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetés |
-| Regisztrációs fiók<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Fióktulajdonos | **AO view charges** enabled | A regisztrációs fiókhoz tartozó összes előfizetés |
-| Felügyeleti csoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **AO view charges** enabled | A felügyeleti csoport alá tartozó összes előfizetés |
-| Előfizetés | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **AO view charges** enabled | Az előfizetésben szereplő összes erőforrás/erőforráscsoport |
-| Erőforráscsoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **AO view charges** enabled | Az erőforráscsoportban található összes erőforrás |
+| Részleg | [https://ea.azure.com](https://ea.azure.com/) | Részlegszintű rendszergazda | A **da View díjak** engedélyezve | A részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetés |
+| Regisztrációs fiók<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Fióktulajdonos | **Ao View-díjak** engedélyezve | A regisztrációs fiókhoz tartozó összes előfizetés |
+| Felügyeleti csoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Ao View-díjak** engedélyezve | A felügyeleti csoport alá tartozó összes előfizetés |
+| Előfizetést | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Ao View-díjak** engedélyezve | Az előfizetésben szereplő összes erőforrás/erőforráscsoport |
+| Erőforráscsoport | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-olvasó (vagy olvasó) | **Ao View-díjak** engedélyezve | Az erőforráscsoportban található összes erőforrás |
 
-<sup>1</sup> The billing account is also referred to as the Enterprise Agreement or Enrollment.
+<sup>1</sup> a számlázási fiókot nagyvállalati szerződés vagy beléptetésnek is nevezzük.
 
-<sup>2</sup> The enrollment account is also referred to as the account owner.
+<sup>2</sup> a beléptetési fiókot a fiók tulajdonosaként is emlegetik.
 
-The following diagram illustrates the relationship between Cost Management scopes with roles and EA portal settings.
+Az alábbi ábra a Cost Management hatókörök és a szerepkörök és az EA-portál beállításai közötti kapcsolatot szemlélteti.
 
-![Diagram showing the relationship between Cost Management scopes with roles and EA portal settings](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+![A szerepkörökkel és az EA-portál beállításaival Cost Management hatókörök közötti kapcsolatot bemutató ábra](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
-When **DA view charges** are disabled in the EA portal, you’ll see a message stating *Costs disabled for your organization* when you try to view costs for departments and accounts.
+Ha az EA Portalon le vannak tiltva a **megtekintési díjak** , megjelenik egy üzenet, amely a *szervezetnél letiltott költségeket* jeleníti meg, amikor a részlegek és a fiókok költségeit szeretné megtekinteni.
 
-Similarly, when **AO view charges** are disabled in the EA portal, you’ll see a message stating *Costs disabled for your organization* when you try to view costs for enrollment accounts, management groups, subscriptions, and resource groups.
+Hasonlóképpen, ha az **Ao View díjak** le vannak tiltva az EA-portálon, megjelenik egy üzenet, amely a *szervezetnél letiltott költségeket* jeleníti meg a regisztrációs fiókok, a felügyeleti csoportok, az előfizetések és az erőforráscsoportok költségeinek megtekintésekor.
 
-## <a name="other-azure-account-scopes"></a>Other Azure account scopes
+## <a name="other-azure-account-scopes"></a>Egyéb Azure-fiók hatókörök
 
-To view cost data for other Azure subscriptions, a user must have at least read access to one or more of the following scopes:
+Más Azure-előfizetésekhez tartozó költségadatok megtekintéséhez a felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörökhöz:
 
 - Azure-fiók
 - Felügyeleti csoport
 - Erőforráscsoport
 
-Various scopes are available after partners onboard customers to a Microsoft Customer Agreement. CSP customers can then use Cost Management features when enabled by their CSP partner. For more information, see [Get started with Azure Cost Management for partners](get-started-partners.md).
+A partnerek a Microsoft ügyfél-szerződése után különböző hatókörökkel érhetők el. A CSP-ügyfelek ezt követően használhatják Cost Management szolgáltatásokat, ha a CSP-partnerük engedélyezte őket. További információ: Ismerkedés [a Azure Cost Managementsal partnereink számára](get-started-partners.md).
 
-## <a name="enable-access-to-costs-in-the-ea-portal"></a>Enable access to costs in the EA portal
+## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 
-The department scope requires the **DA view charges** option **Enabled** in the EA portal. All other scopes require the **AO view charges** option **Enabled** in the EA portal.
+A részleg hatóköréhez az EA-portálon **engedélyezni** kell a **da View díjak** beállítást. Az összes többi hatókörön **engedélyezve** van az **Ao View charges** beállítás az EA portálon.
 
-To enable an option:
+Ahhoz, hogy egy lehetőséget:
 
-1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
-2. Select **Manage** in the left pane.
-3. For the cost management scopes that you want to provide access to, enable the charge option to **DA view charges** and/or **AO view charges**.  
-    ![Enrollment tab showing DA and AO view charges options](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
+1. Jelentkezzen be az EA portálra [https://ea.azure.com](https://ea.azure.com) vállalati rendszergazdai fiókkal.
+2. A bal oldali ablaktáblán kattintson a **kezelés** elemre.
+3. Ahhoz, hogy a Cost Management hatókörei hozzáférhessenek a szolgáltatáshoz, engedélyezze a díjszabási lehetőséget a **da View díjak** és/vagy az **Ao View díjak**megadásához.  
+    ![regisztráció lap, amely a DA és az AO View díjszabási lehetőségeket jeleníti meg](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-After the view charge options are enabled, most scopes also require role-based access control (RBAC) permission configuration in the Azure portal.
+Miután a nézet díj beállításai engedélyezve vannak, a legtöbb hatókörök is szükség szerepköralapú hozzáférés-vezérlés (RBAC) engedélyt konfigurálni az Azure Portalon.
 
-## <a name="enterprise-administrator-role"></a>Enterprise administrator role
+## <a name="enterprise-administrator-role"></a>Vállalati rendszergazdai szerepkör
 
-By default, an enterprise administrator has access to the billing account (Enterprise Agreement/enrollment) and to all other scopes, which are child scopes. The enterprise administrator assigns access to scopes for other users. As a best practice for business continuity, you should always have two users with enterprise administrator access. The following sections are walk-through examples of the enterprise administrator assigning access to scopes for other users.
+Alapértelmezés szerint a vállalati rendszergazda hozzáfér a számlázási fiók (a nagyvállalati szerződés/beléptetés), és minden egyéb hatókör, amely gyermek hatókörök. A vállalati rendszergazda hozzáférést rendel a hatókörök más felhasználók számára. Ajánlott eljárásként az üzletmenet folytonosságának mindig rendelkeznie kell a vállalati rendszergazdai hozzáféréssel rendelkező két felhasználót. A következő szakaszok példák az útmutatóban a vállalati rendszergazda hozzárendelése hozzáférési hatókörhöz más felhasználók számára.
 
-## <a name="assign-billing-account-scope-access"></a>Assign billing account scope access
+## <a name="assign-billing-account-scope-access"></a>Számlázási fiók hozzáférési hatókör hozzárendelése
 
-Access to the billing account scope requires enterprise administrator permission in the EA portal. The enterprise administrator has access to view costs across the entire EA enrollment or multiple enrollments. No action is required in the Azure portal for the billing account scope.
+A számlázási fiók hatókörében használatához a nagyvállalati szerződések portáljának vállalati rendszergazdai engedélyt. A vállalati rendszergazda hozzáfér a teljes EA-regisztrációhoz, illetve több regisztrációk költségek megtekintése. Ilyenkor az Azure Portalon, a számlázási fiók hatókör nem szükséges.
 
-1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
-2. Select **Manage** in the left pane.
-3. On the **Enrollment** tab, select the enrollment that you want to manage.  
-    ![select your enrollment in the EA portal](./media/assign-access-acm-data/ea-portal.png)
-4. Click **+ Add Administrator**.
-5. In the Add Administrator box, select the authentication type and type the user's email address.
-6. If the user should have read-only access to cost and usage data, under **Read-only**, select **Yes**.  Otherwise, select **No**.
-7. Click **Add** to create the account.  
-    ![example information shown in the Add administrator box](./media/assign-access-acm-data/add-admin.png)
+1. Jelentkezzen be az EA portálra [https://ea.azure.com](https://ea.azure.com) vállalati rendszergazdai fiókkal.
+2. A bal oldali ablaktáblán kattintson a **kezelés** elemre.
+3. A **beléptetés** lapon válassza ki a felügyelni kívánt beléptetést.  
+    ![válassza ki a regisztrációt az EA portálon](./media/assign-access-acm-data/ea-portal.png)
+4. Kattintson a **+ rendszergazda hozzáadása**lehetőségre.
+5. A rendszergazda hozzáadása párbeszédpanelen válassza ki a hitelesítés típusát, és írja be a felhasználó e-mail címét.
+6. Ha a **felhasználónak csak olvasási**jogosultsággal kell rendelkeznie a költségeket és a használati adatokat, válassza az **Igen**lehetőséget.  Ellenkező esetben válassza a **nem**lehetőséget.
+7. A fiók létrehozásához kattintson a **Hozzáadás** gombra.  
+    ![példa a rendszergazda hozzáadása mezőben látható információkra](./media/assign-access-acm-data/add-admin.png)
 
-It may take up to 30 minutes before the new user can access data in Cost Management.
+Az új felhasználó férjenek hozzá az adatokat a Cost Management akár 30 percig is eltarthat.
 
-### <a name="assign-department-scope-access"></a>Assign department scope access
+### <a name="assign-department-scope-access"></a>Részleg hozzáférési hatókör hozzárendelése
 
-Access to the department scope requires department administrator (DA view charges) access in the EA portal. The department administrator has access to view costs and usage data associated with a department or to multiple departments. Data for the department includes all subscriptions belonging to an enrollment account that are linked to the department. No action is required in the Azure portal.
+A részleg hatókör használatához részleg rendszergazdai (DA nézet díjon felül) hozzáférés az EA-portálon. A részleg rendszergazdája hozzáfér a költségek és a egy részleg vagy több szervezeti kapcsolódó használati adatok megtekintéséhez. A részleg a regisztrációs fiókhoz tartozó összes előfizetésre, a szervezeti egység kapcsolódó szerepel. Ilyenkor az Azure Portalon nem szükséges.
 
-1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
-2. Select **Manage** in the left pane.
-3. On the **Enrollment** tab, select the enrollment that you want to manage.
-4. Click the **Department** tab and then click **Add Administrator**.
-5. In the Add Department Administrator box, select the authentication type and then type the user's email address.
-6. If the user should have read-only access to cost and usage data, under **Read-only**, select **Yes**.  Otherwise, select **No**.
-7. Select the departments that you want to grant department administrative permission to.
-8. Click **Add** to create the account.  
-    ![enter required information in the Add department administrator box](./media/assign-access-acm-data/add-depart-admin.png)
+1. Jelentkezzen be az EA portálra [https://ea.azure.com](https://ea.azure.com) vállalati rendszergazdai fiókkal.
+2. A bal oldali ablaktáblán kattintson a **kezelés** elemre.
+3. A **beléptetés** lapon válassza ki a felügyelni kívánt beléptetést.
+4. Kattintson a **részleg** fülre, majd a **rendszergazda hozzáadása**lehetőségre.
+5. A részleg rendszergazda hozzáadása párbeszédpanelen válassza ki a hitelesítés típusát, és írja be a felhasználó e-mail címét.
+6. Ha a **felhasználónak csak olvasási**jogosultsággal kell rendelkeznie a költségeket és a használati adatokat, válassza az **Igen**lehetőséget.  Ellenkező esetben válassza a **nem**lehetőséget.
+7. Válassza ki a részlegek, amelyet szeretne részleg rendszergazdai engedély biztosítása.
+8. A fiók létrehozásához kattintson a **Hozzáadás** gombra.  
+    ![adja meg a szükséges adatokat az részleg hozzáadása adminisztrátor mezőben](./media/assign-access-acm-data/add-depart-admin.png)
 
-## <a name="assign-enrollment-account-scope-access"></a>Assign enrollment account scope access
+## <a name="assign-enrollment-account-scope-access"></a>Regisztráció-fiók hozzáférési hatókör hozzárendelése
 
-Access to the enrollment account scope requires account owner (AO view charges) access in the EA portal. The account owner can view costs and usage data associated with the subscriptions created from that enrollment account. No action is required in the Azure portal.
+A regisztrációs fiók hatókörében használatához fiók tulajdonosa (költségek AO megtekintése) hozzáférést a nagyvállalati szerződéssel rendelkező portálon. A fiók tulajdonosa megtekintheti a költségek és a regisztrációs fiókhoz létrehozott előfizetésekhez kapcsolódó használati adatok. Ilyenkor az Azure Portalon nem szükséges.
 
-1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
-2. Select **Manage** in the left pane.
-3. On the **Enrollment** tab, select the enrollment that you want to manage.
-4. Click the **Account** tab and then click **Add Account**.
-5. In the Add Account box, select the **Department** to associate the account to, or leave it as unassigned.
-6. Select the authentication type and type the account name.
-7. Type the user's email address and then optionally type the cost center.
-8. Click on **Add** to create the account.  
-    ![enter required information in the Add account box for an enrollment account](./media/assign-access-acm-data/add-account.png)
+1. Jelentkezzen be az EA portálra [https://ea.azure.com](https://ea.azure.com) vállalati rendszergazdai fiókkal.
+2. A bal oldali ablaktáblán kattintson a **kezelés** elemre.
+3. A **beléptetés** lapon válassza ki a felügyelni kívánt beléptetést.
+4. Kattintson a **fiók** fülre, majd a **fiók hozzáadása**lehetőségre.
+5. A fiók hozzáadása mezőben válassza ki azt a **részleget** , amelyhez társítani szeretné a fiókot, vagy hagyja meg a hozzárendelés nélküliként.
+6. Válassza ki a hitelesítés típusát, és írja be a fiók nevét.
+7. Írja be a felhasználó e-mail címét, és szükség esetén írja be a költségközpont.
+8. A fiók létrehozásához kattintson a **Hozzáadás** gombra.  
+    ![írja be a szükséges adatokat a beléptetési fiók fiók hozzáadása mezőjébe](./media/assign-access-acm-data/add-account.png)
 
-After completing the steps above, the user account becomes an enrollment account in the Enterprise portal and can create subscriptions. The user can access cost and usage data for subscriptions that they create.
+A fenti lépések végrehajtását követően a felhasználói fiók lesz az Enterprise Portal regisztrációs fiók és előfizetéseket hozhat létre. A felhasználó hozzáférhessen a költség- és használati adatokat, hozhatnak létre előfizetéseket.
 
-## <a name="assign-management-group-scope-access"></a>Assign management group scope access
+## <a name="assign-management-group-scope-access"></a>Felügyeleti csoport hozzáférési hatókör hozzárendelése
 
-Access to view the management group scope requires at least the Cost Management Reader (or Reader) permission. You can configure permissions for a management group in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the management group to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
+A felügyeleti csoport hatókörének megtekintéséhez legalább a Cost Management olvasó (vagy olvasó) engedélyre van szükség. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Select **All Services** in the sidebar, search for _management groups_, then select **management groups**.
-3. Select the management group in the hierarchy.
-4. Next to the name of your management group, click **Details**.
-5. Select **Access Control (IAM)** from the left pane.
-6. Kattintson a **Hozzáadás** parancsra.
-7. Under **Role**, select **Cost Management Reader**.
-8. Under **Assign access to**, select **Azure AD user, group, or application**.
-9. To assign access, search for and then select the user.
+2. Válassza a **minden szolgáltatás** lehetőséget az oldalsávon, keresse meg a _felügyeleti csoportokat_, majd válassza a **felügyeleti csoportok**lehetőséget.
+3. Válassza ki a felügyeleti csoport a hierarchiában.
+4. A felügyeleti csoport neve mellett kattintson a **részletek**elemre.
+5. A bal oldali ablaktáblán válassza a **Access Control (iam)** lehetőséget.
+6. Kattintson az **Hozzáadás** parancsra.
+7. A **szerepkör**alatt válassza ki **Cost Management olvasót**.
+8. **A hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
+9. Hozzáférés hozzárendelése, keresse meg, és válassza ki a felhasználót.
 10. Kattintson a **Save** (Mentés) gombra.  
-    ![example information in the Add permissions box for a management group](./media/assign-access-acm-data/add-permissions.png)
+    ![például egy felügyeleti csoport engedélyek hozzáadása mezőjében](./media/assign-access-acm-data/add-permissions.png)
 
-## <a name="assign-subscription-scope-access"></a>Assign subscription scope access
+## <a name="assign-subscription-scope-access"></a>Előfizetés hozzáférési hatókör hozzárendelése
 
-Access to a subscription requires at least the Cost Management Reader (or Reader) permission. You can configure permissions to a subscription in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the subscription to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
+Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Select **All Services** in the sidebar, search for _subscriptions_, then select **Subscriptions**.
+2. Válassza a **minden szolgáltatás** lehetőséget az oldalsávon, keresse meg az _előfizetések_, majd az **előfizetések**elemet.
 3. Válassza ki előfizetését.
-4. Select **Access Control (IAM)** from the left pane.
-5. Kattintson a **Hozzáadás** parancsra.
-6. Under **Role**, select **Cost Management Reader**.
-7. Under **Assign access to**, select **Azure AD user, group, or application**.
-8. To assign access, search for and then select the user.
+4. A bal oldali ablaktáblán válassza a **Access Control (iam)** lehetőséget.
+5. Kattintson az **Hozzáadás** parancsra.
+6. A **szerepkör**alatt válassza ki **Cost Management olvasót**.
+7. **A hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
+8. Hozzáférés hozzárendelése, keresse meg, és válassza ki a felhasználót.
 9. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="assign-resource-group-scope-access"></a>Assign resource group scope access
+## <a name="assign-resource-group-scope-access"></a>Erőforrás-csoport hozzáférési hatókör hozzárendelése
 
-Access to a resource group requires at least the Cost Management Reader (or Reader) permission. You can configure permissions to a resource group in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the resource group to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
+Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Select **All Services** in the sidebar, search for _resource groups_, then select **Resource groups**.
-3. Select your resource group.
-4. Select **Access Control (IAM)** from the left pane.
-5. Kattintson a **Hozzáadás** parancsra.
-6. Under **Role**, select **Cost Management Reader**.
-7. Under **Assign access to**, select **Azure AD user, group, or application**.
-8. To assign access, search for and then select the user.
+2. Válassza a **minden szolgáltatás** lehetőséget az oldalsávon, keresse meg az _erőforráscsoportok_elemet, majd válassza az **erőforráscsoportok**lehetőséget.
+3. Válassza ki az erőforráscsoportot.
+4. A bal oldali ablaktáblán válassza a **Access Control (iam)** lehetőséget.
+5. Kattintson az **Hozzáadás** parancsra.
+6. A **szerepkör**alatt válassza ki **Cost Management olvasót**.
+7. **A hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
+8. Hozzáférés hozzárendelése, keresse meg, és válassza ki a felhasználót.
 9. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="cross-tenant-authentication-issues"></a>Cross-tenant authentication issues
+## <a name="cross-tenant-authentication-issues"></a>Több-bérlős hitelesítési problémák
 
-Currently, Azure Cost Management has limited support for cross-tenant authentication. In some circumstances when you try to authenticate across tenants, you may receive an **Access denied** error in cost analysis. This issue might occur if you configure role-based access control (RBAC) to another tenant's subscription and then try to view cost data.
+A Azure Cost Management jelenleg korlátozott támogatást biztosít a több-bérlős hitelesítéshez. Bizonyos esetekben, amikor megkísérli a hitelesítést a bérlők között, **hozzáférés-megtagadási** hibaüzenetet kaphat a Cost Analysis szolgáltatásban. Ez a probléma akkor fordulhat elő, ha szerepköralapú hozzáférés-vezérlést (RBAC) konfigurál egy másik bérlői előfizetéshez, majd megpróbálja megtekinteni a költségadatok megtekintését.
 
-*To work around the problem*: After you configure cross-tenant RBAC, wait an hour. Then, try to view costs in cost analysis or grant Cost Management access to users in both tenants.  
+*A probléma megkerüléséhez*: a több-bérlős RBAC konfigurálása után várjon egy órát. Ezután próbálja meg megtekinteni a költségeket a Cost Analysis szolgáltatásban, vagy adja meg Cost Management hozzáférést a bérlők felhasználói számára.  
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- If you haven't already completed the first quickstart for Cost Management, read it at [Start analyzing costs](quick-acm-cost-analysis.md).
+- Ha még nem végezte el a Cost Management első gyors útmutatóját, olvassa el a [költségeket](quick-acm-cost-analysis.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: New policy assignment with PowerShell'
-description: In this quickstart, you use Azure PowerShell to create an Azure Policy assignment to identify non-compliant resources.
+title: 'Rövid útmutató: új szabályzat-hozzárendelés a PowerShell-lel'
+description: Ebben a rövid útmutatóban a Azure PowerShell használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 3ce823a7abfe16e4433128dcdfe073dfcfaeba50
@@ -10,20 +10,20 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482394"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Quickstart: Create a policy assignment to identify non-compliant resources using Azure PowerShell
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához Azure PowerShell használatával
 
-Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. In this quickstart, you create a policy assignment to identify virtual machines that aren't using managed disks. When complete, you'll identify virtual machines that are _non-compliant_.
+Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést hoz létre. Ha elkészült, azonosíthatja azokat a virtuális gépeket, amelyek _nem megfelelőek_.
 
-The Azure PowerShell module is used to manage Azure resources from the command line or in scripts.
-This guide explains how to use Az module to create a policy assignment.
+A Azure PowerShell modul az Azure-erőforrások parancssorból vagy parancsfájlokból való kezelésére szolgál.
+Ez az útmutató ismerteti, hogyan használható az az modul egy szabályzat-hozzárendelés létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- Before you start, make sure that the latest version of Azure PowerShell is installed. See [Install Azure PowerShell module](/powershell/azure/install-az-ps) for detailed information.
+- Mielőtt elkezdené, győződjön meg arról, hogy a Azure PowerShell legújabb verziója van telepítve. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) .
 
-- Register the Azure Policy Insights resource provider using Azure PowerShell. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. To register a resource provider, you must have permission to the register resource provider operation. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+- Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót a Azure PowerShell használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -36,7 +36,7 @@ This guide explains how to use Az module to create a policy assignment.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-In this quickstart, you create a policy assignment for the _Audit VMs without managed disks_ definition. This policy definition identifies virtual machines not using managed disks.
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre a _felügyelt lemezek definíciója nélküli naplózási virtuális gépek_ számára. Ez a házirend-definíció a felügyelt lemezeket nem használó virtuális gépeket azonosítja.
 
 Futtassa a következő parancsokat egy új szabályzat-hozzárendelés létrehozásához:
 
@@ -54,11 +54,11 @@ New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs wit
 Az előző parancsok a következő információkat használják:
 
 - **Name** – A hozzárendelés tényleges neve. A fenti példában az _audit-vm-manageddisks_ nevet használtuk.
-- **DisplayName** – A szabályzat-hozzárendelés megjelenített neve. In this case, you're using _Audit VMs without managed disks Assignment_.
-- **Definíció** – A szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. In this case, it's the ID of policy definition _Audit VMs that do not use managed disks_.
+- **DisplayName** – A szabályzat-hozzárendelés megjelenített neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_történik.
+- **Definíció** – A szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. Ebben az esetben ez a házirend-definíciós _virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket_.
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
 
-You're now ready to identify non-compliant resources to understand the compliance state of your environment.
+Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
 
@@ -69,7 +69,7 @@ A következő információkkal azonosíthatja a létrehozott szabályzat-hozzár
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-For more information about getting policy state, see [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+A házirend állapotának beolvasásával kapcsolatos további információkért lásd: [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 Az eredmények a következő példához hasonlók:
 
@@ -91,22 +91,22 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-The results match what you see in the **Resource compliance** tab of a policy assignment in the Azure portal view.
+Az eredmények megegyeznek a szabályzat-hozzárendelés **erőforrás-megfelelőség** lapján látható Azure Portal nézetben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-To remove the assignment created, use the following command:
+A létrehozott hozzárendelést eltávolításához használja a következő parancsot:
 
 ```azurepowershell-interactive
 # Removes the policy assignment
 Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 
-To learn more about assigning policies to validate that new resources are compliant, continue to the tutorial for:
+További információ a szabályzatok ellenőrzése, hogy az új erőforrások megfelelnek hozzárendeléséről, folytassa a következő oktatóanyagban:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./tutorials/create-and-manage.md)

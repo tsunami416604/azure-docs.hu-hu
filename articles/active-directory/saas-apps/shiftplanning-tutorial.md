@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Humanity | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Humanity.
+title: 'Oktatóanyag: Azure Active Directory integráció az emberiséggel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az emberiség között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,229 +23,229 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233438"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory integration with Humanity
+# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Oktatóanyag: Azure Active Directory integráció az emberiséggel
 
-In this tutorial, you learn how to integrate Humanity with Azure Active Directory (Azure AD).
-Integrating Humanity with Azure AD provides you with the following benefits:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az emberiséget Azure Active Directory (Azure AD) használatával.
+Az emberiség az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* You can control in Azure AD who has access to Humanity.
-* You can enable your users to be automatically signed-in to Humanity (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Megadhatja az Azure AD-t, aki hozzáfér az emberhez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Emberiségbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To configure Azure AD integration with Humanity, you need the following items:
+Az Azure AD-integráció az emberiséggel való konfigurálásához a következő elemek szükségesek:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Humanity single sign-on enabled subscription
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Emberi egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Humanity supports **SP** initiated SSO
+* Az emberiség támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-humanity-from-the-gallery"></a>Adding Humanity from the gallery
+## <a name="adding-humanity-from-the-gallery"></a>Az emberiség felvétele a katalógusból
 
-To configure the integration of Humanity into Azure AD, you need to add Humanity from the gallery to your list of managed SaaS apps.
+Az emberiség Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az emberiséget a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**To add Humanity from the gallery, perform the following steps:**
+**Az alábbi lépések végrehajtásával adhatja hozzá az emberiséget a katalógusból:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, type **Humanity**, select **Humanity** from result panel then click **Add** button to add the application.
+4. A keresőmezőbe írja be az **emberiség**kifejezést, válassza az **emberiség** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Humanity in the results list](common/search-new-app.png)
+     ![Emberiség az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-In this section, you configure and test Azure AD single sign-on with Humanity based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Humanity needs to be established.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az emberiséggel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az emberiség kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
-To configure and test Azure AD single sign-on with Humanity, you need to complete the following building blocks:
+Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Humanity Single Sign-On](#configure-humanity-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Humanity test user](#create-humanity-test-user)** - to have a counterpart of Britta Simon in Humanity that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[emberi egyszeri bejelentkezés konfigurálása](#configure-humanity-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre](#create-humanity-test-user)** egy Britta, amely a felhasználó Azure ad-beli képviseletéhez kapcsolódik, hogy az emberiség tagja legyen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-To configure Azure AD single sign-on with Humanity, perform the following steps:
+Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Humanity** application integration page, select **Single sign-on**.
+1. Az [Azure Portal](https://portal.azure.com/)az **emberi** alkalmazások integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Humanity Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![Az emberiség tartománya és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://company.humanity.com/includes/saml/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.humanity.com/includes/saml/`
 
-    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://company.humanity.com/app/`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.humanity.com/app/`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Humanity Client support team](https://www.humanity.com/support/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A következő értékek beszerzéséhez vegye fel a kapcsolatot az [emberiség ügyfélszolgálatával](https://www.humanity.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. On the **Set up Humanity** section, copy the appropriate URL(s) as per your requirement.
+6. Az **emberiség beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelménynek megfelelően.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
-    c. Logout URL
+    c. Kijelentkezési URL
 
-### <a name="configure-humanity-single-sign-on"></a>Configure Humanity Single Sign-On
+### <a name="configure-humanity-single-sign-on"></a>Az emberiség egyszeri bejelentkezésének konfigurálása
 
-1. In a different web browser window, log in to your **Humanity** company site as an administrator.
+1. Egy másik böngészőablakban jelentkezzen be az **emberiség** céges webhelyére rendszergazdaként.
 
-2. In the menu on the top, click **Admin**.
+2. A felső menüben kattintson a **rendszergazda**elemre.
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
-3. Under **Integration**, click **Single Sign-On**.
+    ![Felügyeleti](./media/shiftplanning-tutorial/iC786619.png "rendszergazda")
+3. Az **integráció**alatt kattintson az **egyszeri bejelentkezés**elemre.
 
-    ![Single Sign-On](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
+    ![Egyszeri bejelentkezés](./media/shiftplanning-tutorial/iC786620.png "Egyszeri bejelentkezés")
 
-4. In the **Single Sign-On** section, perform the following steps:
+4. Az **egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Single Sign-On](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
+    ![Egyszeri bejelentkezés](./media/shiftplanning-tutorial/iC786905.png "Egyszeri bejelentkezés")
 
-    a. Select **SAML Enabled**.
+    a. Válassza az **SAML engedélyezve**lehetőséget.
 
-    b. Select **Allow Password Login**.
+    b. Jelölje be a **jelszó-bejelentkezés engedélyezése**jelölőnégyzetet.
 
-    c. In the **SAML Issuer URL** textbox, paste the **Login URL** value, which you have copied from Azure portal.
+    c. Az **SAML kiállító URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
 
-    d. In the **Remote Logout URL** textbox, paste the **Logout URL** value, which you have copied from Azure portal.
+    d. A **távoli kijelentkezés URL-címe** szövegmezőbe illessze be a **KIjelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-    e. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 Certificate** textbox.
+    e. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja vágólapra a tartalmát, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
-    f. Click **Save Settings**.
+    f. Kattintson a **Beállítások mentése**gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
-    ![New user Button](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![The User dialog box](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Humanity.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az emberiség számára való hozzáférés biztosításával.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Humanity**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **emberiség**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, select **Humanity**.
+2. Az alkalmazások listában válassza az **emberiség**lehetőséget.
 
-    ![The Humanity link in the Applications list](common/all-applications.png)
+    ![Az emberiség hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-humanity-test-user"></a>Create Humanity test user
+### <a name="create-humanity-test-user"></a>Az emberiség tesztelésére szolgáló felhasználó létrehozása
 
-In order to enable Azure AD users to log in to Humanity, they must be provisioned into Humanity. In the case of Humanity, provisioning is a manual task.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az Emberiségbe, az emberiségnek kell kiépíteni őket. Az emberiség esetében a kiépítés manuális feladat.
 
-**To provision a user account, perform the following steps:**
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Log in to your **Humanity** company site as an administrator.
+1. Jelentkezzen be az **emberiség** vállalatának webhelyére rendszergazdaként.
 
-2. Click **Admin**.
+2. Kattintson a **rendszergazda**elemre.
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Felügyeleti](./media/shiftplanning-tutorial/iC786619.png "rendszergazda")
 
-3. Click **Staff**.
+3. Kattintson a **személyzet**elemre.
 
-    ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
+    ![Személyzet](./media/shiftplanning-tutorial/ic786623.png "Személyzet")
 
-4. Under **Actions**, click **Add Employees**.
+4. A **műveletek**területen kattintson az **alkalmazottak hozzáadása**lehetőségre.
 
-    ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
+    ![Alkalmazottak hozzáadása](./media/shiftplanning-tutorial/iC786624.png "Alkalmazottak hozzáadása")
 
-5. In the **Add Employees** section, perform the following steps:
+5. Az **alkalmazottak hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
+    ![Alkalmazottak mentése](./media/shiftplanning-tutorial/iC786625.png "Alkalmazottak mentése")
 
-    a. Type the **First Name**, **Last Name**, and **Email** of a valid Azure AD account you want to provision into the related textboxes.
+    a. Írja be egy érvényes Azure AD-fiók **utónevét**, **vezetéknevét**és **e-mail-címét** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
 
-    b. Click **Save Employees**.
+    b. Kattintson az **alkalmazottak mentése**gombra.
 
 > [!NOTE]
-> You can use any other Humanity user account creation tools or APIs provided by Humanity to provision Azure AD user accounts.
+> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, az emberiség által biztosított felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the Humanity tile in the Access Panel, you should be automatically signed in to the Humanity for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen az emberiség csempére kattint, automatikusan be kell jelentkeznie az emberiség számára, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

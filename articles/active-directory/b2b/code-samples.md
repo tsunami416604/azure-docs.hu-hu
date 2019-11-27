@@ -26,7 +26,7 @@ Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban
 
 1. Készítse elő a .CSV-fájlt. Hozzon létre egy új CSV-fájlt, és adja neki az „invitations.csv” nevet. Ebben a példában a fájlt a C:\Data helyre mentjük, és a következő információkat tartalmazza:
   
-   Name (Név)                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
+   Név                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
    --------------------- | --------------------------
    Gmail B2B Invitee (Gmail B2B meghívott személy)     | b2binvitee@gmail.com
    Outlook B2B Invitee (Outlook B2B meghívott személy)   | b2binvitee@outlook.com
@@ -229,7 +229,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 

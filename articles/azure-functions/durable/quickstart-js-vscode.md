@@ -1,6 +1,6 @@
 ---
-title: Create your first durable function in Azure using JavaScript
-description: Create and publish an Azure Durable Function using Visual Studio Code.
+title: Az első tartós funkció létrehozása az Azure-ban JavaScript használatával
+description: Azure tartós függvény létrehozása és közzététele a Visual Studio Code használatával.
 author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
@@ -12,27 +12,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231314"
 ---
-# <a name="create-your-first-durable-function-in-javascript"></a>Create your first durable function in JavaScript
+# <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
-*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) that lets you write stateful functions in a serverless environment. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
+A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írására kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-In this article, you learn how to use the Visual Studio Code Azure Functions extension to locally create and test a "hello world" durable function.  This function will orchestrate and chain together calls to other functions. Ezután közzéteheti a függvénykódot az Azure-ban.
+Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code Azure Functions bővítményt a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és összekapcsolja a hívásokat más funkciókkal. Ezután közzéteheti a függvénykódot az Azure-ban.
 
-![Running durable function in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Tartós funkció futtatása az Azure-ban](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-* Install [Visual Studio Code](https://code.visualstudio.com/download).
+* Telepítse a [Visual Studio Code](https://code.visualstudio.com/download)-ot.
 
-* Make sure you have the latest version of the [Azure Functions Core Tools](../functions-run-local.md).
+* Győződjön meg arról, hogy rendelkezik a [Azure functions Core Tools](../functions-run-local.md)legújabb verziójával.
 
-* On a Windows computer, verify you have the [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) installed and running. On a Mac or Linux computer, you must use an actual Azure storage account.
+* Windows rendszerű számítógépen ellenőrizze, hogy az [Azure Storage-emulátor](../../storage/common/storage-use-emulator.md) telepítve van-e és fut-e. Mac vagy Linux rendszerű számítógépen a tényleges Azure Storage-fiókot kell használnia.
 
-* Make sure that you have version 8.0 or a later version of [Node.js](https://nodejs.org/) installed.
+* Győződjön meg arról, hogy a 8,0-es vagy újabb verziójú [Node. js](https://nodejs.org/) -verzió van telepítve.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,72 +40,72 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="install-the-durable-functions-npm-package"></a>Install the Durable Functions npm package
+## <a name="install-the-durable-functions-npm-package"></a>A Durable Functions NPM-csomag telepítése
 
-1. Install the `durable-functions` npm package by running `npm install durable-functions` in the root directory of the function app.
+1. Telepítse a `durable-functions` NPM csomagot a Function alkalmazás gyökérkönyvtárában `npm install durable-functions` futtatásával.
 
-## <a name="creating-your-functions"></a>Creating your functions
+## <a name="creating-your-functions"></a>A függvények létrehozása
 
-We'll now create the three functions you need to get started with Durable Functions: an HTTP starter, an orchestrator, and an activity function. The HTTP starter will initiate your entire solution, and the orchestrator will dispatch work to various activity functions.
+Most létrehozjuk a három olyan függvényt, amely a Durable Functions megkezdéséhez szükséges: egy HTTP Starter, egy Orchestrator és egy Activity függvény. A HTTP-kezdő elindítja a teljes megoldást, és a Orchestrator különböző tevékenységi funkciókra küldi a munkát.
 
-### <a name="http-starter"></a>HTTP starter
+### <a name="http-starter"></a>HTTP-kezdő
 
-First, create an HTTP triggered function that starts a durable function orchestration.
+Először hozzon létre egy HTTP által aktivált függvényt, amely tartós függvény-előkészítést indít el.
 
-1. From *Azure: Functions*, choose the **Create Function** icon.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
-2. Select the folder with your function app project and select the **Durable Functions HTTP Starter** function template.
+2. Válassza ki a Function app Project nevű mappát, és válassza ki a **DURABLE FUNCTIONS http Starter** Function sablont.
 
-    ![Choose the HTTP starter template](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![A HTTP Starter-sablon kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Leave the default name as `DurableFunctionsHttpStart` and press ****Enter**, then select **Anonymous** authentication.
+3. Hagyja meg az alapértelmezett nevet `DurableFunctionsHttpStart` és nyomja meg a * * * * * ENTER * * gombot, majd válassza a **Névtelen** hitelesítés lehetőséget.
 
     ![A névtelen hitelesítés kiválasztása](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
-We've now created an entry-point into our Durable Function. Let's add an orchestrator.
+Most létrehoztunk egy belépési pontot a tartós függvénynek. Vegyünk fel egy Orchestrator.
 
 ### <a name="orchestrator"></a>Orchestrator
 
-Now, we'll create an orchestrator to coordinate activity functions.
+Most létrehozunk egy Orchestrator a tevékenység-függvények koordinálásához.
 
-1. From *Azure: Functions*, choose the **Create Function** icon.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
-2. Select the folder with your function app project and select the **Durable Functions orchestrator** function template. Leave the name as the default "DurableFunctionsOrchestrator"
+2. Válassza ki a Function app Project nevű mappát, és válassza ki a **Durable functions Orchestrator** . Hagyja meg a nevet alapértelmezett "DurableFunctionsOrchestrator" néven.
 
-    ![Choose the orchestrator template](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![Orchestrator-sablon kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-We've added an orchestrator to coordinate activity functions. Let's now add the referenced activity function.
+Felvettünk egy Orchestrator a tevékenységi funkciók koordinálására. Most adjuk hozzá a hivatkozott tevékenység funkciót.
 
 ### <a name="activity"></a>Tevékenység
 
-Now, we'll create an activity function to actually carry out the work of the solution.
+Most létrehozunk egy tevékenység-függvényt, amely ténylegesen elvégzi a megoldás munkáját.
 
-1. From *Azure: Functions*, choose the **Create Function** icon.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
-2. Select the folder with your function app project and select the **Durable Functions activity** function template. Leave the name as the default "Hello".
+2. Válassza ki a Function app Project nevű mappát, és válassza a **Durable functions Activity** függvény sablont. Hagyja meg a nevet alapértelmezett "Hello"-ként.
 
-    ![Choose the activity template](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![A tevékenység sablonjának kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-We've now added all components needed to start off an orchestration and chain together activity functions.
+Most már hozzáadta az összes olyan összetevőt, amely egy előkészítés és a lánc összevonása tevékenység funkcióinak elindításához szükséges.
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
 Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studio Code-ból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.
 
-1. On a Windows computer, start the Azure Storage Emulator and make sure that the **AzureWebJobsStorage** property of *local.settings.json* is set to `UseDevelopmentStorage=true`.
+1. Indítsa el a Windows rendszerű számítógépen az Azure Storage Emulatort, és győződjön meg arról, hogy a *Local. Settings. JSON* **AzureWebJobsStorage** tulajdonsága `UseDevelopmentStorage=true`értékre van állítva.
 
-    For Storage Emulator 5.8 make sure that the **AzureWebJobsSecretStorageType** property of local.settings.json is set to `files`. On     a Mac or Linux computer, you must set the **AzureWebJobsStorage** property to the connection string of an existing Azure storage         account. You create a storage account later in this article.
+    A Storage Emulator 5,8 esetén győződjön meg arról, hogy a local. Settings. JSON **AzureWebJobsSecretStorageType** tulajdonsága `files`értékre van állítva. Mac vagy Linux rendszerű számítógépen a **AzureWebJobsStorage** tulajdonságot egy meglévő Azure Storage-fiókhoz tartozó kapcsolódási sztringre kell beállítania. Ebben a cikkben később létrehoz egy Storage-fiókot.
 
-2. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. If this is your first time using Durable Functions, the Durable Functions extension is installed and the build might take a few seconds.
+2. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha első alkalommal használja a Durable Functions-t, a Durable Functions bővítmény telepítve lesz, és a Build eltarthat néhány másodpercig.
 
     > [!NOTE]
-    > JavaScript Durable Functions require version **1.7.0** or greater of the **Microsoft.Azure.WebJobs.Extensions.DurableTask** extension. Run the following command from the root folder of your Azure Functions app to install the Durable Functions extension `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > A JavaScript Durable Functions a **Microsoft. Azure. webjobs. Extensions. DurableTask** kiterjesztés **1.7.0** vagy újabb verzióját igényli. Futtassa az alábbi parancsot a Azure Functions alkalmazás gyökérkönyvtárában a Durable Functions bővítmény telepítéséhez `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 
@@ -113,13 +113,13 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 4. Cserélje le a `{functionName}` elemet a `DurableFunctionsOrchestrator` kérdésre.
 
-5. Using a tool like [Postman](https://www.getpostman.com/) or [cURL](https://curl.haxx.se/), send an HTTP POST request to the URL endpoint.
+5. Ha például a [Poster](https://www.getpostman.com/) vagy a [curl](https://curl.haxx.se/)eszközt használja, küldjön egy HTTP POST-kérelmet az URL-végpontnak.
 
-   The response is the initial result from the HTTP function letting us know the durable orchestration has started successfully. It is not yet the end result of the orchestration. The response includes a few useful URLs. For now, let's query the status of the orchestration.
+   A válasz a HTTP-függvény kezdeti eredménye, amely közli, hogy a tartós összehangolás sikeresen elindult. Még nem az előkészítés végeredménye. A válasz több hasznos URL-címet is tartalmaz. Most pedig lekérdezjük a folyamat állapotát.
 
-6. Copy the URL value for `statusQueryGetUri` and paste it in the browser's address bar and execute the request. Alternatively you can also continue to use Postman to issue the GET request.
+6. Másolja a `statusQueryGetUri` URL-címét, és illessze be a böngésző címsorába, majd hajtsa végre a kérelmet. Azt is megteheti, hogy továbbra is a Poster használatával adja ki a GET kérelmet.
 
-   The request will query the orchestration instance for the status. You should get an eventual response, which shows us the instance has completed, and includes the outputs or results of the durable function. It looks like: 
+   A kérelem lekérdezi az állapotot az előkészítési példányon. Egy végleges választ kap, amely megmutatja, hogy a példány befejeződik, és tartalmazza a tartós funkció kimeneteit vagy eredményét. A következőképpen néz ki: 
 
     ```json
     {
@@ -137,7 +137,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     }
     ```
 
-7. To stop debugging, press **Shift + F5** in VS Code.
+7. A hibakeresés leállításához nyomja le a **SHIFT + F5** billentyűkombinációt a vs Code-ban.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
@@ -151,11 +151,11 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
         http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 
-2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. You should get the same status response as before when using the published app.
+2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
 ## <a name="next-steps"></a>Következő lépések
 
-You have used Visual Studio Code to create and publish a JavaScript durable function app.
+A Visual Studio Code használatával JavaScript tartós Function-alkalmazást hozhat létre és tehet közzé.
 
 > [!div class="nextstepaction"]
-> [Learn about common durable function patterns](durable-functions-overview.md#application-patterns)
+> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)

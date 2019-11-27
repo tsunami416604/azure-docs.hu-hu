@@ -98,7 +98,7 @@ Az irányítópultok sikeres létrehozása után javasoljuk, hogy [tegye közzé
 
 Emellett [frissítenie](https://docs.microsoft.com/power-bi/refresh-data) kell a közzétett irányítópulton lévőket is, hogy megbizonyosodjon arról, hogy rendelkezik a legújabb adatkészlettel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan jelenítheti meg a távoli monitorozási adatait a Power BI használatával
 

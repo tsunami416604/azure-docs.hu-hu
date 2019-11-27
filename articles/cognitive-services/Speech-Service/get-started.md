@@ -46,7 +46,7 @@ Habár javasoljuk, hogy a beszédfelismerési szolgáltatást a következő szak
 > A próbaidőszak a következő lépések elvégzése után azonnal elindul.
 
 1. Lépjen a [kognitív szolgáltatás kipróbálása](https://azure.microsoft.com/try/cognitive-services/)oldalra.
-1. Válassza ki a **Speech API-k** fülre.
+1. Válassza a **beszédfelismerési API** -k fület.
 1. Válassza az **API-kulcs beolvasása**elemet.
 
 A számlázási lehetőségek közül választhat. Válassza az ingyenes lehetőséget, majd olvassa el és hagyja jóvá a felhasználói szerződést. Olyan kulcsokkal fog megjelenni, amelyekkel korlátozott ideig kipróbálhatja a beszédfelismerési szolgáltatást.
@@ -64,15 +64,15 @@ Ha Microsoft-fiók, nyissa meg az [Azure regisztrációs oldalát](https://azure
 
 A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) hozzáadása az Azure-fiókjával:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Microsoft-fiókjával.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a Microsoft-fiók használatával.
 
-1. Válassza ki **erőforrás létrehozása** , a portál bal felső. Ha nem látja az **erőforrás létrehozása**lehetőséget, a bal felső sarokban található összecsukott menü kiválasztásával bármikor megtalálhatja a következőt:
+1. Válassza az **erőforrás létrehozása** lehetőséget a portál bal felső részén. Ha nem látja az **erőforrás létrehozása**lehetőséget, a bal felső sarokban található összecsukott menü kiválasztásával bármikor megtalálhatja a következőt:
 
    ![összecsukott navigációs gomb](media/index/collapsed-nav.png)
 
 1. Az **új** ablakban írja be a "Speech" kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
-1. A keresési eredmények között, válassza ki a **Speech**.
+1. A keresési eredmények között válassza a **Speech (beszéd**) lehetőséget.
 
    ![beszédfelismerési találatok](media/index/speech-search.png)
 
@@ -96,14 +96,14 @@ Váltson egy előfizetésből egy másikba, például amikor az ingyenes próbav
 
 ## <a name="about-regions"></a>A régiókról
 
-- Ha az alkalmazás egy [beszéd SDK](speech-sdk.md), például adja meg a régiókód `westus`, a beszéd-konfiguráció létrehozása során.
-- Ha az alkalmazás használja a beszédfelismerési szolgáltatás egyik [REST API-k](rest-apis.md), a régiót a végpont URI-kérelem indítására használ részét képezi.
+- Ha az alkalmazás egy [SPEECH SDK](speech-sdk.md)-t használ, akkor a beszédfelismerési konfiguráció létrehozásakor megadja a régiókódot, például a `westus`.
+- Ha az alkalmazás a beszédfelismerési szolgáltatás [REST API](rest-apis.md)-jának egyikét használja, akkor a régió a kérések végrehajtásakor használt végponti URI része.
 - Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál használni őket a más régiókban hitelesítési hibákat eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hajtsa végre a 10 perces gyors útmutatók, vagy tekintse meg az SDK-minták:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: A C# beszédfelismerést](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [beszéd SDK-minták](speech-sdk.md#get-the-samples)
+> Gyors útmutató [: beszédfelismerés felismerése C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [Speech SDK-mintákban](speech-sdk.md#get-the-samples)

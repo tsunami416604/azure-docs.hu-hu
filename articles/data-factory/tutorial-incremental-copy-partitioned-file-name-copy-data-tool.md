@@ -1,6 +1,6 @@
 ---
-title: Incrementally copy new files based on time partitioned file name
-description: Create an Azure data factory and then use the Copy Data tool to incrementally load new files only based on time partitioned file name.
+title: Az új fájlok növekményes másolása az idő particionált fájlneve alapján
+description: Hozzon létre egy Azure-beli adatelőállítót, majd a Adatok másolása eszközzel fokozatosan töltse be az új fájlokat csak az idő particionált fájlnév alapján.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -21,9 +21,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217452"
 ---
-# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Incrementally copy new files based on time partitioned file name by using the Copy Data tool
+# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Az új fájlok növekményes másolása a Adatok másolása eszköz használatával, az időparticionált fájl neve alapján
 
-Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Then, you use the Copy Data tool to create a pipeline that incrementally copies new files based on time partitioned file name from Azure Blob storage to Azure Blob storage. 
+Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezt követően a Adatok másolása eszközzel létrehozhat egy folyamatot, amely Növekményesen átmásolja az új fájlokat az Azure Blob Storage-ból az Azure Blob Storage-ba történő időpartíciós fájlnév alapján. 
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
@@ -38,24 +38,24 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure storage account**: Use Blob storage as the _source_  and _sink_ data store. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
+* **Azure Storage** _-_ fiók: a blob Storage használata _forrásként_ és fogadó adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
 
-### <a name="create-two-containers-in-blob-storage"></a>Create two containers in Blob storage
+### <a name="create-two-containers-in-blob-storage"></a>Két tároló létrehozása a blob Storage-ban
 
-Prepare your Blob storage for the tutorial by performing these steps.
+Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végrehajtásával.
 
-1. Create a container named **source**.  Create a folder path as **2019/02/26/14** in your container. Create an empty text file, and name it as **file1.txt**. Upload the file1.txt to the folder path **source/2019/02/26/14** in your storage account.  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
+1. Hozzon létre egy **forrás**nevű tárolót.  Hozzon létre egy mappa elérési útját **2019/02/26/14** -ként a tárolóban. Hozzon létre egy üres szövegfájlt, és nevezze el **file1. txt**néven. Töltse fel a file1. txt fájlt a Storage-fiókjában lévő **forrás/2019/02/26/14** mappa elérési útjára.  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
     
-    ![upload files](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
+    ![fájlok feltöltése](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
-    > Please adjust the folder name with your UTC time.  For example, if the current UTC time is 2:03 PM on Feb 26th, 2019, you can create the folder path as **source/2019/02/26/14/** by the rule of **source/{Year}/{Month}/{Day}/{Hour}/** .
+    > Állítsa be a mappa nevét az UTC időpontra.  Ha például az aktuális UTC-idő 2:03 PM, 2019, a mappa elérési útja **forrás/2019/02/26/14/** a **forrás/{év}/{hónap}/{Day}/{Hour}/** értékkel hozható létre.
 
-2. Create a container named **destination**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
+2. Hozzon létre egy **célhely**nevű tárolót. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. On the left menu, select **Create a resource** > **Data + Analytics** > **Data Factory**: 
+1. A bal oldali menüben válassza az **erőforrás létrehozása** > **adatok és Analitika** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -89,19 +89,19 @@ Prepare your Blob storage for the tutorial by performing these steps.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Folyamat létrehozása az Adatok másolása eszközzel
 
-1. On the **Let's get started** page, select the **Copy Data** title to launch the Copy Data tool. 
+1. Az **első lépések** lapon válassza ki a **Adatok másolása** címet a adatok másolása eszköz elindításához. 
 
    ![Az Adatok másolása eszköz csempéje](./media/doc-common-process/get-started-page.png)
    
-2. On the **Properties** page, take the following steps:
+2. A **Tulajdonságok** oldalon hajtsa végre a következő lépéseket:
 
-    a. Under **Task name**, enter **DeltaCopyFromBlobPipeline**.
+    a. A **feladat neve**alatt adja meg a **DeltaCopyFromBlobPipeline**.
 
-    b. Under **Task cadence or Task schedule**, select **Run regularly on schedule**.
+    b. A **feladat lépésszám vagy a feladat ütemezés**alatt válassza **a rendszeres Futtatás ütemezés**szerint lehetőséget.
 
-    c. Under **Trigger type**, select **Tumbling Window**.
+    c. Az **trigger típusa**területen válassza a **kiesési ablak**lehetőséget.
     
-    d. Under **Recurrence**, enter **1 Hour(s)** . 
+    d. Az **Ismétlődés**alatt adja meg az **1 óra**értéket. 
     
     e. Kattintson a **Tovább** gombra. 
     
@@ -110,48 +110,48 @@ Prepare your Blob storage for the tutorial by performing these steps.
     ![Tulajdonságok lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. A **Forrásadattár** oldalon hajtsa végre az alábbi lépéseket:
 
-    a. Click  **+ Create new connection**, to add a connection.
+    a. A kapcsolatok hozzáadásához kattintson az **+ új kapcsolatok létrehozása**lehetőségre.
 
     ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page.png)
     
-    b. Select **Azure Blob Storage** from the gallery, and then click **Continue**.
+    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd kattintson a **Folytatás**gombra.
 
     ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
     
-    c. On the **New Linked Service** page, select your storage account from the **Storage account name** list, and then click **Finish**.
+    c. Az **új társított szolgáltatás** lapon válassza ki a Storage-fiók nevét a **Storage-fiók neve** listáról, majd kattintson a **Befejezés**gombra.
     
     ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. Select the newly created linked service, then click **Next**. 
+    d. Válassza ki az újonnan létrehozott társított szolgáltatást, majd kattintson a **tovább**gombra. 
     
    ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. **A bemeneti fájl vagy mappa kiválasztása** oldalon kövesse az alábbi lépéseket:
     
-    a. Browse and select the **source** container, then select **Choose**.
+    a. Tallózással keresse meg és válassza ki a **forrás** tárolót, majd válassza **a kiválasztás lehetőséget.**
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
     
-    b. Under **File loading behavior**, select **Incremental load: time-partitioned folder/file names**.
+    b. A **fájl betöltése viselkedés**területen válassza a **növekményes betöltés: idő particionált mappák/fájlnevek**lehetőséget.
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
-    c. Write the dynamic folder path as **source/{year}/{month}/{day}/{hour}/** , and change the format as followings:
+    c. Írja be a dinamikus mappa elérési útját **forrás/{év}/{hónap}/{nap}/{Hour}/** , és módosítsa a formátumot a következőképpen:
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
-    d. Check **Binary copy** and click **Next**.
+    d. Győződjön meg a **bináris másolásról** , majd kattintson a **tovább**gombra.
     
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
-5. On the **Destination data store** page, select the **AzureBlobStorage**, which is the same storage account as data source store, and then click **Next**.
+5. A **cél adattár** lapon válassza ki a **AzureBlobStorage**, amely ugyanaz a Storage-fiók, mint az adatforrás-tároló, majd kattintson a **tovább**gombra.
 
     ![Céladattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png) 
-6. On the **Choose the output file or folder** page, do the following steps:
+6. A **kimeneti fájl vagy mappa kiválasztása** lapon hajtsa végre a következő lépéseket:
     
-    a. Browse and select the **destination** folder, then click **Choose**.
+    a. Tallózással keresse meg és jelölje ki a **célmappát** , majd kattintson a **kiválasztás**elemre.
     
     ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)   
     
-    b. Write the dynamic folder path as **source/{year}/{month}/{day}/{hour}/** , and change the format as followings:
+    b. Írja be a dinamikus mappa elérési útját **forrás/{év}/{hónap}/{nap}/{Hour}/** , és módosítsa a formátumot a következőképpen:
     
     ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)    
     
@@ -166,38 +166,38 @@ Prepare your Blob storage for the tutorial by performing these steps.
     ![Összefoglaló lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
     
 9. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre.
-    ![Deployment page](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    ![üzembe helyezési oldal](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
     
-10. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva.  You need wait for the pipeline run when it is triggered automatically (about after one hour).  When it runs, the **Actions** column includes links to view activity run details and to rerun the pipeline. Select **Refresh** to refresh the list, and select the **View Activity Runs** link in the **Actions** column. 
+10. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva.  Várnia kell, amíg a folyamat automatikusan elindul (körülbelül egy óra elteltével).  A művelet futtatásakor a **műveletek** oszlop hivatkozásokat tartalmaz a tevékenység futtatási részleteinek megtekintéséhez és a folyamat újrafuttatásához. A lista frissítéséhez kattintson a **frissítés** gombra, majd a **műveletek** oszlopban válassza a **tevékenység futtatása hivatkozás megjelenítése** hivatkozást. 
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. You can see the source file (file1.txt) has been copied from  **source/2019/02/26/14/**  to **destination/2019/02/26/14/** with the same file name.  
+11. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Láthatja, hogy a forrásfájl (file1. txt) át lett másolva a **forrás/2019/02/26/14/** **cél/2019/02/26/14** /között ugyanazzal a fájlnévvel.  
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    You can also verify the same by using Azure Storage Explorer (https://storageexplorer.com/) to scan the files.
+    Ugyanezt a Azure Storage Explorer használatával is ellenőrizheti (https://storageexplorer.com/) a fájlok vizsgálatához.
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Create another empty text file with the new name as **file2.txt**. Upload the file2.txt file to the folder path **source/2019/02/26/15** in your storage account.   Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).   
+12. Hozzon létre egy másik üres szövegfájlt az új névvel a **fájl2. txt**néven. Töltse fel a fájl2. txt fájlt a Storage-fiókjában lévő **forrás/2019/02/26/15** mappa elérési útjára.   Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).   
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
     > [!NOTE]
-    > You might be aware that a new folder path is required to be created. Please adjust the folder name with your UTC time.  For example, if the current UTC time is 3:20 PM on Feb 26th, 2019, you can create the folder path as **source/2019/02/26/15/** by the rule of **{Year}/{Month}/{Day}/{Hour}/** .
+    > Előfordulhat, hogy az új mappa elérési útjának létrehozására van szükség. Állítsa be a mappa nevét az UTC időpontra.  Ha például az aktuális UTC-idő 3:20 PM, 2019. február 26-án a mappa elérési útja a következőképpen hozható létre: **forrás/2019/02/26/15/** a (z) **{Year}/{month}/{Day}/{Hour}/** szabálya.
     
-13. To go back to the **Pipeline Runs** view, select **All Pipelines Runs**, and wait for the same pipeline being triggered again automatically after another one hour.  
+13. Ha vissza szeretne térni a **folyamat futási** nézetéhez, válassza a **minden folyamat fut**lehetőséget, és várjon, amíg egy másik óra elteltével a folyamat automatikusan újraindul.  
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. Select **View Activity Run** for the second pipeline run when it comes, and do the same to review details.  
+14. A második folyamat futásakor válassza a **Megtekintés tevékenység futtatása** lehetőséget, és végezze el a részletek áttekintését.  
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs6.png)
     
-    You can see the source file (file2.txt) has been copied from  **source/2019/02/26/15/**  to **destination/2019/02/26/15/** with the same file name.
+    Láthatja, hogy a forrásfájl (fájl2. txt) át lett másolva a **forrás/2019/02/26/15/** **cél/2019/02/** 26/15/között, ugyanazzal a fájlnévvel.
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    You can also verify the same by using Azure Storage Explorer (https://storageexplorer.com/) to scan the files in **destination** container
+    Ugyanezt a Azure Storage Explorer használatával is ellenőrizheti (https://storageexplorer.com/) **a tárolóban** lévő fájlok vizsgálatához.
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

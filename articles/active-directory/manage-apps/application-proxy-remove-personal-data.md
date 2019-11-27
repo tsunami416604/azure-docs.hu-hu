@@ -79,6 +79,6 @@ Az egyik lehetőség annak biztosítására, hogy az összekötő naplófájljai
 
 ![Megjelenít egy kódrészletet az eltávolítandó Kiemelt kóddal](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazásproxy áttekintését lásd: [biztonságos távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz](application-proxy.md).

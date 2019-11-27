@@ -79,7 +79,7 @@ Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 
 ![A minta regisztrációs portált ábrázoló képernyőfelvétel](media/what-is-b2b/sign-up-portal.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)

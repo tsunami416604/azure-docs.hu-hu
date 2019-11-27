@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Java - Bing Video Search'
+title: 'Gyors útmutató: videók keresése a Javához készült SDK-Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests using the Bing Video Search SDK for Java.
+description: Ezzel a rövid útmutatóval videó-keresési kéréseket küldhet a Javához készült Bing Video Search SDK-val.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378594"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Java
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Gyors útmutató: videós keresés végrehajtása a Java Bing Video Search SDK-val
 
-Use this quickstart to begin searching for news with the Bing Video Search SDK for Java. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), with additional annotations, and features.
+Ezzel a rövid útmutatóval megkezdheti a Java-hoz készült Bing Video Search SDK-val kapcsolatos hírek keresését. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), és további megjegyzéseket és funkciókat is tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * A [Gson-kódtár](https://github.com/google/gson)
 
@@ -59,9 +59,9 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
     import java.util.List; 
     ```
 
-## <a name="create-a-search-client"></a>Create a search client
+## <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. Implement the `VideoSearchAPIImpl` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
+1. Implementálja az `VideoSearchAPIImpl`-ügyfelet, amely az API-végpontot és a `ServiceClientCredentials` osztály egy példányát igényli.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -72,9 +72,9 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
     )};
     ```
 
-    To implement `ServiceClientCredentials`, follow these steps:
+    `ServiceClientCredentials`megvalósításához kövesse az alábbi lépéseket:
 
-    1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
+    1. felülbírálja a `applyCredentialsFilter()` függvényt egy `OkHttpClient.Builder` objektum paraméterként. 
         
         ```java
         //...
@@ -86,7 +86,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
         //...
         ```
     
-    2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
+    2. A `applyCredentialsFilter()`on belül hívja meg `builder.addNetworkInterceptor()`. Hozzon létre egy új `Interceptor` objektumot, és bírálja felül a `intercept()` metódust egy `Chain` Interceptor objektum elvégzéséhez.
 
         ```java
         //...
@@ -100,7 +100,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
         ///...
         ```
 
-    3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
+    3. A `intercept` függvényben hozzon létre változókat a kérelemhez. A kérés létrehozásához használja a `Request.Builder()`. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és adja vissza `chain.proceed()` a kérelem objektumon.
             
         ```java
         //...
@@ -115,9 +115,9 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Send a search request and receive the response 
+## <a name="send-a-search-request-and-receive-the-response"></a>Keresési kérelem küldése és a válasz fogadása 
 
-1. Create a function called `VideoSearch()` that takes your subscription key as a string. Instantiate the search client created earlier.
+1. Hozzon létre egy `VideoSearch()` nevű függvényt, amely karakterláncként veszi fel az előfizetési kulcsot. A korábban létrehozott keresési ügyfél példányának létrehozása.
     
     ```java
     public static void VideoSearch(String subscriptionKey){
@@ -125,7 +125,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
         //...
     }
     ```
-2. Within `VideoSearch()`, Send a video search request using the client, with `SwiftKey` as the search term. If the Video Search API returned a result, get the first result and print its id, name, and URL, along with the total number of videos returned. 
+2. `VideoSearch()`on belül küldjön egy videó-keresési kérést az ügyfél használatával, a keresési kifejezéssel `SwiftKey`. Ha a Video Search API eredményt adott eredményül, szerezze be az első eredményt, és nyomtassa ki az azonosítóját, nevét és URL-címét, valamint a visszaadott videók teljes számát. 
     
     ```java
     VideosInner videoResults = client.searchs().list("SwiftKey");
@@ -148,7 +148,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
     }
     ```
 
-3. Call the search method from your main method.
+3. Hívja meg a keresési módszert a Main metódusból.
 
     ```java
     public static void main(String[] args) {
@@ -159,9 +159,9 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
-* [What is the Bing Video Search API?](../overview.md)
+* [Mi a Bing Video Search API?](../overview.md)
 * [Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

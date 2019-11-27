@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Build policies to enforce compliance'
-description: In this tutorial, you use policies to enforce standards, control costs, maintain security, and impose enterprise wide design principles.
+title: 'Oktatóanyag: szabályzatok létrehozása a megfelelőség kikényszerítása érdekében'
+description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok betartatására, a költségek szabályozására, a biztonság fenntartására és a vállalati szintű tervezési alapelvek kiszabására.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482367"
 ---
-# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Create and manage policies to enforce compliance
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
 Fontos megismernie, hogy hogyan hozhat létre és kezelhet szabályzatokat az Azure-ban annak érdekében, hogy megfeleljen a vállalati szabványoknak és a szolgáltatói szerződéseknek. Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Policyt a vállalaton belüli szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez kapcsolódó gyakori feladatok elvégzésére, például a következőkre:
 
@@ -30,46 +30,46 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A megfelelőség Azure Policy használatával történő kikényszerítésének első lépése egy szabályzatdefiníció hozzárendelése. A szabályzatdefiníció határozza meg, hogy milyen feltétel teljesülése esetében lesz kikényszerítve a szabályzat, illetve milyen hatása lesz. Ebben a példában rendeljen hozzá egy, *Az SQL Server 12.0-s verziójának megkövetelése* nevű beépített szabályzatdefiníciót. Ezzel kikényszeríti azt a feltételt, hogy minden SQL Server-adatbázisnak 12.0-s verziójúnak kell lennie ahhoz, hogy teljesüljenek a megfelelőségi elvárások.
 
-1. Go to the Azure portal to assign policies. Search for and select **Policy**.
+1. A házirendek hozzárendeléséhez lépjen a Azure Portal. Keresse meg és válassza ki a **szabályzatot**.
 
-   ![Search for Policy in the search bar](../media/create-and-manage/search-policy.png)
+   ![Házirend keresése a keresősávban](../media/create-and-manage/search-policy.png)
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   ![Select Assignments from Policy Overview page](../media/create-and-manage/select-assignments.png)
+   ![Hozzárendelések kiválasztása a házirend áttekintő oldaláról](../media/create-and-manage/select-assignments.png)
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   ![Assign a policy definition from Assignments page](../media/create-and-manage/select-assign-policy.png)
+   ![Házirend-definíció hozzárendelése a hozzárendelések lapról](../media/create-and-manage/select-assign-policy.png)
 
-1. On the **Assign Policy** page, select the **Scope** by selecting the ellipsis and selecting either a management group or subscription. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Then select **Select** at the bottom of the **Scope** page.
+1. A **házirend kiosztása** lapon jelölje ki a **hatókört** a három pontot kiválasztva, majd válasszon ki egy felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután válassza a **kijelölés** elemet a **hatókör** lap alján.
 
    Ebben a példában a **Contoso** előfizetést használjuk. Saját előfizetése ettől eltérhet.
 
-1. Az erőforrások kizárhatóak a **Hatókör** alapján. A **Kizárások** alacsonyabb szinten kezdődnek, mint a **Hatókör** szintje. A **Kizárások** nem kötelezőek, ezért egyelőre hagyja őket üresen.
+1. Az erőforrások kizárhatóak a **Hatókör** alapján. A **Kizárások** alacsonyabb szinten kezdődnek, mint a **Hatókör** szintje. A **Kizárások** megadása nem kötelező, ezért most hagyja üresen a mezőt.
 
 1. Kattintson a **Szabályzatdefiníció** melletti három pontra az elérhető definíciók listájának megjelenítéséhez. A szabályzatdefiníció **Típus** tulajdonságát szűrheti *Beépített* érték alapján az összes megtekintéséhez és a leírásaik elolvasásához.
 
-1. Válassza **Az SQL Server 12.0-s verziójának megkövetelése** lehetőséget. If you can't find it right away, type **require sql server** into the search box and then press ENTER or select out of the search box. Select **Select** at the bottom of the **Available Definitions** page once you have found and selected the policy definition.
+1. Válassza **Az SQL Server 12.0-s verziójának megkövetelése** lehetőséget. Ha nem találja meg azonnal, írja be az **SQL Server megkövetelése** kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt, vagy válasszon ki a keresőmezőbe. Ha megtalálta és kiválasztotta a házirend-definíciót, válassza az **elérhető definíciók** lap alján található **Kiválasztás lehetőséget** .
 
-   ![Use search filter to locate a policy](../media/create-and-manage/select-available-definition.png)
+   ![Keresési szűrő használata házirend megkereséséhez](../media/create-and-manage/select-available-definition.png)
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. Ebben a példában tartsa meg *Az SQL Server 12.0-s verziójának megkövetelése* nevet. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
-   **Assigned by** is automatically filled based on who is logged in. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
+   A **hozzárendelt** érték automatikusan ki van töltve a bejelentkezett felhasználó alapján. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
 
-1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. This box _must_ be checked when the policy or initiative being assigned includes a policy with the [deployIfNotExists](../concepts/effects.md#deployifnotexists) effect. As the policy used for this tutorial doesn't, leave it blank. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel nem az ebben az oktatóanyagban használt házirendet, hagyja üresen a mezőt. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Válassza a **Hozzárendelés** elemet.
 
 ## <a name="implement-a-new-custom-policy"></a>Új egyéni szabályzat megvalósítása
 
-Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Next, create a new custom policy to save costs by validating that VMs created in your environment can't be in the G series. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
+Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Ezután hozzon létre egy új egyéni szabályzatot a költségek ellenőrzi, hogy a környezetben létrehozott virtuális gépek a G sorozat nem lehet. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
 
 1. A **Létrehozás** területen válassza a **Definíciók** elemet az Azure Policy lap bal oldalán.
 
-   ![Definition page under Authoring group](../media/create-and-manage/definition-under-authoring.png)
+   ![Definíciós lap szerzői csoport alatt](../media/create-and-manage/definition-under-authoring.png)
 
-1. Kattintson a **+ Szabályzatdefiníció** elemre a lap tetején. This button opens to the **Policy definition** page.
+1. Kattintson a **+ Szabályzatdefiníció** elemre a lap tetején. Ez a gomb megnyílik a **házirend-definíció** lapon.
 
 1. Adja meg a következő információkat:
 
@@ -109,7 +109,7 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
    }
    ```
 
-   The *field* property in the policy rule must be one of the following values: Name, Type, Location, Tags, or an alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
+   A házirend-szabály *mező* tulajdonságának a következő értékek egyikének kell lennie: név, típus, hely, címkék vagy alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
 
    További Azure-szabályzatmintákért lásd: [Az Azure Policy mintái](../samples/index.md).
 
@@ -117,7 +117,7 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Szabályzatdefiníció létrehozása REST API-val
 
-You can create a policy with the REST API for Azure Policy Definitions. A REST API lehetővé teszi a szabályzatdefiníciók létrehozását és törlését, valamint a meglévő definíciók információinak lekérését. Szabályzatdefiníció létrehozásához használja a következő példát:
+Létrehozhat egy szabályzatot Azure Policy-definíciók REST API. A REST API lehetővé teszi a szabályzatdefiníciók létrehozását és törlését, valamint a meglévő definíciók információinak lekérését. Szabályzatdefiníció létrehozásához használja a következő példát:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -157,7 +157,7 @@ Használjon az alábbi példában láthatóhoz hasonló kéréstörzset:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Szabályzatdefiníció létrehozása a PowerShell használatával
 
-Before proceeding with the PowerShell example, make sure you've installed the latest version of the Azure PowerShell Az module.
+Mielőtt továbblép a PowerShell-példával, győződjön meg arról, hogy telepítette az Azure PowerShell legújabb verzióját az modulban.
 
 Szabályzatdefiníciót a `New-AzPolicyDefinition` parancsmag használatával is létrehozhat.
 
@@ -321,27 +321,27 @@ Visszaadja az összes elérhető szabályzatdefiníciót, köztük a beépített
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Kezdeményezési definíció létrehozása és hozzárendelése
 
-A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat egy átfogó cél eléréséhez. An initiative evaluates resources within scope of the assignment for compliance to the included policies. További információt a kezdeményezési definíciókról az [Azure Policy – áttekintés](../overview.md) című részben talál.
+A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat egy átfogó cél eléréséhez. A kezdeményezés a befoglalt szabályzatoknak való megfelelés érdekében kiértékeli az erőforrásokat a hozzárendelés hatókörén belül. További információt a kezdeményezési definíciókról az [Azure Policy – áttekintés](../overview.md) című részben talál.
 
 ### <a name="create-an-initiative-definition"></a>Kezdeményezési definíció létrehozása
 
 1. A **Létrehozás** területen válassza a **Definíciók** elemet az Azure Policy lap bal oldalán.
 
-   ![Select definition from the Definitions page](../media/create-and-manage/definition-under-authoring.png)
+   ![Definíció kiválasztása a definíciók lapról](../media/create-and-manage/definition-under-authoring.png)
 
 1. A **Kezdeményezési definíció** oldal megnyitásához kattintson a **+ Kezdeményezési definíció** elemre az oldal tetején.
 
-   ![Review initiative definition page](../media/create-and-manage/initiative-definition.png)
+   ![Kezdeményezés definíciójának áttekintése lap](../media/create-and-manage/initiative-definition.png)
 
 1. Kattintson a **Definíció helye** melletti három pontra a definíciót tároló felügyeleti csoport vagy előfizetés kiválasztásához. Ha az előző lap hatóköre egyetlen felügyeleti csoportra vagy előfizetésre terjed ki, a **Definíció helye** automatikusan kitöltődik.
 
 1. Adja meg a kezdeményezés **nevét** és **leírását**.
 
-   This example validates that resources are in compliance with policy definitions about getting secure. Adja a kezdeményezésnek a **Biztonságossá tétel** nevet, és állítsa be a következő leírást: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
+   Ebben a példában azt ellenőrzi, hogy vannak-e erőforrások tételről szóló biztonságossá. Adja a kezdeményezésnek a **Biztonságossá tétel** nevet, és állítsa be a következő leírást: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
 
 1. A **Kategória** megadásakor válasszon a meglévő lehetőségek közül, vagy hozzon létre új kategóriát.
 
-1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. For the **Get secure** initiative, add the following built-in policy definitions by selecting the **+** next to the policy definition information or selecting a policy definition row and then the **+ Add** option in the details page:
+1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **biztonságos** kezdeményezéshez adja hozzá a következő beépített szabályzat-definíciókat a házirend-definíciós információk melletti **+** kiválasztásával, majd a Részletek lapon a **+ Hozzáadás** lehetőség kiválasztásával:
 
    - Az SQL Server 12.0-ás verziójának megkövetelése
    - [Preview]: Monitor unprotected web applications in Security Center.
@@ -349,16 +349,16 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    - [Preview]: Monitor possible app Whitelisting in Security Center.
    - [Preview]: Monitor unencrypted VM Disks in Security Center.
 
-   After selecting the policy definition from the list, it's added under **Policies and Parameters**.
+   Miután kiválasztotta a házirend-definíciót a listából, a rendszer a **házirendek és paraméterek**területen adja hozzá.
 
-   ![Review initiative definition parameters](../media/create-and-manage/initiative-definition-2.png)
+   ![Kezdeményezési definíció paramétereinek áttekintése](../media/create-and-manage/initiative-definition-2.png)
 
-1. If a policy definition being added to the initiative has parameters, they're shown under the policy name in the **Policies and Parameters** area. Az _érték_ beállítható „Megadott érték” (nem módosítható érték az adott kezdeményezés minden hozzárendelésében) vagy „A kezdeményezési paraméter használata” (az egyes kezdeményezés-hozzárendelésekkor kell megadni az értéket) állapotra. If 'Set value' is selected, the drop-down to the right of _Values_ allows entering or selecting the value(s). Ha „A kezdeményezési paraméter használata” lehetőséget választja, megjelenik egy új, **Kezdeményezési paraméterek** szakasz, amelyben meghatározható a kezdeményezés hozzárendelésekor beállítandó paraméter. Az ebben a kezdeményezési paraméterben szereplő engedélyezett értékek tovább korlátozhatják, hogy mi adható meg a kezdeményezés hozzárendelésekor.
+1. Ha a kezdeményezéshez hozzáadott házirend-definíció paraméterekkel rendelkezik, azok a **házirendek és paraméterek** területen a szabályzat neve alatt jelennek meg. Az _érték_ beállítható „Megadott érték” (nem módosítható érték az adott kezdeményezés minden hozzárendelésében) vagy „A kezdeményezési paraméter használata” (az egyes kezdeményezés-hozzárendelésekkor kell megadni az értéket) állapotra. Ha a "set Value" (érték beállítása) lehetőség van kiválasztva, az _értékek_ jobb oldalán lévő legördülő menüből megadható vagy kiválasztható az érték (ek). Ha „A kezdeményezési paraméter használata” lehetőséget választja, megjelenik egy új, **Kezdeményezési paraméterek** szakasz, amelyben meghatározható a kezdeményezés hozzárendelésekor beállítandó paraméter. Az ebben a kezdeményezési paraméterben szereplő engedélyezett értékek tovább korlátozhatják, hogy mi adható meg a kezdeményezés hozzárendelésekor.
 
-   ![Change initiative definition parameters from allowed values](../media/create-and-manage/initiative-definition-3.png)
+   ![Kezdeményezési definíció paramétereinek módosítása az engedélyezett értékekről](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
-   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Selecting it opens the 'Parameter scope (&lt;parameter name&gt;)' page. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
+   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Ha kiválasztja, megnyílik a "paraméter hatóköre (&lt;paraméter neve&gt;)" oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -368,11 +368,11 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. Keresse meg és válassza ki a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót. Kattintson az oldal tetején található **Hozzárendelés** lehetőségre a **Biztonságossá tétel: kezdeményezés hozzárendelése** oldal megnyitásához.
 
-   ![Assign a definition from Initiative definition page](../media/create-and-manage/assign-definition.png)
+   ![Definíció társítása a kezdeményezési definíciós lapról](../media/create-and-manage/assign-definition.png)
 
-   You can also right-click on the selected row or select the ellipsis at the end of the row for a contextual menu. Ott válassza a **Hozzárendelés** parancsot.
+   Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy kiválasztja a sor végén található három pontot a helyi menühöz. Ott válassza a **Hozzárendelés** parancsot.
 
-   ![Alternative options for an initiative](../media/create-and-manage/select-right-click.png)
+   ![A kezdeményezés alternatív lehetőségei](../media/create-and-manage/select-right-click.png)
 
 1. A **Biztonságossá tétel: kezdeményezés hozzárendelése** oldalon adja meg a következő példaadatokat. A saját adatait is használhatja.
 
@@ -383,7 +383,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    - Leírás: Ez a kezdeményezési hozzárendelés ennek a szabályzatdefiníció-csoportnak a kikényszerítésére lett létrehozva.
    - Hozzárendelte: A kitöltése automatikus az éppen bejelentkezett felhasználó alapján. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
 
-1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. This box _must_ be checked when the policy or initiative being assigned includes a policy with the [deployIfNotExists](../concepts/effects.md#deployifnotexists) effect. As the policy used for this tutorial doesn't, leave it blank. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan házirendet tartalmaz, amely [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatással van. Mivel nem az ebben az oktatóanyagban használt házirendet, hagyja üresen a mezőt. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Válassza a **Hozzárendelés** elemet.
 
@@ -391,34 +391,34 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. Válassza a **Megfelelőség** lehetőséget az Azure Policy lap bal oldalán.
 
-1. Locate the **Get Secure** initiative. It's likely still in _Compliance state_ of **Not started**.
-   Select the initiative to get full details on the progress of the assignment.
+1. Keresse meg a **biztonságos** kezdeményezést. Valószínűleg továbbra is a **nem indult el** _megfelelőségi állapotban_ van.
+   Válassza ki a kezdeményezést, amely részletesen ismerteti a hozzárendelés előrehaladását.
 
-   ![Initiative compliance page - evaluations not started](../media/create-and-manage/compliance-status-not-started.png)
+   ![Kezdeményezés megfelelőségi lapja – nem indított értékelések](../media/create-and-manage/compliance-status-not-started.png)
 
-1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a **Megfelelő** _Megfelelőségi állapottal_.
+1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a _Megfelelő_ **Megfelelőségi állapottal**.
 
-   ![Initiative compliance page- resources compliant](../media/create-and-manage/compliance-status-compliant.png)
+   ![Kezdeményezési megfelelőség lap – az erőforrások megfelelőek](../media/create-and-manage/compliance-status-compliant.png)
 
-1. Selecting on any policy on the initiative compliance page opens the compliance details page for the policy. Ez a lap az erőforrás szintjén tartalmaz részleteket a megfelelőséghez.
+1. Ha a kezdeményezés megfelelősége lapon a szabályzatra kattint, megnyílik a szabályzat megfelelőségi részletek lapja. Ez a lap az erőforrás szintjén tartalmaz részleteket a megfelelőséghez.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Nem megfelelő vagy elutasított erőforrás mentesítése Kizárás használatával
 
-A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az SQL Server 12.0-s verziójának megköveteléséhez, egy 12.0-stól eltérő verziójú SQL-kiszolgáló létrehozását a rendszer elutasítja. In this section, you walk through resolving a denied request to create a SQL server by creating an exclusion on a single resource group. A kizárás megakadályozza a szabályzat (vagy kezdeményezés) kikényszerítését az adott erőforráson.
+A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az SQL Server 12.0-s verziójának megköveteléséhez, egy 12.0-stól eltérő verziójú SQL-kiszolgáló létrehozását a rendszer elutasítja. Ebben a szakaszban vezeti végig elutasított kérelem hozzon létre egy SQL server egyetlen kizárás létrehozásával. A kizárás megakadályozza a szabályzat (vagy kezdeményezés) kikényszerítését az adott erőforráson.
 A következő példában bármely SQL-kiszolgálóverzió megengedett egyetlen erőforráscsoportban. A kizárás alkalmazható előfizetésre, erőforráscsoportra, vagy leszűkíthető egyéni erőforrásokra is.
 
-A deployment prevented by an assigned policy or initiative can be viewed in two locations:
+Központi telepítés egy hozzárendelt szabályzatot vagy kezdeményezést. Ebben az esetben két helyen tekinthet meg:
 
-- On the resource group targeted by the deployment: Select **Deployments** in the left side of the page, then select the **Deployment Name** of the failed deployment. Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. To determine the policy or initiative and assignment that denied the resource, select **Failed. Click here for details ->** on the Deployment Overview page.
-  A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. Under **Error Details** are the GUIDs of the related policy objects.
+- Az üzemelő példány által megnevezett erőforráscsoport esetében: válassza a **központi telepítés** lehetőséget a lap bal oldalán, majd válassza ki a sikertelen központi telepítés **központi telepítési nevét** . Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Az erőforrást megtagadó házirend vagy kezdeményezés és hozzárendelés meghatározásához válassza a **sikertelen lehetőséget. Kattintson ide a részletekért – >** a központi telepítés áttekintése lapon.
+  A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. A **hiba részletei** szakaszban a kapcsolódó házirend-objektumok GUID azonosítói láthatók.
 
   ![Szabályzat-hozzárendelés által elutasított üzembe helyezés](../media/create-and-manage/rg-deployment-denied.png)
 
-- On the Azure Policy page: Select **Compliance** in the left side of the page and select the **Require SQL Server version 12.0** policy. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Under the **Events** tab, you would also see who tried the deployment that was denied by the policy.
+- A Azure Policy oldalon: válassza a **megfelelőség** lehetőséget az oldal bal oldalán, és válassza a **SQL Server 12,0-es verziójának megkövetelése** házirendet. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Az **események** lapon azt is láthatja, hogy ki próbálta meg a házirend által megtagadott telepítést.
 
   ![Hozzárendelt szabályzatok megfelelőségének áttekintése](../media/create-and-manage/compliance-overview.png)
 
-In this example, Trent Baker, one of Contoso's Sr. Virtualization specialists, was doing required work. We need to grant Trent an exception, but we don't want the non-version 12.0 SQL servers in just any resource group. Létrehoztunk egy új erőforráscsoportot **SQLServers_Excluded** néven, és most kivételt biztosítunk a számára a szabályzat-hozzárendelés alól.
+Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialista szükséges munkát végzett. Kivételt Trent engedélyezni kell, azonban bármely erőforráscsoport nem - 12.0-ás SQL-kiszolgálók nem szeretnénk. Létrehoztunk egy új erőforráscsoportot **SQLServers_Excluded** néven, és most kivételt biztosítunk a számára a szabályzat-hozzárendelés alól.
 
 ### <a name="update-assignment-with-exclusion"></a>Hozzárendelés frissítése egy kizárással
 
@@ -426,22 +426,22 @@ In this example, Trent Baker, one of Contoso's Sr. Virtualization specialists, w
 
 1. Tallózzon az összes szabályzat-hozzárendelés között, majd nyissa meg az *Az SQL Server 12.0-ás verziójának megkövetelése* hozzárendelést.
 
-1. Set the **Exclusion** by selecting the ellipsis and selecting the resource group to exclude, *SQLServers_Excluded* in this example.
+1. Állítsa be a **kizárást** úgy, hogy kiválasztja a három pontot, és kiválasztja a kizárni kívánt erőforráscsoportot, *SQLServers_Excluded* ebben a példában.
 
-   ![Add an excluded resource group to the policy assignment](../media/create-and-manage/request-exclusion.png)
+   ![Kizárt erőforráscsoport hozzáadása a szabályzat-hozzárendeléshez](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > A szabályzattól és annak hatásától függően a kizárás vonatkozhat a hozzárendelés hatókörén belül található erőforráscsoportok egyes erőforrásaira is. Mivel az oktatóanyagban egy **Megtagadás** hatást alkalmaztunk, nem lenne értelme kizárást beállítani egy már létező erőforrásra.
 
-1. Select **Select** and then select **Save**.
+1. Válassza a **kijelölés** lehetőséget, majd válassza a **Mentés**lehetőséget.
 
-In this section, you resolved the denied request by creating an exclusion on a single resource group.
+Ebben a szakaszban az elutasított kérelem egyetlen kizárás létrehozásával feloldva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you're done working with resources from this tutorial, use the following steps to delete any of the assignments or definitions created above:
+Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az alábbi lépéseket, törölje a létrehozott hozzárendeléseket vagy definíciókat fent:
 
-1. Select **Definitions** (or **Assignments** if you're trying to delete an assignment) under **Authoring** in the left side of the Azure Policy page.
+1. Válassza a **definíciók** **(vagy** hozzárendelések) lehetőséget a Azure Policy lap bal oldalán található **authoring (szerzői műveletek** ) elemnél.
 
 1. Keresse meg az eltávolítani kívánt új kezdeményezést vagy szabályzatdefiníciót (vagy hozzárendelést).
 
@@ -457,7 +457,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - Feloldott egy nem megfelelő vagy elutasított erőforrást
 > - Megvalósított egy új szabályzatot a vállalaton belül
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

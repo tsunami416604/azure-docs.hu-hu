@@ -26,6 +26,6 @@ Az Azure dev Spaces használatával megoszthatja a fejlesztői tárhelyét máso
 
      ![A Visual Studio indítási beállításai legördülő menü](../media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért lásd a [Team Development](../team-development-nodejs.md) megismerését ismertető témakört.

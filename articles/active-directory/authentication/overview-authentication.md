@@ -1,5 +1,5 @@
 ---
-title: Authenticating and securing users - Azure Active Directory
+title: Felhasználók hitelesítése és biztonságossá tétele – Azure Active Directory
 description: Azure AD-rendszergazdaként hogyan gondoskodhatom a felhasználóhitelesítés biztonságáról és tehetem egyszerűbbé a hitelesítést a végfelhasználók számára?
 services: active-directory
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381099"
 
 A hírekben folyamatosan azt lehet hallani, hogy a jelszavakat ellopják, és az identitásokat feltörik. A jelszó mellett egy második hitelesítési tényező megkövetelése azonnal növeli a vállalat biztonságát. A Microsoft Azure Active Directory (Azure AD) különféle szolgáltatásaival, mint az Azure Multi-Factor Authentication (Azure MFA) és az új Azure AD-jelszó önkiszolgáló kérése (SSPR) a rendszergazdák kiegészítő hitelesítési módszerekkel gondoskodhatnak a vállalat és a felhasználók védelméről.
 
-There are many scenarios that include: signing in to an application, resetting their password, enabling Windows Hello, and others, your users may be asked to provide additional verification that they are who they say they are.
+Számos forgatókönyv létezik: bejelentkezés egy alkalmazásba, a jelszó alaphelyzetbe állítása, a Windows Hello és egyéb engedélyezése, a felhasználóknak további ellenőrzéseket is meg kell adniuk arról, hogy kik ők.
 
 A további azonosítás különféle hitelesítési módszerekkel történhet, például a következőkkel:
 
@@ -47,7 +47,7 @@ Az új jelszó önkiszolgáló kérése a következőkből áll:
 * **Új jelszó kérése:** Nem tudok bejelentkezni, és szeretnék új jelszót kérni egy vagy több jóváhagyott hitelesítési módszer használatával.
 * **Fiók zárolásának feloldása:** Nem tudok bejelentkezni, mivel a fiókom zárolva lett, és szeretném feloldani a zárolást egy vagy több jóváhagyott hitelesítési módszer használatával.
 
-## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.
 
@@ -55,7 +55,7 @@ Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesít�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként konfiguráljuk az új jelszó önkiszolgáló kérését és az Azure Multi-Factor Authenticationt.
 

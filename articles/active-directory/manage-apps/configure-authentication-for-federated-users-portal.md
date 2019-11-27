@@ -268,7 +268,7 @@ Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -Policy
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a hitelesítés működéséről az Azure AD-ben: [hitelesítési forgatókönyvek az Azure ad-hez](../develop/authentication-scenarios.md).
 - A felhasználói egyszeri bejelentkezéssel kapcsolatos további információkért lásd: [egyszeri bejelentkezés a Azure Active Directory alkalmazásaihoz](what-is-single-sign-on.md).
 - A fejlesztővel kapcsolatos összes tartalom áttekintéséhez látogasson el a [Active Directory fejlesztői útmutatóba](../develop/v1-overview.md) .

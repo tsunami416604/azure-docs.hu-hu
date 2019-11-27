@@ -34,7 +34,7 @@ Ebben az oktatóanyagban az üzembe helyezés érdekében egyetlen egyszerű vir
 
 ![Az oktatóanyag hálózati infrastruktúrája](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tesztelési hálózati környezet beállítása
@@ -104,7 +104,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Erőforráscsoport     |**Test-FW-RG**|
+   |Erőforráscsoport     |**Teszt – FW-RG**|
    |Virtuális gép neve     |**SRV – ugrás**|
    |Régió     |Ugyanaz, mint az előző|
    |Rendszergazda felhasználóneve     |**azureuser**|
@@ -125,9 +125,9 @@ A következő táblázatban található információk segítségével konfigurá
 
 |Beállítás  |Érték  |
 |---------|---------|
-|Alhálózat|**Munkaterhelés – SN**|
-|Nyilvános IP-cím|**Nincsenek**|
-|Nyilvános bejövő portok|**Nincsenek**|
+|Subnet|**Munkaterhelés – SN**|
+|Nyilvános IP-cím|**NEz egy**|
+|Nyilvános bejövő portok|**NEz egy**|
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
@@ -140,9 +140,9 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Előfizetést     |\<az Ön előfizetése\>|
-   |Erőforráscsoport     |**Test-FW-RG** |
-   |Name (Név)     |**Test-FW01**|
+   |Előfizetés     |\<az Ön előfizetése\>|
+   |Erőforráscsoport     |**Teszt – FW-RG** |
+   |Név     |**Teszt – FW01**|
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **test-FW-vn**|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
@@ -254,7 +254,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

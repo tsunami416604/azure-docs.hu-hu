@@ -1,6 +1,6 @@
 ---
-title: Understanding periodic backup configuration in Azure Service Fabric | Microsoft Docs
-description: Use Service Fabric's periodic backup and restore feature for enabling periodic data backup of your application data.
+title: Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése | Microsoft Docs
+description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használja Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -21,31 +21,31 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232498"
 ---
-# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Understanding periodic backup configuration in Azure Service Fabric
+# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
 
-Configuring periodic backup of your Reliable stateful services or Reliable Actors consists of the following steps:
+A megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors rendszeres biztonsági mentésének konfigurálása a következő lépésekből áll:
 
-1. **Creation of backup policies**: In this step, one or more backup policies are created depending on requirements.
+1. **Biztonsági mentési szabályzatok létrehozása**: ebben a lépésben a követelményektől függően egy vagy több biztonsági mentési szabályzat jön létre.
 
-2. **Enabling backup**: In this step, you associate backup policies created in **Step 1** to the required entities, _Application_, _Service_, or a _Partition_.
+2. **Biztonsági mentés engedélyezése**: ebben a lépésben az **1. lépésben** létrehozott biztonsági mentési házirendeket rendeli hozzá a szükséges entitásokhoz, _alkalmazáshoz_, _szolgáltatáshoz_vagy _partícióhoz_.
 
-## <a name="create-backup-policy"></a>Create Backup Policy
+## <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-A backup policy consists of the following configurations:
+A biztonsági mentési szabályzat a következő konfigurációkból áll:
 
-* **Auto restore on data loss**: Specifies whether to trigger restore automatically using the latest available backup in case the partition experiences a data loss event.
+* **Automatikus visszaállítás adatvesztés**esetén: Megadja, hogy a rendszer automatikusan aktiválja-e a visszaállítást a legújabb elérhető biztonsági mentéssel, ha a partíció adatvesztési eseményt használ.
 
-* **Max incremental backups**: Defines the maximum number of incremental backups to be taken between two full backups. Max incremental backups specify the upper limit. A full backup may be taken before specified number of incremental backups are completed in one of the following conditions
+* **Növekményes biztonsági mentések**maximális száma: meghatározza a két teljes biztonsági mentés közötti növekményes biztonsági mentések maximális számát. A növekményes biztonsági mentések maximális száma a felső korlátot határozza meg. A megadott számú növekményes biztonsági mentések a következő feltételek egyike után teljes biztonsági mentést végezhetnek.
 
-    1. The replica has never taken a full backup since it has become primary.
+    1. A replika soha nem készített teljes biztonsági mentést, mert az elsődleges.
 
-    2. Some of the log records since the last backup has been truncated.
+    2. Néhány naplózási rekord a legutóbbi biztonsági mentés óta csonkolt.
 
-    3. Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+    3. A replika átadotta a MaxAccumulatedBackupLogSizeInMB korlátot.
 
-* **Backup schedule**: The time or frequency at which to take periodic backups. One can schedule backups to be recurring at specified interval or at a fixed time daily/ weekly.
+* **Biztonsági mentési ütemezés**: az időszakos biztonsági másolatok készítésének ideje vagy gyakorisága. Az egyik ütemezheti a biztonsági mentések ütemezését a megadott időközönként vagy napi/heti rögzített időtartamon keresztül.
 
-    1. **Frequency-based backup schedule**: This schedule type should be used if the need is to take data backup at fixed intervals. Desired time interval between two consecutive backups is defined using ISO8601 format. Frequency-based backup schedule supports interval resolution to the minute.
+    1. **Gyakoriság-alapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést rögzített időközönként kell végrehajtani. A két egymást követő biztonsági mentések közötti kívánt időintervallumot a ISO8601 formátuma határozza meg. A gyakoriság-alapú biztonsági mentési ütemterv az intervallum felbontását támogatja a percben.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -53,8 +53,8 @@ A backup policy consists of the following configurations:
         }
         ```
 
-    2. **Time-based backup schedule**: This schedule type should be used if the need is to take data backup at specific times of the day or week. Schedule frequency type can either be daily or weekly.
-        1. **_Daily_ Time-based backup schedule**: This schedule type should be used if the need id to take data backup at specific times of the day. To specify this, set `ScheduleFrequencyType` to _Daily_; and set `RunTimes` to list of desired time during the day in ISO8601 format, date specified along with time will be ignored. For example, `0001-01-01T18:00:00` represents _6:00 PM_ everyday, ignoring date part _0001-01-01_. Below example illustrates the configuration to trigger daily backup at _9:00 AM_ and _6:00 PM_ everyday.
+    2. **Időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap vagy hét adott időpontjában kell végrehajtani. Az ütemezett gyakoriság típusa lehet naponta vagy hetente.
+        1. **_Napi_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. Ennek megadásához állítsa be a `ScheduleFrequencyType`t _napi_értékre. és állítsa be `RunTimes` a kívánt idő ISO8601 formátumban való megjelenítéséhez, a dátummal együtt megadott dátumot figyelmen kívül hagyja a rendszer. Például `0001-01-01T18:00:00` a _6:00 PM_ mindennapi, figyelmen kívül hagyva a _0001-01-01_. részt. Az alábbi példa azt szemlélteti, hogy a napi biztonsági mentést az _9:00_ -es és a _6:00_ -as nap minden nap elindítsa.
 
             ```json
             {
@@ -67,7 +67,7 @@ A backup policy consists of the following configurations:
             }
             ```
 
-        2. **_Weekly_ Time-based backup schedule**: This schedule type should be used if the need id to take data backup at specific times of the day. To specify this, set `ScheduleFrequencyType` to _Weekly_; set `RunDays` to list of days in a week when backup needs to be triggered and set `RunTimes` to list of desired time during the day in ISO8601 format, date specified along with time will be ignored. List of days of a week when to trigger the periodic backup. Below example illustrates the configuration to trigger daily backup at _9:00 AM_ and _6:00 PM_ during Monday to Friday.
+        2. **_Heti_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. A beállítás megadásához állítsa `ScheduleFrequencyType` _hetente_; Ha a biztonsági mentést el szeretné indítani, és a ISO8601-formátumban a nap folyamán a kívánt idő listáját állítja `RunTimes` be, akkor a rendszer az idővel megadott dátumot fogja figyelmen kívül hagyni `RunDays` Egy hét napjainak listája az időszakos biztonsági mentés elindításához. Az alábbi példa azt szemlélteti, hogyan lehet a napi biztonsági mentést az _9:00_ -es és a _6:00_ -es időpontra kiváltani a hétfőtől péntekig.
 
             ```json
             {
@@ -87,8 +87,8 @@ A backup policy consists of the following configurations:
             }
             ```
 
-* **Backup storage**: Specifies the location to upload backups. Storage can be either Azure blob store or file share.
-    1. **Azure blob store**: This storage type should be selected when the need is to store generated backups in Azure. Both _standalone_ and _Azure-based_ clusters can use this storage type. Description for this storage type requires connection string and name of the container where backups need to be uploaded. If the container with the specified name is not available, then it gets created during upload of a backup.
+* **Biztonsági mentési tár**: megadja a biztonsági másolatok feltöltésének helyét. A tárterület lehet Azure Blob Store vagy fájlmegosztás.
+    1. **Azure Blob Store**: ezt a tárolási típust akkor kell kiválasztani, ha a létrehozott biztonsági mentéseket az Azure-ban kell tárolni. Az _önálló_ és az _Azure-alapú_ fürtök is használhatják ezt a tárolási típust. A tárolási típus leírásához a kapcsolati sztringre és annak a tárolónak a nevére van szükség, amelyben a biztonsági másolatokat fel kell tölteni. Ha a megadott nevű tároló nem érhető el, akkor a biztonsági mentés feltöltése során jön létre.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,8 +98,8 @@ A backup policy consists of the following configurations:
         }
         ```
 
-    2. **File share**: This storage type should be selected for _standalone_ clusters when the need is to store data backup on-premises. Description for this storage type requires file share path where backups need to be uploaded. Access to the file share can be configured using one of the following options
-        1. _Integrated Windows Authentication_, where the access to file share is provided to all computers belonging to the Service Fabric cluster. In this case, set following fields to configure _file-share_ based backup storage.
+    2. **Fájlmegosztás**: ezt a tárolási típust _különálló_ fürtökhöz kell kiválasztani, ha az adatbiztonsági mentést a helyszínen kell tárolni. A tárolási típus leírásához meg kell adni a fájlmegosztás elérési útját, ahol a biztonsági másolatokat fel kell tölteni. A fájlmegosztás elérését az alábbi lehetőségek egyikével konfigurálhatja
+        1. _Integrált Windows-hitelesítés_, ahol a fájlmegosztás elérését a Service Fabric fürthöz tartozó összes számítógép számára biztosítjuk. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztás_ alapú biztonsági mentési tár konfigurálásához.
 
             ```json
             {
@@ -109,7 +109,7 @@ A backup policy consists of the following configurations:
             }
             ```
 
-        2. _Protecting file share using user name and password_, where the access to file share is provided to specific users. File share storage specification also provides capability to specify secondary user name and secondary password to provide fall-back credentials in case authentication fails with primary user name and primary password. In this case, set following fields to configure _file-share_ based backup storage.
+        2. A _fájlmegosztás védelme felhasználónévvel és jelszóval_, ahol a fájlmegosztás elérését meghatározott felhasználók számára biztosítjuk. A fájlmegosztás tárolási specifikációja lehetőséget biztosít a másodlagos Felhasználónév és a másodlagos jelszó megadására, hogy a rendszer visszaadja a hitelesítő adatokat, ha a hitelesítés meghiúsul az elsődleges felhasználónévvel és az elsődleges jelszóval. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztás_ alapú biztonsági mentési tár konfigurálásához.
 
             ```json
             {
@@ -124,11 +124,11 @@ A backup policy consists of the following configurations:
             ```
 
 > [!NOTE]
-> Ensure that the storage reliability meets or exceeds reliability requirements of backup data.
+> Győződjön meg arról, hogy a tárolási megbízhatóság megfelel vagy meghaladja a biztonsági mentési adat megbízhatósági követelményeit.
 >
 
-* **Retention Policy**: Specifies the policy to retain backups in the configured storage. Only Basic Retention Policy is supported.
-    1. **Basic Retention Policy**: This retention policy allows to ensure optimal storage utilization by removing backup files which are no more required. `RetentionDuration` can be specified to set the time span for which backups are required to be retained in the storage. `MinimumNumberOfBackups` is an optional parameter that can be specified to make sure that the specified number of backups are always retained irrespective of the `RetentionDuration`. Below example illustrates the configuration to retain backups for _10_ days and does not allow number of backups to go below _20_.
+* **Adatmegőrzési szabály**: a konfigurált tárolóban lévő biztonsági másolatok megőrzésére vonatkozó házirendet határozza meg. Csak az alapszintű adatmegőrzési szabályok támogatottak.
+    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration` megadható annak az időtartománynak a megadásához, amelynek a biztonsági mentéseket meg kell őrizni a tárolóban. `MinimumNumberOfBackups` egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a `RetentionDuration`tól függetlenül megmaradjon. Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
 
         ```json
         {
@@ -138,117 +138,117 @@ A backup policy consists of the following configurations:
         }
         ```
 
-## <a name="enable-periodic-backup"></a>Enable periodic backup
-After defining backup policy to fulfill data backup requirements, the backup policy should be appropriately associated either with an _application_, or _service_, or a _partition_.
+## <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
+Miután meghatározta a biztonsági mentési szabályzatot az adatbiztonsági mentési követelmények teljesítése érdekében, a biztonsági mentési szabályzatnak megfelelő módon kell társítania egy _alkalmazást_vagy _szolgáltatást_, vagy egy _partíciót_.
 
-### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchical propagation of backup policy
-In Service Fabric, relation between application, service, and partitions is hierarchical as explained in [Application model](./service-fabric-application-model.md). Backup policy can be associated either with an _application_, _service_, or a _partition_ in the hierarchy. Backup policy propagates hierarchically to next level. Assuming there is only one backup policy created and associated with an _application_, all stateful partitions belonging to all _Reliable stateful services_ and _Reliable Actors_ of the _application_ will be backed-up using the backup policy. Or if the backup policy is associated with a _Reliable stateful service_, all its partitions will be backed-up using the backup policy.
+### <a name="hierarchical-propagation-of-backup-policy"></a>A biztonsági mentési szabályzat hierarchikus propagálása
+Service Fabric az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [alkalmazás modelljében](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési szabályzat egy _alkalmazással_, _szolgáltatással_vagy a hierarchiában található _partícióval_ is társítható. A biztonsági mentési szabályzat hierarchikusan propagálja a következő szintre. Feltételezve, hogy csak egy biztonsági mentési szabályzatot hozott létre és társít egy _alkalmazáshoz_, az összes _megbízható állapot-nyilvántartó szolgáltatáshoz_ és az _alkalmazás_ _Reliable Actors_ tartozó állapot-nyilvántartó partíciók biztonsági mentése a következő használatával történik: biztonsági mentési szabályzat. Ha a biztonsági mentési szabályzat _megbízható állapot-nyilvántartó szolgáltatáshoz_van társítva, a biztonsági mentési szabályzattal minden partíciója biztonsági mentésre kerül.
 
-### <a name="overriding-backup-policy"></a>Overriding backup policy
-There may be a scenario where data backup with same backup schedule is required for all services of the application except for specific services where the need is to have data backup using higher frequency schedule or taking backup to a different storage account or fileshare. To address such scenarios, backup restore service provides facility to override propagated policy at service and partition scope. When the backup policy is associated at _service_ or _partition_, it overrides propagated backup policy, if any.
+### <a name="overriding-backup-policy"></a>Biztonsági mentési szabályzat felülbírálása
+Előfordulhat, hogy az alkalmazás összes szolgáltatásához azonos biztonsági mentési ütemtervtel rendelkező adatbiztonsági mentésre van szükség, kivéve azokat a szolgáltatásokat, amelyeknek az adatbiztonsági mentést nagyobb gyakoriságú időpontra kell beállítani, vagy a biztonsági mentést egy másik Storage-fiókba, vagy fájlmegosztás. Az ilyen forgatókönyvek kezeléséhez a Backup Restore Service lehetővé teszi a propagált házirend felülbírálását a szolgáltatás és a partíció hatókörén. Ha a biztonsági mentési szabályzat _szolgáltatáshoz_ vagy _partícióhoz_van társítva, akkor felülbírálja a propagált biztonsági mentési szabályzatot, ha van ilyen.
 
 ### <a name="example"></a>Példa
 
-This example uses setup with two applications, _MyApp_A_ and _MyApp_B_. Application _MyApp_A_ contains two Reliable Stateful services, _SvcA1_ & _SvcA3_, and one Reliable Actor service, _ActorA2_. _SvcA1_ contains three partitions while _ActorA2_ and _SvcA3_ contain two partitions each.  Application _MyApp_B_ contains three Reliable Stateful services, _SvcB1_, _SvcB2_, and _SvcB3_. _SvcB1_ and _SvcB2_ contains two partitions each while _SvcB3_ contains three partitions.
+Ez a példa a telepítőt használja két alkalmazással, _MyApp_A_ és _MyApp_Bval_. Az alkalmazás _MyApp_A_ két megbízható állapot-nyilvántartó szolgáltatást tartalmaz, a _SvcA1_ & _SvcA3_és egy megbízható Actor Service-t, a _ActorA2_-t. A _SvcA1_ három partíciót tartalmaz, míg a _ActorA2_ és a _SvcA3_ két partíciót tartalmaz.  Az alkalmazás _MyApp_B_ három megbízható állapot-nyilvántartó szolgáltatást, _SvcB1_, _SvcB2_és _SvcB3_tartalmaz. A _SvcB1_ és a _SvcB2_ két partíciót tartalmaz, míg a _SvcB3_ három partíciót tartalmaz.
 
-Assume that these applications' data backup requirements are as follows
+Tegyük fel, hogy ezek az alkalmazások biztonsági mentési követelményei a következők:
 
 1. MyApp_A
-    1. Create daily backup of data for all partitions of all _Reliable Stateful services_ and _Reliable Actors_ belonging to the application. Upload backup data to location _BackupStore1_.
+    1. Napi biztonsági mentés készítése az összes _megbízható állapot-nyilvántartó szolgáltatás_ és az alkalmazáshoz tartozó _Reliable Actors_ összes partíciója számára. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-    2. One of the services, _SvcA3_, requires data backup every hour.
+    2. Az egyik szolgáltatás ( _SvcA3_) minden órában biztonsági mentést igényel.
 
-    3. Data size in partition _SvcA1_P2_ is more than expected and its backup data should be stored to different storage location _BackupStore2_.
+    3. A partíciós _SvcA1_P2_ adatmérete a vártnál nagyobb, és a biztonsági mentési adatmennyiséget a különböző tárolási hely _BackupStore2_kell tárolni.
 
 2. MyApp_B
-    1. Create backup of data every Sunday at 8:00 AM for all partitions of _SvcB1_ service. Upload backup data to location _BackupStore1_.
+    1. Készítsen biztonsági mentést minden vasárnap 8:00 ÓRAKOR a _SvcB1_ szolgáltatás összes partíciója számára. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-    2. Create backup of data every day at 8:00 AM for partition _SvcB2_P1_. Upload backup data to location _BackupStore1_.
+    2. Készítsen biztonsági másolatot az adatokról minden nap 8:00 ÓRAKOR a következőhöz: Partition _SvcB2_P1_. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-To address these data backup requirements, backup policies BP_1 to BP_5 are created and backup is enabled as follows.
+Az adatbiztonsági mentésre vonatkozó követelmények megoldásához a biztonsági mentési szabályzatok BP_1 BP_5 létrejön, és a biztonsági mentés az alábbiak szerint van engedélyezve.
 1. MyApp_A
-    1. Create backup policy, _BP_1_, with frequency-based backup schedule where frequency is set to 24 Hrs. and backup storage configured to use storage location _BackupStore1_. Enable this policy for Application _MyApp_A_ using [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API. This action enables data backup using backup policy _BP_1_ for all partitions of _Reliable Stateful services_ and _Reliable Actors_ belonging to application _MyApp_A_.
+    1. Hozzon létre biztonsági mentési szabályzatot, _BP_1_a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 24 óra. és a biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet az alkalmazás- _MyApp_A_ az [alkalmazás-biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) paranccsal. Ez a művelet lehetővé teszi az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_1_ a _megbízható állapot-nyilvántartó szolgáltatások_ összes partíciója és az alkalmazás- _MyApp_Ahoz_tartozó _Reliable Actors_ számára.
 
-    2. Create backup policy, _BP_2_, with frequency-based backup schedule where frequency is set to 1 Hrs. and backup storage configured to use storage location _BackupStore1_. Enable this policy for service _SvcA3_ using [Enable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API. This action overrides propagated policy _BP_1_ by explicitly enabled backup policy _BP_2_ for all partitions of service _SvcA3_ leading to data backup using backup policy _BP_2_ for these partitions.
+    2. Hozzon létre biztonsági mentési szabályzatot, _BP_2_, a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 1 óra. és a biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a szolgáltatás _SvcA3_ a [Service backup API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) használatával. Ez a művelet felülbírálja a propagált házirendet _BP_1_ explicit módon engedélyezett biztonsági mentési házirend _BP_2_ a _SvcA3_ összes partíciója számára, amely az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_2_ a partíciók esetében.
 
-    3. Create backup policy, _BP_3_, with frequency-based backup schedule where frequency is set to 24 Hrs. and backup storage configured to use storage location _BackupStore2_. Enable this policy for partition _SvcA1_P2_ using [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API. This action overrides propagated policy _BP_1_ by explicitly enabled backup policy _BP_3_ for partition _SvcA1_P2_.
+    3. Hozzon létre biztonsági mentési szabályzatot, _BP_3_a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 24 óra. és a biztonsági mentési tár a tárolási hely _BackupStore2_használatára van konfigurálva. Engedélyezze ezt a házirendet a partíciós _SvcA1_P2_ a [partíciós biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) paranccsal. Ez a művelet felülbírálja a propagált házirendet _BP_1_ explicit módon engedélyezett biztonsági mentési házirend _BP_3_ a partíció _SvcA1_P2_.
 
 2. MyApp_B
-    1. Create backup policy, _BP_4_, with time-based backup schedule where schedule frequency type is set to weekly, run days is set to Sunday, and run times is set to 8:00 AM. Backup storage configured to use storage location _BackupStore1_. Enable this policy for service _SvcB1_ using [Enable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API. This action enables data backup using backup policy _BP_4_ for all partitions of service _SvcB1_.
+    1. Biztonsági mentési szabályzat létrehozása, _BP_4_, időalapú biztonsági mentési ütemtervtel, ahol az ütemezett gyakoriság típusa heti értékre van állítva, a futtatási napok értéke vasárnap, a futtatási idők értéke pedig 8:00. A biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a szolgáltatás _SvcB1_ a [Service backup API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) használatával. Ez a művelet lehetővé teszi az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_4_ a Service _SvcB1_összes partíciójának használatával.
 
-    2. Create backup policy, _BP_5_, with time-based backup schedule where schedule frequency type is set to daily and run times is set to 8:00 AM. Backup storage configured to use storage location _BackupStore1_. Enable this policy for partition _SvcB2_P1_ using [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API. This action enables data backup using backup policy _BP_5_ for partition _SvcB2_P1_.
+    2. Biztonsági mentési szabályzat létrehozása, _BP_5_, időalapú biztonsági mentési ütemtervtel, ahol az ütemezett gyakoriság típusa napi értékre van állítva, és a futtatási időpontok értéke 8:00. A biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a partíciós _SvcB2_P1_ a [partíciós biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) paranccsal. Ez a művelet lehetővé teszi az adatbiztonsági mentést a _SvcB2_P1_partícióra vonatkozó biztonsági mentési szabályzat _BP_5_ használatával.
 
-Following diagram depicts explicitly enabled backup policies and propagated backup policies.
+Az alábbi ábra a explicit módon engedélyezett biztonsági mentési házirendeket és a propagált biztonsági mentési szabályzatokat ábrázolja.
 
-![Service Fabric Application Hierarchy][0]
+![Service Fabric alkalmazás-hierarchia][0]
 
-## <a name="disable-backup"></a>Disable backup
-Backup policies can be disabled when there is no need to backup data. Backup policy enabled at an _application_ can only be disabled at the same _application_ using [Disable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API, Backup policy enabled at a _service_ can be disabled at the same _service_ using [Disable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API, and Backup policy enabled at a _partition_ can be disabled at the same _partition_ using [Disable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API.
+## <a name="disable-backup"></a>Biztonsági mentés letiltása
+A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiztonsági mentésre. Az _alkalmazásban_ engedélyezett biztonsági mentési szabályzatot csak az alkalmazás-biztonsági mentési API [letiltásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) lehet letiltani, és a _szolgáltatásban_ engedélyezett biztonsági mentési szabályzat a [szolgáltatás biztonsági mentési API-k letiltásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) is letiltható. _a partíciós_ biztonsági [mentési API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) letiltásával _ugyanazon a_ _partíción_ is letiltható.
 
-* Disabling backup policy for an _application_ stops all periodic data backups happening as a result of propagation of the backup policy to Reliable Stateful service partitions or Reliable Actor partitions.
+* Egy _alkalmazás_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a biztonsági mentési szabályzat propagálásának eredményeképpen, megbízható állapot-nyilvántartó partíciók vagy megbízható szereplők partíciói számára.
 
-* Disabling backup policy for a _service_ stops all periodic data backups happening as a result of propagation of this backup policy to the partitions of the _service_.
+* Egy _szolgáltatás_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést, amely a biztonsági mentési szabályzatnak a _szolgáltatás_partíciókhoz való propagálásának eredményeképpen történik.
 
-* Disabling backup policy for a _partition_ stops all periodic data backup happening due to the backup policy at the partition.
+* Egy _partíció_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a partíció biztonsági mentési szabályzata miatt.
 
-* While disabling backup for an entity(application/service/partition), `CleanBackup` can be set to _true_ to delete all the backups in configured storage.
+* Az entitások (alkalmazás/szolgáltatás/partíció) biztonsági mentésének letiltásakor `CleanBackup` a _true_ értékre állítható a konfigurált tárolóban lévő összes biztonsági mentés törléséhez.
     ```json
     {
         "CleanBackup": true 
     }
     ```
 
-## <a name="suspend--resume-backup"></a>Suspend & resume backup
-Certain situation may demand temporary suspension of periodic backup of data. In such situation, depending on the requirement, suspend backup API may be used at an _Application_, _Service_, or _Partition_. Periodic backup suspension is transitive over subtree of the application's hierarchy from the point it is applied. 
+## <a name="suspend--resume-backup"></a>Felfüggesztés & biztonsági mentés folytatása
+Bizonyos helyzetek ideiglenes felfüggesztést igényelhetnek az adatmennyiség rendszeres biztonsági mentéséről. Ilyen helyzetekben a követelménytől függően a backup API felfüggesztése egy _alkalmazáson_, _szolgáltatáson_vagy _partíción_is felhasználható. A biztonsági mentés rendszeres felfüggesztése az alkalmazás hierarchiájának az alkalmazott pontról való átjárása. 
 
-* When suspension is applied at an _Application_ using [Suspend Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API, then all the services and partitions under this application are suspended for periodic backup of data.
+* Ha egy _alkalmazás_ felfüggesztését az [alkalmazás felfüggesztése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API-val alkalmazza, akkor az alkalmazásban lévő összes szolgáltatás és partíció fel van függesztve az adat rendszeres biztonsági mentéséhez.
 
-* When suspension is applied at a _Service_ using [Suspend Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API, then all the partitions under this service are suspended for periodic backup of data.
+* Ha a felfüggesztést a szolgáltatás [felfüggesztése szolgáltatás biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) _API használatával alkalmazza_ , akkor a szolgáltatásban lévő összes partíció fel van függesztve az adat rendszeres biztonsági mentéséhez.
 
-* When suspension is applied at a _Partition_ using [Suspend Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API, then it suspends partitions under this service are suspended for periodic backup of data.
+* Ha a felfüggesztést egy olyan _partíción_ alkalmazza, amely a [felfüggesztési partíció biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API-ját használja, a rendszer felfüggeszti a szolgáltatásban lévő partíciókat a rendszeres biztonsági mentéshez.
 
-Once the need for suspension is over, then the periodic data backup can be restored using respective resume backup API. Periodic backup must be resumed at same _application_, _service_, or _partition_ where it was suspended.
+Miután a felfüggesztés igénybe van véve, az időszakos biztonsági mentés visszaállítható a megfelelő folytatási biztonsági mentési API használatával. Az időszakos biztonsági mentést ugyanabban az _alkalmazásban_, _szolgáltatásban_vagy _partíción_ kell folytatni, ahol fel lett függesztve.
 
-* If suspension was applied at an _Application_, then it should be resumed using [Resume Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API. 
+* Ha a felfüggesztést egy _alkalmazáson_alkalmazták, akkor azt az alkalmazás- [biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API-val folytathatja. 
 
-* If suspension was applied at a _Service_, then it should be resumed using [Resume Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API.
+* Ha a felfüggesztést egy _szolgáltatáson_alkalmazták, akkor azt folytatni kell a [Service backup API folytatásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) .
 
-* If suspension was applied at a _Partition_, then it should be resumed using [Resume Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API.
+* Ha a felfüggesztést egy _partíción_alkalmazták, akkor azt újra kell folytatni a [partíciós biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-val.
 
-### <a name="difference-between-suspend-and-disable-backups"></a>Difference between Suspend and Disable backups
-Disable backup should be used when backups are no longer required for a particular application, service or partition. One can invoke disable backup request along with clean backups parameter to be true which would mean all existing backups are deleted as well. However, suspend is to be used in scenarios where one wants to turn off backups temporarily like when local disk becomes full or uploading backup is failing due to known network issue etc. 
+### <a name="difference-between-suspend-and-disable-backups"></a>A biztonsági másolatok felfüggesztése és letiltása közötti különbség
+Ha egy adott alkalmazáshoz, szolgáltatáshoz vagy partícióhoz már nincs szükség biztonsági mentésre, akkor tiltsa le a biztonsági mentést. Az egyik meghívhatja a biztonsági mentési kérelem letiltását a tiszta biztonsági mentések paraméterrel, ami azt jelenti, hogy az összes meglévő biztonsági mentés is törlődik. A felfüggesztést azonban olyan helyzetekben kell használni, amikor az egyik az ismert hálózati probléma miatt nem sikerül ideiglenesen kikapcsolni a biztonsági mentéseket. 
 
-While disable can be invoked only at a level which was earlier enabled for backup explicitly however suspension can be applied at any level which is currently enabled for backup either directly or via inheritance/ hierarchy. For example, if backup is enabled at an application level, one can invoke disable only at the application level however suspend can be invoked at application, any service or partition under that application. 
+Bár a Letiltás csak olyan szinten hívható meg, amely korábban engedélyezve lett a biztonsági mentéshez, azonban a felfüggesztés bármely olyan szinten alkalmazható, amely jelenleg engedélyezve van a biztonsági mentéshez közvetlenül, vagy öröklés/hierarchia használatával. Ha például a biztonsági mentés alkalmazási szinten engedélyezve van, az egyik csak az alkalmazás szintjén lehet letiltani a letiltást, azonban az alkalmazásban az alkalmazáshoz tartozó bármely szolgáltatás vagy partíció is meghívja a felfüggesztést. 
 
-## <a name="auto-restore-on-data-loss"></a>Auto restore on data loss
-The service partition may lose data due to unexpected failures. For example, the disk for two out of three replicas for a partition (including the primary replica) gets corrupted or wiped.
+## <a name="auto-restore-on-data-loss"></a>Automatikus visszaállítás az adatvesztéskor
+A szolgáltatás partíciója nem várt hibák miatt elveszítheti az adatvesztést. Például a partíciók három másodpéldánya (beleértve az elsődleges replikát is) esetében a lemez megsérül vagy törölve lesz.
 
-When Service Fabric detects that the partition is in data loss, it invokes `OnDataLossAsync` interface method on the partition and expects partition to take the required action to come out of data loss. In this situation, if the effective backup policy at the partition has `AutoRestoreOnDataLoss` flag set to `true` then the restore gets triggered automatically using latest available backup for this partition.
+Ha Service Fabric észleli, hogy a partíció adatvesztésben van, meghívja `OnDataLossAsync` Interface metódust a partíción, és elvárja, hogy a partíció elvégezze az adatvesztést. Ebben az esetben, ha a partíción lévő érvényes biztonsági mentési házirend `AutoRestoreOnDataLoss` `true` jelzővel rendelkezik, akkor a visszaállítás automatikusan aktiválódik a partíció legújabb elérhető biztonsági másolatának használatával.
 
-## <a name="get-backup-configuration"></a>Get backup configuration
-Separate APIs are made available to get backup configuration information at an _application_, _service_, and _partition_ scope. [Get Application Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Get Service Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), and [Get Partition Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) are these APIs respectively. Mainly, these APIs return the applicable backup policy, scope at which the backup policy is applied and backup suspension details. Following is brief description about returned results of these APIs.
+## <a name="get-backup-configuration"></a>Biztonsági mentési konfiguráció beolvasása
+Az _alkalmazások_, _szolgáltatások_és _partíciók_ hatókörében külön API-k érhetők el a biztonsági mentési konfigurációs információk lekéréséhez. Az [alkalmazás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)beszerzése, a [szolgáltatás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)beolvasása, valamint a [partíció biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) beolvasása ezen API-k Ezek az API-k elsősorban a megfelelő biztonsági mentési szabályzatot, a biztonsági mentési szabályzat hatálya alá eső hatókört és a biztonsági mentési felfüggesztés részleteit adják vissza. Az alábbi rövid leírás az API-k visszaadott eredményeiről szól.
 
-- Application backup configuration info: provides the details of backup policy applied at application and all the over-ridden policies at services and partitions belonging to the application. It also includes the suspension information for the application and it services, and partitions.
+- Az alkalmazás biztonsági másolatának konfigurációs adatai: az alkalmazáson alkalmazott biztonsági mentési házirend részleteit, valamint az alkalmazáshoz tartozó szolgáltatásokon és partíciókban található összes, a felett felülbírált szabályzatot tartalmazza. Emellett az alkalmazás és az IT-szolgáltatások, valamint a partíciók felfüggesztési információit is tartalmazza.
 
-- Service backup configuration info: provides the details of effective backup policy at service and the scope at which this policy was applied and all the over-ridden policies at its partitions. It also includes the suspension information for the service and its partitions.
+- A szolgáltatás biztonsági mentési konfigurációjának adatai: megadja a szolgáltatásra vonatkozó érvényes biztonsági mentési házirend részleteit, valamint azt a hatókört, amelyre a szabályzatot alkalmazták A szolgáltatás és a partíciók felfüggesztési információit is tartalmazza.
 
-- Partition backup configuration info: provides the details of effective backup policy at partition and the scope at which this policy was applied. It also includes the suspension information for the partitions.
+- Partíció biztonsági mentési konfigurációs adatai: a biztonsági mentési szabályzat részletes adatait tartalmazza a partíción, valamint azt a hatókört, amelyre a szabályzat érvényes. A partíciók felfüggesztési információit is tartalmazza.
 
-## <a name="list-available-backups"></a>List available backups
+## <a name="list-available-backups"></a>Elérhető biztonsági másolatok listázása
 
-Available backups can be listed using Get Backup List API. Result of API call includes backup info items related to all the backups available at the backup storage, which is configured in the applicable backup policy. Different variants of this API are provided to list available backups belonging to an application, service, or partition. These APIs support getting the _latest_ available backup of all applicable partitions, or filtering of backups based on _start date_ and _end date_.
+Az elérhető biztonsági másolatok a biztonsági mentési listával API-val is megtekinthetők. Az API-hívás eredménye tartalmazza a biztonsági mentési tárolóban elérhető biztonsági másolatokhoz kapcsolódó biztonsági mentési adatokat, amelyek a megfelelő biztonsági mentési házirendben vannak konfigurálva. Az API különböző változatai az alkalmazáshoz, szolgáltatáshoz vagy partícióhoz tartozó elérhető biztonsági másolatok listázására szolgálnak. Ezek az API-k támogatják az összes megfelelő partíció _legújabb_ elérhető biztonsági mentését, illetve a biztonsági másolatok szűrését a _kezdő dátum_ és a _befejezési dátum_alapján.
 
-These APIs also support pagination of the results, when _MaxResults_ parameter is set to non-zero positive integer then the API returns maximum _MaxResults_ backup info items. In case, there are more backup info items available than the _MaxResults_ value, then a continuation token is returned. Valid continuation token parameter can be used to get next set of results. When valid continuation token value is passed to next call of the API, the API returns next set of results. No continuation token is included in the response when all available results are returned.
+Ezek az API-k az eredmények tördelését is támogatják, ha a _MaxResults_ paraméter értéke nem nulla pozitív egész szám, akkor az API a maximális _MaxResults_ biztonsági mentési információ elemeit adja vissza. Ha a _MaxResults_ értéknél több biztonsági mentési információ is elérhető, akkor a rendszer a folytatási tokent adja vissza. A folytatási jogkivonat érvényes paramétere az eredmények következő készletének beolvasására használható. Ha az API következő hívására érvényes folytatólagos jogkivonat értéket ad át, az API a következő eredményeket adja vissza. Az összes elérhető eredmény visszaadásakor a válasz nem tartalmazza a folytatási tokent.
 
-Following is the brief information about supported variants.
+Az alábbiakban a támogatott változatokkal kapcsolatos rövid információk szerepelnek.
 
-- [Get Application Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Returns a list of backups available for every partition belonging to given Service Fabric application.
+- [Alkalmazás biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): az adott Service Fabric alkalmazáshoz tartozó összes partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-- [Get Service Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Returns a list of backups available for every partition belonging to given Service Fabric service.
+- [Szolgáltatás biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): a megadott Service Fabric szolgáltatáshoz tartozó minden partíció számára elérhető biztonsági másolatok listáját adja vissza.
  
-- [Get Partition Backup List](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Returns a list of backups available for the specified partition.
+- [Partíció biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
-- [Backup restore REST API reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+## <a name="next-steps"></a>További lépések
+- [Biztonsági mentés visszaállítása REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

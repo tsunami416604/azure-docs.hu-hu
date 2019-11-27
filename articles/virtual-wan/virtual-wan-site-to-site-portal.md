@@ -1,5 +1,5 @@
 ---
-title: 'Azure Virtual WAN: Create Site-to-Site connections'
+title: 'Azure Virtual WAN: helyek közötti kapcsolatok létrehozása'
 description: Az oktatóanyag az Azure-ba irányuló helyek közötti VPN-kapcsolat létrehozását ismerteti az Azure Virtual WAN használatával.
 services: virtual-wan
 author: cherylmc
@@ -19,75 +19,75 @@ ms.locfileid: "74482139"
 
 Az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz IPsec/IKE (IKEv1 és IKEv2) VPN-kapcsolaton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális WAN létrehozása
 > * Elosztó létrehozása
 > * Hely létrehozása
-> * Connect a site to a hub
-> * Connect a VPN site to a hub
+> * Hely összekötése egy hubhoz
+> * VPN-hely összekötése egy hubhoz
 > * Virtuális hálózat csatlakoztatása elosztóhoz
-> * Download a configuration file
+> * Konfigurációs fájl letöltése
 > * A virtuális WAN megtekintése
 
 > [!NOTE]
 > Ha több hellyel rendelkezik, általában egy [Virtual WAN-partner](https://aka.ms/virtualwan) segítségével hozza létre ezt a konfigurációt. A konfigurációt azonban maga is létrehozhatja, ha elboldogul a hálózatkezeléssel, és tudja, hogyan kell konfigurálnia saját VPN-eszközeit.
 >
 
-![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan.png)
+![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
-* You have a virtual network that you want to connect to. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
+* Rendelkezik egy virtuális hálózattal, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a helyszíni hálózatok egyik alhálózata sem fedi át azokat a virtuális hálózatokat, amelyekhez csatlakozni szeretne. Ha virtuális hálózatot szeretne létrehozni a Azure Portalban, tekintse meg a rövid [útmutatót.](../virtual-network/quick-create-portal.md)
 
-* Your virtual network does not have any virtual network gateways. If your virtual network has a gateway (either VPN or ExpressRoute), you must remove all gateways. This configuration requires that virtual networks are connected instead, to the Virtual WAN hub gateway.
+* A virtuális hálózat nem rendelkezik virtuális hálózati átjárókkal. Ha a virtuális hálózat átjáróval rendelkezik (VPN vagy ExpressRoute), akkor el kell távolítania az összes átjárót. Ehhez a konfigurációhoz az szükséges, hogy a virtuális hálózatok a virtuális WAN hub-átjáróhoz legyenek csatlakoztatva.
 
-* Igényeljen egy IP-címtartományt az elosztó régiójában. The hub is a virtual network that is created and used by Virtual WAN. The address range that you specify for the hub cannot overlap with any of your existing virtual networks that you connect to. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. If you are unfamiliar with the IP address ranges located in your on-premises network configuration, coordinate with someone who can provide those details for you.
+* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="openvwan"></a>Create a virtual WAN
+## <a name="openvwan"></a>Virtuális WAN létrehozása
 
-From a browser, navigate to the Azure portal and sign in with your Azure account.
+Egy böngészőben navigáljon a Azure Portal, és jelentkezzen be az Azure-fiókjával.
 
-1. Navigate to the Virtual WAN page. A portálon kattintson az **+Erőforrás létrehozása** gombra. Type **Virtual WAN** into the search box and select Enter.
-2. Select **Virtual WAN** from the results. On the Virtual WAN page, click **Create** to open the Create WAN page.
-3. On the **Create WAN** page, on the **Basics** tab, fill in the following fields:
+1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
+2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
+3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
    ![Virtuális WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
-   * **Resource group** - Create new or use existing.
-   * **Resource group location** - Choose a resource location from the dropdown. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
-   * **Name** - Type the Name that you want to call your WAN.
-   * **Type:** Basic or Standard. If you create a Basic WAN, you can create only a Basic hub. Basic hubs are capable of VPN site-to-site connectivity only.
-4. After you finish filling out the fields, select **Review +Create**.
-5. Once validation passes, select **Create** to create the virtual WAN.
+   * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
+   * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
+   * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
+   * **Írja be a következőt:** Alapszintű vagy standard. Ha alapszintű WAN-t hoz létre, akkor csak egy alapszintű hubot hozhat létre. Az alapszintű hubok csak a VPN-helyek közötti kapcsolatra képesek.
+4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+5. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
 
-## <a name="hub"></a>Create a hub
+## <a name="hub"></a>Hub létrehozása
 
-A hub is a virtual network that can contain gateways for site-to-site, ExpressRoute, or point-to-site functionality. A központ létrehozását követően a szolgáltatás akkor is díjköteles, ha nem csatol hozzá egyetlen webhelyet sem. It takes 30 minutes to create the site-to-site VPN gateway in the virtual hub.
+A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek közötti, a ExpressRoute vagy a pont – hely funkciókhoz. A központ létrehozását követően a szolgáltatás akkor is díjköteles, ha nem csatol hozzá egyetlen webhelyet sem. 30 percet vesz igénybe, hogy létrehozza a két hálózat közötti pont-pont típusú VPN-átjárót a virtuális központban.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="site"></a>Create a site
+## <a name="site"></a>Hely létrehozása
 
-You are now ready to create the sites corresponding to your physical locations. Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. You can create up to 1000 sites per Virtual Hub in a Virtual WAN. If you had multiple hubs, you can create 1000 per each of those hubs. If you have Virtual WAN partner (link insert) CPE device, check with them to learn about their automation to Azure. Typically automation implies simple click experience to export large-scale branch information into azure and setting up connectivity from the CPE to Azure Virtual WAN VPN gateway (Here is a link to automation guidance from Azure to CPE partners).
+Most már készen áll a fizikai helyeknek megfelelő helyek létrehozására. Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Virtuális WAN-ban akár 1000-es helyet hozhat létre virtuális hubhoz. Ha több hubhoz is rendelkezett, minden egyes hubhoz létrehozhat 1000-et. Ha van virtuális WAN-partner (hivatkozás beszúrása) CPE-eszköz, egyeztessen velük az Azure-ra való automatizálásáról. Az automatizálás általában egyszerű kattintásos élményt nyújt a nagyméretű fiókirodák Azure-ba való exportálásához és a CPE és az Azure közötti virtuális WAN VPN-átjáró közötti kapcsolat beállításához (itt az Azure-ról a CPE-re irányuló automatizálási útmutató hivatkozása).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connectsites"></a>Connect the VPN site to the hub
+## <a name="connectsites"></a>A VPN-hely összekötése a hubhoz
 
-In this step, you connect your VPN site to the hub.
+Ebben a lépésben a VPN-helyet csatlakoztatja a hubhoz.
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="vnet"></a>Connect the VNet to the hub
+## <a name="vnet"></a>A VNet összekötése a hubhoz
 
-In this step, you create the connection between your hub and a VNet. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
+Ebben a lépésben létrehozza a kapcsolatot a hub és a VNet között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
 
 1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolatok** elemre.
 2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
@@ -97,23 +97,23 @@ In this step, you create the connection between your hub and a VNet. Ismételje 
     * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.
     * **Előfizetés** – Ellenőrizze az előfizetést.
     * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval.
-4. Click **OK** to create the virtual network connection.
+4. A virtuális hálózati kapcsolatok létrehozásához kattintson **az OK** gombra.
 
-## <a name="device"></a>Download VPN configuration
+## <a name="device"></a>VPN-konfiguráció letöltése
 
 A VPN-eszköz konfigurációjának használatával konfigurálhatja a helyszíni VPN-eszközöket.
 
 1. A virtuális WAN lapján kattintson az **Áttekintés** elemre.
-2. At the top of the **Hub ->VPNSite** page, click **Download VPN config**. Azure creates a storage account in the resource group 'microsoft-network-[location]', where location is the location of the WAN. Miután a konfigurációt alkalmazta a VPN-eszközökre, törölheti ezt a tárfiókot.
+2. A **hub-> VPNSite** lap tetején kattintson a **VPN-konfiguráció letöltése**elemre. Az Azure létrehoz egy Storage-fiókot a "Microsoft-Network-[Location]" erőforráscsoporthoz, ahol a hely a WAN helye. Miután a konfigurációt alkalmazta a VPN-eszközökre, törölheti ezt a tárfiókot.
 3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
-4. Apply the configuration to your on-premises VPN device.
+4. Alkalmazza a konfigurációt a helyszíni VPN-eszközre.
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>VPN-eszköz konfigurációs fájljának ismertetése
 
 Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során használandó beállításokat tartalmazza. A fájl áttekintésekor a következő információkat láthatja:
 
 * **vpnSiteConfiguration** – Ez a szakasz az eszköz a virtuális WAN-ra csatlakozó helyként való telepítésére vonatkozó adatait tartalmazza. Az ágeszköz nevét és nyilvános IP-címét tartalmazza.
-* **vpnSiteConnections -** This section provides information about the following settings:
+* **vpnSiteConnections –** Ez a szakasz a következő beállításokkal kapcsolatos információkat tartalmazza:
 
     * A virtuális elosztó(k) virtuális hálózatának **címtere**<br>Példa:
  
@@ -125,13 +125,13 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * A virtuális hálózat VPN-átjárójának **IP-címei** Because each connection of the  vpngateway is composed of two tunnels in active-active configuration, you'll see both IP addresses listed in this file. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
+    * A virtuális hálózat VPN-átjárójának **IP-címei** Mivel a átjáróban minden egyes csatlakoztatása két alagútból áll az aktív-aktív konfigurációban, a fájlban felsorolt IP-címeket is látni fogja. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Vpngateway connection configuration details** such as BGP, pre-shared key etc. The PSK is the pre-shared key that is automatically generated for you. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
+    * **Átjáróban-kapcsolat konfigurációs részletei** , például BGP, előmegosztott kulcs stb. A PSK a automatikusan létrehozott előmegosztott kulcs. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
   
 ### <a name="example-device-configuration-file"></a>Eszközkonfigurációs példafájl
 
@@ -248,15 +248,15 @@ Amennyiben útmutatásra van szüksége az eszköz konfigurálásához, használ
 
 * A VPN-eszközök lapon található utasítások nem a Virtual WAN-hoz íródtak, a Virtual WAN a konfigurációs fájlban lévő értékeivel manuálisan konfigurálhatja a VPN-eszközt. 
 * A VPN Gatewayre vonatkozó letölthető eszközkonfigurációs szkriptek a Virtual WAN esetében nem működnek, mivel a konfiguráció eltér.
-* A new Virtual WAN can support both IKEv1 and IKEv2.
-* Virtual WAN can use both policy based and route-based VPN devices and device instructions.
+* Az új virtuális WAN A IKEv1 és a IKEv2 is támogatja.
+* A Virtual WAN a házirend-alapú és az útválasztó-alapú VPN-eszközöket és az eszközökre vonatkozó utasításokat is használhatja.
 
-## <a name="viewwan"></a>View your virtual WAN
+## <a name="viewwan"></a>Virtuális WAN megtekintése
 
 1. Lépjen a virtuális WAN-ra.
-2. On the **Overview** page, each point on the map represents a hub. Hover over any point to view the hub health summary, connection status, and bytes in and out.
-3. In the Hubs and connections section, you can view hub status, VPN sites, etc. You can click on a specific hub name and navigate to the VPN Site for additional details.
+2. Az **Áttekintés** oldalon a térképen lévő minden pont egy hubot jelöl. Vigye a kurzort a központ állapotának összegzése, a kapcsolat állapota és a bejövő és kimenő bájtok megtekintéséhez.
+3. A hubok és kapcsolatok szakaszban megtekintheti a központ állapotát, a VPN-helyeket stb. Ha további részletekre van szüksége, kattintson egy adott hub-névre, és navigáljon a VPN-webhelyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

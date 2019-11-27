@@ -1,6 +1,6 @@
 ---
-title: Smart contract integration patterns - Azure Blockchain Workbench
-description: Overview of smart contract integration patterns in Azure Blockchain Workbench Preview.
+title: Intelligens szerződések integrációs mintái – Azure Blockchain Workbench
+description: Az intelligens szerződések integrációs mintáinak áttekintése az Azure Blockchain Workbench előzetes verziójában.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
@@ -13,226 +13,226 @@ ms.locfileid: "74325971"
 ---
 # <a name="smart-contract-integration-patterns"></a>Intelligens szerződések integrációs mintái
 
-Smart contracts often represent a business workflow that needs to integrate with external systems and devices.
+Az intelligens szerződések gyakran olyan üzleti munkafolyamatot jelentenek, amelynek integrálnia kell a külső rendszerekkel és eszközökkel.
 
-The requirements of these workflows include a need to initiate transactions on a distributed ledger that include data from an external system, service, or device. They also need to have external systems react to events originating from smart contracts on a distributed ledger.
+Ezeknek a munkafolyamatoknak a követelményei közé tartozik egy olyan elosztott Főkönyv tranzakcióinak kezdeményezése, amely külső rendszerből, szolgáltatásból vagy eszközből származó adatokkal is rendelkezik. Emellett a külső rendszereknek is szükségük van arra, hogy az elosztott főkönyvben lévő intelligens szerződésekből származó eseményekre reagáljanak.
 
-The REST API and messaging integration sends transactions from external systems to smart contracts included in an Azure Blockchain Workbench application. It also sends event notifications to external systems based on changes that take place within an application.
+Az REST API és üzenetküldési integráció külső rendszerekből származó tranzakciókat küld az Azure Blockchain Workbench alkalmazásban található intelligens szerződéseknek. Emellett az eseményekre vonatkozó értesítéseket is küld a külső rendszereknek az alkalmazáson belüli módosítások alapján.
 
-For data integration scenarios, Azure Blockchain Workbench includes a set of database views that merge a combination of transactional data from the blockchain and meta-data about applications and smart contracts.
+Az adatintegrációs forgatókönyvek esetében az Azure Blockchain Workbench olyan adatbázis-nézeteket tartalmaz, amelyek tranzakciós adatok kombinációját egyesítik a Blockchain, valamint az alkalmazásokkal és az intelligens szerződésekkel kapcsolatos metaadatokat.
 
-In addition, some scenarios, such as those related to supply chain or media, may also require the integration of documents. While Azure Blockchain Workbench does not provide API calls for handling documents directly, documents can be incorporated into a blockchain application. This section also includes that pattern.
+Emellett bizonyos forgatókönyvek, például az ellátási lánchoz vagy az adathordozóhoz kapcsolódó esetekben a dokumentumok integrálására is szükség lehet. Habár az Azure Blockchain Workbench nem biztosít API-hívásokat a dokumentumok közvetlen kezelésére, a dokumentumokat beépítheti egy Blockchain-alkalmazásba. Ez a szakasz szintén tartalmazza ezt a mintát.
 
-This section includes the patterns identified for implementing each of these types of integrations in your end to end solutions.
+Ez a szakasz tartalmazza az egyes típusú integrációk megvalósításához szükséges mintákat a végpontok közötti megoldásokban.
 
-## <a name="rest-api-based-integration"></a>REST API-based integration
+## <a name="rest-api-based-integration"></a>REST API-alapú integráció
 
-Capabilities within the Azure Blockchain Workbench generated web application are exposed via the REST API. Capabilities include Azure Blockchain Workbench uploading, configuration and administration of applications, sending transactions to a distributed ledger, and the querying of application metadata and ledger data.
+Az Azure Blockchain Workbench által generált webalkalmazáson belüli képességek a REST APIon keresztül érhetők el. A képességek közé tartozik az Azure Blockchain Workbench az alkalmazások feltöltése, konfigurálása és felügyelete, tranzakciók küldése egy elosztott főkönyvbe, valamint az alkalmazás metaadatainak és a főkönyvi adatok lekérdezése.
 
-The REST API is primarily used for interactive clients such as web, mobile, and bot applications.
+A REST API elsődlegesen olyan interaktív ügyfelekhez használják, mint a webes, mobil és bot-alkalmazások.
 
-This section looks at patterns focused on the aspects of the REST API that send transactions to a distributed ledger and patterns that query data about transactions from Azure Blockchain Workbench's *off chain* SQL database.
+Ez a szakasz a REST API azon szempontjaira összpontosít, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az Azure Blockchain Workbench *off Chain* SQL Database-ből származó tranzakciók adatait kérdezik le.
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Sending transactions to a distributed ledger from an external system
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Tranzakciók küldése egy elosztott főkönyvnek egy külső rendszerből
 
-The Azure Blockchain Workbench REST API sends authenticated requests to execute transactions on a distributed ledger.
+Az Azure Blockchain Workbench REST API hitelesített kérelmeket küld a tranzakciók végrehajtásához egy elosztott főkönyvben.
 
-![Sending transactions to a distributed ledger](./media/integration-patterns/send-transactions-ledger.png)
+![Tranzakciók küldése elosztott főkönyvbe](./media/integration-patterns/send-transactions-ledger.png)
 
-Executing transactions occurs using the process depicted previously, where:
+A tranzakciók végrehajtása a korábban bemutatott folyamat használatával történik, ahol:
 
--   The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
--   Authorized users receive a bearer token that can be sent with requests to the API.
--   External applications make calls to the REST API using the bearer token.
--   The REST API packages the request as a message and sends it to the Service Bus. From here it is retrieved, signed, and sent to the appropriate distributed ledger.
--   The REST API makes a request to the Azure Blockchain Workbench SQL DB to record the request and establish the current provisioning status.
--   The SQL DB returns the provisioning status and the API call returns the ID to the external application that called it.
+-   A külső alkalmazás hitelesíti magát az Azure Blockchain Workbench-telepítés részeként kiépített Azure Active Directoryon.
+-   A jogosult felhasználók olyan tulajdonosi jogkivonatot kapnak, amely az API-hoz intézett kérelmekkel küldhető el.
+-   A külső alkalmazások hívásokat kezdeményeznek a REST API a tulajdonosi jogkivonat használatával.
+-   A REST API a kérést üzenetként csomagolja, és elküldi a Service Busnak. Innen lekéri, aláírja és elküldi a megfelelő elosztott főkönyvbe.
+-   A REST API egy kérést küld az Azure Blockchain Workbench SQL DB-nek a kérelem rögzítéséhez és az aktuális kiépítési állapot létrehozásához.
+-   Az SQL-adatbázis visszaadja a kiépítési állapotot, és az API-hívás visszaadja az azonosítót az őt meghívó külső alkalmazásnak.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Querying Blockchain Workbench metadata and distributed ledger transactions
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Blockchain Workbench-metaadatok és elosztott főkönyvi tranzakciók lekérdezése
 
-The Azure Blockchain Workbench REST API sends authenticated requests to query details related to smart contract execution on a distributed ledger.
+Az Azure Blockchain Workbench REST API hitelesített kéréseket küld az intelligens Szerződés végrehajtásával kapcsolatos adatok lekérdezéséhez egy elosztott főkönyvben.
 
-![Querying metadata](./media/integration-patterns/querying-metadata.png)
+![Metaadatok lekérdezése](./media/integration-patterns/querying-metadata.png)
 
-Querying occurs using the process depicted previously, where:
+A lekérdezés a korábban bemutatott folyamat használatával történik, ahol:
 
-1. The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
-2. Authorized users receive a bearer token that can be sent with requests to the API.
-3. External applications make calls to the REST API using the bearer token.
-4. The REST API queries the data for the request from the SQL DB and returns it to the client.
+1. A külső alkalmazás hitelesíti magát az Azure Blockchain Workbench-telepítés részeként kiépített Azure Active Directoryon.
+2. A jogosult felhasználók olyan tulajdonosi jogkivonatot kapnak, amely az API-hoz intézett kérelmekkel küldhető el.
+3. A külső alkalmazások hívásokat kezdeményeznek a REST API a tulajdonosi jogkivonat használatával.
+4. A REST API lekérdezi a kérelem adatait az SQL-ADATBÁZISból, és visszaküldi az ügyfélnek.
 
-## <a name="messaging-integration"></a>Messaging integration
+## <a name="messaging-integration"></a>Üzenetkezelési integráció
 
-Messaging integration facilitates interaction with systems, services, and devices where an interactive sign-in is not possible or desirable. Messaging integration focuses on two types of messages: messages requesting transactions be executed on a distributed ledger, and events exposed by that ledger when transactions have taken place.
+Az üzenetkezelési integráció elősegíti a rendszerekkel, szolgáltatásokkal és eszközökkel való interakciót, ha az interaktív bejelentkezés nem lehetséges vagy nem kívánatos. Az üzenetkezelési integráció két típusú üzenetre összpontosít: a tranzakciókat kérő üzenetek egy elosztott főkönyvön futnak, és az adott Főkönyv által a tranzakciók végrehajtásakor kitett események.
 
-Messaging integration focuses on the execution and monitoring of transactions related to user creation, contract creation, and execution of transactions on contracts and is primarily used by *headless* back-end systems.
+Az üzenetkezelési integráció a felhasználói létrehozással, a szerződések létrehozásával és a szerződések tranzakcióinak végrehajtásával kapcsolatos tranzakciók végrehajtásán és figyelésén alapul, és elsősorban a *fej* nélküli háttérrendszer-rendszerek használják.
 
-This section looks at patterns focused on the aspects of the message-based API that send transactions to a distributed ledger and patterns that represent event messages exposed by the underlying distributed ledger.
+Ez a szakasz az üzenetsor-alapú API azon szempontjaira koncentrál, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az alapul szolgáló elosztott Főkönyv által közzétett üzeneteket jelölik.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>One-way event delivery from a smart contract to an event consumer 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Egyirányú esemény kézbesítése intelligens szerződésből egy esemény-felhasználó felé 
 
-In this scenario, an event occurs within a smart contract, for example, a state change or the execution of a specific type of transaction. This event is broadcast via an Event Grid to downstream consumers, and those consumers then take appropriate actions.
+Ebben az esetben egy esemény egy intelligens szerződésen belül történik, például egy állapot változása vagy egy adott típusú tranzakció végrehajtása. Ez az esemény egy Event Gridon keresztül történik a továbbfelhasználó számára, és ezek a fogyasztók a megfelelő műveleteket végzik.
 
-An example of this scenario is that when a transaction occurs, a consumer would be alerted and could take action, such as recording the information in a SQL DB or the Common Data Service. This scenario is the same pattern that Workbench follows to populate its *off chain* SQL DB.
+Ilyen eset például, ha egy tranzakció bekövetkezik, a fogyasztó riasztást kap, és műveleteket végezhet, például az adatok rögzítését egy SQL-ADATBÁZISba vagy a Common Data Service. Ez a forgatókönyv ugyanaz a minta, amelyet a Workbench az SQL-adatbázis *ki* -és betöltéséhez is követ.
 
-Another would be if a smart contract transitions to a particular state, for example when a contract goes into an *OutOfCompliance*. When this state change happens, it could trigger an alert to be sent to an administrator's mobile phone.
+Egy másik lenne, ha egy intelligens szerződés egy adott állapotra vált, például ha egy szerződés egy *OutOfCompliance*kerül. Ha ez az állapot változik, riasztást indíthat a rendszergazda mobiltelefonjára.
 
-![One-way event delivery](./media/integration-patterns/one-way-event-delivery.png)
+![Egyirányú esemény kézbesítése](./media/integration-patterns/one-way-event-delivery.png)
 
-This scenario occurs using the process depicted previously, where:
+Ez a forgatókönyv a korábban bemutatott folyamat használatával fordul elő, ahol:
 
--   The smart contract transitions to a new state and sends an event to the ledger.
--   The ledger receives and delivers the event to Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the ledger and receives the event.
--   Azure Blockchain Workbench publishes the event to subscribers on the Event Grid.
--   External systems are subscribed to the Event Grid, consume the message, and take the appropriate actions.
+-   Az intelligens szerződés új állapotba vált, és egy eseményt küld a főkönyvnek.
+-   A Főkönyv fogadja és kézbesíti az eseményt az Azure Blockchain Workbench számára.
+-   Az Azure Blockchain Workbench feliratkozott a főkönyvből származó eseményekre, és fogadja az eseményt.
+-   Az Azure Blockchain Workbench közzéteszi az eseményt az Event Grid előfizetőknek.
+-   A rendszer Előfizeti a külső rendszereket a Event Gridra, felhasználja az üzenetet, és végrehajtja a megfelelő műveleteket.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>One-way event delivery of a message from an external system to a smart contract
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Külső rendszerről intelligens szerződésre küldött üzenet egyirányú kézbesítése
 
-There is also a scenario that flows from the opposite direction. In this case, an event is generated by a sensor or an external system and the data from that event should be sent to a smart contract.
+Van olyan forgatókönyv is, amely az ellenkező irányba áramlik. Ebben az esetben egy érzékelő vagy egy külső rendszer generál egy eseményt, és az adott eseményből származó adatoknak egy intelligens szerződésbe kell elküldeni.
 
-A common example is the delivery of data from financial markets, for example, prices of commodities, stock, or bonds, to a smart contract.
+Gyakori példa a pénzügyi piacokról származó adatok továbbítása, például az árucikkek, a készletek vagy a kötvények árai egy intelligens szerződéshez.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench közvetlen kézbesítése a várt formátumban
 
-Some applications are built to integrate with Azure Blockchain Workbench and directly generates and send messages in the expected formats.
+Egyes alkalmazások az Azure Blockchain Workbench-sel való integrációhoz készültek, és közvetlenül a várt formátumokban hozzanak létre és küldenek üzeneteket.
 
-![Direct delivery](./media/integration-patterns/direct-delivery.png)
+![Közvetlen kézbesítés](./media/integration-patterns/direct-delivery.png)
 
-This delivery occurs using the process depicted previously, where:
+A kézbesítés a korábban bemutatott folyamat használatával történik, ahol:
 
--   An event occurs in an external system that triggers the creation of a message for Azure Blockchain Workbench.
--   The external system has code written to create this message in a known format and sends it directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract transitions to a new state.
+-   Egy esemény egy külső rendszeren történik, amely elindítja az Azure Blockchain Workbench üzenet létrehozását.
+-   A külső rendszernek van olyan kódja, amely az üzenet ismert formátumban való létrehozására van írva, és közvetlenül a Service Bus küldi el.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+-   Az üzenet kézhezvétele után a Szerződés új állapotba vált.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítése az Azure Blockchain Workbenchben
 
-Some systems cannot be modified to deliver messages in the standard formats used by Azure Blockchain Workbench. In these cases, existing mechanisms and message formats from these systems can often be used. Specifically, the native message types of these systems can be transformed using Logic Apps, Azure Functions, or other custom code to map to one of the standard messaging formats expected.
+Néhány rendszer nem módosítható úgy, hogy az Azure Blockchain Workbench által használt szabványos formátumban kézbesítse az üzeneteket. Ezekben az esetekben gyakran használhatók a rendszerek meglévő mechanizmusai és az üzenetek formátuma is. A rendszerek natív üzeneteinek típusait Logic Apps, Azure Functions vagy más egyéni kód használatával lehet átalakítani, hogy a várt standard üzenetküldési formátumok egyikét képezze.
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Ismeretlen üzenet formátuma](./media/integration-patterns/unknown-message-format.png)
 
-This occurs using the process depicted previously, where:
+Ez a korábban bemutatott folyamat használatával történik, ahol:
 
--   An event occurs in an external system that triggers the creation of a message.
--   A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
--   The Logic App sends the transformed message directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific function on the contract.
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   Egy esemény egy külső rendszeren történik, amely egy üzenet létrehozását indítja el.
+-   A logikai alkalmazások vagy egyéni kódok használatával fogadhatják ezt az üzenetet, és átalakíthatja azt egy szabványos Azure Blockchain Workbench formátumú üzenetbe.
+-   A logikai alkalmazás közvetlenül a Service Bus küldi az átalakított üzenetet.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől a szerződés egy adott függvényének.
+-   A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Transitioning control to an external process and await completion
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Vezérlés átirányítása külső folyamatra, és várakozás a befejezésre
 
-There are scenarios where a smart contract must stop internal execution and hand off to an external process. That external process would then complete, send a message to the smart contract, and execution would then continue within the smart contract.
+Vannak olyan forgatókönyvek, amelyekben egy intelligens szerződésnek le kell állítania a belső végrehajtást, és ki kell kapcsolnia egy külső folyamatot. Ezt követően a külső folyamat elkészül, küldjön egy üzenetet az intelligens szerződésnek, a végrehajtás pedig azután folytatja az intelligens szerződést.
 
-#### <a name="transition-to-the-external-process"></a>Transition to the external process
+#### <a name="transition-to-the-external-process"></a>Áttérés a külső folyamatra
 
-This pattern is typically implemented using the following approach:
+Ez a minta jellemzően a következő módszer használatával valósítható meg:
 
--   The smart contract transitions to a specific state. In this state, either no or a limited number of functions can be executed until an external system takes a desired action.
--   The change of state is surfaced as an event to a downstream consumer.
--   The downstream consumer receives the event and triggers external code execution.
+-   Az intelligens szerződés adott állapotra vált. Ebben az állapotban a nem vagy a korlátozott számú függvény hajtható végre, amíg egy külső rendszer el nem végzi a kívánt műveletet.
+-   Az állapot változása eseményként felszínre kerül egy alsóbb rétegbeli fogyasztó számára.
+-   Az alárendelt fogyasztó megkapja az eseményt, és elindítja a külső kód végrehajtását.
 
-![Transition control to external process](./media/integration-patterns/transition-external-process.png)
+![Átváltási vezérlés külső folyamatra](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Return of control from the smart contract
+#### <a name="return-of-control-from-the-smart-contract"></a>Az intelligens szerződés vezérlésének visszaadása
 
-Depending on the ability to customize the external system, it may or may not be able to deliver messages in one of the standard formats that Azure Blockchain Workbench expects. Based on the external systems ability to generate one of these messages determine which of the following two return paths is taken.
+A külső rendszer testreszabásának lehetősége attól függően előfordulhat, hogy nem tudja kézbesíteni az üzeneteket az Azure Blockchain Workbench által várt szabványos formátumok egyikében. Az ilyen üzenetek egyikének létrehozásához szükséges külső rendszerek alapján megállapítható, hogy a következő két visszatérési útvonal közül melyiket kell megtenni.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench közvetlen kézbesítése a várt formátumban
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-In this model, the communication to the contract and subsequent state change occurs following the previous process where -
+Ebben a modellben a szerződéssel és az azt követő állapottal való kommunikáció az előző folyamat után történik, ahol:
 
--   Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
+-   A külső programkód végrehajtásának befejezését vagy egy adott mérföldkövet követően a rendszer egy eseményt továbbít az Azure Blockchain Workbenchhez kapcsolódó Service Bus.
 
--   For systems that can't be directly adapted to write a message that conforms to the expectations of the API, it is transformed.
+-   Azokhoz a rendszerekhez, amelyek nem módosíthatók közvetlenül az API elvárásainak megfelelő üzenet írásához, átalakítja őket.
 
--   The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
+-   Az üzenet tartalma fel van csomagolva, és egy adott függvénynek küldi el az intelligens szerződést. Ez a kézbesítés a külső rendszerhez társított felhasználó nevében történik.
 
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítése az Azure Blockchain Workbenchben
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Ismeretlen üzenet formátuma](./media/integration-patterns/unknown-message-format.png)
 
-In this model where a message in a standard format cannot be sent directly, the communication to the contract and subsequent state change occurs following the previous process where:
+Ebben a modellben, amikor egy szabványos formátumban lévő üzenet nem küldhető el közvetlenül, a szerződéssel folytatott kommunikáció és az azt követő állapotváltozás az előző folyamat után következik be, ahol:
 
-1.  Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
-2.  A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
-3.  The Logic App sends the transformed message directly to the Service Bus.
-4.  Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
-5.  Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
-6. The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
-7.  The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+1.  A külső programkód végrehajtásának befejezését vagy egy adott mérföldkövet követően a rendszer egy eseményt továbbít az Azure Blockchain Workbenchhez kapcsolódó Service Bus.
+2.  A logikai alkalmazások vagy egyéni kódok használatával fogadhatják ezt az üzenetet, és átalakíthatja azt egy szabványos Azure Blockchain Workbench formátumú üzenetbe.
+3.  A logikai alkalmazás közvetlenül a Service Bus küldi az átalakított üzenetet.
+4.  Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+5.  Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+6. Az üzenet tartalma fel van csomagolva, és egy adott függvénynek küldi el az intelligens szerződést. Ez a kézbesítés a külső rendszerhez társított felhasználó nevében történik.
+7.  A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
-## <a name="iot-integration"></a>IoT integration
+## <a name="iot-integration"></a>IoT-integráció
 
-A common integration scenario is the inclusion of telemetry data retrieved from sensors in a smart contract. Based on data delivered by sensors, smart contracts could take informed actions and alter the state of the contract.
+A közös integrációs forgatókönyvek az érzékelőkből beolvasott telemetria-adatok bevonása egy intelligens szerződésbe. Az érzékelők által szállított adatmennyiség alapján az intelligens szerződések tájékozott műveleteket végezhetnek, és megváltoztathatják a szerződés állapotát.
 
-For example, if a truck delivering medicine had its temperature soar to 110 degrees, it may impact the effectiveness of the medicine and may cause a public safety issue if not detected and removed from the supply chain. If a driver accelerated their car to 100 miles per hour, the resulting sensor information could trigger a cancellation of insurance by their insurance provider. If the car was a rental car, GPS data could indicate when the driver went outside a geography covered by their rental agreement and charge a penalty.
+Ha például egy olyan teherautót szállítanak, amely a gyógyszert a 110 fok fölé helyezi, akkor ez hatással lehet a gyógyszer hatékonyságára, és a nyilvános biztonsági problémát okozhat, ha a szolgáltatás nem észleli és nem távolítja el az ellátási láncot. Ha az illesztőprogram óránként 100 mérföldre felgyorsítja autóját, az eredményül kapott érzékelő információi kiválthatják a biztosításuk szolgáltató általi törlését. Ha az autó bérelt autó volt, a GPS-adatjelzés azt jelezheti, hogy az illesztőprogram a bérleti szerződés által érintett földrajzi helyen kívülre került, és díjat számít fel.
 
-The challenge is that these sensors can be delivering data on a constant basis and it is not appropriate to send all of this data to a smart contract. A typical approach is to limit the number of messages sent to the blockchain while delivering all messages to a secondary store. For example, deliver messages received at only fixed interval, for example, once per hour, and when a contained value falls outside of an agreed upon range for a smart contract. Checking values that fall outside of tolerances, ensures that the data relevant to the contracts business logic is received and executed. Checking the value at the interval confirms that the sensor is still reporting. All data is sent to a secondary reporting store to enable broader reporting, analytics, and machine learning. For example, while getting sensor readings for GPS may not be required every minute for a smart contract, they could provide interesting data to be used in reports or mapping routes.
+A kihívás az, hogy ezek az érzékelők állandó módon tudják szolgáltatni az adatmennyiséget, és nem alkalmasak arra, hogy az összes adat egy intelligens szerződésbe legyen küldve. Egy tipikus módszer a blockchain küldött üzenetek számának korlátozása, miközben az összes üzenetet egy másodlagos tárolóba kézbesíti. Például csak a rögzített időközönként fogadott üzeneteket, például óránként egyszer, és ha egy foglalt érték az intelligens szerződés tartományán kívül esik. A tűréshatárokon kívül eső értékek ellenőrzése biztosítja, hogy a szerződések üzleti logikájának megfelelő adatok fogadása és végrehajtása megtörténjen. Az intervallumban lévő érték ellenőrzése megerősíti, hogy az érzékelő továbbra is jelentéskészítésre kerül. A rendszer a szélesebb körű jelentéskészítés, elemzés és gépi tanulás érdekében minden adattal elküld egy másodlagos jelentési tárolóba. Előfordulhat például, hogy egy intelligens szerződés esetében nem szükséges percenként beolvasni az érzékelőt a GPS-hez, ezért fontos, hogy a jelentésekben vagy a leképezési útvonalakban használt információkkal szolgálnak.
 
-On the Azure platform, integration with devices is typically done with IoT Hub. IoT Hub provides routing of messages based on content, and enables the type of functionality described previously.
+Az Azure platformon az eszközökkel való integráció általában IoT Hubtel történik. IoT Hub az üzenetek továbbítását biztosítja a tartalom alapján, és lehetővé teszi a korábban leírt funkciók típusát.
 
-![IoT messages](./media/integration-patterns/iot.png)
+![IoT üzenetek](./media/integration-patterns/iot.png)
 
-The process depicts a pattern:
+A folyamat egy mintázatot ábrázol:
 
--   A device communicates directly or via a field gateway to IoT Hub.
--   IoT Hub receives the messages and evaluates the messages against routes established that check the content of the message, for example. *Does the sensor report a temperature greater than 50 degrees?*
--   The IoT Hub sends messages that meet the criteria to a defined Service Bus for the route.
--   A Logic App or other code listens to the Service Bus that IoT Hub has established for the route.
--   The Logic App or other code retrieves and transform the message to a known format.
--   The transformed message, now in a standard format, is sent to the Service Bus for Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract evaluates the data and may change the state based on the outcome of that evaluation, for example, for a high temperature, change the state to *Out of Compliance*.
+-   Az eszközök közvetlenül vagy egy helyszíni átjárón keresztül kommunikálnak a IoT Hub.
+-   IoT Hub fogadja az üzeneteket, és kiértékeli az üzeneteket a létrehozott útvonalakon, például az üzenet tartalmának ellenőrzéséhez. *Az érzékelő a 50 fokosnál nagyobb hőmérsékletet jelent?*
+-   A IoT Hub a feltételeknek megfelelő üzeneteket küld egy meghatározott Service Bus az útvonalhoz.
+-   Egy logikai alkalmazás vagy más kód figyeli a Service Bus, amelyet az útvonalhoz IoT Hub létesített.
+-   A logikai alkalmazás vagy más kód egy ismert formátumba kérdezi le és alakítja át az üzenetet.
+-   Az átalakított üzenetet – a standard formátumban – az Azure Blockchain Workbench Service Bus küldi el a rendszer.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+-   Az üzenet kézhezvétele után a szerződés kiértékeli az adatmennyiséget, és a kiértékelés eredménye alapján megváltoztathatja az állapotot, például ha magas hőmérsékletre módosítja az állapotot, a rendszer nem felel meg a *megfelelőségnek*.
 
 ## <a name="data-integration"></a>Adatintegráció
 
-In addition to REST and message-based API, Azure Blockchain Workbench also provides access to a SQL DB populated with application and contract meta-data as well as transactional data from distributed ledgers.
+A REST és az üzenetsor-alapú API-k mellett az Azure Blockchain Workbench hozzáférést biztosít az alkalmazás-és a szerződéses meta-adatokkal feltöltött SQL-ADATBÁZISokhoz, valamint az elosztott főkönyvből származó tranzakciós adatokhoz is.
 
 ![Adatintegráció](./media/integration-patterns/data-integration.png)
 
-The data integration is well known:
+Az Adatintegráció jól ismert:
 
--   Azure Blockchain Workbench stores metadata about applications, workflows, contracts, and transactions as part of its normal operating behavior.
--   External systems or tools provide one or more dialogs to facilitate the collection of information about the database, such as database server name, database name, type of authentication, login credentials, and which database views to utilize.
--   Queries are written against SQL database views to facilitate downstream consumption by external systems, services, reporting, developer tools, and enterprise productivity tools.
+-   Az Azure Blockchain Workbench az alkalmazásokkal, munkafolyamatokkal, szerződésekkel és tranzakciókkal kapcsolatos metaadatokat tárolja a szokásos működési működésük részeként.
+-   A külső rendszerek vagy eszközök egy vagy több párbeszédpanelt biztosítanak, amelyek megkönnyítik az adatbázissal kapcsolatos információk gyűjtését, például az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, a bejelentkezési hitelesítő adatokat, valamint a használni kívánt adatbázis-nézeteket.
+-   A lekérdezések az SQL Database nézeteivel vannak írva, hogy a külső rendszerek, a szolgáltatások, a jelentéskészítés, a fejlesztői eszközök és a vállalati hatékonyságnövelő eszközök segítségével elősegítsék az alsóbb szintű felhasználást.
 
-## <a name="storage-integration"></a>Storage integration
+## <a name="storage-integration"></a>Tárterület-integráció
 
-Many scenarios may require the need to incorporate attestable files. For multiple reasons, it is inappropriate to put files on a blockchain. Instead, a common approach is to perform a cryptographic hash (for example, SHA-256)  against a file and share that hash on a distributed ledger. Performing the hash again at any future time should return the same result. If the file is modified, even if just one pixel is modified in an image, the hash returns a different value.
+Számos esetben szükség lehet a tanúsítható fájlok beépítésére. Több okból kifolyólag nem helyénvaló, hogy fájlokat helyezzen el egy blockchain. Ehelyett egy közös módszer egy titkosítási kivonat (például SHA-256) végrehajtása egy fájlon, és a kivonat megosztása egy elosztott főkönyvben. A kivonat ismételt elküldése minden jövőbeli időpontban ugyanezt az eredményt kell visszaadnia. Ha a fájl módosítva lett, még akkor is, ha csak egy képpontot módosítanak egy képen, a kivonat egy másik értéket ad vissza.
 
-![Storage integration](./media/integration-patterns/storage-integration.png)
+![Tárterület-integráció](./media/integration-patterns/storage-integration.png)
 
-The pattern can be implemented where:
+A minta a következő esetekben valósítható meg:
 
--   An external system persists a file in a storage mechanism, such as Azure Storage.
--   A hash is generated with the file or the file and associated metadata such as an identifier for the owner, the URL where the file is located, etc.
--   The hash and any metadata is sent to a function on a smart contract, such as *FileAdded*
--   In future, the file and meta-data can be hashed again and compared against the values stored on the ledger.
+-   Egy külső rendszer megőrzi a fájlt egy tárolási mechanizmusban, például az Azure Storage-ban.
+-   A rendszer kivonatot hoz létre a fájllal vagy a fájllal, valamint a hozzá tartozó metaadatokkal, például a tulajdonos azonosítóját, az URL-címet, ahol a fájl található stb.
+-   A kivonatot és a metaadatokat egy intelligens szerződés függvénye, például *FileAdded*
+-   A jövőben a fájl és a meta-adatok kivonatolása újra elvégezhető, és összehasonlítható a főkönyvben tárolt értékekkel.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Prerequisites for implementing integration patterns using the REST and message APIs
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Az integrációs minták REST és Message API-k használatával történő megvalósításának előfeltételei
 
-To facilitate the ability for an external system or device to interact with the smart contract using either the REST or message API, the following must occur -
+Annak érdekében, hogy egy külső rendszer vagy eszköz a REST vagy az Message API használatával kommunikáljon az intelligens szerződéssel, az alábbiaknak kell történnie:
 
-1. In the Azure Active Directory for the consortium, an account is created that represents the external system or device.
-2. One or more appropriate smart contracts for your Azure Blockchain Workbench application have functions defined to accept the events from your external system or device.
-3. The application configuration file for your smart contract contains the role, which the system or device is assigned.
-4. The application configuration file for your smart contract identifies in which states this function is called by the defined role.
-5. The Application configuration file and its smart contracts are uploaded to Azure Blockchain Workbench.
+1. A konzorcium Azure Active Directory egy olyan fiókot hoz létre, amely a külső rendszerre vagy eszközre vonatkozik.
+2. Az Azure Blockchain Workbench-alkalmazáshoz egy vagy több megfelelő intelligens szerződés van definiálva, hogy elfogadja az eseményeket a külső rendszertől vagy eszköztől.
+3. Az intelligens szerződéshez tartozó alkalmazás-konfigurációs fájl tartalmazza azt a szerepkört, amelyet a rendszer vagy az eszköz hozzá van rendelve.
+4. Az intelligens szerződéshez tartozó alkalmazás-konfigurációs fájl azonosítja, hogy mely állapotokban hívja meg ezt a függvényt a megadott szerepkör.
+5. Az alkalmazás konfigurációs fájlja és az intelligens szerződések feltöltése az Azure Blockchain Workbenchbe történik.
 
-Once the application is uploaded, the Azure Active Directory account for the external system is assigned to the contract and the associated role.
+Az alkalmazás feltöltése után a külső rendszer Azure Active Directory fiókja hozzá van rendelve a szerződéshez és a társított szerepkörhöz.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testing External System Integration Flows Prior to Writing Integration Code 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>A külső rendszerintegrációs folyamatok tesztelése az integrációs kód írása előtt 
 
-Integrating with external systems is a key requirement of many scenarios. It is desirable to be able to validate smart contract design prior or in parallel to the development of code to integrate with external systems.
+A külső rendszerekkel való integráció számos forgatókönyv kulcsfontosságú követelménye. A külső rendszerekkel való integrációhoz szükséges kód fejlesztéséhez érdemes lehet ellenőrizni az intelligens szerződés kialakítását.
 
-The use of Azure Active Directory (Azure AD) can greatly accelerate developer productivity and time to value. Specifically, the code integration with an external system may take a non-trivial amount of time. By using Azure AD and the auto-generation of UX by Azure Blockchain Workbench, you can allow developers to sign in to Blockchain Workbench as the external system and populate values from the external system via the UX. You can rapidly develop and validate ideas in a proof of concept environment before integration code is written for the external systems.
+A Azure Active Directory (Azure AD) használata nagy mértékben felgyorsíthatja a fejlesztői hatékonyságot, és időt is igénybe vehet. A kód egy külső rendszerrel való integrációja nem triviális időt vehet igénybe. Az Azure AD és az Azure Blockchain Workbench automatikus generálásával lehetővé teheti a fejlesztők számára, hogy külső rendszerként bejelentkezzenek a Blockchain Workbenchbe, és a külső rendszerből származó értékeket a UX használatával feltöltsék. Gyorsan fejlesztheti és érvényesítheti az ötleteket a koncepciós környezet igazolása előtt, mielőtt az integrációs kód bekerül a külső rendszerekre.

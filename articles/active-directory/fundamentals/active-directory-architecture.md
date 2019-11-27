@@ -13,41 +13,45 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7d0511f008a3d5bc39a0fb2d9406d33b72dbede6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562047"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532941"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi az az Azure Active Directory architektúrájának?
+
 Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md)
 
 Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, valamint engedélyeket adhat meg a vállalati erőforrások hozzáférésének engedélyezéséhez és megtagadásához. Az identitáskezeléssel kapcsolatos információért tekintse meg az [Azure-identitáskezelés alapjait leíró szakaszt](active-directory-whatis.md).
 
 ## <a name="azure-ad-architecture"></a>Azure AD-architektúra
+
 Az Azure AD földrajzilag elosztott architektúrája a széles körű megfigyelését, automatikus átirányítás, feladatátvételi és helyreállítási funkciókat, amelyeket vállalati szintű rendelkezésre állást és teljesítményt nyújthat az ügyfeleknek egyesíti.
 
 Ez a cikk a következő architektúraelemeket tárgyalja:
- *  Szolgáltatásarchitektúra kialakítása
- *  Méretezhetőség
- *  Folyamatos rendelkezésre állás
- *  Adatközpontok
+
+*   Szolgáltatásarchitektúra kialakítása
+*   Méretezhetőség
+*   Folyamatos rendelkezésre állás
+*   Adatközpontok
 
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
-Az elérhető és használható, adatgazdag rendszerek létrehozásának leggyakoribb módja a független építőelemek vagy skálázási egységek használata. Az Azure AD adatszintjéhez a skálázási egységeket *partícióknak*nevezzük. 
 
-Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra azt mutatja be, hogyan történik egy egykönyvtáros partíció összetevőinek terjesztése a földrajzilag elosztott adatközpontokban. 
+Az elérhető és használható, adatgazdag rendszerek létrehozásának leggyakoribb módja a független építőelemek vagy skálázási egységek használata. Az Azure AD adatszintjéhez a skálázási egységeket *partícióknak*nevezzük.
+
+Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra azt mutatja be, hogyan történik egy egykönyvtáros partíció összetevőinek terjesztése a földrajzilag elosztott adatközpontokban.
 
   ![Egykönyvtáras partíciós diagram](./media/active-directory-architecture/active-directory-architecture.png)
 
 Az Azure AD architektúra összetevői között egy elsődleges replika és másodlagos replikák szerepelnek.
 
-**Elsődleges replika**
+#### <a name="primary-replica"></a>Elsődleges replika
 
 Az *elsődleges replika* fogadja azon partíció összes *írását*, amelyhez tartozik. Minden írási művelet azonnal replikálódik egy másik adatközpontban lévő másodlagos replikára, mielőtt a rendszer sikert jelezne a hívónak. Ezáltal biztosítható az írások georedundáns tartóssága.
 
-**Másodlagos replikák**
+#### <a name="secondary-replicas"></a>Másodlagos replikák
 
 Az összes címtárbeli *olvasás* a *másodlagos replikák*szolgáltatásból származik, amelyek olyan adatközpontokban találhatók, amelyek fizikailag a különböző földrajzi régiókban találhatók. Sok másodlagos replika van, mivel az adatok replikálása aszinkron módon történik. A címtárbeli olvasások, például a hitelesítési kérelmek olyan adatközpontokban vannak kiszolgálva, amelyek az ügyfelekhez vannak közelebb. A másodlagos replikák felelősek az olvasás méretezhetőségéért.
 
@@ -65,19 +69,20 @@ A rendelkezésre állás (vagy üzemidő) határozza meg, hogy egy rendszer menn
 
 Az Azure AD partíciójának kialakítása a vállalati AD kialakításához, amely tartalmazza az elsődleges replika körültekintően összehangolt és determinisztikus feladatátvételi folyamatot egyszeri terv használatával képest egyszerű.
 
-**Hibatűrés**
+#### <a name="fault-tolerance"></a>Hibatűrés
 
-A rendszereknek jobb a rendelkezésre állása, ha képesek tűrni a hardveres, hálózati és szoftverhibákat. A címtárban lévő minden partícióhoz létezik egy igen rendelkezésre álló fő replika: Az elsődleges replika. Ezen a replikán csak a partíció írása történik. Ez a replika folyamatos megfigyelés alatt áll, és az írások azonnal egy másik replikára helyezhetők (amely az új elsődleges replikává válik), ha a rendszer hibát észlel. Feladatátvétel esetén általában 1-2 percig megszűnhet az írás rendelkezésre állása. Ez nincs hatással az olvasás rendelkezésre állására.
+A rendszereknek jobb a rendelkezésre állása, ha képesek tűrni a hardveres, hálózati és szoftverhibákat. A címtárban lévő összes partícióhoz tartozik egy magas rendelkezésre állású főreplika. Ez az elsődleges replika. Ezen a replikán csak a partíció írása történik. Ez a replika folyamatos megfigyelés alatt áll, és az írások azonnal egy másik replikára helyezhetők (amely az új elsődleges replikává válik), ha a rendszer hibát észlel. Feladatátvétel esetén általában 1-2 percig megszűnhet az írás rendelkezésre állása. Ez nincs hatással az olvasás rendelkezésre állására.
 
 Az olvasási műveletek (amelyek száma nagyságrendekkel meghaladja az írásokét) csak a másodlagos replikákhoz érkeznek. Mivel a másodlagos replikák idempotensek, egy adott partíció bármely replikájának elvesztése könnyedén orvosolható az olvasások egy másik replikára történő irányításával, általában ugyanabban az adatközpontban.
 
-**Adatok tartóssága**
+#### <a name="data-durability"></a>Adattartósság
 
 Az írás a tartósan előtt legalább két adatközponthoz van véglegesítve. Ez először véglegesíti az írást az elsődlegesen, majd azonnal replikálja az írást legalább egy másik adatközpontba. Ez az írási művelet biztosítja, hogy az elsődlegesként szolgáló adatközpont potenciális katasztrofális elvesztése ne okozza az adatvesztést.
 
-Az Azure AD-ben a nulla [helyreállítási időre vonatkozó célkitűzés (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) nincs adatvesztés, a feladatátvételt. Az érintett műveletek közé tartoznak az alábbiak:
--  Kiállítási és a címtárolvasások
--  Így csak körülbelül 5 percet RTO címtárba
+Az Azure AD egy nulla [helyreállítási időre vonatkozó célkitűzést (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) tart fenn, hogy ne veszítse el a feladatátvételsel kapcsolatos adatvesztést. Az érintett műveletek közé tartoznak az alábbiak:
+
+* Kiállítási és a címtárolvasások
+* Így csak körülbelül 5 percet RTO címtárba
 
 ### <a name="datacenters"></a>Adatközpontok
 
@@ -85,11 +90,11 @@ Az Azure AD replikái a világ számos részén található adatközpontokban va
 
 Az Azure AD az alábbi jellemzőkkel rendelkezik az adatközpontok között:
 
- * Hitelesítés, a Graph és az egyéb AD-szolgáltatások az átjárószolgáltatás mögött található. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Ez feladatátvételt hajt végre automatikus Ha bármelyik nem megfelelő állapotú kiszolgálókat észlel tranzakciós állapottesztek. Ezen állapot-tesztek alapján az átjáró dinamikusan irányítja át a forgalmat az egészséges adatközpontokhoz.
- * *Olvasás*esetén a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik, amelyek több adatközpontban működő aktív-aktív konfigurációban működnek. Egy teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontba.
- *  Az *írások*esetében a címtár az elsődleges (fő) replikát az adatközpontok között tervezett (az új elsődleges szinkronizálása a régi elsődleges) vagy a vészhelyzeti feladatátvételi eljárások segítségével végzi el. Az adattartósságot úgy érheti el, hogy legalább két adatközpontba replikálja a végrehajtást.
+* Hitelesítés, a Graph és az egyéb AD-szolgáltatások az átjárószolgáltatás mögött található. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Ez feladatátvételt hajt végre automatikus Ha bármelyik nem megfelelő állapotú kiszolgálókat észlel tranzakciós állapottesztek. Ezen állapot-tesztek alapján az átjáró dinamikusan irányítja át a forgalmat az egészséges adatközpontokhoz.
+* *Olvasás*esetén a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik, amelyek több adatközpontban működő aktív-aktív konfigurációban működnek. Egy teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontba.
+ \* Az *írások*esetében a címtár az elsődleges (fő) replikát az adatközpontok között tervezett (az új elsődleges szinkronizálása a régi elsődleges) vagy a vészhelyzeti feladatátvételi eljárások segítségével végzi. Az adattartósságot úgy érheti el, hogy legalább két adatközpontba replikálja a végrehajtást.
 
-**Adatkonzisztencia**
+#### <a name="data-consistency"></a>Adatkonzisztencia
 
 A könyvtár modell az egyik végleges kényszerítené a felhasználókat. Az elosztott aszinkron replikációs rendszerek egyik általános problémája egy "adott" replikáról lekért adatok nem feltétlenül naprakészek. 
 
@@ -99,24 +104,23 @@ Az Azure AD Graph API-t használó alkalmazások írásai számára nem kötelez
 
  >[!NOTE]
  >Az írásokat a rendszer azonnal replikálja arra a másodlagos replikára, amelyre a logikai munkamenet olvasásai ki lettek adva.
- >
 
-**Biztonsági másolatok védelme**
+#### <a name="backup-protection"></a>Biztonsági mentés védelme
 
-A címtár a végleges törlés helyett helyreállítható törlést valósít meg a felhasználók és bérlők számára, amely lehetővé teszi az egyszerű helyreállítást, ha az ügyfél esetleg véletlenül törölne valamit. A bérlői rendszergazda véletlenül töröl egy felhasználót, ha azok egyszerűen visszavonni, és helyreállíthatja a törölt felhasználót. 
+A címtár a végleges törlés helyett helyreállítható törlést valósít meg a felhasználók és bérlők számára, amely lehetővé teszi az egyszerű helyreállítást, ha az ügyfél esetleg véletlenül törölne valamit. A bérlői rendszergazda véletlenül töröl egy felhasználót, ha azok egyszerűen visszavonni, és helyreállíthatja a törölt felhasználót.
 
 Az Azure AD naponta biztonsági másolatot készít az összes adatról, ezért képes az adatok mérvadó visszaállítására bármilyen logikai törlés vagy sérülés esetében. Az adatréteg adatrétegünk hibajavító kódokat alkalmaz, így azt is ellenőrizze a hibákat, és automatikusan kijavítani bizonyos típusú lemezhibákat.
 
-**Mérőszámok és figyelők**
+#### <a name="metrics-and-monitors"></a>Metrikák és figyelők
 
 Egy magas rendelkezésre állású szolgáltatás futtatásához világszínvonalú metrikára és monitorozási képességekre van szükség. Az Azure AD folyamatosan elemzi a szolgáltatások állapotával kapcsolatos legfontosabb mérőszámokat és az egyes szolgáltatások sikerességi feltételeit, illetve jelentést készít azokról. Nincs folyamatos fejlesztési és a hangolási mérőszámok és monitorozási és riasztási minden esetben minden egyes Azure AD szolgáltatásban, és az összes szolgáltatásban.
 
 Ha bármelyik Azure AD szolgáltatás nem várt módon működik, azonnal műveletet funkciójának helyreállításához ismerhető meg leggyorsabban. A legfontosabb mérőszám az Azure AD nyomon követi a milyen gyorsan élő webhely problémákat észlelt, és az ügyfelek problémák elhárításáról. Komoly erőfeszítéseket teszünk a monitoring és a riasztások területén azért, hogy minimalizáljuk az észleléshez szükséges időt (cél: <5 perc). A működőképesség javításával pedig a hiba súlyosságának mérsékléséhez szükséges időt igyekszünk csökkenteni (cél: <30 perc).
 
-**Biztonságos műveletek**
+#### <a name="secure-operations"></a>Biztonságos műveletek
 
 Műveleti vezérlőket, például a többtényezős hitelesítés (MFA) használatával minden olyan művelet, valamint minden művelet naplózását. Emellett minden olyan operatív tevékenység igény szerinti folyamatos számára szükséges ideiglenes hozzáférést just-in-time jogosultságszint-emelési rendszert használ. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/support/trust-center).
 
-## <a name="next-steps"></a>További lépések
-[Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+## <a name="next-steps"></a>Következő lépések
 
+[Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop)

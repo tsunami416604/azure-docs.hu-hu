@@ -42,7 +42,7 @@ Azure SQL Database-kiszolgáló támogatja az adatbázisok Azure AD-felhasznál�
 
 Használhat meglévő Azure AD-csoportot, vagy létrehozhat egy újat az Azure AD PowerShell használatával.
 
-1.  Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul.
+1.  Telepítse az [Azure ad PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -modult.
 
 2.  Jelentkezzen be `Connect-AzureAD`használatával a következő parancsmag futtatásával hozzon létre egy csoportot, és mentse egy változóba:
 

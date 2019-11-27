@@ -1,6 +1,6 @@
 ---
-title: Understand resource locking
-description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
+title: Az erőforrás-zárolás megismerése
+description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
@@ -10,58 +10,58 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406410"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Understand resource locking in Azure Blueprints
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
-The creation of consistent environments at scale is only truly valuable if there's a mechanism to maintain that consistency. This article explains how resource locking works in Azure Blueprints. To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
+A konzisztens környezetek nagy méretekben történő létrehozása csak abban az esetben hasznos, ha van olyan mechanizmus, amely a konzisztencia fenntartására szolgál. Ez a cikk azt ismerteti, hogyan működik az erőforrás-zárolás az Azure-tervekben. Az erőforrás-zárolásra és a _megtagadási hozzárendelések_alkalmazására vonatkozó példa az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyagban található.
 
-## <a name="locking-modes-and-states"></a>Locking modes and states
+## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 
-Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. The locking mode is configured during artifact deployment during a blueprint assignment. A different locking mode can be set by updating the blueprint assignment.
-Locking modes, however, can't be changed outside of Blueprints.
+A zárolási mód a tervrajz-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **ne zárolja**, **csak olvasható**vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
+A zárolási módok azonban nem változtathatók meg a tervrajzokon kívül.
 
-Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. Each artifact type can be in the **Not Locked** state. The following table can be used to determine the state of a resource:
+A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
 
-|Mód|Artifact Resource Type|Állami|Leírás|
+|mód|Összetevő típusú erőforrástípus|State|Leírás|
 |-|-|-|-|
-|Don't Lock|*|Not Locked|Resources aren't protected by Blueprints. This state is also used for resources added to a **Read Only** or **Do Not Delete** resource group artifact from outside a blueprint assignment.|
-|Csak olvasási engedély|Erőforráscsoport|Cannot Edit / Delete|The resource group is read only and tags on the resource group can't be modified. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
-|Csak olvasási engedély|Non-resource group|Csak olvasási engedély|The resource can't be altered in any way -- no changes and it can't be deleted.|
-|Do Not Delete|*|Cannot Delete|The resources can be altered, but can't be deleted. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
+|Ne legyen zárolás|*|Nincs zárolva|Az erőforrásokat nem a tervrajzok védik. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
+|Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
+|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nem módosítható, és nem törölhető.|
+|Törlés mellőzése|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
 
-## <a name="overriding-locking-states"></a>Overriding locking states
+## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
 
-It's typically possible for someone with appropriate [role-based access control](../../../role-based-access-control/overview.md) (RBAC) on the subscription, such as the 'Owner' role, to be allowed to alter or delete any resource. This access isn't the case when Blueprints applies locking as part of a deployed assignment. If the assignment was set with the **Read Only** or **Do Not Delete** option, not even the subscription owner can perform the blocked action on the protected resource.
+Általában előfordulhat, hogy valaki megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkezik az előfizetésben, például a "tulajdonos" szerepkört, amely lehetővé teszi az erőforrások módosítását vagy törlését. Ez a hozzáférés nem vonatkozik arra az esetre, amikor a tervrajzok egy üzembe helyezett hozzárendelés részeként a zárolást alkalmazza. Ha a hozzárendelés **csak olvasási** vagy nem **törlési** beállítással lett beállítva, akkor még az előfizetés tulajdonosa is elvégezheti a letiltott műveletet a védett erőforráson.
 
-This security measure protects the consistency of the defined blueprint and the environment it was designed to create from accidental or programmatic deletion or alteration.
+Ez a biztonsági mérték védi a definiált terv és az olyan környezet egységességét, amelyet véletlen vagy programozott törlés vagy módosítás alapján hoztak létre.
 
-## <a name="removing-locking-states"></a>Removing locking states
+## <a name="removing-locking-states"></a>Zárolási állapotok eltávolítása
 
-If it becomes necessary to modify or delete a resource protected by an assignment, there are two ways to do so.
+Ha szükség lesz egy hozzárendelés által védett erőforrás módosítására vagy törlésére, kétféleképpen teheti meg.
 
-- Updating the blueprint assignment to a locking mode of **Don't Lock**
-- Delete the blueprint assignment
+- A terv-hozzárendelés frissítése a **nem zárolt** zárolási módba
+- A terv hozzárendelésének törlése
 
-When the assignment is removed, the locks created by Blueprints are removed. However, the resource is left behind and would need to be deleted through normal means.
+A hozzárendelés eltávolításakor a tervrajzok által létrehozott zárolások törlődnek. Az erőforrás azonban marad, és a szokásos módon törölni kell.
 
-## <a name="how-blueprint-locks-work"></a>How blueprint locks work
+## <a name="how-blueprint-locks-work"></a>A terv zárolásának működése
 
-An RBAC [deny assignments](../../../role-based-access-control/deny-assignments.md) deny action is applied to artifact resources during assignment of a blueprint if the assignment selected the **Read Only** or **Do Not Delete** option. The deny action is added by the managed identity of the blueprint assignment and can only be removed from the artifact resources by the same managed identity. This security measure enforces the locking mechanism and prevents removing the blueprint lock outside Blueprints.
+Egy RBAC [megtagadási hozzárendelések](../../../role-based-access-control/deny-assignments.md) megtagadási művelete a terv hozzárendelése során az összetevő-erőforrásokra vonatkozik, ha a hozzárendelés a **csak olvasható** vagy a **nem törlés** lehetőséget választotta. A megtagadási műveletet a terv-hozzárendelés felügyelt identitása adja hozzá, és csak azonos felügyelt identitással lehet eltávolítani az összetevő-erőforrásokból. Ez a biztonsági mérték kikényszeríti a zárolási mechanizmust, és megakadályozza a terveken kívüli tervezetek zárolásának eltávolítását.
 
-![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
+![Az erőforráscsoport hozzárendelésének megtagadása](../media/resource-locking/blueprint-deny-assignment.png)
 
-The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
+Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) a következők:
 
-|Mód |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Principals[i].Type |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Csak olvasási engedély |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
-|Do Not Delete |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|Csak olvasási engedély |**\*** |**\*/READ** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
+|Törlés mellőzése |**\*/delete** | |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 
 > [!IMPORTANT]
-> Azure Resource Manager caches role assignment details for up to 30 minutes. As a result, deny assignments deny action's on blueprint resources may not immediately be in full effect. During this period of time, it might be possible to delete a resource intended to be protected by blueprint locks.
+> A Azure Resource Manager legfeljebb 30 percig gyorsítótárazza a szerepkör-hozzárendelés részleteit. Ennek eredményeképpen a hozzárendelések megtagadására vonatkozó művelet megtagadása a terv erőforrásaiban nem lehet azonnal teljes mértékben érvényben. Ebben az időszakban lehetséges lehet egy olyan erőforrás törlése, amely a terv zárolásával védhető.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Tag kizárása egy megtagadási hozzárendelésből
 
-In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
+Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ezt REST API úgy végezheti el, hogy a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz a **zárolások** tulajdonságban. Ez egy példa egy kérelem törzsére, amely tartalmazza a **excludedPrincipals**:
 
 ```json
 {
@@ -103,9 +103,9 @@ In some design or security scenarios, it may be necessary to exclude a principal
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
+- Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.

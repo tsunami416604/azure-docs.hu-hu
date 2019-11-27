@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés felügyelt identitással
-description: Provide access to images in your private container registry by using a user-assigned or system-assigned managed Azure identity.
+description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
@@ -10,52 +10,52 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456487"
 ---
-# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Use an Azure managed identity to authenticate to an Azure container registry 
+# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
-Use a [managed identity for Azure resources](../active-directory/managed-identities-azure-resources/overview.md) to authenticate to an Azure container registry from another Azure resource, without needing to provide or manage registry credentials. For example, set up a user-assigned or system-assigned managed identity on a Linux VM to access container images from your container registry, as easily as you use a public registry.
+[Felügyelt identitás használata az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) egy másik Azure-erőforrásból származó Azure Container registryben való hitelesítéshez anélkül, hogy a beállításjegyzék hitelesítő adatait kellene megadnia vagy kezelnie. Beállíthat például egy felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitást egy Linux rendszerű virtuális gépen, hogy a tároló-beállításjegyzékből egyszerűen hozzáférjen a tároló-lemezképekhez.
 
-For this article, you learn more about managed identities and how to:
+Ebben a cikkben többet tudhat meg a felügyelt identitásokról és az alábbiakról:
 
 > [!div class="checklist"]
-> * Enable a user-assigned or system-assigned identity on an Azure VM
-> * Grant the identity access to an Azure container registry
-> * Use the managed identity to access the registry and pull a container image 
+> * Felhasználó által hozzárendelt vagy rendszer által hozzárendelt identitás engedélyezése Azure-beli virtuális gépen
+> * Az identitás hozzáférésének biztosítása egy Azure Container registryhez
+> * A felügyelt identitás használata a beállításjegyzék eléréséhez és a tároló rendszerképének lekéréséhez 
 
-To create the Azure resources, this article requires that you run the Azure CLI version 2.0.55 or later. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.55 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-To set up a container registry and push a container image to it, you must also have Docker installed locally. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+A tároló-beállításjegyzék beállításához és a tároló rendszerképének leküldéséhez helyileg kell telepíteni a Docker-t is. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
 
-## <a name="why-use-a-managed-identity"></a>Why use a managed identity?
+## <a name="why-use-a-managed-identity"></a>Miért érdemes felügyelt identitást használni?
 
-A managed identity for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory (Azure AD). You can configure [certain Azure resources](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), including virtual machines, with a managed identity. Then, use the identity to access other Azure resources, without passing credentials in code or scripts.
+Az Azure-erőforrások felügyelt identitása automatikusan felügyelt identitással biztosítja az Azure-szolgáltatásokat Azure Active Directory (Azure AD). A felügyelt identitással [bizonyos Azure-erőforrásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), például virtuális gépeket is beállíthat. Ezután használja az identitást más Azure-erőforrások eléréséhez, anélkül, hogy hitelesítő adatokat kellene átadnia a kódban vagy parancsfájlokban.
 
-Managed identities are of two types:
+A felügyelt identitások két típusúak:
 
-* *User-assigned identities*, which you can assign to multiple resources and persist for as long as your want. User-assigned identities are currently in preview.
+* *Felhasználó által hozzárendelt identitások*, amelyeket hozzárendelhet több erőforráshoz, és megtarthatja a kívánt időtartamot. A felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhetők el.
 
-* A *system-managed identity*, which is unique to a specific resource like a single virtual machine and lasts for the lifetime of that resource.
+* Egy *rendszer által felügyelt identitás*, amely egyedi egy adott erőforráshoz, például egyetlen virtuális géphez, és az adott erőforrás élettartamára vonatkozik.
 
-After you set up an Azure resource with a managed identity, give the identity the access you want to another resource, just like any security principal. For example, assign a managed identity a role with pull, push and pull, or other permissions to a private registry in Azure. (For a complete list of registry roles, see [Azure Container Registry roles and permissions](container-registry-roles.md).) You can give an identity access to one or more resources.
+Miután beállította az Azure-erőforrást egy felügyelt identitással, adja meg a hozzáférést egy másik erőforráshoz, ugyanúgy, mint a rendszerbiztonsági tag. Rendeljen hozzá például egy felügyelt identitást egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve más engedélyekkel rendelkezik az Azure-beli privát beállításjegyzék (A beállításjegyzék szerepköreinek teljes listáját lásd: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).) Identitás-hozzáférést biztosíthat egy vagy több erőforráshoz.
 
-Then, use the identity to authenticate to any [service that supports Azure AD authentication](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), without any credentials in your code. To use the identity to access an Azure container registry from a virtual machine, you authenticate with Azure Resource Manager. Choose how to authenticate using the managed identity, depending on your scenario:
+Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-hitelesítést támogató szolgáltatásokban](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)a kódban szereplő hitelesítő adatok nélkül. Ha az identitást szeretné használni egy Azure Container Registry virtuális gépről való eléréséhez, akkor a Azure Resource Manager segítségével végezheti el a hitelesítést. Válassza ki, hogyan kell hitelesíteni a felügyelt identitás használatával a forgatókönyvtől függően:
 
-* [Acquire an Azure AD access token](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programmatically using HTTP or REST calls
+* [Azure ad hozzáférési jogkivonat programozott módon történő beszerzése](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) http-vagy Rest-hívások használatával
 
-* Use the [Azure SDKs](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
+* Az [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) -k használata
 
-* [Sign into Azure CLI or PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) with the identity. 
+* [Jelentkezzen be az Azure CLI-be vagy a powershellbe](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) az identitással. 
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-If you don't already have an Azure container registry, create a registry and push a sample container image to it. For steps, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md).
+Ha még nem rendelkezik Azure Container Registry-regisztrációval, hozzon létre egy beállításjegyzéket, és küldje el a minta-tároló képét. A lépéseket a rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md)című témakörben tekintheti meg.
 
-This article assumes you have the `aci-helloworld:v1` container image stored in your registry. The examples use a registry name of *myContainerRegistry*. Replace with your own registry and image names in later steps.
+Ez a cikk feltételezi, hogy rendelkezik a beállításjegyzékben tárolt `aci-helloworld:v1` tároló rendszerképpel. A példák a *myContainerRegistry*beállításjegyzékbeli nevét használják. Cserélje le a változót a saját beállításjegyzékére és a képek nevére a későbbi lépésekben.
 
-## <a name="create-a-docker-enabled-vm"></a>Create a Docker-enabled VM
+## <a name="create-a-docker-enabled-vm"></a>Docker-kompatibilis virtuális gép létrehozása
 
-Create a Docker-enabled Ubuntu virtual machine. You also need to install the [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) on the virtual machine. If you already have an Azure virtual machine, skip this step to create the virtual machine.
+Hozzon létre egy Docker-kompatibilis Ubuntu virtuális gépet. Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t is a virtuális gépre. Ha már rendelkezik Azure-beli virtuális géppel, ugorja át ezt a lépést a virtuális gép létrehozásához.
 
-Deploy a default Ubuntu Azure virtual machine with [az vm create][az-vm-create]. The following example creates a VM named *myDockerVM* in an existing resource group named *myResourceGroup*:
+Telepítsen egy alapértelmezett Ubuntu Azure-beli virtuális gépet az [az VM Create][az-vm-create]paranccsal. Az alábbi példa egy *myDockerVM* nevű virtuális gépet hoz létre egy *myResourceGroup*nevű meglévő erőforráscsoporthoz:
 
 ```azurecli
 az vm create \
@@ -66,23 +66,23 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása néhány percig tart. When the command completes, take note of the `publicIpAddress` displayed by the Azure CLI. Use this address to make SSH connections to the VM.
+A virtuális gép létrehozása néhány percig tart. Ha a parancs befejeződik, jegyezze fel az Azure CLI által megjelenített `publicIpAddress`. Ezzel a címtől SSH-kapcsolatokat hozhat a virtuális géphez.
 
-### <a name="install-docker-on-the-vm"></a>Install Docker on the VM
+### <a name="install-docker-on-the-vm"></a>A Docker telepítése a virtuális gépre
 
-After the VM is running, make an SSH connection to the VM. Replace *publicIpAddress* with the public IP address of your VM.
+A virtuális gép futása után létesítsen SSH-kapcsolatokat a virtuális géppel. Cserélje le a *publicIpAddress* -t a virtuális gép nyilvános IP-címére.
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-Run the following command to install Docker on the VM:
+Futtassa a következő parancsot a Docker telepítéséhez a virtuális gépen:
 
 ```bash
 sudo apt install docker.io -y
 ```
 
-After installation, run the following command to verify that Docker is running properly on the VM:
+A telepítés után futtassa a következő parancsot annak ellenőrzéséhez, hogy a Docker megfelelően fut-e a virtuális gépen:
 
 ```bash
 sudo docker run -it hello-world
@@ -98,21 +98,21 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Follow the steps in [Install Azure CLI with apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) to install the Azure CLI on your Ubuntu virtual machine. For this article, ensure that you install version 2.0.55 or later.
+Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) való telepítésének lépéseit. Ehhez a cikkhez győződjön meg arról, hogy a 2.0.55 vagy újabb verzióját telepíti.
 
-Exit the SSH session.
+Lépjen ki az SSH-munkamenetből.
 
-## <a name="example-1-access-with-a-user-assigned-identity"></a>Example 1: Access with a user-assigned identity
+## <a name="example-1-access-with-a-user-assigned-identity"></a>1\. példa: hozzáférés felhasználó által hozzárendelt identitással
 
-### <a name="create-an-identity"></a>Create an identity
+### <a name="create-an-identity"></a>Identitás létrehozása
 
-Create an identity in your subscription using the [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) command. You can use the same resource group you used previously to create the container registry or virtual machine, or a different one.
+Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyet korábban használt a tároló-beállításjegyzék vagy a virtuális gép létrehozásához, vagy egy másikat.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-To configure the identity in the following steps, use the [az identity show][az-identity-show] command to store the identity's resource ID and service principal ID in variables.
+Az identitásnak az alábbi lépésekben való konfigurálásához használja az az [Identity show][az-identity-show] parancsot az identitás erőforrás-azonosítójának és egyszerű szolgáltatásnév azonosítójának a változókban való tárolásához.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -122,109 +122,109 @@ userID=$(az identity show --resource-group myResourceGroup --name myACRId --quer
 spID=$(az identity show --resource-group myResourceGroup --name myACRId --query principalId --output tsv)
 ```
 
-Because you need the identity's ID in a later step when you sign in to the CLI from your virtual machine, show the value:
+Mivel az Identity AZONOSÍTÓját egy későbbi lépésben kell megadnia, amikor bejelentkezik a CLI-be a virtuális gépről, a következő értéket jeleníti meg:
 
 ```bash
 echo $userID
 ```
 
-The ID is of the form:
+Az azonosító a következőket képezi:
 
 ```
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myACRId
 ```
 
-### <a name="configure-the-vm-with-the-identity"></a>Configure the VM with the identity
+### <a name="configure-the-vm-with-the-identity"></a>A virtuális gép konfigurálása az identitással
 
-The following [az vm identity assign][az-vm-identity-assign] command configures your Docker VM with the user-assigned identity:
+A következő az [VM Identity assign][az-vm-identity-assign] paranccsal konfigurálja a DOCKER virtuális gépet a felhasználó által hozzárendelt identitással:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM --identities $userID
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Grant identity access to the container registry
+### <a name="grant-identity-access-to-the-container-registry"></a>Identitás-hozzáférés biztosítása a tároló beállításjegyzékéhez
 
-Now configure the identity to access your container registry. First use the [az acr show][az-acr-show] command to get the resource ID of the registry:
+Most konfigurálja az identitást a tároló-beállításjegyzék eléréséhez. Először használja az az [ACR show][az-acr-show] parancsot a beállításjegyzék erőforrás-azonosítójának lekéréséhez:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-Use the [az role assignment create][az-role-assignment-create] command to assign the AcrPull role to the registry. This role provides [pull permissions](container-registry-roles.md) to the registry. To provide both pull and push permissions, assign the ACRPush role.
+Az az [role hozzárendelés Create][az-role-assignment-create] paranccsal rendelje hozzá a AcrPull szerepkört a beállításjegyzékhez. Ez a szerepkör [lekéréses engedélyeket](container-registry-roles.md) biztosít a beállításjegyzéknek. A lekéréses és leküldéses engedélyek megadásához rendelje hozzá a ACRPush szerepkört.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Use the identity to access the registry
+### <a name="use-the-identity-to-access-the-registry"></a>Az identitás használata a beállításjegyzék eléréséhez
 
-SSH into the Docker virtual machine that's configured with the identity. Run the following Azure CLI commands, using the Azure CLI installed on the VM.
+SSH-t az identitással konfigurált Docker virtuális gépre. Futtassa az alábbi Azure CLI-parancsokat a virtuális gépen telepített Azure CLI használatával.
 
-First, authenticate to the Azure CLI with [az login][az-login], using the identity you configured on the VM. For `<userID>`, substitute the ID of the identity you retrieved in a previous step. 
+Először végezze el a hitelesítést az Azure CLI-vel az az [login][az-login]paranccsal, a virtuális gépen konfigurált identitás használatával. `<userID>`esetében cserélje le az előző lépésben lekért identitás AZONOSÍTÓját. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Then, authenticate to the registry with [az acr login][az-acr-login]. When you use this command, the CLI uses the Active Directory token created when you ran `az login` to seamlessly authenticate your session with the container registry. (Depending on your VM's setup, you might need to run this command and docker commands with `sudo`.)
+Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI a `az login` futtatásakor létrehozott Active Directory tokent használja, hogy zökkenőmentesen hitelesítse a munkamenetet a tároló beállításjegyzékével. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a Docker-parancsok futtatására `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-You should see a `Login succeeded` message. You can then run `docker` commands without providing credentials. For example, run [docker pull][docker-pull] to pull the `aci-helloworld:v1` image, specifying the login server name of your registry. The login server name consists of your container registry name (all lowercase) followed by `.azurecr.io` - for example, `mycontainerregistry.azurecr.io`.
+`Login succeeded` üzenetnek kell megjelennie. Ezután a hitelesítő adatok megadása nélkül is futtathat `docker` parancsokat. Ha például lekéri a [Docker][docker-pull] -lekérést, hogy lekérje a `aci-helloworld:v1` rendszerképet, adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló beállításjegyzékének neve (az összes kisbetűs), amelyet a `.azurecr.io` követ, például `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>Example 2: Access with a system-assigned identity
+## <a name="example-2-access-with-a-system-assigned-identity"></a>2\. példa: hozzáférés rendszerhez rendelt identitással
 
-### <a name="configure-the-vm-with-a-system-managed-identity"></a>Configure the VM with a system-managed identity
+### <a name="configure-the-vm-with-a-system-managed-identity"></a>A virtuális gép konfigurálása rendszer által felügyelt identitással
 
-The following [az vm identity assign][az-vm-identity-assign] command configures your Docker VM with a system-assigned identity:
+A következő az [VM Identity assign][az-vm-identity-assign] paranccsal konfigurálhatja a DOCKER virtuális gépet egy rendszerhez rendelt identitással:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Use the [az vm show][az-vm-show] command to set a variable to the value of `principalId` (the service principal ID) of the VM's identity, to use in later steps.
+Az az [VM show][az-vm-show] paranccsal állítson be egy változót a virtuális gép identitásának `principalId` (a szolgáltatás egyszerű azonosítója) értékére a későbbi lépésekben való használatra.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Grant identity access to the container registry
+### <a name="grant-identity-access-to-the-container-registry"></a>Identitás-hozzáférés biztosítása a tároló beállításjegyzékéhez
 
-Now configure the identity to access your container registry. First use the [az acr show][az-acr-show] command to get the resource ID of the registry:
+Most konfigurálja az identitást a tároló-beállításjegyzék eléréséhez. Először használja az az [ACR show][az-acr-show] parancsot a beállításjegyzék erőforrás-azonosítójának lekéréséhez:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-Use the [az role assignment create][az-role-assignment-create] command to assign the AcrPull role to the identity. This role provides [pull permissions](container-registry-roles.md) to the registry. To provide both pull and push permissions, assign the ACRPush role.
+Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a AcrPull szerepkört az identitáshoz. Ez a szerepkör [lekéréses engedélyeket](container-registry-roles.md) biztosít a beállításjegyzéknek. A lekéréses és leküldéses engedélyek megadásához rendelje hozzá a ACRPush szerepkört.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Use the identity to access the registry
+### <a name="use-the-identity-to-access-the-registry"></a>Az identitás használata a beállításjegyzék eléréséhez
 
-SSH into the Docker virtual machine that's configured with the identity. Run the following Azure CLI commands, using the Azure CLI installed on the VM.
+SSH-t az identitással konfigurált Docker virtuális gépre. Futtassa az alábbi Azure CLI-parancsokat a virtuális gépen telepített Azure CLI használatával.
 
-First, authenticate the Azure CLI with [az login][az-login], using the system-assigned identity on the VM.
+Először hitelesítse az Azure CLI-t az [az login][az-login]paranccsal, a rendszer által hozzárendelt identitás használatával a virtuális gépen.
 
 ```azurecli
 az login --identity
 ```
 
-Then, authenticate to the registry with [az acr login][az-acr-login]. When you use this command, the CLI uses the Active Directory token created when you ran `az login` to seamlessly authenticate your session with the container registry. (Depending on your VM's setup, you might need to run this command and docker commands with `sudo`.)
+Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI a `az login` futtatásakor létrehozott Active Directory tokent használja, hogy zökkenőmentesen hitelesítse a munkamenetet a tároló beállításjegyzékével. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a Docker-parancsok futtatására `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-You should see a `Login succeeded` message. You can then run `docker` commands without providing credentials. For example, run [docker pull][docker-pull] to pull the `aci-helloworld:v1` image, specifying the login server name of your registry. The login server name consists of your container registry name (all lowercase) followed by `.azurecr.io` - for example, `mycontainerregistry.azurecr.io`.
+`Login succeeded` üzenetnek kell megjelennie. Ezután a hitelesítő adatok megadása nélkül is futtathat `docker` parancsokat. Ha például lekéri a [Docker][docker-pull] -lekérést, hogy lekérje a `aci-helloworld:v1` rendszerképet, adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló beállításjegyzékének neve (az összes kisbetűs), amelyet a `.azurecr.io` követ, például `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -232,14 +232,14 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you learned about using managed identities with Azure Container Registry and how to:
+Ebből a cikkből megtudhatta, hogyan használhatja a felügyelt identitásokat a Azure Container Registry és a következőket:
 
 > [!div class="checklist"]
-> * Enable a user-assigned or system-assigned identity in an Azure VM
-> * Grant the identity access to an Azure container registry
-> * Use the managed identity to access the registry and pull a container image
+> * Felhasználó által hozzárendelt vagy rendszerhez rendelt identitás engedélyezése egy Azure-beli virtuális gépen
+> * Az identitás hozzáférésének biztosítása egy Azure Container registryhez
+> * A felügyelt identitás használata a beállításjegyzék eléréséhez és a tároló rendszerképének lekéréséhez
 
-* Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/).
+* További információ az [Azure-erőforrások felügyelt identitásáról](/azure/active-directory/managed-identities-azure-resources/).
 
 
 <!-- LINKS - external -->

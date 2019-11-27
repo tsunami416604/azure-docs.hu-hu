@@ -1,7 +1,7 @@
 ---
-title: Use entity recognition with the Text Analytics API
+title: Az entitások felismerésének használata a Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Learn how to identify and disambiguate the identity of an entity found in text with the Text Analytics REST API.
+description: Megtudhatja, hogyan azonosíthatja és egyértelműsítse a szövegben talált entitás identitását a Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,23 +17,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326627"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>How to use Named Entity Recognition in Text Analytics
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
-The [Named Entity Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) takes unstructured text, and for each JSON document, returns a list of disambiguated entities with links to more information on the web (Wikipedia and Bing).
+Az [elnevezett entitás-felismerési API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveget vesz igénybe, és minden JSON-dokumentumhoz a disambiguated entitások listáját adja vissza, amely a weben található további információkra mutató hivatkozásokat tartalmaz (wikipedia és Bing).
 
-## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking and Named Entity Recognition
+## <a name="entity-linking-and-named-entity-recognition"></a>Entitások összekapcsolása és elnevezett entitások felismerése
 
-The Text Analytics' `entities` endpoint supports both named entity recognition (NER) and entity linking.
+A Text Analytics "`entities` végpontja támogatja az elnevezett entitások felismerését és az entitások összekapcsolását is.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
-Entity linking is the ability to identify and disambiguate the identity of an entity found in text (for example, determining whether the "Mars" is being used as the planet or as the Roman god of war). This process requires the presence of a knowledge base to which recognized entities are linked - Wikipedia is used as the knowledge base for the `entities` endpoint Text Analytics.
+Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például azt, hogy a "Mars" a bolygó vagy a háború római isteneként van-e használatban). Ehhez a folyamathoz meg kell adni egy tudásbázist, amelyre az elismert entitások kapcsolódnak – a wikipedia az `entities` Endpoint Text Analytics tudásbázisa.
 
-### <a name="named-entity-recognition-ner"></a>Named Entity Recognition (NER)
-Named entity recognition (NER) is the ability to identify different entities in text and categorize them into pre-defined classes, or types. 
+### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálja. 
 
-## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 public preview
+## <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
 
-The next version of Named Entity Recognition is now available for public preview. It provides updates to both entity linking and Named Entity Recognition. Try it using the [API test console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
+Az elnevezett entitások felismerésének következő verziója már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez. Próbálja ki az [API test Console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)használatával.
 
 :::row:::
     :::column span="":::
@@ -46,96 +46,96 @@ The next version of Named Entity Recognition is now available for public preview
 <!-- expanded types and subtypes row-->
 :::row:::
     :::column span="":::
-        Expanded entity types and subtypes
+        Kibontott entitások típusai és altípusai
     :::column-end:::
     :::column span="":::
-     Expanded classification and detection for several named entity types.
+     Több elnevezett entitás típusának kibontott besorolása és észlelése.
     :::column-end:::
 :::row-end:::
 <!-- separate endpoints row-->
 :::row:::
     :::column span="":::
-        Separate request endpoints 
+        Külön kérelem-végpontok 
     :::column-end:::
     :::column span="":::
-        Separate endpoints for sending entity linking and NER requests.
+        Különálló végpontok az entitások összekapcsolását és a meghívást kérő kérelmek küldéséhez.
     :::column-end:::
 :::row-end:::
 <!-- model-version row -->
 :::row:::
     :::column span="":::
-        `model-version` parameter
+        `model-version` paraméter
     :::column-end:::
     :::column span="":::
-        An optional parameter for choosing a version of the Text Analytics model. Currently only the default model is available for use.
+        Választható paraméter a Text Analytics modell valamelyik verziójának kiválasztásához. Jelenleg csak az alapértelmezett modell használható.
     :::column-end:::
 :::row-end:::
 
-### <a name="entity-types"></a>Entity types
+### <a name="entity-types"></a>Entitás típusa
 
-Named Entity Recognition v3 provides expanded detection across multiple types. Currently, NER v3 can recognize the following categories of entities. For a detailed list of supported entities and languages, see the [Named entity types](../named-entity-types.md) article.
+A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitásokat ismeri fel: v3. A támogatott entitások és nyelvek részletes listáját az [elnevezett entitások típusai](../named-entity-types.md) című cikkben találja.
 
-* Általános
-* Personal Information 
+* Általános kérdések
+* Személyes adatok 
 
-### <a name="request-endpoints"></a>Request endpoints
+### <a name="request-endpoints"></a>Kérelmek végpontjai
 
-Named Entity Recognition v3 uses separate endpoints for NER and entity linking requests. Use a URL format below based on your request:
+Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez Az alábbi URL-formátumot használja a kérelme alapján:
 
 NER
-* General entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Personal information entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Személyes információk entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entity linking
+Entitás összekapcsolása
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Model versioning
+### <a name="model-versioning"></a>Modell verziószámozása
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-## <a name="supported-types-for-named-entity-recognition-v2"></a>Supported Types for Named Entity Recognition v2
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Megnevezett Entity Recognition v2 támogatott típusai
 
 > [!NOTE]
-> The following entities are supported by Named Entity Recognition(NER) version 2. [NER v3](#named-entity-recognition-v3-public-preview) is in public preview, and greatly expands the number and depth of the entities recognized in text.   
+> A következő entitásokat a nevesített entitások felismerése (a (z) 2. verzió) támogatja. Nyilvános előzetes verzióban [érhető el, és](#named-entity-recognition-v3-public-preview) nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
 
-| Type (Típus)  | SubType | Példa |
+| Típus  | Altípus | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Földrajzi egység      | N/A\*         | „Redmond, Washington”, „Paris”  |
+| Hely      | N/A\*         | „Redmond, Washington”, „Paris”  |
 | Szervezet  | N/A\*         | „Microsoft”   |
 | Mennyiség      | Szám        | „6”, „six”     |
 | Mennyiség      | Százalék    | „50%”, „fifty percent”|
 | Mennyiség      | Sorszám       | „2nd”, „second”     |
-| Mennyiség      | Kor           | "90 day old", "30 years old"    |
-| Mennyiség      | Currency (Deviza)      | „$10.99”     |
+| Mennyiség      | Kor           | "90 napos", "30 év régi"    |
+| Mennyiség      | Currency      | „$10.99”     |
 | Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
 | Mennyiség      | Hőmérséklet   | „32 degrees”    |
-| Dátum és idő      | N/A\*         | „6:30PM February 4, 2012”      |
-| Dátum és idő      | Dátum          | „May 2nd, 2017”, „05/02/2017”   |
-| Dátum és idő      | Idő          | "8am", "8:00"  |
-| Dátum és idő      | Dátumtartomány     | „May 2nd to May 5th”    |
-| Dátum és idő      | Időtartomány     | „6pm to 7pm”     |
-| Dátum és idő      | Időtartam      | „1 minute and 45 seconds”   |
-| Dátum és idő      | Beállítás           | „every Tuesday”     |
-| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail cím         | N/A\*         | „support@contoso.com” |
-| US Phone Number  | N/A\*         | (US phone numbers only) "(312) 555-0176" |
-| IP-cím    | N/A\*         | "10.0.0.100" |
+| DateTime      | N/A\*         | „6:30PM February 4, 2012”      |
+| DateTime      | Dátum          | „May 2nd, 2017”, „05/02/2017”   |
+| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | Dátumtartomány     | „May 2nd to May 5th”    |
+| DateTime      | Időtartomány     | „6pm to 7pm”     |
+| DateTime      | Duration      | „1 minute and 45 seconds”   |
+| DateTime      | Beállítás           | „every Tuesday”     |
+| URL           | N/A\*         | "https:\//www.bing.com"    |
+| E-mail         | N/A\*         | „support@contoso.com” |
+| Egyesült államokbeli telefonszám  | N/A\*         | (Csak az Egyesült államokbeli telefonszámok) "(312) 555-0176" |
+| IP-cím    | N/A\*         | 10.0.0.100 |
 
-\* Depending on the input and extracted entities, certain entities may omit the `SubType`.  All the supported entity types listed are available only for the English, Chinese-Simplified, French, German, and Spanish languages.
+\* a bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos entitások kihagyhatják a `SubType`.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
-Using entity linking in various languages requires using a corresponding knowledge base in each language. For entity linking in Text Analytics, this means each language that is supported by the `entities` endpoint will link to the corresponding Wikipedia corpus in that language. Since the size of corpora varies between languages, it is expected that the entity linking functionality's recall will also vary. See the [language support](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) article for more information.
+Az entitások különböző nyelveken való összekapcsolásához a megfelelő tudásbázist kell használnia minden nyelven. A Text Analyticsban található entitások esetén ez azt jelenti, hogy az `entities` végpont által támogatott összes nyelv a megfelelő wikipedia-corpusra hivatkozik az adott nyelven. Mivel a Corpora mérete eltérő lehet a nyelvek között, a rendszer azt várta, hogy az entitás összekapcsolása funkció visszahívása is változhat. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
 
 ## <a name="preparation"></a>Előkészítés
 
-You must have JSON documents in this format: ID, text, language
+A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv
 
-For currently supported languages, see [this list](../text-analytics-supported-languages.md).
+A jelenleg támogatott nyelvek esetében tekintse meg [ezt a listát](../text-analytics-supported-languages.md).
 
-Document size must be under 5,120 characters per document, and you can have up to 1,000 items (IDs) per collection. A kollekció elküldése a kérelem törzsében történik. The following example is an illustration of content you might submit to the entity linking end.
+A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) szerepelhet. A kollekció elküldése a kérelem törzsében történik. Az alábbi példa egy olyan tartalom szemléltetése, amelyet a rendszer az entitás csatolásának végére küld.
 
 ```json
     {
@@ -158,11 +158,11 @@ Document size must be under 5,120 characters per document, and you can have up t
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Review the API documentation for this request: [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Set the HTTP endpoint for key phrase extraction by using either a Text Analytics resource on Azure or an instantiated [Text Analytics container](text-analytics-how-to-install-containers.md). You must include `/text/analytics/v2.1/entities`. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell `/text/analytics/v2.1/entities`. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
-+ Set a request header to include [the access key](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) for Text Analytics operations.
++ Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
@@ -171,7 +171,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 ## <a name="step-2-post-the-request"></a>2\. lépés: A kérés elküldése
 
-Az elemzés a kérelem megkapásakor történik meg. See the [data limits](../overview.md#data-limits) section in the overview for information on the size and number of requests you can send per minute and second.
+Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az [Áttekintés lapon](../overview.md#data-limits) tekintheti meg a percenkénti küldéshez.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
@@ -181,7 +181,7 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-An example of the output for entity linking is shown next:
+Az entitások csatolásának kimenetét a következő példa szemlélteti:
 
 ```json
     {
@@ -339,16 +339,16 @@ An example of the output for entity linking is shown next:
     }
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-In this article, you learned concepts and workflow for entity linking using Text Analytics in Cognitive Services. Összegezve:
+Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
-+ [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) is available for selected languages.
-+ JSON documents in the request body include an ID, text, and language code.
++ Az [entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kiválasztott nyelvekhez érhető el.
++ A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
 + POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
-+ Response output, which consists of linked entities (including confidence scores, offsets, and web links, for each document ID) can be used in any application
++ Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)

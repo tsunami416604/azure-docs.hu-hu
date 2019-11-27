@@ -1,5 +1,5 @@
 ---
-title: Use remote tools to troubleshoot Azure VM issues | Microsoft Docs
+title: Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -21,45 +21,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483700"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Use remote tools to troubleshoot Azure VM issues
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
 
-When you troubleshoot issues on an Azure virtual machine (VM), you can connect to the VM by using the remote tools that are discussed in this article instead of using the Remote Desktop Protocol (RDP).
+Az Azure-beli virtuális gépek (VM) hibáinak elhárítása során a RDP protokoll (RDP) használata helyett a cikkben tárgyalt távoli eszközök használatával csatlakozhat a virtuális géphez.
 
 ## <a name="serial-console"></a>Soros konzol
 
-Use a [serial console for Azure Virtual Machines](serial-console-windows.md) to run commands on the remote Azure VM.
+Az [azure Virtual Machines soros konzoljának](serial-console-windows.md) használatával futtathat parancsokat a távoli Azure virtuális gépen.
 
-## <a name="remote-cmd"></a>Remote CMD
+## <a name="remote-cmd"></a>Távoli CMD
 
-Download [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Connect to the VM by running the following command:
+Töltse le a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Kapcsolódjon a virtuális géphez a következő parancs futtatásával:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* The command must be run on a computer that's in the same virtual network.
->* DIP or HostName can be used to replace \<computer>.
->* The -s parameter makes sure that the command is invoked by using System Account (administrator permission).
->* PsExec uses TCP ports 135 and 445. As a result, the two ports have to be open on the firewall.
+>* A parancsot egy olyan számítógépen kell futtatni, amely ugyanabban a virtuális hálózatban található.
+>* A DIP vagy a HostName használható \<számítógép > cseréjére.
+>* A-s paraméter gondoskodik arról, hogy a parancs a rendszerfiók (rendszergazdai engedély) használatával legyen meghívva.
+>* A PsExec a 135-es és 445-es TCP-portot használja. Ennek eredményeképpen a két portot meg kell nyitni a tűzfalon.
 
-## <a name="run-command"></a>Run command
+## <a name="run-command"></a>Parancs futtatása
 
-For more information about how to use the run command feature to run scripts on the VM, see [Run PowerShell scripts in your Windows VM with run command](../windows/run-command.md).
+További információ arról, hogyan használható a futtatási parancs a parancsfájlok futtatásához a virtuális gépen: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../windows/run-command.md).
 
-## <a name="custom-script-extension"></a>Custom Script Extension
+## <a name="custom-script-extension"></a>Egyéni szkriptbővítmény
 
-You can use the Custom Script Extension feature to run a custom script on the target VM. To use this feature, the following conditions must be met:
+Az egyéni szkriptek bővítményének használatával egyéni parancsfájlokat futtathat a cél virtuális gépen. A szolgáltatás használatához a következő feltételeknek kell teljesülniük:
 
-* The VM has connectivity.
-* Azure Virtual Machine Agent is installed and is working as expected on the VM.
-* The extension wasn't previously installed on the VM.
+* A virtuális gép rendelkezik kapcsolattal.
+* Az Azure-beli virtuálisgép-ügynök telepítve van, és a várt módon működik a virtuális gépen.
+* A bővítmény korábban nem lett telepítve a virtuális gépen.
  
-  The extension injects the script only the first time that it's used. If you use this feature later, the extension recognizes that it was already used and doesn't upload the new script.
+  A bővítmény csak az első használat alkalmával adja meg a parancsfájlt. Ha később ezt a szolgáltatást használja, a bővítmény felismeri, hogy már használatban van, és nem tölti fel az új parancsfájlt.
 
-Upload your script to a storage account, and generate its own container. Then, run the following script in Azure PowerShell on a computer that has connectivity to the VM.
+Töltse fel a szkriptet egy Storage-fiókba, és állítson elő saját tárolót. Ezután futtassa a következő parancsfájlt Azure PowerShell egy olyan számítógépen, amely kapcsolódik a virtuális géphez.
 
-### <a name="for-classic-deployment-model-vms"></a>For classic deployment model VMs
+### <a name="for-classic-deployment-model-vms"></a>Klasszikus üzembe helyezési modell virtuális gépek esetén
 
 ```powershell
 #Set up the basic variables.
@@ -87,7 +87,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>For Azure Resource Manager VMs
+### <a name="for-azure-resource-manager-vms"></a>Azure Resource Manager virtuális gépek esetén
 
  
 
@@ -117,40 +117,40 @@ Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blob
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
-## <a name="remote-powershell"></a>Remote PowerShell
+## <a name="remote-powershell"></a>Távoli PowerShell
 
 >[!NOTE]
->TCP Port 5986 (HTTPS) must be open so that you can use this option.
+>Az 5986-as (HTTPS) TCP-portnak nyitva kell lennie, hogy használhassa ezt a lehetőséget.
 >
->For Azure Resource Manager VMs, you must open port 5986 on the network security group (NSG). For more information, see Security groups. 
+>Azure Resource Manager virtuális gépek esetében meg kell nyitnia a 5986-es portot a hálózati biztonsági csoporton (NSG). További információ: biztonsági csoportok. 
 >
->For RDFE VMs, you must have an endpoint that has a private port (5986) and a public port. Then, you also have to open that public-facing port on the NSG.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik privát porttal (5986) és egy nyilvános porttal. Ezután meg kell nyitnia a nyilvános elérésű portot is a NSG.
 
-### <a name="set-up-the-client-computer"></a>Set up the client computer
+### <a name="set-up-the-client-computer"></a>Az ügyfélszámítógép beállítása
 
-To use PowerShell to connect to the VM remotely, you first have to set up the client computer to allow the connection. To do this, add the VM to the PowerShell trusted hosts list by running the following command, as appropriate.
+Ahhoz, hogy a PowerShell használatával távolról csatlakozhasson a virtuális géphez, először be kell állítania az ügyfélszámítógépet, hogy engedélyezze a kapcsolatot. Ehhez a következő parancs futtatásával adja hozzá a virtuális gépet a PowerShell megbízható gazdagépek listájához.
 
-To add one VM to the trusted hosts list:
+Egy virtuális gép hozzáadása a megbízható gazdagépek listájához:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-To add multiple VMs to the trusted hosts list:
+Több virtuális gép hozzáadása a megbízható gazdagépek listájához:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-To add all computers to the trusted hosts list:
+Az összes számítógép hozzáadása a megbízható gazdagépek listájához:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
 ```
 
-### <a name="enable-remoteps-on-the-vm"></a>Enable RemotePS on the VM
+### <a name="enable-remoteps-on-the-vm"></a>RemotePS engedélyezése a virtuális gépen
 
-For VMs created using the classic deployment model, use the Custom Script Extension to run the following script:
+A klasszikus üzemi modellel létrehozott virtuális gépek esetében az egyéni szkriptek bővítmény használatával futtassa a következő parancsfájlt:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -160,31 +160,31 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-For Azure Resource Manager VMs, use run commands from the portal to run the EnableRemotePS script:
+Azure Resource Manager virtuális gépek esetében a portálon futtatott parancsok futtatásával futtassa a EnableRemotePS parancsfájlt:
 
-![Run command](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
+![Parancs futtatása](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Run the following command based on the client computer location:
+Futtassa a következő parancsot az ügyfélszámítógép helye alapján:
 
-* Outside the virtual network or deployment
+* A virtuális hálózaton vagy az üzemelő példányon kívül
 
-  * For a VM created using the classic deployment model, run the following command:
+  * A klasszikus üzemi modellel létrehozott virtuális gépek esetében futtassa a következő parancsot:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * For an Azure Resource Manager VM, first add a DNS name to the public IP address. For detailed steps, see [Create a fully qualified domain name in the Azure portal for a Windows VM](../windows/portal-create-fqdn.md). Ezután futtassa a következő parancsot:
+  * Azure Resource Manager virtuális gép esetében először adjon hozzá egy DNS-nevet a nyilvános IP-címhez. A részletes lépésekért lásd: [teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális](../windows/portal-create-fqdn.md)gépekhez. Ezután futtassa a következő parancsot:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* Inside the virtual network or deployment, run the following command:
+* Futtassa a következő parancsot a virtuális hálózaton vagy az üzemelő példányon belül:
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -192,65 +192,65 @@ Run the following command based on the client computer location:
   ```
 
 >[!NOTE] 
->Setting the SkipCaCheck flag bypasses the requirement to import a certificate to the VM when you start the session.
+>A SkipCaCheck jelző beállítása megkerüli a tanúsítványnak a virtuális gépre való importálásának követelményét a munkamenet indításakor.
 
-You can also use the Invoke-Command cmdlet to run a script on the VM remotely.
+A Meghívási parancs parancsmag használatával távolról is futtathat parancsfájlokat a virtuális gépen.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ```
 
-## <a name="remote-registry"></a>Remote Registry
+## <a name="remote-registry"></a>Távoli beállításjegyzék
 
 >[!NOTE]
->TCP port 135 or 445 must be open in order to use this option.
+>A beállítás használatához a 135-es vagy a 445-es TCP-portnak nyitva kell lennie.
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. For more information, see Security groups. 
+>Azure Resource Manager virtuális gépek esetében meg kell nyitnia a 5986-as portot a NSG. További információ: biztonsági csoportok. 
 >
->For RDFE VMs, you must have an endpoint that has a private port 5986 and a public port. You also have to open that public-facing port on the NSG.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Azt is meg kell nyitnia, hogy a nyilvános port a NSG.
 
-1. From another VM on the same virtual network, open the registry editor (regedit.exe).
+1. Az ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a Beállításszerkesztőt (Regedit. exe).
 
-2. Select **File** > **Connect Network Registry**.
+2. Válassza a **fájl** > **hálózati beállításjegyzék összekapcsolását**.
 
-   ![Registry editor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![Rendszerleíróadatbázis-szerkesztő](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Locate the target VM by **host name** or **dynamic IP** (preferable) by entering it in the **Enter the object name to select** box.
+3. Keresse meg a cél virtuális gépet az **állomásnév** vagy a **dinamikus IP-cím** alapján (lehetőleg), és írja be azt az **adja meg a kijelölendő objektum nevét** mezőbe.
 
-   ![Enter the object name to select box](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Adja meg a kijelölendő objektum nevét](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Enter the credentials for the target VM.
+4. Adja meg a cél virtuális gép hitelesítő adatait.
 
-5. Make any necessary registry changes.
+5. Végezze el a beállításjegyzék szükséges módosításait.
 
-## <a name="remote-services-console"></a>Remote services console
+## <a name="remote-services-console"></a>Távoli szolgáltatások konzolja
 
 >[!NOTE]
->TCP ports 135 or 445 must be open in order to use this option.
+>A beállítás használatához a 135-es vagy a 445-es TCP-portnak nyitva kell lennie.
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. For more information, see Security groups. 
+>Azure Resource Manager virtuális gépek esetében meg kell nyitnia a 5986-as portot a NSG. További információ: biztonsági csoportok. 
 >
->For RDFE VMs, you must have an endpoint that has a private port 5986 and a public port. You also have to open that public-facing port on the NSG.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Azt is meg kell nyitnia, hogy a nyilvános port a NSG.
 
-1. From another VM on the same virtual network, open an instance of **Services.msc**.
+1. Egy ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a **Services. msc**egy példányát.
 
-2. Right-click **Services (Local)** .
+2. Kattintson a jobb gombbal a **szolgáltatások (helyi)** elemre.
 
-3. Select **Connect to another computer**.
+3. Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
 
-   ![Remote service](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
+   ![Távoli szolgáltatás](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Enter the dynamic IP of the target VM.
+4. Adja meg a cél virtuális gép dinamikus IP-címét.
 
-   ![Input dynamic IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
+   ![Bemeneti dinamikus IP-cím](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
-5. Make any necessary changes to the services.
+5. Végezze el a szükséges módosításokat a szolgáltatásokban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- For more information about the Enter-PSSession cmdlet, see [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- For more information about the Custom Script Extension for Windows using the classic deployment model, see [Custom Script Extension for Windows](../extensions/custom-script-classic.md).
-- PsExec is part of the [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip).
-- For more information about the PSTools Suite, see [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+- Az ENTER-PSSession parancsmaggal kapcsolatos további információkért lásd: [ENTER-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
+- További információ a Windowshoz készült egyéni parancsfájl-bővítményről a klasszikus üzemi modell használatával: [egyéni parancsfájl-bővítmény a Windowshoz](../extensions/custom-script-classic.md).
+- A PsExec a [PsTools csomag](https://download.sysinternals.com/files/PSTools.zip)része.
+- A PSTools csomaggal kapcsolatos további információkért lásd: [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
 

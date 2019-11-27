@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075656"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539099"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -27,7 +27,7 @@ Bár az Azure Cosmos DB emulációja valósághű, az emulátor implementálása
 
 Az Azure Cosmos Emulator és a Azure Cosmos DB szolgáltatás között az [Azure Cosmos db adatáttelepítési eszköz](https://github.com/azure/azure-documentdb-datamigrationtool)használatával telepítheti át az adatátvitelt.
 
-Az Azure Cosmos Emulatort a Windows Docker-tárolóban futtathatja, ha [a Docker](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) -lekérési parancshoz és a [githubhoz](https://github.com/Azure/azure-cosmos-db-emulator-docker) az emulátor forráskódját szeretné megtekinteni.
+Az Azure Cosmos Emulatort a Windows Docker-tárolón futtathatja, ha [a Docker](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) -lekérési parancshoz és a [githubhoz](https://github.com/Azure/azure-cosmos-db-emulator-docker) is a `Dockerfile` és további információkat szeretne látni.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek
 
@@ -250,10 +250,10 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 | EnableCassandraEndpoint | Engedélyezi a Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
 | CassandraPort | Megadja a Cassandra-végponthoz használandó portszámot. Az alapértelmezett érték a 10350. | CosmosDB. Emulator. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: egyetlen portszám |
 | EnableGremlinEndpoint | Gremlin API engedélyezése | CosmosDB. Emulator. exe/EnableGremlinEndpoint | |
-| GremlinPort | A Gremlin-végponthoz használandó portszám. Az alapértelmezett érték a 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: Egy portszám |
+| GremlinPort | A Gremlin-végponthoz használandó portszám. Az alapértelmezett érték a 8901. | CosmosDB. Emulator. exe/GremlinPort =\<port\> | \<port\>: Egy portszám |
 |EnableTableEndpoint | Az Azure Table API engedélyezése | CosmosDB.Emulator.exe /EnableTableEndpoint | |
-|TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: Egy portszám|
-| KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>: a fájl elérési útja |
+|TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | CosmosDB. Emulator. exe/TablePort =\<port\> | \<port\>: Egy portszám|
+| KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | CosmosDB. Emulator. exe/KeyFile =\<file_name\> | \<file_name\>: a fájl elérési útja |
 | ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. Emulator. exe/ResetDataPath =\<útvonal > | \<Path\>: fájl elérési útja  |
 | StartTraces  |  Hibakeresési nyomkövetési naplók gyűjtésének megkezdése. | CosmosDB. Emulator. exe/StartTraces | |
 | StopTraces     | A hibakeresési nyomkövetési naplók gyűjtésének leállítása. | CosmosDB. Emulator. exe/StopTraces  | |
@@ -310,7 +310,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntax**
+**Szintaxis**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -320,7 +320,7 @@ Ezen ServiceControllerStatus értékek egyikét adja vissza: ServiceControllerSt
 
 ### `Start-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -330,7 +330,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -340,7 +340,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -527,7 +527,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 3. Az alkalmazások listájában görgessen az **Azure Cosmos DB Emulator** elemhez, válassza ki azt, kattintson az **Eltávolítás** lehetőségre, majd erősítse meg, és kattintson ismét az **Eltávolítás** elemre.
 4. Az alkalmazás eltávolításakor lépjen a `%LOCALAPPDATA%\CosmosDBEmulator` mappához, és törölje ki.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban azt ismertettük, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztési feladatokhoz. Most továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan exportálhatja az emulátor SSL-tanúsítványait.
 

@@ -70,5 +70,5 @@ Ha egy felhasználó "kihagyva" állapotba kerül a kiépítési naplókban, nag
 
   * **Csoportok attribútumainak hozzárendelése:** A csoport neve és a csoport adatainak kiépítés a tagokon kívül, ha egyes alkalmazások esetében támogatott. A funkció engedélyezéséhez vagy letiltásához engedélyezze vagy tiltsa le a **kiépítés** lapon megjelenő csoportosítási objektumok **leképezését** . Ha a létesítési csoportok engedélyezve vannak, tekintse át az attribútumok leképezéseit, és győződjön meg arról, hogy a megfelelő mező használatban van a "megfeleltetési azonosító" beállításnál. Ez lehet a megjelenítendő név vagy az e-mail-alias, mivel a csoport és a tagjai nem lesznek kiépítve, ha a megfelelő tulajdonság üres vagy nincs feltöltve az Azure AD-beli csoportokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

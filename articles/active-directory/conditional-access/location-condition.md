@@ -1,6 +1,6 @@
 ---
-title: Location condition in Azure Active Directory Conditional Access
-description: Learn how to use the location condition to control access to your cloud apps based on a user's network location.
+title: A hely feltétele Azure Active Directory feltételes hozzáférésben
+description: Megtudhatja, hogyan használhatja a hely feltételét a felhőalapú alkalmazásokhoz való hozzáférés vezérlésére a felhasználó hálózati helye alapján.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -19,134 +19,134 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380299"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a hely feltétele a feltételes hozzáférés Azure Active Directory? 
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
+A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. A feltételes hozzáférési szabályzat helyének feltétele lehetővé teszi a hozzáférés-vezérlési beállítások összekapcsolását a felhasználók hálózati helyein.
 
-This article provides you with the information you need to configure the location condition.
+Ez a cikk a hely feltételének konfigurálásához szükséges információkat tartalmazza.
 
-## <a name="locations"></a>Földrajzi egységek
+## <a name="locations"></a>Helyek
 
-Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. With the location condition, you can control access to your cloud apps based on the network location of a user. Common use cases for the location condition are:
+Az Azure AD lehetővé teszi az egyszeri bejelentkezést az eszközökre, alkalmazásokra és szolgáltatásokra bárhonnan a nyilvános interneten. A hely feltételével a felhasználó hálózati helye alapján vezérelheti a felhőalapú alkalmazásokhoz való hozzáférést. A hely feltételének gyakori használati esetei a következők:
 
-- Requiring multi-factor authentication for users accessing a service when they are off the corporate network.
-- Blocking access for users accessing a service from specific countries or regions.
+- Többtényezős hitelesítés megkövetelése a szolgáltatáshoz hozzáférő felhasználók számára a vállalati hálózaton kívülről.
+- Hozzáférés letiltása adott országokból vagy régiókból származó szolgáltatáshoz hozzáférő felhasználók számára.
 
-A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
+A hely egy olyan hálózati hely címkéje, amely vagy egy elnevezett hely vagy a multi-Factor Authentication megbízható IP-címei.
 
-## <a name="named-locations"></a>Named locations
+## <a name="named-locations"></a>Elnevezett helyszínek
 
-With named locations, you can create logical groupings of IP address ranges or countries and regions.
+Az elnevezett helyszínekkel logikai csoportosításokat hozhat létre az IP-címtartományok vagy országok és régiók számára.
 
-You can access your named locations in the **Manage** section of the Conditional Access page.
+A elnevezett helyekhez a feltételes hozzáférés lap **kezelés** szakaszában férhet hozzá.
 
-![Named locations in Conditional Access](./media/location-condition/02.png)
+![Nevesített helyszínek a feltételes hozzáférésben](./media/location-condition/02.png)
 
-A named location has the following components:
+Egy elnevezett hely a következő összetevőket tartalmazhatja:
 
-![Create a new named location](./media/location-condition/42.png)
+![Új elnevezett hely létrehozása](./media/location-condition/42.png)
 
-- **Name** - The display name of a named location.
-- **IP ranges** - One or more IPv4 address ranges in CIDR format. Specifying an IPv6 address range is not supported.
+- **Name (név** ) – egy elnevezett hely megjelenítendő neve.
+- **IP-címtartományok** – egy vagy több IPv4-címtartomány CIDR formátumban. IPv6-címtartomány meghatározása nem támogatott.
 
    > [!NOTE]
-   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
+   > Az IPv6-címtartományok jelenleg nem szerepelhetnek egy elnevezett helyen. Ez azt jelenti, hogy az IPv6-tartományok nem zárhatók ki feltételes hozzáférési szabályzatból.
 
-- **Mark as trusted location** - A flag you can set for a named location to indicate a trusted location. Typically, trusted locations are network areas that are controlled by your IT department. In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
-- **Countries/Regions** - This option enables you to select one or more country or region to define a named location.
-- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. This option allows you to choose if these IP addresses should be included in the named location. Use this setting when the policy using the named location should apply to unknown locations.
+- **Megjelölés megbízható helyként** – egy megnevezett helyhez beállítható jelző, amely megbízható helyet jelez. A megbízható helyek általában az IT-részleg által vezérelt hálózati területek. A feltételes hozzáférés mellett az Azure Identity Protection és az Azure AD biztonsági jelentései is felhasználják a megbízható névvel ellátott helyek használatát a [téves pozitív](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)adatok csökkentése érdekében.
+- **Országok/régiók** – ez a beállítás lehetővé teszi egy vagy több ország vagy régió kiválasztását egy elnevezett hely definiálásához.
+- **Ismeretlen területek belefoglalása** – néhány IP-cím nincs leképezve egy adott országra vagy régióra. Ezzel a beállítással megadhatja, hogy ezek az IP-címek szerepeljenek-e a megnevezett helyen. Akkor használja ezt a beállítást, ha a nevesített helyet használó házirendet ismeretlen helyekre kell alkalmazni.
 
-The number of named locations you can configure is constrained by the size of the related object in Azure AD. You can configure locations based on of the following limitations:
+A konfigurálható elnevezett helyszínek számát a kapcsolódó objektum mérete korlátozza az Azure AD-ben. A következő korlátozások alapján állíthatja be a helyszíneket:
 
-- One named location with up to 1200 IP ranges.
-- A maximum of 90 named locations with one IP range assigned to each of them.
+- Egy elnevezett hely, amely legfeljebb 1200 IP-tartománnyal rendelkezik.
+- Legfeljebb 90 elnevezett helyet, amelyek mindegyike egy IP-tartománnyal van társítva.
 
-Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
+A feltételes hozzáférési szabályzat az IPv4-és IPv6-forgalomra vonatkozik. A jelenleg elnevezett helyszínek nem teszik lehetővé IPv6-tartományok konfigurálását. Ez a korlátozás a következő helyzeteket okozza:
 
-- Conditional Access policy cannot be targeted to specific IPv6 ranges
-- Conditional Access policy cannot exclude specific IPV6 ranges
+- A feltételes hozzáférési szabályzat nem célozhat meghatározott IPv6-tartományokat.
+- A feltételes hozzáférési szabályzat nem tud bizonyos IPV6-tartományokat kizárni
 
-If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
+Ha egy házirend úgy van konfigurálva, hogy a "bármely helyre" vonatkozzon, akkor az IPv4-és IPv6-forgalomra is érvényes lesz. A megadott országokban és régiókban konfigurált elnevezett helyszínek csak IPv4-címeket támogatnak. Az IPv6-forgalom csak abban az esetben szerepel, ha a "ismeretlen területek belefoglalása" lehetőséget választotta.
 
 ## <a name="trusted-ips"></a>Megbízható IP-címek
 
-You can also configure IP address ranges representing your organization's local intranet in the [multi-factor authentication service settings](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). This feature enables you to configure up to 50 IP address ranges. The IP address ranges are in CIDR format. For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+A [multi-Factor Authentication szolgáltatás beállításaiban](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)konfigurálhatja a szervezet helyi intranetét JELKÉPEZŐ IP-címtartományt is. Ez a funkció lehetővé teszi, hogy legfeljebb 50 IP-címtartományt konfiguráljon. Az IP-címtartományok CIDR formátumúak. További információ: [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)-címek.  
 
-If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
+Ha megbízható IP-címek vannak konfigurálva, a hely feltételének helyein **MFA megbízható IP** -címekként jelennek meg.
 
-### <a name="skipping-multi-factor-authentication"></a>Skipping multi-factor authentication
+### <a name="skipping-multi-factor-authentication"></a>Multi-Factor Authentication kihagyása
 
-On the multi-factor authentication service settings page, you can identify corporate intranet users by selecting  **Skip multi-factor authentication for requests from federated users on my intranet**. This setting indicates that the inside corporate network claim, which is issued by AD FS, should be trusted and used to identify the user as being on the corporate network. For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+A multi-Factor Authentication szolgáltatás beállításai lapon azonosíthatja a vállalati intranetes felhasználókat a **többtényezős hitelesítés kihagyása az összevont felhasználóktól az intraneten lévő kérelmekhez**lehetőség kiválasztásával. Ez a beállítás azt jelzi, hogy a AD FS által kiadott vállalati hálózati jogcímet megbízhatónak kell tekinteni, és a felhasználó azonosítására kell használni a vállalati hálózaton. További információ: [a megbízható IP-címek engedélyezése funkció feltételes hozzáférés használatával](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
+A beállítás ellenőrzése után a megnevezett hely **MFA megbízható IP** -címei minden olyan házirendre érvényesek lesznek, amelyik ezt a lehetőséget választja.
 
-For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. The default is once an hour. When the inside corporate network claim is only issued at the time of the initial authentication, Azure AD may not have a list of trusted IP ranges. In this case, it is more difficult to determine if the user is still on the corporate network:
+A hosszú élettartamú munkamenetek élettartamát tartalmazó mobil-és asztali alkalmazások esetében a feltételes hozzáférés időszakosan újraértékelve lesz. Az alapértelmezett érték óránként egyszer. Ha a vállalati hálózati jogcímek csak a kezdeti hitelesítéskor jelennek meg, előfordulhat, hogy az Azure AD nem rendelkezik a megbízható IP-címtartományok listájával. Ebben az esetben nehezebb megállapítani, hogy a felhasználó továbbra is a vállalati hálózaton van-e:
 
-1. Check if the user’s IP address is in one of the trusted IP ranges.
-2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
+1. Ellenőrizze, hogy a felhasználó IP-címe a megbízható IP-címtartományok egyikén van-e.
+2. Győződjön meg arról, hogy a felhasználó IP-címének első három oktettje megegyezik-e a kezdeti hitelesítés IP-címének első három oktettével. A rendszer összehasonlítja az IP-címet a kezdeti hitelesítéssel, ha a belső vállalati hálózati jogcím eredetileg ki lett állítva, és a felhasználói hely ellenőrzése megtörtént.
 
-If both steps fail, a user is considered to be no longer on a trusted IP.
+Ha mindkét lépés meghiúsul, a rendszer a felhasználót már nem megbízható IP-címekre tekinti.
 
-## <a name="location-condition-configuration"></a>Location condition configuration
+## <a name="location-condition-configuration"></a>Hely állapotának konfigurálása
 
-When you configure the location condition, you have the option to distinguish between:
+A hely feltételének konfigurálásakor lehetősége van a következők megkülönböztetésére:
 
-- Any location
-- All trusted locations
-- Selected locations
+- Bármely hely
+- Minden megbízható helyszín
+- Kiválasztott helyszínek
 
-![Location condition configuration](./media/location-condition/01.png)
+![Hely állapotának konfigurálása](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Any location
+### <a name="any-location"></a>Bármely hely
 
-By default, selecting **Any location** causes a policy to be applied to all IP addresses, which means any address on the Internet. This setting is not limited to IP addresses you have configured as named location. When you select **Any location**, you can still exclude specific locations from a policy. For example, you can apply a policy to all locations except trusted locations to set the scope to all locations, except the corporate network.
+Alapértelmezés szerint a **bármely hely** kiválasztásakor a rendszer minden IP-címre alkalmazza a házirendet, ami bármilyen címet jelent az interneten. Ez a beállítás nem korlátozódik az elnevezett helyként konfigurált IP-címekre. Ha **bármelyik helyet**kijelöli, akkor továbbra is kizárhat bizonyos helyeket a szabályzatból. Például alkalmazhat egy házirendet az összes helyszínre, kivéve a megbízható helyek beállítást a hatókör minden helyszínre való beállításához, a vállalati hálózat kivételével.
 
-### <a name="all-trusted-locations"></a>All trusted locations
+### <a name="all-trusted-locations"></a>Minden megbízható helyszín
 
-This option applies to:
+Ez a beállítás a következőkre vonatkozik:
 
-- All locations that have been marked as trusted location
-- **MFA Trusted IPS** (if configured)
+- Minden olyan hely, amely megbízható helyként van megjelölve
+- **MFA megbízható IP** -címei (ha be van állítva)
 
-### <a name="selected-locations"></a>Selected locations
+### <a name="selected-locations"></a>Kiválasztott helyszínek
 
-With this option, you can select one or more named locations. For a policy with this setting to apply, a user needs to connect from any of the selected locations. When you click **Select** the named network selection control that shows the list of named networks opens. The list also shows if the network location has been marked as trusted. The named location called **MFA Trusted IPs** is used to include the IP settings that can be configured in the multi-factor authentication service setting page.
+Ezzel a beállítással egy vagy több elnevezett helyet választhat ki. Ahhoz, hogy egy házirend alkalmazza ezt a beállítást, a felhasználónak csatlakoznia kell a kiválasztott helyekről. Ha a megnevezett hálózati kijelölési vezérlő **kijelölése** elemre kattint, megjelenik a megnevezett hálózatok listája. A lista azt is megjeleníti, hogy a hálózati hely megbízhatóként van-e megjelölve. Az **MFA megbízható IP** -címek nevű hely a multi-Factor Authentication szolgáltatás beállítási oldalán konfigurálható IP-beállításokat tartalmazza.
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-### <a name="when-is-a-location-evaluated"></a>When is a location evaluated?
+### <a name="when-is-a-location-evaluated"></a>Mikor kerül kiértékelésre a hely?
 
-Conditional Access policies are evaluated when:
+A feltételes hozzáférési szabályzatokat a rendszer a következők szerint értékeli ki:
 
-- A user initially signs in to a web app, mobile or desktop application.
-- A mobile or desktop application that uses modern authentication, uses a refresh token to acquire a new access token. By default this check is once an hour.
+- A felhasználó először bejelentkezik egy webalkalmazásba, mobilba vagy asztali alkalmazásba.
+- A modern hitelesítést használó mobil-vagy asztali alkalmazások frissítési tokent használnak új hozzáférési jogkivonat beszerzéséhez. Alapértelmezés szerint ez az ellenőrzés óránként egyszer történik.
 
-This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. For mobile and desktop applications that don’t use modern authentication, the policy is applied on each token request. The frequency of the request can vary based on the application. Similarly, for web applications, the policy is applied at initial sign-in and is good for the lifetime of the session at the web application. Due to differences in session lifetimes across applications, the time between policy evaluation will also vary. Each time the application requests a new sign-in token, the  policy is applied.
+Ez az ellenőrzési módszer a modern hitelesítést használó mobil-és asztali alkalmazások esetén a hely változását a hálózati hely módosítása után egy órán belül észleli. A modern hitelesítést nem használó mobil-és asztali alkalmazások esetén a szabályzatot minden jogkivonat-kérelemre alkalmazza a rendszer. A kérés gyakorisága az alkalmazástól függően változhat. Hasonlóképpen, a webalkalmazások esetében a szabályzatot a rendszer az első bejelentkezéskor alkalmazza, és jó választás a webalkalmazásban található munkamenet élettartamára. Az alkalmazások munkamenet-élettartama közötti különbségek miatt a szabályzat kiértékelése közötti idő is változhat. Minden alkalommal, amikor az alkalmazás új bejelentkezési jogkivonatot kér, a rendszer alkalmazza a házirendet.
 
-By default, Azure AD issues a token on an hourly basis. After moving off the corporate network, within an hour the policy is enforced for applications using modern authentication.
+Alapértelmezés szerint az Azure AD egy tokent bocsát ki óránként. A vállalati hálózat kikapcsolását követően egy órán belül kikényszeríti a szabályzatot a modern hitelesítést használó alkalmazásokhoz.
 
-### <a name="user-ip-address"></a>User IP address
+### <a name="user-ip-address"></a>Felhasználói IP-cím
 
-The IP address that is used in policy evaluation is the public IP address of the user. For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
+A házirend kiértékeléséhez használt IP-cím a felhasználó nyilvános IP-címe. A magánhálózaton lévő eszközök esetében ez az IP-cím nem az intraneten lévő felhasználó eszközének ügyfél-IP-címe, hanem a hálózat által a nyilvános internethez való kapcsolódáshoz használt cím.
 
 > [!WARNING]
-> If your device has only an IPv6 address, configuring the location condition is not supported.
+> Ha az eszköz csak IPv6-címekkel rendelkezik, a hely feltételének konfigurálása nem támogatott.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulk uploading and downloading of named locations
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Elnevezett helyszínek tömeges feltöltése és letöltése
 
-When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges. An upload replaces the IP ranges in the list with those from the file. Each row of the file contains one IP Address range in CIDR format.
+Ha elnevezett helyeket hoz létre vagy frissít, a tömeges frissítésekhez feltölthet vagy letölthet egy CSV-fájlt az IP-címtartományok használatával. A feltöltés felváltja a listában szereplő IP-tartományokat a fájlból származó értékekkel. A fájl minden sora egy IP-címtartományt tartalmaz CIDR formátumban.
 
-### <a name="cloud-proxies-and-vpns"></a>Cloud proxies and VPNs
+### <a name="cloud-proxies-and-vpns"></a>Felhőalapú proxyk és VPN-EK
 
-When you use a cloud hosted proxy or VPN solution, the IP address Azure AD uses while evaluating a policy is the IP address of the proxy. The X-Forwarded-For (XFF) header that contains the user’s public IP address is not used because there is no validation that it comes from a trusted source, so would present a method for faking an IP address.
+Ha felhőben üzemeltetett proxy-vagy VPN-megoldást használ, az Azure AD IP-címe a szabályzat kiértékelése során a proxy IP-címét használja. A felhasználó nyilvános IP-címét tartalmazó X-továbbított (XFF) fejléc nem használatos, mert nincs olyan érvényesítés, amely megbízható forrásból származik, ezért az IP-címek szimulálása egy metódust jelent.
 
-When a cloud proxy is in place, a policy that is used to require a domain joined device can be used, or the inside corpnet claim from AD FS.
+Ha egy felhőalapú proxy van érvényben, a tartományhoz csatlakoztatott eszköz megköveteléséhez, illetve a AD FSon belüli Corpnet-jogcímek használatára vonatkozó szabályzatot lehet használni.
 
-### <a name="api-support-and-powershell"></a>API support and PowerShell
+### <a name="api-support-and-powershell"></a>API-támogatás és PowerShell
 
-API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
+Az API és a PowerShell még nem támogatott a nevesített helyszíneken, illetve a feltételes hozzáférési házirendekben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

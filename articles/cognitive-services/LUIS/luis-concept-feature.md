@@ -87,8 +87,8 @@ Egy entitást (A) a szolgáltatásként egy másik entitáshoz (B) kell hozzáad
 Ha például a rendszer az utca címe entitást (A) észleli, akkor az utca címe (A) a szállítási címek entitásának (B) kiszámításához hozzáadja a súlyozást az előrejelzéshez. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
+Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: [szolgáltatások hozzáadása](luis-how-to-add-features.md) további információt a szolgáltatások hozzáadása a LUIS-alkalmazás.
+További információ a szolgáltatások hozzáadása a LUIS-alkalmazáshoz [című témakörben](luis-how-to-add-features.md) talál további információt.

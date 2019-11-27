@@ -19,19 +19,19 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 662d8ecf3d20716a717a5f04f30e04114c9dce04
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 92a88b1e17812b9dc99fd1d5b391d95ba541f48a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374162"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533066"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Útmutató: az Azure AD Graph API használata
 
 > [!IMPORTANT]
-> Az Azure AD Graph API helyett ajánljuk a [Microsoft Graph](https://developer.microsoft.com/graph) használatát az Azure Active Directory erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> Azt javasoljuk, hogy az Azure AD Graph API helyett az [Microsoft Graph](https://developer.microsoft.com/graph) használja az Azure Active Directory (Azure ad) erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
-A Azure Active Directory (Azure AD) Graph API programozott hozzáférést biztosít az Azure AD-hez a OData REST API-végpontokon keresztül. Az alkalmazások az Azure AD Graph API használatával hozhatnak létre, olvashat, frissíthetnek és törölhetnek (szifilisz) műveleteket a címtáradatokat és az objektumokat. Az Azure AD Graph API használatával például létrehozhat egy új felhasználót, megtekintheti vagy frissítheti a felhasználó tulajdonságait, módosíthatja a felhasználó jelszavát, megtekintheti a csoporttagság a szerepköralapú hozzáférés, a Letiltás vagy a felhasználó törlése lehetőséggel. Az Azure AD Graph API szolgáltatásaival és alkalmazási helyzetével kapcsolatos további információkért lásd az [Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és az [Azure ad Graph API előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx)című témakört. Az Azure AD Graph API csak munkahelyi vagy iskolai vagy szervezeti fiókkal működik.
+Az Azure AD Graph API programozott hozzáférést biztosít az Azure AD-hez a OData REST API-végpontokon keresztül. Az alkalmazások az Azure AD Graph API használatával hozhatnak létre, olvashat, frissíthetnek és törölhetnek (szifilisz) műveleteket a címtáradatokat és az objektumokat. Az Azure AD Graph API használatával például létrehozhat egy új felhasználót, megtekintheti vagy frissítheti a felhasználó tulajdonságait, módosíthatja a felhasználó jelszavát, megtekintheti a csoporttagság a szerepköralapú hozzáférés, a Letiltás vagy a felhasználó törlése lehetőséggel. Az Azure AD Graph API szolgáltatásaival és alkalmazási helyzetével kapcsolatos további információkért lásd az [Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és az [Azure ad Graph API előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx)című témakört. Az Azure AD Graph API csak munkahelyi vagy iskolai vagy szervezeti fiókkal működik.
 
 Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsolatos hasonló információk: [a Microsoft Graph API használata](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
 

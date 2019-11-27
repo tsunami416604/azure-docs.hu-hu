@@ -119,7 +119,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 Tekintse meg a Meghívási API-referenciát [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitationban ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [A B2B együttműködés Meghívási e-mail elemei](invitation-email-elements.md)

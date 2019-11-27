@@ -1,6 +1,6 @@
 ---
-title: Conditional Access require terms of use - Azure Active Directory
-description: In this quickstart, you learn how you can require that your terms of use are accepted before access to selected cloud apps is granted by Azure Active Directory Conditional Access.
+title: A feltételes hozzáférés használati feltételeket igényel – Azure Active Directory
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kérheti a használati feltételek elfogadását, mielőtt a kiválasztott felhőalapú alkalmazásokhoz való hozzáférést Azure Active Directory feltételes hozzáférési jogosultsággal adja meg.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,14 +18,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380105"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Quickstart: Require terms of use to be accepted before accessing cloud apps
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt
 
-Before accessing certain cloud apps in your environment, you might want to get consent from users in form of accepting your terms of use (ToU). Azure Active Directory (Azure AD) Conditional Access provides you with:
+A környezet bizonyos felhőalapú alkalmazásaihoz való hozzáférés előtt érdemes lehet a felhasználók beleegyezni a használati feltételek elfogadásával. A Azure Active Directory (Azure AD) feltételes hozzáférés a következőket biztosítja:
 
-- A simple method to configure ToU
-- The option to require accepting your terms of use through a Conditional Access policy  
+- Egyszerű módszer a felhasználási feltételek konfigurálására
+- A használati feltételek feltételes hozzáférési szabályzattal való elfogadásának megkövetelése  
 
-This quickstart shows how to configure an [Azure AD Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that requires a ToU to be accepted for a selected cloud app in your environment.
+Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy olyan [Azure ad feltételes hozzáférési szabályzatot](../active-directory-conditional-access-azure-portal.md) , amely megköveteli, hogy a környezetében egy kiválasztott felhőalapú alkalmazásnak el kell fogadnia a felhasználási feltételeket.
 
 ![Szabályzat létrehozása](./media/require-tou/5555.png)
 
@@ -33,181 +33,181 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To complete the scenario in this quickstart, you need:
+Az ebben a rövid útmutatóban szereplő forgatókönyv végrehajtásához a következőkre lesz szüksége:
 
-- **Access to an Azure AD Premium edition** - Azure AD Conditional Access is an Azure AD Premium capability.
-- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Hozzáférés egy prémium szintű Azure ad kiadáshoz** – az Azure ad feltételes hozzáférés egy prémium szintű Azure ad képesség.
+- **Egy Isabella Simonsen nevű tesztüzenet** – ha nem tudja, hogyan hozhat létre egy teszt fiókot, tekintse meg a [felhőalapú felhasználók hozzáadása](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)című témakört.
 
-## <a name="test-your-sign-in"></a>Test your sign-in
+## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése
 
-The goal of this step is to get an impression of the sign-in experience without a Conditional Access policy.
+Ennek a lépésnek a célja, hogy betekintse a bejelentkezési élményt feltételes hozzáférési szabályzat nélkül.
 
-**To test your sign-in:**
+**A bejelentkezés tesztelése:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com/) as Isabella Simonsen.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) Isabella Simonsen.
 1. Jelentkezzen ki.
 
-## <a name="create-your-terms-of-use"></a>Create your terms of use
+## <a name="create-your-terms-of-use"></a>Használati feltételek létrehozása
 
-This section provides you with the steps to create a sample ToU. When you create a ToU, you select a value for **Enforce with Conditional Access policy templates**. Selecting **Custom policy** opens the dialog to create a new Conditional Access policy as soon as your ToU has been created.
+Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit ismerteti. A használati feltételek létrehozásakor ki kell választania egy értéket a **kényszerített hozzáférési házirend-sablonokkal**. Ha az **Egyéni házirendet** választja, megnyílik a párbeszédpanel, amely azonnal létrehoz egy új feltételes hozzáférési szabályzatot, amint a rendszer létrehozta a felhasználási feltételeket.
 
-**To create your terms of use:**
+**A használati feltételek létrehozása:**
 
-1. In Microsoft Word, create a new document.
-1. Type **My terms of use**, and then save the document on your computer as **mytou.pdf**.
-1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
-1. In the Azure portal, on the left navbar, click **Azure Active Directory**.
+1. A Microsoft Wordben hozzon létre egy új dokumentumot.
+1. Írja be a **saját használati feltételeket**, majd mentse a dokumentumot a számítógépen **mytou. pdf**néven.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférési rendszergazdaként.
+1. A Azure Portal a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
 
    ![Azure Active Directory](./media/require-tou/02.png)
 
-1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
+1. A **Azure Active Directory** lap **Biztonság** szakaszában kattintson a **feltételes hozzáférés**elemre.
 
    ![Feltételes hozzáférés](./media/require-tou/03.png)
 
-1. In the **Manage** section, click **Terms of use**.
+1. A **kezelés** szakaszban kattintson a **használati feltételek**elemre.
 
    ![Használati feltételek](./media/require-tou/04.png)
 
-1. In the menu on the top, click **New terms**.
+1. A felső menüben kattintson az **új feltételek**elemre.
 
    ![Használati feltételek](./media/require-tou/05.png)
 
-1. On the **New terms of use** page:
+1. Az **új használati feltételek** lapon:
 
    ![Használati feltételek](./media/require-tou/112.png)
 
-   1. In the **Name** textbox, type **My TOU**.
-   1. In the **Display name** textbox, type **My TOU**.
-   1. Upload your terms of use PDF file.
-   1. As **Language**, select **English**.
-   1. As **Require users to expand the terms of use**, select **On**.
-   1. As **Enforce with Conditional Access policy templates**, select **Custom policy**.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **név** szövegmezőbe írja be a **saját felhasználási**feltételeket.
+   1. A **megjelenítendő név** szövegmezőbe írja be a **saját felhasználási**feltételeket.
+   1. Töltse fel a PDF-fájl használati feltételeit.
+   1. **Nyelvként**válassza az **angol**nyelvet.
+   1. Ahogy a felhasználók a használati **feltételek kibontását kérik**, válassza **a be**lehetőséget.
+   1. A **feltételes hozzáférési házirend-sablonokkal való betartatáshoz**válassza az **egyéni házirend**elemet.
+   1. Kattintson a **Létrehozás** elemre.
 
-## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
+## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-This section shows how to create the required Conditional Access policy. The scenario in this quickstart uses:
+Ez a szakasz bemutatja, hogyan hozhatja létre a kötelező feltételes hozzáférési szabályzatot. Az ebben a rövid útmutatóban szereplő forgatókönyv a következőket használja:
 
-- The Azure portal as placeholder for a cloud app that requires your ToU to be accepted. 
-- Your sample user to test the Conditional Access policy.  
+- A használati feltételek elfogadását igénylő felhőalapú alkalmazások helyőrzőként való Azure Portal. 
+- A minta felhasználója a feltételes hozzáférési szabályzat teszteléséhez.  
 
-In your policy, set:
+A házirendben állítsa be a következőket:
 
-| Beállítás | Value (Díj) |
+| Beállítás | Érték |
 | --- | --- |
 | Felhasználók és csoportok | Isabella Simonsen |
-| Cloud apps | Microsoft Azure Management |
-| Hozzáférés biztosítása | My TOU |
+| Felhőalapú alkalmazások | Microsoft Azure-kezelés |
+| Hozzáférés biztosítása | Saját felhasználási feltételek |
 
 ![Szabályzat létrehozása](./media/require-tou/1234.png)
 
-**To configure your Conditional Access policy:**
+**A feltételes hozzáférési szabályzat konfigurálása:**
 
-1. On the **New** page, in the **Name** textbox, type **Require TOU for Isabella**.
+1. Az **új** lap **név** szövegmezőbe írja be a következőt: az **Isabella kötelező felhasználási**helyének megadása.
 
    ![Név](./media/require-tou/71.png)
 
-1. In the **Assignment** section, click **Users and groups**.
+1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok**elemre.
 
    ![Felhasználók és csoportok](./media/require-tou/06.png)
 
-1. On the **Users and groups** page:
+1. A **felhasználók és csoportok** lapon:
 
    ![Felhasználók és csoportok](./media/require-tou/24.png)
 
-   1. Click **Select users and groups**, and then select **Users and groups**.
+   1. Kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza a **felhasználók és csoportok**lehetőséget.
    1. Kattintson a **Kiválasztás** gombra.
-   1. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
-   1. On the **Users and groups** page, click **Done**.
-1. Click **Cloud apps**.
+   1. A **kiválasztás** lapon válassza az **Isabella Simonsen**elemet, majd kattintson a **kiválasztás**elemre.
+   1. A **felhasználók és csoportok** lapon kattintson a **kész**gombra.
+1. Kattintson a **Cloud apps**lehetőségre.
 
-   ![Cloud apps](./media/require-tou/08.png)
+   ![Felhőalapú alkalmazások](./media/require-tou/08.png)
 
-1. On the **Cloud apps** page:
+1. A **Cloud apps** oldalon:
 
-   ![Select cloud apps](./media/require-tou/26.png)
+   ![Felhőalapú alkalmazások kiválasztása](./media/require-tou/26.png)
 
-   1. Click **Select apps**.
+   1. Kattintson az **alkalmazások kiválasztása**elemre.
    1. Kattintson a **Kiválasztás** gombra.
-   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
-   1. On the **Cloud apps** page, click **Done**.
-1. In the **Access controls** section, click **Grant**.
+   1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
+   1. A **Cloud apps** lapon kattintson a **kész**gombra.
+1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
 
-   ![Access controls](./media/require-tou/10.png)
+   ![Hozzáférés-vezérlés](./media/require-tou/10.png)
 
-1. On the **Grant** page:
+1. A **támogatás** lapon:
 
    ![Grant](./media/require-tou/111.png)
 
-   1. Select **Grant access**.
-   1. Select **My TOU**.
+   1. Válassza a **hozzáférés engedélyezése**lehetőséget.
+   1. Válassza **a saját felhasználási**feltételek lehetőséget.
    1. Kattintson a **Kiválasztás** gombra.
-1. In the **Enable policy** section, click **On**.
+1. A **házirend engedélyezése** szakaszban kattintson **a be**gombra.
 
-   ![Enable policy](./media/require-tou/18.png)
+   ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign-in
+## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
-Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access what if policy tool to simulate a sign-in of your test user. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
+Most, hogy konfigurálta a feltételes hozzáférési házirendet, érdemes tudnia, hogy a várt módon működik-e. Első lépésként használja a feltételes hozzáférés, mi a teendő, ha a szabályzat eszközzel szimulálni kívánja a felhasználó bejelentkezési adatait. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
-To initialize the **What If** policy evaluation tool, set:
+A **What if** Policy értékelési eszköz inicializálásához állítsa be a következőt:
 
-- **Isabella Simonsen** as user
-- **Microsoft Azure Management** as cloud app
+- **Isabella Simonsen** felhasználóként
+- **Microsoft Azure-kezelés** Felhőbeli alkalmazásként
 
-Clicking **What If** creates a simulation report that shows:
+A **What if** elemre kattintva létrehoz egy szimulációs jelentést, amely a következőket jeleníti meg:
 
-- **Require TOU for Isabella** under **Policies that will apply**
-- **My TOU** as **Grant Controls**.
+- **Felhasználási feltételek megkövetelése az Isabella számára** az **alkalmazandó szabályzatok** alatt
+- **A saját felhasználási** feltételek az **engedélyezési vezérlők**.
 
-![What if policy tool](./media/require-tou/79.png)
+![Mi a teendő, ha a házirend eszköz](./media/require-tou/79.png)
 
-**To evaluate your Conditional Access policy:**
+**A feltételes hozzáférési szabályzat kiértékelése:**
 
-1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
+1. A [feltételes hozzáférés – házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson a **What if**elemre.  
 
    ![What If](./media/require-tou/14.png)
 
-1. Click **Users**, select **Isabella Simonsen**, and then click **Select**.
+1. Kattintson a **felhasználók**elemre, jelölje ki az **Isabella Simonsen**, majd kattintson a **kiválasztás**elemre.
 
    ![Felhasználó](./media/require-tou/15.png)
 
-1. To select a cloud app:
+1. Felhőalapú alkalmazás kiválasztása:
 
-   ![Cloud apps](./media/require-tou/16.png)
+   ![Felhőalapú alkalmazások](./media/require-tou/16.png)
 
-   1. Click **Cloud apps**.
-   1. On the **Cloud apps page**, click **Select apps**.
+   1. Kattintson a **Cloud apps**lehetőségre.
+   1. A **Cloud apps lapon**kattintson az **alkalmazások kiválasztása**elemre.
    1. Kattintson a **Kiválasztás** gombra.
-   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
-   1. On the cloud apps page, click **Done**.
-1. Click **What If**.
+   1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
+   1. A Cloud apps lapon kattintson a **kész**gombra.
+1. Kattintson **What if**.
 
-## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
-In the previous section, you have learned how to evaluate a simulated sign-in. In addition to a simulation, you should also test your Conditional Access policy to ensure that it works as expected.
+Az előző szakaszban megtanulta, hogyan értékelheti ki a szimulált bejelentkezést. A szimuláción kívül a feltételes hozzáférési szabályzatot is tesztelni kell, hogy az a várt módon működjön.
 
-To test your policy, try to sign-in to your [Azure portal](https://portal.azure.com) using your **Isabella Simonsen** test account. You should see a dialog that requires you to accept your terms of use.
+A szabályzat teszteléséhez próbáljon meg bejelentkezni a [Azure Portalba](https://portal.azure.com) az **Isabella Simonsen** -teszt fiók használatával. Meg kell jelennie egy párbeszédpanelnek, amely megköveteli a használati feltételek elfogadását.
 
 ![Használati feltételek](./media/require-tou/57.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When no longer needed, delete the test user and the Conditional Access policy:
+Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes hozzáférési szabályzatot:
 
-- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
+- Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
+- A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
 
     ![Többtényezős hitelesítés](./media/require-tou/33.png)
 
-- To delete your terms of use, select it, and then click **Delete terms** in the toolbar on top.
+- A használati feltételek törléséhez jelölje ki azt, majd kattintson a **feltételek törlése** elemre a felül található eszköztárban.
 
     ![Többtényezős hitelesítés](./media/require-tou/29.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Require MFA for specific apps](app-based-mfa.md)
-> [Block access when a session risk is detected](app-sign-in-risk.md)
+> Többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz](app-based-mfa.md)
+> [letiltása a munkamenet-kockázat észlelésekor](app-sign-in-risk.md)

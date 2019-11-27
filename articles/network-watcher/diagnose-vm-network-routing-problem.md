@@ -27,7 +27,7 @@ ms.locfileid: "74276046"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Oktatóanyag: Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása az Azure Portal használatával
 
-A virtuális gép (VM) telepítésekor az Azure számos alapértelmezett útvonalat hoz létre. Egyéni útvonalakat is létrehozhat, amelyekkel felülírhatja az Azure alapértelmezett útvonalait. Bizonyos esetekben az egyéni útvonalak miatt a virtuális gép nem tud kommunikálni más erőforrásokkal. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+A virtuális gép (VM) telepítésekor az Azure számos alapértelmezett útvonalat hoz létre. Egyéni útvonalakat is létrehozhat, amelyekkel felülírhatja az Azure alapértelmezett útvonalait. Bizonyos esetekben az egyéni útvonalak miatt a virtuális gép nem tud kommunikálni más erőforrásokkal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális gép létrehozása
@@ -51,10 +51,10 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVM|
+    |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetést| Válassza ki előfizetését.|
+    |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
 
@@ -90,7 +90,7 @@ Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egy
     | Virtuális gép         | Válassza a myVm lehetőséget                                            |
     | Hálózati illesztő       | myvm – A hálózati adapter neve eltérő lehet.   |
     | Forrás IP-címe       | 10.0.0.4                                               |
-    | Cél IP-cím  | 13.107.21.200 – a www. Bing. com > < címeinek egyike. |
+    | Cél IP-címe  | 13.107.21.200 – a www. Bing. com > < címeinek egyike. |
 
     ![Következő ugrás](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -117,7 +117,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy virtuális gépet, és diagnosztizálta a hálózati útválasztást a virtuális géptől. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

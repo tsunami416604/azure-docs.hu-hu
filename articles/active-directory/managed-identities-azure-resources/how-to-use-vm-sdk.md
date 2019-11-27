@@ -44,7 +44,7 @@ Ez a cikk az SDK-minták listáját mutatja be, amely bemutatja az Azure-erőfor
 | Python          | [Felügyelt identitások használata Azure-erőforrásokhoz egyszerűen egy virtuális gépen belülről történő hitelesítéshez](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby            | [Felügyelt identitással rendelkező virtuális gépek erőforrásainak kezelése engedélyezett Azure-erőforrások esetén](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az Azure SDK-kat az Azure SDK-erőforrások teljes listájához, beleértve a könyvtárak letöltését [, a](https://azure.microsoft.com/downloads/) dokumentációt és egyebeket.
 - Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).

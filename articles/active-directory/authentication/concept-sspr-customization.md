@@ -1,6 +1,6 @@
 ---
-title: Customize self-service password reset - Azure Active Directory
-description: Customization options for Azure AD self-service password reset
+title: Önkiszolgáló jelszó-visszaállítás testreszabása – Azure Active Directory
+description: Az Azure AD önkiszolgáló jelszó-visszaállítás testreszabási lehetőségei
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,77 +18,77 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381944"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Customize the Azure AD functionality for self-service password reset
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz
 
-IT professionals who want to deploy self-service password reset (SSPR) in Azure Active directory (Azure AD) can customize the experience to match their users' needs.
+Az önkiszolgáló jelszó-visszaállítást (SSPR) az Azure Active Directoryban (Azure AD) használó informatikai szakemberek testre szabhatják a felhasználói igényeknek megfelelő élményt.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Customize the "Contact your administrator" link
+## <a name="customize-the-contact-your-administrator-link"></a>A "Kapcsolatfelvétel a rendszergazdával" hivatkozás testreszabása
 
-Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
+Az önkiszolgáló jelszó-visszaállítási felhasználóknak a jelszó-visszaállítási portálon elérhető "Kapcsolatfelvétel a rendszergazdával" hivatkozással. Ha a felhasználó kiválasztja ezt a hivatkozást, akkor a következő két dolog egyike lesz:
 
-* If left in the default state:
-   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
-* If customized:
-   * Sends your user to a webpage or email address specified by the administrator for assistance.
+* Ha az alapértelmezett állapotban marad:
+   * A rendszer e-mailt küld a rendszergazdának, és kéri, hogy nyújtson segítséget a felhasználó jelszavának módosításához. Tekintse meg a [minta e-mail-](#sample-email) címét.
+* Ha testre van szabva:
+   * Elküldi a felhasználónak egy weboldalt vagy e-mail-címet, amelyet a rendszergazda megad a segítségért.
 
 > [!TIP]
-> If you customize this, we recommend setting this to something users are already familiar with for support
+> Ha ezt testreszabja, azt javasoljuk, hogy ezt a beállítást olyan felhasználók számára ajánljuk, akik már ismerik a támogatást
 
 > [!WARNING]
-> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
+> Ha ezt a beállítást egy olyan e-mail-címmel és fiókkal testreszabja, amelynek jelszó-visszaállításra van szüksége, akkor előfordulhat, hogy a felhasználó nem tud segítséget kérni.
 
-### <a name="sample-email"></a>Sample email
+### <a name="sample-email"></a>Minta e-mail
 
-![Sample request to reset email sent to Administrator][Contact]
+![Példa a rendszergazdának küldött e-mailek visszaállítására][Contact]
 
-The contact email is sent to the following recipients in the following order:
+A kapcsolattartási e-mail küldése a következő címzetteknek történik a következő sorrendben:
 
-1. If the **password administrator** role is assigned, administrators with this role are notified.
-2. If no password administrators are assigned, then administrators with the **user administrator** role are notified.
-3. If neither of the previous roles are assigned, then the **global administrators** are notified.
+1. Ha a **jelszó-rendszergazdai** szerepkör hozzá van rendelve, a rendszer értesítést küld az ezzel a szerepkörrel rendelkező rendszergazdáknak.
+2. Ha nincs jelszó-rendszergazda társítva, a rendszer értesítést küld a rendszergazdáknak a **felhasználó rendszergazdai** szerepkörével.
+3. Ha az előző szerepkörök egyike sincs hozzárendelve, akkor a **globális rendszergazdák** értesítést kapnak.
 
-In all cases, a maximum of 100 recipients are notified.
+Minden esetben legfeljebb 100 címzett kap értesítést.
 
-To find out more about the different administrator roles and how to assign them, see [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Ha többet szeretne megtudni a különböző rendszergazdai szerepkörökről és azok hozzárendeléséről, tekintse meg a [rendszergazdai szerepkörök kiosztása a Azure Active Directory-ben](../users-groups-roles/directory-assign-admin-roles.md)című témakört.
 
-### <a name="disable-contact-your-administrator-emails"></a>Disable "Contact your administrator" emails
+### <a name="disable-contact-your-administrator-emails"></a>A "Kapcsolatfelvétel a rendszergazdával" e-mailek letiltása
 
-If your organization does not want to notify administrators about password reset requests, you can enable the following configuration:
+Ha a szervezet nem szeretné értesíteni a rendszergazdákat a jelszó-visszaállítási kérelmekről, akkor a következő konfigurációt engedélyezheti:
 
-* Enable self-service password reset for all end users. This option is under **Password Reset** > **Properties**. If you don't want users to reset their own passwords, you can scope access to an empty group. *We don't recommend this option.*
-* Customize the helpdesk link to provide a web URL or mailto: address that users can use to get assistance. This option is under **Password Reset** > **Customization** > **Custom helpdesk email or URL**.
+* Az összes végfelhasználó számára engedélyezze az önkiszolgáló jelszó-visszaállítást. Ez a beállítás a **jelszó alaphelyzetbe állítása** > **Tulajdonságok**területen található. Ha nem szeretné, hogy a felhasználók a saját jelszavukat állítsa alaphelyzetbe, akkor egy üres csoporthoz is hozzáférhet. *Ez a beállítás nem ajánlott.*
+* Testreszabhatja az ügyfélszolgálati hivatkozást egy webes URL-cím vagy mailto: cím megadásához, amellyel a felhasználók segítséget kérhetnek. Ez a beállítás a **jelszó alaphelyzetbe állítása** > **Testreszabás** > **Egyéni segélyszolgálat e-mail-címe vagy URL-címe**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Customize the AD FS sign-in page for SSPR
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>A SSPR AD FS bejelentkezési oldalának testreszabása
 
-Active Directory Federation Services (AD FS) administrators can add a link to their sign-in page by using the guidance found in the [Add sign-in page description](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) article.
+Active Directory összevonási szolgáltatások (AD FS) (AD FS) a rendszergazdák hozzáadhatnak egy hivatkozást a bejelentkezési lapjához a [bejelentkezési oldal hozzáadása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) című cikkben található útmutatás alapján.
 
-To add a link to the AD FS sign-in page, use the following command on your AD FS server. Users can use this page to enter the SSPR workflow.
+A AD FS bejelentkezési oldalára mutató hivatkozás hozzáadásához használja a következő parancsot a AD FS-kiszolgálón. A felhasználók ezt a lapot használhatják a SSPR munkafolyamat megadására.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Customize the sign-in page and access panel look and feel
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>A bejelentkezési oldal és a hozzáférési panel megjelenésének és működésének testreszabása
 
-You can customize the sign-in page. You can add a logo that appears along with the image that fits your company branding.
+A bejelentkezési oldal testreszabható. Hozzáadhat egy emblémát, amely a cég arculatának megfelelő képpel együtt jelenik meg.
 
-The graphics you choose are shown in the following circumstances:
+A kiválasztott grafikák a következő esetekben jelennek meg:
 
-* After a user enters their username
-* If the user accesses the customized URL:
-   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
-   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
+* Miután a felhasználó beírja a felhasználónevét
+* Ha a felhasználó a testreszabott URL-címet éri el:
+   * Ha átadja a `whr` paramétert a jelszó-visszaállítási lapra, például `https://login.microsoftonline.com/?whr=contoso.com`
+   * Ha átadja a `username` paramétert a jelszó-visszaállítási lapra, például `https://login.microsoftonline.com/?username=admin@contoso.com`
 
-Find details on how to configure company branding in the article [Add company branding to your sign-in page in Azure AD](../fundamentals/customize-branding.md).
+A vállalat arculatának konfigurálásáról a [vállalati arculat hozzáadása a bejelentkezési laphoz az Azure ad](../fundamentals/customize-branding.md)-ben című cikkben talál további információt.
 
-### <a name="directory-name"></a>Directory name
+### <a name="directory-name"></a>Könyvtár neve
 
-You can change the directory name attribute under **Azure Active Directory** > **Properties**. You can show a friendly organization name that is seen in the portal and in the automated communications. This option is the most visible in automated emails in the forms that follow:
+A címtár neve attribútumot a **Azure Active Directory** > **Tulajdonságok**területen módosíthatja. Megjelenítheti a Portálon és az automatikus kommunikációban látható, felhasználóbarát szervezet nevét. Ez a lehetőség a következő űrlapokon látható automatikus e-mailek közül a legkönnyebben látható:
 
-* The friendly name in the email, for example “Microsoft on behalf of CONTOSO demo”
-* The subject line in the email, for example “CONTOSO demo account email verification code”
+* A felhasználóbarát név az e-mailben, például "a Microsoft neve a CONTOSO demo nevében"
+* Az e-mailben szereplő tárgyi sor, például "CONTOSO demo-fiók e-mail-ellenőrző kódja"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
@@ -100,7 +100,7 @@ You can change the directory name attribute under **Azure Active Directory** > *
 * [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Segítségért forduljon a rendszergazdához, és kérje a jelszó-e-mail-cím alaphelyzetbe állítását"

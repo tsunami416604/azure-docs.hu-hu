@@ -1,6 +1,6 @@
 ---
-title: Sample - Billing tags policy initiative
-description: This sample policy initiative (policy set) requires specified tag values defined in parameters for cost center and product name.
+title: Minta – számlázási címkék házirend kezdeményezése
+description: Ez a minta házirend-kezdeményezés (házirend-készlet) a Költséghely és a terméknév paraméterei között meghatározott kódelemek használatát igényli.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463389"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Sample - Billing tags policy initiative
+# <a name="sample---billing-tags-policy-initiative"></a>Minta – számlázási címkék házirend kezdeményezése
 
 Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.
 
@@ -20,7 +20,7 @@ Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott �
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-You can deploy this template with [PowerShell](#deploy-with-powershell).
+Ezt a sablont a [PowerShell](#deploy-with-powershell)használatával telepítheti.
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -62,4 +62,4 @@ foreach ($r in $resources) {
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

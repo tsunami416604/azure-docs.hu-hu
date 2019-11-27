@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure bejárati szolgálta
 ## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>A gazdagép nem irányítja át a háttérbe, és 400 állapotkódot ad vissza.
 
 
-### <a name="symptom"></a>Hibajelenség
+### <a name="symptom"></a>Jelenség
 - Létrehozott egy bejárati ajtót, de a előtér-gazdagépre irányuló kérelem HTTP 400-as állapotkódot ad vissza.
 
   - Létrehozott egy DNS-hozzárendelést egy egyéni tartományból a konfigurált előtér-gazdagépre. Az egyéni tartományhoz tartozó állomásnév küldése azonban egy HTTP 400 állapotkódot ad vissza, és nem úgy tűnik, hogy a konfigurált háttér (ek) ra irányítja az útvonalat.
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure bejárati szolgálta
 
 ## <a name="request-to-frontend-hostname-returns-404-status-code"></a>A előtér-gazdagépre irányuló kérelem a 404 állapotkódot adja vissza.
 
-### <a name="symptom"></a>Hibajelenség
+### <a name="symptom"></a>Jelenség
 - Létrehozta a bejárati ajtót, és konfigurált egy előtér-gazdagépet, egy háttér-készletet legalább egy háttérrel, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. Úgy tűnik, hogy a tartalom nem érhető el a konfigurált előtér-gazdagépre irányuló kérelem küldésekor, mert a rendszer HTTP 404 állapotkódot ad vissza.
 
 ### <a name="cause"></a>Ok

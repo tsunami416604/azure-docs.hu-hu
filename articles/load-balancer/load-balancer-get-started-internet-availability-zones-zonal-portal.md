@@ -1,7 +1,7 @@
 ---
-title: Create a Load Balancer with a zonal frontend - Azure portal
+title: Load Balancer létrehozása egy zóna-előtérbeli felülettel – Azure Portal
 titleSuffix: Azure Load Balancer
-description: Learn how to create a Standard Load Balancer with zonal frontend with the Azure portal
+description: Megtudhatja, hogyan hozhat létre standard Load Balancer a zóna-előtérben a Azure Portal
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,39 +21,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225337"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Create a Standard Load Balancer with zonal frontend using Azure portal
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>standard Load Balancer létrehozása a zóna-előtérben a Azure Portal használatával
 
-This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend IP configuration. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
+Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre egy nyilvános [standard Load Balancer](https://aka.ms/azureloadbalancerstandard) egy zóna-előtérbeli IP-konfigurációval. Annak megismeréséhez, hogy a rendelkezésre állási zónák hogyan működnek a standard Load Balancerokkal, tekintse meg a [standard Load Balancer és a rendelkezésre állás](load-balancer-standard-availability-zones.md) 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE]
-> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+> A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, valamint arról, hogy az Azure-erőforrások,-régiók és a virtuális gépek méretének családja milyen módon próbálhatja ki a rendelkezésre állási zónákat: [Availability Zones áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
-## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Create a load balancer with zonal frontend IP address
+## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>A zónaszintű előtérbeli IP-címmel rendelkező terheléselosztó létrehozása
 
-1. From a browser navigate to the Azure portal: [https://portal.azure.com](https://portal.azure.com) and login with your Azure account.
-2. On the top left-hand side of the screen, select **Create a resource** > **Networking** > **Load Balancer.**
-3. In the **Create load balancer** page, under **Name** type **myLoadBalancer**.
+1. Egy böngészőből navigáljon a Azure Portal: [https://portal.azure.com](https://portal.azure.com) , és jelentkezzen be az Azure-fiókjával.
+2. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancer lehetőséget.**
+3. A **Load Balancer létrehozása** lapon a **név** mezőbe írja be a következőt: **myLoadBalancer**.
 4. A **Típus** alatt válassza ki a **Nyilvános** elemet.
-5. Under SKU, select **Standard**.
-6. Click **Choose a Public IP address**, click **Create new**, and in **Create public IP address** page, under name, type **myPublicIPZonal**, for SKU, select **Standard**, for Availability zone, select **1**.
+5. Az SKU területen válassza a **standard**lehetőséget.
+6. Kattintson **a nyilvános IP-cím választása**lehetőségre, kattintson az **új létrehozása**elemre, majd a **nyilvános IP-cím létrehozása** lap név területén írja be a **myPublicIPZonal**, az SKU, a **standard**, a rendelkezésre állási zóna lehetőséget, majd válassza az **1**elemet.
     
 >[!NOTE] 
-> The public IP created in this step is of Standard SKU by default.
+> A nyilvános IP-cím ebben a lépésben létrehozott része Standard termékváltozat alapértelmezés szerint.
 
-1. For **Resource group**, click **Create new**, and then type **myResourceGroupZLB** as the name of the resource group.
-1. For **Location**, select **West Europe**, and then click **OK**. Ekkor elindul a terheléselosztó üzembe helyezése, ami néhány perc alatt sikeresen befejeződik.
+1. Az **erőforráscsoport**területen kattintson az **új létrehozása**elemre, majd írja be a **myResourceGroupZLB** nevet az erőforráscsoport neveként.
+1. A **hely**mezőben válassza a **Nyugat-Európa**lehetőséget, majd kattintson **az OK**gombra. Ekkor elindul a terheléselosztó üzembe helyezése, ami néhány perc alatt sikeresen befejeződik.
 
-    ![create zone-redundant Standard Load Balancer with the Azure portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![zóna létrehozása – redundáns standard Load Balancer a Azure Portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).
+## <a name="next-steps"></a>További lépések
+- További információ a [standard Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).
 
 
 

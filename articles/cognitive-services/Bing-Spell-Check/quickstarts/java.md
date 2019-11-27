@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Java - Bing Spell Check'
+title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és a Java-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Get started using the Bing Spell Check REST API to check spelling and grammar.
+description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,21 +17,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383876"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Java
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Javával
 
-Use this quickstart to make your first call to the Bing Spell Check REST API. This simple Java application sends a request to the API and returns a list of suggested corrections. While this application is written in Java, the API is a RESTful web service compatible with most programming languages. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Java-alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Habár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* The Java Development Kit(JDK) 7 or later.
+* A Java Development Kit (JDK) 7-es vagy újabb verziója.
 
-* Import the [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) or the most current [Gson](https://github.com/google/gson) version. For command line execution, add the `.jar` to your Java folder with the main class.
+* Importálja a [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) vagy a legújabb [gson](https://github.com/google/gson) -verziót. A parancssori végrehajtáshoz adja hozzá a `.jar`t a Java-mappához a Main osztállyal.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Create and initialize an application
+## <a name="create-and-initialize-an-application"></a>Alkalmazás létrehozása és inicializálása
 
-1. Create a new Java Project in your favorite IDE or editor with a class name of your choosing, and then import the following packages.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-vagy szerkesztőjében a választott osztálynév használatával, majd importálja a következő csomagokat.
 
     ```java
     import java.io.*;
@@ -40,7 +40,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Create variables for the API endpoint's host, path, and your subscription key. Then create variables for your market, the text you want to spell check, and a string for the spell check mode.
+2. Hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és előfizetési kulcsához. Ezután hozzon létre változókat a piacra, a helyesírás-ellenőrzéshez használni kívánt szövegre, valamint egy karakterláncot a helyesírás-ellenőrzési módhoz.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -53,9 +53,9 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     static String text = "Hollo, wrld!";
     ```
 
-## <a name="create-and-send-an-api-request"></a>Create and send an API request
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
 
-1. Create a function called `check()` to create and send the API request. Within it, follow these steps. Create a string for the request parameters. append the `?mkt=` parameter to your market string, and the `&mode=` parameter to your spell check mode.  
+1. Hozzon létre egy `check()` nevű függvényt az API-kérelem létrehozásához és elküldéséhez. Ebben az esetben kövesse az alábbi lépéseket. Hozzon létre egy karakterláncot a kérés paramétereinek. fűzze hozzá a `?mkt=` paramétert a piaci karakterlánchoz, és a `&mode=` paramétert a helyesírás-ellenőrzési módba.  
 
    ```java
    public static void check () throws Exception {
@@ -64,14 +64,14 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
    }
    ```
 
-2. Create a URL by combining the endpoint host, path and parameters string. Create a new `HttpsURLConnection` object.
+2. Hozzon létre egy URL-címet a végpont-gazdagép, az elérési út és a paraméterek karakterláncának kombinálásával. Hozzon létre egy új `HttpsURLConnection` objektumot.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Open a connection to the URL. Set the request method to `POST`. Add your request parameters. Make sure to add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+3. Nyisson meg egy kapcsolódást az URL-címhez. A kérelem metódusának beállítása `POST`. Adja meg a kérés paramétereit. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```java
     connection.setRequestMethod("POST");
@@ -80,7 +80,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     connection.setDoOutput(true);
     ```
 
-4. Create a new `DataOutputStream` object and Send the request to the API.
+4. Hozzon létre egy új `DataOutputStream` objektumot, és küldje el a kérést az API-nak.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -89,9 +89,9 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>Format and read the API response
+## <a name="format-and-read-the-api-response"></a>Az API-válasz formázása és olvasása
 
-1. Add this method to your class. It formats the JSON for a more readable output.
+1. Adja hozzá ezt a metódust a osztályhoz. A JSON-t egy olvashatóbb kimenetre formázza.
 
     ``` java
     // This function prettifies the json response.
@@ -103,7 +103,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     }
     ```
 
-1. Create a `BufferedReader` and read the response from the API. Print it to the console.
+1. Hozzon létre egy `BufferedReader`, és olvassa el a választ az API-ból. Nyomtassa ki a-konzolra.
     
     ```java
     BufferedReader in = new BufferedReader(
@@ -117,7 +117,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
 
 ## <a name="call-the-api"></a>Az API meghívása
 
-In the main function of your application, call your check() method created above.
+Az alkalmazás fő függvényében hívja meg a fent létrehozott ellenőrzési () metódust.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,21 +131,21 @@ In the main function of your application, call your check() method created above
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Build and run your project.
+Hozza létre és futtassa a projektet.
 
-If you're using the command line, use the following commands to build and run the application.
+Ha a parancssort használja, az alábbi parancsokkal hozhatja létre és futtathatja az alkalmazást.
 
-**Build:**
+**Építeni**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Run:**
+**Futtassa**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
@@ -187,10 +187,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](../overview.md)
+- [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

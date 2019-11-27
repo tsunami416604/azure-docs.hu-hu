@@ -34,7 +34,7 @@ Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Eve
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
-Alapértelmezés szerint a **IP-szűrő** rács a portálon az Event Hubs, az üres. Ez az alapértelmezett beállítás, az azt jelenti, hogy az eseményközpont IP-címeket érkező kapcsolatokat fogad-e. Ez az alapértelmezett beállítás megegyezik egy szabályt, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
+Alapértelmezés szerint a Event Hubs-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás, az azt jelenti, hogy az eseményközpont IP-címeket érkező kapcsolatokat fogad-e. Ez az alapértelmezett beállítás megegyezik egy szabályt, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
 ## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály értékelése
 
@@ -64,7 +64,7 @@ A következő Resource Manager-sablon lehetővé teszi, hogy egy IP-szűrési sz
 
 Sablon paraméterei:
 
-- **ipMask** egyetlen IPv4-cím vagy IP-címeket a CIDR-jelölésrendszerben egy kódblokkot. Például a CIDR jelölésrendszerben 70.37.104.0/24 jelöli 256 IPv4-címek 70.37.104.0 a 70.37.104.255, az a tartomány jelentős előtag bitek számát jelző 24.
+- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. Például a CIDR jelölésrendszerben 70.37.104.0/24 jelöli 256 IPv4-címek 70.37.104.0 a 70.37.104.255, az a tartomány jelentős előtag bitek számát jelző 24.
 
 > [!NOTE]
 > Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
@@ -143,7 +143,7 @@ Sablon paraméterei:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure virtuális hálózatok és az Event Hubs korlátozási hozzáférés tekintse meg a következő hivatkozásra:
 

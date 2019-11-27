@@ -57,7 +57,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Tekintse meg a [Content Protection áttekintését](content-protection-overview.md) ismertető cikket.
 * Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-* [A Media Services-fiók létrehozása](create-account-cli-quickstart.md).
+* [Hozzon létre egy Media Services fiókot](create-account-cli-quickstart.md).
 * A [hozzáférési API](access-api-cli-how-to.md)-k használatával Media Services API-k használatához szükséges hitelesítő adatok beolvasása.
 
 ## <a name="download-code"></a>Kód letöltése
@@ -167,7 +167,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [DRM védelme](protect-with-drm.md)
+> [Védelem a DRM-mel](protect-with-drm.md)

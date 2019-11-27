@@ -1,6 +1,6 @@
 ---
-title: How to create user-defined functions - in Azure Digital Twins | Microsoft Docs
-description: How to create user-defined functions, matchers, and role assignments in Azure Digital Twins.
+title: Felhasználó által definiált függvények létrehozása – az Azure digitális Twinsban | Microsoft Docs
+description: Felhasználó által definiált függvények, egyeztetések és szerepkör-hozzárendelések létrehozása az Azure digitális Twins-ban.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,41 +16,41 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383312"
 ---
-# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>How to create user-defined functions in Azure Digital Twins
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
-[User-defined functions](./concepts-user-defined-functions.md) enable users to configure custom logic to be executed from incoming telemetry messages and spatial graph metadata. Users can also send events to predefined [endpoints](./how-to-egress-endpoints.md).
+[Felhasználó által definiált függvények](./concepts-user-defined-functions.md) lehetővé teszik a felhasználók számára, hogy egyéni logikát konfiguráljanak a bejövő telemetria üzenetekből és a térbeli gráf metaadatainak. A felhasználók az előre meghatározott [végpontokra](./how-to-egress-endpoints.md)is küldhetnek eseményeket.
 
-This guide walks through an example demonstrating how to detect and alert on any reading that exceeds a certain temperature from received temperature events.
+Ez az útmutató egy olyan példát mutat be, amely bemutatja, hogyan észlelheti és figyelmeztetheti az olyan olvasásokat, amelyek meghaladják az adott hőmérsékleti eseményektől kapott hőmérsékletet.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="client-library-reference"></a>Client library reference
+## <a name="client-library-reference"></a>Ügyféloldali függvénytár-referenciák
 
-Functions available as helper methods in the user-defined functions runtime are listed in the [client library reference](./reference-user-defined-functions-client-library.md) document.
+A felhasználó által definiált függvények futtatókörnyezetében a segítő metódusként elérhető függvények az [ügyféloldali kódtár hivatkozási](./reference-user-defined-functions-client-library.md) dokumentumában vannak felsorolva.
 
-## <a name="create-a-matcher"></a>Create a matcher
+## <a name="create-a-matcher"></a>Matcher létrehozása
 
-Matchers are graph objects that determine what user-defined functions run for a given telemetry message.
+Az egyeztetések olyan Graph-objektumok, amelyek meghatározzák, hogy a felhasználó által definiált függvények hogyan futnak egy adott telemetria-üzenetben.
 
-- Valid matcher condition comparisons:
+- Érvényes Matcher feltétel-összehasonlítások:
 
   - `Equals`
   - `NotEquals`
   - `Contains`
 
-- Valid matcher condition targets:
+- Érvényes Matcher-feltételi célok:
 
   - `Sensor`
   - `SensorDevice`
   - `SensorSpace`
 
-The following example matcher evaluates to true on any sensor telemetry event with `"Temperature"` as its data type value. You can create multiple matchers on a user-defined function by making an authenticated HTTP POST request to:
+A következő példa a Matcher igaz értékre értékeli a `"Temperature"` adattípusának értékeként az összes érzékelő telemetria eseménynél. A felhasználó által definiált függvényekhez több egyezőt is létrehozhat, ha egy hitelesített HTTP POST-kérelmet küld a következőnek:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
-With JSON body:
+JSON-törzstel:
 
 ```JSON
 {
@@ -69,23 +69,23 @@ With JSON body:
 }
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Which server region your instance is hosted on |
+| YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
-Creating a user-defined function involves making a multipart HTTP request to the Azure Digital Twins Management APIs.
+Felhasználó által definiált függvény létrehozása magában foglalja egy többrészes HTTP-kérés létrehozását az Azure digitális Twins felügyeleti API-jai számára.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-After the matchers are created, upload the function snippet with the following authenticated multipart HTTP POST request to:
+Az egyeztetések létrehozása után töltse fel a függvény kódrészletét a következő hitelesített többrészes HTTP POST kérelemre:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Use the following body:
+Használja a következő törzset:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -109,24 +109,24 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | A multipart content boundary name |
-| YOUR_SPACE_IDENTIFIER | The space identifier  |
-| YOUR_MATCHER_IDENTIFIER | The ID of the matcher you want to use |
+| USER_DEFINED_BOUNDARY | Egy többrészes tartalom határának neve |
+| YOUR_SPACE_IDENTIFIER | A szóköz azonosítója  |
+| YOUR_MATCHER_IDENTIFIER | A használni kívánt Matcher azonosítója |
 
-1. Verify that the headers include: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Verify that the body is multipart:
+1. Ellenőrizze, hogy a fejlécek tartalmazzák-e a következőket: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Győződjön meg arról, hogy a törzs egyrészes:
 
-   - The first part contains the required user-defined function metadata.
-   - The second part contains the JavaScript compute logic.
+   - Az első rész tartalmazza a kötelező felhasználó által definiált függvény metaadatait.
+   - A második rész tartalmazza a JavaScript számítási logikát.
 
-1. In the **USER_DEFINED_BOUNDARY** section, replace the **spaceId** (`YOUR_SPACE_IDENTIFIER`) and **matchers** (`YOUR_MATCHER_IDENTIFIER`)  values.
-1. Verify that the JavaScript user-defined function is supplied as `Content-Type: text/javascript`.
+1. A **USER_DEFINED_BOUNDARY** szakaszban cserélje le a **spaceId** (`YOUR_SPACE_IDENTIFIER`) és a **matchers** (`YOUR_MATCHER_IDENTIFIER`) értékeket.
+1. Győződjön meg arról, hogy a JavaScript felhasználó által definiált függvény `Content-Type: text/javascript`ként van megadva.
 
-### <a name="example-functions"></a>Example functions
+### <a name="example-functions"></a>Függvények – példa
 
-Set the sensor telemetry reading directly for the sensor with data type **Temperature**, which is `sensor.DataType`:
+Állítsa be az érzékelő telemetria közvetlenül az érzékelőre az adattípusok **hőmérsékletének**`sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -142,7 +142,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-The **telemetry** parameter exposes the **SensorId** and **Message** attributes, corresponding to a message sent by a sensor. The **executionContext** parameter exposes the following attributes:
+A **telemetria** paraméter a **SensorId** és az **üzenet** attribútumait jeleníti meg, amelyek egy érzékelő által küldött üzenetnek felelnek meg. A **executionContext** paraméter a következő attribútumokat teszi elérhetővé:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -154,7 +154,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-In the next example, we log a message if the sensor telemetry reading surpasses a predefined threshold. If your diagnostic settings are enabled on the Azure Digital Twins instance, logs from user-defined functions are also forwarded:
+A következő példában egy üzenet jelenik meg, ha az érzékelő telemetria olvasása meghaladja az előre meghatározott küszöbértéket. Ha a diagnosztikai beállítások engedélyezve vannak az Azure Digital Twins-példányon, a rendszer a felhasználó által definiált függvények naplófájljait is továbbítja:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -169,7 +169,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-The following code triggers a notification if the temperature level rises above the predefined constant:
+A következő kód riasztást küld, ha a hőmérséklet szintje az előre meghatározott állandó fölé emelkedik:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -193,37 +193,37 @@ function process(telemetry, executionContext) {
 }
 ```
 
-For a more complex user-defined function code sample, see the [Occupancy quickstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Az összetettebb, felhasználó által definiált függvényekre vonatkozó példákért tekintse meg a használati [útmutatót.](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
 
-## <a name="create-a-role-assignment"></a>Create a role assignment
+## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
-Create a role assignment for the user-defined function to run under. If no role assignment exists for the user-defined function, it won't have the proper permissions to interact with the Management API or have access to perform actions on graph objects. Actions that a user-defined function may perform are specified and defined via role-based access control within the Azure Digital Twins Management APIs. For example, user-defined functions can be limited in scope by specifying certain roles or certain access control paths. For more information, see the [Role-based access control](./security-role-based-access-control.md) documentation.
+Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált függvény számára a futtatásához. Ha nem létezik szerepkör-hozzárendelés a felhasználó által definiált függvényhez, akkor nem rendelkezik a megfelelő engedélyekkel a felügyeleti API-val való interakcióhoz, illetve a Graph-objektumokon végzett műveletek végrehajtásához. A felhasználó által definiált függvény által elvégezhető műveletek az Azure digitális Twins felügyeleti API-kon belül szerepköralapú hozzáférés-vezérléssel határozhatók meg és definiálhatók. A felhasználó által definiált függvények például bizonyos szerepkörök vagy bizonyos hozzáférés-vezérlési útvonalak megadásával korlátozhatók a hatókörben. További információt a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációjában talál.
 
-1. [Query the System API](./security-create-manage-role-assignments.md#retrieve-all-roles) for all roles to get the role ID you want to assign to your user-defined function. Do so by making an authenticated HTTP GET request to:
+1. A felhasználó által definiált függvényhez hozzárendelni kívánt szerepkör-azonosító lekérése az összes szerepkörhöz tartozó [System API lekérdezésével](./security-create-manage-role-assignments.md#retrieve-all-roles) . Ezt úgy teheti meg, hogy hitelesített HTTP GET kérelmet küld a következőnek:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Keep the desired role ID. It will be passed as the JSON body attribute **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) below.
+   Tartsa meg a kívánt szerepkör-azonosítót. A rendszer az alábbi JSON- **szerepkörazonosítónak** (`YOUR_DESIRED_ROLE_IDENTIFIER`) adja át.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) will be the user-defined function ID that was created earlier.
-1. Find the value of **path** (`YOUR_ACCESS_CONTROL_PATH`) by querying your spaces with `fullpath`.
-1. Copy the returned `spacePaths` value. You'll use that below. Make an authenticated HTTP GET request to:
+1. a **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) a felhasználó által definiált függvény azonosítója lesz, amely korábban lett létrehozva.
+1. Keresse meg az **elérési út** (`YOUR_ACCESS_CONTROL_PATH`) értékét úgy, hogy lekérdezi a szóközt a `fullpath`.
+1. Másolja a visszaadott `spacePaths` értéket. Ezt a következőt fogja használni. Hitelesített HTTP GET-kérés küldése a következőnek:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_SPACE_NAME | The name of the space you wish to use |
+    | YOUR_SPACE_NAME | A használni kívánt hely neve |
 
-1. Paste the returned `spacePaths` value into **path** to create a user-defined function role assignment by making an authenticated HTTP POST request to:
+1. Illessze be a visszaadott `spacePaths` értéket az **elérési útra** a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozásához egy hitelesített http post-kérelem használatával:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
-    With JSON body:
+    JSON-törzstel:
 
     ```JSON
     {
@@ -234,28 +234,28 @@ Create a role assignment for the user-defined function to run under. If no role 
     }
     ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_DESIRED_ROLE_IDENTIFIER | The identifier for the desired role |
-    | YOUR_USER_DEFINED_FUNCTION_ID | The ID for the user-defined function you want to use |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | The ID specifying the user-defined function type (`UserDefinedFunctionId`) |
-    | YOUR_ACCESS_CONTROL_PATH | The access control path |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | A kívánt szerepkör azonosítója |
+    | YOUR_USER_DEFINED_FUNCTION_ID | A használni kívánt felhasználó által definiált függvény azonosítója |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | A felhasználó által definiált függvény típusát megadó azonosító (`UserDefinedFunctionId`) |
+    | YOUR_ACCESS_CONTROL_PATH | A hozzáférés-vezérlés elérési útja |
 
 >[!TIP]
-> Read the article [How to create and manage role assignments](./security-create-manage-role-assignments.md) for more information about user-defined function Management API operations and endpoints.
+> A felhasználó által definiált Function Management API-műveletekkel és-végpontokkal kapcsolatos további információkért olvassa el a [szerepkör-hozzárendelések létrehozása és kezelése](./security-create-manage-role-assignments.md) című cikket.
 
-## <a name="send-telemetry-to-be-processed"></a>Send telemetry to be processed
+## <a name="send-telemetry-to-be-processed"></a>Feldolgozandó telemetria küldése
 
-The sensor defined in the spatial intelligence graph sends telemetry. In turn, the telemetry triggers the execution of the user-defined function that was uploaded. The data processor picks up the telemetry. Then an execution plan is created for the invocation of the user-defined function.
+A térbeli intelligencia gráfban definiált érzékelő telemetria küld. A telemetria viszont elindítja a feltöltött felhasználó által definiált függvény végrehajtását. Az adatfeldolgozó felveszi a telemetria. Ekkor létrejön egy végrehajtási terv a felhasználó által definiált függvény meghívásához.
 
-1. Retrieve the matchers for the sensor the reading was generated from.
-1. Depending on what matchers were evaluated successfully, retrieve the associated user-defined functions.
-1. Execute each user-defined function.
+1. Annak az érzékelőnek a beolvasása, amelyből az olvasó létrejött.
+1. Attól függően, hogy az egyeztető kiértékelése sikeres volt-e, kérje le a társított felhasználó által definiált függvényeket.
+1. Minden felhasználó által definiált függvény végrehajtása.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn how to [create Azure Digital Twins endpoints](./how-to-egress-endpoints.md) to send events to.
+- Megtudhatja, hogyan [hozhat létre Azure digitális Twins-végpontokat](./how-to-egress-endpoints.md) az események küldéséhez.
 
-- For more details about routing in Azure Digital Twins, read [Routing events and messages](./concepts-events-routing.md).
+- Az Azure Digital Twins-útválasztással kapcsolatos további részletekért olvassa el az [útválasztási eseményeket és üzeneteket](./concepts-events-routing.md).
 
-- Review the [client library reference documentation](./reference-user-defined-functions-client-library.md).
+- Tekintse át az [ügyféloldali kódtár hivatkozási dokumentációját](./reference-user-defined-functions-client-library.md).

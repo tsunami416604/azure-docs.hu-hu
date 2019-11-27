@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Node.js - Bing Video Search'
+title: 'Gyors útmutató: videók keresése a Node. js-hez készült SDK-val – Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests using the Bing Video Search SDK for Node.js
+description: Ez a rövid útmutató a video-keresési kérelmek küldésére használható a Node. js-hez készült Bing Video Search SDK-val
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,39 +17,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383738"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Node.js
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Gyors útmutató: videós keresés végrehajtása a Node. js-hez készült Bing Video Search SDK-val
 
-Use this quickstart to begin searching for news with the Bing Video Search SDK for Node.js. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). It contains more annotations and features.
+Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Node. js-hez készült Bing Video Search SDK-val. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)található. További megjegyzéseket és funkciókat tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Node.js](https://www.nodejs.org/)
 
-To set up a console application using the Bing Video Search SDK:
-* Run `npm install ms-rest-azure` in your development environment.
-* Run `npm install azure-cognitiveservices-videosearch` in your development environment.
+Konzol alkalmazás beállítása a Bing Video Search SDK használatával:
+* `npm install ms-rest-azure` futtatása a fejlesztési környezetben.
+* `npm install azure-cognitiveservices-videosearch` futtatása a fejlesztési környezetben.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Create a new JavaScript file in your favorite IDE or editor, and add a `require()` statement for the Bing Video Search SDK, and `CognitiveServicesCredentials` module. Create a variable for your subscription key. 
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adjon hozzá egy `require()` utasítást a Bing Video Search SDK-hoz és `CognitiveServicesCredentials` modulhoz. Hozzon létre egy változót az előfizetési kulcshoz. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
     ```
 
-2. Create an instance of `CognitiveServicesCredentials` with your key. Then use it to create an instance of the video search client.
+2. Hozzon létre egy `CognitiveServicesCredentials`-példányt a kulccsal. Ezután a használatával hozza létre a videó-keresési ügyfél egy példányát.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let client = new VideoSearchAPIClient(credentials);
     ```
 
-## <a name="send-the-search-request"></a>Send the search request
+## <a name="send-the-search-request"></a>A keresési kérelem elküldése
 
-1. Use `client.videosOperations.search()` to send a search request to the Bing Video Search API. When the search results are returned, use `.then()` to log the result.
+1. A `client.videosOperations.search()` használatával küldhet keresési kéréseket a Bing Video Search API. A keresési eredmények visszaadásakor a `.then()` használatával naplózza az eredményt.
     
     ```javascript
     client.videosOperations.search('Interstellar Trailer').then((result) => {
@@ -62,9 +62,9 @@ To set up a console application using the Bing Video Search SDK:
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
-* [What is the Bing Video Search API?](../overview.md)
+* [Mi a Bing Video Search API?](../overview.md)
 * [Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

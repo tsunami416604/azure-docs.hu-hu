@@ -1,6 +1,6 @@
 ---
-title: Supported Kubernetes versions in Azure Kubernetes Service
-description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS)
+title: Támogatott Kubernetes-verziók az Azure Kubernetes Service-ben
+description: Ismerje meg az Azure Kubernetes Service-ben (ak) lévő fürtök Kubernetes-verziójának támogatási szabályzatát és életciklusát
 services: container-service
 author: sauryadas
 ms.service: container-service
@@ -14,15 +14,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484053"
 ---
-# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Supported Kubernetes versions in Azure Kubernetes Service (AKS)
+# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban (ak)
 
-A Kubernetes-közösség körülbelül háromhavonta ad ki alverziókat. Ezek a kiadások új funkciókat és fejlesztéseket tartalmaznak. A javítások kiadásai gyakoribbak (esetenként heti rendszerességűek), és csak az alverziók kritikus hibáinak javítására szolgálnak. These patch releases include fixes for security vulnerabilities or major bugs impacting a large number of customers and products running in production based on Kubernetes.
+A Kubernetes-közösség körülbelül háromhavonta ad ki alverziókat. Ezek a kiadások új funkciókat és fejlesztéseket tartalmaznak. A javítások kiadásai gyakoribbak (esetenként heti rendszerességűek), és csak az alverziók kritikus hibáinak javítására szolgálnak. Ezek a javítások a biztonsági rések vagy a nagy mennyiségű, éles környezetben futó, Kubernetes alapuló termékkel kapcsolatos hibákat érintik.
 
-AKS aims to certify and release new Kubernetes versions within 30 days of an upstream release, subject to the stability of the release.
+Az AK célja, hogy az új Kubernetes-verziókat egy felsőbb rétegbeli kiadástól számított 30 napon belül hitelesítse és bocsássa ki, a kiadás stabilitásának függvényében.
 
-## <a name="kubernetes-versions"></a>Kubernetes versions
+## <a name="kubernetes-versions"></a>Kubernetes-verziók
 
-Kubernetes uses the standard [Semantic Versioning](https://semver.org/) versioning scheme. This means that each version of Kubernetes follows this numbering scheme:
+A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/) sémát használja. Ez azt jelenti, hogy a Kubernetes minden verziója a következő számozási sémát követi:
 
 ```
 [major].[minor].[patch]
@@ -32,37 +32,37 @@ Example:
   1.12.15
 ```
 
-Each number in the version indicates general compatibility with the previous version:
+A verzióban lévő egyes számok általános kompatibilitást jeleznek az előző verzióval:
 
-* Major versions change when incompatible API changes or backwards compatibility may be broken.
-* Minor versions change when functionality changes are made that are backwards compatible to the other minor releases.
-* Patch versions change when backwards-compatible bug fixes are made.
+* A főverziók akkor változnak, ha a nem kompatibilis API-változások vagy a visszamenőleges kompatibilitás megszakad.
+* Az alverziók akkor változnak, ha a funkcionalitás változása visszamenőlegesen kompatibilis a többi másodlagos kiadással.
+* A javítási verziók megváltoznak, ha visszamenőlegesen kompatibilis hibajavítás történik.
 
-In general, users should endeavor to run the latest patch release of the minor version they are running, for example if your production cluster is on *1.12.14* and *1.12.15* is the latest available patch version available for the *1.12* series, you should upgrade to *1.12.15* as soon as you are able to ensure your cluster is fully patched and supported.
+Általánosságban elmondható, hogy a felhasználóknak futtatniuk kell a futtatott alverzió legújabb javítását, például ha az üzemi fürt a *1.12.14* -on található, és a *1.12.15* az *1,12* sorozat legújabb elérhető javítási verziója, akkor a *1.12.15* -re kell frissítenie, amint meg tudja győződni arról, hogy a fürt teljes mértékben kijavított és támogatott.
 
-## <a name="kubernetes-version-support-policy"></a>Kubernetes version support policy
+## <a name="kubernetes-version-support-policy"></a>Kubernetes-verzió támogatási szabályzata
 
 > [!NOTE]
-> Starting December 9th, 2019 AKS will move to supporting latest (N) - 2 versions of Kubernetes. This change is to conform to the upstream window of support for Kubernetes versions and ensure the latest and most secure versions are being used. To learn more read the [announcement here](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
+> Az 2019 AK december 9-ig a Kubernetes legújabb (N)-2 verzióját támogatja. Ennek a változásnak meg kell felelnie a Kubernetes-verziók támogatásának felsőbb rétegbeli ablakának, és gondoskodnia kell a legújabb és legbiztonságosabb verziók használatáról. További információért olvassa el a [bejelentést](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
 
 Az AKS a Kubernetes négy alverzióját támogatja:
 
-* The current minor version that is released in AKS (N)
+* Az AK-ban megjelent aktuális másodlagos verzió (N)
 * Három korábbi alverzió. Mindegyik támogatott alverzió két stabil javítást támogat.
 
-This is known as "N-3" - (N (Latest release) - 3 (minor versions)).
+Ez az úgynevezett "N-3" – (N (legújabb kiadás) – 3 (másodlagos verzió)).
 
-For example, if AKS introduces *1.13.a* today, support is provided for the following versions:
+Ha például az AK a *1.13. a* -t mutatja be, a következő verziókhoz nyújtunk támogatást:
 
-New minor version    |    Supported Version List
+Új alverzió    |    Támogatott verziók listája
 -----------------    |    ----------------------
-1.13.a               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
 
-Where ".a" and ".b" are representative patch versions."a" from 1.13.a can be different from 1.12.a. For example, 1.13.9 and 1.12.8.
+Ahol a ". a" és a ". b" kifejezés a javításokat reprezentálja. " a "from 1.13. a a 1,12. a-től eltérő lehet. Például: 1.13.9 és 1.12.8.
 
-For details on communications regarding version changes and expectations, see "Communications" below.
+A verziók változásaival és elvárásaival kapcsolatos tájékoztatásért tekintse meg az alábbi "kommunikáció" című szakaszt.
 
-When a new minor version is introduced, the oldest minor version and patch releases supported are deprecated and removed. For example if the current supported version list is:
+Új alverzió bevezetését követően a legrégebbi alverzió és a javítások támogatott kiadásai elavultak és törlődnek. Például ha a jelenlegi támogatott verziók listája a következő:
 
 ```
 1.12.a
@@ -75,13 +75,13 @@ When a new minor version is introduced, the oldest minor version and patch relea
 1.9.b
 ```
 
-And AKS releases 1.13. *, this means that the 1.9.* versions (all 1.9 versions) will be removed and out of support.
+És az AK 1,13-es kiadása. *, ez azt jelenti, hogy a 1,9.* a verziók (az összes 1,9-es verzió) el lesznek távolítva, és nem támogatottak.
 
 > [!NOTE]
-> Please note, that if customers are running an unsupported Kubernetes version, they will be asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS support policies](https://docs.microsoft.com/azure/aks/support-policies).
+> Vegye figyelembe, hogy ha az ügyfelek nem támogatott Kubernetes-verziót futtatnak, a rendszer a fürt támogatásának kérelmezése után a frissítésre kéri őket. A nem támogatott Kubernetes-kiadásokat futtató fürtöket az [AK-támogatási szabályzatok](https://docs.microsoft.com/azure/aks/support-policies)nem tartalmazzák.
 
 
-In addition to the above on minor versions, AKS supports the two latest *patch** releases of a given minor version. For example, given the following supported versions:
+A fenti alverzión kívül az AK támogatja az adott alverzióhoz tartozó két legújabb *patch** kiadást. Például a következő támogatott verziók miatt:
 
 ```
 Current Supported Version List
@@ -89,7 +89,7 @@ Current Supported Version List
 1.12.1, 1.12.2, 1.11.4, 1.11.5
 ```
 
-If upstream Kubernetes released 1.12.3 and 1.11.6 and AKS releases those patch versions, the oldest patch versions are deprecated and removed, and the supported version list becomes:
+Ha a felsőbb rétegbeli Kubernetes kiadta a 1.12.3 és a 1.11.6, és az AK a javítási verziókat, a legrégebbi javítási verziók elavultak és törlődnek, és a támogatott verziók listája a következő lesz:
 
 ```
 New Supported Version List
@@ -98,56 +98,56 @@ New Supported Version List
 ```
 
 > [!NOTE]
-> Customers should not pin cluster creation, CI or other automated jobs to specific patch releases. 
+> Az ügyfeleknek nem kell rögzíteniük a fürt létrehozását, a CI-t vagy más automatizált feladatokat az adott javítási kiadásokhoz. 
 
 ### <a name="communications"></a>Kommunikáció
 
-* For new **minor** versions of Kubernetes
-  * All users are notified publicly of the new version and what version will be removed.
-  * When a new patch version is released, the oldest patch release is removed at the same time.
-  * Customers have **60 days** from the public notification date to upgrade to a supported minor version release.
-* For new **patch** versions of Kubernetes
-  * All users are notified of the new patch version being released and to upgrade to the latest patch release.
-  * Users have **30 days** to upgrade to a newer, supported patch release. Users have **30 days** to upgrade to a supported patch release before the oldest is removed.
+* A Kubernetes új **másodlagos** verzióihoz
+  * Az összes felhasználó nyilvánosan értesítést kap az új verzióról, és a rendszer eltávolítja a verziót.
+  * Egy új javítási verzió kiadásakor a rendszer a legrégebbi javítást is eltávolítja egyszerre.
+  * Az ügyfeleknek a nyilvános értesítés dátumától számítva **60 nap elteltével** frissíteniük kell egy támogatott alverzióra.
+* A Kubernetes új **javítócsomag** -verzióihoz
+  * Az összes felhasználó értesítést kap az új javítási verzió kiadásáról, és a legújabb patch kiadásra frissít.
+  * A felhasználók **30 napig** frissíthetnek újabb, támogatott javítási kiadásra. A felhasználók **30 napon belül** frissítenek egy támogatott patch kiadásra a legrégebbi eltávolítása előtt.
 
-AKS defines "released" as general availability, enabled in all SLO / Quality of Service measurements and available in all regions.
+Az AK a "kiadott" állapotot általános rendelkezésre állásként határozza meg, amely minden SLO/minőségi szolgáltatásbeli mérésben engedélyezve van, és minden régióban elérhető.
 
 > [!NOTE]
-> Customers are notified of Kubernetes version releases and deprecations, when a minor version is deprecated/removed users are given 60 days to upgrade to a supported release. In the case of patch releases, customers are given 30 days to upgrade to a supported release.
+> Az ügyfelek értesítést kapnak a Kubernetes-verziókról és az elavulás alól, ha egy alverzió elavult/eltávolított felhasználók 60 nap múlva frissülnek egy támogatott kiadásra. A javítási kiadások esetében az ügyfelek 30 napot kapnak a támogatott kiadásokra való frissítéshez.
 
-#### <a name="notification-channels-for-aks-changes"></a>Notification channels for AKS changes
+#### <a name="notification-channels-for-aks-changes"></a>Értesítési csatornák az AK-beli változásokhoz
 
-AKS releases a weekly service update which summarizes new Kubernetes versions, service changes, and component updates that have been released on the service on [github](https://github.com/Azure/AKS/releases).
+Az AK hetente kiad egy, a [githubon](https://github.com/Azure/AKS/releases)a szolgáltatásban közzétett új Kubernetes-verziót,-szolgáltatást és-frissítéseket, valamint a szolgáltatásban megjelent összetevőket.
 
-These changes are rolled to all customers as part of regular maintenance that is offered as part of the managed service, some require explicit upgrades while others require no action.
+Ezeket a módosításokat az összes ügyfélre a felügyelt szolgáltatás részeként kínált rendszeres karbantartás részeként kell átirányítani, néhány esetben pedig explicit frissítésre van szükség, míg mások nem igényelnek semmilyen műveletet.
 
-Notifications are also sent via:
+Az értesítések küldése a következőkkel is elküldhető:
 
-* [AKS Release notes](https://aka.ms/aks/releasenotes)
+* [AK kibocsátási megjegyzései](https://aka.ms/aks/releasenotes)
 * Az Azure Portal értesítései
-* [Azure update channel][azure-update-channel]
+* [Azure frissítési csatorna][azure-update-channel]
 
-### <a name="policy-exceptions"></a>Policy Exceptions
+### <a name="policy-exceptions"></a>Házirend-kivételek
 
-AKS reserves the right to add or remove new/existing versions that have been identified to have one or more critical production impacting bugs or security issues without advance notice.
+Az AK fenntartja a jogot arra, hogy új/meglévő verziókat adjon hozzá vagy távolítson el, amelyek egy vagy több kritikus termeléssel kapcsolatos hibával vagy biztonsági problémával rendelkeznek, előzetes értesítés nélkül.
 
-Specific patch releases may be skipped, or rollout accelerated depending on the severity of the bug or security issue.
+Előfordulhat, hogy a rendszer kihagyja az adott javítási kiadásokat, vagy a hiba vagy a biztonsági probléma súlyossága függvényében felgyorsítja a bevezetést.
 
-### <a name="azure-portal-and-cli-default-versions"></a>Azure portal and CLI default versions
+### <a name="azure-portal-and-cli-default-versions"></a>Azure Portal és CLI alapértelmezett verziói
 
-When you deploy an AKS cluster in the portal or with the Azure CLI, the cluster is always set to the N-1 minor version and latest patch. For example, if AKS supports *1.13.a*, *1.12.a* + *1.12.b*, *1.11.a* + *1.11.b*, *1.10.a* + *1.10b*, the default version for new clusters is *1.12.b*.
+Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt mindig az N-1 alverzióra és a legújabb javításra van beállítva. Ha például az AK támogatja a *1.13. a*, *1.12. a* + *1,12. b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, az új fürtök alapértelmezett verziója a *1.12. b*.
 
-AKS defaults to N-1 (minor.latestPatch, eg 1.12.b) to provide customers a known, stable and patched version by default.
+Az AK alapértelmezett értéke N-1 (Minor. latestPatch, például 1.12. b), így az ügyfelek számára az ismert, a stabil és a javított verzió alapértelmezés szerint elérhető.
 
-## <a name="list-currently-supported-versions"></a>List currently supported versions
+## <a name="list-currently-supported-versions"></a>Jelenleg támogatott verziók listázása
 
-To find out what versions are currently available for your subscription and region, use the [az aks get-versions][az-aks-get-versions] command. The following example lists the available Kubernetes versions for the *EastUS* region:
+Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen verziók érhetők el, használja az az [AK Get-Versions][az-aks-get-versions] parancsot. A következő példa a *EastUS* régió elérhető Kubernetes-verzióit sorolja fel:
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
 
-The output is similar to the following example, which shows that Kubernetes version *1.14.6* is the most recent version available:
+A kimenet a következő példához hasonlóan jelenik meg, amely azt mutatja, hogy a Kubernetes verziója *1.14.6* a legújabb elérhető verzió:
 
 ```
 KubernetesVersion    Upgrades
@@ -164,36 +164,36 @@ KubernetesVersion    Upgrades
 1.10.12              1.10.13, 1.11.9, 1.11.10
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
-**What happens when a customer upgrades a Kubernetes cluster with a minor version that is not supported?**
+**Mi történik, ha egy ügyfél olyan Kubernetes-fürtöt frissít, amely nem támogatott másodlagos verzióval?**
 
-If you are on the *n-4* version, you are outside of support and will be asked to upgrade. If your upgrade from version n-4 to n-3 succeeds, you are now within our support policies. Példa:
+Ha az *n-4* verziót használ, a rendszer nem támogatja a támogatást, és a rendszer a frissítésre kéri. Ha az n-4 verzióról az n-3-ra való frissítés sikeres, akkor már a támogatási szabályzatok között van. Például:
 
-- If the supported AKS versions are *1.13.a*, *1.12.b* + *1.12.c*, *1.11.d* + *1.11.e*, and *1.10.f* + *1.10.g* and you are on *1.9.h* or *1.9.i*, you are outside of support.
-- If the upgrade from *1.9.h* or *1.9.i* to *1.10.f* or *1.10.g* succeeds, you are back in the within our support policies.
+- Ha a támogatott AK-verziók a következők: *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*, és *1.10. f* + *1,10. g* , és Ön *1,9. h* vagy *1.9. i*, Ön a támogatáson kívül van.
+- Ha az *1,9. h* vagy *1,9. i* – 1.10. *f* vagy *1.10. g* verzióra való frissítés sikeres, akkor a támogatási szabályzaton belül visszakerül.
 
-Upgrades to versions older than *n-4* are not supported. In such cases, we recommend customers create new AKS clusters and redeploy their workloads.
+Az *n-4-* nél régebbi verzióra történő frissítés nem támogatott. Ilyen esetekben javasoljuk, hogy az ügyfelek új AK-fürtöket hozzanak létre, és újra üzembe helyezzük a munkaterheléseket.
 
-**What does 'Out of Support' mean**
+**Mit jelent a "nem támogatott" kifejezés**
 
-'Outside of Support' means that the version you are running is outside of the supported versions list, and you will be asked to upgrade the cluster to a supported version when requesting support. Additionally, AKS does not make any runtime or other guarantees for clusters outside of the supported versions list.
+A "támogatáson kívül" kifejezés azt jelenti, hogy a futtatott verzió a támogatott verziók listáján kívül esik, és a rendszer arra kéri, hogy a támogatás kérelmezése után frissítse a fürtöt egy támogatott verzióra. Emellett az AK nem hajt végre semmilyen futtatókörnyezetet vagy egyéb garanciát a támogatott verziók listáján kívüli fürtökre.
 
-**What happens when a customer scales a Kubernetes cluster with a minor version that is not supported?**
+**Mi történik, ha egy ügyfél olyan Kubernetes-fürtöt méretezi, amelynek alverziója nem támogatott?**
 
-For minor versions not supported by AKS, scaling in or out continues to work without any issues.
+Az AK által nem támogatott alverziók esetén a méretezés be-és kilépésével továbbra is problémák nélkül dolgozhat.
 
-**Can a customer stay on a Kubernetes version forever?**
+**Az ügyfél örökre Kubernetes-verzióban maradhat?**
 
-Igen. However, if the cluster is not on one of the versions supported by AKS, the cluster is out of the AKS support policies. Azure does not automatically upgrade your cluster or delete it.
+Igen. Ha azonban a fürt nem az AK által támogatott verziók egyikén található, a fürt kívül esik az AK-támogatási szabályzatok közül. Az Azure nem frissíti automatikusan a fürtöt, vagy nem törli azt.
 
-**What version does the master support if the agent cluster is not in one of the supported AKS versions?**
+**Milyen verziót támogat a főkiszolgáló, ha az ügynök-fürt nem szerepel a támogatott AK-verziók egyikében sem?**
 
-The master is automatically updated to the latest supported version.
+A rendszer automatikusan frissíti a főkiszolgálót a legújabb támogatott verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-For information on how to upgrade your cluster, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade].
+A fürt frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

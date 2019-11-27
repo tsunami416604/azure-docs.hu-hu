@@ -1,6 +1,6 @@
 ---
-title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
-description: Get cloud passwords written back to on-premises AD infrastructure
+title: Helyszíni jelszó visszaírási-integráció az Azure AD SSPR-Azure Active Directory
+description: A helyszíni AD-infrastruktúrába írt Felhőbeli jelszavak beolvasása
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,154 +18,154 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420653"
 ---
-# <a name="what-is-password-writeback"></a>What is password writeback?
+# <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
-Having a cloud-based password reset utility is great but most companies still have an on-premises directory where their users exist. How does Microsoft support keeping traditional on-premises Active Directory (AD) in sync with password changes in the cloud? Password writeback is a feature enabled with [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) that allows password changes in the cloud to be written back to an existing on-premises directory in real time.
+A felhőalapú jelszó-visszaállítási segédprogram nagyszerű, de a legtöbb vállalat továbbra is rendelkezik egy helyszíni címtárral, ahol a felhasználók léteznek. Hogyan támogatja a Microsoft a hagyományos helyszíni Active Directory (AD) szolgáltatást a Felhőbeli jelszó-módosításokkal való szinkronizálásban? A Password visszaírási egy olyan szolgáltatás, amely [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) lehetővé teszi, hogy a jelszó módosításait a felhőben valós időben lehessen visszaírni egy meglévő helyszíni címtárba.
 
-Password writeback is supported in environments that use:
+A jelszó-visszaírási a következőket használó környezetekben támogatott:
 
 * [Active Directory összevonási szolgáltatások](../hybrid/how-to-connect-fed-management.md)
 * [Jelszókivonat szinkronizálása](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
+> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../develop/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
 >
-> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
+> A szolgáltatás megszakadásának elkerülése érdekében frissítse a Azure AD Connect egy korábbi verziójáról egy újabb verzióra, és tekintse meg a [Azure ad Connect: frissítés korábbi verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md) című cikket.
 >
 
-Password writeback provides:
+A jelszó visszaírási a következőket biztosítja:
 
-* **Enforcement of on-premises Active Directory password policies**: When a user resets their password, it is checked to ensure it meets your on-premises Active Directory policy before committing it to that directory. This review includes checking the history, complexity, age, password filters, and any other password restrictions that you have defined in local Active Directory.
-* **Zero-delay feedback**: Password writeback is a synchronous operation. Your users are notified immediately if their password did not meet the policy or could not be reset or changed for any reason.
-* **Supports password changes from the access panel and Office 365**: When federated or password hash synchronized users come to change their expired or non-expired passwords, those passwords are written back to your local Active Directory environment.
-* **Supports password writeback when an admin resets them from the Azure portal**: Whenever an admin resets a user’s password in the [Azure portal](https://portal.azure.com), if that user is federated or password hash synchronized, the password is written back to on-premises. This functionality is currently not supported in the Office admin portal.
-* **Doesn’t require any inbound firewall rules**: Password writeback uses an Azure Service Bus relay as an underlying communication channel. All communication is outbound over port 443.
+* Helyszíni **Active Directory jelszóházirend kényszerítése**: amikor egy felhasználó visszaállítja a jelszavát, a rendszer ellenőrzi, hogy az megfelel-e a helyszíni Active Directory szabályzatnak, mielőtt véglegesíti azt a címtárba. Ez a felülvizsgálat magában foglalja az előzmények, a bonyolultság, az életkor, a jelszó-szűrők és a helyi Active Directoryban definiált egyéb jelszavak korlátozásának ellenőrzését.
+* **Nulla késleltetésű visszajelzés**: a jelszó visszaírási egy szinkron művelet. A felhasználók azonnal értesítést kapnak, ha a jelszavuk nem felelt meg a szabályzatnak, vagy bármilyen okból nem sikerült visszaállítani vagy módosítani.
+* **Támogatja a jelszó módosításait a hozzáférési panelen és az Office 365**-ben: Ha az összevont vagy a jelszó-kivonatolással szinkronizált felhasználók megváltoztatják a lejárt vagy nem lejárt jelszavukat, a jelszavak visszakerülnek a helyi Active Directory környezetbe.
+* **Támogatja a jelszó visszaírási, amikor egy rendszergazda visszaállítja azokat a Azure Portal**: Ha a rendszergazda visszaállítja a felhasználó jelszavát a [Azure Portalban](https://portal.azure.com), ha a felhasználó összevont vagy jelszó-kivonattal szinkronizálva van, a rendszer visszaírja a jelszót a helyszíni környezetbe. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
+* **Nincs szükség bejövő tűzfalszabályok**használatára: a Password visszaírási egy Azure Service Bus továbbítót használ mögöttes kommunikációs csatornaként. Minden kommunikáció a 443-es porton keresztül kimenő.
 
 > [!NOTE]
-> Administrator accounts that exist within protected groups in on-premises AD can be used with password writeback. Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. For more information about protected groups, see [Protected accounts and groups in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> A helyszíni AD-ben található védett csoportokba tartozó rendszergazdai fiókok jelszavas visszaírási is használhatók. A rendszergazdák megváltoztathatják a jelszavukat a felhőben, de nem használhatják a jelszó-visszaállítást az elfelejtett jelszavak alaphelyzetbe állításához. A védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok a Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
+## <a name="licensing-requirements-for-password-writeback"></a>A jelszó-visszaírási licencelési követelményei
 
-**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+Az **önkiszolgáló jelszó-visszaállítás, illetve a helyszíni visszaírási való módosítás/feloldás az Azure ad prémium funkciója**. A licenceléssel kapcsolatos további információkért tekintse meg a [Azure Active Directory díjszabási webhelyét](https://azure.microsoft.com/pricing/details/active-directory/).
 
-To use password writeback, you must have one of the following licenses assigned on your tenant:
+A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő licencek egyike szükséges:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
-* Enterprise Mobility + Security E3 or A3
-* Enterprise Mobility + Security E5 or A5
-* Microsoft 365 E3 or A3
-* Microsoft 365 E5 or A5
+* E3 vagy a3 Enterprise Mobility + Security
+* Enterprise Mobility + Security E5 vagy a5
+* E3 vagy a3 Microsoft 365
+* Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Vállalati verzió
+* Microsoft 365 Business
 
 > [!WARNING]
-> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
+> Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
 
-## <a name="how-password-writeback-works"></a>How password writeback works
+## <a name="how-password-writeback-works"></a>A jelszó-visszaírási működése
 
-When a federated or password hash synchronized user attempts to reset or change their password in the cloud, the following actions occur:
+Ha egy összevont vagy jelszó-kivonat szinkronizálta a felhasználót a felhőben tárolt jelszavának visszaállítására vagy módosítására, a következő műveletek történnek:
 
-1. A check is performed to see what type of password the user has. If the password is managed on-premises:
-   * A check is performed to see if the writeback service is up and running. If it is, the user can proceed.
-   * If the writeback service is down, the user is informed that their password can't be reset right now.
-1. Next, the user passes the appropriate authentication gates and reaches the **Reset password** page.
-1. The user selects a new password and confirms it.
-1. When the user selects **Submit**, the plaintext password is encrypted with a symmetric key created during the writeback setup process.
-1. The encrypted password is included in a payload that gets sent over an HTTPS channel to your tenant-specific service bus relay (that is set up for you during the writeback setup process). This relay is protected by a randomly generated password that only your on-premises installation knows.
-1. After the message reaches the service bus, the password-reset endpoint automatically wakes up and sees that it has a reset request pending.
-1. The service then looks for the user by using the cloud anchor attribute. For this lookup to succeed:
+1. Ellenőrizze, hogy a felhasználó milyen típusú jelszót tartalmaz. Ha a jelszót a helyszínen felügyelik:
+   * A rendszer ellenőrzéssel látja el, hogy a visszaírási szolgáltatás működik-e. Ha igen, akkor a felhasználó folytathatja.
+   * Ha a visszaírási szolgáltatás nem működik, a rendszer értesíti a felhasználót, hogy a jelszavuk most nem állítható alaphelyzetbe.
+1. Ezután a felhasználó átadja a megfelelő hitelesítési kapukat, és eléri a **jelszó alaphelyzetbe állítása** lapot.
+1. A felhasználó új jelszót választ, és megerősíti.
+1. Ha a felhasználó a **Submit (Küldés**) lehetőséget választja, a rendszer titkosítja az egyszerű szöveges jelszót a visszaírási telepítési folyamata során létrehozott szimmetrikus kulccsal.
+1. A titkosított jelszót egy olyan hasznos adat tartalmazza, amely egy HTTPS-csatornán keresztül küldi el a bérlő-specifikus Service Bus-továbbítót (amely a visszaírási telepítési folyamata során van beállítva). Ezt a továbbítót véletlenszerűen generált jelszó védi, amelyet csak a helyszíni telepítés tud.
+1. Ha az üzenet eléri a Service Bus-t, a jelszó-visszaállítási végpont automatikusan felébred, és úgy látja, hogy függőben van egy visszaállítási kérelem.
+1. A szolgáltatás ezután a Cloud Anchor attribútum használatával keresi a felhasználót. A keresés sikeres:
 
-   * The user object must exist in the Active Directory connector space.
-   * The user object must be linked to the corresponding metaverse (MV) object.
-   * The user object must be linked to the corresponding Azure Active Directory connector object.
-   * The link from the Active Directory connector object to the MV must have the synchronization rule `Microsoft.InfromADUserAccountEnabled.xxx` on the link.
+   * A felhasználói objektumnak léteznie kell a Active Directory-összekötő területén.
+   * A felhasználói objektumot a megfelelő Metaverse (MV) objektumhoz kell kapcsolni.
+   * A felhasználói objektumot össze kell kapcsolni a megfelelő Azure Active Directory összekötő objektummal.
+   * Az Active Directory-összekötő objektum és az MV közötti hivatkozásnak a szinkronizálási szabálynak `Microsoft.InfromADUserAccountEnabled.xxx` kell lennie a hivatkozáson.
    
-   When the call comes in from the cloud, the synchronization engine uses the **cloudAnchor** attribute to look up the Azure Active Directory connector space object. It then follows the link back to the MV object, and then follows the link back to the Active Directory object. Because there can be multiple Active Directory objects (multi-forest) for the same user, the sync engine relies on the `Microsoft.InfromADUserAccountEnabled.xxx` link to pick the correct one.
+   Ha a hívás a felhőből érkezik, a Szinkronizáló motor a **cloudAnchor** attribútum használatával keresi meg az Azure Active Directory-összekötő terület objektumát. Ezután a hivatkozás visszakerül az MV objektumra, majd a hivatkozás visszakerül a Active Directory objektumra. Mivel több Active Directory objektum (több erdő) is lehet ugyanahhoz a felhasználóhoz, a szinkronizálási motor a `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozásra támaszkodik, hogy kiválassza a megfelelőt.
 
-1. After the user account is found, an attempt to reset the password directly in the appropriate Active Directory forest is made.
-1. If the password set operation is successful, the user is told their password has been changed.
+1. A felhasználói fiók megtalálása után a rendszer megkísérli a jelszó alaphelyzetbe állítását közvetlenül a megfelelő Active Directory erdőben.
+1. Ha a jelszó-megadási művelet sikeres, a felhasználó azt mondja, hogy a jelszava módosult.
    > [!NOTE]
-   > If the user's password hash is synchronized to Azure AD by using password hash synchronization, there is a chance that the on-premises password policy is weaker than the cloud password policy. In this case, the on-premises policy is enforced. This policy ensures that your on-premises policy is enforced in the cloud, no matter if you use password hash synchronization or federation to provide single sign-on.
+   > Ha a felhasználó jelszavas kivonata szinkronizálva van az Azure AD-val a jelszó-kivonatolási szinkronizálás használatával, fennáll a valószínűsége annak, hogy a helyszíni jelszóházirend gyengébb, mint a felhő jelszavas házirendje. Ebben az esetben a helyszíni házirend érvénybe lép. Ez a szabályzat biztosítja, hogy a helyszíni házirend érvénybe lépjen a felhőben, függetlenül attól, hogy az egyszeri bejelentkezéshez jelszó-kivonatolási szinkronizálást vagy összevonást használ.
 
-1. If the password set operation fails, an error prompts the user to try again. The operation might fail because:
-    * The service was down.
-    * The password they selected did not meet the organization's policies.
-    * Unable to find the user in local Active Directory.
+1. Ha a jelszó-megadási művelet meghiúsul, a rendszer hibaüzenetet kér a felhasználótól, hogy próbálkozzon újra. A művelet sikertelen lehet, mert:
+    * A szolgáltatás leállt.
+    * A kiválasztott jelszó nem felelt meg a szervezet házirendjeinek.
+    * Nem található a felhasználó a helyi Active Directoryban.
 
-      The error messages provide guidance to users so they can attempt to resolve without administrator intervention.
+      A hibaüzenetek útmutatást nyújtanak a felhasználóknak, hogy rendszergazdai beavatkozás nélkül is fel tudják oldani a megoldást.
 
-## <a name="password-writeback-security"></a>Password writeback security
+## <a name="password-writeback-security"></a>Jelszó visszaírási biztonsága
 
-Password writeback is a highly secure service. To ensure your information is protected, a four-tiered security model is enabled as the following describes:
+A jelszó visszaírási egy nagyon biztonságos szolgáltatás. Az adatok védelmének biztosítása érdekében a következőkben ismertetett módon egy négy rétegű biztonsági modell van engedélyezve:
 
-* **Tenant-specific service-bus relay**
-   * When you set up the service, a tenant-specific service bus relay is set up that's protected by a randomly generated strong password that Microsoft never has access to.
-* **Locked down, cryptographically strong, password encryption key**
-   * After the service bus relay is created, a strong symmetric key is created that is used to encrypt the password as it comes over the wire. This key only lives in your company's secret store in the cloud, which is heavily locked down and audited, just like any other password in the directory.
-* **Industry standard Transport Layer Security (TLS)**
-   1. When a password reset or change operation occurs in the cloud, the plaintext password is encrypted with your public key.
-   1. The encrypted password is placed into an HTTPS message that is sent over an encrypted channel by using Microsoft SSL certs to your service bus relay.
-   1. After the message arrives in the service bus, your on-premises agent wakes up and authenticates to the service bus by using the strong password that was previously generated.
-   1. The on-premises agent picks up the encrypted message and decrypts it by using the private key.
-   1. The on-premises agent attempts to set the password through the AD DS SetPassword API. This step is what allows enforcement of your Active Directory on-premises password policy (such as the complexity, age, history, and filters) in the cloud.
-* **Message expiration policies**
-   * If the message sits in service bus because your on-premises service is down, it times out and is removed after several minutes. The time-out and removal of the message increases security even further.
+* **Bérlő-specifikus Service-Bus Relay**
+   * A szolgáltatás beállításakor a bérlőre jellemző Service Bus Relay olyan véletlenszerűen generált erős jelszóval védett, amelyet a Microsoft soha nem fér hozzá.
+* **Zárolt, titkosítási szempontból erős, jelszó-titkosítási kulcs**
+   * A Service Bus-továbbító létrehozása után egy erős szimmetrikus kulcs jön létre, amely a jelszó titkosítására szolgál a huzalon keresztül. Ez a kulcs csak a vállalat titkos tárolójában él a felhőben, amely szigorúan le van zárva és naplózva van, ugyanúgy, mint a címtárban lévő többi jelszó.
+* **Iparági szabvány Transport Layer Security (TLS)**
+   1. Ha a felhőben új jelszó-visszaállítási vagy módosítási művelet történik, a rendszer a nyilvános kulccsal titkosítja az egyszerű szöveges jelszót.
+   1. A titkosított jelszó egy titkosított csatornán küldött HTTPS-üzenetbe kerül, amelyet a Microsoft SSL-tanúsítványokkal küld a Service Bus-továbbítónak.
+   1. Miután az üzenet megérkezik a Service Bus szolgáltatásba, a helyszíni ügynök felébred, és hitelesíti a szolgáltatást a korábban létrehozott erős jelszó használatával.
+   1. A helyszíni ügynök felveszi a titkosított üzenetet, és visszafejti azt a titkos kulcs használatával.
+   1. A helyszíni ügynök megpróbálja beállítani a jelszót a AD DS SetPassword API-n keresztül. Ez a lépés lehetővé teszi az Active Directory helyszíni jelszóházirend (például a bonyolultság, az életkor, az előzmények és a szűrők) kényszerítését a felhőben.
+* **Üzenet elévülési szabályzatai**
+   * Ha az üzenet a Service Bus szolgáltatásban található, mert a helyszíni szolgáltatás nem érhető el, időtúllépést okoz, és néhány perc múlva el lesz távolítva. Az üzenet időtúllépése és eltávolítása még tovább növeli a biztonságot.
 
-### <a name="password-writeback-encryption-details"></a>Password writeback encryption details
+### <a name="password-writeback-encryption-details"></a>Jelszó visszaírási-titkosítás részletei
 
-After a user submits a password reset, the reset request goes through several encryption steps before it arrives in your on-premises environment. These encryption steps ensure maximum service reliability and security. They are described as follows:
+Miután egy felhasználó elküldte a jelszó alaphelyzetbe állítását, az alaphelyzetbe állítási kérelem több titkosítási lépésen megy keresztül, mielőtt megérkezik a helyszíni környezetbe. Ezek a titkosítási lépések biztosítják a szolgáltatás megbízhatóságának és biztonságának maximális biztonságát. Ezek a következőképpen vannak leírva:
 
-* **Step 1: Password encryption with 2048-bit RSA Key**: After a user submits a password to be written back to on-premises, the submitted password itself is encrypted with a 2048-bit RSA key.
-* **Step 2: Package-level encryption with AES-GCM**: The entire package, the password plus the required metadata, is encrypted by using AES-GCM. This encryption prevents anyone with direct access to the underlying ServiceBus channel from viewing or tampering with the contents.
-* **Step 3: All communication occurs over TLS/SSL**: All the communication with ServiceBus happens in an SSL/TLS channel. This encryption secures the contents from unauthorized third parties.
-* **Automatic key roll over every six months**: All keys roll over every six months, or every time password writeback is disabled and then re-enabled on Azure AD Connect, to ensure maximum service security and safety.
+* **1. lépés: jelszó-titkosítás 2048 bites RSA-kulccsal**: miután egy felhasználó jelszót küldött vissza a helyszíni környezetbe, a beküldött jelszó egy 2048 bites RSA-kulccsal van titkosítva.
+* **2. lépés: csomag szintű TITKOSÍTÁS AES-GCM**: a teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki közvetlenül hozzáférhessen a mögöttes ServiceBus-csatornához a tartalom megtekintésével vagy módosításával.
+* **3. lépés: minden kommunikáció a TLS/SSL protokollon keresztül**történik: az ServiceBus-mel folytatott kommunikáció egy SSL/TLS-csatornán történik. Ez a titkosítás védi a jogosulatlan harmadik féltől származó tartalmat.
+* **Automatikus kulcs átadása hat havonta**: minden, hat hónapon át elvégezhető kulcs, vagy ha a jelszó visszaírási le van tiltva, majd újból engedélyezve Azure ad Connecton, a maximális biztonság és biztonság érdekében.
 
-### <a name="password-writeback-bandwidth-usage"></a>Password writeback bandwidth usage
+### <a name="password-writeback-bandwidth-usage"></a>Jelszó-visszaírási sávszélesség-használat
 
-Password writeback is a low-bandwidth service that only sends requests back to the on-premises agent under the following circumstances:
+A jelszó visszaírási egy alacsony sávszélességű szolgáltatás, amely csak a következő esetekben küld vissza kéréseket a helyszíni ügynöknek:
 
-* Two messages are sent when the feature is enabled or disabled through Azure AD Connect.
-* One message is sent once every five minutes as a service heartbeat for as long as the service is running.
-* Two messages are sent each time a new password is submitted:
-   * The first message is a request to perform the operation.
-   * The second message contains the result of the operation, and is sent in the following circumstances:
-      * Each time a new password is submitted during a user self-service password reset.
-      * Each time a new password is submitted during a user password change operation.
-      * Each time a new password is submitted during an admin-initiated user password reset (only from the Azure admin portals).
+* A rendszer két üzenetet továbbít, ha a funkció engedélyezve van vagy le van tiltva Azure AD Connecton keresztül.
+* Egy üzenet küldése a szolgáltatás szívverése után öt percenként történik, amíg a szolgáltatás fut.
+* Minden alkalommal, amikor új jelszó érkezik, a rendszer két üzenetet küld:
+   * Az első üzenet egy kérelem a művelet végrehajtásához.
+   * A második üzenet tartalmazza a művelet eredményét, és a következő esetekben küldi el a rendszer:
+      * Minden alkalommal, amikor új jelszót küld a rendszer a felhasználói önkiszolgáló jelszó-visszaállítás során.
+      * Minden alkalommal, amikor új jelszót küldenek egy felhasználói jelszó módosítására szolgáló művelet során.
+      * Minden alkalommal, amikor új jelszót küldenek egy rendszergazda által kezdeményezett felhasználói jelszó-visszaállítás során (csak az Azure felügyeleti portálról).
 
-#### <a name="message-size-and-bandwidth-considerations"></a>Message size and bandwidth considerations
+#### <a name="message-size-and-bandwidth-considerations"></a>Az üzenetek mérete és a sávszélességgel kapcsolatos megfontolások
 
-The size of each of the message described previously is typically under 1 KB. Even under extreme loads, the password writeback service itself is consuming a few kilobits per second of bandwidth. Because each message is sent in real time, only when required by a password update operation, and because the message size is so small, the bandwidth usage of the writeback capability is too small to have a measurable impact.
+A korábban leírt üzenetek mérete általában 1 KB. A jelszó visszaírási szolgáltatás akár extrém terhelések mellett is igénybe vesz néhány kilobit/másodpercet. Mivel az egyes üzeneteket valós időben küldi el a rendszer, csak akkor, ha a jelszó-frissítési művelet megköveteli, és mivel az üzenet mérete igen kicsi, a visszaírási képesség sávszélesség-használata túl kicsi ahhoz, hogy mérhető hatást lehessen gyakorolni.
 
-## <a name="supported-writeback-operations"></a>Supported writeback operations
+## <a name="supported-writeback-operations"></a>Támogatott visszaírási-műveletek
 
-Passwords are written back in all the following situations:
+A jelszavakat a következő helyzetekben kell visszaírni:
 
-* **Supported end-user operations**
-   * Any end-user self-service voluntary change password operation
-   * Any end-user self-service force change password operation, for example, password expiration
-   * Any end-user self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-* **Supported administrator operations**
-   * Any administrator self-service voluntary change password operation
-   * Any administrator self-service force change password operation, for example, password expiration
-   * Any administrator self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-   * Any administrator-initiated end-user password reset from the [Azure portal](https://portal.azure.com)
+* **Támogatott végfelhasználói műveletek**
+   * Bármely végfelhasználói önkiszolgáló önkéntes jelszó-módosítási művelet
+   * Bármilyen végfelhasználói önkiszolgáló kényszerített jelszó-módosítási művelet, például a jelszó lejárata
+   * A [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com) származó összes végfelhasználói önkiszolgáló jelszó-visszaállítás
+* **Támogatott rendszergazdai műveletek**
+   * Bármilyen rendszergazdai önkiszolgáló önkéntes jelszó-módosítási művelet
+   * Minden rendszergazda önkiszolgáló kényszerített jelszó-módosítási művelet, például a jelszó lejárata
+   * A [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com) származó összes rendszergazda önkiszolgáló jelszó-visszaállítás
+   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Azure Portal](https://portal.azure.com)
 
-## <a name="unsupported-writeback-operations"></a>Unsupported writeback operations
+## <a name="unsupported-writeback-operations"></a>Nem támogatott visszaírási-műveletek
 
-Passwords are *not* written back in any of the following situations:
+A jelszavakat a következő helyzetekben *nem* írja vissza a rendszer:
 
-* **Unsupported end-user operations**
-   * Any end user resetting their own password by using PowerShell version 1, version 2, or the Azure AD Graph API
-* **Unsupported administrator operations**
-   * Any administrator-initiated end-user password reset from PowerShell version 1, version 2, or the Azure AD Graph API
-   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
+* **Nem támogatott végfelhasználói műveletek**
+   * Bármely végfelhasználó alaphelyzetbe állítja a saját jelszavát a PowerShell 1. vagy 2-es verziójának használatával, vagy az Azure AD Graph API
+* **Nem támogatott rendszergazdai műveletek**
+   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy az Azure AD-Graph API
+   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 > [!WARNING]
-> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)című cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Enable password writeback using the Tutorial: [Enabling password writeback](tutorial-enable-writeback.md)
+Jelszó engedélyezése visszaírási az oktatóanyag használatával: [jelszó-visszaírási engedélyezése](tutorial-enable-writeback.md)

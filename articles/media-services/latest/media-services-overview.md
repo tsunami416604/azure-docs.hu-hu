@@ -58,7 +58,7 @@ Megtudhatja, hogyan kódolhat és csomagolhat tartalmakat, közvetítheti a vide
 
 Kezdje el a fejlesztést [Azure Media Services v3 ügyféloldali SDK](media-services-apis-overview.md#sdks)-val.
 
-### <a name="quickstarts"></a>Gyors útmutatók  
+### <a name="quickstarts"></a>Gyorsútmutatók  
 
 A gyors üzembe helyezési útmutatóban az új ügyfelek gyorsan kipróbálhatják a Media Services.
 
@@ -95,7 +95,7 @@ A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a fela
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tudnivalók az alapvető fogalmakról](concepts-overview.md)
 

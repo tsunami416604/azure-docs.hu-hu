@@ -45,7 +45,7 @@ A Azure Active Directory (Azure AD) alkalmazásban egyszerűen módosíthatja az
    > Az Azure-ban a logónak PNG-fájlként kell lennie, és a szélességre, a magasságra és a fájlméretre vonatkozó korlátozásokat alkalmaz.
 8. Kattintson a **Mentés** gombra. Ha új emblémát választ, az **embléma** mező képe úgy változik, hogy tükrözze az új embléma fájlját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rövid útmutató: a szervezet csoportjainak és tagjainak megtekintése Azure Active Directory](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)

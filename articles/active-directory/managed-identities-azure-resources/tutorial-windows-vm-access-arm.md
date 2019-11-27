@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use managed identity to access Azure Resource Manager - Windows - Azure AD
+title: Oktatóanyag`:` felügyelt identitás használata a Azure Resource Manager eléréséhez – Windows-Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Resource Managerhez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -42,7 +42,7 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 1.  Navigáljon az **Erőforráscsoportok** lapra. 
 2.  Válassza ki a **Windows VM** számára létrehozott **erőforráscsoportot**. 
 3.  Lépjen a **Hozzáférés-vezérlés (IAM)** részre a bal oldali panelen. 
-4.  Then **Add role assignment** a new role assignment for your **Windows VM**.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
+4.  Ezután **adja hozzá a szerepkör-hozzárendelést** a **Windows rendszerű virtuális géphez**tartozó új szerepkör-hozzárendeléshez.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
 5.  A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a **Virtuális gép** értéket. 
 6.  Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben. Az **Erőforráscsoport** esetében válassza a **Minden erőforráscsoport** lehetőséget. 
 7.  Végül a **Kiválasztás** mezőben válassza ki a Windows VM-et a legördülő menüben, majd kattintson a **Mentés** gombra.
@@ -56,7 +56,7 @@ Ebben a részben a **PowerShellt** kell használnia.  Ha a **PowerShell** nincs 
 1.  A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre. 
 2.  A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3.  Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
-4.  Using the Invoke-WebRequest cmdlet, make a request to the local managed identity for Azure resources endpoint to get an access token for Azure Resource Manager.
+4.  A meghívó-webkérés parancsmag használatával kérje meg az Azure-erőforrások végpontjának helyi felügyelt identitását, hogy Azure Resource Manager hozzáférési jogkivonatot kapjon.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -76,7 +76,7 @@ Ebben a részben a **PowerShellt** kell használnia.  Ha a **PowerShell** nincs 
     $ArmToken = $content.access_token
     ```
     
-    Végül hívja meg az Azure Resource Managert a hozzáférési jogkivonattal. In this example, we're also using the Invoke-WebRequest cmdlet to make the call to Azure Resource Manager, and include the access token in the Authorization header.
+    Végül hívja meg az Azure Resource Managert a hozzáférési jogkivonattal. Ebben a példában a meghívó-webkérés parancsmagot használjuk a Azure Resource Manager meghívásához, és a hozzáférési token belefoglalásához is az engedélyezési fejlécben.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

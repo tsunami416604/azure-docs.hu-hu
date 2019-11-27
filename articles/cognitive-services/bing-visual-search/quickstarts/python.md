@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Python - Bing Visual Search'
+title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Python-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383180"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Python használatával
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Python application uploads an image to the API and displays the information it returns. Though this application is written in Python, the API is a RESTful Web service compatible with most programming languages.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Python-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
+Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítani, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
 
 ```
 --boundary_1234-abcd
@@ -34,19 +34,19 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Initialize the application
+## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Create a new Python file in your favorite IDE or editor, and add the following `import` statement:
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő `import` utasítást:
 
     ```python
     import requests, json
     ```
 
-2. Create variables for your subscription key, endpoint, and the path to the image you're uploading:
+2. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a feltölteni kívánt rendszerkép elérési útjához:
 
     ```python
 
@@ -55,21 +55,21 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     imagePath = 'your-image-path'
     ```
 
-3. Create a dictionary object to hold your request's header information. Bind your subscription key to the string `Ocp-Apim-Subscription-Key`, as shown below:
+3. Hozzon létre egy szótár objektumot a kérelem fejlécére vonatkozó információk tárolásához. Az előfizetési kulcsot a `Ocp-Apim-Subscription-Key`karakterlánchoz kell kötni, ahogy az az alábbi ábrán látható:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Create another dictionary to contain your image, which is opened and uploaded when you send the request:
+4. Hozzon létre egy másik szótárt, amely tartalmazza a képet, amelyet a rendszer a kérelem elküldésekor megnyit és feltölt:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
     ```
 
-## <a name="parse-the-json-response"></a>Parse the JSON response
+## <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-1. Create a method called `print_json()` to take in the API response, and print the JSON:
+1. Hozzon létre egy `print_json()` nevű metódust az API-válasz elvégzéséhez, és nyomtassa ki a JSON-t:
 
     ```python
     def print_json(obj):
@@ -77,9 +77,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
         print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
     ```
 
-## <a name="send-the-request"></a>Send the request
+## <a name="send-the-request"></a>A kérelem elküldése
 
-1. Use `requests.post()` to send a request to the Bing Visual Search API. Include the string for your endpoint, header, and file information. Print `response.json()` with `print_json()`:
+1. A `requests.post()` használatával küldhet egy kérelmet a Bing Visual Search APInak. Adja meg a végpont, a fejléc és a fájl adatait tartalmazó karakterláncot. `response.json()` nyomtatása `print_json()`:
 
     ```python
     try:
@@ -91,7 +91,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
         raise ex
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Create a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

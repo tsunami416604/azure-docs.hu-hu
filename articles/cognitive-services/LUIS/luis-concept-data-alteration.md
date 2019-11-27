@@ -1,7 +1,7 @@
 ---
-title: Data alteration - LUIS
+title: Adatváltozás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Learn how data can be changed before predictions in Language Understanding (LUIS)
+description: Ismerje meg, hogyan adatokat is módosítható előtt előrejelzések a Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,15 +18,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74222028"
 ---
-# <a name="alter-utterance-data-before-or-during-prediction"></a>Alter utterance data before or during prediction
-LUIS provides ways to manipulate the utterance before or during the prediction. These include [fixing spelling](luis-tutorial-bing-spellcheck.md), and fixing timezone issues for prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Az ALTER utterance (kifejezés) adatok előtt vagy közben előrejelzése
+A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása. 
 
-## <a name="correct-spelling-errors-in-utterance"></a>Correct spelling errors in utterance
+## <a name="correct-spelling-errors-in-utterance"></a>Helyesírási hibák az utterance (kifejezés)
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-LUIS uses [Bing Spell Check API V7](../Bing-Spell-Check/overview.md) to correct spelling errors in the utterance. LUIS needs the key associated with that service. Create the key, then add the key as a querystring parameter at the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356). 
+LUIS [Bing Spell Check API v7](../Bing-Spell-Check/overview.md) használatával javítsa ki a helyesírási hibákat a teljes szövegben. A LUIS kell a szolgáltatáshoz tartozó kulcsot. Hozza létre a kulcsot, majd adja hozzá a kulcsot querystring paraméterként a [végpontnál](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 <!--
 You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
@@ -35,16 +35,16 @@ Usage of the key in the test panel and at the endpoint count toward the [key usa
 
 -->
 
-The endpoint requires two params for spelling corrections to work:
+A végpont két paraméterei a helyesírási javításokkal működéséhez szükségesek:
 
-|Param|Value (Díj)|
+|Param|Érték|
 |--|--|
-|`spellCheck`|logikai|
-|`bing-spell-check-subscription-key`|[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) endpoint key|
+|`spellCheck`|Logikai érték|
+|`bing-spell-check-subscription-key`|[Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -végpont kulcsa|
 
-When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) detects an error, the original utterance, and the corrected utterance are returned along with predictions from the endpoint.
+Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) hibát észlel, az eredeti kimaradás és a korrigált Kimondás a végponton lévő előrejelzések mellett történik.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 prediction endpoint response](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -58,7 +58,7 @@ When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-se
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 prediction endpoint response](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
  
 ```JSON
 {
@@ -78,48 +78,48 @@ When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-se
 
 * * * 
 
-### <a name="list-of-allowed-words"></a>List of allowed words
-The Bing spell check API used in LUIS does not support a list of words to ignore during the spell check alterations. If you need to allow a list of words or acronyms, process the utterance in the client application before sending the utterance to LUIS for intent prediction.
+### <a name="list-of-allowed-words"></a>Engedélyezett szavak listája
+A LUIS-ben használt Bing Spell Check API nem támogatja a helyesírás-ellenőrzési változtatások során figyelmen kívül hagyó szavak listáját. Ha engedélyezni szeretné a szavak vagy rövidítések listáját, akkor a Kimondás előtt dolgozza fel a kilépést az ügyfélalkalmazás számára, mielőtt elküldi a megfogalmazást a LUIS for szándék előrejelzésére.
 
-## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Change time zone of prebuilt datetimeV2 entity
-When a LUIS app uses the prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md) entity, a datetime value can be returned in the prediction response. The timezone of the request is used to determine the correct datetime to return. If the request is coming from a bot or another centralized application before getting to LUIS, correct the timezone LUIS uses. 
+## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Előre összeállított datetimeV2 entitás időzóna módosítása
+Ha egy LUIS-alkalmazás az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md) entitást használja, az előrejelzési válaszban egy datetime érték adható vissza. A kérelem az időzóna visszaadandó megfelelő datetime meghatározására szolgál. Ha a kérelem érkezik egy robot vagy egy másik központi alkalmazás LUIS való elérése előtt, javítsa ki az időzóna, LUIS használja. 
 
-### <a name="endpoint-querystring-parameter"></a>Endpoint querystring parameter
-The timezone is corrected by adding the user's timezone to the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) using the `timezoneOffset` param. The value of `timezoneOffset` should be the positive or negative number, in minutes, to alter the time.  
+### <a name="endpoint-querystring-parameter"></a>Végpont paramétert
+Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját hozzáadja a [végponthoz](https://go.microsoft.com/fwlink/?linkid=2092356) a `timezoneOffset` param használatával. Az idő módosításához a `timezoneOffset` értékének pozitív vagy negatív számnak kell lennie percben.  
 
-|Param|Value (Díj)|
+|Param|Érték|
 |--|--|
-|`timezoneOffset`|positive or negative number, in minutes|
+|`timezoneOffset`|pozitív vagy negatív szám, percek alatt|
 
-### <a name="daylight-savings-example"></a>Daylight savings example
-If you need the returned prebuilt datetimeV2 to adjust for daylight savings time, you should use the `timezoneOffset` querystring parameter with a +/- value in minutes for the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) query.
+### <a name="daylight-savings-example"></a>Nyári időszámítás – megtakarítási példa
+Ha a visszaadott előre elkészített datetimeV2 szeretné beállítani a nyári időszámítást, akkor a querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell `timezoneOffset` használni.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 prediction endpoint request](#tab/V2)
+#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 előrejelzési végpont kérése](#tab/V2)
 
-Add 60 minutes: 
+Adja hozzá a 60 perc: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a fények bekapcsolása? **timezoneOffset = 60**& verbose = {boolean} & helyesírás = {boolean} &-előkészítés = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
-Remove 60 minutes: 
+60 perc eltávolítása: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a fények bekapcsolása? **timezoneOffset =-60**& részletesen = {boolean} & helyesírás = {boolean} &-előkészítés = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 prediction endpoint request](#tab/V3)
+#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 előrejelzési végpont kérése](#tab/V3)
 
-Add 60 minutes:
+Adja hozzá a 60 perc:
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{Region}. API. kognitív. microsoft. com/Luis/v 3.0 – Preview/apps/{appId}/Slots/Production/Tippelje? Query = a fények bekapcsolása? **timezoneOffset = 60**& helyesírás = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
-Remove 60 minutes: 
+60 perc eltávolítása: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{Region}. API. kognitív. microsoft. com/Luis/v 3.0 – Preview/apps/{appId}/Slots/Production/Tippelje? Query = a fények bekapcsolása? **timezoneOffset =-60**& helyesírás = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
-Learn more about the [V3 prediction endpoint](luis-migration-api-v3.md).
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 * * * 
 
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# code determines correct value of timezoneOffset
-The following C# code uses the [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) class's [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) method to determine the correct `timezoneOffset` based on system time:
+## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-kód megfelelő timezoneOffset értékét határozza meg
+A következő C# kód a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) osztály [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metódusát használja a megfelelő `timezoneOffset` meghatározásához a rendszeridő alapján:
 
 ```CSharp
 // Get CST zone id
@@ -135,7 +135,7 @@ DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Correct spelling mistakes with this tutorial](luis-tutorial-bing-spellcheck.md)
+> [Helyesírási hibák javítása ezzel az Oktatóanyaggal](luis-tutorial-bing-spellcheck.md)

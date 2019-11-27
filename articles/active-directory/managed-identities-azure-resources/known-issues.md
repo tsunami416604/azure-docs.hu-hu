@@ -94,7 +94,7 @@ Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a k�
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Az elemek magyarázata: 
+Helyszín: 
 - A Windows-bővítmény neve és típusa: ManagedIdentityExtensionForWindows
 - Kiterjesztés neve és típusa Linux esetén: ManagedIdentityExtensionForLinux
 

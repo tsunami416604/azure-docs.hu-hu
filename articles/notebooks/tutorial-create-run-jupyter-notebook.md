@@ -14,51 +14,51 @@ ms.locfileid: "74277418"
 
 Ez az oktatóanyag végigvezeti a folyamat azt mutatja be, lineáris regresszió egyszerű befejezése Jupyter notebook létrehozása Azure jegyzetfüzeteinek előnyeit. Ebben az oktatóanyagban képviselőinkkel, ismerkedjen meg a Jupyter notebook felhasználói felületén, például a különböző cellák létrehozásához, cellák fut, és diavetítésként a notebook bemutatása.
 
-A befejezett notebook találhatók [GitHub - jegyzetfüzetek minták Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Ebben az oktatóanyagban egy új projektet és a egy üres notebook azonban kezdődik, így a tapasztalhatnak, lépésről lépésre hozza létre.
+Az elkészült jegyzetfüzet a [GitHub-Azure Notebooks mintákon](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)érhető el. Ebben az oktatóanyagban egy új projektet és a egy üres notebook azonban kezdődik, így a tapasztalhatnak, lépésről lépésre hozza létre.
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
-1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. (További információkért lásd: [rövid útmutató – jelentkezzen be Azure-jegyzetfüzetek](quickstart-sign-in-azure-notebooks.md)).
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. (Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksre](quickstart-sign-in-azure-notebooks.md)).
 
-1. Válassza ki a nyilvános profiloldalán **saját projektek** az oldal tetején:
+1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
-1. A a **saját projektek** lapon jelölje be **+ új projekt** (billentyűparancs: n); a gomb csak megjelenik **+** Ha a böngészőablak keskeny:
+1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n); a gomb csak akkor szerepelhet **+** , ha a böngészőablak keskeny:
 
     ![Új projekt parancsot a saját projektek lapon](media/quickstarts/new-project-command.png)
 
-1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
+1. A megjelenő **új projekt létrehozása** előugró ablakban írja be vagy adja meg a következő adatokat, majd válassza a **Létrehozás**lehetőséget:
 
-    - **Projektnév**: lineáris regressziós példa – Cricket utánzó rendszerhangokat
-    - **A projekt Azonosítóját**: lineáris regressziós – példa
+    - **Projekt neve**: lineáris regressziós példa – krikett-csiripelő
+    - **Projekt azonosítója**: lineáris – regresszió – példa
     - **Nyilvános projekt**: (törölve)
-    - **Hozzon létre egy README.md**: (törölve)
+    - **Hozzon létre egy readme.MD**: (törölve)
 
 1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt.
 
 ## <a name="create-the-data-file"></a>Az adatfájl létrehozása
 
-A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a nevű projekt fájlból *cricket_chirps.csv*. Ezt a fájlt a [GitHub-Azure Notebooks mintákból](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)is létrehozhatja, vagy közvetlenül is beírhatja az adatokat. A következő szakaszok mindkét módszert ismertetik.
+A jegyzetfüzetben létrehozott lineáris regressziós modell a projekt egy *cricket_chirps. csv*nevű fájljának adatait hívja meg. Ezt a fájlt a [GitHub-Azure Notebooks mintákból](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)is létrehozhatja, vagy közvetlenül is beírhatja az adatokat. A következő szakaszok mindkét módszert ismertetik.
 
 ### <a name="upload-the-data-file"></a>Az adatfájl feltöltése
 
-1. Az Azure-jegyzetfüzetekben projekt irányítópultján, válassza ki a **feltöltése** > **URL-CÍMRŐL**
-1. Az előugró ablakban adja meg a következő URL-cím **fájl URL-cím** és *cricket_chirps.csv* a **Fájlnév**, majd **kész**.
+1. A Azure Notebooks a projekt irányítópultján válassza a **feltöltés** > **URL-** címről lehetőséget.
+1. Az előugró ablakban adja meg a következő URL-címet a fájl **URL-címében** , és *cricket_chirps. csv* fájlt a **fájlnév**mezőben, majd válassza a **kész**lehetőséget.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. A *cricket_chirps.csv* fájlt meg kell jelennie a projekt fájllista:
+1. A *cricket_chirps. csv* fájlnak ekkor meg kell jelennie a projekt fájllista:
 
     ![Az újonnan létrehozott CSV-fájlt a projekt fájlok listájának megjelenítése](media/tutorial/csv-file-in-project.png)
 
 ### <a name="create-a-file-from-scratch"></a>Sablon nélkül hozzon létre egy fájlt
 
-1. Az Azure-jegyzetfüzetekben projekt irányítópultján, válassza ki a **+ új** > **üres fájl**
-1. Egy mezőt a projekt fájl listájában jelenik meg. Adjon meg *cricket_chirps.csv* nyomja le az Enter billentyűt.
-1. Kattintson a jobb gombbal *cricket_chirps.csv* válassza **fájl szerkesztése**.
+1. Azure Notebooks a projekt irányítópultján válassza az **+ új** > **üres fájl** elemet.
+1. Egy mezőt a projekt fájl listájában jelenik meg. Adja meg *cricket_chirps. csv* fájlt, és nyomja le az ENTER billentyűt.
+1. Kattintson a jobb gombbal a *cricket_chirps. csv* fájlra, majd válassza a **fájl szerkesztése**lehetőséget.
 1. A szerkesztőben megjelenő adja meg a következő adatokat:
 
     ```csv
@@ -80,13 +80,13 @@ A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a
     14.4,76.3
     ```
 
-1. Válassza ki **fájl mentése** mentse a fájlt, és térjen vissza a projekt irányítópultján.
+1. Válassza a **fájl mentése** lehetőséget a fájl mentéséhez és a projekt-irányítópultra való visszatéréshez.
 
 ## <a name="install-project-level-packages"></a>Projekt szolgáltatásiszint-csomagok telepítése
 
-A notebook belül mindig parancsokat használhatja például a `!pip install` egy kódcellába szükséges csomagok telepítéséhez. Azonban az ilyen parancsok futtatása minden alkalommal, amikor a notebook kód cellák futtatja, és hosszabb időt is igénybe vehet. Ebből kifolyólag inkább telepíthet csomagokat a projekthez szinten az egy `requirements.txt` fájlt.
+A notebookon belül mindig használhat olyan parancsokat, mint a kód cellában `!pip install` a szükséges csomagok telepítéséhez. Azonban az ilyen parancsok futtatása minden alkalommal, amikor a notebook kód cellák futtatja, és hosszabb időt is igénybe vehet. Emiatt a csomagokat a projekt szintjén telepítheti egy `requirements.txt` fájl használatával.
 
-1. Az ismertetett folyamat használata [hozzon létre egy fájlt a teljesen új](#create-a-file-from-scratch) nevű fájl létrehozása `requirements.txt` a következő tartalommal:
+1. A következő témakörben ismertetett eljárást követve hozzon létre [egy fájlt `requirements.txt`](#create-a-file-from-scratch) nevű fájl létrehozásával:
 
     ```text
     matplotlib==3.0.0
@@ -95,13 +95,13 @@ A notebook belül mindig parancsokat használhatja például a `!pip install` eg
     scikit-learn==0.20.0
     ```
 
-    Emellett feltölthet egy `requirements.txt` fájlt a helyi számítógépről igény szerint leírt [az adatfájl feltöltése](#upload-the-data-file).
+    Ha szeretné, az [adatfájl feltöltése](#upload-the-data-file)című cikkben leírtak szerint `requirements.txt` fájlt is feltölthet a helyi számítógépről.
 
-1. Válassza ki a projekt irányítópultján **Projektbeállítások**.
-1. A megjelenő előugró ablakban válassza ki a **környezet** lapfülre, majd válassza ki **+ Hozzáadás**.
-1. Az első legördülő vezérlő (művelet) alatt **környezet beállítási lépéseket**, válassza a **Requirements.txt**.
-1. Válassza ki a második legördülő vezérlőben (fájlnév) *requirements.txt* (a létrehozott fájlt).
-1. A harmadik legördülő vezérlőt (a Python-verzió) válassza **Python 3.6-os verzió**.
+1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget.
+1. A megjelenő előugró ablakban válassza a **környezet** lapot, majd válassza a **+ Hozzáadás**lehetőséget.
+1. Az első legördülő vezérlőben (a műveletben) a **környezet beállítása lépésnél**válassza a **követelmények. txt**elemet.
+1. A második legördülő vezérlőben (a fájl neve) válassza a *követelmények. txt* (a létrehozott fájl) elemet.
+1. A harmadik legördülő vezérlőben (a Python verziója) válassza a **python 3,6**-es verzióját.
 1. Kattintson a **Mentés** gombra.
 
 ![A projekt beállítások környezet lapon requirements.txt fájl megadása](media/tutorial/tutorial-requirements-txt.png)
@@ -112,17 +112,17 @@ A telepítő lépés helyen a projekt futtatása minden olyan jegyzetfüzet fog 
 
 Készen áll az adatfájlban és a projekt környezet beállítása hogy mostantól létrehozhat és nyissa meg a notebook.
 
-1. Válassza ki a projekt irányítópultján **+ új** > **Notebook**.
-1. Az előugró ablakban adja meg a *lineáris regressziós példa – Cricket Chirps.ipynb* a **elem neve**, válassza a **Python 3.6-os** a nyelvet, majd válassza **új**.
+1. A projekt irányítópultján válassza az **+ új** > **Jegyzetfüzet**elemet.
+1. Az előugró ablakban adja meg a *lineáris regressziós példát – Cricket csiripel. ipynb* az **elem neveként**válassza a **Python 3,6** lehetőséget a nyelvhez, majd válassza az **új**lehetőséget.
 1. Miután az Új jegyzetfüzet a fájllista megjelenik, válassza ki, hogy a notebook. Egy új böngészőlapon nyílik meg automatikusan.
-1. Mert rendelkezik egy *requirements.txt* fájl a környezet beállításaiban látja az üzenetet, "Várakozás a tároló befejezéséhez a előkészítésére." Választhat **OK** zárja be az üzenetet, és folytatni a munkát a notebook; kód cellák, azonban nem tudja futtatni, amíg a környezet teljes van beállítva.
+1. Mivel a környezeti beállításokban szerepel a *követelmények. txt* fájl, a "Várakozás a tároló előkészítésének befejezésére" üzenet jelenik meg. Az **OK** gombra kattintva lezárhatja az üzenetet, és folytathatja a munkát a jegyzetfüzetben; a kód cellái azonban nem futtathatók, amíg a környezet teljesen be nem fejeződik.
 1. A Notebookban egy üres kódcellába Jupyter kapcsolaton alapértelmezett nyílik meg.
 
     [![Azure Notebooks új jegyzetfüzetének kezdeti nézete](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>A notebook felület bemutatása
 
-A notebook fut, a kód Markdown cellák, futtassa a cellákat és kezelheti a notebookot az is hozzáadhat. Először azonban érdemes Ismerkedjen meg a kapcsolat néhány percet vesz igénybe. A teljes dokumentációt, válassza a **súgó** > **súgója Notebook** parancs.
+A notebook fut, a kód Markdown cellák, futtassa a cellákat és kezelheti a notebookot az is hozzáadhat. Először azonban érdemes Ismerkedjen meg a kapcsolat néhány percet vesz igénybe. A teljes dokumentációhoz válassza a **súgó** > **notebook Súgó** menü parancsát.
 
 Az ablak tetején jelenik meg a következő elemek:
 
@@ -131,12 +131,12 @@ Az ablak tetején jelenik meg a következő elemek:
 (C) A menü-parancsokkal a notebook való munkához.
 (D) eszköztár parancsikonjait gyakori műveletekhez.
 (E) a cellákat tartalmazó szerkesztési vászonra.
-(F) jelzi, hogy a notebook megbízható (alapértelmezett érték a **nem megbízható**).
+(F) jelzi, hogy a jegyzetfüzet megbízható-e (az alapértelmezett érték **nem megbízható**).
 (G) a kernel a jegyzetfüzet futtatásához egy tevékenységet jelző együtt használja.
 
 [a Jupyter felület elsődleges felhasználói felületi területeinek ![](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter biztosít beépített Ismerkedjen meg az elsődleges felhasználói felületi elemeket. A bemutató első lépésként válassza ki a **súgó** > **felhasználói felületet bemutató** parancs, és kattintson az előugró ablakok keresztül.
+Jupyter biztosít beépített Ismerkedjen meg az elsődleges felhasználói felületi elemeket. Indítsa el a bemutatót a **súgó** > **felhasználói felületi bemutató** parancs kiválasztásával, és kattintson az előugró ablakok elemre.
 
 A csoportok menü parancsok a következők:
 
@@ -146,23 +146,23 @@ A csoportok menü parancsok a következők:
 | Szerkesztés | Kivágás, másolja, és illessze be a cellák, keresse meg és cserélje le az értékeket, tipikus parancsokat cella mellékletek kezelése, és helyezze be a lemezképek.  |
 | Nézet | A Jupyter felhasználói felület más részein láthatóságot parancsokat. |
 | Beszúrás | Új cella felett vagy alatt az aktuális cella beszúrása parancsokat. Ezek a parancsok gyakran egy jegyzetfüzetet létrehozásakor használ. |
-| Cella | A különböző **futtatása** parancsok futtatása egy vagy több cella különböző kombinációkban. A **cella típusa** parancsok között egy cella típusának módosítása **kód**, **Markdown**, és **nyers NBConvert** (egyszerű szöveg). A **aktuális kimenetek** és **összes kimenetének** parancsok vezérelheti, hogyan kimeneti futtatási kódból látható, és törölje az összes kimeneti parancsot tartalmazza. |
-| Kernel | Hogyan kód futtatják a kernel mentén kezelését végző parancsokról **módosítása kernel** nyelv vagy a jegyzetfüzet futtatásához használt Python-verzió módosításához. |
-| Adatok | Fájlok feltöltését és letöltését a projekt vagy a munkamenet parancsokat. Lásd: [soubory projektu adatok használata](work-with-project-data-files.md) |
-| Vezérlők | Kezelését végző parancsokról [Jupyter Widgetek](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), amely további funkciókat biztosítsanak a képi megjelenítés, a leképezési és küldik az ábrázolást.|
+| Cella | A különböző **futtatási** parancsok egy vagy több cellát futtatnak a különböző kombinációkban. A **cella típusa** parancsok a **kód**, a **Markdown**és a **nyers NBConvert** (egyszerű szöveg) közötti cella típusát változtatják meg. Az **aktuális kimenetek** és az **összes kimenet** parancs vezérli, hogy a rendszer hogyan jelenítse meg a futtatási kód kimenetét, és tartalmaz egy parancsot az összes kimenet törléséhez. |
+| Kernel | A kód a rendszermagban történő futtatását kezelő parancsok, valamint a **kernel módosítása** a jegyzetfüzet futtatásához használt nyelv vagy Python-verzió megváltoztatásához. |
+| Adatok | Fájlok feltöltését és letöltését a projekt vagy a munkamenet parancsokat. Lásd: [Project adatfájlok használata](work-with-project-data-files.md) |
+| Vezérlők | A [Jupyter widgetek](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)kezelésére szolgáló parancsok, amelyek további képességeket biztosítanak a vizualizációk, a leképezések és a nyomtatás számára.|
 | Súgó | Parancsok, nyújthat segítséget és a Jupyter felület dokumentációját. |
 
-Legtöbb parancs, az eszköztáron rendelkezik egyenértékű menüparancsai. Kivételt jelent **Enter/Szerkesztés NÖVEKMÉNYE Diavetítés**, amely a következő cikkben [megosztás és a jelen notebookok](present-jupyter-notebooks-slideshow.md).
+Legtöbb parancs, az eszköztáron rendelkezik egyenértékű menüparancsai. Az egyik kivétel a [megjelenő, illetve a megjelenő jegyzetfüzetekben megjelenő megjelenő](present-jupyter-notebooks-slideshow.md)vagy **szerkesztési felemelkedési diavetítés**.
 
 Ezek a parancsok számos módon feltölti a notebookot az alábbi szakaszok a használhatja.
 
 ## <a name="create-a-markdown-cell"></a>Hozzon létre egy Markdown-cella
 
-1. Kattintson a notebook vásznon látható első üres cellába. Alapértelmezés szerint a cella nem egy **kód** típusa, ami azt jelenti, hogy a feladata, hogy a kiválasztott kernel futtatható kódját tartalmazza (Python, R, vagy F#). A jelenlegi típus: írja be a legördülő menüből az eszköztáron látható:
+1. Kattintson a notebook vásznon látható első üres cellába. Alapértelmezés szerint a cella egy **kód** típusú, ami azt jelenti, hogy a kiválasztott kernelhez (Python, R vagy F#) futtatható kódot tartalmaz. A jelenlegi típus: írja be a legördülő menüből az eszköztáron látható:
 
     ![Cella típusa eszköztár legördülő menü](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Módosítsa a cella típusát **Markdown** az eszköztár legördülő menü használatával; az azt is megteheti, használhatja a **cella** > **cella típusa**  >   **Markdown** parancs:
+1. Módosítsa a cella típusát a **Markdown** az eszköztár legördülő menüjének használatával. másik lehetőségként használja a **cella** > **cellájának típusát** > **Markdown** :
 
     ![Parancs cella típusa](media/tutorial/tutorial-cell-type-menu.png)
 
@@ -187,7 +187,7 @@ Ezek a parancsok számos módon feltölti a notebookot az alábbi szakaszok a ha
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Jelennek meg a Markdown HTML böngésző, válassza a **futtatása** parancsot az eszköztáron, vagy használja a **cella** > **futtatása cellák** parancsot. A Markdown kódot a formázás és hivatkozások most őket egy böngészőben a várt módon jelennek meg.
+1. Ha a Markdown HTML formátumban szeretné megjeleníteni a böngészőben, válassza a **Futtatás** parancsot az eszköztáron, vagy használja a **cella** > **cellák futtatása** parancsot. A Markdown kódot a formázás és hivatkozások most őket egy böngészőben a várt módon jelennek meg.
 
 1. A jegyzetfüzet futtatásakor az előző cella Jupyter automatikusan létrehozza az alábbi futtatta egy új cellára. A cella ebben a szakaszban a következő Markdown-lépéseinek megismétlésével további Markdown üzembe:
 
@@ -209,7 +209,7 @@ Ezek a parancsok számos módon feltölti a notebookot az alábbi szakaszok a ha
 
 Az előző cella Markdown mértékét, közvetlenül a notebookot a parancsok is megadhat. Parancsok segítségével csomagokat telepíteni, és futtassa a curl vagy wget beolvasni az adatokat, vagy bármi más. Jupyter notebookok hatékonyan futtatása Linux rendszerű virtuális gépen, így a teljes Linux parancs, állítsa a kell.
 
-1. Adja meg az alábbi parancsokat a kódcellába, amely után a használt megjelent **futtatása** a korábbi Markdown cellára. Ha egy új cella nem jelenik meg, hozzon létre egyet a **beszúrása** > **cella beszúrása alábbi** vagy használja a **+** gombra az eszköztáron.
+1. Adja meg az alábbi parancsokat a kód cellájában, amely az előző Markdown-cella **futtatása** után szerepelt. Ha nem lát új cellát, hozzon létre egyet az **insert** > INSERT **cellával** , vagy használja a **+** gombot az eszköztáron.
 
     ```bash
     !pip install numpy
@@ -218,21 +218,21 @@ Az előző cella Markdown mértékét, közvetlenül a notebookot a parancsok is
     !pip install sklearn
     ```
 
-1. Mielőtt futtatná a cellára, hozzon létre egy új cellára a **+** gombra az eszköztáron, beállíthatja azt a Markdown és a következő magyarázatot:
+1. A cella futtatása előtt hozzon létre egy új cellát az eszköztáron a **+** gombbal, állítsa be a Markdown értékre, és adja meg a következő magyarázatot:
 
     ```markdown
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. Válassza ki a **cella** > **összes futtatása** parancs összes cellát a jegyzetfüzet futtatásához. Figyelje meg, hogy a Markdown cellák HTML formátumban jelennek meg, és a parancs futtatása a kernel, és figyelje meg a kernel kijelző, a markdown-szöveg leírtak szerint:
+1. Válassza ki a **cellát** > **futtassa az összes** parancsot a jegyzetfüzet összes cellájának futtatásához. Figyelje meg, hogy a Markdown cellák HTML formátumban jelennek meg, és a parancs futtatása a kernel, és figyelje meg a kernel kijelző, a markdown-szöveg leírtak szerint:
 
     ![A notebook kernel foglalt mutatója](media/tutorial/tutorial-kernel-busy.png)
 
-1. Még tart egy kis időt az összes a `pip install` parancsok futtatásához, és mivel ezeket a csomagokat a projekthez környezetben már telepítve (és mivel azok már is megtalálható az Azure-jegyzetfüzetek alapértelmezés szerint), láthatja, hogy olvassa el a "követelmény számos üzenetek már elégedett az eredménnyel." Az összes, a kimeneti vizuálisan zavaró, ezért válassza, amelyek értékesíteni (egyetlen kattintással használatával), majd az is lehet a **cella** > **cella kimenetek** > **váltógomb**elrejtése a kimenetet. Is használhatja a **egyértelmű** teljesen eltávolítja a kimenetet, hogy ugyanazon almenü parancsot.
+1. Az összes `pip install`-parancs futtatására is kis időbe telik, és mivel már telepítette ezeket a csomagokat a Project Environment-ban (és mivel alapértelmezés szerint a Azure Notebooks is tartalmazza őket), a "követelmény már" üzenet jelenik meg. elégedett. " Az összes kimenet vizuálisan zavaró lehet, ezért **válassza az értékesítés** (egyetlen kattintással) lehetőséget, majd a cella > **cella kimenetek** > a **váltással** elrejtheti a kimenetet. Ha a kimenetet teljes mértékben el szeretné távolítani, használhatja a **Clear** parancsot is ugyanezen az almenün.
 
-    A **váltógomb** parancs elrejti a cellából csak a legutóbbi kimeneti; Ha a cella ismét futtatja, a kimeneti ismét megjelenik.
+    A **pecek** parancs csak a cella legutóbbi kimenetét rejti el. Ha újra futtatja a cellát, a kimenet újra megjelenik.
 
-1. Mivel a csomagok telepítése a projekt környezetében, tegye megjegyzésbe a `! pip install` parancsok használatával `#`; ezzel a módszerrel a jegyzetfüzet oktatási anyagok is maradnak, de nem minden időt vesz igénybe, és nem állít elő a szükségtelen kimenetet. Ebben az esetben a notebookot a megjegyzésekkel parancsok tartja azt is jelzi a notebook függőségek.
+1. Mivel a csomagok telepítve vannak a Project-környezetben, a `#`használatával tegye megjegyzésbe a `! pip install` parancsokat; így a jegyzetfüzetben megmaradhatnak oktatási anyagokként, de nem fog időt futtatni, és nem fog felesleges kimenetet létrehozni. Ebben az esetben a notebookot a megjegyzésekkel parancsok tartja azt is jelzi a notebook függőségek.
 
     ```bash
     # !pip install numpy
@@ -247,7 +247,7 @@ A többi a notebook feltöltéséhez, kell létrehoznia egy sorozatát Markdown 
 
 Bár minden cella létrehozását követően a jegyzetfüzet futtatásához várhat, érdemes futtatni minden cella létrehozása közben. Nem minden cellák megjelenítése kimeneti; Ha nem látja az esetleges hibákat, azt feltételezik, a cella általában futott.
 
-Minden egyes kódcella attól függ, a kódot, amely az előző cella fut, és nem a cellák valamelyike futtassa így tesz, ha újabb cellák eredményezhet a hibák. Ha azt tapasztalja, hogy elfelejtette a futtatásához egy cellát, próbáljon a **cella** > **futtatása az összes fenti** az aktuális cella futtatása előtt.
+Minden egyes kódcella attól függ, a kódot, amely az előző cella fut, és nem a cellák valamelyike futtassa így tesz, ha újabb cellák eredményezhet a hibák. Ha azt tapasztalja, hogy elfelejtette egy cella futtatását, próbálja meg a **cellát** > **futtatni** az aktuális cella futtatása előtt.
 
 Ha nem várt eredmények (Ez valószínűleg fogja!), ellenőrizze, hogy minden cella értéke "Code" vagy "Markdown" szükség szerint. Például "Érvénytelen szintaxis" hiba általában történik, ha megadta a Markdown kódot cellába.
 
@@ -259,7 +259,7 @@ Ha nem várt eredmények (Ez valószínűleg fogja!), ellenőrizze, hogy minden 
     In this example we're using numpy, pandas, and matplotlib. Data is in the file cricket_chirps.csv. Because this file is in the same project as this present Notebook, we can just load it using a relative pathname.
     ```
 
-1. Kódcella; Futtatás jelenít meg a tábla tartalmának kimenetként. A kimenet tilthatja le a megjegyzéseket a `print` utasítást.
+1. Kódcella; Futtatás jelenít meg a tábla tartalmának kimenetként. A kimenetet letilthatja a `print` utasítás megjegyzésével.
 
     ```python
     import numpy as np
@@ -300,7 +300,7 @@ Ha nem várt eredmények (Ez valószínűleg fogja!), ellenőrizze, hogy minden 
     The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
-1. Kódcella; futtatásakor a cella jeleníti meg a kimeneti `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
+1. Kód cellája; a futtatáskor a cella a kimenetet jeleníti meg `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
 
     ```python
     from sklearn.linear_model import LinearRegression
@@ -321,7 +321,7 @@ Ha nem várt eredmények (Ez valószínűleg fogja!), ellenőrizze, hogy minden 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
 
-1. Kódcella; futtatja, a cella jelenít meg eredményt, például `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
+1. Kód cellája; a futtatáskor ez a cella a `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`eredményeit jeleníti meg.
 
     ```python
     y_pred = regressor.predict(X_test)
@@ -383,21 +383,21 @@ Mindkét egy darab kódot futtató lineáris regressziós modell futtatása egy 
 
 Próbálja ki a teljes notebook most újrafuttatása:
 
-1. Törölje a kernel munkamenet az adatokat és az összes kimeneti cella kiválasztásával **Kernel** > **Újraindítás & egyértelmű kimeneti**. Ez a parancs mindig egy jó egy-egy jegyzetfüzetet csak, győződjön meg arról, hogy még nem létrehozott kód cellák között furcsa függőségek befejezése után futtassa.
+1. A rendszermag > **újraindítása & a kimenet törlése**lehetőség kiválasztásával törölje **a kernel összes** munkamenet-és összes kimenetét. Ez a parancs mindig egy jó egy-egy jegyzetfüzetet csak, győződjön meg arról, hogy még nem létrehozott kód cellák között furcsa függőségek befejezése után futtassa.
 
-1. Futtassa újra a notebook használatával **cella** > **összes futtatása**. Figyelje meg, hogy a kernel kijelző kitölti a kód futtatása közben.
+1. Futtassa újra a jegyzetfüzetet **a > ** **futtatása**paranccsal. Figyelje meg, hogy a kernel kijelző kitölti a kód futtatása közben.
 
-    Ha bármilyen kódot, amely hosszabb ideig fut, vagy más módon elakad, állítsa le a kernel használatával a **Kernel** > **megszakítási** parancsot.
+    Ha olyan kódot használ, amely túl hosszú vagy egyéb módon leáll **, a kernel > ** **megszakítás** paranccsal állíthatja le a kernelt.
 
 1. Görgessen végig a notebook vizsgálja meg az eredményeket. (Ha újra a diagram nem jelenik meg, indítsa újra a cella.)
 
 ## <a name="save-halt-and-close-the-notebook"></a>Mentse, leállíthatja, és bezárja a notebookot
 
-A időszakban szerkeszt egy jegyzetfüzetet, mentheti a jelenlegi állapotában a **fájl** > **mentése és ellenőrzőpont** parancsot vagy a Mentés gombra az eszköztáron. "Ellenőrzőpont", amely a munkamenet során bármikor visszatérhet pillanatképet hoz létre. Ellenőrzőpontok lehetővé teszik, hogy a kísérleti módosítások sorozata, és ezek a módosítások nem működnek, ha csak térhet vissza egy ellenőrzőpontot a a **fájl** > **ellenőrzőpont visszaállítása** parancsot. Egy alternatív módszer az, hogy további cellákat és tegye megjegyzésbe, amelyet szeretne futtatni; kód létrehozása mindkét esetben működik.
+Amikor egy jegyzetfüzetet szerkeszt, a jelenlegi állapotát mentheti a **fájl** > **Save and Checkpoint** paranccsal, vagy a Mentés gombra az eszköztáron. "Ellenőrzőpont", amely a munkamenet során bármikor visszatérhet pillanatképet hoz létre. Az ellenőrzőpontok lehetővé teszik a kísérleti módosítások sorozatának elvégzését, és ha ezek a módosítások nem működnek, egyszerűen visszaállíthat egy ellenőrzőpontot a **fájl** > az **ellenőrzőpont** parancs használatával. Egy alternatív módszer az, hogy további cellákat és tegye megjegyzésbe, amelyet szeretne futtatni; kód létrehozása mindkét esetben működik.
 
-Is használhatja a **fájl** > **készítsen róla egy másolatot** parancsot, és győződjön meg a notebook aktuális állapotát egy példányát a projektben egy új fájlba. A másolatot automatikusan megnyílik egy új böngészőlapon.
+A **fájlt** > is használhatja, ha a jegyzetfüzet aktuális állapotát egy új fájlba szeretné készíteni a projektben, a **másolási** parancs használatával bármikor készíthet másolatot. A másolatot automatikusan megnyílik egy új böngészőlapon.
 
-Ha elkészült, a jegyzetfüzet, használja a **fájl** > **Bezárás és halt** parancsot, amely bezárja a notebookot, és a kernel futott, hogy leállítja. Az Azure notebookok majd a böngészőlapon automatikusan bezáródik.
+Ha elkészült egy jegyzetfüzettel, használja **a > ** **Bezárás és** Leállítás parancsot, amely lezárja a jegyzetfüzetet, és leállítja a futtatott kernelt. Az Azure notebookok majd a böngészőlapon automatikusan bezáródik.
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Hibakeresés a Visual Studio Code notebookok
 
@@ -411,14 +411,14 @@ Lásd még: a [Visual Studio Code-Jupyter támogatása](https://code.visualstudi
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ismerkedés a mintafüzetek](azure-notebooks-samples.md)
+- [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 
 Útmutatók:
 
-- [Hozzon létre, és klónozza a projektek](create-clone-jupyter-notebooks.md)
-- [Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
-- [Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Projektek létrehozása és klónozása](create-clone-jupyter-notebooks.md)
+- [Projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
+- [Csomagok telepítése jegyzetfüzetből](install-packages-jupyter-notebook.md)
+- [Bemutató megjelenítése](present-jupyter-notebooks-slideshow.md)
 - [Adatfájlok használata](work-with-project-data-files.md)
-- [Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Hozzáférés az adaterőforrásokhoz](access-data-resources-jupyter-notebooks.md)
 - [Azure Machine Learning használata](use-machine-learning-services-jupyter-notebooks.md)

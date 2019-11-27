@@ -1,19 +1,14 @@
 ---
-title: Tárolók frissítése Azure Container Instances
+title: Tároló csoportjának frissítése
 description: Megtudhatja, hogyan frissítheti a futó tárolókat a Azure Container Instances-tároló csoportjaiban.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: danlep
-ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f57ebcf050b5563b45f10af57c1721338df88ff9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307711"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533302"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Tárolók frissítése Azure Container Instances
 
@@ -76,7 +71,7 @@ Ezek a tulajdonságok a tárolók csoportjának törlését igénylik az újrate
 
 Amikor töröl egy tároló csoportot, és újból létrehozza, azt nem "újból üzembe helyezi", hanem új létrehozása szükséges. Az összes képréteget a beállításjegyzékből frissen kell húzni, nem pedig a korábbi üzemelő példány által gyorsítótárazott adatokból. Előfordulhat, hogy a tároló IP-címe is változhat, mert egy másik mögöttes gazdagépre van telepítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben többször is említettük a **Container csoportot**. Azure Container Instances összes tárolója egy tároló csoportba van telepítve, és a tárolók csoportjai több tárolót is tartalmazhatnak.
 

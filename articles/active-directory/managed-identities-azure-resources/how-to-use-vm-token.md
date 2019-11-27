@@ -1,6 +1,6 @@
 ---
-title: Use managed identities on a virtual machine to acquire access token - Azure AD
-description: Step by step instructions and examples for using managed identities for Azure resources on a virtual machines to acquire an OAuth access token.
+title: Felügyelt identitások használata virtuális gépen hozzáférési jogkivonat beszerzéséhez – Azure AD
+description: Részletes utasítások és példák egy virtuális gépen található Azure-erőforrások felügyelt identitásának használatára egy OAuth hozzáférési jogkivonat beszerzéséhez.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,56 +15,56 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14debff8baf4bdeb808b32e64b389ad0f9e2f38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232213"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547357"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>How to use managed identities for Azure resources on an Azure VM to acquire an access token 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
-This article provides various code and script examples for token acquisition, as well as guidance on important topics such as handling token expiration and HTTP errors. 
+Ez a cikk különböző kódokat és parancsfájl-példákat tartalmaz a tokenek beszerzéséhez, valamint útmutatást nyújt a fontos témakörökhöz, például a jogkivonat lejáratának és a HTTP-hibáknak a kezelésére 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-If you plan to use the Azure PowerShell examples in this article, be sure to install the latest version of [Azure PowerShell](/powershell/azure/install-az-ps).
+Ha azt tervezi, hogy a jelen cikkben szereplő Azure PowerShell példákat is használja, telepítse a [Azure PowerShell](/powershell/azure/install-az-ps)legújabb verzióját.
 
 
 > [!IMPORTANT]
-> - All sample code/script in this article assumes the client is running on a virtual machine with managed identities for Azure resources. Use the virtual machine "Connect" feature in the Azure portal, to remotely connect to your VM. For details on enabling managed identities for Azure resources on a VM, see [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md), or one of the variant articles (using PowerShell, CLI, a template, or an Azure SDK). 
+> - A cikkben szereplő összes mintakód/szkript azt feltételezi, hogy az ügyfél az Azure-erőforrások felügyelt identitásával rendelkező virtuális gépen fut. Használja a virtuális gép "kapcsolódás" funkcióját a Azure Portal, hogy távolról csatlakozhasson a virtuális GÉPHEZ. A virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezésével kapcsolatos részletekért lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrások számára a Azure Portal](qs-configure-portal-windows-vm.md)vagy az egyik varianting article (POWERSHELL, CLI, sablon vagy Azure SDK használatával). 
 
 > [!IMPORTANT]
-> - The security boundary of managed identities for Azure resources, is the resource it's being used on. All code/scripts running on a virtual machine can request and retrieve tokens for any managed identities available on it. 
+> - Az Azure-erőforrások felügyelt identitásának biztonsági határa az az erőforrás, amelyet a használ. A virtuális gépen futó összes kód/szkript kérheti és beolvashatja az összes elérhető felügyelt identitás jogkivonatát. 
 
 ## <a name="overview"></a>Áttekintés
 
-A client application can request managed identities for Azure resources [app-only access token](../develop/developer-glossary.md#access-token) for accessing a given resource. The token is [based on the managed identities for Azure resources service principal](overview.md#how-does-it-work). As such, there is no need for the client to register itself to obtain an access token under its own service principal. The token is suitable for use as a bearer token in [service-to-service calls requiring client credentials](../develop/v1-oauth2-client-creds-grant-flow.md).
+Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőforrások csak az adott erőforráshoz való [hozzáféréshez használható hozzáférési jogkivonattal](../develop/developer-glossary.md#access-token) . A jogkivonat az [Azure-erőforrások egyszerű szolgáltatásának felügyelt identitásán alapul](overview.md#how-does-the-managed-identities-for-azure-resources-work). Ezért nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat beszerzéséhez a saját egyszerű szolgáltatásnév keretében. A jogkivonat alkalmas tulajdonosi jogkivonatként használni az [ügyfél hitelesítő adatait igénylő szolgáltatások közötti hívásokban](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |
-| [Get a token using HTTP](#get-a-token-using-http) | Protocol details for managed identities for Azure resources token endpoint |
-| [Get a token using the Microsoft.Azure.Services.AppAuthentication library for .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Example of using the Microsoft.Azure.Services.AppAuthentication library from a .NET client
-| [Get a token using C#](#get-a-token-using-c) | Example of using managed identities for Azure resources REST endpoint from a C# client |
-| [Get a token using Java](#get-a-token-using-java) | Example of using managed identities for Azure resources REST endpoint from a Java client |
-| [Get a token using Go](#get-a-token-using-go) | Example of using managed identities for Azure resources REST endpoint from a Go client |
-| [Get a token using Azure PowerShell](#get-a-token-using-azure-powershell) | Example of using managed identities for Azure resources REST endpoint from a PowerShell client |
-| [Get a token using CURL](#get-a-token-using-curl) | Example of using managed identities for Azure resources REST endpoint from a Bash/CURL client |
-| Handling token caching | Guidance for handling expired access tokens |
-| [Hibakezelés](#error-handling) | Guidance for handling HTTP errors returned from the managed identities for Azure resources token endpoint |
-| [Resource IDs for Azure services](#resource-ids-for-azure-services) | Where to get resource IDs for supported Azure services |
+| [Token beszerzése HTTP használatával](#get-a-token-using-http) | Az Azure Resources jogkivonat-végponthoz tartozó felügyelt identitások protokolljának részletei |
+| [Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Példa a Microsoft. Azure. Services. AppAuthentication függvénytár .NET-ügyfélről való használatára
+| [Token beszerzése aC#](#get-a-token-using-c) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja számára egy C# ügyfélről |
+| [Token beszerzése a Javával](#get-a-token-using-java) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja számára egy Java-ügyfélből |
+| [Token beszerzése a go használatával](#get-a-token-using-go) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy go-ügyfélből |
+| [Token beszerzése Azure PowerShell használatával](#get-a-token-using-azure-powershell) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy PowerShell-ügyfélről |
+| [Token beszerzése a CURL használatával](#get-a-token-using-curl) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy bash/CURL-ügyfélből |
+| A jogkivonat gyorsítótárazásának feldolgozása | Útmutató a lejárt hozzáférési tokenek kezelésére |
+| [Hibakezelés](#error-handling) | Útmutató az Azure Resources jogkivonat-végponthoz tartozó felügyelt identitások által visszaadott HTTP-hibák kezeléséhez |
+| [Az Azure-szolgáltatások erőforrás-azonosítói](#resource-ids-for-azure-services) | Honnan kaphat erőforrás-azonosítókat a támogatott Azure-szolgáltatásokhoz |
 
-## <a name="get-a-token-using-http"></a>Get a token using HTTP 
+## <a name="get-a-token-using-http"></a>Token beszerzése HTTP használatával 
 
-The fundamental interface for acquiring an access token is based on REST, making it accessible to any client application running on the VM that can make HTTP REST calls. This is similar to the Azure AD programming model, except the client uses an endpoint on the virtual machine (vs an Azure AD endpoint).
+A hozzáférési token beszerzésének alapvető felülete a REST-alapú, így elérhetővé válik bármely, a virtuális gépen futó ügyfélalkalmazás számára, amely HTTP REST-hívásokat tesz lehetővé. Ez hasonló az Azure AD programozási modellhez, kivéve, ha az ügyfél egy végpontot használ a virtuális gépen (vs egy Azure AD-végpont).
 
-Sample request using the Azure Instance Metadata Service (IMDS) endpoint *(recommended)* :
+Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -72,16 +72,16 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `GET` | The HTTP verb, indicating you want to retrieve data from the endpoint. In this case, an OAuth access token. | 
-| `http://169.254.169.254/metadata/identity/oauth2/token` | The managed identities for Azure resources endpoint for the Instance Metadata Service. |
-| `api-version`  | A query string parameter, indicating the API version for the IMDS endpoint. Please use API version `2018-02-01` or greater. |
-| `resource` | A query string parameter, indicating the App ID URI of the target resource. It also appears in the `aud` (audience) claim of the issued token. This example requests a token to access Azure Resource Manager, which has an App ID URI of https://management.azure.com/. |
-| `Metadata` | An HTTP request header field, required by managed identities for Azure resources as a mitigation against Server Side Request Forgery (SSRF) attack. This value must be set to "true", in all lower case. |
-| `object_id` | (Optional) A query string parameter, indicating the object_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `client_id` | (Optional) A query string parameter, indicating the client_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `mi_res_id` | (Optional) A query string parameter, indicating the mi_res_id (Azure Resource ID) of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities. |
+| `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai a Instance Metadata Service számára. |
+| `api-version`  | Egy lekérdezési karakterlánc paraméter, amely a IMDS-végpont API-verzióját jelzi. Használja az API-verziót `2018-02-01` vagy újabb. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
+| `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében. |
+| `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
+| `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
+| `mi_res_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a mi_res_idét (Azure Resource ID) jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van. |
 
-Sample request using the managed identities for Azure resources VM Extension Endpoint *(planned for deprecation in January 2019)* :
+Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -90,14 +90,14 @@ Metadata: true
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `GET` | The HTTP verb, indicating you want to retrieve data from the endpoint. In this case, an OAuth access token. | 
-| `http://localhost:50342/oauth2/token` | The managed identities for Azure resources endpoint, where 50342 is the default port and is configurable. |
-| `resource` | A query string parameter, indicating the App ID URI of the target resource. It also appears in the `aud` (audience) claim of the issued token. This example requests a token to access Azure Resource Manager, which has an App ID URI of https://management.azure.com/. |
-| `Metadata` | An HTTP request header field, required by managed identities for Azure resources as a mitigation against Server Side Request Forgery (SSRF) attack. This value must be set to "true", in all lower case.|
-| `object_id` | (Optional) A query string parameter, indicating the object_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `client_id` | (Optional) A query string parameter, indicating the client_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
+| `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
+| `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
+| `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében.|
+| `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
+| `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 
-Sample response:
+Példa a válaszra:
 
 ```json
 HTTP/1.1 200 OK
@@ -115,21 +115,21 @@ Content-Type: application/json
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `access_token` | The requested access token. When calling a secured REST API, the token is embedded in the `Authorization` request header field as a "bearer" token, allowing the API to authenticate the caller. | 
-| `refresh_token` | Not used by managed identities for Azure resources. |
-| `expires_in` | The number of seconds the access token continues to be valid, before expiring, from time of issuance. Time of issuance can be found in the token's `iat` claim. |
-| `expires_on` | The timespan when the access token expires. The date is represented as the number of seconds from "1970-01-01T0:0:0Z UTC"  (corresponds to the token's `exp` claim). |
-| `not_before` | The timespan when the access token takes effect, and can be accepted. The date is represented as the number of seconds from "1970-01-01T0:0:0Z UTC" (corresponds to the token's `nbf` claim). |
-| `resource` | The resource the access token was requested for, which matches the `resource` query string parameter of the request. |
-| `token_type` | The type of token, which is a "Bearer" access token, which means the resource can give access to the bearer of this token. |
+| `access_token` | A kért hozzáférési jogkivonat. A biztonságos REST API hívásakor a jogkivonat beágyazva van a `Authorization` kérelem fejléc mezőjébe "tulajdonos" tokenként, amely lehetővé teszi az API számára a hívó hitelesítését. | 
+| `refresh_token` | Az Azure-erőforrások felügyelt identitásai nem használják. |
+| `expires_in` | Azon másodpercek száma, ameddig a hozzáférési jogkivonat továbbra is érvényben marad, a lejárat időpontja előtt. A kiállítási idő a jogkivonat `iat` jogcímében található. |
+| `expires_on` | A TimeSpan, amikor lejár a hozzáférési jogkivonat. A dátum az "1970-01-01T0:0: 0Z UTC" (a token `exp` jogcímnek felel meg) másodpercek száma. |
+| `not_before` | A TimeSpan, ha a hozzáférési jogkivonat érvénybe lép, és el lehet fogadni. A dátum az "1970-01-01T0:0: 0Z UTC" (a token `nbf` jogcímnek felel meg) másodpercek száma. |
+| `resource` | Az erőforráshoz a hozzáférési tokent kérték, amely megfelel a kérelem `resource` lekérdezési karakterlánc paraméterének. |
+| `token_type` | A token típusa, amely egy "tulajdonos" hozzáférési jogkivonat, ami azt jelenti, hogy az erőforrás hozzáférést biztosíthat a jogkivonat tulajdonosához. |
 
-## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Get a token using the Microsoft.Azure.Services.AppAuthentication library for .NET
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával
 
-For .NET applications and functions, the simplest way to work with managed identities for Azure resources is through the Microsoft.Azure.Services.AppAuthentication package. This library will also allow you to test your code locally on your development machine, using your user account from Visual Studio, the [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), or Active Directory Integrated Authentication. For more on local development options with this library, see the [Microsoft.Azure.Services.AppAuthentication reference](/azure/key-vault/service-to-service-authentication). This section shows you how to get started with the library in your code.
+A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](/azure/key-vault/service-to-service-authentication)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
 
-1. Add references to the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) and [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet packages to your application.
+1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagjaihoz az alkalmazáshoz.
 
-2.  Add the following code to your application:
+2.  Adja hozzá a következő kódot az alkalmazáshoz:
 
     ```csharp
     using Microsoft.Azure.Services.AppAuthentication;
@@ -141,9 +141,9 @@ For .NET applications and functions, the simplest way to work with managed ident
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-To learn more about Microsoft.Azure.Services.AppAuthentication and the operations it exposes, see the [Microsoft.Azure.Services.AppAuthentication reference](/azure/key-vault/service-to-service-authentication) and the [App Service and KeyVault with managed identities for Azure resources .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft. Azure. Services. AppAuthentication referenciáját](/azure/key-vault/service-to-service-authentication) , valamint a [felügyelt identitásokkal rendelkező app Service és kulcstartót az Azure-erőforrások .net-mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
-## <a name="get-a-token-using-c"></a>Get a token using C#
+## <a name="get-a-token-using-c"></a>Token beszerzése aC#
 
 ```csharp
 using System;
@@ -176,9 +176,9 @@ catch (Exception e)
 
 ```
 
-## <a name="get-a-token-using-java"></a>Get a token using Java
+## <a name="get-a-token-using-java"></a>Token beszerzése a Javával
 
-Use this [JSON library](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) to retrieve a token using Java.
+Használja ezt a [JSON-függvénytárat](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) a jogkivonatok Java használatával való lekéréséhez.
 
 ```Java
 import java.io.*;
@@ -220,7 +220,7 @@ class GetMSIToken {
 }
 ```
 
-## <a name="get-a-token-using-go"></a>Get a token using Go
+## <a name="get-a-token-using-go"></a>Token beszerzése a go használatával
 
 ```
 package main
@@ -298,18 +298,18 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Get a token using Azure PowerShell
+## <a name="get-a-token-using-azure-powershell"></a>Token beszerzése Azure PowerShell használatával
 
-The following example demonstrates how to use the managed identities for Azure resources REST endpoint from a PowerShell client to:
+Az alábbi példa bemutatja, hogyan használhatók a felügyelt identitások az Azure-erőforrások REST-végponthoz egy PowerShell-ügyfélről a következőre:
 
-1. Acquire an access token.
-2. Use the access token to call an Azure Resource Manager REST API and get information about the VM. Be sure to substitute your subscription ID, resource group name, and virtual machine name for `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`, and `<VM-NAME>`, respectively.
+1. Hozzáférési jogkivonat beszerzése.
+2. A hozzáférési token használatával meghívhat egy Azure Resource Manager REST API, és információkat kaphat a virtuális gépről. Ügyeljen arra, hogy az előfizetés-AZONOSÍTÓját, az erőforráscsoport nevét és a virtuális gép nevét a `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`és `<VM-NAME>`esetében helyettesítse.
 
 ```azurepowershell
 Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
 ```
 
-Example on how to parse the access token from the response:
+Példa a hozzáférési jogkivonat elemzésére a válaszból:
 ```azurepowershell
 # Get an access token for managed identities for Azure resources
 $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' `
@@ -325,14 +325,14 @@ echo $vmInfoRest
 
 ```
 
-## <a name="get-a-token-using-curl"></a>Get a token using CURL
+## <a name="get-a-token-using-curl"></a>Token beszerzése a CURL használatával
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
 ```
 
 
-Example on how to parse the access token from the response:
+Példa a hozzáférési jogkivonat elemzésére a válaszból:
 
 ```bash
 response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
@@ -340,69 +340,69 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The managed identities for Azure resources access token is $access_token
 ```
 
-## <a name="token-caching"></a>Token caching
+## <a name="token-caching"></a>Jogkivonat-gyorsítótárazás
 
-While the managed identities for Azure resources subsystem being used (IMDS/managed identities for Azure resources VM Extension) does cache tokens, we also recommend to implement token caching in your code. As a result, you should prepare for scenarios where the resource indicates that the token is expired. 
+Míg az Azure-erőforrásokhoz használt felügyelt identitások (az Azure-erőforrások virtuálisgép-bővítményének IMDS/felügyelt identitása) a gyorsítótár-jogkivonatokat használják, javasoljuk, hogy a token-gyorsítótárazást a kódban is implementálja. Ennek eredményeképpen elő kell készítenie azokat a forgatókönyveket, amelyekben az erőforrás azt jelzi, hogy a jogkivonat lejárt. 
 
-On-the-wire calls to Azure AD result only when:
-- cache miss occurs due to no token in the managed identities for Azure resources subsystem cache
-- the cached token is expired
+Az Azure AD-ra irányuló hívásokat csak a következő esetekben lehet bevezetni:
+- a gyorsítótár-kihagyás oka az Azure-erőforrások alrendszerének gyorsítótárában található felügyelt identitások nem rendelkeznek jogkivonat
+- a gyorsítótárazott jogkivonat lejárt
 
 ## <a name="error-handling"></a>Hibakezelés
 
-The managed identities for Azure resources endpoint signals errors via the status code field of the HTTP response message header, as either 4xx or 5xx errors:
+Az Azure-erőforrásokhoz tartozó felügyelt identitások a HTTP-válaszüzenet fejlécének állapotkód mezőjén keresztül jelentkeznek a 4xx vagy 5xx hibák esetén:
 
-| Status Code | Error Reason | How To Handle |
+| Állapotkód | Hiba oka | Kezelés |
 | ----------- | ------------ | ------------- |
-| 404 Not found. | IMDS endpoint is updating. | Retry with Expontential Backoff. See guidance below. |
-| 429 Too many requests. |  IMDS Throttle limit reached. | Retry with Exponential Backoff. See guidance below. |
-| 4xx Error in request. | One or more of the request parameters was incorrect. | Do not retry.  Examine the error details for more information.  4xx errors are design-time errors.|
-| 5xx Transient error from service. | The managed identities for Azure resources sub-system or Azure Active Directory returned a transient error. | It is safe to retry after waiting for at least 1 second.  If you retry too quickly or too often, IMDS and/or Azure AD may return a rate limit error (429).|
-| timeout | IMDS endpoint is updating. | Retry with Expontential Backoff. See guidance below. |
+| 404 nem található. | A IMDS-végpont frissítése folyamatban van. | Próbálkozzon újra a expontential leállítási. Lásd az alábbi útmutatást. |
+| 429 túl sok kérés. |  Elérte a IMDS szabályozási korlátot. | Próbálja megismételni az exponenciális leállítási. Lásd az alábbi útmutatást. |
+| 4xx hiba a kérelemben. | Egy vagy több kérelem paramétere helytelen volt. | Ne próbálkozzon újra.  További információért tekintse meg a hiba részleteit.  a 4xx hibák a tervezési idejű hibák.|
+| 5xx átmeneti hiba történt a szolgáltatástól. | Az Azure-erőforrások alrendszerhez vagy Azure Active Directory felügyelt identitása átmeneti hibát adott vissza. | Az újrapróbálkozást legalább 1 másodperc várakozás után érdemes elvégezni.  Ha túl gyorsan vagy túl gyakran próbálkozik újra, a IMDS és/vagy az Azure AD-re vonatkozó korlátozási hiba léphet fel (429).|
+| timeout | A IMDS-végpont frissítése folyamatban van. | Próbálkozzon újra a expontential leállítási. Lásd az alábbi útmutatást. |
 
-If an error occurs, the corresponding HTTP response body contains JSON with the error details:
+Ha hiba történik, a megfelelő HTTP-válasz törzse JSON-t tartalmaz a hiba részleteivel:
 
 | Elem | Leírás |
 | ------- | ----------- |
-| error   | Error identifier. |
-| error_description | Verbose description of error. **Error descriptions can change at any time. Do not write code that branches based on values in the error description.**|
+| error   | Hiba azonosítója. |
+| error_description | Hiba részletes leírása. **A hibákkal kapcsolatos leírások bármikor megváltoztathatók. Ne írjon olyan kódot, amely az ágakat a hiba leírásában szereplő értékek alapján írja.**|
 
-### <a name="http-response-reference"></a>HTTP response reference
+### <a name="http-response-reference"></a>HTTP-válasz referenciája
 
-This section documents the possible error responses. A "200 OK" status is a successful response, and the access token is contained in the response body JSON, in the access_token element.
+Ez a szakasz a lehetséges hibákra adott válaszokat dokumentálja. A "200 OK" állapot sikeres válasz, és a hozzáférési jogkivonat a Válasz törzs JSON-ban található, a access_token elemben.
 
-| Állapotkód | Hiba | Error Description | Megoldás |
+| Állapotkód | Hiba | Hiba leírása | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Bad Request | invalid_resource | AADSTS50001: The application named *\<URI\>* was not found in the tenant named *\<TENANT-ID\>* . This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You might have sent your authentication request to the wrong tenant.\ | (Linux only) |
-| 400 Bad Request | bad_request_102 | Required metadata header not specified | Either the `Metadata` request header field is missing from your request, or is formatted incorrectly. The value must be specified as `true`, in all lower case. See the "Sample request" in the preceding REST section for an example.|
-| 401 Unauthorized | unknown_source | Unknown Source *\<URI\>* | Verify that your HTTP GET request URI is formatted correctly. The `scheme:host/resource-path` portion must be specified as `http://localhost:50342/oauth2/token`. See the "Sample request" in the preceding REST section for an example.|
-|           | invalid_request | The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed. |  |
-|           | unauthorized_client | The client is not authorized to request an access token using this method. | Caused by a request that didn’t use local loopback to call the extension, or on a VM that doesn’t have managed identities for Azure resources configured correctly. See [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md) if you need assistance with VM configuration. |
-|           | access_denied | The resource owner or authorization server denied the request. |  |
-|           | unsupported_response_type | The authorization server does not support obtaining an access token using this method. |  |
-|           | invalid_scope | The requested scope is invalid, unknown, or malformed. |  |
-| 500 Internal server error | unknown | Failed to retrieve token from the Active directory. For details see logs in *\<file path\>* | Verify that managed identities for Azure resources has been enabled on the VM. See [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md) if you need assistance with VM configuration.<br><br>Also verify that your HTTP GET request URI is formatted correctly, particularly the resource URI specified in the query string. See the "Sample request" in the preceding REST section for an example, or [Azure services that support Azure AD authentication](services-support-msi.md) for a list of services and their respective resource IDs.
+| 400 hibás kérelem | invalid_resource | AADSTS50001: a *\<URI\>* nevű alkalmazás nem található a (z) *\<bérlő-azonosító\>* nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldték a hitelesítési kérelmet. \ | (Csak Linux) |
+| 400 hibás kérelem | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | A kérelemből hiányzik a `Metadata`-kérelem fejléce mező, vagy helytelenül van formázva. Az értéket `true`ként kell megadni, az összes kisbetű esetében. Példaként tekintse meg a "minta kérés" szakaszt az előző REST szakaszban.|
+| 401 jogosulatlan | unknown_source | Ismeretlen forrás *\<URI\>* | Ellenőrizze, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva. A `scheme:host/resource-path` részt `http://localhost:50342/oauth2/token`ként kell megadni. Példaként tekintse meg a "minta kérés" szakaszt az előző REST szakaszban.|
+|           | invalid_request | A kérelemből hiányzik egy kötelező paraméter, a paraméter értéke érvénytelen, a paraméter többször is szerepel, vagy más módon helytelen formátumú. |  |
+|           | unauthorized_client | Az ügyfél nem jogosult hozzáférési jogkivonat igénylésére a metódus használatával. | Olyan kérelem okozta, amely nem használ helyi visszacsatolást a bővítmény meghívásához, vagy olyan virtuális gépen, amely nem rendelkezik felügyelt identitásokkal az Azure-erőforrásokhoz megfelelően konfigurálva. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört. |
+|           | access_denied | Az erőforrás-tulajdonos vagy az engedélyezési kiszolgáló megtagadta a kérelmet. |  |
+|           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja hozzáférési jogkivonat beszerzését ezzel a módszerrel. |  |
+|           | invalid_scope | A kért hatókör érvénytelen, ismeretlen vagy helytelen formátumú. |  |
+| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a tokent az Active Directoryból. Részletekért lásd: *\<fájl elérési útjának naplófájljai\>* | Ellenőrizze, hogy az Azure-erőforrásokhoz tartozó felügyelt identitások engedélyezve lettek-e a virtuális gépen. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.<br><br>Ellenőrizze azt is, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva, különösen a lekérdezési karakterláncban megadott erőforrás-URI-t. Tekintse meg a "minta kérést" az előző REST szakaszban, vagy az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) a szolgáltatások és a hozzájuk tartozó erőforrás-azonosítók listájához.
 
-## <a name="retry-guidance"></a>Retry guidance 
+## <a name="retry-guidance"></a>Újrapróbálkozási útmutató 
 
-It is recommended to retry if you receive a 404, 429, or 5xx error code (see [Error handling](#error-handling) above).
+Javasoljuk, hogy próbálkozzon újra, ha 404, 429 vagy 5xx hibakódot kap (lásd a fenti [hibakódot](#error-handling) ).
 
-Throttling limits apply to the number of calls made to the IMDS endpoint. When the throttling threshold is exceeded, IMDS endpoint limits any further requests while the throttle is in effect. During this period, the IMDS endpoint will return the HTTP status code 429 ("Too many requests"), and the requests fail. 
+A szabályozás korlátozásai az IMDS-végponton végrehajtott hívások számára vonatkoznak. Ha túllépi a sávszélesség-szabályozási küszöbértéket, a IMDS végpontja korlátozza a további kérelmeket, amíg a szabályozás érvényben van. Ebben az időszakban a IMDS-végpont a 429-as HTTP-állapotkódot ("túl sok kérelem") adja vissza, és a kérések sikertelenek lesznek. 
 
-For retry, we recommend the following strategy: 
+Az újrapróbálkozáshoz a következő stratégiát javasoljuk: 
 
-| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
+| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működés** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
+|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
 
-## <a name="resource-ids-for-azure-services"></a>Resource IDs for Azure services
+## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 
-See [Azure services that support Azure AD authentication](services-support-msi.md) for a list of resources that support Azure AD and have been tested with managed identities for Azure resources, and their respective resource IDs.
+Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- To enable managed identities for Azure resources on an Azure VM, see [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md).
+- Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Restrict access with a virtual network
-description: Allow access to an Azure container registry only from resources in an Azure virtual network or from public IP address ranges.
+title: Virtuális hálózattal való hozzáférés korlátozása
+description: Csak Azure-beli virtuális hálózat vagy nyilvános IP-címtartományok erőforrásaihoz való hozzáférés engedélyezése az Azure Container registryben.
 ms.topic: article
 ms.date: 07/01/2019
 ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
@@ -10,36 +10,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454328"
 ---
-# <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Restrict access to an Azure container registry using an Azure virtual network or firewall rules
+# <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure Container Registry-hozzáférés korlátozása Azure-beli virtuális hálózati vagy tűzfalszabályok használatával
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) provides secure, private networking for your Azure and on-premises resources. By limiting access to your private Azure container registry from an Azure virtual network, you ensure that only resources in the virtual network access the registry. For cross-premises scenarios, you can also configure firewall rules to allow registry access only from specific IP addresses.
+Az [azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos, privát hálózatkezelést biztosít az Azure-hoz és a helyszíni erőforrásokhoz. Ha egy Azure-beli virtuális hálózatról korlátozza a privát Azure Container registryhez való hozzáférést, győződjön meg arról, hogy csak a virtuális hálózat erőforrásai férnek hozzá a beállításjegyzékhez. A létesítmények közötti forgatókönyvek esetében a tűzfalszabályok konfigurálásával is engedélyezhető, hogy a beállításjegyzék-hozzáférés csak adott IP-címekről legyen elérhető.
 
-This article shows two scenarios to configure inbound network access rules on a container registry: from a virtual machine deployed in a virtual network, or from a VM's public IP address.
+Ez a cikk két forgatókönyvet mutat be a bejövő hálózati hozzáférési szabályok konfigurálásához egy tároló-beállításjegyzékben: egy virtuális hálózaton üzembe helyezett virtuális gépről vagy egy virtuális gép nyilvános IP-címéről.
 
 > [!IMPORTANT]
-> This feature is currently in preview, and some [limitations apply](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
-If instead you need to set up access rules for resources to reach a container registry from behind a firewall, see [Configure rules to access an Azure container registry behind a firewall](container-registry-firewall-access-rules.md).
+Ha ehelyett olyan hozzáférési szabályokat kell beállítania az erőforrásokhoz, amelyek egy tároló-beállításjegyzéket érnek el a tűzfal mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.
 
 
-## <a name="preview-limitations"></a>Preview limitations
+## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Only a **Premium** container registry can be configured with network access rules. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md). 
+* Csak a **prémium** szintű tároló-beállításjegyzék konfigurálható a hálózati hozzáférési szabályokkal. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban. 
 
-* Only an [Azure Kubernetes Service](../aks/intro-kubernetes.md) cluster or Azure [virtual machine](../virtual-machines/linux/overview.md) can be used as a host to access a container registry in a virtual network. *Other Azure services including Azure Container Instances aren't currently supported.*
+* Csak egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -fürt vagy Azure-beli [virtuális gép](../virtual-machines/linux/overview.md) használható gazdagépként egy virtuális hálózatban lévő tároló-beállításjegyzék eléréséhez. *Más Azure-szolgáltatások, többek között a Azure Container Instances jelenleg nem támogatottak.*
 
-* [ACR Tasks](container-registry-tasks-overview.md) operations aren't currently supported in a container registry accessed in a virtual network.
+* Az [ACR-feladatok](container-registry-tasks-overview.md) műveletei jelenleg nem támogatottak egy virtuális hálózaton keresztül elért tároló-beállításjegyzékben.
 
-* Each registry supports a maximum of 100 virtual network rules.
+* Mindegyik beállításjegyzék legfeljebb 100 virtuális hálózati szabályt támogat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* To use the Azure CLI steps in this article, Azure CLI version 2.0.58 or later is required. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+* A cikkben szereplő Azure CLI-lépések használatához az Azure CLI 2.0.58 vagy újabb verziójára van szükség. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-* If you don't already have a container registry, create one (Premium SKU required) and push a sample image such as `hello-world` from Docker Hub. For example, use the [Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] to create a registry. 
+* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium SKU szükséges), és küldjön le egy minta rendszerképet, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
 
-* If you want to restrict registry access using a virtual network in a different Azure subscription, you need to register the resource provider for Azure Container Registry in that subscription. Példa:
+* Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -47,33 +47,33 @@ If instead you need to set up access rules for resources to reach a container re
   az provider register --namespace Microsoft.ContainerRegistry
   ``` 
 
-## <a name="about-network-rules-for-a-container-registry"></a>About network rules for a container registry
+## <a name="about-network-rules-for-a-container-registry"></a>A tároló-beállításjegyzék hálózati szabályai
 
-An Azure container registry by default accepts connections over the internet from hosts on any network. With a virtual network, you can allow only Azure resources such as an AKS cluster or Azure VM to securely access the registry, without crossing a network boundary. You can also configure network firewall rules to allow only specific public internet IP address ranges. 
+Az Azure Container Registry alapértelmezés szerint minden hálózaton fogadja az interneten keresztüli kapcsolatokat. A virtuális hálózat lehetővé teszi, hogy csak az Azure-erőforrások, például az AK-fürtök vagy az Azure-beli virtuális gépek számára engedélyezze a beállításjegyzék biztonságos elérését anélkül, hogy áthalad egy hálózati határt. A hálózati tűzfalszabályok úgy is konfigurálhatók, hogy csak bizonyos nyilvános internetes IP-címtartományt engedélyezzen. 
 
-To limit access to a registry, first change the default action of the registry so that it denies all network connections. Then, add network access rules. Clients granted access via the network rules must continue to [authenticate to the container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) and be authorized to access the data.
+A beállításjegyzékhez való hozzáférés korlátozásához először módosítsa a beállításjegyzék alapértelmezett műveletét, hogy az megtagadja az összes hálózati kapcsolatot. Ezután adja hozzá a hálózati hozzáférési szabályokat. A hálózati szabályokon keresztül hozzáférési jogosultsággal rendelkező ügyfeleknek továbbra is [hitelesíteniük kell magukat a tároló-beállításjegyzékben](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) , és engedélyezni kell az adatelérést.
 
-### <a name="service-endpoint-for-subnets"></a>Service endpoint for subnets
+### <a name="service-endpoint-for-subnets"></a>Alhálózatok szolgáltatási végpontja
 
-To allow access from a subnet in a virtual network, you need to add a [service endpoint](../virtual-network/virtual-network-service-endpoints-overview.md) for the Azure Container Registry service. 
+A virtuális hálózatban lévő alhálózatok elérésének engedélyezéséhez hozzá kell adnia egy [szolgáltatási végpontot](../virtual-network/virtual-network-service-endpoints-overview.md) a Azure Container Registry szolgáltatáshoz. 
 
-Multi-tenant services, like Azure Container Registry, use a single set of IP addresses for all customers. A service endpoint assigns an endpoint to access a registry. This endpoint gives traffic an optimal route to the resource over the Azure backbone network. The identities of the virtual network and the subnet are also transmitted with each request.
+Több-bérlős szolgáltatás, például Azure Container Registry, egyetlen IP-címet használhat az összes ügyfél számára. Egy szolgáltatási végpont hozzárendel egy végpontot a beállításjegyzék eléréséhez. Ez a végpont optimális útvonalat biztosít az erőforrásnak az Azure gerinc hálózaton keresztül. Minden egyes kérelemmel is továbbítja az identitások, a virtuális hálózatot és alhálózatot.
 
 ### <a name="firewall-rules"></a>Tűzfalszabályok
 
-For IP network rules, provide allowed internet address ranges using CIDR notation such as *16.17.18.0/24* or an individual IP addresses like *16.17.18.19*. IP network rules are only allowed for *public* internet IP addresses. IP address ranges reserved for private networks (as defined in RFC 1918) aren't allowed in IP rules.
+IP-hálózati szabályok esetén a CIDR-jelöléssel, például a *16.17.18.0/24* , vagy egy olyan egyedi IP-címmel adja meg az engedélyezett internetes címtartományt, mint a *16.17.18.19*. Az IP-hálózati szabályok csak a *nyilvános* internetes IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az RFC 1918-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban.
 
-## <a name="create-a-docker-enabled-virtual-machine"></a>Create a Docker-enabled virtual machine
+## <a name="create-a-docker-enabled-virtual-machine"></a>Docker-kompatibilis virtuális gép létrehozása
 
-For this article, use a Docker-enabled Ubuntu VM to access an Azure container registry. To use Azure Active Directory authentication to the registry, also install the [Azure CLI][azure-cli] on the VM. If you already have an Azure virtual machine, skip this creation step.
+Ehhez a cikkhez egy Docker-kompatibilis Ubuntu virtuális gépet használhat egy Azure Container Registry eléréséhez. Ha Azure Active Directory hitelesítést kíván használni a beállításjegyzékben, telepítse az [Azure CLI][azure-cli] -t is a virtuális gépre. Ha már rendelkezik Azure-beli virtuális géppel, ugorja át ezt a létrehozási lépést.
 
-You may use the same resource group for your virtual machine and your container registry. This setup simplifies clean-up at the end but isn't required. If you choose to create a separate resource group for the virtual machine and virtual network, run [az group create][az-group-create]. The following example creates a resource group named *myResourceGroup* in the *westcentralus* location:
+Használhatja ugyanazt az erőforráscsoportot a virtuális géphez és a tároló-beállításjegyzékhez is. Ez a beállítás leegyszerűsíti a tisztítást a végén, de nem kötelező. Ha úgy dönt, hogy külön erőforráscsoportot hoz létre a virtuális géphez és a virtuális hálózathoz, futtassa az [az Group Create][az-group-create]parancsot. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Now deploy a default Ubuntu Azure virtual machine with [az vm create][az-vm-create]. The following example creates a VM named *myDockerVM*:
+Most helyezzen üzembe egy alapértelmezett Ubuntu Azure-beli virtuális gépet az [az VM Create][az-vm-create]paranccsal. A következő példa egy *myDockerVM*nevű virtuális gépet hoz létre:
 
 ```azurecli
 az vm create \
@@ -84,23 +84,23 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása néhány percig tart. When the command completes, take note of the `publicIpAddress` displayed by the Azure CLI. Use this address to make SSH connections to the VM, and optionally for later setup of firewall rules.
+A virtuális gép létrehozása néhány percig tart. Ha a parancs befejeződik, jegyezze fel az Azure CLI által megjelenített `publicIpAddress`. Ez a címe teszi elérhetővé SSH-kapcsolatokat a virtuális géppel, és opcionálisan a tűzfalszabályok későbbi beállításához.
 
-### <a name="install-docker-on-the-vm"></a>Install Docker on the VM
+### <a name="install-docker-on-the-vm"></a>A Docker telepítése a virtuális gépre
 
-After the VM is running, make an SSH connection to the VM. Replace *publicIpAddress* with the public IP address of your VM.
+A virtuális gép futása után létesítsen SSH-kapcsolatokat a virtuális géppel. Cserélje le a *publicIpAddress* -t a virtuális gép nyilvános IP-címére.
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-Run the following command to install Docker on the Ubuntu VM:
+Futtassa a következő parancsot a Docker telepítéséhez az Ubuntu virtuális gépen:
 
 ```bash
 sudo apt install docker.io -y
 ```
 
-After installation, run the following command to verify that Docker is running properly on the VM:
+A telepítés után futtassa a következő parancsot annak ellenőrzéséhez, hogy a Docker megfelelően fut-e a virtuális gépen:
 
 ```bash
 sudo docker run -it hello-world
@@ -116,19 +116,19 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Follow the steps in [Install Azure CLI with apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) to install the Azure CLI on your Ubuntu virtual machine. For this article, ensure that you install version 2.0.58 or later.
+Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) való telepítésének lépéseit. Ehhez a cikkhez győződjön meg arról, hogy a 2.0.58 vagy újabb verzióját telepíti.
 
-Exit the SSH connection.
+Lépjen ki az SSH-kapcsolatban.
 
-## <a name="allow-access-from-a-virtual-network"></a>Allow access from a virtual network
+## <a name="allow-access-from-a-virtual-network"></a>Virtuális hálózatról való hozzáférés engedélyezése
 
-In this section, configure your container registry to allow access from a subnet in an Azure virtual network. Equivalent steps using the Azure CLI and Azure portal are provided.
+Ebben a szakaszban úgy konfigurálja a tároló-beállításjegyzéket, hogy engedélyezze a hozzáférést egy Azure-beli virtuális hálózat alhálózatán. Az Azure CLI és a Azure Portal használatával egyenértékű lépések vannak megadva.
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>Allow access from a virtual network - CLI
+### <a name="allow-access-from-a-virtual-network---cli"></a>Virtuális hálózatról való hozzáférés engedélyezése – parancssori felület
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>Add a service endpoint to a subnet
+#### <a name="add-a-service-endpoint-to-a-subnet"></a>Szolgáltatási végpont hozzáadása egy alhálózathoz
 
-When you create a VM, Azure by default creates a virtual network in the same resource group. The name of the virtual network is based on the name of the virtual machine. For example, if you name your virtual machine *myDockerVM*, the default virtual network name is *myDockerVMVNET*, with a subnet named *myDockerVMSubnet*. Verify this in the Azure portal or by using the [az network vnet list][az-network-vnet-list] command:
+Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM*nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, és egy *myDockerVMSubnet*nevű alhálózattal rendelkezik. Ellenőrizze ezt a Azure Portalban vagy az az [Network vnet List][az-network-vnet-list] parancs használatával:
 
 ```azurecli
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
@@ -145,7 +145,7 @@ Kimenet:
 ]
 ```
 
-Use the [az network vnet subnet update][az-network-vnet-subnet-update] command to add a **Microsoft.ContainerRegistry** service endpoint to your subnet. Substitute the names of your virtual network and subnet in the following command:
+Az az [Network vnet subnet Update][az-network-vnet-subnet-update] paranccsal adhat hozzá **Microsoft. ContainerRegistry** szolgáltatási végpontot az alhálózathoz. Helyettesítse be a virtuális hálózat és az alhálózat nevét a következő parancsban:
 
 ```azurecli
 az network vnet subnet update \
@@ -155,7 +155,7 @@ az network vnet subnet update \
   --service-endpoints Microsoft.ContainerRegistry
 ```
 
-Use the [az network vnet subnet show][az-network-vnet-subnet-show] command to retrieve the resource ID of the subnet. You need this in a later step to configure a network access rule.
+Az alhálózat erőforrás-AZONOSÍTÓjának lekéréséhez használja az az [Network vnet subnet show][az-network-vnet-subnet-show] parancsot. Ezt egy későbbi lépésben kell konfigurálnia egy hálózati hozzáférési szabály konfigurálásához.
 
 ```azurecli
 az network vnet subnet show \
@@ -172,72 +172,72 @@ Kimenet:
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>Change default network access to registry
+#### <a name="change-default-network-access-to-registry"></a>A beállításjegyzék alapértelmezett hálózati hozzáférésének módosítása
 
-By default, an Azure container registry allows connections from hosts on any network. To limit access to a selected network, change the default action to deny access. Substitute the name of your registry in the following [az acr update][az-acr-update] command:
+Alapértelmezés szerint az Azure Container Registry lehetővé teszi, hogy bármely hálózaton a gazdagépek kapcsolatai legyenek. A kiválasztott hálózathoz való hozzáférés korlátozásához módosítsa az alapértelmezett műveletet, hogy megtagadja a hozzáférést. Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az-acr-update] paranccsal:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Add network rule to registry
+#### <a name="add-network-rule-to-registry"></a>Hálózati szabály hozzáadása a beállításjegyzékhez
 
-Use the [az acr network-rule add][az-acr-network-rule-add] command to add a network rule to your registry that allows access from the VM's subnet. Substitute the container registry's name and the resource ID of the subnet in the following command: 
+Az az [ACR Network-Rule Add][az-acr-network-rule-add] paranccsal adhat hozzá egy hálózati szabályt a beállításjegyzékhez, amely lehetővé teszi a virtuális gép alhálózatának elérését. Helyettesítse be a tároló beállításjegyzékének nevét és az alhálózat erőforrás-AZONOSÍTÓját a következő parancsban: 
 
  ```azurecli
 az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 ```
 
-Continue to [Verify access to the registry](#verify-access-to-the-registry).
+Folytassa [a beállításjegyzékhez való hozzáférés ellenőrzésével](#verify-access-to-the-registry).
 
-### <a name="allow-access-from-a-virtual-network---portal"></a>Allow access from a virtual network - portal
+### <a name="allow-access-from-a-virtual-network---portal"></a>Virtuális hálózatról való hozzáférés engedélyezése – portál
 
-#### <a name="add-service-endpoint-to-subnet"></a>Add service endpoint to subnet
+#### <a name="add-service-endpoint-to-subnet"></a>Szolgáltatási végpont hozzáadása az alhálózathoz
 
-When you create a VM, Azure by default creates a virtual network in the same resource group. The name of the virtual network is based on the name of the virtual machine. For example, if you name your virtual machine *myDockerVM*, the default virtual network name is *myDockerVMVNET*, with a subnet named *myDockerVMSubnet*.
+Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM*nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, és egy *myDockerVMSubnet*nevű alhálózattal rendelkezik.
 
-To add a service endpoint for Azure Container Registry to a subnet:
+Szolgáltatási végpont hozzáadása Azure Container Registry alhálózathoz:
 
-1. In the search box at the top of the [Azure portal][azure-portal], enter *virtual networks*. When **Virtual networks** appear in the search results, select it.
-1. From the list of virtual networks, select the virtual network where your virtual machine is deployed, such as *myDockerVMVNET*.
-1. Under **Settings**, select **Subnets**.
-1. Select the subnet where your virtual machine is deployed, such as *myDockerVMSubnet*.
-1. Under **Service endpoints**, select **Microsoft.ContainerRegistry**.
+1. A [Azure Portal][azure-portal]tetején található keresőmezőbe írja be a *virtuális hálózatok*kifejezést. Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
+1. A virtuális hálózatok listájából válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*.
+1. A **Beállítások**területen válassza az **alhálózatok**lehetőséget.
+1. Válassza ki azt az alhálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMSubnet*.
+1. A **szolgáltatási végpontok**területen válassza a **Microsoft. ContainerRegistry**elemet.
 1. Kattintson a **Mentés** gombra.
 
-![Add service endpoint to subnet][acr-subnet-service-endpoint] 
+![Szolgáltatási végpont hozzáadása az alhálózathoz][acr-subnet-service-endpoint] 
 
-#### <a name="configure-network-access-for-registry"></a>Configure network access for registry
+#### <a name="configure-network-access-for-registry"></a>Hálózati hozzáférés konfigurálása a beállításjegyzékhez
 
-By default, an Azure container registry allows connections from hosts on any network. To limit access to the virtual network:
+Alapértelmezés szerint az Azure Container Registry lehetővé teszi, hogy bármely hálózaton a gazdagépek kapcsolatai legyenek. A virtuális hálózathoz való hozzáférés korlátozása:
 
-1. In the portal, navigate to your container registry.
-1. Under **Settings**, select **Firewall and virtual networks**.
-1. To deny access by default, choose to allow access from **Selected networks**. 
-1. Select **Add existing virtual network**, and select the virtual network and subnet you configured with a service endpoint. Válassza a **Hozzáadás** lehetőséget.
+1. A portálon navigáljon a tároló-beállításjegyzékhez.
+1. A **Beállítások**területen válassza a **tűzfal és a virtuális hálózatok**lehetőséget.
+1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból**való hozzáférés engedélyezése lehetőséget. 
+1. Válassza a **meglévő virtuális hálózat hozzáadása**lehetőséget, majd válassza ki azt a virtuális hálózatot és alhálózatot, amelyet szolgáltatási végponttal konfigurált. Válassza a **Hozzáadás** lehetőséget.
 1. Kattintson a **Mentés** gombra.
 
-![Configure virtual network for container registry][acr-vnet-portal]
+![Virtuális hálózat konfigurálása a tároló-beállításjegyzékhez][acr-vnet-portal]
 
-Continue to [Verify access to the registry](#verify-access-to-the-registry).
+Folytassa [a beállításjegyzékhez való hozzáférés ellenőrzésével](#verify-access-to-the-registry).
 
-## <a name="allow-access-from-an-ip-address"></a>Allow access from an IP address
+## <a name="allow-access-from-an-ip-address"></a>IP-címről való hozzáférés engedélyezése
 
-In this section, configure your container registry to allow access from a specific IP address or range. Equivalent steps using the Azure CLI and Azure portal are provided.
+Ebben a szakaszban úgy konfigurálja a tároló-beállításjegyzéket, hogy egy adott IP-címről vagy-tartományból engedélyezze a hozzáférést. Az Azure CLI és a Azure Portal használatával egyenértékű lépések vannak megadva.
 
-### <a name="allow-access-from-an-ip-address---cli"></a>Allow access from an IP address - CLI
+### <a name="allow-access-from-an-ip-address---cli"></a>Hozzáférés engedélyezése IP-címről – parancssori felület
 
-#### <a name="change-default-network-access-to-registry"></a>Change default network access to registry
+#### <a name="change-default-network-access-to-registry"></a>A beállításjegyzék alapértelmezett hálózati hozzáférésének módosítása
 
-If you haven't already done so, update the registry configuration to deny access by default. Substitute the name of your registry in the following [az acr update][az-acr-update] command:
+Ha még nem tette meg, frissítse a beállításjegyzék konfigurációját, hogy alapértelmezés szerint megtagadja a hozzáférést. Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az-acr-update] paranccsal:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="remove-network-rule-from-registry"></a>Remove network rule from registry
+#### <a name="remove-network-rule-from-registry"></a>Hálózati szabály eltávolítása a beállításjegyzékből
 
-If you previously added a network rule to allow access from the VM's subnet, remove the subnet's service endpoint and the network rule. Substitute the container registry's name and the resource ID of the subnet you retrieved in an earlier step in the [az acr network-rule remove][az-acr-network-rule-remove] command: 
+Ha korábban olyan hálózati szabályt adott hozzá, amely engedélyezi a hozzáférést a virtuális gép alhálózatáról, távolítsa el az alhálózat szolgáltatási végpontját és a hálózati szabályt. Helyettesítse be a tároló beállításjegyzékének nevét és annak az alhálózatnak az erőforrás-AZONOSÍTÓját, amelyet az az [ACR Network-Rule Remove][az-acr-network-rule-remove] paranccsal egy korábbi lépésben kapott le: 
 
 ```azurecli
 # Remove service endpoint
@@ -253,87 +253,87 @@ az network vnet subnet update \
 az acr network-rule remove --name mycontainerregistry --subnet <subnet-resource-id>
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Add network rule to registry
+#### <a name="add-network-rule-to-registry"></a>Hálózati szabály hozzáadása a beállításjegyzékhez
 
-Use the [az acr network-rule add][az-acr-network-rule-add] command to add a network rule to your registry that allows access from the VM's IP address. Substitute the container registry's name and the public IP address of the VM in the following command.
+Az az [ACR Network-Rule Add][az-acr-network-rule-add] paranccsal adhat hozzá egy hálózati szabályt a beállításjegyzékhez, amely lehetővé teszi a virtuális gép IP-címének elérését. Helyettesítse be a tároló beállításjegyzékének nevét és a virtuális gép nyilvános IP-címét a következő parancsban.
 
 ```azurecli
 az acr network-rule add --name mycontainerregistry --ip-address <public-IP-address>
 ```
 
-Continue to [Verify access to the registry](#verify-access-to-the-registry).
+Folytassa [a beállításjegyzékhez való hozzáférés ellenőrzésével](#verify-access-to-the-registry).
 
-### <a name="allow-access-from-an-ip-address---portal"></a>Allow access from an IP address - portal
+### <a name="allow-access-from-an-ip-address---portal"></a>Hozzáférés engedélyezése IP-címről – portál
 
-#### <a name="remove-existing-network-rule-from-registry"></a>Remove existing network rule from registry
+#### <a name="remove-existing-network-rule-from-registry"></a>Meglévő hálózati szabály eltávolítása a beállításjegyzékből
 
-If you previously added a network rule to allow access from the VM's subnet, remove the existing rule. Skip this section if you want to access the registry from a different VM.
+Ha korábban olyan hálózati szabályt adott hozzá, amely engedélyezi a hozzáférést a virtuális gép alhálózatáról, távolítsa el a meglévő szabályt. Ugorja át ezt a szakaszt, ha egy másik virtuális gépről szeretné elérni a beállításjegyzéket.
 
-* Update the subnet settings to remove the subnet's service endpoint for Azure Container Registry. 
+* Frissítse az alhálózat beállításait az alhálózat szolgáltatási végpontjának Azure Container Registry való eltávolításához. 
 
-  1. In the [Azure portal][azure-portal], navigate to the virtual network where your virtual machine is deployed.
-  1. Under **Settings**, select **Subnets**.
-  1. Select the subnet where your virtual machine is deployed.
-  1. Under **Service endpoints**, remove the checkbox for **Microsoft.ContainerRegistry**. 
+  1. A [Azure Portal][azure-portal]navigáljon ahhoz a virtuális hálózathoz, amelyen a virtuális gép telepítve van.
+  1. A **Beállítások**területen válassza az **alhálózatok**lehetőséget.
+  1. Válassza ki azt az alhálózatot, amelybe a virtuális gép telepítve van.
+  1. A **szolgáltatási végpontok**területen távolítsa el a **Microsoft. ContainerRegistry**jelölőnégyzetét. 
   1. Kattintson a **Mentés** gombra.
 
-* Remove the network rule that allows the subnet to access the registry.
+* Távolítsa el azt a hálózati szabályt, amely lehetővé teszi az alhálózat számára a beállításjegyzék elérését.
 
-  1. In the portal, navigate to your container registry.
-  1. Under **Settings**, select **Firewall and virtual networks**.
-  1. Under **Virtual networks**, select the name of the virtual network, and then select **Remove**.
+  1. A portálon navigáljon a tároló-beállításjegyzékhez.
+  1. A **Beállítások**területen válassza a **tűzfal és a virtuális hálózatok**lehetőséget.
+  1. A **virtuális hálózatok**területen válassza ki a virtuális hálózat nevét, majd válassza az **Eltávolítás**lehetőséget.
   1. Kattintson a **Mentés** gombra.
 
-#### <a name="add-network-rule-to-registry"></a>Add network rule to registry
+#### <a name="add-network-rule-to-registry"></a>Hálózati szabály hozzáadása a beállításjegyzékhez
 
-1. In the portal, navigate to your container registry.
-1. Under **Settings**, select **Firewall and virtual networks**.
-1. If you haven't already done so, choose to allow access from **Selected networks**. 
-1. Under **Virtual networks**, ensure no network is selected.
-1. Under **Firewall**, enter the public IP address of a VM. Or, enter an address range in CIDR notation that contains the VM's IP address.
+1. A portálon navigáljon a tároló-beállításjegyzékhez.
+1. A **Beállítások**területen válassza a **tűzfal és a virtuális hálózatok**lehetőséget.
+1. Ha még nem tette meg, válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból**lehetőséget. 
+1. A **virtuális hálózatok**területen győződjön meg arról, hogy nincs kiválasztva hálózat.
+1. A **tűzfal**területen adja meg egy virtuális gép nyilvános IP-címét. Vagy adjon meg egy címtartományt a CIDR-jelölésben, amely a virtuális gép IP-címét tartalmazza.
 1. Kattintson a **Mentés** gombra.
 
-![Configure firewall rule for container registry][acr-vnet-firewall-portal]
+![Tűzfalszabály konfigurálása a tároló-beállításjegyzékhez][acr-vnet-firewall-portal]
 
-Continue to [Verify access to the registry](#verify-access-to-the-registry).
+Folytassa [a beállításjegyzékhez való hozzáférés ellenőrzésével](#verify-access-to-the-registry).
 
-## <a name="verify-access-to-the-registry"></a>Verify access to the registry
+## <a name="verify-access-to-the-registry"></a>A beállításjegyzékhez való hozzáférés ellenőrzése
 
-After waiting a few minutes for the configuration to update, verify that the VM can access the container registry. Make an SSH connection to your VM, and run the [az acr login][az-acr-login] command to login to your registry. 
+Néhány perc várakozás után a konfiguráció frissítését követően ellenőrizze, hogy a virtuális gép hozzáférhet-e a tároló-beállításjegyzékhez. Létesítsen SSH-kapcsolatokat a virtuális géppel, és futtassa az az [ACR login][az-acr-login] parancsot a beállításjegyzékbe való bejelentkezéshez. 
 
 ```bash
 az acr login --name mycontainerregistry
 ```
 
-You can perform registry operations such as run `docker pull` to pull a sample image from the registry. Substitute an image and tag value appropriate for your registry, prefixed with the registry login server name (all lowercase):
+A beállításjegyzékből olyan rendszerleíróadatbázis-műveleteket is végrehajthat, mint például a Futtatás `docker pull`. Helyettesítse be a beállításjegyzékbe a rendszerkép és a címke értékét, a beállításjegyzék bejelentkezési kiszolgálójának nevével (az összes kisbetűs) együtt:
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
 ``` 
 
-Docker successfully pulls the image to the VM.
+A Docker sikeresen lekéri a rendszerképet a virtuális gépre.
 
-This example demonstrates that you can access the private container registry through the network access rule. However, the registry can't be accessed from a different login host that doesn't have a network access rule configured. If you attempt to login from another host using the `az acr login` command or `docker login` command, output is similar to the following:
+Ez a példa azt mutatja be, hogy a magánhálózati hozzáférési szabály használatával férhet hozzá a Private Container registryhez. A beállításjegyzék azonban nem érhető el egy másik bejelentkezési gazdagépről, amelyhez nincs konfigurálva hálózati hozzáférési szabály. Ha egy másik gazdagépről próbál bejelentkezni a `az acr login` parancs vagy `docker login` parancs használatával, a kimenet a következőhöz hasonló:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
 ```
 
-## <a name="restore-default-registry-access"></a>Restore default registry access
+## <a name="restore-default-registry-access"></a>Alapértelmezett beállításjegyzék-hozzáférés visszaállítása
 
-To restore the registry to allow access by default, remove any network rules that are configured. Then set the default action to allow access. Equivalent steps using the Azure CLI and Azure portal are provided.
+Ha a beállításjegyzéket úgy szeretné visszaállítani, hogy alapértelmezés szerint engedélyezze a hozzáférést, távolítsa el a konfigurált hálózati szabályokat. Ezután állítsa be az alapértelmezett műveletet a hozzáférés engedélyezéséhez. Az Azure CLI és a Azure Portal használatával egyenértékű lépések vannak megadva.
 
-### <a name="restore-default-registry-access---cli"></a>Restore default registry access - CLI
+### <a name="restore-default-registry-access---cli"></a>Alapértelmezett beállításjegyzék-hozzáférés visszaállítása – parancssori felület
 
-#### <a name="remove-network-rules"></a>Remove network rules
+#### <a name="remove-network-rules"></a>Hálózati szabályok eltávolítása
 
-To see a list of network rules configured for your registry, run the following [az acr network-rule list][az-acr-network-rule-list] command:
+A beállításjegyzékhez konfigurált hálózati szabályok listájának megtekintéséhez futtassa a következőt az [ACR Network-Rule List][az-acr-network-rule-list] paranccsal:
 
 ```azurecli
 az acr network-rule list--name mycontainerregistry 
 ```
 
-For each rule that is configured, run the [az acr network-rule remove][az-acr-network-rule-remove] command to remove it. Példa:
+Minden konfigurált szabályhoz futtassa az az [ACR Network-Rule Remove][az-acr-network-rule-remove] parancsot az eltávolításához. Például:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -350,35 +350,35 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Allow access
+#### <a name="allow-access"></a>Hozzáférés engedélyezése
 
-Substitute the name of your registry in the following [az acr update][az-acr-update] command:
+Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az-acr-update] paranccsal:
 ```azurecli
 az acr update --name myContainerRegistry --default-action Allow
 ```
 
-### <a name="restore-default-registry-access---portal"></a>Restore default registry access - portal
+### <a name="restore-default-registry-access---portal"></a>Alapértelmezett beállításjegyzék-hozzáférés visszaállítása – portál
 
 
-1. In the portal, navigate to your container registry and select **Firewall and virtual networks**.
-1. Under **Virtual networks**, select each virtual network, and then select **Remove**.
-1. Under **Firewall**, select each address range, and then select the Delete icon.
-1. Under **Allow access from**, select **All networks**. 
+1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **tűzfal és a virtuális hálózatok**lehetőséget.
+1. A **virtuális hálózatok**területen válassza ki az egyes virtuális hálózatokat, majd válassza az **Eltávolítás**lehetőséget.
+1. A **tűzfal**területen válassza ki az egyes címtartományt, majd kattintson a Törlés ikonra.
+1. **A hozzáférés engedélyezése lehetőségnél**válassza a **minden hálózat**lehetőséget. 
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you created all the Azure resources in the same resource group and no longer need them, you can optionally delete the resources by using a single [az group delete](/cli/azure/group) command:
+Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-To clean up your resources in the portal, navigate to the myResourceGroup resource group. Once the resource group is loaded, click on **Delete resource group** to remove the resource group and the resources stored there.
+A portálon található erőforrások törléséhez navigáljon a myResourceGroup erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Several virtual network resources and features were discussed in this article, though briefly. The Azure Virtual Network documentation covers these topics extensively:
+Ebben a cikkben több virtuális hálózati erőforrást és szolgáltatást is tárgyaltak, de röviden. Az Azure Virtual Network dokumentációja részletesen ismerteti ezeket a témaköröket:
 
 * [Virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network)
 * [Alhálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)

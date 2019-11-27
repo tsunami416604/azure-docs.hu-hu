@@ -42,7 +42,7 @@ Az egyéni alkalmazások bejelentkezési mezőinek rögzítése kétféleképpen
 
 Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mező rögzítése használatával szeretné konfigurálni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+1. Nyissa meg az [Azure portált](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 
@@ -75,7 +75,7 @@ A bővítmény telepítéséhez tekintse meg a jelen cikk [hozzáférési panel 
 
 Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmazáshoz a manuális bejelentkezési mező rögzítése segítségével, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+1. Nyissa meg az [Azure portált](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 
@@ -142,7 +142,7 @@ Ha ezeket a problémákat tapasztalja, tegye a következőket:
 
 - Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = " *&lt;az&gt;alkalmazás konfigurálásakor megadott bejelentkezési URL-címet*** , majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
 
-### <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+### <a name="contact-support"></a>Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is problémákba ütközne, nyisson meg egy esetet Microsoft ügyfélszolgálata. Írja le, hogy mit próbált meg. Adja meg a [portálon](#view-portal-notification-details) megjelenő értesítés részletei között ismertetett részleteket, és [küldjön értesítéseket a támogatási szakembernek a cikk súgójának](#send-notification-details-to-a-support-engineer-to-get-help) megtekintéséhez (ha van ilyen).
 
@@ -251,5 +251,5 @@ Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jele
 
     Példa: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>Következő lépések
-[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)
+## <a name="next-steps"></a>További lépések
+[Egyszeri bejelentkezés biztosítása az alkalmazásokba az Application proxy használatával](application-proxy-configure-single-sign-on-with-kcd.md)

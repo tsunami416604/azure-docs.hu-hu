@@ -1,6 +1,6 @@
 ---
-title: Integrate Azure Functions with an Azure virtual network
-description: A step-by-step tutorial that shows you how to connect a function to an Azure virtual network
+title: Azure Functions integrálása Azure-beli virtuális hálózattal
+description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 5/03/2019
@@ -13,156 +13,156 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227082"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: integrate Functions with an Azure virtual network
+# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
 
-This tutorial shows you how to use Azure Functions to connect to resources in an Azure virtual network. you'll create a function that has access to both the internet and to a VM running WordPress in virtual network.
+Ez az oktatóanyag bemutatja, hogyan használható a Azure Functions az Azure-beli virtuális hálózatok erőforrásaihoz való kapcsolódáshoz. létrehozhat egy olyan függvényt, amely hozzáférést biztosít az internethez és a virtuális hálózatban WordPress-t futtató virtuális gépekhez.
 
 > [!div class="checklist"]
-> * Create a function app in the Premium plan
-> * Deploy a WordPress site to VM in a virtual network
-> * Connect the function app to the virtual network
-> * Create a function proxy to access WordPress resources
-> * Request a WordPress file from inside the virtual network
+> * Function-alkalmazás létrehozása a prémium csomaggal
+> * WordPress-webhelyek üzembe helyezése virtuális hálózaton
+> * A Function alkalmazás összekötése a virtuális hálózattal
+> * Function proxy létrehozása a WordPress-erőforrások eléréséhez
+> * A WordPress-fájl igénylése a virtuális hálózaton belül
 
 ## <a name="topology"></a>Topológia
 
-The following diagram shows the architecture of the solution that you create:
+A következő ábra a létrehozott megoldás architektúráját mutatja be:
 
- ![UI for virtual network integration](./media/functions-create-vnet/topology.png)
+ ![Virtuális hálózati integráció felhasználói felülete](./media/functions-create-vnet/topology.png)
 
-Functions running in the Premium plan have the same hosting capabilities as web apps in Azure App Service, which includes the VNet Integration feature. To learn more about VNet Integration, including troubleshooting and advanced configuration, see [Integrate your app with an Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
+A prémium szintű csomagban futó függvények ugyanazok az üzemeltetési képességek, mint a Azure App Service webalkalmazásai, beleértve a VNet-integrációs funkciót is. További információ a VNet-integrációról, beleértve a hibaelhárítást és a speciális konfigurációt: [az alkalmazás integrálása Azure-beli virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-For this tutorial, it's important that you understand IP addressing and subnetting. You can start with [this article that covers the basics of addressing and subnetting](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Many more articles and videos are available online.
+Ebben az oktatóanyagban fontos megérteni az IP-címzést és alhálózatokat. Ebből a cikkből megtudhatja, hogyan kezelheti [a címzési és alhálók alapjait](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Számos további cikk és videó elérhető online állapotban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>Create a function app in a Premium plan
+## <a name="create-a-function-app-in-a-premium-plan"></a>Function-alkalmazás létrehozása prémium csomaggal
 
-First, you create a function app in the [Premium plan]. This plan provides serverless scale while supporting virtual network integration.
+Először létre kell hoznia egy Function alkalmazást a [Prémium csomag]csomagban. Ez a csomag kiszolgáló nélküli skálázást biztosít a virtuális hálózatok integrálásának támogatása mellett.
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-You can pin the function app to the dashboard by selecting the pin icon in the upper right-hand corner. Pinning makes it easier to return to this function app after you create your VM.
+A Function alkalmazást a jobb felső sarokban található rögzítés ikonra kattintva rögzítheti az irányítópulton. A rögzítéssel a virtuális gép létrehozása után könnyebben térhet vissza ehhez a Function alkalmazáshoz.
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>Create a VM inside a virtual network
+## <a name="create-a-vm-inside-a-virtual-network"></a>Virtuális gép létrehozása virtuális hálózaton belül
 
-Next, create a preconfigured VM that runs WordPress inside a virtual network ([WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress VM is used because of its low cost and convenience. This same scenario works with any resource in a virtual network, such as REST APIs, App Service Environments, and other Azure services. 
+Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET, amely a WordPress-t futtatja egy virtuális hálózaton belül (a[WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress virtuális gépeket a szolgáltatás alacsony díja és kényelme miatt használják. Ugyanez a forgatókönyv a virtuális hálózatok bármely erőforrásával, például a REST API-kkal, App Service környezetekkel és egyéb Azure-szolgáltatásokkal is működik. 
 
-1. In the portal, choose **+ Create a resource** on the left navigation pane, in the search field type `WordPress LEMP7 Max Performance`, and press Enter.
+1. A portálon kattintson az **+ erőforrás létrehozása** elemre a bal oldali navigációs ablaktáblán, a keresőmezőbe írja be a `WordPress LEMP7 Max Performance`kifejezést, majd nyomja le az ENTER billentyűt.
 
-1. Choose **Wordpress LEMP Max Performance** in the search results. Select a software plan of **Wordpress LEMP Max Performance for CentOS** as the **Software Plan** and select **Create**.
+1. Válassza a **WordPress LEMP max teljesítmény** lehetőséget a keresési eredmények között. Válassza ki a **WordPress LEMP Max teljesítményének** a **szoftver csomagját** , és válassza a **Létrehozás**lehetőséget.
 
-1. In the **Basics** tab, use the VM settings as specified in the table below the image:
+1. Az **alapvető** beállítások lapon használja a virtuális gép beállításait az alábbi táblázatban megadott módon:
 
-    ![Basics tab for creating a VM](./media/functions-create-vnet/create-vm-1.png)
-
-    | Beállítás      | Ajánlott érték  | Leírás      |
-    | ------------ | ---------------- | ---------------- |
-    | **Előfizetés** | Az Ön előfizetése | The subscription under which your resources are created. | 
-    | **[Resource group](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Choose `myResourceGroup`, or the resource group you created with your function app. Using the same resource group for the function app, WordPress VM, and hosting plan makes it easier to clean up resources when you are done with this tutorial. |
-    | **Virtual machine name** | VNET-Wordpress | The VM name needs to be unique in the resource group |
-    | **[Region](https://azure.microsoft.com/regions/)** | (Európa) Nyugat-Európa | Choose a region near you or near the functions that access the VM. |
-    | **Méret** | B1s | Choose **Change size** and then select the B1s standard image, which has 1 vCPU and 1 GB of memory. |
-    | **Authentication type** | Jelszó | To use password authentication, you must also specify a **Username**, a secure **Password**, and then **Confirm password**. For this tutorial, you won't need to sign in to the VM unless you need to troubleshoot. |
-
-1. Choose the **Networking** tab and under Configure virtual networks select **Create new**.
-
-1. In **Create virtual network**, use the settings in the table below the image:
-
-    ![Networking tab of create VM](./media/functions-create-vnet/create-vm-2.png)
+    ![Alapismeretek lap virtuális gép létrehozásához](./media/functions-create-vnet/create-vm-1.png)
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Name (Név)** | myResourceGroup-vnet | You can use the default name generated for your virtual network. |
-    | **Címtartomány** | 10.10.0.0/16 | Use a single address range for the virtual network. |
-    | **Alhálózat neve** | Tutorial-Net | Name of the subnet. |
-    | **Address range** (subnet) | 10.10.1.0/24   | The subnet size defines how many interfaces can be added to the subnet. This subnet is used by the WordPress site.  A `/24` subnet provides 254 host addresses. |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Válassza `myResourceGroup`vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával megkönnyítheti az erőforrások törlését, ha ezzel az Oktatóanyaggal végzett. |
+    | **Virtuális gép neve** | VNET – WordPress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
+    | **[Régió](https://azure.microsoft.com/regions/)** | (Európa) Nyugat-Európa | Válasszon egy Önhöz közeli régiót vagy a virtuális gépet elérő függvények közelében. |
+    | **Méret** | B1s | Válassza a **méret módosítása** lehetőséget, majd válassza ki a B1s standard rendszerképet, amely 1 vCPU és 1 GB memóriát tartalmaz. |
+    | **Hitelesítés típusa** | Jelszó | A jelszó-hitelesítés használatához meg kell adnia egy **felhasználónevet**és egy biztonságos **jelszót**is, majd **meg kell erősítenie a jelszót**. Ebben az oktatóanyagban nem kell bejelentkeznie a virtuális gépre, hacsak nem kell a hibakeresést végeznie. |
 
-1. Select **OK** to create the virtual network.
+1. Válassza a **hálózatkezelés** fület, majd a virtuális hálózatok konfigurálása területen válassza az **új létrehozása**lehetőséget.
 
-1. Back in the **Networking** tab, choose **None** for **Public IP**.
+1. A **virtuális hálózat létrehozása**területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
-1. Choose the **Management** tab, then in **Diagnostics storage account**, choose the Storage account you created with your function app.
-
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. After validation completes, select **Create**. The VM create process takes a few minutes. The created VM can only access the virtual network.
-
-1. After the VM is created, choose **Go to resource** to view the page for your new VM, then choose **Networking** under **Settings**.
-
-1. Verify that there's no **Public IP**. Make a note the **Private IP**, which you use to connect to the VM from your function app.
-
-    ![Networking settings in the VM](./media/functions-create-vnet/vm-networking.png)
-
-You now have a WordPress site deployed entirely within your virtual network. This site isn't accessible from the public internet.
-
-## <a name="connect-your-function-app-to-the-virtual-network"></a>Connect your function app to the virtual network
-
-With a WordPress site running in a VM in a virtual network, you can now connect your function app to that virtual network.
-
-1. In your new function app, select **Platform features** > **Networking**.
-
-    ![Choose networking in the function app](./media/functions-create-vnet/networking-0.png)
-
-1. Under **VNet Integration**, select **Click here to configure**.
-
-    ![Status for configuring a network feature](./media/functions-create-vnet/Networking-1.png)
-
-1. On the virtual network integration page, select **Add VNet (preview)** .
-
-    ![Add the VNet Integration preview](./media/functions-create-vnet/networking-2.png)
-
-1. In **Network Feature Status**, use the settings in the table below the image:
-
-    ![Define the function app virtual network](./media/functions-create-vnet/networking-3.png)
+    ![Hálózatkezelés lap a virtuális gép létrehozásakor](./media/functions-create-vnet/create-vm-2.png)
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Virtual Network** | MyResourceGroup-vnet | This virtual network is the one you created earlier. |
-    | **Alhálózat** | Create New Subnet | Create a subnet in the virtual network for your function app to use. VNet Integration must be configured to use an empty subnet. It doesn't matter that your functions use a different subnet than your VM. The virtual network automatically routes traffic between the two subnets. |
+    | **Name (Név)** | myResourceGroup-vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
+    | **Alhálózat neve** | Oktatóanyag – net | Az alhálózat neve. |
+    | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  A `/24` alhálózatok 254-es gazdagépi címeket biztosítanak. |
+
+1. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
+
+1. A **hálózatkezelés** lapon válassza a **nincs lehetőséget** a **nyilvános IP-címeknél**.
+
+1. Válassza a **felügyelet** fület, majd a **diagnosztika Storage-fiók**területen válassza ki a Function alkalmazással létrehozott Storage-fiókot.
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
+
+1. A virtuális gép létrehozása után válassza az **erőforrás keresése** lehetőséget az új virtuális gép oldalának megtekintéséhez, majd válassza a **hálózatkezelés** lehetőséget a **Beállítások**területen.
+
+1. Ellenőrizze, hogy nincs **-e nyilvános IP-cím**. Jegyezze fel a **magánhálózati IP-címet**, amelyet a Function alkalmazásból a virtuális géphez való kapcsolódáshoz használ.
+
+    ![Hálózati beállítások a virtuális gépen](./media/functions-create-vnet/vm-networking.png)
+
+Most már rendelkezik egy, a virtuális hálózaton belül üzembe helyezett WordPress-webhellyel. Ez a hely nem érhető el a nyilvános internetről.
+
+## <a name="connect-your-function-app-to-the-virtual-network"></a>A Function alkalmazás összekötése a virtuális hálózattal
+
+A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhez mostantól csatlakozhat a Function alkalmazáshoz a virtuális hálózathoz.
+
+1. Az új Function alkalmazásban válassza a **platform szolgáltatások** > **hálózatkezelés**lehetőséget.
+
+    ![A Function alkalmazásban válassza a hálózatkezelés lehetőséget.](./media/functions-create-vnet/networking-0.png)
+
+1. A **VNet-integráció**területen válassza **a kattintson ide a konfiguráláshoz**lehetőséget.
+
+    ![Hálózati szolgáltatás konfigurálásának állapota](./media/functions-create-vnet/Networking-1.png)
+
+1. A virtuális hálózat integrációja lapon válassza a **VNet hozzáadása (előzetes verzió)** lehetőséget.
+
+    ![A VNet-integráció előzetes verziójának hozzáadása](./media/functions-create-vnet/networking-2.png)
+
+1. A **hálózati szolgáltatások állapota**területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
+
+    ![A Function app virtuális hálózat megadása](./media/functions-create-vnet/networking-3.png)
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Virtuális hálózat** | MyResourceGroup-vnet | Ez a virtuális hálózat a korábban létrehozott. |
+    | **Alhálózat** | Új alhálózat létrehozása | Hozzon létre egy alhálózatot a virtuális hálózatban a Function alkalmazás használatára. A VNet-integrációt üres alhálózat használatára kell konfigurálni. Nem számít, hogy a függvények más alhálózatot használnak, mint a virtuális gép. A virtuális hálózat automatikusan átirányítja a forgalmat a két alhálózat között. |
     | **Alhálózat neve** | Function-Net | Az új alhálózat neve. |
-    | **Virtual network address block** | 10.10.0.0/16 | Choose the same address block used by the WordPress site. You should only have one address block defined. |
-    | **Címtartomány** | 10.10.2.0/24   | The subnet size restricts the total number of instances that your Premium plan function app can scale out to. This example uses a `/24` subnet with 254 available host addresses. This subnet is over-provisioned, but easy to calculate. |
+    | **Virtuális hálózati címterület** | 10.10.0.0/16 | Válassza ki ugyanazt a Címterület-blokkot, amelyet a WordPress-webhely használ. Csak egy címterület van definiálva. |
+    | **Címtartomány** | 10.10.2.0/24   | Az alhálózat mérete korlátozza azon példányok számát, amelyeket a prémium szintű csomag funkciójának alkalmazásával fel lehet méretezni. Ez a példa egy `/24` alhálózatot használ, amely 254 elérhető gazdagép-címmel rendelkezik. Ez az alhálózat túl van kiépítve, de könnyen kiszámítható. |
 
-1. Select **OK** to add the subnet. Close the VNet Integration and Network Feature Status pages to return to your function app page.
+1. Az alhálózat hozzáadásához kattintson **az OK gombra** . Az VNet-integráció és a hálózati szolgáltatás állapota lapok bezárásával térjen vissza a Function app-oldalára.
 
-The function app can now access the virtual network where the WordPress site is running. Next, you use [Azure Functions Proxies](functions-proxies.md) to return a file from the WordPress site.
+A Function alkalmazás mostantól elérheti azt a virtuális hálózatot, ahol a WordPress-webhely fut. Ezután a [Azure functions-proxyk](functions-proxies.md) használatával egy fájlt ad vissza a WordPress webhelyről.
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>Create a proxy to access VM resources
+## <a name="create-a-proxy-to-access-vm-resources"></a>Proxy létrehozása a virtuális gépek erőforrásainak eléréséhez
 
-With VNet Integration enabled, you can create a proxy in your function app to forward requests to the VM running in the virtual network.
+Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alkalmazásban, hogy továbbítsa a kéréseket a virtuális hálózaton futó virtuális GÉPHEZ.
 
-1. In your function app, select  **Proxies** >  **+** , then use the proxy settings in the table below the image:
+1. A Function alkalmazásban válassza a **proxyk** >  **+** lehetőséget, majd a rendszerkép alatti táblázatban adja meg a proxybeállításokat:
 
-    ![Define the proxy settings](./media/functions-create-vnet/create-proxy.png)
+    ![Proxybeállítások megadása](./media/functions-create-vnet/create-proxy.png)
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
-    | **Name (Név)** | Plant | The name can be any value. It's used to identify the proxy. |
-    | **Route Template** | /plant | Route that maps to a VM resource. |
-    | **Backend URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Replace `<YOUR_VM_IP>` with the IP address of your WordPress VM that you created earlier. This mapping returns a single file from the site. |
+    | **Name (Név)** | Növény | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
+    | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
+    | **Háttér URL-címe** | http://< YOUR_VM_IP >/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a `<YOUR_VM_IP>`t a korábban létrehozott WordPress-virtuális gép IP-címére. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
 
-1. Select **Create** to add the proxy to your function app.
+1. Válassza a **Létrehozás** lehetőséget, hogy hozzáadja a proxyt a Function alkalmazáshoz.
 
 ## <a name="try-it-out"></a>Próbálja ki!
 
-1. In your browser, try to access the URL you used as the **Backend URL**. As expected, the request times out. A timeout occurs because your WordPress site is connected only to your virtual network and not the internet.
+1. A böngészőben próbálja meg elérni a **háttérbeli URL-címként**használt URL-címet. A várt módon a kérelem időtúllépést mutat. Időtúllépés történik, mert a WordPress-webhely csak a virtuális hálózathoz csatlakozik, és nem az internethez.
 
-1. Copy the **Proxy URL** value from your new proxy and paste it into the address bar of your browser. The returned image is from the WordPress site running inside your virtual network.
+1. Másolja a **proxy URL-címét** az új proxyból, és illessze be a böngésző címsorába. A visszaadott rendszerkép a virtuális hálózaton belül futó WordPress-webhelyről származik.
 
-    ![Plant image file returned from the WordPress site](./media/functions-create-vnet/plant.png)
+    ![A WordPress webhelyről visszaadott növényi képfájl](./media/functions-create-vnet/plant.png)
 
-Your function app is connected to both the internet and your virtual network. The proxy is receiving a request over the public internet, and then acting as a simple HTTP proxy to forward that request to the connected virtual network. The proxy then relays the response back to you publicly over the internet.
+A Function alkalmazás csatlakozik az internethez és a virtuális hálózathoz is. A proxy kérést kap a nyilvános interneten keresztül, majd egyszerű HTTP-proxyként viselkedik a kérésnek a csatlakoztatott virtuális hálózatra való továbbításához. A proxy ezután az interneten keresztül továbbítja a választ az Ön számára nyilvánosan.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, the WordPress site serves as an API that is called by using a proxy in the function app. This scenario makes a good tutorial because it's easy to set up and visualize. You could use any other API deployed within a virtual network. You could also have created a function with code that calls APIs deployed within the virtual network. A more realistic scenario is a function that uses data client APIs to call a SQL Server instance deployed in the virtual network.
+Ebben az oktatóanyagban a WordPress-webhely olyan API-ként szolgál, amely a Function alkalmazásban proxy használatával lett meghívva. Ez a forgatókönyv jó oktatóanyagot tesz lehetővé, hiszen egyszerűen beállítható és megjeleníthető. Bármely más, a virtuális hálózaton belül üzembe helyezett API-t használhat. Létrehozhat egy olyan kóddal rendelkező függvényt is, amely meghívja a virtuális hálózaton belül üzembe helyezett API-kat. A reálisabb forgatókönyv egy olyan függvény, amely adatügyfél-API-kat használ a virtuális hálózatban üzembe helyezett SQL Server példány meghívásához.
 
-Functions running in a Premium plan share the same underlying App Service infrastructure as web apps on PremiumV2 plans. All the documentation for [web apps in Azure App Service](../app-service/overview.md) applies to your Premium plan functions.
+A prémium csomagokban futó függvények ugyanazokat a mögöttes App Service infrastruktúrát használják, mint a PremiumV2-csomagokban lévő webalkalmazások. A [Azure app Service webalkalmazásaihoz](../app-service/overview.md) tartozó összes dokumentáció a Prémium csomag funkcióival kapcsolatos.
 
 > [!div class="nextstepaction"]
-> [Learn more about the networking options in Functions](./functions-networking-options.md)
+> [További tudnivalók a függvények hálózati beállításairól](./functions-networking-options.md)
 
-[Premium plan]: functions-scale.md#premium-plan
+[Prémium csomag]: functions-scale.md#premium-plan

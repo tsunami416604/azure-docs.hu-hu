@@ -44,7 +44,7 @@ A Java-és IntelliJ-függvények fejlesztéséhez telepítse a következő szoft
 1. Az **új projekt** ablakban válassza a **Maven** lehetőséget a bal oldali ablaktáblán.
 1. Jelölje be a **Létrehozás az archetípus alapján** jelölőnégyzetet, majd válassza az **archetípus hozzáadása** az [Azure-functions-archetípushoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)lehetőséget.
 1. Az **archetípus hozzáadása** ablakban végezze el a következő mezőket:
-    - _GroupId_: com.microsoft.azure
+    - _GroupID_: com. microsoft. Azure
     - _ArtifactId_: Azure-functions-archetípus
     - _Verzió_: használja a legújabb **1,22** -es verziót [a központi tárházból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![hozzon létre egy Maven-projektet az archetípusból a IntelliJ IDEA-ban](media/functions-create-first-java-intellij/functions-create-intellij.png)  
@@ -109,7 +109,7 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
    [INFO] ------------------------------------------------------------------------
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Vegyen fel további függvényeket különböző eseményindítókkal a projekthez az `azure-functions:add` Maven-cél használatával.

@@ -26,7 +26,7 @@ Azure Policy létrehoz egy felügyelt identitást az egyes hozzárendelésekhez,
 
 ## <a name="configure-policy-definition"></a>Szabályzat-definíció konfigurálása
 
-Első lépésként meg kell határozni azokat a szerepköröket, amelyek **deployIfNotExists** és **módosítása** szükséges a házirend-definícióban a tartalmazott sablon tartalmának sikeres telepítéséhez. Alatt a **részletek** tulajdonság, adjon hozzá egy **roleDefinitionIds** tulajdonság. Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepkört a környezetben. Teljes példaként tekintse meg a [deployIfNotExists példát](../concepts/effects.md#deployifnotexists-example) vagy a [példák módosításait](../concepts/effects.md#modify-examples).
+Első lépésként meg kell határozni azokat a szerepköröket, amelyek **deployIfNotExists** és **módosítása** szükséges a házirend-definícióban a tartalmazott sablon tartalmának sikeres telepítéséhez. A **részletek** tulajdonságban adjon hozzá egy **roleDefinitionIds** tulajdonságot. Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepkört a környezetben. Teljes példaként tekintse meg a [deployIfNotExists példát](../concepts/effects.md#deployifnotexists-example) vagy a [példák módosításait](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -57,7 +57,7 @@ Ha a portál használatával hoz létre hozzárendelést, Azure Policy mindkét 
 
 ### <a name="create-managed-identity-with-powershell"></a>Felügyelt identitás létrehozása a PowerShell használatával
 
-Hozzon létre egy felügyelt identitás során a a szabályzat-hozzárendelés **hely** meg kell határozni és **AssignIdentity** használt. Az alábbi példa lekéri a beépített szabályzat definíciója **üzembe helyezése az SQL-Adatbázisok transzparens adattitkosításának**, és beállítja a célként megadott erőforráscsoportja, majd létrehozza a hozzárendelést.
+Ha felügyelt identitást szeretne létrehozni a szabályzat hozzárendelése során, a **helyet** definiálni és **AssignIdentity** kell használni. A következő példa beolvassa a beépített házirend definícióját, amely az **SQL db transzparens adattitkosítását telepíti**, beállítja a célként megadott erőforráscsoportot, majd létrehozza a hozzárendelést.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -72,7 +72,7 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-A `$assignment` változó már tartalmazza a felügyelt identitás és a standard szintű értékeket adja vissza, ha egy szabályzat-hozzárendelés létrehozása a résztvevő-azonosító. Keresztül elérhető `$assignment.Identity.PrincipalId`.
+A `$assignment` változó most már tartalmazza a felügyelt identitás elsődleges AZONOSÍTÓját, valamint a szabályzat-hozzárendelés létrehozásakor visszaadott szabványos értékeket. `$assignment.Identity.PrincipalId`használatával érhető el.
 
 ### <a name="grant-defined-roles-with-powershell"></a>Engedélyezés definiált szerepkörök a PowerShell-lel
 
@@ -93,7 +93,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Engedélyezés definiált szerepkörök portálon keresztül
 
-A definiált szerepkörök használatával a portál használatával adja meg a hozzárendelés felügyelt identitás kétféleképpen **hozzáférés-vezérlés (IAM)** vagy a szabályzatot vagy kezdeményezést hozzárendelés szerkesztése, majd **mentése**.
+A hozzárendelések felügyelt identitását kétféleképpen lehet megadnia a portál használatával, a **hozzáférés-vezérlés (iam)** használatával, vagy a házirend vagy a kezdeményezés hozzárendelésének szerkesztésével, és a **Mentés**gombra kattintva.
 
 A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse az alábbi lépéseket:
 
@@ -103,57 +103,57 @@ A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse a
 
 1. Keresse meg a hozzárendelés, amely rendelkezik egy felügyelt identitás, és kattintson a nevére.
 
-1. Keresse meg a **hozzárendelés azonosítója** tulajdonságot az edit oldalon. A hozzárendelés azonosítója lesz hasonló:
+1. Keresse meg a **hozzárendelés-azonosító** tulajdonságot a szerkesztés oldalon. A hozzárendelés azonosítója lesz hasonló:
 
    ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 
-   A felügyelt identitás neve nem az utolsó része a hozzárendelés erőforrás azonosítója, amely `2802056bfc094dfb95d4d7a5` ebben a példában. Másolja, ez a része a hozzárendelés erőforrás-azonosítója.
+   A felügyelt identitás neve a hozzárendelési erőforrás AZONOSÍTÓjának utolsó része, amely `2802056bfc094dfb95d4d7a5` ebben a példában. Másolja, ez a része a hozzárendelés erőforrás-azonosítója.
 
 1. Keresse meg az erőforrás vagy az erőforrások szülőtároló (erőforráscsoport, előfizetés, a felügyeleti csoport), manuálisan kell hozzáadni a szerepkör-definíció igénylő.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** az erőforrás lapon hivatkozásra, és kattintson a **+ szerepkör-hozzárendelés hozzáadása** felső részén a hozzáférés-vezérlő lapját.
+1. Kattintson a **hozzáférés-vezérlés (iam)** hivatkozásra az erőforrások lapon, majd a hozzáférés-vezérlés lap tetején kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre.
 
-1. Válassza ki a megfelelő szerepkör, amely megfelel egy **roleDefinitionIds** a szabályzat-definíció.
-   Hagyja **rendelhet hozzáféréseket** "Azure AD felhasználói, csoport vagy alkalmazás" az alapértelmezett értékre. Az a **kiválasztása** mezőbe illessze be, vagy írja be a korábban található hozzárendelés erőforrás-azonosító részét. Ha a keresés befejeződött, kattintson az objektumra, ugyanazzal a névvel, válassza ki az azonosítója, és kattintson a **mentése**.
+1. Válassza ki a megfelelő szerepkört, amely megfelel egy **roleDefinitionIds** a házirend-definícióban.
+   Az "Azure AD-felhasználó, csoport vagy alkalmazás" alapértelmezett értékének beállításához hagyja a **hozzáférés-hozzárendelést** . A **kiválasztás** mezőben illessze be vagy írja be a korábban megjelenő hozzárendelési erőforrás-azonosító részét. A keresés befejeződése után kattintson az azonos nevű objektumra az azonosító kiválasztásához, majd kattintson a **Mentés**gombra.
 
 ## <a name="create-a-remediation-task"></a>A javítási feladat létrehozása
 
 ### <a name="create-a-remediation-task-through-portal"></a>Szervizelési feladat létrehozása a portálon keresztül
 
-Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy a hatások **módosítása** meghatározza, hogy vannak-e nem megfelelő erőforrások. Ha a nem megfelelő erőforrások találhatók, a részletek a biztosított a **szervizelési** lapot. A nem megfelelő tároló erőforrásait tartalmazó szabályzatok listáján, valamint a aktiválásához lehetőség egy **javítási feladat**. Ez a beállítás azt eredményezi, hogy a központi telepítést a **deployIfNotExists** sablonból vagy a **módosítási** műveletekkel hozza létre.
+Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy a hatások **módosítása** meghatározza, hogy vannak-e nem megfelelő erőforrások. Ha nem megfelelő erőforrásokat talál, a részletek a **szervizelés** oldalon találhatók. A nem megfelelő erőforrásokkal rendelkező szabályzatok listája mellett lehetőség van egy **szervizelési feladat**elindítására. Ez a beállítás azt eredményezi, hogy a központi telepítést a **deployIfNotExists** sablonból vagy a **módosítási** műveletekkel hozza létre.
 
-Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
+**Szervizelési feladat**létrehozásához kövesse az alábbi lépéseket:
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
    ![Szabályzat keresése az összes szolgáltatásban](../media/remediate-resources/search-policy.png)
 
-1. Válassza ki **szervizelési** az Azure Policy oldal bal oldalán.
+1. Válassza a **szervizelés** elemet a Azure Policy lap bal oldalán.
 
    ![Szervizelés kiválasztása a szabályzat lapon](../media/remediate-resources/select-remediation.png)
 
-1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Kattintson az erőforrások, amelyek nem megfelelő házirendet. A **új javítási feladat** lap megnyitásakor.
+1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Kattintson az erőforrások, amelyek nem megfelelő házirendet. Megnyílik az **új szervizelési feladat** lap.
 
    > [!NOTE]
-   > Nyisson meg egy másik módszere a **javítási feladat** lapot, hogy keresse meg és kattintson a szabályzatra, a **megfelelőségi** lapon, majd kattintson a **javítási feladat létrehozása** gombra.
+   > A **szervizelési feladat** lap megnyitásának másik módja, ha megkeresi és rákattint a szabályzatra a **megfelelőség** lapon, majd kattintson a **szervizelési feladat létrehozása** gombra.
 
-1. A a **új javítási feladat** lapon, szűrheti az erőforrásokat a használatával javíthatja a **hatókör** választja ki a gyermekszintű erőforrása, ahol a szabályzat hozzá van rendelve a három pontra (beleértve az egyes erőforrások lefelé objektumok). Ezenkívül használhatja a **helyek** legördülő tovább szűkítheti az erőforrásokat. Csak a táblázatban szereplő erőforrások szervizelni fogja.
+1. Az **új szervizelési feladat** lapon a **hatóköri** ellipszisek használatával szűrheti a kijavítani kívánt erőforrásokat, hogy kiválassza a gyermek erőforrásokat, amelyekről a szabályzat hozzá van rendelve (beleértve az egyes erőforrás-objektumokat is). Emellett az erőforrások további szűréséhez használja a **helyszínek** legördülő listát. Csak a táblázatban szereplő erőforrások szervizelni fogja.
 
    ![Szervizelés – kiválaszthatja, hogy mely erőforrások legyenek szervizelve](../media/remediate-resources/select-resources.png)
 
-1. A javítási feladat megkezdése után az erőforrások vannak szűrve kattintva **szervizelése**. A szabályzat megfelelőségi lap nyílik meg a **javítási feladatok** fülre, és a feladatok előrehaladásának megjelenítése.
+1. Indítsa el a Szervizelési feladatot az erőforrások szűrése után, a **szervizelés**gombra kattintva. A szabályzat megfelelősége lap megnyílik a **szervizelési feladatok** lapon, hogy megjelenjen a feladatok állapota.
 
    ![Szervizelés – szervizelési feladatok állapota](../media/remediate-resources/task-progress.png)
 
-1. Kattintson a **javítási feladat** a szabályzat megfelelőségi lapon részletes információkat a folyamat állapotát. A szűrés a feladat használható együtt a szervizelt alatt álló erőforrások listája látható.
+1. Kattintson a **szervizelési feladatra** a szabályzat megfelelősége lapon a folyamat részleteinek megismeréséhez. A szűrés a feladat használható együtt a szervizelt alatt álló erőforrások listája látható.
 
-1. Az a **javítási feladat** lapon kattintson a jobb gombbal egy erőforrás vagy a javítási feladat üzembe helyezési megtekintéséhez vagy az erőforrás. A sor végén kattintson a **kapcsolatos eseményeket** például egy hibaüzenet részleteinek megtekintéséhez.
+1. A **szervizelési feladat** lapon kattintson a jobb gombbal egy erőforrásra a Szervizelési feladat központi telepítésének vagy erőforrásának megtekintéséhez. A sor végén kattintson a **kapcsolódó események** elemre, hogy megtekintse a részleteket, például a hibaüzenetet.
 
    ![Szervizelje - erőforrás a feladat helyi menü](../media/remediate-resources/resource-task-context-menu.png)
 
-Üzembe helyezett erőforrások keresztül egy **javítási feladat** kerülnek a **üzembe helyezett erőforrások** fülre a házirend-megfelelőségi oldalon.
+A **szervizelési feladattal** üzembe helyezett erőforrások hozzáadódnak a szabályzat megfelelősége lap **telepített erőforrások** lapjához.
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Szervizelési feladat létrehozása az Azure CLI-n keresztül
 
@@ -181,7 +181,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 Más szervizelési parancsmagok és példák esetében tekintse meg az az [. PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modult.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

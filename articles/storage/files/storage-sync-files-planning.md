@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846733"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546348"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -145,7 +145,7 @@ Az eredmények CSV-ben való megjelenítéséhez:
 | ethumbs.db$ | Ideiglenes fájl a miniatűrökhöz |
 | ~$\*.\* | Ideiglenes Office-fájl |
 | \*. tmp | Ideiglenes fájl |
-| \*.laccdb | ADATBÁZIS-zárolási fájl elérése|
+| \*. laccdb | ADATBÁZIS-zárolási fájl elérése|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Belső szinkronizáló fájl|
 | rendszerkötet-információk \\ | A kötethez tartozó mappa |
 | $RECYCLE. BIN| Mappa |
@@ -227,7 +227,7 @@ Ha helyszíni biztonsági mentési megoldást használ, a biztonsági mentéseke
 > Az operációs rendszer nélküli (BMR) visszaállítás váratlan eredményekhez vezethet, és jelenleg nem támogatott.
 
 > [!Note]  
-> A VSS-Pillanatképek (beleértve a korábbi verziók lapot) jelenleg nem támogatottak a felhőalapú rétegek használatát engedélyező köteteken. Ha a felhő-rétegek engedélyezve vannak, az Azure-fájlmegosztás pillanatképeit használva állíthatja vissza a fájlokat a biztonsági másolatból.
+> Az Azure file SYnc ügynök 9-es verziójával a VSS-Pillanatképek (beleértve a korábbi verziók lapot) mostantól támogatottak a felhőalapú rétegek használatát engedélyező köteteken. A PowerShell használatával azonban engedélyeznie kell a korábbi verziók kompatibilitását. [További tudnivalókat itt talál](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Titkosítási megoldások
 A titkosítási megoldások támogatása a megvalósításuk módjától függ. Azure File Sync ismert, hogy működjön a következővel:
@@ -262,7 +262,7 @@ Azure File Sync csak a következő régiókban érhető el:
 | Közép-Franciaország | Párizs |
 | Dél-Franciaország * | Marseille |
 | Korea középső régiója | Szöul |
-| Korea déli régiója | Puszan |
+| Korea déli régiója | Busan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |

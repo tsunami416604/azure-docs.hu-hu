@@ -1,6 +1,6 @@
 ---
-title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
-description: How to provision devices for multitenancy with your device provisioning service instance
+title: Eszközök kiépítése az Azure-beli bérlős-IoT Hub Device Provisioning Service
+description: Eszközök kiépítése a bérlős az eszköz kiépítési szolgáltatásának példánnyal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -14,23 +14,23 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228787"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>How to provision for multitenancy 
+# <a name="how-to-provision-for-multitenancy"></a>A bérlős kiépítése 
 
-The allocation policies defined by the provisioning service support a variety of allocation scenarios. Two common scenarios are:
+A kiépítési szolgáltatás által meghatározott kiosztási szabályzatok számos különböző foglalási forgatókönyvet támogatnak. Két gyakori forgatókönyv:
 
-* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device provisioned to the IoT hub closest to each location. In this scenario, a group of IoT hubs, which span across regions, are selected for enrollments. The **Lowest latency** allocation policy is selected for these enrollments. This policy causes the Device Provisioning Service to evaluate device latency and determine the closet IoT hub out of the group of IoT hubs. 
+* **Térinformatikai/GeoLatency**: mivel az eszköz a helyek között mozog, a hálózati késést úgy javítja ki, hogy az eszköz az adott helyhez legközelebb eső IoT hub-ra van kiépítve. Ebben a forgatókönyvben a IoT hubok egy csoportja lesz kiválasztva a beléptetésekhez. Ezekhez a regisztrációhoz a **legalacsonyabb késési** kiosztási szabályzat van kiválasztva. A házirend hatására az eszköz kiépítési szolgáltatása kiértékeli az eszköz késését, és meghatározza a beépített IoT hub-t az IoT hubok csoportjából. 
 
-* **Multi-tenancy**: Devices used within an IoT solution may need to be assigned to a specific IoT hub or group of IoT hubs. The solution may require all devices for a particular tenant to communicate with a specific group of IoT hubs. In some cases, a tenant may own IoT hubs and require devices to be assigned to their IoT hubs.
+* **Több-bérlő**: Előfordulhat, hogy egy IoT-megoldáson belül használt eszközöket hozzá kell rendelni egy adott IoT hubhoz vagy IoT-hubok csoportjához. A megoldáshoz szükség lehet arra, hogy egy adott bérlő minden eszköze kommunikáljon egy adott IoT-hubhoz. Bizonyos esetekben előfordulhat, hogy a bérlő saját IoT-hubokat használ, és az eszközöket hozzá kell rendelni az IoT-hubokhoz.
 
-It is common to combine these two scenarios. For example, a multitenant IoT solution will commonly assign tenant devices using a group of IoT hubs that are scattered across regions. These tenant devices can be assigned to the IoT hub in that group, which has the lowest latency based on geographic location.
+Ez a két forgatókönyv összevonása gyakori. Egy több-bérlős IoT megoldás például a bérlői eszközöket általában olyan IoT-hubok használatával rendeli hozzá, amelyek a régiók között elszórtan helyezkednek el. Ezek a bérlői eszközök hozzárendelhetők a csoport IoT hubhoz, amely a legalacsonyabb késéssel rendelkezik a földrajzi hely alapján.
 
-This article uses a simulated device sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) to demonstrate how to provision devices in a multitenant scenario across regions. You will perform the following steps in this article:
+Ez a cikk egy szimulált eszköz mintát használ az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -ból, amely bemutatja, hogyan lehet eszközöket kiépíteni egy több-bérlős forgatókönyvben a régiók között. A cikkben a következő lépéseket kell végrehajtania:
 
-* Use the Azure CLI to create two regional IoT hubs (**West US** and **East US**)
-* Create a multitenant enrollment
-* Use the Azure CLI to create two regional Linux VMs to act as devices in the same regions (**West US** and **East US**)
-* Set up the development environment for the Azure IoT C SDK on both Linux VMs
-* Simulate the devices to see that they are provisioned for the same tenant in the closest region.
+* Az Azure CLI használatával két regionális IoT hub hozható létre (az USA**nyugati** régiója és az **USA keleti**régiója)
+* Több-bérlős regisztráció létrehozása
+* Az Azure CLI-vel két regionális linuxos virtuális gépet hozhat létre, amelyek ugyanabban a régióban (az**USA nyugati** régiójában és az **USA keleti**régiójában) lévő eszközökként működnek.
+* Az Azure IoT C SDK Fejlesztői környezetének beállítása Linux rendszerű virtuális gépeken
+* Szimulálja az eszközöket, hogy azok kiépítve legyenek ugyanahhoz a bérlőhöz a legközelebbi régióban.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,102 +38,102 @@ This article uses a simulated device sample from the [Azure IoT C SDK](https://g
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
+* A [beállított IoT hub Device Provisioning Service befejezése a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
-## <a name="create-two-regional-iot-hubs"></a>Create two regional IoT hubs
+## <a name="create-two-regional-iot-hubs"></a>Két regionális IoT hub létrehozása
 
-In this section, you will use the Azure Cloud Shell to create two new regional IoT hubs in the **West US** and **East US** regions for a tenant.
+Ebben a szakaszban a Azure Cloud Shell fogja használni két új regionális IoT-központ létrehozására az **USA nyugati** régiójában és az **USA keleti** régiójában a bérlők számára.
 
 
-1. Use the Azure Cloud Shell to create a resource group with the [az group create](/cli/azure/group#az-group-create) command. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+1. A Azure Cloud Shell használatával hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
-    The following example creates a resource group named *contoso-us-resource-group* in the *eastus* region. It is recommended that you use this group for all resources created in this article. This will make clean up easier after you are finished.
+    A következő példában létrehozunk egy *contoso-US-Resource-Group* nevű erőforráscsoportot a *eastus* régióban. Ezt a csoportot az ebben a cikkben létrehozott összes erőforráshoz ajánlott használni. Ezzel a művelettel könnyebben megtisztítást végezhet.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Use the Azure Cloud Shell to create an IoT hub in the **eastus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. The IoT hub will be added to the *contoso-us-resource-group*.
+2. A Azure Cloud Shell használatával hozzon létre egy IoT hubot a **eastus** régióban az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Az IoT hub hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
-    The following example creates an IoT hub named *contoso-east-hub* in the *eastus* location. You must use your own unique hub name instead of **contoso-east-hub**.
+    Az alábbi példa egy *contoso-East-hub* nevű IoT-hubot hoz létre a *eastus* helyen. A **contoso-East-hub**helyett saját egyedi hub-nevet kell használnia.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    This command may take a few minutes to complete.
+    A parancs végrehajtása több percet is igénybe vehet.
 
-3. Use the Azure Cloud Shell to create an IoT hub in the **westus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. This IoT hub will also be added to the *contoso-us-resource-group*.
+3. A Azure Cloud Shell használatával hozzon létre egy IoT hubot a **westus** régióban az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Ez az IoT hub a *contoso-US-Resource-Group*-hoz is hozzá lesz adva.
 
-    The following example creates an IoT hub named *contoso-west-hub* in the *westus* location. You must use your own unique hub name instead of **contoso-west-hub**.
+    A következő példa egy *contoso-West-hub* nevű IoT hubot hoz létre a *westus* helyen. A **contoso-West-hub**helyett saját egyedi hub-nevet kell használnia.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    This command may take a few minutes to complete.
+    A parancs végrehajtása több percet is igénybe vehet.
 
 
 
-## <a name="create-the-multitenant-enrollment"></a>Create the multitenant enrollment
+## <a name="create-the-multitenant-enrollment"></a>A több-bérlős regisztráció létrehozása
 
-In this section, you will create a new enrollment group for the tenant devices.  
+Ebben a szakaszban egy új beléptetési csoportot fog létrehozni a bérlői eszközökhöz.  
 
-For simplicity, this article uses [Symmetric key attestation](concepts-symmetric-key-attestation.md) with the enrollment. For a more secure solution, consider using [X.509 certificate attestation](concepts-security.md#x509-certificates) with a chain of trust.
+Az egyszerűség kedvéért ez a cikk [szimmetrikus kulcsú tanúsítványokat](concepts-symmetric-key-attestation.md) használ a beléptetéshez. A biztonságosabb megoldás érdekében érdemes lehet az [X. 509 tanúsítvány-igazolást](concepts-security.md#x509-certificates) használni egy megbízhatósági lánc használatával.
 
-1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
-2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
+2. Válassza a **regisztrációk kezelése** fület, majd kattintson a **regisztrációs csoport hozzáadása** gombra az oldal tetején. 
 
-3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
+3. A **regisztrációs csoport hozzáadása**párbeszédpanelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
 
-    **Group name**: Enter **contoso-us-devices**.
+    **Csoportnév**: írja be a **contoso-US-Devices**nevet.
 
-    **Attestation Type**: Select **Symmetric Key**.
+    **Igazolás típusa**: válassza a **szimmetrikus kulcs**lehetőséget.
 
-    **Auto Generate Keys**: This checkbox should already be checked.
+    **Kulcsok automatikus generálása**: ezt a jelölőnégyzetet már be kell jelölni.
 
-    **Select how you want to assign devices to hubs**: Select **Lowest latency**.
+    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a hubokhoz**: válassza a **legalacsonyabb késleltetés**lehetőséget.
 
-    ![Add multitenant enrollment group for symmetric key attestation](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
-
-
-4. On **Add Enrollment Group**, click **Link a new IoT hub** to link both of your regional hubs.
-
-    **Subscription**: If you have multiple subscriptions, choose the subscription where you created the regional IoT hubs.
-
-    **IoT hub**: Select one of the regional hubs you created.
-
-    **Access Policy**: Choose **iothubowner**.
-
-    ![Link the regional IoT hubs with the provisioning service](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    ![Több-bérlős beléptetési csoport hozzáadása a szimmetrikus kulcs igazolásához](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-5. Once both regional IoT hubs have been linked, you must select them for the enrollment group and click **Save** to create the regional IoT hub group for the enrollment.
+4. A **beléptetési csoport hozzáadása**területen kattintson az **új IoT hub csatolása** lehetőségre a regionális hubok összekapcsolásához.
 
-    ![Create the regional hub group for the enrollment](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+    **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben létrehozta a regionális IoT hubokat.
+
+    **IoT hub**: válassza ki a létrehozott regionális hubok egyikét.
+
+    **Hozzáférési szabályzat**: válassza a **iothubowner**lehetőséget.
+
+    ![A regionális IoT hubok összekapcsolása a kiépítési szolgáltatással](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-6. After saving the enrollment, reopen it and make a note of the **Primary Key**. You must save the enrollment first to have the keys generated. This key will be used to generate unique device keys for both simulated devices later.
+5. Ha mind a regionális IoT hubok össze lettek kapcsolva, ki kell választania azokat a beléptetési csoport számára, és a **Mentés** gombra kattintva létre kell hoznia a regionális IoT hub csoportot a beléptetéshez.
+
+    ![A beléptetéshez tartozó regionális központ csoport létrehozása](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-## <a name="create-regional-linux-vms"></a>Create regional Linux VMs
+6. Miután mentette a beléptetést, nyissa meg újra, és jegyezze fel az **elsődleges kulcsot**. Először mentenie kell a beléptetést, hogy a kulcsok létrejöttek legyenek. Ezt a kulcsot a rendszer a szimulált eszközökhöz tartozó, később létrehozott egyedi eszköz-kulcsok létrehozásához használja.
 
-In this section, you will create two regional Linux virtual machines (VMs). These VMs will run a device simulation sample from each region to demonstrate device provisioning for tenant devices from both regions.
 
-To make clean-up easier, these VMs will be added to the same resource group that contains the IoT hubs that were created, *contoso-us-resource-group*. However, the VMs will run in separate regions (**West US** and **East US**).
+## <a name="create-regional-linux-vms"></a>Regionális Linux rendszerű virtuális gépek létrehozása
 
-1. In the Azure Cloud Shell, execute the following command to create an **East US** region VM after making the following parameter changes in the command:
+Ebben a szakaszban két regionális linuxos virtuális gépet (VM) fog létrehozni. Ezek a virtuális gépek minden régióból futtatnak egy eszköz-szimulációs mintát, hogy az eszköz kiépítés után mindkét régióból bemutassa a bérlői eszközöket.
 
-    **--name**: Enter a unique name for your **East US** regional device VM. 
+A könnyebb tisztítás érdekében ezek a virtuális gépek ugyanahhoz az erőforráscsoporthoz lesznek hozzáadva, amely tartalmazza az IoT-t, a *contoso-US-Resource-Group-* ot. A virtuális gépek azonban különálló régiókban (az USA**nyugati** régiójában és az **USA keleti**régiójában) futnak.
 
-    **--admin-username**: Use your own admin user name.
+1. A Azure Cloud Shell futtassa a következő parancsot az **USA keleti** régiójában lévő virtuális gép létrehozásához, miután a következő paramétert módosította a parancsban:
 
-    **--admin-password**: Use your own admin password.
+    **--Name (név**): adjon meg egy egyedi nevet az **USA keleti** régiójában lévő, regionális eszköz virtuális gépe számára. 
+
+    **--Admin-username**: használja a saját rendszergazdai felhasználónevét.
+
+    **--rendszergazda-jelszó**: használja a saját rendszergazdai jelszavát.
 
     ```azurecli-interactive
     az vm create \
@@ -146,15 +146,15 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your East US region VM.
+    A parancs végrehajtása több percet is igénybe vehet. Ha a parancs befejeződött, jegyezze fel az USA keleti régiójában lévő virtuális gép **publicIpAddress** értékét.
 
-1. In the Azure Cloud Shell, execute the command to create a **West US** region VM after making the following parameter changes in the command:
+1. A Azure Cloud Shell futtassa a parancsot az **USA nyugati** régiójában lévő virtuális gép létrehozásához, miután a következő paramétert módosította a parancsban:
 
-    **--name**: Enter a unique name for your **West US** regional device VM. 
+    **--Name (név**): adjon meg egy egyedi nevet az **USA nyugati** régiójának regionális eszközének virtuális gépe számára. 
 
-    **--admin-username**: Use your own admin user name.
+    **--Admin-username**: használja a saját rendszergazdai felhasználónevét.
 
-    **--admin-password**: Use your own admin password.
+    **--rendszergazda-jelszó**: használja a saját rendszergazdai jelszavát.
 
     ```azurecli-interactive
     az vm create \
@@ -167,11 +167,11 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your West US region VM.
+    A parancs végrehajtása több percet is igénybe vehet. Ha a parancs befejeződött, jegyezze fel az USA nyugati régiójának **publicIpAddress** értékét.
 
-1. Open two command-line shells. Connect to one of the regional VMs in each shell using SSH. 
+1. Nyisson meg két parancssori rendszerhéjt. Csatlakozzon az egyes rendszerhéjok egyik regionális virtuális géphez az SSH használatával. 
 
-    Pass your admin username, and the public IP address you noted for the VM as parameters to SSH. Enter the admin password when prompted.
+    Adja át a rendszergazdai felhasználónevét és a virtuális gép számára feljegyzett nyilvános IP-címet az SSH paraméterként. Ha a rendszer kéri, adja meg a rendszergazdai jelszót.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -187,12 +187,12 @@ To make clean-up easier, these VMs will be added to the same resource group that
 
 
 
-## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Prepare the Azure IoT C SDK development environment
+## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Az Azure IoT C SDK fejlesztési környezetének előkészítése
 
-In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains a sample that will simulate a tenant's device provisioning from each region.
+Ebben a szakaszban az Azure IoT C SDK-t minden egyes virtuális gépen klónozotta. Az SDK tartalmaz egy mintát, amely szimulálja a bérlő eszközének kiépítését az egyes régiókban.
 
 
-1. For each VM, install **Cmake**, **g++** , **gcc**, and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) using the following commands:
+1. Minden virtuális gép esetében telepítse a következő parancsokat a **CMAK**, a **g + +** , a **GCC**és a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) használatával:
 
     ```bash
     sudo apt-get update
@@ -200,7 +200,7 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```
 
 
-1. Clone the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) on both VMs.
+1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) klónozása mindkét virtuális gépen.
 
     ```bash
     cd ~/
@@ -209,14 +209,14 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
 
     Ez a művelet várhatóan több percig is eltarthat.
 
-1. For both VMs, create a new **cmake** folder inside the repository and change to that folder.
+1. Mindkét virtuális gép esetében hozzon létre egy új **CMAK** -mappát az adattáron belül, és váltson erre a mappára.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. For both VMs, run the following command, which builds a version of the SDK specific to your development client platform. 
+1. Mindkét virtuális gép esetében futtassa a következő parancsot, amely a fejlesztői ügyféloldali platformhoz tartozó SDK egy verzióját építi fel. 
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -244,21 +244,21 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Derive unique device keys
+## <a name="derive-unique-device-keys"></a>Egyedi eszköz kulcsának származtatása
 
-When using symmetric key attestation with group enrollments, you don't use the enrollment group keys directly. Instead you create a unique derived key for each device and mentioned in [Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments).
+Ha szimmetrikus kulcsú igazolást használ csoportos regisztrációkkal, nem használja közvetlenül a beléptetési csoport kulcsait. Ehelyett hozzon létre egy egyedi származtatott kulcsot minden eszközhöz, és a [csoportos Beléptetésekben szerepel a szimmetrikus kulcsokkal](concepts-symmetric-key-attestation.md#group-enrollments).
 
-To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
+Az eszköz kulcsának létrehozásához használja a csoport főkulcsát az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához, és Base64 formátumra alakítsa át az eredményt.
 
-Do not include your group master key in your device code.
+Ne foglalja bele a csoport főkulcsát az eszköz kódjába.
 
-Use the Bash shell example to create a derived device key for each device using **openssl**.
+A bash rendszerhéj-példa használatával hozzon létre egy származtatott eszközt az összes eszközhöz az **OpenSSL**használatával.
 
-- Replace the value for **KEY** with the **Primary Key** you noted earlier for your enrollment.
+- Cserélje le a **kulcs** értékét a regisztrációhoz korábban feljegyzett **elsődleges kulcsra** .
 
-- Replace the value for **REG_ID** with your own unique registration ID for each device. Use lowercase alphanumeric and dash ('-') characters to define both IDs.
+- Cserélje le a **REG_ID** értékét az egyes eszközökhöz tartozó saját egyedi regisztrációs azonosítóra. Használjon kisbetűs alfanumerikus és kötőjel ("-") karaktereket mindkét azonosító definiálásához.
 
-Example device key generation for *contoso-simdevice-east*:
+Példa a *contoso-simdevice-East*eszköz kulcsának generálására:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -272,7 +272,7 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
 ```
 
-Example device key generation for *contoso-simdevice-west*:
+Példa a *contoso-simdevice-West*eszköz kulcsának generálására:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -287,23 +287,23 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ```
 
 
-The tenant devices will each use their derived device key and unique registration ID to perform symmetric key attestation with the enrollment group during provisioning to the tenant IoT hubs.
+A bérlői eszközök mindegyike a származtatott eszköz kulcsát és egyedi regisztrációs AZONOSÍTÓját használja a szimmetrikus kulcs igazolására a regisztrációs csoporttal a bérlői IoT hubok kiosztása során.
 
 
 
 
-## <a name="simulate-the-devices-from-each-region"></a>Simulate the devices from each region
+## <a name="simulate-the-devices-from-each-region"></a>Az eszközök szimulálása az egyes régiókból
 
 
-In this section, you will update a provisioning sample in the Azure IoT C SDK for both of the regional VMs. 
+Ebben a szakaszban egy kiépítési mintát fog frissíteni az Azure IoT C SDK-ban mindkét regionális virtuális gépen. 
 
-The sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub that is closest based on latency.
+A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi az üzembe helyezési kérelmet az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat hatására az eszköz felismerhetővé válik, és hozzá lesz rendelve az IoT hubhoz, amely a legközelebbi késésen alapul.
 
 1. Az Azure Portalon válassza ki az eszközkiépítési szolgáltatás **Áttekintés** lapját, és jegyezze fel az **_Azonosító hatóköre_** értéket.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Open **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** for editing on both VMs.
+1. Nyissa meg a **~/azure-iot-sdk-c/provisioning\_Client/Samples/prov\_dev\_client\_Sample/prov\_dev\_client\_sample. c** a mindkét virtuális gépen való szerkesztéshez.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -315,9 +315,9 @@ The sample code simulates a device boot sequence that sends the provisioning req
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Make sure the `hsm_type` variable is set to `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` as shown below to match the enrollment group attestation method. 
+1. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Győződjön meg arról, hogy a `hsm_type` változó `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`ra van beállítva, ahogy az alább látható, hogy megfeleljen a regisztrációs csoport igazolási módszerének. 
 
-    Save your changes to the files on both VMs.
+    Mentse a fájlokat mindkét virtuális gépen.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -326,44 +326,44 @@ The sample code simulates a device boot sequence that sends the provisioning req
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. On both VMs, find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
+1. Mindkét virtuális gépen keresse meg a `prov_dev_set_symmetric_key_info()`t a **prov\_dev\_client\_sample. c** fájlhoz, amely megjegyzésként szerepel.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Uncomment the function calls, and replace the placeholder values (including the angle brackets) with the unique registration IDs and derived device keys for each device. The keys shown below are for example purposes only. Use the keys you generated earlier.
+    A függvény meghívásának visszaírása és a helyőrző értékek (beleértve a szögletes zárójeleket is) és az egyes eszközök egyedi regisztrációs azonosítóinak és származtatott kulcsának cseréje. Az alább látható kulcsok csak példaként szolgálnak. Használja a korábban létrehozott kulcsokat.
 
-    East US:
+    USA keleti régiója:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    West US:
+    USA nyugati régiója:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    Save the files.
+    Mentse a fájlokat.
 
-1. On both VMs, navigate to the sample folder shown below, and build the sample.
+1. Mindkét virtuális gépen navigáljon az alább látható minta mappájához, és hozza létre a mintát.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Once the build succeeds, run **prov\_dev\_client\_sample.exe** on both VMs to simulate a tenant device from each region. Notice that each device is allocated to the tenant IoT hub closest to the simulated device's regions.
+1. Ha a létrehozás sikeres, futtassa a **prov\_dev\_client\_sample. exe fájlt** mindkét virtuális gépen, hogy szimulálja a bérlői eszközt az egyes régiókban. Figyelje meg, hogy minden eszköz a szimulált eszköz régióihoz legközelebb eső bérlői IoT hubhoz van lefoglalva.
 
-    Run the simulation:
+    Futtassa a szimulációt:
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    Example output from the East US VM:
+    Példa az USA keleti virtuális gépe kimenetére:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -380,7 +380,7 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
     ```
 
-    Example output from the West US VM:
+    Példa az USA nyugati részén található virtuális gép kimenetére:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9
@@ -399,28 +399,28 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you plan to continue working with resources created in this article, you can leave them. If you do not plan to continue using the resource, use the following steps to delete all resources created by this article to avoid unnecessary charges.
+Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrást, a következő lépésekkel törölheti a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 
-The steps here assume you created all resources in this article as instructed in the same resource group named **contoso-us-resource-group**.
+Az itt leírt lépések azt feltételezik, hogy a cikkben szereplő összes erőforrást a **contoso-US-Resource-Group**nevű erőforráscsoport utasításai szerint hozta létre.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha az IoT Hubot egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett törölheti csak magát az IoT Hub-erőforrást.
 >
 
-To delete the resource group by name:
+Az erőforráscsoport törlése név szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-2. In the **Filter by name...** textbox, type the name of the resource group containing your resources, **contoso-us-resource-group**. 
+2. A **szűrés név szerint...** szövegmezőbe írja be az erőforrásokat tartalmazó erőforráscsoport nevét, a **contoso-US-Resource-Group**nevet. 
 
 3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
 
 4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+- További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
+- További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
 
 
 

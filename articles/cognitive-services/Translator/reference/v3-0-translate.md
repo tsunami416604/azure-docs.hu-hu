@@ -48,7 +48,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   </tr>
 </table>
 
-### <a name="optional-parameters"></a>Választható paraméterek
+### <a name="optional-parameters"></a>Nem kötelező paraméterek
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>

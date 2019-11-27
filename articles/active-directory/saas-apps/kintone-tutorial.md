@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Kintone | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Kintone.
+title: 'Oktatóanyag: Azure Active Directory integráció a Kintone-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Kintone között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,92 +22,92 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227581"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory integration with Kintone
+# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Oktatóanyag: Azure Active Directory integráció a Kintone
 
-In this tutorial, you learn how to integrate Kintone with Azure Active Directory (Azure AD).
-Integrating Kintone with Azure AD provides you with the following benefits:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Kintone a Azure Active Directory (Azure AD) szolgáltatással.
+A Kintone és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* You can control in Azure AD who has access to Kintone.
-* You can enable your users to be automatically signed-in to Kintone (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Kintone.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Kintone (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To configure Azure AD integration with Kintone, you need the following items:
+Az Azure AD-integráció Kintone való konfigurálásához a következő elemek szükségesek:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* Kintone single sign-on enabled subscription
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Kintone egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Kintone supports **SP** initiated SSO
+* A Kintone támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-kintone-from-the-gallery"></a>Adding Kintone from the gallery
+## <a name="adding-kintone-from-the-gallery"></a>Kintone hozzáadása a gyűjteményből
 
-To configure the integration of Kintone into Azure AD, you need to add Kintone from the gallery to your list of managed SaaS apps.
+A Kintone Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Kintone a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**To add Kintone from the gallery, perform the following steps:**
+**Ha Kintone szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, type **Kintone**, select **Kintone** from result panel then click **Add** button to add the application.
+4. A keresőmezőbe írja be a **Kintone**kifejezést, válassza a **Kintone** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Kintone in the results list](common/search-new-app.png)
+     ![Kintone az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-In this section, you configure and test Azure AD single sign-on with Kintone based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Kintone needs to be established.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Kintone-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Kintone kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-To configure and test Azure AD single sign-on with Kintone, you need to complete the following building blocks:
+Az Azure AD egyszeri bejelentkezés Kintone való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Kintone Single Sign-On](#configure-kintone-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Kintone test user](#create-kintone-test-user)** - to have a counterpart of Britta Simon in Kintone that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Kintone egyszeri bejelentkezés konfigurálása](#configure-kintone-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre Kintone-teszt felhasználót](#create-kintone-test-user)** – hogy a Kintone Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-To configure Azure AD single sign-on with Kintone, perform the following steps:
+Az Azure AD egyszeri bejelentkezés Kintone való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Kintone** application integration page, select **Single sign-on**.
+1. A [Azure Portal](https://portal.azure.com/) **Kintone** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Kintone Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![Kintone tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<companyname>.kintone.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.kintone.com`
 
-    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |--|
@@ -115,150 +115,150 @@ To configure Azure AD single sign-on with Kintone, perform the following steps:
     | `https://<companyname>.kintone.com` |
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Kintone Client support team](https://www.kintone.com/contact/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Kintone ügyfélszolgálati [csapatához](https://www.kintone.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. On the **Set up Kintone** section, copy the appropriate URL(s) as per your requirement.
+6. A **Kintone beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Bejelentkezési URL
 
-    b. Azure AD Identifier
+    b. Azure AD-azonosító
 
-    c. Logout URL
+    c. Kijelentkezési URL
 
-### <a name="configure-kintone-single-sign-on"></a>Configure Kintone Single Sign-On
+### <a name="configure-kintone-single-sign-on"></a>Kintone egyszeri bejelentkezés konfigurálása
 
-1. In a different web browser window, sign into your **Kintone** company site as an administrator.
+1. Egy másik böngészőablakban jelentkezzen be a **Kintone** vállalati webhelyre rendszergazdaként.
 
-1. Click **Settings icon**.
+1. Kattintson a **Beállítások ikonra**.
 
     ![Beállítások](./media/kintone-tutorial/ic785879.png "Beállítások")
 
-1. Click **Users & System Administration**.
+1. Kattintson a **felhasználók & rendszerfelügyelet**elemre.
 
-    ![Users & System Administration](./media/kintone-tutorial/ic785880.png "Users & System Administration")
+    ![Felhasználók & rendszerfelügyelet](./media/kintone-tutorial/ic785880.png "Felhasználók & rendszerfelügyelet")
 
-1. Under **System Administration \> Security** click **Login**.
+1. A **rendszerfelügyelet \> biztonság** területen kattintson a **Bejelentkezés**elemre.
 
     ![Bejelentkezés](./media/kintone-tutorial/ic785881.png "Bejelentkezés")
 
-1. Click **Enable SAML authentication**.
+1. Kattintson az **SAML-hitelesítés engedélyezése**lehetőségre.
 
-    ![SAML Authentication](./media/kintone-tutorial/ic785882.png "SAML Authentication")
+    ![SAML-hitelesítés](./media/kintone-tutorial/ic785882.png "SAML-hitelesítés")
 
-1. In the SAML Authentication section, perform the following steps:
+1. Az SAML hitelesítés szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML Authentication](./media/kintone-tutorial/ic785883.png "SAML Authentication")
+    ![SAML-hitelesítés](./media/kintone-tutorial/ic785883.png "SAML-hitelesítés")
 
-    a. In the **Login URL** textbox, paste the value of **Login URL** which you have copied from Azure portal.
+    a. A **bejelentkezési URL** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
-    b. In the **Logout URL** textbox, paste the value of **Logout URL** which you have copied from Azure portal.
+    b. A **kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-    c. Click **Browse** to upload your downloaded certificate file from Azure portal.
+    c. Kattintson a **Tallózás** gombra a letöltött tanúsítványfájl Azure Portal való feltöltéséhez.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
-    ![New user Button](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![The User dialog box](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kintone.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Kintone hozzáférésének biztosításával.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Kintone**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Kintone**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, select **Kintone**.
+2. Az alkalmazások listában válassza a **Kintone**lehetőséget.
 
-    ![The Kintone link in the Applications list](common/all-applications.png)
+    ![Az Kintone hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-kintone-test-user"></a>Create Kintone test user
+### <a name="create-kintone-test-user"></a>Kintone-tesztelési felhasználó létrehozása
 
-To enable Azure AD users to sign in to Kintone, they must be provisioned into Kintone. In the case of Kintone, provisioning is a manual task.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Kintone, a Kintone kell kiépíteni őket. Kintone esetén a kiépítés manuális feladat.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
-1. Sign in to your **Kintone** company site as an administrator.
+1. Jelentkezzen be a **Kintone** vállalati webhelyre rendszergazdaként.
 
-1. Click **Settings icon**.
+1. Kattintson a **Beállítások ikonra**.
 
     ![Beállítások](./media/kintone-tutorial/ic785879.png "Beállítások")
 
-1. Click **Users & System Administration**.
+1. Kattintson a **felhasználók & rendszerfelügyelet**elemre.
 
-    ![User & System Administration](./media/kintone-tutorial/ic785880.png "User & System Administration")
+    ![Felhasználói & Rendszerfelügyeleti webszolgáltatások](./media/kintone-tutorial/ic785880.png "Felhasználói & Rendszerfelügyeleti webszolgáltatások")
 
-1. Under **User Administration**, click **Departments & Users**.
+1. A **felhasználó felügyelete**területen kattintson a **részlegek & felhasználók**elemre.
 
-    ![Department & Users](./media/kintone-tutorial/ic785888.png "Department & Users")
+    ![Részleg & felhasználók](./media/kintone-tutorial/ic785888.png "Részleg & felhasználók")
 
-1. Click **New User**.
+1. Kattintson az **új felhasználó**elemre.
 
-    ![New Users](./media/kintone-tutorial/ic785889.png "New Users")
+    ![Új felhasználók](./media/kintone-tutorial/ic785889.png "Új felhasználók")
 
-1. In the **New User** section, perform the following steps:
+1. Az **új felhasználó** szakaszban hajtsa végre a következő lépéseket:
 
-    ![New Users](./media/kintone-tutorial/ic785890.png "New Users")
+    ![Új felhasználók](./media/kintone-tutorial/ic785890.png "Új felhasználók")
 
-    a. Type a **Display Name**, **Login Name**, **New Password**, **Confirm Password**, **E-mail Address**, and other details of a valid Azure AD account you want to provision into the related textboxes.
+    a. Írja be a **megjelenítendő nevet**, a **bejelentkezési nevet**, az **új jelszót**, a **jelszó**megadását, az **E-mail címet**, valamint a kapcsolódó szövegmezőbe felvenni kívánt érvényes Azure ad-fiók egyéb részleteit.
 
     b. Kattintson a **Save** (Mentés) gombra.
 
 > [!NOTE]
-> You can use any other Kintone user account creation tools or APIs provided by Kintone to provision Azure AD user accounts.
+> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Kintone által biztosított Kintone felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the Kintone tile in the Access Panel, you should be automatically signed in to the Kintone for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Kintone csempére kattint, automatikusan be kell jelentkeznie arra a Kintone, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

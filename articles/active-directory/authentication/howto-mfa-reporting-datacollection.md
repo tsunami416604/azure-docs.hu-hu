@@ -1,6 +1,6 @@
 ---
-title: Azure MFA user data collection - Azure Active Directory
-description: What information is used to help authenticate users by Azure Multi-Factor Authentication?
+title: Azure MFA felhasználói adatgyűjtés – Azure Active Directory
+description: Milyen információkat használ a felhasználók Azure Multi-Factor Authentication általi hitelesítéséhez?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,176 +18,176 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381765"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication user data collection
+# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
 
-This document explains how to find user information collected by Azure Multi-Factor Authentication Server (MFA Server) and Azure MFA (Cloud-based) in the event you would like to remove it.
+Ez a dokumentum ismerteti az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és az Azure MFA (felhőalapú) által gyűjtött felhasználói adatok megkeresését abban az esetben, ha el szeretné távolítani.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="information-collected"></a>Information collected
+## <a name="information-collected"></a>Összegyűjtött információk
 
-MFA Server, the NPS Extension, and the Windows Server 2016 Azure MFA AD FS Adapter collect and store the following information for 90 days.
+Az MFA-kiszolgáló, az NPS-bővítmény és a Windows Server 2016 Azure MFA AD FS adapter a következő adatokat gyűjti és tárolja 90 napig.
 
-Authentication Attempts (used for reporting and troubleshooting):
+Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz használatos):
 
 - Időbélyeg
 - Felhasználónév
 - Utónév
 - Vezetéknév
-- Email Address
-- User Group
-- Authentication Method (Phone Call, Text Message, Mobile App, OATH Token)
-- Phone Call Mode (Standard, PIN)
-- Text Message Direction (One-Way, Two-Way)
-- Text Message Mode (OTP, OTP + PIN)
-- Mobile App Mode (Standard, PIN)
-- OATH Token Mode (Standard, PIN)
-- Authentication Type
+- E-mail cím
+- Felhasználói csoport
+- Hitelesítési módszer (telefonhívás, szöveges üzenet, Mobile App, eskü token)
+- Telefonhívási mód (standard, PIN)
+- Szöveges üzenet iránya (egyirányú, kétirányú)
+- Szöveges üzenet mód (OTP, OTP + PIN)
+- Mobile App Mode (standard, PIN)
+- ESKÜ token mód (standard, PIN)
+- Hitelesítés típusa
 - Alkalmazásnév
-- Primary Call Country Code
-- Primary Call Phone Number
-- Primary Call Extension
-- Primary Call Authenticated
-- Primary Call Result
-- Backup Call Country Code
-- Backup Call Phone Number
-- Backup Call Extension
-- Backup Call Authenticated
-- Backup Call Result
-- Overall Authenticated
-- Overall Result
-- Eredmények
-- Authenticated
+- Elsődleges hívási országkód
+- Elsődleges hívás telefonszáma
+- Elsődleges hívási bővítmény
+- Elsődleges hívás hitelesítve
+- Elsődleges hívás eredménye
+- Biztonsági mentési hívás országkód
+- Biztonságimásolat-hívás telefonszáma
+- Biztonságimásolat-hívások bővítménye
+- Biztonsági mentési hívás hitelesítve
+- Biztonsági mentési hívás eredménye
+- Teljes hitelesítés
+- Teljes eredmény
+- Results (Eredmények)
+- Hitelesített
 - Eredmény
-- Initiating IP Address
+- IP-cím kezdeményezése
 - Eszközök
-- Device Token
-- Device Type
-- Mobile App Version
+- Eszköz jogkivonata
+- Eszköz típusa
+- Mobile App-verzió
 - Operációs rendszer verziója
 - Eredmény
-- Used Check for Notification
+- Értesítés használatban
 
-Activations (attempts to activate an account in the Microsoft Authenticator mobile app):
+Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók aktiválását kísérli meg):
 - Felhasználónév
 - Fiók neve
 - Időbélyeg
-- Get Activation Code Result
-- Activate Success
-- Activate Error
-- Activation Status Result
-- Device  Name
-- Device Type
-- App Version
-- OATH Token Enabled
+- Aktivációs kód eredményének beolvasása
+- Sikeres aktiválás
+- Aktiválási hiba
+- Aktiválási állapot eredménye
+- Eszköz neve
+- Eszköz típusa
+- Alkalmazásverzió
+- ESKÜ-token engedélyezve
 
-Blocks (used to determine blocked state and for reporting):
+Blokkok (a blokkolt állapot és a jelentéskészítés megállapításához használatos):
 
-- Block Timestamp
-- Block By Username
+- Időbélyeg letiltása
+- Blokkolás Felhasználónév szerint
 - Felhasználónév
-- Országkód
+- Országkód:
 - Telefonszám
-- Phone Number Formatted
+- Telefonszám formázva
 - Mellék
-- Clean Extension
-- Blocked
-- Block Reason
-- Completion Timestamp
-- Completion Reason
+- Tiszta bővítmény
+- Blokkolt
+- Blokkolás oka
+- Befejezés időbélyeg
+- Befejezés oka
 - Fiókzárolás
-- Fraud Alert
-- Fraud Alert Not Blocked
+- Csalási riasztás
+- Csalási riasztás nincs letiltva
 - Nyelv
 
-Bypasses (used for reporting):
+Megkerülések (jelentéskészítéshez használatos):
 
-- Bypass Timestamp
-- Bypass Seconds
-- Bypass By Username
+- Mellőzési időbélyeg
+- Mellőzési másodpercek
+- Mellőzés Felhasználónév alapján
 - Felhasználónév
-- Országkód
+- Országkód:
 - Telefonszám
-- Phone Number Formatted
+- Telefonszám formázva
 - Mellék
-- Clean Extension
-- Bypass Reason
-- Completion Timestamp
-- Completion Reason
-- Bypass Used
+- Tiszta bővítmény
+- Mellőzés oka
+- Befejezés időbélyeg
+- Befejezés oka
+- Használat mellőzése
 
-Changes (used to sync user changes to MFA Server or Azure AD):
+Módosítások (az MFA-kiszolgálóra vagy az Azure AD-ra történő felhasználói változások szinkronizálásához használatos):
 
-- Change Timestamp
+- Időbélyeg módosítása
 - Felhasználónév
-- New Country Code
-- New Phone Number
-- New Extension
-- New Backup Country Code
-- New Backup Phone Number
-- New Backup Extension
-- New PIN
-- PIN Change Required
-- Old Device Token
-- New Device Token
+- Új országkód
+- Új telefonszám
+- Új bővítmény
+- Új biztonságimásolat-országkód
+- Új tartalék telefonszám
+- Új biztonsági mentési bővítmény
+- Új PIN-kód
+- PIN-kód módosítása kötelező
+- Régi eszköz tokenje
+- Új eszköz jogkivonata
 
-## <a name="gather-data-from-mfa-server"></a>Gather data from MFA Server
+## <a name="gather-data-from-mfa-server"></a>Adatok összegyűjtése az MFA-kiszolgálóról
 
-For MFA Server version 8.0 or higher the following process allows administrators to export all data for users:
+Az MFA-kiszolgáló 8,0-es vagy újabb verziója esetén az alábbi folyamat lehetővé teszi a rendszergazdák számára az összes felhasználó exportálását a felhasználók számára:
 
-- Log in to your MFA Server, navigate to the **Users** tab, select the user in question, and click the **Edit** button. Take screenshots (Alt-PrtScn) of each tab to provide the user their current MFA settings.
-- From the command line of the MFA Server, run the following command changing the path according to your installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` to produce a JSON formatted file.
-- Administrators can also use the Web Service SDK GetUserGdpr operation as an option to export all MFA cloud service information collected for a given user or  incorporate into a larger reporting solution.
-- Search `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` and any backups for “\<username>” (include the quotes in the search) to find all instances of the user record being added or changed.
-   - These records can be limited (but not eliminated) by unchecking **“Log user changes”** in the MFA Server UX, Logging section, Log Files tab.
-   - If syslog is configured, and **“Log user changes”** is checked in the MFA Server UX, Logging section, Syslog tab, then the log entries can be gathered from syslog instead.
-- Other occurrences of the username in MultiFactorAuthSvc.log and other MFA Server log files pertaining to authentication attempts are considered operational and duplicative to the information provided using MultiFactorAuthGdpr.exe export or Web Service SDK GetUserGdpr.
+- Jelentkezzen be az MFA-kiszolgálóra, lépjen a **felhasználók** lapra, válassza ki a szóban forgó felhasználót, majd kattintson a **Szerkesztés** gombra. Készítsen képernyőképeket (Alt-PrtScn) az egyes lapokon, hogy a felhasználó az aktuális MFA-beállításait adja meg.
+- Az MFA-kiszolgáló parancssorából futtassa a következő parancsot a telepítési `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` alapján, hogy egy JSON formátumú fájlt hozzon létre.
+- A rendszergazdák a Web Service SDK GetUserGdpr műveletet is használhatják az adott felhasználó számára gyűjtött összes MFA Cloud Service-információ exportálására, vagy egy nagyobb jelentéskészítési megoldásba való beépítésre.
+- Keressen `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` és minden biztonsági mentést a "\<username >" (a keresésben szereplő idézőjelekkel együtt), hogy megkeresse az összes hozzáadott vagy módosított felhasználói rekord összes példányát.
+   - Ezek a rekordok korlátozottak (de nem távolíthatók el) a **"felhasználói változások naplózása"** lehetőség törlésével az MFA-kiszolgáló UX-ben, a naplózás szakaszban, a naplófájlok lapon.
+   - Ha a syslog konfigurálva van, és a **"felhasználói változások naplózása"** be van JELÖLVE az MFA-kiszolgáló UX-ben, a naplózási szakaszban, a syslog lapon, a naplóbejegyzések begyűjthetők a syslog használatával.
+- A MultiFactorAuthSvc. log fájlban és a hitelesítési kísérletekhez tartozó más MFA-kiszolgáló naplófájljaiban található Felhasználónév egyéb előfordulása működési és duplikált a MultiFactorAuthGdpr. exe export vagy Web Service SDK használatával biztosított információknak. GetUserGdpr.
 
-## <a name="delete-data-from-mfa-server"></a>Delete data from MFA Server
+## <a name="delete-data-from-mfa-server"></a>Adatok törlése az MFA-kiszolgálóról
 
-From the command line of the MFA Server, run the following command changing the path according to your installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` to delete all MFA cloud service information collected for this user.
+Az MFA-kiszolgáló parancssorából futtassa az alábbi parancsot a telepítési `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` alapján, hogy törölje az összes MFA Cloud Service-információ a felhasználó számára gyűjtött adatait.
 
-- Data included in the export is deleted in real time, but it may take up to 30 days for operational or duplicative data to be fully removed.
-- Administrators can also use the Web Service SDK DeleteUserGdpr operation as an option to delete all MFA cloud service information collected for a given user or incorporate into a larger reporting solution.
+- Az exportálásban szereplő adategységeket valós időben törli a rendszer, de akár 30 napig is eltarthat, amíg az operatív vagy a duplikált adatfeldolgozás teljesen el nem távolítható.
+- A rendszergazdák a Web Service SDK DeleteUserGdpr műveletet is használhatják az adott felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére, vagy egy nagyobb jelentéskészítési megoldásba való beépítésre.
 
-## <a name="gather-data-from-nps-extension"></a>Gather data from NPS Extension
+## <a name="gather-data-from-nps-extension"></a>Adatok összegyűjtése az NPS-bővítményből
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export.
+Az exportálási kérelem elvégzéséhez használja a [Microsoft adatvédelmi portálját](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) .
 
-- MFA information is included in the export, which may take hours or days to complete.
-- Occurrences of the username in the AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh, and AzureMfa/AuthZ/AuthZOptCh event logs are considered operational and duplicative to the information provided in the export.
+- Az MFA-információk az Exportálás részét képezik, amely órákat vagy napokat is igénybe vehet.
+- Az AzureMfa/AuthN/AuthNOptCh, a AzureMfa/AuthZ/AuthZAdminCh, valamint a AzureMfa/AuthZ/AuthZOptCh eseménynaplókban előforduló Felhasználónév az exportálás során megadott információnak megfelelően működik és duplikált.
 
-## <a name="delete-data-from-nps-extension"></a>Delete data from NPS Extension
+## <a name="delete-data-from-nps-extension"></a>Adatok törlése az NPS-bővítményből
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
+A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) a fiókhoz tartozó, a felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére vonatkozó kérést hozhat.
 
-- It may take up to 30 days for data to be fully removed.
+- Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Gather data from Windows Server 2016 Azure MFA AD FS Adapter
+## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Adatok összegyűjtése a Windows Server 2016 Azure MFA AD FS adapterről
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export. 
+Az exportálási kérelem elvégzéséhez használja a [Microsoft adatvédelmi portálját](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) . 
 
-- MFA information is included in the export, which may take hours or days to complete.
-- Occurrences of the username in the AD FS Tracing/Debug event logs (if enabled) are considered operational and duplicative to the information provided in the export.
+- Az MFA-információk az Exportálás részét képezik, amely órákat vagy napokat is igénybe vehet.
+- Az AD FS nyomkövetési/hibakeresési eseménynaplókban (ha engedélyezve vannak) a Felhasználónév előfordulása az exportálás során megadott információk működésének és ismétlődőnek tekintendő.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Delete data from Windows Server 2016 Azure MFA AD FS Adapter
+## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Adatok törlése a Windows Server 2016 Azure MFA AD FS adapterről
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
+A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) a fiókhoz tartozó, a felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére vonatkozó kérést hozhat.
 
-- It may take up to 30 days for data to be fully removed.
+- Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="gather-data-for-azure-mfa"></a>Gather data for Azure MFA
+## <a name="gather-data-for-azure-mfa"></a>Adatok gyűjtése az Azure MFA-hoz
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Export.
+Az exportálási kérelem elvégzéséhez használja a [Microsoft adatvédelmi portálját](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) .
 
-- MFA information is included in the export, which may take hours or days to complete.
+- Az MFA-információk az Exportálás részét képezik, amely órákat vagy napokat is igénybe vehet.
 
-## <a name="delete-data-for-azure-mfa"></a>Delete Data for Azure MFA
+## <a name="delete-data-for-azure-mfa"></a>Az Azure MFA-hoz tartozó adattörlés
 
-Use the [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) to make a request for Account Close to delete all MFA cloud service information collected for this user.
+A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) a fiókhoz tartozó, a felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére vonatkozó kérést hozhat.
 
-- It may take up to 30 days for data to be fully removed.
+- Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[MFA Server reporting](howto-mfa-reporting.md)
+[MFA-kiszolgáló jelentése](howto-mfa-reporting.md)

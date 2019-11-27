@@ -132,7 +132,7 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár). |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot |Általában a megfelelő REST-hívás HTTP-állapotkód, de tartalmazhat más, alállapotot leíró karakterláncokat is, például az alábbi általános értékeket: OK (HTTP-állapotkód: 200), létrehozva (HTTP-állapotkód: 201), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapot Kód: 204), hibás kérés (HTTP-állapotkód: 400), nem található (HTTP-állapotkód: 404), ütközés (HTTP-állapotkód: 409), belső kiszolgálóhiba (HTTP-állapotkód: 500), a szolgáltatás nem érhető el (HTTP-állapotkód: 503), átjáró időkorlátja (HTTP-állapotkód: 504). |
-| EventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 
@@ -264,7 +264,7 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 | leírás |A riasztási esemény statikus szöveges leírása. |
 | eventDataId |A riasztási esemény egyedi azonosítója. |
 | category | Mindig "ResourceHealth" |
-| EventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés", "tájékoztató" és "részletes" |
 | operationId |Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
 | operationName |A művelet neve. |
@@ -368,7 +368,7 @@ Ez a kategória az Azure-riasztások összes aktiválásának rekordját tartalm
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár). |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot | Általában null a riasztásokhoz. |
-| EventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 
@@ -482,7 +482,7 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 | properties.LastScaleActionTime | Az az időbélyeg, amikor az autoskálázás művelet bekövetkezett. |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot | Általában null az autoskálázáshoz. |
-| EventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 
@@ -570,7 +570,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 | properties.Severity |A súlyossági szint. A lehetséges értékek: "magas", "közepes" vagy "alacsony". |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori érték: elindítva, folyamatban, sikeres, sikertelen, aktív, megoldva. |
 | Részállapot | Általában null a biztonsági eseményekhez. |
-| EventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 
@@ -752,7 +752,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 | eventDataId | Egy esemény egyedi azonosítója. |
 | eventName | Vagy "BeginRequest" vagy "EndRequest". A "BeginRequest" a késleltetett auditIfNotExists és deployIfNotExists-értékelések, valamint a deployIfNotExists-effektusok elindítására szolgál. Minden más művelet "EndRequest" értéket ad vissza. |
 | category | Deklarálja a tevékenység naplójának eseményét a "szabályzat" kifejezésnek megfelelően. |
-| EventTimestamp | Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| eventTimestamp | Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
 | id | Az esemény egyedi azonosítója az adott erőforráson. |
 | szint | Az esemény szintje. A naplózás a "figyelmeztetés" kifejezést használja, és a megtagadás a "hiba" kifejezést használja. Egy auditIfNotExists vagy deployIfNotExists hiba a súlyosságtól függően "figyelmeztetés" vagy "hiba" hozható elő. Minden más házirend-esemény a "tájékoztató" kifejezést használja. |
 | operationId | Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
@@ -777,7 +777,7 @@ Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe v
 
 | Diagnosztikai naplók séma tulajdonsága | Műveletnapló REST API Schema tulajdonság | Megjegyzések |
 | --- | --- | --- |
-| time | EventTimestamp |  |
+| time | eventTimestamp |  |
 | resourceId | resourceId | a subscriptionId, a resourceType és a resourceGroupName a resourceId. |
 | operationName | operationName. Value |  |
 | category | Művelet nevének része | A művelet típusának feltörése – "írás"/"Törlés"/"művelet" |

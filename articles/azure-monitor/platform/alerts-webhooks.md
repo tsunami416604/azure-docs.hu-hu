@@ -79,7 +79,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | leírás |I | |A riasztás leírása. |
 | conditionType |I |Metrika, esemény |Két típusú riasztás támogatott: metrika és esemény. A metrikai riasztások metrikai feltételen alapulnak. Az események riasztásai a tevékenység naplójában lévő eseményen alapulnak. Ezzel az értékkel ellenőrizhető, hogy a riasztás metrikán vagy eseményen alapul-e. |
 | condition |I | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
-| MetricName |Metrikus riasztások esetén | |Annak a mérőszámnak a neve, amely meghatározza, hogy mi a szabály figyeli. |
+| metricName |Metrikus riasztások esetén | |Annak a mérőszámnak a neve, amely meghatározza, hogy mi a szabály figyeli. |
 | metricUnit |Metrikus riasztások esetén |Bájtok, BytesPerSecond, Darabszám, CountPerSecond, százalék, másodperc |A mérőszámban engedélyezett egység. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Metrikus riasztások esetén | |A riasztást kiváltó metrika tényleges értéke. |
 | threshold |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |

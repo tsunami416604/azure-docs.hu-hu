@@ -1,6 +1,6 @@
 ---
-title: Integrate RDG with Azure MFA NPS extension - Azure Active Directory
-description: Integrate your Remote Desktop Gateway infrastructure with Azure MFA using the Network Policy Server extension for Microsoft Azure
+title: A RDG integrálása az Azure MFA NPS-bővítményrel – Azure Active Directory
+description: A távoli asztali átjáró infrastruktúra integrálása az Azure MFA használata a hálózati házirend-kiszolgáló bővítmény a Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,371 +18,371 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381814"
 ---
-# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrate your Remote Desktop Gateway infrastructure using the Network Policy Server (NPS) extension and Azure AD
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
-This article provides details for integrating your Remote Desktop Gateway infrastructure with Azure Multi-Factor Authentication (MFA) using the Network Policy Server (NPS) extension for Microsoft Azure.
+Ez a cikk részletes adatokat biztosít a távoli asztali átjáró infrastruktúra integrálása az Azure multi-factor Authentication (MFA) a hálózati házirend-kiszolgáló (NPS) bővítmény használata a Microsoft Azure-hoz.
 
-The Network Policy Server (NPS) extension for Azure allows customers to safeguard Remote Authentication Dial-In User Service (RADIUS) client authentication using Azure’s cloud-based [Multi-Factor Authentication (MFA)](multi-factor-authentication.md). This solution provides two-step verification for adding a second layer of security to user sign-ins and transactions.
+Az Azure-hoz készült hálózati házirend-kiszolgáló (NPS) bővítmény lehetővé teszi, hogy az ügyfelek az Azure felhőalapú [multi-Factor Authentication (MFA)](multi-factor-authentication.md)használatával megóvják Remote Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítést. Ez a megoldás második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat kétlépéses ellenőrzést biztosít.
 
-This article provides step-by-step instructions for integrating the NPS infrastructure with Azure MFA using the NPS extension for Azure. This enables secure verification for users attempting to sign in to a Remote Desktop Gateway.
+Ebben a cikkben részletes útmutatást nyújt a hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure MFA számára a hálózati házirend-bővítmény használata az Azure-hoz. Ez lehetővé teszi a távoli asztali átjáró bejelentkezni próbáló felhasználók biztonságos ellenőrzése.
 
 > [!NOTE]
-> This article should not be used with MFA Server deployments and should only be used with Azure MFA (Cloud-based) deployments.
+> Ez a cikk nem használható az MFA-kiszolgálók üzembe helyezéséhez, és csak az Azure MFA (felhőalapú) környezetekben használható.
 
-The Network Policy and Access Services (NPS) gives organizations the ability to do the following:
+A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szervezetek a következőket teszi:
 
-* Define central locations for the management and control of network requests by specifying who can connect, what times of day connections are allowed, the duration of connections, and the level of security that clients must use to connect, and so on. Rather than specifying these policies on each VPN or Remote Desktop (RD) Gateway server, these policies can be specified once in a central location. The RADIUS protocol provides the centralized Authentication, Authorization, and Accounting (AAA).
-* Establish and enforce Network Access Protection (NAP) client health policies that determine whether devices are granted unrestricted or restricted access to network resources.
-* Provide a means to enforce authentication and authorization for access to 802.1x-capable wireless access points and Ethernet switches.
+* Adja meg a központi felügyeleti helyek és a vezérlő megadásával, akik csatlakozhatnak a hálózati kérelmek, milyen alkalommal nap-kapcsolatok engedélyezettek, a kapcsolatok időtartama, és a biztonság, az ügyfelek kell kapcsolódni, és így tovább. Ahelyett, hogy ezek a szabályzatok megadása minden VPN- vagy távoli asztali (RD) átjáró kiszolgálón, ezek a szabályzatok egyszer adható meg egy központi helyen. A RADIUS protokollal biztosít a központosított hitelesítési, engedélyezési és nyilvántartási (AAA).
+* Hozzon létre, és érvényesíti a hálózatvédelem (NAP) ügyfél állapotházirendeket, amelyek meghatározzák, hogy eszközök, amelyekhez hozzáférést korlátozás nélküli vagy korlátozott a hálózati erőforrásokhoz.
+* Adja meg a hitelesítési és engedélyezési 802.1 hozzáférés kényszerítésére azt jelenti, hogy x-kompatibilis vezeték nélküli hozzáférési pontok és Ethernet-kapcsolók.
 
-Typically, organizations use NPS (RADIUS) to simplify and centralize the management of VPN policies. However, many organizations also use NPS to simplify and centralize the management of RD Desktop Connection Authorization Policies (RD CAPs).
+A szervezetek általában a hálózati házirend-kiszolgáló (RADIUS) használatával egyszerűsítik és központosítják a VPN-házirendek kezelését. Azonban számos szervezet is használhatja az NPS egyszerűbbé tétele és a távoli asztali asztali kapcsolatengedélyezési házirendek (RD CAPs) kezelésének központosítása.
 
-Organizations can also integrate NPS with Azure MFA to enhance security and provide a high level of compliance. This helps ensure that users establish two-step verification to sign in to the Remote Desktop Gateway. For users to be granted access, they must provide their username/password combination along with information that the user has in their control. This information must be trusted and not easily duplicated, such as a cell phone number, landline number, application on a mobile device, and so on. RDG currently supports phone call and push notifications from Microsoft authenticator app methods for 2FA. For more information about supported authentication methods see the section [Determine which authentication methods your users can use](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Szervezetek is integrálhatja az Azure MFA megfelelőségi magas szintű biztonság növelése és a hálózati házirend-kiszolgáló. Ezzel biztosíthatja, hogy a felhasználók kétlépéses ellenőrzést, jelentkezzen be a távoli asztali átjáró létrehozásához. A felhasználók számára hozzáférést biztosítani a felhasználónév/jelszó kombináció, amely a felhasználó rendelkezik a hatókörükön információkkal együtt kell adnia. Ezeket az információkat megbízható legyen, és nem nehezen másolható, például egy mobiltelefonszámot, a mobiltelefonra száma, az alkalmazás egy mobileszközön, és így tovább. A RDG jelenleg támogatja a Microsoft hitelesítő alkalmazási módszereinek telefonos hívását és leküldéses értesítéseit a 2FA. A támogatott hitelesítési módszerekkel kapcsolatos további információkért tekintse [meg a felhasználók által használható hitelesítési módszerek meghatározását](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)ismertető szakaszt.
 
-Prior to the availability of the NPS extension for Azure, customers who wished to implement two-step verification for integrated NPS and Azure MFA environments had to configure and maintain a separate MFA Server in the on-premises environment as documented in [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
+Az Azure-hoz készült NPS-bővítmény rendelkezésre állása előtt azok az ügyfelek, akik az integrált hálózati házirend-kiszolgáló és az Azure MFA-környezetek kétlépéses ellenőrzésének megvalósítását kívánják végrehajtani, külön MFA-kiszolgálót kellett konfigurálniuk és karbantartani a helyszíni környezetben, ahogyan azt a [Távoli asztali átjáró és az azure multi-Factor Authentication-kiszolgáló RADIUS használatával](howto-mfaserver-nps-rdg.md)dokumentálták.
 
-The availability of the NPS extension for Azure now gives organizations the choice to deploy either an on-premises based MFA solution or a cloud-based MFA solution to secure RADIUS client authentication.
+Az NPS-bővítményt, az Azure-ban rendelkezésre állásának most vállalatok számára teszi lehetővé a kiválasztott vagy egy helyszíni MFA-megoldást, vagy egy MFA felhőalapú megoldás üzembe biztonságos RADIUS-ügyfél-hitelesítés.
 
-## <a name="authentication-flow"></a>Authentication Flow
+## <a name="authentication-flow"></a>A hitelesítési folyamatból
 
-For users to be granted access to network resources through a Remote Desktop Gateway, they must meet the conditions specified in one RD Connection Authorization Policy (RD CAP) and one RD Resource Authorization Policy (RD RAP). RD CAPs specify who is authorized to connect to RD Gateways. RD RAPs specify the network resources, such as remote desktops or remote apps, that the user is allowed to connect to through the RD Gateway.
+Távoli asztali átjárón keresztül a hálózati erőforrásokhoz való hozzáférést nyerni korlátozott felhasználók számára egy távoli asztali kapcsolat engedélyezési házirendje (RD CAP) és a egy távoli asztali erőforrás engedélyezési házirendje (RD RAP) a megadott feltételeknek kell megfelelniük. A távoli asztali CAPs adja meg, ki jogosult csatlakozni a távoli asztali átjáró. RD RAP-k adja meg a hálózati erőforrások, például a távoli asztali vagy távoli alkalmazások esetében, amelyet a felhasználó számára az RD-átjárón keresztül.
 
-An RD Gateway can be configured to use a central policy store for RD CAPs. RD RAPs cannot use a central policy, as they are processed on the RD Gateway. An example of an RD Gateway configured to use a central policy store for RD CAPs is a RADIUS client to another NPS server that serves as the central policy store.
+Az RD átjáró központi házirend áruházbeli használandó távoli asztali CAPs konfigurálható. RD RAP-k nem használhatja egy központi házirend feldolgozása az RD-átjárón. RD-átjárón konfigurált központi házirend áruházbeli használandó távoli asztali CAPs egyik példája egy RADIUS-ügyfél egy másik hálózati házirend-kiszolgálóra, amely a központi házirend tárolóként szolgál.
 
-When the NPS extension for Azure is integrated with the NPS and Remote Desktop Gateway, the successful authentication flow is as follows:
+Ha az NPS-bővítményt, az Azure-ban a hálózati házirend-kiszolgáló és a távoli asztali átjáró integrálva van, a sikeres hitelesítési folyamat következőképpen történik:
 
-1. The Remote Desktop Gateway server receives an authentication request from a remote desktop user to connect to a resource, such as a Remote Desktop session. Acting as a RADIUS client, the Remote Desktop Gateway server converts the request to a RADIUS Access-Request message and sends the message to the RADIUS (NPS) server where the NPS extension is installed.
-1. The username and password combination is verified in Active Directory and the user is authenticated.
-1. If all the conditions as specified in the NPS Connection Request and the Network Policies are met (for example, time of day or group membership restrictions), the NPS extension triggers a request for secondary authentication with Azure MFA.
-1. Azure MFA communicates with Azure AD, retrieves the user’s details, and performs the secondary authentication using supported methods.
-1. Upon success of the MFA challenge, Azure MFA communicates the result to the NPS extension.
-1. The NPS server, where the extension is installed, sends a RADIUS Access-Accept message for the RD CAP policy to the Remote Desktop Gateway server.
-1. The user is granted access to the requested network resource through the RD Gateway.
+1. A távoli asztali átjáró kiszolgálójának szeretne csatlakozni egy erőforrást, például a távoli asztali munkamenetet a távoli asztali felhasználók hitelesítési kérést kap. RADIUS-ügyfélként működő, a távoli asztali átjáró kiszolgálójának RADIUS Access-kérelem üzenet konvertálja a kérést, és a üzenetet küld a RADIUS (NPS) kiszolgálóhoz, amelyen telepítve van-e az NPS-bővítményének.
+1. A felhasználónév és jelszó kombinációjával ellenőrzése az Active Directoryban, és a felhasználó hitelesítését.
+1. Ha a hálózati házirend-kiszolgáló kapcsolódási kérelmet, és a hálózati házirendek megadott feltételek mindegyike teljesül (például időpont vagy csoport tagsági korlátozások), az NPS-bővítményének elindítja az Azure MFA másodlagos hitelesítési kérést.
+1. Az Azure MFA kommunikál az Azure ad-vel, a felhasználó adatait kérdezi le, és végrehajtja a másodlagos hitelesítést támogatott módszerrel.
+1. Követően sikeres, az MFA-hitelesítést az Azure MFA kommunikál az NPS-bővítményt az eredményt.
+1. A hálózati házirend-kiszolgáló, amelyen a bővítményt telepíti, a távoli asztali átjáró kiszolgálójának az RD CAP házirend RADIUS Access-Accept üzenetet küld.
+1. A felhasználó hozzáférést kap a kért hálózati erőforrás az RD átjárón keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-This section details the prerequisites necessary before integrating Azure MFA with the Remote Desktop Gateway. Before you begin, you must have the following prerequisites in place.  
+Ez a szakasz részletesen előtt az Azure MFA integrálása a távoli asztali átjáró szükséges előfeltételeket. Mielőtt elkezdené, az alábbi előfeltételek teljesülnek kell rendelkeznie.  
 
-* Remote Desktop Services (RDS) infrastructure
-* Azure MFA License
-* Windows Server software
-* Network Policy and Access Services (NPS) role
-* Azure Active Directory synched with on-premises Active Directory
+* Távoli asztali szolgáltatások (RDS) infrastruktúra
+* Az Azure MFA-licenc
+* A Windows Servert
+* Hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör
+* Az Azure Active Directory a helyszíni Active Directoryval szinkronizált
 * Azure Active Directory GUID ID
 
-### <a name="remote-desktop-services-rds-infrastructure"></a>Remote Desktop Services (RDS) infrastructure
+### <a name="remote-desktop-services-rds-infrastructure"></a>Távoli asztali szolgáltatások (RDS) infrastruktúra
 
-You must have a working Remote Desktop Services (RDS) infrastructure in place. If you do not, then you can quickly create this infrastructure in Azure using the following quickstart template: [Create Remote Desktop Session Collection deployment](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
+Rendelkeznie kell egy működő infrastruktúra a távoli asztali szolgáltatások (RDS) helyen. Ha nem, akkor gyorsan létrehozhatja ezt az infrastruktúrát az Azure-ban a következő rövid útmutató sablon használatával: [Távoli asztal munkamenet-gyűjtemény központi telepítésének létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
-If you wish to manually create an on-premises RDS infrastructure quickly for testing purposes, follow the steps to deploy one.
-**Learn more**: [Deploy RDS with Azure quickstart](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) and [Basic RDS infrastructure deployment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+Ha szeretné manuálisan létrehozni egy helyszíni távoli asztali szolgáltatások infrastruktúrát gyorsan tesztelésre, lépésekkel üzembe helyez egyet.
+**További információ**: [az RDS üzembe helyezése az Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) rövid útmutatóval és az [alapszintű RDS infrastruktúra üzembe helyezésével](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-### <a name="azure-mfa-license"></a>Azure MFA License
+### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
 
-Required is a license for Azure MFA, which is available through Azure AD Premium or other bundles that include it. Consumption-based licenses for Azure MFA, such as per user or per authentication licenses, are not compatible with the NPS extension. For more information, see [How to get Azure Multi-Factor Authentication](concept-mfa-licensing.md). For testing purposes, you can use a trial subscription.
+Required (kötelező) a licenc az Azure MFA-hoz, elérhető prémium szintű Azure AD vagy az egyéb csomagok, amelyek tartalmazzák azt. Fogyasztásalapú licencek az Azure MFA-hoz, például felhasználói megfelelően vagy hitelesítési licencekkel, amelyek nem kompatibilisek az NPS-bővítményt. További információt az [Azure-multi-Factor Authentication beszerzését](concept-mfa-licensing.md)ismertető témakörben talál. Tesztelési célokra használhatja egy próba-előfizetést.
 
-### <a name="windows-server-software"></a>Windows Server software
+### <a name="windows-server-software"></a>A Windows Servert
 
-The NPS extension requires Windows Server 2008 R2 SP1 or above with the NPS role service installed. All the steps in this section were performed using Windows Server 2016.
+Az NPS-bővítményének megköveteli a Windows Server 2008 R2 SP1 vagy újabb verzió és az NPS szerepkör-szolgáltatás telepítve van. Ebben a szakaszban található összes lépést a Windows Server 2016 használatával lettek végrehajtva.
 
-### <a name="network-policy-and-access-services-nps-role"></a>Network Policy and Access Services (NPS) role
+### <a name="network-policy-and-access-services-nps-role"></a>Hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör
 
-The NPS role service provides the RADIUS server and client functionality as well as Network Access Policy health service. This role must be installed on at least two computers in your infrastructure: The Remote Desktop Gateway and another member server or domain controller. By default, the role is already present on the computer configured as the Remote Desktop Gateway.  You must also install the NPS role on at least on another computer, such as a domain controller or member server.
+A hálózati házirend-kiszolgáló szerepkör-szolgáltatást biztosít a RADIUS-kiszolgáló és az ügyfél funkcióit, valamint a hálózati házirend-Állapotfigyelő szolgáltatás. Az infrastruktúra legalább két számítógépre telepíteni kell a szerepet: A távoli asztali átjáró és a egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már létezik a számítógépen, a távoli asztali átjáró konfigurálva.  Emellett telepítenie kell az NPS szerepkör a legalább egy másik számítógépre, például egy tartományvezérlő vagy tagkiszolgáló.
 
-For information on installing the NPS role service Windows Server 2012 or older, see [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx). For a description of best practices for NPS, including the recommendation to install NPS on a domain controller, see [Best Practices for NPS](https://technet.microsoft.com/library/cc771746).
+A hálózati házirend-kiszolgáló szerepkör-szolgáltatás Windows Server 2012-es vagy régebbi verziójának telepítésével kapcsolatos információkért lásd: NAP állapotházirend- [kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synched with on-premises Active Directory
+### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Az Azure Active Directory a helyszíni Active Directoryval szinkronizált
 
-To use the NPS extension, on-premises users must be synced with Azure AD and enabled for MFA. This section assumes that on-premises users are synched with Azure AD using AD Connect. For information on Azure AD connect, see [Integrate your on-premises directories with Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+Az NPS-bővítményének használatához a helyszíni felhasználók lehet az Azure ad-vel szinkronizált, és engedélyezve van az MFA-hoz. Ez a szakasz azt feltételezi, hogy a helyszíni felhasználók vannak szinkronizálva az Azure ad-vel AD Connect használatával. Az Azure AD-kapcsolattal kapcsolatos információkért lásd: [a helyszíni címtárak integrálása Azure Active Directorysal](../hybrid/whatis-hybrid-identity.md).
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 
-To install NPS extension, you need to know the GUID of the Azure AD. Instructions for finding the GUID of the Azure AD are provided below.
+Az NPS-bővítményének telepítése, ismernie kell a GUID azonosítóját az Azure ad-ben. Keresés, a GUID azonosítóját az Azure AD útmutatást az alábbiakban találhatók.
 
-## <a name="configure-multi-factor-authentication"></a>Configure Multi-Factor Authentication
+## <a name="configure-multi-factor-authentication"></a>A multi-factor Authentication szolgáltatás konfigurálása
 
-This section provides instructions for integrating Azure MFA with the Remote Desktop Gateway. As an administrator, you must configure the Azure MFA service before users can self-register their multi-factor devices or applications.
+Ez a szakasz ismerteti az Azure MFA integrálása a távoli asztali átjáró. A rendszergazdák konfigurálnia kell az Azure MFA szolgáltatás segítségével a felhasználók saját magukat a multi-factor Authentication eszközök vagy alkalmazások.
 
-Follow the steps in [Getting started with Azure Multi-Factor Authentication in the cloud](howto-mfa-getstarted.md) to enable MFA for your Azure AD users.
+Kövesse az [azure multi-Factor Authentication használatának első lépései a felhőben](howto-mfa-getstarted.md) című témakör lépéseit, és engedélyezze az MFA használatát az Azure ad-felhasználók számára.
 
-### <a name="configure-accounts-for-two-step-verification"></a>Configure accounts for two-step verification
+### <a name="configure-accounts-for-two-step-verification"></a>A kétlépéses ellenőrzéshez fiókok beállítása
 
-Once an account has been enabled for MFA, you cannot sign in to resources governed by the MFA policy until you have successfully configured a trusted device to use for the second authentication factor and have authenticated using two-step verification.
+Ha a multi-factor Authentication-fiók engedélyezve van, nem jelentkezhet be többtényezős hitelesítési szabályzat szabályozzák, amíg sikeresen konfigurálta a megbízható eszköz használata a hitelesítés második tényezőjét, és elvégezte a hitelesítést használni a kétlépéses ellenőrzést erőforrások.
 
-Follow the steps in [What does Azure Multi-Factor Authentication mean for me?](../user-help/multi-factor-authentication-end-user.md) to understand and properly configure your devices for MFA with your user account.
+Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) című témakörben ismertetett lépéseket a felhasználói fiókkal kapcsolatos MFA-eszközök megismeréséhez és megfelelő konfigurálásához.
 
-## <a name="install-and-configure-nps-extension"></a>Install and configure NPS extension
+## <a name="install-and-configure-nps-extension"></a>Telepítse és konfigurálja az NPS-bővítményének
 
-This section provides instructions for configuring RDS infrastructure to use Azure MFA for client authentication with the Remote Desktop Gateway.
+Ez a szakasz útmutatást nyújt a távoli asztali szolgáltatások-infrastruktúra konfigurálása az Azure MFA használatát az ügyfél-hitelesítéshez és a távoli asztali átjáró.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Acquire Azure Active Directory GUID ID
+### <a name="acquire-azure-active-directory-guid-id"></a>Az Azure Active Directory GUID-azonosító beszerzése
 
-As part of the configuration of the NPS extension, you need to supply admin credentials and the Azure AD ID for your Azure AD tenant. The following steps show you how to get the tenant ID.
+Az NPS-bővítményének konfigurációjának részeként meg kell megadnia az Azure AD-bérlő rendszergazdai hitelesítő adatokat és az Azure AD-azonosítója. A következő lépések bemutatják, hogyan tehet szert a bérlő azonosítója.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as the global administrator of the Azure tenant.
-1. In the left navigation, select the **Azure Active Directory** icon.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
+1. A bal oldali navigációs sávon válassza a **Azure Active Directory** ikont.
 1. Válassza ki a **Tulajdonságok** elemet.
-1. In the Properties blade, beside the Directory ID, click the **Copy** icon, as shown below, to copy the ID to clipboard.
+1. A Tulajdonságok panelen, a könyvtár azonosítója mellett kattintson a **Másolás** ikonra az alább látható módon az azonosító vágólapra másolásához.
 
-   ![Getting the Directory ID from the Azure portal](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![A könyvtár AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/image1.png)
 
-### <a name="install-the-nps-extension"></a>Install the NPS extension
+### <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
 
-Install the NPS extension on a server that has the Network Policy and Access Services (NPS) role installed. This functions as the RADIUS server for your design.
+Telepítse az NPS-bővítményt egy kiszolgálóra, amelyen telepítve van a hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör. Ez a kialakítás a RADIUS-kiszolgáló működik.
 
 > [!Important]
-> Be sure you do not install the NPS extension on your Remote Desktop Gateway server.
+> Győződjön meg arról, hogy nem telepíti a távoli asztali átjáró kiszolgálón az NPS-bővítményt.
 >
 
-1. Download the [NPS extension](https://aka.ms/npsmfa).
-1. Copy the setup executable file (NpsExtnForAzureMfaInstaller.exe) to the NPS server.
-1. On the NPS server, double-click **NpsExtnForAzureMfaInstaller.exe**. If prompted, click **Run**.
-1. In the NPS Extension For Azure MFA Setup dialog box, review the software license terms, check **I agree to the license terms and conditions**, and click **Install**.
-1. In the NPS Extension For Azure MFA Setup dialog box, click **Close**.
+1. Töltse le a [hálózati házirend-kiszolgáló bővítményét](https://aka.ms/npsmfa).
+1. Másolja a végrehajtható fájl (NpsExtnForAzureMfaInstaller.exe) a hálózati házirend-kiszolgálóra.
+1. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller. exe fájlra**. Ha a rendszer kéri, kattintson a **Futtatás**gombra.
+1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen tekintse át a szoftverlicenc-feltételeket, ellenőrizze, **hogy elfogadom-e a licencfeltételeket**, majd kattintson a **telepítés**gombra.
+1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen kattintson a **Bezárás**gombra.
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Configure certificates for use with the NPS extension using a PowerShell script
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Az NPS-bővítményt egy PowerShell-szkripttel használt tanúsítványok konfigurálása
 
-Next, you need to configure certificates for use by the NPS extension to ensure secure communications and assurance. The NPS components include a Windows PowerShell script that configures a self-signed certificate for use with NPS.
+Ezután meg kell az NPS-bővítményének annak biztosítása érdekében a biztonságos kommunikációt és az ellenőrzés által használt tanúsítványok konfigurálása. A hálózati házirend-kiszolgáló-összetevők közé tartozik egy Windows PowerShell-parancsprogram, amely beállítja a hálózati házirend-kiszolgáló egy önaláírt tanúsítványt.
 
-The script performs the following actions:
+A szkript a következő műveleteket hajtja végre:
 
-* Creates a self-signed certificate
-* Associates public key of certificate to service principal on Azure AD
-* Stores the cert in the local machine store
-* Grants access to the certificate’s private key to the network user
-* Restarts Network Policy Server service
+* Létrehoz egy önaláírt tanúsítványt
+* Társítja az Azure AD egyszerű szolgáltatás a tanúsítvány nyilvános kulcsa
+* Tárolja a tanúsítvány a helyi számítógép tárolójában
+* A tanúsítvány titkos kulcsa a hálózati felhasználó számára a hozzáférést
+* Hálózati házirend-kiszolgáló szolgáltatás újraindítása
 
-If you want to use your own certificates, you need to associate the public key of your certificate to the service principal on Azure AD, and so on.
+Ha azt szeretné, a saját tanúsítványok, szeretne társítani az egyszerű szolgáltatás a tanúsítvány nyilvános kulcsát az Azure ad-ben, és így tovább.
 
-To use the script, provide the extension with your Azure AD Admin credentials and the Azure AD tenant ID that you copied earlier. Run the script on each NPS server where you installed the NPS extension. Ezután tegye a következőket:
+A szkript használatához adja meg a bővítmény az Azure AD rendszergazdai hitelesítő adatok és az Azure AD-bérlő azonosítója, amelyet korábban vágólapra másolt. Futtassa a szkriptet minden egyes hálózati házirend-kiszolgálón, amelyre telepítve van az NPS-bővítményt. Ezután tegye a következőket:
 
-1. Open an administrative Windows PowerShell prompt.
-1. At the PowerShell prompt, type `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`, and press **ENTER**.
-1. Type `.\AzureMfaNpsExtnConfigSetup.ps1`, and press **ENTER**. The script checks to see if the Azure Active Directory PowerShell module is installed. If not installed, the script installs the module for you.
+1. Nyisson meg egy rendszergazda Windows PowerShell-parancssorban.
+1. A PowerShell parancssorába írja be a `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`parancsot, majd nyomja le az **ENTER**billentyűt.
+1. Írja be `.\AzureMfaNpsExtnConfigSetup.ps1`, majd nyomja le az **ENTER**billentyűt. A parancsfájl ellenőrzi, hogy ha az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
-   ![Running AzureMfaNpsExtnConfigSetup.ps1 in Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![A AzureMfaNpsExtnConfigSetup. ps1 futtatása az Azure AD PowerShellben](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. After the script verifies the installation of the PowerShell module, it displays the Azure Active Directory PowerShell module dialog box. In the dialog box, enter your Azure AD admin credentials and password, and click **Sign In**.
+1. Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, az Azure Active Directory PowerShell modul párbeszédpanel jeleníti meg. A párbeszédpanelen adja meg az Azure AD-beli rendszergazdai hitelesítő adatait és jelszavát, majd kattintson a **Bejelentkezés**elemre.
 
-   ![Authenticating to Azure AD in PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![Hitelesítés az Azure AD-ben a PowerShellben](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. When prompted, paste the Directory ID you copied to the clipboard earlier, and press **ENTER**.
+1. Ha a rendszer kéri, illessze be a vágólapra korábban másolt könyvtárat, majd nyomja le az **ENTER**billentyűt.
 
-   ![Inputting the Directory ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![A címtár-azonosító üzembe helyezése a PowerShellben](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-1. The script creates a self-signed certificate and performs other configuration changes. The output should be like the image shown below.
+1. A szkript létrehoz egy önaláírt tanúsítványt, és más konfigurációs módosításokat hajt végre. A kimenet az alábbi képhez hasonlóan kell lennie.
 
-   ![Output of PowerShell showing self-signed certificate](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![Az önaláírt tanúsítványt megjelenítő PowerShell kimenete](./media/howto-mfa-nps-extension-rdg/image7.png)
 
-## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Configure NPS components on Remote Desktop Gateway
+## <a name="configure-nps-components-on-remote-desktop-gateway"></a>A távoli asztali átjáró NPS összetevők konfigurálása
 
-In this section, you configure the Remote Desktop Gateway connection authorization policies and other RADIUS settings.
+Ebben a szakaszban konfigurálja a távoli asztali átjáró kapcsolatengedélyezési házirendek és más RADIUS-beállításokat.
 
-The authentication flow requires that RADIUS messages be exchanged between the Remote Desktop Gateway and the NPS server where the NPS extension is installed. This means that you must configure RADIUS client settings on both Remote Desktop Gateway and the NPS server where the NPS extension is installed.
+A hitelesítési folyamat megköveteli, hogy a RADIUS-üzenetek a Távoli asztali átjáró és az NPS-kiszolgáló között legyenek cserélve, ahol az NPS bővítmény telepítve van. Ez azt jelenti, hogy konfigurálnia kell a RADIUS-ügyfélbeállításokat a távoli asztali átjáró és a hálózati házirend-kiszolgáló, amelyen telepítve van-e az NPS-bővítményének is.
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Configure Remote Desktop Gateway connection authorization policies to use central store
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Konfigurálja a távoli asztali átjáró kapcsolatengedélyezési házirendek központi tároló használata
 
-Remote Desktop connection authorization policies (RD CAPs) specify the requirements for connecting to a Remote Desktop Gateway server. RD CAPs can be stored locally (default) or they can be stored in a central RD CAP store that is running NPS. To configure integration of Azure MFA with RDS, you need to specify the use of a central store.
+A távoli asztali kapcsolat engedélyezési házirendek (RD CAPs) adja meg a távoli asztali átjáró kiszolgálóhoz való kapcsolódás követelményeinek. A távoli asztali CAPs helyben kell tárolni (alapértelmezett) kell tárolni, vagy egy központi, NPS-t futtató RD CAP tárolóban. Az Azure MFA-integráció konfigurálása a távoli asztali szolgáltatások, adjon meg egy központi tárolóban használatát kell.
 
-1. On the RD Gateway server, open **Server Manager**.
-1. On the menu, click **Tools**, point to **Remote Desktop Services**, and then click **Remote Desktop Gateway Manager**.
-1. In the RD Gateway Manager, right-click **\[Server Name\] (Local)** , and click **Properties**.
-1. In the Properties dialog box, select the **RD CAP Store** tab.
-1. On the RD CAP Store tab, select **Central server running NPS**. 
-1. In the **Enter a name or IP address for the server running NPS** field, type the IP address or server name of the server where you installed the NPS extension.
+1. A RD-átjáró-kiszolgálón nyissa meg a **Kiszolgálókezelő eszközt**.
+1. A menüben kattintson az **eszközök**elemre, mutasson a **Távoli asztali szolgáltatások**pontra, majd kattintson az **Távoli asztali átjárókezelő**elemre.
+1. A RD-átjárókezelő kattintson a jobb gombbal **\[kiszolgáló neve\] (helyi)** elemre, majd kattintson a **Tulajdonságok**elemre.
+1. A Tulajdonságok párbeszédpanelen válassza a **RD CAP áruház** lapot.
+1. A RD CAP tároló lapon válassza ki a **hálózati házirend-kiszolgálót futtató központi kiszolgáló**elemet. 
+1. Az **adja meg a hálózati házirend-kiszolgálót futtató kiszolgáló nevét vagy IP-címét** mezőbe írja be annak a kiszolgálónak az IP-címét vagy kiszolgálójának nevét, amelyre az NPS-bővítményt telepítette.
 
-   ![Enter the name or IP Address of your NPS Server](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![Adja meg az NPS-kiszolgáló nevét vagy IP-címét](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Kattintson a **Hozzáadás** parancsra.
-1. In the **Shared Secret** dialog box, enter a shared secret, and then click **OK**. Ensure you record this shared secret and store the record securely.
+1. Kattintson az **Hozzáadás** parancsra.
+1. A **közös titok** párbeszédpanelen adjon meg egy közös titkos kulcsot, majd kattintson **az OK**gombra. Győződjön meg arról, jegyezze fel a közös titkos kulcsot, és tárolja biztonságos helyen a rekordot.
 
    >[!NOTE]
-   >Shared secret is used to establish trust between the RADIUS servers and clients. Create a long and complex secret.
+   >Közös titkos kulcsot a RADIUS-kiszolgálók és ügyfelek közötti megbízhatósági kapcsolat létesítésére szolgál. A hosszú és összetett titkos kulcs létrehozása.
    >
 
-   ![Creating a shared secret to establish trust](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Közös titok létrehozása a megbízhatósági kapcsolat létrehozásához](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 
-### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Configure RADIUS timeout value on Remote Desktop Gateway NPS
+### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>A távoli asztali átjáró NPS RADIUS időkorlátja konfigurálása
 
-To ensure there is time to validate users’ credentials, perform two-step verification, receive responses, and respond to RADIUS messages, it is necessary to adjust the RADIUS timeout value.
+Biztosítják, hogy a felhasználók hitelesítő adatainak ellenőrzésére, kétlépéses hitelesítés végrehajtására, válaszokat kaphatnak és válaszolni RADIUS-üzeneteket, a RADIUS-időtúllépési érték beállításához szükséges időt.
 
-1. On the RD Gateway server, open Server Manager. On the menu, click **Tools**, and then click **Network Policy Server**.
-1. In the **NPS (Local)** console, expand **RADIUS Clients and Servers**, and select **Remote RADIUS Server**.
+1. A távoli asztali átjáró kiszolgálón nyissa meg a Kiszolgálókezelőt. A menüben kattintson az **eszközök**, majd a **hálózati házirend-kiszolgáló**elemre.
+1. Az **NPS (helyi)** konzolon bontsa ki a **RADIUS-ügyfelek és-kiszolgálók**csomópontot, és válassza a **távoli RADIUS-kiszolgáló**lehetőséget.
 
-   ![Network Policy Server management console showing Remote RADIUS Server](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![A hálózati házirend-kiszolgáló felügyeleti konzolja, amely a távoli RADIUS-kiszolgálót mutatja](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. In the details pane, double-click **TS GATEWAY SERVER GROUP**.
+1. A részleteket tartalmazó ablaktáblán kattintson duplán a **terminálszolgáltatási ÁTJÁRÓKISZOLGÁLÓ csoport**elemre.
 
    >[!NOTE]
-   >This RADIUS Server Group was created when you configured the central server for NPS policies. The RD Gateway forwards RADIUS messages to this server or group of servers, if more than one in the group.
+   >A RADIUS-kiszolgálócsoport konfigurálta az NPS-házirendek központi kiszolgáló hozott létre. A távoli asztali átjáró RADIUS üzeneteket ehhez a kiszolgálóhoz vagy a kiszolgálók, a csoport továbbít, ha egynél több, a csoportban.
    >
 
-1. In the **TS GATEWAY SERVER GROUP Properties** dialog box, select the IP address or name of the NPS server you configured to store RD CAPs, and then click **Edit**.
+1. A **TS Gateway Server-csoport tulajdonságai** párbeszédpanelen válassza ki a RD capss tárolásához konfigurált NPS-kiszolgáló IP-címét vagy nevét, majd kattintson a **Szerkesztés**gombra.
 
-   ![Select the IP or name of the NPS Server configured earlier](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![Válassza ki a korábban konfigurált NPS-kiszolgáló IP-címét vagy nevét](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. In the **Edit RADIUS Server** dialog box, select the **Load Balancing** tab.
-1. In the **Load Balancing** tab, in the **Number of seconds without response before request is considered dropped** field, change the default value from 3 to a value between 30 and 60 seconds.
-1. In the **Number of seconds between requests when server is identified as unavailable** field, change the default value of 30 seconds to a value that is equal to or greater than the value you specified in the previous step.
+1. A **RADIUS-kiszolgáló szerkesztése** párbeszédpanelen válassza a **terheléselosztás** lapot.
+1. **A terheléselosztás lapon a** **kérelem eldobása előtt másodpercben megadott számú másodpercben, a kérések eldobása előtt** módosítsa az alapértelmezett értéket 3 értékről egy 30 és 60 másodperc közötti értékre.
+1. A **kérések közötti másodpercben, ha a kiszolgáló nem elérhető mezőként van azonosítva** , módosítsa az alapértelmezett 30 másodperc értéket olyan értékre, amely egyenlő vagy nagyobb, mint az előző lépésben megadott érték.
 
-   ![Edit Radius Server timeout settings on the load balancing tab](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![A RADIUS-kiszolgáló időtúllépési beállításainak szerkesztése a terheléselosztás lapon](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. Click **OK** two times to close the dialog boxes.
+1. Kattintson kétszer az **OK** gombra a párbeszédpanelek bezárásához.
 
-### <a name="verify-connection-request-policies"></a>Verify Connection Request Policies
+### <a name="verify-connection-request-policies"></a>Ellenőrizze a kapcsolatkérelem-házirendek
 
-By default, when you configure the RD Gateway to use a central policy store for connection authorization policies, the RD Gateway is configured to forward CAP requests to the NPS server. The NPS server with the Azure MFA extension installed, processes the RADIUS access request. The following steps show you how to verify the default connection request policy.
+Alapértelmezés szerint egy központi házirend store használandó kapcsolat engedélyezési házirendek, a távoli asztali átjáró konfigurálásakor a távoli asztali átjáró van konfigurálva a hálózati házirend-kiszolgáló CAP kérelmeket továbbítja. Az Azure MFA-bővítménnyel, telepítve van, a hálózati házirend-kiszolgáló a RADIUS hozzáférési kérés dolgozza fel. A következő lépések bemutatják, hogyan lehet ellenőrizni az alapértelmezett házirendet.
 
-1. On the RD Gateway, in the NPS (Local) console, expand **Policies**, and select **Connection Request Policies**.
-1. Double-click **TS GATEWAY AUTHORIZATION POLICY**.
-1. In the **TS GATEWAY AUTHORIZATION POLICY properties** dialog box, click the **Settings** tab.
-1. On **Settings** tab, under Forwarding Connection Request, click **Authentication**. RADIUS client is configured to forward requests for authentication.
+1. A RD-átjáró a hálózati házirend-kiszolgáló (helyi) konzolon bontsa ki a **házirendek**csomópontot, és válassza a **Kapcsolatkérelem-házirendek**elemet.
+1. Kattintson duplán a **terminálszolgáltatási ÁTJÁRÓ engedélyezési házirendje**elemre.
+1. A **terminálszolgáltatási ÁTJÁRÓ engedélyezési házirendjének tulajdonságai** párbeszédpanelen kattintson a **Beállítások** fülre.
+1. A **Beállítások** lap kapcsolatkérelem továbbítása területén kattintson a **hitelesítés**elemre. RADIUS-ügyfél hitelesítési kérelmek előre van konfigurálva.
 
-   ![Configure Authentication Settings specifying the server group](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![A kiszolgálói csoport hitelesítési beállításainak megadása](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. Click **Cancel**.
+1. Kattintson a **Mégse**gombra.
 
-## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Configure NPS on the server where the NPS extension is installed
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Az NPS konfigurálásához a kiszolgálón, amelyen telepítve van-e az NPS bővítményével
 
-The NPS server where the NPS extension is installed needs to be able to exchange RADIUS messages with the NPS server on the Remote Desktop Gateway. To enable this message exchange, you need to configure the NPS components on the server where the NPS extension service is installed.
+A hálózati házirend-kiszolgáló, amelyen telepítve van-e az NPS-bővítményének képesnek kell lennie, a hálózati házirend-kiszolgáló a távoli asztali átjáró RADIUS üzeneteket. Ahhoz, hogy ez az üzenet exchange, kell konfigurálni a hálózati házirend-kiszolgáló-összetevők a kiszolgálón, ahol a hálózati házirend-kiszolgáló bővítmény szolgáltatás telepítve van.
 
-### <a name="register-server-in-active-directory"></a>Register Server in Active Directory
+### <a name="register-server-in-active-directory"></a>Regisztrálja a kiszolgálót az Active Directoryban
 
-To function properly in this scenario, the NPS server needs to be registered in Active Directory.
+Ebben a forgatókönyvben megfelelő működéséhez, az NPS-kiszolgáló regisztrálva kell lennie az Active Directoryban.
 
-1. On the NPS server, open **Server Manager**.
-1. In Server Manager, click **Tools**, and then click **Network Policy Server**.
-1. In the Network Policy Server console, right-click **NPS (Local)** , and then click **Register server in Active Directory**.
-1. Click **OK** two times.
+1. A hálózati házirend-kiszolgálón nyissa meg a **Kiszolgálókezelő eszközt**.
+1. A Kiszolgálókezelőben kattintson az **eszközök**, majd a **hálózati házirend-kiszolgáló**elemre.
+1. A hálózati házirend-kiszolgáló konzolon kattintson a jobb gombbal az **NPS (helyi)** elemre, majd kattintson **a kiszolgáló regisztrálása Active Directory**lehetőségre.
+1. Kattintson kétszer **az OK gombra** .
 
-   ![Register the NPS server in Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![A hálózati házirend-kiszolgáló regisztrálása Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-1. Leave the console open for the next procedure.
+1. Hagyja nyitva a következő eljárással a konzolon.
 
-### <a name="create-and-configure-radius-client"></a>Create and configure RADIUS client
+### <a name="create-and-configure-radius-client"></a>Hozzon létre, és a RADIUS-ügyfél konfigurálása
 
-The Remote Desktop Gateway needs to be configured as a RADIUS client to the NPS server.
+A hálózati házirend-kiszolgáló RADIUS-ügyfélként konfigurálni kell a távoli asztali átjáró.
 
-1. On the NPS server where the NPS extension is installed, in the **NPS (Local)** console, right-click **RADIUS Clients** and click **New**.
+1. Azon az NPS-kiszolgálón, amelyen a hálózati házirend-kiszolgáló bővítmény telepítve van, az **NPS (helyi)** konzolon kattintson a jobb gombbal a **RADIUS-ügyfelek** elemre, majd kattintson az **új**elemre.
 
-   ![Create a New RADIUS Client in the NPS console](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![Új RADIUS-ügyfél létrehozása az NPS-konzolon](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. In the **New RADIUS Client** dialog box, provide a friendly name, such as _Gateway_, and the IP address or DNS name of the Remote Desktop Gateway server.
-1. In the **Shared secret** and the **Confirm shared secret** fields, enter the same secret that you used before.
+1. Az **Új RADIUS-ügyfél** párbeszédpanelen adjon meg egy rövid nevet, például az _átjárót_, valamint a távoli asztali átjáró kiszolgáló IP-címét vagy DNS-nevét.
+1. A **közös titok** és a **közös titkos kulcs megerősítése** mezőkben adja meg a korábban használt titkot.
 
-   ![Configure a friendly name and the IP or DNS address](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Felhasználóbarát név és az IP-cím vagy a DNS-cím konfigurálása](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. Click **OK** to close the New RADIUS Client dialog box.
+1. Az új RADIUS-ügyfél párbeszédpanel bezárásához kattintson **az OK** gombra.
 
-### <a name="configure-network-policy"></a>Configure Network Policy
+### <a name="configure-network-policy"></a>A hálózati házirend konfigurálása
 
-Recall that the NPS server with the Azure MFA extension is the designated central policy store for the Connection Authorization Policy (CAP). Therefore, you need to implement a CAP on the NPS server to authorize valid connections requests.  
+Ne felejtse el, hogy az Azure MFA-bővítménnyel a hálózati házirend-kiszolgáló-e a kijelölt központi házirend a kapcsolat engedélyezési házirend (CAP). Ezért kell megvalósítani a Tengelysapka a hálózati házirend-kiszolgálón érvényes kapcsolat kérelmek hitelesítéséhez.  
 
-1. On the NPS Server, open the NPS (Local) console, expand **Policies**, and click **Network Policies**.
-1. Right-click **Connections to other access servers**, and click **Duplicate Policy**.
+1. Az NPS-kiszolgálón nyissa meg a hálózati házirend-kiszolgáló (helyi) konzolt, bontsa ki a **házirendek**csomópontot, majd kattintson a **hálózati házirendek**elemre.
+1. Kattintson a jobb gombbal **a kapcsolatok más hozzáférési kiszolgálókhoz**lehetőségre, majd kattintson az **ismétlődő házirend**elemre.
 
-   ![Duplicate the connection to other access servers policy](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![A kapcsolat duplikálása más hozzáférési kiszolgálók házirendjéhez](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. Right-click **Copy of Connections to other access servers**, and click **Properties**.
-1. In the **Copy of Connections to other access servers** dialog box, in **Policy name**, enter a suitable name, such as _RDG_CAP_. Check **Policy enabled**, and select **Grant access**. Optionally, in **Type of network access server**, select **Remote Desktop Gateway**, or you can leave it as **Unspecified**.
+1. Kattintson a jobb gombbal a **kapcsolatok másolása más hozzáférési kiszolgálókhoz**lehetőségre, majd kattintson a **Tulajdonságok**elemre.
+1. A **kapcsolatok más hozzáférési kiszolgálókhoz való másolásához** párbeszédpanel **Házirend neve**mezőjében adjon meg egy megfelelő nevet, például _RDG_CAP_. Jelölje be a **házirend engedélyezve**jelölőnégyzetet, majd válassza a **hozzáférés engedélyezése**lehetőséget. Ha szükséges, a **hálózati hozzáférési kiszolgáló típusa**területen válassza a **Távoli asztali átjáró**lehetőséget, vagy hagyja meg a **megadott értéket**.
 
-   ![Name the policy, enable, and grant access](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![A szabályzat, az engedélyezés és a hozzáférés engedélyezése](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. Click the **Constraints** tab, and check **Allow clients to connect without negotiating an authentication method**.
+1. Kattintson a **megkötések** lapra, és jelölje be az **ügyfelek kapcsolódásának engedélyezése a hitelesítési módszer egyeztetése nélkül lehetőséget**.
 
-   ![Modify authentication methods to allow clients to connect](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![Hitelesítési módszerek módosítása az ügyfelek kapcsolódásának engedélyezéséhez](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. Optionally, click the **Conditions** tab and add conditions that must be met for the connection to be authorized, for example, membership in a specific Windows group.
+1. Ha szükséges, kattintson a **feltételek** lapra, és adja meg azokat a feltételeket, amelyeknek teljesülniük kell ahhoz, hogy a csatlakozás engedélyezve legyen (például egy adott Windows-csoport tagsága).
 
-   ![Optionally specify connection conditions](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![Nem kötelezően megadhatja a kapcsolatok feltételeit](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. Kattintson az **OK** gombra. When prompted to view the corresponding Help topic, click **No**.
-1. Ensure that your new policy is at the top of the list, that the policy is enabled, and that it grants access.
+1. Kattintson az **OK** gombra. Amikor a rendszer kéri, hogy tekintse meg a megfelelő súgótémakört, kattintson a **nem**gombra.
+1. Győződjön meg arról, hogy az új szabályzat tetején található a listában, hogy a szabályzat engedélyezve van, és hozzáférést biztosít.
 
-   ![Move your policy to the top of the list](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![A szabályzat áthelyezése a lista elejére](./media/howto-mfa-nps-extension-rdg/image24.png)
 
-## <a name="verify-configuration"></a>Verify configuration
+## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
-To verify the configuration, you need to sign in to the Remote Desktop Gateway with a suitable RDP client. Be sure to use an account that is allowed by your Connection Authorization Policies and is enabled for Azure MFA.
+A konfiguráció ellenőrzéséhez jelentkezzen be a távoli asztali átjáró-megfelelő RDP-ügyfelet kell. Győződjön meg arról, fiók, amely a házirendek által engedélyezett, és engedélyezve van az Azure MFA-kiszolgáló használatára.
 
-As show in the image below, you can use the **Remote Desktop Web Access** page.
+Ahogy az alábbi képen is látható, használhatja a **Távoli asztal webes elérés** lapot.
 
-![Testing in Remote Desktop Web Access](./media/howto-mfa-nps-extension-rdg/image25.png)
+![Tesztelés Távoli asztal webes eléréssel](./media/howto-mfa-nps-extension-rdg/image25.png)
 
-Upon successfully entering your credentials for primary authentication, the Remote Desktop Connect dialog box shows a status of Initiating remote connection, as shown below. 
+Sikeresen megadta a hitelesítő adatait az elsődleges hitelesítéshez, hogy a távoli asztali kapcsolat párbeszédpanel állapotát jeleníti meg egy távoli kapcsolat kezdeményezése alább látható módon. 
 
-If you successfully authenticate with the secondary authentication method you previously configured in Azure MFA, you are connected to the resource. However, if the secondary authentication is not successful, you are denied access to the resource. 
+Sikerült a hitelesítést az Azure MFA-ban korábban konfigurált másodlagos hitelesítési módszert, ha csatlakozik az erőforrást. Ha a másodlagos hitelesítés nem sikeres, az erőforráshoz való hozzáférés nem engedélyezett. 
 
-![Remote Desktop Connection initiating a remote connection](./media/howto-mfa-nps-extension-rdg/image26.png)
+![Távoli asztali kapcsolat távoli kapcsolatok kezdeményezése](./media/howto-mfa-nps-extension-rdg/image26.png)
 
-In the example below, the Authenticator app on a Windows phone is used to provide the secondary authentication.
+Az alábbi példában az Authenticator alkalmazás Windows Phone-eszközön szolgál a másodlagos hitelesítő adatokat megadnia.
 
-![Example Windows Phone Authenticator app showing verification](./media/howto-mfa-nps-extension-rdg/image27.png)
+![Példa Windows Phone-telefon hitelesítő alkalmazásra, amely tartalmazza az ellenőrzést](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-Once you have successfully authenticated using the secondary authentication method, you are logged into the Remote Desktop Gateway as normal. However, because you are required to use a secondary authentication method using a mobile app on a trusted device, the sign in process is more secure than it would be otherwise.
+A hitelesítés sikerült a másodlagos hitelesítési módszerrel, miután bejelentkezett a távoli asztali átjáró szokásos módon. Mivel azonban másodlagos hitelesítési módszert kell használnia egy megbízható eszközön lévő Mobile alkalmazás használatával, a bejelentkezési folyamat biztonságosabb, mint egyébként.
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>View Event Viewer logs for successful logon events
+### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Sikeres bejelentkezési események Eseménynapló naplóinak megtekintése
 
-To view the successful sign-in events in the Windows Event Viewer logs, you can issue the following Windows PowerShell command to query the Windows Terminal Services and Windows Security logs.
+A sikeres bejelentkezési események megtekintése a Windows-eseménynaplók, adja ki a következő Windows PowerShell-parancsot a Windows Terminálszolgáltatások és a Windows biztonsági naplók lekérdezése.
 
-To query successful sign-in events in the Gateway operational logs _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , use the following PowerShell commands:
+A sikeres bejelentkezési események az átjáró operatív naplóiban való lekérdezéséhez _(Event \ alkalmazás és Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ használja a következő PowerShell-parancsokat:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
-* This command displays Windows events that show the user met resource authorization policy requirements (RD RAP) and was granted access.
+* Ez a parancs azt mutatják be, a felhasználó teljesíti az erőforrás-engedélyezési házirend követelményeinek (RD RAP), és hozzáférést Windows-eseményeket jeleníti meg.
 
-![Viewing events using PowerShell](./media/howto-mfa-nps-extension-rdg/image28.png)
+![Események megtekintése a PowerShell használatával](./media/howto-mfa-nps-extension-rdg/image28.png)
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
-* This command displays the events that show when user met connection authorization policy requirements.
+* Ez a parancs a felhasználói kapcsolat engedélyezési házirend követelményeinek teljesülése esetén megjelenítő eseményeket jeleníti meg.
 
-![viewing the connection authorization policy using PowerShell](./media/howto-mfa-nps-extension-rdg/image29.png)
+![a kapcsolatkérelem-házirend megtekintése a PowerShell használatával](./media/howto-mfa-nps-extension-rdg/image29.png)
 
-You can also view this log and filter on event IDs, 300 and 200. To query successful logon events in the Security event viewer logs, use the following command:
+Ez a napló és szűrő azonosítóval, 300, és 200-as esemény is megtekintheti. A biztonsági eseménynapló sikeres bejelentkezési események lekérdezés, használja a következő parancsot:
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-* This command can be run on either the central NPS or the RD Gateway Server.
+* Ez a parancs futtatható a központi NPS-t vagy a távoli asztali átjárókiszolgálón.
 
-![Sample successful logon events](./media/howto-mfa-nps-extension-rdg/image30.png)
+![Sikeres bejelentkezési események mintája](./media/howto-mfa-nps-extension-rdg/image30.png)
 
-You can also view the Security log or the Network Policy and Access Services custom view, as shown below:
+Alább látható módon a biztonsági napló vagy a hálózati házirend- és elérési szolgáltatások egyéni nézet is megtekintheti:
 
-![Network Policy and Access Services Event Viewer](./media/howto-mfa-nps-extension-rdg/image31.png)
+![Hálózati házirend-és elérési szolgáltatások Eseménynapló](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-On the server where you installed the NPS extension for Azure MFA, you can find Event Viewer application logs specific to the extension at _Application and Services Logs\Microsoft\AzureMfa_.
+Azon a kiszolgálón, amelyen telepítette az Azure MFA-hoz készült NPS-bővítményt, megtalálhatja a bővítményre vonatkozó Eseménynapló alkalmazás _-és szolgáltatás-Logs\Microsoft\AzureMfa_.
 
-![Event Viewer AuthZ application logs](./media/howto-mfa-nps-extension-rdg/image32.png)
+![Eseménynapló AuthZ](./media/howto-mfa-nps-extension-rdg/image32.png)
 
-## <a name="troubleshoot-guide"></a>Troubleshoot Guide
+## <a name="troubleshoot-guide"></a>Útmutató hibaelhárítása
 
-If the configuration is not working as expected, the first place to start to troubleshoot is to verify that the user is configured to use Azure MFA. Have the user connect to the [Azure portal](https://portal.azure.com). If users are prompted for secondary verification and can successfully authenticate, you can eliminate an incorrect configuration of Azure MFA.
+A konfiguráció nem várt módon működik, ha az első hely hibaelhárítás indítása az győződjön meg arról, hogy a felhasználó az Azure MFA használatára van konfigurálva. A felhasználó csatlakozik a [Azure Portalhoz](https://portal.azure.com). Ha a felhasználók másodlagos ellenőrzőkulcs a rendszer kéri, és sikeresen be tud hitelesítést, megszüntetheti az Azure MFA nem megfelelő konfiguráció.
 
-If Azure MFA is working for the user(s), you should review the relevant Event logs. These include the Security Event, Gateway operational, and Azure MFA logs that are discussed in the previous section.
+Az Azure MFA a felhasználó esetében működik, ha, tekintse át a megfelelő eseménynaplók. Ezek közé tartozik a biztonsági esemény, az átjáró működési és az előző szakaszban tárgyalt Azure MFA-naplókat.
 
-Below is an example output of Security log showing a failed logon event (Event ID 6273).
+Alább a biztonsági napló a sikertelen bejelentkezési esemény (Event ID 6273) bemutató példa kimenet.
 
-![Sample of a Failed logon event](./media/howto-mfa-nps-extension-rdg/image33.png)
+![Sikertelen bejelentkezési esemény mintája](./media/howto-mfa-nps-extension-rdg/image33.png)
 
-Below is a related event from the AzureMFA logs:
+Alább az AzureMFA naplók a kapcsolódó esemény:
 
-![Sample Azure MFA log in Event Viewer](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Azure MFA-bejelentkezés mintája Eseménynapló](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-To perform advanced troubleshoot options, consult the NPS database format log files where the NPS service is installed. These log files are created in _%SystemRoot%\System32\Logs_ folder as comma-delimited text files.
+Hajtsa végre a Speciális beállítások hibaelhárítása, tekintse meg a hálózati házirend-kiszolgáló adatbázis formátum naplófájlokat ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. Ezek a naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre.
 
-For a description of these log files, see [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx). The entries in these log files can be difficult to interpret without importing them into a spreadsheet or a database. You can find several IAS parsers online to assist you in interpreting the log files.
+A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](https://technet.microsoft.com/library/cc771748.aspx). Ezekben a naplófájlokban lévő bejegyzéseket nehéz értelmezni anélkül, hogy importálná őket egy külön táblázatban vagy az adatbázis is lehet. Több IAS elemzők online megtalálhatja a segítséget nyújtanak a naplófájlok értelmezése.
 
-The image below shows the output of one such downloadable [shareware application](https://www.deepsoftware.com/iasviewer).
+Az alábbi képen egy ilyen letölthető [shareware-alkalmazás](https://www.deepsoftware.com/iasviewer)kimenete látható.
 
-![Sample Shareware app IAS parser](./media/howto-mfa-nps-extension-rdg/image35.png)
+![Példa a shareware alkalmazás IAS-elemzője](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Finally, for additional troubleshoot options, you can use a protocol analyzer, such [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Végül a további hibakeresési lehetőségekhez használhatja a Protocol Analyzert, például a [Microsoft Message Analyzert](https://technet.microsoft.com/library/jj649776.aspx)is.
 
-The image below from Microsoft Message Analyzer shows network traffic filtered on RADIUS protocol that contains the user name **CONTOSO\AliceC**.
+Az alábbi képen a Microsoft Message Analyzer a **CONTOSO\AliceC**felhasználónevet tartalmazó RADIUS protokollon szűrt hálózati forgalmat jeleníti meg.
 
-![Microsoft Message Analyzer showing filtered traffic](./media/howto-mfa-nps-extension-rdg/image36.png)
+![Szűrt forgalmat bemutató Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Multi-Factor Authentication beszerzése](concept-mfa-licensing.md)
 

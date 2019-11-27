@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184218"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547382"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépen bejelentkezéshez 
 
@@ -41,7 +41,7 @@ Ha a cikkben a Azure PowerShell vagy az Azure CLI-példákat is használni szere
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-erőforrások felügyelt identitásai egy [egyszerű szolgáltatásnév-objektumot](../develop/developer-glossary.md#service-principal-object) biztosítanak, amely az [Azure-erőforrások felügyelt identitásának engedélyezésével jön létre](overview.md#how-does-it-work) a virtuális gépen. Az egyszerű szolgáltatás hozzáférést biztosíthat az Azure-erőforrásokhoz, és identitásként használhatja a bejelentkezéshez és az erőforrás-hozzáféréshez parancsfájl-vagy parancssori ügyfelekként. Hagyományosan a saját identitása alá tartozó biztonságos erőforrások eléréséhez a parancsfájl-ügyfélnek a következőket kell tennie:  
+Az Azure-erőforrások felügyelt identitásai egy [egyszerű szolgáltatásnév-objektumot](../develop/developer-glossary.md#service-principal-object) biztosítanak, amely az [Azure-erőforrások felügyelt identitásának engedélyezésével jön létre](overview.md#how-does-the-managed-identities-for-azure-resources-work) a virtuális gépen. Az egyszerű szolgáltatás hozzáférést biztosíthat az Azure-erőforrásokhoz, és identitásként használhatja a bejelentkezéshez és az erőforrás-hozzáféréshez parancsfájl-vagy parancssori ügyfelekként. Hagyományosan a saját identitása alá tartozó biztonságos erőforrások eléréséhez a parancsfájl-ügyfélnek a következőket kell tennie:  
 
    - regisztrálva kell lennie az Azure AD-ben, bizalmas/webes ügyfélalkalmazásként
    - Jelentkezzen be az egyszerű szolgáltatásnév alá, és használja az alkalmazás hitelesítő adatait (amelyek valószínűleg a szkriptbe vannak beágyazva)

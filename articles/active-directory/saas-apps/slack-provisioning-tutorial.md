@@ -106,7 +106,7 @@ Lehetőség van arra is, hogy engedélyezheti a csoport objektumainak az Azure A
 
 Ez azt eredményezi, hogy a **felhasználók és csoportok** szakasz tartalékidőhöz rendelt összes csoport objektuma teljesen szinkronizálva van az Azure ad-ből a Slack-be. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Slack alkalmazáson végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 

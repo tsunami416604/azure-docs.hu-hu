@@ -1,6 +1,6 @@
 ---
-title: Supported map styles in Azure Maps| Microsoft Docs
-description: Map styles supported by Azure Maps
+title: Támogatott térképi stílusok a Azure Mapsban | Microsoft Docs
+description: Azure Maps által támogatott Stílusok leképezése
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -15,94 +15,94 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325399"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Azure Maps supported map styles
-Azure Maps supports several different built-in map styles as described below.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
+A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
 
-## <a name="road"></a>road
-A **road** map is a standard map that displays roads, natural and artificial features along with the labels for those features.
+## <a name="road"></a>közúti
+A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes és mesterséges funkciókat, valamint a funkciók címkéit jeleníti meg.
 
-![road](./media/supported-map-styles/road.png)
+![közúti](./media/supported-map-styles/road.png)
 
-**Applicable APIs:**
-* [Map image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
-## <a name="blank-and-blank_accessible"></a>blank and blank_accessible
+## <a name="blank-and-blank_accessible"></a>üres és blank_accessible
 
-The **blank** and **blank_accessible** map styles provide a blank canvas on which to visualize data on. The **blank_accessible** style will continue to provide screen reader updates with location details of where the map is located, even though the base map is not displayed.
+Az **üres** és a **blank_accessible** Térkép stílusa üres vásznat biztosít az adatmegjelenítéshez. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, még akkor is, ha az alap térkép nem jelenik meg.
 
 > [!Note]
-> In the web SDK you can change the background color of the map by setting the CSS `background-color` style of map DIV element.
+> A web SDK-ban megváltoztathatja a Térkép háttérszínét úgy, hogy beállítja a Térkép DIV elemének CSS-`background-color` stílusát.
 
-**Applicable APIs:**
-* Web SDK map control
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
 
-## <a name="satellite"></a>satellite 
-The **satellite** style is a combination of satellite and aerial imagery.
+## <a name="satellite"></a>műholdas 
+A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
 
-![satellite](./media/supported-map-styles/satellite.png)
+![műholdas](./media/supported-map-styles/satellite.png)
 
-**Applicable APIs:**
-* [Satellite tile](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* [Műholdas csempe](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
-This map style is a hybrid of roads and labels overlaid on top of satellite and aerial imagery.
+Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és feliratok hibrid útvonala.
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
 ## <a name="grayscale_dark"></a>grayscale_dark
-**grayscale dark** is a dark version of the road map style.
+a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét változata.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
-**Applicable APIs:**
-* [Map image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control 
-* Android map control
+**Alkalmazható API-k:**
+* [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK Térkép vezérlőelem 
+* Android Térkép vezérlőelem
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**grayscale light** is a light version of the road map style.
+a **szürkeárnyalatos fény** a közúti Térkép stílusának egyszerűsített változata.
 
-![grayscale light](./media/supported-map-styles/grayscale_light.png)
+![szürkeárnyalatos fény](./media/supported-map-styles/grayscale_light.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
 
-## <a name="night"></a>night
-**night** is a dark version of the road map style with colored roads and symbols.
+## <a name="night"></a>éjszaka
+a **Night** a közúti Térkép stílusa sötét változata, amely színes utakat és szimbólumokat is mutat.
 
-![night](./media/supported-map-styles/night.png)
+![éjszaka](./media/supported-map-styles/night.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-**road shaded relief** is an Azure Maps main style completed with contours of the Earth.
+a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld körvonalával töltöttek be.
 
-![shaded relief](./media/supported-map-styles/shaded-relief.png)
+![árnyékolt megkönnyebbülés](./media/supported-map-styles/shaded-relief.png)
 
-**Applicable APIs:**
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control
-* Android map control
+**Alkalmazható API-k:**
+* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Learn about how to set a map style in Azure Maps:
+Ismerje meg, hogyan állíthat be leképezési stílust a Azure Mapsban:
 
 > [!div class="nextstepaction"]
-> [Choose a map style](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+> [Válasszon egy leképezési stílust](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

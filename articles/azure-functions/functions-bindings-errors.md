@@ -1,6 +1,6 @@
 ---
-title: Handle Azure Functions bindings errors
-description: Learn to handle Azure Functions binding errors
+title: Azure Functions kötések hibáinak kezelése
+description: Útmutató Azure Functions kötési hibák kezeléséhez
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/12/2019
@@ -12,8 +12,8 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227294"
 ---
-# <a name="handle-azure-functions-binding-errors"></a>Handle Azure Functions binding errors
+# <a name="handle-azure-functions-binding-errors"></a>Azure Functions kötési hibák kezelése
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-For information on errors returned by services supported by Functions, see the [Binding error codes](functions-bindings-error-pages.md#binding-error-codes) section of the [Azure Functions error handling](functions-bindings-error-pages.md) overview article.  
+További információ a függvények által támogatott szolgáltatások által visszaadott hibákról: a [Azure functions hibakezelés](functions-bindings-error-pages.md) áttekintése című cikk [kötési hibák kódjai](functions-bindings-error-pages.md#binding-error-codes) szakasza.  

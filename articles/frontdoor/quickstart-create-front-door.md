@@ -39,7 +39,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
 
      | Beállítás         | Érték     |
      | ---              | ---  |
-     | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
+     | Név           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD1* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanEastUS* nevet, majd kattintson az **OK** gombra. 
      |      Hely  |   USA keleti régiója        |
@@ -51,7 +51,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
 
      | Beállítás         | Érték     |
      | ---              | ---  |
-     | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
+     | Név           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD2* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanWestEurope* nevet, majd kattintson az **OK** gombra. 
      |      Hely  |   Nyugat-Európa      |
@@ -93,5 +93,5 @@ Ha a gyakorlatban is látni szeretné a Front Door azonnali globális feladatát
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat, a webalkalmazásokat és az összes kapcsolódó erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban egy Front Door-profilt hoztunk létre, amellyel átirányíthattuk egy magas rendelkezésre állást és maximális teljesítményt igénylő webalkalmazás adatforgalmát. Az adatforgalom átirányításáról a Front Door által használt [Útválasztási módszereket](front-door-routing-methods.md) ismertető dokumentumban olvashat.

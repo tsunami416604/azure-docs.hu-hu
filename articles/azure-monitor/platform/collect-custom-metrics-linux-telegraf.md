@@ -29,7 +29,7 @@ A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegr
 
 Ebben az oktatóanyagban egy Linux rendszerű virtuális gépet telepítünk, amely az Ubuntu 16,04 LTS operációs rendszert futtatja. A-ben a legtöbb Linux operációs rendszer támogatja a a Grafi ügynököt. A Debian és az RPM csomagok is elérhetők a [InfluxData letöltési portálján](https://portal.influxdata.com/downloads)a kicsomagolt linuxos bináris fájlokkal együtt. További telepítési utasításokért és beállításokért tekintse meg ezt a [Grafi telepítési útmutatót](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 Új linuxos virtuális gép létrehozása: 
 
@@ -106,7 +106,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Nyissa meg az [Azure portált](https://portal.azure.com). 
 
 1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 

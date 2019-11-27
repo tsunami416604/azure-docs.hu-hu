@@ -68,7 +68,7 @@ Ha a csoport egyetlen összekötője inaktív, akkor valószínű, hogy olyan g�
 
 a probléma kivizsgálásával kapcsolatos részletekért tekintse meg a portok – problémamegoldás című dokumentumot.
 
-## <a name="next-steps"></a>Következő lépések
-[Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
+## <a name="next-steps"></a>További lépések
+[Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 
 

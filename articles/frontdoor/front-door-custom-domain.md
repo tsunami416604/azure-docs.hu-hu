@@ -24,7 +24,7 @@ Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartom�
 
 A Front Door létrehozása után az alapértelmezett előtérbeli gazdagép, amely az `azurefd.net` altartománya, alapértelmezés szerint belekerül az URL-címbe a Front Door-tartalom háttéralkalmazásból való szállításához (például https:\//contoso.azurefd.net/activeusers.htm). A kényelmes használat érdekében az Azure Front Door lehetőséget ad arra, hogy egyéni tartományt társítson az alapértelmezett gazdagéphez. Ezzel a lehetőséggel a tartalom továbbításakor az egyéni tartomány neve lesz az URL-címben a Front Door tulajdonában lévő tartománynév helyett (például https:\//www.contoso.com/photo.png). 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - CNAME DNS-rekord létrehozása.
 > - Az egyéni tartomány társítása a Front Doorral.
@@ -195,7 +195,7 @@ Az előző lépésekben hozzáadott egy egyéni tartományt egy Front Doorhoz. H
    Az egyéni tartomány társítása a végponttal ekkor megszűnik.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

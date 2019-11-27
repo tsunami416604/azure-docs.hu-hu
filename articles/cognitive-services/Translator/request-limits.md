@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671963"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533705"
 ---
 # <a name="request-limits-for-translator-text"></a>Kérelmekre vonatkozó korlátozások Translator Text
 
@@ -29,10 +29,10 @@ A következő táblázat a Translator Text API egyes műveleteinek tömb elemeit
 
 | Művelet | Tömb elemének maximális mérete |   Tömb elemeinek maximális száma |  Kérelmek maximális mérete (karakter) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
+| Fordítás | 5000 | 100   | 5000 |
+| Átírás | 5000 | 10    | 5000 |
+| Észlelés | 10,000 | 100 |   50 000 |
+| BreakSentence | 10,000    | 100 | 50 000 |
 | Keresés a szótárban| 100 |  10  | 1,000 |
 | Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2,000 |
 
@@ -58,7 +58,7 @@ Ezek a korlátok a Microsoft szabványos fordítási modelljeire korlátozódnak
 
 ## <a name="latency"></a>Késés
 
-A Translator Text API a standard modell használatával 15 másodperces késéssel rendelkezik. Az egyéni modellek használatával végzett fordítás legfeljebb 25 másodperces késéssel rendelkezik. Ekkor egy eredmény vagy időtúllépési válasz érkezett. A válaszokat általában 150 ezredmásodperc és 300 ezredmásodperc között adja vissza a rendszer. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) az adott időkereten belül, ellenőrizze a hálózati kapcsolatokat, és próbálkozzon újra.
+A Translator Text API az egyéni modellek használatakor a standard modellek és az 120 másodperces maximális késéssel 15 másodperc. A *100 karakternél hosszabb szövegre* adott válaszokat a rendszer a 150 ezredmásodpercben, 300 ezredmásodpercben adja vissza. Az egyéni fordítói modellek hasonló késési jellemzőkkel rendelkeznek a tartós kérelmek arányában, és nagyobb késéssel járhatnak, ha a kérések sebessége időszakos. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) az adott időkereten belül, ellenőrizze a kódot, a hálózati kapcsolatokat, és próbálkozzon újra. 
 
 ## <a name="sentence-length-limits"></a>Mondat hosszának korlátai
 
@@ -78,7 +78,7 @@ A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator
 > [!NOTE]
 > Ez a korlát nem vonatkozik a fordításokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

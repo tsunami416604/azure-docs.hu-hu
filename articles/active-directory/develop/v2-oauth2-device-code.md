@@ -1,6 +1,6 @@
 ---
-title: Use Microsoft identity platform to sign in users on browser-less devices | Azure
-description: Build embedded and browser-less authentication flows using the device authorization grant.
+title: Felhasználói bejelentkezés a Microsoft Identity platform használatával böngésző nélküli eszközökön | Azure
+description: Beágyazott és böngésző nélküli hitelesítési folyamatokat hozhat létre az eszköz engedélyezési engedélye alapján.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -24,30 +24,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74207607"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft identity platform and the OAuth 2.0 device authorization grant flow
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform és a OAuth 2,0-eszköz engedélyezési folyamata
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-The Microsoft identity platform supports the [device authorization grant](https://tools.ietf.org/html/rfc8628), which allows users to sign in to input-constrained devices such as a smart TV, IoT device, or printer.  To enable this flow, the device has the user visit a webpage in their browser on another device to sign in.  Once the user signs in, the device is able to get access tokens and refresh tokens as needed.  
+A Microsoft Identity platform támogatja az [eszköz engedélyezésének](https://tools.ietf.org/html/rfc8628)engedélyezését, amely lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a bemeneti korlátozás alá tartozó eszközökre, például az intelligens TV-re, a IoT eszközre vagy a nyomtatóra.  A folyamat engedélyezéséhez az eszközön a felhasználó meglátogat egy weblapot a böngészőben egy másik eszközre a bejelentkezéshez.  Ha a felhasználó bejelentkezik, az eszköz igény szerint elérheti a hozzáférési jogkivonatokat, és szükség szerint frissítheti a jogkivonatokat.  
 
-This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
+Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
 > [!NOTE]
-> The Microsoft identity platform endpoint doesn't support all Azure Active Directory scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md).
+> A Microsoft Identity platform végpontja nem támogatja az összes Azure Active Directory forgatókönyvet és funkciót. Annak megállapításához, hogy a Microsoft Identity platform-végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.
 
-## <a name="protocol-diagram"></a>Protocol diagram
+## <a name="protocol-diagram"></a>Protokoll diagramja
 
-The entire device code flow looks similar to the next diagram. We describe each of the steps later in this article.
+A teljes eszköz kódjának folyamata a következő diagramhoz hasonlóan néz ki. A cikk későbbi részében leírt lépéseket ismertetjük.
 
-![Device code flow](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Eszköz kódjának folyamata](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
-## <a name="device-authorization-request"></a>Device authorization request
+## <a name="device-authorization-request"></a>Eszköz-engedélyezési kérelem
 
-The client must first check with the authentication server for a device and user code that's used to initiate authentication. The client collects this request from the `/devicecode` endpoint. In this request, the client should also include the permissions it needs to acquire from the user. From the moment this request is sent, the user has only 15 minutes to sign in (the usual value for `expires_in`), so only make this request when the user has indicated they're ready to sign in.
+Az ügyfélnek először ellenőriznie kell a hitelesítési kiszolgálót a hitelesítés kezdeményezéséhez használt eszköz és felhasználói kód esetében. Az ügyfél a `/devicecode` végponttól gyűjti ezt a kérést. Ebben a kérelemben az ügyfélnek tartalmaznia kell a felhasználótól beszerzett engedélyeket is. A kérelem elküldésekor a felhasználónak csak 15 perce van a bejelentkezéshez (a `expires_in`szokásos értéke), ezért csak akkor hajtsa végre ezt a kérést, ha a felhasználó jelezte, hogy készen áll a bejelentkezésre.
 
 > [!TIP]
-> Try executing this request in Postman!
-> [![Try running this request in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Próbálja meg végrehajtani a kérelmet postán!
+> [![próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -62,33 +62,33 @@ scope=user.read%20openid%20profile
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | Can be /common, /consumers, or /organizations.  It can also be the directory tenant that you want to request permission from in GUID or friendly name format.  |
-| `client_id` | Szükséges | The **Application (client) ID** that the [Azure portal – App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) experience assigned to your app. |
-| `scope` | Ajánlott | A space-separated list of [scopes](v2-permissions-and-consent.md) that you want the user to consent to.  |
+| `tenant` | Kötelező | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `scope` | Ajánlott | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  |
 
-### <a name="device-authorization-response"></a>Device authorization response
+### <a name="device-authorization-response"></a>Eszköz-engedélyezési válasz
 
-A successful response will be a JSON object containing the required information to allow the user to sign in.  
+A sikeres válasz egy JSON-objektum, amely tartalmazza a szükséges információkat, amelyek lehetővé teszik a felhasználó számára a bejelentkezést.  
 
 | Paraméter | Formátum | Leírás |
 | ---              | --- | --- |
-|`device_code`     | Sztring | A long string used to verify the session between the client and the authorization server. The client uses this parameter to request the access token from the authorization server. |
-|`user_code`       | Sztring | A short string shown to the user that's used to identify the session on a secondary device.|
-|`verification_uri`| URI | The URI the user should go to with the `user_code` in order to sign in. |
-|`expires_in`      | int | The number of seconds before the `device_code` and `user_code` expire. |
-|`interval`        | int | The number of seconds the client should wait between polling requests. |
-| `message`        | Sztring | A human-readable string with instructions for the user. This can be localized by including a **query parameter** in the request of the form `?mkt=xx-XX`, filling in the appropriate language culture code. |
+|`device_code`     | Sztring | Egy hosszú karakterlánc, amellyel ellenőrizhető a munkamenet az ügyfél és az engedélyezési kiszolgáló között. Az ügyfél ezzel a paraméterrel kéri le a hozzáférési jogkivonatot az engedélyezési kiszolgálóról. |
+|`user_code`       | Sztring | Egy rövid karakterlánc, amelyet a rendszer a másodlagos eszköz munkamenetének azonosítására használt felhasználó számára mutat.|
+|`verification_uri`| URI | Annak az URI-nak, amelyhez a felhasználónak a `user_code` kell lépnie, hogy bejelentkezzen. |
+|`expires_in`      | int | Azon másodpercek száma, ameddig a `device_code` és a `user_code` lejár. |
+|`interval`        | int | Azon másodpercek száma, ameddig az ügyfélnek várnia kell a lekérdezési kérelmek között. |
+| `message`        | Sztring | Egy ember által olvasható karakterlánc, amely a felhasználóra vonatkozó utasításokat tartalmaz. Ez honosítható úgy, hogy a **lekérdezési paramétert** `?mkt=xx-XX`űrlap kérelmében, a megfelelő nyelvi kulturális kód kitöltésével együtt. |
 
 > [!NOTE]
-> The `verification_uri_complete` response field is not included or supported at this time.  We mention this because if you read the [standard](https://tools.ietf.org/html/rfc8628) you see that `verification_uri_complete` is listed as an optional part of the device code flow standard.
+> A `verification_uri_complete` Response mező jelenleg nem szerepel vagy nem támogatott.  Erre azért van szükség, mert ha elolvasta a [szabványost](https://tools.ietf.org/html/rfc8628) , láthatja, hogy a `verification_uri_complete` az eszköz Code flow standard választható részeként jelenik meg.
 
-## <a name="authenticating-the-user"></a>Authenticating the user
+## <a name="authenticating-the-user"></a>A felhasználó hitelesítése
 
-After receiving the `user_code` and `verification_uri`, the client displays these to the user, instructing them to sign in using their mobile phone or PC browser.
+A `user_code` és `verification_uri`kézhezvétele után az ügyfél megjeleníti ezeket a felhasználókat, és arra utasítja őket, hogy jelentkezzenek be a mobiltelefonnal vagy a számítógép böngészőjével.
 
-If the user authenticates with a personal account (on /common or /consumers), they will be asked to sign in again in order to transfer authentication state to the device.  They will also be asked to provide consent, to ensure they are aware of the permissions being granted.  This does not apply to work or school accounts used to authenticate. 
+Ha a felhasználó személyes fiókkal (/gyakori hibák vagy/consumers) végez hitelesítést, a rendszer arra kéri, hogy jelentkezzen be újra a hitelesítési állapot az eszközre való átvitele érdekében.  A rendszer arra is felszólítja, hogy adja meg a beleegyező engedélyeket, hogy biztosan tisztában legyenek a megadott engedélyekkel.  Ez nem vonatkozik a hitelesítéshez használt munkahelyi vagy iskolai fiókokra. 
 
-While the user is authenticating at the `verification_uri`, the client should be polling the `/token` endpoint for the requested token using the `device_code`.
+Amíg a felhasználó a `verification_uri`hitelesíti a hitelesítést, az ügyfélnek a `device_code`használatával le kell kérdezni a kért token `/token` végpontját.
 
 ``` 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
@@ -99,27 +99,27 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Paraméter | Szükséges | Leírás|
+| Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
-| `tenant`  | Szükséges | The same tenant or tenant alias used in the initial request. | 
-| `grant_type` | Szükséges | Must be `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Szükséges | Must match the `client_id` used in the initial request. |
-| `device_code`| Szükséges | The `device_code` returned in the device authorization request.  |
+| `tenant`  | Kötelező | A kezdeti kérelemben használt bérlői vagy bérlői alias. | 
+| `grant_type` | Kötelező | `urn:ietf:params:oauth:grant-type:device_code` kell lennie|
+| `client_id`  | Kötelező | Meg kell egyeznie a kezdeti kérelemben használt `client_id`val. |
+| `device_code`| Kötelező | Az eszköz engedélyezési kérelmében visszaadott `device_code`.  |
 
-### <a name="expected-errors"></a>Expected errors
+### <a name="expected-errors"></a>Várt hibák
 
-The device code flow is a polling protocol so your client must expect to receive errors before the user has finished authenticating.  
+Az eszköz kódjának folyamata egy lekérdezési protokoll, így az ügyfélnek meg kell várnia, hogy hibákat kapjon, mielőtt a felhasználó befejezte a hitelesítést.  
 
-| Hiba | Leírás | Client Action |
+| Hiba | Leírás | Ügyfél művelete |
 | ------ | ----------- | -------------|
-| `authorization_pending` | The user hasn't finished authenticating, but hasn't canceled the flow. | Repeat the request after at least `interval` seconds. |
-| `authorization_declined` | The end user denied the authorization request.| Stop polling, and revert to an unauthenticated state.  |
-| `bad_verification_code`| The `device_code` sent to the `/token` endpoint wasn't recognized. | Verify that the client is sending the correct `device_code` in the request. |
-| `expired_token` | At least `expires_in` seconds have passed, and authentication is no longer possible with this `device_code`. | Stop polling and revert to an unauthenticated state. |   
+| `authorization_pending` | A felhasználó nem fejezte be a hitelesítést, de nem szakította meg a folyamatot. | Ismételje meg a kérést legalább `interval` másodperc múlva. |
+| `authorization_declined` | A végfelhasználó megtagadta az engedélyezési kérelmet.| A lekérdezés leállítása és visszaállítása nem hitelesített állapotra.  |
+| `bad_verification_code`| A `/token` végpontnak elküldett `device_code` nem ismerhető fel. | Ellenőrizze, hogy az ügyfél elküldi-e a megfelelő `device_code` a kérelemben. |
+| `expired_token` | Legalább `expires_in` másodperc telt el, és a hitelesítés már nem lehetséges ezzel a `device_code`val. | A lekérdezés leállítása és visszaállítása nem hitelesített állapotra. |   
 
-### <a name="successful-authentication-response"></a>Successful authentication response
+### <a name="successful-authentication-response"></a>Sikeres hitelesítési válasz
 
-A successful token response will look like:
+A jogkivonat sikeres válasza A következőképpen fog kinézni:
 
 ```json
 {
@@ -134,11 +134,11 @@ A successful token response will look like:
 
 | Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
-| `token_type` | Sztring| Always "Bearer. |
-| `scope` | Space separated strings | If an access token was returned, this lists the scopes the access token is valid for. |
-| `expires_in`| int | Number of seconds before the included access token is valid for. |
-| `access_token`| Opaque string | Issued for the [scopes](v2-permissions-and-consent.md) that were requested.  |
-| `id_token`   | JWT | Issued if the original `scope` parameter included the `openid` scope.  |
-| `refresh_token` | Opaque string | Issued if the original `scope` parameter included `offline_access`.  |
+| `token_type` | Sztring| Mindig "tulajdonos". |
+| `scope` | Szóközzel tagolt karakterláncok | Ha egy hozzáférési jogkivonatot adott vissza, akkor felsorolja azokat a hatóköröket, amelyekre érvényes a hozzáférési jogkivonat. |
+| `expires_in`| int | A befoglalt hozzáférési jogkivonat érvényessége előtti másodpercek száma. |
+| `access_token`| Átlátszatlan karakterlánc | A kért [hatókörökhöz](v2-permissions-and-consent.md) lett kiállítva.  |
+| `id_token`   | JWT | Kiadva, ha az eredeti `scope` paraméter tartalmazza a `openid` hatókörét.  |
+| `refresh_token` | Átlátszatlan karakterlánc | Kiadva, ha az eredeti `scope` paraméter `offline_access`tartalmaz.  |
 
-You can use the refresh token to acquire new access tokens and refresh tokens using the same flow documented in the [OAuth Code flow documentation](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+A frissítési jogkivonattal új hozzáférési jogkivonatok szerezhetők be, és a tokenek frissítése a [OAuth-programkód dokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)ismertetett folyamattal megegyező folyamattal végezhető el.  

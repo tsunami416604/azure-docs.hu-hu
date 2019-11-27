@@ -1,6 +1,6 @@
 ---
-title: Sample - Audit SQL Server audit settings
-description: This sample policy definition audits the SQL server audit settings defined in a parameter with auditIfNotExists.
+title: Minta – naplózási SQL Server naplózási beállításai
+description: Ez a minta házirend-definíció a auditIfNotExists-ben a paraméterben definiált SQL Server naplózási beállításokat naplózza.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463115"
 ---
-# <a name="sample---audit-sql-server-audit-settings"></a>Sample - Audit SQL server audit settings
+# <a name="sample---audit-sql-server-audit-settings"></a>Példa – az SQL Server naplózási beállításainak naplózása
 
 A beépített szabályzat az alapján naplózza az SQL-kiszolgálót, hogy engedélyezve vannak-e rajta a naplózási beállítások.
 
@@ -82,7 +82,7 @@ Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL Audit audit" --policy a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9 --params '{"setting": {"value":"enabled"}}'
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 
@@ -90,6 +90,6 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 az policy assignment delete --name "SQL Audit audit" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

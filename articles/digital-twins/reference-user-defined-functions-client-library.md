@@ -1,6 +1,6 @@
 ---
-title: User-defined functions client library reference - Azure Digital Twins | Microsoft Docs
-description: Azure Digital Twins user-defined functions client library reference documentation.
+title: Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája – Azure digitális Twins | Microsoft Docs
+description: Azure Digital Twins felhasználó által definiált függvények ügyféloldali függvénytár-referenciák dokumentációja.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,250 +16,250 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383247"
 ---
-# <a name="user-defined-functions-client-library-reference"></a>User-defined functions client library reference
+# <a name="user-defined-functions-client-library-reference"></a>Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája
 
-This document provides reference information for the Azure Digital Twins user-defined functions client library.
+Ez a dokumentum az Azure Digital Twins felhasználó által definiált functions ügyféloldali függvénytárával kapcsolatos információkat tartalmaz.
 
-## <a name="helper-methods"></a>Helper methods
+## <a name="helper-methods"></a>Segítő módszerek
 
-The client library defines helper methods for commonly used operations.
+Az ügyféloldali kódtár a gyakran használt műveletekhez biztosít segítő metódusokat.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (azonosító) ⇒ `space`
 
-Given a space identifier, this function retrieves the space from the graph.
+A szóközzel megadott azonosító alapján a függvény lekéri a helyet a gráfból.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Space identifier |
+| *ID*  | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (azonosító) ⇒ `sensor`
 
-Given a sensor identifier, this function retrieves the sensor from the graph.
+Ez a függvény az érzékelő azonosítóját adja vissza a gráfból.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Sensor identifier |
+| *ID*  | `guid` | Érzékelő azonosítója |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (azonosító) ⇒ `device`
 
-Given a device identifier, this function retrieves the device from the graph.
+Az eszköz azonosítója miatt ez a függvény lekéri az eszközt a gráfból.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *id* | `guid` | Device identifier |
+| *ID* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, adattípus) ⇒ `value`
 
-Given a sensor identifier and its data type, this function retrieves the current value for that sensor.
+Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő aktuális értékét kérdezi le.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *sensorId*  | `guid` | Sensor identifier |
-| *dataType*  | `string` | Sensor data type |
+| *sensorId*  | `guid` | Érzékelő azonosítója |
+| *Adattípus*  | `string` | Érzékelő adattípusa |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, valueName) ⇒ `value`
 
-Given a space identifier and the value name, this function retrieves the current value for that space property.
+A Space azonosító és az érték neve miatt ez a függvény lekéri az aktuális értéket a szóköz tulajdonsághoz.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId*  | `guid` | Space identifier |
-| *valueName* | `string` | Space property name |
+| *spaceId*  | `guid` | Lemezterület-azonosító |
+| *valueName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, adattípus) ⇒ `value[]`
 
-Given a sensor identifier and its data type, this function retrieves the historical values for that sensor.
+Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő korábbi értékeit kérdezi le.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *dataType* | `string` | Sensor data type |
+| *sensorId* | `guid` | Érzékelő azonosítója |
+| *Adattípus* | `string` | Érzékelő adattípusa |
 
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, adattípus) ⇒ `value[]`
 
-Given a space identifier and the value name, this function retrieves the historical values for that property on the space.
+A Space azonosító és az érték neve miatt ez a függvény az adott tulajdonsághoz tartozó korábbi értékeket kérdezi le a tárhelyen.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *valueName* | `string` | Space property name |
+| *spaceId* | `guid` | Lemezterület-azonosító |
+| *valueName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
-Given a space identifier, this function retrieves the child spaces for that parent space.
+A szóközzel megadott azonosító miatt a függvény lekérdezi az adott szülő terület gyermekeit.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
+### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒ `sensor[]`
 
-Given a space identifier, this function retrieves the child sensors for that parent space.
+A Space azonosító megadásakor ez a függvény lekéri a gyermek érzékelőket az adott szülő területhez.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒ `device[]`
 
-Given a space identifier, this function retrieves the child devices for that parent space.
+A szóközzel megadott azonosító miatt a függvény lekéri a gyermekeket az adott szülő területhez.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒ `sensor[]`
 
-Given a device identifier, this function retrieves the child sensors for that parent device.
+Az eszköz azonosítója miatt ez a függvény lekérdezi az adott szülő eszköz gyermek-érzékelőkét.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Device identifier |
+| *deviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ `space`
 
-Given a space identifier, this function retrieves its parent space.
+A szóközzel megadott azonosító alapján a függvény lekéri a szülő területét.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childSpaceId* | `guid` | Space identifier |
+| *childSpaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ `space`
 
-Given a sensor identifier, this function retrieves its parent space.
+A függvény az érzékelő azonosítójának alapján lekéri a szülő területét.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor identifier |
+| *childSensorId* | `guid` | Érzékelő azonosítója |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒ `space`
 
-Given a device identifier, this function retrieves its parent space.
+Az eszköz azonosítója miatt ez a függvény lekéri a szülő területét.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childDeviceId* | `guid` | Device identifier |
+| *childDeviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ `space`
 
-Given a sensor identifier, this function retrieves its parent device.
+A függvény az érzékelő azonosítója alapján lekéri a fölérendelt eszközét.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor identifier |
+| *childSensorId* | `guid` | Érzékelő azonosítója |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, propertyName) ⇒ `extendedProperty`
 
-Given a space identifier, this function retrieves the property and its value from the space.
+A szóközzel megadott azonosító alapján a függvény lekéri a tulajdonságot és annak értékét a területről.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *propertyName* | `string` | Space property name |
+| *spaceId* | `guid` | Lemezterület-azonosító |
+| *propertyName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, propertyName) ⇒ `extendedProperty`
 
-Given a sensor identifier, this function retrieves the property and its value from the sensor.
+A függvény az érzékelő azonosítója alapján lekéri a tulajdonságot és annak értékét az érzékelőből.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *propertyName* | `string` | Sensor property name |
+| *sensorId* | `guid` | Érzékelő azonosítója |
+| *propertyName* | `string` | Érzékelő tulajdonságának neve |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, propertyName) ⇒ `extendedProperty`
 
-Given a device identifier, this function retrieves the property and its value from the device.
+Az eszköz azonosítója miatt ez a függvény a tulajdonságot és annak értékét kérdezi le az eszközről.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Device identifier |
-| *propertyName* | `string` | Device property name |
+| *deviceId* | `guid` | Eszköz azonosítója |
+| *propertyName* | `string` | Eszköz tulajdonságának neve |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
-This function sets a value on the sensor object with the given data type.
+Ez a függvény egy értéket állít be az érzékelő objektumon a megadott adattípussal.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *dataType*  | `string` | Sensor data type |
-| *value*  | `string` | Value (Díj) |
+| *sensorId* | `guid` | Érzékelő azonosítója |
+| *Adattípus*  | `string` | Érzékelő adattípusa |
+| *value*  | `string` | Érték |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
-This function sets a value on the space object with the given data type.
+Ez a függvény egy értéket állít be a szóköz objektumon a megadott adattípussal.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *dataType* | `string` | Data type |
-| *value* | `string` | Value (Díj) |
+| *spaceId* | `guid` | Lemezterület-azonosító |
+| *Adattípus* | `string` | Data type |
+| *value* | `string` | Érték |
 
-### <a name="logmessage"></a>log(message)
+### <a name="logmessage"></a>napló (üzenet)
 
-This function logs the following message within the user-defined function.
+Ez a függvény a következő üzenetet naplózza a felhasználó által definiált függvényen belül.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | Message to be logged |
+| *üzenetet* | `string` | Naplózandó üzenet |
 
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
+### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, hasznos adatok)
 
-This function sends a custom notification out to be dispatched.
+Ez a függvény elküld egy egyéni értesítést a küldéshez.
 
-**Kind**: global function
+**Típus**: globális függvény
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | Graph object identifier. Examples are space, sensor, and device ID.|
-| *topologyObjectType*  | `string` | Examples are sensor and device.|
-| *payload*  | `string` | The JSON payload to be sent with the notification. |
+| *topologyObjectId*  | `guid` | Gráf-objektumazonosító. Ilyenek például a szóköz, az érzékelő és az eszköz azonosítója.|
+| *topologyObjectType*  | `string` | Ilyenek például az érzékelő és az eszköz.|
+| *adattartalom*  | `string` | Az értesítéssel küldendő JSON-adattartalom. |
 
-## <a name="return-types"></a>Return types
+## <a name="return-types"></a>Visszatérési típusok
 
-The response models returned from client reference helper methods are described below.
+Az ügyfél-referenciák segítő módszereiből visszaadott válaszok modelljei alább olvashatók.
 
 ### <a name="space"></a>Űr
 
@@ -274,51 +274,51 @@ The response models returned from client reference helper methods are described 
 }
 ```
 
-### <a name="space-methods"></a>Space methods
+### <a name="space-methods"></a>Szóköz metódusok
 
-#### <a name="parent--space"></a>Parent() ⇒ `space`
+#### <a name="parent--space"></a>Szülő () ⇒ `space`
 
-This function returns the parent space of the current space.
+Ez a függvény az aktuális terület szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ `sensor[]`
 
-This function returns the child sensors of the current space.
+Ez a függvény az aktuális terület alárendelt érzékelőkből áll vissza.
 
-#### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
+#### <a name="childdevices--device"></a>ChildDevices () ⇒ `device[]`
 
-This function returns the child devices of the current space.
+Ez a függvény az aktuális terület alárendelt eszközeit adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current space.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális területhez.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
+#### <a name="valuevaluename--value"></a>Value (valueName) ⇒ `value`
 
-This function returns the value of the current space.
+Ez a függvény az aktuális terület értékét adja vissza.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Name of the value |
+| *valueName* | `string` | Az érték neve |
 
-#### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
+#### <a name="historyvaluename--value"></a>Előzmények (valueName) ⇒ `value[]`
 
-This function returns the historical values of the current space.
+Ez a függvény az aktuális terület korábbi értékeit adja vissza.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Name of the value |
+| *valueName* | `string` | Az érték neve |
 
-#### <a name="notifypayload"></a>Notify(payload)
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
 
-This function sends a notification with the specified payload.
+Ez a függvény értesítést küld a megadott adattartalommal.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *adattartalom* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
 ### <a name="device"></a>Eszköz
 
@@ -340,31 +340,31 @@ This function sends a notification with the specified payload.
 
 ### <a name="device-methods"></a>Eszközmetódusok
 
-#### <a name="parent--space"></a>Parent() ⇒ `space`
+#### <a name="parent--space"></a>Szülő () ⇒ `space`
 
-This function returns the parent space of the current device.
+Ez a függvény az aktuális eszköz szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ `sensor[]`
 
-This function returns the child sensors of the current device.
+Ez a függvény az aktuális eszköz gyermek-érzékelőkét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current device.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális eszközhöz.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="notifypayload"></a>Notify(payload)
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
 
-This function sends a notification with the specified payload.
+Ez a függvény értesítést küld a megadott adattartalommal.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *adattartalom* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
-### <a name="sensor"></a>Sensor
+### <a name="sensor"></a>Érzékelő
 
 ```JSON
 {
@@ -386,41 +386,41 @@ This function sends a notification with the specified payload.
 }
 ```
 
-### <a name="sensor-methods"></a>Sensor methods
+### <a name="sensor-methods"></a>Érzékelő módszerei
 
-#### <a name="space--space"></a>Space() ⇒ `space`
+#### <a name="space--space"></a>Szóköz () ⇒ `space`
 
-This function returns the parent space of the current sensor.
+Ez a függvény az aktuális érzékelő szülő területét adja vissza.
 
-#### <a name="device--device"></a>Device() ⇒ `device`
+#### <a name="device--device"></a>Eszköz () ⇒ `device`
 
-This function returns the parent device of the current sensor.
+Ez a függvény az aktuális érzékelő fölérendelt eszközét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current sensor.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális érzékelőhöz.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="value--value"></a>Value() ⇒ `value`
+#### <a name="value--value"></a>Value () ⇒ `value`
 
-This function returns the value of the current sensor.
+Ez a függvény az aktuális érzékelő értékét adja vissza.
 
-#### <a name="history--value"></a>History() ⇒ `value[]`
+#### <a name="history--value"></a>Előzmények () ⇒ `value[]`
 
-This function returns the historical values of the current sensor.
+Ez a függvény az aktuális érzékelő korábbi értékeit adja vissza.
 
-#### <a name="notifypayload"></a>Notify(payload)
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
 
-This function sends a notification with the specified payload.
+Ez a függvény értesítést küld a megadott adattartalommal.
 
-| Paraméter  | Type (Típus)                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *adattartalom* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
-### <a name="value"></a>Value (Díj)
+### <a name="value"></a>Érték
 
 ```JSON
 {
@@ -430,7 +430,7 @@ This function sends a notification with the specified payload.
 }
 ```
 
-### <a name="extended-property"></a>Extended property
+### <a name="extended-property"></a>Kiterjesztett tulajdonság
 
 ```JSON
 {
@@ -441,8 +441,8 @@ This function sends a notification with the specified payload.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [Azure Digital Twins user-defined functions](./concepts-user-defined-functions.md).
+- Ismerje meg az [Azure Digital Twins felhasználó által definiált függvényeit](./concepts-user-defined-functions.md).
 
-- Learn [how to create user-defined functions](./how-to-user-defined-functions.md).
+- Megtudhatja [, hogyan hozhat létre felhasználó által definiált függvényeket](./how-to-user-defined-functions.md).
 
-- Learn [how to debug user-defined functions](./how-to-diagnose-user-defined-functions.md).
+- Útmutató [a felhasználó által definiált függvények hibakereséséhez](./how-to-diagnose-user-defined-functions.md).

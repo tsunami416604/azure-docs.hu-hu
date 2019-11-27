@@ -82,7 +82,7 @@ A cél forgatókönyvben a fotók segíthetnek. Ha az eszközön a felhasználó
 
 ![Egy horgony illusztrációja, amely a cél fényképét jeleníti meg a felhasználó mobileszközön](./media/start-here-edit.png)
 
-### <a name="rooms"></a>tárgyalótermek
+### <a name="rooms"></a>Tárgyalótermek
 
 A Room-forgatókönyvben a felhasználók csak azt tudják, hogy van egy horgony itt valahol. A felhasználók beszkennelik a helyet az eszközzel, és gyorsan megkeresik a horgonyt.
 

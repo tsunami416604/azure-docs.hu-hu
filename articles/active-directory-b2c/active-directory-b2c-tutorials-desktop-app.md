@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd0fc90988048f98be46370d2c7836d9506cc44a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d1c2eff9bc9ffe8a0fb2166d39c16360c0a79cc
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475254"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538926"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Oktatóanyag: felhasználók hitelesítése natív asztali ügyfélprogramban Azure Active Directory B2C használatával
 
 Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) a bejelentkezéshez, és hogyan regisztrálhat felhasználókat egy Windows megjelenítési alaprendszer (WPF) asztali alkalmazásban. Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A natív ügyfélalkalmazás hozzáadása
@@ -43,7 +43,7 @@ Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépés
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
-Ebben az oktatóanyagban egy olyan mintát konfigurál, amelyet letöltheti a GitHubról. A minta WPF asztali alkalmazás a regisztrálást, a bejelentkezést és a védett webes API-t hívhat Azure AD B2Cban. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), [böngésszen az adattárban](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop), vagy klónozza a GitHubon található mintát.
+Ebben az oktatóanyagban egy olyan mintát konfigurál, amelyet letöltheti a GitHubról. A minta WPF asztali alkalmazás a regisztrálást, a bejelentkezést és a védett webes API-t hívhat Azure AD B2Cban. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [böngésszen az adattárban](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop), vagy klónozza a GitHubon található mintát.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
@@ -60,7 +60,7 @@ Ha frissíteni szeretné az alkalmazást a Azure AD B2C-Bérlővel való együtt
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Példa:
+3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Például:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
@@ -92,7 +92,7 @@ Ha az **API hívása** gombot választja, **hibaüzenet** jelenik meg. A hiba ok
 
 Folytassa a következő oktatóanyaggal, amely egy védett webes API-t regisztrál a saját bérlőben, és lehetővé teszi a **hívási API** működőképességét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

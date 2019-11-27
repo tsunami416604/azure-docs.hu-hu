@@ -83,7 +83,7 @@ Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési mó
 
    ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
 - Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).

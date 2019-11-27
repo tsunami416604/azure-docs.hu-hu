@@ -1,6 +1,6 @@
 ---
-title: Scenarios for Private Zones - Azure DNS
-description: In this article, learn about common scenarios for using Azure DNS Private Zones.
+title: Privát zónák forgatókönyvei – Azure DNS
+description: Ebben a cikkben megismerheti a Azure DNS Private Zones használatának gyakori forgatókönyveit.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,45 +14,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210461"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private zones scenarios
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS privát zónák forgatókönyvei
 
-Azure DNS Private Zones provide name resolution within a virtual network as well as between virtual networks. In this article, we look at some common scenarios that can be realized using this feature.
+Azure DNS Private Zones a névfeloldást a virtuális hálózaton belül, valamint a virtuális hálózatok között. Ebben a cikkben megvizsgáljuk azokat a gyakori forgatókönyveket, amelyeket a funkció használatával lehet megvalósítani.
 
-## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenario: Name Resolution scoped to a single virtual network
-In this scenario, you have a virtual network in Azure that has a number of Azure resources in it, including virtual machines (VMs). You want to resolve the resources from within the virtual network via a specific domain name (DNS zone), and you need the name resolution to be private and not accessible from the internet. Furthermore, for the VMs within the VNET, you need Azure to automatically register them into the DNS zone. 
+## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Forgatókönyv: névfeloldás hatóköre egyetlen virtuális hálózatra
+Ebben az esetben egy Azure-beli virtuális hálózattal rendelkezik, amely számos Azure-erőforrással rendelkezik, beleértve a virtuális gépeket is. Egy adott tartománynév (DNS-zóna) segítségével szeretné feloldani az erőforrásokat a virtuális hálózaton belül, és a névfeloldásnak magánjellegűnek kell lennie, és nem érhető el az internetről. Emellett a VNET belüli virtuális gépek esetében az Azure-ra is szüksége lesz a DNS-zónába való automatikus regisztráláshoz. 
 
-This scenario is depicted below. Virtual Network named "A" contains two VMs (VNETA-VM1 and VNETA-VM2). Each of these have Private IPs associated. Once you create a Private Zone named contoso.com and link this virtual network as a Registration virtual network, Azure DNS will automatically create two A records in the zone as depicted. Now, DNS queries from VNETA-VM1 to resolve VNETA-VM2.contoso.com will receive a DNS response that contains the Private IP of VNETA-VM2. Furthermore, a Reverse DNS query (PTR) for the Private IP of VNETA-VM1 (10.0.0.1) issued from VNETA-VM2 will receive a DNS response that contains the name of VNETA-VM1, as expected. 
+Ez a forgatókönyv az alábbi ábrán látható. Az "A" nevű Virtual Network két virtuális gépet tartalmaz (TÁRSVISZONYBAN áll-VM1 és TÁRSVISZONYBAN áll-VM2). Ezek mindegyike saját IP-címmel van társítva. Miután létrehozta a contoso.com nevű privát zónát, és a virtuális hálózatot regisztrációs virtuális hálózatként kapcsolja össze, Azure DNS automatikusan két rekordot hoz létre a zónában ábrázolt módon. A TÁRSVISZONYBAN áll-VM1 által a VNETA-VM2.contoso.com feloldására irányuló DNS-lekérdezések egy DNS-választ kapnak, amely tartalmazza a TÁRSVISZONYBAN áll-VM2 magánhálózati IP-címét. Továbbá a TÁRSVISZONYBAN áll-VM2 által kiadott TÁRSVISZONYBAN áll-VM1 (10.0.0.1) magánhálózati IP-címéhez fordított DNS-lekérdezés (PTR) egy DNS-választ kap, amely a várt módon tartalmazza a TÁRSVISZONYBAN áll-VM1 nevét. 
 
-![Single Virtual network resolution](./media/private-dns-scenarios/single-vnet-resolution.png)
+![Egyetlen virtuális hálózat feloldása](./media/private-dns-scenarios/single-vnet-resolution.png)
 
-## <a name="scenario-name-resolution-across-virtual-networks"></a>Scenario: Name Resolution across virtual networks
+## <a name="scenario-name-resolution-across-virtual-networks"></a>Forgatókönyv: névfeloldás a virtuális hálózatok között
 
-This scenario is the more common case where you need to associate a Private Zone with multiple virtual networks. This scenario can fit architectures such as the Hub-and-Spoke model where there is a central Hub virtual network to which multiple other Spoke virtual networks are connected. The central Hub virtual network can be linked as the Registration virtual network to a private zone, and the Spoke virtual networks can be linked as Resolution virtual networks. 
+Ez a forgatókönyv a leggyakoribb eset, amikor több virtuális hálózattal kell hozzárendelnie egy privát zónát. Ez a forgatókönyv olyan architektúrákat is képes kiszolgálni, mint a sugaras modell, ahol egy központi hub virtuális hálózat található, amelyhez több más küllős virtuális hálózat kapcsolódik. A központi hub virtuális hálózat regisztrálható virtuális hálózatként egy privát zónához, a küllős virtuális hálózatok pedig feloldási virtuális hálózatokként kapcsolhatók össze. 
 
-The following diagram shows a simple version of this scenario where there are only two virtual networks - A and B. A is designated as a Registration virtual network and B is designated as a Resolution virtual network. The intent is for both virtual networks to share a common zone contoso.com. When the zone is created and the Resolution and Registration virtual networks are linked to the zone, Azure will automatically register DNS records for the VMs (VNETA-VM1 and VNETA-VM2) from the virtual network A. You can also manually add DNS records into the zone for VMs in the Resolution virtual network B. With this setup, you will observe the following behavior for forward and reverse DNS queries:
-* A DNS query from VNETB-VM1 in the Resolution virtual network B, for VNETA-VM1.contoso.com, will receive a DNS response containing the Private IP of VNETA-VM1.
-* A Reverse DNS (PTR) query from VNETB-VM2 in the Resolution virtual network B, for 10.1.0.1, will receive a DNS response containing the FQDN VNETB-VM1.contoso.com.  
-* A Reverse DNS (PTR) query from VNETB-VM3 in the Resolution virtual network B, for 10.0.0.1, will receive NXDOMAIN. The reason is that Reverse DNS queries are only scoped to the same virtual network. 
+Az alábbi ábrán a forgatókönyv egy egyszerű verziója látható, ahol csak két virtuális hálózat létezik – A és A B. A a regisztrációs virtuális hálózatként van megjelölve, a B pedig feloldási virtuális hálózatként van megjelölve. A cél az, hogy mindkét virtuális hálózat közös zóna-contoso.com osszon meg. A zóna létrehozásakor és a megoldási és regisztrációs virtuális hálózatok a zónához való csatolásakor az Azure automatikusan regisztrálja a virtuális gépek (TÁRSVISZONYBAN áll-VM1 és TÁRSVISZONYBAN áll-VM2) DNS-rekordjait a virtuális hálózatról. A DNS-rekordokat manuálisan is hozzáadhatja a zónához a (B) feloldási virtuális hálózatban lévő virtuális gépek zónájában. Ezzel a beállítással a következő viselkedést fogja figyelembe venni a továbbítási és a fordított DNS-lekérdezések esetében:
+* A b-VM1 DNS-lekérdezése a (VNETA-VM1.contoso.com) B megoldási virtuális hálózatban egy DNS-választ fog kapni, amely a TÁRSVISZONYBAN áll-VM1 magánhálózati IP-címét tartalmazza.
+* Egy fordított DNS-(PTR-) lekérdezés a b-VM2-ben a "B" megoldási virtuális hálózatban a 10.1.0.1 esetében egy DNS-választ kap, amely tartalmazza a teljes tartománynevet VNETB-VM1.contoso.com.  
+* A b-VM3 fordított DNS-(PTR-) lekérdezése a 10.0.0.1-ben a "B" megoldási virtuális hálózatban NXDOMAIN fog kapni. Ennek az az oka, hogy a fordított DNS-lekérdezések csak ugyanarra a virtuális hálózatra terjednek ki. 
 
 
-![Multiple Virtual network resolutions](./media/private-dns-scenarios/multi-vnet-resolution.png)
+![Több virtuális hálózati megoldás](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-Horizon functionality
+## <a name="scenario-split-horizon-functionality"></a>Forgatókönyv: felosztott horizontú funkció
 
-In this scenario, you have a use case where you want to realize different DNS resolution behavior depending on where the client sits (inside of Azure or out on the internet), for the same DNS zone. For example, you may have a private and public version of your application that has different functionality or behavior, but you want to use the same domain name for both versions. This scenario can be realized with Azure DNS by creating a Public DNS zone as well as a Private Zone, with the same name.
+Ebben a forgatókönyvben olyan használati esettel rendelkezik, amelyben eltérő DNS-feloldási viselkedést kíván megvalósítani attól függően, hogy az ügyfél hol ül (az Azure-ban vagy az interneten), ugyanarra a DNS-zónára. Előfordulhat például, hogy az alkalmazás olyan magán-és nyilvános verziója van, amely különböző funkciókkal vagy viselkedéssel rendelkezik, de mindkét verzióhoz ugyanazt a tartománynevet kívánja használni. Ez a forgatókönyv egy nyilvános DNS-zóna és egy azonos nevű privát zóna létrehozásával valósítható meg Azure DNS.
 
-The following diagram depicts this scenario. You have a virtual network A that has two VMs (VNETA-VM1 and VNETA-VM2) which have both Private IPs and Public IPs allocated. You create a Public DNS zone called contoso.com and register the Public IPs for these VMs as DNS records within the zone. You also create a Private DNS zone also called contoso.com specifying A as the Registration virtual network. Azure automatically registers the VMs as A records into the Private Zone, pointing to their Private IPs.
+A következő ábra ezt a forgatókönyvet ábrázolja. Rendelkezik egy olyan virtuális hálózattal, amely két virtuális géppel (TÁRSVISZONYBAN áll-VM1 és TÁRSVISZONYBAN áll-VM2) rendelkezik, és amelyek magánhálózati IP-címekkel és nyilvános IP-címekkel rendelkeznek. Hozzon létre egy contoso.com nevű nyilvános DNS-zónát, és regisztrálja a virtuális gépek nyilvános IP-címeit a zónán belüli DNS-rekordokként. Emellett létrehoz egy saját DNS zónát is, amely contoso.com néven is megadhatja a regisztrációs virtuális hálózatot. Az Azure automatikusan regisztrálja a virtuális gépeket a privát zónában lévő saját IP-címekre mutató rekordként.
 
-Now when an internet client issues a DNS query to look up VNETA-VM1.contoso.com, Azure will return the Public IP record from the public zone. If the same DNS query is issued from another VM (for example: VNETA-VM2) in the same virtual network A, Azure will return the Private IP record from the private zone. 
+Most, amikor egy internetes ügyfél DNS-lekérdezést bocsát ki a VNETA-VM1.contoso.com kereséséhez, az Azure a nyilvános zónából fogja visszaadni a nyilvános IP-rekordot. Ha ugyanezt a DNS-lekérdezést egy másik virtuális gépről (például: TÁRSVISZONYBAN áll-VM2) is kiállítják, akkor az Azure a magánhálózati IP-rekordot adja vissza a privát zónából. 
 
-![Split Brian resolution](./media/private-dns-scenarios/split-brain-resolution.png)
+![Feldarabolt Brian-feloldás](./media/private-dns-scenarios/split-brain-resolution.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md).
 
-Learn how to [create a private DNS zone](./private-dns-getstarted-powershell.md) in Azure DNS.
+Megtudhatja, hogyan [hozhat létre saját DNS-zónát](./private-dns-getstarted-powershell.md) a Azure DNSban.
 
-Learn about DNS zones and records by visiting: [DNS zones and records overview](dns-zones-records.md).
+A DNS-zónák és-rekordok megismerése látogasson el ide: [DNS-zónák és-rekordok áttekintése](dns-zones-records.md).
 
 Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.
 

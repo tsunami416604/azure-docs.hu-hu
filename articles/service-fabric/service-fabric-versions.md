@@ -55,12 +55,12 @@ A következő táblázat felsorolja a támogatott Service Fabric-verziókhoz tar
 
 | Operációs rendszer | A legkorábbi támogatott Service Fabric verziója |
 | --- | --- |
-| Windows Server 2012 R2 | Az összes verzió |
+| Windows Server 2012 R2 | Az összes verzió |
 | Windows Server 2016 | Az összes verzió |
 | Windows Server 1709 | 6.0 |
 | A Windows Server 1803-as verzióban | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
+| A Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Támogatott verziók nevei

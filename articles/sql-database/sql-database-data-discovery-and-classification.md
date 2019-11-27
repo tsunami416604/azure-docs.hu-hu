@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b5f839cc6216eb12bfd0a86009ec49e987279d6e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889839"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548406"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
@@ -128,8 +128,9 @@ Az Information Protection paradigmájának fontos aspektusa a bizalmas adatokhoz
 
 ![Napló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Az adatbesorolás kezelése a T-SQL használatával
+### <a name="manage-classifications"></a>Besorolások kezelése
 
+# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el, valamint beolvashatja az összes besorolást a teljes adatbázisra vonatkozóan.
 
 > [!NOTE]
@@ -139,8 +140,7 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 - Távolítsa el a besorolást egy vagy több oszlopból: [eldobási érzékenység besorolása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>Besorolások kezelése REST API-k használatával
-
+# <a name="rest-apistabazure-rest-api"></a>[REST API-k](#tab/azure-rest-api)
 Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A közzétett REST API-k a következő műveleteket támogatják:
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése
@@ -152,12 +152,8 @@ Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A kö
 
 - [Adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – egy adott adatbázis javasolt érzékenységi címkéit kéri le
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Adatfelderítés és besorolás kezelése az Azure PowerShell használatával
-
-Az Azure SQL Database-adatbázisok és a felügyelt példányok összes javasolt oszlopának beolvasásához a PowerShellt használhatja.
-
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>PowerShell-parancsmagok az Azure SQL Database-hez
-
+# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[PowerShell-parancsmag az Azure SQL-hez](#tab/azure-portal-sqldb)
+Az Azure SQL Database-adatbázisok összes javasolt oszlopának beolvasásához a PowerShellt használhatja.
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -165,8 +161,8 @@ Az Azure SQL Database-adatbázisok és a felügyelt példányok összes javasolt
 - [AzSqlDatabaSesensitivityRecommendation engedélyezése](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [AzSqlDatabaseSensitivityRecommendation letiltása](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>A felügyelt példány PowerShell-parancsmagjai
-
+# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[A felügyelt példány PowerShell-parancsmagjai](#tab/azure-powershell-mi)
+A PowerShell használatával lekérheti a felügyelt példányok összes javasolt oszlopát.
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)

@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan kérheti le a tárfiókok hozzáférési ku
 
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Hozzáférés biztosítása a VM számára a tárfiók Resource Managerben található hozzáférési kulcsaihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a tárelérési kulcsok lekérése a Resource Managerből a használatával 
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag bemutatja, hogyan kérheti le a tárfiókok hozzáférési ku
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
 Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Ki is hagyhatja ezt a lépést, és a VM-beli, rendszer által hozzárendelt felügyelt identitás számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
@@ -54,7 +54,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Ki is hagyhatja ezt 
 3. Nevezze el a tárfiókot, amelyet később fog használni.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** elemre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -174,7 +174,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban elsajátította a rendszer által hozzárendelt felügyelt identitások létrehozását, amelyekkel elérheti az Azure Storage-ot hozzáférési kulcs használatával.  További információ az Azure Storage tárelérési kulcsairól:
 

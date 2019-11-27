@@ -55,7 +55,7 @@ Rendszergazdai jóváhagyás megadása egy alkalmazás regisztrálásakor:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Navigáljon az **alkalmazás-regisztrációk** panelre.
 3. Válassza ki a beleegyező alkalmazást.
-4. Válassza ki **API-engedélyek**.
+4. Válassza az **API-engedélyek**lehetőséget.
 5. Kattintson a **rendszergazdai jóváhagyás megadása**lehetőségre.
 
 

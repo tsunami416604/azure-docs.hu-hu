@@ -195,7 +195,7 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+4. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 5. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
 

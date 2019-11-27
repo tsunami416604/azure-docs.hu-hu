@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with SharePoint on-premises | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and SharePoint on-premises.
+title: 'Oktatóanyag: Azure Active Directory a helyszíni SharePoint-integrációval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a helyszíni SharePoint között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,135 +22,135 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233451"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory integration with SharePoint on-premises
+# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: a helyszíni SharePoint-integráció Azure Active Directory
 
-In this tutorial, you learn how to integrate SharePoint on-premises with Azure Active Directory (Azure AD).
-Integrating SharePoint on-premises with Azure AD provides you with the following benefits:
+Ez az oktatóanyag azt ismerteti, hogyan integrálható a helyszíni SharePoint a Azure Active Directory (Azure AD) szolgáltatással.
+A helyszíni SharePoint és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* You can control in Azure AD who has access to SharePoint on-premises.
-* You can enable your users to be automatically signed-in to SharePoint on-premises (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a helyszíni SharePointhoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a helyszíni SharePointba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To configure Azure AD integration with SharePoint on-premises, you need the following items:
+Az Azure AD-integráció helyszíni SharePoint-környezetbe való konfigurálásához a következő elemek szükségesek:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* SharePoint on-premises single sign-on enabled subscription
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* SharePoint helyszíni egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* SharePoint on-premises supports **SP** initiated SSO
+* A helyszíni SharePoint az **SP** által kezdeményezett egyszeri bejelentkezést támogatja
 
-## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Adding SharePoint on-premises from the gallery
+## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>A SharePoint helyszíni hozzáadása a katalógusból
 
-To configure the integration of SharePoint on-premises into Azure AD, you need to add SharePoint on-premises from the gallery to your list of managed SaaS apps.
+A helyi SharePoint-környezet Azure AD-be való integrálásának konfigurálásához a katalógusból a felügyelt SaaS-alkalmazások listájához hozzá kell adnia a helyszíni SharePoint-szolgáltatást.
 
-**To add SharePoint on-premises from the gallery, perform the following steps:**
+**Ha a katalógusból szeretné felvenni a helyszíni SharePoint-szolgáltatást, hajtsa végre a következő lépéseket:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
     > [!NOTE]   
-    > If the element should not be available, it can also be opened through the fixed **All services** link at the top of the left navigation panel. In the following overview, the **Azure Active Directory** link is located in the **Identity** section or it can be searched for by using the filter text box.
+    > Ha az elem nem érhető el, a bal oldali navigációs panel felső részén található rögzített **összes szolgáltatás** hivatkozásra kattintva is megnyithatja. A következő áttekintésben a **Azure Active Directory** hivatkozás az **Identity (identitás** ) szakaszban található, vagy a szűrő szövegmező használatával kereshető.
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, type **SharePoint on-premises**, select **SharePoint on-premises** from result panel then click **Add** button to add the application.
+4. A keresőmezőbe írja be a **helyszíni SharePoint**kifejezést, válassza a **helyi SharePoint** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![SharePoint on-premises in the results list](common/search-new-app.png)
+    ![Helyszíni SharePoint a találatok listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-In this section, you configure and test Azure AD single sign-on with SharePoint on-premises based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in SharePoint on-premises needs to be established.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a helyszíni SharePointon a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a helyszíni SharePoint-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-To configure and test Azure AD single sign-on with SharePoint on-premises, you need to complete the following building blocks:
+Az Azure AD egyszeri bejelentkezés a helyszíni SharePoint-környezettel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure SharePoint on-premises Single Sign-On](#configure-sharepoint-on-premises-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Create an Azure AD Security Group in the Azure portal](#create-an-azure-ad-security-group-in-the-azure-portal)** - to enable a new security group in Azure AD for single sign-on.
-5. **[Grant access to SharePoint on-premises Security Group](#grant-access-to-sharepoint-on-premises-security-group)** - grant access for particular group to Azure AD.
-6. **[Assign the Azure AD Security Group in the Azure portal](#assign-the-azure-ad-security-group-in-the-azure-portal)** - to assign the particular group to Azure AD for authentication.
-7. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. A **[SharePoint helyszíni egyszeri bejelentkezésének konfigurálása](#configure-sharepoint-on-premises-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Hozzon létre egy Azure ad biztonsági csoportot a Azure Portalban](#create-an-azure-ad-security-group-in-the-azure-portal)** – az Azure ad-ben az egyszeri bejelentkezéshez új biztonsági csoportot engedélyezhet.
+5. **[Hozzáférés biztosítása a helyszíni SharePoint-biztonsági csoport](#grant-access-to-sharepoint-on-premises-security-group)** számára – hozzáférés engedélyezése egy adott csoport számára az Azure ad-hez.
+6. **[Rendelje hozzá az Azure ad biztonsági csoportot a Azure Portal](#assign-the-azure-ad-security-group-in-the-azure-portal)** – az adott csoport az Azure ad-hez való hozzárendeléséhez a hitelesítéshez.
+7. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-To configure Azure AD single sign-on with SharePoint on-premises, perform the following steps:
+Az Azure AD egyszeri bejelentkezés a helyszíni SharePoint szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **SharePoint on-premises** application integration page, select **Single sign-on**.
+1. A [Azure Portal](https://portal.azure.com/)a **SharePoint helyszíni alkalmazás-** integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![SharePoint on-premises Domain and URLs single sign-on information](common/sp-identifier-reply.png)
+    ![Helyszíni SharePoint-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. In the **Sign-on URL** text box, type a URL using the following pattern: `https://<YourSharePointServerURL>/_trust/default.aspx`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
-    b. In the **Identifier** box, type a URL using the following pattern: `urn:sharepoint:federation`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `urn:sharepoint:federation`
 
-    c. In the **Reply URL** text box, type a URL using the following pattern: `https://<YourSharePointServerURL>/_trust/default.aspx`
-
-    > [!NOTE]
-    > These values are not real. Update these values with the actual Sign-On URL, Identifier and Reply URL. Contact [SharePoint on-premises Client support team](https://support.office.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
-
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
-
-    ![The Certificate download link](common/certificatebase64.png)
-
-    > [!Note]
-    > Please note down the file path to which you have downloaded the certificate file, as you need to use it later in the PowerShell script for configuration.
-
-6. On the **Set up SharePoint on-premises** section, copy the appropriate URL(s) as per your requirement. For **Single Sign-On Service URL**, use a value of the following pattern: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
-
-    > [!Note]
-    > _my_directory_id_ is the tenant id of Azure Ad subscription.
-
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
-
-    a. Login URL
-
-    b. Azure AD Identifier
-
-    c. Logout URL
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
     > [!NOTE]
-    > Sharepoint On-Premises application uses SAML 1.1 token, so Azure AD expects WS Fed request from SharePoint server and after authentication, it issues the SAML 1.1. token.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon [a helyszíni SharePoint-ügyfél ügyfélszolgálatához](https://support.office.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-### <a name="configure-sharepoint-on-premises-single-sign-on"></a>Configure SharePoint on-premises Single Sign-On
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-1. In a different web browser window, sign in to your SharePoint on-premises company site as an administrator.
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-2. **Configure a new trusted identity provider in SharePoint Server 2016**
+    > [!Note]
+    > Jegyezze meg a fájl elérési útját, amelyre a tanúsítványfájl letöltötte, mert később a konfigurációhoz szükséges PowerShell-szkriptben kell használni.
 
-    Sign into the SharePoint Server 2016 server and open the SharePoint 2016 Management Shell. Fill in the values of $realm (Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal), $wsfedurl (Single Sign-On Service URL), and $filepath (file path to which you have downloaded the certificate file) from Azure portal and run the following commands to configure a new trusted identity provider.
+6. A helyszíni **SharePoint-környezet beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint. Az **egyszeri bejelentkezési szolgáltatás URL-címéhez**használja a következő minta értékét: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+
+    > [!Note]
+    > _my_directory_id_ az Azure ad-előfizetés bérlői azonosítója.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+    > [!NOTE]
+    > A helyszíni SharePoint-alkalmazás SAML 1,1-tokent használ, így az Azure AD a (z) a SharePoint-kiszolgálótól érkező, a hitelesítés után megjelenő, a SAML 1,1-et kibocsátó kérést jogkivonat.
+
+### <a name="configure-sharepoint-on-premises-single-sign-on"></a>A SharePoint helyszíni egyszeri bejelentkezésének konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a SharePoint helyi vállalati webhelyére rendszergazdaként.
+
+2. **Új megbízható identitás-szolgáltató konfigurálása a SharePoint Server 2016-ben**
+
+    Jelentkezzen be a SharePoint Server 2016-kiszolgálóra, és nyissa meg a SharePoint 2016 felügyeleti rendszerhéjat. Adja meg $realm értékeit (az azonosító értékét a SharePoint helyszíni tartomány és URL-címek szakaszának Azure Portal), $wsfedurl (egyszeri bejelentkezési szolgáltatás URL-címe) és $filepath (a fájl elérési útját, amelyre a tanúsítványfájl letöltötte) Azure Portal és Futtatás az alábbi parancsokkal konfigurálhatja az új megbízható identitás-szolgáltatót.
 
     > [!TIP]
-    > If you're new to using PowerShell or want to learn more about how PowerShell works, see [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps).
+    > Ha most ismerkedik a PowerShell használatával, vagy szeretne többet megtudni a PowerShell működéséről, tekintse meg a [SharePoint PowerShellt](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps).
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -166,211 +166,211 @@ To configure Azure AD single sign-on with SharePoint on-premises, perform the fo
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3,$map4,$map5 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
     ```
 
-    Next, follow these steps to enable the trusted identity provider for your application:
+    Ezután kövesse az alábbi lépéseket az alkalmazás megbízható identitás-szolgáltatójának engedélyezéséhez:
 
-    a. In Central Administration, navigate to **Manage Web Application** and select the web application that you wish to secure with Azure AD.
+    a. A központi felügyelet területen navigáljon a **webalkalmazás kezelése lapra** , és válassza ki azt a webalkalmazást, amelyet az Azure ad-vel szeretne védeni.
 
-    b. In the ribbon, click **Authentication Providers** and choose the zone that you wish to use.
+    b. A menüszalagon kattintson a **hitelesítésszolgáltatók** elemre, és válassza ki a használni kívánt zónát.
 
-    c. Select **Trusted Identity provider** and select the identify provider you just registered named *AzureAD*.
+    c. Válassza ki a **megbízható identitás-szolgáltatót** , és válassza ki az imént regisztrált Szolgáltató *AzureAD*.
 
-    d. On the sign-in page URL setting, select **Custom sign in page** and provide the value “/_trust/”.
+    d. A bejelentkezési oldal URL-címe beállításnál válassza az **Egyéni bejelentkezés lapot** , és adja meg a "/_trust/" értéket.
 
     e. Kattintson az **OK** gombra.
 
-    ![Configuring your authentication provider](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![A hitelesítési szolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > Some of the external users will not able to use this single sign-on integration as their UPN will have mangled value something like `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Soon we will allow customers app config on how to handle the UPN depending on the user type. After that all your guest users should be able to use SSO seamlessly as the organization employees.
+    > A külső felhasználók némelyike nem fogja tudni használni ezt az egyszeri bejelentkezési integrációt, mert az UPN-hez hasonló érték tartozik, mint a `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Hamarosan lehetővé tesszük az ügyfeleknek az alkalmazás konfigurációját, hogy hogyan kezelje az UPN-t a felhasználó típusától függően. Ezt követően az összes vendégnek képesnek kell lennie az egyszeri bejelentkezés zökkenőmentes használatára a szervezeti alkalmazottak számára.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
-    ![New user Button](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![The User dialog box](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
-### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Create an Azure AD Security Group in the Azure portal
+### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 
-1. Click on **Azure Active Directory > All Groups**.
+1. Kattintson **Azure Active Directory > minden csoport**elemre.
 
-    ![Create an Azure AD Security Group](./media/sharepoint-on-premises-tutorial/allgroups.png)
+    ![Azure AD biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/allgroups.png)
 
-2. Click **New group**:
+2. Kattintson az **új csoport**elemre:
 
-    ![Create an Azure AD Security Group](./media/sharepoint-on-premises-tutorial/newgroup.png)
+    ![Azure AD biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/newgroup.png)
 
-3. Fill in **Group type**, **Group name**, **Group description**, **Membership type**. Click on the arrow to select members, then search for or click on the member you will like to add to the group. Click on **Select** to add the selected members, then click on **Create**.
+3. Adja meg a **csoport típusát**, a **csoport nevét**, a **csoport leírását**, a **tagság típusát**. Kattintson a nyílra a tagok kiválasztásához, majd keressen rá, vagy kattintson arra a tagra, amelyet hozzá szeretne adni a csoporthoz. Kattintson a **kiválasztás** elemre a kijelölt tagok hozzáadásához, majd kattintson a **Létrehozás**gombra.
 
-    ![Create an Azure AD Security Group](./media/sharepoint-on-premises-tutorial/addingmembers.png)
+    ![Azure AD biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/addingmembers.png)
 
     > [!NOTE]
-    > In order to assign Azure Active Directory Security Groups to SharePoint on-premises, it will be necessary to install and configure [AzureCP](https://yvand.github.io/AzureCP/) in the on-premises SharePoint farm OR develop and configure an alternative custom claims provider for SharePoint.  See the more information section at the end of the document for creating your own custom claims provider, if you don’t use AzureCP.
+    > Azure Active Directory biztonsági csoportok a helyszíni SharePointhoz való hozzárendeléséhez telepítenie és konfigurálnia kell a [AzureCP](https://yvand.github.io/AzureCP/) a helyszíni SharePoint-farmban, vagy fejlesztenie és konfigurálnia kell egy alternatív egyéni jogcím-szolgáltatót a sharepointhoz.  Ha nem használja a AzureCP-t, tekintse meg a dokumentum végén található további információk szakaszt a saját egyéni jogcím-szolgáltató létrehozásához.
 
-### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Grant access to SharePoint on-premises Security Group
+### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Hozzáférés biztosítása a helyszíni SharePoint-biztonsági csoport számára
 
-**Configure Security Groups and Permissions on the App Registration**
+**Biztonsági csoportok és engedélyek konfigurálása az alkalmazás regisztrálásához**
 
-1. In the Azure portal, select **Azure Active Directory**, then select **App registrations**.
+1. A Azure Portal válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőséget.
 
-    ![Enterprise applications blade](./media/sharepoint-on-premises-tutorial/appregistrations.png)
+    ![Vállalati alkalmazások panel](./media/sharepoint-on-premises-tutorial/appregistrations.png)
 
-2. In the search box, type and select **SharePoint on-premises**.
+2. A keresőmezőbe írja be a (z) kifejezést, és válassza a helyszíni **SharePoint**lehetőséget.
 
-    ![SharePoint on-premises in the results list](./media/sharepoint-on-premises-tutorial/appsearch.png)
+    ![Helyszíni SharePoint a találatok listájában](./media/sharepoint-on-premises-tutorial/appsearch.png)
 
-3. Click on **Manifest**.
+3. Kattintson a **manifest (jegyzékfájl**) elemre.
 
-    ![Manifest option](./media/sharepoint-on-premises-tutorial/manifest.png)
+    ![Jegyzékfájl lehetőség](./media/sharepoint-on-premises-tutorial/manifest.png)
 
-4. Modify `groupMembershipClaims`: `NULL`, To `groupMembershipClaims`: `SecurityGroup`. Then, click on Save
+4. Módosítsa `groupMembershipClaims`: `NULL`, `groupMembershipClaims`: `SecurityGroup`. Ezután kattintson a Save (Mentés) gombra.
 
-    ![Edit Manifest](./media/sharepoint-on-premises-tutorial/manifestedit.png)
+    ![Jegyzékfájl szerkesztése](./media/sharepoint-on-premises-tutorial/manifestedit.png)
 
-5. Click on **Settings**, then click on **Required permissions**.
+5. Kattintson a **Beállítások**elemre, majd a **szükséges engedélyek**elemre.
 
     ![Szükséges engedélyek](./media/sharepoint-on-premises-tutorial/settings.png)
 
-6. Click on **Add** and then **Select an API**.
+6. Kattintson a **Hozzáadás** elemre, majd **válasszon ki egy API**-t.
 
-    ![API Access](./media/sharepoint-on-premises-tutorial/required_permissions.png)
+    ![API-hozzáférés](./media/sharepoint-on-premises-tutorial/required_permissions.png)
 
-7. Add both **Windows Azure Active Directory** and **Microsoft Graph API**, but it’s only possible to select one at a time.
+7. Adja hozzá a **Windows Azure Active Directory** és a **Microsoft Graph API**-t, de egyszerre csak egyet lehet kijelölni.
 
-    ![API Select](./media/sharepoint-on-premises-tutorial/permissions.png)
+    ![API kiválasztása](./media/sharepoint-on-premises-tutorial/permissions.png)
 
-8. Select Windows Azure Active Directory, check Read directory data and click on Select. Go back and add Microsoft Graph and select Read directory data for it, as well.  Click on Select and click on Done.
+8. Válassza a Windows Azure Active Directory lehetőséget, tekintse meg a címtáradatok olvasása elemet, majd kattintson a kiválasztás elemre. Lépjen vissza, és adja hozzá a Microsoft Graph, majd válassza a címtárbeli információk olvasása lehetőséget is.  Kattintson a kiválasztás elemre, majd kattintson a kész gombra.
 
-    ![Enable Access](./media/sharepoint-on-premises-tutorial/readpermission.png)
+    ![Hozzáférés engedélyezése](./media/sharepoint-on-premises-tutorial/readpermission.png)
 
-9. Now, under Required Settings, click on **Grant permissions** and then Click Yes to Grant permissions.
+9. Most a szükséges beállítások területen kattintson az **engedélyek megadása** elemre, majd az Igen gombra az engedélyek megadásához.
 
-    ![Grant Permissions](./media/sharepoint-on-premises-tutorial/grantpermission.png)
-
-    > [!NOTE]
-    > Check under notifications to determine if the permissions were successfully granted.  If they are not, then the AzureCP will not work properly and it won’t be possible to configure SharePoint on-premises with Azure Active Directory Security Groups.
-
-10. Configure the AzureCP on the SharePoint on-premises farm or an alternative custom claims provider solution.  In this example, we are using AzureCP.
+    ![Engedélyek megadása](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
-    > Please note that AzureCP is not a Microsoft product or supported by Microsoft Technical Support. Download, install and configure AzureCP on the on-premises SharePoint farm per https://yvand.github.io/AzureCP/ 
+    > Az értesítések területen ellenőrizze, hogy az engedélyek megadása sikeres volt-e.  Ha nem, akkor a AzureCP nem fog megfelelően működni, és nem lesz lehetséges a helyszíni SharePoint konfigurálása Azure Active Directory biztonsági csoportokkal.
 
-11. **Grant access to the Azure Active Directory Security Group in the on-premises SharePoint** :- The groups must be granted access to the application in SharePoint on-premises.  Use the following steps to set the permissions to access the web application.
+10. Konfigurálja a AzureCP a helyszíni SharePoint-farmon vagy egy alternatív egyéni jogcím-szolgáltatói megoldáson.  Ebben a példában a AzureCP-t használjuk.
 
-12. In Central Administration, click on Application Management, Manage web applications, then select the web application to activate the ribbon and click on User Policy.
+    > [!NOTE]
+    > Vegye figyelembe, hogy a AzureCP nem Microsoft-termék, vagy nem támogatott a Microsoft technikai támogatási szolgálata. AzureCP letöltése, telepítése és konfigurálása a helyszíni SharePoint-farmon https://yvand.github.io/AzureCP/ 
 
-    ![Central Administration](./media/sharepoint-on-premises-tutorial/centraladministration.png)
+11. **Hozzáférés biztosítása a Azure Active Directory biztonsági csoporthoz a helyszíni SharePointban** : – a csoportoknak hozzáférést kell biztosítani az alkalmazáshoz a helyszíni SharePointban.  A következő lépésekkel állíthatja be a webalkalmazás eléréséhez szükséges engedélyeket.
 
-13. Under Policy for Web Application, click on Add Users, then select the zone, click on Next.  Click on the Address Book.
+12. A központi felügyelet területen kattintson az alkalmazások kezelése, webalkalmazások kezelése elemre, majd válassza ki a webalkalmazást a menüszalag aktiválásához, majd kattintson a felhasználói házirend elemre.
 
-    ![Policy for Web application](./media/sharepoint-on-premises-tutorial/webapp-policy.png)
+    ![Központi felügyelet](./media/sharepoint-on-premises-tutorial/centraladministration.png)
 
-14. Then, search for and add the Azure Active Directory Security Group and click on OK.
+13. A szabályzat a webalkalmazáshoz lapon kattintson a felhasználók hozzáadása elemre, majd válassza ki a zónát, majd kattintson a Tovább gombra.  Kattintson a címjegyzékre.
 
-    ![Adding Security group](./media/sharepoint-on-premises-tutorial/securitygroup.png)
+    ![Webalkalmazásra vonatkozó szabályzat](./media/sharepoint-on-premises-tutorial/webapp-policy.png)
 
-15. Select the Permissions, then click on Finish.
+14. Ezután keresse meg és adja hozzá a Azure Active Directory biztonsági csoportot, majd kattintson az OK gombra.
 
-    ![Adding Security group](./media/sharepoint-on-premises-tutorial/permissions1.png)
+    ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/securitygroup.png)
 
-16. See under Policy for Web Application, the Azure Active Directory Group is added.  The group claim shows the Azure Active Directory Security Group Object ID for the User Name.
+15. Válassza ki az engedélyeket, majd kattintson a Befejezés gombra.
 
-    ![Adding Security group](./media/sharepoint-on-premises-tutorial/addgroup.png)
+    ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/permissions1.png)
 
-17. Browse to the SharePoint site collection and add the Group there, as well. Click on Site Settings, then click Site permissions and Grant Permissions.  Search for the Group Role claim, assign the permission level and click Share.
+16. Tekintse meg a házirend a webalkalmazáshoz című témakört, és adja hozzá a Azure Active Directory csoportot.  A csoportjogcím a Felhasználónév Azure Active Directory biztonsági csoport objektumának AZONOSÍTÓját jeleníti meg.
 
-    ![Adding Security group](./media/sharepoint-on-premises-tutorial/grantpermission1.png)
+    ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/addgroup.png)
 
-### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Configuring one trusted identity provider for multiple web applications
+17. Keresse meg a SharePoint-webhely gyűjteményét, és adja hozzá a csoportot is. Kattintson a hely beállításai lehetőségre, majd a hely engedélyei lehetőségre, és adja meg az engedélyeket.  Keresse meg a csoport szerepkör jogcímet, rendelje hozzá a jogosultsági szintet, majd kattintson a megosztás lehetőségre.
 
-The configuration works for a single web application, but needs additional configuration if you intend to use the same trusted identity provider for multiple web applications. For example, assume we had extended a web application to use the URL `https://portal.contoso.local` and now want to authenticate the users to `https://sales.contoso.local` as well. To do this, we need to update the identity provider to honor the WReply parameter and update the application registration in Azure AD to add a reply URL.
+    ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/grantpermission1.png)
 
-1. In the Azure portal, open the Azure AD directory. Click **App registrations**, then click **View all applications**. Click the application that you created previously (SharePoint SAML Integration).
+### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Egy megbízható identitás-szolgáltató konfigurálása több webalkalmazáshoz
 
-2. Click **Settings**.
+A konfiguráció egyetlen webalkalmazás esetében működik, de további konfigurálásra van szükség, ha ugyanazt a megbízható identitás-szolgáltatót szeretné használni több webalkalmazáshoz. Tegyük fel például, hogy kibővítettünk egy webalkalmazást az URL-`https://portal.contoso.local` használatára, és most a felhasználókat a `https://sales.contoso.local` is szeretné hitelesíteni. Ehhez frissítenie kell az WReply paramétert, és frissítenie kell az alkalmazás regisztrációját az Azure AD-ben a válasz URL-címének hozzáadásához.
 
-3. In the settings blade, click **Reply URLs**.
+1. A Azure Portal nyissa meg az Azure AD-címtárat. Kattintson a **Alkalmazásregisztrációk**, majd **az összes alkalmazás megtekintése**elemre. Kattintson a korábban létrehozott alkalmazásra (SharePoint SAML-integráció).
 
-4. Add the URL for the additional web application with `/_trust/default.aspx` appended to the URL (such as `https://sales.contoso.local/_trust/default.aspx`) and click **Save**.
+2. Kattintson a **Beállítások**elemre.
 
-5. On the SharePoint server, open the **SharePoint 2016 Management Shell** and execute the following commands, using the name of the trusted identity token issuer that you used previously.
+3. A beállítások panelen kattintson a **Válasz URL-címek**elemre.
+
+4. Adja hozzá a további webalkalmazás URL-címét az URL-címhez csatolt `/_trust/default.aspx`hoz (például `https://sales.contoso.local/_trust/default.aspx`), majd kattintson a **Save (Mentés**) gombra.
+
+5. A SharePoint-kiszolgálón nyissa meg a **sharepoint 2016 felügyeleti rendszerhéját** , és hajtsa végre a következő parancsokat a korábban használt megbízható Identity token-kiállító neve alapján.
 
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-6. In Central Administration, go to the web application and enable the existing trusted identity provider. Remember to also configure the sign-in page URL as a custom sign in page `/_trust/`.
+6. A központi felügyelet lapon nyissa meg a webalkalmazást, és engedélyezze a meglévő megbízható identitás-szolgáltatót. Ne feledje, hogy a bejelentkezési oldal URL-címét egyéni bejelentkezési oldalként is konfigurálja `/_trust/`.
 
-7. In Central Administration, click the web application and choose **User Policy**. Add a user with the appropriate permissions as demonstrated previously in this article.
+7. A központi felügyelet lapon kattintson a webalkalmazásra, és válassza a **felhasználói házirend**elemet. Adja hozzá a megfelelő engedélyekkel rendelkező felhasználót a jelen cikkben korábban bemutatott módon.
 
-### <a name="fixing-people-picker"></a>Fixing People Picker
+### <a name="fixing-people-picker"></a>Személyek Választójának kijavítása
 
-Users can now sign into SharePoint 2016 using identities from Azure AD, but there are still opportunities for improvement to the user experience. For instance, searching for a user presents multiple search results in the people picker. There is a search result for each of the 3 claim types that were created in the claim mapping. To choose a user using the people picker, you must type their user name exactly and choose the **name** claim result.
+A felhasználók mostantól bejelentkezhetnek a SharePoint 2016-be az Azure AD-identitások használatával, de továbbra is lehetőség van a felhasználói élmény javítására. A felhasználók keresése például több keresési eredményt is tartalmaz a People választóban. A rendszer a jogcím-leképezésben létrehozott három jogcím-típusra vonatkozóan keresési eredményt ad. Ha a felhasználók közül szeretne kiválasztani egy felhasználót, pontosan be kell írnia a felhasználónevét, és ki kell választania **a jogcím** eredményét.
 
-![Claims search results](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![Jogcímek keresési eredményei](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
-There is no validation on the values you search for, which can lead to misspellings or users accidentally choosing the wrong claim type to assign such as the **SurName** claim. This can prevent users from successfully accessing resources.
+A keresett értékeket nem érvényesíti a rendszer, ami olyan hibákhoz vezethet, vagy a felhasználók véletlenül nem megfelelő jogcím-típust választanak ki, mint például a **vezetéknév** jogcímet. Így megakadályozható, hogy a felhasználók hozzáférjenek az erőforrásokhoz.
 
-To assist with this scenario, there is an open-source solution called [AzureCP](https://yvand.github.io/AzureCP/) that provides a custom claims provider for SharePoint 2016. It will use the Azure AD Graph to resolve what users enter and perform validation. Learn more at [AzureCP](https://yvand.github.io/AzureCP/).
+Ennek a forgatókönyvnek a támogatásához egy [AzureCP](https://yvand.github.io/AzureCP/) nevű nyílt forráskódú megoldás létezik, amely egyéni jogcím-szolgáltatót biztosít a SharePoint 2016-hez. Az Azure AD Graph használatával oldja fel, hogy a felhasználók hogyan adja meg és hajtják végre az érvényesítést. További információ: [AzureCP](https://yvand.github.io/AzureCP/).
 
-### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Assign the Azure AD Security Group in the Azure portal
+### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Rendelje hozzá az Azure AD biztonsági csoportot a Azure Portal
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SharePoint on-premises**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza **a helyszíni SharePoint**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, type and select **SharePoint on-premises**.
+2. Az alkalmazások listában írja be és válassza a **helyszíni SharePoint**lehetőséget.
 
-    ![The SharePoint on-premises link in the Applications list](common/all-applications.png)
+    ![A helyszíni SharePoint-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Click the **Add user**.
+4. Kattintson a **felhasználó hozzáadása**elemre.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Search for the Security Group you want to use, then click on the group to add it to the Select members section. Click **Select**, then click **Assign**.
+5. Keresse meg a használni kívánt biztonsági csoportot, majd kattintson a csoportra, és adja hozzá a tagok kiválasztása szakaszhoz. Kattintson a **kiválasztás**, majd a **hozzárendelés**elemre.
 
-    ![Search Security Group](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
+    ![Keresés a biztonsági csoportban](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
 
     > [!NOTE]
-    > Check the notifications in the menu bar to be notified that the Group was successfully assigned to the Enterprise application in the Azure portal.
+    > Győződjön meg arról, hogy a menüsorban található értesítések azt jelzik, hogy a csoport sikeresen hozzá lett-e rendelve a Azure Portal vállalati alkalmazásához.
 
-### <a name="create-sharepoint-on-premises-test-user"></a>Create SharePoint on-premises test user
+### <a name="create-sharepoint-on-premises-test-user"></a>SharePoint helyszíni tesztelési felhasználó létrehozása
 
-In this section, you create a user called Britta Simon in SharePoint on-premises. Work with [SharePoint on-premises support team](https://support.office.com/) to add the users in the SharePoint on-premises platform. Users must be created and activated before you use single sign-on.
+Ebben a szakaszban létrehoz egy Britta Simon nevű felhasználót a helyszíni SharePointban. A helyszíni SharePoint helyszíni [támogatási csapatával](https://support.office.com/) a felhasználókat a SharePoint helyszíni platformján veheti fel. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the SharePoint on-premises tile in the Access Panel, you should be automatically signed in to the SharePoint on-premises for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SharePoint helyszíni csempére kattint, automatikusan be kell jelentkeznie a helyszíni SharePointba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

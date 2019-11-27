@@ -1,6 +1,6 @@
 ---
-title: The Conditional Access What If tool - Azure Active Directory
-description: Learn how you can understand the impact of your Conditional Access policies on your environment.
+title: A feltételes hozzáférés What If eszköz – Azure Active Directory
+description: Ismerje meg, hogy a feltételes hozzáférési szabályzatok milyen hatással lehetnek a környezetre.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,92 +18,92 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379980"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
+A [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
 
-This article explains how you can use this tool to test your Conditional Access policies.
+Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
 
-## <a name="what-it-is"></a>Leírás
+## <a name="what-it-is"></a>Mi ez?
 
-The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. Nem szükséges manuálisan végrehajtott bejelentkezésekkel tesztelni a szabályzatokat, az eszköz használatával egy szimulált felhasználói bejelentkezést értékelhet ki. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
+A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a feltételes hozzáférési szabályzatok környezetre gyakorolt hatásának megismerését. Nem szükséges manuálisan végrehajtott bejelentkezésekkel tesztelni a szabályzatokat, az eszköz használatával egy szimulált felhasználói bejelentkezést értékelhet ki. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési szabályzatokat sorolja fel, hanem a [klasszikus szabályzatokat](policy-migration.md#classic-policies) is, ha vannak ilyenek.    
 
-The **What If** tool provides a way to quickly determine the policies that apply to a specific user. You can use the information, for example, if you need to troubleshoot an issue.    
+Az **What if** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat például akkor használhatja, ha problémát kell elhárítani.    
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
-In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. These settings include:
+A **feltételes hozzáférés What if eszközben**először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások a következők:
 
-- The user you want to test 
-- The cloud apps the user would attempt to access
-- The conditions under which access to the configures cloud apps is performed
+- A tesztelni kívánt felhasználó 
+- Azok a felhőalapú alkalmazások, amelyeket a felhasználó megkísérel elérni
+- A felhőalapú alkalmazások konfigurálásának feltételei
      
-As a next step, you can initiate a simulation run that evaluates your settings. Only policies that are enabled are part of an evaluation run.
+A következő lépésként elindíthat egy szimulációs futtatást, amely kiértékeli a beállításokat. Csak az engedélyezett szabályzatok tartoznak egy próbaverziós futtatásba.
 
-When the evaluation has finished, the tool generates a report of the affected policies.
+Ha a kiértékelés befejeződött, az eszköz létrehoz egy jelentést az érintett házirendekről.
 
-## <a name="running-the-tool"></a>Running the tool
+## <a name="running-the-tool"></a>Az eszköz futtatása
 
-You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
+Az **What if** eszközt a Azure Portal **[feltételes hozzáférési szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** oldalán találja.
 
-To start the tool, in the toolbar on top of the list of policies, click **What If**.
+Az eszköz elindításához a házirendek listájának tetején található eszköztáron kattintson a **What if**elemre.
 
 ![What If](./media/what-if-tool/01.png)
 
-Before you can run an evaluation, you must configure the settings.
+A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
 ## <a name="settings"></a>Beállítások
 
-This section provides you with information about the settings of simulation run.
+Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos információkat tartalmaz.
 
 ![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Felhasználó
 
-You can only select one user. This is the only required field.
+Csak egy felhasználót választhat ki. Ez az egyetlen kötelező mező.
 
-### <a name="cloud-apps"></a>Cloud apps
+### <a name="cloud-apps"></a>Felhőalapú alkalmazások
 
-The default for this setting is **All cloud apps**. The default setting performs an evaluation of all available policies in your environment. You can narrow down the scope to policies affecting specific cloud apps.
+A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás**. Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
 
 ### <a name="ip-address"></a>IP-cím
 
-The IP address is a single IPv4 address to mimic the [location condition](location-condition.md). The address represents Internet facing address of the device used by your user to sign in. You can verify the IP address of a device by, for example, navigating to [What is my IP address](https://whatismyipaddress.com).    
+Az IP-cím egyetlen IPv4-cím, amely a [hely feltételét](location-condition.md)utánozza. A címe a felhasználó által a bejelentkezéshez használt eszköz internet felé irányuló címe. Az eszközök IP-címét ellenőrizheti például, hogy [Mi az az IP-cím](https://whatismyipaddress.com).    
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Eszköz platformok
 
-This setting mimics the [device platforms condition](conditions.md#device-platforms) and represents the equivalent of **All platforms (including unsupported)** . 
+Ez a beállítás az [eszköz platformjának feltételeit](conditions.md#device-platforms) utánozza, és az **összes platform (beleértve a nem támogatott)** megfelelőjét jelöli. 
 
-### <a name="client-apps"></a>Client apps
+### <a name="client-apps"></a>Ügyfélalkalmazások
 
-This setting mimics the [client apps condition](conditions.md#client-apps).
-By default, this setting causes an evaluation of all policies having **Browser** or **Mobile apps and desktop clients** either individually or both selected. It also detects policies that enforce **Exchange ActiveSync (EAS)** . You can narrow this setting down by selecting:
+Ez a beállítás a [Client apps-feltételt](conditions.md#client-apps)utánozza.
+Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértékelését okozza, amelyeken a **böngésző** vagy a **Mobile apps, illetve az asztali ügyfelek** egyenként vagy mindkettőben vannak kiválasztva. Emellett észleli azokat a házirendeket, amelyek kikényszerítik az **Exchange ActiveSync (EAS)** szolgáltatást. Ezt a beállítást a következő lehetőség kiválasztásával szűkítheti le:
 
-- **Browser** to evaluate all policies having at least **Browser** selected. 
-- **Mobile apps and desktop clients** to evaluate all policies having at least **Mobile apps and desktop clients** selected. 
+- **Böngésző** az összes olyan házirend kiértékeléséhez, amelynél legalább **böngésző** van kiválasztva. 
+- **Mobile apps és asztali ügyfelek** az összes olyan házirend kiértékeléséhez, amelyeken legalább **Mobile apps és asztali ügyfél** van kiválasztva. 
 
-### <a name="sign-in-risk"></a>Sign-in risk
+### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-This setting mimics the [sign-in risk condition](conditions.md#sign-in-risk).   
+Ez a beállítás a [bejelentkezési kockázat feltételét](conditions.md#sign-in-risk)utánozza.   
 
-## <a name="evaluation"></a>Evaluation 
+## <a name="evaluation"></a>Értékelési 
 
-You start an evaluation by clicking **What If**. The evaluation result provides you with a report that consists of: 
+A kiértékelés elindításához kattintson a **What if**gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
 
 ![What If](./media/what-if-tool/03.png)
 
-- An indicator whether classic policies exist in your environment
-- Policies that apply to your user
-- Policies that don't apply to your user
+- Annak jelzése, hogy a klasszikus szabályzatok léteznek-e a környezetben
+- A felhasználóra érvényes házirendek
+- Azok a házirendek, amelyek nem érvényesek a felhasználóra
 
-If [classic policies](policy-migration.md#classic-policies) exist for the selected cloud apps, an indicator is presented to you. By clicking the indicator, you are redirected to the classic policies page. On the classic policies page, you can migrate a classic policy or just disable it. You can return to your evaluation result by closing this page.
+Ha a kiválasztott felhőalapú alkalmazásokhoz [klasszikus szabályzatok](policy-migration.md#classic-policies) vannak megadva, a rendszer megjelenít egy kijelzőt. A kijelzőre kattintva a rendszer átirányítja a klasszikus házirendek lapra. A klasszikus szabályzatok oldalon áttelepítheti a klasszikus házirendeket, vagy letilthatja azt. Az oldal bezárásával visszatérhet a kiértékelési eredményhez.
 
-On the list of policies that apply to your selected user, you can also find a list of [grant controls](controls.md#grant-controls) and [session](controls.md#session-controls) controls your user must satisfy.
+A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhatja az [engedélyezési vezérlők](controls.md#grant-controls) és [munkamenet](controls.md#session-controls) -vezérlők listáját, amelyet a felhasználónak teljesítenie kell.
 
-On the list of policies that don't apply to your user, you can and also find the reasons why these policies don't apply. For each listed policy, the reason represents the first condition that was not satisfied. A possible reason for a policy that is not applied is a disabled policy because they are not further evaluated.   
+Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
-- if you want to migrate classic policies, see [Migrate classic policies in the Azure portal](policy-migration.md)  
+- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 
+- Ha klasszikus szabályzatokat kíván áttelepíteni, tekintse [meg a klasszikus szabályzatok áttelepítését a Azure Portal](policy-migration.md)  

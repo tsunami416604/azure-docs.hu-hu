@@ -12,34 +12,34 @@ ms.locfileid: "74277506"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása
 
-1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. (További információkért lásd: [rövid útmutató – jelentkezzen be Azure-jegyzetfüzetek](quickstart-sign-in-azure-notebooks.md)).
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. (Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksre](quickstart-sign-in-azure-notebooks.md)).
 
-1. Válassza ki a nyilvános profiloldalán **saját projektek** az oldal tetején:
+1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
-1. A a **saját projektek** lapon jelölje be **+ új projekt** (billentyűparancs: n); a gomb csak megjelenik **+** Ha a böngészőablak keskeny:
+1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n); a gomb csak akkor szerepelhet **+** , ha a böngészőablak keskeny:
 
     ![Új projekt parancsot a saját projektek lapon](media/quickstarts/new-project-command.png)
 
-1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
+1. A megjelenő **új projekt létrehozása** előugró ablakban írja be vagy adja meg a következő adatokat, majd válassza a **Létrehozás**lehetőséget:
 
-   - **Projektnév**: Hello World Python-ben
-   - **A projekt Azonosítóját**: hello-world – python
+   - **Projekt neve**: "Helló világ!" alkalmazás a Pythonban
+   - **Projekt azonosítója**: Hello-World-Python
    - **Nyilvános projekt**: (törölve)
-   - **Hozzon létre egy README.md**: (törölve)
+   - **Hozzon létre egy readme.MD**: (törölve)
 
      ![Új projekt előugró feltöltött adatokkal](media/quickstarts/new-project-popup.png)
 
-1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Kiválasztásával adjon hozzá egy jegyzetfüzetet a projekthez a **+ új** legördülő (amely jelennek meg, csak **+** ), majd válassza **Notebook**:
+1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kiválasztja az **+ új** legördülő listát (amely csak **+ként** jelenhet meg), majd a **Jegyzetfüzet**kiválasztása:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. Az a **Új jegyzetfüzet létrehozása** előugró ablak, amely akkor jelenik meg, adja meg a FileName paramétert a notebook például *HelloWorldInPython.ipynb* ( *.ipynb* azt jelenti, hogy Ironpythonu (Jupyter) Notebook ), és válassza ki **Python 3.6-os** nyelvének (más néven a *kernel*):
+1. A megjelenő **új jegyzetfüzet létrehozása** előugró ablakban adja meg a jegyzetfüzet fájlnevét, például *HelloWorldInPython. ipynb* ( *. ipynb* , IronPython (Jupyter) notebook), és válassza a **Python 3,6** nyelvet (más néven *kernel*):
 
     ![Az Új jegyzetfüzet létrehozása előugró ablak](media/quickstarts/new-notebook-popup.png)
 
-1. Válassza ki **új** hozza létre a jegyzetfüzetet, majd a projekt fájlok listája látható:
+1. Válassza az **új** lehetőséget a jegyzetfüzet létrehozásának befejezéséhez, amely ezután megjelenik a projekt fájllista:
 
     ![A projekt fájlok listája jelenik meg az új notebook](media/quickstarts/new-notebook-created.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "74277506"
 
     ![Az új notebook az Azure-jegyzetfüzetek megtekintése](media/quickstarts/create-notebook-first-open.png)
 
-1. Alapértelmezés szerint a a Notebookban egy üres kódcellába rendelkezik. A cella típusának a módosításához **Markdown**, a cella típusa legördülő segítségével válassza ki a **Markdown**:
+1. Alapértelmezés szerint a a Notebookban egy üres kódcellába rendelkezik. Ha módosítani szeretné a cella típusát a **Markdown**értékre, a cella típusa legördülő listából válassza ki a **Markdown**:
 
     ![Az új notebook cella típusának módosítása](media/quickstarts/create-notebook-cell-type.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "74277506"
     # Hello World in Python
     ```
 
-1. Markdown szerkeszt, mert a szöveg jelenik meg a "#" fejlécet. A Markdown HTML leképezni, válassza ki a **futtatása** gombra. Az Azure notebookok majd automatikusan létrehoz egy új kódcellát ezt követően:
+1. Markdown szerkeszt, mert a szöveg jelenik meg a "#" fejlécet. A Markdown HTML-fájlba való megjelenítéséhez kattintson a **Futtatás** gombra. Az Azure notebookok majd automatikusan létrehoz egy új kódcellát ezt követően:
 
     ![A cella és a megjelenített Markdown a Futtatás gomb](media/quickstarts/run-cell-markdown-render.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "74277506"
     print(msg)
     ```
 
-1. Válassza ki **futtatása** (billentyűparancs: a Shift + Enter) a kód futtatásához. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
+1. A kód futtatásához válassza a **Futtatás** elemet (billentyűparancs: SHIFT + ENTER). A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -87,13 +87,13 @@ ms.locfileid: "74277506"
 
 ## <a name="share-the-notebook"></a>A notebook megosztása
 
-Szeretne megosztani a jegyzetfüzet, váltson vissza a projekt lapját a szükség esetén, kattintson a jobb gombbal a jegyzetfüzet-fájlt, jelölje ki **hivatkozás másolása** (billentyűparancs: y), és illessze be a hivatkozás egy megfelelő üzenet (e-mail, azonnali üzenetek stb.).
+A jegyzetfüzet megosztásához váltson vissza a projekt lapra, ha szükséges, kattintson a jobb gombbal a notebook fájlra, válassza a **hivatkozás másolása** (billentyűparancs: y) lehetőséget, és illessze be a hivatkozást egy megfelelő üzenetbe (E-mail, im stb.).
 
-A projekt oldalon is használhatja a **megosztás** menüre, és szerezzen be egy hivatkozást, létrehozhat egy e-mailt a hivatkozás, vagy a HTML- és Markdown-beágyazási kódot:
+A projekt lapon a **megosztás** menüt is használhatja egy hivatkozás beszerzéséhez, egy e-mail-üzenet létrehozásához vagy a HTML-és Markdown-beágyazási kód beszerzéséhez:
 
 ![Projekt megosztás parancs](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter-jegyzetfüzet futtatásának létrehozása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Auth Providers - Azure Active Directory
-description: When should you use an Auth Provider with Azure MFA?
+title: Azure multi-Factor Auth-szolgáltatók – Azure Active Directory
+description: Mikor érdemes hitelesítési szolgáltatót használni az Azure MFA-val?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,60 +18,60 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382004"
 ---
-# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>When to use an Azure Multi-Factor Authentication Provider
+# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
 
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
-An Azure Multi-Factor Auth Provider is used to take advantage of features provided by Azure Multi-Factor Authentication for users who **do not have licenses**.
+Az Azure multi-Factor Auth szolgáltató az Azure-Multi-Factor Authentication által nyújtott szolgáltatások kihasználására szolgál azon felhasználók számára, akik **nem rendelkeznek licenccel**.
 
 > [!NOTE]
-> Effective September 1st, 2018 new auth providers may no longer be created. Existing auth providers may continue to be used and updated, but migration is no longer possible. Multi-factor authentication will continue to be available as a feature in Azure AD Premium licenses.
+> Az új hitelesítési szolgáltatók már nem hozhatók létre az 2018. szeptember 1-től érvényesek. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők, de a Migrálás már nem lehetséges. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencek szolgáltatásként.
 
-## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Caveats related to the Azure MFA SDK
+## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Az Azure MFA SDK-val kapcsolatos kikötések
 
-Note the SDK has been deprecated and will only continue to work until November 14, 2018. Ezután az SDK felé indított hívások meghiúsulnak.
+Megjegyzés: az SDK elavult, és csak 2018. november 14-én fog működni. Ezután az SDK felé indított hívások meghiúsulnak.
 
 ## <a name="what-is-an-mfa-provider"></a>Mi az az MFA-szolgáltató?
 
-There are two types of Auth providers, and the distinction is around how your Azure subscription is charged. A hitelesítésenkénti lehetőség választásakor a rendszer kiszámítja a bérlőn havonta végzett hitelesítések számát. Ezt a lehetőséget akkor érdemes használni, ha néhány felhasználó csak alkalmanként végez hitelesítést. A felhasználónkénti lehetőség választásakor a rendszer kiszámítja a bérlőn egy hónap alatt kétlépéses ellenőrzést végző egyének számát. Ez a lehetőség akkor a legjobb, ha van néhány licenccel rendelkező felhasználója, de ki kell terjesztenie az MFA-t a licenckorlátján túl több felhasználóra.
+Kétféle hitelesítési szolgáltató létezik, és a különbség az Azure-előfizetés díja. A hitelesítésenkénti lehetőség választásakor a rendszer kiszámítja a bérlőn havonta végzett hitelesítések számát. Ezt a lehetőséget akkor érdemes használni, ha néhány felhasználó csak alkalmanként végez hitelesítést. A felhasználónkénti lehetőség választásakor a rendszer kiszámítja a bérlőn egy hónap alatt kétlépéses ellenőrzést végző egyének számát. Ez a lehetőség akkor a legjobb, ha van néhány licenccel rendelkező felhasználója, de ki kell terjesztenie az MFA-t a licenckorlátján túl több felhasználóra.
 
 ## <a name="manage-your-mfa-provider"></a>Az MFA-szolgáltató kezelése
 
 Az MFA szolgáltató létrehozását követően már nem módosíthatja a használati modellt (engedélyezett felhasználónként vagy hitelesítésenként).
 
-If you purchased enough licenses to cover all users that are enabled for MFA, you can delete the MFA provider altogether.
+Ha elegendő licencet vásárolt az MFA-ra engedélyezett összes felhasználó lefedéséhez, akkor az MFA-szolgáltatót teljes egészében törölheti.
 
-Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Also, existing Azure MFA Servers need to be reactivated using activation credentials generated through the MFA Provider. Reactivating the MFA Servers to link them to the MFA Provider doesn't impact phone call and text message authentication, but mobile app notifications stop working for all users until they reactivate the mobile app.
+Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra kell aktiválni az MFA-szolgáltatón keresztül generált aktiválási hitelesítő adatok használatával. Ha újra aktiválja az MFA-kiszolgálókat az MFA-szolgáltatóhoz való kapcsolódáshoz, nem befolyásolja a telefonhívást és a szöveges üzenetek hitelesítését, de a Mobile apps-értesítések nem működnek az összes felhasználónál, amíg újra nem aktiválja a mobil alkalmazást.
 
-### <a name="removing-an-authentication-provider"></a>Removing an authentication provider
+### <a name="removing-an-authentication-provider"></a>Hitelesítési szolgáltató eltávolítása
 
 > [!CAUTION]
-> There is no confirmation when deleting an authentication provider. Selecting **Delete** is a permanent process.
+> A hitelesítési szolgáltató törlésekor nincs megerősítés. A **Törlés** lehetőség kiválasztásával állandó folyamat van.
 
-Authentication providers can be found in the **Azure portal** > **Azure Active Directory** > **MFA** > **Providers**. Click on listed providers to see details and configurations associated with that provider.
+A hitelesítő szolgáltatók a **Azure Portal** > **Azure Active Directory** > **MFA** > - **szolgáltatók**között találhatók. Kattintson a felsorolt szolgáltatók lehetőségre, hogy megtekintse a szolgáltatóhoz társított részleteket és konfigurációkat.
 
-Before removing an authentication provider, take note of any customized settings configured in your provider. Decide what settings need to be migrated to general MFA settings from your provider and complete the migration of those settings. 
+A hitelesítési szolgáltató eltávolítása előtt jegyezze fel a szolgáltatóban konfigurált testreszabott beállításokat. Döntse el, hogy mely beállításokat kell áttelepíteni a szolgáltató általános MFA-beállításaiba, és el kell végeznie ezeknek a beállításoknak az áttelepítését. 
 
-Azure MFA Servers linked to providers will need to be reactivated using credentials generated under **Azure portal** > **Azure Active Directory** > **MFA** > **Server settings**. Before reactivating, the following files must be deleted from the `\Program Files\Multi-Factor Authentication Server\Data\` directory on Azure MFA Servers in your environment:
+A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni a **Azure Portal** > **Azure Active Directory** > **MFA** > - **kiszolgáló beállításainak**használatával generált hitelesítő adatokkal. Az újraaktiválás előtt a következő fájlokat törölni kell a környezetben található Azure MFA-kiszolgálók `\Program Files\Multi-Factor Authentication Server\Data\` könyvtárából:
 
 - caCert
-- cert
+- tanúsítvány
 - groupCACert
 - groupKey
 - groupName
-- licenseKey
+- Következő licenckulcs
 - pkey
 
-![Delete an auth provider from the Azure portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+![Hitelesítési szolgáltató törlése a Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-When you have confirmed that all settings have been migrated, you can browse to the **Azure portal** > **Azure Active Directory** > **MFA** > **Providers** and select the ellipses **...** and select **Delete**.
+Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tallózással keresse meg a **Azure Portal** > **Azure Active Directory** > **MFA** > - **szolgáltatót** , és válassza ki a három pontot **..** . és válassza a **Törlés**lehetőséget.
 
 > [!WARNING]
-> Deleting an authentication provider will delete any reporting information associated with that provider. You may want to save activity reports before deleting your provider.
+> A hitelesítésszolgáltató törlése törli a szolgáltatóhoz társított összes jelentési információt. Előfordulhat, hogy a szolgáltató törlése előtt el szeretné menteni a tevékenységek jelentéseit.
 
 > [!NOTE]
-> Users with older versions of the Microsoft Authenticator app and Azure MFA Server may need to re-register their app.
+> Előfordulhat, hogy a Microsoft Authenticator alkalmazás és az Azure MFA-kiszolgáló régebbi verzióit használó felhasználóknak újra regisztrálniuk kell az alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)

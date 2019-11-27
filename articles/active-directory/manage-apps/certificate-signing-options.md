@@ -73,7 +73,7 @@ Ezután módosítsa az alkalmazás SAML-jogkivonatának tanúsítvány-aláírá
 1. Az **aláírási algoritmus** legördülő listában válassza az **SHA-1** vagy az **SHA-256**elemet. Ezen beállítások leírása a jelen cikk korábbi, a tanúsítvány- [aláírási algoritmusok](#certificate-signing-algorithms) szakaszban található.
 1. Ha elégedett a lehetőségeivel, válassza a **Mentés** lehetőséget az új SAML-aláíró tanúsítvány beállításainak alkalmazásához. Ellenkező esetben válassza az **X-et** a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory app Galleryben](configure-federated-single-sign-on-non-gallery-applications.md)
 * [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../develop/howto-v1-debug-saml-sso-issues.md)

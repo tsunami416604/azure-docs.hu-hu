@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 883778360bd2315e1424f9f207cbfd994ec1a373
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 11/27/2019
+ms.openlocfilehash: d38874e7cb3fc61e32bd4ecd1fee528c4e5053e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901197"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547174"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -31,10 +31,8 @@ Az ISE megnövelte a futtatási időtartamot, a tárterület megőrzését, az �
 
 Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
-* Győződjön meg arról, hogy a virtuális hálózat minden szükséges portja meg van nyitva, hogy a forgalom a virtuális hálózat alhálózatai között is áthaladjon az ISE-n keresztül.
-
+* Engedélyezze az ISE hozzáférését.
 * Hozza létre az ISE-t.
-
 * Extra kapacitás hozzáadása az ISE-hez.
 
 > [!IMPORTANT]
@@ -44,7 +42,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, Ismerje meg, hogyan [hozhat létre Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). 
+* Egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, Ismerje meg, hogyan [hozhat létre Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md).
 
   * A virtuális hálózatnak négy *üres* alhálózattal kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe az ISE-ben. Ezeket az alhálózatokat előre is létrehozhatja, vagy megvárhatja, amíg létre nem hozza az ISE-t, ahol egyszerre létrehozhat alhálózatokat. További információ az [alhálózatokra vonatkozó követelményekről](#create-subnet).
 
@@ -52,7 +50,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
   
   * Ha az ISE-t egy Azure Resource Manager sablonon keresztül szeretné telepíteni, először győződjön meg arról, hogy egy üres alhálózatot delegált a Microsoft. Logic/integrationServiceEnvironment. Ezt a delegálást nem kell végrehajtania, amikor a Azure Portalon keresztül telepíti.
 
-  * Győződjön meg arról, hogy a virtuális hálózat [elérhetővé teszi ezeket a portokat](#ports) , így az ISE megfelelően működik, és elérhető marad.
+  * Győződjön meg arról, hogy a virtuális hálózat [lehetővé teszi az ISE hozzáférését](#enable-access) , hogy az ISE megfelelően működjön, és elérhető maradjon.
 
   * Ha a [ExpressRoute](../expressroute/expressroute-introduction.md)-t használja, amely privát kapcsolatot biztosít a Microsoft Cloud Services szolgáltatással, [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat tartalmazza, és a táblázatot az ISE által használt összes alhálózathoz csatolja:
 
@@ -65,23 +63,31 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
   > [!IMPORTANT]
   > Ha az ISE létrehozása után megváltoztatja a DNS-kiszolgáló beállításait, győződjön meg arról, hogy újraindítja az ISE-t. A DNS-kiszolgáló beállításainak kezelésével kapcsolatos további információkért lásd: [virtuális hálózat létrehozása, módosítása vagy törlése](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-<a name="ports"></a>
+<a name="enable-access"></a>
 
-## <a name="check-network-ports"></a>Hálózati portok keresése
+## <a name="enable-access-for-ise"></a>Az ISE hozzáférésének engedélyezése
 
-Ha egy Azure-beli virtuális hálózattal rendelkező ISE-t használ, egy gyakori telepítési probléma egy vagy több letiltott porttal rendelkezik. Az ISE és a célként megadott rendszer közötti kapcsolatok létrehozásához használt összekötők magukban foglalhatják a saját portra vonatkozó követelményeket is. Ha például az FTP-összekötő használatával kommunikál egy FTP-rendszerrel, győződjön meg arról, hogy az FTP-rendszeren használt port elérhető, például a 21-es port a parancsok küldéséhez. Győződjön meg arról, hogy az ISE elérhető marad, és megfelelően működik, majd nyissa meg az alábbi táblázatban megadott portokat. Ellenkező esetben, ha a szükséges portok nem érhetők el, az ISE működése leáll.
+Ha egy Azure-beli virtuális hálózattal rendelkező ISE-t használ, egy gyakori telepítési probléma egy vagy több letiltott porttal rendelkezik. Az ISE és a célként megadott rendszerek közötti kapcsolatok létrehozásához használt összekötők rendelkezhetnek saját portra vonatkozó követelményekkel is. Ha például az FTP-összekötővel kommunikál egy FTP-rendszerrel, akkor az FTP-rendszeren használt portnak elérhetőnek kell lennie, például a 21-es porton keresztül a parancsok küldéséhez.
+
+Győződjön meg arról, hogy az ISE elérhető, és hogy az ISE logikai alkalmazásai kommunikálhatnak a virtuális hálózat alhálózatai között, [nyissa meg a táblázatban található portokat](#network-ports-for-ise). Ha bármelyik szükséges port nem érhető el, az ISE nem fog megfelelően működni.
+
+* Ha több ISEs rendelkezik, és a virtuális hálózat [Azure Firewall](../firewall/overview.md) vagy egy [hálózati virtuális berendezést](../virtual-network/virtual-networks-overview.md#filter-network-traffic)használ, [beállíthat egyetlen, kimenő, nyilvános és kiszámítható IP-címet](connect-virtual-network-vnet-set-up-single-ip-address.md) a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania minden egyes ISE számára a célhelyen.
+
+* Ha új Azure-beli virtuális hálózatot és alhálózatokat hozott létre korlátozás nélkül, nem kell beállítania [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) a virtuális hálózatban az alhálózatok közötti adatforgalom szabályozásához.
+
+* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat választja, azon a virtuális hálózaton, amelyen be szeretné állítani a NSG, győződjön meg arról, hogy a [táblázatban található portokat nyitja](#network-ports-for-ise)meg. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+
+* Ha korábban már meglévő NSG rendelkezik, győződjön meg róla, hogy [megnyitotta a portokat ebben a táblázatban](#network-ports-for-ise). [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+
+<a name="network-ports-for-ise"></a>
+
+### <a name="network-ports-used-by-your-ise"></a>Az ISE által használt hálózati portok
+
+Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amelyeket az ISE használ, és ahol a portok használatban vannak. A [Resource Manager szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) olyan IP-cím-előtagokat jelölnek, amelyek a biztonsági szabályok létrehozásakor megkönnyítik a bonyolultságot.
 
 > [!IMPORTANT]
 > A forrásoldali portok elmúlóak, ezért ügyeljen arra, hogy az összes szabályhoz `*` állítsa be őket.
 > Az alhálózatokon belüli belső kommunikációhoz az ISE megköveteli, hogy az alhálózatokon belül minden portot meg lehessen nyitni.
-
-* Ha megkötések nélkül hozott létre új virtuális hálózatot és alhálózatokat, nem kell beállítania [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) a virtuális hálózatban az alhálózatok közötti adatforgalom szabályozásához.
-
-* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat választja, azon a virtuális hálózaton, amelyen be szeretné állítani a NSG, győződjön meg arról, hogy az alábbi táblázatban megadott portokat nyitja meg. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
-
-* Ha korábban már meglévő NSG vagy tűzfallal rendelkezik a virtuális hálózatban, győződjön meg arról, hogy az alábbi táblázatban megadott portok vannak megnyitva. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
-
-Az alábbi táblázat leírja a virtuális hálózat azon portjait, amelyeket az ISE használ, és ahol a portok használatban vannak. A [Resource Manager szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) olyan IP-cím-előtagokat jelölnek, amelyek a biztonsági szabályok létrehozásakor megkönnyítik a bonyolultságot.
 
 | Cél | Irány | Célportok | Forrásoldali szolgáltatás címkéje | Cél szolgáltatáscímkéje | Megjegyzések |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
@@ -89,8 +95,8 @@ Az alábbi táblázat leírja a virtuális hálózat azon portjait, amelyeket az
 | Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
 | Azure Storage-függőség | Kimenő | 80, 443 | VirtualNetwork | Tárolás | |
 | Alhálózati kommunikáció | Bejövő & kimenő | 80, 443 | VirtualNetwork | VirtualNetwork | Az alhálózatok közötti kommunikációhoz |
-| Kommunikáció Azure Logic Apps | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak az IP-címe, amely a logikai alkalmazásban található kérelem-triggert vagy webhookot hívja meg. A port bezárása vagy blokkolása megakadályozza a HTTP-hívásokat a logikai alkalmazásokhoz kérelem-eseményindítókkal. |
-| Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek az IP-címe, amelyről meg kell tekinteni a logikai alkalmazás futtatási előzményeit. Bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, a futtatási előzményekben nem tekintheti meg az egyes lépések bemeneteit és kimeneteit. |
+| Kommunikáció Azure Logic Apps | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](connect-virtual-network-vnet-isolated-environment.md#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak az IP-címe, amely a logikai alkalmazásban található kérelem-triggert vagy webhookot hívja meg. A port bezárása vagy blokkolása megakadályozza a HTTP-hívásokat a logikai alkalmazásokhoz kérelem-eseményindítókkal. |
+| Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső hozzáférési végpontok: <br>VirtualNetwork <p><p>Külső hozzáférési végpontok: <br>Internet <p><p>**Megjegyzés**: ezek a végpontok az [ISE létrehozásakor kiválasztott](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)végpont-beállításra vonatkoznak. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Annak a számítógépnek az IP-címe, amelyről meg kell tekinteni a logikai alkalmazás futtatási előzményeit. Bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, a futtatási előzményekben nem tekintheti meg az egyes lépések bemeneteit és kimeneteit. |
 | Kapcsolatok kezelése | Kimenő | 443 | VirtualNetwork  | AppService | |
 | Diagnosztikai naplók közzététele & metrikák | Kimenő | 443 | VirtualNetwork  | AzureMonitor | |
 | Kommunikáció az Azure Traffic Manager | Bejövő | 443 | AzureTrafficManager | VirtualNetwork | |
@@ -144,11 +150,11 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
    **Alhálózat létrehozása**
 
    Ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe a környezetében, az ISE-nek négy olyan *üres* alhálózatra van szüksége, amely nem delegál semmilyen szolgáltatást. A környezet létrehozása után ezeket az alhálózati címeket *nem* módosíthatja.
-   
+
    > [!IMPORTANT]
    > 
    > Az alhálózatok nevének alfabetikus karakterrel vagy aláhúzással (No Number) kell kezdődnie, és nem használja ezeket a karaktereket: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-   
+
    Emellett minden alhálózatnak meg kell felelnie a következő követelményeknek:
 
    * Az [osztály nélküli Inter-domain Routing (CIDR) formátumot](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és egy B osztályú címtartományt használ.

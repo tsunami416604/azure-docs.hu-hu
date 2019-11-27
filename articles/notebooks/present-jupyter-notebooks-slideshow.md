@@ -18,7 +18,7 @@ Az alábbi képen látható, a standard notebook nézet, amely látható Markdow
 
 ![A notebook standard nézetben](media/slideshow/slideshow-notebook-view.png)
 
-Amikor elindít egy diavetítés, az első olyan cellára kibővül adja meg a böngészőben, ahol a **X** bal felső kilép a Diavetítés **?** a bal alsó jeleníti meg a billentyűparancsok, és a jobb alsó sarkában lévő nyilakra sorrendjének megváltoztatása:
+A diavetítés indításakor az első cella kibővül a böngésző kitöltéséhez, ahol az **X** a bal felső sarokban kilép a diavetítésből **?** a bal alsó jeleníti meg a billentyűparancsok, és a jobb alsó sarkában lévő nyilakra sorrendjének megváltoztatása:
 
 ![A notebook diavetítés módban](media/slideshow/slideshow-slide-view.png)
 
@@ -32,11 +32,11 @@ Diavetítés jegyzetfüzet előkészítése magában foglalja a két elsődleges
 
 Ha igénybe vehet egy véletlenszerű jegyzetfüzetet, és használhatja azt egy diavetítés, általában találja, hogy minden a cellák vannak Táncoló együtt, és nagy része a tartalmat el van rejtve a böngészőablak alján. Ahhoz, hogy egy hatékony bemutató, ezt követően, hozzá kell rendelni egy diavetítés típus minden cella diavetítés cella eszköztárának:
 
-1. Az a **nézet** menüjében válassza **cella eszköztár** > **Diavetítés**:
+1. A **nézet** menüben válassza a **cella eszköztár** > **Slideshow**elemet:
 
     ![A cella diavetítés eszköztár bekapcsolása](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. A **húzza az ujját típus** legördülő menü jelenik meg a Notebook szereplő mindegyik cellából, a jobb felső:
+1. A Jegyzetfüzet minden cellájának jobb felső sarkában megjelenik egy **dia típusa** legördülő menü:
 
     ![Cella diavetítés eszköztár](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -53,11 +53,11 @@ Ha igénybe vehet egy véletlenszerű jegyzetfüzetet, és használhatja azt egy
     | Kihagyás | Cella nem látható a diavetítést. |
     | Megjegyzések | A cella, előadói jegyzeteket, amelyek nem láthatók a diavetítés tartalmazza. |
 
-1. Kezdetben hasznos lehet választani **húzza az ujját** minden cellája. Ezután futtassa a diavetítés, és győződjön meg a megfelelő módosításokat.
+1. Először is hasznos lehet minden cella esetében kiválasztani a **diát** . Ezután futtassa a diavetítés, és győződjön meg a megfelelő módosításokat.
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>Példa: töredék cellák listajele elemek
 
-Hogy a felsorolás a dián jelenik meg, az eszközt, megvan a Markdown cella dia fejlécének a **dia** írja be, majd minden egyes listajele helyezze külön Markdown cellába a **töredék** típusa:
+Ahhoz, hogy a felsorolásjelek egy dián legyenek láthatók, helyezze a dia fejlécét egy Markdown-cellába, majd helyezze **el az egyes** felsorolásjeleket egy különálló Markdown-cellába a **töredék** típussal:
 
 ![Példa a több Markdown cellák listajele elemek létrehozása](media/slideshow/slideshow-fragments.png)
 
@@ -65,13 +65,13 @@ A diavetítés további függőleges térköz, mint ha a pontok megjelenítésé
 
 ## <a name="run-the-slideshow"></a>Futtassa a diavetítés
 
-1. Ha bármilyen Markdown cellák a Szerkesztés, ügyeljen arra, hogy futtathatók más módon jelennek meg a HTML megjelenítése *,* a diavetítés a Markdown.
+1. Ha bármilyen Markdown-cellát szerkesztett, ne felejtse el futtatni őket a HTML-fájl megjelenítéséhez, ellenkező esetben a *Diavetítés Markdown jelenik* meg.
 
-1. Konfigurálása után a **húzza az ujját típus** mindegyik cellába, válassza ki a cellát, amellyel a diavetítés elindulását, majd válassza ki a **Enter és kilépési NÖVEKMÉNYE Diavetítés** gombra az eszköztáron a:
+1. Miután konfigurálta az egyes cellákhoz tartozó **dia típusát** , válassza ki azt a cellát, amelyből el szeretné indítani a diavetítést, majd a fő eszköztáron válassza a **beírás/kilépés emelkedése** gombot:
 
     ![Adja meg és kilépési NÖVEKMÉNYE diavetítés a fő eszköztár gombja](media/slideshow/slideshow-start.png)
 
-1. Navigálás a diák, valamint a szilánkok között, használja a jobb és bal nyíl a navigációs vezérlőelemben. A vezérlőelem szövegének jeleníti meg, egy szám, amely *slide.sub-dia*.
+1. Navigálás a diák, valamint a szilánkok között, használja a jobb és bal nyíl a navigációs vezérlőelemben. A vezérlőelemben lévő szöveg a *dia. sub-slide*számot jelképező számot jeleníti meg.
 
     ![Diavetítés navigációs vezérlőelem](media/slideshow/slideshow-navigation-control.png)
 
@@ -86,13 +86,13 @@ A diavetítés további függőleges térköz, mint ha a pontok megjelenítésé
     ![Kód cella kimenet jelenik meg a diavetítést](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Cella kimeneti diavetítésként a cella részének számít. Ha futtatta egy cella notebook vagy Diavetítés nézetben, a kimeneti nézetben jelenik meg a más is. A kimenet törléséhez használja a **cella** > **aktuális kimenetek** > **törölje a jelet** (az aktuális cella) parancsot vagy **cella**  >  **Összes kimenetének** > **egyértelmű** (az összes cellát).
+    > Cella kimeneti diavetítésként a cella részének számít. Ha futtatta egy cella notebook vagy Diavetítés nézetben, a kimeneti nézetben jelenik meg a más is. A kimenet törléséhez használja a **cellát** > **aktuális kimeneteket** > **törölje** a parancsot (az aktuális cella esetében) vagy a **cellát** , > az **összes kimenetet** > **törölje** (az összes cella esetében).
 
-1. Ha elkészült a diavetítés, használja a **X** notebook nézethez való visszatéréshez.
+1. Ha elkészült a diavetítéssel, az **X** használatával térjen vissza a jegyzetfüzet nézetbe.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Útmutató: adatok fájlok használata](work-with-project-data-files.md)
-- [Útmutató: adat-erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: csomagok telepítése jegyzetfüzetből](install-packages-jupyter-notebook.md)
+- [Útmutató: az adatfájlok használata](work-with-project-data-files.md)
+- [Útmutató: az adaterőforrások elérése](access-data-resources-jupyter-notebooks.md)

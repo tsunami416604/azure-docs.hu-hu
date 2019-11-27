@@ -1,6 +1,6 @@
 ---
-title: Android certificate-based authentication - Azure Active Directory
-description: Learn about the supported scenarios and the requirements for configuring certificate-based authentication in solutions with Android devices
+title: Androidos tanúsítványalapú hitelesítés – Azure Active Directory
+description: Ismerje meg a támogatott forgatókönyveket és a tanúsítványalapú hitelesítés konfigurálásának követelményeit Android-eszközökkel rendelkező megoldásokban
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,66 +18,66 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381985"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory certificate-based authentication on Android
+# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Tanúsítványalapú hitelesítés Azure Active Directory az Androidon
 
-Android devices can use certificate-based authentication (CBA) to authenticate to Azure Active Directory using a client certificate on their device when connecting to:
+Az Android-eszközök tanúsítványalapú hitelesítést (CBA) használhatnak a Azure Active Directory hitelesítéséhez az eszközön lévő ügyféltanúsítványt használva a következőhöz való csatlakozáskor:
 
-* Office mobile applications such as Microsoft Outlook and Microsoft Word
-* Exchange ActiveSync (EAS) clients
+* Office Mobile-alkalmazások, például a Microsoft Outlook és a Microsoft Word
+* Exchange ActiveSync-(EAS-) ügyfelek
 
-Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
+A szolgáltatás konfigurálásával nem kell megadnia a Felhasználónév és a jelszó kombinációját bizonyos levelezési és Microsoft Office alkalmazásokban a mobileszközön.
 
-This topic provides you with the requirements and the supported scenarios for configuring CBA on an iOS(Android) device for users of tenants in Office 365 Enterprise, Business, Education, US Government, China, and Germany plans.
+Ez a témakör az Office 365 Enterprise, Business, Education, USA kormánya, Kína és Németország területén található bérlők felhasználói számára készült iOS-es (Android-) eszközökön történő konfigurálásával kapcsolatos követelményeket és támogatott forgatókönyveket ismerteti.
 
-This feature is available in preview in Office 365 US Government Defense and Federal plans.
+Ez a funkció előzetes verzióban érhető el az Office 365 US government Defense és Federal tervekben.
 
-## <a name="microsoft-mobile-applications-support"></a>Microsoft mobile applications support
+## <a name="microsoft-mobile-applications-support"></a>Microsoft Mobile-alkalmazások támogatása
 
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Azure Information Protection app |![Check mark signifying support for this application][1] |
-| Intune Company Portal |![Check mark signifying support for this application][1] |
-| Microsoft Teams |![Check mark signifying support for this application][1] |
-| OneNote |![Check mark signifying support for this application][1] |
-| OneDrive |![Check mark signifying support for this application][1] |
-| Outlook |![Check mark signifying support for this application][1] |
-| Power BI |![Check mark signifying support for this application][1] |
-| Skype Vállalati verzió |![Check mark signifying support for this application][1] |
-| Word / Excel / PowerPoint |![Check mark signifying support for this application][1] |
-| Yammer |![Check mark signifying support for this application][1] |
+| Azure Information Protection alkalmazás |![Pipa jelzi az alkalmazás támogatását][1] |
+| Intune Céges portál |![Pipa jelzi az alkalmazás támogatását][1] |
+| Microsoft Teams |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneNote |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneDrive |![Pipa jelzi az alkalmazás támogatását][1] |
+| Outlook |![Pipa jelzi az alkalmazás támogatását][1] |
+| Power BI |![Pipa jelzi az alkalmazás támogatását][1] |
+| Skype Vállalati verzió |![Pipa jelzi az alkalmazás támogatását][1] |
+| Word/Excel/PowerPoint |![Pipa jelzi az alkalmazás támogatását][1] |
+| Yammer |![Pipa jelzi az alkalmazás támogatását][1] |
 
-### <a name="implementation-requirements"></a>Implementation requirements
+### <a name="implementation-requirements"></a>Megvalósítási követelmények
 
-The device OS version must be Android 5.0 (Lollipop) and above.
+Az eszköz operációsrendszer-verziójának Android 5,0 (nyalóka) vagy újabb verziójúnak kell lennie.
 
-A federation server must be configured.
+Konfigurálni kell egy összevonási kiszolgálót.
 
-For Azure Active Directory to revoke a client certificate, the ADFS token must have the following claims:
+Az ügyféltanúsítványok visszavonásához az ADFS-tokennek a következő jogcímeket kell tartalmaznia Azure Active Directory:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (The serial number of the client certificate)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (The string for the issuer of the client certificate)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (az ügyféltanúsítvány sorozatszáma)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (az ügyféltanúsítvány kiállítójának karakterlánca)
 
-Azure Active Directory adds these claims to the refresh token if they are available in the ADFS token (or any other SAML token). When the refresh token needs to be validated, this information is used to check the revocation.
+Azure Active Directory hozzáadja ezeket a jogcímeket a frissítési jogkivonathoz, ha az ADFS-tokenben (vagy bármely más SAML-jogkivonatban) elérhetők. Ha a frissítési tokent ellenőrizni kell, a rendszer ezt az információt használja a visszavonás ellenőrzéséhez.
 
-As a best practice, you should update your organization's ADFS error pages with the following information:
+Ajánlott eljárásként frissítenie kell a szervezet ADFS-hibájának lapjait a következő információkkal:
 
-* The requirement for installing the Microsoft Authenticator on Android.
-* Instructions on how to get a user certificate.
+* A Microsoft Authenticator telepítésének követelménye Android rendszeren.
+* Útmutató felhasználói tanúsítvány beszerzéséhez.
 
-For more information, see [Customizing the AD FS Sign-in Pages](https://technet.microsoft.com/library/dn280950.aspx).
+További információ: [AD FS bejelentkezési lapok testreszabása](https://technet.microsoft.com/library/dn280950.aspx).
 
-Some Office apps (with modern authentication enabled) send ‘*prompt=login*’ to Azure AD in their request. By default, Azure AD translates ‘*prompt=login*’ in the request to ADFS as ‘*wauth=usernamepassworduri*’ (asks ADFS to do U/P Auth) and ‘*wfresh=0*’ (asks ADFS to ignore SSO state and do a fresh authentication). If you want to enable certificate-based authentication for these apps, you need to modify the default Azure AD behavior. Set the ‘*PromptLoginBehavior*’ in your federated domain settings to ‘*Disabled*‘.
-You can use the [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet to perform this task:
+Egyes Office-alkalmazások (amelyeken engedélyezve van a modern hitelesítés) a kérésben a "*prompt = login*" üzenetet küldik az Azure ad-nek. Alapértelmezés szerint az Azure AD az ADFS-kérelemben*az "* *wauth = usernamepassworduri*" (az U/P hitelesítésének megkövetelése) és a "*wfresh = 0*" (az ADFS-t az SSO-állapot mellőzése és a friss hitelesítés elvégzése érdekében kéri). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítania kell az Azure AD alapértelmezett viselkedését. Állítsa a "*PromptLoginBehavior*" beállítást az összevont tartomány beállításai között a "*Letiltva*" értékre.
+A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmagot használhatja:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync clients support
+## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync-ügyfelek támogatása
 
-Certain Exchange ActiveSync applications on Android 5.0 (Lollipop) or later are supported. To determine if your email application does support this feature, contact your application developer.
+Bizonyos Exchange ActiveSync-alkalmazások az Android 5,0 (nyalóka) vagy újabb verziókban támogatottak. Annak megállapításához, hogy az e-mail-alkalmazás támogatja-e ezt a funkciót, forduljon az alkalmazás-fejlesztőhöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-If you want to configure certificate-based authentication in your environment, see [Get started with certificate-based authentication on Android](active-directory-certificate-based-authentication-get-started.md) for instructions.
+Ha tanúsítványalapú hitelesítést szeretne konfigurálni a környezetében, olvassa el a következő témakört: a [tanúsítványalapú hitelesítés első lépései Androidon](active-directory-certificate-based-authentication-get-started.md) .
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

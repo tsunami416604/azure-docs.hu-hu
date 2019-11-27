@@ -1,6 +1,6 @@
 ---
-title: Versioning in Durable Functions - Azure
-description: Learn how to implement versioning in the Durable Functions extension for Azure Functions.
+title: Verziószámozás a Durable Functionsban – Azure
+description: Megtudhatja, hogyan implementálhatja a verziószámozást a Azure Functions Durable Functions-bővítményében.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,19 +12,19 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232752"
 ---
-# <a name="versioning-in-durable-functions-azure-functions"></a>Versioning in Durable Functions (Azure Functions)
+# <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás Durable Functions (Azure Functions)
 
-It is inevitable that functions will be added, removed, and changed over the lifetime of an application. [Durable Functions](durable-functions-overview.md) allows chaining functions together in ways that weren't previously possible, and this chaining affects how you can handle versioning.
+Elkerülhetetlen, hogy a rendszer felveszi, eltávolítja és megváltoztatja a függvényeket az alkalmazások élettartama során. [Durable functions](durable-functions-overview.md) lehetővé teszi a láncolási függvények összekapcsolását olyan módokon, amelyek korábban nem voltak lehetségesek, és ez a láncolás befolyásolja a verziószámozás kezelését.
 
-## <a name="how-to-handle-breaking-changes"></a>How to handle breaking changes
+## <a name="how-to-handle-breaking-changes"></a>A feltörési változások kezelése
 
-There are several examples of breaking changes to be aware of. This article discusses the most common ones. The main theme behind all of them is that both new and existing function orchestrations are impacted by changes to function code.
+Több példa is van arra, hogy miként lehet a módosításokat feltörni. Ez a cikk a leggyakoribb kérdéseket tárgyalja. Az összes közülük az egyik fő téma az, hogy az új és a meglévő függvények is hatással vannak a funkció kódjának változásaira.
 
-### <a name="changing-activity-or-entity-function-signatures"></a>Changing activity or entity function signatures
+### <a name="changing-activity-or-entity-function-signatures"></a>A tevékenység vagy az entitás függvény aláírásának módosítása
 
-A signature change refers to a change in the name, input, or output of a function. If this kind of change is made to an activity or entity function, it could break any orchestrator function that depends on it. If you update the orchestrator function to accommodate this change, you could break existing in-flight instances.
+Az aláírás módosítása a függvények nevének, bemenetének vagy kimenetének változására utal. Ha a tevékenység vagy az Entity függvény ilyen típusú változást végez, akkor az a tőle függő bármely Orchestrator-függvényt megszakíthatja. Ha úgy frissíti a Orchestrator függvényt, hogy az megfeleljen ennek a változásnak, megszakíthatja a meglévő, repülés közbeni példányokat.
 
-As an example, suppose we have the following orchestrator function.
+Tegyük fel például, hogy a következő Orchestrator függvényt használjuk.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -35,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-This simplistic function takes the results of **Foo** and passes it to **Bar**. Let's assume we need to change the return value of **Foo** from `bool` to `int` to support a wider variety of result values. The result looks like this:
+Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv**felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** visszatérési értékét `bool`ról `int`re, hogy támogassa az eredmények szélesebb választékát. Az eredmény így néz ki:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,17 +47,17 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> The previous C# examples target Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-This change works fine for all new instances of the orchestrator function but breaks any in-flight instances. For example, consider the case where an orchestration instance calls a function named `Foo`, gets back a boolean value, and then checkpoints. If the signature change is deployed at this point, the checkpointed instance will fail immediately when it resumes and replays the call to `context.CallActivityAsync<int>("Foo")`. This failure happens because the result in the history table is `bool` but the new code tries to deserialize it into `int`.
+Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány egy `Foo`nevű függvényt hív meg, és egy logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőpontos példány azonnal meghiúsul, amikor folytatja, és visszajátssza a `context.CallActivityAsync<int>("Foo")`hívását. Ez a hiba azért fordul elő, mert az előzmények táblázatának eredménye `bool`, de az új kód megpróbálja deszerializálni `int`ba.
 
-This example is just one of many different ways that a signature change can break existing instances. In general, if an orchestrator needs to change the way it calls a function, then the change is likely to be problematic.
+Ez a példa az aláírások módosításának számos különböző módja, amely megszakíthatja a meglévő példányokat. Általánosságban elmondható, hogy ha egy Orchestrator módosítania kell egy függvény meghívásának módját, akkor a változás valószínűleg problematikus lesz.
 
-### <a name="changing-orchestrator-logic"></a>Changing orchestrator logic
+### <a name="changing-orchestrator-logic"></a>Orchestrator-logika módosítása
 
-The other class of versioning problems come from changing the orchestrator function code in a way that confuses the replay logic for in-flight instances.
+A verziószámozási problémák másik osztálya úgy változik, hogy a Orchestrator függvény kódját úgy változtatja meg, hogy megzavarja a fedélzeti példányok újrajátszása logikáját.
 
-Consider the following orchestrator function:
+Vegye figyelembe a következő Orchestrator függvényt:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -68,7 +68,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Now let's assume you want to make a seemingly innocent change to add another function call.
+Most tegyük fel, hogy látszólag ártatlan változást kíván tenni egy másik függvény hívásának hozzáadásához.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -85,42 +85,42 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> The previous C# examples target Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-This change adds a new function call to **SendNotification** between **Foo** and **Bar**. There are no signature changes. The problem arises when an existing instance resumes from the call to **Bar**. During replay, if the original call to **Foo** returned `true`, then the orchestrator replay will call into **SendNotification**, which is not in its execution history. As a result, the Durable Task Framework fails with a `NonDeterministicOrchestrationException` because it encountered a call to **SendNotification** when it expected to see a call to **Bar**. The same type of problem can occur when adding any calls to "durable" APIs, including `CreateTimer`, `WaitForExternalEvent`, etc.
+Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a **foo** eredeti hívása `true`lett visszaadva, akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen az állandó feladathoz tartozó keretrendszer egy `NonDeterministicOrchestrationException` miatt meghiúsul, mert a rendszer a **SendNotification** hívását észlelte, amikor a rendszer a **sáv**hívását várta. Ugyanaz a probléma akkor fordulhat elő, ha a "tartós" API-khoz (például `CreateTimer`, `WaitForExternalEvent`stb.) bármilyen hívást felvesznek.
 
-## <a name="mitigation-strategies"></a>Mitigation strategies
+## <a name="mitigation-strategies"></a>Kockázatcsökkentő stratégiák
 
-Here are some of the strategies for dealing with versioning challenges:
+Íme néhány, a verziószámozási kihívásokkal foglalkozó stratégia:
 
-* Do nothing
-* Stop all in-flight instances
-* Side-by-side deployments
+* Nincs teendő
+* Az összes fedélzeti példány leállítása
+* Párhuzamos üzembe helyezések
 
-### <a name="do-nothing"></a>Do nothing
+### <a name="do-nothing"></a>Nincs teendő
 
-The easiest way to handle a breaking change is to let in-flight orchestration instances fail. New instances successfully run the changed code.
+A feltörési változások kezelésének legegyszerűbb módja a fedélzeti előkészítési példányok meghibásodása. Az új példányok sikeresen futtatták a módosított kódot.
 
-Whether this kind of failure is a problem depends on the importance of your in-flight instances. If you are in active development and don't care about in-flight instances, this might be good enough. However, you'll need to deal with exceptions and errors in your diagnostics pipeline. If you want to avoid those things, consider the other versioning options.
+Ez a hiba attól függ, hogy az ilyen típusú hibák a repülésen kívüli példányok fontosságán alapulnak-e. Ha aktív fejlesztést végez, és nem érdeklik a fedélzeti példányok, ez elég jó lehet. Azonban a diagnosztika folyamatában a kivételekkel és a hibákkal kell foglalkoznia. Ha el szeretné kerülni ezeket a dolgokat, tekintse át a többi verziószámozási lehetőséget.
 
-### <a name="stop-all-in-flight-instances"></a>Stop all in-flight instances
+### <a name="stop-all-in-flight-instances"></a>Az összes fedélzeti példány leállítása
 
-Another option is to stop all in-flight instances. Stopping all instances can be done by clearing the contents of the internal **control-queue** and **workitem-queue** queues. The instances will be forever stuck where they are, but they will not clutter your logs with failure messages. This approach is ideal in rapid prototype development.
+Egy másik lehetőség az összes fedélzeti példány leállítása. Az összes példány leállítása a belső **vezérlő – üzenetsor** és a **Munkatétel-várólista** várólistájának tartalmának törlésével végezhető el. A példányok örökre megakadnak, ahol ezek a felhasználók, de a naplófájlokat nem fogja felhasználni a hibaüzenetekkel. Ez a megközelítés ideális megoldás a gyors prototípus-fejlesztéshez.
 
 > [!WARNING]
-> The details of these queues may change over time, so don't rely on this technique for production workloads.
+> A várólisták részletei idővel változhatnak, ezért ne használja ezt a technikát éles számítási feladatokhoz.
 
-### <a name="side-by-side-deployments"></a>Side-by-side deployments
+### <a name="side-by-side-deployments"></a>Párhuzamos üzembe helyezések
 
-The most fail-proof way to ensure that breaking changes are deployed safely is by deploying them side-by-side with your older versions. This can be done using any of the following techniques:
+A legtöbb sikertelen működést biztosító módszer, amellyel biztosítható, hogy a megszakított változások biztonságosan üzembe helyezhetők legyenek, ha a régebbi verziókkal párhuzamosan telepíti őket. Ezt a következő módszerek bármelyikével teheti meg:
 
-* Deploy all the updates as entirely new functions, leaving existing functions as-is. This can be tricky because the callers of the new function versions must be updated as well following the same guidelines.
-* Deploy all the updates as a new function app with a different storage account.
-* Deploy a new copy of the function app with the same storage account but with an updated `taskHub` name. Side-by-side deployments is the recommended technique.
+* Telepítse az összes frissítést teljes mértékben új függvényként, így a meglévő függvények is megmaradnak. Ez trükkös lehet, mert az új függvények verzióinak hívóit is frissíteni kell Ugyanezen irányelvek követésével.
+* Telepítse az összes frissítést új Function-alkalmazásként egy másik Storage-fiókkal.
+* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy frissített `taskHub`-névvel. Az ajánlott eljárás a párhuzamos üzembe helyezés.
 
-### <a name="how-to-change-task-hub-name"></a>How to change task hub name
+### <a name="how-to-change-task-hub-name"></a>A feladat központ nevének módosítása
 
-The task hub can be configured in the *host.json* file as follows:
+A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -132,7 +132,7 @@ The task hub can be configured in the *host.json* file as follows:
 }
 ```
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -144,16 +144,16 @@ The task hub can be configured in the *host.json* file as follows:
 }
 ```
 
-The default value for Durable Functions v1.x is `DurableFunctionsHub`. Starting in Durable Functions v2.0, the default task hub name is the same as the function app name in Azure, or `TestHubName` if running outside of Azure.
+A Durable Functions v1. x alapértelmezett értéke `DurableFunctionsHub`. A Durable Functions 2.0-s verziótól kezdődően az alapértelmezett Task hub neve ugyanaz, mint a Function app neve az Azure-ban, vagy `TestHubName`, ha az Azure-on kívül fut.
 
-All Azure Storage entities are named based on the `hubName` configuration value. By giving the task hub a new name, you ensure that separate queues and history table are created for the new version of your application. The function app, however, will stop processing events for orchestrations or entities created under the previous task hub name.
+Az összes Azure Storage-entitás neve a `hubName` konfigurációs érték alapján történik. Ha egy új nevet ad a Task hub számára, akkor az alkalmazás új verziójához külön üzenetsor-és előzmény-táblázatot kell létrehoznia. A Function alkalmazás azonban leállítja az események feldolgozását, illetve az előző feladathoz tartozó hub neve alatt létrehozott entitásokat.
 
-We recommend that you deploy the new version of the function app to a new [Deployment Slot](../functions-deployment-slots.md). Deployment slots allow you to run multiple copies of your function app side-by-side with only one of them as the active *production* slot. When you are ready to expose the new orchestration logic to your existing infrastructure, it can be as simple as swapping the new version into the production slot.
+Javasoljuk, hogy a Function alkalmazás új verzióját egy új [üzembe helyezési](../functions-deployment-slots.md)pontra telepítse. Az üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás több példányát is futtassa, csak az egyiket aktív *üzemi* tárolóhelyként. Ha készen áll arra, hogy elérhetővé tegye az új előkészítési logikát a meglévő infrastruktúrájában, akkor olyan egyszerű lehet, hogy az új verziót az éles tárolóhelyre cseréli.
 
 > [!NOTE]
-> This strategy works best when you use HTTP and webhook triggers for orchestrator functions. For non-HTTP triggers, such as queues or Event Hubs, the trigger definition should [derive from an app setting](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) that gets updated as part of the swap operation.
+> Ez a stratégia akkor működik a legjobban, ha HTTP-és webhook-eseményindítókat használ a Orchestrator functions szolgáltatáshoz. A nem HTTP-alapú eseményindítók, például a várólisták vagy a Event Hubs esetében az eseményindító definíciójának [olyan alkalmazás-beállításból kell származnia](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , amely a swap művelet részeként frissül.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn how to handle performance and scale issues](durable-functions-perf-and-scale.md)
+> [Ismerje meg, hogyan kezelheti a teljesítménnyel és a skálázással kapcsolatos problémákat](durable-functions-perf-and-scale.md)

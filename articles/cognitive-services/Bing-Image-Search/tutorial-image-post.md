@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
+title: 'Oktatóanyag: a rendszerkép részleteinek kinyerése C# a REST API és a-Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: A cikk alapján létrehozhat egy C# alkalmazást, amely kinyeri a képek adatait a Bing Image Search API használatával.
 services: cognitive-services
@@ -36,7 +36,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* A [Visual studio 2017 vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -98,7 +98,7 @@ Ezt a JSON-választ ezután megjelenítheti a konzolon.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Képelemzés-token használata kérelemben
 
-Ha egy `POST`-kérelem eredményeivel visszaadott `ImageInsightsToken` tokent szeretne használni, hozzáadhatja azt egy `GET`-kérelemhez. Példa:
+Ha egy `ImageInsightsToken`-kérelem eredményeivel visszaadott `POST` tokent szeretne használni, hozzáadhatja azt egy `GET`-kérelemhez. Például:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -106,11 +106,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk vonatkozó információkat fog visszaadni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Képek és keresési beállítások megjelenítése egyoldalas webalkalmazásban](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Bing Image Search API – referenciaanyag](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -1,6 +1,6 @@
 ---
-title: Provision legacy devices using symmetric keys - Azure IoT Hub Device Provisioning Service
-description: How to use symmetric keys to provision legacy devices with your device provisioning service instance
+title: Örökölt eszközök kiépítése szimmetrikus kulcsok használatával – Azure IoT Hub Device Provisioning Service
+description: A szimmetrikus kulcsok használata a régi eszközök kiépítéséhez az eszköz kiépítési szolgáltatásának példányával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -15,36 +15,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74209916"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>How to provision legacy devices using symmetric keys
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Örökölt eszközök kiépítése szimmetrikus kulcsok használatával
 
-A common problem with many legacy devices is that they often have an identity that is composed of a single piece of information. This identity information is usually a MAC address or a serial number. Legacy devices may not have a certificate, TPM, or any other security feature that can be used to securely identify the device. The Device Provisioning Service for IoT hub includes symmetric key attestation. Symmetric key attestation can be used to identify a device based off information like the MAC address or a serial number.
+Számos régi eszközzel kapcsolatos gyakori probléma, hogy gyakran van olyan identitásuk, amely egyetlen információból áll. Ezek az azonosító adatok általában MAC-címek vagy sorozatszámok. Az örökölt eszközökhöz nem tartozhat tanúsítvány, TPM vagy más olyan biztonsági funkció, amely az eszköz biztonságos azonosítására szolgál. Az IoT hub eszköz-kiépítési szolgáltatása magában foglalja a szimmetrikus kulcs igazolását. A szimmetrikus kulcs igazolásával azonosítható egy eszköz, például a MAC-címe vagy sorozatszáma alapján.
 
-If you can easily install a [hardware security module (HSM)](concepts-security.md#hardware-security-module) and a certificate, then that may be a better approach for identifying and provisioning your devices. Since that approach may allow you to bypass updating the code deployed to all your devices, and you would not have a secret key embedded in your device image.
+Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-security.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. Mivel ez a megközelítés lehetővé teszi, hogy megkerüljék az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal.
 
-This article assumes that neither an HSM or a certificate is a viable option. However, it is assumed that you do have some method of updating device code to use the Device Provisioning Service to provision these devices. 
+Ez a cikk azt feltételezi, hogy egyik HSM vagy tanúsítvány sem életképes megoldás. Azonban feltételezhető, hogy az eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásával valamilyen módon frissítheti az eszköz kódját. 
 
-This article also assumes that the device update takes place in a secure environment to prevent unauthorized access to the master group key or the derived device key.
+A cikk azt is feltételezi, hogy az eszköz frissítése biztonságos környezetben történik, hogy megakadályozza a főcsoporti kulcs vagy a származtatott eszköz kulcsának jogosulatlan elérését.
 
 A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az eljárások Linux esetében is alkalmazhatóak. Linux-munkaállomást használó példát a [Több bérlős regisztráció](how-to-provision-multitenant.md) című cikkben talál.
 
 > [!NOTE]
-> The sample used in this article is written in C. There is also a [C# device provisioning symmetric key sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) available. To use this sample, download or clone the [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) repository and follow the in-line instructions in the sample code. You can follow the instructions in this article to create a symmetric key enrollment group using the portal and to find the ID Scope and enrollment group primary and secondary keys needed to run the sample. You can also create individual enrollments using the sample.
+> A cikkben használt minta C nyelven íródott. Létezik egy [ C# eszköz kiépítési szimmetrikus kulcsának mintája](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) is. A minta használatához töltse le vagy klónozott [Azure-IOT-Samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) adattárát, és kövesse a mintakód beépített utasításait. A cikk utasításait követve hozzon létre egy szimmetrikus kulcsú beléptetési csoportot a portál használatával, és keresse meg az azonosító hatókörét és a beléptetési csoportot, amely a minta futtatásához szükséges elsődleges és másodlagos kulcsokat tartalmaz. A minta használatával egyéni regisztrációkat is létrehozhat.
 
 ## <a name="overview"></a>Áttekintés
 
-A unique registration ID will be defined for each device based on information that identifies that device. For example, the MAC address or a serial number.
+Minden eszközhöz egyedi regisztrációs azonosítót határozunk meg az eszközt azonosító információk alapján. Például a MAC-címe vagy sorozatszáma.
 
-An enrollment group that uses [symmetric key attestation](concepts-symmetric-key-attestation.md) will be created with the Device Provisioning Service. The enrollment group will include a group master key. That master key will be used to hash each unique registration ID to produce a unique device key for each device. The device will use that derived device key with its unique registration ID to attest with the Device Provisioning Service and be assigned to an IoT hub.
+A rendszer az eszköz kiépítési szolgáltatásával hozza létre a [szimmetrikus kulcsú igazolást](concepts-symmetric-key-attestation.md) használó regisztrációs csoportot. A regisztrációs csoport tartalmazni fog egy csoport főkulcsát. Ez a főkulcs az egyes egyedi regisztrációs AZONOSÍTÓk kivonatolására szolgál az egyes eszközökhöz tartozó egyedi eszköz kulcsának létrehozásához. Az eszköz ezt a származtatott eszközt használja az egyedi regisztrációs AZONOSÍTÓval, hogy tanúsítsa az eszköz kiépítési szolgáltatását, és hozzá legyen rendelve egy IoT hubhoz.
 
-The device code demonstrated in this article will follow the same pattern as the [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md). The code will simulate a device using a sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). The simulated device will attest with an enrollment group instead of an individual enrollment as demonstrated in the quickstart.
+A cikkben bemutatott kód a gyors üzembe helyezési ponttal megegyező mintázatot követ [: szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md). A kód az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-ból származó minta használatával szimulálja az eszközt. A szimulált eszköz egy regisztrációs csoporttal fog tanúsítani egy, a rövid útmutatóban bemutatott módon, egyéni regisztráció helyett.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
+* A [beállított IoT hub Device Provisioning Service befejezése a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015-as vagy újabb verziójának használata az ["asztali fejlesztés C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) a munkaterheléssel" beállítással.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
@@ -52,9 +52,9 @@ The device code demonstrated in this article will follow the same pattern as the
 
 Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) build készítésére szolgáló fejlesztőkörnyezetet. 
 
-The SDK includes the sample code for the simulated device. A szimulált eszköz a beléptetést az rendszerindítási során fogja megkísérelni.
+Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimulált eszköz a beléptetést az rendszerindítási során fogja megkísérelni.
 
-1. Download the [CMake build system](https://cmake.org/download/).
+1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -99,58 +99,58 @@ The SDK includes the sample code for the simulated device. A szimulált eszköz 
     ```
 
 
-## <a name="create-a-symmetric-key-enrollment-group"></a>Create a symmetric key enrollment group
+## <a name="create-a-symmetric-key-enrollment-group"></a>Szimmetrikus kulcsú beléptetési csoport létrehozása
 
-1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
-2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
+2. Válassza a **regisztrációk kezelése** fület, majd kattintson a **regisztrációs csoport hozzáadása** gombra az oldal tetején. 
 
-3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
+3. A **regisztrációs csoport hozzáadása**párbeszédpanelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
 
-   - **Group name**: Enter **mylegacydevices**.
+   - **Csoport neve**: adja meg a **mylegacydevices**.
 
-   - **Attestation Type**: Select **Symmetric Key**.
+   - **Igazolás típusa**: válassza a **szimmetrikus kulcs**lehetőséget.
 
    - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
 
-   - **Select how you want to assign devices to hubs**: Select **Static configuration** so you can assign to a specific hub.
+   - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a hubokhoz**: válassza a **statikus konfiguráció** lehetőséget, hogy egy adott hubhoz rendeljen hozzá.
 
-   - **Select the IoT hubs this group can be assigned to**: Select one of your hubs.
+   - **Válassza ki azokat a IoT hubokat, amelyekre ez a csoport hozzá lehet rendelni**: válassza ki az egyik hubok közül a megfelelőt.
 
-     ![Add enrollment group for symmetric key attestation](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Beléptetési csoport hozzáadása a szimmetrikus kulcs igazolásához](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. Your symmetric key enrollment group appears as **mylegacydevices** under the *Group Name* column in the *Enrollment Groups* tab. 
+4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. A szimmetrikus kulcs beléptetési csoportja **mylegacydevices** néven jelenik meg a *beléptetési csoportok* lapon, a *csoport neve* oszlopban. 
 
-    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. This key is your master group key.
+    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ez a kulcs a főcsoport kulcsa.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Choose a unique registration ID for the device
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Válasszon egyedi regisztrációs azonosítót az eszközhöz
 
-A unique registration ID must be defined to identify each device. You can use the MAC address, serial number, or any unique information from the device. 
+Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell megadni. Az eszköz MAC-címe, sorozatszáma vagy bármely egyedi adata használható. 
 
-In this example, we use a combination of a MAC address and serial number forming the following string for a registration ID.
+Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs AZONOSÍTÓhoz.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Create a unique registration ID for your device. Valid characters are lowercase alphanumeric and dash ('-').
+Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
 
 
-## <a name="derive-a-device-key"></a>Derive a device key 
+## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása 
 
-To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
+Az eszköz kulcsának létrehozásához használja a csoport főkulcsát az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához, és Base64 formátumra alakítsa át az eredményt.
 
-Do not include your group master key in your device code.
+Ne foglalja bele a csoport főkulcsát az eszköz kódjába.
 
 
-#### <a name="linux-workstations"></a>Linux workstations
+#### <a name="linux-workstations"></a>Linux-munkaállomások
 
-If you are using a Linux workstation, you can use openssl to generate your derived device key as shown in the following example.
+Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
-Replace the value of **KEY** with the **Primary Key** you noted earlier.
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
 
-Replace the value of **REG_ID** with your registration ID.
+Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -165,13 +165,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-#### <a name="windows-based-workstations"></a>Windows-based workstations
+#### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
 
-If you are using a Windows-based workstation, you can use PowerShell to generate your derived device key as shown in the following example.
+Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
-Replace the value of **KEY** with the **Primary Key** you noted earlier.
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
 
-Replace the value of **REG_ID** with your registration ID.
+Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -189,21 +189,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Your device will use the derived device key with your unique registration ID to perform symmetric key attestation with the enrollment group during provisioning.
+Az eszköz a származtatott eszköz kulcsát az egyedi regisztrációs azonosítójával fogja használni a kiépítés során a beléptetési csoportba tartozó szimmetrikus kulcs igazolásának elvégzéséhez.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Create a device image to provision
+## <a name="create-a-device-image-to-provision"></a>Rendszerkép létrehozása a kiépíthető eszközhöz
 
-In this section, you will update a provisioning sample named **prov\_dev\_client\_sample** located in the Azure IoT C SDK you set up earlier. 
+Ebben a szakaszban egy **prov\_dev\_ügyfél\_minta** nevű kiépítési mintát fog frissíteni, amely a korábban beállított Azure IOT C SDK-ban található. 
 
-This sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub you configured on the enrollment group.
+Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy az eszköz fel lesz ismerve, és hozzá lesz rendelve a beléptetési csoportban konfigurált IoT hubhoz.
 
 1. Az Azure Portalon válassza ki az eszközkiépítési szolgáltatás **Áttekintés** lapját, és jegyezze fel az **_Azonosító hatóköre_** értéket.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. In Visual Studio, open the **azure_iot_sdks.sln** solution file that was generated by running CMake earlier. A megoldásfájlnak a következő helyen kell lennie:
+2. A Visual Studióban nyissa meg azt a **azure_iot_sdks. SLN** -megoldást, amelyet korábban a CMAK futtatása hozott létre. A megoldásfájlnak a következő helyen kell lennie:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -226,14 +226,14 @@ This sample code simulates a device boot sequence that sends the provisioning re
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
+6. Keresse meg azt a hívást, amelyet a **prov\_dev\_ügyfél\_sample. c** `prov_dev_set_symmetric_key_info()` a megjegyzésben talál.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Uncomment the function call, and replace the placeholder values (including the angle brackets) with the unique registration ID for your device and the derived device key you generated.
+    Adja meg a függvény hívását, és cserélje le a helyőrző értékeket (beleértve a szögletes zárójeleket is) az eszköz egyedi regisztrációs azonosítójával és a létrehozott származtatott eszköz kulcsával.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -263,25 +263,25 @@ This sample code simulates a device boot sequence that sends the provisioning re
     Press enter key to exit:
     ```
 
-9. In the portal, navigate to the IoT hub your simulated device was assigned to and click the **IoT Devices** tab. On successful provisioning of the simulated to the hub, its device ID appears on the **IoT Devices** blade, with *STATUS* as **enabled**. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
+9. A portálon navigáljon a szimulált eszközhöz rendelt IoT hubhoz, és kattintson a IoT- **eszközök** fülre. Ha sikeresen kiépíti a szimulált eszközt a központba, az eszköz azonosítója megjelenik az **IoT-eszközök** panelen, amely **engedélyezve** *állapotú* . Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
 
 
-## <a name="security-concerns"></a>Security concerns
+## <a name="security-concerns"></a>Biztonsági okokból
 
-Be aware that this leaves the derived device key included as part of the image, which is not a recommended security best practice. This is one reason why security and ease-of-use are tradeoffs. 
-
-
+Ügyeljen arra, hogy ez a rendszerkép részét képező származtatott eszköz kulcsát elhagyja, amely nem ajánlott biztonsági megoldás. Ez az egyik oka annak, hogy a biztonság és a könnyű használat Milyen kompromisszumokat jelent. 
 
 
 
-## <a name="next-steps"></a>Következő lépések
 
-* To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-* [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md)
-* To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+
+## <a name="next-steps"></a>További lépések
+
+* További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
+* [Gyors útmutató: szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md)
+* További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
 
 
 

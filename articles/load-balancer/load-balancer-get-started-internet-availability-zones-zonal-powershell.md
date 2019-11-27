@@ -1,7 +1,7 @@
 ---
-title: Create a Load Balancer with zonal frontend - Azure PowerShell
+title: Load Balancer létrehozása a zóna-előtérben – Azure PowerShell
 titleSuffix: Azure Load Balancer
-description: Learn how to create Standard Load Balancer with a zonal frontend using Azure PowerShell
+description: Megtudhatja, hogyan hozhat létre standard Load Balancert a zóna-előtérben a Azure PowerShell használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,14 +21,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215120"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Create a Standard Load Balancer with zonal frontend using Azure PowerShell
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>standard Load Balancer létrehozása a zóna-előtérben a Azure PowerShell használatával
 
-This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend using a Public IP Standard address. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
+Ez a cikk egy nyilvános IP-címet használó nyilvános [standard Load Balancer](https://aka.ms/azureloadbalancerstandard) létrehozásával foglalkozik. Annak megismeréséhez, hogy a rendelkezésre állási zónák hogyan működnek a standard Load Balancerokkal, tekintse meg a [standard Load Balancer és a rendelkezésre állás](load-balancer-standard-availability-zones.md) 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE]
-> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, valamint arról, hogy az Azure-erőforrások,-régiók és a virtuális gépek méretének családja milyen módon próbálhatja ki a rendelkezésre állási zónákat: [Availability Zones áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,39 +42,39 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Create a Resource Group using the following command:
+Hozzon létre egy erőforráscsoportot, a következő paranccsal:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupZLB -Location westeurope
 ```
 
-## <a name="create-a-public-ip-standard"></a>Create a public IP Standard 
-Create a Public IP Standard using the following command:
+## <a name="create-a-public-ip-standard"></a>Hozzon létre egy nyilvános IP Standard 
+Hozzon létre egy nyilvános IP Standard a következő paranccsal:
 
 ```azurepowershell-interactive
 $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
   -Location westeurope -AllocationMethod Static -Sku Standard -zone 1
 ```
 
-## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Create a front-end IP configuration for the website
+## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Hozzon létre egy előtérbeli IP-konfigurációt a webhelyhez
 
-Create a frontend IP configuration using the following command:
+Hozzon létre egy előtérbeli IP-konfiguráció a következő paranccsal:
 
 ```azurepowershell-interactive
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 ```
 
-## <a name="create-the-back-end-address-pool"></a>Create the back-end address pool
+## <a name="create-the-back-end-address-pool"></a>A háttér-címkészlet létrehozása
 
-Create a backend address pool using the following command:
+Hozzon létre egy háttércímkészletet az alábbi paranccsal:
 
 ```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
-## <a name="create-a-load-balancer-probe-on-port-80"></a>Create a load balancer probe on port 80
+## <a name="create-a-load-balancer-probe-on-port-80"></a>Terheléselosztói mintavételezők létrehozásához a 80-as porton
 
-Create a health probe on port 80 for the load balancer using the following command:
+Hozzon létre egy állapotmintát a 80-as portot a load balancer használatával a következő parancsot:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
@@ -82,14 +82,14 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
- Create a load balancer rule using the following command:
+ Hozzon létre egy terheléselosztó-szabályt a következő paranccsal:
 
 ```azurepowershell-interactive
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
-Create a Standard Load Balancer using the following command:
+Hozzon létre egy standard Load Balancer a következő parancs használatával:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
@@ -97,5 +97,5 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBala
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>Következő lépések
-- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).
+## <a name="next-steps"></a>További lépések
+- További információ a [standard Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).

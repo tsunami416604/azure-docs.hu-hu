@@ -18,11 +18,11 @@ Azure notebookok hatékony, együttműködő címtéren belüli a felhasználói
 
 A felhasználói azonosító az URL-címeket, projektek és jegyzetfüzetek megosztási részét képezi. Az alábbi lista ismerteti a különböző URL-cím-minták:
 
-- `https://notebooks.azure.com/<user_id>`: A profil lapon.
-- `https://notebooks.azure.com/<user_id>/projects`: A projekteket. Láthatja az összes projekt; más felhasználók csak a nyilvános projektek megtekintéséhez.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Soubory projektu.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Egy adott projektekhez klónok.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: A fájlok meghatározott jegyzetfüzet és HTML-előnézetet.
+- `https://notebooks.azure.com/<user_id>`: a profil oldala.
+- `https://notebooks.azure.com/<user_id>/projects`: az Ön projektjei. Láthatja az összes projekt; más felhasználók csak a nyilvános projektek megtekintéséhez.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: projektfájlok.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: egy adott projekt klónozása.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: egy adott jegyzetfüzet vagy fájl HTML-előnézete.
 
 ## <a name="your-user-id"></a>A felhasználói azonosító
 
@@ -30,7 +30,7 @@ Amikor első alkalommal bejelentkezik az Azure-jegyzetfüzetek, a fiók automati
 
 ![Rákérdezés a felhasználói azonosító létrehozása, amikor bejelentkezik az Azure-jegyzetfüzetek](media/accounts/create-user-id.png)
 
-A **konfigurálása a felhasználói azonosító** parancsot is az ideiglenes felhasználó neve mellett jelenik meg:
+A **felhasználói azonosító konfigurálása** parancs az ideiglenes Felhasználónév mellett is megjelenik:
 
 ![Konfigurálja a felhasználói azonosító parancs jelenik meg, amikor egy ideiglenes azonosító használata](media/accounts/configure-user-id-command.png)
 
@@ -43,20 +43,20 @@ A felhasználói AZONOSÍTÓnak négy és 16 karakterből, számból és kötőj
 
 ## <a name="your-profile"></a>A profil
 
-A profil áll, az URL-cím nyilvánosan megtekinthető információk `https://notebooks.azure.com/<user_id>`. A profil lapon is megjeleníti a legutóbb használt és minden csillaggal megjelölt projektek.
+A profil nyilvánosan megtekinthető információkból áll az URL-címen, `https://notebooks.azure.com/<user_id>`. A profil lapon is megjeleníti a legutóbb használt és minden csillaggal megjelölt projektek.
 
-A profil szerkesztéséhez használja a **profiladatok szerkesztése** parancsot a profil lapon. A szakaszok a profil a következők:
+A profil szerkesztéséhez használja a profil- **információ szerkesztése** parancsot a profil oldalán. A szakaszok a profil a következők:
 
 | Section | Tartalom |
 | --- | --- |
 | Profilkép | Kép a profil lapon jelenik meg. |
-| Fiókinformáció | A megjelenített név, a felhasználói azonosító és a nyilvános e-mail-fiókot. Itt az e-mail-fiók más felhasználók mean Önnel a kapcsolatot biztosít, és eltérő lehet a [fiók](azure-notebooks-user-account.md) jelentkezzen be a saját maga az Azure-jegyzetfüzetek használatával. |
+| Fiókinformáció | A megjelenített név, a felhasználói azonosító és a nyilvános e-mail-fiókot. Az itt található e-mail-fiók más felhasználók számára is lehetővé teszi, hogy kapcsolatba lépjen Önnel, és eltérhet a Azure Notebooksba való bejelentkezéshez használt [fióktól](azure-notebooks-user-account.md) . |
 | Profiladatok | A hely, vállalati, beosztás, webhely és saját kezűleg rövid leírását. |
 | Közösségi profilok | A GItHub, a Twitter és a Facebook-azonosítóval, ha megosztja őket. |
-| Adatvédelmi beállítások | Itt két parancsot:<ul><li>**Saját profil exportálása**: létrehoz és letölt egy *.zip* fájlt, amely tartalmazza a szükséges információkat, az Azure-jegyzetfüzetek menti a profilját, beleértve a fényképet, profiladatokat és biztonsági naplókat.</li><li>**Saját fiók törlése**: véglegesen törli az összes Azure jegyzetfüzetekben tárolt személyes adatokat.</li></ul> |
-| Webhely-szolgáltatások engedélyezése | Az Azure-jegyzetfüzetek viselkedését aspektusa teszi lehetővé:<ul><li>**Egységes Előtérrendszer notebookok**: lehetővé teszi, hogy gyorsabban notebook indítási és jobb adatmegőrzés.</li><li>**Alapértelmezés szerint a JupyterLab futnak**: alapértelmezés szerint az Azure-jegyzetfüzetek, amely lehetővé teszi a felhasználók többsége számára egyszerű felhasználói felületet biztosít. JupyterLab gazdagabb azonban bonyolultabb felületet biztosít a tapasztalt felhasználók számára.</li><li>**VNext webhely**: lehetővé teszi, hogy a modernebb webes elrendezésben jelenik meg ebben a dokumentációban.</li></ul> |
+| Adatvédelmi beállítások | Itt két parancsot:<ul><li>**Saját profil exportálása**: létrehoz és letölt egy *. zip* fájlt, amely tartalmazza az összes olyan információt, amelyet Azure Notebooks a profilba ment, beleértve a fényképet, a profil adatait és a biztonsági naplókat.</li><li>**Fiók törlése**: a Azure Notebooksban tárolt összes személyes adat véglegesen törlődik.</li></ul> |
+| Webhely-szolgáltatások engedélyezése | Az Azure-jegyzetfüzetek viselkedését aspektusa teszi lehetővé:<ul><li>**Egységes frontend jegyzetfüzetekhez: a**jegyzetfüzetek gyorsabb indítását és nagyobb adatmegőrzést tesz lehetővé.</li><li>**A JupyterLab alapértelmezett futtatása**: alapértelmezés szerint a Azure Notebooks a legtöbb felhasználó számára megfelelő egyszerű felhasználói felületet biztosít. JupyterLab gazdagabb azonban bonyolultabb felületet biztosít a tapasztalt felhasználók számára.</li><li>**VNext webhelye**: lehetővé teszi a dokumentációban látható, korszerű webes elrendezést.</li></ul> |
 
 ## <a name="next-steps"></a>Következő lépések  
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter-jegyzetfüzet futtatásának létrehozása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

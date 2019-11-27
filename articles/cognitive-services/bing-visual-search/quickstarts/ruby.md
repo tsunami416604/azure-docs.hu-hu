@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Ruby - Bing Visual Search'
+title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Ruby-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,22 +17,22 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383118"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Ruby
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Ruby használatával
 
-This quickstart uses the Ruby programming language to call Bing Visual Search and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
+Ez a rövid útmutató a Ruby programozási nyelv használatával hívja meg Bing Visual Search és megjeleníti az eredményeket. A POST-kérelem feltölt egy rendszerképet az API-végpontba. Az eredmények közé tartoznak a feltöltött képhez hasonló képek URL-címei és leíró információi.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To run this quickstart:
+A rövid útmutató futtatása:
 
-* Install [Ruby 2.4 or later](https://www.ruby-lang.org/en/downloads/)
-* Get a subscription key:
+* A [Ruby 2,4 vagy újabb verziójának](https://www.ruby-lang.org/en/downloads/) telepítése
+* Előfizetési kulcs beszerzése:
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-required-modules"></a>Project and required modules
+## <a name="project-and-required-modules"></a>Projekt és szükséges modulok
 
-Create a new Ruby project in your IDE or editor. Import `net/http`, `uri` , and `json` to handle the JSON text of results. The `base64` library is used to encode the file name string: 
+Hozzon létre egy új Ruby-projektet az IDE vagy a szerkesztőben. `net/http`, `uri` és `json` importálásával kezelheti az eredmények JSON-szövegét. A `base64` kódtár a fájlnév karakterláncának kódolására szolgál: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-The following code assigns required variables. Confirm that the endpoint is correct and replace the `accessKey` value with a subscription key from your Azure account.  The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data.  The `fileName` variable identifies the image file for the POST.  The `if` block tests for a valid subscription key.
+A következő kód a kötelező változókat rendeli hozzá. Győződjön meg arról, hogy a végpont helyes, és cserélje le az `accessKey` értéket egy előfizetési kulccsal az Azure-fiókból.  Az `batchNumber` egy GUID-azonosító szükséges a POST-adat kezdő és záró határaihoz.  A `fileName` változó azonosítja a bejegyzés képfájlját.  A `if` letiltják az érvényes előfizetési kulcshoz tartozó teszteket.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Form data for POST request
+## <a name="form-data-for-post-request"></a>Űrlapadatok a POST kérelemhez
 
-The image data to POST is enclosed by leading and trailing boundaries. The following functions set the boundaries:
+A közzétenni kívánt képadatok a kezdő és záró határok közé kerülnek. A következő függvények határozzák meg a határokat:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Next, construct the endpoint URI and an array to contain the POST body.  Use the previous function to load the start boundary into the array. Read the image file into the array. Then, read the end boundary into the array:
+Ezután hozza létre a végponti URI-t és egy tömböt a POST törzsének tárolására.  Az előző függvény használatával töltse be a kezdő határt a tömbbe. Olvassa el a képfájlt a tömbben. Ezután olvassa el a záró határt a tömbben:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>Create the HTTP request
+## <a name="create-the-http-request"></a>A HTTP-kérelem létrehozása
 
-Set the `Ocp-Apim-Subscription-Key` header.  Létrehozza a kérést. Then, assign the header and content type. Join the POST body created previously to the request:
+Adja meg a `Ocp-Apim-Subscription-Key` fejlécét.  Létrehozza a kérést. Ezután rendelje hozzá a fejlécet és a tartalomtípust. Csatlakozzon a korábban a kérelemhez létrehozott szövegtörzshöz:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -106,9 +106,9 @@ request.body = post_body.join
 
 ```
 
-## <a name="request-and-response"></a>Request and response
+## <a name="request-and-response"></a>Kérelem és válasz
 
-Ruby sends the request and gets the response with the following line of code:
+A Ruby elküldi a kérést, és a következő kódrészlettel kapja meg a választ:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Print the results
+## <a name="print-the-results"></a>Az eredmények nyomtatása
 
-Print the headers of the response, and use the JSON library to format output:
+Nyomtassa ki a válasz fejléceit, és a JSON-függvénytár használatával formázza a kimenetet:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -134,9 +134,9 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-The following JSON is a segment of the output:
+A következő JSON a kimenet szegmense:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Bing Visual Search overview](../overview.md)
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Bing Visual Search áttekintés](../overview.md)
+> [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)
