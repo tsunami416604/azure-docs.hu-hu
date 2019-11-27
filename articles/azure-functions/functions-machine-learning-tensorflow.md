@@ -1,6 +1,6 @@
 ---
-title: Use Python and TensorFlow in Azure Functions to make machine learning inferences
-description: This tutorial demonstrates how to apply TensorFlow machine learning models in Azure Functions
+title: A Python és a TensorFlow használata a Azure Functionsban a gépi tanulási következtetések elvégzéséhez
+description: Ez az oktatóanyag bemutatja, hogyan alkalmazhat TensorFlow Machine learning-modelleket Azure Functions
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
@@ -13,53 +13,53 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230510"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Apply machine learning models in Azure Functions with Python and TensorFlow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
-This article demonstrates how Azure Functions allows you to use Python and TensorFlow with a machine learning model to classify an image based on its contents.
+Ez a cikk azt mutatja be, hogyan Azure Functions lehetővé teszi a Python és a TensorFlow gépi tanulási modellel való használatát a rendszerképeknek a tartalom alapján történő besorolásához.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
 > [!div class="checklist"]
-> * Initialize a local environment for developing Azure Functions in Python
-> * Import a custom TensorFlow machine learning model into a function app
-> * Build a serverless HTTP API for predicting whether a photo contains a dog or a cat
-> * Consume the API from a web application
+> * Helyi környezet inicializálása a Python-Azure Functions fejlesztéséhez
+> * Egyéni TensorFlow Machine learning-modell importálása egy Function alkalmazásba
+> * Kiszolgáló nélküli HTTP API létrehozása, amely azt jelzi, hogy egy fénykép tartalmaz-e kutyát vagy macskát
+> * Az API felhasználása egy webalkalmazásból
 
-![Screenshot of finished project](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
+![A befejezett projekt képernyőképe](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-To create Azure Functions in Python, you need to install a few tools.
+Azure Functions a Pythonban való létrehozásához néhány eszközt telepítenie kell.
 
-- [Python 3.6](https://www.python.org/downloads/release/python-360/)
+- [Python 3,6](https://www.python.org/downloads/release/python-360/)
 - [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
-- A code editor such as [Visual Studio Code](https://code.visualstudio.com/)
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="clone-the-tutorial-repository"></a>Clone the tutorial repository
+## <a name="clone-the-tutorial-repository"></a>Az oktatóanyag-adattár klónozása
 
-To begin, open a terminal and clone the following repository using Git:
+A kezdéshez nyisson meg egy terminált, és a git használatával a következő adattár klónozásával:
 
 ```console
 git clone https://github.com/Azure-Samples/functions-python-tensorflow-tutorial.git
 cd functions-python-tensorflow-tutorial
 ```
 
-The repository contains a few folders.
+A tárház néhány mappát tartalmaz.
 
-- *start*:  This is your working folder for the tutorial
-- *end*: This is the final result and full implementation for your reference
-- *resources*: Contains the machine learning model and helper libraries
-- *frontend*: A website that calls the function app
+- *Indítás*: ez az oktatóanyaghoz tartozó munkahelyi mappa
+- *Befejezés*: ez az utolsó eredmény és teljes megvalósítás a referenciához
+- *erőforrások*: a Machine learning-modellt és a segítő kódtárakat tartalmazza
+- előtér *: olyan*webhely, amely meghívja a Function alkalmazást
 
-## <a name="create-and-activate-a-python-virtual-environment"></a>Create and activate a Python virtual environment
+## <a name="create-and-activate-a-python-virtual-environment"></a>Python virtuális környezet létrehozása és aktiválása
 
-Azure Functions requires Python 3.6.x. You'll create a virtual environment to ensure you're using the required Python version.
+A Azure Functions a Python 3.6. x verzióját igényli. Létre fog hozni egy virtuális környezetet, amely biztosítja, hogy a szükséges Python-verziót használja.
 
-Change the current working directory to the *start* folder. Then create and activate a virtual environment named *.venv*. Depending on your Python installation, the commands to create a Python 3.6 virtual environment may differ from the following instructions.
+Módosítsa az aktuális munkakönyvtárat a *Start* mappába. Ezután hozzon létre és aktiváljan egy *. venv*nevű virtuális környezetet. A Python-telepítéstől függően a Python 3,6 virtuális környezet létrehozásához szükséges parancsok eltérhetnek az alábbi utasításoktól.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux és macOS:
 
 ```bash
 cd start
@@ -75,70 +75,70 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-The terminal prompt is now prefixed with `(.venv)` which indicates you have successfully activated the virtual environment. Confirm that `python` in the virtual environment is indeed Python 3.6.x.
+A terminál-kérést a rendszer előre rögzíti `(.venv)` amely azt jelzi, hogy sikeresen aktiválta a virtuális környezetet. Győződjön meg arról, hogy a virtuális környezetben lévő `python` valóban Python 3.6. x.
 
 ```console
 python --version
 ```
 
 > [!NOTE]
-> For the remainder of the tutorial, you run commands in the virtual environment. If you need to reactivate the virtual environment in a terminal, execute the appropriate activate command for your operating system.
+> Az oktatóanyag hátralévő részében parancsokat futtathat a virtuális környezetben. Ha újra kell aktiválnia a virtuális környezetet egy terminálon, hajtsa végre a megfelelő aktiválási parancsot az operációs rendszeréhez.
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 
-In the *start* folder, use the Azure Functions Core Tools to initialize a Python function app.
+A *Start* mappában használja a Azure functions Core Tools egy Python-függvény alkalmazásának inicializálásához.
 
 ```console
 func init --worker-runtime python
 ```
 
-A function app can contain one or more Azure Functions. Open the *start* folder in an editor and examine the contents.
+A Function alkalmazás egy vagy több Azure Functions tartalmaz. Nyissa meg a *Start* mappát egy szerkesztőben, és vizsgálja meg a tartalmat.
 
-- [*local.settings.json*](functions-run-local.md#local-settings-file): Contains application settings used for local development
-- [*host.json*](functions-host-json.md): Contains settings for the Azure Functions host and extensions
-- [*requirements.txt*](functions-reference-python.md#package-management): Contains Python packages required by this application
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): a helyi fejlesztéshez használt alkalmazás-beállításokat tartalmazza
+- [*Host. JSON*](functions-host-json.md): a Azure functions gazdagép és bővítmények beállításait tartalmazza
+- [*követelmények. txt*](functions-reference-python.md#package-management): az alkalmazás által igényelt Python-csomagokat tartalmazza
 
-## <a name="create-an-http-function"></a>Create an HTTP function
+## <a name="create-an-http-function"></a>HTTP-függvény létrehozása
 
-The application requires a single HTTP API endpoint that takes an image URL as the input and returns a prediction of whether the image contains a dog or a cat.
+Az alkalmazáshoz egyetlen HTTP API-végpont szükséges, amely egy képurl-címet használ bemenetként, és visszaadja annak előrejelzését, hogy a rendszerkép tartalmaz-e kutyát vagy macskát.
 
-In the terminal, use the Azure Functions Core Tools to scaffold a new HTTP function named *classify*.
+A terminálban használja a Azure Functions Core Tools a *besorolás*nevű új http-függvény előkészítéséhez.
 
 ```console
 func new --language python --template HttpTrigger --name classify
 ```
 
-A new folder named *classify* is created, containing two files.
+Létrejön egy *besorolás* nevű új mappa, amely két fájlt tartalmaz.
 
-- *\_\_init\_\_.py*: A file for the main function
-- *function.json*:  A file describing the function's trigger and its input and output bindings
+- *\_\_init\_\_.* file: a fő függvény fájlja
+- *function. JSON*: a függvény triggerét és a hozzá tartozó bemeneti és kimeneti kötéseket leíró fájl
 
-### <a name="run-the-function"></a>Run the function
+### <a name="run-the-function"></a>A függvény futtatása
 
-In the terminal with the Python virtual environment activated, start the function app.
+Az aktivált Python virtuális környezettel rendelkező terminálon indítsa el a Function alkalmazást.
 
 ```console
 func start
 ```
 
-Open a browser and navigate to the following URL. The function should execute and return *Hello Azure!*
+Nyisson meg egy böngészőt, és navigáljon a következő URL-címre. A függvénynek végre kell hajtania és vissza kell adni a *Hello Azure* -t!
 
 ```
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Use `Ctrl-C` to stop the function app.
+A Function app leállításához használja a `Ctrl-C`.
 
-## <a name="import-the-tensorflow-model"></a>Import the TensorFlow model
+## <a name="import-the-tensorflow-model"></a>A TensorFlow-modell importálása
 
-You'll use a pre-built TensorFlow model that was trained with and exported from Azure Custom Vision Service.
+Egy előre elkészített TensorFlow modellt fog használni, amely az Azure Custom Vision Service-ból lett betanítva és exportálva.
 
 > [!NOTE]
-> If you want to build your own using Custom Vision Service's free tier, you can follow the [instructions in the sample project repository](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+> Ha a Custom Vision Service ingyenes szintjével szeretné létrehozni a sajátját, kövesse a [minta projekt adattárának utasításait](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-The model consists of two files in the *<REPOSITORY_ROOT>/resources/model* folder: *model.pb* and *labels.txt*. Copy them into the *classify* function's folder.
+A modell két fájlból áll a *< REPOSITORY_ROOT >/Resources/Model* mappában: *Model. PB* és *labels. txt*. Másolja őket a *besorolási* függvény mappájába.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux és macOS:
 
 ```bash
 cp ../resources/model/* classify
@@ -150,13 +150,13 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Be sure to include the \* in the above command. Confirm that *classify* now contains files named *model.pb* and *labels.txt*.
+Ügyeljen arra, hogy a fenti parancsban szerepeljen a \*. Győződjön meg arról, hogy a *besorolás* most a *Model. PB* és a *labels. txt*nevű fájlokat tartalmazza.
 
-## <a name="add-the-helper-functions-and-dependencies"></a>Add the helper functions and dependencies
+## <a name="add-the-helper-functions-and-dependencies"></a>Segítő függvények és függőségek hozzáadása
 
-Some helper functions for preparing the input image and making a prediction using TensorFlow are in a file named *predict.py* in the *resources* folder. Copy this file into the *classify* function's folder.
+Egyes segítő függvények a bemeneti rendszerkép előkészítéséhez és a TensorFlow használatával történő előrejelzéshez a *Predict.py* nevű fájlban találhatók a *Resources* mappában. Másolja ezt a fájlt a *besorolási* függvény mappájába.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux és macOS:
 
 ```bash
 cp ../resources/predict.py classify
@@ -168,11 +168,11 @@ cp ../resources/predict.py classify
 copy ..\resources\predict.py classify
 ```
 
-Confirm that *classify* now contains a file named *predict.py*.
+Győződjön meg arról, hogy a *besorolás* most tartalmaz egy *Predict.py*nevű fájlt.
 
 ### <a name="install-dependencies"></a>Függőségek telepítése
 
-The helper library has some dependencies that need to be installed. Open *start/requirements.txt* in your editor and add the following dependencies to the file.
+A Segéd-függvénytárban vannak olyan függőségek, amelyeket telepíteni kell. Nyissa meg a *Start/követelmények. txt* fájlt a szerkesztőben, és adja hozzá a következő függőségeket a fájlhoz.
 
 ```txt
 tensorflow==1.14
@@ -182,28 +182,28 @@ requests
 
 Mentse a fájlt.
 
-In the terminal with the virtual environment activated, run the following command in the *start* folder to install the dependencies. Some installation steps may take a few minutes to complete.
+Az aktivált virtuális környezettel rendelkező terminálon futtassa a következő parancsot a *Start* mappában a függőségek telepítéséhez. Néhány telepítési lépés eltarthat néhány percig.
 
 ```console
 pip install --no-cache-dir -r requirements.txt
 ```
 
-### <a name="caching-the-model-in-global-variables"></a>Caching the model in global variables
+### <a name="caching-the-model-in-global-variables"></a>A modell gyorsítótárazása globális változókban
 
-In the editor, open *predict.py* and look at the `_initialize` function near the top of the file. Notice that the TensorFlow model is loaded from disk the first time the function is executed and saved to global variables. The loading from disk is skipped in subsequent executions of the `_initialize` function. Caching the model in memory with this technique speeds up later predictions.
+A szerkesztőben nyissa meg a *Predict.py* , és tekintse meg a `_initialize` függvényt a fájl teteje közelében. Figyelje meg, hogy a TensorFlow modell betöltődik a lemezről a függvény első futtatásakor és globális változókba mentésekor. A rendszer kihagyja a lemezről való betöltést az `_initialize` függvény későbbi végrehajtásakor. A memóriabeli modell gyorsítótárazása ezzel a technikával felgyorsítja a későbbi előrejelzéseket.
 
-For more information on global variables, refer to the [Azure Functions Python developer guide](functions-reference-python.md#global-variables).
+A globális változókra vonatkozó további információkért tekintse meg a [Azure functions Python fejlesztői útmutatóját](functions-reference-python.md#global-variables).
 
-## <a name="update-function-to-run-predictions"></a>Update function to run predictions
+## <a name="update-function-to-run-predictions"></a>Frissítési függvény az előrejelzések futtatásához
 
-Open *classify/\_\_init\_\_.py* in your editor. Import the *predict* library that you added to the same folder earlier. Add the following `import` statements below the other imports already in the file.
+Nyissa meg az *osztályozás/\_\_init\_\_. a.* a szerkesztőben. Importálja a korábban ugyanahhoz a mappához hozzáadott *előrejelző* könyvtárat. Adja hozzá a következő `import` utasításokat a fájlban már szereplő többi importálás alatt.
 
 ```python
 import json
 from .predict import predict_image_from_url
 ```
 
-Replace the function template code with the following.
+Cserélje le a Function sablon kódját a következőre.
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -217,38 +217,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Make sure to save your changes.
+Győződjön meg arról, hogy a módosítások mentéséhez.
 
-This function receives an image URL in a query string parameter named `img`. It calls `predict_image_from_url` from the helper library that downloads the image and returns a prediction using the TensorFlow model. The function then returns an HTTP response with the results.
+Ez a függvény egy `img`nevű lekérdezési karakterlánc-paraméterben fogad egy képurl-címet. Meghívja az `predict_image_from_url`t a segítő könyvtárból, amely letölti a képet, és visszaadja az előrejelzést a TensorFlow-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel.
 
-Since the HTTP endpoint is called by a web page hosted on another domain, the HTTP response includes an `Access-Control-Allow-Origin` header to satisfy the browser's Cross-Origin Resource Sharing (CORS) requirements.
+Mivel a HTTP-végpontot egy másik tartományban található weblap hívja meg, a HTTP-válasz egy `Access-Control-Allow-Origin` fejlécet tartalmaz, amely kielégíti a böngésző eltérő eredetű erőforrás-megosztási (CORS) követelményeit.
 
 > [!NOTE]
-> In a production application, change `*` to the web page's specific origin for added security.
+> Éles alkalmazásokban a további biztonság érdekében módosítsa `*` a weblap speciális forrására.
 
-### <a name="run-the-function-app"></a>Run the function app
+### <a name="run-the-function-app"></a>A Function alkalmazás futtatása
 
-Ensure the Python virtual environment is still activated and start the function app using the following command.
+Győződjön meg arról, hogy a Python virtuális környezet továbbra is aktiválva van, és indítsa el a Function alkalmazást a következő parancs használatával.
 
 ```console
 func start
 ```
 
-In a browser, open this URL that calls your function with the URL of a cat photo. Confirm that a valid prediction result is returned.
+Egy böngészőben nyissa meg ezt az URL-címet, amely meghívja a függvényt egy Cat-fénykép URL-címével. Győződjön meg arról, hogy a rendszer érvényes előrejelzési eredményt ad vissza.
 
 ```
 http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png
 ```
 
-Keep the function app running.
+A Function alkalmazás futásának megtartása.
 
 ### <a name="run-the-web-app"></a>A webalkalmazás futtatása
 
-There's a simple web app in the *frontend* folder that consumes the HTTP API in the function app.
+Létezik egy egyszerű webalkalmazás a *frontend* mappában, amely a http API-t használja a Function alkalmazásban.
 
-Open a *separate* terminal and change to the *frontend* folder. Start an HTTP server with Python 3.6.
+Nyisson meg egy *különálló* terminált, és váltson át a *frontend* mappára. Indítsa el a HTTP-kiszolgálót a Python 3,6-mel.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux és macOS:
 
 ```bash
 cd <FRONT_END_FOLDER>
@@ -262,25 +262,25 @@ cd <FRONT_END_FOLDER>
 py -3.6  -m http.server
 ```
 
-In a browser, navigate to the HTTP server's URL that is displayed in the terminal. A web app should appear. Enter one of the following photo URLs into the textbox. You may also use a URL of a publicly accessible cat or dog photo.
+Egy böngészőben nyissa meg a HTTP-kiszolgáló URL-címét, amely a terminálon jelenik meg. Meg kell jelennie egy webalkalmazásnak. Adja meg a következő fénykép URL-címek egyikét a szövegmezőbe. A nyilvánosan elérhető Cat-vagy Dog-fényképek URL-címét is használhatja.
 
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat2.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog2.png`
 
-When you click submit, the function app is called and a result is displayed on the page.
+Amikor a Submit (küldés) gombra kattint, a rendszer meghívja a Function alkalmazást, és egy eredmény jelenik meg az oldalon.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-The entirety of this tutorial runs locally on your machine, so there are no Azure resources or services to clean up.
+Az oktatóanyag teljes egészében helyileg fut a gépen, így nincs szükség Azure-erőforrásokra vagy-szolgáltatásokra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you learned how to build and customize an HTTP API with Azure Functions to make predictions using a TensorFlow model. You also learned how to call the API from a web application.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és szabhat testre egy HTTP API-t Azure Functions segítségével, hogy előrejelzéseket TensorFlow modell használatával. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból.
 
-You can use the techniques in this tutorial to build out APIs of any complexity, all while running on the serverless compute model provided by Azure Functions.
+Az oktatóanyagban található technikák használatával bármilyen bonyolultságú API-t építhet ki, miközben a Azure Functions által biztosított kiszolgáló nélküli számítási modellen fut.
 
-To deploy the function app to Azure, use the [Azure Functions Core Tools](./functions-run-local.md#publish) or [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
+A Function alkalmazás Azure-ban való üzembe helyezéséhez használja a [Azure functions Core Tools](./functions-run-local.md#publish) vagy a [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions)-ot.
 
 > [!div class="nextstepaction"]
-> [Azure Functions Python Developer Guide](./functions-reference-python.md)
+> [Azure Functions Python fejlesztői útmutató](./functions-reference-python.md)

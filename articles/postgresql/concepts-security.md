@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Database for PostgreSQL - Single Server
-description: An overview of the security features in Azure Database for PostgreSQL - Single Server.
+title: Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: A Azure Database for PostgreSQL-egy kiszolgáló biztonsági funkcióinak áttekintése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,45 +13,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485080"
 ---
-# <a name="security-in-azure-database-for-postgresql---single-server"></a>Security in Azure Database for PostgreSQL - Single Server
+# <a name="security-in-azure-database-for-postgresql---single-server"></a>Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
 
-There are multiple layers of security that are available to protect the data on your Azure Database for PostgreSQL server. This article outlines those security options.
+Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for PostgreSQL-kiszolgálón lévő adatvédelmet biztosítanak. Ez a cikk ezeket a biztonsági beállításokat ismerteti.
 
-## <a name="information-protection-and-encryption"></a>Information protection and encryption
+## <a name="information-protection-and-encryption"></a>Adatvédelem és titkosítás
 
-### <a name="in-transit"></a>In-transit
-Azure Database for PostgreSQL secures your data by encrypting data in-transit with Transport Layer Security. Encryption (SSL/TLS) is enforced by default.
+### <a name="in-transit"></a>Átvitel közben
+A Azure Database for PostgreSQL az adatátvitelt a Transport Layer Security segítségével titkosítja. A titkosítás (SSL/TLS) alapértelmezés szerint ki van kényszerítve.
 
-### <a name="at-rest"></a>At-rest
-The Azure Database for PostgreSQL service uses the FIPS 140-2 validated cryptographic module for storage encryption of data at-rest. Data, including backups, are encrypted on disk, with the exception of temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys are system managed. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
+### <a name="at-rest"></a>Nyugalmi állapotban
+A Azure Database for PostgreSQL szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
 
 ## <a name="network-security"></a>Hálózati biztonság
-Connections to an Azure Database for PostgreSQL server are first routed through a regional gateway. The gateway has a publicly accessible IP, while the server IP addresses are protected. For more information about the gateway, visit the [connectivity architecture article](concepts-connectivity-architecture.md).  
+A Azure Database for PostgreSQL-kiszolgálóval létesített kapcsolatok először egy regionális átjárón keresztül irányíthatók. Az átjáró nyilvánosan elérhető IP-címmel rendelkezik, a kiszolgáló IP-címei pedig védettek. Az átjáróval kapcsolatos további információkért tekintse meg a [kapcsolati architektúra című cikket](concepts-connectivity-architecture.md).  
 
-A newly created Azure Database for PostgreSQL server has a firewall that blocks all external connections. Though they reach the gateway, they are not allowed to connect to the server. 
+Az újonnan létrehozott Azure Database for PostgreSQL-kiszolgáló rendelkezik egy tűzfallal, amely blokkolja az összes külső kapcsolatot. Az átjáró elérése azonban nem engedélyezett a kiszolgálóhoz való kapcsolódáshoz. 
 
-### <a name="ip-firewall-rules"></a>IP firewall rules
-IP firewall rules grant access to servers based on the originating IP address of each request. See the [firewall rules overview](concepts-firewall-rules.md) for more information.
+### <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítanak hozzáférést a kiszolgálókhoz. További információért tekintse meg a [Tűzfalszabályok áttekintését](concepts-firewall-rules.md) .
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
-Virtual network service endpoints extend your virtual network connectivity over the Azure backbone. Using virtual network rules you can enable your Azure Database for PostgreSQL server to allow connections from selected subnets in a virtual network. For more information, see the [virtual network service endpoint overview](concepts-data-access-and-security-vnet.md).
+A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for PostgreSQL-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-and-security-vnet.md)című témakörben talál.
 
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
-While creating the Azure Database for PostgreSQL server, you provide credentials for an administrator role. This administrator role can be used to create additional [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
+A Azure Database for PostgreSQL-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai szerepkör hitelesítő adatait. Ez a rendszergazdai szerepkör további [PostgreSQL-szerepkörök](https://www.postgresql.org/docs/current/user-manag.html)létrehozásához használható.
 
-You can also connect to the server using [Azure Active Directory (AAD) authentication](concepts-aad-authentication.md).
+[Azure Active Directory (HRE) hitelesítés](concepts-aad-authentication.md)használatával is csatlakozhat a kiszolgálóhoz.
 
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 
-You can opt in to [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) which detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit servers.
+A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-threat-protection.md) bekapcsolásával olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek a kiszolgálók eléréséhez vagy kiaknázásához.
 
-[Audit logging](concepts-audit.md) is available to track activity in your databases. 
+A [naplózás elérhető](concepts-audit.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Enable firewall rules for [IPs](concepts-firewall-rules.md) or [virtual networks](concepts-data-access-and-security-vnet.md)
-- Learn about [Azure Active Directory authentication](concepts-aad-authentication.md) in Azure Database for PostgreSQL
+- Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-and-security-vnet.md)
+- Tudnivalók a [Azure Active Directory hitelesítésről](concepts-aad-authentication.md) Azure Database for PostgreSQL

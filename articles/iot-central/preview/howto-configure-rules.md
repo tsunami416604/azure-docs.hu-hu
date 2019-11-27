@@ -1,6 +1,6 @@
 ---
 title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Microsoft Docs
-description: This how-to article shows you, as a builder, how to configure telemetry-based rules and actions in your Azure IoT Central application.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: vavilla
 ms.author: vavilla
 ms.date: 11/11/2019
@@ -15,41 +15,41 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484911"
 ---
-# <a name="configure-rules-preview-features"></a>Configure rules (preview features)
+# <a name="configure-rules-preview-features"></a>Szabályok konfigurálása (előzetes verziójú funkciók)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Rules in IoT Central serve as a customizable response tool that trigger on actively monitored events from connected devices. The following sections describe how rules are evaluated.
+A IoT Central szabályai testreszabható válasz eszközként szolgálnak, amely a csatlakoztatott eszközökről aktívan figyelt eseményeket indít el. A következő szakaszok ismertetik a szabályok kiértékelésének módját.
 
-## <a name="select-target-devices"></a>Select target devices
+## <a name="select-target-devices"></a>Megcélzott eszközök kiválasztása
 
-Use the target devices section to select on what kind of devices this rule will be applied. Filters allow you to further refine what devices should be included. The filters use properties on the device template to filter down the set of devices. Filters themselves don't trigger an action. In the following screenshot, the devices that are being targeted are of device template type **Refrigerator**. The filter states that the rule should only include **Refrigerators** where the **Manufactured State** property equals **Washington**.
+Az eszközök megcélzása szakaszban kiválaszthatja, hogy milyen típusú eszközökre lesz alkalmazva a szabály. A szűrők segítségével tovább pontosíthatja, hogy mely eszközöket kell tartalmaznia. A szűrők az eszköz tulajdonságainak használatával szűrhetik az eszközök készletét. Maguk a szűrők nem indítják el a műveletet. A következő képernyőképen a megcélozni kívánt eszközök típusa **hűtőszekrény**. A szűrő azt jelzi, hogy a szabály csak olyan **hűtőszekrényeket** tartalmazhat, amelyekben a **gyártott állapot** értéke **Washington**.
 
 ![Feltételek](media/howto-configure-rules/filters.png)
 
-## <a name="use-multiple-conditions"></a>Use multiple conditions
+## <a name="use-multiple-conditions"></a>Több feltétel használata
 
-Conditions are what rules trigger on. Currently, when you add multiple conditions to a rule, they're logically AND'd together. In other words, all conditions must be met for the rule to evaluate as true.  
+A feltételek alapján a szabályok aktiválva lesznek. Jelenleg, ha több feltételt ad hozzá egy szabályhoz, akkor logikailag és együtt. Más szóval minden feltételnek teljesülnie kell ahhoz, hogy a szabály kiértékelése igaz legyen.  
 
-In the following screenshot, the conditions check when the temperature is greater than 90 and the humidity is less than 10. When both of these statements are true, the rule evaluates to true and triggers an action.
+A következő képernyőképen a feltételek ellenőrzése, hogy a hőmérséklet nagyobb-e, mint 90, és a páratartalom kisebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
 
 ![Feltételek](media/howto-configure-rules/conditions.png)
 
-## <a name="use-aggregate-windowing"></a>Use aggregate windowing
+## <a name="use-aggregate-windowing"></a>Összesítő ablak használata
 
-Rules evaluate aggregate time windows as tumbling windows. In the screenshot below, the time window is five minutes. Every five minutes, the rule evaluates on the last five minutes of data. The data is only evaluated once in the window to which it corresponds.
+A szabályok kiértékelik a Windows összesített időkorlátját. Az alábbi képernyőképen az időablak öt perc. A szabály 5 percenként kiértékeli az adatmennyiséget az utolsó öt percben. Az adatmennyiség csak egyszer lesz kiértékelve abban az ablakban, amelyhez megfelel.
 
-![Tumbling Windows](media/howto-configure-rules/tumbling-window.png)
+![Ablakok kiesése](media/howto-configure-rules/tumbling-window.png)
 
-## <a name="use-rules-with-iot-edge-modules"></a>Use rules with IoT Edge modules
+## <a name="use-rules-with-iot-edge-modules"></a>Szabályok használata IoT Edge modulokkal
 
-A restriction applies to rules that are applied to IoT Edge modules. Rules on telemetry from different modules aren't evaluated as valid rules. Take the following as an example. The first condition of the rule is on a temperature telemetry from Module A. The second condition of the rule is on a humidity telemetry on Module B. Since the two conditions are from different modules, this is an invalid set of conditions. The rule isn't valid and will throw an error on trying to save the rule.
+Korlátozás vonatkozik a IoT Edge modulokra alkalmazott szabályokra. A különböző modulok telemetria vonatkozó szabályok nem érvényes szabályokként vannak kiértékelve. Példaként végezze el az alábbiakat. A szabály első feltétele az A modul egy hőmérsékleti telemetria. A szabály második feltétele a B modul nedvességtartalmának telemetria. Mivel a két feltétel különböző modulokból származik, ez a feltételek érvénytelenek. A szabály nem érvényes, és a rendszer hibát jelez a szabály mentésekor.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you've learned how to configure a rule in your Azure IoT Central application, you can:
+Most, hogy megismerte, hogyan konfigurálhat egy szabályt az Azure IoT Central alkalmazásban, a következőket teheti:
 
 > [!div class="nextstepaction"]
-> [Analyze your data on the fly](howto-create-analytics.md)
+> [Az adatai menet közbeni elemzése](howto-create-analytics.md)

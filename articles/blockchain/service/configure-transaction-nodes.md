@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Blockchain Service transaction nodes
-description: How to configure Azure Blockchain Service transaction nodes
+title: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
+description: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
@@ -11,127 +11,127 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326305"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Configure Azure Blockchain Service transaction nodes
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
-Transaction nodes are used to send blockchain transactions to Azure Blockchain Service through a public endpoint. The default transaction node contains the private key of the Ethereum account registered on the blockchain, and as such cannot be deleted.
+A tranzakciós csomópontok egy nyilvános végponton keresztül blockchain-tranzakciók küldésére szolgálnak az Azure Blockchain szolgáltatásba. Az alapértelmezett tranzakciós csomópont tartalmazza a blockchain regisztrált Ethereum-fiók titkos kulcsát, és nem törölhető.
 
-To view the default transaction node details:
+Az alapértelmezett tranzakciós csomópont részleteinek megtekintése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Navigáljon az Azure Blockchain-szolgáltatás tagjához. Válassza a **tranzakciós csomópontok**lehetőséget.
 
-    ![Select default transaction node](./media/configure-transaction-nodes/nodes.png)
+    ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/configure-transaction-nodes/nodes.png)
 
-    Overview details include public endpoint addresses and public key.
+    Az Áttekintés részletei közé tartozik a nyilvános végpont címei és a nyilvános kulcs.
 
-## <a name="create-transaction-node"></a>Create transaction node
+## <a name="create-transaction-node"></a>Tranzakciós csomópont létrehozása
 
-You can add up to nine additional transaction nodes to your blockchain member, for a total of 10 transaction nodes. By adding transaction nodes, you can increase scalability or distribute load. For example, you could have a transaction node endpoint for different client applications.
+Legfeljebb kilenc további tranzakciós csomópontot adhat hozzá a blockchain-taghoz, összesen 10 tranzakciós csomópontra. A tranzakciós csomópontok hozzáadásával növelheti a méretezhetőséget vagy terjesztheti a terhelést. Rendelkezhet például egy tranzakciós csomópont végponttal különböző ügyfélalkalmazások számára.
 
-To add a transaction node:
+Tranzakciós csomópont hozzáadása:
 
-1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Add**.
-1. Complete the settings for the new transaction node.
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > Hozzáadás**lehetőséget.
+1. Fejezze be az új tranzakciós csomópont beállításait.
 
-    ![Add transaction node](./media/configure-transaction-nodes/add-node.png)
+    ![Tranzakciós csomópont hozzáadása](./media/configure-transaction-nodes/add-node.png)
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Név | Transaction node name. The name is used to create the DNS address for the transaction node endpoint. Például: `newnode-myblockchainmember.blockchain.azure.com`. The node name cannot be changed once it is created. |
-    | Jelszó | Set a strong password. Use the password to access the transaction node endpoint with basic authentication.
+    | Name (Név) | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
+    | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    Provisioning a new transaction node takes about 10 minutes. Additional transaction nodes incur cost. For more information on costs, see [Azure pricing](https://aka.ms/ABSPricing).
+    Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe. A további tranzakciós csomópontok költségekkel járnak. A költségekkel kapcsolatos további információkért lásd: az [Azure díjszabása](https://aka.ms/ABSPricing).
 
-## <a name="endpoints"></a>Endpoints (Végpontok)
+## <a name="endpoints"></a>Végpontok
 
-Transaction nodes have a unique DNS name and public endpoints.
+A tranzakciós csomópontok egyedi DNS-névvel és nyilvános végpontokkal rendelkeznek.
 
-To view a transaction node's endpoint details:
+A tranzakciós csomópont végpontjának részleteinek megtekintése:
 
-1. In the Azure portal, navigate to one of your Azure Blockchain Service member transaction nodes and select **Overview**.
+1. A Azure Portal navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára, és válassza az **Áttekintés**lehetőséget.
 
-    ![Endpoints (Végpontok)](./media/configure-transaction-nodes/endpoints.png)
+    ![Végpontok](./media/configure-transaction-nodes/endpoints.png)
 
-Transaction node endpoints are secure and require authentication. You can connect to a transaction endpoint using Azure AD authentication, HTTPS basic authentication, and using an access key over HTTPS or Websocket over SSL.
+A tranzakciós csomópont végpontok biztonságosak és hitelesítés szükségesek. Az Azure AD-hitelesítéssel, a HTTPS alapszintű hitelesítéssel, valamint a HTTPS vagy WebSocket SSL protokollon keresztüli hozzáférési kulccsal csatlakozhat egy tranzakciós végponthoz.
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory hozzáférés-vezérlés
 
-Azure Blockchain Service transaction node endpoints support Azure Active Directory (Azure AD) authentication. You can grant Azure AD user, group, and service principal access to your endpoint.
+Az Azure Blockchain szolgáltatás tranzakciós csomópontjának végpontok támogatják Azure Active Directory (Azure AD) hitelesítést. Megadhatja az Azure AD-beli felhasználói, csoport-és szolgáltatásnév hozzáférését a végponthoz.
 
-To grant Azure AD access control to your endpoint:
+Az Azure AD hozzáférés-vezérlésének engedélyezése a végpontnak:
 
-1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Access control (IAM) > Add > Add role assignment**.
-1. Create a new role assignment for a user, group, or service principal (application roles).
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > hozzáférés-vezérlés (iam) > hozzáadás > szerepkör-hozzárendelés hozzáadása**elemet.
+1. Új szerepkör-hozzárendelés létrehozása egy felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz (alkalmazás szerepkörei).
 
-    ![Add IAM role](./media/configure-transaction-nodes/add-role.png)
+    ![IAM szerepkör hozzáadása](./media/configure-transaction-nodes/add-role.png)
 
     | Beállítás | Műveletek |
     |---------|-------------|
-    | Szerepkör | Select **Owner**, **Contributor**, or **Reader**.
-    | Assign access to | Select **Azure AD user, group, or service principal**.
-    | Válassza ezt: | Search for the user, group, or service principal you want to add.
+    | Szerepkör | Válassza a **tulajdonos**, **közreműködő**vagy **olvasó**lehetőséget.
+    | Hozzáférés kiosztása | Válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget.
+    | Válassza ezt: | Keresse meg azt a felhasználót, csoportot vagy szolgáltatásnevet, amelyet hozzá szeretne adni.
 
-1. Select **Save** to add the role assignment.
+1. A szerepkör-hozzárendelés hozzáadásához válassza a **Mentés** lehetőséget.
 
-For more information on Azure AD access control, see [Manage access to Azure resources using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md)
+Az Azure AD hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 
-For details on how to connect using Azure AD authentication, see [connect to your node using AAD authentication](configure-aad.md).
+További információ az Azure AD-hitelesítés használatával történő kapcsolódásról: [Kapcsolódás a csomóponthoz a HRE-hitelesítés használatával](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
-For HTTPS basic authentication, user name and password credentials are passed in the HTTPS header of the request to the endpoint.
+A HTTPS alapszintű hitelesítés esetében a Felhasználónév és jelszó hitelesítő adatait a rendszer a kérelem HTTPS-fejlécében adja át a végpontnak.
 
-You can view a transaction node's basic authentication endpoint details in the Azure portal. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Basic Authentication** in settings.
+A tranzakciós csomópontok alapszintű hitelesítési végpontjának részleteit a Azure Portal tekintheti meg. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza az **alapszintű hitelesítés** lehetőséget a beállításokban.
 
 ![Alapszintű hitelesítés](./media/configure-transaction-nodes/basic.png)
 
-The user name is the name of your node and cannot be changed.
+A Felhasználónév a csomópont neve, és nem módosítható.
 
-To use the URL, replace \<password\> with the password set when the node was provisioned. You can update the password by selecting **Reset password**.
+Az URL-cím használatához cserélje le \<Password\>t a csomópont kiosztásakor beállított jelszóra. A jelszót a **jelszó alaphelyzetbe állítása**lehetőség kiválasztásával frissítheti.
 
 ### <a name="access-keys"></a>Elérési kulcs
 
-For access key authentication, the access key is included in the endpoint URL. When the transaction node is provisioned, two access keys are generated. Either access key can be used for authentication. Two keys enable you to change and rotate keys.
+A hozzáférési kulcs hitelesítéséhez a hozzáférési kulcs szerepel a végpont URL-címében. A tranzakciós csomópont kiosztásakor két hozzáférési kulcs jön létre. A hitelesítéshez hozzáférési kulcs is használható. A két kulcs lehetővé teszi a kulcsok módosítását és elforgatását.
 
-You can view a transaction node's access key details and copy endpoint addresses that include the access keys. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Access Keys** in settings.
+Megtekintheti a tranzakciós csomópont hozzáférési kulcsának részleteit, és a hozzáférési kulcsokat tartalmazó végponti címeket is átmásolhatja. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a **hozzáférési kulcsok** lehetőséget a beállítások területen.
 
 ### <a name="firewall-rules"></a>Tűzfalszabályok
 
-Firewall rules enable you to limit the IP addresses that can attempt to authenticate to your transaction node.  If no firewall rules are configured for your transaction node, it cannot be accessed by any party.  
+A tűzfalszabályok lehetővé teszik a tranzakciós csomóponton hitelesíteni kívánt IP-címek korlátozását.  Ha nincs tűzfalszabályok konfigurálva a tranzakciós csomóponthoz, akkor bármely fél nem fér hozzá.  
 
-To view a transaction node's firewall rules, navigate to one of your Azure Blockchain Service member transaction nodes and select **Firewall rules** in settings.
+A tranzakciós csomópont tűzfalszabályok megtekintéséhez navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a **Tűzfalszabályok** lehetőséget a beállítások területen.
 
-You can add firewall rules by entering a rule name, starting IP address, and an ending IP address in the **Firewall rules** grid.
+Tűzfalszabályok hozzáadásához írja be a szabály nevét, a kezdő IP-címet és egy záró IP-címet a **Tűzfalszabályok** rácsba.
 
 ![Tűzfalszabályok](./media/configure-transaction-nodes/firewall-rules.png)
 
-To enable:
+Engedélyezés:
 
-* **Single IP address:** Configure the same IP address for the starting and ending IP addresses.
-* **IP address range:** Configure the starting and ending IP address range. For example, a range starting at 10.221.34.0 and ending at 10.221.34.255 would enable the entire 10.221.34.xxx subnet.
-* **Allow all IP addresses:** Configure the starting IP address to 0.0.0.0 and the ending IP address to 255.255.255.255.
+* **Egyetlen IP-cím:** Adja meg ugyanazt az IP-címet a kezdő és a záró IP-címekhez.
+* **IP-címtartomány:** Adja meg a kezdő és a záró IP-címtartományt. Például a 10.221.34.0 és a 10.221.34.255 végződésű tartomány a teljes 10.221.34.xxx-alhálózatot engedélyezheti.
+* **Összes IP-cím engedélyezése:** Konfigurálja a kezdő IP-címet a 0.0.0.0 értékre és a záró IP-címet a 255.255.255.255.
 
 ## <a name="connection-strings"></a>Kapcsolati sztringek
 
-Connection string syntax for your transaction node is provided for basic authentication or using access keys. Connection strings including access keys over HTTPS and WebSockets are provided.
+A tranzakciós csomóponthoz tartozó kapcsolati karakterlánc szintaxisa az alapszintű hitelesítéshez vagy a hozzáférési kulcsok használatával van megadva. Kapcsolati karakterláncok, beleértve a hozzáférési kulcsokat a HTTPS-en és a websocketeken keresztül.
 
-You can view a transaction node's connection strings and copy endpoint addresses. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Connection strings** in settings.
+Megtekintheti a tranzakciós csomópontok kapcsolatainak karakterláncait és másolja a végponti címeket. Navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomóponthoz, és válassza a beállítások között a **kapcsolódási karakterláncok** lehetőséget.
 
 ![Kapcsolati sztringek](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Mintakód
 
-Sample code is provided to quickly enable connecting to your transaction node via Web3, Nethereum, Web3js, and Truffle.
+A Web3, a Nethereum, a Web3js és a szarvasgomba használatával gyorsan engedélyezheti a tranzakciós csomóponthoz való csatlakozást.
 
-You can view a transaction node's sample connection code and copy it to use with popular developer tools. Go to one of your Azure Blockchain Service member transaction nodes and select **Sample Code** in settings.
+Megtekintheti a tranzakciós csomópont minta-kapcsolódási kódját, és átmásolhatja a népszerű fejlesztői eszközökkel való használatra. Nyissa meg az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontját, és válassza a **mintakód** lehetőséget a beállítások területen.
 
-Choose the Web3, Nethereum, Truffle, or Web3j tab to view the code sample you want to use.
+Válassza a Web3, a Nethereum, a szarvasgomba vagy a Web3j fület a használni kívánt mintakód megtekintéséhez.
 
 ![Mintakód](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Configure transaction nodes using Azure CLI](manage-cli.md)
+> [Tranzakciós csomópontok konfigurálása az Azure CLI-vel](manage-cli.md)

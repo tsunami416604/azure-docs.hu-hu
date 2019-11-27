@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798696"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538140"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Az Azure FarmBeats áttekintése
 
@@ -19,7 +19,7 @@ Az Azure FarmBeats olyan Azure-szolgáltatások és-képességek gyűjteménye, 
 > [!NOTE]
 > Az Azure FarmBeats jelenleg nyilvános előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az Azure-FarmBeats szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja az [Azure FarmBeats fórumot](https://aka.ms/FarmBeatsMSDN ) .
 
-Az Azure FarmBeats különböző forrásokból (például érzékelőkből, műholdból, herékből) származó adatokhoz juthat, amelyek mindegyike egy Farm (földrajzi terület) kontextusában van.
+Az Azure FarmBeats segítségével különböző forrásokból (például érzékelőkből, műholdból, herékből) származó adatok is beszerezhetők a Farm (földrajzi terület) környezetében.
 
 A következőket teheti:
 
@@ -36,11 +36,11 @@ Az Azure FarmBeats robusztus és egyszerű módszert kínál a következők elv�
 - Az összesített adathalmazok alapján az AI/ML modellek kiépítése révén hasznosítható elemzéseket nyerhet.
 - A farm Health Advisor szolgáltatásával kiépítheti vagy kiegészítheti a digitális mezőgazdaság megoldását.
 
-Az Azure FarmBeat-összetevőket a jelen cikk következő részeiben tárgyaljuk.
+Az Azure FarmBeats-összetevőket a jelen cikk következő részeiben tárgyaljuk.
 
 ## <a name="data-hub"></a>Adatközpont
 
-Egy API-réteg, amely lehetővé teszi különböző mezőgazdasági adatkészletek összesítését, normalizálása és contextualization a szolgáltatók között. Ebben az előzetes verzióban a következő két érzékelő szolgáltatója is kihasználható: [Davis-eszközök](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), egy szatellit képszolgáltató [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)és két drone képszolgáltató [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/). Az adatközpont API-platformként lett kialakítva, és számos további szolgáltatóval dolgozunk az Azure FarmBeats való integráláshoz, így a megoldás létrehozásakor több lehetőség is van.
+Az Azure FarmBeats adatközpont egy API-réteg, amely lehetővé teszi különböző mezőgazdasági adatkészletek összesítését, normalizálása és contextualization a szolgáltatók között. Ebben az előzetes verzióban felhasználhatja a következő két érzékelő szolgáltatót: [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), egy szatellit képszolgáltató [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)és három drone-rendszerképekkel rendelkező szolgáltatók [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/). Az adatközpont API-platformként lett kialakítva, és számos további szolgáltatóval dolgozunk az Azure FarmBeats való integráláshoz, így a megoldás létrehozásakor több lehetőség is van.
 
 ## <a name="accelerator"></a>Accelerator
 
@@ -48,8 +48,8 @@ Az adatközpontra épülő minta megoldás, amely a felhasználói felületet é
 
 ## <a name="resources"></a>Erőforrások
 
-Látogasson el a FarmBeats- [blogra](https://aka.ms/AzureFarmBeats) és a [fórumokra](https://aka.ms/FarmBeatsMSDN).
+További információért látogasson el az Azure FarmBeats- [blogjára](https://aka.ms/AzureFarmBeats) és- [fórumokra](https://aka.ms/FarmBeatsMSDN) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure FarmBeats megismeréséhez látogasson el az [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) -re az üzembe helyezéshez.
+Az Azure FarmBeats megismeréséhez látogasson el az [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) -re az üzembe helyezési folyamat elindításához.

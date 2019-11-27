@@ -1,10 +1,10 @@
 ---
-title: Azure Functions warmup trigger
-description: Understand how to use the warmup trigger in Azure Functions.
+title: Azure Functions bemelegedési trigger
+description: Megtudhatja, hogyan használhatja a bemelegedési triggert Azure Functionsban.
 documentationcenter: na
 author: alexkarcher-msft
 manager: gwallace
-keywords: azure functions, functions, event processing, warmup, cold start, premium, dynamic compute, serverless architecture
+keywords: Azure functions, functions, Event Processing, bemelegedési, Cold Start, Premium, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
@@ -16,40 +16,40 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328494"
 ---
-# <a name="azure-functions-warm-up-trigger"></a>Azure Functions warm-up trigger
+# <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
-This article explains how to work with the warmup trigger in Azure Functions. The warmup trigger is supported only for function apps running in a [Premium plan](functions-premium-plan.md). A warmup trigger  is invoked when an instance is added to scale a running function app. You can use a warmup trigger to pre-load custom dependencies during the [pre-warming process](./functions-premium-plan.md#pre-warmed-instances) so that your functions are ready to start processing requests immediately. 
+Ez a cikk azt ismerteti, hogyan használható a bemelegedési trigger a Azure Functionsban. A bemelegedési trigger csak [prémium](functions-premium-plan.md)szintű csomagban futó Function apps esetén támogatott. A rendszer meghívja a bemelegedési eseményindítót, amikor egy példány bekerül egy futó Function-alkalmazás méretezésére. A bemelegedési művelettel előre betöltheti az egyéni függőségeket az [előmelegítési folyamat](./functions-premium-plan.md#pre-warmed-instances) során, így a függvények azonnal elkezdhetik a kérelmek feldolgozását. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-The [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet package, version **3.0.5 or higher** is required. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub repository. 
+A [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag **3.0.5 vagy újabb** verziója szükséges. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) tárházban található. 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
-The warmup trigger lets you define a function that will be run on an instance when it is added to your running app. You can use a warmup function to open connections, load dependencies, or run any other custom logic before your app will begin receiving traffic. 
+A bemelegedési trigger lehetővé teszi, hogy Definiáljon egy olyan függvényt, amely egy példányon fog futni, amikor hozzáadja őket a futó alkalmazáshoz. A bemelegedési függvény használatával megnyithatja a kapcsolatokat, betöltheti a függőségeket, vagy bármilyen más egyéni logikát futtathat, mielőtt az alkalmazás megkapja a forgalmat. 
 
-The warmup trigger is intended to create shared dependencies that will be used by the other functions in your app. [See examples of shared dependencies here](./manage-connections.md#client-code-examples).
+A bemelegedési trigger olyan megosztott függőségek létrehozására szolgál, amelyeket az alkalmazás egyéb funkciói fognak használni. [Tekintse meg a megosztott függőségek példáit](./manage-connections.md#client-code-examples).
 
-Note that the warmup trigger is only called during scale-up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
+Vegye figyelembe, hogy a bemelegedési triggert csak a méretezési műveletek során hívja meg a rendszer az újraindítások vagy más nem léptékű indítások során. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Az eseményindító – példa
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that will run on each new instance when it is added to your app. A return value attribute isn't required.
+Az alábbi példa egy [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül. Nincs szükség visszatérési érték attribútumra.
 
 
-* Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
-* To use warmup as a .NET class library function, please make sure you have a package reference to **Microsoft.Azure.WebJobs.Extensions >= 3.0.5**
+* A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
+* Ha a bemelegedési .NET Class Library-függvényt szeretné használni, győződjön meg arról, hogy a csomagra hivatkozik a **Microsoft. Azure. webjobs. extensions > = 3.0.5**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
 
-Placeholder comments show where in the application to declare and initialize shared dependencies. 
-[Learn more about shared dependencies here](./manage-connections.md#client-code-examples).
+A helyőrző megjegyzések megmutatják, hogy az alkalmazás hol deklarálja és inicializálja a megosztott függőségeket. 
+[További információk a megosztott függőségekről itt](./manage-connections.md#client-code-examples).
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 
-The following example shows a warmup trigger in a *function.json* file and a [C# script function](functions-reference-csharp.md) that will run on each new instance when it is added to your app.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban, valamint egy [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
 
-Your function must be named ```warmup``` (case-insensitive), and there may only be one warmup function per app.
+A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -94,9 +94,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's C# script code that binds to `HttpRequest`:
+Az alábbi C# parancsfájl-kód a `HttpRequest`hoz kötődik:
 
 ```cs
 public static void Run(ILogger log)
@@ -107,11 +107,11 @@ public static void Run(ILogger log)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-The following example shows a warmup trigger in a *function.json* file and a [JavaScript function](functions-reference-node.md)  that will run on each new instance when it is added to your app.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -125,9 +125,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the JavaScript code:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -138,11 +138,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The following example shows a warmup trigger in a *function.json* file and a [Python function](functions-reference-python.md) that will run on each new instance when it is added to your app.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban és egy [Python-függvényben](functions-reference-python.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -156,9 +156,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Here's the Python code:
+Itt látható a Python-kód:
 
 ```python
 import logging
@@ -171,11 +171,11 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The following example shows a warmup trigger in a *function.json* file and a [Java functions](functions-reference-java.md)  that will run on each new instance when it is added to your app.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban, valamint egy [Java-függvényt](functions-reference-java.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
-Here's the *function.json* file:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -189,7 +189,7 @@ Here's the *function.json* file:
 }
 ```
 
-Here's the Java code:
+A Java-kód itt látható:
 
 ```java
 @FunctionName("Warmup")
@@ -200,15 +200,15 @@ public void run( ExecutionContext context) {
 
 ---
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-In [C# class libraries](functions-dotnet-class-library.md), the `WarmupTrigger` attribute is available to configure the function.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)a függvény konfigurálásához a `WarmupTrigger` attribútum érhető el.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-This example demonstrates how to use the [warmup](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribute.
+Ez a példa a [bemelegedési](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribútum használatát mutatja be.
 
-Note that your function must be called ```Warmup``` and there can only be one warmup function per app.
+Vegye figyelembe, hogy a függvényt ```Warmup``` kell meghívni, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -219,47 +219,47 @@ Note that your function must be called ```Warmup``` and there can only be one wa
         }
 ```
 
-For a complete example, see the [trigger example](#trigger---example).
+Teljes példaként tekintse meg az [trigger példáját](#trigger---example).
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Attributes are not supported by C# Script.
+Az C# attribútumokat a parancsfájl nem támogatja.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Attributes are not supported by JavaScript.
+A JavaScript nem támogatja az attribútumokat.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Attributes are not supported by Python.
+A Python nem támogatja az attribútumokat.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The warmup trigger is not supported in Java as an attribute.
+A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `WarmupTrigger` attribute.
+Az alábbi táblázat a *function. JSON* fájlban és a `WarmupTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json property | Attribute property |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type** | –| Required - must be set to `warmupTrigger`. |
-| **direction** | –| Required - must be set to `in`. |
-| **name** | –| Required - the variable name used in function code.|
+| **type** | n/a| Kötelező – `warmupTrigger`értékre kell állítani. |
+| **direction** | n/a| Kötelező – `in`értékre kell állítani. |
+| **név** | n/a| Kötelező – a függvény kódjában használt változó neve.|
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Eseményindító - használat
 
-No additional information is provided to a warmup triggered function when it is invoked.
+A meghívásakor a bemelegedési által aktivált függvények nem kapnak további információt.
 
-## <a name="trigger---limits"></a>Trigger - limits
+## <a name="trigger---limits"></a>Trigger – korlátok
 
-* The warmup trigger is only available to apps running on the [Premium plan](./functions-premium-plan.md).
-* The warmup trigger is only called during scale up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
-* The warmup trigger cannot be invoked once an instance is already running.
-* There can only be one warmup trigger function per function app.
+* A bemelegedési trigger csak a [prémium csomagon](./functions-premium-plan.md)futó alkalmazások számára érhető el.
+* A bemelegedési trigger csak vertikális Felskálázási műveletek során hívható meg, az újraindítások vagy más nem léptékű indítások során. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
+* A bemelegedési eseményindító nem hívható meg, ha egy példány már fut.
+* Function App-alkalmazásban csak egy bemelegedési trigger függvény adható meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+[További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

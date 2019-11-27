@@ -1,6 +1,6 @@
 ---
-title: Add an Azure IoT Edge device to Azure IoT Central | Microsoft Docs
-description: As an operator, add an Azure IoT Edge device to your Azure IoT Central application
+title: Azure IoT Edge eszköz hozzáadása az Azure IoT Centralhoz | Microsoft Docs
+description: Operátorként vegyen fel egy Azure IoT Edge eszközt az Azure IoT Central alkalmazásba
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,170 +16,170 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406334"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Tutorial: Add an Azure IoT Edge device to your Azure IoT Central application
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you how to add and configure an Azure IoT Edge device to your Azure IoT Central application. In this tutorial, we chose an IoT Edge-enabled Linux VM from Azure Marketplace.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá és konfigurálhat egy Azure IoT Edge-eszközt az Azure IoT Central-alkalmazáshoz. Ebben az oktatóanyagban egy IoT Edge-kompatibilis linuxos virtuális gépet választottunk az Azure Marketplace-ről.
 
 Ez az oktatóanyag két részből áll:
 
-* First, as an operator, you learn how to do cloud first provisioning of an IoT Edge device.
-* Then, you learn how to do "device first" provisioning of an IoT Edge device.
+* Először is, mint operátor, megtudhatja, hogyan végezheti el a felhőben való első üzembe helyezést egy IoT Edge eszközön.
+* Ezt követően megtudhatja, hogyan végezheti el az eszközök első kiépítési módját IoT Edge eszközön.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Add a new IoT Edge device
-> * Configure the IoT Edge device to help provision by using a shared access signature (SAS) key
-> * View dashboards and module health in IoT Central
-> * Send commands to a module running on the IoT Edge device
-> * Set properties on a module running on the IoT Edge device
+> * Új IoT Edge-eszköz hozzáadása
+> * A IoT Edge eszköz konfigurálása a közös hozzáférésű aláírási (SAS-) kulcs használatával történő kiépítéshez
+> * Az irányítópultok és a modul állapotának megtekintése IoT Central
+> * Parancsok küldése a IoT Edge eszközön futó modulnak
+> * A IoT Edge eszközön futó modul tulajdonságainak beállítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Follow [this quickstart to create an Azure IoT Central application](./quick-deploy-iot-central.md).
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ezt a rövid útmutatót követve [hozzon létre egy Azure IoT Central alkalmazást](./quick-deploy-iot-central.md).
 
-## <a name="enable-azure-iot-edge-enrollment-group"></a>Enable Azure IoT Edge enrollment group
-From the **Administration** page, enable SAS keys for Azure IoT Edge enrollment group.
+## <a name="enable-azure-iot-edge-enrollment-group"></a>Azure IoT Edge regisztrációs csoport engedélyezése
+Az **Adminisztráció** lapon engedélyezze a sas-kulcsok Azure IoT Edge beléptetési csoport számára lehetőséget.
 
-![Screenshot of Administration page, with Device connection highlighted](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
+![Képernyőkép az adminisztráció lapról, az eszköz csatlakoztatása kijelölve](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
 
-## <a name="provision-a-cloud-first-azure-iot-edge-device"></a>Provision a "cloud first" Azure IoT Edge device  
-In this section, you create a new IoT Edge device by using the environment sensor template, and you provision a device. Select **Devices** > **Environment Sensor Template**. 
+## <a name="provision-a-cloud-first-azure-iot-edge-device"></a>"Felhőbeli első" Azure IoT Edge eszköz kiépítése  
+Ebben a szakaszban egy új IoT Edge eszközt hoz létre a környezeti érzékelő sablonnal, és kiépít egy eszközt. Válassza az **eszközök** > **környezeti érzékelő sablon**lehetőséget. 
 
-![Screenshot of Devices page, with Environment Sensor Template highlighted](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
+![Képernyőfelvétel az eszközök lapról, a környezeti érzékelő sablonnal kiemelve](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
 
-Select **+ New**, and enter a device ID and name of your choosing. Kattintson a **Létrehozás** gombra.
+Válassza az **+ új**lehetőséget, majd adja meg a választott eszköz azonosítóját és nevét. Kattintson a **Létrehozás** gombra.
 
-![Screenshot of Create new device dialog box, with Device ID and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
+![Képernyőkép az új eszköz létrehozása párbeszédpanelről, az eszköz azonosítójával és a Kiemelt létrehozással](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
 
-The device goes into **Registered** mode.
+Az eszköz **regisztrált** módba kerül.
 
-![Screenshot of Environment Sensor Template page, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
+![Képernyőfelvétel a környezeti érzékelő sablon oldaláról, az eszköz állapota kiemelve](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
 
-## <a name="deploy-an-iot-edge-enabled-linux-vm"></a>Deploy an IoT Edge enabled Linux VM
+## <a name="deploy-an-iot-edge-enabled-linux-vm"></a>IoT Edge engedélyezett linuxos virtuális gép üzembe helyezése
 
 > [!NOTE]
-> You can choose to use any machine or device. The operating system can be Linux or Windows.
+> Választhat, hogy bármilyen gépet vagy eszközt használ-e. Az operációs rendszer lehet Linux vagy Windows.
 
-For this tutorial, we're using an Azure IoT enabled Linux VM, created on Azure. In [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview), select **GET IT NOW**. 
+Ebben az oktatóanyagban egy Azure IoT-kompatibilis linuxos virtuális gépet használunk, amelyet az Azure-on hoztak létre. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview)-en válassza a **Letöltés most**lehetőséget. 
 
-![Screenshot of Azure Marketplace, with GET IT NOW highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
+![Képernyőkép az Azure Marketplace-ről, a GET IT most kiemelve](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
 
 Válassza a **Folytatás** elemet.
 
-![Screenshot of Create this app in Azure dialog box, with Continue highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
+![Képernyőkép: az alkalmazás létrehozása az Azure-ban párbeszédpanelen, a folytatás kiemelve](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
 
 
-You're taken to the Azure portal. Kattintson a **Létrehozás** gombra.
+A rendszer elvégezte a Azure Portal. Kattintson a **Létrehozás** gombra.
 
-![Screenshot of the Azure portal, with Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
+![Képernyőkép a Azure Portalról a Kiemelt létrehozással](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
 
-Select **Subscription**, create a new resource group, and select **(US) West US 2** for VM availability. Then, enter user and password information. These will be required for future steps, so remember them. Válassza az **Áttekintés + létrehozás** lehetőséget.
+Válassza az **előfizetés**lehetőséget, hozzon létre egy új erőforráscsoportot, és válassza az USA **2. nyugati** RÉGIÓja lehetőséget a virtuális gépek rendelkezésre állásához. Ezután adja meg a felhasználói és a jelszó adatait. Ezek a későbbi lépésekhez szükségesek, ezért ne feledje. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-![Screenshot of Create a virtual machine details page, with various options highlighted](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
+![Képernyőkép a virtuális gép részleteinek létrehozásáról, különböző lehetőségekkel kiemelve](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
 
-After validation, select **Create**.
+Az érvényesítés után válassza a **Létrehozás**lehetőséget.
 
-![Screenshot of Create a virtual machine page, with Validation passed and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
+![Képernyőkép a virtuális gép létrehozása lap létrehozásáról és a kijelöltek létrehozásáról](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
 
-It takes a few minutes to create the resources. Select **Go to resource**.
+Az erőforrások létrehozása néhány percet vesz igénybe. Válassza **az Ugrás erőforráshoz**lehetőséget.
 
-![Screenshot of deployment completion page, with Go to resource highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
+![Képernyőkép az üzembe helyezés befejezéséről lap az erőforrás kiemelése lehetőséggel](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
 
-### <a name="provision-vm-as-an-iot-edge-device"></a>Provision VM as an IoT Edge device 
+### <a name="provision-vm-as-an-iot-edge-device"></a>Virtuális gép kiépítése IoT Edge eszközként 
 
-Under **Support + troubleshooting**, select **Serial console**.
+A **támogatás + hibaelhárítás**területen válassza a **Serial Console**lehetőséget.
 
-![Screenshot of Support + troubleshooting options, with Serial console highlighted](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
+![Képernyőkép a támogatási és hibaelhárítási lehetőségekről, Serial console kiemelve](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
 
-You'll see a screen similar to the following:
+A következőhöz hasonló képernyő jelenik meg:
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
 
-Press Enter, provide the user name and password as prompted, and then press Enter again. 
+Nyomja le az ENTER billentyűt, adja meg a felhasználónevet és a jelszót, majd nyomja le ismét az ENTER billentyűt. 
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
 
-To run a command as administrator (user "root"), enter: **sudo su –**
+Ha rendszergazdaként szeretné futtatni a parancsot (felhasználó "root"), írja be a következőt: **sudo Su –**
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
 
-Check the IoT Edge runtime version. At the time of this writing, the current GA version is 1.0.8.
+Keresse meg a IoT Edge futtatókörnyezet verzióját. Az írás időpontjában az aktuális GA-verzió a 1.0.8.
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
 
-Install the vim editor, or use nano if you prefer. 
+Telepítse a Vim-szerkesztőt, vagy használja a nanot, ha szeretné. 
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
 
-Edit the IoT Edge config.yaml file.
+Szerkessze a IoT Edge config. YAML fájlt.
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
 
-Scroll down, and comment out the connection string portion of the yaml file. 
+Görgessen lefelé, és jegyezze fel a YAML fájljának a kapcsolatok sztring részét. 
 
-**Before**
+**Előtt**
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
-**After** (Press Esc, and press lowercase a, to start editing.)
+**Ezután** (nyomja le az ESC billentyűt, és nyomja le az a kisbetűs gombot a Szerkesztés megkezdéséhez.)
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
 
-Uncomment the symmetric key portion of the yaml file. 
+A YAML fájl szimmetrikus kulcs részének megjegyzése. 
 
-**Before**
+**Előtt**
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**After**
+**Után**
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 
-Go to IoT Central. Get the scope ID, device ID, and symmetric key of the IoT Edge device.
-![Screenshot of IoT Central, with various device connection options highlighted](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
+Lépjen IoT Central. Szerezze be a IoT Edge eszköz hatókör-AZONOSÍTÓját, eszköz-AZONOSÍTÓját és szimmetrikus kulcsát.
+![képernyőkép a IoT Centralről, különböző eszköz-csatlakoztatási lehetőségekkel](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
 
-Go to the Linux computer, and replace the scope ID and registration ID with the device ID and symmetric key.
+Lépjen a Linux rendszerű számítógépre, és cserélje le a hatókör-azonosítót és a regisztrációs azonosítót az eszköz azonosítójával és a szimmetrikus kulccsal.
 
-Press Esc, and type **:wq!** . Press Enter to save your changes.
+Nyomja le az ESC billentyűt, és írja be a következőt **: wq!** . A módosítások mentéséhez nyomja le az ENTER billentyűt.
 
-Restart IoT Edge to process your changes, and press Enter.
+Indítsa újra IoT Edge a módosítások feldolgozásához, majd nyomja le az ENTER billentyűt.
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
 
-Type **iotedge list**. After a few minutes, you'll see three modules deployed.
+Írja be a **iotedge listát**. Néhány perc elteltével az üzembe helyezett három modul látható.
 
-![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
-
-
-## <a name="iot-central-device-explorer"></a>IoT Central device explorer 
-
-In IoT Central, your device moves into provisioned state.
-
-![Screenshot of IoT Central Devices options, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
-
-The **Modules** tab shows the status of the device and module on IoT Central. 
-
-![Screenshot of IoT Central Modules tab](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
+![A konzol képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
 
 
-You'll see cloud properties in a form, from the device template you created in the previous steps. Enter values, and select **Save**. 
+## <a name="iot-central-device-explorer"></a>IoT Central Device Explorer 
 
-![Screenshot of My Linux Edge Device form](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
+IoT Central az eszköz kiépített állapotba kerül.
 
-Here's a view presented in the form of a dashboard tile.
+![Képernyőkép a IoT Central eszközök lehetőségeiről, az eszköz állapota kiemelve](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
 
-![Screenshot of My Linux Edge Device dashboard tiles](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
+A **modulok** lapon látható az eszköz és a modul állapota IoT Centralon. 
+
+![IoT Central modulok lap képernyőképe](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
+
+
+A felhő tulajdonságai az előző lépésekben létrehozott sablon alapján jelennek meg az űrlapon. Adja meg az értékeket, majd kattintson a **Mentés**gombra. 
+
+![A Linux Edge-eszköz űrlapjának képernyőképe](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
+
+Itt látható egy, az irányítópult csempéje formájában megjelenített nézet.
+
+![Képernyőkép a Linux Edge-eszközök irányítópultjának csempéről](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you've learned how to work with and manage IoT Edge devices in IoT Central, here's the suggested next step:
+Most, hogy megismerte, hogyan dolgozhat és kezelhet IoT Edge-eszközöket a IoT Centralban, a következő lépés a javasolt lépés:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Configure transparent gateway](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Transzparens átjáró konfigurálása](../../iot-edge/how-to-create-transparent-gateway.md)

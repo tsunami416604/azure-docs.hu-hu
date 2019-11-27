@@ -52,7 +52,7 @@ Ha a felderítés befejeződése után megadták a hitelesítő adatokat az alka
 1. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése**lapon kattintson a megjelenített darabszámra a **felderített kiszolgálók** lap megnyitásához.
 
     > [!NOTE]
-    > Ezen a ponton a függőségi leképezést is beállíthatja a felderített gépekhez, így a függőségeket a felmérni kívánt gépek között jelenítheti meg. [További információ](how-to-create-group-machine-dependencies.md).
+    > Ezen a ponton a függőségi leképezést is beállíthatja a felderített gépekhez, így a függőségeket a felmérni kívánt gépek között jelenítheti meg. [További információk](how-to-create-group-machine-dependencies.md).
 
 2. A **felderített alkalmazásokban**kattintson a megjelenített darabszámra.
 3. Az **alkalmazás leltárában**megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.

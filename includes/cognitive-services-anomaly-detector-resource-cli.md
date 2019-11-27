@@ -11,31 +11,31 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483021"
 ---
-Start using the Anomaly Detector service by creating one of the Azure resources below.
+Az alábbi Azure-erőforrások egyikének létrehozásával kezdje el használni az anomália-detektor szolgáltatást.
 
-* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Create a trial resource (opens in a new tab)</a>
-    * No Azure subscription needed: 
-    * Valid for seven days, for free. After signing up, a trial key and endpoint will be available on the [Azure website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
-    * This is a great option if you want to try Anomaly Detector, but don’t have an Azure subscription.
+* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Próbaverziós erőforrás létrehozása (új lapon nyílik meg)</a>
+    * Nincs szükség Azure-előfizetésre: 
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
+    * Ez nagyszerű megoldás, ha ki szeretné próbálni a anomália-detektort, de nem rendelkezik Azure-előfizetéssel.
 
-* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Create an Anomaly Detector resource (opens in a new tab)</a>:
-    * Available through the Azure portal until you delete the resource.
-    * Use the free pricing tier to try the service, and upgrade later to a paid tier for production.
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Anomália-detektor erőforrás létrehozása (új lapon nyílik meg)</a>:
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
 
 
 
-### <a name="create-an-environment-variable"></a>Create an environment variable
+### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
 
 >[!NOTE]
-> The endpoints for non-trial resources created after July 1, 2019 use the custom subdomain format shown below. For more information and a complete list of regional endpoints, see [Custom subdomain names for Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Az 2019. július 1. után létrehozott, nem próbaverziós erőforrásokhoz használt végpontok az alább látható egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
-Using your key and endpoint from the resource you created, create two environment variables for authentication:
+Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
 
-* `ANOMALY_DETECTOR_KEY` - The resource key for authenticating your requests.
-* `ANOMALY_DETECTOR_ENDPOINT` - The resource endpoint for sending API requests. It will look like this: 
+* `ANOMALY_DETECTOR_KEY` – a kérések hitelesítéséhez használt erőforrás-kulcs.
+* `ANOMALY_DETECTOR_ENDPOINT` – az erőforrás-végpont API-kérelmek küldéséhez. A következőképpen fog kinézni: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-Use the instructions for your operating system.
+Használja az operációs rendszerének utasításait.
 
 #### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -44,7 +44,7 @@ setx ANOMALY_DETECTOR_KEY <replace-with-your-anomaly-detector-key>
 setx ANOMALY_DETECTOR_ENDPOINT <replace-with-your-anomaly-detector-endpoint>
 ```
 
-After you add the environment variable, restart the console window.
+A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
 
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -57,7 +57,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` 
 
 #### <a name="macostabunix"></a>[macOS](#tab/unix)
 
-Edit your `.bash_profile`, and add the environment variable:
+Szerkessze `.bash_profile`, és adja hozzá a környezeti változót:
 
 ```bash
 export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>

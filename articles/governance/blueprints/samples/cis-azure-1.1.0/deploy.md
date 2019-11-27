@@ -1,14 +1,14 @@
 ---
-title: CIS Microsoft Azure alapítványok teljesítményteszt-minta – üzembe helyezési lépések
+title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervének üzembe helyezése minta
 description: Telepítse a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
 ms.date: 10/14/2019
 ms.topic: sample
-ms.openlocfilehash: e33a7788d9d7a13cb7f8df3f6663bf009b685169
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038374"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544529"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének üzembe helyezése minta
 

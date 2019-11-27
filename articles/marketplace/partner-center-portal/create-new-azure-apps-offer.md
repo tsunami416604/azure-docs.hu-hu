@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281271"
 ---
-# <a name="create-an-azure-application-offer"></a>Azure-alkalmazás ajánlatának létrehozása
+# <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
 Az Azure-alkalmazások kereskedelmi piactéren való közzétételének lépéseit itt találja.
 
@@ -102,7 +102,7 @@ Javasoljuk, hogy a következő eszközöket adja hozzá a fejlesztői környezet
 
 Az elérhető eszközöket az [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldalon tekintheti át.  Emellett a Visual Studio-t is használhatja a [Visual Studio Marketplace](https://marketplace.visualstudio.com/)-en.
 
-## <a name="create-an-azure-application-offer"></a>Azure-alkalmazás ajánlatának létrehozása
+## <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
 Az Azure-alkalmazások ajánlatának létrehozása előtt először [létre kell hoznia egy partner Center-fiókot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , és meg kell nyitnia a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), és ki kell választania az **Áttekintés** lapot.
 

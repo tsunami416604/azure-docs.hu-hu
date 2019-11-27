@@ -1,6 +1,6 @@
 ---
-title: Azure Functions geo-disaster recovery and high availability
-description: How to use geographical regions for redundancy and to fail over in Azure Functions.
+title: Azure Functions geo-vész-helyreállítás és magas rendelkezésre állás
+description: A földrajzi régiók használata a redundancia és a feladatátvétel során a Azure Functionsban.
 author: wesmc7777
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
@@ -13,48 +13,48 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226977"
 ---
-# <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-disaster recovery
+# <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
 
-When entire Azure regions or datacenters experience downtime, it is critical for compute to continue processing in a different region.  This article will explain some of the strategies that you can use to deploy functions to allow for disaster recovery.
+Ha a teljes Azure-régiók vagy-adatközpontok leállást tapasztalnak, kritikus fontosságú a számítási feladatok egy másik régióban való feldolgozásának folytatásához.  Ebből a cikkből megtudhatja, milyen stratégiákat alkalmazhat a funkciók üzembe helyezéséhez a vész-helyreállítás engedélyezéséhez.
 
 ## <a name="basic-concepts"></a>Alapfogalmak
 
-Azure Functions run in a specific region.  To get higher availability, you can deploy the same functions to multiple regions.  When in multiple regions you can have your functions running in the *active/active* pattern or *active/passive* pattern.  
+A Azure Functions egy adott régióban futnak.  A magasabb rendelkezésre állás érdekében több régióban is telepítheti ugyanezeket a funkciókat.  Több régióban a függvények *aktív/aktív* mintában vagy *aktív/passzív* mintában is futhatnak.  
 
-* Aktív/aktív. Both regions are active and receiving events (duplicate or rotationally). Active/active is recommended for HTTPS functions in combination with Azure Front Door.
-* Active/passive. One region is active and receiving events, while a secondary is idle.  When failover is required, the secondary region is activated and takes over processing.  This is recommended for non-HTTP functions like Service Bus and Event Hubs.
+* Aktív/aktív. Mindkét régió aktív és eseményeket fogad (ismétlődő vagy rotációs). Az aktív/aktív funkció a HTTPS-függvények esetében ajánlott az Azure bejárati ajtóval együtt.
+* Aktív/passzív. Az egyik régió aktív és fogad eseményeket, míg a másodlagos üresjáratban van.  Ha feladatátvételre van szükség, a másodlagos régió aktiválva lesz, és átveszi a feldolgozást.  Ez olyan nem HTTP-függvények esetén ajánlott, mint a Service Bus és a Event Hubs.
 
-Read how to [run apps in multiple regions](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) for more information on multi-region deployments.
+További információ a többrégiós környezetekről: [alkalmazások futtatása több régióban](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
 
-## <a name="activeactive-for-https-functions"></a>Active/active for HTTPS functions
+## <a name="activeactive-for-https-functions"></a>Aktív/aktív HTTPS-függvények esetén
 
-To achieve active/active deployments of functions, it requires some component that can coordinate the events between both regions.  For HTTPS functions, this coordination is accomplished using [Azure Front Door](../frontdoor/front-door-overview.md).  Azure Front Door can route and round-robin HTTPS requests between multiple regional functions.  It also periodically checks the health of each endpoint.  If a regional function stops responding to health checks, Azure Front Door will take it out of rotation and only forward traffic to healthy functions.  
+A függvények aktív/aktív üzembe helyezéséhez olyan összetevőre van szükség, amely képes a két régió közötti események koordinálására.  A HTTPS-függvények esetében ez a koordináció az [Azure bejárati ajtaján](../frontdoor/front-door-overview.md)keresztül valósítható meg.  Az Azure bejárati ajtói több regionális függvény között is átirányíthatók és ciklikusan lekerekített HTTPS-kérelmek.  Emellett rendszeres időközönként ellenőrzi az egyes végpontok állapotát.  Ha egy regionális függvény nem válaszol az állapot-ellenőrzésekre, az Azure bejárati ajtaja kikerül a forgásból, és csak az egészséges funkciók felé továbbítja a forgalmat.  
 
-![Architecture for Azure Front Door and Function](media/functions-geo-dr/front-door.png)  
+![Architektúra az Azure bejárati ajtó és funkció számára](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>Active/active for non-HTTPS functions
+## <a name="activeactive-for-non-https-functions"></a>Aktív/aktív a nem HTTPS függvények esetében
 
-You can still achieve active/active deployments for non-HTTPS functions.  However, you need to consider how the two regions will interact or coordinate with one another.  If you deployed the same function app into two regions, each triggering on the same Service Bus queue, they would act as competing consumers on de-queueing that queue.  While this means each message is only being processed by one of the instances, it also means there is still a single point of failure on the single service bus.  If you deploy two service bus queues (one in a primary region, one in a secondary region), and the two function apps pointed to their region queue, the challenge now comes in how the queue messages are distributed between the two regions.  Often this means that each publisher attempts to publish a message to *both* regions, and each message is processed by both active function apps.  While this creates an active/active pattern, it creates other challenges around duplication of compute and when or how data is consolidated.  For these reasons, it is recommended for non-HTTPS triggers to use the active/passive pattern.
+A nem HTTPS függvények esetében továbbra is aktív/aktív üzemelő példányok érhetők el.  Azonban érdemes megfontolnia, hogy a két régió hogyan kommunikáljon egymással, illetve hogyan koordinálja őket egymással.  Ha ugyanezt a függvényt két régióba telepítette, az egyes aktiválások ugyanarra a Service Bus várólistára kerülnek, akkor azok versengő fogyasztóként működhetnek a várólistán.  Ez azt jelenti, hogy az egyes üzeneteket csak az egyik példány dolgozza fel, ez azt is jelenti, hogy az egyetlen Service Bus esetében még mindig van egy meghibásodási pont.  Ha két Service Bus-várólistát helyez üzembe (egyet egy elsődleges régióban, egy másodlagos régióban), és a két függvény alkalmazás a régiók várólistájára mutat, a kihívás mostantól azt mutatja be, hogy a Várólista üzenetei hogyan oszlanak el a két régió között.  Ez gyakran azt jelenti, hogy minden közzétevő megpróbál *mindkét* régióba közzétenni egy üzenetet, és az egyes üzeneteket az aktív Function apps is dolgozza fel.  Míg ez aktív/aktív mintát hoz létre, a számítási feladatok ismétlődését, valamint az adatok összesítésének időpontját és módját is létrehozhatja.  Ezen okok miatt ajánlott a nem HTTPS-eseményindítók használata az aktív/passzív minta használatára.
 
-## <a name="activepassive-for-non-https-functions"></a>Active/passive for non-HTTPS functions
+## <a name="activepassive-for-non-https-functions"></a>Aktív/passzív a nem HTTPS függvények esetében
 
-Active/passive provides a way for only a single function to process each message, but provides a mechanism to fail over to a secondary region in case of a disaster.  Azure Functions works alongside [Azure Service Bus geo-recovery](../service-bus-messaging/service-bus-geo-dr.md) and [Azure Event Hubs geo-recovery](../event-hubs/event-hubs-geo-dr.md).
+Az aktív/passzív mód lehetővé teszi, hogy csak egyetlen függvény dolgozza fel az egyes üzeneteket, azonban egy olyan mechanizmust biztosít, amely egy másodlagos régióba kerül át, vészhelyzet esetén.  A Azure Functions [Azure Service Bus geo-helyreállítási](../service-bus-messaging/service-bus-geo-dr.md) és [Azure Event Hubs geo-helyreállítási funkció](../event-hubs/event-hubs-geo-dr.md)mellett működik.
 
-Using Azure Event Hubs triggers as an example, the active/passive pattern would involve the following:
+Az Azure Event Hubs Triggerek használata például az aktív/passzív minta a következőket vonja maga után:
 
-* Azure Event Hub deployed to both a primary and secondary region.
-* Geo-disaster enabled to pair the primary and secondary Event Hub.  This also creates an "alias" you can use to connect to event hubs and switch from primary to secondary without changing the connection info.
-* Function apps deployed to both a primary and secondary region.
-* The function apps are triggering on the *direct* (non-alias) connection string for its respective event hub. 
-* Publishers to the event hub should publish to the alias connection string. 
+* Az Azure Event hub egy elsődleges és egy másodlagos régióban is üzembe lett helyezve.
+* Földrajzi katasztrófa engedélyezve az elsődleges és a másodlagos Event hub párosításához.  Ez létrehoz egy "aliast" is, amellyel csatlakozhat az Event hubokhoz, és átválthat az elsődlegesről a másodlagosra a kapcsolati adatok módosítása nélkül.
+* Az elsődleges és a másodlagos régióra telepített alkalmazások.
+* A Function apps a *közvetlen* (nem alias) kapcsolati sztringet indítja el a megfelelő Event hub esetében. 
+* Az Event hub közzétevői számára közzé kell tenni az alias kapcsolati karakterláncát. 
 
-![Active-passive example architecture](media/functions-geo-dr/active-passive.png)
+![Aktív – passzív példa architektúra](media/functions-geo-dr/active-passive.png)
 
-Before failover, publishers sending to the shared alias will route to the primary event hub.  The primary function app is listening exclusively to the primary event hub.  The secondary function app will be passive and idle.  As soon as failover is initiated, publishers sending to the shared alias will now route to the secondary event hub.  The secondary function app will now become active and start triggering automatically.  Effective failover to a secondary region can be driven entirely from the event hub, with the functions becoming active only when the respective event hub is active.
+A feladatátvétel előtt a megosztott aliasnak küldött közzétevők átirányítják az elsődleges esemény központját.  Az elsődleges Function alkalmazás kizárólag az elsődleges Event hub-t figyeli.  A másodlagos Function alkalmazás passzív és tétlen lesz.  Amint a feladatátvételt kezdeményezik, a megosztott aliasra küldött közzétevők most a másodlagos esemény központját fogják irányítani.  A másodlagos Function alkalmazás mostantól aktív lesz, és automatikusan elindítja az indítást.  A másodlagos régióra történő hatékony feladatátvétel kizárólag az Event hub-ból hajtható végre, és csak akkor válik aktívvá a függvények, ha a megfelelő Event hub aktív.
 
-Read more on information and considerations for failover with [service bus](../service-bus-messaging/service-bus-geo-dr.md) and [event hubs](../event-hubs/event-hubs-geo-dr.md).
+A [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)feladatátvételével kapcsolatos információkat és szempontokat itt olvashatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Create Azure Front Door](../frontdoor/quickstart-create-front-door.md)
-* [Event Hubs failover considerations](../event-hubs/event-hubs-geo-dr.md#considerations)
+* [Azure-beli bejárati ajtó létrehozása](../frontdoor/quickstart-create-front-door.md)
+* [Event Hubs feladatátvételi megfontolások](../event-hubs/event-hubs-geo-dr.md#considerations)

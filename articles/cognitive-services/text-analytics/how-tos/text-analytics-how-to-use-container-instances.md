@@ -1,7 +1,7 @@
 ---
-title: Run Azure Container Instances - Text Analytics
+title: Azure Container Instances-Text Analytics futtatása
 titleSuffix: Azure Cognitive Services
-description: Deploy the text analytics containers to the Azure Container Instance, and test it in a web browser.
+description: Telepítse a Text Analytics-tárolókat az Azure Container Instanceba, és tesztelje egy böngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -17,27 +17,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383531"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Deploy a Text Analytics container to Azure Container Instances
+# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics tároló üzembe helyezése Azure Container Instances
 
-Learn how to deploy the Cognitive Services [Text Analytics][install-and-run-containers] container to Azure [Container Instances][container-instances]. This procedure exemplifies the creation of a Text Analytics resource, the creation of an associated Sentiment Analysis image and the ability to exercise this orchestration of the two from a browser. Using containers can shift the developers' attention away from managing infrastructure to instead focusing on application development.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][install-and-run-containers] tárolót az Azure [Container Instancesban][container-instances]. Ez az eljárás egy Text Analytics erőforrás létrehozását, egy kapcsolódó Hangulatelemzés-rendszerkép létrehozását, valamint a két böngészőből való e felállításának lehetőségét példázza. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Use an Azure subscription. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](../../containers/includes/create-container-instances-resource.md)]
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
 
 [!INCLUDE [Verify the Key Phrase Extraction container instance](../includes/verify-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
+#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
+#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
@@ -45,8 +45,8 @@ Learn how to deploy the Cognitive Services [Text Analytics][install-and-run-cont
 
 ## <a name="next-steps"></a>Következő lépések 
 
-* Use more [Cognitive Services Containers](../../cognitive-services-container-support.md)
-* Use the [Text Analytics Connected Service](../vs-text-connected-service.md)
+* További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
+* A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

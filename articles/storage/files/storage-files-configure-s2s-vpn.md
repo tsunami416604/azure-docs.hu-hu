@@ -1,6 +1,6 @@
 ---
-title: Configure a Site-to-Site (S2S) VPN for use with Azure Files | Microsoft Docs
-description: How to configure a Site-to-Site (S2S) VPN for use with Azure Files
+title: Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra | Microsoft Docs
+description: Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -14,104 +14,104 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484424"
 ---
-# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Configure a Site-to-Site VPN for use with Azure Files
-You can use a Site-to-Site (S2S) VPN connection to mount your Azure file shares over SMB from your on-premises network, without opening up port 445. You can set up a Site-to-Site VPN using [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), which is an Azure resource offering VPN services, and is deployed in a resource group alongside storage accounts or other Azure resources.
+# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Helyek közötti VPN konfigurálása Azure Fileshoz való használatra
+A helyek közötti (S2S) VPN-kapcsolat használatával csatlakoztathatja az Azure-fájlmegosztást az SMB-hez a helyszíni hálózatról a 445-es port megnyitása nélkül. Létrehozhat egy helyek közötti VPN-t az [azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával, amely egy VPN-szolgáltatásokat kínáló Azure-erőforrás, amelyet a Storage-fiókok vagy más Azure-erőforrások mellett egy erőforráscsoporthoz helyeznek üzembe.
 
-![A topology chart illustrating the topology of an Azure VPN gateway connecting an Azure file share to an on-premises site using a S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
+![Egy topológiai diagram, amely egy Azure-fájlmegosztás és egy helyszíni hely között egy S2S VPN használatával összekapcsoló Azure VPN Gateway topológiáját mutatja be](media/storage-files-configure-s2s-vpn/s2s-topology.png)
 
-We strongly recommend that you read [Azure Files networking overview](storage-files-networking-overview.md) before continuing with this how to article for a complete discussion of the networking options available for Azure Files.
+Javasoljuk, hogy olvassa el [Azure Files hálózatkezelési áttekintést](storage-files-networking-overview.md) , mielőtt folytatná ezt a cikket a Azure Files elérhető hálózati beállítások teljes körű megvitatására.
 
-The article details the steps to configure a Site-to-Site VPN to mount Azure file shares directly on-premises. If you're looking to route sync traffic for Azure File Sync over a Site-to-Site VPN, please see [configuring Azure File Sync proxy and firewall settings](storage-sync-files-firewall-and-proxy.md).
+A cikk részletesen ismerteti a helyek közötti VPN konfigurálásának lépéseit az Azure-fájlmegosztás közvetlen helyszíni csatlakoztatásához. Ha helyek közötti VPN-kapcsolaton keresztül szeretné átirányítani a Azure File Sync szinkronizálási forgalmát, tekintse meg a [Azure file Sync proxy-és tűzfalbeállítások konfigurálása](storage-sync-files-firewall-and-proxy.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- An Azure file share you would like to mount on-premises. You may use either a [standard](storage-how-to-create-file-share.md) or a [premium Azure file share](storage-how-to-create-premium-fileshare.md) with your Site-to-Site VPN.
+- Egy Azure-fájlmegosztás, amelyet a helyszínen kíván csatlakoztatni. A helyek közötti VPN-sel [standard](storage-how-to-create-file-share.md) vagy [prémium szintű Azure-fájlmegosztás](storage-how-to-create-premium-fileshare.md) is használható.
 
-- A network appliance or server in your on-premises datacenter that is compatible with Azure VPN Gateway. Azure Files is agnostic of the on-premises network appliance chosen but Azure VPN Gateway maintains a [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Different network appliances offer different features, performance characteristics, and management functionalities, so consider these when selecting a network appliance.
+- Olyan hálózati berendezés vagy kiszolgáló a helyszíni adatközpontban, amely kompatibilis az Azure VPN Gatewayával. Azure Files a kiválasztott helyszíni hálózati berendezés agnosztikusja, de az Azure VPN Gateway megtartja a [tesztelt eszközök listáját](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). A különböző hálózati készülékek különböző funkciókat, teljesítménnyel kapcsolatos tulajdonságokat és felügyeleti funkciókat kínálnak, ezért ezeket a hálózati berendezések kiválasztásakor érdemes megfontolni.
 
-    If you do not have an existing network appliance, Windows Server contains a built-in Server Role, Routing and Remote Access (RRAS), which may be used as the on-premises network appliance. To learn more about how to configure Routing and Remote Access in Windows Server, see [RAS Gateway](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
+    Ha nem rendelkezik meglévő hálózati berendezéssel, a Windows Server beépített kiszolgálói szerepkört, útválasztást és távelérést (RRAS) tartalmaz, amely a helyszíni hálózati berendezésként is használható. További információ az Útválasztás és távelérés konfigurálásáról a Windows Serveren: [RAS-átjáró](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
 
-## <a name="add-storage-account-to-vnet"></a>Add storage account to VNet
-In the Azure portal, navigate to the storage account containing the Azure file share you would like to mount on-premises. In the table of contents for the storage account, select the **Firewalls and virtual networks** entry. Unless you added a virtual network to your storage account when you created it, the resulting pane should have the **Allow access from** radio button for **All networks** selected.
+## <a name="add-storage-account-to-vnet"></a>Storage-fiók hozzáadása a VNet-hez
+A Azure Portal Navigáljon arra a Storage-fiókra, amely tartalmazza azt az Azure-fájlmegosztást, amelyet a helyszínen kíván csatlakoztatni. A Storage-fiók tartalomjegyzékében válassza ki a **tűzfalak és a virtuális hálózatok** bejegyzést. Hacsak nem adott meg virtuális hálózatot a Storage-fiókjához a létrehozásakor, az eredményül kapott ablaktáblán az **összes kijelölt hálózat** esetében engedélyezni kell a **hozzáférés engedélyezése** a választógombot.
 
-To add your storage account to the desired virtual network, select **Selected networks**. Under the **Virtual networks** subheading, click either **+ Add existing virtual network** or **+Add new virtual network** depending on the desired state. Creating a new virtual network will result in a new Azure resource being created. The new or existing VNet resource does not need to be in the same resource group or subscription as the storage account, however it must be in the same region as the storage account and the resource group and subscription you deploy your VNet into must match the one you will deploy your VPN Gateway into. 
+Ha hozzá szeretné adni a Storage-fiókot a kívánt virtuális hálózathoz, válassza a **kiválasztott hálózatok**elemet. A **virtuális hálózatok** Alfejléc alatt kattintson a **meglévő virtuális hálózat hozzáadása** vagy az **új virtuális hálózat** hozzáadása lehetőségre a kívánt állapottól függően. Új virtuális hálózat létrehozása új Azure-erőforrás létrehozását eredményezi majd. Az új vagy meglévő VNet erőforrásnak nem kell ugyanabban az erőforráscsoportban vagy előfizetésben lennie, mint a Storage-fióknak, azonban ugyanabban a régióban kell lennie, mint a Storage-fióknak, valamint azt az erőforráscsoportot és előfizetést, amelyet a VNet üzembe helyezésével kell megegyeznie  VPN Gateway üzembe helyezése a alkalmazásban. 
 
-![Screenshot of the Azure portal giving the option to add an existing or new virtual network to the storage account](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
+![Képernyőfelvétel a Azure Portalről, amely lehetővé teszi egy meglévő vagy új virtuális hálózat hozzáadását a Storage-fiókhoz](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
 
-If you add existing virtual network, you will be asked to select one or more subnets of that virtual network which the storage account should be added to. If you select a new virtual network, you will create a subnet as part of the creation of the virtual network, and you can add more later through the resulting Azure resource for the virtual network.
+Ha meglévő virtuális hálózatot ad hozzá, a rendszer arra kéri, hogy válasszon ki egy vagy több alhálózatot a virtuális hálózatból, amelyhez a Storage-fiókot hozzá kell adni. Ha új virtuális hálózatot választ, a virtuális hálózat létrehozásának részeként létre kell hoznia egy alhálózatot, amelyet később is hozzáadhat a virtuális hálózathoz tartozó Azure-erőforráshoz.
 
-If you have not added a storage account to your subscription before, the Microsoft.Storage service endpoint will need to be added to the virtual network. This may take some time, and until this operation has completed, you will not be able to access the Azure file shares within that storage account, including via the VPN connection. 
+Ha még nem adott hozzá Storage-fiókot az előfizetéséhez, a Microsoft. Storage szolgáltatás végpontját hozzá kell adni a virtuális hálózathoz. Ez eltarthat egy ideig, amíg ez a művelet nem fejeződött be, nem fogja tudni elérni az Azure-fájlmegosztást a Storage-fiókon belül, beleértve a VPN-kapcsolaton keresztül is. 
 
-## <a name="deploy-an-azure-vpn-gateway"></a>Deploy an Azure VPN Gateway
-In the table of contents for the Azure portal, select **Create a new resource** and search for *Virtual network gateway*. Your virtual network gateway must be in the same subscription, Azure region, and resource group as the virtual network you deployed in the previous step (note that resource group is automatically selected when the virtual network is picked). 
+## <a name="deploy-an-azure-vpn-gateway"></a>Azure-VPN Gateway üzembe helyezése
+A Azure Portal tartalomjegyzékében válassza az **új erőforrás létrehozása** és a *virtuális hálózati átjáró*keresése lehetőséget. A virtuális hálózati átjárónak ugyanahhoz az előfizetéshez, Azure-régióhoz és erőforráscsoporthoz kell tartoznia, mint az előző lépésben üzembe helyezett virtuális hálózatnak (vegye figyelembe, hogy az erőforráscsoport automatikusan ki van választva a virtuális hálózat kiválasztásakor). 
 
-For the purposes of deploying an Azure VPN Gateway, you must populate the following fields:
+Az Azure-VPN Gateway üzembe helyezéséhez fel kell töltenie a következő mezőket:
 
-- **Name**: The name of the Azure resource for the VPN Gateway. This name may be any name you find useful for your management.
-- **Region**: The region into which the VPN Gateway will be deployed.
-- **Gateway type**: For the purpose of deploying a Site-to-Site VPN, you must select **VPN**.
-- **VPN type**: You may choose either *Route-based** or **Policy-based** depending on your VPN device. Route-based VPNs support IKEv2, while policy-based VPNs only support IKEv1. To learn more about the two types of VPN gateways, see [About policy-based and route-based VPN gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
-- **SKU**: The SKU controls the number of allowed Site-to-Site tunnels and desired performance of the VPN. To select the appropriate SKU for your use case, consult the [Gateway SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) listing. The SKU of the VPN Gateway may be changed later if necessary.
-- **Virtual network**: The virtual network you created in the previous step.
-- **Public IP address**: The IP address of VPN Gateway that will be exposed to the internet. Likely, you will need to create a new IP address, however you may also use an existing unused IP address if that is appropriate. If you select to **Create new**, a new IP address Azure resource will be created in the same resource group as the VPN Gateway and the  **Public IP address name** will be the name of the newly created IP address. If you select **Use existing**, you must select the existing unused IP address.
-- **Enable active-active mode**: Only select **Enabled** if you are creating an active-active gateway configuration, otherwise leave **Disabled** selected. To learn more about active-active mode, see [Highly available cross-premises and VNet-to-VNet connectivity](../../vpn-gateway/vpn-gateway-highlyavailable.md).
-- **Configure BGP ASN**: Only select **Enabled** if your configuration specifically requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
+- **Name (név**): az VPN Gateway Azure-erőforrásának neve. Ez a név lehet a felügyelethez hasznos név.
+- **Régió**: az a régió, ahová a VPN Gateway telepíteni fogja.
+- **Átjáró típusa**: helyek közötti VPN üzembe helyezéséhez ki kell választania a **VPN-** t.
+- **VPN-típus**: a VPN-eszköztől függően az *útvonalon alapuló** vagy a **házirend alapján** is választhat. Az útválasztó-alapú VPN-EK támogatják a IKEv2, míg a házirend alapú VPN-ek csak a IKEv1 támogatják. Ha többet szeretne megtudni a VPN-átjárók két típusáról, tekintse meg a [házirend-alapú és az Útválasztás-alapú VPN-átjárók](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) című témakört.
+- **SKU**: az SKU szabályozza az engedélyezett helyek közötti alagutak számát és a VPN kívánt teljesítményét. A megfelelő SKU kiválasztásához használja a használati esetet, és nézze meg az [ÁTJÁRÓ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) -listáját. A VPN Gateway SKU-jának később is módosítható, ha szükséges.
+- **Virtual Network (virtuális hálózat**): az előző lépésben létrehozott virtuális hálózat.
+- **Nyilvános IP-cím**: az interneten elérhetővé tett VPN Gateway IP-címe. Valószínűleg létre kell hoznia egy új IP-címet, azonban szükség esetén használhat egy meglévő, nem használt IP-címet is. Ha az **új létrehozása**lehetőséget választja, akkor a rendszer létrehoz egy új IP-címet az Azure-beli erőforrásban, amelyben a VPN Gateway és a **nyilvános IP-cím neve** lesz az újonnan létrehozott IP-cím neve. Ha a **meglévő használata**lehetőséget választja, ki kell választania a meglévő nem használt IP-címet.
+- **Aktív-aktív üzemmód engedélyezése**: csak akkor válassza az **engedélyezve** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre, ellenkező esetben hagyja **Letiltva** a kijelölést. Ha többet szeretne megtudni az aktív-aktív üzemmódról, tekintse meg a [magasan elérhető, létesítmények közötti és VNet – VNet kapcsolatot](../../vpn-gateway/vpn-gateway-highlyavailable.md).
+- A **BGP ASN konfigurálása**: csak akkor válassza az **engedélyezve** lehetőséget, ha a konfigurációhoz kifejezetten szükség van erre a beállításra. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
 
-Select **Review + create** to create the VPN Gateway. A VPN Gateway may take up to 45 minutes to fully create and deploy.
+Válassza a **felülvizsgálat + létrehozás** lehetőséget a VPN Gateway létrehozásához. Egy VPN Gateway akár 45 percet is igénybe vehet, hogy teljesen létre lehessen hozni és telepíteni lehessen.
 
-### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Create a local network gateway for your on-premises gateway 
-A local network gateway is an Azure resource that represents your on-premises network appliance. In the table of contents for the Azure portal, select **Create a new resource** and search for *local network gateway*. The local network gateway is an Azure resource that will be deployed alongside your storage account, virtual network, and VPN Gateway, but does not need to be in the same resource group or subscription as the storage account. 
+### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Helyi hálózati átjáró létrehozása a helyszíni átjáróhoz 
+A helyi hálózati átjáró egy Azure-erőforrás, amely a helyszíni hálózati készüléket képviseli. A Azure Portal tartalomjegyzékében válassza az **új erőforrás létrehozása** és a *helyi hálózati átjáró*keresése lehetőséget. A helyi hálózati átjáró egy Azure-erőforrás, amelyet a rendszer a Storage-fiók, a virtuális hálózat és a VPN Gateway mellett helyez üzembe, de nem kell a Storage-fiókkal megegyező erőforráscsoporthoz vagy előfizetésben lennie. 
 
-For the purposes of deploying the local network gateway resource, you must populate the following fields:
+A helyi hálózati átjáró erőforrásának üzembe helyezéséhez fel kell töltenie a következő mezőket:
 
-- **Name**: The name of the Azure resource for the local network gateway. This name may be any name you find useful for your management.
-- **IP address**: The public IP address of your local gateway on-premises.
-- **Address space**: The address ranges for the network this local network gateway represents. You can add multiple address space ranges, but make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to. 
-- **Configure BGP settings**: Only configure BGP settings if your configuration requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
-- **Subscription**: The desired subscription. This does not need to match the subscription used for the VPN Gateway or the storage account.
-- **Resource group**: The desired resource group. This does not need to match the resource group used for the VPN Gateway or the storage account.
-- **Location**: The Azure Region the local network gateway resource should be created in. This should match the region you selected for the VPN Gateway and the storage account.
+- **Name (név**): a helyi hálózati átjáróhoz tartozó Azure-Erőforrás neve. Ez a név lehet a felügyelethez hasznos név.
+- **IP-cím**: a helyi ÁTJÁRÓ nyilvános IP-címe a helyszínen.
+- **Címterület**: a helyi hálózati átjáró által reprezentált hálózati címtartomány. Több címtartományt is hozzáadhat, de ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben más hálózatok tartományával, amelyhez csatlakozni szeretne. 
+- **BGP-beállítások konfigurálása**: csak a BGP-beállítások konfigurálása, ha a konfigurációhoz ezt a beállítást kell megadni. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
+- **Előfizetés**: a kívánt előfizetés. Ennek nem kell megegyeznie a VPN Gateway vagy a Storage-fiókhoz használt előfizetéssel.
+- **Erőforráscsoport**: a kívánt erőforráscsoport. Ennek nem kell megegyeznie az VPN Gateway vagy a Storage-fiókhoz használt erőforráscsoporthoz.
+- **Hely**: az az Azure-régió, ahol a helyi hálózati átjáró erőforrását létre kell hozni. Ennek egyeznie kell a VPN Gateway és a Storage-fiók kiválasztott régiójával.
 
-Select **Create** to create the local network gateway resource.  
+Válassza a **Létrehozás** lehetőséget a helyi hálózati átjáró erőforrás létrehozásához.  
 
-## <a name="configure-on-premises-network-appliance"></a>Configure on-premises network appliance
-The specific steps to configure your on-premises network appliance depend based on the network appliance your organization has selected. Depending on the device your organization has chosen, the [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) may have a link out to your device vendor's instructions for configuring with Azure VPN Gateway.
+## <a name="configure-on-premises-network-appliance"></a>Helyszíni hálózati berendezés konfigurálása
+A helyszíni hálózati berendezés konfigurálásának konkrét lépései a szervezet által kiválasztott hálózati berendezéstől függenek. A szervezet által kiválasztott eszköztől függően előfordulhat, hogy a [tesztelt eszközök listáján](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) az eszköz gyártójának az Azure VPN Gateway-vel való konfigurálására vonatkozó utasítások találhatók.
 
-## <a name="create-private-endpoint-preview"></a>Create private endpoint (preview)
-Creating a private endpoint for your storage account gives your storage account an IP address within the IP address space of your virtual network. When you mount your Azure file share from on-premises using this private IP address, the routing rules autodefined by the VPN installation will route your mount request to the storage account via the VPN. 
+## <a name="create-private-endpoint-preview"></a>Privát végpont létrehozása (előzetes verzió)
+Ha létrehoz egy magánhálózati végpontot a Storage-fiókjához, a Storage-fiókja IP-címet ad a virtuális hálózat IP-címén belül. Ha az Azure-fájlmegosztást ezen magánhálózati IP-címmel csatlakoztatja a helyszíni környezetből, a VPN-telepítés által automatikusan definiált útválasztási szabályok a VPN-kapcsolaton keresztül irányítják a csatlakoztatási kérelmet a Storage-fiókhoz. 
 
-In the storage account blade, select **Private endpoint connections** in the left-hand table of contents and **+ Private endpoint** to create a new private endpoint. The resulting wizard has multiple pages to complete:
+A Storage-fiók panelen válassza a **privát végponti kapcsolatok** elemet a bal oldali tartalomjegyzékben és a **+ privát végpontot** egy új privát végpont létrehozásához. Az eredményül kapott varázsló több oldalról is elvégezhető:
 
-![A screenshot of the Basics section of the create private endpoint section](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
+![A privát végpont létrehozása szakasz alapjai szakaszának képernyőképe](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
 
-On the **Basics** tab, select the desired resource group, name, and region for your private endpoint. These can be whatever you want, they don't have to match the storage account in anyway, although you must create the private endpoint in the same region as the virtual network you wish to create the private endpoint in.
+Az **alapvető beállítások** lapon válassza ki a saját végpontja számára a kívánt erőforráscsoportot, nevet és régiót. Ezeket a kívánt módon lehet használni, de nem kell megegyezniük a Storage-fiókkal, bár a magánhálózati végpontot ugyanabban a régióban kell létrehoznia, mint azt a virtuális hálózatot, amelyben létre kívánja hozni a privát végpontot.
 
-On the **Resource** tab, select the radio button for **Connect to an Azure resource in my directory**. Under **Resource type**, select **Microsoft.Storage/storageAccounts** for the resource type. The **Resource** field is the storage account with the Azure file share you wish to connect to. Target sub-resource is **file**, since this is for Azure Files.
+Az **erőforrás** lapon válassza az **Azure-erőforráshoz való kapcsolódáshoz**használt választógombot a saját címtárban. Az **erőforrástípus**területen válassza ki a **Microsoft. Storage/storageAccounts** elemet az erőforrás típushoz. Az **erőforrás** mező annak az Azure-fájlmegosztásnak a Storage-fiókja, amelyhez csatlakozni szeretne. A cél alerőforrás **fájl**, mivel Azure files.
 
-The **Configuration** tab allows you to select the specific virtual network and subnet you would like to add your private endpoint to. Select the virtual network you created above. You must select a distinct subnet from the subnet you added your service endpoint to above.
+A **konfiguráció** lapon kiválaszthatja azt a virtuális hálózatot és alhálózatot, amelyhez hozzá szeretné adni a privát végpontot. Válassza ki a fent létrehozott virtuális hálózatot. Ki kell választania egy különálló alhálózatot abból az alhálózatból, amelyhez a szolgáltatási végpontot hozzáadta.
 
-The **Configuration** tab also allows you to set up a private DNS zone. This is not required, but allows you to use a friendly UNC path (such as `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) instead of a UNC path with an IP address to mount the Azure file share. This may also be done with your own DNS servers within your virtual network.
+A **konfiguráció** lapon egy privát DNS-zónát is beállíthat. Ez nem kötelező, de lehetővé teszi a felhasználóbarát UNC elérési út (például `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) használatát az Azure-fájlmegosztás csatlakoztatására szolgáló UNC-útvonal helyett. Ez a virtuális hálózaton belüli saját DNS-kiszolgálókkal is megtehető.
 
-Click **Review + create** to create the private endpoint. Once the private endpoint has been created, you will see two new resources: a private endpoint resource and a paired virtual network interface. The virtual network interface resource will have the dedicated private IP of the storage account. 
+A privát végpont létrehozásához kattintson a **felülvizsgálat + létrehozás** gombra. A privát végpont létrehozása után két új erőforrást fog látni: egy privát végponti erőforrást és egy párosított virtuális hálózati adaptert. A virtuális hálózati adapter erőforrása a Storage-fiók dedikált magánhálózati IP-címével fog rendelkezni. 
 
-## <a name="create-the-site-to-site-connection"></a>Create the Site-to-Site connection
-To complete the deployment of a S2S VPN, you must create a connection between your on-premises network appliance (represented by the local network gateway resource) and the VPN Gateway. To do this, navigate to the VPN Gateway you created above. In the table of contents for the VPN Gateway, select **Connections**, and click **Add**. The resulting **Add connection** pane requires the following fields:
+## <a name="create-the-site-to-site-connection"></a>Helyek közötti kapcsolat létrehozása
+Egy S2S VPN központi telepítésének befejezéséhez létre kell hoznia egy kapcsolatot a helyszíni hálózati berendezés (amelyet a helyi hálózati átjáró erőforrása) és a VPN Gateway között. Ehhez navigáljon a fent létrehozott VPN Gateway. A VPN Gateway tartalomjegyzékében válassza a **kapcsolatok**lehetőséget, majd kattintson a **Hozzáadás**gombra. Az eredményül kapott **kapcsolat hozzáadása** panelen a következő mezők szükségesek:
 
-- **Name**: The name of the connection. A VPN Gateway can host multiple connections, so pick a name helpful for your management that will distinguish this particular connection.
-- **Connection type**: Since this a S2S connection, select **Site-to-site (IPSec)** in the drop-down list.
-- **Virtual network gateway**: This field is auto-selected to the VPN Gateway you're making the connection to and can't be changed.
-- **Local network gateway**: This is the local network gateway you want to connect to your VPN Gateway. The resulting selection pane should have the name of the local network gateway you created above.
-- **Shared key (PSK)** : A mixture of letters and numbers, used to establish encryption for the connection. The same shared key must be used in both the virtual network and local network gateways. If your gateway device doesn't provide one, you can make one up here and provide it to your device.
+- **Name (név**): a kapcsolatok neve. Egy VPN Gateway több kapcsolatot is tárolhat, ezért a felügyelethez hasznos nevet adjon meg, amely megkülönbözteti az adott kapcsolatot.
+- **Kapcsolat típusa**: mivel ez egy S2S-kapcsolat, válassza a **helyek közötti (IPSec)** lehetőséget a legördülő listában.
+- **Virtuális hálózati átjáró**: Ez a mező automatikusan ki van választva arra a VPN Gatewayre, amelyhez a kapcsolódást végzi, és amely nem módosítható.
+- **Helyi hálózati átjáró**: ez az a helyi hálózati átjáró, amelyhez csatlakozni szeretne a VPN Gatewayhoz. Az eredményül kapott kiválasztási ablaktáblának rendelkeznie kell a fent létrehozott helyi hálózati átjáró nevével.
+- **Megosztott kulcs (PSK)** : a kapcsolat titkosításának létrehozásához használt betűk és számok keveréke. Ugyanazt a megosztott kulcsot kell használni a virtuális hálózaton és a helyi hálózati átjárókban is. Ha az átjáró-eszköz nem rendelkezik ilyennel, itt létrehozhat egyet, és megadhatja az eszközének.
 
-Select **OK** to create the connection. You can verify the connection has been made successfully through the **Connections** page.
+A kapcsolódás létrehozásához kattintson **az OK gombra** . A **kapcsolatok** lapon ellenőrizheti, hogy a kapcsolat sikeresen létrejött-e.
 
-## <a name="mount-azure-file-share"></a>Mount Azure file share 
-The final step in configuring a S2S VPN is verifying that it works for Azure Files. You can do this by mounting your Azure file share on-premises with your preferred OS. See the instructions to mount by OS here:
+## <a name="mount-azure-file-share"></a>Azure-fájlmegosztás csatlakoztatása 
+A S2S VPN konfigurálásának utolsó lépése annak ellenőrzése, hogy Azure Files működik-e. Ezt úgy teheti meg, hogy az Azure-fájlmegosztást a helyszínen csatlakoztatja a kívánt operációs rendszerhez. Tekintse meg az operációs rendszerhez való csatlakoztatásra vonatkozó utasításokat itt:
 
 - [Windows](storage-how-to-use-files-windows.md)
 - [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
-## <a name="see-also"></a>Lásd még:
-- [Azure Files networking overview](storage-files-networking-overview.md)
-- [Configure a Point-to-Site (P2S) VPN on Windows for use with Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Configure a Point-to-Site (P2S) VPN on Linux for use with Azure Files](storage-files-configure-p2s-vpn-linux.md)
+## <a name="see-also"></a>Lásd még
+- [Azure Files hálózatkezelés – áttekintés](storage-files-networking-overview.md)
+- [Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files-mel való használatra](storage-files-configure-p2s-vpn-windows.md)
+- [Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra](storage-files-configure-p2s-vpn-linux.md)

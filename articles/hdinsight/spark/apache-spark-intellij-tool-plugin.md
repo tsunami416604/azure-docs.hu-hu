@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494232"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533919"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for Inte
 * Hozzáférés a Azure HDInsight Spark-fürt erőforrásaihoz.
 * A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * A Azure Toolkit for IntelliJ beépülő modul használata
 > * Apache Spark alkalmazások fejlesztése
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Ez az oktatóanyag a Java-verzió 8.0.202 használja.
 
-* IntelliJ ötlet. Ez a cikk a [INTELLIJ Idea Community ver-t használja.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ IDEA. Ez a cikk a [INTELLIJ Idea Community ver-t használja.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Lásd: [a Azure Toolkit for IntelliJ telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 
@@ -336,8 +336,6 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy interaktív munkamenet-konzol (Scala)
 
-Csak a 2018,2-es és a 2018,3-es IntelliJ esetén támogatott.
-
 1. A menüsávban navigáljon a **futtatás** > a **konfigurációk szerkesztése..** . lehetőségre.
 
 2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight** >  **[Spark on HDInsight] SajátPr**.
@@ -366,6 +364,25 @@ Csak a 2018,2-es és a 2018,3-es IntelliJ esetén támogatott.
 A szkript eredményét úgy teheti meg, hogy elküld egy kódot a helyi konzolon vagy a Livy interaktív munkamenet-konzolján (Scala). Kiemelheti a Scala-fájlban lévő egyes kódokat, majd kattintson a jobb gombbal a **kijelölés küldése a Spark-konzolra**lehetőségre. A rendszer elküldi a kiválasztott kódot a konzolra, és elvégzi. Az eredmény a konzolon a kód után fog megjelenni. Ha már van ilyen, a konzolon ellenőrizze a hibákat.  
 
    ![Kijelölés küldése a Spark-konzolra](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integráció a HDInsight Identity Broker (HIB) szolgáltatással 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Kapcsolódás a HDInsight ESP-fürthöz az id Broker (HIB) használatával
+A normál lépéseket követve bejelentkezhet az Azure-előfizetésbe, hogy csatlakozhasson a HDInsight ESP-fürthöz az id Broker (HIB) használatával. Bejelentkezés után megjelenik a fürt listája az Azure Explorerben. További útmutatásért lásd: [Kapcsolódás a HDInsight-fürthöz](#connect-to-your-hdinsight-cluster).
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Spark Scala-alkalmazás futtatása HDInsight ESP-fürtön az id Broker (HIB) szolgáltatással
+A normál lépések végrehajtásával elküldheti a feladatot HDInsight ESP-fürtre az id Broker (HIB) használatával. További útmutatásért lásd: [Spark Scala-alkalmazás futtatása HDInsight Spark-fürtön](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster) .
+
+Feltöltjük a szükséges fájlokat egy nevű mappába a bejelentkezési fiókjával, és a konfigurációs fájlban láthatja a feltöltési útvonalat.
+
+   ![feltöltési útvonal a konfigurációban](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Spark-konzol egy HDInsight ESP-fürtön az id Broker (HIB) segítségével
+A Spark helyi konzolt (Scala) futtathatja, vagy futtathatja a Spark Livy interaktív munkamenet-konzolt (Scala) egy HDInsight ESP-fürtön az id Broker (HIB) használatával. További útmutatásért tekintse meg a [Spark-konzolt](#spark-console) .
+
+   > [!NOTE]  
+   > A HDInsight ESP-fürthöz, és az id Broker (HIB) esetében jelenleg nem támogatott a [fürt](#link-a-cluster) és a [hibakeresés Apache Spark-alkalmazások távoli](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster) használata.
+
 
 ## <a name="reader-only-role"></a>Csak olvasó szerepkör
 
@@ -438,7 +455,7 @@ A IntelliJ IDEA-ben létrehozott meglévő Spark Scala-alkalmazások a Azure Too
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 
@@ -450,7 +467,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 ![HDInsight-fürt törlése Azure Portal](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt Apache Spark alkalmazások fejlesztéséhez, majd beküldheti őket egy HDInsight Spark-fürtbe közvetlenül a IntelliJ integrált fejlesztési környezetből ( IDE). A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
 

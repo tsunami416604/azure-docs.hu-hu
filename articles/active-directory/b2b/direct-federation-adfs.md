@@ -99,7 +99,7 @@ Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót
    - **Kimenő név azonosítójának formátuma**: állandó azonosító 
    - Válassza **Az összes jogcímérték továbbítása** lehetőséget.
 
-3. Kattintson a **Befejezés**gombra. 
+3. Kattintson a **Finish** (Befejezés) gombra. 
 4. A **jogcímek szerkesztése** ablakban megjelennek az új szabályok. Kattintson az **Alkalmaz** gombra. 
 5. Kattintson az **OK** gombra. A AD FS-kiszolgáló most már az SAML 2,0 protokollal történő közvetlen összevonás használatára van konfigurálva.
 

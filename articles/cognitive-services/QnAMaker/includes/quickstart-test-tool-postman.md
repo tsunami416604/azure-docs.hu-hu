@@ -17,56 +17,56 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424418"
 ---
-This Postman-based quickstart walks you through getting an answer from your knowledge base.
+Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Latest [**Postman**](https://www.getpostman.com/).
-* You must have a [QnA Maker service](../How-To/set-up-qnamaker-service-azure.md) and have a [knowledge base with questions and answers](../Tutorials/create-publish-query-in-portal.md). 
+* Legújabb [**Poster**](https://www.getpostman.com/).
+* [QnA Maker szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) kell rendelkeznie, és a [Tudásbázisban kérdésekkel és válaszokkal](../Tutorials/create-publish-query-in-portal.md)kell rendelkeznie. 
 
-## <a name="publish-to-get-endpoint"></a>Publish to get endpoint
+## <a name="publish-to-get-endpoint"></a>Közzététel a végpont beszerzéséhez
 
-When you are ready to generate an answer to a question from your knowledge base, [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) your knowledge base.
+Ha készen áll arra, hogy megválaszolja a Tudásbázis kérdését, [tegye közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
 
-## <a name="use-production-endpoint-with-postman"></a>Use production endpoint with Postman
+## <a name="use-production-endpoint-with-postman"></a>Üzemi végpont használata a Poster használatával
 
-When your knowledge base is published, the **Publish** page displays the HTTP request settings to generate an answer. The default view shows the settings required to generate an answer from [Postman](https://www.getpostman.com).
+A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. Az alapértelmezett nézet a [Poster](https://www.getpostman.com)-válasz létrehozásához szükséges beállításokat jeleníti meg.
 
-The yellow numbers in the following image indicate which name/value pairs to use in the following steps.
+Az alábbi képen látható sárga számok azt jelzik, hogy mely név/érték párokat kell használni a következő lépésekben.
 
-[![Publish results](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+[Közzétételi eredmények ![](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
-To generate an answer with Postman, complete the following steps:
+A Poster-beli válasz létrehozásához hajtsa végre a következő lépéseket:
 
-1. Open Postman. If you're asked to choose a building block, select the **Basic Request** building block. Set the **Request name** as `Generate QnA Maker answer`and the **collection** as `Generate QnA Maker answers`. If you don't want to save to a collection, select the **Cancel** button.
-1. In the workspace, select the HTTP method of **POST**.
+1. A Poster megnyitása. Ha a rendszer megkéri, hogy válasszon ki egy építőelemet, válassza ki az **alapszintű kérelmek** építőeleme elemet. Adja meg a **kérelem nevét** `Generate QnA Maker answer`ként és a **gyűjteményként** `Generate QnA Maker answers`ként. Ha nem szeretne menteni egy gyűjteményt, válassza a **Mégse** gombot.
+1. A munkaterületen válassza ki a **post**http-metódusát.
 
-    [![In Postman, set POST Method](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [![a postán, a POST metódus beállítása](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
-1. For the URL, concatenate the HOST value (#2 from image) and the Post value (#1 from image) to create the complete URL. A complete example URL looks like: 
+1. Az URL-cím esetében fűzze össze a GAZDAGÉP értékét (#2 a rendszerképből) és a post értéket (#1 a rendszerképből) a teljes URL-cím létrehozásához. A teljes példa URL-cím A következőképpen néz ki: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![In Postman, set the complete URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [a Poster ![a teljes URL-címet adja meg](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
-1. Select the **Headers** tab under the URL, then select **Bulk Edit**. 
+1. Válassza a **fejlécek** lapot az URL-cím alatt, majd válassza a **tömeges szerkesztés**lehetőséget. 
 
-1. Copy the headers (#3 and #4 from image) into the text area.
+1. Másolja a fejléceket (#3 és #4 a rendszerképből) a szövegmezőbe.
 
-    [![In Postman, set the headers](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [![a Poster-ban, állítsa be a fejléceket](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
-1. Select the **Body** tab.
-1. Select the **raw** format and enter the JSON (#5 from image) that represents the question.
+1. Válassza a **törzs** fület.
+1. Válassza ki a **nyers** formátumot, és írja be a kérdést jelölő JSON-t (#5 a rendszerképből).
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![In Postman, set the body JSON value](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [![a Poster-ban állítsa be a törzs JSON-értékét](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
-1. Select the **Send** button.
-1. The response contains the answer along with other information that may be important to the client application. 
+1. Kattintson a **Küldés** gombra.
+1. A válasz tartalmazza a választ, valamint azokat az egyéb információkat, amelyek fontosak lehetnek az ügyfélalkalmazás számára. 
 
-    [![In Postman, set the body JSON value](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [![a Poster-ban állítsa be a törzs JSON-értékét](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
-## <a name="use-staging-endpoint"></a>Use staging endpoint
+## <a name="use-staging-endpoint"></a>Átmeneti végpont használata
 
-If you want to get an answer from the staging endpoint, append the URL with the `isTest` body property.
+Ha az átmeneti végponttól választ szeretne kapni, fűzze hozzá az URL-címet a `isTest` Body tulajdonsághoz.

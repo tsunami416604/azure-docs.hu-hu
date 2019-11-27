@@ -1,6 +1,6 @@
 ---
-title: How to stop monitoring your Azure Red Hat OpenShift cluster | Microsoft Docs
-description: This article describes how you can stop monitoring of your Azure Red Hat OpenShift cluster with Azure Monitor for containers.
+title: Az Azure Red Hat OpenShift-fürt figyelésének leállítása | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -14,19 +14,19 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384330"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>How to stop monitoring your Azure Red Hat OpenShift cluster with Azure Monitor for containers
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift-fürt figyelésének leállítása a Azure Monitor tárolókkal
 
-After you enable monitoring of your Azure Red Hat OpenShift cluster, you can stop monitoring the cluster if you decide you no longer want to monitor it. This article shows how to accomplish this using the provided Azure Resource Manager templates.  
+Miután engedélyezte az Azure Red Hat OpenShift-fürt figyelését, leállíthatja a fürt figyelését, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a megadott Azure Resource Manager-sablonok használatával.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Provided are two Azure Resource Manager template to support removing the solution resources consistently and repeatedly in your resource group. One is a JSON template specifying the configuration to stop monitoring and the other contains parameter values that you configure to specify the OpenShift cluster resource ID and Azure region that the cluster is deployed in. 
+Megadott van két Azure Resource Manager-sablon eltávolítása az erőforráscsoportban a megoldásokkal kapcsolatos forrásanyagok konzisztens és ismétlődő támogatásához. Az egyik egy JSON-sablon, amely meghatározza, hogy a rendszer hogyan állítsa le a figyelést, a másik pedig olyan paramétereket tartalmaz, amelyeket úgy konfigurál, hogy megadja a fürt üzembe helyezett OpenShift-erőforrás-AZONOSÍTÓját és az Azure-régiót. 
 
-If you're unfamiliar with the concept of deploying resources by using a template, see:
+Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalma, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Deploy resources with Resource Manager templates and the Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-If you choose to use the Azure CLI, you first need to install and use the CLI locally. You must be running the Azure CLI version 2.0.65 or later. To identify your version, run `az --version`. If you need to install or upgrade the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -69,9 +69,9 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-2. Save this file as **OptOutTemplate.json** to a local folder.
+2. Mentse ezt a fájlt **OptOutTemplate. JSON** néven egy helyi mappába.
 
-3. Paste the following JSON syntax into your file:
+3. A következő JSON-szintaxist illessze be a fájlba:
 
     ```json
     {
@@ -88,17 +88,17 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-4. Edit the values for **aroResourceId** and **aroResourceLocation** by using the values of the OpenShift cluster, which you can find on the **Properties** page for the selected cluster.
+4. Szerkessze a **aroResourceId** és a **aroResourceLocation** értékeit a OpenShift-fürt értékeivel, amelyet a kiválasztott fürt **Tulajdonságok** lapján talál.
 
-    ![Container properties page](media/container-insights-optout-openshift/cluster-properties-page.png)
+    ![Tároló tulajdonságai lap](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Save this file as **OptOutParam.json** to a local folder.
+5. Mentse ezt a fájlt **OptOutParam. JSON** néven egy helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére. 
 
-### <a name="remove-the-solution-using-azure-cli"></a>Remove the solution using Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>Távolítsa el a megoldás az Azure CLI használatával
 
-Execute the following command with Azure CLI on Linux to remove the solution and clean up the configuration on your cluster.
+Futtassa a következő parancsot az Azure CLI-vel Linuxon a megoldás eltávolításához és a fürt konfigurációjának tisztításához.
 
 ```azurecli
 az login   
@@ -106,17 +106,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
 
 ```azurecli
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Remove the solution using PowerShell
+### <a name="remove-the-solution-using-powershell"></a>Távolítsa el a megoldás a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Execute the following PowerShell commands in the folder containing the template to remove the solution and clean up the configuration from your cluster.    
+Hajtsa végre a következő PowerShell-parancsokat a sablont tartalmazó mappában, hogy eltávolítsa a megoldást, és törölje a konfigurációt a fürtből.    
 
 ```powershell
 Connect-AzAccount
@@ -124,7 +124,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
 
 ```powershell
 ProvisioningState       : Succeeded
@@ -132,4 +132,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Következő lépések
 
-If the workspace was created only to support monitoring the cluster and it's no longer needed, you have to manually delete it. If you are not familiar with how to delete a workspace, see [Delete an Azure Log Analytics workspace](../../log-analytics/log-analytics-manage-del-workspace.md). 
+Ha a munkaterület létrejött, csak a fürt figyelésére is alkalmas, és már nincs rá szükség, akkor törölje kézzel. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../../log-analytics/log-analytics-manage-del-workspace.md)című témakört. 

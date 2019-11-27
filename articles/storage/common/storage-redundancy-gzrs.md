@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186602"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534307"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -85,6 +85,11 @@ A helyreállítási időre vonatkozó célkitűzés (RTO) azt méri, hogy mennyi
 ## <a name="migrate-a-storage-account-to-gzrs-or-ra-gzrs"></a>Storage-fiók migrálása GZRS vagy RA-GZRS
 
 Bármely meglévő Storage-fiókot áttelepíthet GZRS vagy RA-GZRS. A meglévő ZRS-fiókról GZRS vagy RA-GZRS-re való Migrálás egyszerű, miközben az áttelepítés egy LRS, GRS vagy RA-GRS-fiókból történik. Az alábbi szakaszok azt ismertetik, hogyan lehet az áttelepítést mindkét esetben.
+
+**Ismert korlátozások**
+
+- Az archiválási szint jelenleg nem támogatott az (RA-) GZRS-fiókokon. További részletekért tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintet](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+- A felügyelt lemezek nem támogatják a (RA-) GZRS. A standard SSD-Managed Disks pillanatképeit és lemezképeit standard HDD tárolóban tárolhatja, és [választhat a LRS és a ZRS lehetőségek](https://azure.microsoft.com/pricing/details/managed-disks/)közül.
 
 ### <a name="migrating-from-a-zrs-account"></a>Áttelepítés ZRS-fiókból
 

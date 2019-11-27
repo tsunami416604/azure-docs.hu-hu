@@ -3,8 +3,8 @@ title: Windows-tárolók használata
 services: azure-dev-spaces
 ms.date: 07/25/2019
 ms.topic: conceptual
-description: Learn how to run Azure Dev Spaces on an existing cluster with Windows containers
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Windows containers
+description: Ismerje meg, hogyan futtathat Azure dev-helyeket meglévő fürtön Windows-tárolókkal
+keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Windows-tárolók
 ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
@@ -12,15 +12,15 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483998"
 ---
-# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interact with Windows containers using Azure Dev Spaces
+# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Windows-tárolók használata az Azure dev Spaces használatával
 
-You can enable Azure Dev Spaces on both new and existing Kubernetes namespaces. Azure Dev Spaces will run and instrument services that run on Linux containers. Those services can also interact with applications that run on Windows containers in the same namespace. This article shows you how to use Dev Spaces to run services in a namespace with existing Windows containers.
+Az Azure dev Spaces szolgáltatást az új és a meglévő Kubernetes-névtereken is engedélyezheti. Az Azure dev Spaces szolgáltatás a Linux-tárolókban futó eszközökön fut. Ezek a szolgáltatások a Windows-tárolókban futó alkalmazásokat is kezelhetik ugyanabban a névtérben. Ebből a cikkből megtudhatja, hogyan használhatja a dev Spaces szolgáltatást a meglévő Windows-tárolókkal rendelkező névtérben lévő szolgáltatások futtatására.
 
-## <a name="set-up-your-cluster"></a>Set up your cluster
+## <a name="set-up-your-cluster"></a>A fürt beállítása
 
-This article assumes you already have a cluster with both Linux and Windows node pools. If you need to create a cluster with Linux and Windows node pools, you can follow the instructions [here][windows-container-cli].
+Ez a cikk azt feltételezi, hogy már rendelkezik egy, a Linux-és Windows-csomópont-készlettel rendelkező fürttel. Ha Linux-és Windows-csomópont-készletekkel rendelkező fürtöt kell létrehoznia, kövesse az [itt][windows-container-cli]található utasításokat.
 
-Connect to your cluster using [kubectl][kubectl], the Kubernetes command-line client. To configure `kubectl` to connect to your Kubernetes cluster, use the [az aks get-credentials][az-aks-get-credentials] command. This command downloads credentials and configures the Kubernetes CLI to use them.
+Kapcsolódjon a fürthöz a [kubectl][kubectl]és a Kubernetes parancssori ügyfél használatával. Ha `kubectl` szeretne konfigurálni a Kubernetes-fürthöz való kapcsolódáshoz, használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -32,7 +32,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-The following example output shows a cluster with both a Windows and Linux node. Make sure the status is *Ready* for each node before proceeding.
+A következő példában a kimenet egy Windows-és Linux-csomóponttal rendelkező fürtöt mutat be. A folytatás előtt győződjön meg arról, hogy az állapot *készen áll* az egyes csomópontokra.
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -40,27 +40,27 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 aksnpwin987654                      Ready    agent   108s   v1.14.1
 ```
 
-Apply a [taint][using-taints] to your Windows nodes. The taint on your Windows nodes prevents Dev Spaces from scheduling Linux containers to run on your Windows nodes. The following command example command applies a taint to the *aksnpwin987654* Windows node from the previous example.
+Alkalmazzon egy [Taint][using-taints] a Windows-csomópontjaira. A Windows-csomópontok megromlása megakadályozza, hogy a fejlesztői helyek a Linux-tárolókat ütemezve futtassák a Windows-csomópontokon. Az alábbi parancs-példában szereplő parancs egy szennyező elemet alkalmaz a *aksnpwin987654* Windows-csomópontra az előző példából.
 
 ```azurecli-interactive
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
 
 > [!IMPORTANT]
-> When you apply a taint to a node, you must configure a matching toleration in your service's deployment template to run your service on that node. The sample application is already configured with a [matching toleration][sample-application-toleration-example] to the taint you configured in the previous command.
+> Ha egy csomópontra alkalmazza a Taint, a szolgáltatás ezen a csomóponton való futtatásához a szolgáltatás központi telepítési sablonjában meg kell adnia a megfelelő tolerancia beállítását. A minta alkalmazás már konfigurálva van az előző parancsban konfigurált adatszennyező értékkel [egyezően][sample-application-toleration-example] .
 
-## <a name="run-your-windows-service"></a>Run your Windows service
+## <a name="run-your-windows-service"></a>Windows-szolgáltatás futtatása
 
-Run your Windows service on your AKS cluster and verify it is in a *Running* state. This article uses a [sample application][sample-application] to demonstrate a Windows and Linux service running on your cluster.
+Futtassa a Windows-szolgáltatást az AK-fürtön, és ellenőrizze, hogy *futó* állapotban van-e. Ez a cikk egy [minta alkalmazást][sample-application] használ a fürtön futó Windows-és Linux-szolgáltatások bemutatására.
 
-Clone the sample application from GitHub and navigate into the `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` directory:
+A minta alkalmazás klónozása a GitHubról, és a `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` könyvtárának bejárása:
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-The sample application uses [Helm 2][helm-installed] to run the Windows service on your cluster. Install Helm on your cluster and grant it the correct permissions:
+A minta alkalmazás a [Helm 2][helm-installed] használatával futtatja a Windows-szolgáltatást a fürtön. Telepítse a sisakot a fürtön, és adja meg a megfelelő engedélyeket:
 
 ```console
 helm init --wait
@@ -69,16 +69,16 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ``` 
 
-Navigate to the `charts` directory and run the Windows service:
+Navigáljon a `charts` könyvtárba, és futtassa a Windows-szolgáltatást:
 
 ```console
 cd charts/
 helm install . --namespace dev
 ```
 
-The above command uses Helm to run your Windows service in the *dev* namespace. If you don't have a namespace named *dev*, it will be created.
+A fenti parancs a Helm használatával futtatja a Windows-szolgáltatást a *fejlesztői* névtérben. Ha nem rendelkezik *dev*nevű névtérrel, a rendszer létrehozza.
 
-Use the `kubectl get pods` command to verify your Windows service is running in your cluster. 
+A `kubectl get pods` parancs használatával ellenőrizheti, hogy a Windows-szolgáltatás fut-e a fürtben. 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -88,19 +88,19 @@ myapi-4b9667d123-1a2b3   0/1     ContainerCreating   0          47s
 myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 ```
 
-## <a name="enable-azure-dev-spaces"></a>Enable Azure Dev Spaces
+## <a name="enable-azure-dev-spaces"></a>Az Azure dev Spaces használatának engedélyezése
 
-Enable Dev Spaces in the same namespace you used to run your Windows service. The following command enables Dev Spaces in the *dev* namespace:
+Engedélyezze a fejlesztői helyeket a Windows-szolgáltatás futtatásához használt névtérben. A következő parancs engedélyezi a dev Spaces használatát a *fejlesztői* névtérben:
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 ```
 
-## <a name="update-your-windows-service-for-dev-spaces"></a>Update your Windows service for Dev Spaces
+## <a name="update-your-windows-service-for-dev-spaces"></a>Windows-szolgáltatás frissítése a fejlesztői tárhelyekhez
 
-When you enable Dev Spaces on an existing namespace with containers that are already running, by default, Dev Spaces will try and instrument any new containers that run in that namespace. Dev Spaces will also try and instrument any new containers created for service already running in the namespace. To prevent Dev Spaces from instrumenting a container running in your namespace, add the *no-proxy* header to the `deployment.yaml`.
+Ha egy már futó tárolóval rendelkező meglévő névtérben engedélyezi a dev Spaces szolgáltatást, a dev Spaces szolgáltatás alapértelmezés szerint megkísérli a névtérben futó új tárolók kiválasztását. A dev Spaces emellett a névtérben már futó, szolgáltatáshoz létrehozott új tárolókat is megpróbálja kipróbálni. Ha meg szeretné akadályozni, hogy a fejlesztői területek a névtérben futó tárolót használjanak, adja hozzá a *No-proxy* fejlécet a `deployment.yaml`hoz.
 
-Add `azds.io/no-proxy: "true"` to the `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` file:
+`azds.io/no-proxy: "true"` hozzáadása a `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` fájlhoz:
 
 ```yaml
 apiVersion: apps/v1
@@ -119,7 +119,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-Use `helm list` to list the deployment for your Windows service:
+Használja a `helm list` a Windows-szolgáltatás központi telepítésének listázásához:
 
 ```cmd
 $ helm list
@@ -127,18 +127,18 @@ NAME            REVISION    UPDATED                     STATUS      CHART       
 gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-In the above example, the name of your deployment is *gilded-jackal*. Update your Windows service with the new configuration using `helm upgrade`:
+A fenti példában az üzembe helyezés neve *aranyozott-Sakál*. Frissítse Windows-szolgáltatását az új konfigurációval `helm upgrade`használatával:
 
 ```cmd
 $ helm upgrade gilded-jackal . --namespace dev
 Release "gilded-jackal" has been upgraded.
 ```
 
-Since you updated your `deployment.yaml`, Dev Spaces will not try and instrument your service.
+A `deployment.yaml`frissítése óta a dev Spaces nem fogja kipróbálni és kiépíteni a szolgáltatást.
 
-## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Run your Linux application with Azure Dev Spaces
+## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Linux-alkalmazás futtatása az Azure dev Spaces-szel
 
-Navigate to the `webfrontend` directory and use the `azds prep` and `azds up` commands to run your Linux application on your cluster.
+Navigáljon a `webfrontend` könyvtárba, és a `azds prep` és `azds up` parancs használatával futtassa a Linux-alkalmazást a fürtön.
 
 ```console
 cd ../../webfrontend-linux/
@@ -146,7 +146,7 @@ azds prep --public
 azds up
 ```
 
-The `azds prep --public` command generates the Helm chart and Dockerfiles for your application. The `azds up` command runs your service in the namespace.
+Az `azds prep --public` parancs a Helm diagramot és a Dockerfiles hozza létre az alkalmazáshoz. A `azds up` parancs futtatja a szolgáltatást a névtérben.
 
 ```console
 $ azds up
@@ -164,16 +164,16 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-You can see the service running by opening the public URL, which is displayed in the output from the azds up command. In this example, the public URL is `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Navigate to the service in a browser and click on *About* at the top. Verify you see a message from the *mywebapi* service containing the version of Windows the container is using.
+A szolgáltatás futtatásához nyissa meg a nyilvános URL-címet, amely a azds up parancs kimenetében jelenik meg. Ebben a példában a nyilvános URL-cím `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Navigáljon a szolgáltatáshoz egy böngészőben, és kattintson a felül található *Névjegy* elemre. Ellenőrizze, hogy megjelenik-e a *mywebapi* szolgáltatás azon üzenete, amely a tároló által használt Windows-verziót tartalmazza.
 
-![Sample app showing Windows version from mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
+![Minta alkalmazás, amely a Windows-verziót mutatja a mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
+Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 
 > [!div class="nextstepaction"]
-> [Team development in Azure Dev Spaces][team-development-qs]
+> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

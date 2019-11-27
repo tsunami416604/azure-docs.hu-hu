@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Multi-step ACR task
-description: In this tutorial, you learn how to configure an Azure Container Registry Task to automatically trigger a multi-step workflow to build, run, and push container images in the cloud when you commit source code to a Git repository.
+title: Oktatóanyag – többlépéses ACR-feladat
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan indítson el egy többlépéses munkafolyamatot a tároló lemezképek létrehozásához, futtatásához és leküldéséhez a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
@@ -11,18 +11,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456072"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Run a multi-step container workflow in the cloud when you commit source code
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: többlépéses tároló-munkafolyamat futtatása a felhőben a forráskód elküldésekor
 
-In addition to a [quick task](container-registry-tutorial-quick-task.md), ACR Tasks supports multi-step, multi-container-based workflows that can automatically trigger when you commit source code to a Git repository. 
+Egy [gyors feladaton](container-registry-tutorial-quick-task.md)kívül az ACR-feladatok támogatják a többlépéses, többtárolós alapú munkafolyamatokat, amelyek automatikusan elindíthatják a forráskódnak a git-tárházba való beléptetését. 
 
-In this tutorial, you learn how to use example YAML files to define multi-step tasks that build, run, and push one or more container images to a registry when you commit source code. To create a task that only automates a single image build on code commit, see [Tutorial: Automate container image builds in the cloud when you commit source code](container-registry-tutorial-build-task.md). For an overview of ACR Tasks, see [Automate OS and framework patching with ACR Tasks](container-registry-tasks-overview.md),
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja például a YAML-fájlokat olyan többlépéses feladatok definiálásához, amelyek egy vagy több tároló-lemezképet állítanak be egy beállításjegyzékbe a forráskód elküldésekor. Ha olyan feladatot szeretne létrehozni, amely csak egyetlen rendszerkép-összeállítást hajt végre a kód véglegesítve, olvassa el a következő témakört [: oktatóanyag: a tároló rendszerképének automatizálása buildek a felhőben a forráskód elkészítésekor](container-registry-tutorial-build-task.md). Az ACR-feladatok áttekintését lásd: [az operációs rendszer és a keretrendszer javításának automatizálása az ACR-feladatokkal](container-registry-tasks-overview.md),
 
-In this tutorial:
+Ebben az oktatóanyagban:
 
 > [!div class="checklist"]
-> * Define a multi-step task using a YAML file
+> * Többlépéses feladat definiálása YAML-fájl használatával
 > * Tevékenység létrehozása
-> * Optionally add credentials to the task to enable access to another registry
+> * Hitelesítő adatok hozzáadása a feladathoz egy másik beállításjegyzékhez való hozzáférés engedélyezéséhez
 > * A feladat tesztelése
 > * Tevékenységek állapotának megtekintése
 > * A feladat aktiválása kódvéglegesítéssel
@@ -31,17 +31,17 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.62** or later installed and logged in with [az login][az-login]. A verzió azonosításához futtassa a következőt: `az --version`. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Ha helyileg szeretné használni az Azure CLI-t, az Azure CLI **2.0.62** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login]paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepítenie vagy frissítenie kell a CLI-t, tekintse meg az [Azure CLI telepítését][azure-cli]ismertető témakört.
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-## <a name="create-a-multi-step-task"></a>Create a multi-step task
+## <a name="create-a-multi-step-task"></a>Több lépésből álló feladat létrehozása
 
-Now that you've completed the steps required to enable ACR Tasks to read commit status and create webhooks in a repository, create a multi-step task that triggers building, running, and pushing a container image.
+Most, hogy végrehajtotta azokat a lépéseket, amelyek szükségesek ahhoz, hogy az ACR-feladatok beolvassák a véglegesítési állapotot, és webhookokat hozzon létre egy adattárban, hozzon létre egy többlépéses feladatot, amely elindítja a tároló-rendszerkép létrehozását, futtatását és
 
 ### <a name="yaml-file"></a>YAML-fájl
 
-You define the steps for a multi-step task in a [YAML file](container-registry-tasks-reference-yaml.md). The first example multi-step task for this tutorial is defined in the file `taskmulti.yaml`, which is in the root of the GitHub repo that you cloned:
+Egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)a többlépéses feladatok lépéseit adhatja meg. Az oktatóanyag első példa többlépéses feladata a `taskmulti.yaml`fájlban van definiálva, amely a klónozott GitHub-tárház gyökerében található:
 
 ```yml
 version: v1.0.0
@@ -59,15 +59,15 @@ steps:
   - {{.Run.Registry}}/hello-world:{{.Run.ID}}
 ```
 
-This multi-step task does the following:
+Ez a többlépéses feladat a következő műveleteket végzi el:
 
-1. Runs a `build` step to build an image from the Dockerfile in the working directory. The image targets the `Run.Registry`, the registry where the task is run, and is tagged with a unique ACR Tasks run ID. 
-1. Runs a `cmd` step to run the image in a temporary container. This example starts a long-running container in the background and returns the container ID, then stops the container. In a real-world scenario, you might include steps to test the running container to ensure it runs correctly.
-1. In a `push` step, pushes the image that was built to the run registry.
+1. Futtat egy `build` lépést egy rendszerkép kiépítéséhez a munkakönyvtárban lévő Docker. A rendszerkép célja a `Run.Registry`, a beállításjegyzék, amelyben a feladat fut, és egy egyedi ACR-feladat futtatási azonosítója van megjelölve. 
+1. Futtat egy `cmd` lépést a rendszerkép ideiglenes tárolóban való futtatásához. Ez a példa egy hosszan futó tárolót indít a háttérben, és visszaadja a tároló AZONOSÍTÓját, majd leállítja a tárolót. A valós forgatókönyvekben a futó tároló teszteléséhez szükséges lépéseket is megteheti, hogy megfelelően fusson.
+1. Egy `push` lépésben leküldi a futtatási beállításjegyzékbe épített rendszerképet.
 
-### <a name="task-command"></a>Task command
+### <a name="task-command"></a>Feladat parancs
 
-Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. If you don't populate these environment variables, you must manually replace each value wherever it appears in the example commands.
+Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -75,7 +75,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Now, create the task by executing the following [az acr task create][az-acr-task-create] command:
+Most hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával:
 
 ```azurecli-interactive
 az acr task create \
@@ -86,9 +86,9 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-This task specifies that any time code is committed to the *master* branch in the repository specified by `--context`, ACR Tasks will run the multi-step task from the code in that branch. The YAML file specified by `--file` from the repository root defines the steps. 
+Ez a feladat azt adja meg, hogy az `--context`által megadott adattár *főágának minden* alkalommal véglegesíti a rendszer, hogy az ACR-feladatok a több lépésből álló feladatot futtatják az adott ág kódjában. Az adattár gyökerében `--file` által megadott YAML-fájl határozza meg a lépéseket. 
 
-Output from a successful [az acr task create][az-acr-task-create] command is similar to the following:
+A sikeres az [ACR Task Create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
 ```console
 {
@@ -145,15 +145,15 @@ Output from a successful [az acr task create][az-acr-task-create] command is sim
 }
 ```
 
-## <a name="test-the-multi-step-workflow"></a>Test the multi-step workflow
+## <a name="test-the-multi-step-workflow"></a>A többlépéses munkafolyamat tesztelése
 
-To test the multi-step task, trigger it manually by executing the [az acr task run][az-acr-task-run] command:
+A többlépéses feladat teszteléséhez indítsa el manuálisan az az [ACR Task Run][az-acr-task-run] parancs futtatásával:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example1
 ```
 
-Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. The output shows the progress of running each of the task steps. The output below is condensed to show key steps.
+Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. A kimenet a feladatok lépéseinek futtatási folyamatát mutatja. Az alábbi kimenet a legfontosabb lépések megjelenítésére van kitömörítve.
 
 ```console
 Queued a run with ID: cf19
@@ -215,7 +215,7 @@ Run ID: cf19 was successful after 18s
 
 A feladat manuális futtatással való tesztelését követően aktiválja automatikusan a feladatot a forráskód módosításával.
 
-First, ensure you're in the directory containing your local clone of the [repository][sample-repo]:
+Először is győződjön meg arról, hogy az [adattár][sample-repo]helyi klónját tartalmazó könyvtárban van:
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -238,7 +238,7 @@ Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
 
-Once you've pushed a commit to your repository, the webhook created by ACR Tasks fires and kicks off the task in Azure Container Registry. Megjeleníti az aktuálisan futó feladat naplóit az összeállítási folyamat ellenőrzéséhez és monitorozásához:
+Miután elküldte az adattárházba a véglegesített feladatot, az ACR által létrehozott webhook elindítja a feladatait, és elindít Azure Container Registry. Megjeleníti az aktuálisan futó feladat naplóit az összeállítási folyamat ellenőrzéséhez és monitorozásához:
 
 ```azurecli-interactive
 az acr task logs --registry $ACR_NAME
@@ -258,7 +258,7 @@ Run ID: cf1d was successful after 37s
 
 ## <a name="list-builds"></a>Összeállítások listázása
 
-To see a list of the task runs that ACR Tasks has completed for your registry, run the [az acr task list-runs][az-acr-task-list-runs] command:
+Ha szeretné megtekinteni a feladat által futtatott ACR-feladatokat a beállításjegyzékben, futtassa az az [ACR Task List-Run][az-acr-task-list-runs] parancsot:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
@@ -278,17 +278,17 @@ cf1a      example1   linux       Succeeded  Commit     2019-05-03T03:09:32Z  00:
 cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:00:21
 ```
 
-## <a name="create-a-multi-registry-multi-step-task"></a>Create a multi-registry multi-step task
+## <a name="create-a-multi-registry-multi-step-task"></a>Több beállításjegyzékbeli többlépéses feladat létrehozása
 
-ACR Tasks by default has permissions to push or pull images from the registry where the task runs. You might want to run a multi-step task that targets one or more registries in addition to the run registry. For example, you might need to build images in one registry, and store images with different tags in a second registry that is accessed by a production system. This example shows you how to create such a task and provide credentials for another registry.
+Az ACR-feladatok alapértelmezés szerint jogosultak a lemezképek leküldésére vagy lekérésére a feladatot futtató beállításjegyzékből. Előfordulhat, hogy olyan többlépéses feladatot szeretne futtatni, amely egy vagy több beállításjegyzéket céloz meg a futtatási beállításjegyzék mellett. Előfordulhat például, hogy egy beállításjegyzékben lemezképeket kell létrehoznia, és az éles rendszer által elérhető második beállításjegyzékben más címkékkel rendelkező képeket kell tárolnia. Ebből a példából megtudhatja, hogyan hozhat létre egy ilyen feladatot, és hogyan adhat meg hitelesítő adatokat egy másik beállításjegyzékhez.
 
-If you don't already have a second registry, create one for this example. Amennyiben létre kell hoznia a regisztrációs adatbázist, tekintse meg az [előző oktatóanyagot](container-registry-tutorial-quick-task.md) vagy a [Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md) című cikket.
+Ha még nem rendelkezik második beállításjegyzékgel, hozzon létre egyet ehhez a példához. Amennyiben létre kell hoznia a regisztrációs adatbázist, tekintse meg az [előző oktatóanyagot](container-registry-tutorial-quick-task.md) vagy a [Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md) című cikket.
 
-To create the task, you need the name of the registry login server, which is of the form *mycontainerregistrydate.azurecr.io* (all lowercase). In this example, you use the second registry to store images tagged by build date.
+A feladat létrehozásához szüksége lesz a beállításjegyzék bejelentkezési kiszolgálójának nevére, amely az űrlap *mycontainerregistrydate.azurecr.IO* (az összes kisbetűs). Ebben a példában a második beállításjegyzéket használja az összeállítási dátummal címkézett lemezképek tárolásához.
 
 ### <a name="yaml-file"></a>YAML-fájl
 
-The second example multi-step task for this tutorial is defined in the file `taskmulti-multiregistry.yaml`, which is in the root of the GitHub repo that you cloned:
+Az oktatóanyaghoz tartozó második példa több lépésből álló feladat a `taskmulti-multiregistry.yaml`fájlban van definiálva, amely a klónozott GitHub-tárház gyökerében található:
 
 ```yml
 version: v1.0.0
@@ -308,17 +308,17 @@ steps:
   - {{.Values.regDate}}/hello-world:{{.Run.Date}}
 ```
 
-This multi-step task does the following:
+Ez a többlépéses feladat a következő műveleteket végzi el:
 
-1. Runs two `build` steps to build images from the Dockerfile in the working directory:
-    * The first targets the `Run.Registry`, the registry where the task is run, and is tagged with the ACR Tasks run ID. 
-    * The second targets the registry identified by the value of `regDate`, which you set when you create the task (or provide through an external `values.yaml` file passed to `az acr task create`). This image is tagged with the run date.
-1. Runs a `cmd` step to run one of the built containers. This example starts a long-running container in the background and returns the container ID, then stops the container. In a real-world scenario, you might test a running container to ensure it runs correctly.
-1. In a `push` step, pushes the images that were built, the first to the run registry, the second to the registry identified by `regDate`.
+1. Két `build` lépést futtat, hogy rendszerképeket hozzon létre a munkakönyvtár Docker:
+    * Az első célja a `Run.Registry`, a beállításjegyzék, amelyben a feladat fut, és az ACR Tasks futtatási azonosítójával van megjelölve. 
+    * A második a `regDate`értékével azonosított beállításjegyzéket célozza meg, amelyet a feladat létrehozásakor, illetve a `az acr task create`nak átadott külső `values.yaml`-fájlon keresztül adhat meg. Ez a rendszerkép a futtatási dátummal van megjelölve.
+1. Futtat egy `cmd` lépést az egyik létrehozott tároló futtatásához. Ez a példa egy hosszan futó tárolót indít a háttérben, és visszaadja a tároló AZONOSÍTÓját, majd leállítja a tárolót. Egy valós forgatókönyvben a futó tároló tesztelésével ellenőrizheti, hogy megfelelően fut-e.
+1. Egy `push` lépésben leküldi a felépített lemezképeket, az elsőt a futtatási beállításjegyzékbe, a másodikat pedig a `regDate`által azonosított beállításjegyzékbe.
 
-### <a name="task-command"></a>Task command
+### <a name="task-command"></a>Feladat parancs
 
-Using the shell environment variables defined previously, create the task by executing the following [az acr task create][az-acr-task-create] command. Substitute the name of your registry for *mycontainerregistrydate*.
+A korábban definiált rendszerhéj-környezeti változók használatával hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. Helyettesítse be a *mycontainerregistrydate*beállításjegyzékének nevét.
 
 ```azurecli-interactive
 az acr task create \
@@ -330,13 +330,13 @@ az acr task create \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
 
-### <a name="add-task-credential"></a>Add task credential
+### <a name="add-task-credential"></a>Feladat hitelesítő adatainak hozzáadása
 
-To push images to the registry identified by the value of `regDate`, use the [az acr task credential add][az-acr-task-credential-add] command to add login credentials for that registry to the task.
+Ha a lemezképeket `regDate`értékkel azonosított beállításjegyzékbe szeretné leküldeni, használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, és adja hozzá a beállításjegyzékhez tartozó bejelentkezési hitelesítő adatokat a feladathoz.
 
-For this example, we recommend that you create a [service principal](container-registry-auth-service-principal.md) with access to the registry scoped to the *AcrPush* role. To create the service principal, see this [Azure CLI script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
+Ebben a példában azt javasoljuk, hogy hozzon létre egy [egyszerű szolgáltatást](container-registry-auth-service-principal.md) a *AcrPush* szerepkörhöz tartozó beállításjegyzékhez való hozzáféréssel. Az egyszerű szolgáltatás létrehozásához tekintse meg ezt az [Azure CLI-szkriptet](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
 
-Pass the service principal application ID and password in the following `az acr task credential add` command:
+Adja át az egyszerű szolgáltatásnév alkalmazás-AZONOSÍTÓját és jelszavát a következő `az acr task credential add` parancsban:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \
@@ -346,17 +346,17 @@ az acr task credential add --name example2 \
     --password <service-principal-password>
 ```
 
-The CLI returns the name of the registry login server you added.
+A CLI a hozzáadott beállításjegyzékbeli bejelentkezési kiszolgáló nevét adja vissza.
 
-### <a name="test-the-multi-step-workflow"></a>Test the multi-step workflow
+### <a name="test-the-multi-step-workflow"></a>A többlépéses munkafolyamat tesztelése
 
-As in the preceding example, to test the multi-step task, trigger it manually by executing the [az acr task run][az-acr-task-run] command. To trigger the task with a commit to the Git repository, see the section [Trigger a build with a commit](#trigger-a-build-with-a-commit).
+Ahogy az előző példában is, a többlépéses feladat teszteléséhez indítsa el manuálisan az az [ACR Task Run][az-acr-task-run] parancs futtatásával. Ha a feladatot véglegesíteni szeretné a git-tárházban, tekintse meg a Build létrehozása a [commit](#trigger-a-build-with-a-commit)című szakaszt.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. As before, the output shows the progress of running each of the task steps. The output is condensed to show key steps.
+Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. Ahogy korábban is, a kimenet a feladatok lépéseinek futtatási folyamatát mutatja. A kimenet a legfontosabb lépések megjelenítéséhez van tömörítve.
 
 Kimenet:
 
@@ -456,7 +456,7 @@ Run ID: cf1g was successful after 46s
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you learned how to create multi-step, multi-container-based tasks that automatically trigger when you commit source code to a Git repository. For advanced features of multi-step tasks, including parallel and dependent step execution, see the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md). Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre olyan feladatokat, amelyek a tárolórendszerképek alapként szolgáló rendszerképeinek frissítésekor aktiválnak összeállításokat.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre több lépésből álló, többtárolós alapú feladatokat, amelyek automatikusan aktiválódnak a forráskódnak a git-tárházba való beléptetése során. A többlépéses feladatok speciális funkciói, többek között a párhuzamos és a függő lépések végrehajtásával kapcsolatban lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md). Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre olyan feladatokat, amelyek a tárolórendszerképek alapként szolgáló rendszerképeinek frissítésekor aktiválnak összeállításokat.
 
 > [!div class="nextstepaction"]
 > [Összeállítások automatizálása alapként szolgáló rendszerképek frissítésekor](container-registry-tutorial-base-image-update.md)

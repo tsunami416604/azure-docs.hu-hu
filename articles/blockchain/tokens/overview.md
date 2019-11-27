@@ -1,6 +1,6 @@
 ---
-title: What is Azure Blockchain Tokens
-description: Azure Blockchain Tokens is a platform as a service (PaaS) for token issuance and management.
+title: Mi az Azure Blockchain-tokenek?
+description: Az Azure Blockchain-tokenek a tokenek kiállításához és felügyeletéhez használható platformként szolgálnak.
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
@@ -15,32 +15,32 @@ ms.locfileid: "74326086"
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure Blockchain Tokens is a platform as a service (PaaS) for standardized token issuance and management across blockchain ledgers in Azure.
+Az Azure Blockchain-tokenek az Azure-ban szabványosított jogkivonatok kiállítására és felügyeletére szolgáló platform (Blockchain).
 
-Using Azure Blockchain Tokens you can create standardized tokens for your blockchain solution using a pre-built token template. You can also compose your own token template using the service. Once created, use Azure Blockchain Tokens to connect and issue the tokens on a blockchain. Once issued, you can then manage the tokens across multiple blockchain networks.
+Az Azure Blockchain-jogkivonatok használatával szabványosított jogkivonatokat hozhat létre a Blockchain-megoldáshoz egy előre elkészített jogkivonat-sablon használatával. A szolgáltatás használatával saját jogkivonat-sablont is létrehozhat. A létrehozást követően Azure Blockchain-tokenekkel csatlakozhat, és kibocsáthatja a jogkivonatokat egy Blockchain. A kiállítottak után a tokeneket több blockchain-hálózaton is kezelheti.
 
 ## <a name="templates"></a>Sablonok
 
-Use Azure Blockchain Tokens to select a pre-built token template or create your own token template. Azure Blockchain Tokens supports token template composability that allows you to create your own token template based on supported behaviors. Token templates can be used for most blockchain solutions since they map to the most commonly utilized tokens. You can start with a template, personalize it, and deploy the tokens for your solution.
+Az Azure Blockchain-tokenek használatával kiválaszthat egy előre elkészített jogkivonat-sablont, vagy létrehozhat egy saját jogkivonat-sablont. Az Azure Blockchain-tokenek támogatják a jogkivonat-sablonok megírását, amely lehetővé teszi saját jogkivonat-sablon létrehozását a támogatott viselkedések alapján. A token-sablonok a legtöbb blockchain-megoldáshoz használhatók, mivel azok a leggyakrabban használt jogkivonatokra vannak leképezve. Elindíthat egy sablont, személyre szabhatja, és üzembe helyezheti a megoldás jogkivonatait.
 
-For more information on Azure Blockchain Tokens templates, see [Azure Blockchain Tokens templates](templates.md).
+Az Azure Blockchain tokens-sablonokkal kapcsolatos további információkért lásd: [Azure Blockchain tokens sablonok](templates.md).
 
-## <a name="management"></a>Felügyelet
+## <a name="management"></a>Kezelés
 
-Azure Blockchain Tokens provides Azure portal management and APIs to connect to an existing blockchain network. Currently, you can connect to [Azure Blockchain Service](../service/overview.md) or another Ethereum family blockchain.
+Az Azure Blockchain-tokenek Azure Portal felügyeletet és API-kat biztosítanak egy meglévő Blockchain-hálózathoz való kapcsolódáshoz. Jelenleg kapcsolódhat az [Azure Blockchain szolgáltatáshoz](../service/overview.md) vagy egy másik Ethereum Family Blockchain.
 
-Once connected to one or multiple blockchain networks, you can use Azure Blockchain Tokens APIs to issue and manage tokens for use in your blockchain solution. Using APIs, you can integrate token management in your business applications and logic. For example, you can use the REST API to  manage tokens instead of managing tokens directly on the blockchain.
+Ha egy vagy több blockchain-hálózathoz csatlakozik, az Azure Blockchain tokens API-k használatával kiállíthatja és kezelheti a blockchain-megoldásban használható jogkivonatokat. Az API-k használatával integrálhatja a jogkivonat-kezelést az üzleti alkalmazásaiban és a logikában. A jogkivonatok kezeléséhez például használhatja a REST API a jogkivonatok kezelése helyett közvetlenül a blockchain.
 
-## <a name="blockchains-and-accounts"></a>Blockchains and accounts
+## <a name="blockchains-and-accounts"></a>Blokkláncok és fiókok
 
-Azure Blockchain Tokens provides Azure portal management and APIs to create new groups and new blockchain accounts on connected blockchain networks. You can create new accounts directly on your connected networks, and Azure Blockchain Tokens manages your account private keys on your behalf. Using groups, you can group together different blockchain accounts from multiple networks and manage access control via the groups.
+Az Azure Blockchain-tokenek Azure Portal felügyeletet és API-kat biztosítanak új csoportok és új Blockchain-fiókok létrehozásához a csatlakoztatott Blockchain-hálózatokon. Új fiókokat közvetlenül a csatlakoztatott hálózatokon hozhat létre, és az Azure Blockchain-tokenek az Ön nevében kezelik a fiók titkos kulcsait. A csoportok használatával különböző blockchain-fiókokat csoportosíthat több hálózatból, és a csoportokon keresztül kezelheti a hozzáférés-vezérlést.
 
-For more information on Azure Blockchain Tokens account management, see [Azure Blockchain Tokens account management](account-management.md).
+Az Azure Blockchain tokenek Fiókkezelés szolgáltatásával kapcsolatos további információkért lásd az [Azure Blockchain tokenek felügyelete](account-management.md)című témakört.
 
-## <a name="token-taxonomy-framework"></a>Token Taxonomy Framework
+## <a name="token-taxonomy-framework"></a>Jogkivonat-besorolási keretrendszer
 
-Azure Blockchain Tokens is built on a standards-based foundation named the Token Taxonomy Framework (TTF). TTF is a set of deliverables created from the [Token Taxonomy Initiative](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) token working group. The TTI working group defines a business taxonomy for tokens and their behaviors that can be applied across all major ledgers including Ethereum, Quorum, Corda, and Hyperledger Fabric. The working group's goal is to create a framework that standardizes the use of tokens from a business perspective to drive simplification and democratize token based development. By letting the industry define these tokens and their behavior at the business level, the detailed implementation of the tokens are abstracted away from the business logic that manipulates the tokens.
+Az Azure Blockchain-tokenek a jogkivonat-taxonómiai keretrendszer (TTF) nevű szabványon alapuló alapra épülnek. A TTF a [jogkivonat-taxonómiai kezdeményezés](https://entethalliance.org/participate/token-taxonomy-initiative/) (tti) token munkacsoportból létrehozott végtermékek összessége. A TTI Working Group a tokenek és az azokhoz tartozó viselkedések üzleti besorolását határozza meg, amelyek az összes jelentősebb főkönyvre alkalmazhatók, beleértve a Ethereum, a kvórum, a Corda és a Hyperledger-hálót is. A munkacsoport célja, hogy olyan keretrendszert hozzon létre, amely szabványosítja a jogkivonatok üzleti szempontból való használatát, így egyszerűsítve és demokratizálni a jogkivonat-alapú fejlesztést. Azáltal, hogy az iparág definiálja ezeket a jogkivonatokat és azok viselkedését az üzleti szinten, a jogkivonatok részletes megvalósítása a jogkivonatokat kezelő üzleti logikától el lesz távolítva.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+További információ az elérhető [Azure Blockchain-jogkivonat-sablonokról](templates.md).

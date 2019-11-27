@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Choose a load balancing solution for CloudSimple Private Clouds
-description: Describes the load balancing options deploying an application in a Private Cloud
+title: Azure VMware-megoldás a CloudSimple által – válasszon egy terheléselosztási megoldást a CloudSimple privát felhők számára
+description: Ismerteti az alkalmazások privát felhőben való üzembe helyezésének terheléselosztási beállításait.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -15,32 +15,32 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206505"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Choose a load balancing solution for CloudSimple Private Clouds
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Terheléselosztási megoldás kiválasztása a privát felhők CloudSimple
 
-When deploying an application in a CloudSimple Private Cloud, you can choose any of several options for load balancing.
+Ha egy CloudSimple privát felhőben helyez üzembe egy alkalmazást, a terheléselosztáshoz több beállítást is választhat.
 
-You can choose a virtual or software-based load balancer in your CloudSimple private cloud or even use Azure L7 load balancer running in your Azure subscription to front end your web tier VMs running in the CloudSimple Private Cloud. Here, we list a few options:
+A CloudSimple saját felhőben is kiválaszthatja a virtuális vagy szoftveres terheléselosztó szolgáltatást, vagy akár az Azure-előfizetésében futó Azure L7 Load balancert is használhatja, hogy a webes rétegbeli virtuális gépek a CloudSimple privát felhőben fussanak. Itt felsorolunk néhány lehetőséget:
 
-## <a name="virtual-load-balancers"></a>Virtual load balancers
+## <a name="virtual-load-balancers"></a>Virtuális Load Balancer
 
-You can deploy virtual load balancer appliances in your VMware environment through the vCenter interface and configure them to front end your application traffic.
+A vCenter felületen keresztül telepítheti a virtuális Load Balancer-berendezéseket a VMware-környezetbe, és beállíthatja őket az alkalmazás forgalmának befejezéséhez.
 
-Some popular vendors are: NginX: http://nginx.org/en/docs/http/load_balancing.html F5- BigIP - Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+Néhány népszerű gyártó: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Azure L7 load balancer
+## <a name="azure-l7-load-balancer"></a>Azure L7 Load Balancer
 
-When you use Azure Application Gateway as a L7 load balancer for your application running in a Private Cloud, you don’t need to manage the load balancer software. The load balancer software is managed by Azure. All the web tier VMs in the Private Cloud use private IP addresses and don’t require additional NAT rules or public IPs addresses to resolve names. Web tier VMs communicate with the Azure Application Gateway over a private, low-latency, high-bandwidth connection.
+Ha az Azure Application Gatewayt L7 terheléselosztóként használja a privát felhőben futó alkalmazáshoz, nem kell kezelnie a terheléselosztó szoftverét. A terheléselosztó szoftverét az Azure felügyeli. A magánhálózati felhőben lévő összes webes virtuális gép magánhálózati IP-címeket használ, és nincs szükség további NAT-szabályokra vagy nyilvános IP-címekre a nevek feloldásához. A webes rétegbeli virtuális gépek privát, kis késleltetésű, nagy sávszélességű kapcsolaton keresztül kommunikálnak az Azure Application Gateway.
 
-To learn more about how to configure this solution, refer to the solution guide on Using Azure Application Gateway as a L7 load balancer.
+Ha többet szeretne megtudni a megoldás konfigurálásáról, tekintse meg a megoldási útmutatót az Azure Application Gateway L7 Load Balancer használatával történő használatáról.
 
-## <a name="azure-internal-load-balancer"></a>Azure internal load balancer
+## <a name="azure-internal-load-balancer"></a>Azure belső terheléselosztó
 
-If you choose to run your application in a hybrid deployment where the web front-end tier is running within an Azure vNet in your Azure subscription and the DB tier of the application is running in VMware VMs in CloudSimple Private Cloud, you can use Azure internal load balancer (L4 load balancer) in front of your DB tier VMs for traffic management.
+Ha úgy dönt, hogy az alkalmazást egy hibrid telepítésben futtatja, ahol a webes előtér-réteg az Azure-előfizetésben található Azure-vNet belül fut, és az alkalmazás adatbázis-rétege VMware virtuális gépeken fut a CloudSimple privát felhőben, az Azure belső terhelését is használhatja Balancer (L4 Load Balancer) az adatbázis-réteg virtuális gépei előtt a Traffic Management szolgáltatáshoz.
 
-To learn more, see Azure [Internal Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) documentation.
+További információt az Azure [belső Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) dokumentációjában talál.
 
-## <a name="global-server-load-balancer"></a>Global server load balancer
+## <a name="global-server-load-balancer"></a>Globális kiszolgáló Load Balancer
 
-If you are looking for a DNS-based load balancer, then you may either use third party solutions available in Azure Marketplace or go with the native Azure solution.
+Ha DNS-alapú Load balancert keres, akkor használhatja az Azure Marketplace-en elérhető, harmadik féltől származó megoldásokat vagy a natív Azure-megoldást is.
 
-Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions and on-premises, while providing high availability and responsiveness. To learn more, see Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) documentation.
+Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a forgalom optimális elosztását a globális Azure-régiók és a helyszíni szolgáltatások között, miközben magas rendelkezésre állást és válaszadást biztosít. További információt az Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) dokumentációjában talál.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 10/02/2019
-ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823334"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548373"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -31,7 +31,7 @@ A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| Hardver | Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
+| Hardver | Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
 | Virtuális magok száma | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | Maximális memória (memória/mag arány) | 7 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. | 5,1 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
 | Memóriában tárolt OLTP memória maximális száma | Példány korlátja: 1 – 1,5 GB/virtuális mag| Példány korlátja: 0,8 – 1,65 GB/virtuális mag |
@@ -78,7 +78,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[a fájlméret növelése a jobb IO-teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
+| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 
@@ -178,9 +178,9 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md).
 - A díjszabással kapcsolatos információkért lásd: [SQL Database felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

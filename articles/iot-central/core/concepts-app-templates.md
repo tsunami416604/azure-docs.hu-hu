@@ -1,6 +1,6 @@
 ---
-title: What are application templates in Azure IoT Central | Microsoft Docs
-description: Azure IoT Central application templates allow you to jump in to IoT solution development.
+title: Mik az Azure-IoT Centralban található alkalmazások sablonjai | Microsoft Docs
+description: Az Azure IoT Central alkalmazás-sablonok lehetővé teszik, hogy beugorjon a IoT megoldás-fejlesztésbe.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -16,64 +16,64 @@ ms.locfileid: "74480314"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
-Application templates in Azure IoT Central are a tool to help solution builders kickstart their IoT solution development. You can use app templates for everything from getting a feel for what is possible, to fully customizing and your application for resale to your customers.
+Az Azure IoT Central alkalmazás-sablonjai segítenek a megoldás-építők számára a IoT-megoldás fejlesztésében. Az alkalmazás-sablonokkal mindent megtalálhat, hogy a lehető legtöbbet tudja, teljes mértékben testre szabhatja, és az alkalmazást értékesítheti ügyfelei számára.
 
-Application templates consist of:
+Az alkalmazás sablonjai a következőkből állnak:
 
-- Sample operator dashboards
-- Sample device templates
-- Simulated devices producing real-time data
-- Pre-configured rules and jobs
-- Rich documentation including tutorials and how-tos
+- Minta operátor irányítópultok
+- Mintául szolgáló eszközök sablonjai
+- Valós idejű adatfeldolgozást biztosító szimulált eszközök
+- Előre konfigurált szabályok és feladatok
+- Részletes dokumentáció, beleértve az oktatóanyagokat és a TOS
 
-## <a name="preview-templates"></a>Preview templates
+## <a name="preview-templates"></a>Előnézeti sablonok
 
-Your choice of application template determines whether your application uses IoT Central preview features such as Plug and Play for devices.
+Az Ön által választott alkalmazás-sablon meghatározza, hogy az alkalmazás a IoT Central előzetes verziójának funkcióit használja-e, például Plug and Play az eszközökhöz.
 
-Currently, the application templates that use _generally available_ features are:
+Jelenleg az _általánosan elérhető_ szolgáltatásokat használó alkalmazás-sablonok a következők:
 
-- Custom app > Custom application
-- Custom app > Sample Contoso
-- Custom app > Sample Devkits
+- Egyéni alkalmazás > egyéni alkalmazás
+- Egyéni alkalmazás > minta contoso
+- Egyéni alkalmazás > minta Devkits
 
-Currently, the application templates that use _public preview_ features are:
+Jelenleg a _nyilvános előzetes_ verzió funkcióit használó alkalmazás-sablonok a következők:
 
-- Custom app > Preview application
-- Retail > Connected logistics
-- Retail > Digital distribution center
-- Retail > In-store analytics – condition monitoring
-- Retail > In-store analytics – checkout
-- Retail > Smart inventory management
-- Energy > Smart meter monitoring
-- Energy > Solar panel monitoring
-- Government > Connected waste management
-- Government > Water consumption monitoring
-- Government > Water quality monitoring
-- Healthcare > Continuous patient monitoring
+- Egyéni alkalmazás > előzetes verziójának alkalmazása
+- Lakossági > kapcsolódó logisztika
+- Kereskedelmi > Digital Distribution Center
+- Kiskereskedelmi > áruházbeli elemzések – feltételek figyelése
+- Kiskereskedelmi > áruházbeli elemzés – pénztár
+- Kiskereskedelmi > intelligens leltár kezelése
+- Energia > Intelligens Fogyasztásmérők figyelése
+- Energia > napelemek figyelése
+- Kormányzati > csatlakoztatott hulladékgazdálkodás
+- Kormányzati > a víz felhasználásának monitorozása
+- Kormányzati > a víz minőségének monitorozása
+- Egészségügyi > folyamatos beteg monitorozása
 
 > [!NOTE]
-> The **Custom application, Sample Contoso, Sample Devkits** templates are currently  available in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations, while other templates are currently available only in **Europe** and **US** locations.
+> Az **egyéni alkalmazás, a contoso, a minta Devkits** -sablonok jelenleg a **Egyesült Államokban**, **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**vagy az **Európa** helyein érhetők el, míg más sablonok jelenleg csak **Európában** és **USA** -beli helyszíneken érhetők el.
 
-## <a name="industry-focused-templates"></a>Industry focused templates
+## <a name="industry-focused-templates"></a>Iparági fókuszált sablonok
 
-Azure IoT Central is an industry agnostic application platform. Application templates are industry focused examples available for these industries today, with more to come in the future:
+Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalmazás-sablonok olyan iparági fókuszált példák, amelyek manapság elérhetők a jövőben:
 
-- [Retail](../retail/overview-iot-central-retail-pnp.md)
+- [Kiskereskedelmi](../retail/overview-iot-central-retail-pnp.md)
   - Összekapcsolt logisztika
-  - Digitális elosztási központ
-  - In-store analytics - condition monitoring
-  - In-store analytics - checkout
-  - Smart Inventory Management
-- [Energy](../energy/overview-iot-central-energy.md)
-  - Smart meter monitoring
-  - Solar panel monitoring
-- [Government](../government/overview-iot-central-government.md)
+  - Digitális terjesztési központ
+  - Tárolt elemzési állapot figyelése
+  - Tárolt elemzések – pénztár
+  - Intelligens leltár kezelése
+- [Energiafogyasztás](../energy/overview-iot-central-energy.md)
+  - Intelligens fogyasztásmérő figyelése
+  - Napelemek figyelése
+- [Kormány](../government/overview-iot-central-government.md)
   - Összekapcsolt hulladékgazdálkodás
   - Vízfogyasztás figyelése
   - Vízminőség figyelése
-- [Healthcare](../healthcare/overview-iot-central-healthcare.md).
+- [Egészségügyi ellátás](../healthcare/overview-iot-central-healthcare.md).
   - Folyamatos betegfigyelés
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you know what IoT Central application templates are, get started by [creating an IoT Central Application](quick-deploy-iot-central.md).
+Most, hogy tudja, mi IoT Central alkalmazás-sablonok, első lépésként [hozzon létre egy IoT Central alkalmazást](quick-deploy-iot-central.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center and Azure Container Registry
-description: Learn about Azure Security Center's integration with Azure Container Registry
+title: Azure Security Center és Azure Container Registry
+description: Ismerje meg a Azure Security Center integrációját Azure Container Registry
 services: security-center
 documentationcenter: na
 author: memildin
@@ -19,35 +19,35 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229319"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integráció a Security Center (előzetes verzió)
 
-Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
+A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
 
-For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. További információt a [díjszabás](security-center-pricing.md) tartalmaz. With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
+A beállításjegyzék és a lemezképek biztonsági réseinak mélyebb láthatósága érdekében a Azure Security Center Standard csomagjának felhasználói lehetővé teszik a választható tárolói kibocsátásiegység-forgalmi csomagokat. További információt a [díjszabás](security-center-pricing.md) tartalmaz. Ha a köteg engedélyezve van, Security Center automatikusan megkeresi a beállításjegyzékben lévő lemezképeket, amikor egy rendszerképet küld a beállításjegyzékbe.
 
 > [!NOTE]
-> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
+> Security Center a beállításjegyzék első vizsgálata csak azt követően történik meg, hogy engedélyezve van-e a Container registrys csomag, és a rendszerképet leküldi a beállításjegyzékbe.
 
-When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
+Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények a következőhöz hasonló Security Center-javaslatokban érhetők el:
 
-[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![minta Azure Security Center a Azure Container Registry (ACR) tárolt rendszerképben felderített biztonsági réseket](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-## <a name="benefits-of-integration"></a>Benefits of integration
+## <a name="benefits-of-integration"></a>Az integráció előnyei
 
-Security Center identifies ACR registries in your subscription and seamlessly provides:
+Security Center az ACR-jegyzékeket az előfizetésében, és zökkenőmentesen biztosítja a következőket:
 
-* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
+* **Azure-natív sebezhetőségi vizsgálat** az összes leküldött Linux-lemezképhez. Security Center megvizsgálja a képet az iparág vezető sebezhetőségét vizsgáló gyártótól, a Qualys. Ez a natív megoldás alapértelmezés szerint zökkenőmentesen integrálható.
 
-* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
+* **Biztonsági javaslatok** az ismert biztonsági réseket tartalmazó Linux-lemezképekhez. Security Center részletesen ismerteti az egyes jelentett biztonsági réseket és a súlyossági besorolást. Emellett útmutatást nyújt a beállításjegyzékbe leküldett egyes rendszerbiztonsági rések javításához.
 
-![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure Security Center és Azure Container Registry (ACR) – magas szintű áttekintés](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-To learn more about Security Center's container security features, see:
+Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 
-* [Azure Security Center and container security](container-security.md)
+* [Azure Security Center és tárolók biztonsága](container-security.md)
 
-* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+* [Integráció az Azure Kubernetes szolgáltatással](azure-kubernetes-service-integration.md)
 
-* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations
+* [Virtuális gépek védelme](security-center-virtual-machine-protection.md) – a Security Center javaslatainak ismertetése

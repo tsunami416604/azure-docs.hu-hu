@@ -1,7 +1,7 @@
 ---
-title: Create an Azure Kubernetes Service cluster resource
+title: Azure Kubernetes Service-fürt erőforrásának létrehozása
 titleSuffix: Azure Cognitive Services
-description: Learn how to create an Azure Kubernetes Service (AKS) resource.
+description: Ismerje meg, hogyan hozhat létre egy Azure Kubernetes-szolgáltatás (ak) erőforrást.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,36 +16,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383419"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Create an Azure Kubernetes Service cluster resource
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service-fürt erőforrásának létrehozása
 
-1. Go to [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), and select **Create**.
+1. Nyissa meg az [Azure Kubernetes szolgáltatást](https://ms.portal.azure.com/#create/microsoft.aks), és válassza a **Létrehozás**lehetőséget.
 
-1. On the **Basics** tab, enter the following information:
+1. Az **alapvető beállítások** lapon adja meg a következő adatokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
-    |Előfizetés|Válassza ki a megfelelő előfizetést.|
-    |Erőforráscsoport|Select an available resource group.|
-    |Kubernetes cluster name|Enter a name (lowercase).|
-    |Region (Régió)|Select a nearby location.|
-    |Kubernetes version|Whatever value is marked as **(default)** .|
-    |DNS name prefix|Created automatically, but you can override.|
-    |Node size|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Node count|Leave the slider at the default value.|
+    |Előfizetést|Válassza ki a megfelelő előfizetést.|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot.|
+    |Kubernetes-fürt neve|Adjon meg egy nevet (kisbetűs).|
+    |Régió|Válasszon egy közeli helyet.|
+    |Kubernetes verziója|Bármilyen érték van megjelölve **(alapértelmezett)** .|
+    |DNS name prefix|A rendszer automatikusan létrehozta, de felülbírálhatja.|
+    |Csomópont mérete|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Csomópontok száma|Hagyja meg a csúszkát az alapértelmezett értéknél.|
 
-1. On the **Scale** tab, leave **Virtual nodes** and **VM scale sets** set to their default values.
-1. On the **Authentication** tab, leave **Service principal** and **Enable RBAC** set to their default values.
-1. On the **Networking** tab, enter the following selections:
+1. A **skála** lapon hagyja a **virtuális csomópontok** és a virtuálisgép- **méretezési** csoportok beállítást az alapértelmezett értékre.
+1. A **hitelesítés** lapon hagyja változatlanul az **egyszerű szolgáltatásnév** beállítást, és **engedélyezze a RBAC** alapértelmezett értékre való beállítását.
+1. A **hálózatkezelés** lapon adja meg a következő beállításokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
     |HTTP-alkalmazások útválasztása|Nem|
-    |Networking configuration|Basic|
+    |Hálózati konfiguráció|Alapszintű|
 
-1. On the **Monitoring** tab, make sure that **Enable container monitoring** is set to **Yes**, and leave **Log Analytics workspace** as the default value.
-1. On the **Tags** tab, leave the name/value pairs blank for now.
-1. Select **Review and Create**.
-1. After validation passes, select **Create**.
+1. A **figyelés** lapon győződjön meg arról, hogy a **tárolók figyelésének engedélyezése** beállítás az **Igen**értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
+1. A **címkék** lapon hagyja üresen a név/érték párokat.
+1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
+1. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.
 
 > [!NOTE]
-> If validation fails, it might be because of a "Service principal" error. Go back to the **Authentication** tab and then go back to **Review + create**, where validation should run and then pass.
+> Ha az érvényesítés sikertelen, akkor előfordulhat, hogy egy "egyszerű szolgáltatásnév" hiba történt. Lépjen vissza a **hitelesítés** lapra, és térjen vissza az **ellenőrzés + létrehozás**elemre, ahol az érvényesítésnek futnia kell, majd át kell lépnie.

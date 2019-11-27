@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add variable to template
-description: Add variables to your Azure Resource Manager template to simplify the syntax.
+title: Oktatóanyag – változó hozzáadása a sablonhoz
+description: Adja hozzá a változókat a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,49 +12,49 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406054"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Add variables to your Resource Manager template
+# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Oktatóanyag: változók hozzáadása a Resource Manager-sablonhoz
 
-In this tutorial, you learn how to add a variable to your template. Variables simplify your templates by enabling you to write an expression once and reuse it throughout the template. This tutorial takes **7 minutes** to complete.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá változót a sablonhoz. A változók leegyszerűsítik a sablonokat, mivel lehetővé teszi egy kifejezés egyszeri megírását, és az egész sablonban való felhasználását. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-We recommend that you complete the [tutorial about functions](template-tutorial-add-functions.md), but it's not required.
+Javasoljuk, hogy fejezze be a [functions oktatóanyagot](template-tutorial-add-functions.md), de ez nem kötelező.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sablon áttekintése
 
-At the end of the previous tutorial, your template had the following JSON:
+Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
 
-The parameter for the storage account name is hard-to-use because you have to provide a unique name. If you've completed the earlier tutorials in this series, you're probably tired of guessing a unique name. You solve this problem by adding a variable that constructs a unique name for the storage account.
+A Storage-fiók nevének paramétere nem használható, mert egyedi nevet kell megadni. Ha elvégezte a sorozat korábbi oktatóanyagait, akkor valószínűleg egy egyedi nevet is kitalál. Ezt a problémát úgy oldja meg, hogy hozzáad egy változót, amely egyedi nevet hoz létre a Storage-fiókhoz.
 
-## <a name="use-variable"></a>Use variable
+## <a name="use-variable"></a>Változó használata
 
-The following example highlights the changes to add a variable to your template that creates a unique storage account name. Copy the whole file and replace your template with its contents.
+A következő példa kiemeli azokat a módosításokat, amelyek segítségével egy változót adhat hozzá a sablonhoz, amely létrehoz egy egyedi Storage-fiók nevét. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
 
-Notice that it includes a variable named **uniqueStorageName**. This variable uses four functions to construct a string value.
+Figyelje meg, hogy tartalmaz egy **uniqueStorageName**nevű változót. Ez a változó négy függvényt használ egy karakterlánc-érték létrehozásához.
 
-You're already familiar with the [parameters](resource-group-template-functions-deployment.md#parameters) function, so we won't examine it.
+Már ismeri a [Parameters](resource-group-template-functions-deployment.md#parameters) függvényt, ezért nem vizsgáljuk meg.
 
-You're also familiar with the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. In this case, you get the **id** property instead of the **location** property, as shown in the previous tutorial. The **id** property returns the full identifier of the resource group, including the subscription ID and resource group name.
+A [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvényt is ismeri. Ebben az esetben az **ID** tulajdonságot a **Location** tulajdonság helyett az előző oktatóanyagban látható módon kapja meg. Az **ID** tulajdonság az erőforráscsoport teljes azonosítóját adja vissza, beleértve az előfizetés-azonosítót és az erőforráscsoport nevét.
 
-The [uniqueString](resource-group-template-functions-string.md#uniquestring) function creates a 13 character hash value. The returned value is determined by the parameters you pass in. For this tutorial, you use the resource group ID as the input for the hash value. That means you could deploy this template to different resource groups and get a different unique string value. However, you get the same value if you deploy to the same resource group.
+A [uniqueString](resource-group-template-functions-string.md#uniquestring) függvény egy 13 karakterből álló kivonatoló értéket hoz létre. A visszaadott értéket a megadott paraméterek határozzák meg. Ebben az oktatóanyagban az erőforráscsoport AZONOSÍTÓját használja a kivonat értékének bemenetként. Ez azt jelenti, hogy ezt a sablont különböző erőforráscsoporthoz helyezheti üzembe, és egy másik egyedi karakterláncot is beszerezhet. Ugyanakkor ugyanezt az értéket kell megkapnia, ha ugyanarra az erőforrás-csoportra telepíti.
 
-The [concat](resource-group-template-functions-string.md#concat) function takes values and combines them. For this variable, it takes the string from the parameter and the string from the uniqueString function, and combines them into one string.
+A [concat](resource-group-template-functions-string.md#concat) függvény értékeket vesz fel, és egyesíti azokat. Ehhez a változóhoz a karakterláncot a paraméterből és a karakterláncot a uniqueString függvényből veszi át, és egyetlen karakterlánccá egyesíti őket.
 
-The **storagePrefix** parameter enables you to pass in a prefix that helps you identify storage accounts. You can create your own naming convention that makes it easier to identify storage accounts after deployment from a long list of resources.
+A **storagePrefix** paraméter lehetővé teszi, hogy olyan előtagot adjon át, amely segítséget nyújt a Storage-fiókok azonosításában. Létrehozhat egy saját elnevezési konvenciót, amely megkönnyíti a tárolási fiókok azonosítását az erőforrások hosszú listájáról való üzembe helyezés után.
 
-Finally, notice that the storage name is now set to the variable instead of a parameter.
+Végezetül figyelje meg, hogy a tároló neve már egy paraméter helyett a változóra van beállítva.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Let's deploy the template. Deploying this template is easier than the previous templates because you provide just the prefix for the storage name.
+Végezzük el a sablon üzembe helyezését. A sablon üzembe helyezése egyszerűbb, mint az előző sablonok, mert csak a tároló nevének előtagját adja meg.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,18 +81,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed. The name of the storage account is **store** plus a string of random characters.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
+1. Láthatja, hogy a Storage-fiók erőforrása telepítve van. A Storage-fiók **neve és egy** véletlenszerű karakterből álló karakterlánc.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
@@ -101,7 +101,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you added a variable that creates a unique name for a storage account. In the next tutorial, you return a value from the deployed storage account.
+Ebben az oktatóanyagban egy olyan változót adott hozzá, amely egyedi nevet hoz létre egy Storage-fiókhoz. A következő oktatóanyagban egy értéket ad vissza a központilag telepített Storage-fiókból.
 
 > [!div class="nextstepaction"]
-> [Add outputs](template-tutorial-add-outputs.md)
+> [Kimenetek hozzáadása](template-tutorial-add-outputs.md)

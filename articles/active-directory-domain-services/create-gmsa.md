@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898227"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546311"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure AD Domain Services
 
-Az alkalmazásoknak és szolgáltatásoknak gyakran identitásra van szükségük a más erőforrásokkal való hitelesítéshez. Előfordulhat például, hogy egy webszolgáltatásnak hitelesítenie kell magát egy adatbázis-szolgáltatásban. Ha egy alkalmazásnak vagy szolgáltatásnak több példánya van, például egy webkiszolgáló-Farm, akkor manuálisan hozza létre és konfigurálja az adott erőforrásokhoz tartozó identitásokat. Ehelyett egy csoportosan felügyelt szolgáltatásfiók (gMSA) hozható létre a Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. A Windows operációs rendszer automatikusan kezeli a gMSA hitelesítő adatait, ami leegyszerűsíti a nagyméretű erőforrások kezelését.
+Az alkalmazásoknak és szolgáltatásoknak gyakran identitásra van szükségük a más erőforrásokkal való hitelesítéshez. Előfordulhat például, hogy egy webszolgáltatásnak hitelesítenie kell magát egy adatbázis-szolgáltatásban. Ha egy alkalmazásnak vagy szolgáltatásnak több példánya van, például egy webkiszolgáló-Farm, akkor manuálisan hozza létre és konfigurálja az adott erőforrásokhoz tartozó identitásokat.
 
-Ez a cikk bemutatja, hogyan hozhat létre gMSA egy Azure AD DS felügyelt tartományban.
+Ehelyett egy csoportosan felügyelt szolgáltatásfiók (gMSA) hozható létre a Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. A Windows operációs rendszer automatikusan kezeli a gMSA hitelesítő adatait, ami leegyszerűsíti a nagyméretű erőforrások kezelését.
+
+Ez a cikk bemutatja, hogyan hozhat létre gMSA egy Azure AD DS felügyelt tartományban Azure PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -60,6 +62,9 @@ Mivel az Azure AD DS felügyelt tartományokat a Microsoft zárolja és kezeli, 
 
 Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizationalUnit][New-AdOrganizationalUnit] parancsmag használatával. Az egyéni szervezeti egységek létrehozásával és kezelésével kapcsolatos további információkért lásd: [Egyéni szervezeti egységek az Azure ad DSban][create-custom-ou].
 
+> [!TIP]
+> A lépések gMSA létrehozásához [használja a felügyeleti virtuális gépet][tutorial-create-management-vm]. Ennek a felügyeleti virtuális gépnek már rendelkeznie kell a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartományhoz való kapcsolódással.
+
 A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *contoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
 
 ```powershell
@@ -90,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 Az alkalmazások és a szolgáltatások mostantól úgy konfigurálhatók, hogy igény szerint használják a gMSA.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportosan felügyelt szolgáltatásfiókokat kapcsolatos további információkért lásd: [Bevezetés a csoportosan felügyelt szolgáltatásfiókok][gmsa-start]használatába.
 

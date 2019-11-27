@@ -1,5 +1,5 @@
 ---
-title: Next steps for Anomaly Detector quickstarts
+title: Következő lépések az anomáliák Kiderítő lépéseihez
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -17,20 +17,20 @@ ms.locfileid: "74483037"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with the resource group.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések
 
 Fogalmak:
 
-* [What is the Anomaly Detector API?](../overview.md)
-* [Anomaly detection methods](../how-to/identify-anomalies.md)
-* [Best practices when using the Anomaly Detector API.](../concepts/anomaly-detection-best-practices.md) 
+* [Mi a rendellenesség-Kiderítő API?](../overview.md)
+* [Anomáliák észlelési módszerei](../how-to/identify-anomalies.md)
+* [Ajánlott eljárások az anomália-detektor API használatakor.](../concepts/anomaly-detection-best-practices.md) 
 
 Oktatóanyagok:
 
-* [Visualize anomalies as a batch using Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
-* [Anomaly detection on streaming data using Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
+* [Anomáliák megjelenítése batch használatával Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
+* [Adatkezelési rendellenességek észlelése Azure Databricks használatával](../tutorials/anomaly-detection-streaming-databricks.md)

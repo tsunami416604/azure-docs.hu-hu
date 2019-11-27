@@ -1,6 +1,6 @@
 ---
-title: Use Visual Studio Code to connect to Azure Blockchain Service
-description: Connect to an Azure Blockchain Service consortium network using the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code
+title: A Visual Studio Code használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
+description: Kapcsolódás Azure Blockchain Service Consortium-hálózathoz a Visual Studio Code-ban található Ethereum-bővítményhez készült Azure Blockchain Development Kit használatával
 ms.date: 11/19/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
@@ -11,70 +11,70 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455984"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network
+# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: Azure Blockchain Service Consortium-hálózathoz való kapcsolódás a Visual Studio Code használatával
 
-In this quickstart, you install and use the Azure Blockchain Development Kit for Ethereum Visual Studio Code (VS Code) extension to attach to a consortium on Azure Blockchain Service. The Azure Blockchain Development Kit simplifies how you create, connect, build, and deploy smart contracts on Ethereum blockchain ledgers.
+Ebben a rövid útmutatóban a Ethereum Visual Studio Code (VS Code) bővítményhez készült Azure Blockchain Development Kit használatával telepítheti és használhatja az Azure Blockchain szolgáltatásban található konzorciumhoz való csatolást. Az Azure Blockchain Development Kit leegyszerűsíti a Ethereum Blockchain-főkönyvekben található intelligens szerződések létrehozását, összekapcsolását, létrehozását és üzembe helyezését.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x or higher](https://nodejs.org/download)
-* [Git 2.10.x or higher](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Add python.exe to your path. Python version 2.7.15 in your path is required for Azure Blockchain Development Kit.
-* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+* [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x vagy újabb](https://nodejs.org/download)
+* [Git 2.10. x vagy újabb](https://git-scm.com)
+* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) Adja hozzá a Python. exe fájlt az elérési úthoz. Az Azure Blockchain Development Kit 2.7.15 Python-verzióra van szükség az elérési úton.
+* [Szarvasgomba 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI-6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-On Windows, an installed C++ compiler is required for the node-gyp module. You can use the MSBuild tools:
+Windows rendszeren a Node- C++ GYP modulhoz telepítve kell lennie egy telepített fordítónak. Használhatja az MSBuild-eszközöket:
 
-* If Visual Studio 2017 is installed, configure npm to use the MSBuild tools with the command `npm config set msvs_version 2017 -g`
-* If Visual Studio 2019 is installed, set the MS build tools path for npm. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* Otherwise, install the stand-alone VS Build tools using `npm install --global windows-build-tools` in an elevated *Run as administrator* command shell.
+* Ha a Visual Studio 2017 telepítve van, konfigurálja a NPM az MSBuild-eszközök használatára a következő paranccsal `npm config set msvs_version 2017 -g`
+* Ha a Visual Studio 2019 telepítve van, állítsa be az MS Build Tools elérési útját a NPM. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Ellenkező esetben telepítse az önálló és Build eszközöket a `npm install --global windows-build-tools` használatával egy emelt szintű *Futtatás rendszergazdaként* parancs-rendszerhéjban.
 
-For more information about node-gyp, see the [node-gyp repository on GitHub](https://github.com/node-gyp).
+További információ a Node-GYP-ről: [Node-GYP adattár a githubon](https://github.com/node-gyp).
 
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Verify Azure Blockchain Development Kit environment
+### <a name="verify-azure-blockchain-development-kit-environment"></a>Az Azure Blockchain Development Kit-környezet ellenőrzése
 
-Azure Blockchain Development Kit verifies your development environment prerequisites have been met. To verify your development environment:
+Az Azure Blockchain Development Kit ellenőrzi, hogy teljesülnek-e a fejlesztési környezet előfeltételei. A fejlesztési környezet ellenőrzése:
 
-From the VS Code command palette, choose **Azure Blockchain: Show Welcome Page**.
+A VS Code parancs palettáján válassza az **Azure Blockchain: Kezdőlap megjelenítése**lehetőséget.
 
-Azure Blockchain Development Kit runs a validation script that takes about a minute to complete. You can view the output by selecting **Terminal > New Terminal**. In the terminal menu bar, select the **Output** tab and **Azure Blockchain** in the dropdown. Successful validation looks like the following image:
+Az Azure Blockchain Development Kit olyan érvényesítési parancsfájlt futtat, amely körülbelül egy percet vesz igénybe. Megtekintheti a kimenetet a **terminal > új terminál**lehetőség kiválasztásával. A terminál menüsorában válassza a **kimenet** fület és az **Azure Blockchain** a legördülő menüben. A sikeres érvényesítés az alábbi képhez hasonlóan néz ki:
 
-![Valid development environment](./media/connect-vscode/valid-environment.png)
+![Érvényes fejlesztési környezet](./media/connect-vscode/valid-environment.png)
 
- If you are missing a required tool, a new tab named **Azure Blockchain Development Kit - Preview** lists the required tools with download links.
+ Ha hiányzik egy szükséges eszköz, az **Azure Blockchain Development Kit** nevű új lap tartalmazza a letöltési hivatkozásokkal rendelkező szükséges eszközöket.
 
-![Dev kit required apps](./media/connect-vscode/required-apps.png)
+![Fejlesztői csomaghoz szükséges alkalmazások](./media/connect-vscode/required-apps.png)
 
-Install any missing prerequisites before continuing with the quickstart.
+A rövid útmutató folytatása előtt telepítse a hiányzó előfeltételeket.
 
-## <a name="connect-to-consortium-member"></a>Connect to consortium member
+## <a name="connect-to-consortium-member"></a>Kapcsolódás a konzorcium tagjához
 
-You can connect to consortium members using the Azure Blockchain Development Kit VS Code extension. Once connected to a consortium, you can compile, build, and deploy smart contracts to an Azure Blockchain Service consortium member.
+A konzorcium tagjaihoz az Azure Blockchain Development Kit VS Code bővítmény használatával csatlakozhat. A konzorciumhoz való csatlakozás után intelligens szerződéseket állíthat össze, építhet ki és helyezhet üzembe egy Azure Blockchain Service Consortium-tag számára.
 
-If you don't have access to an Azure Blockchain Service consortium member, complete the prerequisite [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md).
+Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre az előfeltételként szükséges rövid útmutatót [: hozzon létre egy Blockchain-tagot a Azure Portal vagy a](create-member.md) rövid útmutató [: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md).
 
-1. In the VS Code explorer pane, expand the **Azure Blockchain** extension.
-1. Select **Connect to Consortium**.
+1. A VS Code Explorer ablaktáblán bontsa ki az **Azure Blockchain** bővítményt.
+1. Válassza **a kapcsolódás konzorciumhoz**lehetőséget.
 
-   ![Connect to consortium](./media/connect-vscode/connect-consortium.png)
+   ![Kapcsolódás a konzorciumhoz](./media/connect-vscode/connect-consortium.png)
 
-    If prompted for Azure authentication, follow the prompts to authenticate using a browser.
-1. Choose **Connect to Azure Blockchain Service consortium** in the command palette dropdown.
-1. Choose the subscription and resource group associated with your Azure Blockchain Service consortium member.
-1. Choose your consortium from the list.
+    Ha az Azure-hitelesítésre kéri, kövesse az utasításokat a böngészőben való hitelesítéshez.
+1. Válassza a **Kapcsolódás az Azure Blockchain Service consortiumhoz** lehetőséget a parancssor legördülő menüben.
+1. Válassza ki az Azure Blockchain Service Consortium-taghoz társított előfizetést és erőforráscsoportot.
+1. Válassza ki a konzorciumot a listából.
 
-The consortium and blockchain members are listed in the VS Code explorer side bar.
+A konzorcium és a blockchain tagjai a VS Code Explorer oldalsó sávján jelennek meg.
 
-![Consortium displayed in explorer](./media/connect-vscode/consortium-node.png)
+![A konzorcium megjelenik az Explorerben](./media/connect-vscode/consortium-node.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you used Azure Blockchain Development Kit for Ethereum VS Code extension to attach to a consortium on Azure Blockchain Service. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
+Ebben a rövid útmutatóban a Ethereum VS Code bővítményhez készült Azure Blockchain Development Kit használta az Azure Blockchain Service-konzorciumhoz való csatlakoztatáshoz. Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 
 > [!div class="nextstepaction"]
-> [Create, build, and deploy smart contracts on Azure Blockchain Service](send-transaction.md)
+> [Intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben](send-transaction.md)

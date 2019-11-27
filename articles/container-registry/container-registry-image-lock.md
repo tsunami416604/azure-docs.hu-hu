@@ -1,6 +1,6 @@
 ---
 title: Rendszerképek zárolása
-description: Set attributes for a container image or repository so it can't be deleted or overwritten in an Azure container registry.
+description: Adja meg a tárolók rendszerképének vagy tárházának attribútumait, hogy ne lehessen törölni vagy felülírni az Azure Container registryben.
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
@@ -10,33 +10,33 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456328"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Lock a container image in an Azure container registry
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
 
-In an Azure container registry, you can lock an image version or a repository so that it can't be deleted or updated. To lock an image or a repository, update its attributes using the Azure CLI command [az acr repository update][az-acr-repository-update]. 
+Az Azure Container registryben zárolhatja a rendszerkép verzióját vagy a tárházat, így nem törölhető és nem frissíthető. Egy rendszerkép vagy egy tárház zárolásához frissítse az attribútumait az Azure CLI-parancs az [ACR repository Update][az-acr-repository-update]paranccsal. 
 
-This article requires that you run the Azure CLI in Azure Cloud Shell or locally (version 2.0.55 or later recommended). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> This article doesn't apply to locking an entire registry, for example, using **Settings > Locks** in the Azure portal, or `az lock` commands in the Azure CLI. Locking a registry resource doesn't prevent you from creating, updating, or deleting data in repositories. Locking a registry only affects management operations such as adding or deleting replications, or deleting the registry itself. More information in [Lock resources to prevent unexpected changes](../azure-resource-manager/resource-group-lock-resources.md).
+> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/resource-group-lock-resources.md)érdekében.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
-By default, a tagged image in Azure Container Registry is *mutable*, so with appropriate permissions you can repeatedly update and push an image with the same tag to a registry. Container images can also be [deleted](container-registry-delete.md) as needed. This behavior is useful when you develop images and need to maintain a size for your registry.
+Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség szerint is [törölheti](container-registry-delete.md) . Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
 
-However, when you deploy a container image to production, you might need an *immutable* container image. An immutable image is one that you can't accidentally delete or overwrite. Use the [az acr repository update][az-acr-repository-update] command to set repository attributes so you can:
+Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat *, hogy egy* nem módosítható tároló-lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni. A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
 
-* Lock an image version, or an entire repository
+* Rendszerkép verziójának vagy teljes tárházának zárolása
 
-* Protect an image version or repository from deletion, but allow updates
+* Rendszerkép-verzió vagy-tárház védetté tétele törlésből, de frissítések engedélyezése
 
-* Prevent read (pull) operations on an image version, or an entire repository
+* Olvasási (lekéréses) műveletek megakadályozása egy rendszerkép vagy egy teljes tárház esetében
 
-See the following sections for examples.
+Példákat a következő részekben talál.
 
-## <a name="lock-an-image-or-repository"></a>Lock an image or repository 
+## <a name="lock-an-image-or-repository"></a>Rendszerkép vagy adattár zárolása 
 
-### <a name="show-the-current-repository-attributes"></a>Show the current repository attributes
-To see the current attributes of a repository, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-repository-attributes"></a>Az aktuális tárház attribútumainak megjelenítése
+A tárház aktuális attribútumainak megtekintéséhez futtassa a következőt az [ACR adattár show][az-acr-repository-show] paranccsal:
 
 ```azurecli
 az acr repository show \
@@ -44,8 +44,8 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>Show the current image attributes
-To see the current attributes of a tag, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-image-attributes"></a>Az aktuális képattribútum megjelenítése
+A címkék aktuális attribútumainak megtekintéséhez futtassa a következőt az [ACR adattár show][az-acr-repository-show] paranccsal:
 
 ```azurecli
 az acr repository show \
@@ -53,9 +53,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>Lock an image by tag
+### <a name="lock-an-image-by-tag"></a>Rendszerkép zárolása címke alapján
 
-To lock the *myrepo/myimage:tag* image in *myregistry*, run the following [az acr repository update][az-acr-repository-update] command:
+A *myrepo/MyImage: címke* rendszerképének zárolásához a *myregistry*-ben futtassa a következőt az [ACR adattár Update][az-acr-repository-update] paranccsal:
 
 ```azurecli
 az acr repository update \
@@ -63,9 +63,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>Lock an image by manifest digest
+### <a name="lock-an-image-by-manifest-digest"></a>Rendszerkép zárolása manifest Digest használatával
 
-To lock a *myrepo/myimage* image identified by manifest digest (SHA-256 hash, represented as `sha256:...`), run the following command. (To find the manifest digest associated with one or more image tags, run the [az acr repository show-manifests][az-acr-repository-show-manifests] command.)
+A manifest Digest által azonosított *myrepo-vagy MyImage* -rendszerkép zárolásához (SHA-256 kivonat, amely `sha256:...`néven szerepel) futtassa a következő parancsot. (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
 
 ```azurecli
 az acr repository update \
@@ -73,9 +73,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>Lock a repository
+### <a name="lock-a-repository"></a>Adattár zárolása
 
-To lock the *myrepo/myimage* repository and all images in it, run the following command:
+A *myrepo/MyImage* adattár és a benne található összes rendszerkép zárolásához futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -83,11 +83,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>Protect an image or repository from deletion
+## <a name="protect-an-image-or-repository-from-deletion"></a>Rendszerkép vagy adattár törlése a törlésből
 
-### <a name="protect-an-image-from-deletion"></a>Protect an image from deletion
+### <a name="protect-an-image-from-deletion"></a>Rendszerkép elleni védelem törlése
 
-To allow the *myrepo/myimage:tag* image to be updated but not deleted, run the following command:
+A következő parancs futtatásával engedélyezheti a *myrepo/MyImage: a címke* rendszerképének frissítését, de nem törölheti:
 
 ```azurecli
 az acr repository update \
@@ -95,9 +95,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>Protect a repository from deletion
+### <a name="protect-a-repository-from-deletion"></a>Adattár elleni védelem törlése
 
-The following command sets the *myrepo/myimage* repository so it can't be deleted. Individual images can still be updated or deleted.
+A következő parancs beállítja a *myrepo/MyImage* tárházat, így nem törölhető. Az egyes lemezképek továbbra is frissíthetők vagy törölhetők.
 
 ```azurecli
 az acr repository update \
@@ -105,9 +105,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>Prevent read operations on an image or repository
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>Olvasási műveletek megakadályozása egy képen vagy adattáron
 
-To prevent read (pull) operations on the *myrepo/myimage:tag* image, run the following command:
+A következő parancs futtatásával megakadályozhatja az olvasási (lekéréses) műveleteket a *myrepo/MyImage: tag* rendszerképén:
 
 ```azurecli
 az acr repository update \
@@ -115,7 +115,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-To prevent read operations on all images in the *myrepo/myimage* repository, run the following command:
+A következő parancs futtatásával megakadályozhatja, hogy az olvasási műveletek a *myrepo/MyImage* adattár összes lemezképén fussanak:
 
 ```azurecli
 az acr repository update \
@@ -123,9 +123,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>Unlock an image or repository
+## <a name="unlock-an-image-or-repository"></a>Rendszerkép vagy adattár zárolásának feloldása
 
-To restore the default behavior of the *myrepo/myimage:tag* image so that it can be deleted and updated, run the following command:
+A következő parancs futtatásával állíthatja vissza a *myrepo/MyImage: címke* rendszerképének alapértelmezett viselkedését, hogy törölhető és frissítve legyen:
 
 ```azurecli
 az acr repository update \
@@ -133,7 +133,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-To restore the default behavior of the *myrepo/myimage* repository and all images so that they can be deleted and updated, run the following command:
+A *myrepo/MyImage* adattár és az összes rendszerkép alapértelmezett viselkedésének visszaállításához, hogy azok törölhetők és frissíthetők legyenek, futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -143,11 +143,11 @@ az acr repository update \
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you learned about using the [az acr repository update][az-acr-repository-update] command to prevent deletion or updating of image versions in a repository. To set additional attributes, see the [az acr repository update][az-acr-repository-update] command reference.
+Ebből a cikkből megtudhatta, hogyan használhatja az az [ACR adattár Update][az-acr-repository-update] parancsot az adattárban található képverziók törlésének vagy frissítésének megakadályozására. További attribútumok beállításához tekintse meg az az [ACR adattár Update][az-acr-repository-update] Command Reference című témakört.
 
-To see the attributes set for an image version or repository, use the [az acr repository show][az-acr-repository-show] command.
+A rendszerkép-verzióhoz vagy-tárházhoz beállított attribútumok megtekintéséhez használja az az [ACR repository show][az-acr-repository-show] parancsot.
 
-For details about delete operations, see [Delete container images in Azure Container Registry][container-registry-delete].
+A törlési műveletekkel kapcsolatos részletekért lásd: [tárolók rendszerképének törlése Azure Container Registry][container-registry-delete].
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

@@ -1,14 +1,14 @@
 ---
-title: IRS 1075 terv minta – vezérlés leképezése
+title: IRS 1075 tervrajz – minta vezérlők
 description: Az IRS 1075 Blueprint minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 13a9396e515c3c0f5c36f56bf8c1f586844e8f65
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 86570012000e660b53b2c3c7291b9ca98576a004
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267824"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546830"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075 tervrajzi minta leképezésének vezérlése
 
@@ -89,11 +89,11 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
+- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5 Válasz a naplózási feldolgozási hibákra
 
@@ -110,11 +110,11 @@ A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics mun
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
+- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 naplózási generáció
 
@@ -122,11 +122,11 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
+- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
@@ -297,11 +297,11 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
+- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon

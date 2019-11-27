@@ -1,5 +1,5 @@
 ---
-title: SAP HANA Backup támogatási mátrixa
+title: A SAP HANA biztonsági mentésének támogatási mátrixa
 description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és korlátozásokat, amikor az Azure Backup használatával biztonsági másolatot készít SAP HANA adatbázisokról az Azure-beli virtuális gépeken.
 ms.topic: conceptual
 ms.date: 11/7/2019

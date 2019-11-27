@@ -1,7 +1,7 @@
 ---
-title: Connect to a knowledge store (preview) with Power BI
+title: Kapcsolódás a Knowledge Store-hoz (előzetes verzió) Power BI
 titleSuffix: Azure Cognitive Search
-description: Connect an Azure Cognitive Search knowledge store (preview) with Power BI for analysis and exploration.
+description: Egy Azure Cognitive Search Knowledge Store (előzetes verzió) összekötése az elemzéshez és a feltáráshoz Power BI.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -15,73 +15,73 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406590"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Connect a knowledge store with Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
 > [!IMPORTANT] 
-> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-In this article, learn how to connect to and explore a knowledge store using Power Query in the Power BI Desktop app. You can get started faster with templates, or build a custom dashboard from scratch.
+Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot.
 
-+ Follow the steps in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough. You will also need the name of the Azure storage account that you used to create the knowledge store, along with its access key from the Azure portal.
++ Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a REST használatával, és hozza létre az ebben az útmutatóban használt, a minta tudásbázist. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
-+ [Install Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Sample Power BI template - Azure portal only
+## <a name="sample-power-bi-template---azure-portal-only"></a>Példa Power BI sablonra – csak Azure Portal
 
-If you [created your knowledge store using the Azure portal](knowledge-store-create-portal.md), you can use the [Azure Cognitive Search Power BI template sample](https://github.com/Azure-Samples/cognitive-search-templates) to view and experiment with Power BI visualizations. This template is also available for download when you step through the **Import data** wizard.
+Ha [a Azure Portal használatával hozta létre a Knowledge Store](knowledge-store-create-portal.md)-t, az [Azure Cognitive Search Power bi sablon minta](https://github.com/Azure-Samples/cognitive-search-templates) használatával megtekintheti és kísérletezhet Power bi vizualizációkkal. Ez a sablon az **adatimportálás** varázsló lépésein keresztül is letölthető.
 
-The sample template will automatically perform the setup steps outlined in the remainder of this article. However, if you used the REST API to create your knowledge store, skip the template and use the remaining sections in this article to connect your knowledge store to Power BI. Start with [Connect with Power BI](#connect-with-power-bi).
+A minta sablon automatikusan végrehajtja a jelen cikk további részében ismertetett telepítési lépéseket. Ha azonban a REST API használatával hozza létre a tudásbázist, ugorja át a sablont, és használja a cikk további részeit a Knowledge Store Power BIhoz való összekapcsolásához. Kezdje a [kapcsolatot a Power BIval](#connect-with-power-bi).
 
-The sample template includes several visualizations, such as WordCloud and Network Navigator. Some visualizations in the template, such as the Locations map and the Entity-Graph Viewer, will not show data for the sample knowledge store created in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md). This is because only a subset of the AI enrichments available in the **Import data** wizard were used.
+A minta sablon több vizualizációt tartalmaz, például a WordCloud és a Network Navigator alkalmazást. A sablon egyes vizualizációi, például a helyszínek és az entitás – gráf megjelenítője nem jeleníti meg a [Tudásbázis létrehozása a Azure Portal a Knowledge Store](knowledge-store-create-portal.md)-ban létrehozott minta-tároló adatait. Ennek az az oka, hogy a rendszer csak az **adatimportálás** VARÁZSLÓBAN elérhető AI-dúsítások egy részhalmazát használta.
 
-![Sample Azure Cognitive Search Power BI Template](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Sample Power BI template")
+![Példa Azure Cognitive Search Power BI-sablonra](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Minta Power BI sablon")
 
 ## <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
-1. Start Power BI Desktop and click **Get data**.
+1. Indítsa el Power BI Desktop és kattintson **az adatlekérdezés**gombra.
 
-1. In the **Get Data** window, select **Azure**, and then select **Azure Table Storage**.
+1. Az **adatlekérdezés** ablakban válassza az **Azure**lehetőséget, majd válassza az **Azure Table Storage**elemet.
 
 1. Kattintson a **Connect** (Csatlakozás) gombra.
 
-1. For **Account Name or URL**, enter in your Azure Storage account name (the full URL will be created for you).
+1. A **fiók neve vagy URL-címe**mezőben adja meg az Azure Storage-fiók nevét (a teljes URL-cím lesz létrehozva).
 
-1. If prompted, enter the storage account key.
+1. Ha a rendszer kéri, adja meg a Storage-fiók kulcsát.
 
-1. Select the *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*, and *hotelReviewsSsPages* tables. These tables are Azure table projections of the hotel reviews sample data and include the AI enrichments that were selected when the knowledge store was created.
+1. Válassza ki a *hotelReviewsSsDocument*, a *HotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages* táblákat. Ezek a táblák az Azure Table-kivetítések, amelyek a szálloda által áttekintett mintaadatok, és tartalmazzák azokat a mesterséges intelligenciát, amelyeket a rendszer a Knowledge Store létrehozásakor választott ki.
 
-1. Click **Load**.
+1. Kattintson a **Betöltés**elemre.
 
-1. On the top ribbon, click **Edit Queries** to open the **Power Query Editor**.
+1. A felső menüszalagon kattintson a **lekérdezések szerkesztése** elemre a **Power Query-szerkesztő**megnyitásához.
 
-   ![Open Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Open Power Query")
+   ![Power Query megnyitása](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query megnyitása")
 
-1. Select *hotelReviewsSsDocument*, and then remove the *PartitionKey*, *RowKey*, and *Timestamp* columns. 
+1. Válassza a *hotelReviewsSsDocument*lehetőséget, majd távolítsa el a *PartitionKey*, a *RowKey*és az *időbélyegző* oszlopokat. 
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edit tables")
+   ![Táblák szerkesztése](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Táblák szerkesztése")
 
-1. Click the icon with opposing arrows at the upper right side of the table to expand the *Content*. When the list of columns appears, select all columns, and then deselect columns that start with 'metadata'. Click **OK** to show the selected columns.
+1. A *tartalom*kibontásához kattintson a táblázat jobb felső sarkában található, ellentétes nyíllal ellátott ikonra. Amikor megjelenik az oszlopok listája, válassza a minden oszlop lehetőséget, majd törölje a metaadatokkal kezdődő oszlopokat. A kijelölt oszlopok megjelenítéséhez kattintson **az OK** gombra.
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Expand content")
+   ![Táblák szerkesztése](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Tartalom kibontása")
 
-1. Change the data type for the following columns by clicking the  ABC-123 icon at the top left of the column.
+1. Módosítsa a következő oszlopok adattípusát az oszlop bal felső részén található ABC-123 ikonra kattintva.
 
-   + For *content.latitude* and *Content.longitude*, select **Decimal Number**.
-   + For *Content.reviews_date* and *Content.reviews_dateAdded*,  select **Date/Time**.
+   + A *Content. Latitude* és a *Content. hosszúság*esetében válassza a **decimális szám**lehetőséget.
+   + A *Content. reviews_date* és a *Content. reviews_dateAdded*esetében válassza a **dátum/idő**lehetőséget.
 
-   ![Change data types](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Change data types")
+   ![Adattípusok módosítása](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Adattípusok módosítása")
 
-1. Select *hotelReviewsSsPages*, and then repeat steps 9 and 10 to delete the columns and expand the *Content*.
-1. Change the data type for *Content.SentimentScore* to **Decimal Number**.
-1. Select *hotelReviewsSsKeyPhrases* and repeat steps 9 and 10 to delete the columns and expand the *Content*. There are no data type modifications for this table.
+1. Válassza a *hotelReviewsSsPages*lehetőséget, majd ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom*kibontásához.
+1. Módosítsa a *Content. SentimentScore* adattípus adattípusát **decimális számra**.
+1. Válassza ki a *hotelReviewsSsKeyPhrases* , és ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom*kibontásához. Ehhez a táblához nincs Adattípus-módosítás.
 
-1. On the command bar, click **Close and Apply**.
+1. A parancssorban kattintson a **Bezárás és alkalmaz**gombra.
 
-1. Click on the Model tile on the left navigation pane and validate that Power BI shows relationships between all three tables.
+1. A bal oldali navigációs ablaktáblán kattintson a modell csempére, és ellenőrizze, hogy Power BI a három tábla közötti kapcsolatokat jeleníti-e meg.
 
-   ![Validate relationships](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Validate relationships")
+   ![Kapcsolatok ellenőrzése](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Kapcsolatok ellenőrzése")
 
-1. Double-click each relationship and make sure that the **Cross-filter direction** is set to **Both**.  This enables your visuals to refresh when a filter is applied.
+1. Kattintson duplán az egyes kapcsolatokra, és győződjön meg arról, hogy a **kereszt-szűrés iránya** **mindkettőre**van beállítva.  Ez lehetővé teszi, hogy a vizualizációk egy szűrő alkalmazása esetén frissüljenek.
 
 <!-- ## Try with larger data sets
 
@@ -102,20 +102,20 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit.
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
 ## <a name="next-steps"></a>Következő lépések
 
-To learn how to explore this knowledge store using Storage Explorer, see the following article.
+Az alábbi cikkből megtudhatja, hogyan derítheti fel ezt a Knowledge áruházat a Storage Explorer használatával.
 
 > [!div class="nextstepaction"]
-> [View with Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [Megtekintés Storage Explorer](knowledge-store-view-storage-explorer.md)
 
-To learn how to create a knowledge store using the REST APIs and Postman, see the following article.  
+A következő cikkből megtudhatja, hogyan hozhat létre egy tudásbázist a REST API-k és a Poster használatával.  
 
 > [!div class="nextstepaction"]
-> [Create a knowledge store in REST](knowledge-store-howto.md)
+> [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-howto.md)

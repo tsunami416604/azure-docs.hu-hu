@@ -1,6 +1,6 @@
 ---
-title: Self-service password reset for Windows - Azure Active Directory
-description: How to enable self-service password reset using forgot password at the Windows login screen
+title: Önkiszolgáló jelszó-visszaállítás Windows rendszeren – Azure Active Directory
+description: Önkiszolgáló jelszó-visszaállítás engedélyezése elfelejtett jelszó használatával a Windows bejelentkezési képernyőjén
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,46 +18,46 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381226"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Enable password reset from the Windows login screen
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: a jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
-For machines running Windows 7, 8, 8.1, and 10 you can enable users to reset their password at the Windows login screen. Users no longer have to find a device with a web browser to access the [SSPR portal](https://aka.ms/sspr).
+A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasználók számára, hogy új jelszót állítsanak be a Windows bejelentkezési képernyőjén. A felhasználóknak már nem kell megkeresniük egy webböngészővel rendelkező eszközt a [SSPR-portál](https://aka.ms/sspr)eléréséhez.
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Példa a Windows 7 és a 10 bejelentkezési képernyőre a SSPR hivatkozás látható](./media/howto-sspr-windows/windows-reset-password.png)
 
 ## <a name="general-limitations"></a>Általános korlátozások
 
-- Password reset is not currently supported from a Remote Desktop or from Hyper-V enhanced sessions.
-- This feature does not work for networks with 802.1x network authentication deployed and the option “Perform immediately before user logon”. For networks with 802.1x network authentication deployed it is recommended to use machine authentication to enable this feature.
-- Hybrid Azure AD joined machines must have network connectivity line of sight to a domain controller to use the new password and update cached credentials.
-- If using an image, prior to running sysprep ensure that the web cache is cleared for the built-in Administrator prior to performing the CopyProfile step. More information about this step can be found in the support article [Performance poor when using custom default user profile](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
-- The following settings are known to interfere with the ability to use and reset passwords on Windows 10 devices
-    - If Ctrl+Alt+Del is required by policy in versions of Windows 10 before v1809, **Reset password** will not work.
-    - If lock screen notifications are turned off, **Reset password** will not work.
-    - HideFastUserSwitching is set to enabled or 1
-    - DontDisplayLastUserName is set to enabled or 1
-    - NoLockScreen is set to enabled or 1
-    - EnableLostMode is set on the device
-    - Explorer.exe is replaced with a custom shell
-- The combination of the following specific three settings can cause this feature to not work.
-    - Interactive logon: Do not require CTRL+ALT+DEL = Disabled
-    - DisableLockScreenAppNotifications = 1 or Enabled
-    - IsContentDeliveryPolicyEnforced = 1 or True
+- A jelszó alaphelyzetbe állítása jelenleg nem támogatott Távoli asztal vagy Hyper-V bővített munkamenetekben.
+- Ez a funkció a 802.1 x hálózati hitelesítéssel rendelkező hálózatok esetében nem működik, és a "azonnali végrehajtás a felhasználó bejelentkezése előtt" beállítást. A 802.1 x hálózati hitelesítéssel telepített hálózatok esetében ajánlott a számítógép-hitelesítés használata a funkció engedélyezéséhez.
+- A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz.
+- Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
+- A következő beállítások ismertek a Windows 10-es eszközökön található jelszavak használatának és alaphelyzetbe állításának megakadályozása érdekében
+    - Ha a v1809 előtt a Windows 10-es verziójában a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó alaphelyzetbe állítása** nem fog működni.
+    - Ha a zárolási képernyő értesítései ki vannak kapcsolva, a **jelszó alaphelyzetbe állítása** nem fog működni.
+    - Az HideFastUserSwitching értéke engedélyezve vagy 1
+    - Az DontDisplayLastUserName értéke engedélyezve vagy 1
+    - Az NoLockScreen értéke engedélyezve vagy 1
+    - A EnableLostMode be van állítva az eszközön
+    - Az Explorer. exe helyére egyéni rendszerhéj van lecserélve
+- A következő adott három beállítás kombinációja miatt a funkció nem működik.
+    - Interaktív bejelentkezés: nem szükséges a CTRL + ALT + DEL = letiltva
+    - DisableLockScreenAppNotifications = 1 vagy engedélyezve
+    - IsContentDeliveryPolicyEnforced = 1 vagy igaz
 
-## <a name="windows-10-password-reset"></a>Windows 10 password reset
+## <a name="windows-10-password-reset"></a>Windows 10 jelszó alaphelyzetbe állítása
 
-### <a name="windows-10-prerequisites"></a>Windows 10 prerequisites
+### <a name="windows-10-prerequisites"></a>Windows 10 előfeltételek
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 10 devices 
-       - Port 443 to `passwordreset.microsoftonline.com` and `ajax.aspnetcdn.com`
-       - Windows 10 devices only support machine-level proxy configuration
-- Run at least Windows 10, version April 2018 Update (v1803), and the devices must be either:
-    - Azure AD joined
-    - Hybrid Azure AD joined
+- A rendszergazdának engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítást a Azure Portal.
+- **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
+- Hálózati proxyra vonatkozó követelmények
+   - Windows 10-es eszközök 
+       - 443-es port `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com`
+       - A Windows 10 rendszerű eszközök csak a gépi szintű proxy konfigurációját támogatják
+- Futtassa legalább a Windows 10 2018-es verzióját (v1803), és az eszközöknek a következőknek kell lenniük:
+    - Azure AD-hez csatlakoztatott
+    - Hibrid Azure AD-csatlakozás
 
-### <a name="enable-for-windows-10-using-intune"></a>Enable for Windows 10 using Intune
+### <a name="enable-for-windows-10-using-intune"></a>Windows 10 engedélyezése az Intune használatával
 
 A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigurációs módosítást, amely engedélyezi az új jelszó kérését a bejelentkezési képernyőről. Az Intune lehetővé teszi, hogy a konfigurációs módosítást az Ön által meghatározott gépek adott csoportján telepítse. Ehhez a metódushoz regisztrálni kell az Intune-ba az eszközt.
 
@@ -79,81 +79,81 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
       - Kattintson az **OK** gombra
    - Kattintson az **OK** gombra
 1. Kattintson a  **Create** (Létrehozás) gombra
-1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információt a következő cikkben talál: [Microsoft Intune felhasználói és eszköz profiljának társítása](https://docs.microsoft.com/intune/device-profile-assign).
 
-### <a name="enable-for-windows-10-using-the-registry"></a>Enable for Windows 10 using the Registry
+### <a name="enable-for-windows-10-using-the-registry"></a>Windows 10 engedélyezése a beállításjegyzék használatával
 
-1. Sign in to the Windows PC using administrative credentials
+1. Bejelentkezés a Windows rendszerű számítógépre rendszergazdai hitelesítő adatok használatával
 1. Futtassa a **regedit** parancsot rendszergazdaként
 1. Állítsa be a következő beállításkulcsot
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-#### <a name="troubleshooting-windows-10-password-reset"></a>Troubleshooting Windows 10 password reset
+#### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 jelszó-visszaállítás hibaelhárítása
 
 Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Windows 7 jelszó alaphelyzetbe állítása az Azure AD naplójában](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-When users reset their password from the login screen of a Windows 10 device, a low-privilege temporary account called `defaultuser1` is created. This account is used to keep the password reset process secure. The account itself has a randomly generated password, doesn’t show up for device sign-in, and will automatically be removed after the user resets their password. Multiple `defaultuser` profiles may exist but can be safely ignored.
+Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről állítja vissza a jelszavát, a rendszer létrehoz egy alacsony jogosultságú ideiglenes, `defaultuser1` nevű fiókot. Ezzel a fiókkal a jelszó-visszaállítási folyamat biztonságos marad. Maga a fiók véletlenszerűen generált jelszót tartalmaz, nem jelenik meg az eszköz bejelentkezéséhez, és automatikusan el lesz távolítva, miután a felhasználó alaphelyzetbe állítja a jelszavát. Előfordulhat, hogy több `defaultuser` profil is létezik, de nyugodtan figyelmen kívül hagyható.
 
-## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8, and 8.1 password reset
+## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó alaphelyzetbe állítása
 
-### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8, and 8.1 prerequisites
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 és 8,1 előfeltételek
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 7, 8, and 8.1 devices
-       - Port 443 to `passwordreset.microsoftonline.com`
-- Patched Windows 7 or Windows 8.1 Operating System.
-- TLS 1.2 enabled using the guidance found in [Transport Layer Security (TLS) registry settings](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
-- If more than one 3rd party credential provider is enabled on your machine, users will see more than one user profile on the login screen.
+- A rendszergazdának engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítást a Azure Portal.
+- **A funkció használata előtt a felhasználóknak regisztrálniuk kell a SSPR**
+- Hálózati proxyra vonatkozó követelmények
+   - Windows 7, 8 és 8,1 rendszerű eszközök
+       - 443-es port `passwordreset.microsoftonline.com`
+- Javított Windows 7 vagy Windows 8,1 operációs rendszer.
+- TLS 1,2 engedélyezve a [Transport Layer Security (TLS) beállításjegyzék-beállításokban](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)található útmutatás használatával.
+- Ha a gépen több külső hitelesítő adat-szolgáltató van engedélyezve, a felhasználók több felhasználói profilt is láthatnak a bejelentkezési képernyőn.
 
 > [!WARNING]
-> TLS 1.2 must be enabled, not just set to auto negotiate
+> A TLS 1,2-et engedélyezni kell, nem csak automatikus egyeztetésre beállítva
 
 ### <a name="install"></a>Telepítés
 
-1. Download the appropriate installer for the version of Windows you would like to enable.
-   - Software is available on the Microsoft download center at [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
-1. Sign in to the machine where you would like to install, and run the installer.
-1. After installation, a reboot is highly recommended.
-1. After the reboot, at the login screen choose a user and click "Forgot password?" to initiate the password reset workflow.
-1. Complete the workflow following the onscreen steps to reset your password.
+1. Töltse le a megfelelő telepítőt az engedélyezni kívánt Windows-verzióhoz.
+   - A szoftverek a Microsoft letöltőközpontban, a következő címen érhetők el: [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+1. Jelentkezzen be arra a gépre, amelyre telepíteni szeretné, majd futtassa a telepítőt.
+1. A telepítés után az újraindítás kifejezetten ajánlott.
+1. Az újraindítás után a bejelentkezési képernyőn válasszon ki egy felhasználót, és kattintson a "Elfelejtett jelszó" lehetőségre. a jelszó-visszaállítási munkafolyamat elindításához.
+1. A jelszó alaphelyzetbe állításához a képernyőn megjelenő lépéseket követve fejezze be a munkafolyamatot.
 
-![Example Windows 7 clicked "Forgot password?" SSPR flow](media/howto-sspr-windows/windows-7-sspr.png)
+![Például a Windows 7 a "Elfelejtett jelszó?" gombra kattintott SSPR folyamat](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Silent installation
+#### <a name="silent-installation"></a>Csendes telepítés
 
-- For silent install, use the command “msiexec /i SsprWindowsLogon.PROD.msi /qn”
-- For silent uninstall, use the command “msiexec /x SsprWindowsLogon.PROD.msi /qn”
+- A beavatkozás nélküli telepítéshez használja az "msiexec/i SsprWindowsLogon. PROD. msi/Qn" parancsot.
+- A beavatkozás nélküli eltávolításhoz használja az "msiexec/x SsprWindowsLogon. PROD. msi/Qn" parancsot.
 
-#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Troubleshooting Windows 7, 8, and 8.1 password reset
+#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó-visszaállítás hibaelhárítása
 
-Events will be logged both on the machine and in Azure AD. Azure AD Events will include information about the IP address and ClientType where the password reset occurred.
+Az események a gépen és az Azure AD-ben is naplózva lesznek. Az Azure AD-események tartalmazzák az IP-címről és a jelszó alaphelyzetbe állítására szolgáló ClientType vonatkozó információkat is.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Windows 7 jelszó alaphelyzetbe állítása az Azure AD naplójában](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-If additional logging is required, a registry key on the machine can be changed to enable verbose logging. Enable verbose logging for troubleshooting purposes only.
+Ha további naplózásra van szükség, a számítógépen található beállításkulcs módosítható a részletes naplózás engedélyezéséhez. Csak hibaelhárítási célokra engedélyezze a részletes naplózást.
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- To enable verbose logging, create a `REG_DWORD: “EnableLogging”`, and set it to 1.
-- To disable verbose logging, change the `REG_DWORD: “EnableLogging”` to 0.
+- A részletes naplózás engedélyezéséhez hozzon létre egy `REG_DWORD: “EnableLogging”`, és állítsa 1 értékre.
+- A részletes naplózás letiltásához módosítsa a `REG_DWORD: “EnableLogging”` 0-ra.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
-Now that you have configured password reset for your Windows devices, what changes for the user? Honnan fogják tudni, hogy a bejelentkezési képernyőn új jelszót kérhetnek?
+Most, hogy beállította a jelszó-visszaállítást a Windows-eszközökön, milyen módosításokat végez a felhasználó? Honnan fogják tudni, hogy a bejelentkezési képernyőn új jelszót kérhetnek?
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Példa a Windows 7 és a 10 bejelentkezési képernyőre a SSPR hivatkozás látható](./media/howto-sspr-windows/windows-reset-password.png)
 
-When users attempt to sign in, they now see a **Reset password** or **Forgot password** link that opens the self-service password reset experience at the login screen. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
+Amikor a felhasználók megpróbálnak bejelentkezni, mostantól egy **új jelszó** kérése vagy **elfelejtett jelszó** hivatkozás jelenik meg, amely megnyitja az önkiszolgáló jelszó-visszaállítási funkciót a bejelentkezési képernyőn. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md) témakörben találhatnak útmutatást.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Plan authentication methods to allow](concept-authentication-methods.md)
+[Az engedélyezéshez szükséges hitelesítési módszerek megtervezése](concept-authentication-methods.md)
 
-[Configure Windows 10](https://docs.microsoft.com/windows/configuration/)
+[Windows 10 konfigurálása](https://docs.microsoft.com/windows/configuration/)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Recognize speech from an audio file, C++ - Speech Service'
+title: 'Rövid útmutató: beszéd felismerése hangfájlból C++ , beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260756"
 ---
-**Choose your target environment**
+**Válassza ki a kívánt környezetet**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macOS)

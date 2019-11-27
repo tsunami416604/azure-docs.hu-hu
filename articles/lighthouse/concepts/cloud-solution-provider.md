@@ -1,6 +1,6 @@
 ---
 title: A felhőszolgáltatói program megfontolandó szempontjai
-description: For CSP partners, Azure delegated resource management helps improve security and control by enabling granular permissions.
+description: A CSP-partnerek esetében az Azure-beli delegált erőforrás-kezelés a részletes engedélyek engedélyezésével segíti a biztonságot és a szabályozást.
 ms.date: 10/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
@@ -10,36 +10,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463957"
 ---
-# <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse and the Cloud Solution Provider program
+# <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Az Azure Lighthouse és a Cloud Solution Provider program
 
-If you're a [CSP (Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) partner, you can already access the Azure subscriptions created for your customers through the CSP program by using the [Administer On Behalf Of (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) functionality. This access allows you to directly support, configure, and manage your customers' subscriptions.
+Ha Ön CSP- [(felhőalapú szolgáltatói)](https://docs.microsoft.com/partner-center/csp-overview) partner, akkor már hozzáférhet az ÜGYFELEKNEK a CSP programon keresztül létrehozott Azure-előfizetésekhez a (z [) (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) funkció használatával. Ez a hozzáférés lehetővé teszi az ügyfelek előfizetésének közvetlen támogatását, konfigurálását és felügyeletét.
 
-With [Azure Lighthouse](../overview.md), you can use Azure delegated resource management along with AOBO. This helps improve security and reduces unnecessary access by enabling more granular permissions for your users. It also allows for greater efficiency and scalability, as your users can work across multiple customer subscriptions using a single login in your tenant.
+Az [Azure Lighthouse](../overview.md)használatával az Azure-beli delegált erőforrás-kezelést és az AOBO-et is használhatja. Ez segít javítani a biztonságot, és csökkenti a szükségtelen hozzáférést azáltal, hogy részletesebb engedélyeket biztosít a felhasználók számára. Emellett nagyobb hatékonyságot és méretezhetőséget is biztosít, mivel a felhasználók több ügyfél-előfizetésben is működhetnek, ha egyetlen bejelentkezést használnak a bérlőben.
 
 > [!TIP]
-> To help safeguard customer resources, be sure to review and follow our [recommended security practices](recommended-security-practices.md) along with the [partner security requirements](https://docs.microsoft.com/partner-center/partner-security-requirements).
+> Az ügyfelek erőforrásainak védelme érdekében mindenképpen tekintse át és kövesse az [ajánlott biztonsági eljárásokat](recommended-security-practices.md) a [partneri biztonsági követelményekkel](https://docs.microsoft.com/partner-center/partner-security-requirements)együtt.
 
-## <a name="administer-on-behalf-of-aobo"></a>Administer on Behalf of (AOBO)
+## <a name="administer-on-behalf-of-aobo"></a>Felügyelet a következő nevében (AOBO)
 
-With AOBO, any user with the [Admin Agent](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) role in your tenant will have AOBO access to Azure subscriptions that you create through the CSP program. Any users who need access to any customers' subscriptions must be a member of this group. AOBO doesn’t allow the flexibility to create distinct groups that work with different customers, or to enable different roles for groups or users.
+A AOBO esetében a bérlő [rendszergazdai ügynök](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) szerepkörrel rendelkező felhasználója a CSP-program keretében létrehozott Azure-előfizetésekhez is hozzáférhet. Minden olyan felhasználónak, akinek hozzáférésre van szüksége bármely ügyfél előfizetéséhez, a csoport tagjának kell lennie. A AOBO nem teszi lehetővé a rugalmasságot olyan különálló csoportok létrehozására, amelyek különböző ügyfelekkel működnek, vagy különböző szerepköröket engedélyeznek a csoportok vagy felhasználók számára.
 
-![Tenant management using AOBO](../media/csp-1.jpg)
+![Bérlői felügyelet az AOBO használatával](../media/csp-1.jpg)
 
 ## <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
-Using Azure delegated resource management, you can assign different groups to different customers or roles, as shown in the following diagram. Because users will have the appropriate level of access through Azure delegated resource management, you can reduce the number of users who have the Admin Agent role (and thus have full AOBO access). This helps improve security by limiting unnecessary access to your customers’ resources. It also gives you more flexibility to manage multiple customers at scale.
+Az Azure delegált erőforrás-kezelés használatával különböző csoportokat rendelhet hozzá különböző ügyfelekhez vagy szerepkörökhöz, ahogy az alábbi ábrán is látható. Mivel a felhasználók a megfelelő szintű hozzáféréssel rendelkeznek az Azure-beli delegált erőforrás-kezelésen keresztül, csökkentheti a rendszergazdai ügynök szerepkörrel rendelkező felhasználók számát (és így teljes AOBO-hozzáféréssel rendelkezik). Ez segít a biztonság javításában azáltal, hogy korlátozza az ügyfelek erőforrásainak szükségtelen hozzáférését. Emellett nagyobb rugalmasságot biztosít több ügyfél felügyeletéhez.
 
-Onboarding a subscription that you created through the CSP program follows the steps described in [Onboard a subscription to Azure delegated resource management](../how-to/onboard-customer.md). Any user who has the Admin Agent role in your tenant can perform this onboarding.
+A CSP programon keresztül létrehozott előfizetés bevezetése az [előfizetés Azure-beli delegált erőforrás-kezelésre való bevezetésében](../how-to/onboard-customer.md)ismertetett lépéseket követi. A bérlő rendszergazdai ügynök szerepkörrel rendelkező felhasználója elvégezheti ezt a bevezetést.
 
-![Tenant management using AOBO and Azure delegated resource management](../media/csp-2.jpg)
+![Bérlői felügyelet az AOBO és az Azure által delegált erőforrás-kezelés használatával](../media/csp-2.jpg)
 
 > [!NOTE]
-> The [**My customers** page in the Azure portal](../how-to/view-manage-customers.md) now includes a **Cloud Solution Provider (Preview)** section, which displays billing info and resources for CSP customers who have [signed the Microsoft Customer Agreement (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) and are under the Azure plan. For more info, see [Get started with your Microsoft Partner Agreement billing account](https://docs.microsoft.com/azure/billing/mpa-overview).
+> A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](https://docs.microsoft.com/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és az Azure-csomag alatt található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](https://docs.microsoft.com/azure/billing/mpa-overview).
 >
-> CSP customers may appear in this section whether or not they have been onboarded for Azure delegated resource management. If they have, then they'll also appear in the **Customers** section, as described in [View and manage customers and delegated resources](../how-to/view-manage-customers.md).
+> A CSP-ügyfelek ebben a szakaszban jelenhetnek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezelésre kerültek-e elő. Ha van, akkor a **Customers (ügyfelek** ) szakaszban is megjelennek az ügyfelek és a [delegált erőforrások megtekintése és kezelése](../how-to/view-manage-customers.md)című témakörben leírtak szerint.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
-- Learn how to [onboard a subscription to Azure delegated resource management](../how-to/onboard-customer.md).
-- Learn about the [Cloud Solution Provider program](https://docs.microsoft.com/partner-center/csp-overview).
+- További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
+- Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure-beli delegált erőforrás-kezelésbe](../how-to/onboard-customer.md).
+- Tudnivalók a [Cloud Solution Provider programról](https://docs.microsoft.com/partner-center/csp-overview).

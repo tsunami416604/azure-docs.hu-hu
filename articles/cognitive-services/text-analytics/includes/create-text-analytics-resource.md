@@ -1,7 +1,7 @@
 ---
-title: Create a Cognitive Services Text Analytics resource
+title: Cognitive Services Text Analytics erőforrás létrehozása
 titleSuffix: Azure Cognitive Services
-description: Learn how to create a Cognitive Services Text Analytics resource.
+description: Megtudhatja, hogyan hozhat létre Cognitive Services Text Analytics erőforrást.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,25 +16,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383434"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Create a Cognitive Services Text Analytics resource
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics erőforrás létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Select **Create a resource**, and then go to **AI + Machine Learning** > **Text Analytics**.
-   Or, go to [Create Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
-1. Enter all the required settings:
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Válassza az **erőforrás létrehozása**lehetőséget, majd lépjen a következőre: **AI + Machine learning** > **text Analytics**.
+   Vagy nyissa meg a következőt: [text Analytics létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
+1. Adja meg az összes szükséges beállítást:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
-    |Név|Enter a name (2-64 characters).|
-    |Előfizetés|Select the appropriate subscription.|
-    |Földrajzi egység|Select a nearby location.|
-    |Díjcsomag| Enter **S**, the standard pricing tier.|
-    |Erőforráscsoport|Select an available resource group.|
+    |Name (Név)|Adjon meg egy nevet (2-64 karakter).|
+    |Előfizetést|Válassza ki a megfelelő előfizetést.|
+    |Hely|Válasszon egy közeli helyet.|
+    |Tarifacsomag| Adja meg az **S**, a standard díjszabási szintet.|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot.|
 
-1. Select **Create**, and wait for the resource to be created. Your browser automatically redirects to the newly created resource page.
-1. Collect the configured `endpoint` and an API key:
+1. Válassza a **Létrehozás**lehetőséget, és várja meg az erőforrás létrehozását. A böngésző automatikusan átirányítja az újonnan létrehozott erőforrás-oldalra.
+1. A konfigurált `endpoint` és az API-kulcs összegyűjtése:
 
-    |Resource tab in portal|Beállítás|Value (Díj)|
+    |Erőforrás lap a portálon|Beállítás|Érték|
     |--|--|--|
-    |**Áttekintés**|Végpont|Copy the endpoint. It appears similar to `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
-    |**Keys**|API Key|Copy one of the two keys. It's a 32-character alphanumeric string with no spaces or dashes: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
+    |**Áttekintés**|Végpont|Másolja a végpontot. A `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`hoz hasonlóan jelenik meg.|
+    |**Kulcsok**|API-kulcs|Másolja a két kulcs egyikét. Ez egy 32 karakterből álló alfanumerikus karakterlánc, szóköz vagy kötőjel nélkül: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|

@@ -1,19 +1,14 @@
 ---
-title: Erőforrás rendelkezésre állásának Azure Container Instances
+title: Erőforrás rendelkezésre állása régiónként
 description: A Azure Container Instances szolgáltatás számítási és memória-erőforrásainak rendelkezésre állása különböző Azure-régiókban.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172395"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533469"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -30,7 +25,7 @@ További információ a központi telepítések kvótái és egyéb korlátairó
 
 A következő régiók és erőforrások elérhetők a Linux és a [támogatott](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-alapú tárolók számára.
 
-| Location | OS | CPU | Memória (GB) |
+| Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, USA nyugati | Linux | 4 | 16 |
 | Nyugat-Európa, USA 2. nyugati régiója | Linux | 4 | 14 |
@@ -44,7 +39,7 @@ A következő régiók és erőforrások elérhetők a Linux és a [támogatott]
 
 A következő régiók és erőforrások elérhetők a Windows Server 2019-alapú tárolókkal (előzetes verzió) rendelkező tárolók csoportjai számára.
 
-| Location | OS | CPU | Memória (GB) |
+| Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | Délkelet-Ázsia, Észak-Európa, Nyugat-Európa, USA középső régiója, USA keleti régiója, USA nyugati régiója, USA 2. nyugati régiója | Windows | 4 | 16 |
 | USA 2. keleti régiója | Windows | 2 | 3.5 |
@@ -58,12 +53,12 @@ A következő régiók és erőforrások érhetők el egy Azure-beli [virtuális
 
 ## <a name="availability---gpu-resources-preview"></a>Elérhetőség – GPU-erőforrások (előzetes verzió)
 
-A következő régiók és erőforrások elérhetők a [GPU](container-instances-gpu.md) -erőforrásokkal (előzetes verzió) üzembe helyezett tárolók csoportjához.
+A következő régiók és erőforrások elérhetők a [GPU-erőforrásokkal](container-instances-gpu.md) (előzetes verzió) üzembe helyezett tárolók csoportjához.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tájékoztassa a csapatot, ha további régiókat szeretne látni, vagy megnövelt erőforrás-elérhetőséget a [aka.MS/ACI/feedback](https://aka.ms/aci/feedback)címen.
 

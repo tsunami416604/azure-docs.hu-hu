@@ -27,8 +27,8 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 
     ![LUIS közzététel a végponton](../media/howto-publish/publish-app-popup.png)
 
-3. Publishing is complete when you see the status bar at the top of the page confirming success.
+3. A közzététel akkor fejeződik be, amikor az oldal tetején megjelenő állapotsor megerősíti a sikerességet.
 
     ![LUIS közzététel a végponton](../media/howto-publish/publish-endpoint-success.png)
 
-4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.
+4. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként**jelennek meg.

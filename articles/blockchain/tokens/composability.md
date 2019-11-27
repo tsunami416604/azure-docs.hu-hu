@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens composability
-description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
+title: Az Azure Blockchain tokenek megkomponálása
+description: Az Azure Blockchain-tokenek megkomponálása rugalmasságot biztosít a speciális forgatókönyvekhez tartozó jogkivonatok létrehozásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,74 +11,74 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325122"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
+# <a name="azure-blockchain-tokens-composability"></a>Az Azure Blockchain tokenek megkomponálása
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
+A jogkivonat-megkomponálás rugalmasságot biztosít a speciális forgatókönyvek jogkivonatok létrehozásához. Előfordulhat, hogy olyan összetett forgatókönyvvel rendelkezik, amely nem valósítható meg a [négy előre elkészített jogkivonat-sablon](templates.md#base-token-types)használatával. A jogkivonat-létrehozás lehetővé teszi saját jogkivonat-sablonok megtervezését a definiált viselkedésmódok hozzáadásával vagy eltávolításával saját jogkivonat-sablon létrehozásához. Új jogkivonat-sablon létrehozásakor az Azure Blockchain-tokenek ellenőrzi az összes jogkivonat nyelvtani szabályát. A komponált sablonok az Azure Blockchain tokens szolgáltatásban lesznek mentve a csatlakoztatott Blockchain-hálózatokon való közzétételhez.
 
-You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
+A token-sablon kialakításához a következő részben szereplő [jogkivonat-viselkedéseket](templates.md#token-behaviors) használhatja.
 
-## <a name="burnable-b"></a>Burnable (b)
+## <a name="burnable-b"></a>Írható (b)
 
-Ability to remove the tokens from supply.
+Lehetőség a tokenek eltávolítására a szolgáltatásból.
 
-For example, when you redeem online credit card points for a gift card, the credit card points are burned.
+Ha például beváltja az online hitelkártya-pontokat egy ajándék kártyára, a rendszer megégeti a hitelkártya-pontokat.
 
-## <a name="delegable-g"></a>Delegable (g)
+## <a name="delegable-g"></a>Delegálható (g)
 
-Ability to delegate the actions taken on the token that you own.
+Az Ön tulajdonában lévő jogkivonaton végrehajtott műveletek delegálásának lehetősége.
 
-The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
+A delegált a jogkivonat tulajdonosaként hajthat végre műveleteket. Használhat például egy delegálható tokent egy szavazás megvalósításához. A delegálható-token lehetővé teszi, hogy a szavazati jogkivonat tulajdonosa valaki másnak szavazzon a nevében.
 
 ## <a name="logable-l"></a>Logable (l)
 
-Ability to log.
+Naplózási lehetőség.
 
-For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
+Kiállíthat például egy logable jogkivonatot a mozgóképek terjesztésére egy adott filmet bemutató egyes színházokban. A mozgókép lejátszásához a bemutatónak be kell jelentkeznie az egyes megjelenítésekhez, mivel a jogdíj-kifizetések megjelenítése a film kiadásának futtatásakor történik. A színészek Build a film jogkivonatait használva ellenőrizheti, hogy a kifizetések száma moziban, a disztribúcióban.
 
-## <a name="mint-able-m"></a>Mint-able (m)
+## <a name="mint-able-m"></a>Mentás-képes (m)
 
-Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
+További tokenek megszerzésének lehetősége a jogkivonat osztályhoz. A Minter szerepkör tartalmazza a felmenthető viselkedést.
 
-For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
+Egy olyan kiskereskedelmi vállalat például, amely egy hűségprogram megvalósítását kívánja végrehajtani, felhasználhatja a saját lojalitási programjának felmenthető jogkivonatait. További lojalitási pontokat szereznek az ügyfelek számára, amikor az Ügyfélkörük növekszik.  
 
-## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
+## <a name="non-subdividable-or-whole-d"></a>Nem osztható vagy teljes (~ d)
 
-Restriction to prevent a token from being divided into smaller parts.
+Korlátozás annak megakadályozására, hogy a token kisebb részekre legyen osztva.
 
-For example, a single art painting cannot be subdivided into multiple smaller parts. 
+Például egyetlen művészi festés nem osztható több kisebb részre. 
 
-## <a name="non-transferable-t"></a>Non-transferable (~t)
+## <a name="non-transferable-t"></a>Nem átvihető (~ t)
 
-Restriction to prevent a change of ownership from the initial token owner.
+Korlátozás a kezdeti jogkivonat tulajdonosának tulajdonjogának megváltozásának megakadályozására.
 
-For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
+Egy egyetemi diploma például nem átvihető jogkivonat. Ha diplomát kap egy diploma, nem vihető át a diplomából egy másik személynek.
 
-## <a name="roles-r"></a>Roles (r)
+## <a name="roles-r"></a>Szerepkörök (r)
 
-Ability to define roles within the token template class for specific behaviors.
+Szerepkörök definiálása a jogkivonat-sablon osztályán belül adott viselkedések esetében.
 
-You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
+Megadhatja azoknak a szerepkör-neveknek a listáját, amelyeket a jogkivonat a jogkivonat létrehozási idején támogat. Ha a szerepkörök meg vannak adva, a felhasználó szerepköröket rendelhet ezekhez a viselkedésekhez. Jelenleg csak a Minter szerepkör támogatott.
 
-## <a name="singleton-s"></a>Singleton (s)
+## <a name="singleton-s"></a>Egyszeres (s)
 
-Restriction to allow a supply of one token.
+Egyetlen jogkivonat ellátását engedélyező korlátozás.
 
-For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
+Egy múzeumi összetevő például egy egyedi jogkivonat. A múzeumi összetevők egyediek. Egy összetevőt jelképező jogkivonat csak egyetlen elemmel rendelkezik a kínálatban.
 
-## <a name="subdividable-d"></a>Subdividable (d)
+## <a name="subdividable-d"></a>Osztható (d)
 
-Ability to divide a token into smaller parts.
+Kisebb részekre oszthatók ki a tokenek.
 
-For example, a dollar can be subdivided into cents.
+Például a dollár felosztható százalékokra.
 
-## <a name="transferable-t"></a>Transferable (t)
+## <a name="transferable-t"></a>Átvihető (t)
 
-Ability to transfer ownership of the token.
+Lehetőség a jogkivonat tulajdonjogának átadására.
 
-For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
+Például egy tulajdonság címe egy átruházható token, amely az egyik személyről a másikra vihető át a tulajdonság eladásakor.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn about [Azure Blockchain Tokens account management](account-management.md).
+Ismerje meg az [Azure Blockchain-tokenek fiókjának kezelését](account-management.md).

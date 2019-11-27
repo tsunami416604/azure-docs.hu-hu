@@ -1,6 +1,6 @@
 ---
-title: Sign in to Windows virtual machine in Azure using Azure Active Directory (Preview)
-description: Azure AD sign in to an Azure VM running Windows
+title: Bejelentkezés a Windows rendszerű virtuális gépre az Azure-ban Azure Active Directory használatával (előzetes verzió)
+description: Azure AD-bejelentkezés Windows rendszerű Azure-beli virtuális gépre
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,92 +18,92 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420543"
 ---
-# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Sign in to Windows virtual machine in Azure using Azure Active Directory authentication (Preview)
+# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
-Organizations can now utilize Azure Active Directory (AD) authentication for their Azure virtual machines (VMs) running **Windows Server 2019 Datacenter edition** or **Windows 10 1809** and later. Using Azure AD to authenticate to VMs provides you with a way to centrally control and enforce policies. Tools like Azure Role-Based Access Control (RBAC) and Azure AD Conditional Access allow you to control who can access a VM. This article shows you how to create and configure a Windows Server 2019 VM to use Azure AD authentication.
+A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú Access Control (RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
 
 |     |
 | --- |
-| Azure AD sign in for Azure Windows VMs is a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-There are many benefits of using Azure AD authentication to log in to Windows VMs in Azure, including:
+Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Windows rendszerű virtuális gépekre való bejelentkezéshez, beleértve a következőket:
 
-- Utilize the same federated or managed Azure AD credentials you normally use.
-- No longer have to manage local administrator accounts.
-- Azure RBAC allows you to grant the appropriate access to VMs based on need and remove it when it is no longer needed.
-- Before allowing access to a VM, Azure AD Conditional Access can enforce additional requirements such as: 
-   - Többtényezős hitelesítés
-   - Sign-in risk check
-- Automate and scale Azure AD join of Azure Windows VMs that are part for your VDI deployments.
+- Használja ugyanazt az összevont vagy felügyelt Azure AD-beli hitelesítő adatokat, amelyeket általában használ.
+- A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
+- Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
+- A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
+   - Multi-Factor Authentication
+   - Bejelentkezési kockázat-ellenőrzési
+- Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
 ## <a name="requirements"></a>Követelmények
 
-### <a name="supported-azure-regions-and-windows-distributions"></a>Supported Azure regions and Windows distributions
+### <a name="supported-azure-regions-and-windows-distributions"></a>Támogatott Azure-régiók és Windows-disztribúciók
 
-The following Windows distributions are currently supported during the preview of this feature:
+A következő Windows-disztribúciók jelenleg a funkció előzetes verziójában támogatottak:
 
 - Windows Server 2019 Datacenter
-- Windows 10 1809 and later
+- Windows 10 1809 és újabb verziók
 
-The following Azure regions are currently supported during the preview of this feature:
+A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók támogatottak:
 
-- All Azure global regions
+- Minden Azure globális régió
 
 > [!IMPORTANT]
-> To use this preview feature, only deploy a supported Windows distribution and in a supported Azure region. The feature is currently not supported in Azure Government or sovereign clouds.
+> Az előzetes verziójú funkció használatához csak egy támogatott Windows-disztribúciót és egy támogatott Azure-régiót telepítsen. A szolgáltatás jelenleg nem támogatott Azure Government vagy szuverén felhőkben.
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-To enable Azure AD authentication for your Windows VMs in Azure, you need to ensure your VMs network configuration permits outbound access to the following endpoints over TCP port 443:
+Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli Windows rendszerű virtuális gépeken, biztosítania kell, hogy a virtuális gépek hálózati konfigurációja a 443-as TCP-porton keresztül engedélyezze a kimenő hozzáférést a következő végpontokhoz:
 
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
 - https://pas.windows.net
 
-## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Enabling Azure AD login in for Windows VM in Azure
+## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure AD-bejelentkezés engedélyezése a Windows rendszerű virtuális gépeken az Azure-ban
 
-To use Azure AD login in for Windows VM in Azure, you need to first enable Azure AD login option for your Windows VM and then you need to configure RBAC role assignments for users who are authorized to login in to the VM.
-There are multiple ways you can enable Azure AD login for your Windows VM:
+Ha Azure AD-bejelentkezést szeretne használni a Windows rendszerű virtuális gépeken az Azure-ban, először engedélyeznie kell az Azure AD bejelentkezési lehetőséget a Windows rendszerű virtuális gépen, majd konfigurálnia kell a RBAC szerepkör-hozzárendeléseket azon felhasználók számára, akik jogosultak a virtuális gépre való bejelentkezésre.
+A Windows rendszerű virtuális gépekhez több módon is engedélyezheti az Azure AD-bejelentkezést:
 
-- Using the Azure portal experience when creating a Windows VM
-- Using the Azure Cloud Shell experience when creating a Windows VM **or for an existing Windows VM**
+- Windows rendszerű virtuális gép létrehozásakor a Azure Portal élmény használata
+- Windows rendszerű virtuális gép **vagy meglévő Windows rendszerű virtuális gép** létrehozásakor a Azure Cloud Shell élmény használata
 
-### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Using Azure portal create VM experience to enable Azure AD login
+### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Az Azure AD-bejelentkezés engedélyezése Azure Portal virtuális gép létrehozásakor
 
-You can enable Azure AD login for Windows Server 2019 Datacenter or Windows 10 1809 and later VM images. 
+Engedélyezheti az Azure AD-bejelentkezést a Windows Server 2019 Datacenter vagy a Windows 10 1809 és újabb rendszerű virtuálisgép-lemezképekhez. 
 
-To create a Windows Server 2019 Datacenter VM in Azure with Azure AD logon: 
+Windows Server 2019 Datacenter rendszerű virtuális gép létrehozása az Azure-ban Azure AD-bejelentkezéssel: 
 
-1. Sign in to the [Azure portal](https://portal.azure.com), with an account that has access to create VMs, and select **+ Create a resource**.
-1. Type **Windows Server** in Search the Marketplace search bar.
-   1. Click **Windows Server** and choose **Windows Server 2019 Datacenter** from Select a software plan dropdown.
-   1. Click on **Create**.
-1. On the “Management” tab, enable the option to **Login with AAD credentials (Preview)** under the Azure Active Directory section from Off to **On**.
-1. Make sure **System assigned managed identity** under the Identity section is set to **On**. This action should happen automatically once you enable Login with Azure AD credentials.
-1. Go through the rest of the experience of creating a virtual machine. During this preview, you will have to create an administrator username and password for the VM.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása**lehetőséget.
+1. Írja be a **Windows Server** kifejezést a piactér keresési sávjában.
+   1. Kattintson a **Windows Server** lehetőségre, és válassza a **Windows Server 2019 Datacenter** elemet a szoftvercsomag kiválasztása listából.
+   1. Kattintson a **Létrehozás**gombra.
+1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be**lehetőségnél.
+1. Győződjön **meg**arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
+1. Ugorjon végig a virtuális gép létrehozásának további tapasztalatain. Ebben az előzetes verzióban létre kell hoznia egy rendszergazdai felhasználónevet és jelszót a virtuális géphez.
 
-![Login with Azure AD credentials create a VM](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
+![Bejelentkezés Azure AD-beli hitelesítő adatokkal virtuális gép létrehozása](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
 
 > [!NOTE]
-> In order to log in to the VM using your Azure AD credential, you will first need to configure role assignments for the VM as described in one of the sections below.
+> Ahhoz, hogy az Azure AD-beli hitelesítő adataival jelentkezzen be a virtuális gépre, először konfigurálnia kell a virtuális géphez tartozó szerepkör-hozzárendeléseket az alábbi szakaszokban leírtak szerint.
 
-### <a name="using-the-azure-cloud-shell-experience-to-enable-azure-ad-login"></a>Using the Azure Cloud Shell experience to enable Azure AD login
+### <a name="using-the-azure-cloud-shell-experience-to-enable-azure-ad-login"></a>Az Azure AD-bejelentkezés engedélyezésének Azure Cloud Shelli felületének használata
 
-Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések végrehajtására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Just select the Copy button to copy the code, paste it in Cloud Shell, and then press Enter to run it. A Cloud Shell többféleképpen is megnyitható:
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések végrehajtására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Egyszerűen válassza a másolás gombot a kód másolásához, illessze be Cloud Shellba, majd nyomja le az ENTER billentyűt a futtatásához. A Cloud Shell többféleképpen is megnyitható:
 
-Select Try It in the upper-right corner of a code block.
+Válassza a kipróbálás lehetőséget a kódrészlet jobb felső sarkában.
 Nyissa meg a Cloud Shellt a böngészőben.
-Select the Cloud Shell button on the menu in the upper-right corner of the [Azure portal](https://portal.azure.com).
+Kattintson a Cloud Shell gombra a [Azure Portal](https://portal.azure.com)jobb felső sarkában található menüben.
 
-If you choose to install and use the CLI locally, this article requires that you are running the Azure CLI version 2.0.31 or later. A verzió megkereséséhez futtassa a következő parancsot: az --version. If you need to install or upgrade, see the article [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne, olvassa el az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című cikket.
 
 1. Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) paranccsal. 
-1. Create a VM with [az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) using a supported distribution in a supported region. 
-1. Install the Azure AD login VM extension. 
+1. Hozzon létre egy virtuális gépet az [az VM Create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) használatával egy támogatott régió támogatott eloszlásával. 
+1. Telepítse az Azure AD login VM-bővítményt. 
 
-The following example deploys a VM named myVM that uses Win2019Datacenter, into a resource group named myResourceGroup, in the southcentralus region. In the following examples, you can provide your own resource group and VM names as needed.
+A következő példa egy myVM nevű virtuális gépet telepít, amely az Win2019Datacenter-t használja egy myResourceGroup nevű erőforráscsoporthoz a southcentralus régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
 
 ```AzureCLI
 az group create --name myResourceGroup --location southcentralus
@@ -119,10 +119,10 @@ az vm create \
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
-Finally, install the Azure AD login VM extension to enable Azure AD login for Windows VM. VM extensions are small applications that provide post-deployment configuration and automation tasks on Azure virtual machines. Use [az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set to install the AADLoginForWindows extension on the VM named myVM in the myResourceGroup resource group:
+Végül telepítse az Azure AD bejelentkezési virtuálisgép-bővítményét, hogy engedélyezze az Azure AD-bejelentkezést a Windows rendszerű virtuális gépeken. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) SET paranccsal telepítse a AADLoginForWindows-bővítményt a myVM nevű virtuális gépre a myResourceGroup erőforráscsoporthoz:
 
 > [!NOTE]
-> You can install AADLoginForWindows extension on an existing Windows Server 2019 or Windows 10 1809 and later VM to enable it for Azure AD authentication. An example of AZ CLI is shown below.
+> A AADLoginForWindows bővítményt telepítheti egy meglévő Windows Server 2019 vagy Windows 10 1809 és újabb rendszerű virtuális gépre az Azure AD-hitelesítés engedélyezéséhez. Alább látható egy példa az az parancssori felületre.
 
 ```AzureCLI
 az vm extension set \
@@ -132,41 +132,41 @@ az vm extension set \
     --vm-name myVM
 ```
 
-The `provisioningState` of `Succeeded` is shown, once the extension is installed on the VM.
+A `Succeeded` `provisioningState` jelenik meg, ha a bővítmény telepítve van a virtuális gépen.
 
-## <a name="configure-role-assignments-for-the-vm"></a>Configure role assignments for the VM
+## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
-Now that you have created the VM, you need to configure Azure RBAC policy to determine who can log in to the VM. Two RBAC roles are used to authorize VM login:
+Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-szabályzatot annak meghatározásához, hogy ki tud bejelentkezni a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
 
-- **Virtual Machine Administrator Login**: Users with this role assigned can log in to an Azure virtual machine with administrator privileges.
-- **Virtual Machine User Login**: Users with this role assigned can log in to an Azure virtual machine with regular user privileges.
+- **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
-> To allow a user to log in to the VM over RDP, you must assign either the Virtual Machine Administrator Login or Virtual Machine User Login role. An Azure user with the Owner or Contributor roles assigned for a VM do not automatically have privileges to log in to the VM over RDP. This is to provide audited separation between the set of people who control virtual machines versus the set of people who can access virtual machines.
+> Annak engedélyezéséhez, hogy a felhasználó RDP-en keresztül jelentkezzen be a virtuális GÉPRE, hozzá kell rendelnie a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét. Egy virtuális géphez hozzárendelt tulajdonosi vagy közreműködői szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan a virtuális gépre RDP-kapcsolaton keresztül bejelentkezni. Ez a virtuális gépeket vezérlő személyek, illetve a virtuális gépeket elérő személyek között naplózható elkülönítést biztosít.
 
-There are multiple ways you can configure role assignments for VM:
+A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók:
 
-- Using the Azure AD Portal experience
-- Using the Azure Cloud Shell experience
+- Az Azure AD portál felületének használata
+- A Azure Cloud Shell felület használata
 
-### <a name="using-azure-ad-portal-experience"></a>Using Azure AD Portal experience
+### <a name="using-azure-ad-portal-experience"></a>Az Azure AD Portal felületének használata
 
-To configure role assignments for your Azure AD enabled Windows Server 2019 Datacenter VMs:
+Szerepkör-hozzárendelések konfigurálása az Azure AD-ben engedélyezett Windows Server 2019 Datacenter virtuális gépekhez:
 
-1. Navigate to the specific virtual machine overview page
-1. Select **Access control (IAM)** from the menu options
-1. Select **Add**, **Add role assignment** to open the Add role assignment pane.
-1. In the **Role** drop-down list, select a role such as **Virtual Machine Administrator Login** or **Virtual Machine User Login**.
-1. In the **Select** field, select a user, group, service principal, or managed identity. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
-1. Select **Save**, to assign the role.
+1. Navigáljon az adott virtuális gép áttekintő oldalára
+1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a menüpontok közül.
+1. Válassza a **Hozzáadás**, **szerepkör-hozzárendelés hozzáadása** lehetőséget a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
+1. A **szerepkör** legördülő listában válasszon ki egy szerepkört, például a **virtuális gép rendszergazdai felhasználónevét** vagy a **virtuális gép felhasználói bejelentkezését**.
+1. A **Select (kiválasztás** ) mezőben válasszon ki egy felhasználót, egy csoportot, egy szolgáltatásnevet vagy egy felügyelt identitást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
+1. A szerepkör hozzárendeléséhez válassza a **Mentés**lehetőséget.
 
-After a few moments, the security principal is assigned the role at the selected scope.
+Néhány pillanat elteltével a rendszerbiztonsági tag a kiválasztott hatókörhöz rendeli a szerepkört.
 
-![Assign roles to users who will access the VM](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
+![Szerepkörök társítása a virtuális géphez hozzáférő felhasználókhoz](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
 
-### <a name="using-the-azure-cloud-shell-experience"></a>Using the Azure Cloud Shell experience
+### <a name="using-the-azure-cloud-shell-experience"></a>A Azure Cloud Shell felület használata
 
-The following example uses [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) to assign the Virtual Machine Administrator Login role to the VM for your current Azure user. The username of your active Azure account is obtained with [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show), and the scope is set to the VM created in a previous step with [az vm show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). The scope could also be assigned at a resource group or subscription level, and normal RBAC inheritance permissions apply. For more information, see [Role-Based Access Controls](../../virtual-machines/linux/login-using-aad.md).
+Az alábbi példa az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -179,181 +179,181 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> If your AAD domain and logon username domain do not match, you must specify the object ID of your user account with the `--assignee-object-id`, not just the username for `--assignee`. You can obtain the object ID for your user account with [az ad user list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list).
+> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiók objektumazonosítóát a `--assignee-object-id`, nem csak a `--assignee`felhasználónevét. A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
-For more information on how to use RBAC to manage access to your Azure subscription resources, see the following articles:
+Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Manage access to Azure resources using RBAC and Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Manage access to Azure resources using RBAC and Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
-## <a name="using-conditional-access"></a>Using Conditional Access
+## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 
-You can enforce Conditional Access policies such as multi-factor authentication or user sign-in risk check before authorizing access to Windows VMs in Azure that are enabled with Azure AD sign in. To apply Conditional Access policy, you must select "Azure Windows VM Sign-In" app from the cloud apps or actions assignment option and then use Sign-in risk as a condition and/or require multi-factor authentication as a grant access control. 
+A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Windows rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Windows VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
 
 > [!NOTE]
-> If you use "Require multi-factor authentication" as a grant access control for requesting access to the "Azure Windows VM Sign-In" app, then you must supply multi-factor authentication claim as part of the client that initiates the RDP session to the target Windows VM in Azure. The only way to achieve this on a Windows 10 client is to use Windows Hello for Business PIN or biometric authenication with the RDP client. Support for biometric authentication was added to the RDP client in Windows 10 version 1809. Remote desktop using Windows Hello for Business authentication is only available for deployments that use cert trust model and currently not available for key trust model.
+> Ha a "többtényezős hitelesítés megkövetelése" lehetőséget használja hozzáférés-vezérlésre az "Azure Windows rendszerű virtuális gép bejelentkezési" alkalmazáshoz való hozzáféréshez, akkor a többtényezős hitelesítési jogcímet az ügyfél részeként kell megadnia, amely az RDP-munkamenetet kezdeményezi a célként megadott Windows rendszerre. Virtuális gép az Azure-ban. Ezt csak akkor érheti el, ha Windows 10-ügyfélen a Windows Hello for Business PIN-kódját vagy biometrikus hitelesítés használja az RDP-ügyféllel. A biometrikus hitelesítés támogatása a Windows 10 1809-es verziójának RDP-ügyfeléhez lett hozzáadva. A Windows Hello for Business hitelesítést használó távoli asztal csak a tanúsítvány-megbízhatósági modellt használó központi telepítések esetén érhető el, és jelenleg nem érhető el a kulcs megbízhatósági modellje számára.
 
-## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Log in using Azure AD credentials to a Windows VM
+## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
 > [!IMPORTANT]
-> Remote connection to VMs joined to Azure AD is only allowed from Windows 10 PCs that are Azure AD joined or hybrid Azure AD joined to the **same** directory as the VM. Additionally, to RDP using Azure AD credentials, the user must belong to one of the two RBAC roles, Virtual Machine Administrator Login or Virtual Machine User Login.
+> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyekhez az Azure AD-hez csatlakoztatott vagy hibrid Azure AD csatlakozik **ugyanahhoz** a címtárhoz, mint a virtuális gép. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait.
 
-To login in to your Windows Server 2019 virtual machine using Azure AD: 
+Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD használatával: 
 
-1. Navigate to the overview page of the virtual machine that has been enabled with Azure AD logon.
-1. Select **Connect** to open the Connect to virtual machine blade.
-1. Select **Download RDP File**.
-1. Select **Open** to launch the Remote Desktop Connection client.
-1. Select **Connect** to launch the Windows logon dialog.
-1. Logon using your Azure AD credentials.
+1. Navigáljon a virtuális gép áttekintés lapjára, amely engedélyezve van az Azure AD-bejelentkezéssel.
+1. Válassza a **Kapcsolódás** lehetőséget a Kapcsolódás a virtuális géphez panel megnyitásához.
+1. Válassza az **RDP-fájl letöltése**lehetőséget.
+1. Válassza a **Megnyitás** lehetőséget az távoli asztali kapcsolat-ügyfél elindításához.
+1. Válassza a **Kapcsolódás** lehetőséget a Windows bejelentkezési párbeszédpanelének elindításához.
+1. Jelentkezzen be az Azure AD-beli hitelesítő adataival.
 
-You are now signed in to the Windows Server 2019 Azure virtual machine with the role permissions as assigned, such as VM User or VM Administrator. 
+Most bejelentkezett a Windows Server 2019 Azure-beli virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a VM-felhasználó vagy a VM-rendszergazda. 
 
 > [!NOTE]
-> You can save the .RDP file locally on your computer to launch future remote desktop connections to your virtual machine instead of having to navigate to virtual machine overview page in the Azure portal and using the connect option.
+> Mentheti a t. RDP-fájl helyileg a számítógépen a távoli asztali kapcsolatok a virtuális géphez való elindításához ahelyett, hogy a Azure Portal a virtuális gép áttekintő lapjára kellene lépnie, és a csatlakozás lehetőséget kellene használnia.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 ### <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 
-The AADLoginForWindows extension must install successfully in order for the VM to complete the Azure AD join process. Perform the following steps if the VM extension fails to install correctly.
+A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virtuális gép végre lehessen hajtani az Azure AD JOIN folyamatát. Ha a virtuálisgép-bővítményt nem sikerül megfelelően telepíteni, hajtsa végre a következő lépéseket.
 
-1. RDP to the VM using the local administrator account and examine the CommandExecution.log under  
+1. RDP-t a virtuális géphez a helyi rendszergazdai fiók használatával, és vizsgálja meg a CommandExecution. log naplófájlt  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > If the extension restarts after the initial failure, the log with the deployment error will be saved as CommandExecution_YYYYMMDDHHMMSSSSS.log. 
+   > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a központi telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. 
 
-1. Open a command prompt on the VM and verify these queries against the Instance Metadata Service (IMDS) Endpoint running on the Azure host returns:
+1. Nyisson meg egy parancssort a virtuális gépen, és ellenőrizze ezeket a lekérdezéseket az Azure-gazdagépen futó Instance Metadata Service (IMDS) végponton:
 
-   | Command to run | Várt kimenet |
+   | Futtatandó parancs | Várt kimenet |
    | --- | --- |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Correct information about the Azure VM |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Valid Tenant ID associated with the Azure Subscription |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Valid access token issued by Azure Active Directory for the managed identity that is assigned to this VM |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
 
    > [!NOTE]
-   > The access token can be decoded using a tool like [http://calebb.net/](http://calebb.net/). Verify the "appid" in the access token matches the managed identity assigned to the VM.
+   > A hozzáférési jogkivonat dekódolható egy olyan eszköz használatával, mint a [http://calebb.net/](http://calebb.net/). Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
 
-1. Ensure the required endpoints are accessible from the VM using the command line:
+1. Győződjön meg arról, hogy a szükséges végpontok elérhetők a virtuális gépről a parancssor használatával:
    
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - Curl https://login.microsoftonline.com/-D –
+   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
-   > Replace `<TenantID>` with the Azure AD Tenant ID that is associated with the Azure subscription.
+   > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - Curl https://enterpriseregistration.windows.net/-D-
+   - Curl https://device.login.microsoftonline.com/-D-
+   - Curl https://pas.windows.net/-D-
 
-1. The Device State can be viewed by running `dsregcmd /status`. The goal is for Device State to show as `AzureAdJoined : YES`.
+1. Az eszköz állapotát `dsregcmd /status`futtatásával lehet megtekinteni. A cél az eszköz állapota `AzureAdJoined : YES`megjelenítéséhez.
 
    > [!NOTE]
-   > Azure AD join activity is captured in Event viewer under the User Device Registration\Admin log.
+   > Az Azure AD JOIN tevékenység az eseménynaplóban, a felhasználói eszköz Registration\Admin naplójában rögzítve van.
 
-If AADLoginForWindows extension fails with certain error code, you can perform the following steps:
+Ha a AADLoginForWindows bővítmény bizonyos hibakód esetén meghiúsul, a következő lépéseket hajthatja végre:
 
-#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Issue 1: AADLoginForWindows extension fails to install with terminal error code '1007' and Exit code: -2145648574.
+#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>1\. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő terminál-hibakódtal: "1007", kilépési kód:-2145648574.
 
-This exit code translates to DSREG_E_MSI_TENANTID_UNAVAILABLE because the extension is unable to query the Azure AD Tenant information.
+Ez a kilépési kód DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a bővítmény nem tudja lekérdezni az Azure AD-bérlő adatait.
 
-1. Verify the Azure VM can retrieve the TenantID from the Instance Metadata Service.
+1. Ellenőrizze, hogy az Azure-beli virtuális gép lekérheti-e a TenantID a Instance Metadata Service.
 
-   - RDP to the VM as a local administrator and verify the endpoint returns valid Tenant ID by running this command from an elevated command line on the VM:
+   - Az RDP-t a virtuális géphez helyi rendszergazdaként, és ellenőrizze, hogy a végpont érvényes bérlői azonosítót ad vissza, ha a parancsot egy emelt szintű parancssorból futtatja a virtuális gépen:
       
-      - curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - Curl-H metaadatok: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
-1. The VM admin attempts to install the AADLoginForWindows extension, but a system assigned managed identity has not enabled the VM first. Navigate to the Identity blade of the VM. From the System assigned tab, verify Status is toggled to On.
+1. A virtuálisgép-rendszergazda megkísérli a AADLoginForWindows-bővítmény telepítését, de a rendszerhez rendelt felügyelt identitások nem engedélyezték először a virtuális gépet. Navigáljon a virtuális gép Identity (identitás) paneljére. A rendszerhez rendelt lapon ellenőrizze, hogy az állapot be van-e kapcsolva.
 
-#### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Issue 2: AADLoginForWindows extension fails to install with Exit code: -2145648607
+#### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>2\. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő kilépési kóddal:-2145648607
 
-This Exit code translates to DSREG_AUTOJOIN_DISC_FAILED because the extension is not able to reach the https://enterpriseregistration.windows.net endpoint.
+Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmény nem tudja elérni a https://enterpriseregistration.windows.net végpontot.
 
-1. Verify the required endpoints are accessible from the VM using the command line:
+1. Ellenőrizze, hogy a szükséges végpontok elérhetők-e a virtuális gépről a parancssor használatával:
 
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - Curl https://login.microsoftonline.com/-D –
+   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
-   > Replace `<TenantID>` with the Azure AD Tenant ID that is associated with the Azure subscription. If you need to find the tenant ID, you can hover over your account name to get the directory / tenant ID, or select Azure Active Directory > Properties > Directory ID in the Azure portal.
+   > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > Tulajdonságok > Directory-azonosító a Azure Portalban.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - Curl https://enterpriseregistration.windows.net/-D-
+   - Curl https://device.login.microsoftonline.com/-D-
+   - Curl https://pas.windows.net/-D-
 
-1. If any of the commands fails with "Could not resolve host `<URL>`", try running this command to determine the DNS server that is being used by the VM.
+1. Ha a parancsok bármelyike meghiúsul "a gazdagép `<URL>`feloldása" művelettel, próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Replace `<URL>` with the fully qualified domain names used by the endpoints, such as “login.microsoftonline.com”.
+   > Cserélje le a `<URL>`t a végpontok által használt teljes tartománynevek (például "login.microsoftonline.com") helyére.
 
-1. Next, see if specifying a public DNS server allows the command to succeed:
+1. Ezután ellenőrizze, hogy a nyilvános DNS-kiszolgáló meghatározása lehetővé teszi-e a parancs sikerességét:
 
    `nslookup <URL> 208.67.222.222`
 
-1. If necessary, change the DNS server that is assigned to the network security group that the Azure VM belongs to.
+1. Szükség esetén módosítsa a hálózati biztonsági csoporthoz hozzárendelt DNS-kiszolgálót, amelyhez az Azure-beli virtuális gép tartozik.
 
-#### <a name="issue-3-aadloginforwindows-extension-fails-to-install-with-exit-code-51"></a>Issue 3: AADLoginForWindows extension fails to install with Exit code: 51
+#### <a name="issue-3-aadloginforwindows-extension-fails-to-install-with-exit-code-51"></a>3\. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő kilépési kóddal: 51
 
-Exit code 51 translates to "This extension is not supported on the VM's operating system".
+A 51-es kilépési kód lefordítja a következőre: "Ez a kiterjesztés nem támogatott a virtuális gép operációs rendszerében".
 
-At Public Preview, the AADLoginForWindows extension is only intended to be installed on Windows Server 2019 or Windows 10 (Build 1809 or later). Ensure the version of Windows is supported. If the build of Windows is not supported, uninstall the VM Extension.
+A nyilvános előzetes verzióban a AADLoginForWindows-bővítmény csak Windows Server 2019 vagy Windows 10 rendszerre (Build 1809 vagy újabb verzió) készült. Győződjön meg arról, hogy a Windows verziója támogatott. Ha a Windows-Build nem támogatott, távolítsa el a virtuálisgép-bővítményt.
 
-### <a name="troubleshoot-sign-in-issues"></a>Troubleshoot sign-in issues
+### <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 
-Some common errors when you try to RDP with Azure AD credentials include no RBAC roles assigned, unauthorized client, or 2FA sign-in method required. Use the following information to correct these issues.
+Az Azure AD-beli hitelesítő adatokkal való RDP-vel való kísérlet során előforduló gyakori hibák közé tartozik a RBAC-szerepkörök hozzárendelése, jogosulatlan ügyfél vagy 2FA bejelentkezési módszer. Az alábbi információk segítségével javítsa ki ezeket a problémákat.
 
-The Device and SSO State can be viewed by running `dsregcmd /status`. The goal is for Device State to show as `AzureAdJoined : YES` and `SSO State` to show `AzureAdPrt : YES`.
+Az eszköz és az SSO állapotának megtekintésére `dsregcmd /status`futtatásával lehet megtekinteni. A cél az eszköz állapotának megjelenítése `AzureAdJoined : YES` és `SSO State` a `AzureAdPrt : YES`megjelenítéséhez.
 
-Also, RDP Sign-in using Azure AD accounts is captured in Event viewer under the AAD\Operational event logs.
+Emellett az Azure AD-fiókokat használó RDP-bejelentkezés az eseménynaplóban, a AAD\Operational-eseménynaplóban is rögzítve van.
 
-#### <a name="rbac-role-not-assigned"></a>RBAC role not assigned
+#### <a name="rbac-role-not-assigned"></a>A RBAC szerepkör nincs hozzárendelve
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal kezdeményezi a virtuális gépet: 
 
-- Your account is configured to prevent you from using this device. For more info, contact your system administrator
+- A fiókja úgy van konfigurálva, hogy megakadályozza az eszköz használatát. További információért forduljon a rendszergazdához
 
-![Your account is configured to prevent you from using this device.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
+![A fiókja úgy van konfigurálva, hogy megakadályozza az eszköz használatát.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Verify that you have [configured RBAC policies](../../virtual-machines/linux/login-using-aad.md) for the VM that grants the user either the Virtual Machine Administrator Login or Virtual Machine User Login role:
+Ellenőrizze, hogy konfigurálta-e a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét biztosító [RBAC házirendeket](../../virtual-machines/linux/login-using-aad.md) a virtuális géphez:
  
-#### <a name="unauthorized-client"></a>Unauthorized client
+#### <a name="unauthorized-client"></a>Jogosulatlan ügyfél
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal kezdeményezi a virtuális gépet: 
 
-- Your credentials did not work
+- A hitelesítő adatai nem működnek
 
-![Your credentials did not work](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+![A hitelesítő adatai nem működnek](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Verify that the Windows 10 PC you are using to initiate the remote desktop connection is one that is either Azure AD joined, or hybrid Azure AD joined to the same Azure AD directory where your VM is joined to. For more information about device identity, see the article [What is a device identity](https://docs.microsoft.com/azure/active-directory/devices/overview).
+Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](https://docs.microsoft.com/azure/active-directory/devices/overview)ismertető cikket.
 
 > [!NOTE]
-> Windows 10 20H1, will add support for Azure AD Registered PC to initiate remote desktop connection to your VM. Join the Windows Insider Program to try this out and explore new features of Windows 10.
+> A Windows 10 20H1 támogatja az Azure AD regisztrált SZÁMÍTÓGÉPét, hogy kezdeményezzen távoli asztali kapcsolatokat a virtuális géppel. Csatlakozzon a Windows Insider programhoz, és próbálja ki a Windows 10 új funkcióit.
 
-Also, verify the AADLoginForWindows extension has not been uninstalled after Azure AD join has completed.
+Azt is ellenőrizze, hogy az Azure AD JOIN befejeződése után nem lett-e eltávolítva az AADLoginForWindows bővítmény.
  
-#### <a name="mfa-sign-in-method-required"></a>MFA sign-in method required
+#### <a name="mfa-sign-in-method-required"></a>MFA bejelentkezési módszer szükséges
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal kezdeményezi a virtuális gépet: 
 
-- The sign-in method you're trying to use isn't allowed. Try a different sign-in method or contact your system administrator.
+- A használni kívánt bejelentkezési módszer nem engedélyezett. Próbálkozzon másik bejelentkezési módszerrel, vagy forduljon a rendszergazdához.
 
-![The sign-in method you're trying to use isn't allowed.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
+![A használni kívánt bejelentkezési módszer nem engedélyezett.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-If you have configured a Conditional Access policy that requires multi-factor authentication (MFA) before you can access the resource, then you need to ensure that the Windows 10 PC initiating the remote desktop connection to your VM signs in using a strong authentication method such as Windows Hello. If you do not use a strong authentication method for your remote desktop connection, you will see the previous error.
+Ha olyan feltételes hozzáférési szabályzatot állított be, amely a többtényezős hitelesítés (MFA) használatát igényli az erőforráshoz való hozzáféréshez, meg kell győződnie arról, hogy a Windows 10 rendszerű számítógép a távoli asztali kapcsolatot kezdeményezi a virtuális géppel, és erős hitelesítési módszer, például a Windows Hello. Ha nem használ erős hitelesítési módszert a távoli asztali kapcsolathoz, az előző hibaüzenet jelenik meg.
 
-If you have not deployed Windows Hello for Business and if that is not an option for now, you can exclude MFA requirement by configuring Conditional Access policy that excludes "Azure Windows VM Sign-In" app from the list of cloud apps that require MFA. To learn more about Windows Hello for Business, see [Windows Hello for Business Overview](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez nem lehetséges, kizárhatja az MFA-követelményt úgy, hogy a feltételes hozzáférési szabályzatot, amely kizárja az "Azure Windows VM-bejelentkezés" alkalmazást az MFA-t igénylő felhőalapú alkalmazások listájából. A vállalati Windows Hello szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [vállalati Windows Hello áttekintése](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)című témakört.
 
 > [!NOTE]
-> Windows Hello for Business PIN authentication with RDP has been supported by Windows 10 for several versions, however support for Biometric authentication with RDP was added in Windows 10 version 1809. Using Windows Hello for Business auth during RDP is only available for deployments that use cert trust model and currently not available for key trust model.
+> A Windows Hello for Business PIN-kódjának RDP protokollal való hitelesítését a Windows 10 több verzióra is támogatja, azonban a Windows 10 1809-es verziójában hozzá lett adva a biometrikus hitelesítés támogatása az RDP használatával. Ha a Windows Hello for Business hitelesítést használja az RDP-ben, csak a CERT megbízhatósági modellt használó központi telepítések esetén érhető el, és a kulcs megbízhatósági modellje jelenleg nem érhető el.
  
-## <a name="preview-feedback"></a>Preview feedback
+## <a name="preview-feedback"></a>Előzetes visszajelzés
 
-Share your feedback about this preview feature or report issues using it on the [Azure AD feedback forum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
 ## <a name="next-steps"></a>Következő lépések
-For more information on Azure Active Directory, see [What is Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+További információ a Azure Active Directoryről: [Mi az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)

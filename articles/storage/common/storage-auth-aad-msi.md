@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d77ab142e227cfaa6533395cc256d992e698dd17
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 66d867d33060aa931dbe42c534166e61ee7692fe
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495928"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534518"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz
 
@@ -34,39 +34,92 @@ Ahhoz, hogy az Azure-erőforrásokhoz felügyelt identitások használatával en
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>Hitelesítés az Azure Identity Library (előzetes verzió) használatával
+## <a name="authenticate-with-the-azure-identity-library"></a>Hitelesítés az Azure Identity Library használatával
 
-Az Azure Identity .NET-hez készült ügyféloldali kódtára (előzetes verzió) egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
+Az Azure Identity Client Library előnye, hogy lehetővé teszi, hogy ugyanazt a kódot használja annak hitelesítésére, hogy az alkalmazás a fejlesztői környezetben vagy az Azure-ban fut-e. Az Azure-környezetben futó kódban az ügyféloldali kódtár felügyelt identitást hitelesít az Azure-erőforrásokhoz. A fejlesztői környezetben a felügyelt identitás nem létezik, így az ügyfél-függvénytár tesztelési célból hitelesíti a felhasználót vagy az egyszerű szolgáltatást.
 
-Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
-
-Más fejlesztői eszközök megkérhetik a bejelentkezést egy webböngészőn keresztül. Az egyszerű szolgáltatásnév használatával is végezheti el a hitelesítést a fejlesztési környezetből. További információkért lásd: [identitás létrehozása az Azure-alkalmazáshoz a portálon](../../active-directory/develop/howto-create-service-principal-portal.md).
+Az Azure Identity .NET-hez készült ügyféloldali kódtára hitelesíti a rendszerbiztonsági tag nevét. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
 
 A hitelesítés után az Azure Identity Client Library megkapja a jogkivonat hitelesítő adatait. Ezt a jogkivonat hitelesítő adatait a rendszer az Azure Storage szolgáltatással kapcsolatos műveletek elvégzéséhez létrehozott szolgáltatási ügyfél objektumba ágyazza be. A könyvtár a megfelelő jogkivonat-hitelesítő adatok lekérésével zökkenőmentesen kezeli ezt.
 
 Az Azure Identity ügyféloldali függvénytárával kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-szerepkörök kiosztása az adathoz való hozzáféréshez
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök kiosztása az adathoz való hozzáféréshez
 
 Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üzenetsor-adatszolgáltatáshoz, akkor a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít a blob-vagy üzenetsor-adatokhoz Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
 
-## <a name="install-the-preview-packages"></a>Az előzetes verziójú csomagok telepítése
+### <a name="authenticate-the-user-in-the-development-environment"></a>A felhasználó hitelesítése a fejlesztői környezetben
 
-A jelen cikkben szereplő példák az Azure Storage ügyféloldali kódtár legújabb előzetes verzióját használják a blob Storage-hoz. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
-```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+Más fejlesztői eszközök megkérhetik a bejelentkezést egy webböngészőn keresztül.
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>Egyszerű szolgáltatásnév hitelesítése a fejlesztői környezetben
+
+Ha a fejlesztési környezet nem támogatja az egyszeri bejelentkezést vagy a bejelentkezést egy webböngészőn keresztül, akkor egy egyszerű szolgáltatásnév használatával végezheti el a hitelesítést a fejlesztői környezetből.
+
+#### <a name="create-the-service-principal"></a>A szolgáltatásnév létrehozása
+
+Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
+
+Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
+
+Az alábbi példa az Azure CLI-t használja egy új egyszerű szolgáltatásnév létrehozásához, és hozzárendeli a **Storage blob Adatolvasói** szerepkört a fiók hatóköréhez
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb előzetes verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+A `az ad sp create-for-rbac` parancs JSON formátumban adja vissza a szolgáltatásnév tulajdonságainak listáját. Másolja ezeket az értékeket, hogy felhasználhassa a szükséges környezeti változókat a következő lépésben.
 
-```powershell
-Install-Package Azure.Identity -IncludePrerelease
+```json
+{
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
+}
 ```
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET-kód – példa: Blokkos blob létrehozása
+> [!IMPORTANT]
+> A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
-Adja hozzá a következő `using`-irányelveket a kódjához az Azure Identity és az Azure Storage ügyféloldali kódtárainak előzetes verziójának használatához.
+#### <a name="set-environment-variables"></a>Környezeti változók beállítása
+
+Az Azure Identity ügyféloldali függvénytár három környezeti változóból olvassa be az értékeket az egyszerű szolgáltatásnév hitelesítéséhez. A következő táblázat az egyes környezeti változókhoz beállított értéket ismerteti.
+
+|Környezeti változó|Érték
+|-|-
+|`AZURE_CLIENT_ID`|Az egyszerű szolgáltatáshoz tartozó alkalmazás azonosítója
+|`AZURE_TENANT_ID`|Az egyszerű szolgáltatás Azure AD-bérlői azonosítója
+|`AZURE_CLIENT_SECRET`|Az egyszerű szolgáltatásnév számára létrehozott jelszó
+
+> [!IMPORTANT]
+> A környezeti változók beállítása után zárjuk be és nyissa meg újra a konzolablak ablakát. Ha a Visual studiót vagy más fejlesztési környezetet használ, előfordulhat, hogy újra kell indítania a fejlesztési környezetet ahhoz, hogy regisztrálni lehessen az új környezeti változókat.
+
+További információkért lásd: [identitás létrehozása az Azure-alkalmazáshoz a portálon](../../active-directory/develop/howto-create-service-principal-portal.md).
+
+## <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
+
+A jelen cikkben szereplő példák az Azure Storage ügyféloldali kódtár legújabb verzióját használják a blob Storage-hoz. A csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+
+```powershell
+Install-Package Azure.Storage.Blobs
+```
+
+A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. A csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+
+```powershell
+Install-Package Azure.Identity
+```
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET mintakód: block blob létrehozása
+
+Adja hozzá az alábbi `using`-irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak használatához.
 
 ```csharp
 using System;
@@ -119,7 +172,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az Azure Storage RBAC szerepköreiről, tekintse meg a [hozzáférési jogosultságok kezelése a RBAC](storage-auth-aad-rbac.md)szolgáltatással című témakört.
 - Ha szeretné megtudni, hogyan engedélyezheti a tárolók és a várólisták hozzáférését a Storage-alkalmazásokban, tekintse meg az [Azure ad és a Storage-alkalmazások használatát](storage-auth-aad-app.md)ismertető témakört.

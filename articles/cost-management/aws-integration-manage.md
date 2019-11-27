@@ -1,6 +1,6 @@
 ---
-title: Manage AWS costs and usage in Azure Cost Management
-description: This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
+title: Az AWS-költségek és-használat kezelése Azure Cost Management
+description: Ebből a cikkből megtudhatja, hogyan kezelheti az AWS-költségeket és-használatot Cost Management a Cost Analysis és a költségvetések használatát.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,170 +17,170 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230166"
 ---
-# <a name="manage-aws-costs-and-usage-in-azure"></a>Manage AWS costs and usage in Azure
+# <a name="manage-aws-costs-and-usage-in-azure"></a>Az AWS-költségek és-használat kezelése az Azure-ban
 
-After you've set up and configured AWS Cost and Usage report integration for Azure Cost Management, you're ready to start managing your AWS costs and usage. This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
+Miután beállította és konfigurálta az AWS költségek és a használati jelentés integrációját a Azure Cost Management számára, készen áll az AWS-költségek és-használat kezelésének megkezdésére. Ebből a cikkből megtudhatja, hogyan kezelheti az AWS-költségeket és-használatot Cost Management a Cost Analysis és a költségvetések használatát.
 
-If you haven't already configured the integration, see [Set up and configure AWS Usage report integration](aws-integration-set-up-configure.md).
+Ha még nem konfigurálta az integrációt, olvassa el az [AWS használati jelentés integrációjának beállítása és konfigurálása](aws-integration-set-up-configure.md)című témakört.
 
-_Before you begin_: If you're unfamiliar with cost analysis, see the [Explore and analyze costs with Cost analysis](quick-acm-cost-analysis.md) quickstart. And, if you're unfamiliar with budgets in Azure, see the [Create and manage Azure budgets](tutorial-acm-create-budgets.md) tutorial.
+_Mielőtt elkezdené_: Ha nem ismeri a Cost Analysis-t, tekintse meg a [költségek feltárása és elemzése a Cost Analysis](quick-acm-cost-analysis.md) rövid útmutatóval című témakört. Ha nem ismeri a költségvetést az Azure-ban, tekintse meg az [Azure-költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md) című oktatóanyagot.
 
-## <a name="view-aws-costs-in-cost-analysis"></a>View AWS costs in cost analysis
+## <a name="view-aws-costs-in-cost-analysis"></a>Az AWS költségeinek megtekintése a Cost Analysis szolgáltatásban
 
-AWS costs are available in Cost Analysis in the following scopes:
+Az AWS költsége a következő hatókörökben érhető el:
 
-- AWS linked accounts under a management group
-- AWS linked account costs
-- AWS consolidated account costs
+- AWS-hez csatolt fiókok felügyeleti csoportban
+- AWS-fiókokkal kapcsolatos költségek
+- AWS összevont fiók költségei
 
-The next sections describe how to use the scopes so that you see cost and usage data for each one.
+A következő szakaszok azt ismertetik, hogyan használhatók a hatókörök, hogy mindegyikhez a költségeket és a használati adatokat lássuk.
 
-### <a name="view-aws-linked-accounts-under-a-management-group"></a>View AWS linked accounts under a management group
+### <a name="view-aws-linked-accounts-under-a-management-group"></a>AWS-hez csatolt fiókok megtekintése felügyeleti csoportban
 
-Viewing costs by using the management group scope is the only way to see aggregated costs coming from different subscriptions and linked accounts. Using a management group provides a cross-cloud view.
+A költségeket a felügyeleti csoport hatókörének használatával tekintheti meg, így a különböző előfizetések és a társított fiókok összesített költségei láthatók. A felügyeleti csoportok több felhőből álló nézetet is biztosítanak.
 
-In cost analysis, open the scope picker and select the management group that holds your AWS linked accounts. Here's an example image in the Azure portal:
+A Cost Analysis alkalmazásban nyissa meg a hatókör-választót, és válassza ki azt a felügyeleti csoportot, amely az AWS-hez társított fiókokat tárolja. Az alábbi ábrán egy példa látható a Azure Portalban:
 
-![Example of the Select scope view](./media/aws-integration-manage/select-scope01.png)
-
-
-
-Here's an example showing the management group cost in cost analysis, grouped by Provider (Azure and AWS).
-
-![Example showing Azure and AWS costs for a quarter in cost analysis](./media/aws-integration-manage/cost-analysis-aws-azure.png)
-
-### <a name="view-aws-linked-account-costs"></a>View AWS linked account costs
-
-To view AWS link account costs, open the scope picker and select the AWS linked account. Note that linked accounts are associated to a management group, as defined in the AWS connector.
-
-Here's an example that shows selecting an AWS linked account scope.
-
-![Example of the Select scope view](./media/aws-integration-manage/select-scope02.png)
+![Példa a hatókör kiválasztása nézetre](./media/aws-integration-manage/select-scope01.png)
 
 
 
-### <a name="view-aws-consolidated-account-costs"></a>View AWS consolidated account costs
+Íme egy példa a felügyeleti csoport költségeit a Cost Analysis, szolgáltató szerint csoportosítva (Azure és AWS).
 
-To view AWS consolidated account costs, open the scope picker and select the AWS consolidated account. Here's an example that shows selecting an AWS consolidated account scope.
+![Példa az Azure-és AWS-költségekre a Cost Analysis negyedévhez](./media/aws-integration-manage/cost-analysis-aws-azure.png)
 
-![Example of the Select scope view](./media/aws-integration-manage/select-scope03.png)
+### <a name="view-aws-linked-account-costs"></a>Az AWS-hez kapcsolódó fiók költségeinek megtekintése
+
+Az AWS-kapcsolatok fiókjának költségeinek megtekintéséhez nyissa meg a hatókör-választót, és válassza ki az AWS-hez kapcsolt fiókot. Vegye figyelembe, hogy a csatolt fiókok egy felügyeleti csoporthoz vannak társítva, az AWS-összekötőben meghatározottak szerint.
+
+Az alábbi példa egy AWS-hez csatolt fiók hatókörének kiválasztását mutatja be.
+
+![Példa a hatókör kiválasztása nézetre](./media/aws-integration-manage/select-scope02.png)
 
 
 
-This scope provides an aggregated view of all AWS linked accounts associated with the AWS consolidated account. Here's an example showing costs for an AWS consolidated account, grouped by service name.
+### <a name="view-aws-consolidated-account-costs"></a>Az AWS összevont fiók költségeinek megtekintése
 
-![Example showing AWS consolidated costs in cost analysis](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+Az AWS-összevont fiókok költségeinek megtekintéséhez nyissa meg a hatókör-választót, és válassza ki az AWS konszolidált fiókot. Az alábbi példa egy AWS konszolidált fiók hatókörének kiválasztását mutatja be.
 
-### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimensions available for filtering and grouping
+![Példa a hatókör kiválasztása nézetre](./media/aws-integration-manage/select-scope03.png)
 
-The following table describes dimensions available to group and filter by in cost analysis.
 
-| Dimenzió | Amazon CUR header | Hatókörök | Megjegyzések |
+
+Ez a hatókör összesített áttekintést nyújt az AWS-összevont fiókhoz társított összes AWS-hez kapcsolódó fiókról. Íme egy példa, amely egy AWS összevont fiókra vonatkozó költségeket mutat be szolgáltatásnév szerint csoportosítva.
+
+![Példa az AWS konszolidált költségekre a Cost Analysis szolgáltatásban](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+
+### <a name="dimensions-available-for-filtering-and-grouping"></a>Szűréshez és csoportosításhoz elérhető dimenziók
+
+A következő táblázat a csoportok számára elérhető dimenziókat ismerteti a Cost Analysis szolgáltatásban.
+
+| Dimenzió | Amazon akt fejléc | Hatókörök | Megjegyzések |
 | --- | --- | --- | --- |
-| Availability zone | lineitem/AvailabilityZone | Mind |   |
-| Földrajzi egység | product/Region | Mind |   |
-| Forgalmi díj |   | Mind |   |
-| Meter category | lineItem/ProductCode | Mind |   |
-| Meter subcategory | lineitem/UsageType | Mind |   |
-| Művelet | lineItem/Operation | Mind |   |
-| Erőforrás | lineItem/ResourceId | Mind |   |
-| Erőforrás típusa | product/instanceType | Mind | If product/instanceType is null, lineItem/UsageType is used. |
-| ResourceGuid | – | Mind | Azure meter GUID. |
-| Szolgáltatás neve | product/ProductName | Mind | If product/ProductName is null, lineItem/ProductCode is used. |
-| Szolgáltatáscsomag |   |   |   |
-| Subscription ID (Előfizetés azonosítója) | lineItem/UsageAccountId | Consolidated account and management group |   |
-| Subscription name | – | Consolidated account and management group | Account names are collected using the AWS Organization API. |
-| Címke | resourceTags/\* | Mind | The _user:_ prefix is removed from user-defined tags to allow cross-cloud tags. The _aws:_ prefix is left intact. |
-| Billing account ID | bill/PayerAccountId | Felügyeleti csoport |   |
-| Billing account name | – | Felügyeleti csoport | Account names are collected using the AWS Organization API. |
-| Szolgáltató | – | Felügyeleti csoport | Either AWS or Azure. |
+| Rendelkezésre állási zóna | lineitem/AvailabilityZone | Összes |   |
+| Hely | termék/régió | Összes |   |
+| Mérő |   | Összes |   |
+| Fogyasztásmérő kategóriája | lineItem/ProductCode | Összes |   |
+| Fogyasztásmérő alkategóriája | lineitem/Usagetype értékre | Összes |   |
+| Művelet | lineItem/Operation | Összes |   |
+| Erőforrás | lineItem/ResourceId | Összes |   |
+| Erőforrás típusa | termék/instanceType | Összes | Ha a Product/instanceType értéke null, a rendszer a lineItem/Usagetype értékre-et használja. |
+| Erőforrás GUID azonosítója | N/A | Összes | Az Azure Meter GUID-azonosítója. |
+| Szolgáltatásnév | termék/ProductName | Összes | Ha a Product/ProductName értéke null, a rendszer lineItem/ProductCode használ. |
+| Szolgáltatásszint |   |   |   |
+| Előfizetés azonosítója | lineItem/UsageAccountId | Konszolidált fiók és felügyeleti csoport |   |
+| Előfizetés neve | N/A | Konszolidált fiók és felügyeleti csoport | A rendszer az AWS szervezeti API használatával gyűjti a fiók nevét. |
+| Címke | resourceTags/\* | Összes | A _felhasználó:_ előtagot a rendszer eltávolítja a felhasználó által definiált címkékről a több felhőből származó címkék engedélyezéséhez. Az _AWS:_ előtag érintetlen marad. |
+| Számlázási fiók azonosítója | bill/PayerAccountId | Felügyeleti csoport |   |
+| Számlázási fiók neve | N/A | Felügyeleti csoport | A rendszer az AWS szervezeti API használatával gyűjti a fiók nevét. |
+| Szolgáltató | N/A | Felügyeleti csoport | AWS vagy Azure. |
 
-## <a name="set-budgets-on-aws-scopes"></a>Set budgets on AWS scopes
+## <a name="set-budgets-on-aws-scopes"></a>Költségvetések beállítása AWS-hatókörökre
 
-Use budgets to proactively manage costs and drive accountability in your organization. Budgets are set on the AWS consolidated account and AWS linked account scopes. Here's an example of budgets for an AWS consolidated account shown in Cost Management:
+A költségvetések segítségével proaktív módon kezelheti a költségeket, és elvégezheti az elszámoltathatóságot a szervezetben. A költségvetést az AWS konszolidált fiókja és az AWS-hez csatolt fiókok hatóköre határozza meg. Íme egy példa a költségvetésekre egy, a Cost Managementban látható AWS összevont fiókhoz:
 
-![Example showing budgets for an AWS consolidated account](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+![Példa egy AWS konszolidált fiók költségvetésére](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
 
-## <a name="aws-data-collection-process"></a>AWS data collection process
+## <a name="aws-data-collection-process"></a>AWS adatgyűjtési folyamat
 
-After setting up the AWS connector, data collection and discovery processes start. It might take few hours to collect all usage data. The duration depends on:
+Az AWS-összekötő beállítása után elindul az adatgyűjtési és-felderítési folyamatok. Az összes használati adat összegyűjtése néhány órát is igénybe vehet. Az időtartam a következőktől függ:
 
-- The time needed to process the CUR files that are in the AWS S3 bucket.
-- The time needed to create the AWS Consolidated account and AWS Linked account scopes.
-- The time and frequency of AWS are writing the Cost and Usage Report files in the S3 bucket
+- Az AWS S3 gyűjtőben található, az aktuális fájlok feldolgozásához szükséges idő.
+- Az AWS konszolidált fiók és az AWS-hez csatolt fiókok hatókörének létrehozásához szükséges idő.
+- Az AWS ideje és gyakorisága az S3 gyűjtőben lévő Cost és a használati jelentések fájljait írja le.
 
-## <a name="aws-integration-pricing"></a>AWS integration pricing
+## <a name="aws-integration-pricing"></a>AWS-integráció díjszabása
 
-Each AWS connector gets 90 free trial days. During Public Preview, there is no charge.
+Minden AWS-összekötő 90 ingyenes próbaidőszakot kap. A nyilvános előzetes verzióban díjmentesen használható.
 
-The list price is 1% of your AWS monthly costs. Each month you are charged based on your invoiced costs from the previous month.
+A lista ára az AWS havi költségeinek 1%-a. Minden hónapban az előző hónap számlázott költségei alapján számítjuk fel a díjat.
 
-Accessing AWS APIs may incur additional costs.
+Az AWS API-k elérése további költségeket eredményezhet.
 
-## <a name="aws-integration-limitations"></a>AWS integration limitations
+## <a name="aws-integration-limitations"></a>AWS-integrációs korlátozások
 
-- Cost Management doesn't support cost reports that contain multiple currency types. An error message is shown if you select a scope that has multiple currencies.
-- Cloud connectors don't support AWS GovCloud (US), AWS Gov, or AWS China.
-- Cost Management shows AWS _usage costs_ only. Tax, support, refunds, RI, credits or any other charge types aren't supported yet.
+- A Cost Management nem támogatja a több pénznemszimbólumot tartalmazó Cost-jelentéseket. Ha olyan hatókört választ ki, amely több pénznemet tartalmaz, hibaüzenet jelenik meg.
+- A Felhőbeli összekötők nem támogatják az AWS GovCloud (US), az AWS gov vagy az AWS China platformot.
+- Cost Management csak az AWS _használati költségeit_ jeleníti meg. Az adó, a támogatás, a visszatérítések, az RI, a kreditek vagy bármely egyéb díjköteles típus még nem támogatott.
 
-## <a name="troubleshooting-aws-integration"></a>Troubleshooting AWS integration
+## <a name="troubleshooting-aws-integration"></a>AWS-integráció hibaelhárítása
 
-Use the following troubleshooting information to resolve common problems.
+A gyakori problémák megoldásához használja az alábbi hibaelhárítási információkat.
 
-### <a name="no-permission-to-aws-linked-accounts"></a>No permission to AWS Linked accounts
+### <a name="no-permission-to-aws-linked-accounts"></a>Nincs engedélye az AWS-hez csatolt fiókokhoz
 
-**Error code:** _Unauthorized_
+**Hibakód:** nem _engedélyezett_
 
-There are two ways to get permissions to access AWS linked accounts costs:
+Az AWS-hez kapcsolódó fiókok költségeinek eléréséhez kétféleképpen kaphat engedélyeket:
 
-- Get access to the management group that has the AWS Linked accounts.
-- Have someone give you permission to the AWS linked account.
+- Szerezze be azt a felügyeleti csoportot, amelyhez az AWS-hez társított fiókok vannak társítva.
+- Ha valaki engedélyt ad az AWS-hez kapcsolódó fiókra.
 
-By default, the AWS connector creator is the owner of all the objects that the connector created. Including, the AWS consolidated account and the AWS linked account.
+Alapértelmezés szerint az AWS-összekötő létrehozója az összekötő által létrehozott összes objektum tulajdonosa. Beleértve az AWS-összevont fiókot és az AWS-hez kapcsolódó fiókot is.
 
-In order to be able to Verify the connector settings you will need at least a contributor role, reader can not Verify connector settings
+Az összekötő beállításainak ellenőrzéséhez legalább közreműködői szerepkörre lesz szüksége, az olvasó nem tudja ellenőrizni az összekötő beállításait
 
-### <a name="collection-failed-with-assumerole"></a>Collection failed with AssumeRole
+### <a name="collection-failed-with-assumerole"></a>A gyűjtemény nem sikerült a AssumeRole
 
-**Error code:** _FailedToAssumeRole_
+**Hibakód:** _FailedToAssumeRole_
 
-This error means that Cost Management is unable to call the AWS AssumeRole API. This problem can happen because of an issue with the role definition. Verify that the following conditions are true:
+Ez a hiba azt jelenti, hogy a Cost Management nem tudja hívni az AWS AssumeRole API-t. Ez a probléma a szerepkör-definícióval kapcsolatos probléma miatt fordulhat elő. Ellenőrizze, hogy a következő feltételek teljesülnek-e:
 
-- The external ID is the same as the one in the role definition and the connector definition.
-- The role type is set to **Another AWS account Belonging to you or 3rd party.**
-- The **Require MFA** choice is cleared.
-- The trusted AWS account in the AWS Role is _432263259397_.
+- A külső azonosító ugyanaz, mint a szerepkör-definícióban és az összekötő definíciójában.
+- A szerepkör típusa **egy másik AWS-fiókra van beállítva, amely az Ön vagy harmadik fél tulajdonában áll.**
+- Az **MFA megkövetelése** beállítás nincs bejelölve.
+- Az AWS szerepkörben a megbízható AWS-fiók _432263259397_.
 
-### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Collection failed with Access Denied - CUR report definitions
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>A gyűjtemény nem sikerült – a hozzáférés megtagadva – a jelentés definíciói
 
-**Error code:** _AccessDeniedReportDefinitions_ 
+**Hibakód:** _AccessDeniedReportDefinitions_ 
 
-This error means that Cost Management is unable to see the Cost and Usage report definitions. This permission is used to validate that the CUR is defined as expected by Azure Cost Management. See [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+Ez a hiba azt jelenti, hogy Cost Management nem tudja megtekinteni a használati jelentés definícióit. Ezzel a jogosultsággal ellenőrizheti, hogy a Azure Cost Management a várt módon van-e definiálva. Lásd: [Cost-és használati jelentés létrehozása az AWS-ben](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
-### <a name="collection-failed-with-access-denied---list-reports"></a>Collection failed with Access Denied - List reports
+### <a name="collection-failed-with-access-denied---list-reports"></a>A gyűjtemény nem sikerült – a hozzáférés megtagadva – jelentések listázása
 
-**Error code:** _AccessDeniedListReports_ 
+**Hibakód:** _AccessDeniedListReports_ 
 
-This error means that Cost Management is unable to list the object in the S3 bucket where the CUR is located. AWS IAM policy requires a permission on the bucket and on the objects in the bucket. See [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
+Ez a hiba azt jelenti, hogy a Cost Management nem tudja listázni az az S3 gyűjtőben lévő objektumot, ahol az a pénznem található. Az AWS IAM-szabályzatnak engedélyre van szüksége a gyűjtőn és a gyűjtőben lévő objektumokon. Lásd: [szerepkör és szabályzat létrehozása AWS-ben](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
 
-### <a name="collection-failed-with-access-denied---download-report"></a>Collection failed with Access Denied - Download report 
+### <a name="collection-failed-with-access-denied---download-report"></a>A gyűjtemény nem sikerült – a hozzáférés megtagadva – jelentés letöltése 
 
-**Error code:** _AccessDeniedDownloadReport_ 
+**Hibakód:** _AccessDeniedDownloadReport_ 
 
-This error means that Cost Management is unable to access and download the CUR files stored in the Amazon S3 bucket. Make sure that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
+Ez a hiba azt jelenti, hogy a Cost Management nem tud hozzáférni és letölteni az Amazon S3-gyűjtőben tárolt fájlokat. Győződjön meg arról, hogy a szerepkörhöz csatolt AWS JSON-szabályzat hasonlít a [szerepkör és a házirend létrehozása AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) szakaszban látható példához.
 
-### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Collection failed since we did not find the Cost and Usage Report
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>A gyűjtemény nem sikerült, mert nem találta meg a költségeket és a használati jelentést
 
-**Error code:** _FailedToFindReport_
+**Hibakód:** _FailedToFindReport_
 
-This error means that Cost Management can't find the Cost and Usage report that was defined in the connector. Make sure it isn't deleted and that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
+Ez a hiba azt jelenti, hogy Cost Management nem találja az összekötőben definiált költségeket és használati jelentést. Győződjön meg arról, hogy nincs törölve, és hogy a szerepkörhöz csatolt AWS JSON-szabályzat hasonlít a [szerepkör és a házirend létrehozása AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) szakaszban látható példához.
 
-### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Unable to create or verify connector due to Cost and Usage Report definitions mismatch
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nem lehet létrehozni vagy ellenőrizni az összekötőt, mert nem egyeznek a Cost és a használati jelentés definíciói
 
-**Error code:** _ReportIsNotValid_
+**Hibakód:** _ReportIsNotValid_
 
-This error relates to the definition of AWS Cost and Usage Report, we require specific settings for this report, see the requirements in [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
+Ez a hiba az AWS-költségek és-használati jelentés definíciójában szerepel, ehhez a jelentéshez speciális beállítások szükségesek, lásd a [Cost and használati jelentés létrehozása az AWS-ben](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws) című témakör követelményeit.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).
+- Ha még nem konfigurálta az Azure-környezetet felügyeleti csoportokkal, tekintse meg a [felügyeleti csoportok kezdeti beállítását](../governance/management-groups/overview.md#initial-setup-of-management-groups)ismertető témakört.

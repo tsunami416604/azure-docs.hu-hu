@@ -1,7 +1,7 @@
 ---
-title: What's new in QnA Maker service?
+title: A QnA Maker szolgáltatás újdonságai
 titleSuffix: Azure Cognitive Services
-description: This article contains news about QnA Maker.
+description: Ez a cikk a QnA Makerával kapcsolatos híreket tartalmaz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -17,45 +17,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325874"
 ---
-# <a name="whats-new-in-qna-maker"></a>What's new in QnA Maker
+# <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
-Learn what's new in the service. These items may release notes, videos, blog posts, and other types of information. Bookmark this page to keep up-to-date with the service.  
+Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
 
-Learn what's new with QnA Maker.
+Ismerje meg a QnA Maker újdonságait.
 
 ### <a name="november-2019"></a>2019. november
 
-* [US Government cloud support](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) for QnA Maker
-* [Multi-turn](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) feature in GA
-* [Chit-chat support](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) available in tier-1 languages
+* Az [USA kormányzati Felhőbeli támogatása](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) QnA Maker
+* [Multi-turn](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) funkció a ga-ban
+* Az 1. réteg nyelvein elérhető [Chit-Chat-támogatás](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
 
 ### <a name="october-2019"></a>2019. október
 
-* [Explicitly setting the language](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) for all knowledge bases in the  QnA Maker service. 
+* [Explicit módon állítja be az összes Tudásbázis nyelvét](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) a QnA Maker szolgáltatásban. 
 
 ### <a name="september-2019"></a>2019. szeptember
 
-* Import and export with [XLS file format](concepts/data-sources-supported.md) 
+* Importálás és exportálás [xls fájlformátummal](concepts/data-sources-supported.md) 
 
 ### <a name="june-2019"></a>2019. június
 
-* Improved [ranker model](concepts/knowledge-base.md#ranker-process) for French, Italian, German, Spanish, Portuguese
+* Továbbfejlesztett [ranker-modell](concepts/knowledge-base.md#ranker-process) francia, olasz, német, spanyol, portugál nyelven
 
 ### <a name="april-2019"></a>2019. április
 
-* Support website content extraction
-* [SharePoint document](how-to/add-sharepoint-datasources.md) support from authenticated access
+* Támogatási webhely tartalmának kinyerése
+* A [SharePoint-dokumentum](how-to/add-sharepoint-datasources.md) támogatja a hitelesített hozzáférést
 
 ### <a name="march-2019"></a>2019. március
 
-* [Active learning](how-to/improve-knowledge-base.md) provides suggestions for new question alternatives based on real user questions
-* Improved natural language processing (NLP) [ranker](concepts/knowledge-base.md#ranker-process) model for English 
+* Az [aktív tanulás](how-to/improve-knowledge-base.md) a valódi felhasználói kérdések alapján javaslatokat tesz az új kérdésekkel kapcsolatos alternatívákra
+* Továbbfejlesztett természetes nyelvi feldolgozási (NLP) [ranker](concepts/knowledge-base.md#ranker-process) -modell angol nyelven 
 
 > [!div class="nextstepaction"]
 > [QnA Maker-szolgáltatás létrehozása](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>Cognitive Service updates
+## <a name="cognitive-service-updates"></a>A kognitív szolgáltatás frissítései
 
-[Azure update announcements for Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Cognitive Services Azure Update-hirdetmények](https://azure.microsoft.com/updates/?product=cognitive-services)

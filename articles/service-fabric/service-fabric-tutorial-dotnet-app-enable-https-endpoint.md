@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 69aa140fcecae13aae0d7a165c9f7bea0ab87ca1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e38822e1d774cc32590a13239edb34d7a15e2d02
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301022"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545763"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core webes API előtér-szolgáltatáshoz a vércse használatával
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
 Ez az oktatóanyag egy sorozat harmadik része.  Az oktatóanyag során el fogja sajátítani a HTTPS engedélyezését a Service Fabricen futó ASP.NET Core-szolgáltatásban. Ha ezzel végzett, rendelkezni fog egy HTTPS-kompatibilis ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely a 443-as porton figyel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást a [NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md) szakaszban, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz.
 
@@ -163,8 +163,8 @@ serviceContext =>
 
 Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  
 
-Cserélje le&lt;a&gt;"your_CN_value" kifejezést "mytestcert" értékre, ha létrehozott egy önaláírt tanúsítványt az előző PowerShell-paranccsal, vagy használja a tanúsítvány CN-t.
-Vegye figyelembe, hogy a helyi üzembe helyezés `localhost` esetén érdemes a "CN = localhost" kifejezést használni a hitelesítési kivételek elkerülése érdekében.
+Ha létrehozott egy önaláírt tanúsítványt az előző PowerShell-paranccsal, vagy használja a tanúsítvány CN-t, cserélje le a "&lt;your_CN_value&gt;" kifejezést "mytestcert" értékre.
+Vegye figyelembe, hogy a helyi üzembe `localhost` helyezés esetén a rendszer inkább a "CN = localhost" használatát használja a hitelesítési kivételek elkerülése érdekében.
 
 ```csharp
 private X509Certificate2 GetHttpsCertificateFromStore()
@@ -346,7 +346,7 @@ Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **Ru
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A megoldáskezelő válassza ki a **szavazati** alkalmazást, és állítsa be az **alkalmazás URL-címe** tulajdonságot a "https:\//localhost: 443" értékre.
+A Megoldáskezelő válassza ki a **szavazó** alkalmazást, és állítsa be az **alkalmazás URL-címe** tulajdonságot a "https:\//localhost: 443" értékre.
 
 Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezését követően megnyílik egy webböngésző a https:\//localhost: 443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
@@ -354,55 +354,18 @@ Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatá
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Tanúsítvány telepítése fürtcsomópontokon
 
-Mielőtt telepítené az alkalmazást az Azure-ban, telepítse a tanúsítványt a `Cert:\LocalMachine\My` távoli fürtcsomópontok tárolójába.  A szolgáltatások a fürt különböző csomópontjaira léphetnek át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
+Mielőtt telepítené az alkalmazást az Azure-ban, telepítse a tanúsítványt a távoli fürtcsomópontok `Cert:\LocalMachine\My` tárolójába.  A szolgáltatások a fürt különböző csomópontjaira léphetnek át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza a **minden feladat**>**Exportálás**lehetőséget.
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza az **összes feladat**>**Exportálás**lehetőséget.
 
 ![Tanúsítvány exportálása][image4]
 
 Az exportálási varázslóban válassza az **Igen, a titkos kulcs exportálását választom** lehetőséget, majd a Személyes információcsere (PFX) formátumot.  Exportálja a fájlt a *C:\Users\sfuser\votingappcert.pfx* helyre.
 
-Ezután telepítse a tanúsítványt a távoli fürtön az [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) parancsmag használatával.
+Ezután telepítse a tanúsítványt a távoli fürtön a [megadott PowerShell-parancsfájlok](./scripts/service-fabric-powershell-add-application-certificate.md)használatával.
 
 > [!Warning]
 > Az önaláírt tanúsítvány elegendő alkalmazások fejlesztéséhez és teszteléséhez. Éles alkalmazásokhoz használja a [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt az önaláírt tanúsítvány helyett.
-
-```powershell
-Connect-AzAccount
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>A 443-as port megnyitása az Azure Load Balancerben
 
@@ -437,7 +400,7 @@ Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd ke
 
 ![Szavazóalkalmazás][image3]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

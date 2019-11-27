@@ -63,7 +63,7 @@ A tárolók Azure Monitor számos kulcsfontosságú figyelési forgatókönyvet 
 
 ### <a name="unit-monitors"></a>Egység figyelők
 
-|**Figyelő neve** | Figyelő típusa | **Leírás** | **A paraméter** | **Érték** |
+|**Figyelő neve** | Figyelő típusa | **Leírás** | **Paraméter** | **Érték** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Node memória kihasználtsága |Egység figyelője |Ez a figyelő percenként kiértékeli a csomópontok memóriájának kihasználtságát, a cadvisor jelentett adat használatával. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Csomópont CPU-kihasználtsága |Egység figyelője |Ez a figyelő percenként ellenőrzi a csomópont CPU-kihasználtságát, a cadvisor jelentett adat használatával. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

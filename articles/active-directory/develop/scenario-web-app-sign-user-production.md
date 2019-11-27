@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (move to production) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (move to production)
+title: Felhasználók számára bejelentkező webalkalmazás (éles környezetbe való áttérés) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely aláírja a felhasználókat (éles környezetbe helyezi)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,39 +22,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481886"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>Web app that signs in users: Move to production
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás: áthelyezés éles környezetbe
 
-Now that you know how to get a token to call web APIs, learn how to move it to production.
+Most, hogy tudja, hogyan szerezhet be jogkivonatot webes API-k hívására, megtudhatja, hogyan helyezheti át az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-### <a name="scenario-for-calling-web-apis"></a>Scenario for calling web APIs
+### <a name="scenario-for-calling-web-apis"></a>Forgatókönyv a webes API-k meghívásához
 
-After your web app signs in users, it can call web APIs on behalf of the signed-in users. Calling web APIs from the web app is the object of the following scenario:
+Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma:
 
 > [!div class="nextstepaction"]
 > [Webes API-kat hívó webalkalmazás](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
+### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep Dive: ASP.NET Core webalkalmazás-oktatóanyag
 
-Learn about other ways to sign in users with this ASP.NET Core tutorial: 
+További információ a felhasználók bejelentkezésének egyéb módjairól a ASP.NET Core oktatóanyagban: 
 
 > [!div class="nextstepaction"]
-> [Enable your web apps to sign in users and call APIs with the Microsoft identity platform for developers](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [A webalkalmazások bejelentkezhetnek a felhasználókba, és meghívhatják az API-kat a Microsoft Identity platform for Developers szolgáltatással](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-This progressive tutorial has production-ready code for a web app, including how to add sign-in with accounts in:
+Ez a progresszív oktatóanyag éles használatra kész kóddal rendelkezik a webalkalmazásokhoz, többek között a bejelentkezéshez a következő fiókokkal:
 
-- Your organization
-- Multiple organizations
-- Work or school accounts, or personal Microsoft accounts
+- A szervezet
+- Több szervezet
+- Munkahelyi vagy iskolai fiókok, vagy személyes Microsoft-fiókok
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- National clouds
+- Nemzeti felhők
 
-### <a name="sample-code-java-web-app"></a>Sample code: Java web app
+### <a name="sample-code-java-web-app"></a>Mintakód: Java-webalkalmazás
 
-Learn more about the Java web app from this sample on GitHub: 
+További információ a Java-webalkalmazásról ebből a mintából a GitHubon: 
 
 > [!div class="nextstepaction"]
-> [A Java Web application that signs in users with the Microsoft identity platform and calls Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Egy Java-webalkalmazás, amely a Microsoft Identity platformmal és a hívások Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

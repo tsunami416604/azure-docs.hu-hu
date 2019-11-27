@@ -57,11 +57,11 @@ A következő beállítások támogatottak:
 
    * **Azurite: blob Host** – a blob Service figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
    * **Azurite: blob port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
-   * **Azurite: hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték **hamis**.
+   * **Azurite: hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték **false (hamis**).
    * **Azurite: Location** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
    * **Azurite: várólista-állomás** – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
    * **Azurite: várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
-   * **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték **hamis**.
+   * **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték **false (hamis**).
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 

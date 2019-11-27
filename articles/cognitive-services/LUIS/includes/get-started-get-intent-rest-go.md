@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Go
+title: A REST-hívás beszerzése a Go-ban
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414513"
 
 * [Go](https://golang.org/) programozási nyelv  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Nyilvános alkalmazás azonosítója: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,7 +27,7 @@ ms.locfileid: "74414513"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+A go paranccsal lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
 1. Hozzon létre egy új fájlt `predict.go` néven. Adja hozzá a következő kódot:
     
@@ -83,12 +83,12 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     }
     ```
 
-1. Replace the following values:
+1. Cserélje le a következő értékeket:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Például: `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` az alapszintű kulccsal.
+    * `YOUR-ENDPOINT` a végponttal. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. With a command prompt in the same directory as where you created the file, enter the following command to compile the Go file:
+1. Ha a parancssor ugyanabban a címtárban található, ahol a fájlt létrehozta, adja meg a következő parancsot a go-fájl fordításához:
 
     ```console
     go build predict.go
@@ -111,7 +111,7 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    JSON formatted for readability:
+    Az olvashatósághoz formázott JSON:
 
     ```json
     {
@@ -161,9 +161,9 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you are finished with this quickstart, delete the file from the file system. 
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)

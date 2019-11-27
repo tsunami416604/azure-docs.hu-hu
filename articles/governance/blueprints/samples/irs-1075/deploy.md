@@ -1,14 +1,14 @@
 ---
-title: IRS 1075 terv minta – üzembe helyezési lépések
+title: Az IRS 1075 Blueprint minta üzembe helyezése
 description: Üzembe helyezheti az IRS 1075 (Rev. 11-2016) terv lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 033d4b38b7ccaf4d187615ec1df48c200fe5e683
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279490"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546806"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Az IRS 1075 Blueprint minta üzembe helyezése
 

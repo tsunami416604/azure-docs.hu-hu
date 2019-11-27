@@ -17,13 +17,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451670"
 ---
-If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
+Ha az alkalmazásokat más személyeknek kell létrehoznia, hozzá kell adnia a társított e-mail-címeket a Azure Portal szerzői erőforrásához.
 
-If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
+Ha Ön az **Azure-előfizetés tulajdonosa vagy rendszergazdája**, hozzáadhat egy közreműködőt az erőforráshoz. 
 
-If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
+Ha nem Ön **Az Azure-előfizetése tulajdonosa vagy rendszergazdája**, az Azure-fióknak `Microsoft.Authorization/roleAssignments/write` engedélyekkel kell rendelkeznie.
 
-If you have trouble with this role assignment, review: 
+Ha problémája van a szerepkör-hozzárendeléssel, tekintse át a következőt: 
 
-* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
- * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Azure szerepkör-hozzárendelések](../../../role-based-access-control/role-assignments-portal.md)
+ * [Azure-hozzáférés-vezérlés – hibaelhárítás](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)

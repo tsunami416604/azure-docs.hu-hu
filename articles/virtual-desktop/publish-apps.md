@@ -1,6 +1,6 @@
 ---
-title: Publish built-in apps in Windows Virtual Desktop - Azure
-description: How to publish modern apps in Windows Virtual Desktop.
+title: Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon – Azure
+description: Modern alkalmazások közzététele a Windows Virtual Desktopban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,32 +14,32 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483740"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Publish built-in apps in Windows Virtual Desktop
+# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon
 
-This article will tell you how to publish apps in your Windows Virtual Desktop environment.
+Ebből a cikkből megtudhatja, hogyan tehet közzé alkalmazásokat a Windows rendszerű virtuális asztali környezetben.
 
-## <a name="publish-built-in-apps"></a>Publish built-in apps
+## <a name="publish-built-in-apps"></a>Beépített alkalmazások közzététele
 
-To publish a built-in app:
+Beépített alkalmazás közzététele:
 
-1. Connect to one of the virtual machines in your host pool.
-2. Get the **PackageFamilyName** of the app you want to publish by following the instructions in [this article](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps).
-3. Finally, run the following cmdlet with `<PackageFamilyName>` replaced by the **PackageFamilyName** you found in the previous step:
+1. Kapcsolódjon az egyik virtuális géphez a gazdagép-készletben.
+2. A [cikkben](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)szereplő utasítások alapján szerezze be a közzétenni kívánt alkalmazás **PackageFamilyName** .
+3. Végül futtassa a következő parancsmagot `<PackageFamilyName>` lecserélte az előző lépésben megtalált **PackageFamilyName** :
    
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
 
 >[!NOTE]
-> Windows Virtual Desktop only supports publishing apps with install locations that begin with `C:\Program Files\Windows Apps`.
+> A Windows virtuális asztal csak a `C:\Program Files\Windows Apps`-vel kezdődő telepítési hellyel rendelkező alkalmazások közzétételét támogatja.
 
-## <a name="update-app-icons"></a>Update app icons
+## <a name="update-app-icons"></a>Alkalmazás ikonjainak frissítése
 
-After you publish an app, it will have the default Windows app icon instead of its regular icon picture. To change the icon to its regular icon, put the image of the icon you want on a network share. Supported image formats are PNG, BMP, GIF, JPG, JPEG, and ICO.
+Miután közzétett egy alkalmazást, az alapértelmezés szerint a Windows-alkalmazás ikonja jelenik meg a normál ikon helyett. Ha módosítani szeretné az ikont a szokásos ikonjára, helyezze a kívánt ikont egy hálózati megosztásra. A támogatott képformátumok a következők: PNG, BMP, GIF, JPG, JPEG és ICO.
 
-## <a name="publish-microsoft-edge"></a>Publish Microsoft Edge
+## <a name="publish-microsoft-edge"></a>Microsoft Edge közzététele
 
-The process you use to publish Microsoft Edge is a little different from the publishing process for other apps. To publish Microsoft Edge with the default homepage, run this cmdlet:
+A Microsoft Edge közzétételéhez használt folyamat némileg eltér a közzétételi folyamattól más alkalmazások esetében. Ha közzé szeretné tenni a Microsoft Edge-t az alapértelmezett kezdőlapon, futtassa a következő parancsmagot:
 
 ```powershell
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 

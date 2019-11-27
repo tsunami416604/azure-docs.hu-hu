@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add tags to resources in template
-description: Add tags to resources that you deploy in your Azure Resource Manager template. Tags let you logically organize resources.
+title: Oktatóanyag – Címkék hozzáadása a sablon erőforrásaihoz
+description: Címkék hozzáadása a Azure Resource Manager-sablonban üzembe helyezett erőforrásokhoz. Címkék lehetővé teszik az erőforrások logikai rendszerezését.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,37 +12,37 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406064"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Add tags in your Resource Manager template
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Oktatóanyag: Címkék hozzáadása a Resource Manager-sablonban
 
-In this tutorial, you learn how to add tags to resources in your template. [Tags](resource-group-using-tags.md) help you logically organize your resources. The tag values show up in cost reports. This tutorial takes **8 minutes** to complete.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá címkéket a sablon erőforrásaihoz. A [címkék](resource-group-using-tags.md) segítségével logikailag rendszerezheti az erőforrásokat. A címke értékei a Cost-jelentésekben jelennek meg. Az oktatóanyag elvégzése **8 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-We recommend that you complete the [tutorial about Quickstart templates](template-tutorial-quickstart-template.md), but it's not required.
+Javasoljuk, hogy fejezze be a gyors üzembe helyezési [sablonokkal kapcsolatos oktatóanyagot](template-tutorial-quickstart-template.md), de ez nem kötelező.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sablon áttekintése
 
-Your previous template deployed a storage account, App Service plan, and web app.
+Az előző sablon üzembe helyezte a Storage-fiókot, a App Service-csomagot és a webalkalmazást.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
 
-After deploying these resources, you might need to track costs and find resources that belong to a category. You can add tags to help solve these issues.
+Az erőforrások telepítése után lehetséges, hogy nyomon kell követnie a költségeket, és meg kell keresnie egy kategóriához tartozó erőforrásokat. A problémák megoldásához címkéket adhat hozzá.
 
 ## <a name="add-tags"></a>Címkék hozzáadása
 
-You tag resources to add values that help you identify their use. For example, you can add tags that list the environment and the project. You could add tags that identify a cost center or the team that owns the resource. Add any values that make sense for your organization.
+Az erőforrások címkézésével olyan értékeket adhat hozzá, amelyek segítenek azonosítani a használatukat. Hozzáadhat például olyan címkéket, amelyek felsorolják a környezetet és a projektet. Hozzáadhat olyan címkéket, amelyek azonosítják a Cost centert vagy az erőforrást birtokló csapatot. Adjon hozzá olyan értékeket, amelyek ésszerűek a szervezet számára.
 
-The following example highlights the changes to the template. Copy the whole file and replace your template with its contents.
+A következő példa kiemeli a sablon módosításait. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-It's time to deploy the template and look at the results.
+Itt az ideje, hogy üzembe helyezi a sablont, és tekintse meg az eredményeket.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,20 +70,20 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. Select one of the resources, such as the storage account resource. You see that it now has tags.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
+1. Válasszon ki egy erőforrást, például a Storage-fiók erőforrását. Láthatja, hogy most már rendelkezik címkékkel.
 
-   ![Show tags](./media/template-tutorial-add-tags/show-tags.png)
+   ![Címkék megjelenítése](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you added tags to the resources. In the next tutorial, you'll learn how to use parameter files to simplify passing in values to the template.
+Ebben az oktatóanyagban címkéket adott hozzá az erőforrásokhoz. A következő oktatóanyagban megtudhatja, hogyan használhatók a paraméterek a sablonban az értékek átadásának egyszerűbbé tételéhez.
 
 > [!div class="nextstepaction"]
-> [Use parameter file](template-tutorial-use-parameter-file.md)
+> [Paraméter fájljának használata](template-tutorial-use-parameter-file.md)

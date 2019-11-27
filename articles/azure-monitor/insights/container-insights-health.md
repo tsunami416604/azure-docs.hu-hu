@@ -72,13 +72,13 @@ A containers Health Azure Monitort támogató egyes figyelők viselkedésének �
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
+Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AK-vagy nem ak-alapú fürt állapotának megtekintése
 
-A Azure Monitor for containers Health (előzetes verzió) szolgáltatáshoz való hozzáférés közvetlenül egy AK-fürtből érhető el **, ha az** Azure Portal bal oldali ablaktáblájában kijelöli a kiszámítások lehetőséget. Alatt a **Insights** szakaszban jelölje be **tárolók**. 
+A Azure Monitor for containers Health (előzetes verzió) szolgáltatáshoz való hozzáférés közvetlenül egy AK-fürtből érhető el **, ha az** Azure Portal bal oldali ablaktáblájában kijelöli a kiszámítások lehetőséget. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget. 
 
-Ha egy nem ak-alapú fürt állapotát szeretné megtekinteni, amely egy helyszíni vagy Azure Stackon üzemeltetett AK-alapú motor-fürt, válassza a **Azure monitor** lehetőséget a Azure Portal bal oldali ablaktábláján. Alatt a **Insights** szakaszban jelölje be **tárolók**.  A többfürtes lapon válassza ki a nem ak típusú fürtöt a listából.
+Ha egy nem ak-alapú fürt állapotát szeretné megtekinteni, amely egy helyszíni vagy Azure Stackon üzemeltetett AK-alapú motor-fürt, válassza a **Azure monitor** lehetőséget a Azure Portal bal oldali ablaktábláján. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget.  A többfürtes lapon válassza ki a nem ak típusú fürtöt a listából.
 
 A tárolók Azure Monitor a **fürt** lapon válassza az **állapot**lehetőséget.
 

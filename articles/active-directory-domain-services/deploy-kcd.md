@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842658"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546275"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
 Az alkalmazások futtatása során szükség lehet arra, hogy az alkalmazások egy másik felhasználó kontextusában férhessenek hozzá az erőforrásokhoz. A Active Directory tartományi szolgáltatások (AD DS) támogatja a *Kerberos-delegálás* nevű mechanizmust, amely engedélyezi ezt a használati esetet. A Kerberos által *korlátozott* DELEGÁLÁS (KCD) ezt a mechanizmust építi ki a felhasználó környezetében elérhető konkrét erőforrások definiálásához. A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományok biztonságosabban zárhatók le a hagyományos helyszíni AD DS környezetekben, ezért használjon biztonságosabb *erőforrás-alapú* KCD.
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az erőforrás-basd Kerberos által korlátozott delegálást egy Azure AD DS felügyelt tartományba.
+Ez a cikk bemutatja, hogyan konfigurálhatja az erőforrás-alapú Kerberos által korlátozott delegálást egy Azure AD DS felügyelt tartományban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,9 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 
 A Kerberos-delegálás lehetővé teszi, hogy az egyik fiók megszemélyesítse egy másik fiókot az erőforrások eléréséhez. Egy háttérbeli webes összetevőhöz hozzáférő webalkalmazás például megszemélyesítheti magát egy másik felhasználói fiókkal, amikor a háttér-kapcsolatot végzi. A Kerberos-delegálás nem biztonságos, mert nem korlátozza, hogy a megszemélyesítő fiók milyen erőforrásokat tud elérni.
 
-A Kerberos által korlátozott delegálás (KCD) korlátozza azokat a szolgáltatásokat vagy erőforrásokat, amelyeket a megadott kiszolgáló vagy alkalmazás csatlakozhat egy másik identitás megszemélyesítése során. A hagyományos KCD tartományi rendszergazdai jogosultságok szükségesek a szolgáltatás tartományi fiókjának konfigurálásához, és a fiók egyetlen tartományon való futtatására van korlátozva. A hagyományos KCD néhány problémával is rendelkezik. A korábbi operációs rendszerekben például a szolgáltatás rendszergazdája nem tudta megismerni, hogy mely előtér-szolgáltatások lettek delegálva az általuk birtokolt erőforrás-szolgáltatásokhoz. Bármely, az erőforrás-szolgáltatásnak delegált előtér-szolgáltatás lehetséges támadási pont volt. Ha egy olyan kiszolgáló, amely az erőforrás-szolgáltatásokra való delegálásra konfigurált előtér-szolgáltatást futtatott, akkor az erőforrás-szolgáltatások biztonsága is sérülhet.
+A Kerberos által korlátozott delegálás (KCD) korlátozza azokat a szolgáltatásokat vagy erőforrásokat, amelyeket a megadott kiszolgáló vagy alkalmazás csatlakozhat egy másik identitás megszemélyesítése során. A hagyományos KCD tartományi rendszergazdai jogosultságok szükségesek a szolgáltatás tartományi fiókjának konfigurálásához, és a fiók egyetlen tartományon való futtatására van korlátozva.
+
+A hagyományos KCD néhány problémával is rendelkezik. A korábbi operációs rendszerekben például a szolgáltatás rendszergazdája nem tudta megismerni, hogy mely előtér-szolgáltatások lettek delegálva az általuk birtokolt erőforrás-szolgáltatásokhoz. Bármely, az erőforrás-szolgáltatásnak delegált előtér-szolgáltatás lehetséges támadási pont volt. Ha egy olyan kiszolgáló, amely az erőforrás-szolgáltatásokra való delegálásra konfigurált előtér-szolgáltatást futtatott, akkor az erőforrás-szolgáltatások biztonsága is sérülhet.
 
 Az Azure AD DS felügyelt tartományokban nem rendelkezik tartományi rendszergazdai jogosultságokkal. Ennek eredményeképpen a hagyományos, fiókon alapuló KCD nem konfigurálhatók Azure-AD DS felügyelt tartományokban. Ehelyett erőforrás-alapú KCD is használható, ami még biztonságosabb.
 
@@ -87,7 +89,7 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc*ne
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan működik a delegálás a Active Directory tartományi szolgáltatásokban, tekintse meg a [Kerberos által korlátozott delegálás – áttekintés][kcd-technet]című témakört.
 

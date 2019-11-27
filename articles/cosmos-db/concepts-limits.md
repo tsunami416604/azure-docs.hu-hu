@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB service quotas
-description: Azure Cosmos DB service quotas and default limits on different resource types.
+title: Azure Cosmos DB szolgáltatási kvóták
+description: Azure Cosmos DB a szolgáltatási kvótákat és az alapértelmezett korlátokat a különböző erőforrástípusok esetében.
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
@@ -13,183 +13,183 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383395"
 ---
-# <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB service quotas
+# <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
-This article provides an overview of the default quotas offered to different resources in the Azure Cosmos DB.
+Ez a cikk áttekintést nyújt a Azure Cosmos DB különböző erőforrásaihoz felkínált alapértelmezett kvóták közül.
 
-## <a name="storage-and-throughput"></a>Storage and throughput
+## <a name="storage-and-throughput"></a>Tárolás és átviteli sebesség
 
-After you create an Azure Cosmos account under your subscription, you can manage data in your account by [creating databases, containers, and items](databases-containers-items.md). You can provision throughput at a container-level or a database-level in terms of [request units (RU/s or RUs)](request-units.md). The following table lists the limits for storage and throughput per container/database.
+Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókban lévő adatokat [adatbázisok, tárolók és elemek létrehozásával](databases-containers-items.md)kezelheti. Az átviteli sebességet tároló szinten vagy adatbázis-szinten is kiépítheti a [kérési egységek (ru/s vagy RUs)](request-units.md)szempontjából. A következő táblázat felsorolja a tárolók és az adatbázisok tárolási és átviteli korlátait.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum RUs per container ([dedicated throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 1,000,000 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
-| Maximum RUs per database ([shared throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 1,000,000 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
-| Maximum RUs per (logical) partition key | 10,000 |
-| Maximum storage across all items per (logical) partition key| 10 GB |
-| Maximum number of distinct (logical) partition keys | Korlátlan |
-| Maximum storage per container | Korlátlan |
-| Maximum storage per database | Korlátlan |
-| Maximum attachment size per Account (Attachment feature is being depreciated) | 2 GB |
-| Minimum RUs required per 1 GB | 10 RU/s |
+| Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximális RUs/(logikai) partíciós kulcs | 10,000 |
+| Maximális tárterület az összes elem/(logikai) partíciós kulcs között| 10 GB |
+| Eltérő (logikai) partíciós kulcsok maximális száma | Korlátlan |
+| Tárolók maximális száma | Korlátlan |
+| Tárolók maximális száma adatbázis szerint | Korlátlan |
+| A mellékletek maximális mérete (a melléklet funkciójának értékcsökkenése) | 2 GB |
+| Minimálisan szükséges RUs 1 GB-onként | 10 RU/s |
 
 > [!NOTE]
-> To learn about best practices for managing workloads that have partition keys requiring higher limits for storage or throughput, see [Create a synthetic partition key](synthetic-partition-keys.md).
+> Ha többet szeretne megtudni a tárolási vagy átviteli sebességre vonatkozó magasabb korlátot igénylő munkaterhelések kezelésével kapcsolatos ajánlott eljárásokról, olvassa el [a szintetikus partíciós kulcs létrehozása](synthetic-partition-keys.md)című témakört.
 >
 
-A Cosmos container (or shared throughput database) must have a minimum throughput of 400 RUs. As the container grows, the minimum supported throughput also depends on the following factors:
+A Cosmos-tárolónak (vagy a megosztott átviteli sebesség adatbázisának) legalább 400 RUs-nek kell lennie. Ahogy a tároló növekszik, a minimálisan támogatott átviteli sebesség az alábbi tényezőktől függ:
 
-* The minimum throughput that you can set on a container depends on the maximum throughput ever provisioned on the container. For example, if your throughput was increased to 10000 RUs, then the lowest possible provisioned throughput would be 1000 RUs
-* The minimum throughput on a shared throughput database also depends on the total number of containers that you have ever created in a shared throughput database, measured at 100 RUs per container. For example, if you have created five containers within a shared throughput database, then the throughput must be at least 500 RUs
+* A tárolón megadható minimális átviteli sebesség a tárolón kiépített maximális átviteli sebességtől függ. Ha például az átviteli sebesség a 10000 RUs értékre lett növelve, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RUs
+* A megosztott átviteli sebességű adatbázis minimális átviteli sebessége a megosztott átviteli sebességű adatbázisban korábban létrehozott tárolók teljes számától függ, amelyet a rendszer az 100 RUs/tárolón mért. Ha például öt tárolót hozott létre egy megosztott átviteli sebességű adatbázison belül, az átviteli sebességnek legalább 500 RUs-nek kell lennie
 
-The current and minimum throughput of a container or a database can be retrieved from the Azure portal or the SDKs. For more information, see [Provision throughput on containers and databases](set-throughput.md). 
+A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Azure Portal vagy az SDK-k alapján kérhető le. További információkért lásd: [átviteli sebesség tárolók és adatbázisok](set-throughput.md)számára. 
 
 > [!NOTE]
-> In some cases, you may be able to lower throughput to lesser than 10%. Use the API to get the exact minimum RUs per container.
+> Bizonyos esetekben előfordulhat, hogy az átviteli sebesség kevesebb, mint 10%. Az API használatával szerezze be a minimálisan szükséges RUs/tárolót.
 >
 
-In summary, here are the minimum provisioned RU limits. 
+Összefoglalva: itt vannak a minimálisan kiépített RU-korlátok. 
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Minimum  RUs per container ([dedicated throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimum  RUs per database ([shared throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimum  RUs per container within a shared throughput database | 100 |
+| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Egy megosztott átviteli sebességű adatbázisban lévő minimális RUs/tároló | 100 |
 
-Cosmos DB supports elastic scaling of throughput (RUs) per container or database via the SDKs or portal. Each container can scale synchronously and immediately within a scale range of 10 to 100 times, between minimum and maximum values. If the requested throughput value is outside the range, scaling is performed asynchronously. Asynchronous scaling may take minutes to hours to complete depending on the requested throughput and data storage size in the container.  
+A Cosmos DB az SDK-k vagy a portál használatával támogatja a tárolók vagy adatbázisok rugalmas skálázását. Az egyes tárolók a minimális és a maximális érték között 10 – 100-szeres skálán belül, szinkronban és azonnal méretezhetők. Ha a kért átviteli sebesség kívül esik a tartományon, a skálázás aszinkron módon történik. Az aszinkron skálázás perctől akár órákig is eltarthat, a tárolóban kért átviteli sebességtől és az adattároló méretétől függően.  
 
-## <a name="control-plane-operations"></a>Control plane operations
+## <a name="control-plane-operations"></a>Vezérlési sík műveletei
 
-You can [provision and manage your Azure Cosmos account](how-to-manage-database-account.md) using the Azure portal, Azure PowerShell, Azure CLI, and Azure Resource Manager templates. The following table lists the limits per subscription, account, and number of operations.
+Azure Cosmos-fiókját az Azure Portal, az Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával is [kiépítheti és kezelheti](how-to-manage-database-account.md) . A következő táblázat felsorolja az előfizetések, a fiókok és a műveletek számát.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum database accounts per subscription | 50 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
-| Maximum number of regional failovers | 1/hour by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Adatbázis-fiókok maximális száma (előfizetés) | 50 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Regionális feladatátvételek maximális száma | Alapértelmezés szerint 1/óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
 
 > [!NOTE]
-> Regional failovers only apply to single region writes accounts. Multi-region write accounts do not require or have any limits on changing the write region.
+> A regionális feladatátvétel csak az egyetlen régióba írja a fiókokat. A többrégiós írási fiókok nem igénylik vagy nem korlátozzák az írási régió módosítását.
 
-Cosmos DB automatically takes backups of your data at regular intervals. For details on backup retention intervals and windows, see [Online backup and on-demand data restore in Azure Cosmos DB](online-backup-and-restore.md).
+A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot készít az adatairól. A biztonsági másolatok megőrzési időközökről és a Windowsról a következő témakörben tájékozódhat: [online biztonsági mentés és igény szerinti adatok visszaállítása Azure Cosmos DBban](online-backup-and-restore.md).
 
-## <a name="per-account-limits"></a>Per-account limits
-
-| Erőforrás | Alapértelmezett korlát |
-| --- | --- |
-| Maximum number of databases | Korlátlan |
-| Maximum number of containers per database (or account) | Korlátlan |
-| Maximum number of regions | No limit (All Azure regions) |
-
-## <a name="per-container-limits"></a>Per-container limits
-
-Depending on which API you use, an Azure Cosmos container can represent either a collection, a table, or graph. Containers support configurations for [unique key constraints](unique-keys.md), [stored procedures, triggers, and UDFs](stored-procedures-triggers-udfs.md), and [indexing policy](how-to-manage-indexing-policy.md). The following table lists the limits specific to configurations within a container. 
+## <a name="per-account-limits"></a>Felhasználónkénti korlátok
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum length of database or container name | 255 |
-| Maximum stored procedures per container | 100 <sup>*</sup>|
-| Maximum UDFs per container | 25 <sup>*</sup>|
-| Maximum number of paths in indexing policy| 100 <sup>*</sup>|
-| Maximum number of unique keys per container|10 <sup>*</sup>|
-| Maximum number of paths per unique key constraint|16 <sup>*</sup>|
+| Adatbázisok maximális száma | Korlátlan |
+| Tárolók maximális száma adatbázison (vagy fiók) | Korlátlan |
+| Régiók maximális száma | Nincs korlát (az összes Azure-régió) |
 
-<sup>*</sup> You can increase any of these per-container limits by contacting Azure Support.
+## <a name="per-container-limits"></a>/Tároló korlátok
 
-## <a name="per-item-limits"></a>Per-item limits
-
-Depending on which API you use, an Azure Cosmos item can represent either a document in a collection, a row in a table, or a node or edge in a graph. The following table shows the limits per item in Cosmos DB. 
+Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjteményeket, táblákat vagy diagramokat is jelenthetnek. A tárolók támogatják az [egyedi kulcsokra vonatkozó megkötések](unique-keys.md), [tárolt eljárások, eseményindítók és UDF](stored-procedures-triggers-udfs.md)konfigurációját, valamint az [indexelési szabályzatot](how-to-manage-indexing-policy.md). A következő táblázat felsorolja a tárolón belüli konfigurációkra vonatkozó korlátozásokat. 
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum size of an item | 2 MB (UTF-8 length of JSON representation) |
-| Maximum length of partition key value | 2048 bytes |
-| Maximum length of id value | 1024 bytes |
-| Maximum number of properties per item | No practical limit |
-| Maximum nesting depth | No practical limit |
-| Maximum length of property name | No practical limit |
-| Maximum length of property value | No practical limit |
-| Maximum length of string property value | No practical limit |
-| Maximum length of numeric property value | IEEE754 double-precision 64-bit |
+| Az adatbázis vagy a tároló nevének maximális hossza | 255 |
+| Tárolt eljárások maximális száma tárolóban | 100 <sup>*</sup>|
+| UDF maximális száma | 25 <sup>*</sup>|
+| Elérési utak maximális száma az indexelési házirendben| 100 <sup>*</sup>|
+| Egyedi kulcsok maximális száma egy tárolóban|10 <sup>*</sup>|
+| Elérési utak maximális száma egyedi kulcs megkötése esetén|16 <sup>*</sup>|
 
-There are no restrictions on the item payloads like number of properties and nesting depth, except for the length restrictions on partition key and id values, and the overall size restriction of 2 MB. You may have to configure indexing policy for containers with large or complex item structures to reduce RU consumption. See [Modeling items in Cosmos DB](how-to-model-partition-example.md) for a real-world example, and patterns to manage large items.
+<sup>*</sup> Az Azure támogatási szolgálatával növelheti az egyes tárolók korlátainak bármelyikét.
 
-## <a name="per-request-limits"></a>Per-request limits
+## <a name="per-item-limits"></a>Cikkenként érvényes korlátok
 
-Cosmos DB supports [CRUD and query operations](https://docs.microsoft.com/rest/api/cosmos-db/) against resources like containers, items, and databases.  
+Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjteményben szereplő dokumentumot, egy tábla egy sorát, vagy egy gráf egyik csomópontját vagy szegélyét jelöli. A következő táblázat a Cosmos DBban található határértékeket mutatja. 
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum execution time for a single operation (like a stored procedure execution or a single query page retrieval)| 5 sec |
-| Maximum request size (stored procedure, CRUD)| 2 MB |
-| Maximum response size (for example, paginated query) | 4 MB |
+| Elemek maximális mérete | 2 MB (UTF-8 a JSON-ábrázolás hossza) |
+| Partíciós kulcs értékének maximális hossza | 2048 bájt |
+| Azonosító érték maximális hossza | 1024 bájt |
+| Tulajdonságok maximális száma cikkenként | Nincs gyakorlati korlát |
+| Maximális beágyazási mélység | Nincs gyakorlati korlát |
+| Tulajdonságnév maximális hossza | Nincs gyakorlati korlát |
+| Tulajdonságérték maximális hossza | Nincs gyakorlati korlát |
+| Karakterlánc-tulajdonságérték maximális hossza | Nincs gyakorlati korlát |
+| Numerikus tulajdonság értékének maximális hossza | IEEE754 dupla pontosságú, 64 bites |
 
-Once an operation like query reaches the execution timeout or response size limit, it returns a page of results and a continuation token to the client to resume execution. There is no practical limit on the duration a single query can run across pages/continuations.
+Az elemekre nem vonatkoznak korlátozások (például a tulajdonságok száma és a beágyazás mélysége), kivéve a partíciós kulcs és az azonosító értékének korlátozásait, valamint a 2 MB-os teljes méret korlátozását. Előfordulhat, hogy a RU-felhasználás csökkentése érdekében az indexelési házirendet nagy vagy összetett elem-struktúrákkal rendelkező tárolók számára kell konfigurálnia. Tekintse meg a valós példák [modellezési elemeit Cosmos DBban](how-to-model-partition-example.md) , valamint a nagyméretű elemek kezelésére szolgáló mintákat.
 
-Cosmos DB uses HMAC for authorization. You can use either a master key, or a [resource tokens](secure-access-to-data.md) for fine-grained access control to resources like containers, partition keys, or items. The following table lists limits for authorization tokens in Cosmos DB.
+## <a name="per-request-limits"></a>Kérelmekre vonatkozó korlátozások
 
-| Erőforrás | Alapértelmezett korlát |
-| --- | --- |
-| Maximum master token expiry time | 15 min  |
-| Minimum resource token expiry time | 10 min  |
-| Maximum resource token expiry time | 24 h by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
-| Maximum clock skew for token authorization| 15 min |
-
-Cosmos DB supports execution of triggers during writes. The service supports a maximum of one pre-trigger and one post-trigger per write operation. 
-
-## <a name="autopilot-mode-limits"></a>Autopilot mode limits
-
-See the [Autopilot](provision-throughput-autopilot.md#autopilot-limits) article for the throughput and storage limits in autopilot mode.
-
-## <a name="sql-query-limits"></a>SQL query limits
-
-Cosmos DB supports querying items using [SQL](how-to-sql-query.md). The following table describes restrictions in query statements, for example in terms of number of clauses or query length.
+Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](https://docs.microsoft.com/rest/api/cosmos-db/) olyan erőforrásokon, mint például a tárolók, elemek és adatbázisok.  
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum length of SQL query| 256 KB <sup>*</sup>|
-| Maximum JOINs per query| 5 <sup>*</sup>|
-| Maximum ANDs per query| 2000 <sup>*</sup>|
-| Maximum ORs per query| 2000 <sup>*</sup>|
-| Maximum UDFs per query| 10 <sup>*</sup>|
-| Maximum arguments per IN expression| 6000 <sup>*</sup>|
-| Maximum points per polygon| 4096 <sup>*</sup>|
+| Egy művelet maximális végrehajtási ideje (például egy tárolt eljárás végrehajtása vagy egy lekérdezési lap beolvasása)| 5 MP |
+| Kérelmek maximális mérete (tárolt eljárás, szifilisz)| 2 MB |
+| Válasz maximális mérete (például többoldalas lekérdezés) | 4 MB |
 
-<sup>*</sup> You can increase any of these SQL query limits by contacting Azure Support.
+Ha egy művelet, például a lekérdezés eléri a végrehajtás időtúllépését vagy a válasz méretkorlát értéket, a rendszer visszaadja az eredmények egy oldalát, valamint egy folytatási tokent az ügyfélnek a végrehajtás folytatásához. Az időtartamra vonatkozóan nincs gyakorlati korlát az egyes oldalakra vagy folytatásokra vonatkozó egyetlen lekérdezés futtatásához.
 
-## <a name="mongodb-api-specific-limits"></a>MongoDB API-specific limits
-
-Cosmos DB supports the MongoDB wire protocol for applications written against MongoDB. You can find the supported commands and protocol versions at [Supported MongoDB features and syntax](mongodb-feature-support.md).
-
-The following table lists the limits specific to MongoDB feature support. Other service limits mentioned for the SQL (core) API also apply to the MongoDB API.
+Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vagy egy [erőforrás-jogkivonatot](secure-access-to-data.md) a részletes hozzáférés-vezérléshez olyan erőforrásokhoz, mint a tárolók, a partíciós kulcsok vagy az elemek. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Maximum MongoDB query memory size | 40 MB |
-| Maximum execution time for MongoDB operations| 30s |
+| Fő jogkivonat lejárati idejének maximális ideje | 15 perc  |
+| Erőforrás-jogkivonat minimális lejárati ideje | 10 perc  |
+| Erőforrás-jogkivonat maximális lejárati ideje | Alapértelmezés szerint 24 óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Token-engedélyezés maximális órajele| 15 perc |
 
-## <a name="try-cosmos-db-free-limits"></a>Try Cosmos DB Free limits
+Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A szolgáltatás legfeljebb egy trigger előtti és egy trigger utáni műveletet támogat. 
 
-The following table lists the limits for the [Try Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) trial.
+## <a name="autopilot-mode-limits"></a>Robotpilóta-mód korlátai
+
+Tekintse [meg az Autopilot](provision-throughput-autopilot.md#autopilot-limits) -re vonatkozó adatátviteli és tárolási korlátokat a robotpilóta-re vonatkozó cikkben.
+
+## <a name="sql-query-limits"></a>SQL-lekérdezés korlátai
+
+A Cosmos DB az [SQL](how-to-sql-query.md)használatával támogatja az elemek lekérdezését. Az alábbi táblázat a lekérdezési utasítások korlátozásait mutatja be, például a záradékok vagy a lekérdezés hosszának a számát.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Duration of the trial | 30 days (can be renewed any number of times) |
-| Maximum containers per subscription (SQL, Gremlin, Table API) | 1 |
-| Maximum containers per subscription (MongoDB API) | 3 |
-| Maximum throughput per container | 5000 |
-| Maximum throughput per shared-throughput database | 20000 |
-| Maximum total storage per account | 10 GB |
+| SQL-lekérdezés maximális hossza| 256 KB <sup>*</sup>|
+| Illesztések maximális száma lekérdezés szerint| 5 <sup>*</sup>|
+| And maximális száma| 2000 <sup>*</sup>|
+| Lekérdezés maximális száma| 2000 <sup>*</sup>|
+| UDF maximális száma| 10 <sup>*</sup>|
+| Argumentumok maximális száma a kifejezésben| 6000 <sup>*</sup>|
+| Maximális pont/sokszög| 4096 <sup>*</sup>|
 
-Try Cosmos DB supports global distribution in only the Central US, North Europe, and Southeast Asia regions. Azure support tickets can't be created for Try Azure Cosmos DB accounts. However, support is provided for subscribers with existing support plans.
+<sup>*</sup> Az SQL-lekérdezési korlátok bármelyikének növeléséhez vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+
+## <a name="mongodb-api-specific-limits"></a>MongoDB API-specifikus korlátok
+
+A Cosmos DB a MongoDB-on írt alkalmazások esetében támogatja a MongoDB átviteli protokollt. A támogatott parancsokat és protokoll-verziókat a [támogatott MongoDB-funkciók és-szintaxisban](mongodb-feature-support.md)találja.
+
+A következő táblázat felsorolja a MongoDB funkcióinak támogatására vonatkozó korlátozásokat. Az SQL (Core) API számára említett egyéb szolgáltatási korlátok a MongoDB API-ra is érvényesek.
+
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| Maximális MongoDB-lekérdezési memória mérete | 40 MB |
+| MongoDB műveletek maximális végrehajtási ideje| 30-as |
+
+## <a name="try-cosmos-db-free-limits"></a>Próbálja ki Cosmos DB szabad korlátokat
+
+A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipróbálási Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) korlátozásait.
+
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| A próbaverzió időtartama | 30 nap (tetszőleges számú alkalommal megújítható) |
+| Tárolók maximális száma/előfizetés (SQL, Gremlin, Table API) | 1 |
+| Tárolók maximális száma (MongoDB API) | 3 |
+| Maximális átviteli sebesség/tároló | 5000 |
+| Maximális átviteli sebesség egy megosztott átviteli sebességű adatbázisban | 20000 |
+| Összes tárterület maximális száma | 10 GB |
+
+Próbálja ki, Cosmos DB támogatja a globális terjesztést csak az USA középső, Észak-és Délkelet-ázsiai régiójában. Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához. Azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Read more about Cosmos DB's core concepts [global distribution](distribute-data-globally.md) and [partitioning](partitioning-overview.md) and [provisioned throughput](request-units.md).
+További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 
 * [Bevezetés az Azure Cosmos DB SQL API használatába](create-sql-api-dotnet.md)
-* [Get started with Azure Cosmos DB's API for MongoDB](create-mongodb-nodejs.md)
+* [Ismerkedés a Azure Cosmos DB API-MongoDB](create-mongodb-nodejs.md)
 * [Bevezetés az Azure Cosmos DB Cassandra API használatába](create-cassandra-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Gremlin API használatába](create-graph-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Table API használatába](create-table-dotnet.md)

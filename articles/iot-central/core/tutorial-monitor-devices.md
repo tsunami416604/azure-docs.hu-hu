@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Monitor your devices in Azure IoT Central'
-description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
+title: 'Oktatóanyag: eszközök figyelése az Azure IoT Central'
+description: 'Oktatóanyag: operátorként használhatja az Azure IoT Central alkalmazást az eszközök figyelésére.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -22,7 +22,7 @@ ms.locfileid: "74480256"
 
 Ez az oktatóanyag bemutatja, hogy operátorként hogyan használhatja a Microsoft Azure IoT Central alkalmazást az eszközök monitorozására és a beállítások módosítására.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Értesítés fogadása
@@ -41,9 +41,9 @@ Mielőtt belekezdene, a szerkesztőnek el kell végeznie az Azure IoT Central al
 
 Az Azure IoT Central e-mail-üzenetekként küld értesítéseket az eszközökről. A szerkesztő hozzáadott egy szabályt, amely értesítést küld, amikor a csatlakoztatott légkondicionáló készülék hőmérséklete túllép egy küszöbértéken. Ellenőrizze a szerkesztő által az értesítések fogadásához választott fiókra küldött e-maileket.
 
-Nyissa meg [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) című oktatóanyag végén kapott e-mail-üzenetet. In the email, select the link to the device next to **Device Name** in the **Details** section:
+Nyissa meg [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) című oktatóanyag végén kapott e-mail-üzenetet. Az e-mailben válassza ki az eszköz **neve** melletti hivatkozást a **részletek** szakaszban:
 
-![Alert notification email](media/tutorial-monitor-devices/email.png)
+![Riasztási értesítő e-mail](media/tutorial-monitor-devices/email.png)
 
 Megnyílik a böngészőben az előző oktatóanyagokban létrehozott szimulált **Csatlakoztatott légkondicionáló-1** eszköz **Eszköz** oldala:
 
@@ -57,13 +57,13 @@ Válassza az **Irányítópult** lehetőséget az eszközzel kapcsolatos inform�
 
 ![Az eszköz irányítópultja](media/tutorial-monitor-devices/initial_screen.png)
 
-Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. You can also see the current target temperature for the device in the **Device properties** tile. Úgy dönt, hogy a célhőmérséklet túl magas.
+Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. Az eszköz aktuális célként megadott hőmérsékletét az **eszköz tulajdonságai** csempén is megtekintheti. Úgy dönt, hogy a célhőmérséklet túl magas.
 
 ## <a name="remediate-an-issue"></a>Probléma elhárítása
 
 Az eszköz célhőmérsékletének módosításához használja a **Beállítások** lapot:
 
-1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 75-ös értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. When the device confirms the settings change, the status of the setting changes to **synced**:
+1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 75-ös értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. Amikor az eszköz megerősíti a beállítások változását, a beállítás **szinkronizálásra**módosul:
 
     ![Beállítások frissítése](media/tutorial-monitor-devices/change_settings.png)
 

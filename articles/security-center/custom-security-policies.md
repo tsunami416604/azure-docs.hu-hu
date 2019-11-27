@@ -1,6 +1,6 @@
 ---
-title: Create custom security policies in Azure Security Center | Microsoft Docs
-description: Azure custom policy definitions monitored by Azure Security Center.
+title: Egyéni biztonsági szabályzatok létrehozása a Azure Security Centerban | Microsoft Docs
+description: A Azure Security Center által figyelt egyéni Azure-házirend-definíciók.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -15,60 +15,60 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483971"
 ---
-# <a name="using-custom-security-policies-preview"></a>Using custom security policies (Preview)
+# <a name="using-custom-security-policies-preview"></a>Egyéni biztonsági házirendek használata (előzetes verzió)
 
-To help secure your systems and environment, Azure Security Center generates security recommendations. These recommendations are based on industry best practices, which are incorporated into the generic, default security policy supplied to all customers. They can also come from Security Center's knowledge of industry and regulatory standards.
+A rendszerek és a környezet biztonságossá tételéhez Azure Security Center biztonsági javaslatokat hoz létre. Ezek a javaslatok az iparági ajánlott eljárásokon alapulnak, amelyek az összes ügyfél számára biztosított általános, alapértelmezett biztonsági szabályzatba vannak beépítve. Security Center az iparági és a szabályozási szabványok ismeretében is származhatnak.
 
-With this preview feature, you can add your own *custom* initiatives. You'll then receive recommendations if your environment doesn't follow the policies you create.
+Ezzel az előzetes verziójú funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a környezet nem követi a létrehozott házirendeket.
 
-As discussed [here](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in the Azure Policy documentation, when you specify a location for your custom initiative, it must be a management group or a subscription. 
+Az Azure Policy [dokumentációjában ismertetett](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) módon, ha az egyéni kezdeményezéshez ad meg egy helyet, akkor azt felügyeleti csoportnak vagy előfizetésnek kell lennie. 
 
-## <a name="to-add-a-custom-initiative-to-your-subscription"></a>To add a custom initiative to your subscription 
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Egyéni kezdeményezés hozzáadása az előfizetéshez 
 
-1. From Security Center's sidebar, open the **Security policy** page.
+1. A Security Center oldalsávján nyissa meg a **biztonsági házirend** lapot.
 
-1. Select a subscription or Management Group to which you would like to add a custom initiative.
+1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez egyéni kezdeményezést szeretne hozzáadni.
 
-    [![Selecting a subscription for which you'll create your custom policy](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![válassza ki azt az előfizetést, amelyhez létre kívánja hozni az egyéni szabályzatot](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > You must add custom standards at the subscription level (or higher) for them to be evaluated and displayed in Security Center. 
+    > Az előfizetési szinten (vagy magasabban) egyéni szabványokat kell hozzáadnia ahhoz, hogy kiértékeljék és megjelenjenek Security Centerban. 
     >
-    > When you add a custom standard, it assigns an *initiative* to that scope. We therefore recommend that you select the widest scope required for that assignment.
+    > Egyéni szabvány hozzáadásakor egy *kezdeményezést* rendel hozzá ehhez a hatókörhöz. Ezért javasoljuk, hogy válassza ki az adott hozzárendeléshez szükséges legszélesebb hatókört.
 
-1. In the Security policy page, under Your custom initiatives (Preview), click **Add a custom initiative**.
+1. A biztonsági szabályzat lapon az egyéni kezdeményezések (előzetes verzió) területen kattintson az **Egyéni kezdeményezés hozzáadása**lehetőségre.
 
-    [![Click **Add a custom initiative**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![kattintson * * egyéni kezdeményezés hozzáadása * *](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    The following page appears:
+    A következő oldal jelenik meg:
 
-    ![Create or add a policy](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![Szabályzat létrehozása vagy hozzáadása](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. In the Add custom initiatives page, review the list of custom policies already created in your organization. If you see one you want to assign to your subscription, click **Add**. If there isn't an initiative in the list that meets your needs, skip this step.
+1. Az egyéni kezdeményezések hozzáadása oldalon tekintse át a szervezetében már létrehozott egyéni szabályzatok listáját. Ha megjelenik az előfizetéshez hozzárendelni kívánt fiók, kattintson a **Hozzáadás**gombra. Ha nincs olyan kezdeményezés a listában, amely megfelel az igényeinek, hagyja ki ezt a lépést.
 
-1. To create a new custom initiative:
+1. Új egyéni kezdeményezés létrehozása:
 
-    1. Click **Create new**.
-    1. Enter the definition's location and name.
-    1. Select the policies to include and click **Add**.
-    1. Enter any desired parameters.
+    1. Kattintson az **új létrehozása**gombra.
+    1. Adja meg a definíció helyét és nevét.
+    1. Válassza ki a felvenni kívánt házirendeket, majd kattintson a **Hozzáadás**gombra.
+    1. Adja meg a kívánt paramétereket.
     1. Kattintson a **Save** (Mentés) gombra.
-    1. In the Add custom initiatives page, click refresh and your new initiative will be shown as available.
-    1. Click **Add** and assign it to your subscription.
+    1. Az egyéni kezdeményezések hozzáadása lapon kattintson a frissítés lehetőségre, és az új kezdeményezés elérhetőként jelenik meg.
+    1. Kattintson a **Hozzáadás** gombra, és rendelje hozzá az előfizetéséhez.
 
     > [!NOTE]
-    > Creating new initiatives requires subscription owner credentials. For more information about Azure roles, see [Permissions in Azure Security Center](security-center-permissions.md).
+    > Az új kezdeményezések létrehozásához előfizetés-tulajdonosi hitelesítő adatokra van szükség. Az Azure-szerepkörökkel kapcsolatos további információkért tekintse [meg a Azure Security Center engedélyeit](security-center-permissions.md).
 
-1. To see the resulting recommendations for your policy, click **Recommendations** from the sidebar to open the recommendations page. The recommendations will appear with a “Custom” label and be available within approximately one hour.
+1. A Szabályzathoz kapcsolódó javaslatok megtekintéséhez kattintson a **javaslatok** elemre az oldalsávon, és nyissa meg a javaslatok lapot. A javaslatok az "egyéni" címkével jelennek meg, és körülbelül egy órán belül elérhetők lesznek.
 
-    [![Custom recommendations](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [Egyéni javaslatok ![](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you learned how to create custom security policies. 
+Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendeket. 
 
-For other related material, see the following articles: 
+Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 
-- [The overview of security policies](tutorial-security-policy.md)
-- [A list of the built-in security policies](security-center-policy-definitions.md)
+- [A biztonsági házirendek áttekintése](tutorial-security-policy.md)
+- [A beépített biztonsági szabályzatok listája](security-center-policy-definitions.md)

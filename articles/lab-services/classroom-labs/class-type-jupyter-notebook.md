@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach data science with Python and Jupyter Notebooks | Microsoft Docs
-description: Learn how to set up a lab to teach data science using Python and Jupyter Notebooks.
+title: Tesztkörnyezet létrehozása az adatelemzéshez Python-és Jupyter-jegyzetfüzetekkel | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be olyan labort, amely a Python és a Jupyter notebookok használatával tanítja az adatelemzést.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,60 +20,60 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383979"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Set up a lab to teach data science with Python and Jupyter Notebooks
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 
-This article outlines how to set up a template machine in Lab Services with the tools needed to teach students how to use [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io).  Jupyter Notebooks is an open-source project that lets you easily combine rich text and executable [Python](https://www.python.org/) source code on a single canvas called a notebook.  Running a notebook results in a linear record of inputs and outputs.  Those outputs can include text, tables of information, scatter plots, and more.
+Ez a cikk azt ismerteti, hogyan állíthat be egy sablon-gépet a labor Servicesben a diákoknak a [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io)használatának megtanításához szükséges eszközökkel.  A Jupyter notebookok egy nyílt forráskódú projekt, amely lehetővé teszi, hogy könnyedén kombinálja a Rich Text és a végrehajtható [Python](https://www.python.org/) -forráskódot egyetlen, jegyzetfüzet nevű vásznon.  A jegyzetfüzetek futtatása a bemenetek és kimenetek lineáris rekordját eredményezi.  Ezek a kimenetek tartalmazhatnak szöveget, táblákat, valamint elszórt ábrákat és egyéb adatokat.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-To set up this lab, you need an Azure subscription and lab account to get started. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [tutorial to setup a lab account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
 
-### <a name="lab-account-settings"></a>Lab Account Settings
+### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [specify marketplace images available to lab creators](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)számára.
 
-| Lab account setting | Utasítások |
+| Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
-| Marketplace image | Enable the [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image for use within your lab account. |
+| Piactéri rendszerkép | Engedélyezze a [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) rendszerképet a labor-fiókban való használatra. |
 
 >[!TIP]
->This article will focus on configuring a template machine that uses the Windows Server operating system.  It's also possible to set up a data science class with Python and Jupyter Notebooks using [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) or [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) images from the Azure Marketplace.
+>Ez a cikk a Windows Server operációs rendszert használó sablon-számítógép konfigurálására koncentrál.  Az Azure Marketplace-en a Linux ( [CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) vagy az [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) rendszerképeket Data Science Virtual Machine használó adattudományi osztály is beállítható Python-és Jupyter-jegyzetfüzetekkel.
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Tesztkörnyezet beállításai
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+A tantermi labor beállításakor használja az alábbi táblázatban szereplő beállításokat.  A tantermi laborok létrehozásával kapcsolatos további információkért tekintse [meg a tanterem Lab-oktatóanyagának beállítása](tutorial-setup-classroom-lab.md)című témakört.
 
-| Lab settings | Value/instructions |
+| Tesztkörnyezet beállításai | Érték/utasítások |
 | ------------ | ------------------ |
-|Virtual Machine Size| Small GPU (Compute). This size is best suited for compute-intensive and network-intensive applications like Artificial Intelligence and Deep Learning. |
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Virtuális gép mérete| Kis GPU (számítás). Ez a méret a legjobb megoldás a nagy számítási igényű és a hálózati igényű alkalmazások, például a mesterséges intelligencia és a mély tanulás számára. |
+|Virtuálisgép-rendszerkép| SQL Server 2019 standard Windows Server 2019 rendszeren|
 
-## <a name="template-machine"></a>Template machine
+## <a name="template-machine"></a>Sablon számítógép
 
-The [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image provides the necessary deep learning frameworks and tools required for this type of class.  The image includes Jupyter Notebooks and Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is a web application that allows data scientists to take raw data, run computations, and see the results all in the same environment.  For our template machine, the web application will be running locally.  [Visual Studio Code](https://code.visualstudio.com/) is an IDE that provides a rich interactive experience when writing and testing a notebook.  For more information, see [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+A [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) rendszerkép biztosítja az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket.  A kép tartalmazza a Jupyter notebookokat és a Visual Studio Code-ot.  A [Jupyter notebookok](http://jupyter-notebook.readthedocs.io) egy webalkalmazás, amely lehetővé teszi az adatszakértők számára a nyers adatok bevezetését, a számítások futtatását, valamint az eredmények megtekintését ugyanabban a környezetben.  A sablonos gépen a webalkalmazás helyileg fog futni.  A [Visual Studio Code](https://code.visualstudio.com/) egy olyan ide, amely gazdag interaktív élményt nyújt a jegyzetfüzetek írásakor és tesztelésekor.  További információ: [Jupyter notebookok használata a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/jupyter-support).
 
-The remaining task to set up the class is to provide local notebooks.  For instructions how to use the Azure Machine Learning samples, see [how to configure an environment with Jupyter Notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter).  You can also provide your own notebooks on the template machine.  The notebooks will be copied to all student machines when the template is published.
+Az osztály beállításához fennmaradó feladat a helyi jegyzetfüzetek biztosítása.  Az Azure Machine Learning minták használatával kapcsolatos útmutatásért lásd: [környezet konfigurálása Jupyter notebookokkal](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Saját jegyzetfüzeteket is megadhat a sablon számítógépén.  A jegyzetfüzeteket a rendszer a sablon közzétételekor másolja az összes tanulói gépre.
 
 ## <a name="cost-estimate"></a>Becsült költség
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was small gpu (compute), which is 139 lab units.
+Az osztályra vonatkozó lehetséges költségbecslés.  25 tanulós osztályt fogunk használni.  20 órányi ütemezett idő van.  Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára.  A kiválasztott virtuálisgép-méret kisméretű GPU (számítás) volt, amely 139 Lab egység.
 
-Here is an example of a possible cost estimate for this class:
+Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkozóan:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 139 lab units \*  0.01 USD per hour  = 1042.5 USD
+25 tanuló \* (20 ütemezett óra + 10 kvóta óra) \* 139 labor egység \* 0,01 USD/óra = 1042,5 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+További részletek a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Összegzés
 
-In this article, we walked through the steps to create a lab for a Jupyter Notebooks class. You can use a similar setup for other machine learning classes.
+Ebből a cikkből megtudhatta, hogyan hozhat létre labort a Jupyter notebookok osztályhoz. Más gépi tanulási osztályokhoz is használhat hasonló beállításokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Next steps are common to setting up any lab.
+A következő lépések közösek a laborok beállításához.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Sablon létrehozása és kezelése](how-to-create-manage-template.md)
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail-regisztrációs hivatkozások a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users)

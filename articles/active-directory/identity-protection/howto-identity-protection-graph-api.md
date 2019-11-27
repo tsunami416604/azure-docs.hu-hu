@@ -74,7 +74,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 
    1. A **bejelentkezési URL** szövegmezőbe írja be a következőt: `http://localhost`.
 
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 1. A **Beállítások** oldal megnyitásához az alkalmazások listában kattintson az újonnan létrehozott alkalmazás-regisztráció elemre. 
 1. Másolja ki az **alkalmazás azonosítóját**.
 

@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Bastion host  | Microsoft Docs
-description: In this article, learn how to create an Azure Bastion host
+title: Azure Bastion-gazdagép létrehozása | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -14,70 +14,70 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422115"
 ---
-# <a name="create-an-azure-bastion-host"></a>Create an Azure Bastion host
+# <a name="create-an-azure-bastion-host"></a>Azure Bastion-gazdagép létrehozása
 
-This article shows you how to create an Azure Bastion host. Once you provision the Azure Bastion service in your virtual network, the seamless RDP/SSH experience is available to all your VMs in the same virtual network. Az üzembe helyezés virtuális hálózatonként értelmezendő, nem pedig előfizetések/fiókok vagy virtuális gépek alapján.
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure Bastion-gazdagépet. Miután kiépítte az Azure Bastion szolgáltatást a virtuális hálózaton, a zökkenőmentes RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. Az üzembe helyezés virtuális hálózatonként értelmezendő, nem pedig előfizetések/fiókok vagy virtuális gépek alapján.
 
-There are two ways that you can create a Bastion host resource:
+A megerősített gazdagépek erőforrásait kétféleképpen lehet létrehozni:
 
-* Create a Bastion resource using the Azure portal.
-* Create a Bastion resource in the Azure portal by using existing VM settings.
+* Hozzon létre egy megerősített erőforrást a Azure Portal használatával.
+* Hozzon létre egy megerősített erőforrást a Azure Portalban meglévő virtuálisgép-beállítások használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Bastion is available in the following Azure public regions:
+A bástya a következő nyilvános Azure-régiókban érhető el:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Create a bastion host
+## <a name="createhost"></a>Megerősített gazdagép létrehozása
 
-This section helps you create a new Azure Bastion resource from the Azure portal.
+Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozásához a Azure Portal.
 
-1. On the [Azure portal](https://portal.azure.com) menu or from the **Home** page, select **Create a resource**.
+1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 
-1. On the **New** page, in the *Search the Marketplace* field, type **Bastion**, then click **Enter** to get to the search results.
+1. Az **új** lap *Keresés a piactéren* mezőjébe írja be a következőt: **Bastion**, majd kattintson az **ENTER** gombra a keresési eredmények eléréséhez.
 
-1. From the results, click **Bastion**. Make sure the publisher is *Microsoft* and the category is *Networking*.
+1. Az eredmények között kattintson a **Bastion**elemre. Győződjön meg arról, hogy a közzétevő a *Microsoft* , a kategória pedig *hálózatkezelés*.
 
-1. On the **Bastion** page, click **Create** to open the **Create a bastion** page.
+1. A **megerősített** lapon a **Létrehozás** gombra kattintva nyissa meg a **megerősített szolgáltatás létrehozása** lapot.
 
-1. On the **Create a bastion** page, configure a new Bastion resource. Specify the configuration settings for your Bastion resource.
+1. A **bástya létrehozása** lapon állítson be egy új megerősített erőforrást. Adja meg a megerősített erőforrás konfigurációs beállításait.
 
-    ![create a bastion](./media/bastion-create-host-portal/settings.png)
+    ![megerősített szolgáltatás létrehozása](./media/bastion-create-host-portal/settings.png)
 
-    * **Subscription**: The Azure subscription you want to use to create a new Bastion resource.
-    * **Resource Group**: The Azure resource group in which the new Bastion resource will be created in. If you don’t have an existing resource group, you can create a new one.
-    * **Name**: The name of the new Bastion resource
-    * **Region**: The Azure public region that the resource will be created in.
-    * **Virtual network**: The virtual network in which the Bastion resource will be created in. You can create a new virtual network in the portal during this process, in case you don’t have or don’t want to use an existing virtual network. If you are using an existing virtual network, make sure the existing virtual network has enough free address space to accommodate the Bastion subnet requirements.
-    * **Subnet**: The subnet in your virtual network to which the new Bastion host resource will be deployed. You must create a subnet using the name value **AzureBastionSubnet**. This value lets Azure know which subnet to deploy the Bastion resources to. This is different than a Gateway subnet.You must use a subnet of at least a /27 or larger subnet (/27, /26, and so on). Create the **AzureBastionSubnet** without any route tables or delegations. When you use Network Security Groups on the **AzureBastionSubnet**, refer to [Work with NSGs](bastion-nsg.md).
-    * **Public IP address**: The public IP of the Bastion resource on which RDP/SSH will be accessed (over port 443). Create a new public IP, or use an existing one. The public IP address must be in the same region as the Bastion resource you are creating.
-    * **Public IP address name**: The name of the public IP address resource.
-    * **Public IP address SKU**: Prepopulated by default to **Standard**. Azure Bastion uses/supports only the Standard Public IP SKU.
-    * **Assignment**: Prepopulated by default to **Static**.
+    * **Előfizetés**: az új megerősített erőforrás létrehozásához használni kívánt Azure-előfizetés.
+    * **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben az új megerősített erőforrás jön létre. Ha nem rendelkezik meglévő erőforráscsoporthoz, létrehozhat egy újat.
+    * **Name (név**): az új megerősített erőforrás neve
+    * **Régió**: az Azure nyilvános régiója, amelyhez az erőforrást létre kívánja hozni.
+    * **Virtual Network (virtuális hálózat**): az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva. A folyamat során létrehozhat egy új virtuális hálózatot a portálon abban az esetben, ha nem rendelkezik meglévő virtuális hálózattal, vagy nem szeretne használni. Ha meglévő virtuális hálózatot használ, ellenőrizze, hogy a meglévő virtuális hálózat rendelkezik-e elegendő szabad hellyel a megerősített alhálózat követelményeinek kielégítéséhez.
+    * **Alhálózat**: a virtuális hálózat azon alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet**név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Ez nem más, mint az átjáró alhálózata. Legalább egy/27 vagy nagyobb alhálózat (/27,/26 stb.) alhálózatot kell használnia. Hozza létre a **AzureBastionSubnet** útválasztási táblák vagy delegálások nélkül. Ha hálózati biztonsági csoportokat használ a **AzureBastionSubnet**, olvassa el a következőt: a [NSG](bastion-nsg.md)használata.
+    * **Nyilvános IP-cím**: a megerősített erőforrás nyilvános IP-címe, AMELYEN az RDP/SSH elérhető (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak.
+    * **Nyilvános IP-cím neve**: a nyilvános IP-cím erőforrásának neve.
+    * **Nyilvános IP-cím SKU**: alapértelmezés szerint a **standard**értékre van feltöltve. Az Azure Bastion csak a standard nyilvános IP-SKU-t használja/támogatja.
+    * **Hozzárendelés**: alapértelmezés szerint a **statikus**értékre van feltöltve.
 
-1. When you have finished specifying the settings, click **Review + Create**. This validates the values. Once validation passes, you can begin the creation process.
-1. On the Create a bastion page, click **Create**.
-1. You will see a message letting you know that your deployment is underway. Status will display on this page as the resources are created. It takes about 5 mins for the Bastion resource to be created and deployed.
+1. Ha végzett a beállítások megadásával, kattintson a **felülvizsgálat + létrehozás**gombra. Ezzel érvényesíti az értékeket. Az ellenőrzés után megkezdheti a létrehozási folyamatot.
+1. A bástya létrehozása lapon kattintson a **Létrehozás**gombra.
+1. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. A megerősített erőforrás létrehozásához és üzembe helyezéséhez 5 perc szükséges.
 
-## <a name="createvmset"></a>Create a bastion host using VM settings
+## <a name="createvmset"></a>Megerősített gazdagép létrehozása a virtuálisgép-beállítások használatával
 
-If you create a bastion host in the portal by using an existing VM, various settings will automatically default corresponding to your virtual machine and/or virtual network.
+Ha egy meglévő virtuális gép használatával hoz létre egy megerősített gazdagépet a portálon, a különböző beállítások automatikusan a virtuális gép és/vagy a virtuális hálózat megfelelő alapértelmezett beállításai lesznek.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). Go to your virtual machine, then click **Connect**.
+1. Nyissa meg az [Azure portált](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
 
-   ![VM Connect](./media/bastion-create-host-portal/vmsettings.png)
-1. On the right sidebar, click **Bastion**, then **Use Bastion**.
+   ![VM-kapcsolat](./media/bastion-create-host-portal/vmsettings.png)
+1. A jobb oldali oldalsávon kattintson a **Bastion**elemre, majd **használja a Bastion**-t.
 
    ![Bastion](./media/bastion-create-host-portal/vmbastion.png)
-1. On the Bastion page, fill out the following settings fields:
+1. A megerősített lapon töltse ki a következő beállítások mezőket:
 
-   * **Name**: The name of the bastion host you want to create.
-   * **Subnet**: The subnet inside your virtual network to which Bastion resource will be deployed. The subnet must be created with the name **AzureBastionSubnet**. This lets Azure know which subnet to deploy the Bastion resource to. This is different than a Gateway subnet. Click **Manage subnet configuration** to create the Azure Bastion Subnet. We highly recommend that you use at least a /27 or larger subnet (/27, /26, etc.). Create the **AzureBastionSubnet** without any Network Security Groups, route tables, or delegations. Click **Create** to create the subnet, then proceed with the next settings.
-   * **Public IP address**: The public IP of the Bastion resource on which RDP/SSH will be accessed (over port 443). Create a new public IP, or use an existing one. The public IP address must be in the same region as the Bastion resource you are creating.
-   * **Public IP address name**: The name of the public IP address resource.
-1. On the validation screen, click **Create**. Wait for about 5 mins for the Bastion resource to be created and deployed.
+   * **Name (név**): a létrehozni kívánt megerősített állomás neve.
+   * **Alhálózat**: a virtuális hálózaton belüli alhálózat, amelyre a megerősített erőforrást telepíteni fogja. Az alhálózatot a **AzureBastionSubnet**névvel kell létrehozni. Ez lehetővé teszi, hogy az Azure tudja, melyik alhálózaton helyezi üzembe a megerősített erőforrást. Ez nem más, mint az átjáró alhálózata. Az Azure megerősített alhálózat létrehozásához kattintson az **alhálózat konfigurációjának kezelése** lehetőségre. Javasoljuk, hogy legalább egy/27 vagy nagyobb alhálózatot használjon (/27,/26 stb.). Hozza létre a **AzureBastionSubnet** hálózati biztonsági csoportok, útválasztási táblák vagy delegálások nélkül. A **Létrehozás** gombra kattintva hozza létre az alhálózatot, majd folytassa a következő beállításokkal.
+   * **Nyilvános IP-cím**: a megerősített erőforrás nyilvános IP-címe, AMELYEN az RDP/SSH elérhető (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak.
+   * **Nyilvános IP-cím neve**: a nyilvános IP-cím erőforrásának neve.
+1. Az érvényesítési képernyőn kattintson a **Létrehozás**gombra. Várjon körülbelül 5 percet a megerősített erőforrás létrehozásához és üzembe helyezéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Read the [Bastion FAQ](bastion-faq.md)
+A [megerősített GYIK](bastion-faq.md) áttekintése

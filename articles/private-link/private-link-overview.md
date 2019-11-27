@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure privát kapcsolat?
-description: Learn how to use Azure Private Link to access Azure PaaS Services (for example, Azure Storage and SQL Database) and Azure hosted customer/partner services over a Private Endpoint in your virtual network.
+description: Ismerje meg, hogyan használhatja az Azure Private-hivatkozást az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérésére a virtuális hálózat privát végpontján keresztül.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -15,65 +15,65 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228076"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
-Azure Private Link enables you to access Azure PaaS Services (for example, Azure Storage, Azure Cosmos DB, and SQL Database) and Azure hosted customer/partner services over a [Private Endpoint](private-endpoint-overview.md) in your virtual network. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. You can also create your own [Private Link Service](private-link-service-overview.md) in your virtual network (VNet) and deliver it privately to your customers. The setup and consumption experience using Azure Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
+Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
 
 > [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). For known limitations, see [Private Endpoint](private-endpoint-overview.md#limitations) and [Private Link Service](private-link-service-overview.md#limitations).
+> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az ismert korlátozásokért lásd: [privát végpont](private-endpoint-overview.md#limitations) és [privát kapcsolat szolgáltatás](private-link-service-overview.md#limitations).
 
 
-![Private endpoint overview](media/private-link-overview/private-endpoint.png)
+![Privát végpont áttekintése](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>Főbb előnyök
-Azure Private Link provides the following benefits:  
-- **Privately access services on the Azure platform**: Connect your virtual network to services running in Azure privately without needing a public IP address at the source or destination. Service providers can render their services privately in their own virtual network and consumers can access those services privately in their local virtual network. The Private Link platform will handle the connectivity between the consumer and services over the Azure backbone network. 
+Az Azure Private link a következő előnyöket biztosítja:  
+- **Saját hozzáférésű szolgáltatások az Azure platformon**: a virtuális hálózatokat a saját Azure-ban futó szolgáltatásokhoz kapcsolhatja anélkül, hogy a forráson vagy a célhelyen nyilvános IP-címet kellene használnia. A szolgáltatók saját virtuális hálózatban tehetik saját szolgáltatásaikat, és a felhasználók a helyi virtuális hálózatban is hozzáférhetnek a szolgáltatásokhoz. A privát kapcsolati platform a fogyasztó és a szolgáltatások közötti kapcsolatot fogja kezelni az Azure-beli gerinc hálózaton. 
  
-- **On-premises and peered networks**: Access services running in Azure from on-premises over ExpressRoute private peering/VPN tunnels (from on-premises) and peered virtual networks using private endpoints. There is no need to set up public peering or traverse the internet to reach the service. This ability provides a secure way to migrate workloads to Azure.
+- Helyszíni és egymással **összekapcsolt hálózatok**: az Azure-ban futó, a helyszíni és a privát végpontokat használó, ExpressRoute-alapú privát és VPN-alagutakon üzemelő, illetve a virtuális hálózatokat futtató szolgáltatások eléréséhez. A szolgáltatás eléréséhez nincs szükség nyilvános vagy az Internet bejárására. Ez a funkció biztonságos módszert biztosít a számítási feladatok Azure-ba való átirányításához.
  
-- **Protection against data exfiltration**:  With Azure Private Link, the private endpoint in the VNet is mapped to a specific instance of the customer's PaaS resource as opposed to the entire service. Using the private endpoint consumers can only connect to the specific resource and not to any other resource in the service. This in built mechanism provides protection against data exfiltration risks. 
+- Az **kiszűrése elleni védelem**: az Azure Private-hivatkozással a VNet privát végpontja az ügyfél Pásti-erőforrásának egy adott példányára van leképezve, szemben a teljes szolgáltatással. A privát végpontok használatával a felhasználók csak az adott erőforráshoz csatlakozhatnak, és nem a szolgáltatásban lévő más erőforrásokhoz. Ez az épített mechanizmus védelmet nyújt az adatkiszűrései kockázatokkal szemben. 
  
-- **Global reach**: Connect privately to services running in other regions. This means that the consumer's virtual network could be in region A and it can connect to services behind Private Link in region B.  
+- **Globális elérhetőség**: kapcsolódjon a más régiókban futó szolgáltatásokhoz. Ez azt jelenti, hogy a fogyasztó virtuális hálózata az A régióban lehet, és a B régióban található privát kapcsolaton keresztül kapcsolódhat a szolgáltatásokhoz.  
  
-- **Extend to your own services**: Leverage the same experience and functionality to render your own service privately to your consumers in Azure. By placing your service behind a Standard Load Balancer you can enable it for Private Link. The consumer can then connect directly to your service using a Private Endpoint in their own VNet. You can manage these connection requests using a simple approval call flow. Azure Private Link works for consumers and services belonging to different Active Directory tenants as well. 
+- **Kiterjesztheti saját szolgáltatásait**: ugyanazokat a szolgáltatásokat és funkciókat használhatja, mint a saját szolgáltatásait az Azure-ban saját ügyfelei számára. Ha a szolgáltatást egy standard Load Balancer mögé helyezi, akkor engedélyezheti azt a privát hivatkozáshoz. A fogyasztó ezután közvetlenül kapcsolódhat a szolgáltatáshoz a saját VNet lévő privát végpont használatával. Ezeket a kapcsolatkérelmeket egyszerű jóváhagyási hívási folyamattal kezelheti. Az Azure Private link a különböző Active Directory bérlők által használt felhasználók és szolgáltatások számára is működik. 
 
-## <a name="availability"></a>Elérhetőség 
- The following table lists the Private Link services and the regions where they are available. 
+## <a name="availability"></a>Rendelkezésre állás 
+ A következő táblázat felsorolja a privát kapcsolati szolgáltatásokat, valamint azokat a régiókat, ahol elérhetők. 
 
-|Alkalmazási helyzet  |Supported services   |Elérhető régiók | Állapot   |
+|Forgatókönyv  |Támogatott szolgáltatások   |Elérhető régiók | status   |
 |---------|---------|---------|---------|
-|Private Link for customer-owned services|Private Link services behind Standard Load Balancer | All public regions  |  Előzetes verzió  |
-|Private Link for Azure PaaS services   | Azure Storage        |  All public regions      | Előzetes verzió         |
-|  | Azure Data Lake Storage Gen2        |  All public regions      | Előzetes verzió         |
-|  |  Azure SQL Database         | All public regions      |   Előzetes verzió      |
-||Azure SQL Data Warehouse| All public regions |Előzetes verzió|
-||Azure Cosmos DB| West Central US, WestUS, North Central US |Előzetes verzió|
+|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  |  Előzetes verzió  |
+|Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  Összes nyilvános régió      | Előzetes verzió         |
+|  | 2\. generációs Azure Data Lake Storage        |  Összes nyilvános régió      | Előzetes verzió         |
+|  |  Azure SQL Database         | Összes nyilvános régió      |   Előzetes verzió      |
+||Azure SQL Data Warehouse| Összes nyilvános régió |Előzetes verzió|
+||Azure Cosmos DB| USA nyugati középső régiója, WestUS, USA északi középső régiója |Előzetes verzió|
 
-For the most up-to-date notifications, check the [Azure Virtual Network updates page](https://azure.microsoft.com/updates/?product=virtual-network).
+A legfrissebb értesítésekért keresse fel az [Azure Virtual Network Updates oldalt](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-Azure Private Link is integrated with Azure Monitor which allows you to archive logs to a storage account, stream events to your Event Hub, or send them to Azure Monitor logs. You can access the following information on Azure Monitor: 
-- **Private endpoint**: Data processed by the Private Endpoint  (IN/OUT)
+Az Azure Private link integrálva van Azure Monitor, amely lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. Azure Monitor a következő információkat érheti el: 
+- **Privát végpont**: a privát végpont által feldolgozott adatértékek (be/ki)
  
-- **Private Link service**:
-    - Data processed by the Private Link service (IN/OUT)
-    - NAT port availability  
+- **Magánhálózati kapcsolati szolgáltatás**:
+    - A privát kapcsolati szolgáltatás által feldolgozott adatértékek (be/ki)
+    - NAT-port elérhetősége  
  
 ## <a name="pricing"></a>Díjszabás   
-For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
+A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link/).
  
 ## <a name="faqs"></a>Gyakori kérdések  
-For FAQs, see [Azure Private Link FAQs](private-link-faq.md).
+Gyakori kérdések: [Azure Private link – gyakori kérdések](private-link-faq.md).
  
-## <a name="limits"></a>Korlátozások  
-For limits, see [Azure Private Link limits](../azure-subscription-service-limits.md#private-link-limits).
+## <a name="limits"></a>Korlátok  
+A korlátokat lásd: [Azure Private link Limits](../azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Következő lépések
-- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
-- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
-- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
-- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
-- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
+- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
+- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 
 
  

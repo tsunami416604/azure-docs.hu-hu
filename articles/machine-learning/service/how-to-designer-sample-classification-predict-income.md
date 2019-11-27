@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Classify, predict income example'
+title: 'Tervező: osztályozás, prediktív jövedelem – példa'
 titleSuffix: Azure Machine Learning
-description: Follow this example build a no-code classifier to predict income with Azure Machine Learning designer.
+description: Ezt a példát követve hozzon létre egy kód nélküli besorolást a bevétel előrejelzéséhez Azure Machine Learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,57 +17,57 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214109"
 ---
-# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Build a classifier & use feature selection to predict income with Azure Machine Learning designer
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Osztályozó & felépítése a szolgáltatás kiválasztásával előre jelezheti a bevételt Azure Machine Learning Designer használatával
 
-**Designer (preview) sample 3**
+**Designer (előzetes verzió) 3. minta**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Learn how to build a machine learning classifier without writing a single line of code using the designer (preview). This sample trains a **two-class boosted decision tree** to predict adult census income (>=50K or <=50K).
+Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a Designer (előzetes verzió) használatával. Ez a példa egy **kétosztályos, megnövelt döntési fát** mutat be a felnőtt népszámlálások jövedelmének előrejelzéséhez (> = 50k vagy < = 50k).
 
-Because the question is answering "Which one?" this is called a classification problem. However, you can apply the same fundamental process to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
+Mivel a kérdés a következőt válaszolja: "melyik?" ezt besorolási problémanak nevezzük. Ugyanakkor ugyanezen alapvető eljárást alkalmazhatja bármilyen gépi tanulási probléma megoldásához, legyen szó a regresszióról, a besorolásról, a fürtözésről és így tovább.
 
-Here's the final pipeline graph for this sample:
+A minta utolsó folyamat gráfja a következő:
 
-![Graph of the pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
+![A folyamat gráfja](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click the sample 3 to open it.
+4. Kattintson a 3. mintát a megnyitásához.
 
 
 
 ## <a name="data"></a>Adatok
 
-The dataset contains 14 features and one label column. There are multiple types of features, including numerical and categorical. The following diagram shows an excerpt from the dataset: ![data](media/how-to-designer-sample-classification-predict-income/data.png)
+Az adatkészlet 14 funkciót és egy felirat oszlopot tartalmaz. Többféle típusú funkció létezik, például a numerikus és a kategorikus. Az alábbi ábrán egy részlet látható az adatkészletből: ![adatok](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
-## <a name="pipeline-summary"></a>Pipeline summary
+## <a name="pipeline-summary"></a>Folyamat összegzése
 
-Follow these steps to create the pipeline:
+A folyamat létrehozásához kövesse az alábbi lépéseket:
 
-1. Drag the Adult Census Income Binary dataset module into the pipeline canvas.
-1. Add a **Split Data** module to create the training and test sets. Set the fraction of rows in the first output dataset to 0.7. This setting specifies that 70% of the data will be output to the left port of the module and the rest to the right port. We use the left dataset for training and the right one for testing.
-1. Add the **Filter Based Feature Selection** module to select 5 features by PearsonCorreclation. 
-1. Add a **Two-Class Boosted Decision Tree** module to initialize a boosted decision tree classifier.
-1. Add a **Train Model** module. Connect the classifier from the previous step to the left input port of the **Train Model**. Connect the filtered dataset from Filter Based Feature Selection module as training dataset.  The **Train Model** will train the classifier.
-1. Add Select Columns Transformation and Apply Transformation module to apply the same transformation (filtered based feature selection) to test dataset.
-![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
-1. Add **Score Model** module and connect the **Train Model** module to it. Then add the test set (the output of Apply Transformation module which apply feature selection to test set too) to the **Score Model**. The **Score Model** will make the predictions. You can select its output port to see the predictions and the positive class probabilities.
+1. Húzza a felnőtt népszámlálás-bevétel bináris adatkészletének modulját a folyamat vászonra.
+1. A képzési és tesztelési készletek létrehozásához vegyen fel egy **felosztott adat** -modult. Állítsa az első kimeneti adatkészletben lévő sorok töredékét 0,7-re. Ezzel a beállítással megadható, hogy az adatok 70%-a a modul bal oldali portjára, a többi pedig a megfelelő portra kerüljön. A bal oldali adatkészletet a képzéshez és a megfelelő teszteléshez használjuk.
+1. Adja hozzá a **Filter-alapú funkciók kiválasztási** modulját az 5 funkció PearsonCorreclation való kiválasztásához. 
+1. Vegyen fel egy **kétosztályos, növelt döntési faszerkezetet** a megnövelt döntési fa besorolásának inicializálásához.
+1. Vegyen fel egy **Train Model** -modult. Kapcsolja össze az osztályozó az előző lépésből a **vonat modell**bal oldali bemeneti portjába. Kapcsolja össze a szűrt adatkészletet a Filter-alapú szolgáltatás kiválasztási moduljából a betanítási adatkészletként.  A **betanítási modell** az osztályozó tanítását fogja képezni.
+1. Az adatkészletek teszteléséhez adja hozzá az Oszlopok kiválasztása átalakítás és az átalakítási modul alkalmazása elemet, hogy ugyanazt az átalakítást (szűrt funkció kiválasztása) alkalmazza.
+![alkalmazása – átalakítás](media/how-to-designer-sample-classification-predict-income/transformation.png)
+1. Adja hozzá a **pontszám modell** modult, és kapcsolja össze a **Train Model** modult. Ezután adja hozzá a tesztelési készletet (az alkalmazás átalakítási moduljának kimenete, amely a beállítás kijelölését alkalmazza a set is értékre) a **pontszám modellbe**. A **pontszám modell** az előrejelzéseket fogja végezni. Kiválaszthatja a kimeneti portját a jóslatok és a pozitív osztály valószínűségének megtekintéséhez.
 
 
-    This pipeline has two score modules, the one on the right has excluded label column before make the prediction. This is prepared to deploy a real-time endpoint, because the web service input will expect only features not label. 
+    Ennek a folyamatnak két pontszám-modulja van, a jobb oldalon az előrejelzés előtt ki van zárva a Label (címke) oszlop. Ez készen áll a valós idejű végpont üzembe helyezésére, mert a webszolgáltatás bemenete csak a nem címkével rendelkező funkciókat fogja várni. 
 
-1. Add an **Evaluate Model** module and connect the scored dataset to its left input port. To see the evaluation results, select the output port of the **Evaluate Model** module and select **Visualize**.
+1. Adja hozzá a **modell kiértékelése** modult, és kapcsolja össze a mutatós adatkészletet a bal oldali bemeneti portjával. A kiértékelés eredményeinek megtekintéséhez válassza ki a **modell kiértékelése** modul kimeneti portját, és válassza a **Megjelenítés**lehetőséget.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-![Evaluate the results](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
+![Az eredmények kiértékelése](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
-In the evaluation results, you can see that the curves like ROC, Precision-recall and confusion metrics. 
+A kiértékelés eredményeiben láthatja, hogy a görbék, például a ROC, a Precision-Recall és a zavartság mérőszámok. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -75,11 +75,11 @@ In the evaluation results, you can see that the curves like ROC, Precision-recal
 
 ## <a name="next-steps"></a>Következő lépések
 
-Explore the other samples available for the designer:
+Ismerje meg a tervező számára elérhető egyéb mintákat:
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [1. példa – regresszió: az autó árának előrejelzése](how-to-designer-sample-regression-automobile-price-basic.md)
+- [2. minta – regresszió: algoritmusok összehasonlítása az autó árának előrejelzéséhez](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [4. minta – besorolás: a hitelkockázat előrejelzése (a Cost szenzitív)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [5. példa – besorolás: forgalom előrejelzése](how-to-designer-sample-classification-churn.md)
+- [6. példa – besorolás: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
+- [7. minta – szöveges besorolás: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)

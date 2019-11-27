@@ -32,7 +32,7 @@ A figyeléssel kapcsolatos további információkért tekintse meg [a Azure Port
 
 A riasztások a SAP HANA adatbázisok biztonsági mentésének egyszerű figyelését jelentik. A riasztások segítséget nyújtanak a lehető legtöbbet a biztonsági másolatok által generált események sokaságának elvesztése nélkül. Azure Backup lehetővé teszi a riasztások beállítását, és a következőképpen figyelhetők:
 
-* Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 * A tároló irányítópultján válassza a **biztonsági mentési riasztások**lehetőséget.
 
   ![Biztonsági mentési riasztások a tároló irányítópultján](./media/sap-hana-db-manage/backup-alerts-dashboard.png)

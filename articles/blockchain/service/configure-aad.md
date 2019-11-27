@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Active Directory access - Azure Blockchain Service
-description: How to configure Azure Blockchain Service with Azure Active Directory access
+title: Azure Active Directory hozzáférés konfigurálása – Azure Blockchain szolgáltatás
+description: Az Azure Blockchain szolgáltatás konfigurálása Azure Active Directory-hozzáféréssel
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
@@ -11,77 +11,77 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455872"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>How to configure Azure Active Directory access for Azure Blockchain Service
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Az Azure Blockchain Service Azure Active Directory-hozzáférésének konfigurálása
 
-In this article, you learn how to grant access and connect to Azure Blockchain Service nodes using Azure Active Directory (Azure AD) user, group, or application IDs.
+Ebből a cikkből megtudhatja, hogyan biztosíthat hozzáférést, és hogyan csatlakozhat az Azure Blockchain Service-csomópontokhoz Azure Active Directory (Azure AD) felhasználó-, csoport-vagy alkalmazás-azonosítók használatával.
 
-Azure AD provides cloud-based identity management and allows you to use a single identity across an entire enterprise and access applications in Azure. Azure Blockchain Service is integrated with Azure AD and offers benefits such as ID federation, single sign-on and multi-factor authentication.
+Az Azure AD biztosítja a felhőalapú Identitáskezelés használatát, és lehetővé teszi, hogy egyetlen identitást használjon a teljes vállalati és az Azure-beli alkalmazások eléréséhez. Az Azure Blockchain szolgáltatás integrálva van az Azure AD-vel, és olyan előnyöket kínál, mint az ID-összevonás, az egyszeri bejelentkezés és a többtényezős hitelesítés.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Create a blockchain member using the Azure portal](create-member.md)
+* [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md)
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-You can grant access at both the member level and the node level. Granting access rights at the member level will in turn grant access to all nodes under the member.
+A hozzáférést a tag szintjén és a csomópont szintjén is megadhatja. A hozzáférési jogosultságok megadása a tag szintjén a tag alá tartozó összes csomópont számára biztosít hozzáférést.
 
-### <a name="grant-member-level-access"></a>Grant member level access
+### <a name="grant-member-level-access"></a>Tag szintű hozzáférés megadása
 
-To grant access permission at the member level.
+Hozzáférési engedély megadása a tag szintjén.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Navigate to **Access control (IAM) > Add > Add role assignment**.
-1. Select the **Blockchain Member Node Access (Preview)** role and add the Azure AD ID object you wish to grant access to. Azure AD ID object can be:
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Navigáljon a **hozzáférés-vezérlés (iam) > adja hozzá > szerepkör-hozzárendelés**hozzáadása lehetőséget.
+1. Válassza a **Blockchain (előzetes verzió)** szerepkört, és adja hozzá azt az Azure ad ID-objektumot, amelyhez hozzáférést szeretne biztosítani. Az Azure AD ID-objektum a következőket teheti:
 
-    | Azure AD object | Példa |
+    | Azure AD-objektum | Példa |
     |-----------------|---------|
-    | Azure AD user   | `kim@contoso.onmicrosoft.com` |
-    | Azure AD group  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD-felhasználó   | `kim@contoso.onmicrosoft.com` |
+    | Azure AD-csoport  | `sales@contoso.onmicrosoft.com` |
     | Alkalmazásazonosító  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
-    ![Add role assignment](./media/configure-aad/add-role-assignment.png)
+    ![Szerepkör-hozzárendelés hozzáadása](./media/configure-aad/add-role-assignment.png)
 
 1. Kattintson a **Mentés** gombra.
 
-### <a name="grant-node-level-access"></a>Grant node level access
+### <a name="grant-node-level-access"></a>Csomópont szintű hozzáférés megadása
 
-You can grant access at the node level by navigating to node security and click on the node name that you wish to grant access.
+A csomópontok biztonsága lehetőségre kattintva megadhatja a hozzáférést, és a csomópont nevére kattinthat, amelyhez hozzáférést szeretne biztosítani.
 
-Select the Blockchain Member Node Access (Preview) role and add the Azure AD ID object you wish to grant access to.
+Válassza a Blockchain (előzetes verzió) szerepkört, és adja hozzá azt az Azure AD ID-objektumot, amelyhez hozzáférést szeretne biztosítani.
 
-For more information, see [Configure Azure Blockchain Service transaction nodes](configure-transaction-nodes.md#azure-active-directory-access-control).
+További információ: az [Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása](configure-transaction-nodes.md#azure-active-directory-access-control).
 
-## <a name="connect-using-azure-blockchain-connector"></a>Connect using Azure Blockchain Connector
+## <a name="connect-using-azure-blockchain-connector"></a>Csatlakozás az Azure Blockchain Connector használatával
 
-Download or clone the [Azure Blockchain Connector from GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
+Töltse le vagy klónozott az [Azure Blockchain-összekötőt a githubról](https://github.com/Microsoft/azure-blockchain-connector/).
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-The follow the quickstart section in the **readme** to build the connector from the source code.
+A **readme** (rövid útmutató) című részében találhatja meg az összekötőt a forráskódból.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Connect using an Azure AD user account
+### <a name="connect-using-an-azure-ad-user-account"></a>Csatlakozási szolgáltatás Azure AD-felhasználói fiókkal
 
-1. Run the following command to authenticate using an Azure AD user account. Replace \<myAADDirectory\> with an Azure AD domain. Például: `yourdomain.onmicrosoft.com`.
+1. Futtassa az alábbi parancsot egy Azure AD-felhasználói fiókkal történő hitelesítéshez. Cserélje le \<myAADDirectory\> egy Azure AD-tartományra. Például: `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD prompts for credentials.
-1. Sign in with your user name and password.
-1. Upon successful authentication, your local proxy connects to your blockchain node. You can now attach your Geth client with the local endpoint.
+1. Az Azure AD kéri a hitelesítő adatokat.
+1. Jelentkezzen be a felhasználónevével és jelszavával.
+1. A sikeres hitelesítés után a helyi proxy csatlakozik a blockchain-csomóponthoz. Most már csatlakoztathatja a geth-ügyfelet a helyi végponthoz.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Connect using an application ID
+### <a name="connect-using-an-application-id"></a>Összekapcsolás alkalmazás-azonosító használatával
 
-Many applications authenticate with Azure AD using an application ID instead of an Azure AD user account.
+Számos alkalmazás az Azure AD-vel való hitelesítést egy Azure AD-felhasználói fiók helyett egy alkalmazás-azonosító használatával végzi.
 
-To connect to your node using an application ID, replace **aadauthcode** with **aadclient**.
+Ha egy alkalmazás-azonosító használatával szeretne csatlakozni a csomóponthoz, cserélje le a **aadauthcode** és a **aadclient**.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| tenant-id | Azure AD domain, For example, `yourdomain.onmicrosoft.com`
-| client-id | Client ID of the registered application in Azure AD
-| client-secret | Client secret of the registered application in Azure AD
+| Bérlő azonosítója | Azure AD-tartomány, például `yourdomain.onmicrosoft.com`
+| ügyfél-azonosító | A regisztrált alkalmazás ügyfél-azonosítója az Azure AD-ben
+| ügyfél – titok | A regisztrált alkalmazás ügyfél-titka az Azure AD-ben
 
-For more information on how to register an application in Azure AD, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](../../active-directory/develop/howto-create-service-principal-portal.md)
+Az alkalmazások Azure AD-ben való regisztrálásával kapcsolatos további információkért lásd [: útmutató: a portál használata Azure ad-alkalmazás és-szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Connect a mobile device or text browser
+### <a name="connect-a-mobile-device-or-text-browser"></a>Mobileszköz vagy szöveges böngésző csatlakoztatása
 
-For a mobile device or text-based browser where the Azure AD authentication pop-up display is not possible, Azure AD generates a one-time passcode. You can copy the passcode and proceed with Azure AD authentication in another environment.
+Olyan mobileszköz-vagy szöveges böngésző esetén, ahol az Azure AD-hitelesítés előugró ablaka nem lehetséges, az Azure AD egyszeri jelszót hoz létre. A PIN-kódot átmásolhatja, és folytathatja az Azure AD-hitelesítést egy másik környezetben.
 
-To generate the passcode, replace **aadauthcode** with **aaddevice**. Replace \<myAADDirectory\> with an Azure AD domain. Például: `yourdomain.onmicrosoft.com`.
+A PIN-kód létrehozásához cserélje le a **aadauthcode** a **aaddevice**értékre. Cserélje le \<myAADDirectory\> egy Azure AD-tartományra. Például: `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Következő lépések
 
-For more information about data security in Azure Blockchain Service, see [Azure Blockchain Service security](data-security.md).
+Az Azure Blockchain szolgáltatás adatbiztonságával kapcsolatos további információkért lásd: az [Azure Blockchain szolgáltatás biztonsága](data-security.md).

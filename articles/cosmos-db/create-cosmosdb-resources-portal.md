@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Cosmos database from the Azure portal.
-description: Create an Azure Cosmos database, container, and items by using the Azure portal.
+title: Hozzon létre egy Azure Cosmos-adatbázist a Azure Portal.
+description: Hozzon létre egy Azure Cosmos-adatbázist,-tárolót és-elemeket a Azure Portal használatával.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -15,10 +15,10 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220729"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Create an Azure Cosmos account, database, container, and items from the Azure portal
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,13 +26,13 @@ ms.locfileid: "74220729"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezheti a kulcs/érték adatbázisait, a dokumentum-adatbázisokat és a Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Azure Cosmos DB középpontjában. 
 
-This quickstart demonstrates how to use the Azure portal to create an Azure Cosmos DB [SQL API](sql-api-introduction.md) account, create a document database and container, and add data to the container. 
+Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Azure Cosmos DB [SQL API](sql-api-introduction.md) -fiók létrehozásához, egy dokumentum-adatbázis és-tároló létrehozásához, valamint az adattárolóhoz való hozzáadásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-An Azure subscription or free Azure Cosmos DB trial account
+Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -43,39 +43,39 @@ An Azure subscription or free Azure Cosmos DB trial account
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-container-database"></a>
-## <a name="add-a-database-and-a-container"></a>Add a database and a container 
+## <a name="add-a-database-and-a-container"></a>Adatbázis és tároló hozzáadása 
 
-You can use the Data Explorer in the Azure portal to create a database and container. 
+Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezelő is. 
 
-1.  Select **Data Explorer** from the left navigation on your Azure Cosmos DB account page, and then select **New Container**. 
+1.  Válassza ki a **adatkezelő** elemet a Azure Cosmos db fiók lapjának bal oldali navigációs sávjában, majd válassza az **új tároló**elemet. 
     
-    You may need to scroll right to see the **Add Container** window.
+    Előfordulhat, hogy a **tároló hozzáadása** ablak megjelenítéséhez jobbra kell görgetni.
     
-    ![The Azure portal Data Explorer, Add Container pane](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![A Azure Portal Adatkezelő, tároló hozzáadása panel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  In the **Add container** pane, enter the settings for the new container.
+1.  A **tároló hozzáadása** panelen adja meg az új tároló beállításait.
     
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
-    |**Adatbázis-azonosító**|Teendők|Enter *ToDoList* as the name for the new database. Database names must contain from 1 through 255 characters, and they cannot contain `/, \\, #, ?`, or a trailing space. Check the **Provision database throughput** option, it allows you to share the throughput provisioned to the database across all the containers within the database. This option also helps with cost savings. |
-    |**Átviteli sebesség**|400|Leave the throughput at 400 request units per second (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
-    |**Container ID**|Elemek|Enter *Items* as the name for your new container. Container IDs have the same character requirements as database names.|
-    |**Partition key**| /kategória| The sample described in this article uses */category* as the partition key.|
+    |**Adatbázis-azonosító**|Teendők|Adja meg a *ToDoList* nevet az új adatbázis neveként. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?`vagy záró szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
+    |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Tároló azonosítója**|Elemek|Adja meg az *elemeket* az új tároló neveként. A tároló-azonosítók ugyanazokkal a karakterekkel rendelkeznek, mint az adatbázis neve.|
+    |**Partíciós kulcs**| /kategória| A cikkben ismertetett minta a */category* használja a partíciós kulcsként.|
 
     
-    Don't add **Unique keys** for this example. Unique keys let you add a layer of data integrity to the database by ensuring the uniqueness of one or more values per partition key. For more information, see [Unique keys in Azure Cosmos DB](unique-keys.md).
+    Ne adjon **egyedi kulcsokat** ehhez a példához. Az egyedi kulcsok lehetővé teszik adatintegritási réteg hozzáadását az adatbázishoz, ha a partíciós kulcs egy vagy több értékének egyediségét biztosítja. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
     
-1.  Kattintson az **OK** gombra. The Data Explorer displays the new database and the container that you created.
+1.  Kattintson az **OK** gombra. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
 
-## <a name="add-data-to-your-database"></a>Add data to your database
+## <a name="add-data-to-your-database"></a>Adatbevitel az adatbázisba
 
-Add data to your new database using Data Explorer.
+Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
-1. In **Data Explorer**, expand the **ToDoList** database, and expand the **Items** container. Next, select **Items**, and then select **New Item**. 
+1. A **adatkezelő**bontsa ki a **ToDoList** -adatbázist, és bontsa ki az **elemek** tárolót. Ezután válassza az **elemek elemet**, majd válassza az **új elem elemet**. 
    
    ![Új dokumentumok létrehozása az Adatkezelővel az Azure Portalon](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
-1. Add the following structure to the document on the right side of the **Documents** pane:
+1. Adja hozzá a következő struktúrát a dokumentumhoz a **dokumentumok** ablaktábla jobb oldalán:
 
      ```json
      {
@@ -89,9 +89,9 @@ Add data to your new database using Data Explorer.
 
 1. Kattintson a **Mentés** gombra.
    
-   ![Copy in json data and select Save in Data Explorer in the Azure portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   ![Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. Select **New Document** again, and create and save another document with a unique `id`, and any other properties and values you want. Your documents can have any structure, because Azure Cosmos DB doesn't impose any schema on your data.
+1. Válassza újra az **új dokumentumot** , és hozzon létre és mentsen egy másik dokumentumot egyedi `id`val, és minden más tulajdonságot és értéket. A dokumentumok bármilyen struktúrával rendelkezhetnek, mivel Azure Cosmos DB nem ró sémát az adataira.
 
 ## <a name="query-your-data"></a>Adatok lekérdezése
 
@@ -103,7 +103,7 @@ Add data to your new database using Data Explorer.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you learned how to create an Azure Cosmos DB account, create a database and container using the Data Explorer. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre adatbázist és tárolót a Adatkezelő használatával. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

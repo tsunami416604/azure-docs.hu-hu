@@ -1,14 +1,14 @@
 ---
-title: A CAF Foundation tervezetének mintája – üzembe helyezési lépések
+title: A CAF Foundation Blueprint minta üzembe helyezése
 description: A CAF Foundation Blueprint-minta üzembe helyezésének lépései, beleértve a Blueprint-összetevők paraméterének részleteit.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: afb7b19a2e5ad1f1b115526ac85d63a724101f9b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128704"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545522"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure Foundation Blueprint minta Microsoft Cloud bevezetési keretrendszerének üzembe helyezése
 
@@ -110,7 +110,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CAF Foundation Blueprint-minta üzembe helyezésének lépéseit, tekintse meg a következő cikket az architektúra megismeréséhez:
 

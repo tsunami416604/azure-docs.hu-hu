@@ -1,14 +1,14 @@
 ---
-title: Sample-SWIFT CSP-CSCF v2020 Blueprint-vezérlés leképezése
+title: SWIFT CSP – CSCF v2020 terv minta vezérlők
 description: A SWIFT CSP-CSCF v2020 tervezetének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 09/24/2019
 ms.topic: sample
-ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1826e4820f06fc3a858ce6cd5f8906baaa9808cc
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037840"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546514"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020 Blueprint-minta leképezésének vezérlése
 
@@ -85,9 +85,9 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 és 6,4 Válasz a naplózási feldolgozási hibákra
 
@@ -103,9 +103,9 @@ A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics mun
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 és 6.5 A naplózási generáció
 
@@ -113,9 +113,9 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
@@ -272,9 +272,9 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
+- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Az SQL Server speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
 - A Azure Stream Analytics lévő diagnosztikai naplókat engedélyezni kell

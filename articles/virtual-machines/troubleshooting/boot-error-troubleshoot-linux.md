@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot boot errors in Azure Linux Virtual Machines | Microsoft Docs
-description: This article helps link you to articles to troubleshoot boot errors in Azure Linux Virtual Machines.
+title: Rendszerindítási hibák elhárítása az Azure Linux Virtual Machinesban | Microsoft Docs
+description: Ez a cikk segítséget nyújt az Azure-Linux Virtual Machines rendszerindítási hibák elhárításához szükséges cikkek összekapcsolásához.
 services: virtual-machines-linux
 documentationCenter: ''
 author: vilibert
@@ -19,34 +19,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74408741"
 ---
-# <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Troubleshoot Azure Linux Virtual Machines boot errors
+# <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Azure Linux Virtual Machines rendszerindítási hibák elhárítása
 
-This article lists the common boot errors that you may receive when you start a Linux virtual machine (VM) in Microsoft Azure. For more information about the errors, see the articles in the **Boot errors and solutions** section.
+Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a Linux rendszerű virtuális gépek (VM) indításakor kaphat a Microsoft Azure. További információ a hibákról: a **rendszerindítási hibák és megoldások** szakasz cikkei.
 
-## <a name="boot-errors-and-solutions"></a>Boot errors and solutions
+## <a name="boot-errors-and-solutions"></a>Rendszerindítási hibák és megoldások
 
-* [GRUB rescue](troubleshoot-vm-boot-error.md)
+* [GRUB-mentés](troubleshoot-vm-boot-error.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [VM Serial Console](serial-console-linux.md)
+- [VM soros konzol](serial-console-linux.md)
 
-Troubleshoot a Linux VM by attaching the OS disk to a recovery VM using Azure:
+Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez az Azure használatával történő csatlakoztatásával:
 
-- [Azure VM repair](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
+- [Azure-beli virtuális gép javítása](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
 
- Disk Swap – this can be automated using either:
-- [Power Shell Recovery Scripts](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-- [bash Recovery Scripts](https://github.com/sribs/azure-support-scripts)
+ Disk swap – ez automatizálható a következők bármelyikével:
+- [Rendszerhéj-helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+- [bash helyreállítási parancsfájlok](https://github.com/sribs/azure-support-scripts)
 
 - [Parancssori felület](troubleshoot-recovery-disks-linux.md)
-- [Azure Portalra](troubleshoot-recovery-disks-portal-linux.md)
+- [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
 
 
-## <a name="disk-swap-video"></a>Disk Swap Video:
+## <a name="disk-swap-video"></a>Disk swap-videó:
 
-If you do not have access to GRUB watch [this](https://youtu.be/m5t0GZ5oGAc) video and see, how you can easily automate the disk swap procedure to recover your VM
+Ha nem rendelkezik hozzáféréssel a GRUB-hoz, tekintse meg [ezt](https://youtu.be/m5t0GZ5oGAc) a videót, és nézze meg, hogyan automatizálhatja a lemezes swap-eljárást a virtuális gép helyreállításához
 
-## <a name="unofficial-solution"></a>Unofficial solution
+## <a name="unofficial-solution"></a>Nem hivatalos megoldás
 
-Recovery of a VM can also be attempted with the unsupported BETA script [ALAR](https://github.com/malachma/azure-auto-recover)
+A virtuális gép helyreállítása a nem támogatott BÉTAVERZIÓs [ALAR](https://github.com/malachma/azure-auto-recover) is próbálkozhat

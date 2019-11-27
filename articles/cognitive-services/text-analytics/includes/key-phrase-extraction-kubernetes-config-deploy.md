@@ -1,7 +1,7 @@
 ---
-title: Key Phrase Extraction Kubernetes config and deploy steps
+title: Kulcsszókeresés Kubernetes-konfiguráció és a lépések telepítése
 titleSuffix: Azure Cognitive Services
-description: Key Phrase Extraction Kubernetes config and deploy steps
+description: Kulcsszókeresés Kubernetes-konfiguráció és a lépések telepítése
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,39 +16,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383464"
 ---
-### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Deploy the Key Phrase Extraction container to an AKS cluster
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Az Kulcsszókeresés tároló üzembe helyezése egy AK-fürtön
 
-1. Open the Azure CLI, and sign in to Azure.
+1. Nyissa meg az Azure CLI-t, és jelentkezzen be az Azure-ba.
 
     ```azurecli
     az login
     ```
 
-1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
+1. Jelentkezzen be az AK-fürtbe. Cserélje le a `your-cluster-name`t, és `your-resource-group` a megfelelő értékekkel.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    After this command runs, it reports a message similar to the following:
+    A parancs futtatása után a következőhöz hasonló üzenetet küld:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
+    > Ha több előfizetése is elérhető az Azure-fiókjában, és a `az aks get-credentials` parancs hibát jelez, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Open the text editor of choice. This example uses Visual Studio Code.
+1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
 
     ```azurecli
     code .
     ```
 
-1. Within the text editor, create a new file named *keyphrase.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
+1. A szövegszerkesztőben hozzon létre egy *keyphrase. YAML*nevű új fájlt, és illessze be a következő YAML. Ne felejtse el lecserélni a `billing/value` és a `apikey/value`t a saját adataira.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "74383464"
         app: keyphrase-app
     ```
 
-1. Save the file, and close the text editor.
-1. Run the Kubernetes `apply` command with the *keyphrase.yaml* file as its target:
+1. Mentse a fájlt, és zárjuk be a szövegszerkesztőt.
+1. Futtassa a Kubernetes `apply` parancsot a *keyphrase. YAML* fájllal a célként megadott módon:
 
     ```console
     kubectl apply -f keyphrase.yaml
     ```
 
-    After the command successfully applies the deployment configuration, a message appears similar to the following output:
+    Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
 
     ```console
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
-1. Verify that the pod was deployed:
+1. Ellenőrizze, hogy telepítve van-e a pod:
 
     ```console
     kubectl get pods
     ```
 
-    The output for the running status of the pod:
+    A pod futási állapotának kimenete:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Verify that the service is available, and get the IP address.
+1. Győződjön meg arról, hogy a szolgáltatás elérhető, és kérje le az IP-címet.
 
     ```console
     kubectl get services
     ```
 
-    The output for the running status of the *keyphrase* service in the pod:
+    A *keyphrase* szolgáltatás futó állapotának kimenete a pod-ban:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

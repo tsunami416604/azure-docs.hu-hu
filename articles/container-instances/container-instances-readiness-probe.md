@@ -1,21 +1,16 @@
 ---
-title: Készenléti mintavételek konfigurálása a Azure Container Instancesban
+title: Készültségi mintavétel beállítása a tároló-példányon
 description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárolók Azure Container Instances fogadása csak akkor legyen elérhető, amikor készen állnak
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905575"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533561"
 ---
-# <a name="configure-readiness-probes"></a>Készenléti mintavételek konfigurálása
+# <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
 
 A forgalmat kiszolgáló tároló alkalmazások esetében érdemes ellenőrizni, hogy a tároló készen áll-e a bejövő kérések kezelésére. Azure Container Instances támogatja a készültségi mintavételt a konfigurációk belefoglalásához, hogy a tároló bizonyos körülmények között nem érhető el. A készültségi mintavétel [Kubernetes-készültségi](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)mintavételhez hasonlóan viselkedik. Előfordulhat például, hogy egy tároló alkalmazásnak be kell töltenie egy nagyméretű adatkészletet az indítás során, és nem szeretné, hogy a rendszer ebben az időszakban fogadja a kéréseket.
 

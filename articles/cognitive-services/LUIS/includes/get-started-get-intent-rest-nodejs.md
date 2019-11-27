@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Node.js
+title: REST-hívás a Node. js-ben
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414535"
 
 * [Node.js](https://nodejs.org/) programozási nyelv 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Nyilvános alkalmazás azonosítója: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,9 +27,9 @@ ms.locfileid: "74414535"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
-1. Copy the following code snippet to a file named `predict.js`:
+1. Másolja az alábbi kódrészletet egy `predict.js`nevű fájlba:
 
     ```javascript
     var request = require('request');
@@ -76,30 +76,30 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Replace the following values:
+1. Cserélje le a következő értékeket:
 
-    * `YOUR-KEY` to your starter key.
-    * `YOUR-ENDPOINT` to your endpoint URL. Például: `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` az alapszintű kulcshoz.
+    * `YOUR-ENDPOINT` a végpont URL-címére. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `request`, `request-promise`, and `querystring` dependencies with this command: 
+1. Telepítse a `request`, `request-promise`és `querystring` függőségeket a következő paranccsal: 
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. Run your app with this command:
+1. Futtassa az alkalmazást a következő paranccsal:
 
     ```console
     node predict.js
     ```
 
- 1. Review the prediction response, which is returned as JSON:   
+ 1. Tekintse át az előrejelzési választ, amely JSON-ként lesz visszaadva:   
     
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Az olvashatóságra formázott JSON-Válasz: 
 
     ```JSON
     {
@@ -148,9 +148,9 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you are finished with this quickstart, delete the file from the file system. 
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)

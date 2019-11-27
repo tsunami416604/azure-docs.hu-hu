@@ -1,6 +1,6 @@
 ---
-title: Use Azure CLI for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use the Azure CLI to manage directories and file and directory access control lists (ACL) in storage accounts that have a hierarchical namespace.
+title: Az Azure CLI használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2 (előzetes verzió)
+description: Az Azure CLI használatával kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) a hierarchikus névtérrel rendelkező Storage-fiókokban.
 services: storage
 author: normesta
 ms.service: storage
@@ -9,72 +9,72 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 95bb43f1531b6234ccb90eb7d66404ccc66f60f3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485145"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534298"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Azure CLI for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Az Azure CLI használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2 (előzetes verzió)
 
-This article shows you how to use the [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) to create and manage directories, files, and permissions in storage accounts that have a hierarchical namespace. 
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fájlokat és engedélyeket a Storage-fiókokban, amelyek hierarchikus névteret használnak az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) használatával. 
 
 > [!IMPORTANT]
-> The `storage-preview` extension that is featured in this article is currently in public preview.
+> A cikkben Kiemelt `storage-preview` bővítmény jelenleg nyilvános előzetes verzióban érhető el.
 
-[Sample](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [Give feedback](https://github.com/Azure/azure-cli-extensions/issues)
+[Példa](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 Gen2-leképezésre](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
-> * Azure CLI version `2.0.67` or higher.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
+> * Az Azure CLI verziója `2.0.67` vagy újabb.
 
-## <a name="install-the-storage-cli-extension"></a>Install the storage CLI extension
+## <a name="install-the-storage-cli-extension"></a>A Storage CLI bővítmény telepítése
 
-1. Open the [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), or if you've [installed](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) the Azure CLI locally, open a command console application such as Windows PowerShell.
+1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
-2. Verify that the version of Azure CLI that have installed is `2.0.67` or higher by using the following command.
+2. A következő parancs használatával ellenőrizze, hogy a telepített Azure CLI-verzió `2.0.67` vagy magasabb-e.
 
    ```azurecli
     az --version
    ```
-   If your version of Azure CLI is lower than `2.0.67`, then install a later version. See [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Ha az Azure CLI verziója alacsonyabb, mint `2.0.67`, telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Install the `storage-preview` extension.
+3. Telepítse a `storage-preview` bővítményt.
 
    ```azurecli
    az extension add -n storage-preview
    ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
-1. If you're using Azure CLI locally, run the login command.
+1. Ha helyileg használja az Azure CLI-t, futtassa a login parancsot.
 
    ```azurecli
    az login
    ```
 
-   If the CLI can open your default browser, it will do so and load an Azure sign-in page.
+   Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
 
-   Otherwise, open a browser page at [https://aka.ms/devicelogin](https://aka.ms/devicelogin) and enter the authorization code displayed in your terminal. Then, sign in with your account credentials in the browser.
+   Ellenkező esetben nyisson meg egy böngészőt a [https://aka.ms/devicelogin](https://aka.ms/devicelogin) címen, és adja meg a terminálon megjelenő engedélyezési kódot. Ezután jelentkezzen be a fiókja hitelesítő adataival a böngészőben.
 
-   To learn more about different authentication methods, see Sign in with Azure CLI.
+   További információ a különböző hitelesítési módszerekről: bejelentkezés az Azure CLI-vel.
 
-2. If your identity is associated with more than one subscription, then set your active subscription to subscription of the storage account that will host your static website.
+2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést a statikus webhelyét futtató Storage-fiók előfizetésére.
 
    ```azurecli
    az account set --subscription <subscription-id>
    ```
 
-   Replace the `<subscription-id>` placeholder value with the ID of your subscription.
+   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A file system acts as a container for your files. You can create one by using the `az storage container create` command. 
+A fájlrendszer tárolóként működik a fájlok számára. A `az storage container create` parancs használatával létrehozhat egyet. 
 
-This example creates a file system named `my-file-system`.
+Ez a példa egy `my-file-system`nevű fájlrendszert hoz létre.
 
 ```azurecli
 az storage container create --name my-file-system
@@ -82,27 +82,27 @@ az storage container create --name my-file-system
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Create a directory reference by using the `az storage blob directory create` command. 
+Hozzon létre egy könyvtárat a `az storage blob directory create` parancs használatával. 
 
-This example adds a directory named `my-directory` to a file system named `my-file-system` that is located in an account named `mystorageaccount`.
+Ez a példa egy `my-directory` nevű könyvtárat vesz fel egy `my-file-system` nevű fájlrendszerbe, amely egy `mystorageaccount`nevű fiókban található.
 
 ```azurecli
 az storage blob directory create -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="show-directory-properties"></a>Show directory properties
+## <a name="show-directory-properties"></a>Könyvtár tulajdonságainak megjelenítése
 
-You can print the properties of a directory to the console by using the `az storage blob show` command.
+A könyvtár tulajdonságait a `az storage blob show` parancs használatával kinyomtathatja a konzolra.
 
 ```azurecli
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Rename or move a directory by using the `az storage blob directory move` command.
+Nevezze át vagy helyezze át a könyvtárat a `az storage blob directory move` parancs használatával.
 
-This example renames a directory from the name `my-directory` to the name `my-new-directory`.
+Ez a példa átnevez egy könyvtárat a név `my-directory` a név `my-new-directory`.
 
 ```azurecli
 az storage blob directory move -c my-file-system -d my-new-directory -s my-directory --account-name mystorageaccount
@@ -110,35 +110,35 @@ az storage blob directory move -c my-file-system -d my-new-directory -s my-direc
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Delete a directory by using the `az storage blob directory delete` command.
+Törölje a könyvtárat a `az storage blob directory delete` parancs használatával.
 
-This example deletes a directory named `my-directory`. 
+Ez a példa töröl egy `my-directory`nevű könyvtárat. 
 
 ```azurecli
 az storage blob directory delete -c my-file-system -d my-directory --account-name mystorageaccount 
 ```
 
-## <a name="check-if-a-directory-exists"></a>Check if a directory exists
+## <a name="check-if-a-directory-exists"></a>Annak ellenőrzése, hogy létezik-e könyvtár
 
-Determine if a specific directory exists in the file system by using the `az storage blob directory exist` command.
+Annak megállapítása, hogy egy adott könyvtár létezik-e a fájlrendszerben a `az storage blob directory exist` parancs használatával.
 
-This example reveals whether a directory named `my-directory` exists in the `my-file-system` file system. 
+Ez a példa azt mutatja, hogy egy `my-directory` nevű könyvtár létezik-e a `my-file-system` fájlrendszerben. 
 
 ```azurecli
 az storage blob directory exists -c my-file-system -d my-directory --account-name mystorageaccount 
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból
 
-Download a file from a directory by using the `az storage blob directory download` command.
+Töltse le a fájlt egy könyvtárból a `az storage blob directory download` parancs használatával.
 
-This example downloads a file named `upload.txt` from a directory named `my-directory`. 
+Ez a példa egy `my-directory`nevű könyvtárból tölt le egy `upload.txt` nevű fájlt. 
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/upload.txt" -d "C:\mylocalfolder\download.txt"
 ```
 
-This example downloads an entire directory.
+Ez a példa egy teljes könyvtárat tölt le.
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/" -d "C:\mylocalfolder" --recursive
@@ -146,43 +146,43 @@ az storage blob directory download -c my-file-system --account-name mystorageacc
 
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-List the contents of a directory by using the `az storage blob directory list` command.
+Egy könyvtár tartalmának listázása a `az storage blob directory list` parancs használatával.
 
-This example lists the contents of a directory named `my-directory` that is located in the `my-file-system` file system of a storage account named `mystorageaccount`. 
+Ez a példa egy `my-directory` nevű könyvtár tartalmát sorolja fel, amely az `mystorageaccount`nevű Storage-fiók `my-file-system` fájlrendszerében található. 
 
 ```azurecli
 az storage blob directory list -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
-Upload a file to a directory by using the `az storage blob directory upload` command.
+Töltse fel a fájlt egy könyvtárba a `az storage blob directory upload` parancs használatával.
 
-This example uploads a file named `upload.txt` to a directory named `my-directory`. 
+Ez a példa egy `upload.txt` nevű fájlt tölt fel egy `my-directory`nevű könyvtárba. 
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\upload.txt" -d my-directory
 ```
 
-This example uploads an entire directory.
+Ez a példa egy teljes könyvtárat tölt fel.
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\" -d my-directory --recursive 
 ```
 
-## <a name="show-file-properties"></a>Show file properties
+## <a name="show-file-properties"></a>Fájl tulajdonságainak megjelenítése
 
-You can print the properties of a file to the console by using the `az storage blob show` command.
+A `az storage blob show` parancs használatával kinyomtathatja egy fájl tulajdonságait a konzolra.
 
 ```azurecli
 az storage blob show -c my-file-system -b my-file.txt --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-file"></a>Rename or move a file
+## <a name="rename-or-move-a-file"></a>Fájl átnevezése vagy áthelyezése
 
-Rename or move a file by using the `az storage blob move` command.
+Átnevezheti vagy áthelyezhet egy fájlt a `az storage blob move` parancs használatával.
 
-This example renames a file from the name `my-file.txt` to the name `my-file-renamed.txt`.
+Ez a példa átnevez egy fájlt a név `my-file.txt` a név `my-file-renamed.txt`.
 
 ```azurecli
 az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --account-name mystorageaccount
@@ -190,117 +190,117 @@ az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --a
 
 ## <a name="delete-a-file"></a>Fájl törlése
 
-Delete a file by using the `az storage blob delete` command.
+Töröljön egy fájlt a `az storage blob delete` parancs használatával.
 
-This example deletes a file named `my-file.txt`
+Ez a példa töröl egy `my-file.txt` nevű fájlt.
 
 ```azurecli
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
 ```
 
-## <a name="manage-permissions"></a>Manage permissions
+## <a name="manage-permissions"></a>Engedélyek kezelése
 
-You can get, set, and update access permissions of directories and files.
+Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
 
-### <a name="get-directory-and-file-permissions"></a>Get directory and file permissions
+### <a name="get-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek beolvasása
 
-Get the ACL of a **directory** by using the `az storage blob directory access show` command.
+A `az storage blob directory access show` parancs használatával szerezze be a **CÍMTÁR** ACL-listáját.
 
-This example gets the ACL of a directory, and then prints the ACL to the console.
+Ez a példa egy könyvtár ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
 
 ```azurecli
 az storage blob directory access show -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-Get the access permissions of a **file** by using the `az storage blob access show` command. 
+A `az storage blob access show` parancs használatával szerezze be egy **fájl** hozzáférési engedélyeit. 
 
-This example gets the ACL of a file and then prints the ACL to the console.
+Ez a példa egy fájl ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
 
 ```azurecli
 az storage blob access show -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-The following image shows the output after getting the ACL of a directory.
+Az alábbi képen egy könyvtár ACL-listájának beolvasása után a kimenet látható.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
+![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
 
-In this example, the owning user has read, write, and execute permissions. The owning group has only read and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajtási engedélyekkel rendelkezik. A tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 
-### <a name="set-directory-and-file-permissions"></a>Set directory and file permissions
+### <a name="set-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek megadása
 
-Use the `az storage blob directory access set` command to set the ACL of a **directory**. 
+A `az storage blob directory access set` parancs használatával állítsa be a **CÍMTÁR**ACL-listáját. 
 
-This example sets the ACL on a directory for the owning user, owning group, or other users, and then prints the ACL to the console.
+Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók könyvtárának ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-Use the `az storage blob access set` command to set the acl of a **file**. 
+A `az storage blob access set` parancs használatával állítsa be egy **fájl**ACL-listáját. 
 
-This example sets the ACL on a file for the owning user, owning group, or other users, and then prints the ACL to the console.
+Ez a példa egy fájl ACL-fájlját állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
 
 ```azurecli
 az storage blob access set -a "user::rw-,group::rw-,other::-wx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-The following image shows the output after setting the ACL of a file.
+Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet látható.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
-In this example, the owning user and owning group have only read and write permissions. All other users have write and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó írási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 
-### <a name="update-directory-and-file-permissions"></a>Update directory and file permissions
+### <a name="update-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek frissítése
 
-Another way to set this permission is to use the `az storage blob directory access update` or `az storage blob access update` command. 
+Ezt az engedélyt úgy is beállíthatja, hogy az `az storage blob directory access update` vagy `az storage blob access update` parancsot használja. 
 
-Update the ACL of a directory or file by setting the `-permissions` parameter to the short form of an ACL.
+Frissítse a címtár vagy fájl ACL-listáját úgy, hogy a `-permissions` paramétert egy ACL rövid formájára állítja be.
 
-This example updates the ACL of a **directory**.
+Ez a példa egy **könyvtár**ACL-listáját frissíti.
 
 ```azurecli
 az storage blob directory access update --permissions "rwxrwxrwx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-This example updates the ACL of a **file**.
+Ez a példa egy **fájl**ACL-listáját frissíti.
 
 ```azurecli
 az storage blob access update --permissions "rwxrwxrwx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-You can also update the owning user and group of a directory or file by setting the `--owner` or `group` parameters to the entity ID or User Principal Name (UPN) of a user. 
+Egy könyvtár vagy fájl tulajdonos felhasználóját és csoportját úgy is frissítheti, ha a `--owner` vagy `group` paramétereket a felhasználó entitás-azonosító vagy egyszerű felhasználónév (UPN) értékére állítja. 
 
-This example changes the owner of a directory. 
+Ez a példa egy könyvtár tulajdonosát módosítja. 
 
 ```azurecli
 az storage blob directory access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-This example changes the owner of a file. 
+Ez a példa egy fájl tulajdonosát módosítja. 
 
 ```azurecli
 az storage blob access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-## <a name="manage-user-defined-metadata"></a>Manage user-defined metadata
+## <a name="manage-user-defined-metadata"></a>Felhasználó által definiált metaadatok kezelése
 
-You can add user-defined metadata to a file or directory by using the `az storage blob directory metadata update` command with one or more name-value pairs.
+Felhasználó által definiált metaadatokat adhat hozzá egy fájlhoz vagy könyvtárhoz az `az storage blob directory metadata update` parancs használatával egy vagy több név-érték párokkal.
 
-This example adds user-defined metadata for a directory named `my-directory` directory.
+Ez a példa egy `my-directory` Directory nevű könyvtár felhasználó által definiált metaadatait adja meg.
 
 ```azurecli
 az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-This example shows all user-defined metadata for directory named `my-directory`.
+Ebben a példában a `my-directory`nevű könyvtár összes felhasználó által definiált metaadata látható.
 
 ```azurecli
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Minta](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
 * [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Forráskód](https://github.com/Azure/azure-cli-extensions/tree/master/src)
 

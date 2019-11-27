@@ -56,7 +56,7 @@ Az adatbázis visszaállítása előtt vegye figyelembe a következőket:
 
 * Ha többet szeretne megtudni a SAP HANA által támogatott visszaállítási típusokról, tekintse meg a SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148)
 
-## <a name="restore-a-database"></a>Adatbázis visszaállítása
+## <a name="restore-a-database"></a>Adatbázis helyreállítása
 
 * Nyissa meg a tárolót, amelyben a visszaállítani kívánt SAP HANA adatbázis regisztrálva van
 

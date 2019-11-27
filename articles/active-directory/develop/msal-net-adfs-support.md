@@ -1,7 +1,7 @@
 ---
-title: AD FS support in Microsoft Authentication Library for .NET
+title: AD FS támogatás a .NET-hez készült Microsoft Authentication Library-ben
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for .NET (MSAL.NET).
+description: Ismerje meg a .NET-hez készült Microsoft Authentication Library (MSAL.NET) Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatását.
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -25,42 +25,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483059"
 ---
-# <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory Federation Services support in MSAL.NET
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to applications you are developing. Those applications can, then, authenticate users directly against AD FS. For more information, read [AD FS Scenarios for Developers](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
+# <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL.NET-ben
+A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés és engedélyezés hozzáadását a fejleszthető alkalmazásokhoz. Ezek az alkalmazások közvetlenül a AD FSon keresztül hitelesítik a felhasználókat. További információkért olvassa el [AD FS fejlesztői forgatókönyvek](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)című témakört.
 
-Microsoft Authentication Library for .NET (MSAL.NET) supports two scenarios for authenticating against AD FS:
+A .NET-hez készült Microsoft Authentication Library (MSAL.NET) két forgatókönyvet támogat a AD FS való hitelesítéshez:
 
-- MSAL.NET talks to Azure Active Directory, which itself is *federated* with AD FS.
-- MSAL.NET talks **directly** to an ADFS authority. This is only supported from AD FS 2019 and above. One of the scenarios this highlights is [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) support
+- A MSAL.NET Azure Active Directory, amely maga a AD FS *összevont* .
+- A MSAL.NET **közvetlenül** egy ADFS-szolgáltatóhoz beszélnek. Ez csak AD FS 2019-es és újabb verziók esetén támogatott. Az alábbi forgatókönyvek egyike [Azure stack](https://azure.microsoft.com/overview/azure-stack/) támogatás
 
 
-## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL connects to Azure AD, which is federated with AD FS
-MSAL.NET supports connecting to Azure AD, which signs in managed-users (users managed in Azure AD) or federated users (users managed by another identity provider such as AD FS). MSAL.NET does not know about the fact that users are federated. As far as it’s concerned, it talks to Azure AD.
+## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>A MSAL csatlakozik az Azure AD-hez, amely összevont AD FS
+A MSAL.NET támogatja az Azure AD-hez való csatlakozást, amely a felügyelt felhasználók (az Azure AD-ben felügyelt felhasználók) vagy összevont felhasználók (más identitás-szolgáltató, például AD FS) által felügyelt felhasználók számára jelentkezik. A MSAL.NET nem tudja, hogy a felhasználók összevontak-e. A szóban forgó módon az Azure AD-t beszéli.
 
-The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
+Az ebben az esetben [használt szolgáltató a](msal-client-application-configuration.md#authority) szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
 
-### <a name="acquiring-a-token-interactively"></a>Acquiring a token interactively
-When you call the `AcquireTokenInteractive` method, the user experience is typically:
+### <a name="acquiring-a-token-interactively"></a>Token interaktív beszerzése
+A `AcquireTokenInteractive` metódus meghívásakor a felhasználói élmény általában:
 
-1. The user enters their account ID.
-2. Azure AD displays briefly the message "Taking you to your organization's page".
-3. The user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. A felhasználó megadja a fiók AZONOSÍTÓját.
+2. Az Azure AD röviden megjeleníti a "saját szervezet lapja" üzenetet.
+3. A rendszer átirányítja a felhasználót az Identitáskezelő bejelentkezési oldalára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
 
-Supported AD FS versions in this federated scenario are AD FS v2, AD FS v3 (Windows Server 2012 R2), and AD FS v4 (AD FS 2016).
+Az összevont forgatókönyvben támogatott AD FS verziók a következők: AD FS v2, AD FS v3 (Windows Server 2012 R2) és AD FS v4 (AD FS 2016).
 
-### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiring a token using AcquireTokenByIntegratedAuthentication or AcquireTokenByUsernamePassword
-When acquiring a token using the `AcquireTokenByIntegratedAuthentication` or `AcquireTokenByUsernamePassword` methods, MSAL.NET gets the identity provider to contact based on the username.  MSAL.NET receives a [SAML 1.1 token](reference-saml-tokens.md) after contacting the identity provider.  MSAL.NET then provides the SAML token to Azure AD as a user assertion (similar to the [on-behalf-of flow](msal-authentication-flows.md#on-behalf-of)) to get back a JWT.
+### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Token beszerzése a AcquireTokenByIntegratedAuthentication vagy a AcquireTokenByUsernamePassword használatával
+Ha a `AcquireTokenByIntegratedAuthentication` vagy `AcquireTokenByUsernamePassword` metódusok használatával szerez be tokent, a MSAL.NET a Felhasználónév alapján megkeresi az identitás-szolgáltatót.  A MSAL.NET [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatóval való kapcsolatfelvétel után.  A MSAL.NET ezt követően az SAML-jogkivonatot az Azure AD-nek felhasználói kijelentésként (a [folyamathoz](msal-authentication-flows.md#on-behalf-of)hasonlóan) adja vissza egy JWT visszaszerzéséhez.
 
-## <a name="msal-connects-directly-to-ad-fs"></a>MSAL connects directly to AD FS
-MSAL.NET supports connecting to AD FS 2019, which is Open ID Connect compliant and understands PKCE and scopes. This support requires that a service pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) is applied to Windows Server. When connecting directly to AD FS, the authority you'll want to use to build your application is similar to `https://mysite.contoso.com/adfs/`.
+## <a name="msal-connects-directly-to-ad-fs"></a>A MSAL közvetlenül csatlakozik AD FS
+A MSAL.NET támogatja a AD FS 2019-hez való csatlakozást, amely a nyitott azonosító csatlakozásnak megfelelő, és ismeri a PKCE és a hatóköröket. Ehhez a támogatáshoz a [4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) -es szervizcsomagot kell alkalmazni a Windows Serverre. Közvetlenül a AD FShoz való csatlakozáskor az alkalmazás létrehozásához használni kívánt szolgáltató a `https://mysite.contoso.com/adfs/`hoz hasonló.
 
-Currently, there are no plans to support a direct connection to:
+Jelenleg nincsenek a közvetlen kapcsolódást támogató csomagok:
 
-- AD FS 16, as it doesn't support PKCE and still uses resources, not scope
-- AD FS v2, which is not OIDC-compliant.
+- AD FS 16, mivel nem támogatja a PKCE, és továbbra is erőforrásokat használ, nem pedig a hatókört
+- AD FS v2, amely nem OIDC-kompatibilis.
 
- If you need to support scenarios requiring a direct connection to AD FS 2016, use the latest version of [Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). When you have upgraded your on-premises system to AD FS 2019, you'll be able to use MSAL.NET.
+ Ha olyan forgatókönyveket kell támogatnia, amelyek közvetlen kapcsolódást igényelnek a AD FS 2016-hez, használja a [Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)legújabb verzióját. Ha a helyszíni rendszert a 2019-es AD FSra frissítette, akkor használhatja a MSAL.NET-t.
 
 ## <a name="next-steps"></a>Következő lépések
 
-For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)

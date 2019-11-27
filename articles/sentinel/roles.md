@@ -1,6 +1,6 @@
 ---
-title: Permissions in Azure Sentinel | Microsoft Docs
-description: This article explains how Azure Sentinel uses role-based access control to assign permissions to users and identifies the allowed actions for each role.
+title: Engedélyek az Azure Sentinelben | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használja az Azure Sentinel a szerepköralapú hozzáférés-vezérlést a felhasználók engedélyeinek kiosztásához és az egyes szerepkörökhöz engedélyezett műveletek azonosításához.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -22,61 +22,61 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464111"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Permissions in Azure Sentinel
+# <a name="permissions-in-azure-sentinel"></a>Engedélyek az Azure Sentinelben
 
-Azure Sentinel uses [Role-Based Access Control(RBAC)](../role-based-access-control/role-assignments-portal.md), to provide [built-in roles](../role-based-access-control/built-in-roles.md) that can be assigned to users, groups, and services in Azure.
+Az Azure Sentinel [szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)használatával biztosítja a [beépített szerepköröket](../role-based-access-control/built-in-roles.md) , amelyek az Azure-ban felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők.
 
-Using RBAC, you can use and create roles within your security operations team to grant appropriate access to Azure Sentinel. Based on the roles, you have fine-grained control over what users with access to Azure Sentinel can see. You can assign RBAC roles in the Azure Sentinel workspace directly, or to a subscription or resource group that the workspace belongs to.
+A RBAC használatával a biztonsági műveleti csapaton belül szerepköröket hozhat létre, és a megfelelő hozzáférést biztosíthatja az Azure Sentinelhez. A szerepkörök alapján részletesen szabályozhatja, hogy mely felhasználók férhetnek hozzá az Azure Sentinel szolgáltatáshoz. RBAC-szerepköröket közvetlenül az Azure Sentinel-munkaterületen, vagy egy olyan előfizetéshez vagy erőforráscsoporthoz rendelhet hozzá, amelyhez a munkaterület tartozik.
 
-There are three specific built-in Azure Sentinel roles.  
-**All Azure Sentinel built-in roles grant read access to the data in your Azure Sentinel workspace.**
-- **Azure Sentinel reader**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
-- **Azure Sentinel responder**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- **Azure Sentinel contributor**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+Három speciális beépített Azure Sentinel-szerepkör létezik.  
+**Az Azure Sentinel beépített szerepkörei olvasási hozzáférést biztosítanak az Azure Sentinel-munkaterület adataihoz.**
+- **Azure Sentinel-olvasó**: további információt a [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) című témakörben talál.
+- **Azure Sentinel-válaszadó**: További információ: [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- **Azure Sentinel közreműködő**: További információ: [beépített szerepkörök](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
-In addition to Azure Sentinel dedicated RBAC roles, there are Azure and Log Analytics RBAC roles that can grant a wider set of permissions that include access to your Azure Sentinel workspace and other resources:
+Az Azure Sentinel dedikált RBAC szerepkörein kívül olyan Azure-és Log Analytics-szerepkörök is rendelkezésre állnak, amelyek az Azure Sentinel-munkaterülethez és egyéb erőforrásokhoz való hozzáférést biztosító, szélesebb körű engedélyeket is RBAC:
 
-- **Azure roles:** [Owner](../role-based-access-control/built-in-roles.md#owner), [Contributor](../role-based-access-control/built-in-roles.md#contributor), and [Reader](../role-based-access-control/built-in-roles.md#reader). Azure roles grant access across all your Azure resources, including Log Analytics workspaces and Azure Sentinel resources.
+- **Azure-szerepkörök:** [tulajdonos](../role-based-access-control/built-in-roles.md#owner), [közreműködő](../role-based-access-control/built-in-roles.md#contributor)és [olvasó](../role-based-access-control/built-in-roles.md#reader). Az Azure-szerepkörök hozzáférést biztosítanak az összes Azure-erőforráshoz, beleértve a Log Analytics munkaterületeket és az Azure Sentinel-erőforrásokat.
 
--   **Log Analytics roles:** [Log Analytics contributor](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [Log Analytics reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics roles grant access across all your Log Analytics workspaces. 
-
-> [!NOTE]
-> Log Analytics roles also grant read access across all Azure resources but will only assign write permissions to Log Analytics resources.
-
-
-For example, a user who is assigned with **Azure Sentinel reader** and **Azure contributor** (not **Azure Sentinel contributor**) roles, will be able to edit data in Azure Sentinel, although they only have **Sentinel reader** permissions. Therefore, if you want to grant permissions to a only in Azure Sentinel, you should carefully remove this user’s prior permissions making sure you do not break any needed permission role for another resource.
+-   **Log Analytics szerepkörök:** [Log Analytics közreműködő](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [log Analytics olvasó](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics szerepkörök hozzáférést biztosítanak az összes Log Analytics-munkaterülethez. 
 
 > [!NOTE]
->- Azure Sentinel uses playbooks for automated threat response. Playbooks leverage Azure Logic Apps and are a separate Azure resource. You might want to assign specific members of your security operations team with the option to use Logic Apps for security orchestration, automation, and response (SOAR) operations. You can use the [Logic App contributor](../role-based-access-control/built-in-roles.md#logic-app-contributor) role or the [Logic App operator](../role-based-access-control/built-in-roles.md#logic-app-operator) role to assign explicit permission for using playbooks.
->- To add data connectors, the necessary roles for each connector are per connector type and are listed in the relevant connector page. In addition, in order to connect any data source, you must have write permission on the Azure Sentinel workspace.
+> Log Analytics szerepkörök olvasási hozzáférést is biztosítanak az összes Azure-erőforráshoz, de csak írási engedélyeket rendelnek Log Analytics erőforrásokhoz.
+
+
+Például az **Azure Sentinel Reader** és az **Azure közreműködő** (nem az **Azure Sentinel közreműködői**) szerepkörökhöz hozzárendelt felhasználó szerkesztheti az Azure Sentinel-ben tárolt adatait, de csak a **Sentinel-olvasó** engedélyei vannak. Ezért, ha csak az Azure Sentinelben szeretne engedélyeket megadni, gondosan távolítsa el a felhasználó korábbi engedélyeit, így biztosítva, hogy ne szüntesse meg a szükséges jogosultsági szerepkört egy másik erőforráshoz.
+
+> [!NOTE]
+>- Az Azure Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek kihasználják Azure Logic Apps és egy különálló Azure-erőforrást. Előfordulhat, hogy a Security Operations csapatának meghatározott tagjait szeretné hozzárendelni a biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletek Logic Apps használatához. A [logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkörét vagy a [Logic app operátori](../role-based-access-control/built-in-roles.md#logic-app-operator) szerepkört használva explicit engedélyeket rendelhet a forgatókönyvek használatához.
+>- Adatösszekötők hozzáadásához az egyes összekötők számára szükséges szerepköröket összekötő típusaként kell megadni, és a megfelelő összekötő lapon vannak felsorolva. Emellett az adatforrás összekapcsolásához írási engedéllyel kell rendelkeznie az Azure Sentinel munkaterületen.
 
 
 
-## <a name="roles-and-allowed-actions"></a>Roles and allowed actions
+## <a name="roles-and-allowed-actions"></a>Szerepkörök és engedélyezett műveletek
 
-The following table displays roles and allowed actions in Azure Sentinel. An X indicates that the action is allowed for that role.
+Az alábbi táblázat a szerepköröket és az engedélyezett műveleteket mutatja be az Azure Sentinelben. Az X azt jelzi, hogy a művelet engedélyezett a szerepkörhöz.
 
-| Szerepkör | Create and run playbooks| Create and edit dashboards, analytic rules, and other Azure Sentinel resources | Manage incidents (dismiss, assign, etc.) | View data, incidents, dashboards and other Azure Sentinel resources |
+| Szerepkör | Forgatókönyvek létrehozása és futtatása| Irányítópultok, analitikai szabályok és egyéb Azure Sentinel-erőforrások létrehozása és szerkesztése | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, irányítópultok és egyéb Azure Sentinel-erőforrások megtekintése |
 |--- |---|---|---|---|
-| Azure Sentinel reader | -- | -- | -- | X |
-| Azure Sentinel responder|--|--| X | X |
-| Azure Sentinel contributor | -- | X | X | X |
-| Azure Sentinel contributor + Logic App contributor | X | X | X | X |
+| Azure Sentinel-olvasó | -- | -- | -- | X |
+| Azure Sentinel-válaszadó|--|--| X | X |
+| Azure Sentinel közreműködő | -- | X | X | X |
+| Azure Sentinel közreműködő + Logic app közreműködő | X | X | X | X |
 
 
 > [!NOTE]
-> - Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. For example, assign the Azure Sentinel contributor role only to users who need to create rules or dashboards.
-> - We recommend that you set permissions for Azure Sentinel in the resource group scope, so the user can have access to all Azure Sentinel workspaces in the same resource group.
+> - Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Például rendelje hozzá az Azure Sentinel közreműködő szerepkört csak azokhoz a felhasználókhoz, akiknek szabályokat vagy irányítópultokat kell létrehozniuk.
+> - Azt javasoljuk, hogy állítsa be az Azure Sentinel engedélyeit az erőforráscsoport hatókörében, így a felhasználó hozzáférhet az ugyanabban az erőforráscsoporthoz tartozó összes Azure Sentinel-munkaterülethez.
 >
-## <a name="building-custom-rbac-roles"></a>Building custom RBAC roles
+## <a name="building-custom-rbac-roles"></a>Egyéni RBAC-szerepkörök kiépítése
 
-In addition to, or instead of, using built-in RBAC roles, you can create custom RBAC roles for Azure Sentinel. Custom RBAC roles for Azure Sentinel are created the same way you create other [custom Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) roles, based on specific permissions to Azure Sentinel resources.
+A beépített RBAC-szerepkörök használata mellett vagy ahelyett is létrehozhat egyéni RBAC-szerepköröket az Azure Sentinel számára. Az Azure Sentinel egyéni RBAC szerepkörei ugyanúgy jönnek létre, mint a többi [Egyéni Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -szerepkört az Azure Sentinel-erőforrásokra adott engedélyek alapján.
 
-## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Advanced RBAC on the data you store in Azure Sentinel
+## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Speciális RBAC az Azure Sentinelben tárolt adattárakban
   
-You can use the Log Analytics advanced role-based access control across the data in your Azure Sentinel workspace. This includes both role-based access control per data type and resource-centric role-based access control. For more information on Log Analytics roles, see [Manage log data and workspaces in Azure Monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ez magában foglalja a szerepköralapú hozzáférés-vezérlés adattípust és az erőforrás-központú szerepköralapú hozzáférés-vezérlést is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Következő lépések
-In this document, you learned how to work with roles for Azure Sentinel users and what each role enables users to do.
+Ebből a dokumentumból megtudhatta, hogyan dolgozhat az Azure Sentinel-felhasználók szerepköreivel, és hogy az egyes szerepkörök hogyan teszik lehetővé a felhasználók számára.
 
-* [Azure Sentinel Blog](https://aka.ms/azuresentinelblog). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Sentinel blog](https://aka.ms/azuresentinelblog). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

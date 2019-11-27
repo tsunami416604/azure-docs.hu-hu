@@ -28,7 +28,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+## <a name="americas"></a>Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  

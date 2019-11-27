@@ -1,7 +1,7 @@
 ---
-title: Animated character detection with Video Indexer
+title: Animált karakterek észlelése Video Indexer
 titleSuffix: Azure Media Services
-description: This topic demonstrates how to use animated character detection with Video Indexer.
+description: Ez a témakör bemutatja, hogyan használható az animált karakterfelismerés a Video Indexer használatával.
 services: media-services
 author: Juliako
 manager: femila
@@ -17,165 +17,165 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327484"
 ---
-# <a name="animated-character-detection-preview"></a>Animated character detection (preview)
+# <a name="animated-character-detection-preview"></a>Animált karakterfelismerés (előzetes verzió)
 
-Azure Media Services Video Indexer supports detection, grouping, and recognition of characters in animated content via integration with [Cognitive Services custom vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). This functionality is available both through the portal and through the API.
+A Azure Media Services Video Indexer támogatja az animált tartalomban lévő karakterek észlelését, csoportosítását és felismerését [Cognitive Services egyéni jövőképtel](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)való integráció révén. Ez a funkció a Portálon és az API-n keresztül is elérhető.
 
-After uploading an animated video with a specific animation model, Video Indexer extracts keyframes, detects animated characters in these frames, groups similar character, and chooses the best sample. Then, it sends the grouped characters to Custom Vision that identifies characters based on the models it was trained on. 
+Egy adott animációs modellel rendelkező animált videó feltöltése után Video Indexer Kinyeri a képkockákat, észleli az animált karaktereket ezekben a keretekben, a hasonló karaktereket csoportosítja, és kiválasztja a legjobb mintát. Ezt követően elküldi a csoportosított karaktereket a Custom Visionnak, amelyek a betanított modellek alapján azonosítják a karaktereket. 
 
-Before you start training your model, the characters are detected namelessly. As you add names and train the model the Video Indexer will recognize the characters and name them accordingly.
+A modell képzésének megkezdése előtt a rendszer a karaktereket észleli namelessly. A nevek hozzáadása és a modell betanítása során a Video Indexer felismeri a karaktereket, és ennek megfelelően nevezi el őket.
 
-## <a name="flow-diagram"></a>Flow diagram
+## <a name="flow-diagram"></a>Folyamatábra
 
-The following diagram demonstrates the flow of the animated character detection process.
+Az alábbi ábra az animált karakterfelismerési folyamat folyamatát mutatja be.
 
-![Flow diagram](./media/animated-characters-recognition/flow.png)
+![Folyamatábra](./media/animated-characters-recognition/flow.png)
 
 ## <a name="accounts"></a>Fiókok
 
-Depending on a type of your Video Indexer account, different feature sets are available. For information on how to connect your account to Azure, see [Create a Video Indexer account connected to Azure](connect-to-azure.md).
+A Video Indexer-fiók típusától függően különböző szolgáltatáskészlet-készletek érhetők el. A fiók Azure-hoz való csatlakoztatásával kapcsolatos információkért lásd: az [Azure-hoz csatlakoztatott video Indexer-fiók létrehozása](connect-to-azure.md).
 
-* Trial account: Video Indexer uses an internal Custom Vision account to create model and connect it to your Video Indexer account. 
-* Paid account: you connect your Custom Vision account to your Video Indexer account (if you don’t already have one, you need to create an account first).
+* Próbaverziós fiók: Video Indexer belső Custom Vision fiókot használ a modell létrehozásához és a Video Indexer-fiókhoz való kapcsolódáshoz. 
+* Fizetős fiók: a Custom Vision fiókját a Video Indexer-fiókjához kapcsolja (ha még nem rendelkezik ilyennel, először létre kell hoznia egy fiókot).
 
-### <a name="trial-vs-paid"></a>Trial vs. paid
+### <a name="trial-vs-paid"></a>Próbaverzió és fizetett
 
 |Funkció|Próbaverzió|Díjköteles|
 |---|---|---|
-|Custom Vision account|Managed behind the scenes by Video Indexer. |Your Custom Vision account is connected to Video Indexer.|
-|Number of animation models|One|Up to 100 models per account (Custom Vision limitation).|
-|Training the model|Video Indexer trains the model for new characters additional examples of existing characters.|The account owner trains the model when they are ready to make changes.|
-|Advanced options in Custom Vision|No access to the Custom Vision portal.|You can adjust the models yourself in the Custom Vision portal.|
+|Custom Vision fiók|A színfalak mögött a Video Indexer által felügyelt. |A Custom Vision-fiókja Video Indexerhoz van csatlakoztatva.|
+|Animációs modellek száma|Egy|Akár 100 modell/fiók (Custom Vision korlátozás).|
+|A modell betanítása|A Video Indexer a modellt a meglévő karakterek további példáit képező új karakterekre.|A fiók tulajdonosa betanítja a modellt, amikor készen állnak a módosítások elvégzésére.|
+|Speciális beállítások a Custom Vision|Nincs hozzáférése a Custom Vision portálhoz.|A modelleket saját kezűleg is módosíthatja a Custom Vision-portálon.|
 
-## <a name="use-the-animated-character-detection-with-portal"></a>Use the animated character detection with portal 
+## <a name="use-the-animated-character-detection-with-portal"></a>Az animált karakterek észlelése a portál használatával 
 
-This section describes the steps you need to take to start using the animated character detection model. 
+Ez a szakasz azokat a lépéseket ismerteti, amelyeket az animált karakterfelismerési modell használatának megkezdéséhez kell végrehajtania. 
 
-Since in  the trial accounts the Custom Vision integration is managed by Video Indexer, you can start creating and using the animated characters model and skip the following section ("Connect your Custom Vision account").
+Mivel a próbaverziós fiókokban a Custom Vision-integrációt Video Indexer felügyeli, megkezdheti az animált karakterek létrehozását és használatát, és kihagyhatja a következő szakaszt ("a Custom Vision-fiók összekapcsolásával").
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Connect your Custom Vision account (paid accounts only)
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Custom Vision-fiók összekötése (csak fizetett fiókok esetében)
 
-If you own a Video Indexer paid account, you need to connect a Custom Vision account first. If you don't have a Custom Vision account already, please create one. For more information, see [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
 
 > [!NOTE]
-> Both accounts need to be in the same region. The Custom Vision integration is currently not supported in the Japan region.
+> Mindkét fióknak ugyanabban a régióban kell lennie. A Custom Vision integráció jelenleg nem támogatott a japán régióban.
 
-#### <a name="connect-a-custom-vision-account-with-api"></a>Connect a Custom Vision account with API 
+#### <a name="connect-a-custom-vision-account-with-api"></a>Custom Vision-fiók összekötése API-val 
 
-Follow these steps to connect you Custom Vision account to Video Indexer, or to change the Custom Vision account that is currently connected to Video Indexer:
+Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video Indexerhoz, vagy módosíthatja a jelenleg a Video Indexerhoz csatlakozó Custom Vision fiókot:
 
-1. Browse to [www.customvision.ai](https://www.customvision.ai) and login.
-1. Copy the following keys: 
+1. Tallózással keresse meg a [www.customvision.ai](https://www.customvision.ai) , és jelentkezzen be.
+1. Másolja a következő kulcsokat: 
 
-    * Training key (for the training resource)
-    * Prediction key (for the prediction resource)
+    * Betanítási kulcs (a betanítási erőforráshoz)
+    * Előrejelzési kulcs (az előrejelzési erőforráshoz)
     * Végpont 
-    * Prediction resource ID
+    * Előrejelzési erőforrás azonosítója
     
     > [!NOTE]
-    > To provide all the keys you need to have two separate resources in Custom Vision, one for training and one for prediction.
-1. Browse and sign in to the [Video Indexer](https://vi.microsoft.com/).
-1. Click on the question mark on the top-right corner of the page and choose **API Reference**.
-1. Make sure you are subscribed to API Management by clicking **Products** tab. If you have an API connected you can continue to the next step, otherwise, subscribe. 
-1. On the developer portal, click the **Complete API Reference** and browse to **Operations**.  
-1. Select **Connect Custom Vision Account (PREVIEW)** and click **Try it**.
-1. Fill in the required fields as well as the access token and click **Send**. 
+    > Az összes kulcs megadásához két különálló erőforrásra van szükség a Custom Visionban, egyet a betanításhoz, egyet pedig az előrejelzéshez.
+1. Tallózással keresse meg és jelentkezzen be a [video Indexerba](https://vi.microsoft.com/).
+1. Kattintson a lap jobb felső sarkában látható kérdőjelre, és válassza az API- **hivatkozás**lehetőséget.
+1. Győződjön meg arról, hogy előfizetett API Management a **Products (termékek** ) lapra kattintva. Ha van egy API-val csatlakoztatva, folytassa a következő lépéssel, ellenkező esetben: előfizetés. 
+1. A fejlesztői portálon kattintson a **teljes API-referenciára** , és keresse meg a **műveleteket**.  
+1. Válassza a **kapcsolat Custom Vision fiók (előzetes verzió)** lehetőséget, majd kattintson a **kipróbálás**gombra.
+1. Töltse ki a kötelező mezőket, valamint a hozzáférési jogkivonatot, és kattintson a **Küldés**gombra. 
 
-    For more information about how to get the Video Indexer access token go to the [developer portal](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?), and see the [relevant documentation](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
-1. Once the call return 200 OK response, your account is connected.
-1. To verify your connection by browse to the [Video Indexer](https://vi.microsoft.com/)) portal:
-1. Click on the **Content model customization** button in the top-right corner.
-1. Go to the **Animated characters** tab.
-1. Once you click on Manage models in Custom Vision”**, you will be transferred to the Custom Vision account you just connected.
+    A Video Indexer hozzáférési token beszerzésével kapcsolatos további információkért látogasson el a [fejlesztői portálra](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?), és tekintse meg a [kapcsolódó dokumentációt](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+1. Ha a hívás visszaadja a 200 OK választ, a fiókja csatlakoztatva van.
+1. A kapcsolódás ellenőrzéséhez keresse fel a [video Indexer](https://vi.microsoft.com/)) portált:
+1. Kattintson a **tartalmi modell testreszabása** gombra a jobb felső sarokban.
+1. Nyissa meg az **animált karakterek** lapot.
+1. Ha a Custom Vision "* * modellben a modellek kezelése lehetőségre kattint, a rendszer átviszi az imént csatlakoztatott Custom Vision-fiókba.
 
 > [!NOTE]
-> Currently, only models that were created via Video Indexer are supported. Models that are created through Custom Vision will not be available. In addition, the best practice is to edit models that were created through Video Indexer only through the Video Indexer platform, since changes made through Custom Vision may cause unintended results.
+> Jelenleg csak a Video Indexer használatával létrehozott modellek támogatottak. A Custom Vision használatával létrehozott modellek nem lesznek elérhetők. Emellett az ajánlott eljárás az, ha a Video Indexeron keresztül létrehozott modelleket csak az Video Indexer platformon keresztül hozta létre, mert a Custom Visionon végrehajtott módosítások nem szándékolt eredményeket eredményezhetnek.
 
-### <a name="create-an-animated-characters-model"></a>Create an animated characters model
+### <a name="create-an-animated-characters-model"></a>Animált karakteres modell létrehozása
 
 1. Nyissa meg a [Video Indexer](https://vi.microsoft.com/) webhelyét, és jelentkezzen be.
-1. Click on the content model customization button on the top-right corner of the page.
+1. Kattintson a tartalmi modell testreszabása gombra a lap jobb felső sarkában.
 
-    ![Content model customization](./media/animated-characters-recognition/content-model-customization.png)
-1. Go to the **Animated characters** tab in the model customization section.
-1. Click on **Add model**.
-1. Name you model and click enter to save the name.
+    ![Tartalmi modell testreszabása](./media/animated-characters-recognition/content-model-customization.png)
+1. Nyissa meg a modell testreszabása szakasz **animált karakterek** lapját.
+1. Kattintson a **modell hozzáadása**lehetőségre.
+1. Adja meg a modell nevét, majd kattintson az ENTER gombra a név mentéséhez.
 
 > [!NOTE]
-> The best practice is to have one custom vision model for each animated series. 
+> Az ajánlott eljárás az, hogy az egyes animált sorozatokhoz egyetlen egyéni víziós modellt lehessen létrehozni. 
 
-### <a name="index-a-video-with-an-animated-model"></a>Index a video with an animated model
+### <a name="index-a-video-with-an-animated-model"></a>Videó indexelése animált modellel
 
-1. Click on the **Upload** button from the top menu.
-1. Choose a video to upload (from a file or a URL).
-1. Click on **Advanced options**.
-1. Under **People / Animated characters** choose **Animation models**.
-1. If you have one model it will be chosen automatically, and if you have multiple models you can choose the relevant one out of the dropdown menu.
-1. Click on upload.
-1. Once the video is indexed, you will see the detected characters in the **Animated characters** section in the **Insights** pane.
+1. A felső menüben kattintson a **feltöltés** gombra.
+1. Válassza ki a feltölteni kívánt videót (fájlból vagy URL-címről).
+1. Kattintson a **Speciális beállítások**elemre.
+1. Az **emberek/animált karakterek** területen válassza az **animációs modellek**lehetőséget.
+1. Ha az egyik modellt választja, a rendszer automatikusan kiválasztja, és ha több modellel rendelkezik, kiválaszthatja a legördülő menü megfelelő részét.
+1. Kattintson a feltöltés gombra.
+1. A videó indexelése után a **rendszer az** észlelt karaktereket az észlelések ablaktábla **animált karakterek** szakaszában tekinti meg.
 
 > [!NOTE] 
-> Before tagging and training the model, all animated characters will be named “Unknown #X”. After you train the model they will also be recognized.
+> A modell címkézése és betanítása előtt az összes animált karakter neve "Unknown #X" lesz. A modell betanítása után a rendszer felismeri a modellt is.
 
-### <a name="customize-the-animated-characters-models"></a>Customize the animated characters models
+### <a name="customize-the-animated-characters-models"></a>Az animált karakterek modelljeinek testreszabása
 
-1. Tag and train the model.
+1. A modell címkézése és betanítása.
 
-    1. Tag the detected character by editing its name. Once a character is trained into the model, it will be recognized it the next video indexed with that model. 
-    1. To tag an animated character in your video, go to the **Insights** tab and click on the **Edit** button on the top-right corner of the window.
-    1. In the **Insights** pane, click on any of the detected animated characters and change their names from "Unknown #X" (or the name that was previously assigned to the character).
-    1. After typing in the new name, click on the check icon next to the new name. This saves the new name in the model in Video Indexer.
-    1. After you finished editing all names you want, you need to train the model.
+    1. A név szerkesztésével címkézze fel az észlelt karaktert. Ha egy karaktert betanítanak a modellbe, azt a rendszer a következő, a modellel indexelt videót fogja felismerni. 
+    1. Ha egy animált karaktert szeretne címkézni a videóban, lépjen az **elemzések lapra,** és kattintson az ablak jobb felső sarkában található **Szerkesztés** gombra.
+    1. Az **észlelések ablaktáblán** kattintson bármelyik észlelt animált karakterre, és módosítsa a nevüket "ismeretlen #X" (vagy a karakterhez korábban hozzárendelt név).
+    1. Az új név beírása után kattintson az új név melletti pipa ikonra. Ezzel az új nevet a modellben menti Video Indexerban.
+    1. Miután befejezte az összes kívánt név szerkesztését, be kell tanítania a modellt.
 
-        Open the customization page and click on the **Animated characters** tab and then click on the **Train** button to train your model.
+        Nyissa meg a Testreszabás lapot, és kattintson az **animált karakterek** fülre, majd kattintson a **vonat** gombra a modell betanításához.
          
-        If you have a paid account, you can click the **Manage models in Customer Vision** link (as shown below). You will then be forwarded to the model's page in **Custom Vision**.
+        Ha díjköteles fiókkal rendelkezik, a **modellek kezelése a Customer látási** kapcsolaton lehetőségre kattintva (az alább látható módon). Ezután a modell oldalára kerül a **Custom Vision**.
  
-        ![Content model customization](./media/animated-characters-recognition/content-model-customization-tab.png)
+        ![Tartalmi modell testreszabása](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-     1. Once trained, any video that will be indexed or reindexed with that model will recognize the trained characters. 
-    Paid accounts that have access to their Custom Vision account can see the models and tagged images there. Learn more about [improving your classifier in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+     1. A betanítást követően minden, a modellel indexelt vagy újraindexelt videó felismeri majd a betanított karaktereket. 
+    A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
-1. Delete an animated character.
+1. Animált karakter törlése.
 
-    1. To delete an animated character in your video insights, go to the **Insights** tab and click on the **Edit** button on the top-right corner of the window.
-    1. Choose the animated character and then click on the **Delete** button under their name.
+    1. Ha törölni szeretne egy animált karaktert a videójában, lépjen az elemzések lapra **,** és kattintson az ablak jobb felső sarkában található **Szerkesztés** gombra.
+    1. Válassza ki az animált karaktert, majd kattintson a név alatt található **Törlés** gombra.
 
     > [!NOTE]
-    > This will delete the insight from this video but will not affect the model.
+    > Ezzel törli az elemzést ebből a videóból, de a modellre nem lesz hatással.
 
-1. Delete a model.
+1. Modell törlése.
 
-    1. Click on the **Content model customization** button on the top menu and go to the **Animated characters** tab.
-    1. Click on the ellipsis icon to the right of the model you wish to delete and then on the delete button.
+    1. A felső menüben kattintson a **tartalmi modell testreszabása** gombra, és válassza az **animált karakterek** lapot.
+    1. Kattintson a törölni kívánt modell jobb oldalán a három pontot ábrázoló ikonra, majd a Törlés gombra.
     
-    * Paid account: the model will be disconnected from Video Indexer and you will not be able to reconnect it.
-    * Trial account: the model will be deleted from Customs vision as well. 
+    * Fizetős fiók: a modell leválasztása Video Indexer, és nem fogja tudni újracsatlakozni.
+    * Próbaverziós fiók: a modellt a rendszer a vámügyi jövőképből is törli. 
     
         > [!NOTE]
-        > In a trial account, you only have one model you can use. After you delete it, you can’t train other models.
+        > Egy próbaverziós fiókban csak egy modell használható. A törlés után más modelleket nem lehet betanítani.
 
-## <a name="use-the-animated-character-detection-with-api"></a>Use the animated character detection with API 
+## <a name="use-the-animated-character-detection-with-api"></a>Az animált karakterfelismerés használata API-val 
 
-1. Connect a Custom Vision account.
+1. Custom Vision-fiók összekötése.
 
-    If you own a Video Indexer paid account, you need to connect a Custom Vision account first. <br/>
-    If you don’t have a Custom Vision account already, please create one. For more information, see [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. <br/>
+    Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
 
-    [Connect your Custom Vision account using API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
-1. Create an animated characters model.
+    [Custom Vision-fiókjának összekapcsolásához használja az API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)-t.
+1. Hozzon létre egy animált karakterekből álló modellt.
 
-    Use the [create animation model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API.
-1. Index or re-index a video.
+    Használja az [animációs modell létrehozása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API-t.
+1. Egy videó indexelése vagy újraindexelése.
 
-    Use the [re-indexing](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API. 
-1. Customize the animated characters models.
+    Használja az [újbóli indexelés](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API-t. 
+1. Testreszabhatja az animált karakterek modelljeit.
 
-    Use the [train animation model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API.
+    Használja a [Train Animation Model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API-t.
 
-### <a name="view-the-output"></a>View the output
+### <a name="view-the-output"></a>A kimenet megtekintése
 
-See the animated characters in the generated JSON file.
+Tekintse meg az animált karaktereket a generált JSON-fájlban.
 
 ```json
 "animatedCharacters": [
@@ -208,9 +208,9 @@ See the animated characters in the generated JSON file.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Currently, the "animation identification" capability is not supported in East-Asia region.
-* Characters that appear to be small or far in the video may not be identified properly if the video's quality is poor.
-* The recommendation is to use a model per set of animated characters (for example per an animated series).
+* Jelenleg az "animációs azonosítás" képesség nem támogatott a kelet-ázsiai régióban.
+* A videóban kis vagy nagy méretű karakterek nem azonosíthatók megfelelően, ha a videó minősége gyenge.
+* Javasoljuk, hogy az animált karakterek (például egy animált sorozat) esetében használjon modellt.
 
 ## <a name="next-steps"></a>Következő lépések
 

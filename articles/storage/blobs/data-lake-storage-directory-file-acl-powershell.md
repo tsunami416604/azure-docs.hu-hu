@@ -1,6 +1,6 @@
 ---
-title: Use PowerShell for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use PowerShell cmdlets to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: A PowerShell használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2 (előzetes verzió)
+description: PowerShell-parancsmagok használatával kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér.
 services: storage
 author: normesta
 ms.service: storage
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 91f28c1c005c7cd06eed2b97435a4e02502aadb7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 71f90fb361e8fc45ee2ce8672990965fca801a49
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484950"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533930"
 ---
-# <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use PowerShell for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>A PowerShell használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2 (előzetes verzió)
 
-This article shows you how to use PowerShell to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Ez a cikk bemutatja, hogyan lehet a PowerShell használatával könyvtárakat, fájlokat és engedélyeket létrehozni és kezelni olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
 > [!IMPORTANT]
-> The PowerShell module that is featured in this article is currently in public preview.
+> A cikkben Kiemelt PowerShell-modul jelenleg nyilvános előzetes verzióban érhető el.
 
-[Gen1 to Gen2 mapping](#gen1-gen2-map) | [Give feedback](https://github.com/Azure/azure-powershell/issues)
+[Gen1 a Gen2-megfeleltetéshez](#gen1-gen2-map) | [visszajelzés küldése](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
-> * .NET Framework is 4.7.2 or greater installed. See [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
-> * PowerShell version `5.1` or higher.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
+> * A .NET-keretrendszer 4.7.2 vagy újabb. Lásd: [.NET-keretrendszer letöltése](https://dotnet.microsoft.com/download/dotnet-framework).
+> * PowerShell-verzió `5.1` vagy újabb.
 
-## <a name="install-powershell-modules"></a>Install PowerShell modules
+## <a name="install-powershell-modules"></a>PowerShell-modulok telepítése
 
-1. Verify that the version of PowerShell that have installed is `5.1` or higher by using the following command. 
+1. A következő parancs használatával ellenőrizze, hogy a telepített PowerShell-verzió `5.1` vagy magasabb-e. 
 
     ```powershell
     echo $PSVersionTable.PSVersion.ToString() 
     ```
     
-    To upgrade your version of PowerShell, see [Upgrading existing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+    A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
-2. Install the latest **PowershellGet** module. Then, close and reopen the Powershell console.
+2. Telepítse a legújabb **PowershellGet** -modult. Ezután lépjen be és nyissa meg újra a PowerShell-konzolt.
 
     ```powershell
     install-Module PowerShellGet –Repository PSGallery –Force 
     ```
 
-3.  Install **Az.Storage** preview module.
+3.  Telepítse **az az. Storage** Preview modult.
 
     ```powershell
     install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.9.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
 
-    For more information about how to install PowerShell modules, see [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+    A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
-1. Open a Windows PowerShell command window.
+1. Nyisson meg egy Windows PowerShell-parancssori ablakot.
 
 2. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
@@ -67,35 +67,35 @@ This article shows you how to use PowerShell to create and manage directories, f
    Connect-AzAccount
    ```
 
-3. If your identity is associated with more than one subscription, then set your active subscription to subscription of the storage account that you want create and manage directories in.
+3. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetését azon Storage-fiók előfizetésére, amelyet a címtárban szeretne létrehozni és kezelni.
 
    ```powershell
    Select-AzSubscription -SubscriptionId <subscription-id>
    ```
 
-   Replace the `<subscription-id>` placeholder value with the ID of your subscription.
+   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
 
-4. Get the storage account.
+4. Szerezze be a Storage-fiókot.
 
    ```powershell
    $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
    ```
 
-   * Replace the `<resource-group-name>` placeholder value with the name of your resource group.
+   * Cserélje le a `<resource-group-name>` helyőrző értékét az erőforráscsoport nevére.
 
-   * Replace the `<storage-account-name>` placeholder value with the name of your storage account.
+   * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
-5. Get the storage account context.
+5. A Storage-fiók környezetének beolvasása.
 
    ```powershell
    $ctx = $storageAccount.Context
    ```
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A file system acts as a container for your files. You can create one by using the `New-AzDatalakeGen2FileSystem` cmdlet. 
+A fájlrendszer tárolóként működik a fájlok számára. Létrehozhat egyet a `New-AzDatalakeGen2FileSystem` parancsmag használatával. 
 
-This example creates a file system named `my-file-system`.
+Ez a példa egy `my-file-system`nevű fájlrendszert hoz létre.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -104,9 +104,9 @@ New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Create a directory reference by using the `New-AzDataLakeGen2Item` cmdlet. 
+Hozzon létre egy könyvtárat a `New-AzDataLakeGen2Item` parancsmag használatával. 
 
-This example adds a directory named `my-directory` to a file system.
+Ez a példa egy `my-directory` nevű könyvtárat helyez el egy fájlrendszerhez.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -114,15 +114,15 @@ $dirname = "my-directory/"
 New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory
 ```
 
-This example adds the same directory, but also sets the permissions, umask, property values, and metadata values. 
+Ez a példa hozzáadja ugyanazt a könyvtárat, de beállítja az engedélyeket, a umask, a tulajdonság értékeit és a metaadatok értékét is. 
 
 ```powershell
 $dir = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 ```
 
-## <a name="show-directory-properties"></a>Show directory properties
+## <a name="show-directory-properties"></a>Könyvtár tulajdonságainak megjelenítése
 
-This example gets a directory by using the `Get-AzDataLakeGen2Item` cmdlet, and then prints property values to the console.
+Ez a példa egy könyvtárat olvas be a `Get-AzDataLakeGen2Item` parancsmag használatával, majd kinyomtatja a tulajdonságokat a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -136,11 +136,11 @@ $dir.Directory.Metadata
 $dir.Directory.Properties
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Rename or move a directory by using the `Move-AzDataLakeGen2Item` cmdlet.
+Nevezze át vagy helyezze át a könyvtárat a `Move-AzDataLakeGen2Item` parancsmag használatával.
 
-This example renames a directory from the name `my-directory` to the name `my-new-directory`.
+Ez a példa átnevez egy könyvtárat a név `my-directory` a név `my-new-directory`.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -149,7 +149,7 @@ $dirname2 = "my-new-directory/"
 Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -DestFileSystem $filesystemName -DestPath $dirname2
 ```
 
-This example moves a directory named `my-directory` to a subdirectory of `my-directory-2` named `my-subdirectory`. This example also applies a umask to the subdirectory.
+Ez a példa egy `my-directory` nevű könyvtárat helyez át egy `my-subdirectory`nevű `my-directory-2` alkönyvtárába. Ez a példa egy umask is alkalmaz az alkönyvtárra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -160,9 +160,9 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Delete a directory by using the `Remove-AzDataLakeGen2Item` cmdlet.
+Törölje a könyvtárat a `Remove-AzDataLakeGen2Item` parancsmag használatával.
 
-This example deletes a directory named `my-directory`. 
+Ez a példa töröl egy `my-directory`nevű könyvtárat. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -170,13 +170,13 @@ $dirname = "my-directory/"
 Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirname 
 ```
 
-You can use the `-Force` parameter to remove the file without a prompt.
+A fájlt a `-Force` paraméterrel távolíthatja el.
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból
 
-Download a file from a directory by using the `Get-AzDataLakeGen2ItemContent` cmdlet.
+Töltse le a fájlt egy könyvtárból a `Get-AzDataLakeGen2ItemContent` parancsmag használatával.
 
-This example downloads a file named `upload.txt` from a directory named `my-directory`. 
+Ez a példa egy `my-directory`nevű könyvtárból tölt le egy `upload.txt` nevű fájlt. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -187,11 +187,11 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-List the contents of a directory by using the `Get-AzDataLakeGen2ChildItem` cmdlet.
+Egy könyvtár tartalmának listázása a `Get-AzDataLakeGen2ChildItem` parancsmag használatával.
 
-This example lists the contents of a directory named `my-directory`. 
+Ez a példa egy `my-directory`nevű könyvtár tartalmát sorolja fel. 
 
-To list the contents of a file system, omit the `-Path` parameter from the command.
+A fájlrendszer tartalmának listázásához hagyja ki a `-Path` paramétert a parancsból.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -199,9 +199,9 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
-This example lists the contents of a directory named `my-directory` and includes ACLs in the list. It also uses the `-Recurse` parameter to list the contents of all subdirectories.
+Ez a példa egy `my-directory` nevű könyvtár tartalmát sorolja fel, és a listában található ACL-eket tartalmazza. A `-Recurse` paramétert is használja az alkönyvtárak tartalmának listázásához.
 
-To list the contents of a file system, omit the `-Path` parameter from the command.
+A fájlrendszer tartalmának listázásához hagyja ki a `-Path` paramétert a parancsból.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -209,11 +209,11 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
-Upload a file to a directory by using the `New-AzDataLakeGen2Item` cmdlet.
+Töltse fel a fájlt egy könyvtárba a `New-AzDataLakeGen2Item` parancsmag használatával.
 
-This example uploads a file named `upload.txt` to a directory named `my-directory`. 
+Ez a példa egy `upload.txt` nevű fájlt tölt fel egy `my-directory`nevű könyvtárba. 
 
 ```powershell
 $localSrcFile =  "upload.txt"
@@ -223,7 +223,7 @@ $destPath = $dirname + (Get-Item $localSrcFile).Name
 New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force 
 ```
 
-This example uploads the same file, but then sets the permissions, umask, property values, and metadata values of the destination file. This example also prints these values to the console.
+Ez a példa feltölti ugyanazt a fájlt, de ezt követően beállítja a célfájl engedélyeit, umask, tulajdonságának értékeit és metaadat-értékeit. Ez a példa ezeket az értékeket is kiírja a konzolra.
 
 ```powershell
 $file = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
@@ -232,9 +232,9 @@ $file1.File.Metadata
 $file1.File.Properties
 ```
 
-## <a name="show-file-properties"></a>Show file properties
+## <a name="show-file-properties"></a>Fájl tulajdonságainak megjelenítése
 
-This example gets a file by using the `Get-AzDataLakeGen2Item` cmdlet, and then prints property values to the console.
+Ez a példa egy fájlt kér le a `Get-AzDataLakeGen2Item` parancsmag használatával, majd kinyomtatja a tulajdonságokat a konzolra.
 
 ```powershell
 $filepath =  "my-directory/upload.txt"
@@ -251,9 +251,9 @@ $file.File.Properties
 
 ## <a name="delete-a-file"></a>Fájl törlése
 
-Delete a file by using the `Remove-AzDataLakeGen2Item` cmdlet.
+Töröljön egy fájlt a `Remove-AzDataLakeGen2Item` parancsmag használatával.
 
-This example deletes a file named `upload.txt`. 
+Ez a példa töröl egy `upload.txt`nevű fájlt. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -261,17 +261,17 @@ $filepath = "upload.txt"
 Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $filepath 
 ```
 
-You can use the `-Force` parameter to remove the file without a prompt.
+A fájlt a `-Force` paraméterrel távolíthatja el.
 
-## <a name="manage-access-permissions"></a>Manage access permissions
+## <a name="manage-access-permissions"></a>Hozzáférési engedélyek kezelése
 
-You can get, set, and update access permissions of directories and files.
+Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
 
-### <a name="get-directory-and-file-permissions"></a>Get directory and file permissions
+### <a name="get-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek beolvasása
 
-Get the ACL of a directory or file by using the `Get-AzDataLakeGen2Item`cmdlet.
+Egy könyvtár vagy fájl hozzáférés-vezérlési listájának lekérése az `Get-AzDataLakeGen2Item`parancsmag használatával.
 
-This example gets the ACL of a **directory**, and then prints the ACL to the console.
+Ez a példa egy **könyvtár**ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -280,7 +280,7 @@ $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $d
 $dir.ACL
 ```
 
-This example gets the ACL of a **file** and then prints the ACL to the console.
+Ez a példa egy **fájl** ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
 
 ```powershell
 $filePath = "my-directory/upload.txt"
@@ -288,17 +288,17 @@ $file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $file.ACL
 ```
 
-The following image shows the output after getting the ACL of a directory.
+Az alábbi képen egy könyvtár ACL-listájának beolvasása után a kimenet látható.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
+![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
-In this example, the owning user has read, write, and execute permissions. The owning group has only read and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajtási engedélyekkel rendelkezik. A tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 
-### <a name="set-directory-and-file-permissions"></a>Set directory and file permissions
+### <a name="set-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek megadása
 
-Use the `New-AzDataLakeGen2ItemAclObject` cmdlet to create an ACL for the owning user, owning group, or other users. Then, use the `Update-AzDataLakeGen2Item` cmdlet to commit the ACL.
+A `New-AzDataLakeGen2ItemAclObject` parancsmaggal hozzon létre egy ACL-t a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára. Ezután a `Update-AzDataLakeGen2Item` parancsmag használatával véglegesítse az ACL-t.
 
-This example sets the ACL on a **directory** for the owning user, owning group, or other users, and then prints the ACL to the console.
+Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók **könyvtárának** ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -310,7 +310,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $dir.ACL
 ```
-This example sets the ACL on a **file** for the owning user, owning group, or other users, and then prints the ACL to the console.
+Ez a példa egy fájl ACL- **fájlját** állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -323,17 +323,17 @@ $file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $file.ACL
 ```
 
-The following image shows the output after setting the ACL of a file.
+Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet látható.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
+![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
 
-In this example, the owning user and owning group have only read and write permissions. All other users have write and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó írási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 
-### <a name="update-directory-and-file-permissions"></a>Update directory and file permissions
+### <a name="update-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek frissítése
 
-Use the `Get-AzDataLakeGen2Item` cmdlet to get the ACL of a directory or file. Then, use the `New-AzDataLakeGen2ItemAclObject` cmdlet to create a new ACL entry. Use the `Update-AzDataLakeGen2Item` cmdlet to apply the new ACL.
+A `Get-AzDataLakeGen2Item` parancsmaggal kérheti le egy könyvtár vagy fájl hozzáférés-vezérlési listáját. Ezután a `New-AzDataLakeGen2ItemAclObject` parancsmag használatával hozzon létre egy új ACL-bejegyzést. Az új ACL alkalmazásához használja az `Update-AzDataLakeGen2Item` parancsmagot.
 
-This example gives a user write and execute permission on a directory.
+Ez a példa egy felhasználó írási és végrehajtási engedélyét adja meg egy címtárban.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -343,7 +343,7 @@ $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
 ```
-This example gives a user write and execute permission on a file.
+Ez a példa egy felhasználó írási és végrehajtási engedélyét adja meg egy fájlra vonatkozóan.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -354,9 +354,9 @@ $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Pe
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $acl
 ```
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Set permissions on all items in a file system
+### <a name="set-permissions-on-all-items-in-a-file-system"></a>Engedélyek beállítása fájlrendszer összes eleméhez
 
-You can use the `Get-AzDataLakeGen2Item` and the `-Recurse` parameter together with the `Update-AzDataLakeGen2Item` cmdlet to recursively to set the ACL of all directories and files in a file system. 
+A `Get-AzDataLakeGen2Item` és a `-Recurse` paramétert a `Update-AzDataLakeGen2Item` parancsmaggal együtt használva rekurzív módon állíthatja be a fájlrendszer összes könyvtárának és fájljának ACL-listáját. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -367,22 +367,22 @@ Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse |
 ```
 <a id="gen1-gen2-map" />
 
-## <a name="gen1-to-gen2-mapping"></a>Gen1 to Gen2 Mapping
+## <a name="gen1-to-gen2-mapping"></a>Gen1 a Gen2-megfeleltetéshez
 
-The following table shows how the cmdlets used for Data Lake Storage Gen1 map to the cmdlets for Data Lake Storage Gen2.
+A következő táblázat azt mutatja be, hogy a parancsmagok hogyan használhatók a Data Lake Storage Gen1 leképezéshez a Data Lake Storage Gen2 parancsmagokhoz.
 
-|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet|
+|Data Lake Storage Gen1 parancsmag| Data Lake Storage Gen2 parancsmag|
 |--------|---------|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|
-|Get-AzDataLakeStoreItem <br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission<br>Get-AzDataLakeStoreItemContent<br>New-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|
-|Get-AzDataLakeStoreItemContent|New-AzDataLakeGen2Item|
-|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item|
+|Get-AzDataLakeStoreItem <br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission<br>Get-AzDataLakeStoreItemContent<br>Új – AzDataLakeStoreItem|Get-AzDataLakeGen2Item|
+|Get-AzDataLakeStoreItemContent|Új – AzDataLakeGen2Item|
+|Áthelyezés – AzDataLakeStoreItem|Áthelyezés – AzDataLakeGen2Item|
 |Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item|
-|Set-AzDataLakeStoreItemOwner <br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|
+|Set-AzDataLakeStoreItemOwner <br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Frissítés – AzDataLakeGen2Item|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Using Azure PowerShell with Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-* [Storage PowerShell cmdlets](/powershell/module/az.storage).
+* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Azure PowerShell használata az Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-ban.
+* [Storage PowerShell-parancsmagok](/powershell/module/az.storage).
 

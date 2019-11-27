@@ -1,6 +1,6 @@
 ---
-title: How to manage stale devices in Azure AD | Microsoft Docs
-description: Learn how to remove stale devices from your database of registered devices in Azure Active Directory.
+title: Elavult eszközök kezelése az Azure AD-ben | Microsoft Docs
+description: Ismerje meg, hogyan távolíthatja el az elavult eszközöket a regisztrált eszközök adatbázisából Azure Active Directoryban.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1829c56f9804c5aa808461db98a5048d63f55446
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207279"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538805"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>How To: Manage stale devices in Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
 Ideális esetben az életciklus végén törlik a regisztrált, de már nem használt eszközök regisztrációját. Azonban például az eszközök elvesztése, ellopása vagy sérülése, illetve az operációs rendszerek újratelepítése miatt a legtöbb környezetben előfordulnak elavult eszközök. Rendszergazdaként minden bizonnyal örülne egy olyan módszernek, amellyel eltávolíthatók az elavult eszközök, hogy az erőforrásokat a tényleges felügyeletet igénylő eszközökre összpontosíthassa.
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan lehet hatékonyan kezelni a környezetben 
 Az elavult eszköz ugyan regisztrálva van az Azure AD-ben, de egy meghatározott időszakon belül nem használták semmilyen felhőalapú alkalmazás eléréséhez. Az elavult eszközök a következők miatt nehezítik a bérlő eszközeinek és felhasználóinak felügyeletét és támogatását: 
 
 - Ha több példány létezik az eszközből, az ügyfélszolgálaton dolgozók nehezen tudják megállapítani, hogy épp melyik eszköz aktív.
-- An increased number of devices creates unnecessary device writebacks increasing the time for Azure AD connect syncs.
+- Egyre több eszköz hozza létre a szükségtelen eszköz cellavisszaírásokat az Azure AD-csatlakozási szinkronizálások idejének növelésével.
 - A biztonság és az előírásoknak való megfelelés érdekében valószínűleg szeretne rendet tartani az eszközei között. 
 
 Az Azure AD-ben található elavult eszközök akadályozhatják a szervezet eszközeire vonatkozó általános életciklus-szabályzatok végrehajtását.
@@ -43,17 +43,17 @@ Mivel az elavult eszközök regisztrált eszközökként vannak meghatározva, a
 
 A tevékenység-időbélyegző kiértékelését egy eszközről érkező hitelesítési kísérlet váltja ki. Az Azure AD az alábbi esetekben értékeli ki a tevékenység-időbélyegzőt:
 
-- A Conditional Access policies requiring [managed devices](../conditional-access/require-managed-devices.md) or [approved client apps](../conditional-access/app-based-conditional-access.md) has been triggered.
+- A [felügyelt eszközöket](../conditional-access/require-managed-devices.md) vagy [jóváhagyott ügyfélalkalmazások](../conditional-access/app-based-conditional-access.md) használatát igénylő feltételes hozzáférési szabályzatok aktiválva lettek.
 - A hálózaton vannak aktív, Windows 10 rendszerű, az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD-hez csatlakoztatott eszközök. 
 - Intune által felügyelt eszközök jelentkeznek be a szolgáltatásba.
 
-If the delta between the existing value of the activity timestamp and the current value is more than 14 days (+/-5 day variance), the existing value is replaced with the new value.
+Ha a tevékenység időbélyegének meglévő értéke és a jelenlegi érték közötti különbség több mint 14 nap (+/-5 nap variancia), a meglévő értéket az új értékre cseréli a rendszer.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Hogyan szerezhetem be a tevékenység-időbélyegző értékét?
 
 A tevékenység-időbélyegző értékét két módon kérheti le:
 
-- Az Azure Portal [Eszközök oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) található **Tevékenység** oszlopból
+- Az Azure Portal **Eszközök oldalán** található [Tevékenység](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) oszlopból
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/01.png)
 
@@ -70,14 +70,14 @@ A környezetben található elavult eszközök hatékony törléséhez érdemes 
 Egy eszköz Azure AD-ben történő frissítéséhez szükség van egy fiókra, amelyhez a következő szerepkörök egyike van hozzárendelve:
 
 - Globális rendszergazda
-- Cloud Device Administrator
+- Felhőalapú eszköz rendszergazdája
 - Intune szolgáltatás rendszergazdája
 
 A törlési szabályzatban válasszon olyan fiókokat, amelyekhez hozzá vannak rendelve a szükséges szerepkörök. 
 
-### <a name="timeframe"></a>Időkeret
+### <a name="timeframe"></a>Időszak
 
-Határozza meg az időszakot, amelyen túl egy eszköz elavultnak minősül. When defining your timeframe, factor the window noted for updating the activity timestamp into your value. For example, you shouldn't consider a timestamp that is younger than 21 days (includes variance) as an indicator for a stale device. Bizonyos esetekben egy eszköz akkor is elavultnak tűnhet, ha valójában nem az. Lehet, hogy az érintett eszköz tulajdonosa nyaral vagy betegállományban van.  amely túllépi az elavult eszközökhöz meghatározott időszakot.
+Határozza meg az időszakot, amelyen túl egy eszköz elavultnak minősül. Az időkeret meghatározásakor a tevékenység időbélyegének az értékre való frissítéséhez feljegyzett ablak. Egy elavult eszköz esetében például nem érdemes olyan időbélyeget figyelembe venni, amely 21 napnál fiatalabb (beleértve a varianciaot is). Bizonyos esetekben egy eszköz akkor is elavultnak tűnhet, ha valójában nem az. Lehet, hogy az érintett eszköz tulajdonosa nyaral vagy betegállományban van.  amely túllépi az elavult eszközökhöz meghatározott időszakot.
 
 ### <a name="disable-devices"></a>Eszközök letiltása
 
@@ -89,7 +89,7 @@ Amennyiben az eszközt az Intune vagy más MDM-megoldás vezérli, vonja ki az e
 
 ### <a name="system-managed-devices"></a>Rendszer által felügyelt eszközök
 
-A rendszer által felügyelt eszközöket sose törölje. Ezek általában a robotpilótához hasonló eszközök. Once deleted, these devices can't be reprovisioned. Az új `get-msoldevice` parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
+A rendszer által felügyelt eszközöket sose törölje. Ezek általában olyan eszközök, mint például az Autopilot. A törlés után ezeket az eszközöket nem lehet újra kiépíteni. Az új `get-msoldevice` parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
 
@@ -98,13 +98,13 @@ A hibrid Azure AD-csatlakoztatott eszközöknek követniük kell a helyszíni el
 Törlés Azure AD-ben:
 
 - **Windows 10-es eszközök** – Tiltsa le vagy törölje a Windows 10-es eszközöket a helyszíni AD-ben, majd engedélyezze az Azure AD Connect számára a megváltozott eszközállapot szinkronizálását az Azure AD-vel.
-- **Windows 7/8** - Disable or delete Windows 7/8 devices in your on-premises AD first. Az Azure AD Connect használatával nem tud letiltani vagy törölni Windows 7/8 rendszerű eszközöket az Azure AD-ben. Instead, when you make the change in your on-premises, you must disable/delete in Azure AD.
+- **Windows 7/8** – először tiltsa le vagy törölje a Windows 7/8 rendszerű eszközöket a helyszíni ad-ben. Az Azure AD Connect használatával nem tud letiltani vagy törölni Windows 7/8 rendszerű eszközöket az Azure AD-ben. Ehelyett, amikor a helyszíni módosításokat végzi, le kell tiltania/törölnie kell az Azure AD-ben.
 
 > [!NOTE]
->* Deleting devices in your on-premises AD or Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access). Read additional information on how to [remove registration on the client](faq.md#hybrid-azure-ad-join-faq).
->* Deleting a Windows 10 device only in Azure AD will re-synchronize the device from your on-premises using Azure AD connect but as a new object in "Pending" state. A re-registration is required on the device.
->* Removing the device from sync scope for Windows 10/Server 2016 devices will delete the Azure AD device. Adding it back to sync scope will place a new object in "Pending" state. A re-registration of the device is required.
->* If you not using Azure AD Connect for Windows 10 devices to synchronize (e.g. ONLY using AD FS for registration), you must manage lifecycle similar to Windows 7/8 devices.
+>* A helyszíni AD-ben vagy az Azure AD-ban lévő eszközök törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést. További információ a [regisztráció eltávolításáról az ügyfélen](faq.md#hybrid-azure-ad-join-faq).
+>* Egy Windows 10 rendszerű eszköz csak az Azure AD-ben való törlése újra szinkronizálja az eszközt a helyszíni Azure AD-kapcsolattal, de a "függő" állapotban lévő új objektumként. Az eszközön újra kell regisztrálni.
+>* Az eszköznek a Windows 10/Server 2016 rendszerű eszközök szinkronizálási hatókörből való eltávolítása törli az Azure AD-eszközt. A szinkronizálási hatókörbe való hozzáadásával a rendszer egy új objektumot helyez el "függőben" állapotba. Az eszköz újbóli regisztrálása szükséges.
+>* Ha nem használja a Windows 10-es eszközökön a Azure AD Connect a szinkronizáláshoz (például csak a AD FS a regisztrációhoz), akkor a Windows 7/8-eszközökhöz hasonló életciklust kell kezelnie.
 
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
@@ -112,20 +112,20 @@ Törlés Azure AD-ben:
 Azure AD-hez csatlakoztatott eszközök letiltása vagy törlése az Azure AD-ben.
 
 > [!NOTE]
->* Deleting an Azure AD device does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g Conditional Access). 
->* Read more on [how to unjoin on Azure AD](faq.md#azure-ad-join-faq) 
+>* Az Azure AD-eszközök törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést. 
+>* További információk az [Azure ad-vel való csatlakozásról](faq.md#azure-ad-join-faq) 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
 Azure AD-ben regisztrált eszközök letiltása vagy törlése az Azure AD-ben
 
 > [!NOTE]
->* Deleting an Azure AD registered device in Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access).
->* Read more on [how to remove a registration on the client](faq.md#azure-ad-register-faq)
+>* Egy Azure AD-beli regisztrált eszköz az Azure AD-ben való törlése nem távolítja el a regisztrációt az ügyfélen. A szolgáltatás csak az eszköz identitásának (például feltételes hozzáférés) használatával fogja megakadályozni az erőforrásokhoz való hozzáférést.
+>* További információk a [regisztráció törléséről az ügyfélen](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Elavult eszközök törlése az Azure Portalon  
 
-Bár az elavult eszközök törlése az Azure Portalon is elvégezhető, hatékonyabb megoldás egy PowerShell-szkripttel kezelni a folyamatot. Használja a legújabb PowerShell V1 modult, hogy alkalmazhassa az időbélyegző szűrőt, amely kiszűri a rendszer által felügyelt eszközöket (például robotpilótát). Jelenleg nem javasoljuk a PowerShell V2 használatát.
+Bár az elavult eszközök törlése az Azure Portalon is elvégezhető, hatékonyabb megoldás egy PowerShell-szkripttel kezelni a folyamatot. Használja a legújabb PowerShell v1-modult az időbélyeg-szűrő használatához, valamint a rendszer által felügyelt eszközök, például az Autopilot kiszűréséhez. Jelenleg nem javasoljuk a PowerShell V2 használatát.
 
 A folyamat jellemzően a következő lépésekből áll:
 
@@ -144,7 +144,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-If you have a large number of devices in your directory, use the timestamp filter to narrow down the number of returned devices. Egy adott dátumnál régebbi időbélyegzővel rendelkező eszközök lekérése, valamint a visszaadott adatok tárolása egy CSV-fájlban: 
+Ha nagy számú eszköz található a címtárban, az időbélyeg-szűrő használatával Szűkítse le a visszaadott eszközök számát. Egy adott dátumnál régebbi időbélyegzővel rendelkező eszközök lekérése, valamint a visszaadott adatok tárolása egy CSV-fájlban: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -161,12 +161,12 @@ Az időbélyegzőt az eszközéletciklus-forgatókönyvek támogatása végett k
 
 A konfigurálást követően a Windows 10-es eszközök BitLocker-kulcsai az eszközobjektumon vannak tárolva az Azure AD-ben. Az elavult eszköz törlésekor az eszközön tárolt BitLocker-kulcsokat is törli. Az elavult eszköz törlése előtt ellenőrizze, hogy a törlési szabályzat igazodik-e az eszköz tényleges életciklusához. 
 
-### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Why should I worry about Windows Autopilot devices?
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Miért érdemes aggódni a Windows Autopilot-eszközökről?
 
-When a Azure AD device was associated with a Windows Autopilot object the following three scenarios can occur if the device will be repurposed in future:
-- With Windows Autopilot user-driven deployments without using white glove, a new Azure AD device will be created, but it won’t be tagged with the ZTDID.
-- With Windows Autopilot self-deploying mode deployments, they will fail because an associate Azure AD device cannot be found.  (This is a security mechanism to make sure that no “imposter” devices try to join Azure AD with no credentials.) The failure will indicate a ZTDID mismatch.
-- With Windows Autopilot white glove deployments, they will fail because an associated Azure AD device cannot be found. (Behind the scenes, white glove deployments use the same self-deploying mode process, so they enforce the same security mechanisms.)
+Ha egy Azure AD-eszköz egy Windows Autopilot-objektumhoz van társítva, akkor a következő három forgatókönyv fordulhat elő, ha az eszközt a jövőben újra felhasználják:
+- A Windows Autopilot-alapú, felhasználó által vezérelt központi telepítések a fehér kesztyű használata nélkül új Azure AD-eszközt hoznak létre, de nem lesznek felcímkézve a ZTDID.
+- A Windows Autopilot öntelepítő üzemmódú telepítései sikertelenek lesznek, mert az Azure AD-eszközök nem találhatók.  (Ez egy biztonsági mechanizmus, amely gondoskodik arról, hogy a "nem megfelelő" eszközök ne csatlakozzanak az Azure AD-hez hitelesítő adatok nélkül.) A hiba ZTDID-eltérést jelez.
+- A Windows Autopilot-alapú, fehér kesztyűs telepítései sikertelenek lesznek, mert a társított Azure AD-eszköz nem található. (A színfalak mögött a fehér kesztyű üzembe helyezése ugyanazt a saját üzembe helyezési módot használja, így ugyanazokat a biztonsági mechanizmusokat érvényesítik.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Honnan tudhatom meg, hogy milyen típusú eszközök vannak csatlakoztatva?
 

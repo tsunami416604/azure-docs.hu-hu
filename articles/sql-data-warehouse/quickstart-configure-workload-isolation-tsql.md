@@ -35,7 +35,7 @@ Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehous
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>DataLoads-beli bejelentkezés létrehozása
 

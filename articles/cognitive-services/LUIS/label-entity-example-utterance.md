@@ -1,7 +1,7 @@
 ---
-title: Label entity example utterance
+title: Címke-entitás – példa Kimondás
 titleSuffix: Azure Cognitive Services
-description: Learn how to label a machine-learned entity with subcomponents in an example utterance in an intent detail page of the LUIS portal.
+description: Megtudhatja, hogyan címkézheti egy géppel megtanult entitást alösszetevőkkel egy példa Kimondás formájában a LUIS-portálon található szándék részletek oldalán.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,106 +11,106 @@ ms.topic: quickstart
 ms.date: 11/21/2019
 ms.author: diberry
 ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74383702"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Label machine-learned entity in an example utterance
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Címkézett gép – megtanult entitás egy példa kimondottan
 
-Labeling an entity in an example utterance gives LUIS an example of what the entity is and where the entity can appear in the utterance. 
+Ha egy entitást címkéz egy példa kiírásakor, az a LUIS példa arra, hogy mi is az entitás, és hogy az entitás hol jelenhet meg a teljes tartalomban. 
 
-## <a name="labeling-machine-learned-entity"></a>Labeling machine-learned entity
+## <a name="labeling-machine-learned-entity"></a>Gépi megtanult entitás címkézése
 
-Consider the phrase, `hi, please I want a cheese pizza in 20 minutes`. 
+Vegye figyelembe a kifejezést, `hi, please I want a cheese pizza in 20 minutes`. 
 
-1. Select the left-most text, then select the right-most text of the entity, then pick the entity you want to label with, in this case Complete Order. The _complete order_ is labeled in the following image.
+1. Válassza ki a bal szélső szöveget, majd válassza ki az entitás jobb szélső szövegét, majd válassza ki a címkével ellátni kívánt entitást, ebben az esetben a teljes sorrendet. A _teljes sorrend_ a következő képen látható.
 
     > [!div class="mx-imgBorder"]
-    > ![Label complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![címke teljes gépi megtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Select the entity from the pop-up window. The labeled complete pizza order entity includes all words (from left to right in English) that are labeled. 
+1. Válassza ki az entitást az előugró ablakban. A címkével ellátott teljes pizza Order entitás tartalmazza a címkével ellátott összes szót (balról jobbra, angol nyelven). 
 
-## <a name="review-labeled-text"></a>Review labeled text
+## <a name="review-labeled-text"></a>Címkézett szöveg áttekintése
 
-After labeling, review the example utterance and ensure the selected span of text has been underlined with the chosen entity. The solid line indicates the text has been labeled. 
+A címkézést követően tekintse át a példa teljes számát, és gondoskodjon arról, hogy a kijelölt szöveg a kiválasztott entitással legyen aláhúzva. A folytonos vonal azt jelzi, hogy a szöveg címkével van ellátva. 
 
 > [!div class="mx-imgBorder"]
-> ![Labeled complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![címkézett gépi megtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
-## <a name="confirm-predicted-entity"></a>Confirm predicted entity
+## <a name="confirm-predicted-entity"></a>Előre jelzett entitás megerősítése
 
-If there is a dotted-lined box around the span of text and the entity name is above the utterance, it indicates the text is predicted but _not labeled yet_. To turn the prediction into a label, select the utterance row, then select **Confirm entity predictions**.
-
-> [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
-
-Alternatively, you could select the entity name above the text, then select **Confirm Prediction** from the menu that appears.
+Ha a szöveg keretén belüli pontozott téglalap található, és az entitás neve meghaladja a rövidítést, akkor a szöveg előre látható, de _még nincs megjelölve_. Az előrejelzés címkévé való bekapcsolásához jelölje ki a teljes sort, majd válassza az **entitások előrejelzésének megerősítése**lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity with menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+> ![megjósolni a géppel megtanult entitások teljes](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Label entity by painting with entity palette cursor
-
-The entity palette offers an alternative to the previous labeling experience. It allows you to brush over text to instantly label it with an entity.
-
-1. Open the entity palette by selecting on the Highlighter icon at the top right of the utterance table. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. Select the entity component. This action is visually indicated with a new cursor. The cursor follows the mouse as you move in the portal. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. In the example utterance, _paint_ the entity with the cursor.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labeling subcomponents of a machine learned entity
-
-Subcomponents in entities are labeled exactly the same way as top level entities. When selecting text, the entities available in the pop-up window are relative to the context in which the text appears. For example, if you have a 5-level machine-learned entity, and you are selecting text that has been labeled with the 1st and 2nd levels (indicated by a labeled entity name under the example utterance), the entities available in the pop-up window are limited to the context of components of the 3rd level. To label the text with other entities, select **Label as another entity** option.
+Azt is megteheti, hogy a szöveg fölött kijelöli az entitás nevét, majd a megjelenő menüben kiválasztja a **jóslat megerősítése** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+> ![megjósolni, hogy a gép megtanulta a menüt](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
 
-Subcomponents can be labeled only if the parent is also labeled. 
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Címke entitás festéssel az Entity paletta kurzorral
 
-## <a name="unlabel-entities"></a>Unlabel entities
+Az entitás-paletta a korábbi címkézési felület alternatívájaként nyújt alternatívát. Lehetővé teszi a szöveg átméretezését, ha azonnal címkével látja el azt egy entitással.
 
-To unlabel an entity, select the entity name underneath the text and select **Unlabel**. If the entity you are trying to unlabel has labeled subcomponents, then the subcomponents must be unlabeled first. 
-
-## <a name="editing-labels-using-the-entity-palette"></a>Editing labels using the entity palette
-
-If you make a mistake while labeling, the entity palette is an easy tool that allows for quick edits. For example, if an entity label spans an extra word by mistake, and it already has labeled subcomponents, then you can use the entity palette to brush over the required shorter span of words.
-
-Példa:
-
-1. Pizza Type subcomponent spans "cheese pizza with" which includes an extra incorrect word -- "with"
+1. Nyissa meg az entitás-palettát a kiemelési tábla jobb felső sarkában található kiemelő ikonra kattintva. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-1.png)
+    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Use the entity palette to pick Pizza Type and brush over "cheese pizza". The outcome is that only cheese pizza is labeled as Pizza Type now.
+2. Válassza ki az entitás összetevőt. Ez a művelet vizuálisan egy új kurzorral van megjelölve. A kurzor az egérmutatót követi a portálon való áthelyezés során. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-2.png)
+    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
 
+3. A példában a Kimondás elemre _festi_ az entitást a kurzorral.
 
-## <a name="labels-for-matching-text-entities"></a>Labels for matching-text entities
+    > [!div class="mx-imgBorder"]
+    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
-Matching-text entities include prebuilt entities, regular expression entities, list entities, and pattern.any entities. These are automatically labeled by LUIS so they are not required to be manually labeled by users.
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Egy gép megtanult entitás alösszetevőinek címkézése
 
-## <a name="entity-prediction-errors"></a>Entity prediction errors
-
-Entity prediction errors indicate the predicted entity doesn't match the labeled entity. This is visualized with a caution indicator next to the utterance.
+Az entitásokban lévő alösszetevők pontosan ugyanúgy vannak megjelölve, mint a legfelső szintű entitások. A szöveg kiválasztásakor az előugró ablakban elérhető entitások a szövegnek megfelelő kontextushoz viszonyítva jelennek meg. Ha például egy 5 szintű, géppel megtanult entitást használ, és olyan szöveget választ ki, amely az 1. és a 2. szinttel van megjelölve (a példában szereplő címkével ellátott entitás neve jelzi), az előugró ablakban elérhető entitások köre a a harmadik szint összetevőinek kontextusa. Ha más entitásokkal szeretné felcímkézni a szöveget, válassza a **címke másik entitásként** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+
+Az alösszetevők csak akkor címkével rendelkezhetnek, ha a szülő is címkével van ellátva. 
+
+## <a name="unlabel-entities"></a>Entitások címkézésének kicsomagolása
+
+Entitás kicímkézéséhez válassza ki az entitás nevét a szöveg alatt, és válassza a **címke**kijelölése elemet. Ha a felcímkézni próbált entitás címkével ellátott alösszetevőket tartalmaz, akkor először el kell távolítani az alösszetevőket. 
+
+## <a name="editing-labels-using-the-entity-palette"></a>Címkék szerkesztése az Entity paletta használatával
+
+Ha a címkézés során hiba történik, az Entity paletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitás címkéje egy további szót mutat be a hiba alapján, és már rendelkezik címkézett alösszetevőkkel, akkor az Entity paletta használatával ecsetet adhat a szavak rövidebb időtartamára.
+
+Például:
+
+1. A pizza Type alösszetevő a "Cheese pizza with" kifejezéssel is rendelkezik, amely tartalmaz egy extra helytelen szót – "with"
+
+    > [!div class="mx-imgBorder"]
+    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/edit-label-with-palette-1.png)
+
+2. Az Entity paletta használatával válassza ki a pizza típust, és ecsetet a "Cheese pizza" kifejezésre. Ennek eredménye, hogy csak a Cheese pizza van megjelölve pizza típusúként.
+
+    > [!div class="mx-imgBorder"]
+    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/edit-label-with-palette-2.png)
+
+
+## <a name="labels-for-matching-text-entities"></a>Egyező szövegű entitások címkéi
+
+Az egyező szöveges entitások közé tartoznak az előre elkészített entitások, a reguláris kifejezések entitásai, az entitások listázása és a minta. bármely entitás. Ezeket a rendszer automatikusan a LUIS címkével jelölte meg, így a felhasználóknak nem kell manuálisan megadniuk a címkét.
+
+## <a name="entity-prediction-errors"></a>Entitás-előrejelzési hibák
+
+Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás nem egyezik a címkével ellátott entitással. Ezt a rendszer a kiírás melletti óvatossági mutatóval ábrázolja.
+
+> [!div class="mx-imgBorder"]
+> ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Use the [dashboard](luis-how-to-use-dashboard.md) and [review endpoint utterances](luis-how-to-review-endpoint-utterances.md) to improve the prediction quality of your app.
+Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.

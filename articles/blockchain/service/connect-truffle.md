@@ -1,6 +1,6 @@
 ---
-title: Use Truffle to connect to Azure Blockchain Service
-description: Connect to an Azure Blockchain Service network using Truffle
+title: A szarvasgomba használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
+description: Kapcsolódás Azure Blockchain Service networkhez a szarvasgomba használatával
 ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,63 +11,63 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455796"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Quickstart: Use Truffle to connect to Azure Blockchain Service
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Rövid útmutató: a szarvasgomba használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
 
-In this quickstart, you use Truffle connect to an Azure Blockchain Service transaction node. You then use the Truffle interactive console to call **web3** methods to interact with your blockchain network.
+Ebben a rövid útmutatóban a szarvasgomba-kapcsolatot használja egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz. Ezután a szarvasgomba interaktív konzollal meghívhatja a **web3** metódusokat a blockchain-hálózattal való kommunikációhoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
-* Install [Truffle](https://github.com/trufflesuite/truffle). Truffle requires several tools to be installed including [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Install [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python is needed for Web3.
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
+* A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
+* Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
 
-## <a name="create-truffle-project"></a>Create Truffle project
+## <a name="create-truffle-project"></a>Szarvasgomba-projekt létrehozása
 
-1. Open a Node.js command prompt or shell.
-1. Change directory to where you want to create the Truffle project directory.
-1. Create a directory for the project and change your path to the new directory. Például:
+1. Nyisson meg egy Node. js parancssort vagy rendszerhéjat.
+1. Váltson arra a könyvtárra, ahol létre szeretné hozni a szarvasgomba Project könyvtárat.
+1. Hozzon létre egy könyvtárat a projekthez, és módosítsa az elérési utat az új könyvtárba. Például:
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
     ```
 
-1. Initialize the Truffle project.
+1. A szarvasgomba projekt inicializálása.
 
     ``` bash
     truffle init
     ```
 
-1. Install Ethereum JavaScript API web3 in the project folder. Currently, version web3 version 1.0.0-beta.37 is required.
+1. Telepítse a Ethereum JavaScript API-web3 a projekt mappájába. Jelenleg a web3 Version 1.0.0-Beta. 37 verziója szükséges.
 
     ``` bash
     npm install web3@1.0.0-beta.37
     ```
 
-    You may receive npm warnings during installation.
+    A telepítés során NPM figyelmeztetéseket kaphat.
     
-## <a name="configure-truffle-project"></a>Configure Truffle project
+## <a name="configure-truffle-project"></a>Szarvasgomba-projekt konfigurálása
 
-To configure the Truffle project, you need some transaction node information from the Azure portal.
+A szarvasgomba projekt konfigurálásához szükség van néhány tranzakciós csomópontra a Azure Portal.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az Azure Blockchain-szolgáltatás tagját. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
 
-    ![Select default transaction node](./media/connect-truffle/transaction-nodes.png)
+    ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/connect-truffle/transaction-nodes.png)
 
-1. Select **Connection strings**.
-1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
+1. Válassza a **kapcsolatok karakterláncok**lehetőséget.
+1. Másolja a kapcsolati karakterláncot a https-ről **(1. hozzáférési kulcs)** . A következő szakaszhoz szüksége lesz a karakterláncra.
 
     ![Kapcsolati sztring](./media/connect-truffle/connection-string.png)
 
-### <a name="edit-configuration-file"></a>Edit configuration file
+### <a name="edit-configuration-file"></a>Konfigurációs fájl szerkesztése
 
-Next, you need to update the Truffle configuration file with the transaction node endpoint.
+Ezután frissítenie kell a szarvasgomba konfigurációs fájlját a tranzakciós csomópont végpontjának használatával.
 
-1. In the **truffledemo** project folder, open the Truffle configuration file `truffle-config.js` in an editor.
-1. Replace the contents of the file with the following configuration information. Add a variable containing the endpoint address. Replace the angle bracket with values you collected from the previous section.
+1. A **truffledemo** projekt mappában Nyissa meg a szarvasgomba konfigurációs fájlt `truffle-config.js` egy szerkesztőben.
+1. Cserélje le a fájl tartalmát a következő konfigurációs adatokra. Adjon hozzá egy változót, amely tartalmazza a végponti címeket. A szögletes zárójelet cserélje le az előző szakaszból összegyűjtött értékekre.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";   
@@ -83,23 +83,23 @@ Next, you need to update the Truffle configuration file with the transaction nod
     }
     ```
 
-1. Save the changes to `truffle-config.js`.
+1. Mentse `truffle-config.js`módosításait.
 
 ## <a name="connect-to-transaction-node"></a>Csatlakozás tranzakciós csomóponthoz
 
-Use *Web3* to connect to the transaction node.
+A *Web3* használatával kapcsolódjon a tranzakciós csomóponthoz.
 
-1. Use the Truffle console to connect to the default transaction node. At a command prompt or shell, run the following command:
+1. Az alapértelmezett tranzakciós csomóponthoz való kapcsolódáshoz használja a szarvasgomba konzolt. A parancssorban vagy a rendszerhéjban futtassa a következő parancsot:
 
     ``` bash
     truffle console --network defaultnode
     ```
 
-    Truffle connects to the default transaction node and provides an interactive console.
+    A szarvasgomba csatlakozik az alapértelmezett tranzakciós csomóponthoz, és egy interaktív konzolt biztosít.
 
-    You can call methods on the **web3** object to interact with your blockchain network.
+    A **web3** objektumon metódusokat hívhat meg a blockchain-hálózattal való kommunikációhoz.
 
-1. Call the **getBlockNumber** method to return the current block number.
+1. Hívja meg a **getBlockNumber** metódust az aktuális blokk számának visszaadásához.
 
     ```bash
     web3.eth.getBlockNumber();
@@ -111,7 +111,7 @@ Use *Web3* to connect to the transaction node.
     truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Exit the Truffle console.
+1. Lépjen ki a szarvasgomba konzolból.
 
     ```bash
     .exit
@@ -119,9 +119,9 @@ Use *Web3* to connect to the transaction node.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you used Truffle connect to an Azure Blockchain Service default transaction node and used the interactive console to return the current blockchain block number.
+Ebben a rövid útmutatóban a szarvasgomba az Azure Blockchain szolgáltatás alapértelmezett tranzakciós csomóponthoz való kapcsolódását használta, és az interaktív konzollal visszaküldte az aktuális Blockchain-blokk számát.
 
-Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
+Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 
 > [!div class="nextstepaction"]
-> [Create, build, and deploy smart contracts on Azure Blockchain Service](send-transaction.md)
+> [Intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben](send-transaction.md)

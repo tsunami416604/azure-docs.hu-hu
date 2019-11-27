@@ -1,6 +1,6 @@
 ---
-title: Authentication issues in Azure HDInsight
-description: Authentication issues in Azure HDInsight
+title: Hitelesítési problémák az Azure HDInsight
+description: Hitelesítési problémák az Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,19 +14,19 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215993"
 ---
-# <a name="authentication-issues-in-azure-hdinsight"></a>Authentication issues in Azure HDInsight
+# <a name="authentication-issues-in-azure-hdinsight"></a>Hitelesítési problémák az Azure HDInsight
 
-This article describes troubleshooting steps and possible resolutions for issues when interacting with Azure HDInsight clusters.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-On secure clusters backed by Azure Data Lake (Gen1 or Gen2), when domain users sign in to the cluster services through HDI Gateway (like signing in to the Apache Ambari portal), HDI Gateway will try to obtain an OAuth token from Azure Active Directory (Azure AD) first, and then get a Kerberos ticket from Azure AD DS. Authentication can fail in either of these stages. This article is aimed at debugging some of those issues.
+A Azure Data Lake (Gen1 vagy Gen2) által támogatott biztonságos fürtökön, amikor a tartományi felhasználók a HDI-átjárón keresztül jelentkeznek be a fürtszolgáltatásba (például az Apache Ambari portálra való bejelentkezéshez), a HDI-átjáró először a Azure Active Directory (Azure AD) OAuth-tokenjét próbálja meg beolvasni. , majd szerezzen be egy Kerberos-jegyet az Azure AD DSból. A hitelesítés bármelyik szakaszban sikertelen lehet. Ez a cikk a problémák némelyikének hibakeresését célozza meg.
 
-When the authentication fails, you will get prompted for credentials. If you cancel this dialog, the error message will be printed. Here are some of the common error messages:
+Ha a hitelesítés sikertelen, a rendszer kérni fogja a hitelesítő adatok megadását. Ha megszakítja ezt a párbeszédpanelt, a rendszer kinyomtatja a hibaüzenetet. Íme néhány gyakori hibaüzenet:
 
-## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant or unauthorized_client, 50126
+## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant vagy unauthorized_client, 50126
 
 ### <a name="issue"></a>Probléma
 
-Sign in fails for federated users with error code 50126 (sign in succeeds for cloud users). Error message is similar to:
+Sikertelen volt a bejelentkezés az összevont felhasználók számára a 50126 hibakódgal (a bejelentkezés sikeres a Cloud Users esetében). A hibaüzenet a következőhöz hasonló:
 
 ```
 Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_description":"AADSTS70002: Error validating credentials. AADSTS50126: Invalid username or password\r\nTrace ID: 09cc9b95-4354-46b7-91f1-efd92665ae00\r\n Correlation ID: 4209bedf-f195-4486-b486-95a15b70fbe4\r\nTimestamp: 2019-01-28 17:49:58Z","error_codes":[70002,50126], "timestamp":"2019-01-28 17:49:58Z","trace_id":"09cc9b95-4354-46b7-91f1-efd92665ae00","correlation_id":"4209bedf-f195-4486-b486-95a15b70fbe4"}
@@ -34,19 +34,19 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Ok
 
-Azure AD error code 50126 means the `AllowCloudPasswordValidation` policy has not been set by the tenant.
+Az Azure AD 50126-es hibakód azt jelenti, hogy a bérlő nem állította be a `AllowCloudPasswordValidation` szabályzatot.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-The Company Administrator of the Azure AD tenant should enable Azure AD to use password hashes for ADFS backed users.  Apply the `AllowCloudPasswordValidationPolicy` as shown in the article [Use Enterprise Security Package in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Az Azure ad-bérlő vállalati rendszergazdája engedélyezheti az Azure AD számára a jelszó-kivonatok használatát az ADFS-t használó felhasználók számára.  Alkalmazza a `AllowCloudPasswordValidationPolicy` az [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)című cikkben látható módon.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant or unauthorized_client, 50034
+## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant vagy unauthorized_client, 50034
 
 ### <a name="issue"></a>Probléma
 
-Sign in fails with error code 50034. Error message is similar to:
+A bejelentkezés sikertelen a 50034-es hibakód miatt. A hibaüzenet a következőhöz hasonló:
 
 ```
 {"error":"invalid_grant","error_description":"AADSTS50034: The user account Microsoft.AzureAD.Telemetry.Diagnostics.PII does not exist in the 0c349e3f-1ac3-4610-8599-9db831cbaf62 directory. To sign into this application, the account must be added to the directory.\r\nTrace ID: bbb819b2-4c6f-4745-854d-0b72006d6800\r\nCorrelation ID: b009c737-ee52-43b2-83fd-706061a72b41\r\nTimestamp: 2019-04-29 15:52:16Z", "error_codes":[50034],"timestamp":"2019-04-29 15:52:16Z","trace_id":"bbb819b2-4c6f-4745-854d-0b72006d6800", "correlation_id":"b009c737-ee52-43b2-83fd-706061a72b41"}
@@ -54,19 +54,19 @@ Sign in fails with error code 50034. Error message is similar to:
 
 ### <a name="cause"></a>Ok
 
-User name is incorrect (does not exist). The user is not using the same username that is used in Azure portal.
+A Felhasználónév helytelen (nem létezik). A felhasználó nem ugyanazt a felhasználónevet használja, mint amelyet a Azure Portal használ.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Use the same user name that works in that portal.
+Használja ugyanazt a felhasználónevet, amely az adott portálon működik.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant vagy unauthorized_client, 50053
 
 ### <a name="issue"></a>Probléma
 
-User account is locked out, error code 50053. Error message is similar to:
+A felhasználói fiók ki van zárva, hibakód: 50053. A hibaüzenet a következőhöz hasonló:
 
 ```
 {"error":"unauthorized_client","error_description":"AADSTS50053: You've tried to sign in too many times with an incorrect user ID or password.\r\nTrace ID: 844ac5d8-8160-4dee-90ce-6d8c9443d400\r\nCorrelation ID: 23fe8867-0e8f-4e56-8764-0cdc7c61c325\r\nTimestamp: 2019-06-06 09:47:23Z","error_codes":[50053],"timestamp":"2019-06-06 09:47:23Z","trace_id":"844ac5d8-8160-4dee-90ce-6d8c9443d400","correlation_id":"23fe8867-0e8f-4e56-8764-0cdc7c61c325"}
@@ -74,19 +74,19 @@ User account is locked out, error code 50053. Error message is similar to:
 
 ### <a name="cause"></a>Ok
 
-Too many sign in attempts with an incorrect password.
+Túl sok bejelentkezési kísérlet helytelen jelszóval.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Wait for 30 minutes or so, stop any applications that might be trying to authenticate.
+Várjon 30 percet, és állítsa le a hitelesíteni próbált alkalmazásokat.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant vagy unauthorized_client, 50053
 
 ### <a name="issue"></a>Probléma
 
-Password expired, error code 50053. Error message is similar to:
+A jelszó lejárt, hibakód: 50053. A hibaüzenet a következőhöz hasonló:
 
 ```
 {"error":"user_password_expired","error_description":"AADSTS50055: Password is expired.\r\nTrace ID: 241a7a47-e59f-42d8-9263-fbb7c1d51e00\r\nCorrelation ID: c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a\r\nTimestamp: 2019-06-06 17:29:37Z","error_codes":[50055],"timestamp":"2019-06-06 17:29:37Z","trace_id":"241a7a47-e59f-42d8-9263-fbb7c1d51e00","correlation_id":"c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a","suberror":"user_password_expired","password_change_url":"https://portal.microsoftonline.com/ChangePassword.aspx"}
@@ -94,11 +94,11 @@ Password expired, error code 50053. Error message is similar to:
 
 ### <a name="cause"></a>Ok
 
-Password is expired.
+A jelszó lejárt.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Change the password in the Azure portal (on your on-premises system) and then wait for 30 minutes for sync to catch up.
+Módosítsa a jelszót a Azure Portalban (a helyszíni rendszeren), majd várjon 30 percet, amíg a szinkronizálás befejeződik.
 
 ---
 
@@ -106,118 +106,118 @@ Change the password in the Azure portal (on your on-premises system) and then wa
 
 ### <a name="issue"></a>Probléma
 
-Receive error message `interaction_required`.
+A rendszer hibaüzenetet kap `interaction_required`.
 
 ### <a name="cause"></a>Ok
 
-A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. If you choose to exempt the cluster (IP address based exemption policy), then make sure that the AD `ServiceEndpoints` are enabled for that vnet.
+A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy az AD `ServiceEndpoints` engedélyezve vannak az adott vnet.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Use conditional access policy and exempt the HDInisght clusters from MFA as shown in [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
+Használja a feltételes hozzáférési házirendet, és a HDInisght-fürtöket az MFA-ból is felhasználhatja, ahogy [azt a Enterprise Security Package Azure Active Directory Domain Services használatával történő konfigurálása](./apache-domain-joined-configure-using-azure-adds.md)című rész mutatja.
 
 ---
 
-## <a name="sign-in-denied"></a>Sign in denied
+## <a name="sign-in-denied"></a>Bejelentkezés megtagadva
 
 ### <a name="issue"></a>Probléma
 
-Sign in is denied.
+A bejelentkezés megtagadva.
 
 ### <a name="cause"></a>Ok
 
-To get to this stage, your OAuth authentication is not an issue, but Kerberos authentication is. If this cluster is backed by ADLS, OAuth sign in has succeeded before Kerberos auth is attempted. On WASB clusters, OAuth sign in is not attempted. There could be many reasons for Kerberos failure - like password hashes are out of sync, user account locked out in Azure AD DS, and so on. Password hashes sync only when the user changes password. When you create the Azure AD DS instance, it will start syncing passwords that are changed after the creation. It won't retroactively sync passwords that were set before its inception.
+Ennek a szakasznak a beszerzéséhez a OAuth-hitelesítés nem jelent problémát, de a Kerberos-hitelesítés is. Ha a fürtöt a ADLS támogatja, a OAuth-bejelentkezés sikeres volt a Kerberos-hitelesítés megkísérlése előtt. A WASB-fürtökön a OAuth bejelentkezés nem történt meg. Számos oka lehet a Kerberos-hibák, például a jelszó-kivonatok szinkronizálása, a felhasználói fiók kizárva az Azure AD DS, és így tovább. A jelszó-kivonatok szinkronizálása csak akkor történt meg, amikor a felhasználó megváltoztatja a jelszót. Az Azure AD DS példány létrehozásakor a rendszer elindítja a létrehozás után módosított jelszavak szinkronizálását. Nem fogja visszamenőlegesen szinkronizálni azokat a jelszavakat, amelyek a kezdetektől fogva lettek beállítva.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-If you think passwords may not be in sync, try changing the password and wait for a few minutes to sync.
+Ha úgy gondolja, hogy a jelszavak nem szinkronizálhatók, próbálja meg módosítani a jelszót, és várjon néhány percet.
 
-Try to SSH into a You will need to try to authenticate (kinit) using the same user credentials, from a machine that is joined to the domain. SSH into the head / edge node with a local user and then run kinit.
+Próbálja ki az SSH-t a-be, hogy a tartományhoz csatlakoztatott gépről ugyanazzal a felhasználói hitelesítő adatokkal próbálja meg hitelesíteni a hitelesítést (kinit parancsot). SSH-t a Head/Edge csomópontba egy helyi felhasználóval, majd futtassa a kinit parancsot.
 
 ---
 
-## <a name="kinit-fails"></a>kinit fails
+## <a name="kinit-fails"></a>a kinit parancsot sikertelen
 
 ### <a name="issue"></a>Probléma
 
-Kinit fails.
+A kinit parancsot sikertelen.
 
 ### <a name="cause"></a>Ok
 
-Varies.
+Változik.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-For kinit to succeed, you need to know your `sAMAccountName` (this is the short account name without the realm). `sAMAccountName` is usually the account prefix (like bob in `bob@contoso.com`). For some users, it could be different. You will need the ability to browse / search the directory to learn your `sAMAccountName`.
+Ahhoz, hogy a kinit parancsot sikeres legyen, ismernie kell a `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName` általában a fiók előtagja (például a `bob@contoso.com`). Egyes felhasználók esetében eltérő lehet. A `sAMAccountName`megismeréséhez szükség van a címtár tallózására és keresésére.
 
-Ways to find `sAMAccountName`:
+`sAMAccountName`megkeresésének módjai:
 
-* If you can sign in to Ambari using the local Ambari admin, look at the list of users.
+* Ha a helyi Ambari-rendszergazda használatával tud bejelentkezni a Ambari-be, tekintse meg a felhasználók listáját.
 
-* If you have a [domain joined windows machine](../../active-directory-domain-services/manage-domain.md), you can use the standard Windows AD tools to browse. This requires a working account in the domain.
+* Ha rendelkezik [tartományhoz csatlakozó Windows-géppel](../../active-directory-domain-services/manage-domain.md), a szabványos Windows ad-eszközök használatával böngészhet. Ehhez a tartományban működő fiókra van szükség.
 
-* From the head node, you can use SAMBA commands to search. This requires a valid Kerberos session (successful kinit). net ads search "(userPrincipalName=bob*)"
+* A fő csomóponton a SAMBA-parancsokat használhatja a kereséshez. Ehhez érvényes Kerberos-munkamenetre (sikeres kinit parancsot) van szükség. NET ADS-keresés (userPrincipalName = Bob *)
 
-    The search / browse results should show you the `sAMAccountName` attribute. Also, you could look at other attributes like `pwdLastSet`, `badPasswordTime`, `userPrincipalName` etc. to see if those properties match what you expect.
+    A keresés/Tallózás eredménynek meg kell jelennie a `sAMAccountName` attribútumnak. Emellett megtekintheti a többi olyan attribútumot is, mint például a `pwdLastSet`, `badPasswordTime`, `userPrincipalName` stb.).
 
 ---
 
-## <a name="kinit-fails-with-preauthentication-failure"></a>kinit fails with Preauthentication failure
+## <a name="kinit-fails-with-preauthentication-failure"></a>a kinit parancsot sikertelen előhitelesítés esetén
 
 ### <a name="issue"></a>Probléma
 
-Kinit fails with `Preauthentication` failure.
+A kinit parancsot `Preauthentication` hibával meghiúsul.
 
 ### <a name="cause"></a>Ok
 
-Incorrect username or password.
+Helytelen Felhasználónév vagy jelszó.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Check your username and password. Also check for other properties described above. To enable verbose debugging, run `export KRB5_TRACE=/tmp/krb.log` from the session before trying kinit.
+Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett egyéb tulajdonságokat is. A részletes hibakeresés engedélyezéséhez futtassa `export KRB5_TRACE=/tmp/krb.log` a munkamenetből a kinit parancsot kipróbálása előtt.
 
 ---
 
-## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Job / HDFS command fails due to TokenNotFoundException
+## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>A feladatok/HDFS parancs TokenNotFoundException miatt meghiúsul
 
 ### <a name="issue"></a>Probléma
 
-Job / HDFS command fails due to `TokenNotFoundException`.
+A feladatok/HDFS parancs `TokenNotFoundException`miatt meghiúsul.
 
 ### <a name="cause"></a>Ok
 
-The required OAuth access token was not found for the job / command to succeed. The ADLS / ABFS driver will try to retrieve the OAuth access token from the credential service before making storage requests. This token gets registered when you sign in to the Ambari portal using the same user.
+A szükséges OAuth hozzáférési jogkivonat nem található a sikeres művelethez/parancshoz. A ADLS/ABFS-illesztőprogram megpróbálja lekérni a OAuth hozzáférési tokent a hitelesítőadat-szolgáltatásból a tárolási kérelmek végrehajtása előtt. Ez a jogkivonat akkor lesz regisztrálva, ha ugyanazzal a felhasználóval jelentkezik be a Ambari-portálra.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-Ensure that you have successfully logged in to the Ambari portal once through the username whose identity is used to run the job.
+Győződjön meg arról, hogy sikeresen bejelentkezett a Ambari-portálra azon a felhasználónévn keresztül, amelynek az identitását a rendszer a feladatok futtatására használja.
 
 ---
 
-## <a name="error-fetching-access-token"></a>Error fetching access token
+## <a name="error-fetching-access-token"></a>Hiba a hozzáférési jogkivonat beolvasásakor
 
 ### <a name="issue"></a>Probléma
 
-User receives error message `Error fetching access token`.
+A felhasználó hibaüzenetet kap `Error fetching access token`.
 
 ### <a name="cause"></a>Ok
 
-This error occurs intermittently when users try to access the ADLS Gen2 using ACLs and the Kerberos token has expired.
+Ez a hiba időnként fordul elő, amikor a felhasználók ACL-ek használatával próbálnak hozzáférni a ADLS Gen2hoz, és a Kerberos-jogkivonat lejárt.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-* For Azure Data Lake Storage Gen1, clean browser cache and log into Ambari again.
+* Azure Data Lake Storage Gen1 a böngésző gyorsítótárát, és jelentkezzen be újra a Ambari.
 
-* For Azure Data Lake Storage Gen2, Run `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` for the user the user is trying to login as
+* Azure Data Lake Storage Gen2 esetén futtassa a `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>`t azon felhasználó számára, akit a felhasználó a következőként próbál bejelentkezni:
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Get answers from Azure experts through [Azure Community Support](https://azure.microsoft.com/support/community/).
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Connect with [@AzureSupport](https://twitter.com/azuresupport) - the official Microsoft Azure account for improving customer experience. Connecting the Azure community to the right resources: answers, support, and experts.
+* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* If you need more help, you can submit a support request from the [Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Select **Support** from the menu bar or open the **Help + support** hub. For more detailed information, review [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Access to Subscription Management and billing support is included with your Microsoft Azure subscription, and Technical Support is provided through one of the [Azure Support Plans](https://azure.microsoft.com/support/plans/).
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléssel és számlázással kapcsolatos támogatás a Microsoft Azure-előfizetés részét képezi, míg a technikai támogatást [Azure-támogatási csomagjainkkal](https://azure.microsoft.com/support/plans/) biztosítjuk.

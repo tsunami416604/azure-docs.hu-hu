@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs iOS 13 updates | Microsoft Docs
-description: Learn about iOS 13 breaking changes in Azure Notification Hubs
+title: Azure Notification Hubs iOS 13 frissítések | Microsoft Docs
+description: Ismerje meg az Azure-Notification Hubs iOS 13-es feltörésének változásait
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/16/2019
@@ -17,19 +17,19 @@ ms.locfileid: "74228144"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs-frissítések iOS 13-hoz
 
-Apple recently made some changes to their public push service; the changes mostly aligned with the releases of iOS 13 and Xcode. This article describes the impact of these changes on Azure Notification Hubs.
+Az Apple nemrég módosította a nyilvános leküldéses szolgáltatást; a módosítások többnyire az iOS 13 és a Xcode kiadásával összhangban vannak. Ez a cikk ismerteti a változások hatását az Azure Notification Hubsban.
 
-## <a name="apns-push-payload-changes"></a>APNS push payload changes
+## <a name="apns-push-payload-changes"></a>APNS leküldéses adattartalom módosítása
 
-### <a name="apns-push-type"></a>APNS push type
+### <a name="apns-push-type"></a>APNS leküldéses típusa
 
-Apple now requires that developers identify notifications as an alert or background notifications through the new `apns-push-type` header in the APNS API. According to [Apple's documentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "The value of this header must accurately reflect the contents of your notification's payload. Hibás egyezés esetén, vagy ha a fejléc hiányzik a kötelező rendszerekben, az APNs hibát eredményezhet, késleltetheti az értesítés leküldését, vagy meg is szakíthatja azt.”
+Az Apple mostantól megköveteli, hogy a fejlesztők riasztási vagy háttérbeli értesítésként azonosítsák az értesítéseket a APNS API új `apns-push-type` fejlécében. Az [Apple dokumentációja](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)szerint: "ennek a fejlécnek az értékének pontosan tükröznie kell az értesítési tartalom tartalmát. Hibás egyezés esetén, vagy ha a fejléc hiányzik a kötelező rendszerekben, az APNs hibát eredményezhet, késleltetheti az értesítés leküldését, vagy meg is szakíthatja azt.”
 
-Developers must now set this header in applications that send notifications through Azure Notification Hubs. Due to a technical limitation, customers must use token-based authentication for APNS credentials with requests that include this attribute. If you are using certificate-based authentication for your APNS credentials, you must switch to using token-based authentication.
+A fejlesztőknek most be kell állítania ezt a fejlécet olyan alkalmazásokban, amelyek értesítést küldenek az Azure Notification Hubson keresztül. Technikai korlátozás miatt az ügyfeleknek jogkivonat-alapú hitelesítést kell használniuk a APNS hitelesítő adataihoz az attribútumot tartalmazó kérelmekkel. Ha tanúsítványalapú hitelesítést használ a APNS hitelesítő adataihoz, a jogkivonat-alapú hitelesítés használatára kell váltania.
 
-The following code samples show how to set this header attribute in notification requests sent through Azure Notification Hubs.
+Az alábbi mintakód bemutatja, hogyan állíthatja be ezt a fejléc-attribútumot az Azure Notification Hubs által küldött értesítési kérelmekben.
 
-#### <a name="template-notifications---net-sdk"></a>Template notifications - .NET SDK
+#### <a name="template-notifications---net-sdk"></a>Sablon értesítései – .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -40,7 +40,7 @@ notification.Headers = headers;
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="native-notifications---net-sdk"></a>Native notifications - .NET SDK
+#### <a name="native-notifications---net-sdk"></a>Natív értesítések – .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -49,7 +49,7 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="direct-rest-calls"></a>Direct REST calls
+#### <a name="direct-rest-calls"></a>Közvetlen REST-hívások
 
 ```csharp
 var request = new HttpRequestMessage(method, $"<resourceUri>?api-version=2017-04");
@@ -58,13 +58,13 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-To help you during this transition, when Azure Notification Hubs detects a notification that doesn't have the `apns-push-type` set, the service infers the push type from the notification request and sets the value automatically. Remember that you must configure Azure Notification Hubs to use token-based authentication to set the required header; for more information, see [Token-based (HTTP/2) Authentication for APNS](notification-hubs-push-notification-http2-token-authentification.md).
+Az áttérés során az Azure Notification Hubs olyan értesítést észlel, amely nem rendelkezik `apns-push-type` készlettel, a szolgáltatás kikövetkezteti a leküldéses típust az értesítési kérelemből, és automatikusan beállítja az értéket. Ne feledje, hogy az Azure Notification Hubs-t úgy kell konfigurálnia, hogy jogkivonat-alapú hitelesítést használjon a szükséges fejléc beállításához. További információ: [jogkivonat-alapú (http/2) hitelesítés a APNS](notification-hubs-push-notification-http2-token-authentification.md).
 
-## <a name="apns-priority"></a>APNS priority
+## <a name="apns-priority"></a>APNS prioritása
 
-Another minor change, but one that requires a change to the backend application that sends notifications, is the requirement that for background notifications the `apns-priority` header must now be set to 5. Many applications set the `apns-priority` header to 10 (indicating immediate delivery), or don't set it and get the default value (which is also 10).
+Egy másik kisebb változás, de a háttérben futó alkalmazásnak az értesítéseket küldő háttér-alkalmazás módosítására van szükség, ezért az `apns-priority` fejlécnek most 5 értékre kell állítania. Számos alkalmazás állítja be a `apns-priority` fejlécet 10 értékre (amely azonnali kézbesítést jelez), vagy nem állítja be, és nem kapja meg az alapértelmezett értéket (amely szintén 10).
 
-Setting this value to 10 is no longer allowed for background notifications, and you must set the value for each request. Apple will not deliver background notifications if this value is missing. Példa:
+Ha ezt az értéket 10 értékre állítja, az már nem engedélyezett a háttérben futó értesítések esetében, és minden kérelemnél meg kell adnia az értéket. Ha hiányzik az érték, az Apple nem küld háttérbeli értesítéseket. Például:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -73,6 +73,6 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-## <a name="sdk-changes"></a>SDK changes
+## <a name="sdk-changes"></a>SDK-változások
 
-For years, iOS developers used the `description` attribute of the `deviceToken` data sent to the push token delegate to extract the push token that a backend application uses to send notifications to the device. With Xcode 11, that `description` attribute changed to a different format. Existing code that developers used for this attribute is now broken. We have updated the Azure Notification Hubs SDK to accommodate this change, so please update the SDK used by your applications to version 2.0.4 or newer of the [Azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios).
+Az iOS-fejlesztők évek óta használták a leküldéses jogkivonat delegálására küldött `deviceToken` adatok `description` attribútumát, hogy kinyerje a háttérbeli alkalmazás által az értesítések küldéséhez használt leküldéses tokent. A Xcode 11 esetében az `description` attribútum más formátumra változott. A meglévő kód, amelyet az attribútumhoz használt fejlesztők már megszakítottak. Frissítettük az Azure Notification Hubs SDK-t a változás befogadásához, ezért frissítse az alkalmazásai által használt SDK-t az [azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios)2.0.4 vagy újabb verziójára.

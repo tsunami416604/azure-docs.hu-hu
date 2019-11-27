@@ -1,111 +1,111 @@
 ---
-title: PCI-DSS v3.2.1 blueprint sample - Deploy steps
-description: Deploy steps for the Payment Card Industry Data Security Standard v3.2.1 blueprint sample including blueprint artifact parameter details.
+title: A PCI-DSS v 3.2.1 terv üzembe helyezési mintája
+description: Üzembe helyezheti a Payment Card Industry adatbiztonsági szabvány v 3.2.1 tervének lépéseit, beleértve a terv-összetevő paraméterének részleteit.
 ms.date: 06/24/2019
 ms.topic: sample
-ms.openlocfilehash: f8759a1686a89f4e3f70e1876f661805e5dbda39
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: aa641b35f1a7533a13803e7984c83df2f3268de6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404002"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546551"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Deploy the PCI-DSS v3.2.1 blueprint sample
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
-To deploy the Azure Blueprints PCI-DSS v3.2.1 blueprint sample, the following steps must be taken:
+Az Azure-tervrajzok PCI-DSS v 3.2.1 Blueprint-minta üzembe helyezéséhez a következő lépéseket kell végrehajtani:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Find the **PCI-DSS v3.2.1** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. Keresse meg a **PCI-DSS v 3.2.1** terv mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Blueprint name**: Provide a name for your copy of the PCI-DSS v3.2.1 blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
+   - **Terv neve**: adjon meg egy nevet a PCI-DSS v 3.2.1 terv mintájának másolatához.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the PCI-DSS v3.2.1 standard.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a PCI-DSS v 3.2.1 standard csomagból is áthelyezhető.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the PCI-DSS v3.2.1 blueprint sample." Then select **Publish** at the bottom of the page.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint például az "első verzió a PCI-DSS v 3.2.1 tervből" című példa. Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
-1. Provide the parameter values for the blueprint assignment:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
-   - Lock Assignment
+   - Hozzárendelés zárolása
 
-     Select the blueprint lock setting for your environment. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Leave the default _system assigned_ managed identity option.
+     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Artifact parameters
+   - Összetevő paramétereinek
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-The following table provides a list of the blueprint artifact parameters:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Artifact name|Artifact type|Paraméter neve|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Preview\] Audit PCI v3.2.1:2018 controls and deploy specific VM Extensions to support audit requirements|Szabályzat-hozzárendelés|List of Resource Types | Audit diagnostic setting for selected resource types. Default value is all resources are selected| 
-|Engedélyezett helyek|Szabályzat-hozzárendelés|List Of Allowed Locations|List of data center locations allowed for any resource to be deployed into. This list is customizable to the desired Azure locations globally. Select locations you wish to allow.| 
-|Allowed Locations for resource groups|Szabályzat-hozzárendelés |Allowed Location |This policy enables you to restrict the locations your organization can create resource groups in. A földrajzi megfelelőségi követelmények betartására szolgál.| 
-|Deploy Auditing on SQL servers|Szabályzat-hozzárendelés|Retention days|Data retention in number of days. Default value is 180 but PCI requires 365.| 
-|Deploy Auditing on SQL servers|Szabályzat-hozzárendelés|Resource group name for storage account|Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region).| 
+|\[előzetes verzió\] a PCI v 3.2.1:2018-as verziójának ellenőrzése és speciális virtuálisgép-bővítmények telepítése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
+|Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
+|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A földrajzi megfelelőségi követelmények betartására szolgál.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Adatmegőrzés a napok száma szerint. Az alapértelmezett érték 180, de a PCI esetében 365.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd).| 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you've reviewed the steps to deploy the PCI-DSS v3.2.1 blueprint sample, visit the following articles to learn about the overview and control mapping:
+Most, hogy áttekintette a PCI-DSS v 3.2.1 Blueprint minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v3.2.1 blueprint - Overview](./index.md)
-> [PCI-DSS v3.2.1 blueprint - Control mapping](./control-mapping.md)
+> [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
+> [PCI-DSS v 3.2.1 terv – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és a használatukról:
 

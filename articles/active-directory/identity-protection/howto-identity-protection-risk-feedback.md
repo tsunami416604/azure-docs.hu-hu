@@ -1,6 +1,6 @@
 ---
-title: Provide risk feedback in Azure Active Directory Identity Protection
-description: How and why should you provide feedback on Identity Protection risk detections.
+title: Kockázati visszajelzés nyújtása Azure Active Directory Identity Protection
+description: Hogyan és miért érdemes visszajelzést adni az Identity Protection kockázati észleléséről.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,46 +18,46 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382091"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>How To: Give risk feedback in Azure AD Identity Protection
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Útmutató: kockázati visszajelzés küldése Azure AD Identity Protection
 
-Azure AD Identity Protection allows you to give feedback on its risk assessment. The following document lists the scenarios where you would like to give feedback on Azure AD Identity Protection’s risk assessment and how we incorporate it.
+Azure AD Identity Protection lehetővé teszi, hogy visszajelzést nyújtson a kockázatértékelésről. A következő dokumentum felsorolja azokat a forgatókönyveket, amelyekkel visszajelzést szeretne küldeni a Azure AD Identity Protection kockázatértékeléséről és azok beépítéséről.
 
-## <a name="what-is-a-detection"></a>What is a detection?
+## <a name="what-is-a-detection"></a>Mi az észlelés?
 
-An Identity Protection detection is an indicator of suspicious activity from an identity risk perspective. These suspicious activities are called risk detections. These identity-based detections can be based on heuristics, machine learning or can come from partner products. These detections are used to determine sign-in risk and user risk,
+Az Identity Protection-észlelés egy gyanús tevékenységnek az identitás kockázati perspektívájában való jelzése. Ezeket a gyanús tevékenységeket kockázati észlelésnek nevezzük. Ezek az identitás-alapú észlelések heurisztikus, gépi tanulás vagy partner termékekből származhatnak. Ezek az észlelések a bejelentkezési kockázat és a felhasználói kockázat meghatározására szolgálnak.
 
-* User risk represents the probability an identity is compromised.
-* Sign-in risk represents the probability a sign-in is compromised (for example, the sign-in is not authorized by the identity owner).
+* A felhasználói kockázat azt jelenti, hogy az identitás sérült.
+* A bejelentkezési kockázat azt jelenti, hogy a bejelentkezés valószínűsége sérült (például a bejelentkezést nem az identitás tulajdonosa engedélyezi).
 
-## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Why should I give risk feedback to Azure AD’s risk assessments? 
+## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Miért érdemes kockázati visszajelzést adni az Azure AD kockázatértékeléséhez? 
 
-There are several reasons why you should give Azure AD risk feedback:
+Az Azure AD kockázati visszajelzésének több oka is van:
 
-- **You found Azure AD’s user or sign-in risk assessment incorrect**. For example, a sign-in shown in ‘Risky sign-ins’ report was benign and all the detections on that sign-in were false positives.
-- **You validated that Azure AD’s user or sign-in risk assessment was correct**. For example, a sign-in shown in ‘Risky sign-ins’ report was indeed malicious and you want Azure AD to know that all the detections on that sign-in were true positives.
-- **You remediated the risk on that user outside of Azure AD Identity Protection** and you want the user’s risk level to be updated.
+- Az **Azure ad felhasználói vagy bejelentkezési kockázatbecslését helytelenül találta**. Például a "kockázatos bejelentkezések" jelentésben látható Bejelentkezés jóindulatú volt, és a bejelentkezéshez tartozó összes észlelés hamis pozitív volt.
+- **Ellenőrizte, hogy az Azure ad felhasználói vagy bejelentkezési kockázatfelmérése helyes volt**. Például a "kockázatos bejelentkezések" jelentésben látható Bejelentkezés valóban rosszindulatú, és azt szeretné, hogy az Azure AD tudja, hogy a bejelentkezés összes észlelése igaz pozitív volt.
+- Kijavította **a kockázatot a Azure ad Identity Protectionon kívüli felhasználónál** , és szeretné frissíteni a felhasználó kockázati szintjét.
 
-## <a name="how-does-azure-ad-use-my-risk-feedback"></a>How does Azure AD use my risk feedback?
+## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Hogyan használja az Azure AD a kockázatos visszajelzést?
 
-Azure AD uses your feedback to update the risk of the underlying user and/or sign-in and the accuracy of these events. This feedback helps secure the end user. For example, once you confirm a sign-in is compromised, Azure AD immediately increases the user’s risk and sign-in’s aggregate risk (not real-time risk) to High. If this user is included in your user risk policy to force High risk users to securely reset their passwords, the user will automatically remediate itself the next time they sign-in.
+Az Azure AD a Visszajelzésével frissíti az alapul szolgáló felhasználó és/vagy bejelentkezés kockázatát, valamint az események pontosságát. Ez a visszajelzés segít a végfelhasználó biztonságossá tételében. Ha például a rendszer megerősíti a bejelentkezést, az Azure AD azonnal növeli a felhasználó kockázatát és a bejelentkezés összesített kockázatát (nem valós idejű kockázat) magasra. Ha ez a felhasználó a felhasználói kockázati házirendben szerepel, hogy a magas kockázatú felhasználókat kényszerítse a jelszavak biztonságos alaphelyzetbe állítására, a felhasználó a következő bejelentkezéskor automatikusan szervizelni fogja magát.
 
-## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>How should I give risk feedback and what happens under the hood?
+## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Hogyan adhatok ki kockázati visszajelzést, és mi történik a motorháztető alatt?
 
-Here are the scenarios and mechanisms to give risk feedback to Azure AD.
+Az alábbi forgatókönyvek és mechanizmusok az Azure AD-re vonatkozó kockázati visszajelzéseket biztosítanak.
 
-| Alkalmazási helyzet | How to give feedback? | What happens under the hood? | Megjegyzések |
+| Forgatókönyv | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Megjegyzések |
 | --- | --- | --- | --- |
-| **Sign-in not compromised (False positive)** <br> ‘Risky sign-ins’ report shows an at-risk sign-in [Risk state = At risk] but that sign-in was not compromised. | Select the sign-in and click on ‘Confirm sign-in safe’. | Azure AD will move the sign-in’s aggregate risk to none [Risk state = Confirmed safe; Risk level (Aggregate) = -] and will reverse its impact on the user risk. | Currently, the ‘Confirm sign-in safe’ option is only available in ‘Risky sign-ins’ report. |
-| **Sign-in compromised (True positive)** <br> ‘Risky sign-ins’ report shows an at-risk sign-in [Risk state = At risk] with low risk [Risk level (Aggregate) = Low] and that sign-in was indeed compromised. | Select the sign-in and click on ‘Confirm sign-in compromised’. | Azure AD will move the sign-in’s aggregate risk and the user risk to High [Risk state = Confirmed compromised; Risk level = High]. | Currently, the ‘Confirm sign-in compromised’ option is only available in ‘Risky sign-ins’ report. |
-| **User compromised (True positive)** <br> ‘Risky users’ report shows an at-risk user [Risk state = At risk] with low risk [Risk level = Low] and that user was indeed compromised. | Select the user and click on ‘Confirm user compromised’. | Azure AD will move the user risk to High [Risk state = Confirmed compromised; Risk level = High] and will add a new detection ‘Admin confirmed user compromised’. | Currently, the ‘Confirm user compromised’ option is only available in ‘Risky users’ report. <br> The detection ‘Admin confirmed user compromised’ is shown in the tab ‘Risk detections not linked to a sign-in’ in the ‘Risky users’ report. |
-| **User remediated outside of Azure AD Identity Protection (True positive + Remediated)** <br> ‘Risky users’ report shows an at-risk user and I have subsequently remediated the user outside of Azure AD Identity Protection. | 1. Select the user and click ‘Confirm user compromised’. (This process confirms to Azure AD that the user was indeed compromised.) <br> 2. Wait for the user’s ‘Risk level’ to go to High. (This time gives Azure AD the needed time to take the above feedback to the risk engine.) <br> 3. Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is no longer compromised.) |  Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -] and closes the risk on all existing sign-ins having active risk. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. |
-| **User not compromised (False positive)** <br> ‘Risky users’ report shows at at-risk user but the user is not compromised. | Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is not compromised.) | Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -]. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. |
-| I want to close the user risk but I am not sure whether the user is compromised / safe. | Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is no longer compromised.) | Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -]. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. We recommend you remediate the user by clicking on ‘Reset password’ or request the user to securely reset/change their credentials. |
+| **Bejelentkezés nem sérült (hamis pozitív)** <br> A "kockázatos bejelentkezések" jelentésben a kockázatos bejelentkezés [kockázati állapot = veszélyeztetett] látható, de a bejelentkezés nem sérült meg. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés biztonságos megerősítése" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, hogy egyik sem [kockázati állapot = megerősített biztonság; Kockázati szint (aggregált) =-], és megfordítja a felhasználói kockázatra gyakorolt hatását. | Jelenleg a "bejelentkezési biztonság megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
+| **Bejelentkezés feltört (igaz pozitív)** <br> A "kockázatos bejelentkezések" jelentés a kockázatos bejelentkezési [kockázati állapot = kockázat] értéket jeleníti meg, alacsony kockázatú [kockázati szint (aggregált) = alacsony], és a bejelentkezés valóban sérült. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés megerősítése – feltört" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, és a kockázat a magas [kockázat állapot = megerősítve: sérült; Kockázati szint = magas]. | Jelenleg a "megerősítő bejelentkezés megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
+| **Felhasználó által megsérült (igaz pozitív)** <br> A "kockázatos felhasználók" jelentés a kockázatos [kockázati állapot = kockázat] kockázati tényezőt jeleníti meg, amely alacsony kockázatú [kockázati szint = alacsony], és a felhasználót valóban feltörték. | Válassza ki a felhasználót, és kattintson a "felhasználó megerősítve" lehetőségre. | Az Azure AD áthelyezi a felhasználói kockázatot a magas [kockázati állapot = megerősített sérült; Kockázati szint = magas] és felvesz egy új észlelési "rendszergazda által megerősített felhasználó sérült". | Jelenleg a "felhasználói biztonság megerősítése" beállítás csak a "kockázatos felhasználók" jelentésben érhető el. <br> A "rendszergazda által megerősített felhasználó által megsérült" észlelés a "kockázatos felhasználók" jelentés "bejelentkezéshez nem csatolt" lapján jelenik meg. |
+| **A Azure AD Identity Protectionon kívüli szervizelt felhasználó (valódi pozitív és szervizelt)** <br> A "kockázatos felhasználók" jelentés egy veszélyeztetett felhasználót mutat be, és a későbbiekben a Azure AD Identity Protectionon kívül szervizelem a felhasználót. | 1. Válassza ki a felhasználót, és kattintson a "a felhasználó által feltörtek megerősítése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó valóban sérült.) <br> 2. Várjon, amíg a felhasználó "kockázati szintje" magasra mutat. (Ezúttal az Azure AD számára szükséges időt biztosít a fenti visszajelzések elvégzéséhez a kockázati motornak.) <br> 3. Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó már nem sérült.) |  Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-], és az aktív kockázattal rendelkező összes meglévő bejelentkezés kockázatának kizárja. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. Ez a művelet nem vonható vissza. |
+| **A felhasználó nem sérült (hamis pozitív)** <br> A "kockázatos felhasználók" jelentés a veszélyeztetett felhasználónál jelenik meg, de a felhasználó nem sérül. | Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó nem sérült.) | Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-]. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. Ez a művelet nem vonható vissza. |
+| Le szeretném állítani a felhasználói kockázatot, de nem vagyok biztos benne, hogy a felhasználó biztonságban van-e. | Válassza ki a felhasználót, és kattintson a "felhasználói kockázat elvetése" gombra. (Ez a folyamat megerősíti az Azure AD-t, hogy a felhasználó már nem sérült.) | Az Azure AD a következő kockázatokat helyezi át a felhasználónak: nincs [kockázati állapot = elutasítva; Kockázati szint =-]. | Ha a "felhasználói kockázat elvetése" gombra kattint, a rendszer bezárja a felhasználó és a korábbi bejelentkezések összes kockázatát. Ez a művelet nem vonható vissza. Javasoljuk, hogy a "jelszó alaphelyzetbe állítása" gombra kattintva javítsa a felhasználót, vagy kérje meg a felhasználótól a hitelesítő adatok biztonságos visszaállítását/módosítását. |
 
-Feedback on user risk detections in Identity Protection is processed offline and may take some time to update. The risk processing state column will provide the current state of feedback processing.
+A rendszer offline állapotba állítja a felhasználói kockázat észlelésével kapcsolatos visszajelzéseket, és eltarthat egy ideig a frissítéshez. A kockázat-feldolgozási állapot oszlop a visszajelzések feldolgozásának aktuális állapotát fogja biztosítani.
 
-![Risk processing state for risky user report](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
+![Kockázat-feldolgozási állapot a kockázatos felhasználói jelentéshez](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Active Directory Identity Protection risk detections reference](risk-events-reference.md)
+- [Azure Active Directory Identity Protection kockázati észlelések referenciája](risk-events-reference.md)

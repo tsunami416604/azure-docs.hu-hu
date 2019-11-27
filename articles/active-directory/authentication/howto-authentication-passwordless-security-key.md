@@ -1,6 +1,6 @@
 ---
-title: Passwordless security key sign (preview) - Azure Active Directory
-description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
+title: Jelszó nélküli biztonsági kulcs aláírása (előzetes verzió) – Azure Active Directory
+description: Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése az Azure AD-be az FIDO2 biztonsági kulcsok használatával (előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,91 +18,91 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381856"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Enable passwordless security key sign in (preview)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
-For enterprises that use passwords today and have a shared PC environment, security keys provide a seamless way for workers to authenticate without entering a username or password. Security keys provide improved productivity for workers, and have better security.
+Azok a vállalatok, amelyek a jelszavakat ma és megosztott számítógépes környezettel használják, a biztonsági kulcsok zökkenőmentesen biztosítják a feldolgozók számára a Felhasználónév vagy a jelszó beírása nélkül történő hitelesítést. A biztonsági kulcsok nagyobb hatékonyságot biztosítanak a dolgozók számára, és jobb biztonságot nyújtanak.
 
-This document focuses on enabling security key based passwordless authentication. At the end of this article, you will be able to sign in to web-based applications with your Azure AD account using a FIDO2 security key.
+Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedélyezését összpontosítja. A cikk végén az Azure AD-fiókjával bejelentkezhet a web-alapú alkalmazásokba egy FIDO2 biztonsági kulccsal.
 
 |     |
 | --- |
-| FIDO2 security keys are a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>Követelmények
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
-- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN requires Windows 10 version 1809 or higher**
+- [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md)
+- Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
+- A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli * *
 
-To use security keys for logging in to web apps and services, you must have a browser that supports the WebAuthN protocol. These include Microsoft Edge, Chrome, Firefox, and Safari.
+A webalkalmazásokhoz és szolgáltatásokhoz való bejelentkezéshez szükséges biztonsági kulcsok használatához olyan böngészőre van szükség, amely támogatja az WebAuthN protokollt. Ezek közé tartozik a Microsoft Edge, a Chrome, a Firefox és a Safari.
 
-## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
+## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-Devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
+A teszteléshez használt eszközökön a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
 
-## <a name="enable-passwordless-authentication-method"></a>Enable passwordless authentication method
+## <a name="enable-passwordless-authentication-method"></a>Jelszóval nem rendelkező hitelesítési módszer engedélyezése
 
-### <a name="enable-the-combined-registration-experience"></a>Enable the combined registration experience
+### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztráció használatának engedélyezése
 
-Registration features for passwordless authentication methods rely on the combined registration preview. Follow the steps in the article [Enable combined security information registration (preview)](howto-registration-mfa-sspr-combined.md), to enable the combined registration preview.
+A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói a közös regisztráció előzetes verziójára támaszkodnak. A kombinált regisztráció előzetes verziójának engedélyezéséhez kövesse a [kombinált biztonsági információk regisztrálásának engedélyezése (előzetes verzió)](howto-registration-mfa-sspr-combined.md)című cikkben ismertetett lépéseket.
 
-### <a name="enable-fido2-security-key-method"></a>Enable FIDO2 security key method
+### <a name="enable-fido2-security-key-method"></a>FIDO2 biztonsági kulcs módszerének engedélyezése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Browse to **Azure Active Directory** > **Security** > **Authentication methods** > **Authentication method policy (Preview)** .
-1. Under the method **FIDO2 Security Key**, choose the following options:
-   1. **Enable** - Yes or No
-   1. **Target** - All users or Select users
-1. **Save** the configuration.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Tallózással keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési módszereit** > **hitelesítési módszer házirendje (előzetes verzió)** .
+1. A Method **FIDO2 biztonsági kulcs**alatt válassza a következő beállításokat:
+   1. **Engedélyezés** – igen vagy nem
+   1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
+1. **Mentse** a konfigurációt.
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>User registration and management of FIDO2 security keys
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 biztonsági kulcsok felhasználói regisztrációja és kezelése
 
-1. Browse to [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
-1. Sign in if not already.
-1. Click **Security Info**.
-   1. If the user already has at least one Azure Multi-Factor Authentication method registered, they can immediately register a FIDO2 security key.
-   1. If they don’t have at least one Azure Multi-Factor Authentication method registered, they must add one.
-1. Add a FIDO2 Security key by clicking **Add method** and choosing **Security key**.
-1. Choose **USB device** or **NFC device**.
-1. Have your key ready and choose **Next**.
-1. A box will appear and ask the user to create/enter a PIN for your security key, then perform the required gesture for the key, either biometric or touch.
-1. The user will be returned to the combined registration experience and asked to provide a meaningful name for the key so the user can identify which one if they have multiple. Kattintson a **Tovább** gombra.
-1. Click **Done** to complete the process.
+1. Tallózással keresse meg [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Ha még nem tette meg, jelentkezzen be.
+1. Kattintson a **biztonsági adatok**elemre.
+   1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
+   1. Ha nincs legalább egy Azure Multi-Factor Authentication-metódus regisztrálva, hozzá kell adnia egyet.
+1. Adjon hozzá egy FIDO2 biztonsági kulcsot a **metódus hozzáadása** és a **biztonsági kulcs**kiválasztása elemre kattintva.
+1. Válasszon **USB-eszközt** vagy **NFC-eszközt**.
+1. Álljon készen a kulcsra, és válassza a **tovább**lehetőséget.
+1. Megjelenik egy mező, és megkéri a felhasználót, hogy hozzon létre/adjon meg egy PIN-kódot a biztonsági kulcshoz, majd végezze el a szükséges kézmozdulatot a kulcshoz, vagy a biometrikus vagy az érintést.
+1. A rendszer visszaadja a felhasználót a közös regisztrációs élménynek, és a rendszer arra kéri, hogy adjon meg egy értelmes nevet a kulcs számára, hogy a felhasználó azonosítani tudja, melyik a többhöz. Kattintson a **Tovább** gombra.
+1. A folyamat befejezéséhez kattintson a **kész** gombra.
 
-## <a name="sign-in-with-passwordless-credential"></a>Sign in with passwordless credential
+## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
-In the example below a user has already provisioned their FIDO2 security key. The user can choose to sign in on the web with their FIDO2 security key inside of a supported browser on Windows 10 version 1809 or higher.
+Az alábbi példában a felhasználó már kiépített egy FIDO2 biztonsági kulcsot. A felhasználó úgy is dönthet, hogy a Windows 10 1809-es vagy újabb verziójában egy támogatott böngészőn belül bejelentkezik a webes FIDO2 biztonsági kulcsával.
 
-![Security key sign-in Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![Biztonsági kulcs aláírása a Microsoft Edge-ben](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
+## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés
 
-If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
+Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül.
 
-1. Launch **Feedback Hub** and make sure you're signed in.
-1. Submit feedback under the following categorization:
-   1. Category: Security and Privacy
-   1. Subcategory: FIDO
-1. To capture logs, use the option: **Recreate my Problem**
+1. Indítsa el a **visszajelzési** központot, és ellenőrizze, hogy be van-e jelentkezve.
+1. Küldjön visszajelzést a következő kategorizálás alá:
+   1. Kategória: biztonság és adatvédelem
+   1. Alkategória:
+1. A naplók rögzítéséhez használja a következő lehetőséget: a **probléma újbóli létrehozása**
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="security-key-provisioning"></a>Security key provisioning
+### <a name="security-key-provisioning"></a>Biztonsági kulcs kiépítés
 
-Administrator provisioning and de-provisioning of security keys is not available in the public preview.
+A nyilvános előzetes verzióban nem érhető el a rendszergazdai kiépítés és a biztonsági kulcsok kiépítés.
 
-### <a name="upn-changes"></a>UPN changes
+### <a name="upn-changes"></a>UPN-változások
 
-If a user’s UPN changes, you can no longer modify FIDO2 security keys to account for the change. The resolution is to reset the device and the user has to re-register their FIDO2 security keys.
+Ha a felhasználó egyszerű felhasználóneve megváltozik, már nem módosíthatja a FIDO2 biztonsági kulcsait a módosításhoz. A megoldás az eszköz alaphelyzetbe állítása, és a felhasználónak újra regisztrálnia kell a FIDO2 biztonsági kulcsait.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[FIDO2 security key Windows 10 sign in](howto-authentication-passwordless-security-key-windows.md)
+[FIDO2 biztonsági kulcs Windows 10-es bejelentkezés](howto-authentication-passwordless-security-key-windows.md)
 
-[Enable FIDO2 authentication to on-premises resources](howto-authentication-passwordless-security-key-on-premises.md)
+[FIDO2-hitelesítés engedélyezése helyszíni erőforrásokhoz](howto-authentication-passwordless-security-key-on-premises.md)
 
-[Learn more about device registration](../devices/overview.md)
+[További információ az eszközök regisztrálásáról](../devices/overview.md)
 
-[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[További információ az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

@@ -1,7 +1,7 @@
 ---
-title: Create configurations from existing servers - Azure Automation
-description: Learn how to create configurations from existing servers for Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Konfigurációk létrehozása meglévő kiszolgálókból – Azure Automation
+description: Megtudhatja, hogyan hozhat létre konfigurációkat meglévő kiszolgálókról Azure Automation számára.
+keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -17,34 +17,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231688"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Create configurations from existing servers
+# <a name="create-configurations-from-existing-servers"></a>Konfigurációk létrehozása meglévő kiszolgálókból
 
-> Applies To: Windows PowerShell 5.1
+> A következőkre vonatkozik: Windows PowerShell 5,1
 
-Creating configurations from existing servers can be a challenging task.
-You might not want *all* settings, just those that you care about.
-Even then you need to know in what order the settings must be applied in order for the configuration to apply successfully.
+A meglévő kiszolgálók konfigurációinak létrehozása kihívást jelentő feladat lehet.
+Előfordulhat, hogy nem szeretné, hogy *minden* beállítás, csak azokat, amelyeket érdekel.
+Még akkor is tudnia kell, hogy milyen sorrendben kell alkalmazni a beállításokat ahhoz, hogy a konfiguráció sikeres legyen.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
+> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
 
-## <a name="community-project-reversedsc"></a>Community project: ReverseDSC
+## <a name="community-project-reversedsc"></a>Közösségi projekt: ReverseDSC
 
-A community maintained solution named [ReverseDSC](https://github.com/microsoft/reversedsc) has been created to work in this area starting SharePoint.
+A [ReverseDSC](https://github.com/microsoft/reversedsc) nevű közösségi karbantartó megoldás azért jött létre, hogy ezen a helyen működjön a SharePoint megkezdése előtt.
 
-The solution builds on the [SharePointDSC resource](https://github.com/powershell/sharepointdsc) and extends it to orchestrate [gathering information](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) from existing SharePoint servers.
-The latest version has multiple [extraction modes](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) to determine what level of information to include.
+A megoldás a [SharePointDSC erőforrásra](https://github.com/powershell/sharepointdsc) épül, és kibővíti a meglévő SharePoint-kiszolgálók [összegyűjtési adatainak](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) összekapcsolására.
+A legújabb verzió több [kibontási móddal](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) rendelkezik, amelyekkel meghatározható, hogy milyen szintű információt tartalmazzon.
 
-The result of using the solution is generating [Configuration Data](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) to be used with SharePointDSC configuration scripts.
+A megoldás használatával a SharePointDSC konfigurációs parancsfájljaival használandó [konfigurációs adatai](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) hozhatók létre.
 
-Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/overview/overview) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Az adatfájlok létrejötte után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/overview/overview) használatával MOF-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.
 
-To try out ReverseDSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) and download the solution or click "Project Site" to view the [documentation](https://github.com/Microsoft/sharepointDSC.reverse).
+A ReverseDSC kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/ReverseDSC/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/Microsoft/sharepointDSC.reverse)megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
+- [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
+- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)

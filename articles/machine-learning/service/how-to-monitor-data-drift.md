@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276780"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539244"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett modellek adateltolódásának (előzetes verzió) észlelése
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény 
 A Azure Machine Learning segítségével figyelheti a bemeneteket egy AK-ra telepített modellbe, és összehasonlíthatja ezeket az adatokat a modell betanítási adatkészletével. A következtetések rendszeres időközönként [pillanatfelvételt](how-to-explore-prepare-data.md)készítenek, és a rendszer az alapadatkészlet alapján számítja ki az adateltolódás elemzését, amely a következő adatokat eredményezi: 
 
 + A drift együtthatónak nevezett adateltolódás mértékét méri.
-+ A szolgáltatás által okozott adateltolódási hozzájárulás mértéke, amely tájékoztatja, hogy mely funkciók okozták az adateltolódást.
++ A szolgáltatás által okozott adateltolódási hozzájárulás mértéke, amely azt jelzi, hogy mely funkciók okozták az adateltolódást.
 + Méri a távolsági metrikákat. Jelenleg a Wasserstein és az energia távolságát számítjuk ki.
 + A funkciók eloszlását méri. Jelenleg a kernel sűrűségének becslése és hisztogramja.
 + Riasztásokat küldhet az adateltolódásnak e-mailben.
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ A következő Python-példa bemutatja, hogyan ábrázolhatja a kapcsolódó adat
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

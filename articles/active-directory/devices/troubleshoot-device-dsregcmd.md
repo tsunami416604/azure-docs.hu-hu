@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot using the dsregcmd command - Azure Active Directory
-description: Using the output from dsregcmd to understand the state of devices in Azure AD
+title: Hibakeresés a dsregcmd parancs használatával – Azure Active Directory
+description: A dsregcmd kimenetének használata az Azure AD-ban lévő eszközök állapotának megismeréséhez
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,30 +18,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379205"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Troubleshooting devices using the dsregcmd command
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
 
-The dsregcmd /status utility must be run as a domain user account.
+A dsregcmd/status segédprogramot tartományi felhasználói fiókkal kell futtatni.
 
-## <a name="device-state"></a>Device state
+## <a name="device-state"></a>Eszköz állapota
 
-This section lists the device join state parameters. The table below lists the criteria for the device to be in various join states.
+Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel. Az alábbi táblázat felsorolja az eszköz különböző illesztési állapotokban való bekapcsolásának feltételeit.
 
-| AzureAdJoined | EnterpriseJoined | DomainJoined | Device state |
+| AzureAdJoined | EnterpriseJoined | DomainJoined | Eszköz állapota |
 | ---   | ---   | ---   | ---   |
-| YES | NO | NO | Azure AD Joined |
-| NO | NO | YES | Domain Joined |
-| YES | NO | YES | Hybrid AD Joined |
-| NO | YES | YES | On-premises DRS Joined |
+| igen | NO | NO | Azure AD-hez csatlakoztatott |
+| NO | NO | igen | Tartományhoz csatlakoztatott |
+| igen | NO | igen | Hibrid AD-hez csatlakoztatott |
+| NO | igen | igen | A helyszíni DRS csatlakoztatva |
 
 > [!NOTE]
-> Workplace Join (Azure AD registered) state is displayed in the "User State" section
+> Workplace Join (az Azure AD-ben regisztrált) állapot a "felhasználói állapot" szakaszban jelenik meg
 
-- **AzureAdJoined:** - Set to “YES” if the device is Joined to Azure AD. “NO” otherwise.
-- **EnterpriseJoined:** - Set to “YES” if the device is Joined to an on-premises DRS. A device cannot be both EnterpriseJoined and AzureAdJoined.
-- **DomainJoined:** - Set to “YES” if the device is joined to a domain (AD).
-- **DomainName:** - Set to the name of the domain if the device is joined to a domain.
+- **AzureAdJoined:** – az "igen" értékre állítva, ha az eszköz csatlakoztatva van az Azure ad-hez. "Nem" egyéb esetben.
+- **EnterpriseJoined:** -az "igen" értékre van állítva, ha az eszköz egy helyszíni DRS-hoz csatlakozik. Egy eszköz nem lehet egyszerre EnterpriseJoined és AzureAdJoined.
+- **DomainJoined:** – az "igen" értékre van állítva, ha az eszköz tartományhoz (ad) van csatlakoztatva.
+- **Tartománynév:** – állítsa be a tartomány nevét, ha az eszköz tartományhoz van csatlakoztatva.
 
-### <a name="sample-device-state-output"></a>Sample device state output
+### <a name="sample-device-state-output"></a>Példa eszköz állapotának kimenetére
 
 ```
 +----------------------------------------------------------------------+
@@ -54,18 +54,18 @@ This section lists the device join state parameters. The table below lists the c
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Device details
+## <a name="device-details"></a>Eszköz adatai
 
-Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists device identifying details stored in the cloud.
+Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja az eszköz a felhőben tárolt adatait.
 
-- **DeviceId:** - Unique ID of the device in the Azure AD tenant
-- **Thumbprint:** - Thumbprint of the device certificate 
-- **DeviceCertificateValidity:** - Validity of the device certificate
-- **KeyContainerId:** - ContainerId of the device private key associated with the device certificate
-- **KeyProvider:** - KeyProvider (Hardware/Software) used to store the device private key.
-- **TpmProtected:** - “YES” if the device private key is stored in a Hardware TPM.
+- **DeviceID:** – az eszköz egyedi azonosítója az Azure ad-bérlőben
+- **Ujjlenyomat:** – az eszköz tanúsítványának ujjlenyomata 
+- **DeviceCertificateValidity:** – az eszköz tanúsítványának érvényessége
+- **KeyContainerId:** – az eszköz tanúsítványához tartozó titkos kulcs ContainerId
+- Kulcstartó **:** – az eszköz titkos kulcsának tárolására szolgáló (hardver/szoftver).
+- **TpmProtected:** -"igen", ha az eszköz titkos kulcsát hardveres TPM tárolja.
 
-### <a name="sample-device-details-output"></a>Sample device details output
+### <a name="sample-device-details-output"></a>Minta eszköz részleteinek kimenete
 
 ```
 +----------------------------------------------------------------------+
@@ -81,17 +81,17 @@ Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Tenant details
+## <a name="tenant-details"></a>Bérlő részletei
 
-Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists the common tenant details when a device is joined to Azure AD.
-
-> [!NOTE]
-> If the MDM URLs in this section are empty, it indicates that the MDM was either not configured or current user is not in scope of MDM enrollment. Check the Mobility settings in Azure AD to review your MDM configuration.
+Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja a bérlő közös adatait, amikor egy eszköz csatlakozik az Azure AD-hez.
 
 > [!NOTE]
-> Even if you see MDM URLs this does not mean that the device is managed by an MDM. The information is displayed if the tenant has MDM configuration for auto-enrollment even if the device itself is not managed. 
+> Ha a szakasz MDM URL-címei üresek, azt jelzi, hogy a MDM nincs konfigurálva, vagy az aktuális felhasználó nem a MDM-regisztráció hatókörében van. A MDM konfigurációjának áttekintéséhez tekintse meg az Azure AD mobilitási beállításait.
 
-### <a name="sample-tenant-details-output"></a>Sample tenant details output
+> [!NOTE]
+> Még ha a MDM URL-címek is láthatók, ez nem jelenti azt, hogy az eszközt egy MDM felügyeli. Az információk akkor jelennek meg, ha a bérlő az automatikus regisztráláshoz MDM-konfigurációt is tartalmaz, akkor is, ha maga az eszköz nem felügyelt. 
+
+### <a name="sample-tenant-details-output"></a>Példa bérlői részletek kimenetére
 
 ```
 +----------------------------------------------------------------------+
@@ -122,24 +122,24 @@ Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not
 +----------------------------------------------------------------------+
 ```
 
-## <a name="user-state"></a>User state
+## <a name="user-state"></a>Felhasználói állapot
 
-This section lists the status of various attributes for the user currently logged into the device.
+Ez a szakasz felsorolja az eszközre jelenleg bejelentkezett felhasználó különböző attribútumainak állapotát.
 
 > [!NOTE]
-> The command must run in a user context to retrieve valid status.
+> Az érvényes állapot lekéréséhez a parancsnak felhasználói környezetben kell futnia.
 
-- **NgcSet:** - Set to “YES” if a Windows Hello key is set for the current logged on user.
-- **NgcKeyId:** - ID of the Windows Hello key if one is set for the current logged on user.
-- **CanReset:** - Denotes if the Windows Hello key can be reset by the user. 
-- **Possible values:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, or Unknown if error. 
-- **WorkplaceJoined:** - Set to “YES” if Azure AD registered accounts have been added to the device in the current NTUSER context.
-- **WamDefaultSet:** - Set to “YES” if a WAM default WebAccount is created for the logged in user. This field could display an error if dsreg /status is run in admin context. 
-- **WamDefaultAuthority:** - Set to “organizations” for Azure AD.
-- **WamDefaultId:** - Always “https://login.microsoft.com” for Azure AD.
-- **WamDefaultGUID:** - The WAM provider’s (Azure AD/Microsoft account) GUID for the default WAM WebAccount. 
+- **NgcSet:** – ha az aktuálisan bejelentkezett felhasználóhoz be van állítva, a "yes" értékre kell állítani.
+- **NgcKeyId:** – a Windows Hello-kulcs azonosítója, ha az aktuálisan bejelentkezett felhasználóhoz be van állítva.
+- **CanReset:** – azt jelzi, hogy a Windows Hello-kulcs alaphelyzetbe állítható-e a felhasználó által. 
+- **Lehetséges értékek:** -DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive vagy ismeretlen, ha hiba történt. 
+- **WorkplaceJoined:** – az "igen" értékre állítva, ha az Azure ad-beli regisztrált fiókok hozzá lettek adva az eszközhöz az aktuális Ntuser-környezetben.
+- **WamDefaultSet:** – állítsa Igen értékre, ha a bejelentkezett felhasználóhoz LÉTREJÖN egy WAM alapértelmezett webfiók. Ez a mező hibát jelez, ha a dsreg/status rendszergazdai környezetben fut. 
+- **WamDefaultAuthority:** – az Azure ad-ben "szervezetek" értékre van állítva.
+- **WamDefaultId:** – mindig "https://login.microsoft.com" az Azure ad-hez.
+- **WamDefaultGUID:** – a WAM szolgáltató (Azure AD/Microsoft-fiók) GUID azonosítója az alapértelmezett WAM webfiókhoz. 
 
-### <a name="sample-user-state-output"></a>Sample user state output
+### <a name="sample-user-state-output"></a>Felhasználói állapot kimenetének mintája
 
 ```
 +----------------------------------------------------------------------+
@@ -158,23 +158,23 @@ This section lists the status of various attributes for the user currently logge
 +----------------------------------------------------------------------+
 ```
 
-## <a name="sso-state"></a>SSO state
+## <a name="sso-state"></a>SSO-állapot
 
-This section can be ignored for Azure AD registered devices.
+Ez a szakasz figyelmen kívül hagyható az Azure AD által regisztrált eszközökön.
 
 > [!NOTE]
-> The command must run in a user context to retrieve valid status for that user.
+> A parancsnak felhasználói környezetben kell futnia az adott felhasználó érvényes állapotának lekéréséhez.
 
-- **AzureAdPrt:** - Set to “YES” if a PRT is present on the device for the logged-on user.
-- **AzureAdPrtUpdateTime:** - Set to the time in UTC when the PRT was last updated.
-- **AzureAdPrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
-- **AzureAdPrtAuthority:** - Azure AD authority URL
-- **EnterprisePrt:** - Set to “YES” if the device has PRT from on-premises ADFS. For hybrid Azure AD joined devices the device could have PRT from both Azure AD and on-premises AD simultaneously. On-premises joined devices will only have an Enterprise PRT.
-- **EnterprisePrtUpdateTime:** - Set to the time in UTC when the Enterprise PRT was last updated.
-- **EnterprisePrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
-- **EnterprisePrtAuthority:** - ADFS authority URL
+- **AzureAdPrt:** – az "igen" értékre van állítva, ha a bejelentkezett felhasználó számára egy PRT van jelen az eszközön.
+- **AzureAdPrtUpdateTime:** – a PRT utolsó frissítésekor a következő időpontra van BEÁLLÍTVA: UTC.
+- **AzureAdPrtExpiryTime:** – az UTC időpontra van állítva, amikor a PRT lejár, ha nem újítja meg.
+- **AzureAdPrtAuthority:** – Azure ad-szolgáltató URL-címe
+- **EnterprisePrt:** – állítsa Igen értékre, ha az eszköz a helyszíni ADFS-vel kapcsolatos PRT-ket tartalmaz. A hibrid Azure AD-hez csatlakoztatott eszközök esetében az eszközön az Azure AD-vel és a helyszíni AD-vel egyidejűleg is lehet PRT-ket csatlakoztatni. A helyszíni csatlakoztatott eszközök csak nagyvállalati PRT-vel rendelkeznek.
+- **EnterprisePrtUpdateTime:** – a vállalati PRT utolsó frissítésének időpontjában (UTC) van beállítva.
+- **EnterprisePrtExpiryTime:** – az UTC időpontra van állítva, amikor a PRT lejár, ha nem újítja meg.
+- **EnterprisePrtAuthority:** – ADFS-szolgáltató URL-címe
 
-### <a name="sample-sso-state-output"></a>Sample SSO state output
+### <a name="sample-sso-state-output"></a>SSO-állapot kimenetének mintája
 
 ```
 +----------------------------------------------------------------------+
@@ -193,37 +193,37 @@ This section can be ignored for Azure AD registered devices.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnostic data
+## <a name="diagnostic-data"></a>Diagnosztikai adatszolgáltatások
 
-### <a name="pre-join-diagnostics"></a>Pre-join diagnostics
+### <a name="pre-join-diagnostics"></a>Csatlakozás előtti diagnosztika
 
-This section is displayed only if the device is domain joined and is unable to hybrid Azure AD join.
+Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
 
-This section performs various tests to help diagnose join failures. This section also includes the details of the previous (?). This information includes the error phase, the error code, the server request ID, server response http status, server response error message.
+Ez a szakasz különböző teszteket hajt végre a csatlakozási hibák diagnosztizálásához. Ez a szakasz az előző (?) részleteit is tartalmazza. Ez az információ tartalmazza a hiba fázisát, a hibakódot, a kiszolgálói kérelem AZONOSÍTÓját, a kiszolgáló válaszának http-állapotát, a kiszolgálói válasz hibaüzenetét.
 
-- **User Context:** - The context in which the diagnostics are run. Possible values: SYSTEM, UN-ELEVATED User, ELEVATED User. 
+- **Felhasználói környezet:** – az a környezet, amelyben a diagnosztika fut. Lehetséges értékek: rendszer, nem EMELt szintű felhasználó, EMELt szintű felhasználó. 
 
    > [!NOTE]
-   > Since the actual join is performed in SYSTEM context, running the diagnostics in SYSTEM context is closest to the actual join scenario. To run diagnostics in SYSTEM context, the dsregcmd /status command must be run from an elevated command prompt.
+   > Mivel a tényleges illesztés a rendszerkörnyezetben történik, a diagnosztika futtatása a rendszerkörnyezetben a legközelebb esik a tényleges illesztési forgatókönyvhöz. A diagnosztika a rendszerkörnyezetben való futtatásához a dsregcmd/status parancsot egy rendszergazda jogú parancssorból kell futtatni.
 
-- **Client Time:** - The system time in UTC.
-- **AD Connectivity Test:** - Test performs a connectivity test to the domain controller. Error in this test will likely result in Join errors in pre-check phase.
-- **AD Configuration Test:** - Test reads and verifies whether the SCP object is configured properly in the on-premises AD forest. Errors in this test would likely result in Join errors in the discover phase with the error code 0x801c001d.
-- **DRS Discovery Test:** - Test gets the DRS endpoints from discovery metadata endpoint and performs a user realm request. Errors in this test would likely result in Join errors in the discover phase.
-- **DRS Connectivity Test:** - Test performs basic connectivity test to the DRS endpoint.
-- **Token acquisition Test:** - Test tries to get an Azure AD authentication token if the user tenant is federated. Errors in this test would likely result in Join errors in the auth phase. If auth fails sync join will be attempted as fallback, unless fallback is explicitly disabled with a registry key.
-- **Fallback to Sync-Join:** - Set to “Enabled” if the registry key, to prevent the fallback to sync join with auth failures, is NOT present. This option is available from Windows 10 1803 and later.
-- **Previous Registration:** - Time the previous Join attempt occurred. Only failed Join attempts are logged.
-- **Error Phase:** - The stage of the join in which it was aborted. Possible values are pre-check, discover, auth, join.
-- **Client ErrorCode:** - Client error code returned (HRESULT).
-- **Server ErrorCode:** - Server error code if a request was sent to the server and server responded back with an error code. 
-- **Server Message:** - Server message returned along with the error code.
-- **Https Status:** - Http status returned by the server.
-- **Request ID:** - The client requestId sent to the server. Useful to correlate with server-side logs.
+- **Ügyfél időpontja:** – a rendszeridő UTC szerint.
+- **Ad-kapcsolat tesztelése:** – a test kapcsolati tesztet hajt végre a tartományvezérlőn. Ennek a tesztnek a hibája valószínűleg csatlakozási hibákat eredményez az előzetes ellenőrzési fázisban.
+- **Ad-konfigurációs teszt:** – a teszt beolvassa és ellenőrzi, hogy az scp-objektum megfelelően van-e konfigurálva a helyszíni ad-erdőben. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban a hibakód 0x801c001d.
+- **DRS felderítési teszt:** – a teszt lekéri a DRS-végpontokat a felderítési metaadatok végpontján, és elvégzi a felhasználói tartományra vonatkozó kérelmet. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban.
+- **DRS-kapcsolat tesztelése:** a test alapszintű kapcsolati tesztet hajt végre a DRS-végponton.
+- **Jogkivonat-beszerzési teszt:** a test megpróbál beolvasni egy Azure ad-hitelesítési tokent, ha a felhasználói bérlő összevont. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek az hitelesítési fázisban. Ha a hitelesítés meghiúsul, akkor a rendszer tartalékként kísérli meg a szinkronizálási csatlakozást, kivéve, ha a tartalék explicit módon le van tiltva egy beállításkulcs megadásával.
+- **Tartalék szinkronizáláshoz – csatlakozás:** – az "engedélyezve" értékre állítva, ha a beállításkulcs lehetővé teszi, hogy a tartalék szinkronizálási hibákkal való összekapcsolásának MEGAKADÁLYOZása ne legyen jelen. Ez a beállítás a Windows 10 1803-es és újabb verzióiban érhető el.
+- **Korábbi regisztráció:** – az előző csatlakozási kísérlet ideje. A rendszer csak a sikertelen csatlakoztatási kísérleteket naplózza.
+- **Error fázis:** – a csatlakozás megszakított szakasza. A lehetséges értékek: előzetes vizsgálat, felderítés, hitelesítés, csatlakozás.
+- **Ügyfél-errorcode:** – visszaadott ügyfél-HIBAKÓD (HRESULT).
+- **Kiszolgáló errorcode:** – kiszolgálói hibakód, ha a rendszer elküldte a kérelmet a kiszolgálónak, és a kiszolgáló egy hibakódtal válaszolt vissza. 
+- **Kiszolgálói üzenet:** – a hibakódtal együtt visszaadott kiszolgálói üzenet.
+- **Https-állapot:** – a kiszolgáló által visszaadott http-állapot.
+- **Kérelem azonosítója:** – a rendszer elküldi a-ügyfél kérelemazonosító a kiszolgálónak. Hasznos a kiszolgálóoldali naplók összekapcsolásához.
 
-### <a name="sample-pre-join-diagnostics-output"></a>Sample pre-join diagnostics output
+### <a name="sample-pre-join-diagnostics-output"></a>Mintavétel előtti diagnosztika kimenete
 
-The following example shows diagnostics test failing with a discovery error.
+A következő példa egy felderítési hiba miatt sikertelen diagnosztikai tesztet mutat be.
 
 ```
 +----------------------------------------------------------------------+
@@ -247,7 +247,7 @@ The following example shows diagnostics test failing with a discovery error.
 +----------------------------------------------------------------------+
 ```
 
-The following example shows diagnostics tests are passing but the registration attempt failed with a directory error, which is expected for sync join. Once the Azure AD Connect synchronization job completes, the device will be able to join.
+A következő példa a diagnosztikai tesztek elvégzését mutatja be, de a regisztrációs kísérlet sikertelen volt, mert a szinkronizáláshoz való csatlakozás várható. Miután a Azure AD Connect szinkronizálási feladata befejeződik, az eszköz csatlakozhat.
 
 ```
 +----------------------------------------------------------------------+
@@ -276,14 +276,14 @@ The following example shows diagnostics tests are passing but the registration a
 +----------------------------------------------------------------------+
 ```
 
-### <a name="post-join-diagnostics"></a>Post-join diagnostics
+### <a name="post-join-diagnostics"></a>Csatlakozás utáni diagnosztika
 
-This section displays the output of sanity checks performed on a device joined to the cloud.
+Ez a szakasz a felhőhöz csatlakoztatott eszközön elvégzett, józan ész-ellenőrzések kimenetét jeleníti meg.
 
-- **AadRecoveryEnabled:** - If “YES”, the keys stored in the device are not usable and the device is marked for recovery. The next sign in will trigger the recovery flow and re-register the device.
-- **KeySignTest:** - If “PASSED” the device keys are in good health. If KeySignTest fails, the device will usually be marked for recovery. The next sign in will trigger the recovery flow and re-register the device. For hybrid Azure AD joined devices the recovery is silent. While Azure AD joined or Azure AD registered, devices will prompt for user authentication to recover and re-register the device if necessary. **The KeySignTest requires elevated privileges.**
+- **AadRecoveryEnabled:** – ha az "igen", az eszközön tárolt kulcsok nem használhatók, és az eszköz ki van jelölve helyreállításra. A következő bejelentkezés elindítja a helyreállítási folyamatot, majd regisztrálja újra az eszközt.
+- **KeySignTest:** – ha a "Passed" az eszköz kulcsai jó állapotban vannak. Ha a KeySignTest sikertelen, az eszköz általában a helyreállításhoz lesz megjelölve. A következő bejelentkezés elindítja a helyreállítási folyamatot, majd regisztrálja újra az eszközt. A hibrid Azure AD-hez csatlakoztatott eszközök esetén a helyreállítás csendes. Az Azure AD-hez csatlakoztatott vagy az Azure AD-regisztrációt követően az eszközök szükség esetén megkérik a felhasználók hitelesítését az eszköz helyreállításához és újbóli regisztrálásához. **A KeySignTest emelt szintű jogosultságok szükségesek.**
 
-#### <a name="sample-post-join-diagnostics-output"></a>Sample post-join diagnostics output
+#### <a name="sample-post-join-diagnostics-output"></a>Példa a csatlakozás utáni diagnosztika kimenetére
 
 ```
 +----------------------------------------------------------------------+
@@ -295,14 +295,14 @@ This section displays the output of sanity checks performed on a device joined t
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>NGC prerequisite check
+## <a name="ngc-prerequisite-check"></a>NGC Előfeltételek ellenőrzése
 
-This section performs the perquisite checks for the provisioning of an NGC key. 
+Ez a szakasz az NGC-kulcsok kiépítési előfeltételek-ellenőrzéseit végzi. 
 
 > [!NOTE]
-> You may not see NGC pre-requisite check details in dsregcmd /status if the user already successfully configured NGC credentials.
+> Ha a felhasználó már sikeresen konfigurálta az NGC hitelesítő adatokat, előfordulhat, hogy a dsregcmd/status nem látja az NGC előfeltétel-ellenőrzési részleteit.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Sample NGC prerequisite check output
+### <a name="sample-ngc-prerequisite-check-output"></a>Az NGC előfeltétel-ellenőrzési kimenetének mintája
 
 ```
 +----------------------------------------------------------------------+
@@ -325,4 +325,4 @@ This section performs the perquisite checks for the provisioning of an NGC key.
 
 ## <a name="next-steps"></a>Következő lépések
 
-For questions, see the [device management FAQ](faq.md)
+További kérdések: eszközkezelés – [Gyakori kérdések](faq.md)

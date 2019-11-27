@@ -1,5 +1,5 @@
 ---
-title: Get prediction with REST call in C#
+title: Előrejelzés beszerzése REST-hívássalC#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -17,9 +17,9 @@ ms.locfileid: "74414611"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
+* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Nyilvános alkalmazás azonosítója: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
@@ -27,22 +27,22 @@ ms.locfileid: "74414611"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+A C# (.net Core) használatával lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
-1. Create a new console application targeting the C# language, with a project and folder name of `predict-with-rest`. 
+1. Hozzon létre egy új, a C# nyelvet célzó alkalmazást, amelyben a projekt és a mappa neve `predict-with-rest`. 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Change to the `predict-with-rest` directory you just created, and install required dependencies with these commands:  
+1. Váltson az imént létrehozott `predict-with-rest` könyvtárra, és telepítse a szükséges függőségeket a következő parancsokkal:  
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. Open `Program.cs` in your favorite IDE or editor. Then overwrite `Program.cs` with the following code:
+1. Nyissa meg `Program.cs` a kedvenc IDE vagy szerkesztőben. Ezután írja felül a `Program.cs`t a következő kóddal:
     
    ```csharp
     using System;
@@ -102,31 +102,31 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
    ```
 
-1. Replace the following values:
+1. Cserélje le a következő értékeket:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Például: `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` az alapszintű kulccsal.
+    * `YOUR-ENDPOINT` a végponttal. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. Build the console application with this command: 
+1. Hozza létre a konzol alkalmazást a következő paranccsal: 
 
     ```console
     dotnet build
     ```
 
-1. Futtassa a konzolalkalmazást. The console output displays the same JSON that you saw earlier in the browser window.
+1. Futtassa a konzolalkalmazást. A konzol kimenete ugyanazt a JSON-t jeleníti meg, amelyet korábban a böngészőablakban látott.
 
     ```console
     dotnet run
     ```
 
-1. Review the prediction response, which is returned as JSON:
+1. Tekintse át az előrejelzési választ, amely JSON-ként lesz visszaadva:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Az olvashatóságra formázott JSON-Válasz: 
 
     ```JSON
     {
@@ -175,9 +175,9 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you are finished with this quickstart, delete the file from the file system. 
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)

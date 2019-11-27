@@ -43,7 +43,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [.Net Core SDK](https://www.microsoft.com/net/download/windows).
 * [Azure Cloud Shell konfigurálva](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

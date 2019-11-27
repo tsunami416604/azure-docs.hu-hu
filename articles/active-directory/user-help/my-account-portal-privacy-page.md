@@ -1,6 +1,6 @@
 ---
-title: View privacy-related info from the My Account portal - Azure AD
-description: Learn how your organization uses your privacy-related information from the Privacy page of the My Account portal.
+title: Adatvédelem kapcsolatos információk megtekintése a saját fiók portálról – Azure AD
+description: Ismerje meg, hogy a cége hogyan használja fel az adatvédelmet a fiókom portál adatvédelem oldaláról.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,34 +19,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231821"
 ---
-# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>View how your organization uses your privacy-related data
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Annak megtekintése, hogy a szervezet hogyan használja az adatvédelmet érintő adatokat
 
-You can view how your organization uses your data from the **Privacy** page of the **My Account** portal.
+Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** **Adatvédelem** oldaláról.
 
 ## <a name="view-your-privacy-related-info"></a>Adatvédelemmel kapcsolatos információk megtekintése
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
-2. Select **Privacy** from the left navigation pane or select the **Review privacy** link from the **Privacy** block.
+2. Válassza az **Adatvédelem** lehetőséget a bal oldali navigációs ablaktáblán, **vagy az adatvédelmi blokkban** válassza az adatvédelem **áttekintése** hivatkozást.
 
-    ![My Account page, showing highlighted Privacy links](media/my-account-portal/my-account-portal-privacy.png)
+    ![Fiókom oldal, Kiemelt adatvédelmi hivatkozások megjelenítése](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Review the information, including:
+3. Tekintse át az információkat, beleértve a következőket:
 
-    - **Services.** A list of online services you're connected to using your work or school account.
+    - **Szolgáltatások.** A munkahelyi vagy iskolai fiókkal összekapcsolt online szolgáltatások listája.
 
-    - **Terms of use**. Your organization's terms of use.
+    - **Használati feltételek**. A szervezet használati feltételei.
 
 ## <a name="next-steps"></a>Következő lépések
 
-After viewing how your organization uses your data, you can:
+Miután megtekintette, hogy a szervezet hogyan használja az adatait, a következőket teheti:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
-- You can also view your Microsoft Office-related contact preferences and privacy information from the [Office portal, Security & privacy page](https://portal.office.com/account/#security).
+- A Microsoft Office kapcsolatos kapcsolattartási és adatvédelmi tudnivalókat az [Office portálon, a biztonsági & adatvédelmi oldalon](https://portal.office.com/account/#security)is megtekintheti.

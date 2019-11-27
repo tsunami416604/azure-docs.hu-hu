@@ -17,30 +17,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424411"
 ---
-This cURL-based quickstart walks you through getting an answer from your knowledge base.
+Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Latest [**cURL**](https://curl.haxx.se/).
-* You must have a [QnA Maker service](../How-To/set-up-qnamaker-service-azure.md) and have a [knowledge base with questions and answers](../Tutorials/create-publish-query-in-portal.md).
+* Legújabb [**curl**](https://curl.haxx.se/).
+* [QnA Maker szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) kell rendelkeznie, és a [Tudásbázisban kérdésekkel és válaszokkal](../Tutorials/create-publish-query-in-portal.md)kell rendelkeznie.
 
-## <a name="publish-to-get-endpoint"></a>Publish to get endpoint
+## <a name="publish-to-get-endpoint"></a>Közzététel a végpont beszerzéséhez
 
-When you are ready to generate an answer to a question from your knowledge base, [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) your knowledge base.
+Ha készen áll arra, hogy megválaszolja a Tudásbázis kérdését, [tegye közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
 
-## <a name="use-production-endpoint-with-curl"></a>Use production endpoint with cURL
+## <a name="use-production-endpoint-with-curl"></a>Üzemi végpont használata a cURL használatával
 
-When your knowledge base is published, the **Publish** page displays the HTTP request settings to generate an answer. The **CURL** tab shows the settings required to generate an answer from the command-line tool, [CURL](https://www.getpostman.com).
+A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. A **curl** lapon láthatók azok a beállítások, amelyek szükségesek a válasz létrehozásához a parancssori [eszközről.](https://www.getpostman.com)
 
-[![Publish results](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[Közzétételi eredmények ![](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
-To generate an answer with CURL, complete the following steps:
+A CURL-beli válasz létrehozásához hajtsa végre a következő lépéseket:
 
-1. Copy the text in the CURL tab. 
-1. Open a command-line or terminal and paste the text.
-1. Edit the question to be relevant to your knowledge base. Be careful not to remove the containing JSON surrounding the question.
-1. Enter the command. 
-1. The response includes the relevant information about the answer. 
+1. Másolja a szöveget a CURL lapon. 
+1. Nyisson meg egy parancssori vagy terminált, és illessze be a szöveget.
+1. Szerkessze a kérdést, hogy releváns legyen a Tudásbázisban. Ügyeljen arra, hogy ne távolítsa el a kérdést körülvevő JSON-t.
+1. Adja meg a parancsot. 
+1. A válasz tartalmazza a válaszra vonatkozó információkat. 
 
     ```bash
     > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
@@ -65,9 +65,9 @@ To generate an answer with CURL, complete the following steps:
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Use staging endpoint with cURL
+## <a name="use-staging-endpoint-with-curl"></a>Átmeneti végpont használata a cURL használatával
 
-If you want to get an answer from the staging endpoint, use the `isTest` body property.
+Ha az átmeneti végponttól választ szeretne kapni, használja a `isTest` Body (törzs) tulajdonságot.
 
 ```json
 isTest:true

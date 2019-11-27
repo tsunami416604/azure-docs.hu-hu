@@ -1,6 +1,6 @@
 ---
-title: 'Enable MFA for VPN users: Azure AD authentication'
-description: Enable multi-factor authentication for VPN users
+title: 'MFA engedélyezése VPN-felhasználók számára: Azure AD-hitelesítés'
+description: A többtényezős hitelesítés engedélyezése a VPN-felhasználók számára
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -14,46 +14,46 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382214"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Azure Multi-Factor Authentication (MFA) for VPN users
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) engedélyezése a VPN-felhasználók számára
 
-If you want users to be prompted for a second factor of authentication before granting access, you can configure Azure Multi-Factor Authentication (MFA) for your Azure AD tenant. The steps in this article help you enable a requirement for two-step verification.
+Ha azt szeretné, hogy a felhasználók a hozzáférés megadását megelőzően egy második hitelesítési tényezőt kérjenek, konfigurálhatja az Azure Multi-Factor Authentication (MFA) az Azure AD-bérlőhöz. A cikkben ismertetett lépések segítségével engedélyezheti a kétlépéses ellenőrzés követelményeit.
 
-## <a name="prereq"></a>Prerequisite
+## <a name="prereq"></a>Előfeltétele
 
-The prerequisite for this configuration is a configured Azure AD tenant using the steps in [Configure a tenant](openvpn-azure-ad-tenant.md).
+Ennek a konfigurációnak az előfeltétele egy konfigurált Azure AD-bérlő a [bérlő konfigurálása](openvpn-azure-ad-tenant.md)című szakaszban ismertetett lépések alapján.
 
-## <a name="mfa"></a>Open the MFA page
+## <a name="mfa"></a>Az MFA-oldal megnyitása
 
 1. Jelentkezzen be az Azure portálra.
-2. Navigate to **Azure Active Directory -> All users**.
-3. Select **Multi-Factor Authentication** to open the multi-factor authentication page.
+2. Navigáljon a **Azure Active Directory-> minden felhasználó**elemre.
+3. A multi-Factor Authentication lap megnyitásához válassza a **multi-Factor Authentication** lehetőséget.
 
    ![Bejelentkezés](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-## <a name="users"></a> Select users
+## <a name="users"></a>Felhasználók kiválasztása
 
-1. On the **multi-factor authentication** page, select the user(s) for which you want to enable MFA.
+1. A **multi-Factor Authentication** lapon válassza ki azokat a felhasználókat, akik számára engedélyezni szeretné az MFA-t.
 2. Válassza az **Engedélyezés** lehetőséget.
 
    ![Válassza ezt:](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-## <a name="enableauth"></a>Enable authentication
+## <a name="enableauth"></a>Hitelesítés engedélyezése
 
-1. Navigate to **Azure Active Directory  -> Enterprise applications -> All applications**.
-2. On the **Enterprise applications - All applications** page, select **Azure VPN**.
+1. Navigáljon **Azure Active Directory – > vállalati alkalmazások – > minden alkalmazás**elemre.
+2. A **vállalati alkalmazások – minden alkalmazás** lapon válassza az **Azure VPN**elemet.
 
-   ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+   ![Könyvtár azonosítója](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-## <a name="enablesign"></a> Configure sign-in settings
+## <a name="enablesign"></a>Bejelentkezési beállítások konfigurálása
 
-On the **Azure VPN - Properties** page, configure sign-in settings.
+Az **Azure VPN-Properties** lapon adja meg a bejelentkezési beállításokat.
 
-1. Set **Enabled for users to sign-in?** to **Yes**. This allows all users in the AD tenant to connect to the VPN successfully.
-2. Set **User assignment required?** to **Yes** if you want to limit sign-in to only users that have permissions to the Azure VPN.
+1. **Engedélyezi a felhasználók számára a bejelentkezést?** **Igen**értékre. Ez lehetővé teszi, hogy az AD-bérlő összes felhasználója sikeresen kapcsolódjon a VPN-hez.
+2. **Kötelezővé teszi a felhasználó-hozzárendelést?** ha a bejelentkezést csak olyan felhasználókra szeretné korlátozni, akik engedéllyel rendelkeznek az Azure VPN-hez, akkor az **Igen** értékre kell állítani.
 3. Mentse a módosításokat.
 
    ![Engedélyek](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 ## <a name="next-steps"></a>Következő lépések
 
-To connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).

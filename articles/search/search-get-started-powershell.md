@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Create a search index in PowerShell using REST APIs'
+title: 'Gyors útmutató: keresési index létrehozása a PowerShellben REST API-k használatával'
 titleSuffix: Azure Cognitive Search
-description: In this REST API quickstart, learn how to create an index, load data, and run queries using PowerShell's Invoke-RestMethod and the Azure Cognitive Search REST API.
+description: Ebben a REST API útmutatóban megtudhatja, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket a PowerShell RestMethod és az Azure Cognitive Search REST API használatával.
 manager: nitinme
 author: heidisteen
 ms.author: heidist
@@ -16,42 +16,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406916"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Create an Azure Cognitive Search index in PowerShell using REST APIs
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a PowerShellben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [Poster (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [Portal](search-create-index-portal.md)
+> * [Portál](search-create-index-portal.md)
 > 
 
-This article walks you through the process of creating, loading, and querying an Azure Cognitive Search index using PowerShell and the [Azure Cognitive Search REST APIs](https://docs.microsoft.com/rest/api/searchservice/). This article explains how to run PowerShell commands interactively. Alternatively, you can [download and run a Powershell script](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) that performs the same operations.
+Ez a cikk végigvezeti egy Azure Cognitive Search index létrehozásának, betöltésének és lekérdezésének lépésein a PowerShell és az [azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk azt ismerteti, hogyan lehet interaktív módon futtatni a PowerShell-parancsokat. Azt is megteheti, hogy [letölti és futtat egy PowerShell-parancsfájlt](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanezeket a műveleteket hajtja végre.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The following services and tools are required for this quickstart. 
+Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ [PowerShell 5.1 or later](https://github.com/PowerShell/PowerShell), using [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) for sequential and interactive steps.
++ [PowerShell 5,1 vagy újabb](https://github.com/PowerShell/PowerShell), a [Meghívási-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) használatával szekvenciális és interaktív lépésekhez.
 
-+ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-## <a name="get-a-key-and-url"></a>Get a key and URL
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
+2. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-All requests require an api-key on every request sent to your service. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
 
-## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Kapcsolódás az Azure Cognitive Searchhoz
 
-1. In PowerShell, create a **$headers** object to store the content-type and API key. Replace the admin API key (YOUR-ADMIN-API-KEY) with a key that is valid for your search service. You only have to set this header once for the duration of the session, but you will add it to every request. 
+1. A PowerShellben hozzon létre egy **$headers** objektumot a Content-Type és az API-kulcs tárolásához. Cserélje le a felügyeleti API-kulcsot (a-ADMIN-API-KEY) egy olyan kulccsal, amely érvényes a keresési szolgáltatáshoz. Ezt a fejlécet csak egyszer kell beállítania a munkamenet időtartamára, de minden kérelemhez hozzá kell adnia. 
 
     ```powershell
     $headers = @{
@@ -60,19 +60,19 @@ All requests require an api-key on every request sent to your service. Érvénye
     'Accept' = 'application/json' }
     ```
 
-2. Create a **$url** object that specifies the service's indexes collection. Replace the service name (YOUR-SEARCH-SERVICE-NAME) with a valid search service.
+2. Hozzon létre egy **$URL** objektumot, amely meghatározza a szolgáltatás indexeit tartalmazó gyűjteményt. Cserélje le a szolgáltatás nevét (a-SEARCH-SERVICE-NAME) egy érvényes keresési szolgáltatással.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
-3. Run **Invoke-RestMethod** to send a GET request to the service and verify the connection. Add **ConvertTo-Json** so that you can view the responses sent back from the service.
+3. Futtassa a **meghívó-RestMethod** parancsot, hogy küldjön egy Get kérelmet a szolgáltatásnak, és ellenőrizze a kapcsolódást. Adja hozzá a **ConvertTo-JSON-** t, hogy megtekintse a szolgáltatásból visszaküldött válaszokat.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   If the service is empty and has no indexes, results are similar to the following example. Otherwise, you'll see a JSON representation of index definitions.
+   Ha a szolgáltatás üres, és nem rendelkezik indexekkel, az eredmények az alábbi példához hasonlóak. Ellenkező esetben az index-definíciók JSON-ábrázolását fogja látni.
 
     ```
     {
@@ -85,13 +85,13 @@ All requests require an api-key on every request sent to your service. Érvénye
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Unless you are using the portal, an index must exist on the service before you can load data. This step defines the index and pushes it to the service. The [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) is used for this step.
+Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés határozza meg az indexet, és leküldi azt a szolgáltatásnak. Ehhez a lépéshez a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban.
 
-Required elements of an index include a name and a fields collection. The fields collection defines the structure of a *document*. Each field has a name, type, and attributes that determine how it's used (for example, whether it is full-text searchable, filterable, or retrievable in search results). Within an index, one of the fields of type `Edm.String` must be designated as the *key* for document identity.
+Az index kötelező elemei közé tartozik a név és a mezők gyűjteménye. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza, hogyan használják a rendszer (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül a `Edm.String` típusú mezők egyikét kell kijelölni a dokumentum-identitás *kulcsaként* .
 
-This index is named "hotels-quickstart" and has the field definitions you see below. It's a subset of a larger [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) used in other walkthroughs. We trimmed it in this quickstart for brevity.
+Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
 
-1. Paste this example into PowerShell to create a **$body** object containing the index schema.
+1. Illessze be a példát a PowerShellbe, és hozzon létre egy **$Body** objektumot, amely tartalmazza az index sémát.
 
     ```powershell
     $body = @"
@@ -120,19 +120,19 @@ This index is named "hotels-quickstart" and has the field definitions you see be
     "@
     ```
 
-2. Set the URI to the indexes collection on your service and the *hotels-quickstart* index.
+2. Állítsa be az URI-t a szolgáltatás indexek gyűjteményére és a *Hotels-Gyorsindítás* indexre.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
-3. Run the command with **$url**, **$headers**, and **$body** to create the index on the service. 
+3. Futtassa a parancsot **$URL**, **$headers**és **$Body** használatával az index létrehozásához a szolgáltatásban. 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
     ```
 
-    Results should look similar to this (truncated to the first two fields for brevity):
+    Az eredményeknek a következőhöz hasonlóan kell kinéznie (rövidítve az első két mezőnél):
 
     ```
     {
@@ -173,17 +173,17 @@ This index is named "hotels-quickstart" and has the field definitions you see be
     ```
 
 > [!Tip]
-> For verification, you could also check the Indexes list in the portal.
+> Az ellenőrzéshez az indexek listáját is megtekintheti a portálon.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 - Load documents
+## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-To push documents, use an HTTP POST request to your index's URL endpoint. The REST API for this task is [Add, Update, or Delete Documents](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-címének végpontján. A feladathoz tartozó REST API [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-1. Paste this example into PowerShell to create a **$body** object containing the documents you want to upload. 
+1. Illessze be a példát a PowerShellbe, és hozzon létre egy **$Body** objektumot, amely tartalmazza a feltölteni kívánt dokumentumokat. 
 
-    This request includes two full and one partial record. The partial record demonstrates that you can upload incomplete documents. The `@search.action` parameter specifies how indexing is done. Valid values include upload, merge, mergeOrUpload, and delete. The mergeOrUpload behavior either creates a new document for hotelId = 3, or updates the contents if it already exists.
+    Ez a kérelem két teljes és egy részleges rekordot tartalmaz. A részleges rekord azt mutatja be, hogy nem teljes dokumentumokat tölthet fel. A `@search.action` paraméter határozza meg, hogyan történjen az indexelés. Az érvényes értékek közé tartozik a feltöltés, az egyesítés, a mergeOrUpload és a törlés. A mergeOrUpload viselkedése vagy létrehoz egy új dokumentumot a hotelId = 3 számára, vagy frissíti a tartalmat, ha az már létezik.
 
     ```powershell
     $body = @"
@@ -270,18 +270,18 @@ To push documents, use an HTTP POST request to your index's URL endpoint. The RE
     "@
     ```
 
-1. Set the endpoint to the *hotels-quickstart* docs collection and include the index operation (indexes/hotels-quickstart/docs/index).
+1. Állítsa a végpontot a *hotelek –* gyors dokumentumok gyűjteményre, és adja meg az index műveletet (indexek/Hotels-Gyorsindítás/docs/index).
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. Run the command with **$url**, **$headers**, and **$body** to load documents into the hotels-quickstart index.
+1. Futtassa a parancsot **$URL**, **$headers**és **$Body** használatával a dokumentumok betöltéséhez a Hotels-Gyorsindítás indexbe.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Results should look similar to the following example. You should see a [status code of 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    Az eredményeknek az alábbi példához hasonlóan kell kinéznie. Ekkor meg kell jelennie a 201-as [állapotkódot](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,25 +317,25 @@ To push documents, use an HTTP POST request to your index's URL endpoint. The RE
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-This step shows you how to query an index using the [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
 
-Be sure to use single quotes on search $urls. Query strings include **$** characters, and you can omit having to escape them if the entire string is enclosed in single quotes..
+Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési karakterláncok **$** karaktereket tartalmaznak, és kihagyhatja, hogy a teljes karakterlánc aposztrófok között legyen.
 
-1. Set the endpoint to the *hotels-quickstart* docs collection and add a **search** parameter to pass in a query string. 
+1. Állítsa a végpontot a *Hotels-* gyors dokumentumok gyűjteményre, és adjon hozzá egy **keresési** paramétert egy lekérdezési karakterláncba való továbbításhoz. 
   
-   This string executes an empty search (search=*), returning an unranked list (search score  = 1.0) of arbitrary documents. By default, Azure Cognitive Search returns 50 matches at a time. As structured, this query returns an entire document structure and values. Add **$count=true** to get a count of all documents in the results.
+   Ez a karakterlánc egy üres keresést hajt végre (Search = *), és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Alapértelmezés szerint az Azure Cognitive Search a 50-es egyezést adja vissza egyszerre. Strukturált módon a lekérdezés egy teljes dokumentum-struktúrát és-értéket ad vissza. Adja hozzá a **$Count = True** értéket az eredményekben található összes dokumentum számának beolvasásához.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. Run the command to send the **$url** to the service.
+1. Futtassa a parancsot a **$URL** a szolgáltatásnak való elküldéséhez.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-    Results should look similar to the following output.
+    Az eredményeknek az alábbi kimenethez hasonlóan kell kinéznie.
 
     ```
     {
@@ -369,7 +369,7 @@ Be sure to use single quotes on search $urls. Query strings include **$** charac
                 . . . 
     ```
 
-Try a few other query examples to get a feel for the syntax. You can do a string search, verbatim $filter queries, limit the results set, scope the search to specific fields, and more.
+Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzéséhez. Megteheti a karakterláncos keresést, a Verbatim $filter lekérdezéseket, korlátozhatja az eredmények készletét, kihasználhatja a keresést adott mezőkre, és így tovább.
 
 ```powershell
 # Query example 1
@@ -393,15 +393,15 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you used PowerShell to  step through the basic workflow for creating and accessing content in Azure Cognitive Search. With the concepts in mind, we recommend moving on to more advanced scenarios, such as indexing from Azure data sources;
+Ebben a rövid útmutatóban a PowerShellt használta a tartalom Azure Cognitive Searchban való létrehozásához és eléréséhez szükséges alapszintű munkafolyamathoz. A fogalmakat figyelembe véve javasoljuk, hogy olyan speciális forgatókönyvekre váltson át, mint például az Azure-adatforrásokból való indexelés.
 
 > [!div class="nextstepaction"]
-> [REST Tutorial: Index and search semi-structured data (JSON blobs) in Azure Cognitive Search](search-semi-structured-data.md)
+> [REST-oktatóanyag: részben strukturált adatok (JSON-Blobok) indexelése és keresése az Azure Cognitive Search](search-semi-structured-data.md)

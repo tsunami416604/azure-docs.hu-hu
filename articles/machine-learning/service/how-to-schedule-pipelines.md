@@ -1,7 +1,7 @@
 ---
-title: Schedule Azure Machine Learning pipelines
+title: Azure Machine Learning folyamatok ütemezhetnek
 titleSuffix: Azure Machine Learning
-description: Schedule Azure Machine Learning pipelines using the Azure Machine Learning SDK for Python. Scheduled pipelines allow you to automate routine, time-consuming tasks such as data processing, training, and monitoring.
+description: Azure Machine Learning folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val. Az ütemezett folyamatok lehetővé teszik a rutin, az időigényes feladatok, például az adatfeldolgozás, a képzés és a figyelés automatizálását.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,21 +16,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406529"
 ---
-# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Schedule machine learning pipelines with Azure Machine Learning SDK for Python
+# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val
 
-In this article, you'll learn how to programmatically schedule a pipeline to run on Azure. You can choose to create a schedule based on elapsed time or on file-system changes. Time-based schedules can be used to take care of routine tasks, such as monitoring for data drift. Change-based schedules can be used to react to irregular or unpredictable changes, such as new data being uploaded or old data being edited. After learning how to create schedules, you'll learn how to retrieve and deactivate them.
+Ebből a cikkből megtudhatja, hogyan ütemezhet programozott módon egy folyamat futtatását az Azure-ban. Dönthet úgy, hogy az eltelt idő alapján vagy a fájl-rendszer módosításain alapuló ütemtervet hoz létre. Az időalapú ütemtervek segítségével gondoskodhat a rutin feladatokról, például az adateltolódás figyeléséről. A változáson alapuló ütemtervek felhasználhatók a szabálytalan vagy kiszámíthatatlan változásokra való reagálásra, például a feltöltött új vagy régi adatfeldolgozásra. Az ütemtervek létrehozásának megismerése után megismerheti, hogyan kérheti le és inaktiválja azokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. If you don’t have an Azure subscription, create a [free account](https://aka.ms/AMLFree).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 
-* A Python environment in which the Azure Machine Learning SDK for Python is installed. For more information, see [Create and manage reusable environments for training and deployment with Azure Machine Learning.](how-to-use-environments.md)
+* Python-környezet, amelyben a Pythonhoz készült Azure Machine Learning SDK telepítve van. További információkért lásd: [újrafelhasználható környezetek létrehozása és kezelése a Azure Machine learning-vel való betanításhoz és üzembe helyezéshez.](how-to-use-environments.md)
 
-* A Machine Learning workspace with a published pipeline. You can use the one built in [Create and run machine learning pipelines with Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
+* Egy Machine Learning munkaterület közzétett folyamattal. A [Machine learning-folyamatokat a Azure Machine learning SDK-val létrehozhatja és futtathatja](how-to-create-your-first-pipeline.md).
 
-## <a name="initialize-the-workspace--get-data"></a>Initialize the workspace & get data
+## <a name="initialize-the-workspace--get-data"></a>A munkaterület inicializálása & az adatlekérdezés
 
-To schedule a pipeline, you'll need a reference to your workspace, the identifier of your published pipeline, and the name of the experiment in which you wish to create the schedule. You can get these values with the following code:
+Egy folyamat beütemezhet egy hivatkozást a munkaterületre, a közzétett folyamat azonosítóját, valamint annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet. Ezeket az értékeket a következő kóddal érheti el:
 
 ```Python
 import azureml.core
@@ -52,15 +52,15 @@ experiment_name = "MyExperiment"
 pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
 ```
 
-## <a name="create-a-schedule"></a>Create a schedule
+## <a name="create-a-schedule"></a>Ütemezés létrehozása
 
-To run a pipeline on a recurring basis, you'll create a schedule. A `Schedule` associates a pipeline, an experiment, and a trigger. The trigger can either be a`ScheduleRecurrence` that describes the wait between runs or a Datastore path that specifies a directory to watch for changes. In either case, you'll need the pipeline identifier and the name of the experiment in which to create the schedule.
+Egy folyamat ismétlődő futtatásához létre kell hoznia egy ütemtervet. A `Schedule` egy folyamatot, egy kísérletet és egy triggert társít. Az trigger lehet egy`ScheduleRecurrence`, amely leírja a futtatások közötti várakozást, vagy egy adattár elérési útját, amely megadja a módosításokat bemutató könyvtárat. Mindkét esetben szüksége lesz a folyamat azonosítójára és annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet.
 
-### <a name="create-a-time-based-schedule"></a>Create a time-based schedule
+### <a name="create-a-time-based-schedule"></a>Időalapú ütemterv létrehozása
 
-The `ScheduleRecurrence` constructor has a required `frequency` argument that must be one of the following strings: "Minute", "Hour", "Day", "Week", or "Month". It also requires an integer `interval` argument specifying how many of the `frequency` units should elapse between schedule starts. Optional arguments allow you to be more specific about starting times, as detailed in the [ScheduleRecurrence SDK docs](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
+A `ScheduleRecurrence` konstruktor egy kötelező `frequency` argumentummal rendelkezik, amelynek a következő karakterláncok egyikének kell lennie: "minute", "Hour", "Day", "Week" vagy "Month". Emellett egész `interval` argumentumra van szükség, amely meghatározza, hogy hány `frequency` egységnek kell eltelnie az ütemterv kezdete között. A választható argumentumok lehetővé teszik a [SCHEDULERECURRENCE SDK-dokumentációban](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)részletezett időpontokra vonatkozó részletesebb tudnivalókat.
 
-Create a `Schedule` that begins a run every 15 minutes:
+Hozzon létre egy `Schedule`, amely 15 percenként elindítja a futtatást:
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -71,15 +71,15 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
                             recurrence=recurrence)
 ```
 
-### <a name="create-a-change-based-schedule"></a>Create a change-based schedule
+### <a name="create-a-change-based-schedule"></a>Változáson alapuló ütemterv létrehozása
 
-Pipelines that are triggered by file changes may be more efficient than time-based schedules. For instance, you may want to perform a preprocessing step when a file is changed, or when a new file is added to a data directory. You can monitor any changes to a datastore or changes within a specific directory within the datastore. If you monitor a specific directory, changes within subdirectories of that directory will _not_ trigger a run.
+A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Előfordulhat például, hogy egy fájl módosításakor vagy egy új fájl egy adatkönyvtárhoz való hozzáadásakor szeretne elvégezni egy előfeldolgozási lépést. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
 
-To create a file-reactive `Schedule`, you must set the `datastore` parameter in the call to [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). To monitor a folder, set the `path_on_datastore` argument.
+Fájl – reaktív `Schedule`létrehozásához a `datastore` paramétert kell megadnia az [Schedule. Create paranccsal.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) Egy mappa figyeléséhez állítsa be a `path_on_datastore` argumentumot.
 
-The `polling_interval` argument allows you to specify, in minutes, the frequency at which the datastore is checked for changes.
+A `polling_interval` argumentummal percek alatt megadhatja, hogy az adattár milyen gyakorisággal legyen bejelölve a változásokhoz.
 
-If the pipeline was constructed with a [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), you can set that variable to the name of the changed file by setting the `data_path_parameter_name` argument.
+Ha a folyamat [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) - [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)lett létrehozva, a változót a módosított fájl nevére állíthatja be a `data_path_parameter_name` argumentum beállításával.
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -88,28 +88,28 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
-### <a name="optional-arguments-when-creating-a-schedule"></a>Optional arguments when creating a schedule
+### <a name="optional-arguments-when-creating-a-schedule"></a>Az ütemterv létrehozásakor nem kötelező argumentumok
 
-In addition to the arguments discussed previously, you may set the `status` argument to `"Disabled"` to create an inactive schedule. Finally, the `continue_on_step_failure` allows you to pass a Boolean that will override the pipeline's default failure behavior.
+A korábban tárgyalt argumentumokon kívül a `status` argumentumot is beállíthatja, hogy `"Disabled"` egy inaktív ütemterv létrehozásához. Végül a `continue_on_step_failure` lehetővé teszi egy olyan logikai érték átadását, amely felülbírálja a folyamat alapértelmezett meghibásodási viselkedését.
 
-## <a name="view-your-scheduled-pipelines"></a>View your scheduled pipelines
+## <a name="view-your-scheduled-pipelines"></a>Az ütemezett folyamatok megtekintése
 
-In your Web browser, navigate to Azure Machine Learning. From the **Endpoints** section of the navigation panel, choose **Pipeline endpoints**. This takes you to a list of the pipelines published in the Workspace.
+A böngészőben nyissa meg a Azure Machine Learning. A navigációs panel **végpontok** szakaszában válassza a **folyamat végpontjai**lehetőséget. Ekkor megjelenik a munkaterületen közzétett folyamatok listája.
 
-![Pipelines page of AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
+![PÉNZMOSÁS-folyamatok lapja](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
-In this page you can see summary information about all the pipelines in the Workspace: names, descriptions, status, and so forth. Drill in by clicking in your pipeline. On the resulting page, there are more details about your pipeline and you may drill down into individual runs.
+Ezen a lapon megtekintheti a munkaterület összes folyamatával kapcsolatos összegző információkat: nevek, leírások, állapot stb. Részletezés a folyamatra kattintva. Az eredményül kapott oldalon további részleteket talál a folyamatról, és az egyes futtatásokat is lerészletezheti.
 
-## <a name="deactivate-the-pipeline"></a>Deactivate the pipeline
+## <a name="deactivate-the-pipeline"></a>A folyamat inaktiválása
 
-If you have a `Pipeline` that is published, but not scheduled, you can disable it with:
+Ha van közzétett `Pipeline`, de nincs ütemezve, letilthatja a következőket:
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
 pipeline.disable()
 ```
 
-If the pipeline is scheduled, you must cancel the schedule first. Retrieve the schedule's identifier from the portal or by running:
+Ha a folyamat ütemezve van, először le kell mondania az ütemezést. Kérje le az ütemterv azonosítóját a portálról, vagy futtassa a következőt:
 
 ```python
 ss = Schedule.list(ws)
@@ -117,7 +117,7 @@ for s in ss:
     print(s)
 ```
 
-Once you have the `schedule_id` you wish to disable, run:
+Ha a `schedule_id` le szeretné tiltani, futtassa a következőt:
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -128,16 +128,16 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule(ws, schedule_id)
 ```
 
-If you then run `Schedule.list(ws)` again, you should get an empty list.
+Ha ezután újra futtatja `Schedule.list(ws)`, akkor egy üres listát kell kapnia.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this article, you used the Azure Machine Learning SDK for Python to schedule a pipeline in two different ways. One schedule recurs based on elapsed clock time. The other schedule runs if a file is modified on a specified `Datastore` or within a directory on that store. You saw how to use the portal to examine the pipeline and individual runs. Finally, you learned how to disable a schedule so that the pipeline stops running.
+Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Végezetül megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson.
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 > [!div class="nextstepaction"]
-> [Use Azure Machine Learning Pipelines for batch scoring](tutorial-pipeline-batch-scoring-classification.md)
+> [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)
 
-* Learn more about [pipelines](concept-ml-pipelines.md)
-* Learn more about [exploring Azure Machine Learning with Jupyter](samples-notebooks.md)
+* További információ a [folyamatokról](concept-ml-pipelines.md)
+* További információ a [Azure Machine learning Jupyter való feltárásáról](samples-notebooks.md)

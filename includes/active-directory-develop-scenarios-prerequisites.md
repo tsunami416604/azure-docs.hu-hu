@@ -21,11 +21,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482497"
 ---
-Before reading this article, you should be familiar with the following concepts:
+A cikk elolvasása előtt ismernie kell a következő fogalmakat:
 
-- [Microsoft identity platform overview](../articles/active-directory/develop/v2-overview.md)
+- [A Microsoft Identity platform áttekintése](../articles/active-directory/develop/v2-overview.md)
 - [Hitelesítési alapok](../articles/active-directory/develop/authentication-scenarios.md)
-- [Audiences](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Application and service principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Permissions and consent](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [ID tokens](../articles/active-directory/develop/id-tokens.md) and [access tokens](../articles/active-directory/develop/access-tokens.md)
+- [Közönség](../articles/active-directory/develop/v2-supported-account-types.md)
+- [Alkalmazás-és egyszerű szolgáltatások](../articles/active-directory/develop/app-objects-and-service-principals.md)
+- [Engedélyek és beleegyezik](../articles/active-directory/develop/v2-permissions-and-consent.md)
+- [Azonosító jogkivonatok](../articles/active-directory/develop/id-tokens.md) és [hozzáférési jogkivonatok](../articles/active-directory/develop/access-tokens.md)

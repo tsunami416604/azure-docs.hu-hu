@@ -374,8 +374,6 @@
               href: rest-speech-to-text.md
             - name: Szövegfelolvasás REST API
               href: rest-text-to-speech.md
-            - name: Webhookok REST API
-              href: webhooks.md
         - name: A Swagger dokumentációja
           href: swagger-documentation.md
 - name: Beszéd SDK

@@ -1,6 +1,6 @@
 ---
-title: Request process and email notifications in Azure AD entitlement management - Azure Active Directory
-description: Learn about the request process for an access package and when email notifications are sent in Azure Active Directory entitlement management.
+title: Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, valamint azt, hogy a rendszer mikor küldjön e-mail-értesítéseket Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -23,136 +23,136 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206902"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Request process and email notifications in Azure AD entitlement management
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
 
-When a user submits a request to an access package, a process begins to deliver that access request. Azure AD entitlement management sends email notifications to approvers and requestors when key events occur during the process. This article describes the request process and the email notifications that are sent.
+Amikor egy felhasználó kérelmet küld egy hozzáférési csomagnak, a folyamat megkezdi a hozzáférési kérelem kézbesítését. Az Azure AD-jogosultságok kezelése e-mail-értesítéseket küld a jóváhagyóknak és a kérelmezőknek, ha a folyamat során fontos események történnek. Ez a cikk a kérelmek folyamatát és az elküldött e-mailes értesítéseket ismerteti.
 
-## <a name="request-process"></a>Request process
+## <a name="request-process"></a>Kérelem folyamata
 
-A user that needs access to an access package can submit an access request. Depending on the configuration of the policy, the request might require an approval. When a request is approved, a process begins to assign the user access to each resource in the access package. The following diagram shows an overview of the process and the different states:
+Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozzáférési kérelmet kell küldenie. A házirend konfigurációjától függően előfordulhat, hogy a kérelem jóváhagyást igényel. A kérések jóváhagyásakor a folyamat megkezdi a felhasználói hozzáférés hozzárendelését a hozzáférési csomagban lévő egyes erőforrásokhoz. Az alábbi ábrán a folyamat és a különböző állapotok áttekintése látható:
 
-![Approval process diagram](./media/entitlement-management-process/request-process.png)
+![Jóváhagyási folyamat diagramja](./media/entitlement-management-process/request-process.png)
 
-| Állami | Leírás |
+| Állapot | Leírás |
 | --- | --- |
-| Submitted | User submits a request. |
-| Pending approval | If the policy for an access package requires approval, a request moves to pending approval. |
-| Lejárt | If no approvers approve a request within the approval request timeout, the request expires. To try again, the user will have to resubmit their request. |
-| Denied | Approver denies a request. |
-| Approved | Approver approves a request. |
-| Delivering | User has **not** been assigned access to all the resources in the access package. If this is an external user, the user may not have accessed the resource directory yet. They also may not have accepted the consent prompt. |
-| Kézbesítve | User has been assigned access to all the resources in the access package. |
-| Access extended | If extensions are allowed in the policy, the user extended the assignment. |
-| Access expired | User's access to the access package has expired. To get access again, the user will have to submit a request. |
+| Beküldött | A felhasználó kérelmet küld. |
+| Jóváhagyásra váró elemek | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
+| Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
+| Megtagadva | A jóváhagyó megtagadja a kérelmet. |
+| Approved | A jóváhagyó jóváhagyja a kérelmet. |
+| Szállít | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, előfordulhat, hogy a felhasználó még nem fér hozzá az erőforrás-címtárhoz. Az is előfordulhat, hogy nem fogadták el a hozzájárulási kérést. |
+| Kézbesítve | A felhasználó hozzá lett rendelve a hozzáférési csomag összes erőforrásához. |
+| Hozzáférés kiterjesztve | Ha a házirendben engedélyezve vannak a bővítmények, a felhasználó kibővítette a hozzárendelést. |
+| A hozzáférés lejárt | A felhasználó hozzáférési csomaghoz való hozzáférése lejárt. Ha újra szeretné elérni a hozzáférést, a felhasználónak el kell küldenie egy kérést. |
 
 ## <a name="email-notifications"></a>E-mail-értesítések
 
-If you're an approver, you're sent email notifications when you need to approve an access request. You also receive notifications when an access request has been completed. You're also sent email notifications that indicate the status of your request if you're a requestor.
+Ha Ön jóváhagyó, akkor e-mail-értesítéseket küld, amikor egy hozzáférési kérelmet kell jóváhagynia. Értesítéseket is kap, amikor egy hozzáférési kérelem befejeződik. Ön is elküldte a kérelme állapotát jelző e-mail-értesítéseket, ha Ön a kérelmező.
 
-The following diagrams show when these email notifications are sent to either the approvers or the requestor. Reference the [email notifications table](entitlement-management-process.md#email-notifications-table) to find the corresponding number to the email notifications displayed in the diagrams.
+A következő diagramok azt mutatják be, hogy az e-mail-értesítések küldése a jóváhagyóknak vagy a kérelmezőnek. A diagramokban megjelenő e-mail-értesítések megfelelő számának megkereséséhez hivatkozzon az [e-mail értesítések táblára](entitlement-management-process.md#email-notifications-table) .
 
-### <a name="first-approvers-and-alternate-approvers"></a>First approvers and alternate approvers
-The following diagram shows the experience of first approvers and alternate approvers, and the email notifications they receive during the request process:
+### <a name="first-approvers-and-alternate-approvers"></a>Első jóváhagyók és alternatív jóváhagyók
+Az alábbi ábrán az első jóváhagyók és a másodlagos jóváhagyók, valamint a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![First and alternate approvers process flow](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
+![Első és másodlagos jóváhagyók folyamata](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Kérelmezők
-The following diagram shows the experience of requestors and the email notifications they receive during the request process:
+Az alábbi ábrán a kérelmező és a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![Requestor process flow](./media/entitlement-management-process/requestor-approval-request-flow.png)
+![Kérelmező folyamatának folyamatábrája](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>2-stage approval
-The following diagram shows the experience of stage-1 and stage-2 approvers and the email notifications they receive during the request process:
+### <a name="2-stage-approval"></a>2 – fázis jóváhagyása
+A következő ábrán az 1. fázis és a 2. fázis-jóváhagyók, valamint a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![2-stage approval process flow](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+![kétfázisú jóváhagyási folyamat](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
-### <a name="email-notifications-table"></a>Email notifications table
-The following table provides more detail about each of these email notifications. To manage these emails, you can use rules. For example, in Outlook, you can create rules to move the emails to a folder if the subject contains words from this table:
+### <a name="email-notifications-table"></a>E-mail értesítések táblázata
+Az alábbi táblázat részletesebben ismerteti az e-mail-értesítéseket. Az e-mailek kezeléséhez használhatja a szabályokat. Az Outlookban például létrehozhat olyan szabályokat, amelyekkel áthelyezheti az e-maileket egy mappába, ha a tárgy szavakat tartalmaz a táblázatból:
 
-| # | Email subject | When sent | Sent to |
+| # | E-mail tárgya | Küldésekor | Címzett |
 | --- | --- | --- | --- |
-| 1 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to Stage-1 alternate approvers (after the request has been escalated) to take action. | Stage-1 alternate approvers |
-| 2 | Action required: Approve or deny request by *[date]* | This email will be sent to the first approver, if escalation is disabled, to take action. | First approver |
-| 3 | Reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is disabled. The email asks them to take action if they haven't. | First approver |
-| 4 | Approve or deny the request by *[time]* on *[date]* | This email will be sent to the first approver (if escalation is enabled) to take action. | First approver |
-| 5 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is enabled. The email asks them to take action if they haven't. | First approver |
-| 6 | Request has expired for *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers after the request has expired. | First approver, stage-1 alternate approvers |
-| 7 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers upon request completion. | First approver, stage-1 alternate approvers |
-| 8 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers of a 2-stage request when the stage-1 request is approved. | First approver, stage-1 alternate approvers |
-| 9 | Request denied to *[access_package]* | This email will be sent to the requestor when their request is denied | Requestor |
-| 10 | Your request has expired for *[access_package]* | This email will be sent to the requestor at the end of a single or 2-stage request. The email notifies the requestor that the request expired. | Requestor |
-| 11 | Action required: Approve or deny request by *[date]* | This email will be sent to the second approver, if escalation is disabled, to take action. | Second approver |
-| 12 | Action required reminder: Approve or deny the request by *[date]* | This reminder email will be sent to the second approver, if escalation is disabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 13 | Action required: Approve or deny the request by *[date]* for *[requestor]* | This email will be sent to second approver, if escalation is enabled, to take action. | Second approver |
-| 14 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the second approver, if escalation is enabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 15 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to stage-2 alternate approvers, if escalation is enabled, to take action. | Stage-2 alternate approvers |
-| 16 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the second approver and stage-2 alternate approvers upon approving the request. | Second approver, Stage-2 alternate approvers |
-| 17 | A request has expired for *[access_package]* | This email will be sent to the second approver or alternate approvers, after the request expires. | Second approver, stage-2 alternate approvers |
-| 18 | You now have access to *[access_package]* | This email will be sent to the end users to start using their access. | Requestor |
-| 19 | Extend access for *[access_package]* by *[date]* | This email will be sent to the end users before their access expires. | Requestor |
-| 20 | Access has ended for *[access_package]* | This email will be sent to the end users after their access expires. | Requestor |
+| 1 | Szükséges művelet: a továbbított kérelem jóváhagyása vagy megtagadása a *[date]* alapján | Ezt az e-mailt a rendszer elküldi az 1. szakaszhoz tartozó másodlagos jóváhagyóknak (miután a kérést megadták) a művelet elvégzéséhez. | 1\. fázis – alternatív jóváhagyók |
+| 2 | Szükséges művelet: a (z *) [date]* jóváhagyása vagy elutasítása. | Ezt az e-mailt a rendszer az első jóváhagyónak küldi el, ha az eszkaláció le van tiltva, a művelet elvégzéséhez. | Első jóváhagyó |
+| 3 | Emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer az első jóváhagyónak küldi el, ha az eszkaláció le van tiltva. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
+| 4 | A kérelem jóváhagyása vagy elutasítása *[Time]* a következő *időpontban: [date]* | Ezt az e-mailt a rendszer az első jóváhagyónak küldi el (ha az eszkaláció engedélyezve van) a művelet elvégzéséhez. | Első jóváhagyó |
+| 5 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer az első jóváhagyónak küldi el, ha engedélyezve van az eszkaláció. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
+| 6 | A kérelem lejárt a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a kérelem lejárta után az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak küldi el. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 7 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | A rendszer ezt az e-mailt küldi el az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak a kérelem befejezésekor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 8 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer a 2 fázisú kérelem első jóváhagyójának és 1. fázisának másodlagos jóváhagyójának küldi el az 1. szintű kérelem jóváhagyásakor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 9 | Kérelem elutasítva *[access_package]* | A rendszer ezt az e-mailt küldi a kérelmezőnek a kérelem megtagadásakor | Kérelmező |
+| 10 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer egy vagy két fázisra vonatkozó kérelem végén küldi el a kérelmezőnek. Az e-mail értesíti a kérelmezőt arról, hogy a kérelem lejárt. | Kérelmező |
+| 11 | Szükséges művelet: a (z *) [date]* jóváhagyása vagy elutasítása. | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva, a művelet elvégzéséhez. | Második jóváhagyó |
+| 12 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* | Ezt az emlékeztető e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
+| 13 | Szükséges művelet: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha engedélyezve van az eszkaláció, hogy végrehajtsa a műveletet. | Második jóváhagyó |
+| 14 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció engedélyezve van. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
+| 15 | Szükséges művelet: a továbbított kérelem jóváhagyása vagy megtagadása a *[date]* alapján | Ezt az e-mailt a rendszer elküldi a 2. fázisba, ha az eszkaláció engedélyezve van, a művelet elvégzéséhez. | 2\. fázis – alternatív jóváhagyók |
+| 16 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer elküldi a második jóváhagyónak és 2. fázisban lévő alternatív jóváhagyónak a kérelem jóváhagyása után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
+| 17 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer a második jóváhagyónak vagy más jóváhagyóknak küldi el a kérelem lejárta után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
+| 18 | Most már hozzáférhet *[access_package]* | Ezt az e-mailt a rendszer elküldi a végfelhasználóknak a hozzáférésük használatának megkezdéséhez. | Kérelmező |
+| 19 | A *[access_package]* elérésének kiterjesztése a következőre: *[date]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta előtt küldi el a végfelhasználóknak. | Kérelmező |
+| 20 | A hozzáférés befejeződött a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta után küldi el a végfelhasználóknak. | Kérelmező |
 
-### <a name="access-request-emails"></a>Access request emails
+### <a name="access-request-emails"></a>Hozzáférési kérelem e-mail-címe
 
-When a requestor submits an access request for an access package configured to require approval, all approvers added to the policy will receive an email notification with details of the request. The details in the email include: requestor's name organization, and business justification; and the requested access start and end date (if provided). The details will also include when the request was submitted and when the request will expire.
+Ha egy kérelmező hozzáférési kérelmet küld a jóváhagyás megkövetelésére konfigurált hozzáférési csomaghoz, a Szabályzathoz hozzáadott összes jóváhagyó e-mailben értesítést fog kapni a kérelem részleteiről. Az e-mailben szereplő adatok a következők: a kérelmező neve szervezete és az üzleti indoklás; és a kért hozzáférési kezdési és befejezési dátum (ha meg van adni). A részletek a kérelem elküldésekor és a kérés érvényességének lejárta után is szerepelni fognak.
 
-The email includes a link approvers can click on to go to My Access to approve or deny the access request. Here is a sample email notification that is sent to the first approver or second approver (if 2-stage approval is enabled) to complete an access request:
+Az e-mail tartalmaz egy hivatkozás-jóváhagyót is, ha a hozzáférési kérelem jóváhagyásához vagy elutasításához szeretné elérni a hozzáférési kérelmet, kattintson a Tovább gombra. Az alábbi példa egy e-mailes értesítést küld az első jóváhagyónak vagy második jóváhagyónak (ha engedélyezve van a 2. szintű jóváhagyás) egy hozzáférési kérelem elvégzéséhez:
 
-![Approve request to access package email](./media/entitlement-management-shared/approver-request-email.png)
+![Hozzáférési kérelem jóváhagyása a csomag e-mail-címéhez](./media/entitlement-management-shared/approver-request-email.png)
 
-Approvers can also receive a reminder email. The email asks the approver to make a decision on the request. Here is a sample email notification the approver receives to remind them to take action:
+A jóváhagyók emlékeztető e-mailt is kaphatnak. Az e-mail arra kéri a jóváhagyót, hogy hozzon döntést a kérelemről. Íme egy példa e-mail-értesítésre, amelyet a jóváhagyó kap, hogy emlékeztesse őket a művelet elvégzésére:
 
-![Reminder access request email](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![Emlékeztető hozzáférési kérelem e-mail címe](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approvers-request-emails"></a>Alternate approvers request emails
+### <a name="alternate-approvers-request-emails"></a>Alternatív jóváhagyók kérése e-mailben
 
-If the alternate approvers setting is enabled and the request is still pending, it will be forwarded. Alternate approvers will receive an email to approve or deny the request. You can enable alternate approvers in stage-1 and stage-2. Here is a sample email of the notification the alternate approvers receive:
+Ha a másodlagos jóváhagyók beállítás engedélyezve van, és a kérés még függőben van, a rendszer továbbítja. Az alternatív jóváhagyók e-mailt kapnak a kérelem jóváhagyásához vagy elutasításához. Engedélyezheti az alternatív jóváhagyókat az 1. és a 2. fázisban. Itt látható egy példa e-mailben a másodlagos jóváhagyók fogadására:
 
-![Alternate approvers request email](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Alternatív jóváhagyók e-mail kérése](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Both the approver and the alternate approvers can approve or deny the request.
+A jóváhagyó és a másodlagos jóváhagyó is jóváhagyhatja vagy megtagadhatja a kérelmet.
 
-### <a name="approved-or-denied-emails"></a>Approved or denied emails
+### <a name="approved-or-denied-emails"></a>Jóváhagyott vagy megtagadott e-mailek
 
- When an approver receives an access request submitted by a requestor, they can approve or deny the access request. The approver needs to add a business justification for their decision. Here is a sample email sent to the approvers and alternate approvers after a request is approved:
+ Ha egy jóváhagyó egy kérelmező által küldött hozzáférési kérelmet kap, akkor jóváhagyhatja vagy megtagadhatja a hozzáférési kérelmet. A jóváhagyónak üzleti indoklást kell adnia döntéséhez. Az alábbi példa egy, a jóváhagyóknak és az alternatív jóváhagyóknak küldött e-mailt a kérelem jóváhagyása után:
 
-![Approved request to access package email](./media/entitlement-management-process/approver-request-email-approved.png)
+![A csomag e-mail-címéhez való hozzáférésre jóváhagyott kérelem](./media/entitlement-management-process/approver-request-email-approved.png)
 
-When an access request is approved, and their access is provisioned, an email notification is sent to the requestor that they now have access to the access package. Here is a sample email notification that is sent to a requestor when they're granted access to an access package:
+Egy hozzáférési kérelem jóváhagyása és a hozzájuk való hozzáférés kiépítés esetén e-mailben értesítést küld a kérelmezőnek, hogy hozzáférjenek a hozzáférési csomaghoz. Íme egy példa e-mail-értesítésre, amelyet a rendszer a kérelmezőnek küld, amikor hozzáférést kap egy hozzáférési csomaghoz:
 
-![Approved requestor access request email](./media/entitlement-management-process/requestor-email-approved.png)
+![Jóváhagyott kérelmező hozzáférési kérelmének e-mail-címe](./media/entitlement-management-process/requestor-email-approved.png)
 
-When an access request is denied, an email notification is sent to the requestor. Here is a sample email notification that is sent to a requestor when their access request is denied:
+Hozzáférési kérelem elutasítása esetén e-mailben értesítést küldünk a kérelmezőnek. Íme egy példa e-mail-értesítésre, amelyet a rendszer a hozzáférési kérelmének megtagadásakor küld a kérelmezőnek:
 
-![Requestor request denied email](./media/entitlement-management-process/requestor-email-denied.png)
+![Kérelmező kérelmének megtagadott e-mail-címe](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>2-stage approval access request emails
+### <a name="2-stage-approval-access-request-emails"></a>2\. szintű jóváhagyási hozzáférési kérelem e-mail-címe
 
-If 2-stage approval is enabled, at least two approvers must approve the request, one from each stage, before the requestor can receive access.
+Ha a kétfázisú jóváhagyás engedélyezve van, legalább két jóváhagyónak jóvá kell hagynia a kérést, egyet az egyes szakaszoktól, mielőtt a kérelmező hozzáférhet a hozzáféréshez.
 
-During stage-1, the first approver will receive the access request email and make a decision. If they approve the request, all first approvers and alternate approvers in stage-1 (if escalation is enabled) will receive notification that stage-1 is complete. Here is a sample email of the notification that is sent when stage-1 is complete:
+Az 1. fázisban az első jóváhagyó megkapja a hozzáférési kérelem e-mail-címét, és döntést hoz. Ha jóváhagyják a kérést, az 1. fázisban található minden első jóváhagyó és egy másik jóváhagyó (ha a eszkaláció engedélyezve van) értesítést kap az 1. fázis befejeződéséről. Az alábbi példa egy e-mailt küld az 1. lépésben elküldött értesítésről:
 
-![2-stage access request email](./media/entitlement-management-process/approver-request-email-2stage.png)
+![2\. szintű hozzáférési kérelem e-mail-címe](./media/entitlement-management-process/approver-request-email-2stage.png)
 
-After the first or alternate approvers approve the request in stage-1, stage-2 begins. During stage-2, the second approver will receive the access request notification email. After the second approver or alternate approvers in stage-2 (if escalation is enabled) decide to approve or deny the request, notification emails are sent to the first and second approvers, and all alternate approvers in stage-1 and stage-2, as well as the requestor.
+Miután az első vagy másodlagos jóváhagyó jóváhagyja a kérelmet az 1. fázisban, a 2. fázis kezdődik. A 2. fázisban a második jóváhagyó megkapja a hozzáférési kérelemre vonatkozó értesítő e-mailt. A második jóváhagyó vagy a 2. fázisban található másodlagos jóváhagyók (ha az eszkaláció engedélyezve van) úgy dönt, hogy jóváhagyja vagy elutasítja a kérést, az értesítési e-maileket az első és második jóváhagyónak, valamint az 1. és a 2. fázisban lévő összes másodlagos jóváhagyónak, valamint a kérelmezőnek kell elküldeni.
 
-### <a name="expired-access-request-emails"></a>Expired access request emails
+### <a name="expired-access-request-emails"></a>Lejárt hozzáférési kérelmekre vonatkozó e-mailek
 
-Access requests could expire if no approver has approved or denied the request. 
+A hozzáférési kérelmek lejárnak, ha egy jóváhagyó nem hagyta jóvá vagy nem utasította el a kérelmet. 
 
-When the request reaches its configured expiration date and expires, it can no longer be approved or denied by the approvers. Here is a sample email of the notification sent to all of the first, second (if 2-stage approval is enabled), and alternate approvers:
+Ha a kérelem eléri a beállított lejárati dátumát, és lejár, akkor a jóváhagyók nem hagyják jóvá vagy nem tagadhatják meg a jóváhagyást. Itt láthatja az értesítésre vonatkozó e-mailt, amelyet a rendszer az összes első, második (ha 2 fázisú jóváhagyás engedélyezése esetén) és alternatív jóváhagyóként küldött el:
 
-![Approvers expired access request email](./media/entitlement-management-process/approver-request-email-expired.png)
+![A jóváhagyóak lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/approver-request-email-expired.png)
 
-An email notification is also sent to the requestor, notifying them that their access request has expired, and that they need to resubmit the access request. The following diagram shows the experience of the requestor and the email notifications they receive when they request to extend access:
+E-mail-értesítést is küld a kérelmezőnek, értesíti arról, hogy a hozzáférési kérelmük lejárt, és újra el kell küldenie a hozzáférési kérést. Az alábbi ábrán a kérelmező és az e-mailes értesítések jelennek meg, amikor a hozzáférés kiterjesztését kérik:
 
-![Requestor extend access process flow](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+![A kérelmező kiterjeszti a hozzáférési folyamatot](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 
-Here is a sample email notification that is sent to a requestor when their access request has expired:
+Itt látható egy példa e-mail-értesítésre, amelyet a kérelmező a hozzáférési kérelmének lejárta után küld el:
 
-![Requestor expired access request email](./media/entitlement-management-process/requestor-email-request-expired.png)
+![Kérelmező lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Request access to an access package](entitlement-management-request-access.md)
-- [Approve or deny access requests](entitlement-management-request-approve.md)
+- [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
+- [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)

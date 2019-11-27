@@ -1,6 +1,6 @@
 ---
 title: Javítható szabályzat telepítése
-description: Learn how to onboard a customer to Azure delegated resource management, allowing their resources to be accessed and managed through your own tenant.
+description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
@@ -10,19 +10,19 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463877"
 ---
-# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Deploy a policy that can be remediated within a delegated subscription
+# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
 
-[Azure Lighthouse](../overview.md) allows service providers to create and edit policy definitions within a delegated subscription. However, to deploy policies that use a [remediation task](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) (that is, policies with the [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) or [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) effect), you’ll need to create a [managed identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) in the customer tenant. This managed identity can be used by Azure Policy to deploy the template within the policy. There are steps required to enable this scenario, both when you onboard the customer for Azure delegated resource management, and when you deploy the policy itself.
+Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy szabályzat-definíciókat hozzanak létre és szerkesszenek egy delegált előfizetésen belül. Ahhoz azonban, hogy olyan házirendeket helyezzen üzembe, amelyek [szervizelési feladatot](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) használnak (azaz a [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) vagy a [módosítás](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) hatása), létre kell hoznia egy [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) az ügyfél bérlője számára. Ezt a felügyelt identitást Azure Policy használhatja a sablon üzembe helyezéséhez a szabályzaton belül. Ennek a forgatókönyvnek az engedélyezéséhez szükség van, ha az ügyfelet az Azure-beli delegált erőforrás-kezeléshez használja, és a házirendet maga telepíti.
 
-## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Create a user who can assign roles to a managed identity in the customer tenant
+## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Hozzon létre egy felhasználót, aki szerepköröket rendelhet egy felügyelt identitáshoz az ügyfél bérlője számára
 
-When you onboard a customer for Azure delegated resource management, you use an [Azure Resource Manager template](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) along with a parameters file that defines the users, user groups, and service principals in your managing tenant that will be able to access the delegated resources in the customer tenant. In your parameters file, each of these users (**principalId**) is assigned a [built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**) that defines the level of access.
+Ha az Azure-beli delegált erőforrás-kezeléshez rendel ügyfelet, egy [Azure Resource Manager sablont](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) , valamint egy olyan paramétereket tartalmazó fájlt fog használni, amely meghatározza a felügyeleti bérlőben lévő felhasználókat, felhasználói csoportokat és egyszerű szolgáltatásokat, amelyek képesek lesznek hozzáférni a delegált erőforrásokhoz az ügyfél bérlője számára. A parameters (paraméterek) fájlban ezek a felhasználók (**principalId**-EK) egy [beépített szerepkört](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**) kapnak, amely meghatározza a hozzáférési szintet.
 
-To allow a **principalId** to create a managed identity in the customer tenant, you must set its **roleDefinitionId** to **User Access Administrator**. While this role is not generally supported, it can be used in this specific scenario, allowing the users with this permission to assign one or more specific built-in roles to managed identities. These roles are defined in the **delegatedRoleDefinitionIds** property. You can include any built-in role here except for User Access Administrator or Owner.
+Ahhoz, hogy egy **principalId** felügyelt identitást hozzon létre az ügyfél bérlője számára, be kell állítania a **RoleDefinitionId** a **felhasználói hozzáférési rendszergazdának**. Habár ez a szerepkör nem támogatott általánosan, ez az adott forgatókönyvben használható, így a felhasználók ezzel az engedéllyel rendelkezhetnek egy vagy több speciális beépített szerepkör hozzárendeléséhez a felügyelt identitásokhoz. Ezeket a szerepköröket a **delegatedRoleDefinitionIds** tulajdonság határozza meg. Ide belefoglalhatja a beépített szerepkört, kivéve a felhasználói hozzáférés rendszergazdáját vagy a tulajdonost.
 
-After the customer is onboarded, the **principalId** created in this authorization will be able to assign these built-in roles to managed identities in the customer tenant. However, they will not have any other permissions normally associated with the User Access Administrator role.
+Az ügyfél bevezetését követően az ebben az engedélyezésben létrehozott **principalId** ezeket a beépített szerepköröket hozzárendelheti a felügyelt identitásokhoz az ügyfél bérlője számára. Azonban nem rendelkeznek a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyekkel.
 
-The example below shows a **principalId** who will have the User Access Administrator role. This user will be able to assign two built-in roles to managed identities in the customer tenant: Contributor and Log Analytics Contributor.
+Az alábbi példa egy olyan **principalId** mutat be, amely a felhasználói hozzáférés rendszergazdai szerepkört fogja tartalmazni. Ez a felhasználó két beépített szerepkört tud hozzárendelni a felügyelt identitásokhoz az ügyfél bérlője: közreműködő és Log Analytics közreműködő.
 
 ```json
 {
@@ -36,15 +36,15 @@ The example below shows a **principalId** who will have the User Access Administ
 }
 ```
 
-## <a name="deploy-policies-that-can-be-remediated"></a>Deploy policies that can be remediated
+## <a name="deploy-policies-that-can-be-remediated"></a>Szervizelhető házirendek üzembe helyezése
 
-Once you have created the user with the necessary permissions as described above, that user can deploy policies in the customer tenant that use remediation tasks.
+Miután létrehozta a felhasználót a fent ismertetett szükséges engedélyekkel, a felhasználó telepíthet szabályzatokat az ügyfél-bérlőben, amely szervizelési feladatokat használ.
 
-For example, let’s say you wanted to enable diagnostics on Azure Key Vault resources in the customer tenant, as illustrated in this [sample](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring). A user in the managing tenant with the appropriate permissions (as described above) would deploy an [Azure Resource Manager template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) to enable this scenario.
+Tegyük fel például, hogy engedélyezni szeretné a diagnosztika engedélyezését az ügyfél bérlőn lévő Azure Key Vault erőforrásokon, ahogy azt ebben a [példában](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring)is látható. A bérlő a megfelelő engedélyekkel rendelkező felhasználója egy [Azure Resource Manager sablon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) üzembe helyezésével engedélyezi ezt a forgatókönyvet.
 
-Note that creating the policy assignment to use with a delegated subscription must currently be done through APIs, not in the Azure portal. When doing so, the **apiVersion** must be set to **2019-04-01-preview**, which includes the new **delegatedManagedIdentityResourceId** property. This property allows you to include a managed identity that resides in the customer tenant (in a subscription or resource group which has been onboarded to Azure delegated resource management).
+Vegye figyelembe, hogy a delegált előfizetéssel használandó szabályzat-hozzárendelés létrehozása jelenleg API-kon keresztül történik, nem pedig a Azure Portal. Ha így tesz, a **apiVersion** a **2019-04-01-Preview**értékre kell állítani, amely tartalmazza az új **delegatedManagedIdentityResourceId** tulajdonságot. Ez a tulajdonság lehetővé teszi, hogy olyan felügyelt identitást tartalmazzon, amely az ügyfél bérlőben található (egy előfizetésben vagy erőforráscsoporthoz, amely az Azure-beli delegált erőforrás-kezelés alá került).
 
-The following example shows a role assignment with a **delegatedManagedIdentityResourceId**.
+Az alábbi példa egy **delegatedManagedIdentityResourceId**rendelkező szerepkör-hozzárendelést mutat be.
 
 ```json
 "type": "Microsoft.Authorization/roleAssignments",
@@ -62,9 +62,9 @@ The following example shows a role assignment with a **delegatedManagedIdentityR
 ```
 
 > [!TIP]
-> A [similar sample](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) is available to demonstrate how to deploy a policy that adds or removes a tag (using the modify effect) to a delegated subscription.
+> A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
-- Learn about [managed identities for Azure resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- A [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)megismerése.
+- Ismerje meg [Az Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

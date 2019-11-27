@@ -14,7 +14,7 @@ ms.locfileid: "74287839"
 
 Ez a cikk az SAP HANA adatbázisok Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Hány teljes biztonsági mentést támogat naponta?
 

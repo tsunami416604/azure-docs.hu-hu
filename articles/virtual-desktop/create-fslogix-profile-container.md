@@ -1,6 +1,6 @@
 ---
-title: FSLogix profile containers NetApp Windows Virtual Desktop - Azure
-description: How to create an FSLogix profile container using Azure NetApp Files in Windows Virtual Desktop.
+title: FSLogix-profil tárolók NetApp Windows virtuális asztal – Azure
+description: FSLogix-profil tároló létrehozása a Windows rendszerű virtuális asztali Azure NetApp Files használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,47 +14,47 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483644"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Create an FSLogix profile container for a host pool using Azure NetApp Files
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
 
-We recommend using FSLogix profile containers as a user profile solution for the [Windows Virtual Desktop service](overview.md). FSLogix profile containers store a complete user profile in a single container and are designed to roam profiles in non-persistent remote computing environments like Windows Virtual Desktop. When you sign in, the container dynamically attaches to the computing environment using a locally supported virtual hard disk (VHD) and Hyper-V virtual hard disk (VHDX). These advanced filter-driver technologies allow the user profile to be immediately available and appear in the system exactly like a local user profile. To learn more about FSLogix profile containers, see [FSLogix profile containers and Azure files](fslogix-containers-azure-files.md).
+Javasoljuk, hogy használja a FSLogix-profilok tárolóit felhasználói profil megoldásként a [Windows rendszerű virtuális asztali szolgáltatáshoz](overview.md). A FSLogix-profil tárolói egy teljes felhasználói profilt tárolnak egyetlen tárolóban, és a nem állandó távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban is barangoló profilokat terveztek. Amikor bejelentkezik, a tároló dinamikusan csatlakozik a számítástechnikai környezethez egy helyileg támogatott virtuális merevlemez (VHD) és egy Hyper-V virtuális merevlemez (VHDX) használatával. Ezek a speciális szűrő-illesztőprogram-technológiák lehetővé teszik, hogy a felhasználói profil azonnal elérhető legyen, és pontosan a helyi felhasználói profilhoz hasonlóan jelenjen meg a rendszeren. A FSLogix-profilok tárolókkal kapcsolatos további tudnivalókért tekintse meg a [FSLogix-profilok és az Azure Files](fslogix-containers-azure-files.md)című témakört.
 
-You can create FSLogix profile containers using [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), an easy-to-use Azure native platform service that helps customers quickly and reliably provision enterprise-grade SMB volumes for their Windows Virtual Desktop environments. To learn more about Azure NetApp Files, see [What is Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
+A FSLogix-profil tárolókat a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)segítségével hozhatja létre, amely egy könnyen használható Azure natív platform-szolgáltatás, amely segít az ügyfeleknek gyorsan és megbízhatóan kiépíteni a nagyvállalati szintű SMB-köteteket a Windows rendszerű virtuális asztali környezetekben. További információ a Azure NetApp Filesről: [Mi az Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-This guide will show you how to set up an Azure NetApp Files account and create FSLogix profile containers in Windows Virtual Desktop.
+Ebből az útmutatóból megtudhatja, hogyan állíthat be egy Azure NetApp Files fiókot, és hogyan hozhat létre FSLogix-profilok tárolókat a Windows virtuális asztalon.
 
-This article assumes you already have [host pools](create-host-pools-azure-marketplace.md) set up and grouped into one or more tenants in your Windows Virtual Desktop environment. To learn how to set up tenants, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) and [our Tech Community blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+Ez a cikk azt feltételezi, hogy már rendelkezik a Windows rendszerű virtuális asztali környezetben egy vagy több bérlőbe beállított és csoportosított [gazdagépekkel](create-host-pools-azure-marketplace.md) . A bérlők beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](tenant-setup-azure-active-directory.md) és [a technikai Közösség blogbejegyzése](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-The instructions in this guide are specifically for Windows Virtual Desktop users. If you're looking for more general guidance for how to set up Azure NetApp Files and create FSLogix profile containers outside of Windows Virtual Desktop, see the [Set up Azure NetApp Files and create an NFS volume quickstart](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
-
->[!NOTE]
->This article doesn't cover best practices for securing access to the Azure NetApp Files share.
+Az útmutatóban szereplő utasítások kifejezetten a Windows rendszerű virtuális asztali felhasználók számára készültek. Ha további általános útmutatást szeretne arról, hogyan kell beállítani Azure NetApp Files és létrehozni a FSLogix-profilok tárolóit a Windows virtuális asztalon kívül, tekintse [meg a Azure NetApp Files beállítása és az NFS-kötet létrehozása](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)című rövid útmutatót.
 
 >[!NOTE]
->If you're looking for comparison material about the different FSLogix Profile Container storage options on Azure, see [Storage options for FSLogix profile containers](store-fslogix-profile.md).
+>Ez a cikk nem fedi le az Azure NetApp Files-megosztáshoz való hozzáférés biztosításának ajánlott eljárásait.
+
+>[!NOTE]
+>Ha összehasonlító anyagot keres az Azure-beli különböző FSLogix-profilok tárolási lehetőségeivel kapcsolatban, tekintse meg a [FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Before you can create an FSLogix profile container for a host pool, you must:
+Ahhoz, hogy FSLogix-profilt lehessen létrehozni egy gazdagéphez, a következőket kell tennie:
 
-- Set up and configure Windows Virtual Desktop
-- Provision a Windows Virtual Desktop host pool
-- [Enable your Azure NetApp Files subscription](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- Windows rendszerű virtuális asztal beállítása és konfigurálása
+- Windows rendszerű virtuális asztali címkészlet kiépítése
+- [Azure NetApp Files-előfizetés engedélyezése](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
 
-## <a name="set-up-your-azure-netapp-files-account"></a>Set up your Azure NetApp Files account
+## <a name="set-up-your-azure-netapp-files-account"></a>A Azure NetApp Files fiók beállítása
 
-To get started, you need to set up an Azure NetApp Files account.
+Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Make sure your account has contributor or administrator permissions.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Győződjön meg arról, hogy a fiók közreműködői vagy rendszergazdai jogosultságokkal rendelkezik.
 
-2. Select the **Azure Cloud Shell icon** to the right of the search bar to open Azure Cloud Shell.
+2. Válassza a keresősáv jobb oldalán található **Azure Cloud Shell ikont** a Azure Cloud Shell megnyitásához.
 
-3. Once Azure Cloud Shell is open, select **PowerShell**.
+3. Azure Cloud Shell megnyitása után válassza a **PowerShell**lehetőséget.
 
-4. If this is your first time using Azure Cloud Shell, create a storage account in the same subscription you keep your Azure NetApp Files and Windows Virtual Desktop.
+4. Ha első alkalommal használja a Azure Cloud Shellt, hozzon létre egy Storage-fiókot ugyanabban az előfizetésben, és tartsa meg a Azure NetApp Files és a Windows rendszerű virtuális asztalt.
 
-   ![The storage account window with the create storage button at the bottom of the window highlighted in red.](media/create-storage-button.png)
+   ![A Storage-fiók ablak az ablak alján található tároló létrehozása gombbal piros színnel kiemelve.](media/create-storage-button.png)
 
-5. Once Azure Cloud Shell loads, run the following two cmdlets.
+5. Azure Cloud Shell betöltése után futtassa a következő két parancsmagot.
 
    ```powershell
    az account set --subscription <subscriptionID>
@@ -64,132 +64,132 @@ To get started, you need to set up an Azure NetApp Files account.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. In the left side of the window, select **All services**. Enter **Azure NetApp Files** into the search box that appears at the top of the menu.
+6. Az ablak bal oldalán válassza a **minden szolgáltatás**lehetőséget. Adja meg **Azure NetApp Files** a menü tetején megjelenő keresőmezőbe.
 
-   ![A screenshot of a user entering "Azure NetApp Files" into the All services search box. The search results show the Azure NetApp Files resource.](media/azure-netapp-files-search-box.png)
+   ![Képernyőfelvétel a "Azure NetApp Files" kifejezést a minden szolgáltatás keresőmezőbe. A keresési eredmények a Azure NetApp Files erőforrást jelenítik meg.](media/azure-netapp-files-search-box.png)
 
 
-7. Select **Azure NetApp Files** in the search results, then select **Create**.
+7. Válassza a **Azure NetApp Files** lehetőséget a keresési eredmények között, majd válassza a **Létrehozás**lehetőséget.
 
-8. Select the **Add** button.
-9. When the **New NetApp account** blade opens, enter the following values:
+8. Kattintson a **Hozzáadás** gombra.
+9. Amikor megnyílik az **új NetApp-fiók** panel, adja meg a következő értékeket:
 
-    - For **Name**, enter your NetApp account name.
-    - For **Subscription**, select the subscription for the storage account you set up in step 4 from the drop-down menu.
-    - For **Resource group**, either select an existing resource group from the drop-down menu or create a new one by selecting **Create new**.
-    - For **Location**, select the region for your NetApp account from the drop-down menu. This region must be the same region as your session host VMs.
+    - A **név**mezőben adja meg a NetApp-fiók nevét.
+    - Az **előfizetés**mezőben válassza ki a legördülő menüből a 4. lépésben beállított Storage-fiók előfizetését.
+    - Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot a legördülő menüből, vagy hozzon létre egy újat az **új létrehozása**lehetőség kiválasztásával.
+    - A **hely**mezőben válassza ki a NetApp-fiók régióját a legördülő menüből. Ennek a régiónak meg kell egyeznie a munkamenet-gazda virtuális gépekkel.
 
    >[!NOTE]
-   >Azure NetApp Files currently doesn't support mounting of a volume across regions.
+   >A Azure NetApp Files jelenleg nem támogatja a kötetek régiók közötti csatlakoztatását.
 
-10. When you're finished, select **Create** to create your NetApp account.
+10. Ha elkészült, válassza a **Létrehozás** lehetőséget a NetApp-fiók létrehozásához.
 
-## <a name="create-a-capacity-pool"></a>Create a capacity pool
+## <a name="create-a-capacity-pool"></a>Kapacitási készlet létrehozása
 
-Next, create a new capacity pool: 
+Következő lépésként hozzon létre egy új kapacitási készletet: 
 
-1. Go to the Azure NetApp Files menu and select your new account.
-2. In your account menu, select **Capacity pools** under Storage service.
-3. Select **Add pool**.
-4. When the **New capacity pool** blade opens, enter the following values:
+1. Lépjen a Azure NetApp Files menüre, és válassza ki az új fiókot.
+2. A fiók menüben válassza a **Kapacitási készletek** lehetőséget a Storage szolgáltatás területen.
+3. Válassza a **készlet hozzáadása**lehetőséget.
+4. Amikor megnyílik az **új kapacitási készlet** panel, adja meg a következő értékeket:
 
-    - For **Name**, enter a name for the new capacity pool.
-    - For **Service level**, select your desired value from the drop-down menu. We recommend **Premium** for most environments.
+    - A **név**mezőben adja meg az új kapacitási készlet nevét.
+    - A **szolgáltatási szint**mezőben válassza ki a kívánt értéket a legördülő menüből. A legtöbb környezethez **prémium szintű támogatást** ajánlunk.
        >[!NOTE]
-       >The Premium setting provides the minimum throughput available for a Premium Service level, which is 256 MBps. You may need to adjust this throughput for a production environment. Final throughput is based on the relationship described in [Throughput limits](../azure-netapp-files/azure-netapp-files-service-levels.md).
-    - For **Size (TiB)** , enter the capacity pool size that best fits your needs. The minimum size is 4 TiB.
+       >A Premium beállítás a prémium szintű szolgáltatási szint számára elérhető minimális átviteli sebességet biztosítja, amely 256 MBps. Előfordulhat, hogy ezt az átviteli sebességet kell módosítania éles környezetben. A végső átviteli sebesség az [átviteli sebesség korlátaiban](../azure-netapp-files/azure-netapp-files-service-levels.md)ismertetett kapcsolaton alapul.
+    - A **méret (TiB)** mezőben adja meg az igényeinek leginkább megfelelő kapacitási készlet méretét. A minimális méret 4 TiB.
 
-5. When you're finished, select **OK**.
+5. Ha elkészült, kattintson **az OK gombra**.
 
-## <a name="join-an-active-directory-connection"></a>Join an Active Directory connection
+## <a name="join-an-active-directory-connection"></a>Csatlakozás Active Directory-csatlakozáshoz
 
-After that, you need to join an Active Directory connection.
+Ezután csatlakoznia kell egy Active Directory-csatlakozáshoz.
 
-1. Select **Active Directory connections** in the menu on the left side of the page, then select the **Join** button to open the **Join Active Directory** page.
+1. Válassza a lap bal oldalán található menü **Active Directory kapcsolatok** elemét, majd kattintson a JOIN ( **Csatlakozás** ) gombra a **Csatlakozás Active Directory** oldal megnyitásához.
 
-   ![A screenshot of the Join Active Directory connections menu.](media/active-directory-connections-menu.png)
+   ![A csatlakozás Active Directory kapcsolatok menüjének képernyőképe.](media/active-directory-connections-menu.png)
 
-2. Enter the following values in the **Join Active Directory** page to join a connection:
+2. A csatlakozás **Active Directory** lapon adja meg a következő értékeket a kapcsolódáshoz:
 
-    - For **Primary DNS**, enter the IP address of the DNS server in your environment that can resolve the domain name.
-    - For **Domain**, enter your fully qualified domain name (FQDN).
-    - For **SMB Server (Computer Account) Prefix**, enter the string you want to append to the computer account name.
-    - For **Username**, enter the name of the account with permissions to perform domain join.
-    - For **Password**, enter the account's password.
+    - Az **elsődleges DNS**esetében adja meg a környezetben található DNS-kiszolgáló IP-címét, amely képes a tartománynév feloldására.
+    - A **tartomány**mezőben adja meg a teljes tartománynevet (FQDN).
+    - Az **SMB-kiszolgáló (számítógépfiók) előtagjaként**adja meg azt a karakterláncot, amelyet hozzá szeretne fűzni a számítógépfiók nevéhez.
+    - A **Felhasználónév**mezőbe írja be annak a fióknak a nevét, amely a tartományhoz való csatlakozáshoz szükséges engedélyekkel rendelkezik.
+    - A **jelszó**mezőben adja meg a fiók jelszavát.
 
   >[!NOTE]
-  >It's best practice to confirm that the computer account you created in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection) has appeared in your domain controller under **Computers** or **your enterprise's relevant OU**.
+  >Ajánlott meggyőződni arról, hogy a [csatlakozás Active Directory kapcsolatban](create-fslogix-profile-container.md#join-an-active-directory-connection) létrehozott számítógépfiók a tartományvezérlőn a **számítógépek** vagy **a vállalat érintett szervezeti egysége**alatt jelent meg.
 
-## <a name="create-a-new-volume"></a>Create a new volume
+## <a name="create-a-new-volume"></a>Új kötet létrehozása
 
-Next, you'll need to create a new volume.
+Ezután létre kell hoznia egy új kötetet.
 
-1. Select **Volumes**, then select **Add volume**.
+1. Válassza a **kötetek**lehetőséget, majd kattintson a **kötet hozzáadása**lehetőségre.
 
-2. When the **Create a volume** blade opens, enter the following values:
+2. A **kötet létrehozása** panel megnyitásakor adja meg a következő értékeket:
 
-    - For **Volume name**, enter a name for the new volume.
-    - For **Capacity pool**, select the capacity pool you just created from the drop-down menu.
-    - For **Quota (GiB)** , enter the volume size appropriate for your environment.
-    - For **Virtual network**, select an existing virtual network that has connectivity to the domain controller from the drop-down menu.
-    - Under **Subnet**, select **Create new**. Keep in mind that this subnet will be delegated to Azure NetApp Files.
+    - A **kötet neve**mezőben adja meg az új kötet nevét.
+    - A **Kapacitási készlet**területen válassza ki az imént létrehozott kapacitás-készletet a legördülő menüből.
+    - A **kvóta (GIB)** mezőben adja meg a környezetének megfelelő kötet méretét.
+    - A **Virtual Network (virtuális hálózat**) területen válasszon ki egy meglévő virtuális hálózatot, amely a tartományvezérlőhöz kapcsolódik a legördülő menüből.
+    - Az **alhálózat**területen válassza az **új létrehozása**lehetőséget. Ne feledje, hogy ez az alhálózat Azure NetApp Files lesz delegálva.
 
-3.  Select **Next: Protocol \>\>** to open the Protocol tab and configure your volume access parameters.
+3.  Válassza a **Tovább: protokoll \>\>** lehetőséget a protokoll lap megnyitásához és a mennyiségi hozzáférési paraméterek konfigurálásához.
 
-## <a name="configure-volume-access-parameters"></a>Configure volume access parameters
+## <a name="configure-volume-access-parameters"></a>Mennyiségi hozzáférési paraméterek konfigurálása
 
-After you create the volume, configure the volume access parameters.
+A kötet létrehozása után konfigurálja a kötet-hozzáférési paramétereket.
 
-1.  Select **SMB** as the protocol type.
-2.  Under Configuration in the **Active Directory** drop-down menu, select the same directory that you originally connected in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection). Keep in mind that there's a limit of one Active Directory per subscription.
-3.  In the **Share name** text box, enter the name of the share used by the session host pool and its users.
+1.  Válassza az **SMB** lehetőséget a protokoll típusaként.
+2.  A **Active Directory** legördülő menüben a konfiguráció területen válassza ki ugyanazt a könyvtárat, amelyhez eredetileg kapcsolódott a [Csatlakozás egy Active Directory-kapcsolathoz](create-fslogix-profile-container.md#join-an-active-directory-connection). Ne feledje, hogy az előfizetés legfeljebb egy Active Directory.
+3.  A **megosztás neve** szövegmezőbe írja be a munkamenet-gazda készlet és a felhasználók által használt megosztás nevét.
 
-4.  Select **Review + create** at the bottom of the page. This opens the validation page. After your volume is validated successfully, select **Create**.
+4.  Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. Ekkor megnyílik az érvényesítési oldal. A kötet sikeres ellenőrzése után válassza a **Létrehozás**lehetőséget.
 
-5.  At this point, the new volume will start to deploy. Once deployment is complete, you can use the Azure NetApp Files share.
+5.  Ezen a ponton az új kötet üzembe helyezése megkezdődik. Az üzembe helyezés befejeztével használhatja a Azure NetApp Files megosztást.
 
-6.  To see the mount path, select **Go to resource** and look for it in the Overview tab.
+6.  A csatlakoztatási útvonal megtekintéséhez válassza az **Ugrás az erőforráshoz** lehetőséget, és keresse meg az Áttekintés lapon.
 
-    ![A screenshot of the Overview screen with a red arrow pointing at the mount path.](media/overview-mount-path.png)
+    ![Az áttekintő képernyő képernyőképe egy piros nyíllal, amely a csatlakoztatási útvonalra mutat.](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Configure FSLogix on session host virtual machines (VMs)
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>A FSLogix konfigurálása a munkamenet-gazdagépen futó virtuális gépeken (VM)
 
-This section is based on [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő létrehozásán](create-host-pools-user-profile.md)alapul.
 
-1. [Download the FSLogix agent .zip file](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) while you're still remoted in the session host VM.
+1. [Töltse le a FSLogix Agent. zip fájlt](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) , miközben továbbra is távoli állapotban van a munkamenet-gazda virtuális gépen.
 
-2. Unzip the downloaded file.
+2. Bontsa ki a letöltött fájlt.
 
-3. In the file, go to **x64** > **Releases** and run **FSLogixAppsSetup.exe**. The installation menu will open.
+3. A fájlban keresse meg az **x64** > **kiadásokat** , és futtassa a **FSLogixAppsSetup. exe**fájlt. Ekkor megnyílik a telepítési menü.
 
-4.  If you have a product key, enter it in the Product Key text box.
+4.  Ha van termékkulcs, írja be a termékkulcsot szövegmezőbe.
 
-5. Select the check box next to **I agree to the license terms and conditions**.
+5. Jelölje be az Elfogadom **a licencfeltételeket lehetőség**melletti jelölőnégyzetet.
 
 6. Válassza az **Install** (Telepítés) lehetőséget.
 
-7. Navigate to **C:\\Program Files\\FSLogix\\Apps** to confirm the agent installed.
+7. Navigáljon a **C:\\Program Files\\FSLogix\\alkalmazások** elemre, és erősítse meg az ügynök telepítését.
 
-8. From the Start menu, run **RegEdit** as administrator.
+8. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként.
 
-9. Navigate to **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix**.
 
-10. Create a key named **Profiles**.
+10. Hozzon létre egy **profilok**nevű kulcsot.
 
-11.  Create a value named **Enabled** with a **REG_DWORD** type set to a data value of **1**.
+11.  Hozzon létre egy **megnevezett értéket** egy **REG_DWORD** Type értékkel egy **1**értékre állítva.
 
-12. Create a value named **VHDLocations** with a **Multi-String** type and set its data value to the URI for the Azure NetApp Files share.
+12. Hozzon létre egy **VHDLocations** nevű értéket egy **többkarakterláncos** típussal, és állítsa az adatértékét az Azure NetApp Files-megosztás URI-ja számára.
 
-13. Create a value named **DeleteLocalProfileWhenVHDShouldApply** with a DWORD value of 1 to avoid problems with existing local profiles before you sign in.
+13. Hozzon létre egy **DeleteLocalProfileWhenVHDShouldApply** nevű értéket az 1 DWORD értékkel, hogy elkerülje a bejelentkezés előtt a meglévő helyi profilokkal kapcsolatos problémákat.
 
      >[!WARNING]
-     >Be careful when creating the DeleteLocalProfileWhenVHDShouldApply value. When the FSLogix Profiles system determines a user should have an FSLogix profile, but a local profile already exists, Profile Container will permanently delete the local profile. The user will then be signed in with the new FSLogix profile.
+     >Legyen körültekintő a DeleteLocalProfileWhenVHDShouldApply érték létrehozásakor. Ha a FSLogix-profilok rendszer határozza meg, hogy a felhasználó rendelkezik-e FSLogix-profillal, de már létezik helyi profil, akkor a profil tároló véglegesen törli a helyi profilt. A felhasználó ezután bejelentkezik az új FSLogix-profilba.
 
-## <a name="assign-users-to-session-host"></a>Assign users to session host
+## <a name="assign-users-to-session-host"></a>Felhasználók társítása a munkamenet-gazdagéphez
 
-1. Open **PowerShell ISE** as administrator and sign in to Windows Virtual Desktop.
+1. Nyissa meg rendszergazdaként a **POWERSHELL ISE** -t, és jelentkezzen be a Windows rendszerű virtuális asztalra.
 
-2. Run the following cmdlets:
+2. Futtassa a következő parancsmagokat:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -198,9 +198,9 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. When prompted for credentials, enter the credentials for the user with the Tenant Creator or RDS Owner/RDS Contributor roles on the Windows Virtual Desktop tenant.
+3. Ha a rendszer a hitelesítő adatok megadását kéri, adja meg a bérlői létrehozó vagy az RDS-tulajdonos/RDS közreműködő szerepkörrel rendelkező felhasználó hitelesítő adatait a Windows rendszerű virtuális asztali bérlőn.
 
-4. Run the following cmdlets to assign a user to a Remote Desktop group:
+4. Futtassa a következő parancsmagokat egy felhasználó Távoli asztal csoporthoz való hozzárendeléséhez:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -210,26 +210,26 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Make sure users can access the Azure NetApp File share
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Győződjön meg arról, hogy a felhasználók el tudják érni az Azure NetApp-fájlmegosztást
 
-1. Open your internet browser and go to <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Nyissa meg az Internet böngészőt, és lépjen a <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
-2. Sign in with the credentials of a user assigned to the Remote Desktop group.
+2. Jelentkezzen be az Távoli asztal csoporthoz rendelt felhasználó hitelesítő adataival.
 
-3. Once you've established the user session, sign in to the Azure portal with an administrative account.
+3. Miután létrehozta a felhasználói munkamenetet, jelentkezzen be a Azure Portalba egy rendszergazdai fiókkal.
 
-4. Open **Azure NetApp Files**, select your Azure NetApp Files account, and then select **Volumes**. Once the Volumes menu opens, select the corresponding volume.
+4. Nyissa meg **Azure NetApp Files**, válassza ki a Azure NetApp Files-fiókot, majd válassza a **kötetek**lehetőséget. A kötetek menü megnyitása után válassza ki a megfelelő kötetet.
 
-   ![A screenshot of the NetApp account you set up earlier in the Azure portal with the Volumes button selected.](media/netapp-account.png)
+   ![Képernyőfelvétel a Azure Portal korábban beállított NetApp-fiókról a kötetek gomb kiválasztásával.](media/netapp-account.png)
 
-5. Go to the **Overview** tab and confirm that the FSLogix profile container is using space.
+5. Lépjen az **Áttekintés** lapra, és ellenőrizze, hogy a FSLogix-profil tárolója használ-e helyet.
 
-6. Connect directly to any VM part of the host pool using Remote Desktop and open the **File Explorer.** Then navigate to the **Mount path** (in the following example, the mount path is \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL).
+6. Közvetlenül kapcsolódhat a gazdagép bármely virtuálisgép-részéhez Távoli asztal használatával, és megnyithatja a **fájlkezelőt.** Ezután navigáljon a **csatlakoztatási útvonalhoz** (a következő példában a csatlakoztatási útvonal \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-Vol).
 
-   Within this folder, there should be a profile VHD (or VHDX) like the one in the following example.
+   Ebben a mappában léteznie kell egy profilt tartalmazó VHD-nek (vagy VHDX), amely az alábbi példában láthatóhoz hasonló.
 
-   ![A screenshot of the contents of the folder in the mount path. Inside is a single VHD file named "Profile_ssbb."](media/mount-path-folder.png)
+   ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-You can use FSLogix profile containers to set up a user profile share. To learn how to create user profile shares with your new containers, see [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).

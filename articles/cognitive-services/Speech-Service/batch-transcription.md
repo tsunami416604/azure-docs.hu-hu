@@ -1,7 +1,7 @@
 ---
-title: How to use Batch Transcription - Speech Service
+title: A Batch transzkripció használata – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Batch transcription is ideal if you want to transcribe a large quantity of audio in storage, such as Azure Blobs. By using the dedicated REST API, you can point to audio files with a shared access signature (SAS) URI and asynchronously receive transcriptions.
+description: Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,56 +10,56 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 5418b378c2c3cff09dbccbaa7b7240c61bbb583e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221529"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538115"
 ---
-# <a name="why-use-batch-transcription"></a>Why use Batch transcription?
+# <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
-Batch transcription is ideal if you want to transcribe a large quantity of audio in storage, such as Azure Blobs. By using the dedicated REST API, you can point to audio files with a shared access signature (SAS) URI and asynchronously receive transcriptions.
+Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscription-key"></a>Subscription Key
+### <a name="subscription-key"></a>Előfizetési kulcs
 
-As with all features of the Speech service, you create a subscription key from the [Azure portal](https://portal.azure.com) by following our [Get started guide](get-started.md). If you plan to get transcriptions from our baseline models, creating a key is all you need to do.
+Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md). Ha azt tervezi, a beszédátírás kérhet az eredeti modellt, a kulcs létrehozása még minden kell tennie.
 
 >[!NOTE]
-> A standard subscription (S0) for Speech Services is required to use batch transcription. Free subscription keys (F0) will not work. For additional information, see [pricing and limits](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Beszédszolgáltatások (S0) standard előfizetést kell használnia a batch beszédátírási. Ingyenes előfizetési kulcsok (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-### <a name="custom-models"></a>Custom models
+### <a name="custom-models"></a>Egyéni modellek
 
-If you plan to customize acoustic or language models, follow the steps in [Customize acoustic models](how-to-customize-acoustic-models.md) and [Customizing language models](how-to-customize-language-model.md). To use the created models in batch transcription you need their model IDs. This ID is not the endpoint ID that you find on the Endpoint Details view, it is the model ID that you can retrieve when you select the details of the models.
+Ha az akusztikus vagy nyelvi modellek testreszabását tervezi, kövesse az [akusztikus modellek testreszabása](how-to-customize-acoustic-models.md) és a [nyelvi modellek testreszabása](how-to-customize-language-model.md)című témakör lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell-azonosítóra. Ez az azonosító nem a végpontok részletes nézetében megtalált végpont-azonosító, ez a modell azonosítója, amelyet a modellek részleteinek kiválasztásakor kérhet le.
 
-## <a name="the-batch-transcription-api"></a>The Batch Transcription API
+## <a name="the-batch-transcription-api"></a>A Batch Beszédátírási API
 
-The Batch Transcription API offers asynchronous speech-to-text transcription, along with additional features. It is a REST API that exposes methods for:
+A Batch Beszédátírási API aszinkron hang-szöveg transzformációs átírást, valamint olyan kiegészítő funkciókat kínál. Egy REST API-t, amely metódusokat tárja fel:
 
-1. Creating batch processing requests
-1. Query Status
-1. Downloading transcriptions
+1. Kötegelt feldolgozási kérelmek létrehozása
+1. Lekérdezés állapota
+1. Beszédátírás letöltése
 
 > [!NOTE]
-> The Batch Transcription API is ideal for call centers, which typically accumulate thousands of hours of audio. It makes it easy to transcribe large volumes of audio recordings.
+> A Batch Beszédátírási API telefonos ügyfélszolgálatok, amely általában a több ezer órás hanganyagra gyűlnek ideális. Megkönnyíti a nagy mennyiségű hangfelvételek átírását.
 
-### <a name="supported-formats"></a>Supported formats
+### <a name="supported-formats"></a>Támogatott formátumok
 
-The Batch Transcription API supports the following formats:
+A Batch Beszédátírási API támogatja a következő formátumok:
 
-| Formátum | Codec | Bitrate | Sample Rate |
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16-bit | 8 or 16 kHz, mono, stereo |
-| MP3 | PCM | 16-bit | 8 or 16 kHz, mono, stereo |
-| OGG | OPUS | 16-bit | 8 or 16 kHz, mono, stereo |
+| WAV | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
+| MP3 | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
+| OGG | OPUS | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
 
-For stereo audio streams, the Batch transcription API splits the left and right channel during the transcription. The two JSON files with the result are each created from a single channel. The timestamps per utterance enable the developer to create an ordered final transcript. This sample request includes properties for profanity filtering, punctuation, and word level timestamps.
+Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. Ez a példa a káromkodás szűrésére, írásjelekre és a Word szintű időbélyegekre vonatkozó tulajdonságokat tartalmazza.
 
 ### <a name="configuration"></a>Konfiguráció
 
-Configuration parameters are provided as JSON:
+A konfigurációs paraméterek JSON-ként vannak megadva:
 
 ```json
 {
@@ -78,35 +78,29 @@ Configuration parameters are provided as JSON:
 ```
 
 > [!NOTE]
-> The Batch Transcription API uses a REST service for requesting transcriptions, their status, and associated results. You can use the API from any language. The next section describes how the API is used.
+> A Batch Beszédátírási API egy REST-szolgáltatás beszédátírás, állapotát és kapcsolódó eredmények kérő használja. Az API bármilyen nyelvet is használhat. Ez a szakasz azt ismerteti, hogyan használja fel az API-t.
 
-### <a name="configuration-properties"></a>Configuration properties
+### <a name="configuration-properties"></a>Konfigurációs tulajdonságok
 
-Use these optional properties to configure transcription:
+Ezeket a választható tulajdonságokat az átírás konfigurálásához használhatja:
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| `ProfanityFilterMode` | Specifies how to handle profanity in recognition results. Accepted values are `None` which disables profanity filtering, `masked` which replaces profanity with asterisks, `removed` which removes all profanity from the result, or `tags` which adds "profanity" tags. The default setting is `masked`. |
-| `PunctuationMode` | Specifies how to handle punctuation in recognition results. Accepted values are `None` which disables punctuation, `dictated` which implies explicit punctuation, `automatic` which lets the decoder deal with punctuation, or `dictatedandautomatic` which implies dictated punctuation marks or automatic. |
- | `AddWordLevelTimestamps` | Specifies if word level timestamps should be added to the output. Accepted values are `true` which enables word level timestamps and `false` (the default value) to disable it. |
- | `AddSentiment` | Specifies sentiment should be added to the utterance. Accepted values are `true` which enables sentiment per utterance and `false` (the default value) to disable it. |
- | `AddDiarization` | Specifies that diarization analysis should be carried out on the input which is expected to be mono channel containing two voices. Accepted values are `true` which enables diarization and `false` (the default value) to disable it. It also requires `AddWordLevelTimestamps` to be set to true.|
+| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `masked` amely a csillagokkal való káromkodást váltja fel, `removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `masked`. |
+| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `dictated` amely explicit írásjeleket feltételez, `automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `dictatedandautomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
+ | `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
+ | `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |
+ | `AddDiarization` | Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a diarization és a `false` (az alapértelmezett érték) letiltását. Azt is megköveteli, hogy a `AddWordLevelTimestamps` True értékre legyen állítva.|
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárolás
 
-Batch transcription supports [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) for reading audio and writing transcriptions to storage.
+A Batch átirata támogatja az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) -t, hogy hang-és írási átírásokat olvasson a tárolóba.
 
-## <a name="webhooks"></a>Webhookok
+## <a name="speaker-separation-diarization"></a>Beszélő elkülönítése (Diarization)
 
-Polling for transcription status may not be the most performant, or provide the best user experience. To poll for status, you can register callbacks, which will notify the client when long-running transcription tasks have completed.
+A Diarization a hangszórók elválasztásának folyamata egy hanganyagban. A Batch-folyamat támogatja a Diarization-t, és képes a Mono Channel-felvételek két hangszórójának felismerésére.
 
-For more details, see [Webhooks](webhooks.md).
-
-## <a name="speaker-separation-diarization"></a>Speaker Separation (Diarization)
-
-Diarization is the process of separating speakers in a piece of audio. Our Batch pipeline supports Diarization and is capable of recognizing two speakers on mono channel recordings.
-
-To request that your audio transcription request is processed for diarization, you simply have to add the relevant parameter in the HTTP request as shown below.
+Ahhoz, hogy a rendszer feldolgozza a hang-átírási kérést a diarization, egyszerűen hozzá kell adnia a megfelelő paramétert a HTTP-kérelemben az alább látható módon.
 
  ```json
 {
@@ -122,30 +116,30 @@ To request that your audio transcription request is processed for diarization, y
 }
 ```
 
-Word level timestamps would also have to be 'turned on' as the parameters in the above request indicate.
+A Word szintű időbélyegeket is be kell kapcsolni, mivel a fenti kérelemben szereplő paraméterek jelzik. 
 
-The corresponding audio will contain the speakers identified by a number (currently we support only two voices, so the speakers will be identified as 'Speaker 1 'and 'Speaker 2') followed by the transcription output.
+A megfelelő hang tartalmazza a számokkal azonosított hangsugárzókat (jelenleg csak két hang támogatott), így a hangszórók "Speaker 1" és "Speaker 2" néven lesznek azonosítva, majd az átírás kimenete.
 
-Also note that Diarization is not available in Stereo recordings. Furthermore, all JSON output will contain the Speaker tag. If diarization is not used, it will show 'Speaker: Null' in the JSON output.
+Azt is vegye figyelembe, hogy a Diarization nem érhető el a sztereó felvételekben. Emellett minden JSON-kimenet tartalmazni fogja a beszélő címkét. Ha a diarization nincs használatban, a "beszélő: NULL" jelenik meg a JSON-kimenetben.
 
 > [!NOTE]
-> Diarization is available in all regions and for all locales!
+> A Diarization minden régióban és minden területi beállításban elérhető.
 
-## <a name="sentiment"></a>Vélemény
+## <a name="sentiment"></a>Hangulat
 
-Sentiment is a new feature in Batch Transcription API and is an important feature in the call center domain. Customers can use the `AddSentiment` parameters to their requests to
+A hangulat a Batch átírási API új funkciója, amely a Call Center tartomány egyik fontos funkciója. Az ügyfelek a `AddSentiment` paramétereket használhatják a kéréseiket
 
-1.  Get insights on customer satisfaction
-2.  Get insight on the performance of the agents (team taking the calls)
-3.  Pinpoint the exact point in time when a call took a turn in a negative direction
-4.  Pinpoint what went well when turning negative calls to positive
-5.  Identify what customers like and what they dislike about a product or a service
+1.  Az ügyfelek elégedettségének megismerése
+2.  Az ügynökök teljesítményének megismerése (a hívások fogadása)
+3.  Pontosan olyan időpontot kell kijelölni, amikor egy hívás negatív irányba vált
+4.  Pinpoint – a negatív hívások pozitívra váltása
+5.  Azonosítsa az ügyfeleket, mint a terméket vagy szolgáltatást?
 
-Sentiment is scored per audio segment where an audio segment is defined as the time lapse between the start of the utterance (offset) and the detection silence of end of byte stream. The entire text within that segment is used to calculate sentiment. We DO NOT calculate any aggregate sentiment values for the entire call or the entire speech of each channel. These aggregations are left to the domain owner to further apply.
+A hangulat egy olyan hangszegmensre mutat, amelyben egy hangszegmens van meghatározva, mivel az idő a Kimondás (eltolás) kezdete és a bájtos adatfolyam végének észlelése között esik. Az adott szegmensen belüli teljes szöveg az érzelmek kiszámítására szolgál. A teljes hívás vagy az egyes csatornák teljes beszéde esetében nem számítunk fel összesített hangulati értékeket. Ezek az összesítések továbbra is érvényben maradnak a tartomány tulajdonosának.
 
-Sentiment is applied on the lexical form.
+A hangulat a lexikális űrlapon van alkalmazva.
 
-A JSON output sample looks like below:
+A JSON-kimenet mintája az alábbihoz hasonlóan néz ki:
 
 ```json
 {
@@ -180,35 +174,35 @@ A JSON output sample looks like below:
   ]
 }
 ```
-The feature uses a Sentiment model, which is currently in Beta.
+A szolgáltatás egy olyan hangulati modellt használ, amely jelenleg a bétaverzióban van.
 
 ## <a name="sample-code"></a>Mintakód
 
-Complete samples are available in the [GitHub sample repository](https://aka.ms/csspeech/samples) inside the `samples/batch` subdirectory.
+A teljes minták a GitHub- [minta adattárában](https://aka.ms/csspeech/samples) érhetők el a `samples/batch` alkönyvtáron belül.
 
-You have to customize the sample code with your subscription information, the service region, the SAS URI pointing to the audio file to transcribe, and model IDs in case you want to use a custom acoustic or language model.
+Testre kell szabnia a mintakód előfizetési adatait, a szolgáltatási régiót, az olyan SAS URI-t, amely a hangfájlra mutat, és a modell-azonosítókat arra az esetre, ha egyéni akusztikai vagy nyelvi modellt szeretne használni.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-The sample code will setup the client and submit the transcription request. It will then poll for status information and print details about the transcription progress.
+A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezután lekérdezi az állapotadatok állapotát, és kinyomtatja az átírási folyamat részleteit.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-For full details about the preceding calls, see our [Swagger document](https://westus.cris.ai/swagger/ui/index). For the full sample shown here, go to [GitHub](https://aka.ms/csspeech/samples) in the `samples/batch` subdirectory.
+Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.cris.ai/swagger/ui/index). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) a `samples/batch` alkönyvtárban.
 
-Take note of the asynchronous setup for posting audio and receiving transcription status. The client that you create is a .NET HTTP client. There's a `PostTranscriptions` method for sending the audio file details and a `GetTranscriptions` method for receiving the results. `PostTranscriptions` returns a handle, and `GetTranscriptions` uses it to create a handle to get the transcription status.
+Jegyezze fel a könyvelési hang és a fogadás beszédátírási állapot aszinkron beállítása. Az ügyfél, amely létrehoz egy .NET-HTTP-alapú. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére és egy `GetTranscriptions` metódusra az eredmények fogadásához. a `PostTranscriptions` egy leírót ad vissza, és `GetTranscriptions` használja egy leíró létrehozásához az átirat állapotának lekéréséhez.
 
-The current sample code doesn't specify a custom model. The service uses the baseline models for transcribing the file or files. To specify the models, you can pass on the same method as the model IDs for the acoustic and the language model.
+A jelenlegi mintakód nem adja meg egy egyéni modell. A szolgáltatás használ a kiindulási modelleket alkalmazhatnak lefényképezheti a fájlt vagy fájlokat. A modellek megadásához meg ugyanezt a módszert, a modell azonosítóját a akusztikai és a nyelvi modell adhat át.
 
 > [!NOTE]
-> For baseline transcriptions, you don't need to declare the ID for the baseline models. If you only specify a language model ID (and no acoustic model ID), a matching acoustic model is automatically selected. If you only specify an acoustic model ID, a matching language model is automatically selected.
+> Alapértékek átírásakor nem kell deklarálnia az alapmodellek AZONOSÍTÓját. Ha csak a nyelvi modell AZONOSÍTÓját (és az akusztikus modell AZONOSÍTÓját) adta meg, a rendszer automatikusan kiválasztja a megfelelő akusztikus modellt. Ha csak az akusztikus modell AZONOSÍTÓját adta meg, a rendszer automatikusan kiválasztja a megfelelő nyelvi modellt.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-You can find the sample in the `samples/batch` directory in the [GitHub sample repository](https://aka.ms/csspeech/samples).
+A minta a `samples/batch` könyvtárban található a [GitHub-minta adattárában](https://aka.ms/csspeech/samples).
 
 > [!NOTE]
-> Batch transcription jobs are scheduled on a best effort basis, there is no time estimate for when a job will change into the running state. Once in running state, the actual transcription is processed faster than the audio real time.
+> A Batch-átírási feladatok ütemezése a legjobb megoldás, ha a feladat futási állapotra változik. A futási állapotot követően a tényleges átírás feldolgozása gyorsabb, mint a hang valós ideje.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Permissions to repositories
-description: Create a token with permissions scoped to specific repositories in a registry to pull or push images
+title: A Tárházak engedélyei
+description: Hozzon létre egy jogkivonatot, amely a beállításjegyzékben meghatározott adattárakra vonatkozik a képek lekéréséhez vagy leküldéséhez.
 ms.topic: article
 ms.date: 10/31/2019
 ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
@@ -10,39 +10,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454907"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Repository-scoped permissions in Azure Container Registry 
+# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Tárház – hatókörön belüli engedélyek Azure Container Registry 
 
-Azure Container Registry supports several [authentication options](container-registry-authentication.md) using identities that have [role-based access](container-registry-roles.md) to an entire registry. However, for certain scenarios, you might need to provide access only to specific *repositories* in a registry. 
+A Azure Container Registry számos [hitelesítési lehetőséget](container-registry-authentication.md) támogat olyan identitások használatával, amelyek [szerepköralapú hozzáféréssel](container-registry-roles.md) rendelkeznek a teljes beállításjegyzékhez. Bizonyos esetekben azonban előfordulhat, hogy csak a beállításjegyzékben lévő egyes *adattárakhoz* kell hozzáférést biztosítania. 
 
-This article shows how to create and use an access token that has permissions to perform actions on only specific repositories in a registry. With an access token, you can provide users or services with scoped, time-limited access to repositories to pull or push images or perform other actions. 
+Ez a cikk bemutatja, hogyan hozhat létre és használhat olyan hozzáférési jogkivonatot, amely jogosultsággal rendelkezik a beállításjegyzékben csak bizonyos adattárakban végzett műveletek végrehajtásához. Hozzáférési jogkivonattal a felhasználók vagy szolgáltatások hatókörön belüli, időkorlátos hozzáférést biztosítanak a Tárházak számára a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához. 
 
-See [About repository-scoped permissions](#about-repository-scoped-permissions), later in this article, for background about token concepts and scenarios.
+A jelen cikk későbbi, a jogkivonat-fogalmakkal és-forgatókönyvekkel kapcsolatos hátterével kapcsolatos tudnivalókat lásd a [tárház hatókörű engedélyeiről](#about-repository-scoped-permissions).
 
 > [!IMPORTANT]
-> This feature is currently in preview, and some [limitations apply](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="preview-limitations"></a>Preview limitations
+## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* This feature is only available in a **Premium** container registry. For information about registry service tiers and limits, see [Azure Container Registry SKUs](container-registry-skus.md).
-* You can't currently assign repository-scoped permissions to an Azure Active Directory object such as a service principal or managed identity.
+* Ez a funkció csak a **Premium** Container registryben érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
+* Jelenleg nem rendelhet tárház-hatókörű engedélyeket egy Azure Active Directory objektumhoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure CLI** - This article requires a local installation of the Azure CLI (version 2.0.76 or later). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
-* **Docker** - To authenticate with the registry, you also need a local Docker installation. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
-* **Container registry with repositories** - If you don't have one, create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md). 
+* **Azure CLI** – ez a cikk az Azure CLI (2.0.76 vagy újabb verzió) helyi telepítését igényli. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+* **Docker** – a beállításjegyzékben való hitelesítéshez szükség van egy helyi Docker-telepítésre is. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
+* **Tároló beállításjegyzéke adattárakkal** – ha nem rendelkezik ilyennel, hozzon létre egy tároló-beállításjegyzéket az Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. 
 
-  For test purposes, [push](container-registry-get-started-docker-cli.md) or [import](container-registry-import-images.md) one or more sample images to the registry. Examples in this article refer to the following images in two repositories: `samples/hello-world:v1` and `samples/nginx:v1`. 
+  Tesztelési célból [leküldheti](container-registry-get-started-docker-cli.md) vagy [importálhatja](container-registry-import-images.md) egy vagy több minta lemezképét a beállításjegyzékbe. A jelen cikkben szereplő példák a következő rendszerképekre mutatnak két tárházban: `samples/hello-world:v1` és `samples/nginx:v1`. 
 
-## <a name="create-an-access-token"></a>Create an access token
+## <a name="create-an-access-token"></a>Hozzáférési jogkivonat létrehozása
 
-Create a token using the [az acr token create][az-acr-token-create] command. When creating a token, specify one or more repositories and associated actions on each repository, or specify an existing scope map with those settings.
+Hozzon létre egy jogkivonatot az az [ACR token Create][az-acr-token-create] parancs használatával. Token létrehozásakor meg kell adnia egy vagy több adattárat és kapcsolódó műveletet az egyes adattárokon, vagy egy meglévő hatókör-hozzárendelést is meg kell adnia ezekkel a beállításokkal.
 
-### <a name="create-access-token-and-specify-repositories"></a>Create access token and specify repositories
+### <a name="create-access-token-and-specify-repositories"></a>Hozzáférési jogkivonat létrehozása és adattárak meghatározása
 
-The following example creates an access token with permissions to perform `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository. By default, the command generates two passwords. 
+Az alábbi példa egy hozzáférési jogkivonatot hoz létre, amely a `content/write` és `content/read` műveletek végrehajtásához szükséges engedélyekkel rendelkezik a `samples/hello-world` adattáron, valamint a `content/read` műveletet a `samples/nginx` adattáron. Alapértelmezés szerint a parancs két jelszót hoz létre. 
 
-This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
+Ez a példa a jogkivonat állapotát `enabled` (az alapértelmezett beállítás) állítja be, de bármikor frissítheti a tokent, és beállíthatja az állapotot `disabled`re.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
@@ -50,9 +50,9 @@ az acr token create --name MyToken --registry myregistry \
   --repository samples/nginx content/read --status enabled
 ```
 
-The output shows details about the token, including generated passwords and scope map. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
+A kimenet a token részleteit jeleníti meg, beleértve a generált jelszavakat és a hatókör-leképezést. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később a `docker login`használhassa. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
-The output also shows that a scope map is automatically created, named `MyToken-scope-map`. You can use the scope map to apply the same repository actions to other tokens. Or, update the scope map later to change the token permissions.
+A kimenet azt is jelzi, hogy a rendszer automatikusan létrehoz egy hatókör-leképezést `MyToken-scope-map`. A hatókör-hozzárendelés használatával ugyanazon adattárbeli műveleteket is alkalmazhatja más jogkivonatokra. Vagy frissítse a hatókör-leképezést később, hogy megváltoztassa a jogkivonat-engedélyeket.
 
 ```console
 {
@@ -85,11 +85,11 @@ The output also shows that a scope map is automatically created, named `MyToken-
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Create a scope map and associated token
+### <a name="create-a-scope-map-and-associated-token"></a>Hatókör-hozzárendelés és társított jogkivonat létrehozása
 
-Alternatively, specify a scope map with repositories and associated actions when creating a token. To create a scope map, use the [az acr scope-map create][az-acr-scope-map-create] command.
+Másik lehetőségként megadhatja a hatókör-hozzárendelést a Tárházak és a társított műveletek között a jogkivonat létrehozásakor. Hatókör-hozzárendelés létrehozásához használja az az [ACR scope-Map Create][az-acr-scope-map-create] parancsot.
 
-The following example command creates a scope map with the same permissions used in the previous example. It allows `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository:
+A következő példában a parancs létrehoz egy hatókör-leképezést az előző példában használt engedélyekkel. Lehetővé teszi `content/write` és `content/read` műveleteket a `samples/hello-world` adattáron, valamint a `content/read` műveletet a `samples/nginx` adattáron:
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
@@ -116,21 +116,21 @@ A kimenet a következőkhöz hasonló:
   "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
 ```
 
-Run [az acr token create][az-acr-token-create] to create a token associated with the *MyScopeMap* scope map. By default, the command generates two passwords. This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
+Az az [ACR token Create][az-acr-token-create] paranccsal hozzon létre egy jogkivonatot, amely társítva van a *MyScopeMap* hatókör-leképezéséhez. Alapértelmezés szerint a parancs két jelszót hoz létre. Ez a példa a jogkivonat állapotát `enabled` (az alapértelmezett beállítás) állítja be, de bármikor frissítheti a tokent, és beállíthatja az állapotot `disabled`re.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
 ```
 
-The output shows details about the token, including generated passwords and the scope map you applied. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
+A kimenet a token részleteit jeleníti meg, beleértve a generált jelszavakat és az alkalmazott hatókör-térképet. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később a `docker login`használhassa. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
-## <a name="generate-passwords-for-token"></a>Generate passwords for token
+## <a name="generate-passwords-for-token"></a>Jelszavak előállítása jogkivonat számára
 
-If passwords were created when you created the token, proceed to [Authenticate with registry](#authenticate-using-token).
+Ha a jogkivonat létrehozásakor létrehozott jelszavakat, folytassa a [hitelesítést a beállításjegyzékkel](#authenticate-using-token).
 
-If you don't have a token password, or you want to generate new passwords, run the [az acr token credential generate][az-acr-token-credential-generate] command.
+Ha nem rendelkezik jogkivonat-jelszóval, vagy új jelszavakat szeretne előállítani, futtassa az az [ACR token hitelesítő adatok létrehozása][az-acr-token-credential-generate] parancsot.
 
-The following example generates a new password for the token you created, with an expiration period of 30 days. It stores the password in the environment variable TOKEN_PWD. This example is formatted for the bash shell.
+Az alábbi példa új jelszót hoz létre a létrehozott jogkivonathoz, amelynek lejárati időtartama 30 nap. A TOKEN_PWD környezeti változóban tárolja a jelszót. Ez a példa a bash-rendszerhéjhoz van formázva.
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
@@ -138,9 +138,9 @@ TOKEN_PWD=$(az acr token credential generate \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
-## <a name="authenticate-using-token"></a>Authenticate using token
+## <a name="authenticate-using-token"></a>Hitelesítés token használatával
 
-Run `docker login` to authenticate with the registry using the token credentials. Enter the token name as the user name and provide one of its passwords. The following example is formatted for the bash shell, and provides the values using environment variables.
+`docker login` futtatásával hitelesítheti magát a beállításjegyzékben a jogkivonat hitelesítő adatainak használatával. Adja meg a jogkivonat nevét felhasználónévként, és adja meg az egyik jelszavát. A következő példa a bash-rendszerhéjhoz van formázva, és környezeti változók használatával biztosítja az értékeket.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -149,22 +149,22 @@ TOKEN_PWD=<token password>
 echo $TOKEN_PWD | docker login --username $TOKEN_NAME --password-stdin myregistry.azurecr.io
 ```
 
-Output should show successful authentication:
+A kimenetnek sikeres hitelesítést kell mutatnia:
 
 ```console
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Verify scoped access
+## <a name="verify-scoped-access"></a>Hatókörön belüli hozzáférés ellenőrzése
 
-You can verify that the token provides scoped permissions to the repositories in the registry. In this example, the following `docker pull` commands complete successfully to pull images available in the `samples/hello-world` and `samples/nginx` repositories:
+Azt is ellenőrizheti, hogy a jogkivonat hatókörön belüli engedélyeket biztosít-e a beállításjegyzékben található adattárakhoz. Ebben a példában a következő `docker pull` parancsok sikeresen elvégezték a `samples/hello-world` és `samples/nginx` adattárakban elérhető rendszerképek lekérését:
 
 ```console
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-Because the example token allows the `content/write` action only on the `samples/hello-world` repository, `docker push` succeeds to that repository but fails for `samples/nginx`:
+Mivel a példa tokenje csak a `samples/hello-world` adattáron engedélyezi a `content/write` műveletet, `docker push` a tárház sikeres, de `samples/nginx`esetén sikertelen:
 
 ```console
 # docker push succeeds
@@ -174,90 +174,90 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Update scope map and token
+## <a name="update-scope-map-and-token"></a>Hatókör-leképezés és jogkivonat frissítése
 
-To update token permissions, update the permissions in the associated scope map, using [az acr scope-map update][az-acr-scope-map-update]. For example, to update *MyScopeMap* to remove the `content/write` action on the `samples/hello-world` repository:
+A jogkivonat engedélyeinek frissítéséhez frissítse az engedélyeket a társított hatókör-térképen az [az ACR scope-Map Update][az-acr-scope-map-update]paranccsal. Ha például frissíteni szeretné a *MyScopeMap* , hogy eltávolítsa a `content/write` műveletet a `samples/hello-world` adattáron:
 
 ```azurecli
 az acr scope-map update --name MyScopeMap --registry myregistry \
   --remove samples/hello-world content/write
 ```
 
-If the scope map is associated with more than one token, the command updates the permission of all associated tokens.
+Ha a hatókör-hozzárendelés egynél több tokenhez van társítva, a parancs frissíti az összes társított jogkivonat engedélyét.
 
-If you want to update a token with a different scope map, run [az acr token update][az-acr-token-update]. Példa:
+Ha másik hatókör-térképpel rendelkező tokent szeretne frissíteni, futtassa [az az ACR token Update][az-acr-token-update]parancsot. Például:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-After updating a token, or a scope map associated with a token, the permission changes take effect at the next `docker login` or other authentication using the token.
+A tokenek frissítése vagy a tokenhez társított hatókör-hozzárendelések módosítása után az engedély a következő `docker login` vagy más, a tokent használó hitelesítésre lép érvénybe.
 
-After updating a token, you might want to generate new passwords to access the registry. Run [az acr token credential generate][az-acr-token-credential-generate]. Példa:
+A token frissítése után létrehozhat új jelszavakat a beállításjegyzék eléréséhez. Futtatás [az ACR token hitelesítőadat-létrehozás][az-acr-token-credential-generate]. Például:
 
 ```azurecli
 az acr token credential generate \
   --name MyToken --registry myregistry --days 30
 ```
 
-## <a name="about-repository-scoped-permissions"></a>About repository-scoped permissions
+## <a name="about-repository-scoped-permissions"></a>Az adattár – hatókörön belüli engedélyek
 
 ### <a name="concepts"></a>Alapelvek
 
-To configure repository-scoped permissions, you create an *access token* and an associated *scope map* using commands in the Azure CLI.
+A tárház hatókörű engedélyeinek konfigurálásához létre kell hoznia egy *hozzáférési jogkivonatot* és egy hozzárendelt *hatókör-leképezést* az Azure CLI parancsainak használatával.
 
-* An **access token** is a credential used with a password to authenticate with the registry. Associated with each token are permitted *actions* scoped to one or more repositories. You can set an expiration time for each token. 
+* A **hozzáférési jogkivonat** a beállításjegyzékben való hitelesítéshez jelszóval használt hitelesítő adat. Az egyes jogkivonatokhoz társított *műveletek* egy vagy több tárházra terjednek ki. Megadhatja az egyes tokenek lejárati idejét. 
 
-* **Actions** on each specified repository include one or more of the following.
+* Az egyes adattárakon **végrehajtott műveletek** az alábbiak közül egyet vagy többet tartalmaznak.
 
   |Műveletek  |Leírás  |
   |---------|---------|
-  |`content/read`     |  Read data from the repository. For example, pull an artifact.  |
-  |`metadata/read`    | Read metadata from the repository. For example, list tags or show manifest metadata.   |
-  |`content/write`     |  Write data to the repository. Use with `content/read` to push an artifact.    |
-  |`metadata/write`     |  Write metadata to the repository. For example, update manifest attributes.  |
-  |`content/delete`    | Remove data from the repository. For example, delete a repository or a manifest. |
+  |`content/read`     |  Adatok beolvasása az adattárból. Például lehívhat egy összetevőt.  |
+  |`metadata/read`    | Metaadatok olvasása az adattárból. Például a címkék listázása vagy a jegyzékfájl metaadatainak megjelenítése.   |
+  |`content/write`     |  Az adattárban lévő adatbevitel. A with `content/read` használatával leküldheti az adott összetevőt.    |
+  |`metadata/write`     |  Metaadatok írása a tárházba. Például frissítse a jegyzékfájl attribútumait.  |
+  |`content/delete`    | Adatok eltávolítása az adattárból. Törölheti például a tárházat vagy a jegyzékfájlt. |
 
-* A **scope map** is a registry object that groups repository permissions you apply to a token, or can reapply to other tokens. If you don't apply a scope map when creating a token, a scope map is automatically created for you, to save the permission settings. 
+* A **hatókör-hozzárendelés** egy olyan beállításjegyzék-objektum, amely a jogkivonatra alkalmazott adattár-engedélyeket csoportosítja, vagy más jogkivonatokra is alkalmazható. Ha nem alkalmaz hatókör-leképezést jogkivonat létrehozásakor, a rendszer automatikusan létrehozza a hatókör-leképezést az engedély beállításainak mentéséhez. 
 
-  A scope map helps you configure multiple users with identical access to a set of repositories. Azure Container Registry also provides system-defined scope maps that you can apply when creating access tokens.
+  A hatókör-térkép segítségével több, azonos hozzáféréssel rendelkező felhasználó konfigurálható a Tárházak készletéhez. A Azure Container Registry a rendszer által meghatározott hatókör-térképeket is biztosít, amelyeket a hozzáférési jogkivonatok létrehozásakor alkalmazhat.
 
-The following image summarizes the relationship between tokens and scope maps. 
+Az alábbi képen összefoglalja a tokenek és a hatóköri térképek közötti kapcsolatot. 
 
-![Registry scope maps and tokens](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
+![A beállításjegyzék hatókörének leképezései és jogkivonatai](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
-Scenarios for using an access token include:
+Hozzáférési token használatára vonatkozó forgatókönyvek a következők:
 
-* Provide IoT devices with individual tokens to pull an image from a repository
-* Provide an external organization with permissions to a specific repository 
-* Limit repository access to specific user groups in your organization. For example, provide write and read access to developers who build images that target specific repositories, and read access to teams that deploy from those repositories.
+* Egyéni tokenekkel rendelkező IoT-eszközök biztosítása a rendszerkép lekéréséhez adattárból
+* Adjon meg egy olyan külső szervezetet, amely rendelkezik engedélyekkel egy adott tárházhoz 
+* Korlátozza a tárház hozzáférését a szervezet adott felhasználói csoportjaihoz. Adjon meg például írási és olvasási hozzáférést azoknak a fejlesztőknek, akik adott adattárakra irányuló képeket készítenek, és olvasási hozzáférést biztosítanak az ezekből a tárházból üzembe helyezett csapatokhoz.
 
-### <a name="authentication-using-token"></a>Authentication using token
+### <a name="authentication-using-token"></a>Hitelesítés token használatával
 
-Use a token name as a user name and one of its associated passwords to authenticate with the target registry. The authentication method depends on the configured actions.
+Használja a jogkivonat nevét felhasználónévként és a hozzá tartozó jelszavak egyikét a célként megadott beállításjegyzékben való hitelesítéshez. A hitelesítési módszer a konfigurált művelettől függ.
 
-### <a name="contentread-or-contentwrite"></a>content/read or content/write
+### <a name="contentread-or-contentwrite"></a>tartalom/olvasás vagy tartalom/írás
 
-If the token permits only `content/read` or `content/write` actions, provide token credentials in either of the following authentication flows:
+Ha a jogkivonat csak `content/read` vagy `content/write` műveletet engedélyez, adja meg a jogkivonat hitelesítő adatait a következő hitelesítési folyamatok bármelyikében:
 
-* Authenticate with Docker using `docker login`
-* Authenticate with the registry using the [az acr login][az-acr-login] command in the Azure CLI
+* Hitelesítés a Docker használatával `docker login`
+* Hitelesítés a beállításjegyzék használatával az az [ACR login][az-acr-login] paranccsal az Azure CLI-ben
 
-Following authentication, the token permits the configured actions on the scoped repository or repositories. For example, if the token permits the `content/read` action on a repository, `docker pull` operations are permitted on images in that repository.
+A hitelesítés után a jogkivonat engedélyezi a konfigurált műveleteket a hatókörön belüli adattáron vagy adattárakon. Ha például a jogkivonat engedélyezi a `content/read` műveletet egy adattáron, `docker pull` műveleteket a tárházban lévő lemezképeken engedélyezheti.
 
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/read, metadata/write, or content/delete
+#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metaadatok/olvasás, metaadatok/írás, vagy tartalom/törlés
 
-If the token permits `metadata/read`, `metadata/write`, or `content/delete` actions on a repository, token credentials must be provided as parameters with the related [az acr repository][az-acr-repository] commands in the Azure CLI.
+Ha a jogkivonat engedélyezi `metadata/read`, `metadata/write`vagy `content/delete` műveleteit egy adattáron, a jogkivonat hitelesítő adatait paraméterként kell megadni az Azure CLI-ben a kapcsolódó az [ACR adattár][az-acr-repository] parancsaival.
 
-For example, if `metadata/read` actions are permitted on a repository, pass the token credentials when running the [az acr repository show-tags][az-acr-repository-show-tags] command to list tags.
+Ha például `metadata/read` műveletek engedélyezve vannak egy adattáron, adja át a jogkivonat hitelesítő adatait az az [ACR repository show-Tags][az-acr-repository-show-tags] parancsnak a címkék listázásához való futtatásakor.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* To manage scope maps and access tokens, use additional commands in the [az acr scope-map][az-acr-scope-map] and [az acr token][az-acr-token] command groups.
-* See the [authentication overview](container-registry-authentication.md) for scenarios to authenticate with an Azure container registry using an admin account or an Azure Active Directory identity.
+* A hatóköri térképek és a hozzáférési tokenek kezeléséhez használja az az [ACR scope-Map][az-acr-scope-map] és [az ACR token][az-acr-token] Command groups további parancsait.
+* Tekintse meg a [hitelesítés áttekintését](container-registry-authentication.md) olyan forgatókönyvek esetén, amelyek egy rendszergazdai fiók vagy egy Azure Active Directory identitás használatával hitelesítik magukat az Azure Container registryben.
 
 
 <!-- LINKS - External -->

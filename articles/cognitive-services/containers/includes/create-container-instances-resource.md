@@ -1,7 +1,7 @@
 ---
 title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
-description: Learn how to create an Azure container instance resource.
+description: Ismerje meg, hogyan hozhat létre Azure Container instance-erőforrásokat.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,37 +16,37 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383514"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Create an Azure Container Instance resource
+## <a name="create-an-azure-container-instance-resource"></a>Azure Container instance-erőforrás létrehozása
 
-1. Go to the [Create](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) page for Container Instances.
+1. Lépjen a Container Instances [Létrehozás](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) lapjára.
 
-2. On the **Basics** tab, enter the following details:
+2. Az **alapvető beállítások** lapon adja meg a következő adatokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
-    |Előfizetés|Válassza ki előfizetését.|
-    |Erőforráscsoport|Select the available resource group or create a new one such as `cognitive-services`.|
-    |Tárolónév|Enter a name such as `cognitive-container-instance`. The name must be in lower caps.|
-    |Földrajzi egység|Select a region for deployment.|
-    |Image type|If your container image is stored in a container registry that doesn’t require credentials, choose `Public`. If accessing your container image requires credentials, choose `Private`. Refer to [container repositories and images](../../cognitive-services-container-support.md#container-repositories-and-images) for details on whether or not the container image is `Public` or `Private` ("Public Preview"). |
-    |Rendszerkép neve|Enter the Cognitive Services container location. The location is what's used as an argument to the `docker pull` command. Refer to the [container repositories and images](../../cognitive-services-container-support.md#container-repositories-and-images) for the available image names and their corresponding repository.<br><br>The image name must be fully qualified specifying three parts. First, the container registry, then the repository, finally the image name: `<container-registry>/<repository>/<image-name>`.<br><br>Here is an example, `mcr.microsoft.com/azure-cognitive-services/keyphrase` would represent the Key Phrase Extraction image in the Microsoft Container Registry under the Azure Cognitive Services repository. Another example is, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` which would represent the Speech to Text image in the Microsoft repository of the Container Preview container registry. |
-    |OS type|`Linux`|
-    |Méret|Change size to the suggested recommendations for your specific Cognitive Service container:<br>2 CPU cores<br>4 GB
+    |Előfizetést|Válassza ki előfizetését.|
+    |Erőforráscsoport|Válassza ki a rendelkezésre álló erőforráscsoportot, vagy hozzon létre egy újat, például `cognitive-services`.|
+    |Tárolónév|Adjon meg egy nevet, például `cognitive-container-instance`. A névnek alsó sapkában kell lennie.|
+    |Hely|Válasszon régiót az üzembe helyezéshez.|
+    |Rendszerkép típusa|Ha a tároló rendszerképét olyan tároló-beállításjegyzékben tárolja, amely nem igényel hitelesítő adatokat, válassza a `Public`lehetőséget. Ha a tároló rendszerképének eléréséhez hitelesítő adatokra van szükség, válassza a `Private`lehetőséget. További részletekért tekintse meg a [Container-Tárházak és-lemezképek](../../cognitive-services-container-support.md#container-repositories-and-images) című témakört, amelyből megtudhatja, hogy `Public`-e vagy sem `Private` ("nyilvános előnézet"). |
+    |Rendszerkép neve|Adja meg a Cognitive Services tároló helyét. A hely a `docker pull` parancs argumentumként használt helye. Tekintse meg a [tároló adattárait és lemezképeit](../../cognitive-services-container-support.md#container-repositories-and-images) a rendelkezésre álló képnevekhez és a hozzájuk tartozó adattárhoz.<br><br>A rendszerkép nevének teljesen minősítettnek kell lennie három rész megadásával. Először a Container Registry, majd a tárház, végül a rendszerkép neve: `<container-registry>/<repository>/<image-name>`.<br><br>Íme egy példa, `mcr.microsoft.com/azure-cognitive-services/keyphrase` az Kulcsszókeresés rendszerképet képviseli a Microsoft Container Registry az Azure Cognitive Services adattárában. Egy másik példa az, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`, amely a tároló előzetes tárolójának beállításjegyzékének Microsoft adattárában a szöveges kép beszédét jelképezi. |
+    |Operációs rendszer típusa|`Linux`|
+    |Méret|Az adott kognitív szolgáltatási tárolóra vonatkozó javasolt javaslatok méretének módosítása:<br>2 CPU-mag<br>4 GB
 
-3. On the **Networking** tab, enter the following details:
+3. A **hálózatkezelés** lapon adja meg a következő adatokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
-    |Portok|Set the TCP port to `5000`. Exposes the container on port 5000.|
+    |Portok|Állítsa be `5000`a TCP-portot. A tároló elérhetővé tétele a 5000-as porton.|
 
-4. On the **Advanced** tab, enter the required **Environment Variables** for the container billing settings of the Azure Container Instance resource:
+4. A **speciális** lapon adja meg a szükséges **környezeti változókat** az Azure Container instance-erőforrás tároló számlázási beállításainál:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |--|--|
-    |`apikey`|Copied from the **Keys** page of the resource. It is a 32 alphanumeric-character string with no spaces or dashes, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Copied from the **Overview** page of the resource.|
+    |`apikey`|Az erőforrás **kulcsok** lapjáról másolt. Egy 32 alfanumerikus karakterből álló karakterlánc, szóköz vagy kötőjel nélkül, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Az erőforrás **Áttekintés** lapjáról lett másolva.|
     |`eula`|`accept`|
 
-1. Click **Review and Create**
-1. After validation passes, click **Create** to finish the creation process
-1. When the resource is successfully deployed, it's ready
+1. Kattintson **a felülvizsgálat és létrehozás** gombra.
+1. Az ellenőrzés után kattintson a **Létrehozás** gombra a létrehozási folyamat befejezéséhez.
+1. Az erőforrás sikeres üzembe helyezése után készen áll

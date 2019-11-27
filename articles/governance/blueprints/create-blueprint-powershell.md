@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint with PowerShell'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the PowerShell.
+title: 'Rövid útmutató: terv létrehozása a PowerShell-lel'
+description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a PowerShell használatával.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327468"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Define and Assign an Azure Blueprint with PowerShell
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése a PowerShell-lel
 
 A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
@@ -18,7 +18,7 @@ A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé t
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
-If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
+Ha még nincs telepítve, kövesse az [az. Blueprint modul hozzáadása](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) című témakör utasításait az az **. Blueprint** modul telepítéséhez és ellenőrzéséhez a PowerShell-Galéria.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -27,11 +27,11 @@ If it isn't already installed, follow the instructions in [Add the Az.Blueprint 
 A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy Resource Manager-sablont és egy szerepkör-hozzárendelést az erőforráscsoporton.
 
 > [!NOTE]
-> When using PowerShell, the _blueprint_ object is created first. Mindegyik hozzáadott, paraméterekkel rendelkező _összetevő_ esetében a paramétereket előre definiálni kell a kezdeti _terven_.
+> A PowerShell használatakor a _terv_ objektum először jön létre. Mindegyik hozzáadott, paraméterekkel rendelkező _összetevő_ esetében a paramétereket előre definiálni kell a kezdeti _terven_.
 
-1. Hozza létre a kezdeti _terv_ objektumot. The **BlueprintFile** parameter takes a JSON file which includes properties about the blueprint, any resource groups to create, and all of the blueprint level parameters. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
+1. Hozza létre a kezdeti _terv_ objektumot. A **BlueprintFile** paraméter egy JSON-fájlt is tartalmaz, amely a tervre vonatkozó tulajdonságokat, a létrehozandó erőforráscsoportokat és az összes terv szintű paramétert tartalmazza. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
 
-   - JSON file - blueprint.json
+   - JSON-fájl – Blueprint. JSON
 
      ```json
      {
@@ -91,7 +91,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Login first with Connect-AzAccount if not using Cloud Shell
@@ -101,14 +101,14 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      ```
 
      > [!NOTE]
-     > Use the filename _blueprint.json_ when creating your blueprint definitions programmatically.
-     > This file name is used when calling [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
+     > A terv-definíciók programozott módon történő létrehozásakor használja a filename _Blueprint. JSON_ fájlt.
+     > Ez a fájlnév az [import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact)hívásakor használatos.
 
-     The blueprint object is created in the default subscription by default. To specify the management group, use parameter **ManagementGroupId**. To specify the subscription, use parameter **SubscriptionId**.
+     A terv objektum alapértelmezés szerint az alapértelmezett előfizetésben jön létre. A felügyeleti csoport megadásához használja a **ManagementGroupId**paramétert. Az előfizetés megadásához használja a **SubscriptionId**paramétert.
 
-1. Szerepkör-hozzárendelés hozzáadása az előfizetésben. The **ArtifactFile** defines the _kind_ of artifact, the properties align to the role definition identifier, and the principal identities are passed as an array of values. Az alábbi példában a megadott szerepkörrel felruházott egyszerű identitások egy olyan paraméterre vannak konfigurálva, amely a tervhozzárendelés során van megadva. This example uses the _Contributor_ built-in role with a GUID of `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Szerepkör-hozzárendelés hozzáadása az előfizetésben. A **ArtifactFile** meghatározza az összetevő _típusát_ , a tulajdonságokat a szerepkör-definíciós azonosítóhoz igazítva, a résztvevő identitásokat pedig értékek tömbje adja át. Az alábbi példában a megadott szerepkörrel felruházott egyszerű identitások egy olyan paraméterre vannak konfigurálva, amely a tervhozzárendelés során van megadva. Ez a példa a _közreműködő_ beépített szerepkört használja a `b24988ac-6180-42a0-ab88-20f7382dd24c`GUID azonosítóval.
 
-   - JSON file - \artifacts\roleContributor.json
+   - JSON-fájl – \artifacts\roleContributor.json
 
      ```json
      {
@@ -120,16 +120,16 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. Szabályzat-hozzárendelés hozzáadása az előfizetésben. The **ArtifactFile** defines the _kind_ of artifact, the properties that align to a policy or initiative definition, and configures the policy assignment to use the defined blueprint parameters to configure during blueprint assignment. This example uses the _Apply tag and its default value to resource groups_ built-in policy with a GUID of `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Szabályzat-hozzárendelés hozzáadása az előfizetésben. A **ArtifactFile** határozza meg az összetevő _típusát_ , a házirendhez vagy kezdeményezési definícióhoz igazított tulajdonságokat, és konfigurálja a szabályzat-hozzárendelést a terv-hozzárendelés során a definiált terv paramétereinek használatára. Ez a példa az _alkalmaz címkét és az alapértelmezett értékét_ használja az erőforráscsoportok beépített házirendjéhez a `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID azonosítójának használatával.
 
-   - JSON file - \artifacts\policyTags.json
+   - JSON-fájl – \artifacts\policyTags.json
 
      ```json
      {
@@ -150,16 +150,16 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyTags' -ArtifactFile .\artifacts\policyTags.json
      ```
 
-1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. This example uses the _Apply tag and its default value to resource groups_ built-in policy with a GUID of `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. Ez a példa az _alkalmaz címkét és az alapértelmezett értékét_ használja az erőforráscsoportok beépített házirendjéhez a `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID azonosítójának használatával.
 
-   - JSON file - \artifacts\policyStorageTags.json
+   - JSON-fájl – \artifacts\policyStorageTags.json
 
      ```json
      {
@@ -180,16 +180,16 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Sablon hozzáadása az erőforráscsoport alatt. The **TemplateFile** for a Resource Manager template includes the normal JSON component of the template. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. The blueprint parameters are available to the template by using parameter **TemplateParameterFile** and inside the template JSON that key-value pair is used to inject the value. The blueprint and template parameter names could be the same.
+1. Sablon hozzáadása az erőforráscsoport alatt. A Resource Manager-sablonok **TemplateFile** a sablon normál JSON összetevőjét tartalmazza. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A terv paramétereinek elérhetők a sablonhoz a **TemplateParameterFile** paraméterrel és a sablon JSON-ban, amelyet a kulcs-érték párok az érték beadására használnak. A terv és a sablon paramétereinek nevei megegyeznek.
 
-   - JSON Azure Resource Manager template file - \artifacts\templateStorage.json
+   - JSON Azure Resource Manager sablonfájl – \artifacts\templateStorage.json
 
      ```json
      {
@@ -243,7 +243,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - JSON Azure Resource Manager template parameter file - \artifacts\templateStorageParams.json
+   - JSON Azure Resource Manager sablon paraméter fájl – \artifacts\templateStorageParams.json
 
      ```json
      {
@@ -263,16 +263,16 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Type TemplateArtifact -Name 'templateStorage' -TemplateFile .\artifacts\templateStorage.json -TemplateParameterFile .\artifacts\templateStorageParams.json -ResourceGroupName storageRG
      ```
 
-1. Szerepkör-hozzárendelés hozzáadása az erőforráscsoport alatt. Az előző szerepkör-hozzárendelési bejegyzéshez hasonlóan az alábbi példa a **Tulajdonos** szerepkör definíciós azonosítóját használja, és egy másik paramétert ad neki a tervből. This example uses the _Owner_ built-in role with a GUID of `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
+1. Szerepkör-hozzárendelés hozzáadása az erőforráscsoport alatt. Az előző szerepkör-hozzárendelési bejegyzéshez hasonlóan az alábbi példa a **Tulajdonos** szerepkör definíciós azonosítóját használja, és egy másik paramétert ad neki a tervből. Ez a példa a _tulajdonos_ beépített szerepkört használja a `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`GUID azonosítójának használatával.
 
-   - JSON file - \artifacts\roleOwner.json
+   - JSON-fájl – \artifacts\roleOwner.json
 
      ```json
      {
@@ -285,7 +285,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -305,11 +305,11 @@ A `{BlueprintVersion}` értéke egy betűket, számokat és kötőjeleket (szók
 
 ## <a name="assign-a-blueprint"></a>Terv hozzárendelése
 
-Once a blueprint is published using PowerShell, it's assignable to a subscription. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. If the blueprint is saved to a subscription, it can only be assigned to that subscription. The **Blueprint** parameter specifies the blueprint to assign. To provide name, location, identity, lock, and blueprint parameters, use the matching PowerShell parameters on the `New-AzBlueprintAssignment` cmdlet or provide them in the **AssignmentFile** parameter JSON file.
+Miután közzétett egy tervet a PowerShell használatával, hozzárendelhető egy előfizetéshez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. Ha a terv egy előfizetésre lett mentve, akkor csak az adott előfizetéshez rendelhető hozzá. A **terv** paraméter határozza meg a hozzárendelni kívánt tervet. A név, hely, identitás, zárolás és tervrajz paramétereinek megadásához használja a `New-AzBlueprintAssignment` parancsmag megfelelő PowerShell-paramétereit, vagy adja meg azokat a **AssignmentFile** paraméter JSON-fájljában.
 
-1. A tervpéldányt a futtatásához rendelje hozzá egy előfizetéshez. As the **contributors** and **owners** parameters require an array of objectIds of the principals to be granted the role assignment, use [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) for gathering the objectIds for use in the **AssignmentFile** for your own users, groups, or service principals.
+1. A tervpéldányt a futtatásához rendelje hozzá egy előfizetéshez. Mivel a **közreműködők** és a **tulajdonosi** paraméterek a rendszerbiztonsági tag objectIds tömbjét igénylik a szerepkör-hozzárendelés megadásához, használja [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) , hogy összegyűjtse a saját felhasználók, csoportok vagy egyszerű szolgáltatások **AssignmentFile** használt objectIds.
 
-   - JSON file - blueprintAssignment.json
+   - JSON-fájl – blueprintAssignment. JSON
 
      ```json
      {
@@ -352,17 +352,17 @@ Once a blueprint is published using PowerShell, it's assignable to a subscriptio
      }
      ```
 
-   - PowerShell command
+   - PowerShell-parancs
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintAssignment -Blueprint $blueprint -Name 'assignMyBlueprint' -AssignmentFile .\blueprintAssignment.json
      ```
 
-   - User-assigned managed identity
+   - Felhasználó által hozzárendelt felügyelt identitás
 
-     A blueprint assignment can also use a [user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md).
-     In this case, the **identity** portion of the JSON assignment file changes as follows. Replace `{tenantId}`, `{subscriptionId}`, `{yourRG}`, and `{userIdentity}` with your tenantId, subscriptionId, resource group name, and the name of your user-assigned managed identity, respectively.
+     A tervrajz-hozzárendelések [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md)is használhatnak.
+     Ebben az esetben a JSON-hozzárendelés fájljának **identitás** része a következőképpen változik. Cserélje le `{tenantId}`, `{subscriptionId}`, `{yourRG}`és `{userIdentity}` a tenantId, a subscriptionId, az erőforráscsoport nevére és a felhasználó által hozzárendelt felügyelt identitás nevére.
 
      ```json
      "identity": {
@@ -374,14 +374,14 @@ Once a blueprint is published using PowerShell, it's assignable to a subscriptio
      },
      ```
 
-     The **user-assigned managed identity** can be in any subscription and resource group the user assigning the blueprint has permissions to.
+     A **felhasználó által hozzárendelt felügyelt identitás** bármely előfizetésben és erőforráscsoportban lehet, hogy a tervhez hozzárendelt felhasználó rendelkezik jogosultsággal a következőhöz:.
 
      > [!IMPORTANT]
-     > Blueprints doesn't manage the user-assigned managed identity. Users are responsible for assigning sufficient roles and permissions or the blueprint assignment will fail.
+     > A tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
 ## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
-Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori művelet az összetevők már szükségtelen erőforrásai esetén. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. To remove a blueprint assignment, use the `Remove-AzBlueprintAssignment` cmdlet:
+Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori művelet az összetevők már szükségtelen erőforrásai esetén. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A terv-hozzárendelés eltávolításához használja a `Remove-AzBlueprintAssignment` parancsmagot:
 
 assignMyBlueprint
 
@@ -391,7 +391,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you've created, assigned, and removed a blueprint with PowerShell. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+Ebben a rövid útmutatóban létrehozta, hozzárendelte és eltávolította a tervet a PowerShell-lel. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [A terv életciklusának megismerése](./concepts/lifecycle.md)

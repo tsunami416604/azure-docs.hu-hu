@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993136"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546258"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
@@ -33,7 +33,7 @@ A következő példa az e-mail-értesítésre kritikus figyelmeztetést vagy ria
 ![Példa e-mail-értesítésre](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Mindig győződjön meg arról, hogy az e-mailben egy ellenőrzött Microsoft-feladó származik, mielőtt rákattint az üzenetben található hivatkozásokra. Az e-mail-értesítések mindig `azure-noreply@microsoft.com` a címről származnak.
+> Mindig győződjön meg arról, hogy az e-mailben egy ellenőrzött Microsoft-feladó származik, mielőtt rákattint az üzenetben található hivatkozásokra. Az e-mail-értesítések mindig a `azure-noreply@microsoft.com` címről származnak.
 
 ### <a name="why-would-i-receive-email-notifications"></a>Miért kapok e-mailes értesítéseket?
 
@@ -78,9 +78,9 @@ Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, n
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Hogy miért?
 
-Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról `azure-noreply@microsoft.com`, hogy a küldője engedélyezte a következőt:.
+Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról, hogy engedélyezi a `azure-noreply@microsoft.com`küldőjét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelentett problémák némelyikével kapcsolatos további információkért lásd: [riasztások feloldása Azure AD DS felügyelt tartományon][troubleshoot-alerts].
 

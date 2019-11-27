@@ -1,6 +1,6 @@
 ---
-title: Azure Functions reliable event processing
-description: Avoid missing Event Hub messages in Azure Functions
+title: Azure Functions megbízható események feldolgozása
+description: Kerülje az Event hub-üzenetek hiányzó Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
@@ -12,123 +12,123 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230377"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions reliable event processing
+# <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
-Event processing is one of the most common scenarios associated with serverless architecture. This article describes how to create a reliable message processor with Azure Functions to avoid losing messages.
+Az események feldolgozása a kiszolgáló nélküli architektúrához társított leggyakoribb forgatókönyvek egyike. Ez a cikk azt ismerteti, hogyan lehet az üzenetek elvesztésének elkerüléséhez Azure Functions használatával megbízható üzenetet létrehozni.
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Challenges of event streams in distributed systems
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>Az esemény-adatfolyamok kihívásai az elosztott rendszerekben
 
-Consider a system that sends events at a constant rate  of 100 events per second. At this rate, within minutes multiple parallel Functions instances can consume the incoming 100 events every second.
+Vegyünk egy olyan rendszernek, amely másodpercenként 100 eseményt küld az eseményeknek. Ezen a sebességgel néhány percen belül több párhuzamos functions-példány képes a bejövő 100-események másodpercenkénti felhasználására.
 
-However, any of the following less-optimal conditions are possible:
+Azonban a következő kevésbé optimális feltételek bármelyike lehetséges:
 
-- What if the event publisher sends a corrupt event?
-- What if your Functions instance encounters unhandled exceptions?
-- What if a downstream system goes offline?
+- Mi a teendő, ha az esemény kiadója sérült eseményt küld?
+- Mi a teendő, ha a függvények példánya nem kezelt kivételeket észlel?
+- Mi a teendő, ha egy alsóbb rétegbeli rendszer offline állapotba kerül?
 
-How do you handle these situations while preserving the throughput of your application?
+Hogyan kezelheti ezeket a helyzeteket, miközben megőrizheti az alkalmazás átviteli sebességét?
 
-With queues, reliable messaging comes naturally. When paired with a Functions trigger, the function creates a lock on the queue message. If processing fails, the lock is released to allow another instance to retry processing. Processing then continues until either the message is evaluated successfully, or it is added to a poison queue.
+A várólistákkal a megbízható üzenetküldés természetesen magától értetődő. Functions triggerrel párosítva a függvény zárolást hoz létre az üzenetsor-üzenetben. Ha a feldolgozás sikertelen, a zárolás felszabadítva lesz, hogy egy másik példány újra feldolgozza a feldolgozást. A feldolgozás ezután folytatódik, amíg meg nem történik az üzenet sikeres kiértékelése, vagy hozzá van adva egy méreg-várólistához.
 
-Even while a single queue message may remain in a retry cycle, other parallel executions continue to keep to dequeueing remaining messages. The result is that the overall throughput remains largely unaffected by one bad message. However, storage queues don’t guarantee ordering and aren’t optimized for the high throughput demands required by Event Hubs.
+Még ha egy üzenetsor-üzenet is maradhat egy újrapróbálkozási ciklusban, a többi párhuzamos végrehajtás továbbra is továbbra is megmarad a fennmaradó üzenetek várólistára helyezése során. Ennek az az oka, hogy a teljes átviteli sebesség nagy mértékben nem lesz hatással egy hibás üzenetre. A tárolási várólisták azonban nem garantálják a sorrendet, és nem a Event Hubs által igényelt nagy átviteli sebességre vannak optimalizálva.
 
-By contrast, Azure Event Hubs doesn't include a locking concept. To allow for features like high-throughput, multiple consumer groups, and replay-ability, Event Hubs events behave more like a video player. Events are read from a single point in the stream per partition. From the pointer you can read forwards or backwards from that location, but you have to choose to move the pointer for events to process.
+Ezzel szemben az Azure Event Hubs nem tartalmaz zárolási koncepciót. A nagy átviteli sebességű, több fogyasztói csoport és az újrajátszás képességgel rendelkező funkciók engedélyezéséhez Event Hubs az események többek között egy videolejátszóként viselkednek. Az eseményeket a rendszer az adatfolyamban lévő egy pontról olvassa be. A mutatóból az adott helyről továbbíthatja a továbbításokat vagy visszafelé, de a mutatót úgy kell áthelyeznie, hogy feldolgozza az eseményeket.
 
-When errors occur in a stream, if you decide to keep the pointer in the same spot, event processing is blocked until the pointer is advanced. In other words, if the pointer is stopped to deal with problems processing a single event, the unprocessed events begin piling up.
+Ha hiba lép fel egy adatfolyamban, ha úgy dönt, hogy ugyanazon a helyen tartja a mutatót, a rendszer letiltja az események feldolgozását, amíg a mutató nem lesz speciális. Más szóval, ha a mutató le van állítva egy adott esemény feldolgozásával kapcsolatos problémák kezelésére, a feldolgozatlan események megkezdik a felhalmozás folyamatát.
 
-Azure Functions avoids deadlocks by advancing the stream's pointer regardless of success or failure. Since the pointer keeps advancing, your functions need to deal with failures appropriately.
+A Azure Functions elkerüli a holtpontokat azáltal, hogy az adatfolyam mutatóját a sikertől vagy a meghibásodástól függetlenül meghaladják. Mivel a mutató folyamatosan halad, a függvényeknek megfelelően kell foglalkoznia a hibákkal.
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>How Azure Functions consumes Event Hubs events
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>Hogyan használják a Azure Functions Event Hubs eseményeket
 
-Azure Functions consumes Event Hub events while cycling through the following steps:
+A Azure Functions az Event hub-eseményeket az alábbi lépések során használja:
 
-1. A pointer is created and persisted in Azure Storage for each partition of the event hub.
-2. When new messages are received (in a batch by default), the host attempts to trigger the function with the batch of messages.
-3. If the function completes execution (with or without exception) the pointer advances and a checkpoint is saved to the storage account.
-4. If conditions prevent the function execution from completing, the host fails to progress the pointer. If the pointer isn't advanced, then later checks end up processing the same messages.
-5. Repeat steps 2–4
+1. A rendszer létrehoz egy mutatót, és megőrzi az Azure Storage-ban az Event hub minden partíciója számára.
+2. Amikor új üzenet érkezik (alapértelmezés szerint egy kötegben), a gazdagép megpróbálja elindítani a függvényt az üzenetek kötegében.
+3. Ha a függvény befejezi a végrehajtást (kivétel nélkül vagy anélkül), a mutató továbblép, és egy ellenőrzőpontot ment a Storage-fiókba.
+4. Ha a feltételek megakadályozzák, hogy a függvény végrehajtása befejeződik, a gazdagép nem tudja végrehajtani a mutatót. Ha a mutató nem speciális, akkor a későbbi ellenőrzések során ugyanazok az üzenetek kerülnek feldolgozásra.
+5. Ismételje meg a 2 – 4. lépést
 
-This behavior reveals a few important points:
+Ez a viselkedés a következő fontos pontokat mutatja be:
 
-- *Unhandled exceptions may cause you to lose messages.* Executions that result in an exception will continue to progress the pointer.
-- *Functions guarantees at-least-once delivery.* Your code and dependent systems may need to [account for the fact that the same message could be received twice](./functions-idempotent.md).
+- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.
+- *A függvények legalább egyszeri kézbesítést garantálnak.* Előfordulhat, hogy a kódnak és a függő rendszereknek is [figyelembe kell venniük azt a tényt, hogy ugyanazt az üzenetet kétszer is el lehet fogadni](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Kivételek kezelése
 
-As a general rule, every function should include a [try/catch block](./functions-bindings-error-pages.md) at the highest level of code. Specifically, all functions that consume Event Hubs events should have a `catch` block. That way, when an exception is raised, the catch block handles the error before the pointer progresses.
+Általános szabályként minden függvénynek tartalmaznia kell egy [try/catch blokkot](./functions-bindings-error-pages.md) a legmagasabb szintű kóddal. Pontosabban, az Event Hubs eseményeket használó összes függvénynek rendelkeznie kell egy `catch` blokkmal. Így ha kivétel keletkezik, a Catch blokk kezeli a hibát a mutató előrehaladása előtt.
 
-### <a name="retry-mechanisms-and-policies"></a>Retry mechanisms and policies
+### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és szabályzatok
 
-Some exceptions are transient in nature and don't reappear when an operation is attempted again moments later. This is why the first step is always to retry the operation. You could write retry processing rules yourself, but they are so commonplace that a number of tools available. Using these libraries allow you to define robust retry-policies, which can also help preserve processing order.
+Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel. Megpróbálkozhat az újrapróbálkozási szabályok feldolgozásával, de olyan általános, hogy számos eszköz érhető el. Ezen könyvtárak használatával robusztus újrapróbálkozási házirendeket határozhat meg, amelyek segítenek megőrizni a feldolgozási sorrendet is.
 
-Introducing fault-handling libraries to your functions allow you to define both basic and advanced retry policies. For instance, you could implement a policy that follows a workflow illustrated by the following rules:
+A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását is. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
 
-- Try to insert a message three times (potentially with a delay between retries).
-- If the eventual outcome of all retries is a failure, then add a message to a queue so processing can continue on the stream.
-- Corrupt or unprocessed messages are then handled later.
+- Próbáljon meg háromszor beszúrni egy üzenetet (esetleg az újrapróbálkozások közötti késleltetéssel).
+- Ha az újrapróbálkozások végeredménye hibát jelez, adjon hozzá egy üzenetet egy várólistához, hogy a feldolgozás folytatható legyen az adatfolyamban.
+- A rendszer később kezeli a sérült vagy feldolgozatlan üzeneteket.
 
 > [!NOTE]
-> [Polly](https://github.com/App-vNext/Polly) is an example of a resilience and transient-fault-handling library for C# applications.
+> A [Polly](https://github.com/App-vNext/Polly) egy példa a rugalmasságra és az átmeneti hibák kezelésére szolgáló függvénytárra az C# alkalmazások számára.
 
-When working with pre-complied C# class libraries, [exception filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) allow you to run code whenever an unhandled exception occurs.
+Ha előzetesen teljesített C# osztály-kódtárakkal dolgozik, a [kivételt](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) képező szűrők lehetővé teszik a kód futtatását, amikor kezeletlen kivétel történik.
 
-Samples that demonstrate how to use exception filters are available in the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) repo.
+A kivételi szűrők használatát bemutató példák a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -tárházban érhetők el.
 
-## <a name="non-exception-errors"></a>Non-exception errors
+## <a name="non-exception-errors"></a>Kivételt nem okozó hibák
 
-Some issues arise even when an error is not present. For example, consider a failure that occurs in the middle of an execution. In this case, if a function doesn’t complete execution, the offset pointer is never progressed. If the pointer doesn't advance, then any instance that runs after a failed execution continues to read the same messages. This situation provides an "at-least-once" guarantee.
+Bizonyos problémák akkor is felmerülhetnek, ha nem jelennek meg hiba. Vegyünk például egy olyan hibát, amely egy végrehajtás közepén fordul elő. Ebben az esetben, ha egy függvény nem hajtja végre a végrehajtást, az eltolási mutató soha nem halad előre. Ha a mutató nem halad előre, akkor a sikertelen végrehajtást követően futó példányok továbbra is ugyanazokat az üzeneteket olvassák. Ez a helyzet "legalább egyszeri" garanciát biztosít.
 
-The assurance that every message is processed at least one time implies that some messages may be processed more than once. Your function apps need to be aware of this possibility and must be built around the [principles of idempotency](./functions-idempotent.md).
+Arról, hogy minden üzenet feldolgozása legalább egyszer megtörténik, azt feltételezi, hogy néhány üzenet többször is feldolgozható. A Function apps-alkalmazásoknak ismerniük kell ezt a lehetőséget, és a [idempotencia alapelvei](./functions-idempotent.md)köré kell felépíteni őket.
 
-## <a name="stop-and-restart-execution"></a>Stop and restart execution
+## <a name="stop-and-restart-execution"></a>Végrehajtás leállítása és újraindítása
 
-While a few errors may be acceptable, what if your app experiences significant failures? You may want to stop triggering on events until the system reaches a healthy state. Having the opportunity pause processing is often achieved with a circuit breaker pattern. The circuit breaker pattern allows your app to "break the circuit" of the event process and resume at a later time.
+Néhány hiba is elfogadható lehet, mi a teendő, ha az alkalmazás jelentős hibákat tapasztal? Előfordulhat, hogy az események aktiválását le szeretné állítani, amíg a rendszer Kifogástalan állapotba nem ér. A szüneteltetési lehetőség feldolgozását gyakran egy áramkör-megszakító mintával éri el. Az áramkör-megszakító minta lehetővé teszi, hogy az alkalmazás "megtörje" az esemény folyamatát, és később folytassa a műveletet.
 
-There are two pieces required to implement a circuit breaker in an event process:
+Az áramkör-megszakítót egy eseményvezérelt folyamat megvalósításához két darab szükséges:
 
-- Shared state across all instances to track and monitor health of the circuit
-- Master process that can manage the circuit state (open or closed)
+- Minden példány közös állapota az áramkör állapotának nyomon követéséhez és figyeléséhez
+- Az áramköri állapot kezelésére képes fő folyamat (nyitott vagy lezárt)
 
-Implementation details may vary, but to share state among instances you need a storage mechanism. You may choose to store state in Azure Storage, a Redis cache, or any other account that is accessible by a collection of functions.
+A megvalósítás részletei eltérőek lehetnek, de a példányok közötti megosztáshoz szükség van egy tárolási mechanizmusra. Dönthet úgy, hogy az állapotot az Azure Storage-ban, egy Redis-gyorsítótárban vagy bármely más, a függvények gyűjteménye által elérhető fiókban tárolja.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) or [durable entities](./durable/durable-functions-overview.md) are a natural fit to manage the workflow and circuit state. Other services may work just as well, but logic apps are used for this example. Using logic apps, you can pause and restart a function's execution giving you the control required to implement the circuit breaker pattern.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) vagy [tartós entitások](./durable/durable-functions-overview.md) természetes illeszkedést biztosítanak a munkafolyamatok és az áramköri állapot kezeléséhez. Más szolgáltatások is ugyanúgy működhetnek, de ehhez a példához a Logic apps is használható. A Logic Apps használatával szüneteltetheti és újraindíthatja a függvények végrehajtását, így az áramkör-megszakító minta megvalósításához szükséges vezérlőt is megadhatja.
 
-### <a name="define-a-failure-threshold-across-instances"></a>Define a failure threshold across instances
+### <a name="define-a-failure-threshold-across-instances"></a>Hiba küszöbértékének meghatározása példányok között
 
-To account for multiple instances processing events simultaneously, persisting shared external state is needed to monitor the health of the circuit.
+Az események egyidejű feldolgozásához egyszerre több példányban kell megőrizni az áramkör állapotának figyeléséhez szükséges megosztott külső állapotot.
 
-A rule you may choose to implement might enforce that:
+A megvalósítani kívánt szabály a következő esetekben kényszeríthető:
 
-- If there are more than 100 eventual failures within 30 seconds across all instances, then break the circuit and stop triggering on new messages.
+- Ha több mint 100, az összes példányon 30 másodpercnél több lehetséges hiba történik, akkor szüntesse meg az áramkört, és állítsa le az indítást az új üzeneteken.
 
-The implementation details will vary given your needs, but in general you can create a system that:
+A megvalósítás részletei az Ön igényeinek megfelelően változhatnak, de általánosságban létrehozhat egy olyan rendszerrendszer, amely a következőket teszi:
 
-1. Log failures to a storage account (Azure Storage, Redis, etc.)
-1. When new failure is logged, inspect the rolling count to see if the threshold is met (for example, more than 100 in last 30 seconds).
-1. If the threshold is met, emit an event to Azure Event Grid telling the system to break the circuit.
+1. Hibák naplózása egy Storage-fiókba (Azure Storage, Redis stb.)
+1. Ha új hiba van naplózva, ellenőrizze a működés közbeni korlátot, és ellenőrizze, hogy teljesülnek-e a küszöbérték (például több mint 100 az elmúlt 30 másodpercben).
+1. Ha a küszöbérték teljesül, kibocsát egy eseményt, hogy Azure Event Grid mondja el, hogy a rendszer megszakítja az áramkört.
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>Managing circuit state with Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>Áramkör állapotának kezelése Azure Logic Apps
 
-The following description highlights one way you could create an Azure Logic App to halt a Functions app from processing.
+Az alábbi leírás kiemeli, hogyan hozhat létre egy Azure Logic apps-alkalmazást a függvények feldolgozásának leállításához.
 
-Azure Logic Apps comes with built-in connectors to different services, features stateful orchestrations, and is a natural choice to manage circuit state. After detecting the circuit needs to break, you can build a logic app to implement the following workflow:
+Azure Logic Apps a különböző szolgáltatásokhoz beépített összekötőket tartalmaz, a funkciók állapot-nyilvántartó felépítését, és természetes választás az áramköri állapot kezeléséhez. Miután észlelte, hogy az áramkörnek meg kell szakítania a folyamatot, létrehozhat egy logikai alkalmazást a következő munkafolyamat megvalósításához:
 
-1. Trigger an Event Grid workflow and stop the Azure Function (with the Azure Resource connector)
-1. Send a notification email that includes an option to restart the workflow
+1. Event Grid munkafolyamat elindítása és az Azure-függvény leállítása (az Azure Resource connectorral)
+1. Értesítési e-mail küldése, amely tartalmaz egy lehetőséget a munkafolyamat újraindítására.
 
-The email recipient can investigate the health of the circuit and, when appropriate, restart the circuit via a link in the notification email. As the workflow restarts the function, messages are processed from the last Event Hub checkpoint.
+Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges, újraindíthatja az áramkört az értesítő e-mailben található hivatkozás használatával. Ahogy a munkafolyamat újraindítja a függvényt, az üzenetek a legutóbbi Event hub ellenőrzőpontról lesznek feldolgozva.
 
-Using this approach, no messages are lost, all messages are processed in order, and you can break the circuit as long as necessary.
+Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>Erőforrások
 
-- [Reliable event processing samples](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions Circuit Breaker](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Azure Durable Functions áramkör-megszakító](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 
-- [Azure Functions error handling](./functions-bindings-error-pages.md)
+- [Azure Functions hibakezelés](./functions-bindings-error-pages.md)
 - [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása](./functions-twitter-email.md)

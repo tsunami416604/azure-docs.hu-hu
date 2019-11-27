@@ -1,6 +1,6 @@
 ---
-title: Tutorial - use parameter file to deploy template
-description: Use parameter files that contain the values to use for deploying your Azure Resource Manager template.
+title: Oktatóanyag – sablon üzembe helyezése a paraméter használatával
+description: Használjon olyan paramétereket, amelyek tartalmazzák a Azure Resource Manager-sablon üzembe helyezéséhez használandó értékeket.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,47 +12,47 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405972"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Use parameter files to deploy your Resource Manager template
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Oktatóanyag: paraméterek használata a Resource Manager-sablon üzembe helyezéséhez
 
-In this tutorial, you learn how to use [parameter files](resource-manager-parameter-files.md) to store the values you pass in during deployment. In the previous tutorials, you used inline parameters with your deployment command. This approach worked for testing your template, but when automating deployments it can be easier to pass a set of values for your environment. Parameter files make it easier to package parameter values for a specific environment. In this tutorial, you'll create parameter files for development and production environments. It takes about **12 minutes** to complete.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatók a [paraméter-fájlok](resource-manager-parameter-files.md) az üzembe helyezés során beadott értékek tárolására. Az előző oktatóanyagokban beágyazott paramétereket használt a telepítési paranccsal. Ez a megközelítés a sablon tesztelésére szolgál, de a központi telepítések automatizálásakor könnyebb lehet átadni a környezete értékeit. A paraméter-fájlok megkönnyítik egy adott környezet paramétereinek értékének becsomagolását. Ebben az oktatóanyagban paramétereket hozhat létre fejlesztési és éles környezetekhez. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-We recommend that you complete the [tutorial about tags](template-tutorial-add-tags.md), but it's not required.
+Javasoljuk, hogy fejezze be a [címkékre vonatkozó oktatóanyagot](template-tutorial-add-tags.md), de ez nem kötelező.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Sablon áttekintése
 
-Your template has many parameters you can provide during deployment. At the end of the previous tutorial, your template looked like:
+A sablon számos, az üzembe helyezés során megadható paramétert tartalmaz. Az előző oktatóanyag végén a sablon a következőképpen néz ki:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
 
-This template works well, but now you want to easily manage the parameters that you pass in for the template.
+Ez a sablon jól működik, de most egyszerűen kezelheti a sablonhoz megadott paramétereket.
 
-## <a name="add-parameter-files"></a>Add parameter files
+## <a name="add-parameter-files"></a>Paraméter-fájlok hozzáadása
 
-Parameter files are JSON files with a structure that is similar to your template. In the file, you provide the parameter values you want to pass in during deployment.
+A paraméter fájljai a sablonhoz hasonló struktúrával rendelkező JSON-fájlok. A fájlban adja meg az üzembe helyezés során átadni kívánt paramétereket.
 
-In VS Code, create a new file with following content. Save the file with the name **azuredeploy.parameters.dev.json**.
+A VS Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. dev. JSON**néven.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-This file is your parameter file for the development environment. Notice that it uses Standard_LRS for the storage account, names resources with a **dev** prefix, and sets the **Environment** tag to **Dev**.
+Ez a fájl a fejlesztési környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_LRSt használ a Storage-fiókhoz, az erőforrásokat pedig **fejlesztői** előtaggal látja el, és beállítja a **környezeti** címkét a **dev**értékre.
 
-Again, create a new file with the following content. Save the file with the name **azuredeploy.parameters.prod.json**.
+Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. prod. JSON**néven.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-This file is your parameter file for the production environment. Notice that it uses Standard_GRS for the storage account, names resources with a **contoso** prefix, and sets the **Environment** tag to **Production**. In a real production environment, you would also want to use an app service with a SKU other than free, but we'll continue to use that SKU for this tutorial.
+Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_GRSt használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** **környezetben** . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Use either Azure CLI or Azure PowerShell to deploy the template.
+A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell.
 
-As a final test of your template, let's create two new resource groups. One for the dev environment and one for the production environment.
+A sablon utolsó tesztje hozzon létre két új erőforráscsoportot. Egyet a fejlesztői környezethez, egyet pedig az éles környezethez.
 
-First, we'll deploy to the dev environment.
+Először üzembe kell helyezni a fejlesztői környezetet.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az group deployment create \
 
 ---
 
-Now, we'll deploy to the production environment.
+Most üzembe helyezzük az éles környezetben.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -118,25 +118,25 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-You can verify the deployment by exploring the resource groups from the Azure portal.
+A központi telepítés ellenőrzéséhez tekintse meg az Azure Portal lévő erőforráscsoportokat.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. You see the two new resource groups you deployed in this tutorial.
-1. Select either resource group and view the deployed resources. Notice that they match the values you specified in your parameter file for that environment.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. Ekkor megjelenik az oktatóanyagban üzembe helyezett két új erőforráscsoport.
+1. Válassza ki az erőforráscsoportot, és tekintse meg a telepített erőforrásokat. Figyelje meg, hogy az adott környezethez tartozó paraméterben megadott értékeknek felelnek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. If you've completed this series, you have three resource groups to delete - myResourceGroup, myResourceGroupDev, and myResourceGroupProd.
+2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. Ha elvégezte ezt a sorozatot, három erőforráscsoport törölhető – myResourceGroup, myResourceGroupDev és myResourceGroupProd.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Congratulations, you've finished this introduction to deploying templates to Azure. Let us know if you have any comments and suggestions in the feedback section. Köszönjük!
+Gratulálunk, készen áll a sablonok Azure-ba történő üzembe helyezésének bevezetésére. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 
-You're ready to jump into more advanced concepts about templates. The next tutorial goes into more detail about using template reference documentation to help with defining resources to deploy.
+Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.
 
 > [!div class="nextstepaction"]
 > [A sablonreferencia felhasználása](resource-manager-tutorial-create-encrypted-storage-accounts.md)

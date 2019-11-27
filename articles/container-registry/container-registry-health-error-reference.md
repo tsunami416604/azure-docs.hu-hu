@@ -1,6 +1,6 @@
 ---
-title: Error reference for health checks
-description: Error codes and possible solutions to problems found by running the az acr check-health diagnostic command in Azure Container Registry
+title: Hiba az állapot-ellenőrzésekhez
+description: Hibakódok és lehetséges megoldások olyan problémákra, amelyek a Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
@@ -10,99 +10,99 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455036"
 ---
-# <a name="health-check-error-reference"></a>Health check error reference
+# <a name="health-check-error-reference"></a>Állapot-ellenőrzési hiba referenciája
 
-Following are details about error codes returned by the [az acr check-health][az-acr-check-health] command. For each error, possible solutions are listed.
+Az alábbi információk az az [ACR állapotfelmérés][az-acr-check-health] parancs által visszaadott hibakódokról találhatók. Minden hiba esetén a lehetséges megoldások szerepelnek a felsorolásban.
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
-This error means that Docker client for CLI could not be found. As a result, the following additional checks are not run: finding Docker version, evaluating Docker daemon status, and running a Docker pull command.
+Ez a hiba azt jelenti, hogy a CLI-hez készült Docker-ügyfél nem található. Ennek eredményeképpen a következő további ellenőrzések nem futnak: a Docker-verzió megkeresése, a Docker-démon állapotának kiértékelése és a Docker pull parancs futtatása.
 
-*Potential solutions*: Install Docker client; add Docker path to the system variables.
+*Lehetséges megoldások*: a Docker-ügyfél telepítése; adja hozzá a Docker elérési útját a rendszerváltozóhoz.
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-This error means that the Docker daemon status is unavailable, or that it could not be reached using the CLI. As a result, Docker operations (such as `docker login` and `docker pull`) are unavailable through the CLI.
+Ez a hiba azt jelenti, hogy a Docker-démon állapota nem érhető el, vagy nem érhető el a CLI használatával. Ennek eredményeképpen a Docker-műveletek (például a `docker login` és a `docker pull`) nem érhetők el a CLI-n keresztül.
 
-*Potential solutions*: Restart Docker daemon, or validate that it is properly installed.
+*Lehetséges megoldások*: indítsa újra a Docker-démont, vagy ellenőrizze, hogy megfelelően van-e telepítve.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-This error means that CLI was not able to run the command `docker --version`.
+Ez a hiba azt jelenti, hogy a CLI nem tudta futtatni a parancsot `docker --version`.
 
-*Potential solutions*: Try running the command manually, make sure you have the latest CLI version, and investigate the error message.
+*Lehetséges megoldások*: próbálja meg manuálisan futtatni a parancsot, győződjön meg arról, hogy rendelkezik a CLI legújabb verziójával, és vizsgálja meg a hibaüzenetet.
 
 ## <a name="docker_pull_error"></a>DOCKER_PULL_ERROR
 
-This error means that the CLI was not able to pull a sample image to your environment.
+Ez a hiba azt jelenti, hogy a CLI nem tudta lekérni a minta rendszerképét a környezetbe.
 
-*Potential solutions*: Validate that all components necessary to pull an image are running properly.
+*Lehetséges megoldások*: Ellenőrizze, hogy a rendszerképek lekéréséhez szükséges összes összetevő megfelelően fut-e.
 
 ## <a name="helm_command_error"></a>HELM_COMMAND_ERROR
 
-This error means that Helm client could not be found by the CLI, which precludes other Helm operations.
+Ez a hiba azt jelenti, hogy a parancssori ügyfél nem található a CLI-ben, ami kizárja a többi Helm-műveletet.
 
-*Potential solutions*: Verify that Helm client is installed, and that its path is added to the system environment variables.
+*Lehetséges megoldások*: Ellenőrizze, hogy a Helm-ügyfél telepítve van-e, és hogy az elérési útja hozzá van-e adva a rendszerkörnyezeti változókhoz.
 
 ## <a name="helm_version_error"></a>HELM_VERSION_ERROR
 
-This error means that the CLI was unable to determine the Helm version installed. This can happen if the Azure CLI version (or if the Helm version) being used is obsolete.
+Ez a hiba azt jelenti, hogy a CLI nem tudta meghatározni a Helm telepített verzióját. Ez akkor fordulhat elő, ha az Azure CLI verziója (vagy a Helm-verzió) elavult.
 
-*Potential solutions*: Update to the latest Azure CLI version or to the recommended Helm version; run the command manually and investigate the error message.
+*Lehetséges megoldások*: frissítés az Azure CLI legújabb verziójára vagy az ajánlott Helm-verzióra; futtassa manuálisan a parancsot, és vizsgálja meg a hibaüzenetet.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
-This error means that the DNS for the given registry login server was pinged but did not respond, which means it is unavailable. This can indicate some connectivity issues. Alternatively, the registry might not exist, the user might not have the permissions on the registry (to retrieve its login server properly), or the target registry is in a different cloud than the one used in the Azure CLI.
+Ez a hiba azt jelenti, hogy a megadott beállításjegyzékbeli bejelentkezési kiszolgáló DNS-je pingelésre került, de nem válaszolt, ami azt jelenti, hogy nem érhető el. Ez bizonyos kapcsolódási problémákra utalhat. Előfordulhat, hogy a beállításjegyzék nem létezik, előfordulhat, hogy a felhasználó nem rendelkezik a beállításjegyzék engedélyeivel (a bejelentkezési kiszolgáló megfelelő beolvasásához), vagy a cél beállításjegyzéke az Azure CLI-ben használttól eltérő felhőben található.
 
-*Potential solutions*: Validate connectivity; verify spelling of the registry, and that registry exists; verify that the user has the right permissions on it and that the registry's cloud is the same that is used in the Azure CLI.
+*Lehetséges megoldások*: kapcsolat ellenőrzése; Ellenőrizze a beállításjegyzék helyesírását, és hogy létezik-e a beállításjegyzék. Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel, és hogy a beállításjegyzék felhője megegyezik-e az Azure CLI-vel.
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-This error means that the challenge endpoint for the given registry responded with a 403 Forbidden HTTP status. This error means that users don't have access to the registry, most likely because of a virtual network configuration. To see the currently configured firewall rules, run `az acr show --query networkRuleSet --name <registry>`.
+Ez a hiba azt jelenti, hogy a megadott beállításjegyzékhez tartozó kérdés-végpont 403 Tiltott HTTP-állapottal válaszolt. Ez a hiba azt jelenti, hogy a felhasználók nem férhetnek hozzá a beállításjegyzékhez, valószínűleg egy virtuális hálózati konfiguráció miatt. A jelenleg konfigurált tűzfalszabályok megtekintéséhez futtassa `az acr show --query networkRuleSet --name <registry>`.
 
-*Potential solutions*: Remove virtual network rules, or add the current client IP address to the allowed list.
+*Lehetséges megoldások*: távolítsa el a virtuális hálózati szabályokat, vagy adja hozzá az aktuális ügyfél IP-címét az engedélyezett listához.
 
 ## <a name="connectivity_challenge_error"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-This error means that the challenge endpoint of the target registry did not issue a challenge.
+Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék kérdéses végpontja nem adott meg kihívást.
 
-*Potential solutions*: Try again after some time. If the error persists, open an issue at https://aka.ms/acr/issues.
+*Lehetséges megoldások*: némi idő elteltével próbálkozzon újra. Ha a hiba továbbra is fennáll, nyisson meg egy problémát a következő helyen: https://aka.ms/acr/issues.
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-This error means that the challenge endpoint of the target registry issued a challenge, but the registry does not support Azure Active Directory authentication.
+Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék Challenge végpontja kiadta a problémát, de a beállításjegyzék nem támogatja Azure Active Directory hitelesítést.
 
-*Potential solutions*: Try a different way to authenticate, for example, with admin credentials. If users need  to authenticate using Azure Active Directory, open an issue at https://aka.ms/acr/issues.
+*Lehetséges megoldások*: próbáljon ki egy másik módszert a hitelesítésre, például a rendszergazdai hitelesítő adatokkal. Ha a felhasználóknak Azure Active Directory használatával kell hitelesítést végezniük, nyisson meg egy problémát a következő helyen: https://aka.ms/acr/issues.
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-This error means that the registry login server did not respond with a refresh token, so access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the  Azure CLI are stale.
+Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt a frissítési tokenre, ezért a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-This error means that the registry login server did not respond with an access token, so that the access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the Azure CLI are stale.
+Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt egy hozzáférési jogkivonatra, így a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
-This error means that the client was unable to establish a secure connection to the container registry. This error generally occurs if you're running or using a proxy server.
+Ez a hiba azt jelenti, hogy az ügyfél nem tudott biztonságos kapcsolatot létesíteni a tároló beállításjegyzékével. Ez a hiba általában akkor fordul elő, ha proxykiszolgálót futtat vagy használ.
 
-*Potential solutions*: More information on working behind a proxy can be [found here](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Lehetséges megoldások*: [itt](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)találhat további információt a proxy mögötti használatáról.
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
-This error means that the CLI was unable to find the login server of the given registry, and no default suffix was found for the current cloud. This error can occur if the registry does not exist, if the user does not have the right permissions on the registry, if the registry's cloud and the current Azure CLI cloud do not match, or if the Azure CLI version is obsolete.
+Ez a hiba azt jelenti, hogy a CLI nem találta meg az adott beállításjegyzék bejelentkezési kiszolgálóját, és nem található alapértelmezett utótag az aktuális felhőhöz. Ez a hiba akkor fordulhat elő, ha a beállításjegyzék nem létezik, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, ha a beállításjegyzék felhője és az aktuális Azure CLI-felhő nem egyezik, vagy ha az Azure CLI verziója elavult.
 
-*Potential solutions*: Verify that the spelling is correct and that the registry exists; verify that user has the right permissions on the registry, and that the clouds of the registry and the CLI environment match; update Azure CLI to the latest version.
+*Lehetséges megoldások*: Ellenőrizze, hogy helyesek-e a helyesírás, és létezik-e a beállításjegyzék. Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben, valamint hogy a beállításjegyzék és a CLI-környezet is egyezik-e a felhővel. frissítse az Azure CLI-t a legújabb verzióra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-For options to check the health of a registry, see [Check the health of an Azure container registry](container-registry-check-health.md).
+A beállításjegyzék állapotának vizsgálatához tekintse meg [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakört.
 
-See the [FAQ](container-registry-faq.md) for frequently asked questions and other known issues about Azure Container Registry.
+Tekintse [meg a](container-registry-faq.md) gyakori kérdések és a Azure Container Registry kapcsolatos egyéb ismert problémák gyakori kérdéseit.
 
 
 

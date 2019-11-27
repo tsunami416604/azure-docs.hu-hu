@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Python
+title: Szándék beolvasása a REST-hívással a Pythonban
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,17 +19,17 @@ ms.locfileid: "74414566"
 
 * [Python 3.6](https://www.python.org/downloads/) vagy újabb.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Nyilvános alkalmazás azonosítója: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent-from-the-prediction-endpoint"></a>Get intent from the prediction endpoint
+## <a name="get-intent-from-the-prediction-endpoint"></a>Szándék beszerzése az előrejelzési végpontból
 
-Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+A Python segítségével lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
-1. Copy this code snippet into a file called `predict.py`:
+1. Másolja a kódrészletet egy `predict.py`nevű fájlba:
 
     ```python
     ########### Python 3.6 #############
@@ -62,30 +62,30 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
         print(f'{e}')
     ```
 
-1. Replace the following values:
+1. Cserélje le a következő értékeket:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Például: `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` az alapszintű kulccsal.
+    * `YOUR-ENDPOINT` a végponttal. Például: `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `requests` dependency. This is used to make HTTP requests:
+1. Telepítse a `requests` függőséget. A HTTP-kérések elvégzésére szolgál:
 
     ```console
     pip install requests
     ```
 
-1. Run your script with this console command:
+1. Futtassa a szkriptet ezzel a konzol paranccsal:
 
     ```console
     python predict.py
     ``` 
 
-1. Review the prediction response, which is returned as JSON:
+1. Tekintse át az előrejelzési választ, amely JSON-ként lesz visszaadva:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Here's the JSON response formatted for readability: 
+    Az olvashatóság érdekében formázott JSON-Válasz: 
 
     ```JSON
     {
@@ -134,9 +134,9 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you are finished with this quickstart, delete the file from the file system. 
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)

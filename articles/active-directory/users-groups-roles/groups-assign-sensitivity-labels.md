@@ -1,6 +1,6 @@
 ---
-title: Assign sensitivity labels to groups - Azure AD | Microsoft Docs
-description: How to create membership rules to automatically populate groups, and a rule reference.
+title: Érzékenységi címkék társítása csoportokhoz – Azure AD | Microsoft Docs
+description: Tagsági szabályok létrehozása a csoportok automatikus feltöltéséhez és a szabályra vonatkozó hivatkozások létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,25 +21,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404808"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Assign sensitivity labels to Office 365 groups in Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
 
-Azure Active Directory (Azure AD) supports applying sensitivity labels published by the [Microsoft 365 compliance center](https://sip.protection.office.com/homepage) to Office 365 groups. Sensitivity labels apply to group across services like Outlook, Microsoft Teams, and SharePoint. This feature is currently in public preview.
+Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
 > [!IMPORTANT]
-> Using Azure AD sensitivity labels for Office 365 groups requires an Azure Active Directory Premium P1 license.
+> Az Office 365-csoportok Azure AD-érzékenységi címkéjének használatához prémium szintű Azure Active Directory P1-licenc szükséges.
 
-## <a name="group-settings-controlled-by-labels"></a>Group settings controlled by labels
+## <a name="group-settings-controlled-by-labels"></a>Címkék által vezérelt csoportok beállításai
 
-There are two settings that can be associated with a label:
+A címkéhez két beállítás társítható:
 
-- **Privacy**: Admins can associate a privacy setting with the label to control whether a group is public or private.
-- **Guest access**: Admins can enforce the guest policy for all groups that have the label assigned. This policy specifies whether guests can be added as members or not. If the guest policy is configured for a label, any groups that you assign the label to won't allow the AllowToAddGuests setting to be changed.
+- **Adatvédelem**: a rendszergazdák az adatvédelmi beállításokat a címkével társítva megadhatják, hogy a csoport nyilvános vagy magánjellegű.
+- **Vendég hozzáférés**: a rendszergazdák az összes olyan csoportra kihasználhatják a vendég házirendet, amelyhez a címke hozzá van rendelve. Ez a házirend határozza meg, hogy a vendégek hozzáadhatók-e tagként vagy sem. Ha a vendég házirend címkére van konfigurálva, akkor a címkét hozzárendelő csoportok nem teszik lehetővé a AllowToAddGuests beállítás módosítását.
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Enable sensitivity label support in PowerShell
+## <a name="enable-sensitivity-label-support-in-powershell"></a>Az érzékenységi címke támogatásának engedélyezése a PowerShellben
 
-To apply published labels to groups, you must first enable the feature. These steps enable the feature in Azure AD.
+A közzétett címkék csoportokba való alkalmazásához először engedélyeznie kell a szolgáltatást. Ezekkel a lépésekkel engedélyezheti az Azure AD funkcióját.
 
-1. Open a Windows PowerShell window on your computer. You can open it without elevated privileges.
+1. Nyisson meg egy Windows PowerShell-ablakot a számítógépen. Emelt szintű jogosultságok nélkül is megnyithatja.
 1. Futtassa a következő parancsokat a parancsmagok futtatásának előkészítéséhez.
 
     ```PowerShell
@@ -47,127 +47,127 @@ To apply published labels to groups, you must first enable the feature. These st
     Connect-AzureAD
     ```
 
-    In the **Sign in to your account** page, enter your admin account and password to connect you to your service, and select **Sign in**.
-1. Fetch the current group settings for the Azure AD organization.
+    A **Bejelentkezés a fiókba** lapon adja meg a rendszergazdai fiókját és jelszavát a szolgáltatáshoz való kapcsolódáshoz, majd válassza a **Bejelentkezés**lehetőséget.
+1. Az Azure AD-szervezet aktuális csoportjának beállításainak beolvasása.
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > If no group settings have been created for this Azure AD organization, you must first create the settings. Follow the steps in [Azure Active Directory cmdlets for configuring group settings](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) to create group settings for this Azure AD organization.
+    > Ha nem hoztak létre csoportházirend-beállításokat ehhez az Azure AD-szervezethez, először létre kell hoznia a beállításokat. Az Azure AD-szervezethez tartozó csoportházirend-beállítások létrehozásához kövesse a [Azure Active Directory parancsmagok](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) című szakasz lépéseit.
 
-1. Next, display the current group settings.
+1. Ezután jelenítse meg az aktuális csoport beállításait.
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Then enable the feature:
+1. Ezután engedélyezze a szolgáltatást:
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Then save the changes and apply the settings:
+1. Ezután mentse a módosításokat, és alkalmazza a beállításokat:
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Ennyi az egész. You've enabled the feature and you can apply published labels to groups.
+Ennyi az egész. Engedélyezte a funkciót, és közzétett címkéket alkalmazhat a csoportokra.
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Assign a label to a new group in Azure portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Címke kiosztása egy új csoportba Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com).
-1. Select **Groups**, and then select **New group**.
-1. On the **New Group** page, select **Office 365**, and then fill out the required information for the new group and select a sensitivity label from the list.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com).
+1. Válassza a **csoportok**lehetőséget, majd válassza az **új csoport**lehetőséget.
+1. Az **új csoport** lapon válassza az **Office 365**lehetőséget, majd adja meg az új csoport szükséges adatait, és válasszon ki egy érzékenységi címkét a listából.
 
-   ![Assign a sensitivity label in the New groups page](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![Érzékenységi címke kiosztása az új csoportok lapon](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Save your changes and select **Create**.
+1. Mentse a módosításokat, és válassza a **Létrehozás**lehetőséget.
 
-Your group is created and the policies associated with the selected label are then automatically enforced.
+A rendszer létrehozza a csoportot, és automatikusan kényszeríti a kiválasztott címkéhez társított házirendeket.
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Assign a label to an existing group in Azure portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Címke kiosztása meglévő csoporthoz Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a sensitivity label from the list.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai vagy csoportos rendszergazdai fiókkal, vagy egy csoport tulajdonosaként.
+1. Válassza a **csoportok**lehetőséget.
+1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
+1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy érzékenységi címkét a listából.
 
-   ![Assign a sensitivity label on the overview page for a group](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![Érzékenységi címke kiosztása egy csoport áttekintés lapján](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. Select **Save** to save your changes.
+1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Remove a label from an existing group in Azure portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Címke eltávolítása meglévő csoportból Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to remove the label from.
-1. On the **Group** page, select **Properties**.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai vagy csoportos rendszergazdai fiókkal, vagy egy csoport tulajdonosaként.
+1. Válassza a **csoportok**lehetőséget.
+1. A **minden csoport** lapon válassza ki azt a csoportot, amelyből el szeretné távolítani a címkét.
+1. A **csoport** lapon válassza a **Tulajdonságok**lehetőséget.
 1. Válassza az **Eltávolítás** lehetőséget.
-1. Select **Save** to apply your changes.
+1. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 app support for sensitivity labels
+## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365-alkalmazások támogatása az érzékenységi címkékhez
 
-The following Office 365 apps and services support the sensitivity labels in this preview:
+Az alábbi Office 365-alkalmazások és-szolgáltatások támogatják az előnézet érzékenységi címkéit:
 
-- Azure AD admin center
-- Microsoft 365 compliance center
+- Azure AD felügyeleti központ
+- Microsoft 365 megfelelőségi központ
 - SharePoint
-- Outlook on the web
-- Teams
-- SharePoint admin center
+- Webes Outlook
+- Csapatok
+- SharePoint felügyeleti központ
 
-For more information about Office 365 apps support, see [Office 365 support for sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
-## <a name="using-classic-azure-ad-classifications"></a>Using classic Azure AD classifications
+## <a name="using-classic-azure-ad-classifications"></a>Klasszikus Azure AD-besorolások használata
 
-After you enable this feature, Office 365 no longer supports the “classic” classifications for new groups. Classic classifications are the old classifications you set up by defining values for the `ClassificationList` setting in Azure AD PowerShell. When this feature is enabled, those classifications will not be applied to groups.
+A szolgáltatás engedélyezése után az Office 365 már nem támogatja az új csoportok "klasszikus" besorolását. A klasszikus besorolások a régi besorolások, amelyet az Azure AD PowerShell `ClassificationList` beállításának értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
 
-## <a name="troubleshooting-issues"></a>Troubleshooting issues
+## <a name="troubleshooting-issues"></a>Hibaelhárítási problémák
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Sensitivity labels are not available for assignment on a group
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Az érzékenységi címkék nem érhetők el a csoporton való hozzárendeléshez
 
-The sensitivity label option is only displayed for groups when all the following conditions are met:
+Az érzékenységi címke beállítás csak akkor jelenik meg a csoportok esetében, ha a következő feltételek teljesülnek:
 
-1. Labels are published in the Microsoft 365 Compliance Center for this tenant.
-1. The feature is enabled, EnableMIPLabels is set to True in PowerShell.
-1. The group is an Office 365 group.
-1. The tenant has an active Azure Active Directory Premium P1 license.
-1. The current signed-in user has access to published labels.
-1. The current signed-in user has sufficient privileges to assign labels. The user must be either a Global Administrator, Group Administrator, or the group owner.
-1. The current signed-in user has an Office 365 license assigned. For more information about license requirements, see [Sensitivity labels in Office apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
+1. A címkék a Microsoft 365 megfelelőségi központban jelennek meg a bérlő számára.
+1. A szolgáltatás engedélyezve van, a EnableMIPLabels True értékre van állítva a PowerShellben.
+1. A csoport egy Office 365-csoport.
+1. A bérlő aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
+1. A jelenleg bejelentkezett felhasználó hozzáférhet a közzétett címkékhez.
+1. A jelenlegi bejelentkezett felhasználónak megfelelő jogosultsága van a címkék hozzárendeléséhez. A felhasználónak globális rendszergazdának, csoport rendszergazdának vagy a csoport tulajdonosának kell lennie.
+1. A jelenlegi bejelentkezett felhasználónak van egy Office 365-licence rendelve. A licencekre vonatkozó követelményekkel kapcsolatos további információkért lásd: [az Office-alkalmazások érzékenységi címkéi](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
-Please make sure all the conditions are met in order to assign labels to a group.
+Győződjön meg arról, hogy az összes feltétel teljesül, hogy címkéket rendeljen egy csoporthoz.
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>The label I want to assign is not in the list
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>A hozzárendelni kívánt címke nem szerepel a listában
 
-If the label you are looking for is not in the list, this could be the case for one of the following reasons:
+Ha a keresett címke nem szerepel a listán, akkor ez a következő okok egyike lehet:
 
-- The label might not be published in the Microsoft 365 Compliance Center. This could also apply to labels that are no longer published. Please check with your administrator for more information.
-- The label may be published, however, it is not available to the user that is signed-in. Please check with your administrator for more information on how to get access to the label.
+- Előfordulhat, hogy a címke nem kerül közzétételre a Microsoft 365 megfelelőségi központban. Ez a már nem közzétett címkékre is alkalmazható. További információért forduljon a rendszergazdához.
+- Előfordulhat, hogy a címke közzé van téve, de nem érhető el a bejelentkezett felhasználó számára. Kérjen segítséget a rendszergazdától a címke elérésének módjával kapcsolatban.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>How can I change the label on a group?
+### <a name="how-can-i-change-the-label-on-a-group"></a>Hogyan változtathatom meg egy csoport címkéjét?
 
-Labels can be swapped at any time using the same steps as assigning a label to an existing group, as follows:
+A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják, mint a címkék egy meglévő csoportba való hozzárendelésével, az alábbiak szerint:
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global or Group administrator account or as group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a new sensitivity label from the list.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális vagy csoportos rendszergazdai fiókkal vagy a csoport tulajdonosaként.
+1. Válassza a **csoportok**lehetőséget.
+1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
+1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
 1. Kattintson a **Mentés** gombra.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Group setting changes to published labels are not updated on the groups
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 
-As a best practice, we don't recommend that you change group settings for a label after the label is applied to groups. When you make changes to group settings associated with published labels in [Microsoft 365 compliance center](https://sip.protection.office.com/homepage), those policy changes aren't automatically applied on the impacted groups.
+Ajánlott eljárásként Azt javasoljuk, hogy a címke beállításait a csoportokra való alkalmazás után módosítsa a címkékre. Ha a [Microsoft 365 megfelelőségi központban](https://sip.protection.office.com/homepage)közzétett címkékhez társított csoportházirend-beállításokat módosítja, a rendszer ezeket a házirend-módosításokat nem alkalmazza automatikusan az érintett csoportokra.
 
-If you must make a change, use an [Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) to manually apply updates to the impacted groups. This method makes sure that all existing groups enforce the new setting.
+Ha módosítania kell a módosításokat, az [Azure ad PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) manuálisan alkalmazhatja az érintett csoportok frissítéseit. Ezzel a módszerrel gondoskodhat arról, hogy minden meglévő csoport érvényesítse az új beállítást.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Use sensitivity labels with Microsoft Teams, Office 365 groups, and SharePoint sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Update groups after label policy change manually with Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [Érzékenységi címkék használata a Microsoft Teams, az Office 365-csoportok és a SharePoint-webhelyek használatával](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Csoportok frissítése a címkézési házirend módosítása után manuálisan az Azure AD PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [A csoport beállításainak szerkesztése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Csoportok kezelése PowerShell-parancsokkal](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

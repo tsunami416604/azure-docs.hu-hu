@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277981"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539351"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -87,6 +87,12 @@ A " *C* " és a "End *E* flow" állapot esetén a bájt és a csomagok száma az
 Az alábbi szöveg egy folyamat naplóját szemlélteti. Ahogy láthatja, több rekord is van, amelyek követik az előző szakaszban ismertetett tulajdonságokat.
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG-folyamatok naplózási szempontjai
+
+A **Storage-fiókkal kapcsolatos megfontolások**: 
+
+1. Hely: a használt Storage-fióknak ugyanabban a régióban kell lennie, mint a NSG.
+2. Nincs tűzfal: a NSG-adatforgalmi naplók nem [megbízható Microsoft-szolgáltatásként készültek az Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)-hoz. Lásd: [hogyan a tűzfal letiltása a Storage-fiókomban?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) a tűzfal letiltásához. 
+3. Nincsenek szolgáltatási végpontok: a jelenlegi korlátozás miatt a naplókat csak a Storage-fiókok számára lehet közvetlenül kiadni, és nem a szolgáltatási végpontokon keresztül. Lásd: [Hogyan NSG flow-naplók használata szolgáltatási végpontokkal?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) segítség a meglévő szolgáltatási végpontok eltávolításához.
 
 **NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Olyan helyzetekben, ahol több NSG van használatban, javasoljuk, hogy a NSG flow naplózása engedélyezve legyen minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [forgalom kiértékelésének módját](../virtual-network/security-overview.md#how-traffic-is-evaluated) . 
 

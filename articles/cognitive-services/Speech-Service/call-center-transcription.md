@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075869"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538174"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -95,7 +95,6 @@ Egy tipikus megoldás ezeket a szolgáltatásokat használja:
 - A beszédfelismerési szolgáltatás a beszédfelismerés szövegének átírására szolgál. A Batch-átírási API használatához szabványos előfizetés (S0) szükséges a beszédfelismerési szolgáltatáshoz. Az ingyenes előfizetések (F0-EK) nem fognak működni.
 - Az [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás a telefonos és a Batch-átírási API által visszaadott átiratok tárolására szolgál. Ennek a Storage-fióknak az értesítéseket kell használnia, különösen az új fájlok hozzáadásakor. Ezek az értesítések az átírási folyamat elindítására szolgálnak.
 - A [Azure functions](https://docs.microsoft.com/azure/azure-functions/) a közös hozzáférésű aláírások (SAS) URI-azonosítójának létrehozására szolgál az egyes rögzítésekhez, és a http post-kérés elindításával indíthatja el az átírást. Emellett Azure Functions a Batch-átírási API-val történő átírások beolvasására és törlésére vonatkozó kérések létrehozására szolgál.
-- A [Webhookok](webhooks.md) az átírások elvégzése után kapják meg az értesítéseket.
 
 Belsőleg a fenti technológiákat használjuk a Microsoft ügyfél-hívások kötegelt módban történő támogatásához.
 ![batch-architektúra](media/scenarios/call-center-batch-pipeline.png)
@@ -140,12 +139,12 @@ A mintakód a GitHubon érhető el a beszédfelismerési szolgáltatás egyes fu
 ## <a name="reference-docs"></a>Segédanyagok
 
 - [Beszéd SDK](speech-sdk-reference.md)
-- [Speech Devices SDK](speech-devices-sdk.md)
+- [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)
 - [REST API: beszéd – szöveg](rest-speech-to-text.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 - [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)

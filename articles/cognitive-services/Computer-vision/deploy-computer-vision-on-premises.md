@@ -1,7 +1,7 @@
 ---
-title: Use Computer Vision container with Kubernetes and Helm
+title: Computer Vision tároló használata a Kubernetes és a Helm használatával
 titleSuffix: Azure Cognitive Services
-description: Deploy the Computer Vision container to an Azure Container Instance, and test it in a web browser.
+description: Telepítse az Computer Vision tárolót egy Azure Container Instanceba, és tesztelje egy böngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -17,40 +17,40 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383784"
 ---
-# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Use Computer Vision container with Kubernetes and Helm
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision tároló használata a Kubernetes és a Helm használatával
 
-One option to manage your Computer Vision containers on-premises is to use Kubernetes and Helm. Using Kubernetes and Helm to define a Computer Vision container image, we'll create a Kubernetes package. This package will be deployed to a Kubernetes cluster on-premises. Finally, we'll explore how to test the deployed services. For more information about running Docker containers without Kubernetes orchestration, see [install and run Computer Vision containers](computer-vision-how-to-install-containers.md).
+Az Computer Vision tárolók helyszíni kezelésének egyik lehetősége a Kubernetes és a Helm használata. Egy Computer Vision-tároló rendszerképének definiálásához a Kubernetes és a Helm használatával hozzunk létre egy Kubernetes-csomagot. Ez a csomag egy helyszíni Kubernetes-fürtön lesz üzembe helyezve. Végezetül megismerheti az üzembe helyezett szolgáltatások tesztelésének módját. További információ a Docker-tárolók Kubernetes-előkészítés nélküli futtatásáról: [Computer Vision tárolók telepítése és futtatása](computer-vision-how-to-install-containers.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The following prerequisites before using Computer Vision containers on-premises:
+Computer Vision tárolók helyszíni használata előtt a következő előfeltételek szükségesek:
 
-|Szükséges|Rendeltetés|
+|Kötelező|Cél|
 |--|--|
-| Azure Account | Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][free-azure-account] a virtuális gép létrehozásának megkezdése előtt. |
-| Kubernetes CLI | The [Kubernetes CLI][kubernetes-cli] is required for managing the shared credentials from the container registry. Kubernetes is also needed before Helm, which is the Kubernetes package manager. |
-| Helm CLI | As part of the [Helm CLI][helm-install] install, you'll also need to initialize Helm, which will install [Tiller][tiller-install]. |
-| Computer Vision resource |In order to use the container, you must have:<br><br>An Azure **Computer Vision** resource and the associated API key the endpoint URI. Both values are available on the Overview and Keys pages for the resource and are required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page|
+| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][free-azure-account] a virtuális gép létrehozásának megkezdése előtt. |
+| Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
+| Helm parancssori felület | A [Helm CLI][helm-install] telepítésének részeként el kell végeznie a Helm inicializálását is, amely a [kormányrúdat][tiller-install]fogja telepíteni. |
+| Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}** : a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : az **Áttekintés** lapon megadott végpont|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>The host computer
+### <a name="the-host-computer"></a>A gazdaszámítógép
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
+### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="connect-to-the-kubernetes-cluster"></a>Connect to the Kubernetes cluster
+## <a name="connect-to-the-kubernetes-cluster"></a>Kapcsolódás a Kubernetes-fürthöz
 
-The host computer is expected to have an available Kubernetes cluster. See this tutorial on [deploying a Kubernetes cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) for a conceptual understanding of how to deploy a Kubernetes cluster to a host computer.
+A gazdaszámítógépnek várhatóan rendelkezésre áll egy Kubernetes-fürt. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Kubernetes-fürtöt](../../aks/tutorial-kubernetes-deploy-cluster.md) a Kubernetes-fürtök gazdagépre történő központi telepítésének fogalmi megismeréséhez.
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sharing Docker credentials with the Kubernetes cluster
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-hitelesítő adatok megosztása a Kubernetes-fürttel
 
-To allow the Kubernetes cluster to `docker pull` the configured image(s) from the `containerpreview.azurecr.io` container registry, you need to transfer the docker credentials into the cluster. Execute the [`kubectl create`][kubectl-create] command below to create a *docker-registry secret* based on the credentials provided from the container registry access prerequisite.
+Annak engedélyezéséhez, hogy a Kubernetes-fürt `docker pull` a konfigurált rendszerkép (ek) et a `containerpreview.azurecr.io` Container registryből, át kell vinnie a Docker hitelesítő adatait a fürtbe. Az alábbi [`kubectl create`][kubectl-create] -parancs végrehajtásával hozzon létre egy *Docker-beállításjegyzékbeli titkot* a tároló beállításjegyzék-hozzáférésének előfeltétele alapján megadott hitelesítő adatok alapján.
 
-From your command-line interface of choice, run the following command. Be sure to replace the `<username>`, `<password>`, and `<email-address>` with the container registry credentials.
+A választható parancssori felületen futtassa a következő parancsot. A tároló beállításjegyzékbeli hitelesítő adataival ne felejtse el lecserélni a `<username>`, `<password>`és `<email-address>`.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,35 +61,35 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> If you already have access to the `containerpreview.azurecr.io` container registry, you could create a Kubernetes secret using the generic flag instead. Consider the following command that executes against your Docker configuration JSON.
+> Ha már rendelkezik hozzáféréssel a `containerpreview.azurecr.io` Container registryhez, létrehozhat egy Kubernetes-titkot az általános jelző használatával. Vegye figyelembe a következő parancsot, amely a Docker-konfiguráció JSON-fájlján fut.
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-The following output is printed to the console when the secret has been successfully created.
+A rendszer a következő kimenetet nyomtatja ki a konzolra, amikor a titkos kulcs sikeresen létrejött.
 
 ```console
 secret "containerpreview" created
 ```
 
-To verify that the secret has been created, execute the [`kubectl get`][kubectl-get] with the `secrets` flag.
+Annak ellenőrzéséhez, hogy létrejött-e a titkos kulcs, hajtsa végre a [`kubectl get`][kubectl-get] a `secrets` jelzővel.
 
 ```console
 kubectl get secrets
 ```
 
-Executing the `kubectl get secrets` prints all the configured secrets.
+A `kubectl get secrets` végrehajtásával kinyomtatja az összes beállított titkot.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
 containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>Configure Helm chart values for deployment
+## <a name="configure-helm-chart-values-for-deployment"></a>A Helm-diagram értékeinek konfigurálása üzembe helyezéshez
 
-Start by creating a folder named *read*, then paste the following YAML content into a new file named *Chart.yml*.
+Először hozzon létre egy *READ*nevű mappát, majd illessze be az alábbi YAML-tartalmat egy *diagram. YML*nevű új fájlba.
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-To configure the Helm chart default values, copy and paste the following YAML into a file named `values.yaml`. Replace the `# {ENDPOINT_URI}` and `# {API_KEY}` comments with your own values.
+A Helm diagram alapértelmezett értékeinek konfigurálásához másolja és illessze be a következő YAML egy `values.yaml`nevű fájlba. Cserélje le a `# {ENDPOINT_URI}` és `# {API_KEY}` megjegyzéseket a saját értékeire.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -118,11 +118,11 @@ read:
 ```
 
 > [!IMPORTANT]
-> If the `billing` and `apikey` values are not provided, the services will expire after 15 min. Likewise, verification will fail as the services will not be available.
+> Ha a `billing` és a `apikey` értékek nincsenek megadva, a szolgáltatások 15 perc után lejárnak. Hasonlóképpen, az ellenőrzés sikertelen lesz, mert a szolgáltatások nem lesznek elérhetők.
 
-Create a *templates* folder under the *read* directory. Copy and paste the following YAML into a file named `deployment.yaml`. The `deployment.yaml` file will serve as a Helm template.
+Hozzon létre egy *templates* mappát az *olvasási* könyvtár alatt. Másolja és illessze be a következő YAML egy `deployment.yaml`nevű fájlba. A `deployment.yaml`-fájl Helm-sablonként fog szolgálni.
 
-> Templates generate manifest files, which are YAML-formatted resource descriptions that Kubernetes can understand. [- Helm Chart Template Guide][chart-template-guide]
+> A sablonok jegyzékfájlokat hoznak, amelyek a Kubernetes által értelmezhető YAML formázottak. [– Helm diagram sablonjának útmutatója][chart-template-guide]
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -163,25 +163,25 @@ spec:
     app: read-app
 ```
 
-The template specifies a load balancer service and the deployment of your container/image for Read.
+A sablon megadja a terheléselosztó szolgáltatást és a tároló/rendszerkép üzembe helyezését olvasásra.
 
-### <a name="the-kubernetes-package-helm-chart"></a>The Kubernetes package (Helm chart)
+### <a name="the-kubernetes-package-helm-chart"></a>A Kubernetes-csomag (Helm-diagram)
 
-The *Helm chart* contains the configuration of which docker image(s) to pull from the `containerpreview.azurecr.io` container registry.
+A *Helm diagram* tartalmazza azt a konfigurációt, amely alapján a Docker-rendszerképek lehívhatók a `containerpreview.azurecr.io` tároló beállításjegyzékből.
 
-> A [Helm chart][helm-charts] is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
+> A [Helm diagram][helm-charts] a Kubernetes-erőforrások kapcsolódó készletét leíró fájlok gyűjteménye. Egy diagramot felhasználhat egy egyszerű, például egy Memcached vagy egy összetett Pod üzembe helyezésére, például egy teljes webalkalmazás-verem használatára HTTP-kiszolgálók, adatbázisok, gyorsítótárak és így tovább.
 
-The provided *Helm charts* pull the docker images of the Computer Vision Service, and the corresponding service from the `containerpreview.azurecr.io` container registry.
+A megadott *Helm-diagramok* lekérik a Computer Vision szolgáltatás Docker-rendszerképeit és a megfelelő szolgáltatást a `containerpreview.azurecr.io` tároló beállításjegyzékből.
 
-## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Install the Helm chart on the Kubernetes cluster
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>A Helm diagram telepítése a Kubernetes-fürtön
 
-To install the *helm chart*, we'll need to execute the [`helm install`][helm-install-cmd] command. Ensure to execute the install command from the directory above the `read` folder.
+A *Helm diagram*telepítéséhez végre kell hajtania a [`helm install`][helm-install-cmd] parancsot. Győződjön meg arról, hogy az install parancsot a `read` mappa felett található könyvtárból hajtja végre.
 
 ```console
 helm install read --name read
 ```
 
-Here is an example output you might expect to see from a successful install execution:
+Az alábbi példa egy olyan kimenetet mutat be, amely sikeres telepítés után várható:
 
 ```console
 NAME: read
@@ -203,13 +203,13 @@ NAME    READY  UP-TO-DATE  AVAILABLE  AGE
 read    0/1    1           0          0s
 ```
 
-The Kubernetes deployment can take over several minutes to complete. To confirm that both pods and services are properly deployed and available, execute the following command:
+A Kubernetes üzembe helyezése több percet is igénybe vehet. A következő parancs végrehajtásával ellenőrizheti, hogy a hüvelyek és a szolgáltatások megfelelően vannak-e telepítve és elérhetők:
 
 ```console
 kubectl get all
 ```
 
-You should expect to see something similar to the following output:
+A következő kimenethez hasonlónak kell megjelennie:
 
 ```console
 kubectl get all
@@ -232,10 +232,10 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 ## <a name="next-steps"></a>Következő lépések
 
-For more details on installing applications with Helm in Azure Kubernetes Service (AKS), [visit here][installing-helm-apps-in-aks].
+Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való telepítésével kapcsolatos további információkért [látogasson el ide][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Cognitive Services Containers][cog-svcs-containers]
+> [Cognitive Services tárolók][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

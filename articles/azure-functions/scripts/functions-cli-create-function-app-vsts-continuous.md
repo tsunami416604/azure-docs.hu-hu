@@ -1,31 +1,24 @@
 ---
-title: Az Azure DevOpsból üzembe helyezett függvény létrehozása az Azure-ban | Microsoft Docs
+title: Function-alkalmazás létrehozása DevOps üzembe helyezéssel – Azure CLI
 description: Függvényalkalmazás létrehozása és függvénykód üzembe helyezése az Azure DevOpsból
-services: functions
-keywords: ''
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
-ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 7fe68090773902248dbcdd63fbbdbbdb06b307cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fa11d5cd81d93b89b6e8ae63fd491842be78633
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325558"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532788"
 ---
-# <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>Függvényalkalmazás létrehozása és függvénykód üzembe helyezése az Azure DevOpsból
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure-DevOps üzembe helyezett függvény létrehozása az Azure-ban
 
-Ez a témakör bemutatja, hogyan hozhat létre az Azure Functions segítségével egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) függvényalkalmazást a [használatalapú csomag](../functions-scale.md#consumption-plan) segítségével. A függvényalkalmazást, amely az Ön függvényeinek tárolója, folyamatosan üzembe helyezzük az Azure DevOps-adattárból. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+Ez a témakör bemutatja, hogyan hozhat létre az Azure Functions segítségével egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) függvényalkalmazást a [használatalapú csomag](../functions-scale.md#consumption-plan) segítségével. A functions alkalmazás, amely a függvények tárolója, folyamatosan üzembe helyezhető egy Azure DevOps adattárból. 
 
 A témakör teljesítéséhez a következőkre lesz szüksége:
 
 * Egy Azure DevOps-adattárra, amely tartalmazza a függvényalkalmazás projektjét, és amelyhez Ön rendszergazdai engedélyekkel rendelkezik.
-* Egy [személyes hozzáférési jogkivonatra (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) az Azure DevOps-adattár eléréséhez.
+* Egy [személyes hozzáférési jogkivonatra (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) az Azure DevOps-adattár eléréséhez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,13 +40,13 @@ A szkript a következő parancsokat használja egy erőforráscsoport, tárfiók
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatalapú csomagban](../functions-scale.md#consumption-plan). |
-| [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Társít egy függvényalkalmazást egy Git- vagy Mercurial-adattárhoz. |
+| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatalapú csomagban](../functions-scale.md#consumption-plan). |
+| [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Társít egy függvényalkalmazást egy Git- vagy Mercurial-adattárhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

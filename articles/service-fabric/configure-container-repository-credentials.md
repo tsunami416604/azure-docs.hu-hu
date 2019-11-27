@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - Configure container repository credentials | Microsoft Docs
-description: Configure repository credentials to download images from container registry
+title: Azure Service Fabric – tároló-adattár hitelesítő adatainak konfigurálása | Microsoft Docs
+description: Adattár hitelesítő adatainak konfigurálása a lemezképek a tároló beállításjegyzékből való letöltéséhez
 services: service-fabric
 documentationcenter: .net
 author: arya
@@ -20,7 +20,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405620"
 ---
-# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Configure repository credentials for your application to download container images
+# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
 
 A tárolóregisztrációs adatbázis hitelesítésének konfigurálásához adja a hozzá a `RepositoryCredentials` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez. Adja meg a myregistry.azurecr.io tárolóregisztrációs adatbázis fiókját és jelszavát, hogy a szolgáltatás le tudja tölteni a tároló rendszerképét az adattárból.
 
@@ -37,14 +37,14 @@ A tárolóregisztrációs adatbázis hitelesítésének konfigurálásához adja
 </ServiceManifestImport>
 ```
 
-It is recommended that you encrypt the repository password by using an encipherment certificate that's deployed to all nodes of the cluster. Amikor a Service Fabric üzembe helyezi a szervizcsomagot a fürtön, a titkosítási tanúsítvánnyal fejti vissza a titkosított szöveget. Az Invoke-ServiceFabricEncryptText parancsmaggal hozhat létre titkosított szöveget a jelszóhoz, amelyet a rendszer hozzáad az ApplicationManifest.xml fájlhoz.
-See [Secret Management](service-fabric-application-secret-management.md) for more on certificates and encryption semantics.
+Javasoljuk, hogy Titkosítsa a tárház jelszavát egy olyan titkosítási-tanúsítvánnyal, amely a fürt minden csomópontjára telepítve van. Amikor a Service Fabric üzembe helyezi a szervizcsomagot a fürtön, a titkosítási tanúsítvánnyal fejti vissza a titkosított szöveget. Az Invoke-ServiceFabricEncryptText parancsmaggal hozhat létre titkosított szöveget a jelszóhoz, amelyet a rendszer hozzáad az ApplicationManifest.xml fájlhoz.
+A tanúsítványokkal és a titkosítási szemantikagal kapcsolatos további információkért lásd: [Secret Management](service-fabric-application-secret-management.md) .
 
-## <a name="configure-cluster-wide-credentials"></a>Configure cluster-wide credentials
+## <a name="configure-cluster-wide-credentials"></a>A fürtre kiterjedő hitelesítő adatok konfigurálása
 
-Service Fabric allows you to configure cluster-wide credentials which can be used as default repository credentials by applications.
+Service Fabric lehetővé teszi a teljes fürtre kiterjedő hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárházbeli hitelesítő adataiként használhatók.
 
-This feature can be enabled or disabled by adding the `UseDefaultRepositoryCredentials` attribute to `ContainerHostPolicies` in ApplicationManifest.xml with a `true` or `false` value.
+Ez a funkció engedélyezhető vagy letiltható úgy, hogy hozzáadja a `UseDefaultRepositoryCredentials` attribútumot, hogy a ApplicationManifest. xml fájlban `true` vagy `false` értékkel `ContainerHostPolicies`.
 
 ```xml
 <ServiceManifestImport>
@@ -58,14 +58,14 @@ This feature can be enabled or disabled by adding the `UseDefaultRepositoryCrede
 </ServiceManifestImport>
 ```
 
-Service Fabric then uses the default repository credentials which can be specified in the ClusterManifest under the `Hosting` section.  If `UseDefaultRepositoryCredentials` is `true`, Service Fabric reads the following values from the ClusterManifest:
+Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyek a `Hosting` szakaszban megadhatók a ClusterManifest.  Ha `UseDefaultRepositoryCredentials` `true`, a Service Fabric a következő értékeket olvassa be a ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (string)
-* DefaultContainerRepositoryPassword (string)
+* DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* DefaultContainerRepositoryPasswordType (string) --- Supported starting with the 6.4 runtime
+* A DefaultContainerRepositoryPasswordType (string)---a 6,4 futtatókörnyezettől kezdődően támogatott
 
-Here is an example of what can be added inside the `Hosting` section in the ClusterManifestTemplate.json file. The `Hosting` section can be added at cluster creation or later in a configuration upgrade. For more information, see [Change Azure Service Fabric cluster settings](service-fabric-cluster-fabric-settings.md) and [Manage Azure Service Fabric application secrets](service-fabric-application-secret-management.md)
+Íme egy példa arra, hogy mi lehet a ClusterManifestTemplate. JSON fájl `Hosting` szakasza. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható egy konfigurációs frissítésben. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -98,19 +98,19 @@ Here is an example of what can be added inside the `Hosting` section in the Clus
 ]
 ```
 
-## <a name="leveraging-the-managed-identity-of-the-virtual-machine-scale-set-by-using-managed-identity-service-msi"></a>Leveraging the Managed Identity of the virtual machine scale set by using Managed Identity Service (MSI)
+## <a name="leveraging-the-managed-identity-of-the-virtual-machine-scale-set-by-using-managed-identity-service-msi"></a>A virtuálisgép-méretezési csoport felügyelt identitásának kihasználása felügyelt Identitáskezelés (MSI) használatával
 
-Service Fabric supports using tokens as credentials to download images for your containers.  This feature leverages the managed identity of the underlying virtual machine scale set to authenticate to the registry, eliminating the need for managing user credentials.  See [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) for more on MSI.  Using this feature requires the follows steps:
+Service Fabric támogatja a tokenek használatát hitelesítő adatként a tárolók képeinek letöltéséhez.  Ez a szolgáltatás kihasználja a mögöttes virtuálisgép-méretezési csoport felügyelt identitását, hogy hitelesítse magát a beállításjegyzékben, így nincs szükség a felhasználói hitelesítő adatok kezeléséhez.  További információ: [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) az MSI-ről.  A szolgáltatás használatához a következő lépések szükségesek:
 
-1.  Ensure that System Assigned Managed Identity is enabled for the VM (see screenshot below)
+1.  Győződjön meg arról, hogy engedélyezve van-e a rendszerhez rendelt felügyelt identitás a virtuális géphez (lásd az alábbi képernyőképet)
 
-    ![Create virtual machine scale set identity](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Virtuálisgép-méretezési csoport identitásának létrehozása](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2.  After that, grant permissions to the VM(SS) to pull/read images from the registry.  Go to Access Control (IAM) of your ACR via Azure Blade and give your VM(SS) the correct permissions, as seen below:
+2.  Ezután engedélyeket adhat a virtuális géphez (SS) a lemezképek lekéréséhez/olvasásához a beállításjegyzékből.  Nyissa meg az ACR Access Control (IAM) elemét az Azure panelen, és adja meg a virtuális gép (SS) számára a megfelelő engedélyeket, ahogy az alábbi képen is látható:
 
-    ![Add VM principal to ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
+    ![VM-tag hozzáadása az ACR-hez](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3.  Once the above steps are completed, modify your applicationmanifest.xml file.  Find the tag labeled “ContainerHostPolicies” and add the attribute `‘UseTokenAuthenticationCredentials=”true”`.
+3.  A fenti lépések elvégzése után módosítsa a applicationmanifest. xml fájlt.  Keresse meg a "ContainerHostPolicies" címkével ellátott címkét, és adja hozzá a `‘UseTokenAuthenticationCredentials=”true”`attribútumot.
 
     ```xml
       <ServiceManifestImport>
@@ -125,8 +125,8 @@ Service Fabric supports using tokens as credentials to download images for your 
     ```
 
     > [!NOTE]
-    > The flag `UseDefaultRepositoryCredentials` set to true while `UseTokenAuthenticationCredentials` is true will cause an error during deployment.
+    > A jelző `UseDefaultRepositoryCredentials` True (igaz) értékre van állítva, `UseTokenAuthenticationCredentials` igaz értéke esetén a rendszer hibát okoz az üzembe helyezés során.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* See more about [Container registry authentication](/azure/container-registry/container-registry-authentication).
+* További információ a [tároló-beállításjegyzék hitelesítéséről](/azure/container-registry/container-registry-authentication).

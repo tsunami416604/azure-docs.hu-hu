@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Create a skillset in Python using REST APIs'
+title: 'Oktatóanyag: készségkészlet létrehozása a Pythonban REST API-k használatával'
 titleSuffix: Azure Cognitive Search
-description: Step through an example of data extraction, natural language, and image AI processing in Azure Cognitive Search using a Jupyter Python notebook. Extracted data is indexed and easily accessed by query.
+description: A Jupyter Python notebook használatával bemutatjuk az adatok kinyerésének, természetes nyelvének és képai-feldolgozásának példáját az Azure Cognitive Search. A kinyert adatértékek indexelve vannak, és a lekérdezés könnyen elérhető.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -16,11 +16,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406416"
 ---
-# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Tutorial: Create an AI enrichment pipeline using REST and Python
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Oktatóanyag: AI-dúsítási folyamat létrehozása a REST és a Python használatával
 
-In this tutorial, you learn the mechanics of programming data enrichment in Azure Cognitive Search using *cognitive skills*. Skills are backed by natural language processing (NLP) and image analysis capabilities in Cognitive Services. Through skillset composition and configuration, you can extract text and text representations of an image or scanned document file. You can also detect language, entities, key phrases, and more. The result is rich additional content in a search index, created with AI enrichments in an indexing pipeline. 
+Ebben az oktatóanyagban megismerheti az Azure-Cognitive Search programozási feladatainak *megismerését a kognitív képességek*segítségével. A szaktudást a természetes nyelvi feldolgozási (NLP) és a Cognitive Services képelemzési képességei is alátámasztják. A készségkészlet-összeállításon és-konfiguráción keresztül kinyerheti egy rendszerkép vagy beolvasott dokumentum szövegét és szöveges ábrázolását. Emellett a nyelv, az entitások, a legfontosabb kifejezések és egyebek is észlelhetők. Ennek eredménye egy keresési indexben található, mesterséges intelligenciával létrehozott, az indexelési folyamat során létrejövő további tartalom. 
 
-In this tutorial, you'll use Python to do the following tasks:
+Ebben az oktatóanyagban a Python használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Olyan indexelőfolyamat létrehozása, amely kibővíti a mintaadatokat egy indexhez vezető útvonalon
@@ -29,71 +29,71 @@ In this tutorial, you'll use Python to do the following tasks:
 > * Kérések végrehajtása és az eredmények áttekintése
 > * Az index és az indexelők alaphelyzetbe állítása további fejlesztés céljából
 
-Output is a full text searchable index on Azure Cognitive Search. Az indexet egyéb standard képességekkel, például [szinonimákkal](search-synonyms.md), [pontozási profilokkal](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [elemzőkkel](search-analyzers.md) és [szűrőkkel](search-filters.md) is bővítheti. 
+A kimenet egy teljes szöveges kereshető index az Azure Cognitive Searchon. Az indexet egyéb standard képességekkel, például [szinonimákkal](search-synonyms.md), [pontozási profilokkal](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [elemzőkkel](search-analyzers.md) és [szűrőkkel](search-filters.md) is bővítheti. 
 
-This tutorial runs on the Free service, but the number of free transactions is limited to 20 documents per day. If you want to run this tutorial more than once in the same day, use a smaller file set so that you can fit in more runs.
+Ez az oktatóanyag az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha az oktatóanyagot többször is futtatni szeretné ugyanazon a napon, használjon kisebb fájlméretet, hogy több futtatással is elfér.
 
 > [!NOTE]
-> As you expand scope by increasing the frequency of processing, adding more documents, or adding more AI algorithms, you will need to [attach a billable Cognitive Services resource](cognitive-search-attach-cognitive-services.md). Charges accrue when calling APIs in Cognitive Services, and for image extraction as part of the document-cracking stage in Azure Cognitive Search. There are no charges for text extraction from documents.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> Execution of built-in skills is charged at the existing [Cognitive Services pay-as-you go price](https://azure.microsoft.com/pricing/details/cognitive-services/). Image extraction pricing is described on the [Azure Cognitive Search pricing page](https://go.microsoft.com/fwlink/?linkid=2042400).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The following services, tools, and data are used in this tutorial. 
+Ebben az oktatóanyagban a következő szolgáltatásokat, eszközöket és az adateszközöket használjuk. 
 
-+ [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) for storing the sample data. Make sure the storage account is in the same region as Azure Cognitive Search.
++ [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához. Győződjön meg arról, hogy a Storage-fiók ugyanabban a régióban található, mint az Azure Cognitive Search.
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), providing Python 3.x and Jupyter Notebooks.
++ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), amely Python 3. x és Jupyter jegyzetfüzeteket biztosít.
 
-+ [Sample data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) consists of a small file set of different types. 
++ A [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) egy kisméretű, különböző típusú fájlból állnak. 
 
-+ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this tutorial.
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-## <a name="get-a-key-and-url"></a>Get a key and URL
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-To interact with your Azure Cognitive Search service, you will need the service URL and an access key. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
+Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége lesz a szolgáltatás URL-címére és egy hozzáférési kulcsra. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
+1. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-All requests require an api-key on every request sent to your service. A valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
-## <a name="prepare-sample-data"></a>Prepare sample data
+## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
-A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. Source data must originate from a supported data source type of an [Azure Cognitive Search indexer](search-indexer-overview.md). Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
+A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatok egy [Azure Cognitive Search indexelő](search-indexer-overview.md)által támogatott adatforrás-típusból származnak. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
-1. [Sign in to the Azure portal](https://portal.azure.com), navigate to your Azure storage account, click **Blobs**, and then click **+ Container**.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Create a Blob container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) to contain sample data. You can set the Public Access Level to any of its valid values.
+1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
-1. After the container is created, open it and select **Upload** on the command bar to upload the sample files you downloaded in a previous step.
+1. A tároló létrehozása után nyissa meg, és válassza a parancssáv **feltöltés** elemét az előző lépésben letöltött mintaképek feltöltéséhez.
 
    ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati sztringet a Blob Storage-hoz. Ezt megteheti úgy is, ha megkeresi a tárfiókját az Azure Portalon. Click **Access keys**, and then copy the **Connection String**  field.
+1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati sztringet a Blob Storage-hoz. Ezt megteheti úgy is, ha megkeresi a tárfiókját az Azure Portalon. Kattintson a **hozzáférési kulcsok**elemre, majd másolja a **kapcsolati karakterlánc** mezőt.
 
-The connection string will have this format: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+A következő formátumú a kapcsolatok karakterlánca: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-Keep the connection string handy. You will need it in a future step.
+Tartsa kéznél a kapcsolatok karakterláncát. Egy későbbi lépésben szüksége lesz rá.
 
 A kapcsolati sztring megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
 
 > [!Note]
-> This article shows you how to build a data source, index, indexer and skillset using a series of Python scripts. To download the complete notebook example, go to the [Azure-Search-python-samples repo](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
+> Ebből a cikkből megtudhatja, hogyan hozhat létre egy adatforrást, egy indexet, egy indexelő és egy készségkészlet egy sor Python-parancsfájl használatával. A teljes jegyzetfüzet-példa letöltéséhez nyissa meg az [Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook)tárházat.
 
-Use Anaconda Navigator to launch Jupyter Notebook and create a new Python 3 notebook.
+A anaconda Navigator használatával indítsa el Jupyter Notebook és hozzon létre egy új Python 3 jegyzetfüzetet.
 
-## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Kapcsolódás az Azure Cognitive Searchhoz
 
-In your notebook, run this script to load the libraries used for working with JSON and formulating HTTP requests.
+A jegyzetfüzetben futtassa ezt a szkriptet a JSON használatához használt könyvtárak betöltéséhez és a HTTP-kérések összeállításához.
 
 ```python
 import json
@@ -101,7 +101,7 @@ import requests
 from pprint import pprint
 ```
 
-Next, define the names for the data source, index, indexer, and skillset. Run this script to set up the names for this tutorial.
+Ezt követően adja meg az adatforrás, az index, az indexelő és a készségkészlet nevét. Futtassa ezt a szkriptet az oktatóanyag nevének beállításához.
 
 ```python
 # Define the names for the data source, skillset, index and indexer
@@ -112,9 +112,9 @@ indexer_name = "cogsrch-py-indexer"
 ```
 
 > [!Tip]
-> On a free service, you are limited to three indexes, indexers, and data sources. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Make sure you have room to create new objects before going any further.
+> Az ingyenes szolgáltatásokban három index, indexelő és adatforrásra van korlátozva. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Győződjön meg arról, hogy van olyan hely, amely új objektumokat hoz létre, mielőtt továbblépne.
 
-In the following script, replace the placeholders for your search service (YOUR-SEARCH-SERVICE-NAME) and admin API key (YOUR-ADMIN-API-KEY), and then run it to set up the search service endpoint.
+A következő parancsfájlban cserélje le a keresési szolgáltatás (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcs (a-ADMIN-API-kulcs) helyőrzőit, majd futtassa a keresési szolgáltatás végpontjának beállításához.
 
 ```python
 # Setup the endpoint
@@ -128,9 +128,9 @@ params = {
 
 ## <a name="create-a-data-source"></a>Adatforrás létrehozása
 
-Most, hogy előkészítette a szolgáltatásokat és a forrásfájlokat, hozzáláthat az indexelőfolyamat komponenseinek összeállításához. Begin with a data source object that tells Azure Cognitive Search how to retrieve external source data.
+Most, hogy előkészítette a szolgáltatásokat és a forrásfájlokat, hozzáláthat az indexelőfolyamat komponenseinek összeállításához. Kezdje egy olyan adatforrás-objektummal, amely azt jelzi, hogy az Azure Cognitive Search a külső forrásadatok lekérését.
 
-In the following script, replace the placeholder YOUR-BLOB-RESOURCE-CONNECTION-STRING with the connection string for the blob you created in the previous step. Then, run the script to create a data source named `cogsrch-py-datasource`.
+A következő parancsfájlban cserélje le a helyőrzőt a-BLOB-RESOURCE-replace-STRING értékre az előző lépésben létrehozott blobhoz tartozó kapcsolatok karakterláncával. Ezután futtassa a parancsfájlt egy `cogsrch-py-datasource`nevű adatforrás létrehozásához.
 
 ```python
 # Create a data source
@@ -151,26 +151,26 @@ r = requests.put(endpoint + "/datasources/" + datasource_name,
 print(r.status_code)
 ```
 
-The request should return a status code of 201 confirming success.
+A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-In the Azure portal, on the search service dashboard page, verify that the cogsrch-py-datasource appears in the **Data sources** list. Click **Refresh** to update the page.
+A Azure Portal keresési szolgáltatás irányítópultján ellenőrizze, hogy az **adatforrások** listában megjelenik-e az cogsrch-adatforrás. A lap frissítéséhez kattintson a **frissítés** gombra.
 
-![Data sources tile in the portal](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Data sources tile in the portal")
+![Adatforrások csempéje a portálon](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Adatforrások csempéje a portálon")
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
-In this step, you will define a set of enrichment steps to apply to your data. Minden bővítési lépés egy *képesség*, a bővítési lépések készlete pedig a *képességcsoport*. This tutorial uses [built-in cognitive skills](cognitive-search-predefined-skills.md) for the skillset:
+Ebben a lépésben az adataira vonatkozó dúsítási lépések készletét fogja meghatározni. Minden bővítési lépés egy *képesség*, a bővítési lépések készlete pedig a *képességcsoport*. Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
 
 + [Nyelvfelismeréssel](cognitive-search-skill-language-detection.md) azonosítja a tartalom nyelvét.
 
 + A [szöveg felosztásával](cognitive-search-skill-textsplit.md) a nagyméretű tartalmakat kisebb darabokra bontja, mielőtt meghívná a kulcskifejezések kinyerését. A kulcskifejezések kinyerése legfeljebb 50 000 karakter méterű bemeneteket fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
 
-+ [Entity Recognition](cognitive-search-skill-entity-recognition.md) for extracting the names of organizations from content in the blob container.
++ [Entitások felismerése](cognitive-search-skill-entity-recognition.md) a blob-tároló tartalmából származó szervezetek nevének kinyeréséhez.
 
 + A [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) lehívja a leggyakoribb kulcskifejezéseket. 
 
-### <a name="python-script"></a>Python script
-Run the following script to create a skillset called `cogsrch-py-skillset`.
+### <a name="python-script"></a>Python-szkript
+Futtassa a következő szkriptet egy `cogsrch-py-skillset`nevű készségkészlet létrehozásához.
 
 ```python
 # Create a skillset
@@ -256,23 +256,23 @@ r = requests.put(endpoint + "/skillsets/" + skillset_name,
 print(r.status_code)
 ```
 
-The request should return a status code of 201 confirming success.
+A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-The key phrase extraction skill is applied for each page. By setting the context to `"document/pages/*"`, you run this enricher for each member of the document/pages array (for each page in the document).
+Az egyes lapokon a kinyerési képességre vonatkozó kifejezést alkalmazzuk. Ha a környezetet úgy állítja be, hogy `"document/pages/*"`, akkor ezt a dúsítást a dokumentum/oldal tömb minden egyes tagja számára futtatja (a dokumentum minden oldalához).
 
-Minden képesség a dokumentum tartalmán fut le. During processing, Azure Cognitive Search cracks each document to read content from different file formats. Text found in the source file is placed into a `content` field, one for each document. Therefore, set the input as `"/document/content"`.
+Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban található szöveg egy `content` mezőbe kerül, amely minden dokumentumhoz egy. Ezért `"/document/content"`ként állítsa be a bemenetet.
 
 Alább a képességcsoport grafikai ábrázolása látható.
 
-![Understand a skillset](media/cognitive-search-tutorial-blob/skillset.png "Understand a skillset")
+![Készségkészlet megismerése](media/cognitive-search-tutorial-blob/skillset.png "Készségkészlet megismerése")
 
-Outputs can be mapped to an index, used as input to a downstream skill, or both, as is the case with language code. Az indexben a nyelvkód a szűréskor lehet hasznos. A nyelvkódot bemenetként a szövegelemzési képességek használják, a szótördeléssel kapcsolatos nyelvi szabályok megadásához.
+A kimenetek leképezhetők egy indexre, amely bemenetként használható egy alsóbb rétegbeli képességhez vagy mindkettőhöz, akárcsak a nyelvi kóddal. Az indexben a nyelvkód a szűréskor lehet hasznos. A nyelvkódot bemenetként a szövegelemzési képességek használják, a szótördeléssel kapcsolatos nyelvi szabályok megadásához.
 
 A képességcsoportok alapvető tudnivalóval kapcsolatos bővebb információkért lásd: [Képességcsoport megadása](cognitive-search-defining-skillset.md).
 
 ## <a name="create-an-index"></a>Index létrehozása
 
-In this section, you define the index schema by specifying the fields to include in the searchable index, and setting the search attributes for each field. A mezők típussal is rendelkeznek, emellett olyan attribútumokat tartalmazhatnak, amelyek meghatározzák a mező használatának módját (kereshető, rendezhető stb.). Az indexben szereplő mezőneveknek nem kell pontosan megegyezniük a forrásban szereplő mezők nevével. Egy későbbi lépésben mezőleképezéseket fog hozzáadni egy indexelőhöz a forrás-cél mezőkhöz való csatlakozás céljából. Ebben a lépésben a keresőalkalmazásra vonatkozó mezőelnevezési konvenciók használatával határozza meg az indexet.
+Ebben a szakaszban megadhatja az index sémát úgy, hogy megadja a kereshető indexbe felvenni kívánt mezőket, és beállítja az egyes mezők keresési attribútumait. A mezők típussal is rendelkeznek, emellett olyan attribútumokat tartalmazhatnak, amelyek meghatározzák a mező használatának módját (kereshető, rendezhető stb.). Az indexben szereplő mezőneveknek nem kell pontosan megegyezniük a forrásban szereplő mezők nevével. Egy későbbi lépésben mezőleképezéseket fog hozzáadni egy indexelőhöz a forrás-cél mezőkhöz való csatlakozás céljából. Ebben a lépésben a keresőalkalmazásra vonatkozó mezőelnevezési konvenciók használatával határozza meg az indexet.
 
 A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
@@ -280,7 +280,7 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 |--------------|----------|-------|----------|--------------------|-------------------|
 | mezőtípusok: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
-Run this script to create the index named `cogsrch-py-index`.
+Futtassa ezt a szkriptet a `cogsrch-py-index`nevű index létrehozásához.
 
 ```python
 # Create an index
@@ -334,21 +334,21 @@ r = requests.put(endpoint + "/indexes/" + index_name,
 print(r.status_code)
 ```
 
-The request should return a status code of 201 confirming success.
+A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-To learn more about defining an index, see [Create Index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Az index definiálásával kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)című témakört.
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Indexelő létrehozása, mezők leképezése és átalakítások elvégzése
 
-So far, you have created a data source, a skillset, and an index. Ez a három összetevő egy olyan [indexelő](search-indexer-overview.md) része lesz, amely az egyes részeket egyetlen többszakaszos műveletben egyesíti. To tie these objects together in an indexer, you must define field mappings.
+Eddig létrehozott egy adatforrást, egy készségkészlet és egy indexet. Ez a három összetevő egy olyan [indexelő](search-indexer-overview.md) része lesz, amely az egyes részeket egyetlen többszakaszos műveletben egyesíti. Ha ezeket az objektumokat egy indexelő alkalmazásban szeretné összekapcsolni, meg kell adnia a mezők leképezéseit.
 
-+ The fieldMappings are processed before the skillset, mapping source fields from the data source to target fields in an index. If field names and types are the same at both ends, no mapping is required.
++ A fieldMappings a rendszer az adatforrásból a készségkészlet, a leképezési forrás mezőinek feldolgozásával dolgozza fel az indexben lévő mezőkbe. Ha a mezők nevei és típusai mindkét végén azonosak, nincs szükség leképezésre.
 
-+ The outputFieldMappings are processed after the skillset, referencing sourceFieldNames that don't exist until document cracking or enrichment creates them. The targetFieldName is a field in an index.
++ A outputFieldMappings a készségkészlet után dolgozzák fel, hivatkozva a sourceFieldNames, amelyek nem léteznek a dokumentum repedésének vagy dúsításának létrehozásakor. A targetFieldName egy index mezője.
 
-Besides hooking up inputs to outputs, you can also use field mappings to flatten data structures. For more information, see [How to map enriched fields to a searchable index](cognitive-search-output-field-mapping.md).
+A bemenetek kimenetekhez való csatlakoztatása mellett mező-hozzárendelések is használhatók az adatstruktúrák leállításához. További információ: [a dúsított mezők leképezése kereshető indexbe](cognitive-search-output-field-mapping.md).
 
-Run this script to create an indexer named `cogsrch-py-indexer`.
+Futtassa ezt a parancsfájlt egy `cogsrch-py-indexer`nevű indexelő létrehozásához.
 
 ```python
 # Create an indexer
@@ -401,26 +401,26 @@ r = requests.put(endpoint + "/indexers/" + indexer_name,
 print(r.status_code)
 ```
 
-The request should quickly return a status code of 201, however, the processing can take several minutes to complete. Although the data set is small, analytical skills, such as image analysis, are computationally intensive and take time.
+A kérésnek gyorsan vissza kell térnie a 201-es állapotkóddal, azonban a feldolgozás több percet is igénybe vehet. Bár az adathalmaz kicsi, az analitikai képességek, például a képelemzés, a számítási igényű, és időt vesz igénybe.
 
-Use the [Check indexer status](#check-indexer-status) script in the next section to determine when the indexer process is complete.
+A következő szakaszban az [Indexelő állapotának ellenőrzése](#check-indexer-status) parancsfájl használatával határozhatja meg, hogy mikor fejeződött be az indexelő folyamat.
 
 > [!TIP]
-> Az indexelő létrehozása elindítja a folyamatot. If there is a problem accessing the data, mapping inputs and outputs, or with the order of operations, it will appear at this stage. To re-run the pipeline with code or script changes, you may need to delete objects first. További információk: [Alaphelyzetbe állítás és ismételt futtatás](#reset).
+> Az indexelő létrehozása elindítja a folyamatot. Ha probléma merül fel az adatok elérésekor, a bemenetek és kimenetek leképezése vagy a műveletek sorrendjével, akkor a jelen szakaszban fog megjelenni. Ha újra szeretné futtatni a folyamatot a kód vagy a parancsfájl módosításával, akkor először törölnie kell az objektumokat. További információk: [Alaphelyzetbe állítás és ismételt futtatás](#reset).
 
 #### <a name="explore-the-request-body"></a>Ismerkedés a kéréstörzzsel
 
 A szkript -1 értéket állít be a `"maxFailedItems"` paraméterhez, amely utasítja az indexelőmotort, hogy hagyja figyelmen kívül az adatimportálás közben felmerülő hibákat. Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
 
-Figyelje meg a `"dataToExtract":"contentAndMetadata"` utasítást a konfigurációs paraméterekben. This statement tells the indexer to  extract the content from different file formats and the metadata related to each file.
+Figyelje meg a `"dataToExtract":"contentAndMetadata"` utasítást a konfigurációs paraméterekben. Ez az utasítás azt jelzi, hogy az indexelő Kinyeri a tartalmat különböző fájlformátumokból és az egyes fájlokhoz kapcsolódó metaadatokat.
 
-Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. The `"imageAction":"generateNormalizedImages"` configuration, combined with the OCR Skill and Text Merge Skill, tells the indexer to extract text from the images (for example, the word "stop" from a traffic Stop sign), and embed it as part of the content field. This behavior applies to both the images embedded in the documents (think of an image inside a PDF)and images found in the data source, for instance a JPG file.
+Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. A `"imageAction":"generateNormalizedImages"` konfiguráció az OCR-képesség és a szöveg egyesítési képességeivel együtt azt jelzi, hogy az indexelő Kinyeri a szöveget a képekből (például a "Leállítás" szót egy forgalom leállításakor), és beágyazza azt a Content (tartalom) mező részeként. Ez a viselkedés a dokumentumokban beágyazott képekre (például egy PDF-fájlra) és az adatforrásban található rendszerképekre is vonatkozik (például egy JPG-fájlra).
 
 <a name="check-indexer-status"></a>
 
 ## <a name="check-indexer-status"></a>Az indexelő állapotának ellenőrzése
 
-Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. To find out whether the indexer  processing is complete, run the following script.
+Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. Ha szeretné megtudni, hogy az indexelő feldolgozása befejeződött-e, futtassa a következő szkriptet.
 
 ```python
 # Get indexer status
@@ -429,17 +429,17 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-In the response, monitor the "lastResult" for its "status" and "endTime" values. Periodically run the script to check the status. When the indexer has completed, the status will be set to "success", an "endTime" will be specified, and the response will include any errors and warnings that occurred during enrichment.
+A válaszban figyelje az "állapot" és a "Befejezés" érték "lastResult" értékét. Rendszeresen futtassa a parancsfájlt az állapot vizsgálatához. Az indexelő befejeződése után az állapot a "sikeres" értékre lesz állítva, a "Befejezés" értéket adja meg, és a válasz tartalmazni fog minden olyan hibát és figyelmeztetést, amely a dúsítás során történt.
 
-![Indexer is created](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexer is created")
+![Az indexelő létrejött](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Az indexelő létrejött")
 
-A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. In this tutorial, the warnings are benign. For example, one of the JPEG files that does not have text will show the warning in this screenshot.
+A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Ebben az oktatóanyagban a figyelmeztetések jóindulatú. Például az egyik JPEG-fájl, amely nem rendelkezik szöveggel, megjelenik a képernyőképen látható figyelmeztetés.
 
-![Example indexer warning](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Example indexer warning")
+![Példa indexelő figyelmeztetésre](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Példa indexelő figyelmeztetésre")
 
 ## <a name="query-your-index"></a>Az index lekérdezése
 
-Az indexelés befejezését követően futtasson olyan lekérdezéseket, amelyek egyéni mezők tartalmát adják vissza. By default, Azure Cognitive Search returns the top 50 results. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési sztringben meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. For instructions, see [How to page results in Azure Cognitive Search](search-pagination-page-layout.md).
+Az indexelés befejezését követően futtasson olyan lekérdezéseket, amelyek egyéni mezők tartalmát adják vissza. Alapértelmezés szerint az Azure Cognitive Search a legfontosabb 50 eredményeket adja vissza. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési sztringben meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. Útmutatásért lásd: [How to Page results in Azure Cognitive Search](search-pagination-page-layout.md).
 
 Ellenőrzési lépésként kérdezze le az index összes mezőjét.
 
@@ -450,9 +450,9 @@ r = requests.get(endpoint + "/indexes/" + index_name,
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-The results should look similar to the following example. The screenshot only shows a part of the response.
+Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-![Query index for all fields](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Query the index for all fields")
+![Lekérdezési index az összes mezőhöz](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Az összes mező indexének lekérdezése")
 
 A kimenet az egyes mezők nevét, típusát és attribútumait tartalmazó indexséma.
 
@@ -465,11 +465,11 @@ r = requests.get(endpoint + "/indexes/" + index_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-The results should look similar to the following example. The screenshot only shows a part of the response.
+Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-![Query index for the contents of organizations](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Query the index to return the contents of organizations")
+![A szervezetek tartalmának lekérdezési indexe](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Az index lekérdezése a szervezetek tartalmának visszaküldéséhez")
 
-Repeat for additional fields: content, languageCode, keyPhrases, and organizations in this exercise. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
+Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
 A lekérdezési sztring összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
@@ -477,19 +477,19 @@ A lekérdezési sztring összetettségétől és hosszától függően használh
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-In the early experimental stages of pipeline development, the most practical approach for design iterations is to delete the objects from Azure Cognitive Search and allow your code to rebuild them. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+A folyamat-fejlesztés korai kísérleti szakaszaiban a tervezési iterációk legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search, és lehetővé teszi a kód újraépítését. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
 Ha az új definíciókkal újra el szeretné végezni a dokumentumok indexelését:
 
 1. Törölje az indexet a megőrzött adatok eltávolításához. Törölje az indexet, hogy újra létrehozhassa a szolgáltatásban.
-2. Modify the skillset and index definitions.
+2. Módosítsa a készségkészlet és az index definícióit.
 3. Hozza létre újból az indexet és az indexelőt a szolgáltatásban a folyamat futtatásához.
 
-You can use the portal to delete indexes, indexers, and skillsets. When you delete the indexer, you can optionally, selectively delete the index, skillset, and data source at the same time.
+A portál használatával törölhet indexeket, indexelő és szakértelmével. Az indexelő törlésekor lehetősége van arra is, hogy az indexet, az készségkészlet és az adatforrást szelektíven törölje egyszerre.
 
-![Delete search objects](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Delete search objects in the portal")
+![Keresési objektumok törlése](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Keresési objektumok törlése a portálon")
 
-You can also delete them using a script. The following script will delete the skillset we created. You can easily modify the request to delete the index, indexer, and data source.
+Parancsfájl használatával is törölheti őket. A következő szkript törli az általunk létrehozott készségkészlet. Az index, az indexelő és az adatforrás törlésére vonatkozó kérést egyszerűen módosíthatja.
 
 ```python
 # delete the skillset
@@ -504,17 +504,17 @@ Ahogy a kód egyre kiforrottabbá válik, jó ötlet lehet az újraépítési st
 
 Ez az oktatóanyag a bővített indexelőfolyamat a komponensek (adatforrás, képességcsoport, index és indexelő) létrehozásával való összeállításának alapvető lépéseit ismerteti.
 
-[Built-in skills](cognitive-search-predefined-skills.md) were introduced, along with skillset definitions and a way to chain skills together through inputs and outputs. You also learned that `outputFieldMappings` in the indexer definition is required for routing enriched values from the pipeline into a searchable index on an Azure Cognitive Search service.
+A [beépített képességek](cognitive-search-predefined-skills.md) , valamint a készségkészlet-definíciók és a képességek összevonása a bemeneteken és kimeneteken keresztül történik. Azt is megtanulta, hogy az indexelő definíciójában szereplő `outputFieldMappings` szükséges a folyamatból származó, az Azure Cognitive Search szolgáltatásban kereshető indexként való útválasztáshoz.
 
-Finally, you learned how to test the results and reset the system for further iterations. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. You also learned how to check the indexer status and what  objects must be deleted before rerunning a pipeline.
+Végezetül megtanulta, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszer további iterációkat. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. Azt is megtanulta, hogyan ellenőrizhető az indexelő állapota, és milyen objektumokat kell törölni a folyamat újrafuttatása előtt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-The fastest way to clean up after a tutorial is by deleting the resource group containing the Azure Cognitive Search service and Azure Blob service. Assuming you put both services in the same group, delete the resource group to permanently delete everything in it, including the services and any stored content that you created for this tutorial. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
+Az oktatóanyag elvégzésének leggyorsabb módja az Azure Cognitive Search Service és az Azure Blob servicet tartalmazó erőforráscsoport törlése. Feltételezve, hogy mindkét szolgáltatást ugyanabba a csoportba helyezi, törölje az erőforráscsoportot az összes benne lévő szolgáltatás végleges törléséhez, beleértve a szolgáltatásokat és az oktatóanyaghoz létrehozott tárolt tartalmakat is. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
 
 > [!div class="nextstepaction"]
-> [Example: Creating a custom skill for AI enrichment](cognitive-search-create-custom-skill-example.md)
+> [Példa: egyéni képesség létrehozása AI-bővítéshez](cognitive-search-create-custom-skill-example.md)

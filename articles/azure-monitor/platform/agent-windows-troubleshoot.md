@@ -20,9 +20,9 @@ Ez a cikk segítséget nyújt a Windows rendszerhez készült Log Analytics ügy
 
 Ha a fentiek egyikével sem működik, a következő támogatási csatornákat is elérhetők:
 
-* Ügyfeleink a Premier szintű támogatási kedvezményekre megnyithat egy támogatási kérést az [Premier](https://premier.microsoft.com/).
-* Az Azure támogatási szerződés rendelkező ügyfelek is nyisson egy támogatási kérést [az Azure Portalon](https://manage.windowsazure.com/?getsupport=true).
-* A Log Analytics visszajelzési oldalán tekintse át a beküldött ötletekre és hibák [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) vagy egy új fájlt. 
+* A Premier szintű támogatási csomaggal rendelkező ügyfelek a [Premier](https://premier.microsoft.com/)szintű támogatási kérést is megnyithatják.
+* Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
+* Látogasson el a Log Analytics visszajelzési oldalra, ahol áttekintheti az elküldött ötleteket és hibákat [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy újat is megtudhat. 
 
 ## <a name="important-troubleshooting-sources"></a>Fontos hibaelhárítási források
 

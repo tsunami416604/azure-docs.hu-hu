@@ -47,7 +47,7 @@ Azure Monitor a tranzakció, a késés és a kapacitás részleteit megtekinthet
 
 Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és rendelkezésre állását az összes előfizetésében, hajtsa végre a következő lépéseket.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az **áttekintések** szakaszban válassza a **Storage-fiókok (előzetes verzió)** lehetőséget.
 

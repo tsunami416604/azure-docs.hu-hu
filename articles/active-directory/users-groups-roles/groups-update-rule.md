@@ -1,6 +1,6 @@
 ---
-title: Update and manage a dynamic group rule and troubleshoot membership - Azure Active Directory | Microsoft Docs
-description: How to create a group membership rule in the Azure portal, check status.
+title: Dinamikus csoport szabályának frissítése és kezelése – Azure Active Directory | Microsoft Docs
+description: Csoporttagság-szabály létrehozása a Azure Portalban, ellenőrzési állapot.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,72 +21,72 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422354"
 ---
-# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Update a dynamic group to manage membership in Azure Active Directory
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Dinamikus csoport frissítése Azure Active Directory tagságának kezeléséhez
 
-In Azure Active Directory (Azure AD), you can use rules to determine group membership based on user or device properties. This article tells how to set up a rule for a dynamic group in the Azure portal.
-Dynamic membership is supported for security groups or Office 365 groups. When a group membership rule is applied, user and device attributes are evaluated for matches with the membership rule. When an attribute changes for a user or device, all dynamic group rules in the organization are processed for membership changes. Users and devices are added or removed if they meet the conditions for a group.
+Azure Active Directory (Azure AD) esetében a szabályok segítségével meghatározhatja a csoporttagság alapján a felhasználók vagy az eszközök tulajdonságait. Ez a cikk azt ismerteti, hogyan lehet szabályt beállítani egy dinamikus csoporthoz a Azure Portalban.
+A dinamikus tagság biztonsági csoportok vagy Office 365-csoportok esetén támogatott. Csoporttagság-szabály alkalmazása esetén a rendszer kiértékeli a felhasználók és az eszközök attribútumait a tagsági szabállyal való egyezések alapján. Amikor egy attribútum megváltoztatja a felhasználót vagy az eszközt, a rendszer a szervezet összes dinamikus csoportjának szabályait dolgozza fel a tagság változásaihoz. A felhasználók és az eszközök akkor lesznek hozzáadva vagy eltávolítva, ha megfelelnek a csoport feltételeinek.
 
-## <a name="rule-builder-in-the-azure-portal"></a>Rule builder in the Azure portal
+## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
 
-Azure AD provides a rule builder to create and update your important rules more quickly. The rule builder supports the construction up to five expressions. The rule builder makes it easier to form a rule with a few simple expressions, however, it can't be used to reproduce every rule. If the rule builder doesn't support the rule you want to create, you can use the text box.
+Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és frissíthet fontos szabályokat. A szabály-szerkesztő legfeljebb öt kifejezést támogat. A szabály-szerkesztő megkönnyíti néhány egyszerű kifejezéssel rendelkező szabály kiépítését, azonban nem használható minden szabály újbóli létrehozásához. Ha a szabály-szerkesztő nem támogatja a létrehozni kívánt szabályt, használhatja a szövegmezőt.
 
-Here are some examples of advanced rules or syntax for which we recommend that you construct using the text box:
+Íme néhány példa a speciális szabályokra vagy szintaxisra, amelyekhez ajánlott a következő szövegmezővel létrehozni:
 
-- Rule with more than five expressions
-- The Direct reports rule
-- Setting [operator precedence](groups-dynamic-membership.md#operator-precedence)
-- [Rules with complex expressions](groups-dynamic-membership.md#rules-with-complex-expressions); for example `(user.proxyAddresses -any (_ -contains "contoso"))`
+- Szabály ötnél több kifejezéssel
+- A közvetlen jelentések szabálya
+- [Operátor prioritásának](groups-dynamic-membership.md#operator-precedence) beállítása
+- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> The rule builder might not be able to display some rules constructed in the text box. You might see a message when the rule builder is not able to display the rule. The rule builder doesn't change the supported syntax, validation, or processing of dynamic group rules in any way.
+> Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
 
-![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-For examples of syntax, supported properties, operators, and values for a membership rule, see [Dynamic membership rules for groups in Azure Active Directory](groups-dynamic-membership.md).
+A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára és értékeire példákat a következő témakörben talál: [Azure Active Directory csoportok dinamikus tagsági szabályai](groups-dynamic-membership.md).
 
-## <a name="to-update-a-group-membership-rule"></a>To update a group membership rule
+## <a name="to-update-a-group-membership-rule"></a>Csoporttagság-szabály frissítése
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with an account that is in the Global administrator, Group administrator, Intune administrator, or User administrator role in the tenant.
-1. Select **Groups** > **All groups**.
-1. Select a group to open its profile.
-1. On the profile page for the group, select **Dynamic membership rules**. The rule builder supports up to five expressions. To add more than five expressions, you must use the text box.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, csoport rendszergazdája, Intune-rendszergazda vagy felhasználói rendszergazdai szerepkör tagja a bérlőn.
+1. Válassza a **csoportok** > **az összes csoport**elemet.
+1. Válasszon ki egy csoportot a profiljának megnyitásához.
+1. A csoport profil lapján válassza a **dinamikus tagsági szabályok**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
-   ![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+   ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-1. To see the custom extension properties available for your membership rule:
-   1. Select **Get custom extension properties**
-   1. Enter the application ID, and then select **Refresh properties**.
-1. After updating the rule, select **Save**.
+1. A tagsági szabályhoz elérhető egyéni kiterjesztési tulajdonságok megtekintéséhez:
+   1. Válassza az **Egyéni bővítmény tulajdonságainak beolvasása** elemet.
+   1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése**elemre.
+1. A szabály frissítése után válassza a **Mentés**lehetőséget.
 
-If the rule you entered isn't valid, an explanation of why the rule couldn't be processed is displayed in an Azure notification in the portal. Read it carefully to understand how to fix the rule.
+Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láthatja, hogy a szabály miért nem dolgozható fel. Olvassa el figyelmesen, hogy megtudja, hogyan javíthatja a szabályt.
 
-## <a name="check-processing-status-for-a-rule"></a>Check processing status for a rule
+## <a name="check-processing-status-for-a-rule"></a>Szabály feldolgozási állapotának keresése
 
-You can see the membership processing status and the last updated date on the **Overview** page for the group.
+A csoport **Áttekintés** lapján megtekintheti a tagság feldolgozási állapotát és a legutóbbi frissítés dátumát.
   
-  ![display of dynamic group status](./media/groups-create-rule/group-status.png)
+  ![a dinamikus csoport állapotának megjelenítése](./media/groups-create-rule/group-status.png)
 
-The following status messages can be shown for **Membership processing** status:
+A következő állapotüzenetek láthatók a **tagság feldolgozási** állapotához:
 
-- **Evaluating**:  The group change has been received and the updates are being evaluated.
-- **Processing**: Updates are being processed.
-- **Update complete**: Processing has completed and all applicable updates have been made.
-- **Processing error**:  Processing couldn't be completed because of an error evaluating the membership rule.
-- **Update paused**: Dynamic membership rule updates have been paused by the administrator. MembershipRuleProcessingState is set to “Paused”.
+- **Értékelés**: a csoport módosítása megérkezett, és a frissítések kiértékelése folyamatban van.
+- **Feldolgozás**: folyamatban van a frissítések feldolgozása.
+- A **frissítés befejeződött**: a feldolgozás befejeződött, és a rendszer az összes vonatkozó frissítést elvégezte.
+- **Feldolgozási hiba**: a feldolgozás nem fejeződött be, mert hiba történt a tagsági szabály kiértékelése során.
+- A **frissítés szüneteltetve**: a dinamikus tagsági szabály frissítéseit a rendszergazda szünetelteti. A MembershipRuleProcessingState "szüneteltetve" értékre van állítva.
 
-The following status messages can be shown for **Membership last updated** status:
+A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissítésének** állapotához:
 
-- **Date and time**: The last time the membership was updated.
-- **In Progress**: Updates are currently in progress.
-- **Unknown**: The last update time can't be retrieved. The group might be new.
+- **Dátum és idő**: a tagság utolsó frissítésekor.
+- **Folyamatban**: a frissítések jelenleg folyamatban vannak.
+- **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 
-If an error occurs while processing the membership rule for a specific group, an alert is shown on the top of the **Overview page** for the group. If no pending dynamic membership updates can be processed for all the groups within the tenant for more then 24 hours, an alert is shown on the top of **All groups**.
+Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha a bérlőn belüli összes csoportra vonatkozóan még 24 óráig nem dolgozható fel a függőben lévő dinamikus tagsági frissítések, a rendszer az **összes csoport**tetején riasztást jelenít meg.
 
-![processing error message alerts](./media/groups-create-rule/processing-error.png)
+![hibaüzenetek feldolgozása – riasztások](./media/groups-create-rule/processing-error.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-These articles provide additional information on working with dynamic groups in Azure AD.
+Ezek a cikkek további információkat nyújtanak a dinamikus csoportok Azure AD-beli használatáról.
 
-- For a complete reference to dynamic rule structure, see [Dynamic membership rule syntax](groups-dynamic-membership.md).
-- [Create a static membership group and add members](../fundamentals/active-directory-groups-create-azure-portal.md).
+- A dinamikus szabályok struktúrájára vonatkozó teljes körű hivatkozásért lásd: [dinamikus tagsági szabály szintaxisa](groups-dynamic-membership.md).
+- [Hozzon létre egy statikus tagsági csoportot, és vegyen fel tagokat](../fundamentals/active-directory-groups-create-azure-portal.md).

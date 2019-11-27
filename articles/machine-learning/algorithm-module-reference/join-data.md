@@ -1,7 +1,7 @@
 ---
-title: 'Join Data: Module Reference'
+title: 'Csatlakozás az adatkezeléshez: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
+description: Megtudhatja, hogyan egyesítheti az adatkészleteket az Azure Machine Learning csatlakoztatási csatlakozás adatmoduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,54 +18,54 @@ ms.locfileid: "74232621"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
-This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Csatlakozás** adatmodulja két adatkészlet egyesítéséhez egy adatbázis-stílusú csatlakozási művelettel.  
 
-## <a name="how-to-configure-join-data"></a>How to configure Join Data
+## <a name="how-to-configure-join-data"></a>Csatlakozási adatbevitel konfigurálása
 
-To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
+Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak kell kapcsolódnia. A több oszlopot használó összetett kulcsok is támogatottak. 
 
-1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
+1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **illesztési adat** modult a folyamatba. 
 
-    You can find the module in the **Data Transformation** category, under **Manipulation**.
+    A modult az **Adatátalakítási** kategóriában, a **manipuláció**szakaszban találja.
 
-1. Connect the datasets to the **Join Data** module. 
+1. Csatlakoztassa az adatkészleteket az **adategyesítési** modulhoz. 
  
-1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
+1. Válassza az **oszlop indítása lehetőséget** , hogy kiválassza a kulcs oszlop (oka) t. Ne felejtse el kiválasztani a bal és a jobb oldali bemenetek oszlopait.
 
-    For a single key:
+    Egyetlen kulcs esetén:
 
-    Select a single key column for both inputs.
+    Válassza ki mindkét bemenet egyetlen kulcs oszlopát.
     
-    For a composite key:
+    Összetett kulcs esetén:
 
-    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
+    Válassza ki az összes kulcsfontosságú oszlopot a bal oldali és a jobb oldali bemenetből ugyanabba a sorrendbe. Az **illesztési** adatmodul akkor csatlakozik a táblákhoz, amikor az összes kulcs oszlop egyezik. Ha az oszlop sorrendje nem egyezik meg az eredeti táblával, ellenőrizze, hogy az **Ismétlődések engedélyezése és az oszlopok megőrzése beállítás engedélyezve van-e** . 
 
-    ![column-selector](media/module/join-data-column-selector.png)
+    ![oszlop – választó](media/module/join-data-column-selector.png)
 
 
-1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
+1. Jelölje be az **egyeztetési eset** beállítást, ha meg szeretné őrizni a kis-és nagybetűk megkülönböztetését egy szöveges oszlophoz való csatlakozáskor. 
    
-1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
+1. Az **összekapcsolás típusa** legördülő listával adhatja meg, hogy az adatkészletek hogyan legyenek egyesítve.  
   
-    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
+    * **Belső illesztés**: a leggyakoribb csatlakozási művelet a *belső* illesztés. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
   
-    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
+    * **Bal külső illesztés**: a bal oldali *külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
   
-    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
+    * **Teljes külső illesztés**: a *teljes külső illesztés* a bal oldali táblából (**tábla1**) és a jobb oldali táblából (**table2**) származó összes sort adja vissza.  
   
-         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
+         A másik tábla minden olyan sorához, amely nem rendelkezik egyező sorokkal, az eredmény tartalmaz egy sort, amely a hiányzó értékeket tartalmazza.  
   
-    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
+    * **Bal oldali félig illesztés**: a *bal oldali fél* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
 
-1. For the option **Keep right key columns in joined table**:
+1. A **jobb oldali kulcsok oszlopai az összekapcsolt táblában**:
 
-    * Select this option to view the keys from both input tables.
-    * Deselect to only return the key columns from the left input.
+    * Ezzel a beállítással mindkét bemeneti táblából megtekintheti a kulcsokat.
+    * Törölje a jelölést, hogy csak a bal oldali bemenetből származó kulcs oszlopokat adja vissza.
 
-1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
+1. Futtassa a folyamatot, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
 
-1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **illesztési adatokat** > **results adatkészlet** > **Megjelenítés**elemre.
 
 ## <a name="next-steps"></a>Következő lépések
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

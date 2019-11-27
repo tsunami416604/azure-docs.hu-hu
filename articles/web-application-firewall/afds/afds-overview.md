@@ -1,6 +1,6 @@
 ---
-title: What is Azure web application firewall on Azure Front Door?
-description: Learn how Azure web application firewall on Azure Front Door service protects your web applications from malicious attacks.
+title: Mi az Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón?
+description: Ismerje meg, hogy az Azure-webalkalmazások tűzfala az Azure bejárati ajtó szolgáltatásában Hogyan védi a webalkalmazásait a kártékony támadások ellen.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -14,103 +14,103 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406202"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall on Azure Front Door
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
 
-Azure Web Application Firewall (WAF) on Azure Front Door provides centralized protection for your web applications that are globally delivered using Azure Front Door. A tűzfal célja a webszolgáltatások gyakori támadások és biztonsági rések elleni védelme, valamint a szolgáltatás magas rendelkezésre állásának biztosítása a megfelelőségi követelmények teljesítése mellett.
+Az Azure webalkalmazási tűzfal (WAF) az Azure-beli bejárati ajtón központosított védelmet biztosít az Azure bejárati ajtón keresztül globálisan elérhető webalkalmazások számára. A tűzfal célja a webszolgáltatások gyakori támadások és biztonsági rések elleni védelme, valamint a szolgáltatás magas rendelkezésre állásának biztosítása a megfelelőségi követelmények teljesítése mellett.
 
-WAF on Front Door is a global and centralized solution. It is deployed on Azure network edge locations around the globe and every incoming request for a WAF enabled web application delivered by Front Door is inspected at the network edge. This allows WAF to prevent malicious attacks close to the attack sources, before they enter your virtual network and offers global protection at scale without sacrificing performance. A WAF policy can be easily linked to any Front Door profile in your subscription and new rules can be deployed within minutes, allowing you to respond quickly to changing threat patterns.
+A WAF globális és központosított megoldás. Üzembe helyezése az Azure hálózati peremhálózati helyein történik a világ minden részén, és minden bejövő kérelem egy WAF-t használó webalkalmazáshoz a bejárati ajtón keresztül, a hálózat peremén történik. Ez lehetővé teszi a WAF számára, hogy megakadályozza a rosszindulatú támadásokat a támadási forrásokhoz, mielőtt belépnek a virtuális hálózatba, és globális védelmet biztosítanak a teljesítmény feláldozása nélkül. A WAF szabályzatok könnyedén összekapcsolhatók az előfizetésben lévő bejárati ajtókkal, és az új szabályok percek alatt üzembe helyezhetők, így gyorsan reagálhat a veszélyforrások változására.
 
-![Azure web application firewall](../media/overview/wafoverview.png)
+![Azure webalkalmazási tűzfal](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF policy and rules
+## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
-You can configure a WAF policy and associate that policy to one or more Front Door front-ends for protection. A WAF policy consists of two types of security rules:
+Beállíthat egy WAF szabályzatot, és hozzárendelheti a szabályzatot egy vagy több előtér-előtérben a védelemhez. A WAF szabályzatok a biztonsági szabályok két típusát alkotják:
 
-- custom rules that are authored by the customer.
+- az ügyfél által létrehozott egyéni szabályok.
 
-- managed rule sets that are a collection of Azure-managed pre-configured set of rules.
+- felügyelt szabálykészlet, amely az Azure által felügyelt előre konfigurált szabályok gyűjteménye.
 
-When both are present, custom rules are processed before processing the rules in a managed rule set. A rule is made of a match condition, a priority, and an action. Action types supported are: ALLOW, BLOCK, LOG, and REDIRECT. You can create a fully customized policy that meets your specific application protection requirements by combining managed and custom rules.
+Ha mindkettő létezik, az egyéni szabályok feldolgozása a felügyelt szabálykészlet szabályainak feldolgozása előtt történik meg. A szabályok egyeztetési feltételből, prioritásból és műveletből állnak. Támogatott tevékenységtípusok: Engedélyezés, LETILTÁS, napló és átirányítás. A felügyelt és az egyéni szabályok kombinálásával teljes mértékben testre szabott szabályzatot hozhat létre, amely megfelel az adott alkalmazás védelmi követelményeinek.
 
-Rules within a policy are processed in a prioritized order where priority is a unique integer that defines the order of rules being processed. Smaller integer value denotes a higher priority and those are evaluated before rules with a higher integer value. Once a rule is matched, the corresponding action that was defined in the rule is applied to the request. Once such a match is processed, rules with lower priorities are not processed further.
+A szabályzaton belüli szabályok feldolgozása egy rangsorolt sorrendben történik, ahol a prioritás egy egyedi egész szám, amely meghatározza a feldolgozott szabályok sorrendjét. A kisebb egész szám nagyobb prioritást jelöl, és a rendszer kiértékeli azokat, mielőtt a szabályok magasabb egész értékkel rendelkeznek. A szabály egyeztetése után a szabályban definiált megfelelő művelet lesz alkalmazva a kérelemre. Az ilyen egyezés feldolgozása után az alacsonyabb prioritású szabályok feldolgozása még nem történik meg.
 
-A web application delivered by Front Door can have only one WAF policy associated with it at a time. However, you can have a Front Door configuration without any WAF policies associated with it. If a WAF policy is present, it is replicated to all of our edge locations to ensure consistency in security policies across the world.
+Egy bejárati ajtó által szállított webalkalmazásnak egyszerre csak egy WAF szabályzata lehet társítva. Azonban a WAF szabályzatok nélkül is beállíthatja a bejárati ajtót. Ha van WAF-házirend, a rendszer replikálja az összes peremhálózati helyszínre, hogy biztosítsa az egységességet a globális biztonsági házirendek között.
 
-## <a name="waf-modes"></a>WAF modes
+## <a name="waf-modes"></a>WAF módok
 
-WAF policy can be configured to run in the following two modes:
+A WAF házirend a következő két módban való futtatásra konfigurálható:
 
-- **Detection mode:** When run in detection mode, WAF does not take any other actions other than monitors and logs the request and its matched WAF rule to WAF logs. You can turn on logging diagnostics for Front Door (when using portal, this can be achieved by going to the **Diagnostics** section in the Azure portal).
+- **Észlelési mód:** Ha az észlelési módban fut, a WAF nem hajt végre más műveleteket, mint a figyelők, és naplózza a kérést és a megegyező WAF-szabályt a WAF-naplókhoz. Bekapcsolhatja a naplózási diagnosztikát a bejárati ajtóhoz (a portál használatakor ez a **diagnosztika** szakaszban érhető el a Azure Portal).
 
-- **Prevention mode:** When configured to run in prevention mode, WAF takes the specified action if a request matches a rule and if a match is found, no further rules with lower priority are evaluated. Any matched requests are also logged in the WAF logs.
+- **Megelőzési mód:** Ha a rendszer prevenciós módban történő futtatásra van konfigurálva, akkor a WAF a megadott műveletet hajtja végre, ha egy kérelem megfelel egy szabálynak, és ha talál egyezést, nem értékeli ki az alacsonyabb prioritású további szabályokat. A rendszer a WAF-naplókban is naplózza a megfeleltetett kérelmeket.
 
-## <a name="waf-actions"></a>WAF actions
+## <a name="waf-actions"></a>WAF műveletek
 
-WAF customers can choose to run from one of the actions when a request matches a rule’s conditions:
+A WAF-ügyfelek az egyik műveletből választhatnak, ha egy kérelem megfelel egy szabály feltételeinek:
 
-- **Allow:**  Request passes through the WAF and is forwarded to back-end. No further lower priority rules can block this request.
-- **Block:** The request is blocked and WAF sends a response to the client without forwarding the request to the back-end.
-- **Log:**  Request is logged in the WAF logs and WAF continues evaluating lower priority rules.
-- **Redirect:** WAF redirects the request to the specified URI. The URI specified is a policy level setting. Once configured, all requests that match the **Redirect** action will be sent to that URI.
+- **Engedélyezés:**  A kérelem áthalad a WAF, és a rendszer továbbítja a háttérbe. Az alacsonyabb prioritású szabályok nem tudják blokkolni ezt a kérést.
+- **Letiltás:** A kérés le van tiltva, és a WAF választ küld az ügyfélnek, és nem továbbítja a kérést a háttér felé.
+- **Napló:**  A rendszer naplózza a kérelmet a WAF-naplókban, és a WAF folytatja az alacsonyabb prioritású szabályok kiértékelését.
+- **Átirányítás:** A WAF átirányítja a kérést a megadott URI-ra. A megadott URI egy házirendi szintű beállítás. A konfigurálást követően a rendszer az **átirányítási** műveletnek megfelelő összes kérelmet elküldi az adott URI-nak.
 
-## <a name="waf-rules"></a>WAF rules
+## <a name="waf-rules"></a>WAF-szabályok
 
-A WAF policy can consist of two types of security rules - custom rules, authored by the customer and managed rulesets, Azure-managed pre-configured set of rules.
+A WAF szabályzatok két különböző típusú biztonsági szabályt tartalmazhatnak – egyéni szabályokat, amelyeket az ügyfél és a felügyelt szabályrendszerek, valamint az Azure által felügyelt előre konfigurált szabályok határoznak meg.
 
-### <a name="custom-authored-rules"></a>Custom authored rules
+### <a name="custom-authored-rules"></a>Egyéni létrehozott szabályok
 
-You can configure custom rules WAF as follows:
+Az egyéni szabályokat a következőképpen állíthatja be: WAF
 
-- **IP allow list and block list:** You can configure custom rules to control access to your web applications based on a list of client IP addresses or IP address ranges. Both IPv4 and IPv6 address types are supported. This list can be configured to either block or allow those requests where the source IP matches an IP in the list.
+- **IP-engedélyezési lista és blokkolási lista:** Egyéni szabályokat is beállíthat a webalkalmazásokhoz való hozzáférés vezérlésére az ügyfél IP-címeinek vagy IP-címtartományok listája alapján. Az IPv4-és IPv6-címek egyaránt támogatottak. A lista beállítható úgy, hogy blokkolja vagy engedélyezze ezeket a kéréseket, ahol a forrás IP-cím megegyezik a listában szereplő IP-címekkel.
 
-- **Geographic based access control:** You can configure custom rules to control access to your web applications based on the country code associated with a client’s IP address.
+- **Földrajzi alapú hozzáférés-vezérlés:** Egyéni szabályokat is beállíthat a webalkalmazásokhoz való hozzáférés vezérléséhez az ügyfél IP-címéhez társított országkód alapján.
 
-- **HTTP parameters-based access control:** You can configure custom rules based on string matching HTTP/HTTPS request parameters such as query strings, POST args, Request URI, Request Header, and Request Body.
+- **Http-paraméterek-alapú hozzáférés-vezérlés:** Az egyéni szabályokat beállíthatja a HTTP/HTTPS-kérelmek paramétereinek megfelelő karakterláncok, például a lekérdezési karakterláncok, az argumentumok, a kérelem URI-ja, a kérelem fejléce és a kérelem törzse alapján.
 
-- **Request method-based access control:** You may configure custom rules based on the HTTP request method of the request such as GET, PUT, or HEAD.
+- **Kérelem metódus-alapú hozzáférés-vezérlése:** A kérelem HTTP-kérelmi módszere alapján egyéni szabályokat is beállíthat, például GET, PUT vagy HEAD.
 
-- **Size constraint:** You can configure custom rules based on the lengths of specific parts of a request such as query string, Uri, or request body.
+- **Méret megkötése:** Egyéni szabályokat a kérelem adott részeinek hosszán, például a lekérdezési karakterlánc, az URI vagy a kérelem törzse alapján is beállíthat.
 
-- **Rate limiting rules:** A rate control rule is to limit abnormal high traffic from any client IP. You may configure a threshold on the number of web requests allowed from a client IP during a one-minute duration. This is distinct from an IP list-based allow/block custom rule that either allows all or blocks all request from a client IP. Rate limiting can be combined with additional match conditions such as HTTP(S) parameters matching for granular rate control.
+- **Korlátozási szabályok:** A díjszabás-ellenőrzési szabály az ügyfél IP-címétől érkező rendellenes nagy forgalom korlátozása. Egy percen belül beállíthat egy küszöbértéket az ügyfél IP-címén engedélyezett webes kérelmek számára. Ez különbözik egy olyan IP-lista alapú engedélyezési/letiltási egyéni szabállyal, amely engedélyezi vagy letiltja az ügyfél IP-címéről érkező összes kérést. A díjszabási korlátozás kombinálható olyan további egyeztetési feltételekkel, mint például a HTTP (S) paraméterek, amelyek megfelelnek a részletes díjszabási szabályozásnak.
 
-### <a name="azure-managed-rule-sets"></a>Azure-managed rule sets
+### <a name="azure-managed-rule-sets"></a>Azure által felügyelt szabálykészlet
 
-Azure-managed rule sets provide an easy way to deploy protection against a common set of security threats. Since such rulesets are managed by Azure, the rules are updated as needed to protect against new attack signatures. At public preview, the Azure-managed Default Rule Set includes rules against the following threat categories:
+Az Azure által felügyelt szabálykészlet egyszerű módszert kínál a védelem közös biztonsági fenyegetésekkel való üzembe helyezésére. Mivel az ilyen szabályrendszerek az Azure felügyeli, a szabályok az új támadási aláírások elleni védelemhez szükséges módon frissülnek. A nyilvános előzetes verzióban az Azure által felügyelt alapértelmezett szabálykészlet a következő veszélyforrás-kategóriákra vonatkozó szabályokat tartalmazza:
 
-- Cross-site scripting
-- Java attacks
-- Local file inclusion
-- PHP injection attacks
-- Remote command execution
-- Remote file inclusion
-- Session fixation
+- Helyek közötti parancsfájlok futtatása
+- Java-támadások
+- Helyi fájl felvétele
+- PHP-injektálási támadások
+- Távoli parancs végrehajtása
+- Távoli fájl belefoglalása
+- Munkamenet-rögzítés
 - SQL-injektálás elleni védelem
-- Protocol attackers
+- Protokoll-támadók
 
-The version number of the Default Rule Set will increment when new attack signatures are added to the rule set.
-Default Rule Set is enabled by default in Detection mode in your WAF policies. You can disable or enable individual rules within the Default Rule Set to meet your application requirements. You can also set specific actions (ALLOW/BLOCK/REDIRECT/LOG) per rule. Default action is to BLOCK. In addition, custom rules can be configured in the same WAF policy if you wish to bypass any of the pre-configured rules in the Default Rule Set.
-Custom rules are always applied before rules in the Default Rule Set are evaluated. If a request matches a custom rule, corresponding rule action is applied, and the request is either blocked or passed through to back-end, without invocation of any further custom rules or the rules in the Default Rule Set. Furthermore, you have the option to remove Default Rule Set from your WAF policies.
+Az alapértelmezett szabálykészlet verziószáma akkor nő, amikor új támadási aláírásokat adnak hozzá a szabálykészlet számára.
+Az alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van a WAF házirendek észlelési módjában. Az alapértelmezett szabálykészlet egyes szabályait letilthatja vagy engedélyezheti az alkalmazásra vonatkozó követelmények teljesítéséhez. Szabályként beállíthat meghatározott műveleteket is (Engedélyezés/LETILTÁS/átirányítás/napló). Az alapértelmezett művelet a LETILTÁS. Emellett az egyéni szabályok is konfigurálhatók ugyanabban a WAF-házirendben, ha meg szeretné kerülni az alapértelmezett szabálykészlet összes előre konfigurált szabályát.
+Az egyéni szabályokat a rendszer mindig alkalmazza az alapértelmezett szabálykészlet szabályainak kiértékelése előtt. Ha egy kérelem megfelel egy egyéni szabálynak, a rendszer alkalmazza a megfelelő szabályt, és a kérést letiltják vagy átadják a háttérnek a további egyéni szabályok vagy az alapértelmezett szabálykészlet szabályainak meghívása nélkül. Emellett lehetősége van az alapértelmezett szabálykészlet eltávolítására is a WAF-házirendekben.
 
 
-### <a name="bot-protection-rule-set-preview"></a>Bot protection rule set (preview)
+### <a name="bot-protection-rule-set-preview"></a>Robot Protection-szabály beállítása (előzetes verzió)
 
-A managed bot protection rule set can be enabled for your WAF to take custom actions on requests from known bot categories. There are three bot categories supported: Bad Bots, Good Bots, and Unknown Bots. Bot signatures are managed and dynamically updated by the WAF platform. Malicious IP addresses for Bad Bots are sourced from the Microsoft Threat Intelligence feed. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) powers Microsoft Threat Intelligence and is used by multiple services including Azure Security Center. Good Bots include validated search engines. Unknown categories include additional bot groups. You may set custom actions to block, allow, log, or redirect for different types of bots.
+A felügyelt robot védelmi szabálykészlet engedélyezhető a WAF számára, hogy egyéni műveleteket hajtson végre az ismert bot-kategóriákból érkező kérésekre. Három bot-kategória támogatott: rossz robotok, jó robotok és ismeretlen robotok. A robot-aláírásokat a WAF platform felügyeli és dinamikusan frissíti. A hibás robotok kártékony IP-címei a Microsoft Threat Intelligence-hírcsatornából származnak. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja. A jó robotok közé tartoznak az ellenőrzött keresőmotorok. Az ismeretlen kategóriák közé tartoznak a további robot-csoportok. Egyéni műveleteket is beállíthat a különböző típusú robotok blokkolásához, engedélyezéséhez, naplózásához és átirányításához.
 
-![Bot Protection Rule Set](../media/afds-overview/botprotect2.png)
+![Robot Protection-szabály beállítása](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> The Bot protection rule set is currently in public preview and is provided with a preview service level agreement. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel rendelkezik. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-If bot protection is enabled, incoming requests that match bot rules are logged at the FrontdoorWebApplicationFirewallLog log. You may access WAF logs from a storage account, event hub, or log analytics.
+Ha a bot Protection engedélyezve van, a rendszer a bot-szabályoknak megfelelő bejövő kérelmeket a FrontdoorWebApplicationFirewallLog naplóban naplózza. A WAF-naplókat egy Storage-fiókból, az Event hub-ból vagy a log Analyticsből is elérheti.
 
 ## <a name="configuration"></a>Konfiguráció
 
-Configuring and deploying all WAF rule types is fully supported using Azure portal, REST APIs, Azure Resource Manager templates, and Azure PowerShell.
+Az összes WAF konfigurálása és telepítése teljes mértékben támogatott Azure Portal, REST API-k, Azure Resource Manager sablonok és Azure PowerShell használatával.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
-Monitoring for WAF at Front Door is integrated with Azure Monitor to track alerts and easily monitor traffic trends.
+A WAF figyelése a bejárati ajtón integrált Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [Web Application Firewall on Azure Application Gateway](../ag/ag-overview.md)
+- Ismerje meg az Azure-beli [webalkalmazási tűzfalat Application Gateway](../ag/ag-overview.md)

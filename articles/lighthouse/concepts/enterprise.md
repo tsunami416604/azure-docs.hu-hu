@@ -1,6 +1,6 @@
 ---
 title: Az Azure Lighthouse nagyvállalati forgatókönyvekben
-description: The capabilities of Azure Lighthouse can be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+description: Az Azure Lighthouse képességeinek használatával egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
@@ -12,51 +12,51 @@ ms.locfileid: "74463914"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Az Azure Lighthouse nagyvállalati forgatókönyvekben
 
-The most common scenario for [Azure Lighthouse](../overview.md) is a service provider managing resources in its customers’ Azure  Active Directory (Azure AD) tenants. However, the capabilities of Azure Lighthouse can also be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+Az [Azure Lighthouse](../overview.md) leggyakoribb forgatókönyve egy olyan szolgáltató, amely az ügyfelek Azure Active Directory (Azure ad) bérlők erőforrásait kezeli. Az Azure Lighthouse képességei azonban a több-bérlős felügyelet egyszerűsítésére is használhatók egy vállalaton belül, amely több Azure AD-bérlőt használ.
 
-## <a name="single-vs-multiple-tenants"></a>Single vs. multiple tenants
+## <a name="single-vs-multiple-tenants"></a>Egyetlen és több bérlő
 
-For most organizations, management is easier with a single Azure AD tenant. Having all resources within one tenant allows centralization of management tasks by designated users, user groups, or service principals within that tenant. We recommend using one tenant for your organization whenever possible.
+A legtöbb szervezet számára egyszerűbb a felügyelet egyetlen Azure AD-Bérlővel. Az egyik bérlőn belüli összes erőforrás lehetővé teszi a felügyeleti feladatok központosított kezelését a kijelölt felhasználók, felhasználói csoportok vagy az adott bérlőn belüli egyszerű szolgáltatásnév alapján. Ha lehetséges, javasoljuk, hogy egy bérlőt használjon a szervezete számára.
 
-At the same time, there are situations that may require an organization to maintain multiple Azure AD tenants. In some cases, this may be a temporary situation, as when acquisitions have taken place and a long-term tenant consolidation strategy will take some time to define. An organization may also need to maintain multiple tenants on an ongoing basis (due to wholly independent subsidiaries, geographical or legal requirements, and so on). In cases where a multi-tenant architecture is required, Azure delegated resource management can be used to centralize and streamline management operations. Subscriptions from multiple tenants can be onboarded for [Azure delegated resource management](azure-delegated-resource-management.md), allowing designated users in a managing tenant to perform [cross-tenant management functions](cross-tenant-management-experience.md) in a centralized and scalable manner.
+Ugyanakkor előfordulhatnak olyan helyzetek, amikor egy szervezetnek több Azure AD-bérlőt kell fenntartania. Bizonyos esetekben ez ideiglenes helyzet lehet, ahogy a beszerzések megtörténtek, és a hosszú távú bérlői konszolidációs stratégia eltarthat egy ideig. Előfordulhat, hogy egy szervezetnek folyamatosan több bérlőt kell fenntartania (a teljesen független leányvállalatok, földrajzi vagy jogi követelmények miatt stb.). Ha több-bérlős architektúrára van szükség, az Azure-beli delegált erőforrás-kezelés használatával központosíthatja és egyszerűsítheti a felügyeleti műveleteket. A több bérlőből származó előfizetések beállíthatók az Azure-beli [delegált erőforrás-kezeléshez](azure-delegated-resource-management.md), amely lehetővé teszi a kijelölt felhasználók számára, hogy központosított és méretezhető módon hajtsák végre a [bérlők közötti felügyeleti funkciókat](cross-tenant-management-experience.md) .
 
-## <a name="tenant-management-architecture"></a>Tenant management architecture
+## <a name="tenant-management-architecture"></a>Bérlői felügyeleti architektúra
 
-When centralizing management operations across multiple tenants, you’ll need to determine which tenant will include the users performing management operations for the other tenants. In other words, you will need to determine which tenant will be the managing tenant for other tenants.
+Ha több bérlő között központosítja a felügyeleti műveleteket, meg kell határoznia, hogy melyik bérlő fogja tartalmazni a többi bérlő felügyeleti műveleteit végző felhasználókat. Más szóval meg kell határoznia, hogy melyik bérlő lesz a bérlők kezelése más bérlők számára.
 
-For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
+Tegyük fel például, hogy a szervezet egyetlen Bérlővel rendelkezik, amely az *a bérlőt*hívja meg. A szervezet ezután két további bérlőt, a *B bérlőt* és a *C bérlőt*szerzi be, és olyan üzleti okokból áll rendelkezésére, amelyekkel külön bérlőként kell karbantartani őket.
 
-Your organization wants to use the same policy definitions, backup practices, and security processes across all tenants. Since you already have users (including user groups and service principals) that are responsible for performing these tasks within Tenant A, you can onboard all of the subscriptions within Tenant B and Tenant C so that those same users in Tenant A can perform those tasks.
+A szervezet ugyanazt a házirend-definíciót, biztonsági mentési gyakorlatot és biztonsági folyamatokat kívánja használni az összes bérlőn. Mivel az A bérlőn belül a feladatok végrehajtásához a felhasználók (beleértve A felhasználói csoportokat és az egyszerű szolgáltatásokat is) felelősek, a B bérlőn és a C bérlőn belüli összes előfizetést bevezetheti úgy, hogy az A bérlő azonos felhasználói is elvégezhetik ezeket feladatok.
 
-![Users in Tenant A managing resources in Tenant B and Tenant C](../media/enterprise-azure-lighthouse.jpg)
+![A bérlő felhasználói A B bérlőn és C bérlőn lévő erőforrásokat kezelhetik](../media/enterprise-azure-lighthouse.jpg)
 
-## <a name="security-and-access-considerations"></a>Security and access considerations
+## <a name="security-and-access-considerations"></a>Biztonsági és hozzáférési megfontolások
 
-In most enterprise scenarios, you’ll want to delegate a full subscription for Azure delegated resource management, although you can also delegate only specific resource groups within a subscription.
+A legtöbb nagyvállalati forgatókönyv esetében érdemes egy teljes előfizetést delegálni az Azure-beli delegált erőforrás-kezeléshez, de csak meghatározott erőforráscsoportokat delegálhat egy előfizetésen belül.
 
-Either way, be sure to [follow the principle of least privilege when defining which users will have access to resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Doing so helps to ensure that users only have the permissions needed to perform the required tasks and reduces the chance of inadvertent errors.
+Mindkét esetben ügyeljen arra, hogy [kövesse a legalacsonyabb jogosultsági szint elvét, amikor meghatározza, hogy mely felhasználók férhetnek hozzá az erőforrásokhoz](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Így biztosíthatja, hogy a felhasználók csak a szükséges feladatok elvégzéséhez szükséges engedélyekkel rendelkezzenek, és csökkentik a véletlen hibák esélyét.
 
-Azure Lighthouse and Azure delegated resource management only provide logical links between a managing tenant and managed tenants, rather than physically moving data or resources. Furthermore, the access always goes in only one direction, from the managing tenant to the managed tenants.  Users and groups in the managing tenant should continue to use multi-factor authentication when performing management operations on managed tenant resources.
+Az Azure Lighthouse és az Azure-beli meghatalmazott erőforrás-kezelés csak logikai kapcsolatokat biztosít a bérlők és a felügyelt bérlők között, és nem fizikailag helyezi át az adatátvitelt és az erőforrásokat. Továbbá a hozzáférés mindig csak egy irányba mutat, a bérlő kezelése a felügyelt bérlők felé.  A kezelő bérlő felhasználói és csoportjai továbbra is használhatják a többtényezős hitelesítést a felügyelt bérlői erőforrásokon végzett felügyeleti műveletek végrehajtásakor.
 
-Enterprises with internal or external governance and compliance guardrails can use [Azure Activity logs](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) to meet their transparency requirements. When enterprise tenants have established managing and managed tenant relationships, users in each tenant can monitor and gain visibility to actions taken by the users in the other tenant by viewing logged activity.
+A belső vagy külső irányítási és megfelelőségi guardrails rendelkező vállalatok az [Azure-tevékenység naplóit](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) használhatják az átláthatósági követelmények teljesítéséhez. Ha a vállalati bérlők felügyeleti és felügyelt bérlői kapcsolatokat létesítettek, az egyes bérlők felhasználói a naplózott tevékenységek megtekintésével megtekinthetik és láthatják a másik bérlő felhasználói által végrehajtott műveleteket.
 
-## <a name="onboarding-process-considerations"></a>Onboarding process considerations
+## <a name="onboarding-process-considerations"></a>Előkészítési folyamat szempontjai
 
-Subscriptions (or resource groups within a subscription) can be onboarded to Azure delegated resource management either by deploying Azure Resource Manager templates or through Managed Services offers published to Azure Marketplace, either privately or publicly.
+Az előfizetések (vagy az előfizetésen belüli erőforráscsoportok) az Azure-beli delegált erőforrás-kezelésbe beállíthatók, akár Azure Resource Manager sablonok üzembe helyezésével, akár az Azure Marketplace-en közzétett felügyelt szolgáltatásokkal, akár magántulajdonban, akár nyilvánosan.
 
-Since enterprise users will normally be able to gain direct access to the enterprise’s tenants, and there’s no need to market or promote a management offering, it’s generally faster and more straightforward to deploy directly with Azure Resource Manager templates. While we refer to service providers and customers in the [onboarding guidance](../how-to/onboard-customer.md), enterprises can use the same processes.
+Mivel a vállalati felhasználók általában közvetlenül hozzáférhetnek a vállalat bérlői számára, és nincs szükség a felügyeleti ajánlatok értékesítésére vagy előléptetésére, általában gyorsabb és egyszerűbb a Azure Resource Manager-sablonokkal való üzembe helyezés. Noha a [bevezetési útmutatóban](../how-to/onboard-customer.md)a szolgáltatókra és az ügyfelekre is hivatkozunk, a vállalatok ugyanezeket a folyamatokat használhatják.
 
-If you prefer, tenants within an enterprise can be onboarded by [publishing a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). To ensure that the offer is only available to the appropriate tenants, be sure that your plans are marked as private. With a private plan, you can provide the subscription IDs for each tenant that you plan to onboard, and no one else will be able to get your offer.
+Ha szeretné, a vállalaton belüli bérlőket a [felügyelt szolgáltatások Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)lehet előkészíteni. Annak biztosítása érdekében, hogy az ajánlat csak a megfelelő bérlők számára legyen elérhető, győződjön meg arról, hogy a csomagok magánjellegűként vannak megjelölve. Egy privát csomaggal megadhatja a bevezetéshez tervezett összes bérlő előfizetés-azonosítóját, és senki más nem fogja tudni felvenni az ajánlatot.
 
-## <a name="terminology-notes"></a>Terminology notes
+## <a name="terminology-notes"></a>Terminológiai megjegyzések
 
-For cross-tenant management within the enterprise, references to service providers in the Azure Lighthouse documentation can be understood to apply to the managing tenant within an enterprise—that is, the tenant that includes the users who will manage resources in other tenants through Azure delegated resource management. Similarly, references to customers can be understood to apply to the tenants that are delegating resources to be managed through users in the managing tenant.
+A vállalaton belüli több-bérlős felügyelet esetén az Azure Lighthouse dokumentációjában található szolgáltatókra való hivatkozásokat a vállalaton belüli felügyeletre, azaz az erőforrásokat kezelő felhasználókat tartalmazó bérlőre kell alkalmazni. más bérlők számára az Azure-beli delegált erőforrás-kezeléssel. Hasonlóképpen, az ügyfelekre mutató hivatkozások is megtekinthetők azokra a bérlők esetében, amelyek az erőforrásokat a bérlők felügyelete alatt lévő felhasználókon keresztül kezelik.
 
-For instance, in the example described above, Tenant A can be thought of as the service provider tenant (the managing tenant) and Tenant B and Tenant C can be thought of as the customer tenants.
+Például a fent ismertetett példában az A bérlő a szolgáltató bérlője (a bérlők kezelése) és a B bérlő, a C bérlő pedig az ügyfél bérlője lehet.
 
-In that example, Tenant A users with the appropriate permissions can [view and manage delegated resources](../how-to/view-manage-customers.md) in the **My customers** page of the Azure portal. Likewise, Tenant B and Tenant C users with the appropriate permissions can [view and manage the resources that have been delegated](../how-to/view-manage-service-providers.md) to Tenant A in the **Service providers** page of the Azure portal.
+Ebben a példában a bérlő a megfelelő engedélyekkel rendelkező felhasználók [megtekinthetik és kezelhetik a delegált erőforrásokat](../how-to/view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján. Hasonlóképpen, a B bérlő és a bérlő C felhasználója a megfelelő engedélyekkel [megtekintheti és kezelheti az a bérlőhöz delegált erőforrásokat](../how-to/view-manage-service-providers.md) a Azure Portal **szolgáltató** lapján.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
+- További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
 - Megismerheti az [Azure által delegált erőforrás-kezelés](azure-delegated-resource-management.md) részleteit.

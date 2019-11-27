@@ -1,6 +1,6 @@
 ---
-title: Evaluate the impact of a new Azure policy
-description: Understand the process to follow when introducing a new policy definition into your Azure environment.
+title: Új Azure-házirend hatásának kiértékelése
+description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe való bevezetésének folyamatával.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
@@ -10,67 +10,67 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463526"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Evaluate the impact of a new Azure policy
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Új Azure-házirend hatásának kiértékelése
 
-Azure Policy is a powerful tool for managing your Azure resources to business standards and to meet compliance needs. When people, processes, or pipelines create or update resources, Azure Policy reviews the request. When the policy definition effect is [Append](./effects.md#deny) or [DeployIfNotExists](./effects.md#deployifnotexists), Policy alters the request or adds to it. When the policy definition effect is [Audit](./effects.md#audit) or [AuditIfNotExists](./effects.md#auditifnotexists), Policy causes an Activity log entry to be created. And when the policy definition effect is [Deny](./effects.md#deny), Policy stops the creation or alteration of the request.
+A Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványokhoz való felügyeletéhez és a megfelelőségi igények kielégítéséhez. Ha a felhasználók, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítenek, Azure Policy áttekinti a kérést. Ha a házirend-definíció hatása [Hozzáfűzés](./effects.md#deny) vagy [DeployIfNotExists](./effects.md#deployifnotexists), a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíció hatása a [naplózás](./effects.md#audit) vagy a [AuditIfNotExists](./effects.md#auditifnotexists), a házirend létrehoz egy műveletnapló-bejegyzést. Ha a házirend-definíció hatása [megtagadva](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
 
-These outcomes are exactly as desired when you know the policy is defined correctly. However, it's important to validate a new policy works as intended before allowing it to change or block work. The validation must ensure only the intended resources are determined to be non-compliant and no compliant resources are incorrectly included (known as a _false positive_) in the results.
+Ezek az eredmények pontosan olyankor szükségesek, amikor tudja, hogy a szabályzat helyesen van definiálva. Fontos azonban, hogy egy új szabályzatot a kívánt módon érvényesítse, mielőtt engedélyezi, hogy megváltoztassa vagy letiltsa a munkát. Az ellenőrzésnek biztosítania kell, hogy csak a kívánt erőforrások legyenek nem megfelelőek, és a rendszer helytelenül tartalmazza a megfelelő erőforrásokat az eredményekben ( _hamis pozitív_néven).
 
-The recommended approach to validating a new policy definition is by following these steps:
+Az új házirend-definíció érvényesítéséhez ajánlott módszer a következő lépések végrehajtása:
 
-- Tightly define your policy
-- Audit your existing resources
-- Audit new or updated resource requests
-- Deploy your policy to resources
-- Folyamatos felügyelet
+- A szabályzat szigorú meghatározása
+- Meglévő erőforrások naplózása
+- Új vagy frissített erőforrás-kérelmek naplózása
+- A szabályzat üzembe helyezése az erőforrásokon
+- Folyamatos monitorozás
 
-## <a name="tightly-define-your-policy"></a>Tightly define your policy
+## <a name="tightly-define-your-policy"></a>A szabályzat szigorú meghatározása
 
-It's important to understand how the business policy is implemented as a policy definition and the relationship of Azure resources with other Azure services. This step is accomplished by [identifying the requirements](../tutorials/create-custom-policy-definition.md#identify-requirements) and [determining the resource properties](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
-But it's also important to see beyond the narrow definition of your business policy. Does your policy state for example "All Virtual Machines must..."? What about other Azure services that make use of VMs, such as HDInsight or AKS? When defining a policy, we must consider how this policy impacts resources that are used by other services.
+Fontos tisztában lennie azzal, hogy az üzleti házirend hogyan lett implementálva házirend-definícióként, illetve az Azure-erőforrások más Azure-szolgáltatásokkal való kapcsolatával. Ez a lépés a [követelmények azonosításával](../tutorials/create-custom-policy-definition.md#identify-requirements) és [az erőforrás-tulajdonságok meghatározásával](../tutorials/create-custom-policy-definition.md#determine-resource-properties)valósítható meg.
+Azonban fontos, hogy az üzleti szabályzat szűk definícióján túl is látható legyen. A házirend állapota például az "összes Virtual Machines kell lennie..."? Mi a helyzet a virtuális gépeket használó egyéb Azure-szolgáltatásokkal, például a HDInsight vagy az AK-val? A szabályzatok meghatározásakor figyelembe kell venni, hogy ez a szabályzat milyen hatással van a más szolgáltatások által használt erőforrásokra.
 
-For this reason, your policy definitions should be as tightly defined and focused on the resources and the properties you need to evaluate for compliance as possible.
+Emiatt a házirend-definícióknak szigorúan meghatározottnak kell lenniük, és az erőforrásokra és a megfelelőség kiértékeléséhez szükséges tulajdonságokra kell összpontosítaniuk.
 
-## <a name="audit-existing-resources"></a>Audit existing resources
+## <a name="audit-existing-resources"></a>Meglévő erőforrások naplózása
 
-Before looking to manage new or updated resources with your new policy definition, it's best to see how it evaluates a limited subset of existing resources, such as a test resource group. Use the [enforcement mode](./assignment-structure.md#enforcement-mode)
-_Disabled_ (DoNotEnforce) on your policy assignment to prevent the [effect](./effects.md) from triggering or activity log entries from being created.
+Mielőtt új vagy frissített erőforrásokat szeretne felügyelni az új szabályzat-definícióval, érdemes megtekinteni, hogyan értékeli ki a meglévő erőforrások (például egy tesztelési erőforráscsoport) korlátozott részhalmazát. A szabályzat-hozzárendelésben a [kényszerítési mód](./assignment-structure.md#enforcement-mode)
+_Letiltva_ (DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenységi naplóbejegyzések létrehozását.
 
-This step gives you a chance to evaluate the compliance results of the new policy on existing resources without impacting work flow. Check that no compliant resources are marked as non-compliant (_false positive_) and that all the resources you expect to be non-compliant are marked correctly.
-After the initial subset of resources validates as expected, slowly expand the evaluation to all existing resources.
+Ez a lépés lehetőséget ad arra, hogy kiértékelje a meglévő erőforrásokra vonatkozó új szabályzat megfelelőségi eredményeit anélkül, hogy ez hatással lenne a munkahelyi folyamatra. Győződjön meg arról, hogy a megfelelő erőforrások nem megfelelőként vannak megjelölve (_hamis pozitív_), és hogy az összes várhatóan meg nem felelő erőforrás helyesen van megjelölve.
+Miután az erőforrások kezdeti részhalmaza ellenőrzi a várt módon, lassan bontsa ki a kiértékelést az összes meglévő erőforrásra.
 
-Evaluating existing resources in this way also provides an opportunity to remediate non-compliant resources before full implementation of the new policy. This cleanup can be done manually or through a [remediation task](../how-to/remediate-resources.md) if the policy definition effect is _DeployIfNotExists_.
+A meglévő erőforrások ily módon történő kiértékelése lehetőséget biztosít a nem megfelelő erőforrások javítására az új szabályzat teljes megvalósítása előtt. Ez a tisztítás manuálisan vagy [szervizelési feladaton](../how-to/remediate-resources.md) végezhető el, ha a házirend-definíciós hatás _DeployIfNotExists_.
 
-## <a name="audit-new-or-updated-resources"></a>Audit new or updated resources
+## <a name="audit-new-or-updated-resources"></a>Új vagy frissített erőforrások naplózása
 
-Once you've validated your new policy definition is reporting correctly on existing resources, it's time to look at the impact of the policy when resources get created or updated. If the policy definition supports effect parameterization, use [Audit](./effects.md#audit). This configuration allows you to monitor the creation and updating of resources to see if the new policy definition triggers an entry in Azure Activity log for a resource that is non-compliant without impacting existing work or requests.
+Miután ellenőrizte, hogy az új házirend-definíció helyesen van-e bejelentve a meglévő erőforrásokon, ideje, hogy megtekintse a házirend hatását az erőforrások létrehozásakor vagy frissítésekor. Ha a házirend-definíció támogatja a Effect paraméterezés, használja a [naplózást](./effects.md#audit). Ez a konfiguráció lehetővé teszi az erőforrások létrehozásának és frissítésének figyelését annak ellenőrzéséhez, hogy az új házirend-definíció egy olyan erőforráshoz tartozó bejegyzést indít el az Azure-beli tevékenység naplójában, amely nem felel meg a meglévő munka vagy kérések befolyásolása nélkül.
 
-It's recommended to both update and create new resources that match your policy definition to see that the _Audit_ effect is correctly being triggered when expected. Be on the lookout for resource requests that shouldn't be impacted by the new policy definition that trigger the _Audit_ effect.
-These impacted resources are another example of _false positives_ and must be fixed in the policy definition before full implementation.
+Azt javasoljuk, hogy frissítsen és hozzon létre olyan új erőforrásokat, amelyek megfelelnek a szabályzat definíciójának, hogy a _naplózási_ effektus a várt módon induljon el. Olyan erőforrás-kérelmeket kell kikeresni, amelyeket az új házirend-definíció nem befolyásolhat a _naplózás_ hatásának kiváltása esetén.
+Ezek az érintett erőforrások egy másik példa a _téves pozitív értékekre_ , és a házirend-definícióban kell rögzíteni a teljes megvalósítás előtt.
 
-In the event the policy definition is changed at this stage of testing, it's recommended to begin the validation process over with the auditing of existing resources. A change to the policy definition for a _false positive_ on new or updated resources is likely to also have an impact on existing resources.
+Abban az esetben, ha a szabályzat definíciója módosul a tesztelési fázisban, ajánlott megkezdeni az ellenőrzési folyamatot a meglévő erőforrások naplózásával. Az új vagy frissített erőforrásokra vonatkozó _hamis pozitív_ házirend-definíció módosítása valószínűleg hatással lesz a meglévő erőforrásokra is.
 
-## <a name="deploy-your-policy-to-resources"></a>Deploy your policy to resources
+## <a name="deploy-your-policy-to-resources"></a>A szabályzat üzembe helyezése az erőforrásokon
 
-After completing validation of your new policy definition with both existing resources and new or updated resource requests, you begin the process of implementing the policy. It's recommended to create the policy assignment for the new policy definition to a subset of all resources first, such as a resource group. After validating initial deployment, extend the scope of the policy to broader and broader levels, such as subscriptions and management groups. This expansion is achieved by removing the assignment and creating a new one at the target scopes until it's assigned to the full scope of resources intended to be covered by your new policy definition.
+Miután befejezte az új házirend-definíció érvényesítését a meglévő erőforrásokkal és az új vagy frissített erőforrás-kérelmekkel, megkezdi a szabályzat megvalósításának folyamatát. Azt javasoljuk, hogy az új házirend-definícióhoz tartozó szabályzat-hozzárendelést először az összes erőforrás egy részhalmazára, például egy erőforráscsoporthoz hozza létre. A kezdeti telepítés ellenőrzése után kiterjesztheti a házirend hatókörét szélesebb és szélesebb szintekre, például az előfizetésekre és a felügyeleti csoportokra. Ezt a terjeszkedést úgy érheti el, ha eltávolítja a hozzárendelést, és létrehoz egy újat a cél hatókörökön, amíg az új házirend-definícióban szereplő erőforrások teljes köréhez hozzá nem rendeli azokat.
 
-During rollout, if resources are located that should be exempt from your new policy definition, address them in one of the following ways:
+A bevezetés során, ha olyan erőforrások találhatók, amelyek mentesülnek az új szabályzat-definíciótól, a következő módokon kezelheti őket:
 
-- Update the policy definition to be more explicit to reduce unintended impact
-- Change the scope of the policy assignment (by removing and creating a new assignment)
-- Add the group of resources to the exclusion list for the policy assignment
+- A házirend-definíció frissítése, hogy világosabb legyen a nem kívánt hatás csökkentése érdekében
+- A szabályzat-hozzárendelés hatókörének módosítása (új hozzárendelés eltávolításával és létrehozásával)
+- Erőforrások csoportjának hozzáadása a kizárási listához a szabályzat-hozzárendeléshez
 
-Any changes to the scope (level or exclusions) should be fully validated and communicated with your security and compliance organizations to ensure there are no gaps in coverage.
+A hatókör (szint vagy kizárás) módosításait teljes mértékben ellenőrizni kell, és a biztonsági és megfelelőségi szervezetekkel kell kommunikálni annak biztosítása érdekében, hogy ne legyenek lefedettségi különbségek.
 
-## <a name="monitor-your-policy-and-compliance"></a>Monitor your policy and compliance
+## <a name="monitor-your-policy-and-compliance"></a>A szabályzat és a megfelelőség figyelése
 
-Implementing and assigning your policy definition isn't the final step. Continuously monitor the [compliance](../how-to/get-compliance-data.md) level of resources to your new policy definition and setup appropriate [Azure Monitor alerts and notifications](../../../azure-monitor/platform/alerts-overview.md) for when non-compliant devices are identified. It's also recommended to evaluate the policy definition and related assignments on a scheduled basis to validate the policy definition is meeting business policy and compliance needs. Policies should be removed if no longer needed. Policies also need updating from time to time as the underlying Azure resources evolve and add new properties and capabilities.
+A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/platform/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about the [policy definition structure](./definition-structure.md).
-- Learn about the [policy assignment structure](./assignment-structure.md).
-- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
-- Learn how to [get compliance data](../how-to/get-compliance-data.md).
-- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
+- A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/get-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

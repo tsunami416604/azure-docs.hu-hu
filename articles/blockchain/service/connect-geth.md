@@ -1,6 +1,6 @@
 ---
-title: Use Geth to attach to Azure Blockchain Service
-description: Attach to a Geth instance on Azure Blockchain Service transaction node
+title: A geth használata az Azure Blockchain szolgáltatáshoz való csatlakoztatáshoz
+description: Csatolás geth-példányhoz az Azure Blockchain szolgáltatás tranzakciós csomópontján
 ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,57 +11,57 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455827"
 ---
-# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Quickstart: Use Geth to attach to an Azure Blockchain Service transaction node
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Gyors útmutató: Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz való csatolás geth használata
 
-In this quickstart, you use the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Once attached, you use the Geth JavaScript console to call a web3 JavaScript Dapp API.
+Ebben a rövid útmutatóban egy Azure Blockchain szolgáltatás-tranzakciós csomóponton található geth-példányhoz csatolja a geth-ügyfelet. Miután csatolta, a geth JavaScript-konzollal hívhat meg egy web3 JavaScript Dapp API-t.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Install [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* A [geth](https://github.com/ethereum/go-ethereum/wiki/geth) telepítése
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
 
-## <a name="get-geth-connection-string"></a>Get Geth connection string
+## <a name="get-geth-connection-string"></a>Geth-kapcsolatok karakterláncának beolvasása
 
-You can get the Geth connection string for an Azure Blockchain Service transaction node in the Azure portal.
+A Azure Portal Azure Blockchain szolgáltatásbeli tranzakciós csomópontjához tartozó geth-alapú kapcsolatok karakterláncát kérheti le.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az Azure Blockchain-szolgáltatás tagját. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
 
-    ![Select default transaction node](./media/connect-geth/transaction-nodes.png)
+    ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/connect-geth/transaction-nodes.png)
 
-1. Select **Connection strings**.
-1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
+1. Válassza a **kapcsolatok karakterláncok**lehetőséget.
+1. Másolja a kapcsolati karakterláncot a https-ről **(1. hozzáférési kulcs)** . A következő szakaszhoz szüksége lesz a karakterláncra.
 
     ![Kapcsolati sztring](./media/connect-geth/connection-string.png)
 
-## <a name="connect-to-geth"></a>Connect to Geth
+## <a name="connect-to-geth"></a>Kapcsolódás a geth
 
-1. Open a command prompt or shell.
-1. Use the Geth attach subcommand to attach to the running Geth instance on your transaction node. Paste the connection string as an argument for the attach subcommand. Példa:
+1. Nyisson meg egy parancssort vagy a rendszerhéjat.
+1. A geth csatolása alparancs használatával csatlakoztassa a futó geth-példányhoz a tranzakciós csomóponton. Illessze be a kapcsolatok karakterláncát argumentumként a csatolási alparancshoz. Például:
 
     ``` bash
     geth attach <connection string>
     ```
 
-1. Once connected to the transaction node's Ethereum console, you can call the web3 JavaScript Dapp API or the admin API.
+1. Miután csatlakozott a tranzakciós csomópont Ethereum-konzolhoz, meghívhatja a web3 JavaScript Dapp API-t vagy a felügyeleti API-t.
 
-    For example, use the following API to find out the chainId.
+    A chainId megkereséséhez például használja a következő API-t.
 
     ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    In this example, the chainId is 661.
+    Ebben a példában a chainId a 661.
 
-    ![Azure Blockchain Service option](./media/connect-geth/geth-attach.png)
+    ![Az Azure Blockchain szolgáltatás lehetősége](./media/connect-geth/geth-attach.png)
 
-1. To disconnect from the console, type `exit`.
+1. A konzolról való leválasztáshoz írja be a következőt: `exit`.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you used the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
+Ebben a rövid útmutatóban a geth-ügyfelet használta egy geth-példányhoz való csatoláshoz egy Azure Blockchain szolgáltatás-tranzakciós csomóponton. Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 
 > [!div class="nextstepaction"]
-> [Create, build, and deploy smart contracts on Azure Blockchain Service](send-transaction.md)
+> [Intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben](send-transaction.md)

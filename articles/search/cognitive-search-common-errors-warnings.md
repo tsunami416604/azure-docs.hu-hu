@@ -1,5 +1,5 @@
 ---
-title: Indexelő hibái és figyelmeztetései
+title: Indexelőkkel kapcsolatos hibák és figyelmeztetések
 titleSuffix: Azure Cognitive Search
 description: Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI az Azure Cognitive Search-ban való gyarapítása során felmerülhet.
 manager: nitinme

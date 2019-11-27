@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Configure Infor CloudSuite for automatic user provisioning with Azure Active Directory | Microsoft Docs'
-description: Learn how to configure Azure Active Directory to automatically provision and de-provision user accounts to Infor CloudSuite.
+title: 'Oktatóanyag: az infor-CloudSuite konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az infor CloudSuite.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -22,163 +22,163 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74408715"
 ---
-# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Configure Infor CloudSuite for automatic user provisioning
+# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az infor-CloudSuite konfigurálása a felhasználók automatikus kiépítési felállításához
 
-The objective of this tutorial is to demonstrate the steps to be performed in Infor CloudSuite and Azure Active Directory (Azure AD) to configure Azure AD to automatically provision and de-provision users and/or groups to Infor CloudSuite.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani az infor CloudSuite és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat az infor CloudSuite.
 
 > [!NOTE]
-> This tutorial describes a connector built on top of the Azure AD User Provisioning Service. For important details on what this service does, how it works, and frequently asked questions, see [Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 >
-> This connector is currently in Public Preview. For more information on the general Microsoft Azure terms of use for Preview features, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The scenario outlined in this tutorial assumes that you already have the following prerequisites:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* An Azure AD tenant
-* [A Infor CloudSuite tenant](https://www.infor.com/products/infor-os)
-* A user account in Infor CloudSuite with Admin permissions.
+* Azure AD-bérlő
+* [Egy infor CloudSuite-bérlő](https://www.infor.com/products/infor-os)
+* Az infor CloudSuite rendszergazdai engedélyekkel rendelkező felhasználói fiók.
 
-## <a name="assigning-users-to-infor-cloudsuite"></a>Assigning users to Infor CloudSuite
+## <a name="assigning-users-to-infor-cloudsuite"></a>Felhasználók kiosztása az infor CloudSuite
 
-Azure Active Directory uses a concept called *assignments* to determine which users should receive access to selected apps. In the context of automatic user provisioning, only the users and/or groups that have been assigned to an application in Azure AD are synchronized.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Before configuring and enabling automatic user provisioning, you should decide which users and/or groups in Azure AD need access to Infor CloudSuite. Once decided, you can assign these users and/or groups to Infor CloudSuite by following the instructions here:
-* [Assign a user or group to an enterprise app](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra és/vagy csoportokra van szükség az Azure AD-ban az infor-CloudSuite. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti az infor CloudSuite az alábbi utasításokat követve:
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Important tips for assigning users to Infor CloudSuite
+## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Fontos Tippek a felhasználók infor-CloudSuite való hozzárendeléséhez
 
-* It is recommended that a single Azure AD user is assigned to Infor CloudSuite to test the automatic user provisioning configuration. Additional users and/or groups may be assigned later.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve az infor CloudSuite az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* When assigning a user to Infor CloudSuite, you must select any valid application-specific role (if available) in the assignment dialog. Users with the **Default Access** role are excluded from provisioning.
+* Ha a felhasználót az infor CloudSuite rendeli hozzá, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Set up Infor CloudSuite for provisioning
+## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Az infor-CloudSuite beállítása a kiépítés számára
 
-1. Sign in to your [Infor CloudSuite Admin Console](https://www.infor.com/customer-center). Click on the user icon and then navigate to **user management**.
+1. Jelentkezzen be az [infor CloudSuite felügyeleti konzolra](https://www.infor.com/customer-center). Kattintson a felhasználó ikonra, majd navigáljon a **felhasználók felügyeletéhez**.
 
-    ![Infor CloudSuite Admin Console](media/infor-cloudsuite-provisioning-tutorial/admin.png)
+    ![Infor CloudSuite felügyeleti konzol](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Click on the menu icon on the left top corner of the screen. Click on **Manage**.
+2.  Kattintson a képernyő bal felső sarkában található menü ikonra. Kattintson a **kezelés**gombra.
 
-    ![Infor CloudSuite Add SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
+    ![Infor CloudSuite-SCIM hozzáadása](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  Navigate to **SCIM Accounts**.
+3.  Navigáljon a **scim-fiókokhoz**.
 
-    ![Infor CloudSuite SCIM Account](media/infor-cloudsuite-provisioning-tutorial/scim.png)
+    ![Infor CloudSuite SCIM-fiók](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Add an admin user by clicking on the plus icon. Provide a **SCIM Password** and type the same password under **Confirm Password**. Click on the folder icon to save the password. You will then see an **User Identifier** generated for the admin user.
+4.  Vegyen fel egy rendszergazda felhasználót a plusz ikonra kattintva. Adjon meg egy **scim-jelszót** , és írja be ugyanazt a jelszót a **Jelszó megerősítése**alatt. A jelszó mentéséhez kattintson a mappa ikonra. Ekkor megjelenik a rendszergazda felhasználó számára létrehozott **felhasználói azonosító** .
 
-    ![Infor CloudSuite Admin user](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
+    ![Infor CloudSuite rendszergazdai felhasználó](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
-    ![Infor CloudSuite password](media/infor-cloudsuite-provisioning-tutorial/password.png)
+    ![Infor CloudSuite jelszava](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
 
-5. To generate the bearer token, copy the **User Identifier** and **SCIM Password**. Paste them in notepad++ separated by a colon. Encode the string value by navigating to **Plugins > MIME Tools > Basic64 Encode**. 
+5. A tulajdonosi jogkivonat létrehozásához másolja a **felhasználói azonosítót** és a **scim jelszavát**. Illessze be őket a Jegyzettömbbe + + kettősponttal elválasztva. A karakterlánc értékének kódolásához navigáljon a **Plugins > MIME-eszközök > Basic64 kódolása**. 
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/token.png)
 
-3.  Copy the bearer token. This value will be entered in the Secret Token field in the Provisioning tab of your Infor CloudSuite application in the Azure portal.
+3.  Másolja a tulajdonosi jogkivonatot. Ez az érték a Azure Portalban az infor CloudSuite alkalmazás létesítés lapjának titkos jogkivonat mezőjében lesz megadva.
 
-## <a name="add-infor-cloudsuite-from-the-gallery"></a>Add Infor CloudSuite from the gallery
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Infor-CloudSuite hozzáadása a katalógusból
 
-Before configuring Infor CloudSuite for automatic user provisioning with Azure AD, you need to add Infor CloudSuite from the Azure AD application gallery to your list of managed SaaS applications.
+Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure ad-beli infor-CloudSuite hozzáadásához hozzá kell adnia a felügyelt SaaS-alkalmazások listájához tartozó infor-CloudSuite.
 
-**To add Infor CloudSuite from the Azure AD application gallery, perform the following steps:**
+**Az Azure AD-CloudSuite az alábbi lépéseket követve adhat hozzá infor-alkalmazásokat:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , in the left navigation panel, select **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Go to **Enterprise applications**, and then select **All applications**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. To add a new application, select the **New application** button at the top of the pane.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![The New application button](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. In the search box, enter **Infor CloudSuite**, select **Infor CloudSuite** in the results panel, and then click the **Add** button to add the application.
+4. A keresőmezőbe írja be az **infor CloudSuite**, válassza az **infor CloudSuite** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Infor CloudSuite in the results list](common/search-new-app.png)
+    ![Infor-CloudSuite az eredmények listájában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Configuring automatic user provisioning to Infor CloudSuite 
+## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Az automatikus felhasználó-kiépítés beállítása az infor CloudSuite 
 
-This section guides you through the steps to configure the Azure AD provisioning service to create, update, and disable users and/or groups in Infor CloudSuite based on user and/or group assignments in Azure AD.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy CloudSuite alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> You may also choose to enable SAML-based single sign-on for Infor CloudSuite , following the instructions provided in the [Infor CloudSuite Single sign-on tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Single sign-on can be configured independently of automatic user provisioning, though these two features compliment each other.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az infor-CloudSuite, az [infor CloudSuite egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 > [!NOTE]
-> To learn more about Infor CloudSuite's SCIM endpoint, refer [this](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
+> Ha többet szeretne megtudni az infor CloudSuite SCIM-végpontról, olvassa el [ezt a témakört](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
 
-### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>To configure automatic user provisioning for Infor CloudSuite in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>A felhasználó automatikus kiépítés beállítása az Azure AD-beli infor-CloudSuite:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Select **Enterprise Applications**, then select **All applications**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. In the applications list, select **Infor CloudSuite**.
+2. Az alkalmazások listában válassza az **infor CloudSuite**elemet.
 
-    ![The Infor CloudSuite link in the Applications list](common/all-applications.png)
+    ![Az CloudSuite hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Select the **Provisioning** tab.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Provisioning tab](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Set the **Provisioning Mode** to **Automatic**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Provisioning tab](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Under the **Admin Credentials** section, input `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` in **Tenant URL**. Input the bearer token value retrieved earlier in **Secret Token**. Click **Test Connection** to ensure Azure AD can connect to Infor CloudSuite. If the connection fails, ensure your Infor CloudSuite account has Admin permissions and try again.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` a **bérlői URL-címben**. Adja meg a **titkos jogkivonatban**korábban lekért tulajdonosi jogkivonat értékét. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni az infor CloudSuite. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az infor CloudSuite-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. In the **Notification Email** field, enter the email address of a person or group who should receive the provisioning error notifications and check the checkbox - **Send an email notification when a failure occurs**.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Notification Email](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-8. Under the **Mappings** section, select **Synchronize Azure Active Directory Users to Infor CloudSuite**.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az infor CloudSuite**lehetőséget.
 
-    ![Infor CloudSuite User Mappings](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
+    ![Az infor CloudSuite felhasználói leképezései](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Review the user attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the user accounts in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+9. Tekintse át az Azure AD és az infor CloudSuite között szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használhatók az infor CloudSuite felhasználói fiókjainak megfelelően. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Infor CloudSuite User Attributes](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
+    ![Az infor CloudSuite felhasználói attribútumai](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. Under the **Mappings** section, select **Synchronize Azure Active Directory Groups to Infor CloudSuite**.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása az infor CloudSuite**lehetőséget.
 
-    ![Infor CloudSuite Group Mappings](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
+    ![Az infor CloudSuite csoport leképezései](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Review the group attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the groups in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+11. Tekintse át az Azure AD-ből szinkronizált CloudSuite az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez tartozó CloudSuite-csoportokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Infor CloudSuite Group Attributes](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
+    ![Az infor CloudSuite csoport attribútumai](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
-12. To configure scoping filters, refer to the following instructions provided in the [Scoping filter tutorial](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. To enable the Azure AD provisioning service for Infor CloudSuite, change the **Provisioning Status** to **On** in the **Settings** section.
+13. Az Azure AD-kiépítési szolgáltatás az infor CloudSuite való engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
-    ![Provisioning Status Toggled On](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Define the users and/or groups that you would like to provision to Infor CloudSuite by choosing the desired values in **Scope** in the **Settings** section.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket az infor-CloudSuite szeretne kiépíteni, ehhez válassza a **Beállítások** szakaszban lévő kívánt értékeket a **hatókörben** .
 
-    ![Provisioning Scope](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. When you are ready to provision, click **Save**.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Saving Provisioning Configuration](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-This operation starts the initial synchronization of all users and/or groups defined in **Scope** in the **Settings** section. The initial sync takes longer to perform than subsequent syncs, which occur approximately every 40 minutes as long as the Azure AD provisioning service is running. You can use the **Synchronization Details** section to monitor progress and follow links to provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Infor CloudSuite.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által az infor CloudSuite végzett összes műveletet ismertetik.
 
-For more information on how to read the Azure AD provisioning logs, see [Reporting on automatic user account provisioning](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="additional-resources"></a>További források
 
-* [Managing user account provisioning for Enterprise Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Learn how to review logs and get reports on provisioning activity](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
