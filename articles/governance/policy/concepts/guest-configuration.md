@@ -1,6 +1,6 @@
 ---
-title: Learn to audit the contents of virtual machines
-description: Learn how Azure Policy uses the Guest Configuration agent to audit settings inside virtual machines.
+title: Tudnivalók a virtuális gépek tartalmának naplózásáról
+description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f68bbc64ee8f0da02d213895a70e4c533b9a5f63
@@ -10,162 +10,162 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463794"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Understand Azure Policy's Guest Configuration
+# <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
-Beyond auditing and [remediating](../how-to/remediate-resources.md) Azure resources, Azure Policy can audit settings inside a machine. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
+Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
-- The configuration of the operating system
+- Az operációs rendszer konfigurációja
 - Alkalmazás konfigurációja vagy jelenléte
 - Környezeti beállítások
 
 Az Azure Policy Vendégkonfiguráció jelenleg csak a gépen belüli beállításokat naplózza. Nem alkalmaz konfigurációkat.
 
-## <a name="extension-and-client"></a>Extension and client
+## <a name="extension-and-client"></a>Bővítmény és az ügyfél
 
-To audit settings inside a machine, a [virtual machine extension](../../../virtual-machines/extensions/overview.md) is enabled. The extension downloads applicable policy assignment and the corresponding configuration definition.
+A beállítások számítógépeken belüli naplózásához a [virtuálisgép-bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van. A bővítmény letölti a megfelelő szabályzat-hozzárendelés és a megfelelő konfiguráció definíciója.
 
-### <a name="limits-set-on-the-extension"></a>Limits set on the extension
+### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
-To limit the extension from impacting applications running inside the machine, the Guest Configuration isn't allowed to exceed more than 5% of CPU utilization. This limitation exists for both built-in and custom definitions.
+Ha korlátozni szeretné a bővítménynek a gépen belül futó alkalmazásoktól való korlátozását, a vendég konfigurációja nem lépheti túl a CPU-kihasználtság 5%-át. Ez a korlátozás a beépített és az egyéni definíciók esetében is létezik.
 
-## <a name="register-guest-configuration-resource-provider"></a>Register Guest Configuration resource provider
+## <a name="register-guest-configuration-resource-provider"></a>Vendég-konfigurációs erőforrás-szolgáltató regisztrálása
 
-Before you can use Guest Configuration, you must register the resource provider. You can register through the portal or through PowerShell. The resource provider is registered automatically if assignment of a Guest Configuration policy is done through the portal.
+Vendég-konfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltató. A portálon keresztül vagy a Powershellen keresztül lehet regisztrálni. Az erőforrás-szolgáltató automatikusan regisztrálva van, ha a vendég konfigurációs szabályzatának hozzárendelése a portálon történik.
 
-### <a name="registration---portal"></a>Registration - Portal
+### <a name="registration---portal"></a>Regisztráció – portál
 
-To register the resource provider for Guest Configuration through the Azure portal, follow these steps:
+Az erőforrás-szolgáltató regisztrálása Vendég konfiguráció az Azure Portalon keresztül, kövesse az alábbi lépéseket:
 
-1. Launch the Azure portal and click on **All services**. Search for and select **Subscriptions**.
+1. Indítsa el a Azure Portal, és kattintson a **minden szolgáltatás**elemre. Keresse meg és válassza ki az **előfizetéseket**.
 
-1. Find and click on the subscription that you want to enable Guest Configuration for.
+1. Keresse meg és kattintson arra az előfizetésre, amely engedélyezi a Vendég konfigurációját.
 
-1. In the left menu of the **Subscription** page, click **Resource providers**.
+1. Az **előfizetés** lap bal oldali menüjében kattintson az **erőforrás-szolgáltatók**elemre.
 
-1. Filter for or scroll until you locate **Microsoft.GuestConfiguration**, then click **Register** on the same row.
+1. Szűrje vagy görgessen a **Microsoft. GuestConfiguration**, majd kattintson a **regisztráció** elemre ugyanazon a sorban.
 
-### <a name="registration---powershell"></a>Registration - PowerShell
+### <a name="registration---powershell"></a>Regisztráció – PowerShell
 
-To register the resource provider for Guest Configuration through PowerShell, run the following command:
+Vendég konfigurációs PowerShell-lel az erőforrás-szolgáltató regisztrálásához futtassa a következő parancsot:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-## <a name="validation-tools"></a>Validation tools
+## <a name="validation-tools"></a>Érvényesítési eszközök
 
-Inside the machine, the Guest Configuration client uses local tools to run the audit.
+A gépen belül a vendég konfigurációs ügyfél helyi eszközöket használ a naplózás futtatásához.
 
-The following table shows a list of the local tools used on each supported operating system:
+Az alábbi táblázat az egyes támogatott operációs rendszeren használja a helyi eszközök listáját:
 
-|Operációs rendszer|Validation tool|Megjegyzések|
+|Operációs rendszer|Fürtérvényesítési eszköz|Megjegyzések|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby and Python are installed by the Guest Configuration extension. |
+|Windows|[Windows PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
+|Linux|[Chef Inspect](https://www.chef.io/inspec/)| Ruby és Python telepíti a Vendég Configuration bővítményt. |
 
-### <a name="validation-frequency"></a>Validation frequency
+### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-The Guest Configuration client checks for new content every 5 minutes. Once a guest assignment is received, the settings are checked on a 15-minute interval. Results are sent to the Guest Configuration resource provider as soon as the audit completes. When a policy [evaluation trigger](../how-to/get-compliance-data.md#evaluation-triggers) occurs, the state of the machine is written to the Guest Configuration resource provider. This update causes Azure Policy to evaluate the Azure Resource Manager properties. An on-demand Azure Policy evaluation retrieves the latest value from the Guest Configuration resource provider. However, it doesn't trigger a new audit of the configuration within the machine.
+A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [kiértékelésének](../how-to/get-compliance-data.md#evaluation-triggers) bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ez a frissítés Azure Policyt okoz a Azure Resource Manager tulajdonságainak kiértékeléséhez. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
 
-## <a name="supported-client-types"></a>Supported client types
+## <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
-The following table shows a list of supported operating system on Azure images:
+Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek listája látható:
 
-|Gyártó/kiadó|Név|Verziók|
+|Közzétevő|Name (Név)|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credativ|Debian|8, 9|
+|credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
-|Suse|SLES|12 SP3|
+|SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Guest Configuration can audit nodes running a supported OS. If you would like to audit virtual machines that use a custom image, you need to duplicate the **DeployIfNotExists** definition and modify the **If** section to include your image properties.
+> A vendég konfigurációja képes a támogatott operációs rendszert futtató csomópontok naplózására. Ha egyéni rendszerképet használó virtuális gépeket szeretne naplózni, duplikálnia kell a **DeployIfNotExists** -definíciót, és módosítania kell az **IF** szakaszt a rendszerkép tulajdonságainak belefoglalásához.
 
-### <a name="unsupported-client-types"></a>Unsupported client types
+### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
-Windows Server Nano Server isn't supported in any version.
+A Windows Server Nano Server semmilyen verzióban nem támogatott.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration Extension network requirements
+## <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
 
-To communicate with the Guest Configuration resource provider in Azure, machines require outbound access to Azure datacenters on port **443**. If you're using a private virtual network in Azure that doesn't allow outbound traffic, configure exceptions with [Network Security Group](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) rules. A service tag doesn't currently exist for Azure Policy Guest Configuration.
+Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha az Azure-ban olyan magánhálózati virtuális hálózatot használ, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival. Azure Policy vendég konfigurációhoz jelenleg nem létezik szolgáltatási címke.
 
-For IP address lists, you can download [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653). This file is updated weekly, and has the currently deployed ranges and any upcoming changes to the IP ranges. You only need to allow outbound access to the IPs in the regions where your VMs are deployed.
-
-> [!NOTE]
-> The Azure Datacenter IP address XML file lists the IP address ranges that are used in the Microsoft Azure datacenters. The file includes compute, SQL, and storage ranges. An updated file is posted weekly. The file reflects the currently deployed ranges and any upcoming changes to the IP ranges. New ranges that appear in the file aren't used in the datacenters for at least one week. It's a good idea to download the new XML file every week. Then, update your site to correctly identify services running in Azure. Azure ExpressRoute users should note that this file is used to update the Border Gateway Protocol (BGP) advertisement of Azure space in the first week of each month.
-
-## <a name="guest-configuration-definition-requirements"></a>Guest Configuration definition requirements
-
-Each audit run by Guest Configuration requires two policy definitions, a **DeployIfNotExists** definition and an **AuditIfNotExists** definition. The **DeployIfNotExists** definition is used to prepare the machine with the Guest Configuration agent and other components to support the [validation tools](#validation-tools).
-
-The **DeployIfNotExists** policy definition validates and corrects the following items:
-
-- Validate the machine has been assigned a configuration to evaluate. If no assignment is currently present, get the assignment and prepare the machine by:
-  - Authenticating to the machine using a [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md)
-  - Installing the latest version of the **Microsoft.GuestConfiguration** extension
-  - Installing [validation tools](#validation-tools) and dependencies, if needed
-
-If the **DeployIfNotExists** assignment is Non-compliant, a [remediation task](../how-to/remediate-resources.md#create-a-remediation-task) can be used.
-
-Once the **DeployIfNotExists** assignment is Compliant, the **AuditIfNotExists** policy assignment uses the local validation tools to determine if the configuration assignment is Compliant or Non-compliant. The validation tool provides the results to the Guest Configuration client. The client forwards the results to the Guest Extension, which makes them available through the Guest Configuration resource provider.
-
-Azure Policy uses the Guest Configuration resource providers **complianceStatus** property to report compliance in the **Compliance** node. For more information, see [getting compliance data](../how-to/get-compliance-data.md).
+Az IP-címlisták esetében letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza. Csak a virtuális gépeket üzembe helyező régiókban lévő IP-címekhez kell engedélyeznie a kimenő hozzáférést.
 
 > [!NOTE]
-> The **DeployIfNotExists** policy is required for the **AuditIfNotExists** policy to return results. Without the **DeployIfNotExists**, the **AuditIfNotExists** policy shows "0 of 0" resources as status.
+> Az Azure Datacenter IP-cím XML-fájlja felsorolja az Microsoft Azure adatközpontokban használt IP-címtartományt. A fájl a számítási, az SQL-és a tárolási tartományokat tartalmazza. A frissített fájlok hetente kerülnek közzétételre. A fájl a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban. Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse a webhelyet az Azure-ban futó szolgáltatások megfelelő azonosításához. Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
 
-All built-in policies for Guest Configuration are included in an initiative to group the definitions for use in assignments. The built-in initiative named _\[Preview\]: Audit Password security settings inside Linux and Windows machines_ contains 18 policies. There are six **DeployIfNotExists** and **AuditIfNotExists** pairs for Windows and three pairs for Linux. The [policy definition](definition-structure.md#policy-rule) logic validates that only the target operating system is evaluated.
+## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 
-#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditing operating system settings following industry baselines
+Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges. A **DeployIfNotExists** definíciója a gép előkészítésére szolgál a vendég konfigurációs ügynökkel és más összetevőkkel az [ellenőrzési eszközök](#validation-tools)támogatásához.
 
-One of the initiatives available in Azure Policy provides the ability to audit operating system settings inside virtual machines following a "baseline" from Microsoft. The definition, _\[Preview\]: Audit Windows VMs that do not match Azure security baseline settings_ includes a complete set of audit rules based on settings from Active Directory Group Policy.
+A **DeployIfNotExists** házirend-definíciója ellenőrzi és kijavította a következő elemeket:
 
-Most of the settings are available as parameters. This functionality allows you to customize what is audited to align the policy with your organizational requirements or to map the policy to third party information such as industry regulatory standards.
+- Ellenőrizze, hogy a gép hozzárendelt-e egy konfigurációt az értékeléshez. Ha jelenleg nincs hozzárendelés, szerezze be a hozzárendelést, és készítse elő a gépet a alábbiak szerint:
+  - Hitelesítés a gépen [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) használatával
+  - A **Microsoft. GuestConfiguration** bővítmény legújabb verziójának telepítése
+  - [Ellenőrzési eszközök](#validation-tools) és függőségek telepítése szükség esetén
 
-Some parameters support an integer value range. For example, the Maximum Password Age parameter can be set using a range operator to give flexibility to machine owners. You could audit that the effective Group Policy setting requiring users to change their passwords should be no more than 70 days, but shouldn't be less than one day. As described in the info-bubble for the parameter, to make this business policy the effective audit value, set the value to "1,70".
+Ha a **DeployIfNotExists** -hozzárendelés nem megfelelő, akkor a rendszer [szervizelési feladatot](../how-to/remediate-resources.md#create-a-remediation-task) is felhasználhat.
 
-If you assign the policy using an Azure Resource Manager deployment template, you can use a parameters file to manage these settings from source control. Using a tool such as Git to manage changes to Audit policies with comments at each check-in documents evidence as to why an assignment should be an exception to the expected value.
+Ha a **DeployIfNotExists** -hozzárendelés megfelelő, a **AuditIfNotExists** szabályzat-hozzárendelés a helyi ellenőrzési eszközöket használja annak megállapításához, hogy a konfigurációs hozzárendelés megfelelő vagy nem megfelelő-e. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
 
-#### <a name="applying-configurations-using-guest-configuration"></a>Applying configurations using Guest Configuration
+Azure Policy a vendég-konfiguráció erőforrás-szolgáltatói **complianceStatus** tulajdonságot **használja a megfelelőségi csomópont** megfelelőségének jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
 
-The latest feature of Azure Policy configures settings inside machines. The definition _Configure the time zone on Windows machines_ makes changes to the machine by configuring the time zone.
+> [!NOTE]
+> Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
 
-When assigning definitions that begin with _Configure_, you must also assign the definition _Deploy prerequisites to enable Guest Configuration Policy on Windows VMs_. You can combine these definitions in an initiative if you choose.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A _\[Preview\]nevű beépített kezdeményezés: a jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű gépeken_ 18 szabályzatot tartalmaz. A Windows hat **DeployIfNotExists** és **AuditIfNotExists** pár, a Linux esetében pedig három pár. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
-#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Assigning policies to machines outside of Azure
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 
-The Audit policies available for Guest Configuration include the **Microsoft.HybridCompute/machines** resource type. Any machines onboarded to [Azure Arc for Servers](../../../azure-arc/servers/overview.md) that are in the scope of the policy assignment are automatically included.
+A Azure Policyban elérhető kezdeményezések egyike lehetővé teszi a virtuális gépeken belüli operációs rendszer beállításainak naplózását a Microsoft alapkonfigurációját követve. A definíció, _\[előzetes verzió\]: az Azure-beli biztonsági alapbeállításoknak nem megfelelő Windows-alapú virtuális gépek naplózása_ a Active Directory csoportházirend beállításai alapján teljes naplózási szabályt tartalmaz.
 
-### <a name="multiple-assignments"></a>Multiple assignments
+A beállítások többsége paraméterekként érhető el. Ez a funkció lehetővé teszi, hogy testreszabja a naplózást, hogy a szabályzatot a szervezeti követelményeknek megfelelően hangolja össze, vagy a szabályzatot harmadik féltől származó információkhoz (például iparági szabályozási szabványok) képezze.
 
-Guest Configuration policies currently only support assigning the same Guest Assignment once per machine, even if the Policy assignment uses different parameters.
+Egyes paraméterek egy egész érték tartományát támogatják. A jelszó maximális élettartama paraméter például beállítható egy tartomány operátor használatával, hogy rugalmasságot biztosítson a gépek tulajdonosainak. Azt is megteheti, hogy a felhasználóknak a jelszavuk módosítására vonatkozó hatályos Csoportházirend beállítás értéke legfeljebb 70 nap, de nem lehet kevesebb, mint egy nap. A paraméterhez tartozó info-Bubble kifejezésben leírtak szerint ez az üzleti házirend az érvényes naplózási értékre van állítva, az értéket állítsa "1, 70" értékre.
 
-## <a name="built-in-resource-modules"></a>Built-in resource modules
+Ha a szabályzatot egy Azure Resource Manager telepítési sablonnal rendeli hozzá, egy paraméter-fájllal kezelheti ezeket a beállításokat a verziókövetés segítségével. Egy olyan eszközzel, mint például a git a naplózási szabályzatok változásainak az egyes beadási dokumentumokkal kapcsolatos megjegyzésekkel való kezeléséhez, tanúsítja, hogy a hozzárendelés miért kivétel a várt értéktől.
 
-When installing the Guest Configuration extension, the 'GuestConfiguration' PowerShell module is included with the latest version of DSC resource modules. This module can be downloaded from the PowerShell Gallery by using the 'Manual Download' link from the module page [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). The '.nupkg' file format can be renamed to '.zip' to uncompress and review.
+#### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
 
-## <a name="client-log-files"></a>Client log files
+A Azure Policy legújabb funkciója a számítógépeken belüli beállítások konfigurálását végzi. A definíció a _Windows rendszerű gépeken beállított időzónát konfigurálja_ úgy, hogy az időzóna konfigurálásával megváltoztatja a gépet.
 
-The Guest Configuration extension writes log files to the following locations:
+Ha a _konfigurálással_kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Szabályzatok kiosztása az Azure-on kívüli gépekhez
+
+A vendég konfigurációhoz elérhető naplózási házirendek közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus. Az Azure-ív részét képező, a házirend-hozzárendelés hatókörében lévő kiszolgálók automatikusan beletartoznak a [szolgáltatásba](../../../azure-arc/servers/overview.md) .
+
+### <a name="multiple-assignments"></a>Több hozzárendelés
+
+A vendég-konfigurációs házirendek jelenleg csak egyszer használják a vendég-hozzárendelést egy gépenként, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
+
+## <a name="built-in-resource-modules"></a>Beépített erőforrás-modulok
+
+A vendég konfigurációs bővítmény telepítésekor a "GuestConfiguration" PowerShell-modul a DSC-erőforrás moduljainak legújabb verziójához tartozik. Ez a modul letölthető a PowerShell-galéria a "manuális Letöltés" hivatkozásra kattintva a modul oldal [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). A ". nupkg" fájlformátumot átnevezheti ". zip" névre a kibontáshoz és a felülvizsgálathoz.
+
+## <a name="client-log-files"></a>Ügyfél naplófájljai
+
+A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
 Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Where `<version>` refers to the current version number.
+Ahol a `<version>` az aktuális verziószámra hivatkozik.
 
-### <a name="collecting-logs-remotely"></a>Collecting logs remotely
+### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
 
-The first step in troubleshooting Guest Configuration configurations or modules should be to use the `Test-GuestConfigurationPackage` cmdlet following the steps in [Test a Guest Configuration package](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
-If that isn't successful, collecting client logs can help diagnose issues.
+A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként az `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.
+Ha ez nem sikerül, az ügyfél naplói összegyűjtése segíthet a problémák diagnosztizálásában.
 
 #### <a name="windows"></a>Windows
 
-To use the Azure VM Run Command capability to capture information from log files in Windows machines, the following example PowerShell script can be helpful. For more information, see [Run PowerShell scripts in your Windows VM with Run Command](../../../virtual-machines/windows/run-command.md).
+Ha az Azure virtuális gép futtatási parancsát szeretné használni a Windows rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a PowerShell-szkript hasznos lehet. További információ: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/windows/run-command.md).
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -176,7 +176,7 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 
 #### <a name="linux"></a>Linux
 
-To use the Azure VM Run Command capability to capture information from log files in Linux machines, the following example Bash script can be helpful. For more information, see [Run shell scripts in your Linux VM with Run Command](../../../virtual-machines/linux/run-command.md)
+Ha az Azure virtuális gép futtatási parancsát szeretné használni a Linux rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a bash-szkript hasznos lehet. További információ: [rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/linux/run-command.md)
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -185,19 +185,19 @@ latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfigurati
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
 ```
 
-## <a name="guest-configuration-samples"></a>Guest Configuration samples
+## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 
-Samples for Policy Guest Configuration are available in the following locations:
+A házirend vendég konfigurációjának mintái a következő helyszíneken érhetők el:
 
-- [Samples index - Guest Configuration](../samples/index.md#guest-configuration)
-- [Azure Policy samples GitHub repo](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [Minták indexe – vendég konfigurációja](../samples/index.md#guest-configuration)
+- [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
-- Learn how to [get compliance data](../how-to/get-compliance-data.md).
-- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/get-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Understand API authentication - Azure Digital Twins | Microsoft Docs
-description: Learn how to connect to and authenticate with APIs using Azure Digital Twins.
+title: Az API-hitelesítés ismertetése – Azure digitális Twins | Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az API-khoz, és hogyan hitelesíthető az Azure Digital Twins szolgáltatással.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,44 +15,44 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456900"
 ---
-# <a name="connect-to-and-authenticate-with-apis"></a>Connect to and authenticate with APIs
+# <a name="connect-to-and-authenticate-with-apis"></a>Kapcsolódás és hitelesítés API-kkal
 
-Azure Digital Twins uses Azure Active Directory (Azure AD) to authenticate users and protect applications. Azure AD supports authentication for a variety of modern architectures. All of them are based on the industry-standard protocols OAuth 2.0 or OpenID Connect. In addition, developers can use Azure AD to build  single-tenant and line-of-business (LOB) applications. Developers also can use Azure AD to develop [multitenant applications](how-to-multitenant-applications.md).
+Az Azure Digital Twins Azure Active Directory (Azure AD) használatával hitelesíti a felhasználókat és gondoskodik az alkalmazások biztonságáról. Az Azure AD számos modern architektúrához támogatja a hitelesítést. Ezek mindegyike az iparági szabványnak megfelelő protokollok (OAuth 2,0 vagy OpenID Connect) alapján történik. Emellett a fejlesztők az Azure AD használatával létrehozhatnak egy bérlői és üzletági (LOB) alkalmazásokat. A fejlesztők a több- [bérlős alkalmazások](how-to-multitenant-applications.md)fejlesztéséhez is használhatják az Azure ad-t.
 
-For an overview of Azure AD, visit the [fundamentals page](https://docs.microsoft.com/azure/active-directory/fundamentals/) for step-by-step guides, concepts, and quickstarts.
+Az Azure AD áttekintéséhez tekintse meg a részletes útmutatók, fogalmak és gyors útmutatókat ismertető [oldalt](https://docs.microsoft.com/azure/active-directory/fundamentals/) .
 
 > [!TIP]
-> Follow the [Tutorial](tutorial-facilities-setup.md) to set up and run an Azure Digital Twins sample app.
+> Kövesse az [oktatóanyagot](tutorial-facilities-setup.md) egy Azure digitális Twins-minta alkalmazásának beállításához és futtatásához.
 
-Az alkalmazás vagy szolgáltatás az Azure AD-vel történő integrálásához a fejlesztőnek először regisztrálnia kell az alkalmazást az Azure AD-ben. For detailed instructions and screenshots, see [this quickstart](../active-directory/develop/quickstart-register-app.md).
+Az alkalmazás vagy szolgáltatás az Azure AD-vel történő integrálásához a fejlesztőnek először regisztrálnia kell az alkalmazást az Azure AD-ben. Részletes útmutatást és képernyőképeket [ebben](../active-directory/develop/quickstart-register-app.md)a rövid útmutatóban talál.
 
-[Five primary application scenarios](../active-directory/develop/v2-app-types.md) are supported by Azure AD:
+Az Azure AD [öt elsődleges alkalmazási forgatókönyvet](../active-directory/develop/v2-app-types.md) támogat:
 
-* Single-page application (SPA): A user needs to sign in to a single-page application that's secured by Azure AD.
-* Web browser to web application: A user needs to sign in to a web application that's secured by Azure AD.
-* Native application to web API: A native application that runs on a phone, tablet, or PC needs to authenticate a user to get resources from a web API that's secured by Azure AD.
-* Web application to web API: A web application needs to get resources from a web API secured by Azure AD.
-* Daemon or server application to web API: A daemon application or a server application with no web UI needs to get resources from a web API secured by Azure AD.
+* Egyoldalas alkalmazás (SPA): A felhasználónak be kell jelentkeznie egy egyoldalas alkalmazásba, amelyet az Azure AD biztosít.
+* Webböngésző webes alkalmazásba: A felhasználónak be kell jelentkeznie egy Azure AD által védett webalkalmazásba.
+* Natív alkalmazás webes API-hoz: a telefonon, táblaszámítógépen vagy számítógépen futó natív alkalmazásnak hitelesítenie kell egy felhasználót az Azure AD által védett webes API erőforrásainak lekéréséhez.
+* Webalkalmazás webes API-hoz: egy webalkalmazásnak az Azure AD által védett webes API-erőforrásokból kell lekérnie az erőforrásokat.
+* Daemon vagy Server Application to web API: egy webes felhasználói felület nélküli Daemon-alkalmazásnak vagy-kiszolgáló alkalmazásnak az Azure AD által védett webes API-val kell lekérnie az erőforrásokat.
 
 > [!IMPORTANT]
-> Azure Digital Twins supports both of the following authentication libraries:
-> * The more recent [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * The [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+> Az Azure Digital Twins a következő hitelesítési könyvtárakat támogatja:
+> * A legújabb [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * A [Azure Active Directory hitelesítési könyvtár (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
-## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Call Digital Twins from a middle-tier web API
+## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digitális ikrek hívása egy középső rétegbeli webes API-ból
 
-When developers architect Digital Twins solutions, they typically create a middle-tier application or API. The app or API then calls the Digital Twins API downstream. To support this standard web solution architecture, make sure that users first:
+Amikor a fejlesztők a digitális Twins-megoldásokat használják, általában egy közepes szintű alkalmazást vagy API-t hoznak létre. Az alkalmazás vagy az API ezután meghívja a digitális Twins API-t az alsóbb rétegben. A standard web Solution architektúra támogatásához először győződjön meg arról, hogy a felhasználók a következőket teszik:
 
-1. Authenticate with the middle-tier application
+1. Hitelesítés a középső rétegbeli alkalmazással
 
-1. An OAuth 2.0 On-Behalf-Of token is acquired during authentication
+1. A hitelesítés során a rendszer egy OAuth 2,0-as jogkivonatot szerez be
 
-1. The acquired token is then used to authenticate with or call APIs that are further downstream using the On-Behalf-Of flow
+1. A rendszer ezután a beszerzett jogkivonatot használja a hitelesítéshez vagy hívja meg azokat az API-kat, amelyek további alsóbb rétegbeli folyamatokat használnak
 
-For instructions about how to orchestrate the on-behalf-of flow, see [OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). You also can view code samples in [Calling a downstream web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+A folyamaton belüli folyamat előkészítésével kapcsolatos utasításokért lásd: [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)-alapú folyamat. Az [alárendelt webes API-k meghívásakor](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)is megtekintheti a kód mintáit.
 
 ## <a name="next-steps"></a>Következő lépések
 
-To configure and test Azure Digital Twins using the OAuth 2.0 implicit grant flow, read [Configure Postman](./how-to-configure-postman.md).
+Az Azure digitális Twins konfigurálásához és teszteléséhez a OAuth 2,0 implicit engedélyezési folyamatával olvassa el a [Poster konfigurálása](./how-to-configure-postman.md)című cikk utasításait.
 
-To learn about Azure Digital Twins security, read [Create and manage role assignments](./security-create-manage-role-assignments.md).
+Az Azure Digital Twins biztonságával kapcsolatos további tudnivalókért olvassa el a [szerepkör-hozzárendelések létrehozása és kezelése](./security-create-manage-role-assignments.md)című témakört.

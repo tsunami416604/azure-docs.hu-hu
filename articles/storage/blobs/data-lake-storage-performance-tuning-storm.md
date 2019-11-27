@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 Storm performance tuning guidelines
+title: 'Teljesítmény hangolása: Storm, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Azure Data Lake Storage Gen2 Storm Performance tuning iránymutatásai
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,105 +15,105 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327901"
 ---
-# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: Storm, HDInsight & Azure Data Lake Storage Gen2
 
-Understand the factors that should be considered when you tune the performance of an Azure Storm topology. For example, it's important to understand the characteristics of the work done by the spouts and the bolts (whether the work is I/O or memory intensive). This article covers a range of performance tuning guidelines, including troubleshooting common issues.
+Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Storm-topológiák teljesítményének finomhangolása során. Például fontos megérteni a kiöntő és a csavarok által végzett munka jellemzőit (legyen szó akár I/O-, akár a memória-intenzív működésről). Ez a cikk a teljesítmény-hangolási irányelvek széles körét ismerteti, beleértve a gyakori problémák elhárítását is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create a storage account for analytic](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Make sure you enable Remote Desktop for the cluster.
-* **Running a Storm cluster on Data Lake Storage Gen2**. For more information, see [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md).   
+* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Storage-fiók létrehozása analitikai szolgáltatáshoz](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* **Storm-fürt futtatása Data Lake Storage Gen2on**. További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen2**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen2 teljesítmény-finomhangolási útmutató](data-lake-storage-performance-tuning-guidance.md).   
 
-## <a name="tune-the-parallelism-of-the-topology"></a>Tune the parallelism of the topology
+## <a name="tune-the-parallelism-of-the-topology"></a>A topológia párhuzamosságának hangolása
 
-You might be able to improve performance by increasing the concurrency of the I/O to and from Data Lake Storage Gen2. A Storm topology has a set of configurations that determine the parallelism:
-* Number of worker processes (the workers are evenly distributed across the VMs).
-* Number of spout executor instances.
-* Number of bolt executor instances.
-* Number of spout tasks.
-* Number of bolt tasks.
+Előfordulhat, hogy a teljesítmény növelése érdekében az I/O és a Data Lake Storage Gen2 közötti párhuzamosságot kell növelni. A Storm-topológia olyan konfigurációkat tartalmaz, amelyek meghatározzák a párhuzamosságot:
+* A munkavégző folyamatok száma (a feldolgozók egyenletesen oszlanak meg a virtuális gépek között).
+* A kiöntő végrehajtó példányainak száma.
+* A bolt végrehajtó példányainak száma.
+* A kiöntő feladatok száma.
+* A bolti feladatok száma.
 
-For example, on a cluster with 4 VMs and 4 worker processes, 32 spout executors and 32 spout tasks, and 256 bolt executors and 512 bolt tasks, consider the following:
+Például egy 4 virtuális géppel és 4 munkavégző folyamattal rendelkező fürtön, 32 kiöntő végrehajtó és 32 kiöntő feladat, valamint 256 bolt végrehajtói és 512 bolti feladatok, vegye figyelembe a következőket:
 
-Each supervisor, which is a worker node, has a single worker Java virtual machine (JVM) process. This JVM process manages 4 spout threads and 64 bolt threads. Within each thread, tasks are run sequentially. With the preceding configuration, each spout thread has 1 task, and each bolt thread has 2 tasks.
+Minden olyan felügyelő, amely egy feldolgozói csomópont, egyetlen feldolgozó Java virtuális gép (JVM) folyamattal rendelkezik. Ez a JVM folyamat 4 kiöntő szálat és 64 bolti szálat kezel. Az egyes szálakon belül a feladatok egymás után futnak. Az előző konfigurációval minden kiöntő szál 1 feladatot tartalmaz, és minden egyes bolti szál 2 feladattal rendelkezik.
 
-In Storm, here are the various components involved, and how they affect the level of parallelism you have:
-* The head node (called Nimbus in Storm) is used to submit and manage jobs. These nodes have no impact on the degree of parallelism.
-* The supervisor nodes. In HDInsight, this corresponds to a worker node Azure VM.
-* The worker tasks are Storm processes running in the VMs. Each worker task corresponds to a JVM instance. Storm distributes the number of worker processes you specify to the worker nodes as evenly as possible.
-* Spout and bolt executor instances. Each executor instance corresponds to a thread running within the workers (JVMs).
-* Storm tasks. These are logical tasks that each of these threads run. This does not change the level of parallelism, so you should evaluate if you need multiple tasks per executor or not.
+A Storm-ben itt láthatók a különböző érintett összetevők, és hogy azok milyen mértékben befolyásolják a párhuzamosság szintjét:
+* A feladatok küldéséhez és kezeléséhez a fő csomópontot (a Storm Nimbus néven ismert) használja a rendszer. Ezek a csomópontok nem befolyásolják a párhuzamosság mértékét.
+* A felügyelő csomópontjai. A HDInsight-ben ez az Azure virtuális gép munkavégző csomópontjának felel meg.
+* A feldolgozói feladatok a virtuális gépeken futó Storm-folyamatok. Minden feldolgozói feladat egy JVM-példánynak felel meg. A Storm a lehető legegyenletesebb módon osztja el a munkavégző csomópontok számára megadott munkavégző folyamatokat.
+* Kiöntő és bolt végrehajtó példányai. Minden végrehajtó példány egy, a feldolgozón (JVMs) belül futó szálnak felel meg.
+* Storm-feladatok. Ezek azok a logikai feladatok, amelyeket ezek a szálak futtatnak. Ez nem változtatja meg a párhuzamosság szintjét, ezért érdemes kiértékelnie, hogy a végrehajtónak több feladatra van szüksége, vagy nem.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Get the best performance from Data Lake Storage Gen2
+### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>A Data Lake Storage Gen2 legjobb teljesítményének beolvasása
 
-When working with Data Lake Storage Gen2, you get the best performance if you do the following:
-* Coalesce your small appends into larger sizes.
-* Do as many concurrent requests as you can. Because each bolt thread is doing blocking reads, you want to have somewhere in the range of 8-12 threads per core. This keeps the NIC and the CPU well utilized. A larger VM enables more concurrent requests.  
+Data Lake Storage Gen2 használatakor a legjobb teljesítményt kapja, ha a következőket hajtja végre:
+* Egyesítse a kis méretű hozzáfűzéseket nagyobb méretekben.
+* Annyi egyidejű kérést, amennyit csak tud. Mivel minden egyes bolti szál blokkolja az olvasásokat, egy mag 8-12 szálon belül szeretne lenni. Ez tartja a hálózati adaptert és a CPU-t is. Egy nagyobb méretű virtuális gép több párhuzamos kérést tesz lehetővé.  
 
-### <a name="example-topology"></a>Example topology
+### <a name="example-topology"></a>Példa topológia
 
-Let’s assume you have an 8 worker node cluster with a D13v2 Azure VM. This VM has 8 cores, so among the 8 worker nodes, you have 64 total cores.
+Tegyük fel, hogy egy D13v2 Azure-beli virtuális géppel rendelkező 8 munkavégző csomópont-fürtöt tartalmaz. Ez a virtuális gép 8 maggal rendelkezik, így a 8 feldolgozó csomópont között összesen 64 mag van.
 
-Let’s say we do 8 bolt threads per core. Given 64 cores, that means we want 512 total bolt executor instances (that is, threads). In this case, let’s say we start with one JVM per VM, and mainly use the thread concurrency within the JVM to achieve concurrency. That means we need 8 worker tasks (one per Azure VM), and 512 bolt executors. Given this configuration, Storm tries to distribute the workers evenly across worker nodes (also known as supervisor nodes), giving each worker node 1 JVM. Now within the supervisors, Storm tries to distribute the executors evenly between supervisors, giving each supervisor (that is, JVM) 8 threads each.
+Tegyük fel, hogy 8 csavaros szálat teszünk mag-onként. Az adott 64-es magok esetében ez azt jelenti, hogy a 512 összes bolt végrehajtó példányát (azaz a szálakat) szeretnénk használni. Ebben az esetben tegyük fel, hogy a virtuális gépen egy JVM indítunk, és főleg a JVM belüli szál-párhuzamosságot használják a párhuzamosság eléréséhez. Ez azt jelenti, hogy 8 feldolgozói feladatra van szükség (egy Azure-beli virtuális gépen eggyel) és a 512-es bolt végrehajtói Ebben a konfigurációban a Storm a munkavégző csomópontok (más néven felügyeleti csomópontok) között egyenletesen osztja el a dolgozókat, így az egyes munkavégző csomópontok 1 JVM. A Storm most már a felügyelők között igyekszik a végrehajtókat egyenletesen terjeszteni a felügyelők között, így mindegyik felügyelő (azaz JVM) 8 szálat biztosít.
 
-## <a name="tune-additional-parameters"></a>Tune additional parameters
-After you have the basic topology, you can consider whether you want to tweak any of the parameters:
-* **Number of JVMs per worker node.** If you have a large data structure (for example, a lookup table) that you host in memory, each JVM requires a separate copy. Alternatively, you can use the data structure across many threads if you have fewer JVMs. For the bolt’s I/O, the number of JVMs does not make as much of a difference as the number of threads added across those JVMs. For simplicity, it's a good idea to have one JVM per worker. Depending on what your bolt is doing or what application processing you require, though, you may need to change this number.
-* **Number of spout executors.** Because the preceding example uses bolts for writing to Data Lake Storage Gen2, the number of spouts is not directly relevant to the bolt performance. However, depending on the amount of processing or I/O happening in the spout, it's a good idea to tune the spouts for best performance. Ensure that you have enough spouts to be able to keep the bolts busy. The output rates of the spouts should match the throughput of the bolts. The actual configuration depends on the spout.
-* **Number of tasks.** Each bolt runs as a single thread. Additional tasks per bolt don't provide any additional concurrency. The only time they are of benefit is if your process of acknowledging the tuple takes a large proportion of your bolt execution time. It's a good idea to group many tuples into a larger append before you send an acknowledgement from the bolt. So, in most cases, multiple tasks provide no additional benefit.
-* **Local or shuffle grouping.** When this setting is enabled, tuples are sent to bolts within the same worker process. This reduces inter-process communication and network calls. This is recommended for most topologies.
+## <a name="tune-additional-parameters"></a>További paraméterek hangolása
+Az alapszintű topológia megadását követően megtekintheti, hogy a következő paramétereket szeretné-e használni:
+* **A JVMs száma munkavégző csomóponton.** Ha nagy adatstruktúrával (például egy keresési táblával) rendelkezik a memóriában, minden JVM külön másolat szükséges. Azt is megteheti, hogy az adatszerkezetet több szálon is használhatja, ha kevesebb JVMs van. A bolt I/O esetében a JVMs száma nem annyira különbözik, mint a JVMs-k között hozzáadott szálak száma. Az egyszerűség kedvéért jó ötlet, hogy egy JVM egy munkatársa legyen. Attól függően, hogy mit csinál a bolt, vagy milyen alkalmazások feldolgozására van szükség, de előfordulhat, hogy módosítania kell ezt a számot.
+* **Kiöntő végrehajtók száma.** Mivel az előző példa a Data Lake Storage Gen2 írásához a boltokat használja, a kiöntők száma nem kapcsolódik közvetlenül a bolt teljesítményéhez. A kifolyóban megjelenő feldolgozási vagy I/O-mennyiségtől függően azonban érdemes a kiöntő teljesítményt a legjobb teljesítmény érdekében hangolni. Győződjön meg arról, hogy elegendő kiöntő áll rendelkezésre, hogy megőrizze a csavarok elfoglalt mennyiségét. A kifolyók kimeneti sebességének meg kell egyeznie a csavarok teljesítményével. A tényleges konfiguráció a kiöntőtől függ.
+* **Feladatok száma.** Minden egyes bolt egyetlen szálként fut. Az egyes boltokban további feladatok nem biztosítanak további párhuzamosságot. Az egyetlen hasznos alkalom, ha a rekord visszaigazolási folyamata a bolt végrehajtási idejének nagy hányadát veszi igénybe. Érdemes a sok rekordok egy nagyobb hozzáfűzéssel csoportosítani, mielőtt elküld egy nyugtát a boltból. Így a legtöbb esetben több feladat nem biztosít további kedvezményt.
+* **Helyi vagy véletlenszerű csoportosítás.** Ha ez a beállítás engedélyezve van, a rendszer a rekordok az ugyanazon munkavégző folyamaton belüli boltoknak továbbítja. Ez csökkenti a folyamatok közötti kommunikációt és a hálózati hívásokat. Ez a legtöbb topológiához ajánlott.
 
-This basic scenario is a good starting point. Test with your own data to tweak the preceding parameters to achieve optimal performance.
+Ez az alapszintű forgatókönyv jó kiindulási pont. Tesztelje a saját adatait az előző paraméterek finomhangolásához az optimális teljesítmény érdekében.
 
-## <a name="tune-the-spout"></a>Tune the spout
+## <a name="tune-the-spout"></a>A kiöntő hangolása
 
-You can modify the following settings to tune the spout.
+A kiöntő hangolásához a következő beállításokat módosíthatja.
 
-- **Tuple timeout: topology.message.timeout.secs**. This setting determines the amount of time a message takes to complete, and receive acknowledgement, before it is considered failed.
+- **Rekord időtúllépése: topológia. Message. timeout. mp**. Ez a beállítás határozza meg, hogy az üzenet mennyi időt vesz igénybe, és fogadja a nyugtát, mielőtt a rendszer nem veszi figyelembe a hibát.
 
-- **Max memory per worker process: worker.childopts**. This setting lets you specify additional command-line parameters to the Java workers. The most commonly used setting here is XmX, which determines the maximum memory allocated to a JVM’s heap.
+- **Maximális memória/munkavégző folyamat: Worker. childopts**. Ezzel a beállítással további parancssori paramétereket adhat meg a Java-feldolgozókhoz. Az itt leggyakrabban használt beállítás a XmX, amely meghatározza a JVM halom számára lefoglalt maximális memóriát.
 
-- **Max spout pending: topology.max.spout.pending**. This setting determines the number of tuples that can in be flight (not yet acknowledged at all nodes in the topology) per spout thread at any time.
+- **Maximális kiöntő függőben: topológia. max. kiöntő. függőben**. Ezzel a beállítással megadható, hogy hány rekordok lehet a repülési (a topológia összes csomópontján még nem ismerhető fel) egy kiöntő szálon, bármikor.
 
-  A good calculation to do is to estimate the size of each of your tuples. Then figure out how much memory one spout thread has. The total memory allocated to a thread, divided by this value, should give you the upper bound for the max spout pending parameter.
+  Egy jó számítási módszer a rekordok méretének becslése. Ebből kiderítheti, hogy mekkora memória van egy kiöntő szálban. A szál számára lefoglalt teljes memória, amelyet ez az érték oszt meg, meg kell adnia a felső korlátot a kiöntő függőben lévő paraméterhez.
 
-The default Data Lake Storage Gen2 Storm bolt has a size sync policy parameter (fileBufferSize) that can be used to tune this parameter.
+Az alapértelmezett Data Lake Storage Gen2 Storm-bolt mérete szinkronizálási házirend paraméterrel (fileBufferSize) rendelkezik, amely a paraméter finomhangolásához használható.
 
-In I/O-intensive topologies, it's a good idea to have each bolt thread write to its own file, and to set a file rotation policy (fileRotationSize). When the file reaches a certain size, the stream is automatically flushed and a new file is written to. The recommended file size for rotation is 1 GB.
+Az I/O-igényes topológiákban érdemes az egyes csavarokat a saját fájljába írni, és egy fájl-rotációs szabályzatot (fileRotationSize) beállítani. Ha a fájl elér egy adott méretet, a rendszer automatikusan kiüríti az adatfolyamot, és egy új fájlt ír. Az elforgatás ajánlott fájlmérete 1 GB.
 
-## <a name="monitor-your-topology-in-storm"></a>Monitor your topology in Storm  
-While your topology is running, you can monitor it in the Storm user interface. Here are the main parameters to look at:
+## <a name="monitor-your-topology-in-storm"></a>A topológia figyelése a Storm-ben  
+Amíg a topológia fut, nyomon követheti a Storm felhasználói felületén. A következő fő paramétereket tekintheti meg:
 
-* **Total process execution latency.** This is the average time one tuple takes to be emitted by the spout, processed by the bolt, and acknowledged.
+* **A folyamat végrehajtásának teljes késése.** Ez az az átlagos idő, amikor egy rekordot a kiöntő, a bolt által feldolgozott, és a rendszer elismerte.
 
-* **Total bolt process latency.** This is the average time spent by the tuple at the bolt until it receives an acknowledgement.
+* **A bolt összes folyamatának késése.** Ez az átlagos idő, amelyet a rendszer a rekordban töltött le, amíg nem kap nyugtát.
 
-* **Total bolt execute latency.** This is the average time spent by the bolt in the execute method.
+* **A bolt összes végrehajtási késése.** Ez az az átlagos idő, amelyet a bolt hajt végre a végrehajtási metódusban.
 
-* **Number of failures.** This refers to the number of tuples that failed to be fully processed before they timed out.
+* **Hibák száma.** Ez azon rekordok számát jelenti, amelyeket a rendszer nem tudott teljes mértékben feldolgozni, mielőtt időtúllépés történt.
 
-* **Capacity.** This is a measure of how busy your system is. If this number is 1, your bolts are working as fast as they can. If it is less than 1, increase the parallelism. If it is greater than 1, reduce the parallelism.
+* **Kapacitás.** Ez azt méri, hogy a rendszer mennyire foglalt. Ha ez a szám 1, a csavarok olyan gyorsan működnek, amennyit csak tud. Ha kevesebb, mint 1, növelje a párhuzamosságot. Ha az érték nagyobb, mint 1, csökkentse a párhuzamosságot.
 
-## <a name="troubleshoot-common-problems"></a>Troubleshoot common problems
-Here are a few common troubleshooting scenarios.
-* **Many tuples are timing out.** Look at each node in the topology to determine where the bottleneck is. The most common reason for this is that the bolts are not able to keep up with the spouts. This leads to tuples clogging the internal buffers while waiting to be processed. Consider increasing the timeout value or decreasing the max spout pending.
+## <a name="troubleshoot-common-problems"></a>Gyakori problémák elhárítása
+Íme néhány gyakori hibaelhárítási forgatókönyv.
+* **Számos rekordok időtúllépéssel van elvégezve.** A szűk keresztmetszetek meghatározásához tekintse meg a topológia egyes csomópontjait. Ennek a leggyakoribb oka az, hogy a csavarok nem képesek lépést tartani a kifolyókkal. Ez azt eredményezi, hogy a rendszer feldolgozza a belső pufferek rekordok eltömődését. Vegye fontolóra az időtúllépési érték növelését vagy a függőben lévő maximális kiöntő csökkentését.
 
-* **There is a high total process execution latency, but a low bolt process latency.** In this case, it is possible that the tuples are not being acknowledged fast enough. Check that there are a sufficient number of acknowledgers. Another possibility is that they are waiting in the queue for too long before the bolts start processing them. Decrease the max spout pending.
+* **A folyamat végrehajtási késése magas, de a folyamat alacsony feldolgozási késéssel jár.** Ebben az esetben lehetséges, hogy a rekordok nem elég gyorsan nyugtázni. Győződjön meg arról, hogy elegendő számú nyugtázás van. Egy másik lehetőség, hogy túl sokáig várakozik a várólistán, mielőtt a csavarok megkezdik a feldolgozást. Csökkentse a függőben lévő maximális kiöntőt.
 
-* **There is a high bolt execute latency.** This means that the execute() method of your bolt is taking too long. Optimize the code, or look at write sizes and flush behavior.
+* **Magas a bolt késése.** Ez azt jelenti, hogy a bolt Execute () metódusa túl sokáig tart. Optimalizálja a kódot, vagy nézze meg az írási méreteket és a kiürítési viselkedést.
 
-### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage Gen2 throttling
-If you hit the limits of bandwidth provided by Data Lake Storage Gen2, you might see task failures. Check task logs for throttling errors. You can decrease the parallelism by increasing container size.    
+### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage Gen2 szabályozás
+Ha eléri a Data Lake Storage Gen2 által biztosított sávszélesség korlátait, akkor felmerülhet a feladat hibái. A hibák szabályozásához keresse meg a naplókat. Csökkentheti a párhuzamosságot a tároló méretének növelésével.    
 
-To check if you are getting throttled, enable the debug logging on the client side:
+Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. In **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, change **&lt;root level="info"&gt;** to **&lt;root level="debug"&gt;** . Restart all the nodes/service for the configuration to take effect.
-2. Monitor the Storm topology logs on worker nodes (under /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log) for Data Lake Storage Gen2 throttling exceptions.
+1. A **Ambari** > **storm** > **config** > **Advanced Storm-Worker-log4j**, módosítsa **&lt;root level = "info"&gt;** a **root level = "debug"&lt;** .&gt; A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (a/var/log/Storm/Worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/Worker.log) a Data Lake Storage Gen2 szabályozási kivételek esetében.
 
 ## <a name="next-steps"></a>Következő lépések
-Additional performance tuning for Storm can be referenced in [this blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
+A Storm további teljesítmény-finomhangolását ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)lehet hivatkozni.
 
-For an additional example to run, see [this one on GitHub](https://github.com/hdinsight/storm-performance-automation).
+Ha további példát szeretne futtatni, tekintse [meg ezt a githubon](https://github.com/hdinsight/storm-performance-automation).

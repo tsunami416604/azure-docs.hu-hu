@@ -36,10 +36,10 @@ Az alkalmazásproxy az Azure AD egyik funkciója, amely lehetővé teszi a felha
 
 Az alkalmazásproxy a következőket támogatja:
 
-* Webes alkalmazások által használt [integrált Windows-hitelesítés](application-proxy-configure-single-sign-on-with-kcd.md) hitelesítéshez  
-* A webalkalmazásokat, használja az űrlap-alapú vagy [fejlécalapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférés  
+* [Integrált Windows-hitelesítést](application-proxy-configure-single-sign-on-with-kcd.md) használó webalkalmazások hitelesítéshez  
+* Űrlapalapú vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférést használó webalkalmazások  
 * Webes API-kat, hogy a különböző eszközökön részletgazdag alkalmazásokat közzétenni kívánt  
-* Mögött üzemeltetett alkalmazások a [távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md)  
+* Egy [Távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md) mögött futó alkalmazások  
 * Gazdag ügyfél alkalmazások integrált a az Active Directory Authentication Library (ADAL)
 
 Az alkalmazásproxy támogatja az egyszeri bejelentkezést. További információ a támogatott módszerekről: [egyszeri bejelentkezés módszerének kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
@@ -64,11 +64,11 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 | Végpont  | A végpont egy URL-cím vagy egy [végfelhasználói portál](end-user-experiences.md). Felhasználók által egy külső URL-cím elérése a hálózatán kívüli alkalmazások érhető el. A hálózaton belüli felhasználók elérhetik az alkalmazást egy URL-címet vagy egy végfelhasználói portálon keresztül. Amikor a felhasználók nyissa meg a végpontok egyikéhez, hitelesítéséhez az Azure ad-ben, és majd az összekötőt a helyszíni alkalmazások kerülnek.|
 | Azure AD | Az Azure AD a felhőben tárolt bérlői könyvtár használatával végzi a hitelesítést. |
 | Alkalmazásproxy szolgáltatás | Ez az alkalmazásproxy-szolgáltatás a felhőben fut az Azure AD részeként. Továbbítja a bejelentkezési jogkivonatot a felhasználótól az alkalmazásproxy-Összekötőbe. Az alkalmazásproxy továbbítja az elérhető fejléceket a kérelemben, és a protokoll szerint állítja be a fejléceket az ügyfél IP-címére. Ha a proxyhoz tartozó bejövő kérelem már tartalmazza ezt a fejlécet, a rendszer hozzáadja az ügyfél IP-címét a vesszővel elválasztott lista végéhez, amely a fejléc értéke.|
-| Alkalmazásproxy-összekötő | Az összekötő egy egyszerűsített ügynök, amely egy Windows Serveren fut a hálózaton belül. Az összekötő kezeli a felhőben és a helyszíni alkalmazásban futó alkalmazásproxy szolgáltatás közötti kommunikációt. Az összekötő csak kimenő kapcsolatokat használ, így nem kell megnyitnia a bejövő portokat, vagy semmit sem kell tennie a DMZ-ben. Az összekötők állapot nélküli, és kérje le adatokat a felhőben, igény szerint. További információ az összekötők, többek között azok terheléselosztás és hitelesítéséhez, lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](application-proxy-connectors.md).|
+| Alkalmazásproxy-összekötő | Az összekötő egy egyszerűsített ügynök, amely egy Windows Serveren fut a hálózaton belül. Az összekötő kezeli a felhőben és a helyszíni alkalmazásban futó alkalmazásproxy szolgáltatás közötti kommunikációt. Az összekötő csak kimenő kapcsolatokat használ, így nem kell megnyitnia a bejövő portokat, vagy semmit sem kell tennie a DMZ-ben. Az összekötők állapot nélküli, és kérje le adatokat a felhőben, igény szerint. Az összekötők, például a terheléselosztás és a hitelesítés módjával kapcsolatos további információkért lásd: az [Azure ad Application proxy-összekötők ismertetése](application-proxy-connectors.md).|
 | Active Directory (AD) | Active Directory a tartományi fiókok hitelesítésének végrehajtásához a helyszínen fut. Ha az egyszeri bejelentkezés konfigurálva van, az összekötő az AD-vel kommunikálva további hitelesítést hajt végre.
 | Helyszíni alkalmazás | Végül a felhasználó hozzáférhet egy helyszíni alkalmazáshoz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával. 
 
 A legfrissebb híreket és frissítéseket az [alkalmazásproxy blogjában](https://blogs.technet.com/b/applicationproxyblog/) találja.

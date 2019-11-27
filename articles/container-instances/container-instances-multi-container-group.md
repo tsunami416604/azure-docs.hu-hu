@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – többtárolós csoport üzembe helyezése Azure Container Instances-sablonban
+title: Oktatóanyag – több tárolós csoport üzembe helyezése – sablon
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy tároló-csoportot több tárolóval Azure Container Instances egy Azure Resource Manager sablonnal az Azure CLI használatával.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7438b5a91d3bf0ce8330e33bc1c849a8b0329c6f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325902"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533623"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Oktatóanyag: Többtárolós csoport üzembe helyezése Resource Manager-sablonnal
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Oktatóanyag: több tárolós csoport üzembe helyezése Resource Manager-sablonnal
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
@@ -42,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="configure-a-template"></a>Sablon konfigurálása
 
-Először másolja a következő JSON-t egy nevű `azuredeploy.json`új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Először másolja a következő JSON-t egy `azuredeploy.json`nevű új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
 
 ```
 code azuredeploy.json
@@ -172,7 +167,7 @@ A központi telepítés állapotának megtekintéséhez használja a következő
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Ha meg szeretné tekinteni a futó alkalmazást, navigáljon az IP-címére a böngészőben. Például az IP-cím `52.168.26.124` ebben a példában kimenet:
+Ha meg szeretné tekinteni a futó alkalmazást, navigáljon az IP-címére a böngészőben. Például az IP `52.168.26.124` ebben a példában a kimenetben:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -182,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Tárolónaplók megtekintése
 
-A tárolók naplózási kimenetét az az [Container logs][az-container-logs] paranccsal tekintheti meg. Az `--container-name` argumentum megadja azt a tárolót, amelyből a naplófájlokat le szeretné húzni. Ebben a példában a `aci-tutorial-app` tároló meg van adva.
+A tárolók naplózási kimenetét az az [Container logs][az-container-logs] paranccsal tekintheti meg. A `--container-name` argumentum megadja azt a tárolót, amelyből a naplófájlokat le szeretné húzni. Ebben a példában a `aci-tutorial-app` tároló van megadva.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -197,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Az oldalkocsi tároló naplófájljainak megtekintéséhez futtasson egy hasonló parancsot, amely megadja a `aci-tutorial-sidecar` tárolót.
+Az oldalkocsi tároló naplófájljainak megtekintéséhez futtasson egy hasonló parancsot, amely a `aci-tutorial-sidecar` tárolót adja meg.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -223,9 +218,9 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP `200 OK`-válasz kódját kapta.
+Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha a `200 OK`tól eltérő HTTP-válaszüzenetet kapott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Resource Manager sablont használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

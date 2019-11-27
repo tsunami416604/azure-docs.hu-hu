@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: This article shows how to migrate a classic policy that requires multi-factor authentication in the Azure portal.
+title: Feltételes hozzáférési szabályzatok áttelepíteni – Azure Active Directory
+description: Ez a cikk bemutatja, hogyan telepítheti át a többtényezős hitelesítést igénylő klasszikus szabályzatot a Azure Portalban.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,102 +18,102 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380324"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrate a classic policy that requires multi-factor authentication in the Azure portal
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>A többtényezős hitelesítést igénylő klasszikus szabályzat áttelepítését a Azure Portal
 
-This tutorial shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app. Although it is not a prerequisite, we recommend that you read [Migrate classic policies in the Azure portal](policy-migration.md) before you start migrating your classic policies.
+Ez az oktatóanyag bemutatja, hogyan telepíthet át egy klasszikus szabályzatot, amely megköveteli a **többtényezős hitelesítést** a felhőalapú alkalmazásokhoz. Bár ez nem előfeltétel, javasoljuk, hogy olvassa el a klasszikus szabályzatok áttelepítése [a Azure Portalt](policy-migration.md) , mielőtt megkezdené a klasszikus házirendek áttelepítését.
 
 ## <a name="overview"></a>Áttekintés
 
-The scenario in this article shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app.
+A jelen cikkben ismertetett forgatókönyv bemutatja, hogyan telepíthet át egy olyan klasszikus szabályzatot, amely **többtényezős hitelesítést** igényel a felhőalapú alkalmazásokhoz.
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-The migration process consists of the following steps:
+Az áttelepítési folyamat a következő lépésekből áll:
 
-1. [Open the classic policy](#open-a-classic-policy) to get the configuration settings.
-1. Create a new Azure AD Conditional Access policy to replace your classic policy. 
-1. Disable the classic policy.
+1. A konfigurációs beállítások beszerzéséhez [nyissa meg a klasszikus szabályzatot](#open-a-classic-policy) .
+1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzatot a klasszikus szabályzat cseréjéhez. 
+1. Tiltsa le a klasszikus szabályzatot.
 
-## <a name="open-a-classic-policy"></a>Open a classic policy
+## <a name="open-a-classic-policy"></a>Klasszikus szabályzat megnyitása
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
 
    ![Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. A **Azure Active Directory** lap **kezelés** szakaszában kattintson a **feltételes hozzáférés**elemre.
 
    ![Feltételes hozzáférés](./media/policy-migration-mfa/02.png)
 
-1. In the **Manage** section, click **Classic policies (preview)** .
+1. A **kezelés** szakaszban kattintson a **klasszikus házirendek (előzetes verzió)** elemre.
 
-   ![Classic policies](./media/policy-migration-mfa/12.png)
+   ![Klasszikus szabályzatok](./media/policy-migration-mfa/12.png)
 
-1. In the list of classic policies, click the policy that requires **multi-factor authentication** for a cloud app.
+1. A klasszikus szabályzatok listájában kattintson arra a házirendre, amely megköveteli a **többtényezős hitelesítést** a felhőalapú alkalmazásokhoz.
 
-   ![Classic policies](./media/policy-migration-mfa/13.png)
+   ![Klasszikus szabályzatok](./media/policy-migration-mfa/13.png)
 
-## <a name="create-a-new-conditional-access-policy"></a>Create a new Conditional Access policy
+## <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési szabályzat létrehozása
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
 
    ![Azure Active Directory](./media/policy-migration/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. A **Azure Active Directory** lap **kezelés** szakaszában kattintson a **feltételes hozzáférés**elemre.
 
    ![Feltételes hozzáférés](./media/policy-migration/02.png)
 
-1. On the **Conditional Access** page, to open the **New** page, in the toolbar on the top, click **Add**.
+1. A **feltételes hozzáférés** lapon az **új** lap megnyitásához kattintson a felső eszköztáron a **Hozzáadás**gombra.
 
    ![Feltételes hozzáférés](./media/policy-migration/03.png)
 
-1. On the **New** page, in the **Name** textbox, type a name for your policy.
+1. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét.
 
    ![Feltételes hozzáférés](./media/policy-migration/29.png)
 
-1. In the **Assignments** section, click **Users and groups**.
+1. A **hozzárendelések** szakaszban kattintson a **felhasználók és csoportok**elemre.
 
    ![Feltételes hozzáférés](./media/policy-migration/05.png)
 
-   1. If you have all users selected in your classic policy, click **All users**. 
+   1. Ha a klasszikus szabályzatban minden felhasználó van kiválasztva, kattintson a **minden felhasználó**elemre. 
 
       ![Feltételes hozzáférés](./media/policy-migration/35.png)
 
-   1. If you have groups selected in your classic policy, click **Select users and groups**, and then select the required users and groups.
+   1. Ha a klasszikus szabályzatban csoportok vannak kiválasztva, kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza ki a szükséges felhasználókat és csoportokat.
 
       ![Feltételes hozzáférés](./media/policy-migration/36.png)
 
-   1. If you have the excluded groups, click the **Exclude** tab, and then select the required users and groups. 
+   1. Ha a kizárt csoportok vannak, kattintson a **kizárás** lapra, majd válassza ki a szükséges felhasználókat és csoportokat. 
 
       ![Feltételes hozzáférés](./media/policy-migration/37.png)
 
-1. On the **New** page, to open the **Cloud apps** page, in the **Assignment** section, click **Cloud apps**.
-1. On the **Cloud apps** page, perform the following steps:
-   1. Click **Select apps**.
+1. Az **új** lapon a **Cloud apps** lap megnyitásához kattintson a **hozzárendelés** szakaszban a **Cloud apps**elemre.
+1. A **Cloud apps** oldalon hajtsa végre a következő lépéseket:
+   1. Kattintson az **alkalmazások kiválasztása**elemre.
    1. Kattintson a **Kiválasztás** gombra.
-   1. On the **Select** page, select your cloud app, and then click **Select**.
-   1. On the **Cloud apps** page, click **Done**.
-1. If you have **Require multi-factor authentication** selected:
+   1. A **kiválasztás** lapon válassza ki a felhőalapú alkalmazást, majd kattintson a **kiválasztás**elemre.
+   1. A **Cloud apps** lapon kattintson a **kész**gombra.
+1. Ha a **többtényezős hitelesítés** van kiválasztva:
 
    ![Feltételes hozzáférés](./media/policy-migration/26.png)
 
-   1. In the **Access controls** section, click **Grant**.
+   1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
 
       ![Feltételes hozzáférés](./media/policy-migration/27.png)
 
-   1. On the **Grant** page, click **Grant access**, and then click **Require multi-factor authentication**.
+   1. A **támogatás** lapon kattintson a **hozzáférés engedélyezése**elemre, majd kattintson a **többtényezős hitelesítés megkövetelése**lehetőségre.
    1. Kattintson a **Kiválasztás** gombra.
-1. Click **On** to enable your policy.
+1. A házirend engedélyezéséhez kattintson **a be** gombra.
 
    ![Feltételes hozzáférés](./media/policy-migration/30.png)
 
-## <a name="disable-the-classic-policy"></a>Disable the classic policy
+## <a name="disable-the-classic-policy"></a>A klasszikus szabályzat letiltása
 
-To disable your classic policy, click **Disable** in the **Details** view.
+A klasszikus szabályzat letiltásához kattintson a **Letiltás** gombra a **részletek** nézetben.
 
-![Classic policies](./media/policy-migration-mfa/14.png)
+![Klasszikus szabályzatok](./media/policy-migration-mfa/14.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- For more information about the classic policy migration, see [Migrate classic policies in the Azure portal](policy-migration.md).
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- A klasszikus házirendek áttelepítésével kapcsolatos további információkért lásd: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
+- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

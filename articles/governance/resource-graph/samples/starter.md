@@ -561,7 +561,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

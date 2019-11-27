@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Java - Bing News Search'
+title: 'Rövid útmutató: Hírek keresése a Javához készült SDK használatával – Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Java, and process the response.
+description: Ezzel a rövid útmutatóval híreket kereshet a Javához készült Bing News Search SDK-val, és feldolgozhatja a választ.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,13 +18,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383932"
 ---
-# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Search for news with the Bing News Search SDK for Java
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Gyors útmutató: Hírek keresése a Javához készült Bing News Search SDK-val
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Java. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+Ezzel a rövid útmutatóval megkezdheti a Java-hoz készült Bing News Search SDK-val kapcsolatos hírek keresését. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Install the Bing News Search SDK dependencies using Maven, Gradle, or another dependency management system. A Maven POM-fájlhoz a következő deklarációra van szükség:
+Telepítse a Bing News Search SDK-függőségeket a Maven, a Gradle vagy más függőségi felügyeleti rendszeren. A Maven POM-fájlhoz a következő deklarációra van szükség:
 
 ```xml
     <dependencies>
@@ -55,9 +55,9 @@ import okhttp3.Response;
 import java.io.IOException;
 ```
 
-## <a name="create-a-search-client-and-store-credentials"></a>Create a search client and store credentials
+## <a name="create-a-search-client-and-store-credentials"></a>Keresési ügyfél létrehozása és a hitelesítő adatok tárolása
 
-1. Create a method called `getClient()` that returns a new `NewsSearchAPIImpl` search client. Add your endpoint as the first parameter for the new`NewsSearchAPIImpl` object, and a new `ServiceClientCredentials` object to store your credentials.
+1. Hozzon létre egy `getClient()` nevű metódust, amely új `NewsSearchAPIImpl` keresési ügyfelet ad vissza. Adja hozzá a végpontot az új`NewsSearchAPIImpl` objektum első paramétereként, valamint egy új `ServiceClientCredentials` objektumot a hitelesítő adatok tárolásához.
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -67,7 +67,7 @@ import java.io.IOException;
     }
     ```
 
-2. To create the `ServiceClientCredentials` object, override the `applyCredentialsFilter()` function. Pass a `OkHttpClient.Builder` to the method, and use the builder's `addNetworkInterceptor()` method to create your credentials for the SDK call.
+2. A `ServiceClientCredentials` objektum létrehozásához bírálja felül a `applyCredentialsFilter()` függvényt. Adjon át egy `OkHttpClient.Builder` a metódusnak, és a Builder `addNetworkInterceptor()` metódusával hozza létre az SDK-híváshoz tartozó hitelesítő adatait.
 
     ```java
     new ServiceClientCredentials() {
@@ -90,9 +90,9 @@ import java.io.IOException;
     });
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Send and receive a search request
+## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása
 
-1. Create a method that calls `getClient()` and sends a search request to the Bing News Search service. Filter the search with the *market* and *count* parameters, then print information about the first news result: name, URL, publication date, description, provider name, and total number of estimated matches for your search.
+1. Hozzon létre egy metódust, amely meghívja a `getClient()`t, és keresési kérelmet küld a Bing News Search szolgáltatásnak. Szűrje a keresést a *piaci* és a *Count* paraméterrel, majd nyomtassa ki az első Hírek eredményét: név, URL, közzététel dátuma, leírás, szolgáltató neve, valamint a keresés becsült egyezésének teljes száma.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -126,7 +126,7 @@ import java.io.IOException;
     
     ```
 
-2. Add your search method to a `main()` method to execute the code.
+2. Adja hozzá a keresési metódust egy `main()` metódushoz a kód végrehajtásához.
 
     ```java 
     public static void main(String[] args) {
@@ -135,7 +135,7 @@ import java.io.IOException;
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

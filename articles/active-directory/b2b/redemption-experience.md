@@ -73,10 +73,10 @@ Amikor egy vendég először jelentkezik be a partner szervezet erőforrásaihoz
 
 A címtárban a vendég **meghívásának elfogadott** értéke **Igen**értékre változik. Ha létrejött egy MSA, a vendég **forrása** a Microsoft- **fiókot**jeleníti meg. További információ a vendég felhasználói fiók tulajdonságairól: [Azure ad B2B csoportmunka-felhasználó tulajdonságai](user-properties.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](add-users-administrator.md)
+- [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](add-users-administrator.md)
 - [Hogyan vehetik igénybe az Information Worker VÁLLALATKÖZI együttműködési felhasználókat a Azure Active Directory?](add-users-information-worker.md)
 - [Azure Active Directory B2B csoportmunka-felhasználók hozzáadása a PowerShell használatával](customize-invitation-api.md#powershell)
 - [A szervezet kihagyása vendég felhasználóként](leave-the-organization.md)

@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML model management'
+title: 'MLOps: ML-modell kezelése'
 titleSuffix: Azure Machine Learning
-description: 'Learn about model management with Azure Machine Learning (MLOps). Deploy, manage, and monitor your models to continuously improve them. '
+description: 'További információ a Azure Machine Learning (MLOps) modellel történő kezeléséről. A modellek üzembe helyezése, kezelése és monitorozása folyamatosan fejleszthető. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,151 +18,151 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420066"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model management, deployment, and monitoring with Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
-In this article, learn about how to use Azure Machine Learning to manage the lifecycle of your models. Azure Machine Learning uses a Machine Learning Operations (MLOps) approach. MLOps improves the quality and consistency of your machine learning solutions. 
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning a modellek életciklusának kezeléséhez. A Azure Machine Learning a Machine Learning Operations (MLOps) módszert használja. A MLOps javítja a gépi tanulási megoldások minőségét és egységességét. 
 
-Azure Machine Learning provides the following MLOps capabilities:
+A Azure Machine Learning a következő MLOps képességeket biztosítja:
 
-- **Create reproducible ML pipelines**. Pipelines allow you to define repeatable and reusable steps for your data preparation, training, and scoring processes.
-- **Register, package, and deploy models from anywhere** and track associated metadata required to use the model.
-- **Capture the governance data required for capturing the end-to-end ML lifecycle**, including who is publishing models, why changes are being made, and when models were deployed or used in production.
-- **Notify and alert on events in the ML lifecycle** such as experiment completion, model registration, model deployment, and data drift detection.
-- **Monitor ML applications for operational and ML-related issues**. Compare model inputs between training and inference, explore model-specific metrics, and provide monitoring and alerts on your ML infrastructure.
-- **Automate the end-to-end ML lifecycle with Azure Machine Learning and Azure DevOps** to frequently update models, test new models, and continuously roll out new ML models alongside your other applications and services.
+- **Reprodukálható ml-folyamatokat hozhat létre**. A folyamatok lehetővé teszik a megismételhető és újrafelhasználható lépések megadását az adatelőkészítési, a képzési és a pontozási folyamatokhoz.
+- **Modellek regisztrálása, becsomagolása és üzembe helyezése bárhonnan** , valamint a modell használatához szükséges metaadatok nyomon követése.
+- **Rögzítse a végpontok közötti ml életciklus rögzítéséhez szükséges irányítási adatmennyiséget**, beleértve a modellek közzétételi modelljeit, a módosítások elvégzésének okát, valamint a modellek üzembe helyezését vagy éles környezetben való használatát.
+- **Értesítés és riasztás a ml-életciklus eseményeiről** , mint például a kísérletezés befejezése, a modell regisztrálása, a modell üzembe helyezése és az adateltolódások észlelése.
+- **Ml-alkalmazások figyelése operatív és ml-vel kapcsolatos problémák esetén**. Hasonlítsa össze a modell bemeneteit a képzés és a következtetések között, Fedezze fel a modellre jellemző mérőszámokat, és figyelje a ML-infrastruktúráját.
+- **Automatizálja a teljes körű ml-életciklust a Azure Machine learning és az Azure DevOps** a modellek gyakori frissítéséhez, az új modellek teszteléséhez, valamint az új ml-modellek folyamatos üzembe helyezéséhez más alkalmazások és szolgáltatások mellett.
 
-## <a name="create-reproducible-ml-pipelines"></a>Create reproducible ML pipelines
+## <a name="create-reproducible-ml-pipelines"></a>Reprodukálható ML-folyamatok létrehozása
 
-Use ML pipelines from Azure Machine Learning to stitch together all of the steps involved in your model training process.
+A modell betanítási folyamatában szereplő összes lépés összefűzéséhez használjon Azure Machine Learning ML-es folyamatokat.
 
-An ML pipeline can contain steps from data preparation to feature extraction to hyperparameter tuning to model evaluation. For more information, see [ML pipelines](concept-ml-pipelines.md).
+A ML-folyamatok az adatok előkészítésének lépéseit is tartalmazhatják, hogy hiperparaméter a hangolást a modell kiértékeléséhez. További információ: [ml folyamatok](concept-ml-pipelines.md).
 
-## <a name="register-package-and-deploy-models-from-anywhere"></a>Register, package, and deploy models from anywhere
+## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellek regisztrálása, becsomagolása és üzembe helyezése bárhonnan
 
-### <a name="register-and-track-ml-models"></a>Register and track ML models
+### <a name="register-and-track-ml-models"></a>ML-modellek regisztrálása és nyomon követése
 
-Model registration allows you to store and version your models in the Azure cloud, in your workspace. The model registry makes it easy to organize and keep track of your trained models.
-
-> [!TIP]
-> A registered model is a logical container for one or more files that make up your model. For example, if you have a model that is stored in multiple files, you can register them as a single model in your Azure Machine Learning workspace. After registration, you can then download or deploy the registered model and receive all the files that were registered.
-
-Registered models are identified by name and version. Each time you register a model with the same name as an existing one, the registry increments the version. Additional metadata tags can be provided during registration. These tags are then used when searching for a model. Azure Machine Learning supports any model that can be loaded using Python 3.5.2 or higher.
+A modell regisztrációja lehetővé teszi, hogy a saját munkaterületén tárolja és megtekintse a modelljeit az Azure-felhőben. A modell beállításjegyzéke megkönnyíti a betanított modellek rendszerezését és nyomon követését.
 
 > [!TIP]
-> You can also register models trained outside Azure Machine Learning.
+> A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
 
-You can't delete a registered model that is being used in an active deployment.
-For more information, see the register model section of [Deploy models](how-to-deploy-and-where.md#registermodel).
+A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. A regisztráció során további metaadat-címkéket is megadhat. Ezeket a címkéket a rendszer a modell keresésekor használja. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
 
-### <a name="package-and-debug-models"></a>Package and debug models
+> [!TIP]
+> A Azure Machine Learningon kívül betanított modelleket is regisztrálhat.
 
-Before deploying a model into production, it is packaged into a Docker image. In most cases, image creation happens automatically in the background during deployment. You can manually specify the image.
+Aktív központi telepítésben használt regisztrált modell nem törölhető.
+További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
 
-If you run into problems with the deployment, you can deploy on your local development environment for troubleshooting and debugging.
+### <a name="package-and-debug-models"></a>Csomagok és hibakeresési modellek
 
-For more information, see [Deploy models](how-to-deploy-and-where.md#registermodel) and [Troubleshooting deployments](how-to-troubleshoot-deployment.md).
+A modell éles környezetben történő üzembe helyezése előtt egy Docker-rendszerképbe van csomagolva. A legtöbb esetben a rendszerkép létrehozása a háttérben automatikusan megtörténik a telepítés során. Manuálisan is megadhatja a rendszerképet.
 
-### <a name="validate-and-profile-models"></a>Validate and profile models
+Ha a telepítés során problémákba ütközne, a hibaelhárításhoz és a hibakereséshez telepítheti a helyi fejlesztési környezetét.
 
-Azure Machine Learning can use profiling to determine the ideal CPU and memory settings to use when deploying your model. Model validation happens as part of this process, using data that you supply for the profiling process.
+További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel) és [hibaelhárítása](how-to-troubleshoot-deployment.md).
 
-### <a name="convert-and-optimize-models"></a>Convert and optimize models
+### <a name="validate-and-profile-models"></a>Ellenőrzés és profil modelljei
 
-Converting your model to [Open Neural Network Exchange](https://onnx.ai) (ONNX) may improve performance. On average, converting to ONNX can yield a 2x performance increase.
+A Azure Machine Learning használhatja a profilkészítést a modell üzembe helyezéséhez használt ideális CPU-és memória-beállítások meghatározásához. A modell ellenőrzése a folyamat részeként történik a profilkészítési folyamathoz megadott adatmennyiség használatával.
 
-For more information on ONNX with Azure Machine Learning, see the [Create and accelerate ML models](concept-onnx.md) article.
+### <a name="convert-and-optimize-models"></a>Modellek konvertálása és optimalizálása
 
-### <a name="use-models"></a>Use models
+A modell átalakítása a [neurális hálózati Exchange](https://onnx.ai) (ONNX) megnyitásával növelheti a teljesítményt. Átlagosan a ONNX-re való konvertálás a kétszeri teljesítmény növelését eredményezheti.
 
-Trained machine learning models are deployed as web services in the cloud or locally. You can also deploy models to Azure IoT Edge devices. Deployments use CPU, GPU, or field-programmable gate arrays (FPGA) for inferencing. You can also use models from Power BI.
+A Azure Machine Learningrel való ONNX kapcsolatos további információkért tekintse meg a [ml-modellek létrehozása és felgyorsítása](concept-onnx.md) című cikket.
 
-When using a model as a web service or IoT Edge device, you provide the following items:
+### <a name="use-models"></a>Modellek használata
 
-* The model(s) that are used to score data submitted to the service/device.
-* An entry script. This script accepts requests, uses the model(s) to score the data, and return a response.
-* A conda environment file that describes the dependencies required by the model(s) and entry script.
-* Any additional assets such as text, data, etc. that are required by the model(s) and entry script.
+A betanított gépi tanulási modellek a felhőben vagy helyileg webszolgáltatásként vannak üzembe helyezve. A modelleket Azure IoT Edge-eszközökre is üzembe helyezheti. A központi telepítések CPU-, GPU-vagy mező-programozható Gate-tömböket (FPGA) használnak a következtetésekhez. Power BI modelleket is használhat.
 
-You also provide the configuration of the target deployment platform. For example, the VM family type, available memory, and number of cores when deploying to Azure Kubernetes Service.
+Ha webszolgáltatásként vagy IoT Edge eszközként használ modellt, a következő elemeket kell megadnia:
 
-When the image is created, components required by Azure Machine Learning are also added. For example, assets needed to run the web service and interact with IoT Edge.
+* A szolgáltatásnak/eszköznek beküldött adatértékek kiértékeléséhez használt modell (ek).
+* Egy bejegyzési parancsfájl. Ez a szkript fogadja a kérelmeket, a modell (ek) et használja az adatpontszámok kiértékelésére és a válasz visszaküldésére.
+* Egy Conda-környezeti fájl, amely leírja a modell (ek) és a bejegyzési parancsfájl által igényelt függőségeket.
+* A modell (ek) és a bejegyzési parancsfájl által igényelt további eszközök, például szöveg, adatok stb.
+
+Megadhatja a cél telepítési platform konfigurációját is. Például a virtuálisgép-család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatásban való üzembe helyezéskor.
+
+A rendszerkép létrehozásakor a Azure Machine Learning által igényelt összetevőket is hozzáadja a rendszer. Például a webszolgáltatás futtatásához és a IoT Edgehoz való interakcióhoz szükséges eszközök.
 
 #### <a name="batch-scoring"></a>Kötegelt kiértékelés
-Batch scoring is supported through ML pipelines. For more information, see [Batch predictions on big data](how-to-run-batch-predictions.md).
+A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-run-batch-predictions.md).
 
-#### <a name="real-time-web-services"></a>Real-time web services
+#### <a name="real-time-web-services"></a>Valós idejű webszolgáltatások
 
-You can use your models in **web services** with the following compute targets:
+A **webszolgáltatások** modelljei a következő számítási célokkal használhatók:
 
 * Azure Container Instance
 * Azure Kubernetes Service
-* Local development environment
+* Helyi fejlesztési környezet
 
-To deploy the model as a web service, you must provide the following items:
+A modell webszolgáltatásként való üzembe helyezéséhez a következő elemeket kell megadnia:
 
-* The model or ensemble of models.
-* Dependencies required to use the model. For example, a script that accepts requests and invokes the model, conda dependencies, etc.
-* Deployment configuration that describes how and where to deploy the model.
+* A modellek modellje vagy együttese.
+* A modell használatához szükséges függőségek. Például egy olyan parancsfájl, amely fogadja a kérelmeket, és meghívja a modellt, a Conda függőségeit stb.
+* Telepítési konfiguráció, amely leírja, hogyan és hol kell telepíteni a modellt.
 
-For more information, see [Deploy models](how-to-deploy-and-where.md).
+További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>IoT Edge devices
+#### <a name="iot-edge-devices"></a>Eszközök IoT Edge
 
-You can use models with IoT devices through **Azure IoT Edge modules**. IoT Edge modules are deployed to a hardware device, which enables inference, or model scoring, on the device.
+A modelleket IoT eszközökkel **Azure IoT Edge modulokon**keresztül is használhatja. IoT Edge modulok üzembe helyezése egy hardvereszközön történik, amely lehetővé teszi a következtetések kiértékelését vagy a modellek pontozását az eszközön.
 
-For more information, see [Deploy models](how-to-deploy-and-where.md).
+További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Elemzés
 
-Microsoft Power BI supports using machine learning models for data analytics. For more information, see [Azure Machine Learning integration in Power BI (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine learning Integration in Power bi (előzetes verzió)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Capture the governance data required for capturing the end-to-end ML lifecycle
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Rögzítse a végpontok közötti ML életciklus rögzítéséhez szükséges irányítási adatmennyiséget
 
-Azure ML gives you the capability to track the end-to-end audit trail of all of your ML assets. Konkrétan:
+Az Azure ML lehetővé teszi az összes ML-eszköz végpontok közötti naplózásának nyomon követését. Konkrétan:
 
-- Azure ML [integrates with Git](how-to-set-up-training-targets.md#gitintegration) to track information on which repository / branch / commit your code came from.
-- [Azure ML Datasets](how-to-create-register-datasets.md) help you track, profile, and version data. 
-- Azure ML Run history stores a snapshot of the code, data, and compute used to train a model.
-- The Azure ML Model Registry captures all of the metadata associated with your model (which experiment trained it, where it is being deployed, if its deployments are healthy).
+- Az Azure ML a git szolgáltatással [integrálva](how-to-set-up-training-targets.md#gitintegration) követheti azokat az információkat, amelyeken a tárház/ág/a kód véglegesítve származik.
+- Az [Azure ml-adatkészletek](how-to-create-register-datasets.md) segítenek a nyomon követésben, a profilban és a verziószámozásban. 
+- Az Azure ML futtatási előzményei a modell betanításához használt kód, adatok és számítások pillanatképét tárolják.
+- Az Azure ML-modell beállításjegyzéke rögzíti a modellhez társított összes metaadatot (amely kitanítja azt, hogy hol van üzembe helyezve, ha a központi telepítése kifogástalan).
 
-## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Notify, automate, and alert on events in the ML lifecycle
-Azure ML publishes key events to Azure EventGrid, which can be used to notify and automate on events in the ML lifecycle. For more information, please see [this document](how-to-use-event-grid.md).
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>A ML-életciklus eseményeinek értesítése, automatizálása és riasztása
+Az Azure ML kulcsfontosságú eseményeket tesz közzé az Azure EventGrid, amely a ML-életciklus eseményeinek értesítésére és automatizálására használható. További információkért tekintse meg [ezt a dokumentumot](how-to-use-event-grid.md).
 
-## <a name="monitor-for-operational--ml-issues"></a>Monitor for operational & ML issues
+## <a name="monitor-for-operational--ml-issues"></a>Az Operational & ML-vel kapcsolatos problémák monitorozása
 
-Monitoring enables you to understand what data is being sent to your model, and the predictions that it returns.
+A figyelés lehetővé teszi, hogy megtudja, milyen adatok kerülnek a modellbe, valamint a visszaadott előrejelzések.
 
-This information helps you understand how your model is being used. The collected input data may also be useful in training future versions of the model.
+Ez az információ segít megérteni a modell felhasználásának módját. A begyűjtött bemeneti adatok is hasznosak lehetnek a modell jövőbeli verzióinak betanításához.
 
-For more information, see [How to enable model data collection](how-to-enable-data-collection.md).
+További információ: [a Model-adatok gyűjtésének engedélyezése](how-to-enable-data-collection.md).
 
 
-## <a name="automate-the-ml-lifecycle"></a>Automate the ML lifecycle 
+## <a name="automate-the-ml-lifecycle"></a>A ML életciklus automatizálása 
 
-You can use GitHub and Azure Pipelines to create a continuous integration process that trains a model. In a typical scenario, when a Data Scientist checks a change into the Git repo for a project, the Azure Pipeline will start a training run. The results of the run can then be inspected to see the performance characteristics of the trained model. You can also create a pipeline that deploys the model as a web service.
+A GitHub és az Azure-folyamatok segítségével folyamatos integrációs folyamatot hozhat létre, amely egy modellt hajt. Egy tipikus forgatókönyv esetén, amikor egy adattudós ellenőrzi a projekt git-tárházában bekövetkező változást, az Azure-folyamat elkezdi a képzés futtatását. A Futtatás eredményei megtekinthetők a betanított modell teljesítmény-jellemzőinek megtekintéséhez. Létrehozhat egy olyan folyamatot is, amely webszolgáltatásként telepíti a modellt.
 
-The [Azure Machine Learning extension](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) makes it easier to work with Azure Pipelines. It provides the following enhancements to Azure Pipelines:
+A [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) megkönnyíti az Azure-folyamatokkal való munkát. A következő fejlesztéseket biztosítja az Azure-folyamatok számára:
 
-* Enables workspace selection when defining a service connection.
-* Enables release pipelines to be triggered by trained models created in a training pipeline.
+* Engedélyezi a munkaterület kijelölését a szolgáltatás kapcsolatának meghatározásakor.
+* Lehetővé teszi, hogy a kiadási folyamatokat a betanítási folyamat során létrehozott betanított modellek aktiválja.
 
-For more information on using Azure Pipelines with Azure Machine Learning, see the [Continuous integration and deployment of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) article and the [Azure Machine Learning MLOps](https://aka.ms/mlops) repository.
+További információ az Azure-folyamatok Azure Machine Learning használatával történő használatáról: [ml-modellek folyamatos integrációja és üzembe helyezése az Azure-folyamatokkal](/azure/devops/pipelines/targets/azure-machine-learning) és a [Azure Machine learning MLOps](https://aka.ms/mlops) adattárral.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Learn more by reading and exploring the following resources:
+További információ: a következő erőforrások olvasása és feltárása:
 
-+ [How & where to deploy models](how-to-deploy-and-where.md) with Azure Machine Learning
++ [Hogyan & a modellek üzembe helyezését](how-to-deploy-and-where.md) Azure Machine learning
 
-+ [Tutorial: Deploy an image classification model in ACI](tutorial-deploy-models-with-aml.md).
++ [Oktatóanyag: lemezkép-besorolási modell üzembe helyezése az ACI-ban](tutorial-deploy-models-with-aml.md).
 
-+ [End-to-end MLOps examples repo](https://github.com/microsoft/MLOps)
++ [A végpontok közötti MLOps-példák tárháza](https://github.com/microsoft/MLOps)
 
-+ [CI/CD of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
++ [CI/CD/ML modellek Azure-folyamatokkal](/azure/devops/pipelines/targets/azure-machine-learning)
 
-+ Create clients that [consume a deployed model](how-to-consume-web-service.md)
++ [Üzembe helyezett modellt](how-to-consume-web-service.md) használó ügyfelek létrehozása
 
 + [Gépi tanulás nagy léptékben](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
-+ [Azure AI reference architectures & best practices rep](https://github.com/microsoft/AI)
++ [Azure AI-referenciák architektúrái & ajánlott eljárások rep](https://github.com/microsoft/AI)

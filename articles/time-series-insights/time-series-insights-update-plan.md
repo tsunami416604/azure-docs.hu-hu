@@ -1,6 +1,6 @@
 ---
-title: Plan your Preview environment - Azure Time Series Insights | Microsoft Docs
-description: Learn how to plan your Azure Time Series Insights Preview environment.
+title: Az előzetes verziójú környezet megtervezése – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan tervezheti meg Azure Time Series Insights előnézeti környezetét.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -17,88 +17,88 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420309"
 ---
-# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plan your Azure Time Series Insights Preview environment
+# <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
-This article describes best practices to plan and get started quickly by using Azure Time Series Insights Preview.
-
-> [!NOTE]
-> For best practices to plan a general availability Time Series Insights instance, see [Plan your Azure Time Series Insights general availability environment](time-series-insights-environment-planning.md).
-
-## <a name="best-practices-for-planning-and-preparation"></a>Best practices for planning and preparation
-
-Best practices surrounding planning for and preparing your environment are described further in the following articles:
-
-* What you get when you [provision a Time Series Insights Preview environment](#the-preview-environment).
-* What your [Time Series IDs and Timestamp properties are](#configure-time-series-ids-and-timestamp-properties).
-* What the new [Time Series Model is](#understand-the-time-series-model), and how to build your own.
-* How to [send events efficiently in JSON](#shape-your-events).
-* Time Series Insights [business disaster recovery options](#business-disaster-recovery).
-
-Azure Time Series Insights employs a pay-as-you-go business model. For more information about charges and capacity, see [Time Series Insights pricing](https://azure.microsoft.com/pricing/details/time-series-insights/).
-
-## <a name="the-preview-environment"></a>The preview environment
-
-When you provision a Time Series Insights Preview environment, you create two Azure resources:
-
-* An Azure Time Series Insights Preview environment
-* An Azure Storage general-purpose V1 account
-
-As part of the provisioning process, you specify whether you want to enable a warm store. Warm store provides you with a tiered query experience. When enabled, you must specify a retention period between 7 and 30 days. Queries executed within the warm store retention period generally provide faster response times. When a query spans over the warm store retention period, it's served from cold store.
-
-Queries on warm store are free, while queries on cold store incur costs. It's important to understand your query patterns and plan your warm store configuration accordingly. We recommend that interactive analytics on the most recent data reside in your warm store and pattern analysis and long-term trends reside in cold.
+Ez a cikk azt ismerteti, hogyan lehet gyorsan megtervezni és megkezdeni az első lépéseket Azure Time Series Insights előzetes verzió használatával.
 
 > [!NOTE]
-> We currently support a maximum of 1,000 properties with warm store.
+> Az általánosan elérhető Time Series Insights-példány megtervezéséhez ajánlott eljárásokat a [Azure Time Series Insights általános elérhetőségi környezet megtervezése](time-series-insights-environment-planning.md)című témakörben talál.
 
-To start, you need three additional items:
+## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások a tervezéshez és előkészítéshez
 
-* A [Time Series Model](./time-series-insights-update-tsm.md)
-* An [event source connected to Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
-* [Events flowing into the event source](./time-series-insights-send-events.md) that are both mapped to the model and are in valid JSON format
+A környezet tervezésével és előkészítésével kapcsolatos ajánlott eljárásokat a következő cikkekben találja:
 
-## <a name="review-preview-limits"></a>Review preview limits
+* Mit kap, ha [kiépít egy Time Series Insights előnézeti környezetet](#the-preview-environment).
+* Az [idősorozat-azonosítók és az időbélyeg tulajdonságai](#configure-time-series-ids-and-timestamp-properties).
+* Az új [Idősorozat-modell](#understand-the-time-series-model), valamint a saját létrehozása.
+* [Események hatékony küldése a JSON-ban](#shape-your-events).
+* Time Series Insights [üzleti katasztrófák helyreállítási lehetőségei](#business-disaster-recovery).
+
+A Azure Time Series Insights az üzleti modellt is alkalmazza. További információ a díjakról és a kapacitásról: [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights/).
+
+## <a name="the-preview-environment"></a>Az előzetes verziójú környezet
+
+Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforrást hoz létre:
+
+* Azure Time Series Insights előnézeti környezet
+* Azure Storage általános célú v1-fiók
+
+A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyezni a meleg tárolót. A meleg tárolás többplatformos lekérdezési élményt biztosít. Ha engedélyezve van, meg kell adnia egy 7 és 30 nap közötti megőrzési időtartamot. A meleg tárolási megőrzési időszakon belül végrehajtott lekérdezések általában gyorsabb válaszidőt biztosítanak. Ha egy lekérdezés a meleg tároló megőrzési időtartamára terjed ki, a rendszer a hűtőházi tárolóból kézbesíti.
+
+A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kapcsolatos lekérdezések költségekkel járnak. Fontos megérteni a lekérdezési mintákat, és ennek megfelelően tervezze meg a meleg tároló konfigurációját. Azt javasoljuk, hogy az interaktív elemzések a legújabb, a meleg áruházban található és a minták elemzése, valamint a hosszú távú trendek esetében is naprakészek legyenek.
+
+> [!NOTE]
+> A meleg tárolással jelenleg legfeljebb 1 000 tulajdonságot támogatunk.
+
+A kezdéshez három további elemre van szükség:
+
+* Egy [Idősorozat-modell](./time-series-insights-update-tsm.md)
+* [Time Series Insightshoz csatlakoztatott eseményforrás](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* [Az eseményforrás](./time-series-insights-send-events.md) , amely a modellhez van rendelve, és érvényes JSON formátumú.
+
+## <a name="review-preview-limits"></a>Előzetes verzió korlátainak áttekintése
 
 [!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
-## <a name="configure-time-series-ids-and-timestamp-properties"></a>Configure Time Series IDs and Timestamp properties
+## <a name="configure-time-series-ids-and-timestamp-properties"></a>Idősorozat-azonosítók és időbélyeg-tulajdonságok konfigurálása
 
-To create a new Time Series Insights environment, select a Time Series ID. Doing so acts as a logical partition for your data. As noted, make sure to have your Time Series IDs ready.
+Új Time Series Insights-környezet létrehozásához válasszon egy idősorozat-azonosítót. Ez logikai partícióként működik az adatai számára. Ahogy azt említettük, győződjön meg arról, hogy az idősorozat-azonosítók készen állnak.
 
 > [!IMPORTANT]
-> Time Series IDs *can't be changed later*. Verify each one before final selection and first use.
+> Az idősorozat-azonosítókat *később nem lehet módosítani*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
 
-You can select up to three keys to uniquely differentiate your resources. For more information, read [Best practices for choosing a Time Series ID](./time-series-insights-update-how-to-id.md) and [Storage and ingress](./time-series-insights-update-storage-ingress.md).
+Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító](./time-series-insights-update-how-to-id.md) és a [tárolás és a bejövő](./time-series-insights-update-storage-ingress.md)adatok kiválasztásához.
 
-The **Timestamp** property is also important. You can designate this property when you add event sources. Each event source has an optional Timestamp property that's used to track event sources over time. Timestamp values are case sensitive and must be formatted to the individual specification of each event source.
+Az **időbélyeg** tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
 > [!TIP]
-> Verify the formatting and parsing requirements for your event sources.
+> Ellenőrizze az eseményforrás formázásának és elemzésének követelményeit.
 
-When left blank, the Event Enqueue Time of an event source is used as the event Timestamp. If you send historical data or batched events, customizing the Timestamp property is more helpful than the default Event Enqueue Time. For more information, read about how to [add event sources in Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Ha üresen hagyja, az esemény időbélyegzője az sorba helyezni időpontját használja. Ha a múltbeli vagy kötegelt eseményeket küldi el, az időbélyegző tulajdonság testreszabása az alapértelmezett Event sorba helyezni-időpontnál hasznosabb lehet. További információkért olvassa el a következő témakört [: Event sources hozzáadása az Azure IoT Hubban](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
-## <a name="understand-the-time-series-model"></a>Understand the Time Series Model
+## <a name="understand-the-time-series-model"></a>Az idősorozat-modell ismertetése
 
-You can now configure your Time Series Insights environment’s Time Series Model. The new model makes it easy to find and analyze IoT data. It enables the curation, maintenance, and enrichment of time series data and helps to prepare consumer-ready data sets. The model uses Time Series IDs, which map to an instance that associates the unique resource with variables, known as types, and hierarchies. Read about the new [Time Series Model](./time-series-insights-update-tsm.md).
+Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat-modellről](./time-series-insights-update-tsm.md).
 
-The model is dynamic, so it can be built at any time. To get started quickly, build and upload it prior to pushing data into Time Series Insights. To build your model, see [Use the Time Series Model](./time-series-insights-update-how-to-tsm.md).
+A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Time Series Insightsba való kitolása előtt. A modell létrehozásához tekintse meg [az idősorozat-modell használatát](./time-series-insights-update-how-to-tsm.md)ismertető témakört.
 
-For many customers, the Time Series Model maps to an existing asset model or ERP system already in place. If you don't have an existing model, a prebuilt user experience is [provided](https://github.com/Microsoft/tsiclient) to get up and running quickly. To envision how a model might help you, view the [sample demo environment](https://insights.timeseries.azure.com/preview/demo).
+Sok ügyfél esetében az idősorozat-modell egy már meglévő eszköz-modellel vagy ERP-rendszerrel van leképezve. Ha nem rendelkezik meglévő modellel, a rendszer előre elkészített felhasználói élményt [biztosít](https://github.com/Microsoft/tsiclient) a gyors üzembe helyezéshez. Ha szeretné elképzelni, hogyan segíthet a modell, tekintse meg a [minta bemutató környezetét](https://insights.timeseries.azure.com/preview/demo).
 
-## <a name="shape-your-events"></a>Shape your events
+## <a name="shape-your-events"></a>Az események formázása
 
-You can verify the way that you send events to Time Series Insights. Ideally, your events are denormalized well and efficiently.
+Ellenőrizheti, hogy az események hogyan küldhetők Time Series Insightsba. Ideális esetben a rendszer jól és hatékonyan denormalizálja az eseményeket.
 
-A good rule of thumb:
+Egy jó ökölszabály:
 
-* Store metadata in your Time Series Model.
-* Ensure that Time Series Mode, instance fields, and events include only necessary information, such as a Time Series ID or Timestamp property.
+* Az idősorozat-modellben tárolja a metaadatokat.
+* Győződjön meg arról, hogy az idősoros mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-tulajdonságot.
 
-For more information, see [Shape events](./time-series-insights-send-events.md#supported-json-shapes).
+További információ: [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Review [Azure Advisor](../advisor/advisor-overview.md) to plan out your business recovery configuration options.
-- Read more about [storage and ingress](./time-series-insights-update-storage-ingress.md) in the Time Series Insights Preview.
-- Learn about [data modeling](./time-series-insights-update-tsm.md) in the Time Series Insights Preview.
+- Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
+- További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.
+- Tudnivalók az [adatmodellezésről](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziójában.

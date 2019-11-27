@@ -1,6 +1,6 @@
 ---
-title: Access from Container Instances
-description: Learn how to provide access to images in your private container registry from Azure Container Instances by using an Azure Active Directory service principal.
+title: Hozzáférés Container Instances
+description: Megtudhatja, hogyan biztosíthat hozzáférést a saját tároló-beállításjegyzékben található lemezképekhez Azure Container Instances egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
@@ -10,25 +10,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456519"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authenticate with Azure Container Registry from Azure Container Instances
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Hitelesítés Azure Container Registry Azure Container Instances
 
-You can use an Azure Active Directory (Azure AD) service principal to provide access to your private container registries in Azure Container Registry.
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a privát tároló-beállításjegyzékhez Azure Container Registryban.
 
-In this article, you learn to create and configure an Azure AD service principal with *pull* permissions to your registry. Then, you start a container in Azure Container Instances (ACI) that pulls its image from your private registry, using the service principal for authentication.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure AD-egyszerű szolgáltatást a beállításjegyzékhez a *lekéréses* engedélyekkel. Ezután indítson el egy Azure Container Instances (ACI) tárolót, amely a saját beállításjegyzékből kéri le a rendszerképet a hitelesítéshez az egyszerű szolgáltatásnév használatával.
 
-## <a name="when-to-use-a-service-principal"></a>When to use a service principal
+## <a name="when-to-use-a-service-principal"></a>Mikor kell szolgáltatásnevet használni
 
-You should use a service principal for authentication from ACI in **headless scenarios**, such as in applications or services that create container instances in an automated or otherwise unattended manner.
+Az ACI-hoz való hitelesítéshez használjon egy egyszerű szolgáltatásnevet a **fej nélküli forgatókönyvekben**, például olyan alkalmazásokban vagy szolgáltatásokban, amelyek tároló-példányokat hoznak létre automatizált vagy más módon felügyelet nélkül.
 
-For example, if you have an automated script that runs nightly and creates a [task-based container instance](../container-instances/container-instances-restart-policy.md) to process some data, it can use a service principal with pull-only permissions to authenticate to the registry. You can then rotate the service principal's credentials or revoke its access completely without affecting other services and applications.
+Ha például egy olyan automatizált szkripttel rendelkezik, amely éjjel fut, és egy [feladat-alapú tároló-példányt](../container-instances/container-instances-restart-policy.md) hoz létre egy adott adat feldolgozásához, akkor a csak lekéréses engedélyekkel rendelkező szolgáltatásnév használatával végezheti el a hitelesítést a beállításjegyzékben. Ezután elforgathatja a szolgáltatásnév hitelesítő adatait, vagy teljesen visszavonhatja a hozzáférését anélkül, hogy ez hatással lenne más szolgáltatásokra és alkalmazásokra.
 
-Service principals should also be used when the registry [admin user](container-registry-authentication.md#admin-account) is disabled.
+Az egyszerű szolgáltatásokat akkor is használni kell, ha a beállításjegyzék [rendszergazdai felhasználója](container-registry-authentication.md#admin-account) le van tiltva.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Authenticate using the service principal
+## <a name="authenticate-using-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatásnév használatával
 
-To launch a container in Azure Container Instances using a service principal, specify its ID for `--registry-username`, and its password for `--registry-password`.
+Ha a tárolót Azure Container Instances egy egyszerű szolgáltatásnév használatával szeretné elindítani, a `--registry-username`hoz tartozó azonosítót és a hozzá tartozó jelszót kell megadnia `--registry-password`hoz.
 
 ```azurecli-interactive
 az container create \
@@ -42,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 
-You can find the preceding sample scripts for Azure CLI on GitHub, as well versions for Azure PowerShell:
+Az előző minta parancsfájlokat az Azure CLI-hez a GitHubon, valamint a Azure PowerShell-verziókhoz is megtalálhatja:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-The following articles contain additional details on working with service principals and ACR:
+A következő cikkek további részleteket tartalmaznak az egyszerű szolgáltatások és az ACR használatáról:
 
-* [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md)
-* [Authenticate with Azure Container Registry from Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
+* [Azure Container Registry hitelesítés egyszerű szolgáltatásokkal](container-registry-auth-service-principal.md)
+* [Hitelesítés Azure Container Registry az Azure Kubernetes Service-ből (ak)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

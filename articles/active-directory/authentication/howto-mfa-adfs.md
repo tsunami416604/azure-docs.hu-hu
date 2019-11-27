@@ -1,5 +1,5 @@
 ---
-title: Secure resources with Azure MFA and ADFS - Azure Active Directory
+title: Erőforrások biztonságossá tétele az Azure MFA és az ADFS-Azure Active Directory
 description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát a felhőben.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -30,15 +30,15 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
 3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity Platform** elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 
-   ![ADFS Console - Relying Party Trusts](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS-konzol – függő entitások Megbízhatóságai](./media/howto-mfa-adfs/trustedip1.png)
 
 4. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 
-   ![Editing Issuance Transform Rules](./media/howto-mfa-adfs/trustedip2.png)
+   ![Kiadási átalakítási szabályok szerkesztése](./media/howto-mfa-adfs/trustedip2.png)
 
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
 
-   ![Add Transform Claim Rule Wizard](./media/howto-mfa-adfs/trustedip3.png)
+   ![Átalakítási jogcím szabályának hozzáadása varázsló](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Adjon nevet a szabálynak. 
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
@@ -58,15 +58,15 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
 1. Nyissa meg az AD FS felügyeleti konzolt.
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
-3. Right-click on **Microsoft Office 365 Identity Platform** and select **Edit Claim Rules…** 
-   ![ADFS Console - Edit Claim Rules](./media/howto-mfa-adfs/trustedip1.png)
-4. On Issuance Transform Rules, click **Add Rule.** 
-   ![Adding a Claim Rule](./media/howto-mfa-adfs/trustedip2.png)
+3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity platform** elemre, és válassza a **jogcímek szerkesztése...** 
+   ![ADFS-konzol – jogcím-szabályok szerkesztése](./media/howto-mfa-adfs/trustedip1.png)
+4. A kiadás átalakítási szabályai területen kattintson a **szabály hozzáadása** elemre.
+   ![jogcím-szabály hozzáadása](./media/howto-mfa-adfs/trustedip2.png)
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
    ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/trustedip3.png)
 6. A Jogcímszabály neve melletti mezőben adjon nevet a szabálynak. Például: InsideCorpNet.
 7. A Bejövő jogcím típusa melletti legördülő listából válassza a **Vállalati hálózaton belül** elemet.
-   ![Adding Inside Corporate Network claim](./media/howto-mfa-adfs/trustedip4.png)
+   ![a vállalati hálózat jogcímen belüli Hozzáadás](./media/howto-mfa-adfs/trustedip4.png)
 8. Kattintson a **Finish** (Befejezés) gombra.
 9. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 10. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Jogcímek küldése egyéni szabállyal** elemet a legördülő menüből, és kattintson a **Tovább** gombra.
@@ -75,9 +75,9 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
+    ![Egyéni jogcím létrehozása a bejelentkezett felhasználók megőrzéséhez](./media/howto-mfa-adfs/trustedip5.png)
 13. Kattintson a **Finish** (Befejezés) gombra.
-14. Kattintson az **Apply** (Alkalmaz) gombra.
+14. Kattintson az **Alkalmaz** gombra.
 15. Kattintson az **OK** gombra.
 16. Zárja be az AD FS felügyeleti konzolt.
 
@@ -85,11 +85,11 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
 Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Select **Azure Active Directory** > **Conditional Access** > **Named locations**.
-3. From the **Conditional Access - Named locations** blade, select **Configure MFA trusted IPs**
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+2. Válassza **Azure Active Directory** > a **feltételes hozzáférés** > a **nevesített helyszínek**lehetőséget.
+3. A **feltételes hozzáférés – elnevezett helyek** panelen válassza az **MFA megbízható IP** -címek konfigurálása lehetőséget.
 
-   ![Azure AD Conditional Access named locations Configure MFA trusted IPs](./media/howto-mfa-adfs/trustedip6.png)
+   ![Azure AD feltételes hozzáférés – nevesített helyek konfigurálása MFA megbízható IP-címek](./media/howto-mfa-adfs/trustedip6.png)
 
 4. A Szolgáltatásbeállítások oldalon, a **megbízható IP-címek** területen jelölje be a **Többtényezős hitelesítés kihagyása az összevont felhasználók intranetről indított kérelmei esetén** elemet.  
 5. Kattintson a **mentés** gombra.

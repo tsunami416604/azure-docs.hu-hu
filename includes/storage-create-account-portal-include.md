@@ -17,7 +17,7 @@ ms.locfileid: "74451659"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
-1. On the Azure portal menu, select **All services**. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Tárfiókok** lehetőséget.
+1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Tárfiókok** lehetőséget.
 1. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 1. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
 1. Az **Erőforráscsoport** mező alatt válassza az **Új létrehozása** elemet. Az alábbi képen látható módon nevezze el az új erőforráscsoportot.
@@ -28,9 +28,9 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
 1. Ne módosítsa a következő mezők alapértelmezett értékeit:
 
-   |Mező  |Value (Díj)  |
+   |Mező  |Érték  |
    |---------|---------|
-   |Üzemi modell     |Erőforrás-kezelő         |
+   |Üzemi modell     |Resource Manager         |
    |Teljesítmény     |Standard         |
    |Fióktípus     |StorageV2 (általános célú v2)         |
    |Replikáció     |Írásvédett georedundáns tárolás (RA-GRS)         |

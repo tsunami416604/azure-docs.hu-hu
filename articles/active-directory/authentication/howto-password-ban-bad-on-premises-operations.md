@@ -1,6 +1,6 @@
 ---
-title: Password protection operations and reports - Azure Active Directory
-description: Azure AD Password Protection post-deployment operations and reporting
+title: Jelszavas védelem műveletei és jelentései – Azure Active Directory
+description: Azure AD jelszavas védelem telepítés utáni műveletek és jelentéskészítés
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,50 +18,50 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381665"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD Password Protection operational procedures
+# <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszavas védelem működési eljárásai
 
-After you have completed the [installation of Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md) on-premises, there are a couple items that must be configured in the Azure portal.
+Az [Azure ad jelszavas védelem helyszíni telepítésének](howto-password-ban-bad-on-premises-deploy.md) befejezése után van néhány elem, amelyet be kell állítani a Azure Portal.
 
-## <a name="configure-the-custom-banned-password-list"></a>Configure the custom banned password list
+## <a name="configure-the-custom-banned-password-list"></a>Egyéni tiltott jelszavak listájának konfigurálása
 
-Follow the guidance in the article [Configuring the custom banned password list](howto-password-ban-bad-configure.md) for steps to customize the banned password list for your organization.
+Kövesse az [Egyéni tiltott jelszavak konfigurálása](howto-password-ban-bad-configure.md) című cikkben ismertetett útmutatást, amelyekkel testre szabhatja a tiltott jelszavak listáját a szervezet számára.
 
-## <a name="enable-password-protection"></a>Enable Password Protection
+## <a name="enable-password-protection"></a>Jelszavas védelem engedélyezése
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and browse to **Azure Active Directory**, **Authentication methods**, then **Password Protection**.
-1. Set **Enable Password Protection on Windows Server Active Directory** to **Yes**
-1. As mentioned in the [Deployment guide](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), it is recommended to initially set the **Mode** to **Audit**
-   * After you are comfortable with the feature, you can switch the **Mode** to **Enforced**
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a **Azure Active Directory**, a **hitelesítési módszereket**, majd a **jelszavas védelmet**.
+1. **Engedélyezze a jelszavas védelem engedélyezése beállítást a Windows Server Active Directory** az **Igen** értékre
+1. Az [üzembe helyezési útmutatóban](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)említetteknek megfelelően javasolt a **mód** beállítása a **naplózásra** .
+   * A funkció használata után átválthat a mód **kényszerített** **állapotára**
 1. Kattintson a **Mentés** gombra.
 
-![Enabling Azure AD Password Protection components in the Azure portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Az Azure AD jelszavas védelem összetevőinek engedélyezése a Azure Portalban](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
-## <a name="audit-mode"></a>Audit Mode
+## <a name="audit-mode"></a>Vizsgálati mód
 
-Audit mode is intended as a way to run the software in a “what if” mode. Each DC agent service evaluates an incoming password according to the currently active policy. If the current policy is configured to be in Audit mode, “bad” passwords result in event log messages but are accepted. This is the only difference between Audit and Enforce mode; all other operations run the same.
+A vizsgálati mód célja, hogy a szoftvert "mi if" módban futtassa. Minden tartományvezérlő ügynök-szolgáltatás a jelenleg aktív házirendnek megfelelően kiértékel egy bejövő jelszót. Ha az aktuális házirend naplózási módban van konfigurálva, a "rossz" jelszavak az Eseménynapló-üzeneteket eredményezik, de elfogadják őket. Ez az egyetlen különbség a naplózás és a kikényszerítés mód között; minden más művelet ugyanazt a műveletet futtatja.
 
 > [!NOTE]
-> Microsoft recommends that initial deployment and testing always start out in Audit mode. Events in the event log should then be monitored to try to anticipate whether any existing operational processes would be disturbed once Enforce mode is enabled.
+> A Microsoft azt javasolja, hogy a kezdeti üzembe helyezés és a tesztelés mindig vizsgálati módban induljon el. Az Eseménynaplóban lévő eseményeket figyelni kell, hogy meg lehessen állapítani, hogy a meglévő működési folyamatok megzavarják-e a kényszerített mód engedélyezése után.
 
-## <a name="enforce-mode"></a>Enforce Mode
+## <a name="enforce-mode"></a>Érvényesítési mód
 
-Enforce mode is intended as the final configuration. As in Audit mode above, each DC agent service evaluates incoming passwords according to the currently active policy. If Enforce mode is enabled though, a password that is considered unsecure according to the policy is rejected.
+A kikényszerítés mód végső konfigurációként szolgál. Ahogy a fenti vizsgálati mód esetében, minden egyes tartományvezérlő ügynök szolgáltatás a jelenleg aktív szabályzatnak megfelelően kiértékeli a bejövő jelszavakat. Ha a kényszerített mód engedélyezve van, akkor a rendszer visszautasít egy, a szabályzatnak megfelelően biztonságosnak ítélt jelszót.
 
-When a password is rejected in Enforce mode by the Azure AD Password Protection DC Agent, the visible impact seen by an end user is identical to what they would see if their password was rejected by traditional on-premises password complexity enforcement. For example, a user might see the following traditional error message at the Windows logon\change password screen:
+Ha az Azure AD jelszavas védelmet biztosító tartományvezérlő ügynöke visszautasítja a jelszót, a végfelhasználók által látott látható hatás megegyezik azzal, amit látni fognak, ha a hagyományos helyszíni jelszó-bonyolultsági kényszerítéssel elutasította a jelszavát. Előfordulhat például, hogy egy felhasználó a következő hagyományos hibaüzenetet jeleníti meg a Windows logon\change jelszavának képernyőjén:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
-This message is only one example of several possible outcomes. The specific error message can vary depending on the actual software or scenario that is attempting to set an unsecure password.
+Ez az üzenet csak egy példát mutat be több lehetséges eredményre. Az adott hibaüzenet attól függően változhat, hogy milyen szoftvert vagy forgatókönyvet próbál meg beállítani egy nem biztonságos jelszó megadására.
 
-Affected end users may need to work with their IT staff to understand the new requirements and be more able to choose secure passwords.
+Előfordulhat, hogy az érintett végfelhasználóknak az informatikai munkatársakkal kell dolgozniuk az új követelmények megismeréséhez és a biztonságos jelszavak kiválasztásához.
 
 > [!NOTE]
-> Azure AD Password Protection has no control over the specific error message displayed by the client machine when a weak password is rejected.
+> Az Azure AD jelszavas védelme nem szabályozza az ügyfélszámítógép által a gyenge jelszavak elutasításakor megjelenő hibaüzenetet.
 
-## <a name="enable-mode"></a>Enable Mode
+## <a name="enable-mode"></a>Mód engedélyezése
 
-This setting should be left in its default enabled (Yes) state. Configuring this setting to disabled (No) will cause all deployed Azure AD Password Protection DC agents to go into a quiescent mode where all passwords are accepted as-is, and no validation activities will be executed whatsoever (for example, not even audit events will be emitted).
+Ennek a beállításnak az alapértelmezett engedélyezett (igen) állapotban kell maradnia. Ha ezt a beállítást Letiltva (nem) állítja be, a rendszer az összes telepített Azure AD jelszavas védelmi TARTOMÁNYVEZÉRLŐi ügynököt egy olyan nyugalmi módba helyezi, amelyben az összes jelszó el van fogadva, és az érvényesítési tevékenységek nem lesznek végrehajtva (például még naplózási események nélkül is). lesz kibocsátva).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Monitoring for Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md)
+[Az Azure AD jelszavas védelem figyelése](howto-password-ban-bad-on-premises-monitor.md)

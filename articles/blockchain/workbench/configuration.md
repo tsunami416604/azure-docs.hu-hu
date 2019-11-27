@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench configuration metadata reference
-description: Azure Blockchain Workbench Preview application configuration metadata overview.
+title: Az Azure Blockchain Workbench konfigurációs metaadat-referenciája
+description: Az Azure Blockchain Workbench előzetes verziójának alkalmazás-konfigurációs metaadatok áttekintése.
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
@@ -11,76 +11,76 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326068"
 ---
-# <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench configuration reference
+# <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfigurációs referenciája
 
-Azure Blockchain Workbench applications are multi-party workflows defined by configuration metadata and smart contract code. Configuration metadata defines the high-level workflows and interaction model of the blockchain application. Smart contracts define the business logic of the blockchain application. Workbench uses configuration and smart contract code to generate blockchain application user experiences.
+Az Azure Blockchain Workbench alkalmazások a konfigurációs metaadatok és az intelligens szerződési kódok által meghatározott többrésztvevős munkafolyamatok. A konfigurációs metaadatok a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét határozzák meg. Az intelligens szerződések határozzák meg a blockchain alkalmazás üzleti logikáját. A Workbench konfigurációs és intelligens szerződési kódot használ a blockchain alkalmazás felhasználói élményének létrehozásához.
 
-Configuration metadata specifies the following information for each blockchain application:
+A konfigurációs metaadatok a következő információkat határozzák meg az egyes blockchain-alkalmazásokhoz:
 
-* Name and description of the blockchain application
-* Unique roles for users who can act or participate within the blockchain application
-* One or more workflows. Each workflow acts as a state machine to control the flow of the business logic. Workflows can be independent or interact with one another.
+* A blockchain-alkalmazás neve és leírása
+* Egyedi szerepkörök azon felhasználók számára, akik a blockchain alkalmazásban működhetnek vagy részt vehetnek
+* Egy vagy több munkafolyamat. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. A munkafolyamatok egymástól függetlenek lehetnek, vagy egymással kezelhetik egymást.
 
-Each defined workflow specifies the following:
+Az egyes definiált munkafolyamatok a következőket határozzák meg:
 
-* Name and description of the workflow
-* States of the workflow.  Each state is a stage in the business logic's control flow. 
-* Actions to transition to the next state
-* User roles permitted to initiate each action
-* Smart contracts that represent business logic in code files
+* A munkafolyamat neve és leírása
+* A Munkafolyamat állapota.  Az egyes állapotok az üzleti logika vezérlési folyamatának egyik fázisa. 
+* A következő állapotba való áttérés lépései
+* Az egyes műveletek elindítására jogosult felhasználói szerepkörök
+* A programkódokban az üzleti logikát képviselő intelligens szerződések
 
-## <a name="application"></a>Jelentkezés
+## <a name="application"></a>Alkalmazás
 
-A blockchain application contains configuration metadata, workflows, and user roles who can act or participate within the application.
+A blockchain-alkalmazások olyan konfigurációs metaadatokat, munkafolyamatokat és felhasználói szerepköröket tartalmaznak, amelyek az alkalmazásban működhetnek vagy részt vehetnek.
 
-| Mező | Leírás | Szükséges |
+| Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| ApplicationName | Unique application name. The corresponding smart contract must use the same **ApplicationName** for the applicable contract class.  | Igen |
-| DisplayName | Friendly display name of the application. | Igen |
-| Leírás | Description of the application. | Nem |
-| ApplicationRoles | Collection of [ApplicationRoles](#application-roles). User roles who can act or participate within the application.  | Igen |
-| Munkafolyamatok | Collection of  [Workflows](#workflows). Each workflow acts as a state machine to control the flow of the business logic. | Igen |
+| Alkalmazásnév | Az alkalmazás egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **ApplicationName** -t kell használnia a vonatkozó szerződési osztályhoz.  | Igen |
+| DisplayName | Az alkalmazás felhasználóbarát megjelenítendő neve. | Igen |
+| Leírás | Az alkalmazás leírása. | Nem |
+| applicationRoles | A [ApplicationRoles](#application-roles)gyűjteménye. Azok a felhasználói szerepkörök, akik az alkalmazásban működhetnek vagy részt vehetnek.  | Igen |
+| Munkafolyamatok | [Munkafolyamatok](#workflows)gyűjteménye. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. | Igen |
 
-For an example, see [configuration file example](#configuration-file-example).
+Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
 ## <a name="workflows"></a>Munkafolyamatok
 
-An application's business logic may be modeled as a state machine where taking an action causes the flow of the business logic to move from one state to another. A workflow is a collection of such states and actions. Each workflow consists of one or more smart contracts, which represent the business logic in code files. An executable contract is an instance of a workflow.
+Az alkalmazás üzleti logikája olyan állapotú gépként is modellezhető, amelyben a művelet hatására az üzleti logikának az egyik állapotból a másikba való áthelyezése történik. A munkafolyamat ilyen állapotok és műveletek gyűjteménye. Minden munkafolyamat egy vagy több olyan intelligens szerződést tartalmaz, amely a programkódokban lévő üzleti logikát képviseli. Egy végrehajtható szerződés a munkafolyamat egy példánya.
 
-| Mező | Leírás | Szükséges | Max length |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | Unique workflow name. The corresponding smart contract must use the same **Name** for the applicable contract class. | Igen | 50 |
-| DisplayName | Friendly display name of the workflow. | Igen | 255 |
-| Leírás | Description of the workflow. | Nem | 255 |
-| Initiators | Collection of [ApplicationRoles](#application-roles). Roles that are assigned to users who are authorized to create contracts in the workflow. | Igen | |
-| StartState | Name of the initial state of the workflow. | Igen | |
-| Tulajdonságok | Collection of [identifiers](#identifiers). Represents data that can be read off-chain or visualized in a user experience tool. | Igen | |
-| Constructor | Defines input parameters for creating an instance of the workflow. | Igen | |
-| Functions | A collection of [functions](#functions) that can be executed in the workflow. | Igen | |
-| Állapotok | A collection of workflow [states](#states). | Igen | |
+| Name (Név) | Egyedi munkafolyamat neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a vonatkozó szerződési osztályhoz. | Igen | 50 |
+| DisplayName | A munkafolyamat felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A munkafolyamat leírása. | Nem | 255 |
+| Initiators | A [ApplicationRoles](#application-roles)gyűjteménye. A munkafolyamatban szerződések létrehozására jogosult felhasználókhoz hozzárendelt szerepkörök. | Igen | |
+| StartState | A munkafolyamat kezdeti állapotának neve. | Igen | |
+| Tulajdonságok | [Azonosítók](#identifiers)gyűjteménye. Azokat az adatelemzési eszközöket jelöli, amelyek leolvashatók a láncból, vagy megjeleníthetők a felhasználói élmény eszközben. | Igen | |
+| Konstruktor | Meghatározza a munkafolyamat egy példányának létrehozásához szükséges bemeneti paramétereket. | Igen | |
+| Functions | A munkafolyamatban végrehajtható [függvények](#functions) gyűjteménye. | Igen | |
+| Állapotok | Munkafolyamat- [állapotok](#states)gyűjteménye. | Igen | |
 
-For an example, see [configuration file example](#configuration-file-example).
+Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
-## <a name="type"></a>Type (Típus)
+## <a name="type"></a>Típus
 
-Supported data types.
+Támogatott adattípusok.
 
-| Type (Típus) | Leírás |
+| Típus | Leírás |
 |-------|-------------|
-| address  | Blockchain address type, such as *contracts* or *users*. |
-| tömb    | Single level array of type integer, bool, money, or time. Arrays can be static or dynamic. Use **ElementType** to specify the datatype of the elements within the array. See [example configuration](#example-configuration-of-type-array). |
-| logikai     | Boolean data type. |
-| contract | Address of type contract. |
-| enum     | Enumerated set of named values. When using the enum type, you also specify a list of EnumValues. Each value is limited to 255 characters. Valid value characters include upper and lower case letters (A-Z, a-z) and numbers (0-9). See [example configuration and use in Solidity](#example-configuration-of-type-enum). |
-| int      | Integer data type. |
-| money    | Money data type. |
-| state    | Workflow state. |
-| sztring  | String data type. 4000 character maximum. See [example configuration](#example-configuration-of-type-string). |
-| user     | Address of type user. |
-| time     | Time data type. |
-|`[ Application Role Name ]`| Any name specified in application role. Limits users to be of that role type. |
+| Cím  | A Blockchain, például a *szerződések* vagy a *felhasználók*. |
+| tömb    | Egyszintű tömb, egész szám, bool, pénz vagy idő típusú tömb. A tömbök lehetnek statikusak vagy dinamikusak. A tömbben található elemek adattípusának megadásához használja a **ElementType** . Lásd: [példa konfiguráció](#example-configuration-of-type-array). |
+| logikai     | Logikai adattípus. |
+| Szerződés | Szerződés típusú címe. |
+| Enum     | Megnevezett értékek enumerálása. Az enumerálás típusának használatakor megadhatja a EnumValues listáját is. Minden érték 255 karakterből állhat. Az érvényes értékek a következők: kis-és nagybetűk (A-Z, a-z) és számok (0-9). Lásd: [példa konfiguráció és használat a soliding-ben](#example-configuration-of-type-enum). |
+| int      | Egész adattípus. |
+| money    | Pénz adattípus. |
+| state    | Munkafolyamat állapota. |
+| sztring  | Karakterlánc adattípusa 4000 karakter maximális száma. Lásd: [példa konfiguráció](#example-configuration-of-type-string). |
+| Felhasználó     | Felhasználó típusú címe. |
+| time     | Idő adattípus. |
+|`[ Application Role Name ]`| Bármely, az alkalmazás szerepkörben megadott név. Korlátozza a felhasználókat a szerepkör típusának. |
 
-### <a name="example-configuration-of-type-array"></a>Example configuration of type array
+### <a name="example-configuration-of-type-array"></a>Tömb típusú konfiguráció
 
 ```json
 {
@@ -96,9 +96,9 @@ Supported data types.
 }
 ```
 
-#### <a name="using-a-property-of-type-array"></a>Using a property of type array
+#### <a name="using-a-property-of-type-array"></a>Tömb típusú tulajdonság használata
 
-If you define a property as type array in configuration, you need to include an explicit get function to return the public property of the array type in Solidity. Példa:
+Ha a konfigurációban típus tömbként definiál egy tulajdonságot, meg kell adnia egy explicit Get függvényt, amely a szilárdtesten lévő tömb típusának nyilvános tulajdonságát adja vissza. Például:
 
 ```
 function GetQuotes() public constant returns (int[]) {
@@ -106,7 +106,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-string"></a>Example configuration of type string
+### <a name="example-configuration-of-type-string"></a>Karakterlánc típusú konfiguráció
 
 ``` json
 {
@@ -119,7 +119,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-enum"></a>Example configuration of type enum
+### <a name="example-configuration-of-type-enum"></a>Példa Enum típusú konfigurációra
 
 ``` json
 {
@@ -133,23 +133,23 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-#### <a name="using-enumeration-type-in-solidity"></a>Using enumeration type in Solidity
+#### <a name="using-enumeration-type-in-solidity"></a>Számbavételi típus használata a Szilárdtestben
 
-Once an enum is defined in configuration, you can use enumeration types in Solidity. For example, you can define an enum called PropertyTypeEnum.
+Miután meghatározta a felsorolást a konfigurációban, a számbavételi típusokat a Szilárdtestben is használhatja. Megadhat például egy PropertyTypeEnum nevű enumerálást.
 
 ```
 enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
 ```
 
-The list of strings needs to match between the configuration and smart contract to be valid and consistent declarations in Blockchain Workbench.
+A karakterláncok listájának egyeznie kell a konfiguráció és az intelligens szerződés között, hogy érvényes és konzisztens deklarációk legyenek a Blockchain Workbenchben.
 
-Assignment example:
+Hozzárendelési példa:
 
 ```
 PropertyType = PropertyTypeEnum.Townhouse;
 ```
 
-Function parameter example: 
+Példa a Function paraméterre: 
 
 ``` 
 function AssetTransfer(string description, uint256 price, PropertyTypeEnum propertyType) public
@@ -164,15 +164,15 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ```
 
-## <a name="constructor"></a>Constructor
+## <a name="constructor"></a>Konstruktor
 
-Defines input parameters for an instance of a workflow.
+Meghatározza a munkafolyamat egy példányának bemeneti paramétereit.
 
-| Mező | Leírás | Szükséges |
+| Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| Paraméterek | Collection of [identifiers](#identifiers) required to initiate a smart contract. | Igen |
+| Paraméterek | Intelligens szerződés elindításához szükséges [azonosítók](#identifiers) gyűjteménye. | Igen |
 
-### <a name="constructor-example"></a>Constructor example
+### <a name="constructor-example"></a>Konstruktor – példa
 
 ``` json
 {
@@ -199,16 +199,16 @@ Defines input parameters for an instance of a workflow.
 
 ## <a name="functions"></a>Functions
 
-Defines functions that can be executed on the workflow.
+A munkafolyamaton végrehajtható függvények meghatározása.
 
-| Mező | Leírás | Szükséges | Max length |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | The unique name of the function. The corresponding smart contract must use the same **Name** for the applicable function. | Igen | 50 |
-| DisplayName | Friendly display name of the function. | Igen | 255 |
-| Leírás | Description of the function | Nem | 255 |
-| Paraméterek | Collection of [identifiers](#identifiers) corresponding to the parameters of the function. | Igen | |
+| Name (Név) | A függvény egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő függvényhez. | Igen | 50 |
+| DisplayName | A függvény felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A függvény leírása | Nem | 255 |
+| Paraméterek | A függvény paramétereinek megfelelő [azonosítók](#identifiers) gyűjteménye. | Igen | |
 
-### <a name="functions-example"></a>Functions example
+### <a name="functions-example"></a>Függvények – példa
 
 ``` json
 "Functions": [
@@ -247,18 +247,18 @@ Defines functions that can be executed on the workflow.
 
 ## <a name="states"></a>Állapotok
 
-A collection of unique states within a workflow. Each state captures a step in the business logic's control flow. 
+Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Az egyes állapotok rögzítik az üzleti logika vezérlési folyamatának lépéseit. 
 
-| Mező | Leírás | Szükséges | Max length |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | Unique name of the state. The corresponding smart contract must use the same **Name** for the applicable state. | Igen | 50 |
-| DisplayName | Friendly display name of the state. | Igen | 255 |
-| Leírás | Description of the state. | Nem | 255 |
-| PercentComplete | An integer value displayed in the Blockchain Workbench user interface to show the progress within the business logic control flow. | Igen | |
-| Style | Visual hint indicating whether the state represents a success or failure state. There are two valid values: `Success` or `Failure`. | Igen | |
-| Transitions | Collection of available [transitions](#transitions) from the current state to the next set of states. | Nem | |
+| Name (Név) | Az állapot egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő állapothoz. | Igen | 50 |
+| DisplayName | Az állapot felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | Az állapot leírása. | Nem | 255 |
+| KészültségiSzint paraméter értéke | A Blockchain Workbench felhasználói felületén megjelenő egész érték, amely az üzleti logika vezérlési folyamatán belüli előrehaladást mutatja. | Igen | |
+| stílusa | Vizuális mutató, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotot képvisel-e. Két érvényes érték létezik: `Success` vagy `Failure`. | Igen | |
+| Átmenetek | Elérhető [átmenetek](#transitions) gyűjteménye az aktuális állapotból a következő készletbe. | Nem | |
 
-### <a name="states-example"></a>States example
+### <a name="states-example"></a>Állapotok – példa
 
 ``` json
 "States": [
@@ -314,20 +314,20 @@ A collection of unique states within a workflow. Each state captures a step in t
   ]
 ```
 
-## <a name="transitions"></a>Transitions
+## <a name="transitions"></a>Átmenetek
 
-Available actions to the next state. One or more user roles may perform an action at each state, where an action may transition a state to another state in the workflow. 
+A következő állapothoz elérhető műveletek. Egy vagy több felhasználói szerepkör minden állapotban végrehajthat egy műveletet, ahol egy művelet egy állapotot áttérhet a munkafolyamat egy másik állapotára. 
 
-| Mező | Leírás | Szükséges |
+| Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| AllowedRoles | List of applications roles allowed to initiate the transition. All users of the specified role may be able to perform the action. | Nem |
-| AllowedInstanceRoles | List of user roles participating or specified in the smart contract allowed to initiate the transition. Instance roles are defined in **Properties** within workflows. AllowedInstanceRoles represent a user participating in an instance of a smart contract. AllowedInstanceRoles give you the ability to restrict taking an action to a user role in a contract instance.  For example, you may only want to allow the user who created the contract (InstanceOwner) to be able to terminate rather than all users in role type (Owner) if you specified the role in AllowedRoles. | Nem |
-| DisplayName | Friendly display name of the transition. | Igen |
-| Leírás | Description of the transition. | Nem |
-| Függvény | The name of the function to initiate the transition. | Igen |
-| NextStates | A collection of potential next states after a successful transition. | Igen |
+| AllowedRoles | Az áttérés kezdeményezésére jogosult alkalmazások listája. Lehetséges, hogy a megadott szerepkör összes felhasználója el tudja végezni a műveletet. | Nem |
+| AllowedInstanceRoles | Az átállást kezdeményező, az intelligens szerződésben résztvevő vagy megadott felhasználói szerepkörök listája. A példányok szerepkörei a munkafolyamatokon belüli **tulajdonságokban** vannak meghatározva. A AllowedInstanceRoles egy intelligens szerződés egy példányában részt vevő felhasználót jelöl. A AllowedInstanceRoles lehetővé teszi, hogy egy adott szerződési példányban egy felhasználói szerepkörre korlátozza a műveletet.  Előfordulhat például, hogy csak azt szeretné engedélyezni, hogy a szerződést (InstanceOwner) létrehozó felhasználó a szerepkör típusa (tulajdonos) helyett az összes felhasználó számára is lemondható legyen, ha a szerepkört a AllowedRoles-ben adta meg. | Nem |
+| DisplayName | Az átmenet felhasználóbarát megjelenítendő neve. | Igen |
+| Leírás | Az átmenet leírása. | Nem |
+| Függvény | Az átmenetet kezdeményező függvény neve. | Igen |
+| NextStates | A sikeres áttérés utáni lehetséges következő állapotok gyűjteménye. | Igen |
 
-### <a name="transitions-example"></a>Transitions example
+### <a name="transitions-example"></a>Átmenetek – példa
 
 ``` json
 "Transitions": [
@@ -361,14 +361,14 @@ Available actions to the next state. One or more user roles may perform an actio
 
 ## <a name="application-roles"></a>Alkalmazás-szerepkörök
 
-Application roles define a set of roles that can be assigned to users who want to act or participate within the application. Application roles can be used to restrict actions and participation within the blockchain application and corresponding workflows. 
+Az alkalmazás szerepkörei olyan szerepköröket határoznak meg, amelyek hozzárendelhetők olyan felhasználókhoz, akik az alkalmazáson belül szeretnének működni vagy részt venni. Az alkalmazás szerepkörei a blockchain alkalmazásban és a megfelelő munkafolyamatokban is korlátozhatják a műveleteket és a részvételt. 
 
-| Mező | Leírás | Szükséges | Max length |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | The unique name of the application role. The corresponding smart contract must use the same **Name** for the applicable role. Base type names are reserved. You cannot name an application role with the same name as [Type](#type)| Igen | 50 |
-| Leírás | Description of the application role. | Nem | 255 |
+| Name (Név) | Az alkalmazás szerepkörének egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő szerepkörhöz. Az alaptípusok nevei le vannak foglalva. Az alkalmazás-szerepkör nem nevezhető el ugyanazzal a névvel, mint a [Type](#type)| Igen | 50 |
+| Leírás | Az alkalmazás szerepkörének leírása. | Nem | 255 |
 
-### <a name="application-roles-example"></a>Application roles example
+### <a name="application-roles-example"></a>Példa az alkalmazás szerepköreire
 
 ``` json
 "ApplicationRoles": [
@@ -382,17 +382,17 @@ Application roles define a set of roles that can be assigned to users who want t
   }
 ]
 ```
-## <a name="identifiers"></a>Identifiers
+## <a name="identifiers"></a>Azonosítók
 
-Identifiers represent a collection of information used to describe workflow properties, constructor, and function parameters. 
+Az azonosítók a munkafolyamat-tulajdonságok, a konstruktorok és a függvények paramétereinek leírására szolgáló információk gyűjteményét jelölik. 
 
-| Mező | Leírás | Szükséges | Max length |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Név | The unique name of the property or parameter. The corresponding smart contract must use the same **Name** for the applicable property or parameter. | Igen | 50 |
-| DisplayName | Friendly display name for the property or parameter. | Igen | 255 |
-| Leírás | Description of the property or parameter. | Nem | 255 |
+| Name (Név) | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő tulajdonsághoz vagy paraméterhez. | Igen | 50 |
+| DisplayName | A tulajdonság vagy paraméter felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A tulajdonság vagy a paraméter leírása. | Nem | 255 |
 
-### <a name="identifiers-example"></a>Identifiers example
+### <a name="identifiers-example"></a>Azonosítók – példa
 
 ``` json
 "Properties": [
@@ -415,13 +415,13 @@ Identifiers represent a collection of information used to describe workflow prop
 ]
 ```
 
-## <a name="configuration-file-example"></a>Configuration file example
+## <a name="configuration-file-example"></a>Példa konfigurációs fájlra
 
-Asset transfer is a smart contract scenario for buying and selling high value assets, which require an inspector and appraiser. Sellers can list their assets by instantiating an asset transfer smart contract. Buyers can make offers by taking an action on the smart contract, and other parties can take actions to inspect or appraise the asset. Once the asset is marked both inspected and appraised, the buyer and seller will confirm the sale again before the contract is set to complete. At each point in the process, all participants have visibility into the state of the contract as it is updated. 
+Az adatátviteli szolgáltatás olyan intelligens szerződési forgatókönyv, amely nagy értékű adategységek megvásárlását és értékesítését igényli. Az értékesítők az adategységek átadásával intelligens szerződést hozhatnak létre az eszközeik listázásához. A vásárlók az intelligens szerződéssel kapcsolatos műveletek elvégzésével elvégezhetik az ajánlatokat, és más felek is végezhetnek műveleteket az eszköz vizsgálatához és értékeléséhez. Miután megtörtént a vizsgálat és az értékelés is, a vevő és az eladó megerősíti az értékesítést, mielőtt a szerződés befejeződik. A folyamat minden pontján minden résztvevő megtekinti a szerződés állapotát a frissítés során. 
 
-For more information including the code files, see [asset transfer sample for Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
+További információk, például a kódrészletek: [Asset-átviteli minta az Azure Blockchain workbenchhez](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 
-The following configuration file is for the asset transfer sample:
+A következő konfigurációs fájl az Asset átviteli mintája:
 
 ``` json
 {

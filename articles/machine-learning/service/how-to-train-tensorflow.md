@@ -242,7 +242,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Paraméterkiszolgáló
 
-Futtathat [natív elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed), melyik a paraméter kiszolgálómodellt használ. Ezzel a módszerrel, betanítását paraméter kiszolgálók és a munkavállalók fürtök között. A feldolgozók kiszámítása során képzés, a átmenetekhez, a paraméter kiszolgálók összesíteni az átmenetek során.
+Futtathat olyan [natív elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed)is, amely a paraméter-kiszolgálói modellt használja. Ezzel a módszerrel, betanítását paraméter kiszolgálók és a munkavállalók fürtök között. A feldolgozók kiszámítása során képzés, a átmenetekhez, a paraméter kiszolgálók összesíteni az átmenetek során.
 
 A paraméter-kiszolgáló metódus használatához a TensorFlow konstruktorban meg kell adnia egy [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) objektumot a `distributed_training` paraméterhez.
 
@@ -270,7 +270,7 @@ run = exp.submit(tf_est)
 
 Szükség van a [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)-fürt hálózati címeire és portjaira is, így Azure Machine learning beállítja az `TF_CONFIG` környezeti változót.
 
-A `TF_CONFIG` környezeti változót a JSON-karakterláncot. Íme egy példa a változó paraméter kiszolgálóhoz:
+A `TF_CONFIG` környezeti változó egy JSON-karakterlánc. Íme egy példa a változó paraméter kiszolgálóhoz:
 
 ```JSON
 TF_CONFIG='{
@@ -313,10 +313,10 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 A teljes körű [útmutató](how-to-deploy-and-where.md) a Azure Machine learning nagyobb részletességgel történő üzembe helyezését ismerteti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy TensorFlow-modellt oktatott és regisztrált, és megismerte az üzembe helyezési lehetőségeket. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 
-* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
-* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
+* [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md)
 * [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

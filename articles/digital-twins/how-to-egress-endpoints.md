@@ -1,6 +1,6 @@
 ---
-title: Egress and endpoints - Azure Digital Twins | Microsoft Docs
-description: Learn how to create and egress event endpoints in Azure Digital Twins.
+title: Kimenő és végpontok – Azure digitális Twins | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és kimenő esemény-végpontokat az Azure digitális Twins szolgáltatásban.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,17 +15,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456924"
 ---
-# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Egress and endpoints in Azure Digital Twins
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Kimenő és végpontok az Azure Digital Twinsban
 
-Azure Digital Twins *endpoints* represent a message or event broker within a user's Azure subscription. Events and messages can be sent to Azure Event Hubs, Azure Event Grid, and Azure Service Bus topics.
+Az Azure Digital Twins- *végpontok* egy üzenetet vagy egy esemény-közvetítőt jelentenek a felhasználó Azure-előfizetésén belül. Az események és üzenetek elküldhetők az Azure Event Hubs, Azure Event Grid és Azure Service Bus témakörökbe.
 
-Events are routed to endpoints according to predefined routing preferences. Users specify which *event types* each endpoint may receive.
+Az eseményeket a rendszer az előre meghatározott útválasztási beállítások szerint irányítja a végpontokhoz. A felhasználók határozzák meg, hogy az egyes végpontok milyen *eseménytípus* fogadására jogosultak.
 
-To learn more about events, routing, and event types, refer to [Routing events and messages in Azure Digital Twins](./concepts-events-routing.md).
+Ha többet szeretne megtudni az eseményekről, az útválasztásról és az eseményekről, tekintse meg az [útválasztási eseményeket és üzeneteket az Azure digitális Twins](./concepts-events-routing.md)szolgáltatásban.
 
 ## <a name="events"></a>Események
 
-Events are sent by IoT objects (such as devices and sensors) for processing by Azure message and event brokers. Events are defined by the following [Azure Event Grid event schema reference](../event-grid/event-schema.md).
+Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik el az Azure-üzenet és az esemény-közvetítők általi feldolgozáshoz. Az eseményeket a következő Azure Event Grid az [esemény sémájának hivatkozása](../event-grid/event-schema.md)határozza meg.
 
 ```JSON
 {
@@ -47,25 +47,25 @@ Events are sent by IoT objects (such as devices and sensors) for processing by A
 }
 ```
 
-| Attribútum | Type (Típus) | Leírás |
+| Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| id | sztring | Unique identifier for the event. |
-| subject | sztring | Publisher-defined path to the event subject. |
-| data | objektum | Event data specific to the resource provider. |
-| eventType | sztring | One of the registered event types for this event source. |
-| eventTime | sztring | The time the event is generated based on the provider's UTC time. |
-| dataVersion | sztring | The schema version of the data object. The publisher defines the schema version. |
-| metadataVersion | sztring | The schema version of the event metadata. Event Grid defines the schema of the top-level properties. Event Grid provides this value. |
-| témakör | sztring | Full resource path to the event source. This field isn't writeable. Event Grid provides this value. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| data | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
 
-For more information about the Event Grid event schema:
+További információ a Event Grid esemény sémával kapcsolatban:
 
-- Review the [Azure Event Grid event schema reference](../event-grid/event-schema.md).
-- Read the [Azure EventGrid Node.js SDK EventGridEvent reference](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
+- Tekintse át a [Azure Event Grid esemény sémájának referenciáját](../event-grid/event-schema.md).
+- Olvassa el az [Azure EventGrid Node. js SDK EventGridEvent-referenciáját](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Event types
+## <a name="event-types"></a>Események típusai
 
-Events types classify the nature of the event and are set in the **eventType** field. Available event types are given by the following list:
+Az események típusai osztályozzák az esemény természetét, és a **EventType** mezőben vannak beállítva. Az elérhető eseménytípus a következő lista szerint adható meg:
 
 - TopologyOperation
 - UdfCustom
@@ -73,11 +73,11 @@ Events types classify the nature of the event and are set in the **eventType** f
 - SpaceChange
 - DeviceMessage
 
-The event formats for each event type are further described in the following subsections.
+Az egyes eseménytípus esemény-formátumait a következő alszakaszokban részletesebben ismertetjük.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** applies to graph changes. The **subject** property specifies the type of object affected. The following types of objects might trigger this event:
+A **TopologyOperation** a diagram módosításaira vonatkozik. A **tulajdonos** tulajdonság határozza meg az érintett objektum típusát. Az eseményt a következő típusú objektumok válthatják ki:
 
 - Eszköz
 - DeviceBlobMetadata
@@ -86,8 +86,8 @@ The event formats for each event type are further described in the following sub
 - ExtendedType
 - KeyStore
 - Jelentés
-- RoleDefinition
-- Sensor
+- Definíciós
+- Érzékelő
 - SensorBlobMetadata
 - SensorExtendedProperty
 - Űr
@@ -122,16 +122,16 @@ The event formats for each event type are further described in the following sub
 }
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_TOPIC_NAME | The name of your customized topic |
+| YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** is an event sent by a user-defined function (UDF).
+A **UdfCustom** egy felhasználó által definiált függvény (UDF) által eljuttatott esemény.
   
 > [!IMPORTANT]  
-> This event must be explicitly sent from the UDF itself.
+> Ezt az eseményt explicit módon el kell juttatni az UDF-ből.
 
 #### <a name="example"></a>Példa
 
@@ -153,13 +153,13 @@ The event formats for each event type are further described in the following sub
 }
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_TOPIC_NAME | The name of your customized topic |
+| YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
 ### <a name="sensorchange"></a>SensorChange
 
-**SensorChange** is an update to a sensor's state based on telemetry changes.
+A **SensorChange** az érzékelők állapotának frissítése a telemetria változásai alapján.
 
 #### <a name="example"></a>Példa
 
@@ -188,13 +188,13 @@ The event formats for each event type are further described in the following sub
 }
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_TOPIC_NAME | The name of your customized topic |
+| YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
 ### <a name="spacechange"></a>SpaceChange
 
-**SpaceChange** is an update to a space's state based on telemetry changes.
+A **SpaceChange** a telemetria változásai alapján frissíti a terület állapotát.
 
 #### <a name="example"></a>Példa
 
@@ -223,36 +223,36 @@ The event formats for each event type are further described in the following sub
 }
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_TOPIC_NAME | The name of your customized topic |
+| YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
-By using **DeviceMessage**, you can specify an **EventHub** connection to which raw telemetry events can be routed as well from Azure Digital Twins.
+A **DeviceMessage**használatával olyan **EventHub** -kapcsolatokat adhat meg, amelyekhez a nyers telemetria események, valamint az Azure digitális ikrek is használhatók.
 
 > [!NOTE]
-> - **DeviceMessage** is combinable only with **EventHub**. You can't combine **DeviceMessage** with any of the other event types.
-> - You can specify only one endpoint of the combination of type **EventHub** or **DeviceMessage**.
+> - A **DeviceMessage** csak a **EventHub**kombinálható. A **DeviceMessage** nem egyesíthető más típusú eseményekkel.
+> - A **EventHub** vagy a **DeviceMessage**típusú kombinációhoz csak egy végpontot adhat meg.
 
 ## <a name="configure-endpoints"></a>Végpontok konfigurálása
 
-Endpoint management is exercised through the Endpoints API.
+A végpontok kezelése a végpontok API-n keresztül történik.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-The following examples demonstrate how to configure the supported endpoints.
+Az alábbi példák bemutatják, hogyan konfigurálhatja a támogatott végpontokat.
 
 >[!IMPORTANT]
-> Pay careful attention to the **eventTypes** attribute. It defines which event types are handled by the endpoint and thus determine its routing.
+> Körültekintően figyeljen a **eventTypes** attribútumra. Meghatározza, hogy a végpont milyen típusú eseményeket kezel, és így határozza meg az útválasztást.
 
-An authenticated HTTP POST request against:
+Hitelesített HTTP POST-kérelem a következőket illetően:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
-- Route to Service Bus event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
+- Útvonal Service Bus **SensorChange**, **SpaceChange**és **TopologyOperation**típusú eseményekhez:
 
   ```JSON
   {
@@ -268,14 +268,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_NAMESPACE | The namespace of your endpoint |
-    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
-    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
-    | YOUR_TOPIC_NAME | The name of your customized topic |
+    | YOUR_NAMESPACE | A végpont névtere |
+    | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
+    | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
+    | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
-- Route to Event Grid event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
+- Útvonal Event Grid **SensorChange**, **SpaceChange**és **TopologyOperation**típusú eseményekhez:
 
   ```JSON
   {
@@ -291,13 +291,13 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate|
-    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
-    | YOUR_TOPIC_NAME | The name of your customized topic |
+    | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring|
+    | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
+    | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
-- Route to Event Hubs event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
+- Útvonal Event Hubs **SensorChange**, **SpaceChange**és **TopologyOperation**típusú eseményekhez:
 
   ```JSON
   {
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_NAMESPACE | The namespace of your endpoint |
-    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
-    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
-    | YOUR_EVENT_HUB_NAME | The name of your event hub |
+    | YOUR_NAMESPACE | A végpont névtere |
+    | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
+    | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
+    | YOUR_EVENT_HUB_NAME | Az Event hub neve |
 
-- Route to Event Hubs event type **DeviceMessage**. The inclusion of `EntityPath` in the **connectionString** is mandatory:
+- Útvonal Event Hubs eseménytípus **DeviceMessage**. A **connectionString** `EntityPath` belefoglalása kötelező:
 
   ```JSON
   {
@@ -334,30 +334,30 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value (Díj) | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | YOUR_NAMESPACE | The namespace of your endpoint |
-    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
-    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
-    | YOUR_EVENT_HUB_NAME | The name of your event hub |
+    | YOUR_NAMESPACE | A végpont névtere |
+    | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
+    | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
+    | YOUR_EVENT_HUB_NAME | Az Event hub neve |
 
 > [!NOTE]  
-> Upon the creation of a new endpoint, it might take up to 5 to 10 minutes to start receiving events at the endpoint.
+> Új végpont létrehozásakor akár 5 – 10 percet is igénybe vehet, hogy megkezdje az események fogadását a végponton.
 
-## <a name="primary-and-secondary-connection-keys"></a>Primary and secondary connection keys
+## <a name="primary-and-secondary-connection-keys"></a>Elsődleges és másodlagos kapcsolatok kulcsai
 
-When a primary connection key becomes unauthorized, the system automatically tries the secondary connection key. That provides a backup and allows the possibility to gracefully authenticate and update the primary key through the Endpoints API.
+Ha egy elsődleges kapcsolódási kulcs jogosulatlanul válik, a rendszer automatikusan megpróbálkozik a másodlagos kapcsolódási kulccsal. Ez biztosítja a biztonsági mentést, és lehetővé teszi, hogy a végpontok API-n keresztül szabályosan hitelesítse és frissítse az elsődleges kulcsot.
 
-If both the primary and secondary connection keys are unauthorized, the system enters an exponential back-off wait time of up to 30 minutes. Events are dropped on each triggered back-off wait time.
+Ha az elsődleges és a másodlagos kapcsolódási kulcs is nem engedélyezett, a rendszer akár 30 percen belül exponenciális visszalépési várakozási időt is megad. Az események eldobása minden egyes kiváltott várakozási idő alatt megtörténik.
 
-Whenever the system is in a back-off wait state, updating connections keys through the Endpoints API might take up to 30 minutes to take effect.
+Ha a rendszer biztonsági mentési állapotban van, a kapcsolati kulcsok a végpontok API-n keresztül történő frissítése akár 30 percet is igénybe vehet.
 
-## <a name="unreachable-endpoints"></a>Unreachable endpoints
+## <a name="unreachable-endpoints"></a>Nem elérhető végpontok
 
-When an endpoint becomes unreachable, the system enters an exponential back-off wait time of up to 30 minutes. Events are dropped on each triggered back-off wait time.
+Ha egy végpont elérhetetlenné válik, a rendszer akár 30 percen belül exponenciális visszatartási várakozási időt is elérhet. Az események eldobása minden egyes kiváltott várakozási idő alatt megtörténik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn [how to use Azure Digital Twins Swagger](how-to-use-swagger.md).
+- Ismerje meg [, hogyan használható az Azure Digital Twins hencegés](how-to-use-swagger.md).
 
-- Learn more about [routing events and messages](concepts-events-routing.md) in Azure Digital Twins.
+- További információ az [útválasztási eseményekről és üzenetekről](concepts-events-routing.md) az Azure digitális Twins szolgáltatásban.

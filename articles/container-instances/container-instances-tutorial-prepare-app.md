@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – a Azure Container Instances tároló rendszerképének előkészítése
+title: Oktatóanyag – tároló rendszerképének előkészítése üzembe helyezéshez
 description: Azure Container Instances oktatóanyag 1. rész – az alkalmazás előkészítése egy tároló-rendszerképbe az üzembe helyezéshez Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325569"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533346"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Oktatóanyag: Tároló rendszerképének létrehozása a Azure Container Instances való üzembe helyezéshez
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez
 
 Az Azure Container Instances lehetővé teszi Docker-tárolók üzembe helyezését az Azure-infrastruktúrában anélkül, hogy ehhez virtuális gépeket kellene üzembe helyeznie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ebben az oktatóanyagban egy kisméretű Node.js-webalkalmazást csomagolunk egy, az Azure Container Instances használatával futtatható tárolórendszerképbe.
 
@@ -45,11 +40,11 @@ A Git használatával klónozza a mintaalkalmazás adattárát:
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-Közvetlenül a GitHubról is [letöltheti a zip][aci-helloworld-zip] -archívumot.
+Közvetlenül a GitHubról is [letöltheti a zip-archívumot][aci-helloworld-zip] .
 
 ## <a name="build-the-container-image"></a>Építse fel a tárolórendszerképet
 
-A mintaalkalmazásban szereplő Dockerfile bemutatja a tároló összeállításának menetét. Ez egy, az [alpesi Linuxon][alpine-linux]alapuló, [hivatalos Node. js][docker-hub-nodeimage] -rendszerképből indul, amely egy kis eloszlás, amely jól használható a tárolókkal való használatra. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Managerrel, végül pedig elindítja az alkalmazást.
+A mintaalkalmazásban szereplő Dockerfile bemutatja a tároló összeállításának menetét. Ez egy, az [alpesi Linuxon][alpine-linux]alapuló, [hivatalos Node. js-rendszerképből][docker-hub-nodeimage] indul, amely egy kis eloszlás, amely jól használható a tárolókkal való használatra. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Managerrel, végül pedig elindítja az alkalmazást.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -66,7 +61,7 @@ A [Docker Build][docker-build] parancs használatával hozza létre a tároló r
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-A Docker [Build][docker-build] parancs kimenete az alábbihoz hasonló (az olvashatóság érdekében csonkítva):
+A [Docker Build][docker-build] parancs kimenete az alábbihoz hasonló (az olvashatóság érdekében csonkítva):
 
 ```console
 $ docker build ./aci-helloworld -t aci-tutorial-app
@@ -88,7 +83,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-A beépített [][docker-images] lemezkép megjelenítéséhez használja a Docker images parancsot:
+A beépített lemezkép megjelenítéséhez használja a [Docker images][docker-images] parancsot:
 
 ```bash
 docker images
@@ -104,7 +99,7 @@ aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 
 ## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
 
-Mielőtt üzembe helyezi a tárolót Azure Container Instancesre [][docker-run] , a Docker futtatásával helyileg futtathatja és ellenőrizheti, hogy működik-e. A `-d` kapcsolóval a tároló a háttérben működtethető, míg a `-p` kapcsolóval leképezheti a számítógép egy tetszőleges portját a tároló 80-as portjára.
+Mielőtt üzembe helyezi a tárolót Azure Container Instancesre, a [Docker futtatásával][docker-run] helyileg futtathatja és ellenőrizheti, hogy működik-e. A `-d` kapcsolóval a tároló a háttérben működtethető, míg a `-p` kapcsolóval leképezheti a számítógép egy tetszőleges portját a tároló 80-as portjára.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
@@ -121,7 +116,7 @@ Ezután lépjen a `http://localhost:8080` címre a böngészőben, hogy ellenőr
 
 ![Az alkalmazás helyileg történő futtatása a böngészőben][aci-tutorial-app-local]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban egy, az Azure Container Instancesben üzembe helyezhető tárolórendszerképet hozott létre, és ellenőrizte, hogy helyben fut-e. Eddig a következőket hajtotta végre:
 

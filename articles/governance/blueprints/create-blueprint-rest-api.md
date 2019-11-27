@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint with REST API'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
+title: 'Gyors útmutató: terv létrehozása REST API'
+description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322158"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
 A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
@@ -47,7 +47,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `Invoke-RestMethod` `-Body` paraméterében.
+A `{subscriptionId}`$restUri**változóban a** helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `-Body` `Invoke-RestMethod` paraméterében.
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
@@ -58,11 +58,11 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
-- `{YourMG}` - Replace with the ID of your management group
+- `{YourMG}` – cserélje le a felügyeleti csoport AZONOSÍTÓját
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 > [!NOTE]
-> Blueprints may also be created at the subscription level. To see an example, see [create blueprint at subscription example](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> A tervrajzok az előfizetés szintjén is létrehozhatók. Ha szeretné megtekinteni egy példát, tekintse meg a [terv létrehozása az előfizetési példában](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)című témakört.
 
 1. Hozza létre a kezdeti _terv_ objektumot. A **kérelemtörzs** a terv, az esetleg létrehozandó erőforráscsoportok, valamint az összes tervszintű paraméter tulajdonságait tartalmazza. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
 
@@ -123,7 +123,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Szerepkör-hozzárendelés hozzáadása az előfizetésben. A **kérelemtörzs** határozza meg az összetevő _altípusát_, a tulajdonságok a szerepkör-definíció azonosítójához igazodnak, és az egyszerű identitások értéktömbökként vannak továbbadva. Az alábbi példában a megadott szerepkörrel felruházott egyszerű identitások egy olyan paraméterre vannak konfigurálva, amely a tervhozzárendelés során van megadva. This example uses the _Contributor_ built-in role with a GUID of `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Szerepkör-hozzárendelés hozzáadása az előfizetésben. A **kérelemtörzs** határozza meg az összetevő _altípusát_, a tulajdonságok a szerepkör-definíció azonosítójához igazodnak, és az egyszerű identitások értéktömbökként vannak továbbadva. Az alábbi példában a megadott szerepkörrel felruházott egyszerű identitások egy olyan paraméterre vannak konfigurálva, amely a tervhozzárendelés során van megadva. Ez a példa a _közreműködő_ beépített szerepkört használja a `b24988ac-6180-42a0-ab88-20f7382dd24c`GUID azonosítóval.
 
    - REST API URI
 
@@ -143,7 +143,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Szabályzat-hozzárendelés hozzáadása az előfizetésben. A **kérelemtörzs** határozza meg az összetevő _altípusát_, a szabályzat- vagy kezdeményezési definíciókhoz igazodó tulajdonságokat, és konfigurálja a szabályzat-hozzárendelést, hogy a tervhozzárendelés során konfigurált definiált tervparamétereket használja. This example uses the _Apply tag and its default value to resource groups_ built-in policy with a GUID of `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Szabályzat-hozzárendelés hozzáadása az előfizetésben. A **kérelemtörzs** határozza meg az összetevő _altípusát_, a szabályzat- vagy kezdeményezési definíciókhoz igazodó tulajdonságokat, és konfigurálja a szabályzat-hozzárendelést, hogy a tervhozzárendelés során konfigurált definiált tervparamétereket használja. Ez a példa az _alkalmaz címkét és az alapértelmezett értékét_ használja az erőforráscsoportok beépített házirendjéhez a `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID azonosítójának használatával.
 
    - REST API URI
 
@@ -171,7 +171,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. This example uses the _Apply tag and its default value to resource groups_ built-in policy with a GUID of `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. Ez a példa az _alkalmaz címkét és az alapértelmezett értékét_ használja az erőforráscsoportok beépített házirendjéhez a `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`GUID azonosítójának használatával.
 
    - REST API URI
 
@@ -285,7 +285,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Szerepkör-hozzárendelés hozzáadása az erőforráscsoport alatt. Az előző szerepkör-hozzárendelési bejegyzéshez hasonlóan az alábbi példa a **Tulajdonos** szerepkör definíciós azonosítóját használja, és egy másik paramétert ad neki a tervből. This example uses the _Owner_ built-in role with a GUID of `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
+1. Szerepkör-hozzárendelés hozzáadása az erőforráscsoport alatt. Az előző szerepkör-hozzárendelési bejegyzéshez hasonlóan az alábbi példa a **Tulajdonos** szerepkör definíciós azonosítóját használja, és egy másik paramétert ad neki a tervből. Ez a példa a _tulajdonos_ beépített szerepkört használja a `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`GUID azonosítójának használatával.
 
    - REST API URI
 
@@ -320,15 +320,15 @@ A `{BlueprintVersion}` értéke egy betűket, számokat és kötőjeleket (szók
 
 ## <a name="assign-a-blueprint"></a>Terv hozzárendelése
 
-Miután a REST API használatával közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. If the blueprint is saved to a subscription, it can only be assigned to that subscription. A **kérelemtörzs** megadja a hozzárendelni kívánt tervet, a tervdefinícióban lévő erőforráscsoportok nevét és helyét, valamint a terven definiált és egy vagy több csatolt összetevő által használt összes paramétert.
+Miután a REST API használatával közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. Ha a terv egy előfizetésre lett mentve, akkor csak az adott előfizetéshez rendelhető hozzá. A **kérelemtörzs** megadja a hozzárendelni kívánt tervet, a tervdefinícióban lévő erőforráscsoportok nevét és helyét, valamint a terven definiált és egy vagy több csatolt összetevő által használt összes paramétert.
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
-- `{tenantId}` - Replace with your tenant ID
-- `{YourMG}` - Replace with the ID of your management group
+- `{tenantId}` – cserélje le a bérlői AZONOSÍTÓját
+- `{YourMG}` – cserélje le a felügyeleti csoport AZONOSÍTÓját
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
-1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. The AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), but the service principal ID varies by tenant. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
+1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. A AppId statikus (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), de a szolgáltatásnév azonosítója a bérlőtől függ. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
 
    - REST API URI
 
@@ -387,10 +387,10 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-   - User-assigned managed identity
+   - Felhasználó által hozzárendelt felügyelt identitás
 
-     A blueprint assignment can also use a [user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md).
-     In this case, the **identity** portion of the request body changes as follows. Replace `{yourRG}` and `{userIdentity}` with your resource group name and the name of your user-assigned managed identity, respectively.
+     A tervrajz-hozzárendelések [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md)is használhatnak.
+     Ebben az esetben a kérelem törzsének **identitás** része a következőképpen változik. Cserélje le `{yourRG}` és `{userIdentity}` az erőforráscsoport nevére és a felhasználó által hozzárendelt felügyelt identitás nevére.
 
      ```json
      "identity": {
@@ -402,10 +402,10 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      },
      ```
 
-     The **user-assigned managed identity** can be in any subscription and resource group the user assigning the blueprint has permissions to.
+     A **felhasználó által hozzárendelt felügyelt identitás** bármely előfizetésben és erőforráscsoportban lehet, hogy a tervhez hozzárendelt felhasználó rendelkezik jogosultsággal a következőhöz:.
 
      > [!IMPORTANT]
-     > Blueprints doesn't manage the user-assigned managed identity. Users are responsible for assigning sufficient roles and permissions or the blueprint assignment will fail.
+     > A tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
 ## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
@@ -427,9 +427,9 @@ Maguknak a terveknek a törléséhez használja a következő REST API-művelete
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-In this quickstart, you've created, assigned, and removed a blueprint with REST API. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet REST APIsal. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [A terv életciklusának megismerése](./concepts/lifecycle.md)

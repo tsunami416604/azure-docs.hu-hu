@@ -1,6 +1,6 @@
 ---
-title: Sample - Ensure storage file encryption
-description: This sample policy definition requires that file encryption is enabled for all Azure storage accounts.
+title: Minta – a tárolási fájlok titkosításának biztosítása
+description: Ez a minta házirend-definíció megköveteli, hogy a fájl titkosítása engedélyezve legyen az összes Azure Storage-fiókhoz.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: e10c9a83b0a523848a7c50bc7e2161e92afbca07
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463443"
 ---
-# <a name="sample---ensure-storage-file-encryption"></a>Sample - Ensure storage file encryption
+# <a name="sample---ensure-storage-file-encryption"></a>Minta – a tárolási fájlok titkosításának biztosítása
 
 Ez a szabályzat megköveteli a fájltitkosítás engedélyezését a tárfiókokban.
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-file-encryption%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-file-encryption%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -45,7 +45,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'storage-account-file-encryption' --display-n
 az policy assignment create --name <assignmentname> --scope <scope> --policy "storage-account-file-encryption"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

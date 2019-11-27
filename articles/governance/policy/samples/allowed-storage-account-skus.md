@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed storage account SKUs
-description: This sample policy definition requires that storage accounts use an approved SKU defined in a parameter.
+title: Minta – engedélyezett Storage-fiók SKU-ban
+description: Ez a minta házirend-definíció megköveteli, hogy a Storage-fiókok egy paraméterben definiált jóváhagyott SKU-t használjanak.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 843c06b4c7b18e130b325c9ccd37a4fe70fc471f
@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463698"
 ---
-# <a name="sample---allowed-storage-account-skus"></a>Sample - Allowed storage account SKUs
+# <a name="sample---allowed-storage-account-skus"></a>Minta – engedélyezett Storage-fiók SKU-ban
 
 Ez a szabályzat megköveteli egy jóváhagyott termékváltozat használatát a tárfiókokban. Meg kell adnia egy jóváhagyott termékváltozatokat tartalmazó tömböt.
 
@@ -24,7 +24,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-storageaccount-sku%2Fazurepolicy.json)
+[![üzembe helyezi a szabályzatot az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-storageaccount-sku%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
@@ -45,7 +45,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'allowed-storageaccount-sku' --display-name '
 az policy assignment create --name <assignmentname> --scope <scope> --policy "allowed-storageaccount-sku"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

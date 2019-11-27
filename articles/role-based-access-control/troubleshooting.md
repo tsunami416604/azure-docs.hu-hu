@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot RBAC for Azure resources | Microsoft Docs
-description: Troubleshoot issues with role-based access control (RBAC) for Azure resources.
+title: Az Azure-erőforrások RBAC kapcsolatos hibák megoldása | Microsoft Docs
+description: A szerepköralapú hozzáférés-vezérléssel (RBAC) kapcsolatos hibák elhárítása Azure-erőforrásokhoz.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -22,45 +22,45 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456825"
 ---
-# <a name="troubleshoot-rbac-for-azure-resources"></a>Troubleshoot RBAC for Azure resources
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
-This article answers common questions about role-based access control (RBAC) for Azure resources, so that you know what to expect when using the roles in the Azure portal and can troubleshoot access problems.
+Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével (RBAC) kapcsolatos gyakori kérdésekre ad választ, hogy tudja, mire számíthat a Azure Portal szerepköreinek használatakor, és hogyan oldhatja meg a hozzáférési problémákat.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
 
-- If you are unable to add a role assignment in the Azure portal on **Access control (IAM)** because the **Add** > **Add role assignment** option is disabled or because you get the permissions error "The client with object id does not have authorization to perform action", check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Authorization/roleAssignments/write` permission such as [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator) at the scope you are trying to assign the role.
-- If you get the error message "No more role assignments can be created (code: RoleAssignmentLimitExceeded)" when you try to assign a role, try to reduce the number of role assignments by assigning roles to groups instead. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként. This role assignments limit is fixed and cannot be increased.
+- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** számára, mert **a Hozzáadás** > **szerepkör-hozzárendelés** hozzáadása lehetőség le van tiltva, vagy az engedélyekkel kapcsolatos hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik engedéllyel a művelet végrehajtásához", győződjön meg arról, hogy jelenleg olyan felhasználóval jelentkezett be, amelyhez olyan szerepkör van hozzárendelve, amely rendelkezik a szerepkörhöz hozzárendelni kívánt hatókörhöz tartozó `Microsoft.Authorization/roleAssignments/write` engedéllyel (például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) ).
+- Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, próbálja meg csökkenteni a szerepkör-hozzárendelések számát úgy, hogy szerepköröket rendel hozzá a csoportokhoz. Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként. Ez a szerepkör-hozzárendelési korlát rögzített, és nem növelhető.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 
-- If you need steps for how to create a custom role, see the custom role tutorials using [Azure PowerShell](tutorial-custom-role-powershell.md) or [Azure CLI](tutorial-custom-role-cli.md).
-- If you are unable to update an existing custom role, check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Authorization/roleDefinition/write` permission such as [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator).
-- If you are unable to delete a custom role and get the error message "There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)", then there are role assignments still using the custom role. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
-- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. No more role definitions can be created (code: RoleDefinitionLimitExceeded)" when you try to create a new custom role, delete any custom roles that aren't being used. Azure supports up to **5000** custom roles in a tenant. (A speciális felhőkben, mint az Azure Government, az Azure Germany és az Azure China 21Vianet, az egyéni szerepkörök száma 2000-re van korlátozva.)
-- If you get an error similar to "The client has permission to perform action 'Microsoft.Authorization/roleDefinitions/write' on scope '/subscriptions/{subscriptionid}', however the linked subscription was not found" when you try to update a custom role, check whether one or more [assignable scopes](role-definitions.md#assignablescopes) have been deleted in the tenant. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet, mivel jelenleg nem áll rendelkezésre önkiszolgáló megoldás.
+- Ha az egyéni szerepkörök létrehozásához szükséges lépéseket szeretné látni, tekintse meg az egyéni szerepkör-oktatóanyagokat [Azure PowerShell](tutorial-custom-role-powershell.md) vagy az [Azure CLI](tutorial-custom-role-cli.md)használatával.
+- Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Authorization/roleDefinition/write` engedéllyel, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználói hozzáférés rendszergazdájával](built-in-roles.md#user-access-administrator).
+- Ha nem tudja törölni az egyéni szerepkört, és a következő hibaüzenet jelenik meg: "van meglévő szerepkör-hozzárendelések hivatkozó szerepköre (code: RoleDefinitionHasAssignments)", akkor a szerepkör-hozzárendelések továbbra is az egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
+- Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nem hozhatók létre több szerepkör-definíció (code: RoleDefinitionLimitExceeded), ha új egyéni szerepkört próbál létrehozni, törölje a nem használt egyéni szerepköröket. Az Azure legfeljebb **5000** egyéni szerepkört támogat a bérlők számára. (A speciális felhőkben, mint az Azure Government, az Azure Germany és az Azure China 21Vianet, az egyéni szerepkörök száma 2000-re van korlátozva.)
+- Ha a következőhöz hasonló hibaüzenet jelenik meg: "az ügyfélnek van engedélye a" Microsoft. Authorization/roleDefinitions/Write "művelet végrehajtására a (z)"/Subscriptions/{subscriptionid} "hatókörben, de a csatolt előfizetés nem található" Ha egyéni szerepkört próbál frissíteni, ellenőrizze, hogy egy vagy több [hozzárendelhető hatókör](role-definitions.md#assignablescopes) törölve lett-e a bérlőben. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet, mivel jelenleg nem áll rendelkezésre önkiszolgáló megoldás.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
 
-- If you need steps for how to transfer a subscription to a different Azure AD tenant, see [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md).
-- Amikor előfizetést helyez át egy másik Azure AD-bérlőre, az összes szerepkör-hozzárendelés véglegesen törlődik a forrásbérlőből, így nem lesz áttelepítve az Azure AD-célbérlőbe. A szerepkör-hozzárendeléseket újra létre kell hoznia a célbérlőben. You also have to manually recreate managed identities for Azure resources. For more information, see [FAQs and known issues with managed identities](../active-directory/managed-identities-azure-resources/known-issues.md).
-- If you are an Azure AD Global Administrator and you don't have access to a subscription after it was moved between tenants, use the **Access management for Azure resources** toggle to temporarily [elevate your access](elevate-access-global-admin.md) to get access to the subscription.
+- Ha egy előfizetés egy másik Azure AD-bérlőre való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)című témakört.
+- Amikor előfizetést helyez át egy másik Azure AD-bérlőre, az összes szerepkör-hozzárendelés véglegesen törlődik a forrásbérlőből, így nem lesz áttelepítve az Azure AD-célbérlőbe. A szerepkör-hozzárendeléseket újra létre kell hoznia a célbérlőben. Emellett manuálisan újra létre kell hoznia a felügyelt identitásokat az Azure-erőforrásokhoz. További információ: [Gyakori kérdések és ismert problémák a felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/known-issues.md)kapcsolatban.
+- Ha Ön az Azure AD globális rendszergazdája, és a bérlők közötti áthelyezés után nem fér hozzá egy előfizetéshez, az Azure- **erőforrások hozzáférés-vezérlése** lehetőséggel ideiglenesen [emelheti](elevate-access-global-admin.md) ki a hozzáférést az előfizetéshez.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémák a szolgáltatásadminisztrátorokkal vagy társadminisztrátorokkal
 
-- If you are having issues with Service administrator or Co-administrators, see [Add or change Azure subscription administrators](../billing/billing-add-change-azure-subscription-administrator.md) and [Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md).
+- Ha a szolgáltatás-rendszergazdával vagy a társ-rendszergazdákkal kapcsolatos problémákat tapasztal, tekintse meg az [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../billing/billing-add-change-azure-subscription-administrator.md) , valamint [a klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure ad-rendszergazdai szerepkörök](rbac-and-directory-admin-roles.md)
 
-## <a name="access-denied-or-permission-errors"></a>Access denied or permission errors
+## <a name="access-denied-or-permission-errors"></a>Hozzáférés megtagadva vagy engedélyekkel kapcsolatos hibák
 
-- If you get the permissions error "The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)" when you try to create a resource, check that you are currently signed in with a user that is assigned a role that has write permission to the resource at the selected scope. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
-- If you get the permissions error "You don't have permission to create a support request" when you try to create or update a support ticket, check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Support/supportTickets/write` permission, such as [Support Request Contributor](built-in-roles.md#support-request-contributor).
+- Ha a következő hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik jogosultsággal a hatókörön (code: AuthorizationFailed) való művelet végrehajtásához, amikor egy erőforrást próbál létrehozni, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, aki írási joggal rendelkezik. engedély az erőforráshoz a kiválasztott hatókörben. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
+- Ha a következő engedélyekkel kapcsolatos hibaüzenet jelenik meg: "nincs engedélye támogatási kérelem létrehozására", ha támogatási jegyet próbál létrehozni vagy frissíteni, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Support/supportTickets/write` engedéllyel, például [támogatási kérelem közreműködője](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-with-unknown-security-principal"></a>Role assignments with Unknown security principal
+## <a name="role-assignments-with-unknown-security-principal"></a>Ismeretlen rendszerbiztonsági tag szerepkör-hozzárendelések
 
-If you assign a role to a security principal (user, group, service principal, or managed identity) and then you later delete that security principal without removing the role assignment, the security principal type for the role assignment will be listed as **Unknown**. The following screenshot shows an example in the Azure portal. The security principal name is listed as **Identity deleted** and **Identity no longer exists**. 
+Ha szerepkört rendel egy rendszerbiztonsági tag (felhasználó, csoport, egyszerű szolgáltatásnév vagy felügyelt identitás) számára, majd később törli a rendszerbiztonsági tag szerepkör-hozzárendelés eltávolítása nélkül, a szerepkör-hozzárendelés rendszerbiztonsági tag-típusa **ismeretlen**lesz. Az alábbi képernyőképen egy példa látható a Azure Portal. A rendszerbiztonsági tag neve az **Identity Deleted** néven szerepel, és az **identitás már nem létezik**. 
 
-![Web app resource group](./media/troubleshooting/unknown-security-principal.png)
+![Webalkalmazás-erőforráscsoport](./media/troubleshooting/unknown-security-principal.png)
 
-If you list this role assignment using Azure PowerShell, you will see an empty `DisplayName` and an `ObjectType` set to Unknown. For example, [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) returns a role assignment that is similar to the following:
+Ha Azure PowerShell használatával sorolja fel ezt a szerepkör-hozzárendelést, üres `DisplayName` jelenik meg, és az `ObjectType` ismeretlenre van állítva. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -74,7 +74,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Similarly, if you list this role assignment using Azure CLI, you will see an empty `principalName`. For example, [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) returns a role assignment that is similar to the following:
+Hasonlóképpen, ha az Azure CLI használatával listázza ezt a szerepkör-hozzárendelést, akkor üres `principalName`jelenik meg. Az az [szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list) például a következőhöz hasonló szerepkör-hozzárendelést ad vissza:
 
 ```azurecli
 {
@@ -90,9 +90,9 @@ Similarly, if you list this role assignment using Azure CLI, you will see an emp
 }
 ```
 
-It isn't a problem to leave these role assignments, but you can remove them using steps that are similar to other role assignments. For information about how to remove role assignments, see [Azure portal](role-assignments-portal.md#remove-role-assignments), [Azure PowerShell](role-assignments-powershell.md#remove-access), or [Azure CLI](role-assignments-cli.md#remove-access)
+Nem jelent problémát a szerepkör-hozzárendelések elhagyása, de a többi szerepkör-hozzárendeléshez hasonló lépések használatával eltávolíthatja őket. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-role-assignments), [Azure POWERSHELL](role-assignments-powershell.md#remove-access)vagy [Azure CLI](role-assignments-cli.md#remove-access)
 
-In PowerShell, if you try to remove the role assignments using the object ID and role definition name, and more than one role assignment matches your parameters, you will get the error message: "The provided information does not map to a role assignment". The following shows an example of the error message:
+Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "a megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő hibaüzenet egy példát mutat be:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -105,87 +105,87 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-If you get this error message, make sure you also specify the `-Scope` or `-ResourceGroupName` parameters.
+Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a `-Scope` vagy `-ResourceGroupName` paramétereket is megadja.
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC changes are not being detected
+## <a name="rbac-changes-are-not-being-detected"></a>A RBAC módosításait a rendszer nem észleli
 
-Azure Resource Manager sometimes caches configurations and data to improve performance. When creating or deleting role assignments, it can take up to 30 minutes for changes to take effect. If you are using the Azure portal, Azure PowerShell, or Azure CLI, you can force a refresh of your role assignment changes by signing out and signing in. If you are making role assignment changes with REST API calls, you can force a refresh by refreshing your access token.
+A Azure Resource Manager időnként a konfiguráció és az adat gyorsítótárazásával javítja a teljesítményt. Szerepkör-hozzárendelések létrehozásakor vagy törlésekor akár 30 percet is igénybe vehet, amíg a módosítások érvénybe lépnek. Ha a Azure Portal, a Azure PowerShell vagy az Azure CLI-t használja, akkor kijelentkezéssel és bejelentkezéssel kényszerítheti a szerepkör-hozzárendelés módosításának frissítését. Ha REST API-hívásokkal módosítja a szerepkör-hozzárendelési módosításokat, a hozzáférési token frissítésével kényszerítheti a frissítést.
 
-## <a name="web-app-features-that-require-write-access"></a>Web app features that require write access
+## <a name="web-app-features-that-require-write-access"></a>Írási hozzáférést igénylő webalkalmazás-funkciók
 
-If you grant a user read-only access to a single web app, some features are disabled that you might not expect. The following management capabilities require **write** access to a web app (either Contributor or Owner), and aren't available in any read-only scenario.
+Ha csak olvasási hozzáférést ad a felhasználónak egyetlen webalkalmazáshoz, néhány szolgáltatás le lesz tiltva, és előfordulhat, hogy nem várható. A következő felügyeleti funkciókhoz **írási** hozzáférés szükséges egy webalkalmazáshoz (közreműködő vagy tulajdonos), és nem érhetők el egyetlen írásvédett forgatókönyvben sem.
 
-* Commands (like start, stop, etc.)
-* Changing settings like general configuration, scale settings, backup settings, and monitoring settings
-* Accessing publishing credentials and other secrets like app settings and connection strings
-* Streaming logs
-* Diagnostic logs configuration
-* Console (command prompt)
-* Active and recent deployments (for local git continuous deployment)
-* Estimated spend
-* Web tests
-* Virtual network (only visible to a reader if a virtual network has previously been configured by a user with write access).
+* Parancsok (például indítás, Leállítás stb.)
+* Beállítások módosítása, például általános konfiguráció, méretezési beállítások, biztonsági mentési beállítások és figyelési beállítások
+* A közzétételi hitelesítő adatok és egyéb titkos kulcsok, például az Alkalmazásbeállítások és a kapcsolatok karakterláncok elérése
+* Folyamatos átviteli naplók
+* Diagnosztikai naplók konfigurálása
+* Konzol (parancssor)
+* Aktív és közelmúltbeli üzemelő példányok (a helyi git folyamatos üzembe helyezéséhez)
+* Becsült ráfordítás
+* Webes tesztek
+* Virtuális hálózat (csak akkor látható az olvasó számára, ha a virtuális hálózatot korábban írási hozzáféréssel rendelkező felhasználó konfigurálta).
 
-If you can't access any of these tiles, you need to ask your administrator for Contributor access to the web app.
+Ha nem fér hozzá ezekhez a csempéhöz, meg kell kérnie a rendszergazdát, hogy a webalkalmazáshoz közreműködői hozzáférést kérjen.
 
-## <a name="web-app-resources-that-require-write-access"></a>Web app resources that require write access
+## <a name="web-app-resources-that-require-write-access"></a>Írási hozzáférést igénylő webalkalmazás-erőforrások
 
-Web apps are complicated by the presence of a few different resources that interplay. Here is a typical resource group with a couple of websites:
+A webalkalmazások bonyolultak az egymással való interakciót okozó néhány különböző erőforrás jelenléte mellett. Íme egy tipikus erőforráscsoport néhány webhellyel:
 
-![Web app resource group](./media/troubleshooting/website-resource-model.png)
+![Webalkalmazás-erőforráscsoport](./media/troubleshooting/website-resource-model.png)
 
-As a result, if you grant someone access to just the web app, much of the functionality on the website blade in the Azure portal is disabled.
+Ennek eredményeképpen, ha hozzáférést ad valakinek a webalkalmazáshoz, a Azure Portal webhely paneljének számos funkciója le van tiltva.
 
-These items require **write** access to the **App Service plan** that corresponds to your website:  
+Ezeknek az elemeknek **írási** hozzáférésre van szükségük a webhelyének megfelelő **app Service-csomaghoz** :  
 
-* Viewing the web app's pricing tier (Free or Standard)  
-* Scale configuration (number of instances, virtual machine size, autoscale settings)  
-* Quotas (storage, bandwidth, CPU)  
+* A webalkalmazás díjszabási szintje (ingyenes vagy standard) megtekintése  
+* Méretezési konfiguráció (példányok száma, virtuális gép mérete, automatikus skálázási beállítások)  
+* Kvóták (tárolás, sávszélesség, processzor)  
 
-These items require **write** access to the whole **Resource group** that contains your website:  
+Ezeknek az elemeknek **írási** hozzáférésre van szükségük a webhelyet tartalmazó teljes **erőforráscsoport** számára:  
 
-* SSL Certificates and bindings (SSL certificates can be shared between sites in the same resource group and geo-location)  
+* SSL-tanúsítványok és-kötések (az SSL-tanúsítványok megoszthatók az azonos erőforráscsoporthoz és a földrajzi helyen található helyek között)  
 * Riasztási szabályok  
-* Autoscale settings  
-* Application insights components  
-* Web tests  
+* Az autoskálázás beállításai  
+* Application bepillantások összetevői  
+* Webes tesztek  
 
-## <a name="virtual-machine-features-that-require-write-access"></a>Virtual machine features that require write access
+## <a name="virtual-machine-features-that-require-write-access"></a>Írási hozzáférést igénylő virtuálisgép-funkciók
 
-Similar to web apps, some features on the virtual machine blade require write access to the virtual machine, or to other resources in the resource group.
+A webalkalmazásokhoz hasonlóan a virtuális gép panel egyes funkcióinak írási hozzáférésre van szükségük a virtuális géphez vagy az erőforráscsoport egyéb erőforrásaihoz.
 
-Virtual machines are related to Domain names, virtual networks, storage accounts, and alert rules.
+A virtuális gépek a tartománynevek, a virtuális hálózatok, a tárolási fiókok és a riasztási szabályokhoz kapcsolódnak.
 
-These items require **write** access to the **Virtual machine**:
+Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez**:
 
-* Endpoints (Végpontok)  
+* Végpontok  
 * IP-címek  
 * Lemezek  
 * Bővítmények  
 
-These require **write** access to both the **Virtual machine**, and the **Resource group** (along with the Domain name) that it is in:  
+Ezeknek **írási** hozzáférésre van szükségük a **virtuális géphez**és az **erőforráscsoporthoz** (a tartománynévvel együtt):  
 
 * Rendelkezésre állási csoport  
-* Load balanced set  
+* Elosztott terhelésű készlet  
 * Riasztási szabályok  
 
-If you can't access any of these tiles, ask your administrator for Contributor access to the Resource group.
+Ha nem fér hozzá ezekhez a csempéhöz, kérje meg a rendszergazdát, hogy a közreműködői hozzáférjen az erőforráscsoporthoz.
 
-## <a name="azure-functions-and-write-access"></a>Azure Functions and write access
+## <a name="azure-functions-and-write-access"></a>Azure Functions és írási hozzáférés
 
-Some features of [Azure Functions](../azure-functions/functions-overview.md) require write access. For example, if a user is assigned the [Reader](built-in-roles.md#reader) role, they will not be able to view the functions within a function app. The portal will display **(No access)** .
+A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak írási hozzáférésre van szükségük. Ha például egy felhasználó hozzá van rendelve az [olvasó](built-in-roles.md#reader) szerepkörhöz, nem fogja tudni megtekinteni a functions alkalmazásban lévő függvényeket. Megjelenik a portál **(nincs hozzáférés)** .
 
-![Function apps no access](./media/troubleshooting/functionapps-noaccess.png)
+![A Function alkalmazások nem férnek hozzá](./media/troubleshooting/functionapps-noaccess.png)
 
-A reader can click the **Platform features** tab and then click **All settings** to view some settings related to a function app (similar to a web app), but they can't modify any of these settings. To access these features, you will need the [Contributor](built-in-roles.md#contributor) role.
+Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Troubleshoot for guest users](role-assignments-external-users.md#troubleshoot)
+- [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
-- [View activity logs for RBAC changes to Azure resources](change-history-report.md)
+- [Az Azure-erőforrásokra vonatkozó RBAC-változásokkal kapcsolatos tevékenységek naplóinak megtekintése](change-history-report.md)
 

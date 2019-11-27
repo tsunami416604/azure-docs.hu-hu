@@ -176,7 +176,7 @@ Ezek az ügynökök csak akkor szükségesek, ha függőségi vizualizációt ha
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Használhatok egy meglévő munkaterületet a függőségi vizualizációhoz?
 
-Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#how-does-it-work).
+Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. [Részletek](concepts-dependency-visualization.md#how-does-it-work).
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Exportálhatók a függőségi vizualizációs jelentés?
 
@@ -208,5 +208,5 @@ A legfeljebb 10 virtuális gépet tartalmazó csoportok [függőségeit megjelen
 - A Hyper-V virtuális gépek, a fizikai kiszolgálók és az ügynökön alapuló VMware virtuális gépek áttelepítéséhez Azure Migrate kiszolgáló áttelepítése a Azure Site Recovery replikációs motort használja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

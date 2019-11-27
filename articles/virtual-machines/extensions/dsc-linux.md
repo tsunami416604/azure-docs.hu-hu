@@ -1,6 +1,6 @@
 ---
-title: Azure DSC extension for Linux
-description: Installs OMI and DSC packages to allow an Azure Linux VM to be configured using Desired State Configuration.
+title: Azure DSC-bővítmény Linux rendszerhez
+description: A a következő módon telepíti a típusú és DSC-csomagokat, hogy az Azure Linux rendszerű virtuális gép a kívánt állapot-konfiguráció alapján legyen konfigurálva.
 services: virtual-machines-linux
 documentationcenter: ''
 author: bobbytreed
@@ -20,21 +20,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457522"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
-Desired State Configuration (DSC) is a management platform that you can use to manage your IT and development infrastructure with configuration as code.
+A kívánt állapot-konfiguráció (DSC) egy olyan felügyeleti platform, amelynek segítségével az informatikai és fejlesztési infrastruktúra felügyelhető kódként való konfigurálásával.
 
 > [!NOTE]
-> The DSC extension for Linux and the [Azure Monitor virtual machine extension for Linux](/azure/virtual-machines/extensions/oms-linux) currently present a conflict and aren't supported in a side-by-side configuration. Don't use the two solutions together on the same VM.
+> A Linux rendszerhez készült DSC-bővítmény és a [linux Azure monitor virtuálisgép-bővítménye](/azure/virtual-machines/extensions/oms-linux) jelenleg ütközik, és nem támogatott egymás melletti konfigurációban. Ne használja együtt a két megoldást ugyanazon a virtuális gépen.
 
-The DSCForLinux extension is published and supported by Microsoft. The extension installs the OMI and DSC agent on Azure virtual machines. The DSC extension can also do the following actions:
+A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítmény telepíti a és a DSC-ügynököt az Azure Virtual Machines szolgáltatásban. A DSC bővítmény a következő műveleteket is elvégezheti:
 
 
-- Register the Linux VM to an Azure Automation account to pull configurations from the Azure Automation service (Register ExtensionAction).
-- Push MOF configurations to the Linux VM (Push ExtensionAction).
-- Apply meta MOF configuration to the Linux VM to configure a pull server in order to pull node configuration (Pull ExtensionAction).
-- Install custom DSC modules to the Linux VM (Install ExtensionAction).
-- Remove custom DSC modules from the Linux VM (Remove ExtensionAction).
+- Regisztrálja a linuxos virtuális gépet egy Azure Automation-fiókba a konfigurációk Azure Automation szolgáltatásból való lekéréséhez (ExtensionAction-regisztráció).
+- A MOF-konfigurációk leküldése a Linux rendszerű virtuális gépre (leküldéses ExtensionAction).
+- Alkalmazza a meta MOF-konfigurációt a Linux rendszerű virtuális gépre egy lekérési kiszolgáló konfigurálásához a csomópont-konfiguráció lekéréséhez (lekéréses ExtensionAction).
+- Telepítsen egyéni DSC-modulokat a Linux rendszerű virtuális gépre (telepítse a ExtensionAction-t).
+- Távolítsa el az egyéni DSC-modulokat a Linux rendszerű virtuális gépről (távolítsa el a ExtensionAction).
 
  
 
@@ -42,49 +42,49 @@ The DSCForLinux extension is published and supported by Microsoft. The extension
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-The DSC Linux extension supports all the [Linux distributions endorsed on Azure](/azure/virtual-machines/linux/endorsed-distros) except:
+A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](/azure/virtual-machines/linux/endorsed-distros) , kivéve a következőket:
 
-| Terjesztés | Verzió |
+| Disztribúció | Verzió |
 |---|---|
 | Debian | Az összes verzió |
-| Ubuntu| 18.04 |
+| Ubuntu| 18,04 |
  
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-The DSCForLinux extension requires the target virtual machine to be connected to the internet. For example, the Register extension requires connectivity to the Automation service. For other actions such as Pull, Pull, Install requires connectivity to Azure Storage and GitHub. It depends on settings provided by the customer.
+A DSCForLinux-bővítmény megköveteli, hogy a célként megadott virtuális gép csatlakozni lehessen az internethez. A regisztrálási bővítménynek például kapcsolódnia kell az Automation szolgáltatáshoz. Más műveletek, például a lekéréses, a lekéréses telepítéshez az Azure Storage-hoz és a GitHubhoz kell kapcsolódnia. Ez az ügyfél által megadott beállításoktól függ.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-### <a name="public-configuration"></a>Public configuration
+### <a name="public-configuration"></a>Nyilvános konfiguráció
 
-Here are all the supported public configuration parameters:
+Az összes támogatott nyilvános konfigurációs paraméter:
 
-* `FileUri`: (optional, string) The uri of the MOF file, meta MOF file, or custom resource zip file.
-* `ResourceName`: (optional, string) The name of the custom resource module.
-* `ExtensionAction`: (optional, string) Specifies what an extension does. Valid values are Register, Push, Pull, Install, and Remove. If not specified, it's considered a Push Action by default.
-* `NodeConfigurationName`: (optional, string) The name of a node configuration to apply.
-* `RefreshFrequencyMins`: (optional, int) Specifies how often (in minutes) that DSC attempts to obtain the configuration from the pull server. 
-       If configuration on the pull server differs from the current one on the target node, it's copied to the pending store and applied.
-* `ConfigurationMode`: (optional, string) Specifies how DSC should apply the configuration. Valid values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-* `ConfigurationModeFrequencyMins`: (optional, int) Specifies how often (in minutes) DSC ensures that the configuration is in the desired state.
+* `FileUri`: (nem kötelező, karakterlánc) a MOF-fájl, a meta MOF-fájl vagy az egyéni erőforrás zip-fájljának URI-ja.
+* `ResourceName`: (nem kötelező, karakterlánc) az egyéni erőforrás-modul neve.
+* `ExtensionAction`: (nem kötelező, karakterlánc) megadja a bővítményt. Az érvényes értékek: regisztrálás, leküldés, lekérés, telepítés és eltávolítás. Ha nincs megadva, a rendszer alapértelmezés szerint leküldéses műveletet számít.
+* `NodeConfigurationName`: (nem kötelező, karakterlánc) az alkalmazandó csomópont-konfiguráció neve.
+* `RefreshFrequencyMins`: (opcionális, int) Megadja, hogy milyen gyakran (percben) a DSC a lekérési kiszolgálóról próbálja meg beolvasni a konfigurációt. 
+       Ha a lekérési kiszolgálón a konfiguráció eltér az aktuálistól, a rendszer átmásolja a függőben lévő tárolóba, és alkalmazza azokat.
+* `ConfigurationMode`: (nem kötelező, karakterlánc) Megadja, hogy a DSC hogyan alkalmazza a konfigurációt. Az érvényes értékek a következők: ApplyOnly, ApplyAndMonitor és ApplyAndAutoCorrect.
+* `ConfigurationModeFrequencyMins`: (opcionális, int) Megadja, hogy milyen gyakran (percben) a DSC biztosítja, hogy a konfiguráció a kívánt állapotban legyen.
 
 > [!NOTE]
-> If you use a version earlier than 2.3, the mode parameter is the same as ExtensionAction. Mode seems to be an overloaded term. To avoid confusion, ExtensionAction is used from version 2.3 onward. For backward compatibility, the extension supports both mode and ExtensionAction. 
+> Ha 2,3-nál korábbi verziót használ, a mode paraméter ugyanaz, mint a ExtensionAction. A mód úgy tűnik, hogy túlterhelt kifejezés. A félreértések elkerülése érdekében a ExtensionAction a 2,3-es verziótól kezdődően használatos. A visszamenőleges kompatibilitás érdekében a bővítmény támogatja a módot és a ExtensionAction is. 
 >
 
-### <a name="protected-configuration"></a>Protected configuration
+### <a name="protected-configuration"></a>Védett konfiguráció
 
-Here are all the supported protected configuration parameters:
+A támogatott védett konfigurációs paraméterek a következők:
 
-* `StorageAccountName`: (optional, string) The name of the storage account that contains the file
-* `StorageAccountKey`: (optional, string) The key of the storage account that contains the file
-* `RegistrationUrl`: (optional, string) The URL of the Azure Automation account
-* `RegistrationKey`: (optional, string) The access key of the Azure Automation account
+* `StorageAccountName`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók neve
+* `StorageAccountKey`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók kulcsa
+* `RegistrationUrl`: (nem kötelező, karakterlánc) a Azure Automation-fiók URL-címe
+* `RegistrationKey`: (nem kötelező, karakterlánc) a Azure Automation fiók elérési kulcsa
 
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
-### <a name="register-an-azure-automation-account"></a>Register an Azure Automation account
+### <a name="register-an-azure-automation-account"></a>Azure Automation fiók regisztrálása
 protected.json
 ```json
 {
@@ -103,7 +103,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell-formátum
 ```powershell
 $privateConfig = '{
   "RegistrationUrl": "<azure-automation-account-url>",
@@ -119,7 +119,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply an MOF configuration file (in an Azure storage account) to the VM
+### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>MOF konfigurációs fájl (Azure Storage-fiókban) alkalmazása a virtuális gépre
 
 protected.json
 ```json
@@ -137,7 +137,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell-formátum
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -151,7 +151,7 @@ $publicConfig = '{
 ```
 
 
-### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Apply an MOF configuration file (in public storage) to the VM
+### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
 
 public.json
 ```json
@@ -160,14 +160,14 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell-formátum
 ```powershell
 $publicConfig = '{
   "FileUri": "<mof-file-uri>"
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply a meta MOF configuration file (in an Azure storage account) to the VM
+### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Meta MOF konfigurációs fájl alkalmazása (Azure Storage-fiókban) a virtuális géphez
 
 protected.json
 ```json
@@ -185,7 +185,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell-formátum
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -198,7 +198,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Apply a meta MOF configuration file (in public storage) to the VM
+### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Meta MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
 public.json
 ```json
 {
@@ -206,7 +206,7 @@ public.json
   "ExtensionAction": "Pull"
 }
 ```
-PowerShell format
+PowerShell-formátum
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -214,7 +214,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Install a custom resource module (a zip file in an Azure storage account) to the VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Egyéni erőforrás-modul (egy Azure Storage-fiókban lévő zip-fájl) telepítése a virtuális gépre
 protected.json
 ```json
 {
@@ -230,7 +230,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell-formátum
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -243,7 +243,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Install a custom resource module (a zip file in public storage) to the VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Egyéni erőforrás-modul (egy nyilvános tárolóban lévő zip-fájl) telepítése a virtuális gépre
 public.json
 ```json
 {
@@ -251,7 +251,7 @@ public.json
   "FileUri": "<resource-zip-file-uri>"
 }
 ```
-PowerShell format
+PowerShell-formátum
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -259,7 +259,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="remove-a-custom-resource-module-from-the-vm"></a>Remove a custom resource module from the VM
+### <a name="remove-a-custom-resource-module-from-the-vm"></a>Egyéni erőforrás-modul eltávolítása a virtuális gépről
 public.json
 ```json
 {
@@ -267,7 +267,7 @@ public.json
   "ExtensionAction": "Remove"
 }
 ```
-PowerShell format
+PowerShell-formátum
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -277,62 +277,62 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Azure VM extensions can be deployed with Azure Resource Manager templates. Templates are ideal when you deploy one or more virtual machines that require post-deployment configuration, such as onboarding to Azure Automation. 
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak, ha egy vagy több olyan virtuális gépet telepít, amely a telepítés utáni konfigurálást igényli, például Azure Automation bevezetését. 
 
-The sample Resource Manager template is [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) and [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
+A minta Resource Manager-sablon a [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) és [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-For more information about the Azure Resource Manager template, see [Authoring Azure Resource Manager templates](../../azure-resource-manager/resource-group-authoring-templates.md).
+További információ a Azure Resource Manager sablonnal kapcsolatban: [Azure Resource Manager sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md).
 
 
-## <a name="azure-cli-deployment"></a>Azure CLI deployment
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-### <a name="use-azure-cliazure-cli"></a>Use [Azure CLI][azure-cli]
-Before you deploy the DSCForLinux extension, configure your `public.json` and `protected.json` according to the different scenarios in section 3.
+### <a name="use-azure-cliazure-cli"></a>Az [Azure CLI] [Azure-CLI] használata
+A DSCForLinux-bővítmény üzembe helyezése előtt konfigurálja a `public.json`, és `protected.json` a 3. szakaszban szereplő különböző forgatókönyvek szerint.
 
-#### <a name="classic"></a>Hagyományos
-The classic deployment mode is also called Azure Service Management mode. You can switch to it by running:
+#### <a name="classic"></a>Klasszikus
+A klasszikus üzembe helyezési módot Azure Service Management üzemmódnak is nevezik. A következő futtatásával válthat:
 ```
 $ azure config mode asm
 ```
 
-You can deploy the DSCForLinux extension by running:
+A DSCForLinux-bővítményt a futtatásával is telepítheti:
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
-To learn the latest extension version available, run:
+Az elérhető legújabb bővítmény-verzió megismeréséhez futtassa a következőt:
 ```
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Erőforrás-kezelő
-You can switch to Azure Resource Manager mode by running:
+#### <a name="resource-manager"></a>Resource Manager
+A Azure Resource Manager módba való váltáshoz futtassa a következőt:
 ```
 $ azure config mode arm
 ```
 
-You can deploy the DSCForLinux extension by running:
+A DSCForLinux-bővítményt a futtatásával is telepítheti:
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> In Azure Resource Manager mode, `azure vm extension list` isn't available for now.
+> Azure Resource Manager módban a `azure vm extension list` jelenleg nem érhető el.
 >
 
-### <a name="use-azure-powershellazure-powershell"></a>Use [Azure PowerShell][azure-powershell]
+### <a name="use-azure-powershellazure-powershell"></a>A [Azure PowerShell] [Azure-PowerShell] használata
 
-#### <a name="classic"></a>Hagyományos
+#### <a name="classic"></a>Klasszikus
 
-You can sign in to your Azure account in Azure Service Management mode by running:
+Az Azure-fiókba való bejelentkezéshez az Azure Service Management módban is bejelentkezhet:
 
 ```powershell>
 Add-AzureAccount
 ```
 
-And deploy the DSCForLinux extension by running:
+És a DSCForLinux-bővítmény üzembe helyezéséhez futtassa a következőket:
 
 ```powershell>
 $vmname = '<vm-name>'
@@ -342,7 +342,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
+Módosítsa $privateConfig tartalmát, és $publicConfig az előző szakaszban szereplő különböző forgatókönyvek szerint.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -363,17 +363,17 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Erőforrás-kezelő
+#### <a name="resource-manager"></a>Resource Manager
 
-You can sign in to your Azure account in Azure Resource Manager mode by running:
+Azure Resource Manager módban is bejelentkezhet az Azure-fiókjába a következő futtatásával:
 
 ```powershell>
 Login-AzAccount
 ```
 
-To learn more about how to use Azure PowerShell with Azure Resource Manager, see [Manage Azure resources by using Azure PowerShell](../../azure-resource-manager/manage-resources-powershell.md).
+Ha többet szeretne megtudni a Azure Resource Manager Azure PowerShell használatáról, tekintse meg az [Azure-erőforrások kezelése Azure PowerShell használatával](../../azure-resource-manager/manage-resources-powershell.md)című témakört.
 
-You can deploy the DSCForLinux extension by running:
+A DSCForLinux-bővítményt a futtatásával is telepítheti:
 
 ```powershell>
 $rgName = '<resource-group-name>'
@@ -384,7 +384,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
+Módosítsa $privateConfig tartalmát, és $publicConfig az előző szakaszban szereplő különböző forgatókönyvek szerint.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -405,30 +405,30 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```
 
-## <a name="troubleshoot-and-support"></a>Troubleshoot and support
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Data about the state of extension deployments can be retrieved from the Azure portal and by using the Azure CLI. To see the deployment state of extensions for a given VM, run the following command by using the Azure CLI.
+A bővítmények állapotával kapcsolatos adatok a Azure Portal és az Azure CLI használatával kérhetők le. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Extension execution output is logged to the following file:
+Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájlt:
 
 ```
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Error code: 51 represents either unsupported distribution or unsupported extension action.
-In some cases, DSC Linux extension fails to install OMI when a higher version of OMI already exists in the machine. [error response: (000003)Downgrade not allowed]
+Hibakód: a 51 nem támogatott terjesztési vagy nem támogatott kiterjesztési műveletet jelöl.
+Bizonyos esetekben a DSC Linux bővítmény nem tudja telepíteni a következőt, ha már létezik a következő, a számítógépen már létező, a-es és újabb változat. [hiba válasza: (000003) a visszalépés nem engedélyezett]
 
 
 
 ### <a name="support"></a>Támogatás
 
-If you need more help at any point in this article, contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/community/). Alternatively, you can file an Azure Support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/), and select **Get support**. For information about using Azure Support, read the [Microsoft Azure Support FAQ](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/community/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
-For more information about extensions, see [Virtual machine extensions and features for Linux](features-linux.md).
+## <a name="next-steps"></a>További lépések
+További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

@@ -22,7 +22,7 @@ ms.locfileid: "74420368"
 
 A [rugalmas feladatok](sql-database-job-automation-overview.md#elastic-database-jobs-preview) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
 
-In this tutorial, you learn the steps required to run a query across multiple databases:
+Ebben az oktatóanyagban megtudhatja, hogy milyen lépéseket kell végrehajtani a lekérdezések több adatbázishoz való futtatásához:
 
 > [!div class="checklist"]
 > * Rugalmasfeladat-ügynök létrehozása
@@ -36,13 +36,13 @@ In this tutorial, you learn the steps required to run a query across multiple da
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-The upgraded version of Elastic Database jobs has a new set of PowerShell cmdlets for use during migration. These new cmdlets transfer all of your existing job credentials, targets (including databases, servers, custom collections), job triggers, job schedules, job contents, and jobs over to a new Elastic Job agent.
+A rugalmas adatbázis-feladatok frissített verziója a PowerShell-parancsmagok új készletét használja az áttelepítés során való használatra. Ezek az új parancsmagok az összes meglévő feladat hitelesítő adatait, célpontját (beleértve az adatbázisokat, a kiszolgálókat, az egyéni gyűjteményeket), a feladatok eseményindítóit, a feladatok ütemterveit, a feladatok tartalmát és a feladatokat egy új rugalmas feladat-ügynökre helyezik át.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Install the latest Elastic Jobs cmdlets
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb rugalmas feladatok parancsmagjának telepítése
 
 Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladat megkezdése előtt.
 
-Install the **Az.Sql** module to get the latest Elastic Job cmdlets. Run the following commands in PowerShell with administrative access.
+Telepítse az az **. SQL** modult a legújabb rugalmas feladatok parancsmagok beszerzéséhez. Futtassa a következő parancsokat a PowerShellben rendszergazdai hozzáféréssel.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-In addition to the **Az.Sql** module, this tutorial also requires the *SqlServer* PowerShell module. For details, see [Install SQL Server PowerShell module](/sql/powershell/download-sql-server-ps-module).
+Az az **. SQL** modulon kívül az oktatóanyaghoz a *SQLServer* PowerShell-modulra is szükség van. Részletekért lásd: [SQL Server PowerShell-modul telepítése](/sql/powershell/download-sql-server-ps-module).
 
 ## <a name="create-required-resources"></a>A szükséges erőforrások létrehozása
 
 A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](sql-database-job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség.
 
-The script below creates a new resource group, server, and database for use as the Job database. The second script creates a second server with two blank databases to execute jobs against.
+Az alábbi szkript létrehoz egy új erőforráscsoportot, egy kiszolgálót és egy adatbázist, amely a feladatokhoz használható. A második parancsfájl létrehoz egy második kiszolgálót két üres adatbázissal a feladatok végrehajtásához.
 
 A rugalmas feladatokhoz nem tartoznak külön elnevezési követelmények, így tetszőleges elnevezési konvenciót alkalmazhat, ha az megfelel [az Azure követelményeinek](/azure/architecture/best-practices/resource-naming).
 
@@ -122,9 +122,9 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Use Elastic Jobs
+## <a name="use-elastic-jobs"></a>Rugalmas feladatok használata
 
-To use Elastic Jobs, register the feature in your Azure subscription by running the following command. Run this command once for the subscription in which you intend to provision the Elastic Job agent. Subscriptions that only contain databases that are job targets don't need to be registered.
+Rugalmas feladatok használatához regisztrálja a szolgáltatást az Azure-előfizetésben a következő parancs futtatásával. Egyszer futtassa ezt a parancsot ahhoz az előfizetéshez, amelyben létre kívánja hozni a rugalmas feladatokhoz tartozó ügynököt. Azokat az előfizetéseket, amelyek csak a feladatütemezés adatbázisait tartalmazzák, nem kell regisztrálniuk.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 A rugalmasfeladat-ügynök a feladatok létrehozásához, futtatásához és kezeléséhez használt Azure-erőforrás. Az ügynök ütemezés szerint vagy egyszeri alkalommal hajtja végre a feladatokat.
 
-The **New-AzSqlElasticJobAgent** cmdlet requires an Azure SQL database to already exist, so the *resourceGroupName*, *serverName*, and *databaseName* parameters must all point to existing resources.
+A **New-AzSqlElasticJobAgent** parancsmaghoz egy Azure SQL Database-adatbázisra van szükség, így a *resourceGroupName*, a *serverName*és a *databaseName* paramétereknek mind a meglévő erőforrásokra kell mutatniuk.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -143,15 +143,15 @@ $jobAgent = $jobDatabase | New-AzSqlElasticJobAgent -Name $agentName
 $jobAgent
 ```
 
-### <a name="create-the-job-credentials"></a>Create the job credentials
+### <a name="create-the-job-credentials"></a>A feladatok hitelesítő adatainak létrehozása
 
-Jobs use database scoped credentials to connect to the target databases specified by the target group upon execution and execute scripts. A rendszer szintén ezeket az adatbázishoz kötődő hitelesítő adatokat használja a master adatbázishoz való csatlakozáshoz, az adott kiszolgálón vagy rugalmas készletben lévő adatbázisok enumerálására, ha a célcsoporttagtípus ezek valamelyike.
+A feladatok adatbázis-hatókörrel rendelkező hitelesítő adatokat használnak a célcsoport által meghatározott cél adatbázisokhoz való csatlakozáshoz a végrehajtás és a parancsfájlok végrehajtása során. A rendszer szintén ezeket az adatbázishoz kötődő hitelesítő adatokat használja a master adatbázishoz való csatlakozáshoz, az adott kiszolgálón vagy rugalmas készletben lévő adatbázisok enumerálására, ha a célcsoporttagtípus ezek valamelyike.
 
 Az adatbázishoz kötődő hitelesítő adatokat a feladat-adatbázisban kell létrehozni. A feladat sikeres befejezéséhez minden céladatbázisnak rendelkeznie kell egy megfelelő engedélyeket tartalmazó bejelentkezési hozzáféréssel.
 
 ![Rugalmas feladatokhoz tartozó hitelesítő adatok](media/elastic-jobs-overview/job-credentials.png)
 
-A képen szereplő hitelesítő adatok áttekintésén kívül vegye figyelembe azt is, hogy az alábbi szkriptben **GRANT**-parancsok is szerepelnek. Ezek az engedélyek szükségesek a jelen példafeladathoz kiválasztott szkript számára. Because the example creates a new table in the targeted databases, each target db needs the proper permissions to successfully run.
+A képen szereplő hitelesítő adatok áttekintésén kívül vegye figyelembe azt is, hogy az alábbi szkriptben **GRANT**-parancsok is szerepelnek. Ezek az engedélyek szükségesek a jelen példafeladathoz kiválasztott szkript számára. Mivel a példa egy új táblát hoz létre a megcélzott adatbázisokban, minden célként szükséges engedélyekkel kell rendelkeznie a sikeres futtatáshoz.
 
 A feladatokhoz tartozó hitelesítő adatok (feladat-adatbázisban történő) létrehozásához futtassa a következő szkriptet:
 
@@ -200,11 +200,11 @@ $jobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -Arg
 $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $jobCred
 ```
 
-### <a name="define-the-target-databases-to-run-the-job-against"></a>Define the target databases to run the job against
+### <a name="define-the-target-databases-to-run-the-job-against"></a>A cél-adatbázisok megadása a feladatok futtatásához
 
 A [célcsoport](sql-database-job-automation-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva.
 
-The following snippet creates two target groups: *serverGroup*, and *serverGroupExcludingDb2*. *serverGroup* targets all databases that exist on the server at the time of execution, and *serverGroupExcludingDb2* targets all databases on the server, except *targetDb2*:
+A következő kódrészlet két célcsoportot hoz létre: *serverGroup*és *serverGroupExcludingDb2*. a *serverGroup* a kiszolgálón található összes adatbázist megcélozza a végrehajtás során, és a *serverGroupExcludingDb2* a kiszolgálón lévő összes adatbázist megcélozza, a *targetDb2*kivételével:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -218,9 +218,9 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerName -Database $db2.DatabaseName -Exclude
 ```
 
-### <a name="create-a-job-and-steps"></a>Create a job and steps
+### <a name="create-a-job-and-steps"></a>Feladatok és lépések létrehozása
 
-This example defines a job and two job steps for the job to run. Az első lépésben (*step1*) egy új táblát (*Step1Table*) hozunk létre a *ServerGroup* célcsoport összes adatbázisában. The second job step (*step2*) creates a new table (*Step2Table*) in every database except for *TargetDb2*, because the target group defined previously specified to exclude it.
+Ez a példa egy feladatot definiál, és két feladatot hajt végre a feladatok futtatásához. Az első lépésben (*step1*) egy új táblát (*Step1Table*) hozunk létre a *ServerGroup* célcsoport összes adatbázisában. A második feladattípus (*2. lépés*) új táblát (*Step2Table*) hoz létre minden adatbázisban, kivéve a *TargetDb2*-t, mert a korábban megadott célcsoport kizárása.
 
 ```powershell
 Write-Output "Creating a new job..."
@@ -250,7 +250,7 @@ A művelet sikeres befejezését követően két új tábla jelenik meg a Target
 
    ![az új táblák ellenőrzése az SSMS-ben](media/elastic-jobs-overview/job-execution-verification.png)
 
-You can also schedule the job to run later. A következő paranccsal ütemezheti az adott feladat futtatását egy későbbi időpontra:
+A feladatot később is ütemezheti. A következő paranccsal ütemezheti az adott feladat futtatását egy későbbi időpontra:
 
 ```powershell
 # run every hour starting from now
@@ -272,33 +272,33 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-The following table lists the possible job execution states:
+A következő táblázat a lehetséges feladatok végrehajtásának állapotait sorolja fel:
 
-|Állami|Leírás|
+|State|Leírás|
 |:---|:---|
-|**Created** | The job execution was just created and is not yet in progress.|
-|**InProgress** | The job execution is currently in progress.|
-|**WaitingForRetry** | The job execution wasn’t able to complete its action and is waiting to retry.|
-|**Succeeded** | The job execution has completed successfully.|
-|**SucceededWithSkipped** | The job execution has completed successfully, but some of its children were skipped.|
-|**Failed** | The job execution has failed and exhausted its retries.|
-|**TimedOut** | The job execution has timed out.|
-|**Canceled** | The job execution was canceled.|
-|**Kihagyva** | The job execution was skipped because another execution of the same job step was already running on the same target.|
-|**WaitingForChildJobExecutions** | The job execution is waiting for its child executions to complete.|
+|**Létrehozott** | A feladatok végrehajtása éppen létrejött, és még nincs folyamatban.|
+|**Folyamatban** | A feladatok végrehajtása jelenleg folyamatban van.|
+|**WaitingForRetry** | A feladat végrehajtása nem tudta befejezni a műveletet, és az újrapróbálkozásra vár.|
+|**Sikerült** | A feladatok végrehajtása sikeresen befejeződött.|
+|**SucceededWithSkipped** | A feladatok végrehajtása sikeresen befejeződött, de néhány gyermeke ki lett hagyva.|
+|**Sikertelen** | A feladatok végrehajtása sikertelen volt, és kimerítette az újrapróbálkozásait.|
+|**Időtúllépés** | A feladatok végrehajtása túllépte az időkorlátot.|
+|**Visszavont** | A feladat végrehajtása meg lett szakítva.|
+|**Kihagyva** | A rendszer kihagyta a feladatok végrehajtását, mert ugyanazon a feladattípusnak egy másik végrehajtása már fut ugyanazon a célhelyen.|
+|**WaitingForChildJobExecutions** | A feladatok végrehajtása a gyermek végrehajtásának befejeződésére vár.|
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A jelen oktatóanyagban létrehozott erőforrásokat az erőforráscsoport törlésével távolíthatja el.
 
 > [!TIP]
-> If you plan to continue to work with these jobs, you do not clean up the resources created in this article.
+> Ha azt tervezi, hogy továbbra is együttműködik ezekkel a feladatokkal, akkor nem törli a cikkben létrehozott erőforrásokat.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban több adatbázisban fog futtatni egy Transact-SQL-szkriptet. Megismerte, hogyan hajthatja végre a következő feladatokat:
 
