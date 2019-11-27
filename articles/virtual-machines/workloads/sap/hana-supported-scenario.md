@@ -49,7 +49,7 @@ A származtatott architektúra kialakítása kizárólag az infrastruktúra szem
 Ez a dokumentum ismerteti az egyes Támogatott architektúrák két összetevőjének részleteit:
 
 - Ethernet
-- Tárolás
+- Adattárolás
 
 ### <a name="ethernet"></a>Ethernet
 
@@ -96,7 +96,7 @@ A HANA rendszerreplikáció vagy a HANA kibővítő üzembe helyezési eseteihez
 - A "D" Ethernetet kizárólag a pacemakerhez való hozzáféréshez kell használni a STONITH eszközön. Ez az interfész akkor szükséges, ha a HANA rendszerreplikációt (HSR) konfigurálja, és egy SBD-alapú eszköz használatával szeretné elérni az automatikus feladatátvételt az operációs rendszeren.
 
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A tárterület előre konfigurálva van a kért topológia alapján. A kötetek mérete és a csatlakoztatási pont a kiszolgálók, a SKU-i és a topológiák számától függően változhat. További információkért tekintse át a szükséges forgatókönyveket (a dokumentum későbbi részében). Ha további tárterületre van szükség, megvásárolhatja azt egy TB-os növekményben.
 
 >[!NOTE]
@@ -130,7 +130,7 @@ Ez a topológia egy biztonsági Felskálázási konfiguráció egyik csomópontj
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![Single-node-with-one-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Single-node-with-one-SID. png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -146,7 +146,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -165,7 +165,7 @@ Ez a topológia a több SID-vel rendelkező Felskálázási konfiguráció egyik
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
+![Single-Node-mcos. png](media/hana-supported-scenario/single-node-mcos.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -181,7 +181,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -205,7 +205,7 @@ Ez a topológia támogatja az egyik csomópontot egy vertikális Felskálázási
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![Single-node-with-dr.png](media/hana-supported-scenario/Single-node-with-dr.png)
+![Single-Node-with-Dr. png](media/hana-supported-scenario/Single-node-with-dr.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -221,7 +221,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -246,7 +246,7 @@ Ez a topológia támogatja az egyik csomópontot egy vertikális Felskálázási
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![single-node-with-dr-multipurpose.png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
+![Single-Node-with-Dr-Multipurpose. png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -262,7 +262,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -298,7 +298,7 @@ Ez a topológia két csomópontot támogat a HANA System Replication (HSR) konfi
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![HSR-with-STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
+![HSR-with-STONITH. png](media/hana-supported-scenario/HSR-with-STONITH.png)
 
 
 
@@ -316,7 +316,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | A STONITH esetében használatos |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -348,7 +348,7 @@ A diagramon a többcélú forgatókönyv látható, ahol a DR helyen a HLI egys�
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![HSR-with-DR.png](media/hana-supported-scenario/HSR-with-DR.png)
+![HSR-with-DR. png](media/hana-supported-scenario/HSR-with-DR.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -364,7 +364,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | A STONITH esetében használatos |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -423,7 +423,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -448,7 +448,7 @@ Ez a topológia több csomópontot támogat egy kibővíthető konfigurációban
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout-nm-standby.png](media/hana-supported-scenario/scaleout-nm-standby.png)
+![scaleout-nm-STANDBY. png](media/hana-supported-scenario/scaleout-nm-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
 A következő hálózati adapterek előre konfigurálva vannak:
@@ -464,7 +464,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -483,7 +483,7 @@ Ez a topológia több csomópontot támogat egy kibővíthető konfigurációban
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
+![scaleout-nm. png](media/hana-supported-scenario/scaleout-nm.png)
 
 
 ### <a name="ethernet"></a>Ethernet
@@ -500,7 +500,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -522,7 +522,7 @@ Ez a topológia több csomópontot támogat a kibővíthető DR-ben. A normál �
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout-with-dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
+![scaleout-with-Dr. png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>Ethernet
@@ -539,7 +539,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -584,7 +584,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak a HLI egységeken (elsődleges és DR):
 
 | Csatlakoztatási pont | Használati eset | 
@@ -625,7 +625,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -675,7 +675,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -720,7 +720,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 
@@ -771,7 +771,7 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópont – tárterület |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 A következő csatolási előre konfigurálva vannak:
 
 | Csatlakoztatási pont | Használati eset | 

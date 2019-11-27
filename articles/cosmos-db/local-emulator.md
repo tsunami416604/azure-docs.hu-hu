@@ -245,13 +245,13 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 |DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<adatútvonal\> | \<adatútvonal\>: Egy hozzáférhető elérési út |
 |Port | Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: Egy portszám |
 | ComputePort | A számítási együttműködési átjáró szolgáltatáshoz használandó portszám megadása. Az átjáró HTTP-végpontjának mintavételi portja a következőképpen számítja ki: ComputePort + 79. Ezért a ComputePort és a ComputePort + 79 nyitva kell lennie és elérhetőnek kell lennie. Az alapértelmezett értékek: 8900, 8979. | CosmosDB. Emulator. exe/ComputePort = \<ComputePort\> | \<computeport\>: egyetlen portszám |
-| EnableMongoDbEndpoint | MongoDB API engedélyezése | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| EnableMongoDbEndpoint | MongoDB API engedélyezése | CosmosDB. Emulator. exe/EnableMongoDbEndpoint | |
 | MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 10255. |CosmosDB. Emulator. exe/MongoPort = \<MongoPort\>|\<mongoport\>: Egy portszám|
-| EnableCassandraEndpoint | Engedélyezi a Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| EnableCassandraEndpoint | Engedélyezi a Cassandra API | CosmosDB. Emulator. exe/EnableCassandraEndpoint | |
 | CassandraPort | Megadja a Cassandra-végponthoz használandó portszámot. Az alapértelmezett érték a 10350. | CosmosDB. Emulator. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: egyetlen portszám |
 | EnableGremlinEndpoint | Gremlin API engedélyezése | CosmosDB. Emulator. exe/EnableGremlinEndpoint | |
 | GremlinPort | A Gremlin-végponthoz használandó portszám. Az alapértelmezett érték a 8901. | CosmosDB. Emulator. exe/GremlinPort =\<port\> | \<port\>: Egy portszám |
-|EnableTableEndpoint | Az Azure Table API engedélyezése | CosmosDB.Emulator.exe /EnableTableEndpoint | |
+|EnableTableEndpoint | Az Azure Table API engedélyezése | CosmosDB. Emulator. exe/EnableTableEndpoint | |
 |TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | CosmosDB. Emulator. exe/TablePort =\<port\> | \<port\>: Egy portszám|
 | KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | CosmosDB. Emulator. exe/KeyFile =\<file_name\> | \<file_name\>: a fájl elérési útja |
 | ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. Emulator. exe/ResetDataPath =\<útvonal > | \<Path\>: fájl elérési útja  |
@@ -260,7 +260,7 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 |FailOnSslCertificateNameMismatch | Alapértelmezés szerint az emulátor újragenerálta az önaláírt SSL-tanúsítványt, ha a tanúsítvány SAN nem tartalmazza az emulátor tartományának nevét, a helyi IPv4-címeket, a "localhost" és a "127.0.0.1" értéket. Ha ezt a lehetőséget választja, az emulátor indításkor sikertelen lesz. Ezután a/GenCert lehetőség használatával hozzon létre és telepítsen egy új önaláírt SSL-tanúsítványt. | CosmosDB. Emulator. exe/FailOnSslCertificateNameMismatch  | |
 | GenCert | Új önaláírt SSL-tanúsítvány létrehozása és telepítése. szükség esetén a további DNS-nevek vesszővel tagolt listáját is megadhatja az emulátor hálózaton keresztüli eléréséhez. | CosmosDB. Emulator. exe/GenCert =\<DNS-nevek\> |\<DNS-nevek\>: a további DNS-nevek választható vesszővel tagolt listája  |
 | DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<közvetlen portok\> | \<közvetlen portok\>: 4 port vesszővel elválasztott listája |
-| Paraméter |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | CosmosDB.Emulator.exe /Key:\<kulcs\> | \<kulcs\>: A kulcsnak 64 bites vektor base-64 kódolásának kell lennie|
+| Jelmagyarázat |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | CosmosDB.Emulator.exe /Key:\<kulcs\> | \<kulcs\>: A kulcsnak 64 bites vektor base-64 kódolásának kell lennie|
 | EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |CosmosDB.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |Megadja, hogy a kérelmek sebességét korlátozó viselkedés le van tiltva. |CosmosDB.Emulator.exe /DisableRateLimiting | |
 | NoUI | Az emulátor felhasználói felületének megjelenítése nélkül. | CosmosDB.Emulator.exe /NoUI | |
@@ -487,7 +487,7 @@ Végül a Windows rendszerű virtuális gépen a következő lehetőségek haszn
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatban felmerülő problémák elhárításához:
 
@@ -512,7 +512,7 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
 Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy rendszergazdai parancssorból:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Egyszerűen kattintson a **Kilépés** lehetőségre az Azure Cosmos Emulator felhasználói felületén is.
+2. `CosmosDB.Emulator.exe /shutdown` kérdésre adott válaszban foglalt lépéseket. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Egyszerűen kattintson a **Kilépés** lehetőségre az Azure Cosmos Emulator felhasználói felületén is.
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Hozza létre ismét a problémát. Ha az Adatkezelő nem működik, csak néhány másodpercig kell megnyitnia a böngészőt a hiba megtalálásához.

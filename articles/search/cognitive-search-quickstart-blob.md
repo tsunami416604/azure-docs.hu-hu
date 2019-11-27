@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c782a066d27ce3d58b5ef43f5790d9964d4de37
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
-ms.translationtype: HT
+ms.openlocfilehash: 5e891627b337a0a3a15d0ebfa2b9cc95f27feca4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406538"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533120"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -31,7 +31,7 @@ Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, h
 
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. Bontsa ki a fájlokat.
 
-1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. 
+1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search. Ha később szeretné kipróbálni a Knowledge Store szolgáltatást, akkor válassza a StorageV2 (általános célú v2) fiók típusát, egy másik útmutatóban. Egyéb esetben válassza a tetszőleges típust.
 
@@ -41,7 +41,7 @@ Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, h
 
    ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) ugyanahhoz az előfizetéshez. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
+1. [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
 <!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. In many tutorials, especially those that use the REST API, you will need a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
 
@@ -163,7 +163,7 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 > [!Tip]
 > Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje az indexelő a portálon. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját a Cognitive Services feldolgozáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Szakértelmével a portál, a .NET SDK vagy a REST API használatával hozhat létre. Az ismeretek megismeréséhez próbálja ki a REST API a Poster és a több mintaadatok használatával.
 

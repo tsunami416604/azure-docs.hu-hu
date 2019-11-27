@@ -24,7 +24,7 @@ ms.locfileid: "74538261"
 
 Az Azure API Management szolgáltatásban a termék egy vagy több API-t, valamint a használati kvótát és a használati feltételeket tartalmazza. Egy termék közzététele után a fejlesztők előfizethetnek a termékre, és megkezdhetik a termék API-jainak használatát.  
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Termékek létrehozása és közzététele
@@ -47,12 +47,12 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
     Termék hozzáadásakor meg kell adnia a következő információkat: 
 
-    | Name (Név)                     | Leírás                                                                                                                                                                                                                                                                                                             |
+    | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
-    | Name (Név)                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
+    | Név                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
     | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
-    | Állapot                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
+    | Állami                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Jelölje be az **Előfizetés szükséges** jelölőnégyzetet, ha egy felhasználónak elő kell fizetnie a termék használatára.                                                                                                                                                                                                                                   |
     | Jóváhagyást igényel        | Jelölje be a **Jóváhagyást igényel** jelölőnégyzetet, ha azt szeretné, hogy egy rendszergazda döntsön a termék előfizetésére vonatkozó kérelmek elfogadásáról vagy elutasításáról. Ha a jelölőnégyzet nincs bejelölve, a rendszer az előfizetési kísérleteket automatikusan elfogadja.                                                                                                                         |
     | Előfizetések számának korlátozása | Az egyidejű előfizetések számának korlátozásához adjon meg egy határértéket.                                                                                                                                                                                                                                |
@@ -85,7 +85,7 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 4. Válasszon egy API-t, és kattintson a **Kiválasztás** gombra.
 
 > [!TIP]
-> *REST API-n keresztül* vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó [Termékre](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) vonatkozó előfizetését.
+> [REST API-n keresztül](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
 
 ## <a name="next-steps"></a>Következő lépések
 

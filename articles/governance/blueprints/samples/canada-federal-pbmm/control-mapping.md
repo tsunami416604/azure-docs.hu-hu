@@ -90,7 +90,7 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="au-3-2-content-of-audit-records"></a>Az AU-3 (2) naplózási rekordok tartalma
 
@@ -241,9 +241,9 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
 - Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
-- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
-- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- A webalkalmazás csak HTTPS protokollon keresztül érhető el
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
 
 ## <a name="sc-28-1-protection-of-information-at-rest"></a>SC-28 (1) információk védelme a nyugalmi állapotban
@@ -260,7 +260,7 @@ Ebből a tervből megtudhatja, hogyan kényszerítheti ki a szabályzatot a titk
 
 ## <a name="si-2-flaw-remediation"></a>SI-2 hibák szervizelése
 
-Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL-biztonsági réseket és a virtuális gépek Azure Security-beli biztonsági réseit figyelő [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével segíti az információs rendszerek hibáinak kezelését. Center. A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára. Ez a terv egy szabályzat-definíciót is hozzárendel, amely biztosítja a virtuálisgép-méretezési csoportok operációs rendszerének javítását.
+Ebből a tervből megtudhatja, hogyan kezelheti a rendszerhibákat a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL-biztonsági réseket és a virtuális gépek Azure Security Center-beli biztonsági réseit figyelő [Azure Policy](../../../policy/overview.md) definíciók A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára. Ez a terv egy szabályzat-definíciót is hozzárendel, amely biztosítja a virtuálisgép-méretezési csoportok operációs rendszerének javítását.
 
 - Az operációsrendszer-rendszerkép automatikus javításának megkövetelése Virtual Machine Scale Sets
 - A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell
@@ -272,7 +272,7 @@ Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsá
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 kártékony kódok védelme
 
-Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony programkódok védelmét is, ha olyan [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek figyelik a Azure Security Center virtuális gépei hiányzó Endpoint Protection szolgáltatását, és kikényszerítik a Microsoftot antimalware megoldás a Windows rendszerű virtuális gépeken.
+Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony programkódok védelmét is, ha olyan [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek figyelik a Azure Security Center virtuális gépei hiányzó Endpoint Protection szolgáltatását, és kikényszerítik a Microsoft antimalware megoldást a Windows rendszerű virtuális gépeken.
 
 - A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
 - Az Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra kell telepíteni

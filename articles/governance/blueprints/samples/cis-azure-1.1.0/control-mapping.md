@@ -349,7 +349,7 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a webalkalmazások csak biztonságos kapcsolatokon keresztül legyenek elérhetők.
 
-- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- A webalkalmazás csak HTTPS protokollon keresztül érhető el
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -15,14 +15,14 @@ ms.locfileid: "74533348"
 
 Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehoztunk egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [leküldtük az Azure Container Registrybe](container-instances-tutorial-prepare-acr.md). A sorozat befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instancesben.
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * A tároló üzembe helyezése az Azure Container Registryből az Azure Container Instancesbe
 > * A futó alkalmazás megtekintése a böngészőben
 > * A tároló naplóinak megjelenítése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -70,7 +70,7 @@ Miután az üzembe helyezés sikeres volt, jelenítse meg a tároló teljes tart
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Például:
+Példa:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"

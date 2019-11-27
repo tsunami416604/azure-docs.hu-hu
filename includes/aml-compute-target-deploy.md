@@ -28,6 +28,6 @@ ms.locfileid: "74549424"
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge keresztül |  &nbsp; | Igen | ML modellek üzembe helyezése és kiszolgálása a IoT-eszközökön. |
 
 > [!NOTE]
-> Bár a számítási célok, például a helyi, Azure Machine Learning számítási példányok, és a Azure Machine Learning számítási fürtök támogatják a GPU-t a betanításhoz és kísérletezéshez, a GPU for bevezetést, __Ha a szolgáltatást webszolgáltatásként telepítik__ , csak az Azure-ban támogatott Kubernetes szolgáltatás.
+> Bár a számítási célok, például a helyi, Azure Machine Learning számítási példányok, és a Azure Machine Learning számítási fürtök támogatják a GPU-t a betanításhoz és kísérletezéshez, a GPU for bevezetést, __Ha a szolgáltatást webszolgáltatásként telepítik__ , csak az Azure Kubernetes szolgáltatásban támogatott.
 >
 > __Ha a Machine learning-folyamattal való pontozást__ csak Azure Machine learning számításokban támogatja, GPU-t használ a következtetéshez.

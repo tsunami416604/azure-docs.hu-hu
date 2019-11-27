@@ -100,9 +100,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
@@ -112,9 +112,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban lehetővé teszi, hogy B. Simon az Azure egyszeri bejelentkezést használja azáltal, hogy hozzáférést biztosít a Qmarkets Idea & innováció-kezeléshez.
 
@@ -122,7 +122,7 @@ Ebben a szakaszban lehetővé teszi, hogy B. Simon az Azure egyszeri bejelentkez
 1. Az alkalmazások listában válassza a **Qmarkets Idea & az innováció kezelése**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban lehetővé teszi, hogy B. Simon az Azure egyszeri bejelentkez
 
 ## <a name="configure-qmarkets-idea--innovation-management-sso"></a>A Qmarkets Idea & innováció-kezelési SSO konfigurálása
 
-Ha az Qmarkets Idea-ban szeretné beállítani az egyszeri bejelentkezést, **& az innováció kezelése** oldalon, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Qmarkets Idea & innováció-kezelő támogatási csapatának](mailto:support@qmarkets.net). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ha az Qmarkets Idea-ban szeretné beállítani az egyszeri bejelentkezést, **& az innováció kezelése** oldalon, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Qmarkets Idea & innováció-kezelő támogatási csapatának](mailto:support@qmarkets.net). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-qmarkets-idea--innovation-management-test-user"></a>Qmarkets Idea létrehozása & innováció-felügyeleti tesztelési felhasználó
 
@@ -142,7 +142,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Qmarkets I
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a Qmarkets Idea & innováció kezelése csempére kattint, akkor automatikusan be kell jelentkeznie a Qmarkets ötletbe & az innováció kezelése, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

@@ -111,13 +111,13 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett tárolási SKU-ket|A diagnosztikai naplók Storage-fiókjának SKU-ban engedélyezett listája. Az alapértelmezett érték a _következő: ["Standard_LRS"]_ .|
 |Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|A telepítendő virtuálisgép-SKU-ket tartalmazó lista. Az alapértelmezett érték a következő: _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Tervezet kezdeményezés ISO 27001|Szabályzat-hozzárendelés|A diagnosztikai naplók naplózására szolgáló erőforrástípusok|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
-|Log Analytics erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvsc-log-rg` az erőforráscsoport egyedivé tételéhez.|
-|Log Analytics erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
-|Log Analytics sablon|Resource Manager-sablon|Szolgáltatásszint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
+|Log Analytics erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvsc-log-rg` az erőforráscsoport egyedivé tételéhez.|
+|Log Analytics erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
+|Log Analytics sablon|Resource Manager-sablon|Szolgáltatáscsomag|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
 |Log Analytics sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
-|Log Analytics sablon|Resource Manager-sablon|Hely|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
-|Hálózati erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-net-rg` az erőforráscsoport egyedivé tételéhez.|
-|Hálózati erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Log Analytics sablon|Resource Manager-sablon|Földrajzi egység|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
+|Hálózati erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-net-rg` az erőforráscsoport egyedivé tételéhez.|
+|Hálózati erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Azure Firewall sablon|Resource Manager-sablon|Azure tűzfal magánhálózati IP-címe|Az [Azure tűzfal](../../../../firewall/overview.md)magánhálózati IP-címének konfigurálása. Ez az érték a megosztott szolgáltatások alhálózatán alapértelmezett útválasztási táblázatként is használatos. A **Azure Firewall alhálózati**CIDR definiált jelölésnek kell lennie. Az alapértelmezett érték a _10.0.4.4_.|
 |Azure Firewall sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Hálózati biztonsági csoport sablonja|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
@@ -128,8 +128,8 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Alhálózat Application Gateway-címének előtagja|Az Application Gateway-alhálózat CIDR-jelölése. Az alapértelmezett érték a _10.0.2.0/24_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtual Network átjáró alhálózati címének előtagja|A virtuális hálózati átjáró alhálózatának CIDR-jelölése. Az alapértelmezett érték a _10.0.3.0/24_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Alhálózat Azure Firewall-címének előtagja|Az [Azure tűzfal](../../../../firewall/overview.md) alhálózatának CIDR-jelölése. Tartalmaznia kell az **Azure tűzfal magánhálózati IP-** paraméterét.|
-|Key Vault erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-kv-rg` az erőforráscsoport egyedivé tételéhez.|
-|Key Vault erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Key Vault erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-kv-rg` az erőforráscsoport egyedivé tételéhez.|
+|Key Vault erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Key Vault sablon|Resource Manager-sablon|Jumpbox-rendszergazdai Felhasználónév|A Jumpbox tartozó Felhasználónév. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Az alapértelmezett érték a _JB-Admin-User_.|
 |Key Vault sablon|Resource Manager-sablon|Jumpbox rendszergazdai SSH-kulcs vagy jelszó|A Jumpbox lévő fiók kulcsa vagy jelszava. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Nincs alapértelmezett érték, és nem hagyható üresen.|
 |Key Vault sablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A Active Directory virtuális gép eléréséhez és más virtuális gépek tartományhoz való csatlakoztatásához használt Felhasználónév. Meg kell egyeznie a **tartományi rendszergazda felhasználói** tulajdonság értékével **Active Directory tartományi szolgáltatások sablonban**. Az alapértelmezett érték a _tartományi rendszergazda – felhasználó_.|
@@ -137,14 +137,14 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Key Vault sablon|Resource Manager-sablon|HRE objektum azonosítója|Annak a fióknak a HRE-azonosítója, amelyhez hozzáférést kell adni a Key Vault-példányhoz. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.  |
 |Key Vault sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Key Vault sablon|Resource Manager-sablon|Key Vault SKU|A létrehozott Key Vault SKU-jának meghatározása. Az alapértelmezett érték a _prémium_.|
-|Jumpbox erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-jb-rg` az erőforráscsoport egyedivé tételéhez.|
-|Jumpbox erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Jumpbox erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-jb-rg` az erőforráscsoport egyedivé tételéhez.|
+|Jumpbox erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox-rendszergazdai Felhasználónév|A Jumpbox virtuális gépek eléréséhez használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _JB-Admin-User_.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszava (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" kifejezést, és cserélje le a `{subscriptionId}`t az előfizetés-azonosítójával, és `{orgName}` a **szervezet neve** Blueprint paraméterrel.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszava (Key Vault Secret Name)|A Jumpbox-rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonságában a **Jumpbox rendszergazdai felhasználóneve**.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox operációs rendszer|Meghatározza a Jumpbox virtuális gép operációs rendszerét. Az alapértelmezett érték a _Windows_.|
-|Active Directory tartományi szolgáltatások erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-adds-rg` az erőforráscsoport egyedivé tételéhez.|
-|Active Directory tartományi szolgáltatások erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Active Directory tartományi szolgáltatások erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-sharedsvcs-adds-rg` az erőforráscsoport egyedivé tételéhez.|
+|Active Directory tartományi szolgáltatások erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Active Directory tartományi szolgáltatások sablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A Jumpbox HOZZÁADÁSához használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _Add-admin-User_.|
 |Active Directory tartományi szolgáltatások sablon|Resource Manager-sablon|Tartományi rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" kifejezést, és cserélje le a `{subscriptionId}`t az előfizetés-azonosítójával, és `{orgName}` a **szervezet neve** Blueprint paraméterrel.|
 |Active Directory tartományi szolgáltatások sablon|Resource Manager-sablon|Tartományi rendszergazda jelszava (Key Vault titkos kulcs neve)|A tartományi rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonságának **tartományi rendszergazdai felhasználóneve**.|

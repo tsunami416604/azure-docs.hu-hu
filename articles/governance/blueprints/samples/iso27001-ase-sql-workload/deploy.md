@@ -111,35 +111,35 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|Log Analytics erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-log-rg` az erőforráscsoport egyedivé tételéhez.|
-|Log Analytics erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
-|Log Analytics sablon|Resource Manager-sablon|Szolgáltatásszint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
+|Log Analytics erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-log-rg` az erőforráscsoport egyedivé tételéhez.|
+|Log Analytics erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
+|Log Analytics sablon|Resource Manager-sablon|Szolgáltatáscsomag|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
 |Log Analytics sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
-|Log Analytics sablon|Resource Manager-sablon|Hely|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
-|Hálózati erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-net-rg` az erőforráscsoport egyedivé tételéhez.|
-|Hálózati erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Log Analytics sablon|Resource Manager-sablon|Földrajzi egység|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
+|Hálózati erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-net-rg` az erőforráscsoport egyedivé tételéhez.|
+|Hálózati erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Hálózati biztonsági csoport sablonja|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Azure tűzfal magánhálózati IP-címe|Az [Azure tűzfal](../../../../firewall/overview.md)magánhálózati IP-címének konfigurálása. Az _ISO 27001: Shared Services_ összetevő-paraméterben definiált CIDR-jelölésnek kell lennie **Azure Firewall alhálózati címek előtagja**. Az alapértelmezett érték a _10.0.4.4_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Megosztott szolgáltatások előfizetés-azonosítója|A számítási feladatok és a megosztott szolgáltatások közötti VNET-társítást engedélyező érték.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtual Network címzési előtag|A virtuális hálózat CIDR-jelölése. Az alapértelmezett érték a _10.1.0.0/16_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Alhálózat alapértelmezett címének előtagja|A virtuális hálózat alapértelmezett alhálózatának CIDR-jelölése. Az alapértelmezett érték a _10.1.0.0/16_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|IP-cím HOZZÁADÁSával|Az első virtuális gép IP-címe. Ezt az értéket használja a rendszer egyéni VNET DNS-ként.|
-|Key Vault erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-kv-rg` az erőforráscsoport egyedivé tételéhez.|
-|Key Vault erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Key Vault erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-kv-rg` az erőforráscsoport egyedivé tételéhez.|
+|Key Vault erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Key Vault sablon|Resource Manager-sablon|HRE objektum azonosítója|Annak a fióknak a HRE-azonosítója, amelyhez hozzáférést kell adni a Key Vault-példányhoz. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.|
 |Key Vault sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Key Vault sablon|Resource Manager-sablon|Key Vault SKU|A létrehozott Key Vault SKU-jának meghatározása. Az alapértelmezett érték a _prémium_.|
 |Key Vault sablon|Resource Manager-sablon|Azure SQL Server-rendszergazdai Felhasználónév|Az Azure SQL Server eléréséhez használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Azure SQL Database sablonban**. Az alapértelmezett érték az _SQL-Admin-User_.|
-|Azure SQL Database erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-azsql-rg` az erőforráscsoport egyedivé tételéhez.|
-|Azure SQL Database erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|Azure SQL Database erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-azsql-rg` az erőforráscsoport egyedivé tételéhez.|
+|Azure SQL Database erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server-rendszergazdai Felhasználónév|Az Azure-SQL Server felhasználóneve. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték az _SQL-Admin-User_.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" kifejezést, és cserélje le a `{subscriptionId}`t az előfizetés-azonosítójával, és `{orgName}` a **szervezet neve** Blueprint paraméterrel.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault titkos kulcs neve)|A SQL Server-rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonság **Azure SQL Server rendszergazdai Felhasználónév**.|
 |Azure SQL Database sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Azure SQL Database sablon|Resource Manager-sablon|HRE rendszergazdai objektum azonosítója|Azon felhasználó HRE-azonosítója, amely Active Directory-rendszergazdaként lesz hozzárendelve. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.|
 |Azure SQL Database sablon|Resource Manager-sablon|HRE-rendszergazdai bejelentkezés|Jelenleg a Microsoft-fiókok (például a live.com vagy a outlook.com) nem állíthatók be rendszergazdaként. Csak a szervezeten belüli felhasználók és biztonsági csoportok állíthatók be rendszergazdaként. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon másolja a _felhasználónevet_.|
-|App Service Environment erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-ase-rg` az erőforráscsoport egyedivé tételéhez.|
-|App Service Environment erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
+|App Service Environment erőforráscsoport|Erőforráscsoport|Név|**Zárolva** – összefűzi a **szervezet nevét** a `-workload-ase-rg` az erőforráscsoport egyedivé tételéhez.|
+|App Service Environment erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a terv paramétert használja.|
 |App Service Environment sablon|Resource Manager-sablon|Tartománynév|A minta által létrehozott Active Directory neve. Az alapértelmezett érték a _contoso.com_.|
 |App Service Environment sablon|Resource Manager-sablon|Bemutató hely|App Service Environment hely. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
 |App Service Environment sablon|Resource Manager-sablon|Application Gateway napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|

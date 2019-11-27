@@ -21,7 +21,7 @@ Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd:
 
 A központi telepítés részleteit a Azure Portal, a PowerShell, az Azure CLI vagy a REST API segítségével tekintheti meg. Az egyes központi telepítések korrelációs AZONOSÍTÓval rendelkeznek, amely a kapcsolódó események nyomon követésére szolgál. Hasznos lehet, ha technikai támogatással dolgozik az üzemelő példányok hibakereséséhez.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Válassza ki azt az erőforráscsoportot, amelyet meg szeretne vizsgálni.
 
@@ -113,7 +113,7 @@ A válasz tartalmazza a korrelációs azonosítót.
 
 Az egyes központi telepítések több műveletet is tartalmazhatnak. A központi telepítéssel kapcsolatos további részletekért tekintse meg az üzembe helyezési műveleteket. Ha egy telepítés meghiúsul, a központi telepítési műveletek egy hibaüzenetet tartalmaznak.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. A központi telepítés összegzése lapon válassza a **művelet részletei**lehetőséget.
 

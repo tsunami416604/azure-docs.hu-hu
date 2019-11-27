@@ -32,7 +32,7 @@ A következő funkciók érhetők el a vezérlési folyamatban:
 - Az érvényesítés végrehajtásához használhatja a metaadatok beolvasása tevékenységből a feltételes kifejezésekben szereplő kimenetet.
 - A folyamat akkor aktiválható, ha a feltételt a "Do" utasításon keresztül, a hurok nélkül kell megtenni.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete 1 MB.
 
@@ -43,11 +43,11 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 
 **File Storage**
 
-| Összekötő/metaadatok | itemName<br>(fájl/mappa) | itemType<br>(fájl/mappa) | size<br>fájl | létrehozott<br>(fájl/mappa) | lastModified<br>(fájl/mappa) |childItems<br>mappa |contentMD5<br>fájl | structure<br/>fájl | columnCount<br>fájl | létezik<br>(fájl/mappa) |
+| Összekötő/metaadatok | itemName<br>(fájl/mappa) | itemType<br>(fájl/mappa) | méret<br>fájl | létrehozott<br>(fájl/mappa) | lastModified<br>(fájl/mappa) |childItems<br>mappa |contentMD5<br>fájl | szerkezet<br/>fájl | columnCount<br>fájl | létezik<br>(fájl/mappa) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -62,7 +62,7 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 
 **Viszonyítási adatbázis**
 
-| Összekötő/metaadatok | structure | columnCount | létezik |
+| Összekötő/metaadatok | szerkezet | columnCount | létezik |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Felügyelt Azure SQL Database-példány](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -77,12 +77,12 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusa. A visszaadott érték `File` vagy `Folder`. |
-| size | A fájl mérete bájtban megadva. Csak a fájlokra érvényes. |
+| méret | A fájl mérete bájtban megadva. Csak a fájlokra érvényes. |
 | létrehozott | A fájl vagy mappa dátum és idő (datetime) létrehozása. |
 | lastModified | A fájl vagy mappa utolsó módosításának datetime értéke. |
 | childItems | A megadott mappában található almappák és fájlok listája. Csak a mappákra érvényes. A visszaadott érték az egyes alárendelt elemek nevének és típusának listája. |
 | contentMD5 | A fájl MD5-je. Csak a fájlokra érvényes. |
-| structure | A fájl vagy a viszonyítási adatbázis táblázatának adatstruktúrája. A visszaadott érték az oszlopnevek és az oszlopok típusának listája. |
+| szerkezet | A fájl vagy a viszonyítási adatbázis táblázatának adatstruktúrája. A visszaadott érték az oszlopnevek és az oszlopok típusának listája. |
 | columnCount | A fájl vagy a rokon tábla oszlopainak száma. |
 | létezik| Azt határozza meg, hogy létezik-e fájl, mappa vagy tábla. Vegye figyelembe, hogy ha `exists` van megadva a metaadatok beolvasása mezők listájában, akkor a tevékenység nem fog működni, még akkor sem, ha a fájl, mappa vagy tábla nem létezik. Ehelyett a rendszer visszaadja a `exists: false` a kimenetben. |
 
@@ -136,7 +136,7 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 
 A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadatokat tudja visszaadni:
 
-Tulajdonság | Leírás | Kötelező
+Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
 Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
 adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen

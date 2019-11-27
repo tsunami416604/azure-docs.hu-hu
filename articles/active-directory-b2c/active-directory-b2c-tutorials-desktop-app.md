@@ -21,7 +21,7 @@ ms.locfileid: "74538926"
 
 Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) a bejelentkezéshez, és hogyan regisztrálhat felhasználókat egy Windows megjelenítési alaprendszer (WPF) asztali alkalmazásban. Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A natív ügyfélalkalmazás hozzáadása
@@ -60,7 +60,7 @@ Ha frissíteni szeretné az alkalmazást a Azure AD B2C-Bérlővel való együtt
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Például:
+3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Példa:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";

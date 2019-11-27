@@ -53,7 +53,7 @@ Ha a tevékenység időbélyegének meglévő értéke és a jelenlegi érték k
 
 A tevékenység-időbélyegző értékét két módon kérheti le:
 
-- Az Azure Portal **Eszközök oldalán** található [Tevékenység](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) oszlopból
+- Az Azure Portal [Eszközök oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) található **Tevékenység** oszlopból
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/01.png)
 
@@ -75,7 +75,7 @@ Egy eszköz Azure AD-ben történő frissítéséhez szükség van egy fiókra, 
 
 A törlési szabályzatban válasszon olyan fiókokat, amelyekhez hozzá vannak rendelve a szükséges szerepkörök. 
 
-### <a name="timeframe"></a>Időszak
+### <a name="timeframe"></a>Időkeret
 
 Határozza meg az időszakot, amelyen túl egy eszköz elavultnak minősül. Az időkeret meghatározásakor a tevékenység időbélyegének az értékre való frissítéséhez feljegyzett ablak. Egy elavult eszköz esetében például nem érdemes olyan időbélyeget figyelembe venni, amely 21 napnál fiatalabb (beleértve a varianciaot is). Bizonyos esetekben egy eszköz akkor is elavultnak tűnhet, ha valójában nem az. Lehet, hogy az érintett eszköz tulajdonosa nyaral vagy betegállományban van.  amely túllépi az elavult eszközökhöz meghatározott időszakot.
 

@@ -23,7 +23,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for Inte
 * Hozzáférés a Azure HDInsight Spark-fürt erőforrásaihoz.
 * A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * A Azure Toolkit for IntelliJ beépülő modul használata
 > * Apache Spark alkalmazások fejlesztése
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Ez az oktatóanyag a Java-verzió 8.0.202 használja.
 
-* IntelliJ IDEA. Ez a cikk a [INTELLIJ Idea Community ver-t használja.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ ötlet. Ez a cikk a [INTELLIJ Idea Community ver-t használja.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Lásd: [a Azure Toolkit for IntelliJ telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 
@@ -183,7 +183,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
     * **HDInsight-fürt**  
   
-        |Tulajdonság |Érték |
+        |Tulajdonság |Value (Díj) |
         |----|----|
         |Erőforrás típusának csatolása|Válassza ki a **HDInsight-fürtöt** a legördülő listából.|
         |Fürt neve/URL-címe| Adja meg a fürt nevét.|
@@ -195,7 +195,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
     * **Livy szolgáltatás**  
   
-        |Tulajdonság |Érték |
+        |Tulajdonság |Value (Díj) |
         |----|----|
         |Erőforrás típusának csatolása|Válassza ki a **Livy szolgáltatást** a legördülő listából.|
         |Livy végpont| Livy-végpont megadása|
@@ -227,7 +227,7 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
 
 3. A **konfiguráció szerkesztése** ablakban adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Érték |
+    |Tulajdonság |Value (Díj) |
     |----|----|
     |Spark-fürtök (csak Linux)|Válassza ki azt a HDInsight Spark-fürtöt, amelyen futtatni szeretné az alkalmazást.|
     |Válassza ki a elküldeni kívánt összetevőt|Hagyja meg az alapértelmezett beállítást.|
@@ -312,7 +312,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Érték |
+    |Tulajdonság |Value (Díj) |
     |----|----|
     |Job Main osztály|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..** .) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|
@@ -344,7 +344,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Érték |
+    |Tulajdonság |Value (Díj) |
     |----|----|
     |Spark-fürtök (csak Linux)|Válassza ki azt a HDInsight Spark-fürtöt, amelyen futtatni szeretné az alkalmazást.|
     |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..** .) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
@@ -455,7 +455,7 @@ A IntelliJ IDEA-ben létrehozott meglévő Spark Scala-alkalmazások a Azure Too
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 
@@ -469,7 +469,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt Apache Spark alkalmazások fejlesztéséhez, majd beküldheti őket egy HDInsight Spark-fürtbe közvetlenül a IntelliJ integrált fejlesztési környezetből ( IDE). A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
+Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt Apache Spark alkalmazások fejlesztéséhez, majd beküldheti őket egy HDInsight Spark-fürtbe közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
 
 > [!div class="nextstepaction"]
 > [Adatok elemzése BI-eszközökkel](apache-spark-use-bi-tools.md)

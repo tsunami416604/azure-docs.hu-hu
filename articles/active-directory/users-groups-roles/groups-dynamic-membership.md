@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027131"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538795"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -32,7 +32,7 @@ Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendsze
 
 > [!NOTE]
 > Ehhez a szolgáltatáshoz egy prémium szintű Azure AD P1 licenc szükséges minden olyan egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja. Nem kell licenceket hozzárendelni a felhasználókhoz, hogy azok a dinamikus csoportok tagjai legyenek, de a bérlőben lévő licencek minimális száma csak az összes ilyen felhasználóra vonatkozik. Ha például összesen 1 000 egyedi felhasználó szerepelt a bérlő összes dinamikus csoportjában, akkor legalább 1 000 licenccel kell rendelkeznie a prémium szintű Azure AD P1-hez, hogy megfeleljen a licenc követelményeinek.
->
+> Nem szükséges licenc a dinamikus eszközcsoport tagjaihoz tartozó eszközökhöz.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
 
@@ -70,7 +70,7 @@ Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhaszná
 
 - Tulajdonság
 - Művelet
-- Érték
+- Value (Díj)
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
 
@@ -89,7 +89,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | accountEnabled |Igaz hamis |User. accountEnabled – EQ True |
-| dirSyncEnabled |Igaz hamis |user.dirSyncEnabled -eq true |
+| dirSyncEnabled |Igaz hamis |User. dirSyncEnabled – EQ True |
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
 
@@ -98,25 +98,25 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
 | companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
-| Szervezeti egység |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
+| részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
 | displayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
-| employeeId |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
-| facsimileTelephoneNumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
+| Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
+| Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
-| mail |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
+| levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
-| mobil |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
+| mobileszköz |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
 | objectId |A felhasználói objektum GUID azonosítója |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
+| onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Bármilyen sztring vagy *Null* érték |(User. physicalDeliveryOfficeName-EQ "value") |
 | Irányítószám |Bármilyen sztring vagy *Null* érték |(User. irányítószám – EQ "érték") |
-| preferredLanguage |ISO 639-1 kód |(user.preferredLanguage -eq "en-US") |
+| preferredLanguage |ISO 639-1 kód |(User. preferredLanguage – EQ "en-US") |
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
-| Vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
+| vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
 | userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
@@ -127,7 +127,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: "alias@domain") |
-| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" kifejezést tartalmazza) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
@@ -140,7 +140,7 @@ A következő táblázat felsorolja az összes támogatott operátort és azok s
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
 | Nem kezdődik |-notStartsWith |
-| Ezzel kezdődik |– startsWith |
+| Kezdete |– startsWith |
 | Nem tartalmazza |-notContains |
 | Contains |– tartalmazza |
 | Nem egyezik |-notMatch |
@@ -251,7 +251,7 @@ A többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Felha
 
 | Tulajdonságok | Értékek | Használat |
 | --- | --- | --- |
-| assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |User. assignedPlans – any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-és assignedPlan. capabilityStatus-EQ "engedélyezve") |
 | proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-tartalmazza a "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>A-any és az-All operátorok használata
@@ -353,7 +353,7 @@ Egy egyéni kiterjesztési tulajdonságot használó szabály például a követ
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
+Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista az alkalmazás új egyéni bővítmény-tulajdonságainak beolvasására is frissíthető.
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 
@@ -382,7 +382,7 @@ A következő eszköz-attribútumok használhatók.
  enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
- deviceId | érvényes Azure AD-eszköz azonosítója | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ "76ad43c9-32c5-45E8-A272-7b58b58f596d")
  devicePhysicalIds | az Autopilot által használt bármely karakterláncérték, például az összes Autopilot-eszköz, a Rendeléskód vagy a PurchaseOrderID  | (Device. devicePhysicalIDs – any _ – tartalmazza a következőt: "[ZTDId]") (Device. devicePhysicalIds – any _-EQ "[Rendeléskód]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)

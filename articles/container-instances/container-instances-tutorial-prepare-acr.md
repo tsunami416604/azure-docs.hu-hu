@@ -24,7 +24,7 @@ Az Azure Container Registry az Ön privát Docker-tárolójegyzéke az Azure-ban
 
 A következő cikkben, amely a sorozat utolsó oktatóanyaga, üzembe helyezzük a tárolót a privát tárolójegyzékből az Azure Container Instancesbe.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -164,7 +164,7 @@ Annak ellenőrzéséhez, hogy az imént leküldött lemezkép valóban az Azure 
 az acr repository list --name <acrName> --output table
 ```
 
-Például:
+Példa:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

@@ -76,7 +76,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához lépjen az Azure SQL Serv
 
 1. Az **új adatgyár** lapon adja meg a **ADFTutorialBulkCopyDF** **nevet**. 
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a névmezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialBulkCopyDF). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a névmezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialBulkCopyDF). A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
 1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -88,7 +88,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához lépjen az Azure SQL Serv
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 1. A létrehozás befejezése után megjelenik a **Data Factory** lap.
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -152,7 +152,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre. 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** ablakban végezze el a következő lépéseket: 
 
-    a. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.                                                     
+    a. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.                                                     
     
     b. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
     
@@ -265,7 +265,7 @@ A **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paraméte
 
 1. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
-### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Create the pipeline GetTableListAndTriggerCopyData
+### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>A GetTableListAndTriggerCopyData folyamat létrehozása
 
 Ez a folyamat két műveletet végez:
 

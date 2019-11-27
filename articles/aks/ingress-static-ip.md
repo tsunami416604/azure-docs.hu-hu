@@ -9,7 +9,7 @@ ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 7e390ed1151c45ca9a325b1795a8fbcad74cdfdb
 ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2019
 ms.locfileid: "74194734"
@@ -386,13 +386,13 @@ Végezetül távolítsa el a bejövő vezérlőhöz létrehozott statikus nyilv�
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 
 - [Helm parancssori felület][helm-cli]
 - [NGINX bejövő adatkezelő][nginx-ingress]
-- [cert-manager][cert-manager]
+- [tanúsítvány-kezelő][cert-manager]
 
 További lehetőségek:
 

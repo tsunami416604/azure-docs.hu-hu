@@ -31,7 +31,7 @@ Az Azure Network Watcher hibaelhárítási funkciója lehetővé teszi az átjá
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 Helyek közötti kapcsolatot szeretne konfigurálni az Azure és a helyszíni kapcsolat között a FortiGate használatával helyszíni VPN Gatewayként. A forgatókönyv megvalósításához a következő beállításokat kell megkövetelni:
 
@@ -108,10 +108,10 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 | ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |Nem|
 | ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
 | ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
-| Authentication | Az előmegosztott kulcs nem egyezik. | Igen|
+| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
-| WfpParse Error | Hiba történt a WFP-napló elemzése során. |Igen|
+| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
 
 ## <a name="next-steps"></a>Következő lépések
 

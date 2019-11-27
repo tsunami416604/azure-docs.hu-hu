@@ -24,7 +24,7 @@ A cikk, amely a sorozat első része, a következő lépésekből áll:
 
 Az oktatóanyag második és harmadik részében feltöltjük a rendszerképet az Azure Container Registrybe, majd üzembe helyezzük az Azure Container Instancesben.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

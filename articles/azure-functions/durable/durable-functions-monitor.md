@@ -1,6 +1,6 @@
 ---
-title: Monitors in Durable Functions - Azure
-description: Learn how to implement a status monitor using the Durable Functions extension for Azure Functions.
+title: Figyelők a Durable Functionsban – Azure
+description: Ismerje meg, hogyan implementálhat egy állapotfigyelőt a Azure Functions Durable Functions-bővítményének használatával.
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
@@ -11,9 +11,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232860"
 ---
-# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Monitor scenario in Durable Functions - Weather watcher sample
+# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
 
-The monitor pattern refers to a flexible *recurring* process in a workflow - for example, polling until certain conditions are met. This article explains a sample that uses [Durable Functions](durable-functions-overview.md) to implement monitoring.
+A figyelő minta egy munkafolyamatban egy rugalmas *ismétlődő* folyamatra utal – például az egyes feltételek teljesülése esetén történő lekérdezésre. Ez a cikk a figyelés megvalósítását [Durable functions](durable-functions-overview.md) használó mintát ismerteti.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -21,110 +21,110 @@ The monitor pattern refers to a flexible *recurring* process in a workflow - for
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-This sample monitors a location's current weather conditions and alerts a user by SMS when the skies are clear. You could use a regular timer-triggered function to check the weather and send alerts. However, one problem with this approach is **lifetime management**. If only one alert should be sent, the monitor needs to disable itself after clear weather is detected. The monitoring pattern can end its own execution, among other benefits:
+Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figyelmezteti a felhasználót, amikor az égbolt törölve van. Egy normál időzítő által aktivált függvény használatával ellenőrizhető az időjárási idő, és riasztásokat küldhet. Az ezzel a módszerrel kapcsolatos probléma azonban az **élettartam kezelése**. Ha csak egy riasztást kell elküldeni, a figyelőnek le kell tiltania magát a törlési idő észlelése után. A figyelési minta az egyéb előnyök mellett saját végrehajtást is elvégezheti:
 
-* Monitors run on intervals, not schedules: a timer trigger *runs* every hour; a monitor *waits* one hour between actions. A monitor's actions will not overlap unless specified, which can be important for long-running tasks.
-* Monitors can have dynamic intervals: the wait time can change based on some condition.
-* Monitors can terminate when some condition is met or be terminated by another process.
-* Monitors can take parameters. The sample shows how the same weather-monitoring process can be applied to any requested location and phone number.
-* Monitors are scalable. Because each monitor is an orchestration instance, multiple monitors can be created without having to create new functions or define more code.
-* Monitors integrate easily into larger workflows. A monitor can be one section of a more complex orchestration function, or a [sub-orchestration](durable-functions-sub-orchestrations.md).
+* A figyelők időközönként futnak, és nem ütemezhetnek: időzítő-trigger óránként *fut* ; a figyelő egy órát *vár* a műveletek között. A figyelő műveletei nem lesznek átfedésben, ha meg vannak adva, ami fontos lehet a hosszan futó feladatok esetében.
+* A figyelők lehetnek dinamikus időközök: a várakozási idő bizonyos feltételek alapján változhat.
+* A figyelők leállhatnak, ha valamilyen feltétel teljesül, vagy egy másik folyamat leállítja azt.
+* A figyelők paramétereket hozhatnak. A minta azt mutatja be, hogyan alkalmazható az időjárás-figyelési folyamat a kért helyekre és telefonszámokra.
+* A figyelők méretezhetők. Mivel minden figyelő egy előkészítési példány, több figyelő is létrehozható anélkül, hogy új funkciókat kellene létrehoznia, vagy további kódokat kellene megadnia.
+* A monitorok könnyen integrálhatók a nagyobb munkafolyamatokban. Egy figyelő lehet egy összetettebb összehangoló függvény, vagy egy [alfolyamatok](durable-functions-sub-orchestrations.md)egyik szakasza is.
 
-## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
+## <a name="configuring-twilio-integration"></a>Twilio-integráció konfigurálása
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Configuring Weather Underground integration
+## <a name="configuring-weather-underground-integration"></a>Az időjárási földalatti integráció konfigurálása
 
-This sample involves using the Weather Underground API to check current weather conditions for a location.
+Ez a példa a Weather Underground API-t használja a hely aktuális időjárási feltételeinek vizsgálatához.
 
-The first thing you need is a Weather Underground account. You can create one for free at [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Once you have an account, you will need to acquire an API key. You can do so by visiting [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), then selecting Key Settings. The Stratus Developer plan is free and sufficient to run this sample.
+Az első dolog, amire szüksége van egy időjárási Underground-fiók. A [https://www.wunderground.com/signup](https://www.wunderground.com/signup)címen ingyenesen létrehozhat egyet. Ha már rendelkezik fiókkal, meg kell adnia egy API-kulcsot. Ehhez látogasson el [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), majd válassza a Key Settings (Alapbeállítások) lehetőséget. Az Stratus fejlesztői terve ingyenes, és elegendő a minta futtatásához.
 
-Once you have an API key, add the following **app setting** to your function app.
+Ha már rendelkezik API-kulccsal, adja hozzá a következő **alkalmazás-beállítást** a Function alkalmazáshoz.
 
-| App setting name | Value description |
+| Alkalmazás-beállítás neve | Érték leírása |
 | - | - |
-| **WeatherUndergroundApiKey**  | Your Weather Underground API key. |
+| **WeatherUndergroundApiKey**  | Az időjárási Underground API-kulcsa. |
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>A függvények
 
-This article explains the following functions in the sample app:
+Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
 
-* `E3_Monitor`: An orchestrator function that calls `E3_GetIsClear` periodically. It calls `E3_SendGoodWeatherAlert` if `E3_GetIsClear` returns true.
-* `E3_GetIsClear`: An activity function that checks the current weather conditions for a location.
-* `E3_SendGoodWeatherAlert`: An activity function that sends an SMS message via Twilio.
+* `E3_Monitor`: egy Orchestrator-függvény, amely rendszeres időközönként meghívja a `E3_GetIsClear`. Ha a `E3_GetIsClear` igaz értéket ad vissza, meghívja a `E3_SendGoodWeatherAlert`.
+* `E3_GetIsClear`: egy tevékenység-függvény, amely egy adott hely aktuális időjárási feltételeit ellenőrzi.
+* `E3_SendGoodWeatherAlert`: egy tevékenység-függvény, amely SMS-üzenetet küld a Twilio-on keresztül.
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+A következő szakaszokban ismertetjük a C# parancsfájlok futtatásához és a javascripthez használt konfigurációt és kódokat. A Visual Studio-fejlesztés kódja a cikk végén látható.
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The weather monitoring orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Időjárás-figyelési előkészítés (Visual Studio Code és Azure Portal mintakód)
 
-The **E3_Monitor** function uses the standard *function.json* for orchestrator functions.
+A **E3_Monitor** függvény a standard *function. JSON* fájlt használja a Orchestrator függvényekhez.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
 
-Here is the code that implements the function:
+Itt látható a függvényt megvalósító kód:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-This orchestrator function performs the following actions:
+Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
 
-1. Gets the **MonitorRequest** consisting of the *location* to monitor and the *phone number* to which it will send an SMS notification.
-2. Determines the expiration time of the monitor. The sample uses a hard-coded value for brevity.
-3. Calls **E3_GetIsClear** to determine whether there are clear skies at the requested location.
-4. If the weather is clear, calls **E3_SendGoodWeatherAlert** to send an SMS notification to the requested phone number.
-5. Creates a durable timer to resume the orchestration at the next polling interval. The sample uses a hard-coded value for brevity.
-6. Continues running until the `CurrentUtcDateTime` (.NET) or `currentUtcDateTime` (JavaScript) passes the monitor's expiration time, or an SMS alert is sent.
+1. Lekérdezi a figyelni kívánt *helyet* tartalmazó **MonitorRequest** , valamint azt a *telefonszámot* , amelyre SMS-értesítést fog küldeni.
+2. Meghatározza a figyelő lejárati idejét. A minta egy nehezen kódolt értéket használ a rövidség kedvéért.
+3. Meghívja a **E3_GetIsClear** annak megállapítására, hogy van-e egyértelmű égbolt a kért helyen.
+4. Ha az időjárás egyértelmű, meghívja a **E3_SendGoodWeatherAlertt** , hogy SMS-értesítést küldjön a kért telefonszámra.
+5. Tartós időzítőt hoz létre, amely a következő lekérdezési időszakban folytatja a koordinálást. A minta egy nehezen kódolt értéket használ a rövidség kedvéért.
+6. A továbbra is fut, amíg a `CurrentUtcDateTime` (.NET) vagy `currentUtcDateTime` (JavaScript) át nem adja a figyelő lejárati idejét, vagy SMS-riasztást küld.
 
-Multiple orchestrator instances can run simultaneously by sending multiple **MonitorRequests**. The location to monitor and the phone number to send an SMS alert to can be specified.
+Több Orchestrator-példány is futhat egyszerre több **MonitorRequests**küldésével. Megadható a figyelni kívánt hely és a telefonszám, amely SMS-riasztást küld.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Strongly-typed data transfer (.NET only)
+## <a name="strongly-typed-data-transfer-net-only"></a>Szigorúan beírt adatátvitel (csak .NET)
 
-The orchestrator requires multiple pieces of data, so [shared POCO objects](../functions-reference-csharp.md#reusing-csx-code) are used for strongly-typed data transfer in C# and C# script:  
+A Orchestrator több adatra van szükség, ezért [megosztott poco-objektumokat](../functions-reference-csharp.md#reusing-csx-code) használ a szigorúan beírt adatátvitelhez a C# és C# a parancsfájlban:  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 
-The JavaScript sample uses regular JSON objects as parameters.
+A JavaScript-minta szabványos JSON-objektumokat használ paraméterként.
 
-## <a name="helper-activity-functions"></a>Helper activity functions
+## <a name="helper-activity-functions"></a>Segítő tevékenység functions
 
-As with other samples, the helper activity functions are regular functions that use the `activityTrigger` trigger binding. The **E3_GetIsClear** function gets the current weather conditions using the Weather Underground API and determines whether the sky is clear. The *function.json* is defined as follows:
+Más mintákhoz hasonlóan a segítő tevékenység funkciói a `activityTrigger` trigger kötést használó rendszeres függvények. A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e. A *function. JSON* a következőképpen van definiálva:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-And here is the implementation. Like the POCOs used for data transfer, logic to handle the API call and parse the response JSON is abstracted into a shared class in C#. You can find it as part of the [Visual Studio sample code](#run-the-sample).
+Itt pedig a megvalósítás. Az adatátvitelhez használt POCOs-hez hasonlóan az API-hívás kezeléséhez és a válasz JSON értelmezéséhez tartozó logika is egy megosztott osztályba van beosztva C#. A [Visual Studio-mintakód](#run-the-sample)részeként is megtalálhatja.
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-The **E3_SendGoodWeatherAlert** function uses the Twilio binding to send an SMS message notifying the end user that it's a good time for a walk. Its *function.json* is simple:
+A **E3_SendGoodWeatherAlert** függvény a Twilio kötés használatával küld SMS-üzenetet, amely értesíti a felhasználót arról, hogy jó idő van egy sétára. A *function. JSON* egyszerű:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
 
-And here is the code that sends the SMS message:
+Itt látható az SMS-üzenetet küldő kód:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
+A mintában szereplő HTTP-triggerű függvények használatával a következő HTTP POST-kérelem elküldésével elindíthatja a koordinálást:
 
 ```
 POST https://{host}/orchestrators/E3_Monitor
@@ -143,9 +143,9 @@ RetryAfter: 10
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
-The **E3_Monitor** instance starts and queries the current weather conditions for the requested location. If the weather is clear, it calls an activity function to send an alert; otherwise, it sets a timer. When the timer expires, the orchestration will resume.
+A **E3_Monitor** példány elindul, és lekérdezi a kért hely aktuális időjárási feltételeit. Ha az időjárás törölve van, akkor egy tevékenység függvényt hív meg, amely riasztást küld; Ellenkező esetben egy időzítőt állít be. Ha az időzítő lejár, a rendszer folytatja a koordinálást.
 
-You can see the orchestration's activity by looking at the function logs in the Azure Functions portal.
+A munkafolyamatok tevékenysége a Azure Functions portálon megjelenő függvények naplói szerint látható.
 
 ```
 2018-03-01T01:14:41.649 Function started (Id=2d5fcadf-275b-4226-a174-f9f943c90cd1)
@@ -163,24 +163,24 @@ You can see the orchestration's activity by looking at the function logs in the 
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-The orchestration will [terminate](durable-functions-instance-management.md) once its timeout is reached or clear skies are detected. You can also use `TerminateAsync` (.NET) or `terminate` (JavaScript) inside another function or invoke the **terminatePostUri** HTTP POST webhook referenced in the 202 response above, replacing `{text}` with the reason for termination:
+A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Egy másik függvényben `TerminateAsync` (.NET) vagy `terminate` (JavaScript) is használhat, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, és lecseréli az `{text}`t a lemondási ok miatt:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Íme egy Visual Studio-projekt egyetlen C# fájlja:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
+> Az alábbi mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget csomagot.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-This sample has demonstrated how to use Durable Functions to monitor an external source's status using [durable timers](durable-functions-timers.md) and conditional logic. The next sample shows how to use external events and [durable timers](durable-functions-timers.md) to handle human interaction.
+Ez a példa azt mutatja be, hogyan használható a Durable Functions egy külső forrás állapotának figyelésére [tartós időzítők](durable-functions-timers.md) és feltételes logika használatával. A következő minta bemutatja, hogyan használhatók a külső események és a [tartós időzítők](durable-functions-timers.md) az emberi interakció kezelésére.
 
 > [!div class="nextstepaction"]
-> [Run the human interaction sample](durable-functions-phone-verification.md)
+> [Az emberi interakciós minta futtatása](durable-functions-phone-verification.md)

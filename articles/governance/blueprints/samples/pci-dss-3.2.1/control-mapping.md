@@ -30,8 +30,8 @@ Ez a terv segítséget nyújt a hálózatok kezelésében és szabályozásában
 
 Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők használatával [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek bizonyos titkosítási vezérlőket kényszerítenek, és a gyenge titkosítási beállítások naplózási funkcióit használják. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, az ehhez a tervhez hozzárendelt szabályzatok transzparens adattitkosítást igényelnek az SQL-adatbázisokban; a Storage-fiókok és az Automation-fiókok változóinak naplózása. Léteznek olyan szabályzatok is, amelyek a Storage-fiókok, a Function apps, a WebApp, a API Apps és a Redis Cache nem biztonságos kapcsolatait naplózzák, és naplózzák a titkosítatlan Service Fabric kommunikációt.
 
-- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
-- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- A webalkalmazás csak HTTPS protokollon keresztül érhető el
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
