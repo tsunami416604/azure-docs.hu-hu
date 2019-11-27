@@ -151,7 +151,7 @@
         - name: Közös elhelyezés
           href: co-location.md
         - name: Hálózati teljesítmény
-          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Virtuálisgép-típusok és -méretek
       href: sizes.md
       items:
@@ -209,7 +209,7 @@
     - name: Dedikált gazdagépek
       href: dedicated-hosts.md
     - name: Karbantartás és frissítések
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Lemezes tárolás
       items:
         - name: A felügyelt lemezek bemutatása
@@ -376,18 +376,32 @@
           href: download-template.md
         - name: Azure virtuálisgép-ügynök
           href: ../extensions/agent-windows.md
-        - name: Tervezett karbantartás
-          href: maintenance-notifications.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
-        - name: Ütemezett események
-          href: scheduled-events.md
-        - name: Ütemezett események monitorozása
-          href: scheduled-event-service.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
         - name: Beágyazott virtualizálás engedélyezése
           href: nested-virtualization.md
+    - name: Platformkarbantartás
+      items:
+        - name: Karbantartási értesítések
+          items:
+            - name: Áttekintés
+              href: maintenance-notifications.md
+            - name: parancssori felület
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Portál
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Karbantartásszabályozás
+          items:
+            - name: parancssori felület
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Ütemezett események
+          href: scheduled-events.md
+        - name: Windows ütemezettesemény-szolgáltatás
+          href: scheduled-event-service.md
     - name: Virtuális gépek monitorozása
       items:
         - name: Azure Monitor virtuális gépekhez

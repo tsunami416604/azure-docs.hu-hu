@@ -31,6 +31,18 @@
       href: active-directory-data-storage-eu.md
     - name: Újdonságok a Microsoft 365 Kormányzati verzióban
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD-üzemeltetési referencia
+      items:
+        - name: Bevezetés
+          href: active-directory-ops-guide-intro.md
+        - name: Identitás- és hozzáférés-kezelés
+          href: active-directory-ops-guide-iam.md
+        - name: Hitelesítés kezelése
+          href: active-directory-ops-guide-auth.md
+        - name: Identitáskezelés
+          href: active-directory-ops-guide-govern.md
+        - name: Műveletek
+          href: active-directory-ops-guide-ops.md
 - name: Útmutatók
   expanded: true
   items:

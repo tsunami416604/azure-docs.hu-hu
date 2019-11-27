@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Reguláris kifejezésű entitás – LUIS'
+title: 'Oktatóanyag: reguláris kifejezésű entitás – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Konzisztensen formázott adatok kinyerése kimondott szövegből a Reguláris kifejezés entitással.
 services: cognitive-services
@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0f24721272c85d658a46ab1319e6f4af79b29364
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307585"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465189"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Jól formázott adatok beolvasása a teljes területről
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: jól formázott adatok beolvasása a teljes területről
 Ebben az oktatóanyagban hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -82,7 +84,7 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
     |A hrf-546234 szerzője?|
     |A hrf-456234 címe?|
 
-    [![Képernyőkép a cél oldalról az új hosszúságú kimondott szöveg kiemelve](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [új hosszúságú kimondott szöveg kiemelve a leképezés oldalának ![](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -99,7 +101,7 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 
 1. Az Entities (Entitások) lapon válassza a **Create new entity** (Új entitás létrehozása) gombot. 
 
-1. A felugró párbeszédpanelen az új entitásnak adja a `HRF-number` nevet, válassza a **RegEx** entitástípust, a **Regex** értéke legyen `hrf-[0-9]{6}`, majd válassza a **Done** (Kész) lehetőséget.
+1. A felugró párbeszédpanelen az új entitásnak adja a `HRF-number` nevet, válassza a **RegEx** entitástípust, a `hrf-[0-9]** `Regex**értéke legyen**, majd válassza a **Done** (Kész) lehetőséget.
 
     ![Képernyőkép az új entitás tulajdonságainak beállításakor felugró párbeszédpanelről](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
@@ -179,7 +181,7 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag létrehozott egy új szándékot, példaszándékokat adott hozzá, majd létrehozott egy reguláriskifejezés-entitást a helyesen formázott adatok kimondott szövegből történő kinyerésének céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
 > [!div class="nextstepaction"]

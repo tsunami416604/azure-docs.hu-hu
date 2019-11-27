@@ -1,6 +1,6 @@
 ---
-title: Újdonságok a Microsoft 365 Government – Azure Active Directory az Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg néhány módosítást az Azure Active Directory (Azure AD) a felhő hatással lehet, hogy a Microsoft 365 Government példányban.
+title: Újdonságok az Azure AD-ben Microsoft 365 Governmentben? | Microsoft Docs
+description: Ismerkedjen meg az Azure Active Directory (Azure AD) változásaival a Microsoft 365 Government Cloud-példányon, ami hatással lehet a szolgáltatásra.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,63 +13,63 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258894"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805284"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>A Microsoft 365 Government az Azure Active Directory újdonságai
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>A Microsoft 365 Government Azure Active Directory újdonságai
 
-Végeztünk néhány módosítást az Azure Active Directory (Azure AD) alkalmazható a következő Servicest használó ügyfeleink a Microsoft 365 Government cloud példányban:
+Módosítottuk a Azure Active Directory (Azure AD) szolgáltatást a Microsoft 365 Government Cloud-példányon, amely a következő szolgáltatásokat használó ügyfelekre vonatkozik:
 
 - Microsoft Azure Government
 
-- A Microsoft 365 Government – GCC magas
+- Microsoft 365 Government – magas GCC
 
 - Microsoft 365 Government – DoD
 
-Ez a cikk a Microsoft 365 Government – GCC ügyfelek nem vonatkozik.
+Ez a cikk a Microsoft 365 Government – GCC-ügyfelekre nem vonatkozik.
 
-## <a name="changes-to-the-initial-domain-name"></a>A kezdeti tartomány neve
+## <a name="changes-to-the-initial-domain-name"></a>A kezdeti tartománynév módosításai
 
-Során a szervezet a kezdeti regisztráció a Microsoft 365 Government online szolgáltatás, felkérték a tartománynevet a szervezet, `<your-domain-name>.onmicrosoft.com`. Ha már rendelkezik egy tartomány nevét az .com utótaggal, semmi nem változik.
+A szervezet kezdeti regisztrálása során a Microsoft 365 Government Online szolgáltatásra vonatkozóan a rendszer megkérte, hogy válassza ki a szervezet tartománynevét, `<your-domain-name>.onmicrosoft.com`. Ha már rendelkezik a. com utótaggal rendelkező tartománynévvel, semmi sem változik.
 
-Azonban szolgáltatást, a Microsoft 365 Government szolgáltatásba, ha a rendszer egy tartomány nevét az kiválasztása a `.us` utótag. Így lesz `<your-domain-name>.onmicrosoft.us`.
+Ha azonban új Microsoft 365 Government-szolgáltatásra jelentkezik be, a rendszer arra kéri, hogy válasszon egy tartománynevet a `.us` utótag használatával. Tehát `<your-domain-name>.onmicrosoft.us`lesz.
 
 >[!Note]
->Ez a változás nem vonatkozik a felhőszolgáltatók (CSP) által felügyelt összes ügyfél.
+>Ez a változás nem vonatkozik a Cloud Service Providers (CSP) által kezelt ügyfelekre.
 
-## <a name="changes-to-portal-access"></a>Portálhozzáférési módosításai
+## <a name="changes-to-portal-access"></a>A portál elérésének módosításai
 
-Frissítettük a portál végpontok a Microsoft Azure Government, Microsoft 365 Government – GCC magas, és a Microsoft 365 Government – védelmi Minisztérium, ahogyan az a [leképezés táblázatban](#endpoint-mapping).
+Frissítettük a Microsoft Azure Government, Microsoft 365 Government – GCC High és Microsoft 365 Government – DoD portál-végpontokat, ahogy azt a [végpont-hozzárendelési táblázat](#endpoint-mapping)mutatja.
 
-Korábban ügyfelek sikerült jelentkezzen be a globális Azure (portal.azure.com) és az Office 365-höz (portal.office.com) Portalon. Ez a frissítés ügyfelek most jelentkezzen be az adott Microsoft Azure Government, a Microsoft 365 Government – GCC magas, és a Microsoft 365 Government – védelmi Minisztérium portálok használata.
+Korábban az ügyfelek bejelentkezhetnek a Worldwide Azure (portal.azure.com) és az Office 365 (portal.office.com) portálok használatával. Ezzel a frissítéssel a felhasználóknak most be kell jelentkezniük az adott Microsoft Azure Government, Microsoft 365 Government-GCC High és a Microsoft 365 Government-DoD portál használatával.
 
-## <a name="endpoint-mapping"></a>Végpont-leképezés
+## <a name="endpoint-mapping"></a>Végpont-hozzárendelés
 
-Az alábbi táblázat a végpontok minden ügyfelünk esetében:
+A következő táblázat az összes ügyfél végpontját tartalmazza:
 
-| Name (Név) | végpont részletei |
+| Name (Név) | Végpont részletei |
 |------|------------------|
-| Portálok |A Microsoft Azure Government: https://portal.azure.us<p>A Microsoft 365 Government – GCC magas: https://portal.office365.us<p>A Microsoft 365 Government – védelmi Minisztérium: https://portal.apps.mil |
-| Az Azure Active Directory-szolgáltató végpont | https://login.microsoftonline.us |
+| Portals |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – magas GCC: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
+| Azure Active Directory Authority végpont | https://login.microsoftonline.us |
 | Azure Active Directory – Graph API | https://graph.windows.net |
-| A Microsoft Graph API-t a Microsoft 365 Government – GCC magas | https://graph.microsoft.us |
-| A Microsoft Graph API-t a Microsoft 365 Government – védelmi Minisztérium | https://dod-graph.microsoft.us |
-| Az Azure Government szolgáltatások végpontok | További információkért lásd: [Azure Government fejlesztői útmutató](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| A Microsoft 365 Government - GCC magas végpontok | További információkért lásd: [Office 365 Egyesült Államok Kormányzati GCC magas végpontok](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| A Microsoft 365 Government – védelmi Minisztérium | További információkért lásd: [Office 365 Egyesült Államok Kormányzati védelmi Minisztériuma – végpontok](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Microsoft Graph API Microsoft 365 Government számára – magas GCC | https://graph.microsoft.us |
+| Microsoft Graph API Microsoft 365 Government számára – DoD | https://dod-graph.microsoft.us |
+| Azure Government Services-végpontok | Részletekért lásd: [Azure Government fejlesztői útmutató](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
+| Microsoft 365 Government – magas szintű GCC-végpontok | Részletekért lásd: [Office 365 Egyesült Államok kormányának GCC magas végpontja](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Government – DoD | Részletekért lásd: [Office 365 US government DoD-végpontok](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információval a következő cikkek szolgálnak:
 
 - [Mi az az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
-- [Az Azure Government AAD-szolgáltató végpont frissítése](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
+- [Azure Government HRE-szolgáltató végpontjának frissítése](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [A Microsoft Graph-végpontok az Egyesült Államok kormányának felhője](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [Az USA kormányzati felhőben Microsoft Graph végpontok](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Az Office 365 Egyesült Államokbeli kormányzati GCC magas és a védelmi Minisztérium](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 Egyesült államokbeli GCC High és DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

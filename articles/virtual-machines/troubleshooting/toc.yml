@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: A kernellel kapcsolatos rendszerindítási problémák elhárítása
       href: 'https://support.microsoft.com/help/4091524'
+    - name: Az LVM által konfigurált virtuális gépek helyreállítása rendszerindítás nélkül
+      href: chroot-logical-volume-manager.md
     - name: Fstab-hibák elhárítása
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH részletes hibaelhárítása

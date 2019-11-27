@@ -126,7 +126,7 @@
     - name: Dedikált gazdagépek
       href: dedicated-hosts.md
     - name: Karbantartás és frissítések
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Lemezes tárolás
       items:
         - name: A felügyelt lemezek bemutatása
@@ -298,16 +298,30 @@
               href: ../extensions/agent-linux.md
             - name: Ügynök frissítése
               href: update-agent.md
-        - name: Tervezett karbantartás
-          href: maintenance-notifications.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
-        - name: Ütemezett események
-          href: scheduled-events.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
         - name: Használati metrikák lekérése a REST használatával
           href: metrics-vm-usage-rest.md
+    - name: Platformkarbantartás
+      items:
+        - name: Karbantartási értesítések
+          items:
+            - name: Áttekintés
+              href: maintenance-notifications.md
+            - name: parancssori felület
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portál
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Karbantartásszabályozás
+          items:
+            - name: parancssori felület
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Ütemezett események
+          href: scheduled-events.md
     - name: Virtuális gépek monitorozása
       items:
         - name: Azure Monitor virtuális gépekhez

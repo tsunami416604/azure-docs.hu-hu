@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a helyszíni HDFS-ből |} A Microsoft Docs
-description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával a helyszíni HDFS-ből.
+title: Adatok áthelyezése a helyszíni HDFS
+description: Ismerje meg, hogyan helyezheti át a helyszíni HDFS adatait Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,69 +13,69 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f28c7b94a9eb8131f0638a24a0d4b3cfccf062e5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ad5695f1bde1013b6a4c010f4a80256eac09fe63
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836295"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682563"
 ---
-# <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni HDFS-ből
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Adatok áthelyezése helyszíni HDFS Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-hdfs-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-hdfs.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [HDFS-összekötő a v2-ben](../connector-hdfs.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [HDFS-összekötőt a v2-ben](../connector-hdfs.md).
 
-Ez a cikk bemutatja, hogyan kell használni a másolási tevékenység az Azure Data Factoryban az adatok áthelyezése egy helyszíni HDFS-ből. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni HDFS való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
-Másolhat adatokat HDFS bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy helyszíni HDFS-ből pedig más adattárakban, de nem szükséges más adattárakból származó adatok áthelyezése egy helyszíni HDFS támogatja.
+Az adatok a HDFS bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által mosogatóként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. A adatfeldolgozó jelenleg csak a helyszíni HDFS származó adatok áthelyezését támogatja más adattárakba, de az adatok más adattárakból a helyszíni HDFS való áthelyezésére nem.
 
 > [!NOTE]
-> A másolási tevékenység nem törli a forrásfájl, miután sikerült a célhelyre másolja. Ha a forrásfájl törlése után a sikeres másolási van szüksége, hozzon létre egy egyéni tevékenységet, törölje a fájlt, és használja a tevékenységet a folyamat. 
+> A másolási tevékenység nem törli a forrásfájlt, miután sikeresen átmásolta a célhelyre. Ha sikeres másolás után törölni kell a forrásfájlt, hozzon létre egy egyéni tevékenységet a fájl törléséhez, és használja a folyamatot a folyamatban. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
-A Data Factory szolgáltatás támogatja a helyszíni HDFS az adatkezelési átjáró segítségével csatlakozik. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk további információt talál az adatkezelési átjáró-lépésenként az átjáró beállítása. Az átjáró használatára HDFS kapcsolódni, még akkor is, ha az Azure IaaS virtuális Gépekhez vannak tárolva.
+A Data Factory szolgáltatás támogatja a helyszíni HDFS való csatlakozást a adatkezelés átjáró használatával. Az átjáró beállításával adatkezelés kapcsolatos további információkért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) . Az átjáró segítségével akkor is csatlakozhat a HDFS, ha az egy Azure IaaS virtuális gépen üzemel.
 
 > [!NOTE]
-> Ellenőrizze, hogy az adatkezelési átjárót férhetnek hozzá **összes** a [name kiszolgáló]: [csomópont port name] és [csomópont]: [adatportot csomópont], a Hadoop-fürtön. Alapértelmezés szerint a [name csomópont port] 50070, és alapértelmezett [adatportot csomópont] 50075.
+> Győződjön meg arról, hogy az adatkezelés átjáró hozzáférhet az **összes** [név csomópont-kiszolgálóhoz]: [name Node port] és [adatcsomópont-kiszolgálók]: [adatcsomópont-port] a Hadoop-fürthöz. Az alapértelmezett [name Node port] a 50070, és az alapértelmezett [adatcsomópont-port] a 50075.
 
-Átjáró telepíthető ugyanarra a helyszíni gépre vagy az Azure-alapú virtuális gép a HDFS, amíg azt javasoljuk, hogy telepítse az átjárót egy külön machine/Azure IaaS virtuális gép. Átjáró egy külön számítógépen csökkenti az erőforrás-versengés, és növeli a teljesítményt. Ha az átjáró egy külön számítógépen telepíti, a képesnek kell lennie a gépet, amelynek a HDFS eléréséhez.
+Habár az átjárót ugyanarra a helyszíni gépre vagy az Azure-beli virtuális gépre is telepítheti HDFS, javasoljuk, hogy az átjárót külön gépre vagy Azure IaaS virtuális gépre telepítse. Az átjáró egy különálló gépen csökkenti az erőforrás-tartalmat, és javítja a teljesítményt. Ha az átjárót külön gépre telepíti, a gépnek el kell tudnia érni a gépet a HDFS.
 
 ## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot egy másolási tevékenységgel, amely a különböző eszközök/API-k használatával helyez át adatokat a HDFS-forrásból.
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy HDFS-forrásból származó adatokkal.
 
-A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és **REST API**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A minta az adatok másolása a HDFS-tárolóban használt Data Factory-entitások JSON-definíciói: [JSON-példa: Adatok másolása a helyszíni HDFS-ből az Azure-Blobba](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  A HDFS-adattárakból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a jelen cikk [JSON-példa: adatok másolása a helyszíni HDFS az Azure blobba](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) című szakaszát.
 
-A következő szakaszok a HDFS adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
+A következő szakaszokban részletesen ismertetjük a HDFS specifikus entitások Data Factory definiálásához használt JSON-tulajdonságokat:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Létrehoz egy társított szolgáltatást típusú **Hdfs** egy a helyszíni HDFS összekapcsolása a data factoryhoz. Az alábbi táblázatban a társított szolgáltatás JSON-elemeket HDFS leírását.
+A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgyárhoz. Hozzon létre egy **Hdfs** típusú társított szolgáltatást egy helyszíni Hdfs az adatgyárhoz való kapcsolásához. A következő táblázat a HDFS társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **Hdfs** |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **Hdfs** |Igen |
 | url |A HDFS URL-címe |Igen |
-| authenticationType |Névtelen, vagy Windows. <br><br> Használandó **Kerberos-hitelesítés** HDFS-összekötőhöz, tekintse meg [ebben a szakaszban](#use-kerberos-authentication-for-hdfs-connector) , ennek megfelelően állítsa be a helyszíni környezetet. |Igen |
-| userName |Felhasználónév a Windows-hitelesítés. A Kerberos-hitelesítéshez, adja meg a `<username>@<domain>.com`. |Igen (a Windows-hitelesítés) |
-| password |Windows-hitelesítés jelszava. |Igen (a Windows-hitelesítés) |
-| gatewayName |Neve az átjáró, amely a Data Factory szolgáltatás csatlakozik a HDFS csatlakoznia kell. |Igen |
-| encryptedCredential |[Új AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) a hozzáférési hitelesítő adatok kimenetét. |Nem |
+| authenticationType |Névtelen vagy Windows. <br><br> Ha **Kerberos-hitelesítést** kíván használni a HDFS-összekötőhöz, tekintse meg [ezt a szakaszt](#use-kerberos-authentication-for-hdfs-connector) , és ennek megfelelően állítsa be a helyszíni környezetet. |Igen |
+| userName |Felhasználónév a Windows-hitelesítéshez. Kerberos-hitelesítés esetén a `<username>@<domain>.com`megadása. |Igen (Windows-hitelesítéshez) |
+| jelszó |Jelszó a Windows-hitelesítéshez. |Igen (Windows-hitelesítéshez) |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a HDFS való kapcsolódáshoz. |Igen |
+| encryptedCredential |[Új –](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) a hozzáférési hitelesítő adat AzDataFactoryEncryptValue kimenete. |Nem |
 
-### <a name="using-anonymous-authentication"></a>A névtelen hitelesítés használatával
+### <a name="using-anonymous-authentication"></a>Névtelen hitelesítés használata
 
 ```JSON
 {
@@ -94,7 +94,7 @@ A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Lét
 }
 ```
 
-### <a name="using-windows-authentication"></a>Windows-hitelesítés használatával
+### <a name="using-windows-authentication"></a>Windows-hitelesítés használata
 
 ```JSON
 {
@@ -114,25 +114,25 @@ A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Lét
 }
 ```
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
+Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A typeProperties szakasz típusú adatkészlet **FileShare** a következő tulajdonságokkal rendelkezik (amely a HDFS-adatkészlet tartalmaz)
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **fájlmegosztás** típusú (HDFS-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| folderPath |A mappa elérési útját. Például: `myfolder`<br/><br/>Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Például: folder\subfolder, adja meg a mappa\\\\almappát, és a d:\samplefolder, adja meg a d:\\\\mappába.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
-| fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha a fájlnév nincs megadva a kimeneti adatkészletek, a létrehozott fájl neve a következő lenne ebben a formátumban: <br/><br/>`Data.<Guid>.txt` (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| partitionedBy |Adjon meg egy dinamikus folderPath, az idősorozat-adatok filename partitionedBy használható. Példa: folderPath paraméteres az adatok minden óra. |Nem |
-| format | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
-| compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimális** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| folderPath |A mappa elérési útját. Például: `myfolder`<br/><br/>A karakterláncban a speciális karaktereknél használja a Escape karaktert. Például: folder\subfolder esetében válassza a mappa\\\\almappát, majd a d:\samplefolder mezőben a d:\\\\samplefolder.<br/><br/>Ezt a tulajdonságot kombinálhatja a **partitionBy** , hogy a mappa elérési útjai a szelet kezdő/befejező dátum-és időpontjain alapulnak. |Igen |
+| fileName |Adja meg a fájl nevét a **folderPath** , ha azt szeretné, hogy a tábla egy adott fájlra hivatkozzon a mappában. Ha nem ad meg értéket ehhez a tulajdonsághoz, a tábla a mappában található összes fájlra mutat.<br/><br/>Ha a fájlnév nincs megadva egy kimeneti adatkészlethez, a létrehozott fájl neve a következő formátumú lesz: <br/><br/>`Data.<Guid>.txt` (például:: a. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt fájl |Nem |
+| partitionedBy |a partitionedBy használható egy dinamikus folderPath, az idősorozat-adatfájlok fájlnevének megadására. Példa: az folderPath paramétert minden óra adatértékhez. |Nem |
+| format | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 > [!NOTE]
-> fájlnév és fileFilter nem használható egyszerre.
+> a filename és a fileFilter nem használható egyszerre.
 
-### <a name="using-partionedby-property"></a>PartionedBy tulajdonság használatával
-Az előző szakaszban ismertetett módon, megadhat egy dinamikus folderPath és fájlnevét, idősorozat-adatokat a **partitionedBy** tulajdonság, [Data Factory-függvények, és a rendszerváltozók](data-factory-functions-variables.md).
+### <a name="using-partionedby-property"></a>A partionedBy tulajdonság használata
+Ahogy azt az előző szakaszban is említettük, megadhat egy dinamikus folderPath és fájlnevet az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, [Data Factory függvénnyel és a rendszerváltozókkal](data-factory-functions-variables.md).
 
-A time series adatkészleteket, az ütemezés és a szeletek kapcsolatos további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md), [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md), és [folyamatok létrehozása](data-factory-create-pipelines.md) cikkeket.
+Ha többet szeretne megtudni az idősorozat-adatkészletekről, az ütemezésről és a szeletekről, tekintse meg az [adatkészletek létrehozása](data-factory-create-datasets.md), az [Ütemezés & végrehajtás](data-factory-scheduling-and-execution.md)és a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikket.
 
 #### <a name="sample-1"></a>1\. példa:
 
@@ -143,9 +143,9 @@ A time series adatkészleteket, az ütemezés és a szeletek kapcsolatos tovább
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-Ebben a példában {szelet} helyére a változó értékét, a Data Factory rendszer SliceStart (YYYYMMDDHH) formátumban megadva. Indítsa el a szelet időpontja a SliceStart hivatkozik. A folderPath eltér az egyes szeletekhez. Például: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104.
+Ebben a példában a ({slice}) helyére Data Factory rendszerváltozó SliceStart értéke (YYYYMMDDHH) van megadva. A SliceStart a szelet kezdő időpontját jelöli. A folderPath különbözik az egyes szeletekhez. Például: tulajdonság beállítása wikidatagateway/wikisampledataout/2014100103 vagy tulajdonság beállítása wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>2\. példa:
+#### <a name="sample-2"></a>2\. minta:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -158,40 +158,40 @@ Ebben a példában {szelet} helyére a változó értékét, a Data Factory rend
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Ebben a példában év, hónap, nap és SliceStart idején kinyert folderPath és a fileName tulajdonság által használt külön változókba.
+Ebben a példában a SliceStart év, hónap, nap és időpont a folderPath és a fájlnév tulajdonságai által használt különálló változókra van kinyerve.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti táblák és szabályzatok minden típusú tevékenységek érhetők el.
+A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a házirendek minden típusú tevékenységhez elérhetők.
 
-Mivel a tevékenység a typeProperties szakasz tulajdonságai tevékenységek minden típusának számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is.
+Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-A másolási tevékenység, ha a forrása típusa **FileSystemSource** typeProperties szakasz érhető el az alábbi tulajdonságokat:
+Másolási tevékenység esetén ha a forrás típusa **FileSystemSource** , a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-**FileSystemSource** támogatja a következő tulajdonságokkal:
+A **FileSystemSource** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
+| recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |Igaz, hamis (alapértelmezett) |Nem |
 
-## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
-Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) cikkben talál.
+## <a name="supported-file-and-compression-formats"></a>Támogatott fájl-és Tömörítési formátumok
+A részletekért tekintse meg a [fájl-és tömörítési formátumokat Azure Data Factory](data-factory-supported-file-and-compression-formats.md) cikkben.
 
-## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON-példa: Adatok másolása a helyszíni HDFS-ből az Azure Blobba
-Ez a példa bemutatja, hogyan másolhat adatokat egy helyszíni HDFS-ből az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.  
+## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON-példa: adatok másolása helyszíni HDFS az Azure Blobba
+Ez a minta bemutatja, hogyan másolhat adatok egy helyszíni HDFS az Azure Blob Storageba. Az Adatmásolás azonban **közvetlenül** az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott, a Azure Data Factoryban található másolási tevékenység használatával másolhatók.  
 
-A minta az alábbi Data Factory-entitások JSON-definíciói biztosít. Használhatja ezeket a definíciókat hozhat létre egy folyamatot az adatok másolása HDFS-ből az Azure Blob Storage használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md).
+A minta JSON-definíciókat biztosít a következő Data Factory entitásokhoz. Ezekkel a definíciókkal olyan folyamatokat hozhat létre, amelyek a [Visual Studióval](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával másolják az HDFS-ből az Azure-Blob Storageba.
 
-1. A társított szolgáltatás típusa [OnPremisesHdfs](#linked-service-properties).
-2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [FileShare](#dataset-properties).
-4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [FileSystemSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. [OnPremisesHdfs](#linked-service-properties)típusú társított szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+3. [Fájlmegosztás](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+5. [FileSystemSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta adatokat másol egy helyszíni HDFS-ből Azure-blobba óránként. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
+A minta óránként másolja az adatait egy helyszíni HDFS egy Azure-blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként, állítsa be az adatkezelési átjárót. A következő témakör utasításait a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+Első lépésként állítsa be az adatkezelési átjárót. Az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikk utasításait.
 
-**HDFS-beli társított szolgáltatást:** Ebben a példában a Windows-hitelesítést használ. Lásd: [HDFS társított szolgáltatás](#linked-service-properties) használható hitelesítési típust a következő szakaszban.
+**HDFS társított szolgáltatás:** Ez a példa a Windows-hitelesítést használja. A használható hitelesítés különböző típusaival kapcsolatban lásd: [HDFS társított szolgáltatás](#linked-service-properties) szakasza.
 
 ```JSON
 {
@@ -211,7 +211,7 @@ Első lépésként, állítsa be az adatkezelési átjárót. A következő tém
 }
 ```
 
-**Az Azure Storage társított szolgáltatást:**
+**Azure Storage-beli társított szolgáltatás:**
 
 ```JSON
 {
@@ -225,9 +225,9 @@ Első lépésként, állítsa be az adatkezelési átjárót. A következő tém
 }
 ```
 
-**HDFS bemeneti adatkészlet:** Ez az adatkészlet hivatkozik a HDFS-mappa DataTransfer/UnitTest /. A folyamat a mappában lévő összes fájlt átmásolja a célhelyre.
+**HDFS bemeneti adatkészlete:** Ez az adatkészlet a következő HDFS-mappára hivatkozik: DataTransfer/UnitTest/. A folyamat a mappában lévő összes fájlt átmásolja a célhelyre.
 
-Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásban, hogy az adatkészletet a data factory a külső, és nem hozzák az adat-előállító adott tevékenységéhez.
+A "külső": "true" beállítás azt tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -247,9 +247,9 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 }
 ```
 
-**Azure blobkimeneti adatkészlet:**
+**Azure-Blob kimeneti adatkészlete:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
 
 ```JSON
 {
@@ -307,9 +307,9 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A map
 }
 ```
 
-**Egy másolási tevékenységgel rendelkező fájlrendszer forrásaként és fogadó Blob folyamatot:**
+**Másolási tevékenység egy folyamatban a fájlrendszer forrásával és a blob-fogadóval:**
 
-A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **FileSystemSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **FileSystemSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
 
 ```JSON
 {
@@ -349,55 +349,55 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 }
 ```
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS-összekötő Kerberos-hitelesítés használata
-A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés használatát a HDFS-összekötőben két lehetőség van. Kiválaszthatja, hogy a legjobban az esetet.
-* Option 1: [Csatlakozás az átjárót tartalmazó számítógépen a Kerberos-tartomány](#kerberos-join-realm)
-* Option 2: [Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése](#kerberos-mutual-trust)
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Kerberos-hitelesítés használata a HDFS-összekötőhöz
+Két lehetőség áll rendelkezésre a helyszíni környezet beállítására úgy, hogy a Kerberos-hitelesítést használják a HDFS-összekötőben. Kiválaszthatja, hogy melyik illik jobban az esethez.
+* 1\. lehetőség: [átjáró-gép csatlakoztatása a Kerberos-tartományban](#kerberos-join-realm)
+* 2\. lehetőség: [kölcsönös megbízhatóság engedélyezése a Windows és a Kerberos tartomány között](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>1. lehetőség: Csatlakozás az átjárót tartalmazó számítógépen a Kerberos-tartomány
+### <a name="kerberos-join-realm"></a>1. lehetőség: átjáró-gép csatlakoztatása a Kerberos-tartományban
 
-#### <a name="requirement"></a>Követelmény:
+#### <a name="requirement"></a>Követelmény
 
-* Az átjárót tartalmazó számítógépen kell a Kerberos-tartomány csatlakozni, és bármely Windows-tartomány nem tud csatlakozni.
+* Az átjáró számítógépének csatlakoznia kell a Kerberos-tartományhoz, és nem csatlakozhat Windows-tartományhoz.
 
-#### <a name="how-to-configure"></a>Hogyan kell konfigurálni:
+#### <a name="how-to-configure"></a>Konfigurálás:
 
-**Az átjárót tartalmazó számítógépen:**
+**Az átjáró gépen:**
 
-1.  Futtassa a **Ksetup** segédprogram a Kerberos KDC-kiszolgáló és a kezdőtartomány konfigurálása.
+1.  Futtassa a **Ksetup** segédprogramot a Kerberos KDC-kiszolgáló és-tartomány konfigurálásához.
 
-    A gép egy munkacsoport tagjaként kell konfigurálni, mivel egy Kerberos-tartomány eltér egy Windows-tartományhoz. Ez a beállítás a Kerberos-tartomány és a KDC-kiszolgáló hozzáadása a következő megvalósítható. Cserélje le *REALM.COM* a saját megfelelő terület szükséges.
+    A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a Kerberos-tartomány beállításával és a KDC-kiszolgáló a következőképpen való hozzáadásával lehet megvalósítani. Szükség szerint cserélje le a *REALM.com* -t a saját megfelelő tartománynevére.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Indítsa újra a** 2 parancsok végrehajtása után a gép.
+    **Indítsa újra** a gépet a 2 parancs végrehajtása után.
 
-2.  Ellenőrizze a konfigurációt a **Ksetup** parancsot. A kimenet hasonló lesz:
+2.  Ellenőrizze a konfigurációt a **Ksetup** paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**Az Azure Data Factoryban:**
+**Azure Data Factory:**
 
-* Konfigurálás a HDFS összekötő használatával **Windows-hitelesítés** együtt a Kerberos egyszerű neve és a jelszót a HDFS-adatforráshoz való kapcsolódáshoz. Ellenőrizze [HDFS társított szolgáltatás Tulajdonságok](#linked-service-properties) konfiguráció részletei című szakaszát.
+* Konfigurálja a HDFS-összekötőt a **Windows-hitelesítéssel** együtt a Kerberos egyszerű felhasználónevével és jelszavával a HDFS-adatforráshoz való csatlakozáshoz. A konfiguráció részleteinél keresse meg a [HDFS társított szolgáltatás tulajdonságai](#linked-service-properties) szakaszt.
 
-### <a name="kerberos-mutual-trust"></a>2. lehetőség: Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése
+### <a name="kerberos-mutual-trust"></a>2. lehetőség: kölcsönös megbízhatóság engedélyezése a Windows és a Kerberos tartomány között
 
-#### <a name="requirement"></a>Követelmény:
-*   Az átjárót tartalmazó számítógépen egy Windows-tartományhoz kell csatlakoztatni.
-*   A tartományvezérlő-beállítások frissítése engedéllyel is kell rendelkeznie.
+#### <a name="requirement"></a>Követelmény
+*   Az átjárót tartalmazó gépnek Windows-tartományhoz kell csatlakoznia.
+*   Engedéllyel kell rendelkeznie a tartományvezérlő beállításainak frissítéséhez.
 
-#### <a name="how-to-configure"></a>Hogyan kell konfigurálni:
+#### <a name="how-to-configure"></a>Konfigurálás:
 
 > [!NOTE]
-> Cserélje le REALM.COM és AD.COM a következő oktatóanyagban a saját megfelelő tartomány és a tartományvezérlő igény szerint.
+> Cserélje le a REALM.COM és a AD.COM-t a következő oktatóanyagban a saját megfelelő tartományára és tartományvezérlőre szükség szerint.
 
 **KDC-kiszolgálón:**
 
-1. A KDC-konfiguráció szerkesztése **krb5.conf** lehetővé teszik a KDC-fájlt a következő konfigurációs sablon hivatkozó Windows-tartományt. Alapértelmezés szerint a konfiguráció a következő helyen található **/etc/krb5.conf**.
+1. Szerkessze a KDC konfigurációját a **krb5. conf** fájlban, hogy a KDC megbízzon a Windows-tartományon a következő konfigurációs sablonra hivatkozva. Alapértelmezés szerint a konfiguráció a következő helyen található: **/etc/krb5.conf állományt**.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -433,65 +433,65 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
              REALM.COM = .
             }
 
-   **Indítsa újra a** a KDC-szolgáltatás konfigurálása után.
+   A konfiguráció után **indítsa újra** a KDC szolgáltatást.
 
-2. Készítse elő a nevű egyszerű **krbtgt/REALM.COM\@AD.COM** KDC-kiszolgálón a következő paranccsal:
+2. Készítse elő a **krbtgt/REALM. COM\@ad.com** nevű rendszerbiztonsági tag a KDC-kiszolgálón a következő paranccsal:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. A **hadoop.security.auth_to_local** HDFS-szolgáltatás konfigurációs fájlt, adja hozzá `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. A **Hadoop. Security. auth_to_local** HDFS szolgáltatás konfigurációs fájljában adja hozzá a `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
-**Tartományvezérlő:**
+**Tartományvezérlőn:**
 
-1.  Futtassa a következő **Ksetup** parancsok egy kezdőtartomány-bejegyzés hozzáadásához:
+1.  A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  A Kerberos-tartomány Windows-tartomány megbízhatósági kapcsolatot hoz létre. [jelszó] az a jelszó a rendszerbiztonsági tag **krbtgt/REALM.COM\@AD.COM**.
+2.  Megbízhatósági kapcsolat létrehozása a Windows-tartományból a Kerberos tartományba. a [password] a fő **krbtgt/REALM. COM\@ad.com**tartozó jelszó.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Válassza ki a Kerberos használt titkosítási algoritmus.
+3.  Válassza ki a Kerberosban használt titkosítási algoritmust.
 
-    1. Nyissa meg a Kiszolgálókezelő > csoportházirend-kezelés > tartomány > csoportházirend-objektumok > alapértelmezett vagy az aktív tartományi házirend, és a szerkesztése.
+    1. Lépjen a Kiszolgálókezelő > Csoportházirend felügyeleti > tartomány > Csoportházirend objektumok > alapértelmezett vagy aktív tartományi házirend elemre, és szerkessze a következőt:.
 
-    2. A a **Csoportházirendkezelés-szerkesztő** előugró ablakban nyissa meg a számítógép konfigurációja > házirendek > Windows-beállítások > biztonsági beállítások > helyi házirend > biztonsági beállítások, és konfigurálása **hálózati biztonság: A Kerberos használható titkosítási típusok konfigurálása**.
+    2. A **csoportházirend-felügyeleti szerkesztő** előugró ablakban válassza a számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > helyi házirendek > biztonsági beállítások, majd a **hálózati biztonság konfigurálása: titkosítási típusok konfigurálása engedélyezve van a Kerberos számára**.
 
-    3. Válassza ki a titkosítási algoritmus szeretne használni, amikor szeretne csatlakozni a KDC. Gyakran egyszerűen választhatja lehetőségekről.
+    3. Válassza ki a KDC-hoz való csatlakozáskor használni kívánt titkosítási algoritmust. Általában egyszerűen kiválaszthatja az összes beállítást.
 
-        ![A Kerberos konfiguráció titkosítási típusok](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+        ![A Kerberos konfigurációjának titkosítási típusai](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Használat **Ksetup** parancs használatával adja meg a titkosítási algoritmus az adott tartomány esetében használható.
+    4. A **Ksetup** parancs használatával megadhatja az adott tartományban használandó titkosítási algoritmust.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Hozzon létre a tartományi fiók és a Kerberos egyszerű közötti leképezést, és a Kerberos egyszerű használata Windows-tartományban.
+4.  Hozzon létre egy leképezést a tartományi fiók és a Kerberos-tag között a Kerberos-rendszerbiztonsági tag Windows-tartományban való használatához.
 
-    1. Indítsa el a felügyeleti eszközök > **Active Directory – felhasználók és számítógépek**.
+    1. Indítsa el a felügyeleti eszközöket > **Active Directory felhasználókat és számítógépeket**.
 
-    2. A speciális szolgáltatások konfigurálása kattintva **nézet** > **speciális szolgáltatások**.
+    2. A speciális szolgáltatások konfigurálásához kattintson > **speciális szolgáltatások** **megtekintése** elemre.
 
-    3. Keresse meg a fiókot, amelyhez létre szeretné hozni a leképezéseket, és a jobb gombbal kattintva **a felhasználónév-leképezések** > kattintson **Kerberos-nevek** fülre.
+    3. Keresse meg azt a fiókot, amelyhez leképezéseket szeretne létrehozni, majd kattintson a jobb gombbal a **név-hozzárendelések** megtekintéséhez > kattintson a **Kerberos-nevek** fülre.
 
-    4. Rendszerbiztonsági tag hozzáadása a tartományt.
+    4. Adjon hozzá egy rendszerbiztonsági tag a tartományhoz.
 
-        ![Térkép biztonsági identitás](media/data-factory-hdfs-connector/map-security-identity.png)
+        ![Térkép biztonsági identitása](media/data-factory-hdfs-connector/map-security-identity.png)
 
-**Az átjárót tartalmazó számítógépen:**
+**Az átjáró gépen:**
 
-* Futtassa a következő **Ksetup** parancsok egy kezdőtartomány-bejegyzés hozzáadására.
+* A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**Az Azure Data Factoryban:**
+**Azure Data Factory:**
 
-* Konfigurálás a HDFS összekötő használatával **Windows-hitelesítés** együtt a tartományi fiók vagy a Kerberos egyszerű a HDFS-adatforráshoz való kapcsolódáshoz. Ellenőrizze [HDFS társított szolgáltatás Tulajdonságok](#linked-service-properties) konfiguráció részletei című szakaszát.
+* Konfigurálja a HDFS-összekötőt a **Windows-hitelesítéssel** együtt a tartományi fiókkal vagy a Kerberos-rendszerbiztonsági tag használatával a HDFS-adatforráshoz való csatlakozáshoz. A konfiguráció részleteinél keresse meg a [HDFS társított szolgáltatás tulajdonságai](#linked-service-properties) szakaszt.
 
 > [!NOTE]
-> Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
+> Ha az oszlopokat a forrás adatkészletből a fogadó adatkészletből származó oszlopokra kívánja leképezni, tekintse meg [Azure Data Factory az adatkészlet oszlopainak](data-factory-map-columns.md)
 
 
-## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.
+## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
+A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

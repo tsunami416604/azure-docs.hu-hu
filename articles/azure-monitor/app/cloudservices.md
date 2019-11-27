@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677575"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887543"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -57,7 +57,7 @@ Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
 Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](../../azure-monitor/app/overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 
 
-Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
+Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
 
 A böngészőtelemetria általában ugyanabban az erőforrásban jelenik meg, mint a kiszolgálóoldali webes szerepköre.
 
@@ -74,7 +74,7 @@ A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja 
 
 Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).
 
-1. A [Azure Portal][portal]válassza az **új**  > **fejlesztői szolgáltatások**  > **Application Insights**lehetőséget.  
+1. A [Azure Portal][portal]válassza az **új** > **fejlesztői szolgáltatások** > **Application Insights**lehetőséget.  
 
     ![Application Insights ablaktábla](./media/cloudservices/01-new.png)
 
@@ -94,7 +94,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 ![Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
 
-Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a *ServiceConfiguration. \*. cscfg*nevű fájlokba. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a *ServiceConfiguration.\*. cscfg*nevű fájlokba. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)teheti meg.
 
@@ -136,7 +136,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 
 Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL-lekérdezéseket szeretne rögzíteni. 
 
-1. @No__t_0 fájlban a következőhöz hasonló szerepkörökhöz tartozó [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) hozzáadása: 
+1. `\*.csdef` fájlban a következőhöz hasonló szerepkörökhöz tartozó [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) hozzáadása: 
 
     ```xml
     <Startup>
@@ -224,7 +224,7 @@ A feldolgozói szerepkörök esetében kétféleképpen követheti a kivételeke
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A rendszer alapértelmezés szerint az alábbi számlálókat gyűjti:
 
-* \Process(?? APP_WIN32_PROC??) \% processzoridő
+* \Process(?? APP_WIN32_PROC??)\% processzoridő
 * \Memory\Available Bytes
 * \.NET CLR-kivételek (??APP_CLR_PROC??)\# az összes kivétel közül másodpercenként
 * \Process(??APP_WIN32_PROC??)\Private Bytes
