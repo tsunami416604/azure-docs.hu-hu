@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ee67c811835d99bf2f4c00dc59b43e29f63c81d6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672999"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533813"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -36,7 +36,7 @@ ms.locfileid: "71672999"
 [2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
 
 Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
@@ -76,7 +76,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 > A Red Hat nem támogatja a szoftveresen emulált watchdog használatát. A Red Hat nem támogatja a SBD a felhőalapú platformokon. Részletekért lásd: [a RHEL magas rendelkezésre állású fürtökhöz kapcsolódó támogatási szabályzatai – SBD és fence_sbd](https://access.redhat.com/articles/2800691).
 > Az egyetlen támogatott kerítési mechanizmus a pacemaker Red Hat Enterprise Linux-fürtökhöz az Azure-ban, az Azure kerítés ügynöke.  
 
-A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
 1. **[A]** regisztráció
 
@@ -122,7 +122,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    > [!IMPORTANT]
    > Ha frissítenie kell az Azure kerítés-ügynököt, és ha egyéni szerepkört használ, ügyeljen arra, hogy frissítse az egyéni szerepkört a **következő művelettel**:. További részletekért lásd: [Egyéni szerepkör létrehozása a kerítési ügynökhöz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
-1. **[A]**  Állomásnév-feloldás beállítása
+1. **[A]** telepítési állomásnév feloldása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-cím és az állomásnevet, az alábbi parancsokban. A Hosts használatával előnye, hogy a fürt független a DNS, amely túl lehet egyetlen pont, a hibák válik.
@@ -138,7 +138,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[A]**  Ugyanazt a jelszót hacluster jelszó módosítása
+1. **[A]** hacluster jelszavának módosítása ugyanarra a jelszóra
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -202,7 +202,7 @@ A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű sz
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
 1. Nyissa meg az Azure Active Directory panel  
-   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
+   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlő azonosítója**.
 1. Kattintson az alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
@@ -210,12 +210,12 @@ A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű sz
    A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
-1. Jegyezze fel az értéket. Használatban van a **jelszó** a Szolgáltatásnévhez
-1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
+1. Jegyezze fel az értéket. Az egyszerű szolgáltatás **jelszavaként** van használatban
+1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A szolgáltatás felhasználóneveként (**Bejelentkezési azonosítóként** az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Az időkorlát-ügynökhöz tartozó egyéni szerepkör létrehozása
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
 
-Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha nem hozott már létre az egyéni szerepkör, létrehozhat használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) használatával hozhatja létre
 
 A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a tartalmat, amely alkalmazkodik c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 cserélje le az előfizetés azonosítóját. Ha több előfizetéssel rendelkezik, távolítsa el a második bejegyzés AssignableScopes.
 
@@ -254,7 +254,7 @@ Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", a
 
 Ismételje meg a fenti lépéseket a második fürtcsomópontra.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  A STONITH eszközök létrehozása
+### <a name="1-create-the-stonith-devices"></a>**[1]** a STONITH-eszközök létrehozása
 
 Miután szerkesztette az engedélyek a virtuális gépek, konfigurálhatja úgy a STONITH eszközöket a fürtben.
 

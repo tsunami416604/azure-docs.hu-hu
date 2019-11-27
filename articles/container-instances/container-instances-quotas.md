@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances-kvóták és -régiók rendelkezésre állása
+title: Szolgáltatási kvóták és régiók rendelkezésre állása
 description: A Azure Container Instances szolgáltatás kvótái, korlátai és régiójának rendelkezésre állása.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: danlep
-ms.openlocfilehash: c266a67685197ba40d2868fefca08098cb41598c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 91681130e32cf8a76829b8bfc3e2a1e97a59ff6b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172383"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533509"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>A Azure Container Instances kvótái és korlátai
 
@@ -25,7 +20,7 @@ Az Azure-régiók Azure Container Instances szolgáltatásainak és erőforrása
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyes alapértelmezett korlátok és kvóták növelhetők. Ha egy vagy több olyan erőforrás növelését szeretné kérni, amely támogatja az ilyen növekedést, küldjön egy [Azure-támogatási kérést][azure-support] (válassza a "kvóta" lehetőséget a **probléma típusához**).
 
