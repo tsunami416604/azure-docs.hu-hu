@@ -1,6 +1,6 @@
 ---
-title: We're moving virtual machine (VM) images to managed disk storage in the Azure Marketplace
-description: To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+title: Virtuális gépek (VM) lemezképeit áthelyezjük a felügyelt lemezes tárolóba az Azure Marketplace-en
+description: Az új Piactéri funkciók és képességek gyorsabb, megbízhatóbb tárolásának és támogatásának biztosításához a piactéren futó virtuális gépek lemezképeit a felügyelt lemezes tárhelyre helyezi át.
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
@@ -15,48 +15,48 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456682"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>We’re moving virtual machine (VM) images on Azure Marketplace to managed disk storage
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Virtuális gépek (VM) lemezképeit áthelyezjük az Azure Marketplace-en a felügyelt lemezes tárolásra
 
-To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+Az új Piactéri funkciók és képességek gyorsabb, megbízhatóbb tárolásának és támogatásának biztosításához a piactéren futó virtuális gépek lemezképeit a felügyelt lemezes tárhelyre helyezi át.
 
-Starting on January 2, 2020, we’ll move VM images to managed disk storage in phases. In the first phase, we’ll only move images with no new deployments or running VMs in the previous 90 days. Before we move any of the images, we’ll send an email to let the publisher know which images will move and when they’ll be moved.
+2020. január 2-án kezdődően a virtuálisgép-lemezképeket áthelyezjük a felügyelt lemezes tárolásba fázisokban. Az első fázisban a rendszerképeket csak új telepítések és a virtuális gépek az előző 90 napban való futtatása után fogjuk áthelyezni. A lemezképek áthelyezését megelőzően egy e-mailt küldünk, amely lehetővé teszi, hogy a közzétevő tudja, hogy mely képek lesznek áthelyezve.
 
-Publishers or consumers don’t need to take any action, and users won’t be affected. The marketplace offers will remain available and customers will still be able to deploy managed VMs from these images, during and after the move.
+A közzétevőknek vagy a fogyasztóknak semmilyen műveletet nem kell elvégezniük, és a felhasználók nem lesznek érintettek. A Piactéri ajánlatok elérhetők maradnak, és az ügyfelek továbbra is telepíthetik a felügyelt virtuális gépeket ezekről a rendszerképekről, az áthelyezés során és azt követően.
 
-If you have any questions, please [contact us](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+Ha bármilyen kérdése van, vegye [fel velünk a kapcsolatot](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Would the users of my VM images experience an outage?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>A VM-lemezképek felhasználói áramszünetet tapasztalnak?
 
-Users of the VM images will not experience an outage. 
+A virtuálisgép-lemezképek felhasználói nem fognak kiesést tapasztalni. 
 
-In the first phase, we will only move VM images that have no running VMs. As there are no users for these images, there will not be any impact. For the subsequent phases too, there will be no impact on the users.
+Az első fázisban csak olyan virtuálisgép-lemezképeket helyezünk át, amelyek nem rendelkeznek futó virtuális gépekkel. Mivel ezeknek a lemezképeknek nincsenek felhasználói, nem lesz hatása. A következő fázisok esetében nem lesz hatással a felhasználókra.
 
-### <a name="how-long-does-it-take-for-the-process-to-complete"></a>How long does it take for the process to complete?
+### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Mennyi ideig tart a folyamat befejezése?
 
-It may take up to 24 hours to complete the migration.
+Az áttelepítés elvégzése akár 24 óráig is eltarthat.
 
-### <a name="do-i-need-to-take-any-action"></a>Do I need to take any action?
+### <a name="do-i-need-to-take-any-action"></a>Bármilyen műveletet végre kell hajtani?
 
-Nem. Publishers or consumers don’t need to take any action.
+Nem. A közzétevőknek vagy a fogyasztóknak semmilyen műveletet nem kell elvégezniük.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Do I have to update my system to call the Cloud Portal APIs in a different way after they are moved to Managed Disk storage?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Kell-e frissíteni a rendszerem a Cloud Portal API-k más módon történő meghívásához, miután áthelyezték őket a felügyelt lemezes tárolóba?
 
-Nem. Your existing API calls will continue to work.
+Nem. A meglévő API-hívások továbbra is működni fognak.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Would all my VM images be moved to Managed Disk at the same time?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>A virtuálisgép-lemezképek egy időben lettek áthelyezve a felügyelt lemezre?
 
-We will be moving all your VM images on the same day. We will notify you once they have been moved.
+Az összes virtuálisgép-lemezképet ugyanarra a napra helyezzük át. A rendszer értesítést küld, amint áthelyezték őket.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Can I request to schedule the move of my VM images to a later time?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kérhetem a VM-lemezképek áthelyezését egy későbbi időpontra?
 
-We recommend moving the images on the scheduled date. However, if you have concerns, please reach out to us to reschedule the move.
+Javasoljuk, hogy a rendszerképeket az ütemezett dátumon helyezze át. Ha azonban probléma merül fel, lépjen kapcsolatba velünk, hogy átütemezze az áthelyezést.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Can I publish updates to my VM Images during the move?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Közzétehetem a virtuálisgép-lemezképek frissítéseit az áthelyezés során?
 
-Updates to the VM images cannot be made during the move.
+A virtuálisgép-lemezképek frissítései nem hozhatók létre az áthelyezés során.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Visit the [virtual machine offer publisher guide](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) page.
+Látogasson el a [Virtual Machine ajánlat kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) oldalára.

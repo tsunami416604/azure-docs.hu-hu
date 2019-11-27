@@ -1,6 +1,6 @@
 ---
-title: Use GitHub Actions to make code updates in Azure Functions
-description: Learn how to use GitHub Actions to define a workflow to build and deploy Azure Functions projects in GitHub.
+title: A GitHub-műveletek használata a Azure Functions a kód frissítéseinek elvégzéséhez
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe Azure Functions-projekteket a GitHubon a GitHub-műveletek használatával.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
@@ -12,68 +12,68 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226914"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>Continuous delivery by using GitHub Action
+# <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
-[GitHub Actions](https://github.com/features/actions) lets you define a workflow to automatically build and deploy your functions code to function app in Azure. 
+A [GitHub-műveletek](https://github.com/features/actions) lehetővé teszi, hogy Definiáljon egy munkafolyamatot a functions kód automatikus létrehozásához és üzembe helyezéséhez az Azure-ban. 
 
-In GitHub Actions, a [workflow](https://help.github.com/articles/about-github-actions#workflow) is an automated process that you define in your GitHub repository. This process tells GitHub how to build and deploy your functions app project on GitHub. 
+A GitHub-műveletekben a [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
 
-A workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow. 
+A munkafolyamatot egy YAML-fájl (. YML) határozza meg a tárház `/.github/workflows/` útvonalán. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
 
-For an Azure Functions workflow, the file has three sections: 
+Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz: 
 
 | Section | Feladatok |
 | ------- | ----- |
-| **Hitelesítés** | <ol><li>Define a service principal.</li><li>Download publishing profile.</li><li>Create a GitHub secret.</li></ol>|
-| **Build** | <ol><li>Set up the environment.</li><li>Build the function app.</li></ol> |
-| **Üzembe helyezés** | <ol><li>Deploy the function app.</li></ol>|
+| **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Közzétételi profil letöltése.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|
+| **Építeni** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
+| **Üzembe helyezés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>|
 
 > [!NOTE]
-> You do not need to create a service principal if you decide to use publishing profile for authentication.
+> Nem kell létrehoznia egy egyszerű szolgáltatásnevet, ha úgy dönt, hogy közzétételi profilt használ a hitelesítéshez.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) by using the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). You can run this command using [Azure Cloud Shell](https://shell.azure.com) in the Azure portal or by selecting the **Try it** button.
+[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-In this example, replace the placeholders in the resource with your subscription ID, resource group, and function app name. The output is the role assignment credentials that provides access to your function app. Copy this JSON object, which you can use to authenticate from GitHub.
+Ebben a példában az erőforrásban található helyőrzőket cserélje le az előfizetés-AZONOSÍTÓra, az erőforráscsoport és a Function alkalmazás nevére. A kimenet az a szerepkör-hozzárendelési hitelesítő adatok, amelyek hozzáférést biztosítanak a Function alkalmazáshoz. Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez használhat.
 
 > [!IMPORTANT]
-> It is always a good practice to grant minimum access. This is why the scope in the previous example is limited to the specific function app and not the entire resource group.
+> Mindig jó gyakorlat a minimális hozzáférés megadására. Ezért az előző példában szereplő hatókör az adott Function alkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
 
-## <a name="download-the-publishing-profile"></a>Download the publishing profile
+## <a name="download-the-publishing-profile"></a>A közzétételi profil letöltése
 
-You can download the publishing profile of your functionapp, by going to the **Overview** page of your app and clicking **Get publish profile**.
+A functionapp közzétételi profiljának letöltéséhez nyissa meg az alkalmazás **Áttekintés** lapját, és kattintson a **közzétételi profil beolvasása**lehetőségre.
 
-   ![Download publish profile](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Közzétételi profil letöltése](media/functions-how-to-github-actions/get-publish-profile.png)
 
-Copy the content of the file.
+Másolja a fájl tartalmát.
 
-## <a name="configure-the-github-secret"></a>Configure the GitHub secret
+## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
-1. In [GitHub](https://github.com), browse your repository, select **Settings** > **Secrets** > **Add a new secret**.
+1. A [githubon](https://github.com)tallózzon a tárházban, válassza a **beállítások** > **titkok** > **új titok hozzáadása**lehetőséget.
 
-   ![Add Secret](media/functions-how-to-github-actions/add-secret.png)
+   ![Titkos kód hozzáadása](media/functions-how-to-github-actions/add-secret.png)
 
-1. Use `AZURE_CREDENTIALS` for the **Name** and the copied command output for **Value**, if you then select **Add secret**. If you are using publishing profile, use `SCM_CREDENTIALS` for the **Name** and the file content for **Value**.
+1. Ha ezt követően a **titok hozzáadása**lehetőséget **választja, használja**a `AZURE_CREDENTIALS` **nevet** és a másolt parancs kimenetét. Ha közzétételi profilt használ, használja a `SCM_CREDENTIALS` **nevet** és a fájl tartalmát az **értékhez**.
 
-GitHub can now authenticate to your function app in Azure.
+A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása 
 
-Setting up the environment can be done using one of the publish setup actions.
+A környezet beállítása a közzétételi telepítési műveletek egyikével végezhető el.
 
-|Nyelv | Setup Action |
+|Nyelv | Telepítési művelet |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**    | `actions/setup-java` |
 |**JavaScript**     | `actions/setup-node` |
 |**Python**   | `actions/setup-python` |
 
-The following examples show the part of the workflow that sets up the environment for the various supported languages:
+Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a környezetet a különböző támogatott nyelvekhez állítja be:
 
 **JavaScript**
 
@@ -129,11 +129,11 @@ The following examples show the part of the workflow that sets up the environmen
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-function-app"></a>Build the function app
+## <a name="build-the-function-app"></a>A Function alkalmazás összeállítása
 
-This depends on the language and for languages supported by Azure Functions, this section should be the standard build steps of each language.
+Ez a Azure Functions által támogatott nyelvtől és nyelvtől függ. a szakasznak az egyes nyelvek standard Build lépéseinek kell lennie.
 
-The following examples show the part of the workflow that builds the function app, in the various supported languages.:
+Az alábbi példák a Function alkalmazást a különböző támogatott nyelveken felépítő munkafolyamat részét mutatják be:
 
 **JavaScript**
 
@@ -193,15 +193,15 @@ The following examples show the part of the workflow that builds the function ap
 
 ## <a name="deploy-the-function-app"></a>A függvényalkalmazás üzembe helyezése
 
-To deploy your code to a function app, you will need to use the `Azure/functions-action` action. This action has two parameters:
+A kód egy Function alkalmazásban való üzembe helyezéséhez a `Azure/functions-action` műveletet kell használnia. Ennek a műveletnek két paramétere van:
 
 |Paraméter |Magyarázat  |
 |---------|---------|
-|**_app-name_** | (Mandatory) The name of your function app. |
-|_**slot-name**_ | (Optional) The name of the [deployment slot](functions-deployment-slots.md) you want to deploy to. The slot must already be defined in your function app. |
+|**_alkalmazás neve_** | Kötelező A függvény alkalmazásának neve. |
+|_**tárolóhely neve**_ | Választható Annak a [telepítési tárolóhelynek](functions-deployment-slots.md) a neve, amelyre telepíteni kívánja a-t. A tárolóhelynek már definiálva kell lennie a Function alkalmazásban. |
 
 
-The following example uses version 1 of the `functions-action`:
+Az alábbi példa a `functions-action`1. verzióját használja:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -213,7 +213,7 @@ The following example uses version 1 of the `functions-action`:
 
 ## <a name="next-steps"></a>Következő lépések
 
-To view a complete workflow .yaml, see one of the files in the [Azure GitHub Actions workflow samples repo](https://aka.ms/functions-actions-samples) that have `functionapp` in the name. You can use these samples a starting point for your workflow.
+Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található egyik fájlt, amely `functionapp` szerepel a névben. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 
 > [!div class="nextstepaction"]
-> [Learn more about GitHub Actions](https://help.github.com/en/articles/about-github-actions)
+> [További információ a GitHub-műveletekről](https://help.github.com/en/articles/about-github-actions)

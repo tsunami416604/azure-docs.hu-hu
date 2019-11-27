@@ -101,5 +101,5 @@ A szoftver gyártójának dokumentációjában tájékozódhat a háttérrendsze
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)
+- [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
 - [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

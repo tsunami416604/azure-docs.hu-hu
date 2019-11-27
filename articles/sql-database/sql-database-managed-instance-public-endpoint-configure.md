@@ -1,6 +1,6 @@
 ---
-title: Configure public endpoint - managed instance
-description: Learn how to configure a public endpoint for managed instance
+title: Nyilvános végpont által felügyelt példány konfigurálása
+description: Megtudhatja, hogyan konfigurálhat nyilvános végpontot felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -17,39 +17,39 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227983"
 ---
-# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Configure public endpoint in Azure SQL Database managed instance
+# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Nyilvános végpont konfigurálása Azure SQL Database felügyelt példányban
 
-Public endpoint for a [managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) enables data access to your managed instance from outside the [virtual network](../virtual-network/virtual-networks-overview.md). You are able to access your managed instance from multi-tenant Azure services like Power BI, Azure App Service, or an on-premises network. By using the public endpoint on a managed instance, you do not need to use a VPN, which can help avoid VPN throughput issues.
+A [felügyelt példányok](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) nyilvános végpontja lehetővé teszi a felügyelt példányhoz való adathozzáférést a [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)kívülről. Felügyelt példányát a több-bérlős Azure-szolgáltatásokból (például Power BI, Azure App Service vagy egy helyszíni hálózatból) érheti el. A felügyelt példányok nyilvános végpontjának használatával nem szükséges VPN-t használnia, ami segít elkerülni a VPN átviteli sebességét.
 
-In this article, you'll learn how to:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
-> - Enable public endpoint for your managed instance in the Azure portal
-> - Enable public endpoint for your managed instance using PowerShell
-> - Configure your managed instance network security group to allow traffic to the managed instance public endpoint
-> - Obtain the managed instance public endpoint connection string
+> - Nyilvános végpont engedélyezése a felügyelt példányhoz a Azure Portal
+> - Nyilvános végpont engedélyezése a felügyelt példány számára a PowerShell használatával
+> - Felügyelt példány hálózati biztonsági csoportjának konfigurálása a felügyelt példány nyilvános végpontjának forgalmának engedélyezéséhez
+> - Felügyelt példány nyilvános végpontjának összekapcsolási karakterláncának beszerzése
 
 ## <a name="permissions"></a>Engedélyek
 
-Due to the sensitivity of data that is in a managed instance, the configuration to enable managed instance public endpoint requires a two-step process. This security measure adheres to separation of duties (SoD):
+A felügyelt példányban lévő adatérzékenység miatt a felügyelt példány nyilvános végpontjának engedélyezéséhez kétlépéses folyamat szükséges. Ez a biztonsági mérték a feladatok elkülönítését (SoD) követi:
 
-- Enabling public endpoint on a managed instance needs to be done by the managed instance admin. The managed instance admin can be found on **Overview** page of your SQL managed instance resource.
-- Allowing traffic using a network security group that needs to be done by a network admin. For more information, see [network security group permissions](../virtual-network/manage-network-security-group.md#permissions).
+- A felügyelt példányok nyilvános végpontjának engedélyezését a felügyelt példány rendszergazdájának kell elvégeznie. A felügyelt példány rendszergazdája a felügyelt SQL-példány erőforrásának **Áttekintés** lapján található.
+- Olyan hálózati biztonsági csoporttal történő adatforgalom engedélyezése, amelyet egy hálózati rendszergazdának kell elvégeznie. További információ: [hálózati biztonsági csoport engedélyei](../virtual-network/manage-network-security-group.md#permissions).
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Enabling public endpoint for a managed instance in the Azure portal
+## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Felügyelt példányok nyilvános végpontjának engedélyezése a Azure Portalban
 
-1. Launch the Azure portal at <https://portal.azure.com/.>
-1. Open the resource group with the managed instance, and select the **SQL managed instance** that you want to configure public endpoint on.
-1. On the **Security** settings, select the **Virtual network** tab.
-1. In the Virtual network configuration page, select **Enable** and then the **Save** icon to update the configuration.
+1. A Azure Portal elindítása <https://portal.azure.com/.>
+1. Nyissa meg az erőforráscsoportot a felügyelt példánnyal, és válassza ki azt az **SQL felügyelt példányt** , amelyen a nyilvános végpontot konfigurálni kívánja.
+1. A **biztonsági** beállítások lapon válassza a **virtuális hálózat** lapot.
+1. A virtuális hálózat konfigurációja lapon válassza az **Engedélyezés** , majd a **Mentés** ikont a konfiguráció frissítéséhez.
 
 ![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Enabling public endpoint for a managed instance using PowerShell
+## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Felügyelt példány nyilvános végpontjának engedélyezése a PowerShell használatával
 
-### <a name="enable-public-endpoint"></a>Enable public endpoint
+### <a name="enable-public-endpoint"></a>Nyilvános végpont engedélyezése
 
-Run the following PowerShell commands. Replace **subscription-id** with your subscription ID. Also replace **rg-name** with the resource group for your managed instance, and replace **mi-name** with the name of your managed instance.
+Futtassa a következő PowerShell-parancsokat. Cserélje le az **előfizetés-azonosítót** az előfizetés-azonosítójával. Továbbá cserélje le a **RG nevet** a felügyelt példányhoz tartozó erőforráscsoporthoz, és cserélje le a **mi-Name nevet** a felügyelt példány nevére.
 
 ```powershell
 Install-Module -Name Az
@@ -70,50 +70,50 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force
 ```
 
-### <a name="disable-public-endpoint"></a>Disable public endpoint
+### <a name="disable-public-endpoint"></a>Nyilvános végpont letiltása
 
-To disable the public endpoint using PowerShell, you would execute the following command (and also do not forget to close the NSG for the inbound port 3342 if you have it configured):
+Ha a nyilvános végpontot a PowerShell használatával szeretné letiltani, hajtsa végre a következő parancsot (és ne feledkezzen meg a 3342 bejövő port NSG bezárásáról is, ha konfigurálva van):
 
 ```powershell
 Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ```
 
-## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Allow public endpoint traffic on the network security group
+## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Nyilvános végponti forgalom engedélyezése a hálózati biztonsági csoportban
 
-1. If you have the configuration page of the managed instance still open, navigate to the **Overview** tab. Otherwise, go back to your **SQL managed instance** resource. Select the **Virtual network/subnet** link, which will take you to the Virtual network configuration page.
+1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, lépjen az **Áttekintés** lapra. Máskülönben lépjen vissza az **SQL felügyelt példány** -erőforráshoz. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
 
     ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Select the **Subnets** tab on the left configuration pane of your Virtual network, and make note of the **SECURITY GROUP** for your managed instance.
+1. Válassza az **alhálózatok** fület a virtuális hálózat bal oldali konfigurációs paneljén, és jegyezze fel a felügyelt példány **biztonsági csoportját** .
 
     ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
-1. Go back to your resource group that contains your managed instance. You should see the **Network security group** name noted above. Select the name to go into the network security group configuration page.
+1. Lépjen vissza a felügyelt példányt tartalmazó erőforráscsoporthoz. Ekkor meg kell jelennie a **hálózati biztonsági csoport** fent említett nevének. Válassza ki a hálózati biztonsági csoport konfigurációs lapjára felvenni kívánt nevet.
 
-1. Select the **Inbound security rules** tab, and **Add** a rule that has higher priority than the **deny_all_inbound** rule with the following settings: </br> </br>
+1. Válassza a **bejövő biztonsági szabályok** lapot, és **adjon hozzá** egy olyan szabályt, amely magasabb prioritású, mint a **deny_all_inbound** szabály a következő beállításokkal: </br> </br>
 
     |Beállítás  |Ajánlott érték  |Leírás  |
     |---------|---------|---------|
-    |**Forrás**     |Any IP address or Service tag         |<ul><li>For Azure services like Power BI, select the Azure Cloud Service Tag</li> <li>For your computer or Azure VM, use NAT IP address</li></ul> |
-    |**Source port ranges**     |*         |Leave this to * (any) as source ports are usually dynamically allocated and as such, unpredictable |
-    |**Destination**     |Bármelyik         |Leaving destination as Any to allow traffic into the managed instance subnet |
-    |**Destination port ranges**     |3342         |Scope destination port to 3342, which is the managed instance public TDS endpoint |
-    |**Protocol (Protokoll)**     |TCP         |Managed instance uses TCP protocol for TDS |
-    |**Művelet**     |Engedélyezés         |Allow inbound traffic to managed instance through the public endpoint |
-    |**Priority (Prioritás)**     |1300         |Make sure this rule is higher priority than the **deny_all_inbound** rule |
+    |**Forrás**     |Bármely IP-cím vagy szolgáltatás címkéje         |<ul><li>Az Azure-szolgáltatások, például a Power BI esetében válassza az Azure Cloud Service címkét</li> <li>A számítógép vagy az Azure-beli virtuális gép esetében használja a NAT IP-címet</li></ul> |
+    |**Forrásport-tartományok**     |*         |Hagyja ezt a lehetőséget * (bármely), mivel a forrás portjai általában dinamikusan vannak lefoglalva, és mint ilyen, kiszámíthatatlan |
+    |**Cél**     |Bármelyik         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
+    |**Célport tartományai**     |3342         |Hatóköri célport a 3342-re, amely a felügyelt példány nyilvános TDS-végpontja |
+    |**Protocol (Protokoll)**     |TCP         |A felügyelt példány a TDS protokollhoz TCP protokollt használ. |
+    |**Művelet**     |Engedélyezés         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |
+    |**Priority (Prioritás)**     |1300         |Győződjön meg arról, hogy ez a szabály magasabb prioritású, mint a **deny_all_inbound** szabály |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
-    > Port 3342 is used for public endpoint connections to managed instance, and cannot be changed at this point.
+    > Az 3342-es port a felügyelt példányhoz tartozó nyilvános végponti kapcsolatokhoz használatos, és ezen a ponton nem módosítható.
 
-## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Obtaining the managed instance public endpoint connection string
+## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>A felügyelt példány nyilvános végpontjának összekapcsolási karakterláncának beszerzése
 
-1. Navigate to the SQL managed instance configuration page that has been enabled for public endpoint. Select the **Connection strings** tab under the **Settings** configuration.
-1. Note that the public endpoint host name comes in the format <mi_name>.**public**.<dns_zone>.database.windows.net and that the port used for the connection is 3342.
+1. Navigáljon az SQL felügyelt példányának konfiguráció lapjára, amelyen engedélyezve van a nyilvános végpont. Válassza a **kapcsolatok karakterláncok** lapot a **Beállítások** konfiguráció alatt.
+1. Vegye figyelembe, hogy a nyilvános végpont állomásneve < mi_name > formátumban jön. **nyilvános**. < dns_zone >. database. Windows. net és a csatlakozáshoz használt port 3342.
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [using Azure SQL Database managed instance securely with public endpoint](sql-database-managed-instance-public-endpoint-securely.md).
+- További információ a [Azure SQL Database felügyelt példány biztonságos használatáról nyilvános végponttal](sql-database-managed-instance-public-endpoint-securely.md).

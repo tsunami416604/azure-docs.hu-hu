@@ -18,8 +18,8 @@ ms.locfileid: "74186521"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Hibaelhárítási útmutatók</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">a követéséhez</a> 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">hibaelhárítási útmutatók</a> 
+| <a href="https://github.com/Azure/service-fabric-issues" target="blank">probléma követése</a> 
 | <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">támogatási lehetőségek</a> 
 | <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">támogatott verziók</a> 
 | <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">kód minták</a>

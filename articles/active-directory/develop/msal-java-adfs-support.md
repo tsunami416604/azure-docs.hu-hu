@@ -1,7 +1,7 @@
 ---
-title: AD FS support in Microsoft Authentication Library for Java
+title: AD FS támogatás a Javához készült Microsoft Authentication Library-ban
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for Java (MSAL4j).
+description: Ismerkedjen meg Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatással a Javához készült Microsoft Authentication Library (MSAL4j) szolgáltatásban.
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,32 +25,32 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482085"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory Federation Services support in MSAL for Java
+# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL Javához
 
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to your Microsoft Authentication Library for Java (MSAL for Java) app. Once integrated, your app can authenticate users in AD FS, federated through Azure AD. For more information about scenarios, see [AD FS Scenarios for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés hozzáadását, valamint a Java (MSAL for Java) alkalmazáshoz való Microsoft-hitelesítési kódtár engedélyezését. Az integrációt követően az alkalmazás az Azure AD-n keresztül összevont AD FS felhasználók hitelesítésére is képes. További információ a forgatókönyvekről: [AD FS forgatókönyvek fejlesztőknek](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
 
-An app that uses MSAL for Java will talk to Azure Active Directory (Azure AD), which then federates to AD FS.
+A Javához készült MSAL-t használó alkalmazások Azure Active Directory (Azure AD) szolgáltatással kommunikálnak, amely aztán a AD FS összevonja.
 
-MSAL for Java connects to Azure AD, which signs in users that are managed in Azure AD (managed users) or users managed by another identity provider such as AD FS (federated users). MSAL for Java doesn't  know that a user is federated. It simply talks to Azure AD.
+A MSAL for Java az Azure ad-hez csatlakozik, amely az Azure AD-ben (felügyelt felhasználók) felügyelt felhasználók vagy más identitás-szolgáltató (például AD FS (összevont felhasználók) által felügyelt felhasználók számára jelentkezik be. A Java-MSAL nem tudja, hogy a felhasználó összevont. Egyszerűen beszél az Azure AD-ről.
 
-The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
+Az ebben az esetben [használt szolgáltató a](msal-client-application-configuration.md#authority) szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
 
-## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Acquire a token interactively for a federated user
+## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése egy összevont felhasználó számára
 
-When you call `ConfidentialClientApplication.AcquireToken()` or `PublicClientApplication.AcquireToken()` with `AuthorizationCodeParameters` or `DeviceCodeParameters`, the user experience is typically:
+Ha `ConfidentialClientApplication.AcquireToken()` vagy `PublicClientApplication.AcquireToken()` hív meg `AuthorizationCodeParameters` vagy `DeviceCodeParameters`, a felhasználói élmény általában:
 
-1. The user enters their account ID.
-2. Azure AD briefly displays "Taking you to your organization's page", and the user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. A felhasználó megadja a fiók AZONOSÍTÓját.
+2. Az Azure AD röviden megjeleníti a "a szervezet oldalát", a felhasználó pedig átirányítja az identitás-szolgáltató bejelentkezési lapjára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
 
-The supported AD FS versions in this federated scenario are:
-- Active Directory Federation Services FS v2
-- Active Directory Federation Services v3 (Windows Server 2012 R2)
-- Active Directory Federation Services v4 (AD FS 2016)
+Az összevont forgatókönyvben támogatott AD FS verziók a következők:
+- Active Directory összevonási szolgáltatások (AD FS) FS v2
+- Active Directory összevonási szolgáltatások (AD FS) v3 (Windows Server 2012 R2)
+- Active Directory összevonási szolgáltatások (AD FS) v4 (AD FS 2016)
 
-## <a name="acquire-a-token-via-username-and-password"></a>Acquire a token via username and password
+## <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése Felhasználónév és jelszó használatával
 
-When you acquire a token using `ConfidentialClientApplication.AcquireToken()` or `PublicClientApplication.AcquireToken()` with `IntegratedWindowsAuthenticationParameters` or `UsernamePasswordParameters`, MSAL for Java gets the identity provider to contact based on the username. MSAL for Java gets a [SAML 1.1 token](reference-saml-tokens.md) token from the identity provider, which it then provides to Azure AD which returns the JSON Web Token (JWT).
+Ha `ConfidentialClientApplication.AcquireToken()` vagy `PublicClientApplication.AcquireToken()` `IntegratedWindowsAuthenticationParameters` vagy `UsernamePasswordParameters`használatával szerez be jogkivonatot, a Java-MSAL a Felhasználónév alapján kapja meg az identitás-szolgáltatót. A MSAL for Java egy [SAML 1,1 token](reference-saml-tokens.md) -tokent kap az identitás-szolgáltatótól, amelyet aztán az Azure ad-nek ad vissza, amely visszaadja a JSON web token (JWT).
 
 ## <a name="next-steps"></a>Következő lépések
 
-For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)

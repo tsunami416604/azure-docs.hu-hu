@@ -109,7 +109,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a letöltött *. rdp* fájlt.
 

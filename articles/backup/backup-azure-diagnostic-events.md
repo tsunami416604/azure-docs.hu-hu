@@ -10,7 +10,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281102"
 ---
-# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services-tárolók diagnosztikai beállításainak használata
+# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnosztikai beállítások használata Recovery Services-tárolókhoz
 
 A Azure Backup diagnosztikai eseményeket küld, amelyeket elemzés, riasztás és jelentéskészítés céljából gyűjthet és használhat fel. 
 

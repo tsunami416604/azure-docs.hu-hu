@@ -1,6 +1,6 @@
 ---
-title: Azure Functions deployment slots
-description: Learn to create and use deployment slots with Azure Functions
+title: Azure Functions üzembe helyezési pontok
+description: Ismerje meg, hogyan hozhat létre és használhat üzembe helyezési tárolóhelyeket Azure Functions
 author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
@@ -12,177 +12,177 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230673"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Functions deployment slots
+# <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
-Azure Functions deployment slots allow your function app to run different instances called "slots". Slots are different environments exposed via a publicly available endpoint. One app instance is always mapped to the production slot, and you can swap instances assigned to a slot on demand. Function apps running under the Apps Service plan may have multiple slots, while under Consumption only one slot is allowed.
+Azure Functions üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás különböző példányokat futtasson "bővítőhelyek" néven. A tárolóhelyek egy nyilvánosan elérhető végponton keresztül kitett különböző környezetek. Az egyik alkalmazás példánya mindig az üzemi tárolóhelyre van leképezve, és igény szerint egy tárolóhelyhez rendelt példányok is felcserélhetők. Az Apps Service-csomag alatt futó Function apps több tárolóhelytel rendelkezhet, míg a felhasználás alatt csak egy tárolóhely engedélyezett.
 
-The following reflect how functions are affected by swapping slots:
+A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásait mutatja be:
 
-- Traffic redirection is seamless; no requests are dropped because of a swap.
-- If a function is running during a swap, execution continues and subsequent triggers are routed to the swapped app instance.
+- A forgalom átirányítása zökkenőmentes; a swap miatt a rendszer nem távolítja el a kérelmeket.
+- Ha egy függvény a swap során fut, a végrehajtás folytatódik, és az azt követő triggerek átirányítva lesznek a felcserélt alkalmazás-példányra.
 
 > [!NOTE]
-> Slots are currently not available for the Linux Consumption plan.
+> A Linux-használati csomag jelenleg nem érhető el.
 
-## <a name="why-use-slots"></a>Why use slots?
+## <a name="why-use-slots"></a>Miért érdemes tárolóhelyeket használni?
 
-There are a number of advantages to using deployment slots. The following scenarios describe common uses for slots:
+Számos előnnyel jár az üzembe helyezési pontok használata. A következő forgatókönyvek a bővítőhelyek gyakori felhasználási módjait ismertetik:
 
-- **Different environments for different purposes**: Using different slots gives you the opportunity to differentiate app instances before swapping to production or a staging slot.
-- **Prewarming**: Deploying to a slot instead of directly to production allows the app to warm up before going live. Additionally, using slots reduces latency for HTTP-triggered workloads. Instances are warmed up before deployment which reduces the cold start for newly-deployed functions.
-- **Easy fallbacks**: After a swap with production, the slot with a previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can immediately reverse the swap to get your "last known good instance" back.
+- Különböző **környezetek különböző célokra**: a különböző tárolóhelyek használata lehetővé teszi az alkalmazás-példányok megkülönböztetését, mielőtt az éles környezetbe vagy egy átmeneti tárolóhelyre cseréli őket.
+- **Előmelegítés**: a közvetlenül az éles környezetbe való üzembe helyezése lehetővé teszi az alkalmazás számára, hogy az élő működés előtt belépjen. Emellett a tárolóhelyek használata csökkenti a HTTP-triggert használó munkaterhelések késését. A példányokat a rendszer az üzembe helyezés előtt felmelegszik, ami csökkenti az újonnan üzembe helyezett függvények hideg indítását.
+- **Egyszerű tartalékok**: az éles használat után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor a swap azonnal visszafordítható az "utolsó ismert jó példány" visszaszerzéséhez.
 
-## <a name="swap-operations"></a>Swap operations
+## <a name="swap-operations"></a>Swap-műveletek
 
-During a swap, one slot is considered the source and the other the target. The source slot has the instance of the application that is applied to the target slot. The following steps ensure the target slot doesn't experience downtime during a swap:
+A csere során az egyik tárolóhely a forrás és a másik cél. A forrás tárolóhely az alkalmazás azon példányát alkalmazza, amely a cél tárolóhelyre van alkalmazva. A következő lépések gondoskodnak arról, hogy a cél tárolóhely ne tapasztaljon állásidőt a swap során:
 
-1. **Apply settings:** Settings from the target slot are applied to all instances of the source slot. For example, the production settings are applied to the staging instance. The applied settings include the following categories:
-    - [Slot-specific](#manage-settings) app settings and connection strings (if applicable)
-    - [Continuous deployment](../app-service/deploy-continuous-deployment.md) settings (if enabled)
-    - [App Service authentication](../app-service/overview-authentication-authorization.md) settings (if enabled)
+1. **Beállítások alkalmazása:** A cél tárolóhelyről származó beállításokat a rendszer a forrás tárolóhely összes példányára alkalmazza. Az éles környezet beállításait például az átmeneti példányra alkalmazza a rendszer. Az alkalmazott beállítások a következő kategóriákat tartalmazzák:
+    - A [tárolóhely-specifikus](#manage-settings) Alkalmazásbeállítások és a kapcsolatok karakterláncai (ha vannak ilyenek)
+    - [Folyamatos üzembe helyezési](../app-service/deploy-continuous-deployment.md) beállítások (ha engedélyezve vannak)
+    - [App Service hitelesítési](../app-service/overview-authentication-authorization.md) beállítások (ha engedélyezve vannak)
 
-1. **Wait for restarts and availability:** The swap waits for every instance in the source slot to complete its restart and to be available for requests. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
+1. **Várakozás az újraindításra és a rendelkezésre állásra:** A swap megvárja a forrás tárolóhely minden példányát, hogy elvégezze az újraindítást, és hogy elérhető legyen a kérésekhez. Ha valamelyik példány nem indul újra, a swap művelet visszaállítja a forrás tárolóhelyének összes módosítását, és leállítja a műveletet.
 
-1. **Update routing:** If all instances on the source slot are warmed up successfully, the two slots complete the swap by switching routing rules. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
+1. **Útválasztás frissítése:** Ha a forrás tárolóhelyén lévő összes példány sikeresen befejeződik, a két bővítőhely az útválasztási szabályok váltásával hajtja végre a cserét. Ezt a lépést követően a cél tárolóhely (például az éles tárolóhely) azt az alkalmazást alkalmazza, amely korábban a forrás tárolóhelyen van bemelegítve.
 
-1. **Repeat operation:** Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances for the source slot.
+1. **Ismétlési művelet:** Most, hogy a forrás tárolóhelye korábban a cél tárolóhelyen lévő előzetes swap alkalmazást használja, végezze el ugyanezt a műveletet úgy, hogy az összes beállítást alkalmazza, majd újraindítja a példányokat a forrás tárolóhelyén.
 
 Tartsa szem előtt az alábbi szempontokat:
 
-- At any point of the swap operation, initialization of the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared, whether the swap succeeds or fails.
+- A swap-művelet bármely pontján a felcserélt alkalmazások inicializálása a forrás tárolóhelyen történik. A cél tárolóhely online marad, amíg a forrás tárolóhelye elkészült, vagy a swap sikeres vagy sikertelen lesz.
 
-- To swap a staging slot with the production slot, make sure that the production slot is *always* the target slot. This way, the swap operation doesn't affect your production app.
+- Ha egy átmeneti tárolóhelyet szeretne cserélni az üzemi tárolóhelyre, győződjön meg arról, hogy az éles tárolóhely *mindig* a cél tárolóhely. Így a swap művelet nem befolyásolja az üzemi alkalmazást.
 
-- Settings related to event sources and bindings need to be configured as [deployment slot settings](#manage-settings) *before you initiate a swap*. Marking them as "sticky" ahead of time ensures events and outputs are directed to the proper instance.
+- Az esemény-forrásokhoz és kötésekhez kapcsolódó beállításokat [üzembe helyezési tárolóhelyként](#manage-settings) kell konfigurálni, *mielőtt elkezdené a swap-eljárást*. Ha az idő előtt "Sticky"-ként jelöli meg őket, az események és a kimenetek a megfelelő példányra vannak irányítva.
 
 ## <a name="manage-settings"></a>Beállítások kezelése
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-### <a name="create-a-deployment-setting"></a>Create a deployment setting
+### <a name="create-a-deployment-setting"></a>Központi telepítési beállítás létrehozása
 
-You can mark settings as a deployment setting which makes it "sticky". A sticky setting does not swap with the app instance.
+Megadhatja a beállításokat központi telepítési beállításként, amely a "Sticky" értéket jelöli. Az alkalmazás-példány nem cseréli le a Sticky beállítást.
 
-If you create a deployment setting in one slot, make sure to create the same setting with a unique value in any other slot involved in a swap. This way, while a setting's value doesn't change, the setting names remain consistent among slots. This name consistency ensures your code doesn't try to access a setting that is defined in one slot but not another.
+Ha egy tárolóhelyen létrehoz egy központi telepítési beállítást, mindenképpen hozzon létre egy egyedi értéket a swap-ben részt vevő többi tárolóhelyen. Így a beállítások értéke nem változik, a beállítások nevei konzisztensek maradnak a tárolóhelyek között. Ez a név konzisztencia biztosítja, hogy a kód ne próbáljon meg hozzáférni egy olyan beállításhoz, amely egy tárolóhelyen van definiálva, de még nem.
 
-Use the following steps to to create a deployment setting:
+A következő lépésekkel hozhat létre központi telepítési beállítást:
 
-- Navigate to *Slots* in the function app
-- Click on the slot name
-- Under *Platform Features > General Settings*, click on **Configuration**
-- Click on the setting name you want to stick with the current slot
-- Click the **Deployment slot setting** checkbox
+- A Function alkalmazásban navigáljon a *tárolóhelyekhez*
+- Kattintson a tárolóhely nevére
+- A *platform szolgáltatásai > általános beállítások*területen kattintson a **Konfigurálás** elemre.
+- Kattintson arra a beállításra, amelyet az aktuális tárolóhelyhez szeretne ragasztani
+- Kattintson az **üzembe helyezési tárolóhely beállítása** jelölőnégyzetre
 - Kattintson az **OK** gombra
-- Once setting blade disappears, click **Save** to keep the changes
+- Ha a beállítás panel eltűnik, kattintson a **Save (Mentés** ) gombra a módosítások megtartásához
 
-![Deployment Slot Setting](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![Üzembe helyezési pont beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
-Slots are empty when you create a slot. You can use any of the [supported deployment technologies](./functions-deployment-technologies.md) to deploy your application to a slot.
+Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
 
 ## <a name="scaling"></a>Méretezés
 
-All slots scale to the same number of workers as the production slot.
+Az összes tárolóhely az üzemi tárolóhelytel azonos számú feldolgozóra méretezhető.
 
-- For Consumption plans, the slot scales as the function app scales.
-- For App Service plans, the app scales to a fixed number of workers. Slots run on the same number of workers as the app plan.
+- A használati csomagok esetében a tárolóhely a függvény alkalmazási skálájának megfelelően méretezhető.
+- App Service csomagok esetében az alkalmazás egy rögzített számú feldolgozóra méretezhető. A bővítőhelyek ugyanazon a számú feldolgozón futnak, mint az alkalmazási csomag.
 
-## <a name="add-a-slot"></a>Add a slot
+## <a name="add-a-slot"></a>Tárolóhely hozzáadása
 
-You can add a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) or through the portal. The following steps demonstrate how to create a new slot in the portal:
+Hozzáadhat egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
 
-1. Navigate to your function app and click on the **plus sign** next to *Slots*.
+1. Navigáljon a Function alkalmazáshoz, és kattintson a *bővítőhelyek*melletti **plusz jelre** .
 
-    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![Azure Functions üzembe helyezési pont hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. Enter a name in the textbox, and press the **Create** button.
+1. Írjon be egy nevet a szövegmezőbe, majd kattintson a **Létrehozás** gombra.
 
-    ![Name Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![Név Azure Functions üzembe helyezési pont](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>Swap slots
+## <a name="swap-slots"></a>Tárolóhelyek cseréje
 
-You can swap slots via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) or through the portal. The following steps demonstrate how to swap slots in the portal:
+A tárolóhelyeket a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) -n keresztül vagy a portálon keresztül lehet cserélni. A következő lépések bemutatják, hogyan lehet felcserélni a tárolóhelyeket a portálon:
 
-1. Navigate to the function app
-1. Click on the source slot name that you want to swap
-1. From the *Overview* tab, click on the **Swap** button  ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Verify the configuration settings for your swap and click **Swap** ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Navigáljon a Function alkalmazáshoz
+1. Kattintson a felcserélni kívánt forrás tárolóhely nevére
+1. Az *Áttekintés* lapon kattintson a **Csere** gombra ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ellenőrizze a swap konfigurációs beállításait, majd kattintson a **swap** ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-The operation may take a moment while the swap operation is executing.
+A művelet eltarthat egy kis ideig, amíg a rendszer végrehajtja a swap-műveletet.
 
-## <a name="roll-back-a-swap"></a>Roll back a swap
+## <a name="roll-back-a-swap"></a>Swap visszaállítása
 
-If a swap results in an error or you simply want to "undo" a swap, you can roll back to the initial state. To return to the pre-swapped state, do another swap to reverse the swap.
+Ha a swap hibát jelez, vagy egyszerűen vissza kívánja állítani a cserét, visszaállíthatja a kezdeti állapotot. Ha vissza szeretne térni az előre lecserélt állapotba, hajtson végre egy újabb cserét a swap megfordításához.
 
-## <a name="remove-a-slot"></a>Remove a slot
+## <a name="remove-a-slot"></a>Tárolóhely eltávolítása
 
-You can remove a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) or through the portal. The following steps demonstrate how to remove a slot in the portal:
+Egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) -n keresztül vagy a portálon lehet eltávolítani. A következő lépések bemutatják, hogyan távolíthat el egy tárolóhelyet a portálon:
 
-1. Navigate to the function app Overview
+1. Navigáljon a Function app áttekintése oldalra
 
-1. Click on the **Delete** button
+1. Kattintson a **Törlés** gombra
 
-    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![Azure Functions üzembe helyezési pont hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
-## <a name="automate-slot-management"></a>Automate slot management
+## <a name="automate-slot-management"></a>A tárolóhelyek kezelésének automatizálása
 
-Using the [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest), you can automate the following actions for a slot:
+Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)használatával automatizálhatja a következő műveleteket egy tárolóhelyen:
 
 - [létrehozás](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [törlés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [auto-swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [automatikus felcserélés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>Change app service plan
+## <a name="change-app-service-plan"></a>App Service-csomag módosítása
 
-With a function app that is running under an App Service plan, you have the option to change the underlying app service plan for a slot.
+Ha egy App Service csomag alatt futó Function alkalmazást használ, lehetősége van módosítani egy tárolóhely mögöttes app Service-csomagot.
 
 > [!NOTE]
-> You can't change a slot's App Service plan under the Consumption plan.
+> A tárolóhelyek App Service terve nem módosítható a használati tervben.
 
-Use the following steps to change a slot's app service plan:
+A bővítőhely app Service-csomagjának módosításához kövesse az alábbi lépéseket:
 
-1. Navigate to a slot
+1. Nyisson meg egy tárolóhelyet
 
-1. Under *Platform Features*, click **All Settings**
+1. A *platform-szolgáltatások*területen kattintson a **minden beállítás** elemre.
 
-    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![App Service-csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. Click on **App Service plan**
+1. Kattintson **app Service csomagra**
 
-1. Select a new App Service plan, or create a new plan
+1. Válasszon új App Service csomagot, vagy hozzon létre egy új csomagot
 
 1. Kattintson az **OK** gombra
 
-    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![App Service-csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>Korlátozások
 
-Azure Functions deployment slots have the following limitations:
+Azure Functions üzembe helyezési pontok a következő korlátozásokkal rendelkeznek:
 
-- The number of slots available to an app depends on the plan. The Consumption plan is only allowed one deployment slot. Additional slots are available for apps running under the App Service plan.
-- Swapping a slot resets keys for apps that have an `AzureWebJobsSecretStorageType` app setting equal to `files`.
-- Slots are not available for the Linux Consumption plan.
+- Az alkalmazás számára elérhető tárolóhelyek száma a csomagtól függ. A használati terv csak egy üzembe helyezési pont számára engedélyezett. További tárolóhelyek érhetők el a App Service csomag alatt futó alkalmazásokhoz.
+- A tárolóhelyek cseréje visszaállítja a kulcsokat olyan alkalmazások számára, amelyeken a `AzureWebJobsSecretStorageType` alkalmazás beállítása `files`.
+- A Linux-használati tervhez nem érhetők el tárolóhelyek.
 
 ## <a name="support-levels"></a>Támogatási szintek
 
-There are two levels of support for deployment slots:
+Az üzembe helyezési pontok két szinten támogatottak:
 
-- **General availability (GA)** : Fully supported and approved for production use.
-- **Preview**: Not yet supported, but is expected to reach GA status in the future.
+- **Általánosan elérhető (GA)** : teljes mértékben támogatott és jóváhagyott éles használatra.
+- **Előzetes**verzió: még nem támogatott, de a jövőben várhatóan el kell érnie a ga-állapotot.
 
-| OS/Hosting plan           | Level of support     |
+| Operációs rendszer/üzemeltetési csomag           | Támogatási szint     |
 | ------------------------- | -------------------- |
-| Windows Consumption       | Általános elérhetőség |
+| Windows-felhasználás       | Általános elérhetőség |
 | Windows Premium           | Általános elérhetőség  |
-| Windows Dedicated         | Általános elérhetőség |
-| Linux Consumption         | Nem támogatott          |
+| Dedikált Windows         | Általános elérhetőség |
+| Linux-felhasználás         | Nem támogatott          |
 | Linux Premium             | Általános elérhetőség  |
-| Linux Dedicated           | Általános elérhetőség |
+| Linux dedikált           | Általános elérhetőség |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Deployment technologies in Azure Functions](./functions-deployment-technologies.md)
+- [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

@@ -22,7 +22,7 @@ Ez az Azure Internet Analyzer gyakori kérdései – Ha további kérdése van, 
 
 Az előzetes verzió a kiválasztott ügyfelek számára elérhető. Ha szeretne csatlakozni az előzetes verzióhoz, tegye a következőket:
 
-1. Bejelentkezés az [Azure Portalra](https://ms.portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://ms.portal.azure.com).
 2. Navigáljon az **előfizetések** lapra.
 3. Kattintson arra az Azure-előfizetésre, amelyre az Internet Analyzert szeretné használni.
 4. Nyissa meg az előfizetés **erőforrás-szolgáltatói** beállításait.

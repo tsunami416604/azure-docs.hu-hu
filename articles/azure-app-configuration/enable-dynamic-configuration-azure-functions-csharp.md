@@ -110,7 +110,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
     ![A Gyorsindítás funkció helyi elindítása](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+5. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 6. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcs értékeit:
 

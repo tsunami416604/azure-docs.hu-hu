@@ -30,7 +30,7 @@ A replikációs berendezés egyetlen helyszíni gépen van üzembe helyezve VMwa
 
 ## <a name="appliance-deployment"></a>Berendezések üzembe helyezése
 
-**Üzembe helyezés mint** | **Használt** | **Részletek**
+**Üzembe helyezés mint** | **Használatban** | **Részletek**
 --- | --- |  ---
 VMware virtuális gép | Általában a VMware virtuális gépek áttelepítésekor használatos a Azure Migrate áttelepítési eszközzel az ügynök-alapú áttelepítés használatával. | A Azure Migrate központból letöltheti a petesejtek sablonját, és importálhatja a vCenter Serverba a készülék virtuális gépe létrehozásához.
 Fizikai gép | Helyszíni fizikai kiszolgálók áttelepítésekor használatos, ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem tud létrehozni VMware virtuális gépet egy PETESEJT-sablonnal. | A szoftver telepítőjének letöltése a Azure Migrate központból, és a berendezés számítógépének beállításához futtassa.

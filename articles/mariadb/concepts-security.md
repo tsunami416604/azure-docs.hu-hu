@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Database for MariaDB - Single Server
-description: An overview of the security features in Azure Database for MariaDB - Single Server.
+title: Biztonság Azure Database for MariaDB – egyetlen kiszolgáló
+description: A Azure Database for MariaDB-egy kiszolgáló biztonsági funkcióinak áttekintése.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -13,42 +13,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485184"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Security in Azure Database for MariaDB - Single Server
+# <a name="security-in-azure-database-for-mariadb---single-server"></a>Biztonság Azure Database for MariaDB – egyetlen kiszolgáló
 
-There are multiple layers of security that are available to protect the data on your Azure Database for MariaDB server. This article outlines those security options.
+Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for MariaDB-kiszolgálón lévő adatvédelmet biztosítanak. Ez a cikk ezeket a biztonsági beállításokat ismerteti.
 
-## <a name="information-protection-and-encryption"></a>Information protection and encryption
+## <a name="information-protection-and-encryption"></a>Adatvédelem és titkosítás
 
-### <a name="in-transit"></a>In-transit
-Azure Database for MariaDB secures your data by encrypting data in-transit with Transport Layer Security. Encryption (SSL/TLS) is enforced by default.
+### <a name="in-transit"></a>Átvitel közben
+A Azure Database for MariaDB az adatátvitelt a Transport Layer Security segítségével titkosítja. A titkosítás (SSL/TLS) alapértelmezés szerint ki van kényszerítve.
 
-### <a name="at-rest"></a>At-rest
-The Azure Database for MariaDB service uses the FIPS 140-2 validated cryptographic module for storage encryption of data at-rest. Data, including backups, are encrypted on disk, with the exception of temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys are system managed. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
+### <a name="at-rest"></a>Nyugalmi állapotban
+A Azure Database for MariaDB szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
 
 ## <a name="network-security"></a>Hálózati biztonság
-Connections to an Azure Database for MariaDB server are first routed through a regional gateway. The gateway has a publicly accessible IP, while the server IP addresses are protected. For more information about the gateway, visit the [connectivity architecture article](concepts-connectivity-architecture.md).  
+A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok először egy regionális átjárón keresztül irányíthatók. Az átjáró nyilvánosan elérhető IP-címmel rendelkezik, a kiszolgáló IP-címei pedig védettek. Az átjáróval kapcsolatos további információkért tekintse meg a [kapcsolati architektúra című cikket](concepts-connectivity-architecture.md).  
 
-A newly created Azure Database for MariaDB server has a firewall that blocks all external connections. Though they reach the gateway, they are not allowed to connect to the server. 
+Az újonnan létrehozott Azure Database for MariaDB-kiszolgáló rendelkezik egy tűzfallal, amely blokkolja az összes külső kapcsolatot. Az átjáró elérése azonban nem engedélyezett a kiszolgálóhoz való kapcsolódáshoz. 
 
-### <a name="ip-firewall-rules"></a>IP firewall rules
-IP firewall rules grant access to servers based on the originating IP address of each request. See the [firewall rules overview](concepts-firewall-rules.md) for more information.
+### <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítanak hozzáférést a kiszolgálókhoz. További információért tekintse meg a [Tűzfalszabályok áttekintését](concepts-firewall-rules.md) .
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
-Virtual network service endpoints extend your virtual network connectivity over the Azure backbone. Using virtual network rules you can enable your Azure Database for MariaDB server to allow connections from selected subnets in a virtual network. For more information, see the [virtual network service endpoint overview](concepts-data-access-security-vnet.md).
+A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for MariaDB-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-security-vnet.md)című témakörben talál.
 
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
-While creating the Azure Database for MariaDB server, you provide credentials for an administrator user. This administrator can be used to create additional MariaDB users.
+A Azure Database for MariaDB-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további MariaDB-felhasználókat hozhat létre.
 
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 
-You can opt in to [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) which detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit servers.
+A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-threat-protection.md) bekapcsolásával olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek a kiszolgálók eléréséhez vagy kiaknázásához.
 
-[Audit logging](concepts-audit-logs.md) is available to track activity in your databases. 
+A [naplózás elérhető](concepts-audit-logs.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Enable firewall rules for [IPs](concepts-firewall-rules.md) or [virtual networks](concepts-data-access-security-vnet.md)
+- Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-security-vnet.md)

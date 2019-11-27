@@ -75,7 +75,7 @@ A mobilitási szolgáltatás kommunikál a replikációs berendezéssel és a re
 
 ## <a name="ports"></a>Portok
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | --- 
 Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel a replikálás kezeléséhez.<br/><br/> A virtuális gépek replikációs adatküldést küldenek a Process kiszolgálónak (alapértelmezés szerint a replikációs berendezésen futnak) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.

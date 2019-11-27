@@ -1,6 +1,6 @@
 ---
-title: Threat Modeling Tool Releases - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Documenting the release notes for the threat modeling tool
+title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 services: security
 documentationcenter: na
 author: jegeib
@@ -22,28 +22,28 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224777"
 ---
-# <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool Releases
+# <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool kiadások
 
-The Microsoft Threat Modeling Tool is currently released as a free [click-to-download](https://aka.ms/threatmodelingtool) application for Windows. This delivery mechanism allows us to push the latest improvements and bug fixes to customers each time they open the tool.
+A Microsoft Threat Modeling Tool jelenleg ingyenes, [Kattintásra letölthető](https://aka.ms/threatmodelingtool) alkalmazásként jelenik meg a Windowsban. Ez a kézbesítési mechanizmus lehetővé teszi, hogy a legújabb javításokat és hibajavításokat leküldse az ügyfeleknek minden alkalommal, amikor megnyitják az eszközt.
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
-  - Microsoft Windows 10 Anniversary Update or later
-- .NET Version Required
-  - .NET 4.7.1 or later
+  - Microsoft Windows 10 évfordulós frissítés vagy újabb
+- .NET-verzió szükséges
+  - .NET-4.7.1 vagy újabb
 - További követelmények
-  - An Internet connection is required to receive updates to the tool and templates.
+  - Az eszköz és a sablonok frissítéseinek fogadásához internetkapcsolat szükséges.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.61015.1](threat-modeling-tool-releases-71610151.md) - October 16 2019
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.60702.1](threat-modeling-tool-releases-71607021.md) - July 2 2019
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.60408.1](threat-modeling-tool-releases-71604081.md) - April 9 2019
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.60126.1](threat-modeling-tool-releases-71601261.md) - January 29 2019
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.51023.1](threat-modeling-tool-releases-71510231.md) - November 1 2018
-- [Microsoft Threat Modeling Tool GA Release Version 7.1.50911.2](threat-modeling-tool-releases-71509112.md) - September 12 2018
+- [Microsoft Threat MODELING Tool GA kiadási verzió 7.1.61015.1](threat-modeling-tool-releases-71610151.md) – október 16 2019
+- [Microsoft Threat MODELING Tool GA kiadási verzió 7.1.60702.1](threat-modeling-tool-releases-71607021.md) – július 2 2019
+- [Microsoft Threat MODELING Tool GA kiadási verzió 7.1.60408.1](threat-modeling-tool-releases-71604081.md) – április 9 2019
+- [Microsoft Threat MODELING Tool GA kiadási verzió 7.1.60126.1](threat-modeling-tool-releases-71601261.md) – január 29 2019
+- [Microsoft Threat MODELING Tool GA kiadás verziója 7.1.51023.1](threat-modeling-tool-releases-71510231.md) – november 1 2018
+- [Microsoft Threat MODELING Tool GA kiadás verziója 7.1.50911.2](threat-modeling-tool-releases-71509112.md) – szeptember 12 2018
 
 ## <a name="next-steps"></a>Következő lépések
 
-Download the latest version of the [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).
+Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Text Analytics client library | Microsoft Docs'
+title: 'Gyors útmutató: Text Analytics ügyféloldali kódtár | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
+description: Ebben a rövid útmutatóban az Azure Cognitive Services Text Analytics API használatával ismeri fel a nyelvet.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,16 +18,16 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220784"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
-Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
+Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
-Use the Text Analytics client library to perform:
+A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali függvénytárat:
 
-* Véleményelemzés
+* Hangulatelemzés
 * Nyelvfelismerés
 * Entitások felismerése
-* A kulcsfontosságú kifejezések kinyerése
+* Kulcskifejezések kinyerése
 
 ::: zone pivot="programming-language-csharp"
 
@@ -61,9 +61,9 @@ Use the Text Analytics client library to perform:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -73,7 +73,7 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 
 * [A Text Analytics áttekintése](../overview.md)
-* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)
+* [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

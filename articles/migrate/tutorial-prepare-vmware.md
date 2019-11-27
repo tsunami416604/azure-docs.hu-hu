@@ -70,7 +70,7 @@ A készülék regisztrálásához engedélyeket kell rendelnie Azure Migrate az 
 A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket.
 
 1. Az Azure AD-ben a bérlői/globális rendszergazdának **Azure Active Directory** > **felhasználó** > **felhasználói beállításokat**kell megkeresnie.
-2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** . Ez egy alapértelmezett beállítás, amely nem érzékeny. [Részletek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** . Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-vmware/aad.png)
 
@@ -78,7 +78,7 @@ A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket.
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
 
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [Részletek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 ### <a name="assign-role-assignment-permissions"></a>Szerepkör-hozzárendelési engedélyek hozzárendelése
 

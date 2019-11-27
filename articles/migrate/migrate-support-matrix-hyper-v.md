@@ -35,7 +35,7 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 --- | ---
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 Hyper-V virtuális gépek | Akár 35 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
-földrajz | [Tekintse át](migrate-support-matrix.md#supported-geographies) a támogatott földrajzi régiókat.
+Földrajz | [Tekintse át](migrate-support-matrix.md#supported-geographies) a támogatott földrajzi régiókat.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Értékelés – Hyper-V gazdagépre vonatkozó követelmények
@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | A letölthető fájlok letöltése a
 
 A következő táblázat összefoglalja az értékeléshez szükséges portokra vonatkozó követelményeket.
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
@@ -159,7 +159,7 @@ time.windows.com | Ellenőrzi a rendszerek és a globális idő közötti idősz
 
 A következő táblázat összefoglalja a Hyper-V-gazdagépeken és virtuális gépeken a VM-Migrálás portokra vonatkozó követelményeit.
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 Hyper-V-gazdagépek/virtuális gépek | Kimenő kapcsolatok a 443-es HTTPS-porton, hogy a virtuális gép replikációs szolgáltatásait Azure Migrate küldje el.
 

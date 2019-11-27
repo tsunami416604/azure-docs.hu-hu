@@ -1,7 +1,7 @@
 ---
-title: Get and remove accounts from the token cache using MSAL for Java (MSAL4j)
+title: Fiókok beolvasása és eltávolítása a jogkivonat-gyorsítótárból a MSAL for Java (MSAL4j) használatával
 titleSuffix: Microsoft identity platform
-description: Learn how to view and remove accounts from the token cache using the Microsoft Authentication Library for Java.
+description: Ismerje meg, hogy miként tekintheti meg és távolíthatja el a fiókokat a jogkivonat-gyorsítótárból a Javához készült Microsoft Authentication Library használatával.
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,13 +25,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452486"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Get and remove accounts from the token cache using MSAL for Java
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Fiókok beolvasása és eltávolítása a jogkivonat-gyorsítótárból a MSAL for Java használatával
 
-MSAL for Java provides an in-memory token cache by default. The in-memory token cache lasts the duration of the application instance.
+A Java-MSAL alapértelmezés szerint memóriabeli jogkivonat-gyorsítótárat biztosít. A memóriában tárolt jogkivonat-gyorsítótár az alkalmazás példányának időtartamát is megtartja.
 
-## <a name="see-which-accounts-are-in-the-cache"></a>See which accounts are in the cache
+## <a name="see-which-accounts-are-in-the-cache"></a>A gyorsítótárban lévő fiókok megtekintése
 
-You can check what accounts are in the cache by calling `PublicClientApplication.getAccounts()` as shown in the following example:
+Az alábbi példában látható módon megtekintheti, hogy mely fiókok vannak a gyorsítótárban `PublicClientApplication.getAccounts()` meghívásával:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -42,9 +42,9 @@ PublicClientApplication pca = new PublicClientApplication.Builder(
 Set<IAccount> accounts = pca.getAccounts().join();
 ```
 
-## <a name="remove-accounts-from-the-cache"></a>Remove accounts from the cache
+## <a name="remove-accounts-from-the-cache"></a>Fiókok eltávolítása a gyorsítótárból
 
-To remove an account from the cache, find the account that needs to be removed and then call `PublicClientApplicatoin.removeAccount()` as shown in the following example:
+Ha el szeretne távolítani egy fiókot a gyorsítótárból, keresse meg azt a fiókot, amelyet el kell távolítania, majd hívja meg a `PublicClientApplicatoin.removeAccount()` az alábbi példában látható módon:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -56,6 +56,6 @@ IAccount accountToBeRemoved = accounts.stream().filter(
 pca.removeAccount(accountToBeRemoved).join();
 ```
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
-If you are using MSAL for Java, learn about [Custom token cache serialization in MSAL for Java](msal-java-token-cache-serialization.md).
+Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).

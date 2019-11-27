@@ -1,6 +1,6 @@
 ---
-title: Manage your organizations from the My Account portal - Azure AD
-description: How to view and leave organizations connected to your work or school account from the Organizations page of the My Account portal.
+title: Szervezetek kezelése a saját fiók portálról – Azure AD
+description: A saját fiók portál szervezetek lapján megtekintheti és elhagyhatja a munkahelyi vagy iskolai fiókjához kapcsolódó szervezeteket.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,52 +19,52 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231848"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Manage organizations connected to your work or school account from the Organizations page
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Munkahelyi vagy iskolai fiókjához kapcsolódó szervezetek kezelése a szervezetek lapról
 
-You can manage your organizations from the **Organizations** page of the **My Account** portal.
+A szervezeteket a **saját fiók** portál **szervezetek** lapján kezelheti.
 
-There are two types of organizations shown on the **Organizations** page:
+A **szervezetek lapon két típusú szervezet látható** :
 
-- **Home organization.** Your home organization is the organization that owns your work or school account. You can't leave your home organization.
+- **Otthoni szervezet.** Otthoni szervezete a munkahelyi vagy iskolai fiókját birtokló szervezet. Nem hagyhatja a saját szervezetét.
 
-- **Other organizations.** The other organizations are any group that you've signed in to previously using your work or school account. You can leave any of these organizations at any time.
+- **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
     >[!NOTE]
-    > If you don't have an assigned Home organization, you'll just see a single heading that says Organizations with the list of your associated organizations.
+    > Ha nem rendelkezik hozzárendelt otthoni szervezettel, csak egyetlen fejléc jelenik meg, amely szerint a szervezetek a társított szervezetek listájával rendelkeznek.
 
-## <a name="view-your-organizations"></a>View your organizations
+## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
-2. Select **Organizations** from the left navigation pane or select the **Manage organizations** link from the **Organizations** block.
+2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 
-    ![My Account page, showing highlighted Organizations links](media/my-account-portal/my-account-portal-organizations.png)
+    ![Saját fiók lap, amely a Kiemelt szervezetek hivatkozásait mutatja](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Review the information for your **Home organization**.
+3. Tekintse át a saját **szervezete**adatait.
 
-    ![Organizations page](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Szervezetek lap](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Review your other associated organizations, making sure you recognize all of the organizations connected to your account.
+4. Tekintse át a többi társított szervezetet, és győződjön meg arról, hogy ismeri fel a fiókhoz csatlakozó összes szervezetet.
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
 
-You can leave any organization that isn't your Home organization.
+Minden olyan szervezetet meghagyhat, amely nem a saját szervezete.
 
 >[!Important]
->If you leave an organization by mistake, there's no way to undo it. You'll have to wait for the administrator of that organization to invite you again.
+>Ha a szervezetet tévedésből hagyja, a visszavonás nem vonható vissza. Várnia kell, amíg az adott szervezet rendszergazdája újra meghívja Önt.
 
-1. Select **Leave organization** next to the organization you want to leave, and then select **Leave** to confirm you want to leave.
+1. Válassza a **szervezet elhagyása** lehetőséget a meghagyni kívánt szervezet mellett, majd válassza a **Kilépés** lehetőséget, és erősítse meg, hogy el kívánja hagyni.
 
-    ![Organizations page with highlighted leave organization link](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Szervezetek lap Kiemelt Kilépés a szervezeti hivatkozással](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-After viewing your organizations, you can:
+A szervezetek megtekintése után a következőket teheti:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).

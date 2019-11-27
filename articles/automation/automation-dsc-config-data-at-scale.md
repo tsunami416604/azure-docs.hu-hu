@@ -1,7 +1,7 @@
 ---
-title: Configuration data at scale - Azure Automation
-description: Learn how to configure data at scale for state configuration in Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Konfigurációs adatmennyiség – Azure Automation
+description: Megtudhatja, hogyan konfigurálhatja az adatmennyiséget a Azure Automation állapotának konfigurálásához.
+keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -19,38 +19,38 @@ ms.locfileid: "74231707"
 ---
 # <a name="configuration-data-at-scale"></a>Konfigurációs adatok nagy mennyiségben
 
-> Applies To: Windows PowerShell 5.1
+> A következőkre vonatkozik: Windows PowerShell 5,1
 
-Managing hundreds or thousands of servers can be a challenge.
-Customers have provided feedback that the most difficult aspect is actually managing [configuration data](/powershell/scripting/dsc/configurations/configdata).
-Organizing information across logical constructs like location, type, and environment.
+Több száz vagy több ezer kiszolgáló kezelése kihívást jelenthet.
+Az ügyfelek visszajelzéseket adtak arról, hogy a legnehezebb szempont a [konfigurációs információk](/powershell/scripting/dsc/configurations/configdata)tényleges kezelése.
+Információk rendszerezése logikai szerkezetek között, például hely, típus és környezet.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
+> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
 
-## <a name="community-project-datum"></a>Community project: Datum
+## <a name="community-project-datum"></a>Közösségi projekt: Datum
 
-A community maintained solution named [Datum](https://github.com/gaelcolas/Datum) has been created to resolve this challenge.
-Datum builds on great ideas from other configuration management platforms and implements the same type of solution for PowerShell DSC.
-Information is [organized in to text files](https://github.com/gaelcolas/Datum#3-intended-usage) based on logical ideas.
-Examples would be:
+A probléma megoldásához egy [Datum](https://github.com/gaelcolas/Datum) nevű közösségi karbantartó megoldás lett létrehozva.
+Az Datum nagyszerű ötleteket kínál más konfigurációs felügyeleti platformoktól, és ugyanazt a megoldást alkalmazza a PowerShell DSC-hez.
+Az adatokat logikai ötletek alapján [rendezi a rendszer szöveges fájlokba](https://github.com/gaelcolas/Datum#3-intended-usage) .
+Ilyenek például a következők:
 
-- Settings that should apply globally
-- Settings that should apply to all servers in a location
-- Settings that should apply to all database servers
-- Individual server settings
+- Globálisan alkalmazandó beállítások
+- A hely összes kiszolgálójára érvényes beállítások
+- Az összes adatbázis-kiszolgálóra alkalmazandó beállítások
+- Egyedi kiszolgálóbeállítások
 
-This information is organized in the file format you prefer (JSON, Yaml, or PSD1).
-Then cmdlets are provided to generate configuration data files by [consolidating the information](https://github.com/gaelcolas/Datum#datum-tree) from each file in to single view of a server or server role.
+Ezeket az információkat a kívánt fájlformátumban (JSON, YAML vagy PSD1) rendezi a rendszer.
+Ezután a rendszer parancsmagokat biztosít a konfigurációs adatfájlok létrehozásához azáltal, hogy az egyes fájlokból származó [információkat összevonja](https://github.com/gaelcolas/Datum#datum-tree) egy kiszolgáló vagy kiszolgálói szerepkör egyetlen nézetében.
 
-Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Az adatfájlok létrejötte után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) használatával MOF-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.
 
-To try out Datum, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/datum/) and download the solution or click "Project Site" to view the [documentation](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
+Az Datum kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/datum/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/gaelcolas/Datum#2-getting-started--concepts)megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
+- [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
+- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)

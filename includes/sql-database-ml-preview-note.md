@@ -13,7 +13,7 @@ ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462125"
 ---
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services is currently in preview. Sign up for the preview is currently closed.
+> A Azure SQL Database Machine Learning Services jelenleg előzetes verzióban érhető el. Az előzetes verzióra való regisztráció jelenleg be van zárva.
 > 
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

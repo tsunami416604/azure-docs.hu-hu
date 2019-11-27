@@ -62,7 +62,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-physical/migrate-project.png)
 
 
-7. Kattintson a **Tovább**gombra.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-physical/assessment-tool.png)
@@ -117,7 +117,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -296,7 +296,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Azure Migrate berendezés beállítása

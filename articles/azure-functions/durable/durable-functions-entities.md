@@ -1,6 +1,6 @@
 ---
-title: Durable entities - Azure Functions
-description: Learn what durable entities are and how to use them in the Durable Functions extension for Azure Functions.
+title: Tartós entitások – Azure Functions
+description: Megtudhatja, milyen tartós entitásokat használ, és hogyan használhatja őket a Azure Functions Durable Functions-bővítményében.
 author: cgillum
 ms.topic: overview
 ms.date: 11/02/2019
@@ -12,51 +12,51 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232931"
 ---
-# <a name="entity-functions"></a>Entity functions
+# <a name="entity-functions"></a>Entitás-függvények
 
-Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, the *entity trigger*. Unlike orchestrator functions, entity functions manage the state of an entity explicitly, rather than implicitly representing state via control flow.
-Entities provide a means for scaling out applications by distributing the work across many entities, each with a modestly sized state.
+Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitás-triggerrel*működik. Az Orchestrator függvényektől eltérően az Entity functions az entitások állapotát explicit módon kezeli, ahelyett, hogy az állapotot a vezérlési folyamaton keresztül implicit módon jelképezi.
+Az entitások lehetővé teszik az alkalmazások méretezését azáltal, hogy számos entitáson keresztül terjesztik a munkát, amelyek mindegyike szerény méretű állapotú.
 
 > [!NOTE]
-> Entity functions and related functionality is only available in Durable Functions 2.0 and above.
+> Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el.
 
-## <a name="general-concepts"></a>General concepts
+## <a name="general-concepts"></a>Általános fogalmak
 
-Entities behave a bit like tiny services that communicate via messages. Each entity has a unique identity and an internal state (if it exists). Like services or objects, entities perform operations when prompted to do so. When an operation executes, it might update the internal state of the entity. It might also call external services and wait for a response. Entities communicate with other entities, orchestrations, and clients by using messages that are implicitly sent via reliable queues. 
+Az entitások olyan kis-és nagyvállalati szolgáltatásokat is tanúsítanak, amelyek üzenetek használatával kommunikálnak. Minden entitás egyedi identitással és belső állapottal rendelkezik (ha létezik). A szolgáltatásokhoz vagy objektumokhoz hasonlóan az entitások is végrehajtják a műveleteket, amikor a rendszer erre kéri. Egy művelet végrehajtásakor előfordulhat, hogy az entitás belső állapotát frissíti. Külső szolgáltatásokat is meghívhat, és megvárhatja a választ. Az entitások a megbízható várólistákon keresztül implicit módon elküldött üzenetek használatával kommunikálnak más entitásokkal, összeszerelésekkel és ügyfelekkel. 
 
-To prevent conflicts, all operations on a single entity are guaranteed to execute serially, that is, one after another. 
+Az ütközések elkerülése érdekében az egyetlen entitáson végrehajtott összes művelet végrehajtása a szerializált, azaz a másik után történik. 
 
-### <a name="entity-id"></a>Entity ID
-Entities are accessed via a unique identifier, the *entity ID*. An entity ID is simply a pair of strings that uniquely identifies an entity instance. It consists of an:
+### <a name="entity-id"></a>Entitás azonosítója
+Az entitások egyedi azonosítóval, az *entitás azonosítójának*használatával érhetők el. Az entitás-AZONOSÍTÓk egyszerűen olyan karakterláncok, amelyek egyedileg azonosítanak egy entitás-példányt. A következőkből áll:
 
-* **Entity name**, which is a name that identifies the type of the entity. An example is "Counter." This name must match the name of the entity function that implements the entity. It isn't sensitive to case.
-* **Entity key**, which is a string that uniquely identifies the entity among all other entities of the same name. An example is a GUID.
+* Az **entitás neve**, amely az entitás típusát azonosító név. Ilyen például a "Counter". A névnek meg kell egyeznie az entitást megvalósító entitás-függvény nevével. Nem érzékeny az esetre.
+* Az **entitás kulcsa**, amely egy olyan karakterlánc, amely egyedileg azonosítja az entitást az azonos nevű entitások között. Ilyen például egy GUID.
 
-For example, a `Counter` entity function might be used for keeping score in an online game. Each instance of the game has a unique entity ID, such as `@Counter@Game1` and `@Counter@Game2`. All operations that target a particular entity require specifying an entity ID as a parameter.
+Előfordulhat például, hogy egy `Counter` Entity függvényt használ a pontszámok online játékokban való megőrzésére. A játék minden példánya egyedi AZONOSÍTÓval rendelkezik, például `@Counter@Game1` és `@Counter@Game2`. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
 
-### <a name="entity-operations"></a>Entity operations ###
+### <a name="entity-operations"></a>Entitások műveletei ###
 
-To invoke an operation on an entity, specify the:
+Egy művelet egy entitáson való meghívásához a következőt kell megadnia:
 
-* **Entity ID** of the target entity.
-* **Operation name**, which is a string that specifies the operation to perform. For example, the `Counter` entity could support `add`, `get`, or `reset` operations.
-* **Operation input**, which is an optional input parameter for the operation. For example, the add operation can take an integer amount as the input.
+* A célként megadott entitás **azonosítója** .
+* A **művelet neve**, amely egy karakterlánc, amely meghatározza a végrehajtandó műveletet. Az `Counter` entitás például támogathatja `add`, `get`vagy `reset` műveleteit.
+* A **művelet bemenete**, amely egy opcionális bemeneti paraméter a művelethez. A hozzáadási művelet például egész számot vehet igénybe bemenetként.
 
-Operations can return a result value or an error result, such as a JavaScript error or a .NET exception. This result or error can be observed by orchestrations that called the operation.
+A műveletek visszaadhatják az eredmény értékét vagy a hiba eredményét, például JavaScript-hibát vagy .NET-kivételt. Ezt az eredményt vagy hibát megfigyelheti a műveletet meghívó Összehangolók.
 
-An entity operation can also create, read, update, and delete the state of the entity. The state of the entity is always durably persisted in storage.
+Az entitások művelete az entitás állapotának létrehozását, olvasását, frissítését és törlését is elvégezheti. Az entitás állapota mindig tartósan marad a tárolóban.
 
-## <a name="define-entities"></a>Define entities
+## <a name="define-entities"></a>Entitások definiálása
 
-Currently, the two distinct APIs for defining entities are a:
+Jelenleg a két különböző API-k definiálják az entitásokat:
 
-**Function-based syntax**, where entities are represented as functions and operations are explicitly dispatched by the application. This syntax works well for entities with simple state, few operations, or a dynamic set of operations like in application frameworks. This syntax can be tedious to maintain because it doesn't catch type errors at compile time.
+**Function-alapú szintaxis**, amelyben az entitások függvényekként és műveletként vannak ábrázolva, az alkalmazás explicit módon elküldi őket. Ez a szintaxis jól működik az egyszerű állapottal rendelkező entitások, néhány művelet vagy az alkalmazás-keretrendszerek, például az alkalmazások dinamikus készlete esetében. Ez a szintaxis unalmas lehet a karbantartáshoz, mert a fordítási idő során nem kerül be a gépelési hibák.
 
-**Class-based syntax**, where entities and operations are represented by classes and methods. This syntax produces more easily readable code and allows operations to be invoked in a type-safe way. The class-based syntax is a thin layer on top of the function-based syntax, so both variants can be used interchangeably in the same application.
+**Osztály-alapú szintaxis**, amelyben az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis egy vékony réteg a függvény-alapú szintaxisban, így mindkét változat felhasználható ugyanabban az alkalmazásban.
 
-### <a name="example-function-based-syntax---c"></a>Example: Function-based syntax - C#
+### <a name="example-function-based-syntax---c"></a>Példa: függvény-alapú szintaxis-C#
 
-The following code is an example of a simple `Counter` entity implemented as a durable function. This function defines three operations, `add`, `reset`, and `get`, each of which operates on an integer state.
+A következő kód egy egyszerű `Counter`-entitás, amely tartós függvényként lett megvalósítva. Ez a függvény három műveletet határoz meg, `add`, `reset`és `get`, amelyek mindegyike egész számú állapotban működik.
 
 ```csharp
 [FunctionName("Counter")]
@@ -77,11 +77,11 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-For more information on the function-based syntax and how to use it, see [Function-based syntax](durable-functions-dotnet-entities.md#function-based-syntax).
+A függvény-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd a [Function-based szintaxist](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax---c"></a>Example: Class-based syntax - C#
+### <a name="example-class-based-syntax---c"></a>Példa: osztály alapú szintaxis –C#
 
-The following example is an equivalent implementation of the `Counter` entity using classes and methods.
+A következő példa az `Counter` entitás egyenértékű implementációját osztályok és metódusok használatával.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -102,15 +102,15 @@ public class Counter
 }
 ```
 
-The state of this entity is an object of type `Counter`, which contains a field that stores the current value of the counter. To persist this object in storage, it's serialized and deserialized by the [Json.NET](https://www.newtonsoft.com/json) library. 
+Az entitás állapota `Counter`típusú objektum, amely egy olyan mezőt tartalmaz, amely a számláló aktuális értékét tárolja. Ha meg szeretné őrizni ezt az objektumot a tárolóban, a rendszer szerializálja és deszerializálja a [JSON.net](https://www.newtonsoft.com/json) -könyvtár. 
 
-For more information on the class-based syntax and how to use it, see [Defining entity classes](durable-functions-dotnet-entities.md#defining-entity-classes).
+Az osztály-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd: entitás- [osztályok meghatározása](durable-functions-dotnet-entities.md#defining-entity-classes).
 
-### <a name="example-javascript-entity"></a>Example: JavaScript entity
+### <a name="example-javascript-entity"></a>Példa: JavaScript-entitás
 
-Durable entities are available in JavaScript starting with version **1.3.0** of the `durable-functions` npm package. The following code is the `Counter` entity implemented as a durable function written in JavaScript.
+A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben. A következő kód a JavaScriptben írt tartós függvényként megvalósított `Counter` entitás.
 
-**function.json**
+**function. JSON**
 ```json
 {
   "bindings": [
@@ -124,7 +124,7 @@ Durable entities are available in JavaScript starting with version **1.3.0** of 
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -145,27 +145,27 @@ module.exports = df.entity(function(context) {
 });
 ```
 
-## <a name="access-entities"></a>Access entities
+## <a name="access-entities"></a>Hozzáférési entitások
 
-Entities can be accessed using one-way or two-way communication. The following terminology distinguishes the two forms of communication: 
+Az entitások egyirányú vagy kétirányú kommunikációval érhetők el. A következő terminológia megkülönbözteti a kommunikáció két formáját: 
 
-* **Calling** an entity uses two-way (round-trip) communication. You send an operation message to the entity, and then wait for the response message before you continue. The response message can provide a result value or an error result, such as a JavaScript error or a .NET exception. This result or error is then observed by the caller.
-* **Signaling** an entity uses one-way (fire and forget) communication. You send an operation message but don't wait for a response. While the message is guaranteed to be delivered eventually, the sender doesn't know when and can't observe any result value or errors.
+* Az entitások **hívása** kétirányú (egyirányú) kommunikációt használ. A művelet üzenetet küld az entitásnak, majd a folytatás előtt várja meg a válaszüzenetet. A válaszüzenet egy eredmény értékét vagy egy hiba eredményét, például JavaScript-hibát vagy .NET-kivételt is biztosíthat. Ezt az eredményt vagy hibát a hívó észleli.
+* Egy entitás **jelzése** egyirányú (tűz-és elfelejti) kommunikációt használ. Elküld egy műveleti üzenetet, de nem vár a válaszra. Amíg az üzenet garantáltan kézbesíthető, a küldő nem tudja, hogy mikor és nem észleli az eredményeket és a hibákat.
 
-Entities can be accessed from within client functions, from within orchestrator functions, or from within entity functions. Not all forms of communication are supported by all contexts:
+Az entitások a Orchestrator függvényeken belül vagy az Entity functions szolgáltatásból érhetők el az ügyfél-függvényekből. Az összes kontextus nem támogatja a kommunikáció összes formáját:
 
-* From within clients, you can signal entities and you can read the entity state.
-* From within orchestrations, you can signal entities and you can call entities.
-* From within entities, you can signal entities.
+* Az ügyfeleken belül megadhatja az entitásokat, és elolvashatja az entitás állapotát.
+* A folyamatokon belül megadhatja az entitásokat, és meghívhatja az entitásokat.
+* Az entitásokon belül megadhatja az entitásokat.
 
-The following examples illustrate these various ways of accessing entities.
+Az alábbi példák az entitások elérésének különféle módjait szemléltetik.
 
 > [!NOTE]
-> For simplicity, the following examples show the loosely typed syntax for accessing entities. In general, we recommend that you [access entities through interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) because it provides more type checking.
+> Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy az [entitásokat a felületeken keresztül érheti](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) el, mivel több típusú ellenőrzést is biztosít.
 
-### <a name="example-client-signals-an-entity"></a>Example: Client signals an entity
+### <a name="example-client-signals-an-entity"></a>Példa: az ügyfél jelzi az entitást
 
-To access entities from an ordinary Azure Function, which is also known as a client function, use the [entity client output binding](durable-functions-bindings.md#entity-client). The following example shows a queue-triggered function signaling an entity using this binding.
+Ha az entitásokat egy általános Azure-függvényből szeretné elérni, amely más néven ügyfél-függvény, használja az [entitás ügyfél-kimeneti kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -190,11 +190,11 @@ module.exports = async function (context) {
 };
 ```
 
-The term *signal* means that the entity API invocation is one-way and asynchronous. It's not possible for a client function to know when the entity has processed the operation. Also, the client function can't observe any result values or exceptions. 
+A *jel* kifejezés azt jelenti, hogy az entitás API-hívása egyirányú és aszinkron. Az ügyfél nem tudja tudni, hogy mikor dolgozza fel a műveletet az entitás. Emellett az ügyfél függvény nem tudja megfigyelni az eredmények értékét vagy kivételeit. 
 
-### <a name="example-client-reads-an-entity-state"></a>Example: Client reads an entity state
+### <a name="example-client-reads-an-entity-state"></a>Példa: az ügyfél beolvas egy entitás állapotát
 
-Client functions can also query the state of an entity, as shown in the following example:
+Az ügyfél functions egy entitás állapotát is lekérdezheti az alábbi példában látható módon:
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -218,11 +218,11 @@ module.exports = async function (context) {
 };
 ```
 
-Entity state queries are sent to the Durable tracking store and return the entity's most recently persisted state. This state is always a "committed" state, that is, it's never a temporary intermediate state assumed in the middle of executing an operation. However, it's possible that this state is stale compared to the entity's in-memory state. Only orchestrations can read an entity's in-memory state, as described in the following section.
+Az entitások állapotának lekérdezéseit a rendszer a tartós nyomkövetési tárolóba küldi, és az entitás legutóbb megőrzött állapotát adja vissza. Ez az állapot mindig "véglegesített" állapot, azaz soha nem ideiglenes közbenső állapot, amelyet a művelet végrehajtásának közepén feltételeznek. Azonban lehetséges, hogy ez az állapot elavult az entitás memórián belüli állapotához képest. A következő szakaszban leírtak szerint csak a bevezetések tudják olvasni az entitás memóriában lévő állapotát.
 
-### <a name="example-orchestration-signals-and-calls-an-entity"></a>Example: Orchestration signals and calls an entity
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Példa: előkészítési jelek és entitások meghívása
 
-Orchestrator functions can access entities by using APIs on the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). The following example code shows an orchestrator function calling and signaling a `Counter` entity.
+A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy `Counter` entitást hív meg és jelez.
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -256,15 +256,15 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Only orchestrations are capable of calling entities and getting a response, which could be either a return value or an exception. Client functions that use the [client binding](durable-functions-bindings.md#entity-client) can only signal entities.
+Csak a bevezetések képesek az entitások meghívására és a válasz lekérésére, ami lehet visszatérési érték vagy kivétel. Az [ügyfél-kötést](durable-functions-bindings.md#entity-client) használó ügyfél-függvények csak az entitásokat jelezhetik.
 
 > [!NOTE]
-> Calling an entity from an orchestrator function is similar to calling an [activity function](durable-functions-types-features-overview.md#activity-functions) from an orchestrator function. The main difference is that entity functions are durable objects with an address, which is the entity ID. Entity functions support specifying an operation name. Activity functions, on the other hand, are stateless and don't have the concept of operations.
+> Egy entitás Orchestrator-függvényből való meghívása hasonló a Orchestrator függvény egy [tevékenységi függvényének](durable-functions-types-features-overview.md#activity-functions) meghívásához. A fő különbség az, hogy az Entity functions olyan tartós objektumok, amelyeknek van egy címe, amely az entitás azonosítója. Az Entity functions támogatja a művelet nevének megadását. A Activity functions azonban állapot nélküli, és nem rendelkezik a műveletek fogalmával.
 
-### <a name="example-entity-signals-an-entity"></a>Example: Entity signals an entity
+### <a name="example-entity-signals-an-entity"></a>Példa: az entitás egy entitást jelzi
 
-An entity function can send signals to other entities, or even itself, while it executes an operation.
-For example, we can modify the previous `Counter` entity example so that it sends a "milestone-reached" signal to some monitor entity when the counter reaches the value 100.
+Az Entity függvény jeleket küldhet más entitásoknak, vagy akár saját maga is, miközben végrehajt egy műveletet.
+Például módosíthatjuk az előző `Counter` Entity példát úgy, hogy egy "mérföldkőnek számított" jelet küldjön egy figyelő entitásnak, amikor a számláló eléri a 100 értéket.
 
 ```csharp
    case "add":
@@ -290,16 +290,16 @@ For example, we can modify the previous `Counter` entity example so that it send
         break;
 ```
 
-## <a name="entity-coordination"></a>Entity coordination
+## <a name="entity-coordination"></a>Entitások koordinálása
 
-There might be times when you need to coordinate operations across multiple entities. For example, in a banking application, you might have entities that represent individual bank accounts. When you transfer funds from one account to another, you must ensure that the source account has sufficient funds. You also must ensure that updates to both the source and destination accounts are done in a transactionally consistent way.
+Előfordulhatnak olyan időpontok, amikor több entitáson keresztül kell összehangolni a műveleteket. Egy banki alkalmazásban például lehetnek olyan entitások, amelyek egyéni bankszámlákat jelképeznek. Ha az egyik fiókból a másikba helyezi át a forrásokat, gondoskodnia kell arról, hogy a forrásoldali fiók elegendő összegű legyen. Emellett biztosítania kell, hogy a forrás-és a célhelyek frissítései tranzakciós szempontból konzisztens módon történjenek.
 
-### <a name="example-transfer-funds-c"></a>Example: Transfer funds (C#)
+### <a name="example-transfer-funds-c"></a>Példa: átutalási alapokC#()
 
-The following example code transfers funds between two account entities by using an orchestrator function. Coordinating entity updates requires using the `LockAsync` method to create a _critical section_ in the orchestration.
+A következő példában a kód egy Orchestrator függvény használatával továbbítja az alapokat a két fiók entitásai között. Az entitások frissítéseinek koordinálásához a `LockAsync` metódus használatával kell létrehozni egy _kritikus szakaszt_ a koordinációban.
 
 > [!NOTE]
-> For simplicity, this example reuses the `Counter` entity defined previously. In a real application, it would be better to define a more detailed `BankAccount` entity.
+> Az egyszerűség kedvéért ez a példa a korábban definiált `Counter` entitást használja. Egy valós alkalmazásban jobb lenne egy részletesebb `BankAccount` entitás meghatározása.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -341,61 +341,61 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-In .NET, `LockAsync` returns `IDisposable`, which ends the critical section when disposed. This `IDisposable` result can be used together with a `using` block to get a syntactic representation of the critical section.
+A .NET-ben a `LockAsync` `IDisposable`t ad vissza, amely az Elvetés során a kritikus szakaszt ér véget. Ez a `IDisposable` eredmény `using` blokkmal együtt használható a kritikus szakasz szintaktikai ábrázolásának beolvasásához.
 
-In the preceding example, an orchestrator function transferred funds from a source entity to a destination entity. The `LockAsync` method locked both the source and destination account entities. This locking ensured that no other client could query or modify the state of either account until the orchestration logic exited the critical section at the end of the `using` statement. This behavior prevents the possibility of overdrafting from the source account.
-
-> [!NOTE] 
-> When an orchestration terminates, either normally or with an error, any critical sections in progress are implicitly ended and all locks are released.
-
-### <a name="critical-section-behavior"></a>Critical section behavior
-
-The `LockAsync` method creates a critical section in an orchestration. These critical sections prevent other orchestrations from making overlapping changes to a specified set of entities. Internally, the `LockAsync` API sends "lock" operations to the entities and returns when it receives a "lock acquired" response message from each of these same entities. Both lock and unlock are built-in operations supported by all entities.
-
-No operations from other clients are allowed on an entity while it's in a locked state. This behavior ensures that only one orchestration instance can lock an entity at a time. If a caller tries to invoke an operation on an entity while it's locked by an orchestration, that operation is placed in a pending operation queue. No pending operations are processed until after the holding orchestration releases its lock.
+Az előző példában egy Orchestrator-függvény a forrás entitásból egy célként megadott entitásba ruházta át a forrásokat. A `LockAsync` metódus a forrás és a cél fiók entitásait is zárolta. Ez a zárolás biztosítja, hogy egyetlen másik ügyfél sem tudja lekérdezni vagy módosítani a fiók állapotát, amíg a (z) `using` utasítás végén a kritikus szakaszt kilépett. Ez a viselkedés megakadályozza a forrás fiókból való túllépés lehetőségét.
 
 > [!NOTE] 
-> This behavior is slightly different from synchronization primitives used in most programming languages, such as the `lock` statement in C#. For example, in C#, the `lock` statement must be used by all threads to ensure proper synchronization across multiple threads. Entities, however, don't require all callers to explicitly lock an entity. If any caller locks an entity, all other operations on that entity are blocked and queued behind that lock.
+> Ha egy összehangolás általában vagy hibával leáll, a folyamatban lévő kritikus fejezetek implicit módon véget ér, és minden zárolás megjelent.
 
-Locks on entities are durable, so they persist even if the executing process is recycled. Locks are internally persisted as part of an entity's durable state.
+### <a name="critical-section-behavior"></a>Kritikus szakasz viselkedése
 
-Unlike transactions, critical sections don't automatically roll back changes in the case of errors. Instead, any error handling, such as roll-back or retry, must be explicitly coded, for example by catching errors or exceptions. This design choice is intentional. Automatically rolling back all the effects of an orchestration is difficult or impossible in general, because orchestrations might run activities and make calls to external services that can't be rolled back. Also, attempts to roll back might themselves fail and require further error handling.
+A `LockAsync` metódus kritikus szakaszt hoz létre egy előkészítési folyamatban. Ezekkel a kritikus részekkel megakadályozható, hogy más összehangolt módosításokat hozzon létre egy adott entitáson. Belsőleg a `LockAsync` API "zárolási" műveleteket küld az entitásoknak, és visszatér, ha "zárolási beszerzett" válaszüzenetet kap ezekről az entitásokról. A zárolás és a feloldás is az összes entitás által támogatott beépített művelet.
 
-### <a name="critical-section-rules"></a>Critical section rules
+A más ügyfelektől érkező műveletek nem engedélyezettek egy entitáson, amíg a zárolt állapotban van. Ez a viselkedés garantálja, hogy egyszerre csak egy összehangoló példány tud zárolni egy entitást. Ha a hívó egy művelettel próbál meg meghívást alkalmazni egy entitáson, miközben azt egy előkészítés zárolta, a művelet egy függőben lévő műveleti várólistába kerül. A függőben lévő műveletek addig nem lesznek feldolgozva, amíg a Holding-előkészítés fel nem oldja a zárolást.
 
-Unlike low-level locking primitives in most programming languages, critical sections are *guaranteed not to deadlock*. To prevent deadlocks, we enforce the following restrictions: 
+> [!NOTE] 
+> Ez a viselkedés némileg eltér a legtöbb programozási nyelvben használt szinkronizálási primitívekkel, például a `lock` utasításával C#. Például a-ben C#a `lock` utasítást minden szálnak használnia kell, hogy biztosítsa a megfelelő szinkronizálást több szálon. Az entitásoknak azonban nincs szükségük arra, hogy az entitások explicit módon zárolják az összes hívót. Ha bármelyik hívó zárol egy entitást, az adott entitáson végzett összes egyéb művelet blokkolva lesz, és a zárolás mögött van.
 
-* Critical sections can't be nested.
-* Critical sections can't create suborchestrations.
-* Critical sections can call only entities they have locked.
-* Critical sections can't call the same entity using multiple parallel calls.
-* Critical sections can signal only entities they haven't locked.
+Az entitásokra vonatkozó zárolások tartósak, így azok még akkor is megmaradnak, ha a végrehajtó folyamat újra lett hasznosítva. A zárolások belsőleg megmaradnak az entitás tartós állapotának részeként.
 
-Any violations of these rules cause a runtime error, such as `LockingRulesViolationException` in .NET, which includes a message that explains what rule was broken.
+A tranzakcióktól eltérően a kritikus részekben nem történik meg automatikusan a változások visszaállítása a hibák esetén. Ehelyett a hibákat, például a visszaállítást vagy az újrapróbálkozást explicit módon kell kódolni, például hibák vagy kivételek kifogásával. Ez a tervezési lehetőség szándékos. Az előkészítési folyamat összes hatásának automatikus visszaállítása általában nehéz vagy lehetetlen, mivel a munkafolyamatok tevékenységeket futtathatnak, és hívásokat végezhetnek olyan külső szolgáltatásokra, amelyek nem állíthatók vissza. A visszaállítási kísérletek is sikertelenek lehetnek, és további hibakezelés szükségesek.
 
-## <a name="comparison-with-virtual-actors"></a>Comparison with virtual actors
+### <a name="critical-section-rules"></a>Kritikus szakasz szabályai
 
-Many of the durable entities features are inspired by the [actor model](https://en.wikipedia.org/wiki/Actor_model). If you're already familiar with actors, you might recognize many of the concepts described in this article. Durable entities are particularly similar to [virtual actors](https://research.microsoft.com/projects/orleans/), or grains, as popularized by the [Orleans project](http://dotnet.github.io/orleans/). Példa:
+Az alacsony szintű zárolási primitívek a legtöbb programozási nyelven eltérően a kritikus fontosságú szakaszt *nem a holtpontra kell biztosítani*. A holtpontok megelőzése érdekében a következő korlátozásokat kell kikényszeríteni: 
 
-* Durable entities are addressable via an entity ID.
-* Durable entity operations execute serially, one at a time, to prevent race conditions.
-* Durable entities are created implicitly when they're called or signaled.
-* When not executing operations, durable entities are silently unloaded from memory.
+* A kritikus szakaszt nem lehet beágyazni.
+* A kritikus szakaszban nem hozhatók létre alfolyamatok.
+* A kritikus szakaszt csak a zárolt entitások hívhatják meg.
+* A kritikus szakaszban nem hívható meg ugyanaz az entitás több párhuzamos hívás használatával.
+* A kritikus szakaszban csak azok az entitások jelezhetnek, amelyek nincsenek zárolva.
 
-There are some important differences that are worth noting:
+A szabályok megszegése futásidejű hibát okoz, például `LockingRulesViolationException` a .NET-ben, amely tartalmaz egy üzenetet, amely elmagyarázza, hogy milyen szabály lett megszakítva.
 
-* Durable entities prioritize durability over latency, and so might not be appropriate for applications with strict latency requirements.
-* Durable entities don't have built-in timeouts for messages. In Orleans, all messages time out after a configurable time. The default is 30 seconds.
-* Messages sent between entities are delivered reliably and in order. In Orleans, reliable or ordered delivery is supported for content sent through streams, but isn't guaranteed for all messages between grains.
-* Request-response patterns in entities are limited to orchestrations. From within entities, only one-way messaging (also known as signaling) is permitted, as in the original actor model, and unlike grains in Orleans. 
-* Durable entities don't deadlock. In Orleans, deadlocks can occur and don't resolve until messages time out.
-* Durable entities can be used in conjunction with durable orchestrations and support distributed locking mechanisms. 
+## <a name="comparison-with-virtual-actors"></a>Összehasonlítás virtuális szereplőkkel
+
+A tartós entitások számos funkcióját a [színészi modell](https://en.wikipedia.org/wiki/Actor_model)ihlette. Ha már ismeri a szereplőket, felismerheti a cikkben ismertetett fogalmakat. A tartós entitások különösen hasonlók a [virtuális szereplőkkel](https://research.microsoft.com/projects/orleans/)vagy a gabonához, ahogyan az [Orleans-projekt](http://dotnet.github.io/orleans/)népszerűsítette. Például:
+
+* A tartós entitások az entitás AZONOSÍTÓján keresztül címezhető.
+* A tartós entitások műveletei a verseny feltételeinek megelőzése érdekében egyszerre hajtanak végre sorosan.
+* A tartós entitások implicit módon jönnek létre, amikor a rendszer meghívja vagy jelzi őket.
+* Ha nem hajtja végre a műveleteket, a tartós entitások csendesen törlődnek a memóriából.
+
+Fontos különbségek vannak, amelyeket érdemes megjegyezni:
+
+* A tartós entitások a késleltetést rangsorolják, ezért előfordulhat, hogy a szigorú késési követelményekkel rendelkező alkalmazások esetében nem megfelelő.
+* A tartós entitások nem rendelkeznek beépített időtúllépéssel az üzenetekhez. Orleans-ban minden üzenet időtúllépést eredményezett a konfigurálható idő után. Az alapértelmezett érték 30 másodperc.
+* Az entitások között küldött üzenetek megbízhatóan és sorrendben lesznek kézbesítve. Orleans-ban megbízható vagy rendezett kézbesítés támogatott a streameken keresztül küldött tartalmak esetében, de a gabonák közötti összes üzenet esetében nem garantált.
+* Az entitásokban a kérelem-válasz mintázatok csak a bevezetésekre korlátozódnak. Az entitásokon belül csak egyirányú üzenetküldés (más néven jelzés) engedélyezett, ahogy az eredeti modellben is, és ellentétben a magokkal a Orleansban. 
+* Tartós entitások nem holtpontos. Orleans-ban holtpontok léphetnek fel, és nem oldhatók fel az üzenetek időtúllépése.
+* A tartós entitások tartós felépítéssel és az elosztott zárolási mechanizmusok támogatásával használhatók. 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Read the Developer's guide to durable entities in .NET](durable-functions-dotnet-entities.md)
+> [Olvassa el a fejlesztői útmutató a tartós entitásokhoz a .NET-ben](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
-> [Learn about task hubs](durable-functions-task-hubs.md)
+> [Tudnivalók a feladatok hubokról](durable-functions-task-hubs.md)

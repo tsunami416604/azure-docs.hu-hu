@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Set up dev platform'
+title: 'Gyors útmutató: fejlesztői platform beállítása'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, you'll learn how to install the Speech SDK for your preferred platform and programming language combination.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan telepítheti a Speech SDK-t az előnyben részesített platformra és a programozási nyelv kombinációjára.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -18,10 +18,10 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221973"
 ---
-# <a name="quickstart-setup-development-environment"></a>Quickstart: Setup development environment
+# <a name="quickstart-setup-development-environment"></a>Gyors útmutató: telepítési fejlesztési környezet
 
 ::: zone pivot="programming-language-csharp"
-**Choose your target environment**
+**Válassza ki a kívánt környezetet**
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](../includes/quickstarts/platform/csharp-dotnet-windows.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
@@ -37,7 +37,7 @@ ms.locfileid: "74221973"
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-**Choose your target environment**
+**Válassza ki a kívánt környezetet**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macos)
@@ -48,8 +48,8 @@ ms.locfileid: "74221973"
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-**Choose your target environment**
-#### <a name="java-runtimetabjre"></a>[Java Runtime](#tab/jre)
+**Válassza ki a kívánt környezetet**
+#### <a name="java-runtimetabjre"></a>[Java-futtatókörnyezet](#tab/jre)
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 #### <a name="androidtabandroid"></a>[Android](#tab/android)
 [!INCLUDE [android](../includes/quickstarts/platform/java-android.md)]

@@ -1,7 +1,7 @@
 ---
-title: Errors and exceptions (MSAL)
+title: Hibák és kivételek (MSAL)
 titleSuffix: Microsoft identity platform
-description: Learn how to handle errors and exceptions, Conditional Access, and claims challenges in MSAL applications.
+description: Megtudhatja, hogyan kezelheti a hibákat és kivételeket, a feltételes hozzáférést és a MSAL-alkalmazásokban felmerülő kihívásokat.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -24,65 +24,65 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482063"
 ---
-# <a name="handle-msal-exceptions-and-errors"></a>Handle MSAL exceptions and errors
+# <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
-This article gives an overview of the different types of errors and recommendations for handling common sign-in errors.
+Ez a cikk áttekintést nyújt a különböző típusú hibákról és javaslatokról a gyakori bejelentkezési hibák kezeléséhez.
 
-## <a name="msal-error-handling-basics"></a>MSAL error handling basics
+## <a name="msal-error-handling-basics"></a>MSAL hibák kezelésének alapjai
 
-Exceptions in Microsoft Authentication Library (MSAL) are intended for app developers to troubleshoot--not for displaying to end users. Exception messages are not localized.
+A Microsoft Authentication Library (MSAL) kivételei az alkalmazások fejlesztői számára készültek – nem a végfelhasználók számára történő megjelenítéshez. A kivételek üzenetei nincsenek honosítva.
 
-When processing exceptions and errors, you can use the exception type itself and the error code to distinguish between exceptions.  For a list of error codes, see [Authentication and authorization error codes](reference-aadsts-error-codes.md).
+A kivételek és hibák feldolgozásakor használhatja a kivétel típusát és a hibakódot a kivételek megkülönböztetése érdekében.  A hibakódok listáját lásd: [hitelesítési és engedélyezési hibakódok](reference-aadsts-error-codes.md).
 
-During the sign-in experience, you may encounter errors about consents, Conditional Access (MFA, Device Management, Location-based restrictions), token issuance and redemption, and user properties.
+A bejelentkezési folyamat során hibák merülhetnek fel a beleegyezések, a feltételes hozzáférés (MFA, eszközkezelés, hely-alapú korlátozások), a jogkivonat kiállítása és a visszaváltás, valamint a felhasználói tulajdonságok miatt.
 
-See the following section that matches the language you are using for more details about error handling for your app.
+Az alkalmazás hibáinak kezelésével kapcsolatos további információkért tekintse meg a következő szakaszt, amely megfelel az Ön által használt nyelvnek.
 
 ## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-When processing .NET exceptions, you can use the exception type itself and the `ErrorCode` member to distinguish between exceptions. `ErrorCode` values are constants of type [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
+A .NET-kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode` értékek a [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet)típusú állandók.
 
-You can also have a look at the fields of [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet), and [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
+Tekintse meg a [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)és a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet)mezőit is.
 
-If [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) is thrown, try [Authentication and authorization error codes](reference-aadsts-error-codes.md) to see if the code is listed there.
+Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) eldobása megtörtént, próbálja meg a [hitelesítési és engedélyezési hibakódokat, és](reference-aadsts-error-codes.md) ellenőrizze, hogy a kód szerepel-e itt.
 
-### <a name="common-net-exceptions"></a>Common .NET exceptions
+### <a name="common-net-exceptions"></a>Gyakori .NET-kivételek
 
-Here are the common exceptions that might be thrown and some possible mitigations:  
+Íme a gyakori kivételek, amelyek felmerülhetnek, és néhány lehetséges megoldás:  
 
 | Kivétel | Hibakód | Kezelés|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: The user or administrator has not consented to use the application with ID '{appId}' named '{appName}'. Send an interactive authorization request for this user and resource.| You need to get user consent first. If you aren't using .NET Core (which doesn't have any Web UI), call (once only) `AcquireTokeninteractive`. If you are using .NET core or don't want to do an `AcquireTokenInteractive`, the user can navigate to a URL to give consent: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. to call `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: The user is required to use multi-factor authentication (MFA).| There is no mitigation. If MFA is configured for your tenant and Azure Active Directory (AAD) decides to enforce it, you need to fallback to an interactive flow such as `AcquireTokenInteractive` or `AcquireTokenByDeviceCode`.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: The grant type isn't supported over the */common* or */consumers* endpoints. Use the */organizations* or tenant-specific endpoint. You used */common*.| As explained in the message from Azure AD, the authority needs to have a tenant or otherwise */organizations*.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: The request body must contain the following parameter: `client_secret or client_assertion`.| This exception can be thrown if your application was not registered as a public client application in Azure AD. In the Azure portal, edit the manifest for your application and set `allowPublicClient` to `true`. |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Could not identify logged in user| The library was unable to query the current Windows logged-in user or this user isn't AD or AAD joined (work-place joined users aren't supported). Mitigation 1: on UWP, check that the application has the following capabilities: Enterprise Authentication, Private Networks (Client and Server), User Account Information. Mitigation 2: Implement your own logic to fetch the username (for example, john@contoso.com) and use the `AcquireTokenByIntegratedWindowsAuth` form that takes in the username.|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| This method relies on a protocol exposed by Active Directory (AD). If a user was created in Azure Active Directory without AD backing ("managed" user), this method will fail. Users created in AD and backed by AAD ("federated" users) can benefit from this non-interactive method of authentication. Mitigation: Use interactive authentication.|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), akkor a hívás (csak egyszer) `AcquireTokeninteractive`. Ha a .NET Core-t használja, vagy nem szeretne `AcquireTokenInteractive`t használni, a felhasználó megnyithatja az URL-címet a beleegyezés megadásához: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. `AcquireTokenInteractive`hívása: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: a felhasználónak a többtényezős hitelesítés (MFA) használatára van szüksége.| Nincs megoldás. Ha az MFA konfigurálva van a bérlőhöz, és Azure Active Directory (HRE) úgy dönt, hogy kikényszeríti azt, akkor egy interaktív folyamatra kell visszaállítania, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode`.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: a Grant típus nem támogatott a */gyakori hibák* -vagy */consumers* -végpontokon. Használja a */Organizations* vagy a bérlő-specifikus végpontot. A */gyakori hibák*használta.| Ahogy az az Azure AD-ban is szerepel, a szolgáltatónak Bérlővel vagy egyéb */Organizations*kell rendelkeznie.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: a kérés törzsének a következő paramétert kell tartalmaznia: `client_secret or client_assertion`.| Ez a kivétel akkor fordulhat elő, ha az alkalmazása nincs nyilvános ügyfélalkalmazásként regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa be a `allowPublicClient`t `true`re. |
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: nem azonosítható a bejelentkezett felhasználó| A függvénytár nem tudta lekérdezni az aktuálisan bejelentkezett Windows-felhasználót, vagy a felhasználó nem AD vagy HRE csatlakozott (a munkahelyhez csatlakoztatott felhasználók nem támogatottak). 1\. megoldás: a UWP győződjön meg arról, hogy az alkalmazás a következő képességekkel rendelkezik: vállalati hitelesítés, magánhálózat (ügyfél és kiszolgáló), felhasználói fiók adatai. 2\. megoldás: saját logikát implementálhat a Felhasználónév lekéréséhez (például john@contoso.com), és használhatja a felhasználónévhez tartozó `AcquireTokenByIntegratedWindowsAuth` űrlapot.|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Ez a módszer Active Directory (AD) által közzétett protokollra támaszkodik. Ha a felhasználó a Azure Active Directory AD-biztonsági mentés nélkül lett létrehozva ("felügyelt" felhasználó), ez a metódus sikertelen lesz. Az AD-ben létrehozott és a HRE által támogatott felhasználók ("összevont" felhasználók) kihasználhatják ezt a nem interaktív hitelesítési módszert. Enyhítés: használjon interaktív hitelesítést.|
 
 ### `MsalUiRequiredException`
 
-One of common status codes returned from MSAL.NET when calling `AcquireTokenSilent()` is `MsalError.InvalidGrantError`. This status code means that the application should call the authentication library again, but in interactive mode (AcquireTokenInteractive or AcquireTokenByDeviceCodeFlow for public client applications, and do a challenge in Web apps). This is because additional user interaction is required before authentication token can be issued.
+`AcquireTokenSilent()` `MsalError.InvalidGrantError`hívásakor a MSAL.NET által visszaadott általános állapotkódok egyike. Ez az állapotkód azt jelenti, hogy az alkalmazásnak újra meg kell hívnia a hitelesítési könyvtárat, de interaktív módban (AcquireTokenInteractive vagy AcquireTokenByDeviceCodeFlow a nyilvános ügyfélalkalmazások számára, és el kell végeznie egy kihívást a web Appsben). Ennek az az oka, hogy a hitelesítési jogkivonat kiállítása előtt további felhasználói beavatkozásra van szükség.
 
-Most of the time when `AcquireTokenSilent` fails, it is because the token cache doesn't have tokens matching your request. Access tokens expire in 1 hour, and `AcquireTokenSilent` will try to fetch a new one based on a refresh token (in OAuth2 terms, this is the "Refresh Token' flow). This flow can also fail for various reasons, for example if a tenant admin configures more stringent login policies. 
+A `AcquireTokenSilent` meghibásodása esetén az az oka, hogy a jogkivonat-gyorsítótár nem rendelkezik a kérelemnek megfelelő jogkivonatokkal. A hozzáférési jogkivonatok 1 órán belül lejárnak, és `AcquireTokenSilent` egy új frissítési jogkivonat alapján próbál meg beolvasni egy újat (OAuth2 értelemben ez a "refresh token" folyamat). Ez a folyamat több okból is meghiúsulhat, például ha a bérlői rendszergazda szigorúbb bejelentkezési házirendeket konfigurál. 
 
-The interaction aims at having the user do an action. Some of those conditions are easy for users to resolve (for example, accept Terms of Use with a single click), and some can't be resolved with the current configuration (for example, the machine in question needs to connect to a specific corporate network). Some help the user setting-up Multi-factor authentication, or install Microsoft Authenticator on their device.
+A beavatkozás célja, hogy a felhasználó műveletet hajtson végre. Bizonyos feltételek egyszerűen feloldhatók a felhasználók számára (például elfogadják a használati feltételeket egyetlen kattintással), és néhány nem oldható fel a jelenlegi konfigurációval (például a szóban forgó gépnek egy adott vállalati hálózathoz kell csatlakoznia). Némi segítség a felhasználónak a többtényezős hitelesítés beállításában, vagy a Microsoft Authenticator telepítését az eszközön.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` classification enumeration
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` besorolások enumerálása
 
-MSAL exposes a `Classification` field, which you can read to provide a better user experience, for example to tell the user that their password expired or that they'll need to provide consent to use some resources. The supported values are part of the `UiRequiredExceptionClassification` enum:
+A MSAL egy `Classification` mezőt tesz elérhetővé, amely lehetővé teszi, hogy jobb felhasználói élményt nyújtson, például hogy tájékoztassa a felhasználót arról, hogy a jelszavuk lejárt, vagy hogy bizonyos erőforrások használatához meg kell adnia az engedélyt. A támogatott értékek a `UiRequiredExceptionClassification` enumerálás részét képezik:
 
-| Osztályozás    | Jelentés           | Recommended handling |
+| Osztályozás    | Jelentés           | Ajánlott kezelési |
 |-------------------|-------------------|----------------------|
-| BasicAction | Condition can be resolved by user interaction during the interactive authentication flow. | Call AcquireTokenInteractively(). |
-| AdditionalAction | Condition can be resolved by additional remedial interaction with the system, outside of the interactive authentication flow. | Call AcquireTokenInteractively() to show a message that explains the remedial action. Calling application may choose to hide flows that require additional_action if the user is unlikely to complete the remedial action. |
-| MessageOnly      | Condition can't be resolved at this time. Launching interactive authentication flow will show a message explaining the condition. | Call AcquireTokenInteractively() to show a message that explains the condition. AcquireTokenInteractively() will return UserCanceled error after the user reads the message and closes the window. Calling application may choose to hide flows that result in message_only if the user is unlikely to benefit from the message.|
-| ConsentRequired  | User consent is missing, or has been revoked. | Call AcquireTokenInteractively() for user to give consent. |
-| UserPasswordExpired | User's password has expired. | Call AcquireTokenInteractively() so that user can reset their password. |
-| PromptNeverFailed| Interactive Authentication was called with the parameter prompt=never, forcing MSAL to rely on browser cookies and not to display the browser. This has failed. | Call AcquireTokenInteractively() without Prompt.None |
-| AcquireTokenSilentFailed | MSAL SDK doesn't have enough information to fetch a token from the cache. This can be because no tokens are in the cache or an account wasn't found. The error message has more details.  | Call AcquireTokenInteractively(). |
-| None    | No further details are provided. Condition may be resolved by user interaction during the interactive authentication flow. | Call AcquireTokenInteractively(). |
+| BasicAction | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
+| AdditionalAction | A feltételt az interaktív hitelesítési folyamaton kívül további javító interakciók is feloldhatók a rendszerrel. | Hívja meg a AcquireTokenInteractively () egy olyan üzenet megjelenítéséhez, amely ismerteti a javító műveletet. A hívó alkalmazás dönthet úgy, hogy elrejti a additional_actiont igénylő folyamatokat, ha a felhasználó nem valószínű, hogy elvégzi a javító műveletet. |
+| MessageOnly      | A feltétel jelenleg nem oldható fel. Az interaktív hitelesítési folyamat elindításakor megjelenik egy üzenet, amely ismerteti a feltételt. | A AcquireTokenInteractively () hívásával megjeleníthető egy üzenet, amely ismerteti a feltételt. A AcquireTokenInteractively () UserCanceled-hibát ad vissza, miután a felhasználó beolvasta az üzenetet, és bezárja az ablakot. A hívó alkalmazás dönthet úgy, hogy elrejti a message_only eredményező folyamatokat, ha a felhasználó nem valószínű, hogy kihasználja az üzenetet.|
+| ConsentRequired  | A felhasználói beleegyezés hiányzik vagy vissza lett vonva. | A AcquireTokenInteractively () hívásával adja meg a felhasználót a beleegyezés megadásához. |
+| UserPasswordExpired | A felhasználó jelszava lejárt. | Hívja meg a AcquireTokenInteractively (), hogy a felhasználó alaphelyzetbe állíthatja a jelszavát. |
+| PromptNeverFailed| Az interaktív hitelesítés a következő paraméterrel lett meghívva: prompt = soha, kényszerítve a MSAL, hogy a böngésző cookie-kra támaszkodjon, és ne jelenjen meg a böngésző. Ez nem sikerült. | A AcquireTokenInteractively () hívása prompt nélkül. None |
+| AcquireTokenSilentFailed | A MSAL SDK nem rendelkezik elegendő információval a tokennek a gyorsítótárból való beolvasásához. Ennek oka az lehet, hogy a gyorsítótárban nincsenek tokenek, vagy nem található a fiók. A hibaüzenet további részleteket tartalmaz.  | A AcquireTokenInteractively () hívása. |
+| None    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 
-## <a name="net-code-example"></a>.NET code example
+## <a name="net-code-example"></a>.NET-kód – példa
 
 ```csharp
 AuthenticationResult res;
@@ -142,9 +142,9 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-MSAL.js provides error objects that abstract and classify the different types of common errors. It also provides interface to access specific details of the errors such as error messages to handle them appropriately.
+A MSAL. js olyan hibaüzeneteket biztosít, amelyek absztrakt és osztályozzák a gyakori hibák különböző típusait. Emellett felületet biztosít a hibák konkrét részleteinek eléréséhez, például a hibaüzenetek megfelelő kezeléséhez.
 
-### <a name="error-object"></a>Error object
+### <a name="error-object"></a>Hiba objektum
 
 ```javascript
 export class AuthError extends Error {
@@ -158,25 +158,25 @@ export class AuthError extends Error {
 }
 ```
 
-By extending the error class, you have access to the following properties:
-- `AuthError.message`:  Same as the `errorMessage`.
-- `AuthError.stack`: Stack trace for thrown errors.
+A hiba osztály kibővítésével a következő tulajdonságokat érheti el:
+- `AuthError.message`: ugyanaz, mint a `errorMessage`.
+- `AuthError.stack`: az eldobott hibák verem-nyomkövetése.
 
-### <a name="error-types"></a>Error types
+### <a name="error-types"></a>Hibák típusai
 
-The following error types are available:
+A következő típusú hibák érhetők el:
 
-- `AuthError`: Base error class for the MSAL.js library, also used for unexpected errors.
+- `AuthError`: a MSAL. js függvénytár alapszintű hiba osztálya váratlan hibákhoz is használatos.
 
-- `ClientAuthError`: Error class, which denotes an issue with Client authentication. Most errors that come from the library will be ClientAuthErrors. These errors result from things like calling a login method when login is already in progress, the user cancels the login, and so on.
+- `ClientAuthError`: Error osztály, amely az ügyfél-hitelesítéssel kapcsolatos problémát jelöli. A könyvtárból érkező hibák többsége ClientAuthErrors lesz. Ezek a hibák olyan dolgokból származnak, mint például a bejelentkezési módszer meghívása, ha a bejelentkezés már folyamatban van, a felhasználó megszakítja a bejelentkezést, és így tovább.
 
-- `ClientConfigurationError`: Error class, extends `ClientAuthError` thrown before requests are made when the given user config parameters are malformed or missing.
+- `ClientConfigurationError`: a hiba osztály, kiterjeszti `ClientAuthError` a kérések előtt, amikor a megadott felhasználói konfigurációs paraméterek hibásak vagy hiányoznak.
 
-- `ServerError`: Error class, represents the error strings sent by the authentication server. These may be errors such as invalid request formats or parameters, or any other errors that prevent the server from authenticating or authorizing the user.
+- `ServerError`: a Error osztály a hitelesítési kiszolgáló által elküldést jelző karakterláncokat jelöli. Ezek lehetnek olyan hibák, mint például az érvénytelen kérelmek formátuma vagy paraméterei, vagy bármilyen más hiba, amely megakadályozza, hogy a kiszolgáló hitelesítse vagy engedélyezze a felhasználót.
 
-- `InteractionRequiredAuthError`: Error class, extends `ServerError` to represent server errors, which require an interactive call. This error is thrown by `acquireTokenSilent` if the user is required to interact with the server to provide credentials or consent for authentication/authorization. Error codes include `"interaction_required"`, `"login_required"`, and `"consent_required"`.
+- `InteractionRequiredAuthError`: a hiba osztály, a kibővíti az `ServerError`, hogy a kiszolgálói hibákat képviseljék, amelyek interaktív hívást igényelnek. Ezt a hibát `acquireTokenSilent`, ha a felhasználónak a kiszolgálóval való interakcióra van szüksége a hitelesítő adatok megadásához vagy a hitelesítéshez/engedélyezéshez való hozzájáruláshoz. A hibakódok a következők: `"interaction_required"`, `"login_required"`és `"consent_required"`.
 
-For error handling in authentication flows with redirect methods (`loginRedirect`, `acquireTokenRedirect`), you'll need to register the callback, which is called with success or failure after the redirect using `handleRedirectCallback()` method as follows:
+Ha az átirányítási módszerekkel (`loginRedirect`, `acquireTokenRedirect`) történő hitelesítési folyamatok során hiba lép fel, regisztrálnia kell a visszahívást, amely sikeres vagy sikertelen volt, miután az átirányítás az `handleRedirectCallback()` metódus használatával történt a következő módon:
 
 ```javascript
 function authCallback(error, response) {
@@ -190,7 +190,7 @@ myMSALObj.handleRedirectCallback(authCallback);
 myMSALObj.acquireTokenRedirect(request);
 ```
 
-The methods for pop-up experience (`loginPopup`, `acquireTokenPopup`) return promises, so you can use the promise pattern (.then and .catch) to handle them as shown:
+Az előugró élmény (`loginPopup`, `acquireTokenPopup`) módszere az ígért értéket adja vissza, így az ígéret mintáját (. then és. Catch) használhatja az alábbi módon történő kezeléséhez:
 
 ```javascript
 myMSALObj.acquireTokenPopup(request).then(
@@ -201,17 +201,17 @@ myMSALObj.acquireTokenPopup(request).then(
     });
 ```
 
-### <a name="errors-that-require-interaction"></a>Errors that require interaction
+### <a name="errors-that-require-interaction"></a>Interakciót igénylő hibák
 
-An error is returned when you attempt to use a non-interactive method of acquiring a token such as `acquireTokenSilent`, but MSAL couldn't do it silently.
+A rendszer hibát ad vissza, ha nem interaktív módszert használ a tokenek beszerzéséhez, például `acquireTokenSilent`, de a MSAL nem tudta csendesen megtenni.
 
-Possible reasons are:
+A lehetséges okok a következők:
 
-- you need to sign in
-- you need to consent
-- you need to go through a multi-factor authentication experience.
+- be kell jelentkeznie
+- meg kell egyeznie
+- egy többtényezős hitelesítési felülettel kell eljárnia.
 
-The remediation is to call an interactive method such as `acquireTokenPopup` or `acquireTokenRedirect`:
+A szervizelés olyan interaktív módszer meghívása, mint `acquireTokenPopup` vagy `acquireTokenRedirect`:
 
 ```javascript
 // Request for Access Token
@@ -235,47 +235,47 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-In MSAL for Python, most errors are conveyed as a return value from the API call. The error is represented as a dictionary containing the JSON response from the Microsoft identity platform.
+A Pythonhoz készült MSAL a legtöbb hibát az API-hívásból visszaadott értékként továbbítja a rendszer. A hiba a Microsoft Identity platform JSON-válaszát tartalmazó szótárként jelenik meg.
 
-* A successful response contains the `"access_token"` key. The format of the response is defined by the OAuth2 protocol. For more information, see [5.1 Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)
-* An error response contains `"error"` and usually `"error_description"`. The format of the response is defined by the OAuth2 protocol. For more information, see [5.2 Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)
+* A sikeres válasz tartalmazza a `"access_token"` kulcsot. A válasz formátumát az OAuth2 protokoll határozza meg. További információ: [5,1 sikeres válasz](https://tools.ietf.org/html/rfc6749#section-5.1)
+* A hiba `"error"` és általában `"error_description"`t tartalmaz. A válasz formátumát az OAuth2 protokoll határozza meg. További információ: 5,2-es [hiba válasza](https://tools.ietf.org/html/rfc6749#section-5.2)
 
-When an error is returned, the `"error_description"` key contains a human-readable message; which in turn typically contains a Microsoft identity platform error code. For details about the various error codes, see [Authentication and authorization error codes](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes).
+Ha a rendszer hibát ad vissza, a `"error_description"` kulcs egy emberi olvasási üzenetet tartalmaz; Ez általában egy Microsoft Identity platform hibakódot tartalmaz. A különböző hibakódokról a [hitelesítési és engedélyezési hibakódok](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)című témakörben olvashat bővebben.
 
-In MSAL for Python, exceptions are rare because most errors are handled by returning an error value. The `ValueError` exception is only thrown when there is an issue with how you are attempting to use the library--such as when API parameter(s) are malformed.
+A MSAL for Python esetében a kivételek ritkák, mivel a legtöbb hibát egy hibaérték visszaadásával kezeli a rendszer. A `ValueError` kivétel csak akkor fordul elő, ha probléma van azzal, hogy hogyan próbálja használni a kódtárat – például ha az API-paraméter (ek) formátuma helytelen formátumú.
 
 ## <a name="javatabjava"></a>[Java](#tab/java)
 
-In MSAL for Java, there are three types of exceptions: `MsalClientException`, `MsalServiceException`, and `MsalInteractionRequiredException`; all which inherit from `MsalException`.
+A Java-MSAL háromféle kivétel létezik: `MsalClientException`, `MsalServiceException`és `MsalInteractionRequiredException`; minden, ami a `MsalException`tól örököl.
 
-- `MsalClientException` is thrown when an error occurs that is local to the library or device.
-- `MsalServiceException` is thrown when the secure token service (STS) returns an error response or another networking error occurs.
-- `MsalInteractionRequiredException` is thrown when UI interaction is required for authentication to succeed.
+- a `MsalClientException` akkor fordul elő, ha a könyvtár vagy az eszköz helyi hibája következik be.
+- `MsalServiceException` akkor kerül sor, amikor a biztonságos jogkivonat szolgáltatás (STS) hibaüzenetet ad vissza, vagy más hálózati hiba történik.
+- az `MsalInteractionRequiredException` akkor fordul elő, ha a sikeres hitelesítéshez felhasználói felületi interakció szükséges.
 
 ### <a name="msalserviceexception"></a>MsalServiceException
 
-`MsalServiceException` exposes HTTP headers returned in the requests to the STS. Access them via `MsalServiceException.headers()`
+`MsalServiceException` a kérelmekben visszaadott HTTP-fejléceket teszi elérhetővé az STS számára. Hozzáférés a `MsalServiceException.headers()` használatával
 
 ### <a name="msalinteractionrequiredexception"></a>MsalInteractionRequiredException
 
-One of common status codes returned from MSAL for Java when calling `AcquireTokenSilently()` is `InvalidGrantError`. This means that additional user interaction is required before an authentication token can be issued. Your application should call the authentication library again, but in interactive mode by sending `AuthorizationCodeParameters` or `DeviceCodeParameters` for public client applications.
+Az `AcquireTokenSilently()` `InvalidGrantError`meghívásakor a Java MSAL által visszaadott leggyakoribb állapotkódok egyike. Ez azt jelenti, hogy a hitelesítési jogkivonat kiállítása előtt további felhasználói beavatkozásra van szükség. Az alkalmazásnak újra meg kell hívnia a hitelesítési függvénytárat, de interaktív módban, ha `AuthorizationCodeParameters` vagy `DeviceCodeParameters` küld nyilvános ügyfélalkalmazások számára.
 
-Most of the time when `AcquireTokenSilently` fails, it's because the token cache doesn't have a token matching your request. Access tokens expire in one hour, and `AcquireTokenSilently` will try to get a new one based on a refresh token. In OAuth2 terms, this is the Refresh Token flow. This flow can also fail for various reasons such as when a tenant admin configures more stringent login policies.
+A `AcquireTokenSilently` meghibásodása esetén az az oka, hogy a jogkivonat-gyorsítótár nem rendelkezik a kérelemnek megfelelő jogkivonattal. A hozzáférési tokenek egy órán belül lejárnak, és `AcquireTokenSilently` egy frissítési jogkivonat alapján megpróbál új újat kapni. A OAuth2 szempontjából ez a jogkivonat-folyamat frissítése. Ez a folyamat több okból is meghiúsulhat, például ha a bérlői rendszergazda szigorúbb bejelentkezési házirendeket konfigurál.
 
-Some conditions that result in this error are easy for users to resolve. For example, they may need to accept Terms of Use. Or perhaps the request can't be fulfilled with the current configuration because the machine needs to connect to a specific corporate network.
+A hibát okozó bizonyos feltételek egyszerűen feloldhatók a felhasználók számára. Előfordulhat például, hogy el kell fogadniuk a használati feltételeket. Vagy lehet, hogy a kérés nem teljesíthető az aktuális konfigurációval, mert a gépnek egy adott vállalati hálózathoz kell kapcsolódnia.
 
-MSAL exposes a `reason` field, which you can use to provide a better user experience. For example, the `reason` field may lead you to tell the user that their password expired or that they'll need to provide consent to use some resources. The supported values are part of the  `InteractionRequiredExceptionReason` enum:
+A MSAL egy `reason` mezőt tesz elérhetővé, amelynek segítségével jobb felhasználói élményt biztosíthat. Előfordulhat például, hogy a `reason` mező arra utasítja a felhasználót, hogy a jelszavuk lejárt, vagy hogy meg kell adnia az egyes erőforrások használatának beleegyezikét. A támogatott értékek a `InteractionRequiredExceptionReason` enumerálás részét képezik:
 
-| Ok | Jelentés | Recommended Handling |
+| Ok | Jelentés | Ajánlott kezelési |
 |---------|-----------|-----------------------------|
-| `BasicAction` | Condition can be resolved by user interaction during the interactive authentication flow | Call `acquireToken` with interactive parameters |
-| `AdditionalAction` | Condition can be resolved by additional remedial interaction with the system outside of the interactive authentication flow. | Call `acquireToken` with interactive parameters to show a message that explains the remedial action to take. The calling app may choose to hide flows that require additional action if the user is unlikely to complete the remedial action. |
-| `MessageOnly` | Condition can't be resolved at this time. Launch interactive authentication flow to show a message explaining the condition. | Call `acquireToken` with interactive parameters to show a message that explains the condition. `acquireToken` will return the `UserCanceled` error after the user reads the message and closes the window. The app may choose to hide flows that result in message if the user is unlikely to benefit from the message. |
-| `ConsentRequired`| User consent is missing, or has been revoked. |Call `acquireToken` with interactive parameters so that the user can give consent. |
-| `UserPasswordExpired` | User's password has expired. | Call `acquireToken` with interactive parameter so the user can reset their password |
-| `None` |  Further details are provided. The condition may be resolved by user interaction during the interactive authentication flow. | Call `acquireToken` with interactive parameters |
+| `BasicAction` | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | `acquireToken` hívása interaktív paraméterekkel |
+| `AdditionalAction` | A feltételt az interaktív hitelesítési folyamaton kívüli rendszerrel folytatott további javító interakciók is megoldhatók. | A `acquireToken` interaktív paraméterekkel meghívásával megjeleníthető egy üzenet, amely leírja, hogy milyen javító műveletet kell végrehajtania. A hívó alkalmazás dönthet úgy, hogy elrejti azokat a folyamatokat, amelyek további műveletet igényelnek, ha a felhasználó nem valószínű, hogy befejezi a javító műveletet. |
+| `MessageOnly` | A feltétel jelenleg nem oldható fel. Interaktív hitelesítési folyamat elindítása a feltételt bemutató üzenet megjelenítéséhez. | A feltételt ismertető üzenet megjelenítéséhez hívja meg a `acquireToken`t interaktív paraméterekkel. a `acquireToken` a `UserCanceled` hibát fogja visszaadni, miután a felhasználó beolvasta az üzenetet, és bezárja az ablakot. Az alkalmazás dönthet úgy, hogy elrejti az üzenetet eredményező folyamatokat, ha a felhasználó nem valószínű, hogy kihasználja az üzenetet. |
+| `ConsentRequired`| A felhasználói beleegyezés hiányzik vagy vissza lett vonva. |Hívja meg `acquireToken` interaktív paraméterekkel, hogy a felhasználó beleegyezik. |
+| `UserPasswordExpired` | A felhasználó jelszava lejárt. | Hívja meg `acquireToken` interaktív paraméterrel, így a felhasználó alaphelyzetbe állíthatja a jelszavát |
+| `None` |  További részletek. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | `acquireToken` hívása interaktív paraméterekkel |
 
-### <a name="code-example"></a>Code Example
+### <a name="code-example"></a>Példa programkódra
 
 ```java
         IAuthenticationResult result;
@@ -302,24 +302,24 @@ MSAL exposes a `reason` field, which you can use to provide a better user experi
 
 ## <a name="iosmacostabiosmacos"></a>[iOS/macOS](#tab/iosmacos)
 
-The complete list of MSAL for iOS and macOS errors is listed in [MSALError enum](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128).
+Az iOS-és macOS-hibák MSAL teljes listája a [MSALError enumerálásban](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)szerepel.
 
-All MSAL produced errors are returned with `MSALErrorDomain` domain.
+A rendszer a MSAL által létrehozott összes hibát `MSALErrorDomain` tartománnyal adja vissza.
 
-For system errors, MSAL returns the original `NSError` from the system API. For example, if token acquisition fails because of a lack of network connectivity, MSAL returns an error with the `NSURLErrorDomain` domain and `NSURLErrorNotConnectedToInternet` code.
+Rendszerhibák esetén a MSAL az eredeti `NSError` a System API-ból adja vissza. Ha például a jogkivonat-beszerzés sikertelen a hálózati kapcsolat hiánya miatt, a MSAL hibát ad vissza a `NSURLErrorDomain` tartománnyal és `NSURLErrorNotConnectedToInternet` kóddal.
 
-We recommend that you handle at least the following two MSAL errors on the client side:
+Javasoljuk, hogy legalább a következő két MSAL-hibát kezelje az ügyfél oldalán:
 
-- `MSALErrorInteractionRequired`: The user must do an interactive request. There are many conditions that can lead to this error such as an expired authentication session or the need for additional authentication requirements. Call the MSAL interactive token acquisition API to recover. 
+- `MSALErrorInteractionRequired`: a felhasználónak interaktív kérést kell tennie. Számos olyan feltételt okozhat, amely a hiba, például egy lejárt hitelesítési munkamenet vagy további hitelesítési követelmények iránti igényét eredményezi. A helyreállításhoz hívja meg a MSAL Interactive token Acquisition API-t. 
 
-- `MSALErrorServerDeclinedScopes`: Some or all scopes were declined. Decide whether to continue with only the granted scopes, or stop the sign-in process.
+- `MSALErrorServerDeclinedScopes`: egy vagy több hatókör elutasítása megtörtént. Döntse el, hogy csak a megadott hatókörökkel folytatja-e a műveletet, vagy állítsa le a bejelentkezési folyamatot.
 
 > [!NOTE]
-> The `MSALInternalError` enum should only be used for reference and debugging. Do not try to automatically handle these errors at runtime. If your app encounters any of the errors that fall under `MSALInternalError`, you may want to show a generic user facing message explaining what happened.
+> A `MSALInternalError` enumerálást csak referenciához és hibakereséshez érdemes használni. Ne próbálja meg automatikusan kezelni ezeket a hibákat futásidőben. Ha az alkalmazás a `MSALInternalError`alatti hibák valamelyikét tapasztalja, érdemes megmutatni egy általános felhasználói üzenetet, amely elmagyarázza, mi történt.
 
-For example, `MSALInternalErrorBrokerResponseNotReceived` means that user didn't complete authentication and manually returned to the app. In this case, your app should show a generic error message explaining that authentication didn't complete and suggest that they try to authenticate again.
+`MSALInternalErrorBrokerResponseNotReceived` például azt jelenti, hogy a felhasználó nem fejezte be a hitelesítést, és manuálisan visszaküldte az alkalmazást. Ebben az esetben az alkalmazásnak általános hibaüzenetet kell mutatnia arról, hogy a hitelesítés nem fejeződött be, és azt sugallja, hogy újra megpróbálják hitelesíteni magukat.
 
-The following Objective-C sample code demonstrates best practices for handling some common error conditions:
+Az alábbi Objective-C mintakód bemutatja a gyakori hibák kezelésére vonatkozó ajánlott eljárásokat:
 
 ```objc
     MSALInteractiveTokenParameters *interactiveParameters = ...;
@@ -506,25 +506,25 @@ The following Objective-C sample code demonstrates best practices for handling s
 
 ---
 
-## <a name="conditional-access-and-claims-challenges"></a>Conditional Access and claims challenges
+## <a name="conditional-access-and-claims-challenges"></a>A feltételes hozzáférés és a jogcímek kihívásai
 
-When getting tokens silently, your application may receive errors when a [Conditional Access claims challenge](conditional-access-dev-guide.md) such as MFA policy is required by an API you're trying to access.
+A tokenek csendes lekérése esetén előfordulhat, hogy az alkalmazás hibát jelez, ha egy olyan API-val kapcsolatos [feltételes hozzáférési jogcímet](conditional-access-dev-guide.md) igényel, mint például az MFA-szabályzat.
 
-The pattern for handling this error is to interactively acquire a token using MSAL. Interactively acquiring a token prompts the user and gives them the opportunity to satisfy the required Conditional Access policy.
+A hiba kezelésére szolgáló minta a jogkivonat interaktív beszerzése a MSAL használatával. A jogkivonat interaktív beszerzése arra kéri a felhasználót, hogy adja meg a szükséges feltételes hozzáférési szabályzatot.
 
-In certain cases when calling an API requiring Conditional Access, you can receive a claims challenge in the error from the API. For instance if the Conditional Access policy is to have a managed device (Intune) the error will be something like [AADSTS53000: Your device is required to be managed to access this resource](reference-aadsts-error-codes.md) or something similar. In this case, you can pass the claims in the acquire token call so that the user is prompted to satisfy the appropriate policy.
+Bizonyos esetekben, amikor feltételes hozzáférést igénylő API-t hív meg, az API-val kapcsolatos hiba esetén a jogcím-kihívás is megjelenhet. Ha például a feltételes hozzáférési házirend felügyelt eszközzel (Intune) rendelkezik, a hiba a következőhöz hasonló lesz [: AADSTS53000: az eszköznek az erőforrás eléréséhez](reference-aadsts-error-codes.md) vagy hasonlóhoz kell tartoznia. Ebben az esetben átadhatja a jogcímeket a beszerzési jogkivonat hívásában, hogy a rendszer kérje a felhasználótól a megfelelő szabályzat teljesítését.
 
 ### <a name="net"></a>.NET
 
-When calling an API requiring Conditional Access from MSAL.NET, your application will need to handle claim challenge exceptions. This will appear as an [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) where the [Claims](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) property won't be empty.
+Ha a MSAL.NET feltételes hozzáférést igénylő API-t hív meg, az alkalmazásnak kezelnie kell a jogcímek kivételeit. Ez olyan [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) fog megjelenni, ahol a [jogcím](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) tulajdonság nem üres.
 
-To handle the claim challenge, you'll need to use the `.WithClaim()` method of the `PublicClientApplicationBuilder` class.
+A jogcím-kihívás kezeléséhez a `PublicClientApplicationBuilder` osztály `.WithClaim()` metódusát kell használnia.
 
 ### <a name="javascript"></a>JavaScript
 
-When getting tokens silently (using `acquireTokenSilent`) using MSAL.js, your application may receive errors when a [Conditional Access claims challenge](conditional-access-dev-guide.md) such as MFA policy is required by an API you're trying to access.
+Ha a tokeneket a MSAL. js használatával csendes úton (`acquireTokenSilent`használatával) kérdezi le, az alkalmazás hibákat kaphat, ha egy API-nak szüksége van egy [feltételes hozzáférési jogcímek](conditional-access-dev-guide.md) (például MFA-szabályzat) használatára.
 
-The pattern to handle this error is to make an interactive call to acquire token in MSAL.js such as `acquireTokenPopup` or `acquireTokenRedirect` as in the following example:
+A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a token MSAL. js-ben való beszerzéséhez, például `acquireTokenPopup` vagy `acquireTokenRedirect` az alábbi példában látható módon:
 
 ```javascript
 myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
@@ -543,37 +543,37 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 });
 ```
 
-Interactively acquiring the token prompts the user and gives them the opportunity to satisfy the required Conditional Access policy.
+A jogkivonat interaktív beszerzése kéri a felhasználót, és lehetőséget biztosít számukra a kötelező feltételes hozzáférési szabályzat kielégítésére.
 
-When calling an API requiring Conditional Access, you can receive a claims challenge in the error from the API. In this case, you can pass the claims returned in the error to the `claimsRequest` field of the `AuthenticationParameters.ts` class to satisfy the appropriate policy. 
+Ha feltételes hozzáférést igénylő API-t hív meg, az API-val kapcsolatos hiba esetén a jogcímek kérdését is megkaphatja. Ebben az esetben átadhatja a hibában visszaadott jogcímeket a `AuthenticationParameters.ts` osztály `claimsRequest` mezőjébe, hogy az megfeleljen a megfelelő házirendnek. 
 
-See [Requesting Additional Claims](active-directory-optional-claims.md) for more detail.
+További részletekért lásd: [további jogcímek igénylése](active-directory-optional-claims.md) .
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerekre
 
-MSAL for iOS and macOS allows you to request specific claims in both interactive and silent token acquisition scenarios.
+Az iOS és a macOS rendszerhez készült MSAL lehetővé teszi, hogy konkrét jogcímeket kérjen az interaktív és csendes jogkivonat-beszerzési forgatókönyvekben is.
 
-To request custom claims, specify `claimsRequest` in `MSALSilentTokenParameters` or `MSALInteractiveTokenParameters`.
+Egyéni jogcímek igényléséhez adja meg a `claimsRequest` `MSALSilentTokenParameters` vagy `MSALInteractiveTokenParameters`.
 
-See [Request custom claims using MSAL for iOS and macOS](request-custom-claims.md) for more info.
+További információért tekintse meg az [egyéni jogcímek kérése az MSAL használatával iOS és MacOS](request-custom-claims.md) rendszerhez című témakört.
 
-## <a name="retrying-after-errors-and-exceptions"></a>Retrying after errors and exceptions
+## <a name="retrying-after-errors-and-exceptions"></a>Próbálkozás a hibák és kivételek után
 
-You're expected to implement you own retry policies when calling MSAL. MSAL makes HTTP calls to the AAD service, and occasional failures can occur, for example the network can go down or the server is overloaded.  
+A MSAL meghívásakor várhatóan saját újrapróbálkozási szabályzatokat kell megvalósítani. A MSAL HTTP-hívásokat kezdeményez a HRE szolgáltatáshoz, és alkalmanként hibák léphetnek fel, például a hálózat leállhat, vagy a kiszolgáló túlterhelt.  
 
-### <a name="http-error-codes-500-600"></a>HTTP error codes 500-600
+### <a name="http-error-codes-500-600"></a>HTTP-hibakódok 500-600
 
-MSAL.NET implements a simple retry-once mechanism for errors with HTTP error codes 500-600.
+A MSAL.NET egy egyszerű újrapróbálkozási mechanizmust valósít meg a 500-600-es HTTP-hibakódok miatti hibák esetén.
 
 ### <a name="http-429"></a>HTTP 429
 
-When the Service Token Server (STS) is overloaded with too many requests, it returns HTTP error 429 with a hint about how long until you can try again in the `Retry-After` response field.
+Ha a szolgáltatás-jogkivonat-kiszolgáló (STS) túl sok kéréssel túl van terhelve, a 429 HTTP-hibát adja vissza, amely azt jelzi, hogy mennyi ideig nem próbálkozhat újra a `Retry-After` válasz mezőjében.
 
 ### <a name="net"></a>.NET
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) surfaces `System.Net.Http.Headers.HttpResponseHeaders` as a property `namedHeaders`. You can use additional information from the error code to improve the reliability of your applications. In the case described, you can use the `RetryAfterproperty` (of type `RetryConditionHeaderValue`) and compute when to retry.
+A [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) felületek `System.Net.Http.Headers.HttpResponseHeaders` tulajdonságként `namedHeaders`. A hibakód további információkat is használhat az alkalmazások megbízhatóságának növelése érdekében. Az ismertetett esetben a `RetryAfterproperty` (`RetryConditionHeaderValue`) és a számítást is használhatja, ha újra próbálkozik.
 
-Here is an example for a daemon application using the client credentials flow. You can adapt this to any of the methods for acquiring a token.
+Íme egy példa egy Daemon-alkalmazásra, amely az ügyfél hitelesítő adatait használja. Ezt bármely, a jogkivonat beszerzésére szolgáló metódushoz igazíthatja.
 
 ```csharp
 do

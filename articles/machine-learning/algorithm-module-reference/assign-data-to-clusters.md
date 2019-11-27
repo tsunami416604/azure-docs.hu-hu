@@ -1,7 +1,7 @@
 ---
-title: 'Assign Data to Cluster: Module Reference'
+title: 'Az adatfürthöz való hozzárendelés: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
+description: Megtudhatja, hogyan használhatja az adathozzárendelési modult Azure Machine Learning a fürtözési modell pontozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,36 +16,36 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214561"
 ---
-# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
+# <a name="module-assign-data-to-clusters"></a>Modul: az adathozzárendelés a fürtökhöz
 
-This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
+Ez a cikk azt ismerteti, hogyan használható az *adathozzárendelés a fürtökhöz* modul Azure Machine learning Designerben (előzetes verzió). A modul előrejelzéseket készít egy olyan fürtözött modell használatával, amely a *K-means fürtszolgáltatási* algoritmussal lett betanítva.
 
-The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
+Az adatok hozzárendelése a fürtökhöz modul olyan adatkészletet ad vissza, amely tartalmazza az egyes új adatpontok lehetséges hozzárendeléseit. 
 
-## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
+## <a name="how-to-use-assign-data-to-clusters"></a>Az adathozzárendelés fürthöz való használata
   
-1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
+1. Azure Machine Learning Designerben keresse meg a korábban betanított fürtszolgáltatási modellt. A következő módszerek egyikével hozhat létre és állíthat be egy fürtszolgáltatási modellt:  
   
-    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
+    - Konfigurálja a K-azt a fürtözési algoritmust a [k-Meaning-fürtszolgáltatási](k-means-clustering.md) modul használatával, és a modell betanítását egy adatkészlet és a vonat-fürtszolgáltatási modell modul (ez a cikk) használatával.  
   
-    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
+    - Hozzáadhat egy meglévő betanított fürtszolgáltatási modellt is a munkaterület **mentett modellek** csoportjából.
 
-2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
+2. Csatolja a betanított modellt a bal oldali bemeneti porthoz, amely **adatokat rendel a fürtökhöz**.  
 
-3. Attach a new dataset as input. 
+3. Új adatkészlet csatlakoztatása bemenetként. 
 
-   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
+   Ebben az adatkészletben a címkék megadása nem kötelező. A fürtözés általában egy nem felügyelt tanulási módszer. A kategóriákat nem várható előre megismerni. A bemeneti oszlopoknak azonban meg kell egyezniük a fürtszolgáltatási modell betanításakor használt oszlopokkal, vagy hiba történik.
 
     > [!TIP]
-    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
+    > Ha csökkenteni szeretné a tervező számára a fürt előrejelzései között írt oszlopok számát, használja [az adatkészletben az Oszlopok kiválasztása lehetőséget](select-columns-in-dataset.md), majd válassza ki az oszlopok egy részhalmazát. 
     
-4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
+4. Ha azt szeretné, hogy az eredmények tartalmazzák a teljes bemeneti adatkészletet, ne jelölje be a **Hozzáfűzés vagy a kijelölés jelölőnégyzetet** , ha azt szeretné, hogy a rendszer az eredményeket tartalmazó oszlopot (fürt-hozzárendeléseket) is tartalmazza.
   
-    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
+    Ha törli a jelölést a jelölőnégyzetből, akkor a rendszer csak az eredményeket adja vissza. Ez a beállítás akkor lehet hasznos, ha egy webszolgáltatás részeként hoz létre előrejelzéseket.
   
 5.  A folyamat futtatása.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
-+  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
++  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények adatkészletek**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
 

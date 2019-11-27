@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with OneDesk | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and OneDesk.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OneDesk | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és OneDesk között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,151 +23,151 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485570"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with OneDesk
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OneDesk
 
-In this tutorial, you'll learn how to integrate OneDesk with Azure Active Directory (Azure AD). When you integrate OneDesk with Azure AD, you can:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a OneDesk a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az OneDesk-t az Azure AD-vel, a következőket teheti:
 
-* Control in Azure AD who has access to OneDesk.
-* Enable your users to be automatically signed-in to OneDesk with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* A OneDesk-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a OneDesk az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To get started, you need the following items:
+Első lépésként a következő elemeket kell megadnia:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* OneDesk single sign-on (SSO) enabled subscription.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* OneDesk egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* OneDesk supports **SP and IDP** initiated SSO
-* OneDesk supports **Just In Time** user provisioning
+* A OneDesk támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A OneDesk **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-## <a name="adding-onedesk-from-the-gallery"></a>Adding OneDesk from the gallery
+## <a name="adding-onedesk-from-the-gallery"></a>OneDesk hozzáadása a gyűjteményből
 
-To configure the integration of OneDesk into Azure AD, you need to add OneDesk from the gallery to your list of managed SaaS apps.
+A OneDesk Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OneDesk a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **OneDesk** in the search box.
-1. Select **OneDesk** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **OneDesk** kifejezést a keresőmezőbe.
+1. Válassza ki a **OneDesk** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-onedesk"></a>Configure and test Azure AD single sign-on for OneDesk
+## <a name="configure-and-test-azure-ad-single-sign-on-for-onedesk"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a OneDesk
 
-Configure and test Azure AD SSO with OneDesk using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in OneDesk.
+Konfigurálja és tesztelje az Azure AD SSO-t a OneDesk a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a OneDesk-ben.
 
-To configure and test Azure AD SSO with OneDesk, complete the following building blocks:
+Az Azure AD SSO és a OneDesk konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure OneDesk SSO](#configure-onedesk-sso)** - to configure the single sign-on settings on application side.
-    * **[Create OneDesk test user](#create-onedesk-test-user)** - to have a counterpart of B.Simon in OneDesk that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[ONEDESK SSO konfigurálása](#configure-onedesk-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre OneDesk-teszt felhasználót](#create-onedesk-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-OneDesk rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **OneDesk** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. A [Azure Portal](https://portal.azure.com/) **OneDesk** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, if you wish to configure the application in **IDP** initiated mode, enter the values for the following fields:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. In the **Identifier** text box, type a URL using the following pattern: `onedesk.com_<specific_tenant_string>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `onedesk.com_<specific_tenant_string>`
 
-    b. In the **Reply URL** text box, type a URL using the following pattern: `https://app.onedesk.com/sso/saml/SSO/alias/onedesk.com_<specific_tenant_string>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.onedesk.com/sso/saml/SSO/alias/onedesk.com_<specific_tenant_string>`
 
-1. Click **Set additional URLs** and perform the following step if you wish to configure the application in **SP** initiated mode:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://app.onedesk.com/sso/saml/login/alias/onedesk.com_<specific_tenant_string>`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.onedesk.com/sso/saml/login/alias/onedesk.com_<specific_tenant_string>`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Identifier, Reply URL and Sign-on URL. Contact [OneDesk Client support team](mailto:hello@onedesk.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a OneDesk ügyfélszolgálati [csapatához](mailto:hello@onedesk.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section, find **Federation Metadata XML** and select **Download** to download the certificate and save it on your computer.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![The Certificate download link](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. On the **Set up OneDesk** section, copy the appropriate URL(s) based on your requirement.
+1. A **OneDesk beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to OneDesk.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a OneDesk.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **OneDesk**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **OneDesk**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![The Add User link](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-onedesk-sso"></a>Configure OneDesk SSO
+## <a name="configure-onedesk-sso"></a>OneDesk SSO konfigurálása
 
-1. To automate the configuration within OneDesk, you need to install **My Apps Secure Sign-in browser extension** by clicking **Install the extension**.
+1. A OneDesk belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-    ![My apps extension](common/install-myappssecure-extension.png)
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. After adding extension to the browser, click on **Set up OneDesk** will direct you to the OneDesk application. From there, provide the admin credentials to sign into OneDesk. The browser extension will automatically configure the application for you and automate steps 3-5.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **OneDesk beállítása** elemre, majd a OneDesk alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a OneDesk való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
 
-    ![Setup configuration](common/setup-sso.png)
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-1. If you want to setup OneDesk manually, open a new web browser window and sign into your OneDesk company site as an administrator and perform the following steps:
+1. Ha manuálisan szeretné beállítani a OneDesk, nyisson meg egy új böngészőablakot, és jelentkezzen be a OneDesk vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. Click on the **Integrations** tab.
+1. Kattintson az **integrációk** fülre.
 
-    ![Settings tab](./media/onedesk-tutorial/img-integration.png)
+    ![Beállítások lap](./media/onedesk-tutorial/img-integration.png)
 
-1. Click on the **Single Sign On**, select **Upload Metadata File** and click on the **Choose File** to upload the metadata file, which you have downloaded from the Azure portal.
+1. Kattintson az **egyszeri bejelentkezésre**, válassza a **metaadatok feltöltése** elemet, majd a **fájl kiválasztása** lehetőségre kattintva töltse fel a metaadat-fájlt, amelyet a Azure Portal letöltött.
 
-    ![Settings tab](./media/onedesk-tutorial/img-singlesignon.png)
+    ![Beállítások lap](./media/onedesk-tutorial/img-singlesignon.png)
 
-### <a name="create-onedesk-test-user"></a>Create OneDesk test user
+### <a name="create-onedesk-test-user"></a>OneDesk-tesztelési felhasználó létrehozása
 
-In this section, a user called B.Simon is created in OneDesk. OneDesk supports just-in-time user provisioning, which is enabled by default. There is no action item for you in this section. If a user doesn't already exist in OneDesk, a new one is created after authentication.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a OneDesk-ben. A OneDesk támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a OneDesk-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-When you click the OneDesk tile in the Access Panel, you should be automatically signed in to the OneDesk for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a OneDesk csempére kattint, automatikusan be kell jelentkeznie arra a OneDesk, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try OneDesk with Azure AD](https://aad.portal.azure.com/)
+- [A OneDesk kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

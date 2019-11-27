@@ -1,6 +1,6 @@
 ---
-title: Using Private Endpoints with Azure Storage | Microsoft Docs
-description: Overview of private endpoints for secure access to storage accounts from virtual networks.
+title: Privát végpontok használata az Azure Storage szolgáltatással | Microsoft Docs
+description: A privát végpontok áttekintése a virtuális hálózatok Storage-fiókjainak biztonságos eléréséhez.
 services: storage
 author: santoshc
 ms.service: storage
@@ -16,125 +16,125 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227885"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Using Private Endpoints for Azure Storage (Preview)
+# <a name="using-private-endpoints-for-azure-storage-preview"></a>Privát végpontok használata az Azure Storage-hoz (előzetes verzió)
 
-You can use [Private Endpoints](../../private-link/private-endpoint-overview.md) for your Azure Storage accounts to allow clients on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your storage account service. Network traffic between the clients on the VNet and the storage account traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
+Az Azure Storage-fiókokhoz [privát végpontokat](../../private-link/private-endpoint-overview.md) is használhat, amelyek lehetővé teszik a virtuális hálózat (VNet) ügyfelei számára, hogy biztonságosan hozzáférjenek az adataihoz egy [privát kapcsolaton](../../private-link/private-link-overview.md)keresztül. A privát végpont IP-címet használ a Storage-fiók szolgáltatás VNet. A VNet és a Storage-fiók ügyfelei közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül halad, ami kiküszöböli a nyilvános internetről való kitettséget.
 
-Using private endpoints for your storage account enables you to:
-- Secure your storage account by configuring the storage firewall to block all connections on the public endpoint for the storage service.
-- Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
-- Securely connect to storage accounts from on-premises networks that connect to the VNet using [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoutes](../../expressroute/expressroute-locations.md) with private-peering.
+Privát végpontok használata a Storage-fiókhoz a következőket teszi lehetővé:
+- A Storage-fiók biztonságossá tételéhez konfigurálja a Storage-tűzfalat úgy, hogy az a tárolási szolgáltatás nyilvános végpontján lévő összes kapcsolatot letiltsa.
+- A virtuális hálózat (VNet) biztonságának növelésével letilthatja a VNet kiszűrése adatait.
+- Biztonságosan csatlakozhat a Storage-fiókokhoz olyan helyszíni hálózatokról, amelyek VPN-vagy [Expressroute](../../expressroute/expressroute-locations.md) [-](../../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a VNet.
 
-## <a name="conceptual-overview"></a>Conceptual Overview
-![Private Endpoints for Azure Storage Overview](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>Fogalmi áttekintés
+![Privát végpontok az Azure Storage-hoz – áttekintés](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-A Private Endpoint is a special network interface for an Azure service in your [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet). When you create a private endpoint for your storage account, it provides secure connectivity between clients on your VNet and your storage. The private endpoint is assigned an IP address from the IP address range of your VNet. The connection between the private endpoint and the storage service uses a secure private link.
+A privát végpontok egy speciális hálózati adapterek egy Azure-szolgáltatáshoz a [Virtual Networkban](../../virtual-network/virtual-networks-overview.md) (VNet). Amikor létrehoz egy privát végpontot a Storage-fiókjához, biztonságos kapcsolatot biztosít a VNet található ügyfelek és a tároló között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a tárolási szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
 
-Applications in the VNet can connect to the storage service over the private endpoint seamlessly, **using the same connection strings and authorization mechanisms that they would use otherwise**. Private endpoints can be used with all protocols supported by the storage account, including REST and SMB.
+A VNet lévő alkalmazások zökkenőmentesen kapcsolódhatnak a tárolási szolgáltatáshoz a magánhálózati végponton keresztül, **ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni**fognak. A magánhálózati végpontok a Storage-fiók által támogatott összes protokollal használhatók, beleértve a REST és az SMB protokollt is.
 
-When you create a private endpoint for a storage service in your VNet, a consent request is sent for approval to the storage account owner. If the user requesting the creation of the private endpoint is also an owner of the storage account, this consent request is automatically approved.
+Amikor saját VNet hoz létre egy tárolási szolgáltatáshoz egy magánhálózati végpontot, a rendszer beleegyezési kérelmet küld jóváhagyásra a Storage-fiók tulajdonosának. Ha a privát végpont létrehozását kérő felhasználó a Storage-fiók tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja.
 
-Storage account owners can manage consent requests and the private endpoints, through the '*Private Endpoints*' tab for the storage account in the [Azure portal](https://portal.azure.com).
-
-> [!TIP]
-> If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.
-
-You can secure your storage account to only accept connections from your VNet, by [configuring the storage firewall](storage-network-security.md#change-the-default-network-access-rule) to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the storage firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the storage service.
-
-### <a name="private-endpoints-for-storage-service"></a>Private Endpoints for Storage Service
-
-When creating the private endpoint, you must specify the storage account and the storage service to which it connects. You need a separate private endpoint for each storage service in a storage account that you need to access, namely [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Queues](../queues/storage-queues-introduction.md), [Tables](../tables/table-storage-overview.md), or [Static Websites](../blobs/storage-blob-static-website.md).
+A Storage-fiók tulajdonosai a [Azure Portal](https://portal.azure.com)a Storage-fiókhoz tartozó*privát végpontok*lapján kezelhetik a belefoglalt kérelmeket és a privát végpontokat.
 
 > [!TIP]
-> Create a separate private endpoint for the secondary instance of the storage service for better read performance on RA-GRS accounts.
+> Ha csak a privát végponton keresztül szeretné korlátozni a Storage-fiók elérését, konfigurálja a tárolási tűzfalat a nyilvános végponton keresztüli hozzáférés megtagadásához vagy vezérléséhez.
 
-For read availability on a [read-access geo redundant storage account](storage-redundancy-grs.md#read-access-geo-redundant-storage), you need separate private endpoints for both the primary and secondary instances of the service. You don't need to create a private endpoint for the secondary instance for **failover**. The private endpoint will automatically connect to the new primary instance after failover.
+A Storage-fiók úgy is biztosítható, hogy csak a VNet érkező kapcsolatokat fogadja el, ha úgy [konfigurálja a tárolási tűzfalat](storage-network-security.md#change-the-default-network-access-rule) , hogy alapértelmezés szerint megtagadja a hozzáférést a nyilvános végponton keresztül. Nincs szükség olyan tűzfalszabályre, amely engedélyezi a forgalmat egy privát végponttal rendelkező VNet, mivel a tárolási tűzfal csak a nyilvános végponton keresztüli hozzáférést vezérli. A magánhálózati végpontok Ehelyett az alhálózatokhoz való hozzáférést biztosító engedélyezési folyamaton alapulnak.
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+### <a name="private-endpoints-for-storage-service"></a>Privát végpontok tárolási szolgáltatáshoz
 
-For more detailed information on creating a private endpoint for your storage account, refer to the following articles:
+A magánhálózati végpont létrehozásakor meg kell adnia a Storage-fiókot és a tárolási szolgáltatást, amelyhez csatlakozik. Külön privát végpontra van szükség az egyes tárolási szolgáltatásokhoz egy olyan Storage-fiókban, amelyhez hozzá kell férnie, azaz [blobokhoz](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2okhoz](../blobs/data-lake-storage-introduction.md), [fájlokhoz](../files/storage-files-introduction.md), [várólistákhoz](../queues/storage-queues-introduction.md), [táblákhoz](../tables/table-storage-overview.md)vagy [statikus webhelyekhez](../blobs/storage-blob-static-website.md).
 
-- [Connect privately to a storage account from the Storage Account experience in the Azure portal](../../private-link/create-private-endpoint-storage-portal.md)
-- [Create a private endpoint using the Private Link Center in the Azure portal](../../private-link/create-private-endpoint-portal.md)
-- [Create a private endpoint using Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Create a private endpoint using Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+> [!TIP]
+> Hozzon létre egy külön privát végpontot a Storage szolgáltatás másodlagos példányához az RA-GRS-fiókok jobb olvasási teljesítményéhez.
 
-### <a name="connecting-to-private-endpoints"></a>Connecting to Private Endpoints
+Ha olvasási hozzáférésre van szüksége egy [írásvédett földrajzi redundáns Storage-fiókhoz](storage-redundancy-grs.md#read-access-geo-redundant-storage), külön magánhálózati végpontokra van szükség a szolgáltatás elsődleges és másodlagos példányai esetében is. A **feladatátvételhez**nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után.
 
-Clients on a VNet using the private endpoint should use the same connection string for the storage account, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the storage account over a private link.
+#### <a name="resources"></a>Erőforrások
+
+A privát végpontok Storage-fiókhoz való létrehozásával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
+
+- [Magánhálózati kapcsolat létrehozása a Azure Portal Storage-fiókjának felhasználói felületén](../../private-link/create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása a Azure Portal privát kapcsolati központjának használatával](../../private-link/create-private-endpoint-portal.md)
+- [Privát végpont létrehozása az Azure CLI-vel](../../private-link/create-private-endpoint-cli.md)
+- [Privát végpont létrehozása Azure PowerShell használatával](../../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Csatlakozás privát végpontokhoz
+
+A privát végpontot használó VNet lévő ügyfeleknek ugyanazt a kapcsolati karakterláncot kell használniuk a Storage-fiókhoz, mint a nyilvános végponthoz csatlakozó ügyfelek. A DNS-feloldásra támaszkodva automatikusan átirányítja a kapcsolatokat a VNet a Storage-fiókba egy privát kapcsolaton keresztül.
 
 > [!IMPORTANT]
-> Use the same connection string to connect to the storage account using private endpoints, as you'd use otherwise. Please don't connect to the storage account using its '*privatelink*' subdomain URL.
+> Ugyanazzal a kapcsolati karakterlánccal csatlakozhat a Storage-fiókhoz privát végpontok használatával, ahogy azt más célra is használni szeretné. Ne kapcsolódjon a Storage-fiókhoz az "*privatelink*" altartomány URL-címével.
 
-We create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. The section on [DNS changes](#dns-changes-for-private-endpoints) below describes the updates required for private endpoints.
+A VNet csatolt [saját DNS-zónát](../../dns/private-dns-overview.md) hozunk létre a privát végpontokhoz szükséges frissítésekkel, alapértelmezés szerint. Ha azonban a saját DNS-kiszolgálóját használja, előfordulhat, hogy további módosításokat kell végeznie a DNS-konfigurációban. Az alábbi [DNS-változások](#dns-changes-for-private-endpoints) című szakasz a privát végpontokhoz szükséges frissítéseket ismerteti.
 
-## <a name="dns-changes-for-private-endpoints"></a>DNS changes for Private Endpoints
+## <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
 
-The DNS CNAME resource record for a storage account with a private endpoint is updated to an alias in a subdomain with the prefix '*privatelink*'. By default, we also create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet that corresponds to the subdomain with the prefix '*privatelink*', and contains the DNS A resource records for the private endpoints.
+Egy privát végponttal rendelkező Storage-fiókhoz tartozó DNS CNAME erőforrásrekord a "*privatelink*" előtaggal rendelkező altartományban található aliasra frissül. Alapértelmezés szerint a (z) "*privatelink*" előtaggal rendelkező altartományhoz tartozó VNet csatolt [privát DNS-zónát](../../dns/private-dns-overview.md) is létrehozunk, és a DNS a privát végpontokhoz tartozó erőforrásrekordokat tartalmazza.
 
-When you resolve the storage endpoint URL from outside the VNet with the private endpoint, it resolves to the public endpoint of the storage service. When resolved from the VNet hosting the private endpoint, the storage endpoint URL resolves to the private endpoint's IP address.
+Ha a VNet kívülről oldja fel a tárolási végpont URL-címét a privát végponttal, a rendszer a Storage szolgáltatás nyilvános végpontját oldja fel. A magánhálózati végpontot futtató VNet feloldva a tárolási végpont URL-címe feloldja a magánhálózati végpont IP-címét.
 
-For the illustrated example above, the DNS resource records for the storage account 'StorageAccountA', when resolved from outside the VNet hosting the private endpoint, will be:
+A fenti ábrán látható példában a "StorageAccountA" Storage-fiókhoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Név                                                  | Type (Típus)  | Value (Díj)                                                 |
+| Name (Név)                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
-| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Storage szolgáltatás nyilvános végpontja\>                   |
+| \<Storage szolgáltatás nyilvános végpontja\>                   | A     | \<Storage szolgáltatás nyilvános IP-címe\>                 |
 
-As previously mentioned, you can deny or control access for clients outside the VNet through the public endpoint using the storage firewall.
+Amint azt korábban említettük, a VNet kívüli ügyfelek számára a nyilvános végponton keresztül megtagadhatja vagy vezérelheti a hozzáférést a Storage tűzfal használatával.
 
-The DNS resource records for StorageAccountA, when resolved by a client in the VNet hosting the private endpoint, will be:
+A StorageAccountA tartozó DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Név                                                  | Type (Típus)  | Value (Díj)                                                 |
+| Name (Név)                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-This approach enables access to the storage account **using the same connection string** for clients on the VNet hosting the private endpoints, as well as clients outside the VNet.
+Ez a megközelítés lehetővé teszi, hogy a Storage-fiókhoz **ugyanazt a kapcsolati karakterláncot használja** , mint a privát végpontokat üzemeltető VNet lévő ügyfelek, valamint a VNet kívüli ügyfelek számára.
 
-If you are using a custom DNS server on your network, clients must be able to resolve the FQDN for the storage account endpoint to the private endpoint IP address. For this, you must configure your DNS server to delegate your private link subdomain to the private DNS zone for the VNet, or configure the A records for '*StorageAccountA.privatelink.blob.core.windows.net*' with the private endpoint IP address. 
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek fel kell tudniuk oldani a Storage-fiók végpontjának teljes tartománynevét a magánhálózati végpont IP-címére. Ehhez úgy kell konfigurálnia a DNS-kiszolgálót, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a "*StorageAccountA.privatelink.blob.Core.Windows.net*" rekordját a magánhálózati végpont IP-címével. 
 
 > [!TIP]
-> When using a custom or on-premises DNS server, you should configure your DNS server to resolve the storage account name in the 'privatelink' subdomain to the private endpoint IP address. You can do this by delegating the 'privatelink' subdomain to the private DNS zone of the VNet, or configuring the DNS zone on your DNS server and adding the DNS A records.
+> Egyéni vagy helyszíni DNS-kiszolgáló használatakor a DNS-kiszolgálót úgy kell konfigurálni, hogy az "privatelink" altartományban lévő Storage-fiók nevét a magánhálózati végpont IP-címére oldja fel. Ezt úgy teheti meg, hogy delegálja a "privatelink" altartományt a VNet magánhálózati DNS-zónájába, vagy konfigurálja a DNS-zónát a DNS-kiszolgálón, és hozzáadja a DNS-rekordot.
 
-The recommended DNS zone names for private endpoints for storage services are:
+A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott DNS-zónák neve a következő:
 
-| Storage service        | Zone name                            |
+| Tárolási szolgáltatás        | Zóna neve                            |
 | :--------------------- | :----------------------------------- |
-| Blob service           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| File service           | `privatelink.file.core.windows.net`  |
-| Queue service          | `privatelink.queue.core.windows.net` |
+| Blob szolgáltatás           | `privatelink.blob.core.windows.net`  |
+| 2\. generációs Data Lake Storage | `privatelink.dfs.core.windows.net`   |
+| Fájlszolgáltatások           | `privatelink.file.core.windows.net`  |
+| Queue szolgáltatás          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
-| Static Websites        | `privatelink.web.core.windows.net`   |
+| Statikus webhelyek        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+#### <a name="resources"></a>Erőforrások
 
-For additional guidance on configuring your own DNS server to support private endpoints, refer to the following articles:
+A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további útmutatásért tekintse meg a következő cikkeket:
 
 - [Azure virtuális hálózatokon található erőforrások névfeloldása](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS configuration for Private Endpoints](/private-link/private-endpoint-overview#dns-configuration)
+- [A magánhálózati végpontok DNS-konfigurációja](/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Díjszabás
 
-For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link).
+A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="copy-blob-support"></a>Copy Blob support
+### <a name="copy-blob-support"></a>BLOB-támogatás másolása
 
-During the preview, we don't support [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) commands issued to storage accounts accessed through private endpoints when the source storage account is protected by a firewall.
+Az előzetes verzió ideje alatt nem támogatott a privát végpontokon keresztül elért Storage-fiókok számára kiadott blob-parancsok [másolása](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) , ha a forrásként szolgáló Storage-fiókot tűzfal védi.
 
-### <a name="subnets-with-service-endpoints"></a>Subnets with Service Endpoints
-Currently, you can't create a private endpoint in a subnet that has service endpoints. As a workaround, you can create separate subnets in the same VNet for service endpoints and private endpoints.
+### <a name="subnets-with-service-endpoints"></a>Alhálózatok szolgáltatási végpontokkal
+Jelenleg nem hozhat létre olyan magánhálózati végpontot olyan alhálózatban, amely szolgáltatási végpontokkal rendelkezik. Megkerülő megoldásként létrehozhat különálló alhálózatokat ugyanabban a VNet a szolgáltatási végpontok és a magánhálózati végpontok számára.
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Storage access constraints for clients in VNets with Private Endpoints
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Tároló-hozzáférési megkötések a virtuális hálózatok-beli ügyfelek számára privát végpontokkal
 
-Clients in VNets with existing private endpoints face constraints when accessing other storage accounts that have private endpoints. For instance, suppose a VNet N1 has a private endpoint for a storage account A1 for, say, the blob service. If storage account A2 has a private endpoint in a VNet N2 for the blob service, then clients in VNet N1 must also access the blob service of account A2 using a private endpoint. If storage account A2 does not have any private endpoints for the blob service, then clients in VNet N1 can access its blob service without a private endpoint.
+A meglévő privát végpontokkal rendelkező virtuális hálózatok-ügyfelek megkötést kaptak a privát végpontokkal rendelkező más Storage-fiókok elérésekor. Tegyük fel például, hogy egy VNet N1-hez saját végpont tartozik az A1-es Storage-fiókhoz, azaz a blob szolgáltatáshoz. Ha az A2-es Storage-fiók privát végponttal rendelkezik a blob szolgáltatáshoz tartozó VNet N2-ben, akkor az VNet N1-ben lévő ügyfeleknek a privát végpont használatával is el kell érniük az A2-es fiók blob szolgáltatását. Ha az A2-es Storage-fiók nem rendelkezik privát végpontokkal a blob szolgáltatáshoz, akkor a VNet N1-ben lévő ügyfelek privát végpont nélkül is hozzáférhetnek a blob szolgáltatáshoz.
 
-This constraint is a result of the DNS changes made when account A2 creates a private endpoint.
+Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es fiók létrehoz egy magánhálózati végpontot.
 
-### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Network Security Group rules for subnets with private endpoints
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózati biztonsági csoportra vonatkozó szabályok privát végpontokkal rendelkező alhálózatokhoz
 
-Currently, you can't configure [Network Security Group](../../virtual-network/security-overview.md) (NSG) rules for subnets with private endpoints. A limited workaround for this issue is to implement your access rules for private endpoints on the source subnets, though this approach may require a higher management overhead.
+Jelenleg nem lehet konfigurálni a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályait privát végpontokkal rendelkező alhálózatokhoz. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.

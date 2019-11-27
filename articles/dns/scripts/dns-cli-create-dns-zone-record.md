@@ -1,5 +1,5 @@
 ---
-title: Create a DNS zone and record for a domain name - Azure CLI - Azure DNS
+title: DNS-zóna és-rekord létrehozása egy tartománynévhez – Azure CLI-Azure DNS
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan hozhat létre DNS-zónát és -rekordot egy tartománynévhez.
 services: dns
 author: asudbring

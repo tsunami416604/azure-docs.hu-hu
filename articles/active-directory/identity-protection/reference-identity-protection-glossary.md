@@ -20,144 +20,144 @@ ms.locfileid: "74232345"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 
-### <a name="at-risk-user"></a>At risk (User)
-A user with one or more active risk detections. 
+### <a name="at-risk-user"></a>Veszélyeztetett (felhasználó)
+Egy vagy több aktív kockázati észleléssel rendelkező felhasználó. 
 
-### <a name="atypical-sign-in-location"></a>Atypical sign-in location
-A sign-in from a geographic location that is not typical for the specific user, similar users, or the tenant.
+### <a name="atypical-sign-in-location"></a>Szokatlan bejelentkezési hely
+Egy földrajzi helyről való bejelentkezés, amely nem jellemző az adott felhasználóra, a hasonló felhasználókra vagy a bérlőre.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-A security module of Azure Active Directory that provides a consolidated view into risk detections and potential vulnerabilities affecting an organization’s identities.
+Azure Active Directory biztonsági modulja, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és lehetséges sebezhetőségek tekintetében.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
-A policy for securing access to resources. Conditional Access rules are stored in the Azure Active Directory and are evaluated by Azure AD before granting access to the resource.  Example rules include restricting access based on user location, device health, or user authentication method.
+Az erőforrásokhoz való hozzáférés biztosítására szolgáló szabályzat. A feltételes hozzáférési szabályokat a Azure Active Directory tárolja, és az Azure AD kiértékeli az erőforráshoz való hozzáférés megadását megelőzően.  Ilyen szabályok például a hozzáférés korlátozása a felhasználói hely, az Eszközállapot vagy a felhasználói hitelesítési módszer alapján.
 
 ### <a name="credentials"></a>Hitelesítő adatok
-Information that includes identification and proof of identification that is used to gain access to local and network resources. Examples of credentials are user names and passwords, smart cards, and certificates.
+Információ, amely tartalmazza a helyi és hálózati erőforrásokhoz való hozzáféréshez használt azonosítás azonosítását és igazolását. A hitelesítő adatok például felhasználónevek és jelszavak, intelligens kártyák és tanúsítványok.
 
 ### <a name="event"></a>Esemény
-A record of an activity in Azure Active Directory.
+Egy tevékenység rekordja Azure Active Directoryban.
 
-### <a name="false-positive-risk-detection"></a>False-positive (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection was investigated and was incorrectly flagged as a risk detection.
+### <a name="false-positive-risk-detection"></a>Hamis pozitív (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a rendszer megvizsgálta a kockázat észlelését, és a kockázat észlelése helytelenül van megjelölve.
 
-### <a name="identity"></a>Identitáskezelés
-A person or entity that must be verified by means of authentication, based on criteria such as password or a certificate.
+### <a name="identity"></a>Identitás
+Olyan személy vagy entitás, amelyet hitelesítéssel kell ellenőrizni, például jelszó vagy tanúsítvány alapján.
 
-### <a name="identity-risk-detection"></a>Identity risk detection
-Azure AD event that was flagged as anomalous by Identity Protection, and may indicate that an identity has been compromised.
+### <a name="identity-risk-detection"></a>Identitás kockázatának észlelése
+Az Identity Protection által rendellenesként megjelölt Azure AD-esemény, amely arra utalhat, hogy az identitás biztonsága sérült.
 
-### <a name="ignored-risk-detection"></a>Ignored (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection is closed without taking a remediation action.
+### <a name="ignored-risk-detection"></a>Figyelmen kívül hagyva (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a kockázatok észlelése lezárult a Szervizelési művelet végrehajtása nélkül.
 
-### <a name="impossible-travel-from-atypical-locations"></a>Impossible travel from atypical locations
-A risk detection triggered when two sign-ins for the same user are detected, where at least one of them is from an atypical sign-in location, and where the time between the sign-ins is shorter than the minimum time it would take to physically travel between these locations.  
+### <a name="impossible-travel-from-atypical-locations"></a>Nem lehet utazni szokatlan helyekről
+A kockázatkezelés akkor aktiválódik, ha ugyanahhoz a felhasználóhoz két bejelentkezést észlelt a rendszer, ahol legalább az egyik szokatlan bejelentkezési helyről van szó, és a bejelentkezések közötti idő rövidebb, mint a fizikai utazáshoz szükséges minimális idő. helyek.  
 
 ### <a name="investigation"></a>Vizsgálat
-The process of reviewing the activities, logs, and other relevant information related to a risk detection to decide whether remediation or mitigation steps are necessary, understand if and how the identity was compromised, and understand how the compromised identity was used.
+A kockázatértékeléssel kapcsolatos tevékenységek, naplók és egyéb kapcsolódó információk áttekintésének folyamata annak eldöntéséhez, hogy szükség van-e a szervizelésre vagy a kockázatcsökkentő lépésekre, meg kell ismernie, hogy az identitás biztonsága és módja, valamint a feltört az identitás használatban volt.
 
-### <a name="leaked-credentials"></a>Leaked credentials
-A risk detection triggered when current user credentials (user name and password) are found posted publicly in the Dark   web by our researchers.
+### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
+Az aktuális felhasználói hitelesítő adatok (Felhasználónév és jelszó) kiváltása akkor aktiválódik, amikor a kutatók a Dark web-ben nyilvánosan közzétették a felhasználókat.
 
 ### <a name="mitigation"></a>Kezelés
-An action to limit or eliminate the ability of an attacker to exploit a compromised identity or device without restoring the identity or device to a safe state. A mitigation does not resolve previous risk detections associated with the identity or device.
+Olyan művelet, amely korlátozza vagy megszünteti a támadók számára a sérült identitás vagy eszköz kihasználása az identitás vagy az eszköz biztonságos állapotba való visszaállítása nélkül. A mérséklés nem oldja meg az identitáshoz vagy eszközhöz társított korábbi kockázati észleléseket.
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
-An authentication method that requires two or more authentication methods, which may include something the user has, such a certificate; something the user knows, such as user names, passwords, or pass phrases; physical attributes, such as a thumbprint; and personal attributes, such as a personal signature.
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+Olyan hitelesítési módszer, amelynek két vagy több hitelesítési módszerre van szüksége, ami magában foglalhatja a felhasználó által birtokolt, ilyen tanúsítványokat is. amit a felhasználó ismer, például felhasználóneveket, jelszavakat vagy pass-kifejezéseket; fizikai attribútumok, például ujjlenyomatok; és személyes attribútumok, például személyes aláírások.
 
-### <a name="offline-detection"></a>Offline detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt after the fact, for an event that has already happened.
+### <a name="offline-detection"></a>Offline észlelés
+A rendellenességek észlelése és a kockázat kiértékelése, például bejelentkezési kísérlet a tény után, egy már megtörtént esemény után.
 
-### <a name="policy-condition"></a>Policy condition
-A part of a security policy, which defines the entities (groups, users, apps, device platforms, Device states, IP ranges, client types) included in the policy or excluded from it.
+### <a name="policy-condition"></a>Házirend-feltétel
+Egy biztonsági szabályzat része, amely meghatározza az entitásokat (csoportokat, felhasználókat, alkalmazásokat, eszköz platformokat, eszköz-állapotokat, IP-tartományokat, ügyfél-típusokat) a szabályzatban, vagy ki van zárva belőle.
 
-### <a name="policy-rule"></a>Policy rule
-The part of a security policy that describes the circumstances that would trigger the policy, and the actions taken when the policy is triggered.
+### <a name="policy-rule"></a>Szabályzatbeli szabály
+A biztonsági szabályzat azon része, amely leírja a szabályzatot kiváltó körülményeket, valamint a szabályzat indításakor végrehajtott műveleteket.
 
 ### <a name="prevention"></a>Megelőzés
-An action to prevent damage to the organization through abuse of an identity or device suspected or know to be compromised. A prevention action does not secure the device or identity, and does not resolve previous risk detections.
+Egy olyan művelet, amely megakadályozza a szervezet sérülését egy olyan személyazonosság vagy eszköz általi visszaélés miatt, amely gyaníthatóan vagy ismeri a veszélyt. A megelőzési műveletek nem védik az eszközt vagy az identitást, és nem oldják fel a korábbi kockázati észleléseket.
 
-### <a name="privileged-user"></a>Privileged (user)
-A user that at the time of a risk detection, had permanent or temporary admin permissions to one or more resources in Azure Active Directory, such as a Global Administrator, Billing Administrator, Service Administrator, User administrator, and Password Administrator. 
+### <a name="privileged-user"></a>Kiemelt jogosultságú (felhasználó)
+A kockázatok észlelésének időpontjában a felhasználó állandó vagy ideiglenes rendszergazdai engedéllyel rendelkezett a Azure Active Directory egy vagy több erőforrásához, például: globális rendszergazda, számlázási rendszergazda, szolgáltatás rendszergazdája, felhasználói rendszergazda és jelszó Rendszergazda. 
 
-### <a name="real-time"></a>Real-time
-See Real-time detection.
+### <a name="real-time"></a>Valós idejű
+Lásd: valós idejű észlelés.
 
-### <a name="real-time-detection"></a>Real-time detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt before the event is allowed to proceed.
+### <a name="real-time-detection"></a>Valós idejű észlelés
+A rendellenességek észlelése és a kockázat kiértékelése olyan eseményeknél, mint például a bejelentkezési kísérlet, mielőtt az esemény továbblép.
 
-### <a name="remediated-risk-detection"></a>Remediated (risk detection)
-A risk detection status set automatically by Identity Protection, indicating that the risk detection was remediated using the standard remediation action for this type of risk detection. For example, when the user password is reset, many risk detections that indicate that the previous password was compromised are automatically remediated.
+### <a name="remediated-risk-detection"></a>Szervizelés (kockázat észlelése)
+Az Identity Protection automatikusan beállítja a kockázatkezelési állapotot, ami azt jelzi, hogy a kockázat észlelését a rendszer az ilyen típusú kockázati észleléshez használt standard szervizelési művelettel szervizelte. Ha például a rendszer alaphelyzetbe állítja a felhasználói jelszót, számos olyan kockázati észlelést észlel, amely azt jelzi, hogy az előző jelszó biztonsága megsérül.
 
-### <a name="remediation"></a>Remediation
-An action to secure an identity or a device that were previously suspected or known to be compromised. A remediation action restores the identity or device to a safe state, and resolves previous risk detections associated with the identity or device.
+### <a name="remediation"></a>Szervizelés
+Egy olyan művelet, amely olyan identitás vagy eszköz védelmét teszi biztonságossá, amely korábban gyanúba esett vagy ismert volt. Egy szervizelési művelet visszaállítja az identitást vagy az eszközt egy biztonságos állapotba, és feloldja az identitáshoz vagy eszközhöz társított korábbi veszélyforrások észlelését.
 
-### <a name="resolved-risk-detection"></a>Resolved (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the user took an appropriate remediation action outside Identity Protection, and that the risk detection should be considered closed.
+### <a name="resolved-risk-detection"></a>Megoldott (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a felhasználó megfelelő szervizelési műveletet végzett az Identity Protectionn kívül, és a kockázat észlelését zártnak kell tekinteni.
 
-### <a name="risk-detection-status"></a>Risk detection status
-A property of a risk detection, indicating whether the event is active, and if closed, the reason for closing it.
+### <a name="risk-detection-status"></a>Kockázat észlelésének állapota
+Egy kockázatkezelési tulajdonság, amely azt jelzi, hogy az esemény aktív-e, és ha be van zárva, a Bezárás oka.
 
-### <a name="risk-detection-type"></a>Risk detection type
-A category for the risk detection, indicating the type of anomaly that caused the event to be considered risky.
+### <a name="risk-detection-type"></a>Kockázat észlelésének típusa
+A kockázat észlelésének kategóriája, amely azt jelzi, hogy milyen típusú anomália okozta az eseményt kockázatos.
 
-### <a name="risk-level-risk-detection"></a>Risk level (risk detection)
-An indication (High, Medium, or Low) of the severity of the risk detection to help Identity Protection users prioritize the actions they take to reduce the risk to their organization. 
+### <a name="risk-level-risk-detection"></a>Kockázati szint (kockázati észlelés)
+A kockázat észlelésének súlyossága (magas, közepes vagy alacsony), amely segíti az Identity Protection-felhasználók számára, hogy a szervezetük kockázatának csökkentése érdekében az általuk végrehajtott műveleteket rangsorolják. 
 
-### <a name="risk-level-sign-in"></a>Risk level (sign-in)
-An indication (High, Medium, or Low) of the likelihood that for a specific sign-in, someone else is attempting to use the user’s identity.
+### <a name="risk-level-sign-in"></a>Kockázati szint (bejelentkezés)
+Egy adott bejelentkezés valószínűségének (magas, közepes vagy alacsony) jele, hogy valaki más megpróbálja használni a felhasználó identitását.
 
-### <a name="risk-level-user-compromise"></a>Risk level (user compromise)
-An indication (High, Medium, or Low) of the likelihood that an identity has been compromised.
+### <a name="risk-level-user-compromise"></a>Kockázati szint (felhasználói kompromisszum)
+Az identitás veszélyének valószínűsége (magas, közepes vagy alacsony).
 
-### <a name="risk-level-vulnerability"></a>Risk level (vulnerability)
-An indication (High, Medium, or Low) of the severity of the vulnerability to help Identity Protection users prioritize the actions they take to reduce the risk to their organization.
+### <a name="risk-level-vulnerability"></a>Kockázati szint (sebezhetőség)
+A biztonsági rés súlyossági szintjének (magas, közepes vagy alacsony) jelzése, hogy az Identity Protection-felhasználók rangsorolják a szervezete kockázatának csökkentése érdekében végrehajtott műveleteket.
 
-### <a name="secure-identity"></a>Secure (identity)
-Take remediation action such as a password change or machine reimaging to restore a potentially compromised identity to an uncompromised state.
+### <a name="secure-identity"></a>Biztonságos (identitás)
+A feltört identitást nem sérült állapotra állíthatja vissza, például a jelszó módosítása vagy a számítógép-áttelepítési művelet.
 
 ### <a name="security-policy"></a>Biztonsági házirend
-A collection of policy rules and condition. A policy can be applied to entities such as users, groups, apps, devices, device platforms, device states, IP ranges, and Auth2.0 client types. When a policy is enabled, it is evaluated whenever an entity included in the policy is issued a token for a resource.
+Házirend-szabályok és feltételek gyűjteménye. A szabályzatok alkalmazhatók olyan entitásokra, mint például a felhasználók, a csoportok, az alkalmazások, az eszközök, az eszközök platformok, az eszközök állapotai, az IP-tartományok és az Auth 2.0-ügyfél típusa. Ha a szabályzat engedélyezve van, akkor a rendszer akkor értékeli ki, ha a házirendben szereplő entitás jogkivonatot ad ki egy erőforráshoz.
 
-### <a name="sign-in-v"></a>Sign in (v)
-To authenticate to an identity in Azure Active Directory.
+### <a name="sign-in-v"></a>Bejelentkezés (v)
+Azure Active Directory identitásának hitelesítése.
 
-### <a name="sign-in-n"></a>Sign-in (n)
-The process or action of authenticating an identity in Azure Active Directory, and the event that captures this operation.
+### <a name="sign-in-n"></a>Bejelentkezés (n)
+A Azure Active Directory identitás hitelesítésének folyamata vagy művelete, valamint a műveletet rögzítő esemény.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Sign in from anonymous IP address
-A risk detection triggered after a successful sign-in from IP address that has been identified as an anonymous proxy IP address.
+### <a name="sign-in-from-anonymous-ip-address"></a>Bejelentkezés névtelen IP-címről
+Egy, a névtelen proxy IP-címeként azonosított IP-címről érkező sikeres bejelentkezés után kiváltott kockázat észlelése.
 
-### <a name="sign-in-from-infected-device"></a>Sign in from infected device
-A risk detection triggered when a sign-in originates from an IP address, which is known to be used by one or more compromised devices, which are actively attempting to communicate with a bot server.
+### <a name="sign-in-from-infected-device"></a>Bejelentkezés fertőzött eszközről
+A kockázatkezelés akkor aktiválódik, ha a bejelentkezés egy IP-címről származik, amelyet egy vagy több olyan sérült eszköz használ, amely aktívan próbálkozik a bot-kiszolgálóval való kommunikációra.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Sign in from IP address with suspicious activity
-A risk detection triggered after a successful sign-in from an IP address with a high number of failed login attempts across multiple user accounts over a short period of time.
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Bejelentkezés gyanús tevékenységű IP-címről
+A kockázatok észlelése egy olyan IP-címről sikeres bejelentkezés után váltott ki, amely a sikertelen bejelentkezési kísérleteket több felhasználói fiókra vonatkozóan rövid idő alatt elvégezte.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Sign in from unfamiliar location
-A risk detection triggered when a user successfully signs in from a new location (IP, Latitude/Longitude, and ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Bejelentkezés ismeretlen helyről
+A kockázatkezelés akkor aktiválódik, amikor egy felhasználó sikeresen bejelentkezik egy új helyről (IP-cím, szélesség/hosszúság és ASN).
 
-### <a name="sign-in-risk"></a>Sign-in risk
-See Risk level (sign-in)
+### <a name="sign-in-risk"></a>Bejelentkezési kockázat
+Lásd: kockázati szint (bejelentkezés)
 
-### <a name="sign-in-risk-policy"></a>Sign-in risk policy
-A Conditional Access policy that evaluates the risk to a specific sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
+Egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázatot egy adott bejelentkezésre, és az előre meghatározott feltételek és szabályok alapján alkalmazza a kockázatcsökkentő tényezőket.
 
-### <a name="user-compromise-risk"></a>User compromise risk
-See Risk level (user compromise)
+### <a name="user-compromise-risk"></a>Felhasználói kompromisszumos kockázat
+Lásd: kockázati szint (felhasználói kompromisszum)
 
-### <a name="user-risk"></a>User risk
-See Risk level (user compromise).
+### <a name="user-risk"></a>Felhasználói kockázat
+Lásd: kockázati szint (felhasználói kompromisszum).
 
-### <a name="user-risk-policy"></a>User risk policy
-A Conditional Access policy that considers the sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="user-risk-policy"></a>Felhasználói kockázati házirend
+Feltételes hozzáférési szabályzat, amely figyelembe veszi a bejelentkezést, és az előre meghatározott feltételek és szabályok alapján alkalmazza a korlátozásokat.
 
 ### <a name="users-flagged-for-risk"></a>Kockázatosként megjelölt felhasználók
-Users that have risk detections, which are either active or remediated
+Azok a felhasználók, akiknek aktív vagy szervizelt kockázati észlelésük van
 
-### <a name="vulnerability"></a>Vulnerability
-A configuration or condition in Azure Active Directory, which makes the directory susceptible to exploits or threats.
+### <a name="vulnerability"></a>Biztonsági rés
+A Azure Active Directory konfigurációját vagy feltételét, amely a könyvtárat kihasználja a biztonsági rések vagy fenyegetések ellen.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

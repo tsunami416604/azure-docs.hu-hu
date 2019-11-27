@@ -1,6 +1,6 @@
 ---
-title: Zero-downtime deployment for Durable Functions
-description: Learn how to enable your Durable Functions orchestration for zero-downtime deployments.
+title: Nulla – állásidő üzembe helyezése Durable Functions
+description: Megtudhatja, hogyan engedélyezheti a Durable Functions-előkészítést a nulla állásidőű központi telepítések esetében.
 author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
@@ -12,61 +12,61 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231256"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Zero-downtime deployment for Durable Functions
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
-The [reliable execution model](durable-functions-checkpointing-and-replay.md) of Durable Functions requires that orchestrations be deterministic, which creates an additional challenge to consider when you deploy updates. When a deployment contains changes to activity function signatures or orchestrator logic, in-flight orchestration instances fail. This situation is especially a problem for instances of long-running orchestrations, which might represent hours or days of work.
+A Durable Functions [megbízható végrehajtási modellje](durable-functions-checkpointing-and-replay.md) megköveteli, hogy a determinisztikus legyenek, ami egy további, a frissítések központi telepítésekor megfontolandó kihívást hoz létre. Ha egy központi telepítés a tevékenységi függvények aláírásait vagy a Orchestrator logikát tartalmazza, a fedélzeti előkészítési példányok meghiúsulnak. Ez a helyzet különösen a hosszan futó munkafolyamatok példányai esetében jelent problémát, amely órákat vagy munkanapokat is jelenthet.
 
-To prevent these failures from happening, you have two options: 
-- Delay your deployment until all running orchestration instances have completed.
-- Make sure that any running orchestration instances use the existing versions of your functions. 
+A hibák megelőzése érdekében két lehetőség közül választhat: 
+- Késleltetheti az üzembe helyezést, amíg az összes futó előkészítési példány be nem fejeződik.
+- Győződjön meg arról, hogy a futó előkészítési példányok a függvények meglévő verzióit használják. 
 
 > [!NOTE]
-> This article provides guidance for functions apps that target Durable Functions 1.x. It hasn't been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between extension versions, see [Durable Functions versions](durable-functions-versions.md).
+> Ez a cikk útmutatást nyújt a functions-alkalmazásokhoz, amelyek célja az 1. x Durable Functions. Nem frissült a Durable Functions 2. x-ben bevezetett változások miatt. További információ a bővítmény-verziók közötti különbségekről: [Durable functions verziók](durable-functions-versions.md).
 
-The following chart compares the three main strategies to achieve a zero-downtime deployment for Durable Functions: 
+Az alábbi táblázat összehasonlítja a három fő stratégiát a Durable Functions nulla állásidős telepítésének megvalósításához: 
 
-| Stratégia |  When to use | Pros | Hátrányok |
+| Stratégia |  A következő esetekben használja | Szakemberek számára | Hátrányok |
 | -------- | ------------ | ---- | ---- |
-| [Versioning](#versioning) |  Applications that don't experience frequent [breaking changes.](durable-functions-versioning.md) | Simple to implement. |  Increased function app size in memory and number of functions.<br/>Code duplication. |
-| [Status check with slot](#status-check-with-slot) | A system that doesn't have long-running orchestrations lasting more than 24 hours or frequently overlapping orchestrations. | Simple code base.<br/>Doesn't require additional function app management. | Requires additional storage account or task hub management.<br/>Requires periods of time when no orchestrations are running. |
-| [Application routing](#application-routing) | A system that doesn't have periods of time when orchestrations aren't running, such as those time periods with orchestrations that last more than 24 hours or with frequently overlapping orchestrations. | Handles new versions of systems with continually running orchestrations that have breaking changes. | Requires an intelligent application router.<br/>Could max out the number of function apps allowed by your subscription. The default is 100. |
+| [Verziószámozás](#versioning) |  Olyan alkalmazások, amelyek nem tapasztalnak gyakori [feltörési változásokat.](durable-functions-versioning.md) | Egyszerűen implementálható. |  A Function app-méret növelése a memóriában és a függvények száma.<br/>A kód duplikálása. |
+| [Állapot-ellenőrzési tárolóhelytel](#status-check-with-slot) | Olyan rendszer, amely nem rendelkezik 24 óránál hosszabb ideig futó, illetve gyakran átfedésben lévő előkészítési folyamatokkal. | Egyszerű kód alapja.<br/>Nincs szükség további Function app-felügyeletre. | További Storage-fiókot vagy a Task hub felügyeletét igényli.<br/>Olyan időszakot igényel, amikor a rendszer nem fut. |
+| [Alkalmazás-Útválasztás](#application-routing) | Olyan rendszer, amely nem rendelkezik olyan időtartammal, amely nem fut, például azok az időszakok, amelyek 24 óránál rövidebbek, vagy gyakran átfedésben vannak. | Kezeli a rendszerek új verzióit, és folyamatosan futó, a változásokat megsértő munkafolyamatokat. | Intelligens alkalmazás-útválasztót igényel.<br/>Az előfizetés által engedélyezett Function Apps-alkalmazások maximális száma. Az alapértelmezett érték a 100. |
 
 ## <a name="versioning"></a>Verziókezelés
 
-Define new versions of your functions and leave the old versions in your function app. As you can see in the diagram, a function's version becomes part of its name. Because previous versions of functions are preserved, in-flight orchestration instances can continue to reference them. Meanwhile, requests for new orchestration instances call for the latest version, which your orchestration client function can reference from an app setting.
+Adja meg a függvények új verzióit, és hagyja meg a régi verziókat a Function alkalmazásban. Ahogy az ábrán látható, a függvény verziója a neve részévé válik. Mivel a függvények korábbi verziói megmaradnak, a fedélzeti előkészítési példányok továbbra is hivatkozhatnak rájuk. Eközben az új előkészítési példányokra vonatkozó kérések a legújabb verziót kérik, amelyet a rendszerelőkészítési ügyfél függvénye hivatkozhat az alkalmazás beállításától függően.
 
-![Versioning strategy](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
+![Verziószámozási stratégia](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-In this strategy, every function must be copied, and its references to other functions must be updated. You can make it easier by writing a script. Here's a [sample project](https://github.com/TsuyoshiUshio/DurableVersioning) with a migration script.
+Ebben a stratégiában minden függvényt át kell másolni, és a többi függvényre mutató hivatkozásokat frissíteni kell. Egyszerűbbé teheti a parancsfájlok írását. Példa egy áttelepítési parancsfájlt tartalmazó [projektre](https://github.com/TsuyoshiUshio/DurableVersioning) .
 
 >[!NOTE]
->This strategy uses deployment slots to avoid downtime during deployment. For more detailed information about how to create and use new deployment slots, see [Azure Functions deployment slots](../functions-deployment-slots.md).
+>Ez a stratégia üzembe helyezési résidőket használ az üzembe helyezés során felmerülő állásidő elkerüléséhez. További információ az új üzembe helyezési pontok létrehozásáról és használatáról: [Azure functions üzembe helyezési](../functions-deployment-slots.md)pontok.
 
-## <a name="status-check-with-slot"></a>Status check with slot
+## <a name="status-check-with-slot"></a>Állapot-ellenőrzési tárolóhelytel
 
-While the current version of your function app is running in your production slot, deploy the new version of your function app to your staging slot. Before you swap your production and staging slots, check to see if there are any running orchestration instances. After all orchestration instances are complete, you can do the swap. This strategy works when you have predictable periods when no orchestration instances are in flight. This is the best approach when your orchestrations aren't long-running and when your orchestration executions don't frequently overlap.
+Amíg a Function alkalmazás aktuális verziója fut az üzemi tárolóhelyen, a Function app új verzióját üzembe helyezheti az átmeneti tárolóhelyen. Az éles üzemi és átmeneti tárolóhelyek cseréje előtt ellenőrizze, hogy vannak-e futó előkészítési példányok. Az összes előkészítési példány befejezése után elvégezheti a cserét. Ez a stratégia akkor működik, ha előre jelezhető időszakok állnak rendelkezésre, ha nincsenek előkészítési példányok a repülésben. Ez az a legjobb megoldás, ha a rendszer nem működik, és ha az előkészítési műveletek nem gyakran átfedésben vannak.
 
-### <a name="function-app-configuration"></a>Function app configuration
+### <a name="function-app-configuration"></a>Function app-konfiguráció
 
-Use the following procedure to set up this scenario.
+A forgatókönyv beállításához kövesse az alábbi eljárást.
 
-1. [Add deployment slots](../functions-deployment-slots.md#add-a-slot) to your function app for staging and production.
+1. [Üzembe helyezési pontok hozzáadása](../functions-deployment-slots.md#add-a-slot) a Function alkalmazáshoz átmeneti és éles környezetben.
 
-1. For each slot, set the [AzureWebJobsStorage application setting](../functions-app-settings.md#azurewebjobsstorage) to the connection string of a shared storage account. This storage account connection string is used by the Azure Functions runtime. This account is used by the Azure Functions runtime and manages the function's keys.
+1. Az egyes tárolóhelyek esetében állítsa be a [AzureWebJobsStorage alkalmazás beállítását](../functions-app-settings.md#azurewebjobsstorage) egy megosztott Storage-fiók kapcsolódási karakterláncára. Ezt a Storage-fiókhoz tartozó kapcsolási karakterláncot a Azure Functions futtatókörnyezet használja. Ezt a fiókot a Azure Functions futtatókörnyezet használja, és kezeli a függvény kulcsait.
 
-1. For each slot, create a new app setting, for example, `DurableManagementStorage`. Set its value to the connection string of different storage accounts. These storage accounts are used by the Durable Functions extension for [reliable execution](durable-functions-checkpointing-and-replay.md). Use a separate storage account for each slot. Don't mark this setting as a deployment slot setting.
+1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazás-beállítást, például `DurableManagementStorage`. Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](durable-functions-checkpointing-and-replay.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
 
-1. In your function app's [host.json file's durableTask section](durable-functions-bindings.md#hostjson-settings), specify `azureStorageConnectionStringName` as the name of the app setting you created in step 3.
+1. A Function app [Host. JSON fájljának durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg az `azureStorageConnectionStringName` nevet a 3. lépésben létrehozott Alkalmazásbeállítás neveként.
 
-The following diagram shows the described configuration of deployment slots and storage accounts. In this potential predeployment scenario, version 2 of a function app is running in the production slot, while version 1 remains in the staging slot.
+A következő ábra az üzembe helyezési pontok és a Storage-fiókok leírt konfigurációját mutatja be. Ebben a lehetséges előtelepítési forgatókönyvben a Function app 2. verziója az üzemi tárolóhelyen fut, míg az 1. verzió az átmeneti tárolóhelyen marad.
 
-![Deployment slots and storage accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Üzembe helyezési pontok és Storage-fiókok](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.json examples
+### <a name="hostjson-examples"></a>Host. JSON példák
 
-The following JSON fragments are examples of the connection string setting in the *host.json* file.
+A következő JSON-töredékek a *Host. JSON* fájlban található kapcsolatok karakterlánc-beállításra mutatnak példákat.
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -89,9 +89,9 @@ The following JSON fragments are examples of the connection string setting in th
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD pipeline configuration
+### <a name="cicd-pipeline-configuration"></a>CI/CD-folyamat konfigurációja
 
-Configure your CI/CD pipeline to deploy only when your function app has no pending or running orchestration instances. When you're using Azure Pipelines, you can create a function that checks for these conditions, as in the following example:
+Konfigurálja a CI/CD-folyamatot úgy, hogy csak akkor telepítsen, ha a Function alkalmazás nem rendelkezik függőben lévő vagy nem futó munkafolyamati példányokkal. Az Azure-folyamatok használatakor létrehozhat egy függvényt, amely ezeket a feltételeket ellenőrzi, ahogy az alábbi példában is látható:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -110,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Next, configure the staging gate to wait until no orchestrations are running. For more information, see [Release deployment control using gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Ezután konfigurálja az átmeneti kaput, és várjon, amíg a rendszer nem fut. További információ: üzembehelyezési [üzembe helyezési vezérlő kiadása Gates használatával](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
-![Deployment gate](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![Üzembe helyezési kapu](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure Pipelines checks your function app for running orchestration instances before your deployment starts.
+Az Azure-folyamatok az üzembe helyezés megkezdése előtt ellenőrzik a Function alkalmazást a rendszer-előkészítési példányok futtatásához.
 
-![Deployment gate (running)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Üzembe helyezési kapu (fut)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-Now the new version of your function app should be deployed to the staging slot.
+Most a Function alkalmazás új verzióját kell telepíteni az átmeneti tárolóhelyre.
 
-![Staging slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Átmeneti tárolóhely](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Finally, swap slots. 
+Végül cserélje le a tárolóhelyeket. 
 
-Application settings that aren't marked as deployment slot settings are also swapped, so the version 2 app keeps its reference to storage account A. Because orchestration state is tracked in the storage account, any orchestrations running on the version 2 app continue to run in the new slot without interruption.
+Az üzembe helyezési pont beállításainak meg nem jelölt Alkalmazásbeállítások is felcserélve lesznek, így a 2-es verziójú alkalmazás az A Storage-fiókra hivatkozik. Mivel a rendszer a hangfelvételi állapotot a Storage-fiókban követi nyomon, a 2. verziójú alkalmazáson futó összes előkészítési művelet megszakítás nélkül fut az új tárolóhelyen.
 
 ![Üzembehelyezési pont](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-To use the same storage account for both slots, you can change the names of your task hubs. In this case, you need to manage the state of your slots and your app's HubName settings. To learn more, see [Task hubs in Durable Functions](durable-functions-task-hubs.md).
+Ha ugyanazt a Storage-fiókot szeretné használni mindkét tárolóhelyhez, módosíthatja a feladatok hubok nevét. Ebben az esetben a tárolóhelyek állapotát és az alkalmazás HubName beállításait kell kezelnie. További információ: [Durable Functionsban található feladatok hubok](durable-functions-task-hubs.md).
 
-## <a name="application-routing"></a>Application routing
+## <a name="application-routing"></a>Alkalmazás-Útválasztás
 
-This strategy is the most complex. However, it can be used for function apps that don't have time between running orchestrations.
+Ez a stratégia a legbonyolultabb. Azonban olyan Function-alkalmazásokhoz is használható, amelyek nem rendelkeznek időponttal a futók között.
 
-For this strategy, you must create an *application router* in front of your Durable Functions. This router can be implemented with Durable Functions. The router has the responsibility to:
+Ehhez a stratégiához létre kell hoznia egy *alkalmazás-útválasztót* a Durable functions előtt. Ez az útválasztó Durable Functions használatával valósítható meg. Az útválasztó feladata a következő:
 
-* Deploy the function app.
-* Manage the version of Durable Functions. 
-* Route orchestration requests to function apps.
+* Telepítse a Function alkalmazást.
+* Durable Functions verziójának kezelése. 
+* Átirányítja az alkalmazások működéséhez szükséges előkészítési kérelmeket.
 
-The first time an orchestration request is received, the router does the following tasks:
+Az útválasztó a következő feladatokat fogadja el az első alkalommal, amikor egy előkészítési kérelem érkezik:
 
-1. Creates a new function app in Azure.
-2. Deploys your function app's code to the new function app in Azure.
-3. Forwards the orchestration request to the new app.
+1. Létrehoz egy új Function alkalmazást az Azure-ban.
+2. Üzembe helyezi a Function alkalmazás kódját az új Function alkalmazásban az Azure-ban.
+3. Továbbítja a előkészítési kérelmet az új alkalmazásnak.
 
-The router manages the state of which version of your app's code is deployed to which function app in Azure.
+Az útválasztó felügyeli, hogy az alkalmazás kódjának melyik verziója van telepítve az Azure-beli Function alkalmazáshoz.
 
-![Application routing (first time)](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![Alkalmazás-útválasztás (első alkalommal)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-The router directs deployment and orchestration requests to the appropriate function app based on the version sent with the request. It ignores the patch version.
+Az útválasztó az üzembe helyezési és-előkészítési kérelmeket a kérelemmel elküldött verzió alapján irányítja a megfelelő Function alkalmazásba. Figyelmen kívül hagyja a javítási verziót.
 
-When you deploy a new version of your app without a breaking change, you can increment the patch version. The router deploys to your existing function app and sends requests for the old and new versions of the code, which are routed to the same function app.
+Ha új verziót helyez üzembe az alkalmazásban, és ez nem módosul, megnövelheti a javítási verziót. Az útválasztó üzembe helyezi a meglévő Function alkalmazást, és kéréseket küld a kód régi és új verzióira, amelyek ugyanahhoz a Function alkalmazáshoz vannak irányítva.
 
-![Application routing (no breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Alkalmazás-útválasztás (nincs megszakítási változás)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-When you deploy a new version of your app with a breaking change, you can increment the major or minor version. Then the application router creates a new function app in Azure, deploys to it, and routes requests for the new version of your app to it. In the following diagram, running orchestrations on the 1.0.1 version of the app keep running, but requests for the 1.1.0 version are routed to the new function app.
+Ha új verziót helyez üzembe az alkalmazásban, akkor megnövelheti a fő-vagy alverziót. Ezután az alkalmazás-útválasztó létrehoz egy új Function alkalmazást az Azure-ban, üzembe helyezi azt, és átirányítja az alkalmazás új verziójára irányuló kérelmeket. A következő ábrán az alkalmazás 1.0.1-es verziójában futó munkafolyamatok futnak, de a 1.1.0-verzióra vonatkozó kérések az új Function alkalmazásba lesznek irányítva.
 
-![Application routing (breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Alkalmazás-útválasztás (megszakítási változás)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-The router monitors the status of orchestrations on the 1.0.1 version and removes apps after all orchestrations are finished. 
+Az útválasztó figyeli a (z) 1.0.1 verziójának összehangolása állapotát, és eltávolítja az alkalmazásokat az összes előkészítés befejeződése után. 
 
-### <a name="tracking-store-settings"></a>Tracking store settings
+### <a name="tracking-store-settings"></a>Nyomkövetési tároló beállításai
 
-Each function app should use separate scheduling queues, possibly in separate storage accounts. If you want to query all orchestrations instances across all versions of your application, you can share instance and history tables across your function apps. You can share tables by configuring the `trackingStoreConnectionStringName` and `trackingStoreNamePrefix` settings in the [host.json settings](durable-functions-bindings.md#host-json) file so that they all use the same values.
+Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblák megosztásához konfigurálja a `trackingStoreConnectionStringName` és `trackingStoreNamePrefix` beállításokat a [Host. JSON-beállítási](durable-functions-bindings.md#host-json) fájlban, hogy mindegyik ugyanazt az értéket használja.
 
-For more information, see [Manage instances in Durable Functions in Azure](durable-functions-instance-management.md).
+További információ: a [példányok kezelése az Azure](durable-functions-instance-management.md)-ban Durable functions.
 
-![Tracking store settings](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![Nyomkövetési tároló beállításai](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Versioning Durable Functions](durable-functions-versioning.md)
+> [Verziószámozás Durable Functions](durable-functions-versioning.md)
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185934"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534490"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Berendezés beállítása Hyper-V virtuális gépekhez
 
@@ -50,7 +50,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a virtuális merevlemez kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
 3.  A készülék verziójának 2.19.11.12 a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
 
   **Algoritmus** | **Kivonat értéke**

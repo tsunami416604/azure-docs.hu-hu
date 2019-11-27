@@ -1,6 +1,6 @@
 ---
-title: Use follower database feature to attach databases in Azure Data Explorer
-description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
+title: Adatbázisok csatolása az Azure-ban a követő adatbázis funkciójának használatával Adatkezelő
+description: Ismerje meg, hogyan csatolhat adatbázisokat az Azure Adatkezelő a követő adatbázis funkció használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
@@ -14,34 +14,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462021"
 ---
-# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Use follower database to attach databases in Azure Data Explorer
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
-The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Due to the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted. 
+A **követő adatbázis** funkció lehetővé teszi, hogy egy másik fürtben található adatbázist csatoljon az Azure adatkezelő-fürthöz. A **követő adatbázis** *írásvédett* módban van csatolva, így megtekintheti az adatot, és lekérdezéseket futtathat a **Leader-adatbázisba**betöltött adatmennyiségen. A követő adatbázis szinkronizálja a változásokat a Leader-adatbázisokban. A szinkronizálás miatt néhány másodpercen belül néhány percen belül megtörténik az adatelérés. Az időeltolódás hossza a vezető adatbázis metaadatainak teljes méretétől függ. A vezető és követő adatbázisok ugyanazt a Storage-fiókot használják az adatlekérdezéshez. A tároló tulajdonosa a Leader-adatbázis. A követő adatbázis megtekinti az adatot anélkül, hogy be kellene tartania azt. Mivel a csatolt adatbázis írásvédett adatbázis, az adatbázisban található, az adatbázishoz tartozó, a táblák és a házirendek nem módosíthatók, kivéve a [gyorsítótárazási házirendet](#configure-caching-policy), a [rendszerbiztonsági tag](#manage-principals)és az [engedélyeket](#manage-permissions). A csatolt adatbázisok nem törölhetők. Ezeket le kell választani a Leader vagy a követő számára, és csak akkor törölhetik őket. 
 
-Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
+Ha az adatbázist egy másik fürthöz csatolja, a követő képesség használatával a szervezetek és a csapatok közötti adatmegosztási infrastruktúra szolgál. Ez a funkció hasznos lehet a számítási erőforrások elkülönítéséhez, hogy az éles környezetet a nem éles környezetből származó használati esetekből védjék. A követő az Azure Adatkezelő-fürt költségeit is hozzárendelheti az adatlekérdezéseket futtató fél számára.
 
-## <a name="which-databases-are-followed"></a>Which databases are followed?
+## <a name="which-databases-are-followed"></a>Mely adatbázisok vannak követve?
 
-* A cluster can follow one database, several databases, or all databases of a leader cluster. 
-* A single cluster can follow databases from multiple leader clusters. 
-* A cluster can contain both follower databases and leader databases
+* A fürtök egyetlen adatbázist, több adatbázist vagy egy vezető fürt összes adatbázisát követhetik nyomon. 
+* Egyetlen fürt több Leader-fürt adatbázisait is követheti. 
+* A fürtök A követő adatbázisokat és a Leader-adatbázisokat is tartalmazhatják
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
-1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
+1. [Hozzon létre egy fürtöt és](/azure/data-explorer/create-cluster-database-portal) egy adatbázist a Leader és a követő számára.
+1. A betöltési [áttekintésben](/azure/data-explorer/ingest-data-overview)tárgyalt különböző módszerek egyikével betöltheti az [információkat](/azure/data-explorer/ingest-sample-data) a Leader-adatbázisba.
 
 ## <a name="attach-a-database"></a>Adatbázis csatolása
 
-There are various methods you can use to attach a database. In this article, we discuss attaching a database using C# or an Azure Resource Manager template. To attach a database, you must have permissions on the leader cluster and the follower cluster. For more information about permissions, see [manage permissions](#manage-permissions).
+Több módszer is használható az adatbázisok csatolására. Ebből a cikkből megbeszéljük, hogyan csatolhat egy C# adatbázist a vagy egy Azure Resource Manager sablon használatával. Adatbázis csatolásához a Leader-fürtre és a követő fürtre vonatkozó engedélyekkel kell rendelkeznie. Az engedélyekkel kapcsolatos további információkért lásd: [engedélyek kezelése](#manage-permissions).
 
-### <a name="attach-a-database-using-c"></a>Attach a database using C#
+### <a name="attach-a-database-using-c"></a>Adatbázis csatolása a használatávalC#
 
-**Needed NuGets**
+**Szükséges Nuget**
 
-* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
+* Telepítse a [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Telepítse [a Microsoft. Rest. ClientRuntime. Azure. Authentication hitelesítést a hitelesítéshez](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
 
 ```Csharp
@@ -76,9 +76,9 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
-### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Attach a database using an Azure Resource Manager template
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Adatbázis csatolása Azure Resource Manager sablon használatával
 
-In this section, you learn how to attach a database by using an [Azure Resource Manager template](../azure-resource-manager/resource-group-overview.md). 
+Ebből a szakaszból megtudhatja, hogyan csatolhat egy adatbázist egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. 
 
 ```json
 {
@@ -161,41 +161,41 @@ In this section, you learn how to attach a database by using an [Azure Resource 
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése 
 
-You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using powershell.
+A Azure Resource Manager sablont [a Azure Portal vagy a](https://portal.azure.com) PowerShell használatával is telepítheti.
 
-   ![template deployment](media/follower/template-deployment.png)
+   ![sablon központi telepítése](media/follower/template-deployment.png)
 
 
 |**Beállítás**  |**Leírás**  |
 |---------|---------|
-|Follower Cluster Name     |  The name of the follower cluster       |
-|Attached Database Configurations Name    |    The name of the attached database configurations object. The name must be unique at the cluster level.     |
-|Adatbázis neve     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
-|Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
-|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Földrajzi egység   |   The location of all the resources. The leader and the follower must be in the same location.       |
+|Követő fürt neve     |  A követő fürt neve       |
+|Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A névnek egyedinek kell lennie a fürt szintjén.     |
+|Adatbázis neve     |      A követendő adatbázis neve. Ha követni szeretné az összes vezető adatbázisát, használja a "*" lehetőséget.   |
+|Leader-fürterőforrás azonosítója    |   A Leader-fürt erőforrás-azonosítója.      |
+|A rendszerbiztonsági tag alapértelmezett módosításának típusa    |   Az alapértelmezett egyszerű módosítási típus. Lehet `Union`, `Replace` vagy `None`. Az alapértelmezett egyszerű módosítási típussal kapcsolatos további információkért lásd: az [egyszerű módosítás típusa vezérlő parancs](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
+|Hely   |   Az összes erőforrás helye. A vezetőnek és a követőnek ugyanazon a helyen kell lennie.       |
  
-### <a name="verify-that-the-database-was-successfully-attached"></a>Verify that the database was successfully attached
+### <a name="verify-that-the-database-was-successfully-attached"></a>Az adatbázis sikeres csatolásának ellenőrzése
 
-To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). 
+Annak ellenőrzéséhez, hogy az adatbázis sikeresen csatolva lett-e, keresse meg a csatolt adatbázisokat a [Azure Portal](https://portal.azure.com). 
 
-1. Navigate to the follower cluster and select **Databases**
-1. Search for new Read-only databases in the database list.
+1. Navigáljon a követő fürthöz, és válassza az **adatbázisok** lehetőséget.
+1. Keresse meg az új írásvédett adatbázisokat az adatbázisok listájában.
 
-    ![Read-only follower database](media/follower/read-only-follower-database.png)
+    ![Csak olvasási jogosultsággal rendelkező követő adatbázis](media/follower/read-only-follower-database.png)
 
-Alternatively:
+Vagylagosan
 
-1. Navigate to the leader cluster and select **Databases**
-2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
+1. Navigáljon a Leader-fürthöz, és válassza az **adatbázisok** lehetőséget.
+2. Győződjön meg arról, hogy a megfelelő adatbázisok meg vannak **OSZTVA másokkal** > **Igen**
 
-    ![Read and write attached databases](media/follower/read-write-databases-shared.png)
+    ![Csatolt adatbázisok olvasása és írása](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>Detach the follower database using C# 
+## <a name="detach-the-follower-database-using-c"></a>A követő adatbázis leválasztása a következő használatávalC# 
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Detach the attached follower database from the follower cluster
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>A csatolt követő adatbázis leválasztása a követő fürtből
 
-Follower cluster can detach any attached database as follows:
+A követő fürtök a következő módon választhatják le bármelyik csatolt adatbázist:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -217,9 +217,9 @@ var attachedDatabaseConfigurationsName = "adc";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Detach the attached follower database from the leader cluster
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>A csatolt követő adatbázis leválasztása a Leader-fürtből
 
-The leader cluster can detach any attached database as follows:
+A Leader-fürt a következő módon tudja leválasztani bármelyik csatolt adatbázist:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -247,36 +247,36 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## <a name="manage-principals-permissions-and-caching-policy"></a>Manage principals, permissions, and caching policy
+## <a name="manage-principals-permissions-and-caching-policy"></a>Rendszerbiztonsági tag, engedélyek és gyorsítótárazási szabályzatok kezelése
 
-### <a name="manage-principals"></a>Manage principals
+### <a name="manage-principals"></a>Rendszerbiztonsági tag kezelése
 
-When attaching a database, specify the **"default principals modification kind"** . The default is keeping the leader database collection of [authorized principals](/azure/kusto/management/access-control/index#authorization)
+Adatbázis csatolásakor az **"alapértelmezett rendszerbiztonsági tag módosítása"** értéket kell megadnia. Az alapértelmezett érték a vezető adatbázis-gyűjtemény, amely a [felhatalmazott rendszerbiztonsági tag](/azure/kusto/management/access-control/index#authorization)
 
-|**Kind** |**Leírás**  |
+|**Típusú** |**Leírás**  |
 |---------|---------|
-|**Union**     |   The attached database principals will always include the original database principals plus additional new principals added to the follower database.      |
-|**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
-|**None**   |   The attached database principals include only the principals of the original database with no additional principals.      |
+|**Union**     |   A csatolt adatbázis-rendszerbiztonsági tag mindig tartalmazza az eredeti adatbázis-rendszerbiztonsági tag, valamint a követő adatbázishoz hozzáadott további új rendszerbiztonsági tagokat is.      |
+|**Csere**   |    Nem található a rendszerbiztonsági tag öröklése az eredeti adatbázisból. Új rendszerbiztonsági tag létrehozása szükséges a csatolt adatbázishoz.     |
+|**NEz egy**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
 
-For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+További információ a jogosultságokkal rendelkező rendszerbiztonsági tag konfigurálásához használható vezérlési parancsokról: a [követő parancsok kezelése a követő fürtök](/azure/kusto/management/cluster-follower)felügyeletéhez.
 
-### <a name="manage-permissions"></a>Manage permissions
+### <a name="manage-permissions"></a>Engedélyek kezelése
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+A csak olvasási jogosultsággal rendelkező adatbázis-engedélyek kezelése ugyanúgy történik, mint minden adatbázis esetében. Lásd: [az engedélyek kezelése a Azure Portalban](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
-### <a name="configure-caching-policy"></a>Configure caching policy
+### <a name="configure-caching-policy"></a>Gyorsítótárazási házirend konfigurálása
 
-The follower database administrator can modify the [caching policy](/azure/kusto/management/cache-policy) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+A követő adatbázis rendszergazdája módosíthatja a csatolt adatbázis vagy a hozzá tartozó táblák [gyorsítótárazási házirendjét](/azure/kusto/management/cache-policy) az üzemeltetési fürtön. Az alapértelmezett érték az adatbázis és a tábla szintű gyorsítótárazási házirendek vezető adatbázis-gyűjteményének megőrzése. Például egy 30 napos gyorsítótárazási házirendet használhat a Leader-adatbázisban a havi jelentéskészítés futtatásához és egy három napos gyorsítótárazási házirendet a követő adatbázison, hogy csak a legutóbbi adatokat kérdezze le a hibaelhárításhoz. A következő témakörben talál további információt arról, hogyan használhatók a vezérlési parancsok a követő adatbázison vagy táblázatban a gyorsítótárazási házirend konfigurálásához: [vezérlési parancsok egy követő fürt kezeléséhez](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Korlátozások
 
-* The follower and the leader clusters must be in the same region.
-* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
-* You can't delete a database that is attached to a different cluster before detaching it.
-* You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* You can't stop a cluster that has attached follower or leader database(s). 
+* A követő és a Leader-fürtöknek ugyanabban a régióban kell lenniük.
+* Az [adatfolyam](/azure/data-explorer/ingest-data-streaming) -betöltés nem használható olyan adatbázison, amelyet követnek.
+* Nem törölhet olyan adatbázist, amely egy másik fürthöz van csatolva a leválasztása előtt.
+* Nem törölhet olyan fürtöt, amely egy másik fürthöz csatolt adatbázissal rendelkezik a leválasztása előtt.
+* Nem állíthat le olyan fürtöt, amely csatolt követő vagy vezető adatbázis (oka) t tartalmaz. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* For information about follower cluster configuration, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+* További információ a követő fürt konfigurációjával kapcsolatban: [vezérlési parancsok a követő fürtök kezeléséhez](/azure/kusto/management/cluster-follower).

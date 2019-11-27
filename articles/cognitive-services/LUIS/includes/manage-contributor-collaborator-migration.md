@@ -17,10 +17,10 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451491"
 ---
-Management of contributions from collaborators depends on the current status of the app.
+Az közreműködők hozzájárulásainak kezelése az alkalmazás aktuális állapotától függ.
 
-**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
+**Az [áttelepített erőforrás-alkalmazások létrehozásához](../luis-migration-authoring.md)** : a _közreműködők_ kezelése a Azure Portal a szerzői erőforráshoz a **hozzáférés-vezérlés (iam)** lapon. Adjon hozzá egy felhasználót a közreműködő e-mail-címével és a _közreműködő_ szerepkörrel. 
 
-**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
+A **még nem áttelepített alkalmazások esetében**: az összes _közreműködőt_ a Luis portálon kezelheti az egyes alkalmazások **> közreműködők** lapján. Ezen a lapon [adjon hozzá egy felhasználó e-mail-címét](../luis-how-to-collaborate.md). Ez csak az alkalmazás szerzői hozzáférését teszi lehetővé. 
 
 

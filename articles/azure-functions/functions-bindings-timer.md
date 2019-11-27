@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57eec1293867a6596eb93f20ba27d468498e4e61
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278700"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545731"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -283,7 +283,10 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 A CRON-kifejezésben szereplő számok egy időre és dátumra hivatkoznak, nem pedig időtartományra. Például a `hour` mezőben lévő 5 érték 5:00-re, és nem 5 óránként van megjelölve.
 
-A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy, az `WEBSITE_TIME_ZONE`nevű Function alkalmazáshoz tartozó Alkalmazásbeállítás-beállítást. Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-indexben](https://technet.microsoft.com/library/cc749073)látható módon. 
+A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy, az `WEBSITE_TIME_ZONE`nevű Function alkalmazáshoz tartozó Alkalmazásbeállítás-beállítást. Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-indexben](https://technet.microsoft.com/library/cc749073)látható módon.
+
+  > [!NOTE]
+  > a `WEBSITE_TIME_ZONE` jelenleg nem támogatott a Linux-használati tervben.
 
 A *keleti téli idő* például UTC-05:00. A következő NCRONTAB-kifejezéssel, amely az UTC-időzónához 10:00 tartozik:
 

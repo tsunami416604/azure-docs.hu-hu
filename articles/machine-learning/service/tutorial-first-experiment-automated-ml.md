@@ -89,7 +89,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         Elválasztó karakter|Egy vagy több karakter, amely&nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vesszővel
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ehhez a példához válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
 
@@ -133,10 +133,10 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |&nbsp;feladatok betanítása&nbsp;idő (óra): 1 <br> Metrika&nbsp;pontszám&nbsp;küszöbérték: nincs
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szor&nbsp;kereszt-ellenőrzési <br> <br> Érvényességek száma: 2
-        Párhuzamosság| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
+        Egyidejűség| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
         
         Kattintson az **OK** gombra.
 

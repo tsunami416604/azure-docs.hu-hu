@@ -1,6 +1,6 @@
 ---
-title: Threat Modeling Tool Releases - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Documenting the release notes for the threat modeling tool
+title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 services: security
 documentationcenter: na
 author: jegeib
@@ -21,53 +21,53 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233830"
 ---
-# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool update release 7.1.61015.1 - 10/16/2019
+# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>A Threat Modeling Tool frissített kiadása: 7.1.61015.1 – 2019. 10. 16.
 
-Version 7.1.61015.1 of the Microsoft Threat Modeling Tool (TMT) was released on October 16 2019 and contains the following changes:
+A Microsoft Threat Modeling Tool (TMT) verziójának 7.1.61015.1 október 16 2019-én adták ki, és a következő módosításokat tartalmazza:
 
-- Accessibility improvements
+- A kisegítő lehetőségek fejlesztése
 - Hibajavítások
-- New stencils for Azure Logic Apps and Azure Data Explorer
+- Új rajzsablonok a Azure Logic Apps és az Azure Adatkezelő
 
-## <a name="notable-bug-fixes"></a>Notable bug fixes
+## <a name="notable-bug-fixes"></a>Jelentős hibajavítások
 
-### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>Improved backward compatibility with files created in "Threat Modeling Tool 2016"
+### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>Továbbfejlesztett visszamenőleges kompatibilitás a "Threat Modeling Tool 2016"-ben létrehozott fájlokkal
 
-Several bugs related to the opening or display of threat model files created in "Threat Modeling Tool 2016" have been fixed.
+A "Threat Modeling Tool 2016" fájlban létrehozott veszélyforrási modell fájljainak megnyitásával vagy megjelenítésével kapcsolatos hibák kijavítva.
 
-## <a name="feature-enhancements"></a>Feature enhancements
+## <a name="feature-enhancements"></a>Funkciók továbbfejlesztése
 
-### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>New stencils for Azure Logic Apps and Azure Data Explorer
+### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>Új rajzsablonok a Azure Logic Apps és az Azure Adatkezelő
 
-New stencils for Azure Logic Apps and Azure Data Explorer were added to the Azure Stencil along with their associated threats and mitigations.
+A Azure Logic Apps és az Azure Adatkezelő új rajzsablonja hozzá lett adva az Azure-rajzsablonhoz, valamint a hozzájuk kapcsolódó fenyegetésekhez és enyhítésekhez.
 
-![Azure Logic Apps and Azure Data Explorer Stencils](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
+![Azure Logic Apps és az Azure Adatkezelő-rajzsablonok](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>Errors related to priority values outside of the expected ranges
+### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>A várt tartományokon kívüli prioritási értékekkel kapcsolatos hibák
 
-Some customers have reported receiving the following error message when opening files created in the "Threat Modeling Tool 2016" or custom templates:
+Egyes ügyfelek a következő hibaüzenetet kaptak a "Threat Modeling Tool 2016" vagy egyéni sablonokban létrehozott fájlok megnyitásakor:
 
     System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
     
     System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
 
-This issue is under investigation
+Ez a probléma a vizsgálat alatt áll
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
-  - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) or later
-- .NET Version Required
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) or later
+  - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
+- .NET-verzió szükséges
+  - [.Net-4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények
-  - An Internet connection is required to receive updates to the tool as well as templates.
+  - Az eszköz és a sablonok frissítéseinek fogadásához internetkapcsolat szükséges.
 
-## <a name="documentation-and-feedback"></a>Documentation and feedback
+## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- Documentation for the Threat Modeling Tool is located on [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool), and includes information [about using the tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Download the latest version of the [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).
+Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

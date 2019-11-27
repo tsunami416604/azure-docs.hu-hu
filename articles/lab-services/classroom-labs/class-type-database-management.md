@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach database management for relational databases | Microsoft Docs
-description: Learn how to set up a lab to teach the management of relational databases.
+title: Tesztkörnyezet létrehozása a kapcsolódó adatbázisok adatbázis-kezelésének megtanításához | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be egy labort a viszonyítási adatbázisok kezelésének tanításához.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,59 +20,59 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233765"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Set up a lab to teach database management for relational databases
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Tesztkörnyezet létrehozása a kapcsolódó adatbázisok adatbázis-kezelésének megtanításához
 
-This article describes how to set up a lab for a basic databases management class in Azure Lab Services. Databases concepts are one of the introductory courses taught in most of the Computer Science departments in college. Structured Query Language (SQL) is an international standard. SQL is the standard language for relation database management including adding, accessing, and managing content in a database.  It is most noted for its quick processing, proven reliability, ease, and flexibility of use.
+Ez a cikk bemutatja, hogyan állíthat be egy labort egy alapszintű adatbázis-felügyeleti osztályhoz Azure Lab Servicesban. Az adatbázisok fogalmai az egyetemen bevezető tanfolyamok egyike. A Structured Query Language (SQL) egy nemzetközi szabvány. Az SQL a kapcsolatok adatbázis-kezelésének szabványos nyelve, beleértve az adatbázisok tartalmának hozzáadását, elérését és kezelését.  A legtöbb esetben a gyors feldolgozás, a bevált megbízhatóság, a könnyű használat és a rugalmasság jellemzi.
 
-In this article, we'll show how to set up a virtual machine template in a lab with both MySQL Database Server and SQL Server 2019 server.  [MySQL](https://www.mysql.com/) is a freely available open source Relational Database Management System (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is the latest version of Microsoft’s RDBMS.
+Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy olyan laborban, amely a MySQL adatbázis-kiszolgálóval és a SQL Server 2019-kiszolgálóval is rendelkezik.  A [MySQL](https://www.mysql.com/) egy szabadon elérhető, nyílt forráskódú, összehasonlítható adatbázis-kezelő rendszer (RDBMS).  A [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) a Microsoft RDBMS legújabb verziója.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-To set up this lab, you need an Azure subscription and lab account to get started. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [Tutorial to Setup a Lab Account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
 
-### <a name="lab-account-settings"></a>Lab account settings
+### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [Specify Marketplace images available to lab creators](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)számára.
 
-| Lab account setting | Utasítások |
+| Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
-|Marketplace image| Enable the ‘SQL Server 2019 Standard on Windows Server 2019’ image for use within your lab account.|
+|Piactéri rendszerkép| Engedélyezze a "SQL Server 2019 standard on Windows Server 2019" rendszerképet a labor-fiókjában való használatra.|
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Tesztkörnyezet beállításai
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+A tantermi labor beállításakor használja az alábbi táblázatban szereplő beállításokat.  A tantermi laborok létrehozásával kapcsolatos további információkért tekintse [meg a tanterem Lab-oktatóanyagának beállítása](tutorial-setup-classroom-lab.md)című témakört.
 
-| Lab settings | Value/instructions |
+| Tesztkörnyezet beállításai | Érték/utasítások |
 | ------------ | ------------------ |
-|Virtual Machine Size| Közepes. This size is best suited for relational databases, in-memory caching, and analytics.|
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Virtuális gép mérete| Közepes. Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.|
+|Virtuálisgép-rendszerkép| SQL Server 2019 standard Windows Server 2019 rendszeren|
 
-## <a name="template-machine-configuration"></a>Template machine configuration
+## <a name="template-machine-configuration"></a>Sablon Számítógép-konfigurációja
 
-To install MySQL on Windows Server 2019, you can follow the steps mentioned in [Install and Run MySQL Community Server on a Virtual Machine](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+Ha a MySQL-t Windows Server 2019-re szeretné telepíteni, kövesse a [MySQL közösségi kiszolgáló telepítése és futtatása virtuális gépen](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)című témakörben leírt lépéseket.
 
-SQL Server 2019 is pre-installed in the virtual machine image we chose when creating the new lab.
+A SQL Server 2019 előre telepítve van az új tesztkörnyezet létrehozásakor választott virtuálisgép-rendszerképben.
 
 ## <a name="cost-estimate"></a>Becsült költség
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was medium, which is 42 lab units.
+Az osztályra vonatkozó lehetséges költségbecslés.  25 tanulós osztályt fogunk használni.  20 órányi ütemezett idő van.  Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára.  A kiválasztott virtuálisgép-méret közepes, ami 42 labor egység.
 
-Here is an example of a possible cost estimate for this class:
+Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkozóan:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 0.42 USD per hour  = 315.00 USD
+25 tanuló \* (20 ütemezett óra + 10 kvóta óra) \* 0,42 USD/óra = 315,00 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+További részletek a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Összegzés
 
-This article walked you through the steps necessary to create a lab for basic database management concepts using both MySQL and SQL Server. You can use a similar setup for other databases classes.
+Ez a cikk végigvezeti a tesztkörnyezet létrehozásához szükséges lépéseken, valamint a MySQL-t és a SQL Servert egyaránt használó alapszintű adatbázis-kezelési fogalmakhoz. Hasonló beállításokat használhat más adatbázisok osztályaihoz is.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Next steps are common to setting up any lab.
+A következő lépések közösek a laborok beállításához.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Sablon létrehozása és kezelése](how-to-create-manage-template.md)
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail-regisztrációs hivatkozások a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users)

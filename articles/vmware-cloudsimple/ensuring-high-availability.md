@@ -25,7 +25,7 @@ A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en fut�
 | Ventilátor meghibásodása | igen | Redundáns ventilátorok, sikertelen csomópont gyors cseréje |  |  |
 | NIC-hiba | igen | Redundáns hálózati adapter, sikertelen csomópont gyors cseréje
 | Gazdagép áramszünet | igen | Redundáns tápegység |  |  |
-| ESXi-gazdagép meghibásodása | igen | sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| ESXi-gazdagép meghibásodása | igen | Sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
 | VM-hiba | igen | [Terheléselosztók](load-balancers.md)  | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) | Állapot nélküli VMware virtuális gépek Azure Load Balancer |
 | Levél-kapcsoló portjának hibája | igen | Redundáns hálózati adapter |  |  |
 | A levél kapcsolójának hibája | igen | Redundáns levél kapcsolók |  |  |

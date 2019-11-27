@@ -21,7 +21,7 @@ ms.locfileid: "74451402"
 
     ![Betanítás gomb](../media/train-button-preview.png)
 
-2. Training is complete when you see the status confirming success.
+2. A betanítás akkor fejeződik be, amikor megjelenik az állapot megerősítésének sikeressége.
 
     > [!Tip]
-    > **Notifications** is available in the top-right navigation and includes a history.
+    > Az **értesítések** a jobb felső navigációs sávon érhetők el, és előzményeket tartalmaznak.

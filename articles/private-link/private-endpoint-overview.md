@@ -1,6 +1,6 @@
 ---
-title: What is an Azure Private Endpoint?
-description: Learn about Azure Private Endpoint
+title: Mi az Azure Private-végpont?
+description: További tudnivalók az Azure Private-végpontról
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,125 +14,125 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228117"
 ---
-# <a name="what-is-azure-private-endpoint"></a>What is Azure Private Endpoint?
+# <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
-Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. The service could be an Azure service such as Azure Storage, Azure Cosmos DB, SQL, etc. or your own [Private Link Service](private-link-service-overview.md).
+Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül az Ön számára biztosít privát és biztonságos szolgáltatásokat. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás olyan Azure-szolgáltatás lehet, mint például az Azure Storage, az Azure Cosmos DB, az SQL vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
   
-## <a name="private-endpoint-properties"></a>Private Endpoint properties 
- A Private Endpoint specifies the following properties: 
+## <a name="private-endpoint-properties"></a>Magánhálózati végpont tulajdonságai 
+ A privát végpontok a következő tulajdonságokat határozzák meg: 
 
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Név    |    A unique name within the resource group.      |
-|Alhálózat    |  The subnet to deploy and allocate private IP addresses from a virtual network. For subnet requirements, see the Limitations section in this article.         |
-|Private Link Resource    |   The private link resource to connect using resource ID or alias, from the list of available types. A unique network identifier will be generated for all traffic sent to this resource.       |
-|Target subresource   |      The subresource to connect. Each private link resource type has different options to select based on preference.    |
-|Connection approval method    |  Automatic or manual. Based on role-based access control (RBAC) permissions, your private endpoint can be approved automatically. If you try to connect to a private link resource without RBAC, use the manual method to allow the owner of the resource to approve the connection.        |
-|Request Message     |  You can specify a message for requested connections to be approved manually. This message can be used to identify a specific request.        |
-|A kapcsolat állapota   |   A read-only property that specifies if the private endpoint is active. Only private endpoints in an approved state can be used to send traffic. Additional states available: <br>-**Approved**: Connection was automatically or manually approved and is ready to be used.</br><br>-**Pending**: Connection was created manually and is pending approval by the private link resource owner.</br><br>-**Rejected**: Connection was rejected by the private link resource owner.</br><br>-**Disconnected**: Connection was removed by the private link resource owner. The private endpoint becomes informative and should be deleted for cleanup. </br>|
+|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
+|Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
+|Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
+|A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a magánhálózati végpontok automatikusan is jóváhagyva lesznek. Ha RBAC nélküli privát kapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
+|Kérelem üzenete     |  Megadhat egy üzenetet, hogy a kért kapcsolatok manuálisan legyenek jóváhagyva. Ez az üzenet egy adott kérelem azonosítására szolgál.        |
+|A kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**jóváhagyva**: a rendszer automatikusan vagy manuálisan jóváhagyta a kapcsolódást, és készen áll a használatra.</br><br>-**függőben**: a kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**visszautasítva**: a kapcsolati erőforrás tulajdonosa elutasította a kapcsolatot.</br><br>-**leválasztva**: a kapcsolatot a privát kapcsolat erőforrásának tulajdonosa törölte. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
 
-Here are some key details about private endpoints: 
-- Private endpoint enables connectivity between the consumers from the same VNet, regionally peered VNets, globally peered VNets and on premises using [VPN](https://azure.microsoft.com/services/vpn-gateway/) or [Express Route](https://azure.microsoft.com/services/expressroute/) and services powered by Private Link.
+Íme néhány fontos adat a privát végpontokról: 
+- A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
  
-- When creating a private endpoint, a network interface is also created for the lifecycle of the resource. The interface is assigned a private IP address from the subnet that maps to the Private Link Service.
+- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy hálózati adaptert. Az illesztőhöz a magánhálózati kapcsolat szolgáltatáshoz hozzárendelt privát IP-cím tartozik.
  
-- The private endpoint must be deployed in the same region as the virtual network. 
+- A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
  
-- The private link resource can be deployed in a different region than the virtual network and private endpoint.
+- A magánhálózati kapcsolati erőforrás a virtuális hálózat és a magánhálózati végpontok egy másik régiójában is üzembe helyezhető.
  
-- Multiple private endpoints can be created using the same private link resource. For a single network using a common DNS server configuration, the recommended practice is to use a single private endpoint for a given private link resource to avoid duplicate entries or conflicts in DNS resolution. 
+- Több privát végpont is létrehozható ugyanazzal a privát kapcsolati erőforrással. Egy közös DNS-kiszolgáló konfigurációját használó egyetlen hálózat esetében az ajánlott eljárás egyetlen magánhálózati végpont használata egy adott privát kapcsolati erőforráshoz a duplikált bejegyzések vagy a DNS-feloldási ütközések elkerülése érdekében. 
  
-- Multiple private endpoints can be created on the same or different subnets within the same virtual network. There are limits to the number of private endpoints you can create in a subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  
-## <a name="private-link-resource"></a>Private link resource 
-A private link resource is the destination target of a given private endpoint. The following is a list of available private link resource types: 
+## <a name="private-link-resource"></a>Magánhálózati kapcsolat erőforrása 
+A privát kapcsolati erőforrás egy adott privát végpont célját célozza meg. Az alábbi lista a rendelkezésre álló privát kapcsolati erőforrástípusok listáját tartalmazza: 
  
-|Private link resource name  |Erőforrás típusa   |Subresources  |
+|Privát hivatkozás erőforrásának neve  |Erőforrás típusa   |Alerőforrások  |
 |---------|---------|---------|
-|**Private Link Service** (Your own service)   |  Microsoft.Network/privateLinkServices       | empty |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Table (table, table_secondary)<BR> Queue (queue, queue_secondary)<BR> File (file, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
-|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
+|**Privát kapcsolati szolgáltatás** (saját szolgáltatás)   |  Microsoft. Network/privateLinkServices       | empty |
+|**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)       |
+|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, Table|
  
-## <a name="network-security-of-private-endpoints"></a>Network security of private endpoints 
-When using private endpoints for Azure services, traffic is secured to a specific private link resource. The platform performs an access control to validate network connections reaching only the specified private link resource. To access additional resources within the same Azure service, additional private endpoints are required. 
+## <a name="network-security-of-private-endpoints"></a>Privát végpontok hálózati biztonsága 
+Ha privát végpontokat használ az Azure-szolgáltatásokhoz, a forgalom egy adott privát kapcsolati erőforráshoz van védve. A platform egy hozzáférés-vezérléssel ellenőrzi, hogy a hálózati kapcsolatok csak a megadott privát kapcsolati erőforrást érik-e el. Ha további erőforrásokat szeretne elérni ugyanazon az Azure-szolgáltatáson belül, további privát végpontokra van szükség. 
  
-You can completely lock down your workloads from accessing public endpoints to connect to a supported Azure service. This control provides an additional network security layer to your resources by providing a built-in exfiltration protection that prevents access to other resources hosted on the same Azure service. 
+A munkaterhelések teljes mértékben lezárhatók a nyilvános végpontokhoz való hozzáféréstől egy támogatott Azure-szolgáltatáshoz való kapcsolódáshoz. Ez a vezérlő egy további hálózati biztonsági réteget biztosít az erőforrásokhoz egy beépített kiszűrése-védelem biztosításával, amely megakadályozza az ugyanazon az Azure-szolgáltatáson üzemeltetett egyéb erőforrásokhoz való hozzáférést. 
  
-## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Access to a private link resource using approval workflow 
-You can connect to a private link resource using the following connection approval methods:
-- **Automatically** approved when you own or have permission on the specific private link resource. The permission required is based on the private link resource type in the following format: Microsoft.\<Provider>/<resource_type>/privateEndpointConnectionApproval/action
-- **Manual** request when you don't have the permission required and would like to request access. An approval workflow will be initiated. The private endpoint and subsequent private endpoint connection will be created in a "Pending" state. The private link resource owner is responsible to approve the connection. After it's approved, the private endpoint is enabled to send traffic normally, as shown in the following approval workflow diagram.  
+## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Hozzáférés egy privát kapcsolati erőforráshoz jóváhagyási munkafolyamat használatával 
+A következő kapcsolat-jóváhagyási módszerekkel csatlakozhat egy privát kapcsolati erőforráshoz:
+- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft.\<Provider >/< resource_type >/privateEndpointConnectionApproval/action
+- **Manuális** kérés, ha nem rendelkezik a szükséges engedélyekkel, és hozzáférést szeretne kérni. A rendszer elindít egy jóváhagyási munkafolyamatot. A privát végpont és az azt követő privát végponti kapcsolatok "függő" állapotban lesznek létrehozva. A magánhálózati kapcsolat erőforrás-tulajdonosa felelős a kapcsolat jóváhagyásához. A jóváhagyást követően a magánhálózati végpont engedélyezve van a forgalom normál módon történő elküldéséhez, ahogy az a következő jóváhagyási munkafolyamat-diagramon is látható.  
 
-![workflow approval](media/private-endpoint-overview/private-link-paas-workflow.png)
+![munkafolyamat-jóváhagyás](media/private-endpoint-overview/private-link-paas-workflow.png)
  
-The private link resource owner can perform the following actions over a private endpoint connection: 
-- Review all private endpoint connections details. 
-- Approve a private endpoint connection. The corresponding private endpoint will be enabled to send traffic to the private link resource. 
-- Reject a private endpoint connection. The corresponding private endpoint will be updated to reflect the status.
-- Delete a private endpoint connection in any state. The corresponding private endpoint will be updated with a disconnected state to reflect the action, the private endpoint owner can only delete the resource at this point. 
+A magánhálózati kapcsolat erőforrás-tulajdonosa a következő műveleteket hajthatja végre egy privát végponti kapcsolaton keresztül: 
+- Tekintse át az összes privát végponti kapcsolat részleteit. 
+- Privát végponti kapcsolatok jóváhagyása. A megfelelő privát végpont engedélyezve lesz a privát kapcsolati erőforrás felé irányuló forgalom elküldéséhez. 
+- Privát végponti kapcsolatok elutasítása. A rendszer frissíti a megfelelő privát végpontot, hogy tükrözze az állapotot.
+- Privát végponti kapcsolatok törlése bármilyen állapotban. A rendszer a megfelelő privát végpontot leválasztott állapottal frissíti, hogy tükrözze a műveletet, a privát végpont tulajdonosa csak ezen a ponton tudja törölni az erőforrást. 
  
 > [!NOTE]
-> Only a private endpoint in an approved state can send traffic to a given private link resource. 
+> Csak a jóváhagyott állapotú privát végpont küldhet forgalmat egy adott privát kapcsolati erőforrásba. 
 
-### <a name="connecting-using-alias"></a>Connecting using Alias
-Alias is a unique moniker that is generated when the service owner creates the private link service behind a standard load balancer. Service owner can share this Alias with their consumers offline. Consumers can request a connection to private link service using either the resource URI or the Alias. If you want to connect using Alias, you must create private endpoint using manual connection approval method. For using manual connection approval method, set manual request parameter to true during private endpoint create flow. Look at [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) and [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) for details. 
+### <a name="connecting-using-alias"></a>Csatlakozás alias használatával
+Az alias egy egyedi moniker, amely akkor jön létre, amikor a szolgáltatás tulajdonosa létrehoz egy standard Load Balancer mögötti privát kapcsolati szolgáltatást. A szolgáltatás tulajdonosai megoszthatják ezt az aliast a felhasználókkal kapcsolat nélkül. A felhasználók az erőforrás URI-ja vagy az alias használatával igényelhetnek kapcsolatot a privát kapcsolati szolgáltatással. Ha az alias használatával szeretne csatlakozni, létre kell hoznia egy privát végpontot a manuális kapcsolat jóváhagyási módszerével. A manuális kapcsolódási jóváhagyási módszer használatához állítsa a manuális kérelem paraméterét True értékre a magánhálózati végpont létrehozása folyamat során. A részletekért tekintse meg a [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) és [az az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) parancsot. 
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció 
-When connecting to a private link resource using a fully qualified domain name (FQDN) as part of the connection string, it's important to correctly configure your DNS settings to resolve to the allocated private IP address. Existing Azure services might already have a DNS configuration to use when connecting over a public endpoint. This needs to be overridden to connect using your private endpoint. 
+Ha a kapcsolati karakterlánc részeként egy teljes tartománynevet (FQDN) használó privát kapcsolati erőforráshoz csatlakozik, fontos, hogy a DNS-beállításokat helyesen konfigurálja a lefoglalt magánhálózati IP-címhez való feloldáshoz. Előfordulhat, hogy a meglévő Azure-szolgáltatások már rendelkeznek DNS-konfigurációval, ha nyilvános végponton keresztül csatlakoznak. Ezt felül kell bírálni a privát végpont használatával történő kapcsolódáshoz. 
  
-The network interface associated with the private endpoint contains the complete set of information required to configure your DNS, including FQDN and private IP addresses allocated for a given private link resource. 
+A magánhálózati végponthoz társított hálózati adapter tartalmazza a DNS konfigurálásához szükséges összes információt, beleértve a teljes TARTOMÁNYNEVEt és az adott privát kapcsolati erőforrás számára lefoglalt magánhálózati IP-címeket is. 
  
-You can use the following options to configure your DNS settings for private endpoints: 
-- **Use the Host file (only recommended for testing)** . You can use the host file on a virtual machine to override the DNS.  
-- **Use a private DNS zone**. You can use private DNS zones to override the DNS resolution for a given private endpoint. A private DNS zone can be linked to your virtual network to resolve specific domains.
-- **Use your custom DNS server**. You can use your own DNS server to override the DNS resolution for a given private link resource. If your [DNS server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) is hosted on a virtual network, you can create a DNS forwarding rule to use a private DNS zone to simplify the configuration for all private link resources.
+A következő beállításokkal konfigurálhatja a magánhálózati végpontok DNS-beállításait: 
+- **A gazda fájl használata (csak teszteléshez ajánlott)** . A virtuális gépen lévő gazdagépen a DNS felülbírálására is használható.  
+- **Használjon privát DNS-zónát**. A privát DNS-zónák használatával felülbírálhatja egy adott privát végpont DNS-feloldását. A saját DNS-zónák összekapcsolhatók a virtuális hálózattal bizonyos tartományok feloldásához.
+- **Használja az egyéni DNS-kiszolgálót**. A saját DNS-kiszolgáló használatával felülbírálhatja egy adott privát kapcsolati erőforrás DNS-feloldását. Ha a [DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) egy virtuális hálózaton található, létrehozhat egy DNS-továbbítási szabályt, amely egy magánhálózati DNS-zónát használ, hogy leegyszerűsítse az összes privát kapcsolati erőforrás konfigurációját.
  
 > [!IMPORTANT]
-> It's not recommended to override a zone that is actively in use to resolve public endpoints. Connections to resources won't be able to resolve correctly without DNS forwarding to the public DNS. To avoid issues, create a different domain name or follow the suggested name for each service below. 
+> Nem ajánlott felülbírálni egy olyan zónát, amely aktívan használatban van a nyilvános végpontok feloldásához. Az erőforrásokhoz való csatlakozások nem lesznek képesek megfelelően feloldani a nyilvános DNS-re való DNS-továbbítás nélkül. A problémák elkerülése érdekében hozzon létre egy másik tartománynevet, vagy kövesse a javasolt nevet az alábbi szolgáltatásokhoz. 
  
-For Azure services, use the recommended zone names as described in the following table:
+Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
 
-|Private Link resource type   |Subresource  |Zone name  |
+|Privát kapcsolat erőforrástípus   |Alerőforrás  |Zóna neve  |
 |---------|---------|---------|
-|SQL DB/DW (Microsoft.Sql/servers)    |  Sql Server (sqlServer)        |   privatelink.database.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Storage Account (Microsoft.Storage/storageAccounts)    |    Table (table, table_secondary)      |   privatelink.table.core.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)    |    Queue (queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)   |    File (file, file_secondary)      |    privatelink.file.core.windows.net      |
-|Storage Account (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
+|SQL DB/DW (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
+|Storage-fiók (Microsoft. Storage/storageAccounts)    |  BLOB (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
+|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Tábla (tábla, table_secondary)      |   privatelink.table.core.windows.net       |
+|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Üzenetsor (Üzenetsor, queue_secondary)     |   privatelink.queue.core.windows.net       |
+|Storage-fiók (Microsoft. Storage/storageAccounts)   |    Fájl (fájl, file_secondary)      |    privatelink.file.core.windows.net      |
+|Storage-fiók (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
+|Data Lake fájlrendszer Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tábla|privatelink.table.cosmos.azure.com|
  
-Azure will create a canonical name DNS record (CNAME) on the public DNS to redirect the resolution to the suggested domain names. You'll be able to override the resolution with the private IP address of your private endpoints. 
+Az Azure egy kanonikus DNS-rekordot (CNAME) hoz létre a nyilvános DNS-ben, hogy átirányítsa a felbontást a javasolt tartomány nevére. A felbontás felülbírálható a privát végpontok magánhálózati IP-címével. 
  
-Your applications don't need to change the connection URL. When attempting to resolve using a public DNS, the DNS server will now resolve to your private endpoints. The process does not impact your applications. 
+Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyilvános DNS-sel próbál feloldani, a DNS-kiszolgáló most feloldja a saját végpontokat. A folyamat nem befolyásolja az alkalmazásait. 
  
 ## <a name="limitations"></a>Korlátozások
  
-The following table includes a list of known limitations when using private endpoints: 
+A következő táblázat tartalmazza a privát végpontok használatakor felismert korlátozások listáját: 
 
 
 |Korlátozás |Leírás |Kezelés  |
 |---------|---------|---------|
-|Network Security Group (NSG) rules and User Defined Routes do not apply to Private Endpoint    |NSG is not supported on private endpoints. While subnets containing the private endpoint can have NSG associated with it, the rules will not be effective on traffic processed by the private endpoint. You must have [network policies enforcement disabled](disable-private-endpoint-network-policy.md) to deploy private endpoints in a subnet. NSG is still enforced on other workloads hosted on the same subnet. Routes on any client subnet will be using an /32 prefix, changing the default routing behavior requires a similar UDR  | Control the traffic by using NSG rules for outbound traffic on source clients. Deploy individual routes with /32 prefix to override private endpoint routes        |
-|  Peered Virtual Network with Private endpoints only are not supported   |   When connecting to private endpoints on a peered Virtual Network without any other workload is not supported       | Deploy a single VM on the peered Virtual Network to enable the connectivity |
-|Specialized workloads cannot access private endpoints    |   The following services deployed into your virtual network cannot access any private link resource using private endpoints:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure-beli dedikált HSM<br>       |   No mitigation during preview.       |
+|A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához        |
+|  A privát végpontokkal rendelkező Virtual Network csak nem támogatottak   |   Ha a privát végpontokhoz való csatlakozás a Virtual Network más számítási feladatok nélkül nem támogatott.       | Egyetlen virtuális gép üzembe helyezése a Virtual Network a kapcsolat engedélyezéséhez |
+|A speciális számítási feladatok nem férnek hozzá privát végpontokhoz    |   A virtuális hálózatba központilag telepített következő szolgáltatások nem férhetnek hozzá privát végpontokat használó privát kapcsolati erőforrásokhoz:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure Dedicated HSM<br>       |   Az előzetes verzióban nem érhető el mérséklés.       |
 
 
 ## <a name="next-steps"></a>Következő lépések
-- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
-- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
-- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
-- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
-- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
+- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
+- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies and cloudMsExchUserHoldPolicies | Microsoft Docs'
-description: This topic describes attribute behavior of the msExchUserHoldPolicies and cloudMsExchUserHoldPolicies attributes
+title: 'Azure AD Connect: msExchUserHoldPolicies és cloudMsExchUserHoldPolicies | Microsoft Docs'
+description: Ez a témakör a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies attribútumok attribútum-viselkedését ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -21,54 +21,54 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213077"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies and cloudMsExchUserHoldPolicies
-The following reference document describes these attributes used by Exchange and the proper way to edit the default sync rules.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
+Az alábbi dokumentum ismerteti ezeket az attribútumokat, amelyeket az Exchange használ, valamint az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>What are msExchUserHoldPolicies and cloudMsExchUserHoldPolicies?
-There are two types of [holds](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) available for an Exchange Server: Litigation Hold and In-Place Hold. When Litigation Hold is enabled, all mailbox all items are placed on hold.  An In-Place Hold is used to preserve only those items that meet the criteria of a search query that you defined by using the In-Place eDiscovery tool.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mi a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies?
+Az Exchange Serverhez két különböző típusú [tároló érhető el: a peres](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a helyben tartás. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  A helyben tartott tárolók csak azokat az elemeket őrzik meg, amelyek megfelelnek a helyi elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
 
-The MsExchUserHoldPolcies and cloudMsExchUserHoldPolicies attributes allow on-premises AD and Azure AD to determine which users are under a hold depending on whether they are using on-premises Exchange or Exchange on-line.
+A MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók tartanak fenn, attól függően, hogy helyszíni Exchange-et vagy Exchange-et használnak-e.
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies synchronization flow
-By default MsExchUserHoldPolcies is synchronized by Azure AD Connect directly to the msExchUserHoldPolicies attribute in the metaverse and then to the msExchUserHoldPolices attribute in Azure AD
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies szinkronizálási folyamata
+Alapértelmezés szerint a MsExchUserHoldPolcies szinkronizálja Azure AD Connect közvetlenül a metaverse-ban található msExchUserHoldPolicies attribútummal, majd az Azure AD msExchUserHoldPolices attribútumával.
 
-The following tables describe the flow:
+Az alábbi táblázatok ismertetik a folyamatot:
 
-Inbound from on-premises Active Directory:
+Helyszíni Active Directorytól bejövő:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverse-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|In from AD - User Exchange|
+|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|Az AD-User Exchange-ből|
 
-Outbound to Azure AD:
+Kimenő az Azure AD-be:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Metaverse-attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|HRE – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies synchronization flow
-By default cloudMsExchUserHoldPolicies is synchronized by Azure AD Connect directly to the cloudMsExchUserHoldPolicies attribute in the metaverse. Then, if msExchUserHoldPolices is not null in the metaverse, the attribute in flowed out to Active Directory.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies szinkronizálási folyamata
+Alapértelmezés szerint a cloudMsExchUserHoldPolicies szinkronizálja Azure AD Connect közvetlenül a metaverse cloudMsExchUserHoldPolicies attribútumához. Ezt követően, ha a msExchUserHoldPolices nem null értékű a metaverse-ben, az attribútum a Active Directory.
 
-The following tables describe the flow:
+Az alábbi táblázatok ismertetik a folyamatot:
 
-Inbound from Azure AD:
+Bejövő Azure AD-ből:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverse-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Helyszíni Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
+|Helyszíni Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|HRE – felhasználói Exchange|
 
-Outbound to on-premises Active Directory:
+Kimenő – helyszíni Active Directory:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Metaverse-attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF (NEM NULL)|msExchUserHoldPolicies|Ki az AD – UserExchangeOnline|
 
-## <a name="information-on-the-attribute-behavior"></a>Information on the attribute behavior
-The msExchangeUserHoldPolicies is a single authority attribute.  A single authority attribute can be set on an object (in this case, user object) in the on-premises directory or in the cloud directory.  The Start of Authority rules dictate, that if the attribute is synchronized from on-premises, then Azure AD will not be allowed to update this attribute.
+## <a name="information-on-the-attribute-behavior"></a>Az attribútum viselkedésére vonatkozó információk
+A msExchangeUserHoldPolicies egyetlen szolgáltatói attribútum.  Egyetlen Authority attribútum állítható be egy objektumra (ebben az esetben a felhasználói objektumra) a helyszíni címtárban vagy a Felhőbeli címtárban.  A felügyeleti szabályok kezdete azt diktálja, hogy ha az attribútum a helyszíni rendszerből van szinkronizálva, akkor az Azure AD nem fogja tudni frissíteni ezt az attribútumot.
 
-To allow users to set a hold policy on a user object in the cloud, the cloudMSExchangeUserHoldPolicies attribute is used. This attribute is used because Azure AD cannot set msExchangeUserHoldPolicies directly based on the rules explained above.  This attribute will then synchronize back to the on-premises directory if, the msExchangeUserHoldPolicies is not null and replace the current value of msExchangeUserHoldPolicies.
+Annak lehetővé tétele, hogy a felhasználók a felhőben lévő felhasználói objektumon állítsanak be tartási szabályzatot, a rendszer a cloudMSExchangeUserHoldPolicies attribútumot használja. Ezt az attribútumot használja a rendszer, mert az Azure AD nem tudja közvetlenül beállítani a msExchangeUserHoldPolicies a fent ismertetett szabályok alapján.  Ezt az attribútumot ezután a rendszer visszaszinkronizálja a helyszíni címtárral, ha a msExchangeUserHoldPolicies nem null értékű, és lecseréli a msExchangeUserHoldPolicies aktuális értékét.
 
-Under certain circumstances, for instance, if both were changed on-premises and in Azure at the same time, this could cause some issues.  
+Bizonyos körülmények között, például ha mindkettőt a helyszínen és az Azure-ban módosították egyszerre, akkor ez bizonyos problémákat okozhat.  
 
 ## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

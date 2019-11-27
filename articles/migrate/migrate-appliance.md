@@ -1,6 +1,6 @@
 ---
-title: Azure Migrate appliance architecture
-description: Provides an overview of the Azure Migrate appliance used in server assessment and migration.
+title: Azure Migrate berendezés architektúrája
+description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
@@ -15,205 +15,205 @@ ms.locfileid: "74232571"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
-This article describes the Azure Migrate appliance. You deploy the appliance when you use Azure Migrate Assessment and Migration tools to discover, assess and migrate apps, infrastructure, and workloads to Microsoft Azure. 
+Ez a cikk a Azure Migrate berendezést ismerteti. Ha Azure Migrate felmérési és áttelepítési eszközt használ az alkalmazások, az infrastruktúra és a munkaterhelések Microsoft Azure való felderítéséhez, értékeléséhez és áttelepítéséhez, akkor a készüléket üzembe helyezi. 
 
-[Azure Migrate](migrate-services-overview.md) provides a central hub to track discovery, assessment and migration of your on-premises apps and workloads, and private/public cloud VMs, to Azure. The hub provides Azure Migrate tools for assessment and migration, as well as third-party independent software vendor (ISV) offerings.
+[Azure Migrate](migrate-services-overview.md) egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatokhoz.
 
 
 
-## <a name="appliance-overview"></a>Appliance overview
+## <a name="appliance-overview"></a>Berendezések áttekintése
 
-The Azure Migrate appliance types and usage are as follows.
+A Azure Migrate berendezés típusai és használata a következő.
 
-**Deployed as** | **Used for** | **Részletek**
+**Központilag telepítve** | **Használatban** | **Részletek**
 --- | --- |  ---
-VMware VM | VMware VM assessment with the Azure Migrate Assessment tool.<br/><br/> VMware VM agentless migration with the Azure Migrate Server Migration tool | Download OVA template and import to vCenter Server to create the appliance VM.
-Hyper-V VM | Hyper-V VM assessment with the Azure Migrate Assessment tool. | Download zipped VHD and import to Hyper-V to create the appliance VM.
+VMware virtuális gép | VMware virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel.<br/><br/> VMware VM ügynök nélküli áttelepítés a Azure Migrate Server áttelepítési eszközzel | Töltse le a petesejtek sablonját, és importálja vCenter Serverre a készülék virtuális gépe létrehozásához.
+Hyper-V virtuális gép | A Hyper-V virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel. | Töltse le a tömörített VHD-t, és importálja a Hyper-V-be a készülék virtuális gépe létrehozásához.
 
-## <a name="appliance-access"></a>Appliance access
+## <a name="appliance-access"></a>Készülék-hozzáférés
 
-After you have configured the appliance, you can remotely access the appliance VM through TCP port 3389. You can also remotely access the web management app for the appliance, on port 44368 with URL: `https://<appliance-ip-or-name>:44368`.
+Miután konfigurálta a készüléket, a 3389-es TCP-porton keresztül távolról elérheti a készülék virtuális gépe szolgáltatását. Távolról is elérheti a készülékhez készült webkezelési alkalmazást az 44368-es porton a következő URL-címmel: `https://<appliance-ip-or-name>:44368`.
 
-## <a name="appliance-license"></a>Appliance license
-The appliance comes with a Windows Server 2016 evaluation license, which is valid for 180 days. If the evaluation period is close to expiry, we recommend that you download and deploy a new appliance, or that you activate the operating system license of the appliance VM.
+## <a name="appliance-license"></a>Készülék licence
+A készülékhez tartozik egy Windows Server 2016 próbaverziós licenc, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 
-## <a name="appliance-agents"></a>Appliance agents
-The appliance has these agents installed.
+## <a name="appliance-agents"></a>Berendezések ügynökei
+A készülék telepítette ezeket az ügynököket.
 
 **Ügynök** | **Részletek**
 --- | ---
-Discovery agent | Gathers configuration data of on-premises virtual machines
-Értékelési ügynök | Profiles the on-premises environment to collect VM performance data.
-Migration adapter | Orchestrates VM replication, and coordinates communication between VMs and Azure.
-Migration gateway | Sends replicated VM data to Azure.
+Felderítési ügynök | A helyszíni virtuális gépek konfigurációs adatok összegyűjtése
+Értékelési ügynök | A helyszíni környezetet a virtuális gép teljesítményadatait gyűjti.
+Áttelepítési adapter | Összehangolja a virtuális gépek replikálását, és koordinálja a virtuális gépek és az Azure közötti kommunikációt.
+Áttelepítési átjáró | Replikált virtuálisgép-adatokat küld az Azure-nak.
 
 
-## <a name="appliance-deployment-requirements"></a>Appliance deployment requirements
+## <a name="appliance-deployment-requirements"></a>Berendezések telepítési követelményei
 
-- [Review](migrate-support-matrix-vmware.md#assessment-appliance-requirements) the deployment requirements for a VMware appliance, and the URLs that the appliance needs to access.
-- [Review](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) the deployment requirements for a Hyper-V appliance, and the URLs that the appliance  needs to access.
+- [Tekintse át](migrate-support-matrix-vmware.md#assessment-appliance-requirements) a VMware készülék központi telepítési követelményeit, valamint azokat az URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
+- [Tekintse át](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) a Hyper-V berendezés központi telepítési követelményeit, valamint azokat az URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
 
 
-## <a name="collected-performance-data-vmware"></a>Collected performance data-VMware
+## <a name="collected-performance-data-vmware"></a>Összegyűjtött teljesítményadatok – VMware
 
-Here's the VMware VM performance data that the appliance collects and sends to Azure.
+Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készülék az Azure-ba gyűjt és küld.
 
-**Adatok** | **Counter** | **Assessment impact**
+**Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-CPU utilization | cpu.usage.average | Recommended VM size/cost
-Memory utilization | mem.usage.average | Recommended VM size/cost
-Disk read throughput (MB per second) | virtualDisk.read.average | Calculation for disk size, storage cost, VM size
-Disk write throughput (MB per second) | virtualDisk.write.average | Calculation for disk size, storage cost, VM size
-Disk read operations per second | virtualDisk.numberReadAveraged.average | Calculation for disk size, storage cost, VM size
-Disk write operations per second | virtualDisk.numberWriteAveraged.average  | Calculation for disk size, storage cost, VM size
-NIC read throughput (MB per second) | net.received.average | Calculation for VM size
-NIC write throughput (MB per second) | net.transmitted.average  |Calculation for VM size
+Processzorkihasználtság | cpu.usage.average | Ajánlott virtuális gép mérete/díja
+Memória kihasználtsága | mem.usage.average | Ajánlott virtuális gép mérete/díja
+Lemez olvasási sebessége (MB/s) | virtualDisk.read.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási sebessége (MB/s) | virtualDisk.write.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez olvasási műveletei másodpercenként | virtualDisk.numberReadAveraged.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási műveletei másodpercenként | virtualDisk.numberWriteAveraged.average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | A virtuális gép méretének kiszámítása
+Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A virtuális gép méretének kiszámítása
 
 
-## <a name="collected-metadata-vmware"></a>Collected metadata-VMware
+## <a name="collected-metadata-vmware"></a>Összegyűjtött metaadatok – VMware
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> A Azure Migrate készülék által felderített metaadatok segítségével az alkalmazások az Azure-ba való áttelepítéskor, az Azure megfelelőségi elemzés, az alkalmazás-függőségi elemzés és a költséghatékonyság megtervezése révén könnyebben méretezhető alkalmazásait. A Microsoft nem használja ezeket az adattípusokat a licencek megfelelőségi ellenőrzéséhez képest.
 
-Here's the full list of VMware VM metadata that the appliance collects and sends to Azure.
+Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM-metaadatok teljes listáját.
 
-**Adatok** | **Counter**
+**Adatok** | **Számláló**
 --- | --- 
-**Machine details** | 
-VM ID | vm.Config.InstanceUuid 
+**Gép részletei** | 
+VIRTUÁLIS GÉP AZONOSÍTÓJA | vm.Config.InstanceUuid 
 a virtuális gép neve | vm.Config.Name
-vCenter Server ID | VMwareClient.Instance.Uuid
-VM description | vm.Summary.Config.Annotation
-License product name | vm.Client.ServiceContent.About.LicenseProductName
-Operating system type | vm.SummaryConfig.GuestFullName
-Boot type | vm.Config.Firmware
+vCenter Server azonosítója | VMwareClient.Instance.Uuid
+Virtuális gép leírása | vm.Summary.Config.Annotation
+Licenc terméknév | vm.Client.ServiceContent.About.LicenseProductName
+Operációs rendszer típusa | vm.SummaryConfig.GuestFullName
+Rendszerindítás típusa | vm.Config.Firmware
 Magok száma | vm.Config.Hardware.NumCPU
-Memory (MB) | vm.Config.Hardware.MemoryMB
-Lemezek száma | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
-Disk size list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
-Network adapters list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
-CPU utilization | cpu.usage.average
-Memory utilization |mem.usage.average
-**Per disk details** | 
-Disk key value | disk.Key
-Dikunit number | disk.UnitNumber
-Disk controller key value | disk.ControllerKey.Value
-Gigabytes provisioned | virtualDisk.DeviceInfo.Summary
-Disk name | Value generated using disk.UnitNumber, disk.Key, disk.ControllerKey.VAlue
-Read operations per second | virtualDisk.numberReadAveraged.average
-Write operations per second | virtualDisk.numberWriteAveraged.average
-Read throughput (MB per second) | virtualDisk.read.average
-Write throughput (MB per second) | virtualDisk.write.average
-**Per NIC details** | 
-Network adapter name | nic.Key
-MAC address | ((VirtualEthernetCard)nic).MacAddress
-IPv4 addresses | vm.Guest.Net
-IPv6 addresses | vm.Guest.Net
-Read throughput (MB per second) | net.received.average
-Write throughput (MB per second) | net.transmitted.average
-**Inventory path details** | 
-Név | container.GetType().Name
-Type of child object | container.ChildType
-Reference details | container.MoRef
-Parent details | Container.Parent
-Folder details per VM | ((Folder)container).ChildEntity.Type
-Datacenter details per VM | ((Datacenter)container).VmFolder
-Datacenter details per host folder | ((Datacenter)container).HostFolder
-Cluster details per host | ((ClusterComputeResource)container).Host
-Host details per VM | ((HostSystem)container).VM
+Memória (MB) | vm.Config.Hardware.MemoryMB
+Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
+Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
+Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
+Processzorkihasználtság | cpu.usage.average
+Memória kihasználtsága |mem.usage.average
+**/Lemez adatai** | 
+Lemez kulcsának értéke | lemez. Kulcs
+Dikunit száma | disk.UnitNumber
+Lemezvezérlő-kulcs értéke | disk.ControllerKey.Value
+Kiépített gigabájt | virtualDisk.DeviceInfo.Summary
+Lemez neve | A lemez használatával generált érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey. VAlue
+Olvasási műveletek másodpercenként | virtualDisk.numberReadAveraged.average
+Írási műveletek másodpercenként | virtualDisk.numberWriteAveraged.average
+Olvasási sebesség (MB/s) | virtualDisk.read.average
+Írási sebesség (MB/s) | virtualDisk.write.average
+**Hálózati adapter adatai** | 
+Hálózati adapter neve | hálózati. Kulcs
+MAC-címe | ((VirtualEthernetCard)nic).MacAddress
+IPv4-címek | VM. Guest.Net
+IPv6-címek | VM. Guest.Net
+Olvasási sebesség (MB/s) | net. Received. Average
+Írási sebesség (MB/s) | net. továbbítandó. Average
+**Leltár elérési útja – részletek** | 
+Name (Név) | container.GetType().Name
+Gyermekobjektum típusa | tároló. ChildType
+Hivatkozás részletei | tároló. MoRef
+Szülő részletei | Container. Parent
+Mappa részletei virtuális gépenként | ((Folder)container).ChildEntity.Type
+Adatközpont részletei virtuális gépenként | ((Datacenter)container).VmFolder
+Az adatközpont részletei egy gazdagép mappájában | ((Datacenter)container).HostFolder
+Fürt adatai egy gazdagépen | ((ClusterComputeResource)container).Host
+Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 
 
 
-## <a name="collected-performance-data-hyper-v"></a>Collected performance data-Hyper-V
+## <a name="collected-performance-data-hyper-v"></a>Összegyűjtött teljesítményadatok – Hyper-V
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> A Azure Migrate készülék által felderített metaadatok segítségével az alkalmazások az Azure-ba való áttelepítéskor, az Azure megfelelőségi elemzés, az alkalmazás-függőségi elemzés és a költséghatékonyság megtervezése révén könnyebben méretezhető alkalmazásait. A Microsoft nem használja ezeket az adattípusokat a licencek megfelelőségi ellenőrzéséhez képest.
 
-Here's the Hyper VM performance data that the appliance collects and sends to Azure.
+Itt látható a virtuális gép által összegyűjtött és az Azure-ba küldött teljesítményadatok.
 
-**Performance counter class** | **Counter** | **Assessment impact**
+**Teljesítményszámláló osztálya** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-Hyper-V Hypervisor Virtual Processor | % Guest Run Time | Recommended VM size/cost
-Hyper-V Dynamic Memory VM | Current Pressure (%)<br/> Guest Visible Physical Memory (MB) | Recommended VM size/cost
-Hyper-V Virtual Storage Device | Read Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Storage Device | Write Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Network Adapter | Bytes Received/Second | Calculation for VM size
-Hyper-V Virtual Network Adapter | Bytes Sent/Second | Calculation for VM size
+Hyper-V hypervisor virtuális processzor | Vendég futási ideje (%) | Ajánlott virtuális gép mérete/díja
+Hyper-V dinamikus memória VM | Aktuális nyomás (%)<br/> Vendég látható fizikai memóriája (MB) | Ajánlott virtuális gép mérete/díja
+Hyper-V virtuális tárolóeszköz | Olvasási bájt/másodperc | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Hyper-V virtuális tárolóeszköz | Írási bájt/másodperc | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Hyper-V Virtual Network adapter | Fogadott bájtok/másodperc | A virtuális gép méretének kiszámítása
+Hyper-V Virtual Network adapter | Elküldett bájtok/másodperc | A virtuális gép méretének kiszámítása
 
-- CPU utilization is the sum of all usage, for all virtual processors attached to a VM.
-- Memory utilization is (Current Pressure * Guest Visible Physical Memory) / 100.
-- Disk and network utilization values are collected from the listed Hyper-V performance counters.
+- A CPU-kihasználtság a virtuális GÉPHEZ csatolt összes virtuális processzorhoz tartozó összes használat összege.
+- A memória kihasználtsága (aktuális nyomás * vendég látható fizikai memória)/100.
+- A rendszer a lemez-és hálózati kihasználtsági értékeket a felsorolt Hyper-V teljesítményszámlálók alapján gyűjti.
 
-## <a name="collected-metadata-hyper-v"></a>Collected metadata-Hyper-V
+## <a name="collected-metadata-hyper-v"></a>Összegyűjtött metaadatok – Hyper-V
 
-Here's the full list of Hyper-V VM metadata that the appliance collects and sends to Azure.
+Az alábbi lista tartalmazza a Hyper-V VM-metaadatok teljes listáját, amelyeket a készülék az Azure-ba gyűjt és küld.
 
-**Adatok** | **WMI class** | **WMI class property**
+**Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
 --- | --- | ---
-**Machine details** | 
-Serial number of BIOS _ Msvm_BIOSElement | BIOSSerialNumber
-VM type (Gen 1 or 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-VM display name | Msvm_VirtualSystemSettingData | ElementName
-VM version | Msvm_ProcessorSettingData | VirtualQuantity
-Memory (bytes) | Msvm_MemorySettingData | VirtualQuantity
-Maximum memory that can be consumed by VM | Msvm_MemorySettingData | Korlát
-Dynamic memory enabled | Msvm_MemorySettingData | DynamicMemoryEnabled
-Operating system name/version/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems Name Data
-VM power status | Msvm_ComputerSystem | EnabledState
-**Per disk details** | 
-Disk identifier | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-Virtual hard disk type | Msvm_VirtualHardDiskSettingData | Type (Típus)
-Virtual hard disk size | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-Virtual hard disk parent | Msvm_VirtualHardDiskSettingData | ParentPath
-**Per NIC details** | 
+**Gép részletei** | 
+A BIOS sorozatszáma _ Msvm_BIOSElement | BIOSSerialNumber
+Virtuális gép típusa (1. vagy 2. generációs) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+Virtuális gép megjelenítendő neve | Msvm_VirtualSystemSettingData | ElementName
+VM-verzió | Msvm_ProcessorSettingData | VirtualQuantity
+Memória (bájt) | Msvm_MemorySettingData | VirtualQuantity
+A virtuális gép által felhasználható maximális memória | Msvm_MemorySettingData | Korlát
+Dinamikus memória engedélyezve | Msvm_MemorySettingData | DynamicMemoryEnabled
+Operációs rendszer neve/verziója/teljes tartományneve | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems
+Virtuális gép energiaellátási állapota | Msvm_ComputerSystem | EnabledState
+**/Lemez adatai** | 
+Lemez azonosítója | Msvm_VirtualHardDiskSettingData | VirtualDiskId
+Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Típus
+Virtuális merevlemez mérete | Msvm_VirtualHardDiskSettingData | MaxInternalSize
+Virtuális merevlemez szülőjének | Msvm_VirtualHardDiskSettingData | ParentPath
+**Hálózati adapter adatai** | 
 IP addresses (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-DHCP enabled (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC ID (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC address (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | Cím
-NIC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | InstanceID
-NIC MAC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | Cím
+DHCP engedélyezve (szintetikus hálózati adapterek) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+NIC-azonosító (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | InstanceID
+Hálózati adapter MAC-címe (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | Cím
+NIC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | InstanceID
+NIC MAC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | Cím
 
 
 
 
-## <a name="discovery-and-collection-process"></a>Discovery and collection process
+## <a name="discovery-and-collection-process"></a>Felderítési és gyűjtési folyamat
 
-The appliance communicates with vCenter Servers and Hyper-V hosts/cluster using the following process.
+A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal és a Hyper-V-gazdagépekkel/-fürtökkel.
 
 
-1. **Start discovery**:
-    - When you start the discovery on the Hyper-V appliance, it communicates with the Hyper-V hosts on WinRM ports 5985 (HTTP) and 5986 (HTTPS).
-    - When you start discovery on the VMware appliance, it communicates with the vCenter server on TCP port 443 by default. IF the vCenter server listens on a different port, you can configure it in the appliance web app.
-2. **Gather metadata and performance data**:
-    - The appliance uses a Common Information Model (CIM) session to gather Hyper-V VM data from the Hyper-V host on ports 5985 and 5986.
-    - The appliance communicates with port 443 by default, to gather VMware VM data from the vCenter Server.
-3. **Send data**: The appliance sends the collected data to Azure Migrate Server Assessment and Azure Migrate Server Migration over SSL port 443.
-    - For performance data, the appliance collects real-time utilization data.
-        - Performance data is collected every 20 seconds for VMware, and every 30 seconds for Hyper-V, for each performance metric.
-        - The collected data is rolled up to create a single data point for ten minutes.
-        - The peak utilization value is selected from all of the 20/30 second data points, and sent to Azure for assessment calculation.
-        - Based on the percentile value specified in the assessment properties (50th/90th/95th/99th), the ten-minute points are sorted in ascending order, and the appropriate percentile value is used to compute the assessment
-    - For Server Migration, the appliance starts collecting VM data, and replicates it to Azure.
-4. **Assess and migrate**: You can now create assessments from the metadata collected by the appliance using Azure Migrate Server Assessment. In addition, you can also start migrating VMware VMs using Azure Migrate Server Migration to orchestrate agentless VM replication.
+1. **Felderítés elindítása**:
+    - Amikor elindítja a felderítést a Hyper-V berendezésen, az a 5985-as (HTTP) és a 5986 (HTTPS) WinRM-portok Hyper-V-gazdagépekkel kommunikál.
+    - Amikor elindítja a felderítést a VMware készüléken, az a 443-as TCP-porton keresztül kommunikál a vCenter-kiszolgálóval. Ha a vCenter-kiszolgáló egy másik portot figyel, konfigurálhatja azt a berendezés webalkalmazásban.
+2. **Metaadatok és teljesítményadatok összegyűjtése**:
+    - A készülék egy CIM-(CIM-) munkamenetet használ a Hyper-V virtuális gépek adatainak a Hyper-V-gazdagépről a 5985-es és 5986-es portokon való összegyűjtéséhez.
+    - A készülék alapértelmezés szerint az 443-as porttal kommunikál a VMware virtuális gépek adatainak a vCenter Serverból való összegyűjtéséhez.
+3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül.
+    - A teljesítményadatok esetében a készülék valós idejű kihasználtsági adatokat gyűjt.
+        - A teljesítményadatokat a rendszer minden egyes teljesítménymutató esetében 20 másodpercenként gyűjti a VMware-hez, és minden 30 másodpercenként a Hyper-V-hez.
+        - Az összegyűjtött adatokat a rendszer összesíti, hogy egy adatpontot tíz percen belül hozzon létre.
+        - A csúcsérték kihasználtsági értéke a 20/30 második adatpontból van kiválasztva, és az Azure-ba az értékelés kiszámításakor lesz elküldve.
+        - Az értékelés tulajdonságaiban (50/90/95./esetek 99%) megadott százalékos érték alapján a tíz perces pont növekvő sorrendbe kerül, és az értékelés kiszámításához a megfelelő percentilis értéket használja a rendszer.
+    - A kiszolgáló áttelepítése esetén a készülék elkezdi a virtuális gépekkel kapcsolatos adatok gyűjtését, és replikálja azt az Azure-ba.
+4. **Értékelés és Migrálás**: most már létrehozhat értékeléseket a készülék által gyűjtött metaadatokból Azure Migrate Server Assessment használatával. Emellett a VMware virtuális gépek áttelepítését is megkezdheti Azure Migrate kiszolgáló áttelepítésével az ügynök nélküli virtuális gép replikálásának előkészítéséhez.
 
 
 ![Architektúra](./media/migrate-appliance/architecture.png)
 
 
-## <a name="appliance-upgrades"></a>Appliance upgrades
+## <a name="appliance-upgrades"></a>Berendezések frissítése
 
-The appliance is upgraded as the Azure Migrate agents running on the appliance are updated.
+A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynökök frissülnek.
 
-- This happens automatically because the auto-update is enabled on the appliance by default.
-- You can change this default setting to update the agents manually.
-- To disable the auto-update, go to the Registry Editor>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance and set the registry key- "AutoUpdate" to 0 (DWORD).
+- Ez automatikusan megtörténik, mert alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken.
+- Az alapértelmezett beállítás módosításával manuálisan is frissítheti az ügynököket.
+- Az automatikus frissítés letiltásához nyissa meg a Beállításszerkesztőt > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance, és állítsa az "AutoUpdate" beállításkulcsot 0-ra (DWORD).
  
-### <a name="set-agent-updates-to-manual"></a>Set agent updates to manual
+### <a name="set-agent-updates-to-manual"></a>Az ügynökök frissítésének beállítása kézire
 
-For manual updates, make sure that you update all the agents on the appliance at the same time, using the **Update** button for each outdated agent on the appliance. You can switch the update setting back to automatic updates at any time.
+Manuális frissítés esetén győződjön meg arról, hogy a készüléken lévő összes ügynököt egy időben frissíti, a készüléken lévő összes elavult ügynök **frissítés** gombjával. A frissítési beállítás bármikor visszaváltható az automatikus frissítésekre.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Learn how](tutorial-assess-vmware.md#set-up-the-appliance-vm) to set up the appliance for VMware.
-[Learn how](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) to set up the appliance for Hyper-V.
+[Ismerje meg, hogyan](tutorial-assess-vmware.md#set-up-the-appliance-vm) állíthatja be a készüléket a VMware rendszerhez.
+[Ismerje meg, hogyan](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) állíthatja be a készüléket a Hyper-V-hez.
 

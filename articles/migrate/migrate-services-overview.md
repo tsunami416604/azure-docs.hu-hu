@@ -103,11 +103,11 @@ Azure Migrate: a kiszolgálói áttelepítési eszköz segítségével helyszín
 
 ## <a name="database-migration-assistant"></a>Adatbázis Migration Assistant
 
-A Azure Migrate a Microsoft Data Migration Assistant (DMA) szolgáltatással integrálható a helyszíni SQL Server adatbázisok áttelepítésére az Azure SQL DB-be, az Azure SQL felügyelt példányaiba vagy SQL Server-t futtató Azure-beli virtuális gépekre. A DMA információt nyújt az áttelepítéssel kapcsolatos lehetséges blokkolási problémákról. Azonosítja a nem támogatott funkciókat, valamint az áttelepítés után kihasználható új funkciókat, és segít az adatbázis-áttelepítés megfelelő elérési útjának azonosításában. [Részletek](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
+A Azure Migrate a Microsoft Data Migration Assistant (DMA) szolgáltatással integrálható a helyszíni SQL Server adatbázisok áttelepítésére az Azure SQL DB-be, az Azure SQL felügyelt példányaiba vagy SQL Server-t futtató Azure-beli virtuális gépekre. A DMA információt nyújt az áttelepítéssel kapcsolatos lehetséges blokkolási problémákról. Azonosítja a nem támogatott funkciókat, valamint az áttelepítés után kihasználható új funkciókat, és segít az adatbázis-áttelepítés megfelelő elérési útjának azonosításában. [További információk](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 
 ## <a name="database-migration-service"></a>Database Migration Service
 
-A Azure Migrate a Azure Database Migration Service (DMS) szolgáltatással integrálható a helyszíni adatbázisok Azure-ba való migrálása érdekében. A DMS használatával helyszíni adatbázisokat telepíthet át az SQL, az Azure SQL DB és az Azure SQL felügyelt példányain futó Azure virtuális gépekre. [Részletek](https://docs.microsoft.com/azure/dms/dms-overview).
+A Azure Migrate a Azure Database Migration Service (DMS) szolgáltatással integrálható a helyszíni adatbázisok Azure-ba való migrálása érdekében. A DMS használatával helyszíni adatbázisokat telepíthet át az SQL, az Azure SQL DB és az Azure SQL felügyelt példányain futó Azure virtuális gépekre. [További információk](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="movere"></a>Movere
 

@@ -22,7 +22,7 @@ ms.locfileid: "74276626"
 
 Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat első része**, amely a Python környezet beállítását és konfigurálását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti. A második [**rész**](tutorial-1st-experiment-sdk-train.md) erre épít több gépi tanulási modell betanításához és a modell-felügyeleti folyamat bevezetéséhez a Azure Machine learning Studio és az SDK használatával.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Hozzon létre egy [Azure Machine learning-munkaterület](concept-workspace.md) , amelyet a következő oktatóanyagban szeretne használni.

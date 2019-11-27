@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 10532ba2b43e40c4ffa2990e924947046d03b576
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049177"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539208"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -64,12 +64,12 @@ Elméletileg három fő forgatókönyv áll rendelkezésre az adatkészlet-figye
 Forgatókönyv | Leírás
 ---|---
 A modellnek a modell betanítási adatokból való eltolódására szolgáló adatok figyelése | Ennek a forgatókönyvnek az eredményei a modell pontosságára szolgáló proxy figyelésére használhatók, mivel a modell pontossága csökkenti, ha a kiszolgált adatok a betanítási adatokból származnak.
-Idősorozat-adatkészlet figyelése egy korábbi időszakból származó eltolódáshoz. | Ez a forgatókönyv általánosabb, és a modell kiépítése során a felsőbb rétegbeli vagy az ahhoz kapcsolódó adatkészletek figyelésére használható.  A célként megadott adatkészletnek időbélyeg-oszloptal kell rendelkeznie, míg az alapkonfiguráció adatkészlete bármely táblázatos adatkészlet lehet, amely a célként megadott adatkészlettel közös funkciókat tartalmaz.
-A múltbeli adatok elemzésének végrehajtása. | Ez felhasználható a korábbi adathalmazok megismerésére és a döntések meghozatalára az adatkészlet-figyelők beállításaiban.
+Idősorozat-adatkészlet figyelése egy korábbi időszakból származó eltolódáshoz. | Ez a forgatókönyv általánosabb, és a modell kiépítése során a felsőbb rétegbeli vagy az ahhoz kapcsolódó adatkészletek figyelésére használható.  A célként megadott adatkészletnek időbélyeg-oszloptal kell rendelkeznie, míg az alapkonfiguráció adatkészlete bármely táblázatos adatkészlet lehet, amely közösen tartalmazza a célként megadott adatkészletet.
+A múltbeli adatok elemzésének végrehajtása. | Ez a forgatókönyv felhasználható a korábbi adathalmazok megismerésére és a döntések meghozatalára az adatkészlet-figyelők beállításaiban.
 
 ## <a name="how-dataset-can-monitor-data"></a>Az adatkészlet figyelése az adatkészletben
 
-A Azure Machine Learning használatával az adateltolódást az adatkészletek figyelik. Az adateltolódás figyeléséhez egy alapkonfigurációt – általában a modell betanítási adatkészletét – kell megadni. A célként megadott adatkészletek – általában a bemeneti adatok modellezése – összehasonlítjuk az alapkonfigurációval. Ez azt jelenti, hogy a célként megadott adatkészlet esetében meg kell adni egy időbélyeg-oszlopot.
+A Azure Machine Learning használatával az adateltolódást az adatkészletek figyelik. Az adateltolódás figyeléséhez egy alapkonfigurációt – általában a modell betanítási adatkészletét – kell megadni. A célként megadott adatkészletek – általában a bemeneti adatok modellezése – összehasonlítjuk az alapkonfigurációval. Ez az összehasonlítás azt jelenti, hogy a célként megadott adatkészlet esetében meg kell adni egy időbélyeg-oszlopot.
 
 ### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>A `timeseries` tulajdonság beállítása a cél adatkészletben
 
@@ -133,9 +133,9 @@ Ez a táblázat az adatkészlet-figyelő alapszintű beállításait tartalmazza
 | ------- | ----------- | ---- | ------- | 
 | Name (Név) | Az adatkészlet figyelő neve. | | Nem |
 | Alapterv-adatkészlet | Táblázatos adatkészlet, amely a célként megadott adatkészlet időbeli összehasonlításához használt alapkonfigurációként fog megjelenni. | Az alapadatkészletnek a célként megadott adatkészlettel közös szolgáltatásokkal kell rendelkeznie. Az alaptervet általában a modell betanítási adatkészletére vagy a célként megadott adatkészlet egy szeletére kell beállítani. | Nem |
-| Cél adatkészlet | Táblázatos adatkészlet, amely az adateltolódás elemzésére szolgáló időbélyeg-oszloppal van megadva | A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapadatkészlet esetében, és olyan `timeseries` adathalmaznak kell lennie, amelybe az új adatokat fűzi a rendszer. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni. | Nem | 
-| Frequency | Ez a gyakoriság, amellyel ütemezhető a folyamat, és elemezheti a korábbi adatok elemzését egy backfill futtatásakor. A beállítások a következők: naponta, hetente vagy havonta. | Módosítsa ezt a beállítást úgy, hogy az az alaptervhez hasonló adatméretet tartalmazzon. | Nem | 
-| Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket a rendszer az adateltolódás elemzéséhez használ az idő múlásával | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+| Cél adatkészlet | A táblázatos adatkészlet, amely az adateltolódás elemzésére szolgáló időbélyeg-oszloppal van megadva. | A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapadatkészlet esetében, és `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni. | Nem | 
+| Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Módosítsa ezt a beállítást úgy, hogy az az alaptervhez hasonló adatméretet tartalmazzon. | Nem | 
+| Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
 | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
 
 ### <a name="monitor-settings"></a>Beállítások figyelése
@@ -144,8 +144,8 @@ Ezek a beállítások az ütemezett adatkészlet-figyelő folyamathoz tartoznak,
 
 | Beállítás | Leírás | Tippek | Változtatható | 
 | ------- | ----------- | ---- | ------- |
-| Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Ezzel a beállítással letilthatja a korábbi adatértékek elemzését a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
-| Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatokat az SQL-adatbázis saját adatkészlet-beágyazásában, állítsa a késleltetést 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
+| Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
+| Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
 | E-mail cím | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
 | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
 
@@ -156,7 +156,7 @@ Ezek a beállítások a múltbeli adatok backfill futtatására szolgálnak az a
 | Beállítás | Leírás | Tippek |
 | ------- | ----------- | ---- |
 | Kezdő dátum | A backfill-feladathoz tartozó kezdési dátum. | | 
-| Záró dátum | A backfill-feladathoz tartozó befejezési dátum. | Ez nem lehet több, mint 31 * gyakorisági egység a kezdő dátumtól. Egy meglévő adatkészlet-figyelőn a metrikák visszatöltötte a korábbi adatok elemzéséhez, illetve a metrikák a frissített beállításokkal való lecseréléséhez. |
+| Záró dátum | A backfill-feladathoz tartozó befejezési dátum. | A befejezési dátum nem lehet több, mint 31 * gyakorisági egység a kezdő dátumtól. Egy meglévő adatkészlet-figyelőn a metrikák visszatöltötte a korábbi adatok elemzéséhez, illetve a metrikák a frissített beállításokkal való lecseréléséhez. |
 
 ## <a name="create-dataset-monitors"></a>Adatkészlet-figyelők létrehozása 
 
@@ -181,7 +181,7 @@ Az eredményül kapott adatkészlet figyelője megjelenik a listában. Válassza
 
 A teljes részletekért tekintse [meg a PYTHON SDK dokumentációját az adateltolódásról](/python/api/azureml-datadrift/azureml.datadrift) . 
 
-Az alábbi példa egy adatkészlet-figyelő Python SDK-val történő létrehozását szemlélteti
+Az alábbi példa bemutatja, hogyan hozhat létre egy adatkészlet-figyelőt a Python SDK használatával
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -252,7 +252,7 @@ Az alábbi ábrán egy példa látható a **drift áttekintés** eredményei Azu
 
 A **szolgáltatás részletei** szakasz a kiválasztott szolgáltatás terjesztésének változását, valamint az egyéb statisztikákat az idő múlásával mutatja be. 
 
-A célként megadott adatkészlet az idő múlásával is bekerül. Az egyes szolgáltatások alapkonfiguráció-eloszlása közötti statisztikai távolságot a rendszer összehasonlítja a célként megadott adatkészlettel, amely koncepcionálisan hasonló az adateltolódási mértékhez, azzal a kivétellel, hogy ez egy adott szolgáltatáshoz tartozik. A min, a Max és a Mean is elérhető. 
+A célként megadott adatkészlet az idő múlásával is bekerül. Az egyes szolgáltatások alapkonfiguráció-eloszlása közötti statisztikai távolságot a rendszer összehasonlítja a célként megadott adatkészlettel, amely koncepcionálisan hasonló az adateltolódási mértékhez, azzal a kivétellel, hogy ez a statisztikai távolság egy adott szolgáltatáshoz tartozik. A min, a Max és a Mean is elérhető. 
 
 Ha a gráf egyik adatpontjára kattint, akkor a Azure Machine Learning Studióban a megjelenő funkció eloszlása ennek megfelelően lesz módosítva. Alapértelmezés szerint megjeleníti az alapadatkészlet eloszlását és a legutóbbi futtatási eloszlását. 
 
@@ -295,7 +295,7 @@ Válassza a naplók (elemzés) lehetőséget a bal oldali ablaktábla figyelés 
 
 ![Az Application ininsight áttekintése](media/how-to-monitor-datasets/ai-overview.png)
 
-Az adatkészlet-figyelő metrikáinak tárolása `customMetrics`történik. Az adatkészlet-figyelő beállítása után írhat és futtathat egy egyszerű lekérdezést a megtekintéséhez:
+Az adatkészlet-figyelő metrikáinak tárolása `customMetrics`történik. Az adatkészlet-figyelő beállítása után írhat és futtathat egy lekérdezést a megtekintéséhez:
 
 [![log Analytics-lekérdezés](media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
@@ -321,7 +321,7 @@ Az adatkészletben lévő oszlopok vagy szolgáltatások a következő tábláza
 | Szolgáltatás típusa | Data type | Állapot | Korlátozások | 
 | ------------ | --------- | --------- | ----------- |
 | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
-| Numerikus | int, float | Numerikus adattípus esetén, és nem felel meg a kategorikus funkció feltételeinek. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
+| Numerikus | int, float | A szolgáltatás értékei numerikus adattípussal rendelkeznek, és nem felelnek meg a kategorikus funkció feltételének. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
 
 ## <a name="next-steps"></a>Következő lépések
 

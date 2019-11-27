@@ -1,22 +1,17 @@
 ---
-title: Oktatóanyag – trigger Azure Container Instances egy Azure-függvény alapján
+title: Oktatóanyag – a tárolók csoportjának elindítása az Azure Function alapján
 description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehozása az Azure Container instances létrehozásának automatizálásához
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179980"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533376"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: Egy HTTP által aktivált Azure-függvény használata tároló csoport létrehozásához
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
 [Azure functions](../azure-functions/functions-overview.md) egy kiszolgáló nélküli számítási szolgáltatás, amely parancsfájlokat vagy kódokat futtathat különböző eseményekre, például egy http-kérelemre, egy időzítőre vagy egy Azure Storage-várólistában lévő üzenetre válaszul.
 
@@ -66,7 +61,7 @@ az functionapp identity assign \
 
 ## <a name="modify-httptrigger-function"></a>HttpTrigger-függvény módosítása
 
-Módosítsa a **HttpTrigger** függvény PowerShell-kódját egy tároló csoport létrehozásához. A függvény `run.ps1` fájljában keresse meg a következő kódrészletet. Ez a kód egy Name (név) értéket jelenít meg, ha a függvény URL-címében egy lekérdezési karakterláncként adja át a következőt:
+Módosítsa a **HttpTrigger** függvény PowerShell-kódját egy tároló csoport létrehozásához. A függvényhez tartozó fájl `run.ps1` keresse meg a következő kódrészletet. Ez a kód egy Name (név) értéket jelenít meg, ha a függvény URL-címében egy lekérdezési karakterláncként adja át a következőt:
 
 ```powershell
 [...]
@@ -92,11 +87,11 @@ if ($name) {
 [...]
 ```
 
-Ez a példa egy tároló csoportot hoz létre, amely a `alpine` rendszerképet futtató egyetlen tároló példányból áll. A tároló egyetlen `echo` parancsot futtat, majd leáll. Valós példaként egy batch-feladatok futtatásához egy vagy több tároló-csoport létrehozását is elindíthatja.
+Ez a példa egy tároló csoportot hoz létre, amely egy `alpine` rendszerképet futtató egyetlen tároló példányból áll. A tároló egyetlen `echo` parancsot futtat, majd leáll. Valós példaként egy batch-feladatok futtatásához egy vagy több tároló-csoport létrehozását is elindíthatja.
  
 ## <a name="test-function-app-locally"></a>A Function alkalmazás helyi tesztelése
 
-Győződjön meg arról, hogy a függvény helyileg fut, mielőtt újból közzéteszi a Function app-projektet az Azure-ban. Ahogy a [PowerShell](../azure-functions/functions-create-first-function-powershell.md)-gyors útmutatóban is látható, helyezzen be egy helyi töréspontot a `Wait-Debugger` PowerShell-parancsfájlba, és egy fölötte lévő hívást. Hibakeresési útmutatásért lásd: a [PowerShell Azure functions helyi hibakeresése](../azure-functions/functions-debug-powershell-local.md).
+Győződjön meg arról, hogy a függvény helyileg fut, mielőtt újból közzéteszi a Function app-projektet az Azure-ban. Ahogy a [PowerShell](../azure-functions/functions-create-first-function-powershell.md)-útmutatóban is látható, helyezzen be egy helyi töréspontot a PowerShell-parancsfájlba, és egy `Wait-Debugger` hívást. Hibakeresési útmutatásért lásd: a [PowerShell Azure functions helyi hibakeresése](../azure-functions/functions-debug-powershell-local.md).
 
 
 ## <a name="republish-azure-function-app"></a>Azure Function-alkalmazás újbóli közzététele
@@ -104,9 +99,9 @@ Győződjön meg arról, hogy a függvény helyileg fut, mielőtt újból közz�
 Miután meggyőződött róla, hogy a függvény megfelelően fut a helyi számítógépen, ideje újra közzétenni a projektet a meglévő Function alkalmazásban az Azure-ban.
 
 > [!NOTE]
-> Ne felejtse el, hogy `Wait-Debugger` a függvények az Azure-ba való közzététele előtt el kell távolítania a hívásokat.
+> A függvények Azure-ba való közzététele előtt ne felejtse el eltávolítani a `Wait-Debugger` hívásokat.
 
-1. A Visual Studio Code-ban nyissa meg a parancs palettáját. Keresse meg és válassza `Azure Functions: Deploy to function app...`ki a következőt:.
+1. A Visual Studio Code-ban nyissa meg a parancs palettáját. Keresse meg és válassza ki a `Azure Functions: Deploy to function app...`.
 1. Válassza ki az aktuális munkamappát a zip-ben és az üzembe helyezéshez.
 1. Válassza ki az előfizetést, majd a meglévő Function app (*myfunctionapp*) nevét. Erősítse meg, hogy felül szeretné írni az előző telepítést.
 
@@ -114,7 +109,7 @@ A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után 
 
 ## <a name="run-the-function-in-azure"></a>A függvény futtatása az Azure-ban
 
-Miután az üzembe helyezés sikeresen befejeződött, szerezze be a függvény URL-címét. Például használja az **Azure-t: Függvények** területen a Visual Studio Code-ban a **HttpTrigger** függvény URL-címének másolásához vagy a függvény URL-címének lekéréséhez a [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Miután az üzembe helyezés sikeresen befejeződött, szerezze be a függvény URL-címét. Például az **Azure: functions** területen a Visual Studio Code-ban másolja a **HttpTrigger** függvény URL-címét, vagy kérje le a függvény url-címét a [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
 
 A függvény URL-címe tartalmaz egy egyedi kódot, amely a következőkből áll:
 
@@ -124,13 +119,13 @@ https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0Gng
 
 ### <a name="run-function-without-passing-a-name"></a>Függvény futtatása a név átadása nélkül
 
-Első tesztként futtassa a `curl` parancsot, és adja át a függvény URL-címét a `name` lekérdezési karakterlánc hozzáfűzése nélkül. Ügyeljen arra, hogy a függvény egyedi kódját tartalmazza.
+Első tesztként futtassa az `curl` parancsot, és adja át a függvény URL-címét egy `name` lekérdezési karakterlánc hozzáfűzése nélkül. Ügyeljen arra, hogy a függvény egyedi kódját tartalmazza.
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
 ```
 
-A függvény a 400 állapotkódot és a szöveget `Please pass a name on the query string or in the request body`adja vissza:
+A függvény a 400 állapotkódot és a `Please pass a name on the query string or in the request body`szöveget adja vissza:
 
 ```
 [...]
@@ -151,7 +146,7 @@ Please pass a name on the query string or in the request body.
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>Futtassa a függvényt, és adja át egy tároló csoport nevét
 
-Most futtassa a `curl` parancsot a Container Group (*mycontainergroup*) nevének lekérdezési karakterláncként `&name=mycontainergroup`való hozzáfűzésével:
+Most futtassa a `curl` parancsot úgy, hogy hozzáfűzi a Container Group (*mycontainergroup*) nevét lekérdezési karakterláncként `&name=mycontainergroup`:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"
@@ -196,7 +191,7 @@ Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, az az 
 az group delete --name myfunctionapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

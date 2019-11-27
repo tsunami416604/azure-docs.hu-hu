@@ -1,6 +1,6 @@
 ---
-title: Scale an instance of Azure SignalR Service
-description: Learn how to scale an Azure SignalR Service instance to add or reduce capacity, through Azure portal or Azure CLI.
+title: Az Azure Signaler szolgáltatás egy példányának méretezése
+description: Megtudhatja, hogyan méretezhető az Azure Signaler szolgáltatás példánya kapacitás hozzáadásához vagy csökkentéséhez Azure Portal vagy az Azure CLI-n keresztül.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
@@ -13,35 +13,35 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464177"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>How to scale an Azure SignalR Service instance?
-This article shows you how to scale your instance of Azure SignalR Service. There are two scenarios for scaling, scale up and scale out.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure Signaler Service-példány skálázása
+Ez a cikk bemutatja, hogyan méretezhető az Azure Signaler szolgáltatás példánya. Két forgatókönyv áll rendelkezésre a méretezéshez, a vertikális felskálázáshoz és a horizontális felskálázáshoz.
 
-* [Scale up](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Get more units, connections, messages, and more. You scale up by changing the pricing tier from Free to Standard.
-* [Scale out](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Increase the number of SignalR units. You can scale out to as many as 100 units.
+* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több egység, kapcsolat, üzenet és egyebek is elérhetők. Vertikális felskálázást az árképzési szint Ingyenesről standard szintűre való módosításával végezheti el.
+* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje a jelző egységek számát. Akár 100 egységre is kibővíthető.
 
-The scale settings take a few minutes to apply. They don't require you to change your code or redeploy your server application.
+A skálázási beállítások alkalmazása eltarthat néhány percig. Nem igénylik a kód módosítását vagy a kiszolgálóalkalmazás újbóli üzembe helyezését.
 
-For information about the pricing and capacities of individual SignalR Service, see [Azure SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).  
+További információ az egyéni szignáló szolgáltatás díjszabásáról és kapacitásáról: az [Azure signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Changing SignalR Service from **Free** tier to **Standard** tier or vice versa, the public service IP will be changed and it usually takes 3-60 minutes to propagate the change to DNS servers across the entire internet. Your service might be unreachable before DNS gets updated. Generally it’s not recommended to change your pricing tier too often.
+> A Signaler szolgáltatás **ingyenes** szintjéről **standard** csomagra vált, vagy fordítva, a nyilvános szolgáltatás IP-címe módosul, és általában 3-60 percet vesz igénybe, hogy a teljes interneten keresztül propagálja a DNS-kiszolgálókra való változást. Előfordulhat, hogy a szolgáltatás nem érhető el, mielőtt frissül a DNS. Általában nem ajánlott túl gyakran módosítani az árképzési szintet.
 
 
-## <a name="scale-on-azure-portal"></a>Scale on Azure portal
+## <a name="scale-on-azure-portal"></a>Méretezés Azure Portal
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a böngészőjében.
 
-2. In your SignalR Service page, from the left menu, select **Scale**.
+2. A Signaler szolgáltatás lapjának bal oldali menüjében válassza a **skála**lehetőséget.
    
-3. Choose your pricing tier, and then click **Select**. You need to set the unit count for **Standard** Tier.
+3. Válassza ki az árképzési szintet, majd kattintson a **kiválasztás**elemre. A **standard** szinthez be kell állítania az egységek darabszámát.
    
-    ![Scale on Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
+    ![Méretezés a portálon](./media/signalr-howto-scale/signalr-howto-scale.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="scale-using-azure-cli"></a>Scale using Azure CLI
+## <a name="scale-using-azure-cli"></a>Méretezés az Azure CLI használatával
 
-This script creates a new SignalR Service resource of **Free** Tier and a new resource group, and scale it up to **Standard** Tier. 
+Ez a szkript létrehoz egy új, az **ingyenes** szint és egy új erőforráscsoport, valamint a **standard** szinthez való skálázást jelző szolgáltatás-erőforrást. 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az 
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Compare pricing tiers
+## <a name="compare-pricing-tiers"></a>Árképzési szintek összehasonlítása
 
-For detailed information, such as included messages and connections for each pricing tier, see [SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).
+Részletes információkat, például az összes díjszabási csomaghoz tartozó üzeneteket és kapcsolatokat lásd: a [signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-For a table of service limits, quotas, and constraints in each tier, see [SignalR Service limits](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Az egyes szintek szolgáltatási korlátainak, kvótáinak és megkötéseinek táblázatát lásd: a [signaler szolgáltatás korlátai](../azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this guide, you learned about how to scale single SignalR Service instance.
+Ebben az útmutatóban megismerte, hogyan méretezhető az egyetlen szignáló szolgáltatás példánya.
 
-Multiple endpoints are also supported for scaling, sharding and cross-region scenarios.
+Több végpont is támogatott a méretezés, a horizontális skálázás és a régiók közötti környezetekben.
 
 > [!div class="nextstepaction"]
-> [scale SignalR Service with multiple instances](./signalr-howto-scale-multi-instances.md)
+> [a Signaler szolgáltatás méretezése több példánnyal](./signalr-howto-scale-multi-instances.md)

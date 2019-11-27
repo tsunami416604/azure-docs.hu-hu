@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Translate speech-to-text, C# - Speech Service'
+title: 'Gyors útmutató: beszéd – szöveg fordítása, C# beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260751"
 ---
-**Choose your target environment**
+**Válassza ki a kívánt környezetet**
 
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]

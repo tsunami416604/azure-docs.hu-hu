@@ -1,6 +1,6 @@
 ---
-title: View and manage customers and delegated resources
-description: As a service provider using Azure delegated resource management, you can view all of your delegated customer resources and subscriptions by going to My customers in the Azure portal.
+title: Ügyfelek és delegált erőforrások megtekintése és kezelése
+description: Az Azure-beli delegált erőforrás-kezelést használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
 ms.date: 10/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
@@ -10,57 +10,57 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463823"
 ---
-# <a name="view-and-manage-customers-and-delegated-resources"></a>View and manage customers and delegated resources
+# <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
-Service providers using [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) can use the **My customers** page in the [Azure portal](https://portal.azure.com) to view delegated customer resources and subscriptions. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
+Az Azure-beli [delegált erőforrás-kezelést](../concepts/azure-delegated-resource-management.md) használó szolgáltatók használhatják a [Azure Portal](https://portal.azure.com) **saját ügyfelek** lapját a delegált ügyfél-erőforrások és-előfizetések megtekintéséhez. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
-To access the **My customers** page in the Azure portal, select **All services**, then search for **My customers** and select it. You can also find it by entering “My customers” in the search box near the top of the Azure portal.
+Ha a Azure Portal **saját ügyfelek** lapját szeretné elérni, válassza a **minden szolgáltatás**lehetőséget, majd keresse meg az **ügyfeleket** , és válassza ki azt. Azt is megteheti, hogy beírja az "ügyfelek" kifejezést a Azure Portal tetején található keresőmezőbe.
 
-Keep in mind that the top section of the **My customers** page only shows info about customers who have delegated subscriptions or resource groups. If you work with other customers (such as through the [Cloud Solution Provider program](https://docs.microsoft.com/partner-center/csp-overview), you won’t see info about those customers here unless you onboard their resources for delegated resource management. Lower on the page, the **Cloud Solution Provider (Preview)** section shows billing info and resources for your CSP customers who have [signed the Microsoft Customer Agreement (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) and are under the Azure plan, whether or not they have been onboarded for Azure delegated resource management. For more info, see [Get started with your Microsoft Partner Agreement billing account](https://docs.microsoft.com/azure/billing/mpa-overview).
+Ne feledje, hogy a **saját ügyfelek** lap felső szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek információit jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](https://docs.microsoft.com/partner-center/csp-overview)keresztül), akkor ezekkel az ügyfelekkel kapcsolatos információk nem jelennek meg, hacsak nem készíti elő az erőforrásokat a delegált erőforrás-kezeléshez. A lap alsó részén a **Cloud Solution Provider (előzetes verzió)** szakasz a [Microsoft ügyfél-szerződést (MCA) aláíró](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ügyfeleinek számlázási információit és erőforrásait, valamint az Azure-csomag részét képezi, függetlenül attól, hogy be lett-e telepítve Az Azure-beli delegált erőforrás-kezeléshez. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
-> Your customers can view info about service providers by navigating to **Service providers** in the Azure portal. For more info, see [View and manage service providers](view-manage-service-providers.md).
+> Az ügyfelek megtekinthetik a szolgáltatók adatait úgy, hogy a Azure Portalban **lévő szolgáltatókra** navigálnak. További információ: szolgáltatók [megtekintése és kezelése](view-manage-service-providers.md).
 
-## <a name="view-and-manage-customer-details"></a>View and manage customer details
+## <a name="view-and-manage-customer-details"></a>Ügyfél adatainak megtekintése és kezelése
 
-To view customer details, select **Customers** on the left side of the **My customers** page.
+Az ügyfél részleteinek megtekintéséhez válassza a **Customers** (ügyfelek) lehetőséget a **Customers (ügyfelek)** oldal bal oldalán.
 
-For each customer, you'll see the customer's name, customer ID (tenant ID), and the offer associated with the engagement. In the **Delegations** column, you'll see the number of delegated subscriptions and/or the number of delegated resource groups.
+Minden ügyfél esetében látni fogja az ügyfél nevét, az ügyfél AZONOSÍTÓját (bérlői AZONOSÍTÓját), valamint az engagement szolgáltatáshoz tartozó ajánlatot. A **delegálások** oszlopban látható a delegált előfizetések száma és/vagy a delegált erőforráscsoportok száma.
 
 > [!IMPORTANT]
-> In order to see a delegation, users must have been granted the [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) role (or another built-in role which includes Reader access) in the onboarding process.
+> A delegálás megtekintéséhez a felhasználóknak meg kell adni az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz) a bevezetési folyamat során.
 
-Filters at the top of the page let you sort and group your customer info or filter by specific customers, offers, or keywords.
+Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja az ügyfél adatait, vagy szűrheti az ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
-You can view the following info from this page:
+Az alábbi adatokat tekintheti meg erről az oldalról:
 
-- To see all of the subscriptions, offers, and delegations associated with a customer, select the customer's name.
-- To see more details about an offer and its delegations, select the offer name.
-- To view more details about role assignments for delegated subscriptions or resource groups, select the entry in the **Delegations** column.
+- Ha meg szeretné tekinteni az ügyfélhez társított összes előfizetést, ajánlatot és delegálást, válassza ki az ügyfél nevét.
+- Ha további részleteket szeretne látni egy ajánlatról és annak delegálásáról, válassza az ajánlat nevét.
+- A delegált előfizetések vagy erőforráscsoportok szerepkör-hozzárendeléseivel kapcsolatos további részletek megtekintéséhez válassza ki a bejegyzést a **delegálások** oszlopban.
 
-## <a name="view-delegations"></a>View delegations
+## <a name="view-delegations"></a>Delegálások megtekintése
 
-Delegations show the subscription/resource group that has been delegated , along with the users and permissions that have access to it. To view this info, select **Delegations** on the left side of the **My customers** page.
+A delegálások a delegált előfizetést/erőforráscsoportot, valamint a hozzájuk tartozó felhasználókat és engedélyeket jelenítik meg. Az adatok megtekintéséhez válassza a **saját ügyfelek** lap bal oldalán található **delegálások** lehetőséget.
 
-Filters at the top of the page let you sort and group your access assignment info or filter by specific customers, offers, or keywords.
+A lap tetején található szűrők segítségével rendezheti és csoportosíthatja a hozzáférés-hozzárendelési adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
-The users and permissions associated with each delegation appear in the **Role assignments** column. You can select each entry to view the full list of users, groups, and service principals that have been granted access to the subscription or resource group. From there, you can select a particular user, group, or service principal name to get more details.
+Az egyes delegálásokhoz társított felhasználók és engedélyek a szerepkör- **hozzárendelések** oszlopban jelennek meg. Az egyes bejegyzéseket kiválasztva megtekintheti azoknak a felhasználóknak, csoportoknak és egyszerű szolgáltatásoknak a teljes listáját, amelyek hozzáférést kaptak az előfizetéshez vagy az erőforráscsoporthoz. Az adott felhasználó, csoport vagy egyszerű szolgáltatásnév kiválasztásával további részleteket tudhat meg.
 
-## <a name="work-in-the-context-of-a-delegated-subscription"></a>Work in the context of a delegated subscription
+## <a name="work-in-the-context-of-a-delegated-subscription"></a>Meghatalmazott előfizetés kontextusában működik
 
-You can work directly in the context of a delegated subscription within the Azure portal, without switching the directory you're working in. Ehhez tegye a következőket:
+A Azure Portalon belüli delegált előfizetések kontextusában közvetlenül is dolgozhat, és nem kell átváltania a címtárat, amelyen dolgozik. Ehhez tegye a következőket:
 
-1. Select the **Directory + Subscription** icon near the top of the Azure portal.
-2. In the **Global subscription** filter, ensure that only the box for that delegated subscription is selected. You can use the **Current + delegated directories** drop-down box to show only subscriptions within a specific directory. (Do not use the **Switch directory** option, since that changes the directory to which you're signed in.)
+1. Válassza ki a **könyvtár + előfizetés** ikont a Azure Portal tetején.
+2. A **globális előfizetés** -szűrőben ügyeljen arra, hogy csak az adott delegált előfizetés mezője legyen kiválasztva. A **jelenlegi + delegált címtárak** legördülő lista használatával csak egy adott címtárban lévő előfizetéseket jelenítheti meg. (Ne használja a **switch Directory kapcsolót** , mert ez megváltoztatja azt a könyvtárat, amelybe be van jelentkezve.)
 
-If you then access a service which supports [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md), the service will default to the context of the delegated subscription that you selected. You can change this by following the steps above and checking the **Select all** box (or choosing one or more subscriptions to work in instead).
+Ha ezt követően olyan szolgáltatáshoz fér hozzá, amely támogatja a [több-bérlős felügyeletet](../concepts/cross-tenant-management-experience.md), a szolgáltatás alapértelmezés szerint a kiválasztott delegált előfizetés kontextusában fog megjelenni. Ezt a fenti lépések követésével módosíthatja, és az **összes kijelölése jelölőnégyzet bejelölésével** (vagy egy vagy több előfizetést is kiválaszthat).
 
 > [!NOTE]
-> If you have been granted access to one or more resource groups, rather than access to an entire subscription, you can select the subscription to which that resource group belongs. You'll then work in the context of that subscription, but will only be able to access the designated resource groups.
+> Ha egy vagy több erőforráscsoporthoz hozzáférést kapott, és nem fér hozzá egy teljes előfizetéshez, akkor kiválaszthatja azt az előfizetést, amelyhez az erőforráscsoport tartozik. Ezután az előfizetés kontextusában fog működni, de csak a kijelölt erőforráscsoportokat fogja tudni elérni.
 
-You can also access functionality related to delegated subscriptions or resource groups from within services that support cross-tenant management experiences by selecting the subscription or resource group from within that service.
+A delegált előfizetésekhez vagy erőforráscsoportokhöz kapcsolódó funkciókat a több-bérlős felügyeletet támogató szolgáltatásokon belül is elérheti, ha kijelöli az előfizetést vagy az erőforráscsoportot a szolgáltatáson belül.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
-- Learn how your customers can [view and manage service providers](view-manage-service-providers.md) by going to **Service providers** in the Azure portal.
+- További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
+- Ismerje meg, hogy az ügyfelek hogyan [tekinthetik meg és kezelhetik a szolgáltatókat](view-manage-service-providers.md) a Azure Portalban **található szolgáltatók** használatával.

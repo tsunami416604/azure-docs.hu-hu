@@ -30,7 +30,7 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [.NET Core SDK](https://dotnet.microsoft.com/download).
+- [.Net Core SDK](https://dotnet.microsoft.com/download).
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
@@ -282,7 +282,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 1. Válassza ki a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 

@@ -1,6 +1,6 @@
 ---
-title: Access and customize the managed developer portal - Azure API Management | Microsoft Docs
-description: Learn how to use the managed version of the developer portal in API Management.
+title: A felügyelt fejlesztői portál elérése és testreszabása – Azure API Management | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a API Management a fejlesztői portál felügyelt verzióját.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -19,115 +19,115 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454423"
 ---
-# <a name="access-and-customize-developer-portal"></a>Access and customize developer portal
+# <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
-Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, and request access.
+A fejlesztői portál egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, és hogyan kérhetnek hozzáférést.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Access the managed version of the developer portal
-> * Navigate its administrative interface
-> * Customize the content
-> * Publish the changes
-> * View the published portal
+> * A fejlesztői portál felügyelt verziójának elérése
+> * Navigáljon a felügyeleti felületén
+> * A tartalom testreszabása
+> * A módosítások közzététele
+> * A közzétett portál megtekintése
 
-You can find more details on the developer portal in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+A fejlesztői portálról az [Azure API Management fejlesztői portál áttekintésében](api-management-howto-developer-portal.md)talál további információt.
 
-![API Management developer portal - admin mode](media/api-management-howto-developer-portal-customize/cover.png)
+![API Management fejlesztői portál – felügyeleti mód](media/api-management-howto-developer-portal-customize/cover.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-- Import and publish an Azure API Management instance. For more information, see [Import and publish](import-and-publish.md)
+- Azure API Management-példány importálása és közzététele. További információ: [Importálás és közzététel](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-the-portal-as-an-administrator"></a>Access the portal as an administrator
+## <a name="access-the-portal-as-an-administrator"></a>A portál elérése rendszergazdaként
 
-Follow the steps below to access the managed version of the portal.
+Kövesse az alábbi lépéseket a portál felügyelt verziójának eléréséhez.
 
-1. Go to your API Management service instance in the Azure portal.
-1. Click on the **Developer portal** button in the top navigation bar. A new browser tab with an administrative version of the portal will open.
+1. Nyissa meg a Azure Portal API Management Service-példányát.
+1. Kattintson a **fejlesztői portál** gombra a felső navigációs sávon. Megnyílik a portál felügyeleti verzióját tartalmazó új böngésző lap.
 
-## <a name="understand-the-portals-administrative-interface"></a>Understand the portal's administrative interface
+## <a name="understand-the-portals-administrative-interface"></a>A portál felügyeleti felületének megismerése
 
-### <a name="default-content"></a>Default content 
+### <a name="default-content"></a>Alapértelmezett tartalom 
 
-If you're accessing the portal for the first time, the default content will be automatically provisioned in the background. Default content has been designed to showcase portal's capabilities and minimize the amount of customizations needed to personalize your portal. You can learn more about what is included in the portal content in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+Ha első alkalommal éri el a portált, az alapértelmezett tartalom automatikusan kiépítve lesz a háttérben. Az alapértelmezett tartalom úgy lett kialakítva, hogy bemutassa a portál képességeit, és minimálisra csökkentse a portál személyre szabásához szükséges testreszabások mennyiségét. Ha többet szeretne megtudni arról, hogy mit tartalmaz a portál tartalma az [Azure API Management fejlesztői portálon – áttekintés](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Visual editor
+### <a name="visual-editor"></a>Vizuális szerkesztő
 
-You can customize the content of the portal with the visual editor. The menu sections on the left let you create or modify pages, media, layouts, menus, styles, or website settings. The menu items on the bottom let you switch between viewports (for example, mobile or desktop), view the elements of the portal visible to authenticated or anonymous users, or save or undo actions.
+Testreszabhatja a portál tartalmát a vizualizáció szerkesztővel. A bal oldali menüben a lapok, a média, az elrendezések, a menük, a stílusok és a webhely beállításai hozhatók létre vagy módosíthatók. Az alsó menüelemek lehetővé teszik a munkaterületek (például a mobil vagy az asztali) közötti váltást, megtekintheti a portál elemeit a hitelesített vagy névtelen felhasználók számára, vagy mentheti vagy visszavonhatja a műveleteket.
 
-You can add rows to a page by clicking on a blue icon with a plus sign. Widgets (for example, text, images, or APIs list) can be added by pressing a grey icon with a plus sign. You can rearrange items in a page with the drag-and-drop interaction. 
+A laphoz egy pluszjelet tartalmazó kék ikonra kattintva adhat hozzá sorokat. A widgetek (például szöveg, képek vagy API-k) hozzáadhatók egy pluszjelet tartalmazó szürke ikon megnyomásával. Egy oldalon átrendezheti az elemeket a fogd és vidd interakció használatával. 
 
-### <a name="layouts-and-pages"></a>Layouts and pages
+### <a name="layouts-and-pages"></a>Elrendezések és lapok
 
-![Pages and layouts](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+![Lapok és elrendezések](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Layouts define how pages are displayed. For example, in the default content, there are two layouts - one applies to the home page, and the other to all remaining pages.
+Az elrendezések határozzák meg a lapok megjelenítésének módját. Az alapértelmezett tartalomban például két elrendezés létezik – az egyik a kezdőlapra, a másik pedig az összes többi oldalra vonatkozik.
 
-A layout gets applied to a page by matching its URL template to the page's URL. For example, layout with a URL template of `/wiki/*` will be applied to every page with the `/wiki/` segment in the URL: `/wiki/getting-started`, `/wiki/styles`, etc.
+A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a lap URL-címéhez társítja. A `/wiki/*` URL-címét tartalmazó elrendezést például a rendszer minden olyan oldalra alkalmazza, amely az URL-cím `/wiki/` szegmensét fogja alkalmazni: `/wiki/getting-started`, `/wiki/styles`stb.
 
-In the image above, content belonging to the layout is marked in blue, while the page is marked in red. The menu sections are marked respectively.
+A fenti képen az elrendezéshez tartozó tartalom kék színnel van megjelölve, míg a lap piros színnel van megjelölve. A menüpontok vannak megjelölve.
 
-### <a name="styling-guide"></a>Styling guide
+### <a name="styling-guide"></a>Útmutató a stílushoz
 
-![Styling guide](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Útmutató a stílushoz](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Styling guide is a panel created with designers in mind. It allows for overseeing and styling all the visual elements in your portal. The styling is hierarchical - many elements inherit properties from other elements. For example, button elements use colors for text and background. To change a button's color, you need to change the original color variant.
+A Styling útmutató tervezőkkel létrehozott panel. Lehetővé teszi a portál összes vizualizációs elemének áttekintését és formázását. A stílus hierarchikus – számos elem örökli a tulajdonságokat a többi elemtől. A gomb elemei például a szöveg és a háttér színét használják. A gomb színének módosításához módosítania kell az eredeti szín változatát.
 
-To edit a variant, click on it and select the pencil icon that appears on top of it. Once you make the changes in the pop-up window, close it.
+Egy változat szerkesztéséhez kattintson rá, és válassza ki a tetején megjelenő ceruza ikont. Miután elvégezte a módosításokat az előugró ablakban, zárjuk le.
 
-### <a name="save-button"></a>Save button
+### <a name="save-button"></a>Mentés gomb
 
-![Save button](media/api-management-howto-developer-portal-customize/save-button.png)
+![Mentés gomb](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Whenever you make a change in the portal, you need to save it manually by pressing the **Save** button in the menu at the bottom. When you save your changes, the modified content is automatically uploaded to your API Management service.
+Amikor változást hajt végre a portálon, manuálisan kell mentenie a **Save (Mentés** ) gombra a lenti menüben. A módosítások mentésekor a rendszer automatikusan feltölti a módosított tartalmat a API Management szolgáltatásba.
 
-## <a name="customize-the-portals-content"></a>Customize the portal's content
+## <a name="customize-the-portals-content"></a>A portál tartalmának testreszabása
 
-Before you make your portal available to the visitors, you should personalize the automatically generated content. Recommended changes include the layouts, styles, and the content of the home page.
+Ahhoz, hogy a portál elérhető legyen a látogatók számára, testre kell szabnia az automatikusan generált tartalmat. Az ajánlott módosítások közé tartozik a Kezdőlap elrendezései, stílusa és tartalma.
 
 > [!NOTE]
-> Due to integration considerations, the following pages can't be removed or moved under a different URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
+> Az integrációs megfontolások miatt a következő lapok nem távolíthatók el vagy nem helyezhetők át másik URL-cím alatt: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Kezdőlap
 
-The default **Home** page is filled with dummy content. You can either remove the whole sections with the content or keep the structure and adjust the elements one by one. Replace the generated text and images with your own and make sure the links point to desired locations.
+Az alapértelmezett **kezdőlapot** a rendszer a próbabábu tartalmával tölti ki. Eltávolíthatja a teljes szakaszt a tartalommal, vagy megtarthatja a struktúrát, és egyenként is módosíthatja az elemeket. Cserélje le a generált szöveget és képeket a saját adataira, és győződjön meg arról, hogy a hivatkozások a kívánt helyekre mutatnak.
 
-### <a name="layouts"></a>Layouts
+### <a name="layouts"></a>Elrendezések
 
-Replace the automatically generated logo in the navigation bar with your own image.
+Cserélje le az automatikusan generált emblémát a navigációs sávon a saját képére.
 
-### <a name="styling"></a>Styling
+### <a name="styling"></a>Stílus
 
-Although you don't need to adjust any styles, you may consider adjusting particular elements. For example, change the primary color to match your brand's color.
+Bár nem kell módosítania a stílusokat, érdemes lehet módosítani bizonyos elemeket. Például módosítsa az elsődleges színt úgy, hogy az megfeleljen a márka színének.
 
-### <a name="customization-example"></a>Customization example
+### <a name="customization-example"></a>Testreszabási példa
 
-In the video below we demonstrate how to edit the content of the portal, customize the website's look, and publish the changes.
+Az alábbi videóban bemutatjuk, hogyan szerkesztheti a portál tartalmát, testreszabhatja a webhely megjelenését, és közzéteheti a módosításokat.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish"> </a>Publish the portal
+## <a name="publish"> </a>A portál közzététele
 
-To make your portal and its latest changes available to visitors, you need to publish it.
+Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a látogatók számára, közzé kell tennie.
 
-1. Make sure you saved your changes by clicking on the **Save** icon.
-1. Click on **Publish website** in the **Operations** section of the menu. A művelet eltarthat néhány percig.  
-    ![Publish portal](media/api-management-howto-developer-portal-customize/publish-portal.png)
+1. Győződjön meg róla, hogy mentette a módosításokat a **Save (Mentés** ) ikonra kattintva.
+1. A menü **műveletek** területén kattintson a **Közzététel webhely** elemre. A művelet eltarthat néhány percig.  
+    ![közzétételi portál](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
 > [!NOTE]
-> The portal needs to be republished after API Management service configuration changes, such as assigning a custom domain, updating the identity providers, setting delegation, specifying sign-in and product terms, and more.
+> A portált újra közzé kell tenni API Management szolgáltatás konfigurációjának módosítása után, például egy egyéni tartomány hozzárendelését, az identitás-szolgáltatók frissítését, a delegálás beállítását, a bejelentkezés és a termék használati feltételeinek megadását stb.
 
-## <a name="visit-the-published-portal"></a>Visit the published portal
+## <a name="visit-the-published-portal"></a>A közzétett portál meglátogatása
 
-After you publish the portal, you can access it at the same URL as the administrative panel, for example `https://contoso-api.developer.azure-api.net`. View it in a separate browser session (incognito / private browsing mode) as an external visitor.
+A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.developer.azure-api.net`. Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn more about the developer portal:
+További információ a fejlesztői portálról:
 
-- [Azure API Management developer portal overview](api-management-howto-developer-portal.md)
+- [Az Azure API Management fejlesztői portál áttekintése](api-management-howto-developer-portal.md)

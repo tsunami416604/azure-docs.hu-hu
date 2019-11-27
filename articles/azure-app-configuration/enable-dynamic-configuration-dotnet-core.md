@@ -119,7 +119,7 @@ A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeke
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 1. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
 

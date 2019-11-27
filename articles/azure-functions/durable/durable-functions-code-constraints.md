@@ -1,6 +1,6 @@
 ---
-title: Durable orchestrator code constraints - Azure Functions
-description: Orchestration function replay and code constraints for Azure Durable Functions.
+title: Tartós Orchestrator-kódokra vonatkozó korlátozások – Azure Functions
+description: A koordináló függvény újrajátszása és a kód megkötései az Azure Durable Functions számára.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
@@ -12,64 +12,64 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232979"
 ---
-# <a name="orchestrator-function-code-constraints"></a>Orchestrator function code constraints
+# <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
 
-Durable Functions is an extension of [Azure Functions](../functions-overview.md) that lets you build stateful apps. You can use an [orchestrator function](durable-functions-orchestrations.md) to orchestrate the execution of other durable functions within a function app. Orchestrator functions are stateful, reliable, and potentially long-running.
+Durable Functions a [Azure functions](../functions-overview.md) kiterjesztése, amely lehetővé teszi az állapot-nyilvántartó alkalmazások kiépítését. A [Orchestrator függvénnyel](durable-functions-orchestrations.md) más tartós függvények végrehajtását is elvégezheti a Function alkalmazásban. A Orchestrator-függvények állapot-, megbízható és potenciálisan hosszú ideig futók.
 
 ## <a name="orchestrator-code-constraints"></a>Vezénylői kódkorlátozások
 
-Orchestrator functions use [event sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) to ensure reliable execution and to maintain local variable state. The [replay behavior](durable-functions-orchestrations.md#reliability) of orchestrator code creates constraints on the type of code that you can write in an orchestrator function. For example, orchestrator functions must be *deterministic*: an orchestrator function will be replayed multiple times, and it must produce the same result each time.
+A Orchestrator függvények az [események beszerzését](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) használják a megbízható végrehajtás és a helyi változó állapotának fenntartása érdekében. A Orchestrator kód [újrajátszása](durable-functions-orchestrations.md#reliability) a Orchestrator függvényben írható kód típusára vonatkozó korlátozásokat hoz létre. A Orchestrator functions-nek például *determinisztikus*kell lennie: egy Orchestrator függvény többször is le lesz játszva, és minden alkalommal ugyanazt az eredményt kell létrehoznia.
 
-### <a name="using-deterministic-apis"></a>Using deterministic APIs
+### <a name="using-deterministic-apis"></a>Determinisztikus API-k használata
 
-This section provides some simple guidelines that help ensure your code is deterministic.
+Ez a szakasz néhány egyszerű útmutatót tartalmaz, amelyek segítségével biztosíthatja a kód determinisztikus.
 
-Orchestrator functions can call any API in their target languages. However, it's important that orchestrator functions call only deterministic APIs. A *deterministic API* is an API that always returns the same value given the same input, no matter when or how often it's called.
+A Orchestrator függvények bármilyen API-t hívhatnak meg a cél nyelvein. Fontos azonban, hogy a Orchestrator functions csak a determinisztikus API-kat hívja meg. A *DETERMINISZTIKUS API* egy olyan API, amely mindig ugyanazokat az értékeket adja vissza, mint az azonos bemenet, függetlenül attól, hogy mikor vagy milyen gyakran hívják.
 
-The following table shows examples of APIs that you should avoid because they are *not* deterministic. These restrictions apply only to orchestrator functions. Other function types don't have such restrictions.
+A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell kerülnie, mert *nem* determinisztikus. Ezek a korlátozások csak a Orchestrator függvényekre érvényesek. Más függvények típusai nem rendelkeznek ilyen korlátozásokkal.
 
-| API category | Ok | Áthidaló megoldás |
+| API-kategória | Ok | Áthidaló megoldás |
 | ------------ | ------ | ---------- |
-| Dates and times  | APIs that return the current date or time are nondeterministic because the returned value is different for each replay. | Use the`CurrentUtcDateTime` API in .NET or the `currentUtcDateTime` API in JavaScript, which are safe for replay. |
-| GUIDs and UUIDs  | APIs that return a random GUID or UUID are nondeterministic because the generated value is different for each replay. | Use `NewGuid` in .NET or `newGuid` in JavaScript to safely generate random GUIDs. |
-| Random numbers | APIs that return random numbers are nondeterministic because the generated value is different for each replay. | Use an activity function to return random numbers to an orchestration. The return values of activity functions are always safe for replay. |
-| Kötések | Input and output bindings typically do I/O and are nondeterministic. An orchestrator function must not directly use even the [orchestration client](durable-functions-bindings.md#orchestration-client) and [entity client](durable-functions-bindings.md#entity-client) bindings. | Use input and output bindings inside client or activity functions. |
-| Network (Hálózat) | Network calls involve external systems and are nondeterministic. | Use activity functions to make network calls. If you need to make an HTTP call from your orchestrator function, you also can use the [durable HTTP APIs](durable-functions-http-features.md#consuming-http-apis). |
-| Blocking APIs | Blocking APIs like `Thread.Sleep` in .NET and similar APIs can cause performance and scale problems for orchestrator functions and should be avoided. In the Azure Functions Consumption plan, they can even result in unnecessary runtime charges. | Use alternatives to blocking APIs when they're available. For example, use  `CreateTimer` to introduce delays in orchestration execution. [Durable timer](durable-functions-timers.md) delays don't count towards the execution time of an orchestrator function. |
-| Async APIs | Orchestrator code must never start any async operation except by using the `IDurableOrchestrationContext` API or the `context.df` object's API. For example, you can't use `Task.Run`, `Task.Delay`, and `HttpClient.SendAsync` in .NET or `setTimeout` and `setInterval` in JavaScript. The Durable Task Framework runs orchestrator code on a single thread. It can't interact with any other threads that might be called by other async APIs. | An orchestrator function should make only durable async calls. Activity functions should make any other async API calls. |
-| Async JavaScript functions | You can't declare JavaScript orchestrator functions as `async` because the node.js runtime doesn't guarantee that asynchronous functions are deterministic. | Declare JavaScript orchestrator functions as synchronous generator functions. |
-| Threading APIs | The Durable Task Framework runs orchestrator code on a single thread and can't interact with any other threads. Introducing new threads into an orchestration's execution can result in nondeterministic execution or deadlocks. | Orchestrator functions should almost never use threading APIs. If such APIs are necessary, limit their use to only activity functions. |
-| Static variables | Avoid using nonconstant static variables in orchestrator functions because their values can change over time, resulting in nondeterministic runtime behavior. | Use constants, or limit the use of static variables to activity functions. |
-| Környezeti változók | Don't use environment variables in orchestrator functions. Their values can change over time, resulting in nondeterministic runtime behavior. | Environment variables must be referenced only from within client functions or activity functions. |
-| Infinite loops | Avoid infinite loops in orchestrator functions. Because the Durable Task Framework saves execution history as the orchestration function progresses, an infinite loop can cause an orchestrator instance to run out of memory. | For infinite loop scenarios, use APIs like `ContinueAsNew` in .NET or `continueAsNew` in JavaScript to restart the function execution and to discard previous execution history. |
+| Dátumok és időpontok  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja a`CurrentUtcDateTime` API-t a .NET-ben vagy a `currentUtcDateTime` API-ban a JavaScriptben, amely biztonságos a Replay számára. |
+| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | Használjon `NewGuid` a .NET-ben, vagy a JavaScriptben `newGuid` a véletlenszerű GUID azonosítók biztonságos létrehozásához. |
+| Véletlenszerű számok | A véletlenszerű számokat visszaadó API-k determinált, mert a generált érték különbözik az egyes ismétlésekhez. | Egy tevékenység függvénnyel véletlenszerű számokat adhat vissza egy előkészítési művelethez. A tevékenység-függvények visszatérési értékei mindig biztonságosak a visszajátszás esetén. |
+| Kötések | A bemeneti és kimeneti kötések általában I/O-műveletek, és determinált. A Orchestrator függvénynek nem szabad közvetlenül használnia még a koordináló [ügyfelet](durable-functions-bindings.md#orchestration-client) és az [entitás-ügyfél](durable-functions-bindings.md#entity-client) kötéseit. | Bemeneti és kimeneti kötések használata az ügyfélen vagy a tevékenységi függvényeken belül. |
+| Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és determinált. | Hálózati hívások létrehozásához használja a Activity functions funkciót. Ha HTTP-hívást kell létrehoznia a Orchestrator függvényből, használhatja a [tartós http API-kat](durable-functions-http-features.md#consuming-http-apis)is. |
+| API-k blokkolása | Az olyan API-k blokkolása, mint a .NET és a hasonló API-k `Thread.Sleep`, a Orchestrator függvények teljesítmény-és skálázási problémáit okozhatják, és kerülendő A Azure Functions fogyasztási tervben a szükségtelen futtatókörnyezeti díjakat is eredményezhetnek. | A rendelkezésre álló API-k blokkolására alternatívákat használhat. Például a `CreateTimer` használatával késleltetheti a hangelőkészítési végrehajtást. A [tartós időzítő](durable-functions-timers.md) késései nem számítanak bele egy Orchestrator függvény végrehajtási idejébe. |
+| Aszinkron API-k | A Orchestrator-kódnak soha nem kell elindítania az aszinkron műveleteket, kivéve a `IDurableOrchestrationContext` API vagy a `context.df` objektum API-ját használva. Nem használhatja például `Task.Run`, `Task.Delay`és `HttpClient.SendAsync` a .NET-ben, illetve a `setTimeout` és a `setInterval` JavaScriptben. Az állandó feladatok keretrendszere egyetlen szálon futtatja a Orchestrator-kódot. Más aszinkron API-k által hívható más szálakkal nem tud működni. | A Orchestrator függvény csak tartós aszinkron hívásokat hajt végre. A Activity functions szolgáltatásnak más aszinkron API-hívásokat kell végeznie. |
+| Aszinkron JavaScript-függvények | A JavaScript Orchestrator függvények nem deklarálható `async`ként, mert a Node. js futtatókörnyezet nem garantálja, hogy az aszinkron függvények determinisztikus. | A JavaScript-Orchestrator funkcióinak deklarálása szinkron létrehozó függvényekként. |
+| Többszálú API-k | Az állandó feladat-keretrendszer egyetlen szálon futtatja az Orchestrator-kódot, és nem tud más szálakkal kommunikálni. Az új szálaknak egy előkészítési folyamatba való bevezetéséhez determinált végrehajtás vagy holtpont is vezethet. | A Orchestrator függvények szinte soha nem használhatnak többszálú API-kat. Ha ilyen API-k szükségesek, csak a tevékenységi funkciókra korlátozzák a használatukat. |
+| Statikus változók | Kerülje a nem állandó statikus változók használatát a Orchestrator függvények esetében, mert az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | Használjon állandókat, vagy korlátozza a statikus változók használatát a tevékenység funkcióihoz. |
+| Környezeti változók | Ne használjon környezeti változókat a Orchestrator functions szolgáltatásban. Az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | A környezeti változókat csak az ügyfél-vagy a tevékenységi függvényekből kell hivatkozni. |
+| Végtelen hurkok | Kerülje a végtelen hurkokat a Orchestrator functions szolgáltatásban. Mivel a tartós feladatok keretrendszere a folyamat előrehaladásának előrehaladtával menti a végrehajtási előzményeket, egy végtelen hurok miatt előfordulhat, hogy egy Orchestrator-példány elfogyott a memóriából. | Végtelen hurkos forgatókönyvek esetén használjon olyan API-kat, mint például a .NET vagy a `continueAsNew` a JavaScriptben a függvény végrehajtásának újraindításához és a korábbi végrehajtási előzmények elvetéséhez `ContinueAsNew`. |
 
-Although applying these constraints might seem difficult at first, in practice they're easy to follow.
+Habár a megkötések alkalmazása megnehezíti az első lépéseket, a gyakorlatban könnyen követhető.
 
-The Durable Task Framework attempts to detect violations of the preceding rules. If it finds a violation, the framework throws a **NonDeterministicOrchestrationException** exception. However, this detection behavior won't catch all violations, and you shouldn't depend on it.
+A tartós feladat-keretrendszer megkísérli az előző szabályok megsértésének észlelését. Ha jogsértést talál, a keretrendszer **NonDeterministicOrchestrationException** kivételt jelez. Ez az észlelési viselkedés azonban nem fogja tudni felfogni az összes megsértést, és nem függ tőle.
 
 ## <a name="versioning"></a>Verziókezelés
 
-A durable orchestration might run continuously for days, months, years, or even [eternally](durable-functions-eternal-orchestrations.md). Any code updates made to Durable Functions apps that affect unfinished orchestrations might break the orchestrations' replay behavior. That's why it's important to plan carefully when making updates to code. For a more detailed description of how to version your code, see the [versioning article](durable-functions-versioning.md).
+A tartós előkészítést a napok, hónapok, évek vagy akár [örökké](durable-functions-eternal-orchestrations.md)is futtathatja. A nem befejezetlen rendszerfolyamatokat befolyásoló Durable Functions alkalmazások által végrehajtott minden kód megszakadhat, ha megszakítja az újrajátszás viselkedését. Ezért fontos, hogy körültekintően tervezze meg a kód frissítését. A kód verziószámozásának részletes ismertetését a [verziószámozást ismertető cikkben](durable-functions-versioning.md)találja.
 
-## <a name="durable-tasks"></a>Durable tasks
+## <a name="durable-tasks"></a>Tartós feladatok
 
 > [!NOTE]
-> This section describes internal implementation details of the Durable Task Framework. You can use durable functions without knowing this information. It is intended only to help you understand the replay behavior.
+> Ez a szakasz a tartós feladatok keretrendszerének belső megvalósítási részleteit ismerteti. Ezen információk ismerete nélkül is használhat tartós függvényeket. Ez csak az újrajátszás viselkedésének megismerésére szolgál.
 
-Tasks that can safely wait in orchestrator functions are occasionally referred to as *durable tasks*. The Durable Task Framework creates and manages these tasks. Examples are the tasks returned by **CallActivityAsync**, **WaitForExternalEvent**, and **CreateTimer** in .NET orchestrator functions.
+A Orchestrator függvények biztonságos várakozási feladatait időnként *tartós feladatoknak*nevezzük. A tartós feladatok keretrendszere létrehozza és kezeli ezeket a feladatokat. Ilyenek például a **CallActivityAsync**, a **WaitForExternalEvent**és a **CreateTimer** által visszaadott feladatok a .net Orchestrator függvényekben.
 
-These durable tasks are internally managed by a list of `TaskCompletionSource` objects in .NET. During replay, these tasks are created as part of orchestrator code execution. They're finished as the dispatcher enumerates the corresponding history events.
+Ezek a tartós feladatok belsőleg kezelhetők a .NET-ben lévő `TaskCompletionSource` objektumok listájával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre. Készen állnak, mert a diszpécser enumerálja a megfelelő előzményi eseményeket.
 
-The tasks are executed synchronously using a single thread until all the history has been replayed. Durable tasks that aren't finished by the end of history replay have appropriate actions carried out. For example, a message might be enqueued to call an activity function.
+A feladatokat a rendszer szinkron módon hajtja végre egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Az előzmények végének újrajátszása által nem befejezett tartós feladatok megfelelő műveleteket hajtanak végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
 
-This section's description of runtime behavior should help you understand why an orchestrator function can't use `await` or `yield` in a nondurable task. There are two reasons: the dispatcher thread can't wait for the task to finish, and any callback by that task might potentially corrupt the tracking state of the orchestrator function. Some runtime checks are in place to help detect these violations.
+Ez a szakasz a futásidejű viselkedés leírásában segít megérteni, hogy miért nem használható a Orchestrator függvény `await` vagy `yield` nem tartós feladatban. Két ok van: a diszpécser szál nem várja meg, amíg a feladat befejeződik, és a feladat visszahívása valószínűleg megsértheti a Orchestrator függvény nyomkövetési állapotát. A rendszer bizonyos futásidejű ellenőrzéseket végez a fenti szabálysértések észlelése érdekében.
 
-To learn more about how the Durable Task Framework executes orchestrator functions, consult the [Durable Task source code on GitHub](https://github.com/Azure/durabletask). In particular, see [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) and [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Ha többet szeretne megtudni arról, hogy a tartós feladat-keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, tekintse [meg a tartós feladat forráskódját a githubon](https://github.com/Azure/durabletask). Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Learn how to invoke sub-orchestrations](durable-functions-sub-orchestrations.md)
+> [Megtudhatja, hogyan hívhat meg alfolyamatokat](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Learn how to handle versioning](durable-functions-versioning.md)
+> [Útmutató a verziószámozás kezeléséhez](durable-functions-versioning.md)

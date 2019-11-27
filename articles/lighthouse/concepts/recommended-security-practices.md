@@ -1,6 +1,6 @@
 ---
 title: Ajánlott biztonsági eljárások
-description: When using Azure delegated resource management, it’s important to consider security and access control.
+description: Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést.
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
@@ -12,35 +12,35 @@ ms.locfileid: "74463901"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
-When using Azure delegated resource management, it’s important to consider security and access control. Users in your tenant will have direct access to customer subscriptions and resource groups, so you’ll want to take steps to maintain your tenant’s security. You’ll also want to make sure you only allow the access that’s needed to effectively manage your customers’ resources. This topic provides recommendations to help you do so.
+Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést. A bérlő felhasználóinak közvetlen hozzáférésük lesz az ügyfél-előfizetésekhez és az erőforráscsoportokhoz, ezért a bérlő biztonságának fenntartásához lépéseket kell végrehajtania. Azt is érdemes biztosítani, hogy csak az ügyfelek erőforrásainak hatékony kezeléséhez szükséges hozzáférést engedélyezze. Ez a témakör ajánlásokat nyújt a segítségére.
 
-## <a name="require-azure-multi-factor-authentication"></a>Require Azure Multi-Factor Authentication
+## <a name="require-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication megkövetelése
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)  (also known as two-step verification) helps prevent attackers from gaining access to an account by requiring multiple authentication steps. You should require Multi-Factor Authentication for all users in your service provider tenant, including any users who will have access to customer resources.
+Az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. A szolgáltatói bérlő összes felhasználója számára szükséges Multi-Factor Authentication, beleértve az ügyfelek erőforrásaihoz hozzáférő felhasználókat is.
 
-We suggest that you ask your customers to implement Azure Multi-Factor Authentication in their tenants as well.
+Javasoljuk, hogy kérje ügyfeleit, hogy az Azure-Multi-Factor Authentication is implementálják a bérlők számára.
 
-## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Assign permissions to groups, using the principle of least privilege
+## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Engedélyek társítása csoportokhoz a legalacsonyabb jogosultsági szint elve alapján
 
-To make management easier, we recommend using Azure AD user groups for each role required to manage your customers’ resources. This lets you add or remove individual users to the group as needed, rather than assigning permissions directly to that user.
+A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az ügyfelek erőforrásainak kezeléséhez szükséges minden egyes szerepkörhöz. Ez lehetővé teszi, hogy az egyes felhasználókat szükség szerint vegye fel vagy távolítsa el a csoportba ahelyett, hogy közvetlenül az adott felhasználóhoz rendeljen engedélyeket.
 
-When creating your permission structure, be sure to follow the principle of least privilege so that users only have the permissions needed to complete their job, helping to reduce the chance of inadvertent errors.
+Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladat elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét.
 
-For example, you may want to use a structure like this:
+Előfordulhat például, hogy a következőhöz hasonló struktúrát szeretne használni:
 
-|Group name  |Type (Típus)  |principalId  |Szerepkör-definíció  |Role definition ID  |
+|Csoport neve  |Típus  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
 |---------|---------|---------|---------|---------|
-|Architects     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Építészek     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Értékelés     |Felhasználói csoport         |\<principalId\>         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM Specialists     |Felhasználói csoport         |\<principalId\>         |VM Contributor         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Service principal name (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|VM-szakemberek     |Felhasználói csoport         |\<principalId\>         |VIRTUÁLIS gépek közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automatizálás     |Egyszerű szolgáltatásnév (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Once you’ve created these groups, you can assign users as needed. Only add the users who truly need to have access. Be sure to review group membership regularly and remove any users that are no longer appropriate or necessary to include.
+Miután létrehozta ezeket a csoportokat, igény szerint rendelhet hozzá felhasználókat. Csak azokat a felhasználókat adja hozzá, akiknek valóban szükségük van a hozzáférésre. Mindenképpen tekintse át a csoporttagság rendszeres áttekintését, és távolítsa el azokat a felhasználókat, akik már nem megfelelőek vagy szükségesek a belefoglalásához.
 
-Keep  in mind that when you [onboard customers through a public managed service offer](../how-to/publish-managed-services-offers.md), any group (or user or service principal) that you include will have the same permissions for every customer who purchases the plan. To assign different groups to work with each customer, you’ll need to publish a separate private plan that is exclusive to each customer, or onboard customers individually by using Azure Resource Manager templates. For example, you could publish a public plan that has very limited access, then work with the customer directly to onboard their resources for additional access using a customized Azure Resource Template granting additional access as needed.
+Ne feledje, hogy ha az [ügyfeleket nyilvános felügyelt szolgáltatáson keresztül](../how-to/publish-managed-services-offers.md)kívánja bevezetni, az Ön által kínált összes csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkavégzéshez, közzé kell tennie egy külön privát csomagot, amely kizárólag az egyes ügyfelekre vonatkozik, vagy egyénileg, Azure Resource Manager-sablonok használatával készíti elő az ügyfeleket. Közzétehet például egy nagyon korlátozott hozzáféréssel rendelkező nyilvános csomagot, majd a felhasználóval közvetlenül is felhasználhatja az erőforrásait a további hozzáféréshez egy testreszabott Azure-erőforrás-sablon használatával, igény szerint további hozzáférést biztosítva.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Deploy Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
+- Az [Azure multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
+- További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).

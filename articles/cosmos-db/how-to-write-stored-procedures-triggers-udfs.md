@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606263"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533171"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 
@@ -75,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Tömbök bemeneti paraméterként a tárolt eljárásokhoz 
 
-Azure Portal tárolt eljárás definiálásakor a bemeneti paraméterek mindig karakterláncként lesznek elküldve a tárolt eljáráshoz. Még ha sztringek tömbjét is át kell adni bemenetként, a rendszer karakterlánccá alakítja át a tömböt, és elküldi a tárolt eljárásnak. Ennek megkerüléséhez definiálhat egy függvényt a tárolt eljáráson belül a sztring tömbként való elemzéséhez. A következő kód bemutatja, hogyan elemezheti a karakterlánc bemeneti paramétereit tömbként:
+Azure Portal tárolt eljárás definiálásakor a bemeneti paraméterek mindig karakterláncként lesznek elküldve a tárolt eljáráshoz. Akkor is, ha a felhasználó egy karakterláncokból álló tömbre bemenetként, a tömb karakterlánccá és a tárolt eljárás küldött. Ennek megkerüléséhez definiálhat egy függvényt a tárolt eljáráson belül a sztring tömbként való elemzéséhez. A következő kód bemutatja, hogyan elemezheti a karakterlánc bemeneti paramétereit tömbként:
 
 ```javascript
 function sample(arr) {
@@ -238,7 +238,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Az előzetes eseményindítók nem rendelkezhetnek bemeneti paraméterekkel. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
+Üzem előtti eseményindítók nem lehet bemeneti paramétereket. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
 
 Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket futtathat a használatával. Ezt a triggert `TriggerOperation.Create``TriggerOperation` értékkel kell létrehozni, ami azt jelenti, hogy az triggert egy csere műveletben használja, ahogy az a következő kódban nem engedélyezett.
 
@@ -317,7 +317,18 @@ function tax(income) {
 
 A felhasználó által definiált függvények regisztrálásával és használatával kapcsolatos Példákért lásd: [felhasználói függvények használata Azure Cosmos db](how-to-use-stored-procedures-triggers-udfs.md#udfs) cikkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="logging"></a>Naplózás 
+
+Tárolt eljárás, eseményindítók vagy felhasználó által definiált függvények használatakor a `console.log()` parancs használatával naplózhatja a lépéseket. Ez a parancs egy karakterláncot fog összpontosítani a hibakereséshez, ha a `EnableScriptLogging` True (igaz) értékre van állítva, ahogy az alábbi példában is látható:
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása vagy használata Azure Cosmos DBban:
 

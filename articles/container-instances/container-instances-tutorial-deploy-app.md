@@ -1,33 +1,28 @@
 ---
-title: Oktatóanyag – tároló alkalmazás üzembe helyezése Azure Container Instances
+title: Oktatóanyag – Container-alkalmazás üzembe helyezése a tároló-példányon
 description: Azure Container Instances oktatóanyag 3. része – a Container Application üzembe helyezése Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: d3cbf16feea299e320cf7e24092d00e93cb7cf5b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846593"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533348"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Oktatóanyag: Container-alkalmazás üzembe helyezése Azure Container Instances
 
 Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehoztunk egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [leküldtük az Azure Container Registrybe](container-instances-tutorial-prepare-acr.md). A sorozat befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instancesben.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * A tároló üzembe helyezése az Azure Container Registryből az Azure Container Instancesbe
 > * A futó alkalmazás megtekintése a böngészőben
 > * A tároló naplóinak megjelenítése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -75,7 +70,7 @@ Miután az üzembe helyezés sikeres volt, jelenítse meg a tároló teljes tart
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Példa:
+Például:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"
@@ -108,7 +103,7 @@ Ha már nincs szüksége az oktatóanyag-sorozatban létrehozott összes erőfor
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elvégezte a tároló üzembe helyezését az Azure Container Instancesben. A következő lépéseket hajtotta végre:
 

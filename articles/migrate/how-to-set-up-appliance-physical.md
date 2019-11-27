@@ -69,7 +69,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

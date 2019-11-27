@@ -46,7 +46,7 @@ A Reporting Services KCD beállításához folytassa a következő lépésekkel.
 ### <a name="configure-the-service-principal-name-spn"></a>Egyszerű szolgáltatásnév (SPN) konfigurálása
 
 Az egyszerű szolgáltatásnév a Kerberos-hitelesítést használó szolgáltatás egyedi azonosítója. Győződjön meg arról, hogy rendelkezik megfelelő HTTP SPN-vel a jelentéskészítő kiszolgálón. A jelentéskészítő kiszolgáló megfelelő egyszerű szolgáltatásnév (SPN) konfigurálásával kapcsolatos információkért lásd: egyszerű szolgáltatásnév [(SPN) regisztrálása egy jelentéskészítő kiszolgálóhoz](https://msdn.microsoft.com/library/cc281382.aspx).
-A Setspn parancs a-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzá lett-e adva. Ezzel a paranccsal kapcsolatos további információkért lásd: [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+A Setspn parancs a-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzá lett-e adva. További információ a parancsról: [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Egyeztetéses hitelesítés engedélyezése
 
@@ -70,7 +70,7 @@ A KCD konfigurálásához ismételje meg az alábbi lépéseket minden összekö
 1. Jelentkezzen be tartományi rendszergazdaként egy tartományvezérlőre, majd nyissa meg **Active Directory felhasználókat és számítógépeket**.
 2. Az összekötőt futtató számítógépen található.  
 3. Kattintson duplán a számítógépre, majd válassza a **delegálás** lapot.
-4. A delegálási beállítások beállításával **bízza meg a számítógépet, hogy csak a megadott szolgáltatásokhoz delegáljon delegálást**. Ezután válassza ki **bármely hitelesítési protokoll**.
+4. A delegálási beállítások beállításával **bízza meg a számítógépet, hogy csak a megadott szolgáltatásokhoz delegáljon delegálást**. Ezután válassza **a bármely hitelesítési protokoll használata**lehetőséget.
 5. Válassza a **Hozzáadás**, majd a **felhasználók vagy számítógépek**lehetőséget.
 6. Adja meg a Reporting Services szolgáltatáshoz használt szolgáltatásfiókot. Ezt a fiókot adta hozzá az SPN-nek a Reporting Services-konfigurációban való hozzáadásához.
 7. Kattintson az **OK** gombra. A módosítások mentéséhez kattintson ismét **az OK** gombra.
@@ -91,15 +91,15 @@ Most már készen áll az Azure AD Application Proxy konfigurálására.
 
 2. Az alkalmazás közzététele után konfigurálja az egyszeri bejelentkezés beállításai az alábbi lépéseket:
 
-   a. Az alkalmazás oldalán a portálon, válassza **egyszeri bejelentkezési**.
+   a. A portál alkalmazás lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
    b. **Egyszeri bejelentkezési mód**esetén válassza az **integrált Windows-hitelesítés**lehetőséget.
 
    c. A **belső alkalmazás SPN** beállítása a korábban megadott értékre.  
 
-   d. Válassza ki a **delegált bejelentkezési azonosító** az összekötő használatára a felhasználó nevében. További információ: [a különböző helyszíni és Felhőbeli identitások használata](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Válassza ki az összekötő **meghatalmazott bejelentkezési azonosítóját** , amelyet a felhasználók nevében kíván használni. További információ: [a különböző helyszíni és Felhőbeli identitások használata](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Kattintson a **mentése** a módosítások mentéséhez.
+   e. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
 Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez.
 

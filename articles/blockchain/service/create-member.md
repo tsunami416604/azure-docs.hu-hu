@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Blockchain Service member - Azure portal
-description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure portal.
+title: Azure Blockchain szolgáltatásbeli tag létrehozása – Azure Portal
+description: Hozzon létre egy Azure Blockchain-szolgáltatási tagot egy Blockchain Consortium számára a Azure Portal használatával.
 ms.date: 11/18/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,55 +11,55 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455784"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Quickstart: Create an Azure Blockchain Service blockchain member using the Azure portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Rövid útmutató: Azure Blockchain Service Blockchain-tag létrehozása a Azure Portal használatával
 
-In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using the Azure portal.
+Ebben a rövid útmutatóban egy új blockchain-tagot és-konzorciumot helyez üzembe az Azure Blockchain Service-ben a Azure Portal használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-blockchain-member"></a>Blokklánctagok létrehozása
 
-Create a blockchain member that runs the Quorum ledger protocol in a new or existing consortium.
+Hozzon létre egy blockchain-tagot, amely egy új vagy egy meglévő konzorciumban futtatja a kvórum főkönyvének protokollját.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-1. Select **Blockchain** > **Azure Blockchain Service (preview)** .
+1. Válassza a **Blockchain** > **Azure Blockchain szolgáltatás (előzetes verzió)** lehetőséget.
 
-    ![Create Service](./media/create-member/create-member.png)
+    ![Szolgáltatás létrehozása](./media/create-member/create-member.png)
 
     Beállítás | Leírás
     --------|------------
-    Előfizetés | Select the Azure subscription that you want to use for your service. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
-    Erőforráscsoport | Create a new resource group name or choose an existing one from your subscription.
-    Region (Régió) | Choose a region to create the member. All members of the consortium must be in the same location.
-    Protocol (Protokoll) | Currently, Azure Blockchain Service Preview supports the Quorum protocol.
-    Konzorcium | For a new consortium, enter a unique name. If joining a consortium through an invite, choose the consortium you are joining.
-    Név | Choose a unique name for the Azure Blockchain Service member. The blockchain member name can only contain lowercase letters and numbers. Az első karakternek betűnek kell lennie. The value must be between 2 and 20 characters long.
-    Member account password | The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
-    Leírás | Description of the consortium.
-    Díjszabás | The node configuration and cost for your new service. Select the **Change** link to choose between **Standard** and **Basic** tiers.
-    Node password | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
+    Előfizetést | Válassza ki a szolgáltatásához használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
+    Erőforráscsoport | Hozzon létre egy új erőforráscsoport-nevet, vagy válasszon ki egy meglévőt az előfizetésből.
+    Régió | Válasszon ki egy régiót a tag létrehozásához. A konzorcium összes tagjának ugyanazon a helyen kell lennie.
+    Protokoll | Jelenleg az Azure Blockchain Service előzetes verziója támogatja a kvórum protokollt.
+    Konzorcium | Új konzorcium esetén adjon meg egy egyedi nevet. Ha a konzorciumot egy meghívás használatával csatlakoztatja, válassza ki azt a konzorciumot, amelyhez csatlakozik.
+    Name (Név) | Válasszon egyedi nevet az Azure Blockchain szolgáltatás tagjának. A blockchain-tag neve csak kisbetűket és számokat tartalmazhat. Az első karakternek betűnek kell lennie. Az értéknek 2 – 20 karakter hosszúnak kell lennie.
+    Tag fiókjának jelszava | A tag fiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A tag fiókja és a fiók jelszava a konzorciumok kezeléséhez.
+    Leírás | A konzorcium leírása.
+    Díjszabás | A csomópont-konfiguráció és az új szolgáltatás díja. Válassza a **módosítás** hivatkozást a **standard** **és az alapszintű** csomagok választásához.
+    Csomópont jelszava | A tag alapértelmezett tranzakciós csomópontjának jelszava. Az alapszintű hitelesítéshez használja a jelszót az blockchain-tag alapértelmezett tranzakciós csomópontjának nyilvános végponthoz való csatlakozáskor.
 
-1. Select **Review + create** to validate your settings. Select **Create** to provision the service. Provisioning takes about 10 minutes.
-1. Select **Notifications** on the toolbar to monitor the deployment process.
-1. After deployment, navigate to your blockchain member.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások érvényesítéséhez. Válassza a **Létrehozás** lehetőséget a szolgáltatás kiépítéséhez. A kiépítés körülbelül 10 percet vesz igénybe.
+1. A telepítési folyamat figyeléséhez kattintson az **értesítések** elemre az eszköztáron.
+1. Az üzembe helyezés után navigáljon a blockchain-taghoz.
 
-Select **Overview**, you can view the basic information about your service including the RootContract address and member account.
+Az **Áttekintés**lehetőség kiválasztásával megtekintheti a szolgáltatás alapvető adatait, beleértve a RootContract-címeket és a tagsági fiókot is.
 
-![Blockchain member overview](./media/create-member/overview.png)
+![Blockchain-tagok áttekintése](./media/create-member/overview.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-You can use the member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
+A következő rövid útmutatóhoz vagy oktatóanyaghoz létrehozott tagot használhatja. Ha már nincs rá szükség, törölheti az erőforrásokat a gyors üzembe helyezéshez létrehozott `myResourceGroup` erőforráscsoport törlésével.
 
-To delete the resource group:
+Az erőforráscsoport törlése:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-2. Válassza az **Erőforráscsoport törlése** elemet. Verify deletion by entering the resource group name and select **Delete**.
+1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
+2. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+Ebben a rövid útmutatóban üzembe helyezett egy Azure Blockchain-szolgáltatási tagot és egy új konzorciumot. Próbálja ki a következő rövid útmutatót a Ethereum készült Azure Blockchain Development Kit használatával az Azure Blockchain Service-konzorciumhoz való csatlakoztatáshoz.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [A Visual Studio Code használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz](connect-vscode.md)

@@ -77,7 +77,7 @@ Más operációs rendszerek esetén manuálisan kell előkészítenie a gépeket
 Ha Windows rendszerű gépet telepít át, hajtsa végre ezeket a módosításokat az áttelepítés előtt. Ha a módosítások végrehajtása előtt telepíti át a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
 
 1. [Engedélyezze az Azure soros hozzáférési konzolt](../virtual-machines/troubleshooting/serial-console-windows.md) az Azure-beli virtuális géphez. Ez segít a hibaelhárításban. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni. Ez egyenértékű az új virtuális gép újraindításával. 
-2. Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. [Részletek](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+2. Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
 
 ### <a name="prepare-linux-machines"></a>Linuxos gépek előkészítése
 
@@ -135,7 +135,7 @@ A helyszíni Linux rendszerű gépeken tegye a következőket:
 
 Az áttelepítés után tegye a következőket a létrehozott Azure-beli virtuális gépeken.
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [Részletek](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [További információk](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 

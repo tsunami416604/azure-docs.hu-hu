@@ -106,7 +106,7 @@ https://download.microsoft.com/download/* | A letölthető fájlok letöltése a
 
 A következő táblázat összefoglalja az értékeléshez szükséges portokra vonatkozó követelményeket.
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Fizikai kiszolgálók** | **Windows:** Bejövő kapcsolatok a 443-es, 5989-as portokon a konfiguráció és a teljesítmény metaadatainak lekéréséhez Windows-kiszolgálókról. <br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (UDP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |

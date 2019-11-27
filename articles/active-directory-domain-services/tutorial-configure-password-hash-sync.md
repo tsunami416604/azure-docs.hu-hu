@@ -1,6 +1,6 @@
 ---
-title: Enable password hash sync for Azure AD Domain Services | Microsoft Docs
-description: In this tutorial, learn how to enable password hash synchronization using Azure AD Connect to an Azure Active Directory Domain Services managed domain.
+title: Jelszó-kivonatolási szinkronizálás engedélyezése a Azure AD Domain Serviceshoz | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a jelszó-kivonatok szinkronizálását a Azure AD Connect használatával egy Azure Active Directory Domain Services felügyelt tartományhoz.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -16,64 +16,64 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481176"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Tutorial: Enable password synchronization in Azure Active Directory Domain Services for hybrid environments
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
-For hybrid environments, an Azure Active Directory (Azure AD) tenant can be configured to synchronize with an on-premises Active Directory Domain Services (AD DS) environment using Azure AD Connect. By default, Azure AD Connect doesn't synchronize legacy NT LAN Manager (NTLM) and Kerberos password hashes that are needed for Azure Active Directory Domain Services (Azure AD DS).
+Hibrid környezetek esetén egy Azure Active Directory (Azure AD) bérlő konfigurálható úgy, hogy Azure AD Connect használatával szinkronizáljon a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezettel. Alapértelmezés szerint a Azure AD Connect nem szinkronizálja az Azure Active Directory Domain Services (Azure AD DS) számára szükséges örökölt NT LAN Manager-(NTLM-) és Kerberos-jelszavak kivonatait.
 
-To use Azure AD DS with accounts synchronized from an on-premises AD DS environment, you need to configure Azure AD Connect to synchronize those password hashes required for NTLM and Kerberos authentication. After Azure AD Connect is configured, an on-premises account creation or password change event also then synchronizes the legacy password hashes to Azure AD.
+Ha az Azure AD DSt a helyszíni AD DS-környezetből szinkronizált fiókokkal szeretné használni, konfigurálnia kell Azure AD Connect az NTLM-és Kerberos-hitelesítéshez szükséges jelszavak kivonatok szinkronizálásához. Azure AD Connect konfigurálása után a helyszíni fiók létrehozása vagy a jelszó módosítása esemény is szinkronizálja az örökölt jelszó-kivonatokat az Azure AD-be.
 
-You don't need to perform these steps if you use cloud-only accounts with no on-premises AD DS environment.
+Ezeket a lépéseket nem kell végrehajtania, ha csak felhőalapú fiókokat használ helyszíni AD DS környezettel.
 
-In this tutorial, you learn:
+Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Why legacy NTLM and Kerberos password hashes are needed
-> * How to configure legacy password hash synchronization for Azure AD Connect
+> * Miért van szükség örökölt NTLM-és Kerberos-jelszó-kivonatokra
+> * A Azure AD Connect örökölt jelszó-kivonatolási szinkronizálásának konfigurálása
 
-If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-To complete this tutorial, you need the following resources:
+Az oktatóanyag elvégzéséhez a következő erőforrásokra lesz szüksége:
 
 * Aktív Azure-előfizetés.
-    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* An Azure Active Directory tenant associated with your subscription that's synchronized with an on-premises directory using Azure AD Connect.
-    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
-    * If needed, [enable Azure AD Connect for password hash synchronization][enable-azure-ad-connect].
-* An Azure Active Directory Domain Services managed domain enabled and configured in your Azure AD tenant.
-    * If needed, [create and configure an Azure Active Directory Domain Services instance][create-azure-ad-ds-instance].
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, amely Azure AD Connect használatával szinkronizálva van egy helyszíni címtárral.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+    * Ha szükséges, [engedélyezze a jelszó-kivonatok szinkronizálását Azure ad Connect][enable-azure-ad-connect].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
 
-## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Password hash synchronization using Azure AD Connect
+## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Jelszó-kivonatolási szinkronizálás Azure AD Connect használatával
 
-Azure AD Connect is used to synchronize objects like user accounts and groups from an on-premises AD DS environment into an Azure AD tenant. As part of the process, password hash synchronization enables accounts to use the same password in the on-prem AD DS environment and Azure AD.
+A Azure AD Connect objektumok, például felhasználói fiókok és csoportok szinkronizálására használható egy helyszíni AD DS-környezetből egy Azure AD-bérlőbe. A folyamat részeként a jelszó-kivonatolási szinkronizálás lehetővé teszi, hogy a fiókok ugyanazt a jelszót használják a helyszíni AD DS környezetben és az Azure AD-ben.
 
-To authenticate users on the managed domain, Azure AD DS needs password hashes in a format that's suitable for NTLM and Kerberos authentication. Azure AD doesn't store password hashes in the format that's required for NTLM or Kerberos authentication until you enable Azure AD DS for your tenant. For security reasons, Azure AD also doesn't store any password credentials in clear-text form. Therefore, Azure AD can't automatically generate these NTLM or Kerberos password hashes based on users' existing credentials.
+A felügyelt tartományon lévő felhasználók hitelesítéséhez az Azure AD DS az NTLM-és Kerberos-hitelesítéshez megfelelő formátumú jelszó-kivonatokat kell használnia. Az Azure AD nem az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban tárolja a jelszó-kivonatokat, amíg nem engedélyezi az Azure-AD DS a bérlő számára. Biztonsági okokból az Azure AD nem tárolja a jelszó hitelesítő adatait a tiszta szöveges formában. Ezért az Azure AD nem tudja automatikusan előállítani ezeket az NTLM-vagy Kerberos-jelszó-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
 
-Azure AD Connect can be configured to synchronize the required NTLM or Kerberos password hashes for Azure AD DS. Make sure that you have completed the steps to [enable Azure AD Connect for password hash synchronization][enable-azure-ad-connect]. If you had an existing instance of Azure AD Connect, [download and update to the latest version][azure-ad-connect-download] to make sure you can synchronize the legacy password hashes for NTLM and Kerberos. This functionality isn't available in early releases of Azure AD Connect or with the legacy DirSync tool. Azure AD Connect version *1.1.614.0* or later is required.
+A Azure AD Connect konfigurálható úgy, hogy szinkronizálja az Azure-AD DS szükséges NTLM-vagy Kerberos-jelszavak kivonatait. Győződjön meg arról, hogy elvégezte a [jelszó-kivonatok szinkronizálásához szükséges Azure ad Connect engedélyezésének][enable-azure-ad-connect]lépéseit. Ha Azure AD Connect meglévő példányát használta, [töltse le és frissítse a legújabb verzióra][azure-ad-connect-download] , és győződjön meg róla, hogy szinkronizálni tudja az NTLM-és Kerberos-alapú örökölt jelszavak kivonatait. Ez a funkció nem érhető el a Azure AD Connect korábbi kiadásaiban vagy az örökölt rSync eszközzel. Azure AD Connect *1.1.614.0* vagy újabb verzió szükséges.
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. Nem támogatott Azure AD Connect telepítése Azure AD DS felügyelt tartományba az objektumok Azure AD-be való visszaszinkronizálásához.
 
-## <a name="enable-synchronization-of-password-hashes"></a>Enable synchronization of password hashes
+## <a name="enable-synchronization-of-password-hashes"></a>Jelszó-kivonatok szinkronizálásának engedélyezése
 
-With Azure AD Connect installed and configured to synchronize with Azure AD, now configure the legacy password hash sync for NTLM and Kerberos. A PowerShell script is used to configure the required settings and then start a full password synchronization to Azure AD. When that Azure AD Connect password hash synchronization process is complete, users can sign in to applications through Azure AD DS that use legacy NTLM or Kerberos password hashes.
+A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és konfigurálva, most konfigurálja az örökölt jelszó-kivonatoló szinkronizálást az NTLM és a Kerberos számára. A szükséges beállítások konfigurálásához PowerShell-parancsfájlt kell használni, majd teljes jelszó-szinkronizálást kell elindítani az Azure AD-be. Ha a jelszó-kivonat szinkronizációs folyamata Azure AD Connect, a felhasználók az Azure-AD DSon keresztül jelentkezhetnek be az alkalmazásokba, amelyek örökölt NTLM-vagy Kerberos-jelszó-kivonatokat használnak.
 
-1. On the computer with Azure AD Connect installed, from the Start menu, open the **Azure AD Connect > Synchronization Service**.
-1. Select the **Connectors** tab. The connection information used to establish the synchronization between the on-premises AD DS environment and Azure AD are listed.
+1. A Azure AD Connect telepített számítógépen a Start menüben nyissa meg a **Azure AD Connect > szinkronizációs szolgáltatást**.
+1. Válassza az **Összekötők** fület. A helyszíni AD DS környezet és az Azure AD közötti szinkronizálás létrehozásához használt kapcsolati adatok listája.
 
-    The **Type** indicates either *Windows Azure Active Directory (Microsoft)* for the Azure AD connector or *Active Directory Domain Services* for the on-premises AD DS connector. Make a note of the connector names to use in the PowerShell script in the next step.
+    A **típus** a helyszíni AD DS-összekötőhöz tartozó *Windows Azure Active Directory (Microsoft)* értéket jelöli az Azure ad-összekötőhöz vagy a *Active Directory tartományi szolgáltatásokhoz* . Jegyezze fel a PowerShell-parancsfájlban használandó összekötők nevét a következő lépésben.
 
-    ![List the connector names in Sync Service Manager](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
+    ![Az összekötők neveinek listázása a Sync Service Managerban](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
-    In this example screenshot, the following connectors are used:
+    Ebben a példában a képernyőképen a következő összekötők használatosak:
 
-    * The Azure AD connector is named *contoso.onmicrosoft.com - AAD*
-    * The on-premises AD DS connector is named *onprem.contoso.com*
+    * Az Azure AD-összekötő neve *contoso.onmicrosoft.com-HRE*
+    * A helyszíni AD DS-összekötő neve *onprem.contoso.com*
 
-1. Copy and paste the following PowerShell script to the computer with Azure AD Connect installed. The script triggers a full password sync that includes legacy password hashes. Update the `$azureadConnector` and `$adConnector` variables with the connector names from the previous step.
+1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és az `$adConnector` változókat az előző lépésben szereplő összekötők neveivel.
 
-    Run this script on each AD forest to synchronize on-premises account NTLM and Kerberos password hashes to Azure AD.
+    Futtassa ezt a szkriptet minden egyes AD-erdőben, hogy szinkronizálja a helyszíni fiók NTLM-és Kerberos-jelszavas kivonatait az Azure AD-be.
 
     ```powershell
     # Define the Azure AD Connect connector names and import the required PowerShell module
@@ -95,18 +95,18 @@ With Azure AD Connect installed and configured to synchronize with Azure AD, now
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    Depending on the size of your directory in terms of number of accounts and groups, synchronization of the legacy password hashes to Azure AD may take some time. The passwords are then synchronized to the Azure AD DS managed domain after they've synchronized to Azure AD.
+    A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat az Azure AD DS felügyelt tartományba az Azure AD-vel való szinkronizálás után.
 
 ## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you learned:
+Ebben az oktatóanyagban megtanulta a következőket:
 
 > [!div class="checklist"]
-> * Why legacy NTLM and Kerberos password hashes are needed
-> * How to configure legacy password hash synchronization for Azure AD Connect
+> * Miért van szükség örökölt NTLM-és Kerberos-jelszó-kivonatokra
+> * A Azure AD Connect örökölt jelszó-kivonatolási szinkronizálásának konfigurálása
 
 > [!div class="nextstepaction"]
-> [Learn how synchronization works in an Azure AD Domain Services managed domain](synchronization.md)
+> [Ismerje meg, hogyan működik a szinkronizáció Azure AD Domain Services felügyelt tartományban](synchronization.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

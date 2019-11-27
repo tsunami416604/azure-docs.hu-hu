@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 16339590c3cfb11235ef4763c2e32c71b521c709
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791570"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539065"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Oktatóanyag: az Azure Blob Storage elérése Azure Databricks használatával Azure Key Vault
 
 Ez az oktatóanyag leírja, hogyan érheti el az Azure Blob Storaget a Azure Databricks a Key vaultban tárolt titkok használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Storage-fiók és blob-tároló létrehozása
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
@@ -76,10 +76,10 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
    |Tulajdonság|Leírás|
    |--------|-----------|
-   |Név|A Key Vault egyedi neve.|
-   |Előfizetés|Válasszon egy előfizetést.|
+   |Name (Név)|A Key Vault egyedi neve.|
+   |Előfizetést|Válasszon egy előfizetést.|
    |Erőforráscsoport|Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.|
-   |Földrajzi egység|Válassza ki a helyet.|
+   |Hely|Válassza ki a helyet.|
 
    ![Az Azure Key Vault tulajdonságai](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 5. A **titkos kulcs létrehozása** lapon adja meg a következő információkat, és tartsa meg a fennmaradó mezők alapértelmezett értékeit:
 
-   |Tulajdonság|Value (Díj)|
+   |Tulajdonság|Érték|
    |--------|-----------|
    |Feltöltési beállítások|Kézi|
-   |Név|A Storage-fiók kulcsa rövid neve.|
-   |Value (Díj)|key1.|
+   |Name (Név)|A Storage-fiók kulcsa rövid neve.|
+   |Érték|key1.|
 
    ![Új Key Vault-titok tulajdonságai](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -114,10 +114,10 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
    |Tulajdonság  |Leírás  |
    |---------|---------|
    |Munkaterület neve     | Adja meg a Databricks-munkaterület nevét.        |
-   |Előfizetés     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
+   |Előfizetést     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
    |Erőforráscsoport     | Válassza ki ugyanazt az erőforráscsoportot, amely tartalmazza a kulcstartót. |
-   |Földrajzi egység     | Válassza ki ugyanazt a helyet, mint a Azure Key Vault. Az összes elérhető régióval kapcsolatban tekintse meg a [régiók által elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/)című témakört.        |
-   |Díjcsomag     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+   |Hely     | Válassza ki ugyanazt a helyet, mint a Azure Key Vault. Az összes elérhető régióval kapcsolatban tekintse meg a [régiók által elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/)című témakört.        |
+   |Tarifacsomag     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Databricks-munkaterület tulajdonságai](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
@@ -129,7 +129,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 4. Ha a Azure Databricks munkaterület egy külön ablakban van megnyitva, fűzze hozzá **#secrets/createscope** az URL-címhez. Az URL-címnek a következő formátumúnak kell lennie: 
 
-   **https://< \location >. azuredatabricks. net/? o = < \id > #secrets/createscope**.
+   **https://< \location >. azuredatabricks. net/#secrets/createscope**.
 
 5. Adja meg a hatókör nevét, és adja meg a korábban mentett Azure Key Vault DNS-nevet és erőforrás-azonosítót. Mentse a hatókör nevét egy szövegszerkesztőben az oktatóanyag későbbi részében való használatra. Ezután kattintson a **Létrehozás** elemre.
 

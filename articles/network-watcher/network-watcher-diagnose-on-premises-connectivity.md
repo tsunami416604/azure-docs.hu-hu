@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275944"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531831"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
@@ -42,7 +42,7 @@ Helyek közötti kapcsolatot szeretne konfigurálni az Azure és a helyszíni ka
 
 A helyek közötti konfiguráció konfigurálásának részletes lépéseit ismertető útmutató a következő címen érhető el: [VNet létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-A kritikus fontosságú konfigurációs lépések egyike az IPsec-kommunikációs paraméterek konfigurálása, ami bármilyen helytelen konfiguráció a helyszíni hálózat és az Azure közötti kapcsolat elvesztését eredményezi. Az Azure VPN-átjárók jelenleg úgy vannak konfigurálva, hogy támogassák az 1. fázishoz tartozó következő IPsec-paramétereket. Megjegyzés: ahogy azt korábban említettük, ezek a beállítások nem módosíthatók.  Ahogy az alábbi táblázatban is látható, az Azure VPN Gateway által támogatott titkosítási algoritmusok a következők: AES256, AES128 és 3DES.
+A kritikus fontosságú konfigurációs lépések egyike az IPsec-kommunikációs paraméterek konfigurálása, ami bármilyen helytelen konfiguráció a helyszíni hálózat és az Azure közötti kapcsolat elvesztését eredményezi. Az Azure VPN-átjárók jelenleg úgy vannak konfigurálva, hogy támogassák az 1. fázishoz tartozó következő IPsec-paramétereket. Ahogy az alábbi táblázatban is látható, az Azure VPN Gateway által támogatott titkosítási algoritmusok a következők: AES256, AES128 és 3DES.
 
 ### <a name="ike-phase-1-setup"></a>IKE 1. fázis beállítása
 
@@ -53,7 +53,7 @@ A kritikus fontosságú konfigurációs lépések egyike az IPsec-kommunikáció
 | Hitelesítési módszer |Előre megosztott kulcs |Előre megosztott kulcs |
 | Titkosítási algoritmusok |AES256 AES128 3DES |AES256 3DES |
 | Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| 1\. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |10 800 másodperc |
+| 1\. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |28 800 másodperc |
 
 Felhasználóként konfigurálnia kell a FortiGate, a [githubon](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt)megtalálhatja a minta konfigurációját. Nem tudtuk, hogy a FortiGate az SHA-512 használatát kivonatoló algoritmusként konfigurálta. Mivel ez az algoritmus nem támogatott a házirend-alapú kapcsolatok algoritmusa számára, a VPN-kapcsolat működik.
 

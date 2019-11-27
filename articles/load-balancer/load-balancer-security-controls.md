@@ -1,6 +1,6 @@
 ---
-title: Security controls for Azure Load Balancer
-description: A checklist of security controls for evaluating Load Balancer
+title: A Azure Load Balancer biztonsági vezérlői
+description: A Load Balancer értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: load-balancer
 author: asudbring
 manager: KumudD
@@ -15,52 +15,52 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214904"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>A Azure Load Balancer biztonsági vezérlői
 
-This article documents the security controls built into Azure Load Balancer.
+Ez a cikk a Azure Load Balancer beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Network (Hálózat)
 
-| Security control | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Service endpoint support| – | |
-| VNet injection support| – | |
-| Network Isolation and Firewalling support| – |  |
-| Forced tunneling support| – | |
+| Szolgáltatás végpontjának támogatása| N/A | |
+| VNet-befecskendezés támogatása| N/A | |
+| Hálózati elkülönítés és tűzfalak támogatása| N/A |  |
+| Kényszerített bújtatás támogatása| N/A | |
 
-## <a name="monitoring--logging"></a>Monitoring & logging
+## <a name="monitoring--logging"></a>& Naplózás figyelése
 
-| Security control | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitoring support (Log analytics, App insights, etc.)| Igen | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Control and management plane logging and audit| Igen | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Data plane logging and audit | – |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Adatsíkok naplózása és naplózása | N/A |  |
 
-## <a name="identity"></a>Identitáskezelés
+## <a name="identity"></a>Identitás
 
-| Security control | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| – |  |
-| Engedélyezés| – |  |
+| Authentication| N/A |  |
+| Engedélyezés| N/A |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Security control | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Server-side encryption at rest: Microsoft-managed keys | – | |
-| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| – | |
-| Server-side encryption at rest: customer-managed keys (BYOK) | – | |
-| Column level encryption (Azure Data Services)| – | |
-| API calls encrypted| Igen | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | N/A | |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| N/A | |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | N/A | |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
+| Titkosított API-hívások| Igen | A [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Security control | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Configuration management support (versioning of configuration, etc.)| – |  | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| N/A |  | 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).
+- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

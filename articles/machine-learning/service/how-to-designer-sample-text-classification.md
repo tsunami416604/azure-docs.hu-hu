@@ -1,7 +1,7 @@
 ---
-title: 'Designer: classify book reviews example'
+title: 'Tervező: könyv-felülvizsgálatok osztályozása példa'
 titleSuffix: Azure Machine Learning
-description: Build a multiclass logistic regression classifier to predict the company category with wikipedia SP 500 dataset using Azure Machine Learning designer.
+description: Hozzon létre egy többosztályos logisztikai regressziós osztályozó a vállalati kategória előrejelzéséhez a wikipedia SP 500 adatkészlettel a Azure Machine learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,91 +17,91 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213773"
 ---
-# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Build a classifier to predict company category using Azure Machine Learning designer.
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Osztályozó létrehozása a vállalati kategória előrejelzéséhez Azure Machine Learning Designer használatával.
 
-**Designer (preview) sample 7**
+**Designer (előzetes verzió) 7. minta**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-This sample demonstrates how to use text analytics modules to build a text classification pipeline in Azure Machine Learning designer (preview).
+Ez a minta azt mutatja be, hogyan használhatók a szöveges elemzési modulok a Azure Machine Learning Designerben (előzetes verzió) szöveges besorolási folyamat létrehozásához.
 
-The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. 
+A szöveges besorolás célja, hogy egy vagy több előre definiált osztályba vagy kategóriába rendeljen egy szövegrészt. A szöveg lehet dokumentum, hírek, keresési lekérdezés, e-mail, tweet, támogatási jegyek, felhasználói visszajelzés, felhasználói termék felülvizsgálata stb. A szöveges besorolás alkalmazása magában foglalja az újságcikkek és a hírek tartalmának kategorizálása, a weblapok rendszerezése hierarchikus kategóriákba, a levélszemét e-mailek szűrése, a hangulat elemzése, a felhasználók szándékának előrejelzése a keresési lekérdezésektől, az Útválasztás támogatási jegyek és a vásárlói visszajelzések elemzése. 
 
-This pipeline trains a **multiclass logistic regression classifier** to predict the company category with **Wikipedia SP 500 dataset derived from Wikipedia**.  
+Ez a folyamat egy **többosztályos logisztikai regressziós** osztályozást vezet be a vállalat kategóriájának előrejelzéséhez a **wikipedia által a wikipedia SP 500 adatkészlet alapján**.  
 
-The fundamental steps of a training machine learning model with text data are:
+A betanítási gépi tanulási modellek szöveges adattal való alapvető lépései a következők:
 
 1. Az adatok lekérése
 
-1. Pre-process the text data
+1. A szöveges adatértékek előzetes feldolgozása
 
-1. Feature Engineering
+1. Szolgáltatások mérnöki
 
-   Convert text feature into the numerical feature with feature extracting module such as feature hashing, extract n-gram feature from the text data.
+   A Text (szöveg) funkciót a numerikus funkcióba konvertálhatja a szolgáltatás kibontási modulja, például a szolgáltatások kivonatolása, az n-Gram funkció kinyerése a szöveges adatokból.
 
-1. A modell tanítása
+1. A modell betanítása
 
-1. Score dataset
+1. Pontszám adatkészlet
 
 1. A modell értékelése
 
-Here's the final, completed graph of the pipeline we'll be working on. We'll provide the rationale for all the modules so you can make similar decisions on your own.
+Itt látható a folyamat utolsó, befejezett gráfja. Biztosítjuk az összes modul indoklását, így a hasonló döntéseket saját maga is megteheti.
 
-[![Graph of the pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
+[a folyamat ![gráfja](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>Adatok
 
-In this pipeline, we use the **Wikipedia SP 500** dataset. The dataset is derived from Wikipedia (https://www.wikipedia.org/) based on articles of each S&P 500 company. Before uploading to Azure Machine Learning designer, the dataset was processed as follows:
+Ebben a folyamatban a **WIKIPEDIA SP 500** adatkészletet használjuk. Az adatkészlet a wikipedia-ből származik (https://www.wikipedia.org/) az egyes S & P 500 vállalat cikkei alapján. Azure Machine Learning designerbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:
 
-- Extract text content for each specific company
-- Remove wiki formatting
-- Remove non-alphanumeric characters
-- Convert all text to lowercase
-- Known company categories were added
+- Szöveges tartalom kinyerése minden egyes vállalatnál
+- Wiki formázásának eltávolítása
+- Nem alfanumerikus karakterek eltávolítása
+- Az összes szöveg konvertálása kisbetűsre
+- Ismert vállalati kategóriák lettek hozzáadva
 
-Articles could not be found for some companies, so the number of records is less than 500.
+Egyes vállalatoknak nem találhatók cikkek, így a rekordok száma kevesebb, mint 500.
 
-## <a name="pre-process-the-text-data"></a>Pre-process the text data
+## <a name="pre-process-the-text-data"></a>A szöveges adatértékek előzetes feldolgozása
 
-We use the **Preprocess Text** module to preprocess the text data, including detect the sentences, tokenize sentences and so on. You would found all supported options in the [**Preprocess Text**](../algorithm-module-reference/preprocess-text.md) article. After pre-processing tex data, we use the **Split Data** module to randomly divide the input data so that the training dataset contains 50% of the original data and the testing dataset contains 50% of the original data.
+Az **előfeldolgozási szöveg** modul használatával elődolgozhatja a szöveges adatbevitelt, beleértve a mondatok észlelését, a tokenize mondatokat és így tovább. A [**szöveg előfeldolgozása**](../algorithm-module-reference/preprocess-text.md) című cikkben szereplő összes támogatott beállítás megtalálható. A TeX-adatok előfeldolgozása után az **adatok felosztása** modul használatával véletlenszerűen oszthatja meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 50%-át, a tesztelési adatkészlet pedig az eredeti adatok 50%-át tartalmazza.
 
-## <a name="feature-engineering"></a>Feature Engineering
-In this sample, we will use two methods performing feature engineering.
+## <a name="feature-engineering"></a>Szolgáltatások mérnöki
+Ebben a példában két módszert használunk a szolgáltatások fejlesztéséhez.
 
 ### <a name="feature-hashing"></a>Funkciókivonatolás
-We used the [**Feature Hashing**](../algorithm-module-reference/feature-hashing.md) module to convert the plain text of the articles to integers and used the integer values as input features to the model. 
+A szolgáltatás- [**kivonatolási**](../algorithm-module-reference/feature-hashing.md) modul használatával a cikkek egyszerű szövegét egész számmá konvertáljuk, és az egész értékeket a modell bemeneti funkcióinak használták. 
 
-The **Feature Hashing** module can be used to convert variable-length text documents to equal-length numeric feature vectors, using the 32-bit murmurhash v3 hashing method provided by the Vowpal Wabbit library. The objective of using feature hashing is dimensionality reduction; also feature hashing makes the lookup of feature weights faster at classification time because it uses hash value comparison instead of string comparison.
+A **szolgáltatás-kivonatolási** modul változó hosszúságú szöveges dokumentumok konvertálására használható a Vowpal Wabbit-függvénytár által biztosított 32 bites murmurhash v3 kivonatolási módszer használatával. A szolgáltatás-kivonatolás használatának célja a dimenzióját csökkentése; Emellett a szolgáltatás-kivonatolás lehetővé teszi, hogy a szolgáltatás súlyozása gyorsabb legyen a besorolás időpontjában, mert a karakterlánc-összehasonlítás helyett kivonatoló érték összehasonlítást használ.
 
-In the sample pipeline, we set the number of hashing bits to 14 and set the number of n-grams to 2. With these settings, the hash table can hold 2^14 entries, in which each hashing feature represents one or more n-gram features and its value represents the occurrence frequency of that n-gram in the text instance. For many problems, a hash table of this size is more than adequate, but in some cases, more space might be needed to avoid collisions. Evaluate the performance of your machine learning solution using different number of bits. 
+A mintavételi folyamat során a kivonatoló bitek számát állítsa 14-re, és állítsa be az n-g és a 2 közötti értéket. Ezekkel a beállításokkal a kivonatoló tábla 2 ^ 14 bejegyzést tud tárolni, amelyekben az egyes kivonatolási funkciók egy vagy több n-Gram-funkciót jelképeznek, és annak értéke az n-Gram előfordulási gyakoriságát jelöli a szöveges példányban. Számos probléma esetén az ilyen méretű kivonatoló táblázat több mint megfelelő, de bizonyos esetekben további lemezterületre lehet szükség az ütközések elkerülése érdekében. Értékelje ki a gépi tanulási megoldás teljesítményét különböző számú bitek használatával. 
 
-### <a name="extract-n-gram-feature-from-text"></a>Extract N-Gram Feature from Text
+### <a name="extract-n-gram-feature-from-text"></a>N-Gram funkció kinyerése szövegből
 
-An n-gram is a contiguous sequence of n terms from a given sequence of text. An n-gram of size 1 is referred to as a unigram; an n-gram of size 2 is a bigram; an n-gram of size 3 is a trigram. N-grams of larger sizes are sometimes referred to by the value of n, for instance, "four-gram", "five-gram", and so on.
+Az n-Gram egy adott szövegrész n kifejezésének folytonos sorozata. Az 1. méretű n-grammos unigram nevezik. a 2. méretű n-gramm egy bigram; a 3. méretű n-gramm trigram. A nagyobb méretű n-grammot esetenként az n érték, például a "négy gramm", az "öt gramm" és így tovább.
 
-We used [**Extract N-Gram Feature from Text**](../algorithm-module-reference/extract-n-gram-features-from-text.md)module as another solution for feature engineering. This module first extracts the set of n-grams, in addition to the n-grams, the number of documents where each n-gram appears in the text is counted(DF). In this sample, TF-IDF metric is used to calculate feature values. Then, it converts unstructured text data into equal-length numeric feature vectors where each feature represents the TF-IDF of an n-gram in a text instance.
+Az [**N-Gram funkciót a szöveges**](../algorithm-module-reference/extract-n-gram-features-from-text.md)modulból egy másik megoldásként használták a funkció mérnöki környezetében. Ez a modul először kibontja az n-gramm értéket az n-grammon kívül, azon dokumentumok számát, amelyekben minden n-Gram megjelenik a szövegben (DF). Ebben a példában a TF-IDF mérőszámot használjuk a funkciók értékének kiszámításához. Ezután átalakítja a strukturálatlan szöveges adatmennyiséget az azonos hosszúságú numerikus funkciós vektorokra, ahol mindegyik funkció egy n-Gram TF-IDF-értékét jelöli egy szöveges példányban.
 
-After converting text data into numeric feature vectors, A **Select Column** module is used to remove the text data from the dataset. 
+A szöveges adatok numerikus szolgáltatásbeli vektorokra való konvertálása után az **Oszlop kiválasztása** modul használatával távolíthatja el a szöveges adatokat az adatkészletből. 
 
-## <a name="train-the-model"></a>A modell tanítása
+## <a name="train-the-model"></a>A modell betanítása
 
-Your choice of algorithm often depends on the requirements of the use case. Because the goal of this pipeline is to predict the category of company, a multi-class classifier model is a good choice. Considering that the number of features is large and these features are sparse, we use **Multiclass Logistic Regression** model for this pipeline.
+Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Mivel ennek a folyamatnak a célja a vállalat kategóriájának előrejelzése, a többosztályos osztályozó modell jó választás. Figyelembe véve, hogy a szolgáltatások száma nagy, és ezek a funkciók ritkák, a **többosztályos logisztikai regressziós** modellt használjuk ehhez a folyamathoz.
 
-## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
+## <a name="test-evaluate-and-compare"></a>Tesztelés, kiértékelés és összehasonlítás
 
- We split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
+ Feldaraboljuk az adatkészletet, és különböző adatkészleteket használunk a modell betanításához és teszteléséhez, hogy a modell kiértékelése nagyobb legyen.
 
-After the model is trained, we would use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. However, before using the **Score Model** module, performing feature engineering as what we have done during training is required. 
+A modell betanítása után a **pontszám modellt** használjuk, és **kiértékeljük a modell** moduljait az előre jelzett eredmények létrehozásához és a modellek kiértékeléséhez. A **pontszám modell** modul használata előtt azonban a funkció mérnöki funkciója, ahogyan azt a képzés során elvégezte. 
 
-For **Feature Hashing** module, it is easy to perform feature engineer on scoring flow as training flow. Use **Feature Hashing** module directly to process the input text data.
+A **szolgáltatás-kivonatolási** modul esetében könnyen elvégezhető a betanítási folyamaton alapuló szolgáltatási mérnök. Használja közvetlenül a **funkció-kivonatolási** modult a bemeneti szöveges adatok feldolgozásához.
 
-For **Extract N-Gram Feature from Text** module, we would connect the **Result Vocabulary output** from the training dataflow to the **Input Vocabulary** on the scoring dataflow, and set the **Vocabulary mode** parameter to **ReadOnly**.
-[![Graph of n-gram score](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
+Ha **N-grammos funkciót szeretne kinyerni a szöveges** modulból **, a adatfolyam** a betanítási adatfolyam lévő **bemeneti szókincsre** , majd a beolvasáshoz állítsa a **szókincs mód** paramétert **.**
+[n-Gram pontszám ![gráf](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
-After finishing the engineering step, **Score Model** could be used to generate predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
+A mérnöki lépés befejezése után a **score Model** segítségével előkészítheti a tesztelési adatkészlet előrejelzéseit a betanított modell használatával. Az eredmény ellenőrzéséhez válassza ki a **pontszám modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
 
-We then pass the scores to the **Evaluate Model** module to generate evaluation metrics. **Evaluate Model** has two input ports, so that we could evaluate and compare scored datasets that are generated with different methods. In this sample, we compare the performance of the result generated with feature hashing method and n-gram method.
-To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
+Ezután átadjuk a pontszámokat a **modell kiértékelése** modulhoz az értékelési mérőszámok létrehozásához. A **modell kiértékelése** két bemeneti porttal rendelkezik, így kiértékelheti és összehasonlíthatja a különböző módszerekkel generált pontozásos adatkészleteket. Ebben a példában összehasonlítjuk a szolgáltatás-kivonatolási módszer és az n-Gram módszer által generált eredmény teljesítményét.
+Az eredmény ellenőrzéséhez válassza ki a **kiértékelési modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -109,10 +109,10 @@ To check the result, select the output port of the **Evaluate Model** and then s
 
 ## <a name="next-steps"></a>Következő lépések
 
-Explore the other samples available for the designer:
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+Ismerje meg a tervező számára elérhető egyéb mintákat:
+- [1. példa – regresszió: az autó árának előrejelzése](how-to-designer-sample-regression-automobile-price-basic.md)
+- [2. minta – regresszió: algoritmusok összehasonlítása az autó árának előrejelzéséhez](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [3. minta – besorolás a szolgáltatás kiválasztásával: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)
+- [4. minta – besorolás: a hitelkockázat előrejelzése (a Cost szenzitív)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [5. példa – besorolás: forgalom előrejelzése](how-to-designer-sample-classification-churn.md)
+- [6. példa – besorolás: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)

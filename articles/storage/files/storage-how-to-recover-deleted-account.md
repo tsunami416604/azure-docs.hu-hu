@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: Azure-fájlmegosztás használata az Azure Storage szolgáltatással | Microsoft Docs
 description: Az Azure-fájlmegosztások használata Windowson és Windows Serveren.
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233791"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>Törölt Storage-fiók helyreállítása
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Az Azure Storage adatrugalmasságot biztosít az automatizált replikák használatával, de nem akadályozza meg, hogy a felhasználók vagy az alkalmazások kódja véletlenül vagy rosszindulatúan sérült legyen. Az alkalmazás-vagy felhasználói hiba példányaiban az adathűség fenntartása fejlettebb technikákat igényel, például az adatok egy másodlagos tárolóhelyre való másolását egy naplóval.
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+Az alábbi táblázat a Storage-fiók helyreállításának hatókörét mutatja be a replikációs stratégiától függően.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|Igen|Igen|Igen|Igen|
-|Storage Account Classic|Igen|Igen|Igen|Igen|
+|Storage-fiók Azure Resource Manager|Igen|Igen|Igen|Igen|
+|Klasszikus Storage-fiók|Igen|Igen|Igen|Igen|
 
-Gather the following information and file a support request with Microsoft Support:
+Gyűjtse össze a következő információkat, és küldjön egy támogatási kérést Microsoft ügyfélszolgálata:
 
 * Storage account name (Tárfiók neve)
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* Törlés dátuma
+* Storage-fiók régiója
+* Hogyan törölte a Storage-fiókot?
+* Milyen módszerrel törölte a Storage-fiókot? (Portál, PowerShell stb.)
 
-Important Points
+Fontos pontok
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* Általában akár 15 napig is eltarthat, amíg a tárolási szolgáltatás nem végez adatgyűjtést, ezért előfordulhat, hogy a Storage-fiókok helyreállítása nem állítható vissza SLA-val.
+* Microsoft ügyfélszolgálata megpróbálja helyreállítani a tárolót/fiókot a legjobb erőfeszítés alapján, és nem tudja garantálni a helyreállítást.
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> Előfordulhat, hogy a helyreállítás nem lesz sikeres, ha a fiók újra lett létrehozva. Ha már újra létrehozta a fiókot, először törölnie kell azt a helyreállítás megkísérlése előtt.

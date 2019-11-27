@@ -121,7 +121,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Értékelés – portra vonatkozó követelmények
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
 vCenter-kiszolgáló | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
@@ -225,7 +225,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Ügynök nélküli áttelepítés – portra vonatkozó követelmények
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 Berendezés | Az 443-as porton kimenő kapcsolatok a replikált adatok az Azure-ba való feltöltéséhez, valamint a replikáció és az áttelepítés összehangolása Azure Migrate szolgáltatásokkal való kommunikációhoz.
 vCenter-kiszolgáló | Bejövő kapcsolatok a 443-as porton, hogy a készülék koordinálja a replikációt – pillanatképek létrehozása, Adatmásolás, kiadási Pillanatképek
@@ -359,7 +359,7 @@ dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-napl�
 
 ## <a name="agent-based-migration-port-requirements"></a>Ügynök-alapú áttelepítés – portra vonatkozó követelmények
 
-**Device** | **kapcsolat**
+**Eszköz** | **Kapcsolat**
 --- | ---
 Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
@@ -382,7 +382,7 @@ Megosztott virtuális merevlemez | Nem támogatott. | Az ellenőrzés sikertelen
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.
-Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/> – Az áttelepítés előtt engedélyezi az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfalon** -> **engedélyezett alkalmazásokat és szolgáltatásokat** a **tartomány-és magánhálózat** számára. Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [Részletek](prepare-for-migration.md). |
+Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/> – Az áttelepítés előtt engedélyezi az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfalon** -> **engedélyezett alkalmazásokat és szolgáltatásokat** a **tartomány-és magánhálózat** számára. Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](prepare-for-migration.md). |
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
 
 

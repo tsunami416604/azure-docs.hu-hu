@@ -1,6 +1,6 @@
 ---
-title: Four steps to a strong identity foundation - Azure AD
-description: This topic describes four steps hybrid identity customers can take to build a strong identity foundation.
+title: Négy lépés egy erős identitás-alaprendszer számára – Azure AD
+description: Ez a témakör a hibrid identitást használó ügyfelek számára négy lépést ismertet, amelyek egy erős identitás-alaprendszer kiépítését foglalják magukban.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -20,253 +20,253 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206779"
 ---
-# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Four steps to a strong identity foundation with Azure Active Directory
+# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
-Managing access to apps and data can no longer rely on the traditional network security boundary strategies such as perimeter networks and firewalls because of the rapid movement of apps to the cloud. Now organizations must trust their identity solution to control who and what has access to the organization's apps and data. More organizations are allowing employees to bring their own devices to work and use their devices from anywhere they can connect to the Internet. Ensuring those devices are compliant and secure has become an important consideration in the identity solution an organization chooses to implement. In today's digital workplace, [identity is the primary control plane](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) of any organization moving to the cloud.
+Az alkalmazásokhoz és adatokhoz való hozzáférés kezelése már nem támaszkodhat a hagyományos hálózati biztonsági határokra vonatkozó stratégiákra, például a peremhálózat-hálózatokra és a tűzfalakra az alkalmazások Felhőbeli gyors mozgatása miatt. A szervezeteknek most meg kell bízniuk a személyazonossági megoldásban, hogy megszabják, ki és mi férhet hozzá a szervezet alkalmazásaihoz és adataihoz. Több szervezet teszi lehetővé az alkalmazottak számára, hogy saját eszközeiket használják a munkahelyen, és az eszközeiket bárhonnan használhassák az internethez való kapcsolódáshoz. Annak biztosítása, hogy az eszközök megfelelőek és biztonságosak legyenek, a szervezet által megvalósított személyazonossági megoldás fontos szempontja. A mai digitális munkahelyen az identitás a felhőbe áthelyezett bármely szervezet [elsődleges vezérlő síkja](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) .
 
-In adopting an Azure Active Directory (Azure AD) hybrid identity solution, organizations gain access to premium features that unlock productivity through automation, delegation, self-service, and single sign-on capabilities. It allows your workers to access company resources from wherever they need to do their work while allowing your IT team to govern that access by ensuring that the right people have the right access to the right resources to establish secure productivity.
+Egy Azure Active Directory (Azure AD) hibrid identitási megoldás bevezetésével a szervezetek olyan prémium szintű funkciókhoz férnek hozzá, amelyek automatizálás, delegálás, önkiszolgáló és egyszeri bejelentkezési képességek révén oldják fel a hatékonyságot. Lehetővé teszi, hogy a dolgozói bárhonnan hozzáférjenek a vállalati erőforrásokhoz, miközben lehetővé teszik az IT-részleg számára a hozzáférés szabályozását azáltal, hogy a megfelelő személyeknek megfelelő hozzáférést biztosítanak a megfelelő erőforrásokhoz a biztonságos hatékonyság érdekében.
 
-Based on our learnings, this checklist of best practices will help you quickly deploy recommended actions to build a *strong* identity foundation in your organization:
+A betanulások alapján ez az ajánlott eljárásokról szóló ellenőrzőlista segítséget nyújt a javasolt műveletek gyors üzembe helyezéséhez a szervezeten belüli *erős* identitás-alapok létrehozásához:
 
-* Connect to apps easily
-* Establish one identity for every user automatically
-* Empower your users securely
-* Operationalize your insights
+* Könnyedén csatlakozhat az alkalmazásokhoz
+* Minden felhasználóhoz automatikusan hozzon létre egy identitást
+* Biztonságos felhasználók meghatalmazása
+* Működővé tenni a bepillantást
 
-## <a name="step-1---connect-to-apps-easily"></a>Step 1 - Connect to apps easily
+## <a name="step-1---connect-to-apps-easily"></a>1\. lépés – egyszerűen csatlakozhat az alkalmazásokhoz
 
-By connecting your apps with Azure AD, you can improve end-user productivity and security by enabling single sign-on (SSO) and do user provisioning. By managing your apps in a single place, Azure AD, you can minimize administrative overhead and achieve a single point of control for your security and compliance policies.
+Az alkalmazások Azure AD-vel való csatlakoztatásával az egyszeri bejelentkezés (SSO) engedélyezésével és a felhasználók üzembe helyezésével javíthatja a végfelhasználói hatékonyságot és biztonságot. Az alkalmazások egyetlen helyen, az Azure AD-ben történő kezelésével csökkentheti az adminisztratív terhelést, és egyetlen ellenőrzési pontot érhet el a biztonsági és megfelelőségi szabályzatokhoz.
 
-This section covers your options for managing user access to apps, enabling secure remote access to internal apps, and the benefits of migrating your apps to Azure AD.
+Ez a szakasz az alkalmazásokhoz való felhasználói hozzáférés kezelésének lehetőségeit, a belső alkalmazások biztonságos távoli elérésének engedélyezését, valamint az alkalmazások Azure AD-ba való áttelepítésének előnyeit ismerteti.
 
-### <a name="make-apps-available-to-your-users-seamlessly"></a>Make apps available to your users seamlessly
+### <a name="make-apps-available-to-your-users-seamlessly"></a>Alkalmazások zökkenőmentes elérhetővé tétele a felhasználók számára
 
-Azure AD enables administrators to [add applications](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) to the Enterprise applications gallery in the [Azure portal](https://portal.azure.com/). Adding applications to the Enterprise applications gallery makes it easier for you to configure applications to use Azure AD as your identity provider. It also lets you manage user access to the application with Conditional Access policies and configure single sign-on (SSO) to applications so that users don't have to enter their passwords repeatedly and are automatically signed into both on-premises and cloud-based applications.
+Az Azure AD lehetővé teszi, hogy a rendszergazdák [alkalmazásokat vegyenek fel](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) a [Azure Portal](https://portal.azure.com/)vállalati alkalmazások gyűjteményébe. Az alkalmazások vállalati alkalmazások katalógusba való felvételével könnyebben konfigurálhatja az alkalmazásokat, hogy az Azure AD-t használják az identitás-szolgáltatóként. Azt is lehetővé teszi, hogy a feltételes hozzáférési szabályzatokkal kezelje az alkalmazáshoz való felhasználói hozzáférést, és konfigurálja az alkalmazások számára az egyszeri bejelentkezést (SSO), így a felhasználóknak nem kell ismételten megadniuk a jelszavukat, és automatikusan bejelentkeznek a helyszíni és a felhőalapú alkalmazások.
 
-Once applications are added to the Azure AD gallery, users can see apps that are assigned to them and search and request other apps as needed. Azure AD provides [several methods](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) for users to access their apps:
+Miután hozzáadta az alkalmazásokat az Azure AD-katalógushoz, a felhasználók megtekinthetik a hozzájuk rendelt alkalmazásokat, és igény szerint kereshetnek és igényelhetnek más alkalmazásokat. Az Azure AD [számos módszert](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) biztosít a felhasználók számára az alkalmazások eléréséhez:
 
-* Access panel/My Apps
-* Office 365 app launcher
+* Hozzáférési panel/saját alkalmazások
+* Office 365 app Launcher
 * Közvetlen bejelentkezés az összevont alkalmazásokba
-* Direct sign-on links
+* Közvetlen bejelentkezési hivatkozások
 
-To learn more about user access to apps, see **Step 3 -- Empower Your Users** in this article.
+További információ az alkalmazásokhoz való felhasználói hozzáférésről: **3. lépés – a felhasználók felhatalmazása** ebben a cikkben.
 
-### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Migrate apps from Active Directory Federation Services to Azure AD
+### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Alkalmazások migrálása Active Directory összevonási szolgáltatások (AD FS)ról az Azure AD-be
 
-Migrating single sign-on configuration from Active Directory Federation Services (ADFS) to Azure AD enables additional capabilities on security, a more consistent manageability, and collaboration. For optimal results, we recommend that you migrate your apps from AD FS to Azure AD. Bringing your application authentication and authorization to Azure AD provides you with the following benefits:
+A Active Directory összevonási szolgáltatások (AD FS) (ADFS) és az Azure AD közötti egyszeri bejelentkezés konfigurációjának áttelepítése további képességeket tesz lehetővé a biztonság, a konzisztens kezelhetőség és az együttműködés terén. Az optimális eredmény érdekében javasoljuk, hogy telepítse át az alkalmazásokat AD FSról az Azure AD-re. Az alkalmazás hitelesítésének és engedélyezésének az Azure AD-be való használata a következő előnyöket biztosítja:
 
-* Managing cost
-* Managing risk
-* Increasing productivity
-* Addressing compliance and governance
+* A Cost kezelése
+* Kockázatkezelés
+* A termelékenység növelése
+* A megfelelőség és a szabályozás kezelése
 
-To learn more, see the [Migrating Your Applications to Azure Active Directory](https://aka.ms/migrateapps/whitepaper) whitepaper.
+További információ: [alkalmazások áttelepítése Azure Active Directory](https://aka.ms/migrateapps/whitepaper) tanulmányba.
 
-### <a name="enable-secure-remote-access-to-apps"></a>Enable secure remote access to apps
+### <a name="enable-secure-remote-access-to-apps"></a>Biztonságos távoli hozzáférés engedélyezése az alkalmazásokhoz
 
-[Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) provides a simple solution for organizations to publish on-premises apps to the cloud for remote users who need access to internal apps in a secure manner. After a single sign-on to Azure AD, users can access both cloud and on-premises applications through external URLs or an internal application portal.
+Az [Azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) egy egyszerű megoldást kínál a szervezetek számára a helyszíni alkalmazások felhőbe történő közzétételére olyan távoli felhasználók számára, akiknek biztonságos módon kell elérniük a belső alkalmazásokat. Az Azure AD-ba való egyszeri bejelentkezés után a felhasználók külső URL-címeken vagy egy belső alkalmazás-portálon keresztül is hozzáférhetnek a Felhőbeli és a helyszíni alkalmazásokhoz.
 
-Azure AD Application Proxy offers the following benefits:
+Az Azure AD Application Proxy a következő előnyöket kínálja:
 
-* Extending Azure AD to on-premises resources
-  * Cloud-scale security and protection
-  * Features like Conditional Access and Multi-Factor Authentication that are easy to enable
-* No components in the perimeter network such as VPN and traditional reverse proxy solutions
-* No inbound connections required
-* Single sign-on (SSO) across devices, resources, and apps in the cloud and on-premises
-* Empowers end users to be productive anytime and anywhere
+* Az Azure AD kiterjesztése helyszíni erőforrásokra
+  * Felhőbeli biztonság és védelem
+  * Olyan funkciók, mint a feltételes hozzáférés és a könnyen engedélyezhető Multi-Factor Authentication
+* A peremhálózaton nem található összetevők, például a VPN és a hagyományos fordított proxy megoldások
+* Nincs szükség bejövő kapcsolatra
+* Egyszeri bejelentkezés (SSO) a felhőben és a helyszínen lévő eszközök, erőforrások és alkalmazások között
+* Lehetővé teszi a végfelhasználók számára, hogy bárhol és bármikor termelékenyek legyenek
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Discover Shadow IT with Microsoft Cloud App Security
+### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Árnyék felderítése Microsoft Cloud App Security
 
-In modern enterprises, IT departments are often not aware of all the cloud applications that are used by the users to do their work. When IT admins are asked how many cloud apps they think their employees use, on average they say 30 or 40. In reality, the average is over 1,000 separate apps being used by employees in your organization. 80% of employees use non-sanctioned apps that no one has reviewed and may not be compliant with your security and compliance policies.
+A modern vállalatoknál az IT-részlegek gyakran nem ismerik az összes olyan felhőalapú alkalmazást, amelyet a felhasználók a munkájuk során használnak. Ha a rendszergazdák azt kérik, hogy hány Felhőbeli alkalmazás szerint használják az alkalmazottaikat, átlagosan 30 vagy 40. A valóságban az átlag több mint 1 000 különálló, a szervezet alkalmazottai által használt alkalmazás. az alkalmazottak 80%-a nem engedélyezett alkalmazásokat használ, amelyeket senki sem tekintett át, és nem felel meg a biztonsági és megfelelőségi szabályzatoknak.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) can help you identify useful apps that are popular with users that IT may sanction and add to the Enterprise applications gallery so that users benefit from capabilities such as SSO and Conditional Access.
+[Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) segítségével azonosíthatja azokat a hasznos alkalmazásokat, amelyek népszerűek a felhasználók számára, és hozzáadhatja őket a vállalati alkalmazások katalógusához, így a felhasználók az egyszeri bejelentkezést és a feltételes hozzáférést is igénybe vehetik.
 
-<em>"**Cloud App Security** helps us ensure that our people are properly using our cloud and SaaS applications, in ways that support the foundational security policies that help protect Accenture."</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelmére szolgáló alapvető biztonsági házirendeket."</em> --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-In addition to detecting shadow IT, MCAS can also determine the risk level of apps, prevent unauthorized access to corporate data, possible data leakage, and other security risks inherent in the applications.
+Az árnyék észlelése mellett a MCAS is meghatározhatja az alkalmazások kockázati szintjét, megakadályozhatja a vállalati adatokhoz való jogosulatlan hozzáférést, az esetleges adatszivárgást és az alkalmazásokban rejlő egyéb biztonsági kockázatokat.
 
-## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Step 2 - Establish one identity for every user automatically
+## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>2\. lépés – minden felhasználóhoz automatikusan hozzon létre egy identitást
 
-Bringing on-premises and cloud-based directories together in an Azure AD hybrid identity solution will allow you to reuse your existing on-premises Active Directory investment by provisioning your existing identities in the cloud. The solution synchronizes on-premises identities with Azure AD, while IT keeps the on-premises Active Directory running with any existing governance solutions as the primary source of truth for identities. Microsoft's Azure AD hybrid identity solution spans on-premises and cloud-based capabilities, creating a common user identity for authentication and authorization to all resources regardless of their location.
+A helyszíni és a felhőalapú könyvtárak egy Azure AD Hybrid Identity megoldásban való együttes használata lehetővé teszi a meglévő helyszíni Active Directory-befektetések újbóli felhasználását a felhőben meglévő identitások kiépítésével. A megoldás szinkronizálja a helyszíni identitásokat az Azure AD-vel, miközben az identitások elsődleges forrásaként az összes meglévő irányítási megoldással fut a helyszíni Active Directory. A Microsoft Azure AD Hybrid Identity megoldás a helyszíni és a felhőalapú funkciókat is felöleli, és a hitelesítéshez és az összes erőforrás engedélyezéséhez közös felhasználói identitást hoz létre, függetlenül azok helyétől.
 
-Integrating your on-premises directories with Azure AD makes your users more productive and prevents users from using multiple accounts across apps and services by providing a common identity for accessing both cloud and on-premises resources. Using multiple accounts is a pain point for end users and IT alike. From an end-user perspective, having multiple accounts means having to remember multiple passwords. To avoid this, many users reuse the same password for each account, which is bad from a security perspective. From an IT perspective, reuse often leads to more password resets and helpdesk costs along with the end-user complaints.
+A helyszíni címtárak Azure AD-vel való integrálása hatékonyabbá teszi a felhasználókat, és megakadályozza, hogy a felhasználók a Felhőbeli és a helyszíni erőforrások eléréséhez közös identitással használják az alkalmazások és szolgáltatások több fiókját. Több fiók használata a végfelhasználók és a felhasználók számára egyaránt hasznos. A végfelhasználói szemszögből több fiók is azt jelenti, hogy több jelszót kell megjegyeznie. Ennek elkerüléséhez sok felhasználó ugyanazt a jelszót használja minden fiókhoz, ami rossz a biztonsági szempontból. Egy informatikai szempontból az újrafelhasználás gyakran több jelszó-visszaállítási és ügyfélszolgálati költséget eredményez, valamint a végfelhasználói panaszokat.
 
-Azure AD Connect is the tool that is used for to sync your on-premises identities to Azure AD, which can then be used to access cloud applications. Once the identities are in Azure AD, they can provision to SaaS applications like Salesforce or Concur.
+A Azure AD Connect a helyszíni identitások Azure AD-be való szinkronizálásához használt eszköz, amely a felhőalapú alkalmazások elérésére használható. Ha az identitások az Azure AD-ben vannak, akkor olyan SaaS-alkalmazásokhoz, mint a Salesforce vagy a egyetértenek.
 
-In this section, we list recommendations for providing high availability, modern authentication for the cloud, and reducing your on-premises footprint.
+Ebben a szakaszban a magas rendelkezésre állást, a modern hitelesítést a felhő számára, valamint a helyszíni lábnyomok csökkentését biztosító javaslatokat sorolja fel.
 
 > [!NOTE]
-> If you want to learn more about Azure AD Connect, see [What is Azure AD Connect Sync?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
+> Ha többet szeretne megtudni a Azure AD Connectről, tekintse meg a [Mi az a Azure ad Connect Sync?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) című témakört.
 
-### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Set up a staging server for Azure AD Connect and keep it up-to-date
+### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Hozzon létre egy átmeneti kiszolgálót a Azure AD Connectéhez, és tartsa naprakészen
 
-Azure AD Connect plays a key role in the provisioning process. If the Sync Server goes offline for any reason, changes to on-premises won't be updated in the cloud and cause access issues to users. It's important to define a failover strategy that allows administrators to quickly resume synchronization after the sync server goes offline.
+Azure AD Connect kulcsfontosságú szerepet játszik a létesítési folyamatban. Ha a szinkronizálási kiszolgáló valamilyen okból offline állapotba kerül, a helyszíni módosítások nem frissülnek a felhőben, és a felhasználók számára hozzáférési problémákhoz vezethetnek. Fontos olyan feladatátvételi stratégiát definiálni, amely lehetővé teszi a rendszergazdák számára a szinkronizálás gyors folytatását, miután a szinkronizálási kiszolgáló offline állapotba kerül.
 
-To provide high availability in the event your primary Azure AD Connect server goes offline, it's recommended that you deploy a separate [staging server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) for Azure AD Connect. Deploying a  server allows the administrator to "promote" the staging server to production by a simple configuration switch. Having a standby server configured in staging mode also allows you to test and deploy new configuration changes and introduce a new server if decommissioning the old one.
+Ha magas rendelkezésre állást szeretne biztosítani abban az esetben, ha az elsődleges Azure AD Connect-kiszolgáló offline állapotba kerül, ajánlott külön [átmeneti kiszolgálót](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) telepíteni a Azure ad Connecthoz. A kiszolgálók üzembe helyezése lehetővé teszi, hogy a rendszergazda egy egyszerű konfigurációs kapcsoló használatával "népszerűsítse" az átmeneti kiszolgálót éles környezetben. Az átmeneti üzemmódban konfigurált készenléti kiszolgáló lehetővé teszi az új konfigurációs módosítások tesztelését és telepítését, valamint egy új kiszolgáló bevezetését, ha a régit leszerelik.
 
 > [!TIP]
-> Azure AD Connect is updated on a regular basis. Therefore, it's strongly recommended that you keep the staging server current in order to take advantage of the performance improvements, bug fixes, and new capabilities that each new version provides.
+> Azure AD Connect rendszeresen frissül. Ezért erősen ajánlott megtartani az előkészítési kiszolgálót, hogy kihasználhassa az egyes új verziók teljesítménybeli javításait, hibajavításait és új képességeit.
 
-### <a name="enable-cloud-authentication"></a>Enable cloud authentication
+### <a name="enable-cloud-authentication"></a>Felhőalapú hitelesítés engedélyezése
 
-Organizations with on-premises Active Directory should extend their directory to Azure AD using Azure AD Connect and configure the appropriate authentication method. [Choosing the correct authentication method](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) for your organization is the first step in your journey of moving apps to the cloud. It's a critical component since it controls access to all cloud data and resources.
+A helyszíni Active Directoryekkel rendelkező szervezeteknek Azure AD Connect használatával kell kiterjeszteniük a címtárat az Azure AD-be, és be kell állítania a megfelelő hitelesítési módszert. A [megfelelő hitelesítési módszer kiválasztása](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) a szervezet számára az alkalmazások felhőbe való áthelyezésének első lépése. Ez egy kritikus összetevő, mivel az az összes Felhőbeli adattal és erőforrással való hozzáférést szabályozza.
 
-The simplest and recommended method for enabling cloud authentication for on-premises directory objects in Azure AD is to enable [Password Hash Synchronization](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS). Alternatively, some organizations may consider enabling [Pass-through Authentication](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA).
+Az Azure AD-ben a Felhőbeli hitelesítés engedélyezésének legegyszerűbb és ajánlott módja a [jelszó-kivonat szinkronizálásának](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) engedélyezése. Más szervezetek is dönthetnek az [átmenő hitelesítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA ESP) engedélyezésében.
 
-Whether you choose PHS or PTA, don't forget to enable [Seamless Single Sign-on](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) to allow users to access cloud apps without constantly entering their username and password in the app when using Windows 7 and 8 devices on your corporate network. Without single sign-on, users must remember application-specific passwords and sign into each application. Likewise, IT staff needs to create and update user accounts for each application such as Office 365, Box, and Salesforce. Users need to remember their passwords, plus spend the time to sign into each application. Providing a standardized single sign-on mechanism to the entire enterprise is crucial for best user experience, reduction of risk, ability to report, and governance.
+Függetlenül attól, hogy a PHS vagy a PTA elemet választja, ne felejtsen el [zökkenőmentes egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) engedélyezni, hogy a felhasználók hozzáférhessenek a felhőalapú alkalmazásokhoz anélkül, hogy a Windows 7 és 8 rendszerű eszközöket használják a vállalati hálózaton. Egyszeri bejelentkezés nélkül a felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük az egyes alkalmazásokra. Hasonlóképpen, az informatikai részlegnek létre kell hoznia és frissítenie kell a felhasználói fiókokat az egyes alkalmazásokhoz, például az Office 365, a Box és a Salesforce. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk az egyes alkalmazásokra való bejelentkezésre. Egy szabványosított egyszeri bejelentkezési mechanizmus biztosítása a teljes vállalat számára létfontosságú a legjobb felhasználói élmény, a kockázat csökkentése, a jelentés és a szabályozás terén.
 
-For organizations already using AD FS or another on-premises authentication provider, moving to Azure AD as your identity provider can reduce complexity and improve availability. Unless you have specific use cases for using federation, we recommend migrating from federated authentication to either PHS and Seamless SSO or PTA and Seamless SSO to enjoy the benefits of a reduced on-premises footprint and the flexibility the cloud offers with improved user experiences. For more information, see [Migrate from federation to password hash synchronization for Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
+A AD FS vagy egy másik helyszíni hitelesítési szolgáltatót használó szervezetek esetében az Azure AD-re való áttéréssel az identitás-szolgáltató csökkentheti a bonyolultságot, és javíthatja a rendelkezésre állást. Ha nem rendelkezik konkrét használati esetekkel az összevonás használatához, javasoljuk, hogy az összevont hitelesítésből telepítse át a PHS és a zökkenőmentes SSO-t, valamint a PTA SSO-t és a zökkenőmentes egyszeri bejelentkezést, hogy élvezhesse a kisebb helyszíni lábnyom előnyeit, és a felhő által kínált rugalmasságot továbbfejlesztett felhasználói élmény. További információ: [áttelepítés az összevonás és jelszó kivonatának szinkronizálása a Azure Active Directoryhoz](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
 
-### <a name="enable-automatic-deprovisioning-of-accounts"></a>Enable automatic deprovisioning of accounts
+### <a name="enable-automatic-deprovisioning-of-accounts"></a>Fiókok automatikus megszüntetésének engedélyezése
 
-Enabling automated provisioning and deprovisioning to your applications is the best strategy for governing the lifecycle of identities across multiple systems. Azure AD supports [automated, policy-based provisioning and deprovisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) of user accounts to a variety of popular SaaS applications such as ServiceNow and Salesforce, and others that implement the [SCIM 2.0 protocol](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups). Unlike traditional provisioning solutions, which require custom code or manual uploading of CSV files, the provisioning service is hosted in the cloud, and features pre-integrated connectors that can be set up and managed using the Azure portal. A key benefit of automatic deprovisioning is that it helps secure your organization by instantly removing users' identities from key SaaS apps when they leave the organization.
+Az automatizált kiépítés és az alkalmazások megszüntetésének engedélyezése a legjobb stratégia az identitások életciklusának szabályozására több rendszeren keresztül. Az Azure AD a különböző népszerű SaaS-alkalmazásokhoz, például a ServiceNow és a Salesforce, valamint a [SCIM 2,0 protokollt](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)használó számos népszerű SaaS-alkalmazáshoz is támogatja az [automatizált, házirend-alapú](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) kiépítést és a felhasználói fiókok üzembe helyezését. A hagyományos kiépítési megoldásoktól eltérően, amelyekhez egyéni kód vagy manuális feltöltés szükséges a CSV-fájlokhoz, a kiépítési szolgáltatás a felhőben üzemel, és az előre integrált összekötőket a Azure Portal használatával lehet beállítani és felügyelni. Az automatikus kiépítés egyik legfőbb előnye, hogy a szervezet védelme érdekében azonnal eltávolítja a felhasználók identitását a Key SaaS-alkalmazásokból, amikor elhagyja a vállalatot.
 
-To learn more about automatic user account provisioning and how it works, see [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+További információ a felhasználói fiókok automatikus kiépítéséről és működéséről: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
-## <a name="step-3---empower-your-users-securely"></a>Step 3 - Empower your users securely
+## <a name="step-3---empower-your-users-securely"></a>3\. lépés – a felhasználók biztonságos kibővítése
 
-In today's digital workplace, it's important to balance security with productivity. However, end users often push back on security measures that slow their productivity and access to cloud apps. To help address this, Azure AD provides self-service capabilities that enable users to remain productive while minimizing administrative overhead.
+A mai digitális munkahelyen fontos egyensúlyba venni a biztonságot a hatékonysággal. A végfelhasználók azonban gyakran visszaküldik azokat a biztonsági intézkedéseket, amelyek lelassítják a hatékonyságot, és hozzáférnek a felhőalapú alkalmazásokhoz. Ennek a megoldásnak a megkönnyítése érdekében az Azure AD olyan önkiszolgáló képességeket biztosít, amelyek lehetővé teszik a felhasználók számára a hatékony munkát, miközben minimalizálják az adminisztratív terhelést.
 
-This section lists recommendations for removing friction from your organization by empowering your users while remaining vigilant.
+Ez a szakasz azokat a javaslatokat sorolja fel, amelyek a szervezettől érkező súrlódások eltávolítására szolgálnak.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Enable Self-Service Password Reset for all users
+### <a name="enable-self-service-password-reset-for-all-users"></a>Önkiszolgáló jelszó-visszaállítás engedélyezése minden felhasználó számára
 
-Azure's [self-service password reset](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) offers a simple means for IT administrators to allow users to reset and unlock their passwords or accounts without administrator intervention. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
+Az Azure önkiszolgáló [jelszavának alaphelyzetbe állítása](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) egyszerű módszert kínál a rendszergazdáknak arra, hogy rendszergazdai beavatkozás nélkül visszaállítsák és feloldják jelszavukat vagy fiókjaikat. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
-By default, Azure AD unlocks accounts when it performs a password reset. However, when you enable Azure AD Connect [integration on-premises](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration), you also have the option to separate those two operations, which enable users to unlock their account without having to reset the password.
+Alapértelmezés szerint az Azure AD feloldja a fiókokat, amikor a jelszó-visszaállítást végzi. Ha azonban engedélyezi Azure AD Connect [integrációt a helyszínen](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration), lehetősége van a két művelet elkülönítésére is, amelyek lehetővé teszik a felhasználók számára, hogy a jelszó alaphelyzetbe állítása nélkül feloldják a fiókját.
 
-### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Ensure all users are registered for MFA and SSPR
+### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Győződjön meg arról, hogy minden felhasználó regisztrálva van MFA-és SSPR
 
-Azure provides reports that can be used by you and your organization to ensure users are registered for MFA and SSPR. Users who haven't registered may need to be educated on the process.
+Az Azure olyan jelentéseket biztosít, amelyeket Ön és a szervezete is használhat, hogy a felhasználók az MFA és a SSPR számára legyenek regisztrálva. Előfordulhat, hogy a regisztráció során még nem regisztrált felhasználókat be kell tanítani a folyamatba.
 
-The MFA [sign-ins report](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) includes information about MFA usage and gives you insights into how MFA is working in your organization. Having access to sign-in activity (and audits and risk detections) for Azure AD is crucial for troubleshooting, usage analytics, and forensics investigations.
+Az MFA [-bejelentkezésekről szóló jelentés](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) az MFA-használattal kapcsolatos információkat tartalmaz, és betekintést nyújt arról, hogyan működik az MFA a szervezetben. Az Azure AD-hez való bejelentkezési tevékenységhez (és az auditálásokhoz és a kockázati észlelésekhez) való hozzáférés elengedhetetlen a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
 
-Likewise, the [Self-service Password Management report](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) can be used to determine who has (or hasn't) registered for SSPR.
+Hasonlóképpen, az [önkiszolgáló jelszó-kezelési jelentés](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) használatával meghatározhatja, hogy ki (vagy nem) regisztrált a SSPR.
 
-### <a name="self-service-app-management"></a>Self-service app management
+### <a name="self-service-app-management"></a>Önkiszolgáló alkalmazások kezelése
 
-Before your users can self-discover applications from their access panel, you need to enable [self-service application access](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) to any applications that you wish to allow users to self-discover and request access to. Self-service application access is a great way to allow users to self-discover applications and optionally allow the business group to approve access to those applications. You can allow the business group to manage the credentials assigned to those users for [Password Single-Sign On Applications](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) right from their access panels.
+Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, és opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy az adott felhasználókhoz rendelt hitelesítő adatokat a hozzáférési panelektől közvetlenül a [jelszó egyszeri bejelentkezésre szolgáló alkalmazásokban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) kezelhesse.
 
 ### <a name="self-service-group-management"></a>Önkiszolgáló csoportkezelés
 
-Assigning users to applications is best mapped when using groups, because they allow great flexibility and ability to manage at scale:
+A felhasználók az alkalmazásokhoz való hozzárendelése a csoportok használatakor a legmegfelelőbb, mivel nagy rugalmasságot és méretezési képességet tesznek lehetővé:
 
-* Attribute-based using dynamic group membership
-* Delegation to app owners
+* Attribútum – a dinamikus csoporttagság alapján
+* Delegálás az alkalmazás tulajdonosainak
 
-Azure AD provides the ability to manage access to resources using security groups and Office 365 groups. These groups can be managed by a group owner who can approve or deny membership requests and delegate control of group membership. Known as [self-service group management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), this feature saves time by allowing group owners who aren't assigned an administrative role to create and manage groups without having to rely on administrators to handle their requests.
+Az Azure AD lehetővé teszi az erőforrásokhoz való hozzáférés kezelését a biztonsági csoportok és az Office 365-csoportok használatával. Ezeket a csoportokat egy csoport tulajdonosa felügyelheti, aki jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Ez a szolgáltatás önkiszolgáló [csoportként](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)ismert, így időt takaríthat meg azzal, hogy lehetővé teszi, hogy a csoport tulajdonosai nem rendelkeznek rendszergazdai szerepkörrel a csoportok létrehozásához és kezeléséhez anélkül, hogy a rendszergazdáknak kellene hagyatkozni a kéréseik kezeléséhez.
 
-## <a name="step-4---operationalize-your-insights"></a>Step 4 - Operationalize your insights
+## <a name="step-4---operationalize-your-insights"></a>4\. lépés – az működővé tenni
 
-Auditing and logging of security-related events and related alerts are essential components of an efficient strategy to ensure that users remain productive and your organization is secure. Security logs and reports can help answer question such as:
+A biztonsággal kapcsolatos események és a kapcsolódó riasztások naplózása és naplózása hatékony stratégia alapvető összetevői, amelyekkel biztosítható, hogy a felhasználók továbbra is produktívak maradjanak, és a szervezet biztonságban legyenek. A biztonsági naplók és jelentések segítséget nyújthatnak a kérdés megválaszolásához, például:
 
-* Are you using what you're paying for?
-* Is there anything suspicious or malicious happening in my tenant?
-* Who was impacted during a security incident?
+* Ön a fizetését használja?
+* Van valami gyanús vagy rosszindulatú esemény a bérlőn?
+* Ki volt hatással a biztonsági incidensek során?
 
-Security logs and reports provide you with an electronic record of suspicious activities and help you detect patterns that may indicate attempted or successful external penetration of the network, and internal attacks. You can use auditing to monitor user activity, document regulatory compliance, do forensic analysis, and more. Alerts provide notifications of security events.
+A biztonsági naplók és jelentések lehetővé teszik a gyanús tevékenységek elektronikus feljegyzését, valamint a hálózat külső behatolását, illetve a belső támadásokat jelezhet minták észlelését. A naplózás használatával figyelheti a felhasználói tevékenységeket, a dokumentumok megfelelőségét, a kriminalisztikai elemzést és egyebeket. A riasztások a biztonsági események értesítéseit biztosítják.
 
-### <a name="assign-least-privileged-admin-roles-for-operations"></a>Assign least privileged admin roles for operations
+### <a name="assign-least-privileged-admin-roles-for-operations"></a>A minimális jogosultsági szintű rendszergazdai szerepkörök kiosztása a műveletekhez
 
-As you think about your approach to operations, there are a couple levels of administration to consider. The first level places the burden of administration on your global administrator(s). Always using the global administrator role, might be appropriate for smaller companies. But for larger organizations with help desk personnel and administrators responsible for specific tasks, assigning the role of global administrator can be a security risk since it provides those individuals with the ability to manage tasks that are above and beyond what they should be capable of doing.
+Ahogy a műveletek megközelítésére gondol, a felügyeletnek néhány szintje van. Az első szint az adminisztrációs terhet helyezi a globális rendszergazda (ok) ra. Mindig a globális rendszergazdai szerepkört használja, a kisebb vállalatok számára is megfelelő lehet. A nagyobb szervezetek számára azonban, ha az ügyfélszolgálat munkatársai és az egyes feladatokért felelős rendszergazdák, a globális rendszergazda szerepkör kiosztása biztonsági kockázatot jelenthet, mivel ezek a személyek a fenti és azon kívüli feladatok kezelésére képesek. Mire van szükségük.
 
-In this case, you should consider the next level of administration. Using Azure AD, you can designate end users as "limited administrators" who can manage tasks in less-privileged roles. For example, you might assign your help desk personnel the [security reader](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) role to provide them with the ability to manage security-related features with read-only access. Or perhaps it makes sense to assign the [authentication administrator](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) role to individuals to give them the ability to reset non-password credentials or read and configure Azure Service Health.
+Ebben az esetben érdemes megfontolni a felügyelet következő szintjét. Az Azure AD használatával a végfelhasználók "korlátozott rendszergazdaként" jelölhetők ki, akik kezelhetik a kevésbé Kiemelt szerepkörök feladatait. Például hozzárendelhet egy ügyfélszolgálati munkatársat a [biztonsági olvasó](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) szerepkörhöz, amely lehetővé teszi számukra, hogy a biztonsággal kapcsolatos funkciókat csak olvasási hozzáféréssel lehessen kezelni. Vagy lehet, hogy a [hitelesítés-rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) szerepkört az egyéni felhasználókhoz rendeli hozzá, így lehetővé teszi a nem jelszóval rendelkező hitelesítő adatok alaphelyzetbe állítását, illetve a Azure Service Health olvasását és konfigurálását.
 
-To learn more, see [Administrator role permissions in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
+További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
-### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Monitor hybrid components (Azure AD Connect sync, AD FS) using Azure AD Connect Health
+### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Hibrid összetevők (Azure AD Connect Sync, AD FS) monitorozása Azure AD Connect Health használatával
 
-Azure AD Connect and AD FS are critical components that can potentially break lifecycle management and authentication and ultimately lead to outages. Therefore, you should deploy Azure AD Connect Health for monitoring and reporting of these components.
+A Azure AD Connect és AD FS olyan kritikus fontosságú összetevők, amelyek képesek az életciklus-kezelés és a hitelesítés megszakítására, és végső soron az kimaradások elvégzéséhez vezethetnek. Ezért az összetevők figyeléséhez és jelentéskészítéséhez Azure AD Connect Health kell telepítenie.
 
-To learn more, go read [Monitor AD FS using Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs).
+További információért olvassa el a [figyelő AD FS Azure ad Connect Health használatával](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)című témakört.
 
-### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Use Azure Monitor to collect data logs for analytics
+### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Adatnaplók összegyűjtésének Azure Monitor használata az elemzési adatokhoz
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) is a unified monitoring portal for all Azure AD logs, which provides deep insights, advanced analytics, and smart machine learning. With Azure Monitor, you can consume metrics and logs within the portal and via APIs to gain more visibility into the state and performance of your resources. It enables a single pane of glass experience within the portal while enabling a wide range of product integrations via APIs and data export options that support traditional third-party SIEM systems. Azure Monitor also gives you the ability to configure alert rules to get notified or to take automated actions on issues impacting your resources.
+A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) egy egységes megfigyelési portál az összes Azure ad-naplóhoz, amely részletes elemzéseket, fejlett elemzési és intelligens gépi tanulást biztosít. A Azure Monitor segítségével mérőszámokat és naplókat használhat a portálon belül és API-kon keresztül, így jobban láthatóvá válik az erőforrások állapota és teljesítménye. Lehetővé teszi, hogy a portálon belül egyetlen üvegtábla-felülettel támogassa a termékek integrálásának széles körét API-k és az adatexportálási lehetőségek révén, amelyek támogatják a hagyományos, harmadik féltől származó SIEM rendszereket. A Azure Monitor a riasztási szabályok konfigurálását is lehetővé teszi, hogy értesítést kapjon, vagy automatizált műveleteket készítsen az erőforrásait érintő problémákkal kapcsolatban.
 
 ![Azure Monitor](./media/four-steps/image1.png)
 
-### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Create custom dashboards for your leadership and your day to day
+### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Egyéni irányítópultokat hozhat létre a vezetőnek és a napról napra
 
-Organizations that don't have a SIEM solution can download the [Power BI Content Pack](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) for Azure AD. The Power BI content pack contains pre-built reports to help you understand how your users adopt and use Azure AD features, which allows you to gain insights into all the activities within your directory. You can also create your own [custom dashboard](https://docs.microsoft.com/power-bi/service-dashboards) and share with your leadership team to report on day-to-day activities. Dashboards are a great way to monitor your business and see all of your most important metrics at a glance. The visualizations on a dashboard may come from one underlying dataset or many, and from one underlying report or many. A dashboard combines on-premises and cloud data, providing a consolidated view regardless of where the data lives.
+Azok a szervezetek, amelyek nem rendelkeznek SIEM-megoldással, le tudják tölteni a [Power bi Content Pack](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) for Azure ad-t. A Power BI Content Pack olyan előre elkészített jelentéseket tartalmaz, amelyek segítségével megismerheti, hogy a felhasználók hogyan fogadják el és használják az Azure AD szolgáltatásait, ami lehetővé teszi, hogy betekintést nyerjen a címtárban lévő összes tevékenységbe. Létrehozhatja saját [Egyéni irányítópultját](https://docs.microsoft.com/power-bi/service-dashboards) is, és megoszthatja a vezető csapatával, hogy jelentést készítsen a napi tevékenységekről. Az irányítópultok nagyszerű lehetőséget kínál az üzleti monitorozásra és az összes legfontosabb mérőszám áttekintésére. Az irányítópulton lévő vizualizációk az egyik mögöttes adatkészletből vagy többből, illetve egy mögöttes jelentésből vagy többből származhatnak. Az irányítópult a helyszíni és a Felhőbeli adatmennyiséget ötvözi, és összevont nézetet biztosít, függetlenül attól, hogy a rendszer hol lakik.
 
-![Power BI custom dashboard](./media/four-steps/image2.png)
+![Egyéni irányítópult Power BI](./media/four-steps/image2.png)
 
-### <a name="understand-your-support-call-drivers"></a>Understand your support call drivers
+### <a name="understand-your-support-call-drivers"></a>A támogatási hívások illesztőprogramjainak ismertetése
 
-When you implement a hybrid identity solution as outlined in this article, you should ultimately notice a reduction in your support calls. Common issues such as forgotten passwords and account lockouts are mitigated by implementing Azure's self-service password reset, while enabling self-service application access allows users to self-discover and request access to applications without relying on your IT staff.
+Ha a jelen cikkben ismertetett módon implementál egy hibrid identitási megoldást, végső soron a támogatási hívások csökkenését kell megfigyelni. Az Azure önkiszolgáló jelszavának alaphelyzetbe állításával, például az elfelejtett jelszavakkal és a fiókzárolási szolgáltatással kapcsolatos gyakori problémák enyhítése lehetővé teszi, hogy az önkiszolgáló alkalmazás-hozzáférés engedélyezése lehetővé tegye a felhasználók számára a saját felderítését és az alkalmazások hozzáférésének kérését anélkül, hogy az informatikai munkatársain.
 
-If you don't observe a reduction in support calls, we recommend that you analyze your support call drivers in an attempt to confirm if SSPR or self-service application access has been configured correctly or if there are any other new issues that can be systematically addressed.
+Ha nem veszi figyelembe a támogatási hívások csökkentését, javasoljuk, hogy elemezze a támogatási hívás illesztőprogramjait, hogy megerősítse, hogy a SSPR vagy az önkiszolgáló alkalmazás-hozzáférés megfelelően van-e konfigurálva, illetve hogy van-e olyan új probléma, amely rendszeresen alkalmazható címzett.
 
-*"In our digital transformation journey, we needed a reliable identity and access management provider to facilitate seamless yet secure integration between us, partners and cloud service providers, for an effective ecosystem; Azure AD was the best option offering us the needed capabilities and visibility that enabled us to detect and respond to risks."* --- [Yazan Almasri, Global Information Security Director, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"A digitális átalakítási úton egy megbízható identitás-és hozzáférés-kezelési szolgáltatóra volt szükségünk, amely lehetővé teszi az USA, a partnerek és a felhőalapú szolgáltatók zökkenőmentes, mégis biztonságos integrációját a hatékony ökoszisztéma érdekében; Az Azure AD volt a legjobb megoldás, amely a kockázatok észlelésére és reagálására szolgáló szükséges képességeket és láthatóságot kínálja számunkra. "* --- [almasri, globális Információbiztonsági igazgató, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
-### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Monitor your usage of apps to drive insights
+### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Az alkalmazások használatának figyelése az adatok átvezetéséhez
 
-In addition to discovering Shadow IT, monitoring app usage across your organization using [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) can help your organization as you move to take full advantage of the promise of cloud applications. It can help keep you in control of your assets through improved visibility into activity and increase the protection of critical data across cloud applications. Monitoring app usage in your organization using MCAS can help you answer the following questions:
+Az árnyék felfedése mellett a [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) segítségével figyelheti az alkalmazások használatát a szervezeten belül, így a munkahelye a Felhőbeli alkalmazások ígérete teljes mértékben kihasználható. Segít az eszközök irányításában a tevékenységek jobb láthatóságával és a kritikus adatok Felhőbeli alkalmazásokban való védelmének növelésével. A MCAS használatával a szervezeten belüli alkalmazások használatának figyelése a következő kérdések megválaszolásához nyújt segítséget:
 
-* What unsanctioned apps are employees using to store data in?
-* Where and when is sensitive data being stored in the cloud?
-* Who is accessing sensitive data in the cloud?
+* Milyen nem engedélyezett alkalmazásokat használnak az alkalmazottak az adattároláshoz?
+* Hol és mikor történik a felhőben tárolt bizalmas adatok tárolása?
+* Ki fér hozzá a bizalmas adatokhoz a felhőben?
 
-*"With Cloud App Security, we can quickly spot anomalies and take action."* --- [Eric LePenske, Senior Manager, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"A Cloud App Security gyorsan észlelheti a rendellenességeket, és műveleteket végezhet."* --- [Eric LePenske, vezető felettes, információbiztonság, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Összefoglalás
 
-There are many aspects to implementing a hybrid Identity solution, but this four-step checklist will help you quickly accomplish an identity infrastructure that will enable users to be more productive and secure.
+A hibrid identitási megoldások megvalósításának számos aspektusa van, de ez a négy lépésből álló ellenőrzőlista segít egy olyan identitás-infrastruktúra gyors megvalósításában, amely lehetővé teszi a felhasználók számára, hogy hatékonyabbá és biztonságosabbá tegyék a felhasználókat.
 
-* Connect to apps easily
-* Establish one identity for every user automatically
-* Empower your users securely
-* Operationalize your insights
+* Könnyedén csatlakozhat az alkalmazásokhoz
+* Minden felhasználóhoz automatikusan hozzon létre egy identitást
+* Biztonságos felhasználók meghatalmazása
+* Működővé tenni a bepillantást
 
-We hope this document is a useful roadmap to establishing a strong identity foundation for your organization.
+Reméljük, hogy ez a dokumentum hasznos ütemtervet kínál a szervezete számára egy erős identitási alap létrehozásához.
 
-## <a name="identity-checklist"></a>Identity checklist
+## <a name="identity-checklist"></a>Azonosító ellenőrzőlista
 
-We recommend that you print the following checklist for reference as you begin your journey to a more solid identity foundation in your organization.
+Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szilárdabb identitási alapjaira való utazás során.
 
-### <a name="today"></a>Today
+### <a name="today"></a>Ma
 
-|Bejelentkezett?|Tétel|
+|Bejelentkezett?|Elem|
 |:-|:-|
-||Pilot Self- Service Password Reset (SSPR) for a group|
-||Monitor hybrid components using Azure AD Connect Health|
-||Assign least privileged admin roles for operation|
-||Discover Shadow IT with Microsoft Cloud App Security|
-||Use Azure Monitor to collect data logs for analysis|
+||A kísérleti önkiszolgáló jelszó-visszaállítás (SSPR) egy csoport számára|
+||Hibrid összetevők monitorozása Azure AD Connect Health használatával|
+||A minimális jogosultsági szintű rendszergazdai szerepkörök kiosztása a művelethez|
+||Árnyék felderítése Microsoft Cloud App Security|
+||Adatnaplók összegyűjtésének Azure Monitor használata az elemzéshez|
 
-### <a name="next-two-weeks"></a>Next two weeks
+### <a name="next-two-weeks"></a>Következő két hét
 
-|Bejelentkezett?|Tétel|
+|Bejelentkezett?|Elem|
 |:-|:-|
-||Make an app available for your users|
-||Pilot Azure AD provisioning for a SaaS app of choice|
-||Setup a staging server for Azure AD Connect and keep it up-to-date|
-||Start migrating apps from ADFS to Azure AD|
-||Create custom dashboards for your leadership and your day to day|
+||Alkalmazás elérhetővé tétele a felhasználók számára|
+||Azure AD-kiépítés kipróbálása a választható SaaS-alkalmazásokhoz|
+||Átmeneti kiszolgáló beállítása a Azure AD Connecthoz és naprakészen tartása|
+||Alkalmazások áttelepítésének megkezdése az ADFS-ből az Azure AD-be|
+||Egyéni irányítópultokat hozhat létre a vezetőnek és a napról napra|
 
-### <a name="next-month"></a>Next month
+### <a name="next-month"></a>Következő hónap
 
-|Bejelentkezett?|Tétel|
+|Bejelentkezett?|Elem|
 |:-|:-|
-||Monitor your usage of apps to drive insights|
-||Pilot secure remote access to apps|
-||Ensure all users are registered for MFA and SSPR|
-||Enable cloud authentication|
+||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
+||Biztonságos távoli hozzáférés az alkalmazásokhoz|
+||Győződjön meg arról, hogy minden felhasználó regisztrálva van MFA-és SSPR|
+||Felhőalapú hitelesítés engedélyezése|
 
-### <a name="next-three-months"></a>Next three months
+### <a name="next-three-months"></a>Következő három hónap
 
-|Bejelentkezett?|Tétel|
+|Bejelentkezett?|Elem|
 |:-|:-|
-||Enable self-service app management|
-||Enable self-service group management|
-||Monitor your usage of apps to drive insights|
-||Understand your support call drivers|
+||Önkiszolgáló alkalmazások felügyeletének engedélyezése|
+||Önkiszolgáló csoportok felügyeletének engedélyezése|
+||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
+||A támogatási hívások illesztőprogramjainak ismertetése|
 
 ## <a name="next-steps"></a>Következő lépések
 
-Learn how you can increase your secure posture using the capabilities of Azure Active Directory and this five-step checklist - [Five steps to securing your identity infrastructure](https://aka.ms/securitysteps).
+Ismerje meg, hogyan növelheti a biztonságos testhelyzetet a Azure Active Directory képességeivel, és ez az öt lépésből álló ellenőrzőlista – [öt lépés az identitás-infrastruktúra biztonságossá](https://aka.ms/securitysteps)tételéhez.
 
-Learn how the identity features in Azure AD can help you accelerate your transition to cloud governed management by providing the solutions and capabilities that allow organizations to quickly adopt and move more of their identity management from traditional on-premises systems to Azure AD - [How Azure AD Delivers Cloud Governed Management for On-Premises Workloads](https://aka.ms/cloudgoverned).
+Ismerje meg, hogy az Azure AD Identity funkciói hogyan segíthetnek a felhőbe irányított felügyeletre való áttérésben azáltal, hogy olyan megoldásokat és képességeket biztosítanak, amelyek lehetővé teszik, hogy a szervezetek gyorsan fogadjanak el és helyezzen át több személyazonosság-kezelést a hagyományos helyi rendszerekről az Azure AD-be, hogy az [Azure ad hogyan biztosít felhőalapú felügyeletet](https://aka.ms/cloudgoverned)a helyszíni számítási feladatokhoz.

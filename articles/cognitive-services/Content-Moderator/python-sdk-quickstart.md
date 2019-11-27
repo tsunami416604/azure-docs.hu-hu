@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744412"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539003"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rövid útmutató: Content Moderator a Pythonhoz készült ügyféloldali kódtár
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 A következő osztályok a Content Moderator Python SDK főbb funkcióit kezelik.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
@@ -101,11 +101,11 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="moderate-text"></a>Mérsékelt szöveg
 
-A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegtörzsének elemzésére és az eredmények a konzolra való kinyomtatására. Először hozzon létre egy **text_files/** mappát a projekt gyökérkönyvtárában, és adjon hozzá egy *content_moderator_text_moderation. txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
+A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegtörzsének elemzésére és az eredmények a konzolra való kinyomtatására. Először hozzon létre egy **text_files/** mappát a projekt gyökérkönyvtárában, és vegyen fel egy *content_moderator_text_moderation. txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 2065550111
 ```
 
 Adjon hozzá egy hivatkozást az új mappához.
@@ -132,7 +132,7 @@ Ha még nem definiált ilyet, adjon hozzá egy hivatkozást a mappához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Lista létrehozása
+### <a name="create-a-list"></a>Hozzon létre egy listát
 
 Adja hozzá a következő kódot a Python-szkripthez egy egyéni feltételek listájának létrehozásához, és mentse az azonosító értékét.
 
@@ -348,7 +348,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Python-függvénytárat moderálási feladatokra. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

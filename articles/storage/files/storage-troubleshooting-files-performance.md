@@ -1,6 +1,6 @@
 ---
-title: Azure Files performance troubleshooting guide
-description: Known performance issues with Azure file shares and associated workarounds.
+title: Azure Files teljesítmény hibaelhárítási útmutatója
+description: Az Azure-fájlmegosztás és a kapcsolódó megkerülő megoldásokkal kapcsolatos ismert teljesítményproblémák.
 author: gunjanj
 ms.service: storage
 ms.topic: conceptual
@@ -14,157 +14,157 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227820"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshoot Azure Files performance issues
+# <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
 
-This article lists some common problems related to Azure file shares. It provides potential causes and workarounds when these problems are encountered.
+Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problémákat sorolja fel. A probléma előfordulásakor lehetséges okokat és megkerülő megoldásokat biztosít.
 
-## <a name="high-latency-low-throughput-and-general-performance-issues"></a>High latency, low throughput, and general performance issues
+## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy késés, alacsony átviteli sebesség és általános teljesítménnyel kapcsolatos problémák
 
-### <a name="cause-1-share-experiencing-throttling"></a>Cause 1: Share experiencing throttling
+### <a name="cause-1-share-experiencing-throttling"></a>1\. ok: a megosztás észlelt sávszélesség szabályozása
 
-The default quota on a premium share is 100 GiB, which provides 100 baseline IOPS (with a potential to burst up to 300 for an hour). For more information about provisioning and its relationship to IOPS, see the [Provisioned shares](storage-files-planning.md#provisioned-shares) section of the planning guide.
+A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg a tervezési útmutató [kiépített megosztások](storage-files-planning.md#provisioned-shares) című szakaszát.
 
-To confirm if your share is being throttled, you can leverage Azure Metrics in the portal.
+Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kihasználhatja az Azure-mérőszámokat a portálon.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
-1. Select **All services** and then search for **Metrics**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keressen **mérőszámokat**.
 
 1. Válassza a **Metrika** lehetőséget.
 
-1. Select your storage account as the resource.
+1. Erőforrásként válassza ki a Storage-fiókját.
 
-1. Select **File** as the metric namespace.
+1. Válassza a **fájl** elemet metrikus névtérként.
 
-1. Select **Transactions** as the metric.
+1. Metrikaként válassza a **tranzakciók** lehetőséget.
 
-1. Add a filter for **ResponseType** and check to see if any requests have a response code of **SuccessWithThrottling** (for SMB) or **ClientThrottlingError** (for REST).
+1. Adjon hozzá egy szűrőt a **ResponseType** , és ellenőrizze, hogy vannak-e olyan kérelmek, amelyek **SuccessWithThrottling** (SMB) vagy **ClientThrottlingError** (REST esetén) rendelkeznek.
 
-![Metrics options for premium fileshares](media/storage-troubleshooting-premium-fileshares/metrics.png)
-
-### <a name="solution"></a>Megoldás
-
-- Increase share provisioned capacity by specifying a higher quota on your share.
-
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Cause 2: Metadata/namespace heavy workload
-
-If the majority of your requests are metadata centric, (such as createfile/openfile/closefile/queryinfo/querydirectory) then the latency will be worse when compared to read/write operations.
-
-To confirm if most of your requests are metadata centric, you can use the same steps as above. Except instead of adding a filter for **ResponseType**, add a filter for **API Name**.
-
-![Filter for API Name in your metrics](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
-
-### <a name="workaround"></a>Áthidaló megoldás
-
-- Check if the application can be modified to reduce the number of metadata operations.
-- Add a VHD on the file share and mount VHD over SMB from the client to perform files operations against the data. This approach works for single writer and multiple readers scenarios and allows metadata operations to be local, offering performance similar to a local direct-attached storage.
-
-### <a name="cause-3-single-threaded-application"></a>Cause 3: Single-threaded application
-
-If the application being used by the customer is single-threaded, this can result in significantly lower IOPS/throughput than the maximum possible based on your provisioned share size.
+![A prémium szintű állnak metrikáinak beállításai](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 ### <a name="solution"></a>Megoldás
 
-- Increase application parallelism by increasing the number of threads.
-- Switch to applications where parallelism is possible. For example, for copy operations, customers could use AzCopy or RoboCopy from Windows clients or the **parallel** command on Linux clients.
+- Növelje meg a megosztás kiosztott kapacitását egy magasabb kvóta megadásával a megosztáson.
 
-## <a name="very-high-latency-for-requests"></a>Very high latency for requests
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>2\. ok: nagy mennyiségű metaadat/névtér
 
-### <a name="cause"></a>Ok
+Ha a kérések többsége metaadat-központú (például CreateFile/OpenFile/closefile/QueryInfo/querydirectory), akkor a késés az írási/olvasási műveletekhez képest rosszabb lesz.
 
-The client VM could be located in a different region than the file share.
+Annak ellenőrzéséhez, hogy a kérések többsége metaadat-központú, használhatja a fenti lépéseket. A **ResponseType**szűrő hozzáadása helyett adjon hozzá egy szűrőt az **API-névhez**.
+
+![Az API-név szűrése a metrikákban](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+
+### <a name="workaround"></a>Áthidaló megoldás
+
+- Ellenőrizze, hogy az alkalmazás módosítható-e a metaadat-műveletek számának csökkentése érdekében.
+- Adjon hozzá egy virtuális merevlemezt a fájlmegosztás és a virtuális merevlemez csatlakoztatása SMB-kapcsolaton keresztül az ügyfélről, hogy a fájlok műveleteit végrehajtsa az adatokon. Ez a megközelítés egyetlen író és több olvasó esetében is működik, és lehetővé teszi a metaadatok helyi használatát, amely a helyi, közvetlenül csatlakoztatott tárolóhoz hasonló teljesítményt nyújt.
+
+### <a name="cause-3-single-threaded-application"></a>3\. ok: egyszálas alkalmazás
+
+Ha az ügyfél által használt alkalmazás egyetlen szálból áll, ez jelentős mértékben csökkentheti a IOPS/átviteli sebességet, mint a kiosztott megosztási méret alapján lehetséges maximális érték.
 
 ### <a name="solution"></a>Megoldás
 
-- Run the application from a VM that is located in the same region as the file share.
+- Növelje az alkalmazások párhuzamosságát a szálak számának növelésével.
+- Váltson olyan alkalmazásokra, ahol a párhuzamosság lehetséges. A másolási műveletek esetében például az ügyfelek a AzCopy vagy a RoboCopy szolgáltatást használhatják a Windows-ügyfelektől vagy a Linux-ügyfeleken **futó Parallel** parancs használatával.
 
-## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client unable to achieve maximum throughput supported by the network
-
-One potential cause of this is a lack fo SMB multi-channel support. Currently, Azure file shares only support single channel, so there is only one connection from the client VM to the server. This single connection is pegged to a single core on the client VM, so the maximum throughput achievable from a VM is bound by a single core.
-
-### <a name="workaround"></a>Áthidaló megoldás
-
-- Obtaining a VM with a bigger core may help improve throughput.
-- Running the client application from multiple VMs will increase throughput.
-
-- Use REST APIs where possible.
-
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Throughput on Linux clients is significantly lower when compared to Windows clients.
+## <a name="very-high-latency-for-requests"></a>Nagyon nagy késés a kérelmek esetében
 
 ### <a name="cause"></a>Ok
 
-This is a known issue with the implementation of SMB client on Linux.
+Az ügyfél virtuális gépe a fájlmegosztás eltérő régiójában található.
+
+### <a name="solution"></a>Megoldás
+
+- Futtassa az alkalmazást egy olyan virtuális gépről, amely ugyanabban a régióban található, mint a fájlmegosztás.
+
+## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Az ügyfél nem tudja elérni a hálózat által támogatott maximális átviteli sebességet
+
+Ennek egyik lehetséges oka a többcsatornás SMB-támogatás hiánya. Az Azure-fájlmegosztás jelenleg csak egyetlen csatornát támogat, így az ügyfél virtuális gépe csak egyetlen kapcsolatban áll a-kiszolgálóval. Ez az egyetlen kapcsolódás az ügyfél virtuális gépe egyetlen magját, így a virtuális gépről elérhető maximális átviteli sebességet egyetlen mag köti.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Spread the load across multiple VMs.
-- On the same VM, use multiple mount points with **nosharesock** option, and spread the load across these mount points.
-- On Linux, try mounting with **nostrictsync** option to avoid forcing SMB flush on every fsync call. For Azure Files, this option does not interfere with data consistentcy, but may result in stale file metadata on directory listing (**ls -l** command). Directly querying metadata of file (**stat** command) will return the most up-to date file metadata.
+- A nagyobb mag-t tartalmazó virtuális gépek beszerzése segíthet az átviteli sebesség növelésében.
+- Az ügyfélalkalmazás több virtuális gépről való futtatása növeli az átviteli sebességet.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>High latencies for metadata heavy workloads involving extensive open/close operations.
+- Ha lehetséges, használja a REST API-kat.
+
+## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>A Linux-ügyfelek átviteli sebessége jelentősen alacsonyabb a Windows-ügyfelekhez képest.
 
 ### <a name="cause"></a>Ok
 
-Lack of support for directory leases.
+Ez egy ismert probléma az SMB-ügyfél Linux rendszeren történő megvalósításával kapcsolatban.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- If possible, avoid excessive opening/closing handle on the same directory within a short period of time.
-- For Linux VMs, increase the directory entry cache timeout by specifying **actimeo=\<sec>** as a mount option. By default, it is one second, so a larger value like three or five might help.
-- For Linux VMs, upgrade the kernel to 4.20 or higher.
+- A terhelés elosztása több virtuális gép között.
+- Ugyanazon a virtuális gépen használjon több csatlakoztatási pontot a **nosharesock** kapcsolóval, majd a terhelést a csatlakoztatási pontok között.
+- Linux rendszeren próbálja meg az **nostrictsync** kapcsolóval való csatlakoztatást, hogy ne kényszerítse az SMB ürítését minden Fsync-híváson. A Azure Files esetében ez a beállítás nem zavarja az adatok consistentcy, de az elavult fájlok metaadatait is eredményezheti a címtár listázásakor (**ls-l** parancs). A fájl metaadatainak közvetlen lekérdezése (**stat** Command) a legnaprakészebb fájl-metaadatokat fogja visszaadni.
 
-## <a name="low-iops-on-centosrhel"></a>Low IOPS on CentOS/RHEL
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Magas késés a metaadatok nagy számítási feladataihoz, amelyek kiterjedt nyitott/zárási műveleteket foglalnak magukban.
 
 ### <a name="cause"></a>Ok
 
-IO depth greater than one is not supported on CentOS/RHEL.
+A címtár-bérletek támogatásának hiánya.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Upgrade to CentOS 8 / RHEL 8.
-- Change to Ubuntu.
+- Ha lehetséges, kerülje a túlzott nyitó/záró leírót egy rövid időn belül ugyanazon a címtáron.
+- Linux rendszerű virtuális gépek esetén növelje a címtár-bejegyzés gyorsítótárának időtúllépését a **actimeo =\<mp >** csatlakoztatási lehetőség megadásával. Alapértelmezés szerint ez egy másodperc, így egy nagyobb érték, például három vagy öt, segítségre lehet.
+- Linux rendszerű virtuális gépek esetén a kernelt 4,20-re vagy újabbra kell frissíteni.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Slow file copying to and from Azure Files in Linux
-
-If you are experiencing slow file copying to and from Azure Files, take a look at the [Slow file copying to and from Azure Files in Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) section in the Linux troubleshooting guide.
-
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Jittery/saw-tooth pattern for IOPS
+## <a name="low-iops-on-centosrhel"></a>Alacsony IOPS a CentOS/RHEL
 
 ### <a name="cause"></a>Ok
 
-Client application consistently exceeds baseline IOPS. Currently, there is no service side smoothing of the request load, so if the client exceeds baseline IOPS, it will get throttled by the service. That throttling can result in the client experiencing a jittery/saw-tooth IOPS pattern. In this case, average IOPS achieved by the client might be lower than the baseline IOPS.
+A CentOS/RHEL esetében a nagyobb IO-mélység nem támogatott.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Reduce the request load from the client application, so that the share does not get throttled.
-- Increase the quota of the share so that the share does not get throttled.
+- Frissítsen a CentOS 8/RHEL 8 verzióra.
+- Váltson Ubuntu-ra.
 
-## <a name="excessive-directoryopendirectoryclose-calls"></a>Excessive DirectoryOpen/DirectoryClose calls
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Lassú a másolás a Linux rendszerbe és Azure Filesba
+
+Ha lassú másolást végez a Azure Filesba és a-ból, akkor tekintse meg a Linux-alapú hibaelhárítási útmutatóban a [lassú fájl másolása a következőre és a Azure Files Linux rendszeren](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) című szakaszát.
+
+## <a name="jitterysaw-tooth-pattern-for-iops"></a>Idegesség/fűrész-Tooth mintázat a IOPS
 
 ### <a name="cause"></a>Ok
 
-If the number of DirectoryOpen/DirectoryClose calls is among the top API calls and you don't expect the client to be making that many calls, it may be an issue with the antivirus installed on the Azure client VM.
+Az ügyfélalkalmazás konzisztensen meghaladja az alapkonfiguráció IOPS. Jelenleg a kérések terhelése nem zökkenőmentes, így ha az ügyfél túllépi az alapkonfiguráció IOPS, a szolgáltatás szabályozza a szolgáltatást. Ez a szabályozás azt eredményezheti, hogy az ügyfél vibrálás vagy fűrészes IOPS mintát észlelt. Ebben az esetben az ügyfél által elért átlagos IOPS alacsonyabb lehet az alapkonfiguráció IOPS.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- A fix for this issue is available in the [April Platform Update for Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
+- Csökkentse a kérelmek terhelését az ügyfélalkalmazás alapján, hogy a megosztás ne legyen szabályozva.
+- Növelje a megosztás kvótáját úgy, hogy a megosztás ne legyen szabályozva.
 
-## <a name="file-creation-is-slower-than-expected"></a>File creation is slower than expected
+## <a name="excessive-directoryopendirectoryclose-calls"></a>Túlzott DirectoryOpen/DirectoryClose-hívások
 
 ### <a name="cause"></a>Ok
 
-Workloads that rely on creating a large number of files will not see a substantial difference between the performance of premium file shares and standard file shares.
+Ha a DirectoryOpen/DirectoryClose hívások száma a leggyakoribb API-hívások egyike, és nem várja meg, hogy az ügyfél sok hívást hajtson fel, akkor előfordulhat, hogy az Azure-ügyfél virtuális gépre telepített víruskereső probléma merülhet fel.
+
+### <a name="workaround"></a>Áthidaló megoldás
+
+- A probléma megoldása a [Windows áprilisi platformjának frissítésében](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform)érhető el.
+
+## <a name="file-creation-is-slower-than-expected"></a>A fájl létrehozása a vártnál lassabb
+
+### <a name="cause"></a>Ok
+
+A nagy mennyiségű fájl létrehozására támaszkodó munkaterhelések nem fogják látni a prémium fájlmegosztás és a normál fájlmegosztás teljesítményének jelentős különbségét.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
 - Nincs.
 
-## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Slow performance from Windows 8.1 or Server 2012 R2
+## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Lassú teljesítmény a Windows 8,1 vagy a Server 2012 R2 rendszerből
 
 ### <a name="cause"></a>Ok
 
-Higher than expected latency accessing Azure Files for IO intensive workloads.
+Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokhoz való hozzáféréskor.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Install the available [hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+- Telepítse az elérhető [gyorsjavítást](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).

@@ -104,8 +104,8 @@ Azure Migrate megköveteli, hogy a virtuális gépek áttelepíthetők legyenek 
 --- | --- | ---
 Győződjön meg arról, hogy az Azure virtuális gépen futó Windows-kötetek ugyanazt a meghajtóbetűjel-hozzárendelést használják, mint a helyszíni virtuális gép. | Konfigurálja a TÁROLÓHÁLÓZATI szabályzatot online állapotba. | 1. Jelentkezzen be a virtuális gépre egy rendszergazdai fiókkal, és nyisson meg egy parancssori ablakot.<br/> 2. írja be a **DiskPart** parancsot a DiskPart segédprogram futtatásához.<br/> 3. írja be a következőt: **San Policy = OnlineAll**<br/> 4. írja be a Kilépés parancsot a DiskPart elhagyásához, majd zárja be a parancssort.
 Azure soros hozzáférési konzol engedélyezése az Azure-beli virtuális géphez | Ez segít a hibaelhárításban. Nem kell újraindítani a virtuális gépet. Az Azure-beli virtuális gép a lemezkép használatával fog elindulni, és ez egyenértékű az új virtuális gép újraindításával. | Az engedélyezéshez kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) .
-A Hyper-V vendég integrációjának telepítése | Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. | [Részletek](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
-Távoli asztal | Engedélyezze a Távoli asztalt a virtuális gépen, és győződjön meg arról, hogy a Windows tűzfal nem blokkolja a hálózati profilok Távoli asztal elérését. | [Részletek](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
+A Hyper-V vendég integrációjának telepítése | Ha Windows Server 2003 rendszert futtató gépeket telepít át, telepítse a Hyper-V vendég integrációs szolgáltatásait a VM operációs rendszerbe. | [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+Távoli asztal | Engedélyezze a Távoli asztalt a virtuális gépen, és győződjön meg arról, hogy a Windows tűzfal nem blokkolja a hálózati profilok Távoli asztal elérését. | [További információk](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
 
 ### <a name="prepare-linux-vms"></a>Linux rendszerű virtuális gépek előkészítése
 
@@ -263,8 +263,8 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [Részletek](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [Részletek](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.

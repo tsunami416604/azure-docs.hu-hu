@@ -92,7 +92,7 @@ A készültség számos virtuálisgép-tulajdonságot figyelembe vesz, hogy megt
 --- | --- | ---
 **Rendszerindítás típusa** | A BIOS támogatott. Az UEFI nem támogatott. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Mag** | A Machines Core < = az Azure-beli virtuális gépek számára támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate figyelembe veszi a felhasznált magokat.<br/>Ha az értékelési beállításokban meg van adva egy kényelmi tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat használja a komfort tényező alkalmazása nélkül. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
-**Memória** | A számítógép memóriájának mérete < = a maximális memória (3892 GB az Azure M sorozat Standard_M128m&nbsp;<sup>2</sup>) egy Azure-beli virtuális gépen. [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
+**Memória** | A számítógép memóriájának mérete < = a maximális memória (3892 GB az Azure M sorozat Standard_M128m&nbsp;<sup>2</sup>) egy Azure-beli virtuális gépen. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
 **Storage-lemez** | A lemez lefoglalt méretének 4 TB (4096 GB) vagy kevesebbnek kell lennie.<br/><br/> A géphez csatolt lemezek számának 65 vagy annál kisebbnek kell lennie, beleértve az operációsrendszer-lemezt is. | A határértékeken belül készen áll.
 **Hálózat** | A számítógépnek 32 vagy annál kevesebb hálózati adapterrel kell rendelkeznie. | A határértékeken belül készen áll.
 
@@ -244,7 +244,7 @@ Az ügynök telepítése Linux rendszerű gépre:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Az MMA-ügynök telepítése Operations Manager által figyelt gépre
 
-A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [Részletek](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
+A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 

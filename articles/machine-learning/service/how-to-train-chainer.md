@@ -212,8 +212,8 @@ for f in run.get_file_names():
 
 Ebben a cikkben a Azure Machine Learning láncolásával foglalkozó, mély tanulási és neurális hálózatot oktatott és regisztrált. A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
 
-* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md)
 
-* [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
+* [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
 
 * [Tekintse meg az Azure-ban elosztott Deep learning-képzés hivatkozási architektúráját](/azure/architecture/reference-architectures/ai/training-deep-learning)

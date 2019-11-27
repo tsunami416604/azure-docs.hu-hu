@@ -1,6 +1,6 @@
 ---
-title: Resource forest concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn what a resource forest is in Azure Active Directory Domain Services and how they benefit your organization in hybrid environment with limited user authentication options or security concerns.
+title: Erőforrás-erdővel kapcsolatos fogalmak a Azure AD Domain Serviceshoz | Microsoft Docs
+description: Megtudhatja, hogy milyen erőforrás-erdő van Azure Active Directory Domain Servicesban, és hogy miként használják a céget a korlátozott felhasználói hitelesítési lehetőségekkel vagy biztonsági kérdésekkel rendelkező hibrid környezetben.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,106 +17,106 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233609"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Resource forest concepts and features for Azure Active Directory Domain Services
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) provides a sign-in experience for legacy, on-premises, line-of-business applications. Users, groups, and password hashes of on-premises and cloud users are synchronized to the Azure AD DS managed domain. These synchronized password hashes are what gives users a single set of credentials they can use for the on-premises AD DS, Office 365, and Azure Active Directory.
+A Azure Active Directory Domain Services (AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, az Office 365 és a Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
 
-Although secure and provides additional security benefits, some organizations can't synchronize those user passwords hashes to Azure AD or Azure AD DS. Users in an organization may not know their password because they only use smart card authentication. These limitations prevent some organizations from using Azure AD DS to lift and shift on-premises classic applications to Azure.
+Bár a biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem tudják szinkronizálni ezeket a felhasználói jelszavakat az Azure AD-be vagy az Azure AD DSba. Előfordulhat, hogy a szervezetben lévő felhasználók nem ismerik a jelszavukat, mert csak az intelligens kártyás hitelesítést használják. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS használatával felemelik és áthelyezhetik a helyi klasszikus alkalmazásokat az Azure-ba.
 
-To address these needs and restrictions, you can create an Azure AD DS managed domain that uses a resource forest. This conceptual article explains what forests are, and how they trust other resources to provide a secure authentication method. Azure AD DS resource forests are currently in preview.
+Ezeknek az igényeknek és korlátozásoknak a megoldásához létrehozhat egy erőforrás-erdőt használó Azure AD DS felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
 > [!IMPORTANT]
-> Azure AD DS resource forests don't currently support Azure HDInsight or Azure Files. The default Azure AD DS user forests do support both of these additional services.
+> Az Azure AD DS erőforrás-erdők jelenleg nem támogatják az Azure HDInsight vagy a Azure Files. Az alapértelmezett Azure AD DS felhasználói erdők mindkét további szolgáltatást támogatják.
 
-## <a name="what-are-forests"></a>What are forests?
+## <a name="what-are-forests"></a>Mik azok az erdők?
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által használt logikai szerkezetek egy vagy több *tartomány*csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+Az Azure AD DSban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők az Azure AD DS felügyelt tartományon, például egy tartományhoz csatlakoztatott virtuális gépre való bejelentkezéshez. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+Egy Azure-AD DS *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók az Azure AD DS. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
-Resource forests also provide the capability to lift-and-shift your applications one component at a time. Many legacy on-premises applications are multi-tiered, often using a web server or front end and many database-related components. These tiers make it hard to lift-and-shift the entire application to the cloud in one step. With resource forests, you can lift your application to the cloud in phased approach, which makes it easier to move your application to Azure.
+Az erőforrás-erdők azt is lehetővé teszik, hogy egyszerre több összetevőt lehessen feloldani az alkalmazások számára. Számos örökölt helyszíni alkalmazás többrétegű, gyakran webkiszolgálót, előtér-adatbázist és sok adatbázissal kapcsolatos összetevőt használ. Ezek a szintek megnehezítik a teljes alkalmazás a felhőbe való átváltását egy lépésben. A Resource Forests használatával a felhőbe felemelhető az alkalmazás fokozatos megközelítése, amely megkönnyíti az alkalmazások áthelyezését az Azure-ba.
 
-## <a name="what-are-trusts"></a>What are trusts?
+## <a name="what-are-trusts"></a>Mi a megbízhatóság?
 
-Organizations that have more than one domain often need users to access shared resources in a different domain. Access to these shared resources requires that users in one domain authenticate to another domain. To provide these authentication and authorization capabilities between clients and servers in different domains, there must be a *trust* between the two domains.
+Az egynél több tartománnyal rendelkező szervezeteknek gyakran kell a felhasználókhoz hozzáférni egy másik tartományban található megosztott erőforrásokhoz. A megosztott erőforrásokhoz való hozzáféréshez az szükséges, hogy az egyik tartományban lévő felhasználók egy másik tartományban legyenek hitelesítve. A különböző tartományokban lévő ügyfelek és kiszolgálók közötti hitelesítési és engedélyezési képességek biztosítása érdekében a két tartomány között *megbízhatósági kapcsolatnak* kell lennie.
 
-With domain trusts, the authentication mechanisms for each domain trust the authentications coming from the other domain. Trusts help provide controlled access to shared resources in a resource domain (the *trusting* domain) by verifying that incoming authentication requests come from a trusted authority (the *trusted* domain). Trusts act as bridges that only allow validated authentication requests to travel between domains.
+A tartományi megbízhatósági kapcsolatok esetében az egyes tartományok hitelesítési mechanizmusai megbíznak a másik tartománytól érkező hitelesítésekkel. A megbízhatósági kapcsolatok segítségével szabályozható hozzáférést biztosíthat az erőforrás-tartományokban lévő megosztott erőforrásokhoz (a *megbízó* tartományhoz), ha ellenőrzi, hogy a bejövő hitelesítési kérelmek megbízható hitelesítésszolgáltatótól ( *megbízható* tartományból) származnak-e. A megbízhatósági kapcsolatok olyan hidakként működnek, amelyek csak az érvényesített hitelesítési kérelmeket engedélyezik a tartományok közötti utazáshoz.
 
-How a trust passes authentication requests depends on how it's configured. Trusts can be configured in one of the following ways:
+A hitelesítési kérelmek megbízhatóságának módja a konfigurálásának módjától függ. A megbízhatósági kapcsolatok az alábbi módszerek egyikével konfigurálhatók:
 
-* **One-way** - provides access from the trusted domain to resources in the trusting domain.
-* **Two-way** - provides access from each domain to resources in the other domain.
+* **Egyirányú** – hozzáférést biztosít a megbízható tartományból a megbízó tartomány erőforrásaihoz.
+* **Kétirányú** – hozzáférést biztosít az egyes tartományokból a másik tartomány erőforrásaihoz.
 
-Trusts are also be configured to handle additional trust relationships in one of the following ways:
+A megbízhatósági kapcsolatok úgy is konfigurálhatók, hogy a további megbízhatósági kapcsolatokat a következő módszerek egyikével kezeljék:
 
-* **Nontransitive** - The trust exists only between the two trust partner domains.
-* **Transitive** - Trust automatically extends to any other domains that either of the partners trusts.
+* Nem **tranzitív** – a megbízhatóság csak a két megbízhatósági partner tartománya között létezik.
+* A **tranzitív** megbízhatósági kapcsolat automatikusan kiterjeszthető minden olyan tartományra, amelyet a partnerek bármelyike megbízhatónak tart.
 
-In some cases, trust relationships are automatically established when domains are created. Other times, you must choose a type of trust and explicitly establish the appropriate relationships. The specific types of trusts used and the structure of those trust relationships depend on how the Active Directory directory service is organized, and whether different versions of Windows coexist on the network.
+Bizonyos esetekben a rendszer automatikusan létrehozza a megbízhatósági kapcsolatokat a tartományok létrehozásakor. Máskor ki kell választania egy megbízhatósági típust, és explicit módon meg kell határoznia a megfelelő kapcsolatokat. A használt megbízhatósági kapcsolatok és a megbízhatósági kapcsolatok szerkezete függ a Active Directory címtárszolgáltatás szervezésének módjától, valamint attól, hogy a Windows különböző verziói léteznek-e a hálózaton.
 
-## <a name="trusts-between-two-forests"></a>Trusts between two forests
+## <a name="trusts-between-two-forests"></a>Két erdő közötti megbízhatóság
 
-You can extend domain trusts within a single forest to another forest by manually creating a one-way or two-way forest trust. A forest trust is a transitive trust that exists only between a forest root domain and a second forest root domain.
+A tartományi megbízhatósági kapcsolatok kiterjeszthetők egyetlen erdőn belül egy másik erdőre, ha manuálisan létrehoz egy egyirányú vagy kétirányú erdőszintű megbízhatóságot. Az erdőszintű megbízhatóság olyan tranzitív megbízhatóság, amely csak az erdő gyökértartományának és egy második erdőszintű gyökértartomány között létezik.
 
-* A one-way forest trust allows all users in one forest to trust all domains in the other forest.
-* A two-way forest trust forms a transitive trust relationship between every domain in both forests.
+* Egy egyirányú erdőszintű megbízhatósági kapcsolat lehetővé teszi, hogy az egyik erdőben lévő összes felhasználó megbízzon a másik erdőben lévő összes tartományban.
+* A kétirányú erdőszintű megbízhatóság tranzitív megbízhatósági kapcsolatot alakít ki mindkét erdő minden tartománya között.
 
-The transitivity of forest trusts is limited to the two forest partners. The forest trust doesn't extend to additional forests trusted by either of the partners.
+Az erdőszintű megbízhatósági kapcsolatok tranzitivitás a két erdős partnerre korlátozódik. Az erdőszintű megbízhatóság nem terjed ki a partnerek egyike által megbízhatónak tartott további erdőkre.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű megbízhatóság diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-You can create different domain and forest trust configurations depending on the Active Directory structure of the organization. Azure AD DS only supports a one-way forest trust. In this configuration, resources in Azure AD DS can trust all domains in an on-premises forest.
+A szervezet Active Directory struktúrájától függően különböző tartományi és erdőszintű megbízhatósági konfigurációkat hozhat létre. Az Azure AD DS csak egyirányú erdőszintű megbízhatósági kapcsolatot támogat. Ebben a konfigurációban az Azure AD DS erőforrásai megbíznak a helyszíni erdőben található összes tartományban.
 
-## <a name="supporting-technology-for-trusts"></a>Supporting technology for trusts
+## <a name="supporting-technology-for-trusts"></a>A megbízhatósági kapcsolatok támogató technológiája
 
-Trusts use various services and features, such as DNS to locate domain controllers in partnering forests. Trusts also depend on NTLM and Kerberos authentication protocols and on Windows-based authorization and access control mechanisms to help provide a secured communications infrastructure across Active Directory domains and forests. The following services and features help support successful trust relationships.
+A megbízhatósági kapcsolatok különféle szolgáltatásokat és szolgáltatásokat használnak, például a DNS-t a tartományvezérlők megkereséséhez a partneri erdőkben. A megbízhatósági kapcsolatok az NTLM-és Kerberos-hitelesítési protokolloktól, valamint a Windows-alapú engedélyezési és hozzáférés-vezérlési mechanizmusoktól függenek, így biztosítva a biztonságos kommunikációs infrastruktúra használatát Active Directory tartományok és erdők között. A következő szolgáltatások és funkciók segítenek a sikeres megbízhatósági kapcsolatok támogatásában.
 
 ### <a name="dns"></a>DNS
 
-AD DS needs DNS for domain controller (DC) location and naming. The following support from DNS is provided for AD DS to work successfully:
+AD DS DNS-t igényel a tartományvezérlő (DC) helyéhez és elnevezéséhez. A következő DNS-támogatás biztosítva a AD DS sikeres működéséhez:
 
-* A name resolution service that lets network hosts and services to locate DCs.
-* A naming structure that enables an enterprise to reflect its organizational structure in the names of its directory service domains.
+* Névfeloldási szolgáltatás, amely lehetővé teszi a hálózati gazdagépek és szolgáltatások számára a tartományvezérlők megkeresését.
+* Elnevezési struktúra, amely lehetővé teszi a vállalat számára, hogy tükrözze a szervezeti struktúráját a címtárszolgáltatás-tartományok neveiben.
 
-A DNS domain namespace is usually deployed that mirrors the AD DS domain namespace. If there's an existing DNS namespace before the AD DS deployment, the DNS namespace is typically partitioned for Active Directory, and a DNS subdomain and delegation for the Active Directory forest root is created. Additional DNS domain names are then added for each Active Directory child domain.
+A DNS-tartomány névterét általában a AD DS tartományi névtér tükrözésére használják. Ha van egy meglévő DNS-névtér a AD DS központi telepítés előtt, a DNS-névtér általában Active Directoryre van particionálva, és létrejön egy DNS-altartomány és delegálás az Active Directory erdő gyökeréhez. Ezután további DNS-tartományneveket adnak hozzá minden Active Directory gyermektartomány számára.
 
-DNS is also used to support the location of Active Directory DCs. The DNS zones are populated with DNS resource records that enable network hosts and services to locate Active Directory DCs.
+A DNS a Active Directory tartományvezérlők helyének támogatására is használható. A DNS-zónák olyan DNS-erőforrásrekordok használatával vannak feltöltve, amelyek lehetővé teszik a hálózati gazdagépek és szolgáltatások számára Active Directory tartományvezérlők megkeresését.
 
-### <a name="applications-and-net-logon"></a>Applications and Net Logon
+### <a name="applications-and-net-logon"></a>Alkalmazások és hálózati bejelentkezés
 
-Both applications and the Net Logon service are components of the Windows distributed security channel model. Applications integrated with Windows Server and Active Directory use authentication protocols to communicate with the Net Logon service so that a secured path can be established over which authentication can occur.
+Mindkét alkalmazás és a Net Logon szolgáltatás a Windows Distributed Security Channel modell összetevői. A Windows Server rendszerbe integrált alkalmazások és a Active Directory hitelesítési protokollok használatával kommunikálnak a hálózati bejelentkezési szolgáltatással, így biztonságos elérési utat hozhat létre a hitelesítéshez.
 
 ### <a name="authentication-protocols"></a>Hitelesítési protokollok
 
-Active Directory DCs authenticate users and applications using one of the following protocols:
+Active Directory tartományvezérlők a következő protokollok egyikével hitelesítik a felhasználókat és az alkalmazásokat:
 
-* **Kerberos version 5 authentication protocol**
-    * The Kerberos version 5 protocol is the default authentication protocol used by on-premises computers running Windows and supporting third-party operating systems. This protocol is specified in RFC 1510 and is fully integrated with Active Directory, server message block (SMB), HTTP, and remote procedure call (RPC), as well as the client and server applications that use these protocols.
-    * When the Kerberos protocol is used, the server doesn't have to contact the DC. Instead, the client gets a ticket for a server by requesting one from a DC in the server account domain. The server then validates the ticket without consulting any other authority.
-    * If any computer involved in a transaction doesn't support the Kerberos version 5 protocol, the NTLM protocol is used.
+* **Kerberos 5-ös verziójú hitelesítési protokoll**
+    * A Kerberos 5-ös verziója a Windows rendszerű és a külső gyártótól származó operációs rendszereket támogató helyi számítógépek által használt alapértelmezett hitelesítési protokoll. Ez a protokoll az RFC 1510-ben van meghatározva, és teljes mértékben integrálva van a Active Directory, a Server Message Block (SMB), a HTTP és a távoli eljáráshívás (RPC) szolgáltatással, valamint az ezeket a protokollokat használó ügyfél-és kiszolgálói alkalmazásokkal.
+    * A Kerberos protokoll használata esetén a kiszolgálónak nem kell kapcsolódnia a TARTOMÁNYVEZÉRLŐhöz. Ehelyett az ügyfél a kiszolgáló fiók tartományában lévő egyik TARTOMÁNYVEZÉRLŐtől kapja meg a jegyet. A kiszolgáló ezt követően érvényesíti a jegyet anélkül, hogy bármilyen más hatósággal kellene konzultálnia.
+    * Ha a tranzakcióban részt vevő számítógépek nem támogatják a Kerberos 5-ös verzióját, akkor a rendszer az NTLM protokollt használja.
 
-* **NTLM authentication protocol**
-    * The NTLM protocol is a classic network authentication protocol used by older operating systems. For compatibility reasons, it's used by Active Directory domains to process network authentication requests that come from applications designed for earlier Windows-based clients and servers, and third-party operating systems.
-    * When the NTLM protocol is used between a client and a server, the server must contact a domain authentication service on a DC to verify the client credentials. The server authenticates the client by forwarding the client credentials to a DC in the client account domain.
-    * When two Active Directory domains or forests are connected by a trust, authentication requests made using these protocols can be routed to provide access to resources in both forests.
+* **NTLM hitelesítési protokoll**
+    * Az NTLM protokoll a régebbi operációs rendszerek által használt klasszikus hálózati hitelesítési protokoll. Kompatibilitási okokból Active Directory tartományok használják a korábbi Windows-alapú ügyfelekhez és kiszolgálókhoz, illetve harmadik féltől származó operációs rendszerekhez készült alkalmazásokból érkező hálózati hitelesítési kérelmek feldolgozását.
+    * Ha az NTLM protokollt az ügyfél és a kiszolgáló között használja, a kiszolgálónak csatlakoznia kell egy tartományi hitelesítési szolgáltatáshoz a tartományvezérlőn, hogy ellenőrizze az ügyfél hitelesítő adatait. A kiszolgáló úgy hitelesíti az ügyfelet, hogy az ügyfél hitelesítő adatait továbbítja az ügyfél fiókjának tartományában lévő tartományvezérlőnek.
+    * Ha két Active Directory tartomány vagy erdő megbízhatósági kapcsolattal rendelkezik, a protokollok használatával küldött hitelesítési kérések átirányíthatók úgy, hogy mindkét erdőben elérhetők legyenek az erőforrások.
 
-## <a name="authorization-and-access-control"></a>Authorization and access control
+## <a name="authorization-and-access-control"></a>Engedélyezési és hozzáférés-vezérlés
 
-Authorization and trust technologies work together to provide a secured communications infrastructure across Active Directory domains or forests. Authorization determines what level of access a user has to resources in a domain. Trusts facilitate cross-domain authorization of users by providing a path for authenticating users in other domains so their requests to shared resources in those domains can be authorized.
+Az engedélyezési és megbízhatósági technológiák együttműködve biztosítják a biztonságos kommunikációs infrastruktúrát Active Directory tartományok vagy erdők között. Az engedélyezés meghatározza, hogy a felhasználók milyen szintű hozzáférési jogosultságokkal rendelkeznek a tartomány erőforrásaihoz. A megbízhatósági kapcsolatok megkönnyítik a felhasználók tartományok közötti engedélyezését azáltal, hogy a más tartományokban lévő felhasználókat hitelesítő utat biztosítanak, így a tartományokban lévő megosztott erőforrásokra irányuló kérések is engedélyezhetők.
 
-When an authentication request made in a trusting domain is validated by the trusted domain, it's passed to the target resource. The target resource then determines whether to authorize the specific request made by the user, service, or computer in the trusted domain based on its access control configuration.
+Ha a megbízható tartomány ellenőrzi egy megbízható tartomány hitelesítési kérelmét, azt a rendszer átadja a célként megadott erőforrásnak. A cél erőforrás ezután meghatározza, hogy a rendszer engedélyezi-e a megbízható tartományban lévő felhasználó, szolgáltatás vagy számítógép által a hozzáférés-vezérlési konfiguráció alapján végzett kérést.
 
-Trusts provide this mechanism to validate authentication requests that are passed to a trusting domain. Access control mechanisms on the resource computer determine the final level of access granted to the requestor in the trusted domain.
+A megbízhatósági kapcsolatok biztosítják ezt a mechanizmust a megbízó tartománynak átadott hitelesítési kérelmek érvényesítéséhez. Az erőforrás-számítógép hozzáférés-vezérlési mechanizmusai határozzák meg a megbízható tartományban a kérelmezőnek biztosított hozzáférés végső szintjét.
 
 ## <a name="next-steps"></a>Következő lépések
 
-To learn more about trusts, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+További információ a megbízhatóságokról: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+Az Azure AD DS felügyelt tartomány erőforrás-erdővel való létrehozásának megkezdéséhez tekintse meg [az azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

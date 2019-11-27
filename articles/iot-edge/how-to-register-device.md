@@ -1,6 +1,6 @@
 ---
-title: Register a new Azure IoT Edge device | Microsoft Docs
-description: Use the IoT extension for Azure CLI to register a new IoT Edge device and retrieve the connection string
+title: Új Azure IoT Edge-eszköz regisztrálása | Microsoft Docs
+description: Le a kapcsolati karakterláncot, és a egy új IoT Edge-eszköz regisztrálása az IoT-bővítmény, az Azure CLI használatával
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,149 +16,149 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456854"
 ---
-# <a name="register-an-azure-iot-edge-device"></a>Register an Azure IoT Edge device
+# <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge-eszköz regisztrálása
 
-Before you can use your IoT devices with Azure IoT Edge, you must register them with your IoT hub. Once a device is registered, you can retrieve a connection string to set up your device for IoT Edge workloads.
+Ahhoz, hogy a IoT-eszközöket Azure IoT Edge használatával használhassa, regisztrálnia kell őket az IoT hub-ban. Ha egy eszköz regisztrálva van, lekérhet egy kapcsolódási karakterláncot az eszköz IoT Edge számítási feladatokhoz való beállításához.
 
-You have the choice of registering by using one of the following tools:
+A regisztrációt a következő eszközök egyikével választhatja ki:
 
-* [Azure portal](https://portal.azure.com) provides a graphical user interface to create, view, and manage Azure resources.
-* [Visual Studio Code](https://code.visualstudio.com/) is a source-code editor. Azure IoT extensions make it easy to manage IoT resources from the same tool where you're developing IoT solutions.
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is a command-line tool for managing Azure resources. Its reusable commands are helpful for automating tasks.
+* A [Azure Portal](https://portal.azure.com) grafikus felhasználói felületet biztosít az Azure-erőforrások létrehozásához, megtekintéséhez és kezeléséhez.
+* A [Visual Studio Code](https://code.visualstudio.com/) egy forráskód-szerkesztő. Az Azure IoT-bővítmények megkönnyítik a IoT-erőforrások kezelését ugyanarról az eszközről, ahol IoT-megoldásokat fejlesztenek.
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy parancssori eszköz az Azure-erőforrások kezeléséhez. Az újrafelhasználható parancsok hasznosak a feladatok automatizálásához.
 
-## <a name="register-in-the-azure-portal"></a>Register in the Azure portal
+## <a name="register-in-the-azure-portal"></a>Regisztráljon a Azure Portal
 
-You can perform all registration tasks in the Azure portal.
+A Azure Portal összes regisztrációs feladatát elvégezheti.
 
-### <a name="prerequisites-for-the-azure-portal"></a>Prerequisites for the Azure portal
+### <a name="prerequisites-for-the-azure-portal"></a>A Azure Portal előfeltételei
 
-A free or standard [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
+Az Azure-előfizetésében ingyenes vagy standard szintű [IoT hub](../iot-hub/iot-hub-create-through-portal.md) .
 
-### <a name="create-an-iot-edge-device-in-the-azure-portal"></a>Create an IoT Edge device in the Azure portal
+### <a name="create-an-iot-edge-device-in-the-azure-portal"></a>IoT Edge-eszköz létrehozása a Azure Portal
 
-In your IoT Hub in the Azure portal, IoT Edge devices are created and managed separately from IOT devices that are not edge enabled.
+A Azure Portal IoT Hub a IoT Edge eszközöket külön hozza létre és kezeli a nem engedélyezett IOT-eszközökről.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub.
-2. In the left pane, select **IoT Edge** from the menu.
-3. Select **Add an IoT Edge device**.
-4. Provide a descriptive device ID. Use the default settings to auto-generate authentication keys and connect the new device to your hub.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
+2. A bal oldali ablaktáblán válassza a menü **IoT Edge** elemét.
+3. Válassza **a IoT Edge eszköz hozzáadása**lehetőséget.
+4. Adjon meg egy leíró eszközazonosító. Használja az alapértelmezett beállításokat a hitelesítési kulcsok automatikus létrehozásához és az új eszköz csatlakoztatásához a központhoz.
 5. Kattintson a **Mentés** gombra.
 
-### <a name="view-iot-edge-devices-in-the-azure-portal"></a>View IoT Edge devices in the Azure portal
+### <a name="view-iot-edge-devices-in-the-azure-portal"></a>IoT Edge eszközök megtekintése a Azure Portal
 
-All the edge-enabled devices that connect to your IoT hub are listed on the **IoT Edge** page.
+Az IoT hub-hoz csatlakozó összes Edge-kompatibilis eszköz megjelenik a **IoT Edge** oldalon.
 
-![View all IoT Edge devices in your IoT hub](./media/how-to-register-device/portal-view-devices.png)
+![Az IoT hub IoT Edge-eszközök megtekintése](./media/how-to-register-device/portal-view-devices.png)
 
-### <a name="retrieve-the-connection-string-in-the-azure-portal"></a>Retrieve the connection string in the Azure portal
+### <a name="retrieve-the-connection-string-in-the-azure-portal"></a>A Azure Portal a kapcsolatok karakterláncának beolvasása
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub.
+Amikor készen áll az eszköz beállításához, a kapcsolati karakterláncot, amely összekapcsolja a fizikai eszköz az IoT hub az identitással kell.
 
-1. From the **IoT Edge** page in the portal, click on the device ID from the list of IoT Edge devices.
-2. Copy the value of either **Connection string (primary key)** or **Connection string (secondary key)** .
+1. A portál **IoT Edge** lapján kattintson az eszköz azonosítójára a IoT Edge eszközök listájáról.
+2. Másolja a **kapcsolatok karakterláncának (elsődleges kulcs)** vagy a **kapcsolatok karakterláncának (másodlagos kulcs)** értékét.
 
-## <a name="register-with-visual-studio-code"></a>Register with Visual Studio Code
+## <a name="register-with-visual-studio-code"></a>Regisztrálás a Visual Studio Code-ban
 
-There are multiple ways to perform most operations in VS Code. This article uses the Explorer, but you can also use the Command Palette to run the steps.
+A legtöbb műveletek végrehajtása a VS Code-ban többféle módon lehet. Ez a cikk a Explorert használja, de a parancssorban is futtathatja a lépéseket.
 
-### <a name="prerequisites-for-visual-studio-code"></a>Prerequisites for Visual Studio Code
+### <a name="prerequisites-for-visual-studio-code"></a>A Visual Studio Code előfeltételei
 
-* An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription
+* [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) for Visual Studio Code
+* A Visual Studio Code-hoz készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-### <a name="sign-in-to-access-your-iot-hub"></a>Sign in to access your IoT hub
+### <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
-You can use the Azure IoT extensions for Visual Studio Code to perform operations with your IoT Hub. For these operations to work, you need to sign in to your Azure account and select your IoT Hub.
+A Visual Studio Code-hoz készült Azure IoT Extensions használatával műveleteket hajthat végre a IoT Hub. Ezeknek a műveleteknek a működéséhez be kell jelentkeznie az Azure-fiókjába, és ki kell választania a IoT Hub.
 
-1. In Visual Studio Code, open the **Explorer** view.
-1. At the bottom of the Explorer, expand the **Azure IoT Hub** section.
+1. A Visual Studio Code-ban nyissa meg a **Explorer** nézetet.
+1. Az Explorer alján bontsa ki az **Azure IoT hub** szakaszt.
 
-   ![Expand Azure IoT Hub Devices section](./media/how-to-register-device/azure-iot-hub-devices.png)
+   ![Az Azure IoT Hub-eszközök a szakaszt kibontva](./media/how-to-register-device/azure-iot-hub-devices.png)
 
-1. Click on the **...** in the **Azure IoT Hub** section header. If you don't see the ellipsis, click on or hover over the header.
-1. Choose **Select IoT Hub**.
-1. If you aren't signed in to your Azure account, follow the prompts to do so.
+1. Kattintson a **...** elemre az **Azure IoT hub** szakasz fejlécében. Ha nem látja a három pontra, kattintson a, vagy vigye a kurzort a fejléc fölé.
+1. Válassza a **IoT hub kiválasztása**lehetőséget.
+1. Ha nem jelentkezett be az Azure-fiókjába, kövesse az utasításokat.
 1. Válassza ki az Azure-előfizetését.
-1. Select your IoT hub.
+1. Válassza ki az IoT hubnak.
 
-### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>Create an IoT Edge device with Visual Studio Code
+### <a name="create-an-iot-edge-device-with-visual-studio-code"></a>IoT Edge-eszköz létrehozása a Visual Studio Code-ban
 
-1. In the VS Code Explorer, expand the **Azure IoT Hub Devices** section.
-1. Click on the **...** in the **Azure IoT Hub Devices** section header. If you don't see the ellipsis, click on or hover over the header.
-1. Select **Create IoT Edge Device**.
-1. In the text box that opens, give your device an ID.
+1. A VS Code Explorerben bontsa ki az **Azure IoT hub-eszközök** szakaszt.
+1. Kattintson a **...** elemre az **Azure IoT hub eszközök** szakasz fejlécében. Ha nem látja a három pontra, kattintson a, vagy vigye a kurzort a fejléc fölé.
+1. Válassza a **létrehozás IoT Edge eszköz**lehetőséget.
+1. A megnyíló szövegbeviteli mezőben adjon az eszköz azonosítóval.
 
-In the output screen, you see the result of the command. The device info is printed, which includes the **deviceId** that you provided and the **connectionString** that you can use to connect your physical device to your IoT hub.
+A képernyőn a parancs eredménye látható. A rendszer kinyomtatja az eszköz adatait, beleértve a megadott **deviceId** -t, valamint azt a **ConnectionString** -t, amellyel a fizikai eszközt csatlakoztathatja az IoT hubhoz.
 
-In the output screen, you see the result of the command. The device info is printed, which includes the **deviceId** that you provided and the **connectionString** that you can use to connect your physical device to your IoT hub.
+A képernyőn a parancs eredménye látható. A rendszer kinyomtatja az eszköz adatait, beleértve a megadott **deviceId** -t, valamint azt a **ConnectionString** -t, amellyel a fizikai eszközt csatlakoztathatja az IoT hubhoz.
 
-### <a name="view-iot-edge-devices-with-visual-studio-code"></a>View IoT Edge devices with Visual Studio Code
+### <a name="view-iot-edge-devices-with-visual-studio-code"></a>A Visual Studio Code-ban IoT Edge eszközök megtekintése
 
-All the devices that connect to your IoT hub are listed in the **Azure IoT Hub** section of the Visual Studio Code Explorer. IoT Edge devices are distinguishable from non-Edge devices with a different icon, and the fact that the **$edgeAgent** and **$edgeHub** modules are deployed to each IoT Edge device.
+Az IoT hub-hoz csatlakozó összes eszköz megjelenik a Visual Studio Code Explorer **Azure IoT hub** szakaszában. IoT Edge eszközök a nem peremhálózati eszközöktől eltérő ikonnal vannak elkülönítve, és az a tény, hogy az **$edgeAgent** és **$edgeHub** modulokat minden IoT Edge eszközön telepítik.
 
-![View all IoT Edge devices in your IoT hub](./media/how-to-register-device/view-devices.png)
+![Az IoT hub IoT Edge-eszközök megtekintése](./media/how-to-register-device/view-devices.png)
 
-### <a name="retrieve-the-connection-string-with-visual-studio-code"></a>Retrieve the connection string with Visual Studio Code
+### <a name="retrieve-the-connection-string-with-visual-studio-code"></a>A Visual Studio Code-beli kapcsolatok karakterláncának beolvasása
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub.
+Amikor készen áll az eszköz beállításához, a kapcsolati karakterláncot, amely összekapcsolja a fizikai eszköz az IoT hub az identitással kell.
 
-1. Right-click on the ID of your device in the **Azure IoT Hub** section.
-1. Select **Copy Device Connection String**.
+1. Kattintson a jobb gombbal az eszköz AZONOSÍTÓJÁRA az **Azure IoT hub** szakaszban.
+1. Válassza az **eszköz csatlakoztatási karakterláncának másolása**lehetőséget.
 
-   The connection string is copied to your clipboard.
+   A kapcsolati karakterláncot a vágólapra másolja.
 
-You can also select **Get Device Info** from the right-click menu to see all the device info, including the connection string, in the output window.
+Azt is megteheti, hogy az eszköz **információinak beolvasása** lehetőségre kattint a jobb gombbal, és megjeleníti a kimeneti ablakban található összes eszközt, beleértve a kapcsolódási karakterláncot is.
 
-## <a name="register-with-the-azure-cli"></a>Register with the Azure CLI
+## <a name="register-with-the-azure-cli"></a>Regisztrálás az Azure CLI-vel
 
-The [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is an open-source cross platform command-line tool for managing Azure resources such as IoT Edge. It enables you to manage Azure IoT Hub resources, device provisioning service instances, and linked-hubs out of the box. The new IoT extension enriches Azure CLI with features such as device management and full IoT Edge capability.
+Az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT Edge kezelésére. Lehetővé teszi, hogy az Azure IoT Hub-erőforrások, eszközregisztrációs szolgáltatáspéldányok és csatolt központok beépített kezelése. Az új IoT-bővítmény Azure CLI-vel bővíti, például az Eszközfelügyelet és teljes körű IoT Edge-képességek.
 
-### <a name="prerequisites-for-the-azure-cli"></a>Prerequisites for the Azure CLI
+### <a name="prerequisites-for-the-azure-cli"></a>Az Azure CLI előfeltételei
 
-* An [IoT hub](../iot-hub/iot-hub-create-using-cli.md) in your Azure subscription.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in your environment. At a minimum, your Azure CLI version must be 2.0.24 or above. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
-* The [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
+* Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension).
 
-### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Create an IoT Edge device with the Azure CLI
+### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>IoT Edge-eszköz létrehozása az Azure CLI-vel
 
-Use the [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) command to create a new device identity in your IoT hub. Példa:
+Az az [IOT hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) paranccsal hozzon létre egy új eszköz-identitást az IOT hub-ban. Például:
 
    ```cli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
    ```
 
-This command includes three parameters:
+Ez a parancs három paramétereket tartalmazza:
 
-* **device-id**: Provide a descriptive name that's unique to your IoT hub.
-* **hub-name**: Provide the name of your IoT hub.
-* **edge-enabled**: This parameter declares that the device is for use with IoT Edge.
+* **eszköz-azonosító**: adjon meg egy leíró nevet, amely egyedi az IoT hub számára.
+* **hub-Name**: adja meg az IoT hub nevét.
+* **Edge-enabled**: Ez a paraméter azt deklarálja, hogy az eszköz a IoT Edge-vel való használatra szolgál.
 
-   ![az iot hub device-identity create output](./media/how-to-register-device/Create-edge-device.png)
+   ![az iot hub-eszközidentitást create kimenete](./media/how-to-register-device/Create-edge-device.png)
 
-### <a name="view-iot-edge-devices-with-the-azure-cli"></a>View IoT Edge devices with the Azure CLI
+### <a name="view-iot-edge-devices-with-the-azure-cli"></a>IoT Edge eszközök megtekintése az Azure CLI-vel
 
-Use the [az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) command to view all devices in your IoT hub. Példa:
+Az az [IOT hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) paranccsal megtekintheti az IOT hub összes eszközét. Például:
 
    ```cli
    az iot hub device-identity list --hub-name [hub name]
    ```
 
-Any device that is registered as an IoT Edge device will have the property **capabilities.iotEdge** set to **true**.
+A IoT Edge eszközként regisztrált eszközökön a tulajdonság képességei lesznek. a **iotEdge** értéke **true (igaz**).
 
-### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Retrieve the connection string with the Azure CLI
+### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>A kapcsolatok karakterláncának beolvasása az Azure CLI-vel
 
-When you're ready to set up your device, you need the connection string that links your physical device with its identity in the IoT hub. Use the [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) command to return the connection string for a single device:
+Amikor készen áll az eszköz beállításához, a kapcsolati karakterláncot, amely összekapcsolja a fizikai eszköz az IoT hub az identitással kell. Az az [IOT hub Device-Identity show-kapcsolat-string](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) paranccsal visszaállíthatja egy adott eszköz kapcsolati karakterláncát:
 
    ```cli
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
    ```
 
-The value for the `device-id` parameter is case-sensitive. Don't copy the quotation marks around the connection string.
+A `device-id` paraméter értéke megkülönbözteti a kis-és nagybetűket. Ne másolja a kapcsolati karakterláncot az idézőjelek közé.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Now that you have a device identity registered in your IoT hub, you're ready to install the IoT Edge runtime on your devices. Install the runtime according to the device's operating system:
+Most, hogy az IoT hub-ban regisztrálta az eszköz azonosítóját, készen áll a IoT Edge futtatókörnyezet telepítésére az eszközökön. Telepítse a futtatókörnyezetet az eszköz operációs rendszere szerint:
 
-* [Install Azure IoT Edge on Windows](how-to-install-iot-edge-windows.md)
-* [Install the Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md)
+* [Azure IoT Edge telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)
+* [A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)

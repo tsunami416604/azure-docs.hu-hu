@@ -1,6 +1,6 @@
 ---
-title: Use Azure .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use the Azure Storage client library to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: Az Azure .NET használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2ban (előzetes verzió)
+description: Az Azure Storage ügyféloldali kódtár segítségével kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS).
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,35 +8,35 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9e20445768334eb3272fb9534e5cc04e30c6f41f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484976"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534276"
 ---
-# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>A .NET használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2 (előzetes verzió)
 
-This article shows you how to use .NET to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet a .NET használatával könyvtárakat, fájlokat és engedélyeket olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
 > [!IMPORTANT]
-> The [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package that is featured in this article is currently in public preview.
+> A cikkben Kiemelt [Azure. Storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet csomag jelenleg nyilvános előzetes verzióban érhető el.
 
-[Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+A [Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API-referenciák](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 Gen2-megfeleltetésre](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [visszajelzés küldése](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
 
-## <a name="set-up-your-project"></a>Set up your project
+## <a name="set-up-your-project"></a>A projekt beállítása
 
-To get started, install the [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package.
+Első lépésként telepítse az [Azure. Storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet csomagot.
 
-For more information about how to install NuGet packages, see [Install and manage packages in Visual Studio using the NuGet Package Manager](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
+A NuGet-csomagok telepítésével kapcsolatos további információkért lásd: [csomagok telepítése és kezelése a Visual Studióban a NuGet csomagkezelő használatával](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
 
-Then, add these using statements to the top of your code file.
+Ezután adja hozzá ezeket az utasításokat a programkód elejéhez.
 
 ```csharp
 using Azure.Storage.Files.DataLake;
@@ -45,11 +45,11 @@ using System.IO;
 using Azure;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+A cikkben szereplő kódrészletek használatához létre kell hoznia egy **DataLakeServiceClient** -példányt, amely a Storage-fiókot jelképezi. A legegyszerűbb módja, ha egy fiókot használ. 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+Ez a példa a **DataLakeServiceClient** egy példányát hozza létre a fiók kulcsa alapján.
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -65,11 +65,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 }
 ```
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A file system acts as a container for your files. You can create one by calling the **FileSystemClient.CreateFileSystemAsync** method.
+A fájlrendszer tárolóként működik a fájlok számára. A **FileSystemClient. CreateFileSystemAsync** metódus meghívásával létrehozhat egyet.
 
-This example creates a file system named `my-file-system`. 
+Ez a példa egy `my-file-system`nevű fájlrendszert hoz létre. 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -81,9 +81,9 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Create a directory reference by calling the **FileSystemClient.CreateDirectoryAsync** method.
+Hozzon létre egy címtár-referenciát a **FileSystemClient. CreateDirectoryAsync** metódus meghívásával.
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+Ez a példa egy `my-directory` nevű könyvtárat telepít egy fájlrendszerbe, majd hozzáadja a `my-subdirectory`nevű alkönyvtárat. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -99,11 +99,11 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Rename or move a directory by calling the **DirectoryClient.RenameAsync** method. Pass the path of the desired directory a parameter. 
+Nevezze át vagy helyezze át a könyvtárat úgy, hogy meghívja a **DirectoryClient. RenameAsync** metódust. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+Ez a példa egy alkönyvtárat nevez át a `my-subdirectory-renamed`névre.
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -116,7 +116,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+Ez a példa egy `my-subdirectory-renamed` nevű könyvtárat helyez át egy `my-directory-2`nevű könyvtár alkönyvtárába. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -131,9 +131,9 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Delete a directory by calling the **DirectoryClient.Delete** method.
+A **DirectoryClient. Delete** metódus meghívásával törölhet egy könyvtárat.
 
-This example deletes a directory named `my-directory`.  
+Ez a példa töröl egy `my-directory`nevű könyvtárat.  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -145,11 +145,11 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>Címtár-ACL kezelése
 
-Get the access control list (ACL) of a directory by calling the **directoryClient.GetAccessControlAsync** method and set the ACL by calling the **DirectoryClient.SetAccessControl** method.
+A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **directoryClient. GetAccessControlAsync** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **directoryClient. SetAccessControl** metódust.
 
-This example gets and sets the ACL of a directory named `my-directory`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Ez a példa lekérdezi és beállítja egy `my-directory`nevű könyvtár ACL-listáját. Az olvasási, írási és végrehajtási jogosultságokat tartalmazó karakterlánc `user::rwx,group::r-x,other::rw-` megadja a tulajdonosi csoport számára az olvasási és végrehajtási engedélyeket, és minden más olvasási és írási engedélyt ad.
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -168,11 +168,11 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.AppendAsync** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient. AppendAsync** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient. FlushAsync** metódus meghívásával végezze el.
 
-This example uploads a text file to a directory named `my-directory`.    
+Ez a példa egy szövegfájlt tölt fel egy `my-directory`nevű könyvtárba.    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -194,11 +194,11 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>Fájl hozzáférés-vezérlési listájának kezelése
 
-Get the access control list (ACL) of a file by calling the **DataLakeFileClient.GetAccessControlAsync** method and set the ACL by calling the **FileClient.SetAccessControl** method.
+Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient. GetAccessControlAsync** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **FileClient. SetAccessControl** metódust.
 
-This example gets and sets the ACL of a file named `my-file.txt`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Ez a példa lekérdezi és beállítja a `my-file.txt`nevű fájl hozzáférés-vezérlési listáját. Az olvasási, írási és végrehajtási jogosultságokat tartalmazó karakterlánc `user::rwx,group::r-x,other::rw-` megadja a tulajdonosi csoport számára az olvasási és végrehajtási engedélyeket, és minden más olvasási és írási engedélyt ad.
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -218,11 +218,11 @@ public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory 
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból 
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **FileClient.ReadAsync** method, and parse the return value to obtain a [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) object. Use any .NET file processing API to save bytes from the stream to a file. 
+Először hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Használja a **FileClient. ReadAsync** metódust, és elemezze a visszatérési értéket egy [stream](https://docs.microsoft.com/dotnet/api/system.io.stream) -objektum beszerzéséhez. A .NET-fájlok feldolgozására szolgáló API-k használatával az adatfolyamból fájlba mentheti a bájtokat. 
 
-This example uses a [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) and a [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) to save bytes to a file. 
+Ez a példa egy [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) és egy [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) használ a bájtok fájlba mentéséhez. 
 
 ```cs
 public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -259,9 +259,9 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-List directory contents by calling the **FileSystemClient.ListPathsAsync** method, and then enumerating through the results.
+A könyvtár tartalmának listázásához hívja meg a **FileSystemClient. ListPathsAsync** metódust, majd az eredmények alapján sorolja fel azokat.
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+Ez a példa kinyomtatja a `my-directory`nevű könyvtárban található egyes fájlok nevét.
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -288,12 +288,12 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
-* [Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
-* [Minták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+* [API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
+* [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
+* [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
+* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
+* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-net/issues)
 

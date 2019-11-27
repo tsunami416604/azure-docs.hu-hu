@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB monitoring data reference | Microsoft Docs
-description: Log and metrics reference for monitoring data from Azure Cosmos DB.
+title: Azure Cosmos DB monitorozási adathivatkozás | Microsoft Docs
+description: Naplózási és metrikai referenciák a Azure Cosmos DBból származó adatok figyeléséhez.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -16,89 +16,89 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456530"
 ---
-# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB monitoring data reference
-This article provides a reference of log and metric data collected to analyze the performance and availability of Azure Cosmos DB. See [Monitoring Cosmos DB](monitor-cosmos-db.md) for details on collecting and analyzing monitoring data for Azure Cosmos DB.
+# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB monitorozási adathivatkozás
+Ez a cikk a Azure Cosmos DB teljesítményének és rendelkezésre állásának elemzéséhez gyűjtött napló-és metrikai adatokról nyújt referenciát. A Azure Cosmos DB figyelési adatainak gyűjtésével és elemzésével kapcsolatos részletekért tekintse meg a [figyelés Cosmos db](monitor-cosmos-db.md) .
 
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
-The following table lists the properties for Azure Cosmos DB resource logs when they're collected in Azure Monitor Logs or Azure Storage. In Azure Monitor Logs, they're collected in the **AzureDiagnostics** table with a **ResourceProvider** value of *MICROSOFT.DOCUMENTDB*. 
+A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyűjtött Azure Cosmos DB erőforrás-naplók tulajdonságait sorolja fel. Azure Monitor naplókban a rendszer a **AzureDiagnostics** táblában gyűjti össze a Microsoft **ResourceProvider** értékét *. DOCUMENTDB*. 
 
-| Azure Storage field or property | Azure Monitor Logs property | Leírás |
+| Az Azure Storage mezőjével vagy tulajdonságával | Azure Monitor naplók tulajdonsága | Leírás |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | The date and time (UTC) when the operation occurred. |
-| **resourceId** | **Erőforrás** | The Azure Cosmos DB account for which logs are enabled.|
-| **category** | **Kategória** | For Azure Cosmos DB logs, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** are the available log types. |
-| **operationName** | **OperationName** | Name of the operation. This value can be any of the following operations: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, or Upsert.   |
-| **properties** | – | The contents of this field are described in the rows that follow. |
-| **activityId** | **activityId_g** | The unique GUID for the logged operation. |
-| **userAgent** | **userAgent_s** | A string that specifies the client user agent that's performing the request. The format is {user agent name}/{version}.|
-| **requestResourceType** | **requestResourceType_s** | The type of the resource accessed. This value can be any of the following resource types: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, or Offer. |
-| **statusCode** | **statusCode_s** | The response status of the operation. |
-| **requestResourceId** | **ResourceId** | The resourceId that pertains to the request. The value may point to databaseRid, collectionRid, or documentRid depending on the operation performed.|
-| **clientIpAddress** | **clientIpAddress_s** | The client's IP address. |
-| **requestCharge** | **requestCharge_s** | The number of RUs that are used by the operation |
-| **collectionRid** | **collectionId_s** | The unique ID for the collection.|
-| **duration** | **duration_s** | The duration of the operation, in milliseconds. |
-| **requestLength** | **requestLength_s** | The length of the request, in bytes. |
-| **responseLength** | **responseLength_s** | The length of the response, in bytes.|
-| **resourceTokenUserRid** | **resourceTokenUserRid_s** | This value is non-empty when [resource tokens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) are used for authentication. The value points to the resource ID of the user. |
+| **idő** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
+| **resourceId** | **Erőforrás** | Az Azure Cosmos DB-fiókot, amelynek a naplói engedélyezve vannak.|
+| **Kategória** | **Kategória** | Azure Cosmos DB naplók esetében a **DataPlaneRequests**, a **MongoRequests**, a **QueryRuntimeStatistics**, a **PartitionKeyStatistics**, a **PartitionKeyRUConsumption**, a **ControlPlaneRequests** a rendelkezésre álló naplózási típusok. |
+| **operationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: frissítés, olvasási, ReadFeed, Delete, cserélje le, hajtsa végre, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert létrehozása.   |
+| **Tulajdonságok** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
+| **Tevékenységazonosító** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
+| **userAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
+| **requestResourceType** | **requestResourceType_s** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
+| **statusCode** | **statusCode_s** | A válasz állapota a műveletet. |
+| **requestResourceId** | **ResourceId** | Az erőforrás-azonosító, amely a kérelem vonatkozik. Az érték databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
+| **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |
+| **requestCharge** | **requestCharge_s** | A művelet által használt fenntartott egységek száma |
+| **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
+| **időtartama** | **duration_s** | A művelet időtartama ezredmásodpercben. |
+| **requestLength** | **requestLength_s** | A kérelem bájtban hossza. |
+| **responseLength** | **responseLength_s** | A válasz bájtban hossza.|
+| **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ez az érték nem üres, ha [erőforrás-tokeneket](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) használ a hitelesítéshez. Az érték a felhasználó erőforrás-Azonosítójára mutat. |
 
-For a list of all Azure Monitor log categories and links to associated schemas, see [Azure Monitor Logs categories and schemas](../azure-monitor/platform/diagnostic-logs-schema.md). 
+Az összes Azure Monitor naplózási kategória és a társított sémák hivatkozásainak listáját lásd: [Azure monitor naplók kategóriái és sémái](../azure-monitor/platform/diagnostic-logs-schema.md). 
 
-## <a name="metrics"></a>Metrikák
-The following tables list the platform metrics collected for Azure CosmOS DB. All metrics are stored in the namespace **Cosmos DB standard metrics**.
+## <a name="metrics"></a>Mérőszámok
+Az alábbi táblázatok felsorolják az Azure CosmOS DB-hez összegyűjtött platform-metrikákat. A rendszer az összes mérőszámot a névtérben tárolja **Cosmos dB standard metrikákat**.
 
-For a list of all Azure Monitor support metrics (including CosmosDB), see [Azure Monitor supported metrics](../azure-monitor/platform/metrics-supported.md). 
+Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáját lásd: [Azure monitor támogatott metrikák](../azure-monitor/platform/metrics-supported.md). 
 
-#### <a name="request-metrics"></a>Request metrics
+#### <a name="request-metrics"></a>Kérelem-metrikák
             
-|Metric (Metric Display Name)|Unit (Aggregation Type) |Leírás|Dimenziók| Time granularities| Legacy metric mapping | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (Total Requests) | Count (Count) | Number of requests made| DatabaseName, CollectionName, Region, StatusCode| Mind | TotalRequests, Http 2xx, Http 3xx, Http 400, Http 401, Internal Server error, Service Unavailable, Throttled Requests, Average Requests per Second | Used to monitor requests per status code, container at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60. |
-| MetadataRequests (Metadata Requests) |Count (Count) | Count of metadata requests. Azure Cosmos DB maintains system metadata container for each account, that allows you to enumerate collections, databases, etc., and their configurations, free of charge. | DatabaseName, CollectionName, Region, StatusCode| Mind| |Used to monitor throttles due to metadata requests.|
-| MongoRequests (Mongo Requests) | Count (Count) | Number of Mongo Requests Made | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Mind |Mongo Query Request Rate, Mongo Update Request Rate, Mongo Delete Request Rate, Mongo Insert Request Rate, Mongo Count Request Rate| Used to monitor Mongo request errors, usages per command type. |
+| TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Összes | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
+| MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Összes| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
+| MongoRequests (Mongo kérelmek) | Darabszám (darabszám) | A Mongo kérelmek száma | DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelmek gyakorisága, a Mongo frissítési kérelmi aránya, a Mongo törlési kérelmi aránya, a Mongo beszúrási kérelmi aránya, a Mongo száma kérelmek aránya| Mongo-kérési hibák figyelésére használatos. |
 
-#### <a name="request-unit-metrics"></a>Request Unit metrics
+#### <a name="request-unit-metrics"></a>Adategység metrikáinak kérése
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Leírás|Dimenziók| Time granularities| Legacy metric mapping | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo Request Charge) | Count (Total) |Mongo Request Units Consumed| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Mind |Mongo Query Request Charge, Mongo Update Request Charge, Mongo Delete Request Charge, Mongo Insert Request Charge, Mongo Count Request Charge| Used to monitor Mongo resource RUs in a minute.|
-| TotalRequestUnits (Total Request Units)| Count (Total) | Request Units consumed| DatabaseName, CollectionName, Region, StatusCode |Mind| TotalRequestUnits| Used to monitor Total RU usage at a minute granularity. To get average RU consumed per second, use Total aggregation at minute and divide by 60.|
-| ProvisionedThroughput (Provisioned Throughput)| Count (Maximum) |Provisioned throughput at container granularity| DatabaseName, ContainerName| 5M| | Used to monitor provisioned throughput per container.|
+| MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
+| TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Összes| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
+| ProvisionedThroughput (kiépített átviteli sebesség)| Darabszám (maximum) |Kiépített átviteli sebesség a tároló részletessége szerint| DatabaseName, ContainerName| 5P| | Tárolón kiépített átviteli sebesség figyelésére szolgál.|
 
-#### <a name="storage-metrics"></a>Storage metrics
+#### <a name="storage-metrics"></a>Tárolási metrikák
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Leírás|Dimenziók| Time granularities| Legacy metric mapping | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (Available Storage) |Bytes (Total) | Total available storage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Available Storage| Used to monitor available storage capacity (applicable only for fixed storage collections) Minimum granularity should be 5 minutes.| 
-| DataUsage (Data Usage) |Bytes (Total) |Total data usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Data size | Used to monitor total data usage at container and region, minimum granularity should be 5 minutes.|
-| IndexUsage (Index Usage) | Bytes (Total) |Total Index usage reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M| Index Size| Used to monitor total data usage at container and region, minimum granularity should be 5 minutes. |
-| DocumentQuota (Document Quota) | Bytes (Total) | Total storage quota reported at 5-minutes granularity per region.| DatabaseName, CollectionName, Region| 5M |Storage kapacitása| Used to monitor total quota at container and region, minimum granularity should be 5 minutes.|
-| DocumentCount (Document Count) | Count (Total) |Total document count reported at 5-minutes granularity per region| DatabaseName, CollectionName, Region| 5M |Document Count|Used to monitor document count at container and region, minimum granularity should be 5 minutes.|
+| AvailableStorage (rendelkezésre álló tár) |Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes rendelkezésre álló tárterület| DatabaseName, CollectionName, régió| 5P| Rendelkezésre álló tár| A rendelkezésre álló tárolókapacitás (csak a rögzített tárolási gyűjtemények esetében érvényes) figyeléséhez használatos minimális részletességnek 5 percnek kell lennie.| 
+| DataUsage (adathasználat) |Bájtok (összesen) |Régiónként 5 perces részletességgel jelentett teljes adatfelhasználás| DatabaseName, CollectionName, régió| 5P |Adatméret | A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
+| IndexUsage (használat indexelése) | Bájtok (összesen) |Az összes indexelési használat összesen 5 perces részletességgel számolt be régiónként| DatabaseName, CollectionName, régió| 5P| Index mérete| A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie. |
+| DocumentQuota (dokumentum kvótája) | Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes tárolási kvóta.| DatabaseName, CollectionName, régió| 5P |Tárkapacitás| A tároló és régió teljes kvótájának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
+| DocumentCount (dokumentumok száma) | Darabszám (összesen) |Régiónként 5 perces részletességgel jelentett dokumentumok száma összesen| DatabaseName, CollectionName, régió| 5P |Dokumentumok száma|A dokumentumok számának a tárolóban és régióban való figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
 
-#### <a name="latency-metrics"></a>Latency metrics
+#### <a name="latency-metrics"></a>Késési metrikák
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Leírás|Dimenziók| Time granularities| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (Replication Latency)| MilliSeconds (Minimum, Maximum, Average) | P99 Replication Latency across source and target regions for geo-enabled account| SourceRegion, TargetRegion| Mind | Used to monitor P99 replication latency between any two regions for a geo-replicated account. |
+| ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Összes | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
 
 
-#### <a name="availability-metrics"></a>Availability metrics
+#### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
-|Metric (Metric Display Name) |Unit (Aggregation Type)|Leírás| Time granularities| Legacy metric mapping | Használat |
+|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Leírás| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (Service Availability)| Percent (Minimum, Maximum) | Account requests availability at one hour granularity| 1H | Service Availability | Represents the percent of total passed requests. A request is considered to be failed due to system error if the status code is 410, 500 or 503 Used to monitor availability of the account at hour granularity. |
+| ServiceAvailability (szolgáltatás rendelkezésre állása)| Százalék (minimum, maximum) | A fiók egy órás részletességgel kéri a rendelkezésre állást| 1H | Szolgáltatás rendelkezésre állása | Az átadott kérelmek százalékos arányát jelöli. A rendszer hibát okozó kérést küld, ha az állapotkód 410, 500 vagy 503, amely a fiók rendelkezésre állásának figyelésére használatos az óránkénti részletességgel. |
 
 
-#### <a name="cassandra-api-metrics"></a>Cassandra API metrics
+#### <a name="cassandra-api-metrics"></a>Cassandra API metrikák
 
-|Metric (Metric Display Name)|Unit (Aggregation Type)|Leírás|Dimenziók| Time granularities| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra Requests) | Count (Count) | Number of Cassandra API requests made| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Mind| Used to monitor Cassandra requests at a minute granularity. To get average requests per second, use Count aggregation at minute and divide by 60.|
-| CassandraRequestCharges (Cassandra Request Charges) | Count (Sum, Min, Max, Avg) | Request Units consumed by Cassandra API requests| DatabaseName, CollectionName, Region, OperationType, ResourceType| Mind| Used to monitor RUs used per minute by a Cassandra API account.|
-| CassandraConnectionClosures (Cassandra Connection Closures) |Count (Count) |Number of Cassandra Connections closed| ClosureReason, Region| Mind | Used to monitor the connectivity between clients and the Azure Cosmos DB Cassandra API.|
+| CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Összes| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
+| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | Cassandra API kérelmek által felhasznált kérési egységek| DatabaseName, CollectionName, Region, OperationType, ResourceType| Összes| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
+| CassandraConnectionClosures (Cassandra-kapcsolatok bezárása) |Darabszám (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Összes | Az ügyfelek és a Azure Cosmos DB Cassandra API közötti kapcsolat figyelésére használatos.|
 
 ## <a name="see-also"></a>Lásd még:
 
-- See [Monitoring Azure Cosmos DB](monitor-cosmos-db.md) for a description of monitoring Azure Cosmos DB.
-- See [Monitoring Azure resources with Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) for details on monitoring Azure resources.
+- A figyelési Azure Cosmos DB leírását a [figyelés Azure Cosmos db](monitor-cosmos-db.md) című részben tekintheti meg.
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .

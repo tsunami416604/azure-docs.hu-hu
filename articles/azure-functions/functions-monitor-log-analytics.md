@@ -1,6 +1,6 @@
 ---
-title: Monitoring Azure Functions with Azure Monitor Logs
-description: Learn how to use Azure Monitor Logs with Azure Functions to monitor function executions.
+title: Azure Functions figyelése Azure Monitor naplókkal
+description: Megtudhatja, hogyan használhatja a Azure Monitor naplókat Azure Functions a függvények végrehajtásának figyelésére.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
@@ -12,30 +12,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226852"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitoring Azure Functions with Azure Monitor Logs
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
 
-Azure Functions offers an integration with [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md) to monitor functions. This article shows you how to configure Azure Functions to send system-generated and user-generated logs to Azure Monitor Logs.
+A Azure Functions a függvények figyeléséhez [Azure monitor naplókkal](../azure-monitor/platform/data-platform-logs.md) való integrációt biztosít. Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Functionst a rendszer által létrehozott és a felhasználó által létrehozott naplók Azure Monitor naplókba való küldéséhez.
 
-Azure Monitor Logs gives you the ability to consolidate logs from different resources in the same workspace, where it can be analyzed with [queries](../azure-monitor/log-query/log-query-overview.md) to quickly retrieve, consolidate, and analyze collected data.  You can create and test queries using [Log Analytics](../azure-monitor/log-query/portals.md) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](../azure-monitor/visualizations.md) or [alert rules](../azure-monitor/platform/alerts-overview.md).
+Azure Monitor naplók lehetővé teszik a különböző erőforrásokból származó naplók összevonását ugyanabban a munkaterületen, ahol a [lekérdezésekkel](../azure-monitor/log-query/log-query-overview.md) elemezhető az összegyűjtött adatok gyors lekérése, összevonása és elemzése céljából.  A Azure Portal [log Analytics](../azure-monitor/log-query/portals.md) használatával létrehozhat és tesztelheti a lekérdezéseket, majd közvetlenül elemezheti ezeket az eszközöket, vagy a [vizualizációk](../azure-monitor/visualizations.md) vagy a [riasztási szabályok](../azure-monitor/platform/alerts-overview.md)használatával mentheti a lekérdezéseket.
 
-Azure Monitor uses a version of the [Kusto query language](/azure/kusto/query/) used by Azure Data Explorer that is suitable for simple log queries but also includes advanced functionality such as aggregations, joins, and smart analytics. You can quickly learn the query language using [multiple lessons](../azure-monitor/log-query/get-started-queries.md).
+A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv](/azure/kusto/query/) egy olyan verzióját használja, amely az egyszerű naplózási lekérdezésekhez megfelelő, de olyan speciális funkciókat is tartalmaz, mint az összesítések, az illesztések és az intelligens elemzések. A lekérdezés nyelvét [több leckével](../azure-monitor/log-query/get-started-queries.md)is gyorsan megismerheti.
 
 > [!NOTE]
-> Integration with Azure Monitor Logs is currently in public preview for function apps running on Windows Consumption, Premium, and Dedicated hosting plans.
+> A Azure Monitor-naplókkal való integráció jelenleg nyilvános előzetes verzióban érhető el a Windows-használat, a prémium szintű és a dedikált üzemeltetési csomagok esetében futó functions-alkalmazásokhoz.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Beállítás
 
-From the Monitoring section, select **Diagnostic settings** and then click **Add**.
+A figyelés szakaszban válassza a **diagnosztikai beállítások** elemet, majd kattintson a **Hozzáadás**gombra.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-In the setting page, choose **Send to Log Analytics**, and under **LOG** choose **FunctionAppLogs**, this table contains the desired logs.
+A beállítás lapon válassza a **küldés log Analytics**lehetőséget, majd a **napló** területen válassza a **FunctionAppLogs**lehetőséget, ez a tábla tartalmazza a kívánt naplókat.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/choose-table.png)
+![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>User generated logs
+## <a name="user-generated-logs"></a>Felhasználó által generált naplók
 
-To generate custom logs, you can use the specific logging statement depending on your language, here are sample code snippets:
+Egyéni naplók létrehozásához az adott nyelvtől függően használhatja az adott naplózási utasítást:
 
 **JavaScript**
 
@@ -67,15 +67,15 @@ To generate custom logs, you can use the specific logging statement depending on
     Write-Host "My app logs here."
 ```
 
-## <a name="querying-the-logs"></a>Querying the logs
+## <a name="querying-the-logs"></a>Naplók lekérdezése
 
-To query the generated logs, go to the log analytics workspace and click **Logs**.
+A generált naplók lekérdezéséhez lépjen a log Analytics-munkaterületre, és kattintson a **naplók**elemre.
 
-![Query window in LA workspace](media/functions-monitor-log-analytics/querying.png)
+![Lekérdezési ablak az LA Workspace-ban](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions writes all logs to **FunctionAppLogs** table, here are some sample queries.
+Azure Functions az összes naplót beírja a **FunctionAppLogs** táblába, íme néhány példa a lekérdezésekre.
 
-### <a name="all-logs"></a>All logs
+### <a name="all-logs"></a>Minden napló
 
 ```
 
@@ -84,7 +84,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>A specific function logs
+### <a name="a-specific-function-logs"></a>Egy adott függvény naplói
 
 ```
 
@@ -105,6 +105,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Review the [Azure Functions overview](functions-overview.md)
-- Learn more about [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md)
-- Learn more about the [query language](../azure-monitor/log-query/get-started-queries.md).
+- Tekintse át a [Azure functions áttekintését](functions-overview.md)
+- További információ a [Azure monitor naplókról](../azure-monitor/platform/data-platform-logs.md)
+- További információ a [lekérdezési nyelvről](../azure-monitor/log-query/get-started-queries.md).

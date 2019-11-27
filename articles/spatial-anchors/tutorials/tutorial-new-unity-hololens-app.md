@@ -34,7 +34,7 @@ Először be kell állítania a projekt és az egység jelenetét:
 2. Válassza az **Új** lehetőséget.
 4. Győződjön meg arról, hogy a **3D** ki van választva.
 5. Nevezze el a projektet, és adjon meg egy mentési **helyet**.
-6. Kattintson a **Create project**.
+6. Kattintson a **projekt létrehozása**gombra.
 7. Mentse az üres alapértelmezett jelenetet egy új fájlba a következő paranccsal: **fájl** > **Save as (Mentés másként**).
 8. Nevezze el az új jelenet **főoldalát** , és kattintson a **Save (Mentés** ) gombra.
 

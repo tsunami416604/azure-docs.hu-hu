@@ -1,7 +1,7 @@
 ---
-title: Configure load balancing and outbound rules by using Azure PowerShell
+title: Terheléselosztás és kimenő szabályok konfigurálása Azure PowerShell használatával
 titleSuffix: Azure Load Balancer
-description: This article shows how to configure load balancing and outbound rules in Standard Load Balancer by using Azure PowerShell.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a terheléselosztást és a kimenő szabályokat a standard Load Balancerban Azure PowerShell használatával.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -15,37 +15,37 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225443"
 ---
-# <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>Configure load balancing and outbound rules in Standard Load Balancer by using Azure PowerShell
+# <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>Terheléselosztás és kimenő szabályok konfigurálása a standard Load Balancerban Azure PowerShell használatával
 
-This article shows you how to configure outbound rules in Standard Load Balancer by using Azure PowerShell.  
+Ez a cikk bemutatja, hogyan konfigurálhatja a kimenő szabályokat a standard Load Balancerban Azure PowerShell használatával.  
 
-When you finish this article's scenario, the load balancer resource contains two front ends and their associated rules. You have one front end for inbound traffic and another front end for outbound traffic.  
+A cikk forgatókönyvének befejezésekor a terheléselosztó erőforrás két előtért tartalmaz, valamint a hozzájuk tartozó szabályokat. A bejövő forgalomhoz és a kimenő forgalomhoz egy másik előtér tartozik.  
 
-Each front end references a public IP address. In this scenario, the public IP address for inbound traffic is different from the address for outbound traffic.   The load-balancing rule provides only inbound load balancing. The outbound rule controls the outbound network address translation (NAT) for the VM.  
+Mindegyik előtér egy nyilvános IP-címet hivatkozik. Ebben az esetben a bejövő forgalom nyilvános IP-címe eltér a kimenő forgalom címétől.   A terheléselosztási szabály csak bejövő terheléselosztást biztosít. A Kimenő szabály a virtuális gép kimenő hálózati címfordítását (NAT) szabályozza.  
 
-The scenario uses two back-end pools: one for inbound traffic and one for outbound traffic. These pools illustrate capability and provide flexibility for the scenario.
+A forgatókönyv két háttér-készletet használ: egyet a bejövő forgalomhoz, egy pedig a kimenő forgalomhoz. Ezek a készletek szemléltetik a képességet, és rugalmasságot biztosítanak a forgatókönyvhöz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
-Sign in to your Azure subscription by using the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) command. Then follow the on-screen directions.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) parancs használatával. Ezután kövesse a képernyőn megjelenő utasításokat.
     
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Create a resource group by using [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). An Azure resource group is a logical container into which Azure resources are deployed. The resources are then managed from the group.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi az Azure-erőforrásokat. A rendszer ezután felügyeli az erőforrásokat a csoportból.
 
-The following example creates a resource group named *myresourcegroupoutbound* in the *eastus2* location:
+A következő példában létrehozunk egy *myresourcegroupoutbound* nevű erőforráscsoportot a *eastus2* helyen:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroupoutbound -Location eastus
 ```
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Create a virtual network named *myvnetoutbound*. Name its subnet *mysubnetoutbound*. Place it in *myresourcegroupoutbound* by using [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=azps-2.6.0) and [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=azps-2.6.0).
+Hozzon létre egy *myvnetoutbound*nevű virtuális hálózatot. Nevezze el az alhálózati *mysubnetoutbound*. Helyezze el a *myresourcegroupoutbound* -ben a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=azps-2.6.0) és a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=azps-2.6.0)használatával.
 
 ```azurepowershell-interactive
 $subnet = New-AzVirtualNetworkSubnetConfig -Name mysubnetoutbound -AddressPrefix "192.168.0.0/24"
@@ -53,19 +53,19 @@ $subnet = New-AzVirtualNetworkSubnetConfig -Name mysubnetoutbound -AddressPrefix
 New-AzVirtualNetwork -Name myvnetoutbound -ResourceGroupName myresourcegroupoutbound -Location eastus -AddressPrefix "192.168.0.0/16" -Subnet $subnet
 ```
 
-## <a name="create-an-inbound-public-ip-address"></a>Create an inbound public IP address 
+## <a name="create-an-inbound-public-ip-address"></a>Bejövő nyilvános IP-cím létrehozása 
 
-To access your web app on the internet, you need a public IP address for the load balancer. Standard Load Balancer supports only standard public IP addresses. 
+Ha az interneten szeretné elérni a webalkalmazást, szüksége lesz egy nyilvános IP-címére a terheléselosztó számára. A standard Load Balancer csak a standard nyilvános IP-címeket támogatja. 
 
-Use [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=azps-2.6.0) to create a standard public IP address named *mypublicipinbound* in *myresourcegroupoutbound*.
+A [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=azps-2.6.0) használatával hozzon létre egy *mypublicipinbound* nevű szabványos nyilvános IP-címet a *myresourcegroupoutbound*-ben.
 
 ```azurepowershell-interactive
 $pubIPin = New-AzPublicIpAddress -ResourceGroupName myresourcegroupoutbound -Name mypublicipinbound -AllocationMethod Static -Sku Standard -Location eastus
 ```
 
-## <a name="create-an-outbound-public-ip-address"></a>Create an outbound public IP address 
+## <a name="create-an-outbound-public-ip-address"></a>Kimenő nyilvános IP-cím létrehozása 
 
-Create a standard IP address for the load balancer's front-end outbound configuration by using [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=azps-2.6.0).
+Hozzon létre egy szabványos IP-címet a terheléselosztó előtér-kimenő konfigurációjához a [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=azps-2.6.0)használatával.
 
 ```azurepowershell-interactive
 $pubIPout = New-AzPublicIpAddress -ResourceGroupName myresourcegroupoutbound -Name mypublicipoutbound -AllocationMethod Static -Sku Standard -Location eastus
@@ -73,37 +73,37 @@ $pubIPout = New-AzPublicIpAddress -ResourceGroupName myresourcegroupoutbound -Na
 
 ## <a name="create-an-azure-load-balancer"></a>Azure-terheléselosztó létrehozása
 
-This section explains how to create and configure the following components of the load balancer:
-  - A front-end IP that receives the incoming network traffic on the load balancer
-  - A back-end pool where the front-end IP sends the load-balanced network traffic
-  - A back-end pool for outbound connectivity
-  - A health probe that determines the health of the back-end VM instances
-  - A load-balancer inbound rule that defines how traffic is distributed to the VMs
-  - A load-balancer outbound rule that defines how traffic is distributed from the VMs
+Ez a szakasz a terheléselosztó következő összetevőinek létrehozását és konfigurálását ismerteti:
+  - Egy előtéri IP-cím, amely a terheléselosztó bejövő hálózati forgalmát fogadja
+  - Olyan háttérbeli készlet, amelyben az előtér-IP-cím elküldi a terheléselosztási hálózati forgalmat
+  - A kimenő kapcsolatok háttér-készlete
+  - A háttérbeli virtuálisgép-példányok állapotát meghatározó állapot-mintavétel
+  - Egy terheléselosztó bejövő szabálya, amely meghatározza, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között
+  - Egy terheléselosztó kimenő szabálya, amely meghatározza, hogy a rendszer hogyan ossza szét a forgalmat a virtuális gépekről
 
-### <a name="create-an-inbound-front-end-ip"></a>Create an inbound front-end IP
-Create the inbound front-end IP configuration for the load balancer by using [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig?view=azps-2.6.0). The load balancer should include an inbound front-end IP configuration named *myfrontendinbound*. Associate this configuration with the public IP address *mypublicipinbound*.
+### <a name="create-an-inbound-front-end-ip"></a>Bejövő előtéri IP-cím létrehozása
+Hozza létre a terheléselosztó bejövő előtér-IP-konfigurációját a [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig?view=azps-2.6.0)használatával. A terheléselosztó tartalmaznia kell egy *myfrontendinbound*nevű bejövő ELŐTÉR-IP-konfigurációt. Társítsa ezt a konfigurációt a nyilvános IP- *mypublicipinbound*.
 
 ```azurepowershell-interactive
 $frontendIPin = New-AzLoadBalancerFrontendIPConfig -Name "myfrontendinbound" -PublicIpAddress $pubIPin
 ```
-### <a name="create-an-outbound-front-end-ip"></a>Create an outbound front-end IP
-Create the outbound front-end IP configuration for the load balancer by using [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig?view=azps-2.6.0). This load balancer should include an outbound front-end IP configuration named *myfrontendoutbound*. Associate this configuration with the public IP address *mypublicipoutbound*.
+### <a name="create-an-outbound-front-end-ip"></a>Kimenő előtéri IP-cím létrehozása
+Hozzon létre egy kimenő előtér-IP-konfigurációt a terheléselosztó számára a [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig?view=azps-2.6.0)használatával. A terheléselosztó tartalmaznia kell egy *myfrontendoutbound*nevű kimenő ELŐTÉR-IP-konfigurációt. Társítsa ezt a konfigurációt a nyilvános IP- *mypublicipoutbound*.
 
 ```azurepowershell-interactive
 $frontendIPout = New-AzLoadBalancerFrontendIPConfig -Name "myfrontendoutbound" -PublicIpAddress $pubIPout
 ```
-### <a name="create-an-inbound-back-end-pool"></a>Create an inbound back-end pool
-Create the back-end inbound pool for the load balancer by using [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig?view=azps-2.6.0). Name the pool *bepoolinbound*.
+### <a name="create-an-inbound-back-end-pool"></a>Bejövő háttérbeli készlet létrehozása
+Hozza létre a terheléselosztó háttérbeli bejövő készletét a [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig?view=azps-2.6.0)használatával. Nevezze el a készlet *bepoolinbound*.
 
 ```azurepowershell-interactive
 $bepoolin = New-AzLoadBalancerBackendAddressPoolConfig -Name bepoolinbound
 ``` 
 
-### <a name="create-an-outbound-back-end-pool"></a>Create an outbound back-end pool
-Use the following command to create another back-end address pool to define outbound connectivity for a pool of VMs by using [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig?view=azps-2.6.0). Name this pool *bepooloutbound*. 
+### <a name="create-an-outbound-back-end-pool"></a>Kimenő háttérrendszer-készlet létrehozása
+A következő parancs használatával hozzon létre egy másik háttér-címkészletet a virtuális gépek készletének kimenő kapcsolatának definiálásához a [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig?view=azps-2.6.0)használatával. Nevezze el ezt a készletet *bepooloutbound*. 
 
-By creating a separate outbound pool, you provide maximum flexibility. But you can omit this step and use only the inbound *bepoolinbound* if you prefer.  
+Egy külön kimenő készlet létrehozásával maximális rugalmasságot biztosít. Ezt a lépést azonban kihagyhatja, és csak a bejövő *bepoolinbound* használhatja, ha szeretné.  
 
 ```azurepowershell-interactive
 $bepoolout = New-AzLoadBalancerBackendAddressPoolConfig -Name bepooloutbound
@@ -111,56 +111,56 @@ $bepoolout = New-AzLoadBalancerBackendAddressPoolConfig -Name bepooloutbound
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
-A health probe checks all VM instances to make sure they can send network traffic. The VM instance that fails the probe checks is removed from the load balancer until it goes back online and a probe check determines that it's healthy. 
+Az állapot-mintavétel ellenőrzi az összes virtuálisgép-példányt, hogy képes legyen hálózati forgalmat küldeni. A mintavételi ellenőrzéseket nem tartalmazó virtuálisgép-példány törlődik a terheléselosztó-ből, amíg az online állapotba nem kerül, és a mintavételi ellenőrzés meghatározza, hogy az kifogástalan állapotú-e. 
 
-To monitor the health of the VMs, create a health probe by using [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig?view=azps-2.6.0). 
+A virtuális gépek állapotának figyeléséhez hozzon létre egy állapot-mintavételt a [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig?view=azps-2.6.0)használatával. 
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name http -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath /
 ```
-### <a name="create-a-load-balancer-rule"></a>Create a load-balancer rule
+### <a name="create-a-load-balancer-rule"></a>Terheléselosztó szabály létrehozása
 
-A load-balancer rule defines the front-end IP configuration for the incoming traffic and the back-end pool to receive the traffic. It also defines the required source and destination port. 
+A terheléselosztó szabály a bejövő forgalom és a háttérrendszer előtérbeli IP-konfigurációját határozza meg a forgalom fogadásához. Meghatározza továbbá a szükséges forrás-és célport-portot is. 
 
-Create a load-balancer rule named *myinboundlbrule* by using [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig?view=azps-2.6.0). This rule will listen to port 80 in the front-end pool *myfrontendinbound*. It will also use port 80 to send load-balanced network traffic to the back-end address pool *bepoolinbound*. 
+Hozzon létre egy *myinboundlbrule* nevű terheléselosztó-szabályt a [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig?view=azps-2.6.0)használatával. Ez a szabály a 80-es portot fogja figyelni az előtér-készlet *myfrontendinbound*. Az 80-es portot is használja, hogy a rendszer elosztott terhelésű hálózati forgalmat továbbítson a háttérbeli címkészlet *bepoolinbound*. 
 
 ```azurepowershell-interactive
 $inboundRule = New-AzLoadBalancerRuleConfig -Name inboundlbrule -FrontendIPConfiguration $frontendIPin -BackendAddressPool $bepoolin -Probe $probe -Protocol "Tcp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
 ```
 
 >[!NOTE]
->This load-balancing rule disables automatic outbound secure NAT (SNAT) because of the **-DisableOutboundSNAT** parameter. Outbound NAT is provided only by the outbound rule.
+>Ez a terheléselosztási szabály letiltja az automatikus kimenő biztonságos NAT-t (SNAT) a **-új választható disableoutboundsnat** paraméter miatt. A kimenő NAT-t csak a Kimenő szabály kapja meg.
 
 ### <a name="create-an-outbound-rule"></a>Kimenő szabály létrehozása
 
-An outbound rule defines the front-end public IP, which is represented by the front-end *myfrontendoutbound*. This front end will be used for all outbound NAT traffic as well as the back-end pool to which the rule applies.  
+A kimenő szabályok határozzák meg az előtéri nyilvános IP-címet, amelyet az előtér- *myfrontendoutbound*képvisel. Ez az előtér az összes kimenő NAT-forgalomhoz, valamint a szabály hatálya alá eső háttér-készlethez lesz használva.  
 
-Use the following command to create an outbound rule *myoutboundrule* for outbound network translation of all VMs (in NIC IP configurations) in the *bepool* back-end pool.  The command changes the outbound idle time-out from 4 to 15 minutes. It allocates 10,000 SNAT ports instead of 1,024. For more information, see [New-AzLoadBalancerOutboundRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalanceroutboundruleconfig?view=azps-2.7.0).
+A következő parancs használatával hozzon létre egy kimenő *szabályt a* *Myoutboundrule* összes virtuális gép kimenő hálózati FORDÍTÁSÁHOZ (a hálózati adapterek IP-konfigurációjában).  A parancs a kimenő üresjárati időkorlátot 4 – 15 percre módosítja. 1 024 helyett 10 000 SNAT-portot foglal le. További információ: [New-AzLoadBalancerOutboundRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalanceroutboundruleconfig?view=azps-2.7.0).
 
 ```azurepowershell-interactive
  $outboundRule = New-AzLoadBalancerOutBoundRuleConfig -Name outboundrule -FrontendIPConfiguration $frontendIPout -BackendAddressPool $bepoolout -Protocol All -IdleTimeoutInMinutes 15 -AllocatedOutboundPort 10000
 ```
-If you don't want to use a separate outbound pool, you can change the address pool argument in the preceding command to specify *$bepoolin* instead.  We recommend using separate pools to make the resulting configuration flexible and readable.
+Ha nem szeretne külön kimenő készletet használni, módosítsa a címkészlet argumentumot az előző parancsban a *$bepoolin* megadásához.  Azt javasoljuk, hogy külön készleteket használjon, hogy a létrejövő konfiguráció rugalmas és olvasható legyen.
 
-### <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 
-Use the following command to create a load balancer for the inbound IP address by using [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0). Name the load balancer *lb*. It should include an inbound front-end IP configuration. Its back-end pool *bepoolinbound* should be associated with the public IP address *mypublicipinbound* that you created in the preceding step.
+A következő paranccsal hozhat létre terheléselosztó-t a bejövő IP-címhez a [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0)használatával. Nevezze el a terheléselosztó *LB*-t. Tartalmaznia kell egy bejövő előtér-IP-konfigurációt. A háttérbeli készlet *bepoolinbound* az előző lépésben létrehozott nyilvános IP- *mypublicipinbound* kell társítani.
 
 ```azurepowershell-interactive
 New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutbound -Location eastus -FrontendIpConfiguration $frontendIPin,$frontendIPout -BackendAddressPool $bepoolin,$bepoolout -Probe $probe -LoadBalancingRule $inboundrule -OutboundRule $outboundrule 
 ```
 
-At this point, you can continue adding your VMs to both *bepoolinbound* and *bepooloutbound* back-end pools by updating the IP configuration of the respective NIC resources. Update the resource configuration by using [Add-AzNetworkInterfaceIpConfig](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
+Ezen a ponton továbbra is hozzáadhatja a virtuális gépeket a *bepoolinbound* és a *bepooloutbound* háttérbeli készletekhez, ha frissíti a megfelelő hálózati adapterek erőforrásainak IP-konfigurációját. Frissítse az erőforrás-konfigurációt a [Add-AzNetworkInterfaceIpConfig](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you no longer need the resource group, load balancer, and related resources, you can remove them by using [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.7.0).
+Ha már nincs szüksége az erőforráscsoport, a terheléselosztó és a kapcsolódó erőforrások használatára, eltávolíthatja őket a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.7.0)használatával.
 
 ```azurepowershell-interactive 
   Remove-AzResourceGroup -Name myresourcegroupoutbound
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-In this article, you created a standard load balancer, configured both inbound and outbound load-balancer traffic rules, and configured a health probe for the VMs in the back-end pool. 
+Ebben a cikkben létrehozta a standard Load balancert, konfigurálta a bejövő és kimenő terheléselosztó forgalmi szabályait, valamint beállította a virtuális gépekhez tartozó állapot-mintavételt a háttér-készletben. 
 
-To learn more, continue to the [tutorials for Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+További információért folytassa a [Azure Load Balancer oktatóanyagokkal](tutorial-load-balancer-standard-public-zone-redundant-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use Azure Storage libraries for Java to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: A Java használata fájlok & ACL-ek használatával Azure Data Lake Storage Gen2 (előzetes verzió)
+description: A Javához készült Azure Storage-kódtárak segítségével kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,31 +8,31 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 4593c16905c331b0d76c9c5c93faac6accfb0977
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485210"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534251"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>A Java használata fájlok & ACL-ek használatával Azure Data Lake Storage Gen2 (előzetes verzió)
 
-This article shows you how to use Java to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet a Java használatával könyvtárakat, fájlokat és engedélyeket olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
 > [!IMPORTANT]
-> The Java library that is featured in this article is currently in public preview.
+> A cikkben szereplő Java-kódtár jelenleg nyilvános előzetes verzióban érhető el.
 
-[Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+[Csomag (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [minta](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API-referenciával](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 a Gen2 leképezéséhez](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
 
-## <a name="set-up-your-project"></a>Set up your project
+## <a name="set-up-your-project"></a>A projekt beállítása
 
-To get started, open the *pom.xml* file in your text editor. Add the following dependency element to the group of dependencies.
+Első lépésként nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá a függőségek csoportjához a következő függőségi elemet.
 
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ To get started, open the *pom.xml* file in your text editor. Add the following d
 </dependency>
 ```
 
-Then, add these imports statements to your code file.
+Ezután adja hozzá ezeket az importálási utasításokat a programkódhoz.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -59,11 +59,11 @@ import com.azure.storage.file.datalake.models.PathPermissions;
 import com.azure.storage.file.datalake.models.RolePermissions;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account 
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz 
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+A cikkben szereplő kódrészletek használatához létre kell hoznia egy **DataLakeServiceClient** -példányt, amely a Storage-fiókot jelképezi. A legegyszerűbb módja, ha egy fiókot használ. 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+Ez a példa a **DataLakeServiceClient** egy példányát hozza létre a fiók kulcsa alapján.
 
 ```java
 
@@ -82,11 +82,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 }      
 
 ```
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A file system acts as a container for your files. You can create one by calling the **DataLakeServiceClient.createFileSystem** method.
+A fájlrendszer tárolóként működik a fájlok számára. A **DataLakeServiceClient. createFileSystem** metódus meghívásával létrehozhat egyet.
 
-This example creates a file system named `my-file-system`. 
+Ez a példa egy `my-file-system`nevű fájlrendszert hoz létre. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -98,9 +98,9 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Create a directory reference by calling the **DataLakeFileSystemClient.createDirectory** method.
+Hozzon létre egy címtár-referenciát a **DataLakeFileSystemClient. createDirectory** metódus meghívásával.
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+Ez a példa egy `my-directory` nevű könyvtárat telepít egy fájlrendszerbe, majd hozzáadja a `my-subdirectory`nevű alkönyvtárat. 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -116,11 +116,11 @@ static public DataLakeDirectoryClient CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Rename or move a directory by calling the **DataLakeDirectoryClient.rename** method. Pass the path of the desired directory a parameter. 
+Nevezze át vagy helyezze át a könyvtárat a **DataLakeDirectoryClient. Rename** metódus meghívásával. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+Ez a példa egy alkönyvtárat nevez át a `my-subdirectory-renamed`névre.
 
 ```java
 static public DataLakeDirectoryClient
@@ -133,7 +133,7 @@ static public DataLakeDirectoryClient
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+Ez a példa egy `my-subdirectory-renamed` nevű könyvtárat helyez át egy `my-directory-2`nevű könyvtár alkönyvtárába. 
 
 ```java
 static public DataLakeDirectoryClient MoveDirectory
@@ -148,9 +148,9 @@ static public DataLakeDirectoryClient MoveDirectory
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Delete a directory by calling the **DataLakeDirectoryClient.deleteWithResponse** method.
+A **DataLakeDirectoryClient. deleteWithResponse** metódus meghívásával törölje a könyvtárat.
 
-This example deletes a directory named `my-directory`.   
+Ez a példa töröl egy `my-directory`nevű könyvtárat.   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -162,9 +162,9 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>Címtár-ACL kezelése
 
-This example gets and then sets the ACL of a directory named `my-directory`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+Ez a példa lekéri és beállítja a `my-directory`nevű könyvtár ACL-listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -195,11 +195,11 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.append** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient. Append** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient. FlushAsync** metódus meghívásával végezze el.
 
-This example uploads a text file to a directory named `my-directory`.`
+Ez a példa egy szövegfájlt tölt fel egy `my-directory`nevű könyvtárba.
 
 ```java
 static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
@@ -222,9 +222,9 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>Fájl hozzáférés-vezérlési listájának kezelése
 
-This example gets and then sets the ACL of a file named `upload-file.txt`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+Ez a példa lekérdezi és beállítja a `upload-file.txt`nevű fájl hozzáférés-vezérlési listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
@@ -257,11 +257,11 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **DataLakeFileClient.read** method to read the file. Use any .NET file processing API to save bytes from the stream to a file. 
+Először hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. A fájl olvasásához használja a **DataLakeFileClient. Read** metódust. A .NET-fájlok feldolgozására szolgáló API-k használatával az adatfolyamból fájlba mentheti a bájtokat. 
 
-Make sure to complete the download by calling the **DataLakeFileClient.flush** method.
+Győződjön meg arról, hogy a letöltést a **DataLakeFileClient. flush** metódus meghívásával hajtja végre.
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -289,7 +289,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+Ez a példa kinyomtatja a `my-directory`nevű könyvtárban található egyes fájlok nevét.
 
 ```java
 static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -320,11 +320,11 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
-* [Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
-* [Minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+* [API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
+* [Csomag (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
+* [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)

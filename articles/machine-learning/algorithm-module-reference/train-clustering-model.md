@@ -1,7 +1,7 @@
 ---
-title: 'Train Clustering Model: Module Reference'
+title: 'A szerelvények csoportosítási modellje: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Train Clustering Model module in Azure Machine Learning to train clustering models.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning vonat-fürtszolgáltatási modell modult a fürtözési modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,44 +18,44 @@ ms.locfileid: "74232593"
 ---
 # <a name="train-clustering-model"></a>Csoportosítási modell betanítása
 
-This article describes a module in Azure Machine Learning designer (preview).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Use this module to train a clustering model.
+Ez a modul egy fürtszolgáltatási modell betanítására használható.
 
-The module takes an untrained clustering model that you have already configured using the [K-Means Clustering](k-means-clustering.md) module, and trains the model using a labeled or unlabeled data set. The module creates both a trained model that you can use for prediction, and a set of cluster assignments for each case in the training data.
+A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelyet már konfigurált a [K-Meaning-fürtszolgáltatási](k-means-clustering.md) modullal, és a modellt a címkével ellátott vagy nem címkézett adatkészletet használva. A modul létrehoz egy betanított modellt is, amelyet az előrejelzéshez használhat, valamint a betanítási adatokban lévő egyes esetekben a fürt hozzárendeléseinek készletét.
 
 > [!NOTE]
-> A clustering model cannnot be trained using the [Train Model](train-model.md) module, which is the generic module for training machine learning models. That is because [Train Model](train-model.md) works only with supervised learning algorithms. K-means and other clustering algorithms allow unsupervised learning, meaning that the algorithm can learn from unlabeled data.  
+> A adatbázismotor a [betanítási](train-model.md) modell modul használatával tanítjuk ki, amely a gépi tanulási modellek általános modulja. Ennek oka, hogy a [betanítási modell](train-model.md) csak felügyelt tanulási algoritmusokkal működik. A K-means és más fürtözési algoritmusok lehetővé teszik a nem felügyelt tanulást, ami azt jelenti, hogy az algoritmus nem címkézett adatokból tanulhat.  
   
-## <a name="how-to-use-train-clustering-model"></a>How to use Train Clustering Model  
+## <a name="how-to-use-train-clustering-model"></a>A vonat-fürtszolgáltatási modell használata  
 
-1.  Add the **Train Clustering Model** module to your pipeline in the designer. You can find the module under **Machine Learning Modules**, in the **Train** category.  
+1.  Adja hozzá a **Train fürtözési modell** modult a folyamathoz a tervezőben. A modult **Machine learning modulok**területen találja a **vonat** kategóriában.  
   
-2. Add the [K-Means Clustering](k-means-clustering.md) module, or another custom module that creates a compatible clustering model, and set the parameters of the clustering model.  
+2. Adja hozzá a [K-means fürtszolgáltatási](k-means-clustering.md) modult, vagy egy másik olyan egyéni modult, amely kompatibilis fürtszolgáltatási modellt hoz létre, és állítsa be a fürtszolgáltatási modell paramétereit.  
     
-3.  Attach a training dataset to the right-hand input of **Train Clustering Model**.
+3.  Csatoljon egy betanítási adatkészletet a **vonat-fürtözési modell**jobb oldali bemenetéhez.
   
-5.  In **Column Set**, select the columns from the dataset to use in building clusters. Be sure to select columns that make good features: for example, avoid using IDs or other columns that have unique values, or columns that have all the same values.
+5.  Az **oszlop beállítása**területen válassza ki a fürtök létrehozásához használni kívánt adatkészlet oszlopait. Ügyeljen arra, hogy olyan oszlopokat válasszon ki, amelyek jó szolgáltatásokat tesznek elérhetővé: például ne használjon azonosítókat vagy más olyan oszlopokat, amelyek egyedi értékekkel rendelkeznek, vagy az összes azonos értékkel rendelkező oszlopokat.
 
-    If a label is available, you can either use it as a feature, or leave it out.  
+    Ha egy címke elérhető, használhatja szolgáltatásként, vagy hagyja ki.  
   
-6. Select the option, **Check for append or uncheck for result only**, if you want to output the training data together with the new cluster label.
+6. Jelölje be a lehetőséget, ha a betanítási adatokat az új fürt címkével együtt szeretné kiadni, válassza a **Hozzáfűzés vagy a kijelölés jelölőnégyzetet**.
 
-    If you deselect this option, only the cluster assignments are output. 
+    Ha kijelöli ezt a beállítást, csak a fürt hozzárendelései lesznek kimenetek. 
 
-7. Run the pipeline, or click the **Train Clustering Model** module and select **Run Selected**.  
+7. Futtassa a folyamatot, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása**lehetőséget.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
-After training has completed:
+A betanítás befejezése után:
 
 
-+  To view the values in the dataset, right-click the module, select **Result datasets**, and click **Visualize**.
++  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmény-adatkészletek**lehetőséget, majd kattintson a **Megjelenítés**elemre.
 
-+ To save the trained model for later reuse, right-click the module, select **Trained model**, and click **Save As Trained Model**.
++ A betanított modell későbbi használatra való mentéséhez kattintson a jobb gombbal a modulra, válassza a **betanított modell**lehetőséget, majd kattintson a **Mentés betanított modellként**lehetőségre.
 
-+ To generate scores from the model, use [Assign Data to Clusters](assign-data-to-clusters.md).
++ A modellből származó pontszámok létrehozásához használja az [adatok kiosztása fürtökhöz](assign-data-to-clusters.md)lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -1,7 +1,7 @@
 ---
-title: 'K-Means Clustering: Module Reference'
+title: 'K – fürtözés: modulok leírása'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the K-Means Clustering module in the Azure Machine Learning to train clustering models.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning a fürtözési modelleket a fürtözési modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,129 +16,129 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213914"
 ---
-# <a name="module-k-means-clustering"></a>Module: K-Means Clustering
+# <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
-This article describes how to use the *K-Means Clustering* module in Azure Machine Learning designer (preview) to create an untrained K-means clustering model. 
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) *"k-Mean" fürtszolgáltatási* modulja egy nem betanított K – fürtözési modell létrehozásához. 
  
-K-means is one of the simplest and the best known *unsupervised* learning algorithms. You can use the algorithm for a variety of machine learning tasks, such as: 
+A K-means az egyik legegyszerűbb és legismertebb, nem *felügyelt* tanulási algoritmus. Az algoritmus számos gépi tanulási feladathoz használható, például: 
 
-* [Detecting abnormal data](https://msdn.microsoft.com/magazine/jj891054.aspx).
-* Clustering text documents.
-* Analyzing datasets before you use other classification or regression methods. 
+* [Rendellenes adatelemzések észlelése](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* Fürtözött szöveges dokumentumok.
+* Adatkészletek elemzése más besorolási vagy regressziós módszerek használata előtt. 
 
-To create a clustering model, you:
+A fürtszolgáltatási modell létrehozásához a következőket kell tennie:
 
-* Add this module to your pipeline.
-* Connect a dataset.
-* Set parameters, such as the number of clusters you expect, the distance metric to use in creating the clusters, and so forth. 
+* Adja hozzá ezt a modult a folyamathoz.
+* Adatkészlet csatlakoztatása.
+* Állítsa be a paramétereket, például a várt fürtök számát, a fürtök létrehozásához használandó távolsági metrikát és így tovább. 
   
-After you've configured the module hyperparameters, you connect the untrained model to the [Train Clustering Model](train-clustering-model.md). Because the K-means algorithm is an unsupervised learning method, a label column is optional. 
+A modul hiperparaméterek beállítása konfigurálása után a nem betanított modellt a [vonat-fürtszolgáltatási modellhez](train-clustering-model.md)kell kötni. Mivel a K-means algoritmus egy nem felügyelt tanulási módszer, a Label (címke) oszlop nem kötelező. 
 
-+ If your data includes a label, you can use the label values to guide selection of the clusters and optimize the model. 
++ Ha az adatok címkét tartalmaznak, a címke értékeit követve megtekintheti a fürtök kijelölését, és optimalizálhatja a modellt. 
 
-+ If your data has no label, the algorithm creates clusters representing possible categories, based solely on the data.  
++ Ha az adatai nem rendelkeznek címkével, az algoritmus kizárólag az adatain alapuló, lehetséges kategóriákat jelképező fürtöket hoz létre.  
 
-##  <a name="understand-k-means-clustering"></a>Understand K-means clustering
+##  <a name="understand-k-means-clustering"></a>A K értelmezése: fürtözés
  
-In general, clustering uses iterative techniques to group cases in a dataset into clusters that possess similar characteristics. These groupings are useful for exploring data, identifying anomalies in the data, and eventually for making predictions. Clustering models can also help you identify relationships in a dataset that you might not logically derive by browsing or simple observation. For these reasons, clustering is often used in the early phases of machine learning tasks, to explore the data and discover unexpected correlations.  
+Általánosságban elmondható, hogy a fürtözés iterációs technikákat használ az adatkészletekben lévő esetek csoportosítására a hasonló tulajdonságokkal rendelkező fürtökön. Ezek a Csoportosítások hasznosak az adatelemzéshez, az adatrendellenességek azonosításához, és végül az előrejelzések készítéséhez. A fürtözési modellek segíthetnek az adatkészletben lévő olyan kapcsolatok azonosításában is, amelyeket nem lehet logikailag a tallózással vagy egyszerű megfigyeléssel származtatni. Ezen okok miatt a fürtözést gyakran használják a gépi tanulási feladatok korai fázisában, az adatok feltárására és a váratlan korrelációk felderítésére.  
   
- When you configure a clustering model by using the K-means method, you must specify a target number *k* that indicates the number of *centroids* you want in the model. The centroid is a point that's representative of each cluster. The K-means algorithm assigns each incoming data point to one of the clusters by minimizing the within-cluster sum of squares. 
+ Ha a K-Mean metódus használatával konfigurál egy fürtszolgáltatási modellt, meg kell adnia a *centroids* *kívánt számát a* modellben. A középpontját az egyes fürtökre jellemző pont. A K-azt jelenti, hogy az algoritmus az egyes bejövő adatpontokat az egyik fürthöz rendeli úgy, hogy minimalizálja a mezőkön belüli összegét. 
  
-When it processes the training data, the K-means algorithm begins with an initial set of randomly chosen centroids. Centroids serve as starting points for the clusters, and they apply Lloyd's algorithm to iteratively refine their locations. The K-means algorithm stops building and refining clusters when it meets one or more of these conditions:  
+Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véletlenszerűen kiválasztott centroids kezdeti készletével kezdődik. A Centroids kiindulási pontként szolgálnak a fürtökhöz, és a Lloyd algoritmust alkalmazva iteratív a helyüket. A K-means algoritmus a fürtök kiépítése és finomítása miatt leáll, ha az megfelel a következő feltételek közül:  
   
--   The centroids stabilize, meaning that the cluster assignments for individual points no longer change and the algorithm has converged on a solution.  
+-   A centroids stabilizálása, ami azt jelenti, hogy az egyes pontokhoz tartozó fürt-hozzárendelések már nem változnak, és az algoritmus egy megoldáshoz konvergált.  
   
--   The algorithm completed running the specified number of iterations.  
+-   Az algoritmus a megadott számú iteráció futtatásával fejeződött be.  
   
- After you've completed the training phase, you use the [Assign Data to Clusters](assign-data-to-clusters.md) module to assign new cases to one of the clusters that you found by using the K-means algorithm. You perform cluster assignment by computing the distance between the new case and the centroid of each cluster. Each new case is assigned to the cluster with the nearest centroid.  
+ Miután elvégezte a betanítási fázist, az [adatgyűjtés a fürtökhöz](assign-data-to-clusters.md) modul használatával új eseteket rendelhet hozzá a K-means algoritmus használatával talált fürtök valamelyikéhez. A fürt kiosztását az új eset és az egyes fürtök középpontját közötti távolság kiszámításával végezheti el. Minden új eset a legközelebbi középpontját rendelkező fürthöz van rendelve.  
 
-## <a name="configure-the-k-means-clustering-module"></a>Configure the K-Means Clustering module
+## <a name="configure-the-k-means-clustering-module"></a>A K-Meaning-fürtszolgáltatási modul konfigurálása
   
-1.  Add the **K-Means Clustering** module to your pipeline.  
+1.  Adja hozzá a **K-means fürtszolgáltatási** modult a folyamathoz.  
   
-2.  To specify how you want the model to be trained, select the **Create trainer mode** option.  
+2.  A modell képzésének megadásához válassza az **oktatói mód létrehozása** lehetőséget.  
   
-    -   **Single Parameter**: If you know the exact parameters you want to use in the clustering model, you can provide a specific set of values as arguments.  
+    -   **Egyetlen paraméter**: Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
   
-3.  For **Number of centroids**, type the number of clusters you want the algorithm to begin with.  
+3.  A **Centroids száma**mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
   
-     The model isn't guaranteed to produce exactly this number of clusters. The algorithm starts with this number of data points and iterates to find the optimal configuration.  
+     A modell nem garantált, hogy pontosan ezt a számú fürtöt hozza létre. Az algoritmus ezzel a számú adatponttal és iterációval kezdődik az optimális konfiguráció megtalálásához.  
   
-4.  The properties **Initialization** is used to specify the algorithm that's used to define the initial cluster configuration.  
+4.  A tulajdonságok **inicializálásával** adhatja meg a fürt kezdeti konfigurációjának definiálásához használt algoritmust.  
   
-    -   **First N**: Some initial number of data points are chosen from the dataset and used as the initial means. 
+    -   **Első N**: egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
     
-         This method is also called the *Forgy method*.  
+         Ezt a metódust *hamis metódusnak*is nevezzük.  
   
-    -   **Random**: The algorithm randomly places a data point in a cluster and then computes the initial mean to be the centroid of the cluster's randomly assigned points. 
+    -   **Véletlenszerű**: az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
 
-         This method is also called the *random partition* method.  
+         Ezt a metódust *véletlenszerű partíciós* metódusnak is nevezzük.  
   
-    -   **K-Means++** : This is the default method for initializing clusters.  
+    -   **K-azt jelenti + +** : ez az alapértelmezett módszer a fürtök inicializálásához.  
   
-         The **K-means++** algorithm was proposed in 2007 by David Arthur and Sergei Vassilvitskii to avoid poor clustering by the standard K-means algorithm. **K-means++** improves upon standard K-means by using a different method for choosing the initial cluster centers.  
+         A **k-= + +** algoritmust a 2007-as, David Arthur és Szergej Vassilvitskii javasolta, hogy elkerülje a standard k-means algoritmus általi gyenge fürtözést. A **k-azt jelenti** , hogy a + + és a standard szintű k-t is javítja, ha más módszert használ a kezdeti fürtcsomópontok kiválasztásához.  
   
     
-5.  For **Random number seed**, optionally type a value to use as the seed for the cluster initialization. This value can have a significant effect on cluster selection.  
+5.  A **véletlenszerű számú magok**esetében szükség esetén adja meg a fürt inicializálásának magjaként használandó értéket. Ez az érték jelentős hatással lehet a fürt kiválasztására.  
   
-6.  For **Metric**, choose the function to use for measuring the distance between cluster vectors, or between new data points and the randomly chosen centroid. Azure Machine Learning supports the following cluster distance metrics:  
+6.  A **metrika**mezőben válassza ki a fürt vektorai közötti távolság, illetve az új adatpontok és a véletlenszerűen kiválasztott középpontját közötti távolság méréséhez használni kívánt függvényt. Azure Machine Learning a következő szektorcsoport-távolsági metrikákat támogatja:  
   
-    -   **Euclidean**: The Euclidean distance is commonly used as a measure of cluster scatter for K-means clustering. This metric is preferred because it minimizes the mean distance between points and the centroids.
+    -   **Euklideszi**: a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
   
-7.  For **Iterations**, type the number of times the algorithm should iterate over the training data before it finalizes the selection of centroids.  
+7.  Az **Ismétlések**mezőben adja meg, hogy az algoritmus hány alkalommal ismételje meg a betanítási adatmennyiséget, mielőtt véglegesíti a centroids kiválasztását.  
   
-     You can adjust this parameter to balance accuracy against training time.  
+     Ezt a paramétert beállíthatja úgy, hogy a pontosságot kiegyensúlyozza a képzési idő alapján.  
   
-8.  For **Assign label mode**, choose an option that specifies how a label column, if it's present in the dataset, should be handled.  
+8.  A **címke-hozzárendelési mód**beállításnál válassza ki azt a lehetőséget, amely meghatározza, hogy a felirat oszlop hogyan legyen kezelve az adatkészletben.  
   
-     Because K-means clustering is an unsupervised machine learning method, labels are optional. However, if your dataset already has a label column, you can use those values to guide the selection of the clusters, or you can specify that the values be ignored.  
+     Mivel a K-azt jelenti, hogy a fürtözés nem felügyelt gépi tanulási módszer, a címkék megadása nem kötelező. Ha azonban az adatkészlet már rendelkezik címke oszloppal, ezeket az értékeket használhatja a fürtök kijelölésének irányításához, vagy megadhatja, hogy a rendszer figyelmen kívül hagyja-e az értékeket.  
   
-    -   **Ignore label column**: The values in the label column are ignored and are not used in building the model.
+    -   **Címke oszlopának mellőzése**: a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
   
-    -   **Fill missing values**: The label column values are used as features to help build the clusters. If any rows are missing a label, the value is imputed by using other features.  
+    -   **Hiányzó értékek kitöltése**: a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
   
-    -   **Overwrite from closest to center**: The label column values are replaced with predicted label values, using the label of the point that is closest to the current centroid.  
+    -   **Felülírás a legközelebb a középponthoz**: a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
 
-8.  Select the **Normalize features** option if you want to normalize features before training.
+8.  Válassza a **funkciók normalizálása** lehetőséget, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   
-     If you apply normalization, before training, the data points are normalized to `[0,1]` by MinMaxNormalizer.
+     Ha a normalizálás alkalmazása előtt betanítást alkalmaz, az adatpontok normalizálva lesznek a MinMaxNormalizer által `[0,1]`.
 
-10. Train the model.  
+10. A modell betanítása.  
   
-    -   If you set **Create trainer mode** to **Single Parameter**, add a tagged dataset and train the model by using the [Train Clustering Model](train-clustering-model.md) module.  
+    -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
-After you've finished configuring and training the model, you have a model that you can use to generate scores. However, there are multiple ways to train the model, and multiple ways to view and use the results: 
+Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Capture a snapshot of the model in your workspace
+#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>A modell pillanatképének rögzítése a munkaterületen
 
-If you used the [Train Clustering Model](train-clustering-model.md) module:
+Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
-1. Right-click the **Train Clustering Model** module.
+1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
 
-2. Select **Trained model**, and then select **Save as Trained Model**.
+2. Válassza ki a **betanított modellt**, majd válassza **a Mentés betanítva modellként**lehetőséget.
 
-The saved model represents the training data at the time you saved the model. If you later update the training data used in the pipeline, it doesn't update the saved model. 
+A mentett modell a modell mentésekor a betanítási adategységeket jelöli. Ha később frissíti a folyamat során használt betanítási adattípust, nem frissíti a mentett modellt. 
 
-#### <a name="see-the-clustering-result-dataset"></a>See the clustering result dataset 
+#### <a name="see-the-clustering-result-dataset"></a>Tekintse meg a fürtözési eredmény adatkészletét 
 
-If you used the [Train Clustering Model](train-clustering-model.md) module:
+Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
-1. Right-click the **Train Clustering Model** module.
+1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
 
-2. Select **Results dataset**, and then select **Visualize**.
+2. Válassza az **eredmények adatkészlet**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
 
-### <a name="tips-for-generating-the-best-clustering-model"></a>Tips for generating the best clustering model  
+### <a name="tips-for-generating-the-best-clustering-model"></a>Tippek a legjobb fürtözési modell létrehozásához  
 
-It is known that the *seeding* process that's used during clustering can significantly affect the model. Seeding means the initial placement of points into potential centroids.
+Ismeretes, hogy a fürtözés során használt *előkészítési* folyamat jelentős hatással lehet a modellre. A beültetés azt jelenti, hogy a pontok kezdeti elhelyezése lehetséges centroids.
  
-For example, if the dataset contains many outliers, and an outlier is chosen to seed the clusters, no other data points would fit well with that cluster, and the cluster could be a singleton. That is, it might have only one point.  
+Ha például az adatkészlet sok kiugró értéket tartalmaz, és a rendszer kiugróan kiválasztja a fürtöket, akkor más adatpontok nem illenek jól az adott fürthöz, és a fürt lehet egypéldányos. Ez azt okozhatja, hogy csak egy ponttal rendelkezhet.  
   
-You can avoid this problem in a couple of ways:  
+Ezt a problémát több módon is elkerülheti:  
   
--   Change the number of centroids and try multiple seed values.  
+-   Módosítsa a centroids számát, és próbálkozzon több kezdőtőke értékkel.  
   
--   Create multiple models, varying the metric or iterating more.  
+-   Hozzon létre több modellt, amely változó a metrikát vagy az iterációt.  
   
-In general, with clustering models, it's possible that any given configuration will result in a locally optimized set of clusters. In other words, the set of clusters that's returned by the model suits only the current data points and isn't generalizable to other data. If you use a different initial configuration, the K-means method might find a different, superior, configuration. 
+A fürtözési modellek esetében általánosságban lehetséges, hogy bármely adott konfiguráció a fürtök helyileg optimalizált halmazát fogja eredményezni. Más szóval a modell által visszaadott fürtök halmaza csak az aktuális adatpontokat, és nem általánosítható más adatértékekhez. Ha más kezdeti konfigurációt használ, a K-Mean metódus egy másik, magasabb szintű konfigurációt is talál. 
